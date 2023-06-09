@@ -23,7 +23,7 @@ const HeroSection = () => {
           </h1>
           <p className="text-lg mt-4 mb-6 md:text-2xl">
             I&#39;m a{" "}
-            <span className="font-semibold text-red-500">
+            <span className="font-semibold text-red-500 dark:text-red-700">
               Software Engineer{" "}
             </span>
             based in London, UK. Working towards creating software that makes
@@ -31,7 +31,8 @@ const HeroSection = () => {
           </p>
           <Link
             to="projects"
-            className="text-neutral-100 font-semibold px-6 py-3 bg-red-500 rounded-lg shadow cursor-pointer hover:bg-red-400"
+            className="text-neutral-100 font-semibold px-6 py-3 bg-red-500 rounded-lg shadow cursor-pointer hover:bg-red-400
+            dark:bg-red-800 hover:dark:bg-red-950"
             activeClass="active"
             spy={true}
             smooth={true}
