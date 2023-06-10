@@ -77,35 +77,40 @@ export default function Navbar() {
               {/* Links to sections */}
               {NAV_ITEMS.map((item) => {
                 return (
-                  <Link
+                  <div
                     key={item.label}
-                    to={item.page}
-                    className={`block 
-                  lg:inline-block 
-                  text-neutral-900  
-                  dark:text-neutral-100 
-                  cursor-pointer 
-                  transition-all 
-                  font-normal 
-                  hover:font-bold 
-                  duration-300
-                  hover:bg-gray-200 
-                  dark:hover:bg-red-950
-                  dark:hover:text-neutral-200
-                  rounded-lg
-                  px-4 py-3 
-                  m-2
-                  w-24 
-                  text-center`}
-                    activeClass="active"
-                    spy={true}
-                    smooth={true}
-                    offset={-100}
-                    duration={500}
-                    onClick={() => setNavbar(!navbar)}
+                    className="flex justify-center w-full md:w-auto"
                   >
-                    {item.label}
-                  </Link>
+                    <Link
+                      to={item.page}
+                      className={`block 
+                                  lg:inline-block 
+                                  text-neutral-900  
+                                  dark:text-neutral-100 
+                                  cursor-pointer 
+                                  transition-all 
+                                  font-normal 
+                                  hover:font-bold 
+                                  duration-300
+                                  hover:bg-gray-200 
+                                  dark:hover:bg-red-950
+                                  dark:hover:text-neutral-200
+                                  rounded-lg
+                                  px-4 py-3 
+                                  m-2
+                                  w-full 
+                                  md:w-24 
+                                  text-center`}
+                      activeClass="active"
+                      spy={true}
+                      smooth={true}
+                      offset={-100}
+                      duration={500}
+                      onClick={() => setNavbar(!navbar)}
+                    >
+                      {item.label}
+                    </Link>
+                  </div>
                 );
               })}
 
