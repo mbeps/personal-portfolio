@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Title from "../Title";
 
 const skills = [
   { skill: "React" },
@@ -44,10 +45,7 @@ const AboutSection = () => {
   return (
     <section id="about">
       <div className="my-12 pb-12 md:pt-16 md:pb-48">
-        <h1 className="text-center font-bold text-4xl">
-          About Me
-          <hr className="w-6 h-1 mx-auto my-4 bg-red-500 border-0 rounded"></hr>
-        </h1>
+        <Title title="About Me" />
 
         <div className="flex flex-col space-y-10 items-stretch justify-center align-top md:space-x-10 md:space-y-0 md:p-4 md:flex-row md:text-left">
           {/* Left section */}
@@ -109,7 +107,6 @@ const AboutSection = () => {
               .
             </p>
           </div>
-
           {/* Right section */}
           <div className="text-center md:w-1/2 md:text-left">
             <Section title="Languages" data={languages} field="language" />
@@ -120,6 +117,7 @@ const AboutSection = () => {
               field="technology"
             />
           </div>
+          tit
         </div>
       </div>
     </section>
