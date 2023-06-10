@@ -31,8 +31,7 @@ const HeroSection = () => {
           </p>
           <Link
             to="projects"
-            className="text-neutral-100 font-semibold px-6 py-3 bg-red-500 rounded-lg shadow cursor-pointer hover:bg-red-400
-            dark:bg-red-800 hover:dark:bg-red-950"
+            className="text-neutral-100 font-semibold px-6 py-3 bg-red-500 rounded-lg shadow cursor-pointer hover:bg-red-400 dark:bg-red-800 hover:dark:bg-red-950 transition-colors duration-500"
             activeClass="active"
             spy={true}
             smooth={true}
