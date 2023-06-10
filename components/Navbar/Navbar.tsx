@@ -90,9 +90,9 @@ export default function Navbar() {
                   hover:font-bold 
                   duration-300
                   hover:bg-gray-200 
-                  dark:hover:bg-gray-700
+                  dark:hover:bg-red-950
                   dark:hover:text-neutral-200
-                  rounded-md 
+                  rounded-lg
                   px-4 py-3 
                   m-2
                   w-24 
