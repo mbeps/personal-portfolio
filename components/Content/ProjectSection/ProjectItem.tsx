@@ -32,7 +32,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 
   return (
     <SlideUp offset="-300px 0px -300px 0px">
-      <div className="bg-neutral-100 dark:bg-stone-950 p-4 rounded-xl sm:bg-transparent sm:p-0">
+      <div className="bg-neutral-100 dark:bg-stone-950 p-4 rounded-xl sm:bg-transparent sm:dark:bg-transparent sm:p-0">
         <div className="flex flex-col animate-slideUpCubiBezier animation-delay-2 md:flex-row md:space-x-12">
           {imageURL && (
             <div className="md:w-1/2">
