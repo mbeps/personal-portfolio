@@ -29,7 +29,7 @@ const languages = [
 
 const technologies = [
   { technology: "Git" },
-  { technology: "SMN" },
+  { technology: "SVM" },
   { technology: "Firebase" },
   { technology: "Supabase" },
   { technology: "GitHub Actions" },
