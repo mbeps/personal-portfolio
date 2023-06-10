@@ -117,7 +117,6 @@ const AboutSection = () => {
               field="technology"
             />
           </div>
-          tit
         </div>
       </div>
     </section>
