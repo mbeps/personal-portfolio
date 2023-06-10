@@ -1,8 +1,11 @@
+"use client";
+
 import React from "react";
 import { BsGithub, BsArrowUpRightSquare } from "react-icons/bs";
 import Image from "next/image";
 import Link from "next/link";
 import SlideUp from "./Slideup";
+import { useRouter } from "next/navigation";
 
 interface ProjectItemProps {
   name: string;
@@ -19,19 +22,26 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
   projectURL,
   siteURL,
 }) => {
+  const router = useRouter(); // Use useRouter hook
+
+  const handleClick = () => {
+    if (siteURL) {
+      router.push(siteURL);
+    }
+  };
+
   return (
     <SlideUp offset="-300px 0px -300px 0px">
       <div className="flex flex-col animate-slideUpCubiBezier animation-delay-2 md:flex-row md:space-x-12">
         <div className=" md:w-1/2">
-          <Link href={projectURL}>
-            <Image
-              src={imageURL}
-              alt=""
-              width={1000}
-              height={1000}
-              className="rounded-xl shadow-xl hover:opacity-70"
-            />
-          </Link>
+          <Image
+            src={imageURL}
+            alt=""
+            width={1000}
+            height={1000}
+            className="rounded-xl shadow-xl hover:opacity-70 cursor-pointer"
+            onClick={handleClick}
+          />
         </div>
         <div className="mt-8 md:w-1/2">
           <h1 className="text-4xl font-bold mb-6">{name}</h1>
