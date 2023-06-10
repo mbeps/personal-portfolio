@@ -56,7 +56,30 @@ export default function Navbar() {
                 <h2 className="text-2xl font-bold">Maruf Bepary</h2>
               </div>
             </Link>
-            <div className="md:hidden">
+            <div className="md:hidden flex items-center">
+              {/* Dark / Light Mode toggle for mobile */}
+              {currentTheme === "dark" ? (
+                <button
+                  onClick={() => setTheme("light")}
+                  className="bg-neutral-700 p-2 rounded-xl hover:bg-neutral-100 transition-colors duration-300 mr-2"
+                >
+                  <RiSunLine
+                    size={25}
+                    className="text-white hover:text-black transition-colors duration-300"
+                  />
+                </button>
+              ) : (
+                <button
+                  onClick={() => setTheme("dark")}
+                  className="bg-slate-100 p-2 rounded-xl hover:bg-slate-700 transition-colors duration-300 mr-2"
+                >
+                  <RiMoonFill
+                    size={25}
+                    className="text-black hover:text-white transition-colors duration-300"
+                  />
+                </button>
+              )}
+              {/* Hamburger menu */}
               <button
                 className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
                 onClick={() => setNavbar(!navbar)}
@@ -114,28 +137,30 @@ export default function Navbar() {
                 );
               })}
 
-              {/* Dark / Light Mode toggle */}
-              {currentTheme === "dark" ? (
-                <button
-                  onClick={() => setTheme("light")}
-                  className="bg-neutral-700  p-2 rounded-xl hover:bg-neutral-100 transition-colors duration-300"
-                >
-                  <RiSunLine
-                    size={25}
-                    className="text-white hover:text-black transition-colors duration-300"
-                  />
-                </button>
-              ) : (
-                <button
-                  onClick={() => setTheme("dark")}
-                  className="bg-slate-100 p-2 rounded-xl hover:bg-slate-700 transition-colors duration-300"
-                >
-                  <RiMoonFill
-                    size={25}
-                    className="text-black hover:text-white transition-colors duration-300"
-                  />
-                </button>
-              )}
+              {/* Dark / Light Mode toggle for desktop */}
+              <div className="hidden md:block">
+                {currentTheme === "dark" ? (
+                  <button
+                    onClick={() => setTheme("light")}
+                    className="bg-neutral-700 p-2 rounded-xl hover:bg-neutral-100 transition-colors duration-300"
+                  >
+                    <RiSunLine
+                      size={25}
+                      className="text-white hover:text-black transition-colors duration-300"
+                    />
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => setTheme("dark")}
+                    className="bg-slate-100 p-2 rounded-xl hover:bg-slate-700 transition-colors duration-300"
+                  >
+                    <RiMoonFill
+                      size={25}
+                      className="text-black hover:text-white transition-colors duration-300"
+                    />
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </div>
