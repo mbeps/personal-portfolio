@@ -6,16 +6,9 @@ import Image from "next/image";
 import Link from "next/link";
 import SlideUp from "./Slideup";
 import { useRouter } from "next/navigation";
+import Project from "@/types/projects";
 
-interface ProjectItemProps {
-  name: string;
-  description: string;
-  imageURL?: string; // Make imageURL optional
-  projectURL: string;
-  siteURL?: string;
-}
-
-const ProjectItem: React.FC<ProjectItemProps> = ({
+const ProjectItem: React.FC<Project> = ({
   name,
   description,
   imageURL,
