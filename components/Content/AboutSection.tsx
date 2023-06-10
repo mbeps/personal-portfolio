@@ -143,7 +143,7 @@ const Section: React.FC<SectionProps> = ({ title, data, field }) => (
       {data.map((item, idx) => (
         <p
           key={idx}
-          className="bg-gray-200 dark:bg-red-950 px-4 py-2 mr-2 mt-2 text-gray-500 dark:text-gray-300 rounded-lg font-semibold"
+          className="bg-gray-200 dark:bg-red-950 px-4 py-2 mr-2 mt-2 text-gray-500 dark:text-gray-300 rounded-lg font-semibold transition-colors duration-700 ease-in-out"
         >
           {item[field]}
         </p>

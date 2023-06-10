@@ -35,18 +35,20 @@ export default function Navbar() {
 
   return (
     <header
-      className="
-			w-full mx-auto  
-			px-4 
-			sm:px-20 
-			fixed 
-			top-0 
-			z-50 
-			shadow 
-			bg-white 
-			dark:bg-stone-900 
-			dark:border-b 
-			dark:border-stone-600"
+      className={`
+        w-full mx-auto  
+        px-4 
+        sm:px-20 
+        fixed 
+        top-0 
+        z-50 
+        shadow 
+        bg-white 
+        dark:bg-stone-900 
+        dark:border-b 
+        dark:border-stone-600 
+        transition-colors duration-700 ease-in-out
+  `}
     >
       <div className="justify-between md:items-center md:flex">
         <div>
