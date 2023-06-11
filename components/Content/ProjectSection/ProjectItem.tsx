@@ -8,6 +8,21 @@ import SlideUp from "./Slideup";
 import { useRouter } from "next/navigation";
 import Project from "@/types/projects";
 
+/**
+ * Card which displays a projects.
+ * Contains:
+ * - Name of the project
+ * - Description of the project
+ * - Optional image of the project
+ * - Link to the GitHub repository of the project
+ * - Optional link to the live site of the project
+ * @param name (string): Name of the project
+ * @param description (string): Description of the project
+ * @param imageURL (string): URL of the image of the project
+ * @param projectURL (string): URL of the GitHub repository of the project
+ * @param siteURL (string): URL of the live site of the project
+ * @returns (JSX.Element): Project item component
+ */
 const ProjectItem: React.FC<Project> = ({
   name,
   description,

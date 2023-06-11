@@ -5,6 +5,12 @@ import {
 } from "react-icons/ai";
 import SocialIcon from "./SocialIcon";
 
+/**
+ * Footer to be displayed at the bottom of the page.
+ * Contains links to social media accounts.
+ *
+ * @returns (JSX.Element): Footer component
+ */
 const Footer = () => {
   return (
     <footer className="mx-auto max-w-3xl px-4 sm:px-6 md:max-w-5xl ">

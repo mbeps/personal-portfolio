@@ -4,6 +4,12 @@ interface TitleProps {
   title: string;
 }
 
+/**
+ * Title component shown at the top of each section.
+ *
+ * @param title (string): Title to be displayed for each section
+ * @returns (JSX.Element): Title component
+ */
 const Title: React.FC<TitleProps> = ({ title }) => {
   return (
     <h1 className="text-center font-bold text-4xl">

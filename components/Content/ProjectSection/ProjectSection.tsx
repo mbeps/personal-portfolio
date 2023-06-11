@@ -2,6 +2,13 @@ import Title from "@/components/Title";
 import ProjectItem from "./ProjectItem";
 import { webdevProjects, machineLearningProjects } from "@/types/projects";
 
+/**
+ * Project section listing the projects I have worked on.
+ * Each card shows the name, description and a link to the GitHub repository.
+ * Some cards also show a link to the live site.
+ * There is also an image of the projects.
+ * @returns (JSX.Element): Projects section
+ */
 const ProjectsSection = () => {
   return (
     <section id="projects">
