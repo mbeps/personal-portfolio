@@ -2,6 +2,10 @@ import { PostMetadata } from "@/types/post";
 import fs from "fs";
 import matter from "gray-matter";
 
+/**
+ * Get the metadata for all posts stored in the posts/ directory.
+ * @returns {PostMetadata[]} An array of post metadata.
+ */
 const getPostMetadata = (): PostMetadata[] => {
   const folder = "posts/";
   const files = fs.readdirSync(folder);
