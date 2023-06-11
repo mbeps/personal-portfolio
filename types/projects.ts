@@ -1,3 +1,6 @@
+/**
+ * Interface representing a project.
+ */
 export default interface Project {
   name: string;
   description: string;
@@ -6,6 +9,11 @@ export default interface Project {
   siteURL?: string;
 }
 
+/**
+ * Array of web development projects.
+ * This is used to populate the projects page.
+ * @type {Project[]}
+ */
 const webdevProjects: Project[] = [
   {
     name: "Circus Discussions",
@@ -33,6 +41,11 @@ const webdevProjects: Project[] = [
   },
 ];
 
+/**
+ * Array of machine learning projects.
+ * This is used to populate the projects page.
+ * @type {Project[]}
+ */
 const machineLearningProjects: Project[] = [
   {
     name: "Assignment 1",
