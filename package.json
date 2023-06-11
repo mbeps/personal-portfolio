@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "docker:compose": "docker-compose -f docker/docker-compose.yml up --build"
   },
   "dependencies": {
     "@types/node": "20.2.5",
