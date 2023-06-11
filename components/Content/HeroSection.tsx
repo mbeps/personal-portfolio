@@ -4,6 +4,10 @@ import Image from "next/image";
 import { Link } from "react-scroll/modules";
 import { HiArrowDown } from "react-icons/hi";
 
+/**+
+ * Hero section component shown at the top of the page.
+ * Contains a short description of myself, a picture and a link to the projects section.
+ */
 const HeroSection = () => {
   return (
     <section id="home">

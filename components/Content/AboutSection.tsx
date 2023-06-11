@@ -2,6 +2,9 @@ import React from "react";
 import Image from "next/image";
 import Title from "../Title";
 
+/**
+ * List of skills that will be displayed in the About section.
+ */
 const skills = [
   { skill: "React" },
   { skill: "Next.JS" },
@@ -19,6 +22,9 @@ const skills = [
   { skill: "JUnit" },
 ];
 
+/**
+ * List of languages that will be displayed in the About section.
+ */
 const languages = [
   { language: "Python" },
   { language: "Java" },
@@ -27,6 +33,9 @@ const languages = [
   { language: "Shell" },
 ];
 
+/**
+ * List of technologies that will be displayed in the About section.
+ */
 const technologies = [
   { technology: "Git" },
   { technology: "SVM" },
@@ -41,6 +50,13 @@ const technologies = [
   { technology: "MongoDB" },
 ];
 
+/**
+ * About section component.
+ * Split into two sections: left and right.
+ * Left section contains a short description of myself.
+ * Right section contains a list of skills, languages and technologies.
+ * @returns (JSX.Element): About section
+ */
 const AboutSection = () => {
   return (
     <section id="about">

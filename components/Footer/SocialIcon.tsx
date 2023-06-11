@@ -7,6 +7,15 @@ interface SocialIconProps {
   isEmail?: boolean;
 }
 
+/**
+ * Social media icon component.
+ * Displays the icon which links to the social media account.
+ *
+ * @param link (string): Link to the social media account
+ * @param IconComponent (IconType): Icon component to be displayed
+ * @param isEmail (boolean): Whether the link is an email or not
+ * @returns (JSX.Element): Social media icon
+ */
 const SocialIcon: React.FC<SocialIconProps> = ({
   link,
   IconComponent,

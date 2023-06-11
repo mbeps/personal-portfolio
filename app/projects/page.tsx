@@ -2,6 +2,10 @@ import ProjectItem from "@/components/Content/ProjectSection/ProjectItem";
 import Title from "@/components/Title";
 import { webdevProjects, machineLearningProjects } from "@/types/projects";
 
+/**
+ * Projects page displaying multiple types of projects that I worked on.
+ * @returns (JSX.Element): Projects page
+ */
 const ProjectsSection = () => {
   return (
     <section id="projects">

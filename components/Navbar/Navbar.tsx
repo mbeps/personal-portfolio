@@ -12,6 +12,9 @@ interface NavItem {
   page: string;
 }
 
+/**
+ * Buttons to be displayed in the navbar.
+ */
 const NAV_ITEMS: Array<NavItem> = [
   {
     label: "Home",
@@ -27,6 +30,12 @@ const NAV_ITEMS: Array<NavItem> = [
   },
 ];
 
+/**
+ * Navbar component shown at the top of the page.
+ *
+ *
+ * @returns (JSX.Element): Navbar component
+ */
 export default function Navbar() {
   const { systemTheme, theme, setTheme } = useTheme();
   const currentTheme = theme === "system" ? systemTheme : theme;
