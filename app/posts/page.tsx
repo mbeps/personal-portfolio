@@ -2,6 +2,10 @@ import getPostMetadata from "@/actions/getPostMetadata";
 import Title from "@/components/Content/Text/Title";
 import PostItem from "@/components/Posts/PostItem";
 
+/**
+ * Displays a list of all posts that can be opened.
+ * @returns (JSX.Element): page with all posts
+ */
 export default function Posts() {
   const postMetadata = getPostMetadata();
 

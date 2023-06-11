@@ -2,6 +2,11 @@ import { PostMetadata } from "@/types/post";
 import Link from "next/link";
 import React from "react";
 
+/**
+ * Displays a card which allows the user to open a post.
+ * @param props: Post metadata used in the card
+ * @returns (JSX.Element): card with post metadata
+ */
 const PostItem: React.FC<PostMetadata> = (props) => {
   return (
     <div

@@ -4,6 +4,11 @@ import matter from "gray-matter";
 import getPostMetadata from "@/actions/getPostMetadata";
 import Title from "@/components/Content/Text/Title";
 
+/**
+ * Gets the content of a post.
+ * @param slug (string): the slug of the post
+ * @returns (matter.GrayMatterFile<string>): the post content
+ */
 const getPostContent = (slug: string) => {
   const folder = "posts/";
   const file = `${folder}${slug}.md`;
@@ -12,6 +17,11 @@ const getPostContent = (slug: string) => {
   return matterResult;
 };
 
+/**
+ * Generates the static paths for the posts.
+ * This means that the post are pre-rendered and can be opened without a server.
+ * @returns (Array): array of posts
+ */
 export const generateStaticParams = async () => {
   const posts = getPostMetadata();
   return posts.map((post) => ({
@@ -19,6 +29,11 @@ export const generateStaticParams = async () => {
   }));
 };
 
+/**
+ * Page displaying the rendered markdown which can be read by the user.
+ * @param props: the content of the post
+ * @returns (JSX.Element): content of the post
+ */
 const PostPage = (props: any) => {
   const slug = props.params.slug;
   const post = getPostContent(slug);
