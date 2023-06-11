@@ -10,6 +10,7 @@
     "docker:compose": "docker-compose -f docker/docker-compose.yml up --build"
   },
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.9",
     "@types/node": "20.2.5",
     "@types/react": "18.2.9",
     "@types/react-dom": "18.2.4",
@@ -17,6 +18,8 @@
     "autoprefixer": "10.4.14",
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.4",
+    "gray-matter": "^4.0.3",
+    "markdown-to-jsx": "^7.2.1",
     "next": "13.4.4",
     "next-themes": "^0.2.1",
     "postcss": "8.4.24",
