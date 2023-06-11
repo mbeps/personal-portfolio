@@ -1,5 +1,5 @@
 import ProjectItem from "@/components/Content/ProjectSection/ProjectItem";
-import Title from "@/components/Title";
+import Title from "@/components/Content/Text/Title";
 import { webdevProjects, machineLearningProjects } from "@/types/projects";
 
 /**

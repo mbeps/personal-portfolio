@@ -1,6 +1,6 @@
 import getPostMetadata from "@/actions/getPostMetadata";
+import Title from "@/components/Content/Text/Title";
 import PostItem from "@/components/Posts/PostItem";
-import Title from "@/components/Title";
 
 export default function Posts() {
   const postMetadata = getPostMetadata();

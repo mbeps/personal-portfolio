@@ -1,6 +1,6 @@
 import React from "react";
-import Image from "next/image";
-import Title from "../Title";
+import Title from "./Text/Title";
+import SubTitle from "./Text/SubTitle";
 
 /**
  * List of skills that will be displayed in the About section.
@@ -66,9 +66,7 @@ const AboutSection = () => {
         <div className="flex flex-col space-y-10 items-stretch justify-center align-top md:space-x-10 md:space-y-0 md:p-4 md:flex-row md:text-left">
           {/* Left section */}
           <div className="md:w-1/2">
-            <h1 className="text-center text-2xl font-bold mb-6 mt-6 md:text-left">
-              Get to know me!
-            </h1>
+            <SubTitle subTitle="Get to know me!" />
             <p>
               Hello there! I&#39;m Maruf, a{" "}
               <span className="font-bold">software engineer</span> fueled by{" "}
@@ -154,7 +152,7 @@ interface SectionProps {
 
 const Section: React.FC<SectionProps> = ({ title, data, field }) => (
   <>
-    <h2 className="text-2xl font-bold mb-6 mt-6">{title}</h2>
+    <SubTitle subTitle={title} />
     <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
       {data.map((item, idx) => (
         <p
