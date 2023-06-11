@@ -1,5 +1,5 @@
+import ProjectItem from "@/components/Content/ProjectSection/ProjectItem";
 import Title from "@/components/Title";
-import ProjectItem from "./ProjectItem";
 import { webdevProjects, machineLearningProjects } from "@/types/projects";
 
 const ProjectsSection = () => {
@@ -8,7 +8,21 @@ const ProjectsSection = () => {
       <Title title="Projects" />
 
       <div className="flex flex-col space-y-20 mt-14">
+        <Title title="Web Development" />
         {webdevProjects.map((project, idx) => (
+          <div key={idx}>
+            <ProjectItem
+              name={project.name}
+              description={project.description}
+              imageURL={project.imageURL}
+              projectURL={project.projectURL}
+              siteURL={project.siteURL}
+            />
+          </div>
+        ))}
+
+        <Title title="Machine Learning Assignments" />
+        {machineLearningProjects.map((project, idx) => (
           <div key={idx}>
             <ProjectItem
               name={project.name}

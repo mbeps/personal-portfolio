@@ -1,7 +1,7 @@
 "use client";
 import Navbar from "@/components/Navbar/Navbar";
 import "./globals.css";
-import { ThemeProvider } from "next-themes";
+import { ThemeProvider, useTheme } from "next-themes";
 import Footer from "@/components/Footer/Footer";
 
 export default function RootLayout({
@@ -9,13 +9,23 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const { systemTheme, theme } = useTheme();
+  const currentTheme = theme === "system" ? systemTheme : theme;
+
   return (
-    <html lang="en">
+    <html lang="en" className={currentTheme === "dark" ? "dark" : ""}>
       <head />
-      <body className="dark:bg-stone-900">
+      <body
+        className={`
+          bg-white dark:bg-stone-900
+          transition-colors duration-700 ease-in-out
+        `}
+      >
         <ThemeProvider enableSystem={true} attribute="class">
           <Navbar />
-          {children}
+          <div className="mx-auto max-w-3xl px-4 sm:px-6 md:max-w-5xl">
+            {children}
+          </div>
           <Footer />
         </ThemeProvider>
       </body>
