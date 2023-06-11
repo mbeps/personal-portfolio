@@ -1,5 +1,5 @@
 import React from "react";
-import Title from "../Title";
+import Title from "./Text/Title";
 import SubTitle from "./Text/SubTitle";
 
 /**

@@ -1,4 +1,4 @@
-import Title from "@/components/Title";
+import Title from "../Text/Title";
 import ProjectItem from "./ProjectItem";
 import { webdevProjects, machineLearningProjects } from "@/types/projects";
 
