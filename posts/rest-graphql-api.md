@@ -1,3 +1,9 @@
+---
+title: "REST VS GraphQL APIs"
+subtitle: "A comprehensive comparison between REST and GraphQL APIs"
+date: "2023-05-07"
+---
+
 - [**GraphQL vs REST: A Comprehensive Comparison**](#graphql-vs-rest-a-comprehensive-comparison)
 	- [**Introduction to REST and GraphQL**](#introduction-to-rest-and-graphql)
 		- [**What is REST?**](#what-is-rest)
