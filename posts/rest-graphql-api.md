@@ -23,6 +23,7 @@ date: "2023-05-07"
 		- [**Overkill for Simple APIs**](#overkill-for-simple-apis)
 		- [**Learning Curve and Tooling**](#learning-curve-and-tooling)
 	- [**Conclusion**](#conclusion)
+	- [**Sources**](#sources)
 
 
 # **GraphQL vs REST: A Comprehensive Comparison**
@@ -146,6 +147,36 @@ GraphQL has a learning curve, and your team might require training to understand
 
 ## **Conclusion**
 
-Both REST and GraphQL serve important roles in API development. REST, being around for a longer time, is often the default choice for many applications due to its simplicity and widespread use. However, GraphQL's ability to fetch exactly what's needed and aggregate responses can provide superior performance, especially for complex applications or poor network conditions.
+Both REST and GraphQL have their unique strengths and are powerful tools for API development. REST has been a standard choice for many due to its simplicity, widespread usage, and comprehensive tooling support. It is especially beneficial for simple APIs, given its stateless nature and straightforward caching mechanisms.
 
-Choosing between GraphQL and REST ultimately depends on your project's specific needs. By understanding their differences, you can make a more informed choice and design an API that best suits your application.
+On the other hand, GraphQL provides advantages in terms of performance and flexibility, particularly in complex applications. It enables clients to specify exactly what they need, reducing the issues of over-fetching and under-fetching seen in REST. However, adopting GraphQL may involve a steeper learning curve and considerations around increased query complexity.
+
+The choice between REST and GraphQL should be made after considering various factors like your project's complexity, the team's expertise, and the nature of your data. For instance, if your API needs to cater to diverse client data requirements with nested relationships, GraphQL might be a better choice. For simpler, stateless APIs, REST could serve just as effectively, if not more so.
+
+To make the best decision, evaluate your project's specific needs, understand the strengths and weaknesses of each approach, and consider the overall impact on your application's performance, scalability, and maintainability.
+
+## **Sources**
+
+- **What is REST?**
+  - [IBM: Representational state transfer (REST) and Simple Object Access Protocol (SOAP)](https://www.ibm.com/cloud/learn/rest-apis)
+  - [Roy Fielding's Dissertation: Architectural Styles and the Design of Network-based Software Architectures](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)
+
+- **What is GraphQL?**
+  - [GraphQL Official Documentation: Introduction to GraphQL](https://graphql.org/learn/)
+  - [Apollo Blog: The Problems of "Fetch More Than Needed" and How GraphQL Solves Them](https://www.apollographql.com/blog/the-convenience-of-graphql-f14a3667c55e/)
+
+- **Over-fetching and Under-fetching with REST**
+  - [Apollo Blog: The Anatomy of a GraphQL Query](https://www.apollographql.com/blog/the-anatomy-of-a-graphql-query-6dffa9e9e747/)
+  - [Kent C. Dodds: The Trouble with Over-fetching](https://kentcdodds.com/blog/over-fetching)
+
+- **How GraphQL Addresses REST's Shortcomings**
+  - [LogRocket Blog: A Comparison of GraphQL and REST](https://blog.logrocket.com/graphql-vs-rest/)
+  - [How to GraphQL: Reducing Round Trips with GraphQL](https://www.howtographql.com/basics/2-core-concepts/)
+
+- **When to Choose REST over GraphQL?**
+  - [Toptal: REST vs GraphQL: An Objective Comparison](https://www.toptal.com/api-developers/graphql-vs-rest)
+  - [DZone: When to Use REST instead of GraphQL](https://dzone.com/articles/when-to-use-rest-instead-of-graphql)
+
+- **When GraphQL Might Not Be the Best Option**
+  - [XING Engineering: When to use GraphQL, when to use REST](https://tech.xing.com/when-to-use-graphql-when-to-use-rest-e71523e8a9e8)
+  - [Nordic APIs: GraphQL vs REST: Nailing Down the Pros and Cons](https://nordicapis.com/graphql-vs-rest-pros-and-cons/)
