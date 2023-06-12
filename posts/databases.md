@@ -4,6 +4,22 @@ subtitle: "An introduction and comparison between relational and nonrelational d
 date: "2023-05-15"
 ---
 
+- [**Introduction to Databases**](#introduction-to-databases)
+- [**Relational Databases**](#relational-databases)
+  - [**Introduction to Relational Databases**](#introduction-to-relational-databases)
+  - [**Why Relational Databases are Used**](#why-relational-databases-are-used)
+  - [**Advantages of Relational Databases**](#advantages-of-relational-databases)
+  - [**Disadvantages of Relational Databases**](#disadvantages-of-relational-databases)
+  - [**Importance of Normalization in Relational Databases**](#importance-of-normalization-in-relational-databases)
+- [**Non-Relational Databases**](#non-relational-databases)
+  - [**Introduction to Non-Relational Databases**](#introduction-to-non-relational-databases)
+  - [**Examples of Non-Relational Databases**](#examples-of-non-relational-databases)
+  - [**Why Non-Relational Databases are Used**](#why-non-relational-databases-are-used)
+  - [**Advantages of Non-Relational Databases**](#advantages-of-non-relational-databases)
+  - [**Disadvantages of Non-Relational Databases**](#disadvantages-of-non-relational-databases)
+- [**Sources**](#sources)
+
+
 # **Introduction to Databases**
 
 A database, an integral part of contemporary computer systems, is a structured collection of data, stored electronically for efficient access, manipulation, and update. Databases have become an essential tool in the era of digitization, catering to a wide array of applications spanning from simple mobile apps to complex multinational corporations' operations.
