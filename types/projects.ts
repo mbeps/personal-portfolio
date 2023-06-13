@@ -51,6 +51,7 @@ const extraWebDevProjects: Project[] = [
     name: "Sideshow Articles",
     description:
       "A simple site to allow users to read and write articles. This was created to learn Supabase for the first time. This was the foundation to using Supabase in other projects.",
+    imageURL: "/projects/sideshow-articles.png",
     projectURL: "https://github.com/mbeps/sideshow-articles",
   },
   {
@@ -64,6 +65,7 @@ const extraWebDevProjects: Project[] = [
     name: "ConvoGPT",
     description:
       "This is a simple client for using the OpenAI API locally. This was created to learn how to use the OpenAI API and to create a simple client for it. This is built using Supabase (Vector Pg), Next.JS, and Tailwind CSS. This is a work in progress.",
+    imageURL: "/projects/convo-gpt.png",
     projectURL: "https://github.com/mbeps/convo-gpt",
   },
   {
