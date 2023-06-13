@@ -42,6 +42,39 @@ const webdevProjects: Project[] = [
 ];
 
 /**
+ * Array of extra web development projects.
+ * This is used to populate the projects page.
+ * @type {Project[]}
+ */
+const extraWebDevProjects: Project[] = [
+  {
+    name: "Sideshow Articles",
+    description:
+      "A simple site to allow users to read and write articles. This was created to learn Supabase for the first time. This was the foundation to using Supabase in other projects.",
+    projectURL: "https://github.com/mbeps/sideshow-articles",
+  },
+  {
+    name: "Noodle",
+    description:
+      "This is an open source learning platform that I started as a ground project in my second year of university. This was my first introduction to full stack development. ",
+    imageURL: "/projects/noodle.png",
+    projectURL: "https://github.com/ixahmedxi/noodle",
+  },
+  {
+    name: "ConvoGPT",
+    description:
+      "This is a simple client for using the OpenAI API locally. This was created to learn how to use the OpenAI API and to create a simple client for it. This is built using Supabase (Vector Pg), Next.JS, and Tailwind CSS. This is a work in progress.",
+    projectURL: "https://github.com/mbeps/convo-gpt",
+  },
+  {
+    name: "Python Flask Forum Backend",
+    description:
+      "This is a custom backend for the first iteration of the discussion platform. This was created to learn how to create a custom backend using Python and Flask. This is built using Python, Flask, and MySQL.",
+    projectURL: "https://github.com/mbeps/Forum-Discussion-Flask-Backend",
+  },
+];
+
+/**
  * Array of machine learning projects.
  * This is used to populate the projects page.
  * @type {Project[]}
@@ -73,4 +106,4 @@ const machineLearningProjects: Project[] = [
   },
 ];
 
-export { webdevProjects, machineLearningProjects };
+export { webdevProjects, machineLearningProjects, extraWebDevProjects };
