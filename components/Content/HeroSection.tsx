@@ -24,7 +24,9 @@ const HeroSection = () => {
           />
         </div>
         <div className="md:mt-2 md:w-3/5">
-          <HeadingOne title="Hi, I'm Maruf!" />
+          <h1 className="text-4xl font-bold mt-6 md:mt-0 md:text-7xl">
+            Hi, I&#39;m Maruf!
+          </h1>
           <p className="text-lg mt-4 mb-6 md:text-2xl">
             I&#39;m a{" "}
             <span className="font-semibold text-red-500 dark:text-red-700">
