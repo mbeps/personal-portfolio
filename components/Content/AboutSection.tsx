@@ -1,6 +1,7 @@
 import React from "react";
 import Title from "./Text/Title";
 import SubTitle from "./Text/SubTitle";
+import Tag from "@/components/Atoms/Tag";
 
 /**
  * List of skills that will be displayed in the About section.
@@ -155,12 +156,7 @@ const Section: React.FC<SectionProps> = ({ title, data, field }) => (
     <SubTitle subTitle={title} />
     <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
       {data.map((item, idx) => (
-        <p
-          key={idx}
-          className="bg-gray-200 dark:bg-red-950 px-4 py-2 mr-2 mt-2 text-gray-500 dark:text-gray-300 rounded-lg font-semibold transition-colors duration-700 ease-in-out"
-        >
-          {item[field]}
-        </p>
+        <Tag key={idx}>{item[field]}</Tag>
       ))}
     </div>
   </>
