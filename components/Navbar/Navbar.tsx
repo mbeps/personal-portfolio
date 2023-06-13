@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import { IoMdMenu, IoMdClose } from "react-icons/io";
 import ThemeToggle from "./ThemeToggle";
+import NavbarItem from "./NavbarItem";
 
 interface NavItem {
   label: string;
@@ -18,21 +19,20 @@ interface NavItem {
 const NAV_ITEMS: Array<NavItem> = [
   {
     label: "Home",
-    page: "home",
-  },
-  {
-    label: "About",
-    page: "about",
+    page: "/",
   },
   {
     label: "Projects",
-    page: "projects",
+    page: "/projects",
+  },
+  {
+    label: "Posts",
+    page: "/posts",
   },
 ];
 
 /**
  * Navbar component shown at the top of the page.
- *
  *
  * @returns (JSX.Element): Navbar component
  */
@@ -72,7 +72,7 @@ export default function Navbar() {
               <ThemeToggle currentTheme={currentTheme} setTheme={setTheme} />
               {/* Hamburger menu */}
               <button
-                className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
+                className="p-2 text-gray-700 rounded-xl outline-none focus:border-gray-400 focus:border ml-2"
                 onClick={() => setNavbar(!navbar)}
               >
                 {navbar ? <IoMdClose size={30} /> : <IoMdMenu size={30} />}
@@ -88,42 +88,16 @@ export default function Navbar() {
             }`}
           >
             <div className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-              {/* Links to sections */}
+              {/* Links  */}
               {NAV_ITEMS.map((item) => {
                 return (
                   <div
                     key={item.label}
                     className="flex justify-center w-full md:w-auto"
                   >
-                    <Link
-                      to={item.page}
-                      className={`block 
-                                  lg:inline-block 
-                                  text-neutral-900  
-                                  dark:text-neutral-100 
-                                  cursor-pointer 
-                                  transition-all 
-                                  font-normal 
-                                  hover:font-bold 
-                                  duration-300
-                                  hover:bg-gray-200 
-                                  dark:hover:bg-red-950
-                                  dark:hover:text-neutral-200
-                                  rounded-lg
-                                  px-4 py-3 
-                                  m-2
-                                  w-full 
-                                  md:w-24 
-                                  text-center`}
-                      activeClass="active"
-                      spy={true}
-                      smooth={true}
-                      offset={-100}
-                      duration={500}
-                      onClick={() => setNavbar(!navbar)}
-                    >
+                    <NavbarItem to={item.page} active={pathname === item.page}>
                       {item.label}
-                    </Link>
+                    </NavbarItem>
                   </div>
                 );
               })}
