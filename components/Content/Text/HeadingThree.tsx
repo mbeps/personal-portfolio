@@ -5,9 +5,9 @@ interface HeadingThreeProps {
 }
 
 /**
- * Sub heading component shown at the top of each section but under main headings.
+ * Heading 3 text component shown at the top of each section but under main headings.
  *
- * @param title (string): subheading to be displayed for each section
+ * @param title (string): heading to be displayed for each section
  * @returns (JSX.Element): subheading component
  */
 const HeadingThree: React.FC<HeadingThreeProps> = ({ title }) => {

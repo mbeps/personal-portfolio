@@ -5,12 +5,12 @@ interface HeadingTwoProps {
 }
 
 /**
- * Title component shown at the top of each section.
+ * Heading 2 text component shown at the top of each section.
  *
- * @param title (string): Title to be displayed for each section
+ * @param title (string): Heading to be displayed for each section
  * @returns (JSX.Element): Title component
  */
-const Title: React.FC<HeadingTwoProps> = ({ title }) => {
+const HeadingTwo: React.FC<HeadingTwoProps> = ({ title }) => {
   return (
     <h1 className="text-center font-bold text-4xl">
       {title}
@@ -19,4 +19,4 @@ const Title: React.FC<HeadingTwoProps> = ({ title }) => {
   );
 };
 
-export default Title;
+export default HeadingTwo;
