@@ -1,4 +1,5 @@
 import ProjectItem from "@/components/Content/ProjectSection/ProjectItem";
+import SubTitle from "@/components/Content/Text/SubTitle";
 import Title from "@/components/Content/Text/Title";
 import { webdevProjects, machineLearningProjects } from "@/types/projects";
 
@@ -9,49 +10,50 @@ import { webdevProjects, machineLearningProjects } from "@/types/projects";
 const ProjectsSection = () => {
   return (
     <section id="projects">
-      <Title title="Projects" />
+      <div className="my-12 pb-12 md:pt-8 md:pb-48">
+        <Title title="Projects" />
+        <div className="flex flex-col space-y-20 mt-14">
+          <SubTitle subTitle="Web Development" />
+          {webdevProjects.map((project, idx) => (
+            <div key={idx}>
+              <ProjectItem
+                name={project.name}
+                description={project.description}
+                imageURL={project.imageURL}
+                projectURL={project.projectURL}
+                siteURL={project.siteURL}
+              />
+            </div>
+          ))}
 
-      <div className="flex flex-col space-y-20 mt-14">
-        <Title title="Web Development" />
-        {webdevProjects.map((project, idx) => (
-          <div key={idx}>
-            <ProjectItem
-              name={project.name}
-              description={project.description}
-              imageURL={project.imageURL}
-              projectURL={project.projectURL}
-              siteURL={project.siteURL}
-            />
-          </div>
-        ))}
+          <SubTitle subTitle="Machine Learning Assignments" />
+          {machineLearningProjects.map((project, idx) => (
+            <div key={idx}>
+              <ProjectItem
+                name={project.name}
+                description={project.description}
+                imageURL={project.imageURL}
+                projectURL={project.projectURL}
+                siteURL={project.siteURL}
+              />
+            </div>
+          ))}
+        </div>
 
-        <Title title="Machine Learning Assignments" />
-        {machineLearningProjects.map((project, idx) => (
-          <div key={idx}>
-            <ProjectItem
-              name={project.name}
-              description={project.description}
-              imageURL={project.imageURL}
-              projectURL={project.projectURL}
-              siteURL={project.siteURL}
-            />
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-10">
-        <p className="text-lg">
-          You can find more of my projects and assignments, including those on
-          machine learning, on my GitHub.
-        </p>
-        <a
-          href="https://github.com/stars/mbeps/lists/good"
-          className="text-red-500 dark:text-red-800 font-bold hover:underline"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Check them out here!
-        </a>
+        <div className="mt-10">
+          <p className="text-lg">
+            You can find more of my projects and assignments, including those on
+            machine learning, on my GitHub.
+          </p>
+          <a
+            href="https://github.com/stars/mbeps/lists/good"
+            className="text-red-500 dark:text-red-800 font-bold hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Check them out here!
+          </a>
+        </div>
       </div>
     </section>
   );
