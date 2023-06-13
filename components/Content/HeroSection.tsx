@@ -35,9 +35,14 @@ const HeroSection = () => {
             life easier and more meaningful.
           </p>
 
-          <Button to="projects" variant="filled" isSamePage>
-            Projects
-          </Button>
+          <div className="flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0">
+            <Button to="projects" variant="filled" isSamePage>
+              Projects
+            </Button>
+            <Button to="about" variant="ghost" isSamePage>
+              About
+            </Button>
+          </div>
         </div>
       </div>
       <div className="flex flex-row items-center text-center justify-center ">
