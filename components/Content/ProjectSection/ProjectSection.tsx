@@ -21,7 +21,7 @@ const ProjectsSection = () => {
               name={project.name}
               description={project.description}
               imageURL={project.imageURL}
-              projectURL={project.projectURL}
+              repoURL={project.repoURL}
               siteURL={project.siteURL}
             />
           </div>

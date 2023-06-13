@@ -19,7 +19,7 @@ import Project from "@/types/projects";
  * @param name (string): Name of the project
  * @param description (string): Description of the project
  * @param imageURL (string): URL of the image of the project
- * @param projectURL (string): URL of the GitHub repository of the project
+ * @param repoURL (string): URL of the GitHub repository of the project
  * @param siteURL (string): URL of the live site of the project
  * @returns (JSX.Element): Project item component
  */
@@ -27,7 +27,7 @@ const ProjectItem: React.FC<Project> = ({
   name,
   description,
   imageURL,
-  projectURL,
+  repoURL,
   siteURL,
 }) => {
   const router = useRouter();
@@ -60,7 +60,7 @@ const ProjectItem: React.FC<Project> = ({
               {description}
             </p>
             <div className="flex flex-row align-bottom space-x-4">
-              <Link href={projectURL} target="_blank">
+              <Link href={repoURL} target="_blank">
                 <BsGithub
                   size={30}
                   className="hover:-translate-y-1 transition-transform cursor-pointer"
