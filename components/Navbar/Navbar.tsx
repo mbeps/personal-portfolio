@@ -72,7 +72,10 @@ export default function Navbar() {
                 <ThemeToggle currentTheme={currentTheme} setTheme={setTheme} />
                 {/* Hamburger menu */}
                 <button
-                  className="p-2 text-gray-700 rounded-xl outline-none focus:border-gray-400 focus:border ml-2"
+                  className="p-2 
+                  text-neutral-800 dark:text-neutral-200 
+                  rounded-xl 
+                  outline-none focus:border-gray-400 focus:border ml-2"
                   onClick={() => setNavbar(!navbar)}
                 >
                   {navbar ? <IoMdClose size={30} /> : <IoMdMenu size={30} />}
