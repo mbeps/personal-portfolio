@@ -1,5 +1,6 @@
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useContext } from "react";
+import { NavbarContext } from "./Navbar";
 
 interface NavbarItemProps {
   to: string;
@@ -15,6 +16,7 @@ const NavbarItem = ({
   active = false,
 }: NavbarItemProps) => {
   const router = useRouter();
+  const { setNavbar } = useContext(NavbarContext); // get the setNavbar function from context
 
   const handleClick = () => {
     if (isSamePage) {
@@ -30,6 +32,7 @@ const NavbarItem = ({
     } else {
       router.push(to);
     }
+    setNavbar(false); // close the navbar when a button is clicked
   };
 
   const navbarItemStyle = `block lg:inline-block ${

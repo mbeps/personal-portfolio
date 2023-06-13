@@ -1,12 +1,10 @@
 "use client"; // this is a client component
-import React from "react";
-import { useState } from "react";
-import { Link } from "react-scroll/modules";
-import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
-import { IoMdMenu, IoMdClose } from "react-icons/io";
-import ThemeToggle from "./ThemeToggle";
+import { usePathname, useRouter } from "next/navigation";
+import React, { createContext, useState } from "react";
+import { IoMdClose, IoMdMenu } from "react-icons/io";
 import NavbarItem from "./NavbarItem";
+import ThemeToggle from "./ThemeToggle";
 
 interface NavItem {
   label: string;
@@ -31,6 +29,10 @@ const NAV_ITEMS: Array<NavItem> = [
   },
 ];
 
+export const NavbarContext = createContext({
+  setNavbar: (_: boolean) => {},
+});
+
 /**
  * Navbar component shown at the top of the page.
  *
@@ -44,8 +46,9 @@ export default function Navbar() {
   const [navbar, setNavbar] = useState(false);
 
   return (
-    <header
-      className={`
+    <NavbarContext.Provider value={{ setNavbar }}>
+      <header
+        className={`
         w-full mx-auto  
         px-4 
         sm:px-20 
@@ -59,55 +62,62 @@ export default function Navbar() {
         dark:border-stone-600 
         transition-colors duration-700 ease-in-out
   `}
-    >
-      <div className="justify-between md:items-center md:flex">
-        <div>
-          <div className="flex items-center justify-between py-3 md:py-5 md:block">
-            <HomeButton />
-            <div className="md:hidden flex items-center">
-              {/* Dark / Light Mode toggle for mobile */}
-              <ThemeToggle currentTheme={currentTheme} setTheme={setTheme} />
-              {/* Hamburger menu */}
-              <button
-                className="p-2 text-gray-700 rounded-xl outline-none focus:border-gray-400 focus:border ml-2"
-                onClick={() => setNavbar(!navbar)}
-              >
-                {navbar ? <IoMdClose size={30} /> : <IoMdMenu size={30} />}
-              </button>
+      >
+        <div className="justify-between md:items-center md:flex">
+          <div>
+            <div className="flex items-center justify-between py-3 md:py-5 md:block">
+              <HomeButton />
+              <div className="md:hidden flex items-center">
+                {/* Dark / Light Mode toggle for mobile */}
+                <ThemeToggle currentTheme={currentTheme} setTheme={setTheme} />
+                {/* Hamburger menu */}
+                <button
+                  className="p-2 text-gray-700 rounded-xl outline-none focus:border-gray-400 focus:border ml-2"
+                  onClick={() => setNavbar(!navbar)}
+                >
+                  {navbar ? <IoMdClose size={30} /> : <IoMdMenu size={30} />}
+                </button>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div>
-          <div
-            className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
-              navbar ? "block" : "hidden"
-            }`}
-          >
-            <div className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-              {/* Links  */}
-              {NAV_ITEMS.map((item) => {
-                return (
-                  <div
-                    key={item.label}
-                    className="flex justify-center w-full md:w-auto"
-                  >
-                    <NavbarItem to={item.page} active={pathname === item.page}>
-                      {item.label}
-                    </NavbarItem>
-                  </div>
-                );
-              })}
+          <div>
+            <div
+              className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
+                navbar ? "block" : "hidden"
+              }`}
+            >
+              <div className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
+                {/* Links  */}
+                {NAV_ITEMS.map((item) => {
+                  return (
+                    <div
+                      key={item.label}
+                      className="flex justify-center w-full md:w-auto"
+                    >
+                      <NavbarItem
+                        to={item.page}
+                        active={pathname === item.page}
+                      >
+                        {item.label}
+                      </NavbarItem>
+                    </div>
+                  );
+                })}
 
-              {/* Dark / Light Mode toggle for desktop */}
-              <div className="hidden md:block">
-                <ThemeToggle currentTheme={currentTheme} setTheme={setTheme} />
+                {/* Dark / Light Mode toggle for desktop */}
+                <div className="hidden md:block">
+                  <ThemeToggle
+                    currentTheme={currentTheme}
+                    setTheme={setTheme}
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </NavbarContext.Provider>
   );
 }
 
