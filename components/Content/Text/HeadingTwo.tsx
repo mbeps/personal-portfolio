@@ -1,6 +1,6 @@
 import React from "react";
 
-interface TitleProps {
+interface HeadingTwoProps {
   title: string;
 }
 
@@ -10,7 +10,7 @@ interface TitleProps {
  * @param title (string): Title to be displayed for each section
  * @returns (JSX.Element): Title component
  */
-const Title: React.FC<TitleProps> = ({ title }) => {
+const Title: React.FC<HeadingTwoProps> = ({ title }) => {
   return (
     <h1 className="text-center font-bold text-4xl">
       {title}

@@ -1,6 +1,6 @@
 import React from "react";
-import Title from "./Text/Title";
-import SubTitle from "./Text/SubTitle";
+import HeadingTwo from "./Text/HeadingTwo";
+import HeadingThree from "./Text/HeadingThree";
 import Tag from "@/components/Atoms/Tag";
 
 /**
@@ -62,12 +62,12 @@ const AboutSection = () => {
   return (
     <section id="about">
       <div className="my-12 pb-12 md:pt-16 md:pb-48">
-        <Title title="About Me" />
+        <HeadingTwo title="About Me" />
 
         <div className="flex flex-col space-y-10 items-stretch justify-center align-top md:space-x-10 md:space-y-0 md:p-4 md:flex-row md:text-left">
           {/* Left section */}
           <div className="md:w-1/2">
-            <SubTitle subTitle="Get to know me!" />
+            <HeadingThree title="Get to know me!" />
             <p>
               Hello there! I&#39;m Maruf, a{" "}
               <span className="font-bold">software engineer</span> fueled by{" "}
@@ -153,7 +153,7 @@ interface SectionProps {
 
 const Section: React.FC<SectionProps> = ({ title, data, field }) => (
   <>
-    <SubTitle subTitle={title} />
+    <HeadingThree title={title} />
     <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
       {data.map((item, idx) => (
         <Tag key={idx}>{item[field]}</Tag>

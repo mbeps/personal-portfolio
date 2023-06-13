@@ -1,5 +1,5 @@
 import getPostMetadata from "@/actions/getPostMetadata";
-import Title from "@/components/Content/Text/Title";
+import HeadingOne from "@/components/Content/Text/HeadingOne";
 import PostItem from "@/components/Posts/PostItem";
 
 /**
@@ -13,7 +13,7 @@ export default function Posts() {
     <main>
       <section id="posts">
         <div className="my-12 pb-12 md:pt-8 md:pb-48">
-          <Title title="Posts" />
+          <HeadingOne title="Posts" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-14 ">
             {postMetadata ? (
               postMetadata.map((post) => <PostItem key={post.slug} {...post} />)

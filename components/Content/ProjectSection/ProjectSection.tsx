@@ -1,4 +1,4 @@
-import Title from "../Text/Title";
+import HeadingTwo from "../Text/HeadingTwo";
 import ProjectItem from "./ProjectItem";
 import { webdevProjects, machineLearningProjects } from "@/types/projects";
 
@@ -12,7 +12,7 @@ import { webdevProjects, machineLearningProjects } from "@/types/projects";
 const ProjectsSection = () => {
   return (
     <section id="projects">
-      <Title title="Projects" />
+      <HeadingTwo title="Projects" />
 
       <div className="flex flex-col space-y-20 mt-14">
         {webdevProjects.map((project, idx) => (

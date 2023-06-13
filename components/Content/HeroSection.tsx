@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Link } from "react-scroll/modules";
 import { HiArrowDown } from "react-icons/hi";
 import Button from "../Atoms/Button";
+import HeadingOne from "./Text/HeadingOne";
 
 /**+
  * Hero section component shown at the top of the page.
@@ -23,9 +24,7 @@ const HeroSection = () => {
           />
         </div>
         <div className="md:mt-2 md:w-3/5">
-          <h1 className="text-4xl font-bold mt-6 md:mt-0 md:text-7xl">
-            Hi, I&#39;m Maruf!
-          </h1>
+          <HeadingOne title="Hi, I'm Maruf!" />
           <p className="text-lg mt-4 mb-6 md:text-2xl">
             I&#39;m a{" "}
             <span className="font-semibold text-red-500 dark:text-red-700">

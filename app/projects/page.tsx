@@ -1,6 +1,6 @@
 import ProjectItem from "@/components/Content/ProjectSection/ProjectItem";
-import SubTitle from "@/components/Content/Text/SubTitle";
-import Title from "@/components/Content/Text/Title";
+import HeadingOne from "@/components/Content/Text/HeadingOne";
+import HeadingTwo from "@/components/Content/Text/HeadingTwo";
 import Project, {
   webdevProjects,
   machineLearningProjects,
@@ -15,7 +15,7 @@ const ProjectsSection = () => {
   return (
     <section id="projects">
       <div className="my-12 pb-12 md:pt-8 md:pb-48">
-        <Title title="Projects" />
+        <HeadingOne title="Projects" />
         <div className="flex flex-col space-y-20 mt-14">
           <ProjectSection
             title="Main Web Development"
@@ -67,7 +67,7 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({ title, projects }) => {
   return (
     <>
       <div className="border-b border-gray-200 dark:border-neutral-600 pb-20" />
-      <SubTitle subTitle={title} />
+      <HeadingTwo title={title} />
       {projects.map((project, idx) => (
         <div key={idx}>
           <ProjectItem
