@@ -28,15 +28,14 @@ const ProjectsSection = () => {
         ))}
       </div>
 
-      <div className="mt-10">
-        <p className="text-lg">
+      <div className="mt-24 border-t border-gray-200 dark:border-neutral-600">
+        <p className="text-lg mt-5">
           You can find more of my projects and assignments, including those on
-          machine learning, on my GitHub.
+          machine learning.
         </p>
         <a
-          href="https://github.com/stars/mbeps/lists/good"
+          href="/projects"
           className="text-red-500 dark:text-red-800 font-bold hover:underline"
-          target="_blank"
           rel="noopener noreferrer"
         >
           Check them out here!
