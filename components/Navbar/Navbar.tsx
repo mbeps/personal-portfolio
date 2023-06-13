@@ -2,7 +2,7 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-scroll/modules";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { IoMdMenu, IoMdClose } from "react-icons/io";
 import ThemeToggle from "./ThemeToggle";
@@ -39,6 +39,7 @@ const NAV_ITEMS: Array<NavItem> = [
 export default function Navbar() {
   const { systemTheme, theme, setTheme } = useTheme();
   const currentTheme = theme === "system" ? systemTheme : theme;
+  const router = useRouter();
   const pathname = usePathname();
   const [navbar, setNavbar] = useState(false);
 
@@ -62,11 +63,7 @@ export default function Navbar() {
       <div className="justify-between md:items-center md:flex">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
-            <Link to="home">
-              <div className="container flex items-center space-x-2 cursor-pointer">
-                <h2 className="text-2xl font-bold">Maruf Bepary</h2>
-              </div>
-            </Link>
+            <HomeButton />
             <div className="md:hidden flex items-center">
               {/* Dark / Light Mode toggle for mobile */}
               <ThemeToggle currentTheme={currentTheme} setTheme={setTheme} />
@@ -113,3 +110,29 @@ export default function Navbar() {
     </header>
   );
 }
+
+const HomeButton: React.FC = () => {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const navigateHome = () => {
+    const homeElement = document.getElementById("home");
+    if (pathname === "/" && homeElement) {
+      window.scrollTo({
+        top: homeElement.offsetTop,
+        behavior: "smooth",
+      });
+    } else {
+      router.push("/");
+    }
+  };
+
+  return (
+    <div
+      onClick={navigateHome}
+      className="container flex items-center space-x-2 cursor-pointer"
+    >
+      <h2 className="text-2xl font-bold">Maruf Bepary</h2>
+    </div>
+  );
+};
