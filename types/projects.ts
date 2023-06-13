@@ -109,4 +109,24 @@ const machineLearningProjects: Project[] = [
   },
 ];
 
-export { webdevProjects, machineLearningProjects, extraWebDevProjects };
+/**
+ * Array of game projects.
+ * This is used to populate the projects page.
+ * @type {Project[]}
+ */
+const gameProjects: Project[] = [
+  {
+    name: "Osmos Game",
+    description:
+      "This is a simple game created using SimpleGUI for a group project in my first year of university. This required us to rely on the documentation as there was no tutorials or guides on how to use the library.",
+    imageURL: "/projects/osmos-game.png",
+    repoURL: "https://github.com/mbeps/Osmos_Game",
+  },
+];
+
+export {
+  webdevProjects,
+  machineLearningProjects,
+  extraWebDevProjects,
+  gameProjects,
+};
