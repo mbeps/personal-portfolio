@@ -4,8 +4,8 @@ import { useState } from "react";
 import { Link } from "react-scroll/modules";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
-import { RiMoonFill, RiSunLine } from "react-icons/ri";
 import { IoMdMenu, IoMdClose } from "react-icons/io";
+import ThemeToggle from "./ThemeToggle";
 
 interface NavItem {
   label: string;
@@ -69,27 +69,7 @@ export default function Navbar() {
             </Link>
             <div className="md:hidden flex items-center">
               {/* Dark / Light Mode toggle for mobile */}
-              {currentTheme === "dark" ? (
-                <button
-                  onClick={() => setTheme("light")}
-                  className="bg-neutral-700 p-2 rounded-xl hover:bg-neutral-100 transition-colors duration-300 mr-2 hover:text-black"
-                >
-                  <RiSunLine
-                    size={25}
-                    className="text-white hover:text-black transition-colors duration-300"
-                  />
-                </button>
-              ) : (
-                <button
-                  onClick={() => setTheme("dark")}
-                  className="bg-slate-100 p-2 rounded-xl hover:bg-slate-700 transition-colors duration-300 mr-2"
-                >
-                  <RiMoonFill
-                    size={25}
-                    className="text-black hover:text-white transition-colors duration-300"
-                  />
-                </button>
-              )}
+              <ThemeToggle currentTheme={currentTheme} setTheme={setTheme} />
               {/* Hamburger menu */}
               <button
                 className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
@@ -150,27 +130,7 @@ export default function Navbar() {
 
               {/* Dark / Light Mode toggle for desktop */}
               <div className="hidden md:block">
-                {currentTheme === "dark" ? (
-                  <button
-                    onClick={() => setTheme("light")}
-                    className="bg-neutral-700 p-2 rounded-xl hover:bg-red-900 transition-colors duration-300 hover:text-black"
-                  >
-                    <RiSunLine
-                      size={25}
-                      className="text-white transition-colors duration-300"
-                    />
-                  </button>
-                ) : (
-                  <button
-                    onClick={() => setTheme("dark")}
-                    className="bg-slate-100 p-2 rounded-xl hover:bg-red-300 transition-colors duration-300"
-                  >
-                    <RiMoonFill
-                      size={25}
-                      className="text-black  transition-colors duration-300"
-                    />
-                  </button>
-                )}
+                <ThemeToggle currentTheme={currentTheme} setTheme={setTheme} />
               </div>
             </div>
           </div>
