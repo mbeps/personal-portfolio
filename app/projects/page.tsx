@@ -57,6 +57,12 @@ interface ProjectSectionProps {
   projects: Project[];
 }
 
+/**
+ * Displays a list of projects with a title for the section.
+ * @param title (string): title of the project section
+ * @param projects (Project[]): list of projects to be displayed
+ * @returns (JSX.Element): project section (title and list of projects
+ */
 const ProjectSection: React.FC<ProjectSectionProps> = ({ title, projects }) => {
   return (
     <>

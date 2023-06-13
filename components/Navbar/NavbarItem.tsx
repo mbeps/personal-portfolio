@@ -9,6 +9,17 @@ interface NavbarItemProps {
   active?: boolean;
 }
 
+/**
+ * A button to be displayed on the navbar.
+ * This button can redirect to a different page or scroll to an element on the same page.
+ * It also highlights the current page by making the button bold.
+ *
+ * @param to (string) The path to navigate to
+ * @param children (React.ReactNode) The content of the navbar item
+ * @param isSamePage (boolean) Whether the path is on the same page
+ * @param active (boolean) Whether the navbar item is active
+ * @returns (JSX.Element): a navbar item to be displayed on the navbar
+ */
 const NavbarItem = ({
   to,
   children,

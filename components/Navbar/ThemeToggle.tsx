@@ -7,6 +7,12 @@ interface ThemeToggleProps {
   setTheme: (theme: string) => void;
 }
 
+/**
+ * A button to toggle the theme (dark or light).
+ * @param currentTheme (string | undefined) The current theme
+ * @param setTheme (function) The function to set the theme
+ * @returns (JSX.Element): a button to toggle the theme (dark or light)
+ */
 const ThemeToggle: React.FC<ThemeToggleProps> = ({
   currentTheme,
   setTheme,
