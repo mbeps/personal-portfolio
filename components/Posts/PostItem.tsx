@@ -37,7 +37,7 @@ const PostItem: React.FC<PostMetadata> = (props) => {
         </h2>
         <p
           className="
-        text-neutral-700 dark:text-neutral-200"
+        text-neutral-700 dark:text-neutral-300"
         >
           {props.subtitle}
         </p>
