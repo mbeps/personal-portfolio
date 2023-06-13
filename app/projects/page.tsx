@@ -5,6 +5,7 @@ import Project, {
   webdevProjects,
   machineLearningProjects,
   extraWebDevProjects,
+  gameProjects,
 } from "@/types/projects";
 
 /**
@@ -29,6 +30,7 @@ const ProjectsSection = () => {
             title="Machine Learning"
             projects={machineLearningProjects}
           />
+          <ProjectSection title="Game Development" projects={gameProjects} />
         </div>
 
         <div className="mt-24 border-t border-gray-200 dark:border-neutral-600">
@@ -44,6 +46,7 @@ const ProjectsSection = () => {
           >
             Check them out here!
           </a>
+          GP
         </div>
       </div>
     </section>
