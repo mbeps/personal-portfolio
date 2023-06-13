@@ -1,26 +1,26 @@
 ---
 title: "REST VS GraphQL APIs"
 subtitle: "A comprehensive comparison between REST and GraphQL APIs"
-date: "2023-05-07"
+date: "07-05-2023"
 ---
 
 - [**Introduction to REST and GraphQL**](#introduction-to-rest-and-graphql)
-	- [**What is REST?**](#what-is-rest)
-	- [**What is GraphQL?**](#what-is-graphql)
+  - [**What is REST?**](#what-is-rest)
+  - [**What is GraphQL?**](#what-is-graphql)
 - [**Over-fetching and Under-fetching with REST**](#over-fetching-and-under-fetching-with-rest)
-	- [**Over-fetching with REST**](#over-fetching-with-rest)
-	- [**Under-fetching with REST**](#under-fetching-with-rest)
+  - [**Over-fetching with REST**](#over-fetching-with-rest)
+  - [**Under-fetching with REST**](#under-fetching-with-rest)
 - [**How GraphQL Addresses REST's Shortcomings**](#how-graphql-addresses-rests-shortcomings)
-	- [**No Over-fetching or Under-fetching with GraphQL**](#no-over-fetching-or-under-fetching-with-graphql)
-	- [**Efficient**](#efficient)
+  - [**No Over-fetching or Under-fetching with GraphQL**](#no-over-fetching-or-under-fetching-with-graphql)
+  - [**Efficient**](#efficient)
 - [**When to Choose REST over GraphQL?**](#when-to-choose-rest-over-graphql)
-	- [**Simplicity**](#simplicity)
-	- [**Widespread Usage and Support**](#widespread-usage-and-support)
-	- [**Caching**](#caching)
-	- [**Stateless Servers**](#stateless-servers)
+  - [**Simplicity**](#simplicity)
+  - [**Widespread Usage and Support**](#widespread-usage-and-support)
+  - [**Caching**](#caching)
+  - [**Stateless Servers**](#stateless-servers)
 - [**When GraphQL Might Not Be the Best Option**](#when-graphql-might-not-be-the-best-option)
-	- [**Overkill for Simple APIs**](#overkill-for-simple-apis)
-	- [**Learning Curve and Tooling**](#learning-curve-and-tooling)
+  - [**Overkill for Simple APIs**](#overkill-for-simple-apis)
+  - [**Learning Curve and Tooling**](#learning-curve-and-tooling)
 - [**Conclusion**](#conclusion)
 - [**Sources**](#sources)
 
