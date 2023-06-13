@@ -149,6 +149,16 @@ interface SectionProps {
   field: string;
 }
 
+/**
+ * Displays a list of items (skills, languages, technologies) with a title for the section.
+ * Each section is separated by a heading.
+ * Skills, languages and technologies are displayed as tags.
+ *
+ * @param title (string): title of the section
+ * @param data (DataItem[]): list of items to be displayed
+ * @param field (string): field of the item to be displayed
+ * @returns (JSX.Element): section (title and list of items
+ */
 const Section: React.FC<SectionProps> = ({ title, data, field }) => (
   <>
     <HeadingThree title={title} />
