@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import { Link } from "react-scroll/modules";
 import { HiArrowDown } from "react-icons/hi";
+import Button from "../Atoms/Button";
 
 /**+
  * Hero section component shown at the top of the page.
@@ -33,17 +34,10 @@ const HeroSection = () => {
             based in London, UK. Working towards creating software that makes
             life easier and more meaningful.
           </p>
-          <Link
-            to="projects"
-            className="text-neutral-100 font-semibold px-6 py-3 bg-red-500 rounded-lg shadow cursor-pointer hover:bg-red-400 dark:bg-red-800 hover:dark:bg-red-950 transition-colors duration-500"
-            activeClass="active"
-            spy={true}
-            smooth={true}
-            offset={-100}
-            duration={500}
-          >
+
+          <Button to="projects" variant="filled" isSamePage>
             Projects
-          </Link>
+          </Button>
         </div>
       </div>
       <div className="flex flex-row items-center text-center justify-center ">
