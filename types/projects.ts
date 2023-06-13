@@ -5,8 +5,9 @@ export default interface Project {
   name: string;
   description: string;
   imageURL?: string;
-  repoURL: string;
+  repoURL?: string;
   siteURL?: string;
+  articleURL?: string;
 }
 
 /**

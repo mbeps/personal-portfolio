@@ -2,6 +2,7 @@
 
 import React from "react";
 import { BsGithub, BsArrowUpRightSquare } from "react-icons/bs";
+import { IoReaderOutline } from "react-icons/io5";
 import Image from "next/image";
 import Link from "next/link";
 import SlideUp from "./Slideup";
@@ -29,6 +30,7 @@ const ProjectItem: React.FC<Project> = ({
   imageURL,
   repoURL,
   siteURL,
+  articleURL,
 }) => {
   const router = useRouter();
 
@@ -60,16 +62,26 @@ const ProjectItem: React.FC<Project> = ({
               {description}
             </p>
             <div className="flex flex-row align-bottom space-x-4">
-              <Link href={repoURL} target="_blank">
-                <BsGithub
-                  size={30}
-                  className="hover:-translate-y-1 transition-transform cursor-pointer"
-                />
-              </Link>
+              {repoURL && (
+                <Link href={repoURL} target="_blank">
+                  <BsGithub
+                    size={30}
+                    className="hover:-translate-y-1 transition-transform cursor-pointer"
+                  />
+                </Link>
+              )}
               {siteURL && (
                 <Link href={siteURL} target="_blank">
                   <BsArrowUpRightSquare
                     size={30}
+                    className="hover:-translate-y-1 transition-transform cursor-pointer"
+                  />
+                </Link>
+              )}
+              {articleURL && (
+                <Link href={articleURL} target="_blank">
+                  <IoReaderOutline
+                    size={32}
                     className="hover:-translate-y-1 transition-transform cursor-pointer"
                   />
                 </Link>
