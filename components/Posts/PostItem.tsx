@@ -12,6 +12,8 @@ const PostItem: React.FC<PostMetadata> = (props) => {
     <Link href={`/posts/${props.slug}`}>
       <div
         className="
+        flex flex-col 
+        h-full 
         border 
         cursor-pointer
         border-slate-300 dark:border-neutral-600
