@@ -2,6 +2,7 @@
 
 import React from "react";
 import { BsGithub, BsArrowUpRightSquare } from "react-icons/bs";
+import { IoReaderOutline } from "react-icons/io5";
 import Image from "next/image";
 import Link from "next/link";
 import SlideUp from "./Slideup";
@@ -19,7 +20,7 @@ import Project from "@/types/projects";
  * @param name (string): Name of the project
  * @param description (string): Description of the project
  * @param imageURL (string): URL of the image of the project
- * @param projectURL (string): URL of the GitHub repository of the project
+ * @param repoURL (string): URL of the GitHub repository of the project
  * @param siteURL (string): URL of the live site of the project
  * @returns (JSX.Element): Project item component
  */
@@ -27,8 +28,9 @@ const ProjectItem: React.FC<Project> = ({
   name,
   description,
   imageURL,
-  projectURL,
+  repoURL,
   siteURL,
+  articleURL,
 }) => {
   const router = useRouter();
 
@@ -40,7 +42,7 @@ const ProjectItem: React.FC<Project> = ({
 
   return (
     <SlideUp offset="-300px 0px -300px 0px">
-      <div className="bg-neutral-100 dark:bg-stone-950 p-4 rounded-xl sm:bg-transparent sm:dark:bg-transparent sm:p-0 transition-colors duration-500 ease-in-out">
+      <div className="bg-neutral-100 dark:bg-stone-950 p-4 rounded-xl sm:bg-white sm:dark:bg-stone-900 sm:p-0 transition-colors duration-700 ">
         <div className="flex flex-col animate-slideUpCubiBezier animation-delay-2 md:flex-row md:space-x-12">
           {imageURL && (
             <div className="md:w-1/2">
@@ -55,21 +57,31 @@ const ProjectItem: React.FC<Project> = ({
             </div>
           )}
           <div className={`mt-8 ${imageURL ? "md:w-1/2" : "md:w-full"}`}>
-            <h1 className="text-4xl font-bold mb-6">{name}</h1>
-            <p className="text-xl leading-7 mb-4 text-neutral-600 dark:text-neutral-400">
+            <h1 className="text-4xl font-bold mb-6 text-left">{name}</h1>
+            <p className="text-xl text-left leading-7 mb-4 text-neutral-600 dark:text-neutral-400">
               {description}
             </p>
             <div className="flex flex-row align-bottom space-x-4">
-              <Link href={projectURL} target="_blank">
-                <BsGithub
-                  size={30}
-                  className="hover:-translate-y-1 transition-transform cursor-pointer"
-                />
-              </Link>
+              {repoURL && (
+                <Link href={repoURL} target="_blank">
+                  <BsGithub
+                    size={30}
+                    className="hover:-translate-y-1 transition-transform cursor-pointer"
+                  />
+                </Link>
+              )}
               {siteURL && (
                 <Link href={siteURL} target="_blank">
                   <BsArrowUpRightSquare
                     size={30}
+                    className="hover:-translate-y-1 transition-transform cursor-pointer"
+                  />
+                </Link>
+              )}
+              {articleURL && (
+                <Link href={articleURL} target="_blank">
+                  <IoReaderOutline
+                    size={32}
                     className="hover:-translate-y-1 transition-transform cursor-pointer"
                   />
                 </Link>

@@ -6,5 +6,5 @@ Images that are used here are stored in `/public/images`
 ---
 title: ""
 subtitle: ""
-date: "YYYY-MM-DD"
+date: "DD-MM-YYYY"
 ---

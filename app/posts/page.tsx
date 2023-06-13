@@ -1,5 +1,5 @@
 import getPostMetadata from "@/actions/getPostMetadata";
-import Title from "@/components/Content/Text/Title";
+import HeadingOne from "@/components/Content/Text/HeadingOne";
 import PostItem from "@/components/Posts/PostItem";
 
 /**
@@ -12,15 +12,17 @@ export default function Posts() {
   return (
     <main>
       <section id="posts">
-        <Title title="Posts" />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-20">
-          {postMetadata ? (
-            postMetadata.map((post) => <PostItem key={post.slug} {...post} />)
-          ) : (
-            <div className="flex items-center justify-center h-screen">
-              <h2 className="text-2xl font-bold">No posts</h2>
-            </div>
-          )}
+        <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2">
+          <HeadingOne title="Posts" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-14 ">
+            {postMetadata ? (
+              postMetadata.map((post) => <PostItem key={post.slug} {...post} />)
+            ) : (
+              <div className="flex items-center justify-center h-screen">
+                <h2 className="text-2xl font-bold">No posts</h2>
+              </div>
+            )}
+          </div>
         </div>
       </section>
     </main>

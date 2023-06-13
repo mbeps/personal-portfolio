@@ -2,7 +2,7 @@ import fs from "fs";
 import Markdown from "markdown-to-jsx";
 import matter from "gray-matter";
 import getPostMetadata from "@/actions/getPostMetadata";
-import Title from "@/components/Content/Text/Title";
+import HeadingTwo from "@/components/Content/Text/HeadingTwo";
 
 /**
  * Gets the content of a post.
@@ -40,7 +40,7 @@ const PostPage = (props: any) => {
   return (
     <div>
       <div className="my-12 text-center">
-        <Title title={post.data.title} />
+        <HeadingTwo title={post.data.title} />
         <p className="text-slate-400 mt-2">{post.data.date}</p>
       </div>
 

@@ -1,6 +1,7 @@
 import React from "react";
-import Title from "./Text/Title";
-import SubTitle from "./Text/SubTitle";
+import HeadingTwo from "./Text/HeadingTwo";
+import HeadingThree from "./Text/HeadingThree";
+import Tag from "@/components/Atoms/Tag";
 
 /**
  * List of skills that will be displayed in the About section.
@@ -61,12 +62,17 @@ const AboutSection = () => {
   return (
     <section id="about">
       <div className="my-12 pb-12 md:pt-16 md:pb-48">
-        <Title title="About Me" />
+        <h1 className="text-center font-bold text-4xl">
+          About Me
+          <hr className="w-6 h-1 mx-auto my-4 bg-red-500 border-0 rounded"></hr>
+        </h1>
 
         <div className="flex flex-col space-y-10 items-stretch justify-center align-top md:space-x-10 md:space-y-0 md:p-4 md:flex-row md:text-left">
           {/* Left section */}
           <div className="md:w-1/2">
-            <SubTitle subTitle="Get to know me!" />
+            <h1 className="text-center text-2xl font-bold mb-6 mt-6 md:text-left">
+              Get to know me!
+            </h1>
             <p>
               Hello there! I&#39;m Maruf, a{" "}
               <span className="font-bold">software engineer</span> fueled by{" "}
@@ -74,10 +80,8 @@ const AboutSection = () => {
                 curiosity, innovation, and an insatiable desire to explore the
                 depths of technology
               </span>
-              . London, the city of rain, fish and chips, the iconic Big Ben,
-              and technology, has been my home base for the past few years.
-              Here, at the esteemed Royal Holloway University, I&#39;ve embarked
-              on an intellectual odyssey to pursue my BS in Computer Science.
+              . Currently, I am pursuing my BS in Computer Science at Royal
+              Holloway University, London.
             </p>
             <br />
             <p>
@@ -90,37 +94,32 @@ const AboutSection = () => {
             </p>
             <br />
             <p>
-              But don&#39;t be fooled, my technical interest doesn&#39;t stop at
-              full-stack development. My fascination for understanding the
-              &quot;why&quot; behind the &quot;what&quot; led me to{" "}
-              <span className="font-bold">Machine Learning</span>. To further
-              satiate my curiosity, I&#39;m currently digging deeper into the
-              advanced layers of Machine Learning, adding a valuable layer to my
-              skill set.
+              My technical interest extends beyond full-stack development to{" "}
+              <span className="font-bold">Machine Learning</span>. To further my
+              knowledge, I&#39;m currently delving into advanced Machine
+              Learning techniques.
             </p>
             <br />
             <p>
-              In the same vein, my passion for{" "}
+              Additionally, my passion for{" "}
               <span className="font-bold">efficiency</span> and streamlining
-              operations has kindled my interest in{" "}
-              <span className="font-bold">DevOps</span>. As I engage with the
-              principles of continuous integration, testing, deployment and
-              monitoring through Udemy, I find myself increasingly intrigued by
-              the interplay of development and operations.
+              operations has drawn me to{" "}
+              <span className="font-bold">DevOps</span>. I&#39;m currently
+              engaging with the principles of continuous integration, testing,
+              deployment, and monitoring through Udemy.
             </p>
             <br />
             <p>
-              Away from the computer screen, I find myself diving into a
-              multitude of hobbies that bring balance to my life. Whether
-              it&#39;s showing off my skills in football and badminton,
-              immersing myself in science-based literature, or packing a bag to
-              discover a new city, I believe in{" "}
+              When I step away from the computer, I engage in a multitude of
+              hobbies. From football and badminton to immersing myself in
+              science-based literature and traveling, I believe in{" "}
               <span className="font-bold">
                 seizing the day and living life to the fullest
               </span>
               .
             </p>
           </div>
+
           {/* Right section */}
           <div className="text-center md:w-1/2 md:text-left">
             <Section title="Languages" data={languages} field="language" />
@@ -150,17 +149,22 @@ interface SectionProps {
   field: string;
 }
 
+/**
+ * Displays a list of items (skills, languages, technologies) with a title for the section.
+ * Each section is separated by a heading.
+ * Skills, languages and technologies are displayed as tags.
+ *
+ * @param title (string): title of the section
+ * @param data (DataItem[]): list of items to be displayed
+ * @param field (string): field of the item to be displayed
+ * @returns (JSX.Element): section (title and list of items
+ */
 const Section: React.FC<SectionProps> = ({ title, data, field }) => (
   <>
-    <SubTitle subTitle={title} />
+    <HeadingThree title={title} />
     <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
       {data.map((item, idx) => (
-        <p
-          key={idx}
-          className="bg-gray-200 dark:bg-red-950 px-4 py-2 mr-2 mt-2 text-gray-500 dark:text-gray-300 rounded-lg font-semibold transition-colors duration-700 ease-in-out"
-        >
-          {item[field]}
-        </p>
+        <Tag key={idx}>{item[field]}</Tag>
       ))}
     </div>
   </>

@@ -1,4 +1,4 @@
-import Title from "../Text/Title";
+import HeadingTwo from "../Text/HeadingTwo";
 import ProjectItem from "./ProjectItem";
 import { webdevProjects, machineLearningProjects } from "@/types/projects";
 
@@ -12,7 +12,7 @@ import { webdevProjects, machineLearningProjects } from "@/types/projects";
 const ProjectsSection = () => {
   return (
     <section id="projects">
-      <Title title="Projects" />
+      <HeadingTwo title="Projects" />
 
       <div className="flex flex-col space-y-20 mt-14">
         {webdevProjects.map((project, idx) => (
@@ -21,22 +21,21 @@ const ProjectsSection = () => {
               name={project.name}
               description={project.description}
               imageURL={project.imageURL}
-              projectURL={project.projectURL}
+              repoURL={project.repoURL}
               siteURL={project.siteURL}
             />
           </div>
         ))}
       </div>
 
-      <div className="mt-10">
-        <p className="text-lg">
+      <div className="mt-24 border-t border-gray-200 dark:border-neutral-600">
+        <p className="text-lg mt-5">
           You can find more of my projects and assignments, including those on
-          machine learning, on my GitHub.
+          machine learning.
         </p>
         <a
-          href="https://github.com/stars/mbeps/lists/good"
+          href="/projects"
           className="text-red-500 dark:text-red-800 font-bold hover:underline"
-          target="_blank"
           rel="noopener noreferrer"
         >
           Check them out here!
