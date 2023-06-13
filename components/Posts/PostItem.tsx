@@ -14,9 +14,7 @@ const PostItem: React.FC<PostMetadata> = (props) => {
         className="
         flex flex-col 
         h-full 
-        border 
         cursor-pointer
-        border-slate-300 dark:border-neutral-600
         bg-neutral-100 dark:bg-stone-800
         hover:bg-neutral-200 dark:hover:bg-red-950
         p-4 
