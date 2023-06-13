@@ -14,7 +14,7 @@ import Project, {
 const ProjectsSection = () => {
   return (
     <section id="projects">
-      <div className="my-12 pb-12 md:pt-8 md:pb-48">
+      <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2">
         <HeadingOne title="Projects" />
         <div className="flex flex-col space-y-20 mt-14">
           <ProjectSection

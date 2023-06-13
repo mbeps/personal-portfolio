@@ -12,7 +12,7 @@ export default function Posts() {
   return (
     <main>
       <section id="posts">
-        <div className="my-12 pb-12 md:pt-8 md:pb-48">
+        <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2">
           <HeadingOne title="Posts" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-14 ">
             {postMetadata ? (
