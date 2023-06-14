@@ -1,7 +1,7 @@
 "use client"; // this is a client component
 import { useTheme } from "next-themes";
 import { usePathname, useRouter } from "next/navigation";
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { IoMdClose, IoMdMenu } from "react-icons/io";
 import NavbarItem from "./NavbarItem";
 import ThemeToggle from "./ThemeToggle";
@@ -39,9 +39,6 @@ export const NavbarContext = createContext({
  * @returns (JSX.Element): Navbar component
  */
 export default function Navbar() {
-  const { systemTheme, theme, setTheme } = useTheme();
-  const currentTheme = theme === "system" ? systemTheme : theme;
-  const router = useRouter();
   const pathname = usePathname();
   const [navbar, setNavbar] = useState(false);
 
@@ -69,7 +66,7 @@ export default function Navbar() {
               <HomeButton />
               <div className="md:hidden flex items-center">
                 {/* Dark / Light Mode toggle for mobile */}
-                <ThemeToggle currentTheme={currentTheme} setTheme={setTheme} />
+                <ThemeToggle />
                 {/* Hamburger menu */}
                 <button
                   className="p-2 
@@ -110,10 +107,7 @@ export default function Navbar() {
 
                 {/* Dark / Light Mode toggle for desktop */}
                 <div className="hidden md:block">
-                  <ThemeToggle
-                    currentTheme={currentTheme}
-                    setTheme={setTheme}
-                  />
+                  <ThemeToggle />
                 </div>
               </div>
             </div>
