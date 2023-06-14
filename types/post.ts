@@ -3,4 +3,5 @@ export interface PostMetadata {
   date: string;
   subtitle: string;
   slug: string;
+  display?: "true" | "false";
 }

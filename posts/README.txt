@@ -7,4 +7,5 @@ Images that are used here are stored in `/public/images`
 title: ""
 subtitle: ""
 date: "DD-MM-YYYY"
+display: "true" | "false"
 ---
