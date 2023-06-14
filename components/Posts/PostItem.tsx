@@ -20,7 +20,7 @@ const PostItem: React.FC<PostMetadata> = (props) => {
         p-4 
         rounded-xl 
         shadow-md hover:shadow-sm
-        transition-colors duration-700"
+        transition-colors duration-500"
       >
         <p
           className="
