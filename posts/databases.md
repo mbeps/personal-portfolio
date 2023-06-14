@@ -17,6 +17,7 @@ date: "15-05-2023"
   - [**Why Non-Relational Databases are Used**](#why-non-relational-databases-are-used)
   - [**Advantages of Non-Relational Databases**](#advantages-of-non-relational-databases)
   - [**Disadvantages of Non-Relational Databases**](#disadvantages-of-non-relational-databases)
+- [**Conclusion**](#conclusion)
 - [**Sources**](#sources)
 
 
@@ -136,6 +137,16 @@ Despite their many advantages, non-relational databases also have some limitatio
 - **Lack of Standardization:** Since NoSQL databases are relatively new and diverse, they lack the standardization seen in SQL databases. This can make tasks like data transfer and integration more complex.
 
 - **Limited Support for ACID Properties:** ACID (Atomicity, Consistency, Isolation, Durability) properties ensure that data remains consistent and reliable in the face of failures. Non-relational databases often trade off full ACID compliance for performance and scalability, which may not be suitable for applications requiring high data consistency.
+
+# **Conclusion**
+
+In today's digital world, databases are an indispensable part of any technological solution, playing a critical role in how we store, retrieve, and manage data. Within the realm of software engineering and web development, choosing the right type of database - relational or non-relational - is a pivotal decision that can greatly affect the performance, scalability, and flexibility of applications.
+
+Relational databases, with their tabular structure and strict schemas, offer a high degree of data integrity and consistency. They are particularly well-suited to situations where relationships among data entities need to be efficiently represented and where the data structure doesn't change frequently. However, their rigidity and challenges with large-scale horizontal scalability can be limiting in some scenarios.
+
+On the other hand, non-relational databases bring forth a model of flexibility, high performance, and excellent scalability. Their ability to handle a wide array of data types and structures make them a go-to choice for applications dealing with large volumes of diverse, rapidly-changing data. But a lack of standardization and limited support for ACID properties can sometimes compromise data consistency and interoperability.
+
+Understanding the key differences, advantages, and disadvantages of these database systems is crucial for making an informed choice that best suits the needs of your application. Remember, there's no one-size-fits-all solution - the best database for your application depends on the specific requirements of your use case. Whether it's the strict consistency and structure of SQL, or the scalability and flexibility of NoSQL, each has its place in the diverse and ever-evolving landscape of software engineering and web development.
 
 # **Sources** 
 
