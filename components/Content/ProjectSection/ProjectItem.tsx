@@ -48,6 +48,7 @@ const ProjectItem: React.FC<Project> = ({
             <div className="md:w-1/2">
               <Image
                 src={imageURL}
+                key={imageURL}
                 alt=""
                 width={1000}
                 height={1000}
