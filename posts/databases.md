@@ -1,6 +1,6 @@
 ---
-title: "Databases"
-subtitle: "An introduction and comparison between relational and nonrelational databases. "
+title: "Exploring Databases: A Comparative Study of Relational and Non-Relational Models"
+subtitle: "An In-depth Analysis of Database Systems and their Role in Software Engineering and Web Development"
 date: "15-05-2023"
 ---
 
