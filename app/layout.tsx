@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import "./globals.css";
 import { ThemeProvider, useTheme } from "next-themes";
 import Footer from "@/components/Footer/Footer";
+import { useEffect } from "react";
 
 /**
  * Layout component which applies to all pages.
@@ -19,8 +20,17 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { systemTheme, theme } = useTheme();
+  const { systemTheme, theme, setTheme } = useTheme();
   const currentTheme = theme === "system" ? systemTheme : theme;
+
+  // Automatically set website theme to match system theme
+  useEffect(() => {
+    const defaultTheme = window.matchMedia("(prefers-color-scheme: dark)")
+      .matches
+      ? "dark"
+      : "light";
+    setTheme(defaultTheme);
+  }, [setTheme]);
 
   return (
     <html lang="en" className={currentTheme === "dark" ? "dark" : ""}>
@@ -35,7 +45,7 @@ export default function RootLayout({
         <ThemeProvider enableSystem={true} attribute="class">
           <Navbar />
           <div className="pt-24" />
-          <div className="mx-auto max-w-3xl px-4 sm:px-6 md:max-w-5xl">
+          <div className="mx-auto max-w-3xl px-4 sm:px-6 md:max-w-5xl animate-fadeIn animation-delay-2">
             {children}
           </div>
           <Footer />
