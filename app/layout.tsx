@@ -45,7 +45,7 @@ export default function RootLayout({
         <ThemeProvider enableSystem={true} attribute="class">
           <Navbar />
           <div className="pt-24" />
-          <div className="mx-auto max-w-3xl px-4 sm:px-6 md:max-w-5xl">
+          <div className="mx-auto max-w-3xl px-4 sm:px-6 md:max-w-5xl animate-fadeIn animation-delay-2">
             {children}
           </div>
           <Footer />
