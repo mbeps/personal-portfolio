@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import "./globals.css";
 import { ThemeProvider, useTheme } from "next-themes";
 import Footer from "@/components/Footer/Footer";
+import { useEffect } from "react";
 
 /**
  * Layout component which applies to all pages.
@@ -19,8 +20,17 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { systemTheme, theme } = useTheme();
+  const { systemTheme, theme, setTheme } = useTheme();
   const currentTheme = theme === "system" ? systemTheme : theme;
+
+  // Automatically set website theme to match system theme
+  useEffect(() => {
+    const defaultTheme = window.matchMedia("(prefers-color-scheme: dark)")
+      .matches
+      ? "dark"
+      : "light";
+    setTheme(defaultTheme);
+  }, [setTheme]);
 
   return (
     <html lang="en" className={currentTheme === "dark" ? "dark" : ""}>
