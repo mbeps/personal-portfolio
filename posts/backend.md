@@ -30,6 +30,7 @@ date: "25-05-2023"
 	- [**Advantages of BaaS**](#advantages-of-baas)
 	- [**Disadvantages of BaaS**](#disadvantages-of-baas)
 - [**Conclusion**](#conclusion)
+- [**Sources**](#sources)
 
 
 
@@ -212,3 +213,28 @@ The choice between a custom backend and BaaS depends on various factors, includi
 In all cases, backend security is paramount. The potential consequences of inadequate security measures can be devastating, ranging from data breaches to significant financial losses and damage to the company's reputation.
 
 In conclusion, the backend forms a critical part of any application or service. Whether you choose to build a custom backend or opt for a BaaS, careful consideration must be given to the architecture, scalability, cost, security, and the specific needs of your application.
+
+# **Sources**
+
+- **Section 1: What is a Backend in Software Engineering and Web Development**
+    - [MDN Web Docs: Server-side web APIs](https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Web_server_overview)
+    - [IBM Cloud: What is a backend developer?](https://www.ibm.com/cloud/blog/new-builders/what-is-a-backend-developer)
+    
+- **Section 2: Why are Backends Important**
+    - [Geekflare: Importance of Backend Web Development](https://geekflare.com/importance-of-backend-web-development/)
+    - [Codica: The Role of a Server in Web Development](https://www.codica.com/blog/the-role-of-a-server-in-web-development/)
+    
+- **Section 3: Key Components of the Backend**
+    - [MDN Web Docs: Express/Node introduction](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Introduction)
+    - [Oracle: Overview of Middleware](https://www.oracle.com/middleware/technologies/what-is-middleware.html)
+    
+- **Section 4: Custom Backends**
+    - [Toptal: Building a Custom Backend for Your Frontend App](https://www.toptal.com/nodejs/secure-rest-api-in-nodejs)
+    - [Spring Boot Documentation](https://spring.io/projects/spring-boot)
+    - [Django Documentation](https://www.djangoproject.com/)
+    
+- **Section 5: Backend as a Service (BaaS)**
+    - [Firebase Official Documentation](https://firebase.google.com/)
+    - [AWS Amplify Official Documentation](https://aws.amazon.com/amplify/)
+    - [Supabase: The Open Source Firebase Alternative](https://supabase.io/)
+    - [Medium: Understanding Backend as a Service (BaaS)](https://medium.com/@kentan/understanding-backend-as-a-service-baas-c86971b16c4c) 
