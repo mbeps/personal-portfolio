@@ -46,7 +46,6 @@ const ProjectsSection = () => {
           >
             Check them out here!
           </a>
-          GP
         </div>
       </div>
     </section>
