@@ -24,7 +24,6 @@ const getPostMetadata = (): PostMetadata[] => {
       display: matterResult.data.display,
     };
   });
-  // .filter((post) => post.display !== "false");
 
   return posts;
 };
