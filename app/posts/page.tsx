@@ -7,7 +7,12 @@ import PostItem from "@/components/Posts/PostItem";
  * @returns (JSX.Element): page with all posts
  */
 export default function Posts() {
-  const postMetadata = getPostMetadata();
+  let postMetadata = getPostMetadata();
+
+  // Filter posts where display is 'true' or undefined
+  postMetadata = postMetadata.filter(
+    (post) => post.display === "true" || post.display === undefined
+  );
 
   return (
     <main>
@@ -15,7 +20,7 @@ export default function Posts() {
         <div className="my-12 pb-12 md:pt-8 md:pb-48">
           <HeadingOne title="Posts" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-14 ">
-            {postMetadata ? (
+            {postMetadata.length > 0 ? (
               postMetadata.map((post) => <PostItem key={post.slug} {...post} />)
             ) : (
               <div className="flex items-center justify-center h-screen">
