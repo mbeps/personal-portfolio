@@ -64,7 +64,7 @@ const ProjectItem: React.FC<Project> = ({
             </p>
             <div className="flex flex-row align-bottom space-x-4">
               {repoURL && (
-                <Link href={repoURL} target="_blank">
+                <Link href={repoURL} target="_blank" title="Repository">
                   <BsGithub
                     size={30}
                     className="hover:-translate-y-1 transition-transform cursor-pointer"
@@ -72,7 +72,7 @@ const ProjectItem: React.FC<Project> = ({
                 </Link>
               )}
               {siteURL && (
-                <Link href={siteURL} target="_blank">
+                <Link href={siteURL} target="_blank" title="Website">
                   <BsArrowUpRightSquare
                     size={30}
                     className="hover:-translate-y-1 transition-transform cursor-pointer"
@@ -80,7 +80,7 @@ const ProjectItem: React.FC<Project> = ({
                 </Link>
               )}
               {articleURL && (
-                <Link href={articleURL} target="_blank">
+                <Link href={articleURL} target="_blank" title="Report">
                   <IoReaderOutline
                     size={32}
                     className="hover:-translate-y-1 transition-transform cursor-pointer"

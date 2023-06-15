@@ -21,14 +21,17 @@ const Footer = () => {
         </div>
         <div className="flex flex-row items-center justify-center space-x-2 mb-1">
           <SocialIcon
+            title="GitHub"
             link="https://github.com/mbeps"
             IconComponent={AiOutlineGithub}
           />
           <SocialIcon
+            title="Twitter"
             link="https://twitter.com/m_beps"
             IconComponent={AiOutlineTwitter}
           />
           <SocialIcon
+            title="Email"
             link="bepary71@gmail.com"
             IconComponent={AiOutlineMail}
             isEmail
