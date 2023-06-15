@@ -68,7 +68,7 @@ interface ProjectSectionProps {
 const ProjectSection: React.FC<ProjectSectionProps> = ({ title, projects }) => {
   return (
     <>
-      <div className="border-b border-gray-200 dark:border-neutral-600 pb-20" />
+      <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
       <HeadingTwo title={title} />
       {projects.map((project, idx) => (
         <div key={idx}>
