@@ -17,16 +17,21 @@ export default function Posts() {
   return (
     <main>
       <section id="posts">
-        <div className="my-12 pb-12 md:pt-8 md:pb-48">
+        <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2">
           <HeadingOne title="Posts" />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-14 ">
-            {postMetadata.length > 0 ? (
-              postMetadata.map((post) => <PostItem key={post.slug} {...post} />)
-            ) : (
-              <div className="flex items-center justify-center h-screen">
-                <h2 className="text-2xl font-bold">No posts</h2>
-              </div>
-            )}
+          <div className="border-b border-gray-200 dark:border-neutral-600 mt-16" />
+          <div className="my-12 pb-12 md:pt-2 md:pb-36">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-14 ">
+              {postMetadata.length > 0 ? (
+                postMetadata.map((post) => (
+                  <PostItem key={post.slug} {...post} />
+                ))
+              ) : (
+                <div className="flex items-center justify-center h-screen">
+                  <h2 className="text-2xl font-bold">No posts</h2>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </section>
