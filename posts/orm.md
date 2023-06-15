@@ -5,18 +5,18 @@ date: "29-05-2023"
 ---
 
 - [**Detailed Overview of Object-Relational Mapping (ORM)**](#detailed-overview-of-object-relational-mapping-orm)
-	- [**Defining ORM: A Deep Dive**](#defining-orm-a-deep-dive)
-	- [**Advantages of Using ORMs Over Raw SQL**](#advantages-of-using-orms-over-raw-sql)
-	- [**ORMs Design Patterns: ActiveRecord and DataMapper**](#orms-design-patterns-activerecord-and-datamapper)
-		- [**ActiveRecord**](#activerecord)
-		- [**DataMapper**](#datamapper)
-	- [**The Role of ORMs in Software Development**](#the-role-of-orms-in-software-development)
-	- [**Choosing an ORM: Factors to Consider**](#choosing-an-orm-factors-to-consider)
-	- [**Examples of ORMs**](#examples-of-orms)
-	- [**Evaluating the Advantages and Disadvantages of ORMs**](#evaluating-the-advantages-and-disadvantages-of-orms)
-		- [**Advantages of ORMs**](#advantages-of-orms)
-		- [**Disadvantages of ORMs**](#disadvantages-of-orms)
-	- [**Conclusion**](#conclusion)
+  - [**Defining ORM: A Deep Dive**](#defining-orm-a-deep-dive)
+  - [**Advantages of Using ORMs Over Raw SQL**](#advantages-of-using-orms-over-raw-sql)
+  - [**ORMs Design Patterns: ActiveRecord and DataMapper**](#orms-design-patterns-activerecord-and-datamapper)
+    - [**ActiveRecord**](#activerecord)
+    - [**DataMapper**](#datamapper)
+  - [**The Role of ORMs in Software Development**](#the-role-of-orms-in-software-development)
+  - [**Choosing an ORM: Factors to Consider**](#choosing-an-orm-factors-to-consider)
+  - [**Examples of ORMs**](#examples-of-orms)
+  - [**Evaluating the Advantages and Disadvantages of ORMs**](#evaluating-the-advantages-and-disadvantages-of-orms)
+    - [**Advantages of ORMs**](#advantages-of-orms)
+    - [**Disadvantages of ORMs**](#disadvantages-of-orms)
+  - [**Conclusion**](#conclusion)
 - [**Sources**](#sources)
 
 
@@ -60,9 +60,7 @@ Choosing whether to use an ORM, and which one to use, depends on several factors
 
 - **Programming Language**: The programming language of your application will dictate which ORMs are available to you.
 - **Query Complexity**: For complex, custom queries, a raw SQL might be more effective or easier to optimize. However, for regular CRUD operations, ORMs can significantly simplify the process.
-- **Application Scale**: For larger applications, an ORM's features, such as caching, schema migration
-
-, and CRUD operations, could be invaluable.
+- **Application Scale**: For larger applications, an ORM's features, such as caching, schema migration, and CRUD operations, could be invaluable.
 - **Team Expertise**: If your team is already familiar with a specific ORM, it might be more beneficial to use that one, even if it's not the most powerful or flexible.
 
 ## **Examples of ORMs**
