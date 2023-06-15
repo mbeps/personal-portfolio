@@ -23,6 +23,7 @@ const ProjectsSection = () => {
               imageURL={project.imageURL}
               repoURL={project.repoURL}
               siteURL={project.siteURL}
+              articleURL={project.articleURL}
             />
           </div>
         ))}
