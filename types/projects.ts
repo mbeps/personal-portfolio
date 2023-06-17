@@ -19,7 +19,7 @@ const webdevProjects: Project[] = [
   {
     name: "Circus Discussions",
     description:
-      "A social media discussion platform that enables users to engage with each other in a variety of ways. This is built using Firebase, Next.JS, and Chakra UI.",
+      "A social media discussion platform for engaging user interactions. Built with Firebase, Next.JS, and Chakra UI as a final year project for university.",
     imageURL: "/projects/circus-discussions-fyp.png",
     repoURL: "https://github.com/mbeps/next_discussion_platform",
     siteURL: "https://circus-discussion.vercel.app/",
