@@ -35,7 +35,7 @@ cd personal-portfolio
 
 Then, install the project dependencies by running:
 ```sh
-npm install
+yarn install
 ```
 
 ## 4. **Run the Application**
@@ -43,7 +43,7 @@ npm install
 Once you've set up your environment variables, you can run the application using the following command:
 
 ```sh
-npm run dev
+yarn dev
 ```
 
 The application should now be running at http://localhost:3000.

@@ -1,3 +1,6 @@
+/**
+ * Represents a post.
+ */
 export interface PostMetadata {
   title: string;
   date: string;
