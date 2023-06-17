@@ -17,6 +17,9 @@ date: "15-05-2023"
   - [**Why Non-Relational Databases are Used**](#why-non-relational-databases-are-used)
   - [**Advantages of Non-Relational Databases**](#advantages-of-non-relational-databases)
   - [**Disadvantages of Non-Relational Databases**](#disadvantages-of-non-relational-databases)
+- [**Leveraging the Power of Both: Combining Relational and Non-Relational Databases**](#leveraging-the-power-of-both-combining-relational-and-non-relational-databases)
+  - [**What is Polyglot Persistence?**](#what-is-polyglot-persistence)
+  - [**Why Would You Combine Both?**](#why-would-you-combine-both)
 - [**Conclusion**](#conclusion)
 - [**Sources**](#sources)
 
@@ -138,15 +141,29 @@ Despite their many advantages, non-relational databases also have some limitatio
 
 - **Limited Support for ACID Properties:** ACID (Atomicity, Consistency, Isolation, Durability) properties ensure that data remains consistent and reliable in the face of failures. Non-relational databases often trade off full ACID compliance for performance and scalability, which may not be suitable for applications requiring high data consistency.
 
+# **Leveraging the Power of Both: Combining Relational and Non-Relational Databases**
+
+While relational and non-relational databases have their unique sets of advantages and disadvantages, it's not always a matter of choosing one over the other. In fact, an emerging trend in the database world is to leverage the strengths of both in a single application. This is commonly known as Polyglot Persistence.
+
+## **What is Polyglot Persistence?**
+
+Polyglot Persistence is the concept of using different types of databases within the same application to cater to specific needs. For instance, a relational database like MySQL could be used for handling structured data and transactions, while a non-relational database like MongoDB might be used for handling unstructured data or caching.
+
+## **Why Would You Combine Both?**
+
+The primary advantage of using both relational and non-relational databases lies in leveraging the strengths of both types, while mitigating their respective weaknesses. Each type of database is designed to handle specific data structures and workloads. By using them together, an application can effectively manage diverse types of data and varied access patterns.
+
+For example, an e-commerce website could use a relational database to store structured information like customer details, product information, and order history, benefiting from the robust data integrity and consistency that relational databases offer. At the same time, it could use a non-relational database to store and quickly retrieve user session data or recommendations, leveraging the flexibility and speed of NoSQL databases.
+
+Another common use case is caching. Non-relational databases like Redis are highly efficient for caching data because of their high-performance key-value stores. They can be used to cache frequently accessed data from a relational database, reducing the load on the relational database and improving the overall performance of the application.
+
 # **Conclusion**
 
-In today's digital world, databases are an indispensable part of any technological solution, playing a critical role in how we store, retrieve, and manage data. Within the realm of software engineering and web development, choosing the right type of database - relational or non-relational - is a pivotal decision that can greatly affect the performance, scalability, and flexibility of applications.
+Databases, both relational and non-relational, are integral components in software engineering and web development. They serve as powerful tools for storing, retrieving, and managing data, each offering their unique advantages and posing certain limitations.
 
-Relational databases, with their tabular structure and strict schemas, offer a high degree of data integrity and consistency. They are particularly well-suited to situations where relationships among data entities need to be efficiently represented and where the data structure doesn't change frequently. However, their rigidity and challenges with large-scale horizontal scalability can be limiting in some scenarios.
+Relational databases bring forth strong data integrity, consistency, and efficient representation of relationships, although they may pose challenges with flexibility and large-scale horizontal scalability. Non-relational databases, conversely, offer a flexible, scalable solution ideal for handling diverse, rapidly-changing data, albeit with potential compromises on standardization and some aspects of data consistency.
 
-On the other hand, non-relational databases bring forth a model of flexibility, high performance, and excellent scalability. Their ability to handle a wide array of data types and structures make them a go-to choice for applications dealing with large volumes of diverse, rapidly-changing data. But a lack of standardization and limited support for ACID properties can sometimes compromise data consistency and interoperability.
-
-Understanding the key differences, advantages, and disadvantages of these database systems is crucial for making an informed choice that best suits the needs of your application. Remember, there's no one-size-fits-all solution - the best database for your application depends on the specific requirements of your use case. Whether it's the strict consistency and structure of SQL, or the scalability and flexibility of NoSQL, each has its place in the diverse and ever-evolving landscape of software engineering and web development.
+The choice between these database systems should be driven by the specific needs of your application, as neither offers a one-size-fits-all solution. The key is understanding their unique strengths and leveraging them accordingly. Moreover, it's possible to combine these databases, adopting a polyglot persistence approach, to optimally leverage the strengths of both types, enhancing the robustness, scalability, and performance of applications.
 
 # **Sources** 
 
@@ -161,5 +178,12 @@ Understanding the key differences, advantages, and disadvantages of these databa
 - **Non-Relational Databases, Examples, Advantages, and Disadvantages**
     - [Wikipedia: NoSQL](https://en.wikipedia.org/wiki/NoSQL)
     - [Dataversity: NoSQL Databases: Advantages and Disadvantages](https://www.dataversity.net/nosql-databases-advantages-and-disadvantages/)
-    
-This categorization groups the sources based on the section where the information was used, and also includes clickable links for each source title.
+- **Polyglot Persistence and Database Combinations**
+    - [Martin Fowler: PolyglotPersistence](https://martinfowler.com/bliki/PolyglotPersistence.html)
+    - [Amazon Web Services: Choose the Right Database for Your Workload](https://aws.amazon.com/blogs/database/choosing-the-right-database-for-your-workload/)
+    - [IBM Developer: Understanding polyglot persistence](https://developer.ibm.com/articles/cl-polyglot-persistence/)
+  
+- **Use Cases and Examples**
+    - [DZone: Polyglot Persistence: Choosing the Right SQL, NoSQL, NewSQL Database](https://dzone.com/articles/polyglot-persistence-choosing-the-right-sql-nosql)
+    - [Redis Labs: Database Caching Strategies Using Redis](https://redislabs.com/ebook/part-3-next-steps/chapter-11-scripting-redis-with-lua/11-1-caching/)
+  

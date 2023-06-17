@@ -74,10 +74,12 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({ title, projects }) => {
         <div key={idx}>
           <ProjectItem
             name={project.name}
+            key={project.imageURL}
             description={project.description}
             imageURL={project.imageURL}
             repoURL={project.repoURL}
             siteURL={project.siteURL}
+            articleURL={project.articleURL}
           />
         </div>
       ))}
