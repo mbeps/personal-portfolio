@@ -26,20 +26,21 @@ const webdevProjects: Project[] = [
     articleURL: "/posts/circus-discussion-reflection",
   },
   {
-    name: "Drumroll Music",
-    description:
-      "A simple music streaming site where users can upload and listen to music. This is built using Supabase, Next.JS, and Tailwind CSS.",
-    imageURL: "/projects/drumroll-music.png",
-    repoURL: "https://github.com/mbeps/drumroll-music",
-    siteURL: "",
-  },
-  {
     name: "Ringmaster Messaging",
     description:
       "A simple messaging app to allow users to chat with other users or in group chats. This was for learning custom back-ends and was built using Next.JS, NextAuth, MongoDB, Pusher, and Tailwind CSS.",
     imageURL: "/projects/ringmaster-messaging.png",
     repoURL: "https://github.com/mbeps/ringmaster-messaging",
     siteURL: "https://ringmaster-messaging.vercel.app/",
+    articleURL: "/posts/ringmaster-messaging-reflection",
+  },
+  {
+    name: "Drumroll Music",
+    description:
+      "A simple music streaming site where users can upload and listen to music. This is built using Supabase, Next.JS, and Tailwind CSS.",
+    imageURL: "/projects/drumroll-music.png",
+    repoURL: "https://github.com/mbeps/drumroll-music",
+    siteURL: "",
   },
 ];
 
