@@ -39,7 +39,7 @@ const webdevProjects: Project[] = [
       "A simple messaging app to allow users to chat with other users or in group chats. This was for learning custom back-ends and was built using Next.JS, NextAuth, MongoDB, Pusher, and Tailwind CSS.",
     imageURL: "/projects/ringmaster-messaging.png",
     repoURL: "https://github.com/mbeps/ringmaster-messaging",
-    siteURL: "",
+    siteURL: "https://ringmaster-messaging.vercel.app/",
   },
 ];
 
