@@ -6,6 +6,7 @@ import Project, {
   machineLearningProjects,
   extraWebDevProjects,
   gameProjects,
+  javaAssignments,
 } from "@/types/projects";
 
 /**
@@ -31,6 +32,7 @@ const ProjectsSection = () => {
             projects={machineLearningProjects}
           />
           <ProjectSection title="Game Development" projects={gameProjects} />
+          <ProjectSection title="Java Assignments" projects={javaAssignments} />
         </div>
 
         <div className="mt-24 border-t border-gray-200 dark:border-neutral-600">
