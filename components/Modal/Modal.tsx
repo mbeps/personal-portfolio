@@ -17,7 +17,6 @@ interface ModalProps {
  * @param param0 : ModalProps
  * @returns (JSX.Element): base modal component
  */
-
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   return (
     <Transition.Root show={isOpen} as={Fragment}>
@@ -83,7 +82,6 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
                   sm:w-full 
                   sm:max-w-lg 
                   sm:p-6
-                  
                 "
               >
                 <div
@@ -91,16 +89,17 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
                     absolute 
                     right-0 
                     top-0 
-                    hidden 
+                    w-full
                     pr-4 
                     pt-4 
-                    sm:block
+                    block
                     z-10
                   "
                 >
                   <button
                     type="button"
                     className="
+                      float-right
                       rounded-lg 
                       bg-white dark:bg-stone-900 
                       hover:bg-gray-100 dark:hover:bg-stone-800
@@ -113,10 +112,10 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
                     onClick={onClose}
                   >
                     <span className="sr-only">Close</span>
-                    <IoClose className="h-6 w-6" aria-hidden="true" />
+                    <IoClose className="h-7 w-7" aria-hidden="true" />
                   </button>
                 </div>
-                {children}
+                <div className="py-8">{children}</div>
               </Dialog.Panel>
             </Transition.Child>
           </div>
