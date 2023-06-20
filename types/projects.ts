@@ -8,6 +8,8 @@ export default interface Project {
   repoURL?: string;
   siteURL?: string;
   articleURL?: string;
+  programmingLanguage: string;
+  technologies?: string[];
 }
 
 /**
@@ -24,6 +26,15 @@ const webdevProjects: Project[] = [
     repoURL: `https://github.com/mbeps/next_discussion_platform`,
     siteURL: `https://circus-discussion.vercel.app/`,
     articleURL: `/posts/circus-discussion-reflection`,
+    programmingLanguage: `TypeScript`,
+    technologies: [
+      `Firebase`,
+      `Next.JS`,
+      `Chakra UI`,
+      `Recoil`,
+      "React",
+      "Docker",
+    ],
   },
   {
     name: `Ringmaster Messaging`,
@@ -33,6 +44,20 @@ const webdevProjects: Project[] = [
     repoURL: `https://github.com/mbeps/ringmaster-messaging`,
     siteURL: `https://ringmaster-messaging.vercel.app/`,
     articleURL: `/posts/ringmaster-messaging-reflection`,
+    programmingLanguage: `TypeScript`,
+    technologies: [
+      "Next.JS",
+      "NextAuth",
+      "MongoDB",
+      "Pusher",
+      "Prisma",
+      "Cloudinary",
+      "Tailwind CSS",
+      "Headless UI",
+      "Zustand",
+      "React",
+      "Docker",
+    ],
   },
   {
     name: `Drumroll Music`,
@@ -40,7 +65,15 @@ const webdevProjects: Project[] = [
       This is built using Supabase, Next.JS, and Tailwind CSS.`,
     imageURL: `/projects/drumroll-music.png`,
     repoURL: `https://github.com/mbeps/drumroll-music`,
-    siteURL: ``,
+    programmingLanguage: `TypeScript`,
+    technologies: [
+      `Supabase`,
+      "PostgreSQL",
+      `Next.JS`,
+      `Tailwind CSS`,
+      "Zustand",
+      "React",
+    ],
   },
 ];
 
@@ -57,6 +90,8 @@ const extraWebDevProjects: Project[] = [
       This was the foundation to using Supabase in other projects.`,
     imageURL: `/projects/sideshow-articles.png`,
     repoURL: `https://github.com/mbeps/sideshow-articles`,
+    programmingLanguage: `TypeScript`,
+    technologies: [`Supabase`, "PostgreSQL", `Next.JS`, `Next UI`, "React"],
   },
   {
     name: `Noodle`,
@@ -64,6 +99,8 @@ const extraWebDevProjects: Project[] = [
       This was my first introduction to full stack development. `,
     imageURL: `/projects/noodle.png`,
     repoURL: `https://github.com/ixahmedxi/noodle`,
+    programmingLanguage: `TypeScript`,
+    technologies: [`Next.JS`, `Tailwind CSS`, "React", "tRPC", "Storybook"],
   },
   {
     name: `ConvoGPT`,
@@ -72,6 +109,15 @@ const extraWebDevProjects: Project[] = [
       This is built using Supabase (Vector Pg), Next.JS, and Tailwind CSS. This is a work in progress.`,
     imageURL: `/projects/convo-gpt.png`,
     repoURL: `https://github.com/mbeps/convo-gpt`,
+    programmingLanguage: `TypeScript`,
+    technologies: [
+      `Supabase`,
+      "PostgreSQL",
+      `Next.JS`,
+      `Tailwind CSS`,
+      "React",
+      "Jotai",
+    ],
   },
   {
     name: `Python Flask Forum Backend`,
@@ -79,6 +125,8 @@ const extraWebDevProjects: Project[] = [
       This was created to learn how to create a custom backend using Python and Flask. 
       This is built using Python, Flask, and MySQL.`,
     repoURL: `https://github.com/mbeps/Forum-Discussion-Flask-Backend`,
+    programmingLanguage: `Python`,
+    technologies: [`Flask`, "MySQL", "SQLAlchemy", "REST API"],
   },
 ];
 
@@ -93,17 +141,23 @@ const machineLearningProjects: Project[] = [
     description: `Be able to implement machine-learning algorithms, using the Nearest Neighbours algorithm as an example. 
       Have an understanding of ways to apply the ideas and algorithms of machine learning in science and technology.`,
     repoURL: `https://github.com/mbeps/Machine-Learning-Assignment-1`,
+    programmingLanguage: `Python`,
+    technologies: [`NumPy`, `Matplotlib`],
   },
   {
     name: `Assignment 2`,
     description: `Be able to use and implement machine-learning algorithms, with the Lasso and inductive conformal prediction algorithms as examples. Have an understanding of ways to apply the ideas and algorithms of machine learning in industry and medicine.`,
     repoURL: `https://github.com/mbeps/Machine-Learning-Assignment-2`,
+    programmingLanguage: `Python`,
+    technologies: [`NumPy`, `Matplotlib`],
   },
   {
     name: `Assignment 3`,
     description: `Be able to use and implement machine-learning algorithms, with the SVM, neural networks, and cross-conformal prediction algorithms as examples. 
       Have an understanding of ways to apply the ideas and algorithms of machine learning in industry.`,
     repoURL: `https://github.com/mbeps/Machine-Learning-Assignment-3`,
+    programmingLanguage: `Python`,
+    technologies: [`NumPy`, `Matplotlib`],
   },
   {
     name: `Lab Questions`,
@@ -111,6 +165,8 @@ const machineLearningProjects: Project[] = [
       such as Nearest Neighbours, conformal prediction, linear regression, Ridge Regression, Lasso, data preprocessing, parameter selection, 
       kernels, neural networks, support vector machines, scikit-learn pipelines, and cross-conformal predictors.`,
     repoURL: `https://github.com/mbeps/Machine-Learning-Labs-Questions`,
+    programmingLanguage: `Python`,
+    technologies: [`NumPy`, `Matplotlib`],
   },
 ];
 
@@ -126,6 +182,8 @@ const gameProjects: Project[] = [
       This required us to rely on the documentation as there was no tutorials or guides on how to use the library.`,
     imageURL: `/projects/osmos-game.png`,
     repoURL: `https://github.com/mbeps/Osmos_Game`,
+    programmingLanguage: `Python`,
+    technologies: [`SimpleGUI`],
   },
 ];
 
@@ -140,28 +198,34 @@ const javaAssignments: Project[] = [
     description: `Simple calculator app built using Java as a Maven project. 
       This was to learn about software design patterns and life cycles.`,
     repoURL: `https://github.com/mbeps/Calculator-Assignment`,
+    programmingLanguage: `Java`,
+    technologies: [`Maven`, "JUnit"],
   },
   {
     name: `Botanic-Garden-Planner`,
     description: `Simple botanic garden planner app built using Java.
       This was in first year to learn about Java and object oriented programming.`,
     repoURL: `https://github.com/mbeps/Botanic-Garden-Planner`,
+    programmingLanguage: `Java`,
   },
   {
     name: "Track & Trace",
     description: `Simple app to track Covid cases. 
       This was in first year to learn about Java and object oriented programming.`,
     repoURL: `https://github.com/mbeps/Track_and_Trace`,
+    programmingLanguage: `Java`,
   },
   {
     name: `Hollomon`,
     description: `This was in first year to learn about Java and object oriented programming.`,
     repoURL: `https://github.com/mbeps/Hollomon`,
+    programmingLanguage: `Java`,
   },
   {
     name: `Database Mini Project`,
     description: `Learning to interact with a database using Java.`,
     repoURL: `https://github.com/mbeps/DatabasesMiniProject`,
+    programmingLanguage: `Java`,
   },
 ];
 

@@ -31,6 +31,8 @@ const ProjectItem: React.FC<Project> = ({
   repoURL,
   siteURL,
   articleURL,
+  programmingLanguage,
+  technologies,
 }) => {
   const router = useRouter();
 
