@@ -1,13 +1,16 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { BsGithub, BsArrowUpRightSquare } from "react-icons/bs";
-import { IoReaderOutline } from "react-icons/io5";
+import { IoInformationCircleOutline, IoReaderOutline } from "react-icons/io5";
 import Image from "next/image";
 import Link from "next/link";
 import SlideUp from "./Slideup";
 import { useRouter } from "next/navigation";
 import Project from "@/types/projects";
+import { AiOutlineInfoCircle } from "react-icons/ai";
+import Modal from "@/components/Modal/Modal";
+import ProjectModal from "@/components/Modal/ProjectModal";
 
 /**
  * Card which displays a projects.
@@ -35,11 +38,16 @@ const ProjectItem: React.FC<Project> = ({
   technologies,
 }) => {
   const router = useRouter();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleClick = () => {
     if (siteURL) {
       router.push(siteURL);
     }
+  };
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
   };
 
   return (
@@ -84,11 +92,28 @@ const ProjectItem: React.FC<Project> = ({
               {articleURL && (
                 <Link href={articleURL} target="_blank" title="Report">
                   <IoReaderOutline
-                    size={32}
-                    className="hover:-translate-y-1 transition-transform cursor-pointer"
+                    size={34}
+                    className="-translate-y-0.5 hover:-translate-y-1.5 transition-transform cursor-pointer"
                   />
                 </Link>
               )}
+              <div className="flex flex-row align-bottom space-x-4">
+                {programmingLanguage && (
+                  <button
+                    className="-translate-y-0.5 hover:-translate-y-1.5 transition-transform cursor-pointer"
+                    onClick={toggleModal}
+                    title="Project Stack"
+                  >
+                    <IoInformationCircleOutline size={35} />
+                  </button>
+                )}
+                <ProjectModal
+                  isOpen={isModalOpen}
+                  onClose={toggleModal}
+                  projectLanguage={programmingLanguage}
+                  technologies={technologies}
+                />
+              </div>
             </div>
           </div>
         </div>
