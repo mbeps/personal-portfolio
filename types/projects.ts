@@ -171,11 +171,11 @@ const machineLearningProjects: Project[] = [
 ];
 
 /**
- * Array of game projects.
+ * Array of other projects.
  * This is used to populate the projects page.
  * @type {Project[]}
  */
-const gameProjects: Project[] = [
+const otherProjects: Project[] = [
   {
     name: `Osmos Game`,
     description: `This is a simple game created using SimpleGUI for a group project in my first year of university. 
@@ -184,6 +184,13 @@ const gameProjects: Project[] = [
     repoURL: `https://github.com/mbeps/Osmos_Game`,
     programmingLanguage: `Python`,
     technologies: [`SimpleGUI`],
+  },
+  {
+    name: `Automated Setup`,
+    description: `A shell script which automates the setup of a new Linux machine.
+      This is specifically for my Fedora install.`,
+    repoURL: `https://github.com/mbeps/AutomatedSetup`,
+    programmingLanguage: `Shell`,
   },
 ];
 
@@ -233,6 +240,6 @@ export {
   webdevProjects,
   machineLearningProjects,
   extraWebDevProjects,
-  gameProjects,
+  otherProjects,
   javaAssignments,
 };
