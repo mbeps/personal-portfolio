@@ -24,6 +24,8 @@ const ProjectsSection = () => {
               repoURL={project.repoURL}
               siteURL={project.siteURL}
               articleURL={project.articleURL}
+              programmingLanguage={project.programmingLanguage}
+              technologies={project.technologies}
             />
           </div>
         ))}
