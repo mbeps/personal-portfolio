@@ -115,7 +115,7 @@ const extraWebDevProjects: Project[] = [
     name: `ConvoGPT`,
     description: `This is a simple client for using the OpenAI API locally. 
       This was created to learn how to use the OpenAI API and to create a simple client for it. 
-      This is built using Supabase (Vector Pg), Next.JS, and Tailwind CSS. This is a work in progress.`,
+      This is built using Supabase (PgVector), Next.JS, and Tailwind CSS. This is a work in progress.`,
     imageURL: `/projects/convo-gpt.png`,
     repoURL: `https://github.com/mbeps/convo-gpt`,
     programmingLanguage: `TypeScript`,
@@ -242,6 +242,7 @@ const javaAssignments: Project[] = [
     description: `Learning to interact with a database using Java.`,
     repoURL: `https://github.com/mbeps/DatabasesMiniProject`,
     programmingLanguage: `Java`,
+    technologies: [`PostgreSQL`],
   },
 ];
 
