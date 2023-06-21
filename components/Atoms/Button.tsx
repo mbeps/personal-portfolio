@@ -4,7 +4,7 @@ import React from "react";
 type ButtonVariant = "filled" | "outlined" | "ghost";
 
 interface ButtonProps {
-  to: string | (() => void);
+  action: string | (() => void);
   variant: ButtonVariant;
   children: React.ReactNode;
   isSamePage?: boolean;
@@ -24,7 +24,12 @@ interface ButtonProps {
  * @param isSamePage (boolean) Whether the button is on the same page or not
  * @returns (JSX.Element): a button
  */
-const Button = ({ to, variant, children, isSamePage = false }: ButtonProps) => {
+const Button = ({
+  action,
+  variant,
+  children,
+  isSamePage = false,
+}: ButtonProps) => {
   const router = useRouter();
 
   /**
@@ -33,12 +38,12 @@ const Button = ({ to, variant, children, isSamePage = false }: ButtonProps) => {
    * If the button is on a different page, it navigates to the path specified in the "to" prop.
    */
   const handleClick = () => {
-    if (typeof to === "function") {
+    if (typeof action === "function") {
       // if to is a function, execute it
-      to();
+      action();
     } else if (isSamePage) {
       // if to is a string, scroll to the element with the id specified
-      const element = document.getElementById(to as string);
+      const element = document.getElementById(action as string);
       if (element) {
         window.scrollTo({
           top: element.offsetTop,
@@ -47,7 +52,7 @@ const Button = ({ to, variant, children, isSamePage = false }: ButtonProps) => {
       }
     } else {
       // if to is a string, navigate to the specified path
-      router.push(to as string);
+      router.push(action as string);
     }
   };
 

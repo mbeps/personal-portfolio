@@ -27,14 +27,14 @@ const MoreProjectsModal: React.FC<MoreProjectsModalProps> = ({
       </p>
       <div className="flex flex-wrap flex-col justify-start z-10 mt-5 space-x-2">
         <Button
-          to="https://github.com/stars/mbeps/lists/leetcode"
+          action="https://github.com/stars/mbeps/lists/leetcode"
           variant="ghost"
           isSamePage={false}
         >
           LeetCode Projects
         </Button>
         <Button
-          to="https://github.com/stars/mbeps/lists/university"
+          action="https://github.com/stars/mbeps/lists/university"
           variant="ghost"
           isSamePage={false}
         >
