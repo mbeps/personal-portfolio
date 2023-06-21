@@ -102,7 +102,7 @@ const ProjectItem: React.FC<Project> = ({
                     onClick={toggleModal}
                     title="Project Stack"
                   >
-                    <IoInformationCircleOutline size={35} />
+                    <IoInformationCircleOutline size={36} />
                   </button>
                 )}
                 <ProjectModal
