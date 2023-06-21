@@ -4,7 +4,7 @@ import React from "react";
 type ButtonVariant = "filled" | "outlined" | "ghost";
 
 interface ButtonProps {
-  to: string;
+  to: string | (() => void);
   variant: ButtonVariant;
   children: React.ReactNode;
   isSamePage?: boolean;
@@ -18,7 +18,7 @@ interface ButtonProps {
  * - ghost: a button with no background color and no border
  * This button can redirect to a different page or scroll to an element on the same page.
  *
- * @param to (string) The path to navigate to
+ * @param to (string | (() => void)) The path to navigate to or a function to execute
  * @param variant (ButtonVariant) The variant of the button
  * @param children (React.ReactNode) The content of the button
  * @param isSamePage (boolean) Whether the button is on the same page or not
@@ -33,9 +33,12 @@ const Button = ({ to, variant, children, isSamePage = false }: ButtonProps) => {
    * If the button is on a different page, it navigates to the path specified in the "to" prop.
    */
   const handleClick = () => {
-    if (isSamePage) {
-      // Using window.scrollTo to scroll to the element
-      const element = document.getElementById(to);
+    if (typeof to === "function") {
+      // if to is a function, execute it
+      to();
+    } else if (isSamePage) {
+      // if to is a string, scroll to the element with the id specified
+      const element = document.getElementById(to as string);
       if (element) {
         window.scrollTo({
           top: element.offsetTop,
@@ -43,7 +46,8 @@ const Button = ({ to, variant, children, isSamePage = false }: ButtonProps) => {
         });
       }
     } else {
-      router.push(to);
+      // if to is a string, navigate to the specified path
+      router.push(to as string);
     }
   };
 
