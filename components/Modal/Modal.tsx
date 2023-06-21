@@ -34,10 +34,10 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
             className="
               fixed 
               inset-0 
-              bg-neutral-500 
-              bg-opacity-75 
+              bg-neutral-300 dark:bg-neutral-700
+              bg-opacity-90 dark:bg-opacity-90
               transition-opacity
-              backdrop-blur-md
+              backdrop-blur-md dark:backdrop-blur-md
             "
           />
         </Transition.Child>
