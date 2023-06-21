@@ -48,7 +48,7 @@ const NavbarItem = ({
 
   const navbarItemStyle = `block lg:inline-block ${
     active ? "font-bold" : "font-normal"
-  } text-neutral-900 dark:text-neutral-100 cursor-pointer transition-all hover:font-bold duration-300 hover:bg-gray-200 dark:hover:bg-red-950 dark:hover:text-neutral-200 rounded-lg px-4 py-3 m-2 w-full md:w-24 text-center`;
+  } text-neutral-900 dark:text-neutral-100 cursor-pointer transition-all hover:font-bold duration-300 hover:bg-gray-200 dark:hover:bg-red-950 dark:hover:text-neutral-200 rounded-xl px-4 py-3 m-2 w-full md:w-24 text-center`;
 
   return (
     <button onClick={handleClick} className={navbarItemStyle}>

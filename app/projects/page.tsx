@@ -1,18 +1,34 @@
+"use client";
+
+import Button from "@/components/Atoms/Button";
 import ProjectItem from "@/components/Content/ProjectSection/ProjectItem";
 import HeadingOne from "@/components/Content/Text/HeadingOne";
 import HeadingTwo from "@/components/Content/Text/HeadingTwo";
+import MoreProjectsModal from "@/components/Modal/MoreProjectsModal";
 import Project, {
   webdevProjects,
   machineLearningProjects,
   extraWebDevProjects,
-  gameProjects,
+  otherProjects,
+  javaAssignments,
 } from "@/types/projects";
+import { useState } from "react";
 
 /**
  * Projects page displaying multiple types of projects that I worked on.
  * @returns (JSX.Element): Projects page
  */
 const ProjectsSection = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <section id="projects">
       <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2">
@@ -30,23 +46,17 @@ const ProjectsSection = () => {
             title="Machine Learning"
             projects={machineLearningProjects}
           />
-          <ProjectSection title="Game Development" projects={gameProjects} />
+          <ProjectSection title="Java Assignments" projects={javaAssignments} />
+          <ProjectSection title="Other Projects" projects={otherProjects} />
         </div>
 
-        <div className="mt-24 border-t border-gray-200 dark:border-neutral-600">
-          <p className="text-lg mt-5">
-            You can find more of my projects and assignments, including those on
-            machine learning, on my GitHub.
-          </p>
-          <a
-            href="https://github.com/mbeps?tab=repositories"
-            className="text-red-500 dark:text-red-800 font-bold hover:underline"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Check them out here!
-          </a>
+        <div className="flex justify-center mt-10">
+          <Button variant="outlined" action={handleOpenModal}>
+            View More Projects
+          </Button>
         </div>
+
+        <MoreProjectsModal isOpen={isModalOpen} onClose={handleCloseModal} />
       </div>
     </section>
   );
@@ -80,6 +90,8 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({ title, projects }) => {
             repoURL={project.repoURL}
             siteURL={project.siteURL}
             articleURL={project.articleURL}
+            programmingLanguage={project.programmingLanguage}
+            technologies={project.technologies}
           />
         </div>
       ))}
