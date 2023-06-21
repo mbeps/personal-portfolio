@@ -25,7 +25,7 @@ const MoreProjectsModal: React.FC<MoreProjectsModalProps> = ({
       <p className="mt-5 text-lg text-center">
         These are links to other collections of projects:
       </p>
-      <div className="flex flex-wrap flex-col justify-start z-10 mt-5 space-x-2">
+      <div className="flex flex-wrap flex-col justify-start z-10 mt-5 space-y-2">
         <Button
           action="https://github.com/stars/mbeps/lists/leetcode"
           variant="ghost"
