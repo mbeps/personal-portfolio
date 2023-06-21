@@ -11,6 +11,16 @@ interface ProjectModalProps {
   technologies?: string[];
 }
 
+/**
+ * Modal which displays the tech stack used to build a project.
+ * The language and technologies are displayed in different sections.
+ *
+ * @param projectLanguage (string): language used to build the project
+ * @param technologies (string[]): technologies used to build the project
+ * @param isOpen (boolean): whether the modal is open or not
+ * @param onClose (function): function to close the modal
+ * @returns (JSX.Element): modal component (stack of the project
+ */
 const ProjectModal: React.FC<ProjectModalProps> = ({
   projectLanguage,
   technologies,

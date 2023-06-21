@@ -1,16 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import { BsGithub, BsArrowUpRightSquare } from "react-icons/bs";
-import { IoInformationCircleOutline, IoReaderOutline } from "react-icons/io5";
+import ProjectModal from "@/components/Modal/ProjectModal";
+import Project from "@/types/projects";
 import Image from "next/image";
 import Link from "next/link";
-import SlideUp from "./Slideup";
 import { useRouter } from "next/navigation";
-import Project from "@/types/projects";
-import { AiOutlineInfoCircle } from "react-icons/ai";
-import Modal from "@/components/Modal/Modal";
-import ProjectModal from "@/components/Modal/ProjectModal";
+import React, { useState } from "react";
+import { BsArrowUpRightSquare, BsGithub } from "react-icons/bs";
+import { IoInformationCircleOutline, IoReaderOutline } from "react-icons/io5";
+import SlideUp from "./Slideup";
 
 /**
  * Card which displays a projects.
