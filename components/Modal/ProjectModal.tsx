@@ -2,6 +2,7 @@ import React from "react";
 import Modal from "./Modal";
 import HeadingTwo from "../Content/Text/HeadingTwo";
 import HeadingThree from "../Content/Text/HeadingThree";
+import Tag from "../Atoms/Tag";
 
 interface ProjectModalProps {
   isOpen?: boolean; // whether the modal is open or not
@@ -21,18 +22,18 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
       <HeadingTwo title="Project Stack" />
       <div className="mt-4">
         <HeadingThree title="Language" />
-        <p className="text-lg mt-5">{projectLanguage}</p>
+        <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-5">
+          <Tag>{projectLanguage}</Tag>
+        </div>
       </div>
       {technologies && (
         <div className="mt-4">
           <HeadingThree title="Technologies" />
-          <ul>
+          <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
             {technologies.map((tech, index) => (
-              <li key={index} className="mb-1">
-                • {tech}
-              </li>
+              <Tag key={index}>{tech}</Tag>
             ))}
-          </ul>
+          </div>
         </div>
       )}
     </Modal>
