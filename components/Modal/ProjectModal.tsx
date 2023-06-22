@@ -30,14 +30,14 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <HeadingTwo title="Project Stack" />
-      <div className="mt-4">
+      <div className="mt-4 text-center md:text-left">
         <HeadingThree title="Language" />
         <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-5">
           <Tag>{projectLanguage}</Tag>
         </div>
       </div>
       {technologies && (
-        <div className="mt-4">
+        <div className="mt-4 text-center md:text-left">
           <HeadingThree title="Technologies" />
           <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
             {technologies.map((tech, index) => (
