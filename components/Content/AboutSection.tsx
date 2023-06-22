@@ -63,7 +63,7 @@ const technologies = [
  */
 const AboutSection = () => {
   return (
-    <section id="about">
+    <section id="about" className="min-h-[85vh]">
       <div className="my-12 pb-12 md:pt-16 md:pb-48">
         <h1 className="text-center font-bold text-4xl">
           About Me

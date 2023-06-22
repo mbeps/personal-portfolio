@@ -12,8 +12,14 @@ import HeadingOne from "./Text/HeadingOne";
  */
 const HeroSection = () => {
   return (
-    <section id="home">
-      <div className="flex flex-col text-center items-center justify-center animate-fadeIn animation-delay-2 my-10 py-16 sm:py-32 md:py-48 md:flex-row md:space-x-4 md:text-left">
+    <section
+      id="home"
+      className="min-h-[85vh] flex flex-col justify-between items-center "
+    >
+      <div
+        className="flex flex-col text-center items-center justify-center animate-fadeIn animation-delay-2 md:flex-row md:space-x-4 md:text-left
+         my-auto"
+      >
         <div className="md:mt-2 md:w-1/2">
           <Image
             src="/profile.png"
@@ -46,7 +52,7 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-row items-center text-center justify-center ">
+      <div className="flex flex-row items-center text-center justify-center mb-4">
         <Link
           to="about"
           activeClass="active"

@@ -12,7 +12,7 @@ import { webdevProjects, machineLearningProjects } from "@/types/projects";
  */
 const ProjectsSection = () => {
   return (
-    <section id="projects">
+    <section id="projects" className="min-h-[85vh]">
       <HeadingTwo title="Projects" />
 
       <div className="flex flex-col space-y-20 mt-14">
