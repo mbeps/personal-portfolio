@@ -16,6 +16,7 @@ const skills = [
   { skill: "Chakra UI" },
   { skill: "Poetry" },
   { skill: "Flask" },
+  { skill: "Django" },
   { skill: "Numpy" },
   { skill: "Jupyter Notebooks" },
   { skill: "PyTest" },
@@ -32,6 +33,8 @@ const languages = [
   { language: "JavaScript" },
   { language: "TypeScript" },
   { language: "Shell" },
+  { language: "Haskell" },
+  { language: "C" },
 ];
 
 /**
