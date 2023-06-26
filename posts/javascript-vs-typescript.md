@@ -421,46 +421,46 @@ This summary table gives a rough overview, and there can be exceptions in indivi
 
 # **Sources**
 
-## **Overview**
+**Overview**
 - [JavaScript - Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [TypeScript - Official Documentation](https://www.typescriptlang.org/)
 
-## **Type Systems**
+**Type Systems**
 - [Understanding TypeScript's Type System - freeCodeCamp](https://www.freecodecamp.org/news/the-definitive-typescript-handbook/)
 - [Dynamic Typing in JavaScript - JavaScript Tutorial](https://www.javascripttutorial.net/javascript-dynamic-typing/)
 - [Static Typing in TypeScript - TypeScript Deep Dive](https://basarat.gitbook.io/typescript/type-system)
 
-## **Learning Curve**
+**Learning Curve**
 - [The TypeScript Tax - A Cost vs Benefit Analysis](https://medium.com/javascript-scene/the-typescript-tax-132ff4cb175b)
 
-## **Popularity**
+**Popularity**
 - [The State of the Octoverse - GitHub](https://octoverse.github.com/)
 - [Stack Overflow Developer Survey 2023](https://insights.stackoverflow.com/survey/2023)
 
-## **Performance**
+**Performance**
 - [Benchmarks of TypeScript vs JavaScript](https://blog.logrocket.com/typescript-vs-javascript-performance-comparison/)
 
-## **Community and Ecosystem**
+**Community and Ecosystem**
 - [npm Trends](https://www.npmtrends.com/)
 - [GitHub Search](https://github.com/search)
 
-## **Tooling**
+**Tooling**
 - [Visual Studio Code - JavaScript](https://code.visualstudio.com/docs/languages/javascript)
 - [Visual Studio Code - TypeScript](https://code.visualstudio.com/docs/languages/typescript)
 
-## **Use Cases**
+**Use Cases**
 - [Real-world examples of TypeScript projects](https://github.com/microsoft/TypeScript/wiki/TypeScript-in-the-wild)
 
-## **Reliability**
+**Reliability**
 - [The Impact of Static Typing on the Runtime Performance of JavaScript Applications](https://ieeexplore.ieee.org/document/8959981)
 
-## **Integration with Frameworks and Libraries**
+**Integration with Frameworks and Libraries**
 - [TypeScript with React - React Documentation](https://reactjs.org/docs/static-type-checking.html)
 - [TypeScript with Angular - Angular Documentation](https://angular.io/guide/typescript-configuration)
 
-## **Migration**
+**Migration**
 - [Migrating from JavaScript to TypeScript](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)
 
-## **Developer Experience**
+**Developer Experience**
 - [TypeScript: The Good Parts](https://blog.logrocket.com/typescript-the-good-parts/)
 
