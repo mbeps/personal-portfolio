@@ -85,9 +85,7 @@ React offers many advanced features that significantly help in building complex,
 
 While React is an incredible tool, it's not without its drawbacks:
 
-1. **Learning Curve**: While React does a lot to make frontend development
-
- easier, it also introduces its own layer of complexity. Understanding concepts like the virtual DOM, JSX, and component lifecycle methods can be a hurdle for new learners.
+1. **Learning Curve**: While React does a lot to make frontend development easier, it also introduces its own layer of complexity. Understanding concepts like the virtual DOM, JSX, and component lifecycle methods can be a hurdle for new learners.
 
 2. **Verbose**: React requires a lot of code for simple processes. For instance, sharing even trivial stateful logic between two components requires you to create a shared abstraction.
 
