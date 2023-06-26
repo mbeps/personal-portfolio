@@ -52,7 +52,7 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-row items-center text-center justify-center mb-4">
+      <div className="flex flex-row items-center text-center justify-center my-4">
         <Link
           to="about"
           activeClass="active"
