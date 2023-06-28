@@ -77,27 +77,12 @@ const ProjectItem: React.FC<Project> = ({
               {description}
             </p>
             <div className="flex flex-row align-bottom space-x-4">
+              {/* Repository */}
               {repoURL && (
                 <Link href={repoURL} target="_blank" title="Repository">
                   <BsGithub
                     size={30}
                     className="hover:-translate-y-1 transition-transform cursor-pointer"
-                  />
-                </Link>
-              )}
-              {siteURL && (
-                <Link href={siteURL} target="_blank" title="Website">
-                  <BsArrowUpRightSquare
-                    size={30}
-                    className="hover:-translate-y-1 transition-transform cursor-pointer"
-                  />
-                </Link>
-              )}
-              {articleURL && (
-                <Link href={articleURL} target="_blank" title="Report">
-                  <IoReaderOutline
-                    size={34}
-                    className="-translate-y-0.5 hover:-translate-y-1.5 transition-transform cursor-pointer"
                   />
                 </Link>
               )}
@@ -118,6 +103,25 @@ const ProjectItem: React.FC<Project> = ({
                   technologies={technologies}
                 />
               </div>
+              {/* Project Website */}
+              {siteURL && (
+                <Link href={siteURL} target="_blank" title="Website">
+                  <BsArrowUpRightSquare
+                    size={30}
+                    className="hover:-translate-y-1 transition-transform cursor-pointer"
+                  />
+                </Link>
+              )}
+              {/* Project Reflection Blog */}
+              {articleURL && (
+                <Link href={articleURL} target="_blank" title="Report">
+                  <IoReaderOutline
+                    size={34}
+                    className="-translate-y-0.5 hover:-translate-y-1.5 transition-transform cursor-pointer"
+                  />
+                </Link>
+              )}
+              {/* Project Stack */}
             </div>
           </div>
         </div>
