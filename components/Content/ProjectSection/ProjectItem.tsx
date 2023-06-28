@@ -38,12 +38,18 @@ const ProjectItem: React.FC<Project> = ({
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  /**
+   * Redirects the user to the repository if the repository link is available.
+   */
   const handleClick = () => {
-    if (siteURL) {
-      router.push(siteURL);
+    if (repoURL) {
+      router.push(repoURL);
     }
   };
 
+  /**
+   * Opens and closes modal.
+   */
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
