@@ -72,6 +72,7 @@ const webdevProjects: Project[] = [
       `Supabase`,
       "PostgreSQL",
       `Tailwind CSS`,
+      `Radix UI`,
       "Zustand",
     ],
   },
