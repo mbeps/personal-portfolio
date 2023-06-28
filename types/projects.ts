@@ -65,7 +65,7 @@ const webdevProjects: Project[] = [
       This is built using Supabase, Next.JS, and Tailwind CSS.`,
     imageURL: `/projects/drumroll-music.png`,
     repoURL: `https://github.com/mbeps/drumroll-music`,
-    articleURL: `project-drumroll-music`,
+    articleURL: `/posts/project-drumroll-music`,
     programmingLanguage: `TypeScript`,
     technologies: [
       `Next.JS`,
