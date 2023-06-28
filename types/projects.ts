@@ -20,8 +20,8 @@ export default interface Project {
 const webdevProjects: Project[] = [
   {
     name: `Circus Discussions`,
-    description: `A social media discussion platform for engaging user interactions. 
-      Built with Firebase, Next.JS, and Chakra UI as a final year project for university.`,
+    description: `A social media discussion platform where users can interact with like-minded individuals.       
+      This was my final year project for university.`,
     imageURL: `/projects/circus-discussions-fyp.png`,
     repoURL: `https://github.com/mbeps/next_discussion_platform`,
     siteURL: `https://circus-discussion.vercel.app/`,
@@ -39,7 +39,7 @@ const webdevProjects: Project[] = [
   {
     name: `Ringmaster Messaging`,
     description: `A simple messaging app to allow users to chat with other users or in group chats. 
-      This was for learning custom back-ends and was built using Next.JS, NextAuth, MongoDB, Pusher, and Tailwind CSS.`,
+      This was for learning custom back-ends. `,
     imageURL: `/projects/ringmaster-messaging.png`,
     repoURL: `https://github.com/mbeps/ringmaster-messaging`,
     siteURL: `https://ringmaster-messaging.vercel.app/`,
@@ -61,8 +61,8 @@ const webdevProjects: Project[] = [
   },
   {
     name: `Drumroll Music`,
-    description: `A simple music streaming site where users can upload and listen to music. 
-      This is built using Supabase, Next.JS, and Tailwind CSS.`,
+    description: `A simple music streaming site where users can upload and listen to music.
+      This was my first major project using Supabase.`,
     imageURL: `/projects/drumroll-music.png`,
     repoURL: `https://github.com/mbeps/drumroll-music`,
     articleURL: `/posts/project-drumroll-music`,
