@@ -43,7 +43,7 @@ const webdevProjects: Project[] = [
     imageURL: `/projects/ringmaster-messaging.png`,
     repoURL: `https://github.com/mbeps/ringmaster-messaging`,
     siteURL: `https://ringmaster-messaging.vercel.app/`,
-    articleURL: `/posts/ringmaster-messaging-reflection`,
+    articleURL: `/posts/project-ringmaster-messaging`,
     programmingLanguage: `TypeScript`,
     technologies: [
       "Next.JS",
