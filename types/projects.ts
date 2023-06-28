@@ -117,8 +117,7 @@ const extraWebDevProjects: Project[] = [
   {
     name: `ConvoGPT`,
     description: `This is a simple client for using the OpenAI API locally. 
-      This was created to learn how to use the OpenAI API and to create a simple client for it. 
-      This is built using Supabase (PgVector), Next.JS, and Tailwind CSS. This is a work in progress.`,
+      This was created to learn how to use the OpenAI API and to create a simple client and to learn PgVector.`,
     imageURL: `/projects/convo-gpt.png`,
     repoURL: `https://github.com/mbeps/convo-gpt`,
     programmingLanguage: `TypeScript`,
@@ -134,8 +133,7 @@ const extraWebDevProjects: Project[] = [
   {
     name: `Python Flask Forum Backend`,
     description: `This is a custom backend for the first iteration of the discussion platform. 
-      This was created to learn how to create a custom backend using Python and Flask. 
-      This is built using Python, Flask, and MySQL.`,
+      This was created to learn how to create a custom backend using Python and Flask.`,
     repoURL: `https://github.com/mbeps/Forum-Discussion-Flask-Backend`,
     programmingLanguage: `Python`,
     technologies: [`Flask`, "MySQL", "SQLAlchemy", "REST API"],
