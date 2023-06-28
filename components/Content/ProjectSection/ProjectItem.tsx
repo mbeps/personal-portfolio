@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { BsArrowUpRightSquare, BsGithub } from "react-icons/bs";
 import { IoInformationCircleOutline, IoReaderOutline } from "react-icons/io5";
+import { ImStack } from "react-icons/im";
 import SlideUp from "./Slideup";
 
 /**
@@ -93,7 +94,7 @@ const ProjectItem: React.FC<Project> = ({
                     onClick={toggleModal}
                     title="Project Stack"
                   >
-                    <IoInformationCircleOutline size={36} />
+                    <ImStack size={34} />
                   </button>
                 )}
                 <ProjectModal
