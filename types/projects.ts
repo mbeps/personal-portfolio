@@ -25,7 +25,7 @@ const webdevProjects: Project[] = [
     imageURL: `/projects/circus-discussions-fyp.png`,
     repoURL: `https://github.com/mbeps/next_discussion_platform`,
     siteURL: `https://circus-discussion.vercel.app/`,
-    articleURL: `/posts/circus-discussion-reflection`,
+    articleURL: `/posts/project-circus-discussion`,
     programmingLanguage: `TypeScript`,
     technologies: [
       `Next.JS`,
