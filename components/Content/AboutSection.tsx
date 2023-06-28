@@ -98,7 +98,8 @@ const AboutSection = () => {
             <br />
             <p>
               My technical interest extends beyond full-stack development to{" "}
-              <span className="font-bold">Machine Learning</span>. To further my
+              <span className="font-bold">Machine Learning</span> and{" "}
+              <span className="font-bold">Mathematics</span>. To further my
               knowledge, I&#39;m currently delving into advanced Machine
               Learning techniques.
             </p>

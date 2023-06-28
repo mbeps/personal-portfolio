@@ -16,6 +16,7 @@ display: "false"
 	- [**State Management: Zustand**](#state-management-zustand)
 - [**Challenges**](#challenges)
 	- [**Active User Status Management**](#active-user-status-management)
+	- [**Dockerizing the Application**](#dockerizing-the-application)
 - [**Conclusion**](#conclusion)
 
 
@@ -51,7 +52,7 @@ For state management in Ringmaster, we used Zustand. Compared to more complex st
 
 # **Challenges**
 
-While developing the Ringmaster messaging app, we faced a number of technical challenges that contributed to our learning and improved the final outcome of the project. One of the most significant challenges was managing the active status of users. This feature was crucial as it was used in various parts of the app, and maintaining its accuracy in real-time was no easy task.
+While developing the Ringmaster messaging app, we faced a number of technical challenges that contributed to our learning and improved the final outcome of the project. These challenges ranged from managing the active status of users in real-time to the more recent task of Dockerizing the application.
 
 ## **Active User Status Management**
 
@@ -65,5 +66,13 @@ When a user signs in or out, the application communicates this change to Pusher,
 
 Integrating Zustand and Pusher to work together to manage the active status of users was complex but essential to creating a responsive, real-time user experience. Through this challenge, we learned more about managing state in a real-time application and implementing third-party services to enhance the capabilities of our app.
 
+## **Dockerizing the Application**
+
+A more recent challenge has been the task of Dockerizing the Ringmaster application. Dockerization helps in managing the environment and dependencies of an application, making it more portable and reliable across different platforms and systems. While Dockerizing the frontend with Next.js was fairly straightforward due to previous experience, the Dockerization of the MongoDB database proved to be more complex.
+
+The main issue encountered was the database not being recognized, and having to manually create the database within the Docker container. This task was unexpectedly difficult and required a significant amount of tinkering to get all the different Docker services to work together.
+
+Currently, we are focusing on Dockerizing the MongoDB and Next.js components of the application, as these are readily available as Docker images. This endeavor provides a hands-on experience in Dockerization, a crucial skill in the modern software development workflow, and presents an opportunity to learn and overcome new challenges.
+
 # **Conclusion**
-Overall, the development of the Ringmaster Messaging App was a rewarding and educational experience. We successfully built a messaging app using a diverse set of technologies, managing to implement features such as real-time messaging, group chats, image sharing, and user authentication. I expanded my knowledge in areas such as CSS styling with Tailwind CSS, real-time communication with Pusher, state management with Zustand, and learned to effectively combine these technologies to create a comprehensive application. This project served as an invaluable opportunity to practice and further develop my skills in full-stack web development.
+Overall, the development of the Ringmaster Messaging App was a rewarding and educational experience. We successfully built a messaging app using a diverse set of technologies, managing to implement features such as real-time messaging, group chats, image sharing, and user authentication. I expanded my knowledge in areas such as CSS styling with Tailwind CSS, real-time communication with Pusher, state management with Zustand, and learned to effectively combine these technologies to create a comprehensive application. The current efforts to Dockerize the application pose another exciting challenge and an opportunity to learn. This project served as an invaluable opportunity to practice and further develop my skills in full-stack web development.
