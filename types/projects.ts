@@ -101,6 +101,7 @@ const extraWebDevProjects: Project[] = [
       This was my first introduction to full stack development. `,
     imageURL: `/projects/noodle.png`,
     repoURL: `https://github.com/ixahmedxi/noodle`,
+    siteURL: `https://noodle.run/`,
     programmingLanguage: `TypeScript`,
     technologies: [
       `Next.JS`,
