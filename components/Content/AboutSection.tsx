@@ -9,10 +9,18 @@ interface Skill {
   skill: string;
 }
 
+interface Repository {
+  name: string;
+  repository: string;
+}
+
 interface Language {
   language: string;
   skills?: Skill[];
+  repositories?: Repository[];
 }
+
+export type { Skill, Repository, Language };
 
 const JavaScriptTypeScriptSkills: Skill[] = [
   { skill: "React" },
@@ -36,10 +44,29 @@ const languages: Language[] = [
       { skill: "Jupyter Notebooks" },
       { skill: "PyTest" },
     ],
+    repositories: [
+      {
+        name: "Python Projects",
+        repository:
+          "https://github.com/mbeps?tab=repositories&q=&type=&language=python&sort=",
+      },
+      {
+        name: "Jupyter Notebook Projects",
+        repository:
+          "https://github.com/mbeps?tab=repositories&q=&type=&language=jupyter+notebook&sort=",
+      },
+    ],
   },
   {
     language: "Java",
     skills: [{ skill: "Maven" }, { skill: "JUnit" }],
+    repositories: [
+      {
+        name: "Java Projects",
+        repository:
+          "https://github.com/mbeps?tab=repositories&q=&type=&language=java&sort=",
+      },
+    ],
   },
   {
     language: "JavaScript",
@@ -48,6 +75,13 @@ const languages: Language[] = [
   {
     language: "TypeScript",
     skills: JavaScriptTypeScriptSkills,
+    repositories: [
+      {
+        name: "TypeScript Projects",
+        repository:
+          "https://github.com/mbeps?tab=repositories&q=&type=&language=typescript&sort=",
+      },
+    ],
   },
   {
     language: "C",
@@ -235,6 +269,7 @@ const LanguageSection: React.FC<LanguageSectionProps> = ({
             key={idx}
             language={languageData.language}
             skills={getSkillsByLanguage(languageData.language)}
+            repositories={languageData.repositories || []}
           />
         ))}
       </div>
@@ -245,11 +280,13 @@ const LanguageSection: React.FC<LanguageSectionProps> = ({
 interface LanguageTagWithModalProps {
   language: string;
   skills: string[];
+  repositories: Repository[];
 }
 
 const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
   language,
   skills,
+  repositories,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -261,15 +298,22 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
     setIsModalOpen(false);
   };
 
+  const shouldOpenModal = skills.length > 0 || repositories.length > 0;
+
   return (
     <>
-      <Tag onClick={handleOpenModal}>{language}</Tag>
-      <LanguageModal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        language={language}
-        skills={skills}
-      />
+      <Tag onClick={shouldOpenModal ? handleOpenModal : undefined}>
+        {language}
+      </Tag>
+      {shouldOpenModal && (
+        <LanguageModal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          language={language}
+          skills={skills}
+          repositories={repositories} // Assuming LanguageModal supports a repositories prop
+        />
+      )}
     </>
   );
 };
