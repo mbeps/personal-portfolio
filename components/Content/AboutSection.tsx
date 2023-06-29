@@ -3,10 +3,16 @@ import HeadingTwo from "./Text/HeadingTwo";
 import HeadingThree from "./Text/HeadingThree";
 import Tag from "@/components/Atoms/Tag";
 
-/**
- * List of skills that will be displayed in the About section.
- */
-const skills = [
+interface Skill {
+  skill: string;
+}
+
+interface Language {
+  language: string;
+  skills?: Skill[];
+}
+
+const JavaScriptTypeScriptSkills: Skill[] = [
   { skill: "React" },
   { skill: "Next.JS" },
   { skill: "NextAuth" },
@@ -14,44 +20,56 @@ const skills = [
   { skill: "Vitest" },
   { skill: "Tailwind CSS" },
   { skill: "Chakra UI" },
-  { skill: "Poetry" },
-  { skill: "Flask" },
-  { skill: "Django" },
-  { skill: "Numpy" },
-  { skill: "Jupyter Notebooks" },
-  { skill: "PyTest" },
-  { skill: "Maven" },
-  { skill: "JUnit" },
 ];
 
-/**
- * List of languages that will be displayed in the About section.
- */
-const languages = [
-  { language: "Python" },
-  { language: "Java" },
-  { language: "JavaScript" },
-  { language: "TypeScript" },
-  { language: "Shell" },
-  { language: "Haskell" },
-  { language: "C" },
+// you can now define your languages array
+const languages: Language[] = [
+  {
+    language: "Python",
+    skills: [
+      { skill: "Poetry" },
+      { skill: "Flask" },
+      { skill: "Django" },
+      { skill: "Numpy" },
+      { skill: "Jupyter Notebooks" },
+      { skill: "PyTest" },
+    ],
+  },
+  {
+    language: "Java",
+    skills: [{ skill: "Maven" }, { skill: "JUnit" }],
+  },
+  {
+    language: "JavaScript",
+    skills: JavaScriptTypeScriptSkills,
+  },
+  {
+    language: "TypeScript",
+    skills: JavaScriptTypeScriptSkills,
+  },
+  {
+    language: "C",
+  },
+  {
+    language: "Haskell",
+  },
+  {
+    language: "Shell",
+  },
 ];
 
-/**
- * List of technologies that will be displayed in the About section.
- */
 const technologies = [
-  { technology: "Git" },
-  { technology: "SVN" },
-  { technology: "Firebase" },
-  { technology: "Supabase" },
-  { technology: "GitHub Actions" },
-  { technology: "Jenkins" },
-  { technology: "Docker" },
-  { technology: "REST" },
-  { technology: "GraphQL" },
-  { technology: "PostgreSQL" },
-  { technology: "MongoDB" },
+  "Git",
+  "SVN",
+  "Firebase",
+  "Supabase",
+  "GitHub Actions",
+  "Jenkins",
+  "Docker",
+  "REST",
+  "GraphQL",
+  "PostgreSQL",
+  "MongoDB",
 ];
 
 /**
@@ -62,6 +80,32 @@ const technologies = [
  * @returns (JSX.Element): About section
  */
 const AboutSection = () => {
+  /**
+   * Creates a list of all languages from the languages array.
+   * This does not include any skills.
+   */
+  const allLanguages = languages.map((language) => language.language);
+
+  /**
+   * Creates a list of all skills from the languages array.
+   * Removes any duplicate skills.
+   *
+   * @returns (string[]): list of all skills
+   */
+  const allSkills = () => {
+    let allSkills = languages.reduce((accumulator, language) => {
+      if (language.skills) {
+        return accumulator.concat(language.skills.map((skill) => skill.skill));
+      } else {
+        return accumulator;
+      }
+    }, [] as string[]);
+
+    // Filtering to only include unique skills
+    let uniqueSkills = Array.from(new Set(allSkills));
+    return uniqueSkills;
+  };
+
   return (
     <section id="about" className="min-h-[85vh]">
       <div className="my-12 pb-12 md:pt-16 md:pb-48">
@@ -126,13 +170,9 @@ const AboutSection = () => {
 
           {/* Right section */}
           <div className="text-center md:w-1/2 md:text-left">
-            <Section title="Languages" data={languages} field="language" />
-            <Section title="Skills" data={skills} field="skill" />
-            <Section
-              title="Technologies"
-              data={technologies}
-              field="technology"
-            />
+            <Section title="Languages" data={allLanguages} />
+            <Section title="Skills" data={allSkills()} />
+            <Section title="Technologies" data={technologies} />
           </div>
         </div>
       </div>
@@ -142,15 +182,9 @@ const AboutSection = () => {
 
 export default AboutSection;
 
-interface DataItem {
-  [key: string]: string;
-}
-
-// Define type for the props
 interface SectionProps {
   title: string;
-  data: DataItem[];
-  field: string;
+  data: string[];
 }
 
 /**
@@ -159,16 +193,15 @@ interface SectionProps {
  * Skills, languages and technologies are displayed as tags.
  *
  * @param title (string): title of the section
- * @param data (DataItem[]): list of items to be displayed
- * @param field (string): field of the item to be displayed
- * @returns (JSX.Element): section (title and list of items
+ * @param data (string[]): list of items to be displayed
+ * @returns (JSX.Element): section displaying a list of items with a title
  */
-const Section: React.FC<SectionProps> = ({ title, data, field }) => (
+const Section: React.FC<SectionProps> = ({ title, data }) => (
   <>
     <HeadingThree title={title} />
     <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
       {data.map((item, idx) => (
-        <Tag key={idx}>{item[field]}</Tag>
+        <Tag key={idx}>{item}</Tag>
       ))}
     </div>
   </>
