@@ -3,6 +3,14 @@
  */
 interface Skill {
   skill: string;
+  category?:
+    | "Frontend Web Development"
+    | "Backend Web Development"
+    | "Full Stack Web Development"
+    | "Testing"
+    | "Project Manager"
+    | "Machine Learning"
+    | "Other";
 }
 
 /**
@@ -29,13 +37,13 @@ export type { Skill, Repository, Language };
  * Skills for both languages are the same.
  */
 const JavaScriptTypeScriptSkills: Skill[] = [
-  { skill: "React" },
-  { skill: "Next.JS" },
-  { skill: "NextAuth" },
-  { skill: "Jest" },
-  { skill: "Vitest" },
-  { skill: "Tailwind CSS" },
-  { skill: "Chakra UI" },
+  { skill: "React", category: "Frontend Web Development" },
+  { skill: "Next.JS", category: "Full Stack Web Development" },
+  { skill: "NextAuth", category: "Backend Web Development" },
+  { skill: "Jest", category: "Testing" },
+  { skill: "Vitest", category: "Testing" },
+  { skill: "Tailwind CSS", category: "Frontend Web Development" },
+  { skill: "Chakra UI", category: "Frontend Web Development" },
 ];
 
 /**
@@ -46,12 +54,12 @@ const languages: Language[] = [
   {
     language: "Python",
     skills: [
-      { skill: "Poetry" },
-      { skill: "Flask" },
-      { skill: "Django" },
-      { skill: "Numpy" },
-      { skill: "Jupyter Notebooks" },
-      { skill: "PyTest" },
+      { skill: "Poetry", category: "Project Manager" },
+      { skill: "Flask", category: "Backend Web Development" },
+      { skill: "Django", category: "Backend Web Development" },
+      { skill: "Numpy", category: "Machine Learning" },
+      { skill: "Jupyter Notebooks", category: "Machine Learning" },
+      { skill: "PyTest", category: "Testing" },
     ],
     repositories: [
       {
@@ -68,7 +76,10 @@ const languages: Language[] = [
   },
   {
     language: "Java",
-    skills: [{ skill: "Maven" }, { skill: "JUnit" }],
+    skills: [
+      { skill: "Maven", category: "Project Manager" },
+      { skill: "JUnit", category: "Testing" },
+    ],
     repositories: [
       {
         name: "Java Projects",
