@@ -249,6 +249,9 @@ interface LanguageSectionProps {
   languages: Language[];
 }
 
+/**
+ * Displays a list of languages that I know.
+ */
 const LanguageSection: React.FC<LanguageSectionProps> = ({
   title,
   languages,
@@ -283,6 +286,17 @@ interface LanguageTagWithModalProps {
   repositories: Repository[];
 }
 
+/**
+ * Displays a tag for each language.
+ * If the language has skills or repositories, a modal is displayed when the tag is clicked.
+ * The modal displays the skills and repositories for the language.
+ * If the language does not have any skills or repositories, the modal cannot be opened.
+ *
+ * @param language (string): name of the language
+ * @param skills (string[]): list of skills for the language
+ * @param repositories (Repository[]): list of repositories for the language
+ * @returns (JSX.Element): language tag with modal (stack of the language
+ */
 const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
   language,
   skills,
@@ -290,10 +304,16 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  /**
+   * Opens the modal.
+   */
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
 
+  /**
+   * Closes the modal.
+   */
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
@@ -311,7 +331,7 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
           onClose={handleCloseModal}
           language={language}
           skills={skills}
-          repositories={repositories} // Assuming LanguageModal supports a repositories prop
+          repositories={repositories}
         />
       )}
     </>

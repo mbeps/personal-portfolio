@@ -15,7 +15,10 @@ interface ProjectModalProps {
 }
 
 /**
-
+ * Displays a modal for each language.
+ * The modal displays the skills and repositories for the language.
+ * If the language does not have any skills or repositories, the modal cannot be opened.
+ * It also displays buttons to open the repositories.
  * @returns (JSX.Element): modal component (stack of the project
  */
 const LanguageModal: React.FC<ProjectModalProps> = ({
