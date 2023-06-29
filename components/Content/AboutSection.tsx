@@ -7,6 +7,7 @@ import LanguageModal from "../Modal/LanguageModal";
 import {
   Language,
   Repository,
+  Skill,
   languages,
   technologies,
 } from "@/types/languagesSkillsTechnologies";
@@ -159,11 +160,12 @@ const LanguageSection: React.FC<LanguageSectionProps> = ({
   title,
   languages,
 }) => {
-  const getSkillsByLanguage = (languageName: string): string[] => {
+  const getSkillsByLanguage = (languageName: string): Skill[] => {
+    // Find the language in the languages array
     const language = languages.find((lang) => lang.language === languageName);
-    return language && language.skills
-      ? language.skills.map((skill) => skill.skill)
-      : [];
+
+    // If the language was found and it has skills, return the skills array
+    return language && language.skills ? language.skills : [];
   };
 
   return (
@@ -185,7 +187,7 @@ const LanguageSection: React.FC<LanguageSectionProps> = ({
 
 interface LanguageTagWithModalProps {
   language: string;
-  skills: string[];
+  skills: Skill[];
   repositories: Repository[];
 }
 
@@ -196,7 +198,7 @@ interface LanguageTagWithModalProps {
  * If the language does not have any skills or repositories, the modal cannot be opened.
  *
  * @param language (string): name of the language
- * @param skills (string[]): list of skills for the language
+ * @param skills (Skill[]): list of skills for the language
  * @param repositories (Repository[]): list of repositories for the language
  * @returns (JSX.Element): language tag with modal (stack of the language
  */
