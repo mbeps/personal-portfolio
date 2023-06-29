@@ -1,7 +1,7 @@
 import Button from "@/components/Atoms/Button";
+import { webdevProjects } from "@/types/projects";
 import HeadingTwo from "../Text/HeadingTwo";
 import ProjectItem from "./ProjectItem";
-import { webdevProjects, machineLearningProjects } from "@/types/projects";
 
 /**
  * Project section listing the projects I have worked on.
@@ -33,7 +33,7 @@ const ProjectsSection = () => {
       </div>
 
       <div className="flex justify-center mt-10">
-        <Button variant="outlined" action="/projects">
+        <Button variant="outlined" onClick={"/projects"}>
           View More Projects
         </Button>
       </div>
