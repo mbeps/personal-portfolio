@@ -1,7 +1,9 @@
-import React from "react";
-import HeadingTwo from "./Text/HeadingTwo";
-import HeadingThree from "./Text/HeadingThree";
+"use client";
+
 import Tag from "@/components/Atoms/Tag";
+import React, { useState } from "react";
+import HeadingThree from "./Text/HeadingThree";
+import LanguageModal from "../Modal/LanguageModal";
 
 interface Skill {
   skill: string;
@@ -170,7 +172,8 @@ const AboutSection = () => {
 
           {/* Right section */}
           <div className="text-center md:w-1/2 md:text-left">
-            <Section title="Languages" data={allLanguages} />
+            {/* <Section title="Languages" data={allLanguages} /> */}
+            <LanguageSection title="Languages" languages={languages} />
             <Section title="Skills" data={allSkills()} />
             <Section title="Technologies" data={technologies} />
           </div>
@@ -206,3 +209,67 @@ const Section: React.FC<SectionProps> = ({ title, data }) => (
     </div>
   </>
 );
+
+interface LanguageSectionProps {
+  title: string;
+  languages: Language[];
+}
+
+const LanguageSection: React.FC<LanguageSectionProps> = ({
+  title,
+  languages,
+}) => {
+  const getSkillsByLanguage = (languageName: string): string[] => {
+    const language = languages.find((lang) => lang.language === languageName);
+    return language && language.skills
+      ? language.skills.map((skill) => skill.skill)
+      : [];
+  };
+
+  return (
+    <>
+      <HeadingThree title={title} />
+      <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
+        {languages.map((languageData, idx) => (
+          <LanguageTagWithModal
+            key={idx}
+            language={languageData.language}
+            skills={getSkillsByLanguage(languageData.language)}
+          />
+        ))}
+      </div>
+    </>
+  );
+};
+
+interface LanguageTagWithModalProps {
+  language: string;
+  skills: string[];
+}
+
+const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
+  language,
+  skills,
+}) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  return (
+    <>
+      <Tag onClick={handleOpenModal}>{language}</Tag>
+      <LanguageModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        language={language}
+        skills={skills}
+      />
+    </>
+  );
+};
