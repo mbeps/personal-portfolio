@@ -51,7 +51,7 @@ const ProjectsSection = () => {
         </div>
 
         <div className="flex justify-center mt-10">
-          <Button variant="outlined" action={handleOpenModal}>
+          <Button variant="outlined" onClick={handleOpenModal}>
             View More Projects
           </Button>
         </div>

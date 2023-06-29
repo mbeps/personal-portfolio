@@ -11,15 +11,27 @@ import HeadingOne from "./Text/HeadingOne";
  * Contains a short description of myself, a picture and a link to the projects section.
  */
 const HeroSection = () => {
+  /**
+   * Allows the user to scroll to a specific section of the page.
+   *
+   * @param sectionName (string): the name of the section to scroll to
+   */
+  const scrollToSection = (sectionName: string) => {
+    const element = document.getElementById(sectionName as string);
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <section
       id="home"
       className="min-h-[85vh] flex flex-col justify-between items-center "
     >
-      <div
-        className="flex flex-col text-center items-center justify-center animate-fadeIn animation-delay-2 md:flex-row md:space-x-4 md:text-left
-         my-auto"
-      >
+      <div className="flex flex-col text-center items-center justify-center animate-fadeIn animation-delay-2 md:flex-row md:space-x-4 md:text-left my-auto">
         <div className="md:mt-2 md:w-1/2">
           <Image
             src="/profile.png"
@@ -43,10 +55,20 @@ const HeroSection = () => {
           </p>
 
           <div className="flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0">
-            <Button action="projects" variant="filled" isSamePage>
+            <Button
+              variant="filled"
+              onClick={() => {
+                scrollToSection("projects");
+              }}
+            >
               Projects
             </Button>
-            <Button action="about" variant="ghost" isSamePage>
+            <Button
+              variant="ghost"
+              onClick={() => {
+                scrollToSection("about");
+              }}
+            >
               About
             </Button>
           </div>
