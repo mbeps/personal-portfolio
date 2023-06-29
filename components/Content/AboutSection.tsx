@@ -1,58 +1,16 @@
-import React from "react";
-import HeadingTwo from "./Text/HeadingTwo";
-import HeadingThree from "./Text/HeadingThree";
+"use client";
+
 import Tag from "@/components/Atoms/Tag";
-
-/**
- * List of skills that will be displayed in the About section.
- */
-const skills = [
-  { skill: "React" },
-  { skill: "Next.JS" },
-  { skill: "NextAuth" },
-  { skill: "Jest" },
-  { skill: "Vitest" },
-  { skill: "Tailwind CSS" },
-  { skill: "Chakra UI" },
-  { skill: "Poetry" },
-  { skill: "Flask" },
-  { skill: "Django" },
-  { skill: "Numpy" },
-  { skill: "Jupyter Notebooks" },
-  { skill: "PyTest" },
-  { skill: "Maven" },
-  { skill: "JUnit" },
-];
-
-/**
- * List of languages that will be displayed in the About section.
- */
-const languages = [
-  { language: "Python" },
-  { language: "Java" },
-  { language: "JavaScript" },
-  { language: "TypeScript" },
-  { language: "Shell" },
-  { language: "Haskell" },
-  { language: "C" },
-];
-
-/**
- * List of technologies that will be displayed in the About section.
- */
-const technologies = [
-  { technology: "Git" },
-  { technology: "SVN" },
-  { technology: "Firebase" },
-  { technology: "Supabase" },
-  { technology: "GitHub Actions" },
-  { technology: "Jenkins" },
-  { technology: "Docker" },
-  { technology: "REST" },
-  { technology: "GraphQL" },
-  { technology: "PostgreSQL" },
-  { technology: "MongoDB" },
-];
+import React, { useState } from "react";
+import HeadingThree from "./Text/HeadingThree";
+import LanguageModal from "../Modal/LanguageModal";
+import {
+  Language,
+  Repository,
+  Skill,
+  languages,
+  technologies,
+} from "@/types/languagesSkillsTechnologies";
 
 /**
  * About section component.
@@ -62,6 +20,32 @@ const technologies = [
  * @returns (JSX.Element): About section
  */
 const AboutSection = () => {
+  /**
+   * Creates a list of all languages from the languages array.
+   * This does not include any skills.
+   */
+  const allLanguages = languages.map((language) => language.language);
+
+  /**
+   * Creates a list of all skills from the languages array.
+   * Removes any duplicate skills.
+   *
+   * @returns (string[]): list of all skills
+   */
+  const allSkills = () => {
+    let allSkills = languages.reduce((accumulator, language) => {
+      if (language.skills) {
+        return accumulator.concat(language.skills.map((skill) => skill.skill));
+      } else {
+        return accumulator;
+      }
+    }, [] as string[]);
+
+    // Filtering to only include unique skills
+    let uniqueSkills = Array.from(new Set(allSkills));
+    return uniqueSkills;
+  };
+
   return (
     <section id="about" className="min-h-[85vh]">
       <div className="my-12 pb-12 md:pt-16 md:pb-48">
@@ -126,13 +110,10 @@ const AboutSection = () => {
 
           {/* Right section */}
           <div className="text-center md:w-1/2 md:text-left">
-            <Section title="Languages" data={languages} field="language" />
-            <Section title="Skills" data={skills} field="skill" />
-            <Section
-              title="Technologies"
-              data={technologies}
-              field="technology"
-            />
+            {/* <Section title="Languages" data={allLanguages} /> */}
+            <LanguageSection title="Languages" languages={languages} />
+            <Section title="Skills" data={allSkills()} />
+            <Section title="Technologies" data={technologies} />
           </div>
         </div>
       </div>
@@ -142,15 +123,9 @@ const AboutSection = () => {
 
 export default AboutSection;
 
-interface DataItem {
-  [key: string]: string;
-}
-
-// Define type for the props
 interface SectionProps {
   title: string;
-  data: DataItem[];
-  field: string;
+  data: string[];
 }
 
 /**
@@ -159,17 +134,111 @@ interface SectionProps {
  * Skills, languages and technologies are displayed as tags.
  *
  * @param title (string): title of the section
- * @param data (DataItem[]): list of items to be displayed
- * @param field (string): field of the item to be displayed
- * @returns (JSX.Element): section (title and list of items
+ * @param data (string[]): list of items to be displayed
+ * @returns (JSX.Element): section displaying a list of items with a title
  */
-const Section: React.FC<SectionProps> = ({ title, data, field }) => (
+const Section: React.FC<SectionProps> = ({ title, data }) => (
   <>
     <HeadingThree title={title} />
     <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
       {data.map((item, idx) => (
-        <Tag key={idx}>{item[field]}</Tag>
+        <Tag key={idx}>{item}</Tag>
       ))}
     </div>
   </>
 );
+
+interface LanguageSectionProps {
+  title: string;
+  languages: Language[];
+}
+
+/**
+ * Displays a list of languages that I know.
+ */
+const LanguageSection: React.FC<LanguageSectionProps> = ({
+  title,
+  languages,
+}) => {
+  const getSkillsByLanguage = (languageName: string): Skill[] => {
+    // Find the language in the languages array
+    const language = languages.find((lang) => lang.language === languageName);
+
+    // If the language was found and it has skills, return the skills array
+    return language && language.skills ? language.skills : [];
+  };
+
+  return (
+    <>
+      <HeadingThree title={title} />
+      <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
+        {languages.map((languageData, idx) => (
+          <LanguageTagWithModal
+            key={idx}
+            language={languageData.language}
+            skills={getSkillsByLanguage(languageData.language)}
+            repositories={languageData.repositories || []}
+          />
+        ))}
+      </div>
+    </>
+  );
+};
+
+interface LanguageTagWithModalProps {
+  language: string;
+  skills: Skill[];
+  repositories: Repository[];
+}
+
+/**
+ * Displays a tag for each language.
+ * If the language has skills or repositories, a modal is displayed when the tag is clicked.
+ * The modal displays the skills and repositories for the language.
+ * If the language does not have any skills or repositories, the modal cannot be opened.
+ *
+ * @param language (string): name of the language
+ * @param skills (Skill[]): list of skills for the language
+ * @param repositories (Repository[]): list of repositories for the language
+ * @returns (JSX.Element): language tag with modal (stack of the language
+ */
+const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
+  language,
+  skills,
+  repositories,
+}) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  /**
+   * Opens the modal.
+   */
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  /**
+   * Closes the modal.
+   */
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const shouldOpenModal = skills.length > 0 || repositories.length > 0;
+
+  return (
+    <>
+      <Tag onClick={shouldOpenModal ? handleOpenModal : undefined}>
+        {language}
+      </Tag>
+      {shouldOpenModal && (
+        <LanguageModal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          language={language}
+          skills={skills}
+          repositories={repositories}
+        />
+      )}
+    </>
+  );
+};
