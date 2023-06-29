@@ -4,109 +4,12 @@ import Tag from "@/components/Atoms/Tag";
 import React, { useState } from "react";
 import HeadingThree from "./Text/HeadingThree";
 import LanguageModal from "../Modal/LanguageModal";
-
-interface Skill {
-  skill: string;
-}
-
-interface Repository {
-  name: string;
-  repository: string;
-}
-
-interface Language {
-  language: string;
-  skills?: Skill[];
-  repositories?: Repository[];
-}
-
-export type { Skill, Repository, Language };
-
-const JavaScriptTypeScriptSkills: Skill[] = [
-  { skill: "React" },
-  { skill: "Next.JS" },
-  { skill: "NextAuth" },
-  { skill: "Jest" },
-  { skill: "Vitest" },
-  { skill: "Tailwind CSS" },
-  { skill: "Chakra UI" },
-];
-
-// you can now define your languages array
-const languages: Language[] = [
-  {
-    language: "Python",
-    skills: [
-      { skill: "Poetry" },
-      { skill: "Flask" },
-      { skill: "Django" },
-      { skill: "Numpy" },
-      { skill: "Jupyter Notebooks" },
-      { skill: "PyTest" },
-    ],
-    repositories: [
-      {
-        name: "Python Projects",
-        repository:
-          "https://github.com/mbeps?tab=repositories&q=&type=&language=python&sort=",
-      },
-      {
-        name: "Jupyter Notebook Projects",
-        repository:
-          "https://github.com/mbeps?tab=repositories&q=&type=&language=jupyter+notebook&sort=",
-      },
-    ],
-  },
-  {
-    language: "Java",
-    skills: [{ skill: "Maven" }, { skill: "JUnit" }],
-    repositories: [
-      {
-        name: "Java Projects",
-        repository:
-          "https://github.com/mbeps?tab=repositories&q=&type=&language=java&sort=",
-      },
-    ],
-  },
-  {
-    language: "JavaScript",
-    skills: JavaScriptTypeScriptSkills,
-  },
-  {
-    language: "TypeScript",
-    skills: JavaScriptTypeScriptSkills,
-    repositories: [
-      {
-        name: "TypeScript Projects",
-        repository:
-          "https://github.com/mbeps?tab=repositories&q=&type=&language=typescript&sort=",
-      },
-    ],
-  },
-  {
-    language: "C",
-  },
-  {
-    language: "Haskell",
-  },
-  {
-    language: "Shell",
-  },
-];
-
-const technologies = [
-  "Git",
-  "SVN",
-  "Firebase",
-  "Supabase",
-  "GitHub Actions",
-  "Jenkins",
-  "Docker",
-  "REST",
-  "GraphQL",
-  "PostgreSQL",
-  "MongoDB",
-];
+import {
+  Language,
+  Repository,
+  languages,
+  technologies,
+} from "@/types/languagesSkillsTechnologies";
 
 /**
  * About section component.
