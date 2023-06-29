@@ -4,7 +4,7 @@ import HeadingTwo from "../Content/Text/HeadingTwo";
 import HeadingThree from "../Content/Text/HeadingThree";
 import Tag from "../Atoms/Tag";
 import Button from "../Atoms/Button";
-import { Repository } from "../Content/AboutSection";
+import { Repository } from "@/types/languagesSkillsTechnologies";
 
 interface ProjectModalProps {
   isOpen?: boolean; // whether the modal is open or not
