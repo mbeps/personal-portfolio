@@ -277,7 +277,7 @@ const TechnologiesSection: React.FC = () => {
         {extractTechnologyNames.map((item, idx) => (
           <Tag key={idx}>{item}</Tag>
         ))}
-        <Tag onClick={handleOpenModal}>More</Tag>
+        <Tag onClick={handleOpenModal}>...</Tag>
         <TechnologiesModal
           isOpen={isModalOpen}
           onClose={handleCloseModal}
