@@ -1,4 +1,5 @@
 import React from "react";
+import { IoIosArrowForward } from "react-icons/io";
 
 interface TagProps {
   children: React.ReactNode;
@@ -13,6 +14,7 @@ interface TagProps {
  */
 const Tag: React.FC<TagProps> = ({ children, onClick }) => {
   const baseClassName = `
+    group
     bg-gray-200 dark:bg-red-950
     px-4 py-2 mr-2 mt-2 rounded-lg
     text-gray-500 dark:text-gray-300 font-semibold
@@ -30,9 +32,14 @@ const Tag: React.FC<TagProps> = ({ children, onClick }) => {
     : baseClassName;
 
   return (
-    <p className={className} onClick={onClick}>
-      {children}
-    </p>
+    <div className={className} onClick={onClick}>
+      <div className="flex items-center justify-between space-x-2">
+        <p>{children}</p>
+        {onClick && (
+          <IoIosArrowForward className="group-hover:text-red-400 transition-colors duration-200" />
+        )}
+      </div>
+    </div>
   );
 };
 
