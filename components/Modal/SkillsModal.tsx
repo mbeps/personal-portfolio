@@ -64,7 +64,14 @@ const SkillsModal: React.FC<SkillsModalProps> = ({
     <Modal isOpen={isOpen} onClose={onClose}>
       <HeadingTwo title="Skills" />
       <div className="flex mt-4">
-        <div className="flex-grow text-right mr-2">Group by:</div>
+        <div
+          className="
+          flex-grow mr-2 mt-2.5 
+          text-right text-neutral-700 dark:text-neutral-300
+          "
+        >
+          Group by:
+        </div>
         <Dropdown
           selected={groupedBy}
           options={["language", "category"]}
