@@ -47,3 +47,11 @@ yarn dev
 ```
 
 The application should now be running at http://localhost:3000.
+
+# **Running Application using Docker**
+
+You can build and run the application through Docker. 
+
+```sh
+docker-compose -f docker/docker-compose.yml up --build
+```
