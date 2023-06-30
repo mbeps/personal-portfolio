@@ -13,6 +13,7 @@ import {
   technologies,
 } from "@/types/languagesSkillsTechnologies";
 import TechnologiesModal from "../Modal/TechnologiesModal";
+import SkillsModal from "../Modal/SkillsModal";
 
 /**
  * About section component.
@@ -224,6 +225,16 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
  * @returns (JSX.Element): skill section (list of skills)
  */
 const SkillSection: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   /**
    * Creates a list of all skills from the languages array.
    * Removes any duplicate skills.
@@ -244,7 +255,22 @@ const SkillSection: React.FC = () => {
     return uniqueSkills;
   };
 
-  return <Section title="Skills" data={allSkills()} />;
+  return (
+    <>
+      <HeadingThree title="Technologies" />
+      <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
+        {allSkills().map((item, idx) => (
+          <Tag key={idx}>{item}</Tag>
+        ))}
+        <Tag onClick={handleOpenModal}>...</Tag>
+        <SkillsModal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          languages={languages}
+        />
+      </div>
+    </>
+  );
 };
 
 /**
