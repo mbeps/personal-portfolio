@@ -14,30 +14,6 @@ import TechnologiesModal from "../Modal/TechnologiesModal";
 import HeadingThree from "./Text/HeadingThree";
 
 /**
- * This hook is used to manage the state of the modal.
- * The modal can be opened or closed.
- * The modal is closed by default.
- * @returns (JSX.Element): hook to manage modal state
- */
-const useModal = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-
-  return {
-    isModalOpen,
-    handleOpenModal,
-    handleCloseModal,
-  };
-};
-
-/**
  * About section component.
  * Split into two sections: left and right.
  * Left section contains a short description of myself.
@@ -150,7 +126,15 @@ const Section: React.FC<SectionProps> = ({ title, data }) => (
  * Displays a list of languages that I know.
  */
 const LanguageSection: React.FC = () => {
-  const { isModalOpen, handleOpenModal, handleCloseModal } = useModal();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   const getSkillsByLanguage = (languageName: string): Skill[] => {
     const language = languages.find((lang) => lang.language === languageName);
@@ -201,10 +185,17 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
   language,
   skills,
   repositories,
-  handleOpenModal,
-  handleCloseModal,
-  isModalOpen,
 }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   const shouldOpenModal = skills.length > 0 || repositories.length > 0;
 
   return (
@@ -230,7 +221,15 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
  * @returns (JSX.Element): skill section (list of skills)
  */
 const SkillSection: React.FC = () => {
-  const { isModalOpen, handleOpenModal, handleCloseModal } = useModal();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   const allSkills = () => {
     let allSkills = languages.reduce((accumulator, language) => {
@@ -268,7 +267,15 @@ const SkillSection: React.FC = () => {
  * @returns (JSX.Element): technologies section (list of technologies)
  */
 const TechnologiesSection: React.FC = () => {
-  const { isModalOpen, handleOpenModal, handleCloseModal } = useModal();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   /**
    * Creates a list of all technologies from the technologies array (which has metadata).
