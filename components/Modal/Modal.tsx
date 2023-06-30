@@ -20,7 +20,7 @@ interface ModalProps {
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   return (
     <Transition.Root show={isOpen} as={Fragment}>
-      <Dialog as="div" className="relative z-50" onClose={onClose}>
+      <Dialog as="div" className="relative z-50 " onClose={onClose}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -36,7 +36,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
               inset-0 
               bg-neutral-300 dark:bg-neutral-700
               bg-opacity-90 dark:bg-opacity-90
-              transition-opacity
+              transition-all duration-700 ease-in-out
               backdrop-blur-md dark:backdrop-blur-md
             "
           />
@@ -76,7 +76,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
                   pt-5 
                   text-left 
                   shadow-xl 
-                  transition-all
+                  transition-all duration-700 ease-in-out
                   w-full
                   sm:my-8 
                   sm:w-full 
@@ -105,6 +105,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
                       hover:bg-gray-100 dark:hover:bg-stone-800
                       text-gray-400 dark:text-gray-500
                       hover:text-gray-500 dark:hover:text-red-900
+                      transition-colors duration-700 ease-in-out
                     "
                     onClick={onClose}
                   >
