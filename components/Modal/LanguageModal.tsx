@@ -98,7 +98,12 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
       )}
 
       {repositories && repositories.length > 0 && (
-        <div className="flex flex-wrap flex-col text-center justify-start z-10 mt-5 space-y-2">
+        <div
+          className="
+          flex flex-wrap flex-col 
+          text-center md:text-left 
+          justify-start z-10 mt-5 space-y-2"
+        >
           <HeadingThree title="Projects" />
           {repositories.map((repo, index) => (
             <Button
