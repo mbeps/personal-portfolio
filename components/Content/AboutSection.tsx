@@ -21,36 +21,6 @@ import {
  * @returns (JSX.Element): About section
  */
 const AboutSection = () => {
-  /**
-   * Creates a list of all languages from the languages array.
-   * This does not include any skills.
-   */
-  const allLanguages = languages.map((language) => language.language);
-
-  /**
-   * Creates a list of all skills from the languages array.
-   * Removes any duplicate skills.
-   *
-   * @returns (string[]): list of all skills
-   */
-  const allSkills = () => {
-    let allSkills = languages.reduce((accumulator, language) => {
-      if (language.skills) {
-        return accumulator.concat(language.skills.map((skill) => skill.skill));
-      } else {
-        return accumulator;
-      }
-    }, [] as string[]);
-
-    // Filtering to only include unique skills
-    let uniqueSkills = Array.from(new Set(allSkills));
-    return uniqueSkills;
-  };
-
-  const extractTechnologyNames = (technologies: Technology[]) => {
-    return technologies.map((technology) => technology.name);
-  };
-
   return (
     <section id="about" className="min-h-[85vh] ">
       <div className="my-12 pb-12 md:pt-16 md:pb-48">
@@ -115,13 +85,9 @@ const AboutSection = () => {
 
           {/* Right section */}
           <div className="text-center md:w-1/2 md:text-left">
-            {/* <Section title="Languages" data={allLanguages} /> */}
-            <LanguageSection title="Languages" languages={languages} />
-            <Section title="Skills" data={allSkills()} />
-            <Section
-              title="Technologies"
-              data={extractTechnologyNames(technologies)}
-            />
+            <LanguageSection />
+            <SkillSection />
+            <TechnologiesSection />
           </div>
         </div>
       </div>
@@ -156,18 +122,13 @@ const Section: React.FC<SectionProps> = ({ title, data }) => (
   </>
 );
 
-interface LanguageSectionProps {
-  title: string;
-  languages: Language[];
-}
-
 /**
  * Displays a list of languages that I know.
  */
-const LanguageSection: React.FC<LanguageSectionProps> = ({
-  title,
-  languages,
-}) => {
+const LanguageSection: React.FC = () => {
+  /**
+   * Gets the skills associated with a language.
+   */
   const getSkillsByLanguage = (languageName: string): Skill[] => {
     // Find the language in the languages array
     const language = languages.find((lang) => lang.language === languageName);
@@ -176,9 +137,15 @@ const LanguageSection: React.FC<LanguageSectionProps> = ({
     return language && language.skills ? language.skills : [];
   };
 
+  /**
+   * Creates a list of all languages from the languages array.
+   * This does not include any skills.
+   */
+  const allLanguages = languages.map((language) => language.language);
+
   return (
     <>
-      <HeadingThree title={title} />
+      <HeadingThree title="Languages" />
       <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
         {languages.map((languageData, idx) => (
           <LanguageTagWithModal
@@ -248,5 +215,53 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
         />
       )}
     </>
+  );
+};
+
+/**
+ * Displays a list of skills that I have.
+ * @returns (JSX.Element): skill section (list of skills)
+ */
+const SkillSection: React.FC = () => {
+  /**
+   * Creates a list of all skills from the languages array.
+   * Removes any duplicate skills.
+   *
+   * @returns (string[]): list of all skills
+   */
+  const allSkills = () => {
+    let allSkills = languages.reduce((accumulator, language) => {
+      if (language.skills) {
+        return accumulator.concat(language.skills.map((skill) => skill.skill));
+      } else {
+        return accumulator;
+      }
+    }, [] as string[]);
+
+    // Filtering to only include unique skills
+    let uniqueSkills = Array.from(new Set(allSkills));
+    return uniqueSkills;
+  };
+
+  return <Section title="Skills" data={allSkills()} />;
+};
+
+/**
+ * Displays a list of technologies that I have used.
+ * @returns (JSX.Element): technologies section (list of technologies)
+ */
+const TechnologiesSection: React.FC = () => {
+  /**
+   * Creates a list of all technologies from the technologies array (which has metadata).
+   * Then it returns a list of technology names without any metadata.
+   * @param technologies (Technology[]): list of technologies and metadata
+   * @returns (string[]): list of technology names
+   */
+  const extractTechnologyNames = (technologies: Technology[]) => {
+    return technologies.map((technology) => technology.name);
+  };
+
+  return (
+    <Section title="Technologies" data={extractTechnologyNames(technologies)} />
   );
 };
