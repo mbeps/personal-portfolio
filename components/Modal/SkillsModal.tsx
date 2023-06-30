@@ -1,15 +1,10 @@
-import React, { useState } from "react";
-import HeadingTwo from "../Content/Text/HeadingTwo";
-import HeadingThree from "../Content/Text/HeadingThree";
-import Modal from "./Modal";
+import { Language, Skill } from "@/types/languagesSkillsTechnologies";
+import React from "react";
 import Tag from "../Atoms/Tag";
-import Button from "../Atoms/Button";
-import {
-  Language,
-  Skill,
-  Repository,
-} from "@/types/languagesSkillsTechnologies";
-import Dropdown, { GroupedByType } from "../DropDown/DropDownMenu";
+import HeadingThree from "../Content/Text/HeadingThree";
+import HeadingTwo from "../Content/Text/HeadingTwo";
+import Modal from "./Modal";
+import Dropdown from "../DropDown/DropDownMenu";
 
 interface SkillsModalProps {
   languages: Language[];
@@ -31,15 +26,15 @@ const SkillsModal: React.FC<SkillsModalProps> = ({
   isOpen,
   onClose,
 }) => {
-  const [groupedBy, setGroupedBy] = React.useState<GroupedByType>("language");
+  const [groupedBy, setGroupedBy] = React.useState("language");
 
   /**
    * Allows to organize the skills by category or by language.
    * @param skills (Skill[]) The skills to organize
    * @returns (Record<string, Skill[]>): the skills organized by category
    */
-  const organizeSkills = (): Record<string, Skill[]> => {
-    let organizedSkills: Record<string, Skill[]> = {};
+  const organizeSkills = (): Record<string, Skill[]> | Skill[] => {
+    let organizedSkills: Record<string, Skill[]> | Skill[] = {};
 
     // If the skills are organized by language, we just need to return the skills
     if (groupedBy === "language") {
@@ -53,7 +48,7 @@ const SkillsModal: React.FC<SkillsModalProps> = ({
         {}
       );
       // if the skills are organized by category, we need to create an array of skills for each category
-    } else {
+    } else if (groupedBy === "category") {
       organizedSkills = languages.reduce(
         (acc: Record<string, Skill[]>, lang) => {
           if (lang.skills) {
@@ -69,6 +64,9 @@ const SkillsModal: React.FC<SkillsModalProps> = ({
         },
         {}
       );
+    } else {
+      // groupedBy === "none"
+      organizedSkills = languages.flatMap((lang) => lang.skills || []);
     }
 
     return organizedSkills;
@@ -90,20 +88,32 @@ const SkillsModal: React.FC<SkillsModalProps> = ({
         </div>
         <Dropdown
           selected={groupedBy}
-          options={["language", "category"]}
+          options={["language", "category", "none"]}
           setSelected={setGroupedBy}
         />
       </div>
-      {Object.entries(skills).map(([group, skills], index) => (
-        <div key={index} className="mt-4 text-center md:text-left">
-          <HeadingThree title={group} />
+      {groupedBy === "none" ? (
+        <div className="mt-4 text-center md:text-left">
           <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
             {(skills as Skill[]).map((skill, index) => (
               <Tag key={index}>{skill.skill}</Tag>
             ))}
           </div>
         </div>
-      ))}
+      ) : (
+        Object.entries(skills as Record<string, Skill[]>).map(
+          ([group, skills], index) => (
+            <div key={index} className="mt-4 text-center md:text-left">
+              <HeadingThree title={group} />
+              <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
+                {skills.map((skill, index) => (
+                  <Tag key={index}>{skill.skill}</Tag>
+                ))}
+              </div>
+            </div>
+          )
+        )
+      )}
     </Modal>
   );
 };

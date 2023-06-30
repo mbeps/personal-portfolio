@@ -78,9 +78,9 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
                   pt-5 
                   text-left 
                   shadow-xl 
-                  transition-all duration-700 ease-in-out
+                  transition-all duration-500 ease-in-out
                   w-full
-                  max-h-[70vh]
+                  max-h-[70vh] min-h-[70vh]
                   overflow-y-auto
                   sm:my-8 
                   sm:w-full 
