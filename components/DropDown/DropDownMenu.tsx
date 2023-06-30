@@ -27,15 +27,20 @@ const Dropdown: React.FC<DropdownProps> = ({
         <>
           <Menu.Button
             className={`
-						inline-flex justify-between items-center
-						w-full px-4 py-2 
-						text-base font-medium text-neutral-700 dark:text-neutral-200 capitalize
-						rounded-lg shadow-sm
-						bg-neutral-100 dark:bg-neutral-800 
-						border-2 ${open ? "border-red-500 dark:border-red-950" : "border-transparent"}
-						hover:border-red-500 dark:hover:border-red-950
-						transition-colors duration-500 ease-in-out
-						`}
+              inline-flex justify-between items-center
+              w-full md:w-48 // Change the width here
+              px-4 py-2 
+              text-base font-medium text-neutral-700 dark:text-neutral-200 capitalize
+              rounded-lg shadow-sm
+              bg-neutral-100 dark:bg-neutral-800 
+              border-2 ${
+                open
+                  ? "border-red-500 dark:border-red-950"
+                  : "border-transparent"
+              }
+              hover:border-red-500 dark:hover:border-red-950
+              transition-colors duration-500 ease-in-out
+            `}
           >
             {selected}
             <span className="ml-2">
