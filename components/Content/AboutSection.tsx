@@ -8,6 +8,7 @@ import {
   Language,
   Repository,
   Skill,
+  Technology,
   languages,
   technologies,
 } from "@/types/languagesSkillsTechnologies";
@@ -44,6 +45,10 @@ const AboutSection = () => {
     // Filtering to only include unique skills
     let uniqueSkills = Array.from(new Set(allSkills));
     return uniqueSkills;
+  };
+
+  const extractTechnologyNames = (technologies: Technology[]) => {
+    return technologies.map((technology) => technology.name);
   };
 
   return (
@@ -113,7 +118,10 @@ const AboutSection = () => {
             {/* <Section title="Languages" data={allLanguages} /> */}
             <LanguageSection title="Languages" languages={languages} />
             <Section title="Skills" data={allSkills()} />
-            <Section title="Technologies" data={technologies} />
+            <Section
+              title="Technologies"
+              data={extractTechnologyNames(technologies)}
+            />
           </div>
         </div>
       </div>

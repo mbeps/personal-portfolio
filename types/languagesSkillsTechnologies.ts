@@ -30,7 +30,19 @@ interface Language {
   repositories?: Repository[];
 }
 
-export type { Skill, Repository, Language };
+interface Technology {
+  name: string;
+  category?:
+    | "Version Control System"
+    | "Continuous Integration"
+    | "Database"
+    | "Containerization"
+    | "Web Development"
+    | "API"
+    | "Other";
+}
+
+export type { Skill, Repository, Language, Technology };
 
 /**
  * Array of skills for JavaScript and TypeScript.
@@ -117,18 +129,18 @@ const languages: Language[] = [
 /**
  * Array of technologies.
  */
-const technologies = [
-  "Git",
-  "SVN",
-  "Firebase",
-  "Supabase",
-  "GitHub Actions",
-  "Jenkins",
-  "Docker",
-  "REST",
-  "GraphQL",
-  "PostgreSQL",
-  "MongoDB",
+const technologies: Technology[] = [
+  { name: "Git", category: "Version Control System" },
+  { name: "SVN", category: "Version Control System" },
+  { name: "Firebase", category: "Web Development" },
+  { name: "Supabase", category: "Web Development" },
+  { name: "GitHub Actions", category: "Continuous Integration" },
+  { name: "Jenkins", category: "Continuous Integration" },
+  { name: "Docker", category: "Containerization" },
+  { name: "REST", category: "API" },
+  { name: "GraphQL", category: "API" },
+  { name: "PostgreSQL", category: "Database" },
+  { name: "MongoDB", category: "Database" },
 ];
 
 export { languages, technologies };
