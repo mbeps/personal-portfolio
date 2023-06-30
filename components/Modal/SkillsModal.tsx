@@ -9,6 +9,7 @@ import {
   Skill,
   Repository,
 } from "@/types/languagesSkillsTechnologies";
+import Dropdown, { GroupedByType } from "../Atoms/DropDownMenu";
 
 interface SkillsModalProps {
   languages: Language[];
@@ -21,9 +22,7 @@ const SkillsModal: React.FC<SkillsModalProps> = ({
   isOpen,
   onClose,
 }) => {
-  const [groupedBy, setGroupedBy] = useState<"language" | "category">(
-    "language"
-  );
+  const [groupedBy, setGroupedBy] = React.useState<GroupedByType>("language");
 
   const organizeSkills = (): Record<string, Skill[]> => {
     let organizedSkills: Record<string, Skill[]> = {};
@@ -63,16 +62,14 @@ const SkillsModal: React.FC<SkillsModalProps> = ({
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <div className="flex justify-between items-center">
-        <HeadingTwo title="Skills" />
-        <Button
-          onClick={() =>
-            setGroupedBy(groupedBy === "language" ? "category" : "language")
-          }
-          variant={"filled"}
-        >
-          Group by {groupedBy === "language" ? "Category" : "Language"}
-        </Button>
+      <HeadingTwo title="Skills" />
+      <div className="flex mt-4">
+        <div className="flex-grow text-right mr-2">Group by:</div>
+        <Dropdown
+          selected={groupedBy}
+          options={["language", "category"]}
+          setSelected={setGroupedBy}
+        />
       </div>
       {Object.entries(skills).map(([group, skills], index) => (
         <div key={index} className="mt-4 text-center md:text-left">
