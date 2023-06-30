@@ -12,6 +12,7 @@ import {
   languages,
   technologies,
 } from "@/types/languagesSkillsTechnologies";
+import TechnologiesModal from "../Modal/TechnologiesModal";
 
 /**
  * About section component.
@@ -251,17 +252,38 @@ const SkillSection: React.FC = () => {
  * @returns (JSX.Element): technologies section (list of technologies)
  */
 const TechnologiesSection: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   /**
    * Creates a list of all technologies from the technologies array (which has metadata).
    * Then it returns a list of technology names without any metadata.
-   * @param technologies (Technology[]): list of technologies and metadata
-   * @returns (string[]): list of technology names
    */
-  const extractTechnologyNames = (technologies: Technology[]) => {
-    return technologies.map((technology) => technology.name);
-  };
+  const extractTechnologyNames = technologies.map(
+    (technology) => technology.name
+  );
 
   return (
-    <Section title="Technologies" data={extractTechnologyNames(technologies)} />
+    <>
+      <HeadingThree title="Technologies" />
+      <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
+        {extractTechnologyNames.map((item, idx) => (
+          <Tag key={idx}>{item}</Tag>
+        ))}
+        <Tag onClick={handleOpenModal}>More</Tag>
+        <TechnologiesModal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          technologies={technologies}
+        />
+      </div>
+    </>
   );
 };
