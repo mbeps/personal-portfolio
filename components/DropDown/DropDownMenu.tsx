@@ -48,7 +48,7 @@ const Dropdown: React.FC<DropdownProps> = ({
             className="
 						absolute right-0 w-56 mt-2 origin-top-right 
 						bg-white dark:bg-neutral-800 divide-y divide-neutral-100 
-						rounded-xl shadow-lg 
+						rounded-xl shadow-lg p-1
 						ring-1 ring-black ring-opacity-5 
 						focus:outline-none
 						transition-colors duration-500 ease-in-out

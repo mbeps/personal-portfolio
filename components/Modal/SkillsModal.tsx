@@ -9,7 +9,7 @@ import {
   Skill,
   Repository,
 } from "@/types/languagesSkillsTechnologies";
-import Dropdown, { GroupedByType } from "../Atoms/DropDownMenu";
+import Dropdown, { GroupedByType } from "../DropDown/DropDownMenu";
 
 interface SkillsModalProps {
   languages: Language[];
