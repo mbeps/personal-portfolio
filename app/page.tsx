@@ -9,9 +9,11 @@ import ProjectsSection from "@/components/Content/ProjectSection/ProjectSection"
 export default function Home() {
   return (
     <main>
-      <HeroSection />
-      <AboutSection />
-      <ProjectsSection />
+      <div className="flex flex-col space-y-16">
+        <HeroSection />
+        <AboutSection />
+        <ProjectsSection />
+      </div>
     </main>
   );
 }
