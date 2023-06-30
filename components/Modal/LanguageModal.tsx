@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "./Modal";
 import HeadingTwo from "../Content/Text/HeadingTwo";
 import HeadingThree from "../Content/Text/HeadingThree";
 import Tag from "../Atoms/Tag";
 import Button from "../Atoms/Button";
 import { Repository, Skill } from "@/types/languagesSkillsTechnologies";
+import Dropdown from "../DropDown/DropDownMenu";
 
 interface ProjectModalProps {
   isOpen?: boolean; // whether the modal is open or not
@@ -34,6 +35,8 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
   isOpen,
   onClose,
 }) => {
+  const [groupedBy, setGroupedBy] = useState("category");
+
   /**
    * Organizes the skills by category.
    * For each category, it creates an array of skills.
@@ -56,19 +59,43 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
 
   const skillsByCategory = organizeSkillsByCategory(skills);
 
+  const handleClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
+  };
+
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <HeadingTwo title={language} />
-      {Object.entries(skillsByCategory).map(([category, skills], index) => (
-        <div key={index} className="mt-4 text-center md:text-left">
-          <HeadingThree title={category} />
+      <div className="flex mt-4">
+        <div className="flex-grow mr-2 mt-2.5 text-right text-neutral-700 dark:text-neutral-300">
+          Group by:
+        </div>
+        <Dropdown
+          selected={groupedBy}
+          options={["category", "none"]}
+          setSelected={setGroupedBy}
+        />
+      </div>
+      {groupedBy === "none" ? (
+        <div className="mt-4 text-center md:text-left">
           <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
             {skills.map((skill, index) => (
               <Tag key={index}>{skill.skill}</Tag>
             ))}
           </div>
         </div>
-      ))}
+      ) : (
+        Object.entries(skillsByCategory).map(([category, skills], index) => (
+          <div key={index} className="mt-4 text-center md:text-left">
+            <HeadingThree title={category} />
+            <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
+              {skills.map((skill, index) => (
+                <Tag key={index}>{skill.skill}</Tag>
+              ))}
+            </div>
+          </div>
+        ))
+      )}
 
       {repositories && repositories.length > 0 && (
         <div className="flex flex-wrap flex-col text-center justify-start z-10 mt-5 space-y-2">
