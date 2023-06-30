@@ -39,6 +39,52 @@ const MoreProjectsModal: React.FC<MoreProjectsModalProps> = ({
           University Projects
         </Button>
       </div>
+
+      <div className="border-b border-neutral-300 dark:border-neutral-700 mt-3" />
+
+      <p className="mt-5 text-lg text-center">
+        These are links to projects built using specific languages:
+      </p>
+      <div className="flex flex-wrap flex-col justify-start z-10 mt-5 space-y-2">
+        <Button
+          onClick="https://github.com/mbeps?tab=repositories&q=&type=&language=python&sort="
+          variant="ghost"
+        >
+          Python Projects
+        </Button>
+        <Button
+          onClick="https://github.com/mbeps?tab=repositories&q=&type=&language=jupyter+notebook&sort="
+          variant="ghost"
+        >
+          Jupyter Notebooks Projects
+        </Button>
+        <Button
+          onClick="https://github.com/mbeps?tab=repositories&q=&type=&language=java&sort="
+          variant="ghost"
+        >
+          Java Projects
+        </Button>
+        <Button
+          onClick="https://github.com/mbeps?tab=repositories&q=&type=&language=jupyter+notebook&sort="
+          variant="ghost"
+        >
+          TypeScript Projects
+        </Button>
+      </div>
+
+      <div className="border-b border-neutral-300 dark:border-neutral-700 mt-3" />
+
+      <p className="mt-5 text-lg text-center">
+        Bellow is the link to view all the repositories:
+      </p>
+      <div className="flex flex-wrap flex-col justify-start z-10 mt-5 space-y-2">
+        <Button
+          onClick="https://github.com/mbeps?tab=repositories"
+          variant="ghost"
+        >
+          GitHub Repositories
+        </Button>
+      </div>
     </Modal>
   );
 };
