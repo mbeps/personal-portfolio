@@ -17,6 +17,15 @@ interface SkillsModalProps {
   onClose: () => void; // function to close the modal
 }
 
+/**
+ * Displays a modal for the skills.
+ * The modal displays the skills organized by category or by language.
+ *
+ * @param languages (Language[]) The languages of the modal
+ * @param isOpen (boolean) Whether the modal is open or not
+ * @param onClose (function) Function to close the modal
+ * @returns (JSX.Element): modal component (stack of the project
+ */
 const SkillsModal: React.FC<SkillsModalProps> = ({
   languages,
   isOpen,
@@ -24,9 +33,15 @@ const SkillsModal: React.FC<SkillsModalProps> = ({
 }) => {
   const [groupedBy, setGroupedBy] = React.useState<GroupedByType>("language");
 
+  /**
+   * Allows to organize the skills by category or by language.
+   * @param skills (Skill[]) The skills to organize
+   * @returns (Record<string, Skill[]>): the skills organized by category
+   */
   const organizeSkills = (): Record<string, Skill[]> => {
     let organizedSkills: Record<string, Skill[]> = {};
 
+    // If the skills are organized by language, we just need to return the skills
     if (groupedBy === "language") {
       organizedSkills = languages.reduce(
         (acc: Record<string, Skill[]>, lang) => {
@@ -37,6 +52,7 @@ const SkillsModal: React.FC<SkillsModalProps> = ({
         },
         {}
       );
+      // if the skills are organized by category, we need to create an array of skills for each category
     } else {
       organizedSkills = languages.reduce(
         (acc: Record<string, Skill[]>, lang) => {

@@ -24,6 +24,11 @@ const TechnologiesModal: React.FC<TechnologiesModalProps> = ({
   isOpen,
   onClose,
 }) => {
+  /**
+   * Organizes the technologies by category.
+   * For each category, it creates an array of technologies.
+   * @param technologies (Technology[]) The technologies to organize
+   */
   const organizeTechnologiesByCategory = (technologies: Technology[]) => {
     return technologies.reduce(
       (accumulator: { [category: string]: Technology[] }, tech: Technology) => {

@@ -20,6 +20,11 @@ interface ProjectModalProps {
  * If the language does not have any skills or repositories, the modal cannot be opened.
  * It also displays buttons to open the repositories.
  * The skills are organized by category.
+ * @param isOpen (boolean) Whether the modal is open or not
+ * @param onClose (function) Function to close the modal
+ * @param language (string) The language of the modal
+ * @param skills (Skill[]) The skills of the language
+ * @param repositories (Repository[]) The repositories of the language
  * @returns (JSX.Element): modal component (stack of the project
  */
 const LanguageModal: React.FC<ProjectModalProps> = ({
@@ -29,6 +34,12 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
   isOpen,
   onClose,
 }) => {
+  /**
+   * Organizes the skills by category.
+   * For each category, it creates an array of skills.
+   * @param skills (Skill[]) The skills to organize
+   * @returns (Record<string, Skill[]>): the skills organized by category
+   */
   const organizeSkillsByCategory = (skills: Skill[]) => {
     return skills.reduce(
       (accumulator: { [category: string]: Skill[] }, skill: Skill) => {

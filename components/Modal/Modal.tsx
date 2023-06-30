@@ -14,7 +14,9 @@ interface ModalProps {
  * Base modal component which is displayed on top of the page.
  * The body of the modal is passed as a child.
  *
- * @param param0 : ModalProps
+ * @param isOpen (boolean) Whether the modal is open or not
+ * @param onClose (function) Function to close the modal
+ * @param children (React.ReactNode) The body of the modal
  * @returns (JSX.Element): base modal component
  */
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {

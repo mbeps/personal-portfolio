@@ -10,6 +10,14 @@ interface DropdownProps {
   setSelected: React.Dispatch<React.SetStateAction<GroupedByType>>;
 }
 
+/**
+ * Dropdown menu for selecting options.
+ *
+ * @param selected (GroupedByType) The selected option
+ * @param options (GroupedByType[]) The list of options
+ * @param setSelected (React.Dispatch<React.SetStateAction<GroupedByType>>) The function to set the selected option
+ * @returns (JSX.Element): a dropdown menu
+ */
 const Dropdown: React.FC<DropdownProps> = ({
   selected,
   options,
