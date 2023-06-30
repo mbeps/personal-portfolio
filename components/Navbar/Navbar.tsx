@@ -118,17 +118,30 @@ export default function Navbar() {
   );
 }
 
+/**
+ * Home button component.
+ * When clicked, scrolls to the top of the page if the user is already on the home page.
+ * Otherwise, navigates to the home page.
+ * @returns (JSX.Element): Home button component
+ */
 const HomeButton: React.FC = () => {
   const router = useRouter();
   const pathname = usePathname();
 
+  /**
+   * Scrolls to the top of the page if the user is already on the home page.
+   * Otherwise, navigates to the home page.
+   */
   const navigateHome = () => {
     const homeElement = document.getElementById("home");
+
+    // If the user is already on the home page, scroll to the top of the page
     if (pathname === "/" && homeElement) {
       window.scrollTo({
         top: homeElement.offsetTop,
         behavior: "smooth",
       });
+      // Otherwise, navigate to the home page
     } else {
       router.push("/");
     }
@@ -139,7 +152,15 @@ const HomeButton: React.FC = () => {
       onClick={navigateHome}
       className="container flex items-center space-x-2 cursor-pointer"
     >
-      <h2 className="text-2xl font-bold">Maruf Bepary</h2>
+      <h2
+        className="
+        text-2xl font-bold
+        hover:text-red-500 dark:hover:text-red-800
+        transition-colors duration-700 ease-in-out
+        "
+      >
+        Maruf Bepary
+      </h2>
     </div>
   );
 };
