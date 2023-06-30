@@ -2,20 +2,18 @@ import React, { useState } from "react";
 import { Menu } from "@headlessui/react";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 
-type GroupedByType = "language" | "category";
-
 interface DropdownProps {
-  selected: GroupedByType;
-  options: GroupedByType[];
-  setSelected: React.Dispatch<React.SetStateAction<GroupedByType>>;
+  selected: string;
+  options: string[];
+  setSelected: React.Dispatch<React.SetStateAction<string>>;
 }
 
 /**
  * Dropdown menu for selecting options.
  *
- * @param selected (GroupedByType) The selected option
- * @param options (GroupedByType[]) The list of options
- * @param setSelected (React.Dispatch<React.SetStateAction<GroupedByType>>) The function to set the selected option
+ * @param selected (string) The selected option
+ * @param options (string[]) The list of options
+ * @param setSelected (React.Dispatch<React.SetStateAction<string>>) The function to set the selected option
  * @returns (JSX.Element): a dropdown menu
  */
 const Dropdown: React.FC<DropdownProps> = ({
@@ -31,7 +29,7 @@ const Dropdown: React.FC<DropdownProps> = ({
             className={`
 						inline-flex justify-between items-center
 						w-full px-4 py-2 
-						text-base font-medium text-neutral-700 dark:text-neutral-200	 capitalize
+						text-base font-medium text-neutral-700 dark:text-neutral-200 capitalize
 						rounded-lg shadow-sm
 						bg-neutral-100 dark:bg-neutral-800 
 						border-2 ${open ? "border-red-500 dark:border-red-950" : "border-transparent"}
@@ -48,7 +46,7 @@ const Dropdown: React.FC<DropdownProps> = ({
             className="
 						absolute right-0 w-56 mt-2 origin-top-right 
 						bg-white dark:bg-neutral-800 divide-y divide-neutral-100 
-						rounded-xl shadow-lg 
+						rounded-xl shadow-lg p-1
 						ring-1 ring-black ring-opacity-5 
 						focus:outline-none
 						transition-colors duration-500 ease-in-out
@@ -81,4 +79,3 @@ const Dropdown: React.FC<DropdownProps> = ({
 };
 
 export default Dropdown;
-export type { GroupedByType };
