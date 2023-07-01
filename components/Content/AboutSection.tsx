@@ -317,18 +317,64 @@ const TechnologiesSection: React.FC = () => {
   };
 
   /**
-   * Creates a list of all technologies from the technologies array (which has metadata).
-   * Then it returns a list of technology names without any metadata.
+   * Function to display a limited number of technology names for each category.
+   * It does not include duplicate technologies.
+   * It limits the number of technologies per category to a configurable number.
+   * @returns (string[]): list of N technology names for each category
    */
-  const extractTechnologyNames = technologies.map(
-    (technology) => technology.name
-  );
+  const firstNTechPerCategory = () => {
+    const TECH_LIMIT = 3; // Configurable number of tech
+    let techByCategory: { [key: string]: string[] } = {};
+
+    // Organize technologies by category
+    technologies.forEach((tech) => {
+      if (tech.category) {
+        // If tech has a category
+        if (!techByCategory[tech.category]) techByCategory[tech.category] = []; // If category does not exist, create it
+        techByCategory[tech.category].push(tech.name); // Add tech to category
+      }
+    });
+
+    // Get first 'TECH_LIMIT' tech for each category
+    for (let category in techByCategory) {
+      // For each category
+      techByCategory[category] = Array.from(
+        // Remove duplicate tech
+        new Set(techByCategory[category]) // Remove duplicate tech
+      ).slice(0, TECH_LIMIT); // Get the first 'TECH_LIMIT' tech
+    }
+
+    // Flatten the array and return
+    return Object.values(techByCategory).flat();
+  };
+
+  /**
+   * Function to display a limited number of technology names from all categories.
+   * @returns (string[]): list of N technology names from all categories
+   */
+  const firstNTech = () => {
+    const TECH_LIMIT = 2; // Configurable number of tech
+
+    let allTech = technologies.map((tech) => tech.name);
+    let uniqueTech = Array.from(new Set(allTech)); // Remove duplicate tech
+
+    // Return first 'TECH_LIMIT' tech
+    return uniqueTech.slice(0, TECH_LIMIT); // Get the first 'TECH_LIMIT' tech
+  };
+
+  /**
+   * Function to handle the display of technologies.
+   */
+  const handleDisplayTech = () => {
+    // return firstNTech();
+    return firstNTechPerCategory();
+  };
 
   return (
     <>
       <HeadingThree title="Technologies" />
       <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-        {extractTechnologyNames.map((item, idx) => (
+        {handleDisplayTech().map((item, idx) => (
           <Tag key={idx}>{item}</Tag>
         ))}
         <Tag onClick={handleOpenModal}>...</Tag>

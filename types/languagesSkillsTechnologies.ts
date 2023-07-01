@@ -39,6 +39,8 @@ interface Technology {
     | "Containerization"
     | "Web Development"
     | "API"
+    | "Backend Web Development"
+    | "Frontend Web Development"
     | "Other";
 }
 
@@ -54,7 +56,6 @@ const JavaScriptTypeScriptSkills: Skill[] = [
   { skill: "NextAuth", category: "Backend Web Development" },
   { skill: "Jest", category: "Testing" },
   { skill: "Vitest", category: "Testing" },
-  { skill: "Tailwind CSS", category: "Frontend Web Development" },
   { skill: "Chakra UI", category: "Frontend Web Development" },
 ];
 
@@ -132,8 +133,11 @@ const languages: Language[] = [
 const technologies: Technology[] = [
   { name: "Git", category: "Version Control System" },
   { name: "SVN", category: "Version Control System" },
-  { name: "Firebase", category: "Web Development" },
-  { name: "Supabase", category: "Web Development" },
+  { name: "Firebase", category: "Backend Web Development" },
+  { name: "Supabase", category: "Backend Web Development" },
+  { name: "Tailwind CSS", category: "Frontend Web Development" },
+  { name: "Radix UI", category: "Frontend Web Development" },
+  { name: "Headless UI", category: "Frontend Web Development" },
   { name: "GitHub Actions", category: "Continuous Integration" },
   { name: "Jenkins", category: "Continuous Integration" },
   { name: "Docker", category: "Containerization" },
