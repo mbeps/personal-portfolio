@@ -30,24 +30,41 @@ const SkillsModal: React.FC<SkillsModalProps> = ({
 
   /**
    * Allows to organize the skills by category or by language.
+   * Removes duplicates.
    * @param skills (Skill[]) The skills to organize
    * @returns (Record<string, Skill[]>): the skills organized by category
    */
   const organizeSkills = (): Record<string, Skill[]> | Skill[] => {
     let organizedSkills: Record<string, Skill[]> | Skill[] = {};
 
+    // Helper function to remove duplicates
+    const removeDuplicates = (skills: Skill[]): Skill[] => {
+      const skillSet = new Set();
+      const uniqueSkills: Skill[] = [];
+
+      skills.forEach((skill) => {
+        const serializedSkill = JSON.stringify(skill);
+        if (!skillSet.has(serializedSkill)) {
+          skillSet.add(serializedSkill);
+          uniqueSkills.push(skill);
+        }
+      });
+
+      return uniqueSkills;
+    };
+
     // If the skills are organized by language, we just need to return the skills
     if (groupedBy === "language") {
       organizedSkills = languages.reduce(
         (acc: Record<string, Skill[]>, lang) => {
           if (lang.skills) {
-            acc[lang.language] = lang.skills;
+            acc[lang.language] = removeDuplicates(lang.skills);
           }
           return acc;
         },
         {}
       );
-      // if the skills are organized by category, we need to create an array of skills for each category
+      // If the skills are organized by category, we need to create an array of skills for each category
     } else if (groupedBy === "category") {
       organizedSkills = languages.reduce(
         (acc: Record<string, Skill[]>, lang) => {
@@ -59,6 +76,11 @@ const SkillsModal: React.FC<SkillsModalProps> = ({
               }
               acc[category].push(skill);
             });
+
+            // Remove duplicates for each category
+            Object.keys(acc).forEach((category) => {
+              acc[category] = removeDuplicates(acc[category]);
+            });
           }
           return acc;
         },
@@ -66,7 +88,8 @@ const SkillsModal: React.FC<SkillsModalProps> = ({
       );
     } else {
       // groupedBy === "none"
-      organizedSkills = languages.flatMap((lang) => lang.skills || []);
+      const allSkills = languages.flatMap((lang) => lang.skills || []);
+      organizedSkills = removeDuplicates(allSkills);
     }
 
     return organizedSkills;
