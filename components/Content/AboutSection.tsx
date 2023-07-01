@@ -311,7 +311,7 @@ const SkillSection: React.FC = () => {
 
   return (
     <>
-      <HeadingThree title="Skills" />
+      <HeadingThree title="Language Skills" />
       <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
         {handleDisplaySkills().map((item, idx) => (
           <Tag key={idx}>{item}</Tag>
