@@ -231,24 +231,63 @@ const SkillSection: React.FC = () => {
     setIsModalOpen(false);
   };
 
-  const allSkills = () => {
+  /**
+   * Creates a list of skills from the languages array (which has metadata).
+   * It does not include duplicate skills.
+   * It limits the number of skills per language to a configurable number.
+   * @returns (string[]): list of all skills
+   */
+  const displaySkills = () => {
+    const SKILL_LIMIT_PER_LANGUAGE = 6; // Configurable number of skills
     let allSkills = languages.reduce((accumulator, language) => {
       if (language.skills) {
-        return accumulator.concat(language.skills.map((skill) => skill.skill));
+        // Get the first 'SKILL_LIMIT_PER_LANGUAGE' skills for each language
+        let limitedSkills = language.skills.slice(0, SKILL_LIMIT_PER_LANGUAGE); // Get the first 'SKILL_LIMIT_PER_LANGUAGE' skills for each language
+        return accumulator.concat(limitedSkills.map((skill) => skill.skill)); // Get all skills for each language
       } else {
-        return accumulator;
+        return accumulator; // If language does not have any skills, return accumulator
       }
     }, [] as string[]);
 
-    let uniqueSkills = Array.from(new Set(allSkills));
-    return uniqueSkills;
+    let uniqueSkills = Array.from(new Set(allSkills)); // Remove duplicate skills
+    return uniqueSkills; // Return all skills
+  };
+
+  /**
+   * Creates a list of all skills from the languages array (which has metadata).
+   * It does not include duplicate skills.
+   * It limits the number of skills to a configurable number.
+   * @returns (string[]): list of all skillsq
+   */
+  const firstNSkills = () => {
+    const SKILL_LIMIT = 15; // Configurable number of skills
+    let allSkills = languages.reduce((accumulator, language) => {
+      if (language.skills) {
+        return accumulator.concat(language.skills.map((skill) => skill.skill)); // Get all skills for each language
+      } else {
+        return accumulator; // If language does not have any skills, return accumulator
+      }
+    }, [] as string[]);
+
+    let uniqueSkills = Array.from(new Set(allSkills)); // Remove duplicate skills
+
+    // Return first 'SKILL_LIMIT' skills
+    return uniqueSkills.slice(0, SKILL_LIMIT); // Get the first 'SKILL_LIMIT' skills
+  };
+
+  /**
+   * Displays a list of skills.
+   */
+  const handleDisplaySkills = () => {
+    return firstNSkills();
+    // return displaySkills();
   };
 
   return (
     <>
       <HeadingThree title="Skills" />
       <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-        {allSkills().map((item, idx) => (
+        {handleDisplaySkills().map((item, idx) => (
           <Tag key={idx}>{item}</Tag>
         ))}
         <Tag onClick={handleOpenModal}>...</Tag>
