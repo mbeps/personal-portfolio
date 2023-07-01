@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { RiMoonFill, RiSunLine } from "react-icons/ri";
@@ -7,14 +9,13 @@ import { RiMoonFill, RiSunLine } from "react-icons/ri";
  * @returns (JSX.Element): a button to toggle the theme (dark or light)
  */
 const ThemeToggle: React.FC = () => {
-  const { systemTheme, theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const [currentTheme, setCurrentTheme] = useState<string>();
 
   // Checks the current theme and sets it to the current theme.
   useEffect(() => {
-    const appliedTheme = theme === "system" ? systemTheme : theme;
-    setCurrentTheme(appliedTheme || "light");
-  }, [theme, systemTheme]);
+    setCurrentTheme(resolvedTheme);
+  }, [resolvedTheme]);
 
   /**
    * Toggle the theme (dark or light).
