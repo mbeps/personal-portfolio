@@ -85,6 +85,17 @@ const MoreProjectsModal: React.FC<MoreProjectsModalProps> = ({
           GitHub Repositories
         </Button>
       </div>
+
+      <div className="border-b border-neutral-300 dark:border-neutral-700 mt-3" />
+
+      <p className="mt-5 text-lg text-center">
+        Bellow is the link to view the games I created using GameMaker:
+      </p>
+      <div className="flex flex-wrap flex-col justify-start z-10 mt-5 space-y-2">
+        <Button onClick="https://bepary-games.itch.io/" variant="ghost">
+          Itch.io Profile
+        </Button>
+      </div>
     </Modal>
   );
 };
