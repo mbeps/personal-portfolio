@@ -34,13 +34,12 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
         >
           <div
             className="
-              fixed 
-              inset-0 
-              bg-neutral-300 dark:bg-neutral-700
-              bg-opacity-90 dark:bg-opacity-90
-              transition-all duration-700 ease-in-out
-              backdrop-blur-md dark:backdrop-blur-md
-            "
+            fixed 
+            inset-0 
+            bg-neutral-300 dark:bg-neutral-700
+            backdrop-blur-md bg-opacity-50 dark:bg-opacity-30
+            transition-all duration-700 ease-in-out
+          "
           />
         </Transition.Child>
 
@@ -77,7 +76,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
                   pb-4
                   pt-5 
                   text-left 
-                  shadow-xl 
+                  shadow-2xl
                   transition-all duration-500 ease-in-out
                   w-full
                   max-h-[70vh] min-h-[70vh]
@@ -90,6 +89,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
               >
                 <div
                   className="
+
                     absolute 
                     right-0 
                     top-0 
