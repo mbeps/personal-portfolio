@@ -7,8 +7,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { BsArrowUpRightSquare, BsGithub } from "react-icons/bs";
-import { IoInformationCircleOutline, IoReaderOutline } from "react-icons/io5";
 import { ImStack } from "react-icons/im";
+import { IoReaderOutline } from "react-icons/io5";
 import SlideUp from "./Slideup";
 
 /**
@@ -67,7 +67,10 @@ const ProjectItem: React.FC<Project> = ({
                 alt=""
                 width={1000}
                 height={1000}
-                className="rounded-xl shadow-xl hover:opacity-70 cursor-pointer"
+                className="
+                    rounded-xl shadow-xl 
+                    transform hover:scale-105 transition-transform duration-500 ease-in-out
+                    cursor-pointer"
                 onClick={handleClick}
               />
             </div>
