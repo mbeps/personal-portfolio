@@ -63,8 +63,7 @@ const TechnologiesModal: React.FC<TechnologiesModalProps> = ({
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <HeadingTwo title="Technologies" />
+    <Modal title="Technologies" isOpen={isOpen} onClose={onClose}>
       <div className="flex mt-4">
         <div className="flex-grow mr-2 mt-2.5 text-right text-neutral-700 dark:text-neutral-300">
           Group by:

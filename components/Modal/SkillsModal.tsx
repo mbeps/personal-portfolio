@@ -98,8 +98,7 @@ const SkillsModal: React.FC<SkillsModalProps> = ({
   const skills = organizeSkills();
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <HeadingTwo title="Skills" />
+    <Modal title="Language Skills" isOpen={isOpen} onClose={onClose}>
       <div className="flex mt-4">
         <div
           className="

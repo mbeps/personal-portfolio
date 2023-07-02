@@ -1,13 +1,15 @@
 "use client";
 
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { IoClose } from "react-icons/io5";
+import HeadingTwo from "../Content/Text/HeadingTwo";
 
 interface ModalProps {
   isOpen?: boolean; // whether the modal is open or not
   onClose: () => void; // function to close the modal
   children: React.ReactNode; // children of the modal (the body)
+  title: string;
 }
 
 /**
@@ -19,7 +21,7 @@ interface ModalProps {
  * @param children (React.ReactNode) The body of the modal
  * @returns (JSX.Element): base modal component
  */
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, title }) => {
   return (
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-50 " onClose={onClose}>
@@ -66,16 +68,11 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
             >
               <Dialog.Panel
                 className="
-                  relative 
                   transform 
                   overflow-hidden 
                   rounded-xl 
                   bg-white dark:bg-stone-900
                   text-black dark:text-white
-                  px-4 
-                  pb-4
-                  pt-5 
-                  text-left 
                   shadow-2xl
                   transition-all duration-500 ease-in-out
                   w-full
@@ -84,40 +81,41 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
                   sm:my-8 
                   sm:w-full 
                   sm:max-w-lg 
-                  sm:p-6
+                  sm:p-0
                 "
               >
+                {/* Title and Close Button */}
                 <div
-                  className="
-
-                    absolute 
-                    right-0 
+                  className={`
+                    sticky 
                     top-0 
-                    w-full
-                    pr-4 
-                    pt-4 
-                    block
-                    z-10
-                  "
+                    bg-white dark:bg-stone-900
+                    z-10 
+                    flex flex-col space-y-2 
+                    transition-all duration-500 ease-in-out
+                    `}
                 >
                   <button
                     type="button"
-                    className="
-                      float-right
+                    className={`
+                      self-end
                       rounded-lg 
+                      m-4 sm:m-3
                       bg-white dark:bg-stone-900 
                       hover:bg-gray-100 dark:hover:bg-stone-800
                       text-gray-400 dark:text-gray-500
                       hover:text-gray-500 dark:hover:text-red-900
                       transition-colors duration-700 ease-in-out
-                    "
+                    `}
                     onClick={onClose}
                   >
                     <span className="sr-only">Close</span>
                     <IoClose className="h-7 w-7" aria-hidden="true" />
                   </button>
+                  <HeadingTwo title={title} />
                 </div>
-                <div className="py-8">{children}</div>
+                {/* Content */}
+                <div className="py-8 px-4 sm:px-8">{children}</div>
               </Dialog.Panel>
             </Transition.Child>
           </div>

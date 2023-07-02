@@ -20,8 +20,7 @@ const MoreProjectsModal: React.FC<MoreProjectsModalProps> = ({
   onClose,
 }) => {
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <HeadingTwo title="More Projects" />
+    <Modal title="More Projects" isOpen={isOpen} onClose={onClose}>
       <p className="mt-5 text-lg text-center">
         These are links to other collections of projects:
       </p>
