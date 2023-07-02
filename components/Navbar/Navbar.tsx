@@ -23,8 +23,8 @@ const NAV_ITEMS: Array<NavItem> = [
     page: "/projects",
   },
   {
-    label: "Posts",
-    page: "/posts",
+    label: "Blog",
+    page: "/blogs",
   },
 ];
 

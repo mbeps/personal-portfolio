@@ -1,15 +1,15 @@
-import { PostMetadata } from "@/types/post";
+import { BlogMetadata } from "@/types/blog";
 import Link from "next/link";
 import React from "react";
 
 /**
- * Displays a card which allows the user to open a post.
- * @param props: Post metadata used in the card
- * @returns (JSX.Element): card with post metadata
+ * Displays a card which allows the user to open a blog.
+ * @param props: Blog metadata used in the card
+ * @returns (JSX.Element): card with blog metadata
  */
-const PostItem: React.FC<PostMetadata> = (props) => {
+const BlogItem: React.FC<BlogMetadata> = (props) => {
   return (
-    <Link href={`/posts/${props.slug}`}>
+    <Link href={`/blogs/${props.slug}`}>
       <div
         className="
         flex flex-col 
@@ -45,4 +45,4 @@ const PostItem: React.FC<PostMetadata> = (props) => {
   );
 };
 
-export default PostItem;
+export default BlogItem;
