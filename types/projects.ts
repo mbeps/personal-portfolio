@@ -25,7 +25,7 @@ const webdevProjects: Project[] = [
     imageURL: `/projects/circus-discussions-fyp.png`,
     repoURL: `https://github.com/mbeps/next_discussion_platform`,
     siteURL: `https://circus-discussion.vercel.app/`,
-    articleURL: `/posts/project-circus-discussion`,
+    articleURL: `/blogs/project-circus-discussion`,
     programmingLanguage: `TypeScript`,
     technologies: [
       `Next.JS`,
@@ -43,7 +43,7 @@ const webdevProjects: Project[] = [
     imageURL: `/projects/ringmaster-messaging.png`,
     repoURL: `https://github.com/mbeps/ringmaster-messaging`,
     siteURL: `https://ringmaster-messaging.vercel.app/`,
-    articleURL: `/posts/project-ringmaster-messaging`,
+    articleURL: `/blogs/project-ringmaster-messaging`,
     programmingLanguage: `TypeScript`,
     technologies: [
       "Next.JS",
@@ -65,7 +65,7 @@ const webdevProjects: Project[] = [
       This was my first major project using Supabase.`,
     imageURL: `/projects/drumroll-music.png`,
     repoURL: `https://github.com/mbeps/drumroll-music`,
-    articleURL: `/posts/project-drumroll-music`,
+    articleURL: `/blogs/project-drumroll-music`,
     programmingLanguage: `TypeScript`,
     technologies: [
       `Next.JS`,
