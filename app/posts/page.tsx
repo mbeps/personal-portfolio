@@ -21,7 +21,8 @@ export default function Posts() {
           <HeadingOne title="Posts" />
           <div className="border-b border-gray-200 dark:border-neutral-600 mt-16" />
           <div className="my-12 pb-12 md:pt-2 md:pb-36">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-14 ">
+            {/* Post List */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-14 ">
               {postMetadata.length > 0 ? (
                 postMetadata.map((post) => (
                   <PostItem key={post.slug} {...post} />
