@@ -1,6 +1,6 @@
 import { useRouter } from "next/navigation";
-import React, { useContext } from "react";
-import { NavbarContext } from "./Navbar";
+import React from "react";
+import { useNavbarStore } from "@/atoms/navbarStore";
 
 interface NavbarItemProps {
   to: string;
@@ -20,14 +20,15 @@ interface NavbarItemProps {
  * @param active (boolean) Whether the navbar item is active
  * @returns (JSX.Element): a navbar item to be displayed on the navbar
  */
-const NavbarItem = ({
+
+const NavbarItem: React.FC<NavbarItemProps> = ({
   to,
   children,
   isSamePage = false,
   active = false,
-}: NavbarItemProps) => {
+}) => {
   const router = useRouter();
-  const { setNavbar } = useContext(NavbarContext); // get the setNavbar function from context
+  const { toggle } = useNavbarStore();
 
   /**
    * Handles the click event of the navbar item.
@@ -48,7 +49,7 @@ const NavbarItem = ({
     } else {
       router.push(to);
     }
-    setNavbar(false); // close the navbar when a button is clicked
+    toggle(); // close the navbar when a button is clicked
   };
 
   const navbarItemStyle = `
