@@ -4,6 +4,7 @@ import React, { createContext, useEffect, useState } from "react";
 import { IoMdClose, IoMdMenu } from "react-icons/io";
 import NavbarItem from "./NavbarItem";
 import ThemeToggle from "./ThemeToggle";
+import { useNavbarStore } from "@/atoms/navbarStore";
 
 interface NavItem {
   label: string;
@@ -27,11 +28,6 @@ const NAV_ITEMS: Array<NavItem> = [
     page: "/blogs",
   },
 ];
-
-export const NavbarContext = createContext({
-  setNavbar: (_: boolean) => {},
-});
-
 /**
  * Navbar component shown at the top of the page.
  *
@@ -39,10 +35,10 @@ export const NavbarContext = createContext({
  */
 export default function Navbar() {
   const pathname = usePathname();
-  const [navbar, setNavbar] = useState(false);
 
   // State to hold whether the user has scrolled or not
   const [scrolled, setScrolled] = useState(false);
+  const { isOpen: navbar, toggle: setNavbar } = useNavbarStore();
 
   // This effect will run every time the user scrolls
   useEffect(() => {
@@ -61,9 +57,8 @@ export default function Navbar() {
   }, []);
 
   return (
-    <NavbarContext.Provider value={{ setNavbar }}>
-      <header
-        className={`
+    <header
+      className={`
         w-full mx-auto  
         px-4 
         sm:px-20 
@@ -75,62 +70,58 @@ export default function Navbar() {
         transition-all duration-700 ease-in-out
         backdrop-blur-lg bg-opacity-80 dark:bg-opacity-80 
       `}
-      >
-        <div className="justify-between md:items-center md:flex">
-          <div>
-            <div className="flex items-center justify-between py-3 md:py-5 md:block">
-              <HomeButton />
-              <div className="md:hidden flex items-center">
-                {/* Dark / Light Mode toggle for mobile */}
-                <ThemeToggle />
-                {/* Hamburger menu */}
-                <button
-                  className="p-2 
+    >
+      <div className="justify-between md:items-center md:flex">
+        <div>
+          <div className="flex items-center justify-between py-3 md:py-5 md:block">
+            <HomeButton />
+            <div className="md:hidden flex items-center">
+              {/* Dark / Light Mode toggle for mobile */}
+              <ThemeToggle />
+              {/* Hamburger menu */}
+              <button
+                className="p-2 
                   text-neutral-800 dark:text-neutral-200 
                   rounded-xl 
                   outline-none ml-2"
-                  onClick={() => setNavbar(!navbar)}
-                >
-                  {navbar ? <IoMdClose size={30} /> : <IoMdMenu size={30} />}
-                </button>
-              </div>
+                onClick={() => setNavbar()}
+              >
+                {navbar ? <IoMdClose size={30} /> : <IoMdMenu size={30} />}
+              </button>
             </div>
           </div>
+        </div>
 
-          <div>
-            <div
-              className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
-                navbar ? "block" : "hidden"
-              }`}
-            >
-              <div className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-                {/* Links  */}
-                {NAV_ITEMS.map((item) => {
-                  return (
-                    <div
-                      key={item.label}
-                      className="flex justify-center w-full md:w-auto"
-                    >
-                      <NavbarItem
-                        to={item.page}
-                        active={pathname === item.page}
-                      >
-                        {item.label}
-                      </NavbarItem>
-                    </div>
-                  );
-                })}
+        <div>
+          <div
+            className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
+              navbar ? "block" : "hidden"
+            }`}
+          >
+            <div className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
+              {/* Links  */}
+              {NAV_ITEMS.map((item) => {
+                return (
+                  <div
+                    key={item.label}
+                    className="flex justify-center w-full md:w-auto"
+                  >
+                    <NavbarItem to={item.page} active={pathname === item.page}>
+                      {item.label}
+                    </NavbarItem>
+                  </div>
+                );
+              })}
 
-                {/* Dark / Light Mode toggle for desktop */}
-                <div className="hidden md:block">
-                  <ThemeToggle />
-                </div>
+              {/* Dark / Light Mode toggle for desktop */}
+              <div className="hidden md:block">
+                <ThemeToggle />
               </div>
             </div>
           </div>
         </div>
-      </header>
-    </NavbarContext.Provider>
+      </div>
+    </header>
   );
 }
 
