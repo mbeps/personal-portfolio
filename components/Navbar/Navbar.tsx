@@ -1,6 +1,6 @@
 "use client"; // this is a client component
 import { usePathname, useRouter } from "next/navigation";
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { IoMdClose, IoMdMenu } from "react-icons/io";
 import NavbarItem from "./NavbarItem";
 import ThemeToggle from "./ThemeToggle";
@@ -41,6 +41,25 @@ export default function Navbar() {
   const pathname = usePathname();
   const [navbar, setNavbar] = useState(false);
 
+  // State to hold whether the user has scrolled or not
+  const [scrolled, setScrolled] = useState(false);
+
+  // This effect will run every time the user scrolls
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 0;
+      setScrolled(isScrolled);
+    };
+
+    // Attach the scroll listener
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup function to remove the listener when the component unmounts
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <NavbarContext.Provider value={{ setNavbar }}>
       <header
@@ -51,12 +70,11 @@ export default function Navbar() {
         fixed 
         top-0 
         z-50 
-        shadow-lg dark:shadow-none
-        dark:border-b border-neutral-700
+        ${scrolled ? "shadow-lg " : ""} dark:shadow-neutral-800 
         bg-white dark:bg-stone-900 
-        transition-colors duration-700 ease-in-out
+        transition-all duration-700 ease-in-out
         backdrop-blur-lg bg-opacity-80 dark:bg-opacity-80 
-  `}
+      `}
       >
         <div className="justify-between md:items-center md:flex">
           <div>
