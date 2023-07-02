@@ -6,6 +6,7 @@ import Tag from "../Atoms/Tag";
 import Button from "../Atoms/Button";
 import { Repository, Skill } from "@/types/languagesSkillsTechnologies";
 import Dropdown from "../DropDown/DropDownMenu";
+import { title } from "process";
 
 interface ProjectModalProps {
   isOpen?: boolean; // whether the modal is open or not
@@ -59,13 +60,8 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
 
   const skillsByCategory = organizeSkillsByCategory(skills);
 
-  const handleClick = (event: React.MouseEvent) => {
-    event.stopPropagation();
-  };
-
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <HeadingTwo title={language} />
+    <Modal title={language} isOpen={isOpen} onClose={onClose}>
       <div className="flex mt-4">
         <div className="flex-grow mr-2 mt-2.5 text-right text-neutral-700 dark:text-neutral-300">
           Group by:

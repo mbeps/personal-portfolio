@@ -28,8 +28,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
   onClose,
 }) => {
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <HeadingTwo title="Project Stack" />
+    <Modal title="Project Stack" isOpen={isOpen} onClose={onClose}>
       <div className="mt-4 text-center md:text-left">
         <HeadingThree title="Language" />
         <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-5">
