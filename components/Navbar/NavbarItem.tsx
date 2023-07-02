@@ -29,6 +29,11 @@ const NavbarItem = ({
   const router = useRouter();
   const { setNavbar } = useContext(NavbarContext); // get the setNavbar function from context
 
+  /**
+   * Handles the click event of the navbar item.
+   * If the path is on the same page, scroll to the element with the id of the path.
+   * Otherwise, navigate to the path.
+   */
   const handleClick = () => {
     if (isSamePage) {
       const element = document.getElementById(to);
@@ -46,9 +51,18 @@ const NavbarItem = ({
     setNavbar(false); // close the navbar when a button is clicked
   };
 
-  const navbarItemStyle = `block lg:inline-block ${
-    active ? "font-bold" : "font-normal"
-  } text-neutral-900 dark:text-neutral-100 cursor-pointer transition-all hover:font-bold duration-300 hover:bg-gray-200 dark:hover:bg-red-950 dark:hover:text-neutral-200 rounded-xl px-4 py-3 m-2 w-full md:w-24 text-center`;
+  const navbarItemStyle = `
+      block lg:inline-block 
+      ${active ? "font-bold" : "font-normal"} 
+      text-neutral-900 dark:text-neutral-100 text-center
+      dark:hover:text-neutral-200 
+      rounded-xl 
+      px-4 py-3 m-2 w-full md:w-24 
+      cursor-pointer 
+      transition-all 
+      hover:font-bold duration-300 
+      hover:bg-gray-300 dark:hover:bg-red-950 
+    `;
 
   return (
     <button onClick={handleClick} className={navbarItemStyle}>
