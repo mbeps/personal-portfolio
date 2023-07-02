@@ -33,21 +33,21 @@ const ThemeToggle: React.FC = () => {
       {currentTheme === "dark" ? (
         <button
           onClick={handleThemeChange}
-          className="bg-neutral-700 p-2 rounded-xl hover:bg-red-900 transition-colors duration-300 hover:text-black"
+          className="group bg-slate-800 p-2 rounded-xl hover:bg-slate-100 transition-colors duration-500"
         >
           <RiSunLine
             size={25}
-            className="text-white transition-colors duration-300"
+            className="text-white group-hover:text-black transition-colors duration-500"
           />
         </button>
       ) : (
         <button
           onClick={handleThemeChange}
-          className="bg-slate-100 p-2 rounded-xl hover:bg-red-300 transition-colors duration-300"
+          className="group bg-slate-100 p-2 rounded-xl hover:bg-slate-800 transition-colors duration-500"
         >
           <RiMoonFill
             size={25}
-            className="text-black transition-colors duration-300"
+            className="text-black group-hover:text-white transition-colors duration-500"
           />
         </button>
       )}
