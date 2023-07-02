@@ -19,8 +19,9 @@ const PostItem: React.FC<PostMetadata> = (props) => {
         hover:bg-neutral-200 dark:hover:bg-red-950
         p-4 
         rounded-xl 
-        shadow-md hover:shadow-sm
-        transition-colors duration-500"
+        shadow-md hover:shadow-lg
+        transform hover:scale-105
+        transition-all duration-500 ease-in-out"
       >
         <p
           className="

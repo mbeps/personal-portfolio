@@ -42,16 +42,16 @@ const Button = ({ onClick, variant, children }: ButtonProps) => {
   };
 
   const baseStyle = `
-	px-6 py-3 rounded-xl cursor-pointer 
-	transition-colors duration-500 
-	font-semibold
-	hover:bg-red-400 hover:dark:bg-red-950`;
+    px-6 py-3 rounded-xl cursor-pointer 
+    transition-all duration-500 
+    font-semibold
+    hover:bg-red-400 hover:dark:bg-red-950`;
 
   const filled = `
 		text-neutral-100 
 		shadow-xl hover:shadow-lg   
-		bg-red-500 
-		dark:bg-red-800 `;
+		bg-red-500 dark:bg-red-800
+    transform hover:scale-105`;
   const outlined = `
 		text-red-500 hover:text-neutral-100
 		dark:text-red-500 dark:hover:text-neutral-100
