@@ -7,6 +7,7 @@ interface Skill {
     | "Frontend Web Development"
     | "Backend Web Development"
     | "Full Stack Web Development"
+    | "Object Relation Mapper"
     | "Testing"
     | "Project Manager"
     | "Machine Learning"
@@ -41,6 +42,7 @@ interface Technology {
     | "API"
     | "Backend Web Development"
     | "Frontend Web Development"
+    | "Web Socket"
     | "Other";
 }
 
@@ -57,6 +59,10 @@ const JavaScriptTypeScriptSkills: Skill[] = [
   { skill: "Jest", category: "Testing" },
   { skill: "Vitest", category: "Testing" },
   { skill: "Chakra UI", category: "Frontend Web Development" },
+  { skill: "Next UI", category: "Frontend Web Development" },
+  { skill: "Prisma", category: "Object Relation Mapper" },
+  { skill: "Drizzle", category: "Object Relation Mapper" },
+  { skill: "Mongoose", category: "Object Relation Mapper" },
 ];
 
 /**
@@ -73,6 +79,7 @@ const languages: Language[] = [
       { skill: "Numpy", category: "Machine Learning" },
       { skill: "Jupyter Notebooks", category: "Machine Learning" },
       { skill: "PyTest", category: "Testing" },
+      { skill: "SQLAlchemy", category: "Object Relation Mapper" },
     ],
     repositories: [
       {
@@ -145,6 +152,8 @@ const technologies: Technology[] = [
   { name: "GraphQL", category: "API" },
   { name: "PostgreSQL", category: "Database" },
   { name: "MongoDB", category: "Database" },
+  { name: "Socket.IO", category: "Web Socket" },
+  { name: "Pusher", category: "Web Socket" },
 ];
 
 export { languages, technologies };
