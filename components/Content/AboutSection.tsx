@@ -304,8 +304,8 @@ const SkillSection: React.FC = () => {
    * Displays a list of skills.
    */
   const handleDisplaySkills = () => {
+    return firstNSkillsPerLanguage(4);
     return firstNSkills(11);
-    return firstNSkillsPerLanguage(5);
     return firstNSkillsPerCategory(3);
   };
 
@@ -391,8 +391,8 @@ const TechnologiesSection: React.FC = () => {
    * Function to handle the display of technologies.
    */
   const handleDisplayTech = () => {
+    return firstNTech(13);
     return firstNTechPerCategory(2);
-    return firstNTech(20);
   };
 
   return (
