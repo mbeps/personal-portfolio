@@ -153,6 +153,7 @@ const backendWebDevProjects: Project[] = [
     description: `A simple Django app to learn how to use Django with tokens for authentication.`,
     programmingLanguage: `Python`,
     repoURL: `https://github.com/mbeps/Django_Auth_Sys`,
+    technologies: [`Django`],
   },
 ];
 
