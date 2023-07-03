@@ -130,13 +130,29 @@ const extraWebDevProjects: Project[] = [
       "PostgreSQL",
     ],
   },
+];
+
+const backendWebDevProjects: Project[] = [
   {
-    name: `Python Flask Forum Backend`,
+    name: `Flask Forum Backend`,
     description: `This is a custom backend for the first iteration of the discussion platform. 
       This was created to learn how to create a custom backend using Python and Flask.`,
     repoURL: `https://github.com/mbeps/Forum-Discussion-Flask-Backend`,
     programmingLanguage: `Python`,
     technologies: [`Flask`, "MySQL", "SQLAlchemy", "REST API"],
+  },
+  {
+    name: `Flask JWT Authentication`,
+    description: `A simple Flask app to learn how to use JWT for authentication.`,
+    repoURL: `https://github.com/mbeps/Flask_JWT_Auth`,
+    programmingLanguage: `Python`,
+    technologies: [`Flask`, "JWT"],
+  },
+  {
+    name: `Django Authentication`,
+    description: `A simple Django app to learn how to use Django with tokens for authentication.`,
+    programmingLanguage: `Python`,
+    repoURL: `https://github.com/mbeps/Django_Auth_Sys`,
   },
 ];
 
@@ -253,4 +269,5 @@ export {
   extraWebDevProjects,
   otherProjects,
   javaAssignments,
+  backendWebDevProjects,
 };

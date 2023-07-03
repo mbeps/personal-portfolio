@@ -11,6 +11,7 @@ import Project, {
   extraWebDevProjects,
   otherProjects,
   javaAssignments,
+  backendWebDevProjects,
 } from "@/types/projects";
 import { useState } from "react";
 
@@ -41,6 +42,10 @@ const ProjectsSection = () => {
           <ProjectSection
             title="Extra Web Development"
             projects={extraWebDevProjects}
+          />
+          <ProjectSection
+            title="Backend Web Development Examples"
+            projects={backendWebDevProjects}
           />
           <ProjectSection
             title="Machine Learning"
