@@ -1,12 +1,11 @@
 "use client";
 
+import { Technology } from "@/types/technologies";
 import React, { useState } from "react";
-import HeadingTwo from "../Content/Text/HeadingTwo";
-import HeadingThree from "../Content/Text/HeadingThree";
-import Modal from "./Modal";
 import Tag from "../Atoms/Tag";
-import { Technology } from "@/types/languagesSkillsTechnologies";
+import HeadingThree from "../Content/Text/HeadingThree";
 import Dropdown from "../DropDown/DropDownMenu";
+import Modal from "./Modal";
 
 interface TechnologiesModalProps {
   technologies: Technology[];

@@ -1,17 +1,14 @@
 "use client";
 
 import Tag from "@/components/Atoms/Tag";
-import {
-  Repository,
-  Skill,
-  languages,
-  technologies,
-} from "@/types/languagesSkillsTechnologies";
+
 import React, { useState } from "react";
 import LanguageModal from "../Modal/LanguageModal";
 import SkillsModal from "../Modal/SkillsModal";
 import TechnologiesModal from "../Modal/TechnologiesModal";
 import HeadingThree from "./Text/HeadingThree";
+import { Skill, languages, Repository } from "@/types/languages";
+import { technologies } from "@/types/technologies";
 
 /**
  * About section component.
