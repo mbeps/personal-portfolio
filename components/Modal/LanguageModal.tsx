@@ -1,12 +1,10 @@
+import { Repository, Skill } from "@/types/languages";
 import React, { useState } from "react";
-import Modal from "./Modal";
-import HeadingTwo from "../Content/Text/HeadingTwo";
-import HeadingThree from "../Content/Text/HeadingThree";
-import Tag from "../Atoms/Tag";
 import Button from "../Atoms/Button";
-import { Repository, Skill } from "@/types/languagesSkillsTechnologies";
+import Tag from "../Atoms/Tag";
+import HeadingThree from "../Content/Text/HeadingThree";
 import Dropdown from "../DropDown/DropDownMenu";
-import { title } from "process";
+import Modal from "./Modal";
 
 interface ProjectModalProps {
   isOpen?: boolean; // whether the modal is open or not

@@ -1,17 +1,14 @@
 "use client";
 
 import Tag from "@/components/Atoms/Tag";
-import {
-  Repository,
-  Skill,
-  languages,
-  technologies,
-} from "@/types/languagesSkillsTechnologies";
+
 import React, { useState } from "react";
 import LanguageModal from "../Modal/LanguageModal";
 import SkillsModal from "../Modal/SkillsModal";
 import TechnologiesModal from "../Modal/TechnologiesModal";
 import HeadingThree from "./Text/HeadingThree";
+import { Skill, languages, Repository } from "@/types/languages";
+import { technologies } from "@/types/technologies";
 
 /**
  * About section component.
@@ -304,8 +301,8 @@ const SkillSection: React.FC = () => {
    * Displays a list of skills.
    */
   const handleDisplaySkills = () => {
+    return firstNSkillsPerLanguage(4);
     return firstNSkills(11);
-    return firstNSkillsPerLanguage(5);
     return firstNSkillsPerCategory(3);
   };
 
@@ -391,8 +388,8 @@ const TechnologiesSection: React.FC = () => {
    * Function to handle the display of technologies.
    */
   const handleDisplayTech = () => {
+    return firstNTech(13);
     return firstNTechPerCategory(2);
-    return firstNTech(20);
   };
 
   return (
