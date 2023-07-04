@@ -1,7 +1,6 @@
 ---
 title: "Comprehensive Guide to Software Testing"
 subtitle: "Exploring Functional and Non-Functional Testing Techniques, Tools, and Challenges"
-date: "13-06-2023"
 display: "true"
 ---
 

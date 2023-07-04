@@ -1,7 +1,6 @@
 ---
 title: "Reflecting on Ringmaster Messaging"
 subtitle: "Brief report talking about what I learnt while developing this platform"
-date: "18-06-2023"
 display: "false"
 ---
 

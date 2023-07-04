@@ -1,7 +1,6 @@
 ---
 title: "JavaScript vs TypeScript: A Detailed Comparison"
 subtitle: "Exploring the Advantages and Key Differences between JavaScript and TypeScript"
-date: "03-06-2023"
 display: "true"
 ---
 

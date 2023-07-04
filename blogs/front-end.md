@@ -1,7 +1,6 @@
 ---
 title: "Front-End Development and the Essential Role of Libraries and Frameworks"
 subtitle: "A comprehensive introduction to standard front-end web development using libraries and frameworks. "
-date: "12-05-2023"
 ---
 
 - [**Introduction to Frontend Development**](#introduction-to-frontend-development)
