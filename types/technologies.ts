@@ -22,6 +22,7 @@ const technologies: Technology[] = [
   { name: "Firebase", category: "Backend Web Development" },
   { name: "Supabase", category: "Backend Web Development" },
   { name: "PocketBase", category: "Backend Web Development" },
+  { name: "Auth0", category: "Backend Web Development" },
   { name: "Tailwind CSS", category: "Frontend Web Development" },
   { name: "Radix UI", category: "Frontend Web Development" },
   { name: "Headless UI", category: "Frontend Web Development" },
