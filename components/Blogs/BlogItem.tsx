@@ -23,14 +23,6 @@ const BlogItem: React.FC<BlogMetadata> = (props) => {
         transform hover:scale-105
         transition-all duration-500 ease-in-out"
       >
-        <p
-          className="
-          text-sm 
-          text-neutral-400 dark:text-neutral-500"
-        >
-          {props.date}
-        </p>
-
         <h2 className=" text-xl font-bold  mb-4 text-neutral-900 dark:text-neutral-100">
           {props.title}
         </h2>
