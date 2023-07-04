@@ -169,7 +169,7 @@ The commonly used frameworks for this testing level include:
 
 - JUnit for Java
 - PyTest and UnitTest for Python
-- est and Vitest for JavaScript/TypeScript
+- Jest and Vitest for JavaScript/TypeScript
 - NUnit for .NET languages
 - Google Test for C++
 
