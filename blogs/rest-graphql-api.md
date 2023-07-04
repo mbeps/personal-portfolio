@@ -1,7 +1,6 @@
 ---
 title: "Comparing GraphQL and REST: A Detailed Overview"
 subtitle: "Choosing the Right API Design Approach"
-date: "07-05-2023"
 ---
 
 - [**Introduction to REST and GraphQL**](#introduction-to-rest-and-graphql)

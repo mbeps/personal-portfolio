@@ -1,7 +1,6 @@
 ---
 title: "Comprehensive Guide to Software Testing"
 subtitle: "Exploring Functional and Non-Functional Testing Techniques, Tools, and Challenges"
-date: "13-06-2023"
 display: "true"
 ---
 
@@ -169,7 +168,7 @@ The commonly used frameworks for this testing level include:
 
 - JUnit for Java
 - PyTest and UnitTest for Python
-- est and Vitest for JavaScript/TypeScript
+- Jest and Vitest for JavaScript/TypeScript
 - NUnit for .NET languages
 - Google Test for C++
 

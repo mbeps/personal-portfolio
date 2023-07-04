@@ -1,7 +1,6 @@
 ---
 title: "Reflecting on Circus Discussion"
 subtitle: "Brief report talking about what I learnt while developing this platform"
-date: "30-03-2023"
 display: "false"
 ---
 

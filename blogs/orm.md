@@ -1,7 +1,6 @@
 ---
 title: "Understanding Object-Relational Mapping (ORM)"
 subtitle: "A Comprehensive Overview of ORM, Its Advantages, Disadvantages, and Role in Modern Web Application Development"
-date: "29-05-2023"
 ---
 
 - [**Detailed Overview of Object-Relational Mapping (ORM)**](#detailed-overview-of-object-relational-mapping-orm)

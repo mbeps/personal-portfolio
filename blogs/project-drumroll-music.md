@@ -1,7 +1,6 @@
 ---
 title: "Reflecting on Drumroll Music"
 subtitle: "Brief report talking about what I learnt while developing this platform"
-date: "23-06-2023"
 display: "false"
 ---
 

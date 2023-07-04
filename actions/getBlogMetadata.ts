@@ -18,7 +18,6 @@ const getBlogMetadata = (): BlogMetadata[] => {
     const matterResult = matter(fileContents);
     return {
       title: matterResult.data.title,
-      date: matterResult.data.date,
       subtitle: matterResult.data.subtitle,
       slug: fileName.replace(".md", ""),
       display: matterResult.data.display,

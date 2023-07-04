@@ -41,9 +41,7 @@ const BlogPage = (props: any) => {
     <div>
       <div className="my-12 text-center">
         <HeadingTwo title={blog.data.title} />
-        <p className="text-slate-400 mt-2">{blog.data.date}</p>
       </div>
-
       <article className="prose lg:prose-xl dark:prose-invert prose-img:rounded-lg">
         <Markdown>{blog.content}</Markdown>
       </article>

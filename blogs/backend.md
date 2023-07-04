@@ -1,7 +1,6 @@
 ---
 title: "Exploring Backends: Custom vs Managed Solutions"
 subtitle: "An In-depth Analysis of Backend Development Approaches, Tools, and Security Considerations"
-date: "25-05-2023"
 ---
 
 

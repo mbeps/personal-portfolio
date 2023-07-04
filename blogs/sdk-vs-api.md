@@ -1,7 +1,6 @@
 ---
 title: "SDKs vs APIs: A Comparative Guide"
 subtitle: "Understanding Their Roles in Software Development"
-date: "17-06-2023"
 ---
 
 - [**Overview**](#overview)
