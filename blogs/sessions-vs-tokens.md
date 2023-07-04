@@ -183,3 +183,27 @@ Regardless of the approach you choose, it's crucial to adhere to security best p
 In the end, remember that the world of web security is continually evolving. What's considered best practice today might change tomorrow, so it's essential to stay updated and continually reassess your application's security measures.
 
 Whether you choose session-based or token-based authentication, remember that no application is entirely secure. Always be prepared and have a plan in place to react to potential security breaches. This will ensure that you're not just proactively trying to prevent issues, but also ready to respond when problems occur.
+
+## **Sources**
+
+- **Overview**
+    - [Auth0: Cookies vs Tokens. Getting auth right with Angular.JS](https://auth0.com/blog/cookies-vs-tokens-definitive-guide/)
+    - [Medium: Sessions vs Tokens](https://medium.com/dev-genius/sessions-vs-tokens-67b6c56c8fc2)
+
+- **Comparison of Session-Based Authentication and Token-Based Authentication**
+    - [Scotch.io: The Ins and Outs of Token Based Authentication](https://scotch.io/tutorials/the-ins-and-outs-of-token-based-authentication)
+    - [Toptal: Secure Your REST API](https://www.toptal.com/nodejs/secure-rest-api-in-nodejs)
+
+- **Tools and Frameworks**
+    - [JWT.io](https://jwt.io/)
+    - [Passport.js Documentation](http://www.passportjs.org/)
+    - [Django Session Documentation](https://docs.djangoproject.com/en/3.2/topics/http/sessions/)
+    - [Express.js Session Middleware Documentation](https://www.npmjs.com/package/express-session)
+
+- **Best Practices**
+    - [OWASP: Session Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html)
+    - [OWASP: JSON Web Token for Java EE](https://github.com/javaee-samples/javaee7-samples/tree/master/jaspic/jwt)
+
+- **Conclusion**
+    - [Telerik: Cookies vs Tokens: The Definitive Guide](https://www.telerik.com/blogs/cookies-vs-tokens-the-definitive-guide)
+    - [Auth0: Why You Should Always Use Access Tokens to Secure APIs](https://auth0.com/docs/tokens/concepts/access-tokens)
