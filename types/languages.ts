@@ -48,6 +48,7 @@ const JavaScriptTypeScriptSkills: Skill[] = [
   { skill: "Prisma", category: "Object Relational Mapper" },
   { skill: "Drizzle", category: "Object Relational Mapper" },
   { skill: "Mongoose", category: "Object Relational Mapper" },
+  { skill: "Node.JS", category: "Backend Web Development" },
 ];
 
 /**
