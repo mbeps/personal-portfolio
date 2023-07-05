@@ -78,6 +78,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, title }) => {
                   w-full
                   max-h-[70vh] min-h-[70vh]
                   overflow-y-auto
+                  scrollbar-hide
                   sm:my-8 
                   sm:w-full 
                   sm:max-w-lg 
