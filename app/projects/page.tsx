@@ -32,9 +32,6 @@ const ProjectsSection = () => {
     setIsModalOpen(false);
   };
 
-  /**
-   * List of all projects
-   */
   const allProjects: Project[] = [
     ...webdevProjects,
     ...machineLearningProjects,
@@ -44,9 +41,6 @@ const ProjectsSection = () => {
     ...backendWebDevProjects,
   ];
 
-  /**
-   * Groups projects by type or category.
-   */
   const groupProjectsByType = (
     projects: Project[]
   ): Record<string, Project[]> => {
@@ -56,13 +50,13 @@ const ProjectsSection = () => {
     }, {});
   };
 
-  // Define a list of types to filter by
   const projectTypes: string[] = [
     "All",
-    ...Array.from(new Set(allProjects.map((project: Project) => project.type))),
+    ...allProjects
+      .map((project: Project) => project.type)
+      .filter((value, index, self) => self.indexOf(value) === index),
   ];
 
-  // Filter projects based on selected type
   const filteredProjects =
     selectedType === "All"
       ? groupProjectsByType(allProjects)
@@ -91,13 +85,16 @@ const ProjectsSection = () => {
         </div>
 
         <div className="flex flex-col space-y-20 mt-14">
-          {Object.keys(filteredProjects).map((type) => (
-            <ProjectSection
-              key={type}
-              title={type}
-              projects={filteredProjects[type]}
-            />
-          ))}
+          {Object.keys(filteredProjects).map(
+            (type) =>
+              type !== "All" && (
+                <ProjectSection
+                  key={type}
+                  title={type}
+                  projects={filteredProjects[type]}
+                />
+              )
+          )}
         </div>
 
         <div className="flex justify-center mt-10">
@@ -123,29 +120,30 @@ interface ProjectSectionProps {
  * Displays a list of projects with a title for the section.
  * @param title (string): title of the project section
  * @param projects (Project[]): list of projects to be displayed
- * @returns (JSX.Element): project section (title and list of projects
+ * @returns (JSX.Element): project section (title and list of projects)
  */
 const ProjectSection: React.FC<ProjectSectionProps> = ({ title, projects }) => {
   return (
     <>
       <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
       <HeadingTwo title={title} />
-      {projects.map((project, idx) => (
-        <div key={idx}>
-          <ProjectItem
-            name={project.name}
-            key={project.imageURL}
-            description={project.description}
-            imageURL={project.imageURL}
-            repoURL={project.repoURL}
-            siteURL={project.siteURL}
-            articleURL={project.articleURL}
-            programmingLanguage={project.programmingLanguage}
-            technologies={project.technologies}
-            type={project.type}
-          />
-        </div>
-      ))}
+      {projects &&
+        projects.map((project, idx) => (
+          <div key={idx}>
+            <ProjectItem
+              name={project.name}
+              key={project.imageURL}
+              description={project.description}
+              imageURL={project.imageURL}
+              repoURL={project.repoURL}
+              siteURL={project.siteURL}
+              articleURL={project.articleURL}
+              programmingLanguage={project.programmingLanguage}
+              technologies={project.technologies}
+              type={project.type}
+            />
+          </div>
+        ))}
     </>
   );
 };
