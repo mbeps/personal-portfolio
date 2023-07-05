@@ -28,6 +28,7 @@ const ProjectsSection = () => {
                 articleURL={project.articleURL}
                 programmingLanguage={project.programmingLanguage}
                 technologies={project.technologies}
+                type={project.type}
               />
             </div>
           ))}

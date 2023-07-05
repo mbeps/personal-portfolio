@@ -4,6 +4,7 @@ import Button from "@/components/Atoms/Button";
 import ProjectItem from "@/components/Content/ProjectSection/ProjectItem";
 import HeadingOne from "@/components/Content/Text/HeadingOne";
 import HeadingTwo from "@/components/Content/Text/HeadingTwo";
+import Dropdown from "@/components/DropDown/DropDownMenu";
 import MoreProjectsModal from "@/components/Modal/MoreProjectsModal";
 import Project, {
   webdevProjects,
@@ -21,6 +22,7 @@ import { useState } from "react";
  */
 const ProjectsSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedType, setSelectedType] = useState("All");
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -30,29 +32,64 @@ const ProjectsSection = () => {
     setIsModalOpen(false);
   };
 
+  const allProjects: Project[] = [
+    ...webdevProjects,
+    ...machineLearningProjects,
+    ...extraWebDevProjects,
+    ...otherProjects,
+    ...javaAssignments,
+    ...backendWebDevProjects,
+  ];
+
+  const groupProjectsByType = (
+    projects: Project[]
+  ): Record<string, Project[]> => {
+    return projects.reduce<Record<string, Project[]>>((grouped, project) => {
+      (grouped[project.type] = grouped[project.type] || []).push(project);
+      return grouped;
+    }, {});
+  };
+
+  // Define a list of types to filter by
+  const projectTypes = [
+    "All",
+    "Web Development",
+    "Extra Web Development",
+    "Backend Web Development",
+    "Machine Learning",
+    "Java Assignments",
+    "Other",
+  ];
+
+  // Filter projects based on selected type
+  const filteredProjects =
+    selectedType === "All"
+      ? groupProjectsByType(allProjects)
+      : {
+          [selectedType]: allProjects.filter(
+            (project) => project.type === selectedType
+          ),
+        };
+
   return (
     <section id="projects">
       <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2">
         <HeadingOne title="Projects" />
+
+        <Dropdown
+          selected={selectedType}
+          options={projectTypes}
+          setSelected={setSelectedType}
+        />
+
         <div className="flex flex-col space-y-20 mt-14">
-          <ProjectSection
-            title="Main Web Development"
-            projects={webdevProjects}
-          />
-          <ProjectSection
-            title="Extra Web Development"
-            projects={extraWebDevProjects}
-          />
-          <ProjectSection
-            title="Backend Web Development Examples"
-            projects={backendWebDevProjects}
-          />
-          <ProjectSection
-            title="Machine Learning"
-            projects={machineLearningProjects}
-          />
-          <ProjectSection title="Java Assignments" projects={javaAssignments} />
-          <ProjectSection title="Other Projects" projects={otherProjects} />
+          {Object.keys(filteredProjects).map((type) => (
+            <ProjectSection
+              key={type}
+              title={type}
+              projects={filteredProjects[type]}
+            />
+          ))}
         </div>
 
         <div className="flex justify-center mt-10">
@@ -97,6 +134,7 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({ title, projects }) => {
             articleURL={project.articleURL}
             programmingLanguage={project.programmingLanguage}
             technologies={project.technologies}
+            type={project.type}
           />
         </div>
       ))}
