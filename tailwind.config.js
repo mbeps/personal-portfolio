@@ -26,6 +26,9 @@ module.exports = {
         4: "0.4s",
         6: "0.6s",
       },
+      scrollbarHide: {
+        'scrollbar-hide': '::-webkit-scrollbar { display: none; }',
+      },
       keyframes: {
         fadeIn: {
           from: { opacity: 0 },
@@ -44,5 +47,6 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/typography'),
+    require('tailwind-scrollbar-hide')
   ],
 }
