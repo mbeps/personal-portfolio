@@ -11,9 +11,9 @@ export default interface Project {
   programmingLanguage: string;
   technologies?: string[];
   type:
-    | "Web Development"
-    | "Extra Web Development"
-    | "Backend Web Development"
+    | "Web Dev"
+    | "Extra Web Dev"
+    | "Backend Web Dev"
     | "Machine Learning"
     | "Java Assignments"
     | "Other";
@@ -42,7 +42,7 @@ const webdevProjects: Project[] = [
       `Recoil`,
       "Docker",
     ],
-    type: "Web Development",
+    type: "Web Dev",
   },
   {
     name: `Ringmaster Messaging`,
@@ -66,7 +66,7 @@ const webdevProjects: Project[] = [
       "Zustand",
       "Docker",
     ],
-    type: "Web Development",
+    type: "Web Dev",
   },
   {
     name: `Drumroll Music`,
@@ -85,7 +85,7 @@ const webdevProjects: Project[] = [
       `Radix UI`,
       "Zustand",
     ],
-    type: "Web Development",
+    type: "Web Dev",
   },
 ];
 
@@ -104,7 +104,7 @@ const extraWebDevProjects: Project[] = [
     repoURL: `https://github.com/mbeps/sideshow-articles`,
     programmingLanguage: `TypeScript`,
     technologies: [`Next.JS`, `React`, `Supabase`, "PostgreSQL", `Next UI`],
-    type: "Extra Web Development",
+    type: "Extra Web Dev",
   },
   {
     name: `Noodle`,
@@ -124,7 +124,7 @@ const extraWebDevProjects: Project[] = [
       "Storybook",
       `NX`,
     ],
-    type: "Extra Web Development",
+    type: "Extra Web Dev",
   },
   {
     name: `ConvoGPT`,
@@ -141,7 +141,7 @@ const extraWebDevProjects: Project[] = [
       `Supabase`,
       "PostgreSQL",
     ],
-    type: "Extra Web Development",
+    type: "Extra Web Dev",
   },
 ];
 
@@ -153,7 +153,7 @@ const backendWebDevProjects: Project[] = [
     repoURL: `https://github.com/mbeps/Forum-Discussion-Flask-Backend`,
     programmingLanguage: `Python`,
     technologies: [`Flask`, "MySQL", "SQLAlchemy", "REST API"],
-    type: "Backend Web Development",
+    type: "Backend Web Dev",
   },
   {
     name: `Flask JWT Authentication`,
@@ -161,7 +161,7 @@ const backendWebDevProjects: Project[] = [
     repoURL: `https://github.com/mbeps/Flask_JWT_Auth`,
     programmingLanguage: `Python`,
     technologies: [`Flask`, "JWT"],
-    type: "Backend Web Development",
+    type: "Backend Web Dev",
   },
   {
     name: `Django Authentication`,
@@ -169,7 +169,7 @@ const backendWebDevProjects: Project[] = [
     programmingLanguage: `Python`,
     repoURL: `https://github.com/mbeps/Django_Auth_Sys`,
     technologies: [`Django`],
-    type: "Backend Web Development",
+    type: "Backend Web Dev",
   },
 ];
 

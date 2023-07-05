@@ -32,6 +32,9 @@ const ProjectsSection = () => {
     setIsModalOpen(false);
   };
 
+  /**
+   * List of all projects
+   */
   const allProjects: Project[] = [
     ...webdevProjects,
     ...machineLearningProjects,
@@ -41,6 +44,9 @@ const ProjectsSection = () => {
     ...backendWebDevProjects,
   ];
 
+  /**
+   * Groups projects by type or category.
+   */
   const groupProjectsByType = (
     projects: Project[]
   ): Record<string, Project[]> => {
@@ -51,14 +57,9 @@ const ProjectsSection = () => {
   };
 
   // Define a list of types to filter by
-  const projectTypes = [
+  const projectTypes: string[] = [
     "All",
-    "Web Development",
-    "Extra Web Development",
-    "Backend Web Development",
-    "Machine Learning",
-    "Java Assignments",
-    "Other",
+    ...Array.from(new Set(allProjects.map((project: Project) => project.type))),
   ];
 
   // Filter projects based on selected type
@@ -76,11 +77,18 @@ const ProjectsSection = () => {
       <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2">
         <HeadingOne title="Projects" />
 
-        <Dropdown
-          selected={selectedType}
-          options={projectTypes}
-          setSelected={setSelectedType}
-        />
+        <div
+          className="
+        flex justify-content: flex-end justify-end
+        relative z-10 mt-6 p-2
+        "
+        >
+          <Dropdown
+            selected={selectedType}
+            options={projectTypes}
+            setSelected={setSelectedType}
+          />
+        </div>
 
         <div className="flex flex-col space-y-20 mt-14">
           {Object.keys(filteredProjects).map((type) => (
