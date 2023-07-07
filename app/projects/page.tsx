@@ -34,13 +34,19 @@ const ProjectsSection = () => {
 
   const allProjects: Project[] = [
     ...webdevProjects,
-    ...machineLearningProjects,
     ...extraWebDevProjects,
-    ...otherProjects,
-    ...javaAssignments,
     ...backendWebDevProjects,
+    ...machineLearningProjects,
+    ...javaAssignments,
+    ...otherProjects,
   ];
 
+  /**
+   * Groups the projects by type.
+   * Each project type is a key in the object.
+   * @param projects (Project[]): list of projects to be grouped by type
+   * @returns (Record<string, Project[]>): object with project types as keys and list of projects as values
+   */
   const groupProjectsByType = (
     projects: Project[]
   ): Record<string, Project[]> => {
@@ -50,6 +56,12 @@ const ProjectsSection = () => {
     }, {});
   };
 
+  /**
+   * List of project types to be displayed in the dropdown menu.
+   * Adds 'All' as the first option.
+   * Appends all unique project types to the list.
+   * Project types are from the 'type' property of each project.
+   */
   const projectTypes: string[] = [
     "All",
     ...allProjects
@@ -57,6 +69,11 @@ const ProjectsSection = () => {
       .filter((value, index, self) => self.indexOf(value) === index),
   ];
 
+  /**
+   * Filters the projects based on the selected type.
+   * If 'All' is selected, then all projects are displayed.
+   * Otherwise, only projects with the selected type are displayed.
+   */
   const filteredProjects =
     selectedType === "All"
       ? groupProjectsByType(allProjects)
