@@ -35,6 +35,7 @@ const ProjectItem: React.FC<Project> = ({
   articleURL,
   programmingLanguage,
   technologies,
+  type,
 }) => {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);

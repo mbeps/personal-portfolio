@@ -10,6 +10,13 @@ export default interface Project {
   articleURL?: string;
   programmingLanguage: string;
   technologies?: string[];
+  type:
+    | "Web Dev"
+    | "Extra Web Dev"
+    | "Backend Web Dev"
+    | "Machine Learning"
+    | "Java Assignments"
+    | "Other";
 }
 
 /**
@@ -35,6 +42,7 @@ const webdevProjects: Project[] = [
       `Recoil`,
       "Docker",
     ],
+    type: "Web Dev",
   },
   {
     name: `Ringmaster Messaging`,
@@ -58,6 +66,7 @@ const webdevProjects: Project[] = [
       "Zustand",
       "Docker",
     ],
+    type: "Web Dev",
   },
   {
     name: `Drumroll Music`,
@@ -76,6 +85,7 @@ const webdevProjects: Project[] = [
       `Radix UI`,
       "Zustand",
     ],
+    type: "Web Dev",
   },
 ];
 
@@ -94,6 +104,7 @@ const extraWebDevProjects: Project[] = [
     repoURL: `https://github.com/mbeps/sideshow-articles`,
     programmingLanguage: `TypeScript`,
     technologies: [`Next.JS`, `React`, `Supabase`, "PostgreSQL", `Next UI`],
+    type: "Extra Web Dev",
   },
   {
     name: `Noodle`,
@@ -113,6 +124,7 @@ const extraWebDevProjects: Project[] = [
       "Storybook",
       `NX`,
     ],
+    type: "Extra Web Dev",
   },
   {
     name: `ConvoGPT`,
@@ -129,6 +141,7 @@ const extraWebDevProjects: Project[] = [
       `Supabase`,
       "PostgreSQL",
     ],
+    type: "Extra Web Dev",
   },
 ];
 
@@ -140,6 +153,7 @@ const backendWebDevProjects: Project[] = [
     repoURL: `https://github.com/mbeps/Forum-Discussion-Flask-Backend`,
     programmingLanguage: `Python`,
     technologies: [`Flask`, "MySQL", "SQLAlchemy", "REST API"],
+    type: "Backend Web Dev",
   },
   {
     name: `Flask JWT Authentication`,
@@ -147,6 +161,7 @@ const backendWebDevProjects: Project[] = [
     repoURL: `https://github.com/mbeps/Flask_JWT_Auth`,
     programmingLanguage: `Python`,
     technologies: [`Flask`, "JWT"],
+    type: "Backend Web Dev",
   },
   {
     name: `Django Authentication`,
@@ -154,6 +169,7 @@ const backendWebDevProjects: Project[] = [
     programmingLanguage: `Python`,
     repoURL: `https://github.com/mbeps/Django_Auth_Sys`,
     technologies: [`Django`],
+    type: "Backend Web Dev",
   },
 ];
 
@@ -170,6 +186,7 @@ const machineLearningProjects: Project[] = [
     repoURL: `https://github.com/mbeps/Machine-Learning-Assignment-1`,
     programmingLanguage: `Python`,
     technologies: [`NumPy`, `Matplotlib`],
+    type: "Machine Learning",
   },
   {
     name: `Assignment 2`,
@@ -177,6 +194,7 @@ const machineLearningProjects: Project[] = [
     repoURL: `https://github.com/mbeps/Machine-Learning-Assignment-2`,
     programmingLanguage: `Python`,
     technologies: [`NumPy`, `Matplotlib`],
+    type: "Machine Learning",
   },
   {
     name: `Assignment 3`,
@@ -185,6 +203,7 @@ const machineLearningProjects: Project[] = [
     repoURL: `https://github.com/mbeps/Machine-Learning-Assignment-3`,
     programmingLanguage: `Python`,
     technologies: [`NumPy`, `Matplotlib`],
+    type: "Machine Learning",
   },
   {
     name: `Lab Questions`,
@@ -194,6 +213,7 @@ const machineLearningProjects: Project[] = [
     repoURL: `https://github.com/mbeps/Machine-Learning-Labs-Questions`,
     programmingLanguage: `Python`,
     technologies: [`NumPy`, `Matplotlib`],
+    type: "Machine Learning",
   },
 ];
 
@@ -211,6 +231,7 @@ const otherProjects: Project[] = [
     repoURL: `https://github.com/mbeps/Osmos_Game`,
     programmingLanguage: `Python`,
     technologies: [`SimpleGUI`],
+    type: "Other",
   },
   {
     name: `Automated Setup`,
@@ -218,6 +239,7 @@ const otherProjects: Project[] = [
       This is specifically for my Fedora install.`,
     repoURL: `https://github.com/mbeps/AutomatedSetup`,
     programmingLanguage: `Shell`,
+    type: "Other",
   },
 ];
 
@@ -234,6 +256,7 @@ const javaAssignments: Project[] = [
     repoURL: `https://github.com/mbeps/Calculator-Assignment`,
     programmingLanguage: `Java`,
     technologies: [`Maven`, "JUnit"],
+    type: "Java Assignments",
   },
   {
     name: `Botanic-Garden-Planner`,
@@ -241,6 +264,7 @@ const javaAssignments: Project[] = [
       This was in first year to learn about Java and object oriented programming.`,
     repoURL: `https://github.com/mbeps/Botanic-Garden-Planner`,
     programmingLanguage: `Java`,
+    type: "Java Assignments",
   },
   {
     name: "Track & Trace",
@@ -248,12 +272,14 @@ const javaAssignments: Project[] = [
       This was in first year to learn about Java and object oriented programming.`,
     repoURL: `https://github.com/mbeps/Track_and_Trace`,
     programmingLanguage: `Java`,
+    type: "Java Assignments",
   },
   {
     name: `Hollomon`,
     description: `This was in first year to learn about Java and object oriented programming.`,
     repoURL: `https://github.com/mbeps/Hollomon`,
     programmingLanguage: `Java`,
+    type: "Java Assignments",
   },
   {
     name: `Database Mini Project`,
@@ -261,6 +287,7 @@ const javaAssignments: Project[] = [
     repoURL: `https://github.com/mbeps/DatabasesMiniProject`,
     programmingLanguage: `Java`,
     technologies: [`PostgreSQL`],
+    type: "Java Assignments",
   },
 ];
 
