@@ -105,7 +105,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, title }) => {
                       bg-white dark:bg-stone-900 
                       hover:bg-gray-100 dark:hover:bg-stone-800
                       text-gray-400 dark:text-gray-500
-                      hover:text-gray-500 dark:hover:text-red-900
+                      hover:text-red-600 dark:hover:text-red-900
                       transition-colors duration-700 ease-in-out
                     `}
                     onClick={onClose}
