@@ -33,7 +33,7 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
 
   /**
    * Changes the active image to the previous image in the list.
-   * If the current image is the first image, it will loop back to the last image.
+   *
    */
   const handlePrev = () => {
     setActiveIndex(

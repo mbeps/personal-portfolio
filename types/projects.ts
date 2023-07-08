@@ -29,7 +29,7 @@ const webdevProjects: Project[] = [
     name: `Circus Discussions`,
     description: `A social media discussion platform where users can interact with like-minded individuals.       
       This was my final year project for university.`,
-    imageURL: `/projects/circus-discussions-fyp.png`,
+    imageURL: `/projects/circus-discussions/cover.png`,
     repoURL: `https://github.com/mbeps/next_discussion_platform`,
     siteURL: `https://circus-discussion.vercel.app/`,
     articleURL: `/blogs/project-circus-discussion`,
@@ -48,7 +48,7 @@ const webdevProjects: Project[] = [
     name: `Ringmaster Messaging`,
     description: `A simple messaging app to allow users to chat with other users or in group chats. 
       This was for learning custom back-ends. `,
-    imageURL: `/projects/ringmaster-messaging.png`,
+    imageURL: `/projects/ringmaster-messaging/cover.png`,
     repoURL: `https://github.com/mbeps/ringmaster-messaging`,
     siteURL: `https://ringmaster-messaging.vercel.app/`,
     articleURL: `/blogs/project-ringmaster-messaging`,
@@ -72,7 +72,7 @@ const webdevProjects: Project[] = [
     name: `Drumroll Music`,
     description: `A simple music streaming site where users can upload and listen to music.
       This was my first major project using Supabase.`,
-    imageURL: `/projects/drumroll-music.png`,
+    imageURL: `/projects/drumroll-music/cover.png`,
     repoURL: `https://github.com/mbeps/drumroll-music`,
     articleURL: `/blogs/project-drumroll-music`,
     programmingLanguage: `TypeScript`,
@@ -100,7 +100,7 @@ const extraWebDevProjects: Project[] = [
     description: `A simple site to allow users to read and write articles. 
       This was created to learn Supabase for the first time. 
       This was the foundation to using Supabase in other projects.`,
-    imageURL: `/projects/sideshow-articles.png`,
+    imageURL: `/projects/sideshow-articles/cover.png`,
     repoURL: `https://github.com/mbeps/sideshow-articles`,
     programmingLanguage: `TypeScript`,
     technologies: [`Next.JS`, `React`, `Supabase`, "PostgreSQL", `Next UI`],
@@ -110,7 +110,7 @@ const extraWebDevProjects: Project[] = [
     name: `Noodle`,
     description: `This is an open source learning platform that I started as a ground project in my second year of university. 
       This was my first introduction to full stack development. `,
-    imageURL: `/projects/noodle.png`,
+    imageURL: `/projects/noodle/cover.png`,
     repoURL: `https://github.com/ixahmedxi/noodle`,
     siteURL: `https://noodle.run/`,
     programmingLanguage: `TypeScript`,
@@ -132,7 +132,7 @@ const extraWebDevProjects: Project[] = [
     name: `ConvoGPT`,
     description: `This is a simple client for using the OpenAI API locally. 
       This was created to learn how to use the OpenAI API and to create a simple client and to learn PgVector.`,
-    imageURL: `/projects/convo-gpt.png`,
+    imageURL: `/projects/convo-gpt/cover.png`,
     repoURL: `https://github.com/mbeps/convo-gpt`,
     programmingLanguage: `TypeScript`,
     technologies: [
@@ -229,7 +229,7 @@ const otherProjects: Project[] = [
     name: `Osmos Game`,
     description: `This is a simple game created using SimpleGUI for a group project in my first year of university. 
       This required us to rely on the documentation as there was no tutorials or guides on how to use the library.`,
-    imageURL: `/projects/osmos-game.png`,
+    imageURL: `/projects/osmos-game/cover.png`,
     repoURL: `https://github.com/mbeps/Osmos_Game`,
     programmingLanguage: `Python`,
     technologies: [`SimpleGUI`],
