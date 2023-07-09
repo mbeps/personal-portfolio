@@ -59,6 +59,7 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
           src={images[activeIndex]}
           alt="Currently Active"
           width={800}
+          quality={90}
           height={500}
           priority
           className="
@@ -86,7 +87,7 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
             key={idx}
             className={`w-16 h-16 ${
               idx === activeIndex
-                ? "border-4 border-red-500 dark:border-red-400 hover:border-red-600 dark:hover:border-red-500"
+                ? "border-4 border-red-500 dark:border-red-800 hover:border-red-600 dark:hover:border-red-500"
                 : "border-2 border-neutral-200 dark:border-neutral-700 hover:border-neutral-400 dark:hover:border-red-900"
             } rounded-lg overflow-hidden cursor-pointer transition-colors duration-500 `}
             onClick={() => setActiveIndex(idx)}
@@ -97,6 +98,7 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
               alt={`Thumbnail ${idx}`}
               width={150}
               height={150}
+              loading="lazy"
               className="w-full h-full object-cover rounded-lg"
             />
           </div>

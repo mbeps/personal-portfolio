@@ -1,25 +1,21 @@
 "use client";
 
-import Gallery from "@/components/Gallery/Gallery";
-import React, { useEffect } from "react";
-import Project, {
-  webdevProjects,
-  machineLearningProjects,
-  extraWebDevProjects,
-  otherProjects,
-  javaAssignments,
-  backendWebDevProjects,
-} from "@/types/projects";
-import { usePathname } from "next/navigation";
-import { useParams } from "next/navigation";
-import HeadingThree from "@/components/Content/Text/HeadingThree";
 import Tag from "@/components/Atoms/Tag";
-import HeadingOne from "@/components/Content/Text/HeadingOne";
+import HeadingThree from "@/components/Content/Text/HeadingThree";
 import HeadingTwo from "@/components/Content/Text/HeadingTwo";
-import Button from "@/components/Atoms/Button";
+import Gallery from "@/components/Gallery/Gallery";
+import Project, {
+  backendWebDevProjects,
+  extraWebDevProjects,
+  javaAssignments,
+  machineLearningProjects,
+  otherProjects,
+  webdevProjects,
+} from "@/types/projects";
 import Link from "next/link";
+import { useParams, usePathname } from "next/navigation";
+import React, { useEffect } from "react";
 import { BsArrowUpRightSquare, BsGithub } from "react-icons/bs";
-import { ImStack } from "react-icons/im";
 import { IoReaderOutline } from "react-icons/io5";
 
 const generateStaticParams = async () => {
@@ -124,8 +120,19 @@ const ProjectPage: React.FC = (props: any) => {
   return (
     <div className="flex flex-col space-y-10 align-top">
       <HeadingTwo title={projectName!} />
-      {gallery && gallery.length > 0 && <Gallery images={gallery} />}
-      <div className="flex flex-col md:flex-row">
+      {gallery && gallery.length > 0 ? (
+        <Gallery images={gallery} />
+      ) : (
+        <>
+          <text className="text-center text-2xl text-neutral-400 dark:text-neutral-500">
+            No images available
+          </text>
+        </>
+      )}
+
+      <div className="border-b border-neutral-200 dark:border-neutral-800" />
+
+      <div className="flex flex-col md:flex-row gap-4 sm:gap-10">
         {/* Right */}
         <div className="md:w-1/2">
           <div className="mt-4 text-center md:text-left">
@@ -178,7 +185,6 @@ const ProjectPage: React.FC = (props: any) => {
             </div>
           </div>
         </div>
-
         {/* Left */}
         <div className="md:w-1/2">
           <div className="mt-4 text-center md:text-left">
