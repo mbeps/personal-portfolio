@@ -63,7 +63,7 @@ const ProjectPage: React.FC = (props: any) => {
   }
 
   return (
-    <div className="flex flex-col space-y-10 align-top">
+    <div className="flex flex-col space-y-10 align-top min-h-[85vh]">
       <HeadingTwo title={projectName!} />
       {gallery && gallery.length > 0 ? (
         <Gallery images={gallery} />
