@@ -20,6 +20,7 @@ import SlideUp from "./Slideup";
  * - Link to the GitHub repository of the project
  * - Optional link to the live site of the project
  * @param name (string): Name of the project
+ * @param slug (string): Slug of the project used for routing
  * @param description (string): Description of the project
  * @param imageURL (string): URL of the image of the project
  * @param repoURL (string): URL of the GitHub repository of the project
@@ -28,8 +29,10 @@ import SlideUp from "./Slideup";
  */
 const ProjectItem: React.FC<Project> = ({
   name,
+  slug,
   description,
   imageURL,
+  imagesList,
   repoURL,
   siteURL,
   articleURL,
@@ -44,8 +47,9 @@ const ProjectItem: React.FC<Project> = ({
    * Redirects the user to the repository if the repository link is available.
    */
   const handleClick = () => {
-    if (repoURL) {
-      router.push(repoURL);
+    console.log(slug);
+    if (slug) {
+      router.push(`/projects/${slug}`);
     }
   };
 

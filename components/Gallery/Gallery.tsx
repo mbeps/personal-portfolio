@@ -47,9 +47,9 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
         <IoIosArrowDropleftCircle
           size={38}
           className="
-            absolute left-0 top-1/2 transform -translate-y-1/2 text-3xl 
+            absolute left-1 top-1/2 transform -translate-y-1/2 text-3xl 
             cursor-pointer
-            text-neutral-500 dark:text-neutral-700
+            text-neutral-400 dark:text-neutral-700
             hover:text-red-500 dark:hover:text-red-900
             transition-colors duration-300"
           onClick={handlePrev}
@@ -60,14 +60,19 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
           alt="Currently Active"
           width={800}
           height={500}
-          className="w-full h-auto object-cover rounded-xl shadow"
+          className="
+          w-full max-h-[40vh] 
+          object-contain rounded-xl 
+          bg-neutral-100 dark:bg-neutral-900 
+          transition-colors duration-700
+          p-1"
         />
         <IoIosArrowDroprightCircle
           size={38}
           className="
-            absolute right-0 top-1/2 transform -translate-y-1/2 text-3xl 
+            absolute right-1 top-1/2 transform -translate-y-1/2 text-3xl 
             cursor-pointer
-            text-neutral-500 dark:text-neutral-700
+            text-neutral-400 dark:text-neutral-700
             hover:text-red-500 dark:hover:text-red-900
             transition-colors duration-300"
           onClick={handleNext}
@@ -82,7 +87,7 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
               idx === activeIndex
                 ? "border-4 border-red-500 dark:border-red-400 hover:border-red-600 dark:hover:border-red-500"
                 : "border-2 border-neutral-200 dark:border-neutral-700 hover:border-neutral-400 dark:hover:border-red-900"
-            } rounded-lg overflow-hidden cursor-pointer `}
+            } rounded-lg overflow-hidden cursor-pointer transition-colors duration-500 `}
             onClick={() => setActiveIndex(idx)}
           >
             <Image

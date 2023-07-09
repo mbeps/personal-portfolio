@@ -21,6 +21,7 @@ const ProjectsSection = () => {
             <div key={idx}>
               <ProjectItem
                 name={project.name}
+                slug={project.slug}
                 description={project.description}
                 imageURL={project.imageURL}
                 repoURL={project.repoURL}
