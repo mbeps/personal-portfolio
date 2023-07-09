@@ -1,5 +1,11 @@
 "use client";
 
+import getDescriptionBySlug from "@/actions/projects/getDescriptionBySlug";
+import getImagesListBySlug from "@/actions/projects/getImagesListBySlug";
+import getLanguageBySlug from "@/actions/projects/getLanguageBySlug";
+import getNameBySlug from "@/actions/projects/getNameBySlug";
+import getProjectBySlug from "@/actions/projects/getProjectBySlug";
+import getTechnologiesBySlug from "@/actions/projects/getTechnologiesBySlug";
 import Tag from "@/components/Atoms/Tag";
 import HeadingThree from "@/components/Content/Text/HeadingThree";
 import HeadingTwo from "@/components/Content/Text/HeadingTwo";
@@ -45,63 +51,6 @@ const ProjectPage: React.FC = (props: any) => {
     ...otherProjects,
   ];
 
-  function getTechnologiesBySlug(
-    slug: string,
-    projects: Project[]
-  ): string[] | undefined {
-    const project = projects.find((project) => project.slug === slug);
-    return project?.technologies;
-  }
-
-  function getLanguageBySlug(
-    slug: string,
-    projects: Project[]
-  ): string | undefined {
-    const project = projects.find((project) => project.slug === slug);
-    return project?.programmingLanguage;
-  }
-
-  function getProjectBySlug(
-    slug: string,
-    projects: Project[]
-  ): Project | undefined {
-    return projects.find((project) => project.slug === slug);
-  }
-
-  function getImagesListBySlug(
-    slug: string,
-    projects: Project[]
-  ): string[] | undefined {
-    const project = projects.find((project) => project.slug === slug);
-    return project?.imagesList;
-  }
-
-  function getNameBySlug(
-    slug: string,
-    projects: Project[]
-  ): string | undefined {
-    const project = projects.find((project) => project.slug === slug);
-    return project?.name;
-  }
-
-  function getDescriptionBySlug(
-    slug: string,
-    projects: Project[]
-  ): string | undefined {
-    const project = projects.find((project) => project.slug === slug);
-    return project?.description;
-  }
-
-  function getRepoBySlug(
-    slug: string,
-    projects: Project[]
-  ): string | undefined {
-    const project = projects.find((project) => project.slug === slug);
-    return project?.repoURL;
-  }
-
-  // ------------------------------
-
   const project = getProjectBySlug(params.slug, allProjects);
   const projectName = getNameBySlug(params.slug, allProjects);
   const projectTechnologies = getTechnologiesBySlug(params.slug, allProjects);
@@ -112,10 +61,6 @@ const ProjectPage: React.FC = (props: any) => {
   if (gallery) {
     gallery = gallery.map((image) => `/projects/${params.slug}/${image}`);
   }
-
-  useEffect(() => {
-    console.log(gallery);
-  }, [gallery]);
 
   return (
     <div className="flex flex-col space-y-10 align-top">

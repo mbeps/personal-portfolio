@@ -15,6 +15,11 @@ import { technologies } from "@/types/technologies";
  * Split into two sections: left and right.
  * Left section contains a short description of myself.
  * Right section contains a list of skills, languages and technologies.
+ * On mobile, the sections are stacked on top of each other.
+ *
+ * The skills, languages and technologies are displayed as tags.
+ * Some of these tags can be clicked which will open a modal.
+ * There is also a view more button that opens a modal to show more skills, languages or technologies.
  * @returns (JSX.Element): About section
  */
 const AboutSection = () => {

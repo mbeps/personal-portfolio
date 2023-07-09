@@ -1,37 +1,22 @@
 "use client"; // this is a client component
-import React from "react";
+import scrollToSection from "@/actions/scrollToSection";
 import Image from "next/image";
-import { Link } from "react-scroll/modules";
 import { HiArrowDown } from "react-icons/hi";
+import { Link } from "react-scroll/modules";
 import Button from "../Atoms/Button";
-import HeadingOne from "./Text/HeadingOne";
 
 /**+
  * Hero section component shown at the top of the page.
  * Contains a short description of myself, a picture and a link to the projects section.
  */
 const HeroSection = () => {
-  /**
-   * Allows the user to scroll to a specific section of the page.
-   *
-   * @param sectionName (string): the name of the section to scroll to
-   */
-  const scrollToSection = (sectionName: string) => {
-    const element = document.getElementById(sectionName as string);
-    if (element) {
-      window.scrollTo({
-        top: element.offsetTop,
-        behavior: "smooth",
-      });
-    }
-  };
-
   return (
     <section
       id="home"
       className="min-h-[85vh] flex flex-col justify-between items-center"
     >
       <div className="flex flex-col text-center items-center justify-center animate-fadeIn animation-delay-2 md:flex-row md:space-x-4 md:text-left my-auto">
+        {/* Profile Image */}
         <div className="md:mt-2 md:w-1/2">
           <Image
             src="/profile.png"
@@ -54,6 +39,7 @@ const HeroSection = () => {
             life easier and more meaningful.
           </p>
 
+          {/* Buttons */}
           <div className="flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0">
             <Button
               variant="filled"

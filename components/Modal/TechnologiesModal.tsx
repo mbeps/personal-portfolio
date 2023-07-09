@@ -29,16 +29,14 @@ const TechnologiesModal: React.FC<TechnologiesModalProps> = ({
   const [groupedBy, setGroupedBy] = useState("category");
 
   /**
-   * Organizes the technologies by category.
+   * Groups the technologies by category or no category.
    * For each category, it creates an array of technologies.
    * User can choose to group by category or not.
    * If grouped by category, it returns an object with the categories as keys and the array of technologies as values.
    * If not grouped by category, it returns the array of technologies.
    * @param technologies (Technology[]) The technologies to organize
    */
-  const organizeTechnologies = ():
-    | Record<string, Technology[]>
-    | Technology[] => {
+  const groupTechnologies = (): Record<string, Technology[]> | Technology[] => {
     let organizedTechnologies: Record<string, Technology[]> | Technology[] = [];
 
     if (groupedBy === "category") {
@@ -82,18 +80,18 @@ const TechnologiesModal: React.FC<TechnologiesModalProps> = ({
           </div>
         </div>
       ) : (
-        Object.entries(
-          organizeTechnologies() as Record<string, Technology[]>
-        ).map(([group, techs], index) => (
-          <div key={index} className="mt-4 text-center md:text-left">
-            <HeadingThree title={group} />
-            <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-              {techs.map((tech, index) => (
-                <Tag key={index}>{tech.name}</Tag>
-              ))}
+        Object.entries(groupTechnologies() as Record<string, Technology[]>).map(
+          ([group, techs], index) => (
+            <div key={index} className="mt-4 text-center md:text-left">
+              <HeadingThree title={group} />
+              <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
+                {techs.map((tech, index) => (
+                  <Tag key={index}>{tech.name}</Tag>
+                ))}
+              </div>
             </div>
-          </div>
-        ))
+          )
+        )
       )}
     </Modal>
   );

@@ -18,13 +18,24 @@ import SlideUp from "./Slideup";
  * - Description of the project
  * - Optional image of the project
  * - Link to the GitHub repository of the project
+ * - Button to open the modal listing the language and technologies used in the project
  * - Optional link to the live site of the project
+ * - Optional link to the article of the project
+ *
+ * Some projects have an image that is displayed on the left side of the card.
+ * This image is clickable and redirects to the project page.
+ *
  * @param name (string): Name of the project
  * @param slug (string): Slug of the project used for routing
  * @param description (string): Description of the project
  * @param imageURL (string): URL of the image of the project
  * @param repoURL (string): URL of the GitHub repository of the project
+ * @param repoURL (string): URL of the GitHub repository of the project
  * @param siteURL (string): URL of the live site of the project
+ * @param articleURL (string): URL of the article of the project
+ * @param programmingLanguage (string): Programming language of the project
+ * @param technologies (string[]): List of technologies used in the project
+ * @param type (string): Type of the project
  * @returns (JSX.Element): Project item component
  */
 const ProjectItem: React.FC<Project> = ({
