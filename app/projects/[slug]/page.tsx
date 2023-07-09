@@ -13,7 +13,21 @@ import Project, {
 import { usePathname } from "next/navigation";
 import { useParams } from "next/navigation";
 
-const ProjectPage: React.FC = () => {
+const generateStaticParams = async () => {
+  const projects = [
+    ...webdevProjects,
+    ...extraWebDevProjects,
+    ...backendWebDevProjects,
+    ...machineLearningProjects,
+    ...javaAssignments,
+    ...otherProjects,
+  ];
+  return projects.map((project) => ({
+    slug: project.slug,
+  }));
+};
+
+const ProjectPage: React.FC = (props: any) => {
   const pathname = usePathname(); // used to determine the current route
   const params = useParams(); // retrieve the URL parameters
 
