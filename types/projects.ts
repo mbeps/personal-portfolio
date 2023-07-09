@@ -3,8 +3,10 @@
  */
 export default interface Project {
   name: string;
+  slug: string;
   description: string;
   imageURL?: string;
+  imagesList?: string[];
   repoURL?: string;
   siteURL?: string;
   articleURL?: string;
@@ -27,9 +29,45 @@ export default interface Project {
 const webdevProjects: Project[] = [
   {
     name: `Circus Discussions`,
+    slug: "circus-discussions",
     description: `A social media discussion platform where users can interact with like-minded individuals.       
       This was my final year project for university.`,
-    imageURL: `/projects/circus-discussions-fyp.png`,
+    imageURL: `/projects/circus-discussions/cover.png`,
+    imagesList: [
+      "1.png",
+      "3.png",
+      "4.png",
+      "5.png",
+      "6.png",
+      "7.png",
+      "8.png",
+      "9.png",
+      "10.png",
+      "11.png",
+      "12.png",
+      "14.png",
+      "15.png",
+      "16.png",
+      "17.png",
+      "18.png",
+      "19.png",
+      "20.png",
+      "21.png",
+      "22.png",
+      "23.png",
+      "24.png",
+      "25.png",
+      "26.png",
+      "27.png",
+      "28.png",
+      "30.png",
+      "31.png",
+      "32.png",
+      "33.png",
+      "34.png",
+      "35.png",
+      "36.png",
+    ],
     repoURL: `https://github.com/mbeps/next_discussion_platform`,
     siteURL: `https://circus-discussion.vercel.app/`,
     articleURL: `/blogs/project-circus-discussion`,
@@ -46,9 +84,32 @@ const webdevProjects: Project[] = [
   },
   {
     name: `Ringmaster Messaging`,
+    slug: "ringmaster-messaging",
     description: `A simple messaging app to allow users to chat with other users or in group chats. 
       This was for learning custom back-ends. `,
-    imageURL: `/projects/ringmaster-messaging.png`,
+    imageURL: `/projects/ringmaster-messaging/cover.png`,
+    imagesList: [
+      "login-desktop.png",
+      "login-mobile.png",
+      "contacts-desktop.png",
+      "contacts-mobile.png",
+      "messages-desktop.png",
+      "messages-mobile.png",
+      "single-conversation-desktop.png",
+      "single-conversation-mobile.png",
+      "single-conversation-modal-desktop.png",
+      "single-conversation-modal-mobile.png",
+      "group-conversation-desktop.png",
+      "group-conversation-mobile.png",
+      "group-conversation-modal-desktop.png",
+      "group-conversation-modal-mobile.png",
+      "create-groupchat-desktop.png",
+      "create-groupchat-mobile.png",
+      "send-image-desktop.png",
+      "send-image-mobile.png",
+      "profile-settings-desktop.png",
+      "profile-settings-mobile.png",
+    ],
     repoURL: `https://github.com/mbeps/ringmaster-messaging`,
     siteURL: `https://ringmaster-messaging.vercel.app/`,
     articleURL: `/blogs/project-ringmaster-messaging`,
@@ -70,9 +131,23 @@ const webdevProjects: Project[] = [
   },
   {
     name: `Drumroll Music`,
+    slug: "drumroll-music",
     description: `A simple music streaming site where users can upload and listen to music.
       This was my first major project using Supabase.`,
-    imageURL: `/projects/drumroll-music.png`,
+    imageURL: `/projects/drumroll-music/cover.png`,
+    imagesList: [
+      "home-desktop.png",
+      "home-mobile.png",
+      "search-desktop.png",
+      "search-mobile.png",
+      "search-song-desktop.png",
+      "search-song-mobile.png",
+      "search-not-found-desktop.png",
+      "search-not-found-mobile.png",
+      "player-desktop.png",
+      "player-mobile.png",
+      "upload-desktop.png",
+    ],
     repoURL: `https://github.com/mbeps/drumroll-music`,
     articleURL: `/blogs/project-drumroll-music`,
     programmingLanguage: `TypeScript`,
@@ -97,10 +172,11 @@ const webdevProjects: Project[] = [
 const extraWebDevProjects: Project[] = [
   {
     name: `Sideshow Articles`,
+    slug: "sideshow-articles",
     description: `A simple site to allow users to read and write articles. 
       This was created to learn Supabase for the first time. 
       This was the foundation to using Supabase in other projects.`,
-    imageURL: `/projects/sideshow-articles.png`,
+    imageURL: `/projects/sideshow-articles/cover.png`,
     repoURL: `https://github.com/mbeps/sideshow-articles`,
     programmingLanguage: `TypeScript`,
     technologies: [`Next.JS`, `React`, `Supabase`, "PostgreSQL", `Next UI`],
@@ -108,9 +184,10 @@ const extraWebDevProjects: Project[] = [
   },
   {
     name: `Noodle`,
+    slug: "noodle",
     description: `This is an open source learning platform that I started as a ground project in my second year of university. 
       This was my first introduction to full stack development. `,
-    imageURL: `/projects/noodle.png`,
+    imageURL: `/projects/noodle/cover.png`,
     repoURL: `https://github.com/ixahmedxi/noodle`,
     siteURL: `https://noodle.run/`,
     programmingLanguage: `TypeScript`,
@@ -130,9 +207,10 @@ const extraWebDevProjects: Project[] = [
   },
   {
     name: `ConvoGPT`,
+    slug: "convogpt",
     description: `This is a simple client for using the OpenAI API locally. 
       This was created to learn how to use the OpenAI API and to create a simple client and to learn PgVector.`,
-    imageURL: `/projects/convo-gpt.png`,
+    imageURL: `/projects/convo-gpt/cover.png`,
     repoURL: `https://github.com/mbeps/convo-gpt`,
     programmingLanguage: `TypeScript`,
     technologies: [
@@ -150,6 +228,7 @@ const extraWebDevProjects: Project[] = [
 const backendWebDevProjects: Project[] = [
   {
     name: `Flask Forum Backend`,
+    slug: "flask-forum-backend",
     description: `This is a custom backend for the first iteration of the discussion platform. 
       This was created to learn how to create a custom backend using Python and Flask.`,
     repoURL: `https://github.com/mbeps/Forum-Discussion-Flask-Backend`,
@@ -159,6 +238,7 @@ const backendWebDevProjects: Project[] = [
   },
   {
     name: `Flask JWT Authentication`,
+    slug: "flask-jwt-authentication",
     description: `A simple Flask app to learn how to use JWT for authentication.`,
     repoURL: `https://github.com/mbeps/Flask_JWT_Auth`,
     programmingLanguage: `Python`,
@@ -167,6 +247,7 @@ const backendWebDevProjects: Project[] = [
   },
   {
     name: `Django Authentication`,
+    slug: "django-authentication",
     description: `A simple Django app to learn how to use Django with tokens for authentication.`,
     programmingLanguage: `Python`,
     repoURL: `https://github.com/mbeps/Django_Auth_Sys`,
@@ -183,6 +264,7 @@ const backendWebDevProjects: Project[] = [
 const machineLearningProjects: Project[] = [
   {
     name: `Assignment 1`,
+    slug: "machine-learning-assignment-1",
     description: `Be able to implement machine-learning algorithms, using the Nearest Neighbours algorithm as an example. 
       Have an understanding of ways to apply the ideas and algorithms of machine learning in science and technology.`,
     repoURL: `https://github.com/mbeps/Machine-Learning-Assignment-1`,
@@ -192,6 +274,7 @@ const machineLearningProjects: Project[] = [
   },
   {
     name: `Assignment 2`,
+    slug: "machine-learning-assignment-2",
     description: `Be able to use and implement machine-learning algorithms, with the Lasso and inductive conformal prediction algorithms as examples. Have an understanding of ways to apply the ideas and algorithms of machine learning in industry and medicine.`,
     repoURL: `https://github.com/mbeps/Machine-Learning-Assignment-2`,
     programmingLanguage: `Python`,
@@ -200,6 +283,7 @@ const machineLearningProjects: Project[] = [
   },
   {
     name: `Assignment 3`,
+    slug: "machine-learning-assignment-3",
     description: `Be able to use and implement machine-learning algorithms, with the SVM, neural networks, and cross-conformal prediction algorithms as examples. 
       Have an understanding of ways to apply the ideas and algorithms of machine learning in industry.`,
     repoURL: `https://github.com/mbeps/Machine-Learning-Assignment-3`,
@@ -209,6 +293,7 @@ const machineLearningProjects: Project[] = [
   },
   {
     name: `Lab Questions`,
+    slug: "machine-learning-lab-questions",
     description: `Implemented various machine learning algorithms and techniques learned during the course, 
       such as Nearest Neighbours, conformal prediction, linear regression, Ridge Regression, Lasso, data preprocessing, parameter selection, 
       kernels, neural networks, support vector machines, scikit-learn pipelines, and cross-conformal predictors.`,
@@ -227,9 +312,10 @@ const machineLearningProjects: Project[] = [
 const otherProjects: Project[] = [
   {
     name: `Osmos Game`,
+    slug: "osmos-game",
     description: `This is a simple game created using SimpleGUI for a group project in my first year of university. 
       This required us to rely on the documentation as there was no tutorials or guides on how to use the library.`,
-    imageURL: `/projects/osmos-game.png`,
+    imageURL: `/projects/osmos-game/cover.png`,
     repoURL: `https://github.com/mbeps/Osmos_Game`,
     programmingLanguage: `Python`,
     technologies: [`SimpleGUI`],
@@ -237,6 +323,7 @@ const otherProjects: Project[] = [
   },
   {
     name: `Automated Setup`,
+    slug: "automated-setup",
     description: `A shell script which automates the setup of a new Linux machine.
       This is specifically for my Fedora install.`,
     repoURL: `https://github.com/mbeps/AutomatedSetup`,
@@ -253,6 +340,7 @@ const otherProjects: Project[] = [
 const javaAssignments: Project[] = [
   {
     name: `Calculator`,
+    slug: "software-engineering-calculator-assignment",
     description: `Simple calculator app built using Java as a Maven project. 
       This was to learn about software design patterns and life cycles.`,
     repoURL: `https://github.com/mbeps/Calculator-Assignment`,
@@ -262,6 +350,7 @@ const javaAssignments: Project[] = [
   },
   {
     name: `Botanic-Garden-Planner`,
+    slug: "botanic-garden-planner-assignment",
     description: `Simple botanic garden planner app built using Java.
       This was in first year to learn about Java and object oriented programming.`,
     repoURL: `https://github.com/mbeps/Botanic-Garden-Planner`,
@@ -270,6 +359,7 @@ const javaAssignments: Project[] = [
   },
   {
     name: "Track & Trace",
+    slug: "track-and-trace-assignment",
     description: `Simple app to track Covid cases. 
       This was in first year to learn about Java and object oriented programming.`,
     repoURL: `https://github.com/mbeps/Track_and_Trace`,
@@ -278,6 +368,7 @@ const javaAssignments: Project[] = [
   },
   {
     name: `Hollomon`,
+    slug: "hollomon-assignment",
     description: `This was in first year to learn about Java and object oriented programming.`,
     repoURL: `https://github.com/mbeps/Hollomon`,
     programmingLanguage: `Java`,
@@ -285,6 +376,7 @@ const javaAssignments: Project[] = [
   },
   {
     name: `Database Mini Project`,
+    slug: "database-mini-project",
     description: `Learning to interact with a database using Java.`,
     repoURL: `https://github.com/mbeps/DatabasesMiniProject`,
     programmingLanguage: `Java`,

@@ -8,6 +8,8 @@ interface TagProps {
 
 /**
  * Tag component which can execute an action when clicked.
+ * Has hover effect and little arrow when clickable.
+ * If it is not clickable, it will not have the hover effect.
  * @param children (React.ReactNode) The content of the tag
  * @param onClick (function) The action to be performed when the tag is clicked
  * @returns (JSX.Element): a tag

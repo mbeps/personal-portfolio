@@ -28,13 +28,13 @@ const SkillsModal: React.FC<SkillsModalProps> = ({
   const [groupedBy, setGroupedBy] = React.useState("language");
 
   /**
-   * Allows to organize the skills by category or by language.
+   * Allows grouping the skills by category or by language.
    * Removes duplicates.
    * @param skills (Skill[]) The skills to organize
    * @returns (Record<string, Skill[]>): the skills organized by category
    */
-  const organizeSkills = (): Record<string, Skill[]> | Skill[] => {
-    let organizedSkills: Record<string, Skill[]> | Skill[] = {};
+  const groupSkills = (): Record<string, Skill[]> | Skill[] => {
+    let organizedSkills: Record<string, Skill[]> | Skill[] = {}; // The skills organized by category
 
     // Helper function to remove duplicates
     const removeDuplicates = (skills: Skill[]): Skill[] => {
@@ -94,7 +94,7 @@ const SkillsModal: React.FC<SkillsModalProps> = ({
     return organizedSkills;
   };
 
-  const skills = organizeSkills();
+  const skills = groupSkills();
 
   return (
     <Modal title="Language Skills" isOpen={isOpen} onClose={onClose}>

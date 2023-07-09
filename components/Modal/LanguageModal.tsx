@@ -5,6 +5,7 @@ import Tag from "../Atoms/Tag";
 import HeadingThree from "../Content/Text/HeadingThree";
 import Dropdown from "../DropDown/DropDownMenu";
 import Modal from "./Modal";
+import organizeSkillsByCategory from "@/actions/organize/organizeSkillsByCategory";
 
 interface ProjectModalProps {
   isOpen?: boolean; // whether the modal is open or not
@@ -35,26 +36,6 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
   onClose,
 }) => {
   const [groupedBy, setGroupedBy] = useState("category");
-
-  /**
-   * Organizes the skills by category.
-   * For each category, it creates an array of skills.
-   * @param skills (Skill[]) The skills to organize
-   * @returns (Record<string, Skill[]>): the skills organized by category
-   */
-  const organizeSkillsByCategory = (skills: Skill[]) => {
-    return skills.reduce(
-      (accumulator: { [category: string]: Skill[] }, skill: Skill) => {
-        const { category = "Other" } = skill;
-        if (!accumulator[category]) {
-          accumulator[category] = [];
-        }
-        accumulator[category].push(skill);
-        return accumulator;
-      },
-      {}
-    );
-  };
 
   const skillsByCategory = organizeSkillsByCategory(skills);
 

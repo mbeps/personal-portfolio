@@ -1,8 +1,7 @@
 import React from "react";
-import Modal from "./Modal";
-import HeadingTwo from "../Content/Text/HeadingTwo";
-import HeadingThree from "../Content/Text/HeadingThree";
 import Tag from "../Atoms/Tag";
+import HeadingThree from "../Content/Text/HeadingThree";
+import Modal from "./Modal";
 
 interface ProjectModalProps {
   isOpen?: boolean; // whether the modal is open or not
