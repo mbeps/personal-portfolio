@@ -60,12 +60,13 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
           alt="Currently Active"
           width={800}
           height={500}
+          priority
           className="
-          w-full max-h-[40vh] 
+          w-full h-[40vh] 
           object-contain rounded-xl 
           bg-neutral-100 dark:bg-neutral-900 
           transition-colors duration-700
-          p-1"
+          p-2"
         />
         <IoIosArrowDroprightCircle
           size={38}
