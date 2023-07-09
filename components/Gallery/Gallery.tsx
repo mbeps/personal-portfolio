@@ -93,6 +93,7 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
           >
             <Image
               src={image}
+              quality={1}
               alt={`Thumbnail ${idx}`}
               width={150}
               height={150}

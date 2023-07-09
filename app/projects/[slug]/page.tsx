@@ -134,6 +134,8 @@ const ProjectPage: React.FC = (props: any) => {
             <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-5">
               <p>{projectDescription}</p>
             </div>
+
+            <HeadingThree title="Links" />
             {/* Links */}
             <div className="mt-6 flex flex-col md:flex-row justify-center md:justify-start items-center">
               <div className="flex flex-row gap-5 w-full md:w-1/2 justify-center md:justify-start">
