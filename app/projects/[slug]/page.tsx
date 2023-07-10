@@ -18,9 +18,10 @@ import Project, {
   otherProjects,
   webdevProjects,
 } from "@/types/projects";
+import Image from "next/image";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
-import React, { useEffect } from "react";
+import React from "react";
 import { BsArrowUpRightSquare, BsGithub } from "react-icons/bs";
 import { IoReaderOutline } from "react-icons/io5";
 
@@ -38,6 +39,20 @@ const generateStaticParams = async () => {
   }));
 };
 
+/**
+ * Displays the page for a specific project.
+ * The project is determined by the slug in the URL.
+ * At the top, the gallery of images is displayed for the project (if available).
+ * If the project has no images, the project image is displayed instead.
+ * If the project has no images or project image, a placeholder is displayed.
+ * Bellow the gallery is the project's metadata:
+ * - Description (left side on desktop, top on mobile)
+ * - Language (right side on desktop, top on mobile)
+ * - Technologies (right side on desktop, bottom on mobile)
+ * - Links (left side on desktop, bottom on mobile)
+ * @param props (any)
+ * @returns (JSX.Element): Project Page Component
+ */
 const ProjectPage: React.FC = (props: any) => {
   const pathname = usePathname(); // used to determine the current route
   const params = useParams(); // retrieve the URL parameters
@@ -58,6 +73,7 @@ const ProjectPage: React.FC = (props: any) => {
   const projectDescription = getDescriptionBySlug(params.slug, allProjects);
 
   let gallery = getImagesListBySlug(params.slug, allProjects);
+  // Adds full path to images
   if (gallery) {
     gallery = gallery.map((image) => `/projects/${params.slug}/${image}`);
   }
@@ -67,6 +83,16 @@ const ProjectPage: React.FC = (props: any) => {
       <HeadingTwo title={projectName!} />
       {gallery && gallery.length > 0 ? (
         <Gallery images={gallery} />
+      ) : project?.imageURL ? (
+        <div className="w-full h-[40vh] flex items-center justify-center">
+          <Image
+            src={project.imageURL}
+            alt={projectName!}
+            width={800}
+            height={500}
+            className="object-cover rounded-lg"
+          />
+        </div>
       ) : (
         <>
           <text className="text-center text-2xl text-neutral-400 dark:text-neutral-500">
