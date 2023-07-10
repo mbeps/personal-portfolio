@@ -1,5 +1,21 @@
 Welcome to my personal portfolio website! Explore my skills, projects, and who I am as a developer. With a responsive design, light/dark mode, and captivating sections, let's embark on this journey together. Connect with me in the footer for collaboration and exciting opportunities. Let's inspire through technology and creativity!
 
+
+# **Features**
+
+This personal portfolio offers a multitude of exciting features:
+
+- **Skills Showcase**: Demonstrates the languages, skills, and technologies that I am proficient in. The portfolio offers a detailed view of skills and technologies, and they can be grouped together for convenient viewing in a modal. Extra details are provided for some languages to provide comprehensive insights.
+
+- **Project Portfolio**: Highlights a selection of my projects on the main page. An extended portfolio can be accessed on the project page, including optional site links to live projects, repository links to view the project code, and a quick view of the project stack to reveal the language and technologies used. Some projects also include reflective blogs. You can also explore the gallery of images for each project. Furthermore, you can filter projects by categories (like web development, machine learning, etc.) to view specific types of projects.
+
+- **Blog Space**: A dedicated page where you can read markdown blogs that I write. Here, I share insights, learning experiences, and various thoughts on technology and programming.
+
+- **Light and Dark Mode**: The portfolio supports a light and a dark mode. You can switch between the two according to your preference for a comfortable browsing experience.
+
+With a responsive design, captivating sections, and a journey into my development experience, my personal portfolio welcomes you!
+
+
 # **Requirements**
 These are the requirements needed to run the project:
 - Node 18 LTS

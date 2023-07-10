@@ -79,18 +79,27 @@ const ProjectPage: React.FC = (props: any) => {
   }
 
   return (
-    <div className="flex flex-col space-y-10 align-top min-h-[85vh]">
+    <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
       <HeadingTwo title={projectName!} />
       {gallery && gallery.length > 0 ? (
         <Gallery images={gallery} />
       ) : project?.imageURL ? (
-        <div className="w-full h-[40vh] flex items-center justify-center">
+        <div
+          className="w-full flex items-center justify-center relative z-0
+        "
+        >
           <Image
             src={project.imageURL}
-            alt={projectName!}
-            width={800}
-            height={500}
-            className="object-cover rounded-lg"
+            alt="Currently Active"
+            quality={90}
+            width={2000}
+            height={1125}
+            priority
+            className="
+              w-full
+              object-contain rounded-xl 
+              transition-colors duration-700
+              "
           />
         </div>
       ) : (

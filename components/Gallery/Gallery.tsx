@@ -58,9 +58,9 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
         <Image
           src={images[activeIndex]}
           alt="Currently Active"
-          width={800}
           quality={90}
-          height={500}
+          width={2000}
+          height={1125}
           priority
           className="
           w-full h-[40vh] 
