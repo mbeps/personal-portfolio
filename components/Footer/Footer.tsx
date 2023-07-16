@@ -2,6 +2,7 @@ import {
   AiOutlineGithub,
   AiOutlineMail,
   AiOutlineTwitter,
+  AiFillLinkedin,
 } from "react-icons/ai";
 import SocialIcon from "./SocialIcon";
 
@@ -29,6 +30,11 @@ const Footer = () => {
             title="Twitter"
             link="https://twitter.com/m_beps"
             IconComponent={AiOutlineTwitter}
+          />
+          <SocialIcon
+            title="LinkedIn"
+            link="https://www.linkedin.com/in/maruf-bepary-104722180/"
+            IconComponent={AiFillLinkedin}
           />
           <SocialIcon
             title="Email"
