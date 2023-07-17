@@ -18,9 +18,10 @@ import Project, {
   otherProjects,
   webdevProjects,
 } from "@/types/projects";
+import { RouteHandlerManager } from "next/dist/server/future/route-handler-managers/route-handler-manager";
 import Image from "next/image";
 import Link from "next/link";
-import { useParams, usePathname } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightSquare, BsGithub } from "react-icons/bs";
 import { IoReaderOutline } from "react-icons/io5";
@@ -56,6 +57,7 @@ const generateStaticParams = async () => {
 const ProjectPage: React.FC = (props: any) => {
   const pathname = usePathname(); // used to determine the current route
   const params = useParams(); // retrieve the URL parameters
+  const router = useRouter();
 
   const allProjects: Project[] = [
     ...webdevProjects,
@@ -76,6 +78,11 @@ const ProjectPage: React.FC = (props: any) => {
   // Adds full path to images
   if (gallery) {
     gallery = gallery.map((image) => `/projects/${params.slug}/${image}`);
+  }
+
+  // If the project does not exist, redirect to the 404 page
+  if (!project) {
+    router.push("not-found");
   }
 
   return (
