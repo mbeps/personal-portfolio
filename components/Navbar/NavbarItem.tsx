@@ -28,7 +28,7 @@ const NavbarItem: React.FC<NavbarItemProps> = ({
   active = false,
 }) => {
   const router = useRouter();
-  const { toggle } = useNavbarStore();
+  const { close } = useNavbarStore();
 
   /**
    * Handles the click event of the navbar item.
@@ -49,7 +49,7 @@ const NavbarItem: React.FC<NavbarItemProps> = ({
     } else {
       router.push(to);
     }
-    toggle(); // close the navbar when a button is clicked
+    close(); // close the navbar when a button is clicked
   };
 
   const navbarItemStyle = `
