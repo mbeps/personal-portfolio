@@ -51,7 +51,7 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
             cursor-pointer
             text-neutral-400 dark:text-neutral-700
             hover:text-red-500 dark:hover:text-red-900
-            transition-colors duration-300"
+            transition-all hover:scale-110 duration-300"
           onClick={handlePrev}
         />
         {/* Image Preview */}
@@ -76,7 +76,7 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
             cursor-pointer
             text-neutral-400 dark:text-neutral-700
             hover:text-red-500 dark:hover:text-red-900
-            transition-colors duration-300"
+            transition-all hover:scale-110 duration-300"
           onClick={handleNext}
         />
       </div>
