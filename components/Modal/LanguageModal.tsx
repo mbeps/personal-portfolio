@@ -5,7 +5,7 @@ import Tag from "../Atoms/Tag";
 import HeadingThree from "../Content/Text/HeadingThree";
 import Dropdown from "../DropDown/DropDownMenu";
 import Modal from "./Modal";
-import organizeSkillsByCategory from "@/actions/organize/organizeSkillsByCategory";
+import organizeSkillsByCategory from "@/actions/organizeSkillsByCategory";
 
 interface ProjectModalProps {
   isOpen?: boolean; // whether the modal is open or not

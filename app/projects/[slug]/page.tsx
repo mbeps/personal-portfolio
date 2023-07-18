@@ -1,9 +1,4 @@
-import getDescriptionBySlug from "@/actions/projects/getDescriptionBySlug";
-import getImagesListBySlug from "@/actions/projects/getImagesListBySlug";
-import getLanguageBySlug from "@/actions/projects/getLanguageBySlug";
-import getNameBySlug from "@/actions/projects/getNameBySlug";
-import getProjectBySlug from "@/actions/projects/getProjectBySlug";
-import getTechnologiesBySlug from "@/actions/projects/getTechnologiesBySlug";
+import getProjectBySlug from "@/actions/getProjectBySlug";
 import Tag from "@/components/Atoms/Tag";
 import HeadingThree from "@/components/Content/Text/HeadingThree";
 import HeadingTwo from "@/components/Content/Text/HeadingTwo";
@@ -69,12 +64,12 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   ];
 
   const project = getProjectBySlug(slug, allProjects);
-  const projectName = getNameBySlug(slug, allProjects);
-  const projectTechnologies = getTechnologiesBySlug(slug, allProjects);
-  const projectLanguage = getLanguageBySlug(slug, allProjects);
-  const projectDescription = getDescriptionBySlug(slug, allProjects);
+  const projectName = project?.name;
+  const projectTechnologies = project?.technologies;
+  const projectLanguage = project?.programmingLanguage;
+  const projectDescription = project?.description;
 
-  let gallery = getImagesListBySlug(slug, allProjects);
+  let gallery = project?.imagesList;
   // Adds full path to images
   if (gallery) {
     gallery = gallery.map((image) => `/projects/${slug}/${image}`);
