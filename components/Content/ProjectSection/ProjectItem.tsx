@@ -58,7 +58,6 @@ const ProjectItem: React.FC<Project> = ({
    * Redirects the user to the repository if the repository link is available.
    */
   const handleClick = () => {
-    console.log(slug);
     if (slug) {
       router.push(`/projects/${slug}`);
     }
