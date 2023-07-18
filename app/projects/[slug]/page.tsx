@@ -1,11 +1,4 @@
-"use client";
-
-import getDescriptionBySlug from "@/actions/projects/getDescriptionBySlug";
-import getImagesListBySlug from "@/actions/projects/getImagesListBySlug";
-import getLanguageBySlug from "@/actions/projects/getLanguageBySlug";
-import getNameBySlug from "@/actions/projects/getNameBySlug";
-import getProjectBySlug from "@/actions/projects/getProjectBySlug";
-import getTechnologiesBySlug from "@/actions/projects/getTechnologiesBySlug";
+import getProjectBySlug from "@/actions/getProjectBySlug";
 import Tag from "@/components/Atoms/Tag";
 import HeadingThree from "@/components/Content/Text/HeadingThree";
 import HeadingTwo from "@/components/Content/Text/HeadingTwo";
@@ -18,16 +11,15 @@ import Project, {
   otherProjects,
   webdevProjects,
 } from "@/types/projects";
-import { RouteHandlerManager } from "next/dist/server/future/route-handler-managers/route-handler-manager";
 import Image from "next/image";
 import Link from "next/link";
-import { useParams, usePathname, useRouter } from "next/navigation";
+import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightSquare, BsGithub } from "react-icons/bs";
 import { IoReaderOutline } from "react-icons/io5";
 
-const generateStaticParams = async () => {
-  const projects = [
+export const generateStaticParams = async () => {
+  const projects: Project[] = [
     ...webdevProjects,
     ...extraWebDevProjects,
     ...backendWebDevProjects,
@@ -35,10 +27,15 @@ const generateStaticParams = async () => {
     ...javaAssignments,
     ...otherProjects,
   ];
-  return projects.map((project) => ({
-    slug: project.slug,
-  }));
+
+  return projects.map((project) => ({ slug: project.slug }));
 };
+
+interface ProjectPageProps {
+  params: {
+    slug: string;
+  };
+}
 
 /**
  * Displays the page for a specific project.
@@ -54,10 +51,8 @@ const generateStaticParams = async () => {
  * @param props (any)
  * @returns (JSX.Element): Project Page Component
  */
-const ProjectPage: React.FC = (props: any) => {
-  const pathname = usePathname(); // used to determine the current route
-  const params = useParams(); // retrieve the URL parameters
-  const router = useRouter();
+const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
+  const slug = params.slug;
 
   const allProjects: Project[] = [
     ...webdevProjects,
@@ -68,21 +63,21 @@ const ProjectPage: React.FC = (props: any) => {
     ...otherProjects,
   ];
 
-  const project = getProjectBySlug(params.slug, allProjects);
-  const projectName = getNameBySlug(params.slug, allProjects);
-  const projectTechnologies = getTechnologiesBySlug(params.slug, allProjects);
-  const projectLanguage = getLanguageBySlug(params.slug, allProjects);
-  const projectDescription = getDescriptionBySlug(params.slug, allProjects);
+  const project = getProjectBySlug(slug, allProjects);
+  const projectName = project?.name;
+  const projectTechnologies = project?.technologies;
+  const projectLanguage = project?.programmingLanguage;
+  const projectDescription = project?.description;
 
-  let gallery = getImagesListBySlug(params.slug, allProjects);
+  let gallery = project?.imagesList;
   // Adds full path to images
   if (gallery) {
-    gallery = gallery.map((image) => `/projects/${params.slug}/${image}`);
+    gallery = gallery.map((image) => `/projects/${slug}/${image}`);
   }
 
-  // If the project does not exist, redirect to the 404 page
+  // redirect to not found page is the project is not valid
   if (!project) {
-    router.push("not-found");
+    notFound();
   }
 
   return (

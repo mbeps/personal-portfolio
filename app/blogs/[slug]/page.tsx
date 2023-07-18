@@ -23,19 +23,28 @@ const getBlogContent = (slug: string) => {
  * @returns (Array): array of blogs
  */
 export const generateStaticParams = async () => {
+  // get all blogs with metadata
   const blogs = getBlogMetadata();
+
+  // Map through all blogs and return an array of objects with the slug for each blog
   return blogs.map((blog) => ({
     slug: blog.slug,
   }));
 };
+
+interface BlogPageProps {
+  params: {
+    slug: string;
+  };
+}
 
 /**
  * Page displaying the rendered markdown which can be read by the user.
  * @param props: the content of the blog
  * @returns (JSX.Element): content of the blog
  */
-const BlogPage = (props: any) => {
-  const slug = props.params.slug;
+const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
+  const slug = params.slug;
   const blog = getBlogContent(slug);
   return (
     <div>
