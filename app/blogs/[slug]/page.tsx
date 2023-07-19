@@ -51,7 +51,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
       <div className="my-12 text-center">
         <HeadingTwo title={blog.data.title} />
       </div>
-      <article className="prose lg:prose-xl dark:prose-invert prose-img:rounded-lg">
+      <article className="prose lg:prose-xl dark:prose-invert prose-img:rounded-lg max-w-none">
         <Markdown>{blog.content}</Markdown>
       </article>
     </div>
