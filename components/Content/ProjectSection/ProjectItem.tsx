@@ -79,6 +79,7 @@ const ProjectItem: React.FC<Project> = ({
             <div
               className="
                 md:w-1/2
+                rounded-xl
                 transform hover:scale-105 
                 shadow-xl hover:shadow-2xl
                 transition-all duration-500 ease-in-out
