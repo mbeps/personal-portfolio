@@ -74,8 +74,16 @@ const ProjectItem: React.FC<Project> = ({
     <SlideUp offset="-300px 0px -300px 0px">
       <div className="bg-neutral-100 dark:bg-stone-950 p-4 rounded-xl sm:bg-white sm:dark:bg-stone-900 sm:p-0 transition-colors duration-700 ">
         <div className="flex flex-col animate-slideUpCubiBezier animation-delay-2 md:flex-row md:space-x-12">
+          {/* Project Cover */}
           {imageURL && (
-            <div className="md:w-1/2">
+            <div
+              className="
+                md:w-1/2
+                transform hover:scale-105 
+                shadow-xl hover:shadow-2xl
+                transition-all duration-500 ease-in-out
+              "
+            >
               <Image
                 src={imageURL}
                 key={imageURL}
@@ -83,19 +91,24 @@ const ProjectItem: React.FC<Project> = ({
                 width={1000}
                 height={1000}
                 className="
-                    rounded-xl shadow-xl 
-                    transform hover:scale-105 transition-transform duration-500 ease-in-out
-                    cursor-pointer"
+                  rounded-xl 
+                  cursor-pointer"
                 onClick={handleClick}
               />
             </div>
           )}
+
           <div className={`mt-8 ${imageURL ? "md:w-1/2" : "md:w-full"}`}>
+            {/* Project Title */}
             <h1 className="text-4xl font-bold mb-6 text-left">{name}</h1>
+
+            {/* Project Description */}
             <p className="text-xl text-left leading-7 mb-4 text-neutral-600 dark:text-neutral-400">
               {description}
             </p>
-            <div className="flex flex-row align-bottom space-x-4">
+
+            {/* Buttons */}
+            <div className="flex flex-row align-bottom space-x-4 mt-8">
               {/* Repository */}
               {repoURL && (
                 <Link href={repoURL} target="_blank" title="Repository">

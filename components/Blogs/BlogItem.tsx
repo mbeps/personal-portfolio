@@ -13,7 +13,7 @@ const BlogItem: React.FC<BlogMetadata> = (props) => {
       <div
         className="
         flex flex-col 
-        min-h-[200px]
+        min-h-[180px]
         cursor-pointer
         bg-neutral-100 dark:bg-stone-800
         hover:bg-neutral-200 dark:hover:bg-red-950
