@@ -43,7 +43,7 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
 
   return (
     <div className="flex flex-col items-center relative">
-      <div className="w-full relative px-16">
+      <div className="w-full relative">
         <IoIosArrowDropleftCircle
           size={38}
           className="
