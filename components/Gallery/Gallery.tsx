@@ -43,7 +43,7 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
 
   return (
     <div className="flex flex-col items-center relative">
-      <div className="w-full relative">
+      <div className="w-full relative px-16">
         <IoIosArrowDropleftCircle
           size={38}
           className="
@@ -54,21 +54,24 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
             transition-all hover:scale-110 duration-300"
           onClick={handlePrev}
         />
-        {/* Image Preview */}
-        <Image
-          src={images[activeIndex]}
-          alt="Currently Active"
-          quality={90}
-          width={2000}
-          height={1125}
-          priority
-          className="
-          w-full h-[40vh] 
-          object-contain rounded-xl 
-          bg-neutral-100 dark:bg-neutral-900 
-          transition-colors duration-700
-          p-2"
-        />
+        {/* Image Container */}
+        <div className="w-full">
+          {/* Image Preview */}
+          <Image
+            src={images[activeIndex]}
+            alt="Currently Active"
+            quality={90}
+            width={2000}
+            height={1125}
+            priority
+            className="
+              w-full h-[60vh] 
+              object-contain rounded-xl 
+              bg-neutral-100 dark:bg-neutral-900 
+              transition-colors duration-700
+              p-2"
+          />
+        </div>
         <IoIosArrowDroprightCircle
           size={38}
           className="
@@ -80,6 +83,7 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
           onClick={handleNext}
         />
       </div>
+
       <div className="flex flex-wrap justify-center gap-2 mt-4">
         {/* Image List */}
         {images.map((image, idx) => (
@@ -89,7 +93,8 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
               idx === activeIndex
                 ? "border-4 border-red-500 dark:border-red-800 hover:border-red-600 dark:hover:border-red-500"
                 : "border-2 border-neutral-200 dark:border-neutral-700 hover:border-neutral-400 dark:hover:border-red-900"
-            } rounded-lg overflow-hidden cursor-pointer transition-colors duration-500 `}
+            } rounded-lg overflow-hidden cursor-pointer transition-all duration-500 
+            transform hover:scale-110   ease-in-out`}
             onClick={() => setActiveIndex(idx)}
           >
             <Image
@@ -99,7 +104,12 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
               width={150}
               height={150}
               loading="lazy"
-              className="w-full h-full object-cover rounded-lg"
+              className="
+                w-full h-full 
+                object-cover 
+                rounded-lg 
+                transform hover:scale-105 transition-transform duration-500 ease-in-out
+              "
             />
           </div>
         ))}
