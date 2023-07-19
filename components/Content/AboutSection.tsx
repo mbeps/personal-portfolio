@@ -306,7 +306,7 @@ const SkillSection: React.FC = () => {
    * Displays a list of skills.
    */
   const handleDisplaySkills = () => {
-    return firstNSkillsPerLanguage(4);
+    return firstNSkillsPerLanguage(5);
     return firstNSkills(11);
     return firstNSkillsPerCategory(3);
   };
