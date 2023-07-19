@@ -82,7 +82,7 @@ const ProjectItem: React.FC<Project> = ({
                 transform hover:scale-105 
                 shadow-xl hover:shadow-2xl
                 transition-all duration-500 ease-in-out
-                border-2 border-green-500"
+              "
             >
               <Image
                 src={imageURL}
