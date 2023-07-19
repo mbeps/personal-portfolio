@@ -76,7 +76,14 @@ const ProjectItem: React.FC<Project> = ({
         <div className="flex flex-col animate-slideUpCubiBezier animation-delay-2 md:flex-row md:space-x-12">
           {/* Project Cover */}
           {imageURL && (
-            <div className="md:w-1/2">
+            <div
+              className="
+                md:w-1/2
+                transform hover:scale-105 
+                shadow-xl hover:shadow-2xl
+                transition-all duration-500 ease-in-out
+                border-2 border-green-500"
+            >
               <Image
                 src={imageURL}
                 key={imageURL}
@@ -84,13 +91,13 @@ const ProjectItem: React.FC<Project> = ({
                 width={1000}
                 height={1000}
                 className="
-                    rounded-xl shadow-xl 
-                    transform hover:scale-105 transition-transform duration-500 ease-in-out
-                    cursor-pointer"
+                  rounded-xl 
+                  cursor-pointer"
                 onClick={handleClick}
               />
             </div>
           )}
+
           <div className={`mt-8 ${imageURL ? "md:w-1/2" : "md:w-full"}`}>
             {/* Project Title */}
             <h1 className="text-4xl font-bold mb-6 text-left">{name}</h1>
