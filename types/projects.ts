@@ -89,9 +89,8 @@ const webdevProjects: Project[] = [
     name: `Ringmaster Messaging`,
     slug: "ringmaster-messaging",
     description: `
-      A simple messaging app to allow users to chat with other users or in group chats. 
-      Users can send normal text messages, images, view active users, and edit their profile.
-      This was for learning custom back-ends. 
+      A custom back-end learning project involved creating a straightforward messaging app. 
+      Users can chat one-on-one, participate in group chats, send text messages, share images, view active users, and personalize their profiles. 
       `,
     imageURL: `/projects/ringmaster-messaging/cover.png`,
     imagesList: [
@@ -139,9 +138,8 @@ const webdevProjects: Project[] = [
     name: `Drumroll Music`,
     slug: "drumroll-music",
     description: `
-      A simple music streaming site where users can upload and listen to music.
-      Users can upload songs, search for songs, listen to songs and like songs.
-      This was my first major project using Supabase.
+      My first major project using Supabase was a basic music streaming site. 
+      Users can upload songs, search and listen to music, as well as like the songs they enjoy.
       `,
     imageURL: `/projects/drumroll-music/cover.png`,
     imagesList: [
@@ -183,10 +181,9 @@ const extraWebDevProjects: Project[] = [
     name: `Sideshow Articles`,
     slug: "sideshow-articles",
     description: `
-      A simple site to allow users to read and write articles. 
-      Users can read all articles, create and delete articles. 
-      This was created to learn Supabase for the first time. 
-      This was the foundation to using Supabase in other projects.
+      To familiarize myself with Supabase, I developed a simple website for reading and writing articles. 
+      Users can read, create, and delete articles. 
+      This foundational project paved the way for using Supabase in subsequent projects.
       `,
     imageURL: `/projects/sideshow-articles/cover.png`,
     repoURL: `https://github.com/mbeps/sideshow-articles`,
@@ -198,10 +195,8 @@ const extraWebDevProjects: Project[] = [
     name: `Noodle`,
     slug: "noodle",
     description: `
-      This is an open source learning platform that I started as a ground project in my second year of university. 
-      This app allows students to keep track of tasks, assignments, and exams. 
-      It also allows students to store notes and resources.
-      This was my first introduction to full stack development. 
+      ing my second year of university, my group and I initiated a project on an open-source learning platform which served as my introduction to full-stack development. 
+      This app aids students in managing tasks, assignments, exams, and storing notes and resources.
       `,
     imageURL: `/projects/noodle/cover.png`,
     repoURL: `https://github.com/ixahmedxi/noodle`,
@@ -225,9 +220,9 @@ const extraWebDevProjects: Project[] = [
     name: `ConvoGPT`,
     slug: "convogpt",
     description: `
-      This is a simple client for using the OpenAI API locally. 
-      The user can select a desired modal and enter a prompt to generate a response.
-      This was created to learn how to use the OpenAI API and to create a simple client and to learn PgVector.
+      In my first year of university, my group and I developed a simple game using SimpleGUI for a project. 
+      We manually implemented the game's physics using vector theory and physics concepts. 
+      Since there were no tutorials or guides available, we relied heavily on the library's documentation.
       `,
     imageURL: `/projects/convo-gpt/cover.png`,
     repoURL: `https://github.com/mbeps/convo-gpt`,

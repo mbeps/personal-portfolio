@@ -83,13 +83,12 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   return (
     <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
       <HeadingTwo title={projectName!} />
+
+      {/* Images Section */}
       {gallery && gallery.length > 0 ? (
         <Gallery images={gallery} />
       ) : project?.imageURL ? (
-        <div
-          className="w-full flex items-center justify-center relative z-0
-        "
-        >
+        <div className="w-full flex items-center justify-center relative z-0">
           <Image
             src={project.imageURL}
             alt="Currently Active"
@@ -114,6 +113,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
 
       <div className="border-b border-neutral-200 dark:border-neutral-800" />
 
+      {/* Metadata Section */}
       <div className="flex flex-col md:flex-row gap-4 sm:gap-10">
         {/* Right */}
         <div className="md:w-1/2">
