@@ -30,8 +30,11 @@ const webdevProjects: Project[] = [
   {
     name: `Circus Discussions`,
     slug: "circus-discussions",
-    description: `A social media discussion platform where users can interact with like-minded individuals.       
-      This was my final year project for university.`,
+    description: `
+      For a final year university project, 
+      a social media platform was developed enabling users to form communities, 
+      start discussions, and comment on them, connecting with like-minded individuals.
+      `,
     imageURL: `/projects/circus-discussions/cover.png`,
     imagesList: [
       "1.png",
@@ -85,8 +88,11 @@ const webdevProjects: Project[] = [
   {
     name: `Ringmaster Messaging`,
     slug: "ringmaster-messaging",
-    description: `A simple messaging app to allow users to chat with other users or in group chats. 
-      This was for learning custom back-ends. `,
+    description: `
+      A simple messaging app to allow users to chat with other users or in group chats. 
+      Users can send normal text messages, images, view active users, and edit their profile.
+      This was for learning custom back-ends. 
+      `,
     imageURL: `/projects/ringmaster-messaging/cover.png`,
     imagesList: [
       "login-desktop.png",
@@ -132,8 +138,11 @@ const webdevProjects: Project[] = [
   {
     name: `Drumroll Music`,
     slug: "drumroll-music",
-    description: `A simple music streaming site where users can upload and listen to music.
-      This was my first major project using Supabase.`,
+    description: `
+      A simple music streaming site where users can upload and listen to music.
+      Users can upload songs, search for songs, listen to songs and like songs.
+      This was my first major project using Supabase.
+      `,
     imageURL: `/projects/drumroll-music/cover.png`,
     imagesList: [
       "home-desktop.png",
@@ -173,9 +182,12 @@ const extraWebDevProjects: Project[] = [
   {
     name: `Sideshow Articles`,
     slug: "sideshow-articles",
-    description: `A simple site to allow users to read and write articles. 
+    description: `
+      A simple site to allow users to read and write articles. 
+      Users can read all articles, create and delete articles. 
       This was created to learn Supabase for the first time. 
-      This was the foundation to using Supabase in other projects.`,
+      This was the foundation to using Supabase in other projects.
+      `,
     imageURL: `/projects/sideshow-articles/cover.png`,
     repoURL: `https://github.com/mbeps/sideshow-articles`,
     programmingLanguage: `TypeScript`,
@@ -185,8 +197,12 @@ const extraWebDevProjects: Project[] = [
   {
     name: `Noodle`,
     slug: "noodle",
-    description: `This is an open source learning platform that I started as a ground project in my second year of university. 
-      This was my first introduction to full stack development. `,
+    description: `
+      This is an open source learning platform that I started as a ground project in my second year of university. 
+      This app allows students to keep track of tasks, assignments, and exams. 
+      It also allows students to store notes and resources.
+      This was my first introduction to full stack development. 
+      `,
     imageURL: `/projects/noodle/cover.png`,
     repoURL: `https://github.com/ixahmedxi/noodle`,
     siteURL: `https://noodle.run/`,
@@ -208,8 +224,11 @@ const extraWebDevProjects: Project[] = [
   {
     name: `ConvoGPT`,
     slug: "convogpt",
-    description: `This is a simple client for using the OpenAI API locally. 
-      This was created to learn how to use the OpenAI API and to create a simple client and to learn PgVector.`,
+    description: `
+      This is a simple client for using the OpenAI API locally. 
+      The user can select a desired modal and enter a prompt to generate a response.
+      This was created to learn how to use the OpenAI API and to create a simple client and to learn PgVector.
+      `,
     imageURL: `/projects/convo-gpt/cover.png`,
     repoURL: `https://github.com/mbeps/convo-gpt`,
     programmingLanguage: `TypeScript`,
@@ -229,8 +248,10 @@ const backendWebDevProjects: Project[] = [
   {
     name: `Flask Forum Backend`,
     slug: "flask-forum-backend",
-    description: `This is a custom backend for the first iteration of the discussion platform. 
-      This was created to learn how to create a custom backend using Python and Flask.`,
+    description: `
+      This is a custom backend for the first iteration of the discussion platform. 
+      This was created to learn how to create a custom backend using Python and Flask.
+      `,
     repoURL: `https://github.com/mbeps/Forum-Discussion-Flask-Backend`,
     programmingLanguage: `Python`,
     technologies: [`Flask`, "MySQL", "SQLAlchemy", "REST API"],
@@ -239,7 +260,10 @@ const backendWebDevProjects: Project[] = [
   {
     name: `Flask JWT Authentication`,
     slug: "flask-jwt-authentication",
-    description: `A simple Flask app to learn how to use JWT for authentication.`,
+    description: `
+      A simple Flask app to learn how to use JWT for authentication.
+      This serves as a foundation to using JWT in other projects using Flask.
+      `,
     repoURL: `https://github.com/mbeps/Flask_JWT_Auth`,
     programmingLanguage: `Python`,
     technologies: [`Flask`, "JWT"],
@@ -248,7 +272,10 @@ const backendWebDevProjects: Project[] = [
   {
     name: `Django Authentication`,
     slug: "django-authentication",
-    description: `A simple Django app to learn how to use Django with tokens for authentication.`,
+    description: `
+      A simple Django app to learn how to use Django with tokens for authentication.
+      This serves as a foundation to using Django in other projects.
+      `,
     programmingLanguage: `Python`,
     repoURL: `https://github.com/mbeps/Django_Auth_Sys`,
     technologies: [`Django`],
@@ -265,8 +292,10 @@ const machineLearningProjects: Project[] = [
   {
     name: `Assignment 1`,
     slug: "machine-learning-assignment-1",
-    description: `Be able to implement machine-learning algorithms, using the Nearest Neighbours algorithm as an example. 
-      Have an understanding of ways to apply the ideas and algorithms of machine learning in science and technology.`,
+    description: `
+      Be able to implement machine-learning algorithms, using the Nearest Neighbours algorithm as an example. 
+      Have an understanding of ways to apply the ideas and algorithms of machine learning in science and technology.
+      `,
     repoURL: `https://github.com/mbeps/Machine-Learning-Assignment-1`,
     programmingLanguage: `Python`,
     technologies: [`NumPy`, `Matplotlib`],
@@ -275,7 +304,11 @@ const machineLearningProjects: Project[] = [
   {
     name: `Assignment 2`,
     slug: "machine-learning-assignment-2",
-    description: `Be able to use and implement machine-learning algorithms, with the Lasso and inductive conformal prediction algorithms as examples. Have an understanding of ways to apply the ideas and algorithms of machine learning in industry and medicine.`,
+    description: `
+      Be able to use and implement machine-learning algorithms, 
+      with the Lasso and inductive conformal prediction algorithms as examples. 
+      Have an understanding of ways to apply the ideas and algorithms of machine learning in industry and medicine.
+    `,
     repoURL: `https://github.com/mbeps/Machine-Learning-Assignment-2`,
     programmingLanguage: `Python`,
     technologies: [`NumPy`, `Matplotlib`],
@@ -284,8 +317,11 @@ const machineLearningProjects: Project[] = [
   {
     name: `Assignment 3`,
     slug: "machine-learning-assignment-3",
-    description: `Be able to use and implement machine-learning algorithms, with the SVM, neural networks, and cross-conformal prediction algorithms as examples. 
-      Have an understanding of ways to apply the ideas and algorithms of machine learning in industry.`,
+    description: `
+      Be able to use and implement machine-learning algorithms, 
+      with the SVM, neural networks, and cross-conformal prediction algorithms as examples. 
+      Have an understanding of ways to apply the ideas and algorithms of machine learning in industry.
+      `,
     repoURL: `https://github.com/mbeps/Machine-Learning-Assignment-3`,
     programmingLanguage: `Python`,
     technologies: [`NumPy`, `Matplotlib`],
@@ -294,7 +330,8 @@ const machineLearningProjects: Project[] = [
   {
     name: `Lab Questions`,
     slug: "machine-learning-lab-questions",
-    description: `Implemented various machine learning algorithms and techniques learned during the course, 
+    description: `
+      Implemented various machine learning algorithms and techniques learned during the course, 
       such as Nearest Neighbours, conformal prediction, linear regression, Ridge Regression, Lasso, data preprocessing, parameter selection, 
       kernels, neural networks, support vector machines, scikit-learn pipelines, and cross-conformal predictors.`,
     repoURL: `https://github.com/mbeps/Machine-Learning-Labs-Questions`,
@@ -313,8 +350,11 @@ const otherProjects: Project[] = [
   {
     name: `Osmos Game`,
     slug: "osmos-game",
-    description: `This is a simple game created using SimpleGUI for a group project in my first year of university. 
-      This required us to rely on the documentation as there was no tutorials or guides on how to use the library.`,
+    description: `
+      This is a simple game created using SimpleGUI for a group project in my first year of university. 
+      The physics of the game were done manually using vector theory and physics concepts.
+      This required us to rely on the documentation as there was no tutorials or guides on how to use the library.
+      `,
     imageURL: `/projects/osmos-game/cover.png`,
     repoURL: `https://github.com/mbeps/Osmos_Game`,
     programmingLanguage: `Python`,
@@ -324,8 +364,10 @@ const otherProjects: Project[] = [
   {
     name: `Automated Setup`,
     slug: "automated-setup",
-    description: `A shell script which automates the setup of a new Linux machine.
-      This is specifically for my Fedora install.`,
+    description: `
+      A shell script which automates the setup of a new Linux machine.
+      This is specifically for my Fedora install.
+      `,
     repoURL: `https://github.com/mbeps/AutomatedSetup`,
     programmingLanguage: `Shell`,
     type: "Other",
@@ -341,8 +383,10 @@ const javaAssignments: Project[] = [
   {
     name: `Calculator`,
     slug: "software-engineering-calculator-assignment",
-    description: `Simple calculator app built using Java as a Maven project. 
-      This was to learn about software design patterns and life cycles.`,
+    description: `
+      Simple calculator app built using Java as a Maven project. 
+      This was to learn about software design patterns and life cycles.
+      `,
     repoURL: `https://github.com/mbeps/Calculator-Assignment`,
     programmingLanguage: `Java`,
     technologies: [`Maven`, "JUnit"],
@@ -351,7 +395,8 @@ const javaAssignments: Project[] = [
   {
     name: `Botanic-Garden-Planner`,
     slug: "botanic-garden-planner-assignment",
-    description: `Simple botanic garden planner app built using Java.
+    description: `
+      Simple botanic garden planner app built using Java.
       This was in first year to learn about Java and object oriented programming.`,
     repoURL: `https://github.com/mbeps/Botanic-Garden-Planner`,
     programmingLanguage: `Java`,
