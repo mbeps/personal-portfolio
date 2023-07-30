@@ -20,7 +20,7 @@ import ProjectItem from "@/components/ProjectItem/ProjectItem";
  * Projects page displaying multiple types of projects that I worked on.
  * @returns (JSX.Element): Projects page
  */
-const ProjectsSection = () => {
+const ProjectsPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedType, setSelectedType] = useState("All");
 
@@ -126,7 +126,7 @@ const ProjectsSection = () => {
   );
 };
 
-export default ProjectsSection;
+export default ProjectsPage;
 
 interface ProjectSectionProps {
   title: string;
