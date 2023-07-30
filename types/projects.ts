@@ -234,6 +234,7 @@ const extraWebDevProjects: Project[] = [
       "Jotai",
       `Supabase`,
       "PostgreSQL",
+      "Open AI",
     ],
     type: "Extra Web Dev",
   },
