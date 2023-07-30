@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import LanguageModal from "../Modal/LanguageModal";
 import SkillsModal from "../Modal/SkillsModal";
 import TechnologiesModal from "../Modal/TechnologiesModal";
-import HeadingThree from "./Text/HeadingThree";
+import HeadingThree from "../Text/HeadingThree";
 import { Skill, languages, Repository } from "@/types/languages";
 import { technologies } from "@/types/technologies";
 

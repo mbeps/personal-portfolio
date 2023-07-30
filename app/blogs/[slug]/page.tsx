@@ -1,7 +1,7 @@
 import fs from "fs";
 import Markdown from "markdown-to-jsx";
 import matter from "gray-matter";
-import HeadingTwo from "@/components/Content/Text/HeadingTwo";
+import HeadingTwo from "@/components/Text/HeadingTwo";
 import getBlogMetadata from "@/actions/getBlogMetadata";
 
 /**

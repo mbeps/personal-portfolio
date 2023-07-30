@@ -1,5 +1,5 @@
 import getBlogMetadata from "@/actions/getBlogMetadata";
-import HeadingOne from "@/components/Content/Text/HeadingOne";
+import HeadingOne from "@/components/Text/HeadingOne";
 import BlogItem from "@/components/Blogs/BlogItem";
 
 /**

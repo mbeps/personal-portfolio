@@ -15,7 +15,14 @@ const HeroSection = () => {
       id="home"
       className="min-h-[85vh] flex flex-col justify-between items-center"
     >
-      <div className="flex flex-col text-center items-center justify-center animate-fadeIn animation-delay-2 md:flex-row md:space-x-4 md:text-left my-auto">
+      <div
+        className="
+          flex flex-col 
+          text-center items-center justify-center 
+          animate-fadeIn animation-delay-2
+          md:flex-row md:space-x-4 md:text-left 
+          my-auto w-full"
+      >
         {/* Profile Image */}
         <div className="md:mt-2 md:w-1/2">
           <Image
@@ -26,23 +33,28 @@ const HeroSection = () => {
             className="rounded-full shadow-2xl"
           />
         </div>
-        <div className="md:mt-2 md:w-3/5">
-          <h1 className="text-4xl font-bold mt-6 md:mt-0 md:text-7xl">
-            Hi, I&#39;m Maruf!
+
+        <div className="md:mt-2 md:w-3/5 space-y-8 md:space-y-5">
+          <h1 className="text-4xl md:text-7xl font-bold mt-6 md:mt-0 ">
+            {`Hi, I'm Maruf!`}
           </h1>
-          <p className="text-lg mt-4 mb-6 md:text-2xl">
-            I&#39;m a{" "}
-            <span className="font-semibold text-red-500 dark:text-red-700">
-              Software Engineer{" "}
-            </span>
-            based in London, UK. Working towards creating software that makes
-            life easier and more meaningful.
+          <p
+            className="
+            text-2xl md:text-4xl 
+            font-semibold 
+            p-1 bg-clip-text text-transparent 
+            bg-gradient-to-r 
+            from-red-600 via-orange-500 to-rose-500 
+            dark:from-red-700 dark:via-orange-600 dark:to-rose-800
+            tracking-wide"
+          >
+            Software Engineer
           </p>
 
           {/* Buttons */}
           <div className="flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0">
             <Button
-              variant="filled"
+              variant="gradient"
               onClick={() => {
                 scrollToSection("projects");
               }}

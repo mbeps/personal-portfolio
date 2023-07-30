@@ -1,5 +1,5 @@
 import React from "react";
-import HeadingTwo from "../Content/Text/HeadingTwo";
+import HeadingTwo from "../Text/HeadingTwo";
 import Modal from "./Modal";
 import Button from "../Atoms/Button";
 
