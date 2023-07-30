@@ -393,7 +393,7 @@ const TechnologiesSection: React.FC = () => {
    * Function to handle the display of technologies.
    */
   const handleDisplayTech = () => {
-    return firstNTech(13);
+    return firstNTech(12);
     return firstNTechPerCategory(2);
   };
 

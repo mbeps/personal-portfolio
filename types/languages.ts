@@ -38,17 +38,15 @@ export type { Skill, Repository, Language };
  * Skills for both languages are the same.
  */
 const JavaScriptTypeScriptSkills: Skill[] = [
-  { skill: "React", category: "Frontend Web Development" },
   { skill: "Next.JS", category: "Full Stack Web Development" },
   { skill: "NextAuth", category: "Backend Web Development" },
+  { skill: "Node.JS", category: "Backend Web Development" },
+  { skill: "React", category: "Frontend Web Development" },
   { skill: "Jest", category: "Testing" },
   { skill: "Vitest", category: "Testing" },
-  { skill: "Chakra UI", category: "Frontend Web Development" },
-  { skill: "Next UI", category: "Frontend Web Development" },
   { skill: "Prisma", category: "Object Relational Mapper" },
   { skill: "Drizzle", category: "Object Relational Mapper" },
   { skill: "Mongoose", category: "Object Relational Mapper" },
-  { skill: "Node.JS", category: "Backend Web Development" },
 ];
 
 /**
@@ -56,6 +54,21 @@ const JavaScriptTypeScriptSkills: Skill[] = [
  * Each language has an array of skills and repositories.
  */
 const languages: Language[] = [
+  {
+    language: "JavaScript",
+    skills: JavaScriptTypeScriptSkills,
+  },
+  {
+    language: "TypeScript",
+    skills: JavaScriptTypeScriptSkills,
+    repositories: [
+      {
+        name: "TypeScript Projects",
+        repository:
+          "https://github.com/mbeps?tab=repositories&q=&type=&language=typescript&sort=",
+      },
+    ],
+  },
   {
     language: "Python",
     skills: [
@@ -91,21 +104,6 @@ const languages: Language[] = [
         name: "Java Projects",
         repository:
           "https://github.com/mbeps?tab=repositories&q=&type=&language=java&sort=",
-      },
-    ],
-  },
-  {
-    language: "JavaScript",
-    skills: JavaScriptTypeScriptSkills,
-  },
-  {
-    language: "TypeScript",
-    skills: JavaScriptTypeScriptSkills,
-    repositories: [
-      {
-        name: "TypeScript Projects",
-        repository:
-          "https://github.com/mbeps?tab=repositories&q=&type=&language=typescript&sort=",
       },
     ],
   },
