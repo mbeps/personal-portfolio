@@ -3,7 +3,7 @@
 import { Technology } from "@/types/technologies";
 import React, { useState } from "react";
 import Tag from "../Atoms/Tag";
-import HeadingThree from "../Content/Text/HeadingThree";
+import HeadingThree from "../Text/HeadingThree";
 import Dropdown from "../DropDown/DropDownMenu";
 import Modal from "./Modal";
 

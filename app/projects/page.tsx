@@ -2,8 +2,8 @@
 
 import Button from "@/components/Atoms/Button";
 import ProjectItem from "@/components/Content/ProjectSection/ProjectItem";
-import HeadingOne from "@/components/Content/Text/HeadingOne";
-import HeadingTwo from "@/components/Content/Text/HeadingTwo";
+import HeadingOne from "@/components/Text/HeadingOne";
+import HeadingTwo from "@/components/Text/HeadingTwo";
 import Dropdown from "@/components/DropDown/DropDownMenu";
 import MoreProjectsModal from "@/components/Modal/MoreProjectsModal";
 import Project, {

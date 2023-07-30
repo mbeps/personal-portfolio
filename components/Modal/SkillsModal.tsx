@@ -1,7 +1,7 @@
 import { Language, Skill } from "@/types/languages";
 import React from "react";
 import Tag from "../Atoms/Tag";
-import HeadingThree from "../Content/Text/HeadingThree";
+import HeadingThree from "../Text/HeadingThree";
 import Dropdown from "../DropDown/DropDownMenu";
 import Modal from "./Modal";
 

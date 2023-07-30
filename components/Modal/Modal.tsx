@@ -3,7 +3,7 @@
 import React, { Fragment, useEffect, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { IoClose } from "react-icons/io5";
-import HeadingTwo from "../Content/Text/HeadingTwo";
+import HeadingTwo from "../Text/HeadingTwo";
 
 interface ModalProps {
   isOpen?: boolean; // whether the modal is open or not

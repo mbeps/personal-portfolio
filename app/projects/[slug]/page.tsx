@@ -1,7 +1,7 @@
 import getProjectBySlug from "@/actions/getProjectBySlug";
 import Tag from "@/components/Atoms/Tag";
-import HeadingThree from "@/components/Content/Text/HeadingThree";
-import HeadingTwo from "@/components/Content/Text/HeadingTwo";
+import HeadingThree from "@/components/Text/HeadingThree";
+import HeadingTwo from "@/components/Text/HeadingTwo";
 import Gallery from "@/components/Gallery/Gallery";
 import Project, {
   backendWebDevProjects,

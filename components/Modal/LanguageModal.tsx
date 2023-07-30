@@ -2,7 +2,7 @@ import { Repository, Skill } from "@/types/languages";
 import React, { useState } from "react";
 import Button from "../Atoms/Button";
 import Tag from "../Atoms/Tag";
-import HeadingThree from "../Content/Text/HeadingThree";
+import HeadingThree from "../Text/HeadingThree";
 import Dropdown from "../DropDown/DropDownMenu";
 import Modal from "./Modal";
 import organizeSkillsByCategory from "@/actions/organizeSkillsByCategory";
