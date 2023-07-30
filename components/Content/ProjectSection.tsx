@@ -1,6 +1,6 @@
 import Button from "@/components/Atoms/Button";
 import { webdevProjects } from "@/types/projects";
-import HeadingTwo from "../../Text/HeadingTwo";
+import HeadingTwo from "../Text/HeadingTwo";
 import ProjectItem from "@/components/ProjectItem/ProjectItem";
 
 /**
