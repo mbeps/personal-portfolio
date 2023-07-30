@@ -1,7 +1,6 @@
 "use client";
 
 import Button from "@/components/Atoms/Button";
-import ProjectItem from "@/components/Content/ProjectSection/ProjectItem";
 import HeadingOne from "@/components/Text/HeadingOne";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import Dropdown from "@/components/DropDown/DropDownMenu";
@@ -15,6 +14,7 @@ import Project, {
   backendWebDevProjects,
 } from "@/types/projects";
 import { useState } from "react";
+import ProjectItem from "@/components/ProjectItem/ProjectItem";
 
 /**
  * Projects page displaying multiple types of projects that I worked on.
