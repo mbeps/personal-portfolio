@@ -26,6 +26,7 @@ const HeroSection = () => {
             className="rounded-full shadow-2xl"
           />
         </div>
+
         <div className="md:mt-2 md:w-3/5">
           <h1 className="text-4xl font-bold mt-6 md:mt-0 md:text-7xl">
             Hi, I&#39;m Maruf!
@@ -42,7 +43,7 @@ const HeroSection = () => {
           {/* Buttons */}
           <div className="flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0">
             <Button
-              variant="filled"
+              variant="gradient"
               onClick={() => {
                 scrollToSection("projects");
               }}

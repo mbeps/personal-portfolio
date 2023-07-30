@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import React from "react";
 
-type ButtonVariant = "filled" | "outlined" | "ghost";
+type ButtonVariant = "filled" | "outlined" | "ghost" | "gradient";
 
 interface ButtonProps {
   onClick: string | (() => void);
@@ -64,6 +64,12 @@ const Button = ({ onClick, variant, children }: ButtonProps) => {
   const ghost = `text-red-500 
 		bg-transparent
 		border-0  hover:text-neutral-100`;
+  const gradient = `
+    text-neutral-100 
+    bg-gradient-to-r 
+    from-red-600 to-amber-500 
+    dark:from-red-800 dark:to-amber-700
+    transform hover:scale-105`;
 
   let buttonStyle;
   switch (variant) {
@@ -75,6 +81,9 @@ const Button = ({ onClick, variant, children }: ButtonProps) => {
       break;
     case "ghost":
       buttonStyle = ghost;
+      break;
+    case "gradient":
+      buttonStyle = gradient;
       break;
     default:
       throw new Error(`Unknown variant: ${variant}`);
