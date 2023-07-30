@@ -215,24 +215,24 @@ In conclusion, the backend forms a critical part of any application or service. 
 
 # **Sources**
 
-- **Section 1: What is a Backend in Software Engineering and Web Development**
+- **What is a Backend in Software Engineering and Web Development**
     - [MDN Web Docs: Server-side web APIs](https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Web_server_overview)
     - [IBM Cloud: What is a backend developer?](https://www.ibm.com/cloud/blog/new-builders/what-is-a-backend-developer)
     
-- **Section 2: Why are Backends Important**
+- **Why are Backends Important**
     - [Geekflare: Importance of Backend Web Development](https://geekflare.com/importance-of-backend-web-development/)
     - [Codica: The Role of a Server in Web Development](https://www.codica.com/blog/the-role-of-a-server-in-web-development/)
     
-- **Section 3: Key Components of the Backend**
+- **Key Components of the Backend**
     - [MDN Web Docs: Express/Node introduction](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Introduction)
     - [Oracle: Overview of Middleware](https://www.oracle.com/middleware/technologies/what-is-middleware.html)
     
-- **Section 4: Custom Backends**
+- **Custom Backends**
     - [Toptal: Building a Custom Backend for Your Frontend App](https://www.toptal.com/nodejs/secure-rest-api-in-nodejs)
     - [Spring Boot Documentation](https://spring.io/projects/spring-boot)
     - [Django Documentation](https://www.djangoproject.com/)
     
-- **Section 5: Backend as a Service (BaaS)**
+- **Backend as a Service (BaaS)**
     - [Firebase Official Documentation](https://firebase.google.com/)
     - [AWS Amplify Official Documentation](https://aws.amazon.com/amplify/)
     - [Supabase: The Open Source Firebase Alternative](https://supabase.io/)
