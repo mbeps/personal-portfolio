@@ -22,17 +22,17 @@ export default function Blog() {
           <div className="border-b border-gray-200 dark:border-neutral-600 mt-16" />
           <div className="my-12 pb-12 md:pt-2 md:pb-36">
             {/* Blog List */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-14 ">
-              {blogMetadata.length > 0 ? (
-                blogMetadata.map((blog) => (
+            {blogMetadata.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-14">
+                {blogMetadata.map((blog) => (
                   <BlogItem key={blog.slug} {...blog} />
-                ))
-              ) : (
-                <div className="flex items-center justify-center h-screen">
-                  <h2 className="text-2xl font-bold">No blogs</h2>
-                </div>
-              )}
-            </div>
+                ))}
+              </div>
+            ) : (
+              <div className="flex justify-center min-w-full h-screen border-2 border-blue-500 mt-14">
+                <h2 className="text-2xl font-bold">No blogs</h2>
+              </div>
+            )}
           </div>
         </div>
       </section>

@@ -4,8 +4,8 @@ import matter from "gray-matter";
 
 /**
  * Get the metadata for all blogs stored in the blogs/ directory.
- * Does not return blogs with display false.
- * Undefined blogs are still returned.
+ * This metadata is defined at the top of each markdown file.
+ * This does not load the actual content of the blog.
  * @returns {BlogMetadata[]} An array of blog metadata.
  */
 const getBlogMetadata = (): BlogMetadata[] => {
