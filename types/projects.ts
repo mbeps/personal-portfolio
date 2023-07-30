@@ -169,6 +169,31 @@ const webdevProjects: Project[] = [
     ],
     type: "Web Dev",
   },
+  {
+    name: `Magician AI`,
+    slug: "magician-ai",
+    description: `
+    Magician AI is a SaaS platform that leverages AI to enable users to generate various media types and have dynamic conversations. Developing this project allowed me to explore Stripe, Clerk authentication, and unique AI APIs.
+  `,
+    imageURL: `/projects/magician-ai/cover.png`,
+    repoURL: `https://github.com/mbeps/magician-ai`,
+    programmingLanguage: `TypeScript`,
+    technologies: [
+      `Next.JS`,
+      "React",
+      `Shadcn UI`,
+      `Radix UI`,
+      `Tailwind CSS`,
+      "MySQL",
+      "Zustand",
+      "Clerk Auth",
+      "Prisma",
+      "Stripe",
+      "Open AI",
+      "Replicate AI",
+    ],
+    type: "Web Dev",
+  },
 ];
 
 /**
@@ -234,6 +259,7 @@ const extraWebDevProjects: Project[] = [
       "Jotai",
       `Supabase`,
       "PostgreSQL",
+      "Open AI",
     ],
     type: "Extra Web Dev",
   },
