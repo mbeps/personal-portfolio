@@ -18,6 +18,8 @@ import ProjectItem from "@/components/ProjectItem/ProjectItem";
 import { Popover } from "@/components/Popover/Popover";
 import RadioButton from "@/components/Inputs/RadioButton";
 import Checkbox from "@/components/Inputs/Checkbox";
+import useDebounce from "@/hooks/useDebounce";
+import Fuse from "fuse.js";
 
 /**
  * Projects page displaying multiple types of projects that I worked on.
@@ -30,6 +32,8 @@ const ProjectsPage = () => {
   const [hasArticle, setHasArticle] = useState(false);
   const [hasSite, setHasSite] = useState(false);
   const [hasImages, setHasImages] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
   /**
    * Opens the modal to display more projects.
@@ -58,6 +62,12 @@ const ProjectsPage = () => {
     ...otherProjects,
   ];
 
+  const options = {
+    keys: ["name", "programmingLanguage", "type", "technologies"],
+    threshold: 0.3,
+  };
+  const fuse = new Fuse(allProjects, options);
+
   /**
    * Groups the projects by type.
    * Each project type is a key in the object.
@@ -72,6 +82,10 @@ const ProjectsPage = () => {
       return grouped;
     }, {});
   };
+
+  const searchedProjects = debouncedSearchTerm
+    ? fuse.search(debouncedSearchTerm).map((result) => result.item)
+    : allProjects;
 
   //^ Drop Down Menu
   /**
@@ -141,6 +155,14 @@ const ProjectsPage = () => {
     <section id="projects" className="flex flex-col items-start md:items-end">
       <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2 w-full">
         <HeadingOne title="Projects" />
+
+        {/* Search input */}
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Search projects..."
+        />
 
         <Popover>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
