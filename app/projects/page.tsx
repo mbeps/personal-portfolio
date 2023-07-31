@@ -20,6 +20,7 @@ import RadioButton from "@/components/Inputs/RadioButton";
 import Checkbox from "@/components/Inputs/Checkbox";
 import useDebounce from "@/hooks/useDebounce";
 import Fuse from "fuse.js";
+import SearchInput from "@/components/Inputs/SearchInput";
 
 /**
  * Projects page displaying multiple types of projects that I worked on.
@@ -119,7 +120,7 @@ const ProjectsPage = () => {
    * Both language and type can be filtered.
    * If 'All' is selected, then all projects are displayed.
    */
-  const filteredProjects = allProjects.filter(
+  const filteredProjects = searchedProjects.filter(
     (project) =>
       (selectedType === "All" || project.type === selectedType) &&
       (selectedLanguage === "All" ||
@@ -156,76 +157,74 @@ const ProjectsPage = () => {
       <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2 w-full">
         <HeadingOne title="Projects" />
 
-        {/* Search input */}
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Search projects..."
-        />
+        <div className="flex flex-col md:flex-row items-center w-full mt-6 p-2 gap-4">
+          {/* Search input */}
+          <SearchInput searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
-        <Popover>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-            <div>
-              <label htmlFor="type-dropdown" className="font-semibold text-lg">
-                Category
-              </label>
-              {projectTypes.map((type) => (
-                <RadioButton
-                  key={type}
-                  id={type}
-                  name="projectType"
-                  value={type}
-                  checked={selectedType === type}
-                  onChange={handleTypeChange}
-                  label={type}
+          <Popover title={"Filter"}>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+              <div>
+                <label
+                  htmlFor="type-dropdown"
+                  className="font-semibold text-lg"
+                >
+                  Category
+                </label>
+                {projectTypes.map((type) => (
+                  <RadioButton
+                    key={type}
+                    id={type}
+                    name="projectType"
+                    value={type}
+                    checked={selectedType === type}
+                    onChange={handleTypeChange}
+                    label={type}
+                  />
+                ))}
+              </div>
+              <div>
+                <label
+                  htmlFor="language-dropdown"
+                  className="font-semibold text-lg"
+                >
+                  Language
+                </label>
+                {programmingLanguages.map((language) => (
+                  <RadioButton
+                    key={language}
+                    id={language}
+                    name="programmingLanguage"
+                    value={language}
+                    checked={selectedLanguage === language}
+                    onChange={handleLanguageChange}
+                    label={language}
+                  />
+                ))}
+              </div>
+              <div>
+                <label className="font-semibold text-lg">Filter</label>
+                <Checkbox
+                  id="hasArticle"
+                  checked={hasArticle}
+                  onChange={toggleHasArticle}
+                  label="Project with reflective blogs"
                 />
-              ))}
-            </div>
-            <div>
-              <label
-                htmlFor="language-dropdown"
-                className="font-semibold text-lg"
-              >
-                Language
-              </label>
-              {programmingLanguages.map((language) => (
-                <RadioButton
-                  key={language}
-                  id={language}
-                  name="programmingLanguage"
-                  value={language}
-                  checked={selectedLanguage === language}
-                  onChange={handleLanguageChange}
-                  label={language}
+                <Checkbox
+                  id="hasSite"
+                  checked={hasSite}
+                  onChange={toggleHasSite}
+                  label="Deployed projects"
                 />
-              ))}
+                <Checkbox
+                  id="hasImages"
+                  checked={hasImages}
+                  onChange={toggleHasImages}
+                  label="Projects with galleries"
+                />
+              </div>
             </div>
-            <div>
-              <label className="font-semibold text-lg">Filter</label>
-              <Checkbox
-                id="hasArticle"
-                checked={hasArticle}
-                onChange={toggleHasArticle}
-                label="Project with reflective blogs"
-              />
-              <Checkbox
-                id="hasSite"
-                checked={hasSite}
-                onChange={toggleHasSite}
-                label="Deployed projects"
-              />
-              <Checkbox
-                id="hasImages"
-                checked={hasImages}
-                onChange={toggleHasImages}
-                label="Projects with galleries"
-              />
-            </div>
-          </div>
-        </Popover>
-
-        <div className="flex flex-col sm:flex-row sm:justify-end space-y-2 sm:space-y-0 sm:space-x-4 mt-6"></div>
+          </Popover>
+        </div>
 
         {/* List of projects */}
         <div className="flex flex-col space-y-20 mt-14">
