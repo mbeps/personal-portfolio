@@ -113,22 +113,30 @@ const ProjectsPage = () => {
       <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2">
         <HeadingOne title="Projects" />
 
-        <div
-          className="
-        flex justify-content: space-between 
-        relative z-10 mt-6 p-2
-        "
-        >
-          <Dropdown
-            selected={selectedType}
-            options={projectTypes}
-            setSelected={setSelectedType}
-          />
-          <Dropdown
-            selected={selectedLanguage}
-            options={programmingLanguages}
-            setSelected={setSelectedLanguage}
-          />
+        <div className="flex flex-col sm:flex-row sm:justify-end space-y-2 sm:space-y-0 sm:space-x-4 mt-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
+            <label htmlFor="type-dropdown" className="font-semibold text-lg">
+              Category
+            </label>
+            <Dropdown
+              selected={selectedType}
+              options={projectTypes}
+              setSelected={setSelectedType}
+            />
+          </div>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
+            <label
+              htmlFor="language-dropdown"
+              className="font-semibold text-lg"
+            >
+              Language
+            </label>
+            <Dropdown
+              selected={selectedLanguage}
+              options={programmingLanguages}
+              setSelected={setSelectedLanguage}
+            />
+          </div>
         </div>
 
         {/* List of projects */}
