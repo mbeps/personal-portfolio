@@ -154,7 +154,7 @@ const ProjectsPage = () => {
 
   return (
     <section id="projects" className="flex flex-col items-start md:items-end">
-      <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2 w-full">
+      <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
         <HeadingOne title="Projects" />
 
         <div className="flex flex-col md:flex-row items-center w-full mt-6 p-2 gap-4">
@@ -228,15 +228,21 @@ const ProjectsPage = () => {
 
         {/* List of projects */}
         <div className="flex flex-col space-y-20 mt-14">
-          {Object.keys(groupedProjects).map(
-            (type) =>
-              type !== "All" && (
-                <ProjectSection
-                  key={type}
-                  title={type}
-                  projects={groupedProjects[type]}
-                />
-              )
+          {Object.keys(groupedProjects).length > 0 ? (
+            Object.keys(groupedProjects).map(
+              (type) =>
+                type !== "All" && (
+                  <ProjectSection
+                    key={type}
+                    title={type}
+                    projects={groupedProjects[type]}
+                  />
+                )
+            )
+          ) : (
+            <div className="flex justify-center min-w-full mt-14">
+              <h2 className="text-2xl font-bold">No projects</h2>
+            </div>
           )}
         </div>
 
