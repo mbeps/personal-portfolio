@@ -10,7 +10,7 @@
     "docker:compose": "docker-compose -f docker/docker-compose.yml up --build"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.15",
+    "@headlessui/react": "^1.7.16",
     "@tailwindcss/typography": "^0.5.9",
     "@types/node": "20.2.5",
     "@types/react": "18.2.9",
