@@ -13,7 +13,7 @@ import Project, {
   javaAssignments,
   backendWebDevProjects,
 } from "@/types/projects";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import ProjectItem from "@/components/ProjectItem/ProjectItem";
 import { Popover } from "@/components/Popover/Popover";
 
@@ -109,6 +109,14 @@ const ProjectsPage = () => {
 
   const groupedProjects = groupProjectsByType(filteredProjects);
 
+  const handleTypeChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSelectedType(event.target.value);
+  };
+
+  const handleLanguageChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSelectedLanguage(event.target.value);
+  };
+
   return (
     <section id="projects" className="flex flex-col items-start md:items-end">
       <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2 w-full">
@@ -117,30 +125,43 @@ const ProjectsPage = () => {
         <Popover>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
             <div>
-              <label
-                htmlFor="type-dropdown"
-                className="font-semibold text-lg mr-2"
-              >
+              <label htmlFor="type-dropdown" className="font-semibold text-lg">
                 Category
               </label>
-              <Dropdown
-                selected={selectedType}
-                options={projectTypes}
-                setSelected={setSelectedType}
-              />
+              {projectTypes.map((type) => (
+                <div key={type}>
+                  <input
+                    type="radio"
+                    id={type}
+                    name="projectType"
+                    value={type}
+                    checked={selectedType === type}
+                    onChange={handleTypeChange}
+                  />
+                  <label htmlFor={type}>{type}</label>
+                </div>
+              ))}
             </div>
             <div>
               <label
                 htmlFor="language-dropdown"
-                className="font-semibold text-lg mr-2"
+                className="font-semibold text-lg"
               >
                 Language
               </label>
-              <Dropdown
-                selected={selectedLanguage}
-                options={programmingLanguages}
-                setSelected={setSelectedLanguage}
-              />
+              {programmingLanguages.map((language) => (
+                <div key={language}>
+                  <input
+                    type="radio"
+                    id={language}
+                    name="programmingLanguage"
+                    value={language}
+                    checked={selectedLanguage === language}
+                    onChange={handleLanguageChange}
+                  />
+                  <label htmlFor={language}>{language}</label>
+                </div>
+              ))}
             </div>
           </div>
         </Popover>
