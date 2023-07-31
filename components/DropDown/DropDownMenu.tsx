@@ -28,6 +28,7 @@ const Dropdown: React.FC<DropdownProps> = ({
           <Menu.Button
             className={`
               inline-flex justify-between items-center
+              z-10
               w-56
               px-4 py-2 
               text-base font-medium text-neutral-700 dark:text-neutral-200 capitalize
@@ -52,6 +53,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 						absolute right-0 w-56 mt-2 origin-top-right 
 						bg-white dark:bg-neutral-800 divide-y divide-neutral-100 
 						rounded-xl shadow-lg p-1
+            z-20
 						ring-1 ring-black ring-opacity-5 
 						focus:outline-none
 						transition-colors duration-500 ease-in-out

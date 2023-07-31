@@ -29,7 +29,7 @@ export default function Blog() {
                 ))}
               </div>
             ) : (
-              <div className="flex justify-center min-w-full h-screen border-2 border-blue-500 mt-14">
+              <div className="flex justify-center min-w-full h-screen mt-14">
                 <h2 className="text-2xl font-bold">No blogs</h2>
               </div>
             )}
