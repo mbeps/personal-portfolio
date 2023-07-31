@@ -47,7 +47,7 @@ export const Popover: React.FC<MyPopoverProps> = ({ children, title }) => {
             {/* Use HeadlessPopover.Button here */}
             <HeadlessPopover.Panel // Use HeadlessPopover.Panel here
               className={`
-                absolute w-full md:w-[900px] max-h-[50vh] overflow-auto
+                absolute w-full min-w-[320px] md:w-[900px] max-h-[50vh] overflow-auto
                 z-10 p-4 mt-2 rounded-xl shadow-xl 
                 bg-neutral-100 dark:bg-stone-950
               `}
