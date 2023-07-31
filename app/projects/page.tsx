@@ -23,15 +23,26 @@ import ProjectItem from "@/components/ProjectItem/ProjectItem";
 const ProjectsPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedType, setSelectedType] = useState("All");
+  const [selectedLanguage, setSelectedLanguage] = useState("All");
 
+  /**
+   * Opens the modal to display more projects.
+   */
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
 
+  /**
+   * Closes the modal to display more projects.
+   */
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
 
+  /**
+   * List of all projects.
+   * They are displayed in the order they are added to the list.
+   */
   const allProjects: Project[] = [
     ...webdevProjects,
     ...extraWebDevProjects,
@@ -56,6 +67,7 @@ const ProjectsPage = () => {
     }, {});
   };
 
+  //^ Drop Down Menu
   /**
    * List of project types to be displayed in the dropdown menu.
    * Adds 'All' as the first option.
@@ -70,18 +82,31 @@ const ProjectsPage = () => {
   ];
 
   /**
-   * Filters the projects based on the selected type.
-   * If 'All' is selected, then all projects are displayed.
-   * Otherwise, only projects with the selected type are displayed.
+   * List of programming languages to be displayed in the dropdown menu.
+   * Adds 'All' as the first option.
+   * Appends all unique programming languages to the list.
+   * Programming languages are from the 'programmingLanguage' property of each project.
    */
-  const filteredProjects =
-    selectedType === "All"
-      ? groupProjectsByType(allProjects)
-      : {
-          [selectedType]: allProjects.filter(
-            (project) => project.type === selectedType
-          ),
-        };
+  const programmingLanguages: string[] = [
+    "All",
+    ...allProjects
+      .map((project: Project) => project.programmingLanguage)
+      .filter((value, index, self) => self.indexOf(value) === index),
+  ];
+
+  /**
+   * Filters the projects based on the selected type and language.
+   * Both language and type can be filtered.
+   * If 'All' is selected, then all projects are displayed.
+   */
+  const filteredProjects = allProjects.filter(
+    (project) =>
+      (selectedType === "All" || project.type === selectedType) &&
+      (selectedLanguage === "All" ||
+        project.programmingLanguage === selectedLanguage)
+  );
+
+  const groupedProjects = groupProjectsByType(filteredProjects);
 
   return (
     <section id="projects">
@@ -90,7 +115,7 @@ const ProjectsPage = () => {
 
         <div
           className="
-        flex justify-content: flex-end justify-end
+        flex justify-content: space-between 
         relative z-10 mt-6 p-2
         "
         >
@@ -99,16 +124,22 @@ const ProjectsPage = () => {
             options={projectTypes}
             setSelected={setSelectedType}
           />
+          <Dropdown
+            selected={selectedLanguage}
+            options={programmingLanguages}
+            setSelected={setSelectedLanguage}
+          />
         </div>
 
+        {/* List of projects */}
         <div className="flex flex-col space-y-20 mt-14">
-          {Object.keys(filteredProjects).map(
+          {Object.keys(groupedProjects).map(
             (type) =>
               type !== "All" && (
                 <ProjectSection
                   key={type}
                   title={type}
-                  projects={filteredProjects[type]}
+                  projects={groupedProjects[type]}
                 />
               )
           )}
