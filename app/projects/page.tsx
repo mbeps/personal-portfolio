@@ -197,6 +197,19 @@ const ProjectsPage = () => {
     setHasImages(!hasImages);
   };
 
+  /**
+   * Resets all the filters.
+   * This is used when the user clicks on the 'Reset' button.
+   */
+  const resetFilters = () => {
+    setSelectedType("All");
+    setSelectedLanguage("All");
+    setHasArticle(false);
+    setHasSite(false);
+    setHasImages(false);
+    setSearchTerm("");
+  };
+
   return (
     <section id="projects" className="flex flex-col items-start md:items-end">
       <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
@@ -206,69 +219,75 @@ const ProjectsPage = () => {
           {/* Search input */}
           <SearchInput searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
-          <Popover title={"Filter"}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-              <div>
-                <label
-                  htmlFor="type-dropdown"
-                  className="font-semibold text-lg"
-                >
-                  Category
-                </label>
-                {projectTypes.map((type) => (
-                  <RadioButton
-                    key={type}
-                    id={type}
-                    name="projectType"
-                    value={type}
-                    checked={selectedType === type}
-                    onChange={handleTypeChange}
-                    label={type}
+          <div className="flex flex-row gap-2">
+            <Popover title={"Filter"}>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+                <div>
+                  <label
+                    htmlFor="type-dropdown"
+                    className="font-semibold text-lg"
+                  >
+                    Category
+                  </label>
+                  {projectTypes.map((type) => (
+                    <RadioButton
+                      key={type}
+                      id={type}
+                      name="projectType"
+                      value={type}
+                      checked={selectedType === type}
+                      onChange={handleTypeChange}
+                      label={type}
+                    />
+                  ))}
+                </div>
+                <div>
+                  <label
+                    htmlFor="language-dropdown"
+                    className="font-semibold text-lg"
+                  >
+                    Language
+                  </label>
+                  {programmingLanguages.map((language) => (
+                    <RadioButton
+                      key={language}
+                      id={language}
+                      name="programmingLanguage"
+                      value={language}
+                      checked={selectedLanguage === language}
+                      onChange={handleLanguageChange}
+                      label={language}
+                    />
+                  ))}
+                </div>
+                <div>
+                  <label className="font-semibold text-lg">Filter</label>
+                  <Checkbox
+                    id="hasArticle"
+                    checked={hasArticle}
+                    onChange={toggleHasArticle}
+                    label="Project with reflective blogs"
                   />
-                ))}
-              </div>
-              <div>
-                <label
-                  htmlFor="language-dropdown"
-                  className="font-semibold text-lg"
-                >
-                  Language
-                </label>
-                {programmingLanguages.map((language) => (
-                  <RadioButton
-                    key={language}
-                    id={language}
-                    name="programmingLanguage"
-                    value={language}
-                    checked={selectedLanguage === language}
-                    onChange={handleLanguageChange}
-                    label={language}
+                  <Checkbox
+                    id="hasSite"
+                    checked={hasSite}
+                    onChange={toggleHasSite}
+                    label="Deployed projects"
                   />
-                ))}
+                  <Checkbox
+                    id="hasImages"
+                    checked={hasImages}
+                    onChange={toggleHasImages}
+                    label="Projects with galleries"
+                  />
+                </div>
               </div>
-              <div>
-                <label className="font-semibold text-lg">Filter</label>
-                <Checkbox
-                  id="hasArticle"
-                  checked={hasArticle}
-                  onChange={toggleHasArticle}
-                  label="Project with reflective blogs"
-                />
-                <Checkbox
-                  id="hasSite"
-                  checked={hasSite}
-                  onChange={toggleHasSite}
-                  label="Deployed projects"
-                />
-                <Checkbox
-                  id="hasImages"
-                  checked={hasImages}
-                  onChange={toggleHasImages}
-                  label="Projects with galleries"
-                />
-              </div>
-            </div>
-          </Popover>
+            </Popover>
+            {/* Reset button */}
+            <Button variant="ghost" onClick={resetFilters}>
+              Reset
+            </Button>
+          </div>
         </div>
 
         {/* List of projects */}
