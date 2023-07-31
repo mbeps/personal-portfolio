@@ -28,7 +28,6 @@ const RadioButton: React.FC<RadioButtonProps> = ({
     : "border-neutral-200 dark:border-stone-800";
   return (
     <label
-      htmlFor={id}
       className={`
         border-2 ${borderColor}
         bg-neutral-200 dark:bg-stone-800
