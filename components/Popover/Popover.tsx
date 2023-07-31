@@ -1,5 +1,5 @@
-import React, { ReactNode } from "react";
-import { Popover as HeadlessPopover } from "@headlessui/react";
+import React, { Fragment, ReactNode } from "react";
+import { Popover as HeadlessPopover, Transition } from "@headlessui/react";
 import { BsChevronDown } from "react-icons/bs";
 
 interface MyPopoverProps {
@@ -43,22 +43,29 @@ export const Popover: React.FC<MyPopoverProps> = ({ children, title }) => {
               <BsChevronDown
                 className={`ml-2 h-5 w-5 ${open ? "rotate-180 transform" : ""}`}
               />
-            </HeadlessPopover.Button>{" "}
-            {/* Use HeadlessPopover.Button here */}
-            <HeadlessPopover.Panel // Use HeadlessPopover.Panel here
-              className={`
-                absolute w-full min-w-[320px] md:w-[900px] max-h-[50vh] overflow-auto
-                z-10 p-4 mt-2 rounded-xl shadow-xl 
-                bg-neutral-100 dark:bg-stone-950
-              `}
+            </HeadlessPopover.Button>
+            <Transition
+              as={Fragment}
+              enter="transition duration-100 ease-out"
+              enterFrom="transform scale-95 opacity-0"
+              enterTo="transform scale-100 opacity-100"
+              leave="transition duration-75 ease-out"
+              leaveFrom="transform scale-100 opacity-100"
+              leaveTo="transform scale-95 opacity-0"
             >
-              {children}
-            </HeadlessPopover.Panel>
-            {/* Use HeadlessPopover.Panel here */}
+              <HeadlessPopover.Panel
+                className={`
+                  absolute w-full min-w-[320px] md:w-[900px] max-h-[50vh] overflow-auto
+                  z-10 p-4 mt-2 rounded-xl shadow-xl 
+                  bg-neutral-100 dark:bg-stone-950
+                `}
+              >
+                {children}
+              </HeadlessPopover.Panel>
+            </Transition>
           </>
         )}
-      </HeadlessPopover>{" "}
-      {/* Use the imported HeadlessPopover here */}
+      </HeadlessPopover>
     </div>
   );
 };
