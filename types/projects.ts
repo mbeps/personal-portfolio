@@ -178,6 +178,7 @@ const webdevProjects: Project[] = [
     imageURL: `/projects/magician-ai/cover.png`,
     repoURL: `https://github.com/mbeps/magician-ai`,
     programmingLanguage: `TypeScript`,
+    siteURL: "https://magician-ai.vercel.app/",
     imagesList: [
       "1.png",
       "2.png",
