@@ -16,6 +16,8 @@ import Project, {
 import { ChangeEvent, useState } from "react";
 import ProjectItem from "@/components/ProjectItem/ProjectItem";
 import { Popover } from "@/components/Popover/Popover";
+import RadioButton from "@/components/Atoms/RadioButton";
+import Checkbox from "@/components/Inputs/Checkbox";
 
 /**
  * Projects page displaying multiple types of projects that I worked on.
@@ -147,17 +149,15 @@ const ProjectsPage = () => {
                 Category
               </label>
               {projectTypes.map((type) => (
-                <div key={type}>
-                  <input
-                    type="radio"
-                    id={type}
-                    name="projectType"
-                    value={type}
-                    checked={selectedType === type}
-                    onChange={handleTypeChange}
-                  />
-                  <label htmlFor={type}>{type}</label>
-                </div>
+                <RadioButton
+                  key={type}
+                  id={type}
+                  name="projectType"
+                  value={type}
+                  checked={selectedType === type}
+                  onChange={handleTypeChange}
+                  label={type}
+                />
               ))}
             </div>
             <div>
@@ -168,50 +168,37 @@ const ProjectsPage = () => {
                 Language
               </label>
               {programmingLanguages.map((language) => (
-                <div key={language}>
-                  <input
-                    type="radio"
-                    id={language}
-                    name="programmingLanguage"
-                    value={language}
-                    checked={selectedLanguage === language}
-                    onChange={handleLanguageChange}
-                  />
-                  <label htmlFor={language}>{language}</label>
-                </div>
+                <RadioButton
+                  key={language}
+                  id={language}
+                  name="programmingLanguage"
+                  value={language}
+                  checked={selectedLanguage === language}
+                  onChange={handleLanguageChange}
+                  label={language}
+                />
               ))}
             </div>
             <div>
               <label className="font-semibold text-lg">Filter</label>
-              <div>
-                <input
-                  type="checkbox"
-                  id="hasArticle"
-                  checked={hasArticle}
-                  onChange={toggleHasArticle}
-                />
-                <label htmlFor="hasArticle">
-                  Project with reflective blogs
-                </label>
-              </div>
-              <div>
-                <input
-                  type="checkbox"
-                  id="hasSite"
-                  checked={hasSite}
-                  onChange={toggleHasSite}
-                />
-                <label htmlFor="hasSite">Deployed projects</label>
-              </div>
-              <div>
-                <input
-                  type="checkbox"
-                  id="hasImages"
-                  checked={hasImages}
-                  onChange={toggleHasImages}
-                />
-                <label htmlFor="hasImages">Projects with galleries</label>
-              </div>
+              <Checkbox
+                id="hasArticle"
+                checked={hasArticle}
+                onChange={toggleHasArticle}
+                label="Project with reflective blogs"
+              />
+              <Checkbox
+                id="hasSite"
+                checked={hasSite}
+                onChange={toggleHasSite}
+                label="Deployed projects"
+              />
+              <Checkbox
+                id="hasImages"
+                checked={hasImages}
+                onChange={toggleHasImages}
+                label="Projects with galleries"
+              />
             </div>
           </div>
         </Popover>
