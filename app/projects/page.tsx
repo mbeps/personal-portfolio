@@ -215,7 +215,7 @@ const ProjectsPage = () => {
       <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
         <HeadingOne title="Projects" />
 
-        <div className="flex flex-col md:flex-row items-center w-full mt-6 p-2 gap-4">
+        <div className="flex flex-col md:flex-row items-center w-full mt-12 p-2 gap-4">
           {/* Search input */}
           <SearchInput searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
