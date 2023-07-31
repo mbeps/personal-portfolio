@@ -11,6 +11,17 @@ interface RadioButtonProps {
   label: string;
 }
 
+/**
+ * Radio Button component which allows the user to select one option.
+ * The radio button is checked when the user clicks on it.
+ * @param id (string): The id of the radio button.
+ * @param name (string): The name of the radio button.
+ * @param value (string): The value of the radio button.
+ * @param checked (boolean): Whether the radio button is checked or not.
+ * @param onChange (function): A function that handles the onChange event.
+ * @param label (string): The label of the radio button.
+ * @returns (JSX.Element): A radio button component.
+ */
 const RadioButton: React.FC<RadioButtonProps> = ({
   id,
   name,

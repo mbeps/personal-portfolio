@@ -7,6 +7,15 @@ interface CheckboxProps {
   label: string;
 }
 
+/**
+ * Checkbox component which allows the user to select multiple options.
+ * The checkbox is checked when the user clicks on it.
+ * @param id (string): The id of the checkbox.
+ * @param checked (boolean): Whether the checkbox is checked or not.
+ * @param onChange (function): A function that handles the onChange event.
+ * @param label (string): The label of the checkbox.
+ * @returns (JSX.Element): A checkbox component.
+ */
 const Checkbox: React.FC<CheckboxProps> = ({
   id,
   checked,

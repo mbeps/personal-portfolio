@@ -1,29 +1,35 @@
 "use client";
 
 import Button from "@/components/Atoms/Button";
+import Checkbox from "@/components/Inputs/Checkbox";
+import RadioButton from "@/components/Inputs/RadioButton";
+import SearchInput from "@/components/Inputs/SearchInput";
+import MoreProjectsModal from "@/components/Modal/MoreProjectsModal";
+import { Popover } from "@/components/Popover/Popover";
+import ProjectItem from "@/components/ProjectItem/ProjectItem";
 import HeadingOne from "@/components/Text/HeadingOne";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import Dropdown from "@/components/DropDown/DropDownMenu";
-import MoreProjectsModal from "@/components/Modal/MoreProjectsModal";
-import Project, {
-  webdevProjects,
-  machineLearningProjects,
-  extraWebDevProjects,
-  otherProjects,
-  javaAssignments,
-  backendWebDevProjects,
-} from "@/types/projects";
-import { ChangeEvent, useState } from "react";
-import ProjectItem from "@/components/ProjectItem/ProjectItem";
-import { Popover } from "@/components/Popover/Popover";
-import RadioButton from "@/components/Inputs/RadioButton";
-import Checkbox from "@/components/Inputs/Checkbox";
 import useDebounce from "@/hooks/useDebounce";
+import Project, {
+  backendWebDevProjects,
+  extraWebDevProjects,
+  javaAssignments,
+  machineLearningProjects,
+  otherProjects,
+  webdevProjects,
+} from "@/types/projects";
 import Fuse from "fuse.js";
-import SearchInput from "@/components/Inputs/SearchInput";
+import { ChangeEvent, useState } from "react";
 
 /**
  * Projects page displaying multiple types of projects that I worked on.
+ * Projects are grouped by type.
+ * The user can filter the projects by type, language, and other options.
+ * The user can also search for a specific project:
+ * - Name of the project
+ * - Programming language
+ * - Type of project
+ * - Technologies used
  * @returns (JSX.Element): Projects page
  */
 const ProjectsPage = () => {
@@ -63,10 +69,21 @@ const ProjectsPage = () => {
     ...otherProjects,
   ];
 
+  /**
+   * Fuse.js options for fuzzy search.
+   * These are the only properties that are searched.
+   * These are the same ones from the Project type.
+   */
   const options = {
-    keys: ["name", "programmingLanguage", "type", "technologies"],
-    threshold: 0.3,
+    keys: ["name", "programmingLanguage", "type", "technologies"], // Only search these properties
+    threshold: 0.3, // Lower threshold means more results
   };
+
+  /**
+   * Fuse object that is used to search the projects.
+   * @param allProjects (Project[]): list of all projects
+   * @param options (Fuse.IFuseOptions<Project>): options for fuzzy search
+   */
   const fuse = new Fuse(allProjects, options);
 
   /**
@@ -84,13 +101,16 @@ const ProjectsPage = () => {
     }, {});
   };
 
+  /**
+   * List of projects that match the search term.
+   */
   const searchedProjects = debouncedSearchTerm
     ? fuse.search(debouncedSearchTerm).map((result) => result.item)
     : allProjects;
 
-  //^ Drop Down Menu
+  //^ List of options
   /**
-   * List of project types to be displayed in the dropdown menu.
+   * List of project types to be displayed in the filter.
    * Adds 'All' as the first option.
    * Appends all unique project types to the list.
    * Project types are from the 'type' property of each project.
@@ -103,7 +123,7 @@ const ProjectsPage = () => {
   ];
 
   /**
-   * List of programming languages to be displayed in the dropdown menu.
+   * List of programming languages to be displayed in the filter.
    * Adds 'All' as the first option.
    * Appends all unique programming languages to the list.
    * Programming languages are from the 'programmingLanguage' property of each project.
@@ -116,7 +136,7 @@ const ProjectsPage = () => {
   ];
 
   /**
-   * Filters the projects based on the selected type and language.
+   * Filters the projects based on the the filter options.
    * Both language and type can be filtered.
    * If 'All' is selected, then all projects are displayed.
    */
@@ -130,24 +150,49 @@ const ProjectsPage = () => {
       (!hasImages || (project.imagesList && project.imagesList.length > 0))
   );
 
+  /**
+   * Projects categorized by type.
+   */
   const groupedProjects = groupProjectsByType(filteredProjects);
 
+  /**
+   * Handles the change of the type filter.
+   * This is used to filter the projects by type.
+   * @param event (ChangeEvent<HTMLInputElement>): event when the type is changed
+   */
   const handleTypeChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSelectedType(event.target.value);
   };
 
+  /**
+   * Handles the change of the language filter.
+   * This is used to filter the projects by language.
+   * @param event (ChangeEvent<HTMLInputElement>): event when the language is changed
+   */
   const handleLanguageChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSelectedLanguage(event.target.value);
   };
 
+  /**
+   * Toggles the filter for projects with articles.
+   * If checked, only projects with articles are displayed.
+   */
   const toggleHasArticle = () => {
     setHasArticle(!hasArticle);
   };
 
+  /**
+   * Toggles the filter for projects with sites.
+   * If checked, only projects with sites are displayed.
+   */
   const toggleHasSite = () => {
     setHasSite(!hasSite);
   };
 
+  /**
+   * Toggles the filter for projects with images.
+   * If checked, only projects with images are displayed.
+   */
   const toggleHasImages = () => {
     setHasImages(!hasImages);
   };

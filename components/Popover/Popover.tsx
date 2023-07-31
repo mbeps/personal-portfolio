@@ -1,5 +1,3 @@
-"use client";
-
 import React, { ReactNode } from "react";
 import { Popover as HeadlessPopover } from "@headlessui/react";
 import { BsChevronDown } from "react-icons/bs";
@@ -9,6 +7,13 @@ interface MyPopoverProps {
   children: ReactNode;
 }
 
+/**
+ * Displays a button which opens a popover when clicked.
+ * The popover displays the children passed to it.
+ * It is scrollable and has a max height of 50vh.
+ * @param title (string): text to display in the popover button
+ * @returns (JSX.Element): A popover component.
+ */
 export const Popover: React.FC<MyPopoverProps> = ({ children, title }) => {
   return (
     <div className="relative w-full">
