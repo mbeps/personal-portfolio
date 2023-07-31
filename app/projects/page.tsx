@@ -16,7 +16,7 @@ import Project, {
 import { ChangeEvent, useState } from "react";
 import ProjectItem from "@/components/ProjectItem/ProjectItem";
 import { Popover } from "@/components/Popover/Popover";
-import RadioButton from "@/components/Atoms/RadioButton";
+import RadioButton from "@/components/Inputs/RadioButton";
 import Checkbox from "@/components/Inputs/Checkbox";
 
 /**
