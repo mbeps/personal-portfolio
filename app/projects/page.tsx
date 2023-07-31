@@ -25,6 +25,9 @@ const ProjectsPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedType, setSelectedType] = useState("All");
   const [selectedLanguage, setSelectedLanguage] = useState("All");
+  const [hasArticle, setHasArticle] = useState(false);
+  const [hasSite, setHasSite] = useState(false);
+  const [hasImages, setHasImages] = useState(false);
 
   /**
    * Opens the modal to display more projects.
@@ -104,7 +107,10 @@ const ProjectsPage = () => {
     (project) =>
       (selectedType === "All" || project.type === selectedType) &&
       (selectedLanguage === "All" ||
-        project.programmingLanguage === selectedLanguage)
+        project.programmingLanguage === selectedLanguage) &&
+      (!hasArticle || project.articleURL) &&
+      (!hasSite || project.siteURL) &&
+      (!hasImages || (project.imagesList && project.imagesList.length > 0))
   );
 
   const groupedProjects = groupProjectsByType(filteredProjects);
@@ -117,13 +123,25 @@ const ProjectsPage = () => {
     setSelectedLanguage(event.target.value);
   };
 
+  const toggleHasArticle = () => {
+    setHasArticle(!hasArticle);
+  };
+
+  const toggleHasSite = () => {
+    setHasSite(!hasSite);
+  };
+
+  const toggleHasImages = () => {
+    setHasImages(!hasImages);
+  };
+
   return (
     <section id="projects" className="flex flex-col items-start md:items-end">
       <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2 w-full">
         <HeadingOne title="Projects" />
 
         <Popover>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
             <div>
               <label htmlFor="type-dropdown" className="font-semibold text-lg">
                 Category
@@ -162,6 +180,38 @@ const ProjectsPage = () => {
                   <label htmlFor={language}>{language}</label>
                 </div>
               ))}
+            </div>
+            <div>
+              <label className="font-semibold text-lg">Filter</label>
+              <div>
+                <input
+                  type="checkbox"
+                  id="hasArticle"
+                  checked={hasArticle}
+                  onChange={toggleHasArticle}
+                />
+                <label htmlFor="hasArticle">
+                  Project with reflective blogs
+                </label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="hasSite"
+                  checked={hasSite}
+                  onChange={toggleHasSite}
+                />
+                <label htmlFor="hasSite">Deployed projects</label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="hasImages"
+                  checked={hasImages}
+                  onChange={toggleHasImages}
+                />
+                <label htmlFor="hasImages">Projects with galleries</label>
+              </div>
             </div>
           </div>
         </Popover>
