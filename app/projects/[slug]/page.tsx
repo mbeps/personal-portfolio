@@ -1,3 +1,4 @@
+import fs from "fs";
 import getProjectBySlug from "@/actions/getProjectBySlug";
 import Tag from "@/components/Atoms/Tag";
 import HeadingThree from "@/components/Text/HeadingThree";
@@ -18,6 +19,31 @@ import React from "react";
 import { BsArrowUpRightSquare, BsGithub } from "react-icons/bs";
 import { IoReaderOutline } from "react-icons/io5";
 
+/**
+ * Gets the images for a project from the file system.
+ * These are stored so that they can be displayed on the website.
+ * @param slug (string): the slug of the project
+ * @returns (string[]): the images for the project
+ */
+const getProjectImages = (slug: string): string[] => {
+  const folder = `public/projects/${slug}/`;
+  try {
+    const files = fs.readdirSync(folder);
+    return files.filter(
+      (file) => file.endsWith(".jpg") || file.endsWith(".png")
+    );
+  } catch (error) {
+    console.log(`Error reading directory ${folder}:`, error);
+    return [];
+  }
+};
+
+/**
+ * Generates the static paths for the projects.
+ * These are then used to pre-render the projects pages.
+ * This Incremental Static Regeneration allows the projects to be displayed without a server.
+ * This improves the performance of the website.
+ */
 export const generateStaticParams = async () => {
   const projects: Project[] = [
     ...webdevProjects,
@@ -69,7 +95,17 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const projectLanguage = project?.programmingLanguage;
   const projectDescription = project?.description;
 
-  let gallery = project?.imagesList;
+  let gallery = getProjectImages(slug);
+
+  // Exclude the 'cover' image and include only jpg and png images
+  gallery = gallery
+    .filter(
+      (image) =>
+        !image.startsWith("cover") &&
+        (image.endsWith(".jpg") || image.endsWith(".png"))
+    )
+    .sort(); // Sort the remaining images
+
   // Adds full path to images
   if (gallery) {
     gallery = gallery.map((image) => `/projects/${slug}/${image}`);
@@ -85,7 +121,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
       <HeadingTwo title={projectName!} />
 
       {/* Images Section */}
-      {gallery && gallery.length > 0 ? (
+      {gallery && gallery.length > 1 ? (
         <Gallery images={gallery} />
       ) : project?.imageURL ? (
         <div className="w-full flex items-center justify-center relative z-0">

@@ -147,8 +147,7 @@ const ProjectsPage = () => {
       (selectedLanguage === "All" ||
         project.programmingLanguage === selectedLanguage) &&
       (!hasArticle || project.articleURL) &&
-      (!hasSite || project.siteURL) &&
-      (!hasImages || (project.imagesList && project.imagesList.length > 0))
+      (!hasSite || project.siteURL)
   );
 
   /**
@@ -188,14 +187,6 @@ const ProjectsPage = () => {
    */
   const toggleHasSite = () => {
     setHasSite(!hasSite);
-  };
-
-  /**
-   * Toggles the filter for projects with images.
-   * If checked, only projects with images are displayed.
-   */
-  const toggleHasImages = () => {
-    setHasImages(!hasImages);
   };
 
   /**
@@ -282,12 +273,6 @@ const ProjectsPage = () => {
                     onChange={toggleHasSite}
                     label="Deployed projects"
                   />
-                  <Checkbox
-                    id="hasImages"
-                    checked={hasImages}
-                    onChange={toggleHasImages}
-                    label="Projects with galleries"
-                  />
                 </div>
               </div>
             </Popover>
@@ -301,9 +286,9 @@ const ProjectsPage = () => {
                 rounded-xl
                 shadow-md hover:shadow-lg focus:shadow-lg
                 bg-neutral-100 dark:bg-neutral-800 
-                hover:bg-neutral-200 dark:hover:bg-neutral-700
-                border-2 border-transparent
-                hover:border-red-500 dark:hover:border-red-950
+                hover:bg-neutral-100 dark:hover:bg-neutral-800
+                border-2 border-transparent dark:border-transparent
+                hover:border-red-500 dark:hover:border-red-800
                 transition-all duration-500 ease-in-out
               `}
             >
