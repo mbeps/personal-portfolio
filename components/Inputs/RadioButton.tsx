@@ -56,7 +56,6 @@ const RadioButton: React.FC<RadioButtonProps> = ({
 
   return (
     <label
-      htmlFor={id}
       className={combinedClassName}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
