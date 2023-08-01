@@ -5,7 +5,8 @@ import HeadingTwo from "@/components/Text/HeadingTwo";
 import getBlogMetadata from "@/actions/getBlogMetadata";
 
 /**
- * Gets the content of a blog.
+ * Gets the content of a blog from the file system.
+ * These are stored so that they can be displayed on the website.
  * @param slug (string): the slug of the blog
  * @returns (matter.GrayMatterFile<string>): the blog content
  */
@@ -20,6 +21,8 @@ const getBlogContent = (slug: string) => {
 /**
  * Generates the static paths for the blogs.
  * This means that the blog are pre-rendered and can be opened without a server.
+ * This is Incremental Static Regeneration and improves the performance of the website.
+ * This improves the performance of the website.
  * @returns (Array): array of blogs
  */
 export const generateStaticParams = async () => {
