@@ -101,7 +101,18 @@ const ProjectItem: React.FC<Project> = ({
 
           <div className={`mt-8 ${imageURL ? "md:w-1/2" : "md:w-full"}`}>
             {/* Project Title */}
-            <h1 className="text-4xl font-bold mb-6 text-left">{name}</h1>
+            <Link href={`/projects/${slug}`}>
+              <h1
+                className="
+                mb-6 
+                text-4xl font-bold text-left 
+                hover:text-red-500 dark:hover:text-red-800
+                transition-colors duration-700 ease-in-out
+                "
+              >
+                {name}
+              </h1>
+            </Link>
 
             {/* Project Description */}
             <p className="text-xl text-left leading-7 mb-4 text-neutral-600 dark:text-neutral-400">
