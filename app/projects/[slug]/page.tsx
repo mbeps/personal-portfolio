@@ -97,14 +97,9 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
 
   let gallery = getProjectImages(slug);
 
-  // Exclude the 'cover' image and include only jpg and png images
   gallery = gallery
-    .filter(
-      (image) =>
-        !image.startsWith("cover") &&
-        (image.endsWith(".jpg") || image.endsWith(".png"))
-    )
-    .sort(); // Sort the remaining images
+    .filter((image) => !image.startsWith("cover") && image.endsWith(".png"))
+    .sort((a, b) => parseInt(a, 10) - parseInt(b, 10));
 
   // Adds full path to images
   if (gallery) {
