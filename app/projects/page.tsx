@@ -20,6 +20,7 @@ import Project, {
 } from "@/types/projects";
 import Fuse from "fuse.js";
 import { ChangeEvent, useState } from "react";
+import { MdClear } from "react-icons/md";
 
 /**
  * Projects page displaying multiple types of projects that I worked on.
@@ -217,10 +218,17 @@ const ProjectsPage = () => {
 
         <div className="flex flex-col md:flex-row items-center w-full mt-12 p-2 gap-4">
           {/* Search input */}
-          <SearchInput searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+          <div className="w-full md:flex-1">
+            {" "}
+            {/* This ensures full width on small screens */}
+            <SearchInput
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+            />
+          </div>
 
-          <div className="flex flex-row gap-2">
-            <Popover title={"Filter"}>
+          <div className="flex w-full md:flex-1 flex-row gap-2">
+            <Popover title={"Filter"} className="w-full">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                 <div>
                   <label
@@ -284,8 +292,28 @@ const ProjectsPage = () => {
               </div>
             </Popover>
             {/* Reset button */}
-            <Button variant="ghost" onClick={resetFilters}>
-              Reset
+            <Button
+              variant="outlined"
+              onClick={resetFilters}
+              className={`
+                px-4 py-2 w-full
+                text-base font-medium text-neutral-700 dark:text-neutral-200 capitalize hover:text-neutral-700 dark:hover:text-neutral-200
+                rounded-xl
+                shadow-md hover:shadow-lg focus:shadow-lg
+                bg-neutral-100 dark:bg-neutral-800 
+                hover:bg-neutral-200 dark:hover:bg-neutral-700
+                border-2 border-transparent
+                hover:border-red-500 dark:hover:border-red-950
+                transition-all duration-500 ease-in-out
+              `}
+            >
+              <div className="flex items-center space-x-2">
+                <MdClear
+                  fontSize={24}
+                  className="text-neutral-700 dark:text-neutral-200"
+                />
+                <span>Reset</span>
+              </div>
             </Button>
           </div>
         </div>

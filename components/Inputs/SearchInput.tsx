@@ -2,10 +2,12 @@
 
 import React, { InputHTMLAttributes } from "react";
 import { BsSearch } from "react-icons/bs";
+import { twMerge } from "tailwind-merge";
 
 interface SearchInputProps extends InputHTMLAttributes<HTMLInputElement> {
   searchTerm: string;
   setSearchTerm: (value: string) => void;
+  className?: string;
 }
 
 /**
@@ -14,36 +16,45 @@ interface SearchInputProps extends InputHTMLAttributes<HTMLInputElement> {
  * @param searchTerm (string): The current search term inputted by the user.
  * @param setSearchTerm (function): A function that sets the search term.
  * @param props (object): The props of the input element.
+ * @param className (string): The custom classes to be applied to the input element.
  * @returns (JSX.Element): A search input element.
  */
 const SearchInput: React.FC<SearchInputProps> = ({
   searchTerm,
   setSearchTerm,
+  className, // Destructuring the new prop
   ...props
-}) => (
-  <div className="relative w-full md:flex-grow md:order-last">
-    <input
-      type="text"
-      value={searchTerm}
-      onChange={(e) => setSearchTerm(e.target.value)}
-      placeholder="Search"
-      className="
-        w-full
-        p-2 pl-10
-        border-2
-        bg-neutral-100 dark:bg-neutral-800
-        text-neutral-700 dark:text-neutral-200
-        border-transparent focus:border-red-500 dark:focus:border-red-900
-        hover:border-red-400 dark:hover:border-red-800
-        focus:outline-none
-        rounded-xl
-				shadow-md hover:shadow-lg focus:shadow-lg
-        transition-all ease-out duration-300
-      "
-      {...props}
-    />
-    <BsSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-700 dark:text-neutral-200" />
-  </div>
-);
+}) => {
+  const combinedClassName = twMerge(
+    `
+      w-full
+      p-2 pl-10
+      border-2
+      bg-neutral-100 dark:bg-neutral-800
+      text-neutral-700 dark:text-neutral-200
+      border-transparent focus:border-red-500 dark:focus:border-red-900
+      hover:border-red-400 dark:hover:border-red-800
+      focus:outline-none
+      rounded-xl
+			shadow-md hover:shadow-lg focus:shadow-lg
+      transition-all ease-out duration-300
+    `,
+    className // Merge user-provided className
+  );
+
+  return (
+    <div className="relative w-full md:flex-grow md:order-last">
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder="Search"
+        className={combinedClassName}
+        {...props}
+      />
+      <BsSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-700 dark:text-neutral-200" />
+    </div>
+  );
+};
 
 export default SearchInput;

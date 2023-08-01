@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { twMerge } from "tailwind-merge";
 
 interface RadioButtonProps {
   id: string;
@@ -9,6 +10,7 @@ interface RadioButtonProps {
   checked: boolean;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   label: string;
+  className?: string;
 }
 
 /**
@@ -20,6 +22,7 @@ interface RadioButtonProps {
  * @param checked (boolean): Whether the radio button is checked or not.
  * @param onChange (function): A function that handles the onChange event.
  * @param label (string): The label of the radio button.
+ * @param className (string): The custom classes to be applied to the radio button.
  * @returns (JSX.Element): A radio button component.
  */
 const RadioButton: React.FC<RadioButtonProps> = ({
@@ -29,6 +32,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   checked,
   onChange,
   label,
+  className, // Destructuring the new prop
 }) => {
   const [hovered, setHovered] = useState(false);
 
@@ -37,16 +41,23 @@ const RadioButton: React.FC<RadioButtonProps> = ({
     : hovered
     ? "border-neutral-300 dark:border-red-950"
     : "border-neutral-200 dark:border-stone-800";
+
+  const combinedClassName = twMerge(
+    `
+      border-2 ${borderColor}
+      bg-neutral-200 dark:bg-stone-800
+      hover:bg-neutral-300 dark:hover:bg-red-950
+      transition-colors duration-300 ease-in-out
+      rounded-xl p-2 my-2 
+      flex items-center cursor-pointer
+    `,
+    className // Merge user-provided className
+  );
+
   return (
     <label
-      className={`
-        border-2 ${borderColor}
-        bg-neutral-200 dark:bg-stone-800
-        hover:bg-neutral-300 dark:hover:bg-red-950
-        transition-colors duration-300 ease-in-out
-        rounded-xl p-2 my-2 
-        flex items-center cursor-pointer
-      `}
+      htmlFor={id}
+      className={combinedClassName}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
