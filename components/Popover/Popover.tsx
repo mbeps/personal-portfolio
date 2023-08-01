@@ -41,7 +41,7 @@ export const Popover: React.FC<MyPopoverProps> = ({
                     ? "border-red-500 dark:border-red-950"
                     : "border-transparent"
                 }
-                hover:border-red-500 dark:hover:border-red-950
+                hover:border-red-500 dark:hover:border-red-800
                 transition-all duration-500 ease-in-out
               `,
                 className // Merge user-provided className

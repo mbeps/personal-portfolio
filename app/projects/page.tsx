@@ -301,9 +301,9 @@ const ProjectsPage = () => {
                 rounded-xl
                 shadow-md hover:shadow-lg focus:shadow-lg
                 bg-neutral-100 dark:bg-neutral-800 
-                hover:bg-neutral-200 dark:hover:bg-neutral-700
-                border-2 border-transparent
-                hover:border-red-500 dark:hover:border-red-950
+                hover:bg-neutral-100 dark:hover:bg-neutral-800
+                border-2 border-transparent dark:border-transparent
+                hover:border-red-500 dark:hover:border-red-800
                 transition-all duration-500 ease-in-out
               `}
             >
