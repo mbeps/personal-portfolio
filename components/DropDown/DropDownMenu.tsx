@@ -16,6 +16,7 @@ interface DropdownProps {
  * @param selected (string) The selected option
  * @param options (string[]) The list of options
  * @param setSelected (React.Dispatch<React.SetStateAction<string>>) The function to set the selected option
+ * @param className (string) The custom classes to be applied to the dropdown menu
  * @returns (JSX.Element): a dropdown menu
  */
 const Dropdown: React.FC<DropdownProps> = ({

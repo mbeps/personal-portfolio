@@ -25,6 +25,7 @@ interface ButtonProps {
  *
  * @param onClick (string | function): the action to be performed when the button is clicked
  * @param variant (ButtonVariant): the variant of the button
+ * @param className (string): the custom classes to be applied to the button
  * @param children (React.ReactNode): the content of the button
  *
  * @returns (JSX.Element): button component

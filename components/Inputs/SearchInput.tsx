@@ -16,6 +16,7 @@ interface SearchInputProps extends InputHTMLAttributes<HTMLInputElement> {
  * @param searchTerm (string): The current search term inputted by the user.
  * @param setSearchTerm (function): A function that sets the search term.
  * @param props (object): The props of the input element.
+ * @param className (string): The custom classes to be applied to the input element.
  * @returns (JSX.Element): A search input element.
  */
 const SearchInput: React.FC<SearchInputProps> = ({

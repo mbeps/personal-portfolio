@@ -22,6 +22,7 @@ interface RadioButtonProps {
  * @param checked (boolean): Whether the radio button is checked or not.
  * @param onChange (function): A function that handles the onChange event.
  * @param label (string): The label of the radio button.
+ * @param className (string): The custom classes to be applied to the radio button.
  * @returns (JSX.Element): A radio button component.
  */
 const RadioButton: React.FC<RadioButtonProps> = ({

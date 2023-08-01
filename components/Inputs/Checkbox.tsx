@@ -16,6 +16,7 @@ interface CheckboxProps {
  * @param checked (boolean): Whether the checkbox is checked or not.
  * @param onChange (function): A function that handles the onChange event.
  * @param label (string): The label of the checkbox.
+ * @param className (string): The custom classes to be applied to the checkbox.
  * @returns (JSX.Element): A checkbox component.
  */
 const Checkbox: React.FC<CheckboxProps> = ({
