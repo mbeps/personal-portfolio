@@ -1,5 +1,6 @@
 "use client";
 
+import { twMerge } from "tailwind-merge";
 import { useRouter } from "next/navigation";
 import React from "react";
 
@@ -9,8 +10,8 @@ interface ButtonProps {
   onClick: string | (() => void);
   variant: ButtonVariant;
   children: React.ReactNode;
+  className?: string;
 }
-
 /**
  * Displays a button which can be clicked to execute an action.
  * This button has many different variants:
@@ -28,7 +29,7 @@ interface ButtonProps {
  *
  * @returns (JSX.Element): button component
  */
-const Button = ({ onClick, variant, children }: ButtonProps) => {
+const Button = ({ onClick, variant, children, className }: ButtonProps) => {
   const router = useRouter();
 
   /**
@@ -71,26 +72,19 @@ const Button = ({ onClick, variant, children }: ButtonProps) => {
     dark:from-red-800 dark:to-amber-700
     transform hover:scale-105`;
 
-  let buttonStyle;
-  switch (variant) {
-    case "filled":
-      buttonStyle = filled;
-      break;
-    case "outlined":
-      buttonStyle = outlined;
-      break;
-    case "ghost":
-      buttonStyle = ghost;
-      break;
-    case "gradient":
-      buttonStyle = gradient;
-      break;
-    default:
-      throw new Error(`Unknown variant: ${variant}`);
-  }
+  const buttonStyle = twMerge(
+    baseStyle,
+    {
+      filled,
+      outlined,
+      ghost,
+      gradient,
+    }[variant],
+    className
+  );
 
   return (
-    <button onClick={handleClick} className={`${baseStyle} ${buttonStyle}`}>
+    <button onClick={handleClick} className={buttonStyle}>
       {children}
     </button>
   );
