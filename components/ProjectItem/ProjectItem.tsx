@@ -43,7 +43,6 @@ const ProjectItem: React.FC<Project> = ({
   slug,
   description,
   imageURL,
-  imagesList,
   repoURL,
   siteURL,
   articleURL,

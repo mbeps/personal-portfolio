@@ -147,8 +147,7 @@ const ProjectsPage = () => {
       (selectedLanguage === "All" ||
         project.programmingLanguage === selectedLanguage) &&
       (!hasArticle || project.articleURL) &&
-      (!hasSite || project.siteURL) &&
-      (!hasImages || (project.imagesList && project.imagesList.length > 0))
+      (!hasSite || project.siteURL)
   );
 
   /**
@@ -188,14 +187,6 @@ const ProjectsPage = () => {
    */
   const toggleHasSite = () => {
     setHasSite(!hasSite);
-  };
-
-  /**
-   * Toggles the filter for projects with images.
-   * If checked, only projects with images are displayed.
-   */
-  const toggleHasImages = () => {
-    setHasImages(!hasImages);
   };
 
   /**
@@ -281,12 +272,6 @@ const ProjectsPage = () => {
                     checked={hasSite}
                     onChange={toggleHasSite}
                     label="Deployed projects"
-                  />
-                  <Checkbox
-                    id="hasImages"
-                    checked={hasImages}
-                    onChange={toggleHasImages}
-                    label="Projects with galleries"
                   />
                 </div>
               </div>
