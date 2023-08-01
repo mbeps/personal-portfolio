@@ -1,3 +1,4 @@
+import { twMerge } from "tailwind-merge";
 import React, { Fragment, ReactNode } from "react";
 import { Popover as HeadlessPopover, Transition } from "@headlessui/react";
 import { BsChevronDown } from "react-icons/bs";
@@ -5,8 +6,8 @@ import { BsChevronDown } from "react-icons/bs";
 interface MyPopoverProps {
   title: string;
   children: ReactNode;
+  className?: string;
 }
-
 /**
  * Displays a button which opens a popover when clicked.
  * The popover displays the children passed to it.
@@ -14,14 +15,19 @@ interface MyPopoverProps {
  * @param title (string): text to display in the popover button
  * @returns (JSX.Element): A popover component.
  */
-export const Popover: React.FC<MyPopoverProps> = ({ children, title }) => {
+export const Popover: React.FC<MyPopoverProps> = ({
+  children,
+  title,
+  className,
+}) => {
   return (
     <div className="relative w-full">
       <HeadlessPopover>
         {({ open }) => (
           <>
             <HeadlessPopover.Button
-              className={`
+              className={twMerge(
+                `
                 inline-flex justify-between items-center
                 z-10
                 w-56
@@ -37,7 +43,9 @@ export const Popover: React.FC<MyPopoverProps> = ({ children, title }) => {
                 }
                 hover:border-red-500 dark:hover:border-red-950
                 transition-all duration-500 ease-in-out
-              `}
+              `,
+                className // Merge user-provided className
+              )}
             >
               {title}
               <BsChevronDown
