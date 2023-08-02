@@ -24,7 +24,7 @@ This report provides an in-depth reflection on the Magician AI Platform's develo
 # **Backend Development**
 
 ## **Clerk Authentication System**
-Clerk, a much newer and increasingly popular alternative to Auth0, was instrumental in the authentication system supporting Next.js 13's new app router. What set Clerk apart was its ability to work on both client-side and server-side components, which translated into an exceptional user experience. Its well-documented, user-friendly nature and rising popularity in the tech community made it an exciting addition to the project. You can read more about this in my [blog post on authentication](https://www.magician-ai.com/posts/authentication).
+Clerk, a much newer and increasingly popular alternative to Auth0, was instrumental in the authentication system supporting Next.js 13's new app router. What set Clerk apart was its ability to work on both client-side and server-side components, which translated into an exceptional user experience. Its well-documented, user-friendly nature and rising popularity in the tech community made it an exciting addition to the project.
 
 ## **Relational Database for User Information**
 A relational database was employed to store vital user information, such as user API usage limits for trials and subscription status. This enabled us to provide unlimited usage to subscribers and properly manage the trials, creating an efficient and tailored user experience.
