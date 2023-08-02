@@ -13,18 +13,19 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="min-h-[85vh] flex flex-col justify-between items-center"
+      className="min-h-[85vh] w-full flex flex-col justify-between items-center"
     >
       <div
         className="
           flex flex-col 
           text-center items-center justify-center 
           animate-fadeIn animation-delay-2
-          md:flex-row md:space-x-4 md:text-left 
-          my-auto w-full"
+          md:flex-row md:space-x-12 md:text-left  
+          my-auto w-full
+"
       >
         {/* Profile Image */}
-        <div className="md:mt-2 md:w-1/2">
+        <div className="flex md:w-1/2 justify-center p-8 md:p-0">
           <Image
             src="/profile.png"
             alt=""
@@ -34,8 +35,8 @@ const HeroSection = () => {
           />
         </div>
 
-        <div className="md:mt-2 md:w-3/5 space-y-8 md:space-y-5">
-          <h1 className="text-4xl md:text-7xl font-bold mt-6 md:mt-0 ">
+        <div className="md:mt-2 md:w-3/5 space-y-7 md:space-y-5 w-full">
+          <h1 className="text-5xl md:text-7xl font-bold mt-6 md:mt-0 ">
             {`Hi, I'm Maruf!`}
           </h1>
           <p
@@ -52,12 +53,13 @@ const HeroSection = () => {
           </p>
 
           {/* Buttons */}
-          <div className="flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0">
+          <div className="flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0 w-full md:w-3/5">
             <Button
               variant="gradient"
               onClick={() => {
                 scrollToSection("projects");
               }}
+              className="w-full"
             >
               Projects
             </Button>
@@ -66,6 +68,7 @@ const HeroSection = () => {
               onClick={() => {
                 scrollToSection("about");
               }}
+              className="w-full"
             >
               About
             </Button>

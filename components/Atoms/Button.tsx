@@ -11,6 +11,7 @@ interface ButtonProps {
   variant: ButtonVariant;
   children: React.ReactNode;
   className?: string;
+  disabled?: boolean;
 }
 /**
  * Displays a button which can be clicked to execute an action.
@@ -30,7 +31,13 @@ interface ButtonProps {
  *
  * @returns (JSX.Element): button component
  */
-const Button = ({ onClick, variant, children, className }: ButtonProps) => {
+const Button = ({
+  onClick,
+  variant,
+  children,
+  className,
+  disabled,
+}: ButtonProps) => {
   const router = useRouter();
 
   /**
@@ -56,8 +63,7 @@ const Button = ({ onClick, variant, children, className }: ButtonProps) => {
   const filled = `
 		text-neutral-100 
 		shadow-xl hover:shadow-lg   
-		bg-red-500 dark:bg-red-800
-    transform hover:scale-105`;
+		bg-red-500 dark:bg-red-800`;
   const outlined = `
 		text-red-500 hover:text-neutral-100
 		dark:text-red-500 dark:hover:text-neutral-100
@@ -71,21 +77,36 @@ const Button = ({ onClick, variant, children, className }: ButtonProps) => {
     bg-gradient-to-r 
     from-red-600 to-amber-500 
     dark:from-red-800 dark:to-amber-700
-    transform hover:scale-105`;
+    transform hover:scale-105
+    shadow-xl hover:shadow-3xl
+    `;
+
+  const disabledStyle = `
+    cursor-not-allowed 
+    opacity-50
+    text-neutral-400
+    bg-neutral-200 dark:bg-neutral-700`;
 
   const buttonStyle = twMerge(
     baseStyle,
-    {
-      filled,
-      outlined,
-      ghost,
-      gradient,
-    }[variant],
+    disabled
+      ? disabledStyle
+      : {
+          // Apply the disabled style if disabled is true
+          filled,
+          outlined,
+          ghost,
+          gradient,
+        }[variant],
     className
   );
 
   return (
-    <button onClick={handleClick} className={buttonStyle}>
+    <button
+      onClick={handleClick}
+      className={buttonStyle}
+      disabled={disabled} // Native HTML disabled attribute
+    >
       {children}
     </button>
   );

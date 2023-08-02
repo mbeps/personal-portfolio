@@ -135,14 +135,13 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
           />
         </div>
       ) : (
-        <>
-          <text className="text-center text-2xl text-neutral-400 dark:text-neutral-500">
-            No images available
-          </text>
-        </>
+        <></>
       )}
 
-      <div className="border-b border-neutral-200 dark:border-neutral-800" />
+      {(gallery && gallery.length > 1) ||
+        (project?.imageURL && (
+          <div className="border-b border-neutral-200 dark:border-neutral-800" />
+        ))}
 
       {/* Metadata Section */}
       <div className="flex flex-col md:flex-row gap-4 sm:gap-10">

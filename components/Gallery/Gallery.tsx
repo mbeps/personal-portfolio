@@ -45,9 +45,10 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
     <div className="flex flex-col items-center relative">
       <div className="w-full relative">
         <IoIosArrowDropleftCircle
-          size={38}
+          size={44}
           className="
             absolute left-1 top-1/2 transform -translate-y-1/2 text-3xl 
+            opacity-30 hover:opacity-100
             cursor-pointer
             text-neutral-400 dark:text-neutral-700
             hover:text-red-500 dark:hover:text-red-900
@@ -73,9 +74,10 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
           />
         </div>
         <IoIosArrowDroprightCircle
-          size={38}
+          size={44}
           className="
             absolute right-1 top-1/2 transform -translate-y-1/2 text-3xl 
+            opacity-30 hover:opacity-100
             cursor-pointer
             text-neutral-400 dark:text-neutral-700
             hover:text-red-500 dark:hover:text-red-900
