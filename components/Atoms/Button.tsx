@@ -63,8 +63,7 @@ const Button = ({
   const filled = `
 		text-neutral-100 
 		shadow-xl hover:shadow-lg   
-		bg-red-500 dark:bg-red-800
-    transform hover:scale-105`;
+		bg-red-500 dark:bg-red-800`;
   const outlined = `
 		text-red-500 hover:text-neutral-100
 		dark:text-red-500 dark:hover:text-neutral-100
@@ -78,7 +77,9 @@ const Button = ({
     bg-gradient-to-r 
     from-red-600 to-amber-500 
     dark:from-red-800 dark:to-amber-700
-    transform hover:scale-105`;
+    transform hover:scale-105
+    shadow-xl hover:shadow-3xl
+    `;
 
   const disabledStyle = `
     cursor-not-allowed 
