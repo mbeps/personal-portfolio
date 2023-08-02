@@ -160,8 +160,9 @@ const extraWebDevProjects: Project[] = [
     technologies: [
       `Next.JS`,
       "React",
+      "Shadcn UI",
       `Tailwind CSS`,
-      `NextAuth`,
+      `Clerk Auth`,
       `MySQL`,
       "tRPC",
       "Prisma",
