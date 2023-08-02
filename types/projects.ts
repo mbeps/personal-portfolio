@@ -108,6 +108,7 @@ const webdevProjects: Project[] = [
     repoURL: `https://github.com/mbeps/magician-ai`,
     programmingLanguage: `TypeScript`,
     siteURL: "https://magician-ai.vercel.app/",
+    articleURL: "/blogs/project-magician-ai",
     technologies: [
       `Next.JS`,
       "React",
