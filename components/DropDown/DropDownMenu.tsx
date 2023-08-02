@@ -37,7 +37,7 @@ const Dropdown: React.FC<DropdownProps> = ({
               ${width}
               px-4 py-2 
               text-base font-medium text-neutral-700 dark:text-neutral-200 capitalize
-              rounded-lg shadow-md
+              rounded-lg 
               bg-neutral-100 dark:bg-neutral-800 
               border-2 ${
                 open
@@ -45,7 +45,8 @@ const Dropdown: React.FC<DropdownProps> = ({
                   : "border-transparent"
               }
               hover:border-red-500 dark:hover:border-red-950
-              transition-colors duration-500 ease-in-out
+              shadow-md hover:shadow-lg
+              transition-all duration-500 ease-in-out
               ${className} // Applying the custom classes here
             `}
           >
@@ -77,6 +78,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                             : "text-neutral-900 dark:text-neutral-100"
                         } 
                         group flex rounded-lg items-center ${width} px-2 py-2 text-base capitalize
+                        w-full
                       `}
                       onClick={() => setSelected(option)}
                     >
