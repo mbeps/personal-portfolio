@@ -243,6 +243,18 @@ const backendWebDevProjects: Project[] = [
     technologies: [`Next.JS, Clerk Auth`],
     type: "Backend Web Dev",
   },
+  {
+    name: `Auth0 Authentication`,
+    slug: "auth0-authentication",
+    description: `
+      A simple Next.JS app to experiment with the Auth0 Authentication SDK. 
+      This does not use the new Next.JS 13 app router as it is not supported as of the time of making this demo. 
+      `,
+    programmingLanguage: `TypeScript`,
+    repoURL: `https://github.com/mbeps/nextjs-auth0`,
+    technologies: [`Next.JS, Auth0`],
+    type: "Backend Web Dev",
+  },
 ];
 
 /**
