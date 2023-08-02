@@ -214,18 +214,10 @@ const ProjectsPage = () => {
       <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
         <HeadingOne title="Projects" />
 
-        <div className="flex flex-col md:flex-row items-center w-full mt-12 p-2 gap-4">
-          {/* Search input */}
-          <div className="w-full md:flex-1">
-            {" "}
-            {/* This ensures full width on small screens */}
-            <SearchInput
-              searchTerm={searchTerm}
-              setSearchTerm={setSearchTerm}
-            />
-          </div>
-
-          <div className="flex w-full md:flex-1 flex-row gap-2">
+        <div className="flex flex-col-reverse md:flex-row items-center w-full mt-12 p-2 gap-4">
+          {/* Buttons */}
+          <div className="flex flex-row md:flex-1 gap-2 w-full">
+            {/* Clear Button */}
             <Popover title={"Filter"} className="w-full">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                 <div>
@@ -283,7 +275,7 @@ const ProjectsPage = () => {
                 </div>
               </div>
             </Popover>
-            {/* Reset button */}
+            {/* Filter Button */}
             <Button
               variant="outlined"
               onClick={resetFilters}
@@ -308,6 +300,14 @@ const ProjectsPage = () => {
                 <span>Reset</span>
               </div>
             </Button>
+          </div>
+
+          {/* Search input */}
+          <div className="w-full md:flex-1">
+            <SearchInput
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+            />
           </div>
         </div>
 
