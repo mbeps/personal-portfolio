@@ -232,6 +232,17 @@ const backendWebDevProjects: Project[] = [
     technologies: [`Django`],
     type: "Backend Web Dev",
   },
+  {
+    name: `Clerk Authentication`,
+    slug: "clerk-authentication",
+    description: `
+      A simple Next.JS app to experiment with the Clerk Authentication SDK. 
+      `,
+    programmingLanguage: `TypeScript`,
+    repoURL: `https://github.com/mbeps/clerk-demo`,
+    technologies: [`Next.JS, Clerk Auth`],
+    type: "Backend Web Dev",
+  },
 ];
 
 /**
