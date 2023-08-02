@@ -11,6 +11,7 @@ interface ButtonProps {
   variant: ButtonVariant;
   children: React.ReactNode;
   className?: string;
+  disabled?: boolean;
 }
 /**
  * Displays a button which can be clicked to execute an action.
@@ -30,7 +31,13 @@ interface ButtonProps {
  *
  * @returns (JSX.Element): button component
  */
-const Button = ({ onClick, variant, children, className }: ButtonProps) => {
+const Button = ({
+  onClick,
+  variant,
+  children,
+  className,
+  disabled,
+}: ButtonProps) => {
   const router = useRouter();
 
   /**
@@ -73,19 +80,32 @@ const Button = ({ onClick, variant, children, className }: ButtonProps) => {
     dark:from-red-800 dark:to-amber-700
     transform hover:scale-105`;
 
+  const disabledStyle = `
+    cursor-not-allowed 
+    opacity-50
+    text-neutral-400
+    bg-neutral-200 dark:bg-neutral-700`;
+
   const buttonStyle = twMerge(
     baseStyle,
-    {
-      filled,
-      outlined,
-      ghost,
-      gradient,
-    }[variant],
+    disabled
+      ? disabledStyle
+      : {
+          // Apply the disabled style if disabled is true
+          filled,
+          outlined,
+          ghost,
+          gradient,
+        }[variant],
     className
   );
 
   return (
-    <button onClick={handleClick} className={buttonStyle}>
+    <button
+      onClick={handleClick}
+      className={buttonStyle}
+      disabled={disabled} // Native HTML disabled attribute
+    >
       {children}
     </button>
   );

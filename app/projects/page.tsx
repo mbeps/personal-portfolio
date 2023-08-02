@@ -202,6 +202,13 @@ const ProjectsPage = () => {
     setSearchTerm("");
   };
 
+  const areFiltersApplied =
+    selectedType !== "All" ||
+    selectedLanguage !== "All" ||
+    hasArticle ||
+    hasSite ||
+    searchTerm !== "";
+
   return (
     <section id="projects" className="flex flex-col items-start md:items-end">
       <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
@@ -280,6 +287,7 @@ const ProjectsPage = () => {
             <Button
               variant="outlined"
               onClick={resetFilters}
+              disabled={!areFiltersApplied}
               className={`
                 px-4 py-2 w-full
                 text-base font-medium text-neutral-700 dark:text-neutral-200 capitalize hover:text-neutral-700 dark:hover:text-neutral-200
