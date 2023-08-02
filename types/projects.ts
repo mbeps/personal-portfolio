@@ -242,7 +242,7 @@ const backendWebDevProjects: Project[] = [
       `,
     programmingLanguage: `TypeScript`,
     repoURL: `https://github.com/mbeps/clerk-demo`,
-    technologies: [`Next.JS, Clerk Auth`],
+    technologies: [`Next.JS`, `Clerk Auth`],
     type: "Backend Web Dev",
   },
   {
@@ -254,7 +254,7 @@ const backendWebDevProjects: Project[] = [
       `,
     programmingLanguage: `TypeScript`,
     repoURL: `https://github.com/mbeps/nextjs-auth0`,
-    technologies: [`Next.JS, Auth0`],
+    technologies: [`Next.JS`, `Auth0`],
     type: "Backend Web Dev",
   },
 ];
