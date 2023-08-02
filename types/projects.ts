@@ -313,6 +313,19 @@ const otherProjects: Project[] = [
     type: "Other",
   },
   {
+    name: `Searching & Sorting`,
+    slug: `searching-sorting-algorithms`,
+    description: `
+      Jupyter Notebook containing various searching and sorting algorithms.
+      Each algorithms is explained. 
+      All the algorithms are also compared to each other. 
+    `,
+    programmingLanguage: "Python",
+    type: "Other",
+    technologies: ["Matplotlib"],
+    repoURL: "https://github.com/mbeps/algorithms",
+  },
+  {
     name: `Automated Setup`,
     slug: "automated-setup",
     description: `
