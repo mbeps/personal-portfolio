@@ -160,8 +160,9 @@ const extraWebDevProjects: Project[] = [
     technologies: [
       `Next.JS`,
       "React",
+      "Shadcn UI",
       `Tailwind CSS`,
-      `NextAuth`,
+      `Clerk Auth`,
       `MySQL`,
       "tRPC",
       "Prisma",
@@ -230,6 +231,29 @@ const backendWebDevProjects: Project[] = [
     programmingLanguage: `Python`,
     repoURL: `https://github.com/mbeps/Django_Auth_Sys`,
     technologies: [`Django`],
+    type: "Backend Web Dev",
+  },
+  {
+    name: `Clerk Authentication`,
+    slug: "clerk-authentication",
+    description: `
+      A simple Next.JS app to experiment with the Clerk Authentication SDK. 
+      `,
+    programmingLanguage: `TypeScript`,
+    repoURL: `https://github.com/mbeps/clerk-demo`,
+    technologies: [`Next.JS, Clerk Auth`],
+    type: "Backend Web Dev",
+  },
+  {
+    name: `Auth0 Authentication`,
+    slug: "auth0-authentication",
+    description: `
+      A simple Next.JS app to experiment with the Auth0 Authentication SDK. 
+      This does not use the new Next.JS 13 app router as it is not supported as of the time of making this demo. 
+      `,
+    programmingLanguage: `TypeScript`,
+    repoURL: `https://github.com/mbeps/nextjs-auth0`,
+    technologies: [`Next.JS, Auth0`],
     type: "Backend Web Dev",
   },
 ];
