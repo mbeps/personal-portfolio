@@ -13,7 +13,7 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="min-h-[85vh] w-full flex flex-col justify-between items-center"
+      className="wrapper flex flex-col justify-between items-center"
     >
       <div
         className="
