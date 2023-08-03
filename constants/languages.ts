@@ -40,13 +40,13 @@ const languages: Language[] = [
   {
     language: "Python",
     skills: [
-      { skill: "Poetry", category: "Project Manager" },
       { skill: "Flask", category: "Backend Web Development" },
       { skill: "Django", category: "Backend Web Development" },
       { skill: "Numpy", category: "Machine Learning" },
       { skill: "Jupyter Notebooks", category: "Machine Learning" },
       { skill: "PyTest", category: "Testing" },
       { skill: "SQLAlchemy", category: "Object Relational Mapper" },
+      { skill: "Poetry", category: "Project Manager" },
     ],
     repositories: [
       {
@@ -83,6 +83,12 @@ const languages: Language[] = [
   },
   {
     language: "Shell",
+  },
+  {
+    language: "PHP",
+  },
+  {
+    language: "Prolog",
   },
 ];
 

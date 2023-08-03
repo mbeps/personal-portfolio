@@ -8,6 +8,8 @@ import LanguageModal from "../../Modal/LanguageModal";
 
 /**
  * Displays a list of languages that I know.
+ * Some of the tags can be clicked which will open a modal.
+ * This modal will display the skills and repositories for the language.
  */
 const LanguageSection: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,6 +22,12 @@ const LanguageSection: React.FC = () => {
     setIsModalOpen(false);
   };
 
+  /**
+   * Gets the list of skills for a language if it exists.
+   * Languages that do not have skills are not clickable.
+   * @param languageName (string): name of the language to get the skills for
+   * @returns (Skill[]): list of skills for the language (empty array if the language does not exist)
+   */
   const getSkillsByLanguage = (languageName: string): Skill[] => {
     const language = languages.find((lang) => lang.language === languageName);
     return language && language.skills ? language.skills : [];

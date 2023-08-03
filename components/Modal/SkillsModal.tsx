@@ -15,6 +15,7 @@ interface SkillsModalProps {
 /**
  * Displays a modal for the skills.
  * The modal displays the skills organized by category or by language.
+ * This modal displays skills from languages and technologies.
  *
  * @param languages (Language[]) The languages of the modal
  * @param isOpen (boolean) Whether the modal is open or not
