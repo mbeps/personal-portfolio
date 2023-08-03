@@ -32,7 +32,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   checked,
   onChange,
   label,
-  className, // Destructuring the new prop
+  className,
 }) => {
   const [hovered, setHovered] = useState(false);
 
@@ -54,6 +54,9 @@ const RadioButton: React.FC<RadioButtonProps> = ({
     className // Merge user-provided className
   );
 
+  // Add the font weight conditionally based on the checked state
+  const labelClassName = checked ? "font-bold" : "";
+
   return (
     <label
       className={combinedClassName}
@@ -69,7 +72,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
         onChange={onChange}
         className="form-radio text-red-500 dark:text-red-900 h-6 w-6 sr-only"
       />
-      <span className="ml-2 text-lg">{label}</span>
+      <span className={`ml-2 text-lg ${labelClassName}`}>{label}</span>
     </label>
   );
 };
