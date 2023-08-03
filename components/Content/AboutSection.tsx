@@ -216,6 +216,12 @@ const SkillSection: React.FC = () => {
 
   const allSkills: Skill[] = allLanguageSkills.concat(technologies);
 
+  // allSkills.sort((a, b) => {
+  //   const categoryA = a.category || "Other";
+  //   const categoryB = b.category || "Other";
+  //   return categoryA.localeCompare(categoryB);
+  // });
+
   const firstNSkills = (limit: number) => {
     const skillNames = Array.from(
       new Set(allSkills.map((skill) => skill.skill))
@@ -259,11 +265,7 @@ const SkillSection: React.FC = () => {
           <Tag key={idx}>{item}</Tag>
         ))}
         <Tag onClick={handleOpenModal}>...</Tag>
-        <SkillsModal
-          isOpen={isModalOpen}
-          onClose={handleCloseModal}
-          languages={languages}
-        />
+        <SkillsModal isOpen={isModalOpen} onClose={handleCloseModal} />
       </div>
     </>
   );

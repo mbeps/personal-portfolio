@@ -1,12 +1,12 @@
-import { Language, Skill } from "@/types/languages";
 import React from "react";
 import Tag from "../Atoms/Tag";
 import HeadingThree from "../Text/HeadingThree";
 import Dropdown from "../DropDown/DropDownMenu";
 import Modal from "./Modal";
+import { Skill, languages, Repository } from "@/types/languages";
+import { technologies } from "@/types/technologies";
 
 interface SkillsModalProps {
-  languages: Language[];
   isOpen?: boolean; // whether the modal is open or not
   onClose: () => void; // function to close the modal
 }
@@ -20,12 +20,8 @@ interface SkillsModalProps {
  * @param onClose (function) Function to close the modal
  * @returns (JSX.Element): modal component (stack of the project
  */
-const SkillsModal: React.FC<SkillsModalProps> = ({
-  languages,
-  isOpen,
-  onClose,
-}) => {
-  const [groupedBy, setGroupedBy] = React.useState("language");
+const SkillsModal: React.FC<SkillsModalProps> = ({ isOpen, onClose }) => {
+  const [groupedBy, setGroupedBy] = React.useState("category");
 
   /**
    * Allows grouping the skills by category or by language.
@@ -52,7 +48,9 @@ const SkillsModal: React.FC<SkillsModalProps> = ({
       return uniqueSkills;
     };
 
-    // If the skills are organized by language, we just need to return the skills
+    const allLanguageSkills = languages.flatMap((lang) => lang.skills || []);
+    const allSkills = allLanguageSkills.concat(technologies);
+
     if (groupedBy === "language") {
       organizedSkills = languages.reduce(
         (acc: Record<string, Skill[]>, lang) => {
@@ -61,33 +59,34 @@ const SkillsModal: React.FC<SkillsModalProps> = ({
           }
           return acc;
         },
-        {}
+        {} as Record<string, Skill[]>
       );
-      // If the skills are organized by category, we need to create an array of skills for each category
+      (organizedSkills as Record<string, Skill[]>)["Other"] =
+        removeDuplicates(technologies);
     } else if (groupedBy === "category") {
-      organizedSkills = languages.reduce(
-        (acc: Record<string, Skill[]>, lang) => {
-          if (lang.skills) {
-            lang.skills.forEach((skill) => {
-              const category = skill.category || "Other";
-              if (!acc[category]) {
-                acc[category] = [];
-              }
-              acc[category].push(skill);
-            });
-
-            // Remove duplicates for each category
-            Object.keys(acc).forEach((category) => {
-              acc[category] = removeDuplicates(acc[category]);
-            });
+      organizedSkills = allSkills.reduce(
+        (acc: Record<string, Skill[]>, skill) => {
+          const category = skill.category || "Other";
+          if (!acc[category]) {
+            acc[category] = [];
           }
+          acc[category].push(skill);
           return acc;
         },
-        {}
+        {} as Record<string, Skill[]>
+      );
+
+      // Remove duplicates for each category
+      Object.keys(organizedSkills as Record<string, Skill[]>).forEach(
+        (category) => {
+          (organizedSkills as Record<string, Skill[]>)[category] =
+            removeDuplicates(
+              (organizedSkills as Record<string, Skill[]>)[category]
+            );
+        }
       );
     } else {
       // groupedBy === "none"
-      const allSkills = languages.flatMap((lang) => lang.skills || []);
       organizedSkills = removeDuplicates(allSkills);
     }
 
@@ -109,7 +108,7 @@ const SkillsModal: React.FC<SkillsModalProps> = ({
         </div>
         <Dropdown
           selected={groupedBy}
-          options={["language", "category", "none"]}
+          options={["category", "language", "none"]}
           setSelected={setGroupedBy}
         />
       </div>
