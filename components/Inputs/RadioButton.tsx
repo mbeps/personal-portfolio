@@ -50,6 +50,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
       transition-colors duration-300 ease-in-out
       rounded-xl p-2 my-2 
       flex items-center cursor-pointer
+      hover:font-bold
     `,
     className // Merge user-provided className
   );
