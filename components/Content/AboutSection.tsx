@@ -2,13 +2,12 @@
 
 import Tag from "@/components/Atoms/Tag";
 
+import { Repository, Skill, languages } from "@/types/languages";
+import { technologies } from "@/types/technologies";
 import React, { useState } from "react";
 import LanguageModal from "../Modal/LanguageModal";
 import SkillsModal from "../Modal/SkillsModal";
-import TechnologiesModal from "../Modal/TechnologiesModal";
 import HeadingThree from "../Text/HeadingThree";
-import { Skill, languages, Repository } from "@/types/languages";
-import { technologies } from "@/types/technologies";
 
 /**
  * About section component.
@@ -253,7 +252,7 @@ const SkillSection: React.FC = () => {
   };
 
   const handleDisplaySkills = () => {
-    return firstNSkillsPerCategory(100);
+    return firstNSkillsPerCategory(3);
     return firstNSkills(100);
   };
 

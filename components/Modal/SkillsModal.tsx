@@ -1,10 +1,10 @@
+import { Skill, languages } from "@/types/languages";
+import { technologies } from "@/types/technologies";
 import React from "react";
 import Tag from "../Atoms/Tag";
-import HeadingThree from "../Text/HeadingThree";
 import Dropdown from "../DropDown/DropDownMenu";
+import HeadingThree from "../Text/HeadingThree";
 import Modal from "./Modal";
-import { Skill, languages, Repository } from "@/types/languages";
-import { technologies } from "@/types/technologies";
 
 interface SkillsModalProps {
   isOpen?: boolean; // whether the modal is open or not
@@ -96,7 +96,7 @@ const SkillsModal: React.FC<SkillsModalProps> = ({ isOpen, onClose }) => {
   const skills = groupSkills();
 
   return (
-    <Modal title="Language Skills" isOpen={isOpen} onClose={onClose}>
+    <Modal title="Skills" isOpen={isOpen} onClose={onClose}>
       <div className="flex mt-4">
         <div
           className="
