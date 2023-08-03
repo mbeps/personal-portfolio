@@ -1,4 +1,4 @@
-import { Skill } from "./languages";
+import { Skill } from "../types/languages";
 
 /**
  * Array of technologies.

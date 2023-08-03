@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import LanguageModal from "../../Modal/LanguageModal";
-import { Repository, Skill, languages } from "@/types/languages";
 import Tag from "@/components/Atoms/Tag";
 import HeadingThree from "@/components/Text/HeadingThree";
+import { languages } from "@/constants/languages";
+import { Repository } from "@/types/languages";
+import { Skill } from "@/types/skills";
+import React, { useState } from "react";
+import LanguageModal from "../../Modal/LanguageModal";
 
 /**
  * Displays a list of languages that I know.

@@ -1,8 +1,9 @@
 import Tag from "@/components/Atoms/Tag";
 import SkillsModal from "@/components/Modal/SkillsModal";
 import HeadingThree from "@/components/Text/HeadingThree";
-import { Skill, languages } from "@/types/languages";
-import { technologies } from "@/types/technologies";
+import { languages } from "@/constants/languages";
+import { technologies } from "@/constants/skills";
+import { Skill } from "@/types/skills";
 import { useState } from "react";
 
 /**
