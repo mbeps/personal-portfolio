@@ -42,6 +42,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
       transition-colors duration-300 ease-in-out
       rounded-xl p-2 my-2 
       flex items-center cursor-pointer
+      hover:font-bold
     `,
     className // Merge user-provided className
   );

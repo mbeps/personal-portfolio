@@ -71,7 +71,12 @@ export default function Navbar() {
         backdrop-blur-lg bg-opacity-80 dark:bg-opacity-80 
       `}
     >
-      <div className="justify-between md:items-center md:flex">
+      <div
+        className="
+        justify-between md:items-center md:flex 
+        mx-auto max-w-3xl px-4 sm:px-6 md:max-w-6xl
+      "
+      >
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
             <HomeButton />

@@ -3,6 +3,7 @@ import Markdown from "markdown-to-jsx";
 import matter from "gray-matter";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import getBlogMetadata from "@/actions/getBlogMetadata";
+import { notFound } from "next/navigation";
 
 /**
  * Gets the content of a blog from the file system.
@@ -13,9 +14,13 @@ import getBlogMetadata from "@/actions/getBlogMetadata";
 const getBlogContent = (slug: string) => {
   const folder = "blogs/";
   const file = `${folder}${slug}.md`;
-  const content = fs.readFileSync(file, "utf8");
-  const matterResult = matter(content);
-  return matterResult;
+  try {
+    const content = fs.readFileSync(file, "utf8");
+    const matterResult = matter(content);
+    return matterResult;
+  } catch (error) {
+    notFound();
+  }
 };
 
 /**
@@ -49,6 +54,7 @@ interface BlogPageProps {
 const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
   const slug = params.slug;
   const blog = getBlogContent(slug);
+
   return (
     <div>
       <div className="my-12 text-center">
