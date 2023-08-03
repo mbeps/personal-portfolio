@@ -72,14 +72,15 @@ const Dropdown: React.FC<DropdownProps> = ({
                   {({ active }) => (
                     <button
                       className={`
-                        ${
-                          active
-                            ? "bg-gray-200 dark:bg-red-950 font-bold group:hover:text-neutral-900 dark:group:hover:text-white"
-                            : "text-neutral-900 dark:text-neutral-100"
-                        } 
-                        group flex rounded-lg items-center ${width} px-2 py-2 text-base capitalize
-                        w-full
-                      `}
+                      ${option === selected ? "font-bold" : ""}
+                      ${
+                        active
+                          ? "bg-gray-200 dark:bg-red-950 group:hover:text-neutral-900 dark:group:hover:text-white"
+                          : "text-neutral-900 dark:text-neutral-100"
+                      } 
+                      group flex rounded-lg items-center ${width} px-2 py-2 text-base capitalize
+                      w-full hover:font-bold
+                    `}
                       onClick={() => setSelected(option)}
                     >
                       {option}
