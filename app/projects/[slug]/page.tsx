@@ -1,17 +1,19 @@
-import fs from "fs";
 import getProjectBySlug from "@/actions/getProjectBySlug";
 import Tag from "@/components/Atoms/Tag";
+import Gallery from "@/components/Gallery/Gallery";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import Gallery from "@/components/Gallery/Gallery";
-import Project, {
+import fs from "fs";
+
+import {
   backendWebDevProjects,
   extraWebDevProjects,
   javaAssignments,
   machineLearningProjects,
   otherProjects,
   webdevProjects,
-} from "@/types/projects";
+} from "@/constants/projects";
+import Project from "@/types/projects";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";

@@ -9,15 +9,17 @@ import { Popover } from "@/components/Popover/Popover";
 import ProjectItem from "@/components/ProjectItem/ProjectItem";
 import HeadingOne from "@/components/Text/HeadingOne";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import useDebounce from "@/hooks/useDebounce";
-import Project, {
+import {
   backendWebDevProjects,
   extraWebDevProjects,
   javaAssignments,
   machineLearningProjects,
   otherProjects,
   webdevProjects,
-} from "@/types/projects";
+} from "@/constants/projects";
+import useDebounce from "@/hooks/useDebounce";
+import Project from "@/types/projects";
+
 import Fuse from "fuse.js";
 import { ChangeEvent, useState } from "react";
 import { MdClear } from "react-icons/md";
