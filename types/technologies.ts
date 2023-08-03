@@ -1,64 +1,49 @@
-interface Technology {
-  name: string;
-  category?:
-    | "Version Control System"
-    | "Continuous Integration"
-    | "Database"
-    | "Containerization"
-    | "Web Development"
-    | "API"
-    | "Backend Web Development"
-    | "Frontend Web Development"
-    | "Web Socket"
-    | "Artificial Intelligence"
-    | "Other";
-}
+import { Skill } from "./languages";
 
 /**
  * Array of technologies.
  */
-const technologies: Technology[] = [
-  { name: "Git", category: "Version Control System" },
-  { name: "SVN", category: "Version Control System" },
+const technologies: Skill[] = [
+  { skill: "Git", category: "Version Control System" },
+  { skill: "SVN", category: "Version Control System" },
 
-  { name: "Firebase", category: "Backend Web Development" },
-  { name: "Supabase", category: "Backend Web Development" },
-  { name: "PocketBase", category: "Backend Web Development" },
-  { name: "Auth0", category: "Backend Web Development" },
-  { name: "Clerk Auth", category: "Backend Web Development" },
-  { name: "Stripe", category: "Backend Web Development" },
+  { skill: "Firebase", category: "Backend Web Development" },
+  { skill: "Supabase", category: "Backend Web Development" },
+  { skill: "PocketBase", category: "Backend Web Development" },
+  { skill: "Auth0", category: "Backend Web Development" },
+  { skill: "Clerk Auth", category: "Backend Web Development" },
+  { skill: "Stripe", category: "Backend Web Development" },
 
-  { name: "Tailwind CSS", category: "Frontend Web Development" },
-  { name: "Radix UI", category: "Frontend Web Development" },
-  { name: "Headless UI", category: "Frontend Web Development" },
-  { name: "Chakra UI", category: "Frontend Web Development" },
-  { name: "Next UI", category: "Frontend Web Development" },
-  { name: "Shadcn UI", category: "Frontend Web Development" },
-  { name: "HTML", category: "Frontend Web Development" },
-  { name: "CSS", category: "Frontend Web Development" },
+  { skill: "Tailwind CSS", category: "Frontend Web Development" },
+  { skill: "Radix UI", category: "Frontend Web Development" },
+  { skill: "Headless UI", category: "Frontend Web Development" },
+  { skill: "Chakra UI", category: "Frontend Web Development" },
+  { skill: "Next UI", category: "Frontend Web Development" },
+  { skill: "Shadcn UI", category: "Frontend Web Development" },
+  { skill: "HTML", category: "Frontend Web Development" },
+  { skill: "CSS", category: "Frontend Web Development" },
 
-  { name: "GitHub Actions", category: "Continuous Integration" },
-  { name: "Jenkins", category: "Continuous Integration" },
+  { skill: "GitHub Actions", category: "Continuous Integration" },
+  { skill: "Jenkins", category: "Continuous Integration" },
 
-  { name: "Docker", category: "Containerization" },
+  { skill: "Docker", category: "Containerization" },
 
-  { name: "REST", category: "API" },
-  { name: "GraphQL", category: "API" },
+  { skill: "REST", category: "API" },
+  { skill: "GraphQL", category: "API" },
 
-  { name: "PostgreSQL", category: "Database" },
-  { name: "MySQL", category: "Database" },
-  { name: "SQLite", category: "Database" },
-  { name: "MongoDB", category: "Database" },
-  { name: "Redis", category: "Database" },
+  { skill: "PostgreSQL", category: "Database" },
+  { skill: "MySQL", category: "Database" },
+  { skill: "SQLite", category: "Database" },
+  { skill: "MongoDB", category: "Database" },
+  { skill: "Redis", category: "Database" },
 
-  { name: "Socket.IO", category: "Web Socket" },
-  { name: "Pusher", category: "Web Socket" },
+  { skill: "Socket.IO", category: "Web Socket" },
+  { skill: "Pusher", category: "Web Socket" },
 
-  { name: "OpenAI", category: "Artificial Intelligence" },
-  { name: "Replicate AI", category: "Artificial Intelligence" },
+  { skill: "OpenAI", category: "Artificial Intelligence" },
+  { skill: "Replicate AI", category: "Artificial Intelligence" },
 
-  { name: "Vagrant", category: "Other" },
+  { skill: "Vagrant", category: "Other" },
 ];
 
-export type { Technology };
 export { technologies };

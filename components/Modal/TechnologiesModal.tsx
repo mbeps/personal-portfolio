@@ -1,14 +1,14 @@
 "use client";
 
-import { Technology } from "@/types/technologies";
 import React, { useState } from "react";
 import Tag from "../Atoms/Tag";
 import HeadingThree from "../Text/HeadingThree";
 import Dropdown from "../DropDown/DropDownMenu";
 import Modal from "./Modal";
+import { Skill } from "@/types/languages";
 
 interface TechnologiesModalProps {
-  technologies: Technology[];
+  technologies: Skill[];
   isOpen?: boolean; // whether the modal is open or not
   onClose: () => void; // function to close the modal
 }
@@ -16,7 +16,7 @@ interface TechnologiesModalProps {
 /**
  * Modal which displays technologies organized by category.
  *
- * @param technologies (Technology[]): Array of technologies
+ * @param technologies (Skill[]): Array of technologies
  * @param isOpen (boolean): whether the modal is open or not
  * @param onClose (function): function to close the modal
  * @returns (JSX.Element): modal component
@@ -34,14 +34,14 @@ const TechnologiesModal: React.FC<TechnologiesModalProps> = ({
    * User can choose to group by category or not.
    * If grouped by category, it returns an object with the categories as keys and the array of technologies as values.
    * If not grouped by category, it returns the array of technologies.
-   * @param technologies (Technology[]) The technologies to organize
+   * @param technologies (Skill[]) The technologies to organize
    */
-  const groupTechnologies = (): Record<string, Technology[]> | Technology[] => {
-    let organizedTechnologies: Record<string, Technology[]> | Technology[] = [];
+  const groupTechnologies = (): Record<string, Skill[]> | Skill[] => {
+    let organizedTechnologies: Record<string, Skill[]> | Skill[] = [];
 
     if (groupedBy === "category") {
       organizedTechnologies = technologies.reduce(
-        (acc: Record<string, Technology[]>, tech) => {
+        (acc: Record<string, Skill[]>, tech) => {
           const { category = "Other" } = tech;
           if (!acc[category]) {
             acc[category] = [];
@@ -74,19 +74,19 @@ const TechnologiesModal: React.FC<TechnologiesModalProps> = ({
       {groupedBy === "none" ? (
         <div className="mt-4 text-center md:text-left">
           <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-            {(technologies as Technology[]).map((tech, index) => (
-              <Tag key={index}>{tech.name}</Tag>
+            {(technologies as Skill[]).map((tech, index) => (
+              <Tag key={index}>{tech.skill}</Tag>
             ))}
           </div>
         </div>
       ) : (
-        Object.entries(groupTechnologies() as Record<string, Technology[]>).map(
+        Object.entries(groupTechnologies() as Record<string, Skill[]>).map(
           ([group, techs], index) => (
             <div key={index} className="mt-4 text-center md:text-left">
               <HeadingThree title={group} />
               <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
                 {techs.map((tech, index) => (
-                  <Tag key={index}>{tech.name}</Tag>
+                  <Tag key={index}>{tech.skill}</Tag>
                 ))}
               </div>
             </div>

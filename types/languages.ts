@@ -11,6 +11,16 @@ interface Skill {
     | "Testing"
     | "Project Manager"
     | "Machine Learning"
+    | "Version Control System"
+    | "Continuous Integration"
+    | "Database"
+    | "Containerization"
+    | "Web Development"
+    | "API"
+    | "Backend Web Development"
+    | "Frontend Web Development"
+    | "Web Socket"
+    | "Artificial Intelligence"
     | "Other";
 }
 

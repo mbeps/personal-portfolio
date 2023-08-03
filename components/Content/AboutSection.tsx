@@ -89,7 +89,6 @@ const AboutSection = () => {
           <div className="text-center md:w-1/2 md:text-left">
             <LanguageSection />
             <SkillSection />
-            <TechnologiesSection />
           </div>
         </div>
       </div>
@@ -98,31 +97,6 @@ const AboutSection = () => {
 };
 
 export default AboutSection;
-
-interface SectionProps {
-  title: string;
-  data: string[];
-}
-
-/**
- * Displays a list of items (skills, languages, technologies) with a title for the section.
- * Each section is separated by a heading.
- * Skills, languages and technologies are displayed as tags.
- *
- * @param title (string): title of the section
- * @param data (string[]): list of items to be displayed
- * @returns (JSX.Element): section displaying a list of items with a title
- */
-const Section: React.FC<SectionProps> = ({ title, data }) => (
-  <>
-    <HeadingThree title={title} />
-    <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-      {data.map((item, idx) => (
-        <Tag key={idx}>{item}</Tag>
-      ))}
-    </div>
-  </>
-);
 
 /**
  * Displays a list of languages that I know.
@@ -233,82 +207,48 @@ const SkillSection: React.FC = () => {
     setIsModalOpen(false);
   };
 
-  /**
-   * Creates a list of skills from the languages array (which has metadata).
-   * It does not include duplicate skills.
-   * It limits the number of skills per language to a configurable number.
-   * @param skill_limit_category (number): number of skills to be displayed per language
-   * @returns (string[]): list of all skills
-   */
-  const firstNSkillsPerCategory = (skill_limit_category: number) => {
-    let allSkills = languages.reduce((accumulator, language) => {
-      if (language.skills) {
-        // Get the first 'SKILL_LIMIT_PER_LANGUAGE' skills for each language
-        let limitedSkills = language.skills.slice(0, skill_limit_category); // Get the first 'SKILL_LIMIT_PER_LANGUAGE' skills for each language
-        return accumulator.concat(limitedSkills.map((skill) => skill.skill)); // Get all skills for each language
-      } else {
-        return accumulator; // If language does not have any skills, return accumulator
-      }
-    }, [] as string[]);
+  const allLanguageSkills: Skill[] = languages.reduce((acc, language) => {
+    if (language.skills) {
+      return acc.concat(language.skills);
+    }
+    return acc;
+  }, [] as Skill[]);
 
-    let uniqueSkills = Array.from(new Set(allSkills)); // Remove duplicate skills
-    return uniqueSkills; // Return all skills
+  const allSkills: Skill[] = allLanguageSkills.concat(technologies);
+
+  const firstNSkills = (limit: number) => {
+    const skillNames = Array.from(
+      new Set(allSkills.map((skill) => skill.skill))
+    ).slice(0, limit);
+    return skillNames;
   };
 
-  /**
-   * Creates a list of all skills from the languages array (which has metadata).
-   * It does not include duplicate skills.
-   * It limits the number of skills to a configurable number.
-   * @param skill_limit (number): number of skills to be displayed
-   * @returns (string[]): list of all skills
-   */
-  const firstNSkills = (skill_limit: number) => {
-    let allSkills = languages.reduce((accumulator, language) => {
-      if (language.skills) {
-        return accumulator.concat(language.skills.map((skill) => skill.skill)); // Get all skills for each language
-      } else {
-        return accumulator; // If language does not have any skills, return accumulator
-      }
-    }, [] as string[]);
+  const firstNSkillsPerCategory = (limitPerCategory: number) => {
+    // Categorize the skills
+    const categories: Record<string, Skill[]> = allSkills.reduce(
+      (acc, skill) => {
+        const category = skill.category || "Other";
+        if (!acc[category]) acc[category] = [];
+        acc[category].push(skill);
+        return acc;
+      },
+      {} as Record<string, Skill[]>
+    );
 
-    let uniqueSkills = Array.from(new Set(allSkills)); // Remove duplicate skills
-
-    // Return first 'SKILL_LIMIT' skills
-    return uniqueSkills.slice(0, skill_limit); // Get the first 'SKILL_LIMIT' skills
-  };
-
-  /**
-   * Creates a list of skills from the languages array (which has metadata).
-   * It does not include duplicate skills.
-   * It limits the number of skills per language to a configurable number.
-   * @param skill_limit (number): number of skills to be displayed per language (default: 3
-   * @returns (string[]): list of skills (first 'skill_limit' skills for each language
-   */
-  const firstNSkillsPerLanguage = (skill_limit: number) => {
-    let skillsByLanguage: { [key: string]: string[] } = {};
-
-    languages.forEach((language) => {
-      if (language.skills) {
-        // Get the first 'skill_limit' skills for each language
-        skillsByLanguage[language.language] = language.skills
-          .slice(0, skill_limit)
-          .map((skill) => skill.skill);
-      }
+    // Take the first 'limitPerCategory' skills from each category, extract skill names, and flatten
+    let skillNames: string[] = [];
+    Object.values(categories).forEach((categorySkills) => {
+      const names = categorySkills
+        .slice(0, limitPerCategory)
+        .map((skill) => skill.skill);
+      skillNames = Array.from(new Set(skillNames.concat(names))); // Merge with existing names, removing duplicates
     });
-
-    // Flatten the array and remove duplicates
-    let allSkills = Object.values(skillsByLanguage).flat();
-    let uniqueSkills = Array.from(new Set(allSkills));
-    return uniqueSkills;
+    return skillNames;
   };
 
-  /**
-   * Displays a list of skills.
-   */
   const handleDisplaySkills = () => {
-    return firstNSkillsPerLanguage(5);
-    return firstNSkills(11);
-    return firstNSkillsPerCategory(3);
+    return firstNSkillsPerCategory(100);
+    return firstNSkills(100);
   };
 
   return (
@@ -323,92 +263,6 @@ const SkillSection: React.FC = () => {
           isOpen={isModalOpen}
           onClose={handleCloseModal}
           languages={languages}
-        />
-      </div>
-    </>
-  );
-};
-
-/**
- * Displays a list of technologies that I have used.
- * @returns (JSX.Element): technologies section (list of technologies)
- */
-const TechnologiesSection: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-
-  /**
-   * Function to display a limited number of technology names for each category.
-   * It does not include duplicate technologies.
-   * It limits the number of technologies per category to a configurable number.
-   * @param tech_limit_category (number): number of technologies to be displayed per category
-   * @returns (string[]): list of N technology names for each category
-   */
-  const firstNTechPerCategory = (tech_limit_category: number) => {
-    let techByCategory: { [key: string]: string[] } = {};
-
-    // Organize technologies by category
-    technologies.forEach((tech) => {
-      if (tech.category) {
-        // If tech has a category
-        if (!techByCategory[tech.category]) techByCategory[tech.category] = []; // If category does not exist, create it
-        techByCategory[tech.category].push(tech.name); // Add tech to category
-      }
-    });
-
-    // Get first 'TECH_LIMIT' tech for each category
-    for (let category in techByCategory) {
-      // For each category
-      techByCategory[category] = Array.from(
-        // Remove duplicate tech
-        new Set(techByCategory[category]) // Remove duplicate tech
-      ).slice(0, tech_limit_category); // Get the first 'TECH_LIMIT' tech
-    }
-
-    // Flatten the array and return
-    return Object.values(techByCategory).flat();
-  };
-
-  /**
-   * Function to display a limited number of technology names from all categories.
-   * It does not include duplicate technologies.
-   * @returns (string[]): list of N technology names from all categories
-   */
-  const firstNTech = (tech_limit: number) => {
-    let allTech = technologies.map((tech) => tech.name);
-    let uniqueTech = Array.from(new Set(allTech)); // Remove duplicate tech
-
-    // Return first 'TECH_LIMIT' tech
-    return uniqueTech.slice(0, tech_limit); // Get the first 'TECH_LIMIT' tech
-  };
-
-  /**
-   * Function to handle the display of technologies.
-   */
-  const handleDisplayTech = () => {
-    return firstNTech(12);
-    return firstNTechPerCategory(2);
-  };
-
-  return (
-    <>
-      <HeadingThree title="Technologies" />
-      <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-        {handleDisplayTech().map((item, idx) => (
-          <Tag key={idx}>{item}</Tag>
-        ))}
-        <Tag onClick={handleOpenModal}>...</Tag>
-        <TechnologiesModal
-          isOpen={isModalOpen}
-          onClose={handleCloseModal}
-          technologies={technologies}
         />
       </div>
     </>
