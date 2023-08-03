@@ -1,0 +1,101 @@
+import React, { useState } from "react";
+import LanguageModal from "../../Modal/LanguageModal";
+import { Repository, Skill, languages } from "@/types/languages";
+import Tag from "@/components/Atoms/Tag";
+import HeadingThree from "@/components/Text/HeadingThree";
+
+/**
+ * Displays a list of languages that I know.
+ */
+const LanguageSection: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const getSkillsByLanguage = (languageName: string): Skill[] => {
+    const language = languages.find((lang) => lang.language === languageName);
+    return language && language.skills ? language.skills : [];
+  };
+
+  return (
+    <>
+      <HeadingThree title="Languages" />
+      <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
+        {languages.map((languageData, idx) => (
+          <LanguageTagWithModal
+            key={idx}
+            language={languageData.language}
+            skills={getSkillsByLanguage(languageData.language)}
+            repositories={languageData.repositories || []}
+            handleOpenModal={handleOpenModal}
+            handleCloseModal={handleCloseModal}
+            isModalOpen={isModalOpen}
+          />
+        ))}
+      </div>
+    </>
+  );
+};
+
+export default LanguageSection;
+
+interface LanguageTagWithModalProps {
+  language: string;
+  skills: Skill[];
+  repositories: Repository[];
+  handleOpenModal: () => void;
+  handleCloseModal: () => void;
+  isModalOpen: boolean;
+}
+
+/**
+ * Displays a tag for each language.
+ * If the language has skills or repositories, a modal is displayed when the tag is clicked.
+ * The modal displays the skills and repositories for the language.
+ * If the language does not have any skills or repositories, the modal cannot be opened.
+ *
+ * @param language (string): name of the language
+ * @param skills (Skill[]): list of skills for the language
+ * @param repositories (Repository[]): list of repositories for the language
+ * @returns (JSX.Element): language tag with modal (stack of the language
+ */
+const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
+  language,
+  skills,
+  repositories,
+}) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const shouldOpenModal = skills.length > 0 || repositories.length > 0;
+
+  return (
+    <>
+      <Tag onClick={shouldOpenModal ? handleOpenModal : undefined}>
+        {language}
+      </Tag>
+      {shouldOpenModal && (
+        <LanguageModal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          language={language}
+          skills={skills}
+          repositories={repositories}
+        />
+      )}
+    </>
+  );
+};
