@@ -12,7 +12,7 @@ import HeadingTwo from "../Text/HeadingTwo";
  */
 const ProjectsSection = () => {
   return (
-    <section id="projects" className="min-h-[85vh] ">
+    <section id="projects" className="wrapper ">
       <div className="my-12 pb-12 md:pt-16 ">
         <HeadingTwo title="Projects" />
 

@@ -9,7 +9,7 @@ import ProjectsSection from "@/components/Content/ProjectSection";
 export default function Home() {
   return (
     <main>
-      <div className="flex flex-col space-y-16">
+      <div className="flex flex-col space-y-8 md:space-y-16">
         <HeroSection />
         <AboutSection />
         <ProjectsSection />

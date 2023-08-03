@@ -63,7 +63,8 @@ export const Popover: React.FC<MyPopoverProps> = ({
             >
               <HeadlessPopover.Panel
                 className={`
-                  absolute w-full min-w-[320px] md:w-[900px] max-h-[50vh] overflow-auto
+                  absolute w-full min-w-[320px] md:w-[850px] max-h-[50vh] overflow-auto
+                  backdrop-blur-lg bg-opacity-80 dark:bg-opacity-80
                   z-10 p-4 mt-2 rounded-xl shadow-xl 
                   bg-neutral-100 dark:bg-stone-950
                   scrollbar-hide
