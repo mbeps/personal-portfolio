@@ -46,6 +46,9 @@ const Checkbox: React.FC<CheckboxProps> = ({
     className // Merge user-provided className
   );
 
+  // Add the font weight conditionally based on the checked state
+  const labelClassName = checked ? "font-bold" : "";
+
   return (
     <label
       htmlFor={id}
@@ -60,7 +63,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
         onChange={onChange}
         className="form-checkbox text-red-500 dark:text-red-900 h-6 w-6 sr-only"
       />
-      <span className="ml-2 text-lg">{label}</span>
+      <span className={`ml-2 text-lg ${labelClassName}`}>{label}</span>
     </label>
   );
 };
