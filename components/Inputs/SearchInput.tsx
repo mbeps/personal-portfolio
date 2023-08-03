@@ -3,6 +3,7 @@
 import React, { InputHTMLAttributes } from "react";
 import { BsSearch } from "react-icons/bs";
 import { twMerge } from "tailwind-merge";
+import { MdClear } from "react-icons/md";
 
 interface SearchInputProps extends InputHTMLAttributes<HTMLInputElement> {
   searchTerm: string;
@@ -42,6 +43,10 @@ const SearchInput: React.FC<SearchInputProps> = ({
     className // Merge user-provided className
   );
 
+  const handleClearSearch = () => {
+    setSearchTerm("");
+  };
+
   return (
     <div className="relative w-full md:flex-grow md:order-last">
       <input
@@ -53,6 +58,12 @@ const SearchInput: React.FC<SearchInputProps> = ({
         {...props}
       />
       <BsSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-700 dark:text-neutral-200" />
+      {searchTerm && (
+        <MdClear
+          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-700 dark:text-neutral-200 cursor-pointer hover:text-red-500 dark:hover:text-red-800 transition-all ease-out duration-300 hover:scale-125"
+          onClick={handleClearSearch}
+        />
+      )}
     </div>
   );
 };
