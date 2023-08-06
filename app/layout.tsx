@@ -47,8 +47,8 @@ export default function RootLayout({
           <div className="pt-24" />
           <div className="mx-auto max-w-3xl px-4 sm:px-6 md:max-w-6xl animate-fadeIn animation-delay-2">
             {children}
+            <Footer />
           </div>
-          <Footer />
         </ThemeProvider>
       </body>
     </html>
