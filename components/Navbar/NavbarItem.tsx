@@ -57,17 +57,28 @@ const NavbarItem: React.FC<NavbarItemProps> = ({
       ${active ? "font-bold" : "font-normal"} 
       text-neutral-900 dark:text-neutral-100 text-center
       dark:hover:text-neutral-200 
-      rounded-xl 
       px-4 py-3 m-2 w-full md:w-24 
       cursor-pointer 
       transition-all 
       hover:font-bold duration-300 
-      hover:bg-gray-300 dark:hover:bg-red-950 
+      relative group
+      overflow-hidden
     `;
 
   return (
     <button onClick={handleClick} className={navbarItemStyle}>
       {children}
+      <span
+        className="
+          w-full h-[3px]  
+          rounded-full
+          absolute 
+          bottom-[2px]    
+          left-0 inline-block 
+          bg-red-500 dark:bg-red-900 
+          -translate-x-[100%] group-hover:translate-x-0 transition-transform 
+          duration-300"
+      />
     </button>
   );
 };

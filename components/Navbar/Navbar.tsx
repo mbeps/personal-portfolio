@@ -1,10 +1,10 @@
 "use client"; // this is a client component
+import { useNavbarStore } from "@/atoms/navbarStore";
 import { usePathname, useRouter } from "next/navigation";
-import React, { createContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoMdClose, IoMdMenu } from "react-icons/io";
 import NavbarItem from "./NavbarItem";
 import ThemeToggle from "./ThemeToggle";
-import { useNavbarStore } from "@/atoms/navbarStore";
 
 interface NavItem {
   label: string;
@@ -68,13 +68,13 @@ export default function Navbar() {
         ${scrolled ? "shadow-lg " : ""} dark:shadow-neutral-800 
         bg-white dark:bg-stone-900 
         transition-all duration-700 ease-in-out
-        backdrop-blur-lg bg-opacity-80 dark:bg-opacity-80 
+        backdrop-blur-lg bg-opacity-70 dark:bg-opacity-80 
       `}
     >
       <div
         className="
         justify-between md:items-center md:flex 
-        mx-auto max-w-3xl px-4 sm:px-6 md:max-w-6xl
+        mx-auto max-w-3xl md:max-w-6xl
       "
       >
         <div>

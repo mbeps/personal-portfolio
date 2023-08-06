@@ -19,7 +19,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightSquare, BsGithub } from "react-icons/bs";
-import { IoReaderOutline } from "react-icons/io5";
+import { RxReader } from "react-icons/rx";
+import Button from "@/components/Atoms/Button";
 
 /**
  * Gets the images for a project from the file system.
@@ -159,40 +160,68 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
             <HeadingThree title="Links" />
             {/* Links */}
             <div className="mt-6 flex flex-col md:flex-row justify-center md:justify-start items-center">
-              <div className="flex flex-row gap-5 w-full md:w-1/2 justify-center md:justify-start">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full  justify-center md:justify-start">
                 {/* GitHub Repo */}
                 {project?.repoURL && (
-                  <Link
-                    href={project?.repoURL}
-                    target="_blank"
-                    title="Repository"
-                  >
-                    <BsGithub
-                      size={30}
-                      className="hover:-translate-y-1 transition-transform cursor-pointer"
-                    />
+                  <Link href={project?.repoURL} target="_blank">
+                    <Button
+                      variant={"ghost"}
+                      className="
+                      text-neutral-900 dark:text-white 
+                      hover:text-neutral-900 
+                      hover:bg-neutral-300
+                      w-full
+                  "
+                    >
+                      <div className="flex flex-row justify-center md:justify-start gap-4 w-full">
+                        <BsGithub size={30} />
+                        <p className="mt-1 md:text-left text-center">
+                          Repository
+                        </p>
+                      </div>
+                    </Button>
                   </Link>
                 )}
                 {/* Website */}
                 {project?.siteURL && (
-                  <Link href={project?.siteURL} target="_blank" title="Website">
-                    <BsArrowUpRightSquare
-                      size={30}
-                      className="hover:-translate-y-1 transition-transform cursor-pointer"
-                    />
+                  <Link href={project?.siteURL} target="_blank">
+                    <Button
+                      variant={"ghost"}
+                      className="
+                      text-neutral-900 dark:text-white 
+                      hover:text-neutral-900 
+                      hover:bg-neutral-300
+                      w-full
+                    "
+                    >
+                      <div className="flex flex-row justify-center md:justify-start gap-4 w-full">
+                        <BsArrowUpRightSquare size={30} />
+                        <p className="mt-1 md:text-left text-center">
+                          Deployment
+                        </p>
+                      </div>
+                    </Button>
                   </Link>
                 )}
                 {/* Blog */}
                 {project?.articleURL && (
-                  <Link
-                    href={project?.articleURL}
-                    target="_blank"
-                    title="Report"
-                  >
-                    <IoReaderOutline
-                      size={34}
-                      className="-translate-y-0.5 hover:-translate-y-1.5 transition-transform cursor-pointer"
-                    />
+                  <Link href={project?.articleURL} target="_blank">
+                    <Button
+                      variant={"ghost"}
+                      className="
+                      text-neutral-900 dark:text-white 
+                      hover:text-neutral-900 
+                      hover:bg-neutral-300
+                      w-full
+                    "
+                    >
+                      <div className="flex flex-row justify-center md:justify-start gap-4 w-full">
+                        <RxReader size={30} />
+                        <p className="mt-1 md:text-left text-center">
+                          Reflective Blog
+                        </p>
+                      </div>
+                    </Button>
                   </Link>
                 )}
               </div>
