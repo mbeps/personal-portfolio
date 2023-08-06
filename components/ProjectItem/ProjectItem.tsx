@@ -70,7 +70,7 @@ const ProjectItem: React.FC<Project> = ({
   };
 
   return (
-    <SlideUp offset="-300px 0px -300px 0px">
+    <SlideUp offset="-150px 0px -150px 0px">
       <div className="bg-neutral-100 dark:bg-stone-950 p-4 rounded-xl sm:bg-white sm:dark:bg-stone-900 sm:p-0 transition-colors duration-700 ">
         <div className="flex flex-col animate-slideUpCubiBezier animation-delay-2 md:flex-row md:space-x-12">
           {/* Project Cover */}
