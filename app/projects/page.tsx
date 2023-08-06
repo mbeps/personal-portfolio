@@ -309,6 +309,7 @@ const ProjectsPage = () => {
             <SearchInput
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}
+              placeholder="Search project name or metadata"
             />
           </div>
         </div>
