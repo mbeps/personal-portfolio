@@ -8,6 +8,7 @@ import { MdClear } from "react-icons/md";
 interface SearchInputProps extends InputHTMLAttributes<HTMLInputElement> {
   searchTerm: string;
   setSearchTerm: (value: string) => void;
+  placeholder?: string;
   className?: string;
 }
 
@@ -23,6 +24,7 @@ interface SearchInputProps extends InputHTMLAttributes<HTMLInputElement> {
 const SearchInput: React.FC<SearchInputProps> = ({
   searchTerm,
   setSearchTerm,
+  placeholder = "Search",
   className, // Destructuring the new prop
   ...props
 }) => {
@@ -53,7 +55,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        placeholder="Search"
+        placeholder={placeholder}
         className={combinedClassName}
         {...props}
       />
