@@ -7,7 +7,7 @@ import React from "react";
 type ButtonVariant = "filled" | "outlined" | "ghost" | "gradient";
 
 interface ButtonProps {
-  onClick: string | (() => void);
+  onClick?: string | (() => void);
   variant: ButtonVariant;
   children: React.ReactNode;
   className?: string;
