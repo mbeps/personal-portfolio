@@ -82,7 +82,7 @@ const SkillSection: React.FC = () => {
   };
 
   const handleDisplaySkills = () => {
-    return firstNSkillsPerCategory(4).slice(0, 25);
+    return firstNSkillsPerCategory(2).slice(0, 18);
     return firstNSkills(100);
   };
 
