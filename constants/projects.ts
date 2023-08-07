@@ -49,6 +49,7 @@ const webdevProjects: Project[] = [
       "Prisma",
       "Pusher",
       "Cloudinary",
+      "REST API",
       "Tailwind CSS",
       "Headless UI",
       "Zustand",
@@ -100,6 +101,7 @@ const webdevProjects: Project[] = [
       "Clerk Auth",
       "Prisma",
       "Stripe",
+      "REST API",
       "Open AI",
       "Replicate AI",
     ],
@@ -131,7 +133,7 @@ const extraWebDevProjects: Project[] = [
     name: `Noodle`,
     slug: "noodle",
     description: `
-      ing my second year of university, my group and I initiated a project on an open-source learning platform which served as my introduction to full-stack development. 
+      During my second year of university, my group and I initiated a project on an open-source learning platform which served as my introduction to full-stack development. 
       This app aids students in managing tasks, assignments, exams, and storing notes and resources.
       `,
     imageURL: `/projects/noodle/cover.png`,
@@ -254,7 +256,7 @@ const machineLearningProjects: Project[] = [
       `,
     repoURL: `https://github.com/mbeps/Machine-Learning-Assignment-1`,
     programmingLanguage: `Python`,
-    technologies: [`NumPy`, `Matplotlib`],
+    technologies: [`NumPy`, `Scikit Learn`, `Matplotlib`],
     type: "Machine Learning",
   },
   {
@@ -267,7 +269,7 @@ const machineLearningProjects: Project[] = [
     `,
     repoURL: `https://github.com/mbeps/Machine-Learning-Assignment-2`,
     programmingLanguage: `Python`,
-    technologies: [`NumPy`, `Matplotlib`],
+    technologies: [`NumPy`, `Scikit Learn`, `Matplotlib`],
     type: "Machine Learning",
   },
   {
@@ -280,7 +282,7 @@ const machineLearningProjects: Project[] = [
       `,
     repoURL: `https://github.com/mbeps/Machine-Learning-Assignment-3`,
     programmingLanguage: `Python`,
-    technologies: [`NumPy`, `Matplotlib`],
+    technologies: [`NumPy`, `Scikit Learn`, `Matplotlib`],
     type: "Machine Learning",
   },
   {
@@ -292,7 +294,7 @@ const machineLearningProjects: Project[] = [
       kernels, neural networks, support vector machines, scikit-learn pipelines, and cross-conformal predictors.`,
     repoURL: `https://github.com/mbeps/Machine-Learning-Labs-Questions`,
     programmingLanguage: `Python`,
-    technologies: [`NumPy`, `Matplotlib`],
+    technologies: [`NumPy`, `Scikit Learn`, `Matplotlib`],
     type: "Machine Learning",
   },
 ];
