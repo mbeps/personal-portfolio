@@ -38,51 +38,46 @@ const AboutSection = () => {
             <h1 className="text-center text-2xl font-bold mb-6 mt-6 md:text-left">
               Get to know me!
             </h1>
+
             <p>
-              Hello there! I&#39;m Maruf, a{" "}
-              <span className="font-bold">software engineer</span> fueled by{" "}
-              <span className="font-bold">
-                curiosity, innovation, and an insatiable desire to explore the
-                depths of technology
-              </span>
-              . Currently, I am pursuing my BS in Computer Science at Royal
-              Holloway University, London.
+              Greetings! I&apos;m Maruf, a{" "}
+              <span className="font-bold">software engineer</span> from Royal
+              Holloway University, London. My journey is driven intensely by{" "}
+              <span className="font-bold">curiosity</span> and an unyielding
+              passion for innovative technology.
             </p>
-            <br />
             <p>
-              Software engineering for me is akin to conducting an orchestra - a
-              <span className="font-bold"> symphony of codes</span> that come
-              together to create something remarkable. From developing APIs to
-              building intricate front-end architectures, I&#39;ve dabbled in
-              all parts of the{" "}
+              To me, coding isn&apos;t just about writing lines. It&apos;s about
+              conducting a <span className="font-bold">symphony</span> where
+              each note contributes to a harmonious tech marvel.
+            </p>
+            <p>
+              My experience spans the{" "}
               <span className="font-bold">software development lifecycle</span>.
-            </p>
-            <br />
-            <p>
-              My technical interest extends beyond full-stack development to{" "}
+              Yet, I see every day as a new opportunity to learn. With a
+              penchant for{" "}
+              <span className="font-bold">constantly adapting</span>, pushing
+              boundaries, and{" "}
+              <span className="font-bold">challenging the norms</span>, my
+              explorations have led me into the depths of{" "}
               <span className="font-bold">Machine Learning</span> and{" "}
-              <span className="font-bold">Mathematics</span>. To further my
-              knowledge, I&#39;m currently delving into advanced Machine
-              Learning techniques.
+              <span className="font-bold">Mathematics</span>. Presently,
+              I&apos;m deepening my understanding of advanced ML techniques.
             </p>
-            <br />
             <p>
-              Additionally, my passion for{" "}
-              <span className="font-bold">efficiency</span> and streamlining
-              operations has drawn me to{" "}
-              <span className="font-bold">DevOps</span>. I&#39;m currently
-              engaging with the principles of continuous integration, testing,
-              deployment, and monitoring through Udemy.
+              Additionally, my commitment to{" "}
+              <span className="font-bold">problem-solving</span> and{" "}
+              <span className="font-bold">creativity</span> has introduced me to
+              the world of <span className="font-bold">DevOps</span> via Udemy.
+              Here, I&apos;m amalgamating innovation with efficiency to refine
+              and automate tech processes.
             </p>
-            <br />
             <p>
-              When I step away from the computer, I engage in a multitude of
-              hobbies. From football and badminton to immersing myself in
-              science-based literature and traveling, I believe in{" "}
-              <span className="font-bold">
-                seizing the day and living life to the fullest
-              </span>
-              .
+              Outside the realm of code, my passions include football,
+              badminton, science literature, and travel. Every day is an
+              adventure, and I believe in{" "}
+              <span className="font-bold">seizing every moment</span> with{" "}
+              <span className="font-bold">unbridled enthusiasm</span>.
             </p>
           </div>
 
