@@ -18,4 +18,5 @@ export default interface Project {
     | "Machine Learning"
     | "Java Assignments"
     | "Other";
+  tags?: string[];
 }

@@ -78,7 +78,7 @@ const ProjectsPage = () => {
    * These are the same ones from the Project type.
    */
   const options = {
-    keys: ["name", "programmingLanguage", "type", "technologies"], // Only search these properties
+    keys: ["name", "programmingLanguage", "tags", "technologies"], // Only search these properties
     threshold: 0.3, // Lower threshold means more results
   };
 

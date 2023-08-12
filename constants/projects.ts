@@ -28,6 +28,24 @@ const webdevProjects: Project[] = [
       "Docker",
     ],
     type: "Web Dev",
+    tags: [
+      "Web Development",
+      "Front End",
+      "Back End",
+      "Full Stack",
+      "Google Cloud Platform",
+      "GCP",
+      "React State Management",
+      "Component Library",
+      "Containerization",
+      "Database",
+      "Non Relational Database",
+      "Social Media",
+      "Community",
+      "Discussion",
+      "Authentication",
+      "Account Management",
+    ],
   },
   {
     name: `Ringmaster Messaging`,
@@ -56,6 +74,19 @@ const webdevProjects: Project[] = [
       "Docker",
     ],
     type: "Web Dev",
+    tags: [
+      "Web Development",
+      "Front End",
+      "Back End",
+      "Full Stack",
+      "State Management",
+      "Real Time",
+      "Account Management",
+      "Authentication",
+      "Messaging",
+      "Database",
+      "Non Relational Database",
+    ],
   },
   {
     name: `Drumroll Music`,
@@ -78,6 +109,20 @@ const webdevProjects: Project[] = [
       "Zustand",
     ],
     type: "Web Dev",
+    tags: [
+      "Web Development",
+      "Front End",
+      "Back End",
+      "Full Stack",
+      "State Management",
+      "Database",
+      "Relational Database",
+      "Music",
+      "Streaming",
+      "Account Management",
+      "Authentication",
+      "Uploads",
+    ],
   },
   {
     name: `Magician AI`,
@@ -106,6 +151,22 @@ const webdevProjects: Project[] = [
       "Replicate AI",
     ],
     type: "Web Dev",
+    tags: [
+      "Web Development",
+      "Front End",
+      "Back End",
+      "Full Stack",
+      "State Management",
+      "Database",
+      "Relational Database",
+      "AI",
+      "Artificial Intelligence",
+      "Stripe",
+      "Payment",
+      "Account Management",
+      "Authentication",
+      "Web Hooks",
+    ],
   },
 ];
 
@@ -128,6 +189,18 @@ const extraWebDevProjects: Project[] = [
     programmingLanguage: `TypeScript`,
     technologies: [`Next.JS`, `React`, `Supabase`, "PostgreSQL", `Next UI`],
     type: "Extra Web Dev",
+    tags: [
+      "Web Development",
+      "Front End",
+      "Back End",
+      "Full Stack",
+      "Database",
+      "Relational Database",
+      "Articles",
+      "Blogs",
+      "Authentication",
+      "Account Management",
+    ],
   },
   {
     name: `Noodle`,
@@ -154,6 +227,25 @@ const extraWebDevProjects: Project[] = [
       `Jest`,
     ],
     type: "Extra Web Dev",
+    tags: [
+      "Web Development",
+      "Front End",
+      "Back End",
+      "Full Stack",
+      "State Management",
+      "Database",
+      "Relational Database",
+      "Authentication",
+      "Account Management",
+      "Task Management",
+      "Notes",
+      "Resources",
+      "Exams",
+      "Assignments",
+      "Education",
+      "Group Project",
+      "Team Project",
+    ],
   },
   {
     name: `ConvoGPT`,
@@ -176,6 +268,18 @@ const extraWebDevProjects: Project[] = [
       "Open AI",
     ],
     type: "Extra Web Dev",
+    tags: [
+      "Web Development",
+      "Front End",
+      "Back End",
+      "Full Stack",
+      "State Management",
+      "Database",
+      "Relational Database",
+      "Vector",
+      "AI",
+      "Artificial Intelligence",
+    ],
   },
 ];
 
@@ -191,6 +295,17 @@ const backendWebDevProjects: Project[] = [
     programmingLanguage: `Python`,
     technologies: [`Flask`, "MySQL", "SQLAlchemy", "REST API"],
     type: "Backend Web Dev",
+    tags: [
+      "Web Development",
+      "Back End",
+      "Database",
+      "Relational Database",
+      "Social Media",
+      "Community",
+      "Discussion",
+      "Authentication",
+      "Account Management",
+    ],
   },
   {
     name: `Flask JWT Authentication`,
@@ -203,6 +318,14 @@ const backendWebDevProjects: Project[] = [
     programmingLanguage: `Python`,
     technologies: [`Flask`, "JWT"],
     type: "Backend Web Dev",
+    tags: [
+      "Web Development",
+      "Back End",
+      "Authentication",
+      "Account Management",
+      "Learning",
+      "Demo",
+    ],
   },
   {
     name: `Django Authentication`,
@@ -215,6 +338,14 @@ const backendWebDevProjects: Project[] = [
     repoURL: `https://github.com/mbeps/Django_Auth_Sys`,
     technologies: [`Django`],
     type: "Backend Web Dev",
+    tags: [
+      "Web Development",
+      "Back End",
+      "Authentication",
+      "Account Management",
+      "Learning",
+      "Demo",
+    ],
   },
   {
     name: `Clerk Authentication`,
@@ -226,6 +357,14 @@ const backendWebDevProjects: Project[] = [
     repoURL: `https://github.com/mbeps/clerk-demo`,
     technologies: [`Next.JS`, `Clerk Auth`],
     type: "Backend Web Dev",
+    tags: [
+      "Web Development",
+      "Back End",
+      "Authentication",
+      "Account Management",
+      "Learning",
+      "Demo",
+    ],
   },
   {
     name: `Auth0 Authentication`,
@@ -238,6 +377,14 @@ const backendWebDevProjects: Project[] = [
     repoURL: `https://github.com/mbeps/nextjs-auth0`,
     technologies: [`Next.JS`, `Auth0`],
     type: "Backend Web Dev",
+    tags: [
+      "Web Development",
+      "Back End",
+      "Authentication",
+      "Account Management",
+      "Learning",
+      "Demo",
+    ],
   },
 ];
 
@@ -258,6 +405,7 @@ const machineLearningProjects: Project[] = [
     programmingLanguage: `Python`,
     technologies: [`NumPy`, `Scikit Learn`, `Matplotlib`],
     type: "Machine Learning",
+    tags: ["Machine Learning", "Assignment", "University"],
   },
   {
     name: `Assignment 2`,
@@ -271,6 +419,7 @@ const machineLearningProjects: Project[] = [
     programmingLanguage: `Python`,
     technologies: [`NumPy`, `Scikit Learn`, `Matplotlib`],
     type: "Machine Learning",
+    tags: ["Machine Learning", "Assignment", "University"],
   },
   {
     name: `Assignment 3`,
@@ -284,6 +433,7 @@ const machineLearningProjects: Project[] = [
     programmingLanguage: `Python`,
     technologies: [`NumPy`, `Scikit Learn`, `Matplotlib`],
     type: "Machine Learning",
+    tags: ["Machine Learning", "Assignment", "University"],
   },
   {
     name: `Lab Questions`,
@@ -296,6 +446,7 @@ const machineLearningProjects: Project[] = [
     programmingLanguage: `Python`,
     technologies: [`NumPy`, `Scikit Learn`, `Matplotlib`],
     type: "Machine Learning",
+    tags: ["Machine Learning", "Assignment", "University"],
   },
 ];
 
@@ -318,6 +469,15 @@ const otherProjects: Project[] = [
     programmingLanguage: `Python`,
     technologies: [`SimpleGUI`],
     type: "Other",
+    tags: [
+      "Game Development",
+      "Assignment",
+      "University",
+      "Physics",
+      "GUI",
+      "Team Project",
+      "Group Project",
+    ],
   },
   {
     name: `Searching & Sorting`,
@@ -331,6 +491,7 @@ const otherProjects: Project[] = [
     type: "Other",
     technologies: ["Matplotlib"],
     repoURL: "https://github.com/mbeps/algorithms",
+    tags: ["Algorithms", "Searching", "Sorting", "Jupyter Notebook"],
   },
   {
     name: `Automated Setup`,
@@ -342,6 +503,7 @@ const otherProjects: Project[] = [
     repoURL: `https://github.com/mbeps/AutomatedSetup`,
     programmingLanguage: `Shell`,
     type: "Other",
+    tags: ["Linux", "Fedora", "Automation", "Scripting"],
   },
 ];
 
@@ -362,6 +524,13 @@ const javaAssignments: Project[] = [
     programmingLanguage: `Java`,
     technologies: [`Maven`, "JUnit"],
     type: "Java Assignments",
+    tags: [
+      "Assignment",
+      "University",
+      "Software Engineering",
+      "Test Driven Development",
+      "TDD",
+    ],
   },
   {
     name: `Botanic-Garden-Planner`,
@@ -372,6 +541,7 @@ const javaAssignments: Project[] = [
     repoURL: `https://github.com/mbeps/Botanic-Garden-Planner`,
     programmingLanguage: `Java`,
     type: "Java Assignments",
+    tags: ["Assignment", "University"],
   },
   {
     name: "Track & Trace",
@@ -381,6 +551,7 @@ const javaAssignments: Project[] = [
     repoURL: `https://github.com/mbeps/Track_and_Trace`,
     programmingLanguage: `Java`,
     type: "Java Assignments",
+    tags: ["Assignment", "University"],
   },
   {
     name: `Hollomon`,
@@ -389,6 +560,7 @@ const javaAssignments: Project[] = [
     repoURL: `https://github.com/mbeps/Hollomon`,
     programmingLanguage: `Java`,
     type: "Java Assignments",
+    tags: ["Assignment", "University"],
   },
   {
     name: `Database Mini Project`,
@@ -398,6 +570,7 @@ const javaAssignments: Project[] = [
     programmingLanguage: `Java`,
     technologies: [`PostgreSQL`],
     type: "Java Assignments",
+    tags: ["Assignment", "University"],
   },
 ];
 
