@@ -37,8 +37,29 @@ const SkillSection: React.FC = () => {
    * List of all skills.
    * This includes skills from languages and technologies.
    */
-  const allSkills: Skill[] = allLanguageSkills.concat(technologies);
+  // const allSkills: Skill[] = allLanguageSkills.concat(technologies);
 
+  /**
+   * This is a list of categories that should be ignored.
+   * Any skills that are in these categories will not be displayed.
+   * This categories are from the Skill type.
+   */
+  const ignoredCategories: string[] = [
+    "Project Manager",
+    "Object Relational Mapper",
+    "Project Manager",
+    "Version Control System",
+    "Web Socket",
+    "Other",
+  ];
+
+  /**
+   * List of all skills.
+   * This includes skills from languages and technologies.
+   */
+  const allSkills: Skill[] = allLanguageSkills
+    .concat(technologies)
+    .filter((skill) => !ignoredCategories.includes(skill.category || "Other"));
   /**
    * Gets the first 'limit' skills.
    * These are then displayed as tags.
@@ -82,7 +103,7 @@ const SkillSection: React.FC = () => {
   };
 
   const handleDisplaySkills = () => {
-    return firstNSkillsPerCategory(2).slice(0, 18);
+    return firstNSkillsPerCategory(2).slice(0, 16);
     return firstNSkills(100);
   };
 
@@ -93,7 +114,13 @@ const SkillSection: React.FC = () => {
         {handleDisplaySkills().map((item, idx) => (
           <Tag key={idx}>{item}</Tag>
         ))}
-        <Tag onClick={handleOpenModal}>...</Tag>
+        <div className="relative group">
+          <Tag onClick={handleOpenModal}>...</Tag>
+          {/* Pinging dot */}
+          <span className="absolute top-1 right-4 transform translate-x-[50%] -translate-y-[50%] ">
+            <span className="animate-ping  absolute inline-flex h-3 w-3 rounded-full bg-red-400 opacity-75"></span>
+          </span>
+        </div>
         <SkillsModal isOpen={isModalOpen} onClose={handleCloseModal} />
       </div>
     </>
