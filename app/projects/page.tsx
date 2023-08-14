@@ -39,6 +39,7 @@ const ProjectsPage = () => {
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
   const [isProjectsModalOpen, setIsProjectsModalOpen] = useState(false);
   const [selectedType, setSelectedType] = useState("All");
+  const [selectedTechnology, setSelectedTechnology] = useState("All");
   const [selectedLanguage, setSelectedLanguage] = useState("All");
   const [hasArticle, setHasArticle] = useState(false);
   const [hasSite, setHasSite] = useState(false);
@@ -146,6 +147,15 @@ const ProjectsPage = () => {
       .filter((value, index, self) => self.indexOf(value) === index),
   ];
 
+  const technologies: string[] = [
+    "All",
+    ...Array.from(
+      new Set(
+        allProjects.flatMap((project: Project) => project.technologies || [])
+      )
+    ),
+  ];
+
   /**
    * Filters the projects based on the the filter options.
    * Both language and type can be filtered.
@@ -156,6 +166,9 @@ const ProjectsPage = () => {
       (selectedType === "All" || project.type === selectedType) &&
       (selectedLanguage === "All" ||
         project.programmingLanguage === selectedLanguage) &&
+      (selectedTechnology === "All" ||
+        (project.technologies &&
+          project.technologies.includes(selectedTechnology))) &&
       (!hasArticle || project.articleURL) &&
       (!hasSite || project.siteURL)
   );
@@ -206,6 +219,7 @@ const ProjectsPage = () => {
   const resetFilters = () => {
     setSelectedType("All");
     setSelectedLanguage("All");
+    setSelectedTechnology("All");
     setHasArticle(false);
     setHasSite(false);
     setSearchTerm("");
@@ -214,6 +228,7 @@ const ProjectsPage = () => {
   const areFiltersApplied =
     selectedType !== "All" ||
     selectedLanguage !== "All" ||
+    selectedTechnology !== "All" ||
     hasArticle ||
     hasSite ||
     searchTerm !== "";
@@ -320,79 +335,113 @@ const ProjectsPage = () => {
           title={"Filter"}
           className="sm:max-w-3xl w-full sm:w-full"
         >
+          <div
+            className="
+            flex flex-row 
+            justify-end my-4  
+"
+          >
+            <div className="flex flex-row w-full md:w-1/2 space-x-2 ">
+              <Button
+                variant="outlined"
+                onClick={() => {
+                  if (handleCloseModals) handleCloseModals();
+                  resetFilters();
+                }}
+                className="py-1.5 px-6 w-full"
+              >
+                Cancel
+              </Button>
+              <Button
+                variant="filled"
+                onClick={handleCloseModals}
+                disabled={!areFiltersApplied}
+                className="py-1.5 px-6 w-full"
+              >
+                Apply
+              </Button>
+            </div>
+          </div>
           {/* Filter Options */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-            <div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+            <div className="px-8 md:px-0">
               <label htmlFor="type-dropdown" className="font-semibold text-lg">
                 Category
               </label>
-              {projectTypes.map((type) => (
-                <RadioButton
-                  key={type}
-                  id={type}
-                  name="projectType"
-                  value={type}
-                  checked={selectedType === type}
-                  onChange={handleTypeChange}
-                  label={type}
-                />
-              ))}
+              <div className="h-64 overflow-y-auto space-y-2">
+                {projectTypes.map((type) => (
+                  <RadioButton
+                    key={type}
+                    id={type}
+                    name="projectType"
+                    value={type}
+                    checked={selectedType === type}
+                    onChange={handleTypeChange}
+                    label={type}
+                  />
+                ))}
+              </div>
             </div>
-            <div>
+            <div className="px-8 md:px-0">
               <label
                 htmlFor="language-dropdown"
                 className="font-semibold text-lg"
               >
                 Language
               </label>
-              {programmingLanguages.map((language) => (
-                <RadioButton
-                  key={language}
-                  id={language}
-                  name="programmingLanguage"
-                  value={language}
-                  checked={selectedLanguage === language}
-                  onChange={handleLanguageChange}
-                  label={language}
-                />
-              ))}
+              <div className="h-64 overflow-y-auto space-y-2">
+                {programmingLanguages.map((language) => (
+                  <RadioButton
+                    key={language}
+                    id={language}
+                    name="programmingLanguage"
+                    value={language}
+                    checked={selectedLanguage === language}
+                    onChange={handleLanguageChange}
+                    label={language}
+                  />
+                ))}
+              </div>
             </div>
-            <div>
+
+            <div className="px-8 md:px-0">
+              <label
+                htmlFor="language-dropdown"
+                className="font-semibold text-lg mb-2 block"
+              >
+                Technologies
+              </label>
+              <div className="h-64 overflow-y-auto space-y-2">
+                {technologies.map((technology) => (
+                  <RadioButton
+                    key={technology}
+                    id={technology}
+                    name="technology"
+                    value={technology}
+                    checked={selectedTechnology === technology}
+                    onChange={(e) => setSelectedTechnology(e.target.value)}
+                    label={technology}
+                  />
+                ))}
+              </div>
+            </div>
+            <div className="px-8 md:px-0">
               <label className="font-semibold text-lg">Other</label>
-              <Checkbox
-                id="hasArticle"
-                checked={hasArticle}
-                onChange={toggleHasArticle}
-                label="With reflective blogs"
-              />
-              <Checkbox
-                id="hasSite"
-                checked={hasSite}
-                onChange={toggleHasSite}
-                label="Deployed"
-              />
+              <div className="h-64 overflow-y-auto space-y-2">
+                <Checkbox
+                  id="hasArticle"
+                  checked={hasArticle}
+                  onChange={toggleHasArticle}
+                  label="With reflective blogs"
+                />
+                <Checkbox
+                  id="hasSite"
+                  checked={hasSite}
+                  onChange={toggleHasSite}
+                  label="Deployed"
+                />
+              </div>
             </div>
-          </div>
-          {/* Footer */}
-          <div className="flex flex-row justify-center mt-4 space-x-2">
-            <Button
-              variant="outlined"
-              onClick={() => {
-                if (handleCloseModals) handleCloseModals();
-                resetFilters();
-              }}
-              className="py-1.5 px-6"
-            >
-              Cancel
-            </Button>
-            <Button
-              variant="filled"
-              onClick={handleCloseModals}
-              disabled={!areFiltersApplied}
-              className="py-1.5 px-6"
-            >
-              Apply
-            </Button>
           </div>
         </Modal>
 
