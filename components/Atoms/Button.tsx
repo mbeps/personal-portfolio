@@ -84,8 +84,8 @@ const Button = ({
   const disabledStyle = `
     cursor-not-allowed 
     opacity-50
-    text-neutral-400
-    bg-neutral-200 dark:bg-neutral-700`;
+    text-neutral-500 dark:text-neutral-300
+    bg-red-400 dark:bg-red-950`;
 
   const buttonStyle = twMerge(
     baseStyle,
