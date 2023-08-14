@@ -4,8 +4,7 @@ import Button from "@/components/Atoms/Button";
 import Checkbox from "@/components/Inputs/Checkbox";
 import RadioButton from "@/components/Inputs/RadioButton";
 import SearchInput from "@/components/Inputs/SearchInput";
-import MoreProjectsModal from "@/components/Modal/MoreProjectsModal";
-import { Popover } from "@/components/Popover/Popover";
+import Modal from "@/components/Modal/Modal";
 import ProjectItem from "@/components/ProjectItem/ProjectItem";
 import HeadingOne from "@/components/Text/HeadingOne";
 import HeadingTwo from "@/components/Text/HeadingTwo";
@@ -22,6 +21,7 @@ import Project from "@/types/projects";
 
 import Fuse from "fuse.js";
 import { ChangeEvent, useState } from "react";
+import { BsFilterLeft } from "react-icons/bs";
 import { MdClear } from "react-icons/md";
 
 /**
@@ -36,27 +36,35 @@ import { MdClear } from "react-icons/md";
  * @returns (JSX.Element): Projects page
  */
 const ProjectsPage = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+  const [isProjectsModalOpen, setIsProjectsModalOpen] = useState(false);
   const [selectedType, setSelectedType] = useState("All");
   const [selectedLanguage, setSelectedLanguage] = useState("All");
   const [hasArticle, setHasArticle] = useState(false);
   const [hasSite, setHasSite] = useState(false);
-  const [hasImages, setHasImages] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
   /**
-   * Opens the modal to display more projects.
+   * Opens the modal to filter the projects.
    */
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
+  const handleOpenFilterModal = () => {
+    setIsFilterModalOpen(true);
   };
 
   /**
-   * Closes the modal to display more projects.
+   * Opens the modal to display more projects.
    */
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
+  const handleOpenProjectsModal = () => {
+    setIsProjectsModalOpen(true);
+  };
+
+  /**
+   * Closes the modals.
+   * These modals are for filtering and displaying more projects.
+   */
+  const handleCloseModals = () => {
+    setIsFilterModalOpen(false);
   };
 
   /**
@@ -200,7 +208,6 @@ const ProjectsPage = () => {
     setSelectedLanguage("All");
     setHasArticle(false);
     setHasSite(false);
-    setHasImages(false);
     setSearchTerm("");
   };
 
@@ -219,65 +226,31 @@ const ProjectsPage = () => {
         <div className="flex flex-col-reverse md:flex-row items-center w-full mt-12 p-2 gap-4">
           {/* Buttons */}
           <div className="flex flex-row md:flex-1 gap-2 w-full">
-            {/* Clear Button */}
-            <Popover title={"Filter"} className="w-full">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-                <div>
-                  <label
-                    htmlFor="type-dropdown"
-                    className="font-semibold text-lg"
-                  >
-                    Category
-                  </label>
-                  {projectTypes.map((type) => (
-                    <RadioButton
-                      key={type}
-                      id={type}
-                      name="projectType"
-                      value={type}
-                      checked={selectedType === type}
-                      onChange={handleTypeChange}
-                      label={type}
-                    />
-                  ))}
-                </div>
-                <div>
-                  <label
-                    htmlFor="language-dropdown"
-                    className="font-semibold text-lg"
-                  >
-                    Language
-                  </label>
-                  {programmingLanguages.map((language) => (
-                    <RadioButton
-                      key={language}
-                      id={language}
-                      name="programmingLanguage"
-                      value={language}
-                      checked={selectedLanguage === language}
-                      onChange={handleLanguageChange}
-                      label={language}
-                    />
-                  ))}
-                </div>
-                <div>
-                  <label className="font-semibold text-lg">Filter</label>
-                  <Checkbox
-                    id="hasArticle"
-                    checked={hasArticle}
-                    onChange={toggleHasArticle}
-                    label="Project with reflective blogs"
-                  />
-                  <Checkbox
-                    id="hasSite"
-                    checked={hasSite}
-                    onChange={toggleHasSite}
-                    label="Deployed projects"
-                  />
-                </div>
-              </div>
-            </Popover>
             {/* Filter Button */}
+            <Button
+              variant="outlined"
+              onClick={handleOpenFilterModal}
+              className={`
+                px-4 py-2 w-full
+                text-base font-medium text-neutral-700 dark:text-neutral-200 capitalize hover:text-neutral-700 dark:hover:text-neutral-200
+                rounded-xl
+                shadow-md hover:shadow-lg focus:shadow-lg
+                bg-neutral-100 dark:bg-neutral-800 
+                hover:bg-neutral-100 dark:hover:bg-neutral-800
+                border-2 border-transparent dark:border-transparent
+                hover:border-red-500 dark:hover:border-red-800
+                transition-all duration-500 ease-in-out
+              `}
+            >
+              <div className="flex items-center space-x-2">
+                <BsFilterLeft
+                  fontSize={24}
+                  className="text-neutral-700 dark:text-neutral-200"
+                />
+                <span>Filter</span>
+              </div>
+            </Button>
+            {/* Clear Button */}
             <Button
               variant="outlined"
               onClick={resetFilters}
@@ -335,12 +308,175 @@ const ProjectsPage = () => {
         </div>
 
         <div className="flex justify-center mt-10">
-          <Button variant="outlined" onClick={handleOpenModal}>
+          <Button variant="outlined" onClick={handleOpenProjectsModal}>
             View More Projects
           </Button>
         </div>
 
-        <MoreProjectsModal isOpen={isModalOpen} onClose={handleCloseModal} />
+        {/* Filter Modal */}
+        <Modal
+          isOpen={isFilterModalOpen}
+          onClose={handleCloseModals}
+          title={"Filter"}
+          className="sm:max-w-3xl w-full sm:w-full"
+        >
+          {/* Filter Options */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+            <div>
+              <label htmlFor="type-dropdown" className="font-semibold text-lg">
+                Category
+              </label>
+              {projectTypes.map((type) => (
+                <RadioButton
+                  key={type}
+                  id={type}
+                  name="projectType"
+                  value={type}
+                  checked={selectedType === type}
+                  onChange={handleTypeChange}
+                  label={type}
+                />
+              ))}
+            </div>
+            <div>
+              <label
+                htmlFor="language-dropdown"
+                className="font-semibold text-lg"
+              >
+                Language
+              </label>
+              {programmingLanguages.map((language) => (
+                <RadioButton
+                  key={language}
+                  id={language}
+                  name="programmingLanguage"
+                  value={language}
+                  checked={selectedLanguage === language}
+                  onChange={handleLanguageChange}
+                  label={language}
+                />
+              ))}
+            </div>
+            <div>
+              <label className="font-semibold text-lg">Other</label>
+              <Checkbox
+                id="hasArticle"
+                checked={hasArticle}
+                onChange={toggleHasArticle}
+                label="With reflective blogs"
+              />
+              <Checkbox
+                id="hasSite"
+                checked={hasSite}
+                onChange={toggleHasSite}
+                label="Deployed"
+              />
+            </div>
+          </div>
+          {/* Footer */}
+          <div className="flex flex-row justify-center mt-4 space-x-2">
+            <Button
+              variant="outlined"
+              onClick={() => {
+                if (handleCloseModals) handleCloseModals();
+                resetFilters();
+              }}
+              className="py-1.5 px-6"
+            >
+              Cancel
+            </Button>
+            <Button
+              variant="filled"
+              onClick={handleCloseModals}
+              disabled={!areFiltersApplied}
+              className="py-1.5 px-6"
+            >
+              Apply
+            </Button>
+          </div>
+        </Modal>
+
+        {/* More Projects Modal */}
+        <Modal
+          title="More Projects"
+          isOpen={isProjectsModalOpen}
+          onClose={() => setIsProjectsModalOpen(false)}
+        >
+          <p className="mt-5 text-lg text-center">
+            These are links to other collections of projects:
+          </p>
+          <div className="flex flex-wrap flex-col justify-start z-10 mt-5 space-y-2">
+            <Button
+              onClick="https://github.com/stars/mbeps/lists/leetcode"
+              variant="ghost"
+            >
+              LeetCode Projects
+            </Button>
+            <Button
+              onClick="https://github.com/stars/mbeps/lists/university"
+              variant="ghost"
+            >
+              University Projects
+            </Button>
+          </div>
+
+          <div className="border-b border-neutral-300 dark:border-neutral-700 mt-3" />
+
+          <p className="mt-5 text-lg text-center">
+            These are links to projects built using specific languages:
+          </p>
+          <div className="flex flex-wrap flex-col justify-start z-10 mt-5 space-y-2">
+            <Button
+              onClick="https://github.com/mbeps?tab=repositories&q=&type=&language=python&sort="
+              variant="ghost"
+            >
+              Python Projects
+            </Button>
+            <Button
+              onClick="https://github.com/mbeps?tab=repositories&q=&type=&language=jupyter+notebook&sort="
+              variant="ghost"
+            >
+              Jupyter Notebooks Projects
+            </Button>
+            <Button
+              onClick="https://github.com/mbeps?tab=repositories&q=&type=&language=java&sort="
+              variant="ghost"
+            >
+              Java Projects
+            </Button>
+            <Button
+              onClick="https://github.com/mbeps?tab=repositories&q=&type=&language=jupyter+notebook&sort="
+              variant="ghost"
+            >
+              TypeScript Projects
+            </Button>
+          </div>
+
+          <div className="border-b border-neutral-300 dark:border-neutral-700 mt-3" />
+
+          <p className="mt-5 text-lg text-center">
+            Bellow is the link to view all the repositories:
+          </p>
+          <div className="flex flex-wrap flex-col justify-start z-10 mt-5 space-y-2">
+            <Button
+              onClick="https://github.com/mbeps?tab=repositories"
+              variant="ghost"
+            >
+              GitHub Repositories
+            </Button>
+          </div>
+
+          <div className="border-b border-neutral-300 dark:border-neutral-700 mt-3" />
+
+          <p className="mt-5 text-lg text-center">
+            Bellow is the link to view the games I created using GameMaker:
+          </p>
+          <div className="flex flex-wrap flex-col justify-start z-10 mt-5 space-y-2">
+            <Button onClick="https://bepary-games.itch.io/" variant="ghost">
+              Itch.io Profile
+            </Button>
+          </div>
+        </Modal>
       </div>
     </section>
   );
