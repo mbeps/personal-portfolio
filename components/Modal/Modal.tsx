@@ -4,12 +4,14 @@ import React, { Fragment, useEffect, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { IoClose } from "react-icons/io5";
 import HeadingTwo from "../Text/HeadingTwo";
+import { twMerge } from "tailwind-merge";
 
 interface ModalProps {
-  isOpen?: boolean; // whether the modal is open or not
-  onClose: () => void; // function to close the modal
-  children: React.ReactNode; // children of the modal (the body)
+  isOpen?: boolean;
+  onClose: () => void;
+  children: React.ReactNode;
   title: string;
+  className?: string;
 }
 
 /**
@@ -21,7 +23,29 @@ interface ModalProps {
  * @param children (React.ReactNode) The body of the modal
  * @returns (JSX.Element): base modal component
  */
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, title }) => {
+const Modal: React.FC<ModalProps> = ({
+  isOpen,
+  onClose,
+  children,
+  title,
+  className,
+}) => {
+  const defaultDialogPanelClasses = `
+    transform 
+    overflow-hidden 
+    rounded-xl 
+    bg-white dark:bg-stone-900
+    text-black dark:text-white
+    shadow-2xl
+    transition-all duration-500 ease-in-out
+    w-full sm:w-full sm:max-w-lg
+    max-h-[70vh] min-h-[70vh]
+    overflow-y-auto 
+    scrollbar-hide
+    sm:my-8 
+    sm:p-0
+  `;
+
   return (
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-50 " onClose={onClose}>
@@ -67,23 +91,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, title }) => {
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
               <Dialog.Panel
-                className="
-                  transform 
-                  overflow-hidden 
-                  rounded-xl 
-                  bg-white dark:bg-stone-900
-                  text-black dark:text-white
-                  shadow-2xl
-                  transition-all duration-500 ease-in-out
-                  w-full
-                  max-h-[70vh] min-h-[70vh]
-                  overflow-y-auto
-                  scrollbar-hide
-                  sm:my-8 
-                  sm:w-full 
-                  sm:max-w-lg 
-                  sm:p-0
-                "
+                className={twMerge(defaultDialogPanelClasses, className)}
               >
                 {/* Title and Close Button */}
                 <div
@@ -113,6 +121,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, title }) => {
                     <span className="sr-only">Close</span>
                     <IoClose className="h-7 w-7" aria-hidden="true" />
                   </button>
+                  {/* Assuming HeadingTwo is a known component */}
                   <HeadingTwo title={title} />
                 </div>
                 {/* Content */}
