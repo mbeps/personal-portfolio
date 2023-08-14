@@ -338,7 +338,7 @@ const ProjectsPage = () => {
           <div
             className="
             flex flex-row 
-            justify-end my-4  
+            justify-end mb-4 -mt-2  
 "
           >
             <div className="flex flex-row w-full md:w-1/2 space-x-2 ">
