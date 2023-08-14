@@ -427,7 +427,7 @@ const ProjectsPage = () => {
             </div>
             <div className="px-8 md:px-0">
               <label className="font-semibold text-lg">Other</label>
-              <div className="h-64 overflow-y-auto space-y-2">
+              <div className="h-64 overflow-y-auto space-y-2 mt-2">
                 <Checkbox
                   id="hasArticle"
                   checked={hasArticle}
