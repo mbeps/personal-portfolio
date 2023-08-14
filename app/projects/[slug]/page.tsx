@@ -21,6 +21,8 @@ import React from "react";
 import { BsArrowUpRightSquare, BsGithub } from "react-icons/bs";
 import { RxReader } from "react-icons/rx";
 import Button from "@/components/Atoms/Button";
+import Markdown from "markdown-to-jsx";
+import matter from "gray-matter";
 
 /**
  * Gets the images for a project from the file system.
@@ -38,6 +40,26 @@ const getProjectImages = (slug: string): string[] => {
   } catch (error) {
     console.log(`Error reading directory ${folder}:`, error);
     return [];
+  }
+};
+
+/**
+ * Gets the features for a project from the file system.
+ * This is then used to display the features of this project.
+ * @param slug (string): the slug of the project
+ * @returns (matter.GrayMatterFile<string> | null): the features for the project
+ */
+const getProjectFeatures = (
+  slug: string
+): matter.GrayMatterFile<string> | null => {
+  const file = `public/projects/${slug}/features.md`;
+  try {
+    const content = fs.readFileSync(file, "utf8");
+    const matterResult = matter(content);
+    return matterResult;
+  } catch (error) {
+    console.log(`Error reading markdown file ${file}:`, error);
+    return null;
   }
 };
 
@@ -108,6 +130,8 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   if (gallery) {
     gallery = gallery.map((image) => `/projects/${slug}/${image}`);
   }
+
+  const features = getProjectFeatures(slug);
 
   // redirect to not found page is the project is not valid
   if (!project) {
@@ -248,6 +272,12 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
           )}
         </div>
       </div>
+      <HeadingTwo title="Features" />
+      {features && (
+        <article className="prose lg:prose-xl dark:prose-invert prose-img:rounded-lg max-w-none">
+          <Markdown>{features.content}</Markdown>
+        </article>
+      )}
     </div>
   );
 };

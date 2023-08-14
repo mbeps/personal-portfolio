@@ -1,0 +1,6 @@
+- Power ups increase player speed for limited time.
+- Time limit (can be unlimited).
+- Gravity between objects. 
+- Display scores.
+- Mass is ejected from player when moving using arrow keys. 
+- Enemy is split after a set time to make the game play more fair. 
