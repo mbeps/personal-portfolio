@@ -12,14 +12,10 @@ const ThemeToggle: React.FC = () => {
   const { resolvedTheme, setTheme } = useTheme();
   const [currentTheme, setCurrentTheme] = useState<string>();
 
-  // Checks the current theme and sets it to the current theme.
   useEffect(() => {
     setCurrentTheme(resolvedTheme);
   }, [resolvedTheme]);
 
-  /**
-   * Toggle the theme (dark or light).
-   */
   const handleThemeChange = () => {
     if (currentTheme === "dark") {
       setTheme("light");
@@ -28,26 +24,35 @@ const ThemeToggle: React.FC = () => {
     }
   };
 
+  const baseButtonClass =
+    "group p-2 rounded-full transition-colors duration-1000";
+  const darkButtonClass = "bg-black hover:bg-white";
+  const lightButtonClass = "bg-white hover:bg-black";
+
+  const baseIconClass = "transition-colors duration-700";
+  const darkIconClass = "text-white group-hover:text-black";
+  const lightIconClass = "text-black group-hover:text-white";
+
   return (
     <>
       {currentTheme === "dark" ? (
         <button
           onClick={handleThemeChange}
-          className="group bg-black p-2 rounded-xl hover:bg-white transition-colors duration-1000"
+          className={`${baseButtonClass} ${darkButtonClass}`}
         >
           <RiSunLine
             size={25}
-            className="text-white group-hover:text-black transition-colors duration-700"
+            className={`${baseIconClass} ${darkIconClass}`}
           />
         </button>
       ) : (
         <button
           onClick={handleThemeChange}
-          className="group bg-white p-2 rounded-xl hover:bg-black transition-colors duration-1000"
+          className={`${baseButtonClass} ${lightButtonClass}`}
         >
           <RiMoonFill
             size={25}
-            className="text-black group-hover:text-white transition-colors duration-700"
+            className={`${baseIconClass} ${lightIconClass}`}
           />
         </button>
       )}
