@@ -478,6 +478,7 @@ const otherProjects: Project[] = [
       "Team Project",
       "Group Project",
     ],
+    articleURL: `/blogs/project-osmos-game`,
   },
   {
     name: `Searching & Sorting`,
