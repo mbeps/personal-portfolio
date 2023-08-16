@@ -9,7 +9,7 @@ import matter from "gray-matter";
  * @returns {BlogMetadata[]} An array of blog metadata.
  */
 const getBlogMetadata = (): BlogMetadata[] => {
-  const folder = "blogs/";
+  const folder = "public/blogs/";
   const files = fs.readdirSync(folder);
   const markdownBlogs = files.filter((file) => file.endsWith(".md"));
 

@@ -12,7 +12,7 @@ import { notFound } from "next/navigation";
  * @returns (matter.GrayMatterFile<string>): the blog content
  */
 const getBlogContent = (slug: string) => {
-  const folder = "blogs/";
+  const folder = "public/blogs/";
   const file = `${folder}${slug}.md`;
   try {
     const content = fs.readFileSync(file, "utf8");
