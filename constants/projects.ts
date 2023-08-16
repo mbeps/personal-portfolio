@@ -27,7 +27,7 @@ const webdevProjects: Project[] = [
       `Recoil`,
       "Docker",
     ],
-    type: "Full-Stack Web Development",
+    type: "Full-Stack Web Dev",
     tags: [
       "Web Development",
       "Front End",
@@ -73,7 +73,7 @@ const webdevProjects: Project[] = [
       "Zustand",
       "Docker",
     ],
-    type: "Full-Stack Web Development",
+    type: "Full-Stack Web Dev",
     tags: [
       "Web Development",
       "Front End",
@@ -108,7 +108,7 @@ const webdevProjects: Project[] = [
       `Radix UI`,
       "Zustand",
     ],
-    type: "Full-Stack Web Development",
+    type: "Full-Stack Web Dev",
     tags: [
       "Web Development",
       "Front End",
@@ -150,7 +150,7 @@ const webdevProjects: Project[] = [
       "Open AI",
       "Replicate AI",
     ],
-    type: "Full-Stack Web Development",
+    type: "Full-Stack Web Dev",
     tags: [
       "Web Development",
       "Front End",
@@ -188,7 +188,7 @@ const extraWebDevProjects: Project[] = [
     repoURL: `https://github.com/mbeps/sideshow-articles`,
     programmingLanguage: `TypeScript`,
     technologies: [`Next.JS`, `React`, `Supabase`, "PostgreSQL", `Next UI`],
-    type: "Full-Stack Web Development",
+    type: "Full-Stack Web Dev",
     tags: [
       "Web Development",
       "Front End",
@@ -226,7 +226,7 @@ const extraWebDevProjects: Project[] = [
       `NX`,
       `Jest`,
     ],
-    type: "Full-Stack Web Development",
+    type: "Full-Stack Web Dev",
     tags: [
       "Web Development",
       "Front End",
@@ -267,7 +267,7 @@ const extraWebDevProjects: Project[] = [
       "PostgreSQL",
       "Open AI",
     ],
-    type: "Full-Stack Web Development",
+    type: "Full-Stack Web Dev",
     tags: [
       "Web Development",
       "Front End",
@@ -294,7 +294,7 @@ const backendWebDevProjects: Project[] = [
     repoURL: `https://github.com/mbeps/Forum-Discussion-Flask-Backend`,
     programmingLanguage: `Python`,
     technologies: [`Flask`, "MySQL", "SQLAlchemy", "REST API"],
-    type: "Back-End Web Development",
+    type: "Back-End Web Dev",
     tags: [
       "Web Development",
       "Back End",
@@ -317,7 +317,7 @@ const backendWebDevProjects: Project[] = [
     repoURL: `https://github.com/mbeps/Flask_JWT_Auth`,
     programmingLanguage: `Python`,
     technologies: [`Flask`, "JWT"],
-    type: "Back-End Web Development",
+    type: "Back-End Web Dev",
     tags: [
       "Web Development",
       "Back End",
@@ -337,7 +337,7 @@ const backendWebDevProjects: Project[] = [
     programmingLanguage: `Python`,
     repoURL: `https://github.com/mbeps/Django_Auth_Sys`,
     technologies: [`Django`],
-    type: "Back-End Web Development",
+    type: "Back-End Web Dev",
     tags: [
       "Web Development",
       "Back End",
@@ -356,7 +356,7 @@ const backendWebDevProjects: Project[] = [
     programmingLanguage: `TypeScript`,
     repoURL: `https://github.com/mbeps/clerk-demo`,
     technologies: [`Next.JS`, `Clerk Auth`],
-    type: "Back-End Web Development",
+    type: "Back-End Web Dev",
     tags: [
       "Web Development",
       "Back End",
@@ -376,7 +376,7 @@ const backendWebDevProjects: Project[] = [
     programmingLanguage: `TypeScript`,
     repoURL: `https://github.com/mbeps/nextjs-auth0`,
     technologies: [`Next.JS`, `Auth0`],
-    type: "Back-End Web Development",
+    type: "Back-End Web Dev",
     tags: [
       "Web Development",
       "Back End",
@@ -468,7 +468,7 @@ const gameDevProjects: Project[] = [
     repoURL: `https://github.com/mbeps/Osmos_Game`,
     programmingLanguage: `Python`,
     technologies: [`SimpleGUI`],
-    type: "Game Development",
+    type: "Game Dev",
     tags: [
       "Game Development",
       "Assignment",
@@ -489,7 +489,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: "GML",
-    type: "Game Development",
+    type: "Game Dev",
     technologies: [`Game Maker Studio 2`],
     imageURL: `/projects/surface-fight/cover.png`,
     siteURL: "https://bepary-games.itch.io/surface-fight",
@@ -505,7 +505,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: "GML",
-    type: "Game Development",
+    type: "Game Dev",
     technologies: [`Game Maker Studio 2`],
     imageURL: `/projects/platformer/cover.png`,
     siteURL: "https://bepary-games.itch.io/platformer",
@@ -521,7 +521,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: "GML",
-    type: "Game Development",
+    type: "Game Dev",
     technologies: [`Game Maker Studio 2`],
     imageURL: `/projects/platformer-death-walk/cover.png`,
     siteURL: "https://bepary-games.itch.io/platformer-death-walk",
@@ -536,7 +536,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: "GML",
-    type: "Game Development",
+    type: "Game Dev",
     technologies: [`Game Maker Studio 2`],
     imageURL: `/projects/coding-breakout/cover.png`,
     siteURL: "https://bepary-games.itch.io/coding-break-out",
@@ -551,7 +551,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: "GML",
-    type: "Game Development",
+    type: "Game Dev",
     technologies: [`Game Maker Studio 2`],
     imageURL: `/projects/catch-maruf/cover.png`,
     siteURL: "https://bepary-games.itch.io/catch-maruf",
@@ -566,7 +566,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: "GML",
-    type: "Game Development",
+    type: "Game Dev",
     technologies: [`Game Maker Studio 2`],
     imageURL: `/projects/against-gravity/cover.png`,
     siteURL: "https://bepary-games.itch.io/against-gravity",
@@ -580,7 +580,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: "GML",
-    type: "Game Development",
+    type: "Game Dev",
     technologies: [`Game Maker Studio 2`],
     imageURL: `/projects/scrolling-shooter/cover.png`,
     siteURL: "https://bepary-games.itch.io/scrolling-shooter",
@@ -594,7 +594,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: "GML",
-    type: "Game Development",
+    type: "Game Dev",
     technologies: [`Game Maker Studio 2`],
     imageURL: `/projects/dungeon/cover.png`,
     siteURL: "https://bepary-games.itch.io/dungeon-",
@@ -609,7 +609,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: "GML",
-    type: "Game Development",
+    type: "Game Dev",
     technologies: [`Game Maker Studio 2`],
     imageURL: `/projects/veg-ninja/cover.png`,
     siteURL: "https://bepary-games.itch.io/vej-ninja",
@@ -624,7 +624,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: "GML",
-    type: "Game Development",
+    type: "Game Dev",
     technologies: [`Game Maker Studio 2`],
     imageURL: `/projects/angry-cats-space/cover.png`,
     siteURL: "https://bepary-games.itch.io/angry-cats-space",
@@ -639,7 +639,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: "GML",
-    type: "Game Development",
+    type: "Game Dev",
     technologies: [`Game Maker Studio 2`],
     imageURL: `/projects/angry-cats/cover.png`,
     siteURL: "https://bepary-games.itch.io/angry-cats-space",
