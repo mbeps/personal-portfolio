@@ -3,65 +3,37 @@ import Tag from "@/components/Atoms/Tag";
 import Gallery from "@/components/Gallery/Gallery";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import fs from "fs";
 
+import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
+import Button from "@/components/Atoms/Button";
 import {
   backendWebDevProjects,
   extraWebDevProjects,
+  gameDevProjects,
   javaAssignments,
   machineLearningProjects,
   otherProjects,
   webdevProjects,
 } from "@/constants/projects";
 import Project from "@/types/projects";
+import Markdown from "markdown-to-jsx";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightSquare, BsGithub } from "react-icons/bs";
 import { RxReader } from "react-icons/rx";
-import Button from "@/components/Atoms/Button";
-import Markdown from "markdown-to-jsx";
-import matter from "gray-matter";
+import getImagesFromFilesystem from "@/actions/getImagesFromFilesystem";
 
-/**
- * Gets the images for a project from the file system.
- * These are stored so that they can be displayed on the website.
- * @param slug (string): the slug of the project
- * @returns (string[]): the images for the project
- */
-const getProjectImages = (slug: string): string[] => {
-  const folder = `public/projects/${slug}/`;
-  try {
-    const files = fs.readdirSync(folder);
-    return files.filter(
-      (file) => file.endsWith(".jpg") || file.endsWith(".png")
-    );
-  } catch (error) {
-    console.log(`Error reading directory ${folder}:`, error);
-    return [];
-  }
-};
-
-/**
- * Gets the features for a project from the file system.
- * This is then used to display the features of this project.
- * @param slug (string): the slug of the project
- * @returns (matter.GrayMatterFile<string> | null): the features for the project
- */
-const getProjectFeatures = (
-  slug: string
-): matter.GrayMatterFile<string> | null => {
-  const file = `public/projects/${slug}/features.md`;
-  try {
-    const content = fs.readFileSync(file, "utf8");
-    const matterResult = matter(content);
-    return matterResult;
-  } catch (error) {
-    console.log(`Error reading markdown file ${file}:`, error);
-    return null;
-  }
-};
+const projects: Project[] = [
+  ...webdevProjects,
+  ...extraWebDevProjects,
+  ...backendWebDevProjects,
+  ...machineLearningProjects,
+  ...javaAssignments,
+  ...gameDevProjects,
+  ...otherProjects,
+];
 
 /**
  * Generates the static paths for the projects.
@@ -70,15 +42,6 @@ const getProjectFeatures = (
  * This improves the performance of the website.
  */
 export const generateStaticParams = async () => {
-  const projects: Project[] = [
-    ...webdevProjects,
-    ...extraWebDevProjects,
-    ...backendWebDevProjects,
-    ...machineLearningProjects,
-    ...javaAssignments,
-    ...otherProjects,
-  ];
-
   return projects.map((project) => ({ slug: project.slug }));
 };
 
@@ -99,20 +62,14 @@ interface ProjectPageProps {
  * - Language (right side on desktop, top on mobile)
  * - Technologies (right side on desktop, bottom on mobile)
  * - Links (left side on desktop, bottom on mobile)
- * @param props (any)
+ * Bellow the metadata is the features section.
+ * @param props (ProjectPageProps): the project slug
  * @returns (JSX.Element): Project Page Component
  */
 const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const slug = params.slug;
 
-  const allProjects: Project[] = [
-    ...webdevProjects,
-    ...extraWebDevProjects,
-    ...backendWebDevProjects,
-    ...machineLearningProjects,
-    ...javaAssignments,
-    ...otherProjects,
-  ];
+  const allProjects: Project[] = projects;
 
   const project = getProjectBySlug(slug, allProjects);
   const projectName = project?.name;
@@ -120,7 +77,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const projectLanguage = project?.programmingLanguage;
   const projectDescription = project?.description;
 
-  let gallery = getProjectImages(slug);
+  let gallery = getImagesFromFilesystem(`public/projects/${slug}`);
 
   gallery = gallery
     .filter((image) => !image.startsWith("cover") && image.endsWith(".png"))
@@ -131,7 +88,12 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
     gallery = gallery.map((image) => `/projects/${slug}/${image}`);
   }
 
-  const features = getProjectFeatures(slug);
+  /**
+   * Gets the features for the project from the markdown file.
+   */
+  const features = getMarkdownFromFileSystem(
+    `public/projects/${slug}/features.md`
+  );
 
   // redirect to not found page is the project is not valid
   if (!project) {
@@ -272,11 +234,13 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
           )}
         </div>
       </div>
-      <HeadingTwo title="Features" />
       {features && (
-        <article className="prose lg:prose-xl dark:prose-invert prose-img:rounded-lg max-w-none">
-          <Markdown>{features.content}</Markdown>
-        </article>
+        <>
+          <HeadingTwo title="Features" />
+          <article className="prose lg:prose-xl dark:prose-invert prose-img:rounded-lg max-w-none">
+            <Markdown>{features.content}</Markdown>
+          </article>
+        </>
       )}
     </div>
   );
