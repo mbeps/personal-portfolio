@@ -339,6 +339,7 @@ const ProjectsPage = () => {
         >
           <div
             className="
+            px-8 md:px-0
             flex flex-row 
             justify-end mb-4 -mt-2  
 "

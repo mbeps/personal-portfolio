@@ -12,11 +12,11 @@ export default interface Project {
   programmingLanguage: string;
   technologies?: string[];
   type:
-    | "Full-Stack Web Development"
-    | "Back-End Web Development"
+    | "Full-Stack Web Dev"
+    | "Back-End Web Dev"
     | "Machine Learning"
     | "Java Assignments"
-    | "Game Development"
+    | "Game Dev"
     | "Other";
   tags?: string[];
 }
