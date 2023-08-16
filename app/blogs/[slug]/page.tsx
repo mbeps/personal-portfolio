@@ -1,27 +1,8 @@
-import fs from "fs";
-import Markdown from "markdown-to-jsx";
-import matter from "gray-matter";
-import HeadingTwo from "@/components/Text/HeadingTwo";
 import getBlogMetadata from "@/actions/getBlogMetadata";
+import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
+import HeadingTwo from "@/components/Text/HeadingTwo";
+import Markdown from "markdown-to-jsx";
 import { notFound } from "next/navigation";
-
-/**
- * Gets the content of a blog from the file system.
- * These are stored so that they can be displayed on the website.
- * @param slug (string): the slug of the blog
- * @returns (matter.GrayMatterFile<string>): the blog content
- */
-const getBlogContent = (slug: string) => {
-  const folder = "public/blogs/";
-  const file = `${folder}${slug}.md`;
-  try {
-    const content = fs.readFileSync(file, "utf8");
-    const matterResult = matter(content);
-    return matterResult;
-  } catch (error) {
-    notFound();
-  }
-};
 
 /**
  * Generates the static paths for the blogs.
@@ -53,7 +34,11 @@ interface BlogPageProps {
  */
 const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
   const slug = params.slug;
-  const blog = getBlogContent(slug);
+  const blog = getMarkdownFromFileSystem(`public/blogs/${slug}.md`);
+
+  if (!blog) {
+    notFound();
+  }
 
   return (
     <div>
