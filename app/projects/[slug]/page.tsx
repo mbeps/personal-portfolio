@@ -239,11 +239,13 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
           )}
         </div>
       </div>
-      <HeadingTwo title="Features" />
       {features && (
-        <article className="prose lg:prose-xl dark:prose-invert prose-img:rounded-lg max-w-none">
-          <Markdown>{features.content}</Markdown>
-        </article>
+        <>
+          <HeadingTwo title="Features" />
+          <article className="prose lg:prose-xl dark:prose-invert prose-img:rounded-lg max-w-none">
+            <Markdown>{features.content}</Markdown>
+          </article>
+        </>
       )}
     </div>
   );
