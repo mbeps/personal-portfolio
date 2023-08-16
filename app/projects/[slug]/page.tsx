@@ -9,6 +9,7 @@ import Button from "@/components/Atoms/Button";
 import {
   backendWebDevProjects,
   extraWebDevProjects,
+  gameDevProjects,
   javaAssignments,
   machineLearningProjects,
   otherProjects,
@@ -24,6 +25,16 @@ import { BsArrowUpRightSquare, BsGithub } from "react-icons/bs";
 import { RxReader } from "react-icons/rx";
 import getImagesFromFilesystem from "@/actions/getImagesFromFilesystem";
 
+const projects: Project[] = [
+  ...webdevProjects,
+  ...extraWebDevProjects,
+  ...backendWebDevProjects,
+  ...machineLearningProjects,
+  ...javaAssignments,
+  ...gameDevProjects,
+  ...otherProjects,
+];
+
 /**
  * Generates the static paths for the projects.
  * These are then used to pre-render the projects pages.
@@ -31,15 +42,6 @@ import getImagesFromFilesystem from "@/actions/getImagesFromFilesystem";
  * This improves the performance of the website.
  */
 export const generateStaticParams = async () => {
-  const projects: Project[] = [
-    ...webdevProjects,
-    ...extraWebDevProjects,
-    ...backendWebDevProjects,
-    ...machineLearningProjects,
-    ...javaAssignments,
-    ...otherProjects,
-  ];
-
   return projects.map((project) => ({ slug: project.slug }));
 };
 
@@ -67,14 +69,7 @@ interface ProjectPageProps {
 const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const slug = params.slug;
 
-  const allProjects: Project[] = [
-    ...webdevProjects,
-    ...extraWebDevProjects,
-    ...backendWebDevProjects,
-    ...machineLearningProjects,
-    ...javaAssignments,
-    ...otherProjects,
-  ];
+  const allProjects: Project[] = projects;
 
   const project = getProjectBySlug(slug, allProjects);
   const projectName = project?.name;

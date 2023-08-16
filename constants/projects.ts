@@ -480,6 +480,171 @@ const gameDevProjects: Project[] = [
     ],
     articleURL: `/blogs/project-osmos-game`,
   },
+  {
+    name: "Surface Fight",
+    slug: "surface-fight",
+    description: `
+      The game is about a robot shooting skeletons and trying to survive. 
+      Every time he kills all the skeletons more of them will come at once.
+      This was a simple game made back in secondary school. 
+    `,
+    programmingLanguage: "GML",
+    type: "Game Development",
+    technologies: [`Game Maker Studio 2`],
+    imageURL: `/projects/surface-fight/cover.png`,
+    siteURL: "https://bepary-games.itch.io/surface-fight",
+    tags: ["Game Development"],
+  },
+  {
+    name: "Platformer",
+    slug: "platformer",
+    description: `
+      This is a basic and easy to play platform game which is similar to Super Mario.
+      Players must defeat the enemies and reach the end of the level.
+      This is also a multiplayer game.
+      This was a simple game made back in secondary school. 
+    `,
+    programmingLanguage: "GML",
+    type: "Game Development",
+    technologies: [`Game Maker Studio 2`],
+    imageURL: `/projects/platformer/cover.png`,
+    siteURL: "https://bepary-games.itch.io/platformer",
+    tags: ["Game Development"],
+  },
+  {
+    name: "Platformer Death Walk",
+    slug: "platformer-death-walk",
+    description: `
+      This is a basic and easy to play platform game which is similar to Super Mario.
+      Players must defeat all the enemies to reach the end of the level.
+      This is also a multiplayer game.
+      This was a simple game made back in secondary school. 
+    `,
+    programmingLanguage: "GML",
+    type: "Game Development",
+    technologies: [`Game Maker Studio 2`],
+    imageURL: `/projects/platformer-death-walk/cover.png`,
+    siteURL: "https://bepary-games.itch.io/platformer-death-walk",
+    tags: ["Game Development"],
+  },
+  {
+    name: "Coding Breakout",
+    slug: "coding-breakout",
+    description: `
+      In Breakout, a layer of bricks lines the top third of the screen
+      and the goal is to destroy them all by repeatedly bouncing a ball off a paddle into them.
+      This was a simple game made back in secondary school. 
+    `,
+    programmingLanguage: "GML",
+    type: "Game Development",
+    technologies: [`Game Maker Studio 2`],
+    imageURL: `/projects/coding-breakout/cover.png`,
+    siteURL: "https://bepary-games.itch.io/coding-break-out",
+    tags: ["Game Development"],
+  },
+  {
+    name: "Catch Maruf",
+    slug: "catch-maruf",
+    description: `
+      A basic game where the focus is to click on a character
+      as many times as possible within a given time limit.
+      This was a simple game made back in secondary school. 
+    `,
+    programmingLanguage: "GML",
+    type: "Game Development",
+    technologies: [`Game Maker Studio 2`],
+    imageURL: `/projects/catch-maruf/cover.png`,
+    siteURL: "https://bepary-games.itch.io/catch-maruf",
+    tags: ["Game Development"],
+  },
+  {
+    name: "Against Gravity",
+    slug: "against-gravity",
+    description: `
+      A basic game where the aim is to reach the end of the level
+      by making use of the gravity switch and avoiding the obstacles.
+      This was a simple game made back in secondary school. 
+    `,
+    programmingLanguage: "GML",
+    type: "Game Development",
+    technologies: [`Game Maker Studio 2`],
+    imageURL: `/projects/against-gravity/cover.png`,
+    siteURL: "https://bepary-games.itch.io/against-gravity",
+    tags: ["Game Development"],
+  },
+  {
+    name: "Scrolling Shooter",
+    slug: "scrolling-shooter",
+    description: `
+      This is a game where the aim is to shoot the enemies and avoid their bullets.
+      This was a simple game made back in secondary school. 
+    `,
+    programmingLanguage: "GML",
+    type: "Game Development",
+    technologies: [`Game Maker Studio 2`],
+    imageURL: `/projects/scrolling-shooter/cover.png`,
+    siteURL: "https://bepary-games.itch.io/scrolling-shooter",
+    tags: ["Game Development"],
+  },
+  {
+    name: "Dungeon",
+    slug: "dungeon",
+    description: `
+      A very simple 3D game where the aim is to reach the end of the level through the maze.
+      This was a simple game made back in secondary school. 
+    `,
+    programmingLanguage: "GML",
+    type: "Game Development",
+    technologies: [`Game Maker Studio 2`],
+    imageURL: `/projects/dungeon/cover.png`,
+    siteURL: "https://bepary-games.itch.io/dungeon-",
+    tags: ["Game Development"],
+  },
+  {
+    name: " Veg Ninja",
+    slug: "veg-ninja",
+    description: `
+      A simple game where the aim is to cut the vegetables and avoid the bombs.
+      This is very similar to the popular game Fruit Ninja.
+      This was a simple game made back in secondary school. 
+    `,
+    programmingLanguage: "GML",
+    type: "Game Development",
+    technologies: [`Game Maker Studio 2`],
+    imageURL: `/projects/veg-ninja/cover.png`,
+    siteURL: "https://bepary-games.itch.io/vej-ninja",
+    tags: ["Game Development"],
+  },
+  {
+    name: " Angry Cats Space",
+    slug: "angry-cats-space",
+    description: `
+      A game where the aim is to shoot the cats to kill all the rats. 
+      This is very similar to the popular game Angry Birds.
+      This was a simple game made back in secondary school. 
+    `,
+    programmingLanguage: "GML",
+    type: "Game Development",
+    technologies: [`Game Maker Studio 2`],
+    imageURL: `/projects/angry-cats-space/cover.png`,
+    siteURL: "https://bepary-games.itch.io/angry-cats-space",
+    tags: ["Game Development"],
+  },
+  {
+    name: " Angry Cats",
+    slug: "angry-cats",
+    description: `
+      A game where the aim is to shoot the cats to kill all the rats. 
+      This is very similar to the popular game Angry Birds.
+      This was a simple game made back in secondary school. 
+    `,
+    programmingLanguage: "GML",
+    type: "Game Development",
+    technologies: [`Game Maker Studio 2`],
+    imageURL: `/projects/angry-cats/cover.png`,
+    siteURL: "https://bepary-games.itch.io/angry-cats-space",
+    tags: ["Game Development"],
+  },
 ];
 
 /**
