@@ -11,6 +11,7 @@ import HeadingTwo from "@/components/Text/HeadingTwo";
 import {
   backendWebDevProjects,
   extraWebDevProjects,
+  gameDevProjects,
   javaAssignments,
   machineLearningProjects,
   otherProjects,
@@ -78,6 +79,7 @@ const ProjectsPage = () => {
     ...backendWebDevProjects,
     ...machineLearningProjects,
     ...javaAssignments,
+    ...gameDevProjects,
     ...otherProjects,
   ];
 

@@ -27,7 +27,7 @@ const webdevProjects: Project[] = [
       `Recoil`,
       "Docker",
     ],
-    type: "Web Dev",
+    type: "Full-Stack Web Development",
     tags: [
       "Web Development",
       "Front End",
@@ -73,7 +73,7 @@ const webdevProjects: Project[] = [
       "Zustand",
       "Docker",
     ],
-    type: "Web Dev",
+    type: "Full-Stack Web Development",
     tags: [
       "Web Development",
       "Front End",
@@ -108,7 +108,7 @@ const webdevProjects: Project[] = [
       `Radix UI`,
       "Zustand",
     ],
-    type: "Web Dev",
+    type: "Full-Stack Web Development",
     tags: [
       "Web Development",
       "Front End",
@@ -150,7 +150,7 @@ const webdevProjects: Project[] = [
       "Open AI",
       "Replicate AI",
     ],
-    type: "Web Dev",
+    type: "Full-Stack Web Development",
     tags: [
       "Web Development",
       "Front End",
@@ -188,7 +188,7 @@ const extraWebDevProjects: Project[] = [
     repoURL: `https://github.com/mbeps/sideshow-articles`,
     programmingLanguage: `TypeScript`,
     technologies: [`Next.JS`, `React`, `Supabase`, "PostgreSQL", `Next UI`],
-    type: "Extra Web Dev",
+    type: "Full-Stack Web Development",
     tags: [
       "Web Development",
       "Front End",
@@ -226,7 +226,7 @@ const extraWebDevProjects: Project[] = [
       `NX`,
       `Jest`,
     ],
-    type: "Extra Web Dev",
+    type: "Full-Stack Web Development",
     tags: [
       "Web Development",
       "Front End",
@@ -267,7 +267,7 @@ const extraWebDevProjects: Project[] = [
       "PostgreSQL",
       "Open AI",
     ],
-    type: "Extra Web Dev",
+    type: "Full-Stack Web Development",
     tags: [
       "Web Development",
       "Front End",
@@ -294,7 +294,7 @@ const backendWebDevProjects: Project[] = [
     repoURL: `https://github.com/mbeps/Forum-Discussion-Flask-Backend`,
     programmingLanguage: `Python`,
     technologies: [`Flask`, "MySQL", "SQLAlchemy", "REST API"],
-    type: "Backend Web Dev",
+    type: "Back-End Web Development",
     tags: [
       "Web Development",
       "Back End",
@@ -317,7 +317,7 @@ const backendWebDevProjects: Project[] = [
     repoURL: `https://github.com/mbeps/Flask_JWT_Auth`,
     programmingLanguage: `Python`,
     technologies: [`Flask`, "JWT"],
-    type: "Backend Web Dev",
+    type: "Back-End Web Development",
     tags: [
       "Web Development",
       "Back End",
@@ -337,7 +337,7 @@ const backendWebDevProjects: Project[] = [
     programmingLanguage: `Python`,
     repoURL: `https://github.com/mbeps/Django_Auth_Sys`,
     technologies: [`Django`],
-    type: "Backend Web Dev",
+    type: "Back-End Web Development",
     tags: [
       "Web Development",
       "Back End",
@@ -356,7 +356,7 @@ const backendWebDevProjects: Project[] = [
     programmingLanguage: `TypeScript`,
     repoURL: `https://github.com/mbeps/clerk-demo`,
     technologies: [`Next.JS`, `Clerk Auth`],
-    type: "Backend Web Dev",
+    type: "Back-End Web Development",
     tags: [
       "Web Development",
       "Back End",
@@ -376,7 +376,7 @@ const backendWebDevProjects: Project[] = [
     programmingLanguage: `TypeScript`,
     repoURL: `https://github.com/mbeps/nextjs-auth0`,
     technologies: [`Next.JS`, `Auth0`],
-    type: "Backend Web Dev",
+    type: "Back-End Web Development",
     tags: [
       "Web Development",
       "Back End",
@@ -451,11 +451,11 @@ const machineLearningProjects: Project[] = [
 ];
 
 /**
- * Array of other projects.
+ * Array of game development projects.
  * This is used to populate the projects page.
  * @type {Project[]}
  */
-const otherProjects: Project[] = [
+const gameDevProjects: Project[] = [
   {
     name: `Osmos Game`,
     slug: "osmos-game",
@@ -468,7 +468,7 @@ const otherProjects: Project[] = [
     repoURL: `https://github.com/mbeps/Osmos_Game`,
     programmingLanguage: `Python`,
     technologies: [`SimpleGUI`],
-    type: "Other",
+    type: "Game Development",
     tags: [
       "Game Development",
       "Assignment",
@@ -480,6 +480,14 @@ const otherProjects: Project[] = [
     ],
     articleURL: `/blogs/project-osmos-game`,
   },
+];
+
+/**
+ * Array of other projects.
+ * This is used to populate the projects page.
+ * @type {Project[]}
+ */
+const otherProjects: Project[] = [
   {
     name: `Searching & Sorting`,
     slug: `searching-sorting-algorithms`,
@@ -579,6 +587,7 @@ export {
   webdevProjects,
   machineLearningProjects,
   extraWebDevProjects,
+  gameDevProjects,
   otherProjects,
   javaAssignments,
   backendWebDevProjects,
