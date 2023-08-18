@@ -8,7 +8,6 @@ export default interface Project {
   imageURL?: string;
   repoURL?: string;
   siteURL?: string;
-  articleURL?: string;
   programmingLanguage: string;
   technologies?: string[];
   type:

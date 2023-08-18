@@ -17,7 +17,6 @@ const webdevProjects: Project[] = [
     imageURL: `/projects/circus-discussions/cover.png`,
     repoURL: `https://github.com/mbeps/next_discussion_platform`,
     siteURL: `https://circus-discussion.vercel.app/`,
-    articleURL: `/blogs/project-circus-discussion`,
     programmingLanguage: `TypeScript`,
     technologies: [
       `Next.JS`,
@@ -57,7 +56,6 @@ const webdevProjects: Project[] = [
     imageURL: `/projects/ringmaster-messaging/cover.png`,
     repoURL: `https://github.com/mbeps/ringmaster-messaging`,
     siteURL: `https://ringmaster-messaging.vercel.app/`,
-    articleURL: `/blogs/project-ringmaster-messaging`,
     programmingLanguage: `TypeScript`,
     technologies: [
       "Next.JS",
@@ -97,7 +95,6 @@ const webdevProjects: Project[] = [
       `,
     imageURL: `/projects/drumroll-music/cover.png`,
     repoURL: `https://github.com/mbeps/drumroll-music`,
-    articleURL: `/blogs/project-drumroll-music`,
     programmingLanguage: `TypeScript`,
     technologies: [
       `Next.JS`,
@@ -134,7 +131,6 @@ const webdevProjects: Project[] = [
     repoURL: `https://github.com/mbeps/magician-ai`,
     programmingLanguage: `TypeScript`,
     siteURL: "https://magician-ai.vercel.app/",
-    articleURL: "/blogs/project-magician-ai",
     technologies: [
       `Next.JS`,
       "React",
@@ -478,7 +474,6 @@ const gameDevProjects: Project[] = [
       "Team Project",
       "Group Project",
     ],
-    articleURL: `/blogs/project-osmos-game`,
   },
   {
     name: "Surface Fight",

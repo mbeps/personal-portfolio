@@ -1,5 +1,6 @@
 import getBlogMetadata from "@/actions/getBlogMetadata";
 import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
+import Reader from "@/components/Reader/Reader";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import Markdown from "markdown-to-jsx";
 import { notFound } from "next/navigation";
@@ -45,9 +46,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
       <div className="my-12 text-center">
         <HeadingTwo title={blog.data.title} />
       </div>
-      <article className="prose lg:prose-xl dark:prose-invert prose-img:rounded-lg max-w-none">
-        <Markdown>{blog.content}</Markdown>
-      </article>
+      <Reader content={blog.content} />
     </div>
   );
 };
