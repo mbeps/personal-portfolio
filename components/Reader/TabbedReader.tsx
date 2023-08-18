@@ -4,6 +4,7 @@ import Markdown from "markdown-to-jsx";
 import React, { useEffect, useState } from "react";
 import HeadingTwo from "../Text/HeadingTwo";
 import Button from "../Atoms/Button";
+import Reader from "./Reader";
 
 type TabbedReaderProps = {
   content: {
@@ -61,9 +62,7 @@ const TabbedReader: React.FC<TabbedReaderProps> = ({ content }) => {
           </div>
         )}
         <HeadingTwo title={title} />
-        <article className="prose lg:prose-xl dark:prose-invert prose-img:rounded-lg max-w-none">
-          {viewContent && <Markdown>{viewContent}</Markdown>}
-        </article>
+        <Reader content={viewContent} />
       </div>
     </>
   );
