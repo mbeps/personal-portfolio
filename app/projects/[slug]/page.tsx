@@ -4,8 +4,10 @@ import Gallery from "@/components/Gallery/Gallery";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 
+import getImagesFromFilesystem from "@/actions/getImagesFromFilesystem";
 import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
 import Button from "@/components/Atoms/Button";
+import TabbedReader from "@/components/Reader/TabbedReader";
 import {
   backendWebDevProjects,
   extraWebDevProjects,
@@ -16,14 +18,11 @@ import {
   webdevProjects,
 } from "@/constants/projects";
 import Project from "@/types/projects";
-import Markdown from "markdown-to-jsx";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightSquare, BsGithub } from "react-icons/bs";
-import { RxReader } from "react-icons/rx";
-import getImagesFromFilesystem from "@/actions/getImagesFromFilesystem";
 
 const projects: Project[] = [
   ...webdevProjects,
@@ -77,7 +76,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const projectLanguage = project?.programmingLanguage;
   const projectDescription = project?.description;
 
-  let gallery = getImagesFromFilesystem(`public/projects/${slug}`);
+  let gallery = getImagesFromFilesystem(`public/projects/${slug}/gallery`);
 
   gallery = gallery
     .filter((image) => !image.startsWith("cover") && image.endsWith(".png"))
@@ -93,7 +92,11 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
    */
   const features = getMarkdownFromFileSystem(
     `public/projects/${slug}/features.md`
-  );
+  )?.content;
+
+  const blog = getMarkdownFromFileSystem(
+    `public/projects/${slug}/report.md`
+  )?.content;
 
   // redirect to not found page is the project is not valid
   if (!project) {
@@ -189,27 +192,6 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
                     </Button>
                   </Link>
                 )}
-                {/* Blog */}
-                {project?.articleURL && (
-                  <Link href={project?.articleURL} target="_blank">
-                    <Button
-                      variant={"ghost"}
-                      className="
-                      text-neutral-900 dark:text-white 
-                      hover:text-neutral-900 
-                      hover:bg-neutral-300
-                      w-full
-                    "
-                    >
-                      <div className="flex flex-row justify-center md:justify-start gap-4 w-full">
-                        <RxReader size={30} />
-                        <p className="mt-1 md:text-left text-center">
-                          Reflective Blog
-                        </p>
-                      </div>
-                    </Button>
-                  </Link>
-                )}
               </div>
             </div>
           </div>
@@ -234,14 +216,8 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
           )}
         </div>
       </div>
-      {features && (
-        <>
-          <HeadingTwo title="Features" />
-          <article className="prose lg:prose-xl dark:prose-invert prose-img:rounded-lg max-w-none">
-            <Markdown>{features.content}</Markdown>
-          </article>
-        </>
-      )}
+
+      <TabbedReader content={{ features, blog }} />
     </div>
   );
 };

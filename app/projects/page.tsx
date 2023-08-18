@@ -42,7 +42,6 @@ const ProjectsPage = () => {
   const [selectedType, setSelectedType] = useState("All");
   const [selectedTechnology, setSelectedTechnology] = useState("All");
   const [selectedLanguage, setSelectedLanguage] = useState("All");
-  const [hasArticle, setHasArticle] = useState(false);
   const [hasSite, setHasSite] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
@@ -171,7 +170,6 @@ const ProjectsPage = () => {
       (selectedTechnology === "All" ||
         (project.technologies &&
           project.technologies.includes(selectedTechnology))) &&
-      (!hasArticle || project.articleURL) &&
       (!hasSite || project.siteURL)
   );
 
@@ -199,14 +197,6 @@ const ProjectsPage = () => {
   };
 
   /**
-   * Toggles the filter for projects with articles.
-   * If checked, only projects with articles are displayed.
-   */
-  const toggleHasArticle = () => {
-    setHasArticle(!hasArticle);
-  };
-
-  /**
    * Toggles the filter for projects with sites.
    * If checked, only projects with sites are displayed.
    */
@@ -222,7 +212,6 @@ const ProjectsPage = () => {
     setSelectedType("All");
     setSelectedLanguage("All");
     setSelectedTechnology("All");
-    setHasArticle(false);
     setHasSite(false);
     setSearchTerm("");
   };
@@ -231,7 +220,6 @@ const ProjectsPage = () => {
     selectedType !== "All" ||
     selectedLanguage !== "All" ||
     selectedTechnology !== "All" ||
-    hasArticle ||
     hasSite ||
     searchTerm !== "";
 
@@ -432,12 +420,6 @@ const ProjectsPage = () => {
               <label className="font-semibold text-lg">Other</label>
               <div className="h-64 overflow-y-auto space-y-2 mt-2">
                 <Checkbox
-                  id="hasArticle"
-                  checked={hasArticle}
-                  onChange={toggleHasArticle}
-                  label="With reflective blogs"
-                />
-                <Checkbox
                   id="hasSite"
                   checked={hasSite}
                   onChange={toggleHasSite}
@@ -563,7 +545,6 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({ title, projects }) => {
               imageURL={project.imageURL}
               repoURL={project.repoURL}
               siteURL={project.siteURL}
-              articleURL={project.articleURL}
               programmingLanguage={project.programmingLanguage}
               technologies={project.technologies}
               type={project.type}
