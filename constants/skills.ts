@@ -34,6 +34,7 @@ const technologies: Skill[] = [
   { skill: "PostgreSQL", category: "Database" },
   { skill: "MySQL", category: "Database" },
   { skill: "SQLite", category: "Database" },
+  { skill: "Normalisation", category: "Database" },
   { skill: "MongoDB", category: "Database" },
   { skill: "Redis", category: "Database" },
 
@@ -42,6 +43,14 @@ const technologies: Skill[] = [
 
   { skill: "OpenAI", category: "Artificial Intelligence" },
   { skill: "Replicate AI", category: "Artificial Intelligence" },
+
+  { skill: "Probability & Statistics", category: "Mathematics" },
+  { skill: "Calculus", category: "Mathematics" },
+  { skill: "Trigonometry", category: "Mathematics" },
+  { skill: "Algebra", category: "Mathematics" },
+  { skill: "Linear Algebra", category: "Mathematics" },
+  { skill: "Discrete", category: "Mathematics" },
+  { skill: "Geometry", category: "Mathematics" },
 
   { skill: "Vagrant", category: "Other" },
 ];

@@ -18,6 +18,7 @@ interface Skill {
     | "API"
     | "Web Socket"
     | "Artificial Intelligence"
+    | "Mathematics"
     | "Other";
 }
 
