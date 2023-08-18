@@ -46,7 +46,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
           <SearchInput
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}
-            placeholder="Search blog title or subtitle"
+            placeholder="Search blog"
           />
         </div>
       </div>
