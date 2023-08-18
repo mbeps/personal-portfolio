@@ -674,6 +674,20 @@ const otherProjects: Project[] = [
     type: "Other",
     tags: ["Linux", "Fedora", "Automation", "Scripting"],
   },
+  {
+    name: `Leetcode Solutions`,
+    slug: "leetcode",
+    description: `
+      A collection of Leetcode solutions in Python. 
+      This is used to practice algorithms and data structures.
+      They are also used to practice unit testing.
+      CI/CD is also used to run the tests when merging to the main branch.
+      `,
+    repoURL: `https://github.com/stars/mbeps/lists/leetcode`,
+    programmingLanguage: `Python`,
+    type: "Other",
+    tags: ["testing", "algorithms", "solutions"],
+  },
 ];
 
 /**
