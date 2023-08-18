@@ -1,9 +1,3 @@
----
-title: "Reflecting on Osmos Game"
-subtitle: "Brief report talking about what I learnt while developing this platform"
-display: "false"
----
-
 - [**Team Project Reflection: Osmos Game**](#team-project-reflection-osmos-game)
 - [**Preliminary Considerations**](#preliminary-considerations)
 - [**Strategy and Structuralization**](#strategy-and-structuralization)

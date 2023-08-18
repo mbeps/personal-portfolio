@@ -1,9 +1,3 @@
----
-title: "Embracing Software Engineering Methodologies: Lessons from a Calculator Project"
-subtitle: "Exploring the holistic approach to software development"
-display: "false"
----
-
 - [**Introduction**](#introduction)
 - [**Version Control Systems: A Lifeline of Software Engineering**](#version-control-systems-a-lifeline-of-software-engineering)
 - [**Unit Testing and Test-Driven Development**](#unit-testing-and-test-driven-development)

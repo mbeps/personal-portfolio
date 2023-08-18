@@ -1,9 +1,3 @@
----
-title: "Reflecting on Circus Discussion"
-subtitle: "Brief report talking about what I learnt while developing this platform"
-display: "false"
----
-
 - [**Introduction**](#introduction)
 - [**Firebase and Backend Development**](#firebase-and-backend-development)
 	- [**Backend Development**](#backend-development)

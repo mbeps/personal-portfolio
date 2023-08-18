@@ -1,9 +1,3 @@
----
-title: "Reflecting on Ringmaster Messaging"
-subtitle: "Brief report talking about what I learnt while developing this platform"
-display: "false"
----
-
 - [**Project Reflection: Ringmaster Messaging App**](#project-reflection-ringmaster-messaging-app)
 - [**Backend Development**](#backend-development)
 	- [**MongoDB and Prisma**](#mongodb-and-prisma)
