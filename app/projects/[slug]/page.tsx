@@ -79,12 +79,12 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   let gallery = getImagesFromFilesystem(`public/projects/${slug}/gallery`);
 
   gallery = gallery
-    .filter((image) => !image.startsWith("cover") && image.endsWith(".png"))
+    .filter((image) => image.endsWith(".png"))
     .sort((a, b) => parseInt(a, 10) - parseInt(b, 10));
 
   // Adds full path to images
   if (gallery) {
-    gallery = gallery.map((image) => `/projects/${slug}/${image}`);
+    gallery = gallery.map((image) => `/projects/${slug}/gallery/${image}`);
   }
 
   /**
