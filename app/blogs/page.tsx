@@ -10,11 +10,6 @@ import HeadingOne from "@/components/Text/HeadingOne";
 export default function BlogPage() {
   let blogMetadata = getBlogMetadata();
 
-  // Filter blogs where display is 'true' or undefined
-  blogMetadata = blogMetadata.filter(
-    (blog) => blog.display === "true" || blog.display === undefined
-  );
-
   return (
     <main>
       <section id="blogs">
