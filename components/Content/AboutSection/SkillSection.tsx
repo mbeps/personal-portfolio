@@ -50,6 +50,7 @@ const SkillSection: React.FC = () => {
     "Project Manager",
     "Version Control System",
     "Web Socket",
+    "Mathematics",
     "Other",
   ];
 
