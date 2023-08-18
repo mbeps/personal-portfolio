@@ -698,7 +698,7 @@ const otherProjects: Project[] = [
 const javaAssignments: Project[] = [
   {
     name: `Calculator`,
-    slug: "software-engineering-calculator-assignment",
+    slug: "calculator-assignment",
     description: `
       Simple calculator app built using Java as a Maven project. 
       This was a second year Java assignment focused on software engineering methodologies. 
