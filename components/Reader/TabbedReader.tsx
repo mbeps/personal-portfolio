@@ -51,7 +51,7 @@ const TabbedReader: React.FC<TabbedReaderProps> = ({ content }) => {
       <div className="w-full space-y-7">
         {hasFeatures && hasBlog && (
           <div className="flex flex-row justify-center">
-            <div className="flex flex-row w-1/2 space-x-2">
+            <div className="flex flex-row w-full md:w-1/2 space-x-2">
               <Button
                 onClick={() => setView("features")}
                 variant={view === "features" ? "filled" : "ghost"}
