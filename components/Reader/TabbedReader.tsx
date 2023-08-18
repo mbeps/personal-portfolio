@@ -13,6 +13,14 @@ type TabbedReaderProps = {
   };
 };
 
+/**
+ * Renders Markdown content into HTML in a tabbed view.
+ * The user can select between "Features" and "Reflection" tabs.
+ *
+ * @param features (string): features to be rendered
+ * @param blog (string): blog to be rendered
+ * @returns (JSX.Element): rendered Markdown content in a tabbed view
+ */
 const TabbedReader: React.FC<TabbedReaderProps> = ({ content }) => {
   const hasFeatures = !!content.features;
   const hasBlog = !!content.blog;
