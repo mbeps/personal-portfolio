@@ -8,7 +8,6 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { BsArrowUpRightSquare, BsGithub } from "react-icons/bs";
 import { ImStack } from "react-icons/im";
-import { IoReaderOutline } from "react-icons/io5";
 import SlideUp from "./Slideup";
 
 /**
@@ -45,7 +44,6 @@ const ProjectItem: React.FC<Project> = ({
   imageURL,
   repoURL,
   siteURL,
-  articleURL,
   programmingLanguage,
   technologies,
   type,
@@ -103,10 +101,12 @@ const ProjectItem: React.FC<Project> = ({
             <Link href={`/projects/${slug}`}>
               <h1
                 className="
-                mb-6 
-                text-4xl font-bold text-left 
-                hover:text-red-500 dark:hover:text-red-800
-                transition-colors duration-700 ease-in-out
+                  flex flex-col
+                  justify-center items-center md:items-start
+                  mb-6
+                  text-3xl md:text-4xl font-bold text-center md:text-left 
+                  hover:text-red-500 dark:hover:text-red-800
+                  transition-colors duration-700 ease-in-out
                 "
               >
                 {name}
@@ -119,7 +119,13 @@ const ProjectItem: React.FC<Project> = ({
             </p>
 
             {/* Buttons */}
-            <div className="flex flex-row align-bottom space-x-4 mt-8">
+            <div
+              className="
+              flex flex-row 
+              justify-center md:justify-start 
+              align-bottom 
+              space-x-4 mt-8"
+            >
               {/* Repository */}
               {repoURL && (
                 <Link href={repoURL} target="_blank" title="Repository">
@@ -155,16 +161,6 @@ const ProjectItem: React.FC<Project> = ({
                   />
                 </Link>
               )}
-              {/* Project Reflection Blog */}
-              {articleURL && (
-                <Link href={articleURL} target="_blank" title="Report">
-                  <IoReaderOutline
-                    size={34}
-                    className="-translate-y-0.5 hover:-translate-y-1.5 transition-transform cursor-pointer"
-                  />
-                </Link>
-              )}
-              {/* Project Stack */}
             </div>
           </div>
         </div>
