@@ -5,6 +5,11 @@ type ReaderProps = {
   content: string | undefined;
 };
 
+/**
+ * Renders Markdown content into HTML.
+ * @param content (string): Markdown content to render
+ * @returns (JSX.Element): rendered Markdown content
+ */
 const Reader: React.FC<ReaderProps> = ({ content }) => {
   return (
     <article
