@@ -36,7 +36,12 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
 
   return (
     <div className="my-12 pb-12 md:pt-2 md:pb-36">
-      <div className="flex flex-col items-end px-2 pl-6">
+      <div
+        className="
+				flex flex-col 
+				items-end 
+				px-0 md:px-2 pl-0 md:pl-6"
+      >
         <div className="w-full md:w-1/2">
           <SearchInput
             searchTerm={searchTerm}
