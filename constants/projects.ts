@@ -701,7 +701,11 @@ const javaAssignments: Project[] = [
     slug: "software-engineering-calculator-assignment",
     description: `
       Simple calculator app built using Java as a Maven project. 
-      This was to learn about software design patterns and life cycles.
+      This was a second year Java assignment focused on software engineering methodologies. 
+      The project involved creating a calculator application, emphasizing the importance of proper version control procedures, 
+      test-driven development, documentation, and code quality assurance through linting and styling. 
+      The assignment highlighted the significance of following efficient software development processes rather than just focusing on the final implementation.
+
       `,
     repoURL: `https://github.com/mbeps/Calculator-Assignment`,
     programmingLanguage: `Java`,
