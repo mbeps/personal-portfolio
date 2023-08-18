@@ -1,9 +1,3 @@
----
-title: "Reflecting on Magician AI"
-subtitle: "Brief report talking about what I learnt while developing this platform"
-display: "false"
----
-
 - [**Project Reflection: Magician AI Platform**](#project-reflection-magician-ai-platform)
 - [**Backend Development**](#backend-development)
 	- [**Clerk Authentication System**](#clerk-authentication-system)

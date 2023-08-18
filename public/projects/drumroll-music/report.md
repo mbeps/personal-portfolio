@@ -1,9 +1,3 @@
----
-title: "Reflecting on Drumroll Music"
-subtitle: "Brief report talking about what I learnt while developing this platform"
-display: "false"
----
-
 - [**Project Reflection: Drumroll Music**](#project-reflection-drumroll-music)
 - [**Backend Development**](#backend-development)
 	- [**Supabase**](#supabase)
