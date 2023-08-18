@@ -42,7 +42,6 @@ const ProjectsPage = () => {
   const [selectedType, setSelectedType] = useState("All");
   const [selectedTechnology, setSelectedTechnology] = useState("All");
   const [selectedLanguage, setSelectedLanguage] = useState("All");
-  const [hasSite, setHasSite] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
@@ -169,8 +168,7 @@ const ProjectsPage = () => {
         project.programmingLanguage === selectedLanguage) &&
       (selectedTechnology === "All" ||
         (project.technologies &&
-          project.technologies.includes(selectedTechnology))) &&
-      (!hasSite || project.siteURL)
+          project.technologies.includes(selectedTechnology)))
   );
 
   /**
@@ -197,14 +195,6 @@ const ProjectsPage = () => {
   };
 
   /**
-   * Toggles the filter for projects with sites.
-   * If checked, only projects with sites are displayed.
-   */
-  const toggleHasSite = () => {
-    setHasSite(!hasSite);
-  };
-
-  /**
    * Resets all the filters.
    * This is used when the user clicks on the 'Reset' button.
    */
@@ -212,7 +202,6 @@ const ProjectsPage = () => {
     setSelectedType("All");
     setSelectedLanguage("All");
     setSelectedTechnology("All");
-    setHasSite(false);
     setSearchTerm("");
   };
 
@@ -220,7 +209,6 @@ const ProjectsPage = () => {
     selectedType !== "All" ||
     selectedLanguage !== "All" ||
     selectedTechnology !== "All" ||
-    hasSite ||
     searchTerm !== "";
 
   return (
@@ -323,13 +311,13 @@ const ProjectsPage = () => {
           isOpen={isFilterModalOpen}
           onClose={handleCloseModals}
           title={"Filter"}
-          className="sm:max-w-3xl w-full sm:w-full"
+          className="sm:max-w-4xl w-full sm:w-full"
         >
           <div
             className="
             px-8 md:px-0
             flex flex-row 
-            justify-end mb-4 -mt-2  
+            justify-center mb-4  
 "
           >
             <div className="flex flex-row w-full md:w-1/2 space-x-2 ">
@@ -354,8 +342,9 @@ const ProjectsPage = () => {
             </div>
           </div>
           {/* Filter Options */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
             <div className="px-8 md:px-0">
+              {/* Category Filter */}
               <label htmlFor="type-dropdown" className="font-semibold text-lg">
                 Category
               </label>
@@ -373,6 +362,7 @@ const ProjectsPage = () => {
                 ))}
               </div>
             </div>
+            {/* Language Filter */}
             <div className="px-8 md:px-0">
               <label
                 htmlFor="language-dropdown"
@@ -394,11 +384,11 @@ const ProjectsPage = () => {
                 ))}
               </div>
             </div>
-
+            {/* Technology Filter */}
             <div className="px-8 md:px-0">
               <label
                 htmlFor="language-dropdown"
-                className="font-semibold text-lg mb-2 block"
+                className="font-semibold text-lg block"
               >
                 Technologies
               </label>
@@ -414,17 +404,6 @@ const ProjectsPage = () => {
                     label={technology}
                   />
                 ))}
-              </div>
-            </div>
-            <div className="px-8 md:px-0">
-              <label className="font-semibold text-lg">Other</label>
-              <div className="h-64 overflow-y-auto space-y-2 mt-2">
-                <Checkbox
-                  id="hasSite"
-                  checked={hasSite}
-                  onChange={toggleHasSite}
-                  label="Deployed"
-                />
               </div>
             </div>
           </div>
