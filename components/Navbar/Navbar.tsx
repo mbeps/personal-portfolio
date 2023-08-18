@@ -60,8 +60,7 @@ export default function Navbar() {
     <header
       className={`
         w-full mx-auto  
-        px-4 
-        sm:px-20 
+        px-4 sm:px-20 
         fixed 
         top-0 
         z-50 
@@ -74,7 +73,7 @@ export default function Navbar() {
       <div
         className="
         justify-between md:items-center md:flex 
-        mx-auto max-w-3xl md:max-w-6xl
+        globalWidth
       "
       >
         <div>
@@ -85,7 +84,8 @@ export default function Navbar() {
               <ThemeToggle />
               {/* Hamburger menu */}
               <button
-                className="p-2 
+                className="
+                  p-2 
                   text-neutral-800 dark:text-neutral-200 
                   rounded-xl 
                   outline-none ml-2"

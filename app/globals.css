@@ -6,4 +6,8 @@
   .wrapper {
     @apply  min-h-[85vh] w-full;
   }
+
+  .globalWidth {
+    @apply mx-auto max-w-3xl md:max-w-6xl
+  }
 }
