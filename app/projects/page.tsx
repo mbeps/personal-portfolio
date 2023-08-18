@@ -305,7 +305,7 @@ const ProjectsPage = () => {
           isOpen={isFilterModalOpen}
           onClose={handleCloseModals}
           title={"Filter"}
-          className="sm:max-w-4xl w-full sm:w-full"
+          className="sm:max-w-4xl w-full sm:w-full max-h-[70vh] min-h-[50vh]"
         >
           <div
             className="
@@ -342,7 +342,7 @@ const ProjectsPage = () => {
               <label htmlFor="type-dropdown" className="font-semibold text-lg">
                 Category
               </label>
-              <div className="h-64 overflow-y-auto space-y-2">
+              <div className="h-64 md:h-80 overflow-y-auto space-y-2">
                 {projectTypes.map((type) => (
                   <RadioButton
                     key={type}
@@ -364,7 +364,7 @@ const ProjectsPage = () => {
               >
                 Language
               </label>
-              <div className="h-64 overflow-y-auto space-y-2">
+              <div className="h-64 md:h-80 overflow-y-auto space-y-2">
                 {programmingLanguages.map((language) => (
                   <RadioButton
                     key={language}
@@ -386,7 +386,7 @@ const ProjectsPage = () => {
               >
                 Technologies
               </label>
-              <div className="h-64 overflow-y-auto space-y-2">
+              <div className="h-64 md:h-80 overflow-y-auto space-y-2">
                 {technologies.map((technology) => (
                   <RadioButton
                     key={technology}
