@@ -67,7 +67,7 @@ export default function Navbar() {
         ${scrolled ? "shadow-lg " : ""} dark:shadow-neutral-800 
         bg-white dark:bg-stone-900 
         transition-all duration-700 ease-in-out
-        backdrop-blur-lg bg-opacity-70 dark:bg-opacity-80 
+        backdrop-blur-xl bg-opacity-60 dark:bg-opacity-60 
       `}
     >
       <div
