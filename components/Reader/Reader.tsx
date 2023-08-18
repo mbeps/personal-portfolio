@@ -14,8 +14,9 @@ const Reader: React.FC<ReaderProps> = ({ content }) => {
   return (
     <article
       className="
-			lg:prose-lg 
-			prose-neutral dark:prose-invert 
+			prose
+      lg:prose-lg
+			dark:prose-invert 
 			prose-img:rounded-lg 
 			max-w-none"
     >
