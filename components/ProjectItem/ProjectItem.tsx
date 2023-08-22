@@ -6,7 +6,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import { BsArrowUpRightSquare, BsGithub } from "react-icons/bs";
+import { BsArrowUpRightCircle, BsGithub, BsInfoCircle } from "react-icons/bs";
+import { PiCirclesThreePlusBold } from "react-icons/pi";
 import { ImStack } from "react-icons/im";
 import SlideUp from "./Slideup";
 
@@ -126,6 +127,14 @@ const ProjectItem: React.FC<Project> = ({
               align-bottom 
               space-x-4 mt-8"
             >
+              {/* Project Page */}
+              <Link href={`/projects/${slug}`} title="Project Page">
+                <BsInfoCircle
+                  size={30}
+                  className="hover:-translate-y-1 transition-transform cursor-pointer"
+                />
+              </Link>
+
               {/* Repository */}
               {repoURL && (
                 <Link href={repoURL} target="_blank" title="Repository">
@@ -142,7 +151,7 @@ const ProjectItem: React.FC<Project> = ({
                     onClick={toggleModal}
                     title="Project Stack"
                   >
-                    <ImStack size={34} />
+                    <PiCirclesThreePlusBold size={34} />
                   </button>
                 )}
                 <ProjectModal
@@ -155,7 +164,7 @@ const ProjectItem: React.FC<Project> = ({
               {/* Project Website */}
               {siteURL && (
                 <Link href={siteURL} target="_blank" title="Website">
-                  <BsArrowUpRightSquare
+                  <BsArrowUpRightCircle
                     size={30}
                     className="hover:-translate-y-1 transition-transform cursor-pointer"
                   />
