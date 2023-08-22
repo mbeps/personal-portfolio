@@ -117,10 +117,6 @@ const SkillSection: React.FC = () => {
         ))}
         <div className="relative group">
           <Tag onClick={handleOpenModal}>...</Tag>
-          {/* Pinging dot */}
-          <span className="absolute top-1 right-4 transform translate-x-[50%] -translate-y-[50%] ">
-            <span className="animate-ping  absolute inline-flex h-3 w-3 rounded-full bg-red-400 opacity-75"></span>
-          </span>
         </div>
         <SkillsModal isOpen={isModalOpen} onClose={handleCloseModal} />
       </div>
