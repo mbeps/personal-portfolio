@@ -12,6 +12,7 @@
   }
 }
 
+/*^ Horizontal Bounce */
 @keyframes bounce-horizontal {
   0%, 100% {
     transform: translateX(0);
@@ -31,3 +32,18 @@
   animation: bounce-horizontal 1.5s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
 }
 
+/*^ Normal Bounce */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+.slow-bounce {
+  animation-duration: 1.5s;
+}
