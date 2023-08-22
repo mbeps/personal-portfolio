@@ -25,6 +25,7 @@ const webdevProjects: Project[] = [
       `Firebase`,
       `Recoil`,
       "Docker",
+      "GitHub Actions",
     ],
     type: "Full-Stack Web Dev",
     tags: [
@@ -44,6 +45,9 @@ const webdevProjects: Project[] = [
       "Discussion",
       "Authentication",
       "Account Management",
+      "Continuous Integration",
+      "Continuous Deployment",
+      "CI/CD",
     ],
   },
   {
@@ -70,6 +74,7 @@ const webdevProjects: Project[] = [
       "Headless UI",
       "Zustand",
       "Docker",
+      "GitHub Actions",
     ],
     type: "Full-Stack Web Dev",
     tags: [
@@ -84,6 +89,9 @@ const webdevProjects: Project[] = [
       "Messaging",
       "Database",
       "Non Relational Database",
+      "Continuous Integration",
+      "Continuous Deployment",
+      "CI/CD",
     ],
   },
   {
@@ -104,6 +112,7 @@ const webdevProjects: Project[] = [
       `Tailwind CSS`,
       `Radix UI`,
       "Zustand",
+      "GitHub Actions",
     ],
     type: "Full-Stack Web Dev",
     tags: [
@@ -119,13 +128,17 @@ const webdevProjects: Project[] = [
       "Account Management",
       "Authentication",
       "Uploads",
+      "Continuous Integration",
+      "Continuous Deployment",
+      "CI/CD",
     ],
   },
   {
     name: `Magician AI`,
     slug: "magician-ai",
     description: `
-    Magician AI is a SaaS platform that leverages AI to enable users to generate various media types and have dynamic conversations. Developing this project allowed me to explore Stripe, Clerk authentication, and unique AI APIs.
+      Magician AI is a SaaS platform that leverages AI to enable users to generate various media types and have dynamic conversations. 
+      Developing this project allowed me to explore Stripe, Clerk authentication, and unique AI APIs.
   `,
     imageURL: `/projects/magician-ai/cover.png`,
     repoURL: `https://github.com/mbeps/magician-ai`,
@@ -145,6 +158,8 @@ const webdevProjects: Project[] = [
       "REST API",
       "Open AI",
       "Replicate AI",
+      "Docker",
+      "GitHub Actions",
     ],
     type: "Full-Stack Web Dev",
     tags: [
@@ -162,6 +177,10 @@ const webdevProjects: Project[] = [
       "Account Management",
       "Authentication",
       "Web Hooks",
+      "API",
+      "Continuous Integration",
+      "Continuous Deployment",
+      "CI/CD",
     ],
   },
 ];
@@ -685,8 +704,16 @@ const otherProjects: Project[] = [
       `,
     repoURL: `https://github.com/stars/mbeps/lists/leetcode`,
     programmingLanguage: `Python`,
+    technologies: [`Pytest`, "GitHub Actions"],
     type: "Other",
-    tags: ["testing", "algorithms", "solutions"],
+    tags: [
+      "testing",
+      "algorithms",
+      "solutions",
+      "Continuous Integration",
+      "Continuous Deployment",
+      "CI/CD",
+    ],
   },
 ];
 
