@@ -15,27 +15,23 @@
 /*^ Horizontal Bounce */
 @keyframes bounce-horizontal {
   0%, 100% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(-3px);
+    transform: translateX(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
   }
   50% {
-    transform: translateX(3px);
-  }
-  75% {
-    transform: translateX(-3px);
+    transform: translateX(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
 }
 
 .bounce-horizontal {
-  animation: bounce-horizontal 1.5s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
+  animation: bounce-horizontal 1s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
 }
 
 /*^ Normal Bounce */
 @keyframes bounce {
   0%, 100% {
-    transform: translateY(-25%);
+    transform: translateY(-35%);
     animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
   }
   50% {
