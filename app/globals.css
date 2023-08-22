@@ -11,3 +11,23 @@
     @apply mx-auto max-w-3xl md:max-w-6xl
   }
 }
+
+@keyframes bounce-horizontal {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-3px);
+  }
+  50% {
+    transform: translateX(3px);
+  }
+  75% {
+    transform: translateX(-3px);
+  }
+}
+
+.bounce-horizontal {
+  animation: bounce-horizontal 1.5s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
+}
+
