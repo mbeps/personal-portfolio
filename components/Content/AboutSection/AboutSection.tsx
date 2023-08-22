@@ -46,11 +46,13 @@ const AboutSection = () => {
               <span className="font-bold">curiosity</span> and an unyielding
               passion for innovative technology.
             </p>
+            <div className="m-2.5" />
             <p>
               To me, coding isn&apos;t just about writing lines. It&apos;s about
               conducting a <span className="font-bold">symphony</span> where
               each note contributes to a harmonious tech marvel.
             </p>
+            <div className="m-2.5" />
             <p>
               My experience spans the{" "}
               <span className="font-bold">software development lifecycle</span>.
@@ -64,6 +66,7 @@ const AboutSection = () => {
               <span className="font-bold">Mathematics</span>. Presently,
               I&apos;m deepening my understanding of advanced ML techniques.
             </p>
+            <div className="m-2.5" />
             <p>
               Additionally, my commitment to{" "}
               <span className="font-bold">problem-solving</span> and{" "}
@@ -72,6 +75,7 @@ const AboutSection = () => {
               Here, I&apos;m amalgamating innovation with efficiency to refine
               and automate tech processes.
             </p>
+            <div className="m-2.5" />
             <p>
               Outside the realm of code, my passions include football,
               badminton, science literature, and travel. Every day is an
