@@ -65,6 +65,12 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
             width={2000}
             height={1125}
             priority
+            onLoadingComplete={() => {
+              // Preload the next image
+              const nextIndex = (activeIndex + 1) % images.length; // Loop back to the start if at the end
+              const img = new window.Image();
+              img.src = images[nextIndex];
+            }}
             className="
               w-full h-[60vh] 
               object-contain rounded-xl 
