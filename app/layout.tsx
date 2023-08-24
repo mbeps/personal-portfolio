@@ -40,15 +40,23 @@ export default function RootLayout({
         className={`
           bg-white dark:bg-stone-900
           transition-colors duration-700 ease-in-out
+
         `}
       >
         <ThemeProvider enableSystem={true} attribute="class">
           <Navbar />
           <div className="pt-24" />
-          <div className="globalWidth px-4 sm:px-6  animate-fadeIn animation-delay-2">
+          <div
+            className="
+              globalWidth 
+              px-4 sm:px-6  
+              animate-fadeIn animation-delay-2           
+              min-h-[85vh]
+              "
+          >
             {children}
-            <Footer />
           </div>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

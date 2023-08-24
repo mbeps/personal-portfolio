@@ -25,7 +25,7 @@ const ThemeToggle: React.FC = () => {
   };
 
   const baseButtonClass =
-    "group p-2 rounded-full transition-colors duration-1000";
+    "group p-2.5 rounded-full transition-colors duration-1000";
   const darkButtonClass = "bg-black hover:bg-white";
   const lightButtonClass = "bg-white hover:bg-black";
 
@@ -41,7 +41,7 @@ const ThemeToggle: React.FC = () => {
           className={`${baseButtonClass} ${darkButtonClass}`}
         >
           <RiSunLine
-            size={25}
+            size={27}
             className={`${baseIconClass} ${darkIconClass}`}
           />
         </button>
@@ -51,7 +51,7 @@ const ThemeToggle: React.FC = () => {
           className={`${baseButtonClass} ${lightButtonClass}`}
         >
           <RiMoonFill
-            size={25}
+            size={27}
             className={`${baseIconClass} ${lightIconClass}`}
           />
         </button>

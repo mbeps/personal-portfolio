@@ -14,7 +14,7 @@ import SocialIcon from "./SocialIcon";
  */
 const Footer = () => {
   return (
-    <footer className="w-full ">
+    <footer className="globalWidth ">
       <hr className="w-full h-0.5 mx-auto mt-8 bg-neutral-200 dark:bg-neutral-700 border-0"></hr>
       <div
         className="
