@@ -42,7 +42,7 @@ const languages: Language[] = [
     skills: [
       { skill: "Flask", category: "Backend Web Development" },
       { skill: "Django", category: "Backend Web Development" },
-      { skill: "Numpy", category: "Machine Learning" },
+      { skill: "Scikit Learn", category: "Machine Learning" },
       { skill: "Jupyter Notebooks", category: "Machine Learning" },
       { skill: "PyTest", category: "Testing" },
       { skill: "SQLAlchemy", category: "Object Relational Mapper" },

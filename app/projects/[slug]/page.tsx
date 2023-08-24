@@ -22,7 +22,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
-import { BsArrowUpRightSquare, BsGithub } from "react-icons/bs";
+import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 
 const projects: Project[] = [
   ...webdevProjects,
@@ -166,7 +166,8 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
                       text-neutral-900 dark:text-white 
                       hover:text-neutral-900 
                       hover:bg-neutral-300
-                      w-full
+                      w-auto md:w-full
+                      rounded-full md:rounded-xl
                   "
                     >
                       <div className="flex flex-row justify-center md:justify-start gap-4 w-full">
@@ -188,10 +189,11 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
                       hover:text-neutral-900 
                       hover:bg-neutral-300
                       w-auto md:w-full
+                      rounded-full md:rounded-xl
                     "
                     >
                       <div className="flex flex-row justify-center md:justify-start gap-4 w-full">
-                        <BsArrowUpRightSquare size={30} />
+                        <BsArrowUpRightCircle size={30} />
                         <p className="hidden md:block mt-1 md:text-left text-center">
                           Deployment
                         </p>
