@@ -43,6 +43,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
 
   return (
     <div>
+      <title>{`Maruf - Blogs: ${blog.data.title}`}</title>
       <div className="my-12 text-center">
         <HeadingTwo title={blog.data.title} />
       </div>
