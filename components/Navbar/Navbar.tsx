@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { IoMdClose, IoMdMenu } from "react-icons/io";
 import HomeButton from "./HomeButton";
 import NavbarItem from "./NavbarItem";
-import Overlay from "./Overlay";
+import NavbarOverlay from "./NavbarOverlay";
 import ThemeToggle from "./ThemeToggle";
 
 /**
@@ -107,7 +107,7 @@ export default function Navbar() {
           </div>
         </div>
       </header>
-      <Overlay
+      <NavbarOverlay
         isOpen={isOverlayOpen}
         toggle={toggleOverlay}
         items={NAV_ITEMS}

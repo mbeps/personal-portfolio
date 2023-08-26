@@ -1,6 +1,7 @@
 import { NavItem } from "@/types/pages";
 import Socials from "../Socials/Socials";
 import NavbarItem from "./NavbarItem";
+import Overlay from "../Sheet/Sheet";
 
 interface OverlayProps {
   isOpen: boolean;
@@ -8,17 +9,9 @@ interface OverlayProps {
   items: Array<NavItem>;
 }
 
-const Overlay: React.FC<OverlayProps> = ({ isOpen, toggle, items }) => {
+const NavbarOverlay: React.FC<OverlayProps> = ({ isOpen, toggle, items }) => {
   return (
-    <div
-      className={`fixed top-0 right-0 h-screen w-full z-40 
-			transform ${isOpen ? "translate-x-0" : "translate-x-full"}
-			transition-all duration-700 ease-in-out
-			bg-white dark:bg-stone-900 overflow-y-auto
-			backdrop-blur-xl 
-			bg-opacity-60 dark:bg-opacity-60
-			flex flex-col justify-between`}
-    >
+    <Overlay isOpen={isOpen} toggle={toggle}>
       <div
         className="
 					items-center justify-center 
@@ -40,8 +33,8 @@ const Overlay: React.FC<OverlayProps> = ({ isOpen, toggle, items }) => {
       <div className="w-full pb-20">
         <Socials />
       </div>
-    </div>
+    </Overlay>
   );
 };
 
-export default Overlay;
+export default NavbarOverlay;
