@@ -22,18 +22,13 @@ interface GalleryProps {
  */
 const Gallery: React.FC<GalleryProps> = ({ images }) => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
 
   /**
    * Changes the active image to the next image in the list.
    * If the current image is the last image, it will loop back to the first image.
    */
   const handleNext = () => {
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setActiveIndex((prevIndex) => (prevIndex + 1) % images.length);
-      setIsTransitioning(false);
-    }, 300); // 300ms matches the transition duration
+    setActiveIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 
   /**
@@ -41,13 +36,9 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
    *
    */
   const handlePrev = () => {
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setActiveIndex(
-        (prevIndex) => (prevIndex - 1 + images.length) % images.length
-      );
-      setIsTransitioning(false);
-    }, 300); // 300ms matches the transition duration
+    setActiveIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+    );
   };
 
   return (
@@ -65,7 +56,7 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
           onClick={handlePrev}
         />
         {/* Image Container */}
-        <div className="w-full animate-fadeIn animation-delay-2">
+        <div className="w-full">
           {/* Image Preview */}
           <Image
             src={images[activeIndex]}
@@ -74,13 +65,12 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
             width={2000}
             height={1125}
             priority
-            className={`
+            className="
               w-full h-[60vh] 
               object-contain rounded-xl 
               bg-neutral-100 dark:bg-neutral-900 
-              transition-all duration-300 ease-in-out
-              ${isTransitioning ? "opacity-0" : "opacity-100"}
-              p-2`}
+              transition-colors duration-700
+              p-2"
           />
         </div>
         <IoIosArrowDroprightCircle
