@@ -4,7 +4,7 @@ import Gallery from "@/components/Gallery/Gallery";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 
-import getImagesFromFilesystem from "@/actions/getImagesFromFilesystem";
+import getImagesFromFileSystem from "@/actions/getImagesFromFileSystem";
 import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
 import Button from "@/components/Atoms/Button";
 import TabbedReader from "./components/TabbedReader";
@@ -76,7 +76,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const projectLanguage = project?.programmingLanguage;
   const projectDescription = project?.description;
 
-  let gallery = getImagesFromFilesystem(`public/projects/${slug}/gallery`);
+  let gallery = getImagesFromFileSystem(`public/projects/${slug}/gallery`);
 
   gallery = gallery
     .filter((image) => image.endsWith(".png"))
