@@ -9,6 +9,16 @@ interface OverlayProps {
   items: Array<NavItem>;
 }
 
+/**
+ * Overlay component that pops up from the right side of the screen.
+ * This displays the links to other pages when the hamburger menu is clicked.
+ * It allows the user to navigate to other pages.
+ * It is necessary on mobile devices because the navbar is hidden on mobile devices.
+ * @param isOpen (boolean) - Whether the overlay is open or not
+ * @param toggle (function) - Function to toggle the overlay
+ * @param items (NavItem[]) - Array of NavItem objects to display in the overlay
+ * @returns (JSX.Element) - Overlay component
+ */
 const NavbarOverlay: React.FC<OverlayProps> = ({ isOpen, toggle, items }) => {
   return (
     <Overlay isOpen={isOpen} toggle={toggle}>

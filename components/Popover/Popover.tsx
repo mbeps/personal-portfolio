@@ -13,6 +13,8 @@ interface MyPopoverProps {
  * The popover displays the children passed to it.
  * It is scrollable and has a max height of 50vh.
  * @param title (string): text to display in the popover button
+ * @param children (ReactNode): JSX elements to display in the popover
+ * @param className (string): user-provided className to merge with default className
  * @returns (JSX.Element): A popover component.
  */
 export const Popover: React.FC<MyPopoverProps> = ({

@@ -4,8 +4,7 @@ import Link from "next/link";
 
 /**
  * Home button component.
- * When clicked, scrolls to the top of the page if the user is already on the home page.
- * Otherwise, navigates to the home page.
+ * It displays the logo and links to the home page.
  * @returns (JSX.Element): Home button component
  */
 const HomeButton: React.FC = () => {

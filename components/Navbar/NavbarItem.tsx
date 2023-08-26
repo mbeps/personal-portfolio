@@ -9,11 +9,23 @@ interface NavbarItemProps {
   children: React.ReactNode;
 }
 
+/**
+ * Navbar button that navigates to a different page when clicked.
+ * It also highlights the button when the user is on the page it links to.
+ * The button is also highlighted when the user hovers over it.
+ * @param to (string) - The path to navigate to when the navbar item is clicked
+ * @param children (ReactNode) - The content to display inside the navbar item
+ * @returns (JSX.Element) - A navbar item component
+ */
 const NavbarItem: React.FC<NavbarItemProps> = ({ to, children }) => {
   const router = useRouter();
   const pathname = usePathname();
   const { isOpen: isOverlayOpen, toggle: toggleOverlay } = useNavbarStore();
 
+  /**
+   * Handles the click event of the navbar item.
+   * It closes the overlay and navigates to the page.
+   */
   const handleClick = () => {
     toggleOverlay();
     router.push(to);
