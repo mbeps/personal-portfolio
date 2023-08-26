@@ -1,13 +1,13 @@
-"use client"; // this is a client component
+"use client";
 import { useNavbarStore } from "@/atoms/navbarStore";
-import { usePathname, useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
-import { IoMdClose, IoMdMenu } from "react-icons/io";
-import NavbarItem from "./NavbarItem";
-import ThemeToggle from "./ThemeToggle";
-import HomeButton from "./HomeButton";
 import { NAV_ITEMS } from "@/constants/pages";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { IoMdClose, IoMdMenu } from "react-icons/io";
+import HomeButton from "./HomeButton";
+import NavbarItem from "./NavbarItem";
 import Overlay from "./Overlay";
+import ThemeToggle from "./ThemeToggle";
 
 /**
  * Navbar component shown at the top of the page.
@@ -17,7 +17,7 @@ import Overlay from "./Overlay";
 export default function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
-  const { isOpen: isOverOpen, toggle: setOverlayOpen } = useNavbarStore();
+  const { isOpen: isOverlayOpen, toggle: toggleOverlay } = useNavbarStore();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,7 +32,7 @@ export default function Navbar() {
     };
   }, []);
 
-  const transitionDuration = isOverOpen ? "1000ms" : "700ms";
+  const transitionDuration = isOverlayOpen ? "1000ms" : "700ms";
 
   return (
     <>
@@ -44,12 +44,12 @@ export default function Navbar() {
           top-0 
           z-50 
           ${
-            scrolled && !isOverOpen ? "shadow-lg " : ""
+            scrolled && !isOverlayOpen ? "shadow-lg " : ""
           } dark:shadow-neutral-800 
           bg-white dark:bg-stone-900 
           transition-all ease-in-out 
           ${
-            !isOverOpen
+            !isOverlayOpen
               ? "bg-opacity-60 dark:bg-opacity-60 backdrop-blur-xl"
               : "bg-opacity-0 dark:bg-opacity-0"
           }
@@ -69,9 +69,13 @@ export default function Navbar() {
                   text-neutral-800 dark:text-neutral-200 
                   rounded-xl 
                   outline-none ml-2"
-                onClick={() => setOverlayOpen()}
+                onClick={() => toggleOverlay()}
               >
-                {isOverOpen ? <IoMdClose size={30} /> : <IoMdMenu size={30} />}
+                {isOverlayOpen ? (
+                  <IoMdClose size={30} />
+                ) : (
+                  <IoMdMenu size={30} />
+                )}
               </button>
             </div>
           </div>
@@ -103,7 +107,11 @@ export default function Navbar() {
           </div>
         </div>
       </header>
-      <Overlay isOpen={isOverOpen} toggle={setOverlayOpen} items={NAV_ITEMS} />
+      <Overlay
+        isOpen={isOverlayOpen}
+        toggle={toggleOverlay}
+        items={NAV_ITEMS}
+      />
     </>
   );
 }

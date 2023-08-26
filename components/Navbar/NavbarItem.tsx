@@ -1,7 +1,8 @@
 "use client";
 
+import { useNavbarStore } from "@/atoms/navbarStore";
+import { useRouter } from "next/navigation";
 import React from "react";
-import Link from "next/link";
 
 interface NavbarItemProps {
   to: string;
@@ -14,6 +15,14 @@ const NavbarItem: React.FC<NavbarItemProps> = ({
   children,
   active = false,
 }) => {
+  const router = useRouter();
+  const { isOpen: isOverlayOpen, toggle: toggleOverlay } = useNavbarStore();
+
+  const handleClick = () => {
+    toggleOverlay();
+    router.push(to);
+  };
+
   const navbarItemStyle = `
       block lg:inline-block 
       ${active ? "font-bold" : "font-normal"} 
@@ -25,25 +34,25 @@ const NavbarItem: React.FC<NavbarItemProps> = ({
       hover:font-bold duration-300 
       relative group
       overflow-hidden
+      font-semibold md:font-normal
     `;
 
   return (
-    <Link href={to}>
-      <div className={navbarItemStyle}>
-        {children}
-        <span
-          className="
-            w-full h-[3px]  
+    <div className={navbarItemStyle} onClick={() => handleClick()}>
+      {children}
+      <span
+        className="
+            w-full h-[3px]   
             rounded-full
+            
             absolute 
             bottom-[2px]    
             left-0 inline-block 
             bg-red-500 dark:bg-red-900 
             -translate-x-[100%] group-hover:translate-x-0 transition-transform 
             duration-300"
-        />
-      </div>
-    </Link>
+      />
+    </div>
   );
 };
 

@@ -1,10 +1,4 @@
-import {
-  AiOutlineGithub,
-  AiOutlineMail,
-  AiOutlineTwitter,
-  AiFillLinkedin,
-} from "react-icons/ai";
-import SocialIcon from "./SocialIcon";
+import Socials from "../Socials/Socials";
 
 /**
  * Footer to be displayed at the bottom of the page.
@@ -28,35 +22,7 @@ const Footer = () => {
         <div className="flex flex-row items-center justify-center space-x-1 text-neutral-500 dark:text-neutral-100">
           © 2023 Maruf Bepary<a href="/" className="hover:underline"></a>
         </div>
-        <div
-          className="
-            flex flex-row 
-            items-center justify-center 
-            space-x-2 mb-1 
-          "
-        >
-          <SocialIcon
-            title="GitHub"
-            link="https://github.com/mbeps"
-            IconComponent={AiOutlineGithub}
-          />
-          <SocialIcon
-            title="Twitter"
-            link="https://twitter.com/m_beps"
-            IconComponent={AiOutlineTwitter}
-          />
-          <SocialIcon
-            title="LinkedIn"
-            link="https://www.linkedin.com/in/maruf-bepary-104722180/"
-            IconComponent={AiFillLinkedin}
-          />
-          <SocialIcon
-            title="Email"
-            link="bepary71@gmail.com"
-            IconComponent={AiOutlineMail}
-            isEmail
-          />
-        </div>
+        <Socials />
       </div>
     </footer>
   );
