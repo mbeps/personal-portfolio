@@ -105,6 +105,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
 
   return (
     <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
+      <title>{`Maruf - Projects: ${projectName}`}</title>
       <HeadingTwo title={projectName!} />
 
       {/* Images Section */}

@@ -19,6 +19,7 @@ export default function NotFound() {
       text-center 
       "
     >
+      <title>Maruf - Page Not Found</title>
       <h1 className="text-5xl font-semibold text-red-500 dark:text-red-700 my-6">
         404: Page does not exist
       </h1>
