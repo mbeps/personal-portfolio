@@ -1,10 +1,9 @@
 "use client";
 
-import Markdown from "markdown-to-jsx";
+import Button from "@/components/Atoms/Button";
+import Reader from "@/components/Reader/Reader";
+import HeadingTwo from "@/components/Text/HeadingTwo";
 import React, { useEffect, useState } from "react";
-import HeadingTwo from "../Text/HeadingTwo";
-import Button from "../Atoms/Button";
-import Reader from "./Reader";
 
 type TabbedReaderProps = {
   content: {

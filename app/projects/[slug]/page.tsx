@@ -4,10 +4,10 @@ import Gallery from "@/components/Gallery/Gallery";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 
-import getImagesFromFilesystem from "@/actions/getImagesFromFilesystem";
+import getImagesFromFileSystem from "@/actions/getImagesFromFileSystem";
 import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
 import Button from "@/components/Atoms/Button";
-import TabbedReader from "@/components/Reader/TabbedReader";
+import TabbedReader from "./components/TabbedReader";
 import {
   backendWebDevProjects,
   extraWebDevProjects,
@@ -76,7 +76,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const projectLanguage = project?.programmingLanguage;
   const projectDescription = project?.description;
 
-  let gallery = getImagesFromFilesystem(`public/projects/${slug}/gallery`);
+  let gallery = getImagesFromFileSystem(`public/projects/${slug}/gallery`);
 
   gallery = gallery
     .filter((image) => image.endsWith(".png"))
@@ -111,7 +111,15 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
       {gallery && gallery.length > 1 ? (
         <Gallery images={gallery} />
       ) : project?.imageURL ? (
-        <div className="w-full flex items-center justify-center relative z-0">
+        <div
+          className="
+            w-full 
+            flex items-center justify-center 
+            relative 
+            z-0
+            animate-fadeIn animation-delay-2
+          "
+        >
           <Image
             src={project.imageURL}
             alt="Currently Active"

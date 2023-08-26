@@ -1,9 +1,9 @@
 "use client"; // this is a client component
 import scrollToSection from "@/actions/scrollToSection";
+import Button from "@/components/Atoms/Button";
 import Image from "next/image";
 import { HiArrowDown } from "react-icons/hi";
 import { Link } from "react-scroll/modules";
-import Button from "../Atoms/Button";
 
 /**+
  * Hero section component shown at the top of the page.

@@ -5,7 +5,7 @@ import fs from "fs";
  * @param filePath (string) - path to directory
  * @returns (string[]) - array of image file names
  */
-const getImagesFromFilesystem = (filePath: string): string[] => {
+const getImagesFromFileSystem = (filePath: string): string[] => {
   try {
     const files = fs.readdirSync(filePath);
     return files.filter(
@@ -17,4 +17,4 @@ const getImagesFromFilesystem = (filePath: string): string[] => {
   }
 };
 
-export default getImagesFromFilesystem;
+export default getImagesFromFileSystem;

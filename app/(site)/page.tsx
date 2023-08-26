@@ -1,6 +1,6 @@
-import AboutSection from "@/components/Content/AboutSection/AboutSection";
-import HeroSection from "@/components/Content/HeroSection";
-import ProjectsSection from "@/components/Content/ProjectSection";
+import AboutSection from "./components/AboutSection/AboutSection";
+import HeroSection from "./components/HeroSection";
+import ProjectsSection from "./components/ProjectSection";
 
 /**
  * Home page which contains the Hero, About and Projects sections.

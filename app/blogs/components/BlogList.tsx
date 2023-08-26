@@ -1,11 +1,11 @@
 "use client";
 
 import BlogItem from "@/components/Blogs/BlogItem";
+import SearchInput from "@/components/Inputs/SearchInput";
 import useDebounce from "@/hooks/useDebounce";
 import { BlogMetadata } from "@/types/blog";
 import Fuse from "fuse.js";
 import { useState } from "react";
-import SearchInput from "../Inputs/SearchInput";
 
 interface BlogListProps {
   blogs: BlogMetadata[];

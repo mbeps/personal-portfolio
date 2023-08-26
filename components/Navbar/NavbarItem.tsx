@@ -1,56 +1,25 @@
-import { useRouter } from "next/navigation";
-import React from "react";
+"use client";
+
 import { useNavbarStore } from "@/atoms/navbarStore";
+import { usePathname, useRouter } from "next/navigation";
+import React from "react";
 
 interface NavbarItemProps {
   to: string;
   children: React.ReactNode;
-  isSamePage?: boolean;
-  active?: boolean;
 }
 
-/**
- * A button to be displayed on the navbar.
- * This button can redirect to a different page or scroll to an element on the same page.
- * It also highlights the current page by making the button bold.
- *
- * @param to (string) The path to navigate to
- * @param children (React.ReactNode) The content of the navbar item
- * @param isSamePage (boolean) Whether the path is on the same page
- * @param active (boolean) Whether the navbar item is active
- * @returns (JSX.Element): a navbar item to be displayed on the navbar
- */
-
-const NavbarItem: React.FC<NavbarItemProps> = ({
-  to,
-  children,
-  isSamePage = false,
-  active = false,
-}) => {
+const NavbarItem: React.FC<NavbarItemProps> = ({ to, children }) => {
   const router = useRouter();
-  const { close } = useNavbarStore();
+  const pathname = usePathname();
+  const { isOpen: isOverlayOpen, toggle: toggleOverlay } = useNavbarStore();
 
-  /**
-   * Handles the click event of the navbar item.
-   * If the path is on the same page, scroll to the element with the id of the path.
-   * Otherwise, navigate to the path.
-   */
   const handleClick = () => {
-    if (isSamePage) {
-      const element = document.getElementById(to);
-      if (element) {
-        window.scrollTo({
-          top: element.offsetTop,
-          behavior: "smooth",
-        });
-      } else {
-        router.push(to);
-      }
-    } else {
-      router.push(to);
-    }
-    close(); // close the navbar when a button is clicked
+    toggleOverlay();
+    router.push(to);
   };
+
+  let active = pathname === to;
 
   const navbarItemStyle = `
       block lg:inline-block 
@@ -63,23 +32,25 @@ const NavbarItem: React.FC<NavbarItemProps> = ({
       hover:font-bold duration-300 
       relative group
       overflow-hidden
+      md:text-base text-xl
     `;
 
   return (
-    <button onClick={handleClick} className={navbarItemStyle}>
+    <div className={navbarItemStyle} onClick={() => handleClick()}>
       {children}
       <span
         className="
-          w-full h-[3px]  
-          rounded-full
-          absolute 
-          bottom-[2px]    
-          left-0 inline-block 
-          bg-red-500 dark:bg-red-900 
-          -translate-x-[100%] group-hover:translate-x-0 transition-transform 
-          duration-300"
+            w-full h-[3px]   
+            rounded-full
+            
+            absolute 
+            bottom-[2px]    
+            left-0 inline-block 
+            bg-red-500 dark:bg-red-900 
+            -translate-x-[100%] group-hover:translate-x-0 transition-transform 
+            duration-300"
       />
-    </button>
+    </div>
   );
 };
 
