@@ -1,7 +1,6 @@
 "use client";
 import { useNavbarStore } from "@/atoms/navbarStore";
 import { NAV_ITEMS } from "@/constants/pages";
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { IoMdClose, IoMdMenu } from "react-icons/io";
 import HomeButton from "./HomeButton";
@@ -15,7 +14,6 @@ import ThemeToggle from "./ThemeToggle";
  * @returns (JSX.Element): Navbar component
  */
 export default function Navbar() {
-  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const { isOpen: isOverlayOpen, toggle: toggleOverlay } = useNavbarStore();
 
@@ -93,9 +91,7 @@ export default function Navbar() {
                     key={item.label}
                     className="flex justify-center w-full md:w-auto"
                   >
-                    <NavbarItem to={item.page} active={pathname === item.page}>
-                      {item.label}
-                    </NavbarItem>
+                    <NavbarItem to={item.page}>{item.label}</NavbarItem>
                   </div>
                 );
               })}

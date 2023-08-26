@@ -1,27 +1,25 @@
 "use client";
 
 import { useNavbarStore } from "@/atoms/navbarStore";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 
 interface NavbarItemProps {
   to: string;
   children: React.ReactNode;
-  active?: boolean;
 }
 
-const NavbarItem: React.FC<NavbarItemProps> = ({
-  to,
-  children,
-  active = false,
-}) => {
+const NavbarItem: React.FC<NavbarItemProps> = ({ to, children }) => {
   const router = useRouter();
+  const pathname = usePathname();
   const { isOpen: isOverlayOpen, toggle: toggleOverlay } = useNavbarStore();
 
   const handleClick = () => {
     toggleOverlay();
     router.push(to);
   };
+
+  let active = pathname === to;
 
   const navbarItemStyle = `
       block lg:inline-block 
@@ -34,7 +32,7 @@ const NavbarItem: React.FC<NavbarItemProps> = ({
       hover:font-bold duration-300 
       relative group
       overflow-hidden
-      font-semibold md:font-normal
+      md:text-base text-xl
     `;
 
   return (
