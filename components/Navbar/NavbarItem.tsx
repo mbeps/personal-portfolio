@@ -20,14 +20,16 @@ interface NavbarItemProps {
 const NavbarItem: React.FC<NavbarItemProps> = ({ to, children }) => {
   const router = useRouter();
   const pathname = usePathname();
-  const { isOpen: isOverlayOpen, toggle: toggleOverlay } = useNavbarStore();
+  const { isOpen: isOverlayOpen, close: closeOverlay } = useNavbarStore();
 
   /**
    * Handles the click event of the navbar item.
    * It closes the overlay and navigates to the page.
    */
   const handleClick = () => {
-    toggleOverlay();
+    if (isOverlayOpen) {
+      closeOverlay();
+    }
     router.push(to);
   };
 
