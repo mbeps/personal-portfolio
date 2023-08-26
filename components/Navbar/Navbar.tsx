@@ -10,6 +10,9 @@ import ThemeToggle from "./ThemeToggle";
 
 /**
  * Navbar component shown at the top of the page.
+ * It displays the logo, links to other pages, and a dark / light mode toggle.
+ * It also displays a hamburger menu for mobile devices.
+ * When the hamburger menu is clicked, it opens a sidebar with the links to other pages.
  *
  * @returns (JSX.Element): Navbar component
  */

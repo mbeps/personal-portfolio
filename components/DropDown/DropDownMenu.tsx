@@ -12,6 +12,8 @@ interface DropdownProps {
 
 /**
  * Dropdown menu for selecting options.
+ * Displays a button which opens a dropdown menu when clicked.
+ * The dropdown menu displays the options passed to it.
  *
  * @param selected (string) The selected option
  * @param options (string[]) The list of options

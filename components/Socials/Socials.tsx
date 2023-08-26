@@ -5,10 +5,15 @@ import {
   AiFillLinkedin,
   AiOutlineMail,
 } from "react-icons/ai";
-import SocialIcon from "../Footer/SocialIcon";
+import SocialIcon from "./SocialIcon";
 
 type SocialsProps = {};
 
+/**
+ * Socials component that displays social links.
+ *
+ * @returns (JSX.Element) - Socials component
+ */
 const Socials: React.FC<SocialsProps> = () => {
   return (
     <div

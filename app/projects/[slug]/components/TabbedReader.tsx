@@ -15,6 +15,9 @@ type TabbedReaderProps = {
 /**
  * Renders Markdown content into HTML in a tabbed view.
  * The user can select between "Features" and "Reflection" tabs.
+ * If the content does not have a "Features" section, the "Reflection" tab will be selected by default.
+ * If the content does not have a "Reflection" section, the "Features" tab will be selected by default.
+ * If the content does not have a "Features" or "Reflection" section, nothing will be rendered.
  *
  * @param features (string): features to be rendered
  * @param blog (string): blog to be rendered

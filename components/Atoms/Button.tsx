@@ -19,10 +19,12 @@ interface ButtonProps {
  * - filled: a filled button with a background color
  * - outlined: a button with a border and no background color
  * - ghost: a button with no background color and no border
+ * - gradient: a button with a gradient background color
  *
  * The onClick prop can be a string or a function.
  * If it is a string, it will redirect to the page.
  * If it is a function, it will execute the function.
+ * If the disabled prop is true, the button will be disabled.
  *
  * @param onClick (string | function): the action to be performed when the button is clicked
  * @param variant (ButtonVariant): the variant of the button
