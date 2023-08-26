@@ -1,7 +1,7 @@
 import Button from "@/components/Atoms/Button";
 import ProjectItem from "@/components/ProjectItem/ProjectItem";
+import HeadingTwo from "@/components/Text/HeadingTwo";
 import { webdevProjects } from "@/constants/projects";
-import HeadingTwo from "../Text/HeadingTwo";
 
 /**
  * Project section listing the projects I have worked on.

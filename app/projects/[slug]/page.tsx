@@ -7,7 +7,7 @@ import HeadingTwo from "@/components/Text/HeadingTwo";
 import getImagesFromFilesystem from "@/actions/getImagesFromFilesystem";
 import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
 import Button from "@/components/Atoms/Button";
-import TabbedReader from "@/components/Reader/TabbedReader";
+import TabbedReader from "./components/TabbedReader";
 import {
   backendWebDevProjects,
   extraWebDevProjects,

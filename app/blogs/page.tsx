@@ -1,6 +1,6 @@
 import getBlogMetadata from "@/actions/getBlogMetadata";
-import { BlogList } from "@/components/Blogs/BlogList";
 import HeadingOne from "@/components/Text/HeadingOne";
+import { BlogList } from "./components/BlogList";
 
 /**
  * Displays a list of all blogs that can be opened.
