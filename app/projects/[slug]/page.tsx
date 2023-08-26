@@ -111,7 +111,15 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
       {gallery && gallery.length > 1 ? (
         <Gallery images={gallery} />
       ) : project?.imageURL ? (
-        <div className="w-full flex items-center justify-center relative z-0">
+        <div
+          className="
+            w-full 
+            flex items-center justify-center 
+            relative 
+            z-0
+            animate-fadeIn animation-delay-2
+          "
+        >
           <Image
             src={project.imageURL}
             alt="Currently Active"

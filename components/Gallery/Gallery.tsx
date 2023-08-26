@@ -65,7 +65,7 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
           onClick={handlePrev}
         />
         {/* Image Container */}
-        <div className="w-full">
+        <div className="w-full animate-fadeIn animation-delay-2">
           {/* Image Preview */}
           <Image
             src={images[activeIndex]}
