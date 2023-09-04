@@ -18,7 +18,6 @@ export default function BlogPage() {
 
   return (
     <main>
-      <title>Maruf - Blogs</title>
       <section id="blogs">
         <div className="my-12 md:pt-8 animate-fadeIn animation-delay-2">
           <HeadingOne title="Blog" />
