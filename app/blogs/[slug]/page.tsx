@@ -29,7 +29,7 @@ export async function generateMetadata(
   const blog = getBlogMetadataBySlug(slug, allBlogs);
 
   return {
-    title: `Maruf - Blogs: ${blog?.title}`,
+    title: `Maruf Bepary - Blogs: ${blog?.title}`,
     description: blog?.subtitle,
   };
 }

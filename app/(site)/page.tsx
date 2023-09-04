@@ -4,9 +4,11 @@ import ProjectsSection from "./components/ProjectSection";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Maruf - Home",
-  description:
-    "The homepage for my personal website. It contains information about me, my projects and my contact information.",
+  title: "Maruf Bepary",
+  description: `The homepage for my personal website. 
+    It contains information about me, my projects and my contact information.
+    I am a software developer and a computer science student graduate from Royal Holloway, University of London.
+    `,
 };
 
 /**

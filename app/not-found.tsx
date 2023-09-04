@@ -2,7 +2,7 @@ import Button from "@/components/Atoms/Button";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Maruf - Page Not Found",
+  title: "Maruf Bepary - Page Not Found",
   description:
     "The page you are looking for does not exist. Navigate back to the home page",
 };

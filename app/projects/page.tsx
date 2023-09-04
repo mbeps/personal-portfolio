@@ -12,7 +12,7 @@ import ProjectsList from "./components/ProjectsList";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Maruf - Projects",
+  title: "Maruf Bepary - Projects",
   description:
     "A list of all the projects I have worked on. The projects are grouped by type.",
 };

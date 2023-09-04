@@ -53,7 +53,7 @@ export async function generateMetadata(
 
   // Create metadata based on the project details
   return {
-    title: `Maruf - Projects: ${project?.name}`,
+    title: `Maruf Bepary - Projects: ${project?.name}`,
     description: project?.description,
     openGraph: {
       // No images are specified in your Project object

@@ -4,7 +4,7 @@ import { BlogList } from "./components/BlogList";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Maruf - Blogs",
+  title: "Maruf Bepary - Blogs",
   description:
     "This is the blog page for my personal website. It contains all the blogs I have written. ",
 };
