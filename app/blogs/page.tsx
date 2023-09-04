@@ -14,7 +14,7 @@ export default function BlogPage() {
     <main>
       <title>Maruf - Blogs</title>
       <section id="blogs">
-        <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2">
+        <div className="my-12 md:pt-8 animate-fadeIn animation-delay-2">
           <HeadingOne title="Blog" />
 
           <BlogList blogs={blogMetadata} />

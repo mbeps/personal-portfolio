@@ -35,7 +35,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
     : blogs;
 
   return (
-    <div className="my-12 pb-12 md:pt-2 md:pb-36">
+    <div className="my-12 pb-12 md:pt-2">
       <div
         className="
 				flex flex-col 
