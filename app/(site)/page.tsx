@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: `The homepage for my personal website. 
     It contains information about me, my projects and my contact information.
     I am a software developer and a computer science student graduate from Royal Holloway, University of London.
-    `,
+    Graduate | Computer Science | Software Developer | Full Stack Developer | Software Engineer`,
 };
 
 /**
