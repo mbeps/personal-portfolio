@@ -1,6 +1,13 @@
 import AboutSection from "./components/AboutSection/AboutSection";
 import HeroSection from "./components/HeroSection";
 import ProjectsSection from "./components/ProjectSection";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Maruf - Home",
+  description:
+    "The homepage for my personal website. It contains information about me, my projects and my contact information.",
+};
 
 /**
  * Home page which contains the Hero, About and Projects sections.

@@ -34,7 +34,6 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={currentTheme === "dark" ? "dark" : ""}>
-      <title>Maruf - Home</title>
       <head />
       <body
         className={`

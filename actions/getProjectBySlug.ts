@@ -1,7 +1,7 @@
 import Project from "@/types/projects";
 
 /**
- * GEts the project with the given slug (unique identifier).
+ * Gets the project with the given slug (unique identifier).
  * If no project with the given slug exists in the given list of projects, undefined is returned.
  * This returns the project object itself, not just a single property of the project.
  * @param slug (string): The slug of the project to get the project of
