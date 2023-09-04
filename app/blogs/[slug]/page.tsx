@@ -2,8 +2,37 @@ import getBlogMetadata from "@/actions/getBlogMetadata";
 import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
 import Reader from "@/components/Reader/Reader";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import Markdown from "markdown-to-jsx";
 import { notFound } from "next/navigation";
+import type { Metadata, ResolvingMetadata } from "next";
+import { getBlogMetadataBySlug } from "@/actions/getBlogMetadataBySlug";
+
+type BlogPageProps = {
+  params: { slug: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+/**
+ * Metadata object for the dynamic blog page.
+ * Each blog page has a unique title and description.
+ * @param (BlogPageProps) - props: the content of the blog
+ * @param parent (ResolvingMetadata) - parent metadata
+ * @returns (Promise<Metadata>): metadata for the blog (title and description
+ */
+export async function generateMetadata(
+  { params, searchParams }: BlogPageProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const slug = params.slug;
+  const allBlogs = getBlogMetadata();
+
+  // Assume getBlogMetadataById function fetches metadata by slug
+  const blog = getBlogMetadataBySlug(slug, allBlogs);
+
+  return {
+    title: `Maruf - Blogs: ${blog?.title}`,
+    description: blog?.subtitle,
+  };
+}
 
 /**
  * Generates the static paths for the blogs.
@@ -22,12 +51,6 @@ export const generateStaticParams = async () => {
   }));
 };
 
-interface BlogPageProps {
-  params: {
-    slug: string;
-  };
-}
-
 /**
  * Page displaying the rendered markdown which can be read by the user.
  * @param props: the content of the blog
@@ -43,7 +66,6 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
 
   return (
     <div>
-      <title>{`Maruf - Blogs: ${blog.data.title}`}</title>
       <div className="my-12 text-center">
         <HeadingTwo title={blog.data.title} />
       </div>

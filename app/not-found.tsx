@@ -1,4 +1,11 @@
 import Button from "@/components/Atoms/Button";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Maruf - Page Not Found",
+  description:
+    "The page you are looking for does not exist. Navigate back to the home page",
+};
 
 export const revalidate = 0; // page will not be cached
 
@@ -19,7 +26,6 @@ export default function NotFound() {
       text-center 
       "
     >
-      <title>Maruf - Page Not Found</title>
       <h1 className="text-5xl font-semibold text-red-500 dark:text-red-700 my-6">
         404: Page does not exist
       </h1>

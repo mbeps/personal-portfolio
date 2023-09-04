@@ -23,6 +23,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
+import { ResolvingMetadata, Metadata } from "next";
 
 const projects: Project[] = [
   ...webdevProjects,
@@ -35,6 +36,33 @@ const projects: Project[] = [
 ];
 
 /**
+ * Metadata object for the dynamic project page.
+ * @param (ProjectPageProps) - props: the content of the project
+ * @param parent (ResolvingMetadata) - parent metadata
+ * @returns (Promise<Metadata>): metadata for the project (title and description)
+ */
+export async function generateMetadata(
+  { params, searchParams }: ProjectPageProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  // Read route params
+  const slug = params.slug;
+
+  // Assume getProjectBySlug function fetches project by slug
+  const project = getProjectBySlug(slug, projects);
+
+  // Create metadata based on the project details
+  return {
+    title: `Maruf - Projects: ${project?.name}`,
+    description: project?.description,
+    openGraph: {
+      // No images are specified in your Project object
+      // but you can add them here if you have them
+    },
+  };
+}
+
+/**
  * Generates the static paths for the projects.
  * These are then used to pre-render the projects pages.
  * This Incremental Static Regeneration allows the projects to be displayed without a server.
@@ -45,9 +73,8 @@ export const generateStaticParams = async () => {
 };
 
 interface ProjectPageProps {
-  params: {
-    slug: string;
-  };
+  params: { slug: string };
+  searchParams: { [key: string]: string | string[] | undefined };
 }
 
 /**
@@ -105,7 +132,6 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
 
   return (
     <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
-      <title>{`Maruf - Projects: ${projectName}`}</title>
       <HeadingTwo title={projectName!} />
 
       {/* Images Section */}
@@ -239,4 +265,5 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
     </div>
   );
 };
+
 export default ProjectPage;
