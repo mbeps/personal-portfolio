@@ -36,7 +36,7 @@ const Socials: React.FC<SocialsProps> = () => {
       /> */}
       <SocialIcon
         title="LinkedIn"
-        link="https://www.linkedin.com/in/maruf-bepary-104722180/"
+        link="https://www.linkedin.com/in/maruf-bepary"
         IconComponent={AiFillLinkedin}
       />
       <SocialIcon
