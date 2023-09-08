@@ -48,6 +48,11 @@ const webdevProjects: Project[] = [
       "Continuous Integration",
       "Continuous Deployment",
       "CI/CD",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
+      "Best",
+      "University",
     ],
   },
   {
@@ -92,6 +97,10 @@ const webdevProjects: Project[] = [
       "Continuous Integration",
       "Continuous Deployment",
       "CI/CD",
+      "Best",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
     ],
   },
   {
@@ -131,6 +140,10 @@ const webdevProjects: Project[] = [
       "Continuous Integration",
       "Continuous Deployment",
       "CI/CD",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
+      "Best",
     ],
   },
   {
@@ -160,6 +173,10 @@ const webdevProjects: Project[] = [
       "Replicate AI",
       "Docker",
       "GitHub Actions",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
+      "Best",
     ],
     type: "Full-Stack Web Dev",
     tags: [
@@ -181,6 +198,9 @@ const webdevProjects: Project[] = [
       "Continuous Integration",
       "Continuous Deployment",
       "CI/CD",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
     ],
   },
 ];
@@ -215,6 +235,9 @@ const extraWebDevProjects: Project[] = [
       "Blogs",
       "Authentication",
       "Account Management",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
     ],
   },
   {
@@ -260,6 +283,7 @@ const extraWebDevProjects: Project[] = [
       "Education",
       "Group Project",
       "Team Project",
+      "University",
     ],
   },
   {
@@ -294,6 +318,9 @@ const extraWebDevProjects: Project[] = [
       "Vector",
       "AI",
       "Artificial Intelligence",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
     ],
   },
 ];
@@ -320,6 +347,10 @@ const backendWebDevProjects: Project[] = [
       "Discussion",
       "Authentication",
       "Account Management",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
+      "University",
     ],
   },
   {
@@ -340,6 +371,9 @@ const backendWebDevProjects: Project[] = [
       "Account Management",
       "Learning",
       "Demo",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
     ],
   },
   {
@@ -360,6 +394,9 @@ const backendWebDevProjects: Project[] = [
       "Account Management",
       "Learning",
       "Demo",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
     ],
   },
   {
@@ -379,6 +416,9 @@ const backendWebDevProjects: Project[] = [
       "Account Management",
       "Learning",
       "Demo",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
     ],
   },
   {
@@ -399,6 +439,9 @@ const backendWebDevProjects: Project[] = [
       "Account Management",
       "Learning",
       "Demo",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
     ],
   },
 ];
@@ -420,7 +463,15 @@ const machineLearningProjects: Project[] = [
     programmingLanguage: `Python`,
     technologies: [`NumPy`, `Scikit Learn`, `Matplotlib`, "Jupyter Notebook"],
     type: "Machine Learning",
-    tags: ["Machine Learning", "Assignment", "University"],
+    tags: [
+      "Machine Learning",
+      "Assignment",
+      "University",
+      "Best",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
+    ],
   },
   {
     name: `Assignment 2`,
@@ -434,7 +485,15 @@ const machineLearningProjects: Project[] = [
     programmingLanguage: `Python`,
     technologies: [`NumPy`, `Scikit Learn`, `Matplotlib`, "Jupyter Notebook"],
     type: "Machine Learning",
-    tags: ["Machine Learning", "Assignment", "University"],
+    tags: [
+      "Machine Learning",
+      "Assignment",
+      "University",
+      "Best",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
+    ],
   },
   {
     name: `Assignment 3`,
@@ -448,7 +507,15 @@ const machineLearningProjects: Project[] = [
     programmingLanguage: `Python`,
     technologies: [`NumPy`, `Scikit Learn`, `Matplotlib`, "Jupyter Notebook"],
     type: "Machine Learning",
-    tags: ["Machine Learning", "Assignment", "University"],
+    tags: [
+      "Machine Learning",
+      "Assignment",
+      "University",
+      "Best",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
+    ],
   },
   {
     name: `Lab Questions`,
@@ -461,7 +528,15 @@ const machineLearningProjects: Project[] = [
     programmingLanguage: `Python`,
     technologies: [`NumPy`, `Scikit Learn`, `Matplotlib`, "Jupyter Notebook"],
     type: "Machine Learning",
-    tags: ["Machine Learning", "Assignment", "University"],
+    tags: [
+      "Machine Learning",
+      "Assignment",
+      "University",
+      "Best",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
+    ],
   },
 ];
 
@@ -492,6 +567,7 @@ const gameDevProjects: Project[] = [
       "GUI",
       "Team Project",
       "Group Project",
+      "Best",
     ],
   },
   {
@@ -507,7 +583,12 @@ const gameDevProjects: Project[] = [
     technologies: [`Game Maker Studio 2`],
     imageURL: `/projects/surface-fight/cover.png`,
     siteURL: "https://bepary-games.itch.io/surface-fight",
-    tags: ["Game Development"],
+    tags: [
+      "Game Development",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
+    ],
   },
   {
     name: "Platformer",
@@ -523,7 +604,12 @@ const gameDevProjects: Project[] = [
     technologies: [`Game Maker Studio 2`],
     imageURL: `/projects/platformer/cover.png`,
     siteURL: "https://bepary-games.itch.io/platformer",
-    tags: ["Game Development"],
+    tags: [
+      "Game Development",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
+    ],
   },
   {
     name: "Platformer Death Walk",
@@ -539,7 +625,12 @@ const gameDevProjects: Project[] = [
     technologies: [`Game Maker Studio 2`],
     imageURL: `/projects/platformer-death-walk/cover.png`,
     siteURL: "https://bepary-games.itch.io/platformer-death-walk",
-    tags: ["Game Development"],
+    tags: [
+      "Game Development",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
+    ],
   },
   {
     name: "Coding Breakout",
@@ -554,7 +645,12 @@ const gameDevProjects: Project[] = [
     technologies: [`Game Maker Studio 2`],
     imageURL: `/projects/coding-breakout/cover.png`,
     siteURL: "https://bepary-games.itch.io/coding-break-out",
-    tags: ["Game Development"],
+    tags: [
+      "Game Development",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
+    ],
   },
   {
     name: "Catch Maruf",
@@ -569,7 +665,12 @@ const gameDevProjects: Project[] = [
     technologies: [`Game Maker Studio 2`],
     imageURL: `/projects/catch-maruf/cover.png`,
     siteURL: "https://bepary-games.itch.io/catch-maruf",
-    tags: ["Game Development"],
+    tags: [
+      "Game Development",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
+    ],
   },
   {
     name: "Against Gravity",
@@ -584,7 +685,12 @@ const gameDevProjects: Project[] = [
     technologies: [`Game Maker Studio 2`],
     imageURL: `/projects/against-gravity/cover.png`,
     siteURL: "https://bepary-games.itch.io/against-gravity",
-    tags: ["Game Development"],
+    tags: [
+      "Game Development",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
+    ],
   },
   {
     name: "Scrolling Shooter",
@@ -598,7 +704,12 @@ const gameDevProjects: Project[] = [
     technologies: [`Game Maker Studio 2`],
     imageURL: `/projects/scrolling-shooter/cover.png`,
     siteURL: "https://bepary-games.itch.io/scrolling-shooter",
-    tags: ["Game Development"],
+    tags: [
+      "Game Development",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
+    ],
   },
   {
     name: "Dungeon",
@@ -612,7 +723,12 @@ const gameDevProjects: Project[] = [
     technologies: [`Game Maker Studio 2`],
     imageURL: `/projects/dungeon/cover.png`,
     siteURL: "https://bepary-games.itch.io/dungeon-",
-    tags: ["Game Development"],
+    tags: [
+      "Game Development",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
+    ],
   },
   {
     name: " Veg Ninja",
@@ -627,7 +743,12 @@ const gameDevProjects: Project[] = [
     technologies: [`Game Maker Studio 2`],
     imageURL: `/projects/veg-ninja/cover.png`,
     siteURL: "https://bepary-games.itch.io/vej-ninja",
-    tags: ["Game Development"],
+    tags: [
+      "Game Development",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
+    ],
   },
   {
     name: " Angry Cats Space",
@@ -642,7 +763,12 @@ const gameDevProjects: Project[] = [
     technologies: [`Game Maker Studio 2`],
     imageURL: `/projects/angry-cats-space/cover.png`,
     siteURL: "https://bepary-games.itch.io/angry-cats-space",
-    tags: ["Game Development"],
+    tags: [
+      "Game Development",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
+    ],
   },
   {
     name: " Angry Cats",
@@ -657,7 +783,12 @@ const gameDevProjects: Project[] = [
     technologies: [`Game Maker Studio 2`],
     imageURL: `/projects/angry-cats/cover.png`,
     siteURL: "https://bepary-games.itch.io/angry-cats-space",
-    tags: ["Game Development"],
+    tags: [
+      "Game Development",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
+    ],
   },
 ];
 
@@ -679,7 +810,16 @@ const otherProjects: Project[] = [
     type: "Other",
     technologies: ["Matplotlib"],
     repoURL: "https://github.com/mbeps/algorithms",
-    tags: ["Algorithms", "Searching", "Sorting", "Jupyter Notebook"],
+    tags: [
+      "Algorithms",
+      "Searching",
+      "Sorting",
+      "Jupyter Notebook",
+      "University",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
+    ],
   },
   {
     name: `Automated Setup`,
@@ -691,7 +831,15 @@ const otherProjects: Project[] = [
     repoURL: `https://github.com/mbeps/AutomatedSetup`,
     programmingLanguage: `Shell`,
     type: "Other",
-    tags: ["Linux", "Fedora", "Automation", "Scripting"],
+    tags: [
+      "Linux",
+      "Fedora",
+      "Automation",
+      "Scripting",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
+    ],
   },
   {
     name: `Leetcode Solutions`,
@@ -713,6 +861,9 @@ const otherProjects: Project[] = [
       "Continuous Integration",
       "Continuous Deployment",
       "CI/CD",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
     ],
   },
 ];
@@ -744,6 +895,9 @@ const javaAssignments: Project[] = [
       "Software Engineering",
       "Test Driven Development",
       "TDD",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
     ],
   },
   {
@@ -755,7 +909,13 @@ const javaAssignments: Project[] = [
     repoURL: `https://github.com/mbeps/Botanic-Garden-Planner`,
     programmingLanguage: `Java`,
     type: "Java Assignments",
-    tags: ["Assignment", "University"],
+    tags: [
+      "Assignment",
+      "University",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
+    ],
   },
   {
     name: "Track & Trace",
@@ -765,7 +925,13 @@ const javaAssignments: Project[] = [
     repoURL: `https://github.com/mbeps/Track_and_Trace`,
     programmingLanguage: `Java`,
     type: "Java Assignments",
-    tags: ["Assignment", "University"],
+    tags: [
+      "Assignment",
+      "University",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
+    ],
   },
   {
     name: `Hollomon`,
@@ -774,7 +940,13 @@ const javaAssignments: Project[] = [
     repoURL: `https://github.com/mbeps/Hollomon`,
     programmingLanguage: `Java`,
     type: "Java Assignments",
-    tags: ["Assignment", "University"],
+    tags: [
+      "Assignment",
+      "University",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
+    ],
   },
   {
     name: `Database Mini Project`,
@@ -784,7 +956,13 @@ const javaAssignments: Project[] = [
     programmingLanguage: `Java`,
     technologies: [`PostgreSQL`],
     type: "Java Assignments",
-    tags: ["Assignment", "University"],
+    tags: [
+      "Assignment",
+      "University",
+      "Solo Project",
+      "Individual Project",
+      "Independent Project",
+    ],
   },
 ];
 
