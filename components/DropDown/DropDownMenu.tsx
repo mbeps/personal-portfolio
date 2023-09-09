@@ -26,7 +26,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   options,
   setSelected,
   className = "",
-  width = "w-56", // Default width
+  width = "w-48", // Default width
 }) => {
   return (
     <Menu as="div" className={`relative inline-block text-left ${width}`}>
