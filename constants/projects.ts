@@ -173,10 +173,6 @@ const webdevProjects: Project[] = [
       "Replicate AI",
       "Docker",
       "GitHub Actions",
-      "Solo Project",
-      "Individual Project",
-      "Independent Project",
-      "Best",
     ],
     type: "Full-Stack Web Dev",
     tags: [
@@ -201,6 +197,7 @@ const webdevProjects: Project[] = [
       "Solo Project",
       "Individual Project",
       "Independent Project",
+      "Best",
     ],
   },
 ];
