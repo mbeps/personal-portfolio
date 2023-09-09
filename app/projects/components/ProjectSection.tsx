@@ -16,27 +16,29 @@ interface ProjectSectionProps {
  */
 const ProjectSection: React.FC<ProjectSectionProps> = ({ title, projects }) => {
   return (
-    <>
-      <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
-      <HeadingTwo title={title} />
-      {projects &&
-        projects.map((project, idx) => (
-          <div key={idx}>
-            <ProjectItem
-              name={project.name}
-              slug={project.slug}
-              key={project.imageURL}
-              description={project.description}
-              imageURL={project.imageURL}
-              repoURL={project.repoURL}
-              siteURL={project.siteURL}
-              programmingLanguage={project.programmingLanguage}
-              technologies={project.technologies}
-              type={project.type}
-            />
-          </div>
-        ))}
-    </>
+    <section id={title.toLowerCase().replace(/\s+/g, "-")}>
+      <div className="flex flex-col space-y-20">
+        <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
+        <HeadingTwo title={title} />
+        {projects &&
+          projects.map((project, idx) => (
+            <div key={idx}>
+              <ProjectItem
+                name={project.name}
+                slug={project.slug}
+                key={project.imageURL}
+                description={project.description}
+                imageURL={project.imageURL}
+                repoURL={project.repoURL}
+                siteURL={project.siteURL}
+                programmingLanguage={project.programmingLanguage}
+                technologies={project.technologies}
+                type={project.type}
+              />
+            </div>
+          ))}
+      </div>
+    </section>
   );
 };
 
