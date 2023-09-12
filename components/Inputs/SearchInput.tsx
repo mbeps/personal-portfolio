@@ -35,8 +35,9 @@ const SearchInput: React.FC<SearchInputProps> = ({
     setLocalSearchTerm(searchTerm);
   }, [searchTerm]);
 
+  // This function was modified to only clear the local input field
   const handleClearSearch = () => {
-    updateSearchTerm("");
+    setLocalSearchTerm("");
   };
 
   const handleSearch = () => {
@@ -54,7 +55,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
       hover:border-red-500 dark:hover:border-red-800
       focus:outline-none
       rounded-xl
-			shadow-md hover:shadow-lg focus:shadow-lg
+      shadow-md hover:shadow-lg focus:shadow-lg
       transition-all ease-out duration-500
     `,
     className
@@ -81,7 +82,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
       {localSearchTerm && (
         <MdClear
           className="absolute right-8 top-1/2 transform -translate-y-1/2 text-neutral-700 dark:text-neutral-200 cursor-pointer hover:text-red-500 dark:hover:text-red-800 transition-all ease-out duration-300 hover:scale-125"
-          onClick={handleClearSearch}
+          onClick={handleClearSearch} // Modified to only clear the local input field
         />
       )}
       <button
