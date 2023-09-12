@@ -31,6 +31,22 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
   const router = useRouter();
 
+  const generateUrl = (
+    type: string,
+    technology: string,
+    language: string,
+    search: string
+  ) => {
+    // Validate and encode filter values
+    const validatedType = encodeURIComponent(type.trim());
+    const validatedTechnology = encodeURIComponent(technology.trim());
+    const validatedLanguage = encodeURIComponent(language.trim());
+    const validatedSearch = encodeURIComponent(search.trim());
+
+    // Construct and return the URL
+    return `/projects/?type=${validatedType}&technology=${validatedTechnology}&language=${validatedLanguage}&search=${validatedSearch}`;
+  };
+
   /**
    * Opens the modal to filter the projects.
    */
@@ -124,7 +140,12 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const updateSearchTerm = (newSearchTerm: string) => {
     // Update the URL parameter to reflect the new search term
     router.push(
-      `/projects/?type=${selectedType}&technology=${selectedTechnology}&language=${selectedLanguage}&search=${newSearchTerm}`
+      generateUrl(
+        selectedType,
+        selectedTechnology,
+        selectedLanguage,
+        newSearchTerm
+      )
     );
   };
 
@@ -153,7 +174,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
    * This is used when the user clicks on the 'Reset' button.
    */
   const resetFilters = () => {
-    router.push("/projects");
+    router.push(generateUrl("All", "All", "All", ""));
   };
 
   const areFiltersApplied =
@@ -296,7 +317,12 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
               <div className="h-64 md:h-80 overflow-y-auto space-y-2">
                 {projectTypes.map((type) => (
                   <Link
-                    href={`projects/?type=${type}&technology${selectedTechnology}&language=${selectedLanguage}&search=${searchTerm}`}
+                    href={generateUrl(
+                      type,
+                      selectedTechnology,
+                      selectedLanguage,
+                      searchTerm
+                    )}
                     key={type}
                   >
                     <RadioButton
@@ -322,7 +348,12 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
               <div className="h-64 md:h-80 overflow-y-auto space-y-2">
                 {programmingLanguages.map((language) => (
                   <Link
-                    href={`projects/?type=${selectedType}&technology${selectedTechnology}&language=${language}&search=${searchTerm}`}
+                    href={generateUrl(
+                      selectedType,
+                      selectedTechnology,
+                      language,
+                      searchTerm
+                    )}
                     key={language}
                   >
                     <RadioButton
@@ -348,7 +379,12 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
               <div className="h-64 md:h-80 overflow-y-auto space-y-2">
                 {technologies.map((technology) => (
                   <Link
-                    href={`projects/?type=${selectedType}&technology=${technology}&language=${selectedLanguage}&search=${searchTerm}`}
+                    href={generateUrl(
+                      selectedType,
+                      technology,
+                      selectedLanguage,
+                      searchTerm
+                    )}
                     key={technology}
                   >
                     <RadioButton
