@@ -28,7 +28,6 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const selectedType = searchParams.get("type") || "All";
   const searchTerm = searchParams.get("search") || "";
 
-  const debouncedSearchTerm = useDebounce(searchTerm, 500);
   const router = useRouter();
 
   const generateUrl = (
@@ -97,8 +96,8 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   /**
    * List of projects that match the search term.
    */
-  const searchedProjects = debouncedSearchTerm
-    ? fuse.search(debouncedSearchTerm).map((result) => result.item)
+  const searchedProjects = searchTerm
+    ? fuse.search(searchTerm).map((result) => result.item)
     : allProjects;
 
   //^ List of options

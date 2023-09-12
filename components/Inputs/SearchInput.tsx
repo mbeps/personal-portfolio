@@ -28,6 +28,12 @@ const SearchInput: React.FC<SearchInputProps> = ({
   className,
   ...props
 }) => {
+  const [localSearchTerm, setLocalSearchTerm] = React.useState(searchTerm);
+
+  React.useEffect(() => {
+    setLocalSearchTerm(searchTerm);
+  }, [searchTerm]);
+
   const combinedClassName = twMerge(
     `
       w-full
@@ -42,7 +48,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
 			shadow-md hover:shadow-lg focus:shadow-lg
       transition-all ease-out duration-500
     `,
-    className // Merge user-provided className
+    className
   );
 
   const handleClearSearch = () => {
@@ -53,14 +59,21 @@ const SearchInput: React.FC<SearchInputProps> = ({
     <div className="relative w-full md:flex-grow md:order-last">
       <input
         type="text"
-        value={searchTerm}
-        onChange={(e) => updateSearchTerm(e.target.value)}
+        value={localSearchTerm}
+        onChange={(e) =>
+          setLocalSearchTerm((e.target as HTMLInputElement).value)
+        }
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            updateSearchTerm(localSearchTerm);
+          }
+        }}
         placeholder={placeholder}
         className={combinedClassName}
         {...props}
       />
       <BsSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-700 dark:text-neutral-200" />
-      {searchTerm && (
+      {localSearchTerm && (
         <MdClear
           className="absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-700 dark:text-neutral-200 cursor-pointer hover:text-red-500 dark:hover:text-red-800 transition-all ease-out duration-300 hover:scale-125"
           onClick={handleClearSearch}

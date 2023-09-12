@@ -21,25 +21,21 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   const searchParams = useSearchParams();
 
   const searchTerm = searchParams.get("search") || "";
-  const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
   const updateSearchTerm = (newSearchTerm: string) => {
     const validatedSearch = encodeURIComponent(newSearchTerm);
     router.push(`/blogs/?search=${validatedSearch}`);
   };
 
-  // Fuse.js options for fuzzy search
   const options = {
-    keys: ["title", "subtitle"], // Only search these properties
-    threshold: 0.3, // Lower threshold means more results
+    keys: ["title", "subtitle"],
+    threshold: 0.3,
   };
 
-  // Fuse object used to search the blogs
   const fuse = new Fuse(blogs, options);
 
-  // List of blogs that match the search term
-  const searchedBlogs = debouncedSearchTerm
-    ? fuse.search(debouncedSearchTerm).map((result) => result.item)
+  const searchedBlogs = searchTerm
+    ? fuse.search(searchTerm).map((result) => result.item)
     : blogs;
 
   return (
@@ -55,7 +51,6 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
       </div>
       <div className="border-b border-gray-200 dark:border-neutral-600 mt-16" />
       <div className="my-12 pb-12 md:pt-2 md:pb-36">
-        {/* Blog List */}
         {searchedBlogs.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-14">
             {searchedBlogs.map((blog) => (
