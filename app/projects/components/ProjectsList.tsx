@@ -5,15 +5,14 @@ import RadioButton from "@/components/Inputs/RadioButton";
 import SearchInput from "@/components/Inputs/SearchInput";
 import Modal from "@/components/Modal/Modal";
 import HeadingOne from "@/components/Text/HeadingOne";
-import useDebounce from "@/hooks/useDebounce";
 import Project from "@/types/projects";
 import Fuse from "fuse.js";
-import React, { ChangeEvent, useState } from "react";
+import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
+import React, { useState } from "react";
 import { BsFilterLeft } from "react-icons/bs";
 import { MdClear } from "react-icons/md";
 import ProjectSection from "./ProjectSection";
-import { useRouter, useSearchParams } from "next/navigation";
-import Link from "next/link";
 
 type ProjectsListProps = {
   allProjects: Project[];
@@ -30,6 +29,11 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
 
   const router = useRouter();
 
+  /**
+   * Generates the URL for the projects page.
+   * These are the URL parameters that are used for filtering and searching.
+   * Once filters and search are applied, the URL is updated.
+   */
   const generateUrl = (
     type: string,
     technology: string,
@@ -127,6 +131,12 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
       .filter((value, index, self) => self.indexOf(value) === index),
   ];
 
+  /**
+   * List of technologies to be displayed in the filter.
+   * Adds 'All' as the first option.
+   * Appends all unique technologies to the list.
+   * Technologies are from the 'technologies' property of each project.
+   */
   const technologies: string[] = [
     "All",
     ...Array.from(
@@ -136,6 +146,11 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     ),
   ];
 
+  /**
+   * Updates the search term in the URL.
+   * This is used when the user types in the search input.
+   * @param newSearchTerm (string): new search term
+   */
   const updateSearchTerm = (newSearchTerm: string) => {
     // Update the URL parameter to reflect the new search term
     router.push(
@@ -176,6 +191,9 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     router.push(generateUrl("All", "All", "All", ""));
   };
 
+  /**
+   * Checks if any filters are applied.
+   */
   const areFiltersApplied =
     selectedType !== "All" ||
     selectedLanguage !== "All" ||

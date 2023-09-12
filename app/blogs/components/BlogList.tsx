@@ -23,17 +23,30 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
 
   const searchTerm = searchParams.get("search") || "";
 
+  /**
+   * Updates the search term in the URL.
+   * This updates the blogs that are displayed.
+   * @param newSearchTerm (string) The new search term
+   */
   const updateSearchTerm = (newSearchTerm: string) => {
     const validatedSearch = encodeURIComponent(newSearchTerm);
     router.push(`/blogs/?search=${validatedSearch}`);
   };
 
+  /**
+   * Resets the search term in the URL.
+   * This resets the blogs that are displayed showing all blogs.
+   */
   const resetSearch = () => {
     updateSearchTerm("");
   };
 
   const areFiltersApplied = searchTerm.length > 0;
 
+  /**
+   * The options for the Fuse.js search.
+   * The keys are the properties of the blog that are searched.
+   */
   const options = {
     keys: ["title", "subtitle"],
     threshold: 0.3,
@@ -41,10 +54,17 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
 
   const fuse = new Fuse(blogs, options);
 
+  /**
+   * The blogs that match the search term.
+   */
   const searchedBlogs = searchTerm
     ? fuse.search(searchTerm).map((result) => result.item)
     : blogs;
 
+  /**
+   * Whether the clear search button is disabled.
+   * If there is no search term, the button is disabled.
+   */
   const isClearDisabled = !searchTerm;
 
   return (
