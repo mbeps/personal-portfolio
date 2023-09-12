@@ -5,9 +5,9 @@ import { BsSearch } from "react-icons/bs";
 import { twMerge } from "tailwind-merge";
 import { MdClear } from "react-icons/md";
 
-interface SearchInputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface SearchInputProps {
   searchTerm: string;
-  setSearchTerm: (value: string) => void;
+  updateSearchTerm: (newSearchTerm: string) => void;
   placeholder?: string;
   className?: string;
 }
@@ -23,9 +23,9 @@ interface SearchInputProps extends InputHTMLAttributes<HTMLInputElement> {
  */
 const SearchInput: React.FC<SearchInputProps> = ({
   searchTerm,
-  setSearchTerm,
+  updateSearchTerm,
   placeholder = "Search",
-  className, // Destructuring the new prop
+  className,
   ...props
 }) => {
   const combinedClassName = twMerge(
@@ -46,7 +46,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
   );
 
   const handleClearSearch = () => {
-    setSearchTerm("");
+    updateSearchTerm("");
   };
 
   return (
@@ -54,7 +54,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
       <input
         type="text"
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={(e) => updateSearchTerm(e.target.value)}
         placeholder={placeholder}
         className={combinedClassName}
         {...props}
