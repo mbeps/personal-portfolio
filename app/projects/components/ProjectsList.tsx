@@ -254,7 +254,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
                   fontSize={24}
                   className="text-neutral-700 dark:text-neutral-200"
                 />
-                <span>Reset</span>
+                <span>Clear All</span>
               </div>
             </Button>
           </div>
