@@ -2,7 +2,6 @@ import Tag from "@/components/Atoms/Tag";
 import LanguageModal from "@/components/Modal/LanguageModal";
 import HeadingThree from "@/components/Text/HeadingThree";
 import { languages } from "@/constants/languages";
-import { Repository } from "@/types/languages";
 import { Skill } from "@/types/skills";
 import React, { useState } from "react";
 
@@ -42,7 +41,7 @@ const LanguageSection: React.FC = () => {
             key={idx}
             language={languageData.language}
             skills={getSkillsByLanguage(languageData.language)}
-            repositories={languageData.repositories || []}
+            repository={languageData.repository}
             handleOpenModal={handleOpenModal}
             handleCloseModal={handleCloseModal}
             isModalOpen={isModalOpen}
@@ -58,7 +57,7 @@ export default LanguageSection;
 interface LanguageTagWithModalProps {
   language: string;
   skills: Skill[];
-  repositories: Repository[];
+  repository?: string;
   handleOpenModal: () => void;
   handleCloseModal: () => void;
   isModalOpen: boolean;
@@ -78,7 +77,7 @@ interface LanguageTagWithModalProps {
 const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
   language,
   skills,
-  repositories,
+  repository,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -90,7 +89,7 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
     setIsModalOpen(false);
   };
 
-  const shouldOpenModal = skills.length > 0 || repositories.length > 0;
+  const shouldOpenModal = skills.length > 0 || repository;
 
   return (
     <>
@@ -103,7 +102,7 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
           onClose={handleCloseModal}
           language={language}
           skills={skills}
-          repositories={repositories}
+          repository={repository}
         />
       )}
     </>

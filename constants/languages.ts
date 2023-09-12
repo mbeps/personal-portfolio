@@ -29,13 +29,7 @@ const languages: Language[] = [
   {
     language: "TypeScript",
     skills: JavaScriptTypeScriptSkills,
-    repositories: [
-      {
-        name: "TypeScript Projects",
-        repository:
-          "https://github.com/mbeps?tab=repositories&q=&type=&language=typescript&sort=",
-      },
-    ],
+    repository: "projects?type=All&technology=All&language=TypeScript&search=",
   },
   {
     language: "Python",
@@ -48,18 +42,7 @@ const languages: Language[] = [
       { skill: "SQLAlchemy", category: "Object Relational Mapper" },
       { skill: "Poetry", category: "Project Manager" },
     ],
-    repositories: [
-      {
-        name: "Python Projects",
-        repository:
-          "https://github.com/mbeps?tab=repositories&q=&type=&language=python&sort=",
-      },
-      {
-        name: "Jupyter Notebook Projects",
-        repository:
-          "https://github.com/mbeps?tab=repositories&q=&type=&language=jupyter+notebook&sort=",
-      },
-    ],
+    repository: "projects?type=All&technology=All&language=Python&search=",
   },
   {
     language: "Java",
@@ -67,13 +50,7 @@ const languages: Language[] = [
       { skill: "Maven", category: "Project Manager" },
       { skill: "JUnit", category: "Testing" },
     ],
-    repositories: [
-      {
-        name: "Java Projects",
-        repository:
-          "https://github.com/mbeps?tab=repositories&q=&type=&language=java&sort=",
-      },
-    ],
+    repository: "projects?type=All&technology=All&language=Java&search=",
   },
   {
     language: "C",
