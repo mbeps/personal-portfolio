@@ -5,7 +5,7 @@ import SearchInput from "@/components/Inputs/SearchInput";
 import useDebounce from "@/hooks/useDebounce";
 import { BlogMetadata } from "@/types/blog";
 import Fuse from "fuse.js";
-import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation"; // Add this import for Next.js router
 
 interface BlogListProps {
   blogs: BlogMetadata[];
@@ -17,8 +17,16 @@ interface BlogListProps {
  * @returns (JSX.Element): page with all blogs
  */
 export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const searchTerm = searchParams.get("search") || "";
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
+
+  const updateSearchTerm = (newSearchTerm: string) => {
+    const validatedSearch = encodeURIComponent(newSearchTerm);
+    router.push(`/blogs/?search=${validatedSearch}`);
+  };
 
   // Fuse.js options for fuzzy search
   const options = {
@@ -36,16 +44,11 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
 
   return (
     <div className="my-12 pb-12 md:pt-2">
-      <div
-        className="
-				flex flex-col 
-				items-end 
-				px-0 md:px-2 pl-0 md:pl-6"
-      >
+      <div className="flex flex-col items-end px-0 md:px-2 pl-0 md:pl-6">
         <div className="w-full md:w-1/2">
           <SearchInput
             searchTerm={searchTerm}
-            setSearchTerm={setSearchTerm}
+            updateSearchTerm={updateSearchTerm}
             placeholder="Search blog"
           />
         </div>
@@ -68,3 +71,5 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
     </div>
   );
 };
+
+export default BlogList;
