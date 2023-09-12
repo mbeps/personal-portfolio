@@ -1,11 +1,12 @@
 "use client";
 
+import Button from "@/components/Atoms/Button";
 import BlogItem from "@/components/Blogs/BlogItem";
 import SearchInput from "@/components/Inputs/SearchInput";
-import useDebounce from "@/hooks/useDebounce";
 import { BlogMetadata } from "@/types/blog";
 import Fuse from "fuse.js";
-import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation"; // Add this import for Next.js router
+import { MdClear } from "react-icons/md";
 
 interface BlogListProps {
   blogs: BlogMetadata[];
@@ -17,42 +18,95 @@ interface BlogListProps {
  * @returns (JSX.Element): page with all blogs
  */
 export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const debouncedSearchTerm = useDebounce(searchTerm, 500);
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
-  // Fuse.js options for fuzzy search
-  const options = {
-    keys: ["title", "subtitle"], // Only search these properties
-    threshold: 0.3, // Lower threshold means more results
+  const searchTerm = searchParams.get("search") || "";
+
+  /**
+   * Updates the search term in the URL.
+   * This updates the blogs that are displayed.
+   * @param newSearchTerm (string) The new search term
+   */
+  const updateSearchTerm = (newSearchTerm: string) => {
+    const validatedSearch = encodeURIComponent(newSearchTerm);
+    router.push(`/blogs/?search=${validatedSearch}`);
   };
 
-  // Fuse object used to search the blogs
+  /**
+   * Resets the search term in the URL.
+   * This resets the blogs that are displayed showing all blogs.
+   */
+  const resetSearch = () => {
+    updateSearchTerm("");
+  };
+
+  const areFiltersApplied = searchTerm.length > 0;
+
+  /**
+   * The options for the Fuse.js search.
+   * The keys are the properties of the blog that are searched.
+   */
+  const options = {
+    keys: ["title", "subtitle"],
+    threshold: 0.3,
+  };
+
   const fuse = new Fuse(blogs, options);
 
-  // List of blogs that match the search term
-  const searchedBlogs = debouncedSearchTerm
-    ? fuse.search(debouncedSearchTerm).map((result) => result.item)
+  /**
+   * The blogs that match the search term.
+   */
+  const searchedBlogs = searchTerm
+    ? fuse.search(searchTerm).map((result) => result.item)
     : blogs;
+
+  /**
+   * Whether the clear search button is disabled.
+   * If there is no search term, the button is disabled.
+   */
+  const isClearDisabled = !searchTerm;
 
   return (
     <div className="my-12 pb-12 md:pt-2">
-      <div
-        className="
-				flex flex-col 
-				items-end 
-				px-0 md:px-2 pl-0 md:pl-6"
-      >
-        <div className="w-full md:w-1/2">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-2 px-0 md:px-2 pl-0">
+        <div className="md:col-span-2">
           <SearchInput
             searchTerm={searchTerm}
-            setSearchTerm={setSearchTerm}
+            updateSearchTerm={updateSearchTerm}
             placeholder="Search blog"
           />
+        </div>
+        <div className="md:col-span-1">
+          {/* Clear Search Button */}
+          <Button
+            variant="outlined"
+            onClick={resetSearch}
+            disabled={isClearDisabled} // Disabled if no search term exists
+            className={`
+              px-4 py-2 w-full
+              text-base font-medium text-neutral-700 dark:text-neutral-200 capitalize hover:text-neutral-700 dark:hover:text-neutral-200
+              rounded-xl
+              shadow-md hover:shadow-lg focus:shadow-lg
+              bg-neutral-100 dark:bg-neutral-800 
+              hover:bg-neutral-100 dark:hover:bg-neutral-800
+              border-2 border-transparent dark:border-transparent
+              hover:border-red-500 dark:hover:border-red-800
+              transition-all duration-500 ease-in-out
+            `}
+          >
+            <div className="flex items-center space-x-2">
+              <MdClear
+                fontSize={24}
+                className="text-neutral-700 dark:text-neutral-200"
+              />
+              <span>Clear Search</span>
+            </div>
+          </Button>
         </div>
       </div>
       <div className="border-b border-gray-200 dark:border-neutral-600 mt-16" />
       <div className="my-12 pb-12 md:pt-2 md:pb-36">
-        {/* Blog List */}
         {searchedBlogs.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-14">
             {searchedBlogs.map((blog) => (
@@ -68,3 +122,5 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
     </div>
   );
 };
+
+export default BlogList;

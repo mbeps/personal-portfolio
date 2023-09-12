@@ -4,10 +4,11 @@ import React, { InputHTMLAttributes } from "react";
 import { BsSearch } from "react-icons/bs";
 import { twMerge } from "tailwind-merge";
 import { MdClear } from "react-icons/md";
+import { VscSend } from "react-icons/vsc";
 
-interface SearchInputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface SearchInputProps {
   searchTerm: string;
-  setSearchTerm: (value: string) => void;
+  updateSearchTerm: (newSearchTerm: string) => void;
   placeholder?: string;
   className?: string;
 }
@@ -23,11 +24,26 @@ interface SearchInputProps extends InputHTMLAttributes<HTMLInputElement> {
  */
 const SearchInput: React.FC<SearchInputProps> = ({
   searchTerm,
-  setSearchTerm,
+  updateSearchTerm,
   placeholder = "Search",
-  className, // Destructuring the new prop
+  className,
   ...props
 }) => {
+  const [localSearchTerm, setLocalSearchTerm] = React.useState(searchTerm);
+
+  React.useEffect(() => {
+    setLocalSearchTerm(searchTerm);
+  }, [searchTerm]);
+
+  // This function was modified to only clear the local input field
+  const handleClearSearch = () => {
+    setLocalSearchTerm("");
+  };
+
+  const handleSearch = () => {
+    updateSearchTerm(localSearchTerm);
+  };
+
   const combinedClassName = twMerge(
     `
       w-full
@@ -39,33 +55,47 @@ const SearchInput: React.FC<SearchInputProps> = ({
       hover:border-red-500 dark:hover:border-red-800
       focus:outline-none
       rounded-xl
-			shadow-md hover:shadow-lg focus:shadow-lg
+      shadow-md hover:shadow-lg focus:shadow-lg
       transition-all ease-out duration-500
     `,
-    className // Merge user-provided className
+    className
   );
 
-  const handleClearSearch = () => {
-    setSearchTerm("");
-  };
+  const isSearchDisabled = !localSearchTerm;
 
   return (
     <div className="relative w-full md:flex-grow md:order-last">
       <input
         type="text"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        value={localSearchTerm}
+        onChange={(e) => setLocalSearchTerm(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            handleSearch();
+          }
+        }}
         placeholder={placeholder}
         className={combinedClassName}
         {...props}
       />
       <BsSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-700 dark:text-neutral-200" />
-      {searchTerm && (
+      {localSearchTerm && (
         <MdClear
-          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-700 dark:text-neutral-200 cursor-pointer hover:text-red-500 dark:hover:text-red-800 transition-all ease-out duration-300 hover:scale-125"
-          onClick={handleClearSearch}
+          className="absolute right-8 top-1/2 transform -translate-y-1/2 text-neutral-700 dark:text-neutral-200 cursor-pointer hover:text-red-500 dark:hover:text-red-800 transition-all ease-out duration-300 hover:scale-125"
+          onClick={handleClearSearch} // Modified to only clear the local input field
         />
       )}
+      <button
+        className={`absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-700 dark:text-neutral-200 ${
+          isSearchDisabled
+            ? "cursor-not-allowed opacity-50"
+            : "cursor-pointer hover:text-red-500 dark:hover:text-red-800"
+        } transition-all ease-out duration-300 hover:scale-125`}
+        onClick={handleSearch}
+        disabled={isSearchDisabled}
+      >
+        <VscSend />
+      </button>
     </div>
   );
 };

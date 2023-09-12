@@ -8,7 +8,6 @@ interface RadioButtonProps {
   name: string;
   value: string;
   checked: boolean;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   label: string;
   className?: string;
 }
@@ -30,7 +29,6 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   name,
   value,
   checked,
-  onChange,
   label,
   className,
 }) => {
@@ -70,7 +68,6 @@ const RadioButton: React.FC<RadioButtonProps> = ({
         name={name}
         value={value}
         checked={checked}
-        onChange={onChange}
         className="form-radio text-red-500 dark:text-red-900 h-6 w-6 sr-only"
       />
       <span className={`ml-2 text-lg ${labelClassName}`}>{label}</span>

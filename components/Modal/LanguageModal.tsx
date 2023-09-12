@@ -1,4 +1,4 @@
-import { Repository, Skill } from "@/types/languages";
+import { Skill } from "@/types/languages";
 import React, { useState } from "react";
 import Button from "../Atoms/Button";
 import Tag from "../Atoms/Tag";
@@ -6,13 +6,14 @@ import HeadingThree from "../Text/HeadingThree";
 import Dropdown from "../DropDown/DropDownMenu";
 import Modal from "./Modal";
 import organizeSkillsByCategory from "@/actions/organizeSkillsByCategory";
+import Link from "next/link";
 
 interface ProjectModalProps {
   isOpen?: boolean; // whether the modal is open or not
   onClose: () => void; // function to close the modal
   language: string;
   skills: Skill[];
-  repositories: Repository[];
+  repository?: string;
 }
 
 /**
@@ -31,7 +32,7 @@ interface ProjectModalProps {
 const LanguageModal: React.FC<ProjectModalProps> = ({
   skills,
   language,
-  repositories,
+  repository,
   isOpen,
   onClose,
 }) => {
@@ -72,7 +73,7 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
         ))
       )}
 
-      {repositories && repositories.length > 0 && (
+      {repository && (
         <div
           className="
           flex flex-wrap flex-col 
@@ -80,15 +81,15 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
           justify-start z-10 mt-5 space-y-2"
         >
           <HeadingThree title="Projects" />
-          {repositories.map((repo, index) => (
-            <Button
-              key={index}
-              onClick={() => window.open(repo.repository, "_blank")}
-              variant="ghost"
-            >
-              {repo.name}
-            </Button>
-          ))}
+
+          <Link href={repository}>
+            <div className="w-full">
+              <Button
+                variant="ghost"
+                className="w-full"
+              >{`${language} Projects`}</Button>
+            </div>
+          </Link>
         </div>
       )}
     </Modal>

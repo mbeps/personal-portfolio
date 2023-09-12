@@ -5,10 +5,11 @@ import RadioButton from "@/components/Inputs/RadioButton";
 import SearchInput from "@/components/Inputs/SearchInput";
 import Modal from "@/components/Modal/Modal";
 import HeadingOne from "@/components/Text/HeadingOne";
-import useDebounce from "@/hooks/useDebounce";
 import Project from "@/types/projects";
 import Fuse from "fuse.js";
-import React, { ChangeEvent, useState } from "react";
+import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
+import React, { useState } from "react";
 import { BsFilterLeft } from "react-icons/bs";
 import { MdClear } from "react-icons/md";
 import ProjectSection from "./ProjectSection";
@@ -19,25 +20,41 @@ type ProjectsListProps = {
 
 const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
-  const [isProjectsModalOpen, setIsProjectsModalOpen] = useState(false);
-  const [selectedType, setSelectedType] = useState("All");
-  const [selectedTechnology, setSelectedTechnology] = useState("All");
-  const [selectedLanguage, setSelectedLanguage] = useState("All");
-  const [searchTerm, setSearchTerm] = useState("");
-  const debouncedSearchTerm = useDebounce(searchTerm, 500);
+
+  const searchParams = useSearchParams();
+  const selectedTechnology = searchParams.get("technology") || "All";
+  const selectedLanguage = searchParams.get("language") || "All";
+  const selectedType = searchParams.get("type") || "All";
+  const searchTerm = searchParams.get("search") || "";
+
+  const router = useRouter();
+
+  /**
+   * Generates the URL for the projects page.
+   * These are the URL parameters that are used for filtering and searching.
+   * Once filters and search are applied, the URL is updated.
+   */
+  const generateUrl = (
+    type: string,
+    technology: string,
+    language: string,
+    search: string
+  ) => {
+    // Validate and encode filter values
+    const validatedType = encodeURIComponent(type.trim());
+    const validatedTechnology = encodeURIComponent(technology.trim());
+    const validatedLanguage = encodeURIComponent(language.trim());
+    const validatedSearch = encodeURIComponent(search.trim());
+
+    // Construct and return the URL
+    return `/projects/?type=${validatedType}&technology=${validatedTechnology}&language=${validatedLanguage}&search=${validatedSearch}`;
+  };
 
   /**
    * Opens the modal to filter the projects.
    */
   const handleOpenFilterModal = () => {
     setIsFilterModalOpen(true);
-  };
-
-  /**
-   * Opens the modal to display more projects.
-   */
-  const handleOpenProjectsModal = () => {
-    setIsProjectsModalOpen(true);
   };
 
   /**
@@ -83,8 +100,8 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   /**
    * List of projects that match the search term.
    */
-  const searchedProjects = debouncedSearchTerm
-    ? fuse.search(debouncedSearchTerm).map((result) => result.item)
+  const searchedProjects = searchTerm
+    ? fuse.search(searchTerm).map((result) => result.item)
     : allProjects;
 
   //^ List of options
@@ -114,6 +131,12 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
       .filter((value, index, self) => self.indexOf(value) === index),
   ];
 
+  /**
+   * List of technologies to be displayed in the filter.
+   * Adds 'All' as the first option.
+   * Appends all unique technologies to the list.
+   * Technologies are from the 'technologies' property of each project.
+   */
   const technologies: string[] = [
     "All",
     ...Array.from(
@@ -122,6 +145,23 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
       )
     ),
   ];
+
+  /**
+   * Updates the search term in the URL.
+   * This is used when the user types in the search input.
+   * @param newSearchTerm (string): new search term
+   */
+  const updateSearchTerm = (newSearchTerm: string) => {
+    // Update the URL parameter to reflect the new search term
+    router.push(
+      generateUrl(
+        selectedType,
+        selectedTechnology,
+        selectedLanguage,
+        newSearchTerm
+      )
+    );
+  };
 
   /**
    * Filters the projects based on the the filter options.
@@ -144,34 +184,16 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const groupedProjects = groupProjectsByType(filteredProjects);
 
   /**
-   * Handles the change of the type filter.
-   * This is used to filter the projects by type.
-   * @param event (ChangeEvent<HTMLInputElement>): event when the type is changed
-   */
-  const handleTypeChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSelectedType(event.target.value);
-  };
-
-  /**
-   * Handles the change of the language filter.
-   * This is used to filter the projects by language.
-   * @param event (ChangeEvent<HTMLInputElement>): event when the language is changed
-   */
-  const handleLanguageChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSelectedLanguage(event.target.value);
-  };
-
-  /**
    * Resets all the filters.
    * This is used when the user clicks on the 'Reset' button.
    */
   const resetFilters = () => {
-    setSelectedType("All");
-    setSelectedLanguage("All");
-    setSelectedTechnology("All");
-    setSearchTerm("");
+    router.push(generateUrl("All", "All", "All", ""));
   };
 
+  /**
+   * Checks if any filters are applied.
+   */
   const areFiltersApplied =
     selectedType !== "All" ||
     selectedLanguage !== "All" ||
@@ -241,7 +263,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
           <div className="w-full md:flex-1">
             <SearchInput
               searchTerm={searchTerm}
-              setSearchTerm={setSearchTerm}
+              updateSearchTerm={updateSearchTerm}
               placeholder="Search project name or metadata"
             />
           </div>
@@ -311,15 +333,24 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
               </label>
               <div className="h-64 md:h-80 overflow-y-auto space-y-2">
                 {projectTypes.map((type) => (
-                  <RadioButton
+                  <Link
+                    href={generateUrl(
+                      type,
+                      selectedTechnology,
+                      selectedLanguage,
+                      searchTerm
+                    )}
                     key={type}
-                    id={type}
-                    name="projectType"
-                    value={type}
-                    checked={selectedType === type}
-                    onChange={handleTypeChange}
-                    label={type}
-                  />
+                  >
+                    <RadioButton
+                      key={type}
+                      id={type}
+                      name="projectType"
+                      value={type}
+                      checked={selectedType === type}
+                      label={type}
+                    />
+                  </Link>
                 ))}
               </div>
             </div>
@@ -333,15 +364,24 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
               </label>
               <div className="h-64 md:h-80 overflow-y-auto space-y-2">
                 {programmingLanguages.map((language) => (
-                  <RadioButton
+                  <Link
+                    href={generateUrl(
+                      selectedType,
+                      selectedTechnology,
+                      language,
+                      searchTerm
+                    )}
                     key={language}
-                    id={language}
-                    name="programmingLanguage"
-                    value={language}
-                    checked={selectedLanguage === language}
-                    onChange={handleLanguageChange}
-                    label={language}
-                  />
+                  >
+                    <RadioButton
+                      key={language}
+                      id={language}
+                      name="programmingLanguage"
+                      value={language}
+                      checked={selectedLanguage === language}
+                      label={language}
+                    />
+                  </Link>
                 ))}
               </div>
             </div>
@@ -355,15 +395,24 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
               </label>
               <div className="h-64 md:h-80 overflow-y-auto space-y-2">
                 {technologies.map((technology) => (
-                  <RadioButton
+                  <Link
+                    href={generateUrl(
+                      selectedType,
+                      technology,
+                      selectedLanguage,
+                      searchTerm
+                    )}
                     key={technology}
-                    id={technology}
-                    name="technology"
-                    value={technology}
-                    checked={selectedTechnology === technology}
-                    onChange={(e) => setSelectedTechnology(e.target.value)}
-                    label={technology}
-                  />
+                  >
+                    <RadioButton
+                      key={technology}
+                      id={technology}
+                      name="technology"
+                      value={technology}
+                      checked={selectedTechnology === technology}
+                      label={technology}
+                    />
+                  </Link>
                 ))}
               </div>
             </div>
@@ -373,4 +422,5 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     </section>
   );
 };
+
 export default ProjectsList;
