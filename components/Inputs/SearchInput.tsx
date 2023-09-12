@@ -4,6 +4,7 @@ import React, { InputHTMLAttributes } from "react";
 import { BsSearch } from "react-icons/bs";
 import { twMerge } from "tailwind-merge";
 import { MdClear } from "react-icons/md";
+import { VscSend } from "react-icons/vsc";
 
 interface SearchInputProps {
   searchTerm: string;
@@ -34,6 +35,14 @@ const SearchInput: React.FC<SearchInputProps> = ({
     setLocalSearchTerm(searchTerm);
   }, [searchTerm]);
 
+  const handleClearSearch = () => {
+    updateSearchTerm("");
+  };
+
+  const handleSearch = () => {
+    updateSearchTerm(localSearchTerm);
+  };
+
   const combinedClassName = twMerge(
     `
       w-full
@@ -51,21 +60,17 @@ const SearchInput: React.FC<SearchInputProps> = ({
     className
   );
 
-  const handleClearSearch = () => {
-    updateSearchTerm("");
-  };
+  const isSearchDisabled = !localSearchTerm;
 
   return (
     <div className="relative w-full md:flex-grow md:order-last">
       <input
         type="text"
         value={localSearchTerm}
-        onChange={(e) =>
-          setLocalSearchTerm((e.target as HTMLInputElement).value)
-        }
+        onChange={(e) => setLocalSearchTerm(e.target.value)}
         onKeyDown={(e) => {
           if (e.key === "Enter") {
-            updateSearchTerm(localSearchTerm);
+            handleSearch();
           }
         }}
         placeholder={placeholder}
@@ -75,10 +80,21 @@ const SearchInput: React.FC<SearchInputProps> = ({
       <BsSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-700 dark:text-neutral-200" />
       {localSearchTerm && (
         <MdClear
-          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-700 dark:text-neutral-200 cursor-pointer hover:text-red-500 dark:hover:text-red-800 transition-all ease-out duration-300 hover:scale-125"
+          className="absolute right-8 top-1/2 transform -translate-y-1/2 text-neutral-700 dark:text-neutral-200 cursor-pointer hover:text-red-500 dark:hover:text-red-800 transition-all ease-out duration-300 hover:scale-125"
           onClick={handleClearSearch}
         />
       )}
+      <button
+        className={`absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-700 dark:text-neutral-200 ${
+          isSearchDisabled
+            ? "cursor-not-allowed opacity-50"
+            : "cursor-pointer hover:text-red-500 dark:hover:text-red-800"
+        } transition-all ease-out duration-300 hover:scale-125`}
+        onClick={handleSearch}
+        disabled={isSearchDisabled}
+      >
+        <VscSend />
+      </button>
     </div>
   );
 };
