@@ -98,7 +98,7 @@ const SkillsModal: React.FC<SkillsModalProps> = ({ isOpen, onClose }) => {
   const skills = groupSkills();
 
   return (
-    <Modal title="Skills" isOpen={isOpen} onClose={onClose}>
+    <Modal title="Skills & Tools" isOpen={isOpen} onClose={onClose}>
       <div className="flex mt-4">
         <div
           className="
