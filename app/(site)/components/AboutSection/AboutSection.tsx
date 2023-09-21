@@ -42,15 +42,10 @@ const AboutSection = () => {
             <p>
               Greetings! I&apos;m Maruf, a{" "}
               <span className="font-bold">software engineer</span> from Royal
-              Holloway University, London. My journey is driven intensely by{" "}
+              Holloway University with a First Class Honours in Computer
+              Science. My journey is driven intensely by{" "}
               <span className="font-bold">curiosity</span> and an unyielding
               passion for innovative technology.
-            </p>
-            <div className="m-2.5" />
-            <p>
-              To me, coding isn&apos;t just about writing lines. It&apos;s about
-              conducting a <span className="font-bold">symphony</span> where
-              each note contributes to a harmonious tech marvel.
             </p>
             <div className="m-2.5" />
             <p>
