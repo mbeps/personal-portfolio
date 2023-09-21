@@ -4,15 +4,15 @@
 interface Skill {
   skill: string;
   category?:
-    | "Frontend Web Development"
-    | "Backend Web Development"
-    | "Full Stack Web Development"
+    | "Front-End Web Development"
+    | "Back-End Web Development"
+    | "Full-Stack Web Development"
     | "Object Relational Mapper"
     | "Testing"
     | "Project Manager"
     | "Machine Learning"
     | "Version Control System"
-    | "Continuous Integration"
+    | "CI/CD"
     | "Database"
     | "Containerization"
     | "API"
