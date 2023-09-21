@@ -6,10 +6,10 @@ import { Skill } from "@/types/skills";
  * Skills for both languages are the same.
  */
 const JavaScriptTypeScriptSkills: Skill[] = [
-  { skill: "Next.JS", category: "Full Stack Web Development" },
-  { skill: "NextAuth", category: "Backend Web Development" },
-  { skill: "Node.JS", category: "Backend Web Development" },
-  { skill: "React", category: "Frontend Web Development" },
+  { skill: "Next.JS", category: "Full-Stack Web Development" },
+  { skill: "NextAuth", category: "Back-End Web Development" },
+  { skill: "Node.JS", category: "Back-End Web Development" },
+  { skill: "React", category: "Front-End Web Development" },
   { skill: "Jest", category: "Testing" },
   { skill: "Vitest", category: "Testing" },
   { skill: "Prisma", category: "Object Relational Mapper" },
@@ -34,9 +34,12 @@ const languages: Language[] = [
   {
     language: "Python",
     skills: [
-      { skill: "Flask", category: "Backend Web Development" },
-      { skill: "Django", category: "Backend Web Development" },
+      { skill: "Flask", category: "Back-End Web Development" },
+      { skill: "Django", category: "Back-End Web Development" },
       { skill: "Scikit Learn", category: "Machine Learning" },
+      { skill: "Pandas", category: "Machine Learning" },
+      { skill: "NumPy", category: "Machine Learning" },
+      { skill: "Matplotlib", category: "Machine Learning" },
       { skill: "Jupyter Notebooks", category: "Machine Learning" },
       { skill: "PyTest", category: "Testing" },
       { skill: "SQLAlchemy", category: "Object Relational Mapper" },
