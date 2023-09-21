@@ -535,6 +535,24 @@ const machineLearningProjects: Project[] = [
       "Independent Project",
     ],
   },
+  {
+    name: "Computational Finance Assignment",
+    slug: "computational-finance-assignment",
+    description: `
+      An assignment exploring valuation of options using methods like Black-Scholes, binomial trees, and Monte Carlo. 
+      Also includes theoretical aspects of put-call parity and financial arbitrage opportunities.`,
+    repoURL: `https://github.com/mbeps/Computation_Finance_Assignment`,
+    programmingLanguage: `Python`,
+    technologies: [`NumPy`, `Matplotlib`, "Jupyter Notebook"],
+    type: "Machine Learning",
+    tags: [
+      "Computational Finance",
+      "University",
+      "Best",
+      "Individual Project",
+      "Independent Project",
+    ],
+  },
 ];
 
 /**
