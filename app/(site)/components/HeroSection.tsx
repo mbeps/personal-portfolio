@@ -1,12 +1,11 @@
-"use client"; // this is a client component
+"use client";
 import scrollToSection from "@/actions/scrollToSection";
 import Button from "@/components/Atoms/Button";
 import Socials from "@/components/Socials/Socials";
 import Image from "next/image";
 import { HiArrowDown } from "react-icons/hi";
-import { Link } from "react-scroll/modules";
 
-/**+
+/**
  * Hero section component shown at the top of the page.
  * Contains a short description of myself, a picture and a link to the projects section.
  */
@@ -90,16 +89,13 @@ const HeroSection = () => {
           my-10 md:my-4
         "
       >
-        <Link
-          to="about"
-          activeClass="active"
-          spy={true}
-          smooth={true}
-          offset={-100}
-          duration={500}
+        <div
+          onClick={() => {
+            scrollToSection("projects");
+          }}
         >
           <HiArrowDown size={35} className="animate-bounce slow-bounce" />
-        </Link>
+        </div>
       </div>
     </section>
   );
