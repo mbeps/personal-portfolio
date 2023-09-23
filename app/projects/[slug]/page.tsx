@@ -15,6 +15,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
+import getMediaFromFileSystem from "@/actions/getMediaFromFileSystem";
 
 /**
  * Metadata object for the dynamic project page.
@@ -82,20 +83,17 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const projectLanguage = project?.programmingLanguage;
   const projectDescription = project?.description;
 
-  let gallery = getImagesFromFileSystem(`public/projects/${slug}/gallery`);
+  let gallery = getMediaFromFileSystem(`public/projects/${slug}/gallery`);
 
-  gallery = gallery
-    .filter((image) => image.endsWith(".png"))
-    .sort((a, b) => parseInt(a, 10) - parseInt(b, 10));
-
-  // Adds full path to images
   if (gallery) {
-    gallery = gallery.map((image) => `/projects/${slug}/gallery/${image}`);
+    gallery = gallery.map((mediaItem) => {
+      return {
+        ...mediaItem,
+        src: `/projects/${slug}/gallery/${mediaItem.src}`,
+      };
+    });
   }
 
-  /**
-   * Gets the features for the project from the markdown file.
-   */
   const features = getMarkdownFromFileSystem(
     `public/projects/${slug}/features.md`
   )?.content;
@@ -104,40 +102,40 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
     `public/projects/${slug}/report.md`
   )?.content;
 
-  // redirect to not found page is the project is not valid
+  // redirect to not found page if the project is not valid
   if (!project) {
     notFound();
   }
 
   return (
     <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
-      <HeadingTwo title={projectName!} />
+      <HeadingTwo title={project?.name} />
 
-      {/* Images Section */}
+      {/* Gallery Section */}
       {gallery && gallery.length > 1 ? (
-        <Gallery images={gallery} />
+        <Gallery mediaItems={gallery} />
       ) : project?.imageURL ? (
         <div
           className="
-            w-full 
-            flex items-center justify-center 
-            relative 
-            z-0
-            animate-fadeIn animation-delay-2
-          "
+    w-full 
+    flex items-center justify-center 
+    relative 
+    z-0
+    animate-fadeIn animation-delay-2
+  "
         >
           <Image
             src={project.imageURL}
-            alt="Currently Active"
+            alt="Project Image"
             quality={90}
             width={2000}
             height={1125}
             priority
             className="
-              w-full
-              object-contain rounded-xl 
-              transition-colors duration-700
-              "
+      w-full
+      object-contain rounded-xl 
+      transition-colors duration-700
+    "
           />
         </div>
       ) : (

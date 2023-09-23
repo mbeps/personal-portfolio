@@ -1,14 +1,16 @@
 "use client";
 
+import MediaItem from "@/types/MediaItem";
 import Image from "next/image";
 import React, { useState } from "react";
 import {
   IoIosArrowDropleftCircle,
   IoIosArrowDroprightCircle,
+  IoMdPlay,
 } from "react-icons/io";
 
 interface GalleryProps {
-  images: string[];
+  mediaItems: MediaItem[];
 }
 
 /**
@@ -20,24 +22,16 @@ interface GalleryProps {
  * @param images (string[]) - List of image urls (relative or absolute
  * @returns (JSX.Element) - Gallery Component
  */
-const Gallery: React.FC<GalleryProps> = ({ images }) => {
+const Gallery: React.FC<GalleryProps> = ({ mediaItems }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  /**
-   * Changes the active image to the next image in the list.
-   * If the current image is the last image, it will loop back to the first image.
-   */
   const handleNext = () => {
-    setActiveIndex((prevIndex) => (prevIndex + 1) % images.length);
+    setActiveIndex((prevIndex) => (prevIndex + 1) % mediaItems.length);
   };
 
-  /**
-   * Changes the active image to the previous image in the list.
-   *
-   */
   const handlePrev = () => {
     setActiveIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+      (prevIndex) => (prevIndex - 1 + mediaItems.length) % mediaItems.length
     );
   };
 
@@ -46,73 +40,60 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
       <div className="w-full relative">
         <IoIosArrowDropleftCircle
           size={44}
-          className="
-            absolute left-1 top-1/2 transform -translate-y-1/2 text-3xl 
-            opacity-30 hover:opacity-100
-            cursor-pointer
-            text-neutral-400 dark:text-neutral-700
-            hover:text-red-500 dark:hover:text-red-900
-            transition-all hover:scale-110 duration-300"
+          className="absolute left-1 top-1/2 transform -translate-y-1/2 text-3xl opacity-30 hover:opacity-100 cursor-pointer text-neutral-400 dark:text-neutral-700 hover:text-red-500 dark:hover:text-red-900 transition-all hover:scale-110 duration-300"
           onClick={handlePrev}
         />
-        {/* Image Container */}
-        <div className="w-full">
-          {/* Image Preview */}
+
+        {/* Depending on type, show Image or Video */}
+        {mediaItems[activeIndex].type === "image" ? (
           <Image
-            src={images[activeIndex]}
+            src={mediaItems[activeIndex].src}
             alt="Currently Active"
             quality={90}
             width={2000}
             height={1125}
             priority
-            className="
-              w-full h-[60vh] 
-              object-contain rounded-xl 
-              bg-neutral-100 dark:bg-neutral-900 
-              transition-colors duration-700
-              p-2"
+            className="w-full h-[60vh] object-contain rounded-xl bg-neutral-100 dark:bg-neutral-900 transition-colors duration-700 p-2"
           />
-        </div>
+        ) : (
+          <video controls className="w-full h-[60vh] rounded-xl p-2">
+            <source src={mediaItems[activeIndex].src} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        )}
+
         <IoIosArrowDroprightCircle
           size={44}
-          className="
-            absolute right-1 top-1/2 transform -translate-y-1/2 text-3xl 
-            opacity-30 hover:opacity-100
-            cursor-pointer
-            text-neutral-400 dark:text-neutral-700
-            hover:text-red-500 dark:hover:text-red-900
-            transition-all hover:scale-110 duration-300"
+          className="absolute right-1 top-1/2 transform -translate-y-1/2 text-3xl opacity-30 hover:opacity-100 cursor-pointer text-neutral-400 dark:text-neutral-700 hover:text-red-500 dark:hover:text-red-900 transition-all hover:scale-110 duration-300"
           onClick={handleNext}
         />
       </div>
 
       <div className="flex flex-wrap justify-center gap-2 mt-4">
-        {/* Image List */}
-        {images.map((image, idx) => (
+        {mediaItems.map((media, idx) => (
           <div
             key={idx}
-            className={`w-16 h-16 ${
+            className={`relative w-16 h-16 ${
               idx === activeIndex
                 ? "border-4 border-red-500 dark:border-red-800 hover:border-red-600 dark:hover:border-red-500"
                 : "border-2 border-neutral-200 dark:border-neutral-700 hover:border-neutral-400 dark:hover:border-red-900"
-            } rounded-lg overflow-hidden cursor-pointer transition-all duration-500 
-            transform hover:scale-110   ease-in-out`}
+            } rounded-lg overflow-hidden cursor-pointer transition-all duration-500 transform hover:scale-110 ease-in-out`}
             onClick={() => setActiveIndex(idx)}
           >
             <Image
-              src={image}
+              src={media.src}
               quality={1}
               alt={`Thumbnail ${idx}`}
               width={150}
               height={150}
               loading="lazy"
-              className="
-                w-full h-full 
-                object-cover 
-                rounded-lg 
-                transform hover:scale-105 transition-transform duration-500 ease-in-out
-              "
+              className="w-full h-full object-cover rounded-lg transform hover:scale-105 transition-transform duration-500 ease-in-out"
             />
+            {media.type === "video" && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <IoMdPlay size={32} className="text-white opacity-70" />
+              </div>
+            )}
           </div>
         ))}
       </div>
