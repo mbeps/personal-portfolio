@@ -105,7 +105,7 @@ const HeroSection = () => {
       >
         <div
           onClick={() => {
-            scrollToSection("projects");
+            scrollToSection("about");
           }}
         >
           <HiArrowDown size={35} className="animate-bounce slow-bounce" />
