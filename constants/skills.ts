@@ -48,6 +48,7 @@ const technologies: Skill[] = [
   { skill: "Geometry", category: "Mathematics" },
 
   { skill: "Vagrant", category: "Other" },
+  { skill: "Linux", category: "Other" },
 ];
 
 export { technologies };

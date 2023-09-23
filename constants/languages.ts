@@ -42,6 +42,7 @@ const languages: Language[] = [
       { skill: "Matplotlib", category: "Machine Learning" },
       { skill: "Jupyter Notebooks", category: "Machine Learning" },
       { skill: "PyTest", category: "Testing" },
+      { skill: "UnitTest", category: "Testing" },
       { skill: "SQLAlchemy", category: "Object Relational Mapper" },
       { skill: "Poetry", category: "Project Manager" },
     ],
