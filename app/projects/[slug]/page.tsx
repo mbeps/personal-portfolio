@@ -83,14 +83,14 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const projectLanguage = project?.programmingLanguage;
   const projectDescription = project?.description;
 
-  let gallery = getMediaFromFileSystem(`public/projects/${slug}/gallery`);
+  let media = getMediaFromFileSystem(`public/projects/${slug}/media`);
 
   // add the path to the media items
-  if (gallery) {
-    gallery = gallery.map((mediaItem) => {
+  if (media) {
+    media = media.map((mediaItem) => {
       return {
         ...mediaItem,
-        src: `/projects/${slug}/gallery/${mediaItem.src}`,
+        src: `/projects/${slug}/media/${mediaItem.src}`,
       };
     });
   }
@@ -121,8 +121,8 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
       <HeadingTwo title={project?.name} />
 
       {/* Gallery Section */}
-      {gallery && gallery.length > 1 ? (
-        <Gallery mediaItems={gallery} />
+      {media && media.length > 1 ? (
+        <Gallery mediaItems={media} />
       ) : project?.imageURL ? (
         <div
           className="
@@ -151,7 +151,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
         <></>
       )}
 
-      {(gallery && gallery.length > 1) ||
+      {(media && media.length > 1) ||
         (project?.imageURL && (
           <div className="border-b border-neutral-200 dark:border-neutral-800" />
         ))}
