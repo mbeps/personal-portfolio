@@ -1,7 +1,8 @@
+import validateSlugs from "@/actions/validateSlug";
 import Button from "@/components/Atoms/Button";
 import ProjectItem from "@/components/ProjectItem/ProjectItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import { webdevProjects } from "@/constants/projects";
+import allProjects from "@/constants/projects";
 
 /**
  * Project section listing the projects I have worked on.
@@ -11,32 +12,49 @@ import { webdevProjects } from "@/constants/projects";
  * @returns (JSX.Element): Projects section
  */
 const ProjectsSection = () => {
+  /**
+   * Only projects matching these slugs will be shown.
+   */
+  const allowedSlugs = [
+    "circus-discussions",
+    "ringmaster-messaging",
+    "magician-ai",
+  ];
+
+  // Validate the slugs
+  if (!validateSlugs(allowedSlugs, allProjects)) {
+    console.error("Some slugs in allowedSlugs are not valid.");
+    return null;
+  }
+
   return (
     <section id="projects" className="wrapper ">
       <div className="my-12 pb-12 md:pt-16 ">
         <HeadingTwo title="Projects" />
 
         <div className="flex flex-col space-y-20 mt-14">
-          {webdevProjects.map((project, idx) => (
-            <div key={idx}>
-              <ProjectItem
-                name={project.name}
-                slug={project.slug}
-                description={project.description}
-                imageURL={project.imageURL}
-                repoURL={project.repoURL}
-                siteURL={project.siteURL}
-                programmingLanguage={project.programmingLanguage}
-                technologies={project.technologies}
-                type={project.type}
-              />
-            </div>
-          ))}
+          {allProjects
+            .filter((project) => allowedSlugs.includes(project.slug))
+            .map((project, idx) => (
+              <div key={idx}>
+                <ProjectItem
+                  name={project.name}
+                  slug={project.slug}
+                  description={project.description}
+                  imageURL={project.imageURL}
+                  repoURL={project.repoURL}
+                  siteURL={project.siteURL}
+                  programmingLanguage={project.programmingLanguage}
+                  technologies={project.technologies}
+                  type={project.type}
+                />
+              </div>
+            ))}
         </div>
 
         <div className="flex justify-center mt-10">
           <Button variant="outlined" onClick={"/projects"}>
-            View More Projects
+            View All Projects
           </Button>
         </div>
       </div>
