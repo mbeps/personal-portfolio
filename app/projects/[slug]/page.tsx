@@ -85,6 +85,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
 
   let gallery = getMediaFromFileSystem(`public/projects/${slug}/gallery`);
 
+  // add the path to the media items
   if (gallery) {
     gallery = gallery.map((mediaItem) => {
       return {
@@ -94,10 +95,18 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
     });
   }
 
+  /**
+   * Get the features and blog content from the file system.
+   * This is used to display the features and blog sections.
+   */
   const features = getMarkdownFromFileSystem(
     `public/projects/${slug}/features.md`
   )?.content;
 
+  /**
+   * Get the features and blog content from the file system.
+   * This is used to display the features and blog sections.
+   */
   const blog = getMarkdownFromFileSystem(
     `public/projects/${slug}/report.md`
   )?.content;
@@ -117,12 +126,12 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
       ) : project?.imageURL ? (
         <div
           className="
-    w-full 
-    flex items-center justify-center 
-    relative 
-    z-0
-    animate-fadeIn animation-delay-2
-  "
+            w-full 
+            flex items-center justify-center 
+            relative 
+            z-0
+            animate-fadeIn animation-delay-2
+          "
         >
           <Image
             src={project.imageURL}
@@ -132,10 +141,10 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
             height={1125}
             priority
             className="
-      w-full
-      object-contain rounded-xl 
-      transition-colors duration-700
-    "
+              w-full
+              object-contain rounded-xl 
+              transition-colors duration-700
+            "
           />
         </div>
       ) : (
@@ -175,11 +184,11 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
                     <Button
                       variant={"ghost"}
                       className="
-                      text-neutral-900 dark:text-white 
-                      hover:text-neutral-900 
-                      hover:bg-neutral-300
-                      w-auto md:w-full
-                      rounded-full md:rounded-xl
+                        text-neutral-900 dark:text-white 
+                        hover:text-neutral-900 
+                        hover:bg-neutral-300
+                        w-auto md:w-full
+                        rounded-full md:rounded-xl
                   "
                     >
                       <div className="flex flex-row justify-center md:justify-start gap-4 w-full">
@@ -197,11 +206,11 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
                     <Button
                       variant={"ghost"}
                       className="
-                      text-neutral-900 dark:text-white 
-                      hover:text-neutral-900 
-                      hover:bg-neutral-300
-                      w-auto md:w-full
-                      rounded-full md:rounded-xl
+                        text-neutral-900 dark:text-white 
+                        hover:text-neutral-900 
+                        hover:bg-neutral-300
+                        w-auto md:w-full
+                        rounded-full md:rounded-xl
                     "
                     >
                       <div className="flex flex-row justify-center md:justify-start gap-4 w-full">
