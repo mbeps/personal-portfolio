@@ -83,7 +83,13 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-row items-center text-center justify-center my-4">
+      <div
+        className="
+          flex flex-row 
+          items-center text-center justify-center 
+          my-10 md:my-4
+        "
+      >
         <Link
           to="about"
           activeClass="active"
