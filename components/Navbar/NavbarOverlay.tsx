@@ -41,7 +41,7 @@ const NavbarOverlay: React.FC<OverlayProps> = ({ isOpen, toggle, items }) => {
       </div>
 
       <div className="w-full pb-20">
-        <Socials />
+        <Socials iconSize={40} />
       </div>
     </Overlay>
   );

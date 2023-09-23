@@ -1,11 +1,8 @@
+import { SocialLink } from "@/types/social";
 import React from "react";
-import { IconType } from "react-icons";
 
-interface SocialIconProps {
-  title: string;
-  link: string;
-  IconComponent: IconType;
-  isEmail?: boolean;
+interface SocialIconProps extends SocialLink {
+  iconSize?: number;
 }
 
 /**
@@ -19,20 +16,24 @@ interface SocialIconProps {
  * @returns (JSX.Element): Social media icon
  */
 const SocialIcon: React.FC<SocialIconProps> = ({
-  title,
+  name,
   link,
   IconComponent,
   isEmail = false,
+  iconSize = 30,
 }) => (
-  <div title={title}>
+  <div title={name}>
     <a
       href={isEmail ? `mailto:${link}` : link}
       rel="noreferrer"
       target="_blank"
     >
       <IconComponent
-        className="hover:-translate-y-1 transition-transform cursor-pointer text-neutral-500 dark:text-neutral-100"
-        size={30}
+        className="
+          hover:-translate-y-1 transition-transform 
+          cursor-pointer 
+          text-neutral-600 dark:text-neutral-200"
+        size={iconSize}
       />
     </a>
   </div>

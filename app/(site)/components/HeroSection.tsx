@@ -1,6 +1,7 @@
 "use client"; // this is a client component
 import scrollToSection from "@/actions/scrollToSection";
 import Button from "@/components/Atoms/Button";
+import Socials from "@/components/Socials/Socials";
 import Image from "next/image";
 import { HiArrowDown } from "react-icons/hi";
 import { Link } from "react-scroll/modules";
@@ -51,6 +52,13 @@ const HeroSection = () => {
           >
             Software Engineer
           </p>
+
+          <Socials
+            iconSize={40}
+            className="
+              md:space-x-5
+            "
+          />
 
           {/* Buttons */}
           <div className="flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0 w-full md:w-3/5">
