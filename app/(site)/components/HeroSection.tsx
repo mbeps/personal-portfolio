@@ -1,6 +1,7 @@
 "use client";
 import scrollToSection from "@/actions/scrollToSection";
 import Button from "@/components/Atoms/Button";
+import TextLoop from "@/components/Atoms/TextLoop";
 import Socials from "@/components/Socials/Socials";
 import Image from "next/image";
 import { HiArrowDown } from "react-icons/hi";
@@ -10,6 +11,16 @@ import { HiArrowDown } from "react-icons/hi";
  * Contains a short description of myself, a picture and a link to the projects section.
  */
 const HeroSection = () => {
+  /**
+   * Array of strings to loop through.
+   */
+  const loopItems = [
+    "Full Stack Developer",
+    "Machine Learning Engineer",
+    "Software Engineer",
+    "Mathematician",
+  ];
+
   return (
     <section
       id="home"
@@ -51,6 +62,9 @@ const HeroSection = () => {
           >
             Software Engineer
           </p>
+
+          {/* Roles to loop through */}
+          {/* <TextLoop loopItems={loopItems} delay={3000} /> */}
 
           <Socials
             iconSize={40}
