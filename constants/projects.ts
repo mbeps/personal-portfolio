@@ -990,3 +990,18 @@ export {
   javaAssignments,
   backendWebDevProjects,
 };
+
+/**
+ * Array of all projects.
+ */
+const allProjects = [
+  ...webdevProjects,
+  ...machineLearningProjects,
+  ...extraWebDevProjects,
+  ...gameDevProjects,
+  ...otherProjects,
+  ...javaAssignments,
+  ...backendWebDevProjects,
+];
+
+export default allProjects;

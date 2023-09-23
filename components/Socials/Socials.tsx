@@ -1,51 +1,46 @@
 import React from "react";
-import {
-  AiOutlineGithub,
-  AiOutlineTwitter,
-  AiFillLinkedin,
-  AiOutlineMail,
-} from "react-icons/ai";
 import SocialIcon from "./SocialIcon";
+import { twMerge } from "tailwind-merge";
+import socialLinks from "@/constants/socials";
 
-type SocialsProps = {};
+type SocialsProps = {
+  className?: string;
+  iconSize?: number;
+};
 
 /**
  * Socials component that displays social links.
  *
  * @returns (JSX.Element) - Socials component
  */
-const Socials: React.FC<SocialsProps> = () => {
+const Socials: React.FC<SocialsProps> = ({ className, iconSize }) => {
+  const baseStyles = `
+    flex flex-row 
+    items-center 
+    justify-center 
+    md:items-center 
+    md:justify-start 
+    space-x-6 md:space-x-2
+    mb-1
+  `;
+
+  // Merge the base styles with the className passed in as a prop.
+  const mergedStyles = twMerge(baseStyles, className);
+
   return (
-    <div
-      className="
-				flex flex-row 
-				items-center justify-center 
-				space-x-6 md:space-x-2
-        mb-1 
-			"
-    >
-      <SocialIcon
-        title="GitHub"
-        link="https://github.com/mbeps"
-        IconComponent={AiOutlineGithub}
-      />
-      {/* <SocialIcon
-        title="Twitter"
-        link="https://twitter.com/m_beps"
-        IconComponent={AiOutlineTwitter}
-      /> */}
-      <SocialIcon
-        title="LinkedIn"
-        link="https://www.linkedin.com/in/maruf-bepary"
-        IconComponent={AiFillLinkedin}
-      />
-      <SocialIcon
-        title="Email"
-        link="bepary71@gmail.com"
-        IconComponent={AiOutlineMail}
-        isEmail
-      />
+    <div className={mergedStyles}>
+      {socialLinks.map((link) => (
+        <SocialIcon
+          key={link.name}
+          name={link.name}
+          link={link.link}
+          IconComponent={link.IconComponent}
+          isEmail={link.isEmail}
+          iconSize={iconSize}
+        />
+      ))}
     </div>
   );
 };
+
 export default Socials;

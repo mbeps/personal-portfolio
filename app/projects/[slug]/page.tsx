@@ -7,33 +7,14 @@ import HeadingTwo from "@/components/Text/HeadingTwo";
 import getImagesFromFileSystem from "@/actions/getImagesFromFileSystem";
 import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
 import Button from "@/components/Atoms/Button";
-import TabbedReader from "./components/TabbedReader";
-import {
-  backendWebDevProjects,
-  extraWebDevProjects,
-  gameDevProjects,
-  javaAssignments,
-  machineLearningProjects,
-  otherProjects,
-  webdevProjects,
-} from "@/constants/projects";
-import Project from "@/types/projects";
+import allProjects from "@/constants/projects";
+import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
-import { ResolvingMetadata, Metadata } from "next";
-
-const projects: Project[] = [
-  ...webdevProjects,
-  ...extraWebDevProjects,
-  ...backendWebDevProjects,
-  ...machineLearningProjects,
-  ...javaAssignments,
-  ...gameDevProjects,
-  ...otherProjects,
-];
+import TabbedReader from "./components/TabbedReader";
 
 /**
  * Metadata object for the dynamic project page.
@@ -49,7 +30,7 @@ export async function generateMetadata(
   const slug = params.slug;
 
   // Assume getProjectBySlug function fetches project by slug
-  const project = getProjectBySlug(slug, projects);
+  const project = getProjectBySlug(slug, allProjects);
 
   // Create metadata based on the project details
   return {
@@ -69,7 +50,7 @@ export async function generateMetadata(
  * This improves the performance of the website.
  */
 export const generateStaticParams = async () => {
-  return projects.map((project) => ({ slug: project.slug }));
+  return allProjects.map((project) => ({ slug: project.slug }));
 };
 
 interface ProjectPageProps {
@@ -94,8 +75,6 @@ interface ProjectPageProps {
  */
 const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const slug = params.slug;
-
-  const allProjects: Project[] = projects;
 
   const project = getProjectBySlug(slug, allProjects);
   const projectName = project?.name;

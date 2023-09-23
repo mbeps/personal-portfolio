@@ -1,15 +1,26 @@
-"use client"; // this is a client component
+"use client";
 import scrollToSection from "@/actions/scrollToSection";
 import Button from "@/components/Atoms/Button";
+import TextLoop from "@/components/Atoms/TextLoop";
+import Socials from "@/components/Socials/Socials";
 import Image from "next/image";
 import { HiArrowDown } from "react-icons/hi";
-import { Link } from "react-scroll/modules";
 
-/**+
+/**
  * Hero section component shown at the top of the page.
  * Contains a short description of myself, a picture and a link to the projects section.
  */
 const HeroSection = () => {
+  /**
+   * Array of strings to loop through.
+   */
+  const loopItems = [
+    "Full Stack Developer",
+    "Machine Learning Engineer",
+    "Software Engineer",
+    "Mathematician",
+  ];
+
   return (
     <section
       id="home"
@@ -52,6 +63,16 @@ const HeroSection = () => {
             Software Engineer
           </p>
 
+          {/* Roles to loop through */}
+          {/* <TextLoop loopItems={loopItems} delay={3000} /> */}
+
+          <Socials
+            iconSize={40}
+            className="
+              md:space-x-5
+            "
+          />
+
           {/* Buttons */}
           <div className="flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0 w-full md:w-3/5">
             <Button
@@ -75,17 +96,20 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-row items-center text-center justify-center my-4">
-        <Link
-          to="about"
-          activeClass="active"
-          spy={true}
-          smooth={true}
-          offset={-100}
-          duration={500}
+      <div
+        className="
+          flex flex-row 
+          items-center text-center justify-center 
+          my-10 md:my-4
+        "
+      >
+        <div
+          onClick={() => {
+            scrollToSection("about");
+          }}
         >
           <HiArrowDown size={35} className="animate-bounce slow-bounce" />
-        </Link>
+        </div>
       </div>
     </section>
   );
