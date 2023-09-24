@@ -37,7 +37,7 @@ export default function RootLayout({
       <head />
       <body
         className={`
-          bg-white dark:bg-stone-900
+          bg-white dark:bg-neutral-900
           transition-colors duration-700 ease-in-out
 
         `}
