@@ -34,7 +34,7 @@ const Modal: React.FC<ModalProps> = ({
     transform 
     overflow-hidden 
     rounded-xl 
-    bg-white dark:bg-stone-900
+    bg-white dark:bg-neutral-900
     text-black dark:text-white
     shadow-2xl
     transition-all duration-500 ease-in-out
@@ -98,7 +98,7 @@ const Modal: React.FC<ModalProps> = ({
                   className={`
                     sticky 
                     top-0 
-                    bg-white dark:bg-stone-900
+                    bg-white dark:bg-neutral-900
                     z-10 
                     flex flex-col space-y-2 
                     transition-all duration-500 ease-in-out

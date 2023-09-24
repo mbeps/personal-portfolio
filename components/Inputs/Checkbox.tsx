@@ -32,12 +32,12 @@ const Checkbox: React.FC<CheckboxProps> = ({
     ? "border-red-500 dark:border-red-900"
     : hovered
     ? "border-neutral-300 dark:border-red-950"
-    : "border-neutral-200 dark:border-stone-800";
+    : "border-neutral-200 dark:border-neutral-800";
 
   const combinedClassName = twMerge(
     `
       border-2 ${borderColor}
-      bg-neutral-200 dark:bg-stone-800
+      bg-neutral-200 dark:bg-neutral-800
       hover:bg-neutral-300 dark:hover:bg-red-950
       transition-colors duration-300 ease-in-out
       rounded-xl p-2 my-2 

@@ -47,7 +47,7 @@ export default function Navbar() {
           ${
             scrolled && !isOverlayOpen ? "shadow-lg " : ""
           } dark:shadow-neutral-800 
-          bg-white dark:bg-stone-900 
+          bg-white dark:bg-neutral-900 
           transition-all ease-in-out 
           ${
             !isOverlayOpen
