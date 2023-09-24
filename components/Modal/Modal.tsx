@@ -108,11 +108,11 @@ const Modal: React.FC<ModalProps> = ({
                     type="button"
                     className={`
                       self-end
-                      rounded-lg 
+                      rounded-full 
                       m-4 sm:m-3
-                      bg-white dark:bg-stone-900 
-                      hover:bg-gray-100 dark:hover:bg-stone-800
-                      text-gray-400 dark:text-gray-500
+                      bg-transparent dark:bg-transparent 
+                      hover:bg-neutral-100 dark:hover:bg-neutral-800
+                      text-neutral-400 dark:text-neutral-500
                       hover:text-red-600 dark:hover:text-red-900
                       transition-colors duration-700 ease-in-out
                     `}
