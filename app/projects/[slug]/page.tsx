@@ -15,6 +15,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
+import getMediaFromFileSystem from "@/actions/getMediaFromFileSystem";
 
 /**
  * Metadata object for the dynamic project page.
@@ -82,40 +83,46 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const projectLanguage = project?.programmingLanguage;
   const projectDescription = project?.description;
 
-  let gallery = getImagesFromFileSystem(`public/projects/${slug}/gallery`);
+  let media = getMediaFromFileSystem(`public/projects/${slug}/media`);
 
-  gallery = gallery
-    .filter((image) => image.endsWith(".png"))
-    .sort((a, b) => parseInt(a, 10) - parseInt(b, 10));
-
-  // Adds full path to images
-  if (gallery) {
-    gallery = gallery.map((image) => `/projects/${slug}/gallery/${image}`);
+  // add the path to the media items
+  if (media) {
+    media = media.map((mediaItem) => {
+      return {
+        ...mediaItem,
+        src: `/projects/${slug}/media/${mediaItem.src}`,
+      };
+    });
   }
 
   /**
-   * Gets the features for the project from the markdown file.
+   * Get the features and blog content from the file system.
+   * This is used to display the features and blog sections.
    */
   const features = getMarkdownFromFileSystem(
     `public/projects/${slug}/features.md`
   )?.content;
 
+  /**
+   * Get the features and blog content from the file system.
+   * This is used to display the features and blog sections.
+   */
   const blog = getMarkdownFromFileSystem(
     `public/projects/${slug}/report.md`
   )?.content;
 
-  // redirect to not found page is the project is not valid
+  // redirect to not found page if the project is not valid
   if (!project) {
     notFound();
   }
 
   return (
     <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
-      <HeadingTwo title={projectName!} />
+      <HeadingTwo title={project?.name} />
 
-      {/* Images Section */}
-      {gallery && gallery.length > 1 ? (
-        <Gallery images={gallery} />
+      {/* Gallery Section */}
+      {media && media.length > 1 ? (
+        <Gallery mediaItems={media} />
       ) : project?.imageURL ? (
         <div
           className="
@@ -128,7 +135,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
         >
           <Image
             src={project.imageURL}
-            alt="Currently Active"
+            alt="Project Image"
             quality={90}
             width={2000}
             height={1125}
@@ -137,14 +144,14 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
               w-full
               object-contain rounded-xl 
               transition-colors duration-700
-              "
+            "
           />
         </div>
       ) : (
         <></>
       )}
 
-      {(gallery && gallery.length > 1) ||
+      {(media && media.length > 1) ||
         (project?.imageURL && (
           <div className="border-b border-neutral-200 dark:border-neutral-800" />
         ))}
@@ -177,11 +184,11 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
                     <Button
                       variant={"ghost"}
                       className="
-                      text-neutral-900 dark:text-white 
-                      hover:text-neutral-900 
-                      hover:bg-neutral-300
-                      w-auto md:w-full
-                      rounded-full md:rounded-xl
+                        text-neutral-900 dark:text-white 
+                        hover:text-neutral-900 
+                        hover:bg-neutral-300
+                        w-auto md:w-full
+                        rounded-full md:rounded-xl
                   "
                     >
                       <div className="flex flex-row justify-center md:justify-start gap-4 w-full">
@@ -199,11 +206,11 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
                     <Button
                       variant={"ghost"}
                       className="
-                      text-neutral-900 dark:text-white 
-                      hover:text-neutral-900 
-                      hover:bg-neutral-300
-                      w-auto md:w-full
-                      rounded-full md:rounded-xl
+                        text-neutral-900 dark:text-white 
+                        hover:text-neutral-900 
+                        hover:bg-neutral-300
+                        w-auto md:w-full
+                        rounded-full md:rounded-xl
                     "
                     >
                       <div className="flex flex-row justify-center md:justify-start gap-4 w-full">
