@@ -20,9 +20,10 @@ const webdevProjects: Project[] = [
     programmingLanguage: `TypeScript`,
     technologies: [
       `Next.JS`,
-      "React",
+      "React.js",
       `Chakra UI`,
       `Firebase`,
+      `Node.js`,
       `Recoil`,
       "Docker",
       "GitHub Actions",
@@ -68,7 +69,8 @@ const webdevProjects: Project[] = [
     programmingLanguage: `TypeScript`,
     technologies: [
       "Next.JS",
-      "React",
+      "React.js",
+      `Node.js`,
       "NextAuth",
       "MongoDB",
       "Prisma",
@@ -115,7 +117,8 @@ const webdevProjects: Project[] = [
     programmingLanguage: `TypeScript`,
     technologies: [
       `Next.JS`,
-      "React",
+      "React.js",
+      `Node.js`,
       `Supabase`,
       "PostgreSQL",
       `Tailwind CSS`,
@@ -159,10 +162,11 @@ const webdevProjects: Project[] = [
     siteURL: "https://magician-ai.vercel.app/",
     technologies: [
       `Next.JS`,
-      "React",
+      "React.js",
       `Shadcn UI`,
       `Radix UI`,
       `Tailwind CSS`,
+      `Node.js`,
       "MySQL",
       "Zustand",
       "Clerk Auth",
@@ -211,13 +215,14 @@ const extraWebDevProjects: Project[] = [
   {
     name: "Quizmify",
     slug: "quizmify",
-    description:
-      "An intuitive platform leveraging OpenAI's GPT-3.5 for dynamic quiz generation. Users can test their knowledge across various topics, choosing between multiple-choice questions or fill-in-the-gap style challenges. With immediate feedback and score tracking, users enhance their understanding.",
+    description: `An intuitive platform for dynamic quiz generation. 
+      Users can test their knowledge across various topics, choosing between multiple-choice questions or fill-in-the-gap style challenges. 
+      With immediate feedback and score tracking, users enhance their understanding.`,
     programmingLanguage: "TypeScript",
     type: "Full-Stack Web Dev",
     technologies: [
       "Next.JS",
-      "React",
+      "React.js",
       "Tailwind CSS",
       "Shadcn UI",
       "Node.js",
@@ -290,9 +295,10 @@ const extraWebDevProjects: Project[] = [
     programmingLanguage: `TypeScript`,
     technologies: [
       `Next.JS`,
-      "React",
+      "React.js",
       "Shadcn UI",
       `Tailwind CSS`,
+      `Node.js`,
       `Clerk Auth`,
       `MySQL`,
       "tRPC",
@@ -336,8 +342,9 @@ const extraWebDevProjects: Project[] = [
     programmingLanguage: `TypeScript`,
     technologies: [
       `Next.JS`,
-      "React",
+      "React.js",
       `Tailwind CSS`,
+      `Node.js`,
       "Jotai",
       `Supabase`,
       "PostgreSQL",
@@ -444,7 +451,7 @@ const backendWebDevProjects: Project[] = [
       `,
     programmingLanguage: `TypeScript`,
     repoURL: `https://github.com/mbeps/clerk-demo`,
-    technologies: [`Next.JS`, `Clerk Auth`],
+    technologies: [`Next.JS`, `Clerk Auth`, `Node.js`],
     type: "Back-End Web Dev",
     tags: [
       "Web Development",
@@ -467,7 +474,7 @@ const backendWebDevProjects: Project[] = [
       `,
     programmingLanguage: `TypeScript`,
     repoURL: `https://github.com/mbeps/nextjs-auth0`,
-    technologies: [`Next.JS`, `Auth0`],
+    technologies: [`Next.JS`, `Auth0`, `Node.js`],
     type: "Back-End Web Dev",
     tags: [
       "Web Development",
