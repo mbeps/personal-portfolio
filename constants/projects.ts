@@ -209,6 +209,46 @@ const webdevProjects: Project[] = [
  */
 const extraWebDevProjects: Project[] = [
   {
+    name: "Quizmify",
+    slug: "quizmify",
+    description:
+      "An intuitive platform leveraging OpenAI's GPT-3.5 for dynamic quiz generation. Users can test their knowledge across various topics, choosing between multiple-choice questions or fill-in-the-gap style challenges. With immediate feedback and score tracking, users enhance their understanding.",
+    programmingLanguage: "TypeScript",
+    type: "Full-Stack Web Dev",
+    technologies: [
+      "Next.JS",
+      "React",
+      "Tailwind CSS",
+      "Shadcn UI",
+      "Node.js",
+      "Prisma",
+      "Axios",
+      "NextAuth",
+      "Zod",
+      "MySQL",
+      "OpenAI",
+    ],
+    imageURL: `/projects/quizmify/cover.png`,
+    repoURL: "https://github.com/mbeps/quizmify",
+    tags: [
+      "Web Development",
+      "Front End",
+      "Back End",
+      "Full Stack",
+      "Quiz",
+      "Authentication",
+      "Account Management",
+      "Relational Database",
+      "AI",
+      "Artificial Intelligence",
+      "OpenAI",
+      "TypeScript Schema Validation",
+      "HTTP Requests",
+      "State Management",
+      "User Experience",
+    ],
+  },
+  {
     name: `Sideshow Articles`,
     slug: "sideshow-articles",
     description: `
