@@ -26,6 +26,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const selectedLanguage = searchParams.get("language") || "All";
   const selectedType = searchParams.get("type") || "All";
   const searchTerm = searchParams.get("search") || "";
+  const showArchived = searchParams.get("archived") === "true" || false;
 
   const router = useRouter();
 
@@ -47,7 +48,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     const validatedSearch = encodeURIComponent(search.trim());
 
     // Construct and return the URL
-    return `/projects/?type=${validatedType}&technology=${validatedTechnology}&language=${validatedLanguage}&search=${validatedSearch}`;
+    return `/projects/?type=${validatedType}&technology=${validatedTechnology}&language=${validatedLanguage}&search=${validatedSearch}&archived=${showArchived}`;
   };
 
   /**
@@ -171,7 +172,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
    */
   const filteredProjects = searchedProjects.filter(
     (project) =>
-      !project.archived &&
+      (showArchived || !project.archived) &&
       (selectedType === "All" || project.type === selectedType) &&
       (selectedLanguage === "All" ||
         project.programmingLanguage === selectedLanguage) &&
