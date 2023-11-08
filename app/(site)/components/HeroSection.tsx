@@ -1,5 +1,6 @@
 "use client";
 import scrollToSection from "@/actions/scrollToSection";
+import TypewriterComponent from "typewriter-effect";
 import Button from "@/components/Atoms/Button";
 import TextLoop from "@/components/Atoms/TextLoop";
 import Socials from "@/components/Socials/Socials";
@@ -60,7 +61,13 @@ const HeroSection = () => {
             dark:from-red-700 dark:via-orange-600 dark:to-rose-800
             tracking-wide"
           >
-            Software Engineer
+            <TypewriterComponent
+            options={{
+              strings: loopItems,
+              autoStart: true,
+              loop: true,
+            }}
+          />
           </p>
 
           {/* Roles to loop through */}
