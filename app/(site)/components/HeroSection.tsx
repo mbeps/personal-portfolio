@@ -64,7 +64,7 @@ const HeroSection = () => {
           </p>
 
           {/* Roles to loop through */}
-          {/* <TextLoop loopItems={loopItems} delay={3000} /> */}
+          <TextLoop loopItems={loopItems} delay={3000} />
 
           <Socials
             iconSize={40}
