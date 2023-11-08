@@ -32,7 +32,14 @@ const TextLoop: React.FC<TextLoopProps> = ({ loopItems, delay }) => {
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5 }}
       style={{ transitionProperty: "opacity, transform" }}
-      className={`text-red-500 dark:text-red-700 font-semibold`}
+      className="
+        text-2xl md:text-4xl 
+        font-semibold 
+        p-1 bg-clip-text text-transparent 
+        bg-gradient-to-r 
+        from-red-600 via-orange-500 to-rose-500 
+        dark:from-red-700 dark:via-orange-600 dark:to-rose-800
+        tracking-wide"
     >
       {loopItems[currentItemIndex]}
     </motion.span>
