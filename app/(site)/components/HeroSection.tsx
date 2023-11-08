@@ -15,10 +15,10 @@ const HeroSection = () => {
    * Array of strings to loop through.
    */
   const loopItems = [
-    "Full Stack Developer",
-    "Machine Learning Engineer",
-    "Software Engineer",
-    "Mathematician",
+    "Software Engineering",
+    "Full Stack Developement",
+    "Machine Learning",
+    "Mathematics",
   ];
 
   return (
@@ -51,7 +51,20 @@ const HeroSection = () => {
             {`Hi, I'm Maruf!`}
           </h1>
 
-          <TextLoop loopItems={loopItems} implementation="simple" />
+          {/* Roles */}
+          <TextLoop
+            loopItems={loopItems}
+            implementation="simple"
+            className="
+              text-2xl md:text-4xl 
+              font-semibold 
+              p-1 bg-clip-text text-transparent 
+              bg-gradient-to-r 
+              from-red-600 via-orange-500 to-rose-500 
+              dark:from-red-700 dark:via-orange-600 dark:to-rose-800
+              tracking-wide
+            "
+          />
 
           <Socials
             iconSize={40}
