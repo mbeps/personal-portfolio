@@ -13,7 +13,7 @@ interface TextLoopProps {
  * @param delay (number) - Delay between each loop in milliseconds
  * @returns (JSX.Element): A span element that loops through the given array of strings
  */
-const TextLoop: React.FC<TextLoopProps> = ({ loopItems, delay }) => {
+const SimpleTextLoop: React.FC<TextLoopProps> = ({ loopItems, delay }) => {
   const [currentItemIndex, setCurrentItemIndex] = useState<number>(0);
 
   useEffect(() => {
@@ -46,4 +46,4 @@ const TextLoop: React.FC<TextLoopProps> = ({ loopItems, delay }) => {
   );
 };
 
-export default TextLoop;
+export default SimpleTextLoop;

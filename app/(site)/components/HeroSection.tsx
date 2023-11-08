@@ -1,9 +1,8 @@
 "use client";
 import scrollToSection from "@/actions/scrollToSection";
-import TypewriterComponent from "typewriter-effect";
 import Button from "@/components/Atoms/Button";
-import TextLoop from "@/components/Atoms/TextLoop";
 import Socials from "@/components/Socials/Socials";
+import TextLoop from "@/components/TextLoop/TextLoop";
 import Image from "next/image";
 import { HiArrowDown } from "react-icons/hi";
 
@@ -52,28 +51,7 @@ const HeroSection = () => {
             {`Hi, I'm Maruf!`}
           </h1>
 
-          {/* Type Writer Implementation */}
-          {/* <p
-            className="
-            text-2xl md:text-4xl 
-            font-semibold 
-            p-1 bg-clip-text text-transparent 
-            bg-gradient-to-r 
-            from-red-600 via-orange-500 to-rose-500 
-            dark:from-red-700 dark:via-orange-600 dark:to-rose-800
-            tracking-wide"
-          >
-            <TypewriterComponent
-            options={{
-              strings: loopItems,
-              autoStart: true,
-              loop: true,
-            }}
-          />
-          </p> */}
-
-          {/* Simple Loop Implementation */}
-          <TextLoop loopItems={loopItems} delay={3000} />
+          <TextLoop loopItems={loopItems} implementation="simple" />
 
           <Socials
             iconSize={40}
