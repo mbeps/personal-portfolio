@@ -167,9 +167,11 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
    * Filters the projects based on the the filter options.
    * Both language and type can be filtered.
    * If 'All' is selected, then all projects are displayed.
+   * Archived projects are not displayed by default.
    */
   const filteredProjects = searchedProjects.filter(
     (project) =>
+      !project.archived &&
       (selectedType === "All" || project.type === selectedType) &&
       (selectedLanguage === "All" ||
         project.programmingLanguage === selectedLanguage) &&
