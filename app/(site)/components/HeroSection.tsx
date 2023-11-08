@@ -1,8 +1,8 @@
 "use client";
 import scrollToSection from "@/actions/scrollToSection";
 import Button from "@/components/Atoms/Button";
-import TextLoop from "@/components/Atoms/TextLoop";
 import Socials from "@/components/Socials/Socials";
+import TextLoop from "@/components/TextLoop/TextLoop";
 import Image from "next/image";
 import { HiArrowDown } from "react-icons/hi";
 
@@ -47,24 +47,11 @@ const HeroSection = () => {
         </div>
 
         <div className="md:mt-2 md:w-3/5 space-y-7 md:space-y-5 w-full">
-          <h1 className="text-5xl md:text-7xl font-bold mt-6 md:mt-0 ">
+          <h1 className="text-5xl md:text-7xl font-bold mt-6 md:mt-0 mb-6">
             {`Hi, I'm Maruf!`}
           </h1>
-          <p
-            className="
-            text-2xl md:text-4xl 
-            font-semibold 
-            p-1 bg-clip-text text-transparent 
-            bg-gradient-to-r 
-            from-red-600 via-orange-500 to-rose-500 
-            dark:from-red-700 dark:via-orange-600 dark:to-rose-800
-            tracking-wide"
-          >
-            Software Engineer
-          </p>
 
-          {/* Roles to loop through */}
-          {/* <TextLoop loopItems={loopItems} delay={3000} /> */}
+          <TextLoop loopItems={loopItems} implementation="simple" />
 
           <Socials
             iconSize={40}
