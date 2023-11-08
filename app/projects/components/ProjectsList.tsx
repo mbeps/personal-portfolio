@@ -12,8 +12,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import { BsFilterLeft } from "react-icons/bs";
 import { MdClear } from "react-icons/md";
+import { ArchiveToggle } from "./ArchiveToggle";
 import ProjectSection from "./ProjectSection";
-import Toggle from "@/components/Inputs/Toggle";
 
 type ProjectsListProps = {
   allProjects: Project[];
@@ -276,26 +276,14 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
         </div>
 
         {/* Toggle to display archived projects */}
-        <div className="flex justify-end items-center ">
-          <span
-            className=" 
-      mr-2 mb-1 
-    text-neutral-600 dark:text-neutral-400"
-          >
-            Display archived projects
-          </span>
-          <Link
-            href={generateUrl(
-              selectedType,
-              selectedTechnology,
-              selectedLanguage,
-              searchTerm,
-              !showArchived
-            )}
-          >
-            <Toggle checked={showArchived} />
-          </Link>
-        </div>
+        <ArchiveToggle
+          generateUrl={generateUrl}
+          showArchived={showArchived}
+          selectedType={selectedType}
+          selectedTechnology={selectedTechnology}
+          selectedLanguage={selectedLanguage}
+          searchTerm={searchTerm}
+        />
 
         {/* List of projects */}
         <div className="flex flex-col space-y-20 mt-14">
@@ -445,6 +433,15 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
               </div>
             </div>
           </div>
+          {/* Toggle to display archived projects */}
+          <ArchiveToggle
+            generateUrl={generateUrl}
+            showArchived={showArchived}
+            selectedType={selectedType}
+            selectedTechnology={selectedTechnology}
+            selectedLanguage={selectedLanguage}
+            searchTerm={searchTerm}
+          />
         </Modal>
       </div>
     </section>
