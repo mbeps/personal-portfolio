@@ -15,10 +15,10 @@ const HeroSection = () => {
    * Array of strings to loop through.
    */
   const loopItems = [
-    "Full Stack Developer",
-    "Machine Learning Engineer",
-    "Software Engineer",
-    "Mathematician",
+    "Software Engineering",
+    "Full Stack Developement",
+    "Machine Learning",
+    "Mathematics",
   ];
 
   return (
