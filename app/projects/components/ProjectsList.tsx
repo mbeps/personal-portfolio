@@ -12,6 +12,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import { BsFilterLeft } from "react-icons/bs";
 import { MdClear } from "react-icons/md";
+import { ArchiveToggle } from "./ArchiveToggle";
 import ProjectSection from "./ProjectSection";
 
 type ProjectsListProps = {
@@ -26,6 +27,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const selectedLanguage = searchParams.get("language") || "All";
   const selectedType = searchParams.get("type") || "All";
   const searchTerm = searchParams.get("search") || "";
+  const showArchived = searchParams.get("archived") === "true" || false;
 
   const router = useRouter();
 
@@ -38,16 +40,18 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     type: string,
     technology: string,
     language: string,
-    search: string
+    search: string,
+    showArchived: boolean = false
   ) => {
     // Validate and encode filter values
     const validatedType = encodeURIComponent(type.trim());
     const validatedTechnology = encodeURIComponent(technology.trim());
     const validatedLanguage = encodeURIComponent(language.trim());
     const validatedSearch = encodeURIComponent(search.trim());
+    const validatedShowArchived = encodeURIComponent(showArchived);
 
     // Construct and return the URL
-    return `/projects/?type=${validatedType}&technology=${validatedTechnology}&language=${validatedLanguage}&search=${validatedSearch}`;
+    return `/projects/?type=${validatedType}&technology=${validatedTechnology}&language=${validatedLanguage}&search=${validatedSearch}&archived=${validatedShowArchived}`;
   };
 
   /**
@@ -167,9 +171,11 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
    * Filters the projects based on the the filter options.
    * Both language and type can be filtered.
    * If 'All' is selected, then all projects are displayed.
+   * Archived projects are not displayed by default.
    */
   const filteredProjects = searchedProjects.filter(
     (project) =>
+      (showArchived || !project.archived) &&
       (selectedType === "All" || project.type === selectedType) &&
       (selectedLanguage === "All" ||
         project.programmingLanguage === selectedLanguage) &&
@@ -268,6 +274,16 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
             />
           </div>
         </div>
+
+        {/* Toggle to display archived projects */}
+        <ArchiveToggle
+          generateUrl={generateUrl}
+          showArchived={showArchived}
+          selectedType={selectedType}
+          selectedTechnology={selectedTechnology}
+          selectedLanguage={selectedLanguage}
+          searchTerm={searchTerm}
+        />
 
         {/* List of projects */}
         <div className="flex flex-col space-y-20 mt-14">
@@ -417,6 +433,15 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
               </div>
             </div>
           </div>
+          {/* Toggle to display archived projects */}
+          <ArchiveToggle
+            generateUrl={generateUrl}
+            showArchived={showArchived}
+            selectedType={selectedType}
+            selectedTechnology={selectedTechnology}
+            selectedLanguage={selectedLanguage}
+            searchTerm={searchTerm}
+          />
         </Modal>
       </div>
     </section>

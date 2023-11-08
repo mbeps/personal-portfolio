@@ -18,4 +18,5 @@ export default interface Project {
     | "Game Dev"
     | "Other";
   tags?: string[];
+  archived?: boolean;
 }

@@ -281,6 +281,7 @@ const extraWebDevProjects: Project[] = [
       "Individual Project",
       "Independent Project",
     ],
+    archived: true,
   },
   {
     name: `Noodle`,
@@ -328,6 +329,7 @@ const extraWebDevProjects: Project[] = [
       "Team Project",
       "University",
     ],
+    archived: true,
   },
   {
     name: `ConvoGPT`,
@@ -366,6 +368,7 @@ const extraWebDevProjects: Project[] = [
       "Individual Project",
       "Independent Project",
     ],
+    archived: true,
   },
 ];
 
@@ -419,6 +422,7 @@ const backendWebDevProjects: Project[] = [
       "Individual Project",
       "Independent Project",
     ],
+    archived: true,
   },
   {
     name: `Django Authentication`,
@@ -442,6 +446,7 @@ const backendWebDevProjects: Project[] = [
       "Individual Project",
       "Independent Project",
     ],
+    archived: true,
   },
   {
     name: `Clerk Authentication`,
@@ -464,6 +469,7 @@ const backendWebDevProjects: Project[] = [
       "Individual Project",
       "Independent Project",
     ],
+    archived: true,
   },
   {
     name: `Auth0 Authentication`,
@@ -487,6 +493,7 @@ const backendWebDevProjects: Project[] = [
       "Individual Project",
       "Independent Project",
     ],
+    archived: true,
   },
 ];
 
@@ -651,6 +658,7 @@ const gameDevProjects: Project[] = [
       "Individual Project",
       "Independent Project",
     ],
+    archived: true,
   },
   {
     name: "Platformer",
@@ -672,6 +680,7 @@ const gameDevProjects: Project[] = [
       "Individual Project",
       "Independent Project",
     ],
+    archived: true,
   },
   {
     name: "Platformer Death Walk",
@@ -693,6 +702,7 @@ const gameDevProjects: Project[] = [
       "Individual Project",
       "Independent Project",
     ],
+    archived: true,
   },
   {
     name: "Coding Breakout",
@@ -713,6 +723,7 @@ const gameDevProjects: Project[] = [
       "Individual Project",
       "Independent Project",
     ],
+    archived: true,
   },
   {
     name: "Catch Maruf",
@@ -733,6 +744,7 @@ const gameDevProjects: Project[] = [
       "Individual Project",
       "Independent Project",
     ],
+    archived: true,
   },
   {
     name: "Against Gravity",
@@ -753,6 +765,7 @@ const gameDevProjects: Project[] = [
       "Individual Project",
       "Independent Project",
     ],
+    archived: true,
   },
   {
     name: "Scrolling Shooter",
@@ -772,6 +785,7 @@ const gameDevProjects: Project[] = [
       "Individual Project",
       "Independent Project",
     ],
+    archived: true,
   },
   {
     name: "Dungeon",
@@ -791,6 +805,7 @@ const gameDevProjects: Project[] = [
       "Individual Project",
       "Independent Project",
     ],
+    archived: true,
   },
   {
     name: " Veg Ninja",
@@ -811,6 +826,7 @@ const gameDevProjects: Project[] = [
       "Individual Project",
       "Independent Project",
     ],
+    archived: true,
   },
   {
     name: " Angry Cats Space",
@@ -831,6 +847,7 @@ const gameDevProjects: Project[] = [
       "Individual Project",
       "Independent Project",
     ],
+    archived: true,
   },
   {
     name: " Angry Cats",
@@ -851,6 +868,7 @@ const gameDevProjects: Project[] = [
       "Individual Project",
       "Independent Project",
     ],
+    archived: true,
   },
 ];
 
@@ -978,6 +996,7 @@ const javaAssignments: Project[] = [
       "Individual Project",
       "Independent Project",
     ],
+    archived: true,
   },
   {
     name: "Track & Trace",
@@ -994,6 +1013,7 @@ const javaAssignments: Project[] = [
       "Individual Project",
       "Independent Project",
     ],
+    archived: true,
   },
   {
     name: `Hollomon`,
@@ -1009,6 +1029,7 @@ const javaAssignments: Project[] = [
       "Individual Project",
       "Independent Project",
     ],
+    archived: true,
   },
   {
     name: `Database Mini Project`,
@@ -1025,6 +1046,7 @@ const javaAssignments: Project[] = [
       "Individual Project",
       "Independent Project",
     ],
+    archived: true,
   },
 ];
 
