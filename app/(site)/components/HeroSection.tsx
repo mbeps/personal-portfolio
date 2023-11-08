@@ -48,10 +48,12 @@ const HeroSection = () => {
         </div>
 
         <div className="md:mt-2 md:w-3/5 space-y-7 md:space-y-5 w-full">
-          <h1 className="text-5xl md:text-7xl font-bold mt-6 md:mt-0 ">
+          <h1 className="text-5xl md:text-7xl font-bold mt-6 md:mt-0 mb-6">
             {`Hi, I'm Maruf!`}
           </h1>
-          <p
+
+          {/* Type Writer Implementation */}
+          {/* <p
             className="
             text-2xl md:text-4xl 
             font-semibold 
@@ -68,9 +70,9 @@ const HeroSection = () => {
               loop: true,
             }}
           />
-          </p>
+          </p> */}
 
-          {/* Roles to loop through */}
+          {/* Simple Loop Implementation */}
           <TextLoop loopItems={loopItems} delay={3000} />
 
           <Socials
