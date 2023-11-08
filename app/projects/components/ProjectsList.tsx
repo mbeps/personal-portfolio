@@ -13,6 +13,7 @@ import React, { useState } from "react";
 import { BsFilterLeft } from "react-icons/bs";
 import { MdClear } from "react-icons/md";
 import ProjectSection from "./ProjectSection";
+import Toggle from "@/components/Inputs/Toggle";
 
 type ProjectsListProps = {
   allProjects: Project[];
@@ -39,16 +40,18 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     type: string,
     technology: string,
     language: string,
-    search: string
+    search: string,
+    showArchived: boolean = false
   ) => {
     // Validate and encode filter values
     const validatedType = encodeURIComponent(type.trim());
     const validatedTechnology = encodeURIComponent(technology.trim());
     const validatedLanguage = encodeURIComponent(language.trim());
     const validatedSearch = encodeURIComponent(search.trim());
+    const validatedShowArchived = encodeURIComponent(showArchived);
 
     // Construct and return the URL
-    return `/projects/?type=${validatedType}&technology=${validatedTechnology}&language=${validatedLanguage}&search=${validatedSearch}&archived=${showArchived}`;
+    return `/projects/?type=${validatedType}&technology=${validatedTechnology}&language=${validatedLanguage}&search=${validatedSearch}&archived=${validatedShowArchived}`;
   };
 
   /**
@@ -270,6 +273,28 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
               placeholder="Search project name or metadata"
             />
           </div>
+        </div>
+
+        {/* Toggle to display archived projects */}
+        <div className="flex justify-end items-center ">
+          <span
+            className=" 
+      mr-2 mb-1 
+    text-neutral-600 dark:text-neutral-400"
+          >
+            Display archived projects
+          </span>
+          <Link
+            href={generateUrl(
+              selectedType,
+              selectedTechnology,
+              selectedLanguage,
+              searchTerm,
+              !showArchived
+            )}
+          >
+            <Toggle checked={showArchived} />
+          </Link>
         </div>
 
         {/* List of projects */}
