@@ -1,6 +1,7 @@
 ---
 title: "Front-End Development and the Essential Role of Libraries and Frameworks"
-subtitle: "A comprehensive introduction to standard front-end web development using libraries and frameworks. "
+subtitle: "A comprehensive introduction to standard front-end web development using libraries and frameworks"
+category: "Web Development"
 ---
 
 - [**Introduction to Frontend Development**](#introduction-to-frontend-development)

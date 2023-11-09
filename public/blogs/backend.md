@@ -1,6 +1,7 @@
 ---
 title: "Exploring Backends: Custom vs Managed Solutions"
 subtitle: "An In-depth Analysis of Backend Development Approaches, Tools, and Security Considerations"
+category: "Web Development"
 ---
 
 

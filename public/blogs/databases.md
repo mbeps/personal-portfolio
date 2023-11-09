@@ -1,6 +1,7 @@
 ---
 title: "Exploring Databases: A Comparative Study of Relational and Non-Relational Models"
 subtitle: "An In-depth Analysis of Database Systems and their Role in Software Engineering and Web Development"
+category: "Software Engineering"
 ---
 
 - [**Introduction to Databases**](#introduction-to-databases)

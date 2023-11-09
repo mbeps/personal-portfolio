@@ -1,6 +1,7 @@
 ---
 title: "Comparing GraphQL and REST: A Detailed Overview"
 subtitle: "Choosing the Right API Design Approach"
+category: "Web Development"
 ---
 
 - [**Introduction to REST and GraphQL**](#introduction-to-rest-and-graphql)

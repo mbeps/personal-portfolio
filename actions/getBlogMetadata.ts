@@ -20,7 +20,7 @@ const getBlogMetadata = (): BlogMetadata[] => {
       title: matterResult.data.title,
       subtitle: matterResult.data.subtitle,
       slug: fileName.replace(".md", ""),
-      display: matterResult.data.display,
+      category: matterResult.data.category,
     };
   });
 

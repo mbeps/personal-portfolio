@@ -1,6 +1,7 @@
 ---
 title: "Comparing Session and Token: Navigating Authentication"
 subtitle: "A Detailed Comparison of Authentication Strategies"
+category: "Web Development"
 ---
 
 - [**Overview**](#overview)
