@@ -435,7 +435,14 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
           />
           {/* Filter Modal Bottom Buttons */}
           <div className="w-full flex flex-row justify-center">
-            <div className="flex flex-row w-full md:w-1/2 space-x-2 justify-center items-center">
+            <div
+              className="
+              flex flex-col md:flex-row 
+              w-full md:w-1/2 
+              md:space-x-2 space-y-2 md:space-y-0
+              justify-center items-center"
+            >
+              {/* Clear Filters Button */}
               <Button
                 variant="outlined"
                 onClick={resetFilters}
@@ -447,6 +454,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
                   <span>Clear All</span>
                 </div>
               </Button>
+              {/* Close Modal Button */}
               <Button
                 variant="filled"
                 onClick={handleCloseModals}
