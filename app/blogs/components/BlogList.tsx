@@ -58,6 +58,12 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
 
   const fuse = new Fuse(blogs, searchOptions);
 
+  /**
+   * Groups the blogs by category.
+   * This is used to display the blogs in sections.
+   * @param blogs (BlogMetadata[]) - list of blogs
+   * @returns (Record<string, BlogMetadata[]>) - blogs grouped by category (key)
+   */
   const groupBlogsByType = (
     blogs: BlogMetadata[]
   ): Record<string, BlogMetadata[]> => {
@@ -67,10 +73,18 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
     }, {});
   };
 
+  /**
+   * Searches the blogs using the search term.
+   * Only searches the title, subtitle, and category.
+   */
   const searchedBlogs = searchTerm
     ? fuse.search(searchTerm).map((result) => result.item)
     : blogs;
 
+  /**
+   * List of all blog categories.
+   * These are used as options for filtering.
+   */
   const blogCategories: string[] = [
     "All",
     ...blogs
@@ -78,11 +92,19 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
       .filter((value, index, self) => self.indexOf(value) === index),
   ];
 
+  /**
+   * Updates the search term in the URL.
+   * This updates the state which changes the blogs being displayed.
+   * @param newSearchTerm (string) - new search term
+   */
   const updateSearchTerm = (newSearchTerm: string) => {
     // Update the URL parameter to reflect the new search term
     router.push(generateUrl(selectedCategory, newSearchTerm));
   };
 
+  /**
+   * Filters the blogs by category selected by the user.
+   */
   const filteredBlogs = searchedBlogs.filter(
     (blog) => selectedCategory === "All" || blog.category === selectedCategory
   );
