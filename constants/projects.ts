@@ -504,6 +504,58 @@ const backendWebDevProjects: Project[] = [
  */
 const machineLearningProjects: Project[] = [
   {
+    name: "Adult Income Prediction",
+    slug: "adult-income-prediction",
+    description: `A project leveraging the UCI Adult Income dataset to predict income brackets using a RandomForestClassifier. Emphasis is on feature engineering, data preprocessing with One-Hot Encoding, and model optimization through hyperparameter tuning.`,
+    repoURL: "https://github.com/mbeps/Adults_Income_Prediction",
+    programmingLanguage: "Python",
+    technologies: [
+      "Scikit Learn",
+      "NumPy",
+      "Pandas",
+      "Matplotlib",
+      "Seaborn",
+      "Jupyter Notebook",
+    ],
+    type: "Machine Learning",
+    tags: [
+      "Data Science",
+      "Machine Learning",
+      "Income Prediction",
+      "Random Forest",
+      "UCI Dataset",
+      "Model Tuning",
+      "Ensemble Learning",
+      "Feature Engineering",
+    ],
+  },
+  {
+    name: "House Price Prediction",
+    slug: "house-price-prediction",
+    description: `An analytical approach to predicting California housing prices using the RandomForestRegressor and LinearRegressor, with a focus on data preprocessing and feature engineering.`,
+    repoURL: "https://github.com/your-username/House-Price-Prediction",
+    programmingLanguage: "Python",
+    technologies: [
+      "Scikit Learn",
+      "NumPy",
+      "Pandas",
+      "Matplotlib",
+      "Seaborn",
+      "Jupyter Notebook",
+    ],
+    type: "Machine Learning",
+    tags: [
+      "Data Science",
+      "Machine Learning",
+      "Housing Prices",
+      "Random Forest",
+      "Linear Regression",
+      "Feature Engineering",
+      "Model Tuning",
+      "Kaggle Dataset",
+    ],
+  },
+  {
     name: `Assignment 1`,
     slug: "machine-learning-assignment-1",
     description: `
