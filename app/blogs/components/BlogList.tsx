@@ -3,6 +3,7 @@
 import Button from "@/components/Atoms/Button";
 import BlogItem from "@/components/Blogs/BlogItem";
 import SearchInput from "@/components/Inputs/SearchInput";
+import HeadingTwo from "@/components/Text/HeadingTwo";
 import { BlogMetadata } from "@/types/blog";
 import Fuse from "fuse.js";
 import { useRouter, useSearchParams } from "next/navigation"; // Add this import for Next.js router
@@ -23,49 +24,41 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
 
   const searchTerm = searchParams.get("search") || "";
 
-  /**
-   * Updates the search term in the URL.
-   * This updates the blogs that are displayed.
-   * @param newSearchTerm (string) The new search term
-   */
   const updateSearchTerm = (newSearchTerm: string) => {
     const validatedSearch = encodeURIComponent(newSearchTerm);
     router.push(`/blogs/?search=${validatedSearch}`);
   };
 
-  /**
-   * Resets the search term in the URL.
-   * This resets the blogs that are displayed showing all blogs.
-   */
   const resetSearch = () => {
     updateSearchTerm("");
   };
 
   const areFiltersApplied = searchTerm.length > 0;
 
-  /**
-   * The options for the Fuse.js search.
-   * The keys are the properties of the blog that are searched.
-   */
   const options = {
-    keys: ["title", "subtitle"],
+    keys: ["title", "subtitle", "category"],
     threshold: 0.3,
   };
 
   const fuse = new Fuse(blogs, options);
 
-  /**
-   * The blogs that match the search term.
-   */
   const searchedBlogs = searchTerm
     ? fuse.search(searchTerm).map((result) => result.item)
     : blogs;
 
-  /**
-   * Whether the clear search button is disabled.
-   * If there is no search term, the button is disabled.
-   */
   const isClearDisabled = !searchTerm;
+
+  const groupedBlogs = searchedBlogs.reduce<Record<string, BlogMetadata[]>>(
+    (acc, blog) => {
+      const category = blog.category || "Uncategorized";
+      if (!acc[category]) {
+        acc[category] = [];
+      }
+      acc[category].push(blog);
+      return acc;
+    },
+    {}
+  );
 
   return (
     <div className="my-12 pb-12 md:pt-2">
@@ -82,7 +75,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
           <Button
             variant="outlined"
             onClick={resetSearch}
-            disabled={isClearDisabled} // Disabled if no search term exists
+            disabled={isClearDisabled}
             className={`
               px-4 py-2 w-full
               text-base font-medium text-neutral-700 dark:text-neutral-200 capitalize hover:text-neutral-700 dark:hover:text-neutral-200
@@ -106,13 +99,19 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
         </div>
       </div>
       <div className="border-b border-gray-200 dark:border-neutral-600 mt-16" />
-      <div className="my-12 pb-12 md:pt-2 md:pb-36">
-        {searchedBlogs.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-14">
-            {searchedBlogs.map((blog) => (
-              <BlogItem key={blog.slug} {...blog} />
-            ))}
-          </div>
+      <div className="my-12 pb-12 md:pt-2 md:pb-36 space-y-4 md:space-y-10">
+        {Object.keys(groupedBlogs).length > 0 ? (
+          Object.entries(groupedBlogs).map(([category, blogsInCategory]) => (
+            <div key={category}>
+              <HeadingTwo title={category} />
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                {blogsInCategory.map((blog) => (
+                  <BlogItem key={blog.slug} {...blog} />
+                ))}
+              </div>
+            </div>
+          ))
         ) : (
           <div className="flex justify-center min-w-full h-screen mt-14">
             <h2 className="text-2xl font-bold">No blogs</h2>
