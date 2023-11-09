@@ -68,6 +68,9 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
     <div>
       <div className="my-12 text-center">
         <HeadingTwo title={blog.data.title} />
+        <p className="text-neutral-600 dark:text-neutral-400">
+          {blog.data.subtitle}
+        </p>
       </div>
       <Reader content={blog.content} />
     </div>
