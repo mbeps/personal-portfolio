@@ -319,7 +319,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
             px-8 md:px-0
             flex flex-row 
             justify-center mb-4  
-"
+          "
           >
             <div className="flex flex-row w-full justify-center space-x-2 ">
               <p className="text-neutral-600 dark:text-neutral-400">
@@ -329,8 +329,14 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
             </div>
           </div>
           {/* Filter Options */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-            <div className="px-8 md:px-0">
+          <div
+            className="
+            grid grid-cols-1 md:grid-cols-3 
+            gap-2 
+            px-5 md:px-0
+            "
+          >
+            <div>
               {/* Category Filter */}
               <label htmlFor="type-dropdown" className="font-semibold text-lg">
                 Category
@@ -360,7 +366,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
               </div>
             </div>
             {/* Language Filter */}
-            <div className="px-8 md:px-0">
+            <div>
               <label
                 htmlFor="language-dropdown"
                 className="font-semibold text-lg"
@@ -392,7 +398,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
               </div>
             </div>
             {/* Technology Filter */}
-            <div className="px-8 md:px-0">
+            <div>
               <label
                 htmlFor="language-dropdown"
                 className="font-semibold text-lg block"
