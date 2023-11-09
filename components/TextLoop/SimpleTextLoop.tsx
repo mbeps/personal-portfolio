@@ -35,8 +35,19 @@ const SimpleTextLoop: React.FC<TextLoopProps> = ({
       key={currentItemIndex}
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.5 }}
+      exit={{
+        opacity: 0,
+        y: 10,
+        transition: {
+          duration: 1, // Adjust this value to control the speed of the fade out
+          ease: "easeInOut",
+        },
+      }}
+      transition={{
+        duration: 1,
+        ease: "easeInOut",
+        delay: 0.5,
+      }}
       style={{ transitionProperty: "opacity, transform" }}
       className={className}
     >
