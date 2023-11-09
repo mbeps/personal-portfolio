@@ -75,7 +75,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
    * These are the only properties that are searched.
    * These are the same ones from the Project type.
    */
-  const options = {
+  const searchOptions = {
     keys: ["name", "programmingLanguage", "tags", "technologies"], // Only search these properties
     threshold: 0.3, // Lower threshold means more results
   };
@@ -85,7 +85,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
    * @param allProjects (Project[]): list of all projects
    * @param options (Fuse.IFuseOptions<Project>): options for fuzzy search
    */
-  const fuse = new Fuse(allProjects, options);
+  const fuse = new Fuse(allProjects, searchOptions);
 
   /**
    * Groups the projects by type.
