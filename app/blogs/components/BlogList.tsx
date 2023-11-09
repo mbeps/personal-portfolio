@@ -1,12 +1,16 @@
 "use client";
 
 import Button from "@/components/Atoms/Button";
-import BlogItem from "@/components/Blogs/BlogItem";
+import RadioButton from "@/components/Inputs/RadioButton";
 import SearchInput from "@/components/Inputs/SearchInput";
-import HeadingTwo from "@/components/Text/HeadingTwo";
+import Modal from "@/components/Modal/Modal";
 import { BlogMetadata } from "@/types/blog";
 import Fuse from "fuse.js";
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation"; // Add this import for Next.js router
+import { useState } from "react";
+import { AiOutlineClear } from "react-icons/ai";
+import { BsFilterLeft } from "react-icons/bs";
 import { MdClear } from "react-icons/md";
 import BlogSection from "./BlogSection";
 
@@ -20,6 +24,8 @@ interface BlogListProps {
  * @returns (JSX.Element): page with all blogs
  */
 export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
+  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -89,63 +95,193 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
 
   const areFiltersApplied = selectedCategory !== "All" || searchTerm !== "";
 
+  /**
+   * Opens the modal to filter the projects.
+   */
+  const handleOpenFilterModal = () => {
+    setIsFilterModalOpen(true);
+  };
+
+  /**
+   * Closes the modals.
+   * These modals are for filtering and displaying more projects.
+   */
+  const handleCloseModals = () => {
+    setIsFilterModalOpen(false);
+  };
+
   return (
-    <div className="my-12 pb-12 md:pt-2">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-2 px-0 md:px-2 pl-0">
-        <div className="md:col-span-2">
-          <SearchInput
-            searchTerm={searchTerm}
-            updateSearchTerm={updateSearchTerm}
-            placeholder="Search blog"
-          />
-        </div>
-        <div className="md:col-span-1">
-          {/* Clear Search Button */}
-          <Button
-            variant="outlined"
-            onClick={resetFilters}
-            disabled={!areFiltersApplied}
-            className={`
-              px-4 py-2 w-full
-              text-base font-medium text-neutral-700 dark:text-neutral-200 capitalize hover:text-neutral-700 dark:hover:text-neutral-200
-              rounded-xl
-              shadow-md hover:shadow-lg focus:shadow-lg
-              bg-neutral-100 dark:bg-neutral-800 
-              hover:bg-neutral-100 dark:hover:bg-neutral-800
-              border-2 border-transparent dark:border-transparent
-              hover:border-red-500 dark:hover:border-red-800
-              transition-all duration-500 ease-in-out
-            `}
-          >
-            <div className="flex items-center space-x-2">
-              <MdClear
-                fontSize={24}
-                className="text-neutral-700 dark:text-neutral-200"
-              />
-              <span>Clear Search</span>
-            </div>
-          </Button>
-        </div>
-      </div>
-      <div className="my-12 pb-12 md:pt-2 md:pb-36 space-y-4 md:space-y-10">
-        {Object.keys(groupedBlogs).length > 0 ? (
-          Object.keys(groupedBlogs).map(
-            (category) =>
-              category !== "All" && (
-                <BlogSection
-                  key={category}
-                  title={category}
-                  blogs={groupedBlogs[category]}
+    <>
+      <div className="my-12 pb-12 md:pt-2">
+        <div className="flex flex-col-reverse md:flex-row items-center w-full mt-12 p-2 gap-4">
+          {/* Buttons */}
+          <div className="flex flex-row md:flex-1 gap-2 w-full">
+            {/* Filter Button */}
+            <Button
+              variant="outlined"
+              onClick={handleOpenFilterModal}
+              className={`
+                px-4 py-2 w-full
+                text-base font-medium text-neutral-700 dark:text-neutral-200 capitalize hover:text-neutral-700 dark:hover:text-neutral-200
+                rounded-xl
+                shadow-md hover:shadow-lg focus:shadow-lg
+                bg-neutral-100 dark:bg-neutral-800 
+                hover:bg-neutral-100 dark:hover:bg-neutral-800
+                border-2 border-transparent dark:border-transparent
+                hover:border-red-500 dark:hover:border-red-800
+                transition-all duration-500 ease-in-out
+              `}
+            >
+              <div className="flex items-center space-x-2">
+                <BsFilterLeft
+                  fontSize={24}
+                  className="text-neutral-700 dark:text-neutral-200"
                 />
-              )
-          )
-        ) : (
-          <div className="flex justify-center min-w-full mt-14">
-            <h2 className="text-2xl font-bold">No blogs found</h2>
+                <span>Filter</span>
+              </div>
+            </Button>
+            {/* Clear Button */}
+            <Button
+              variant="outlined"
+              onClick={resetFilters}
+              disabled={!areFiltersApplied}
+              className={`
+                px-4 py-2 w-full
+                text-base font-medium text-neutral-700 dark:text-neutral-200 capitalize hover:text-neutral-700 dark:hover:text-neutral-200
+                rounded-xl
+                shadow-md hover:shadow-lg focus:shadow-lg
+                bg-neutral-100 dark:bg-neutral-800 
+                hover:bg-neutral-100 dark:hover:bg-neutral-800
+                border-2 border-transparent dark:border-transparent
+                hover:border-red-500 dark:hover:border-red-800
+                transition-all duration-500 ease-in-out
+              `}
+            >
+              <div className="flex items-center space-x-2">
+                <AiOutlineClear
+                  fontSize={24}
+                  className="text-neutral-700 dark:text-neutral-200"
+                />
+                <span>Clear All</span>
+              </div>
+            </Button>
           </div>
-        )}
+
+          {/* Search input */}
+          <div className="w-full md:flex-1">
+            <SearchInput
+              searchTerm={searchTerm}
+              updateSearchTerm={updateSearchTerm}
+              placeholder="Search project name or metadata"
+            />
+          </div>
+        </div>
+
+        <div className="my-12 pb-12 md:pt-2 md:pb-36 space-y-4 md:space-y-10">
+          {Object.keys(groupedBlogs).length > 0 ? (
+            Object.keys(groupedBlogs).map(
+              (category) =>
+                category !== "All" && (
+                  <BlogSection
+                    key={category}
+                    title={category}
+                    blogs={groupedBlogs[category]}
+                  />
+                )
+            )
+          ) : (
+            <div className="flex justify-center min-w-full mt-14">
+              <h2 className="text-2xl font-bold">No blogs found</h2>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+
+      {/* Filter Modal */}
+      <Modal
+        isOpen={isFilterModalOpen}
+        onClose={handleCloseModals}
+        title={"Filter"}
+        className="min-h-[50vh]"
+      >
+        <div
+          className="
+            px-8 md:px-0
+            flex flex-row 
+            justify-center mb-4  
+          "
+        >
+          <div className="flex flex-row w-full justify-center space-x-2 ">
+            <p className="text-neutral-600 dark:text-neutral-400">
+              Filters are applied automatically as you select them.
+            </p>
+          </div>
+        </div>
+        {/* Filter Options */}
+        <div
+          className="
+            gap-2 
+            px-5 md:px-0
+            "
+        >
+          <div>
+            {/* Category Filter */}
+            <label htmlFor="type-dropdown" className="font-semibold text-lg">
+              Category
+            </label>
+            <div className="h-64 md:h-80 overflow-y-auto space-y-2">
+              {blogCategories.map((category) => (
+                <Link href={generateUrl(category, searchTerm)} key={category}>
+                  <RadioButton
+                    key={category}
+                    id={category}
+                    name="projectType"
+                    value={category}
+                    checked={selectedCategory === category}
+                    label={category}
+                  />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Filter Modal Bottom Buttons */}
+        <div className="w-full flex flex-row justify-center">
+          <div
+            className="
+              flex flex-col md:flex-row 
+              w-full md:w-1/2 
+              md:space-x-2 space-y-2 md:space-y-0
+              justify-center items-center"
+          >
+            {/* Clear Filters Button */}
+            <Button
+              variant="outlined"
+              onClick={resetFilters}
+              disabled={!areFiltersApplied}
+              className="w-full"
+            >
+              <div className="flex items-center space-x-2">
+                <AiOutlineClear fontSize={24} />
+                <span>Clear</span>
+              </div>
+            </Button>
+            {/* Close Modal Button */}
+            <Button
+              variant="filled"
+              onClick={handleCloseModals}
+              className="w-full"
+            >
+              <div className="flex items-center space-x-2">
+                <MdClear fontSize={24} />
+                <span>Close</span>
+              </div>
+            </Button>
+          </div>
+        </div>
+      </Modal>
+    </>
   );
 };
 
