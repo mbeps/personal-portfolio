@@ -14,6 +14,7 @@ import { BsFilterLeft } from "react-icons/bs";
 import { MdClear } from "react-icons/md";
 import { ArchiveToggle } from "./ArchiveToggle";
 import ProjectSection from "./ProjectSection";
+import { AiOutlineClear } from "react-icons/ai";
 
 type ProjectsListProps = {
   allProjects: Project[];
@@ -162,7 +163,8 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
         selectedType,
         selectedTechnology,
         selectedLanguage,
-        newSearchTerm
+        newSearchTerm,
+        true
       )
     );
   };
@@ -256,7 +258,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
               `}
             >
               <div className="flex items-center space-x-2">
-                <MdClear
+                <AiOutlineClear
                   fontSize={24}
                   className="text-neutral-700 dark:text-neutral-200"
                 />
@@ -319,25 +321,11 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
             justify-center mb-4  
 "
           >
-            <div className="flex flex-row w-full md:w-1/2 space-x-2 ">
-              <Button
-                variant="outlined"
-                onClick={() => {
-                  if (handleCloseModals) handleCloseModals();
-                  resetFilters();
-                }}
-                className="py-1.5 px-6 w-full"
-              >
-                Cancel
-              </Button>
-              <Button
-                variant="filled"
-                onClick={handleCloseModals}
-                disabled={!areFiltersApplied}
-                className="py-1.5 px-6 w-full"
-              >
-                Apply
-              </Button>
+            <div className="flex flex-row w-full justify-center space-x-2 ">
+              <p className="text-neutral-600 dark:text-neutral-400">
+                Filters are applied automatically as you select them. Searching
+                and filtering automatically show archived projects.
+              </p>
             </div>
           </div>
           {/* Filter Options */}
@@ -354,7 +342,8 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
                       type,
                       selectedTechnology,
                       selectedLanguage,
-                      searchTerm
+                      searchTerm,
+                      true
                     )}
                     key={type}
                   >
@@ -385,7 +374,8 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
                       selectedType,
                       selectedTechnology,
                       language,
-                      searchTerm
+                      searchTerm,
+                      true
                     )}
                     key={language}
                   >
@@ -416,7 +406,8 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
                       selectedType,
                       technology,
                       selectedLanguage,
-                      searchTerm
+                      searchTerm,
+                      true
                     )}
                     key={technology}
                   >
@@ -442,6 +433,32 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
             selectedLanguage={selectedLanguage}
             searchTerm={searchTerm}
           />
+          {/* Filter Modal Bottom Buttons */}
+          <div className="w-full flex flex-row justify-center">
+            <div className="flex flex-row w-full md:w-1/2 space-x-2 justify-center items-center">
+              <Button
+                variant="outlined"
+                onClick={resetFilters}
+                disabled={!areFiltersApplied}
+                className="w-full"
+              >
+                <div className="flex items-center space-x-2">
+                  <AiOutlineClear fontSize={24} />
+                  <span>Clear All</span>
+                </div>
+              </Button>
+              <Button
+                variant="filled"
+                onClick={handleCloseModals}
+                className="w-full"
+              >
+                <div className="flex items-center space-x-2">
+                  <MdClear fontSize={24} />
+                  <span>Close</span>
+                </div>
+              </Button>
+            </div>
+          </div>
         </Modal>
       </div>
     </section>
