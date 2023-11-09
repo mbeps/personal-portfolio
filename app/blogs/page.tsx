@@ -19,7 +19,7 @@ export default function BlogPage() {
   return (
     <main>
       <section id="blogs">
-        <div className="my-12 md:pt-8 animate-fadeIn animation-delay-2">
+        <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
           <HeadingOne title="Blog" />
 
           <BlogList blogs={blogMetadata} />

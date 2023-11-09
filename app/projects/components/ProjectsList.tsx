@@ -431,20 +431,25 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
             </div>
           </div>
           {/* Toggle to display archived projects */}
-          <ArchiveToggle
-            generateUrl={generateUrl}
-            showArchived={showArchived}
-            selectedType={selectedType}
-            selectedTechnology={selectedTechnology}
-            selectedLanguage={selectedLanguage}
-            searchTerm={searchTerm}
-          />
+
+          <div className="w-full px-4 md:px-0">
+            <ArchiveToggle
+              generateUrl={generateUrl}
+              showArchived={showArchived}
+              selectedType={selectedType}
+              selectedTechnology={selectedTechnology}
+              selectedLanguage={selectedLanguage}
+              searchTerm={searchTerm}
+            />
+          </div>
+
           {/* Filter Modal Bottom Buttons */}
           <div className="w-full flex flex-row justify-center">
             <div
               className="
               flex flex-col md:flex-row 
               w-full md:w-1/2 
+              px-4 md:px-0
               md:space-x-2 space-y-2 md:space-y-0
               justify-center items-center"
             >
@@ -455,9 +460,9 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
                 disabled={!areFiltersApplied}
                 className="w-full"
               >
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center justify-center space-x-2">
                   <AiOutlineClear fontSize={24} />
-                  <span>Clear All</span>
+                  <span>Clear</span>
                 </div>
               </Button>
               {/* Close Modal Button */}
@@ -466,7 +471,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
                 onClick={handleCloseModals}
                 className="w-full"
               >
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center justify-center space-x-2">
                   <MdClear fontSize={24} />
                   <span>Close</span>
                 </div>
