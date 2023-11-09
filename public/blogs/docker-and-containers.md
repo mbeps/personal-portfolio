@@ -1,6 +1,7 @@
 ---
 title: "Docker: Unleashing the Power of Containers"
 subtitle: "A Comprehensive Guide to Understanding Docker and Containerization Technology"
+category: "DevOps"
 ---
 
 - [**Introduction to Docker and Containers**](#introduction-to-docker-and-containers)
@@ -22,19 +23,19 @@ subtitle: "A Comprehensive Guide to Understanding Docker and Containerization Te
 	- [**Why are Docker Volumes Used?**](#why-are-docker-volumes-used)
 	- [**Using Docker Volumes**](#using-docker-volumes)
 - [**Common Docker Commands and Their Usage**](#common-docker-commands-and-their-usage)
-	- [`docker run`](#1-docker-run)
-	- [`docker ps`](#2-docker-ps)
-	- [`docker images`](#3-docker-images)
-	- [`docker pull`](#4-docker-pull)
-	- [`docker build`](#5-docker-build)
-	- [`docker exec`](#6-docker-exec)
-	- [`docker stop`](#7-docker-stop)
-	- [`docker rm`](#8-docker-rm)
-	- [`docker rmi`](#9-docker-rmi)
-	- [`docker volume create`](#10-docker-volume-create)
-	- [`docker network create`](#11-docker-network-create)
-	- [`docker logs`](#12-docker-logs)
-	- [`docker-compose`](#13-docker-compose)
+	- [1. `docker run`](#1-docker-run)
+	- [2. `docker ps`](#2-docker-ps)
+	- [3. `docker images`](#3-docker-images)
+	- [4. `docker pull`](#4-docker-pull)
+	- [5. `docker build`](#5-docker-build)
+	- [6. `docker exec`](#6-docker-exec)
+	- [7. `docker stop`](#7-docker-stop)
+	- [8. `docker rm`](#8-docker-rm)
+	- [9. `docker rmi`](#9-docker-rmi)
+	- [10. `docker volume create`](#10-docker-volume-create)
+	- [11. `docker network create`](#11-docker-network-create)
+	- [12. `docker logs`](#12-docker-logs)
+	- [13. `docker-compose`](#13-docker-compose)
 - [**Understanding Dockerfile and Its Importance**](#understanding-dockerfile-and-its-importance)
 	- [**What is a Dockerfile?**](#what-is-a-dockerfile)
 	- [**Why Use a Dockerfile?**](#why-use-a-dockerfile)

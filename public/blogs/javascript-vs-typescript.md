@@ -1,7 +1,7 @@
 ---
 title: "JavaScript vs TypeScript: A Detailed Comparison"
 subtitle: "Exploring the Advantages and Key Differences between JavaScript and TypeScript"
-display: "true"
+category: "Software Engineering"
 ---
 
 - [**Overview**](#overview)

@@ -1,6 +1,7 @@
 ---
 title: "SDKs vs APIs: A Comparative Guide"
 subtitle: "Understanding Their Roles in Software Development"
+category: "Web Development"
 ---
 
 - [**Overview**](#overview)
