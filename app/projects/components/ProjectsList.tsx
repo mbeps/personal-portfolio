@@ -163,7 +163,8 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
         selectedType,
         selectedTechnology,
         selectedLanguage,
-        newSearchTerm
+        newSearchTerm,
+        true
       )
     );
   };
@@ -322,7 +323,8 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
           >
             <div className="flex flex-row w-full justify-center space-x-2 ">
               <p className="text-neutral-600 dark:text-neutral-400">
-                Filters are applied automatically as you select them.
+                Filters are applied automatically as you select them. Searching
+                and filtering automatically show archived projects.
               </p>
             </div>
           </div>
@@ -340,7 +342,8 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
                       type,
                       selectedTechnology,
                       selectedLanguage,
-                      searchTerm
+                      searchTerm,
+                      true
                     )}
                     key={type}
                   >
@@ -371,7 +374,8 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
                       selectedType,
                       selectedTechnology,
                       language,
-                      searchTerm
+                      searchTerm,
+                      true
                     )}
                     key={language}
                   >
@@ -402,7 +406,8 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
                       selectedType,
                       technology,
                       selectedLanguage,
-                      searchTerm
+                      searchTerm,
+                      true
                     )}
                     key={technology}
                   >
