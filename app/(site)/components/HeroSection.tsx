@@ -16,7 +16,7 @@ const HeroSection = () => {
    */
   const loopItems = [
     "Software Engineering",
-    "Full Stack Developement",
+    "Full Stack Development",
     "Machine Learning",
     "Mathematics",
   ];
@@ -39,7 +39,7 @@ const HeroSection = () => {
         <div className="flex md:w-1/2 justify-center p-8 md:p-0">
           <Image
             src="/profile.png"
-            alt=""
+            alt="Profile image of Maruf Bepary"
             width={325}
             height={325}
             className="rounded-full shadow-2xl"
@@ -54,7 +54,7 @@ const HeroSection = () => {
           {/* Roles */}
           <TextLoop
             loopItems={loopItems}
-            implementation="simple"
+            implementation="typewriter"
             className="
               text-2xl md:text-4xl 
               font-semibold 
