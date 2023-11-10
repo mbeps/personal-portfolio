@@ -9,6 +9,8 @@ import {
   IoMdPlay,
 } from "react-icons/io";
 import VideoPlayer from "./VideoPlayer";
+import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 
 interface GalleryProps {
   mediaItems: MediaItem[];
@@ -24,27 +26,9 @@ interface GalleryProps {
  * @returns (JSX.Element) - Gallery Component
  */
 const Gallery: React.FC<GalleryProps> = ({ mediaItems }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  /**
-   * Change the active media to the next media in the gallery.
-   * If the current media is the last image, go to the first media.
-   * Change the active media to the previous media in the gallery.
-   */
-  const handleNext = () => {
-    setActiveIndex((prevIndex) => (prevIndex + 1) % mediaItems.length);
-  };
-
-  /**
-   * Change the active media to the previous media in the gallery.
-   * If the current media is the first image, go to the last media.
-   * Change the active media to the previous media in the gallery.
-   */
-  const handlePrev = () => {
-    setActiveIndex(
-      (prevIndex) => (prevIndex - 1 + mediaItems.length) % mediaItems.length
-    );
-  };
+  const searchParams = useSearchParams();
+  const currentIndex = searchParams.get("index") || "0";
+  const activeIndex = parseInt(currentIndex);
 
   /**
    * Get the first image in the gallery.
@@ -56,11 +40,18 @@ const Gallery: React.FC<GalleryProps> = ({ mediaItems }) => {
   return (
     <div className="flex flex-col items-center relative">
       <div className="w-full relative">
-        <IoIosArrowDropleftCircle
-          size={44}
-          className="absolute left-1 top-1/2 transform -translate-y-1/2 text-3xl opacity-30 hover:opacity-100 cursor-pointer text-neutral-400 dark:text-neutral-700 hover:text-red-500 dark:hover:text-red-900 transition-all hover:scale-110 duration-300"
-          onClick={handlePrev}
-        />
+        {/* Previous Button */}
+
+        <Link
+          href={`?index=${
+            (activeIndex - 1 + mediaItems.length) % mediaItems.length
+          }`}
+        >
+          <IoIosArrowDropleftCircle
+            size={44}
+            className="absolute left-1 top-1/2 transform -translate-y-1/2 text-3xl opacity-30 hover:opacity-100 cursor-pointer text-neutral-400 dark:text-neutral-700 hover:text-red-500 dark:hover:text-red-900 transition-all hover:scale-110 duration-300"
+          />
+        </Link>
 
         {/* Depending on type, show Image or Video */}
         {mediaItems[activeIndex].type === "image" ? (
@@ -77,23 +68,26 @@ const Gallery: React.FC<GalleryProps> = ({ mediaItems }) => {
           <VideoPlayer src={mediaItems[activeIndex].src} />
         )}
 
-        <IoIosArrowDroprightCircle
-          size={44}
-          className="absolute right-1 top-1/2 transform -translate-y-1/2 text-3xl opacity-30 hover:opacity-100 cursor-pointer text-neutral-400 dark:text-neutral-700 hover:text-red-500 dark:hover:text-red-900 transition-all hover:scale-110 duration-300"
-          onClick={handleNext}
-        />
+        {/* Next Button */}
+        <Link href={`?index=${(activeIndex + 1) % mediaItems.length}`}>
+          <IoIosArrowDroprightCircle
+            size={44}
+            className="absolute right-1 top-1/2 transform -translate-y-1/2 text-3xl opacity-30 hover:opacity-100 cursor-pointer text-neutral-400 dark:text-neutral-700 hover:text-red-500 dark:hover:text-red-900 transition-all hover:scale-110 duration-300"
+          />
+        </Link>
       </div>
 
       <div className="flex flex-wrap justify-center gap-2 mt-4">
+        {/* List of media thumbnails  */}
         {mediaItems.map((media, idx) => (
-          <div
+          <Link
+            href={`?index=${idx}`}
             key={idx}
             className={`relative w-16 h-16 ${
               idx === activeIndex
                 ? "border-4 border-red-500 dark:border-red-800 hover:border-red-600 dark:hover:border-red-500"
                 : "border-2 border-neutral-200 dark:border-neutral-700 hover:border-neutral-400 dark:hover:border-red-900"
             } rounded-lg overflow-hidden cursor-pointer transition-all duration-500 transform hover:scale-110 ease-in-out`}
-            onClick={() => setActiveIndex(idx)}
           >
             <Image
               src={media.type === "image" ? media.src : firstImageSrc!}
@@ -116,7 +110,7 @@ const Gallery: React.FC<GalleryProps> = ({ mediaItems }) => {
                 />
               </div>
             )}
-          </div>
+          </Link>
         ))}
       </div>
     </div>
