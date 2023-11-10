@@ -82,6 +82,10 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params, searchParams }) => {
   const projectLanguage = project?.programmingLanguage;
   const projectDescription = project?.description;
 
+  if (!project) {
+    notFound();
+  }
+
   let media = getMediaFromFileSystem(`public/projects/${slug}/media`);
 
   // add the path to the media items
@@ -111,9 +115,6 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params, searchParams }) => {
   )?.content;
 
   // redirect to not found page if the project is not valid
-  if (!project) {
-    notFound();
-  }
 
   return (
     <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
