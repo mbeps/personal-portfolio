@@ -4,8 +4,8 @@ import Gallery from "@/components/Gallery/Gallery";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 
-import getImagesFromFileSystem from "@/actions/getImagesFromFileSystem";
 import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
+import getMediaFromFileSystem from "@/actions/getMediaFromFileSystem";
 import Button from "@/components/Atoms/Button";
 import allProjects from "@/constants/projects";
 import { Metadata, ResolvingMetadata } from "next";
@@ -15,7 +15,6 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
-import getMediaFromFileSystem from "@/actions/getMediaFromFileSystem";
 
 /**
  * Metadata object for the dynamic project page.
@@ -74,7 +73,7 @@ interface ProjectPageProps {
  * @param props (ProjectPageProps): the project slug
  * @returns (JSX.Element): Project Page Component
  */
-const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
+const ProjectPage: React.FC<ProjectPageProps> = ({ params, searchParams }) => {
   const slug = params.slug;
 
   const project = getProjectBySlug(slug, allProjects);
@@ -122,7 +121,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
 
       {/* Gallery Section */}
       {media && media.length > 1 ? (
-        <Gallery mediaItems={media} />
+        <Gallery mediaItems={media} index={searchParams.index as string} />
       ) : project?.imageURL ? (
         <div
           className="

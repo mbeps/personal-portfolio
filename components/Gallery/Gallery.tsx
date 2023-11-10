@@ -2,18 +2,18 @@
 
 import MediaItem from "@/types/MediaItem";
 import Image from "next/image";
-import React, { useState } from "react";
+import Link from "next/link";
+import React from "react";
 import {
   IoIosArrowDropleftCircle,
   IoIosArrowDroprightCircle,
   IoMdPlay,
 } from "react-icons/io";
 import VideoPlayer from "./VideoPlayer";
-import { useSearchParams } from "next/navigation";
-import Link from "next/link";
 
 interface GalleryProps {
   mediaItems: MediaItem[];
+  index: string; // index of the currently active media item from url
 }
 
 /**
@@ -25,9 +25,8 @@ interface GalleryProps {
  * @param (GalleryProps) - mediaItems: list of images and videos to display
  * @returns (JSX.Element) - Gallery Component
  */
-const Gallery: React.FC<GalleryProps> = ({ mediaItems }) => {
-  const searchParams = useSearchParams();
-  const currentIndex = searchParams.get("index") || "0";
+const Gallery: React.FC<GalleryProps> = ({ mediaItems, index }) => {
+  const currentIndex = index || "0";
   const activeIndex = parseInt(currentIndex);
 
   /**
