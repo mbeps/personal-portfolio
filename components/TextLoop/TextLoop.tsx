@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import SimpleTextLoop from "./SimpleTextLoop";
 import TypeWriterTextLoop from "./TypeWriterTextLoop";
