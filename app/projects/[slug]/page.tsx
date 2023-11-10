@@ -122,7 +122,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params, searchParams }) => {
 
       {/* Gallery Section */}
       {media && media.length > 1 ? (
-        <Gallery mediaItems={media} index={searchParams.index as string} />
+        <Gallery mediaItems={media} index={searchParams.index} />
       ) : project?.imageURL ? (
         <div
           className="

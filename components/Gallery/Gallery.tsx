@@ -13,7 +13,7 @@ import VideoPlayer from "./VideoPlayer";
 
 interface GalleryProps {
   mediaItems: MediaItem[];
-  index: string; // index of the currently active media item from url
+  index: string | string[] | undefined;
 }
 
 /**
@@ -27,7 +27,7 @@ interface GalleryProps {
  */
 const Gallery: React.FC<GalleryProps> = ({ mediaItems, index }) => {
   const currentIndex = index || "0";
-  const activeIndex = parseInt(currentIndex);
+  const activeIndex = parseInt(currentIndex.toString());
 
   /**
    * Get the first image in the gallery.
