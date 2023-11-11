@@ -19,7 +19,7 @@ With a responsive design, captivating sections, and a journey into my developmen
 # **Requirements**
 These are the requirements needed to run the project:
 - Node 18 LTS
-- Next.JS 13
+- Next.JS 13+ (App Router)
 
 # **Tech Stack**
 
