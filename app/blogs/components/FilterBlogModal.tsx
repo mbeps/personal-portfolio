@@ -1,3 +1,5 @@
+"use client";
+
 import Button from "@/components/Atoms/Button";
 import RadioButton from "@/components/Inputs/RadioButton";
 import Modal from "@/components/Modal/Modal";
@@ -13,9 +15,22 @@ interface FilterBlogModalProps {
   areFiltersApplied: boolean;
   selectedCategory: string;
   searchTerm: string;
-  blogCategories: string[]; // Assuming an array of categories
+  blogCategories: string[];
 }
 
+/**
+ * Modal used for filtering blogs.
+ * User can filter by category.
+ * @param resetFilters () => void - function to reset filters
+ * @param generateUrl (category: string, search: string) => string - function to generate URL for filtering
+ * @param handleCloseModals () => void - function to close modals
+ * @param isFilterModalOpen (boolean) - boolean to check if filter modal is open
+ * @param areFiltersApplied (boolean) - boolean to check if filters are applied
+ * @param selectedCategory (string) - selected category
+ * @param searchTerm (string) - search term
+ * @param blogCategories (string[]) - list of blog categories
+ * @returns (JSX.Element) - filter modal for blogs
+ */
 const FilterBlogModal: React.FC<FilterBlogModalProps> = ({
   resetFilters,
   generateUrl,

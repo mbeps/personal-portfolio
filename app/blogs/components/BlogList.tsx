@@ -17,7 +17,7 @@ interface BlogListProps {
 
 /**
  * Displays a list of all blogs that can be opened.
- * Also allows the user to search for blogs.
+ * Also allows the user to filter and search the blogs.
  * @returns (JSX.Element): page with all blogs
  */
 export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {

@@ -25,13 +25,33 @@ interface ProjectFilterModalProps {
   searchTerm: string;
   showArchived: boolean;
   isFilterModalOpen: boolean;
-  handleCloseModals: () => void; // Assuming a function to handle modal close
+  handleCloseModals: () => void;
   projectTypes: string[];
   programmingLanguages: string[];
   technologies: string[];
-  areFiltersApplied: boolean; // Assuming a boolean to check if filters are applied
+  areFiltersApplied: boolean;
 }
 
+/**
+ * Modal used for filtering projects.
+ * User can filter by type, language, and technology.
+ * Users can also toggle to show archived projects.
+ * Applying filters automatically shows archived projects.
+ * @param resetFilters () => void - function to reset filters
+ * @param generateUrl (type: string, technology: string, language: string, search: string, showArchived?: boolean) => string - function to generate URL for storing filters as state
+ * @param selectedTechnology (string) - selected technology
+ * @param selectedType (string) - selected type
+ * @param selectedLanguage (string) - selected language
+ * @param searchTerm (string) - search term
+ * @param showArchived (boolean) - boolean to check if archived projects are shown
+ * @param isFilterModalOpen (boolean) - boolean to check if filter modal is open
+ * @param handleCloseModals () => void - function to close modals
+ * @param projectTypes (string[]) - list of project types
+ * @param programmingLanguages (string[]) - list of programming languages
+ * @param technologies (string[]) - list of technologies
+ * @param areFiltersApplied (boolean) - boolean to check if filters are applied
+ * @returns (JSX.Element) - filter modal for projects
+ */
 const ProjectFilterModal: React.FC<ProjectFilterModalProps> = ({
   generateUrl,
   resetFilters,

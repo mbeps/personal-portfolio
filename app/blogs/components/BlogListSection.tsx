@@ -6,6 +6,11 @@ interface BlogListSectionProps {
   groupedBlogs: Record<string, BlogMetadata[]>;
 }
 
+/**
+ * Displays a list of blogs grouped by category.
+ * @param groupedBlogs (Record<string, BlogMetadata[]>) - blogs grouped by category
+ * @returns (JSX.Element) - list of blogs grouped by category
+ */
 const BlogListSection: React.FC<BlogListSectionProps> = ({ groupedBlogs }) => {
   return (
     <div className="my-12 pb-12 md:pt-2 md:pb-36 space-y-4 md:space-y-10">

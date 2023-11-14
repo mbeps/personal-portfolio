@@ -6,6 +6,11 @@ interface ProjectsListSectionProps {
   groupedProjects: Record<string, Project[]>;
 }
 
+/**
+ * Section for displaying projects.
+ * @param groupedProjects (Record<string, Project[]>) - object of projects grouped by type
+ * @returns (JSX.Element) - section for displaying projects
+ */
 const ProjectsListSection: React.FC<ProjectsListSectionProps> = ({
   groupedProjects,
 }) => {

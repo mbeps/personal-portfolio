@@ -10,7 +10,7 @@ import React, { useState } from "react";
 import { AiOutlineClear } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
 import { ArchiveToggle } from "./ArchiveToggle";
-import ProjectFilterModal from "./FilterModal";
+import ProjectFilterModal from "./ProjectFilterModal";
 import ProjectsListSection from "./ProjectListSection";
 
 type ProjectsListProps = {
