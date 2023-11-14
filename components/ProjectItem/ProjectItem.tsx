@@ -8,7 +8,6 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { BsArrowUpRightCircle, BsGithub, BsInfoCircle } from "react-icons/bs";
 import { PiCirclesThreePlusBold } from "react-icons/pi";
-import { ImStack } from "react-icons/im";
 import SlideUp from "./Slideup";
 
 /**

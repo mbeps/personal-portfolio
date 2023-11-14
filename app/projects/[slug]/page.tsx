@@ -4,8 +4,9 @@ import Gallery from "@/components/Gallery/Gallery";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 
-import getImagesFromFileSystem from "@/actions/getImagesFromFileSystem";
 import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
+import getMediaFromFileSystem from "@/actions/getMediaFromFileSystem";
+import hasProjectCover from "@/actions/hasProjectCover";
 import Button from "@/components/Atoms/Button";
 import allProjects from "@/constants/projects";
 import { Metadata, ResolvingMetadata } from "next";
@@ -15,7 +16,6 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
-import getMediaFromFileSystem from "@/actions/getMediaFromFileSystem";
 
 /**
  * Metadata object for the dynamic project page.
@@ -82,18 +82,30 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const projectTechnologies = project?.technologies;
   const projectLanguage = project?.programmingLanguage;
   const projectDescription = project?.description;
+  const hasCoverImage = hasProjectCover(slug);
+  const coverImagePath = `/projects/${slug}/cover.png`;
 
-  let media = getMediaFromFileSystem(`public/projects/${slug}/media`);
+  /**
+   * Gets images and videos from the file system.
+   * These are used to display the gallery.
+   * @returns (MediaItem[]): the media items for the gallery
+   */
+  const getGallery = () => {
+    let media = getMediaFromFileSystem(`public/projects/${slug}/media`);
 
-  // add the path to the media items
-  if (media) {
-    media = media.map((mediaItem) => {
-      return {
-        ...mediaItem,
-        src: `/projects/${slug}/media/${mediaItem.src}`,
-      };
-    });
-  }
+    // add the path to the media items
+    if (media) {
+      media = media.map((mediaItem) => {
+        return {
+          ...mediaItem,
+          src: `/projects/${slug}/media/${mediaItem.src}`,
+        };
+      });
+    }
+    return media;
+  };
+
+  const media = getGallery();
 
   /**
    * Get the features and blog content from the file system.
@@ -123,7 +135,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
       {/* Gallery Section */}
       {media && media.length > 1 ? (
         <Gallery mediaItems={media} />
-      ) : project?.imageURL ? (
+      ) : hasCoverImage ? (
         <div
           className="
             w-full 
@@ -134,7 +146,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
           "
         >
           <Image
-            src={project.imageURL}
+            src={coverImagePath}
             alt="Project Image"
             quality={90}
             width={2000}
@@ -150,11 +162,6 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
       ) : (
         <></>
       )}
-
-      {(media && media.length > 1) ||
-        (project?.imageURL && (
-          <div className="border-b border-neutral-200 dark:border-neutral-800" />
-        ))}
 
       {/* Metadata Section */}
       <div className="flex flex-col md:flex-row gap-4 sm:gap-10">
