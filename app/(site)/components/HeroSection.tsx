@@ -1,9 +1,11 @@
 "use client";
+
 import scrollToSection from "@/actions/scrollToSection";
 import Button from "@/components/Atoms/Button";
 import Socials from "@/components/Socials/Socials";
 import TextLoop from "@/components/TextLoop/TextLoop";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 import { HiArrowDown } from "react-icons/hi";
 
 /**
@@ -11,6 +13,13 @@ import { HiArrowDown } from "react-icons/hi";
  * Contains a short description of myself, a picture and a link to the projects section.
  */
 const HeroSection = () => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  // useEffect to set the hasMounted state to true after mounting
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   /**
    * Array of strings to loop through.
    */
@@ -52,19 +61,16 @@ const HeroSection = () => {
           </h1>
 
           {/* Roles */}
-          <TextLoop
-            loopItems={loopItems}
-            implementation="typewriter"
-            className="
-              text-2xl md:text-4xl 
-              font-semibold 
-              p-1 bg-clip-text text-transparent 
-              bg-gradient-to-r 
-              from-red-600 via-orange-500 to-rose-500 
-              dark:from-red-700 dark:via-orange-600 dark:to-rose-800
-              tracking-wide
-            "
-          />
+          {isMounted && (
+            <TextLoop
+              loopItems={loopItems}
+              implementation="typewriter"
+              className="
+                text-2xl md:text-4xl font-semibold 
+                p-1 bg-clip-text text-transparent 
+                bg-gradient-to-r from-red-600 via-orange-500 to-rose-500 dark:from-red-700 dark:via-orange-600 dark:to-rose-800 tracking-wide"
+            />
+          )}
 
           <Socials
             iconSize={40}

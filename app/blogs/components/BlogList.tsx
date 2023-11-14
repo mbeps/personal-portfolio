@@ -1,18 +1,15 @@
 "use client";
 
 import Button from "@/components/Atoms/Button";
-import RadioButton from "@/components/Inputs/RadioButton";
 import SearchInput from "@/components/Inputs/SearchInput";
-import Modal from "@/components/Modal/Modal";
 import { BlogMetadata } from "@/types/blog";
 import Fuse from "fuse.js";
-import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation"; // Add this import for Next.js router
 import { useState } from "react";
 import { AiOutlineClear } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
-import { MdClear } from "react-icons/md";
-import BlogSection from "./BlogSection";
+import BlogListSection from "./BlogListSection";
+import FilterBlogModal from "./FilterBlogModal";
 
 interface BlogListProps {
   blogs: BlogMetadata[];
@@ -20,7 +17,7 @@ interface BlogListProps {
 
 /**
  * Displays a list of all blogs that can be opened.
- * Also allows the user to search for blogs.
+ * Also allows the user to filter and search the blogs.
  * @returns (JSX.Element): page with all blogs
  */
 export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
@@ -198,109 +195,20 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
         </div>
       </div>
 
-      <div className="my-12 pb-12 md:pt-2 md:pb-36 space-y-4 md:space-y-10">
-        {Object.keys(groupedBlogs).length > 0 ? (
-          Object.keys(groupedBlogs).map(
-            (category) =>
-              category !== "All" && (
-                <BlogSection
-                  key={category}
-                  title={category}
-                  blogs={groupedBlogs[category]}
-                />
-              )
-          )
-        ) : (
-          <div className="flex justify-center min-w-full mt-14">
-            <h2 className="text-2xl font-bold">No blogs found</h2>
-          </div>
-        )}
-      </div>
+      {/* Blog List */}
+      <BlogListSection groupedBlogs={groupedBlogs} />
 
       {/* Filter Modal */}
-      <Modal
-        isOpen={isFilterModalOpen}
-        onClose={handleCloseModals}
-        title={"Filter"}
-        className="min-h-[50vh]"
-      >
-        <div
-          className="
-            px-8 md:px-0
-            flex flex-row 
-            justify-center mb-4  
-          "
-        >
-          <div className="flex flex-row w-full justify-center space-x-2 ">
-            <p className="text-neutral-600 dark:text-neutral-400">
-              Filters are applied automatically as you select them.
-            </p>
-          </div>
-        </div>
-        {/* Filter Options */}
-        <div
-          className="
-            gap-2 
-            px-5 md:px-0
-            "
-        >
-          <div>
-            {/* Category Filter */}
-            <label htmlFor="type-dropdown" className="font-semibold text-lg">
-              Category
-            </label>
-            <div className="h-64 md:h-80 overflow-y-auto space-y-2">
-              {blogCategories.map((category) => (
-                <Link href={generateUrl(category, searchTerm)} key={category}>
-                  <RadioButton
-                    key={category}
-                    id={category}
-                    name="projectType"
-                    value={category}
-                    checked={selectedCategory === category}
-                    label={category}
-                  />
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Filter Modal Bottom Buttons */}
-        <div className="w-full flex flex-row justify-center">
-          <div
-            className="
-              flex flex-col md:flex-row 
-              w-full 
-              md:space-x-2 space-y-2 md:space-y-0
-              justify-center items-center"
-          >
-            {/* Clear Filters Button */}
-            <Button
-              variant="outlined"
-              onClick={resetFilters}
-              disabled={!areFiltersApplied}
-              className="w-full"
-            >
-              <div className="flex items-center justify-center space-x-2">
-                <AiOutlineClear fontSize={24} />
-                <span>Clear</span>
-              </div>
-            </Button>
-            {/* Close Modal Button */}
-            <Button
-              variant="filled"
-              onClick={handleCloseModals}
-              className="w-full"
-            >
-              <div className="flex items-center justify-center space-x-2">
-                <MdClear fontSize={24} />
-                <span>Close</span>
-              </div>
-            </Button>
-          </div>
-        </div>
-      </Modal>
+      <FilterBlogModal
+        resetFilters={resetFilters}
+        generateUrl={generateUrl}
+        handleCloseModals={handleCloseModals}
+        isFilterModalOpen={isFilterModalOpen}
+        areFiltersApplied={areFiltersApplied}
+        blogCategories={blogCategories}
+        selectedCategory={selectedCategory}
+        searchTerm={searchTerm}
+      />
     </>
   );
 };

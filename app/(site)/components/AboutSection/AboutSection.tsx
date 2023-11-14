@@ -1,5 +1,3 @@
-"use client";
-
 import LanguageSection from "./LanguageSection";
 import SkillSection from "./SkillSection";
 

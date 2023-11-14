@@ -1,20 +1,17 @@
 "use client";
 
 import Button from "@/components/Atoms/Button";
-import RadioButton from "@/components/Inputs/RadioButton";
 import SearchInput from "@/components/Inputs/SearchInput";
-import Modal from "@/components/Modal/Modal";
 import HeadingOne from "@/components/Text/HeadingOne";
 import Project from "@/types/projects";
 import Fuse from "fuse.js";
-import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
-import { BsFilterLeft } from "react-icons/bs";
-import { MdClear } from "react-icons/md";
-import { ArchiveToggle } from "./ArchiveToggle";
-import ProjectSection from "./ProjectSection";
 import { AiOutlineClear } from "react-icons/ai";
+import { BsFilterLeft } from "react-icons/bs";
+import { ArchiveToggle } from "./ArchiveToggle";
+import ProjectFilterModal from "./ProjectFilterModal";
+import ProjectsListSection from "./ProjectListSection";
 
 type ProjectsListProps = {
   allProjects: Project[];
@@ -288,197 +285,23 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
         />
 
         {/* List of projects */}
-        <div className="flex flex-col space-y-20 mt-14">
-          {Object.keys(groupedProjects).length > 0 ? (
-            Object.keys(groupedProjects).map(
-              (type) =>
-                type !== "All" && (
-                  <ProjectSection
-                    key={type}
-                    title={type}
-                    projects={groupedProjects[type]}
-                  />
-                )
-            )
-          ) : (
-            <div className="flex justify-center min-w-full mt-14">
-              <h2 className="text-2xl font-bold">No projects</h2>
-            </div>
-          )}
-        </div>
-
+        <ProjectsListSection groupedProjects={groupedProjects} />
         {/* Filter Modal */}
-        <Modal
-          isOpen={isFilterModalOpen}
-          onClose={handleCloseModals}
-          title={"Filter"}
-          className="sm:max-w-4xl w-full sm:w-full max-h-[70vh] min-h-[50vh]"
-        >
-          <div
-            className="
-            px-8 md:px-0
-            flex flex-row 
-            justify-center mb-4  
-          "
-          >
-            <div className="flex flex-row w-full justify-center space-x-2 ">
-              <p className="text-neutral-600 dark:text-neutral-400">
-                Filters are applied automatically as you select them. Searching
-                and filtering automatically show archived projects.
-              </p>
-            </div>
-          </div>
-          {/* Filter Options */}
-          <div
-            className="
-            grid grid-cols-1 md:grid-cols-3 
-            gap-2 
-            px-5 md:px-0
-            "
-          >
-            <div>
-              {/* Category Filter */}
-              <label htmlFor="type-dropdown" className="font-semibold text-lg">
-                Category
-              </label>
-              <div className="h-64 md:h-80 overflow-y-auto space-y-2">
-                {projectTypes.map((type) => (
-                  <Link
-                    href={generateUrl(
-                      type,
-                      selectedTechnology,
-                      selectedLanguage,
-                      searchTerm,
-                      true
-                    )}
-                    key={type}
-                  >
-                    <RadioButton
-                      key={type}
-                      id={type}
-                      name="projectType"
-                      value={type}
-                      checked={selectedType === type}
-                      label={type}
-                    />
-                  </Link>
-                ))}
-              </div>
-            </div>
-            {/* Language Filter */}
-            <div>
-              <label
-                htmlFor="language-dropdown"
-                className="font-semibold text-lg"
-              >
-                Language
-              </label>
-              <div className="h-64 md:h-80 overflow-y-auto space-y-2">
-                {programmingLanguages.map((language) => (
-                  <Link
-                    href={generateUrl(
-                      selectedType,
-                      selectedTechnology,
-                      language,
-                      searchTerm,
-                      true
-                    )}
-                    key={language}
-                  >
-                    <RadioButton
-                      key={language}
-                      id={language}
-                      name="programmingLanguage"
-                      value={language}
-                      checked={selectedLanguage === language}
-                      label={language}
-                    />
-                  </Link>
-                ))}
-              </div>
-            </div>
-            {/* Technology Filter */}
-            <div>
-              <label
-                htmlFor="language-dropdown"
-                className="font-semibold text-lg block"
-              >
-                Technologies
-              </label>
-              <div className="h-64 md:h-80 overflow-y-auto space-y-2">
-                {technologies.map((technology) => (
-                  <Link
-                    href={generateUrl(
-                      selectedType,
-                      technology,
-                      selectedLanguage,
-                      searchTerm,
-                      true
-                    )}
-                    key={technology}
-                  >
-                    <RadioButton
-                      key={technology}
-                      id={technology}
-                      name="technology"
-                      value={technology}
-                      checked={selectedTechnology === technology}
-                      label={technology}
-                    />
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-          {/* Toggle to display archived projects */}
-
-          <div className="w-full px-4 md:px-0">
-            <ArchiveToggle
-              generateUrl={generateUrl}
-              showArchived={showArchived}
-              selectedType={selectedType}
-              selectedTechnology={selectedTechnology}
-              selectedLanguage={selectedLanguage}
-              searchTerm={searchTerm}
-            />
-          </div>
-
-          {/* Filter Modal Bottom Buttons */}
-          <div className="w-full flex flex-row justify-center">
-            <div
-              className="
-              flex flex-col md:flex-row 
-              w-full md:w-1/2 
-              px-4 md:px-0
-              md:space-x-2 space-y-2 md:space-y-0
-              justify-center items-center"
-            >
-              {/* Clear Filters Button */}
-              <Button
-                variant="outlined"
-                onClick={resetFilters}
-                disabled={!areFiltersApplied}
-                className="w-full"
-              >
-                <div className="flex items-center justify-center space-x-2">
-                  <AiOutlineClear fontSize={24} />
-                  <span>Clear</span>
-                </div>
-              </Button>
-              {/* Close Modal Button */}
-              <Button
-                variant="filled"
-                onClick={handleCloseModals}
-                className="w-full"
-              >
-                <div className="flex items-center justify-center space-x-2">
-                  <MdClear fontSize={24} />
-                  <span>Close</span>
-                </div>
-              </Button>
-            </div>
-          </div>
-        </Modal>
+        <ProjectFilterModal
+          generateUrl={generateUrl}
+          resetFilters={resetFilters}
+          selectedTechnology={selectedTechnology}
+          selectedType={selectedType}
+          selectedLanguage={selectedLanguage}
+          searchTerm={searchTerm}
+          showArchived={showArchived}
+          isFilterModalOpen={isFilterModalOpen}
+          handleCloseModals={handleCloseModals}
+          projectTypes={projectTypes}
+          programmingLanguages={programmingLanguages}
+          technologies={technologies}
+          areFiltersApplied={areFiltersApplied}
+        />
       </div>
     </section>
   );
