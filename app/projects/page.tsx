@@ -20,6 +20,9 @@ export const metadata: Metadata = {
 
 /**
  * Updates the imageURL of each project if a cover image exists.
+ * Adding the path to the project list if the project exists.
+ * This had to be done as it was the only page that had access to the server
+ * Very easy as the existing code remained the same only the list was modified
  * @param projects (Project[]) - Array of project objects.
  * @returns (Project[]) - Array of project objects with updated imageURL fields.
  */
