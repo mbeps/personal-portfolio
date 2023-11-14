@@ -4,9 +4,6 @@ import { Skill } from "../types/languages";
  * Array of technologies.
  */
 const technologies: Skill[] = [
-  { skill: "Git", category: "Version Control System" },
-  { skill: "SVN", category: "Version Control System" },
-
   { skill: "Firebase", category: "Back-End Web Development" },
   { skill: "Supabase", category: "Back-End Web Development" },
   { skill: "PocketBase", category: "Back-End Web Development" },
@@ -47,6 +44,7 @@ const technologies: Skill[] = [
   { skill: "Discrete", category: "Mathematics" },
   { skill: "Geometry", category: "Mathematics" },
 
+  { skill: "Git", category: "Other" },
   { skill: "Vagrant", category: "Other" },
   { skill: "Linux", category: "Other" },
 ];

@@ -11,7 +11,6 @@ interface Skill {
     | "Testing"
     | "Project Manager"
     | "Machine Learning"
-    | "Version Control System"
     | "CI/CD"
     | "Database"
     | "Containerization"
