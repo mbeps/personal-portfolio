@@ -1,18 +1,14 @@
 "use client";
 
 import Button from "@/components/Atoms/Button";
-import RadioButton from "@/components/Inputs/RadioButton";
 import SearchInput from "@/components/Inputs/SearchInput";
-import Modal from "@/components/Modal/Modal";
 import { BlogMetadata } from "@/types/blog";
 import Fuse from "fuse.js";
-import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation"; // Add this import for Next.js router
 import { useState } from "react";
 import { AiOutlineClear } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
-import { MdClear } from "react-icons/md";
-import BlogSection from "./BlogSection";
+import BlogListSection from "./BlogListSection";
 import FilterBlogModal from "./FilterBlogModal";
 
 interface BlogListProps {
@@ -199,24 +195,8 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
         </div>
       </div>
 
-      <div className="my-12 pb-12 md:pt-2 md:pb-36 space-y-4 md:space-y-10">
-        {Object.keys(groupedBlogs).length > 0 ? (
-          Object.keys(groupedBlogs).map(
-            (category) =>
-              category !== "All" && (
-                <BlogSection
-                  key={category}
-                  title={category}
-                  blogs={groupedBlogs[category]}
-                />
-              )
-          )
-        ) : (
-          <div className="flex justify-center min-w-full mt-14">
-            <h2 className="text-2xl font-bold">No blogs found</h2>
-          </div>
-        )}
-      </div>
+      {/* Blog List */}
+      <BlogListSection groupedBlogs={groupedBlogs} />
 
       {/* Filter Modal */}
       <FilterBlogModal
