@@ -1,3 +1,5 @@
+"use client";
+
 import { Switch } from "@headlessui/react";
 
 interface ToggleProps {
