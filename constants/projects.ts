@@ -14,7 +14,6 @@ const webdevProjects: Project[] = [
       a social media platform was developed enabling users to form communities, 
       start discussions, and comment on them, connecting with like-minded individuals.
       `,
-    imageURL: `/projects/circus-discussions/cover.png`,
     repoURL: `https://github.com/mbeps/next_discussion_platform`,
     siteURL: `https://circus-discussion.vercel.app/`,
     programmingLanguage: `TypeScript`,
@@ -63,7 +62,6 @@ const webdevProjects: Project[] = [
       A custom back-end learning project involved creating a straightforward messaging app. 
       Users can chat one-on-one, participate in group chats, send text messages, share images, view active users, and personalize their profiles. 
       `,
-    imageURL: `/projects/ringmaster-messaging/cover.png`,
     repoURL: `https://github.com/mbeps/ringmaster-messaging`,
     siteURL: `https://ringmaster-messaging.vercel.app/`,
     programmingLanguage: `TypeScript`,
@@ -112,7 +110,6 @@ const webdevProjects: Project[] = [
       Magician AI is a SaaS platform that leverages AI to enable users to generate various media types and have dynamic conversations. 
       Developing this project allowed me to explore Stripe, Clerk authentication, and unique AI APIs.
   `,
-    imageURL: `/projects/magician-ai/cover.png`,
     repoURL: `https://github.com/mbeps/magician-ai`,
     programmingLanguage: `TypeScript`,
     siteURL: "https://magician-ai.vercel.app/",
@@ -167,7 +164,6 @@ const webdevProjects: Project[] = [
       My first major project using Supabase was a basic music streaming site. 
       Users can upload songs, search and listen to music, as well as like the songs they enjoy.
       `,
-    imageURL: `/projects/drumroll-music/cover.png`,
     repoURL: `https://github.com/mbeps/drumroll-music`,
     programmingLanguage: `TypeScript`,
     technologies: [
@@ -233,7 +229,6 @@ const extraWebDevProjects: Project[] = [
       "MySQL",
       "OpenAI",
     ],
-    imageURL: `/projects/quizmify/cover.png`,
     repoURL: "https://github.com/mbeps/quizmify",
     tags: [
       "Web Development",
@@ -261,7 +256,6 @@ const extraWebDevProjects: Project[] = [
       Users can read, create, and delete articles. 
       This foundational project paved the way for using Supabase in subsequent projects.
       `,
-    imageURL: `/projects/sideshow-articles/cover.png`,
     repoURL: `https://github.com/mbeps/sideshow-articles`,
     programmingLanguage: `TypeScript`,
     technologies: [`Next.JS`, `React`, `Supabase`, "PostgreSQL", `Next UI`],
@@ -290,7 +284,6 @@ const extraWebDevProjects: Project[] = [
       During my second year of university, my group and I initiated a project on an open-source learning platform which served as my introduction to full-stack development. 
       This app aids students in managing tasks, assignments, exams, and storing notes and resources.
       `,
-    imageURL: `/projects/noodle/cover.png`,
     repoURL: `https://github.com/ixahmedxi/noodle`,
     siteURL: `https://noodle.run/`,
     programmingLanguage: `TypeScript`,
@@ -339,7 +332,6 @@ const extraWebDevProjects: Project[] = [
       We manually implemented the game's physics using vector theory and physics concepts. 
       Since there were no tutorials or guides available, we relied heavily on the library's documentation.
       `,
-    imageURL: `/projects/convo-gpt/cover.png`,
     repoURL: `https://github.com/mbeps/convo-gpt`,
     programmingLanguage: `TypeScript`,
     technologies: [
@@ -675,7 +667,6 @@ const gameDevProjects: Project[] = [
       The physics of the game were done manually using vector theory and physics concepts.
       This required us to rely on the documentation as there was no tutorials or guides on how to use the library.
       `,
-    imageURL: `/projects/osmos-game/cover.png`,
     repoURL: `https://github.com/mbeps/Osmos_Game`,
     programmingLanguage: `Python`,
     technologies: [`SimpleGUI`],
@@ -702,7 +693,6 @@ const gameDevProjects: Project[] = [
     programmingLanguage: "GML",
     type: "Game Dev",
     technologies: [`Game Maker Studio 2`],
-    imageURL: `/projects/surface-fight/cover.png`,
     siteURL: "https://bepary-games.itch.io/surface-fight",
     tags: [
       "Game Development",
@@ -724,7 +714,6 @@ const gameDevProjects: Project[] = [
     programmingLanguage: "GML",
     type: "Game Dev",
     technologies: [`Game Maker Studio 2`],
-    imageURL: `/projects/platformer/cover.png`,
     siteURL: "https://bepary-games.itch.io/platformer",
     tags: [
       "Game Development",
@@ -746,7 +735,6 @@ const gameDevProjects: Project[] = [
     programmingLanguage: "GML",
     type: "Game Dev",
     technologies: [`Game Maker Studio 2`],
-    imageURL: `/projects/platformer-death-walk/cover.png`,
     siteURL: "https://bepary-games.itch.io/platformer-death-walk",
     tags: [
       "Game Development",
@@ -767,7 +755,6 @@ const gameDevProjects: Project[] = [
     programmingLanguage: "GML",
     type: "Game Dev",
     technologies: [`Game Maker Studio 2`],
-    imageURL: `/projects/coding-breakout/cover.png`,
     siteURL: "https://bepary-games.itch.io/coding-break-out",
     tags: [
       "Game Development",
@@ -788,7 +775,6 @@ const gameDevProjects: Project[] = [
     programmingLanguage: "GML",
     type: "Game Dev",
     technologies: [`Game Maker Studio 2`],
-    imageURL: `/projects/catch-maruf/cover.png`,
     siteURL: "https://bepary-games.itch.io/catch-maruf",
     tags: [
       "Game Development",
@@ -809,7 +795,6 @@ const gameDevProjects: Project[] = [
     programmingLanguage: "GML",
     type: "Game Dev",
     technologies: [`Game Maker Studio 2`],
-    imageURL: `/projects/against-gravity/cover.png`,
     siteURL: "https://bepary-games.itch.io/against-gravity",
     tags: [
       "Game Development",
@@ -829,7 +814,6 @@ const gameDevProjects: Project[] = [
     programmingLanguage: "GML",
     type: "Game Dev",
     technologies: [`Game Maker Studio 2`],
-    imageURL: `/projects/scrolling-shooter/cover.png`,
     siteURL: "https://bepary-games.itch.io/scrolling-shooter",
     tags: [
       "Game Development",
@@ -849,7 +833,6 @@ const gameDevProjects: Project[] = [
     programmingLanguage: "GML",
     type: "Game Dev",
     technologies: [`Game Maker Studio 2`],
-    imageURL: `/projects/dungeon/cover.png`,
     siteURL: "https://bepary-games.itch.io/dungeon-",
     tags: [
       "Game Development",
@@ -870,7 +853,6 @@ const gameDevProjects: Project[] = [
     programmingLanguage: "GML",
     type: "Game Dev",
     technologies: [`Game Maker Studio 2`],
-    imageURL: `/projects/veg-ninja/cover.png`,
     siteURL: "https://bepary-games.itch.io/vej-ninja",
     tags: [
       "Game Development",
@@ -891,7 +873,6 @@ const gameDevProjects: Project[] = [
     programmingLanguage: "GML",
     type: "Game Dev",
     technologies: [`Game Maker Studio 2`],
-    imageURL: `/projects/angry-cats-space/cover.png`,
     siteURL: "https://bepary-games.itch.io/angry-cats-space",
     tags: [
       "Game Development",
@@ -912,7 +893,6 @@ const gameDevProjects: Project[] = [
     programmingLanguage: "GML",
     type: "Game Dev",
     technologies: [`Game Maker Studio 2`],
-    imageURL: `/projects/angry-cats/cover.png`,
     siteURL: "https://bepary-games.itch.io/angry-cats-space",
     tags: [
       "Game Development",
