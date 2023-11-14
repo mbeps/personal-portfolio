@@ -48,17 +48,7 @@ const ProjectItem: React.FC<Project> = ({
   technologies,
   type,
 }) => {
-  const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  /**
-   * Redirects the user to the repository if the repository link is available.
-   */
-  const handleClick = () => {
-    if (slug) {
-      router.push(`/projects/${slug}`);
-    }
-  };
 
   /**
    * Opens and closes modal.
@@ -82,17 +72,18 @@ const ProjectItem: React.FC<Project> = ({
                 transition-all duration-500 ease-in-out
               "
             >
-              <Image
-                src={imageURL}
-                key={imageURL}
-                alt=""
-                width={1000}
-                height={1000}
-                className="
+              <Link href={`/projects/${slug}`}>
+                <Image
+                  src={imageURL}
+                  key={imageURL}
+                  alt={`${name} cover image`}
+                  width={1000}
+                  height={1000}
+                  className="
                   rounded-xl 
                   cursor-pointer"
-                onClick={handleClick}
-              />
+                />
+              </Link>
             </div>
           )}
 

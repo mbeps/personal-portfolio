@@ -10,11 +10,29 @@ import {
 import Project from "@/types/projects";
 import ProjectsList from "./components/ProjectsList";
 import type { Metadata } from "next";
+import hasProjectCover from "@/actions/hasProjectCover";
 
 export const metadata: Metadata = {
   title: "Maruf Bepary - Projects",
   description:
     "A list of all the projects I have worked on. The projects are grouped by type.",
+};
+
+/**
+ * Updates the imageURL of each project if a cover image exists.
+ * @param projects (Project[]) - Array of project objects.
+ * @returns (Project[]) - Array of project objects with updated imageURL fields.
+ */
+const updateProjectImages = (projects: Project[]): Project[] => {
+  return projects.map((project) => {
+    if (hasProjectCover(project.slug)) {
+      return {
+        ...project,
+        imageURL: `/projects/${project.slug}/cover.png`,
+      };
+    }
+    return project;
+  });
 };
 
 /**
@@ -29,10 +47,6 @@ export const metadata: Metadata = {
  * @returns (JSX.Element): Projects page
  */
 const ProjectsPage = () => {
-  /**
-   * List of all projects.
-   * They are displayed in the order they are added to the list.
-   */
   const allProjects: Project[] = [
     ...webdevProjects,
     ...extraWebDevProjects,
@@ -43,7 +57,9 @@ const ProjectsPage = () => {
     ...otherProjects,
   ];
 
-  return <ProjectsList allProjects={allProjects} />;
+  const updatedProjects = updateProjectImages(allProjects);
+
+  return <ProjectsList allProjects={updatedProjects} />;
 };
 
 export default ProjectsPage;
