@@ -11,7 +11,7 @@ import { AiOutlineClear } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
 import { ArchiveToggle } from "./ArchiveToggle";
 import ProjectFilterModal from "./FilterModal";
-import ProjectSection from "./ProjectSection";
+import ProjectsListSection from "./ProjectListSection";
 
 type ProjectsListProps = {
   allProjects: Project[];
@@ -285,25 +285,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
         />
 
         {/* List of projects */}
-        <div className="flex flex-col space-y-20 mt-14">
-          {Object.keys(groupedProjects).length > 0 ? (
-            Object.keys(groupedProjects).map(
-              (type) =>
-                type !== "All" && (
-                  <ProjectSection
-                    key={type}
-                    title={type}
-                    projects={groupedProjects[type]}
-                  />
-                )
-            )
-          ) : (
-            <div className="flex justify-center min-w-full mt-14">
-              <h2 className="text-2xl font-bold">No projects</h2>
-            </div>
-          )}
-        </div>
-
+        <ProjectsListSection groupedProjects={groupedProjects} />
         {/* Filter Modal */}
         <ProjectFilterModal
           generateUrl={generateUrl}
