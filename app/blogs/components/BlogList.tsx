@@ -131,7 +131,15 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
 
   return (
     <>
-      <div className="flex flex-col-reverse md:flex-row items-center w-full mt-12 p-2 gap-4">
+      <div className="flex flex-col md:flex-row items-center w-full mt-12 p-2 gap-4">
+        {/* Search input */}
+        <div className="w-full md:flex-1">
+          <SearchInput
+            searchTerm={searchTerm}
+            updateSearchTerm={updateSearchTerm}
+            placeholder="Search blog name or metadata"
+          />
+        </div>
         {/* Buttons */}
         <div className="flex flex-row md:flex-1 gap-2 w-full">
           {/* Filter Button */}
@@ -183,15 +191,6 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
               <span>Clear All</span>
             </div>
           </Button>
-        </div>
-
-        {/* Search input */}
-        <div className="w-full md:flex-1">
-          <SearchInput
-            searchTerm={searchTerm}
-            updateSearchTerm={updateSearchTerm}
-            placeholder="Search blog name or metadata"
-          />
         </div>
       </div>
 
