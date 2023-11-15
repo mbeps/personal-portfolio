@@ -1,14 +1,8 @@
-"use client";
-
-import ProjectModal from "@/components/Modal/ProjectModal";
 import Project from "@/types/projects";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React from "react";
 import { BsArrowUpRightCircle, BsGithub, BsInfoCircle } from "react-icons/bs";
-import { PiCirclesThreePlusBold } from "react-icons/pi";
-import { ImStack } from "react-icons/im";
 import SlideUp from "./Slideup";
 
 /**
@@ -45,29 +39,7 @@ const ProjectItem: React.FC<Project> = ({
   imageURL,
   repoURL,
   siteURL,
-  programmingLanguage,
-  technologies,
-  type,
 }) => {
-  const router = useRouter();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  /**
-   * Redirects the user to the repository if the repository link is available.
-   */
-  const handleClick = () => {
-    if (slug) {
-      router.push(`/projects/${slug}`);
-    }
-  };
-
-  /**
-   * Opens and closes modal.
-   */
-  const toggleModal = () => {
-    setIsModalOpen(!isModalOpen);
-  };
-
   return (
     <SlideUp offset="-150px 0px -150px 0px">
       <div className="bg-neutral-100 dark:bg-neutral-950 p-4 rounded-xl sm:bg-white sm:dark:bg-neutral-900 sm:p-0 transition-colors duration-700 ">
@@ -83,17 +55,18 @@ const ProjectItem: React.FC<Project> = ({
                 transition-all duration-500 ease-in-out
               "
             >
-              <Image
-                src={imageURL}
-                key={imageURL}
-                alt=""
-                width={1000}
-                height={1000}
-                className="
+              <Link href={`/projects/${slug}`}>
+                <Image
+                  src={imageURL}
+                  key={imageURL}
+                  alt={`${name} cover image`}
+                  width={1000}
+                  height={1000}
+                  className="
                   rounded-xl 
                   cursor-pointer"
-                onClick={handleClick}
-              />
+                />
+              </Link>
             </div>
           )}
 
@@ -144,23 +117,6 @@ const ProjectItem: React.FC<Project> = ({
                   />
                 </Link>
               )}
-              <div className="flex flex-row align-bottom space-x-4">
-                {programmingLanguage && (
-                  <button
-                    className="-translate-y-0.5 hover:-translate-y-1.5 transition-transform cursor-pointer"
-                    onClick={toggleModal}
-                    title="Project Stack"
-                  >
-                    <PiCirclesThreePlusBold size={34} />
-                  </button>
-                )}
-                <ProjectModal
-                  isOpen={isModalOpen}
-                  onClose={toggleModal}
-                  projectLanguage={programmingLanguage}
-                  technologies={technologies}
-                />
-              </div>
               {/* Project Website */}
               {siteURL && (
                 <Link href={siteURL} target="_blank" title="Website">
