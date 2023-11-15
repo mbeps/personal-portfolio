@@ -326,7 +326,7 @@ const extraWebDevProjects: Project[] = [
   },
   {
     name: `ConvoGPT`,
-    slug: "convogpt",
+    slug: "convo-gpt",
     description: `
       In my first year of university, my group and I developed a simple game using SimpleGUI for a project. 
       We manually implemented the game's physics using vector theory and physics concepts. 
