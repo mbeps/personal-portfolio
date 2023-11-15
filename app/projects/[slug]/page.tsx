@@ -176,60 +176,66 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
 
             <HeadingThree title="Links" />
             {/* Links */}
-            <div className="mt-6 flex flex-col md:flex-row justify-center md:justify-start items-center">
-              <div
-                className="
-                  grid grid-cols-2 
-                  gap-5 
-                  w-auto md:w-full
-                  justify-center md:justify-start
-                "
-              >
-                {/* GitHub Repo */}
-                {project?.repoURL && (
-                  <Link href={project?.repoURL} target="_blank">
-                    <Button
-                      variant={"ghost"}
-                      className="
+            <div
+              className="
+              mt-6 flex 
+              flex-row 
+              justify-center md:justify-start items-center 
+              w-full 
+              gap-2"
+            >
+              {/* GitHub Repo */}
+              {project?.repoURL && (
+                <Link
+                  href={project?.repoURL}
+                  target="_blank"
+                  className="w-auto md:w-full"
+                >
+                  <Button
+                    variant={"ghost"}
+                    className="
                         text-neutral-900 dark:text-white 
                         hover:text-neutral-900 
                         hover:bg-neutral-300
                         w-auto md:w-full
                         rounded-full md:rounded-xl
-                  "
-                    >
-                      <div className="flex flex-row justify-center md:justify-start gap-4 w-full">
-                        <BsGithub size={30} />
-                        <p className="hidden md:block mt-1 md:text-left text-center">
-                          Repository
-                        </p>
-                      </div>
-                    </Button>
-                  </Link>
-                )}
-                {/* Website */}
-                {project?.siteURL && (
-                  <Link href={project?.siteURL} target="_blank">
-                    <Button
-                      variant={"ghost"}
-                      className="
+                      "
+                  >
+                    <div className="flex flex-row justify-center md:justify-start gap-4 w-full">
+                      <BsGithub size={30} />
+                      <p className="hidden md:block mt-1 md:text-left text-center">
+                        Repository
+                      </p>
+                    </div>
+                  </Button>
+                </Link>
+              )}
+              {/* Website */}
+              {project?.siteURL && (
+                <Link
+                  href={project?.siteURL}
+                  target="_blank"
+                  className="w-auto md:w-full"
+                >
+                  <Button
+                    variant={"ghost"}
+                    className="
                         text-neutral-900 dark:text-white 
                         hover:text-neutral-900 
                         hover:bg-neutral-300
                         w-auto md:w-full
                         rounded-full md:rounded-xl
-                    "
-                    >
-                      <div className="flex flex-row justify-center md:justify-start gap-4 w-full">
-                        <BsArrowUpRightCircle size={30} />
-                        <p className="hidden md:block mt-1 md:text-left text-center">
-                          Deployment
-                        </p>
-                      </div>
-                    </Button>
-                  </Link>
-                )}
-              </div>
+                      "
+                  >
+                    <div className="flex flex-row justify-center md:justify-start gap-4 w-full">
+                      <BsArrowUpRightCircle size={30} />
+                      <p className="hidden md:block mt-1 md:text-left text-center">
+                        Deployment
+                      </p>
+                    </div>
+                  </Button>
+                </Link>
+              )}
             </div>
           </div>
         </div>
