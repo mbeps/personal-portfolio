@@ -40,7 +40,7 @@ const NavbarItem: React.FC<NavbarItemProps> = ({ to, children }) => {
       ${active ? "font-bold" : "font-normal"} 
       text-neutral-900 dark:text-neutral-100 text-center
       dark:hover:text-neutral-200 
-      px-4 py-3 m-2 w-full md:w-24 
+      px-4 py-3 m-2 w-full md:w-26
       cursor-pointer 
       transition-all 
       hover:font-bold duration-300 
