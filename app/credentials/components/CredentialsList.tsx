@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import { AiOutlineClear } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
 import CredentialListSection from "./CredentialListSection";
+import CredentialFilterModal from "./CredentialFilterModal";
 
 type CredentialsListListProps = {
   allCertificates: Certificate[];
@@ -195,8 +196,21 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
         {/* Toggle to display archived projects */}
 
         {/* List of projects */}
-        <CredentialListSection allCertificates={allCertificates} />
+        <CredentialListSection groupedCertificates={groupedCertificates} />
         {/* Filter Modal */}
+        <CredentialFilterModal
+          generateUrl={generateUrl}
+          areFiltersApplied={areFiltersApplied}
+          resetFilters={resetFilters}
+          isFilterModalOpen={isFilterModalOpen}
+          handleCloseModals={handleCloseModals}
+          certificateCategories={certificateCategories}
+          certificateIssuers={certificateIssuers}
+          selectedCategory={selectedCategory}
+          selectedIssuer={selectedIssuer}
+          searchTerm={searchTerm}
+          showArchived={showArchived}
+        />
       </div>
     </section>
   );
