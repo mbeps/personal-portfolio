@@ -105,7 +105,7 @@ const cloudComputing: Certificate[] = [
     name: "Data Science Foundations: Fundamentals",
     slug: "e9cb305b4da5f38726226d31e5eef5da66504838131739c389a2d056ed31cf3f",
     category: "Machine Learning",
-    issuer: "National Association of State Boards of Accountancy (NASBA)",
+    issuer: "NASBA",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/e9cb305b4da5f38726226d31e5eef5da66504838131739c389a2d056ed31cf3f",
     skills: ["Data Science", "Machine Learning"],
@@ -135,7 +135,7 @@ const cloudComputing: Certificate[] = [
     name: "Database Foundations: Intro to Databases",
     slug: "8b2d47f66f59b8b9724a6c1f05f15e27a9b08c3caaf95169c1d6c64537a1d066",
     category: "Databases",
-    issuer: "National Association of State Boards of Accountancy (NASBA)",
+    issuer: "NASBA",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/8b2d47f66f59b8b9724a6c1f05f15e27a9b08c3caaf95169c1d6c64537a1d066",
     skills: ["Database Management System", "SQL"],

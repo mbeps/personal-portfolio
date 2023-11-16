@@ -2,12 +2,7 @@ export default interface Certificate {
   name: string;
   slug: string;
   description?: string;
-  issuer:
-    | "Coursera"
-    | "Udemy"
-    | "LinkedIn"
-    | "National Association of State Boards of Accountancy (NASBA)"
-    | "Project Management Institute (PMI)";
+  issuer: "Coursera" | "Udemy" | "LinkedIn" | "NASBA" | "PMI";
   credentialURL: string;
   skills: string[];
   tags?: string[];

@@ -46,7 +46,7 @@ const CredentialFilterModal: React.FC<CredentialFilterModalProps> = ({
       isOpen={isFilterModalOpen}
       onClose={handleCloseModals}
       title="Certificate Filters"
-      className="sm:max-w-4xl w-full sm:w-full max-h-[70vh] min-h-[50vh]"
+      className="sm:max-w-3xl w-full sm:w-full max-h-[70vh] min-h-[50vh]"
     >
       {/* Modal Content Here */}
       <div className="px-8 md:px-0 flex flex-row justify-center mb-4">

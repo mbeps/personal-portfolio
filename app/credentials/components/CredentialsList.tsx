@@ -127,7 +127,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
   return (
     <section id="projects" className="flex flex-col items-start md:items-end">
       <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
-        <HeadingOne title="Projects" />
+        <HeadingOne title="Credentials" />
 
         <div className="flex flex-col md:flex-row items-center w-full mt-12 p-2 gap-4">
           {/* Search input */}
