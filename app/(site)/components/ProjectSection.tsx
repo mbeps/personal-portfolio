@@ -1,3 +1,4 @@
+import updateProjectImages from "@/actions/updateProjectImages";
 import validateSlugs from "@/actions/validateSlug";
 import Button from "@/components/Atoms/Button";
 import ProjectItem from "@/components/ProjectItem/ProjectItem";
@@ -27,13 +28,15 @@ const ProjectsSection = () => {
     return null;
   }
 
+  const updatedProjects = updateProjectImages(allProjects);
+
   return (
     <section id="projects" className="wrapper ">
       <div className="my-12 pb-12 md:pt-16 ">
         <HeadingTwo title="Projects" />
 
         <div className="flex flex-col space-y-20 mt-14">
-          {allProjects
+          {updatedProjects
             .filter((project) => allowedSlugs.includes(project.slug))
             .map((project, idx) => (
               <div key={idx}>
