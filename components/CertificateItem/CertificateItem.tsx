@@ -13,82 +13,99 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
   description,
   issuer,
   credentialURL,
-  skills,
   certificateImage,
 }) => {
   return (
     <div
       className="
       bg-neutral-100 dark:bg-neutral-950  
-      sm:bg-white sm:dark:bg-neutral-900 
-      p-4 sm:p-0
-      rounded-xl 
+      p-6 rounded-xl 
       transition-colors duration-700 
+      flex flex-col
       "
+      style={{ height: "auto" }}
     >
+      {/* Certificate Image */}
+      {certificateImage && (
+        <Link
+          href={credentialURL}
+          target="_blank"
+          className="
+            rounded-xl
+            transform hover:scale-105 
+            shadow-xl hover:shadow-2xl
+            transition-all duration-500 ease-in-out
+            mb-6
+            w-full
+            overflow-hidden 
+          "
+        >
+          <Image
+            src={certificateImage}
+            alt={`${name} certificate image`}
+            className="rounded-xl cursor-pointer object-cover"
+            width={1000}
+            height={1000}
+          />
+        </Link>
+      )}
+
       <div
         className="
-        flex flex-col lg:flex-row 
-        lg:space-x-8
-      "
+        flex flex-col 
+        gap-8 px-4 py-4"
       >
-        {/* Certificate Image */}
-        {certificateImage && (
-          <div
+        {/* Certificate Title */}
+        <Link href={credentialURL} target="_blank">
+          <h1
             className="
-              rounded-xl
-              transform hover:scale-105 
-              shadow-xl hover:shadow-2xl
-              transition-all duration-500 ease-in-out
-            "
+              text-3xl md:text-4xl font-bold text-center 
+              hover:text-red-500 dark:hover:text-red-800
+              transition-colors duration-700 ease-in-out
+              
+              "
           >
-            <Image
-              src={certificateImage}
-              alt={`${name} certificate image`}
-              width={1000}
-              height={1000}
-              className="rounded-xl cursor-pointer"
-            />
-          </div>
+            {name}
+          </h1>
+        </Link>
+        {/* Certificate Description and Details */}
+
+        {description && (
+          <p className="text-xl text-center leading-7 text-neutral-600 dark:text-neutral-400 border-2 border-red-500">
+            {description}
+          </p>
         )}
 
-        <div className="flex flex-col gap-4 px-4 py-8">
-          <div className={"w-full "}>
-            {/* Certificate Title */}
-            <h1
-              className="
-              text-3xl md:text-4xl font-bold text-center md:text-left 
-              mb-6 hover:text-red-500 dark:hover:text-red-800
-              transition-colors duration-700 ease-in-out
-            "
+        {/* Slug */}
+        <p
+          className="
+          text-l text-center leading-7
+          text-neutral-400 dark:text-neutral-600 
+          overflow-auto break-words"
+        >
+          {slug}
+        </p>
+        {/* Issuer Tag */}
+        <div className="w-full flex justify-center">
+          <Tag>{issuer}</Tag>
+        </div>
+        <div className="flex justify-center">
+          {/* Link to Credential */}
+          {credentialURL && (
+            <Link
+              href={credentialURL}
+              target="_blank"
+              title="View Credentials on Provider's Website"
             >
-              {name}
-            </h1>
-            {/* Certificate Description and Details */}
-            <p className="text-xl text-left leading-7 mb-4 text-neutral-600 dark:text-neutral-400">
-              {description}
-            </p>
-            <p className="text-l text-left leading-7 mb-4 text-neutral-500 dark:text-neutral-500">
-              {slug}
-            </p>
-          </div>
-          <div className="max-w-[20]">
-            <Tag>{issuer}</Tag>
-          </div>
-          <div>
-            {/* Link to Credential */}
-            {credentialURL && (
-              <Link
-                href={credentialURL}
-                target="_blank"
-                title="View Credentials on Provider's Website"
-              >
-                <BsArrowUpRightCircle size={30} />
-              </Link>
-            )}
-          </div>
+              <BsArrowUpRightCircle
+                size={30}
+                className="hover:-translate-y-1 transition-transform cursor-pointer"
+              />
+            </Link>
+          )}
         </div>
       </div>
+      {/*  */}
     </div>
   );
 };
