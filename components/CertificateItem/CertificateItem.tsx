@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { BsArrowUpRightCircle } from "react-icons/bs";
+import { BsArrowUpRightCircle, BsInfoCircle } from "react-icons/bs";
 import Certificate from "@/types/certificates";
 import Tag from "../Atoms/Tag";
 
@@ -89,7 +89,20 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
         <div className="w-full flex justify-center">
           <Tag>{issuer}</Tag>
         </div>
-        <div className="flex justify-center">
+        <div
+          className="
+            flex flex-row 
+            justify-center 
+            align-bottom 
+            space-x-4"
+        >
+          {/* Link to Credential Page */}
+          <Link href={`/credentials/${slug}`}>
+            <BsInfoCircle
+              size={30}
+              className="hover:-translate-y-1 transition-transform cursor-pointer"
+            />
+          </Link>
           {/* Link to Credential */}
           {credentialURL && (
             <Link
@@ -105,7 +118,6 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
           )}
         </div>
       </div>
-      {/*  */}
     </div>
   );
 };
