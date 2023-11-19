@@ -16,7 +16,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
   certificateImage,
 }) => {
   const customCredentialPage = `/credentials/${slug}`;
-  const issuerCredentialPage = `credentialURL`;
+  const issuerCredentialPage = credentialURL;
 
   return (
     <div
