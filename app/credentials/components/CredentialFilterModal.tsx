@@ -63,7 +63,7 @@ const CredentialFilterModal: React.FC<CredentialFilterModalProps> = ({
           <label htmlFor="issuer-dropdown" className="font-semibold text-lg">
             Issuer
           </label>
-          <div className="h-64 md:h-80 overflow-y-auto space-y-2">
+          <div className="h-48 md:h-64 overflow-y-auto space-y-2">
             {certificateIssuers.map((issuer) => (
               <Link
                 key={issuer}
@@ -92,7 +92,7 @@ const CredentialFilterModal: React.FC<CredentialFilterModalProps> = ({
           <label htmlFor="category-dropdown" className="font-semibold text-lg">
             Category
           </label>
-          <div className="h-64 md:h-80 overflow-y-auto space-y-2">
+          <div className="h-48 md:h-64 overflow-y-auto space-y-2">
             {certificateCategories.map((category) => (
               <Link
                 key={category}
@@ -117,28 +117,41 @@ const CredentialFilterModal: React.FC<CredentialFilterModalProps> = ({
         </div>
       </div>
 
-      {/* Bottom Buttons */}
-      <div className="w-full flex flex-row justify-center mt-4">
-        {/* Clear Filters Button */}
-        <Button
-          variant="outlined"
-          onClick={resetFilters}
-          disabled={!areFiltersApplied}
-          className="w-full"
+      {/* Filter Modal Bottom Buttons */}
+      <div className="w-full flex flex-row justify-center mt-4 ">
+        <div
+          className="
+              flex flex-col md:flex-row 
+              w-full md:w-1/2 
+              px-4 md:px-0
+              py-4 md:py-2
+              md:space-x-2 space-y-2 md:space-y-0
+              justify-center items-center"
         >
-          <div className="flex items-center justify-center space-x-2">
-            <AiOutlineClear fontSize={24} />
-            <span>Clear Filters</span>
-          </div>
-        </Button>
-
-        {/* Close Modal Button */}
-        <Button variant="filled" onClick={handleCloseModals} className="w-full">
-          <div className="flex items-center justify-center space-x-2">
-            <MdClear fontSize={24} />
-            <span>Close</span>
-          </div>
-        </Button>
+          {/* Clear Filters Button */}
+          <Button
+            variant="outlined"
+            onClick={resetFilters}
+            disabled={!areFiltersApplied}
+            className="w-full"
+          >
+            <div className="flex items-center justify-center space-x-2">
+              <AiOutlineClear fontSize={24} />
+              <span>Clear</span>
+            </div>
+          </Button>
+          {/* Close Modal Button */}
+          <Button
+            variant="filled"
+            onClick={handleCloseModals}
+            className="w-full"
+          >
+            <div className="flex items-center justify-center space-x-2">
+              <MdClear fontSize={24} />
+              <span>Close</span>
+            </div>
+          </Button>
+        </div>
       </div>
     </Modal>
   );
