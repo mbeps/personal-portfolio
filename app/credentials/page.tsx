@@ -19,9 +19,12 @@ const updateCredentialImages = (certificates: Certificate[]): Certificate[] => {
   });
 };
 
-type CredentialsPageProps = {};
-
-const CredentialsPage: React.FC<CredentialsPageProps> = () => {
+/**
+ * Certificates page displaying multiple types of certificates that I have.
+ * Certificates are grouped by type.
+ * The user can filter the certificates by category and issuer.
+ */
+const CredentialsPage: React.FC = () => {
   const allCertificates: Certificate[] = [...cloudComputing];
   const updatedCertificates = updateCredentialImages(allCertificates);
   return <CredentialsList allCertificates={updatedCertificates} />;

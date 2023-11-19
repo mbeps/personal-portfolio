@@ -16,6 +16,13 @@ type CredentialsListListProps = {
   allCertificates: Certificate[];
 };
 
+/**
+ * Displays a list of all certificates.
+ * The user can filter the certificates by category and issuer.
+ * The user can also search for certificates by name, issuer, tags, skills, and category.
+ * @param allCertificates (Certificate[]): list of all certificates
+ * @returns (JSX.Element): list of all certificates
+ */
 const CredentialsList: React.FC<CredentialsListListProps> = ({
   allCertificates,
 }) => {

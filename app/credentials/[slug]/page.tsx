@@ -48,6 +48,20 @@ type CredentialPageProps = {
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
+/**
+ * Displays the page for a single certificate.
+ * Contains:
+ * - Name of the certificate
+ * - The image of the certificate
+ * - The unique slug of the certificate
+ * - The issuer of the certificate
+ * - The description of the certificate
+ * - The learning outcomes of the certificate
+ * - The skills of the certificate
+ * - The issuer page of the certificate
+ * @param params (CredentialPageProps) - props: the content of the certificate
+ * @returns (JSX.Element): certificate page component
+ */
 const CredentialPage: React.FC<CredentialPageProps> = ({ params }) => {
   const slug = params.slug;
 

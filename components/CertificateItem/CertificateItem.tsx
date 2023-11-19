@@ -7,6 +7,16 @@ import Tag from "../Atoms/Tag";
 
 type CertificateItemProps = Certificate;
 
+/**
+ * Card which displays each certificate.
+ * Contains:
+ * - Name of the certificate
+ * - Unique slug of the certificate
+ * - Issuer of the certificate
+ * - Button to open details about the certificate or issuer website
+ * @param (CertificateItemProps) - props: the content of the certificate
+ * @returns (JSX.Element): certificate item component
+ */
 const CertificateItem: React.FC<CertificateItemProps> = ({
   name,
   slug,
