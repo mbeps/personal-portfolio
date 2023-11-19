@@ -55,7 +55,7 @@ const CredentialPage: React.FC<CredentialPageProps> = ({ params }) => {
     notFound();
   }
 
-  const certificateImage = `/certificates/${slug}/certificate.jpg`;
+  const certificateImage = `/certificates/${slug}.jpg`;
 
   return (
     <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">

@@ -14,7 +14,7 @@ const updateCredentialImages = (certificates: Certificate[]): Certificate[] => {
   return certificates.map((certificate) => {
     return {
       ...certificate,
-      certificateImage: `/certificates/${certificate.slug}/certificate.jpg`,
+      certificateImage: `/certificates/${certificate.slug}.jpg`,
     };
   });
 };
