@@ -15,6 +15,9 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
   credentialURL,
   certificateImage,
 }) => {
+  const customCredentialPage = `/credentials/${slug}`;
+  const issuerCredentialPage = `credentialURL`;
+
   return (
     <div
       className="
@@ -28,7 +31,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
       {/* Certificate Image */}
       {certificateImage && (
         <Link
-          href={credentialURL}
+          href={customCredentialPage}
           target="_blank"
           className="
             rounded-xl
@@ -56,7 +59,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
         gap-8 px-4 py-4"
       >
         {/* Certificate Title */}
-        <Link href={credentialURL} target="_blank">
+        <Link href={customCredentialPage}>
           <h1
             className="
               text-3xl md:text-4xl font-bold text-center 
@@ -97,7 +100,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
             space-x-4"
         >
           {/* Link to Credential Page */}
-          <Link href={`/credentials/${slug}`}>
+          <Link href={customCredentialPage}>
             <BsInfoCircle
               size={30}
               className="hover:-translate-y-1 transition-transform cursor-pointer"
@@ -106,7 +109,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
           {/* Link to Credential */}
           {credentialURL && (
             <Link
-              href={credentialURL}
+              href={issuerCredentialPage}
               target="_blank"
               title="View Credentials on Provider's Website"
             >
