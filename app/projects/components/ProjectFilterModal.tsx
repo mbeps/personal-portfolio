@@ -206,7 +206,7 @@ const ProjectFilterModal: React.FC<ProjectFilterModalProps> = ({
         </div>
 
         {/* Filter Modal Bottom Buttons */}
-        <div className="w-full flex flex-row justify-center mt- 4 ">
+        <div className="w-full flex flex-row justify-center mt-4 ">
           <div
             className="
               flex flex-col md:flex-row 
@@ -231,9 +231,7 @@ const ProjectFilterModal: React.FC<ProjectFilterModalProps> = ({
             {/* Close Modal Button */}
             <Button
               variant="filled"
-              onClick={() => {
-                handleCloseModals;
-              }}
+              onClick={handleCloseModals}
               className="w-full"
             >
               <div className="flex items-center justify-center space-x-2">
