@@ -2,7 +2,13 @@ export default interface Certificate {
   name: string;
   slug: string;
   description?: string;
-  issuer: "Coursera" | "Udemy" | "LinkedIn" | "NASBA" | "PMI";
+  issuer:
+    | "Coursera"
+    | "Udemy"
+    | "LinkedIn"
+    | "NASBA"
+    | "PMI"
+    | "Royal Holloway University";
   credentialURL: string;
   skills: string[];
   tags?: string[];
@@ -18,4 +24,5 @@ export default interface Certificate {
     | "Other";
   archived?: boolean;
   certificateImage?: string;
+  learningOutcomes?: string[];
 }

@@ -32,7 +32,6 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
       {certificateImage && (
         <Link
           href={customCredentialPage}
-          target="_blank"
           className="
             flex justify-center
             rounded-xl

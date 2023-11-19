@@ -130,16 +130,21 @@ const cloudComputing: Certificate[] = [
       "Normalization",
       "Relational Database",
     ],
-  },
-  {
-    name: "Database Foundations: Intro to Databases",
-    slug: "8b2d47f66f59b8b9724a6c1f05f15e27a9b08c3caaf95169c1d6c64537a1d066",
-    category: "Databases",
-    issuer: "NASBA",
-    credentialURL:
-      "https://www.linkedin.com/learning/certificates/8b2d47f66f59b8b9724a6c1f05f15e27a9b08c3caaf95169c1d6c64537a1d066",
-    skills: ["Database Management System", "SQL"],
-    tags: ["Database Management System", "SQL"],
+    description: `
+      This comprehensive course offers an in-depth exploration of Database Management Systems (DBMS) and SQL,
+      tailored for both beginners and advanced learners. 
+      It covers fundamental to advanced concepts of relational databases, including ER modeling, normalization, SQL queries, concurrency control, and indexing with B and B+ Trees. 
+      The course is designed to enhance practical skills in database design and query formulation, making it ideal for academic students, competitive exam aspirants, and professionals aiming to excel in the field of database engineering.`,
+    learningOutcomes: [
+      "Understand the basic concepts of Database Management System (DBMS)",
+      "Explain the principles of the relational data model and entity-relationship model",
+      "Design and implement effective database systems using normalization techniques",
+      "Develop proficiency in SQL for complex query construction and database manipulation",
+      "Understand and apply concepts of concurrency control and transaction management",
+      "Learn about database indexing with a focus on B and B+ Trees",
+      "Acquire the ability to design ER models for real-world database applications",
+      "Gain insights into advanced database concepts for competitive exams and professional certification",
+    ],
   },
 ];
 

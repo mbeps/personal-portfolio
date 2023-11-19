@@ -10,6 +10,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle } from "react-icons/bs";
+import { RxTriangleRight } from "react-icons/rx";
 
 /**
  * Metadata object for the dynamic certificate page.
@@ -58,7 +59,7 @@ const CredentialPage: React.FC<CredentialPageProps> = ({ params }) => {
   const certificateImage = `/certificates/${slug}.jpg`;
 
   return (
-    <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
+    <div className="flex flex-col space-y-6 align-top min-h-[85vh] relative">
       <HeadingTwo title={certificate.name} />
 
       {/* Certificate Image */}
@@ -86,76 +87,96 @@ const CredentialPage: React.FC<CredentialPageProps> = ({ params }) => {
         </div>
       )}
 
+      {/* Credential ID */}
+      <div className="flex flex-col align-middle w-full">
+        <p
+          className="
+            text-l text-center leading-7
+          text-neutral-400 dark:text-neutral-600 
+            overflow-auto break-words"
+        >
+          {slug}
+        </p>
+      </div>
+
+      {/* Certificate Description */}
+      {certificate.description && (
+        <div className="flex flex-col gap-4">
+          <HeadingThree title="Description" />
+          <p className="text-lg">{certificate.description}</p>
+        </div>
+      )}
+
+      <div className="mt-4 text-center md:text-left">
+        {/* Credentials ID */}
+        <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-5">
+          {certificate.learningOutcomes && (
+            <div>
+              <HeadingThree title="Learning Objectives" />
+              {certificate.learningOutcomes.map((outcome, index) => (
+                <div key={index} className="w-full p-2 flex items-center">
+                  <RxTriangleRight className="text-primary mr-2" />
+                  <p className="text-neutral-800 dark:text-neutral-200">
+                    {outcome}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+
       {/* Metadata Section */}
       <div className="flex flex-col md:flex-row gap-4 sm:gap-10">
-        {/* Right */}
+        {/* Left */}
         <div className="md:w-1/2">
-          <div className="mt-4 text-center md:text-left">
-            {/* Credentials ID */}
-            <HeadingThree title="Credentials ID" />
-            <div
-              className="
-							flex flex-wrap flex-row 
-							justify-center z-10 md:justify-start mt-5 
-							"
-            >
-              <p
-                className="
-									text-l text-center leading-7
-									overflow-auto break-words"
-              >
-                {certificate.slug}
-              </p>
-            </div>
-
-            <HeadingThree title="Links" />
-            {/* Links */}
-            <div
-              className="
+          {/* Certificate Issuer */}
+          <HeadingThree title="Certificate Issuer" />
+          <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-5">
+            <Tag>{certificate.issuer}</Tag>
+          </div>
+          <HeadingThree title="Links" />
+          {/* Links */}
+          <div
+            className="
               mt-6 flex 
               flex-row 
               justify-center md:justify-start items-center 
               w-full 
               gap-2"
-            >
-              {/* Issuer Page */}
-              {certificate.credentialURL && (
-                <Link
-                  href={certificate.credentialURL}
-                  target="_blank"
-                  className="w-auto md:w-full"
-                >
-                  <Button
-                    variant={"ghost"}
-                    className="
+          >
+            {/* Issuer Page */}
+            {certificate.credentialURL && (
+              <Link
+                href={certificate.credentialURL}
+                target="_blank"
+                className="w-auto md:w-full"
+              >
+                <Button
+                  variant={"ghost"}
+                  className="
                         text-neutral-900 dark:text-white 
                         hover:text-neutral-900 
                         hover:bg-neutral-300
                         w-auto md:w-full
                         rounded-full md:rounded-xl
                       "
-                  >
-                    <div className="flex flex-row justify-center md:justify-start gap-4 w-full">
-                      <BsArrowUpRightCircle size={30} />
-                      <p className="hidden md:block mt-1 md:text-left text-center">
-                        Issuer Page
-                      </p>
-                    </div>
-                  </Button>
-                </Link>
-              )}
-            </div>
+                >
+                  <div className="flex flex-row justify-center md:justify-start gap-4 w-full">
+                    <BsArrowUpRightCircle size={30} />
+                    <p className="hidden md:block mt-1 md:text-left text-center">
+                      Issuer Page
+                    </p>
+                  </div>
+                </Button>
+              </Link>
+            )}
           </div>
         </div>
-        {/* Left */}
+
+        {/* Right */}
         <div className="md:w-1/2">
-          <div className="mt-4 text-center md:text-left">
-            {/* Certificate Issuer */}
-            <HeadingThree title="Certificate Issuer" />
-            <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-5">
-              <Tag>{certificate.issuer}</Tag>
-            </div>
-          </div>
+          <div className="mt-4 text-center md:text-left"></div>
 
           {/* Certificate Skills */}
           {certificate.skills && (
