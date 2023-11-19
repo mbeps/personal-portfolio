@@ -22,7 +22,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
     <div
       className="
       bg-neutral-100 dark:bg-neutral-950  
-      p-6 rounded-xl 
+      p-3 md:p-6 rounded-xl 
       transition-colors duration-700 
       flex flex-col
       "
