@@ -8,17 +8,11 @@ import React from "react";
 import { AiOutlineClear } from "react-icons/ai";
 import { MdClear } from "react-icons/md";
 import { ArchiveToggle } from "./ArchiveToggle";
+import FilterParams from "@/types/FilterParams";
 
 interface ProjectFilterModalProps {
   resetFilters: () => void;
-  generateUrl: (
-    type: string,
-    technology: string,
-    language: string,
-    search: string,
-    showArchived?: boolean
-  ) => string;
-
+  generateUrl: (filters: FilterParams) => string;
   selectedTechnology: string;
   selectedType: string;
   selectedLanguage: string;
@@ -67,6 +61,13 @@ const ProjectFilterModal: React.FC<ProjectFilterModalProps> = ({
   technologies,
   areFiltersApplied,
 }) => {
+  const filterParams: FilterParams = {
+    type: selectedType,
+    technology: selectedTechnology,
+    language: selectedLanguage,
+    search: searchTerm,
+    archived: showArchived,
+  };
   return (
     <div>
       {" "}
@@ -106,17 +107,14 @@ const ProjectFilterModal: React.FC<ProjectFilterModalProps> = ({
             <div className="h-64 md:h-80 overflow-y-auto space-y-2">
               {projectTypes.map((type) => (
                 <Link
-                  href={generateUrl(
+                  href={generateUrl({
+                    ...filterParams,
                     type,
-                    selectedTechnology,
-                    selectedLanguage,
-                    searchTerm,
-                    true
-                  )}
+                    archived: !showArchived,
+                  })}
                   key={type}
                 >
                   <RadioButton
-                    key={type}
                     id={type}
                     name="projectType"
                     value={type}
@@ -138,19 +136,16 @@ const ProjectFilterModal: React.FC<ProjectFilterModalProps> = ({
             <div className="h-64 md:h-80 overflow-y-auto space-y-2">
               {programmingLanguages.map((language) => (
                 <Link
-                  href={generateUrl(
-                    selectedType,
-                    selectedTechnology,
+                  href={generateUrl({
+                    ...filterParams,
                     language,
-                    searchTerm,
-                    true
-                  )}
+                    archived: !showArchived,
+                  })}
                   key={language}
                 >
                   <RadioButton
-                    key={language}
                     id={language}
-                    name="programmingLanguage"
+                    name="projectType"
                     value={language}
                     checked={selectedLanguage === language}
                     label={language}
@@ -170,19 +165,16 @@ const ProjectFilterModal: React.FC<ProjectFilterModalProps> = ({
             <div className="h-64 md:h-80 overflow-y-auto space-y-2">
               {technologies.map((technology) => (
                 <Link
-                  href={generateUrl(
-                    selectedType,
+                  href={generateUrl({
+                    ...filterParams,
                     technology,
-                    selectedLanguage,
-                    searchTerm,
-                    true
-                  )}
+                    archived: !showArchived,
+                  })}
                   key={technology}
                 >
                   <RadioButton
-                    key={technology}
                     id={technology}
-                    name="technology"
+                    name="projectType"
                     value={technology}
                     checked={selectedTechnology === technology}
                     label={technology}
@@ -198,10 +190,7 @@ const ProjectFilterModal: React.FC<ProjectFilterModalProps> = ({
           <ArchiveToggle
             generateUrl={generateUrl}
             showArchived={showArchived}
-            selectedType={selectedType}
-            selectedTechnology={selectedTechnology}
-            selectedLanguage={selectedLanguage}
-            searchTerm={searchTerm}
+            filterProps={filterParams}
           />
         </div>
 

@@ -12,6 +12,8 @@ import { BsFilterLeft } from "react-icons/bs";
 import { ArchiveToggle } from "./ArchiveToggle";
 import ProjectFilterModal from "./ProjectFilterModal";
 import ProjectsListSection from "./ProjectListSection";
+import FilterParams from "@/types/FilterParams";
+import generateUrl from "@/actions/generateUrl";
 
 type ProjectsListProps = {
   allProjects: Project[];
@@ -28,29 +30,6 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const showArchived = searchParams.get("archived") === "true" || false;
 
   const router = useRouter();
-
-  /**
-   * Generates the URL for the projects page.
-   * These are the URL parameters that are used for filtering and searching.
-   * Once filters and search are applied, the URL is updated.
-   */
-  const generateUrl = (
-    type: string,
-    technology: string,
-    language: string,
-    search: string,
-    showArchived: boolean = false
-  ) => {
-    // Validate and encode filter values
-    const validatedType = encodeURIComponent(type.trim());
-    const validatedTechnology = encodeURIComponent(technology.trim());
-    const validatedLanguage = encodeURIComponent(language.trim());
-    const validatedSearch = encodeURIComponent(search.trim());
-    const validatedShowArchived = encodeURIComponent(showArchived);
-
-    // Construct and return the URL
-    return `/projects/?type=${validatedType}&technology=${validatedTechnology}&language=${validatedLanguage}&search=${validatedSearch}&archived=${validatedShowArchived}`;
-  };
 
   /**
    * Opens the modal to filter the projects.
@@ -156,13 +135,13 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const updateSearchTerm = (newSearchTerm: string) => {
     // Update the URL parameter to reflect the new search term
     router.push(
-      generateUrl(
-        selectedType,
-        selectedTechnology,
-        selectedLanguage,
-        newSearchTerm,
-        true
-      )
+      generateUrl({
+        type: selectedType,
+        technology: selectedTechnology,
+        language: selectedLanguage,
+        search: newSearchTerm,
+        archived: true,
+      })
     );
   };
 
@@ -193,9 +172,16 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
    * This is used when the user clicks on the 'Reset' button.
    */
   const resetFilters = () => {
-    router.push(generateUrl("All", "All", "All", ""));
+    router.push(
+      generateUrl({
+        type: "All",
+        technology: "All",
+        language: "All",
+        search: "",
+        archived: false,
+      })
+    );
   };
-
   /**
    * Checks if any filters are applied.
    */
@@ -278,10 +264,12 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
         <ArchiveToggle
           generateUrl={generateUrl}
           showArchived={showArchived}
-          selectedType={selectedType}
-          selectedTechnology={selectedTechnology}
-          selectedLanguage={selectedLanguage}
-          searchTerm={searchTerm}
+          filterProps={{
+            type: selectedType,
+            technology: selectedTechnology,
+            language: selectedLanguage,
+            search: searchTerm,
+          }}
         />
 
         {/* List of projects */}
