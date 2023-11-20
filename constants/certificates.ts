@@ -4,7 +4,7 @@ const programmingLanguages: Certificate[] = [
   {
     name: "Python Programming Masterclass",
     slug: "UC-a3c47af2-7eb8-4f5b-8309-08559c519d5a",
-    category: "Software Engineering",
+    category: "Programming Languages",
     issuer: "Udemy",
     credentialURL:
       "https://www.udemy.com/certificate/UC-a3c47af2-7eb8-4f5b-8309-08559c519d5a/",
@@ -18,16 +18,17 @@ const programmingLanguages: Certificate[] = [
   {
     name: "Python Advanced",
     slug: "c235083fcf3a5aadda62a3aac5f1846098135e9058d9c5c72073ef88891b0395",
-    category: "Software Engineering",
+    category: "Programming Languages",
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/c235083fcf3a5aadda62a3aac5f1846098135e9058d9c5c72073ef88891b0395",
     skills: ["Python"],
+    archived: true,
   },
   {
     name: "Python Object-Oriented Programming",
     slug: "3df6c589b5151377ce45f231cfacf8ca04a02875fa88996a8831c1c9b70c527a",
-    category: "Software Engineering",
+    category: "Programming Languages",
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/3df6c589b5151377ce45f231cfacf8ca04a02875fa88996a8831c1c9b70c527a",
@@ -36,16 +37,17 @@ const programmingLanguages: Certificate[] = [
   {
     name: "Learning Python",
     slug: "71bbbecbbc9b1489e357c3a2091860ae5b02b3ff0e415ce5748b8746d990b8dd",
-    category: "Software Engineering",
+    category: "Programming Languages",
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/71bbbecbbc9b1489e357c3a2091860ae5b02b3ff0e415ce5748b8746d990b8dd",
     skills: ["Python"],
+    archived: true,
   },
   {
     name: "Java Programming Masterclass",
     slug: "UC-a14123c1-1def-4710-8836-7c05bfaa2fc7",
-    category: "Software Engineering",
+    category: "Programming Languages",
     issuer: "Udemy",
     credentialURL:
       "https://www.udemy.com/certificate/UC-a14123c1-1def-4710-8836-7c05bfaa2fc7/",
@@ -59,7 +61,7 @@ const programmingLanguages: Certificate[] = [
   {
     name: "Java Object-Oriented Programming",
     slug: "77ad2602bbb22e29478a06792cd4bd0a91dda794cca7b2bbe4e333c193770a22",
-    category: "Software Engineering",
+    category: "Programming Languages",
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/77ad2602bbb22e29478a06792cd4bd0a91dda794cca7b2bbe4e333c193770a22",
@@ -69,7 +71,7 @@ const programmingLanguages: Certificate[] = [
   {
     name: "Learning TypeScript",
     slug: "b1761a41ef8dd23125db776561db0b90ae53842518d029015374a2daee08e4e3",
-    category: "Web Development",
+    category: "Programming Languages",
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/b1761a41ef8dd23125db776561db0b90ae53842518d029015374a2daee08e4e3",
@@ -79,7 +81,7 @@ const programmingLanguages: Certificate[] = [
   {
     name: "JavaScript Essential Training",
     slug: "ade3217d7cef3023f22c8ee034eff28705b7dbfd3981d8377c9b5f61ff39ea51",
-    category: "Web Development",
+    category: "Programming Languages",
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/ade3217d7cef3023f22c8ee034eff28705b7dbfd3981d8377c9b5f61ff39ea51",
@@ -88,7 +90,7 @@ const programmingLanguages: Certificate[] = [
   {
     name: "The Complete JavaScript Course 2023: From Zero to Expert!",
     slug: "UC-cf6c70b6-c34c-4400-b8f8-b9a7abc9f18a",
-    category: "Web Development",
+    category: "Programming Languages",
     issuer: "Udemy",
     credentialURL:
       "https://www.udemy.com/certificate/UC-cf6c70b6-c34c-4400-b8f8-b9a7abc9f18a/",
@@ -271,13 +273,14 @@ const webDevelopment: Certificate[] = [
     skills: ["Flask", "Python", "RESTful APIs", "APIs"],
   },
   {
-    name: "CSS Fundamentals: Unlock the Power of Web Styling",
-    slug: "ff054b4dd1a8fec0eb00ee80a59bc82e5fed3e50b11bba3e3cd33026f0a0eee0",
+    name: "Learning REST APIs",
+    slug: "d16b210de3459c563295c4868ac19097bdddf84976d2137fa08293ec698f3380",
     category: "Web Development",
     issuer: "LinkedIn",
     credentialURL:
-      "https://www.linkedin.com/learning/certificates/ff054b4dd1a8fec0eb00ee80a59bc82e5fed3e50b11bba3e3cd33026f0a0eee0",
-    skills: ["CSS"],
+      "https://www.linkedin.com/learning/certificates/d16b210de3459c563295c4868ac19097bdddf84976d2137fa08293ec698f3380",
+    skills: ["RESTful APIs", "APIs"],
+    archived: true,
   },
   {
     name: "Designing RESTful APIs",
@@ -287,6 +290,24 @@ const webDevelopment: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/a54ec39fe8ae07277cfbfb553a61f1d6a0c95f23969a3f665d5e5c0afbd9fd68",
     skills: ["RESTful APIs", "APIs"],
+  },
+  {
+    name: "RESTful APIs with Node.js and Express",
+    slug: "c00cb40bda2152dd86d29b813b0d1b172123452a0b87b6017aec13115e693487",
+    category: "Web Development",
+    issuer: "LinkedIn",
+    credentialURL:
+      "https://www.linkedin.com/learning/certificates/c00cb40bda2152dd86d29b813b0d1b172123452a0b87b6017aec13115e693487",
+    skills: ["RESTful APIs", "APIs", "Node.js", "Express"],
+  },
+  {
+    name: "CSS Fundamentals: Unlock the Power of Web Styling",
+    slug: "ff054b4dd1a8fec0eb00ee80a59bc82e5fed3e50b11bba3e3cd33026f0a0eee0",
+    category: "Web Development",
+    issuer: "LinkedIn",
+    credentialURL:
+      "https://www.linkedin.com/learning/certificates/ff054b4dd1a8fec0eb00ee80a59bc82e5fed3e50b11bba3e3cd33026f0a0eee0",
+    skills: ["CSS"],
   },
   {
     name: "Firebase Essential Training",
@@ -322,25 +343,6 @@ const webDevelopment: Certificate[] = [
     skills: ["Django", "Python"],
   },
   {
-    name: "Learning Next.js",
-    slug: "a2ae9eb61db705535ebd73746bfe20e0988633b80ade57c12aa523a9bbdae3db",
-    category: "Web Development",
-    issuer: "LinkedIn",
-    credentialURL:
-      "https://www.linkedin.com/learning/certificates/a2ae9eb61db705535ebd73746bfe20e0988633b80ade57c12aa523a9bbdae3db",
-    skills: ["Next.js", "React", "JavaScript"],
-  },
-
-  {
-    name: "Learning REST APIs",
-    slug: "d16b210de3459c563295c4868ac19097bdddf84976d2137fa08293ec698f3380",
-    category: "Web Development",
-    issuer: "LinkedIn",
-    credentialURL:
-      "https://www.linkedin.com/learning/certificates/d16b210de3459c563295c4868ac19097bdddf84976d2137fa08293ec698f3380",
-    skills: ["RESTful APIs", "APIs"],
-  },
-  {
     name: "GraphQL Essential Training",
     slug: "3c1654b23256c27553b9d6288d9592aa47fe825a7bf85714283f3e61e26f6f58",
     category: "Web Development",
@@ -368,15 +370,6 @@ const webDevelopment: Certificate[] = [
     skills: ["Node.js", "JavaScript"],
   },
   {
-    name: "RESTful APIs with Node.js and Express",
-    slug: "c00cb40bda2152dd86d29b813b0d1b172123452a0b87b6017aec13115e693487",
-    category: "Web Development",
-    issuer: "LinkedIn",
-    credentialURL:
-      "https://www.linkedin.com/learning/certificates/c00cb40bda2152dd86d29b813b0d1b172123452a0b87b6017aec13115e693487",
-    skills: ["RESTful APIs", "APIs", "Node.js", "Express"],
-  },
-  {
     name: "React.js Essential Training",
     slug: "f2226c0a5de58874e8b882b91fe8945f69d0f0b6de15fa70a09082a08bd464fd",
     category: "Web Development",
@@ -384,6 +377,15 @@ const webDevelopment: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/f2226c0a5de58874e8b882b91fe8945f69d0f0b6de15fa70a09082a08bd464fd",
     skills: ["React", "JavaScript"],
+  },
+  {
+    name: "Learning Next.js",
+    slug: "a2ae9eb61db705535ebd73746bfe20e0988633b80ade57c12aa523a9bbdae3db",
+    category: "Web Development",
+    issuer: "LinkedIn",
+    credentialURL:
+      "https://www.linkedin.com/learning/certificates/a2ae9eb61db705535ebd73746bfe20e0988633b80ade57c12aa523a9bbdae3db",
+    skills: ["Next.js", "React", "JavaScript"],
   },
   {
     name: "Using TypeScript with React",
@@ -712,7 +714,7 @@ const softwareEngineering: Certificate[] = [
   {
     name: "Introducing Maven",
     slug: "551778db5ecef81f732b9e48d50db3fe709f877f1ac9c834923b0c96bb636e72",
-    category: "DevOps",
+    category: "Software Engineering",
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/551778db5ecef81f732b9e48d50db3fe709f877f1ac9c834923b0c96bb636e72",
@@ -765,6 +767,7 @@ const management: Certificate[] = [
       "Integration Management",
       "Human Resource Management",
     ],
+    archived: true,
   },
   {
     name: "Project Management Foundations",
@@ -786,6 +789,7 @@ const management: Certificate[] = [
       "Integration Management",
       "Human Resource Management",
     ],
+    archived: true,
   },
 ];
 

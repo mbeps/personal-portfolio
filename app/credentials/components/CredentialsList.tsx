@@ -40,7 +40,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     selectedIssuer: string,
     selectedCategory: string,
     searchTerm: string,
-    showArchived: boolean = false
+    showArchived: boolean = true
   ) => {
     // Validate and encode filter values
     const validatedIssuer = encodeURIComponent(selectedIssuer.trim());
@@ -108,7 +108,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
 
   const updateSearchTerm = (newSearchTerm: string) => {
     router.push(
-      generateUrl(selectedIssuer, selectedCategory, newSearchTerm, showArchived)
+      generateUrl(selectedIssuer, selectedCategory, newSearchTerm, true)
     );
   };
 

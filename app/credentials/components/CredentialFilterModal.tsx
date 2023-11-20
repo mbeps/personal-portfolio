@@ -67,12 +67,7 @@ const CredentialFilterModal: React.FC<CredentialFilterModalProps> = ({
             {certificateIssuers.map((issuer) => (
               <Link
                 key={issuer}
-                href={generateUrl(
-                  issuer,
-                  selectedCategory,
-                  searchTerm,
-                  showArchived
-                )}
+                href={generateUrl(issuer, selectedCategory, searchTerm, true)}
               >
                 <RadioButton
                   key={issuer}
@@ -96,12 +91,7 @@ const CredentialFilterModal: React.FC<CredentialFilterModalProps> = ({
             {certificateCategories.map((category) => (
               <Link
                 key={category}
-                href={generateUrl(
-                  selectedIssuer,
-                  category,
-                  searchTerm,
-                  showArchived
-                )}
+                href={generateUrl(selectedIssuer, category, searchTerm, true)}
               >
                 <RadioButton
                   key={category}
