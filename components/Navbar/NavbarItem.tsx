@@ -36,18 +36,18 @@ const NavbarItem: React.FC<NavbarItemProps> = ({ to, children }) => {
   let active = pathname === to;
 
   const navbarItemStyle = `
-      block lg:inline-block 
-      ${active ? "font-bold" : "font-normal"} 
-      text-neutral-900 dark:text-neutral-100 text-center
-      dark:hover:text-neutral-200 
-      px-4 py-3 m-2 w-full md:w-26
-      cursor-pointer 
-      transition-all 
-      hover:font-bold duration-300 
-      relative group
-      overflow-hidden
-      md:text-base text-xl
-    `;
+    block lg:inline-block 
+    ${active ? "font-bold" : "font-normal"} 
+    text-neutral-900 dark:text-neutral-100 text-center
+    dark:hover:text-neutral-200 
+    px-4 py-3 m-2 w-full md:w-26
+    cursor-pointer 
+    transition-all 
+    duration-300 
+    relative group
+    overflow-hidden
+    md:text-base text-xl
+  `;
 
   return (
     <div className={navbarItemStyle} onClick={() => handleClick()}>
