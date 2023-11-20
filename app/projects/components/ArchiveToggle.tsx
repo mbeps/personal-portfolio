@@ -1,19 +1,11 @@
 import Toggle from "@/components/Inputs/Toggle";
+import FilterParams from "@/types/FilterParams";
 import Link from "next/link";
 
 interface ArchiveToggleProps {
-  generateUrl: (
-    type: string,
-    technology: string,
-    language: string,
-    search: string,
-    archived: boolean
-  ) => string;
+  generateUrl: (filters: FilterParams) => string;
   showArchived: boolean;
-  selectedType: string;
-  selectedTechnology: string;
-  selectedLanguage: string;
-  searchTerm: string;
+  filterProps: FilterParams;
 }
 
 /**
@@ -29,28 +21,18 @@ interface ArchiveToggleProps {
 export const ArchiveToggle: React.FC<ArchiveToggleProps> = ({
   generateUrl,
   showArchived,
-  selectedType,
-  selectedTechnology,
-  selectedLanguage,
-  searchTerm,
+  filterProps,
 }) => {
   return (
-    <div className="flex justify-end items-center ">
-      <span
-        className=" 
-          mr-2 mb-1 
-        text-neutral-600 dark:text-neutral-400"
-      >
-        Display archived projects
+    <div className="flex justify-end items-center">
+      <span className="mr-2 mb-1 text-neutral-600 dark:text-neutral-400">
+        Display archived
       </span>
       <Link
-        href={generateUrl(
-          selectedType,
-          selectedTechnology,
-          selectedLanguage,
-          searchTerm,
-          !showArchived
-        )}
+        href={generateUrl({
+          ...filterProps,
+          archived: !showArchived,
+        })}
       >
         <Toggle checked={showArchived} />
       </Link>

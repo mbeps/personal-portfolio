@@ -1,21 +1,17 @@
 "use client";
 
+import { ArchiveToggle } from "@/app/projects/components/ArchiveToggle";
 import Button from "@/components/Atoms/Button";
 import RadioButton from "@/components/Inputs/RadioButton";
 import Modal from "@/components/Modal/Modal";
+import FilterParams from "@/types/FilterParams";
 import Link from "next/link";
 import React from "react";
 import { AiOutlineClear } from "react-icons/ai";
 import { MdClear } from "react-icons/md";
 
 type CredentialFilterModalProps = {
-  generateUrl: (
-    selectedIssuer: string,
-    selectedCategory: string,
-    searchTerm: string,
-    showArchived: boolean
-  ) => string;
-
+  generateUrl: (filters: FilterParams) => string;
   areFiltersApplied: boolean;
   resetFilters: () => void;
   isFilterModalOpen: boolean;
@@ -41,6 +37,13 @@ const CredentialFilterModal: React.FC<CredentialFilterModalProps> = ({
   selectedIssuer,
   showArchived,
 }) => {
+  const filterParams: FilterParams = {
+    issuer: selectedIssuer,
+    category: selectedCategory,
+    search: searchTerm,
+    archived: showArchived,
+  };
+
   return (
     <Modal
       isOpen={isFilterModalOpen}
@@ -66,11 +69,14 @@ const CredentialFilterModal: React.FC<CredentialFilterModalProps> = ({
           <div className="h-48 md:h-64 overflow-y-auto space-y-2">
             {certificateIssuers.map((issuer) => (
               <Link
+                href={generateUrl({
+                  ...filterParams,
+                  issuer,
+                  archived: !showArchived,
+                })}
                 key={issuer}
-                href={generateUrl(issuer, selectedCategory, searchTerm, true)}
               >
                 <RadioButton
-                  key={issuer}
                   id={issuer}
                   name="certificateIssuer"
                   value={issuer}
@@ -91,7 +97,11 @@ const CredentialFilterModal: React.FC<CredentialFilterModalProps> = ({
             {certificateCategories.map((category) => (
               <Link
                 key={category}
-                href={generateUrl(selectedIssuer, category, searchTerm, true)}
+                href={generateUrl({
+                  ...filterParams,
+                  category,
+                  archived: !showArchived,
+                })}
               >
                 <RadioButton
                   key={category}
@@ -105,6 +115,14 @@ const CredentialFilterModal: React.FC<CredentialFilterModalProps> = ({
             ))}
           </div>
         </div>
+      </div>
+
+      <div className="w-full px-4 md:px-0">
+        <ArchiveToggle
+          generateUrl={generateUrl}
+          showArchived={showArchived}
+          filterProps={filterParams}
+        />
       </div>
 
       {/* Filter Modal Bottom Buttons */}

@@ -11,6 +11,8 @@ import { AiOutlineClear } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
 import CredentialListSection from "./CredentialListSection";
 import CredentialFilterModal from "./CredentialFilterModal";
+import { ArchiveToggle } from "@/app/projects/components/ArchiveToggle";
+import generateUrl from "@/actions/generateUrl";
 
 type CredentialsListListProps = {
   allCertificates: Certificate[];
@@ -35,22 +37,6 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
   const showArchived = searchParams.get("archived") === "true" || false;
 
   const router = useRouter();
-
-  const generateUrl = (
-    selectedIssuer: string,
-    selectedCategory: string,
-    searchTerm: string,
-    showArchived: boolean = true
-  ) => {
-    // Validate and encode filter values
-    const validatedIssuer = encodeURIComponent(selectedIssuer.trim());
-    const validatedCategory = encodeURIComponent(selectedCategory.trim());
-    const validatedSearchTerm = encodeURIComponent(searchTerm.trim());
-    const validatedShowArchived = encodeURIComponent(showArchived);
-
-    // Construct and return the URL
-    return `/credentials/?issuer=${validatedIssuer}&category=${validatedCategory}&search=${validatedSearchTerm}&archived=${validatedShowArchived}`;
-  };
 
   /**
    * Opens the modal to filter the projects.
@@ -108,7 +94,12 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
 
   const updateSearchTerm = (newSearchTerm: string) => {
     router.push(
-      generateUrl(selectedIssuer, selectedCategory, newSearchTerm, true)
+      generateUrl({
+        issuer: selectedIssuer,
+        category: selectedCategory,
+        search: newSearchTerm,
+        archived: true,
+      })
     );
   };
 
@@ -122,7 +113,14 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
   const groupedCertificates = groupCertificatesByCategory(filteredCertificates);
 
   const resetFilters = () => {
-    router.push(generateUrl("All", "All", "", false));
+    router.push(
+      generateUrl({
+        issuer: "All",
+        category: "All",
+        search: "",
+        archived: false,
+      })
+    );
   };
 
   const areFiltersApplied =
@@ -199,6 +197,17 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
             </Button>
           </div>
         </div>
+
+        {/* Toggle to display archived projects */}
+        <ArchiveToggle
+          generateUrl={generateUrl}
+          showArchived={showArchived}
+          filterProps={{
+            category: selectedCategory,
+            issuer: selectedIssuer,
+            search: searchTerm,
+          }}
+        />
 
         {/* Toggle to display archived projects */}
 
