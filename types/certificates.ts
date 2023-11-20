@@ -11,9 +11,9 @@ export default interface Certificate {
     | "Royal Holloway University";
   credentialURL: string;
   skills: string[];
-  tags?: string[];
   category:
     | "University"
+    | "Programming Languages"
     | "Web Development"
     | "Software Engineering"
     | "DevOps"
@@ -21,6 +21,7 @@ export default interface Certificate {
     | "Mathematics"
     | "Databases"
     | "Cloud Computing"
+    | "Management"
     | "Other";
   archived?: boolean;
   certificateImage?: string;

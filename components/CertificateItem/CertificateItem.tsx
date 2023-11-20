@@ -82,13 +82,6 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
             {name}
           </h1>
         </Link>
-        {/* Certificate Description and Details */}
-
-        {description && (
-          <p className="text-xl text-center leading-7 text-neutral-600 dark:text-neutral-400 border-2 border-red-500">
-            {description}
-          </p>
-        )}
 
         {/* Slug */}
         <p

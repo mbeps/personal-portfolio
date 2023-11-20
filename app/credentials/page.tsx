@@ -1,4 +1,4 @@
-import { cloudComputing } from "@/constants/certificates";
+import allCertificates from "@/constants/certificates";
 import Certificate from "@/types/certificates";
 import { Metadata } from "next";
 import React from "react";
@@ -25,8 +25,8 @@ const updateCredentialImages = (certificates: Certificate[]): Certificate[] => {
  * The user can filter the certificates by category and issuer.
  */
 const CredentialsPage: React.FC = () => {
-  const allCertificates: Certificate[] = [...cloudComputing];
-  const updatedCertificates = updateCredentialImages(allCertificates);
+  const certificates: Certificate[] = [...allCertificates];
+  const updatedCertificates = updateCredentialImages(certificates);
   return <CredentialsList allCertificates={updatedCertificates} />;
 };
 export default CredentialsPage;
