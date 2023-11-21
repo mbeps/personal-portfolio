@@ -48,7 +48,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
             transform hover:scale-105 
             shadow-xl hover:shadow-2xl
             transition-all duration-500 ease-in-out
-            h-96 md:h-96
+            h-68 md:h-96
             mb-6
             w-full
             overflow-hidden 
