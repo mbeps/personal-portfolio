@@ -52,7 +52,11 @@ const languages: Language[] = [
     language: "Java",
     skills: [
       { skill: "Maven", category: "Project Manager" },
+      { skill: "Gradle", category: "Project Manager" },
       { skill: "JUnit", category: "Testing" },
+      { skill: "Spring", category: "Back-End Web Development" },
+      { skill: "Spring Boot", category: "Back-End Web Development" },
+      { skill: "Hibernate", category: "Object Relational Mapper" },
     ],
     repository: "projects?type=All&technology=All&language=Java&search=",
   },
