@@ -377,6 +377,16 @@ const devOps: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/1c6fedf1993d58cfe2f906e4fe4db5b4eddda6ea5fa7f8999436b07682ffe3f7",
     skills: ["DevOps"],
+    learningOutcomes: [
+      "Distinguishing between DevOps practice levels, values, and principles.",
+      "Analyzing where to apply best practices.",
+      "Managing cultural issues within a team and organization.",
+      "Understanding lean in DevOps building blocks.",
+      "Applying approaches for automating infrastructure.",
+      "Understanding role of continuous integration and quality assurance.",
+      "Explaining components of reliability for engineering's design operations.",
+      "Describing resources to learn or apply DevOps.",
+    ],
   },
   {
     name: "DevOps Foundations: Continuous Delivery/Continuous Integration",
@@ -386,6 +396,14 @@ const devOps: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/6bf47e122551142911c5a636edfee564ff0d57bd07a52888c6c52246946f7747",
     skills: ["DevOps", "Continuous Delivery", "Continuous Integration"],
+    learningOutcomes: [
+      "Exploring utilization of continuous delivery.",
+      "Identifying components of the DevOps pipeline.",
+      "Recognizing importance and uses of version control.",
+      "Determining tools used for CI and CD.",
+      "Recognizing terminology used with a DevOps pipeline.",
+      "Exploring methods for software testing and best practices.",
+    ],
   },
   {
     name: "Jenkins Essential Training",
@@ -395,15 +413,30 @@ const devOps: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/b1f7a0e46c3659d0d1c25396bbd7838b2374b12afcff7404a0d5077b68e9ebfc",
     skills: ["Jenkins", "Continuous Integration", "Continuous Delivery"],
+    learningOutcomes: [
+      "Learning core functions of Jenkins.",
+      "Understanding the Jenkins Pipeline.",
+      "Integrating Jenkins with Version Control Systems.",
+      "Learning about agents and distributed builds.",
+      "Understanding artifacts and testing in Jenkins.",
+      "Securing Jenkins with user accounts and permissions.",
+    ],
   },
   {
-    name: "Ansible Essential Training ",
+    name: "Ansible Essential Training",
     slug: "5eed7f56e5d7dc61b17a3f5fb3cb9fc42130506e948df550bf00899b5868b0a1",
     category: "DevOps",
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/5eed7f56e5d7dc61b17a3f5fb3cb9fc42130506e948df550bf00899b5868b0a1",
     skills: ["Ansible", "Infrastructure as Code"],
+    learningOutcomes: [
+      "Building effective and reusable tasks in Ansible.",
+      "Organizing tasks into roles and managing roles with Ansible Galaxy.",
+      "Encrypting sensitive information with Ansible Vault.",
+      "Performing network management with Ansible.",
+      "Understanding and leveraging idempotence in Ansible.",
+    ],
   },
   {
     name: "GitHub Actions for CI/CD",
@@ -418,6 +451,12 @@ const devOps: Certificate[] = [
       "Continuous Integration",
       "Continuous Delivery",
     ],
+    learningOutcomes: [
+      "Using GitHub Actions for CI/CD.",
+      "Creating continuous integration workflows with GitHub Actions.",
+      "Creating continuous delivery workflows with GitHub Actions.",
+      "Creating continuous deployment workflows with GitHub Actions.",
+    ],
   },
   {
     name: "Docker for Developers",
@@ -427,15 +466,27 @@ const devOps: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/bf3b572548b56f714cc70ee2c1447312a84869f6a93edb55e3d13b13337f3bd5",
     skills: ["Docker", "Containerization"],
+    learningOutcomes: [
+      "Creating first Docker image.",
+      "Setting up a full-stack environment with Docker.",
+      "Deploying and adding nodes to a Docker swarm.",
+      "Creating a cluster using Kubernetes.",
+      "Setting up GitHub with Travis for Docker projects.",
+    ],
   },
   {
-    name: "Kubernetes: Provisioning with kind ",
+    name: "Kubernetes: Provisioning with kind",
     slug: "a63c2359250f6a04bd19dab4ebd049edb511a1a9f2c3ef66a0a8d1df004f7d8d",
     category: "DevOps",
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/a63c2359250f6a04bd19dab4ebd049edb511a1a9f2c3ef66a0a8d1df004f7d8d",
     skills: ["Kubernetes", "Containerization", "Clusterization"],
+    learningOutcomes: [
+      "Installing Kubernetes and its prerequisites.",
+      "Deploying Kubernetes in Docker with kind.",
+      "Choosing a strategy for provisioning Kubernetes clusters.",
+    ],
   },
 ];
 
