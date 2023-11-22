@@ -14,9 +14,22 @@ const programmingLanguages: Certificate[] = [
       "Algorithms",
       "Data Structures",
     ],
+    description: `
+      The Python Programming Masterclass on Udemy is an all-encompassing course designed to impart a deep understanding of Python, one of the most sought-after programming languages in the tech industry. 
+      This course is tailored for both beginners and existing programmers, focusing on core Python concepts, Object-Oriented Programming, algorithms, and data structures. It uniquely combines theoretical knowledge with practical coding exercises, preparing students for advanced areas like machine learning and data science. By the end of the course, learners will have mastered both Python 2 and 3, equipped with the skills to develop robust Python applications and the confidence to tackle real-world programming challenges.`,
+    learningOutcomes: [
+      "Understand Python syntax, keywords, and basic structures",
+      "Implement Object-Oriented Programming in Python",
+      "Write and understand complex Python algorithms",
+      "Utilize various data structures in Python",
+      "Develop functional Python applications",
+      "Distinguish between Python 2 and Python 3",
+      "Complete practical coding exercises for skill enhancement",
+      "Build foundational skills for advanced Python fields like machine learning and data science",
+    ],
   },
   {
-    name: "Python Advanced",
+    name: "Advanced Python",
     slug: "c235083fcf3a5aadda62a3aac5f1846098135e9058d9c5c72073ef88891b0395",
     category: "Programming Languages",
     issuer: "LinkedIn",
@@ -24,6 +37,17 @@ const programmingLanguages: Certificate[] = [
       "https://www.linkedin.com/learning/certificates/c235083fcf3a5aadda62a3aac5f1846098135e9058d9c5c72073ef88891b0395",
     skills: ["Python"],
     archived: true,
+    learningOutcomes: [
+      "Learning about truth value testing in Python is a key aspect of this course.",
+      "Understanding how to use template strings for simpler string formatting is a necessary skill in Python.",
+      "The concept of iterators in Python will be explored.",
+      "Covering Python's built-in functions for transforming data.",
+      "A deep dive into Python functions and their advanced features will be a key learning outcome.",
+      "Learning about Python's collections module and its powerful features is a part of this course.",
+      "Understanding object-oriented programming in Python with a focus on advanced concepts will be covered.",
+      "Delving into how to use Python's logging module to log errors and track code execution.",
+      "Learning about list, dictionary, and set comprehensions in Python is a key aspect of this course.",
+    ],
   },
   {
     name: "Python Object-Oriented Programming",
@@ -33,6 +57,16 @@ const programmingLanguages: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/3df6c589b5151377ce45f231cfacf8ca04a02875fa88996a8831c1c9b70c527a",
     skills: ["Python", "Object-Oriented Programming"],
+    learningOutcomes: [
+      "Learning how to define classes in Python is a key aspect of this course.",
+      "Understanding how to check the type of an instance is a necessary skill in Python OOP.",
+      "The concept of multiple inheritance in Python will be explored.",
+      "Covering how to create objects using the concept of composition in Python.",
+      "Leveraging magic methods in Python will be a key learning outcome.",
+      "Understanding how and why to call objects like functions in Python is a part of this course.",
+      "Defining data classes in Python will be covered.",
+      "Delving into the concept of immutability and how to create immutable data classes in Python.",
+    ],
   },
   {
     name: "Learning Python",
@@ -43,6 +77,13 @@ const programmingLanguages: Certificate[] = [
       "https://www.linkedin.com/learning/certificates/71bbbecbbc9b1489e357c3a2091860ae5b02b3ff0e415ce5748b8746d990b8dd",
     skills: ["Python"],
     archived: true,
+    learningOutcomes: [
+      "Learning the basics of Python syntax and constructing and running a simple Python program is a key aspect of this course.",
+      "Understanding how to work with dates and times, and using the date, time, and datetime classes is a necessary Python skill.",
+      "Exploring how to read and write files, and using the OS path utilities and filesystem shell methods is part of this course.",
+      "Fetching, parsing, and processing data from the web in JSON, HTML, and XML formats is included in this course.",
+      "Practicing and improving programming skills with interactive code challenges and quizzes is a part of the curriculum.",
+    ],
   },
   {
     name: "Java Programming Masterclass",
@@ -56,6 +97,16 @@ const programmingLanguages: Certificate[] = [
       "Object-Oriented Programming",
       "Algorithms",
       "Data Structures",
+      "Spring",
+      "Android Development",
+    ],
+    learningOutcomes: [
+      "Learning the core Java skills needed to apply for Java developer positions is a key aspect of this course.",
+      "Preparing to sit for and pass the Oracle Java Certificate exam is a part of this course.",
+      "Demonstrating your understanding of Java to future employers is a goal of this course.",
+      "Learning industry 'best practices' in Java software development from a professional Java developer is included in this course.",
+      "Acquiring essential Java basics for transitioning to the Spring Framework, Java EE, Android development and more is a part of the curriculum.",
+      "Obtaining proficiency in Java 17, as well as older versions including Java 11 and Java 8, is a key learning outcome.",
     ],
   },
   {
@@ -95,6 +146,20 @@ const programmingLanguages: Certificate[] = [
     credentialURL:
       "https://www.udemy.com/certificate/UC-cf6c70b6-c34c-4400-b8f8-b9a7abc9f18a/",
     skills: ["JavaScript"],
+    learningOutcomes: [
+      "Becoming an advanced JavaScript developer.",
+      "Understanding JavaScript's workings.",
+      "Learning developer problem-solving.",
+      "Understanding JavaScript fundamentals.",
+      "Learning modern ES6+.",
+      "Understanding modern OOP concepts.",
+      "Grasping complex JavaScript concepts.",
+      "Learning asynchronous JavaScript.",
+      "Architecting code using flowcharts and patterns.",
+      "Using modern tools for 2022 and beyond.",
+      "Practicing skills with 50+ challenges and assignments.",
+      "Designing a unique learning path.",
+    ],
   },
 ];
 
@@ -107,6 +172,16 @@ const machineLearning: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/964c3b1a049a60afa6bcbb55179e326c7e5cea11db0db7b8d3390be8fc5925e1",
     skills: ["Machine Learning"],
+    learningOutcomes: [
+      "Understanding models vs. algorithms.",
+      "Cleaning continuous and categorical variables.",
+      "Tuning hyperparameters.",
+      "Learning logistic regression basics.",
+      "Fitting a support vector machines model.",
+      "Understanding when to use a multi-layer perceptron model.",
+      "Using the random forest algorithm.",
+      "Fitting a basic boosting model.",
+    ],
   },
   {
     name: "Applied Machine Learning: Foundations",
@@ -116,6 +191,17 @@ const machineLearning: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/50182c40b257c756e5d8aea70a9f69f14566da4d3cae7dab86f236554cc7238e",
     skills: ["Machine Learning"],
+    learningOutcomes: [
+      "Understanding what is machine learning.",
+      "Differentiating Machine Learning, Deep Learning, and Artificial Intelligence.",
+      "Handling common challenges in Machine Learning.",
+      "Plotting continuous and categorical features.",
+      "Cleaning continuous and categorical data.",
+      "Measuring success in Machine Learning.",
+      "Identifying overfitting and underfitting.",
+      "Tuning hyperparameters.",
+      "Evaluating a model.",
+    ],
   },
   {
     name: "Artificial Intelligence Foundations: Machine Learning",
@@ -125,6 +211,14 @@ const machineLearning: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/3610d0d7891a746bbe207505c8ec6cfab58723ca973e3082f139a349059248c9",
     skills: ["Machine Learning"],
+    learningOutcomes: [
+      "Understanding machine learning.",
+      "Implementing a machine learning solution.",
+      "Preparing data for machine learning.",
+      "Training a machine learning model.",
+      "Evaluating model performance.",
+      "Operationalizing a machine learning pipeline.",
+    ],
   },
   {
     name: "Artificial Intelligence Foundations: Neural Networks",
@@ -133,7 +227,14 @@ const machineLearning: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/5dda55caa1ccf02b29f3c0f5d526c8c026f7fc346a6cad6d9c84f98aba3e2514",
-    skills: ["Machine Learning"],
+    skills: ["Machine Learning", "Keras"],
+    learningOutcomes: [
+      "Understanding neural networks.",
+      "Learning key components in neural network architecture.",
+      "Exploring other types of neural networks.",
+      "Building a neural network using Keras.",
+      "Optimizing a neural network.",
+    ],
   },
   {
     name: "Data Science Foundations: Fundamentals",
@@ -142,7 +243,27 @@ const machineLearning: Certificate[] = [
     issuer: "NASBA",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/e9cb305b4da5f38726226d31e5eef5da66504838131739c389a2d056ed31cf3f",
-    skills: ["Data Science", "Machine Learning"],
+    skills: [
+      "Data Science",
+      "Machine Learning",
+      "APIs",
+      "Python",
+      "R",
+      "SQL",
+      "Algebra",
+      "Statistics",
+      "Probability",
+    ],
+    learningOutcomes: [
+      "Assessing skills for a data science career.",
+      "Evaluating different data sources.",
+      "Exploring data through graphs and statistics.",
+      "Understanding use of R, Python, and SQL in data science.",
+      "Assessing the role of algebra in data science.",
+      "Understanding the role of applied statistics in data science.",
+      "Understanding the role of machine learning in data science.",
+      "Defining components of effective data visualization.",
+    ],
   },
   {
     name: "Introduction to Artificial Intelligence",
@@ -152,6 +273,24 @@ const machineLearning: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/9f61617caf2fc21f029abd857a03a29758d7e822215d3677eb938b4e29e5da78",
     skills: ["Machine Learning"],
+    learningOutcomes: [
+      "Distinguishing between symbolic systems and machine learning.",
+      "Identifying challenges in natural language processing.",
+      "Defining types of machine learning.",
+      "Understanding the role of algorithms in machine learning.",
+      "Determining when to use artificial intelligence.",
+      "Reviewing AI and ML differences impacting business decisions.",
+      "Understanding data and big data phenomena.",
+      "Learning about web technologies, cloud computing, and databases.",
+      "Gaining insights into the data science process.",
+      "Familiarizing with data science tools.",
+      "Learning data cleaning and publishing techniques.",
+      "Practicing data wrangling.",
+      "Understanding data visualization principles.",
+      "Exploring relational data visualization techniques.",
+      "Using data visualization tools.",
+      "Evaluating understanding of course material.",
+    ],
   },
   {
     name: "Machine Learning Foundations: Calculus",
@@ -161,6 +300,16 @@ const machineLearning: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/94c788dba6f1c97ceee751315c30b6dc6f4267025733c3de55a315d83a36386d",
     skills: ["Machine Learning", "Calculus", "Mathematics"],
+    learningOutcomes: [
+      "Assessing skills for a data science career.",
+      "Evaluating different data sources.",
+      "Exploring data through graphs and statistics.",
+      "Understanding use of R, Python, and SQL in data science.",
+      "Assessing the role of algebra in data science.",
+      "Understanding the role of machine learning in data science.",
+      "Defining components of effective data visualization.",
+      "Assessing the role of ethics and agency in data science.",
+    ],
   },
   {
     name: "Machine Learning Foundations: Linear Algebra",
@@ -170,6 +319,18 @@ const machineLearning: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/ec6ac0178fb92ba75dd38a95ae48316efb6f4e0e9abcb6bf5431b48021ff8441",
     skills: ["Machine Learning", "Linear Algebra", "Mathematics"],
+    learningOutcomes: [
+      "Understanding data and big data phenomena.",
+      "Learning about web technologies, cloud computing, and databases.",
+      "Gaining insights into the data science process.",
+      "Familiarizing with data science tools.",
+      "Learning data cleaning and publishing techniques.",
+      "Practicing data wrangling.",
+      "Understanding data visualization principles.",
+      "Exploring relational data visualization techniques.",
+      "Using data visualization tools.",
+      "Evaluating understanding of course material.",
+    ],
   },
   {
     name: "Machine Learning Foundations: Probability",
@@ -179,6 +340,14 @@ const machineLearning: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/b7334fe5b4d04bef6dab5d2ed69080e9ffc590475eba2057046b6ca4a6cf2fba",
     skills: ["Machine Learning", "Probability", "Mathematics"],
+    learningOutcomes: [
+      "Learning basics of probability theory in machine learning.",
+      "Understanding sum rule, product rule, and conditional probability.",
+      "Calculating joint and marginal probability.",
+      "Exploring common discrete probability distributions.",
+      "Learning about continuous probability distribution.",
+      "Discovering Bayes' theorem and its applications.",
+    ],
   },
   {
     name: "Machine Learning with Scikit-Learn",
@@ -188,6 +357,14 @@ const machineLearning: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/3c31f8f11d8ecbd7156dd75b8ae2d7c7db59a8342e3ae7780496b637ac894bb8",
     skills: ["Machine Learning", "Scikit-Learn", "Python"],
+    learningOutcomes: [
+      "Understanding the benefits of using scikit-learn.",
+      "Distinguishing between supervised and unsupervised learning.",
+      "Learning linear and logistic regression techniques.",
+      "Understanding decision trees and random forests.",
+      "Learning K-means clustering technique.",
+      "Understanding principal component analysis (PCA).",
+    ],
   },
 ];
 
