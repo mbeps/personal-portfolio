@@ -1432,6 +1432,7 @@ const cloudComputing: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/29e1352bda64cbc78e2f3fbf7205d2761bd8c465925eba7c4cf699aab8cf72b4",
     skills: ["Amazon Web Services (AWS)"],
+    description: `This course provides a comprehensive guide on how to optimally host your application within AWS, covering services like IaaS, DBaaS, PaaS, and SaaS through hands-on examples. It delves into DevOps and security within AWS, and prepares learners for the AWS Cloud Practitioner Certification (CLF-C02) exam. The course covers a wide range of topics, from creating an IAM user group and using the Cost Explorer, to exploring AWS offerings for mobile app development and maintaining cloud infrastructure scripts with CloudFormation. It also includes a look into AWS's artificial intelligence services and the AWS Well-Architected Framework.`,
     learningOutcomes: [
       "Creating an IAM user group, user, and access key.",
       "Using the Cost Explorer to analyze service usage.",
@@ -1465,6 +1466,7 @@ const cloudComputing: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/bf0cac80ff7e3f2b8148e20d6ea1fccb6eb15457a184229fee9ff439f652cfba",
     skills: ["Microsoft Azure"],
+    description: `This course provides a comprehensive introduction to Azure, focusing on the fundamentals necessary for developers to start building, deploying, and managing applications on this popular cloud platform. It offers a detailed overview of Azure's capabilities and services, from storage options to Kubernetes Service scaling strategies. The course is designed to equip learners with the knowledge needed for a deeper exploration of their topics of interest, making it a valuable resource for those new to Azure or those comparing it against other ecosystems.`,
     learningOutcomes: [
       "Understanding Azure subscriptions, resource groups, and regions.",
       "Exploring the capabilities of Azure App Service.",
@@ -1489,6 +1491,7 @@ const cloudComputing: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/1bc3074a5e84539c7bc5fdeeee83438602cc303ba648ec90ef5fc018693e62a1",
     skills: ["Google Cloud Platform (GCP)"],
+    description: `This course provides a comprehensive guide to designing, building, and maintaining applications in Google Cloud Platform (GCP). It covers best practices for deploying and configuring optimized settings in App Engine, setting up Cloud SQL application architecture, managing distributed queues in Cloud Tasks, and using GCP tools like Cloud Logging for application optimization. The course is designed to equip learners with the skills needed to leverage the multitude of cloud computing services provided by GCP, making it a valuable resource for developers in the cloud computing domain.`,
     learningOutcomes: [
       "Designing, building, and maintaining applications in GCP.",
       "Deploying and configuring optimized settings in App Engine.",
