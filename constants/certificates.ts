@@ -499,6 +499,14 @@ const webDevelopment: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/c5ccec418e67284d7945832543376e344173867d424cc1c7c7e7f4235b14debe",
     skills: ["Flask", "Python", "RESTful APIs", "APIs"],
+    learningOutcomes: [
+      "Creating a new Flask project.",
+      "Working with databases in Flask.",
+      "Implementing API security with JWT.",
+      "Implementing CRUD operations in API.",
+      "Exporting project's requirements file.",
+      "Testing APIs with Postman.",
+    ],
   },
   {
     name: "Learning REST APIs",
@@ -508,6 +516,14 @@ const webDevelopment: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/d16b210de3459c563295c4868ac19097bdddf84976d2137fa08293ec698f3380",
     skills: ["RESTful APIs", "APIs"],
+    learningOutcomes: [
+      "Understanding what is a REST API.",
+      "Learning about the interaction with REST APIs.",
+      "Exploring the anatomy of a REST request.",
+      "Interpreting the response header.",
+      "Understanding HTTP status messages.",
+      "Learning about request/response pairs in REST.",
+    ],
     archived: true,
   },
   {
@@ -518,6 +534,17 @@ const webDevelopment: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/a54ec39fe8ae07277cfbfb553a61f1d6a0c95f23969a3f665d5e5c0afbd9fd68",
     skills: ["RESTful APIs", "APIs"],
+    learningOutcomes: [
+      "Approaches to adding an API.",
+      "Modeling tips for APIs.",
+      "Identifying activities for API design.",
+      "Creating and grouping API methods.",
+      "Validating your API design.",
+      "Understanding HTTP headers and response codes.",
+      "Addressing common design challenges.",
+      "Best practices for versioning.",
+      "Approaches to hypermedia and documentation.",
+    ],
   },
   {
     name: "RESTful APIs with Node.js and Express",
@@ -527,6 +554,13 @@ const webDevelopment: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/c00cb40bda2152dd86d29b813b0d1b172123452a0b87b6017aec13115e693487",
     skills: ["RESTful APIs", "APIs", "Node.js", "Express"],
+    learningOutcomes: [
+      "Building web API with Node.js and Express.",
+      "Setting up project and creating endpoints.",
+      "Serving static files with API.",
+      "Exploring additional libraries for API development.",
+      "Understanding basics of RESTful APIs and CRUD operations.",
+    ],
   },
   {
     name: "CSS Fundamentals: Unlock the Power of Web Styling",
@@ -536,6 +570,13 @@ const webDevelopment: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/ff054b4dd1a8fec0eb00ee80a59bc82e5fed3e50b11bba3e3cd33026f0a0eee0",
     skills: ["CSS"],
+    learningOutcomes: [
+      "Understanding what CSS is and how it works with HTML.",
+      "Learning common CSS concepts.",
+      "Exploring the cascade, specificity, and inheritance in CSS.",
+      "Creating layouts with flexbox, grid, and frameworks.",
+      "Using browser tools and validation tools for CSS.",
+    ],
   },
   {
     name: "Firebase Essential Training",
@@ -551,6 +592,14 @@ const webDevelopment: Certificate[] = [
       "Google Cloud Platform",
       "Backend as a Service (BaaS)",
     ],
+    learningOutcomes: [
+      "Understanding Firebase and its usage.",
+      "Learning Firebase Authentication.",
+      "Using Firestore for data storage and query.",
+      "Implementing Cloud Functions for back-end logic.",
+      "Using Cloud Storage for file handling.",
+      "Deploying web app with Firebase Hosting.",
+    ],
   },
   {
     name: "Flask Essential Training",
@@ -559,7 +608,18 @@ const webDevelopment: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/4585e03073dcdf552484e6a6d9bc407d1b7e0ad3872d6a3b114d3e3d0869e9ea",
-    skills: ["Flask", "Python"],
+    skills: ["Flask", "Python", "Gunicorn"],
+    learningOutcomes: [
+      "Understanding pros and cons of Flask.",
+      "Creating first route in Flask.",
+      "Working with Jinja templates in Flask.",
+      "Using GET and POST requests in Flask.",
+      "Understanding data flow in Flask.",
+      "Setting up an API in Flask.",
+      "Templating Flask with Bootstrap.",
+      "Testing Flask app.",
+      "Deploying app with Gunicorn.",
+    ],
   },
   {
     name: "Learning Django",
@@ -569,6 +629,13 @@ const webDevelopment: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/7b5e4d7314ff1b615a3ae959f0d936e66808a5f718a85e42813d957d4ec492d7",
     skills: ["Django", "Python"],
+    learningOutcomes: [
+      "Rapid web application development with Django.",
+      "Setting up a Django project.",
+      "Working with Django models and the admin.",
+      "Building URL handlers and views in Django.",
+      "Creating Django templates.",
+    ],
   },
   {
     name: "GraphQL Essential Training",
@@ -578,6 +645,12 @@ const webDevelopment: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/3c1654b23256c27553b9d6288d9592aa47fe825a7bf85714283f3e61e26f6f58",
     skills: ["GraphQL", "APIs"],
+    learningOutcomes: [
+      "Setting up GraphQL and using GraphiQL and Apollo Server.",
+      "Exploring the GraphQL schema.",
+      "Setting up persistence with SQL and MongoDB in GraphQL.",
+      "Using advanced features in GraphQL queries.",
+    ],
   },
   {
     name: "HTML Essential Training",
@@ -587,6 +660,17 @@ const webDevelopment: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/983c6ba63131250c1d3df7e13f5e8f8951c02cb64c02c33d99e80df23cf3c869",
     skills: ["HTML"],
+    learningOutcomes: [
+      "Understanding basic syntax of HTML elements.",
+      "Formatting content in HTML.",
+      "Displaying images using HTML.",
+      "Creating links in HTML.",
+      "Understanding global HTML attributes.",
+      "Building navigation in HTML.",
+      "Structuring content with HTML.",
+      "Building forms using HTML.",
+      "Creating tables in HTML.",
+    ],
   },
   {
     name: "Node.js Essential Training",
@@ -596,6 +680,13 @@ const webDevelopment: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/ef41e5cf67f7657353febca7c6b206bf7dd8e28497c393790d8a266842c81132",
     skills: ["Node.js", "JavaScript"],
+    learningOutcomes: [
+      "Learning Node.js basics and core.",
+      "Understanding what Node.js is and its usage.",
+      "Learning about Node globals.",
+      "Creating and using Node modules.",
+      "Managing files and streams in Node.js.",
+    ],
   },
   {
     name: "React.js Essential Training",
@@ -605,6 +696,13 @@ const webDevelopment: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/f2226c0a5de58874e8b882b91fe8945f69d0f0b6de15fa70a09082a08bd464fd",
     skills: ["React", "JavaScript"],
+    learningOutcomes: [
+      "Learning basics of React.js.",
+      "Creating reusable components in React.",
+      "Handling forms and user input in React.",
+      "Fetching data and using React Router.",
+      "Testing and deploying React applications.",
+    ],
   },
   {
     name: "Learning Next.js",
@@ -614,6 +712,12 @@ const webDevelopment: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/a2ae9eb61db705535ebd73746bfe20e0988633b80ade57c12aa523a9bbdae3db",
     skills: ["Next.js", "React", "JavaScript"],
+    learningOutcomes: [
+      "Learning the benefits of Next.js.",
+      "Building a file-based routing system in Next.js.",
+      "Pre-rendering and fetching data in Next.js.",
+      "Styling a Next.js application.",
+    ],
   },
   {
     name: "Using TypeScript with React",
@@ -623,6 +727,15 @@ const webDevelopment: Certificate[] = [
     credentialURL:
       "https://www.udemy.com/certificate/UC-431983c4-3861-46fc-866e-d97bd5edab77/",
     skills: ["TypeScript", "React", "JavaScript"],
+    learningOutcomes: [
+      "Understanding basic and advanced features of TypeScript.",
+      "Using TypeScript in React projects.",
+      "Writing types for React patterns.",
+      "Integrating TypeScript into a Create React App with Redux.",
+      "Building a NextJS web app with GraphQL API using TypeScript.",
+      "Using types from third-party packages and creating custom type definitions.",
+      "General usage of React with TypeScript.",
+    ],
   },
 ];
 
