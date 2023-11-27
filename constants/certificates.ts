@@ -83,7 +83,7 @@ const programmingLanguages: Certificate[] = [
     skills: ["Python"],
     archived: true,
     description: `
-    GitHub Copilot: This course provides a comprehensive introduction to Python, a powerful and easy-to-learn object-oriented language. It covers the basics of Python syntax, working with dates and times, file handling, and web data retrieval in various formats. The course also includes interactive coding exercises for real-time feedback and hands-on practice, making it suitable for both new programmers and experienced developers looking to learn Python.`,
+    This course provides a comprehensive introduction to Python, a powerful and easy-to-learn object-oriented language. It covers the basics of Python syntax, working with dates and times, file handling, and web data retrieval in various formats. The course also includes interactive coding exercises for real-time feedback and hands-on practice, making it suitable for both new programmers and experienced developers looking to learn Python.`,
     learningOutcomes: [
       "Learning the basics of Python syntax and constructing and running a simple Python program is a key aspect of this course.",
       "Understanding how to work with dates and times, and using the date, time, and datetime classes is a necessary Python skill.",
@@ -107,7 +107,7 @@ const programmingLanguages: Certificate[] = [
       "Spring",
       "Android Development",
     ],
-    description: `GitHub Copilot: This course offers a comprehensive and continuously updated curriculum on Java programming, suitable for all levels of expertise. With a focus on core Java skills, industry best practices, and proficiency in various Java versions, it aims to prepare students for Java developer positions and Oracle Java Certificate exams. The course also provides a strong foundation for transitioning to other areas like the Spring Framework and Android development.`,
+    description: `This course offers a comprehensive and continuously updated curriculum on Java programming, suitable for all levels of expertise. With a focus on core Java skills, industry best practices, and proficiency in various Java versions, it aims to prepare students for Java developer positions and Oracle Java Certificate exams. The course also provides a strong foundation for transitioning to other areas like the Spring Framework and Android development.`,
     learningOutcomes: [
       "Learning the core Java skills needed to apply for Java developer positions is a key aspect of this course.",
       "Preparing to sit for and pass the Oracle Java Certificate exam is a part of this course.",
@@ -122,7 +122,7 @@ const programmingLanguages: Certificate[] = [
     slug: "77ad2602bbb22e29478a06792cd4bd0a91dda794cca7b2bbe4e333c193770a22",
     category: "Programming Languages",
     issuer: "LinkedIn",
-    description: `GitHub Copilot: This course focuses on enhancing your Java programming skills by teaching the basics of object-oriented programming. It aims to help you write secure, scalable, and easily debuggable code. The course emphasizes practical examples over abstract concepts, with a deep dive into the source code and several challenges to apply what you've learned. It not only guides you on how to apply object-oriented principles in your programs but also explains how Java leverages these principles internally.`,
+    description: `This course focuses on enhancing your Java programming skills by teaching the basics of object-oriented programming. It aims to help you write secure, scalable, and easily debuggable code. The course emphasizes practical examples over abstract concepts, with a deep dive into the source code and several challenges to apply what you've learned. It not only guides you on how to apply object-oriented principles in your programs but also explains how Java leverages these principles internally.`,
     credentialURL:
       "https://www.linkedin.com/learning/certificates/77ad2602bbb22e29478a06792cd4bd0a91dda794cca7b2bbe4e333c193770a22",
     skills: ["Java", "Object-Oriented Programming"],
@@ -172,7 +172,7 @@ const programmingLanguages: Certificate[] = [
     credentialURL:
       "https://www.udemy.com/certificate/UC-cf6c70b6-c34c-4400-b8f8-b9a7abc9f18a/",
     skills: ["JavaScript"],
-    description: `GitHub Copilot: This comprehensive and in-depth course covers JavaScript from fundamentals to advanced applications, making it suitable for learners at all levels. It offers a blend of practical code examples, important theory, and complete projects, preparing you for advanced front-end frameworks and real-world skills needed in a developer job. The course is designed in a modular way, allowing you to learn at your own pace, and by the end, you will have the knowledge and confidence to ace job interviews and become a professional developer.`,
+    description: `This comprehensive and in-depth course covers JavaScript from fundamentals to advanced applications, making it suitable for learners at all levels. It offers a blend of practical code examples, important theory, and complete projects, preparing you for advanced front-end frameworks and real-world skills needed in a developer job. The course is designed in a modular way, allowing you to learn at your own pace, and by the end, you will have the knowledge and confidence to ace job interviews and become a professional developer.`,
     learningOutcomes: [
       "Becoming an advanced JavaScript developer.",
       "Understanding JavaScript's workings.",
@@ -199,6 +199,7 @@ const machineLearning: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/964c3b1a049a60afa6bcbb55179e326c7e5cea11db0db7b8d3390be8fc5925e1",
     skills: ["Machine Learning"],
+    description: `This course is the second installment in the Applied Machine Learning series, delving into a variety of algorithms from logistic regression to gradient boosting. It provides a structured approach to choosing the best algorithm for a given problem, considering each algorithm's pros and cons. The course enhances your understanding of what drives each algorithm, their benefits, and drawbacks, equipping you with a significant competitive advantage as a data scientist.`,
     learningOutcomes: [
       "Understanding models vs. algorithms.",
       "Cleaning continuous and categorical variables.",
@@ -218,6 +219,7 @@ const machineLearning: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/50182c40b257c756e5d8aea70a9f69f14566da4d3cae7dab86f236554cc7238e",
     skills: ["Machine Learning"],
+    description: `This course is the first part of the Applied Machine Learning series, focusing on the foundations of machine learning. It provides a pragmatic approach to solving machine learning problems, from exploratory data analysis to model evaluation. The course does not focus on any specific algorithm but provides the tools to efficiently solve a wide range of machine learning problems, making it a valuable resource for anyone looking to delve into the field of machine learning.`,
     learningOutcomes: [
       "Understanding what is machine learning.",
       "Differentiating Machine Learning, Deep Learning, and Artificial Intelligence.",
@@ -238,6 +240,7 @@ const machineLearning: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/3610d0d7891a746bbe207505c8ec6cfab58723ca973e3082f139a349059248c9",
     skills: ["Machine Learning"],
+    description: `This course provides a hands-on approach to machine learning, one of the most exciting branches of artificial intelligence. It covers the entire machine learning lifecycle, from data sourcing and preparation to model training and evaluation. The course also includes building a machine learning pipeline to streamline the process. It's a great resource for those looking to understand the steps required to build machine learning systems.`,
     learningOutcomes: [
       "Understanding machine learning.",
       "Implementing a machine learning solution.",
@@ -255,6 +258,7 @@ const machineLearning: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/5dda55caa1ccf02b29f3c0f5d526c8c026f7fc346a6cad6d9c84f98aba3e2514",
     skills: ["Machine Learning", "Keras"],
+    description: `This course offers a comprehensive introduction to the principles and techniques of artificial neural networks, including their components, common models, and applications. It provides hands-on experience in building and training a neural network using the Keras Sequential API. The course is designed to help learners gain a solid understanding of how to build, train, improve, and use neural networks.`,
     learningOutcomes: [
       "Understanding neural networks.",
       "Learning key components in neural network architecture.",
@@ -281,6 +285,7 @@ const machineLearning: Certificate[] = [
       "Statistics",
       "Probability",
     ],
+    description: `This course provides an accessible, non-technical introduction to the field of data science, covering its vocabulary, skills, jobs, tools, and techniques. It offers insights into how data science can help improve decision-making, gain deeper insights, and enhance work efficiency. The course also discusses ethics and accountability in data science, making it a comprehensive resource for anyone interested in this rapidly growing field.`,
     learningOutcomes: [
       "Assessing skills for a data science career.",
       "Evaluating different data sources.",
@@ -300,6 +305,7 @@ const machineLearning: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/9f61617caf2fc21f029abd857a03a29758d7e822215d3677eb938b4e29e5da78",
     skills: ["Machine Learning"],
+    description: `This course offers a high-level overview of artificial intelligence, making it accessible to non-technical professionals like project managers, product managers, directors, and executives. It simplifies complex concepts in machine learning, artificial neural networks, and deep learning, helping learners understand how AI can enhance their products, life, and career. The course also provides insights into the top tools in the field, making it a valuable resource for anyone interested in AI.`,
     learningOutcomes: [
       "Distinguishing between symbolic systems and machine learning.",
       "Identifying challenges in natural language processing.",
@@ -327,6 +333,7 @@ const machineLearning: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/94c788dba6f1c97ceee751315c30b6dc6f4267025733c3de55a315d83a36386d",
     skills: ["Machine Learning", "Calculus", "Mathematics"],
+    description: `This comprehensive JavaScript course takes you from the fundamentals to building complex applications, covering modern JavaScript, how it works behind the scenes, and real-world skills needed in a developer job. It's designed in a modular way, allowing you to learn at your own pace. By the end, you'll have the knowledge and confidence to ace job interviews and become a professional developer.`,
     learningOutcomes: [
       "Assessing skills for a data science career.",
       "Evaluating different data sources.",
@@ -346,6 +353,7 @@ const machineLearning: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/ec6ac0178fb92ba75dd38a95ae48316efb6f4e0e9abcb6bf5431b48021ff8441",
     skills: ["Machine Learning", "Linear Algebra", "Mathematics"],
+    description: `This course offers a comprehensive journey through JavaScript, providing an all-in-one package that guides you from the basics to building complex applications. The course is designed to equip you with real-world skills needed in a developer job, including how to think like a developer, plan application features, and architect your code. With a blend of practical code examples, important theory, and complete projects, you'll be ready to continue learning advanced front-end frameworks and ace your job interviews.`,
     learningOutcomes: [
       "Understanding data and big data phenomena.",
       "Learning about web technologies, cloud computing, and databases.",
@@ -367,6 +375,7 @@ const machineLearning: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/b7334fe5b4d04bef6dab5d2ed69080e9ffc590475eba2057046b6ca4a6cf2fba",
     skills: ["Machine Learning", "Probability", "Mathematics"],
+    description: `This course provides a comprehensive and in-depth journey through JavaScript, from the basics to building complex applications. It's designed to equip learners with real-world skills needed in a developer job, including how to think like a developer, plan application features, and architect code. The course offers a blend of practical code examples, important theory, and complete projects, preparing learners for advanced front-end frameworks and job interviews.`,
     learningOutcomes: [
       "Learning basics of probability theory in machine learning.",
       "Understanding sum rule, product rule, and conditional probability.",
@@ -384,6 +393,7 @@ const machineLearning: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/3c31f8f11d8ecbd7156dd75b8ae2d7c7db59a8342e3ae7780496b637ac894bb8",
     skills: ["Machine Learning", "Scikit-Learn", "Python"],
+    description: `This course offers a comprehensive journey through JavaScript, from the basics to building complex applications. It's designed to equip learners with real-world skills needed in a developer job, including how to think like a developer, plan application features, and architect code. The course offers a blend of practical code examples, important theory, and complete projects, preparing learners for advanced front-end frameworks and job interviews.`,
     learningOutcomes: [
       "Understanding the benefits of using scikit-learn.",
       "Distinguishing between supervised and unsupervised learning.",
