@@ -550,6 +550,8 @@ const webDevelopment: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/c5ccec418e67284d7945832543376e344173867d424cc1c7c7e7f4235b14debe",
     skills: ["Flask", "Python", "RESTful APIs", "APIs"],
+    description: `This course provides fundamental knowledge on building RESTful APIs, a crucial component for web and mobile projects. It offers a hands-on approach to quickly building, securing, and testing an effective RESTful API using Python and Flask, the Python microframework. The course covers database access, authentication, and other common tasks in Flask, and introduces key plugins that enhance the use of Flask. It's designed to equip learners with the skills to enable highly connected interactions between applications.
+    `,
     learningOutcomes: [
       "Creating a new Flask project.",
       "Working with databases in Flask.",
@@ -567,6 +569,7 @@ const webDevelopment: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/d16b210de3459c563295c4868ac19097bdddf84976d2137fa08293ec698f3380",
     skills: ["RESTful APIs", "APIs"],
+    description: `This course introduces the basics of REST APIs, explaining their importance and how they can enhance application efficiency. It explores the relationship between HTTP and REST APIs, the six constraints of REST, and HTTP status messages. The course also guides learners on how to start consuming REST APIs to integrate them into data-driven applications, making it a valuable resource for those looking to understand and utilize REST APIs.`,
     learningOutcomes: [
       "Understanding what is a REST API.",
       "Learning about the interaction with REST APIs.",
@@ -585,6 +588,7 @@ const webDevelopment: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/a54ec39fe8ae07277cfbfb553a61f1d6a0c95f23969a3f665d5e5c0afbd9fd68",
     skills: ["RESTful APIs", "APIs"],
+    description: `This course provides a comprehensive guide on planning and modeling APIs, a crucial skill for any developer creating websites. It introduces the six REST design constraints that guide architecture and offers advice on identifying system users and their activities. The course emphasizes the importance of validating your design before building it and explores the necessary HTTP concepts and REST constraints. It concludes with a discussion on common API design patterns, making it a valuable resource for developers looking to enhance their API design skills.`,
     learningOutcomes: [
       "Approaches to adding an API.",
       "Modeling tips for APIs.",
@@ -605,6 +609,7 @@ const webDevelopment: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/c00cb40bda2152dd86d29b813b0d1b172123452a0b87b6017aec13115e693487",
     skills: ["RESTful APIs", "APIs", "Node.js", "Express"],
+    description: `This course guides learners on how to create a simple, RESTful web API using Node.js and Express, popular JavaScript libraries. It covers setting up the project, including the Express server and testing environment, and creating endpoints for data manipulation in a MongoDB database. The course also explores serving static files like images with the API and introduces additional libraries, such as Koa and LoopBack, that can streamline API development. It's designed for those interested in back-end programming without the need for extensive knowledge in the area.`,
     learningOutcomes: [
       "Building web API with Node.js and Express.",
       "Setting up project and creating endpoints.",
@@ -621,6 +626,7 @@ const webDevelopment: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/ff054b4dd1a8fec0eb00ee80a59bc82e5fed3e50b11bba3e3cd33026f0a0eee0",
     skills: ["CSS"],
+    description: `This course offers a comprehensive exploration of Cascading Style Sheets (CSS), the language that enhances HTML's appearance in the browser. It provides an overview of what CSS is, how it works with HTML, authoring options, and common CSS concepts like the CSS box model, fonts, and color. The course is designed to be flexible, allowing learners to either follow it from start to finish or jump to specific topics of interest. It aims to lay a solid foundation for working with styles on the web, making it a valuable resource for those looking to master the fundamentals of CSS.`,
     learningOutcomes: [
       "Understanding what CSS is and how it works with HTML.",
       "Learning common CSS concepts.",
@@ -643,6 +649,7 @@ const webDevelopment: Certificate[] = [
       "Google Cloud Platform",
       "Backend as a Service (BaaS)",
     ],
+    description: `This course provides a comprehensive guide on integrating Firebase into a React application, transforming it into a fully functional app. It covers Firebase's capabilities, including Firebase Authentication, which eliminates the need for setting up an authentication server, and Cloud Functions for defining back-end functionality. The course aims to help developers leverage Firebase to handle concerns like performance, security, offline functionality, hosting, and authentication, allowing them to focus on building user-centric applications.`,
     learningOutcomes: [
       "Understanding Firebase and its usage.",
       "Learning Firebase Authentication.",
@@ -660,6 +667,7 @@ const webDevelopment: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/4585e03073dcdf552484e6a6d9bc407d1b7e0ad3872d6a3b114d3e3d0869e9ea",
     skills: ["Flask", "Python", "Gunicorn"],
+    description: `This course offers a comprehensive guide to Flask, a Python framework for building lightweight and dynamic web applications. It covers the pros and cons of working with Flask, the creation of a Flask app, data flow, working with Jinja templates, using blueprints and views for organization, testing, and deployment with Gunicorn. The course provides training and hands-on examples, making it a valuable resource for those looking to quickly learn and start using Flask.`,
     learningOutcomes: [
       "Understanding pros and cons of Flask.",
       "Creating first route in Flask.",
@@ -680,6 +688,7 @@ const webDevelopment: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/7b5e4d7314ff1b615a3ae959f0d936e66808a5f718a85e42813d957d4ec492d7",
     skills: ["Django", "Python"],
+    description: `This course provides a comprehensive introduction to Django, a free and open-source framework designed on top of Python that supports data-driven architecture. It guides learners through creating a Django project, defining a data model and fields, querying the database, and using Django's built-in URL handlers, views, and templates. The course also covers how to enhance Django templates with CSS and JavaScript, making it a valuable resource for those looking to quickly start and efficiently manage web applications with Django.`,
     learningOutcomes: [
       "Rapid web application development with Django.",
       "Setting up a Django project.",
@@ -696,6 +705,7 @@ const webDevelopment: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/3c1654b23256c27553b9d6288d9592aa47fe825a7bf85714283f3e61e26f6f58",
     skills: ["GraphQL", "APIs"],
+    description: `This course provides an introduction to GraphQL, a query language for APIs that optimizes data retrieval. It covers the setup of GraphQL, exploration of the GraphQL schema, and understanding of basic types and fields. The course also guides learners on setting up persistence using SQL and MongoDB with GraphQL, adding new items with mutations, and leveraging advanced features in queries. It's designed to equip learners with the skills to efficiently use GraphQL for their data needs.`,
     learningOutcomes: [
       "Setting up GraphQL and using GraphiQL and Apollo Server.",
       "Exploring the GraphQL schema.",
@@ -711,6 +721,7 @@ const webDevelopment: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/983c6ba63131250c1d3df7e13f5e8f8951c02cb64c02c33d99e80df23cf3c869",
     skills: ["HTML"],
+    description: `This course provides a comprehensive guide to crafting excellent HTML, the foundation of website and web application development. It emphasizes the importance of semantic markup, which ensures content is understood by both human audiences and computer systems, including screen readers and search engines. The course covers all fundamental concepts needed to use HTML thoughtfully, making it a valuable resource for those looking to enhance their web development skills.`,
     learningOutcomes: [
       "Understanding basic syntax of HTML elements.",
       "Formatting content in HTML.",
@@ -731,6 +742,9 @@ const webDevelopment: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/ef41e5cf67f7657353febca7c6b206bf7dd8e28497c393790d8a266842c81132",
     skills: ["Node.js", "JavaScript"],
+    description: `
+    Node.js is a powerful tool for controlling servers, building web applications, and creating event-driven programs. And it takes JavaScript—a language familiar to all web developers—out of the browser. With Node.js, you can build applications that run on your laptop or even the cloud. In this course, learn the essentials of Node.js and start creating your own JavaScript applications. Instructor Eve Porcello covers all of the basics, showing how to install Node.js and work with the Node.js core, which includes standard input, standard output, the module system, the file system, and how to write and run JavaScript on the server. Upon wrapping up this course, you'll be equipped with fundamental Node.js concepts and techniques that you can put to use in your next project.
+    `,
     learningOutcomes: [
       "Learning Node.js basics and core.",
       "Understanding what Node.js is and its usage.",
@@ -747,6 +761,7 @@ const webDevelopment: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/f2226c0a5de58874e8b882b91fe8945f69d0f0b6de15fa70a09082a08bd464fd",
     skills: ["React", "JavaScript"],
+    description: `This course offers an introduction to React.js, a JavaScript library known for its reusable components and scalability, making applications more maintainable and efficient. It covers the basics of the React library, the modern syntax and best practices for creating React components, setting up Chrome tools for React, working with built-in Hooks, and using the Create React App for testing. By the end of the course, learners will be equipped with the essentials of React.js, preparing them to build their own browser-based projects.`,
     learningOutcomes: [
       "Learning basics of React.js.",
       "Creating reusable components in React.",
@@ -763,6 +778,7 @@ const webDevelopment: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/a2ae9eb61db705535ebd73746bfe20e0988633b80ade57c12aa523a9bbdae3db",
     skills: ["Next.js", "React", "JavaScript"],
+    description: `This course provides a comprehensive guide to Next.js, a popular, React-based web development framework that combines the benefits of server-side rendering with the speed and ease of a single-page app. It covers basic features like pages, data fetching, and layout options, as well as advanced topics like dynamic and API routes. The course aims to equip learners with the skills to build, manage, and customize a complete web application from scratch in JavaScript, offering a seamless developer experience with zero configuration and lightning-fast, dynamic page speeds.`,
     learningOutcomes: [
       "Learning the benefits of Next.js.",
       "Building a file-based routing system in Next.js.",
@@ -778,6 +794,7 @@ const webDevelopment: Certificate[] = [
     credentialURL:
       "https://www.udemy.com/certificate/UC-431983c4-3861-46fc-866e-d97bd5edab77/",
     skills: ["TypeScript", "React", "JavaScript"],
+    description: `This course equips learners with the necessary TypeScript skills to confidently build React applications. It covers how to describe types for function and class components, use higher order components and render props patterns, and import third-party libraries and their types. The course includes practical projects using TypeScript with Redux and Next.js framework with Apollo GraphQL libraries. It's designed for those with prior React experience who want to learn TypeScript, enhancing their front-end development skills.`,
     learningOutcomes: [
       "Understanding basic and advanced features of TypeScript.",
       "Using TypeScript in React projects.",
