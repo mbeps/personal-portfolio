@@ -1,7 +1,7 @@
 ---
 title: "Comprehensive Guide to Software Testing"
 subtitle: "Exploring Functional and Non-Functional Testing Techniques, Tools, and Challenges"
-category: "Web Development"
+category: "Software Engineering"
 ---
 
 - [**Introduction to Software Testing in the Context of Software Engineering**](#introduction-to-software-testing-in-the-context-of-software-engineering)
