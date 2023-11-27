@@ -460,3 +460,5 @@ In conclusion, the world of machine learning is dynamic and ever-evolving, offer
 - [Ethical Considerations in AI and Machine Learning: Building Responsible Algorithms](https://krishnapullak.medium.com/ethical-considerations-in-ai-and-machine-learning-building-responsible-algorithms-35359d59b14f)
 - [Top 10 Real-World Machine Learning Applications](https://hackr.io/blog/real-world-machine-learning-applications)
 - [Using Machine Learning for Risk & Fraud Detection](https://www.tecton.ai/blog/detecting-and-preventing-fraud-with-machine-learning/)
+- [Applied Machine Learning: Foundations](https://www.linkedin.com/learning/applied-machine-learning-foundations/leveraging-machine-learning)
+- [Artificial Intelligence Foundations: Machine Learning](https://www.linkedin.com/learning/artificial-intelligence-foundations-machine-learning-22345868/introduction-to-ai-foundations-machine-learning-course)
