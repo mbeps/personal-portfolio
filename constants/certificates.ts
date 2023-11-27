@@ -36,7 +36,6 @@ const programmingLanguages: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/c235083fcf3a5aadda62a3aac5f1846098135e9058d9c5c72073ef88891b0395",
     skills: ["Python"],
-    archived: true,
     description: `
     This course offers an in-depth exploration of advanced Python features, focusing on enhancing code efficiency and readability. It covers a range of topics including object-oriented programming, logging for performance tracking, porting code from Python 2 to 3, and data manipulation. The course is designed to help you master Python's powerful features and flexibility, enabling you to build sophisticated applications.
     `,
@@ -51,6 +50,7 @@ const programmingLanguages: Certificate[] = [
       "Delving into how to use Python's logging module to log errors and track code execution.",
       "Learning about list, dictionary, and set comprehensions in Python is a key aspect of this course.",
     ],
+    archived: true,
   },
   {
     name: "Python Object-Oriented Programming",
@@ -72,6 +72,7 @@ const programmingLanguages: Certificate[] = [
       "Defining data classes in Python will be covered.",
       "Delving into the concept of immutability and how to create immutable data classes in Python.",
     ],
+    archived: true,
   },
   {
     name: "Learning Python",
@@ -80,8 +81,7 @@ const programmingLanguages: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/71bbbecbbc9b1489e357c3a2091860ae5b02b3ff0e415ce5748b8746d990b8dd",
-    skills: ["Python"],
-    archived: true,
+    skills: ["Python", "HTML", "JSON", "XML"],
     description: `
     This course provides a comprehensive introduction to Python, a powerful and easy-to-learn object-oriented language. It covers the basics of Python syntax, working with dates and times, file handling, and web data retrieval in various formats. The course also includes interactive coding exercises for real-time feedback and hands-on practice, making it suitable for both new programmers and experienced developers looking to learn Python.`,
     learningOutcomes: [
@@ -91,6 +91,7 @@ const programmingLanguages: Certificate[] = [
       "Fetching, parsing, and processing data from the web in JSON, HTML, and XML formats is included in this course.",
       "Practicing and improving programming skills with interactive code challenges and quizzes is a part of the curriculum.",
     ],
+    archived: true,
   },
   {
     name: "Java Programming Masterclass",
@@ -126,6 +127,15 @@ const programmingLanguages: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/77ad2602bbb22e29478a06792cd4bd0a91dda794cca7b2bbe4e333c193770a22",
     skills: ["Java", "Object-Oriented Programming"],
+    learningOutcomes: [
+      "Understanding the basics of object-oriented programming in Java",
+      "Writing secure, scalable, and easily debuggable code",
+      "Applying practical examples to reinforce abstract concepts",
+      "Diving deep into the source code to understand its structure",
+      "Implementing object-oriented principles in your programs",
+      "Learning how Java leverages object-oriented principles internally",
+    ],
+    archived: true,
   },
   {
     name: "Learning TypeScript",
@@ -153,7 +163,7 @@ const programmingLanguages: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/ade3217d7cef3023f22c8ee034eff28705b7dbfd3981d8377c9b5f61ff39ea51",
-    skills: ["JavaScript"],
+    skills: ["JavaScript", "Object-Oriented Programming", "Algorithms"],
     description: `
     This course provides a comprehensive understanding of JavaScript, a scripting language essential for dynamic web development. It covers core principles to advanced topics, helping you build dynamic interfaces and advanced interactions. The course includes interactive coding exercises for hands-on practice, making it suitable for anyone looking to enhance their JavaScript skills and understanding of web technologies.
     `,
@@ -163,6 +173,7 @@ const programmingLanguages: Certificate[] = [
       "Appreciating the design decision-making process and its application in developing new products",
       "Recognizing the effects of engineering issues on the conduct of engineering, including ethical, legal, and social aspects",
     ],
+    archived: true,
   },
   {
     name: "The Complete JavaScript Course 2023: From Zero to Expert!",
@@ -171,7 +182,7 @@ const programmingLanguages: Certificate[] = [
     issuer: "Udemy",
     credentialURL:
       "https://www.udemy.com/certificate/UC-cf6c70b6-c34c-4400-b8f8-b9a7abc9f18a/",
-    skills: ["JavaScript"],
+    skills: ["JavaScript", "Object-Oriented Programming", "Algorithms"],
     description: `This comprehensive and in-depth course covers JavaScript from fundamentals to advanced applications, making it suitable for learners at all levels. It offers a blend of practical code examples, important theory, and complete projects, preparing you for advanced front-end frameworks and real-world skills needed in a developer job. The course is designed in a modular way, allowing you to learn at your own pace, and by the end, you will have the knowledge and confidence to ace job interviews and become a professional developer.`,
     learningOutcomes: [
       "Becoming an advanced JavaScript developer.",
@@ -198,7 +209,7 @@ const machineLearning: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/964c3b1a049a60afa6bcbb55179e326c7e5cea11db0db7b8d3390be8fc5925e1",
-    skills: ["Machine Learning"],
+    skills: ["Machine Learning", "Algorithms", "Hyperparameters", "Boosting"],
     description: `This course is the second installment in the Applied Machine Learning series, delving into a variety of algorithms from logistic regression to gradient boosting. It provides a structured approach to choosing the best algorithm for a given problem, considering each algorithm's pros and cons. The course enhances your understanding of what drives each algorithm, their benefits, and drawbacks, equipping you with a significant competitive advantage as a data scientist.`,
     learningOutcomes: [
       "Understanding models vs. algorithms.",
@@ -218,7 +229,12 @@ const machineLearning: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/50182c40b257c756e5d8aea70a9f69f14566da4d3cae7dab86f236554cc7238e",
-    skills: ["Machine Learning"],
+    skills: [
+      "Machine Learning",
+      "Data Science",
+      "Data Visualization",
+      "Hyperparameters",
+    ],
     description: `This course is the first part of the Applied Machine Learning series, focusing on the foundations of machine learning. It provides a pragmatic approach to solving machine learning problems, from exploratory data analysis to model evaluation. The course does not focus on any specific algorithm but provides the tools to efficiently solve a wide range of machine learning problems, making it a valuable resource for anyone looking to delve into the field of machine learning.`,
     learningOutcomes: [
       "Understanding what is machine learning.",
@@ -239,7 +255,7 @@ const machineLearning: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/3610d0d7891a746bbe207505c8ec6cfab58723ca973e3082f139a349059248c9",
-    skills: ["Machine Learning"],
+    skills: ["Machine Learning", "Data Science", "Data Visualization"],
     description: `This course provides a hands-on approach to machine learning, one of the most exciting branches of artificial intelligence. It covers the entire machine learning lifecycle, from data sourcing and preparation to model training and evaluation. The course also includes building a machine learning pipeline to streamline the process. It's a great resource for those looking to understand the steps required to build machine learning systems.`,
     learningOutcomes: [
       "Understanding machine learning.",
@@ -257,7 +273,7 @@ const machineLearning: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/5dda55caa1ccf02b29f3c0f5d526c8c026f7fc346a6cad6d9c84f98aba3e2514",
-    skills: ["Machine Learning", "Keras"],
+    skills: ["Machine Learning", "Keras", "Neural Networks", "Deep Learning"],
     description: `This course offers a comprehensive introduction to the principles and techniques of artificial neural networks, including their components, common models, and applications. It provides hands-on experience in building and training a neural network using the Keras Sequential API. The course is designed to help learners gain a solid understanding of how to build, train, improve, and use neural networks.`,
     learningOutcomes: [
       "Understanding neural networks.",
@@ -281,6 +297,7 @@ const machineLearning: Certificate[] = [
       "Python",
       "R",
       "SQL",
+      "Databases",
       "Algebra",
       "Statistics",
       "Probability",
@@ -304,7 +321,12 @@ const machineLearning: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/9f61617caf2fc21f029abd857a03a29758d7e822215d3677eb938b4e29e5da78",
-    skills: ["Machine Learning"],
+    skills: [
+      "Machine Learning",
+      "Artificial Intelligence",
+      "Deep Learning",
+      "Data Visualization",
+    ],
     description: `This course offers a high-level overview of artificial intelligence, making it accessible to non-technical professionals like project managers, product managers, directors, and executives. It simplifies complex concepts in machine learning, artificial neural networks, and deep learning, helping learners understand how AI can enhance their products, life, and career. The course also provides insights into the top tools in the field, making it a valuable resource for anyone interested in AI.`,
     learningOutcomes: [
       "Distinguishing between symbolic systems and machine learning.",
@@ -332,7 +354,17 @@ const machineLearning: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/94c788dba6f1c97ceee751315c30b6dc6f4267025733c3de55a315d83a36386d",
-    skills: ["Machine Learning", "Calculus", "Mathematics"],
+    skills: [
+      "Machine Learning",
+      "Calculus",
+      "Algebra",
+      "Mathematics",
+      "Data Visualization",
+      "Python",
+      "R",
+      "SQL",
+      "Databases",
+    ],
     description: `
     In this course, I delve into the foundational aspects of calculus that are crucial for understanding and implementing machine learning algorithms. I guide you through the exploration of functions, derivatives, integrals, and the basics of multivariate calculus. The course is designed to equip you with the necessary skills in Machine Learning, Calculus, and Mathematics. It covers a wide range of learning outcomes, including the evaluation of data sources, data visualization, and the ethical considerations in data science.
     `,
@@ -354,7 +386,14 @@ const machineLearning: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/ec6ac0178fb92ba75dd38a95ae48316efb6f4e0e9abcb6bf5431b48021ff8441",
-    skills: ["Machine Learning", "Linear Algebra", "Mathematics"],
+    skills: [
+      "Machine Learning",
+      "Linear Algebra",
+      "Mathematics",
+      "Algorithms",
+      "SQL",
+      "Databases",
+    ],
     description: `This course provides an in-depth exploration of linear algebra, a key foundation for machine learning algorithms. It covers essential topics such as vector arithmetic, matrix properties, advanced operations, and matrix transformation, along with important algorithms. By the end of the course, you'll be ready to apply the principles of linear algebra to your machine learning projects, enhancing your understanding and implementation of these algorithms.`,
     learningOutcomes: [
       "Understanding data and big data phenomena.",
@@ -376,7 +415,13 @@ const machineLearning: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/b7334fe5b4d04bef6dab5d2ed69080e9ffc590475eba2057046b6ca4a6cf2fba",
-    skills: ["Machine Learning", "Probability", "Mathematics"],
+    skills: [
+      "Machine Learning",
+      "Probability",
+      "Mathematics",
+      "Algorithms",
+      "Algorithms",
+    ],
     description: `
     This course offers an in-depth exploration of probability and its application in the design and implementation of reliable machine learning algorithms. It covers the core concepts and functionalities of probability, including the rules of probability, joint and marginal probability, discrete and continuous probability distributions, and Bayes' theorem. By the end of the course, you'll have the essential tools and techniques for successful probabilistic modeling in machine learning.`,
     learningOutcomes: [
@@ -437,7 +482,13 @@ const devOps: Certificate[] = [
     issuer: "NASBA",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/6bf47e122551142911c5a636edfee564ff0d57bd07a52888c6c52246946f7747",
-    skills: ["DevOps", "Continuous Delivery", "Continuous Integration"],
+    skills: [
+      "DevOps",
+      "Continuous Integration (CI)",
+      "Continuous Delivery (CD)",
+      "Version Control",
+      "Testing",
+    ],
     description: `This course delves into the concepts of continuous integration and continuous delivery (CI/CD), demonstrating these principles through the construction of a build pipeline. It covers the journey of an app from development to production, discussing version control, building artifacts, unit testing, and deployment. The course also provides practical advice on CI/CD best practices, common pitfalls, and workarounds, equipping you with the knowledge to navigate your journey to continuous delivery.`,
     learningOutcomes: [
       "Exploring utilization of continuous delivery.",
@@ -455,7 +506,16 @@ const devOps: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/b1f7a0e46c3659d0d1c25396bbd7838b2374b12afcff7404a0d5077b68e9ebfc",
-    skills: ["Jenkins", "Continuous Integration", "Continuous Delivery"],
+    skills: [
+      "DevOps",
+      "Jenkins",
+      "Continuous Integration (CI)",
+      "Continuous Delivery (CD)",
+      "Version Control",
+      "Testing",
+      "Docker",
+      "Containerization",
+    ],
     description: `
     This course focuses on Jenkins, a popular DevOps suite known for its open-source extensibility and ease of use. It covers the fundamentals of the platform, including how to automate builds, test, secure deployments, create a pipeline, and integrate with version control systems. The course also delves into distributing agents like Docker containers, running and publishing tests, producing artifacts for review, and securing your DevOps loop by configuring users and permissions. Practical challenges at the end of each section allow you to apply your new skills.`,
     learningOutcomes: [
@@ -474,7 +534,7 @@ const devOps: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/5eed7f56e5d7dc61b17a3f5fb3cb9fc42130506e948df550bf00899b5868b0a1",
-    skills: ["Ansible", "Infrastructure as Code"],
+    skills: ["DevOps", "Ansible", "Infrastructure as Code"],
     description: `
     This course delves into the intermediate to advanced use cases of Ansible, a powerful IT automation engine. It covers the construction and execution of Ansible playbooks, task building, role reuse, and leveraging content from the Ansible community through Ansible Galaxy. Additionally, it explores encrypting secret information, managing network devices with Ansible, and leveraging the power of idempotence, equipping you with the skills to optimize tasks and updates efficiently.`,
     learningOutcomes: [
@@ -495,8 +555,9 @@ const devOps: Certificate[] = [
     skills: [
       "GitHub Actions",
       "DevOps",
-      "Continuous Integration",
-      "Continuous Delivery",
+      "Continuous Integration (CI)",
+      "Continuous Delivery (CD)",
+      "Continuous Deployment (CD)",
     ],
     description: `
     This course focuses on the use of GitHub Actions, a built-in automation tool in GitHub, for continuous integration, continuous delivery, and continuous deployment. It provides theory, demonstrations, and exercises for developers adopting GitHub Actions for their projects. The course aims to guide engineers on how to automate the complexities of software delivery, allowing them to focus on delivering value directly to users. It complements other courses on GitHub Actions by demonstrating industry best practices for creating workflows.`,
@@ -514,7 +575,14 @@ const devOps: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/bf3b572548b56f714cc70ee2c1447312a84869f6a93edb55e3d13b13337f3bd5",
-    skills: ["Docker", "Containerization"],
+    skills: [
+      "DevOps",
+      "Docker",
+      "Containerization",
+      "Kubernetes",
+      "GitHub",
+      "Travis",
+    ],
     description: `This course provides a comprehensive guide to leveraging Docker for application development. It covers everything from creating your first Docker image to deploying your app to the cloud. The course is designed to equip learners with practical skills such as setting up a full-stack environment with Docker, deploying and adding nodes to a Docker swarm, creating a cluster using Kubernetes, and integrating GitHub with Travis for Docker projects.`,
     learningOutcomes: [
       "Creating first Docker image.",
@@ -531,7 +599,15 @@ const devOps: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/a63c2359250f6a04bd19dab4ebd049edb511a1a9f2c3ef66a0a8d1df004f7d8d",
-    skills: ["Kubernetes", "Containerization", "Clusterization"],
+    skills: [
+      "DevOps",
+      "Kubernetes",
+      "Containerization",
+      "Clusterization",
+      "Docker",
+      "K3s",
+      "AWS",
+    ],
     description: `This course provides a focused guide on how to provision Kubernetes clusters using kind. It covers the challenges of installing Kubernetes and its prerequisites, and demonstrates how to deploy Kubernetes in Docker using K3s, in both single- and multinode clusters. This course is designed to polish your skills in Kubernetes, containerization, and clusterization.`,
     learningOutcomes: [
       "Installing Kubernetes and its prerequisites.",
@@ -549,7 +625,16 @@ const webDevelopment: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/c5ccec418e67284d7945832543376e344173867d424cc1c7c7e7f4235b14debe",
-    skills: ["Flask", "Python", "RESTful APIs", "APIs"],
+    skills: [
+      "Flask",
+      "Python",
+      "RESTful APIs",
+      "APIs",
+      "JWT",
+      "Databases",
+      "SQL",
+      "Postman",
+    ],
     description: `This course provides fundamental knowledge on building RESTful APIs, a crucial component for web and mobile projects. It offers a hands-on approach to quickly building, securing, and testing an effective RESTful API using Python and Flask, the Python microframework. The course covers database access, authentication, and other common tasks in Flask, and introduces key plugins that enhance the use of Flask. It's designed to equip learners with the skills to enable highly connected interactions between applications.
     `,
     learningOutcomes: [
@@ -608,7 +693,14 @@ const webDevelopment: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/c00cb40bda2152dd86d29b813b0d1b172123452a0b87b6017aec13115e693487",
-    skills: ["RESTful APIs", "APIs", "Node.js", "Express"],
+    skills: [
+      "RESTful APIs",
+      "APIs",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Databases",
+    ],
     description: `This course guides learners on how to create a simple, RESTful web API using Node.js and Express, popular JavaScript libraries. It covers setting up the project, including the Express server and testing environment, and creating endpoints for data manipulation in a MongoDB database. The course also explores serving static files like images with the API and introduces additional libraries, such as Koa and LoopBack, that can streamline API development. It's designed for those interested in back-end programming without the need for extensive knowledge in the area.`,
     learningOutcomes: [
       "Building web API with Node.js and Express.",
@@ -625,7 +717,7 @@ const webDevelopment: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/ff054b4dd1a8fec0eb00ee80a59bc82e5fed3e50b11bba3e3cd33026f0a0eee0",
-    skills: ["CSS"],
+    skills: ["CSS", "HTML"],
     description: `This course offers a comprehensive exploration of Cascading Style Sheets (CSS), the language that enhances HTML's appearance in the browser. It provides an overview of what CSS is, how it works with HTML, authoring options, and common CSS concepts like the CSS box model, fonts, and color. The course is designed to be flexible, allowing learners to either follow it from start to finish or jump to specific topics of interest. It aims to lay a solid foundation for working with styles on the web, making it a valuable resource for those looking to master the fundamentals of CSS.`,
     learningOutcomes: [
       "Understanding what CSS is and how it works with HTML.",
@@ -658,6 +750,7 @@ const webDevelopment: Certificate[] = [
       "Using Cloud Storage for file handling.",
       "Deploying web app with Firebase Hosting.",
     ],
+    archived: true,
   },
   {
     name: "Flask Essential Training",
@@ -666,7 +759,15 @@ const webDevelopment: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/4585e03073dcdf552484e6a6d9bc407d1b7e0ad3872d6a3b114d3e3d0869e9ea",
-    skills: ["Flask", "Python", "Gunicorn"],
+    skills: [
+      "Python",
+      "Flask",
+      "Gunicorn",
+      "Jinja",
+      "Bootstrap",
+      "APIs",
+      "RESTful APIs",
+    ],
     description: `This course offers a comprehensive guide to Flask, a Python framework for building lightweight and dynamic web applications. It covers the pros and cons of working with Flask, the creation of a Flask app, data flow, working with Jinja templates, using blueprints and views for organization, testing, and deployment with Gunicorn. The course provides training and hands-on examples, making it a valuable resource for those looking to quickly learn and start using Flask.`,
     learningOutcomes: [
       "Understanding pros and cons of Flask.",
@@ -687,7 +788,7 @@ const webDevelopment: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/7b5e4d7314ff1b615a3ae959f0d936e66808a5f718a85e42813d957d4ec492d7",
-    skills: ["Django", "Python"],
+    skills: ["Python", "Django", "CSS", "HTML", "JavaScript"],
     description: `This course provides a comprehensive introduction to Django, a free and open-source framework designed on top of Python that supports data-driven architecture. It guides learners through creating a Django project, defining a data model and fields, querying the database, and using Django's built-in URL handlers, views, and templates. The course also covers how to enhance Django templates with CSS and JavaScript, making it a valuable resource for those looking to quickly start and efficiently manage web applications with Django.`,
     learningOutcomes: [
       "Rapid web application development with Django.",
@@ -704,7 +805,7 @@ const webDevelopment: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/3c1654b23256c27553b9d6288d9592aa47fe825a7bf85714283f3e61e26f6f58",
-    skills: ["GraphQL", "APIs"],
+    skills: ["GraphQL", "APIs", "Apollo", "MongoDB", "SQL", "Databases"],
     description: `This course provides an introduction to GraphQL, a query language for APIs that optimizes data retrieval. It covers the setup of GraphQL, exploration of the GraphQL schema, and understanding of basic types and fields. The course also guides learners on setting up persistence using SQL and MongoDB with GraphQL, adding new items with mutations, and leveraging advanced features in queries. It's designed to equip learners with the skills to efficiently use GraphQL for their data needs.`,
     learningOutcomes: [
       "Setting up GraphQL and using GraphiQL and Apollo Server.",
@@ -733,6 +834,7 @@ const webDevelopment: Certificate[] = [
       "Building forms using HTML.",
       "Creating tables in HTML.",
     ],
+    archived: true,
   },
   {
     name: "Node.js Essential Training",
@@ -743,7 +845,7 @@ const webDevelopment: Certificate[] = [
       "https://www.linkedin.com/learning/certificates/ef41e5cf67f7657353febca7c6b206bf7dd8e28497c393790d8a266842c81132",
     skills: ["Node.js", "JavaScript"],
     description: `
-    Node.js is a powerful tool for controlling servers, building web applications, and creating event-driven programs. And it takes JavaScript—a language familiar to all web developers—out of the browser. With Node.js, you can build applications that run on your laptop or even the cloud. In this course, learn the essentials of Node.js and start creating your own JavaScript applications. Instructor Eve Porcello covers all of the basics, showing how to install Node.js and work with the Node.js core, which includes standard input, standard output, the module system, the file system, and how to write and run JavaScript on the server. Upon wrapping up this course, you'll be equipped with fundamental Node.js concepts and techniques that you can put to use in your next project.
+    Node.js is a powerful tool for controlling servers, building web applications, and creating event-driven programs. And it takes JavaScript—a language familiar to all web developers—out of the browser. With Node.js, you can build applications that run on your laptop or even the cloud. In this course, learn the essentials of Node.js and start creating your own JavaScript applications. This course shows how to install Node.js and work with the Node.js core, which includes standard input, standard output, the module system, the file system, and how to write and run JavaScript on the server. Upon wrapping up this course, you'll be equipped with fundamental Node.js concepts and techniques that you can put to use in your next project.
     `,
     learningOutcomes: [
       "Learning Node.js basics and core.",
@@ -752,6 +854,7 @@ const webDevelopment: Certificate[] = [
       "Creating and using Node modules.",
       "Managing files and streams in Node.js.",
     ],
+    archived: true,
   },
   {
     name: "React.js Essential Training",
@@ -760,7 +863,7 @@ const webDevelopment: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/f2226c0a5de58874e8b882b91fe8945f69d0f0b6de15fa70a09082a08bd464fd",
-    skills: ["React", "JavaScript"],
+    skills: ["React", "JavaScript", "Testing", "HTML", "CSS"],
     description: `This course offers an introduction to React.js, a JavaScript library known for its reusable components and scalability, making applications more maintainable and efficient. It covers the basics of the React library, the modern syntax and best practices for creating React components, setting up Chrome tools for React, working with built-in Hooks, and using the Create React App for testing. By the end of the course, learners will be equipped with the essentials of React.js, preparing them to build their own browser-based projects.`,
     learningOutcomes: [
       "Learning basics of React.js.",
@@ -777,7 +880,7 @@ const webDevelopment: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/a2ae9eb61db705535ebd73746bfe20e0988633b80ade57c12aa523a9bbdae3db",
-    skills: ["Next.js", "React", "JavaScript"],
+    skills: ["Next.js", "React", "JavaScript", "HTML", "CSS", "APIs"],
     description: `This course provides a comprehensive guide to Next.js, a popular, React-based web development framework that combines the benefits of server-side rendering with the speed and ease of a single-page app. It covers basic features like pages, data fetching, and layout options, as well as advanced topics like dynamic and API routes. The course aims to equip learners with the skills to build, manage, and customize a complete web application from scratch in JavaScript, offering a seamless developer experience with zero configuration and lightning-fast, dynamic page speeds.`,
     learningOutcomes: [
       "Learning the benefits of Next.js.",
@@ -793,7 +896,7 @@ const webDevelopment: Certificate[] = [
     issuer: "Udemy",
     credentialURL:
       "https://www.udemy.com/certificate/UC-431983c4-3861-46fc-866e-d97bd5edab77/",
-    skills: ["TypeScript", "React", "JavaScript"],
+    skills: ["TypeScript", "React", "JavaScript", "HTML", "CSS"],
     description: `This course equips learners with the necessary TypeScript skills to confidently build React applications. It covers how to describe types for function and class components, use higher order components and render props patterns, and import third-party libraries and their types. The course includes practical projects using TypeScript with Redux and Next.js framework with Apollo GraphQL libraries. It's designed for those with prior React experience who want to learn TypeScript, enhancing their front-end development skills.`,
     learningOutcomes: [
       "Understanding basic and advanced features of TypeScript.",
@@ -820,6 +923,7 @@ const databases: Certificate[] = [
       "Database Management System",
       "Normalization",
       "Relational Database",
+      "Indexing",
     ],
 
     description: `
@@ -870,6 +974,7 @@ const databases: Certificate[] = [
       "NoSQL",
       "Database Management System",
       "Document-Oriented Database",
+      "Indexing",
     ],
     description: `
     This course provides foundational knowledge and skills for working with MongoDB, a popular document model database. It covers an introduction to MongoDB Atlas, data structuring, connection to a MongoDB database, and performing key tasks such as CRUD operations, aggregation, indexing, data modeling, transactions, and creating a user search experience. By the end of the course, you'll be equipped to start working with MongoDB.`,
@@ -1448,7 +1553,17 @@ const cloudComputing: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/29e1352bda64cbc78e2f3fbf7205d2761bd8c465925eba7c4cf699aab8cf72b4",
-    skills: ["Amazon Web Services (AWS)"],
+    skills: [
+      "Amazon Web Services (AWS)",
+      "Elastic Compute Cloud (EC2)",
+      "Simple Storage Service (S3)",
+      "Virtual Private Cloud (VPC)",
+      "Lambda",
+      "CloudFormation",
+      "CloudFront",
+      "Databases",
+      "NoSQL",
+    ],
     description: `This course provides a comprehensive guide on how to optimally host your application within AWS, covering services like IaaS, DBaaS, PaaS, and SaaS through hands-on examples. It delves into DevOps and security within AWS, and prepares learners for the AWS Cloud Practitioner Certification (CLF-C02) exam. The course covers a wide range of topics, from creating an IAM user group and using the Cost Explorer, to exploring AWS offerings for mobile app development and maintaining cloud infrastructure scripts with CloudFormation. It also includes a look into AWS's artificial intelligence services and the AWS Well-Architected Framework.`,
     learningOutcomes: [
       "Creating an IAM user group, user, and access key.",
@@ -1482,7 +1597,19 @@ const cloudComputing: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/bf0cac80ff7e3f2b8148e20d6ea1fccb6eb15457a184229fee9ff439f652cfba",
-    skills: ["Microsoft Azure"],
+    skills: [
+      "Microsoft Azure",
+      "Azure App Service",
+      "Azure Blob Storage",
+      "Durable Functions",
+      "Azure Monitor",
+      "Azure Redis",
+      "Azure Functions",
+      "Azure Resource Manager",
+      "Containers",
+      "Azure Container Registry",
+      "Kubernetes",
+    ],
     description: `This course provides a comprehensive introduction to Azure, focusing on the fundamentals necessary for developers to start building, deploying, and managing applications on this popular cloud platform. It offers a detailed overview of Azure's capabilities and services, from storage options to Kubernetes Service scaling strategies. The course is designed to equip learners with the knowledge needed for a deeper exploration of their topics of interest, making it a valuable resource for those new to Azure or those comparing it against other ecosystems.`,
     learningOutcomes: [
       "Understanding Azure subscriptions, resource groups, and regions.",
@@ -1507,7 +1634,15 @@ const cloudComputing: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/1bc3074a5e84539c7bc5fdeeee83438602cc303ba648ec90ef5fc018693e62a1",
-    skills: ["Google Cloud Platform (GCP)"],
+    skills: [
+      "Google Cloud Platform (GCP)",
+      "App Engine",
+      "Cloud SQL",
+      "Cloud Storage",
+      "Cloud Tasks",
+      "Cloud Scheduler",
+      "Cloud Logging",
+    ],
     description: `This course provides a comprehensive guide to designing, building, and maintaining applications in Google Cloud Platform (GCP). It covers best practices for deploying and configuring optimized settings in App Engine, setting up Cloud SQL application architecture, managing distributed queues in Cloud Tasks, and using GCP tools like Cloud Logging for application optimization. The course is designed to equip learners with the skills needed to leverage the multitude of cloud computing services provided by GCP, making it a valuable resource for developers in the cloud computing domain.`,
     learningOutcomes: [
       "Designing, building, and maintaining applications in GCP.",
