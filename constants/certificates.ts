@@ -909,6 +909,8 @@ const mathematics: Certificate[] = [
       "Probability",
       "Statistics",
     ],
+    description: `
+    GitHub Copilot: This course focuses on Discrete Mathematics, a fundamental area of Mathematics and Computer Science that deals with discrete rather than continuous topics. It aims to build the mathematical foundation for various computer science and mathematics courses. The course covers essential topics such as sets, logic, number theory, proofs, functions, relations, graph theory, statistics, combinatorics, and sequences and series, equipping students with the ability to understand mathematical language.`,
     learningOutcomes: [
       "Developing ability to think, read and write abstractly and Mathematically.",
       "Learning fundamentals of Set Theory.",
@@ -946,6 +948,7 @@ const mathematics: Certificate[] = [
       "Integration",
       "Exponentials",
     ],
+    description: `GitHub Copilot: This course covers all the pure content in A-Level AS maths, suitable for all major exam boards. It delves into equations and inequalities, graphs, straight line graphs, circles, polynomial division, proof, binomial expansion, trigonometry, vectors, differentiation, integration, and exponentials and logarithms. The course includes explanatory videos, quizzes, and worksheets with questions from real A-Level past papers, providing a comprehensive understanding of A-Level AS maths.`,
     learningOutcomes: [
       "Solving various types of equations.",
       "Solving linear and quadratic inequalities.",
@@ -982,6 +985,9 @@ const mathematics: Certificate[] = [
       "Numerical Methods",
       "Vectors",
     ],
+    description: `
+    GitHub Copilot: This course covers the second year pure content in A-Level Maths, suitable for all major exam boards. It explores parametric equations, functions in graphs, binomial expansion, radians, trigonometric functions and identities, differentiation, integration, numerical methods, and vectors. The course includes explanatory videos, quizzes, and worksheets with questions from real A-Level past papers, providing a comprehensive understanding of advanced pure maths.
+    `,
     learningOutcomes: [
       "Learning differentiation: chain rule, product rule, quotient rule and more.",
       "Understanding integration: reverse chain rule, integration by parts, substitution, differential equations and more.",
@@ -1009,6 +1015,8 @@ const mathematics: Certificate[] = [
       "Dynamics",
       "Variable Acceleration",
     ],
+    description: `
+    GitHub Copilot: This course focuses on A-Level Mechanics, providing an understanding of key concepts such as Newton's laws of motion, kinematics, dynamics, and variable acceleration. It includes the application of constant acceleration formulae (SUVAT) and calculus to motion problems, understanding vectors, and using a calculator for A-level mechanics. The course offers a comprehensive understanding of A-Level Mechanics through various learning outcomes.`,
     learningOutcomes: [
       "Understanding A-level mechanics.",
       "Learning Newton's laws of motion.",
@@ -1035,6 +1043,8 @@ const mathematics: Certificate[] = [
       "Equilibrium",
       "Dynamics",
     ],
+    description: `
+    GitHub Copilot: This course covers the mechanics component of maths A-Level 2nd year content, building on the first year course content. It is suitable for all major exam boards and is ideal for anyone interested in furthering their understanding of the subject. The course delves into moments, kinematics, and dynamics, teaching students how to calculate the moment of a force, model a projectile flying through the air, and work with friction in various scenarios.`,
     learningOutcomes: [
       "Understanding moments.",
       "Learning kinematics.",
@@ -1065,6 +1075,8 @@ const mathematics: Certificate[] = [
       "Sampling",
       "Large Data Sets",
     ],
+    description: `
+    GitHub Copilot: This course covers the statistics component of maths A-Level AS content, suitable for all major exam boards. It provides an introduction to statistics, teaching students how to analyze and represent data, understand bivariate data, probability, binomial distribution, hypothesis tests, sampling, and large data sets. The course is ideal for anyone interested in getting started with statistics.`,
     learningOutcomes: [
       "Understanding A-Level statistics.",
       "Learning probability.",
@@ -1091,6 +1103,7 @@ const mathematics: Certificate[] = [
       "Hypothesis Testing",
       "Data Analysis",
     ],
+    description: `GitHub Copilot: This course covers the statistics component of maths A-Level 2nd year content, building on the first year course content. It is suitable for all major exam boards and is ideal for anyone interested in furthering their understanding of the subject. The course delves into correlation, regression, conditional probability, and the normal distribution, teaching students how to measure correlation, calculate equations of regression lines, explore conditional probability problems, and use the normal distribution.`,
     learningOutcomes: [
       "Understanding A-Level statistics.",
       "Learning probability.",
@@ -1122,6 +1135,9 @@ const mathematics: Certificate[] = [
       "Equilibrium",
       "Dynamics",
     ],
+    description: `
+    GitHub Copilot: This course, designed by Westbound Maths, covers the entire A-Level Applied Maths: Mechanics syllabus, representing a significant portion of the final exam weight for the A-Level Mathematics qualification. The course delves into topics such as forces, moments, vectors, and kinematics, providing a comprehensive understanding of A-Level Applied Maths: Mechanics.
+    `,
     learningOutcomes: [
       "Understanding A-Level Applied Mathematics: Mechanics topics.",
       "Learning Newton's laws of motion.",
@@ -1164,6 +1180,8 @@ const mathematics: Certificate[] = [
       "Numerical Methods",
       "Vectors",
     ],
+    description: `
+    GitHub Copilot: This course, designed by Westbound Maths, covers the entire A-Level Pure Maths syllabus, representing a significant portion of the final exam weight for the A-Level Mathematics qualification. The course delves into topics such as sequence and series, binomial expansion, trigonometry, algebra, functions, parametric equations, differentiation, and integration, providing a comprehensive understanding of A-Level Pure Maths.`,
     learningOutcomes: [
       "Understanding A-Level Mathematics: pure maths topics.",
       "Learning sequence and series.",
@@ -1203,6 +1221,8 @@ const mathematics: Certificate[] = [
       "Continuous Random Variables",
       "Geometric Distribution",
     ],
+    description: `
+    GitHub Copilot: This course, designed by Westbound Maths, covers the entire A-Level Applied Maths: Statistics syllabus, representing a significant portion of the final exam weight for the A-Level Mathematics qualification. The course delves into topics such as statistical sampling methods, statistical measures, correlation, regression, discrete and continuous probability distribution, hypothesis testing, and probability, providing a comprehensive understanding of A-Level Applied Maths: Statistics.`,
     learningOutcomes: [
       "Understanding A-Level Applied Mathematics: Statistics topics.",
       "Learning statistical sampling: random vs. non-random sampling methods.",
