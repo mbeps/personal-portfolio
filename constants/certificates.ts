@@ -1371,6 +1371,7 @@ const management: Certificate[] = [
       "Integration Management",
       "Human Resource Management",
     ],
+    description: `This course offers a comprehensive understanding of project management fundamentals, applicable to both small and complex enterprise-wide initiatives. It covers key aspects from establishing project goals and building a project plan, to managing resources, meeting deadlines, and closing the project. The course also provides tips for effective communication, meeting management, and gaining customer acceptance. It includes exercises based on a healthcare/IT case study project and provides an overview of the changes introduced in the Project Management Institute's latest guide.`,
     learningOutcomes: [
       "Identifying the definition of project management.",
       "Exploring traditional and agile project management.",
@@ -1405,6 +1406,7 @@ const management: Certificate[] = [
       "Integration Management",
       "Human Resource Management",
     ],
+    description: `This course offers a comprehensive understanding of project management fundamentals, applicable to both small and complex enterprise-wide initiatives. It covers key aspects from establishing project goals and building a project plan, to managing resources, meeting deadlines, and closing the project. The course also provides tips for effective communication, meeting management, and gaining customer acceptance. It includes exercises based on a healthcare/IT case study project and provides an overview of the changes introduced in the Project Management Institute's latest guide.`,
     learningOutcomes: [
       "Identifying the definition of project management.",
       "Exploring traditional and agile project management.",
