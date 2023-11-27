@@ -8,6 +8,7 @@ export interface BlogMetadata {
   category:
     | "Web Development"
     | "Software Engineering"
+    | "Databases"
     | "DevOps"
     | "Machine Learning"
     | "Mathematics"
