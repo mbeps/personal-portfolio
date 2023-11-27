@@ -334,7 +334,7 @@ const machineLearning: Certificate[] = [
       "https://www.linkedin.com/learning/certificates/94c788dba6f1c97ceee751315c30b6dc6f4267025733c3de55a315d83a36386d",
     skills: ["Machine Learning", "Calculus", "Mathematics"],
     description: `
-    GitHub Copilot: In this course, I delve into the foundational aspects of calculus that are crucial for understanding and implementing machine learning algorithms. I guide you through the exploration of functions, derivatives, integrals, and the basics of multivariate calculus. The course is designed to equip you with the necessary skills in Machine Learning, Calculus, and Mathematics. It covers a wide range of learning outcomes, including the evaluation of data sources, data visualization, and the ethical considerations in data science.
+    In this course, I delve into the foundational aspects of calculus that are crucial for understanding and implementing machine learning algorithms. I guide you through the exploration of functions, derivatives, integrals, and the basics of multivariate calculus. The course is designed to equip you with the necessary skills in Machine Learning, Calculus, and Mathematics. It covers a wide range of learning outcomes, including the evaluation of data sources, data visualization, and the ethical considerations in data science.
     `,
     learningOutcomes: [
       "Assessing skills for a data science career.",
@@ -355,7 +355,7 @@ const machineLearning: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/ec6ac0178fb92ba75dd38a95ae48316efb6f4e0e9abcb6bf5431b48021ff8441",
     skills: ["Machine Learning", "Linear Algebra", "Mathematics"],
-    description: `GitHub Copilot: This course provides an in-depth exploration of linear algebra, a key foundation for machine learning algorithms. It covers essential topics such as vector arithmetic, matrix properties, advanced operations, and matrix transformation, along with important algorithms. By the end of the course, you'll be ready to apply the principles of linear algebra to your machine learning projects, enhancing your understanding and implementation of these algorithms.`,
+    description: `This course provides an in-depth exploration of linear algebra, a key foundation for machine learning algorithms. It covers essential topics such as vector arithmetic, matrix properties, advanced operations, and matrix transformation, along with important algorithms. By the end of the course, you'll be ready to apply the principles of linear algebra to your machine learning projects, enhancing your understanding and implementation of these algorithms.`,
     learningOutcomes: [
       "Understanding data and big data phenomena.",
       "Learning about web technologies, cloud computing, and databases.",
@@ -378,7 +378,7 @@ const machineLearning: Certificate[] = [
       "https://www.linkedin.com/learning/certificates/b7334fe5b4d04bef6dab5d2ed69080e9ffc590475eba2057046b6ca4a6cf2fba",
     skills: ["Machine Learning", "Probability", "Mathematics"],
     description: `
-    GitHub Copilot: This course offers an in-depth exploration of probability and its application in the design and implementation of reliable machine learning algorithms. It covers the core concepts and functionalities of probability, including the rules of probability, joint and marginal probability, discrete and continuous probability distributions, and Bayes' theorem. By the end of the course, you'll have the essential tools and techniques for successful probabilistic modeling in machine learning.`,
+    This course offers an in-depth exploration of probability and its application in the design and implementation of reliable machine learning algorithms. It covers the core concepts and functionalities of probability, including the rules of probability, joint and marginal probability, discrete and continuous probability distributions, and Bayes' theorem. By the end of the course, you'll have the essential tools and techniques for successful probabilistic modeling in machine learning.`,
     learningOutcomes: [
       "Learning basics of probability theory in machine learning.",
       "Understanding sum rule, product rule, and conditional probability.",
@@ -396,7 +396,7 @@ const machineLearning: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/3c31f8f11d8ecbd7156dd75b8ae2d7c7db59a8342e3ae7780496b637ac894bb8",
     skills: ["Machine Learning", "Scikit-Learn", "Python"],
-    description: `GitHub Copilot: This course focuses on the application of scikit-learn, a popular open-source Python library, for both supervised and unsupervised machine learning. It covers practical techniques such as linear and logistic regression, decision trees, random forest models, K-means clustering, and principal component analysis (PCA). Additionally, it teaches how to create scikit-learn pipelines for cleaner, bug-resilient code. By the end of the course, you'll be able to understand the strengths and weaknesses of each scikit-learn algorithm and build more efficient machine learning models.`,
+    description: `This course focuses on the application of scikit-learn, a popular open-source Python library, for both supervised and unsupervised machine learning. It covers practical techniques such as linear and logistic regression, decision trees, random forest models, K-means clustering, and principal component analysis (PCA). Additionally, it teaches how to create scikit-learn pipelines for cleaner, bug-resilient code. By the end of the course, you'll be able to understand the strengths and weaknesses of each scikit-learn algorithm and build more efficient machine learning models.`,
     learningOutcomes: [
       "Understanding the benefits of using scikit-learn.",
       "Distinguishing between supervised and unsupervised learning.",
@@ -417,7 +417,8 @@ const devOps: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/1c6fedf1993d58cfe2f906e4fe4db5b4eddda6ea5fa7f8999436b07682ffe3f7",
     skills: ["DevOps"],
-    description: `This comprehensive JavaScript course takes you from the fundamentals to building complex applications, covering modern JavaScript, how it works behind the scenes, and real-world skills needed in a developer job. It's designed in a modular way, allowing you to learn at your own pace. By the end, you'll have the knowledge and confidence to ace job interviews and become a professional developer.`,
+    description: `
+    This course provides an overview of the DevOps culture, emphasizing the core value of CAMS (culture, automation, measurement, and sharing). It explores various methodologies and tools that an organization can adopt to transition into DevOps, including both agile and lean project management principles and how traditional principles like ITIL, ITSM, and SDLC fit within DevOps. The course concludes with a discussion on the three main tenets of DevOps—infrastructure automation, continuous delivery, and reliability engineering—and a brief look into the future of organizations transitioning from the cloud to serverless architectures.`,
     learningOutcomes: [
       "Distinguishing between DevOps practice levels, values, and principles.",
       "Analyzing where to apply best practices.",
@@ -437,7 +438,7 @@ const devOps: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/6bf47e122551142911c5a636edfee564ff0d57bd07a52888c6c52246946f7747",
     skills: ["DevOps", "Continuous Delivery", "Continuous Integration"],
-    description: `This course offers a comprehensive journey through JavaScript, from the basics to building complex applications. It's designed to equip learners with real-world skills needed in a developer job, including how to think like a developer, plan application features, and architect code. The course offers a blend of practical code examples, important theory, and complete projects, preparing learners for advanced front-end frameworks and job interviews.`,
+    description: `This course delves into the concepts of continuous integration and continuous delivery (CI/CD), demonstrating these principles through the construction of a build pipeline. It covers the journey of an app from development to production, discussing version control, building artifacts, unit testing, and deployment. The course also provides practical advice on CI/CD best practices, common pitfalls, and workarounds, equipping you with the knowledge to navigate your journey to continuous delivery.`,
     learningOutcomes: [
       "Exploring utilization of continuous delivery.",
       "Identifying components of the DevOps pipeline.",
@@ -455,7 +456,8 @@ const devOps: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/b1f7a0e46c3659d0d1c25396bbd7838b2374b12afcff7404a0d5077b68e9ebfc",
     skills: ["Jenkins", "Continuous Integration", "Continuous Delivery"],
-    description: `This course offers a comprehensive journey through JavaScript, from the basics to building complex applications. It's designed to equip learners with real-world skills needed in a developer job, including how to think like a developer, plan application features, and architect code. The course offers a blend of practical code examples, important theory, and complete projects, preparing learners for advanced front-end frameworks and job interviews.`,
+    description: `
+    This course focuses on Jenkins, a popular DevOps suite known for its open-source extensibility and ease of use. It covers the fundamentals of the platform, including how to automate builds, test, secure deployments, create a pipeline, and integrate with version control systems. The course also delves into distributing agents like Docker containers, running and publishing tests, producing artifacts for review, and securing your DevOps loop by configuring users and permissions. Practical challenges at the end of each section allow you to apply your new skills.`,
     learningOutcomes: [
       "Learning core functions of Jenkins.",
       "Understanding the Jenkins Pipeline.",
@@ -473,7 +475,8 @@ const devOps: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/5eed7f56e5d7dc61b17a3f5fb3cb9fc42130506e948df550bf00899b5868b0a1",
     skills: ["Ansible", "Infrastructure as Code"],
-    description: `This course offers a comprehensive journey through JavaScript, from the basics to building complex applications. It's designed to equip learners with real-world skills needed in a developer job, including how to think like a developer, plan application features, and architect code. The course offers a blend of practical code examples, important theory, and complete projects, preparing learners for advanced front-end frameworks and job interviews.`,
+    description: `
+    This course delves into the intermediate to advanced use cases of Ansible, a powerful IT automation engine. It covers the construction and execution of Ansible playbooks, task building, role reuse, and leveraging content from the Ansible community through Ansible Galaxy. Additionally, it explores encrypting secret information, managing network devices with Ansible, and leveraging the power of idempotence, equipping you with the skills to optimize tasks and updates efficiently.`,
     learningOutcomes: [
       "Building effective and reusable tasks in Ansible.",
       "Organizing tasks into roles and managing roles with Ansible Galaxy.",
@@ -495,7 +498,8 @@ const devOps: Certificate[] = [
       "Continuous Integration",
       "Continuous Delivery",
     ],
-    description: `This course provides a deep dive into JavaScript, guiding learners from the basics to building complex applications. The course is designed with a unique blend of real-world projects, deep explanations, theory lectures, and challenges. It equips learners with the skills to plan and architect applications, understand JavaScript behind the scenes, and master modern JavaScript. The course is modular, allowing learners to pace themselves and gain the knowledge and confidence needed for job interviews and professional development.`,
+    description: `
+    This course focuses on the use of GitHub Actions, a built-in automation tool in GitHub, for continuous integration, continuous delivery, and continuous deployment. It provides theory, demonstrations, and exercises for developers adopting GitHub Actions for their projects. The course aims to guide engineers on how to automate the complexities of software delivery, allowing them to focus on delivering value directly to users. It complements other courses on GitHub Actions by demonstrating industry best practices for creating workflows.`,
     learningOutcomes: [
       "Using GitHub Actions for CI/CD.",
       "Creating continuous integration workflows with GitHub Actions.",
@@ -848,7 +852,7 @@ const databases: Certificate[] = [
       "Database Management System",
       "Document-Oriented Database",
     ],
-    description: `GitHub Copilot: This comprehensive Udemy course provides a deep dive into JavaScript, guiding learners from the basics to building complex applications. The course is designed with a unique blend of real-world projects, deep explanations, theory lectures, and challenges. It equips learners with the skills to plan and architect applications, understand JavaScript behind the scenes, and master modern JavaScript. The course is modular, allowing learners to pace themselves and gain the knowledge and confidence needed for job interviews and professional development.`,
+    description: `This comprehensive Udemy course provides a deep dive into JavaScript, guiding learners from the basics to building complex applications. The course is designed with a unique blend of real-world projects, deep explanations, theory lectures, and challenges. It equips learners with the skills to plan and architect applications, understand JavaScript behind the scenes, and master modern JavaScript. The course is modular, allowing learners to pace themselves and gain the knowledge and confidence needed for job interviews and professional development.`,
     learningOutcomes: [
       "Introduction to MongoDB Atlas.",
       "Understanding MongoDB and the Document Model.",
