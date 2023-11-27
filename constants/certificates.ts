@@ -829,6 +829,8 @@ const databases: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/8b2d47f66f59b8b9724a6c1f05f15e27a9b08c3caaf95169c1d6c64537a1d066",
     skills: ["SQL", "Database Management System", "Relational Database"],
+    description: `
+    This course guides you through setting up container-based servers, connecting a management GUI, and building a database. It covers how to set up a database playground, include a user-friendly graphical interface, create table objects, add data to a table, and retrieve and manipulate data. The course is applicable to learners on any operating system and includes exercise files for hands-on practice. It concludes with suggestions for continuing your learning journey.`,
     learningOutcomes: [
       "Explaining database core concepts.",
       "Constructing a database testing environment.",
@@ -852,7 +854,8 @@ const databases: Certificate[] = [
       "Database Management System",
       "Document-Oriented Database",
     ],
-    description: `This comprehensive Udemy course provides a deep dive into JavaScript, guiding learners from the basics to building complex applications. The course is designed with a unique blend of real-world projects, deep explanations, theory lectures, and challenges. It equips learners with the skills to plan and architect applications, understand JavaScript behind the scenes, and master modern JavaScript. The course is modular, allowing learners to pace themselves and gain the knowledge and confidence needed for job interviews and professional development.`,
+    description: `
+    This course provides foundational knowledge and skills for working with MongoDB, a popular document model database. It covers an introduction to MongoDB Atlas, data structuring, connection to a MongoDB database, and performing key tasks such as CRUD operations, aggregation, indexing, data modeling, transactions, and creating a user search experience. By the end of the course, you'll be equipped to start working with MongoDB.`,
     learningOutcomes: [
       "Introduction to MongoDB Atlas.",
       "Understanding MongoDB and the Document Model.",
@@ -873,6 +876,8 @@ const databases: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/209aec09fbb007c809840a071b5db71dc8e08da5b92799121e158ed1e185062b",
     skills: ["Redis", "NoSQL", "Database Management System"],
+    description: `
+    This course covers the core concepts and basic functionality of Redis, an open-source, in-memory database. It guides you through the fundamentals of working with data structures, exploring hashes, lists and sets, key naming strategies, and various ways to read and represent data. The course also delves into pub/sub, message buses, streams, and keyspace notifications. By the end, you'll be equipped to deploy Redis as a database, a cache, a message broker, or a streaming engine.`,
     learningOutcomes: [
       "Learning core concepts and basic functionality of Redis.",
       "Understanding different data types and structures in Redis.",
