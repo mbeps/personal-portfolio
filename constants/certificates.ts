@@ -1347,8 +1347,31 @@ const cloudComputing: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/29e1352bda64cbc78e2f3fbf7205d2761bd8c465925eba7c4cf699aab8cf72b4",
     skills: ["Amazon Web Services (AWS)"],
+    learningOutcomes: [
+      "Creating an IAM user group, user, and access key.",
+      "Using the Cost Explorer to analyze service usage.",
+      "Creating an EC2 instance and understanding pricing models.",
+      "Right-sizing with EC2 autoscaling and creating backups with AMI Snapshot.",
+      "Editing security groups for secure service exposure.",
+      "Subdividing a VPC into public and private subnets.",
+      "Using a NAT gateway and assigning an Elastic IP to EC2 instance.",
+      "Creating an Application Load Balancer.",
+      "Installing and configuring the CLI for S3 bucket operations.",
+      "Creating a CloudFront distribution.",
+      "Comparing AWS database options and understanding NoSQL offerings.",
+      "Understanding use cases of AWS-managed caching server.",
+      "Exploring AWS services for large datasets and messaging.",
+      "Exploring AWS-managed application servers and serverless Lambda functions.",
+      "Learning about AWS services for batch-processing and user login management.",
+      "Exploring AWS tools for mobile app development and automated workflows.",
+      "Maintaining cloud infrastructure script with CloudFormation.",
+      "Exploring AWS monitoring and logging tools.",
+      "Browsing AWS artificial intelligence (AI) services.",
+      "Using machine learning for problem spotting.",
+      "Discovering AWS services for web traffic filtering and audit trailing.",
+      "Learning AWS Well-Architected Framework for cloud infrastructure.",
+    ],
   },
-
   {
     name: "Azure Essential Training for Developers",
     slug: "bf0cac80ff7e3f2b8148e20d6ea1fccb6eb15457a184229fee9ff439f652cfba",
@@ -1357,8 +1380,22 @@ const cloudComputing: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/bf0cac80ff7e3f2b8148e20d6ea1fccb6eb15457a184229fee9ff439f652cfba",
     skills: ["Microsoft Azure"],
+    learningOutcomes: [
+      "Understanding Azure subscriptions, resource groups, and regions.",
+      "Exploring the capabilities of Azure App Service.",
+      "Identifying when to use Azure Blob Storage.",
+      "Using Durable Functions in Azure.",
+      "Provisioning a virtual machine in Azure.",
+      "Creating a managed Kubernetes cluster in Azure.",
+      "Understanding authentication options in Azure.",
+      "Using Azure Monitor to assess app health.",
+      "Optimizing apps using Azure Redis.",
+      "Creating an Azure function.",
+      "Using Azure Resource Manager templates.",
+      "Creating containers in Azure.",
+      "Publishing container images to the Azure Container Registry.",
+    ],
   },
-
   {
     name: "Google Cloud Platform (GCP) Essential Training for Developers",
     slug: "1bc3074a5e84539c7bc5fdeeee83438602cc303ba648ec90ef5fc018693e62a1",
@@ -1367,6 +1404,14 @@ const cloudComputing: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/1bc3074a5e84539c7bc5fdeeee83438602cc303ba648ec90ef5fc018693e62a1",
     skills: ["Google Cloud Platform (GCP)"],
+    learningOutcomes: [
+      "Designing, building, and maintaining applications in GCP.",
+      "Deploying and configuring optimized settings in App Engine.",
+      "Setting up Cloud SQL application architecture and connecting to the database from App Engine.",
+      "Saving and serving files through Google Cloud Storage with secure permissions and signed URLs.",
+      "Running background tasks with Google Cloud Tasks and cron jobs with Google Cloud Scheduler.",
+      "Logging, debugging, and optimizing apps with Google Operations tools.",
+    ],
   },
 ];
 
