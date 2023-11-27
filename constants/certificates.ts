@@ -1182,6 +1182,13 @@ const softwareEngineering: Certificate[] = [
       "Linting",
       "Black",
     ],
+    learningOutcomes: [
+      "Using Poetry for Python project and dependency management.",
+      "Writing and running pytests for code quality and functionality.",
+      "Using PEP 8, Black, Flake8, and pre-commit for code tidiness and style guide adherence.",
+      "Using tox for standardized testing across Python versions and environments.",
+      "Setting up a GitHub Action workflow for automated testing and code coverage.",
+    ],
   },
   {
     name: "Introducing Maven",
@@ -1191,6 +1198,14 @@ const softwareEngineering: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/551778db5ecef81f732b9e48d50db3fe709f877f1ac9c834923b0c96bb636e72",
     skills: ["Java", "Maven"],
+    learningOutcomes: [
+      "Exploring POM files.",
+      "Understanding the build life cycle.",
+      "Using build plugins.",
+      "Managing dependencies with Maven.",
+      "Generating Maven reports.",
+      "Working with Maven sites.",
+    ],
   },
   {
     name: "Software Testing Foundations: Test Techniques",
@@ -1204,9 +1219,24 @@ const softwareEngineering: Certificate[] = [
       "Black-Box Testing",
       "White-Box Testing",
       "Experienced-Based Testing",
+      "Python",
+      "Poetry",
+      "Pytest",
+      "PEP 8",
+      "Black",
+      "Flake8",
+      "Pre-commit",
+      "Tox",
+      "GitHub Actions",
+    ],
+    learningOutcomes: [
+      "Creating an open-source project in Python using Poetry.",
+      "Enhancing tests using pytest.",
+      "Tidying up code using PEP 8, Black, Flake8, and pre-commit.",
+      "Standardizing testing using tox.",
+      "Setting up a workflow on GitHub Action.",
     ],
   },
-
   {
     name: "The Git & Github Bootcamp",
     slug: "UC-ba00c0c9-221d-4939-99b4-90244570a81b",
@@ -1215,6 +1245,25 @@ const softwareEngineering: Certificate[] = [
     credentialURL:
       "https://www.udemy.com/certificate/UC-ba00c0c9-221d-4939-99b4-90244570a81b/",
     skills: ["Git", "GitHub", "Version Control"],
+    learningOutcomes: [
+      "Understanding Git's internal workings.",
+      "Explaining Git objects: trees, blobs, commits, and annotated tags.",
+      "Mastering the essential Git workflow: adding & committing.",
+      "Working with Git branches.",
+      "Performing Git merges and resolving merge conflicts.",
+      "Using Git diff to reveal changes over time.",
+      "Mastering Git stashing.",
+      "Undoing changes using git restore, git revert, and git reset.",
+      "Working with local and remote repositories.",
+      "Mastering collaboration workflows: pull requests, 'fork & clone', etc.",
+      "Squashing, cleaning up, and rewriting history using interactive rebase.",
+      "Retrieving 'lost' work using git reflogs.",
+      "Writing custom and powerful Git aliases.",
+      "Marking releases and versions using Git tags.",
+      "Hosting static websites using Github Pages.",
+      "Creating markdown READMEs.",
+      "Sharing code and snippets using Github Gists.",
+    ],
   },
 ];
 
