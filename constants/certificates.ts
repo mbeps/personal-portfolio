@@ -778,6 +778,15 @@ const databases: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/8b2d47f66f59b8b9724a6c1f05f15e27a9b08c3caaf95169c1d6c64537a1d066",
     skills: ["SQL", "Database Management System", "Relational Database"],
+    learningOutcomes: [
+      "Explaining database core concepts.",
+      "Constructing a database testing environment.",
+      "Operating graphical tools to manage databases.",
+      "Defining database table objects.",
+      "Adding data to database tables.",
+      "Exploring core SQL commands for data retrieval.",
+      "Using SQL to manipulate retrieved database data.",
+    ],
   },
   {
     name: "Introduction to MongoDB",
@@ -792,6 +801,17 @@ const databases: Certificate[] = [
       "Database Management System",
       "Document-Oriented Database",
     ],
+    learningOutcomes: [
+      "Introduction to MongoDB Atlas.",
+      "Understanding MongoDB and the Document Model.",
+      "Connecting to a MongoDB Database.",
+      "Performing MongoDB CRUD Operations.",
+      "Using MongoDB Aggregation.",
+      "Creating and using MongoDB Indexes.",
+      "Using MongoDB Atlas Search.",
+      "Introduction to MongoDB Data Modeling.",
+      "Using MongoDB Transactions.",
+    ],
   },
   {
     name: "Redis Essential Training",
@@ -801,6 +821,13 @@ const databases: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/209aec09fbb007c809840a071b5db71dc8e08da5b92799121e158ed1e185062b",
     skills: ["Redis", "NoSQL", "Database Management System"],
+    learningOutcomes: [
+      "Learning core concepts and basic functionality of Redis.",
+      "Understanding different data types and structures in Redis.",
+      "Exploring various ways to read and represent data in Redis.",
+      "Applying Redis knowledge to practical examples.",
+      "Comparing Redis to relational databases and using key naming strategies.",
+    ],
   },
 ];
 
