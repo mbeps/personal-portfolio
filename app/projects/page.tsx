@@ -12,16 +12,23 @@ import Project from "@/types/projects";
 import type { Metadata } from "next";
 import ProjectsList from "./components/ProjectsList";
 import HeadingOne from "@/components/Text/HeadingOne";
+import PageDescription from "@/components/Atoms/PageDescription";
+
+const description = `
+  Discover my portfolio of projects, both current and archived. 
+  Use filters to narrow down projects by category, programming language, and technologies. 
+  Archived projects are hidden by default.
+`;
 
 export const metadata: Metadata = {
   title: "Maruf Bepary - Projects",
-  description:
-    "A list of all the projects I have worked on. The projects are grouped by type.",
+  description: description,
 };
 
 /**
  * Projects page displaying multiple types of projects that I worked on.
  * Projects are grouped by type.
+ * The categories are displayed in this order.
  * The user can filter the projects by type, language, and other options.
  * The user can also search for a specific project:
  * - Name of the project
@@ -47,6 +54,7 @@ const ProjectsPage = () => {
     <section id="projects" className="flex flex-col items-start md:items-end">
       <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
         <HeadingOne title="Projects" />
+        <PageDescription description={description} />
         <ProjectsList allProjects={updatedProjects} />
       </div>
     </section>
