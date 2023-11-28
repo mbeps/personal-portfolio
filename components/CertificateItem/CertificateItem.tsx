@@ -32,7 +32,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
     <div
       className="
       bg-neutral-100 dark:bg-neutral-950  
-      p-3 md:p-6 rounded-xl 
+      p-3 lg:p-6 rounded-xl 
       transition-colors duration-700 
       flex flex-col
       "
@@ -48,7 +48,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
             transform hover:scale-105 
             shadow-xl hover:shadow-2xl
             transition-all duration-500 ease-in-out
-            h-68 md:h-96
+            h-68 md:78 lg:h-96
             mb-6
             w-full
             overflow-hidden 
