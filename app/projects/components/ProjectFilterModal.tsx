@@ -110,7 +110,7 @@ const ProjectFilterModal: React.FC<ProjectFilterModalProps> = ({
                   href={generateUrl({
                     ...filterParams,
                     type,
-                    archived: !showArchived,
+                    archived: true,
                   })}
                   key={type}
                 >
@@ -139,7 +139,7 @@ const ProjectFilterModal: React.FC<ProjectFilterModalProps> = ({
                   href={generateUrl({
                     ...filterParams,
                     language,
-                    archived: !showArchived,
+                    archived: true,
                   })}
                   key={language}
                 >
@@ -168,7 +168,7 @@ const ProjectFilterModal: React.FC<ProjectFilterModalProps> = ({
                   href={generateUrl({
                     ...filterParams,
                     technology,
-                    archived: !showArchived,
+                    archived: true,
                   })}
                   key={technology}
                 >

@@ -72,7 +72,7 @@ const CredentialFilterModal: React.FC<CredentialFilterModalProps> = ({
                 href={generateUrl({
                   ...filterParams,
                   issuer,
-                  archived: !showArchived,
+                  archived: true,
                 })}
                 key={issuer}
               >
@@ -100,7 +100,7 @@ const CredentialFilterModal: React.FC<CredentialFilterModalProps> = ({
                 href={generateUrl({
                   ...filterParams,
                   category,
-                  archived: !showArchived,
+                  archived: true,
                 })}
               >
                 <RadioButton

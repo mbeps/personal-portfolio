@@ -52,7 +52,8 @@ const FilterBlogModal: React.FC<FilterBlogModalProps> = ({
         className="
 				px-8 md:px-0
 				flex flex-row 
-				justify-center mb-4  
+				justify-center 
+        mb-2 -mt-4 
 			"
       >
         <div className="flex flex-row w-full justify-center space-x-2 ">
@@ -68,7 +69,7 @@ const FilterBlogModal: React.FC<FilterBlogModalProps> = ({
 				px-5 md:px-0
 				"
       >
-        <div>
+        <div className="py-4">
           {/* Category Filter */}
           <label htmlFor="type-dropdown" className="font-semibold text-lg">
             Category
