@@ -30,7 +30,7 @@ const SocialIcon: React.FC<SocialIconProps> = ({
     >
       <IconComponent
         className="
-          hover:-translate-y-1 
+          md:hover:-translate-y-1 
           cursor-pointer 
           text-neutral-600 dark:text-neutral-200
           transition-all duration-300

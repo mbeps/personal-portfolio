@@ -58,7 +58,15 @@ const Gallery: React.FC<GalleryProps> = ({ mediaItems }) => {
       <div className="w-full relative">
         <IoIosArrowDropleftCircle
           size={44}
-          className="absolute left-1 top-1/2 transform -translate-y-1/2 text-3xl opacity-30 hover:opacity-100 cursor-pointer text-neutral-400 dark:text-neutral-700 hover:text-red-500 dark:hover:text-red-900 transition-all hover:scale-110 duration-300"
+          className="
+            absolute 
+            left-1 top-1/2 
+            transform -translate-y-1/2 
+            text-3xl 
+            opacity-30 md:hover:opacity-100 
+            cursor-pointer 
+            text-neutral-400 dark:text-neutral-700 md:hover:text-red-500 dark:md:hover:text-red-900 
+            transition-all md:hover:scale-110 duration-300"
           onClick={handlePrev}
         />
 
@@ -79,7 +87,7 @@ const Gallery: React.FC<GalleryProps> = ({ mediaItems }) => {
 
         <IoIosArrowDroprightCircle
           size={44}
-          className="absolute right-1 top-1/2 transform -translate-y-1/2 text-3xl opacity-30 hover:opacity-100 cursor-pointer text-neutral-400 dark:text-neutral-700 hover:text-red-500 dark:hover:text-red-900 transition-all hover:scale-110 duration-300"
+          className="absolute right-1 top-1/2 transform -translate-y-1/2 text-3xl opacity-30 md:hover:opacity-100 cursor-pointer text-neutral-400 dark:text-neutral-700 md:hover:text-red-500 dark:md:hover:text-red-900 transition-all md:hover:scale-110 duration-300"
           onClick={handleNext}
         />
       </div>
@@ -90,9 +98,9 @@ const Gallery: React.FC<GalleryProps> = ({ mediaItems }) => {
             key={idx}
             className={`relative w-16 h-16 ${
               idx === activeIndex
-                ? "border-4 border-red-500 dark:border-red-800 hover:border-red-600 dark:hover:border-red-500"
-                : "border-2 border-neutral-200 dark:border-neutral-700 hover:border-neutral-400 dark:hover:border-red-900"
-            } rounded-lg overflow-hidden cursor-pointer transition-all duration-500 transform hover:scale-110 ease-in-out`}
+                ? "border-4 border-red-500 dark:border-red-800 md:hover:border-red-600 dark:md:hover:border-red-500"
+                : "border-2 border-neutral-200 dark:border-neutral-700 md:hover:border-neutral-400 dark:md:hover:border-red-900"
+            } rounded-lg overflow-hidden cursor-pointer transition-all duration-500 transform md:hover:scale-110 ease-in-out`}
             onClick={() => setActiveIndex(idx)}
           >
             <Image
@@ -102,7 +110,7 @@ const Gallery: React.FC<GalleryProps> = ({ mediaItems }) => {
               width={150}
               height={150}
               loading="lazy"
-              className="w-full h-full object-cover rounded-lg transform hover:scale-105 transition-transform duration-500 ease-in-out"
+              className="w-full h-full object-cover rounded-lg transform md:hover:scale-105 transition-transform duration-500 ease-in-out"
             />
             {media.type === "video" && (
               <div className="absolute inset-0 flex items-center justify-center">
@@ -110,7 +118,7 @@ const Gallery: React.FC<GalleryProps> = ({ mediaItems }) => {
                   size={32}
                   className="
                     text-red-500 dark:text-red-900 
-                    opacity-70 hover:opacity-100 
+                    opacity-70 md:hover:opacity-100 
                     transition-all duration-300
                     "
                 />

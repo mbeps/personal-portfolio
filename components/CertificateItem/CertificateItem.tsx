@@ -46,8 +46,8 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
           className="
             flex justify-center
             rounded-xl
-            transform hover:scale-105 
-            shadow-xl hover:shadow-2xl
+            transform md:hover:scale-105 
+            shadow-xl md:hover:shadow-2xl
             transition-all duration-500 ease-in-out
             h-68 md:78 lg:h-96
             mb-6
@@ -75,9 +75,8 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
           <h1
             className="
               text-3xl md:text-4xl font-bold text-center 
-              hover:text-red-500 dark:hover:text-red-800
+              md:hover:text-red-500 md:dark:hover:text-red-800
               transition-colors duration-700 ease-in-out
-              
               "
           >
             {name}
@@ -108,7 +107,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
           <Link href={customCredentialPage}>
             <BsInfoCircle
               size={30}
-              className="hover:-translate-y-1 transition-transform cursor-pointer"
+              className="md:hover:-translate-y-1 transition-transform cursor-pointer"
             />
           </Link>
           {/* Link to Credential */}
@@ -120,7 +119,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
             >
               <BsArrowUpRightCircle
                 size={30}
-                className="hover:-translate-y-1 transition-transform cursor-pointer"
+                className="md:hover:-translate-y-1 transition-transform cursor-pointer"
               />
             </Link>
           )}

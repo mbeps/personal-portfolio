@@ -16,11 +16,11 @@ const BlogItem: React.FC<BlogMetadata> = (props) => {
         min-h-[180px]
         cursor-pointer
         bg-neutral-100 dark:bg-neutral-800
-        hover:bg-neutral-200 dark:hover:bg-red-950
+        md:hover:bg-neutral-200 md:dark:hover:bg-red-950
         p-4 
         rounded-xl 
-        shadow-md hover:shadow-lg
-        transform hover:scale-105
+        shadow-md md:hover:shadow-lg
+        transform md:hover:scale-105
         animate-slideUpCubiBezier animation-delay-2
         transition-all duration-500 ease-in-out"
       >

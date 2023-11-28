@@ -25,7 +25,7 @@ const Tag: React.FC<TagProps> = ({ children, onClick }) => {
     border-2 border-gray-200 dark:border-red-950
   `;
   const hoverClassName = `
-    hover:border-gray-400 hover:dark:border-red-900
+    md:hover:border-gray-400 md:hover:dark:border-red-900
     cursor-pointer
   `;
 
@@ -39,7 +39,7 @@ const Tag: React.FC<TagProps> = ({ children, onClick }) => {
         <p>{children}</p>
         {onClick && (
           <IoIosArrowForward
-            className={`group-hover:text-red-400 transition-colors duration-200 ${
+            className={`md:group-hover:text-red-400 transition-colors duration-200 ${
               children === "..." ? "bounce-horizontal" : ""
             }`}
           />
