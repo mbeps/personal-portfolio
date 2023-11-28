@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub, BsInfoCircle } from "react-icons/bs";
-import SlideUp from "./Slideup";
 
 /**
  * Card which displays a projects.
@@ -41,40 +40,39 @@ const ProjectItem: React.FC<Project> = ({
   siteURL,
 }) => {
   return (
-    <SlideUp offset="-150px 0px -150px 0px">
-      <div className="bg-neutral-100 dark:bg-neutral-950 p-4 rounded-xl sm:bg-white sm:dark:bg-neutral-900 sm:p-0 transition-colors duration-700 ">
-        <div className="flex flex-col animate-slideUpCubiBezier animation-delay-2 lg:flex-row lg:space-x-12">
-          {/* Project Cover */}
-          {imageURL && (
-            <div
-              className="
+    <div className="bg-neutral-100 dark:bg-neutral-950 p-4 rounded-xl sm:bg-white sm:dark:bg-neutral-900 sm:p-0 transition-colors duration-700 ">
+      <div className="flex flex-col animate-slideUpCubiBezier animation-delay-2 lg:flex-row lg:space-x-12">
+        {/* Project Cover */}
+        {imageURL && (
+          <div
+            className="
                 lg:w-1/2
                 rounded-xl
                 transform hover:scale-105 
                 shadow-xl hover:shadow-2xl
                 transition-all duration-500 ease-in-out
               "
-            >
-              <Link href={`/projects/${slug}`}>
-                <Image
-                  src={imageURL}
-                  key={imageURL}
-                  alt={`${name} cover image`}
-                  width={1000}
-                  height={1000}
-                  className="
+          >
+            <Link href={`/projects/${slug}`}>
+              <Image
+                src={imageURL}
+                key={imageURL}
+                alt={`${name} cover image`}
+                width={1000}
+                height={1000}
+                className="
                   rounded-xl 
                   cursor-pointer"
-                />
-              </Link>
-            </div>
-          )}
+              />
+            </Link>
+          </div>
+        )}
 
-          <div className={`mt-8 ${imageURL ? "lg:w-1/2" : "lg:w-full"}`}>
-            {/* Project Title */}
-            <Link href={`/projects/${slug}`}>
-              <h1
-                className="
+        <div className={`mt-8 ${imageURL ? "lg:w-1/2" : "lg:w-full"}`}>
+          {/* Project Title */}
+          <Link href={`/projects/${slug}`}>
+            <h1
+              className="
                   flex flex-col
                   justify-center items-center md:items-start
                   mb-6
@@ -82,55 +80,54 @@ const ProjectItem: React.FC<Project> = ({
                   hover:text-red-500 dark:hover:text-red-800
                   transition-colors duration-700 ease-in-out
                 "
-              >
-                {name}
-              </h1>
-            </Link>
+            >
+              {name}
+            </h1>
+          </Link>
 
-            {/* Project Description */}
-            <p className="text-xl text-left leading-7 mb-4 text-neutral-600 dark:text-neutral-400">
-              {description}
-            </p>
+          {/* Project Description */}
+          <p className="text-xl text-left leading-7 mb-4 text-neutral-600 dark:text-neutral-400">
+            {description}
+          </p>
 
-            {/* Buttons */}
-            <div
-              className="
+          {/* Buttons */}
+          <div
+            className="
               flex flex-row 
               justify-center md:justify-start 
               align-bottom 
               space-x-4 mt-8"
-            >
-              {/* Project Page */}
-              <Link href={`/projects/${slug}`} title="Project Page">
-                <BsInfoCircle
+          >
+            {/* Project Page */}
+            <Link href={`/projects/${slug}`} title="Project Page">
+              <BsInfoCircle
+                size={30}
+                className="hover:-translate-y-1 transition-transform cursor-pointer"
+              />
+            </Link>
+
+            {/* Repository */}
+            {repoURL && (
+              <Link href={repoURL} target="_blank" title="Repository">
+                <BsGithub
                   size={30}
                   className="hover:-translate-y-1 transition-transform cursor-pointer"
                 />
               </Link>
-
-              {/* Repository */}
-              {repoURL && (
-                <Link href={repoURL} target="_blank" title="Repository">
-                  <BsGithub
-                    size={30}
-                    className="hover:-translate-y-1 transition-transform cursor-pointer"
-                  />
-                </Link>
-              )}
-              {/* Project Website */}
-              {siteURL && (
-                <Link href={siteURL} target="_blank" title="Website">
-                  <BsArrowUpRightCircle
-                    size={30}
-                    className="hover:-translate-y-1 transition-transform cursor-pointer"
-                  />
-                </Link>
-              )}
-            </div>
+            )}
+            {/* Project Website */}
+            {siteURL && (
+              <Link href={siteURL} target="_blank" title="Website">
+                <BsArrowUpRightCircle
+                  size={30}
+                  className="hover:-translate-y-1 transition-transform cursor-pointer"
+                />
+              </Link>
+            )}
           </div>
         </div>
       </div>
-    </SlideUp>
+    </div>
   );
 };
 

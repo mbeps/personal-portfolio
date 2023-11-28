@@ -2,6 +2,7 @@ import updateProjectImages from "@/actions/updateProjectImages";
 import validateSlugs from "@/actions/validateSlug";
 import Button from "@/components/Atoms/Button";
 import ProjectItem from "@/components/ProjectItem/ProjectItem";
+import SlideUp from "@/components/Atoms/Slideup";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import allProjects from "@/constants/projects";
 
@@ -40,17 +41,19 @@ const ProjectsSection = () => {
             .filter((project) => allowedSlugs.includes(project.slug))
             .map((project, idx) => (
               <div key={idx}>
-                <ProjectItem
-                  name={project.name}
-                  slug={project.slug}
-                  description={project.description}
-                  imageURL={project.imageURL}
-                  repoURL={project.repoURL}
-                  siteURL={project.siteURL}
-                  programmingLanguage={project.programmingLanguage}
-                  technologies={project.technologies}
-                  type={project.type}
-                />
+                <SlideUp offset="-150px 0px -150px 0px">
+                  <ProjectItem
+                    name={project.name}
+                    slug={project.slug}
+                    description={project.description}
+                    imageURL={project.imageURL}
+                    repoURL={project.repoURL}
+                    siteURL={project.siteURL}
+                    programmingLanguage={project.programmingLanguage}
+                    technologies={project.technologies}
+                    type={project.type}
+                  />
+                </SlideUp>
               </div>
             ))}
         </div>
