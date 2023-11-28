@@ -1,21 +1,16 @@
 "use client";
 
-import Button from "@/components/Atoms/Button";
+import generateUrl from "@/actions/generateUrl";
+import ClearAllFiltersButton from "@/components/Filters/Page/ClearAllFiltersButton";
+import OpenFilterModalButton from "@/components/Filters/Page/OpenFilterModalButton";
 import SearchInput from "@/components/Inputs/SearchInput";
-import HeadingOne from "@/components/Text/HeadingOne";
 import Project from "@/types/projects";
 import Fuse from "fuse.js";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
-import { AiOutlineClear } from "react-icons/ai";
-import { BsFilterLeft } from "react-icons/bs";
 import { ArchiveToggle } from "./ArchiveToggle";
 import ProjectFilterModal from "./ProjectFilterModal";
 import ProjectsListSection from "./ProjectListSection";
-import FilterParams from "@/types/FilterParams";
-import generateUrl from "@/actions/generateUrl";
-import ClearAllFiltersButton from "@/components/Filters/Page/ClearAllFiltersButton";
-import OpenFilterModalButton from "@/components/Filters/Page/OpenFilterModalButton";
 
 type ProjectsListProps = {
   allProjects: Project[];
@@ -194,66 +189,62 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     searchTerm !== "";
 
   return (
-    <section id="projects" className="flex flex-col items-start md:items-end">
-      <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
-        <HeadingOne title="Projects" />
-
-        <div className="flex flex-col md:flex-row items-center w-full mt-12 p-2 gap-4">
-          {/* Search input */}
-          <div className="w-full md:flex-1">
-            <SearchInput
-              searchTerm={searchTerm}
-              updateSearchTerm={updateSearchTerm}
-              placeholder="Search project name or metadata"
-            />
-          </div>
-
-          {/* Buttons */}
-          <div className="flex flex-row md:flex-1 gap-2 w-full">
-            {/* Filter Button */}
-            <OpenFilterModalButton
-              handleOpenFilterModal={handleOpenFilterModal}
-            />
-            {/* Clear Button */}
-            <ClearAllFiltersButton
-              areFiltersApplied={areFiltersApplied}
-              resetFilters={resetFilters}
-            />
-          </div>
+    <>
+      <div className="flex flex-col md:flex-row items-center w-full mt-12 p-2 gap-4">
+        {/* Search input */}
+        <div className="w-full md:flex-1">
+          <SearchInput
+            searchTerm={searchTerm}
+            updateSearchTerm={updateSearchTerm}
+            placeholder="Search project name or metadata"
+          />
         </div>
 
-        {/* Toggle to display archived projects */}
-        <ArchiveToggle
-          generateUrl={generateUrl}
-          showArchived={showArchived}
-          filterProps={{
-            type: selectedType,
-            technology: selectedTechnology,
-            language: selectedLanguage,
-            search: searchTerm,
-          }}
-        />
-
-        {/* List of projects */}
-        <ProjectsListSection groupedProjects={groupedProjects} />
-        {/* Filter Modal */}
-        <ProjectFilterModal
-          generateUrl={generateUrl}
-          resetFilters={resetFilters}
-          selectedTechnology={selectedTechnology}
-          selectedType={selectedType}
-          selectedLanguage={selectedLanguage}
-          searchTerm={searchTerm}
-          showArchived={showArchived}
-          isFilterModalOpen={isFilterModalOpen}
-          handleCloseModals={handleCloseModals}
-          projectTypes={projectTypes}
-          programmingLanguages={programmingLanguages}
-          technologies={technologies}
-          areFiltersApplied={areFiltersApplied}
-        />
+        {/* Buttons */}
+        <div className="flex flex-row md:flex-1 gap-2 w-full">
+          {/* Filter Button */}
+          <OpenFilterModalButton
+            handleOpenFilterModal={handleOpenFilterModal}
+          />
+          {/* Clear Button */}
+          <ClearAllFiltersButton
+            areFiltersApplied={areFiltersApplied}
+            resetFilters={resetFilters}
+          />
+        </div>
       </div>
-    </section>
+
+      {/* Toggle to display archived projects */}
+      <ArchiveToggle
+        generateUrl={generateUrl}
+        showArchived={showArchived}
+        filterProps={{
+          type: selectedType,
+          technology: selectedTechnology,
+          language: selectedLanguage,
+          search: searchTerm,
+        }}
+      />
+
+      {/* List of projects */}
+      <ProjectsListSection groupedProjects={groupedProjects} />
+      {/* Filter Modal */}
+      <ProjectFilterModal
+        generateUrl={generateUrl}
+        resetFilters={resetFilters}
+        selectedTechnology={selectedTechnology}
+        selectedType={selectedType}
+        selectedLanguage={selectedLanguage}
+        searchTerm={searchTerm}
+        showArchived={showArchived}
+        isFilterModalOpen={isFilterModalOpen}
+        handleCloseModals={handleCloseModals}
+        projectTypes={projectTypes}
+        programmingLanguages={programmingLanguages}
+        technologies={technologies}
+        areFiltersApplied={areFiltersApplied}
+      />
+    </>
   );
 };
 

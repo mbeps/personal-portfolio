@@ -1,20 +1,17 @@
 "use client";
 
-import Button from "@/components/Atoms/Button";
+import generateUrl from "@/actions/generateUrl";
+import { ArchiveToggle } from "@/app/projects/components/ArchiveToggle";
+import ClearAllFiltersButton from "@/components/Filters/Page/ClearAllFiltersButton";
+import OpenFilterModalButton from "@/components/Filters/Page/OpenFilterModalButton";
 import SearchInput from "@/components/Inputs/SearchInput";
 import HeadingOne from "@/components/Text/HeadingOne";
 import Certificate from "@/types/certificates";
 import Fuse from "fuse.js";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
-import { AiOutlineClear } from "react-icons/ai";
-import { BsFilterLeft } from "react-icons/bs";
-import CredentialListSection from "./CredentialListSection";
 import CredentialFilterModal from "./CredentialFilterModal";
-import { ArchiveToggle } from "@/app/projects/components/ArchiveToggle";
-import generateUrl from "@/actions/generateUrl";
-import ClearAllFiltersButton from "@/components/Filters/Page/ClearAllFiltersButton";
-import OpenFilterModalButton from "@/components/Filters/Page/OpenFilterModalButton";
+import CredentialListSection from "./CredentialListSection";
 
 type CredentialsListListProps = {
   allCertificates: Certificate[];
@@ -132,65 +129,61 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     showArchived;
 
   return (
-    <section id="projects" className="flex flex-col items-start md:items-end">
-      <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
-        <HeadingOne title="Credentials" />
-
-        <div className="flex flex-col md:flex-row items-center w-full mt-12 p-2 gap-4">
-          {/* Search input */}
-          <div className="w-full md:flex-1">
-            <SearchInput
-              searchTerm={searchTerm}
-              updateSearchTerm={updateSearchTerm}
-              placeholder="Search certificate name or metadata"
-            />
-          </div>
-
-          {/* Buttons */}
-          <div className="flex flex-row md:flex-1 gap-2 w-full">
-            {/* Filter Button */}
-            <OpenFilterModalButton
-              handleOpenFilterModal={handleOpenFilterModal}
-            />
-            {/* Clear Button */}
-            <ClearAllFiltersButton
-              areFiltersApplied={areFiltersApplied}
-              resetFilters={resetFilters}
-            />
-          </div>
+    <>
+      <div className="flex flex-col md:flex-row items-center w-full mt-12 p-2 gap-4">
+        {/* Search input */}
+        <div className="w-full md:flex-1">
+          <SearchInput
+            searchTerm={searchTerm}
+            updateSearchTerm={updateSearchTerm}
+            placeholder="Search certificate name or metadata"
+          />
         </div>
 
-        {/* Toggle to display archived projects */}
-        <ArchiveToggle
-          generateUrl={generateUrl}
-          showArchived={showArchived}
-          filterProps={{
-            category: selectedCategory,
-            issuer: selectedIssuer,
-            search: searchTerm,
-          }}
-        />
-
-        {/* Toggle to display archived projects */}
-
-        {/* List of projects */}
-        <CredentialListSection groupedCertificates={groupedCertificates} />
-        {/* Filter Modal */}
-        <CredentialFilterModal
-          generateUrl={generateUrl}
-          areFiltersApplied={areFiltersApplied}
-          resetFilters={resetFilters}
-          isFilterModalOpen={isFilterModalOpen}
-          handleCloseModals={handleCloseModals}
-          certificateCategories={certificateCategories}
-          certificateIssuers={certificateIssuers}
-          selectedCategory={selectedCategory}
-          selectedIssuer={selectedIssuer}
-          searchTerm={searchTerm}
-          showArchived={showArchived}
-        />
+        {/* Buttons */}
+        <div className="flex flex-row md:flex-1 gap-2 w-full">
+          {/* Filter Button */}
+          <OpenFilterModalButton
+            handleOpenFilterModal={handleOpenFilterModal}
+          />
+          {/* Clear Button */}
+          <ClearAllFiltersButton
+            areFiltersApplied={areFiltersApplied}
+            resetFilters={resetFilters}
+          />
+        </div>
       </div>
-    </section>
+
+      {/* Toggle to display archived projects */}
+      <ArchiveToggle
+        generateUrl={generateUrl}
+        showArchived={showArchived}
+        filterProps={{
+          category: selectedCategory,
+          issuer: selectedIssuer,
+          search: searchTerm,
+        }}
+      />
+
+      {/* Toggle to display archived projects */}
+
+      {/* List of projects */}
+      <CredentialListSection groupedCertificates={groupedCertificates} />
+      {/* Filter Modal */}
+      <CredentialFilterModal
+        generateUrl={generateUrl}
+        areFiltersApplied={areFiltersApplied}
+        resetFilters={resetFilters}
+        isFilterModalOpen={isFilterModalOpen}
+        handleCloseModals={handleCloseModals}
+        certificateCategories={certificateCategories}
+        certificateIssuers={certificateIssuers}
+        selectedCategory={selectedCategory}
+        selectedIssuer={selectedIssuer}
+        searchTerm={searchTerm}
+        showArchived={showArchived}
+      />
+    </>
   );
 };
 export default CredentialsList;
