@@ -26,23 +26,7 @@ assignees: ''
 <!-- If applicable, add screenshots to help explain your problem. -->
 
 
-## Platforms
-### Desktop (please complete the following information):
- - **OS:** 
- - **Browser:** 
- - **Version:**
-
-### Smartphone (please complete the following information):**
- - **Device:** 
- - **OS:** 
- - **Browser:** 
- - **Version:** 
-
 ## Additional context
 <!-- Add any other context about the problem here. -->
 
 
-## Severity:
-- [ ] **High** (*completely break the functionality and usability of the site*)
-- [ ] **Medium** (*significant disruption or degrade user experience*)
-- [ ] **Low** (*only cause minor disruption keeping the site functional*)

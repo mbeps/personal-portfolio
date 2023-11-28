@@ -22,8 +22,3 @@ assignees: ''
 ## Screenshots
 <!-- Add screenshots or mockups illustrating the proposed functionality. -->
 
-
-## Importance
-- [ ] **High** 
-- [ ] **Medium**
-- [ ] **Low**
