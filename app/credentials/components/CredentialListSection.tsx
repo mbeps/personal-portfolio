@@ -25,7 +25,6 @@ const CredentialsListSection: React.FC<CredentialsListSectionProps> = ({
                   <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
                   <HeadingTwo title={category} />
                   <Grid
-                    columns={2}
                     items={groupedCertificates[category].map(
                       (certificate, idx) => (
                         <CertificateItem
