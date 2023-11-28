@@ -46,8 +46,8 @@ const Dropdown: React.FC<DropdownProps> = ({
                   ? "border-red-500 dark:border-red-950"
                   : "border-transparent"
               }
-              hover:border-red-500 dark:hover:border-red-950
-              shadow-md hover:shadow-lg
+              md:hover:border-red-500 dark:md:hover:border-red-950
+              shadow-md md:hover:shadow-lg
               transition-all duration-500 ease-in-out
               ${className} // Applying the custom classes here
             `}
@@ -77,11 +77,11 @@ const Dropdown: React.FC<DropdownProps> = ({
                       ${option === selected ? "font-bold" : ""}
                       ${
                         active
-                          ? "bg-gray-200 dark:bg-red-950 group:hover:text-neutral-900 dark:group:hover:text-white"
+                          ? "bg-gray-200 dark:bg-red-950 group:md:hover:text-neutral-900 dark:group:md:hover:text-white"
                           : "text-neutral-900 dark:text-neutral-100"
                       } 
                       group flex rounded-lg items-center ${width} px-2 py-2 text-base capitalize
-                      w-full hover:font-bold
+                      w-full md:hover:font-bold
                     `}
                       onClick={() => setSelected(option)}
                     >

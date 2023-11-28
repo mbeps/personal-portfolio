@@ -48,8 +48,8 @@ const ProjectItem: React.FC<Project> = ({
             className="
                 lg:w-1/2
                 rounded-xl
-                transform hover:scale-105 
-                shadow-xl hover:shadow-2xl
+                transform md:hover:scale-105 
+                shadow-xl md:hover:shadow-2xl
                 transition-all duration-500 ease-in-out
               "
           >
@@ -77,7 +77,7 @@ const ProjectItem: React.FC<Project> = ({
                   justify-center items-center md:items-start
                   mb-6
                   text-3xl md:text-4xl font-bold text-center md:text-left 
-                  hover:text-red-500 dark:hover:text-red-800
+                  md:hover:text-red-500 md:dark:hover:text-red-800
                   transition-colors duration-700 ease-in-out
                 "
             >
@@ -102,7 +102,7 @@ const ProjectItem: React.FC<Project> = ({
             <Link href={`/projects/${slug}`} title="Project Page">
               <BsInfoCircle
                 size={30}
-                className="hover:-translate-y-1 transition-transform cursor-pointer"
+                className="md:hover:-translate-y-1 transition-transform cursor-pointer"
               />
             </Link>
 
@@ -111,7 +111,7 @@ const ProjectItem: React.FC<Project> = ({
               <Link href={repoURL} target="_blank" title="Repository">
                 <BsGithub
                   size={30}
-                  className="hover:-translate-y-1 transition-transform cursor-pointer"
+                  className="md:hover:-translate-y-1 transition-transform cursor-pointer"
                 />
               </Link>
             )}
@@ -120,7 +120,7 @@ const ProjectItem: React.FC<Project> = ({
               <Link href={siteURL} target="_blank" title="Website">
                 <BsArrowUpRightCircle
                   size={30}
-                  className="hover:-translate-y-1 transition-transform cursor-pointer"
+                  className="md:hover:-translate-y-1 transition-transform cursor-pointer"
                 />
               </Link>
             )}

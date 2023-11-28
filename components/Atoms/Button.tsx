@@ -60,27 +60,27 @@ const Button = ({
     px-6 py-3 rounded-xl cursor-pointer 
     transition-all duration-500 
     font-semibold
-    hover:bg-red-400 hover:dark:bg-red-950`;
+    md:hover:bg-red-400 md:hover:dark:bg-red-950`;
 
   const filled = `
 		text-neutral-100 
-		shadow-xl hover:shadow-lg   
+		shadow-xl md:hover:shadow-lg   
 		bg-red-500 dark:bg-red-800`;
   const outlined = `
-		text-red-500 hover:text-neutral-100
-		dark:text-red-500 dark:hover:text-neutral-100
+		text-red-500 md:hover:text-neutral-100
+		dark:text-red-500 dark:md:hover:text-neutral-100
 		border-red-500 dark:border-red-900 border-2 
-		bg-transparent hover:bg-red-400 dark:hover:bg-red-900`;
+		bg-transparent md:hover:bg-red-400 dark:md:hover:bg-red-900`;
   const ghost = `text-red-500 
 		bg-transparent
-		border-0  hover:text-neutral-100`;
+		border-0  md:hover:text-neutral-100`;
   const gradient = `
     text-neutral-100 
     bg-gradient-to-r 
     from-red-600 to-amber-500 
     dark:from-red-800 dark:to-amber-700
-    transform hover:scale-105
-    shadow-xl hover:shadow-3xl
+    transform md:hover:scale-105
+    shadow-xl md:hover:shadow-3xl
     `;
 
   const disabledStyle = `
