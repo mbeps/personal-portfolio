@@ -11,6 +11,7 @@ import {
 import Project from "@/types/projects";
 import type { Metadata } from "next";
 import ProjectsList from "./components/ProjectsList";
+import HeadingOne from "@/components/Text/HeadingOne";
 
 export const metadata: Metadata = {
   title: "Maruf Bepary - Projects",
@@ -42,7 +43,14 @@ const ProjectsPage = () => {
 
   const updatedProjects = updateProjectImages(allProjects);
 
-  return <ProjectsList allProjects={updatedProjects} />;
+  return (
+    <section id="projects" className="flex flex-col items-start md:items-end">
+      <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
+        <HeadingOne title="Projects" />
+        <ProjectsList allProjects={updatedProjects} />
+      </div>
+    </section>
+  );
 };
 
 export default ProjectsPage;
