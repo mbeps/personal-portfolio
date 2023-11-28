@@ -3,18 +3,27 @@ Welcome to my personal portfolio website! Explore my skills, projects, and who I
 
 # **Features**
 
-This personal portfolio offers a multitude of exciting features:
+- **Skills Showcase**: This section displays my proficiency in various languages, skills, and technologies. Skills are grouped together for convenient viewing, with modal presentations offering detailed insights. Select languages include comprehensive details to provide a deeper understanding of my expertise.
 
-- **Skills Showcase**: Demonstrates the languages, skills, and technologies that I am proficient in. The portfolio offers a detailed view of skills and technologies, and they can be grouped together for convenient viewing in a modal. Extra details are provided for some languages to provide comprehensive insights.
+- **Project Portfolio**: 
+  - **Categories & Filters**: Projects are categorized for easy navigation. You can filter projects by categories like web development, machine learning, etc., as well as by language or technologies used.
+  - **Search & Archive**: A search function allows for quick project discovery. Additionally, archived projects are available but not displayed by default.
+  - **Project Details**: Clicking on a project opens its dedicated page, featuring a gallery of images, demo videos, a descriptive overview, and the project's tech stack.
+  - **Links & Reports**: Access direct links to the project's GitHub repository and deployed site if available. Projects may also include a list of features and reflective reports.
 
-- **Project Portfolio**: Highlights a selection of my projects on the main page. An extended portfolio can be accessed on the project page, including optional site links to live projects, repository links to view the project code, and a quick view of the project stack to reveal the language and technologies used. Some projects also include reflective blogs. You can also explore the gallery of images for each project. Furthermore, you can filter projects by categories (like web development, machine learning, etc.) to view specific types of projects.
+- **Credentials Section**:
+  - **Certificates & Qualifications**: View my array of certificates and qualifications, sortable by issuer and category, and searchable for ease of access.
+  - **Archived Credentials**: Some credentials are archived and not shown by default, ensuring a streamlined experience.
+  - **Detailed Certificate View**: Opening a certificate reveals its image, description, learning outcomes, issuing authority, skills gained, and a link to the issuer's page if available.
 
-- **Blog Space**: A dedicated page where you can read markdown blogs that I write. Here, I share insights, learning experiences, and various thoughts on technology and programming.
+- **Blog Space**:
+  - **Technical Blogs**: Read markdown blogs where I share my thoughts and experiences in technology and programming.
+  - **Organization & Accessibility**: Blogs are grouped into categories. Users can search and filter blogs by category for a tailored reading experience.
+  - **Detailed Blog Articles**: Clicking on a blog title opens the full article, providing an immersive and informative reading experience.
 
-- **Light and Dark Mode**: The portfolio supports a light and a dark mode. You can switch between the two according to your preference for a comfortable browsing experience.
+- **Light and Dark Mode**: Switch between light and dark modes to suit your browsing preferences, ensuring a comfortable and personalized experience.
 
-With a responsive design, captivating sections, and a journey into my development experience, my personal portfolio welcomes you!
-
+My portfolio is designed to be responsive and engaging, inviting you to explore my journey in the world of development with ease and interest.
 
 # **Requirements**
 These are the requirements needed to run the project:
