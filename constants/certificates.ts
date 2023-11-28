@@ -1269,6 +1269,7 @@ const mathematics: Certificate[] = [
       "Learning projectiles.",
       "Applying variable acceleration kinematics.",
     ],
+    archived: true,
   },
   {
     name: "Complete A-Level Pure Maths Course in 10 Lectures",
@@ -1313,6 +1314,7 @@ const mathematics: Certificate[] = [
       "Understanding differentiation.",
       "Learning integration.",
     ],
+    archived: true,
   },
   {
     name: "Complete A-Level Maths: Statistics in 6 Lectures",
@@ -1358,6 +1360,7 @@ const mathematics: Certificate[] = [
       "Understanding Venn diagram, tree diagram, Conditional Probability.",
       "Analyzing large Data Set.",
     ],
+    archived: true,
   },
 ];
 
