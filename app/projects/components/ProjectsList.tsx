@@ -15,6 +15,7 @@ import ProjectsListSection from "./ProjectListSection";
 import FilterParams from "@/types/FilterParams";
 import generateUrl from "@/actions/generateUrl";
 import ClearAllFiltersButton from "@/components/Filters/Page/ClearAllFiltersButton";
+import OpenFilterModalButton from "@/components/Filters/Page/OpenFilterModalButton";
 
 type ProjectsListProps = {
   allProjects: Project[];
@@ -210,29 +211,9 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
           {/* Buttons */}
           <div className="flex flex-row md:flex-1 gap-2 w-full">
             {/* Filter Button */}
-            <Button
-              variant="outlined"
-              onClick={handleOpenFilterModal}
-              className={`
-                px-4 py-2 w-full
-                text-base font-medium text-neutral-700 dark:text-neutral-200 capitalize hover:text-neutral-700 dark:hover:text-neutral-200
-                rounded-xl
-                shadow-md hover:shadow-lg focus:shadow-lg
-                bg-neutral-100 dark:bg-neutral-800 
-                hover:bg-neutral-100 dark:hover:bg-neutral-800
-                border-2 border-transparent dark:border-transparent
-                hover:border-red-500 dark:hover:border-red-800
-                transition-all duration-500 ease-in-out
-              `}
-            >
-              <div className="flex items-center space-x-2">
-                <BsFilterLeft
-                  fontSize={24}
-                  className="text-neutral-700 dark:text-neutral-200"
-                />
-                <span>Filter</span>
-              </div>
-            </Button>
+            <OpenFilterModalButton
+              handleOpenFilterModal={handleOpenFilterModal}
+            />
             {/* Clear Button */}
             <ClearAllFiltersButton
               areFiltersApplied={areFiltersApplied}
