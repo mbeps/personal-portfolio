@@ -36,8 +36,9 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
       transition-colors duration-700 
       flex flex-col
       animate-slideUpCubiBezier animation-delay-2
+      h-full 
+      md:min-w-[550px] md:max-w-[550px]
       "
-      style={{ height: "auto" }}
     >
       {/* Certificate Image */}
       {certificateImage && (
@@ -83,16 +84,6 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
           </h1>
         </Link>
 
-        {/* Slug */}
-        <p
-          className="
-          text-l text-center leading-7
-          text-neutral-400 dark:text-neutral-600 
-          overflow-auto break-words"
-        >
-          {slug}
-        </p>
-        {/* Issuer Tag */}
         <div className="w-full flex justify-center">
           <Tag>{issuer}</Tag>
         </div>

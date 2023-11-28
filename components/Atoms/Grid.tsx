@@ -2,23 +2,32 @@ import React, { ReactNode } from "react";
 
 interface GridProps {
   items: ReactNode[];
+  columns: number;
 }
 
-const Grid: React.FC<GridProps> = ({ items }) => {
-  const isOddTotal = items.length % 2 !== 0;
+const Grid: React.FC<GridProps> = ({ items, columns }) => {
+  // Calculate the number of items in the last row
+  const lastRowItemCount = items.length % columns;
+  const isLastRowIncomplete = lastRowItemCount !== 0;
+
+  // Determine the CSS class for grid columns based on the 'columns' prop
+  const gridColumnsClass = `grid-cols-1 md:grid-cols-${columns}`;
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-x-5">
+    <div className={`grid ${gridColumnsClass} gap-5 md:gap-x-5`}>
       {items.map((item, idx) => {
-        const isLastItem = idx === items.length - 1;
+        const isLastRowStart = idx >= items.length - lastRowItemCount;
 
-        if (isLastItem && isOddTotal) {
+        if (isLastRowStart && isLastRowIncomplete) {
+          // For items in the last row, when it's incomplete
+          const colSpanClass = `md:col-span-${columns / lastRowItemCount}`;
           return (
-            <div key={idx} className="md:col-span-2 flex justify-center">
+            <div key={idx} className={`flex justify-center ${colSpanClass}`}>
               {item}
             </div>
           );
         } else {
+          // Regular grid item
           return <div key={idx}>{item}</div>;
         }
       })}

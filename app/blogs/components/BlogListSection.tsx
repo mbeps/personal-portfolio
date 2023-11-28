@@ -28,6 +28,7 @@ const BlogListSection: React.FC<BlogListSectionProps> = ({ groupedBlogs }) => {
                   {/* Assuming HeadingTwo is a component you have for rendering titles */}
                   <HeadingTwo title={category} />
                   <Grid
+                    columns={2}
                     items={groupedBlogs[category].map((blog, idx) => (
                       <BlogItem key={idx} {...blog} />
                     ))}
