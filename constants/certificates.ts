@@ -318,7 +318,7 @@ const machineLearning: Certificate[] = [
     name: "Introduction to Artificial Intelligence",
     slug: "9f61617caf2fc21f029abd857a03a29758d7e822215d3677eb938b4e29e5da78",
     category: "Machine Learning",
-    issuer: "LinkedIn",
+    issuer: "NASBA",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/9f61617caf2fc21f029abd857a03a29758d7e822215d3677eb938b4e29e5da78",
     skills: [
