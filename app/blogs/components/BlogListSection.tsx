@@ -1,3 +1,4 @@
+import Grid from "@/components/Atoms/Grid";
 import BlogItem from "@/components/Blogs/BlogItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import { BlogMetadata } from "@/types/blog";
@@ -26,11 +27,12 @@ const BlogListSection: React.FC<BlogListSectionProps> = ({ groupedBlogs }) => {
                   <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
                   {/* Assuming HeadingTwo is a component you have for rendering titles */}
                   <HeadingTwo title={category} />
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    {groupedBlogs[category].map((blog, idx) => (
+                  <Grid
+                    columns={2}
+                    items={groupedBlogs[category].map((blog, idx) => (
                       <BlogItem key={idx} {...blog} />
                     ))}
-                  </div>
+                  />
                 </div>
               </section>
             )

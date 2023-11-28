@@ -1,3 +1,4 @@
+import Grid from "@/components/Atoms/Grid";
 import CertificateItem from "@/components/CertificateItem/CertificateItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import Certificate from "@/types/certificates";
@@ -23,21 +24,24 @@ const CredentialsListSection: React.FC<CredentialsListSectionProps> = ({
                 <div className="flex flex-col space-y-20">
                   <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
                   <HeadingTwo title={category} />
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {groupedCertificates[category].map((certificate, idx) => (
-                      <CertificateItem
-                        key={idx}
-                        name={certificate.name}
-                        slug={certificate.slug}
-                        description={certificate.description}
-                        issuer={certificate.issuer}
-                        credentialURL={certificate.credentialURL}
-                        skills={certificate.skills}
-                        certificateImage={certificate.certificateImage}
-                        category={certificate.category}
-                      />
-                    ))}
-                  </div>
+                  <Grid
+                    columns={2}
+                    items={groupedCertificates[category].map(
+                      (certificate, idx) => (
+                        <CertificateItem
+                          key={idx}
+                          name={certificate.name}
+                          slug={certificate.slug}
+                          description={certificate.description}
+                          issuer={certificate.issuer}
+                          credentialURL={certificate.credentialURL}
+                          skills={certificate.skills}
+                          certificateImage={certificate.certificateImage}
+                          category={certificate.category}
+                        />
+                      )
+                    )}
+                  />
                 </div>
               </section>
             )
