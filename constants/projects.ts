@@ -19,7 +19,7 @@ const webdevProjects: Project[] = [
     programmingLanguage: `TypeScript`,
     technologies: [
       `Next.JS`,
-      "React.js",
+      "React",
       `Chakra UI`,
       `Firebase`,
       `Node.js`,
@@ -67,7 +67,7 @@ const webdevProjects: Project[] = [
     programmingLanguage: `TypeScript`,
     technologies: [
       "Next.JS",
-      "React.js",
+      "React",
       `Node.js`,
       "NextAuth",
       "MongoDB",
@@ -115,7 +115,7 @@ const webdevProjects: Project[] = [
     siteURL: "https://magician-ai.vercel.app/",
     technologies: [
       `Next.JS`,
-      "React.js",
+      "React",
       `Shadcn UI`,
       `Radix UI`,
       `Tailwind CSS`,
@@ -168,7 +168,7 @@ const webdevProjects: Project[] = [
     programmingLanguage: `TypeScript`,
     technologies: [
       `Next.JS`,
-      "React.js",
+      "React",
       `Node.js`,
       `Supabase`,
       "PostgreSQL",
@@ -218,7 +218,7 @@ const extraWebDevProjects: Project[] = [
     type: "Full-Stack Web Dev",
     technologies: [
       "Next.JS",
-      "React.js",
+      "React",
       "Tailwind CSS",
       "Shadcn UI",
       "Node.js",
@@ -289,7 +289,7 @@ const extraWebDevProjects: Project[] = [
     programmingLanguage: `TypeScript`,
     technologies: [
       `Next.JS`,
-      "React.js",
+      "React",
       "Shadcn UI",
       `Tailwind CSS`,
       `Node.js`,
@@ -336,7 +336,7 @@ const extraWebDevProjects: Project[] = [
     programmingLanguage: `TypeScript`,
     technologies: [
       `Next.JS`,
-      "React.js",
+      "React",
       `Tailwind CSS`,
       `Node.js`,
       "Jotai",
