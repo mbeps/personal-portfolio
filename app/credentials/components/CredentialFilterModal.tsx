@@ -2,6 +2,8 @@
 
 import { ArchiveToggle } from "@/app/projects/components/ArchiveToggle";
 import Button from "@/components/Atoms/Button";
+import ClearAllFiltersButton from "@/components/Filters/Modal/ClearAllFiltersButton";
+import CloseFilterModalButton from "@/components/Filters/Modal/CloseFilterModalButton";
 import RadioButton from "@/components/Inputs/RadioButton";
 import Modal from "@/components/Modal/Modal";
 import FilterParams from "@/types/FilterParams";
@@ -137,28 +139,12 @@ const CredentialFilterModal: React.FC<CredentialFilterModalProps> = ({
               justify-center items-center"
         >
           {/* Clear Filters Button */}
-          <Button
-            variant="outlined"
-            onClick={resetFilters}
-            disabled={!areFiltersApplied}
-            className="w-full"
-          >
-            <div className="flex items-center justify-center space-x-2">
-              <AiOutlineClear fontSize={24} />
-              <span>Clear</span>
-            </div>
-          </Button>
+          <ClearAllFiltersButton
+            resetFilters={resetFilters}
+            areFiltersApplied={areFiltersApplied}
+          />
           {/* Close Modal Button */}
-          <Button
-            variant="filled"
-            onClick={handleCloseModals}
-            className="w-full"
-          >
-            <div className="flex items-center justify-center space-x-2">
-              <MdClear fontSize={24} />
-              <span>Close</span>
-            </div>
-          </Button>
+          <CloseFilterModalButton handleCloseModals={handleCloseModals} />
         </div>
       </div>
     </Modal>

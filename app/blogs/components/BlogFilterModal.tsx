@@ -1,13 +1,15 @@
 "use client";
 
 import Button from "@/components/Atoms/Button";
+import ClearAllFiltersButton from "@/components/Filters/Modal/ClearAllFiltersButton";
+import CloseFilterModalButton from "@/components/Filters/Modal/CloseFilterModalButton";
 import RadioButton from "@/components/Inputs/RadioButton";
 import Modal from "@/components/Modal/Modal";
 import Link from "next/link";
 import { AiOutlineClear } from "react-icons/ai";
 import { MdClear } from "react-icons/md";
 
-interface FilterBlogModalProps {
+interface BlogFilterModalProps {
   resetFilters: () => void;
   generateUrl: (category: string, search: string) => string;
   handleCloseModals: () => void;
@@ -31,7 +33,7 @@ interface FilterBlogModalProps {
  * @param blogCategories (string[]) - list of blog categories
  * @returns (JSX.Element) - filter modal for blogs
  */
-const FilterBlogModal: React.FC<FilterBlogModalProps> = ({
+const BlogFilterModal: React.FC<BlogFilterModalProps> = ({
   resetFilters,
   generateUrl,
   isFilterModalOpen,
@@ -101,32 +103,16 @@ const FilterBlogModal: React.FC<FilterBlogModalProps> = ({
 					justify-center items-center"
         >
           {/* Clear Filters Button */}
-          <Button
-            variant="outlined"
-            onClick={resetFilters}
-            disabled={!areFiltersApplied}
-            className="w-full"
-          >
-            <div className="flex items-center justify-center space-x-2">
-              <AiOutlineClear fontSize={24} />
-              <span>Clear</span>
-            </div>
-          </Button>
+          <ClearAllFiltersButton
+            areFiltersApplied={areFiltersApplied}
+            resetFilters={resetFilters}
+          />
           {/* Close Modal Button */}
-          <Button
-            variant="filled"
-            onClick={handleCloseModals}
-            className="w-full"
-          >
-            <div className="flex items-center justify-center space-x-2">
-              <MdClear fontSize={24} />
-              <span>Close</span>
-            </div>
-          </Button>
+          <CloseFilterModalButton handleCloseModals={handleCloseModals} />
         </div>
       </div>
     </Modal>
   );
 };
 
-export default FilterBlogModal;
+export default BlogFilterModal;
