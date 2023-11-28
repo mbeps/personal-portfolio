@@ -36,7 +36,7 @@ const OpenFilterModalButton: React.FC<OpenFilterModalButtonProps> = ({
           fontSize={24}
           className="text-neutral-700 dark:text-neutral-200"
         />
-        <span>Filter</span>
+        <span>Filters</span>
       </div>
     </Button>
   );
