@@ -1,6 +1,7 @@
 "use client";
 
 import Button from "@/components/Atoms/Button";
+import ClearAllFiltersButton from "@/components/Filters/Modal/ClearAllFiltersButton";
 import RadioButton from "@/components/Inputs/RadioButton";
 import Modal from "@/components/Modal/Modal";
 import Link from "next/link";
@@ -101,17 +102,10 @@ const BlogFilterModal: React.FC<BlogFilterModalProps> = ({
 					justify-center items-center"
         >
           {/* Clear Filters Button */}
-          <Button
-            variant="outlined"
-            onClick={resetFilters}
-            disabled={!areFiltersApplied}
-            className="w-full"
-          >
-            <div className="flex items-center justify-center space-x-2">
-              <AiOutlineClear fontSize={24} />
-              <span>Clear</span>
-            </div>
-          </Button>
+          <ClearAllFiltersButton
+            areFiltersApplied={areFiltersApplied}
+            resetFilters={resetFilters}
+          />
           {/* Close Modal Button */}
           <Button
             variant="filled"
