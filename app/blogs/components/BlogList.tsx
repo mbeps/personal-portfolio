@@ -1,17 +1,14 @@
 "use client";
 
-import Button from "@/components/Atoms/Button";
+import ClearAllFiltersButton from "@/components/Filters/Page/ClearAllFiltersButton";
+import OpenFilterModalButton from "@/components/Filters/Page/OpenFilterModalButton";
 import SearchInput from "@/components/Inputs/SearchInput";
 import { BlogMetadata } from "@/types/blog";
 import Fuse from "fuse.js";
 import { useRouter, useSearchParams } from "next/navigation"; // Add this import for Next.js router
 import { useState } from "react";
-import { AiOutlineClear } from "react-icons/ai";
-import { BsFilterLeft } from "react-icons/bs";
 import BlogListSection from "./BlogListSection";
-import FilterBlogModal from "./FilterBlogModal";
-import ClearAllFiltersButton from "@/components/Filters/Page/ClearAllFiltersButton";
-import OpenFilterModalButton from "@/components/Filters/Page/OpenFilterModalButton";
+import BlogFilterModal from "./BlogFilterModal";
 
 interface BlogListProps {
   blogs: BlogMetadata[];
@@ -160,7 +157,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
       <BlogListSection groupedBlogs={groupedBlogs} />
 
       {/* Filter Modal */}
-      <FilterBlogModal
+      <BlogFilterModal
         resetFilters={resetFilters}
         generateUrl={generateUrl}
         handleCloseModals={handleCloseModals}

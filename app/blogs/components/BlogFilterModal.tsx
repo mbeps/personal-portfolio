@@ -7,7 +7,7 @@ import Link from "next/link";
 import { AiOutlineClear } from "react-icons/ai";
 import { MdClear } from "react-icons/md";
 
-interface FilterBlogModalProps {
+interface BlogFilterModalProps {
   resetFilters: () => void;
   generateUrl: (category: string, search: string) => string;
   handleCloseModals: () => void;
@@ -31,7 +31,7 @@ interface FilterBlogModalProps {
  * @param blogCategories (string[]) - list of blog categories
  * @returns (JSX.Element) - filter modal for blogs
  */
-const FilterBlogModal: React.FC<FilterBlogModalProps> = ({
+const BlogFilterModal: React.FC<BlogFilterModalProps> = ({
   resetFilters,
   generateUrl,
   isFilterModalOpen,
@@ -129,4 +129,4 @@ const FilterBlogModal: React.FC<FilterBlogModalProps> = ({
   );
 };
 
-export default FilterBlogModal;
+export default BlogFilterModal;
