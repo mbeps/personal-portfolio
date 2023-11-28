@@ -21,6 +21,7 @@ const BlogItem: React.FC<BlogMetadata> = (props) => {
         rounded-xl 
         shadow-md hover:shadow-lg
         transform hover:scale-105
+        animate-slideUpCubiBezier animation-delay-2
         transition-all duration-500 ease-in-out"
       >
         <h2 className=" text-xl font-bold  mb-4 text-neutral-900 dark:text-neutral-100">

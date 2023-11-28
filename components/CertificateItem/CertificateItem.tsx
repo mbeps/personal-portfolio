@@ -35,6 +35,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
       p-3 lg:p-6 rounded-xl 
       transition-colors duration-700 
       flex flex-col
+      animate-slideUpCubiBezier animation-delay-2
       "
       style={{ height: "auto" }}
     >
