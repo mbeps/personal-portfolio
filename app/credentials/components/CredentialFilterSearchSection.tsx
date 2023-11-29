@@ -24,7 +24,7 @@ type CredentialsListListProps = {
  * @param allCertificates (Certificate[]): list of all certificates
  * @returns (JSX.Element): list of all certificates
  */
-const CredentialsList: React.FC<CredentialsListListProps> = ({
+const CredentialFilterSearchSection: React.FC<CredentialsListListProps> = ({
   allCertificates,
 }) => {
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
@@ -52,30 +52,6 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     setIsFilterModalOpen(false);
   };
 
-  const searchOptions = {
-    keys: ["name", "issuer", "skills", "category"], // Only search these properties
-    threshold: 0.3, // Lower threshold means more results
-  };
-
-  const fuse = new Fuse(allCertificates, searchOptions);
-
-  const groupCertificatesByCategory = (
-    certificates: Certificate[]
-  ): Record<string, Certificate[]> => {
-    return certificates.reduce<Record<string, Certificate[]>>(
-      (grouped, certificate) => {
-        (grouped[certificate.category] =
-          grouped[certificate.category] || []).push(certificate);
-        return grouped;
-      },
-      {}
-    );
-  };
-
-  const searchedCertificates = searchTerm
-    ? fuse.search(searchTerm).map((result) => result.item)
-    : allCertificates;
-
   //^ List of options
   const certificateCategories: string[] = [
     "All",
@@ -101,15 +77,6 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
       })
     );
   };
-
-  const filteredCertificates = searchedCertificates.filter(
-    (certificate) =>
-      (showArchived || !certificate.archived) &&
-      (selectedIssuer === "All" || certificate.issuer === selectedIssuer) &&
-      (selectedCategory === "All" || certificate.category === selectedCategory)
-  );
-
-  const groupedCertificates = groupCertificatesByCategory(filteredCertificates);
 
   const resetFilters = () => {
     router.push(
@@ -167,8 +134,6 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
 
       {/* Toggle to display archived projects */}
 
-      {/* List of projects */}
-      <CredentialListSection groupedCertificates={groupedCertificates} />
       {/* Filter Modal */}
       <CredentialFilterModal
         generateUrl={generateUrl}
@@ -186,4 +151,4 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     </>
   );
 };
-export default CredentialsList;
+export default CredentialFilterSearchSection;
