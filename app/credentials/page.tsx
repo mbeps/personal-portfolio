@@ -75,7 +75,12 @@ const CredentialsPage: React.FC<CredentialsPageProps> = ({
     );
   };
 
-  const searchFields = ["name", "issuer", "skills", "category"];
+  const searchFields: Array<keyof Certificate> = [
+    "name",
+    "issuer",
+    "skills",
+    "category",
+  ];
 
   const filteredCertificates = updatedCertificates.filter(
     (certificate) =>
@@ -93,12 +98,6 @@ const CredentialsPage: React.FC<CredentialsPageProps> = ({
       <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
         <HeadingOne title="Credentials" />
         <PageDescription description={description} />
-
-        <p>{`Slug: ${slug}`}</p>
-        <p>{`Issuer: ${selectedIssuer}`}</p>
-        <p>{`Category: ${selectedCategory}`}</p>
-        <p>{`Search term: ${searchTerm}`}</p>
-        <p>{`Show archived: ${showArchived}`}</p>
 
         <CredentialFilterSearchSection allCertificates={updatedCertificates} />
         {/* List of projects */}

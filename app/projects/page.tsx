@@ -10,9 +10,11 @@ import {
 } from "@/constants/projects";
 import Project from "@/types/projects";
 import type { Metadata } from "next";
-import ProjectsList from "./components/ProjectsList";
+import ProjectsFilterSearchSection from "./components/ProjectsFilterSearchSection";
 import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/Atoms/PageDescription";
+import ProjectsListSection from "./components/ProjectListSection";
+import searchStringInFields from "@/actions/searchStringInFields";
 
 const description = `
   Discover my portfolio of projects, both current and archived. 
@@ -24,6 +26,11 @@ export const metadata: Metadata = {
   title: "Maruf Bepary - Projects",
   description: description,
 };
+
+interface ProjectPageProps {
+  params: { slug: string };
+  searchParams: { [key: string]: string | undefined };
+}
 
 /**
  * Projects page displaying multiple types of projects that I worked on.
@@ -37,7 +44,7 @@ export const metadata: Metadata = {
  * - Technologies used
  * @returns (JSX.Element): Projects page
  */
-const ProjectsPage = () => {
+const ProjectsPage: React.FC<ProjectPageProps> = ({ params, searchParams }) => {
   const allProjects: Project[] = [
     ...webdevProjects,
     ...extraWebDevProjects,
@@ -47,15 +54,69 @@ const ProjectsPage = () => {
     ...gameDevProjects,
     ...otherProjects,
   ];
-
   const updatedProjects = updateProjectImages(allProjects);
+
+  const slug = params.slug;
+  const selectedType = searchParams.type || "All";
+  const selectedLanguage = searchParams.language || "All";
+  const selectedTechnology = searchParams.technology || "All";
+  const searchTerm = searchParams.search || "";
+  const showArchived = searchParams.archived === "true" || false;
+
+  /**
+   * Groups the projects by type.
+   * Each project type is a key in the object.
+   * @param projects (Project[]): list of projects to be grouped by type
+   * @returns (Record<string, Project[]>): object with project types as keys and list of projects as values
+   */
+  const groupProjectsByType = (
+    projects: Project[]
+  ): Record<string, Project[]> => {
+    return projects.reduce<Record<string, Project[]>>((grouped, project) => {
+      (grouped[project.type] = grouped[project.type] || []).push(project);
+      return grouped;
+    }, {});
+  };
+
+  const searchFields: Array<keyof Project> = [
+    "name",
+    "programmingLanguage",
+    "tags",
+    "technologies",
+  ];
+
+  /**
+   * Filters the projects based on the the filter options.
+   * Both language and type can be filtered.
+   * If 'All' is selected, then all projects are displayed.
+   * Archived projects are not displayed by default.
+   */
+  const filteredProjects = updatedProjects.filter(
+    (project) =>
+      (showArchived || !project.archived) &&
+      (selectedType === "All" || project.type === selectedType) &&
+      (selectedLanguage === "All" ||
+        project.programmingLanguage === selectedLanguage) &&
+      (selectedTechnology === "All" ||
+        (project.technologies &&
+          project.technologies.includes(selectedTechnology))) &&
+      searchStringInFields(searchTerm, project, searchFields)
+  );
+
+  /**
+   * Projects categorized by type.
+   */
+  const groupedProjects = groupProjectsByType(filteredProjects);
 
   return (
     <section id="projects" className="flex flex-col items-start md:items-end">
       <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
         <HeadingOne title="Projects" />
         <PageDescription description={description} />
-        <ProjectsList allProjects={updatedProjects} />
+
+        <ProjectsFilterSearchSection allProjects={updatedProjects} />
+        {/* List of projects */}
+        <ProjectsListSection groupedProjects={groupedProjects} />
       </div>
     </section>
   );

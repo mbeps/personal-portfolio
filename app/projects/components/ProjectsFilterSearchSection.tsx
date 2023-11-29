@@ -5,18 +5,18 @@ import ClearAllFiltersButton from "@/components/Filters/Page/ClearAllFiltersButt
 import OpenFilterModalButton from "@/components/Filters/Page/OpenFilterModalButton";
 import SearchInput from "@/components/Inputs/SearchInput";
 import Project from "@/types/projects";
-import Fuse from "fuse.js";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import { ArchiveToggle } from "./ArchiveToggle";
 import ProjectFilterModal from "./ProjectFilterModal";
-import ProjectsListSection from "./ProjectListSection";
 
-type ProjectsListProps = {
+type ProjectsFilterSearchSectionProps = {
   allProjects: Project[];
 };
 
-const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
+const ProjectsFilterSearchSection: React.FC<
+  ProjectsFilterSearchSectionProps
+> = ({ allProjects }) => {
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
 
   const searchParams = useSearchParams();
@@ -42,45 +42,6 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const handleCloseModals = () => {
     setIsFilterModalOpen(false);
   };
-
-  /**
-   * Fuse.js options for fuzzy search.
-   * These are the only properties that are searched.
-   * These are the same ones from the Project type.
-   */
-  const searchOptions = {
-    keys: ["name", "programmingLanguage", "tags", "technologies"], // Only search these properties
-    threshold: 0.3, // Lower threshold means more results
-  };
-
-  /**
-   * Fuse object that is used to search the projects.
-   * @param allProjects (Project[]): list of all projects
-   * @param options (Fuse.IFuseOptions<Project>): options for fuzzy search
-   */
-  const fuse = new Fuse(allProjects, searchOptions);
-
-  /**
-   * Groups the projects by type.
-   * Each project type is a key in the object.
-   * @param projects (Project[]): list of projects to be grouped by type
-   * @returns (Record<string, Project[]>): object with project types as keys and list of projects as values
-   */
-  const groupProjectsByType = (
-    projects: Project[]
-  ): Record<string, Project[]> => {
-    return projects.reduce<Record<string, Project[]>>((grouped, project) => {
-      (grouped[project.type] = grouped[project.type] || []).push(project);
-      return grouped;
-    }, {});
-  };
-
-  /**
-   * List of projects that match the search term.
-   */
-  const searchedProjects = searchTerm
-    ? fuse.search(searchTerm).map((result) => result.item)
-    : allProjects;
 
   //^ List of options
   /**
@@ -141,28 +102,6 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
       })
     );
   };
-
-  /**
-   * Filters the projects based on the the filter options.
-   * Both language and type can be filtered.
-   * If 'All' is selected, then all projects are displayed.
-   * Archived projects are not displayed by default.
-   */
-  const filteredProjects = searchedProjects.filter(
-    (project) =>
-      (showArchived || !project.archived) &&
-      (selectedType === "All" || project.type === selectedType) &&
-      (selectedLanguage === "All" ||
-        project.programmingLanguage === selectedLanguage) &&
-      (selectedTechnology === "All" ||
-        (project.technologies &&
-          project.technologies.includes(selectedTechnology)))
-  );
-
-  /**
-   * Projects categorized by type.
-   */
-  const groupedProjects = groupProjectsByType(filteredProjects);
 
   /**
    * Resets all the filters.
@@ -226,8 +165,6 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
         }}
       />
 
-      {/* List of projects */}
-      <ProjectsListSection groupedProjects={groupedProjects} />
       {/* Filter Modal */}
       <ProjectFilterModal
         generateUrl={generateUrl}
@@ -248,4 +185,4 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   );
 };
 
-export default ProjectsList;
+export default ProjectsFilterSearchSection;
