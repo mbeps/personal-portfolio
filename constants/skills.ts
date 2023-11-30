@@ -17,11 +17,13 @@ const technologies: Skill[] = [
 
   { skill: "GitHub Actions", category: "CI/CD" },
   { skill: "Jenkins", category: "CI/CD" },
+  { skill: "TeamCity", category: "CI/CD" },
 
   { skill: "Docker", category: "Containerization" },
 
   { skill: "REST", category: "API" },
   { skill: "GraphQL", category: "API" },
+  { skill: "tRPC", category: "API" },
 
   { skill: "PostgreSQL", category: "Database" },
   { skill: "MySQL", category: "Database" },

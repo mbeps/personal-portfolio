@@ -15,6 +15,9 @@ const JavaScriptTypeScriptSkills: Skill[] = [
   { skill: "Prisma", category: "Object Relational Mapper" },
   { skill: "Drizzle", category: "Object Relational Mapper" },
   { skill: "Mongoose", category: "Object Relational Mapper" },
+  { skill: "NPM", category: "Project Manager" },
+  { skill: "Yarn", category: "Project Manager" },
+  { skill: "PNPM", category: "Project Manager" },
 ];
 
 /**
@@ -40,11 +43,14 @@ const languages: Language[] = [
       { skill: "Pandas", category: "Machine Learning" },
       { skill: "NumPy", category: "Machine Learning" },
       { skill: "Matplotlib", category: "Machine Learning" },
+      { skill: "Seaborn", category: "Machine Learning" },
+      { skill: "Keras", category: "Machine Learning" },
       { skill: "Jupyter Notebooks", category: "Machine Learning" },
       { skill: "PyTest", category: "Testing" },
       { skill: "UnitTest", category: "Testing" },
       { skill: "SQLAlchemy", category: "Object Relational Mapper" },
       { skill: "Poetry", category: "Project Manager" },
+      { skill: "PyBuilder", category: "Project Manager" },
     ],
     repository: "projects?type=All&technology=All&language=Python&search=",
   },
