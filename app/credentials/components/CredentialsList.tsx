@@ -5,10 +5,9 @@ import { ArchiveToggle } from "@/app/projects/components/ArchiveToggle";
 import ClearAllFiltersButton from "@/components/Filters/Page/ClearAllFiltersButton";
 import OpenFilterModalButton from "@/components/Filters/Page/OpenFilterModalButton";
 import SearchInput from "@/components/Inputs/SearchInput";
-import HeadingOne from "@/components/Text/HeadingOne";
 import Certificate from "@/types/certificates";
 import Fuse from "fuse.js";
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import CredentialFilterModal from "./CredentialFilterModal";
 import CredentialListSection from "./CredentialListSection";
@@ -34,6 +33,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
   const selectedCategory = searchParams.get("category") || "All";
   const searchTerm = searchParams.get("search") || "";
   const showArchived = searchParams.get("archived") === "true" || false;
+  const basePath = usePathname();
 
   const router = useRouter();
 
@@ -93,12 +93,15 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
 
   const updateSearchTerm = (newSearchTerm: string) => {
     router.push(
-      generateUrl({
-        issuer: selectedIssuer,
-        category: selectedCategory,
-        search: newSearchTerm,
-        archived: true,
-      })
+      generateUrl(
+        {
+          issuer: selectedIssuer,
+          category: selectedCategory,
+          search: newSearchTerm,
+          archived: true,
+        },
+        basePath
+      )
     );
   };
 
@@ -113,12 +116,15 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
 
   const resetFilters = () => {
     router.push(
-      generateUrl({
-        issuer: "All",
-        category: "All",
-        search: "",
-        archived: false,
-      })
+      generateUrl(
+        {
+          issuer: "All",
+          category: "All",
+          search: "",
+          archived: false,
+        },
+        basePath
+      )
     );
   };
 
@@ -163,6 +169,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
           issuer: selectedIssuer,
           search: searchTerm,
         }}
+        basePath={basePath}
       />
 
       {/* Toggle to display archived projects */}
@@ -182,6 +189,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
         selectedIssuer={selectedIssuer}
         searchTerm={searchTerm}
         showArchived={showArchived}
+        basePath={basePath}
       />
     </>
   );
