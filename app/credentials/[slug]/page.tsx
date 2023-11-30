@@ -116,28 +116,34 @@ const CredentialPage: React.FC<CredentialPageProps> = ({ params }) => {
       {/* Certificate Description */}
       {certificate.description && (
         <div className="flex flex-col gap-4">
-          <HeadingThree title="Description" />
+          <div className="md:text-left text-center">
+            <HeadingThree title="Description" />
+          </div>
           <p className="text-lg">{certificate.description}</p>
         </div>
       )}
 
-      <div className="mt-4 text-center md:text-left">
+      <div className="mt-4 ">
         {/* Credentials ID */}
-        <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-5">
-          {certificate.learningOutcomes && (
-            <div>
+        {certificate.learningOutcomes && (
+          <>
+            <div className="text-center lg:text-left">
               <HeadingThree title="Learning Objectives" />
-              {certificate.learningOutcomes.map((outcome, index) => (
-                <div key={index} className="w-full p-2 flex items-center">
-                  <RxTriangleRight className="text-primary mr-2" />
-                  <p className="text-neutral-800 dark:text-neutral-200">
-                    {outcome}
-                  </p>
-                </div>
-              ))}
             </div>
-          )}
-        </div>
+            <div>
+              <ul className="list-none text-lg">
+                {certificate.learningOutcomes.map((outcome, index) => (
+                  <li key={index} className="flex mb-1.5">
+                    <div className="mr-2 mt-1.5">
+                      <RxTriangleRight />
+                    </div>
+                    <div>{outcome}</div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </>
+        )}
       </div>
 
       {/* Metadata Section */}
@@ -145,11 +151,15 @@ const CredentialPage: React.FC<CredentialPageProps> = ({ params }) => {
         {/* Left */}
         <div className="md:w-1/2">
           {/* Certificate Issuer */}
-          <HeadingThree title="Certificate Issuer" />
+          <div className="md:text-left text-center">
+            <HeadingThree title="Certificate Issuer" />
+          </div>
           <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-5">
             <Tag>{certificate.issuer}</Tag>
           </div>
-          <HeadingThree title="Links" />
+          <div className="md:text-left text-center">
+            <HeadingThree title="Links" />
+          </div>
           {/* Links */}
           <div
             className="
@@ -169,12 +179,12 @@ const CredentialPage: React.FC<CredentialPageProps> = ({ params }) => {
                 <Button
                   variant={"ghost"}
                   className="
-                        text-neutral-900 dark:text-white 
-                        hover:text-neutral-900 
-                        hover:bg-neutral-300
-                        w-auto md:w-full
-                        rounded-full md:rounded-xl
-                      "
+                    text-neutral-900 dark:text-white 
+                    hover:text-neutral-900 
+                    hover:bg-neutral-300
+                    w-auto md:w-full
+                    rounded-full md:rounded-xl
+                  "
                 >
                   <div className="flex flex-row justify-center md:justify-start gap-4 w-full">
                     <BsArrowUpRightCircle size={30} />
