@@ -74,7 +74,6 @@ export default function BlogPage({
         <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
           <HeadingOne title="Blog" />
           <PageDescription description={description} />
-          <p>{`Search Params: ${searchTerm}`}</p>
           <BlogFilterSearchSection blogs={blogMetadata} />
           {/* Blog List */}
           <BlogListSection groupedBlogs={groupedBlogs} />

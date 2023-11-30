@@ -25,6 +25,7 @@ const ProjectsFilterSearchSection: React.FC<
   const selectedType = searchParams.get("type") || "All";
   const searchTerm = searchParams.get("search") || "";
   const showArchived = searchParams.get("archived") === "true" || false;
+  const basePath = "/projects";
 
   const router = useRouter();
 
@@ -93,13 +94,16 @@ const ProjectsFilterSearchSection: React.FC<
   const updateSearchTerm = (newSearchTerm: string) => {
     // Update the URL parameter to reflect the new search term
     router.push(
-      generateUrl({
-        type: selectedType,
-        technology: selectedTechnology,
-        language: selectedLanguage,
-        search: newSearchTerm,
-        archived: true,
-      })
+      generateUrl(
+        {
+          type: selectedType,
+          technology: selectedTechnology,
+          language: selectedLanguage,
+          search: newSearchTerm,
+          archived: true,
+        },
+        basePath
+      )
     );
   };
 
@@ -109,13 +113,16 @@ const ProjectsFilterSearchSection: React.FC<
    */
   const resetFilters = () => {
     router.push(
-      generateUrl({
-        type: "All",
-        technology: "All",
-        language: "All",
-        search: "",
-        archived: false,
-      })
+      generateUrl(
+        {
+          type: "All",
+          technology: "All",
+          language: "All",
+          search: "",
+          archived: false,
+        },
+        basePath
+      )
     );
   };
   /**
@@ -163,6 +170,7 @@ const ProjectsFilterSearchSection: React.FC<
           language: selectedLanguage,
           search: searchTerm,
         }}
+        basePath={basePath}
       />
 
       {/* Filter Modal */}
@@ -180,6 +188,7 @@ const ProjectsFilterSearchSection: React.FC<
         programmingLanguages={programmingLanguages}
         technologies={technologies}
         areFiltersApplied={areFiltersApplied}
+        basePath={basePath}
       />
     </>
   );

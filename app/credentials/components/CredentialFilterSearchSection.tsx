@@ -5,13 +5,10 @@ import { ArchiveToggle } from "@/app/projects/components/ArchiveToggle";
 import ClearAllFiltersButton from "@/components/Filters/Page/ClearAllFiltersButton";
 import OpenFilterModalButton from "@/components/Filters/Page/OpenFilterModalButton";
 import SearchInput from "@/components/Inputs/SearchInput";
-import HeadingOne from "@/components/Text/HeadingOne";
 import Certificate from "@/types/certificates";
-import Fuse from "fuse.js";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import CredentialFilterModal from "./CredentialFilterModal";
-import CredentialListSection from "./CredentialListSection";
 
 type CredentialsListListProps = {
   allCertificates: Certificate[];
@@ -34,6 +31,7 @@ const CredentialFilterSearchSection: React.FC<CredentialsListListProps> = ({
   const selectedCategory = searchParams.get("category") || "All";
   const searchTerm = searchParams.get("search") || "";
   const showArchived = searchParams.get("archived") === "true" || false;
+  const basePath = "/credentials";
 
   const router = useRouter();
 
@@ -69,23 +67,29 @@ const CredentialFilterSearchSection: React.FC<CredentialsListListProps> = ({
 
   const updateSearchTerm = (newSearchTerm: string) => {
     router.push(
-      generateUrl({
-        issuer: selectedIssuer,
-        category: selectedCategory,
-        search: newSearchTerm,
-        archived: true,
-      })
+      generateUrl(
+        {
+          issuer: selectedIssuer,
+          category: selectedCategory,
+          search: newSearchTerm,
+          archived: true,
+        },
+        basePath
+      )
     );
   };
 
   const resetFilters = () => {
     router.push(
-      generateUrl({
-        issuer: "All",
-        category: "All",
-        search: "",
-        archived: false,
-      })
+      generateUrl(
+        {
+          issuer: "All",
+          category: "All",
+          search: "",
+          archived: false,
+        },
+        basePath
+      )
     );
   };
 
@@ -130,6 +134,7 @@ const CredentialFilterSearchSection: React.FC<CredentialsListListProps> = ({
           issuer: selectedIssuer,
           search: searchTerm,
         }}
+        basePath={basePath}
       />
 
       {/* Toggle to display archived projects */}
@@ -147,6 +152,7 @@ const CredentialFilterSearchSection: React.FC<CredentialsListListProps> = ({
         selectedIssuer={selectedIssuer}
         searchTerm={searchTerm}
         showArchived={showArchived}
+        basePath={basePath}
       />
     </>
   );

@@ -1,13 +1,12 @@
 "use client";
 
+import generateUrl from "@/actions/generateUrl";
 import ClearAllFiltersButton from "@/components/Filters/Page/ClearAllFiltersButton";
 import OpenFilterModalButton from "@/components/Filters/Page/OpenFilterModalButton";
 import SearchInput from "@/components/Inputs/SearchInput";
 import { BlogMetadata } from "@/types/blog";
-import Fuse from "fuse.js";
 import { useRouter, useSearchParams } from "next/navigation"; // Add this import for Next.js router
 import { useState } from "react";
-import BlogListSection from "./BlogListSection";
 import BlogFilterModal from "./BlogFilterModal";
 
 interface BlogFilterSearchSectionProps {
@@ -29,20 +28,7 @@ export const BlogFilterSearchSection: React.FC<
 
   const selectedCategory = searchParams.get("category") || "All";
   const searchTerm = searchParams.get("search") || "";
-
-  /**
-   * Generates the URL for the blogs page.
-   * These are the URL parameters that are used for filtering and searching.
-   * Once filters and search are applied, the URL is updated.
-   */
-  const generateUrl = (category: string, search: string) => {
-    // Validate and encode filter values
-    const validatedCategory = encodeURIComponent(category.trim());
-    const validatedSearch = encodeURIComponent(search.trim());
-
-    // Construct and return the URL
-    return `/blogs/?category=${validatedCategory}&search=${validatedSearch}`;
-  };
+  const basePath = "/blogs";
 
   /**
    * List of all blog categories.
@@ -62,11 +48,16 @@ export const BlogFilterSearchSection: React.FC<
    */
   const updateSearchTerm = (newSearchTerm: string) => {
     // Update the URL parameter to reflect the new search term
-    router.push(generateUrl(selectedCategory, newSearchTerm));
+    router.push(
+      generateUrl(
+        { category: selectedCategory, search: newSearchTerm },
+        basePath
+      )
+    );
   };
 
   const resetFilters = () => {
-    router.push(generateUrl("All", ""));
+    router.push(generateUrl({ category: "All", search: "" }, basePath));
   };
 
   const areFiltersApplied = selectedCategory !== "All" || searchTerm !== "";
@@ -121,6 +112,7 @@ export const BlogFilterSearchSection: React.FC<
         blogCategories={blogCategories}
         selectedCategory={selectedCategory}
         searchTerm={searchTerm}
+        basePath={basePath}
       />
     </>
   );

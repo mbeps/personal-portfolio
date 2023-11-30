@@ -1,7 +1,6 @@
 "use client";
 
 import { ArchiveToggle } from "@/app/projects/components/ArchiveToggle";
-import Button from "@/components/Atoms/Button";
 import ClearAllFiltersButton from "@/components/Filters/Modal/ClearAllFiltersButton";
 import CloseFilterModalButton from "@/components/Filters/Modal/CloseFilterModalButton";
 import RadioButton from "@/components/Inputs/RadioButton";
@@ -9,11 +8,9 @@ import Modal from "@/components/Modal/Modal";
 import FilterParams from "@/types/FilterParams";
 import Link from "next/link";
 import React from "react";
-import { AiOutlineClear } from "react-icons/ai";
-import { MdClear } from "react-icons/md";
 
 type CredentialFilterModalProps = {
-  generateUrl: (filters: FilterParams) => string;
+  generateUrl: (filters: FilterParams, basePath: string) => string;
   areFiltersApplied: boolean;
   resetFilters: () => void;
   isFilterModalOpen: boolean;
@@ -24,6 +21,7 @@ type CredentialFilterModalProps = {
   selectedIssuer: string;
   searchTerm: string;
   showArchived: boolean;
+  basePath: string;
 };
 
 const CredentialFilterModal: React.FC<CredentialFilterModalProps> = ({
@@ -38,6 +36,7 @@ const CredentialFilterModal: React.FC<CredentialFilterModalProps> = ({
   selectedCategory,
   selectedIssuer,
   showArchived,
+  basePath,
 }) => {
   const filterParams: FilterParams = {
     issuer: selectedIssuer,
@@ -71,11 +70,14 @@ const CredentialFilterModal: React.FC<CredentialFilterModalProps> = ({
           <div className="h-48 md:h-64 overflow-y-auto space-y-2">
             {certificateIssuers.map((issuer) => (
               <Link
-                href={generateUrl({
-                  ...filterParams,
-                  issuer,
-                  archived: true,
-                })}
+                href={generateUrl(
+                  {
+                    ...filterParams,
+                    issuer,
+                    archived: true,
+                  },
+                  basePath
+                )}
                 key={issuer}
               >
                 <RadioButton
@@ -99,11 +101,14 @@ const CredentialFilterModal: React.FC<CredentialFilterModalProps> = ({
             {certificateCategories.map((category) => (
               <Link
                 key={category}
-                href={generateUrl({
-                  ...filterParams,
-                  category,
-                  archived: true,
-                })}
+                href={generateUrl(
+                  {
+                    ...filterParams,
+                    category,
+                    archived: true,
+                  },
+                  basePath
+                )}
               >
                 <RadioButton
                   key={category}
@@ -124,6 +129,7 @@ const CredentialFilterModal: React.FC<CredentialFilterModalProps> = ({
           generateUrl={generateUrl}
           showArchived={showArchived}
           filterProps={filterParams}
+          basePath={basePath}
         />
       </div>
 

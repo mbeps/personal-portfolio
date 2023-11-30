@@ -1,23 +1,22 @@
 "use client";
 
-import Button from "@/components/Atoms/Button";
 import ClearAllFiltersButton from "@/components/Filters/Modal/ClearAllFiltersButton";
 import CloseFilterModalButton from "@/components/Filters/Modal/CloseFilterModalButton";
 import RadioButton from "@/components/Inputs/RadioButton";
 import Modal from "@/components/Modal/Modal";
+import FilterParams from "@/types/FilterParams";
 import Link from "next/link";
-import { AiOutlineClear } from "react-icons/ai";
-import { MdClear } from "react-icons/md";
 
 interface BlogFilterModalProps {
   resetFilters: () => void;
-  generateUrl: (category: string, search: string) => string;
+  generateUrl: (filters: FilterParams, basePath: string) => string;
   handleCloseModals: () => void;
   isFilterModalOpen: boolean;
   areFiltersApplied: boolean;
   selectedCategory: string;
   searchTerm: string;
   blogCategories: string[];
+  basePath: string;
 }
 
 /**
@@ -42,7 +41,13 @@ const BlogFilterModal: React.FC<BlogFilterModalProps> = ({
   selectedCategory,
   searchTerm,
   blogCategories,
+  basePath,
 }) => {
+  const filterParams: FilterParams = {
+    category: selectedCategory,
+    search: searchTerm,
+  };
+
   return (
     <Modal
       isOpen={isFilterModalOpen}
@@ -78,7 +83,16 @@ const BlogFilterModal: React.FC<BlogFilterModalProps> = ({
           </label>
           <div className="h-64 md:h-80 overflow-y-auto space-y-2">
             {blogCategories.map((category) => (
-              <Link href={generateUrl(category, searchTerm)} key={category}>
+              <Link
+                href={generateUrl(
+                  {
+                    ...filterParams,
+                    category,
+                  },
+                  basePath
+                )}
+                key={category}
+              >
                 <RadioButton
                   key={category}
                   id={category}
