@@ -9,6 +9,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import { ArchiveToggle } from "./ArchiveToggle";
 import ProjectFilterModal from "./ProjectFilterModal";
+import { usePathname } from "next/navigation";
 
 type ProjectsFilterSearchSectionProps = {
   allProjects: Project[];
@@ -25,7 +26,7 @@ const ProjectsFilterSearchSection: React.FC<
   const selectedType = searchParams.get("type") || "All";
   const searchTerm = searchParams.get("search") || "";
   const showArchived = searchParams.get("archived") === "true" || false;
-  const basePath = "/projects";
+  const basePath = usePathname();
 
   const router = useRouter();
 

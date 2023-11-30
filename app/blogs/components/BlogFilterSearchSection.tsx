@@ -8,6 +8,7 @@ import { BlogMetadata } from "@/types/blog";
 import { useRouter, useSearchParams } from "next/navigation"; // Add this import for Next.js router
 import { useState } from "react";
 import BlogFilterModal from "./BlogFilterModal";
+import { usePathname } from "next/navigation";
 
 interface BlogFilterSearchSectionProps {
   blogs: BlogMetadata[];
@@ -28,7 +29,7 @@ export const BlogFilterSearchSection: React.FC<
 
   const selectedCategory = searchParams.get("category") || "All";
   const searchTerm = searchParams.get("search") || "";
-  const basePath = "/blogs";
+  const basePath = usePathname();
 
   /**
    * List of all blog categories.

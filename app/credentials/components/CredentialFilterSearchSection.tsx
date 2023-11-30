@@ -9,6 +9,7 @@ import Certificate from "@/types/certificates";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import CredentialFilterModal from "./CredentialFilterModal";
+import { usePathname } from "next/navigation";
 
 type CredentialsListListProps = {
   allCertificates: Certificate[];
@@ -31,7 +32,7 @@ const CredentialFilterSearchSection: React.FC<CredentialsListListProps> = ({
   const selectedCategory = searchParams.get("category") || "All";
   const searchTerm = searchParams.get("search") || "";
   const showArchived = searchParams.get("archived") === "true" || false;
-  const basePath = "/credentials";
+  const basePath = usePathname();
 
   const router = useRouter();
 
