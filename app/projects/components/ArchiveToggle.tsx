@@ -3,9 +3,10 @@ import FilterParams from "@/types/FilterParams";
 import Link from "next/link";
 
 interface ArchiveToggleProps {
-  generateUrl: (filters: FilterParams) => string;
+  generateUrl: (filters: FilterParams, basePath: string) => string;
   showArchived: boolean;
   filterProps: FilterParams;
+  basePath: string;
 }
 
 /**
@@ -22,6 +23,7 @@ export const ArchiveToggle: React.FC<ArchiveToggleProps> = ({
   generateUrl,
   showArchived,
   filterProps,
+  basePath,
 }) => {
   return (
     <div className="flex justify-end items-center">
@@ -29,10 +31,13 @@ export const ArchiveToggle: React.FC<ArchiveToggleProps> = ({
         Display archived
       </span>
       <Link
-        href={generateUrl({
-          ...filterProps,
-          archived: !showArchived,
-        })}
+        href={generateUrl(
+          {
+            ...filterProps,
+            archived: !showArchived,
+          },
+          basePath
+        )}
       >
         <Toggle checked={showArchived} />
       </Link>

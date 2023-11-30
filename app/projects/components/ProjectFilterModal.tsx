@@ -1,20 +1,17 @@
 "use client";
 
-import Button from "@/components/Atoms/Button";
-import RadioButton from "@/components/Inputs/RadioButton";
-import Modal from "@/components/Modal/Modal";
-import Link from "next/link";
-import React from "react";
-import { AiOutlineClear } from "react-icons/ai";
-import { MdClear } from "react-icons/md";
-import { ArchiveToggle } from "./ArchiveToggle";
-import FilterParams from "@/types/FilterParams";
 import ClearAllFiltersButton from "@/components/Filters/Modal/ClearAllFiltersButton";
 import CloseFilterModalButton from "@/components/Filters/Modal/CloseFilterModalButton";
+import RadioButton from "@/components/Inputs/RadioButton";
+import Modal from "@/components/Modal/Modal";
+import FilterParams from "@/types/FilterParams";
+import Link from "next/link";
+import React from "react";
+import { ArchiveToggle } from "./ArchiveToggle";
 
 interface ProjectFilterModalProps {
   resetFilters: () => void;
-  generateUrl: (filters: FilterParams) => string;
+  generateUrl: (filters: FilterParams, basePath: string) => string;
   selectedTechnology: string;
   selectedType: string;
   selectedLanguage: string;
@@ -26,6 +23,7 @@ interface ProjectFilterModalProps {
   programmingLanguages: string[];
   technologies: string[];
   areFiltersApplied: boolean;
+  basePath: string;
 }
 
 /**
@@ -62,6 +60,7 @@ const ProjectFilterModal: React.FC<ProjectFilterModalProps> = ({
   programmingLanguages,
   technologies,
   areFiltersApplied,
+  basePath,
 }) => {
   const filterParams: FilterParams = {
     type: selectedType,
@@ -109,11 +108,14 @@ const ProjectFilterModal: React.FC<ProjectFilterModalProps> = ({
             <div className="h-64 md:h-80 overflow-y-auto space-y-2">
               {projectTypes.map((type) => (
                 <Link
-                  href={generateUrl({
-                    ...filterParams,
-                    type,
-                    archived: true,
-                  })}
+                  href={generateUrl(
+                    {
+                      ...filterParams,
+                      type,
+                      archived: true,
+                    },
+                    basePath
+                  )}
                   key={type}
                 >
                   <RadioButton
@@ -138,11 +140,14 @@ const ProjectFilterModal: React.FC<ProjectFilterModalProps> = ({
             <div className="h-64 md:h-80 overflow-y-auto space-y-2">
               {programmingLanguages.map((language) => (
                 <Link
-                  href={generateUrl({
-                    ...filterParams,
-                    language,
-                    archived: true,
-                  })}
+                  href={generateUrl(
+                    {
+                      ...filterParams,
+                      language,
+                      archived: true,
+                    },
+                    basePath
+                  )}
                   key={language}
                 >
                   <RadioButton
@@ -167,11 +172,14 @@ const ProjectFilterModal: React.FC<ProjectFilterModalProps> = ({
             <div className="h-64 md:h-80 overflow-y-auto space-y-2">
               {technologies.map((technology) => (
                 <Link
-                  href={generateUrl({
-                    ...filterParams,
-                    technology,
-                    archived: true,
-                  })}
+                  href={generateUrl(
+                    {
+                      ...filterParams,
+                      technology,
+                      archived: true,
+                    },
+                    basePath
+                  )}
                   key={technology}
                 >
                   <RadioButton
@@ -193,6 +201,7 @@ const ProjectFilterModal: React.FC<ProjectFilterModalProps> = ({
             generateUrl={generateUrl}
             showArchived={showArchived}
             filterProps={filterParams}
+            basePath={basePath}
           />
         </div>
 

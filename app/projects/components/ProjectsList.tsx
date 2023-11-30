@@ -6,7 +6,7 @@ import OpenFilterModalButton from "@/components/Filters/Page/OpenFilterModalButt
 import SearchInput from "@/components/Inputs/SearchInput";
 import Project from "@/types/projects";
 import Fuse from "fuse.js";
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import { ArchiveToggle } from "./ArchiveToggle";
 import ProjectFilterModal from "./ProjectFilterModal";
@@ -25,6 +25,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const selectedType = searchParams.get("type") || "All";
   const searchTerm = searchParams.get("search") || "";
   const showArchived = searchParams.get("archived") === "true" || false;
+  const basePath = usePathname();
 
   const router = useRouter();
 
@@ -132,13 +133,16 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const updateSearchTerm = (newSearchTerm: string) => {
     // Update the URL parameter to reflect the new search term
     router.push(
-      generateUrl({
-        type: selectedType,
-        technology: selectedTechnology,
-        language: selectedLanguage,
-        search: newSearchTerm,
-        archived: true,
-      })
+      generateUrl(
+        {
+          type: selectedType,
+          technology: selectedTechnology,
+          language: selectedLanguage,
+          search: newSearchTerm,
+          archived: true,
+        },
+        basePath
+      )
     );
   };
 
@@ -170,13 +174,16 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
    */
   const resetFilters = () => {
     router.push(
-      generateUrl({
-        type: "All",
-        technology: "All",
-        language: "All",
-        search: "",
-        archived: false,
-      })
+      generateUrl(
+        {
+          type: "All",
+          technology: "All",
+          language: "All",
+          search: "",
+          archived: false,
+        },
+        basePath
+      )
     );
   };
   /**
@@ -224,6 +231,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
           language: selectedLanguage,
           search: searchTerm,
         }}
+        basePath={basePath}
       />
 
       {/* List of projects */}
@@ -243,6 +251,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
         programmingLanguages={programmingLanguages}
         technologies={technologies}
         areFiltersApplied={areFiltersApplied}
+        basePath={basePath}
       />
     </>
   );
