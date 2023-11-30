@@ -45,26 +45,6 @@ export const BlogFilterSearchSection: React.FC<
   };
 
   /**
-   * Fuse.js options for fuzzy search.
-   * These are the only properties that are searched.
-   * These are the same ones from the `BlogMetadata` type.
-   */
-  const searchOptions = {
-    keys: ["title", "subtitle", "category"],
-    threshold: 0.3,
-  };
-
-  const fuse = new Fuse(blogs, searchOptions);
-
-  /**
-   * Searches the blogs using the search term.
-   * Only searches the title, subtitle, and category.
-   */
-  const searchedBlogs = searchTerm
-    ? fuse.search(searchTerm).map((result) => result.item)
-    : blogs;
-
-  /**
    * List of all blog categories.
    * These are used as options for filtering.
    */

@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import PageDescription from "@/components/Atoms/PageDescription";
 import BlogListSection from "./components/BlogListSection";
 import { BlogMetadata } from "@/types/blog";
+import searchStringInFields from "@/actions/searchStringInFields";
 
 const description = `
   Explore my collection of blogs on various topics. 
@@ -50,11 +51,19 @@ export default function BlogPage({
     }, {});
   };
 
+  const searchFields: Array<keyof BlogMetadata> = [
+    "title",
+    "subtitle",
+    "category",
+  ];
+
   /**
    * Filters the blogs by category selected by the user.
    */
   const filteredBlogs = blogMetadata.filter(
-    (blog) => selectedCategory === "All" || blog.category === selectedCategory
+    (blog) =>
+      (selectedCategory === "All" || blog.category === selectedCategory) &&
+      searchStringInFields(searchTerm, blog, searchFields)
   );
 
   const groupedBlogs = groupBlogsByType(filteredBlogs);
@@ -65,7 +74,7 @@ export default function BlogPage({
         <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
           <HeadingOne title="Blog" />
           <PageDescription description={description} />
-
+          <p>{`Search Params: ${searchTerm}`}</p>
           <BlogFilterSearchSection blogs={blogMetadata} />
           {/* Blog List */}
           <BlogListSection groupedBlogs={groupedBlogs} />
