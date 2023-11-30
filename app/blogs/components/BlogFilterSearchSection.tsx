@@ -10,7 +10,7 @@ import { useState } from "react";
 import BlogListSection from "./BlogListSection";
 import BlogFilterModal from "./BlogFilterModal";
 
-interface BlogListProps {
+interface BlogFilterSearchSectionProps {
   blogs: BlogMetadata[];
 }
 
@@ -19,7 +19,9 @@ interface BlogListProps {
  * Also allows the user to filter and search the blogs.
  * @returns (JSX.Element): page with all blogs
  */
-export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
+export const BlogFilterSearchSection: React.FC<
+  BlogFilterSearchSectionProps
+> = ({ blogs }) => {
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
 
   const router = useRouter();
@@ -55,21 +57,6 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   const fuse = new Fuse(blogs, searchOptions);
 
   /**
-   * Groups the blogs by category.
-   * This is used to display the blogs in sections.
-   * @param blogs (BlogMetadata[]) - list of blogs
-   * @returns (Record<string, BlogMetadata[]>) - blogs grouped by category (key)
-   */
-  const groupBlogsByType = (
-    blogs: BlogMetadata[]
-  ): Record<string, BlogMetadata[]> => {
-    return blogs.reduce<Record<string, BlogMetadata[]>>((grouped, blog) => {
-      (grouped[blog.category] = grouped[blog.category] || []).push(blog);
-      return grouped;
-    }, {});
-  };
-
-  /**
    * Searches the blogs using the search term.
    * Only searches the title, subtitle, and category.
    */
@@ -97,15 +84,6 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
     // Update the URL parameter to reflect the new search term
     router.push(generateUrl(selectedCategory, newSearchTerm));
   };
-
-  /**
-   * Filters the blogs by category selected by the user.
-   */
-  const filteredBlogs = searchedBlogs.filter(
-    (blog) => selectedCategory === "All" || blog.category === selectedCategory
-  );
-
-  const groupedBlogs = groupBlogsByType(filteredBlogs);
 
   const resetFilters = () => {
     router.push(generateUrl("All", ""));
@@ -153,9 +131,6 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
         </div>
       </div>
 
-      {/* Blog List */}
-      <BlogListSection groupedBlogs={groupedBlogs} />
-
       {/* Filter Modal */}
       <BlogFilterModal
         resetFilters={resetFilters}
@@ -171,4 +146,4 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   );
 };
 
-export default BlogList;
+export default BlogFilterSearchSection;
