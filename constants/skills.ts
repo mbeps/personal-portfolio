@@ -17,21 +17,25 @@ const technologies: Skill[] = [
 
   { skill: "GitHub Actions", category: "CI/CD" },
   { skill: "Jenkins", category: "CI/CD" },
+  { skill: "TeamCity", category: "CI/CD" },
 
   { skill: "Docker", category: "Containerization" },
+  { skill: "Podman", category: "Containerization" },
+  { skill: "Kubernetes", category: "Containerization" },
 
-  { skill: "REST", category: "API" },
-  { skill: "GraphQL", category: "API" },
+  { skill: "REST", category: "APIs" },
+  { skill: "GraphQL", category: "APIs" },
+  { skill: "tRPC", category: "APIs" },
 
-  { skill: "PostgreSQL", category: "Database" },
-  { skill: "MySQL", category: "Database" },
-  { skill: "SQLite", category: "Database" },
-  { skill: "Normalisation", category: "Database" },
-  { skill: "MongoDB", category: "Database" },
-  { skill: "Redis", category: "Database" },
+  { skill: "PostgreSQL", category: "Databases" },
+  { skill: "MySQL", category: "Databases" },
+  { skill: "SQLite", category: "Databases" },
+  { skill: "Normalisation", category: "Databases" },
+  { skill: "MongoDB", category: "Databases" },
+  { skill: "Redis", category: "Databases" },
 
-  { skill: "Socket.IO", category: "Web Socket" },
-  { skill: "Pusher", category: "Web Socket" },
+  { skill: "Socket.IO", category: "Web Sockets" },
+  { skill: "Pusher", category: "Web Sockets" },
 
   { skill: "OpenAI", category: "Artificial Intelligence" },
   { skill: "Replicate AI", category: "Artificial Intelligence" },

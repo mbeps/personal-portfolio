@@ -47,11 +47,10 @@ const SkillSection: React.FC = () => {
    * This categories are from the Skill type.
    */
   const ignoredCategories: string[] = [
-    "Project Manager",
-    "Object Relational Mapper",
-    "Project Manager",
+    "Project Managers",
+    "Object Relational Mappers",
     "Version Control System",
-    "Web Socket",
+    "Web Sockets",
     "Mathematics",
     "Other",
   ];
