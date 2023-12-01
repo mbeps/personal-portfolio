@@ -1473,6 +1473,36 @@ const softwareEngineering: Certificate[] = [
       "Sharing code and snippets using Github Gists.",
     ],
   },
+  {
+    name: "Programming Foundations: Design Patterns",
+    slug: "f14a53c061bc271d233daeb5f46d5441dc2e86f386420c0fbd846291a5cccaf8",
+    category: "Software Engineering",
+    issuer: "LinkedIn",
+    credentialURL:
+      "https://www.linkedin.com/learning/certificates/f14a53c061bc271d233daeb5f46d5441dc2e86f386420c0fbd846291a5cccaf8",
+    skills: [
+      "Design Patterns",
+      "Object-Oriented Programming",
+      "Java",
+      "Python",
+      "JavaScript",
+    ],
+    description: `
+      A course that offers reusable solutions to common challenges in software development. 
+      It introduces learners to the concept of design patterns and explores several of the most frequently used object-oriented patterns. 
+      The course focuses on the practical application of patterns like the strategy, adapter, observer, and decorator, providing real-world context through code demos. 
+      This course aims to equip learners with proven and tested patterns to make their software more flexible and resilient to change.`,
+    learningOutcomes: [
+      "Understanding the encapsulation of code that varies with the Strategy pattern",
+      "Recognizing the limitations of inheritance",
+      "Applying the Adapter pattern",
+      "Implementing the Observer pattern",
+      "Extending behavior with composition and the Decorator pattern",
+      "Encapsulating iteration with the Iterator pattern",
+      "Creating objects with the Factory Method pattern",
+      "Using design principles to guide your object-oriented design",
+    ],
+  },
 ];
 
 const management: Certificate[] = [
