@@ -9,22 +9,28 @@ import matter from "gray-matter";
  * @returns {BlogMetadata[]} An array of blog metadata.
  */
 const getBlogMetadata = (): BlogMetadata[] => {
-  const folder = "public/blogs/";
-  const files = fs.readdirSync(folder);
-  const markdownBlogs = files.filter((file) => file.endsWith(".md"));
+  const baseFolder = "public/blogs/";
+  const directories = fs
+    .readdirSync(baseFolder, { withFileTypes: true })
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name);
 
-  const blogs: BlogMetadata[] = markdownBlogs.map((fileName) => {
-    const fileContents = fs.readFileSync(`${folder}/${fileName}`, "utf8");
+  const blogs = directories.map((dirName) => {
+    const filePath = `${baseFolder}/${dirName}/blog.md`;
+    if (!fs.existsSync(filePath)) return null;
+
+    const fileContents = fs.readFileSync(filePath, "utf8");
     const matterResult = matter(fileContents);
     return {
       title: matterResult.data.title,
       subtitle: matterResult.data.subtitle,
-      slug: fileName.replace(".md", ""),
+      slug: dirName,
       category: matterResult.data.category,
     };
   });
 
-  return blogs;
+  // Filter out null values with a type guard
+  return blogs.filter((blog): blog is BlogMetadata => blog !== null);
 };
 
 export default getBlogMetadata;

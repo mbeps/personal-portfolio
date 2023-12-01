@@ -58,7 +58,7 @@ export const generateStaticParams = async () => {
  */
 const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
   const slug = params.slug;
-  const blog = getMarkdownFromFileSystem(`public/blogs/${slug}.md`);
+  const blog = getMarkdownFromFileSystem(`public/blogs/${slug}/blog.md`);
 
   if (!blog) {
     notFound();
