@@ -14,7 +14,7 @@ const HomeButton: React.FC = () => {
         <h2
           className="
           text-2xl font-bold
-          hover:text-red-500 dark:hover:text-red-800
+          md:hover:text-red-500 md:dark:hover:text-red-800
           transition-colors duration-700 ease-in-out
           "
         >
