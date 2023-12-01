@@ -1502,6 +1502,7 @@ const softwareEngineering: Certificate[] = [
       "Creating objects with the Factory Method pattern",
       "Using design principles to guide your object-oriented design",
     ],
+    archived: true,
   },
 ];
 
