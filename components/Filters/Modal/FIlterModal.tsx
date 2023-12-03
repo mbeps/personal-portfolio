@@ -59,7 +59,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
   }
 
   // Combine the dynamic width class with other default classes
-  const modalClasses = `w-full sm:w-full ${modalWidthClass} max-h-[70vh] min-h-[70vh]`;
+  const modalClasses = `w-full sm:w-full ${modalWidthClass} max-h-[70vh] min-h-[50vh]`;
 
   let gridClass = "";
   switch (filterCategories.length) {

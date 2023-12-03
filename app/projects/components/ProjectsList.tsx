@@ -198,9 +198,9 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
    * Checks if any filters are applied.
    */
   const areFiltersApplied =
-    selectedType !== "All" ||
-    selectedLanguage !== "All" ||
-    selectedTechnology !== "All" ||
+    selectedType.toLowerCase() !== "all" ||
+    selectedLanguage.toLowerCase() !== "all" ||
+    selectedTechnology.toLowerCase() !== "all" ||
     searchTerm !== "";
 
   const filterCategories = [
