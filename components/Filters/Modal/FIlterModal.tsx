@@ -42,13 +42,40 @@ const FilterModal: React.FC<FilterModalProps> = ({
     { archived: showArchived }
   );
 
+  let modalWidthClass = "";
+  const categoriesLength = filterCategories.length;
+  if (categoriesLength === 1) {
+    modalWidthClass = "sm:max-w-lg"; // Default width for one category
+  } else if (categoriesLength % 2 === 0) {
+    modalWidthClass = "sm:max-w-3xl"; // Wider for two categories or multiple of two
+  } else if (categoriesLength % 3 === 0 || categoriesLength === 3) {
+    modalWidthClass = "sm:max-w-4xl"; // Widest for three categories or multiple of three
+  } else {
+    modalWidthClass = "sm:max-w-lg"; // Default width for other cases
+  }
+
+  // Combine the dynamic width class with other default classes
+  const modalClasses = `w-full sm:w-full ${modalWidthClass} max-h-[70vh] min-h-[70vh]`;
+
+  let gridClass = "";
+  switch (filterCategories.length) {
+    case 1:
+      gridClass = "grid-cols-1"; // One column for one category
+      break;
+    case 2:
+      gridClass = "md:grid-cols-2"; // Two columns for two categories
+      break;
+    default:
+      gridClass = "md:grid-cols-3"; // Three columns for three or more categories
+  }
+
   return (
     <div>
       <Modal
         isOpen={isFilterModalOpen}
         onClose={handleCloseModals}
         title={"Filters"}
-        className="w-full sm:max-w-4xl max-h-[70vh] min-h-[50vh]"
+        className={modalClasses}
       >
         <div
           className="
@@ -66,7 +93,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
         </div>
 
         {/* Filter Options */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 px-5 md:px-0">
+        <div className={`grid ${gridClass} gap-2 px-5 md:px-0`}>
           {filterCategories.map((category) => (
             <div key={category.name}>
               <label
@@ -75,7 +102,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
               >
                 {category.name}
               </label>
-              <div className="h-64 md:h-80 overflow-y-auto space-y-2">
+              <div className="h-64 md:h-78 overflow-y-auto space-y-2">
                 {category.options.map((option) => (
                   <Link
                     href={generateUrl(
