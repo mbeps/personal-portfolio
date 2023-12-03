@@ -136,12 +136,12 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
 
   const filterCategories = [
     {
-      name: "issuer",
+      name: "Issuer",
       options: certificateIssuers,
       selectedValue: selectedIssuer,
     },
     {
-      name: "category",
+      name: "Category",
       options: certificateCategories,
       selectedValue: selectedCategory,
     },
