@@ -1,6 +1,7 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
+import FilterModal from "@/components/Filters/Modal/FIlterModal";
 import ClearAllFiltersButton from "@/components/Filters/Page/ClearAllFiltersButton";
 import OpenFilterModalButton from "@/components/Filters/Page/OpenFilterModalButton";
 import SearchInput from "@/components/Inputs/SearchInput";
@@ -9,7 +10,6 @@ import Fuse from "fuse.js";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import { ArchiveToggle } from "./ArchiveToggle";
-import ProjectFilterModal from "./ProjectFilterModal";
 import ProjectsListSection from "./ProjectListSection";
 
 type ProjectsListProps = {
@@ -195,6 +195,24 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     selectedTechnology !== "All" ||
     searchTerm !== "";
 
+  const filterCategories = [
+    {
+      name: "Type",
+      selectedValue: selectedType,
+      options: projectTypes,
+    },
+    {
+      name: "Language",
+      selectedValue: selectedLanguage,
+      options: programmingLanguages,
+    },
+    {
+      name: "Technology",
+      selectedValue: selectedTechnology,
+      options: technologies,
+    },
+  ];
+
   return (
     <>
       <div className="flex flex-col md:flex-row items-center w-full mt-12 p-2 gap-4">
@@ -237,21 +255,18 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
       {/* List of projects */}
       <ProjectsListSection groupedProjects={groupedProjects} />
       {/* Filter Modal */}
-      <ProjectFilterModal
-        generateUrl={generateUrl}
+      <FilterModal
+        filterCategories={filterCategories}
         resetFilters={resetFilters}
-        selectedTechnology={selectedTechnology}
-        selectedType={selectedType}
-        selectedLanguage={selectedLanguage}
-        searchTerm={searchTerm}
+        generateUrl={generateUrl} // Ensure you have this function defined or imported
         showArchived={showArchived}
         isFilterModalOpen={isFilterModalOpen}
         handleCloseModals={handleCloseModals}
-        projectTypes={projectTypes}
-        programmingLanguages={programmingLanguages}
-        technologies={technologies}
         areFiltersApplied={areFiltersApplied}
         basePath={basePath}
+        description={`
+        Filters are applied automatically as you select them. Searching
+        and filtering automatically show archived projects.`}
       />
     </>
   );
