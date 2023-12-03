@@ -1504,6 +1504,32 @@ const softwareEngineering: Certificate[] = [
     ],
     archived: true,
   },
+  {
+    name: "Programming Foundations: Data Structures",
+    slug: "c5c41ea1aa52982d08705831612aba2e93e69a64e35dd2cce11c28fad12b59f7",
+    category: "Software Engineering",
+    issuer: "LinkedIn",
+    credentialURL:
+      "https://www.linkedin.com/learning/certificates/c5c41ea1aa52982d08705831612aba2e93e69a64e35dd2cce11c28fad12b59f7",
+    skills: ["Data Structures", "Algorithms"],
+    description: `
+      This course provides an in-depth overview of the most essential data structures for modern programming. 
+      It starts with simple ways of grouping data, like arrays and structs, and gradually introduces more complex data structures, such as linked lists, stacks and queues, hash tables, and trees and graphs. 
+      Each lesson is accompanied by a real-world, practical example that shows the data structures in action. 
+      By the end of the course, you'll have a clear understanding of data structures and understand how to use them in any programming language.
+    `,
+    learningOutcomes: [
+      "Understanding data types: Booleans, numbers, strings, and more",
+      "Working with multidimensional arrays",
+      "Manipulating jagged arrays",
+      "Searching and sorting arrays",
+      "Implementing linked lists",
+      "Utilizing stacks and queues",
+      "Applying hash functions and hash tables",
+      "Building trees and graphs",
+    ],
+    archived: true,
+  },
 ];
 
 const management: Certificate[] = [
