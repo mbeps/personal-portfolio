@@ -20,11 +20,16 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
 
   const searchParams = useSearchParams();
-  const selectedTechnology = searchParams.get("technology") || "All";
-  const selectedLanguage = searchParams.get("language") || "All";
-  const selectedType = searchParams.get("type") || "All";
-  const searchTerm = searchParams.get("search") || "";
-  const showArchived = searchParams.get("archived") === "true" || false;
+  const selectedTechnology = (
+    searchParams.get("technology") || "all"
+  ).toLowerCase();
+  const selectedLanguage = (
+    searchParams.get("language") || "all"
+  ).toLowerCase();
+  const selectedType = (searchParams.get("type") || "All").toLowerCase();
+  const searchTerm = (searchParams.get("search") || "").toLowerCase();
+  const showArchived =
+    (searchParams.get("archived") || "false").toLowerCase() === "true";
   const basePath = usePathname();
 
   const router = useRouter();
@@ -152,16 +157,19 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
    * If 'All' is selected, then all projects are displayed.
    * Archived projects are not displayed by default.
    */
-  const filteredProjects = searchedProjects.filter(
-    (project) =>
-      (showArchived || !project.archived) &&
-      (selectedType === "All" || project.type === selectedType) &&
-      (selectedLanguage === "All" ||
-        project.programmingLanguage === selectedLanguage) &&
-      (selectedTechnology === "All" ||
-        (project.technologies &&
-          project.technologies.includes(selectedTechnology)))
-  );
+  const filteredProjects = searchedProjects.filter((project: Project) => {
+    const matchesType =
+      selectedType === "all" || project.type.toLowerCase() === selectedType;
+    const matchesTechnology =
+      selectedTechnology === "all" ||
+      (project.technologies || [])
+        .map((t) => t.toLowerCase())
+        .includes(selectedTechnology);
+    const matchesLanguage =
+      selectedLanguage === "all" ||
+      project.programmingLanguage.toLowerCase() === selectedLanguage;
+    return matchesType && matchesTechnology && matchesLanguage;
+  });
 
   /**
    * Projects categorized by type.
@@ -176,9 +184,9 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     router.push(
       generateUrl(
         {
-          type: "All",
-          technology: "All",
-          language: "All",
+          type: "all",
+          technology: "all",
+          language: "all",
           search: "",
           archived: false,
         },

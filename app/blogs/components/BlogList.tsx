@@ -26,8 +26,11 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const selectedCategory = searchParams.get("category") || "All";
-  const searchTerm = searchParams.get("search") || "";
+  const selectedCategory = (
+    searchParams.get("category") || "all"
+  ).toLowerCase();
+  const searchTerm = (searchParams.get("search") || "").toLowerCase();
+
   const basePath = usePathname();
 
   /**
@@ -52,7 +55,8 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
     blogs: BlogMetadata[]
   ): Record<string, BlogMetadata[]> => {
     return blogs.reduce<Record<string, BlogMetadata[]>>((grouped, blog) => {
-      (grouped[blog.category] = grouped[blog.category] || []).push(blog);
+      (grouped[blog.category.toLowerCase()] =
+        grouped[blog.category.toLowerCase()] || []).push(blog);
       return grouped;
     }, {});
   };
@@ -95,16 +99,17 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
    * Filters the blogs by category selected by the user.
    */
   const filteredBlogs = searchedBlogs.filter(
-    (blog) => selectedCategory === "All" || blog.category === selectedCategory
+    (blog) =>
+      selectedCategory === "all" ||
+      blog.category.toLowerCase() === selectedCategory
   );
-
   const groupedBlogs = groupBlogsByType(filteredBlogs);
 
   const resetFilters = () => {
-    router.push(generateUrl({ category: "All", search: "" }, basePath));
+    router.push(generateUrl({ category: "all", search: "" }, basePath));
   };
 
-  const areFiltersApplied = selectedCategory !== "All" || searchTerm !== "";
+  const areFiltersApplied = selectedCategory !== "all" || searchTerm !== "";
 
   /**
    * Opens the modal to filter the projects.

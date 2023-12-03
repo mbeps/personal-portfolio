@@ -8,7 +8,7 @@ import FilterParams from "@/types/FilterParams";
 const generateUrl = (params: FilterParams, basePath: string): string => {
   const queryParts = Object.entries(params).map(([key, value]) => {
     const encodedValue = encodeURIComponent(value?.toString().trim() || "");
-    return `${key}=${encodedValue}`;
+    return `${key.toLowerCase()}=${encodedValue}`;
   });
 
   return `${basePath}?${queryParts.join("&")}`;
