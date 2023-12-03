@@ -12,7 +12,14 @@ interface HeadingOneProps {
  */
 const HeadingOne: React.FC<HeadingOneProps> = ({ title }) => {
   return (
-    <h1 className="text-4xl font-bold mt-6 md:mt-0 md:text-7xl text-center ">
+    <h1
+      className="
+      text-5xl md:text-7xl 
+      font-bold mt-6 
+      md:mt-0 
+      text-center 
+      "
+    >
       {title}
     </h1>
   );
