@@ -1,7 +1,7 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
-import { ArchiveToggle } from "@/app/projects/components/ArchiveToggle";
+import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
 import ClearAllFiltersButton from "@/components/Filters/Page/ClearAllFiltersButton";
 import OpenFilterModalButton from "@/components/Filters/Page/OpenFilterModalButton";
 import SearchInput from "@/components/Inputs/SearchInput";

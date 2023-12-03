@@ -9,7 +9,7 @@ import Project from "@/types/projects";
 import Fuse from "fuse.js";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
-import { ArchiveToggle } from "./ArchiveToggle";
+import { ArchiveToggle } from "../../../components/Filters/ArchiveToggle";
 import ProjectsListSection from "./ProjectListSection";
 
 type ProjectsListProps = {
