@@ -62,6 +62,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
             className="rounded-xl cursor-pointer object-cover"
             width={1000}
             height={1000}
+            quality={40}
           />
         </Link>
       )}

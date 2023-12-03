@@ -60,6 +60,7 @@ const ProjectItem: React.FC<Project> = ({
                 alt={`${name} cover image`}
                 width={1000}
                 height={1000}
+                quality={40}
                 className="
                   rounded-xl 
                   cursor-pointer"
