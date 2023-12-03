@@ -134,8 +134,8 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
   };
 
   const areFiltersApplied =
-    selectedIssuer !== "all" ||
-    selectedCategory !== "all" ||
+    selectedIssuer.toLowerCase() !== "all" ||
+    selectedCategory.toLowerCase() !== "all" ||
     searchTerm !== "" ||
     showArchived;
 

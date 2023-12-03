@@ -109,8 +109,8 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
     router.push(generateUrl({ category: "all", search: "" }, basePath));
   };
 
-  const areFiltersApplied = selectedCategory !== "all" || searchTerm !== "";
-
+  const areFiltersApplied =
+    selectedCategory.toLowerCase() !== "all" || searchTerm !== "";
   /**
    * Opens the modal to filter the projects.
    */
