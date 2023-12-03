@@ -7,6 +7,7 @@ import ClearAllFiltersButton from "@/components/Filters/Modal/ClearAllFiltersBut
 import CloseFilterModalButton from "@/components/Filters/Modal/CloseFilterModalButton";
 import Link from "next/link";
 import FilterParams from "@/types/FilterParams";
+import { ArchiveToggle } from "../ArchiveToggle";
 
 interface FilterCategory {
   name: string;
@@ -38,7 +39,10 @@ const FilterModal: React.FC<FilterModalProps> = ({
   description,
 }) => {
   const filterParams: FilterParams = filterCategories.reduce(
-    (acc, category) => ({ ...acc, [category.name]: category.selectedValue }),
+    (acc, category) => ({
+      ...acc,
+      [category.name.toLowerCase()]: category.selectedValue,
+    }),
     { archived: showArchived }
   );
 
@@ -108,7 +112,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
                     href={generateUrl(
                       {
                         ...filterParams,
-                        [category.name]: option,
+                        [category.name.toLowerCase()]: option,
                         archived: true,
                       },
                       basePath
@@ -119,7 +123,10 @@ const FilterModal: React.FC<FilterModalProps> = ({
                       id={option}
                       name={category.name}
                       value={option}
-                      checked={category.selectedValue === option}
+                      checked={
+                        category.selectedValue.toLowerCase() ===
+                        option.toLowerCase()
+                      }
                       label={option}
                     />
                   </Link>
@@ -128,6 +135,13 @@ const FilterModal: React.FC<FilterModalProps> = ({
             </div>
           ))}
         </div>
+
+        <ArchiveToggle
+          generateUrl={generateUrl}
+          showArchived={showArchived}
+          filterProps={filterParams}
+          basePath={basePath}
+        />
 
         {/* Bottom Buttons */}
         <div className="w-full flex flex-row justify-center mt-4">

@@ -29,10 +29,13 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
 
   const searchParams = useSearchParams();
-  const selectedIssuer = searchParams.get("issuer") || "All";
-  const selectedCategory = searchParams.get("category") || "All";
-  const searchTerm = searchParams.get("search") || "";
-  const showArchived = searchParams.get("archived") === "true" || false;
+  const selectedIssuer = (searchParams.get("issuer") || "all").toLowerCase();
+  const selectedCategory = (
+    searchParams.get("category") || "all"
+  ).toLowerCase();
+  const searchTerm = (searchParams.get("search") || "").toLowerCase();
+  const showArchived =
+    (searchParams.get("archived") || "false").toLowerCase() === "true";
   const basePath = usePathname();
 
   const router = useRouter();
@@ -108,8 +111,10 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
   const filteredCertificates = searchedCertificates.filter(
     (certificate) =>
       (showArchived || !certificate.archived) &&
-      (selectedIssuer === "All" || certificate.issuer === selectedIssuer) &&
-      (selectedCategory === "All" || certificate.category === selectedCategory)
+      (selectedIssuer === "all" ||
+        certificate.issuer.toLowerCase() === selectedIssuer) &&
+      (selectedCategory === "all" ||
+        certificate.category.toLowerCase() === selectedCategory)
   );
 
   const groupedCertificates = groupCertificatesByCategory(filteredCertificates);
@@ -118,8 +123,8 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     router.push(
       generateUrl(
         {
-          issuer: "All",
-          category: "All",
+          issuer: "all",
+          category: "all",
           search: "",
           archived: false,
         },
@@ -129,8 +134,8 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
   };
 
   const areFiltersApplied =
-    selectedIssuer !== "All" ||
-    selectedCategory !== "All" ||
+    selectedIssuer !== "all" ||
+    selectedCategory !== "all" ||
     searchTerm !== "" ||
     showArchived;
 
