@@ -9,8 +9,8 @@ import Certificate from "@/types/certificates";
 import Fuse from "fuse.js";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
-import CredentialFilterModal from "./CredentialFilterModal";
 import CredentialListSection from "./CredentialListSection";
+import FilterModal from "@/components/Filters/Modal/FIlterModal";
 
 type CredentialsListListProps = {
   allCertificates: Certificate[];
@@ -134,6 +134,19 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     searchTerm !== "" ||
     showArchived;
 
+  const filterCategories = [
+    {
+      name: "issuer",
+      options: certificateIssuers,
+      selectedValue: selectedIssuer,
+    },
+    {
+      name: "category",
+      options: certificateCategories,
+      selectedValue: selectedCategory,
+    },
+  ];
+
   return (
     <>
       <div className="flex flex-col md:flex-row items-center w-full mt-12 p-2 gap-4">
@@ -177,19 +190,19 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
       {/* List of projects */}
       <CredentialListSection groupedCertificates={groupedCertificates} />
       {/* Filter Modal */}
-      <CredentialFilterModal
-        generateUrl={generateUrl}
-        areFiltersApplied={areFiltersApplied}
+      <FilterModal
+        filterCategories={filterCategories}
         resetFilters={resetFilters}
-        isFilterModalOpen={isFilterModalOpen}
-        handleCloseModals={handleCloseModals}
-        certificateCategories={certificateCategories}
-        certificateIssuers={certificateIssuers}
-        selectedCategory={selectedCategory}
-        selectedIssuer={selectedIssuer}
-        searchTerm={searchTerm}
+        generateUrl={generateUrl}
         showArchived={showArchived}
+        handleCloseModals={handleCloseModals}
+        isFilterModalOpen={isFilterModalOpen}
+        areFiltersApplied={areFiltersApplied}
         basePath={basePath}
+        description={`
+          Filters are applied automatically as you select them. Searching and
+          filtering automatically show archived certificates.
+        `}
       />
     </>
   );
