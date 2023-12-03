@@ -1,5 +1,7 @@
 "use client";
 
+import generateUrl from "@/actions/generateUrl";
+import FilterModal from "@/components/Filters/Modal/FIlterModal";
 import ClearAllFiltersButton from "@/components/Filters/Page/ClearAllFiltersButton";
 import OpenFilterModalButton from "@/components/Filters/Page/OpenFilterModalButton";
 import SearchInput from "@/components/Inputs/SearchInput";
@@ -8,8 +10,6 @@ import Fuse from "fuse.js";
 import { usePathname, useRouter, useSearchParams } from "next/navigation"; // Add this import for Next.js router
 import { useState } from "react";
 import BlogListSection from "./BlogListSection";
-import BlogFilterModal from "./BlogFilterModal";
-import generateUrl from "@/actions/generateUrl";
 
 interface BlogListProps {
   blogs: BlogMetadata[];
@@ -121,6 +121,14 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
     setIsFilterModalOpen(false);
   };
 
+  const filterCategories = [
+    {
+      name: "Category",
+      options: blogCategories,
+      selectedValue: selectedCategory,
+    },
+  ];
+
   return (
     <>
       <div className="flex flex-col md:flex-row items-center w-full mt-12 p-2 gap-4">
@@ -150,16 +158,19 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
       <BlogListSection groupedBlogs={groupedBlogs} />
 
       {/* Filter Modal */}
-      <BlogFilterModal
+      <FilterModal
+        filterCategories={filterCategories}
         resetFilters={resetFilters}
         generateUrl={generateUrl}
+        showArchived={true}
         handleCloseModals={handleCloseModals}
         isFilterModalOpen={isFilterModalOpen}
         areFiltersApplied={areFiltersApplied}
-        blogCategories={blogCategories}
-        selectedCategory={selectedCategory}
-        searchTerm={searchTerm}
         basePath={basePath}
+        description={`
+          Filters are applied automatically as you select them. Searching and
+          filtering automatically show archived certificates.
+        `}
       />
     </>
   );
