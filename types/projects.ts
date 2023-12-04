@@ -1,3 +1,4 @@
+import { Language } from "./languages";
 import { Skill } from "./skills";
 
 /**
@@ -10,7 +11,7 @@ export default interface Project {
   imageURL?: string;
   repoURL?: string;
   siteURL?: string;
-  programmingLanguage: string;
+  programmingLanguage: Language;
   technologies?: Skill[];
   type:
     | "Full-Stack Web Dev"

@@ -1,5 +1,4 @@
 import { Language } from "@/types/languages";
-import { Skill } from "@/types/skills";
 import {
   django,
   drizzle,
@@ -35,64 +34,82 @@ import {
   yarn,
 } from "./skills";
 
-/**
- * Array of skills for JavaScript and TypeScript.
- * Skills for both languages are the same.
- */
-const JavaScriptTypeScriptSkills: Skill[] = [
-  nextjs,
-  nextauth,
-  nodejs,
-  react,
-  jest,
-  vitest,
-  prisma,
-  drizzle,
-  mongoose,
-  npm,
-  yarn,
-  pnpm,
-];
+export const python: Language = {
+  language: "Python",
+  skills: [
+    flask,
+    django,
+    scikitLearn,
+    pandas,
+    numpy,
+    matplotlib,
+    seaborn,
+    keras,
+    jupyterNotebooks,
+    pytest,
+    unittest,
+    sqlalchemy,
+    poetry,
+    pybuilder,
+  ],
+  repository: "projects?type=All&technology=All&language=Python&search=",
+};
+
+export const javascript: Language = {
+  language: "JavaScript",
+  skills: [
+    nextjs,
+    nextauth,
+    nodejs,
+    react,
+    jest,
+    vitest,
+    prisma,
+    drizzle,
+    mongoose,
+    npm,
+    yarn,
+    pnpm,
+  ],
+};
+
+export const typescript: Language = {
+  language: "JavaScript",
+  skills: [
+    nextjs,
+    nextauth,
+    nodejs,
+    react,
+    jest,
+    vitest,
+    prisma,
+    drizzle,
+    mongoose,
+    npm,
+    yarn,
+    pnpm,
+  ],
+  repository: "projects?type=All&technology=All&language=TypeScript&search=",
+};
+
+export const java: Language = {
+  language: "Java",
+  skills: [maven, gradle, junit, spring, springBoot, hibernate],
+  repository: "projects?type=All&technology=All&language=Java&search=",
+};
+
+export const gameMakerLanguage: Language = {
+  language: "GameMaker Language",
+};
+
+export const shellScript: Language = {
+  language: "Shell Script",
+};
 
 /**
  * Array of languages.
  * Each language has an array of skills and repositories.
  */
-const languages: Language[] = [
-  {
-    language: "JavaScript",
-    skills: JavaScriptTypeScriptSkills,
-  },
-  {
-    language: "TypeScript",
-    skills: JavaScriptTypeScriptSkills,
-    repository: "projects?type=All&technology=All&language=TypeScript&search=",
-  },
-  {
-    language: "Python",
-    skills: [
-      flask,
-      django,
-      scikitLearn,
-      pandas,
-      numpy,
-      matplotlib,
-      seaborn,
-      keras,
-      jupyterNotebooks,
-      pytest,
-      unittest,
-      sqlalchemy,
-      poetry,
-      pybuilder,
-    ],
-    repository: "projects?type=All&technology=All&language=Python&search=",
-  },
-  {
-    language: "Java",
-    skills: [maven, gradle, junit, spring, springBoot, hibernate],
-    repository: "projects?type=All&technology=All&language=Java&search=",
-  },
-];
+const languages: Language[] = [javascript, typescript, python, java];
 
 export { languages };

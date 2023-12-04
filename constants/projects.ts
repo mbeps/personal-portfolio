@@ -51,6 +51,13 @@ import {
   zod,
   zustand,
 } from "./skills";
+import {
+  gameMakerLanguage,
+  java,
+  python,
+  shellScript,
+  typescript,
+} from "./languages";
 
 /**
  * Array of web development projects.
@@ -68,7 +75,7 @@ const webdevProjects: Project[] = [
       `,
     repoURL: `https://github.com/mbeps/next_discussion_platform`,
     siteURL: `https://circus-discussion.vercel.app/`,
-    programmingLanguage: `TypeScript`,
+    programmingLanguage: typescript,
     technologies: [
       nextjs,
       react,
@@ -116,7 +123,7 @@ const webdevProjects: Project[] = [
       `,
     repoURL: `https://github.com/mbeps/ringmaster-messaging`,
     siteURL: `https://ringmaster-messaging.vercel.app/`,
-    programmingLanguage: `TypeScript`,
+    programmingLanguage: typescript,
     technologies: [
       nextjs,
       react,
@@ -164,7 +171,7 @@ const webdevProjects: Project[] = [
       Developing this project allowed me to explore Stripe, Clerk authentication, and unique AI APIs.
   `,
     repoURL: `https://github.com/mbeps/magician-ai`,
-    programmingLanguage: `TypeScript`,
+    programmingLanguage: typescript,
     siteURL: "https://magician-ai.vercel.app/",
     technologies: [
       nextjs,
@@ -218,7 +225,7 @@ const webdevProjects: Project[] = [
       Users can upload songs, search and listen to music, as well as like the songs they enjoy.
       `,
     repoURL: `https://github.com/mbeps/drumroll-music`,
-    programmingLanguage: `TypeScript`,
+    programmingLanguage: typescript,
     technologies: [
       nextjs,
       react,
@@ -267,7 +274,7 @@ const extraWebDevProjects: Project[] = [
     description: `An intuitive platform for dynamic quiz generation. 
       Users can test their knowledge across various topics, choosing between multiple-choice questions or fill-in-the-gap style challenges. 
       With immediate feedback and score tracking, users enhance their understanding.`,
-    programmingLanguage: "TypeScript",
+    programmingLanguage: typescript,
     type: "Full-Stack Web Dev",
     technologies: [
       nextjs,
@@ -310,7 +317,7 @@ const extraWebDevProjects: Project[] = [
       This foundational project paved the way for using Supabase in subsequent projects.
       `,
     repoURL: `https://github.com/mbeps/sideshow-articles`,
-    programmingLanguage: `TypeScript`,
+    programmingLanguage: typescript,
     technologies: [nextjs, react, supabase, postgreSQL, nextUI],
     type: "Full-Stack Web Dev",
     tags: [
@@ -339,7 +346,7 @@ const extraWebDevProjects: Project[] = [
       `,
     repoURL: `https://github.com/ixahmedxi/noodle`,
     siteURL: `https://noodle.run/`,
-    programmingLanguage: `TypeScript`,
+    programmingLanguage: typescript,
     technologies: [
       nextjs,
       react,
@@ -386,7 +393,7 @@ const extraWebDevProjects: Project[] = [
       Since there were no tutorials or guides available, we relied heavily on the library's documentation.
       `,
     repoURL: `https://github.com/mbeps/convo-gpt`,
-    programmingLanguage: `TypeScript`,
+    programmingLanguage: typescript,
     technologies: [
       nextjs,
       react,
@@ -426,7 +433,7 @@ const backendWebDevProjects: Project[] = [
       This was created to learn how to create a custom backend using Python and Flask.
       `,
     repoURL: `https://github.com/mbeps/Forum-Discussion-Flask-Backend`,
-    programmingLanguage: `Python`,
+    programmingLanguage: typescript,
     technologies: [flask, mySQL, sqlalchemy, rest],
     type: "Back-End Web Dev",
     tags: [
@@ -453,7 +460,7 @@ const backendWebDevProjects: Project[] = [
       This serves as a foundation to using JWT in other projects using Flask.
       `,
     repoURL: `https://github.com/mbeps/Flask_JWT_Auth`,
-    programmingLanguage: `Python`,
+    programmingLanguage: typescript,
     technologies: [flask, jwt],
     type: "Back-End Web Dev",
     tags: [
@@ -476,7 +483,7 @@ const backendWebDevProjects: Project[] = [
       A simple Django app to learn how to use Django with tokens for authentication.
       This serves as a foundation to using Django in other projects.
       `,
-    programmingLanguage: `Python`,
+    programmingLanguage: typescript,
     repoURL: `https://github.com/mbeps/Django_Auth_Sys`,
     technologies: [django, jwt],
     type: "Back-End Web Dev",
@@ -499,7 +506,7 @@ const backendWebDevProjects: Project[] = [
     description: `
       A simple Next.JS app to experiment with the Clerk Authentication SDK. 
       `,
-    programmingLanguage: `TypeScript`,
+    programmingLanguage: typescript,
     repoURL: `https://github.com/mbeps/clerk-demo`,
     technologies: [nextjs, clerkAuth, nodejs],
     type: "Back-End Web Dev",
@@ -523,7 +530,7 @@ const backendWebDevProjects: Project[] = [
       A simple Next.JS app to experiment with the Auth0 Authentication SDK. 
       This does not use the new Next.JS 13 app router as it is not supported as of the time of making this demo. 
       `,
-    programmingLanguage: `TypeScript`,
+    programmingLanguage: typescript,
     repoURL: `https://github.com/mbeps/nextjs-auth0`,
     technologies: [nextjs, auth0, nodejs],
     type: "Back-End Web Dev",
@@ -553,7 +560,7 @@ const machineLearningProjects: Project[] = [
     slug: "adult-income-prediction",
     description: `A project leveraging the UCI Adult Income dataset to predict income brackets using a RandomForestClassifier. Emphasis is on feature engineering, data preprocessing with One-Hot Encoding, and model optimization through hyperparameter tuning.`,
     repoURL: "https://github.com/mbeps/Adults_Income_Prediction",
-    programmingLanguage: "Python",
+    programmingLanguage: python,
     technologies: [
       scikitLearn,
       numpy,
@@ -579,7 +586,7 @@ const machineLearningProjects: Project[] = [
     slug: "house-price-prediction",
     description: `An analytical approach to predicting California housing prices using the RandomForestRegressor and LinearRegressor, with a focus on data preprocessing and feature engineering.`,
     repoURL: "https://github.com/your-username/House-Price-Prediction",
-    programmingLanguage: "Python",
+    programmingLanguage: python,
     technologies: [
       scikitLearn,
       numpy,
@@ -608,7 +615,7 @@ const machineLearningProjects: Project[] = [
       Have an understanding of ways to apply the ideas and algorithms of machine learning in science and technology.
       `,
     repoURL: `https://github.com/mbeps/Machine-Learning-Assignment-1`,
-    programmingLanguage: `Python`,
+    programmingLanguage: python,
     technologies: [scikitLearn, numpy, matplotlib, jupyterNotebooks],
     type: "Machine Learning",
     tags: [
@@ -630,7 +637,7 @@ const machineLearningProjects: Project[] = [
       Have an understanding of ways to apply the ideas and algorithms of machine learning in industry and medicine.
     `,
     repoURL: `https://github.com/mbeps/Machine-Learning-Assignment-2`,
-    programmingLanguage: `Python`,
+    programmingLanguage: python,
     // technologies: [`NumPy`, `Scikit Learn`, `Matplotlib`, "Jupyter Notebook"],
     technologies: [scikitLearn, numpy, matplotlib, jupyterNotebooks],
     type: "Machine Learning",
@@ -653,7 +660,7 @@ const machineLearningProjects: Project[] = [
       Have an understanding of ways to apply the ideas and algorithms of machine learning in industry.
       `,
     repoURL: `https://github.com/mbeps/Machine-Learning-Assignment-3`,
-    programmingLanguage: `Python`,
+    programmingLanguage: python,
     technologies: [scikitLearn, numpy, matplotlib, jupyterNotebooks],
     type: "Machine Learning",
     tags: [
@@ -674,7 +681,7 @@ const machineLearningProjects: Project[] = [
       such as Nearest Neighbours, conformal prediction, linear regression, Ridge Regression, Lasso, data preprocessing, parameter selection, 
       kernels, neural networks, support vector machines, scikit-learn pipelines, and cross-conformal predictors.`,
     repoURL: `https://github.com/mbeps/Machine-Learning-Labs-Questions`,
-    programmingLanguage: `Python`,
+    programmingLanguage: python,
     technologies: [scikitLearn, numpy, matplotlib, jupyterNotebooks],
     type: "Machine Learning",
     tags: [
@@ -694,7 +701,7 @@ const machineLearningProjects: Project[] = [
       An assignment exploring valuation of options using methods like Black-Scholes, binomial trees, and Monte Carlo. 
       Also includes theoretical aspects of put-call parity and financial arbitrage opportunities.`,
     repoURL: `https://github.com/mbeps/Computation_Finance_Assignment`,
-    programmingLanguage: `Python`,
+    programmingLanguage: python,
     technologies: [numpy, matplotlib, jupyterNotebooks],
     type: "Machine Learning",
     tags: [
@@ -722,7 +729,7 @@ const gameDevProjects: Project[] = [
       This required us to rely on the documentation as there was no tutorials or guides on how to use the library.
       `,
     repoURL: `https://github.com/mbeps/Osmos_Game`,
-    programmingLanguage: `Python`,
+    programmingLanguage: python,
     technologies: [simpleGui],
     type: "Game Dev",
     tags: [
@@ -744,7 +751,7 @@ const gameDevProjects: Project[] = [
       Every time he kills all the skeletons more of them will come at once.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: "GML",
+    programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
     technologies: [gameMakerStudio],
     siteURL: "https://bepary-games.itch.io/surface-fight",
@@ -765,7 +772,7 @@ const gameDevProjects: Project[] = [
       This is also a multiplayer game.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: "GML",
+    programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
     technologies: [gameMakerStudio],
     siteURL: "https://bepary-games.itch.io/platformer",
@@ -786,7 +793,7 @@ const gameDevProjects: Project[] = [
       This is also a multiplayer game.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: "GML",
+    programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
     technologies: [gameMakerStudio],
     siteURL: "https://bepary-games.itch.io/platformer-death-walk",
@@ -806,7 +813,7 @@ const gameDevProjects: Project[] = [
       and the goal is to destroy them all by repeatedly bouncing a ball off a paddle into them.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: "GML",
+    programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
     technologies: [gameMakerStudio],
     siteURL: "https://bepary-games.itch.io/coding-break-out",
@@ -826,7 +833,7 @@ const gameDevProjects: Project[] = [
       as many times as possible within a given time limit.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: "GML",
+    programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
     technologies: [gameMakerStudio],
     siteURL: "https://bepary-games.itch.io/catch-maruf",
@@ -846,7 +853,7 @@ const gameDevProjects: Project[] = [
       by making use of the gravity switch and avoiding the obstacles.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: "GML",
+    programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
     technologies: [gameMakerStudio],
     siteURL: "https://bepary-games.itch.io/against-gravity",
@@ -865,7 +872,7 @@ const gameDevProjects: Project[] = [
       This is a game where the aim is to shoot the enemies and avoid their bullets.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: "GML",
+    programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
     technologies: [gameMakerStudio],
     siteURL: "https://bepary-games.itch.io/scrolling-shooter",
@@ -884,7 +891,7 @@ const gameDevProjects: Project[] = [
       A very simple 3D game where the aim is to reach the end of the level through the maze.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: "GML",
+    programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
     technologies: [gameMakerStudio],
     siteURL: "https://bepary-games.itch.io/dungeon-",
@@ -904,7 +911,7 @@ const gameDevProjects: Project[] = [
       This is very similar to the popular game Fruit Ninja.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: "GML",
+    programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
     technologies: [gameMakerStudio],
     siteURL: "https://bepary-games.itch.io/vej-ninja",
@@ -924,7 +931,7 @@ const gameDevProjects: Project[] = [
       This is very similar to the popular game Angry Birds.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: "GML",
+    programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
     technologies: [gameMakerStudio],
     siteURL: "https://bepary-games.itch.io/angry-cats-space",
@@ -944,7 +951,7 @@ const gameDevProjects: Project[] = [
       This is very similar to the popular game Angry Birds.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: "GML",
+    programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
     technologies: [gameMakerStudio],
     siteURL: "https://bepary-games.itch.io/angry-cats-space",
@@ -972,7 +979,7 @@ const otherProjects: Project[] = [
       Each algorithms is explained. 
       All the algorithms are also compared to each other. 
     `,
-    programmingLanguage: "Python",
+    programmingLanguage: python,
     type: "Other",
     technologies: [matplotlib, numpy, jupyterNotebooks],
     repoURL: "https://github.com/mbeps/algorithms",
@@ -995,7 +1002,7 @@ const otherProjects: Project[] = [
       This is specifically for my Fedora install.
       `,
     repoURL: `https://github.com/mbeps/AutomatedSetup`,
-    programmingLanguage: `Shell`,
+    programmingLanguage: shellScript,
     type: "Other",
     tags: [
       "Linux",
@@ -1017,7 +1024,7 @@ const otherProjects: Project[] = [
       CI/CD is also used to run the tests when merging to the main branch.
       `,
     repoURL: `https://github.com/stars/mbeps/lists/leetcode`,
-    programmingLanguage: `Python`,
+    programmingLanguage: python,
     technologies: [pytest, gitHubActions],
     type: "Other",
     tags: [
@@ -1052,7 +1059,7 @@ const javaAssignments: Project[] = [
 
       `,
     repoURL: `https://github.com/mbeps/Calculator-Assignment`,
-    programmingLanguage: `Java`,
+    programmingLanguage: java,
     technologies: [maven, junit],
     type: "Java Assignments",
     tags: [
@@ -1073,7 +1080,7 @@ const javaAssignments: Project[] = [
       Simple botanic garden planner app built using Java.
       This was in first year to learn about Java and object oriented programming.`,
     repoURL: `https://github.com/mbeps/Botanic-Garden-Planner`,
-    programmingLanguage: `Java`,
+    programmingLanguage: java,
     type: "Java Assignments",
     tags: [
       "Assignment",
@@ -1090,7 +1097,7 @@ const javaAssignments: Project[] = [
     description: `Simple app to track Covid cases. 
       This was in first year to learn about Java and object oriented programming.`,
     repoURL: `https://github.com/mbeps/Track_and_Trace`,
-    programmingLanguage: `Java`,
+    programmingLanguage: java,
     type: "Java Assignments",
     tags: [
       "Assignment",
@@ -1106,7 +1113,7 @@ const javaAssignments: Project[] = [
     slug: "hollomon-assignment",
     description: `This was in first year to learn about Java and object oriented programming.`,
     repoURL: `https://github.com/mbeps/Hollomon`,
-    programmingLanguage: `Java`,
+    programmingLanguage: java,
     type: "Java Assignments",
     tags: [
       "Assignment",
@@ -1122,7 +1129,7 @@ const javaAssignments: Project[] = [
     slug: "database-mini-project",
     description: `Learning to interact with a database using Java.`,
     repoURL: `https://github.com/mbeps/DatabasesMiniProject`,
-    programmingLanguage: `Java`,
+    programmingLanguage: java,
     technologies: [postgreSQL],
     type: "Java Assignments",
     tags: [
