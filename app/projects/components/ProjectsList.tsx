@@ -168,7 +168,13 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     const matchesLanguage =
       selectedLanguage === "all" ||
       project.programmingLanguage.toLowerCase() === selectedLanguage;
-    return matchesType && matchesTechnology && matchesLanguage;
+    const matchesArchivedStatus = showArchived || !project.archived;
+    return (
+      matchesType &&
+      matchesTechnology &&
+      matchesLanguage &&
+      matchesArchivedStatus
+    );
   });
 
   /**
