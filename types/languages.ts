@@ -9,4 +9,4 @@ interface Language {
   repository?: string;
 }
 
-export type { Skill, Language };
+export type { Language };

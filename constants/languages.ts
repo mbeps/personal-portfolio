@@ -74,7 +74,7 @@ export const javascript: Language = {
 };
 
 export const typescript: Language = {
-  language: "JavaScript",
+  language: "TypeScript",
   skills: [
     nextjs,
     nextauth,

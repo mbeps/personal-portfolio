@@ -11,6 +11,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import { ArchiveToggle } from "../../../components/Filters/ArchiveToggle";
 import ProjectsListSection from "./ProjectListSection";
+import { Skill } from "@/types/skills";
 
 type ProjectsListProps = {
   allProjects: Project[];
@@ -111,7 +112,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const programmingLanguages: string[] = [
     "All",
     ...allProjects
-      .map((project: Project) => project.programmingLanguage)
+      .map((project: Project) => project.programmingLanguage.language)
       .filter((value, index, self) => self.indexOf(value) === index),
   ];
 
@@ -125,7 +126,10 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     "All",
     ...Array.from(
       new Set(
-        allProjects.flatMap((project: Project) => project.technologies || [])
+        allProjects.flatMap(
+          (project: Project) =>
+            project.technologies?.map((tech: Skill) => tech.skill) || []
+        )
       )
     ),
   ];
@@ -163,11 +167,11 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     const matchesTechnology =
       selectedTechnology === "all" ||
       (project.technologies || [])
-        .map((t) => t.toLowerCase())
+        .map((tech: Skill) => tech.skill.toLowerCase())
         .includes(selectedTechnology);
     const matchesLanguage =
       selectedLanguage === "all" ||
-      project.programmingLanguage.toLowerCase() === selectedLanguage;
+      project.programmingLanguage.language.toLowerCase() === selectedLanguage;
     const matchesArchivedStatus = showArchived || !project.archived;
     return (
       matchesType &&
