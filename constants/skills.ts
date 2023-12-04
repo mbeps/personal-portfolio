@@ -349,3 +349,103 @@ export const hibernate: Skill = {
   skill: "Hibernate",
   category: "Object Relational Mappers",
 };
+
+export const chakraUI: Skill = {
+  skill: "Chakra UI",
+  category: "Front-End Web Development",
+};
+
+export const recoil: Skill = {
+  skill: "Recoil",
+  category: "Front-End Web Development",
+};
+
+export const zustand: Skill = {
+  skill: "Zustand",
+  category: "Front-End Web Development",
+};
+
+export const jotai: Skill = {
+  skill: "Jotai",
+  category: "Front-End Web Development",
+};
+
+export const redux: Skill = {
+  skill: "Redux",
+  category: "Front-End Web Development",
+};
+
+export const cloudinary: Skill = {
+  skill: "Cloudinary",
+  category: "Back-End Web Development",
+};
+
+export const headlessUI: Skill = {
+  skill: "Headless UI",
+  category: "Front-End Web Development",
+};
+
+export const shadcnUI: Skill = {
+  skill: "Shadcn UI",
+  category: "Front-End Web Development",
+};
+
+export const radixUI: Skill = {
+  skill: "Radix UI",
+  category: "Front-End Web Development",
+};
+
+export const axios: Skill = {
+  skill: "Axios",
+  category: "Front-End Web Development",
+};
+
+export const reactQuery: Skill = {
+  skill: "React Query",
+  category: "Front-End Web Development",
+};
+
+export const zod: Skill = {
+  skill: "Zod",
+  category: "Other",
+};
+
+export const nextUI: Skill = {
+  skill: "Next UI",
+  category: "Front-End Web Development",
+};
+
+export const nxjs: Skill = {
+  skill: "Nx.js",
+  category: "Project Managers",
+};
+
+export const storybooks: Skill = {
+  skill: "Storybooks",
+  category: "Front-End Web Development",
+};
+
+export const cypress: Skill = {
+  skill: "Cypress",
+  category: "Testing",
+};
+
+export const reactTestingLibrary: Skill = {
+  skill: "React Testing Library",
+  category: "Testing",
+};
+
+export const jwt: Skill = {
+  skill: "JWT",
+  category: "Back-End Web Development",
+};
+
+export const simpleGui: Skill = {
+  skill: "Simple GUI",
+  category: "Back-End Web Development",
+};
+
+export const gameMakerStudio: Skill = {
+  skill: "GameMaker Studio 2",
+  category: "Game Development",
+};

@@ -18,6 +18,7 @@ interface Skill {
     | "Web Sockets"
     | "Artificial Intelligence"
     | "Mathematics"
+    | "Game Development"
     | "Other";
 }
 

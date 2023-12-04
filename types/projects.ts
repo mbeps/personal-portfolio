@@ -1,3 +1,5 @@
+import { Skill } from "./skills";
+
 /**
  * Interface representing a project.
  */
@@ -9,7 +11,7 @@ export default interface Project {
   repoURL?: string;
   siteURL?: string;
   programmingLanguage: string;
-  technologies?: string[];
+  technologies?: Skill[];
   type:
     | "Full-Stack Web Dev"
     | "Back-End Web Dev"
