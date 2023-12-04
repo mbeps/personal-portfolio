@@ -1,4 +1,3 @@
-import { Skill } from "@/types/languages";
 import React, { useState } from "react";
 import Button from "../Atoms/Button";
 import Tag from "../Atoms/Tag";
@@ -7,6 +6,7 @@ import Dropdown from "../DropDown/DropDownMenu";
 import Modal from "./Modal";
 import organizeSkillsByCategory from "@/actions/organizeSkillsByCategory";
 import Link from "next/link";
+import { Skill } from "@/types/skills";
 
 interface ProjectModalProps {
   isOpen?: boolean; // whether the modal is open or not

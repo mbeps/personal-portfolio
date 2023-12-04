@@ -244,7 +244,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
           <div className="mt-4 text-center md:text-left">
             <HeadingThree title="Language" />
             <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-5">
-              <Tag>{projectLanguage?.language}</Tag>
+              <Tag>{projectLanguage?.skill}</Tag>
             </div>
           </div>
           {projectTechnologies && (

@@ -1,7 +1,9 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
-import FilterModal from "@/components/Filters/Modal/FIlterModal";
+import FilterModal, {
+  FilterCategory,
+} from "@/components/Filters/Modal/FIlterModal";
 import ClearAllFiltersButton from "@/components/Filters/Page/ClearAllFiltersButton";
 import OpenFilterModalButton from "@/components/Filters/Page/OpenFilterModalButton";
 import SearchInput from "@/components/Inputs/SearchInput";
@@ -112,7 +114,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const programmingLanguages: string[] = [
     "All",
     ...allProjects
-      .map((project: Project) => project.programmingLanguage.language)
+      .map((project: Project) => project.programmingLanguage.skill)
       .filter((value, index, self) => self.indexOf(value) === index),
   ];
 
@@ -171,7 +173,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
         .includes(selectedTechnology);
     const matchesLanguage =
       selectedLanguage === "all" ||
-      project.programmingLanguage.language.toLowerCase() === selectedLanguage;
+      project.programmingLanguage.skill.toLowerCase() === selectedLanguage;
     const matchesArchivedStatus = showArchived || !project.archived;
     return (
       matchesType &&
@@ -213,7 +215,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     selectedTechnology.toLowerCase() !== "all" ||
     searchTerm !== "";
 
-  const filterCategories = [
+  const filterCategories: FilterCategory[] = [
     {
       name: "Type",
       selectedValue: selectedType,

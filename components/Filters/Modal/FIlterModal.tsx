@@ -9,7 +9,7 @@ import Link from "next/link";
 import FilterParams from "@/types/FilterParams";
 import { ArchiveToggle } from "../ArchiveToggle";
 
-interface FilterCategory {
+export interface FilterCategory {
   name: string;
   selectedValue: string;
   options: string[];

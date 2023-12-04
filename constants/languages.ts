@@ -1,4 +1,4 @@
-import { Language } from "@/types/languages";
+import { Skill } from "@/types/skills";
 import {
   django,
   drizzle,
@@ -34,8 +34,8 @@ import {
   yarn,
 } from "./skills";
 
-export const python: Language = {
-  language: "Python",
+export const python: Skill = {
+  skill: "Python",
   skills: [
     flask,
     django,
@@ -52,11 +52,10 @@ export const python: Language = {
     poetry,
     pybuilder,
   ],
-  repository: "projects?type=All&technology=All&language=Python&search=",
 };
 
-export const javascript: Language = {
-  language: "JavaScript",
+export const javascript: Skill = {
+  skill: "JavaScript",
   skills: [
     nextjs,
     nextauth,
@@ -73,8 +72,8 @@ export const javascript: Language = {
   ],
 };
 
-export const typescript: Language = {
-  language: "TypeScript",
+export const typescript: Skill = {
+  skill: "TypeScript",
   skills: [
     nextjs,
     nextauth,
@@ -89,27 +88,25 @@ export const typescript: Language = {
     yarn,
     pnpm,
   ],
-  repository: "projects?type=All&technology=All&language=TypeScript&search=",
 };
 
-export const java: Language = {
-  language: "Java",
+export const java: Skill = {
+  skill: "Java",
   skills: [maven, gradle, junit, spring, springBoot, hibernate],
-  repository: "projects?type=All&technology=All&language=Java&search=",
 };
 
-export const gameMakerLanguage: Language = {
-  language: "GameMaker Language",
+export const gameMakerLanguage: Skill = {
+  skill: "GameMaker Skill",
 };
 
-export const shellScript: Language = {
-  language: "Shell Script",
+export const shellScript: Skill = {
+  skill: "Shell Script",
 };
 
 /**
  * Array of languages.
- * Each language has an array of skills and repositories.
+ * Each skill has an array of skills and repositories.
  */
-const languages: Language[] = [javascript, typescript, python, java];
+const languages: Skill[] = [javascript, typescript, python, java];
 
 export { languages };

@@ -20,6 +20,7 @@ interface Skill {
     | "Mathematics"
     | "Game Development"
     | "Other";
+  skills?: Skill[];
 }
 
 export type { Skill };

@@ -57,7 +57,7 @@ const SkillsModal: React.FC<SkillsModalProps> = ({ isOpen, onClose }) => {
       organizedSkills = languages.reduce(
         (acc: Record<string, Skill[]>, lang) => {
           if (lang.skills) {
-            acc[lang.language] = removeDuplicates(lang.skills);
+            acc[lang.skill] = removeDuplicates(lang.skills);
           }
           return acc;
         },

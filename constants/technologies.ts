@@ -1,4 +1,4 @@
-import { Skill } from "../types/languages";
+import { Skill } from "@/types/skills";
 import {
   firebase,
   supabase,
