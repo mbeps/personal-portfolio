@@ -244,7 +244,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
           <div className="mt-4 text-center md:text-left">
             <HeadingThree title="Language" />
             <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-5">
-              <Tag>{projectLanguage}</Tag>
+              <Tag>{projectLanguage?.language}</Tag>
             </div>
           </div>
           {projectTechnologies && (
@@ -252,7 +252,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
               <HeadingThree title="Technologies" />
               <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
                 {projectTechnologies.map((tech, index) => (
-                  <Tag key={index}>{tech}</Tag>
+                  <Tag key={index}>{tech.skill}</Tag>
                 ))}
               </div>
             </div>
