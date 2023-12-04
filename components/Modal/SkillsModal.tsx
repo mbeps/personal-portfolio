@@ -1,5 +1,5 @@
 import { languages } from "@/constants/languages";
-import { technologies } from "@/constants/skills";
+import { technologies } from "@/constants/technologies";
 import { Skill } from "@/types/skills";
 import React from "react";
 import Tag from "../Atoms/Tag";
