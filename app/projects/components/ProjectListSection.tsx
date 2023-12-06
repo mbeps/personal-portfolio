@@ -36,9 +36,6 @@ const ProjectsListSection: React.FC<ProjectsListSectionProps> = ({
                         imageURL={project.imageURL}
                         repoURL={project.repoURL}
                         siteURL={project.siteURL}
-                        programmingLanguage={project.programmingLanguage}
-                        technologies={project.technologies}
-                        type={project.type}
                       />
                     </div>
                   ))}
