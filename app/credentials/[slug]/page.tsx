@@ -208,7 +208,7 @@ const CredentialPage: React.FC<CredentialPageProps> = ({ params }) => {
               <HeadingThree title="Skills" />
               <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
                 {certificate.skills.map((skill, index) => (
-                  <Tag key={index}>{skill}</Tag>
+                  <Tag key={index}>{skill.skill}</Tag>
                 ))}
               </div>
             </div>
