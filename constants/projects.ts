@@ -1,10 +1,15 @@
 import Project from "@/types/projects";
 import {
   auth0,
+  automation,
   axios,
   chakraUI,
   clerkAuth,
   cloudinary,
+  continuousDeployment,
+  continuousIntegration,
+  databases,
+  devOps,
   django,
   docker,
   firebase,
@@ -48,6 +53,8 @@ import {
   supabase,
   tRPC,
   tailwindCSS,
+  testing,
+  userAuthentication,
   zod,
   zustand,
 } from "./skills";
@@ -76,7 +83,7 @@ const webdevProjects: Project[] = [
     repoURL: `https://github.com/mbeps/next_discussion_platform`,
     siteURL: `https://circus-discussion.vercel.app/`,
     programmingLanguage: typescript,
-    technologies: [
+    skills: [
       nextjs,
       react,
       chakraUI,
@@ -124,7 +131,7 @@ const webdevProjects: Project[] = [
     repoURL: `https://github.com/mbeps/ringmaster-messaging`,
     siteURL: `https://ringmaster-messaging.vercel.app/`,
     programmingLanguage: typescript,
-    technologies: [
+    skills: [
       nextjs,
       react,
       nodejs,
@@ -140,6 +147,11 @@ const webdevProjects: Project[] = [
       zustand,
       docker,
       gitHubActions,
+      devOps,
+      continuousIntegration,
+      continuousDeployment,
+      userAuthentication,
+      databases,
     ],
     type: "Full-Stack Web Dev",
     tags: [
@@ -173,7 +185,7 @@ const webdevProjects: Project[] = [
     repoURL: `https://github.com/mbeps/magician-ai`,
     programmingLanguage: typescript,
     siteURL: "https://magician-ai.vercel.app/",
-    technologies: [
+    skills: [
       nextjs,
       react,
       shadcnUI,
@@ -226,7 +238,7 @@ const webdevProjects: Project[] = [
       `,
     repoURL: `https://github.com/mbeps/drumroll-music`,
     programmingLanguage: typescript,
-    technologies: [
+    skills: [
       nextjs,
       react,
       nodejs,
@@ -276,7 +288,7 @@ const extraWebDevProjects: Project[] = [
       With immediate feedback and score tracking, users enhance their understanding.`,
     programmingLanguage: typescript,
     type: "Full-Stack Web Dev",
-    technologies: [
+    skills: [
       nextjs,
       react,
       tailwindCSS,
@@ -318,7 +330,7 @@ const extraWebDevProjects: Project[] = [
       `,
     repoURL: `https://github.com/mbeps/sideshow-articles`,
     programmingLanguage: typescript,
-    technologies: [nextjs, react, supabase, postgreSQL, nextUI],
+    skills: [nextjs, react, supabase, postgreSQL, nextUI],
     type: "Full-Stack Web Dev",
     tags: [
       "Web Development",
@@ -347,7 +359,7 @@ const extraWebDevProjects: Project[] = [
     repoURL: `https://github.com/ixahmedxi/noodle`,
     siteURL: `https://noodle.run/`,
     programmingLanguage: typescript,
-    technologies: [
+    skills: [
       nextjs,
       react,
       shadcnUI,
@@ -394,7 +406,7 @@ const extraWebDevProjects: Project[] = [
       `,
     repoURL: `https://github.com/mbeps/convo-gpt`,
     programmingLanguage: typescript,
-    technologies: [
+    skills: [
       nextjs,
       react,
       tailwindCSS,
@@ -434,7 +446,7 @@ const backendWebDevProjects: Project[] = [
       `,
     repoURL: `https://github.com/mbeps/Forum-Discussion-Flask-Backend`,
     programmingLanguage: typescript,
-    technologies: [flask, mySQL, sqlalchemy, rest],
+    skills: [flask, mySQL, sqlalchemy, rest],
     type: "Back-End Web Dev",
     tags: [
       "Web Development",
@@ -461,7 +473,7 @@ const backendWebDevProjects: Project[] = [
       `,
     repoURL: `https://github.com/mbeps/Flask_JWT_Auth`,
     programmingLanguage: typescript,
-    technologies: [flask, jwt],
+    skills: [flask, jwt],
     type: "Back-End Web Dev",
     tags: [
       "Web Development",
@@ -485,7 +497,7 @@ const backendWebDevProjects: Project[] = [
       `,
     programmingLanguage: typescript,
     repoURL: `https://github.com/mbeps/Django_Auth_Sys`,
-    technologies: [django, jwt],
+    skills: [django, jwt],
     type: "Back-End Web Dev",
     tags: [
       "Web Development",
@@ -508,7 +520,7 @@ const backendWebDevProjects: Project[] = [
       `,
     programmingLanguage: typescript,
     repoURL: `https://github.com/mbeps/clerk-demo`,
-    technologies: [nextjs, clerkAuth, nodejs],
+    skills: [nextjs, clerkAuth, nodejs],
     type: "Back-End Web Dev",
     tags: [
       "Web Development",
@@ -532,7 +544,7 @@ const backendWebDevProjects: Project[] = [
       `,
     programmingLanguage: typescript,
     repoURL: `https://github.com/mbeps/nextjs-auth0`,
-    technologies: [nextjs, auth0, nodejs],
+    skills: [nextjs, auth0, nodejs],
     type: "Back-End Web Dev",
     tags: [
       "Web Development",
@@ -561,14 +573,7 @@ const machineLearningProjects: Project[] = [
     description: `A project leveraging the UCI Adult Income dataset to predict income brackets using a RandomForestClassifier. Emphasis is on feature engineering, data preprocessing with One-Hot Encoding, and model optimization through hyperparameter tuning.`,
     repoURL: "https://github.com/mbeps/Adults_Income_Prediction",
     programmingLanguage: python,
-    technologies: [
-      scikitLearn,
-      numpy,
-      pandas,
-      matplotlib,
-      seaborn,
-      jupyterNotebooks,
-    ],
+    skills: [scikitLearn, numpy, pandas, matplotlib, seaborn, jupyterNotebooks],
     type: "Machine Learning",
     tags: [
       "Data Science",
@@ -587,14 +592,7 @@ const machineLearningProjects: Project[] = [
     description: `An analytical approach to predicting California housing prices using the RandomForestRegressor and LinearRegressor, with a focus on data preprocessing and feature engineering.`,
     repoURL: "https://github.com/your-username/House-Price-Prediction",
     programmingLanguage: python,
-    technologies: [
-      scikitLearn,
-      numpy,
-      pandas,
-      matplotlib,
-      seaborn,
-      jupyterNotebooks,
-    ],
+    skills: [scikitLearn, numpy, pandas, matplotlib, seaborn, jupyterNotebooks],
     type: "Machine Learning",
     tags: [
       "Data Science",
@@ -616,7 +614,7 @@ const machineLearningProjects: Project[] = [
       `,
     repoURL: `https://github.com/mbeps/Machine-Learning-Assignment-1`,
     programmingLanguage: python,
-    technologies: [scikitLearn, numpy, matplotlib, jupyterNotebooks],
+    skills: [scikitLearn, numpy, matplotlib, jupyterNotebooks],
     type: "Machine Learning",
     tags: [
       "Machine Learning",
@@ -638,8 +636,8 @@ const machineLearningProjects: Project[] = [
     `,
     repoURL: `https://github.com/mbeps/Machine-Learning-Assignment-2`,
     programmingLanguage: python,
-    // technologies: [`NumPy`, `Scikit Learn`, `Matplotlib`, "Jupyter Notebook"],
-    technologies: [scikitLearn, numpy, matplotlib, jupyterNotebooks],
+    // skills: [`NumPy`, `Scikit Learn`, `Matplotlib`, "Jupyter Notebook"],
+    skills: [scikitLearn, numpy, matplotlib, jupyterNotebooks],
     type: "Machine Learning",
     tags: [
       "Machine Learning",
@@ -661,7 +659,7 @@ const machineLearningProjects: Project[] = [
       `,
     repoURL: `https://github.com/mbeps/Machine-Learning-Assignment-3`,
     programmingLanguage: python,
-    technologies: [scikitLearn, numpy, matplotlib, jupyterNotebooks],
+    skills: [scikitLearn, numpy, matplotlib, jupyterNotebooks],
     type: "Machine Learning",
     tags: [
       "Machine Learning",
@@ -682,7 +680,7 @@ const machineLearningProjects: Project[] = [
       kernels, neural networks, support vector machines, scikit-learn pipelines, and cross-conformal predictors.`,
     repoURL: `https://github.com/mbeps/Machine-Learning-Labs-Questions`,
     programmingLanguage: python,
-    technologies: [scikitLearn, numpy, matplotlib, jupyterNotebooks],
+    skills: [scikitLearn, numpy, matplotlib, jupyterNotebooks],
     type: "Machine Learning",
     tags: [
       "Machine Learning",
@@ -702,7 +700,7 @@ const machineLearningProjects: Project[] = [
       Also includes theoretical aspects of put-call parity and financial arbitrage opportunities.`,
     repoURL: `https://github.com/mbeps/Computation_Finance_Assignment`,
     programmingLanguage: python,
-    technologies: [numpy, matplotlib, jupyterNotebooks],
+    skills: [numpy, matplotlib, jupyterNotebooks],
     type: "Machine Learning",
     tags: [
       "Computational Finance",
@@ -730,7 +728,7 @@ const gameDevProjects: Project[] = [
       `,
     repoURL: `https://github.com/mbeps/Osmos_Game`,
     programmingLanguage: python,
-    technologies: [simpleGui],
+    skills: [simpleGui],
     type: "Game Dev",
     tags: [
       "Game Development",
@@ -753,7 +751,7 @@ const gameDevProjects: Project[] = [
     `,
     programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
-    technologies: [gameMakerStudio],
+    skills: [gameMakerStudio],
     siteURL: "https://bepary-games.itch.io/surface-fight",
     tags: [
       "Game Development",
@@ -774,7 +772,7 @@ const gameDevProjects: Project[] = [
     `,
     programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
-    technologies: [gameMakerStudio],
+    skills: [gameMakerStudio],
     siteURL: "https://bepary-games.itch.io/platformer",
     tags: [
       "Game Development",
@@ -795,7 +793,7 @@ const gameDevProjects: Project[] = [
     `,
     programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
-    technologies: [gameMakerStudio],
+    skills: [gameMakerStudio],
     siteURL: "https://bepary-games.itch.io/platformer-death-walk",
     tags: [
       "Game Development",
@@ -815,7 +813,7 @@ const gameDevProjects: Project[] = [
     `,
     programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
-    technologies: [gameMakerStudio],
+    skills: [gameMakerStudio],
     siteURL: "https://bepary-games.itch.io/coding-break-out",
     tags: [
       "Game Development",
@@ -835,7 +833,7 @@ const gameDevProjects: Project[] = [
     `,
     programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
-    technologies: [gameMakerStudio],
+    skills: [gameMakerStudio],
     siteURL: "https://bepary-games.itch.io/catch-maruf",
     tags: [
       "Game Development",
@@ -855,7 +853,7 @@ const gameDevProjects: Project[] = [
     `,
     programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
-    technologies: [gameMakerStudio],
+    skills: [gameMakerStudio],
     siteURL: "https://bepary-games.itch.io/against-gravity",
     tags: [
       "Game Development",
@@ -874,7 +872,7 @@ const gameDevProjects: Project[] = [
     `,
     programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
-    technologies: [gameMakerStudio],
+    skills: [gameMakerStudio],
     siteURL: "https://bepary-games.itch.io/scrolling-shooter",
     tags: [
       "Game Development",
@@ -893,7 +891,7 @@ const gameDevProjects: Project[] = [
     `,
     programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
-    technologies: [gameMakerStudio],
+    skills: [gameMakerStudio],
     siteURL: "https://bepary-games.itch.io/dungeon-",
     tags: [
       "Game Development",
@@ -913,7 +911,7 @@ const gameDevProjects: Project[] = [
     `,
     programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
-    technologies: [gameMakerStudio],
+    skills: [gameMakerStudio],
     siteURL: "https://bepary-games.itch.io/vej-ninja",
     tags: [
       "Game Development",
@@ -933,7 +931,7 @@ const gameDevProjects: Project[] = [
     `,
     programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
-    technologies: [gameMakerStudio],
+    skills: [gameMakerStudio],
     siteURL: "https://bepary-games.itch.io/angry-cats-space",
     tags: [
       "Game Development",
@@ -953,7 +951,7 @@ const gameDevProjects: Project[] = [
     `,
     programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
-    technologies: [gameMakerStudio],
+    skills: [gameMakerStudio],
     siteURL: "https://bepary-games.itch.io/angry-cats-space",
     tags: [
       "Game Development",
@@ -981,7 +979,7 @@ const otherProjects: Project[] = [
     `,
     programmingLanguage: python,
     type: "Other",
-    technologies: [matplotlib, numpy, jupyterNotebooks],
+    skills: [matplotlib, numpy, jupyterNotebooks],
     repoURL: "https://github.com/mbeps/algorithms",
     tags: [
       "Algorithms",
@@ -1001,6 +999,7 @@ const otherProjects: Project[] = [
       A shell script which automates the setup of a new Linux machine.
       This is specifically for my Fedora install.
       `,
+    skills: [shellScript, automation],
     repoURL: `https://github.com/mbeps/AutomatedSetup`,
     programmingLanguage: shellScript,
     type: "Other",
@@ -1025,7 +1024,7 @@ const otherProjects: Project[] = [
       `,
     repoURL: `https://github.com/stars/mbeps/lists/leetcode`,
     programmingLanguage: python,
-    technologies: [pytest, gitHubActions],
+    skills: [pytest, gitHubActions],
     type: "Other",
     tags: [
       "testing",
@@ -1060,7 +1059,7 @@ const javaAssignments: Project[] = [
       `,
     repoURL: `https://github.com/mbeps/Calculator-Assignment`,
     programmingLanguage: java,
-    technologies: [maven, junit],
+    skills: [maven, junit],
     type: "Java Assignments",
     tags: [
       "Assignment",
@@ -1090,6 +1089,7 @@ const javaAssignments: Project[] = [
       "Independent Project",
     ],
     archived: true,
+    skills: [junit, testing],
   },
   {
     name: "Track & Trace",
@@ -1106,6 +1106,7 @@ const javaAssignments: Project[] = [
       "Individual Project",
       "Independent Project",
     ],
+    skills: [junit, testing],
     archived: true,
   },
   {
@@ -1122,6 +1123,7 @@ const javaAssignments: Project[] = [
       "Individual Project",
       "Independent Project",
     ],
+    skills: [junit, testing],
     archived: true,
   },
   {
@@ -1130,7 +1132,7 @@ const javaAssignments: Project[] = [
     description: `Learning to interact with a database using Java.`,
     repoURL: `https://github.com/mbeps/DatabasesMiniProject`,
     programmingLanguage: java,
-    technologies: [postgreSQL],
+    skills: [postgreSQL],
     type: "Java Assignments",
     tags: [
       "Assignment",

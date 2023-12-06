@@ -1203,6 +1203,13 @@ export const designPatterns: Skill = {
   skillType: "hard",
 };
 
+export const userAuthentication: Skill = {
+  skill: "User Authentication",
+  category: "Back-End Web Development",
+  isMainSkill: false,
+  skillType: "general",
+};
+
 //^ Soft Skills
 
 export const communication: Skill = {

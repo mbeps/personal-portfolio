@@ -16,6 +16,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
+import { ProjectSkillSection } from "./components/ProjectSkillSection";
 
 /**
  * Metadata object for the dynamic project page.
@@ -79,7 +80,15 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
 
   const project = getProjectBySlug(slug, allProjects);
   const projectName = project?.name;
-  const projectTechnologies = project?.technologies;
+  const projectTechnologies = project?.skills.filter(
+    (skill) => skill.skillType === "hard"
+  );
+  const projectGeneralSkills = project?.skills.filter(
+    (skill) => skill.skillType === "general"
+  );
+  const projectSoftSkills = project?.skills.filter(
+    (skill) => skill.skillType === "soft"
+  );
   const projectLanguage = project?.programmingLanguage;
   const projectDescription = project?.description;
   const hasCoverImage = hasProjectCover(slug);
@@ -164,99 +173,90 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
       )}
 
       {/* Metadata Section */}
-      <div className="flex flex-col md:flex-row gap-4 sm:gap-10">
-        {/* Right */}
-        <div className="md:w-1/2">
-          <div className="mt-4 text-center md:text-left">
-            {/* Description */}
-            <HeadingThree title="Description" />
-            <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-5">
-              <p>{projectDescription}</p>
-            </div>
-
-            <HeadingThree title="Links" />
-            {/* Links */}
-            <div
-              className="
-              mt-6 flex 
-              flex-row 
-              justify-center md:justify-start items-center 
-              w-full 
-              gap-2"
-            >
-              {/* GitHub Repo */}
-              {project?.repoURL && (
-                <Link
-                  href={project?.repoURL}
-                  target="_blank"
-                  className="w-auto md:w-full"
-                >
-                  <Button
-                    variant={"ghost"}
-                    className="
-                        text-neutral-900 dark:text-white 
-                        hover:text-neutral-900 
-                        hover:bg-neutral-300
-                        w-auto md:w-full
-                        rounded-full md:rounded-xl
-                      "
-                  >
-                    <div className="flex flex-row justify-center md:justify-start gap-4 w-full">
-                      <BsGithub size={30} />
-                      <p className="hidden md:block mt-1 md:text-left text-center">
-                        Repository
-                      </p>
-                    </div>
-                  </Button>
-                </Link>
-              )}
-              {/* Website */}
-              {project?.siteURL && (
-                <Link
-                  href={project?.siteURL}
-                  target="_blank"
-                  className="w-auto md:w-full"
-                >
-                  <Button
-                    variant={"ghost"}
-                    className="
-                        text-neutral-900 dark:text-white 
-                        hover:text-neutral-900 
-                        hover:bg-neutral-300
-                        w-auto md:w-full
-                        rounded-full md:rounded-xl
-                      "
-                  >
-                    <div className="flex flex-row justify-center md:justify-start gap-4 w-full">
-                      <BsArrowUpRightCircle size={30} />
-                      <p className="hidden md:block mt-1 md:text-left text-center">
-                        Deployment
-                      </p>
-                    </div>
-                  </Button>
-                </Link>
-              )}
-            </div>
+      <div className="mt-4">
+        {/* Description Section */}
+        <div className="text-center md:text-left">
+          <HeadingThree title="Description" />
+          <div className="flex flex-wrap justify-center md:justify-start z-10 mt-5">
+            <p>{projectDescription}</p>
           </div>
         </div>
-        {/* Left */}
-        <div className="md:w-1/2">
-          <div className="mt-4 text-center md:text-left">
-            <HeadingThree title="Language" />
-            <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-5">
-              <Tag>{projectLanguage?.skill}</Tag>
-            </div>
+
+        {/* Language Section */}
+        <div className="text-center md:text-left">
+          <HeadingThree title="Language" />
+          <div className="flex flex-wrap justify-center md:justify-start z-10 mt-5">
+            <Tag>{projectLanguage?.skill}</Tag>
           </div>
-          {projectTechnologies && (
-            <div className="mt-4 text-center md:text-left">
-              <HeadingThree title="Technologies" />
-              <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-                {projectTechnologies.map((tech, index) => (
-                  <Tag key={index}>{tech.skill}</Tag>
-                ))}
-              </div>
-            </div>
-          )}
+        </div>
+
+        {/* Technologies Section */}
+        <ProjectSkillSection
+          skills={projectTechnologies}
+          title="Technologies"
+        />
+
+        {/* Technical Skills Section */}
+        <ProjectSkillSection
+          skills={projectGeneralSkills}
+          title="Technical Skills"
+        />
+
+        {/* Soft Skills Section */}
+        <ProjectSkillSection skills={projectSoftSkills} title="Soft Skills" />
+
+        {/* Links Section */}
+        <div className="text-center md:text-left">
+          <HeadingThree title="Links" />
+          <div
+            className="
+        mt-6 flex 
+        flex-row 
+        justify-center md:justify-start items-center 
+        w-full 
+        gap-2"
+          >
+            {/* GitHub Repo */}
+            {project?.repoURL && (
+              <Link href={project?.repoURL} target="_blank" className="w-full">
+                <Button
+                  variant={"ghost"}
+                  className="
+                text-neutral-900 dark:text-white 
+                hover:text-neutral-900 
+                hover:bg-neutral-300
+                w-full
+                rounded-xl
+              "
+                >
+                  <div className="flex justify-center md:justify-start gap-4 w-full">
+                    <BsGithub size={30} />
+                    <p className="mt-1">Repository</p>
+                  </div>
+                </Button>
+              </Link>
+            )}
+            {/* Website */}
+            {project?.siteURL && (
+              <Link href={project?.siteURL} target="_blank" className="w-full">
+                <Button
+                  variant={"ghost"}
+                  className="
+                text-neutral-900 dark:text-white 
+                hover:text-neutral-900 
+                hover:bg-neutral-300
+                w-full
+                rounded-xl
+              "
+                >
+                  <div className="flex justify-center md:justify-start gap-4 w-full">
+                    <BsArrowUpRightCircle size={30} />
+                    <p className="mt-1">Deployment</p>
+                  </div>
+                </Button>
+              </Link>
+            )}
+          </div>
         </div>
       </div>
 
