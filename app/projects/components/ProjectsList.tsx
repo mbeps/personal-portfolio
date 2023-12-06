@@ -130,7 +130,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
       new Set(
         allProjects.flatMap(
           (project: Project) =>
-            project.technologies?.map((tech: Skill) => tech.skill) || []
+            project.skills?.map((tech: Skill) => tech.skill) || []
         )
       )
     ),
@@ -168,7 +168,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
       selectedType === "all" || project.type.toLowerCase() === selectedType;
     const matchesTechnology =
       selectedTechnology === "all" ||
-      (project.technologies || [])
+      (project.skills || [])
         .map((tech: Skill) => tech.skill.toLowerCase())
         .includes(selectedTechnology);
     const matchesLanguage =
