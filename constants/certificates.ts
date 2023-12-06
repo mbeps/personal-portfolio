@@ -1,4 +1,115 @@
 import Certificate from "@/types/certificates";
+import { java, javascript, python, rLanguage, typescript } from "./languages";
+import {
+  algebra,
+  algorithms,
+  androidDevelopment,
+  ansible,
+  apis,
+  apollo,
+  artificialIntelligence,
+  aws,
+  awsCloudFormation,
+  awsCloudFront,
+  awsEC2,
+  awsLambda,
+  awsS3,
+  awsVPC,
+  azure,
+  azureAppService,
+  azureBlobStorage,
+  azureContainerRegistry,
+  azureContainers,
+  azureDurableFunctions,
+  azureFunctions,
+  azureMonitor,
+  azureResourceManager,
+  black,
+  boosting,
+  bootstrap,
+  calculus,
+  communication,
+  containerization,
+  continuousDelivery,
+  continuousDeployment,
+  continuousIntegration,
+  costManagement,
+  css,
+  dataScience,
+  dataStructures,
+  dataVisualisation,
+  databaseManagementSystems,
+  databases,
+  deepLearning,
+  designPatterns,
+  discrete,
+  django,
+  docker,
+  firebase,
+  flask,
+  fundamentals,
+  gcp,
+  gcpAppEngine,
+  gcpCloudLogging,
+  gcpCloudSQL,
+  gcpCloudScheduler,
+  gcpCloudStorage,
+  gcpCloudTasks,
+  geometry,
+  git,
+  gitHub,
+  gitHubActions,
+  graphQL,
+  gunicorn,
+  html,
+  humanResourceManagement,
+  hyperparameters,
+  indexing,
+  infrastructureAsCode,
+  integrationManagement,
+  jenkins,
+  jinja,
+  json,
+  jwt,
+  k3s,
+  keras,
+  kubernetes,
+  linearAlgebra,
+  linting,
+  logics,
+  machineLearning,
+  maven,
+  mechanics,
+  mongoDB,
+  neuralNetworks,
+  nextjs,
+  noSql,
+  nodejs,
+  normalisation,
+  oop,
+  poetry,
+  probability,
+  procurementManagement,
+  pytest,
+  qualityManagement,
+  react,
+  redis,
+  rest,
+  riskManagement,
+  scikitLearn,
+  scopeManagement,
+  spring,
+  sql,
+  stakeholderManagement,
+  statistics,
+  testing,
+  timeManagement,
+  tox,
+  travisCI,
+  trigonometry,
+  vectors,
+  xml,
+} from "./skills";
 
 const programmingLanguages: Certificate[] = [
   {
@@ -8,12 +119,7 @@ const programmingLanguages: Certificate[] = [
     issuer: "Udemy",
     credentialURL:
       "https://www.udemy.com/certificate/UC-a3c47af2-7eb8-4f5b-8309-08559c519d5a/",
-    skills: [
-      "Python",
-      "Object-Oriented Programming",
-      "Algorithms",
-      "Data Structures",
-    ],
+    skills: [python, oop, algorithms, dataStructures],
     description: `
       The Python Programming Masterclass on is an all-encompassing course designed to impart a deep understanding of Python, one of the most sought-after programming languages in the tech industry. 
       This course is tailored for both beginners and existing programmers, focusing on core Python concepts, Object-Oriented Programming, algorithms, and data structures. It uniquely combines theoretical knowledge with practical coding exercises, preparing students for advanced areas like machine learning and data science. By the end of the course, learners will have mastered both Python 2 and 3, equipped with the skills to develop robust Python applications and the confidence to tackle real-world programming challenges.`,
@@ -35,7 +141,7 @@ const programmingLanguages: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/c235083fcf3a5aadda62a3aac5f1846098135e9058d9c5c72073ef88891b0395",
-    skills: ["Python"],
+    skills: [python],
     description: `
     This course offers an in-depth exploration of advanced Python features, focusing on enhancing code efficiency and readability. It covers a range of topics including object-oriented programming, logging for performance tracking, porting code from Python 2 to 3, and data manipulation. The course is designed to help you master Python's powerful features and flexibility, enabling you to build sophisticated applications.
     `,
@@ -59,7 +165,7 @@ const programmingLanguages: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/3df6c589b5151377ce45f231cfacf8ca04a02875fa88996a8831c1c9b70c527a",
-    skills: ["Python", "Object-Oriented Programming"],
+    skills: [python, oop],
     description: `
     This course delves into the application of Python's object-oriented programming features to build complex, modular programs. It covers core OOP principles and Python-specific features, aiming to enhance the integration of your classes with the Python language and reduce boilerplate code. The course is designed to equip you with the skills to create extensible and efficient programs using Python's OOP features.`,
     learningOutcomes: [
@@ -81,7 +187,7 @@ const programmingLanguages: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/71bbbecbbc9b1489e357c3a2091860ae5b02b3ff0e415ce5748b8746d990b8dd",
-    skills: ["Python", "HTML", "JSON", "XML"],
+    skills: [python, html, json, xml],
     description: `
     This course provides a comprehensive introduction to Python, a powerful and easy-to-learn object-oriented language. It covers the basics of Python syntax, working with dates and times, file handling, and web data retrieval in various formats. The course also includes interactive coding exercises for real-time feedback and hands-on practice, making it suitable for both new programmers and experienced developers looking to learn Python.`,
     learningOutcomes: [
@@ -100,14 +206,7 @@ const programmingLanguages: Certificate[] = [
     issuer: "Udemy",
     credentialURL:
       "https://www.udemy.com/certificate/UC-a14123c1-1def-4710-8836-7c05bfaa2fc7/",
-    skills: [
-      "Java",
-      "Object-Oriented Programming",
-      "Algorithms",
-      "Data Structures",
-      "Spring",
-      "Android Development",
-    ],
+    skills: [java, oop, algorithms, dataStructures, spring, androidDevelopment],
     description: `This course offers a comprehensive and continuously updated curriculum on Java programming, suitable for all levels of expertise. With a focus on core Java skills, industry best practices, and proficiency in various Java versions, it aims to prepare students for Java developer positions and Oracle Java Certificate exams. The course also provides a strong foundation for transitioning to other areas like the Spring Framework and Android development.`,
     learningOutcomes: [
       "Learning the core Java skills needed to apply for Java developer positions is a key aspect of this course.",
@@ -126,7 +225,7 @@ const programmingLanguages: Certificate[] = [
     description: `This course focuses on enhancing your Java programming skills by teaching the basics of object-oriented programming. It aims to help you write secure, scalable, and easily debuggable code. The course emphasizes practical examples over abstract concepts, with a deep dive into the source code and several challenges to apply what you've learned. It not only guides you on how to apply object-oriented principles in your programs but also explains how Java leverages these principles internally.`,
     credentialURL:
       "https://www.linkedin.com/learning/certificates/77ad2602bbb22e29478a06792cd4bd0a91dda794cca7b2bbe4e333c193770a22",
-    skills: ["Java", "Object-Oriented Programming"],
+    skills: [java, oop],
     learningOutcomes: [
       "Understanding the basics of object-oriented programming in Java",
       "Writing secure, scalable, and easily debuggable code",
@@ -144,7 +243,7 @@ const programmingLanguages: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/b1761a41ef8dd23125db776561db0b90ae53842518d029015374a2daee08e4e3",
-    skills: ["TypeScript", "JavaScript"],
+    skills: [typescript, javascript, oop],
     description: `
     This course focuses on enhancing your Java programming skills by teaching the basics of object-oriented programming. It aims to help you write secure, scalable, and easily debuggable code. The course emphasizes practical examples over abstract concepts, with a deep dive into the source code and several challenges to apply what you've learned. It not only guides you on how to apply object-oriented principles in your programs but also explains how Java leverages these principles internally.
     `,
@@ -163,7 +262,7 @@ const programmingLanguages: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/ade3217d7cef3023f22c8ee034eff28705b7dbfd3981d8377c9b5f61ff39ea51",
-    skills: ["JavaScript", "Object-Oriented Programming", "Algorithms"],
+    skills: [javascript, oop, algorithms],
     description: `
     This course provides a comprehensive understanding of JavaScript, a scripting language essential for dynamic web development. It covers core principles to advanced topics, helping you build dynamic interfaces and advanced interactions. The course includes interactive coding exercises for hands-on practice, making it suitable for anyone looking to enhance their JavaScript skills and understanding of web technologies.
     `,
@@ -182,7 +281,7 @@ const programmingLanguages: Certificate[] = [
     issuer: "Udemy",
     credentialURL:
       "https://www.udemy.com/certificate/UC-cf6c70b6-c34c-4400-b8f8-b9a7abc9f18a/",
-    skills: ["JavaScript", "Object-Oriented Programming", "Algorithms"],
+    skills: [javascript, oop, algorithms],
     description: `This comprehensive and in-depth course covers JavaScript from fundamentals to advanced applications, making it suitable for learners at all levels. It offers a blend of practical code examples, important theory, and complete projects, preparing you for advanced front-end frameworks and real-world skills needed in a developer job. The course is designed in a modular way, allowing you to learn at your own pace, and by the end, you will have the knowledge and confidence to ace job interviews and become a professional developer.`,
     learningOutcomes: [
       "Becoming an advanced JavaScript developer.",
@@ -201,7 +300,7 @@ const programmingLanguages: Certificate[] = [
   },
 ];
 
-const machineLearning: Certificate[] = [
+const machineLearningCertificates: Certificate[] = [
   {
     name: "Applied Machine Learning: Algorithms",
     slug: "964c3b1a049a60afa6bcbb55179e326c7e5cea11db0db7b8d3390be8fc5925e1",
@@ -209,7 +308,7 @@ const machineLearning: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/964c3b1a049a60afa6bcbb55179e326c7e5cea11db0db7b8d3390be8fc5925e1",
-    skills: ["Machine Learning", "Algorithms", "Hyperparameters", "Boosting"],
+    skills: [machineLearning, algorithms, hyperparameters, boosting],
     description: `This course is the second installment in the Applied Machine Learning series, delving into a variety of algorithms from logistic regression to gradient boosting. It provides a structured approach to choosing the best algorithm for a given problem, considering each algorithm's pros and cons. The course enhances your understanding of what drives each algorithm, their benefits, and drawbacks, equipping you with a significant competitive advantage as a data scientist.`,
     learningOutcomes: [
       "Understanding models vs. algorithms.",
@@ -229,12 +328,7 @@ const machineLearning: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/50182c40b257c756e5d8aea70a9f69f14566da4d3cae7dab86f236554cc7238e",
-    skills: [
-      "Machine Learning",
-      "Data Science",
-      "Data Visualization",
-      "Hyperparameters",
-    ],
+    skills: [machineLearning, dataScience, dataVisualisation, hyperparameters],
     description: `This course is the first part of the Applied Machine Learning series, focusing on the foundations of machine learning. It provides a pragmatic approach to solving machine learning problems, from exploratory data analysis to model evaluation. The course does not focus on any specific algorithm but provides the tools to efficiently solve a wide range of machine learning problems, making it a valuable resource for anyone looking to delve into the field of machine learning.`,
     learningOutcomes: [
       "Understanding what is machine learning.",
@@ -255,7 +349,7 @@ const machineLearning: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/3610d0d7891a746bbe207505c8ec6cfab58723ca973e3082f139a349059248c9",
-    skills: ["Machine Learning", "Data Science", "Data Visualization"],
+    skills: [machineLearning, dataScience, dataVisualisation],
     description: `This course provides a hands-on approach to machine learning, one of the most exciting branches of artificial intelligence. It covers the entire machine learning lifecycle, from data sourcing and preparation to model training and evaluation. The course also includes building a machine learning pipeline to streamline the process. It's a great resource for those looking to understand the steps required to build machine learning systems.`,
     learningOutcomes: [
       "Understanding machine learning.",
@@ -273,7 +367,7 @@ const machineLearning: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/5dda55caa1ccf02b29f3c0f5d526c8c026f7fc346a6cad6d9c84f98aba3e2514",
-    skills: ["Machine Learning", "Keras", "Neural Networks", "Deep Learning"],
+    skills: [machineLearning, keras, neuralNetworks, deepLearning],
     description: `This course offers a comprehensive introduction to the principles and techniques of artificial neural networks, including their components, common models, and applications. It provides hands-on experience in building and training a neural network using the Keras Sequential API. The course is designed to help learners gain a solid understanding of how to build, train, improve, and use neural networks.`,
     learningOutcomes: [
       "Understanding neural networks.",
@@ -291,16 +385,16 @@ const machineLearning: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/e9cb305b4da5f38726226d31e5eef5da66504838131739c389a2d056ed31cf3f",
     skills: [
-      "Data Science",
-      "Machine Learning",
-      "APIs",
-      "Python",
-      "R",
-      "SQL",
-      "Databases",
-      "Algebra",
-      "Statistics",
-      "Probability",
+      dataScience,
+      machineLearning,
+      apis,
+      python,
+      rLanguage,
+      sql,
+      databases,
+      algebra,
+      statistics,
+      probability,
     ],
     description: `This course provides an accessible, non-technical introduction to the field of data science, covering its vocabulary, skills, jobs, tools, and techniques. It offers insights into how data science can help improve decision-making, gain deeper insights, and enhance work efficiency. The course also discusses ethics and accountability in data science, making it a comprehensive resource for anyone interested in this rapidly growing field.`,
     learningOutcomes: [
@@ -322,10 +416,10 @@ const machineLearning: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/9f61617caf2fc21f029abd857a03a29758d7e822215d3677eb938b4e29e5da78",
     skills: [
-      "Machine Learning",
-      "Artificial Intelligence",
-      "Deep Learning",
-      "Data Visualization",
+      machineLearning,
+      artificialIntelligence,
+      deepLearning,
+      dataVisualisation,
     ],
     description: `This course offers a high-level overview of artificial intelligence, making it accessible to non-technical professionals like project managers, product managers, directors, and executives. It simplifies complex concepts in machine learning, artificial neural networks, and deep learning, helping learners understand how AI can enhance their products, life, and career. The course also provides insights into the top tools in the field, making it a valuable resource for anyone interested in AI.`,
     learningOutcomes: [
@@ -355,15 +449,13 @@ const machineLearning: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/94c788dba6f1c97ceee751315c30b6dc6f4267025733c3de55a315d83a36386d",
     skills: [
-      "Machine Learning",
-      "Calculus",
-      "Algebra",
-      "Mathematics",
-      "Data Visualization",
-      "Python",
-      "R",
-      "SQL",
-      "Databases",
+      calculus,
+      algebra,
+      dataVisualisation,
+      python,
+      rLanguage,
+      sql,
+      databases,
     ],
     description: `
     In this course, I delve into the foundational aspects of calculus that are crucial for understanding and implementing machine learning algorithms. I guide you through the exploration of functions, derivatives, integrals, and the basics of multivariate calculus. The course is designed to equip you with the necessary skills in Machine Learning, Calculus, and Mathematics. It covers a wide range of learning outcomes, including the evaluation of data sources, data visualization, and the ethical considerations in data science.
@@ -386,14 +478,7 @@ const machineLearning: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/ec6ac0178fb92ba75dd38a95ae48316efb6f4e0e9abcb6bf5431b48021ff8441",
-    skills: [
-      "Machine Learning",
-      "Linear Algebra",
-      "Mathematics",
-      "Algorithms",
-      "SQL",
-      "Databases",
-    ],
+    skills: [linearAlgebra, algorithms, sql, databases],
     description: `This course provides an in-depth exploration of linear algebra, a key foundation for machine learning algorithms. It covers essential topics such as vector arithmetic, matrix properties, advanced operations, and matrix transformation, along with important algorithms. By the end of the course, you'll be ready to apply the principles of linear algebra to your machine learning projects, enhancing your understanding and implementation of these algorithms.`,
     learningOutcomes: [
       "Understanding data and big data phenomena.",
@@ -415,13 +500,7 @@ const machineLearning: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/b7334fe5b4d04bef6dab5d2ed69080e9ffc590475eba2057046b6ca4a6cf2fba",
-    skills: [
-      "Machine Learning",
-      "Probability",
-      "Mathematics",
-      "Algorithms",
-      "Algorithms",
-    ],
+    skills: [probability, algorithms],
     description: `
     This course offers an in-depth exploration of probability and its application in the design and implementation of reliable machine learning algorithms. It covers the core concepts and functionalities of probability, including the rules of probability, joint and marginal probability, discrete and continuous probability distributions, and Bayes' theorem. By the end of the course, you'll have the essential tools and techniques for successful probabilistic modeling in machine learning.`,
     learningOutcomes: [
@@ -440,7 +519,7 @@ const machineLearning: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/3c31f8f11d8ecbd7156dd75b8ae2d7c7db59a8342e3ae7780496b637ac894bb8",
-    skills: ["Machine Learning", "Scikit-Learn", "Python"],
+    skills: [scikitLearn, python],
     description: `This course focuses on the application of scikit-learn, a popular open-source Python library, for both supervised and unsupervised machine learning. It covers practical techniques such as linear and logistic regression, decision trees, random forest models, K-means clustering, and principal component analysis (PCA). Additionally, it teaches how to create scikit-learn pipelines for cleaner, bug-resilient code. By the end of the course, you'll be able to understand the strengths and weaknesses of each scikit-learn algorithm and build more efficient machine learning models.`,
     learningOutcomes: [
       "Understanding the benefits of using scikit-learn.",
@@ -461,7 +540,7 @@ const devOps: Certificate[] = [
     issuer: "NASBA",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/1c6fedf1993d58cfe2f906e4fe4db5b4eddda6ea5fa7f8999436b07682ffe3f7",
-    skills: ["DevOps"],
+    skills: [fundamentals],
     description: `
     This course provides an overview of the DevOps culture, emphasizing the core value of CAMS (culture, automation, measurement, and sharing). It explores various methodologies and tools that an organization can adopt to transition into DevOps, including both agile and lean project management principles and how traditional principles like ITIL, ITSM, and SDLC fit within DevOps. The course concludes with a discussion on the three main tenets of DevOps—infrastructure automation, continuous delivery, and reliability engineering—and a brief look into the future of organizations transitioning from the cloud to serverless architectures.`,
     learningOutcomes: [
@@ -482,13 +561,7 @@ const devOps: Certificate[] = [
     issuer: "NASBA",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/6bf47e122551142911c5a636edfee564ff0d57bd07a52888c6c52246946f7747",
-    skills: [
-      "DevOps",
-      "Continuous Integration (CI)",
-      "Continuous Delivery (CD)",
-      "Version Control",
-      "Testing",
-    ],
+    skills: [continuousIntegration, continuousDeployment],
     description: `This course delves into the concepts of continuous integration and continuous delivery (CI/CD), demonstrating these principles through the construction of a build pipeline. It covers the journey of an app from development to production, discussing version control, building artifacts, unit testing, and deployment. The course also provides practical advice on CI/CD best practices, common pitfalls, and workarounds, equipping you with the knowledge to navigate your journey to continuous delivery.`,
     learningOutcomes: [
       "Exploring utilization of continuous delivery.",
@@ -507,14 +580,12 @@ const devOps: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/b1f7a0e46c3659d0d1c25396bbd7838b2374b12afcff7404a0d5077b68e9ebfc",
     skills: [
-      "DevOps",
-      "Jenkins",
-      "Continuous Integration (CI)",
-      "Continuous Delivery (CD)",
-      "Version Control",
-      "Testing",
-      "Docker",
-      "Containerization",
+      jenkins,
+      continuousIntegration,
+      continuousDeployment,
+      testing,
+      docker,
+      containerization,
     ],
     description: `
     This course focuses on Jenkins, a popular DevOps suite known for its open-source extensibility and ease of use. It covers the fundamentals of the platform, including how to automate builds, test, secure deployments, create a pipeline, and integrate with version control systems. The course also delves into distributing agents like Docker containers, running and publishing tests, producing artifacts for review, and securing your DevOps loop by configuring users and permissions. Practical challenges at the end of each section allow you to apply your new skills.`,
@@ -534,7 +605,7 @@ const devOps: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/5eed7f56e5d7dc61b17a3f5fb3cb9fc42130506e948df550bf00899b5868b0a1",
-    skills: ["DevOps", "Ansible", "Infrastructure as Code"],
+    skills: [ansible, infrastructureAsCode],
     description: `
     This course delves into the intermediate to advanced use cases of Ansible, a powerful IT automation engine. It covers the construction and execution of Ansible playbooks, task building, role reuse, and leveraging content from the Ansible community through Ansible Galaxy. Additionally, it explores encrypting secret information, managing network devices with Ansible, and leveraging the power of idempotence, equipping you with the skills to optimize tasks and updates efficiently.`,
     learningOutcomes: [
@@ -553,11 +624,10 @@ const devOps: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/679b3ba787209cd0d81d1d68e4bfc01e23ae14f9f2bdfa4e85f917025a8e732b",
     skills: [
-      "GitHub Actions",
-      "DevOps",
-      "Continuous Integration (CI)",
-      "Continuous Delivery (CD)",
-      "Continuous Deployment (CD)",
+      gitHubActions,
+      continuousIntegration,
+      continuousDeployment,
+      continuousDelivery,
     ],
     description: `
     This course focuses on the use of GitHub Actions, a built-in automation tool in GitHub, for continuous integration, continuous delivery, and continuous deployment. It provides theory, demonstrations, and exercises for developers adopting GitHub Actions for their projects. The course aims to guide engineers on how to automate the complexities of software delivery, allowing them to focus on delivering value directly to users. It complements other courses on GitHub Actions by demonstrating industry best practices for creating workflows.`,
@@ -575,14 +645,7 @@ const devOps: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/bf3b572548b56f714cc70ee2c1447312a84869f6a93edb55e3d13b13337f3bd5",
-    skills: [
-      "DevOps",
-      "Docker",
-      "Containerization",
-      "Kubernetes",
-      "GitHub",
-      "Travis",
-    ],
+    skills: [docker, containerization, kubernetes, travisCI],
     description: `This course provides a comprehensive guide to leveraging Docker for application development. It covers everything from creating your first Docker image to deploying your app to the cloud. The course is designed to equip learners with practical skills such as setting up a full-stack environment with Docker, deploying and adding nodes to a Docker swarm, creating a cluster using Kubernetes, and integrating GitHub with Travis for Docker projects.`,
     learningOutcomes: [
       "Creating first Docker image.",
@@ -599,15 +662,7 @@ const devOps: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/a63c2359250f6a04bd19dab4ebd049edb511a1a9f2c3ef66a0a8d1df004f7d8d",
-    skills: [
-      "DevOps",
-      "Kubernetes",
-      "Containerization",
-      "Clusterization",
-      "Docker",
-      "K3s",
-      "AWS",
-    ],
+    skills: [kubernetes, docker, k3s, aws],
     description: `This course provides a focused guide on how to provision Kubernetes clusters using kind. It covers the challenges of installing Kubernetes and its prerequisites, and demonstrates how to deploy Kubernetes in Docker using K3s, in both single- and multinode clusters. This course is designed to polish your skills in Kubernetes, containerization, and clusterization.`,
     learningOutcomes: [
       "Installing Kubernetes and its prerequisites.",
@@ -625,16 +680,7 @@ const webDevelopment: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/c5ccec418e67284d7945832543376e344173867d424cc1c7c7e7f4235b14debe",
-    skills: [
-      "Flask",
-      "Python",
-      "RESTful APIs",
-      "APIs",
-      "JWT",
-      "Databases",
-      "SQL",
-      "Postman",
-    ],
+    skills: [flask, python, rest, apis, jwt, databases, sql],
     description: `This course provides fundamental knowledge on building RESTful APIs, a crucial component for web and mobile projects. It offers a hands-on approach to quickly building, securing, and testing an effective RESTful API using Python and Flask, the Python microframework. The course covers database access, authentication, and other common tasks in Flask, and introduces key plugins that enhance the use of Flask. It's designed to equip learners with the skills to enable highly connected interactions between applications.
     `,
     learningOutcomes: [
@@ -653,7 +699,7 @@ const webDevelopment: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/d16b210de3459c563295c4868ac19097bdddf84976d2137fa08293ec698f3380",
-    skills: ["RESTful APIs", "APIs"],
+    skills: [rest, apis],
     description: `This course introduces the basics of REST APIs, explaining their importance and how they can enhance application efficiency. It explores the relationship between HTTP and REST APIs, the six constraints of REST, and HTTP status messages. The course also guides learners on how to start consuming REST APIs to integrate them into data-driven applications, making it a valuable resource for those looking to understand and utilize REST APIs.`,
     learningOutcomes: [
       "Understanding what is a REST API.",
@@ -672,7 +718,7 @@ const webDevelopment: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/a54ec39fe8ae07277cfbfb553a61f1d6a0c95f23969a3f665d5e5c0afbd9fd68",
-    skills: ["RESTful APIs", "APIs"],
+    skills: [rest, apis],
     description: `This course provides a comprehensive guide on planning and modeling APIs, a crucial skill for any developer creating websites. It introduces the six REST design constraints that guide architecture and offers advice on identifying system users and their activities. The course emphasizes the importance of validating your design before building it and explores the necessary HTTP concepts and REST constraints. It concludes with a discussion on common API design patterns, making it a valuable resource for developers looking to enhance their API design skills.`,
     learningOutcomes: [
       "Approaches to adding an API.",
@@ -693,14 +739,7 @@ const webDevelopment: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/c00cb40bda2152dd86d29b813b0d1b172123452a0b87b6017aec13115e693487",
-    skills: [
-      "RESTful APIs",
-      "APIs",
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "Databases",
-    ],
+    skills: [rest, nodejs, mongoDB, databases],
     description: `This course guides learners on how to create a simple, RESTful web API using Node.js and Express, popular JavaScript libraries. It covers setting up the project, including the Express server and testing environment, and creating endpoints for data manipulation in a MongoDB database. The course also explores serving static files like images with the API and introduces additional libraries, such as Koa and LoopBack, that can streamline API development. It's designed for those interested in back-end programming without the need for extensive knowledge in the area.`,
     learningOutcomes: [
       "Building web API with Node.js and Express.",
@@ -717,7 +756,7 @@ const webDevelopment: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/ff054b4dd1a8fec0eb00ee80a59bc82e5fed3e50b11bba3e3cd33026f0a0eee0",
-    skills: ["CSS", "HTML"],
+    skills: [css, html],
     description: `This course offers a comprehensive exploration of Cascading Style Sheets (CSS), the language that enhances HTML's appearance in the browser. It provides an overview of what CSS is, how it works with HTML, authoring options, and common CSS concepts like the CSS box model, fonts, and color. The course is designed to be flexible, allowing learners to either follow it from start to finish or jump to specific topics of interest. It aims to lay a solid foundation for working with styles on the web, making it a valuable resource for those looking to master the fundamentals of CSS.`,
     learningOutcomes: [
       "Understanding what CSS is and how it works with HTML.",
@@ -734,13 +773,7 @@ const webDevelopment: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/5b6b19227f501cb7dab97b2378a58bc7740bd590a2e44916bf07ba59fd2fc06f",
-    skills: [
-      "Firebase",
-      "Web Development",
-      "Cloud Computing",
-      "Google Cloud Platform",
-      "Backend as a Service (BaaS)",
-    ],
+    skills: [firebase, gcp],
     description: `This course provides a comprehensive guide on integrating Firebase into a React application, transforming it into a fully functional app. It covers Firebase's capabilities, including Firebase Authentication, which eliminates the need for setting up an authentication server, and Cloud Functions for defining back-end functionality. The course aims to help developers leverage Firebase to handle concerns like performance, security, offline functionality, hosting, and authentication, allowing them to focus on building user-centric applications.`,
     learningOutcomes: [
       "Understanding Firebase and its usage.",
@@ -759,15 +792,7 @@ const webDevelopment: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/4585e03073dcdf552484e6a6d9bc407d1b7e0ad3872d6a3b114d3e3d0869e9ea",
-    skills: [
-      "Python",
-      "Flask",
-      "Gunicorn",
-      "Jinja",
-      "Bootstrap",
-      "APIs",
-      "RESTful APIs",
-    ],
+    skills: [python, flask, gunicorn, jinja, bootstrap, rest],
     description: `This course offers a comprehensive guide to Flask, a Python framework for building lightweight and dynamic web applications. It covers the pros and cons of working with Flask, the creation of a Flask app, data flow, working with Jinja templates, using blueprints and views for organization, testing, and deployment with Gunicorn. The course provides training and hands-on examples, making it a valuable resource for those looking to quickly learn and start using Flask.`,
     learningOutcomes: [
       "Understanding pros and cons of Flask.",
@@ -788,7 +813,7 @@ const webDevelopment: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/7b5e4d7314ff1b615a3ae959f0d936e66808a5f718a85e42813d957d4ec492d7",
-    skills: ["Python", "Django", "CSS", "HTML", "JavaScript"],
+    skills: [python, django, css, html, javascript],
     description: `This course provides a comprehensive introduction to Django, a free and open-source framework designed on top of Python that supports data-driven architecture. It guides learners through creating a Django project, defining a data model and fields, querying the database, and using Django's built-in URL handlers, views, and templates. The course also covers how to enhance Django templates with CSS and JavaScript, making it a valuable resource for those looking to quickly start and efficiently manage web applications with Django.`,
     learningOutcomes: [
       "Rapid web application development with Django.",
@@ -805,7 +830,7 @@ const webDevelopment: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/3c1654b23256c27553b9d6288d9592aa47fe825a7bf85714283f3e61e26f6f58",
-    skills: ["GraphQL", "APIs", "Apollo", "MongoDB", "SQL", "Databases"],
+    skills: [graphQL, apollo, mongoDB, sql, databases],
     description: `This course provides an introduction to GraphQL, a query language for APIs that optimizes data retrieval. It covers the setup of GraphQL, exploration of the GraphQL schema, and understanding of basic types and fields. The course also guides learners on setting up persistence using SQL and MongoDB with GraphQL, adding new items with mutations, and leveraging advanced features in queries. It's designed to equip learners with the skills to efficiently use GraphQL for their data needs.`,
     learningOutcomes: [
       "Setting up GraphQL and using GraphiQL and Apollo Server.",
@@ -821,7 +846,7 @@ const webDevelopment: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/983c6ba63131250c1d3df7e13f5e8f8951c02cb64c02c33d99e80df23cf3c869",
-    skills: ["HTML"],
+    skills: [html],
     description: `This course provides a comprehensive guide to crafting excellent HTML, the foundation of website and web application development. It emphasizes the importance of semantic markup, which ensures content is understood by both human audiences and computer systems, including screen readers and search engines. The course covers all fundamental concepts needed to use HTML thoughtfully, making it a valuable resource for those looking to enhance their web development skills.`,
     learningOutcomes: [
       "Understanding basic syntax of HTML elements.",
@@ -843,7 +868,7 @@ const webDevelopment: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/ef41e5cf67f7657353febca7c6b206bf7dd8e28497c393790d8a266842c81132",
-    skills: ["Node.js", "JavaScript"],
+    skills: [nodejs, javascript],
     description: `
     Node.js is a powerful tool for controlling servers, building web applications, and creating event-driven programs. And it takes JavaScript—a language familiar to all web developers—out of the browser. With Node.js, you can build applications that run on your laptop or even the cloud. In this course, learn the essentials of Node.js and start creating your own JavaScript applications. This course shows how to install Node.js and work with the Node.js core, which includes standard input, standard output, the module system, the file system, and how to write and run JavaScript on the server. Upon wrapping up this course, you'll be equipped with fundamental Node.js concepts and techniques that you can put to use in your next project.
     `,
@@ -863,7 +888,7 @@ const webDevelopment: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/f2226c0a5de58874e8b882b91fe8945f69d0f0b6de15fa70a09082a08bd464fd",
-    skills: ["React", "JavaScript", "Testing", "HTML", "CSS"],
+    skills: [react, javascript, testing, html, css],
     description: `This course offers an introduction to React.js, a JavaScript library known for its reusable components and scalability, making applications more maintainable and efficient. It covers the basics of the React library, the modern syntax and best practices for creating React components, setting up Chrome tools for React, working with built-in Hooks, and using the Create React App for testing. By the end of the course, learners will be equipped with the essentials of React.js, preparing them to build their own browser-based projects.`,
     learningOutcomes: [
       "Learning basics of React.js.",
@@ -880,7 +905,7 @@ const webDevelopment: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/a2ae9eb61db705535ebd73746bfe20e0988633b80ade57c12aa523a9bbdae3db",
-    skills: ["Next.js", "React", "JavaScript", "HTML", "CSS", "APIs"],
+    skills: [nextjs, react, javascript, html, css],
     description: `This course provides a comprehensive guide to Next.js, a popular, React-based web development framework that combines the benefits of server-side rendering with the speed and ease of a single-page app. It covers basic features like pages, data fetching, and layout options, as well as advanced topics like dynamic and API routes. The course aims to equip learners with the skills to build, manage, and customize a complete web application from scratch in JavaScript, offering a seamless developer experience with zero configuration and lightning-fast, dynamic page speeds.`,
     learningOutcomes: [
       "Learning the benefits of Next.js.",
@@ -896,7 +921,7 @@ const webDevelopment: Certificate[] = [
     issuer: "Udemy",
     credentialURL:
       "https://www.udemy.com/certificate/UC-431983c4-3861-46fc-866e-d97bd5edab77/",
-    skills: ["TypeScript", "React", "JavaScript", "HTML", "CSS"],
+    skills: [typescript, react, javascript, html, css],
     description: `This course equips learners with the necessary TypeScript skills to confidently build React applications. It covers how to describe types for function and class components, use higher order components and render props patterns, and import third-party libraries and their types. The course includes practical projects using TypeScript with Redux and Next.js framework with Apollo GraphQL libraries. It's designed for those with prior React experience who want to learn TypeScript, enhancing their front-end development skills.`,
     learningOutcomes: [
       "Understanding basic and advanced features of TypeScript.",
@@ -910,7 +935,7 @@ const webDevelopment: Certificate[] = [
   },
 ];
 
-const databases: Certificate[] = [
+const databasesCertificates: Certificate[] = [
   {
     name: "Database Management System (DBMS) & SQL",
     slug: "UC-b49387a5-5a13-4b1a-aba1-73cac775c026",
@@ -918,13 +943,7 @@ const databases: Certificate[] = [
     issuer: "Udemy",
     credentialURL:
       "https://www.udemy.com/certificate/UC-b49387a5-5a13-4b1a-aba1-73cac775c026/",
-    skills: [
-      "SQL",
-      "Database Management System",
-      "Normalization",
-      "Relational Database",
-      "Indexing",
-    ],
+    skills: [sql, databaseManagementSystems, normalisation, indexing],
 
     description: `
       This comprehensive course offers an in-depth exploration of Database Management Systems (DBMS) and SQL,
@@ -949,7 +968,7 @@ const databases: Certificate[] = [
     issuer: "NASBA",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/8b2d47f66f59b8b9724a6c1f05f15e27a9b08c3caaf95169c1d6c64537a1d066",
-    skills: ["SQL", "Database Management System", "Relational Database"],
+    skills: [sql],
     description: `
     This course guides you through setting up container-based servers, connecting a management GUI, and building a database. It covers how to set up a database playground, include a user-friendly graphical interface, create table objects, add data to a table, and retrieve and manipulate data. The course is applicable to learners on any operating system and includes exercise files for hands-on practice. It concludes with suggestions for continuing your learning journey.`,
     learningOutcomes: [
@@ -969,13 +988,7 @@ const databases: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/f024344050a592ea0bb2ada78e0175fabecabab2248ffeb58671b9fe4adfc141",
-    skills: [
-      "MongoDB",
-      "NoSQL",
-      "Database Management System",
-      "Document-Oriented Database",
-      "Indexing",
-    ],
+    skills: [mongoDB, noSql, databaseManagementSystems, indexing],
     description: `
     This course provides foundational knowledge and skills for working with MongoDB, a popular document model database. It covers an introduction to MongoDB Atlas, data structuring, connection to a MongoDB database, and performing key tasks such as CRUD operations, aggregation, indexing, data modeling, transactions, and creating a user search experience. By the end of the course, you'll be equipped to start working with MongoDB.`,
     learningOutcomes: [
@@ -997,7 +1010,7 @@ const databases: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/209aec09fbb007c809840a071b5db71dc8e08da5b92799121e158ed1e185062b",
-    skills: ["Redis", "NoSQL", "Database Management System"],
+    skills: [redis, noSql, databaseManagementSystems],
     description: `
     This course covers the core concepts and basic functionality of Redis, an open-source, in-memory database. It guides you through the fundamentals of working with data structures, exploring hashes, lists and sets, key naming strategies, and various ways to read and represent data. The course also delves into pub/sub, message buses, streams, and keyspace notifications. By the end, you'll be equipped to deploy Redis as a database, a cache, a message broker, or a streaming engine.`,
     learningOutcomes: [
@@ -1018,19 +1031,7 @@ const mathematics: Certificate[] = [
     issuer: "Udemy",
     credentialURL:
       "https://www.udemy.com/certificate/UC-8d13c37d-5013-4873-b4fd-56a867ad853d/",
-    skills: [
-      "Discrete Mathematics",
-      "Logic",
-      "Set Theory",
-      "Sequences",
-      "Series",
-      "Relations",
-      "Functions",
-      "Graph Theory",
-      "Combinatorics",
-      "Probability",
-      "Statistics",
-    ],
+    skills: [discrete, logics, probability, statistics],
     description: `
     This course focuses on Discrete Mathematics, a fundamental area of Mathematics and Computer Science that deals with discrete rather than continuous topics. It aims to build the mathematical foundation for various computer science and mathematics courses. The course covers essential topics such as sets, logic, number theory, proofs, functions, relations, graph theory, statistics, combinatorics, and sequences and series, equipping students with the ability to understand mathematical language.`,
     learningOutcomes: [
@@ -1055,34 +1056,22 @@ const mathematics: Certificate[] = [
     issuer: "Udemy",
     credentialURL:
       "https://www.udemy.com/certificate/UC-630e6292-a0ee-4ebb-94f0-ebaeedb101a8/",
-    skills: [
-      "Quadratics",
-      "Polynomials",
-      "Equations",
-      "Inequalities",
-      "Graphs",
-      "Circle Theorems",
-      "Proof",
-      "Binomial Expansion",
-      "Trigonometry",
-      "Vectors",
-      "Differentiation",
-      "Integration",
-      "Exponentials",
-    ],
+    skills: [algebra, trigonometry, calculus, vectors],
     description: `This course covers all the pure content in A-Level AS maths, suitable for all major exam boards. It delves into equations and inequalities, graphs, straight line graphs, circles, polynomial division, proof, binomial expansion, trigonometry, vectors, differentiation, integration, and exponentials and logarithms. The course includes explanatory videos, quizzes, and worksheets with questions from real A-Level past papers, providing a comprehensive understanding of A-Level AS maths.`,
     learningOutcomes: [
-      "Solving various types of equations.",
-      "Solving linear and quadratic inequalities.",
-      "Understanding circle equations and geometry.",
-      "Learning binomial expansion.",
-      "Studying graphs - polynomials, reciprocals and trigonometric.",
-      "Exploring trigonometry - equations, identities, graphs and proofs.",
-      "Learning calculus - differentiation and integration.",
-      "Identifying stationary points and applications of differentiation.",
-      "Understanding exponentials and logarithms - solving equations, modelling and graphs.",
-      "Performing polynomial division.",
-      "Learning proof.",
+      "Understanding quadratics",
+      "Manipulating polynomials",
+      "Solving equations",
+      "Working with inequalities",
+      "Interpreting graphs",
+      "Applying circle theorems",
+      "Proving mathematical statements",
+      "Expanding binomials",
+      "Applying trigonometry",
+      "Working with vectors",
+      "Differentiating functions",
+      "Integrating functions",
+      "Understanding exponentials",
     ],
   },
   {
@@ -1092,35 +1081,24 @@ const mathematics: Certificate[] = [
     issuer: "Udemy",
     credentialURL:
       "https://www.udemy.com/certificate/UC-f951f5eb-0e4c-4fd6-8db0-29c24e616a2b/",
-    skills: [
-      "Partial Fractions",
-      "Functions",
-      "Graphs",
-      "Sequences",
-      "Series",
-      "Binomial Expansion",
-      "Radians",
-      "Trigonometry",
-      "Differentiation",
-      "Integration",
-      "Parametric Equations",
-      "Numerical Methods",
-      "Vectors",
-    ],
+    skills: [algebra, geometry, trigonometry, calculus],
     description: `
     This course covers the second year pure content in A-Level Maths, suitable for all major exam boards. It explores parametric equations, functions in graphs, binomial expansion, radians, trigonometric functions and identities, differentiation, integration, numerical methods, and vectors. The course includes explanatory videos, quizzes, and worksheets with questions from real A-Level past papers, providing a comprehensive understanding of advanced pure maths.
     `,
     learningOutcomes: [
-      "Learning differentiation: chain rule, product rule, quotient rule and more.",
-      "Understanding integration: reverse chain rule, integration by parts, substitution, differential equations and more.",
-      "Studying partial fractions.",
-      "Exploring graphs and functions.",
-      "Learning binomial expansion.",
-      "Understanding radians.",
-      "Studying advanced trigonometry, including sec, cosec and cot, and trigonometric identities.",
-      "Learning parametric equations.",
-      "Understanding vectors.",
-      "Learning numerical methods, including iteration and Newton-Raphson.",
+      "Decomposing partial fractions",
+      "Understanding functions",
+      "Interpreting graphs",
+      "Analyzing sequences",
+      "Summing series",
+      "Expanding binomials",
+      "Converting radians",
+      "Applying trigonometry",
+      "Differentiating functions",
+      "Integrating functions",
+      "Solving parametric equations",
+      "Applying numerical methods",
+      "Working with vectors",
     ],
   },
   {
@@ -1130,22 +1108,15 @@ const mathematics: Certificate[] = [
     issuer: "Udemy",
     credentialURL:
       "https://www.udemy.com/certificate/UC-84beb6d6-275d-41ff-8215-c4918454b846/",
-    skills: [
-      "Mechanics",
-      "Physics",
-      "Kinematics",
-      "Dynamics",
-      "Variable Acceleration",
-    ],
+    skills: [mechanics],
     description: `
     This course focuses on A-Level Mechanics, providing an understanding of key concepts such as Newton's laws of motion, kinematics, dynamics, and variable acceleration. It includes the application of constant acceleration formulae (SUVAT) and calculus to motion problems, understanding vectors, and using a calculator for A-level mechanics. The course offers a comprehensive understanding of A-Level Mechanics through various learning outcomes.`,
     learningOutcomes: [
-      "Understanding A-level mechanics.",
-      "Learning Newton's laws of motion.",
-      "Applying constant acceleration formulae (SUVAT).",
-      "Applying calculus to motion problems.",
-      "Understanding vectors.",
-      "Using calculator for A-level mechanics.",
+      "Understanding mechanics",
+      "Applying physics principles",
+      "Analyzing kinematics",
+      "Studying dynamics",
+      "Working with variable acceleration",
     ],
   },
   {
@@ -1155,26 +1126,18 @@ const mathematics: Certificate[] = [
     issuer: "Udemy",
     credentialURL:
       "https://www.udemy.com/certificate/UC-729218f1-da7b-4684-857f-78f9920686f2/",
-    skills: [
-      "Mechanics",
-      "Physics",
-      "Moments",
-      "Forces",
-      "Friction",
-      "Projectiles",
-      "Equilibrium",
-      "Dynamics",
-    ],
+    skills: [mechanics],
     description: `
     This course covers the mechanics component of maths A-Level 2nd year content, building on the first year course content. It is suitable for all major exam boards and is ideal for anyone interested in furthering their understanding of the subject. The course delves into moments, kinematics, and dynamics, teaching students how to calculate the moment of a force, model a projectile flying through the air, and work with friction in various scenarios.`,
     learningOutcomes: [
-      "Understanding moments.",
-      "Learning kinematics.",
-      "Studying statics and equilibrium.",
-      "Understanding forces.",
-      "Learning dynamics.",
-      "Applying variable acceleration.",
-      "Understanding vectors.",
+      "Understanding mechanics",
+      "Applying physics principles",
+      "Calculating moments",
+      "Working with forces",
+      "Analyzing friction",
+      "Modeling projectiles",
+      "Achieving equilibrium",
+      "Studying dynamics",
     ],
   },
   {
@@ -1184,28 +1147,21 @@ const mathematics: Certificate[] = [
     issuer: "Udemy",
     credentialURL:
       "https://www.udemy.com/certificate/UC-4a1b790f-b0d8-430b-8dfd-d40a60c0ebee/",
-    skills: [
-      "Statistics",
-      "Measures of Location",
-      "Measures of Spread",
-      "Data Handling",
-      "Data Representation",
-      "Bivariable Data",
-      "Probability",
-      "Binomial Distribution",
-      "Hypothesis Testing",
-      "Sampling",
-      "Large Data Sets",
-    ],
+    skills: [probability, statistics],
     description: `
     This course covers the statistics component of maths A-Level AS content, suitable for all major exam boards. It provides an introduction to statistics, teaching students how to analyze and represent data, understand bivariate data, probability, binomial distribution, hypothesis tests, sampling, and large data sets. The course is ideal for anyone interested in getting started with statistics.`,
     learningOutcomes: [
-      "Understanding A-Level statistics.",
-      "Learning probability.",
-      "Performing hypothesis tests.",
-      "Understanding binomial distribution.",
-      "Learning measures of location and spread.",
-      "Analyzing data.",
+      "Understanding statistics",
+      "Calculating measures of location",
+      "Determining measures of spread",
+      "Handling data",
+      "Representing data",
+      "Analyzing bivariable data",
+      "Calculating probability",
+      "Applying binomial distribution",
+      "Testing hypotheses",
+      "Sampling data",
+      "Working with large data sets",
     ],
   },
   {
@@ -1215,26 +1171,17 @@ const mathematics: Certificate[] = [
     issuer: "Udemy",
     credentialURL:
       "https://www.udemy.com/certificate/UC-1efbccad-5f12-4002-85cc-1efebfb81e34/",
-    skills: [
-      "Statistics",
-      "Correlation",
-      "Regression",
-      "Conditional Probability",
-      "Discrete Random Variables",
-      "Normal Distribution",
-      "Hypothesis Testing",
-      "Data Analysis",
-    ],
+    skills: [],
     description: `This course covers the statistics component of maths A-Level 2nd year content, building on the first year course content. It is suitable for all major exam boards and is ideal for anyone interested in furthering their understanding of the subject. The course delves into correlation, regression, conditional probability, and the normal distribution, teaching students how to measure correlation, calculate equations of regression lines, explore conditional probability problems, and use the normal distribution.`,
     learningOutcomes: [
-      "Understanding A-Level statistics.",
-      "Learning probability.",
-      "Performing hypothesis tests.",
-      "Understanding normal distribution.",
-      "Learning conditional probability.",
-      "Studying correlation.",
-      "Understanding regression.",
-      "Analyzing data.",
+      "Understanding statistics",
+      "Measuring correlation",
+      "Calculating regression",
+      "Exploring conditional probability",
+      "Working with discrete random variables",
+      "Applying normal distribution",
+      "Testing hypotheses",
+      "Analyzing data",
     ],
   },
   {
@@ -1244,30 +1191,22 @@ const mathematics: Certificate[] = [
     issuer: "Udemy",
     credentialURL:
       "https://www.udemy.com/certificate/UC-5aabeb79-4fb8-4cab-a5d5-3daa1b009170/",
-    skills: [
-      "Mechanics",
-      "Physics",
-      "Kinematics",
-      "Dynamics",
-      "Variable Acceleration",
-      "Moments",
-      "Forces",
-      "Friction",
-      "Projectiles",
-      "Equilibrium",
-      "Dynamics",
-    ],
+    skills: [mechanics],
     description: `
     This course, designed by Westbound Maths, covers the entire A-Level Applied Maths: Mechanics syllabus, representing a significant portion of the final exam weight for the A-Level Mathematics qualification. The course delves into topics such as forces, moments, vectors, and kinematics, providing a comprehensive understanding of A-Level Applied Maths: Mechanics.
     `,
     learningOutcomes: [
-      "Understanding A-Level Applied Mathematics: Mechanics topics.",
-      "Learning Newton's laws of motion.",
-      "Studying forces including weight, normal reaction, friction, tension, thrust/compression etc.",
-      "Understanding moments.",
-      "Applying constant acceleration kinematics, application of suvat formula.",
-      "Learning projectiles.",
-      "Applying variable acceleration kinematics.",
+      "Understanding mechanics",
+      "Applying physics principles",
+      "Analyzing kinematics",
+      "Studying dynamics",
+      "Working with variable acceleration",
+      "Calculating moments",
+      "Working with forces",
+      "Analyzing friction",
+      "Modeling projectiles",
+      "Achieving equilibrium",
+      "Studying dynamics",
     ],
     archived: true,
   },
@@ -1278,41 +1217,33 @@ const mathematics: Certificate[] = [
     issuer: "Udemy",
     credentialURL:
       "https://www.udemy.com/certificate/UC-e2179bc4-5760-4a77-88a4-a2738d22a96e/",
-    skills: [
-      "Quadratics",
-      "Polynomials",
-      "Equations",
-      "Inequalities",
-      "Graphs",
-      "Circle Theorems",
-      "Proof",
-      "Binomial Expansion",
-      "Trigonometry",
-      "Vectors",
-      "Partial Fractions",
-      "Functions",
-      "Graphs",
-      "Sequences",
-      "Series",
-      "Binomial Expansion",
-      "Radians",
-      "Trigonometry",
-      "Differentiation",
-      "Integration",
-      "Parametric Equations",
-      "Numerical Methods",
-      "Vectors",
-    ],
+    skills: [algebra, trigonometry, calculus, vectors],
     description: `
     This course, designed by Westbound Maths, covers the entire A-Level Pure Maths syllabus, representing a significant portion of the final exam weight for the A-Level Mathematics qualification. The course delves into topics such as sequence and series, binomial expansion, trigonometry, algebra, functions, parametric equations, differentiation, and integration, providing a comprehensive understanding of A-Level Pure Maths.`,
     learningOutcomes: [
-      "Understanding A-Level Mathematics: pure maths topics.",
-      "Learning sequence and series.",
-      "Understanding binomial expansion.",
-      "Studying trigonometry.",
-      "Learning algebra, functions, and parametric equations.",
-      "Understanding differentiation.",
-      "Learning integration.",
+      "Understanding quadratics",
+      "Manipulating polynomials",
+      "Solving equations",
+      "Working with inequalities",
+      "Interpreting graphs",
+      "Applying circle theorems",
+      "Proving mathematical statements",
+      "Expanding binomials",
+      "Applying trigonometry",
+      "Working with vectors",
+      "Decomposing partial fractions",
+      "Understanding functions",
+      "Interpreting graphs",
+      "Analyzing sequences",
+      "Summing series",
+      "Expanding binomials",
+      "Converting radians",
+      "Applying trigonometry",
+      "Differentiating functions",
+      "Integrating functions",
+      "Solving parametric equations",
+      "Applying numerical methods",
+      "Working with vectors",
     ],
     archived: true,
   },
@@ -1323,42 +1254,29 @@ const mathematics: Certificate[] = [
     issuer: "Udemy",
     credentialURL:
       "https://www.udemy.com/certificate/UC-fbc6d079-db3f-405f-8c32-f242b266d826/",
-    skills: [
-      "Statistics",
-      "Measures of Location",
-      "Measures of Spread",
-      "Data Handling",
-      "Data Representation",
-      "Bivariable Data",
-      "Probability",
-      "Binomial Distribution",
-      "Hypothesis Testing",
-      "Sampling",
-      "Large Data Sets",
-      "Statistics",
-      "Correlation",
-      "Regression",
-      "Conditional Probability",
-      "Discrete Random Variables",
-      "Normal Distribution",
-      "Poison Distribution",
-      "Continuous Random Variables",
-      "Geometric Distribution",
-    ],
+    skills: [probability, statistics],
     description: `
     This course, designed by Westbound Maths, covers the entire A-Level Applied Maths: Statistics syllabus, representing a significant portion of the final exam weight for the A-Level Mathematics qualification. The course delves into topics such as statistical sampling methods, statistical measures, correlation, regression, discrete and continuous probability distribution, hypothesis testing, and probability, providing a comprehensive understanding of A-Level Applied Maths: Statistics.`,
     learningOutcomes: [
-      "Understanding A-Level Applied Mathematics: Statistics topics.",
-      "Learning statistical sampling: random vs. non-random sampling methods.",
-      "Understanding statistical measures of location: median, mode, mean, quartiles and percentiles.",
-      "Learning statistical measure of spread: interquartile range, percentile range, variance, standard deviation.",
-      "Studying correlation, linear and exponential regression.",
-      "Understanding discrete Probability Distribution: discrete uniform distribution, binomial distribution.",
-      "Learning continuous Probability Distribution: normal distribution, standard normal distribution.",
-      "Applying approximating binomial distribution with normal distribution.",
-      "Performing hypothesis Testing of correlation, binomial and normal distribution parameters.",
-      "Understanding Venn diagram, tree diagram, Conditional Probability.",
-      "Analyzing large Data Set.",
+      "Understanding statistics",
+      "Calculating measures of location",
+      "Determining measures of spread",
+      "Handling data",
+      "Representing data",
+      "Analyzing bivariable data",
+      "Calculating probability",
+      "Applying binomial distribution",
+      "Testing hypotheses",
+      "Sampling data",
+      "Working with large data sets",
+      "Measuring correlation",
+      "Calculating regression",
+      "Exploring conditional probability",
+      "Working with discrete random variables",
+      "Applying normal distribution",
+      "Understanding Poisson distribution",
+      "Working with continuous random variables",
+      "Applying geometric distribution",
     ],
     archived: true,
   },
@@ -1373,16 +1291,15 @@ const softwareEngineering: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/6afc37d98889e1ed209d677fd7928ece257125ca8d538ed6b0fa0ed18e4e30d6",
     skills: [
-      "Python",
-      "Poetry",
-      "Pytest",
-      "PyPI",
-      "Tox",
-      "GitHub Actions",
-      "Continuous Integration",
-      "Continuous Delivery",
-      "Linting",
-      "Black",
+      python,
+      poetry,
+      pytest,
+      tox,
+      gitHubActions,
+      continuousIntegration,
+      continuousDeployment,
+      linting,
+      black,
     ],
     description: `This course guides learners through the process of starting, building, testing, and maintaining an open-source project in Python. It introduces learners to Poetry, a popular dependency management tool, and covers how to write and manage tests using pytest and tox. The course also discusses code tidiness and style guide adherence using PEP 8, Black, Flake8, and pre-commit, and demonstrates how to set up a workflow on GitHub Action. It concludes with best practices for open-source projects.`,
     learningOutcomes: [
@@ -1400,7 +1317,7 @@ const softwareEngineering: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/551778db5ecef81f732b9e48d50db3fe709f877f1ac9c834923b0c96bb636e72",
-    skills: ["Java", "Maven"],
+    skills: [java, maven],
     description: `This course provides a comprehensive introduction to Apache Maven, a powerful build system widely used by Java developers. It covers the basics of using Maven for dependency management, builds, and reporting. The course delves into the project object model (POM), the build life cycle, and the use of Core and Tools plugins for task automation. It also explores dependency management, including the creation of uber JAR files, and concludes with a section on reporting with Maven sites and popular plugins.`,
     learningOutcomes: [
       "Exploring POM files.",
@@ -1418,29 +1335,13 @@ const softwareEngineering: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/f3297827ac972df2c87c56883f1217ba051a4f12df86886d33f902f2fda5614c",
-    skills: [
-      "Software Testing",
-      "Black-Box Testing",
-      "White-Box Testing",
-      "Experienced-Based Testing",
-      "Python",
-      "Poetry",
-      "Pytest",
-      "PEP 8",
-      "Black",
-      "Flake8",
-      "Pre-commit",
-      "Tox",
-      "GitHub Actions",
-    ],
+    skills: [testing],
     description: `
     This course emphasizes the importance of technique in software testing, aiming to refine and hone the skills of software testers. It covers key testing techniques like black-box testing, white-box testing, and experienced-based testing. The course also provides advice on how to effectively communicate the testing process to ensure results are not lost in technical jargon, making it a valuable resource for software testers looking to enhance their skills or prepare for an ISTQB certification.`,
     learningOutcomes: [
-      "Creating an open-source project in Python using Poetry.",
-      "Enhancing tests using pytest.",
-      "Tidying up code using PEP 8, Black, Flake8, and pre-commit.",
-      "Standardizing testing using tox.",
-      "Setting up a workflow on GitHub Action.",
+      "Applying black-box testing",
+      "Implementing white-box testing",
+      "Utilizing experienced-based testing",
     ],
   },
   {
@@ -1450,7 +1351,7 @@ const softwareEngineering: Certificate[] = [
     issuer: "Udemy",
     credentialURL:
       "https://www.udemy.com/certificate/UC-ba00c0c9-221d-4939-99b4-90244570a81b/",
-    skills: ["Git", "GitHub", "Version Control"],
+    skills: [git, gitHub],
     description: `
     This comprehensive course provides an in-depth understanding of Git and GitHub, essential tools for any code-related field. The course is divided into four units: Git Essentials, Next Level Git, Github & Collaboration, and The Tricky Bits. It covers everything from basic Git mechanics like committing and branching, to advanced topics like rebasing and interactive rebase. The course also delves into collaboration workflows, contributing to open source projects, and using features like Github Gists and Github Pages. With numerous diagrams, visual references, and exercises, this course offers a practical and engaging approach to mastering Git and GitHub.`,
     learningOutcomes: [
@@ -1480,13 +1381,7 @@ const softwareEngineering: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/f14a53c061bc271d233daeb5f46d5441dc2e86f386420c0fbd846291a5cccaf8",
-    skills: [
-      "Design Patterns",
-      "Object-Oriented Programming",
-      "Java",
-      "Python",
-      "JavaScript",
-    ],
+    skills: [designPatterns, oop, python, java, javascript],
     description: `
       A course that offers reusable solutions to common challenges in software development. 
       It introduces learners to the concept of design patterns and explores several of the most frequently used object-oriented patterns. 
@@ -1511,7 +1406,7 @@ const softwareEngineering: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/c5c41ea1aa52982d08705831612aba2e93e69a64e35dd2cce11c28fad12b59f7",
-    skills: ["Data Structures", "Algorithms"],
+    skills: [dataStructures, algorithms],
     description: `
       This course provides an in-depth overview of the most essential data structures for modern programming. 
       It starts with simple ways of grouping data, like arrays and structs, and gradually introduces more complex data structures, such as linked lists, stacks and queues, hash tables, and trees and graphs. 
@@ -1541,17 +1436,16 @@ const management: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/8ab210e2af6b2df598aa3e27db515103158cd049367cf6afd9949d874b7677eb",
     skills: [
-      "Project Management",
-      "Time Management",
-      "Risk Management",
-      "Stakeholder Management",
-      "Communication Management",
-      "Scope Management",
-      "Cost Management",
-      "Quality Management",
-      "Procurement Management",
-      "Integration Management",
-      "Human Resource Management",
+      timeManagement,
+      riskManagement,
+      stakeholderManagement,
+      communication,
+      scopeManagement,
+      costManagement,
+      qualityManagement,
+      procurementManagement,
+      integrationManagement,
+      humanResourceManagement,
     ],
     description: `This course offers a comprehensive understanding of project management fundamentals, applicable to both small and complex enterprise-wide initiatives. It covers key aspects from establishing project goals and building a project plan, to managing resources, meeting deadlines, and closing the project. The course also provides tips for effective communication, meeting management, and gaining customer acceptance. It includes exercises based on a healthcare/IT case study project and provides an overview of the changes introduced in the Project Management Institute's latest guide.`,
     learningOutcomes: [
@@ -1576,17 +1470,16 @@ const management: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/23788be7119de6bc027865d8345bcd7e8c98563fc1a8a373351e05fa79e1b6ef",
     skills: [
-      "Project Management",
-      "Time Management",
-      "Risk Management",
-      "Stakeholder Management",
-      "Communication Management",
-      "Scope Management",
-      "Cost Management",
-      "Quality Management",
-      "Procurement Management",
-      "Integration Management",
-      "Human Resource Management",
+      timeManagement,
+      riskManagement,
+      stakeholderManagement,
+      communication,
+      scopeManagement,
+      costManagement,
+      qualityManagement,
+      procurementManagement,
+      integrationManagement,
+      humanResourceManagement,
     ],
     description: `This course offers a comprehensive understanding of project management fundamentals, applicable to both small and complex enterprise-wide initiatives. It covers key aspects from establishing project goals and building a project plan, to managing resources, meeting deadlines, and closing the project. The course also provides tips for effective communication, meeting management, and gaining customer acceptance. It includes exercises based on a healthcare/IT case study project and provides an overview of the changes introduced in the Project Management Institute's latest guide.`,
     learningOutcomes: [
@@ -1614,15 +1507,14 @@ const cloudComputing: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/29e1352bda64cbc78e2f3fbf7205d2761bd8c465925eba7c4cf699aab8cf72b4",
     skills: [
-      "Amazon Web Services (AWS)",
-      "Elastic Compute Cloud (EC2)",
-      "Simple Storage Service (S3)",
-      "Virtual Private Cloud (VPC)",
-      "Lambda",
-      "CloudFormation",
-      "CloudFront",
-      "Databases",
-      "NoSQL",
+      aws,
+      awsEC2,
+      awsS3,
+      awsVPC,
+      awsLambda,
+      awsCloudFormation,
+      awsCloudFront,
+      noSql,
     ],
     description: `This course provides a comprehensive guide on how to optimally host your application within AWS, covering services like IaaS, DBaaS, PaaS, and SaaS through hands-on examples. It delves into DevOps and security within AWS, and prepares learners for the AWS Cloud Practitioner Certification (CLF-C02) exam. The course covers a wide range of topics, from creating an IAM user group and using the Cost Explorer, to exploring AWS offerings for mobile app development and maintaining cloud infrastructure scripts with CloudFormation. It also includes a look into AWS's artificial intelligence services and the AWS Well-Architected Framework.`,
     learningOutcomes: [
@@ -1658,17 +1550,17 @@ const cloudComputing: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/bf0cac80ff7e3f2b8148e20d6ea1fccb6eb15457a184229fee9ff439f652cfba",
     skills: [
-      "Microsoft Azure",
-      "Azure App Service",
-      "Azure Blob Storage",
-      "Durable Functions",
-      "Azure Monitor",
-      "Azure Redis",
-      "Azure Functions",
-      "Azure Resource Manager",
-      "Containers",
-      "Azure Container Registry",
-      "Kubernetes",
+      azure,
+      azureAppService,
+      azureBlobStorage,
+      azureDurableFunctions,
+      azureMonitor,
+      redis,
+      azureFunctions,
+      azureResourceManager,
+      azureContainers,
+      azureContainerRegistry,
+      kubernetes,
     ],
     description: `This course provides a comprehensive introduction to Azure, focusing on the fundamentals necessary for developers to start building, deploying, and managing applications on this popular cloud platform. It offers a detailed overview of Azure's capabilities and services, from storage options to Kubernetes Service scaling strategies. The course is designed to equip learners with the knowledge needed for a deeper exploration of their topics of interest, making it a valuable resource for those new to Azure or those comparing it against other ecosystems.`,
     learningOutcomes: [
@@ -1695,13 +1587,13 @@ const cloudComputing: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/1bc3074a5e84539c7bc5fdeeee83438602cc303ba648ec90ef5fc018693e62a1",
     skills: [
-      "Google Cloud Platform (GCP)",
-      "App Engine",
-      "Cloud SQL",
-      "Cloud Storage",
-      "Cloud Tasks",
-      "Cloud Scheduler",
-      "Cloud Logging",
+      gcp,
+      gcpAppEngine,
+      gcpCloudSQL,
+      gcpCloudStorage,
+      gcpCloudTasks,
+      gcpCloudScheduler,
+      gcpCloudLogging,
     ],
     description: `This course provides a comprehensive guide to designing, building, and maintaining applications in Google Cloud Platform (GCP). It covers best practices for deploying and configuring optimized settings in App Engine, setting up Cloud SQL application architecture, managing distributed queues in Cloud Tasks, and using GCP tools like Cloud Logging for application optimization. The course is designed to equip learners with the skills needed to leverage the multitude of cloud computing services provided by GCP, making it a valuable resource for developers in the cloud computing domain.`,
     learningOutcomes: [
@@ -1719,10 +1611,10 @@ export { cloudComputing };
 
 const allCertificates = [
   ...programmingLanguages,
-  ...databases,
+  ...databasesCertificates,
   ...softwareEngineering,
   ...webDevelopment,
-  ...machineLearning,
+  ...machineLearningCertificates,
   ...devOps,
   ...cloudComputing,
   ...mathematics,

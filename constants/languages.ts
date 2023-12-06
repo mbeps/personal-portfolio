@@ -52,6 +52,8 @@ export const python: Skill = {
     poetry,
     pybuilder,
   ],
+  isMainSkill: true,
+  skillType: "hard",
 };
 
 export const javascript: Skill = {
@@ -70,6 +72,8 @@ export const javascript: Skill = {
     yarn,
     pnpm,
   ],
+  isMainSkill: true,
+  skillType: "hard",
 };
 
 export const typescript: Skill = {
@@ -88,19 +92,33 @@ export const typescript: Skill = {
     yarn,
     pnpm,
   ],
+  isMainSkill: true,
+  skillType: "hard",
 };
 
 export const java: Skill = {
   skill: "Java",
   skills: [maven, gradle, junit, spring, springBoot, hibernate],
+  isMainSkill: true,
+  skillType: "hard",
 };
 
 export const gameMakerLanguage: Skill = {
   skill: "GameMaker Skill",
+  isMainSkill: false,
+  skillType: "hard",
 };
 
 export const shellScript: Skill = {
   skill: "Shell Script",
+  isMainSkill: false,
+  skillType: "hard",
+};
+
+export const rLanguage: Skill = {
+  skill: "R",
+  isMainSkill: false,
+  skillType: "hard",
 };
 
 /**
