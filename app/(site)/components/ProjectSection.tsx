@@ -49,9 +49,6 @@ const ProjectsSection = () => {
                     imageURL={project.imageURL}
                     repoURL={project.repoURL}
                     siteURL={project.siteURL}
-                    programmingLanguage={project.programmingLanguage}
-                    technologies={project.technologies}
-                    type={project.type}
                   />
                 </SlideUp>
               </div>
