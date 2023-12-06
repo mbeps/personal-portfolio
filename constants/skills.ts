@@ -301,13 +301,6 @@ export const bitBucket: Skill = {
   skillType: "hard",
 };
 
-export const fundamentals: Skill = {
-  skill: "Fundamentals",
-  category: "Other",
-  isMainSkill: true,
-  skillType: "hard",
-};
-
 export const vagrant: Skill = {
   skill: "Vagrant",
   category: "Infrastructure as Code",
@@ -739,6 +732,13 @@ export const continuousDelivery: Skill = {
 export const continuousDeployment: Skill = {
   skill: "Continuous Deployment",
   category: "CI/CD",
+  isMainSkill: false,
+  skillType: "general",
+};
+
+export const devOps: Skill = {
+  skill: "DevOps",
+  category: "Other",
   isMainSkill: false,
   skillType: "general",
 };

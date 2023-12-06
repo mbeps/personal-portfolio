@@ -42,12 +42,12 @@ import {
   databases,
   deepLearning,
   designPatterns,
+  devOps,
   discrete,
   django,
   docker,
   firebase,
   flask,
-  fundamentals,
   gcp,
   gcpAppEngine,
   gcpCloudLogging,
@@ -111,7 +111,7 @@ import {
   xml,
 } from "./skills";
 
-const programmingLanguages: Certificate[] = [
+const programmingLanguagesCertificates: Certificate[] = [
   {
     name: "Python Programming Masterclass",
     slug: "UC-a3c47af2-7eb8-4f5b-8309-08559c519d5a",
@@ -532,7 +532,7 @@ const machineLearningCertificates: Certificate[] = [
   },
 ];
 
-const devOps: Certificate[] = [
+const devOpsCertificates: Certificate[] = [
   {
     name: "DevOps Foundations",
     slug: "1c6fedf1993d58cfe2f906e4fe4db5b4eddda6ea5fa7f8999436b07682ffe3f7",
@@ -540,7 +540,7 @@ const devOps: Certificate[] = [
     issuer: "NASBA",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/1c6fedf1993d58cfe2f906e4fe4db5b4eddda6ea5fa7f8999436b07682ffe3f7",
-    skills: [fundamentals],
+    skills: [devOps],
     description: `
     This course provides an overview of the DevOps culture, emphasizing the core value of CAMS (culture, automation, measurement, and sharing). It explores various methodologies and tools that an organization can adopt to transition into DevOps, including both agile and lean project management principles and how traditional principles like ITIL, ITSM, and SDLC fit within DevOps. The course concludes with a discussion on the three main tenets of DevOps—infrastructure automation, continuous delivery, and reliability engineering—and a brief look into the future of organizations transitioning from the cloud to serverless architectures.`,
     learningOutcomes: [
@@ -561,7 +561,7 @@ const devOps: Certificate[] = [
     issuer: "NASBA",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/6bf47e122551142911c5a636edfee564ff0d57bd07a52888c6c52246946f7747",
-    skills: [continuousIntegration, continuousDeployment],
+    skills: [devOps, continuousIntegration, continuousDeployment],
     description: `This course delves into the concepts of continuous integration and continuous delivery (CI/CD), demonstrating these principles through the construction of a build pipeline. It covers the journey of an app from development to production, discussing version control, building artifacts, unit testing, and deployment. The course also provides practical advice on CI/CD best practices, common pitfalls, and workarounds, equipping you with the knowledge to navigate your journey to continuous delivery.`,
     learningOutcomes: [
       "Exploring utilization of continuous delivery.",
@@ -580,6 +580,7 @@ const devOps: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/b1f7a0e46c3659d0d1c25396bbd7838b2374b12afcff7404a0d5077b68e9ebfc",
     skills: [
+      devOps,
       jenkins,
       continuousIntegration,
       continuousDeployment,
@@ -605,7 +606,7 @@ const devOps: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/5eed7f56e5d7dc61b17a3f5fb3cb9fc42130506e948df550bf00899b5868b0a1",
-    skills: [ansible, infrastructureAsCode],
+    skills: [devOps, ansible, infrastructureAsCode],
     description: `
     This course delves into the intermediate to advanced use cases of Ansible, a powerful IT automation engine. It covers the construction and execution of Ansible playbooks, task building, role reuse, and leveraging content from the Ansible community through Ansible Galaxy. Additionally, it explores encrypting secret information, managing network devices with Ansible, and leveraging the power of idempotence, equipping you with the skills to optimize tasks and updates efficiently.`,
     learningOutcomes: [
@@ -624,6 +625,7 @@ const devOps: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/679b3ba787209cd0d81d1d68e4bfc01e23ae14f9f2bdfa4e85f917025a8e732b",
     skills: [
+      devOps,
       gitHubActions,
       continuousIntegration,
       continuousDeployment,
@@ -645,7 +647,7 @@ const devOps: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/bf3b572548b56f714cc70ee2c1447312a84869f6a93edb55e3d13b13337f3bd5",
-    skills: [docker, containerization, kubernetes, travisCI],
+    skills: [devOps, docker, containerization, kubernetes, travisCI],
     description: `This course provides a comprehensive guide to leveraging Docker for application development. It covers everything from creating your first Docker image to deploying your app to the cloud. The course is designed to equip learners with practical skills such as setting up a full-stack environment with Docker, deploying and adding nodes to a Docker swarm, creating a cluster using Kubernetes, and integrating GitHub with Travis for Docker projects.`,
     learningOutcomes: [
       "Creating first Docker image.",
@@ -662,7 +664,7 @@ const devOps: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/a63c2359250f6a04bd19dab4ebd049edb511a1a9f2c3ef66a0a8d1df004f7d8d",
-    skills: [kubernetes, docker, k3s, aws],
+    skills: [devOps, kubernetes, docker, k3s, aws],
     description: `This course provides a focused guide on how to provision Kubernetes clusters using kind. It covers the challenges of installing Kubernetes and its prerequisites, and demonstrates how to deploy Kubernetes in Docker using K3s, in both single- and multinode clusters. This course is designed to polish your skills in Kubernetes, containerization, and clusterization.`,
     learningOutcomes: [
       "Installing Kubernetes and its prerequisites.",
@@ -672,7 +674,7 @@ const devOps: Certificate[] = [
   },
 ];
 
-const webDevelopment: Certificate[] = [
+const webDevelopmentCertificates: Certificate[] = [
   {
     name: "Building RESTful APIs with Flask",
     slug: "c5ccec418e67284d7945832543376e344173867d424cc1c7c7e7f4235b14debe",
@@ -1023,7 +1025,7 @@ const databasesCertificates: Certificate[] = [
   },
 ];
 
-const mathematics: Certificate[] = [
+const mathematicsCertificates: Certificate[] = [
   {
     name: "Discrete Mathematics",
     slug: "UC-8d13c37d-5013-4873-b4fd-56a867ad853d",
@@ -1282,7 +1284,7 @@ const mathematics: Certificate[] = [
   },
 ];
 
-const softwareEngineering: Certificate[] = [
+const softwareEngineeringCertificates: Certificate[] = [
   {
     name: "Create an Open-Source Project in Python",
     slug: "6afc37d98889e1ed209d677fd7928ece257125ca8d538ed6b0fa0ed18e4e30d6",
@@ -1427,7 +1429,7 @@ const softwareEngineering: Certificate[] = [
   },
 ];
 
-const management: Certificate[] = [
+const managementCertificates: Certificate[] = [
   {
     name: "Project Management Foundations",
     slug: "8ab210e2af6b2df598aa3e27db515103158cd049367cf6afd9949d874b7677eb",
@@ -1498,7 +1500,7 @@ const management: Certificate[] = [
   },
 ];
 
-const cloudComputing: Certificate[] = [
+const cloudComputingCertificates: Certificate[] = [
   {
     name: "AWS Essential Training for Developers",
     slug: "29e1352bda64cbc78e2f3fbf7205d2761bd8c465925eba7c4cf699aab8cf72b4",
@@ -1607,18 +1609,18 @@ const cloudComputing: Certificate[] = [
   },
 ];
 
-export { cloudComputing };
+export { cloudComputingCertificates as cloudComputing };
 
 const allCertificates = [
-  ...programmingLanguages,
+  ...programmingLanguagesCertificates,
   ...databasesCertificates,
-  ...softwareEngineering,
-  ...webDevelopment,
+  ...softwareEngineeringCertificates,
+  ...webDevelopmentCertificates,
   ...machineLearningCertificates,
-  ...devOps,
-  ...cloudComputing,
-  ...mathematics,
-  ...management,
+  ...devOpsCertificates,
+  ...cloudComputingCertificates,
+  ...mathematicsCertificates,
+  ...managementCertificates,
 ];
 
 export default allCertificates;
