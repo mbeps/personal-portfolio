@@ -87,20 +87,20 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
     notFound();
   }
 
-  const projectName = project?.name;
+  const projectName = project.name;
 
-  const projectTechnologies = project?.skills.filter(
+  const projectTechnologies = project.skills.filter(
     (skill) => skill.skillType === "hard"
   );
-  const projectGeneralSkills = project?.skills.filter(
+  const projectGeneralSkills = project.skills.filter(
     (skill) => skill.skillType === "general"
   );
-  const projectSoftSkills = project?.skills.filter(
+  const projectSoftSkills = project.skills.filter(
     (skill) => skill.skillType === "soft"
   );
 
-  const projectLanguage = project?.programmingLanguage;
-  const projectDescription = project?.description;
+  const projectLanguage = project.programmingLanguage;
+  const projectDescription = project.description;
   const hasCoverImage = hasProjectCover(slug);
   const coverImagePath = `/projects/${slug}/cover.png`;
 

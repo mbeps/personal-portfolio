@@ -58,7 +58,14 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
    * These are the same ones from the Project type.
    */
   const searchOptions = {
-    keys: ["name", "programmingLanguage", "tags", "technologies"], // Only search these properties
+    keys: [
+      "name",
+      "programmingLanguage.skill",
+      "skills.skill",
+      "skills.category",
+      "tags",
+      "technologies",
+    ], // Only search these properties
     threshold: 0.3, // Lower threshold means more results
   };
 
