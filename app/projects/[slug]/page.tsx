@@ -17,6 +17,8 @@ import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
 import { ProjectSkillSection } from "./components/ProjectSkillSection";
+import Project from "@/types/projects";
+import { Skill } from "@/types/skills";
 
 /**
  * Metadata object for the dynamic project page.
@@ -79,7 +81,14 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const slug = params.slug;
 
   const project = getProjectBySlug(slug, allProjects);
+
+  // redirect to not found page if the project is not valid
+  if (!project) {
+    notFound();
+  }
+
   const projectName = project?.name;
+
   const projectTechnologies = project?.skills.filter(
     (skill) => skill.skillType === "hard"
   );
@@ -89,10 +98,44 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const projectSoftSkills = project?.skills.filter(
     (skill) => skill.skillType === "soft"
   );
+
   const projectLanguage = project?.programmingLanguage;
   const projectDescription = project?.description;
   const hasCoverImage = hasProjectCover(slug);
   const coverImagePath = `/projects/${slug}/cover.png`;
+
+  const groupSkillsByCategory = (skills: Skill[]): Record<string, Skill[]> => {
+    // Group skills by category
+    const grouped = skills
+      .filter((skill) => skill.category !== undefined)
+      .reduce<Record<string, Skill[]>>((acc, skill) => {
+        const category = skill.category as string;
+        (acc[category] = acc[category] || []).push(skill);
+        return acc;
+      }, {});
+
+    // Sort categories by the number of skills and get the top 2 categories
+    const topCategories = Object.keys(grouped)
+      .sort((a, b) => grouped[b].length - grouped[a].length)
+      .slice(0, 2);
+
+    // Create the final grouped object with only top 2 categories and 'Others'
+    return Object.keys(grouped).reduce<Record<string, Skill[]>>(
+      (acc, category) => {
+        if (topCategories.includes(category)) {
+          acc[category] = grouped[category];
+        } else {
+          acc["Others"] = [...(acc["Others"] || []), ...grouped[category]];
+        }
+        return acc;
+      },
+      {}
+    );
+  };
+
+  const groupedTechnologies = groupSkillsByCategory(projectTechnologies);
+  const groupedGeneralSkills = groupSkillsByCategory(projectGeneralSkills);
+  const groupedSoftSkills = groupSkillsByCategory(projectSoftSkills);
 
   /**
    * Gets images and videos from the file system.
@@ -131,11 +174,6 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const blog = getMarkdownFromFileSystem(
     `public/projects/${slug}/report.md`
   )?.content;
-
-  // redirect to not found page if the project is not valid
-  if (!project) {
-    notFound();
-  }
 
   return (
     <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
@@ -191,30 +229,39 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
         </div>
 
         {/* Technologies Section */}
-        <ProjectSkillSection
-          skills={projectTechnologies}
-          title="Technologies"
-        />
+        {projectTechnologies.length > 0 && (
+          <ProjectSkillSection
+            skillCategories={groupedTechnologies}
+            title="Technologies"
+          />
+        )}
 
         {/* Technical Skills Section */}
-        <ProjectSkillSection
-          skills={projectGeneralSkills}
-          title="Technical Skills"
-        />
+        {projectGeneralSkills.length > 0 && (
+          <ProjectSkillSection
+            skillCategories={groupedGeneralSkills}
+            title="Technical Skills"
+          />
+        )}
 
         {/* Soft Skills Section */}
-        <ProjectSkillSection skills={projectSoftSkills} title="Soft Skills" />
+        {projectSoftSkills.length > 0 && (
+          <ProjectSkillSection
+            skillCategories={groupedSoftSkills}
+            title="Soft Skills"
+          />
+        )}
 
         {/* Links Section */}
         <div className="text-center md:text-left">
           <HeadingThree title="Links" />
           <div
             className="
-        mt-6 flex 
-        flex-row 
-        justify-center md:justify-start items-center 
-        w-full 
-        gap-2"
+              mt-6 flex 
+              flex-row 
+              justify-center md:justify-start items-center 
+              w-full md:w-1/3
+              gap-2"
           >
             {/* GitHub Repo */}
             {project?.repoURL && (
