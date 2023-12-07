@@ -1,7 +1,9 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
-import FilterModal from "@/components/Filters/Modal/FIlterModal";
+import FilterModal, {
+  FilterCategory,
+} from "@/components/Filters/Modal/FIlterModal";
 import ClearAllFiltersButton from "@/components/Filters/Page/ClearAllFiltersButton";
 import OpenFilterModalButton from "@/components/Filters/Page/OpenFilterModalButton";
 import SearchInput from "@/components/Inputs/SearchInput";
@@ -55,8 +57,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
     blogs: BlogMetadata[]
   ): Record<string, BlogMetadata[]> => {
     return blogs.reduce<Record<string, BlogMetadata[]>>((grouped, blog) => {
-      (grouped[blog.category.toLowerCase()] =
-        grouped[blog.category.toLowerCase()] || []).push(blog);
+      (grouped[blog.category] = grouped[blog.category] || []).push(blog);
       return grouped;
     }, {});
   };
@@ -126,11 +127,11 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
     setIsFilterModalOpen(false);
   };
 
-  const filterCategories = [
+  const filterCategories: FilterCategory[] = [
     {
       name: "Category",
-      options: blogCategories,
       selectedValue: selectedCategory,
+      options: blogCategories,
     },
   ];
 
