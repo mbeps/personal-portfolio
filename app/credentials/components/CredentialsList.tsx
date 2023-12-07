@@ -10,7 +10,10 @@ import Fuse from "fuse.js";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import CredentialListSection from "./CredentialListSection";
-import FilterModal from "@/components/Filters/Modal/FIlterModal";
+import FilterModal, {
+  FilterCategory,
+} from "@/components/Filters/Modal/FIlterModal";
+import { Skill } from "@/types/skills";
 
 type CredentialsListListProps = {
   allCertificates: Certificate[];
@@ -29,13 +32,23 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
 
   const searchParams = useSearchParams();
-  const selectedIssuer = (searchParams.get("issuer") || "all").toLowerCase();
-  const selectedCategory = (
-    searchParams.get("category") || "all"
-  ).toLowerCase();
-  const searchTerm = (searchParams.get("search") || "").toLowerCase();
+  const selectedIssuer = decodeURIComponent(
+    (searchParams.get("issuer") || "all").toLowerCase()
+  );
+  const selectedCategory = decodeURIComponent(
+    (searchParams.get("category") || "all").toLowerCase()
+  );
+  const selectedSkillCategory = decodeURIComponent(
+    (searchParams.get("skill") || "all").toLowerCase()
+  );
+  const searchTerm = decodeURIComponent(
+    (searchParams.get("search") || "").toLowerCase()
+  );
   const showArchived =
-    (searchParams.get("archived") || "false").toLowerCase() === "true";
+    decodeURIComponent(
+      (searchParams.get("archived") || "false").toLowerCase()
+    ) === "true";
+
   const basePath = usePathname();
 
   const router = useRouter();
@@ -94,6 +107,15 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
       .filter((value, index, self) => self.indexOf(value) === index),
   ];
 
+  const skillCategories: string[] = [
+    "All",
+    ...allCertificates
+      .flatMap((certificate: Certificate) =>
+        certificate.skills.map((skill: Skill) => skill.category)
+      )
+      .filter((value, index, self) => value && self.indexOf(value) === index),
+  ];
+
   const updateSearchTerm = (newSearchTerm: string) => {
     router.push(
       generateUrl(
@@ -102,6 +124,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
           category: selectedCategory,
           search: newSearchTerm,
           archived: true,
+          skillCategory: selectedSkillCategory,
         },
         basePath
       )
@@ -109,12 +132,27 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
   };
 
   const filteredCertificates = searchedCertificates.filter(
-    (certificate) =>
-      (showArchived || !certificate.archived) &&
-      (selectedIssuer === "all" ||
-        certificate.issuer.toLowerCase() === selectedIssuer) &&
-      (selectedCategory === "all" ||
-        certificate.category.toLowerCase() === selectedCategory)
+    (certificate: Certificate) => {
+      const matchesIssuer =
+        selectedIssuer === "all" ||
+        certificate.issuer.toLowerCase() === selectedIssuer;
+      const matchesCategory =
+        selectedCategory === "all" ||
+        certificate.category.toLowerCase() === selectedCategory;
+      const matchesArchivedStatus = showArchived || !certificate.archived;
+      const matchesSkillCategory =
+        selectedSkillCategory === "all" ||
+        (certificate.skills || []).some(
+          (skill) => skill.category?.toLowerCase() === selectedSkillCategory
+        );
+
+      return (
+        matchesIssuer &&
+        matchesCategory &&
+        matchesArchivedStatus &&
+        matchesSkillCategory
+      );
+    }
   );
 
   const groupedCertificates = groupCertificatesByCategory(filteredCertificates);
@@ -127,6 +165,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
           category: "all",
           search: "",
           archived: false,
+          skillCategory: "all",
         },
         basePath
       )
@@ -137,9 +176,13 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     selectedIssuer.toLowerCase() !== "all" ||
     selectedCategory.toLowerCase() !== "all" ||
     searchTerm !== "" ||
+    selectedSkillCategory.toLowerCase() !== "all" ||
     showArchived;
 
-  const filterCategories = [
+  //! Name is used for URL params
+  //TODO take stuff inside searchParams.get
+  // Create a variable
+  const filterCategories: FilterCategory[] = [
     {
       name: "Issuer",
       options: certificateIssuers,
@@ -149,6 +192,11 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
       name: "Category",
       options: certificateCategories,
       selectedValue: selectedCategory,
+    },
+    {
+      name: "Skill",
+      options: skillCategories,
+      selectedValue: selectedSkillCategory,
     },
   ];
 

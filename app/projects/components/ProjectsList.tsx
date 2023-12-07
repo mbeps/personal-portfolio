@@ -31,6 +31,9 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   ).toLowerCase();
   const selectedType = (searchParams.get("type") || "All").toLowerCase();
   const searchTerm = (searchParams.get("search") || "").toLowerCase();
+  const selectedCategory = (
+    searchParams.get("category") || "all"
+  ).toLowerCase();
   const showArchived =
     (searchParams.get("archived") || "false").toLowerCase() === "true";
   const selectedSkillCategory = (
