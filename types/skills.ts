@@ -3,7 +3,7 @@
  */
 interface Skill {
   skill: string;
-  category?:
+  category:
     | "Programming Languages"
     | "Programming Paradigms"
     | "Front-End Web Development"

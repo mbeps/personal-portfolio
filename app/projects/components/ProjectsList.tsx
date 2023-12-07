@@ -33,6 +33,9 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const searchTerm = (searchParams.get("search") || "").toLowerCase();
   const showArchived =
     (searchParams.get("archived") || "false").toLowerCase() === "true";
+  const selectedSkillCategory = (
+    searchParams.get("category") || "All"
+  ).toLowerCase();
   const basePath = usePathname();
 
   const router = useRouter();
@@ -64,8 +67,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
       "skills.skill",
       "skills.category",
       "tags",
-      "technologies",
-    ], // Only search these properties
+    ],
     threshold: 0.3, // Lower threshold means more results
   };
 
@@ -143,6 +145,20 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     ),
   ];
 
+  const categories: string[] = [
+    "All",
+    ...Array.from(
+      new Set(
+        allProjects.flatMap(
+          (project: Project) =>
+            project.skills
+              ?.map((skill: Skill) => skill.category)
+              .filter(Boolean) || []
+        )
+      )
+    ),
+  ];
+
   /**
    * Updates the search term in the URL.
    * This is used when the user types in the search input.
@@ -158,6 +174,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
           language: selectedLanguage,
           search: newSearchTerm,
           archived: true,
+          category: selectedSkillCategory,
         },
         basePath
       )
@@ -182,11 +199,18 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
       selectedLanguage === "all" ||
       project.programmingLanguage.skill.toLowerCase() === selectedLanguage;
     const matchesArchivedStatus = showArchived || !project.archived;
+    const matchesSkillCategory =
+      selectedSkillCategory === "all" ||
+      project.skills.some(
+        (skill) => skill.category?.toLowerCase() === selectedSkillCategory
+      );
+
     return (
       matchesType &&
       matchesTechnology &&
       matchesLanguage &&
-      matchesArchivedStatus
+      matchesArchivedStatus &&
+      matchesSkillCategory
     );
   });
 
@@ -208,6 +232,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
           language: "all",
           search: "",
           archived: false,
+          category: "all",
         },
         basePath
       )
@@ -221,6 +246,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     selectedLanguage.toLowerCase() !== "all" ||
     selectedTechnology.toLowerCase() !== "all" ||
     searchTerm !== "";
+  selectedSkillCategory.toLowerCase() !== "all";
 
   const filterCategories: FilterCategory[] = [
     {
@@ -237,6 +263,11 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
       name: "Technology",
       selectedValue: selectedTechnology,
       options: technologies,
+    },
+    {
+      name: "Category",
+      selectedValue: selectedSkillCategory,
+      options: categories,
     },
   ];
 
