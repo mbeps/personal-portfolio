@@ -36,9 +36,11 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
   const router = useRouter();
 
   //^ URL Params Strings
-  const issuerParamName = "issuer".toLowerCase();
-  const blogCategoryParamName = "category".toLowerCase();
-  const skillCategoryParamName = "skill".toLowerCase();
+  const issuerParamName = "issuer";
+  const blogCategoryParamName = "category";
+  const skillCategoryParamName = "skill";
+  const archivedParamName = "archived";
+  const searchParamName = "search";
 
   //^ URL Params Reader
   const selectedIssuer = decodeURIComponent(
@@ -51,11 +53,11 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     (searchParams.get(skillCategoryParamName) || "all").toLowerCase()
   );
   const searchTerm = decodeURIComponent(
-    (searchParams.get("search") || "").toLowerCase()
+    (searchParams.get(searchParamName) || "").toLowerCase()
   );
   const showArchived =
     decodeURIComponent(
-      (searchParams.get("archived") || "false").toLowerCase()
+      (searchParams.get(archivedParamName) || "false").toLowerCase()
     ) === "true";
 
   //^ Modal Controls
@@ -129,11 +131,11 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     router.push(
       generateUrl(
         {
-          issuer: selectedIssuer,
-          category: selectedCategory,
-          search: newSearchTerm,
-          archived: true,
-          skillCategory: selectedSkillCategory,
+          [issuerParamName]: selectedIssuer,
+          [blogCategoryParamName]: selectedCategory,
+          [skillCategoryParamName]: selectedSkillCategory,
+          [searchParamName]: newSearchTerm,
+          [archivedParamName]: true,
         },
         basePath
       )
@@ -170,11 +172,11 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     router.push(
       generateUrl(
         {
-          issuer: "all",
-          category: "all",
-          skill: "all",
-          search: "",
-          archived: false,
+          [issuerParamName]: "all",
+          [blogCategoryParamName]: "all",
+          [skillCategoryParamName]: "all",
+          [searchParamName]: "",
+          [archivedParamName]: false,
         },
         basePath
       )

@@ -30,13 +30,14 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   const basePath = usePathname();
 
   //^ URL Params Strings
-  const blogCategoryParamName = "category".toLowerCase();
+  const blogCategoryParamName = "category";
+  const searchParamName = "search";
 
   //^ URL Params Reader
   const selectedCategory = (
     searchParams.get(blogCategoryParamName) || "all"
   ).toLowerCase();
-  const searchTerm = (searchParams.get("search") || "").toLowerCase();
+  const searchTerm = (searchParams.get(searchParamName) || "").toLowerCase();
 
   /**
    * Opens the modal to filter the projects.
@@ -109,10 +110,12 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
    * @param newSearchTerm (string) - new search term
    */
   const updateSearchTerm = (newSearchTerm: string) => {
-    // Update the URL parameter to reflect the new search term
     router.push(
       generateUrl(
-        { category: selectedCategory, search: newSearchTerm },
+        {
+          [blogCategoryParamName]: selectedCategory,
+          [searchParamName]: newSearchTerm,
+        },
         basePath
       )
     );
@@ -129,7 +132,12 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   const groupedBlogs = groupBlogsByType(filteredBlogs);
 
   const resetFilters = () => {
-    router.push(generateUrl({ category: "all", search: "" }, basePath));
+    router.push(
+      generateUrl(
+        { [blogCategoryParamName]: "all", [searchParamName]: "" },
+        basePath
+      )
+    );
   };
 
   const areFiltersApplied =

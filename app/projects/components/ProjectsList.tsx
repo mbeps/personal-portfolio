@@ -27,10 +27,12 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const router = useRouter();
 
   //^ URL Params Strings
-  const technologyParamName = "technology".toLowerCase();
-  const languageParamName = "language".toLowerCase();
-  const sectionParamName = "type".toLowerCase();
-  const skillCategoryParamName = "category".toLowerCase();
+  const technologyParamName = "technology";
+  const languageParamName = "language";
+  const sectionParamName = "type";
+  const skillCategoryParamName = "category";
+  const archivedParamName = "archived";
+  const searchParamName = "search";
 
   //^ URL Params Reader
   const selectedTechnology = (
@@ -39,15 +41,15 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const selectedLanguage = (
     searchParams.get(languageParamName) || "all"
   ).toLowerCase();
-  const selectedType = (
+  const selectedSection = (
     searchParams.get(sectionParamName) || "All"
   ).toLowerCase();
   const selectedSkillCategory = (
     searchParams.get(skillCategoryParamName) || "All"
   ).toLowerCase();
-  const searchTerm = (searchParams.get("search") || "").toLowerCase();
+  const searchTerm = (searchParams.get(searchParamName) || "").toLowerCase();
   const showArchived =
-    (searchParams.get("archived") || "false").toLowerCase() === "true";
+    (searchParams.get(archivedParamName) || "false").toLowerCase() === "true";
 
   //^ Modal Controls
   /**
@@ -178,16 +180,15 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
    * @param newSearchTerm (string): new search term
    */
   const updateSearchTerm = (newSearchTerm: string) => {
-    // Update the URL parameter to reflect the new search term
     router.push(
       generateUrl(
         {
-          type: selectedType,
-          technology: selectedTechnology,
-          language: selectedLanguage,
-          search: newSearchTerm,
-          archived: true,
-          category: selectedSkillCategory,
+          [sectionParamName]: selectedSection,
+          [technologyParamName]: selectedTechnology,
+          [languageParamName]: selectedLanguage,
+          [skillCategoryParamName]: selectedSkillCategory,
+          [searchParamName]: newSearchTerm,
+          [archivedParamName]: true,
         },
         basePath
       )
@@ -202,7 +203,8 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
    */
   const filteredProjects = searchedProjects.filter((project: Project) => {
     const matchesType =
-      selectedType === "all" || project.type.toLowerCase() === selectedType;
+      selectedSection === "all" ||
+      project.type.toLowerCase() === selectedSection;
     const matchesTechnology =
       selectedTechnology === "all" ||
       (project.skills || [])
@@ -240,12 +242,12 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     router.push(
       generateUrl(
         {
-          type: "all",
-          technology: "all",
-          language: "all",
-          search: "",
-          archived: false,
-          category: "all",
+          [sectionParamName]: "all",
+          [technologyParamName]: "all",
+          [languageParamName]: "all",
+          [skillCategoryParamName]: "all",
+          [searchParamName]: "",
+          [archivedParamName]: false,
         },
         basePath
       )
@@ -255,7 +257,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
    * Checks if any filters are applied.
    */
   const areFiltersApplied =
-    selectedType.toLowerCase() !== "all" ||
+    selectedSection.toLowerCase() !== "all" ||
     selectedLanguage.toLowerCase() !== "all" ||
     selectedTechnology.toLowerCase() !== "all" ||
     searchTerm !== "";
@@ -265,7 +267,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     {
       name: "Type",
       urlParam: sectionParamName,
-      selectedValue: selectedType,
+      selectedValue: selectedSection,
       options: projectTypes,
     },
     {
@@ -319,7 +321,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
         generateUrl={generateUrl}
         showArchived={showArchived}
         filterProps={{
-          type: selectedType,
+          type: selectedSection,
           technology: selectedTechnology,
           language: selectedLanguage,
           search: searchTerm,
