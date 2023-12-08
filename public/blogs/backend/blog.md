@@ -1,9 +1,13 @@
 ---
-title: "Exploring Backends: Custom vs Managed Solutions"
-subtitle: "An In-depth Analysis of Backend Development Approaches, Tools, and Security Considerations"
-category: "Web Development"
+title: "Embracing the Future of Software Development: A Comprehensive Guide to CI/CD"
+subtitle: "Mastering Continuous Integration and Continuous Delivery for Enhanced Software Delivery"
+category: "DevOps"
+skills:
+  - skill: "Node.js"
+    category: "Back-End Web Development"
+    isMainSkill: true
+    skillType: "hard"
 ---
-
 
 - [**The Backend: The Unsung Hero of Web Development and Software Engineering**](#the-backend-the-unsung-hero-of-web-development-and-software-engineering)
 	- [**What is a Backend?**](#what-is-a-backend)

@@ -2,6 +2,11 @@
 title: "Embracing the Future of Software Development: A Comprehensive Guide to CI/CD"
 subtitle: "Mastering Continuous Integration and Continuous Delivery for Enhanced Software Delivery"
 category: "DevOps"
+skills:
+  - skill: "Node.js"
+    category: "Back-End Web Development"
+    isMainSkill: true
+    skillType: "hard"
 ---
 
 - [**Introduction to CI/CD**](#introduction-to-cicd)

@@ -1212,6 +1212,13 @@ export const userAuthentication: Skill = {
   skillType: "general",
 };
 
+export const webDevelopment: Skill = {
+  skill: "Web Development",
+  category: "Other",
+  isMainSkill: false,
+  skillType: "general",
+};
+
 //^ Soft Skills
 
 export const communication: Skill = {
