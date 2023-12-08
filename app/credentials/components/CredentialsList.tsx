@@ -29,17 +29,26 @@ type CredentialsListListProps = {
 const CredentialsList: React.FC<CredentialsListListProps> = ({
   allCertificates,
 }) => {
+  //^ Hooks
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
-
   const searchParams = useSearchParams();
+  const basePath = usePathname();
+  const router = useRouter();
+
+  //^ URL Params Strings
+  const issuerParamName = "issuer".toLowerCase();
+  const blogCategoryParamName = "category".toLowerCase();
+  const skillCategoryParamName = "skill".toLowerCase();
+
+  //^ URL Params Reader
   const selectedIssuer = decodeURIComponent(
-    (searchParams.get("issuer") || "all").toLowerCase()
+    (searchParams.get(issuerParamName) || "all").toLowerCase()
   );
   const selectedCategory = decodeURIComponent(
-    (searchParams.get("category") || "all").toLowerCase()
+    (searchParams.get(blogCategoryParamName) || "all").toLowerCase()
   );
   const selectedSkillCategory = decodeURIComponent(
-    (searchParams.get("skill") || "all").toLowerCase()
+    (searchParams.get(skillCategoryParamName) || "all").toLowerCase()
   );
   const searchTerm = decodeURIComponent(
     (searchParams.get("search") || "").toLowerCase()
@@ -49,10 +58,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
       (searchParams.get("archived") || "false").toLowerCase()
     ) === "true";
 
-  const basePath = usePathname();
-
-  const router = useRouter();
-
+  //^ Modal Controls
   /**
    * Opens the modal to filter the projects.
    */
@@ -68,6 +74,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     setIsFilterModalOpen(false);
   };
 
+  //^ Search Settings
   const searchOptions = {
     keys: ["name", "issuer", "skills", "category"], // Only search these properties
     threshold: 0.3, // Lower threshold means more results
@@ -75,6 +82,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
 
   const fuse = new Fuse(allCertificates, searchOptions);
 
+  //^ Group By Category
   const groupCertificatesByCategory = (
     certificates: Certificate[]
   ): Record<string, Certificate[]> => {
@@ -92,7 +100,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     ? fuse.search(searchTerm).map((result) => result.item)
     : allCertificates;
 
-  //^ List of options
+  //^ Filter Options List
   const certificateCategories: string[] = [
     "All",
     ...allCertificates
@@ -116,6 +124,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
       .filter((value, index, self) => value && self.indexOf(value) === index),
   ];
 
+  //^ Filtering Logic
   const updateSearchTerm = (newSearchTerm: string) => {
     router.push(
       generateUrl(
@@ -163,9 +172,9 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
         {
           issuer: "all",
           category: "all",
+          skill: "all",
           search: "",
           archived: false,
-          skillCategory: "all",
         },
         basePath
       )
@@ -175,26 +184,26 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
   const areFiltersApplied =
     selectedIssuer.toLowerCase() !== "all" ||
     selectedCategory.toLowerCase() !== "all" ||
-    searchTerm !== "" ||
     selectedSkillCategory.toLowerCase() !== "all" ||
+    searchTerm !== "" ||
     showArchived;
 
-  //! Name is used for URL params
-  //TODO take stuff inside searchParams.get
-  // Create a variable
   const filterCategories: FilterCategory[] = [
     {
       name: "Issuer",
+      urlParam: issuerParamName,
       options: certificateIssuers,
       selectedValue: selectedIssuer,
     },
     {
       name: "Category",
+      urlParam: blogCategoryParamName,
       options: certificateCategories,
       selectedValue: selectedCategory,
     },
     {
       name: "Skill",
+      urlParam: skillCategoryParamName,
       options: skillCategories,
       selectedValue: selectedSkillCategory,
     },

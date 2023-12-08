@@ -20,29 +20,36 @@ type ProjectsListProps = {
 };
 
 const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
+  //^ Hooks
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
-
   const searchParams = useSearchParams();
-  const selectedTechnology = (
-    searchParams.get("technology") || "all"
-  ).toLowerCase();
-  const selectedLanguage = (
-    searchParams.get("language") || "all"
-  ).toLowerCase();
-  const selectedType = (searchParams.get("type") || "All").toLowerCase();
-  const searchTerm = (searchParams.get("search") || "").toLowerCase();
-  const selectedCategory = (
-    searchParams.get("category") || "all"
-  ).toLowerCase();
-  const showArchived =
-    (searchParams.get("archived") || "false").toLowerCase() === "true";
-  const selectedSkillCategory = (
-    searchParams.get("category") || "All"
-  ).toLowerCase();
   const basePath = usePathname();
-
   const router = useRouter();
 
+  //^ URL Params Strings
+  const technologyParamName = "technology".toLowerCase();
+  const languageParamName = "language".toLowerCase();
+  const sectionParamName = "type".toLowerCase();
+  const skillCategoryParamName = "category".toLowerCase();
+
+  //^ URL Params Reader
+  const selectedTechnology = (
+    searchParams.get(technologyParamName) || "all"
+  ).toLowerCase();
+  const selectedLanguage = (
+    searchParams.get(languageParamName) || "all"
+  ).toLowerCase();
+  const selectedType = (
+    searchParams.get(sectionParamName) || "All"
+  ).toLowerCase();
+  const selectedSkillCategory = (
+    searchParams.get(skillCategoryParamName) || "All"
+  ).toLowerCase();
+  const searchTerm = (searchParams.get("search") || "").toLowerCase();
+  const showArchived =
+    (searchParams.get("archived") || "false").toLowerCase() === "true";
+
+  //^ Modal Controls
   /**
    * Opens the modal to filter the projects.
    */
@@ -58,6 +65,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     setIsFilterModalOpen(false);
   };
 
+  //^ Search Settings
   /**
    * Fuse.js options for fuzzy search.
    * These are the only properties that are searched.
@@ -82,6 +90,14 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const fuse = new Fuse(allProjects, searchOptions);
 
   /**
+   * List of projects that match the search term.
+   */
+  const searchedProjects = searchTerm
+    ? fuse.search(searchTerm).map((result) => result.item)
+    : allProjects;
+
+  //^ Group By Type
+  /**
    * Groups the projects by type.
    * Each project type is a key in the object.
    * @param projects (Project[]): list of projects to be grouped by type
@@ -96,14 +112,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     }, {});
   };
 
-  /**
-   * List of projects that match the search term.
-   */
-  const searchedProjects = searchTerm
-    ? fuse.search(searchTerm).map((result) => result.item)
-    : allProjects;
-
-  //^ List of options
+  //^ Filter Options List
   /**
    * List of project types to be displayed in the filter.
    * Adds 'All' as the first option.
@@ -162,6 +171,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     ),
   ];
 
+  //^ Filtering Logic
   /**
    * Updates the search term in the URL.
    * This is used when the user types in the search input.
@@ -254,21 +264,25 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const filterCategories: FilterCategory[] = [
     {
       name: "Type",
+      urlParam: sectionParamName,
       selectedValue: selectedType,
       options: projectTypes,
     },
     {
       name: "Language",
+      urlParam: languageParamName,
       selectedValue: selectedLanguage,
       options: programmingLanguages,
     },
     {
       name: "Technology",
+      urlParam: technologyParamName,
       selectedValue: selectedTechnology,
       options: technologies,
     },
     {
       name: "Category",
+      urlParam: skillCategoryParamName,
       selectedValue: selectedSkillCategory,
       options: categories,
     },

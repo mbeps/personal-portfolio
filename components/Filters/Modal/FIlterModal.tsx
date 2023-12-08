@@ -12,6 +12,7 @@ import Grid from "@/components/Atoms/Grid";
 
 export interface FilterCategory {
   name: string;
+  urlParam: string;
   selectedValue: string;
   options: string[];
 }
@@ -86,7 +87,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
                     href={generateUrl(
                       {
                         ...filterParams,
-                        [category.name.toLowerCase()]: option,
+                        [category.urlParam]: option,
                         archived: true,
                       },
                       basePath

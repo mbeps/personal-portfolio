@@ -23,30 +23,58 @@ interface BlogListProps {
  * @returns (JSX.Element): page with all blogs
  */
 export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
+  //^ Hooks
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
-
   const router = useRouter();
   const searchParams = useSearchParams();
+  const basePath = usePathname();
 
+  //^ URL Params Strings
+  const blogCategoryParamName = "category".toLowerCase();
+
+  //^ URL Params Reader
   const selectedCategory = (
-    searchParams.get("category") || "all"
+    searchParams.get(blogCategoryParamName) || "all"
   ).toLowerCase();
   const searchTerm = (searchParams.get("search") || "").toLowerCase();
 
-  const basePath = usePathname();
+  /**
+   * Opens the modal to filter the projects.
+   */
+  const handleOpenFilterModal = () => {
+    setIsFilterModalOpen(true);
+  };
 
+  /**
+   * Closes the modals.
+   * These modals are for filtering and displaying more projects.
+   */
+  const handleCloseModals = () => {
+    setIsFilterModalOpen(false);
+  };
+
+  //^ Search Settings
   /**
    * Fuse.js options for fuzzy search.
    * These are the only properties that are searched.
    * These are the same ones from the `BlogMetadata` type.
    */
   const searchOptions = {
-    keys: ["title", "subtitle", "category"],
+    keys: ["title", "subtitle", "category", "skills.skill", "skills.category"],
     threshold: 0.3,
   };
 
   const fuse = new Fuse(blogs, searchOptions);
 
+  /**
+   * Searches the blogs using the search term.
+   * Only searches the title, subtitle, and category.
+   */
+  const searchedBlogs = searchTerm
+    ? fuse.search(searchTerm).map((result) => result.item)
+    : blogs;
+
+  //^ Group By Category
   /**
    * Groups the blogs by category.
    * This is used to display the blogs in sections.
@@ -62,14 +90,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
     }, {});
   };
 
-  /**
-   * Searches the blogs using the search term.
-   * Only searches the title, subtitle, and category.
-   */
-  const searchedBlogs = searchTerm
-    ? fuse.search(searchTerm).map((result) => result.item)
-    : blogs;
-
+  //^ Filter Options List
   /**
    * List of all blog categories.
    * These are used as options for filtering.
@@ -81,6 +102,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
       .filter((value, index, self) => self.indexOf(value) === index),
   ];
 
+  //^ Filtering Logic
   /**
    * Updates the search term in the URL.
    * This updates the state which changes the blogs being displayed.
@@ -112,24 +134,11 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
 
   const areFiltersApplied =
     selectedCategory.toLowerCase() !== "all" || searchTerm !== "";
-  /**
-   * Opens the modal to filter the projects.
-   */
-  const handleOpenFilterModal = () => {
-    setIsFilterModalOpen(true);
-  };
-
-  /**
-   * Closes the modals.
-   * These modals are for filtering and displaying more projects.
-   */
-  const handleCloseModals = () => {
-    setIsFilterModalOpen(false);
-  };
 
   const filterCategories: FilterCategory[] = [
     {
-      name: "Category",
+      name: "Section",
+      urlParam: blogCategoryParamName,
       selectedValue: selectedCategory,
       options: blogCategories,
     },
