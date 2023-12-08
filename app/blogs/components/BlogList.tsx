@@ -12,6 +12,7 @@ import Fuse from "fuse.js";
 import { usePathname, useRouter, useSearchParams } from "next/navigation"; // Add this import for Next.js router
 import { useState } from "react";
 import BlogListSection from "./BlogListSection";
+import { Skill } from "@/types/skills";
 
 interface BlogListProps {
   blogs: BlogMetadata[];
@@ -30,12 +31,16 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   const basePath = usePathname();
 
   //^ URL Params Strings
-  const blogCategoryParamName = "category";
+  const blogSectionParamName = "category";
+  const skillCategoryParamName = "skill";
   const searchParamName = "search";
 
   //^ URL Params Reader
-  const selectedCategory = (
-    searchParams.get(blogCategoryParamName) || "all"
+  const selectedBlogSection = (
+    searchParams.get(blogSectionParamName) || "all"
+  ).toLowerCase();
+  const selectedSkillCategory = (
+    searchParams.get(skillCategoryParamName) || "all"
   ).toLowerCase();
   const searchTerm = (searchParams.get(searchParamName) || "").toLowerCase();
 
@@ -103,6 +108,15 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
       .filter((value, index, self) => self.indexOf(value) === index),
   ];
 
+  const skillCategories: string[] = [
+    "All",
+    ...blogs
+      .flatMap((blog: BlogMetadata) =>
+        blog.skills.map((skill: Skill) => skill.category)
+      )
+      .filter((value, index, self) => value && self.indexOf(value) === index),
+  ];
+
   //^ Filtering Logic
   /**
    * Updates the search term in the URL.
@@ -113,7 +127,8 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
     router.push(
       generateUrl(
         {
-          [blogCategoryParamName]: selectedCategory,
+          [blogSectionParamName]: selectedBlogSection,
+          [skillCategoryParamName]: selectedSkillCategory,
           [searchParamName]: newSearchTerm,
         },
         basePath
@@ -124,31 +139,54 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   /**
    * Filters the blogs by category selected by the user.
    */
-  const filteredBlogs = searchedBlogs.filter(
-    (blog) =>
-      selectedCategory === "all" ||
-      blog.category.toLowerCase() === selectedCategory
-  );
+  const filteredBlogs = searchedBlogs.filter((blog) => {
+    const matchesBlogSection =
+      selectedBlogSection === "all" ||
+      blog.category.toLowerCase() === selectedBlogSection;
+    const matchesSkillCategory =
+      selectedSkillCategory === "all" ||
+      (blog.skills || []).some(
+        (skill) => skill.category.toLowerCase() === selectedSkillCategory
+      );
+
+    // Additional conditions can be added here if needed
+    // e.g., matchesArchivedStatus
+
+    return matchesBlogSection && matchesSkillCategory;
+  });
+
   const groupedBlogs = groupBlogsByType(filteredBlogs);
 
   const resetFilters = () => {
     router.push(
       generateUrl(
-        { [blogCategoryParamName]: "all", [searchParamName]: "" },
+        {
+          [blogSectionParamName]: "all",
+          [skillCategoryParamName]: "all",
+          [searchParamName]: "",
+        },
         basePath
       )
     );
   };
 
   const areFiltersApplied =
-    selectedCategory.toLowerCase() !== "all" || searchTerm !== "";
+    selectedBlogSection.toLowerCase() !== "all" ||
+    selectedSkillCategory.toLowerCase() !== "all" ||
+    searchTerm !== "";
 
   const filterCategories: FilterCategory[] = [
     {
       name: "Section",
-      urlParam: blogCategoryParamName,
-      selectedValue: selectedCategory,
+      urlParam: blogSectionParamName,
+      selectedValue: selectedBlogSection,
       options: blogCategories,
+    },
+    {
+      name: "Skill",
+      urlParam: skillCategoryParamName,
+      selectedValue: selectedSkillCategory,
+      options: skillCategories,
     },
   ];
 
