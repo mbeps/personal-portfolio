@@ -58,21 +58,24 @@ export const generateStaticParams = async () => {
  */
 const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
   const slug = params.slug;
-  const blog = getMarkdownFromFileSystem(`public/blogs/${slug}/blog.md`);
+  const blogMetadata = getBlogMetadataBySlug(slug, blogs);
+  const blogContent = getMarkdownFromFileSystem(
+    `public/blogs/${slug}/blog.md`
+  )?.content;
 
-  if (!blog) {
+  if (!blogContent || !blogMetadata) {
     notFound();
   }
 
   return (
     <div>
       <div className="my-12 text-center">
-        <HeadingTwo title={blog.data.title} />
+        <HeadingTwo title={blogMetadata?.title} />
         <p className="text-neutral-600 dark:text-neutral-400">
-          {blog.data.subtitle}
+          {blogMetadata?.subtitle}
         </p>
       </div>
-      <Reader content={blog.content} />
+      <Reader content={blogContent} />
     </div>
   );
 };
