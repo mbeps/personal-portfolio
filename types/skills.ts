@@ -26,10 +26,13 @@ interface Skill {
     | "Linting"
     | "Version Control Systems"
     | "Platform Development"
-    | "Other";
+    | "Other"
+    | "Soft Skills";
   skills?: Skill[];
   isMainSkill: boolean;
   skillType: "hard" | "general" | "soft";
 }
 
 export type { Skill };
+
+// TODO: create a skill category interface
