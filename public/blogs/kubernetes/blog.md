@@ -1,9 +1,3 @@
----
-title: "Kubernetes Guide: Mastering Container Orchestration"
-subtitle: "An Overview of Components, Tools, and Best Practices"
-category: "DevOps"
----
-
 - [**Kubernetes: An Introduction and Overview**](#kubernetes-an-introduction-and-overview)
 	- [**Benefits of Using Kubernetes**](#benefits-of-using-kubernetes)
 	- [**Key Features of Kubernetes**](#key-features-of-kubernetes)

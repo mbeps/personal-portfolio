@@ -1609,7 +1609,7 @@ const cloudComputingCertificates: Certificate[] = [
   },
 ];
 
-export { cloudComputingCertificates as cloudComputing };
+export { cloudComputingCertificates };
 
 const allCertificates = [
   ...programmingLanguagesCertificates,

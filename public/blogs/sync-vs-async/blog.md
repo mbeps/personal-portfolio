@@ -1,9 +1,3 @@
----
-title: "Sync vs Async: Deep Dive into Programming Models"
-subtitle: "Understanding and Optimizing Synchronous and Asynchronous Programming"
-category: "Software Engineering"
----
-
 - [**Overview**](#overview)
 	- [**Synchronous (Sync)**](#synchronous-sync)
 	- [**Asynchronous (Async)**](#asynchronous-async)

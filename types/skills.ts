@@ -19,6 +19,7 @@ interface Skill {
     | "Databases"
     | "Containerization"
     | "APIs"
+    | "SDKs"
     | "Web Sockets"
     | "Artificial Intelligence"
     | "Mathematics"

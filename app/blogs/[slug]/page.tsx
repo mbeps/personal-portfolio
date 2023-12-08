@@ -1,10 +1,10 @@
-import getBlogMetadata from "@/actions/getBlogMetadata";
 import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
 import Reader from "@/components/Reader/Reader";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import { notFound } from "next/navigation";
 import type { Metadata, ResolvingMetadata } from "next";
 import { getBlogMetadataBySlug } from "@/actions/getBlogMetadataBySlug";
+import blogs from "@/constants/blogs";
 
 type BlogPageProps = {
   params: { slug: string };
@@ -23,7 +23,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const slug = params.slug;
-  const allBlogs = getBlogMetadata();
+  const allBlogs = blogs;
 
   // Assume getBlogMetadataById function fetches metadata by slug
   const blog = getBlogMetadataBySlug(slug, allBlogs);
@@ -43,10 +43,10 @@ export async function generateMetadata(
  */
 export const generateStaticParams = async () => {
   // get all blogs with metadata
-  const blogs = getBlogMetadata();
+  const allBlogs = blogs;
 
   // Map through all blogs and return an array of objects with the slug for each blog
-  return blogs.map((blog) => ({
+  return allBlogs.map((blog) => ({
     slug: blog.slug,
   }));
 };

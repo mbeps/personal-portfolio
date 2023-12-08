@@ -112,6 +112,13 @@ export const rest: Skill = {
   skillType: "hard",
 };
 
+export const sdks: Skill = {
+  skill: "SDK",
+  category: "SDKs",
+  isMainSkill: true,
+  skillType: "hard",
+};
+
 export const graphQL: Skill = {
   skill: "GraphQL",
   category: "APIs",
@@ -1047,6 +1054,13 @@ export const databaseManagementSystems: Skill = {
 export const indexing: Skill = {
   skill: "Indexing",
   category: "Databases",
+  isMainSkill: false,
+  skillType: "hard",
+};
+
+export const cloudComputing: Skill = {
+  skill: "Cloud Computing",
+  category: "Cloud Computing",
   isMainSkill: false,
   skillType: "hard",
 };
