@@ -31,6 +31,9 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const languageParamName = "language";
   const sectionParamName = "type";
   const skillCategoryParamName = "category";
+  const generalSkillParamName = "general";
+  const softSkillParamName = "soft";
+
   const archivedParamName = "archived";
   const searchParamName = "search";
 
@@ -47,6 +50,13 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const selectedSkillCategory = (
     searchParams.get(skillCategoryParamName) || "All"
   ).toLowerCase();
+  const selectedGeneralSkill = (
+    searchParams.get(generalSkillParamName) || "all"
+  ).toLowerCase();
+  const selectedSoftSkill = (
+    searchParams.get(softSkillParamName) || "all"
+  ).toLowerCase();
+
   const searchTerm = (searchParams.get(searchParamName) || "").toLowerCase();
   const showArchived =
     (searchParams.get(archivedParamName) || "false").toLowerCase() === "true";
@@ -151,14 +161,14 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     "All",
     ...Array.from(
       new Set(
-        allProjects.flatMap(
-          (project: Project) =>
-            project.skills?.map((tech: Skill) => tech.skill) || []
+        allProjects.flatMap((project: Project) =>
+          (project.skills || [])
+            .filter((skill: Skill) => skill.skillType === "hard")
+            .map((skill: Skill) => skill.skill)
         )
       )
     ),
   ];
-
   const categories: string[] = [
     "All",
     ...Array.from(
@@ -168,6 +178,32 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
             project.skills
               ?.map((skill: Skill) => skill.category)
               .filter(Boolean) || []
+        )
+      )
+    ),
+  ];
+
+  const generalSkills: string[] = [
+    "All",
+    ...Array.from(
+      new Set(
+        allProjects.flatMap((project: Project) =>
+          (project.skills || [])
+            .filter((skill: Skill) => skill.skillType === "general")
+            .map((skill: Skill) => skill.skill)
+        )
+      )
+    ),
+  ];
+
+  const softSkills: string[] = [
+    "All",
+    ...Array.from(
+      new Set(
+        allProjects.flatMap((project: Project) =>
+          (project.skills || [])
+            .filter((skill: Skill) => skill.skillType === "soft")
+            .map((skill: Skill) => skill.skill)
         )
       )
     ),
@@ -187,6 +223,8 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
           [technologyParamName]: selectedTechnology,
           [languageParamName]: selectedLanguage,
           [skillCategoryParamName]: selectedSkillCategory,
+          [generalSkillParamName]: selectedGeneralSkill,
+          [softSkillParamName]: selectedSoftSkill,
           [searchParamName]: newSearchTerm,
           [archivedParamName]: true,
         },
@@ -219,13 +257,29 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
       project.skills.some(
         (skill) => skill.category?.toLowerCase() === selectedSkillCategory
       );
+    const matchesGeneralSkill =
+      selectedGeneralSkill === "all" ||
+      project.skills.some(
+        (skill) =>
+          skill.skillType === "general" &&
+          skill.skill.toLowerCase() === selectedGeneralSkill
+      );
+    const matchesSoftSkill =
+      selectedSoftSkill === "all" ||
+      project.skills.some(
+        (skill) =>
+          skill.skillType === "soft" &&
+          skill.skill.toLowerCase() === selectedSoftSkill
+      );
 
     return (
       matchesType &&
       matchesTechnology &&
       matchesLanguage &&
       matchesArchivedStatus &&
-      matchesSkillCategory
+      matchesSkillCategory &&
+      matchesGeneralSkill &&
+      matchesSoftSkill
     );
   });
 
@@ -246,6 +300,8 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
           [technologyParamName]: "all",
           [languageParamName]: "all",
           [skillCategoryParamName]: "all",
+          [generalSkillParamName]: "all",
+          [softSkillParamName]: "all",
           [searchParamName]: "",
           [archivedParamName]: false,
         },
@@ -260,18 +316,20 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     selectedSection.toLowerCase() !== "all" ||
     selectedLanguage.toLowerCase() !== "all" ||
     selectedTechnology.toLowerCase() !== "all" ||
+    selectedSkillCategory.toLowerCase() !== "all" ||
+    selectedGeneralSkill.toLowerCase() !== "all" ||
+    selectedSoftSkill.toLowerCase() !== "all" ||
     searchTerm !== "";
-  selectedSkillCategory.toLowerCase() !== "all";
 
   const filterCategories: FilterCategory[] = [
     {
-      name: "Type",
+      name: "Section",
       urlParam: sectionParamName,
       selectedValue: selectedSection,
       options: projectTypes,
     },
     {
-      name: "Language",
+      name: "Programming Language",
       urlParam: languageParamName,
       selectedValue: selectedLanguage,
       options: programmingLanguages,
@@ -287,6 +345,18 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
       urlParam: skillCategoryParamName,
       selectedValue: selectedSkillCategory,
       options: categories,
+    },
+    {
+      name: "General Skill",
+      urlParam: generalSkillParamName,
+      selectedValue: selectedGeneralSkill,
+      options: generalSkills,
+    },
+    {
+      name: "Soft Skill",
+      urlParam: softSkillParamName,
+      selectedValue: selectedSoftSkill,
+      options: softSkills,
     },
   ];
 
