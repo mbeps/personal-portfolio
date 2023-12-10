@@ -55,6 +55,7 @@ export const python: Skill = {
   isMainSkill: true,
   skillType: "hard",
   category: "Programming Languages",
+  slug: "python",
 };
 
 export const javascript: Skill = {
@@ -76,6 +77,7 @@ export const javascript: Skill = {
   isMainSkill: true,
   skillType: "hard",
   category: "Programming Languages",
+  slug: "python",
 };
 
 export const typescript: Skill = {
@@ -97,6 +99,7 @@ export const typescript: Skill = {
   isMainSkill: true,
   skillType: "hard",
   category: "Programming Languages",
+  slug: "typescript",
 };
 
 export const java: Skill = {
@@ -105,6 +108,7 @@ export const java: Skill = {
   isMainSkill: true,
   skillType: "hard",
   category: "Programming Languages",
+  slug: "java",
 };
 
 export const gameMakerLanguage: Skill = {
@@ -112,6 +116,7 @@ export const gameMakerLanguage: Skill = {
   isMainSkill: false,
   skillType: "hard",
   category: "Programming Languages",
+  slug: "game-maker-language",
 };
 
 export const shellScript: Skill = {
@@ -119,6 +124,7 @@ export const shellScript: Skill = {
   isMainSkill: false,
   skillType: "hard",
   category: "Programming Languages",
+  slug: "shell",
 };
 
 export const rLanguage: Skill = {
@@ -126,6 +132,7 @@ export const rLanguage: Skill = {
   isMainSkill: false,
   skillType: "hard",
   category: "Programming Languages",
+  slug: "r",
 };
 
 /**
