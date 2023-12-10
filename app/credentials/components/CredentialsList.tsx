@@ -37,8 +37,10 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
 
   //^ URL Params Strings
   const issuerParamName = "issuer";
-  const credentialCategoryParamName = "category";
-  const skillCategoryParamName = "skill";
+  const credentialSectionParamName = "section";
+  const skillCategoryParamName = "category";
+  const technicalSkillParamName = "technical";
+  const generalSkillParamName = "general";
   const archivedParamName = "archived";
   const searchParamName = "search";
 
@@ -47,10 +49,16 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     (searchParams.get(issuerParamName) || "all").toLowerCase()
   );
   const selectedCategory = decodeURIComponent(
-    (searchParams.get(credentialCategoryParamName) || "all").toLowerCase()
+    (searchParams.get(credentialSectionParamName) || "all").toLowerCase()
   );
   const selectedSkillCategory = decodeURIComponent(
     (searchParams.get(skillCategoryParamName) || "all").toLowerCase()
+  );
+  const selectedTechnicalSkill = decodeURIComponent(
+    (searchParams.get(technicalSkillParamName) || "all").toLowerCase()
+  );
+  const selectedGeneralSkill = decodeURIComponent(
+    (searchParams.get(generalSkillParamName) || "all").toLowerCase()
   );
   const searchTerm = decodeURIComponent(
     (searchParams.get(searchParamName) || "").toLowerCase()
@@ -78,7 +86,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
 
   //^ Search Settings
   const searchOptions = {
-    keys: ["name", "issuer", "skills", "category"], // Only search these properties
+    keys: ["name", "issuer", "category", "skills.category", "skills.skill"], // Only search these properties
     threshold: 0.3, // Lower threshold means more results
   };
 
@@ -126,14 +134,28 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
       .filter((value, index, self) => value && self.indexOf(value) === index),
   ];
 
+  const hardSkills: string[] = [
+    "All",
+    ...Array.from(
+      new Set(
+        allCertificates.flatMap((certificate: Certificate) =>
+          certificate.skills
+            .filter((skill: Skill) => skill.skillType === "hard")
+            .map((skill: Skill) => skill.skill)
+        )
+      )
+    ),
+  ];
+
   //^ Filtering Logic
   const updateSearchTerm = (newSearchTerm: string) => {
     router.push(
       generateUrl(
         {
           [issuerParamName]: selectedIssuer,
-          [credentialCategoryParamName]: selectedCategory,
+          [credentialSectionParamName]: selectedCategory,
           [skillCategoryParamName]: selectedSkillCategory,
+          [technicalSkillParamName]: selectedTechnicalSkill,
           [searchParamName]: newSearchTerm,
           [archivedParamName]: true,
         },
@@ -156,12 +178,20 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
         (certificate.skills || []).some(
           (skill) => skill.category?.toLowerCase() === selectedSkillCategory
         );
+      const matchesHardSkill =
+        selectedTechnicalSkill === "all" ||
+        (certificate.skills || []).some(
+          (skill) =>
+            skill.skill.toLowerCase() === selectedTechnicalSkill &&
+            skill.skillType === "hard"
+        );
 
       return (
         matchesIssuer &&
         matchesCategory &&
         matchesArchivedStatus &&
-        matchesSkillCategory
+        matchesSkillCategory &&
+        matchesHardSkill
       );
     }
   );
@@ -173,7 +203,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
       generateUrl(
         {
           [issuerParamName]: "all",
-          [credentialCategoryParamName]: "all",
+          [credentialSectionParamName]: "all",
           [skillCategoryParamName]: "all",
           [searchParamName]: "",
           [archivedParamName]: false,
@@ -187,6 +217,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     selectedIssuer.toLowerCase() !== "all" ||
     selectedCategory.toLowerCase() !== "all" ||
     selectedSkillCategory.toLowerCase() !== "all" ||
+    selectedTechnicalSkill.toLowerCase() !== "all" ||
     searchTerm !== "" ||
     showArchived;
 
@@ -199,7 +230,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     },
     {
       name: "Category",
-      urlParam: credentialCategoryParamName,
+      urlParam: credentialSectionParamName,
       options: certificateCategories,
       selectedValue: selectedCategory,
     },
@@ -208,6 +239,12 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
       urlParam: skillCategoryParamName,
       options: skillCategories,
       selectedValue: selectedSkillCategory,
+    },
+    {
+      name: "Technical Skill",
+      urlParam: technicalSkillParamName,
+      options: hardSkills,
+      selectedValue: selectedTechnicalSkill,
     },
   ];
 
@@ -248,8 +285,6 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
         }}
         basePath={basePath}
       />
-
-      {/* Toggle to display archived projects */}
 
       {/* List of projects */}
       <CredentialListSection groupedCertificates={groupedCertificates} />
