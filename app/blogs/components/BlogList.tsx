@@ -34,6 +34,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   const blogSectionParamName = "category";
   const skillCategoryParamName = "skill";
   const technicalSkillParamName = "technical";
+  const generalSkillParamName = "general";
   const searchParamName = "search";
 
   //^ URL Params Reader
@@ -45,6 +46,9 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   ).toLowerCase();
   const selectedTechnicalSkill = (
     searchParams.get(technicalSkillParamName) || "all"
+  ).toLowerCase();
+  const selectedGeneralSkill = (
+    searchParams.get(generalSkillParamName) || "all"
   ).toLowerCase();
   const searchTerm = (searchParams.get(searchParamName) || "").toLowerCase();
 
@@ -134,6 +138,19 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
     ),
   ];
 
+  const generalSkills: string[] = [
+    "All",
+    ...Array.from(
+      new Set(
+        blogs.flatMap((blog: BlogMetadata) =>
+          (blog.skills || [])
+            .filter((skill: Skill) => skill.skillType === "general")
+            .map((skill: Skill) => skill.skill)
+        )
+      )
+    ),
+  ];
+
   //^ Filtering Logic
   /**
    * Updates the search term in the URL.
@@ -146,6 +163,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
         {
           [blogSectionParamName]: selectedBlogSection,
           [skillCategoryParamName]: selectedSkillCategory,
+          [technicalSkillParamName]: selectedTechnicalSkill,
           [searchParamName]: newSearchTerm,
         },
         basePath
@@ -172,8 +190,20 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
           skill.skill.toLowerCase() === selectedTechnicalSkill &&
           skill.skillType === "hard"
       );
+    const matchesGeneralSkill =
+      selectedGeneralSkill === "all" ||
+      (blog.skills || []).some(
+        (skill) =>
+          skill.skill.toLowerCase() === selectedGeneralSkill &&
+          skill.skillType === "general"
+      );
 
-    return matchesBlogSection && matchesSkillCategory && matchesHardSkill;
+    return (
+      matchesBlogSection &&
+      matchesSkillCategory &&
+      matchesHardSkill &&
+      matchesGeneralSkill
+    );
   });
 
   const groupedBlogs = groupBlogsByType(filteredBlogs);
@@ -185,6 +215,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
           [blogSectionParamName]: "all",
           [skillCategoryParamName]: "all",
           [technicalSkillParamName]: "all",
+          [generalSkillParamName]: "all",
           [searchParamName]: "",
         },
         basePath
@@ -196,6 +227,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
     selectedBlogSection.toLowerCase() !== "all" ||
     selectedSkillCategory.toLowerCase() !== "all" ||
     selectedTechnicalSkill.toLowerCase() !== "all" ||
+    selectedGeneralSkill.toLowerCase() !== "all" ||
     searchTerm !== "";
 
   const filterCategories: FilterCategory[] = [
@@ -216,6 +248,12 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
       urlParam: technicalSkillParamName,
       selectedValue: selectedTechnicalSkill,
       options: hardSkills,
+    },
+    {
+      name: "General Skill",
+      urlParam: generalSkillParamName,
+      selectedValue: selectedGeneralSkill,
+      options: generalSkills,
     },
   ];
 
