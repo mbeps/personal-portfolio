@@ -41,6 +41,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
   const skillCategoryParamName = "category";
   const technicalSkillParamName = "technical";
   const generalSkillParamName = "general";
+  const softSkillParamName = "soft";
   const archivedParamName = "archived";
   const searchParamName = "search";
 
@@ -59,6 +60,9 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
   );
   const selectedGeneralSkill = decodeURIComponent(
     (searchParams.get(generalSkillParamName) || "all").toLowerCase()
+  );
+  const selectedSoftSkill = decodeURIComponent(
+    (searchParams.get(softSkillParamName) || "all").toLowerCase()
   );
   const searchTerm = decodeURIComponent(
     (searchParams.get(searchParamName) || "").toLowerCase()
@@ -160,6 +164,19 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     ),
   ];
 
+  const softSkills: string[] = [
+    "All",
+    ...Array.from(
+      new Set(
+        allCertificates.flatMap((certificate: Certificate) =>
+          certificate.skills
+            .filter((skill: Skill) => skill.skillType === "soft")
+            .map((skill: Skill) => skill.skill)
+        )
+      )
+    ),
+  ];
+
   //^ Filtering Logic
   const updateSearchTerm = (newSearchTerm: string) => {
     router.push(
@@ -169,6 +186,9 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
           [credentialSectionParamName]: selectedCategory,
           [skillCategoryParamName]: selectedSkillCategory,
           [technicalSkillParamName]: selectedTechnicalSkill,
+          [generalSkillParamName]: selectedGeneralSkill,
+          [softSkillParamName]: selectedSoftSkill,
+
           [searchParamName]: newSearchTerm,
           [archivedParamName]: true,
         },
@@ -205,6 +225,13 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
             skill.skill.toLowerCase() === selectedGeneralSkill &&
             skill.skillType === "general"
         );
+      const matchesSoftSkill =
+        selectedSoftSkill === "all" ||
+        (certificate.skills || []).some(
+          (skill) =>
+            skill.skill.toLowerCase() === selectedSoftSkill &&
+            skill.skillType === "soft"
+        );
 
       return (
         matchesIssuer &&
@@ -212,7 +239,8 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
         matchesArchivedStatus &&
         matchesSkillCategory &&
         matchesHardSkill &&
-        matchesGeneralSkill
+        matchesGeneralSkill &&
+        matchesSoftSkill
       );
     }
   );
@@ -227,6 +255,8 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
           [credentialSectionParamName]: "all",
           [skillCategoryParamName]: "all",
           [technicalSkillParamName]: "all",
+          [generalSkillParamName]: "all",
+          [softSkillParamName]: "all",
           [searchParamName]: "",
           [archivedParamName]: false,
         },
@@ -241,6 +271,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     selectedSkillCategory.toLowerCase() !== "all" ||
     selectedTechnicalSkill.toLowerCase() !== "all" ||
     selectedGeneralSkill.toLowerCase() !== "all" ||
+    selectedSoftSkill.toLowerCase() !== "all" ||
     searchTerm !== "" ||
     showArchived;
 
@@ -274,6 +305,12 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
       urlParam: generalSkillParamName,
       options: generalSkills,
       selectedValue: selectedGeneralSkill,
+    },
+    {
+      name: "Soft Skill",
+      urlParam: softSkillParamName,
+      options: softSkills,
+      selectedValue: selectedSoftSkill,
     },
   ];
 
