@@ -37,7 +37,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
 
   //^ URL Params Strings
   const issuerParamName = "issuer";
-  const blogCategoryParamName = "category";
+  const credentialCategoryParamName = "category";
   const skillCategoryParamName = "skill";
   const archivedParamName = "archived";
   const searchParamName = "search";
@@ -47,7 +47,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     (searchParams.get(issuerParamName) || "all").toLowerCase()
   );
   const selectedCategory = decodeURIComponent(
-    (searchParams.get(blogCategoryParamName) || "all").toLowerCase()
+    (searchParams.get(credentialCategoryParamName) || "all").toLowerCase()
   );
   const selectedSkillCategory = decodeURIComponent(
     (searchParams.get(skillCategoryParamName) || "all").toLowerCase()
@@ -132,7 +132,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
       generateUrl(
         {
           [issuerParamName]: selectedIssuer,
-          [blogCategoryParamName]: selectedCategory,
+          [credentialCategoryParamName]: selectedCategory,
           [skillCategoryParamName]: selectedSkillCategory,
           [searchParamName]: newSearchTerm,
           [archivedParamName]: true,
@@ -173,7 +173,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
       generateUrl(
         {
           [issuerParamName]: "all",
-          [blogCategoryParamName]: "all",
+          [credentialCategoryParamName]: "all",
           [skillCategoryParamName]: "all",
           [searchParamName]: "",
           [archivedParamName]: false,
@@ -199,12 +199,12 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     },
     {
       name: "Category",
-      urlParam: blogCategoryParamName,
+      urlParam: credentialCategoryParamName,
       options: certificateCategories,
       selectedValue: selectedCategory,
     },
     {
-      name: "Skill",
+      name: "Skill Category",
       urlParam: skillCategoryParamName,
       options: skillCategories,
       selectedValue: selectedSkillCategory,
