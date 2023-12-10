@@ -2,6 +2,7 @@
  * Interface for representing a skill.
  */
 interface Skill {
+  slug: string;
   skill: string;
   category:
     | "Programming Languages"
@@ -24,7 +25,7 @@ interface Skill {
     | "Artificial Intelligence"
     | "Mathematics"
     | "Game Development"
-    | "Linting"
+    | "Code Quality"
     | "Version Control Systems"
     | "Platform Development"
     | "Other"
