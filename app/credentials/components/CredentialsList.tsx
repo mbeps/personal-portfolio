@@ -147,6 +147,19 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     ),
   ];
 
+  const generalSkills: string[] = [
+    "All",
+    ...Array.from(
+      new Set(
+        allCertificates.flatMap((certificate: Certificate) =>
+          certificate.skills
+            .filter((skill: Skill) => skill.skillType === "general")
+            .map((skill: Skill) => skill.skill)
+        )
+      )
+    ),
+  ];
+
   //^ Filtering Logic
   const updateSearchTerm = (newSearchTerm: string) => {
     router.push(
@@ -185,13 +198,21 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
             skill.skill.toLowerCase() === selectedTechnicalSkill &&
             skill.skillType === "hard"
         );
+      const matchesGeneralSkill =
+        selectedGeneralSkill === "all" ||
+        (certificate.skills || []).some(
+          (skill) =>
+            skill.skill.toLowerCase() === selectedGeneralSkill &&
+            skill.skillType === "general"
+        );
 
       return (
         matchesIssuer &&
         matchesCategory &&
         matchesArchivedStatus &&
         matchesSkillCategory &&
-        matchesHardSkill
+        matchesHardSkill &&
+        matchesGeneralSkill
       );
     }
   );
@@ -205,6 +226,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
           [issuerParamName]: "all",
           [credentialSectionParamName]: "all",
           [skillCategoryParamName]: "all",
+          [technicalSkillParamName]: "all",
           [searchParamName]: "",
           [archivedParamName]: false,
         },
@@ -218,6 +240,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     selectedCategory.toLowerCase() !== "all" ||
     selectedSkillCategory.toLowerCase() !== "all" ||
     selectedTechnicalSkill.toLowerCase() !== "all" ||
+    selectedGeneralSkill.toLowerCase() !== "all" ||
     searchTerm !== "" ||
     showArchived;
 
@@ -245,6 +268,12 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
       urlParam: technicalSkillParamName,
       options: hardSkills,
       selectedValue: selectedTechnicalSkill,
+    },
+    {
+      name: "General Skill",
+      urlParam: generalSkillParamName,
+      options: generalSkills,
+      selectedValue: selectedGeneralSkill,
     },
   ];
 
