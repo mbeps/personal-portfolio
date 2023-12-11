@@ -15,29 +15,22 @@ import ProjectsSection from "./components/ProjectsSection";
 import blogs from "@/constants/blogs";
 import BlogsSection from "./components/BlogsSection";
 import { languages } from "@/constants/languages";
+import { ResolvingMetadata, Metadata } from "next";
 
 const allSkills = [...hardSkills, ...generalSkills, ...softSkills];
 
-// export async function generateMetadata(
-//   { params, searchParams }: ProjectPageProps,
-//   parent: ResolvingMetadata
-// ): Promise<Metadata> {
-//   // Read route params
-//   const slug = params.slug;
+export async function generateMetadata(
+  { params, searchParams }: ProjectPageProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const slug = params.slug;
+  const skill = getSkillBySlug(slug, [...allSkills, ...languages]);
 
-//   // Assume getProjectBySlug function fetches project by slug
-//   const skill = getSkillBySlug(slug, allSkills);
-
-//   // Create metadata based on the project details
-//   return {
-//     title: `Maruf Bepary - Projects: ${skill?.skill}`,
-//     description: `${skill?.skill} at ${skill?.category}`,
-//   };
-// }
-
-// export const generateStaticParams = async () => {
-//   return allSkills.map((skill) => ({ slug: skill.slug }));
-// };
+  return {
+    title: `Maruf Bepary - Skills: ${skill?.skill}`,
+    description: skill?.skill,
+  };
+}
 
 interface ProjectPageProps {
   params: { slug: string };
