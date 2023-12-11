@@ -1,5 +1,4 @@
 import CredentialListSection from "@/app/credentials/components/CredentialListSection";
-import HeadingTwo from "@/components/Text/HeadingTwo";
 import Certificate from "@/types/certificates";
 import { Skill } from "@/types/skills";
 
@@ -29,6 +28,10 @@ const CredentialsSection: React.FC<ProjectPageProps> = ({
     certificates,
     skill.skill
   );
+
+  if (!filteredCertificates || filteredCertificates.length === 0) {
+    return;
+  }
 
   const groupCertificatesByCategory = (
     certificates: Certificate[]

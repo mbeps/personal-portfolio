@@ -26,6 +26,10 @@ const ProjectsSection: React.FC<ProjectPageProps> = ({ projects, skill }) => {
 
   const filteredProjects = filterProjectsBySkill(projects, skill.skill);
 
+  if (!filteredProjects || filteredProjects.length === 0) {
+    return;
+  }
+
   const groupProjectsByCurrentSkill = (
     projects: Project[]
   ): Record<string, Project[]> => {

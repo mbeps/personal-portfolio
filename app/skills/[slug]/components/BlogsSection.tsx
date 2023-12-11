@@ -23,6 +23,10 @@ const BlogsSection: React.FC<BlogsPageProps> = ({ blogs, skill }) => {
 
   const filteredBlogs = filterBlogsBySkill(blogs, skill.skill);
 
+  if (!filteredBlogs || filteredBlogs.length === 0) {
+    return;
+  }
+
   const groupBlogsByCategory = (
     blogs: BlogMetadata[]
   ): Record<string, BlogMetadata[]> => {

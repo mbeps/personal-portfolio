@@ -14,6 +14,7 @@ import CredentialsSection from "./components/CredentialsSection";
 import ProjectsSection from "./components/ProjectsSection";
 import blogs from "@/constants/blogs";
 import BlogsSection from "./components/BlogsSection";
+import { languages } from "@/constants/languages";
 
 const allSkills = [...hardSkills, ...generalSkills, ...softSkills];
 
@@ -45,7 +46,7 @@ interface ProjectPageProps {
 
 const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
   const slug = params.slug;
-  const skill = getSkillBySlug(slug, allSkills);
+  const skill = getSkillBySlug(slug, [...allSkills, ...languages]);
   const blogMetadata = blogs;
 
   if (!skill) {
