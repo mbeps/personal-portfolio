@@ -77,7 +77,7 @@ export const javascript: Skill = {
   isMainSkill: true,
   skillType: "hard",
   category: "Programming Languages",
-  slug: "python",
+  slug: "javascript",
 };
 
 export const typescript: Skill = {

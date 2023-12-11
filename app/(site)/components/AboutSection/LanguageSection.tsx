@@ -41,7 +41,7 @@ const LanguageSection: React.FC = () => {
         {languages.map((languageData, idx) => (
           <LanguageTagWithModal
             key={idx}
-            language={languageData.skill}
+            language={languageData}
             skills={getSkillsByLanguage(languageData.skill)}
             handleOpenModal={handleOpenModal}
             handleCloseModal={handleCloseModal}
@@ -56,7 +56,7 @@ const LanguageSection: React.FC = () => {
 export default LanguageSection;
 
 interface LanguageTagWithModalProps {
-  language: string;
+  language: Skill;
   skills: Skill[];
   repository?: string;
   handleOpenModal: () => void;
@@ -95,7 +95,7 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
   return (
     <>
       <Tag onClick={shouldOpenModal ? handleOpenModal : undefined}>
-        {language}
+        {language.skill}
       </Tag>
       {shouldOpenModal && (
         <LanguageModal
@@ -103,7 +103,6 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
           onClose={handleCloseModal}
           language={language}
           skills={skills}
-          repository={repository}
         />
       )}
     </>

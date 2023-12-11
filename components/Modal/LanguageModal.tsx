@@ -7,13 +7,14 @@ import Modal from "./Modal";
 import organizeSkillsByCategory from "@/actions/organizeSkillsByCategory";
 import Link from "next/link";
 import { Skill } from "@/types/skills";
+import Project from "@/types/projects";
+import allProjects from "@/constants/projects";
 
 interface ProjectModalProps {
   isOpen?: boolean; // whether the modal is open or not
   onClose: () => void; // function to close the modal
-  language: string;
+  language: Skill;
   skills: Skill[];
-  repository?: string;
 }
 
 /**
@@ -32,16 +33,25 @@ interface ProjectModalProps {
 const LanguageModal: React.FC<ProjectModalProps> = ({
   skills,
   language,
-  repository,
   isOpen,
   onClose,
 }) => {
   const [groupedBy, setGroupedBy] = useState("category");
 
   const skillsByCategory = organizeSkillsByCategory(skills);
+  const projects = allProjects;
+
+  function isSkillAssociatedWithProject(
+    skill: Skill,
+    projects: Project[]
+  ): boolean {
+    return projects.some(
+      (project) => project.programmingLanguage.slug === skill.slug
+    );
+  }
 
   return (
-    <Modal title={language} isOpen={isOpen} onClose={onClose}>
+    <Modal title={language.skill} isOpen={isOpen} onClose={onClose}>
       <div className="flex mt-4">
         <div className="flex-grow mr-2 mt-2.5 text-right text-neutral-700 dark:text-neutral-300">
           Group by:
@@ -73,7 +83,7 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
         ))
       )}
 
-      {repository && (
+      {isSkillAssociatedWithProject(language, projects) && (
         <div
           className="
           flex flex-wrap flex-col 
@@ -82,12 +92,12 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
         >
           <HeadingThree title="Projects" />
 
-          <Link href={repository}>
+          <Link href={`/projects?archived=true&language=${language.skill}`}>
             <div className="w-full">
               <Button
                 variant="ghost"
                 className="w-full"
-              >{`${language} Projects`}</Button>
+              >{`${language.skill} Projects`}</Button>
             </div>
           </Link>
         </div>
