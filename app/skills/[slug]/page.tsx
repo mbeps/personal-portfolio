@@ -14,6 +14,8 @@ import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import React from "react";
 import CredentialsSection from "./components/CredentialsSection";
+import updateProjectImages from "@/actions/updateProjectImages";
+import ProjectsSection from "./components/ProjectsSection";
 
 const allSkills = [...hardSkills, ...generalSkills, ...softSkills];
 
@@ -52,10 +54,12 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
   }
 
   const certificates = updateCredentialImages(allCertificates);
+  const projects = updateProjectImages(allProjects);
 
   return (
     <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
       <HeadingOne title={skill.skill} />
+      <ProjectsSection projects={projects} skill={skill} />
       <CredentialsSection certificates={certificates} skill={skill} />
     </div>
   );
