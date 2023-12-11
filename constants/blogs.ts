@@ -1,29 +1,26 @@
 import { BlogMetadata } from "@/types/blog";
+
+import { javascript, typescript } from "./languages";
 import {
-  algorithms,
-  apis,
-  cloudComputing,
-  containerization,
-  continuousDelivery,
+  webDevelopment,
+  devOps,
   continuousIntegration,
+  continuousDelivery,
+  containerization,
+  cloudComputing,
+  infrastructureAsCode,
+  machineLearning,
+  algorithms,
   databaseManagementSystems,
   databases,
-  devOps,
-  docker,
-  graphQL,
-  infrastructureAsCode,
-  kubernetes,
-  machineLearning,
-  noSql,
-  projectManagement,
-  rest,
-  sdks,
   sql,
-  testing,
+  apis,
   userAuthentication,
-  webDevelopment,
-} from "./skills";
-import { javascript, typescript } from "./languages";
+  testing,
+  noSql,
+} from "./skills/generalSkills";
+import { docker, kubernetes, rest, graphQL, sdks } from "./skills/hardSkills";
+import { projectManagement } from "./skills/softSkills";
 
 const blogs: BlogMetadata[] = [
   {
