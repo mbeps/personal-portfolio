@@ -14,6 +14,8 @@ import isSkillAssociatedWithCertificate from "@/actions/skills/isSkillAssociated
 import Certificate from "@/types/certificates";
 import { BlogMetadata } from "@/types/blog";
 import allCertificates from "@/constants/certificates";
+import isSkillAssociatedWithBlogs from "@/actions/skills/isSkillAssociatedWithBlogs";
+import blogs from "@/constants/blogs";
 
 interface ProjectModalProps {
   isOpen?: boolean; // whether the modal is open or not
@@ -46,6 +48,7 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
   const skillsByCategory = organizeSkillsByCategory(skills);
   const projects = allProjects;
   const certificates = allCertificates;
+  const allBlogs = blogs;
 
   return (
     <Modal title={language.skill} isOpen={isOpen} onClose={onClose}>
@@ -119,6 +122,30 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
                 variant="ghost"
                 className="w-full"
               >{`${language.skill} Certificates`}</Button>
+            </div>
+          </Link>
+        </div>
+      )}
+
+      {isSkillAssociatedWithBlogs(language, allBlogs) && (
+        <div
+          className="
+            flex flex-wrap flex-col 
+            text-center md:text-left 
+            justify-start z-10 mt-5 space-y-2"
+        >
+          <HeadingThree title="Blogs" />
+
+          <Link
+            href={`
+            /blogs?technical=${language.skill}
+            `}
+          >
+            <div className="w-full">
+              <Button
+                variant="ghost"
+                className="w-full"
+              >{`${language.skill} Blogs`}</Button>
             </div>
           </Link>
         </div>
