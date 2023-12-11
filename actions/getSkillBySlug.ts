@@ -1,6 +1,6 @@
 import { Skill } from "@/types/skills";
 
-export default function findSkillBySlug(
+export default function getSkillBySlug(
   slug: string,
   skillsArray: Skill[]
 ): Skill | undefined {
