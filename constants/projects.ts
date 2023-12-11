@@ -1,15 +1,10 @@
 import Project from "@/types/projects";
 import {
   auth0,
-  automation,
   axios,
   chakraUI,
   clerkAuth,
   cloudinary,
-  continuousDeployment,
-  continuousIntegration,
-  databases,
-  devOps,
   django,
   docker,
   firebase,
@@ -53,11 +48,9 @@ import {
   supabase,
   tRPC,
   tailwindCSS,
-  testing,
-  userAuthentication,
   zod,
   zustand,
-} from "./skills";
+} from "@/constants/skills/hardSkills";
 import {
   gameMakerLanguage,
   java,
@@ -65,6 +58,16 @@ import {
   shellScript,
   typescript,
 } from "./languages";
+import {
+  devOps,
+  continuousIntegration,
+  continuousDeployment,
+  userAuthentication,
+  databases,
+  automation,
+  testing,
+} from "./skills/generalSkills";
+import { problemSolving } from "./skills/softSkills";
 
 /**
  * Array of web development projects.
@@ -92,6 +95,7 @@ const webdevProjects: Project[] = [
       recoil,
       docker,
       gitHubActions,
+      problemSolving,
     ],
     type: "Full-Stack Web Dev",
     tags: [

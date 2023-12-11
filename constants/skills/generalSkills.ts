@@ -1,0 +1,348 @@
+import { Skill } from "@/types/skills";
+
+export const continuousIntegration: Skill = {
+  skill: "Continuous Integration",
+  category: "CI/CD",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "continuous-integration",
+};
+
+export const continuousDelivery: Skill = {
+  skill: "Continuous Delivery",
+  category: "CI/CD",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "continuous-delivery",
+};
+
+export const continuousDeployment: Skill = {
+  skill: "Continuous Deployment",
+  category: "CI/CD",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "continuous-deployment",
+};
+
+export const devOps: Skill = {
+  skill: "DevOps",
+  category: "Other",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "devops",
+};
+
+export const linting: Skill = {
+  skill: "Linting",
+  category: "Code Quality",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "linting",
+};
+
+export const black: Skill = {
+  skill: "Black",
+  category: "Code Quality",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "",
+};
+
+export const oop: Skill = {
+  skill: "Object Oriented Programming",
+  category: "Programming Paradigms",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "object-oriented-programming",
+};
+
+export const functionalProgramming: Skill = {
+  skill: "Functional Programming",
+  category: "Programming Paradigms",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "functional-programming",
+};
+
+export const algorithms: Skill = {
+  skill: "Algorithms",
+  category: "Other",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "algorithm",
+};
+
+export const dataStructures: Skill = {
+  skill: "Data Structures",
+  category: "Other",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "data-structures",
+};
+
+export const androidDevelopment: Skill = {
+  skill: "Android Development",
+  category: "Platform Development",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "android-development",
+};
+
+export const iosDevelopment: Skill = {
+  skill: "iOS Development",
+  category: "Platform Development",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "ios-development",
+};
+
+export const windowsDevelopment: Skill = {
+  skill: "Windows Development",
+  category: "Platform Development",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "windows-development",
+};
+
+export const macDevelopment: Skill = {
+  skill: "Mac Development",
+  category: "Platform Development",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "macos-development",
+};
+
+export const linuxDevelopment: Skill = {
+  skill: "Linux Development",
+  category: "Platform Development",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "",
+};
+
+export const machineLearning: Skill = {
+  skill: "Machine Learning",
+  category: "Machine Learning",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "linux-development",
+};
+
+export const deepLearning: Skill = {
+  skill: "Deep Learning",
+  category: "Machine Learning",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "deep-learning",
+};
+
+export const artificialIntelligence: Skill = {
+  skill: "Artificial Intelligence",
+  category: "Artificial Intelligence",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "",
+};
+
+export const dataScience: Skill = {
+  skill: "Data Science",
+  category: "Machine Learning",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "data-science",
+};
+
+export const hyperparameters: Skill = {
+  skill: "Hyperparameters",
+  category: "Machine Learning",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "hyperparameters",
+};
+
+export const boosting: Skill = {
+  skill: "Boosting",
+  isMainSkill: false,
+  skillType: "general",
+  category: "Machine Learning",
+  slug: "boosting",
+};
+
+export const dataVisualisation: Skill = {
+  skill: "Data Visualisation",
+  category: "Other",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "data-visualisation",
+};
+
+export const neuralNetworks: Skill = {
+  skill: "Neural Networks",
+  category: "Machine Learning",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "neural-networks",
+};
+
+export const apis: Skill = {
+  skill: "APIs",
+  category: "APIs",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "apis",
+};
+
+export const databases: Skill = {
+  skill: "Databases",
+  category: "Databases",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "databases",
+};
+
+export const webSockets: Skill = {
+  skill: "Web Sockets",
+  category: "Web Sockets",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "web-sockets",
+};
+
+export const sql: Skill = {
+  skill: "SQL",
+  category: "Databases",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "sql",
+};
+
+export const noSql: Skill = {
+  skill: "NoSQL",
+  category: "Databases",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "no-sql",
+};
+
+export const testing: Skill = {
+  skill: "Testing",
+  category: "Testing",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "testing",
+};
+
+export const containerization: Skill = {
+  skill: "Containerization",
+  category: "Containerization",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "containerization",
+};
+
+export const infrastructureAsCode: Skill = {
+  skill: "Infrastructure as Code",
+  category: "Infrastructure as Code",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "infrastructure-as-code",
+};
+
+export const automation: Skill = {
+  skill: "Automation",
+  category: "Other",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "automation",
+};
+
+export const databaseManagementSystems: Skill = {
+  skill: "Database Management Systems",
+  category: "Databases",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "database-management-systems",
+};
+
+export const indexing: Skill = {
+  skill: "Indexing",
+  category: "Databases",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "database-indexing",
+};
+
+export const cloudComputing: Skill = {
+  skill: "Cloud Computing",
+  category: "Cloud Computing",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "cloud-computing",
+};
+
+export const designPatterns: Skill = {
+  skill: "Design Patterns",
+  category: "Code Quality",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "design-patterns",
+};
+
+export const userAuthentication: Skill = {
+  skill: "User Authentication",
+  category: "Back-End Web Development",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "user-authentication",
+};
+
+export const webDevelopment: Skill = {
+  skill: "Web Development",
+  category: "Other",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "web-development",
+};
+
+const generalSkills = [
+  continuousIntegration,
+  continuousDelivery,
+  continuousDeployment,
+  devOps,
+  linting,
+  black,
+  oop,
+  functionalProgramming,
+  algorithms,
+  dataStructures,
+  androidDevelopment,
+  iosDevelopment,
+  windowsDevelopment,
+  macDevelopment,
+  linuxDevelopment,
+  machineLearning,
+  deepLearning,
+  artificialIntelligence,
+  dataScience,
+  hyperparameters,
+  boosting,
+  dataVisualisation,
+  neuralNetworks,
+  apis,
+  databases,
+  webSockets,
+  sql,
+  noSql,
+  testing,
+  containerization,
+  infrastructureAsCode,
+  automation,
+  databaseManagementSystems,
+  indexing,
+  cloudComputing,
+  designPatterns,
+  userAuthentication,
+  webDevelopment,
+];
+
+export default generalSkills;
