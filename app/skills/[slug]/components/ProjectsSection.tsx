@@ -1,6 +1,8 @@
 import ProjectsListSection from "@/app/projects/components/ProjectListSection";
+import Button from "@/components/Atoms/Button";
 import Project from "@/types/projects";
 import { Skill } from "@/types/skills";
+import Link from "next/link";
 
 import React from "react";
 
@@ -41,6 +43,10 @@ const ProjectsSection: React.FC<ProjectPageProps> = ({ projects, skill }) => {
   return (
     <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
       <ProjectsListSection groupedProjects={groupedProjects} />
+
+      <Link href="/projects" className="flex justify-center mt-10">
+        <Button variant="outlined">View All Projects</Button>
+      </Link>
     </div>
   );
 };

@@ -1,6 +1,8 @@
 import BlogListSection from "@/app/blogs/components/BlogListSection";
+import Button from "@/components/Atoms/Button";
 import { BlogMetadata } from "@/types/blog";
 import { Skill } from "@/types/skills";
+import Link from "next/link";
 
 import React from "react";
 
@@ -38,6 +40,10 @@ const BlogsSection: React.FC<BlogsPageProps> = ({ blogs, skill }) => {
   return (
     <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
       <BlogListSection groupedBlogs={groupedBlogs} />
+
+      <Link href="/blogs" className="flex justify-center mt-10">
+        <Button variant="outlined">View All Blogs</Button>
+      </Link>
     </div>
   );
 };

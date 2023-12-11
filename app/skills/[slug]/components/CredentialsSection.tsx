@@ -1,6 +1,8 @@
 import CredentialListSection from "@/app/credentials/components/CredentialListSection";
+import Button from "@/components/Atoms/Button";
 import Certificate from "@/types/certificates";
 import { Skill } from "@/types/skills";
+import Link from "next/link";
 
 import React from "react";
 
@@ -44,6 +46,10 @@ const CredentialsSection: React.FC<ProjectPageProps> = ({
   return (
     <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
       <CredentialListSection groupedCertificates={groupedCertificates} />
+
+      <Link href="/credentials" className="flex justify-center mt-10">
+        <Button variant="outlined">View All Credentials</Button>
+      </Link>
     </div>
   );
 };
