@@ -9,6 +9,7 @@ import Link from "next/link";
 import { Skill } from "@/types/skills";
 import Project from "@/types/projects";
 import allProjects from "@/constants/projects";
+import isSkillAssociatedWithProject from "@/actions/skills/isSkillAssociatedWithProject";
 
 interface ProjectModalProps {
   isOpen?: boolean; // whether the modal is open or not
@@ -40,15 +41,6 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
 
   const skillsByCategory = organizeSkillsByCategory(skills);
   const projects = allProjects;
-
-  function isSkillAssociatedWithProject(
-    skill: Skill,
-    projects: Project[]
-  ): boolean {
-    return projects.some(
-      (project) => project.programmingLanguage.slug === skill.slug
-    );
-  }
 
   return (
     <Modal title={language.skill} isOpen={isOpen} onClose={onClose}>
