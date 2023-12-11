@@ -13,6 +13,7 @@ import Certificate from "@/types/certificates";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import React from "react";
+import CredentialsSection from "./components/CredentialsSection";
 
 const allSkills = [...hardSkills, ...generalSkills, ...softSkills];
 
@@ -44,8 +45,7 @@ interface ProjectPageProps {
 
 const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
   const slug = params.slug;
-  const skills = allSkills;
-  const skill = getSkillBySlug(slug, skills);
+  const skill = getSkillBySlug(slug, allSkills);
 
   if (!skill) {
     notFound();
@@ -53,42 +53,10 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
 
   const certificates = updateCredentialImages(allCertificates);
 
-  // Function to filter certificates by skill
-  const filterCertificatesBySkill = (
-    certificates: Certificate[],
-    selectedSkill: string
-  ): Certificate[] => {
-    return certificates.filter((certificate) =>
-      certificate.skills.some(
-        (s) => s.skill.toLowerCase() === selectedSkill.toLowerCase()
-      )
-    );
-  };
-
-  const filteredCertificates = filterCertificatesBySkill(
-    certificates,
-    skill.skill
-  );
-
-  const groupCertificatesByCategory = (
-    certificates: Certificate[]
-  ): Record<string, Certificate[]> => {
-    return certificates.reduce<Record<string, Certificate[]>>(
-      (grouped, certificate) => {
-        (grouped[certificate.category] =
-          grouped[certificate.category] || []).push(certificate);
-        return grouped;
-      },
-      {}
-    );
-  };
-
-  const groupedCertificates = groupCertificatesByCategory(filteredCertificates);
-
   return (
     <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
       <HeadingOne title={skill.skill} />
-      <CredentialListSection groupedCertificates={groupedCertificates} />
+      <CredentialsSection certificates={certificates} skill={skill} />
     </div>
   );
 };
