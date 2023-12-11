@@ -5,6 +5,10 @@ import { notFound } from "next/navigation";
 import type { Metadata, ResolvingMetadata } from "next";
 import { getBlogMetadataBySlug } from "@/actions/getBlogMetadataBySlug";
 import blogs from "@/constants/blogs";
+import { Skill } from "@/types/skills";
+import HeadingThree from "@/components/Text/HeadingThree";
+import Tag from "@/components/Atoms/Tag";
+import SkillTableSection from "@/components/Skills/SkillTableSection";
 
 type BlogPageProps = {
   params: { slug: string };
@@ -67,6 +71,53 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
     notFound();
   }
 
+  const blogTechnologies = blogMetadata?.skills.filter(
+    (skill) => skill.skillType === "hard"
+  );
+
+  const blogGeneralSkills = blogMetadata?.skills.filter(
+    (skill) => skill.skillType === "general"
+  );
+
+  const blogSoftSkills = blogMetadata?.skills.filter(
+    (skill) => skill.skillType === "soft"
+  );
+
+  const groupBlogSkillsByCategory = (
+    skills: Skill[]
+  ): Record<string, Skill[]> => {
+    // Group skills by category
+    const grouped = skills
+      .filter((skill) => skill.category !== undefined)
+      .reduce<Record<string, Skill[]>>((acc, skill) => {
+        const category = skill.category as string;
+        (acc[category] = acc[category] || []).push(skill);
+        return acc;
+      }, {});
+
+    // Sort categories by the number of skills and get the top 2 categories
+    const topCategories = Object.keys(grouped)
+      .sort((a, b) => grouped[b].length - grouped[a].length)
+      .slice(0, 2);
+
+    // Create the final grouped object with only top 2 categories and 'Others'
+    return Object.keys(grouped).reduce<Record<string, Skill[]>>(
+      (acc, category) => {
+        if (topCategories.includes(category)) {
+          acc[category] = grouped[category];
+        } else {
+          acc["Others"] = [...(acc["Others"] || []), ...grouped[category]];
+        }
+        return acc;
+      },
+      {}
+    );
+  };
+
+  const groupedTechnologies = groupBlogSkillsByCategory(blogTechnologies);
+  const groupedGeneralSkills = groupBlogSkillsByCategory(blogGeneralSkills);
+  const groupedSoftSkills = groupBlogSkillsByCategory(blogSoftSkills);
+
   return (
     <div>
       <div className="my-12 text-center">
@@ -75,7 +126,34 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
           {blogMetadata?.subtitle}
         </p>
       </div>
+
       <Reader content={blogContent} />
+
+      <div className="mt-4">
+        {/* Technologies Section */}
+        {blogTechnologies.length > 0 && (
+          <SkillTableSection
+            skillCategories={groupedTechnologies}
+            title="Technologies"
+          />
+        )}
+
+        {/* Technical Skills Section */}
+        {blogGeneralSkills.length > 0 && (
+          <SkillTableSection
+            skillCategories={groupedGeneralSkills}
+            title="Technical Skills"
+          />
+        )}
+
+        {/* Soft Skills Section */}
+        {blogSoftSkills.length > 0 && (
+          <SkillTableSection
+            skillCategories={groupedSoftSkills}
+            title="Soft Skills"
+          />
+        )}
+      </div>
     </div>
   );
 };

@@ -4,12 +4,12 @@ import HeadingThree from "@/components/Text/HeadingThree";
 import { Skill } from "@/types/skills";
 import React from "react";
 
-interface ProjectSkillSectionProps {
+interface SkillTableSectionProps {
   skillCategories: Record<string, Skill[]>;
   title: string;
 }
 
-export const ProjectSkillSection: React.FC<ProjectSkillSectionProps> = ({
+export const SkillTableSection: React.FC<SkillTableSectionProps> = ({
   skillCategories,
   title,
 }) => {
@@ -35,4 +35,4 @@ export const ProjectSkillSection: React.FC<ProjectSkillSectionProps> = ({
   );
 };
 
-export default ProjectSkillSection;
+export default SkillTableSection;

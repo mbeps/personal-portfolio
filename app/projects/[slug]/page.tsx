@@ -8,7 +8,9 @@ import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
 import getMediaFromFileSystem from "@/actions/getMediaFromFileSystem";
 import hasProjectCover from "@/actions/hasProjectCover";
 import Button from "@/components/Atoms/Button";
+import SkillTableSection from "@/components/Skills/SkillTableSection";
 import allProjects from "@/constants/projects";
+import { Skill } from "@/types/skills";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,9 +18,6 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
-import { ProjectSkillSection } from "./components/ProjectSkillSection";
-import Project from "@/types/projects";
-import { Skill } from "@/types/skills";
 
 /**
  * Metadata object for the dynamic project page.
@@ -230,7 +229,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
 
         {/* Technologies Section */}
         {projectTechnologies.length > 0 && (
-          <ProjectSkillSection
+          <SkillTableSection
             skillCategories={groupedTechnologies}
             title="Technologies"
           />
@@ -238,7 +237,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
 
         {/* Technical Skills Section */}
         {projectGeneralSkills.length > 0 && (
-          <ProjectSkillSection
+          <SkillTableSection
             skillCategories={groupedGeneralSkills}
             title="Technical Skills"
           />
@@ -246,7 +245,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
 
         {/* Soft Skills Section */}
         {projectSoftSkills.length > 0 && (
-          <ProjectSkillSection
+          <SkillTableSection
             skillCategories={groupedSoftSkills}
             title="Soft Skills"
           />
