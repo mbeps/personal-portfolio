@@ -71,23 +71,22 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
     notFound();
   }
 
-  const blogTechnologies = blogMetadata?.skills.filter(
-    (skill) => skill.skillType === "hard"
-  );
+  interface SkillCategory {
+    title: string;
+    skillCategories: Record<string, Skill[]>;
+  }
 
-  const blogGeneralSkills = blogMetadata?.skills.filter(
-    (skill) => skill.skillType === "general"
-  );
+  const filterAndGroupBlogSkills = (
+    skills: Skill[] | undefined,
+    skillType: "hard" | "general" | "soft",
+    title: string
+  ): SkillCategory => {
+    // Filter skills based on skillType, considering skills might be undefined
+    const filteredSkills =
+      skills?.filter((skill) => skill.skillType === skillType) ?? [];
 
-  const blogSoftSkills = blogMetadata?.skills.filter(
-    (skill) => skill.skillType === "soft"
-  );
-
-  const groupBlogSkillsByCategory = (
-    skills: Skill[]
-  ): Record<string, Skill[]> => {
-    // Group skills by category
-    const grouped = skills
+    // Group the filtered skills
+    const grouped = filteredSkills
       .filter((skill) => skill.category !== undefined)
       .reduce<Record<string, Skill[]>>((acc, skill) => {
         const category = skill.category as string;
@@ -100,23 +99,39 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
       .sort((a, b) => grouped[b].length - grouped[a].length)
       .slice(0, 2);
 
-    // Create the final grouped object with only top 2 categories and 'Others'
-    return Object.keys(grouped).reduce<Record<string, Skill[]>>(
-      (acc, category) => {
-        if (topCategories.includes(category)) {
-          acc[category] = grouped[category];
-        } else {
-          acc["Others"] = [...(acc["Others"] || []), ...grouped[category]];
-        }
-        return acc;
-      },
-      {}
-    );
+    // Organize the skills into top categories and 'Others'
+    const organizedSkills = Object.keys(grouped).reduce<
+      Record<string, Skill[]>
+    >((acc, category) => {
+      if (topCategories.includes(category)) {
+        acc[category] = grouped[category];
+      } else {
+        acc["Others"] = [...(acc["Others"] || []), ...grouped[category]];
+      }
+      return acc;
+    }, {});
+
+    return { title, skillCategories: organizedSkills };
   };
 
-  const groupedTechnologies = groupBlogSkillsByCategory(blogTechnologies);
-  const groupedGeneralSkills = groupBlogSkillsByCategory(blogGeneralSkills);
-  const groupedSoftSkills = groupBlogSkillsByCategory(blogSoftSkills);
+  // Using the new function to group all skill types for the blog
+  const allGroupedBlogSkills = {
+    technologies: filterAndGroupBlogSkills(
+      blogMetadata?.skills,
+      "hard",
+      "Technologies"
+    ),
+    generalSkills: filterAndGroupBlogSkills(
+      blogMetadata?.skills,
+      "general",
+      "Technical Skills"
+    ),
+    softSkills: filterAndGroupBlogSkills(
+      blogMetadata?.skills,
+      "soft",
+      "Soft Skills"
+    ),
+  };
 
   return (
     <div>
@@ -129,29 +144,18 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
 
       <Reader content={blogContent} />
 
+      <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
+
       <div className="mt-4">
-        {/* Technologies Section */}
-        {blogTechnologies.length > 0 && (
-          <SkillTableSection
-            skillCategories={groupedTechnologies}
-            title="Technologies"
-          />
-        )}
-
-        {/* Technical Skills Section */}
-        {blogGeneralSkills.length > 0 && (
-          <SkillTableSection
-            skillCategories={groupedGeneralSkills}
-            title="Technical Skills"
-          />
-        )}
-
-        {/* Soft Skills Section */}
-        {blogSoftSkills.length > 0 && (
-          <SkillTableSection
-            skillCategories={groupedSoftSkills}
-            title="Soft Skills"
-          />
+        {Object.values(allGroupedBlogSkills).map(
+          ({ title, skillCategories }) =>
+            Object.keys(skillCategories).length > 0 && (
+              <SkillTableSection
+                key={title}
+                skillCategories={skillCategories}
+                title={title}
+              />
+            )
         )}
       </div>
     </div>

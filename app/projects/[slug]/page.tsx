@@ -88,24 +88,28 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
 
   const projectName = project.name;
 
-  const projectTechnologies = project.skills.filter(
-    (skill) => skill.skillType === "hard"
-  );
-  const projectGeneralSkills = project.skills.filter(
-    (skill) => skill.skillType === "general"
-  );
-  const projectSoftSkills = project.skills.filter(
-    (skill) => skill.skillType === "soft"
-  );
-
   const projectLanguage = project.programmingLanguage;
   const projectDescription = project.description;
   const hasCoverImage = hasProjectCover(slug);
   const coverImagePath = `/projects/${slug}/cover.png`;
 
-  const groupSkillsByCategory = (skills: Skill[]): Record<string, Skill[]> => {
-    // Group skills by category
-    const grouped = skills
+  interface SkillCategory {
+    title: string;
+    skillCategories: Record<string, Skill[]>;
+  }
+
+  const filterAndGroupSkills = (
+    skills: Skill[],
+    skillType: "hard" | "general" | "soft",
+    title: string
+  ): SkillCategory => {
+    // Filter skills based on skillType
+    const filteredSkills = skills.filter(
+      (skill) => skill.skillType === skillType
+    );
+
+    // Group the filtered skills
+    const grouped = filteredSkills
       .filter((skill) => skill.category !== undefined)
       .reduce<Record<string, Skill[]>>((acc, skill) => {
         const category = skill.category as string;
@@ -118,23 +122,31 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
       .sort((a, b) => grouped[b].length - grouped[a].length)
       .slice(0, 2);
 
-    // Create the final grouped object with only top 2 categories and 'Others'
-    return Object.keys(grouped).reduce<Record<string, Skill[]>>(
-      (acc, category) => {
-        if (topCategories.includes(category)) {
-          acc[category] = grouped[category];
-        } else {
-          acc["Others"] = [...(acc["Others"] || []), ...grouped[category]];
-        }
-        return acc;
-      },
-      {}
-    );
+    // Organize the skills into top categories and 'Others'
+    const organizedSkills = Object.keys(grouped).reduce<
+      Record<string, Skill[]>
+    >((acc, category) => {
+      if (topCategories.includes(category)) {
+        acc[category] = grouped[category];
+      } else {
+        acc["Others"] = [...(acc["Others"] || []), ...grouped[category]];
+      }
+      return acc;
+    }, {});
+
+    return { title, skillCategories: organizedSkills };
   };
 
-  const groupedTechnologies = groupSkillsByCategory(projectTechnologies);
-  const groupedGeneralSkills = groupSkillsByCategory(projectGeneralSkills);
-  const groupedSoftSkills = groupSkillsByCategory(projectSoftSkills);
+  // Using the new function to group all skill types
+  const allGroupedSkills = {
+    technologies: filterAndGroupSkills(project.skills, "hard", "Technologies"),
+    generalSkills: filterAndGroupSkills(
+      project.skills,
+      "general",
+      "Technical Skills"
+    ),
+    softSkills: filterAndGroupSkills(project.skills, "soft", "Soft Skills"),
+  };
 
   /**
    * Gets images and videos from the file system.
@@ -227,28 +239,17 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
           </div>
         </div>
 
-        {/* Technologies Section */}
-        {projectTechnologies.length > 0 && (
-          <SkillTableSection
-            skillCategories={groupedTechnologies}
-            title="Technologies"
-          />
-        )}
-
-        {/* Technical Skills Section */}
-        {projectGeneralSkills.length > 0 && (
-          <SkillTableSection
-            skillCategories={groupedGeneralSkills}
-            title="Technical Skills"
-          />
-        )}
-
-        {/* Soft Skills Section */}
-        {projectSoftSkills.length > 0 && (
-          <SkillTableSection
-            skillCategories={groupedSoftSkills}
-            title="Soft Skills"
-          />
+        {/* Skills Section */}
+        {Object.values(allGroupedSkills).map(
+          ({ title, skillCategories }) =>
+            skillCategories &&
+            Object.keys(skillCategories).length > 0 && (
+              <SkillTableSection
+                key={title}
+                skillCategories={skillCategories}
+                title={title}
+              />
+            )
         )}
 
         {/* Links Section */}
