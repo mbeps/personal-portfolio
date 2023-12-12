@@ -1,9 +1,11 @@
 import getCertificateBySlug from "@/actions/getCertificateBySlug";
 import Button from "@/components/Atoms/Button";
 import Tag from "@/components/Atoms/Tag";
+import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import allCertificates from "@/constants/certificates";
+import { Skill } from "@/types/skills";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -70,10 +72,63 @@ const CredentialPage: React.FC<CredentialPageProps> = ({ params }) => {
     notFound();
   }
 
+  const credentialsTechnologies = certificate.skills.filter(
+    (skill) => skill.skillType === "hard"
+  );
+
+  const credentialsGeneralSkills = certificate.skills.filter(
+    (skill) => skill.skillType === "general"
+  );
+
+  const credentialsSoftSkills = certificate.skills.filter(
+    (skill) => skill.skillType === "soft"
+  );
+
+  const groupCertificateSkillsByCategory = (
+    skills: Skill[]
+  ): Record<string, Skill[]> => {
+    // Group skills by category
+    const grouped = skills
+      .filter((skill) => skill.category !== undefined)
+      .reduce<Record<string, Skill[]>>((acc, skill) => {
+        const category = skill.category as string;
+        (acc[category] = acc[category] || []).push(skill);
+        return acc;
+      }, {});
+
+    // Sort categories by the number of skills and get the top 2 categories
+    const topCategories = Object.keys(grouped)
+      .sort((a, b) => grouped[b].length - grouped[a].length)
+      .slice(0, 2);
+
+    // Create the final grouped object with only top 2 categories and 'Others'
+    return Object.keys(grouped).reduce<Record<string, Skill[]>>(
+      (acc, category) => {
+        if (topCategories.includes(category)) {
+          acc[category] = grouped[category];
+        } else {
+          acc["Others"] = [...(acc["Others"] || []), ...grouped[category]];
+        }
+        return acc;
+      },
+      {}
+    );
+  };
+
+  const groupedTechnologies = groupCertificateSkillsByCategory(
+    credentialsTechnologies
+  );
+  const groupedGeneralSkills = groupCertificateSkillsByCategory(
+    credentialsGeneralSkills
+  );
+  const groupedSoftSkills = groupCertificateSkillsByCategory(
+    credentialsSoftSkills
+  );
+
   const certificateImage = `/certificates/${slug}.jpg`;
 
   return (
-    <div className="flex flex-col space-y-6 align-top min-h-[85vh] relative">
+    <div className="space-y-6 align-top min-h-[85vh] relative">
       <HeadingTwo title={certificate.name} />
 
       {/* Certificate Image */}
@@ -149,14 +204,46 @@ const CredentialPage: React.FC<CredentialPageProps> = ({ params }) => {
       {/* Metadata Section */}
       <div className="flex flex-col md:flex-row gap-4 sm:gap-10">
         {/* Left */}
-        <div className="md:w-1/2">
-          {/* Certificate Issuer */}
+        {/* Certificate Issuer */}
+      </div>
+
+      {/* Right */}
+      {/* Certificate Skills */}
+      {/* Technologies Section */}
+      {credentialsTechnologies.length > 0 && (
+        <SkillTableSection
+          skillCategories={groupedTechnologies}
+          title="Technologies"
+        />
+      )}
+
+      {/* Technical Skills Section */}
+      {credentialsGeneralSkills.length > 0 && (
+        <SkillTableSection
+          skillCategories={groupedGeneralSkills}
+          title="Technical Skills"
+        />
+      )}
+
+      {/* Soft Skills Section */}
+      {credentialsSoftSkills.length > 0 && (
+        <SkillTableSection
+          skillCategories={groupedSoftSkills}
+          title="Soft Skills"
+        />
+      )}
+
+      <div className="md:grid md:grid-cols-2">
+        <div>
           <div className="md:text-left text-center">
             <HeadingThree title="Certificate Issuer" />
           </div>
           <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-5">
             <Tag>{certificate.issuer}</Tag>
           </div>
+        </div>
+
+        <div>
           <div className="md:text-left text-center">
             <HeadingThree title="Links" />
           </div>
@@ -196,23 +283,6 @@ const CredentialPage: React.FC<CredentialPageProps> = ({ params }) => {
               </Link>
             )}
           </div>
-        </div>
-
-        {/* Right */}
-        <div className="md:w-1/2">
-          <div className="mt-4 text-center md:text-left"></div>
-
-          {/* Certificate Skills */}
-          {certificate.skills && (
-            <div className="mt-4 text-center md:text-left">
-              <HeadingThree title="Skills" />
-              <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-                {certificate.skills.map((skill, index) => (
-                  <Tag key={index}>{skill.skill}</Tag>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </div>
