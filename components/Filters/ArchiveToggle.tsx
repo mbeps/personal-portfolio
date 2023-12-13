@@ -3,9 +3,9 @@ import FilterParams from "@/types/FilterParams";
 import Link from "next/link";
 
 interface ArchiveToggleProps {
-  generateUrl: (filters: FilterParams, basePath: string) => string;
+  generateUrl: (filters: Record<string, string>, basePath: string) => string;
   showArchived: boolean;
-  filterProps: FilterParams;
+  filterProps: Record<string, string>;
   basePath: string;
 }
 
@@ -34,7 +34,7 @@ export const ArchiveToggle: React.FC<ArchiveToggleProps> = ({
         href={generateUrl(
           {
             ...filterProps,
-            archived: !showArchived,
+            archived: (!showArchived).toString(), // Convert the boolean to a string
           },
           basePath
         )}

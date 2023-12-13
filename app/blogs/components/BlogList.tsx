@@ -1,18 +1,28 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
-import FilterModal, {
-  FilterCategory,
-} from "@/components/Filters/Modal/FIlterModal";
+import stringToSlug from "@/actions/stringToSlug";
+
 import ClearAllFiltersButton from "@/components/Filters/Page/ClearAllFiltersButton";
 import OpenFilterModalButton from "@/components/Filters/Page/OpenFilterModalButton";
+import RadioButton from "@/components/Inputs/RadioButton";
 import SearchInput from "@/components/Inputs/SearchInput";
+import Overlay from "@/components/Sheet/Sheet";
+import HeadingFour from "@/components/Text/HeadingFour";
 import { BlogMetadata } from "@/types/blog";
+import { Skill } from "@/types/skills";
 import Fuse from "fuse.js";
+import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation"; // Add this import for Next.js router
 import { useState } from "react";
 import BlogListSection from "./BlogListSection";
-import { Skill } from "@/types/skills";
+
+export interface FilterCategory {
+  name: string;
+  urlParam: string;
+  selectedValue: string;
+  options: { slug: string; skill: string }[];
+}
 
 interface BlogListProps {
   blogs: BlogMetadata[];
@@ -25,7 +35,7 @@ interface BlogListProps {
  */
 export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   //^ Hooks
-  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+  const [isFilterOpen, setIsFilterModalOpen] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
   const basePath = usePathname();
@@ -39,27 +49,19 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   const searchParamName = "search";
 
   //^ URL Params Reader
-  const selectedBlogSection = (
-    searchParams.get(blogSectionParamName) || "all"
-  ).toLowerCase();
-  const selectedSkillCategory = (
-    searchParams.get(skillCategoryParamName) || "all"
-  ).toLowerCase();
-  const selectedTechnicalSkill = (
-    searchParams.get(technicalSkillParamName) || "all"
-  ).toLowerCase();
-  const selectedGeneralSkill = (
-    searchParams.get(generalSkillParamName) || "all"
-  ).toLowerCase();
-  const selectedSoftSkill = (
-    searchParams.get(softSkillParamName) || "all"
-  ).toLowerCase();
-  const searchTerm = (searchParams.get(searchParamName) || "").toLowerCase();
+  const selectedBlogSection = searchParams.get(blogSectionParamName) || "all";
+  const selectedSkillCategory =
+    searchParams.get(skillCategoryParamName) || "all";
+  const selectedTechnicalSkill =
+    searchParams.get(technicalSkillParamName) || "all";
+  const selectedGeneralSkill = searchParams.get(generalSkillParamName) || "all";
+  const selectedSoftSkill = searchParams.get(softSkillParamName) || "all";
+  const searchTerm = searchParams.get(searchParamName) || "";
 
   /**
    * Opens the modal to filter the projects.
    */
-  const handleOpenFilterModal = () => {
+  const handleOpenFilter = () => {
     setIsFilterModalOpen(true);
   };
 
@@ -67,7 +69,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
    * Closes the modals.
    * These modals are for filtering and displaying more projects.
    */
-  const handleCloseModals = () => {
+  const handleCloseFilter = () => {
     setIsFilterModalOpen(false);
   };
 
@@ -113,56 +115,68 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
    * List of all blog categories.
    * These are used as options for filtering.
    */
-  const blogCategories: string[] = [
-    "All",
+  const blogCategories: { slug: string; skill: string }[] = [
+    { slug: "all", skill: "All" },
     ...blogs
-      .map((blog: BlogMetadata) => blog.category)
-      .filter((value, index, self) => self.indexOf(value) === index),
+      .map((blog: BlogMetadata) => ({
+        slug: stringToSlug(blog.category),
+        skill: blog.category,
+      }))
+      .filter(
+        (value, index, self) =>
+          self.findIndex((v) => v.slug === value.slug) === index
+      ),
   ];
 
-  const skillCategories: string[] = [
-    "All",
+  const skillCategories: { slug: string; skill: string }[] = [
+    { slug: "all", skill: "All" },
     ...blogs
       .flatMap((blog: BlogMetadata) =>
-        blog.skills.map((skill: Skill) => skill.category)
+        blog.skills.map((skill: Skill) => ({
+          slug: stringToSlug(skill.category),
+          skill: skill.skill,
+        }))
       )
-      .filter((value, index, self) => value && self.indexOf(value) === index),
+      .filter(
+        (value, index, self) =>
+          self.findIndex((v) => v.slug === value.slug) === index
+      ),
   ];
 
-  const hardSkills: string[] = [
-    "All",
+  const hardSkills: { slug: string; skill: string }[] = [
+    { slug: "all", skill: "All" },
     ...Array.from(
       new Set(
         blogs.flatMap((blog: BlogMetadata) =>
           (blog.skills || [])
             .filter((skill: Skill) => skill.skillType === "hard")
-            .map((skill: Skill) => skill.skill)
+            .map((skill: Skill) => ({ slug: skill.slug, skill: skill.skill }))
         )
       )
     ),
   ];
 
-  const generalSkills: string[] = [
-    "All",
+  const generalSkills: { slug: string; skill: string }[] = [
+    { slug: "all", skill: "All" },
     ...Array.from(
       new Set(
         blogs.flatMap((blog: BlogMetadata) =>
           (blog.skills || [])
             .filter((skill: Skill) => skill.skillType === "general")
-            .map((skill: Skill) => skill.skill)
+            .map((skill: Skill) => ({ slug: skill.slug, skill: skill.skill }))
         )
       )
     ),
   ];
 
-  const softSkills: string[] = [
-    "All",
+  const softSkills: { slug: string; skill: string }[] = [
+    { slug: "all", skill: "All" },
     ...Array.from(
       new Set(
         blogs.flatMap((blog: BlogMetadata) =>
           (blog.skills || [])
             .filter((skill: Skill) => skill.skillType === "soft")
-            .map((skill: Skill) => skill.skill)
+            .map((skill: Skill) => ({ slug: skill.slug, skill: skill.skill }))
         )
       )
     ),
@@ -182,7 +196,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
           [skillCategoryParamName]: selectedSkillCategory,
           [technicalSkillParamName]: selectedTechnicalSkill,
           [softSkillParamName]: selectedSoftSkill,
-          [searchParamName]: newSearchTerm,
+          [searchParamName]: newSearchTerm, // only thing that changes
         },
         basePath
       )
@@ -195,32 +209,30 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   const filteredBlogs = searchedBlogs.filter((blog) => {
     const matchesBlogSection =
       selectedBlogSection === "all" ||
-      blog.category.toLowerCase() === selectedBlogSection;
+      stringToSlug(blog.category) === stringToSlug(selectedBlogSection);
     const matchesSkillCategory =
       selectedSkillCategory === "all" ||
       (blog.skills || []).some(
-        (skill) => skill.category.toLowerCase() === selectedSkillCategory
+        (skill) =>
+          stringToSlug(skill.category) === stringToSlug(selectedSkillCategory)
       );
     const matchesHardSkill =
       selectedTechnicalSkill === "all" ||
       (blog.skills || []).some(
         (skill) =>
-          skill.skill.toLowerCase() === selectedTechnicalSkill &&
-          skill.skillType === "hard"
+          skill.slug === selectedTechnicalSkill && skill.skillType === "hard"
       );
     const matchesGeneralSkill =
       selectedGeneralSkill === "all" ||
       (blog.skills || []).some(
         (skill) =>
-          skill.skill.toLowerCase() === selectedGeneralSkill &&
-          skill.skillType === "general"
+          skill.slug === selectedGeneralSkill && skill.skillType === "general"
       );
     const matchesSoftSkill =
       selectedSoftSkill === "all" ||
       (blog.skills || []).some(
         (skill) =>
-          skill.skill.toLowerCase() === selectedSoftSkill &&
-          skill.skillType === "soft"
+          skill.slug === selectedSoftSkill && skill.skillType === "soft"
       );
 
     return (
@@ -305,9 +317,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
         {/* Buttons */}
         <div className="flex flex-row md:flex-1 gap-2 w-full">
           {/* Filter Button */}
-          <OpenFilterModalButton
-            handleOpenFilterModal={handleOpenFilterModal}
-          />
+          <OpenFilterModalButton handleOpenFilterModal={handleOpenFilter} />
           {/* Clear Button */}
           <ClearAllFiltersButton
             resetFilters={resetFilters}
@@ -320,20 +330,55 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
       <BlogListSection groupedBlogs={groupedBlogs} />
 
       {/* Filter Modal */}
-      <FilterModal
-        filterCategories={filterCategories}
-        resetFilters={resetFilters}
-        generateUrl={generateUrl}
-        showArchived={true}
-        handleCloseModals={handleCloseModals}
-        isFilterModalOpen={isFilterModalOpen}
-        areFiltersApplied={areFiltersApplied}
-        basePath={basePath}
-        description={`
-          Filters are applied automatically as you select them. Searching and
-          filtering automatically show archived certificates.
-        `}
-      />
+      <Overlay
+        isOpen={isFilterOpen}
+        toggle={handleCloseFilter}
+        className="w-full md:w-[30rem] rounded-xl m-0 md:m-4 bg-white dark:bg-neutral-900 pt-20"
+      >
+        {filterCategories.map((filterCategory, index) => (
+          <div key={index}>
+            <HeadingFour title={filterCategory.name} />
+            <ul>
+              {filterCategory.options.map((option, i) => {
+                // Create an object with the currently selected options
+                const selectedOptions = {
+                  [blogSectionParamName]: selectedBlogSection,
+                  [skillCategoryParamName]: selectedSkillCategory,
+                  [technicalSkillParamName]: selectedTechnicalSkill,
+                  [generalSkillParamName]: selectedGeneralSkill,
+                  [softSkillParamName]: selectedSoftSkill,
+                  [searchParamName]: searchTerm,
+                };
+
+                return (
+                  <li key={i}>
+                    <Link
+                      href={generateUrl(
+                        {
+                          ...selectedOptions,
+                          [filterCategory.urlParam]: option.slug,
+                        },
+                        basePath
+                      )}
+                    >
+                      <RadioButton
+                        id={option.slug}
+                        name={filterCategory.name}
+                        value={option.slug}
+                        checked={
+                          filterCategory.selectedValue.toLowerCase() ===
+                          option.slug.toLowerCase()
+                        }
+                        label={option.skill}
+                      />
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))}
+      </Overlay>
     </>
   );
 };
