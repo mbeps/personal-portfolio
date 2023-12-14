@@ -13,13 +13,8 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation"; // Ad
 import { useState } from "react";
 import BlogListSection from "./BlogListSection";
 import OpenFilterButton from "@/components/Filters/Page/OpenFilterPanelButton";
-
-export interface FilterCategory {
-  name: string;
-  urlParam: string;
-  selectedValue: string;
-  options: { slug: string; skill: string }[];
-}
+import FilterOption from "@/types/FilterOption";
+import FilterCategory from "@/types/FilterCategory";
 
 interface BlogListProps {
   blogs: BlogMetadata[];
@@ -112,16 +107,13 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   };
 
   //^ Filter Options List
-  /**
-   * List of all blog categories.
-   * These are used as options for filtering.
-   */
-  const blogCategories: { slug: string; skill: string }[] = [
-    { slug: "all", skill: "All" },
+
+  const blogCategories: FilterOption[] = [
+    { slug: "all", entryName: "All" },
     ...blogs
       .map((blog: BlogMetadata) => ({
         slug: stringToSlug(blog.category),
-        skill: blog.category,
+        entryName: blog.category,
       }))
       .filter(
         (value, index, self) =>
@@ -129,65 +121,66 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
       ),
   ];
 
-  const skillCategories: { slug: string; skill: string }[] = [
-    { slug: "all", skill: "All" },
+  const skillCategories: FilterOption[] = [
+    { slug: "all", entryName: "All" },
     ...blogs
       .flatMap((blog: BlogMetadata) =>
         blog.skills.map((skill: Skill) => ({
           slug: stringToSlug(skill.category),
-          skill: skill.skill,
+          entryName: skill.category,
         }))
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
           ? unique
           : [...unique, item];
-      }, [] as { slug: string; skill: string }[]),
+      }, [] as FilterOption[]),
   ];
 
-  const hardSkills: { slug: string; skill: string }[] = [
-    { slug: "all", skill: "All" },
+  // Do the same for hardSkills, generalSkills, and softSkills
+  const hardSkills: FilterOption[] = [
+    { slug: "all", entryName: "All" },
     ...blogs
       .flatMap((blog: BlogMetadata) =>
         (blog.skills || [])
           .filter((skill: Skill) => skill.skillType === "hard")
-          .map((skill: Skill) => ({ slug: skill.slug, skill: skill.skill }))
+          .map((skill: Skill) => ({ slug: skill.slug, entryName: skill.skill }))
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
           ? unique
           : [...unique, item];
-      }, [] as { slug: string; skill: string }[]),
+      }, [] as { slug: string; entryName: string }[]),
   ];
 
-  const generalSkills: { slug: string; skill: string }[] = [
-    { slug: "all", skill: "All" },
+  const generalSkills: FilterOption[] = [
+    { slug: "all", entryName: "All" },
     ...blogs
       .flatMap((blog: BlogMetadata) =>
         (blog.skills || [])
           .filter((skill: Skill) => skill.skillType === "general")
-          .map((skill: Skill) => ({ slug: skill.slug, skill: skill.skill }))
+          .map((skill: Skill) => ({ slug: skill.slug, entryName: skill.skill }))
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
           ? unique
           : [...unique, item];
-      }, [] as { slug: string; skill: string }[]),
+      }, [] as FilterOption[]),
   ];
 
-  const softSkills: { slug: string; skill: string }[] = [
-    { slug: "all", skill: "All" },
+  const softSkills: FilterOption[] = [
+    { slug: "all", entryName: "All" },
     ...blogs
       .flatMap((blog: BlogMetadata) =>
         (blog.skills || [])
           .filter((skill: Skill) => skill.skillType === "soft")
-          .map((skill: Skill) => ({ slug: skill.slug, skill: skill.skill }))
+          .map((skill: Skill) => ({ slug: skill.slug, entryName: skill.skill }))
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
           ? unique
           : [...unique, item];
-      }, [] as { slug: string; skill: string }[]),
+      }, [] as FilterOption[]),
   ];
 
   //^ Filtering Logic
@@ -268,31 +261,31 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
 
   const filterCategories: FilterCategory[] = [
     {
-      name: "Section",
+      sectionName: "Section",
       urlParam: blogSectionParamName,
       selectedValue: selectedBlogSection,
       options: blogCategories,
     },
     {
-      name: "Skill",
+      sectionName: "Skill Category",
       urlParam: skillCategoryParamName,
       selectedValue: selectedSkillCategory,
       options: skillCategories,
     },
     {
-      name: "Technical Skill",
+      sectionName: "Technical Skill",
       urlParam: technicalSkillParamName,
       selectedValue: selectedTechnicalSkill,
       options: hardSkills,
     },
     {
-      name: "General Skill",
+      sectionName: "General Skill",
       urlParam: generalSkillParamName,
       selectedValue: selectedGeneralSkill,
       options: generalSkills,
     },
     {
-      name: "Soft Skill",
+      sectionName: "Soft Skill",
       urlParam: softSkillParamName,
       selectedValue: selectedSoftSkill,
       options: softSkills,
@@ -330,14 +323,6 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
         isOpen={isFilterOpen}
         toggle={handleToggleFilter}
         filterCategories={filterCategories}
-        selectedOptions={{
-          [blogSectionParamName]: selectedBlogSection,
-          [skillCategoryParamName]: selectedSkillCategory,
-          [technicalSkillParamName]: selectedTechnicalSkill,
-          [generalSkillParamName]: selectedGeneralSkill,
-          [softSkillParamName]: selectedSoftSkill,
-          [searchParamName]: searchTerm,
-        }}
         generateUrl={generateUrl}
         basePath={basePath}
       />
