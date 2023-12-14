@@ -3,20 +3,16 @@
 import generateUrl from "@/actions/generateUrl";
 import stringToSlug from "@/actions/stringToSlug";
 
+import FilterOverlay from "@/components/Filters/FilterPanel/FilterPanel";
 import ClearAllFiltersButton from "@/components/Filters/Page/ClearAllFiltersButton";
-import OpenFilterButton from "@/components/Filters/Page/OpenFilterModalButton";
-import RadioButton from "@/components/Inputs/RadioButton";
 import SearchInput from "@/components/Inputs/SearchInput";
-import Overlay from "@/components/Sheet/Sheet";
-import HeadingFour from "@/components/Text/HeadingFour";
 import { BlogMetadata } from "@/types/blog";
 import { Skill } from "@/types/skills";
 import Fuse from "fuse.js";
-import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation"; // Add this import for Next.js router
 import { useState } from "react";
 import BlogListSection from "./BlogListSection";
-import FilterOverlay from "@/components/Filters/FilterPanel/FilterPanel";
+import OpenFilterButton from "@/components/Filters/Page/OpenFilterPanelButton";
 
 export interface FilterCategory {
   name: string;
