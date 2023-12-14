@@ -3,17 +3,19 @@
 import generateUrl from "@/actions/generateUrl";
 import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
 import ClearAllFiltersButton from "@/components/Filters/Page/ClearAllFiltersButton";
-import OpenFilterModalButton from "@/components/Filters/Page/OpenFilterModalButton";
 import SearchInput from "@/components/Inputs/SearchInput";
 import Certificate from "@/types/certificates";
 import Fuse from "fuse.js";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import CredentialListSection from "./CredentialListSection";
-import FilterModal, {
-  FilterCategory,
-} from "@/components/Filters/Modal/FIlterModal";
+
 import { Skill } from "@/types/skills";
+import FilterOption from "@/types/FilterOption";
+import stringToSlug from "@/actions/stringToSlug";
+import OpenFilterButton from "@/components/Filters/Page/OpenFilterPanelButton";
+import FilterCategory from "@/types/FilterCategory";
+import FilterOverlay from "@/components/Filters/FilterPanel/FilterPanel";
 
 type CredentialsListListProps = {
   allCertificates: Certificate[];
@@ -30,7 +32,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
   allCertificates,
 }) => {
   //^ Hooks
-  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const searchParams = useSearchParams();
   const basePath = usePathname();
   const router = useRouter();
@@ -47,37 +49,36 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
 
   //^ URL Params Reader
   const selectedIssuer = decodeURIComponent(
-    (searchParams.get(issuerParamName) || "all").toLowerCase()
+    searchParams.get(issuerParamName) || "all"
   );
   const selectedCategory = decodeURIComponent(
-    (searchParams.get(credentialSectionParamName) || "all").toLowerCase()
+    searchParams.get(credentialSectionParamName) || "all"
   );
   const selectedSkillCategory = decodeURIComponent(
-    (searchParams.get(skillCategoryParamName) || "all").toLowerCase()
+    searchParams.get(skillCategoryParamName) || "all"
   );
   const selectedTechnicalSkill = decodeURIComponent(
-    (searchParams.get(technicalSkillParamName) || "all").toLowerCase()
+    searchParams.get(technicalSkillParamName) || "all"
   );
   const selectedGeneralSkill = decodeURIComponent(
-    (searchParams.get(generalSkillParamName) || "all").toLowerCase()
+    searchParams.get(generalSkillParamName) || "all"
   );
   const selectedSoftSkill = decodeURIComponent(
-    (searchParams.get(softSkillParamName) || "all").toLowerCase()
+    searchParams.get(softSkillParamName) || "all"
   );
   const searchTerm = decodeURIComponent(
-    (searchParams.get(searchParamName) || "").toLowerCase()
+    searchParams.get(searchParamName) || ""
   );
   const showArchived =
-    decodeURIComponent(
-      (searchParams.get(archivedParamName) || "false").toLowerCase()
-    ) === "true";
+    decodeURIComponent(searchParams.get(archivedParamName) || "false") ===
+    "true";
 
   //^ Modal Controls
   /**
    * Opens the modal to filter the projects.
    */
   const handleOpenFilterModal = () => {
-    setIsFilterModalOpen(true);
+    setIsFilterOpen(true);
   };
 
   /**
@@ -85,7 +86,11 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
    * These modals are for filtering and displaying more projects.
    */
   const handleCloseModals = () => {
-    setIsFilterModalOpen(false);
+    setIsFilterOpen(false);
+  };
+
+  const handleToggleFilter = () => {
+    setIsFilterOpen(!isFilterOpen);
   };
 
   //^ Search Settings
@@ -115,66 +120,101 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     : allCertificates;
 
   //^ Filter Options List
-  const certificateCategories: string[] = [
-    "All",
+  const certificateCategories: FilterOption[] = [
+    { slug: "all", entryName: "All" },
     ...allCertificates
-      .map((certificate: Certificate) => certificate.category)
-      .filter((value, index, self) => self.indexOf(value) === index),
+      .map((certificate: Certificate) => ({
+        slug: stringToSlug(certificate.category),
+        entryName: certificate.category,
+      }))
+      .filter(
+        (value, index, self) =>
+          self.findIndex((v) => v.slug === value.slug) === index
+      ),
   ];
 
-  const certificateIssuers: string[] = [
-    "All",
+  const certificateIssuers: FilterOption[] = [
+    { slug: "all", entryName: "All" },
     ...allCertificates
-      .map((certificate: Certificate) => certificate.issuer)
-      .filter((value, index, self) => self.indexOf(value) === index),
+      .map((certificate: Certificate) => ({
+        slug: stringToSlug(certificate.issuer),
+        entryName: certificate.issuer,
+      }))
+      .reduce((unique, item) => {
+        return unique.findIndex((v) => v.slug === item.slug) !== -1
+          ? unique
+          : [...unique, item];
+      }, [] as FilterOption[]),
   ];
 
-  const skillCategories: string[] = [
-    "All",
+  const skillCategories: FilterOption[] = [
+    { slug: "all", entryName: "All" },
     ...allCertificates
       .flatMap((certificate: Certificate) =>
-        certificate.skills.map((skill: Skill) => skill.category)
+        certificate.skills.map((skill: Skill) => ({
+          slug: stringToSlug(skill.category),
+          entryName: skill.category,
+        }))
       )
-      .filter((value, index, self) => value && self.indexOf(value) === index),
+      .reduce((unique, item) => {
+        return unique.findIndex((v) => v.slug === item.slug) !== -1
+          ? unique
+          : [...unique, item];
+      }, [] as FilterOption[]),
   ];
 
-  const hardSkills: string[] = [
-    "All",
-    ...Array.from(
-      new Set(
-        allCertificates.flatMap((certificate: Certificate) =>
-          certificate.skills
-            .filter((skill: Skill) => skill.skillType === "hard")
-            .map((skill: Skill) => skill.skill)
-        )
+  const hardSkills: FilterOption[] = [
+    { slug: "all", entryName: "All" },
+    ...allCertificates
+      .flatMap((certificate: Certificate) =>
+        certificate.skills
+          .filter((skill: Skill) => skill.skillType === "hard")
+          .map((skill: Skill) => ({
+            slug: stringToSlug(skill.slug), // Convert skill name to slug
+            entryName: skill.skill,
+          }))
       )
-    ),
+      .reduce((unique, item) => {
+        return unique.findIndex((v) => v.slug === item.slug) !== -1
+          ? unique
+          : [...unique, item];
+      }, [] as FilterOption[]),
   ];
 
-  const generalSkills: string[] = [
-    "All",
-    ...Array.from(
-      new Set(
-        allCertificates.flatMap((certificate: Certificate) =>
-          certificate.skills
-            .filter((skill: Skill) => skill.skillType === "general")
-            .map((skill: Skill) => skill.skill)
-        )
+  const generalSkills: FilterOption[] = [
+    { slug: "all", entryName: "All" },
+    ...allCertificates
+      .flatMap((certificate: Certificate) =>
+        certificate.skills
+          .filter((skill: Skill) => skill.skillType === "general")
+          .map((skill: Skill) => ({
+            slug: stringToSlug(skill.slug), // Convert skill name to slug
+            entryName: skill.skill,
+          }))
       )
-    ),
+      .reduce((unique, item) => {
+        return unique.findIndex((v) => v.slug === item.slug) !== -1
+          ? unique
+          : [...unique, item];
+      }, [] as FilterOption[]),
   ];
 
-  const softSkills: string[] = [
-    "All",
-    ...Array.from(
-      new Set(
-        allCertificates.flatMap((certificate: Certificate) =>
-          certificate.skills
-            .filter((skill: Skill) => skill.skillType === "soft")
-            .map((skill: Skill) => skill.skill)
-        )
+  const softSkills: FilterOption[] = [
+    { slug: "all", entryName: "All" },
+    ...allCertificates
+      .flatMap((certificate: Certificate) =>
+        certificate.skills
+          .filter((skill: Skill) => skill.skillType === "soft")
+          .map((skill: Skill) => ({
+            slug: stringToSlug(skill.slug), // Convert skill name to slug
+            entryName: skill.skill,
+          }))
       )
-    ),
+      .reduce((unique, item) => {
+        return unique.findIndex((v) => v.slug === item.slug) !== -1
+          ? unique
+          : [...unique, item];
+      }, [] as FilterOption[]),
   ];
 
   //^ Filtering Logic
@@ -190,7 +230,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
           [softSkillParamName]: selectedSoftSkill,
 
           [searchParamName]: newSearchTerm,
-          [archivedParamName]: true,
+          // [archivedParamName]: true,
         },
         basePath
       )
@@ -201,42 +241,40 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     (certificate: Certificate) => {
       const matchesIssuer =
         selectedIssuer === "all" ||
-        certificate.issuer.toLowerCase() === selectedIssuer;
+        stringToSlug(certificate.issuer) === stringToSlug(selectedIssuer);
       const matchesCategory =
         selectedCategory === "all" ||
-        certificate.category.toLowerCase() === selectedCategory;
-      const matchesArchivedStatus = showArchived || !certificate.archived;
+        stringToSlug(certificate.category) === stringToSlug(selectedCategory);
+      // const matchesArchivedStatus = showArchived || !certificate.archived;
       const matchesSkillCategory =
         selectedSkillCategory === "all" ||
         (certificate.skills || []).some(
-          (skill) => skill.category?.toLowerCase() === selectedSkillCategory
+          (skill) =>
+            stringToSlug(skill.category) === stringToSlug(selectedSkillCategory)
         );
       const matchesHardSkill =
         selectedTechnicalSkill === "all" ||
         (certificate.skills || []).some(
           (skill) =>
-            skill.skill.toLowerCase() === selectedTechnicalSkill &&
-            skill.skillType === "hard"
+            skill.slug === selectedTechnicalSkill && skill.skillType === "hard"
         );
       const matchesGeneralSkill =
         selectedGeneralSkill === "all" ||
         (certificate.skills || []).some(
           (skill) =>
-            skill.skill.toLowerCase() === selectedGeneralSkill &&
-            skill.skillType === "general"
+            skill.slug === selectedGeneralSkill && skill.skillType === "general"
         );
       const matchesSoftSkill =
         selectedSoftSkill === "all" ||
         (certificate.skills || []).some(
           (skill) =>
-            skill.skill.toLowerCase() === selectedSoftSkill &&
-            skill.skillType === "soft"
+            skill.slug === selectedSoftSkill && skill.skillType === "soft"
         );
 
       return (
         matchesIssuer &&
         matchesCategory &&
-        matchesArchivedStatus &&
+        // matchesArchivedStatus &&
         matchesSkillCategory &&
         matchesHardSkill &&
         matchesGeneralSkill &&
@@ -258,7 +296,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
           [generalSkillParamName]: "all",
           [softSkillParamName]: "all",
           [searchParamName]: "",
-          [archivedParamName]: false,
+          // [archivedParamName]: false,
         },
         basePath
       )
@@ -277,37 +315,37 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
 
   const filterCategories: FilterCategory[] = [
     {
-      name: "Issuer",
+      sectionName: "Issuer",
       urlParam: issuerParamName,
       options: certificateIssuers,
       selectedValue: selectedIssuer,
     },
     {
-      name: "Category",
+      sectionName: "Category",
       urlParam: credentialSectionParamName,
       options: certificateCategories,
       selectedValue: selectedCategory,
     },
     {
-      name: "Skill Category",
+      sectionName: "Skill Category",
       urlParam: skillCategoryParamName,
       options: skillCategories,
       selectedValue: selectedSkillCategory,
     },
     {
-      name: "Technical Skill",
+      sectionName: "Technical Skill",
       urlParam: technicalSkillParamName,
       options: hardSkills,
       selectedValue: selectedTechnicalSkill,
     },
     {
-      name: "General Skill",
+      sectionName: "General Skill",
       urlParam: generalSkillParamName,
       options: generalSkills,
       selectedValue: selectedGeneralSkill,
     },
     {
-      name: "Soft Skill",
+      sectionName: "Soft Skill",
       urlParam: softSkillParamName,
       options: softSkills,
       selectedValue: selectedSoftSkill,
@@ -329,9 +367,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
         {/* Buttons */}
         <div className="flex flex-row md:flex-1 gap-2 w-full">
           {/* Filter Button */}
-          <OpenFilterModalButton
-            handleOpenFilterModal={handleOpenFilterModal}
-          />
+          <OpenFilterButton handleOpenFilterModal={handleOpenFilterModal} />
           {/* Clear Button */}
           <ClearAllFiltersButton
             areFiltersApplied={areFiltersApplied}
@@ -355,19 +391,12 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
       {/* List of projects */}
       <CredentialListSection groupedCertificates={groupedCertificates} />
       {/* Filter Modal */}
-      <FilterModal
+      <FilterOverlay
+        isOpen={isFilterOpen}
+        toggle={handleToggleFilter}
         filterCategories={filterCategories}
-        resetFilters={resetFilters}
         generateUrl={generateUrl}
-        showArchived={showArchived}
-        handleCloseModals={handleCloseModals}
-        isFilterModalOpen={isFilterModalOpen}
-        areFiltersApplied={areFiltersApplied}
         basePath={basePath}
-        description={`
-          Filters are applied automatically as you select them. Searching and
-          filtering automatically show archived certificates.
-        `}
       />
     </>
   );
