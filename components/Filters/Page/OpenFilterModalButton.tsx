@@ -12,7 +12,7 @@ interface OpenFilterModalButtonProps {
  * @param handleOpenFilterModal () => void - function to open the filter modal
  * @returns (JSX.Element) - button to open the filter modal
  */
-const OpenFilterModalButton: React.FC<OpenFilterModalButtonProps> = ({
+const OpenFilterButton: React.FC<OpenFilterModalButtonProps> = ({
   handleOpenFilterModal,
 }) => {
   return (
@@ -42,4 +42,4 @@ const OpenFilterModalButton: React.FC<OpenFilterModalButtonProps> = ({
   );
 };
 
-export default OpenFilterModalButton;
+export default OpenFilterButton;

@@ -4,7 +4,7 @@ import generateUrl from "@/actions/generateUrl";
 import stringToSlug from "@/actions/stringToSlug";
 
 import ClearAllFiltersButton from "@/components/Filters/Page/ClearAllFiltersButton";
-import OpenFilterModalButton from "@/components/Filters/Page/OpenFilterModalButton";
+import OpenFilterButton from "@/components/Filters/Page/OpenFilterModalButton";
 import RadioButton from "@/components/Inputs/RadioButton";
 import SearchInput from "@/components/Inputs/SearchInput";
 import Overlay from "@/components/Sheet/Sheet";
@@ -16,6 +16,7 @@ import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation"; // Add this import for Next.js router
 import { useState } from "react";
 import BlogListSection from "./BlogListSection";
+import FilterOverlay from "@/components/Filters/FilterPanel/FilterPanel";
 
 export interface FilterCategory {
   name: string;
@@ -71,6 +72,10 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
    */
   const handleCloseFilter = () => {
     setIsFilterModalOpen(false);
+  };
+
+  const handleToggleFilter = () => {
+    setIsFilterModalOpen(!isFilterOpen);
   };
 
   //^ Search Settings
@@ -137,49 +142,56 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
           skill: skill.skill,
         }))
       )
-      .filter(
-        (value, index, self) =>
-          self.findIndex((v) => v.slug === value.slug) === index
-      ),
+      .reduce((unique, item) => {
+        return unique.findIndex((v) => v.slug === item.slug) !== -1
+          ? unique
+          : [...unique, item];
+      }, [] as { slug: string; skill: string }[]),
   ];
 
   const hardSkills: { slug: string; skill: string }[] = [
     { slug: "all", skill: "All" },
-    ...Array.from(
-      new Set(
-        blogs.flatMap((blog: BlogMetadata) =>
-          (blog.skills || [])
-            .filter((skill: Skill) => skill.skillType === "hard")
-            .map((skill: Skill) => ({ slug: skill.slug, skill: skill.skill }))
-        )
+    ...blogs
+      .flatMap((blog: BlogMetadata) =>
+        (blog.skills || [])
+          .filter((skill: Skill) => skill.skillType === "hard")
+          .map((skill: Skill) => ({ slug: skill.slug, skill: skill.skill }))
       )
-    ),
+      .reduce((unique, item) => {
+        return unique.findIndex((v) => v.slug === item.slug) !== -1
+          ? unique
+          : [...unique, item];
+      }, [] as { slug: string; skill: string }[]),
   ];
 
   const generalSkills: { slug: string; skill: string }[] = [
     { slug: "all", skill: "All" },
-    ...Array.from(
-      new Set(
-        blogs.flatMap((blog: BlogMetadata) =>
-          (blog.skills || [])
-            .filter((skill: Skill) => skill.skillType === "general")
-            .map((skill: Skill) => ({ slug: skill.slug, skill: skill.skill }))
-        )
+    ...blogs
+      .flatMap((blog: BlogMetadata) =>
+        (blog.skills || [])
+          .filter((skill: Skill) => skill.skillType === "general")
+          .map((skill: Skill) => ({ slug: skill.slug, skill: skill.skill }))
       )
-    ),
+      .reduce((unique, item) => {
+        return unique.findIndex((v) => v.slug === item.slug) !== -1
+          ? unique
+          : [...unique, item];
+      }, [] as { slug: string; skill: string }[]),
   ];
 
   const softSkills: { slug: string; skill: string }[] = [
     { slug: "all", skill: "All" },
-    ...Array.from(
-      new Set(
-        blogs.flatMap((blog: BlogMetadata) =>
-          (blog.skills || [])
-            .filter((skill: Skill) => skill.skillType === "soft")
-            .map((skill: Skill) => ({ slug: skill.slug, skill: skill.skill }))
-        )
+    ...blogs
+      .flatMap((blog: BlogMetadata) =>
+        (blog.skills || [])
+          .filter((skill: Skill) => skill.skillType === "soft")
+          .map((skill: Skill) => ({ slug: skill.slug, skill: skill.skill }))
       )
-    ),
+      .reduce((unique, item) => {
+        return unique.findIndex((v) => v.slug === item.slug) !== -1
+          ? unique
+          : [...unique, item];
+      }, [] as { slug: string; skill: string }[]),
   ];
 
   //^ Filtering Logic
@@ -247,19 +259,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   const groupedBlogs = groupBlogsByType(filteredBlogs);
 
   const resetFilters = () => {
-    router.push(
-      generateUrl(
-        {
-          [blogSectionParamName]: "all",
-          [skillCategoryParamName]: "all",
-          [technicalSkillParamName]: "all",
-          [generalSkillParamName]: "all",
-          [softSkillParamName]: "all",
-          [searchParamName]: "",
-        },
-        basePath
-      )
-    );
+    router.push(basePath);
   };
 
   const areFiltersApplied =
@@ -317,7 +317,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
         {/* Buttons */}
         <div className="flex flex-row md:flex-1 gap-2 w-full">
           {/* Filter Button */}
-          <OpenFilterModalButton handleOpenFilterModal={handleOpenFilter} />
+          <OpenFilterButton handleOpenFilterModal={handleToggleFilter} />
           {/* Clear Button */}
           <ClearAllFiltersButton
             resetFilters={resetFilters}
@@ -330,55 +330,21 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
       <BlogListSection groupedBlogs={groupedBlogs} />
 
       {/* Filter Modal */}
-      <Overlay
+      <FilterOverlay
         isOpen={isFilterOpen}
-        toggle={handleCloseFilter}
-        className="w-full md:w-[30rem] rounded-xl m-0 md:m-4 bg-white dark:bg-neutral-900 pt-20"
-      >
-        {filterCategories.map((filterCategory, index) => (
-          <div key={index}>
-            <HeadingFour title={filterCategory.name} />
-            <ul>
-              {filterCategory.options.map((option, i) => {
-                // Create an object with the currently selected options
-                const selectedOptions = {
-                  [blogSectionParamName]: selectedBlogSection,
-                  [skillCategoryParamName]: selectedSkillCategory,
-                  [technicalSkillParamName]: selectedTechnicalSkill,
-                  [generalSkillParamName]: selectedGeneralSkill,
-                  [softSkillParamName]: selectedSoftSkill,
-                  [searchParamName]: searchTerm,
-                };
-
-                return (
-                  <li key={i}>
-                    <Link
-                      href={generateUrl(
-                        {
-                          ...selectedOptions,
-                          [filterCategory.urlParam]: option.slug,
-                        },
-                        basePath
-                      )}
-                    >
-                      <RadioButton
-                        id={option.slug}
-                        name={filterCategory.name}
-                        value={option.slug}
-                        checked={
-                          filterCategory.selectedValue.toLowerCase() ===
-                          option.slug.toLowerCase()
-                        }
-                        label={option.skill}
-                      />
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        ))}
-      </Overlay>
+        toggle={handleToggleFilter}
+        filterCategories={filterCategories}
+        selectedOptions={{
+          [blogSectionParamName]: selectedBlogSection,
+          [skillCategoryParamName]: selectedSkillCategory,
+          [technicalSkillParamName]: selectedTechnicalSkill,
+          [generalSkillParamName]: selectedGeneralSkill,
+          [softSkillParamName]: selectedSoftSkill,
+          [searchParamName]: searchTerm,
+        }}
+        generateUrl={generateUrl}
+        basePath={basePath}
+      />
     </>
   );
 };
