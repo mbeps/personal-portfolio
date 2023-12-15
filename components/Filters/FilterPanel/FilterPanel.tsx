@@ -21,6 +21,15 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
   isOpen,
   toggle,
 }) => {
+  const handleRadioButtonChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    sectionName: string
+  ) => {
+    console.log(
+      `Radio button in section ${sectionName} changed to ${e.target.value}`
+    );
+  };
+
   return (
     <div
       className={`fixed top-0 right-0 h-screen w-full md:w-[25rem] z-20 transform ${
@@ -78,6 +87,9 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
                           option.slug.toLowerCase()
                         }
                         label={option.entryName}
+                        onChange={(e) =>
+                          handleRadioButtonChange(e, filterCategory.sectionName)
+                        }
                       />
                     </Link>
                   </li>
