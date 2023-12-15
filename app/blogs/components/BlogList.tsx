@@ -15,6 +15,7 @@ import BlogListSection from "./BlogListSection";
 import OpenFilterButton from "@/components/Filters/Page/OpenFilterPanelButton";
 import FilterOption from "@/types/FilterOption";
 import FilterCategory from "@/types/FilterCategory";
+import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
 
 interface BlogListProps {
   blogs: BlogMetadata[];
@@ -38,7 +39,9 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   const technicalSkillParamName = "technical";
   const generalSkillParamName = "general";
   const softSkillParamName = "soft";
+
   const searchParamName = "search";
+  const archivedParamName = "archived";
 
   //^ URL Params Reader
   const selectedBlogSection = searchParams.get(blogSectionParamName) || "all";
@@ -48,7 +51,10 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
     searchParams.get(technicalSkillParamName) || "all";
   const selectedGeneralSkill = searchParams.get(generalSkillParamName) || "all";
   const selectedSoftSkill = searchParams.get(softSkillParamName) || "all";
+
   const searchTerm = searchParams.get(searchParamName) || "";
+  const showArchived =
+    (searchParams.get(archivedParamName) || "false").toLowerCase() === "true";
 
   /**
    * Opens the modal to filter the projects.
@@ -198,6 +204,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
           [technicalSkillParamName]: selectedTechnicalSkill,
           [softSkillParamName]: selectedSoftSkill,
           [searchParamName]: newSearchTerm, // only thing that changes
+          [archivedParamName]: true.toString(),
         },
         basePath
       )
@@ -235,13 +242,15 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
         (skill) =>
           skill.slug === selectedSoftSkill && skill.skillType === "soft"
       );
+    const matchesArchivedStatus = showArchived || !blog.archived;
 
     return (
       matchesBlogSection &&
       matchesSkillCategory &&
       matchesHardSkill &&
       matchesGeneralSkill &&
-      matchesSoftSkill
+      matchesSoftSkill &&
+      matchesArchivedStatus
     );
   });
 
@@ -252,11 +261,11 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   };
 
   const areFiltersApplied =
-    selectedBlogSection.toLowerCase() !== "all" ||
-    selectedSkillCategory.toLowerCase() !== "all" ||
-    selectedTechnicalSkill.toLowerCase() !== "all" ||
-    selectedGeneralSkill.toLowerCase() !== "all" ||
-    selectedSoftSkill.toLowerCase() !== "all" ||
+    selectedBlogSection !== "all" ||
+    selectedSkillCategory !== "all" ||
+    selectedTechnicalSkill !== "all" ||
+    selectedGeneralSkill !== "all" ||
+    selectedSoftSkill !== "all" ||
     searchTerm !== "";
 
   const filterCategories: FilterCategory[] = [
@@ -315,6 +324,20 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
         </div>
       </div>
 
+      {/* Toggle to display archived projects */}
+      <ArchiveToggle
+        generateUrl={generateUrl}
+        showArchived={showArchived}
+        filterProps={{
+          [blogSectionParamName]: selectedBlogSection,
+          [skillCategoryParamName]: selectedSkillCategory,
+          [technicalSkillParamName]: selectedTechnicalSkill,
+          [softSkillParamName]: selectedSoftSkill,
+          [searchParamName]: searchTerm,
+        }}
+        basePath={basePath}
+      />
+
       {/* Blog List */}
       <BlogListSection groupedBlogs={groupedBlogs} />
 
@@ -325,6 +348,10 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
         filterCategories={filterCategories}
         generateUrl={generateUrl}
         basePath={basePath}
+        archiveFilter={{
+          paramName: archivedParamName,
+          status: showArchived,
+        }}
       />
     </>
   );
