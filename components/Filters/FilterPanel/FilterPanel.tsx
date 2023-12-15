@@ -39,12 +39,36 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
 
   return (
     <div
-      className={`fixed top-0 right-0 h-screen w-full md:w-[25rem] z-20 transform ${
-        isOpen ? "translate-x-0" : "translate-x-full"
-      } transition-all duration-700 ease-in-out bg-none flex flex-col px-2 pb-3`}
+      className={`
+        fixed 
+        top-0 right-0 
+        h-screen 
+        w-full md:w-[25rem] 
+        z-20 
+        transform 
+        ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        } transition-all duration-700 
+        ease-in-out bg-none 
+        flex flex-col 
+        md:px-2 
+        md:pb-3
+      `}
     >
       <div
-        className={`mt-auto h-[calc(100vh-6rem)] shadow-2xl rounded-2xl w-full border-1.5 border-neutral-200 dark:border-neutral-700 overflow-y-auto px-4 py-4 bg-neutral-100 dark:bg-black transition-all duration-700 ease-in-out`}
+        className={`
+          mt-auto 
+          h-[calc(100vh-6rem)] 
+          w-full 
+          shadow-2xl 
+          md:rounded-2xl 
+          border-1.5 
+          border-neutral-200 dark:border-neutral-700 
+          bg-neutral-100 dark:bg-black 
+          overflow-y-auto 
+          px-4 py-4 
+          transition-all duration-700 ease-in-out 
+        `}
       >
         <div className="flex flex-col justify-between">
           <div className="flex justify-between items-center">
@@ -59,8 +83,20 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
           </div>
         </div>
 
+        <p
+          className="
+          text-neutral-500 dark:text-neutral-400
+          text-sm md:text-base
+          text-center md:text-left
+        "
+        >
+          When you apply a filter, the archive will be automatically displayed.
+        </p>
+
         {filterCategories.map((filterCategory, index) => (
           <div key={index}>
+            {/* divider */}
+            <div className="border-b-2 border-neutral-200 dark:border-neutral-800 my-4"></div>
             <HeadingFour title={filterCategory.sectionName} />
             <ul>
               {filterCategory.options.map((option, i) => {
@@ -75,7 +111,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
                 );
 
                 return (
-                  <li key={i}>
+                  <li key={i} className="space-x-2">
                     <Link
                       href={generateUrl(
                         {

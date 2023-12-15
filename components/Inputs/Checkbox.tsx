@@ -42,9 +42,10 @@ const Checkbox: React.FC<CheckboxProps> = ({
       bg-neutral-200 dark:bg-neutral-800
       hover:bg-neutral-300 dark:hover:bg-red-950
       transition-colors duration-300 ease-in-out
-      rounded-xl p-2 my-2 
+      rounded-xl 
+      p-2 md:p-1.5 
+      my-2 
       flex items-center cursor-pointer
-      hover:font-bold
     `,
     className // Merge user-provided className
   );
