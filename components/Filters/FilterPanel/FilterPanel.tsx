@@ -5,6 +5,8 @@ import RadioButton from "../../Inputs/RadioButton";
 import HeadingFour from "../../Text/HeadingFour";
 import HeadingThree from "../../Text/HeadingThree";
 import FilterCategory from "@/types/FilterCategory";
+import FilterOption from "@/types/FilterOption";
+import { arch } from "os";
 
 interface FilterOverlayProps {
   filterCategories: FilterCategory[];
@@ -12,6 +14,10 @@ interface FilterOverlayProps {
   basePath: string;
   isOpen: boolean;
   toggle: () => void;
+  archiveFilter: {
+    paramName: string;
+    status: boolean;
+  };
 }
 
 const FilterOverlay: React.FC<FilterOverlayProps> = ({
@@ -20,6 +26,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
   basePath,
   isOpen,
   toggle,
+  archiveFilter,
 }) => {
   const handleRadioButtonChange = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -74,6 +81,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
                         {
                           ...selectedOptions,
                           [filterCategory.urlParam]: option.slug,
+                          [archiveFilter.paramName]: "true",
                         },
                         basePath
                       )}

@@ -10,12 +10,12 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import CredentialListSection from "./CredentialListSection";
 
-import { Skill } from "@/types/skills";
-import FilterOption from "@/types/FilterOption";
 import stringToSlug from "@/actions/stringToSlug";
-import OpenFilterButton from "@/components/Filters/Page/OpenFilterPanelButton";
-import FilterCategory from "@/types/FilterCategory";
 import FilterOverlay from "@/components/Filters/FilterPanel/FilterPanel";
+import ToggleFilterButton from "@/components/Filters/Page/ToggleFilterButton";
+import FilterCategory from "@/types/FilterCategory";
+import FilterOption from "@/types/FilterOption";
+import { Skill } from "@/types/skills";
 
 type CredentialsListListProps = {
   allCertificates: Certificate[];
@@ -74,21 +74,6 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     "true";
 
   //^ Modal Controls
-  /**
-   * Opens the modal to filter the projects.
-   */
-  const handleOpenFilterModal = () => {
-    setIsFilterOpen(true);
-  };
-
-  /**
-   * Closes the modals.
-   * These modals are for filtering and displaying more projects.
-   */
-  const handleCloseModals = () => {
-    setIsFilterOpen(false);
-  };
-
   const handleToggleFilter = () => {
     setIsFilterOpen(!isFilterOpen);
   };
@@ -285,31 +270,13 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
 
   const groupedCertificates = groupCertificatesByCategory(filteredCertificates);
 
-  const resetFilters = () => {
-    router.push(
-      generateUrl(
-        {
-          [issuerParamName]: "all",
-          [credentialSectionParamName]: "all",
-          [skillCategoryParamName]: "all",
-          [technicalSkillParamName]: "all",
-          [generalSkillParamName]: "all",
-          [softSkillParamName]: "all",
-          [searchParamName]: "",
-          [archivedParamName]: false.toString(),
-        },
-        basePath
-      )
-    );
-  };
-
   const areFiltersApplied =
-    selectedIssuer.toLowerCase() !== "all" ||
-    selectedCategory.toLowerCase() !== "all" ||
-    selectedSkillCategory.toLowerCase() !== "all" ||
-    selectedTechnicalSkill.toLowerCase() !== "all" ||
-    selectedGeneralSkill.toLowerCase() !== "all" ||
-    selectedSoftSkill.toLowerCase() !== "all" ||
+    selectedIssuer !== "all" ||
+    selectedCategory !== "all" ||
+    selectedSkillCategory !== "all" ||
+    selectedTechnicalSkill !== "all" ||
+    selectedGeneralSkill !== "all" ||
+    selectedSoftSkill !== "all" ||
     searchTerm !== "" ||
     showArchived;
 
@@ -367,11 +334,11 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
         {/* Buttons */}
         <div className="flex flex-row md:flex-1 gap-2 w-full">
           {/* Filter Button */}
-          <OpenFilterButton handleOpenFilterModal={handleOpenFilterModal} />
+          <ToggleFilterButton toggleFilter={handleToggleFilter} />
           {/* Clear Button */}
           <ClearAllFiltersButton
             areFiltersApplied={areFiltersApplied}
-            resetFilters={resetFilters}
+            basePath={basePath}
           />
         </div>
       </div>
@@ -397,6 +364,10 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
         filterCategories={filterCategories}
         generateUrl={generateUrl}
         basePath={basePath}
+        archiveFilter={{
+          paramName: archivedParamName,
+          status: showArchived,
+        }}
       />
     </>
   );

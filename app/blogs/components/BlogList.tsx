@@ -12,7 +12,7 @@ import Fuse from "fuse.js";
 import { usePathname, useRouter, useSearchParams } from "next/navigation"; // Add this import for Next.js router
 import { useState } from "react";
 import BlogListSection from "./BlogListSection";
-import OpenFilterButton from "@/components/Filters/Page/OpenFilterPanelButton";
+import ToggleFilterButton from "@/components/Filters/Page/ToggleFilterButton";
 import FilterOption from "@/types/FilterOption";
 import FilterCategory from "@/types/FilterCategory";
 import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
@@ -55,21 +55,6 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   const searchTerm = searchParams.get(searchParamName) || "";
   const showArchived =
     (searchParams.get(archivedParamName) || "false").toLowerCase() === "true";
-
-  /**
-   * Opens the modal to filter the projects.
-   */
-  const handleOpenFilter = () => {
-    setIsFilterModalOpen(true);
-  };
-
-  /**
-   * Closes the modals.
-   * These modals are for filtering and displaying more projects.
-   */
-  const handleCloseFilter = () => {
-    setIsFilterModalOpen(false);
-  };
 
   const handleToggleFilter = () => {
     setIsFilterModalOpen(!isFilterOpen);
@@ -256,10 +241,6 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
 
   const groupedBlogs = groupBlogsByType(filteredBlogs);
 
-  const resetFilters = () => {
-    router.push(basePath);
-  };
-
   const areFiltersApplied =
     selectedBlogSection !== "all" ||
     selectedSkillCategory !== "all" ||
@@ -315,11 +296,11 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
         {/* Buttons */}
         <div className="flex flex-row md:flex-1 gap-2 w-full">
           {/* Filter Button */}
-          <OpenFilterButton handleOpenFilterModal={handleToggleFilter} />
+          <ToggleFilterButton toggleFilter={handleToggleFilter} />
           {/* Clear Button */}
           <ClearAllFiltersButton
-            resetFilters={resetFilters}
             areFiltersApplied={areFiltersApplied}
+            basePath={basePath}
           />
         </div>
       </div>
