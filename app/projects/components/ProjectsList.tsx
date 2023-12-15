@@ -1,11 +1,8 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
-import FilterModal, {
-  FilterCategory,
-} from "@/components/Filters/Modal/FIlterModal";
+
 import ClearAllFiltersButton from "@/components/Filters/Page/ClearAllFiltersButton";
-import OpenFilterModalButton from "@/components/Filters/Page/OpenFilterModalButton";
 import SearchInput from "@/components/Inputs/SearchInput";
 import Project from "@/types/projects";
 import Fuse from "fuse.js";
@@ -14,6 +11,12 @@ import React, { useState } from "react";
 import { ArchiveToggle } from "../../../components/Filters/ArchiveToggle";
 import ProjectsListSection from "./ProjectListSection";
 import { Skill } from "@/types/skills";
+import FilterOption from "@/types/FilterOption";
+import stringToSlug from "@/actions/stringToSlug";
+import FilterCategory from "@/types/FilterCategory";
+import OpenFilterButton from "@/components/Filters/Page/OpenFilterPanelButton";
+import FilterOverlay from "@/components/Filters/FilterPanel/FilterPanel";
+import HeadingFour from "@/components/Text/HeadingFour";
 
 type ProjectsListProps = {
   allProjects: Project[];
@@ -21,7 +24,7 @@ type ProjectsListProps = {
 
 const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   //^ Hooks
-  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const searchParams = useSearchParams();
   const basePath = usePathname();
   const router = useRouter();
@@ -38,26 +41,15 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const searchParamName = "search";
 
   //^ URL Params Reader
-  const selectedTechnology = (
-    searchParams.get(technologyParamName) || "all"
-  ).toLowerCase();
-  const selectedLanguage = (
-    searchParams.get(languageParamName) || "all"
-  ).toLowerCase();
-  const selectedSection = (
-    searchParams.get(sectionParamName) || "All"
-  ).toLowerCase();
-  const selectedSkillCategory = (
-    searchParams.get(skillCategoryParamName) || "All"
-  ).toLowerCase();
-  const selectedGeneralSkill = (
-    searchParams.get(generalSkillParamName) || "all"
-  ).toLowerCase();
-  const selectedSoftSkill = (
-    searchParams.get(softSkillParamName) || "all"
-  ).toLowerCase();
+  const selectedTechnology = searchParams.get(technologyParamName) || "all";
+  const selectedLanguage = searchParams.get(languageParamName) || "all";
+  const selectedSection = searchParams.get(sectionParamName) || "All";
+  const selectedSkillCategory =
+    searchParams.get(skillCategoryParamName) || "All";
+  const selectedGeneralSkill = searchParams.get(generalSkillParamName) || "all";
+  const selectedSoftSkill = searchParams.get(softSkillParamName) || "all";
 
-  const searchTerm = (searchParams.get(searchParamName) || "").toLowerCase();
+  const searchTerm = searchParams.get(searchParamName) || "";
   const showArchived =
     (searchParams.get(archivedParamName) || "false").toLowerCase() === "true";
 
@@ -66,7 +58,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
    * Opens the modal to filter the projects.
    */
   const handleOpenFilterModal = () => {
-    setIsFilterModalOpen(true);
+    setIsFilterOpen(true);
   };
 
   /**
@@ -74,7 +66,11 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
    * These modals are for filtering and displaying more projects.
    */
   const handleCloseModals = () => {
-    setIsFilterModalOpen(false);
+    setIsFilterOpen(false);
+  };
+
+  const handleToggleFilter = () => {
+    setIsFilterOpen(!isFilterOpen);
   };
 
   //^ Search Settings
@@ -131,11 +127,17 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
    * Appends all unique project types to the list.
    * Project types are from the 'type' property of each project.
    */
-  const projectTypes: string[] = [
-    "All",
+  const projectTypes: FilterOption[] = [
+    { slug: "all", entryName: "All" },
     ...allProjects
-      .map((project: Project) => project.type)
-      .filter((value, index, self) => self.indexOf(value) === index),
+      .map((project: Project) => ({
+        slug: stringToSlug(project.type),
+        entryName: project.type,
+      }))
+      .filter(
+        (value, index, self) =>
+          self.findIndex((v) => v.slug === value.slug) === index
+      ),
   ];
 
   /**
@@ -144,11 +146,18 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
    * Appends all unique programming languages to the list.
    * Programming languages are from the 'programmingLanguage' property of each project.
    */
-  const programmingLanguages: string[] = [
-    "All",
+  const programmingLanguages: FilterOption[] = [
+    { slug: "all", entryName: "All" },
     ...allProjects
-      .map((project: Project) => project.programmingLanguage.skill)
-      .filter((value, index, self) => self.indexOf(value) === index),
+      .map((project: Project) => ({
+        slug: project.programmingLanguage.slug,
+        entryName: project.programmingLanguage.skill,
+      }))
+      .reduce((unique, item) => {
+        return unique.findIndex((v) => v.slug === item.slug) !== -1
+          ? unique
+          : [...unique, item];
+      }, [] as FilterOption[]),
   ];
 
   /**
@@ -157,56 +166,77 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
    * Appends all unique technologies to the list.
    * Technologies are from the 'technologies' property of each project.
    */
-  const technologies: string[] = [
-    "All",
-    ...Array.from(
-      new Set(
-        allProjects.flatMap((project: Project) =>
-          (project.skills || [])
-            .filter((skill: Skill) => skill.skillType === "hard")
-            .map((skill: Skill) => skill.skill)
-        )
+  const technologies: FilterOption[] = [
+    { slug: "all", entryName: "All" },
+    ...allProjects
+      .flatMap((project: Project) =>
+        (project.skills || [])
+          .filter((skill: Skill) => skill.skillType === "hard")
+          .map((skill: Skill) => ({
+            slug: skill.slug,
+            entryName: skill.skill,
+          }))
       )
-    ),
-  ];
-  const categories: string[] = [
-    "All",
-    ...Array.from(
-      new Set(
-        allProjects.flatMap(
-          (project: Project) =>
-            project.skills
-              ?.map((skill: Skill) => skill.category)
-              .filter(Boolean) || []
-        )
-      )
-    ),
+      .reduce((unique, item) => {
+        return unique.findIndex((v) => v.slug === item.slug) !== -1
+          ? unique
+          : [...unique, item];
+      }, [] as FilterOption[]),
   ];
 
-  const generalSkills: string[] = [
-    "All",
-    ...Array.from(
-      new Set(
-        allProjects.flatMap((project: Project) =>
-          (project.skills || [])
-            .filter((skill: Skill) => skill.skillType === "general")
-            .map((skill: Skill) => skill.skill)
-        )
+  const categories: FilterOption[] = [
+    { slug: "all", entryName: "All" },
+    ...allProjects
+      .flatMap(
+        (project: Project) =>
+          project.skills
+            ?.map((skill: Skill) => ({
+              slug: stringToSlug(skill.category),
+              entryName: skill.category,
+            }))
+            .filter(Boolean) || []
       )
-    ),
+      .reduce((unique, item) => {
+        return unique.findIndex((v) => v.slug === item.slug) !== -1
+          ? unique
+          : [...unique, item];
+      }, [] as FilterOption[]),
   ];
 
-  const softSkills: string[] = [
-    "All",
-    ...Array.from(
-      new Set(
-        allProjects.flatMap((project: Project) =>
-          (project.skills || [])
-            .filter((skill: Skill) => skill.skillType === "soft")
-            .map((skill: Skill) => skill.skill)
-        )
+  const generalSkills: FilterOption[] = [
+    { slug: "all", entryName: "All" },
+    ...allProjects
+      .flatMap((project: Project) =>
+        (project.skills || [])
+          .filter((skill: Skill) => skill.skillType === "general")
+          .map((skill: Skill) => ({
+            slug: skill.slug,
+            entryName: skill.skill,
+          }))
       )
-    ),
+      .reduce((unique, item) => {
+        return unique.findIndex((v) => v.slug === item.slug) !== -1
+          ? unique
+          : [...unique, item];
+      }, [] as FilterOption[]),
+  ];
+
+  const softSkills: FilterOption[] = [
+    { slug: "all", entryName: "All" },
+    ...allProjects
+      .flatMap((project: Project) =>
+        (project.skills || [])
+          .filter((skill: Skill) => skill.skillType === "soft")
+          .map((skill: Skill) => ({
+            slug: skill.slug,
+            entryName: skill.skill,
+          }))
+      )
+      .reduce((unique, item) => {
+        return unique.findIndex((v) => v.slug === item.slug) !== -1
+          ? unique
+          : [...unique, item];
+      }, [] as FilterOption[]),
   ];
 
   //^ Filtering Logic
@@ -225,8 +255,8 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
           [skillCategoryParamName]: selectedSkillCategory,
           [generalSkillParamName]: selectedGeneralSkill,
           [softSkillParamName]: selectedSoftSkill,
-          [searchParamName]: newSearchTerm,
-          [archivedParamName]: true,
+          [searchParamName]: newSearchTerm, // only this changes
+          [archivedParamName]: true.toString(),
         },
         basePath
       )
@@ -241,45 +271,60 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
    */
   const filteredProjects = searchedProjects.filter((project: Project) => {
     const matchesType =
-      selectedSection === "all" ||
-      project.type.toLowerCase() === selectedSection;
+      selectedSection.toLowerCase() === "all" ||
+      stringToSlug(project.type).toLowerCase() ===
+        stringToSlug(selectedSection).toLowerCase();
+
+    const matchesProgrammingLanguage =
+      selectedLanguage.toLowerCase() === "all" ||
+      stringToSlug(project.programmingLanguage.slug).toLowerCase() ===
+        stringToSlug(selectedLanguage).toLowerCase();
+
     const matchesTechnology =
-      selectedTechnology === "all" ||
-      (project.skills || [])
-        .map((tech: Skill) => tech.skill.toLowerCase())
-        .includes(selectedTechnology);
-    const matchesLanguage =
-      selectedLanguage === "all" ||
-      project.programmingLanguage.skill.toLowerCase() === selectedLanguage;
-    const matchesArchivedStatus = showArchived || !project.archived;
-    const matchesSkillCategory =
-      selectedSkillCategory === "all" ||
-      project.skills.some(
-        (skill) => skill.category?.toLowerCase() === selectedSkillCategory
+      selectedTechnology.toLowerCase() === "all" ||
+      (project.skills || []).some(
+        (skill) =>
+          skill.skillType === "hard" &&
+          stringToSlug(skill.slug).toLowerCase() ===
+            stringToSlug(selectedTechnology).toLowerCase()
       );
+
+    const matchesCategory =
+      selectedSkillCategory.toLowerCase() === "all" ||
+      (project.skills || []).some(
+        (skill) =>
+          stringToSlug(skill.category).toLowerCase() ===
+          stringToSlug(selectedSkillCategory).toLowerCase()
+      );
+
     const matchesGeneralSkill =
-      selectedGeneralSkill === "all" ||
-      project.skills.some(
+      selectedGeneralSkill.toLowerCase() === "all" ||
+      (project.skills || []).some(
         (skill) =>
           skill.skillType === "general" &&
-          skill.skill.toLowerCase() === selectedGeneralSkill
+          stringToSlug(skill.slug).toLowerCase() ===
+            stringToSlug(selectedGeneralSkill).toLowerCase()
       );
+
     const matchesSoftSkill =
-      selectedSoftSkill === "all" ||
-      project.skills.some(
+      selectedSoftSkill.toLowerCase() === "all" ||
+      (project.skills || []).some(
         (skill) =>
           skill.skillType === "soft" &&
-          skill.skill.toLowerCase() === selectedSoftSkill
+          stringToSlug(skill.slug).toLowerCase() ===
+            stringToSlug(selectedSoftSkill).toLowerCase()
       );
+
+    const matchesArchivedStatus = showArchived || !project.archived;
 
     return (
       matchesType &&
+      matchesProgrammingLanguage &&
       matchesTechnology &&
-      matchesLanguage &&
-      matchesArchivedStatus &&
-      matchesSkillCategory &&
+      matchesCategory &&
       matchesGeneralSkill &&
-      matchesSoftSkill
+      matchesSoftSkill &&
+      matchesArchivedStatus
     );
   });
 
@@ -303,7 +348,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
           [generalSkillParamName]: "all",
           [softSkillParamName]: "all",
           [searchParamName]: "",
-          [archivedParamName]: false,
+          [archivedParamName]: false.toString(),
         },
         basePath
       )
@@ -323,37 +368,37 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
 
   const filterCategories: FilterCategory[] = [
     {
-      name: "Section",
+      sectionName: "Section",
       urlParam: sectionParamName,
       selectedValue: selectedSection,
       options: projectTypes,
     },
     {
-      name: "Programming Language",
+      sectionName: "Programming Language",
       urlParam: languageParamName,
       selectedValue: selectedLanguage,
       options: programmingLanguages,
     },
     {
-      name: "Technology",
+      sectionName: "Technology",
       urlParam: technologyParamName,
       selectedValue: selectedTechnology,
       options: technologies,
     },
     {
-      name: "Category",
+      sectionName: "Category",
       urlParam: skillCategoryParamName,
       selectedValue: selectedSkillCategory,
       options: categories,
     },
     {
-      name: "General Skill",
+      sectionName: "General Skill",
       urlParam: generalSkillParamName,
       selectedValue: selectedGeneralSkill,
       options: generalSkills,
     },
     {
-      name: "Soft Skill",
+      sectionName: "Soft Skill",
       urlParam: softSkillParamName,
       selectedValue: selectedSoftSkill,
       options: softSkills,
@@ -375,9 +420,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
         {/* Buttons */}
         <div className="flex flex-row md:flex-1 gap-2 w-full">
           {/* Filter Button */}
-          <OpenFilterModalButton
-            handleOpenFilterModal={handleOpenFilterModal}
-          />
+          <OpenFilterButton handleOpenFilterModal={handleOpenFilterModal} />
           {/* Clear Button */}
           <ClearAllFiltersButton
             areFiltersApplied={areFiltersApplied}
@@ -401,19 +444,14 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
 
       {/* List of projects */}
       <ProjectsListSection groupedProjects={groupedProjects} />
+
       {/* Filter Modal */}
-      <FilterModal
+      <FilterOverlay
+        isOpen={isFilterOpen}
+        toggle={handleToggleFilter}
         filterCategories={filterCategories}
-        resetFilters={resetFilters}
-        generateUrl={generateUrl} // Ensure you have this function defined or imported
-        showArchived={showArchived}
-        isFilterModalOpen={isFilterModalOpen}
-        handleCloseModals={handleCloseModals}
-        areFiltersApplied={areFiltersApplied}
+        generateUrl={generateUrl}
         basePath={basePath}
-        description={`
-        Filters are applied automatically as you select them. Searching
-        and filtering automatically show archived projects.`}
       />
     </>
   );

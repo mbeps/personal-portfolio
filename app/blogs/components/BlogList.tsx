@@ -150,7 +150,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
           ? unique
           : [...unique, item];
-      }, [] as { slug: string; entryName: string }[]),
+      }, [] as FilterOption[]),
   ];
 
   const generalSkills: FilterOption[] = [
