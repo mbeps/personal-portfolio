@@ -50,6 +50,14 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
   const certificates = allCertificates;
   const allBlogs = blogs;
 
+  const hasProjects = isSkillAssociatedWithProject(language, projects);
+  const hasCertificates = isSkillAssociatedWithCertificate(
+    language,
+    certificates
+  );
+  const hasBlogs = isSkillAssociatedWithBlogs(language, allBlogs);
+  const hasMaterial = hasProjects || hasCertificates || hasBlogs;
+
   return (
     <Modal title={language.skill} isOpen={isOpen} onClose={onClose}>
       <div className="flex mt-4">
@@ -83,14 +91,14 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
         ))
       )}
 
-      {isSkillAssociatedWithProject(language, projects) && (
+      {hasProjects && (
         <div
           className="
           flex flex-wrap flex-col 
           text-center md:text-left 
           justify-start z-10 mt-5 space-y-2"
         >
-          <HeadingThree title="Projects" />
+          <HeadingThree title="Material" />
 
           <Link href={`/projects?archived=true&language=${language.skill}`}>
             <div className="w-full">
@@ -103,15 +111,13 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
         </div>
       )}
 
-      {isSkillAssociatedWithCertificate(language, certificates) && (
+      {hasCertificates && (
         <div
           className="
             flex flex-wrap flex-col 
             text-center md:text-left 
             justify-start z-10 mt-5 space-y-2"
         >
-          <HeadingThree title="Certificates" />
-
           <Link
             href={`
             /credentials?archived=true&technical=${language.skill}
@@ -127,15 +133,13 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
         </div>
       )}
 
-      {isSkillAssociatedWithBlogs(language, allBlogs) && (
+      {hasBlogs && (
         <div
           className="
             flex flex-wrap flex-col 
             text-center md:text-left 
             justify-start z-10 mt-5 space-y-2"
         >
-          <HeadingThree title="Blogs" />
-
           <Link
             href={`
             /blogs?technical=${language.skill}
@@ -149,6 +153,30 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
             </div>
           </Link>
         </div>
+      )}
+
+      {hasMaterial && (
+        <>
+          <div
+            className="
+            flex flex-wrap flex-col 
+            text-center md:text-left 
+            justify-start z-10 mt-5 space-y-2"
+          >
+            <Link
+              href={`
+            /skills/${language.slug}
+            `}
+            >
+              <div className="w-full">
+                <Button
+                  variant="ghost"
+                  className="w-full"
+                >{`All ${language.skill} Material`}</Button>
+              </div>
+            </Link>
+          </div>
+        </>
       )}
     </Modal>
   );
