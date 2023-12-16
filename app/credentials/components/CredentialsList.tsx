@@ -115,7 +115,8 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
       .filter(
         (value, index, self) =>
           self.findIndex((v) => v.slug === value.slug) === index
-      ),
+      )
+      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
   ];
 
   const certificateIssuers: FilterOption[] = [
@@ -129,7 +130,8 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
         return unique.findIndex((v) => v.slug === item.slug) !== -1
           ? unique
           : [...unique, item];
-      }, [] as FilterOption[]),
+      }, [] as FilterOption[])
+      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
   ];
 
   const skillCategories: FilterOption[] = [
@@ -145,7 +147,8 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
         return unique.findIndex((v) => v.slug === item.slug) !== -1
           ? unique
           : [...unique, item];
-      }, [] as FilterOption[]),
+      }, [] as FilterOption[])
+      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
   ];
 
   const hardSkills: FilterOption[] = [
@@ -163,7 +166,8 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
         return unique.findIndex((v) => v.slug === item.slug) !== -1
           ? unique
           : [...unique, item];
-      }, [] as FilterOption[]),
+      }, [] as FilterOption[])
+      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
   ];
 
   const generalSkills: FilterOption[] = [
@@ -181,7 +185,8 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
         return unique.findIndex((v) => v.slug === item.slug) !== -1
           ? unique
           : [...unique, item];
-      }, [] as FilterOption[]),
+      }, [] as FilterOption[])
+      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
   ];
 
   const softSkills: FilterOption[] = [
@@ -199,7 +204,8 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
         return unique.findIndex((v) => v.slug === item.slug) !== -1
           ? unique
           : [...unique, item];
-      }, [] as FilterOption[]),
+      }, [] as FilterOption[])
+      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
   ];
 
   //^ Filtering Logic

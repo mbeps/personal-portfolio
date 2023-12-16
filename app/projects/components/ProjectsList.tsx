@@ -142,6 +142,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
           ? unique
           : [...unique, item];
       }, [] as FilterOption[]),
+    // .sort((a, b) => a.entryName.localeCompare(b.entryName)),
   ];
 
   /**
@@ -165,7 +166,8 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
           ? unique
           : [...unique, item];
-      }, [] as FilterOption[]),
+      }, [] as FilterOption[])
+      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
   ];
 
   const categories: FilterOption[] = [
@@ -184,7 +186,8 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
           ? unique
           : [...unique, item];
-      }, [] as FilterOption[]),
+      }, [] as FilterOption[])
+      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
   ];
 
   const generalSkills: FilterOption[] = [
@@ -202,7 +205,8 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
           ? unique
           : [...unique, item];
-      }, [] as FilterOption[]),
+      }, [] as FilterOption[])
+      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
   ];
 
   const softSkills: FilterOption[] = [
@@ -220,7 +224,8 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
           ? unique
           : [...unique, item];
-      }, [] as FilterOption[]),
+      }, [] as FilterOption[])
+      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
   ];
 
   //^ Filtering Logic

@@ -109,7 +109,8 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
       .filter(
         (value, index, self) =>
           self.findIndex((v) => v.slug === value.slug) === index
-      ),
+      )
+      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
   ];
 
   const skillCategories: FilterOption[] = [
@@ -125,10 +126,10 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
           ? unique
           : [...unique, item];
-      }, [] as FilterOption[]),
+      }, [] as FilterOption[])
+      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
   ];
 
-  // Do the same for hardSkills, generalSkills, and softSkills
   const hardSkills: FilterOption[] = [
     { slug: "all", entryName: "All" },
     ...blogs
@@ -141,7 +142,8 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
           ? unique
           : [...unique, item];
-      }, [] as FilterOption[]),
+      }, [] as FilterOption[])
+      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
   ];
 
   const generalSkills: FilterOption[] = [
@@ -156,7 +158,8 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
           ? unique
           : [...unique, item];
-      }, [] as FilterOption[]),
+      }, [] as FilterOption[])
+      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
   ];
 
   const softSkills: FilterOption[] = [
@@ -171,7 +174,8 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
           ? unique
           : [...unique, item];
-      }, [] as FilterOption[]),
+      }, [] as FilterOption[])
+      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
   ];
 
   //^ Filtering Logic
