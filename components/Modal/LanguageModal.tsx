@@ -100,7 +100,7 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
         >
           <HeadingThree title="Material" />
 
-          <Link href={`/projects?archived=true&language=${language.skill}`}>
+          <Link href={`/projects?archived=true&language=${language.slug}`}>
             <div className="w-full">
               <Button
                 variant="ghost"
@@ -120,7 +120,7 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
         >
           <Link
             href={`
-            /credentials?archived=true&technical=${language.skill}
+            /credentials?archived=true&technical=${language.slug}
             `}
           >
             <div className="w-full">
@@ -142,7 +142,7 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
         >
           <Link
             href={`
-            /blogs?technical=${language.skill}
+            /blogs?technical=${language.slug}
             `}
           >
             <div className="w-full">
