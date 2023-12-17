@@ -91,6 +91,11 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
         ))
       )}
 
+      {hasMaterial && (
+        <div className="text-center md:text-left">
+          <HeadingThree title="Material" />
+        </div>
+      )}
       {hasProjects && (
         <div
           className="
@@ -98,8 +103,6 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
           text-center md:text-left 
           justify-start z-10 mt-5 space-y-2"
         >
-          <HeadingThree title="Material" />
-
           <Link href={`/projects?archived=true&language=${language.slug}`}>
             <div className="w-full">
               <Button
