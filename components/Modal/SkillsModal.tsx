@@ -1,12 +1,10 @@
-import { languages } from "@/constants/languages";
-import { technologies } from "@/constants/technologies";
+import groupSkills from "@/actions/skills/groupSkills";
 import { Skill } from "@/types/skills";
 import React from "react";
-import Tag from "../Atoms/Tag";
 import Dropdown from "../DropDown/DropDownMenu";
+import SkillTag from "../Tags/SkillTag";
 import HeadingThree from "../Text/HeadingThree";
 import Modal from "./Modal";
-import SkillTag from "../Tags/SkillTag";
 
 interface SkillsModalProps {
   isOpen?: boolean; // whether the modal is open or not
@@ -26,77 +24,7 @@ interface SkillsModalProps {
 const SkillsModal: React.FC<SkillsModalProps> = ({ isOpen, onClose }) => {
   const [groupedBy, setGroupedBy] = React.useState("category");
 
-  /**
-   * Allows grouping the skills by category or by language.
-   * Removes duplicates.
-   * @param skills (Skill[]) The skills to organize
-   * @returns (Record<string, Skill[]>): the skills organized by category
-   */
-  const groupSkills = (): Record<string, Skill[]> | Skill[] => {
-    let organizedSkills: Record<string, Skill[]> | Skill[] = {}; // The skills organized by category
-
-    // Helper function to remove duplicates
-    const removeDuplicates = (skills: Skill[]): Skill[] => {
-      const skillSet = new Set();
-      const uniqueSkills: Skill[] = [];
-
-      skills.forEach((skill) => {
-        const serializedSkill = JSON.stringify(skill);
-        if (!skillSet.has(serializedSkill)) {
-          skillSet.add(serializedSkill);
-          uniqueSkills.push(skill);
-        }
-      });
-
-      return uniqueSkills;
-    };
-
-    const allLanguageSkills = languages.flatMap((lang) => lang.skills || []);
-    const allSkills = allLanguageSkills.concat(technologies);
-
-    if (groupedBy === "language") {
-      organizedSkills = languages.reduce(
-        (acc: Record<string, Skill[]>, lang) => {
-          if (lang.skills) {
-            acc[lang.skill] = removeDuplicates(lang.skills);
-          }
-          return acc;
-        },
-        {} as Record<string, Skill[]>
-      );
-      (organizedSkills as Record<string, Skill[]>)["Other"] =
-        removeDuplicates(technologies);
-    } else if (groupedBy === "category") {
-      organizedSkills = allSkills.reduce(
-        (acc: Record<string, Skill[]>, skill) => {
-          const category = skill.category || "Other";
-          if (!acc[category]) {
-            acc[category] = [];
-          }
-          acc[category].push(skill);
-          return acc;
-        },
-        {} as Record<string, Skill[]>
-      );
-
-      // Remove duplicates for each category
-      Object.keys(organizedSkills as Record<string, Skill[]>).forEach(
-        (category) => {
-          (organizedSkills as Record<string, Skill[]>)[category] =
-            removeDuplicates(
-              (organizedSkills as Record<string, Skill[]>)[category]
-            );
-        }
-      );
-    } else {
-      // groupedBy === "none"
-      organizedSkills = removeDuplicates(allSkills);
-    }
-
-    return organizedSkills;
-  };
-
-  const skills = groupSkills();
+  const skills = groupSkills(groupedBy);
 
   return (
     <Modal title="Skills & Tools" isOpen={isOpen} onClose={onClose}>
@@ -112,7 +40,7 @@ const SkillsModal: React.FC<SkillsModalProps> = ({ isOpen, onClose }) => {
         <Dropdown
           selected={groupedBy}
           options={["category", "language", "none"]}
-          setSelected={setGroupedBy}
+          onSelect={setGroupedBy}
         />
       </div>
       {groupedBy === "none" ? (

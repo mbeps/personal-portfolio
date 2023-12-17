@@ -5,7 +5,7 @@ import { BsChevronUp, BsChevronDown } from "react-icons/bs";
 interface DropdownProps {
   selected: string;
   options: string[];
-  setSelected: React.Dispatch<React.SetStateAction<string>>;
+  onSelect: (value: string) => void; // Function to handle option selection
   className?: string;
   width?: string;
 }
@@ -24,7 +24,7 @@ interface DropdownProps {
 const Dropdown: React.FC<DropdownProps> = ({
   selected,
   options,
-  setSelected,
+  onSelect,
   className = "",
   width = "w-48", // Default width
 }) => {
@@ -74,16 +74,16 @@ const Dropdown: React.FC<DropdownProps> = ({
                   {({ active }) => (
                     <button
                       className={`
-                      ${option === selected ? "font-bold" : ""}
-                      ${
-                        active
-                          ? "bg-gray-200 dark:bg-red-950 group:md:hover:text-neutral-900 dark:group:md:hover:text-white"
-                          : "text-neutral-900 dark:text-neutral-100"
-                      } 
-                      group flex rounded-lg items-center ${width} px-2 py-2 text-base capitalize
-                      w-full md:hover:font-bold
-                    `}
-                      onClick={() => setSelected(option)}
+                        ${option === selected ? "font-bold" : ""}
+                        ${
+                          active
+                            ? "bg-gray-200 dark:bg-red-950 group:md:hover:text-neutral-900 dark:group:md:hover:text-white"
+                            : "text-neutral-900 dark:text-neutral-100"
+                        } 
+                        group flex rounded-lg items-center ${width} px-2 py-2 text-base capitalize
+                        w-full md:hover:font-bold
+                      `}
+                      onClick={() => onSelect(option)} // Using onSelect when an option is clicked
                     >
                       {option}
                     </button>

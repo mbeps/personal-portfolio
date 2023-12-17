@@ -68,7 +68,7 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
         <Dropdown
           selected={groupedBy}
           options={["category", "none"]}
-          setSelected={setGroupedBy}
+          onSelect={setGroupedBy}
         />
       </div>
       {groupedBy === "none" ? (
