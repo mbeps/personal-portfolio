@@ -2,14 +2,11 @@ import { languages } from "@/constants/languages";
 import { technologies } from "@/constants/technologies";
 import { Skill } from "@/types/skills";
 
-/**
- * Allows grouping the skills by category or by language.
- * Removes duplicates.
- * @param skills (Skill[]) The skills to organize
- * @returns (Record<string, Skill[]>): the skills organized by category
- */
-const groupSkills = (groupedBy: string): Record<string, Skill[]> | Skill[] => {
-  let organizedSkills: Record<string, Skill[]> | Skill[] = {};
+const groupSkills = (
+  groupedBy: string,
+  skills: Skill[]
+): Record<string, Skill[]> => {
+  let organizedSkills: Record<string, Skill[]> = {};
 
   const removeDuplicates = (skills: Skill[]): Skill[] => {
     const skillSet = new Set();
@@ -26,63 +23,39 @@ const groupSkills = (groupedBy: string): Record<string, Skill[]> | Skill[] => {
     return uniqueSkills;
   };
 
-  const allLanguageSkills = languages.flatMap((lang) => lang.skills || []);
-  const allSkills = allLanguageSkills.concat(technologies);
-
   if (groupedBy === "language") {
-    organizedSkills = languages.reduce((acc: Record<string, Skill[]>, lang) => {
-      if (lang.skills) {
-        acc[lang.skill] = removeDuplicates(lang.skills);
+    organizedSkills = skills.reduce((acc: Record<string, Skill[]>, skill) => {
+      if (skill.skills) {
+        acc[skill.skill] = removeDuplicates(skill.skills);
       }
       return acc;
     }, {});
-    (organizedSkills as Record<string, Skill[]>)["Other"] =
-      removeDuplicates(technologies);
   } else if (groupedBy === "category") {
-    organizedSkills = allSkills.reduce(
-      (acc: Record<string, Skill[]>, skill) => {
-        const category = skill.category || "Other";
-        if (!acc[category]) {
-          acc[category] = [];
-        }
-        acc[category].push(skill);
-        return acc;
-      },
-      {}
-    );
-
-    Object.keys(organizedSkills as Record<string, Skill[]>).forEach(
-      (category) => {
-        (organizedSkills as Record<string, Skill[]>)[category] =
-          removeDuplicates(
-            (organizedSkills as Record<string, Skill[]>)[category]
-          );
+    organizedSkills = skills.reduce((acc: Record<string, Skill[]>, skill) => {
+      const category = skill.category || "Other";
+      if (!acc[category]) {
+        acc[category] = [];
       }
-    );
-  } else if (groupedBy === "skillType") {
-    organizedSkills = allSkills.reduce(
-      (acc: Record<string, Skill[]>, skill) => {
-        const skillType = skill.skillType || "Other";
-        if (!acc[skillType]) {
-          acc[skillType] = [];
-        }
-        acc[skillType].push(skill);
-        return acc;
-      },
-      {}
-    );
-
-    Object.keys(organizedSkills as Record<string, Skill[]>).forEach(
-      (skillType) => {
-        (organizedSkills as Record<string, Skill[]>)[skillType] =
-          removeDuplicates(
-            (organizedSkills as Record<string, Skill[]>)[skillType]
-          );
+      acc[category].push(skill);
+      return acc;
+    }, {});
+  } else if (groupedBy === "skill-type") {
+    organizedSkills = skills.reduce((acc: Record<string, Skill[]>, skill) => {
+      const skillType = skill.skillType || "Other";
+      if (!acc[skillType]) {
+        acc[skillType] = [];
       }
-    );
+      acc[skillType].push(skill);
+      return acc;
+    }, {});
   } else {
     // groupedBy === "none"
-    organizedSkills = removeDuplicates(allSkills);
+    organizedSkills["None"] = removeDuplicates(skills);
+  }
+
+  // Remove duplicates for each category
+  for (const key in organizedSkills) {
+    organizedSkills[key] = removeDuplicates(organizedSkills[key]);
   }
 
   return organizedSkills;

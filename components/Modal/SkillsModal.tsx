@@ -1,10 +1,13 @@
 import groupSkills from "@/actions/skills/groupSkills";
+import hardSkills from "@/constants/skills/hardSkills";
 import { Skill } from "@/types/skills";
 import React from "react";
 import Dropdown from "../DropDown/DropDownMenu";
 import SkillTag from "../Tags/SkillTag";
 import HeadingThree from "../Text/HeadingThree";
 import Modal from "./Modal";
+import { languages } from "@/constants/languages";
+import { technologies } from "@/constants/technologies";
 
 interface SkillsModalProps {
   isOpen?: boolean; // whether the modal is open or not
@@ -24,7 +27,10 @@ interface SkillsModalProps {
 const SkillsModal: React.FC<SkillsModalProps> = ({ isOpen, onClose }) => {
   const [groupedBy, setGroupedBy] = React.useState("category");
 
-  const skills = groupSkills(groupedBy);
+  const groupedSkills = groupSkills(
+    groupedBy,
+    languages.flatMap((lang) => lang.skills || []).concat(technologies)
+  );
 
   return (
     <Modal title="Skills & Tools" isOpen={isOpen} onClose={onClose}>
@@ -39,30 +45,24 @@ const SkillsModal: React.FC<SkillsModalProps> = ({ isOpen, onClose }) => {
         </div>
         <Dropdown
           selected={groupedBy}
-          options={["category", "language", "none"]}
+          options={[
+            { slug: "category", entryName: "Category" },
+            { slug: "language", entryName: "Language" },
+            { slug: "none", entryName: "None" },
+          ]}
           onSelect={setGroupedBy}
         />
       </div>
-      {groupedBy === "none" ? (
-        <div className="mt-4 text-center md:text-left">
-          <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-            {(skills as Skill[]).map((skill, index) => (
-              <SkillTag key={index} skill={skill} />
-            ))}
-          </div>
-        </div>
-      ) : (
-        Object.entries(skills as Record<string, Skill[]>).map(
-          ([group, skills], index) => (
-            <div key={index} className="mt-4 text-center md:text-left">
-              <HeadingThree title={group} />
-              <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-                {skills.map((skill, index) => (
-                  <SkillTag key={index} skill={skill} />
-                ))}
-              </div>
+      {Object.entries(groupedSkills as Record<string, Skill[]>).map(
+        ([group, skills], index) => (
+          <div key={index} className="mt-4 text-center md:text-left">
+            <HeadingThree title={group} />
+            <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
+              {skills.map((skill, index) => (
+                <SkillTag key={index} skill={skill} />
+              ))}
             </div>
-          )
+          </div>
         )
       )}
     </Modal>

@@ -2,25 +2,19 @@ import React from "react";
 import { Menu } from "@headlessui/react";
 import { BsChevronUp, BsChevronDown } from "react-icons/bs";
 
+interface FilterOption {
+  slug: string;
+  entryName: string;
+}
+
 interface DropdownProps {
   selected: string;
-  options: string[];
+  options: FilterOption[];
   onSelect: (value: string) => void; // Function to handle option selection
   className?: string;
   width?: string;
 }
 
-/**
- * Dropdown menu for selecting options.
- * Displays a button which opens a dropdown menu when clicked.
- * The dropdown menu displays the options passed to it.
- *
- * @param selected (string) The selected option
- * @param options (string[]) The list of options
- * @param setSelected (React.Dispatch<React.SetStateAction<string>>) The function to set the selected option
- * @param className (string) The custom classes to be applied to the dropdown menu
- * @returns (JSX.Element): a dropdown menu
- */
 const Dropdown: React.FC<DropdownProps> = ({
   selected,
   options,
@@ -52,7 +46,8 @@ const Dropdown: React.FC<DropdownProps> = ({
               ${className} // Applying the custom classes here
             `}
           >
-            {selected}
+            {options.find((option) => option.slug === selected)?.entryName ||
+              selected}
             <span className="ml-2">
               {open ? <BsChevronUp /> : <BsChevronDown />}
             </span>
@@ -74,7 +69,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                   {({ active }) => (
                     <button
                       className={`
-                        ${option === selected ? "font-bold" : ""}
+                        ${option.slug === selected ? "font-bold" : ""}
                         ${
                           active
                             ? "bg-gray-200 dark:bg-red-950 group:md:hover:text-neutral-900 dark:group:md:hover:text-white"
@@ -83,9 +78,9 @@ const Dropdown: React.FC<DropdownProps> = ({
                         group flex rounded-lg items-center ${width} px-2 py-2 text-base capitalize
                         w-full md:hover:font-bold
                       `}
-                      onClick={() => onSelect(option)} // Using onSelect when an option is clicked
+                      onClick={() => onSelect(option.slug)} // Using onSelect with the option's slug
                     >
-                      {option}
+                      {option.entryName}
                     </button>
                   )}
                 </Menu.Item>

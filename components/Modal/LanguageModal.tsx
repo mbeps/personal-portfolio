@@ -1,22 +1,21 @@
+import groupSkills from "@/actions/skills/groupSkills";
+import isSkillAssociatedWithBlogs from "@/actions/skills/isSkillAssociatedWithBlogs";
+import isSkillAssociatedWithCertificate from "@/actions/skills/isSkillAssociatedWithCertificate";
+import isSkillAssociatedWithProject from "@/actions/skills/isSkillAssociatedWithProject";
+import blogs from "@/constants/blogs";
+import allCertificates from "@/constants/certificates";
+import allProjects from "@/constants/projects";
+import hardSkills from "@/constants/skills/hardSkills";
+import { Skill } from "@/types/skills";
+import Link from "next/link";
 import React, { useState } from "react";
 import Button from "../Atoms/Button";
-import Tag from "../Atoms/Tag";
-import HeadingThree from "../Text/HeadingThree";
 import Dropdown from "../DropDown/DropDownMenu";
-import Modal from "./Modal";
-import organizeSkillsByCategory from "@/actions/organizeSkillsByCategory";
-import Link from "next/link";
-import { Skill } from "@/types/skills";
-import Project from "@/types/projects";
-import allProjects from "@/constants/projects";
-import isSkillAssociatedWithProject from "@/actions/skills/isSkillAssociatedWithProject";
-import isSkillAssociatedWithCertificate from "@/actions/skills/isSkillAssociatedWithCertificate";
-import Certificate from "@/types/certificates";
-import { BlogMetadata } from "@/types/blog";
-import allCertificates from "@/constants/certificates";
-import isSkillAssociatedWithBlogs from "@/actions/skills/isSkillAssociatedWithBlogs";
-import blogs from "@/constants/blogs";
 import SkillTag from "../Tags/SkillTag";
+import HeadingThree from "../Text/HeadingThree";
+import Modal from "./Modal";
+import { languages } from "@/constants/languages";
+import { technologies } from "@/constants/technologies";
 
 interface ProjectModalProps {
   isOpen?: boolean; // whether the modal is open or not
@@ -45,8 +44,11 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
   onClose,
 }) => {
   const [groupedBy, setGroupedBy] = useState("category");
+  const groupedSkills = groupSkills(
+    groupedBy,
+    languages.flatMap((lang) => lang.skills || []).concat(technologies)
+  );
 
-  const skillsByCategory = organizeSkillsByCategory(skills);
   const projects = allProjects;
   const certificates = allCertificates;
   const allBlogs = blogs;
@@ -67,30 +69,24 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
         </div>
         <Dropdown
           selected={groupedBy}
-          options={["category", "none"]}
+          options={[
+            { slug: "category", entryName: "Category" },
+            { slug: "none", entryName: "None" },
+          ]}
           onSelect={setGroupedBy}
         />
       </div>
-      {groupedBy === "none" ? (
-        <div className="mt-4 text-center md:text-left">
+
+      {Object.entries(groupedSkills).map(([category, skills], index) => (
+        <div key={index} className="mt-4 text-center md:text-left">
+          <HeadingThree title={category} />
           <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
             {skills.map((skill, index) => (
               <SkillTag key={index} skill={skill} />
             ))}
           </div>
         </div>
-      ) : (
-        Object.entries(skillsByCategory).map(([category, skills], index) => (
-          <div key={index} className="mt-4 text-center md:text-left">
-            <HeadingThree title={category} />
-            <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-              {skills.map((skill, index) => (
-                <SkillTag key={index} skill={skill} />
-              ))}
-            </div>
-          </div>
-        ))
-      )}
+      ))}
 
       {hasMaterial && (
         <div className="text-center md:text-left">
