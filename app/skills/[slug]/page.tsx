@@ -1,21 +1,19 @@
 import getSkillBySlug from "@/actions/getSkillBySlug";
-import updateCredentialImages from "@/actions/updateCredentialImages";
 import HeadingOne from "@/components/Text/HeadingOne";
 import allCertificates from "@/constants/certificates";
 
-import updateProjectImages from "@/actions/updateProjectImages";
+import blogs from "@/constants/blogs";
+import { languages } from "@/constants/languages";
 import allProjects from "@/constants/projects";
 import generalSkills from "@/constants/skills/generalSkills";
 import hardSkills from "@/constants/skills/hardSkills";
 import softSkills from "@/constants/skills/softSkills";
+import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import React from "react";
+import BlogsSection from "./components/BlogsSection";
 import CredentialsSection from "./components/CredentialsSection";
 import ProjectsSection from "./components/ProjectsSection";
-import blogs from "@/constants/blogs";
-import BlogsSection from "./components/BlogsSection";
-import { languages } from "@/constants/languages";
-import { ResolvingMetadata, Metadata } from "next";
 
 const allSkills = [...hardSkills, ...generalSkills, ...softSkills];
 
@@ -46,15 +44,12 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
     notFound();
   }
 
-  const certificates = updateCredentialImages(allCertificates);
-  const projects = updateProjectImages(allProjects);
-
   return (
     <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
       <HeadingOne title={skill.skill} />
 
-      <ProjectsSection projects={projects} skill={skill} />
-      <CredentialsSection certificates={certificates} skill={skill} />
+      <ProjectsSection projects={allProjects} skill={skill} />
+      <CredentialsSection certificates={allCertificates} skill={skill} />
       <BlogsSection blogs={blogMetadata} skill={skill} />
     </div>
   );

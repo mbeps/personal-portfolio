@@ -1,3 +1,4 @@
+import updateProjectImages from "@/actions/updateProjectImages";
 import ProjectsListSection from "@/app/projects/components/ProjectListSection";
 import Button from "@/components/Atoms/Button";
 import Project from "@/types/projects";
@@ -12,6 +13,8 @@ interface ProjectPageProps {
 }
 
 const ProjectsSection: React.FC<ProjectPageProps> = ({ projects, skill }) => {
+  projects = updateProjectImages(projects);
+
   const filterProjectsBySkill = (
     projects: Project[],
     selectedSkill: string
