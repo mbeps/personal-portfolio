@@ -16,6 +16,7 @@ import HeadingThree from "../Text/HeadingThree";
 import Modal from "./Modal";
 import { languages } from "@/constants/languages";
 import { technologies } from "@/constants/technologies";
+import getProjectBySlug from "@/actions/getProjectBySlug";
 
 interface ProjectModalProps {
   isOpen?: boolean; // whether the modal is open or not
@@ -44,10 +45,7 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
   onClose,
 }) => {
   const [groupedBy, setGroupedBy] = useState("category");
-  const groupedSkills = groupSkills(
-    groupedBy,
-    languages.flatMap((lang) => lang.skills || []).concat(technologies)
-  );
+  const groupedSkills = groupSkills(groupedBy, language.skills || []);
 
   const projects = allProjects;
   const certificates = allCertificates;
