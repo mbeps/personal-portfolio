@@ -8,6 +8,8 @@ import HeadingThree from "../Text/HeadingThree";
 import Modal from "./Modal";
 import { languages } from "@/constants/languages";
 import { technologies } from "@/constants/technologies";
+import Button from "../Atoms/Button";
+import Link from "next/link";
 
 interface SkillsModalProps {
   isOpen?: boolean; // whether the modal is open or not
@@ -65,6 +67,13 @@ const SkillsModal: React.FC<SkillsModalProps> = ({ isOpen, onClose }) => {
           </div>
         )
       )}
+
+      {/* separator */}
+      <div className="w-full h-px bg-neutral-200 dark:bg-neutral-700 my-8" />
+
+      <Link href="/skills" className="flex justify-center mt-10">
+        <Button variant="outlined">View All Skills</Button>
+      </Link>
     </Modal>
   );
 };
