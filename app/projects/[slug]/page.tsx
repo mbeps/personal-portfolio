@@ -18,6 +18,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
+import SkillTag from "@/components/Tags/SkillTag";
 
 /**
  * Metadata object for the dynamic project page.
@@ -235,7 +236,9 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
         <div className="text-center md:text-left">
           <HeadingThree title="Language" />
           <div className="flex flex-wrap justify-center md:justify-start z-10 mt-5">
-            <Tag>{projectLanguage?.skill}</Tag>
+            <SkillTag skill={projectLanguage}>
+              {projectLanguage?.skill}
+            </SkillTag>
           </div>
         </div>
 

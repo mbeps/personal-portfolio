@@ -1,19 +1,17 @@
 "use client";
 
-import { Skill } from "@/types/skills";
-import React from "react";
-import Tag from "../Atoms/Tag";
-import Link from "next/link";
-import allSkills from "@/constants/skills";
 import isSkillAssociatedWithBlogs from "@/actions/skills/isSkillAssociatedWithBlogs";
 import isSkillAssociatedWithCertificate from "@/actions/skills/isSkillAssociatedWithCertificate";
 import isSkillAssociatedWithProject from "@/actions/skills/isSkillAssociatedWithProject";
-import certificates from "@/constants/certificates";
-import projects from "@/constants/projects";
-import { language } from "gray-matter";
 import blogs from "@/constants/blogs";
+import certificates from "@/constants/certificates";
 import allProjects from "@/constants/projects";
-import { useRouter } from "next/navigation";
+import allSkills from "@/constants/skills";
+import { Skill } from "@/types/skills";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import React from "react";
+import Tag from "../Atoms/Tag";
 
 interface TagProps {
   children: React.ReactNode;
@@ -21,7 +19,7 @@ interface TagProps {
 }
 
 const SkillTag: React.FC<TagProps> = ({ children, skill }) => {
-  const router = useRouter();
+  const currentPath = usePathname();
 
   const skills = allSkills;
   const allBlogs = blogs;
@@ -32,16 +30,16 @@ const SkillTag: React.FC<TagProps> = ({ children, skill }) => {
   const hasBlogs = isSkillAssociatedWithBlogs(skill, allBlogs);
   const hasMaterial = hasProjects || hasCertificates || hasBlogs;
 
-  const handleOnClick = () => {
-    if (hasMaterial) {
-      router.push(`/skills/${skill.slug}`);
-    }
-  };
+  let skillLink = `/skills/${skill.slug}`;
+  if (!hasMaterial) {
+    skillLink = currentPath;
+    return <Tag hasHover={hasMaterial}>{skill.skill}</Tag>;
+  }
 
   return (
-    <>
-      <Tag onClick={handleOnClick}>{skill.skill}</Tag>
-    </>
+    <Link href={skillLink}>
+      <Tag hasHover={hasMaterial}>{skill.skill}</Tag>
+    </Link>
   );
 };
 
