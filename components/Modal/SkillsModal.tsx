@@ -6,6 +6,7 @@ import Tag from "../Atoms/Tag";
 import Dropdown from "../DropDown/DropDownMenu";
 import HeadingThree from "../Text/HeadingThree";
 import Modal from "./Modal";
+import SkillTag from "../Tags/SkillTag";
 
 interface SkillsModalProps {
   isOpen?: boolean; // whether the modal is open or not
@@ -118,7 +119,7 @@ const SkillsModal: React.FC<SkillsModalProps> = ({ isOpen, onClose }) => {
         <div className="mt-4 text-center md:text-left">
           <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
             {(skills as Skill[]).map((skill, index) => (
-              <Tag key={index}>{skill.skill}</Tag>
+              <SkillTag key={index} skill={skill} />
             ))}
           </div>
         </div>
@@ -129,7 +130,7 @@ const SkillsModal: React.FC<SkillsModalProps> = ({ isOpen, onClose }) => {
               <HeadingThree title={group} />
               <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
                 {skills.map((skill, index) => (
-                  <Tag key={index}>{skill.skill}</Tag>
+                  <SkillTag key={index} skill={skill} />
                 ))}
               </div>
             </div>

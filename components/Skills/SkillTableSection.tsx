@@ -3,6 +3,7 @@ import HeadingFour from "@/components/Text/HeadingFour";
 import HeadingThree from "@/components/Text/HeadingThree";
 import { Skill } from "@/types/skills";
 import React from "react";
+import SkillTag from "../Tags/SkillTag";
 
 interface SkillTableSectionProps {
   skillCategories: Record<string, Skill[]>;
@@ -25,7 +26,7 @@ export const SkillTableSection: React.FC<SkillTableSectionProps> = ({
             <HeadingFour title={category} />
             <div className="flex flex-wrap justify-center md:justify-start">
               {skills.map((skill, index) => (
-                <Tag key={index}>{skill.skill}</Tag>
+                <SkillTag key={index} skill={skill} />
               ))}
             </div>
           </div>

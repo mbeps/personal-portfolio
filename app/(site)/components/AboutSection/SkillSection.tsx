@@ -120,9 +120,7 @@ const SkillSection: React.FC = () => {
       <HeadingThree title="Skills & Tools" />
       <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
         {handleDisplaySkills().map((skill: Skill, idx: number) => (
-          <SkillTag key={idx} skill={skill}>
-            {skill.skill}
-          </SkillTag>
+          <SkillTag key={idx} skill={skill} />
         ))}
         <div className="relative group">
           <Tag onClick={handleOpenModal}>...</Tag>

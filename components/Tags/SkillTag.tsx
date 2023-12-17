@@ -14,11 +14,10 @@ import React from "react";
 import Tag from "../Atoms/Tag";
 
 interface TagProps {
-  children: React.ReactNode;
   skill: Skill;
 }
 
-const SkillTag: React.FC<TagProps> = ({ children, skill }) => {
+const SkillTag: React.FC<TagProps> = ({ skill }) => {
   const currentPath = usePathname();
 
   const skills = allSkills;
@@ -37,7 +36,10 @@ const SkillTag: React.FC<TagProps> = ({ children, skill }) => {
   }
 
   return (
-    <Link href={skillLink}>
+    <Link
+      href={skillLink}
+      title={`Navigate to all material related to ${skill.skill}`}
+    >
       <Tag hasHover={hasMaterial}>{skill.skill}</Tag>
     </Link>
   );

@@ -16,6 +16,7 @@ import { BlogMetadata } from "@/types/blog";
 import allCertificates from "@/constants/certificates";
 import isSkillAssociatedWithBlogs from "@/actions/skills/isSkillAssociatedWithBlogs";
 import blogs from "@/constants/blogs";
+import SkillTag from "../Tags/SkillTag";
 
 interface ProjectModalProps {
   isOpen?: boolean; // whether the modal is open or not
@@ -74,7 +75,7 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
         <div className="mt-4 text-center md:text-left">
           <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
             {skills.map((skill, index) => (
-              <Tag key={index}>{skill.skill}</Tag>
+              <SkillTag key={index} skill={skill} />
             ))}
           </div>
         </div>
@@ -84,7 +85,7 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
             <HeadingThree title={category} />
             <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
               {skills.map((skill, index) => (
-                <Tag key={index}>{skill.skill}</Tag>
+                <SkillTag key={index} skill={skill} />
               ))}
             </div>
           </div>
