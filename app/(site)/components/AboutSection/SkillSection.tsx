@@ -2,6 +2,7 @@
 
 import Tag from "@/components/Atoms/Tag";
 import SkillsModal from "@/components/Modal/SkillsModal";
+import SkillTag from "@/components/Tags/SkillTag";
 import HeadingThree from "@/components/Text/HeadingThree";
 import { languages } from "@/constants/languages";
 import { technologies } from "@/constants/technologies";
@@ -62,17 +63,23 @@ const SkillSection: React.FC = () => {
   const allSkills: Skill[] = allLanguageSkills
     .concat(technologies)
     .filter((skill) => !ignoredCategories.includes(skill.category || "Other"));
+
   /**
    * Gets the first 'limit' skills.
    * These are then displayed as tags.
    * @param limit (number): the number of skills to take
    * @returns (string[]): list of skill names
    */
-  const firstNSkills = (limit: number) => {
-    const skillNames = Array.from(
-      new Set(allSkills.map((skill) => skill.skill)) // Extract skill names
-    ).slice(0, limit); // Remove duplicates
-    return skillNames;
+  const firstNSkills = (limit: number): Skill[] => {
+    const uniqueSkills = new Map<string, Skill>();
+
+    allSkills.forEach((skill) => {
+      if (!uniqueSkills.has(skill.skill)) {
+        uniqueSkills.set(skill.skill, skill);
+      }
+    });
+
+    return Array.from(uniqueSkills.values()).slice(0, limit);
   };
 
   /**
@@ -81,7 +88,7 @@ const SkillSection: React.FC = () => {
    * @param limitPerCategory (number): the number of skills to take from each category
    * @returns (string[]): list of skill names
    */
-  const firstNSkillsPerCategory = (limitPerCategory: number) => {
+  const firstNSkillsPerCategory = (limitPerCategory: number): Skill[] => {
     // Categorize the skills
     const categories: Record<string, Skill[]> = allSkills.reduce(
       (acc, skill) => {
@@ -93,15 +100,14 @@ const SkillSection: React.FC = () => {
       {} as Record<string, Skill[]> // Initialize categories
     );
 
-    // Take the first 'limitPerCategory' skills from each category, extract skill names, and flatten
-    let skillNames: string[] = []; // List of skill names
+    // Take the first 'limitPerCategory' skills from each category
+    let skills: Skill[] = []; // List of skills
     Object.values(categories).forEach((categorySkills) => {
-      const names = categorySkills // Extract skill names
-        .slice(0, limitPerCategory) // Take the first 'limitPerCategory' skills
-        .map((skill) => skill.skill); // Extract skill names
-      skillNames = Array.from(new Set(skillNames.concat(names))); // Merge with existing names, removing duplicates
+      const firstSkills = categorySkills.slice(0, limitPerCategory); // Take the first 'limitPerCategory' skills
+      skills = skills.concat(firstSkills); // Merge with existing skills
     });
-    return skillNames;
+
+    return skills;
   };
 
   const handleDisplaySkills = () => {
@@ -113,8 +119,10 @@ const SkillSection: React.FC = () => {
     <>
       <HeadingThree title="Skills & Tools" />
       <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-        {handleDisplaySkills().map((item, idx) => (
-          <Tag key={idx}>{item}</Tag>
+        {handleDisplaySkills().map((skill: Skill, idx: number) => (
+          <SkillTag key={idx} skill={skill}>
+            {skill.skill}
+          </SkillTag>
         ))}
         <div className="relative group">
           <Tag onClick={handleOpenModal}>...</Tag>
