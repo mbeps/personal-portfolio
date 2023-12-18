@@ -117,7 +117,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
     { slug: "all", entryName: "All" },
     ...blogs
       .flatMap((blog: BlogMetadata) =>
-        blog.skills.map((skill: Skill) => ({
+        blog.technicalSkills.map((skill: Skill) => ({
           slug: stringToSlug(skill.category),
           entryName: skill.category,
         }))
@@ -134,7 +134,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
     { slug: "all", entryName: "All" },
     ...blogs
       .flatMap((blog: BlogMetadata) =>
-        (blog.skills || [])
+        (blog.technicalSkills || [])
           .filter((skill: Skill) => skill.skillType === "hard")
           .map((skill: Skill) => ({ slug: skill.slug, entryName: skill.skill }))
       )
@@ -150,7 +150,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
     { slug: "all", entryName: "All" },
     ...blogs
       .flatMap((blog: BlogMetadata) =>
-        (blog.skills || [])
+        (blog.technicalSkills || [])
           .filter((skill: Skill) => skill.skillType === "general")
           .map((skill: Skill) => ({ slug: skill.slug, entryName: skill.skill }))
       )
@@ -166,7 +166,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
     { slug: "all", entryName: "All" },
     ...blogs
       .flatMap((blog: BlogMetadata) =>
-        (blog.skills || [])
+        (blog.technicalSkills || [])
           .filter((skill: Skill) => skill.skillType === "soft")
           .map((skill: Skill) => ({ slug: skill.slug, entryName: skill.skill }))
       )
@@ -209,25 +209,25 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
       stringToSlug(blog.category) === stringToSlug(selectedBlogSection);
     const matchesSkillCategory =
       selectedSkillCategory === "all" ||
-      (blog.skills || []).some(
+      (blog.technicalSkills || []).some(
         (skill) =>
           stringToSlug(skill.category) === stringToSlug(selectedSkillCategory)
       );
     const matchesHardSkill =
       selectedTechnicalSkill === "all" ||
-      (blog.skills || []).some(
+      (blog.technicalSkills || []).some(
         (skill) =>
           skill.slug === selectedTechnicalSkill && skill.skillType === "hard"
       );
     const matchesGeneralSkill =
       selectedGeneralSkill === "all" ||
-      (blog.skills || []).some(
+      (blog.technicalSkills || []).some(
         (skill) =>
           skill.slug === selectedGeneralSkill && skill.skillType === "general"
       );
     const matchesSoftSkill =
       selectedSoftSkill === "all" ||
-      (blog.skills || []).some(
+      (blog.technicalSkills || []).some(
         (skill) =>
           skill.slug === selectedSoftSkill && skill.skillType === "soft"
       );

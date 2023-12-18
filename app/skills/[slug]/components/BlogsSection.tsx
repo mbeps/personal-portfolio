@@ -17,7 +17,7 @@ const BlogsSection: React.FC<BlogsPageProps> = ({ blogs, skill }) => {
     selectedSkill: string
   ): BlogMetadata[] => {
     return blogs.filter((blog) =>
-      blog.skills.some(
+      blog.technicalSkills.some(
         (s) => s.skill.toLowerCase() === selectedSkill.toLowerCase()
       )
     );

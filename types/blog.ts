@@ -6,8 +6,9 @@ import { Skill } from "./skills";
 export interface BlogMetadata {
   title: string;
   subtitle: string;
-  slug: string; // read from file system dynamically
-  skills: Skill[];
+  slug: string;
+  technicalSkills: Skill[];
+  softSkills: Skill[];
   archived?: boolean;
   category:
     | "Web Development"

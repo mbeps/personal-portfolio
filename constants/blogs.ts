@@ -45,7 +45,11 @@ import {
   hibernate,
   normalisation,
 } from "./skills/hardSkills";
-import { projectManagement } from "./skills/softSkills";
+import {
+  criticalThinking,
+  problemSolving,
+  projectManagement,
+} from "./skills/softSkills";
 
 const blogs: BlogMetadata[] = [
   {
@@ -53,7 +57,14 @@ const blogs: BlogMetadata[] = [
     title: "Exploring Backends: Custom vs Managed Solutions",
     subtitle:
       "An In-depth Analysis of Backend Development Approaches, Tools, and Security Considerations",
-    skills: [webDevelopment, cloudComputing, firebase, supabase, pocketbase],
+    technicalSkills: [
+      webDevelopment,
+      cloudComputing,
+      firebase,
+      supabase,
+      pocketbase,
+    ],
+    softSkills: [],
     category: "Web Development",
   },
   {
@@ -63,7 +74,7 @@ const blogs: BlogMetadata[] = [
     subtitle:
       "Mastering Continuous Integration and Continuous Delivery for Enhanced Software Delivery",
     category: "DevOps",
-    skills: [
+    technicalSkills: [
       devOps,
       continuousIntegration,
       continuousDelivery,
@@ -75,6 +86,7 @@ const blogs: BlogMetadata[] = [
       cloudComputing,
       infrastructureAsCode,
     ],
+    softSkills: [problemSolving, projectManagement, criticalThinking],
   },
   {
     slug: "devops-foundations",
@@ -83,7 +95,7 @@ const blogs: BlogMetadata[] = [
     subtitle:
       "Understanding the Impact of DevOps in Modern Software Development",
     category: "DevOps",
-    skills: [
+    technicalSkills: [
       devOps,
       continuousIntegration,
       continuousDelivery,
@@ -95,13 +107,15 @@ const blogs: BlogMetadata[] = [
       automation,
       git,
     ],
+    softSkills: [problemSolving, projectManagement, criticalThinking],
   },
   {
     title: "Docker: Unleashing the Power of Containers",
     subtitle:
       "A Comprehensive Guide to Understanding Docker and Containerization Technology",
     category: "DevOps",
-    skills: [devOps, docker, containerization],
+    technicalSkills: [devOps, docker, containerization],
+    softSkills: [problemSolving],
     slug: "docker-and-containers",
   },
   {
@@ -111,7 +125,7 @@ const blogs: BlogMetadata[] = [
     subtitle:
       "A comprehensive introduction to standard front-end web development using libraries and frameworks",
     category: "Web Development",
-    skills: [
+    technicalSkills: [
       webDevelopment,
       html,
       css,
@@ -122,6 +136,7 @@ const blogs: BlogMetadata[] = [
       svelte,
       vue,
     ],
+    softSkills: [],
   },
   {
     slug: "javascript-vs-typescript",
@@ -129,14 +144,16 @@ const blogs: BlogMetadata[] = [
     subtitle:
       "Exploring the Advantages and Key Differences between JavaScript and TypeScript",
     category: "Software Engineering",
-    skills: [javascript, typescript],
+    technicalSkills: [javascript, typescript],
+    softSkills: [],
   },
   {
     slug: "kubernetes",
     title: "Kubernetes Guide: Mastering Container Orchestration",
     subtitle: "An Overview of Components, Tools, and Best Practices",
     category: "DevOps",
-    skills: [devOps, kubernetes, docker, containerization],
+    technicalSkills: [devOps, kubernetes, docker, containerization],
+    softSkills: [],
   },
   {
     slug: "machine-learning-foundations",
@@ -144,7 +161,13 @@ const blogs: BlogMetadata[] = [
     subtitle:
       "A Comprehensive Guide to Machine Learning: Concepts, Challenges, and Real-World Impact",
     category: "Machine Learning",
-    skills: [machineLearning, algorithms, dataScience, artificialIntelligence],
+    technicalSkills: [
+      machineLearning,
+      algorithms,
+      dataScience,
+      artificialIntelligence,
+    ],
+    softSkills: [problemSolving, criticalThinking],
   },
   {
     slug: "orm",
@@ -152,7 +175,7 @@ const blogs: BlogMetadata[] = [
     subtitle:
       "A Comprehensive Overview of ORM, Its Advantages, Disadvantages, and Role in Modern Web Application Development",
     category: "Databases",
-    skills: [
+    technicalSkills: [
       databaseManagementSystems,
       databases,
       sql,
@@ -162,27 +185,31 @@ const blogs: BlogMetadata[] = [
       sqlalchemy,
       hibernate,
     ],
+    softSkills: [problemSolving],
   },
   {
     slug: "rest-graphql-api",
     title: "Comparing GraphQL and REST: A Detailed Overview",
     subtitle: "Choosing the Right API Design Approach",
     category: "Web Development",
-    skills: [webDevelopment, apis, rest, graphQL],
+    technicalSkills: [webDevelopment, apis, rest, graphQL],
+    softSkills: [problemSolving],
   },
   {
     slug: "sdk-vs-api",
     title: "SDKs vs APIs: A Comparative Guide",
     subtitle: "Understanding Their Roles in Software Development",
     category: "Web Development",
-    skills: [apis, sdks],
+    technicalSkills: [apis, sdks],
+    softSkills: [],
   },
   {
     slug: "sessions-vs-tokens",
     title: "Comparing Session and Token: Navigating Authentication",
     subtitle: "A Detailed Comparison of Authentication Strategies",
     category: "Web Development",
-    skills: [webDevelopment, userAuthentication],
+    technicalSkills: [webDevelopment, userAuthentication],
+    softSkills: [],
   },
   {
     slug: "software-testing",
@@ -190,7 +217,8 @@ const blogs: BlogMetadata[] = [
     subtitle:
       "Exploring Functional and Non-Functional Testing Techniques, Tools, and Challenges",
     category: "Software Engineering",
-    skills: [testing],
+    technicalSkills: [testing],
+    softSkills: [problemSolving],
   },
   {
     slug: "sql-vs-nosql-databases",
@@ -199,7 +227,14 @@ const blogs: BlogMetadata[] = [
     subtitle:
       "An In-depth Analysis of Database Systems and their Role in Software Engineering and Web Development",
     category: "Databases",
-    skills: [databaseManagementSystems, databases, sql, noSql, normalisation],
+    technicalSkills: [
+      databaseManagementSystems,
+      databases,
+      sql,
+      noSql,
+      normalisation,
+    ],
+    softSkills: [],
   },
   {
     slug: "sync-vs-async",
@@ -207,7 +242,8 @@ const blogs: BlogMetadata[] = [
     subtitle:
       "Understanding and Optimizing Synchronous and Asynchronous Programming",
     category: "Software Engineering",
-    skills: [webDevelopment],
+    technicalSkills: [webDevelopment],
+    softSkills: [],
   },
 ];
 

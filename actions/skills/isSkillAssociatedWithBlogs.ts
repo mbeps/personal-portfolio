@@ -6,6 +6,6 @@ export default function isSkillAssociatedWithBlogs(
   blogs: BlogMetadata[]
 ): boolean {
   return blogs.some((blog) =>
-    blog.skills.some((skill) => skill.slug === skillToCheck.slug)
+    blog.technicalSkills.some((skill) => skill.slug === skillToCheck.slug)
   );
 }
