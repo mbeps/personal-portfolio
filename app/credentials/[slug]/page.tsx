@@ -127,7 +127,7 @@ const CredentialPage: React.FC<CredentialPageProps> = ({ params }) => {
       "Technical Skills"
     ),
     softSkills: filterAndGroupCertificateSkills(
-      certificate.technicalSkills,
+      certificate.softSkills, // Changed to softSkills
       "soft",
       "Soft Skills"
     ),

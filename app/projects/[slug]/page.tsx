@@ -150,11 +150,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
       "general",
       "Technical Skills"
     ),
-    softSkills: filterAndGroupSkills(
-      project.technologySkills,
-      "soft",
-      "Soft Skills"
-    ),
+    softSkills: filterAndGroupSkills(project.softSkills, "soft", "Soft Skills"),
   };
 
   /**
