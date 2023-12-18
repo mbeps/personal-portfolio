@@ -1,5 +1,5 @@
 import React from "react";
-import Tag from "../Atoms/Tag";
+import Tag from "../Tags/Tag";
 import HeadingThree from "../Text/HeadingThree";
 import Modal from "./Modal";
 

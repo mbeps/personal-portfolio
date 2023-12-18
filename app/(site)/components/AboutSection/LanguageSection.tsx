@@ -1,6 +1,6 @@
 "use client";
 
-import Tag from "@/components/Atoms/Tag";
+import Tag from "@/components/Tags/Tag";
 import LanguageModal from "@/components/Modal/LanguageModal";
 import HeadingThree from "@/components/Text/HeadingThree";
 import { languages } from "@/constants/languages";

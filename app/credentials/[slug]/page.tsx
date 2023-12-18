@@ -1,6 +1,6 @@
 import getCertificateBySlug from "@/actions/getCertificateBySlug";
 import Button from "@/components/Atoms/Button";
-import Tag from "@/components/Atoms/Tag";
+import Tag from "@/components/Tags/Tag";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";

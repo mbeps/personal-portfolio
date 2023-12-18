@@ -7,7 +7,7 @@ import { getBlogMetadataBySlug } from "@/actions/getBlogMetadataBySlug";
 import blogs from "@/constants/blogs";
 import { Skill } from "@/types/skills";
 import HeadingThree from "@/components/Text/HeadingThree";
-import Tag from "@/components/Atoms/Tag";
+import Tag from "@/components/Tags/Tag";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 
 type BlogPageProps = {

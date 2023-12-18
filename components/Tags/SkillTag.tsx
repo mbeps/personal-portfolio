@@ -11,7 +11,7 @@ import { Skill } from "@/types/skills";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
-import Tag from "../Atoms/Tag";
+import Tag from "./Tag";
 
 interface TagProps {
   skill: Skill;

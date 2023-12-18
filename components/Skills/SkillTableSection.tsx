@@ -1,4 +1,4 @@
-import Tag from "@/components/Atoms/Tag";
+import Tag from "@/components/Tags/Tag";
 import HeadingFour from "@/components/Text/HeadingFour";
 import HeadingThree from "@/components/Text/HeadingThree";
 import { Skill } from "@/types/skills";

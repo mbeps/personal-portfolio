@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BsArrowUpRightCircle, BsInfoCircle } from "react-icons/bs";
 import Certificate from "@/types/certificates";
-import Tag from "../Atoms/Tag";
+import Tag from "../Tags/Tag";
 
 type CertificateItemProps = Certificate;
 

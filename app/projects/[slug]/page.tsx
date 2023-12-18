@@ -1,5 +1,5 @@
 import getProjectBySlug from "@/actions/getProjectBySlug";
-import Tag from "@/components/Atoms/Tag";
+import Tag from "@/components/Tags/Tag";
 import Gallery from "@/components/Gallery/Gallery";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
