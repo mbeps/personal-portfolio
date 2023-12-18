@@ -138,7 +138,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     { slug: "all", entryName: "All" },
     ...allCertificates
       .flatMap((certificate: Certificate) =>
-        certificate.skills.map((skill: Skill) => ({
+        certificate.technicalSkills.map((skill: Skill) => ({
           slug: stringToSlug(skill.category),
           entryName: skill.category,
         }))
@@ -155,7 +155,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     { slug: "all", entryName: "All" },
     ...allCertificates
       .flatMap((certificate: Certificate) =>
-        certificate.skills
+        certificate.technicalSkills
           .filter((skill: Skill) => skill.skillType === "hard")
           .map((skill: Skill) => ({
             slug: stringToSlug(skill.slug), // Convert skill name to slug
@@ -174,7 +174,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     { slug: "all", entryName: "All" },
     ...allCertificates
       .flatMap((certificate: Certificate) =>
-        certificate.skills
+        certificate.technicalSkills
           .filter((skill: Skill) => skill.skillType === "general")
           .map((skill: Skill) => ({
             slug: stringToSlug(skill.slug), // Convert skill name to slug
@@ -193,7 +193,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     { slug: "all", entryName: "All" },
     ...allCertificates
       .flatMap((certificate: Certificate) =>
-        certificate.skills
+        certificate.technicalSkills
           .filter((skill: Skill) => skill.skillType === "soft")
           .map((skill: Skill) => ({
             slug: stringToSlug(skill.slug), // Convert skill name to slug
@@ -239,25 +239,25 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
       const matchesArchivedStatus = showArchived || !certificate.archived;
       const matchesSkillCategory =
         selectedSkillCategory === "all" ||
-        (certificate.skills || []).some(
+        (certificate.technicalSkills || []).some(
           (skill) =>
             stringToSlug(skill.category) === stringToSlug(selectedSkillCategory)
         );
       const matchesHardSkill =
         selectedTechnicalSkill === "all" ||
-        (certificate.skills || []).some(
+        (certificate.technicalSkills || []).some(
           (skill) =>
             skill.slug === selectedTechnicalSkill && skill.skillType === "hard"
         );
       const matchesGeneralSkill =
         selectedGeneralSkill === "all" ||
-        (certificate.skills || []).some(
+        (certificate.technicalSkills || []).some(
           (skill) =>
             skill.slug === selectedGeneralSkill && skill.skillType === "general"
         );
       const matchesSoftSkill =
         selectedSoftSkill === "all" ||
-        (certificate.skills || []).some(
+        (certificate.technicalSkills || []).some(
           (skill) =>
             skill.slug === selectedSoftSkill && skill.skillType === "soft"
         );

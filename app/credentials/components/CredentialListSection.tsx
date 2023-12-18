@@ -34,7 +34,7 @@ const CredentialsListSection: React.FC<CredentialsListSectionProps> = ({
                           description={certificate.description}
                           issuer={certificate.issuer}
                           credentialURL={certificate.credentialURL}
-                          skills={certificate.skills}
+                          technicalSkills={certificate.technicalSkills}
                           certificateImage={certificate.certificateImage}
                           category={certificate.category}
                         />

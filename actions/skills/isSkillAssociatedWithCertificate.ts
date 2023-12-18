@@ -5,7 +5,13 @@ export default function isSkillAssociatedWithCertificates(
   skillToCheck: Skill,
   certificates: Certificate[]
 ): boolean {
-  return certificates.some((certificate) =>
-    certificate.skills.some((skill) => skill.slug === skillToCheck.slug)
+  return certificates.some(
+    (certificate) =>
+      (certificate.technicalSkills || []).some(
+        (skill) => skill.slug === skillToCheck.slug
+      ) ||
+      (certificate.softSkills || []).some(
+        (skill) => skill.slug === skillToCheck.slug
+      )
   );
 }

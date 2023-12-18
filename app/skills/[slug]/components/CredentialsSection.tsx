@@ -17,20 +17,19 @@ const CredentialsSection: React.FC<ProjectPageProps> = ({
   skill,
 }) => {
   certificates = updateCredentialImages(certificates);
+
   const filterCertificatesBySkill = (
     certificates: Certificate[],
     selectedSkill: string
   ): Certificate[] => {
     return certificates.filter((certificate) =>
-      certificate.skills.some(
-        (s) => s.skill.toLowerCase() === selectedSkill.toLowerCase()
-      )
+      (certificate.technicalSkills || []).some((s) => s.slug === selectedSkill)
     );
   };
 
   const filteredCertificates = filterCertificatesBySkill(
     certificates,
-    skill.skill
+    skill.slug
   );
 
   if (!filteredCertificates || filteredCertificates.length === 0) {

@@ -12,7 +12,8 @@ export default interface Certificate {
     | "PMI"
     | "Royal Holloway University";
   credentialURL: string;
-  skills: Skill[];
+  technicalSkills: Skill[];
+  softSkills: Skill[];
   category:
     | "University"
     | "Programming Languages"

@@ -117,17 +117,17 @@ const CredentialPage: React.FC<CredentialPageProps> = ({ params }) => {
   // Simplified grouping of skill types for certificates
   const allGroupedCertificateSkills = {
     technologies: filterAndGroupCertificateSkills(
-      certificate.skills,
+      certificate.technicalSkills,
       "hard",
       "Technologies"
     ),
     generalSkills: filterAndGroupCertificateSkills(
-      certificate.skills,
+      certificate.technicalSkills,
       "general",
       "Technical Skills"
     ),
     softSkills: filterAndGroupCertificateSkills(
-      certificate.skills,
+      certificate.technicalSkills,
       "soft",
       "Soft Skills"
     ),
