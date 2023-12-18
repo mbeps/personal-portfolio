@@ -5,7 +5,13 @@ export default function isSkillAssociatedWithProject(
   skill: Skill,
   projects: Project[]
 ): boolean {
-  return projects.some(
-    (project) => project.programmingLanguage.slug === skill.slug
+  return projects.some((project) =>
+    project.technologySkills.some(
+      (projectSkill) =>
+        projectSkill.slug === skill.slug ||
+        (projectSkill.skills || []).some(
+          (nestedSkill) => nestedSkill.slug === skill.slug
+        )
+    )
   );
 }
