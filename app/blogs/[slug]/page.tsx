@@ -81,37 +81,25 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
     skillType: "hard" | "general" | "soft",
     title: string
   ): SkillCategory => {
-    // Filter skills based on skillType, considering skills might be undefined
-    const filteredSkills =
-      skills?.filter((skill) => skill.skillType === skillType) ?? [];
+    // Handle the case where skills might be undefined
+    const validSkills = skills || [];
 
-    // Group the filtered skills
-    const grouped = filteredSkills
-      .filter((skill) => skill.category !== undefined)
-      .reduce<Record<string, Skill[]>>((acc, skill) => {
-        const category = skill.category as string;
+    // Filter skills based on skillType
+    const filteredSkills = validSkills.filter(
+      (skill) => skill.skillType === skillType
+    );
+
+    // Group the filtered skills by category
+    const grouped = filteredSkills.reduce<Record<string, Skill[]>>(
+      (acc, skill) => {
+        const category = skill.category;
         (acc[category] = acc[category] || []).push(skill);
         return acc;
-      }, {});
+      },
+      {}
+    );
 
-    // Sort categories by the number of skills and get the top 2 categories
-    const topCategories = Object.keys(grouped)
-      .sort((a, b) => grouped[b].length - grouped[a].length)
-      .slice(0, 2);
-
-    // Organize the skills into top categories and 'Others'
-    const organizedSkills = Object.keys(grouped).reduce<
-      Record<string, Skill[]>
-    >((acc, category) => {
-      if (topCategories.includes(category)) {
-        acc[category] = grouped[category];
-      } else {
-        acc["Others"] = [...(acc["Others"] || []), ...grouped[category]];
-      }
-      return acc;
-    }, {});
-
-    return { title, skillCategories: organizedSkills };
+    return { title, skillCategories: grouped };
   };
 
   // Using the new function to group all skill types for the blog
@@ -147,16 +135,18 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
       <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
 
       <div className="mt-4">
-        {Object.values(allGroupedBlogSkills).map(
-          ({ title, skillCategories }) =>
-            Object.keys(skillCategories).length > 0 && (
-              <SkillTableSection
-                key={title}
-                skillCategories={skillCategories}
-                title={title}
-              />
-            )
-        )}
+        <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
+          {Object.values(allGroupedBlogSkills).map(
+            ({ title, skillCategories }) =>
+              Object.keys(skillCategories).length > 0 && (
+                <SkillTableSection
+                  key={title}
+                  skillCategories={skillCategories}
+                  title={title}
+                />
+              )
+          )}
+        </div>
       </div>
     </div>
   );

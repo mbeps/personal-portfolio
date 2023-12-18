@@ -19,6 +19,7 @@ import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
 import SkillTag from "@/components/Tags/SkillTag";
+import Project from "@/types/projects";
 
 /**
  * Metadata object for the dynamic project page.
@@ -94,6 +95,17 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const hasCoverImage = hasProjectCover(slug);
   const coverImagePath = `/projects/${slug}/cover.png`;
 
+  function extractNestedSkills(skills: Skill[]): Skill[] {
+    return skills
+      .flatMap((skill) => (skill.skills ? [skill, ...skill.skills] : [skill]))
+      .reduce((uniqueSkills, skill) => {
+        if (!uniqueSkills.some((s) => s.slug === skill.slug)) {
+          uniqueSkills.push(skill);
+        }
+        return uniqueSkills;
+      }, [] as Skill[]);
+  }
+
   interface SkillCategory {
     title: string;
     skillCategories: Record<string, Skill[]>;
@@ -109,33 +121,17 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
       (skill) => skill.skillType === skillType
     );
 
-    // Group the filtered skills
-    const grouped = filteredSkills
-      .filter((skill) => skill.category !== undefined)
-      .reduce<Record<string, Skill[]>>((acc, skill) => {
-        const category = skill.category as string;
+    // Group the filtered skills by category
+    const grouped = filteredSkills.reduce<Record<string, Skill[]>>(
+      (acc, skill) => {
+        const category = skill.category;
         (acc[category] = acc[category] || []).push(skill);
         return acc;
-      }, {});
+      },
+      {}
+    );
 
-    // Sort categories by the number of skills and get the top 2 categories
-    const topCategories = Object.keys(grouped)
-      .sort((a, b) => grouped[b].length - grouped[a].length)
-      .slice(0, 2);
-
-    // Organize the skills into top categories and 'Others'
-    const organizedSkills = Object.keys(grouped).reduce<
-      Record<string, Skill[]>
-    >((acc, category) => {
-      if (topCategories.includes(category)) {
-        acc[category] = grouped[category];
-      } else {
-        acc["Others"] = [...(acc["Others"] || []), ...grouped[category]];
-      }
-      return acc;
-    }, {});
-
-    return { title, skillCategories: organizedSkills };
+    return { title, skillCategories: grouped };
   };
 
   // Using the new function to group all skill types
@@ -146,7 +142,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
       "Technologies"
     ),
     generalSkills: filterAndGroupSkills(
-      project.technologySkills,
+      extractNestedSkills(project.technologySkills),
       "general",
       "Technical Skills"
     ),
@@ -245,17 +241,21 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
         </div>
 
         {/* Skills Section */}
-        {Object.values(allGroupedSkills).map(
-          ({ title, skillCategories }) =>
-            skillCategories &&
-            Object.keys(skillCategories).length > 0 && (
-              <SkillTableSection
-                key={title}
-                skillCategories={skillCategories}
-                title={title}
-              />
-            )
-        )}
+        <div className="mt-4">
+          <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
+            {Object.values(allGroupedSkills).map(
+              ({ title, skillCategories }) =>
+                skillCategories &&
+                Object.keys(skillCategories).length > 0 && (
+                  <SkillTableSection
+                    key={title}
+                    skillCategories={skillCategories}
+                    title={title}
+                  />
+                )
+            )}
+          </div>
+        </div>
 
         {/* Links Section */}
         <div className="text-center md:text-left">

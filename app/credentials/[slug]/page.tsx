@@ -84,34 +84,22 @@ const CredentialPage: React.FC<CredentialPageProps> = ({ params }) => {
     skillType: "hard" | "general" | "soft",
     title: string
   ): SkillCategory => {
+    // Filter skills based on skillType
     const filteredSkills = skills.filter(
       (skill) => skill.skillType === skillType
     );
 
-    const grouped = filteredSkills
-      .filter((skill) => skill.category !== undefined)
-      .reduce<Record<string, Skill[]>>((acc, skill) => {
-        const category = skill.category as string;
+    // Group the filtered skills by category
+    const grouped = filteredSkills.reduce<Record<string, Skill[]>>(
+      (acc, skill) => {
+        const category = skill.category;
         (acc[category] = acc[category] || []).push(skill);
         return acc;
-      }, {});
+      },
+      {}
+    );
 
-    const topCategories = Object.keys(grouped)
-      .sort((a, b) => grouped[b].length - grouped[a].length)
-      .slice(0, 2);
-
-    const organizedSkills = Object.keys(grouped).reduce<
-      Record<string, Skill[]>
-    >((acc, category) => {
-      if (topCategories.includes(category)) {
-        acc[category] = grouped[category];
-      } else {
-        acc["Others"] = [...(acc["Others"] || []), ...grouped[category]];
-      }
-      return acc;
-    }, {});
-
-    return { title, skillCategories: organizedSkills };
+    return { title, skillCategories: grouped };
   };
 
   // Simplified grouping of skill types for certificates
@@ -127,7 +115,7 @@ const CredentialPage: React.FC<CredentialPageProps> = ({ params }) => {
       "Technical Skills"
     ),
     softSkills: filterAndGroupCertificateSkills(
-      certificate.softSkills, // Changed to softSkills
+      certificate.softSkills,
       "soft",
       "Soft Skills"
     ),
@@ -209,25 +197,22 @@ const CredentialPage: React.FC<CredentialPageProps> = ({ params }) => {
         )}
       </div>
 
-      {/* Metadata Section */}
-      <div className="flex flex-col md:flex-row gap-4 sm:gap-10">
-        {/* Left */}
-        {/* Certificate Issuer */}
+      <div className="mt-4">
+        <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
+          {Object.values(allGroupedCertificateSkills).map(
+            ({ title, skillCategories }) =>
+              skillCategories &&
+              Object.keys(skillCategories).length > 0 && (
+                <SkillTableSection
+                  key={title}
+                  skillCategories={skillCategories}
+                  title={title}
+                />
+              )
+          )}
+        </div>
       </div>
 
-      {/* Right */}
-      {/* Certificate Skills */}
-      {Object.values(allGroupedCertificateSkills).map(
-        ({ title, skillCategories }) =>
-          skillCategories &&
-          Object.keys(skillCategories).length > 0 && (
-            <SkillTableSection
-              key={title}
-              skillCategories={skillCategories}
-              title={title}
-            />
-          )
-      )}
       <div className="md:grid md:grid-cols-2">
         <div>
           <div className="md:text-left text-center">
