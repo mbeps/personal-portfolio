@@ -248,6 +248,14 @@ export const containerization: Skill = {
   slug: "containerization",
 };
 
+export const clusterisation: Skill = {
+  skill: "Clusterisation",
+  category: "DevOps",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "clusterisation",
+};
+
 export const infrastructureAsCode: Skill = {
   skill: "Infrastructure as Code",
   category: "DevOps",
@@ -334,6 +342,30 @@ export const gameDevelopment: Skill = {
   isMainSkill: false,
   skillType: "general",
   slug: "game-development",
+};
+
+export const mathematics: Skill = {
+  skill: "Mathematics",
+  category: "Mathematics",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "mathematics",
+};
+
+export const versionControl: Skill = {
+  skill: "Version Control",
+  category: "Version Control",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "version-control",
+};
+
+export const stateManagement: Skill = {
+  skill: "State Management",
+  category: "Front-End Web Development",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "state-management",
 };
 
 const generalSkills = [
