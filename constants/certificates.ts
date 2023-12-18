@@ -29,11 +29,10 @@ import {
   linting,
   black,
   designPatterns,
+  webDevelopment,
 } from "./skills/generalSkills";
 import {
   html,
-  json,
-  xml,
   keras,
   algebra,
   statistics,
@@ -154,7 +153,14 @@ const programmingLanguagesCertificates: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/c235083fcf3a5aadda62a3aac5f1846098135e9058d9c5c72073ef88891b0395",
-    skills: [python],
+    skills: [
+      python,
+      oop,
+      algorithms,
+      dataStructures,
+      problemSolving,
+      criticalThinking,
+    ],
     description: `
     This course offers an in-depth exploration of advanced Python features, focusing on enhancing code efficiency and readability. It covers a range of topics including object-oriented programming, logging for performance tracking, porting code from Python 2 to 3, and data manipulation. The course is designed to help you master Python's powerful features and flexibility, enabling you to build sophisticated applications.
     `,
@@ -178,7 +184,14 @@ const programmingLanguagesCertificates: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/3df6c589b5151377ce45f231cfacf8ca04a02875fa88996a8831c1c9b70c527a",
-    skills: [python, oop],
+    skills: [
+      python,
+      oop,
+      algorithms,
+      dataStructures,
+      problemSolving,
+      criticalThinking,
+    ],
     description: `
     This course delves into the application of Python's object-oriented programming features to build complex, modular programs. It covers core OOP principles and Python-specific features, aiming to enhance the integration of your classes with the Python language and reduce boilerplate code. The course is designed to equip you with the skills to create extensible and efficient programs using Python's OOP features.`,
     learningOutcomes: [
@@ -200,7 +213,15 @@ const programmingLanguagesCertificates: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/71bbbecbbc9b1489e357c3a2091860ae5b02b3ff0e415ce5748b8746d990b8dd",
-    skills: [python, html, json, xml],
+    skills: [
+      python,
+      oop,
+      algorithms,
+      dataStructures,
+      problemSolving,
+      criticalThinking,
+      html,
+    ],
     description: `
     This course provides a comprehensive introduction to Python, a powerful and easy-to-learn object-oriented language. It covers the basics of Python syntax, working with dates and times, file handling, and web data retrieval in various formats. The course also includes interactive coding exercises for real-time feedback and hands-on practice, making it suitable for both new programmers and experienced developers looking to learn Python.`,
     learningOutcomes: [
@@ -238,7 +259,7 @@ const programmingLanguagesCertificates: Certificate[] = [
     description: `This course focuses on enhancing your Java programming skills by teaching the basics of object-oriented programming. It aims to help you write secure, scalable, and easily debuggable code. The course emphasizes practical examples over abstract concepts, with a deep dive into the source code and several challenges to apply what you've learned. It not only guides you on how to apply object-oriented principles in your programs but also explains how Java leverages these principles internally.`,
     credentialURL:
       "https://www.linkedin.com/learning/certificates/77ad2602bbb22e29478a06792cd4bd0a91dda794cca7b2bbe4e333c193770a22",
-    skills: [java, oop],
+    skills: [java, oop, algorithms, dataStructures],
     learningOutcomes: [
       "Understanding the basics of object-oriented programming in Java",
       "Writing secure, scalable, and easily debuggable code",
@@ -256,7 +277,7 @@ const programmingLanguagesCertificates: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/b1761a41ef8dd23125db776561db0b90ae53842518d029015374a2daee08e4e3",
-    skills: [typescript, javascript, oop],
+    skills: [typescript, javascript, oop, algorithms, dataStructures],
     description: `
     This course focuses on enhancing your Java programming skills by teaching the basics of object-oriented programming. It aims to help you write secure, scalable, and easily debuggable code. The course emphasizes practical examples over abstract concepts, with a deep dive into the source code and several challenges to apply what you've learned. It not only guides you on how to apply object-oriented principles in your programs but also explains how Java leverages these principles internally.
     `,
@@ -275,7 +296,7 @@ const programmingLanguagesCertificates: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/ade3217d7cef3023f22c8ee034eff28705b7dbfd3981d8377c9b5f61ff39ea51",
-    skills: [javascript, oop, algorithms],
+    skills: [javascript, oop, algorithms, dataStructures, html, css],
     description: `
     This course provides a comprehensive understanding of JavaScript, a scripting language essential for dynamic web development. It covers core principles to advanced topics, helping you build dynamic interfaces and advanced interactions. The course includes interactive coding exercises for hands-on practice, making it suitable for anyone looking to enhance their JavaScript skills and understanding of web technologies.
     `,
@@ -294,7 +315,7 @@ const programmingLanguagesCertificates: Certificate[] = [
     issuer: "Udemy",
     credentialURL:
       "https://www.udemy.com/certificate/UC-cf6c70b6-c34c-4400-b8f8-b9a7abc9f18a/",
-    skills: [javascript, oop, algorithms],
+    skills: [javascript, oop, algorithms, dataStructures, webDevelopment],
     description: `This comprehensive and in-depth course covers JavaScript from fundamentals to advanced applications, making it suitable for learners at all levels. It offers a blend of practical code examples, important theory, and complete projects, preparing you for advanced front-end frameworks and real-world skills needed in a developer job. The course is designed in a modular way, allowing you to learn at your own pace, and by the end, you will have the knowledge and confidence to ace job interviews and become a professional developer.`,
     learningOutcomes: [
       "Becoming an advanced JavaScript developer.",

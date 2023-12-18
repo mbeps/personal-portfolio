@@ -74,7 +74,7 @@ export const css: Skill = {
 
 export const gitHubActions: Skill = {
   skill: "GitHub Actions",
-  category: "CI/CD",
+  category: "DevOps",
   isMainSkill: true,
   skillType: "hard",
   slug: "github-actions",
@@ -82,7 +82,7 @@ export const gitHubActions: Skill = {
 
 export const jenkins: Skill = {
   skill: "Jenkins",
-  category: "CI/CD",
+  category: "DevOps",
   isMainSkill: true,
   skillType: "hard",
   slug: "jenkins",
@@ -90,7 +90,7 @@ export const jenkins: Skill = {
 
 export const teamCity: Skill = {
   skill: "TeamCity",
-  category: "CI/CD",
+  category: "DevOps",
   isMainSkill: true,
   skillType: "hard",
   slug: "teamcity",
@@ -98,7 +98,7 @@ export const teamCity: Skill = {
 
 export const docker: Skill = {
   skill: "Docker",
-  category: "Containerization",
+  category: "DevOps",
   isMainSkill: true,
   skillType: "hard",
   slug: "docker",
@@ -106,7 +106,7 @@ export const docker: Skill = {
 
 export const podman: Skill = {
   skill: "Podman",
-  category: "Containerization",
+  category: "DevOps",
   isMainSkill: true,
   skillType: "hard",
   slug: "podman",
@@ -114,7 +114,7 @@ export const podman: Skill = {
 
 export const kubernetes: Skill = {
   skill: "Kubernetes",
-  category: "Containerization",
+  category: "DevOps",
   isMainSkill: true,
   skillType: "hard",
   slug: "kubernetes",
@@ -126,14 +126,6 @@ export const rest: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "rest-api",
-};
-
-export const sdks: Skill = {
-  skill: "SDK",
-  category: "SDKs",
-  isMainSkill: true,
-  skillType: "hard",
-  slug: "sdks",
 };
 
 export const graphQL: Skill = {
@@ -322,7 +314,7 @@ export const mechanics: Skill = {
 
 export const git: Skill = {
   skill: "Git",
-  category: "Version Control Systems",
+  category: "Version Control",
   isMainSkill: true,
   skillType: "hard",
   slug: "git",
@@ -330,7 +322,7 @@ export const git: Skill = {
 
 export const gitHub: Skill = {
   skill: "GitHub",
-  category: "Version Control Systems",
+  category: "Version Control",
   isMainSkill: true,
   skillType: "hard",
   slug: "github",
@@ -338,7 +330,7 @@ export const gitHub: Skill = {
 
 export const gitLab: Skill = {
   skill: "GitLab",
-  category: "Version Control Systems",
+  category: "Version Control",
   isMainSkill: true,
   skillType: "hard",
   slug: "gitlab",
@@ -346,7 +338,7 @@ export const gitLab: Skill = {
 
 export const bitBucket: Skill = {
   skill: "BitBucket",
-  category: "Version Control Systems",
+  category: "Version Control",
   isMainSkill: true,
   skillType: "hard",
   slug: "bit-bucket",
@@ -354,26 +346,58 @@ export const bitBucket: Skill = {
 
 export const vagrant: Skill = {
   skill: "Vagrant",
-  category: "Infrastructure as Code",
+  category: "DevOps",
   isMainSkill: true,
   skillType: "hard",
   slug: "valgrant",
 };
 
-export const linux: Skill = {
-  skill: "Linux",
-  category: "Other",
-  isMainSkill: true,
-  skillType: "hard",
-  slug: "linux",
-};
-
 export const nextjs: Skill = {
   skill: "Next.js",
-  category: "Front-End Web Development",
+  category: "Full-Stack Web Development",
   isMainSkill: true,
   skillType: "hard",
   slug: "next-js",
+};
+
+export const svelte: Skill = {
+  skill: "Svelte",
+  category: "Front-End Web Development",
+  isMainSkill: true,
+  skillType: "hard",
+  slug: "svelte",
+};
+
+export const vue: Skill = {
+  skill: "Vue",
+  category: "Front-End Web Development",
+  isMainSkill: true,
+  skillType: "hard",
+  slug: "vue-js",
+};
+
+export const angular: Skill = {
+  skill: "Angular",
+  category: "Full-Stack Web Development",
+  isMainSkill: true,
+  skillType: "hard",
+  slug: "angular",
+};
+
+export const nuxtjs: Skill = {
+  skill: "Nuxt.js",
+  category: "Full-Stack Web Development",
+  isMainSkill: true,
+  skillType: "hard",
+  slug: "nuxt-js",
+};
+
+export const svelteKit: Skill = {
+  skill: "SvelteKit",
+  category: "Full-Stack Web Development",
+  isMainSkill: true,
+  skillType: "hard",
+  slug: "svelte-kit",
 };
 
 export const nextauth: Skill = {
@@ -722,7 +746,7 @@ export const reactQuery: Skill = {
 
 export const zod: Skill = {
   skill: "Zod",
-  category: "Other",
+  category: "Core Computer Science",
   isMainSkill: false,
   skillType: "hard",
   slug: "zod",
@@ -800,33 +824,9 @@ export const tox: Skill = {
   slug: "tox",
 };
 
-export const json: Skill = {
-  skill: "JSON",
-  category: "Other",
-  isMainSkill: false,
-  skillType: "hard",
-  slug: "json",
-};
-
-export const yaml: Skill = {
-  skill: "YAML",
-  category: "Other",
-  isMainSkill: false,
-  skillType: "hard",
-  slug: "yaml",
-};
-
-export const xml: Skill = {
-  skill: "XML",
-  category: "Other",
-  isMainSkill: false,
-  skillType: "hard",
-  slug: "xml",
-};
-
 export const travisCI: Skill = {
   skill: "Travis CI",
-  category: "CI/CD",
+  category: "DevOps",
   isMainSkill: false,
   skillType: "hard",
   slug: "travis-ci",
@@ -834,7 +834,7 @@ export const travisCI: Skill = {
 
 export const k3s: Skill = {
   skill: "K3s",
-  category: "Containerization",
+  category: "DevOps",
   isMainSkill: false,
   skillType: "hard",
   slug: "aws-ks3",
@@ -1090,7 +1090,7 @@ export const gcpCloudLogging: Skill = {
 
 export const ansible: Skill = {
   skill: "Ansible",
-  category: "Infrastructure as Code",
+  category: "DevOps",
   isMainSkill: false,
   skillType: "hard",
   slug: "ansible",
@@ -1113,7 +1113,6 @@ const hardSkills = [
   podman,
   kubernetes,
   rest,
-  sdks,
   graphQL,
   tRPC,
   postgreSQL,
@@ -1142,9 +1141,13 @@ const hardSkills = [
   gitLab,
   bitBucket,
   vagrant,
-  linux,
   nextjs,
   nextauth,
+  nuxtjs,
+  angular,
+  vue,
+  svelte,
+  svelteKit,
   nodejs,
   express,
   react,
@@ -1197,9 +1200,6 @@ const hardSkills = [
   simpleGui,
   gameMakerStudio,
   tox,
-  json,
-  yaml,
-  xml,
   travisCI,
   k3s,
   aws,

@@ -2,7 +2,7 @@ import { Skill } from "@/types/skills";
 
 export const continuousIntegration: Skill = {
   skill: "Continuous Integration",
-  category: "CI/CD",
+  category: "DevOps",
   isMainSkill: false,
   skillType: "general",
   slug: "continuous-integration",
@@ -10,7 +10,7 @@ export const continuousIntegration: Skill = {
 
 export const continuousDelivery: Skill = {
   skill: "Continuous Delivery",
-  category: "CI/CD",
+  category: "DevOps",
   isMainSkill: false,
   skillType: "general",
   slug: "continuous-delivery",
@@ -18,7 +18,7 @@ export const continuousDelivery: Skill = {
 
 export const continuousDeployment: Skill = {
   skill: "Continuous Deployment",
-  category: "CI/CD",
+  category: "DevOps",
   isMainSkill: false,
   skillType: "general",
   slug: "continuous-deployment",
@@ -26,7 +26,7 @@ export const continuousDeployment: Skill = {
 
 export const devOps: Skill = {
   skill: "DevOps",
-  category: "Other",
+  category: "DevOps",
   isMainSkill: false,
   skillType: "general",
   slug: "devops",
@@ -45,7 +45,7 @@ export const black: Skill = {
   category: "Code Quality",
   isMainSkill: false,
   skillType: "general",
-  slug: "",
+  slug: "black-linting",
 };
 
 export const oop: Skill = {
@@ -66,7 +66,7 @@ export const functionalProgramming: Skill = {
 
 export const algorithms: Skill = {
   skill: "Algorithms",
-  category: "Other",
+  category: "Core Computer Science",
   isMainSkill: false,
   skillType: "general",
   slug: "algorithm",
@@ -74,7 +74,7 @@ export const algorithms: Skill = {
 
 export const dataStructures: Skill = {
   skill: "Data Structures",
-  category: "Other",
+  category: "Core Computer Science",
   isMainSkill: false,
   skillType: "general",
   slug: "data-structures",
@@ -117,7 +117,7 @@ export const linuxDevelopment: Skill = {
   category: "Platform Development",
   isMainSkill: false,
   skillType: "general",
-  slug: "",
+  slug: "linux-development",
 };
 
 export const machineLearning: Skill = {
@@ -125,7 +125,7 @@ export const machineLearning: Skill = {
   category: "Machine Learning",
   isMainSkill: false,
   skillType: "general",
-  slug: "linux-development",
+  slug: "machine-learning",
 };
 
 export const deepLearning: Skill = {
@@ -141,7 +141,7 @@ export const artificialIntelligence: Skill = {
   category: "Artificial Intelligence",
   isMainSkill: false,
   skillType: "general",
-  slug: "",
+  slug: "artificial-intelligence",
 };
 
 export const dataScience: Skill = {
@@ -170,7 +170,7 @@ export const boosting: Skill = {
 
 export const dataVisualisation: Skill = {
   skill: "Data Visualisation",
-  category: "Other",
+  category: "Machine Learning",
   isMainSkill: false,
   skillType: "general",
   slug: "data-visualisation",
@@ -209,7 +209,7 @@ export const webSockets: Skill = {
 };
 
 export const sql: Skill = {
-  skill: "SQL",
+  skill: "Relational Databases (SQL)",
   category: "Databases",
   isMainSkill: false,
   skillType: "general",
@@ -217,11 +217,19 @@ export const sql: Skill = {
 };
 
 export const noSql: Skill = {
-  skill: "NoSQL",
+  skill: "Non Relational Databases (NoSQL)",
   category: "Databases",
   isMainSkill: false,
   skillType: "general",
   slug: "no-sql",
+};
+
+export const orm: Skill = {
+  skill: "Object Relational Mapping",
+  category: "Databases",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "orm",
 };
 
 export const testing: Skill = {
@@ -234,7 +242,7 @@ export const testing: Skill = {
 
 export const containerization: Skill = {
   skill: "Containerization",
-  category: "Containerization",
+  category: "DevOps",
   isMainSkill: false,
   skillType: "general",
   slug: "containerization",
@@ -242,7 +250,7 @@ export const containerization: Skill = {
 
 export const infrastructureAsCode: Skill = {
   skill: "Infrastructure as Code",
-  category: "Infrastructure as Code",
+  category: "DevOps",
   isMainSkill: false,
   skillType: "general",
   slug: "infrastructure-as-code",
@@ -250,7 +258,7 @@ export const infrastructureAsCode: Skill = {
 
 export const automation: Skill = {
   skill: "Automation",
-  category: "Other",
+  category: "Automation",
   isMainSkill: false,
   skillType: "general",
   slug: "automation",
@@ -298,13 +306,39 @@ export const userAuthentication: Skill = {
 
 export const webDevelopment: Skill = {
   skill: "Web Development",
-  category: "Other",
+  category: "Platform Development",
   isMainSkill: false,
   skillType: "general",
   slug: "web-development",
 };
 
+export const sdks: Skill = {
+  skill: "SDK",
+  category: "SDKs",
+  isMainSkill: true,
+  skillType: "hard",
+  slug: "sdks",
+};
+
+export const userCentricDesign: Skill = {
+  skill: "User Centric Design",
+  category: "Front-End Web Development",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "user-centric-design",
+};
+
+export const gameDevelopment: Skill = {
+  skill: "Game Development",
+  category: "Game Development",
+  isMainSkill: false,
+  skillType: "general",
+  slug: "game-development",
+};
+
 const generalSkills = [
+  sdks,
+  userCentricDesign,
   continuousIntegration,
   continuousDelivery,
   continuousDeployment,
@@ -333,6 +367,7 @@ const generalSkills = [
   webSockets,
   sql,
   noSql,
+  orm,
   testing,
   containerization,
   infrastructureAsCode,
@@ -343,6 +378,7 @@ const generalSkills = [
   designPatterns,
   userAuthentication,
   webDevelopment,
+  gameDevelopment,
 ];
 
 export default generalSkills;

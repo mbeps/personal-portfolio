@@ -18,8 +18,33 @@ import {
   userAuthentication,
   testing,
   noSql,
+  sdks,
+  automation,
+  dataScience,
+  artificialIntelligence,
 } from "./skills/generalSkills";
-import { docker, kubernetes, rest, graphQL, sdks } from "./skills/hardSkills";
+import {
+  docker,
+  kubernetes,
+  rest,
+  graphQL,
+  firebase,
+  supabase,
+  pocketbase,
+  git,
+  html,
+  css,
+  react,
+  nextjs,
+  angular,
+  svelte,
+  vue,
+  prisma,
+  mongoose,
+  sqlalchemy,
+  hibernate,
+  normalisation,
+} from "./skills/hardSkills";
 import { projectManagement } from "./skills/softSkills";
 
 const blogs: BlogMetadata[] = [
@@ -28,7 +53,7 @@ const blogs: BlogMetadata[] = [
     title: "Exploring Backends: Custom vs Managed Solutions",
     subtitle:
       "An In-depth Analysis of Backend Development Approaches, Tools, and Security Considerations",
-    skills: [webDevelopment],
+    skills: [webDevelopment, cloudComputing, firebase, supabase, pocketbase],
     category: "Web Development",
   },
   {
@@ -48,6 +73,7 @@ const blogs: BlogMetadata[] = [
       containerization,
       projectManagement,
       cloudComputing,
+      infrastructureAsCode,
     ],
   },
   {
@@ -66,6 +92,8 @@ const blogs: BlogMetadata[] = [
       projectManagement,
       cloudComputing,
       infrastructureAsCode,
+      automation,
+      git,
     ],
   },
   {
@@ -83,7 +111,17 @@ const blogs: BlogMetadata[] = [
     subtitle:
       "A comprehensive introduction to standard front-end web development using libraries and frameworks",
     category: "Web Development",
-    skills: [webDevelopment],
+    skills: [
+      webDevelopment,
+      html,
+      css,
+      javascript,
+      react,
+      nextjs,
+      angular,
+      svelte,
+      vue,
+    ],
   },
   {
     slug: "javascript-vs-typescript",
@@ -98,7 +136,7 @@ const blogs: BlogMetadata[] = [
     title: "Kubernetes Guide: Mastering Container Orchestration",
     subtitle: "An Overview of Components, Tools, and Best Practices",
     category: "DevOps",
-    skills: [devOps, kubernetes, containerization],
+    skills: [devOps, kubernetes, docker, containerization],
   },
   {
     slug: "machine-learning-foundations",
@@ -106,7 +144,7 @@ const blogs: BlogMetadata[] = [
     subtitle:
       "A Comprehensive Guide to Machine Learning: Concepts, Challenges, and Real-World Impact",
     category: "Machine Learning",
-    skills: [machineLearning, algorithms],
+    skills: [machineLearning, algorithms, dataScience, artificialIntelligence],
   },
   {
     slug: "orm",
@@ -114,7 +152,16 @@ const blogs: BlogMetadata[] = [
     subtitle:
       "A Comprehensive Overview of ORM, Its Advantages, Disadvantages, and Role in Modern Web Application Development",
     category: "Databases",
-    skills: [databaseManagementSystems, databases, sql],
+    skills: [
+      databaseManagementSystems,
+      databases,
+      sql,
+      noSql,
+      prisma,
+      mongoose,
+      sqlalchemy,
+      hibernate,
+    ],
   },
   {
     slug: "rest-graphql-api",
@@ -152,7 +199,7 @@ const blogs: BlogMetadata[] = [
     subtitle:
       "An In-depth Analysis of Database Systems and their Role in Software Engineering and Web Development",
     category: "Databases",
-    skills: [databaseManagementSystems, databases, sql, noSql],
+    skills: [databaseManagementSystems, databases, sql, noSql, normalisation],
   },
   {
     slug: "sync-vs-async",

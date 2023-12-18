@@ -39,7 +39,6 @@ import {
   geometry,
   git,
   vagrant,
-  linux,
 } from "./skills/hardSkills";
 
 /**
@@ -94,7 +93,6 @@ const technologies: Skill[] = [
 
   git,
   vagrant,
-  linux,
 ];
 
 export { technologies };
