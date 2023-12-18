@@ -47,7 +47,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
       <div className="mt-4 text-center md:text-left">
         {Object.keys(groupedSkills).map((group) => (
           <div key={group}>
-            <HeadingThree title={group} />
+            <HeadingThree title={group[0].toUpperCase() + group.slice(1)} />
             <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
               {groupedSkills[group].map((skill, index) => (
                 <SkillTag key={index} skill={skill} />
