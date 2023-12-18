@@ -19,11 +19,17 @@ const ProjectsSection: React.FC<ProjectPageProps> = ({ projects, skill }) => {
     projects: Project[],
     selectedSkill: string
   ): Project[] => {
+    const skillMatches = (skill: Skill) =>
+      skill.skill.toLowerCase() === selectedSkill.toLowerCase() ||
+      (skill.skills || []).some(
+        (subSkill) =>
+          subSkill.skill.toLowerCase() === selectedSkill.toLowerCase()
+      );
+
     return projects.filter(
       (project) =>
-        project.technologySkills.some(
-          (s) => s.skill.toLowerCase() === selectedSkill.toLowerCase()
-        ) ||
+        project.technologySkills.some(skillMatches) ||
+        project.softSkills.some(skillMatches) ||
         project.programmingLanguage.skill.toLowerCase() ===
           selectedSkill.toLowerCase()
     );

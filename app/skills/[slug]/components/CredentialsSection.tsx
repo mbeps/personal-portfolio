@@ -22,8 +22,14 @@ const CredentialsSection: React.FC<ProjectPageProps> = ({
     certificates: Certificate[],
     selectedSkill: string
   ): Certificate[] => {
-    return certificates.filter((certificate) =>
-      (certificate.technicalSkills || []).some((s) => s.slug === selectedSkill)
+    const skillMatches = (skill: Skill) =>
+      skill.slug === selectedSkill ||
+      (skill.skills || []).some((subSkill) => subSkill.slug === selectedSkill);
+
+    return certificates.filter(
+      (certificate) =>
+        certificate.technicalSkills.some(skillMatches) ||
+        certificate.softSkills.some(skillMatches)
     );
   };
 
