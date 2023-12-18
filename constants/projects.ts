@@ -1,4 +1,3 @@
-import Project from "@/types/projects";
 import {
   auth0,
   axios,
@@ -31,7 +30,6 @@ import {
   nextauth,
   nextjs,
   nodejs,
-  normalisation,
   npm,
   numpy,
   nxjs,
@@ -62,6 +60,7 @@ import {
   zod,
   zustand,
 } from "@/constants/skills/hardSkills";
+import Project from "@/types/projects";
 import {
   gameMakerLanguage,
   java,
@@ -69,33 +68,6 @@ import {
   shellScript,
   typescript,
 } from "./languages";
-import {
-  devOps,
-  continuousIntegration,
-  continuousDeployment,
-  userAuthentication,
-  databases,
-  automation,
-  testing,
-  oop,
-  algorithms,
-  noSql,
-  containerization,
-  webDevelopment,
-  userCentricDesign,
-  sql,
-  orm,
-  apis,
-  sdks,
-  dataStructures,
-  machineLearning,
-  artificialIntelligence,
-  dataScience,
-  dataVisualisation,
-  hyperparameters,
-  designPatterns,
-  gameDevelopment,
-} from "./skills/generalSkills";
 import {
   adaptability,
   communication,
@@ -128,7 +100,7 @@ const webdevProjects: Project[] = [
     repoURL: `https://github.com/mbeps/next_discussion_platform`,
     siteURL: `https://circus-discussion.vercel.app/`,
     programmingLanguage: typescript,
-    skills: [
+    technologySkills: [
       nextjs,
       react,
       chakraUI,
@@ -142,20 +114,8 @@ const webdevProjects: Project[] = [
       html,
       css,
       yarn,
-
-      userAuthentication,
-      devOps,
-      continuousIntegration,
-      continuousDeployment,
-      oop,
-      algorithms,
-      databases,
-      noSql,
-      containerization,
-      webDevelopment,
-      userCentricDesign,
-      designPatterns,
-
+    ],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -205,7 +165,7 @@ const webdevProjects: Project[] = [
     repoURL: `https://github.com/mbeps/ringmaster-messaging`,
     siteURL: `https://ringmaster-messaging.vercel.app/`,
     programmingLanguage: typescript,
-    skills: [
+    technologySkills: [
       nextjs,
       react,
       nodejs,
@@ -226,21 +186,8 @@ const webdevProjects: Project[] = [
       html,
       css,
       yarn,
-
-      userAuthentication,
-      devOps,
-      orm,
-      continuousIntegration,
-      continuousDeployment,
-      oop,
-      algorithms,
-      databases,
-      sql,
-      containerization,
-      webDevelopment,
-      userCentricDesign,
-      designPatterns,
-
+    ],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -279,7 +226,7 @@ const webdevProjects: Project[] = [
     repoURL: `https://github.com/mbeps/magician-ai`,
     programmingLanguage: typescript,
     siteURL: "https://magician-ai.vercel.app/",
-    skills: [
+    technologySkills: [
       nextjs,
       react,
       shadcnUI,
@@ -301,22 +248,8 @@ const webdevProjects: Project[] = [
       html,
       css,
       yarn,
-
-      userAuthentication,
-      devOps,
-      orm,
-      continuousIntegration,
-      continuousDeployment,
-      oop,
-      algorithms,
-      databases,
-      sql,
-      containerization,
-      webDevelopment,
-      userCentricDesign,
-      artificialIntelligence,
-      designPatterns,
-
+    ],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -358,7 +291,7 @@ const webdevProjects: Project[] = [
       `,
     repoURL: `https://github.com/mbeps/drumroll-music`,
     programmingLanguage: typescript,
-    skills: [
+    technologySkills: [
       nextjs,
       react,
       nodejs,
@@ -373,21 +306,8 @@ const webdevProjects: Project[] = [
       html,
       css,
       yarn,
-
-      userAuthentication,
-      devOps,
-      orm,
-      continuousIntegration,
-      continuousDeployment,
-      oop,
-      algorithms,
-      databases,
-      sql,
-      containerization,
-      webDevelopment,
-      userCentricDesign,
-      designPatterns,
-
+    ],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -433,7 +353,7 @@ const extraWebDevProjects: Project[] = [
       With immediate feedback and score tracking, users enhance their understanding.`,
     programmingLanguage: typescript,
     type: "Full-Stack Web Dev",
-    skills: [
+    technologySkills: [
       nextjs,
       react,
       tailwindCSS,
@@ -452,23 +372,8 @@ const extraWebDevProjects: Project[] = [
       html,
       css,
       yarn,
-
-      userAuthentication,
-      devOps,
-      orm,
-      continuousIntegration,
-      continuousDeployment,
-      oop,
-      algorithms,
-      databases,
-      sql,
-      containerization,
-      webDevelopment,
-      userCentricDesign,
-      sdks,
-      artificialIntelligence,
-      designPatterns,
-
+    ],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -504,7 +409,7 @@ const extraWebDevProjects: Project[] = [
       `,
     repoURL: `https://github.com/mbeps/sideshow-articles`,
     programmingLanguage: typescript,
-    skills: [
+    technologySkills: [
       nextjs,
       react,
       supabase,
@@ -515,14 +420,8 @@ const extraWebDevProjects: Project[] = [
       html,
       css,
       npm,
-
-      userAuthentication,
-      databases,
-      sql,
-      webDevelopment,
-      userCentricDesign,
-      sdks,
-
+    ],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -557,7 +456,7 @@ const extraWebDevProjects: Project[] = [
     repoURL: `https://github.com/ixahmedxi/noodle`,
     siteURL: `https://noodle.run/`,
     programmingLanguage: typescript,
-    skills: [
+    technologySkills: [
       nextjs,
       react,
       shadcnUI,
@@ -576,20 +475,8 @@ const extraWebDevProjects: Project[] = [
       html,
       css,
       pnpm,
-
-      userAuthentication,
-      devOps,
-      orm,
-      continuousIntegration,
-      continuousDeployment,
-      oop,
-      algorithms,
-      databases,
-      sql,
-      webDevelopment,
-      userCentricDesign,
-      sdks,
-
+    ],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -630,7 +517,7 @@ const extraWebDevProjects: Project[] = [
       `,
     repoURL: `https://github.com/mbeps/convo-gpt`,
     programmingLanguage: typescript,
-    skills: [
+    technologySkills: [
       nextjs,
       react,
       tailwindCSS,
@@ -644,19 +531,8 @@ const extraWebDevProjects: Project[] = [
       html,
       css,
       yarn,
-
-      userAuthentication,
-      oop,
-      sdks,
-      algorithms,
-      databases,
-      sql,
-      containerization,
-      webDevelopment,
-      userCentricDesign,
-      artificialIntelligence,
-      designPatterns,
-
+    ],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -693,7 +569,7 @@ const backendWebDevProjects: Project[] = [
       `,
     repoURL: `https://github.com/mbeps/Forum-Discussion-Flask-Backend`,
     programmingLanguage: typescript,
-    skills: [
+    technologySkills: [
       flask,
       mySQL,
       sqlalchemy,
@@ -705,22 +581,8 @@ const backendWebDevProjects: Project[] = [
       git,
       html,
       css,
-
-      apis,
-      userAuthentication,
-      devOps,
-      orm,
-      continuousIntegration,
-      continuousDeployment,
-      oop,
-      algorithms,
-      databases,
-      sql,
-      containerization,
-      webDevelopment,
-      userCentricDesign,
-      designPatterns,
-
+    ],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -753,22 +615,8 @@ const backendWebDevProjects: Project[] = [
       `,
     repoURL: `https://github.com/mbeps/Flask_JWT_Auth`,
     programmingLanguage: typescript,
-    skills: [
-      flask,
-      jwt,
-      gitHub,
-      git,
-      html,
-      css,
-      poetry,
-
-      userAuthentication,
-      oop,
-      algorithms,
-      databases,
-      sql,
-      webDevelopment,
-
+    technologySkills: [flask, jwt, gitHub, git, html, css, poetry],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -798,22 +646,8 @@ const backendWebDevProjects: Project[] = [
       `,
     programmingLanguage: typescript,
     repoURL: `https://github.com/mbeps/Django_Auth_Sys`,
-    skills: [
-      django,
-      jwt,
-      gitHub,
-      git,
-      html,
-      css,
-      poetry,
-
-      userAuthentication,
-      oop,
-      algorithms,
-      databases,
-      sql,
-      webDevelopment,
-
+    technologySkills: [django, jwt, gitHub, git, html, css, poetry],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -842,23 +676,8 @@ const backendWebDevProjects: Project[] = [
       `,
     programmingLanguage: typescript,
     repoURL: `https://github.com/mbeps/clerk-demo`,
-    skills: [
-      nextjs,
-      clerkAuth,
-      nodejs,
-      gitHub,
-      git,
-      html,
-      css,
-      yarn,
-
-      userAuthentication,
-      oop,
-      algorithms,
-      databases,
-      sql,
-      webDevelopment,
-
+    technologySkills: [nextjs, clerkAuth, nodejs, gitHub, git, html, css, yarn],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -888,23 +707,8 @@ const backendWebDevProjects: Project[] = [
       `,
     programmingLanguage: typescript,
     repoURL: `https://github.com/mbeps/nextjs-auth0`,
-    skills: [
-      nextjs,
-      auth0,
-      nodejs,
-      gitHub,
-      git,
-      html,
-      css,
-      yarn,
-
-      userAuthentication,
-      oop,
-      algorithms,
-      databases,
-      sql,
-      webDevelopment,
-
+    technologySkills: [nextjs, auth0, nodejs, gitHub, git, html, css, yarn],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -939,7 +743,7 @@ const machineLearningProjects: Project[] = [
     description: `A project leveraging the UCI Adult Income dataset to predict income brackets using a RandomForestClassifier. Emphasis is on feature engineering, data preprocessing with One-Hot Encoding, and model optimization through hyperparameter tuning.`,
     repoURL: "https://github.com/mbeps/Adults_Income_Prediction",
     programmingLanguage: python,
-    skills: [
+    technologySkills: [
       scikitLearn,
       numpy,
       pandas,
@@ -949,17 +753,8 @@ const machineLearningProjects: Project[] = [
       gitHub,
       git,
       poetry,
-
-      oop,
-      algorithms,
-      dataStructures,
-      machineLearning,
-      artificialIntelligence,
-      dataScience,
-      dataVisualisation,
-      hyperparameters,
-      designPatterns,
-
+    ],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -984,7 +779,7 @@ const machineLearningProjects: Project[] = [
     description: `An analytical approach to predicting California housing prices using the RandomForestRegressor and LinearRegressor, with a focus on data preprocessing and feature engineering.`,
     repoURL: "https://github.com/your-username/House-Price-Prediction",
     programmingLanguage: python,
-    skills: [
+    technologySkills: [
       scikitLearn,
       numpy,
       pandas,
@@ -994,17 +789,8 @@ const machineLearningProjects: Project[] = [
       gitHub,
       git,
       poetry,
-
-      oop,
-      algorithms,
-      dataStructures,
-      machineLearning,
-      artificialIntelligence,
-      dataScience,
-      dataVisualisation,
-      hyperparameters,
-      designPatterns,
-
+    ],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1032,24 +818,15 @@ const machineLearningProjects: Project[] = [
       `,
     repoURL: `https://github.com/mbeps/Machine-Learning-Assignment-1`,
     programmingLanguage: python,
-    skills: [
+    technologySkills: [
       scikitLearn,
       numpy,
       matplotlib,
       jupyterNotebooks,
       gitHub,
       git,
-
-      oop,
-      algorithms,
-      dataStructures,
-      machineLearning,
-      artificialIntelligence,
-      dataScience,
-      dataVisualisation,
-      hyperparameters,
-      designPatterns,
-
+    ],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1077,25 +854,15 @@ const machineLearningProjects: Project[] = [
     `,
     repoURL: `https://github.com/mbeps/Machine-Learning-Assignment-2`,
     programmingLanguage: python,
-    // skills: [`NumPy`, `Scikit Learn`, `Matplotlib`, "Jupyter Notebook"],
-    skills: [
+    technologySkills: [
       scikitLearn,
       numpy,
       matplotlib,
       jupyterNotebooks,
       gitHub,
       git,
-
-      oop,
-      algorithms,
-      dataStructures,
-      machineLearning,
-      artificialIntelligence,
-      dataScience,
-      dataVisualisation,
-      hyperparameters,
-      designPatterns,
-
+    ],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1123,24 +890,15 @@ const machineLearningProjects: Project[] = [
       `,
     repoURL: `https://github.com/mbeps/Machine-Learning-Assignment-3`,
     programmingLanguage: python,
-    skills: [
+    technologySkills: [
       scikitLearn,
       numpy,
       matplotlib,
       jupyterNotebooks,
       gitHub,
       git,
-
-      oop,
-      algorithms,
-      dataStructures,
-      machineLearning,
-      artificialIntelligence,
-      dataScience,
-      dataVisualisation,
-      hyperparameters,
-      designPatterns,
-
+    ],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1167,7 +925,7 @@ const machineLearningProjects: Project[] = [
       kernels, neural networks, support vector machines, scikit-learn pipelines, and cross-conformal predictors.`,
     repoURL: `https://github.com/mbeps/Machine-Learning-Labs-Questions`,
     programmingLanguage: python,
-    skills: [
+    technologySkills: [
       scikitLearn,
       numpy,
       matplotlib,
@@ -1175,17 +933,8 @@ const machineLearningProjects: Project[] = [
       gitHub,
       git,
       poetry,
-
-      oop,
-      algorithms,
-      dataStructures,
-      machineLearning,
-      artificialIntelligence,
-      dataScience,
-      dataVisualisation,
-      hyperparameters,
-      designPatterns,
-
+    ],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1211,7 +960,14 @@ const machineLearningProjects: Project[] = [
       Also includes theoretical aspects of put-call parity and financial arbitrage opportunities.`,
     repoURL: `https://github.com/mbeps/Computation_Finance_Assignment`,
     programmingLanguage: python,
-    skills: [numpy, matplotlib, jupyterNotebooks],
+    technologySkills: [numpy, matplotlib, jupyterNotebooks],
+    softSkills: [
+      problemSolving,
+      projectManagement,
+      criticalThinking,
+      creativity,
+      adaptability,
+    ],
     type: "Machine Learning",
     tags: [
       "Computational Finance",
@@ -1239,9 +995,8 @@ const gameDevProjects: Project[] = [
       `,
     repoURL: `https://github.com/mbeps/Osmos_Game`,
     programmingLanguage: python,
-    skills: [
-      simpleGui,
-      gameDevelopment,
+    technologySkills: [simpleGui],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1272,9 +1027,8 @@ const gameDevProjects: Project[] = [
     `,
     programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
-    skills: [
-      gameMakerStudio,
-      gameDevelopment,
+    technologySkills: [gameMakerStudio],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1301,9 +1055,8 @@ const gameDevProjects: Project[] = [
     `,
     programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
-    skills: [
-      gameMakerStudio,
-      gameDevelopment,
+    technologySkills: [gameMakerStudio],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1330,9 +1083,8 @@ const gameDevProjects: Project[] = [
     `,
     programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
-    skills: [
-      gameMakerStudio,
-      gameDevelopment,
+    technologySkills: [gameMakerStudio],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1358,9 +1110,8 @@ const gameDevProjects: Project[] = [
     `,
     programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
-    skills: [
-      gameMakerStudio,
-      gameDevelopment,
+    technologySkills: [gameMakerStudio],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1386,9 +1137,8 @@ const gameDevProjects: Project[] = [
     `,
     programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
-    skills: [
-      gameMakerStudio,
-      gameDevelopment,
+    technologySkills: [gameMakerStudio],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1414,9 +1164,8 @@ const gameDevProjects: Project[] = [
     `,
     programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
-    skills: [
-      gameMakerStudio,
-      gameDevelopment,
+    technologySkills: [gameMakerStudio],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1441,9 +1190,8 @@ const gameDevProjects: Project[] = [
     `,
     programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
-    skills: [
-      gameMakerStudio,
-      gameDevelopment,
+    technologySkills: [gameMakerStudio],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1468,7 +1216,14 @@ const gameDevProjects: Project[] = [
     `,
     programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
-    skills: [gameMakerStudio],
+    technologySkills: [gameMakerStudio],
+    softSkills: [
+      problemSolving,
+      projectManagement,
+      criticalThinking,
+      creativity,
+      adaptability,
+    ],
     siteURL: "https://bepary-games.itch.io/dungeon-",
     tags: [
       "Game Development",
@@ -1488,9 +1243,8 @@ const gameDevProjects: Project[] = [
     `,
     programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
-    skills: [
-      gameMakerStudio,
-      gameDevelopment,
+    technologySkills: [gameMakerStudio],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1516,9 +1270,8 @@ const gameDevProjects: Project[] = [
     `,
     programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
-    skills: [
-      gameMakerStudio,
-      gameDevelopment,
+    technologySkills: [gameMakerStudio],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1544,9 +1297,8 @@ const gameDevProjects: Project[] = [
     `,
     programmingLanguage: gameMakerLanguage,
     type: "Game Dev",
-    skills: [
-      gameMakerStudio,
-      gameDevelopment,
+    technologySkills: [gameMakerStudio],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1580,20 +1332,15 @@ const otherProjects: Project[] = [
     `,
     programmingLanguage: python,
     type: "Other",
-    skills: [
+    technologySkills: [
       matplotlib,
       numpy,
       jupyterNotebooks,
       poetry,
       gitHub,
       git,
-
-      oop,
-      algorithms,
-      dataStructures,
-      dataVisualisation,
-      designPatterns,
-
+    ],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1619,18 +1366,8 @@ const otherProjects: Project[] = [
       A shell script which automates the setup of a new Linux machine.
       This is specifically for my Fedora install.
       `,
-    skills: [
-      shellScript,
-      automation,
-      gitHub,
-      git,
-
-      oop,
-      algorithms,
-      dataStructures,
-      dataVisualisation,
-      designPatterns,
-
+    technologySkills: [shellScript, gitHub, git],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1661,19 +1398,8 @@ const otherProjects: Project[] = [
       `,
     repoURL: `https://github.com/stars/mbeps/lists/leetcode`,
     programmingLanguage: python,
-    skills: [
-      pytest,
-      gitHubActions,
-      gitHub,
-      git,
-
-      oop,
-      algorithms,
-      dataStructures,
-      dataVisualisation,
-      designPatterns,
-      testing,
-
+    technologySkills: [pytest, gitHubActions, gitHub, git],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1714,18 +1440,8 @@ const javaAssignments: Project[] = [
       `,
     repoURL: `https://github.com/mbeps/Calculator-Assignment`,
     programmingLanguage: java,
-    skills: [
-      maven,
-      junit,
-      gitHub,
-      git,
-
-      oop,
-      algorithms,
-      dataStructures,
-      dataVisualisation,
-      designPatterns,
-
+    technologySkills: [maven, junit, gitHub, git],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1752,18 +1468,9 @@ const javaAssignments: Project[] = [
       This was in first year to learn about Java and object oriented programming.`,
     repoURL: `https://github.com/mbeps/Botanic-Garden-Planner`,
     programmingLanguage: java,
-    skills: [
-      junit,
-      gitHub,
-      git,
+    technologySkills: [junit, gitHub, git],
 
-      testing,
-      oop,
-      algorithms,
-      dataStructures,
-      dataVisualisation,
-      designPatterns,
-
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1795,18 +1502,8 @@ const javaAssignments: Project[] = [
       "Individual Project",
       "Independent Project",
     ],
-    skills: [
-      junit,
-      gitHub,
-      git,
-
-      testing,
-      oop,
-      algorithms,
-      dataStructures,
-      dataVisualisation,
-      designPatterns,
-
+    technologySkills: [junit, gitHub, git],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1829,18 +1526,8 @@ const javaAssignments: Project[] = [
       "Individual Project",
       "Independent Project",
     ],
-    skills: [
-      junit,
-      gitHub,
-      git,
-
-      testing,
-      oop,
-      algorithms,
-      dataStructures,
-      dataVisualisation,
-      designPatterns,
-
+    technologySkills: [junit, gitHub, git],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1855,20 +1542,8 @@ const javaAssignments: Project[] = [
     description: `Learning to interact with a database using Java.`,
     repoURL: `https://github.com/mbeps/DatabasesMiniProject`,
     programmingLanguage: java,
-    skills: [
-      postgreSQL,
-      gitHub,
-      git,
-
-      oop,
-      sql,
-      databases,
-      normalisation,
-      algorithms,
-      dataStructures,
-      dataVisualisation,
-      designPatterns,
-
+    technologySkills: [postgreSQL, gitHub, git],
+    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,

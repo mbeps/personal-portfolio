@@ -11,7 +11,8 @@ export default interface Project {
   repoURL?: string;
   siteURL?: string;
   programmingLanguage: Skill;
-  skills: Skill[];
+  technologySkills: Skill[];
+  softSkills: Skill[];
   type:
     | "Full-Stack Web Dev"
     | "Back-End Web Dev"

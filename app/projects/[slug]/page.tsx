@@ -140,13 +140,21 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
 
   // Using the new function to group all skill types
   const allGroupedSkills = {
-    technologies: filterAndGroupSkills(project.skills, "hard", "Technologies"),
+    technologies: filterAndGroupSkills(
+      project.technologySkills,
+      "hard",
+      "Technologies"
+    ),
     generalSkills: filterAndGroupSkills(
-      project.skills,
+      project.technologySkills,
       "general",
       "Technical Skills"
     ),
-    softSkills: filterAndGroupSkills(project.skills, "soft", "Soft Skills"),
+    softSkills: filterAndGroupSkills(
+      project.technologySkills,
+      "soft",
+      "Soft Skills"
+    ),
   };
 
   /**

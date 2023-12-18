@@ -155,12 +155,10 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     { slug: "all", entryName: "All" },
     ...allProjects
       .flatMap((project: Project) =>
-        (project.skills || [])
-          .filter((skill: Skill) => skill.skillType === "hard")
-          .map((skill: Skill) => ({
-            slug: skill.slug,
-            entryName: skill.skill,
-          }))
+        (project.technologySkills || []).map((skill: Skill) => ({
+          slug: skill.slug,
+          entryName: skill.skill,
+        }))
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -175,7 +173,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     ...allProjects
       .flatMap(
         (project: Project) =>
-          project.skills
+          project.technologySkills
             ?.map((skill: Skill) => ({
               slug: stringToSlug(skill.category),
               entryName: skill.category,
@@ -194,12 +192,14 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     { slug: "all", entryName: "All" },
     ...allProjects
       .flatMap((project: Project) =>
-        (project.skills || [])
-          .filter((skill: Skill) => skill.skillType === "general")
-          .map((skill: Skill) => ({
-            slug: skill.slug,
-            entryName: skill.skill,
-          }))
+        project.technologySkills.flatMap((skill: Skill) =>
+          skill.skills
+            ? skill.skills.map((subSkill: Skill) => ({
+                slug: subSkill.slug,
+                entryName: subSkill.skill,
+              }))
+            : []
+        )
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -213,12 +213,10 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     { slug: "all", entryName: "All" },
     ...allProjects
       .flatMap((project: Project) =>
-        (project.skills || [])
-          .filter((skill: Skill) => skill.skillType === "soft")
-          .map((skill: Skill) => ({
-            slug: skill.slug,
-            entryName: skill.skill,
-          }))
+        (project.softSkills || []).map((skill: Skill) => ({
+          slug: skill.slug,
+          entryName: skill.skill,
+        }))
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -246,32 +244,34 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
 
     const matchesTechnology =
       selectedTechnology === "all" ||
-      (project.skills || []).some(
-        (skill) =>
-          skill.skillType === "hard" && skill.slug === selectedTechnology
+      (project.technologySkills || []).some(
+        (skill) => skill.slug === selectedTechnology
       );
 
     const matchesCategory =
       stringToSlug(selectedSkillCategory) === "all" ||
-      (project.skills || []).some(
+      (project.technologySkills || []).some(
         (skill) =>
           stringToSlug(skill.category) === stringToSlug(selectedSkillCategory)
       );
 
     const matchesGeneralSkill =
       selectedGeneralSkill === "all" ||
-      (project.skills || []).some(
+      (project.technologySkills || []).some(
         (skill) =>
-          skill.skillType === "general" &&
-          stringToSlug(skill.slug) === stringToSlug(selectedGeneralSkill)
+          (skill.skillType === "general" &&
+            stringToSlug(skill.slug) === stringToSlug(selectedGeneralSkill)) ||
+          (skill.skills || []).some(
+            (nestedSkill) =>
+              stringToSlug(nestedSkill.slug) ===
+              stringToSlug(selectedGeneralSkill)
+          )
       );
 
     const matchesSoftSkill =
       selectedSoftSkill === "all" ||
-      (project.skills || []).some(
-        (skill) =>
-          skill.skillType === "soft" &&
-          stringToSlug(skill.slug) === stringToSlug(selectedSoftSkill)
+      (project.softSkills || []).some(
+        (skill) => stringToSlug(skill.slug) === stringToSlug(selectedSoftSkill)
       );
 
     const matchesArchivedStatus = showArchived || !project.archived;

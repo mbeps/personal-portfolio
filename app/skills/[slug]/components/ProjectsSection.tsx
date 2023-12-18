@@ -21,7 +21,7 @@ const ProjectsSection: React.FC<ProjectPageProps> = ({ projects, skill }) => {
   ): Project[] => {
     return projects.filter(
       (project) =>
-        project.skills.some(
+        project.technologySkills.some(
           (s) => s.skill.toLowerCase() === selectedSkill.toLowerCase()
         ) ||
         project.programmingLanguage.skill.toLowerCase() ===
