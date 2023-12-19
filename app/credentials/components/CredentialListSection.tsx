@@ -37,6 +37,7 @@ const CredentialsListSection: React.FC<CredentialsListSectionProps> = ({
                           technicalSkills={certificate.technicalSkills}
                           certificateImage={certificate.certificateImage}
                           category={certificate.category}
+                          softSkills={[]}
                         />
                       )
                     )}
