@@ -34,11 +34,13 @@ const LanguageSection: React.FC = () => {
     return language && language.skills ? language.skills : [];
   };
 
+  const mainLanguages = languages.filter((lang) => lang.isMainSkill);
+
   return (
     <>
       <HeadingThree title="Languages" />
       <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-        {languages.map((languageData, idx) => (
+        {mainLanguages.map((languageData, idx) => (
           <LanguageTagWithModal
             key={idx}
             language={languageData}
