@@ -1,10 +1,14 @@
-import getBlogMetadata from "@/actions/getBlogMetadata";
 import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
 import Reader from "@/components/Reader/Reader";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import { notFound } from "next/navigation";
 import type { Metadata, ResolvingMetadata } from "next";
 import { getBlogMetadataBySlug } from "@/actions/getBlogMetadataBySlug";
+import blogs from "@/constants/blogs";
+import { Skill } from "@/types/skills";
+import HeadingThree from "@/components/Text/HeadingThree";
+import Tag from "@/components/Tags/Tag";
+import SkillTableSection from "@/components/Skills/SkillTableSection";
 
 type BlogPageProps = {
   params: { slug: string };
@@ -23,7 +27,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const slug = params.slug;
-  const allBlogs = getBlogMetadata();
+  const allBlogs = blogs;
 
   // Assume getBlogMetadataById function fetches metadata by slug
   const blog = getBlogMetadataBySlug(slug, allBlogs);
@@ -43,10 +47,10 @@ export async function generateMetadata(
  */
 export const generateStaticParams = async () => {
   // get all blogs with metadata
-  const blogs = getBlogMetadata();
+  const allBlogs = blogs;
 
   // Map through all blogs and return an array of objects with the slug for each blog
-  return blogs.map((blog) => ({
+  return allBlogs.map((blog) => ({
     slug: blog.slug,
   }));
 };
@@ -58,21 +62,92 @@ export const generateStaticParams = async () => {
  */
 const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
   const slug = params.slug;
-  const blog = getMarkdownFromFileSystem(`public/blogs/${slug}/blog.md`);
+  const blogMetadata = getBlogMetadataBySlug(slug, blogs);
+  const blogContent = getMarkdownFromFileSystem(
+    `public/blogs/${slug}/blog.md`
+  )?.content;
 
-  if (!blog) {
+  if (!blogContent || !blogMetadata) {
     notFound();
   }
+
+  interface SkillCategory {
+    title: string;
+    skillCategories: Record<string, Skill[]>;
+  }
+
+  const filterAndGroupBlogSkills = (
+    skills: Skill[] | undefined,
+    skillType: "hard" | "general" | "soft",
+    title: string
+  ): SkillCategory => {
+    // Handle the case where skills might be undefined
+    const validSkills = skills || [];
+
+    // Filter skills based on skillType
+    const filteredSkills = validSkills.filter(
+      (skill) => skill.skillType === skillType
+    );
+
+    // Group the filtered skills by category
+    const grouped = filteredSkills.reduce<Record<string, Skill[]>>(
+      (acc, skill) => {
+        const category = skill.category;
+        (acc[category] = acc[category] || []).push(skill);
+        return acc;
+      },
+      {}
+    );
+
+    return { title, skillCategories: grouped };
+  };
+
+  // Using the new function to group all skill types for the blog
+  const allGroupedBlogSkills = {
+    technologies: filterAndGroupBlogSkills(
+      blogMetadata?.technicalSkills,
+      "hard",
+      "Technologies"
+    ),
+    generalSkills: filterAndGroupBlogSkills(
+      blogMetadata?.technicalSkills,
+      "general",
+      "Technical Skills"
+    ),
+    softSkills: filterAndGroupBlogSkills(
+      blogMetadata?.softSkills,
+      "soft",
+      "Soft Skills"
+    ),
+  };
 
   return (
     <div>
       <div className="my-12 text-center">
-        <HeadingTwo title={blog.data.title} />
+        <HeadingTwo title={blogMetadata?.title} />
         <p className="text-neutral-600 dark:text-neutral-400">
-          {blog.data.subtitle}
+          {blogMetadata?.subtitle}
         </p>
       </div>
-      <Reader content={blog.content} />
+
+      <Reader content={blogContent} />
+
+      <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
+
+      <div className="mt-4">
+        <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
+          {Object.values(allGroupedBlogSkills).map(
+            ({ title, skillCategories }) =>
+              Object.keys(skillCategories).length > 0 && (
+                <SkillTableSection
+                  key={title}
+                  skillCategories={skillCategories}
+                  title={title}
+                />
+              )
+          )}
+        </div>
+      </div>
     </div>
   );
 };

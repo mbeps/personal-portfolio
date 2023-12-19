@@ -10,6 +10,7 @@ interface RadioButtonProps {
   checked: boolean;
   label: string;
   className?: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 /**
@@ -31,6 +32,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   checked,
   label,
   className,
+  onChange,
 }) => {
   const [hovered, setHovered] = useState(false);
 
@@ -46,11 +48,12 @@ const RadioButton: React.FC<RadioButtonProps> = ({
       bg-neutral-200 dark:bg-neutral-800
       hover:bg-neutral-300 dark:hover:bg-red-950
       transition-colors duration-300 ease-in-out
-      rounded-xl p-2 my-2 
+      rounded-xl 
+      p-2 md:p-1.5
+      my-2 
       flex items-center cursor-pointer
-      hover:font-bold
     `,
-    className // Merge user-provided className
+    className
   );
 
   // Add the font weight conditionally based on the checked state
@@ -68,6 +71,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
         name={name}
         value={value}
         checked={checked}
+        onChange={onChange}
         className="form-radio text-red-500 dark:text-red-900 h-6 w-6 sr-only"
       />
       <span className={`ml-2 text-lg ${labelClassName}`}>{label}</span>

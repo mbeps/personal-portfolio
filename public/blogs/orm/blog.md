@@ -1,9 +1,3 @@
----
-title: "Understanding Object-Relational Mapping (ORM)"
-subtitle: "A Comprehensive Overview of ORM, Its Advantages, Disadvantages, and Role in Modern Web Application Development"
-category: "Databases"
----
-
 - [**Detailed Overview of Object-Relational Mapping (ORM)**](#detailed-overview-of-object-relational-mapping-orm)
   - [**Defining ORM: A Deep Dive**](#defining-orm-a-deep-dive)
   - [**Advantages of Using ORMs Over Raw SQL**](#advantages-of-using-orms-over-raw-sql)

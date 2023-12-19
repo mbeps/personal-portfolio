@@ -5,6 +5,7 @@ import React from "react";
 import CredentialsList from "./components/CredentialsList";
 import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/Atoms/PageDescription";
+import updateCredentialImages from "@/actions/updateCredentialImages";
 
 const description = `
   Explore my collection of certificates and qualifications. 
@@ -15,22 +16,6 @@ const description = `
 export const metadata: Metadata = {
   title: "Maruf Bepary - Credentials",
   description: description,
-};
-
-/**
- * Updates the image path of each certificate.
- * The file name of each certificate image is the slug of the certificate.
- * The path is appended to the slug allowing the image to be found.
- * @param certificates (Certificate[]): list of certificates
- * @returns (Certificate[]): list of certificates with updated image paths
- */
-const updateCredentialImages = (certificates: Certificate[]): Certificate[] => {
-  return certificates.map((certificate) => {
-    return {
-      ...certificate,
-      certificateImage: `/certificates/${certificate.slug}.jpg`,
-    };
-  });
 };
 
 /**

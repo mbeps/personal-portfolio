@@ -1,11 +1,15 @@
-import { languages } from "@/constants/languages";
-import { technologies } from "@/constants/skills";
+import groupSkills from "@/actions/skills/groupSkills";
+import hardSkills from "@/constants/skills/hardSkills";
 import { Skill } from "@/types/skills";
 import React from "react";
-import Tag from "../Atoms/Tag";
 import Dropdown from "../DropDown/DropDownMenu";
+import SkillTag from "../Tags/SkillTag";
 import HeadingThree from "../Text/HeadingThree";
 import Modal from "./Modal";
+import { languages } from "@/constants/languages";
+import { technologies } from "@/constants/technologies";
+import Button from "../Atoms/Button";
+import Link from "next/link";
 
 interface SkillsModalProps {
   isOpen?: boolean; // whether the modal is open or not
@@ -25,77 +29,10 @@ interface SkillsModalProps {
 const SkillsModal: React.FC<SkillsModalProps> = ({ isOpen, onClose }) => {
   const [groupedBy, setGroupedBy] = React.useState("category");
 
-  /**
-   * Allows grouping the skills by category or by language.
-   * Removes duplicates.
-   * @param skills (Skill[]) The skills to organize
-   * @returns (Record<string, Skill[]>): the skills organized by category
-   */
-  const groupSkills = (): Record<string, Skill[]> | Skill[] => {
-    let organizedSkills: Record<string, Skill[]> | Skill[] = {}; // The skills organized by category
-
-    // Helper function to remove duplicates
-    const removeDuplicates = (skills: Skill[]): Skill[] => {
-      const skillSet = new Set();
-      const uniqueSkills: Skill[] = [];
-
-      skills.forEach((skill) => {
-        const serializedSkill = JSON.stringify(skill);
-        if (!skillSet.has(serializedSkill)) {
-          skillSet.add(serializedSkill);
-          uniqueSkills.push(skill);
-        }
-      });
-
-      return uniqueSkills;
-    };
-
-    const allLanguageSkills = languages.flatMap((lang) => lang.skills || []);
-    const allSkills = allLanguageSkills.concat(technologies);
-
-    if (groupedBy === "language") {
-      organizedSkills = languages.reduce(
-        (acc: Record<string, Skill[]>, lang) => {
-          if (lang.skills) {
-            acc[lang.language] = removeDuplicates(lang.skills);
-          }
-          return acc;
-        },
-        {} as Record<string, Skill[]>
-      );
-      (organizedSkills as Record<string, Skill[]>)["Other"] =
-        removeDuplicates(technologies);
-    } else if (groupedBy === "category") {
-      organizedSkills = allSkills.reduce(
-        (acc: Record<string, Skill[]>, skill) => {
-          const category = skill.category || "Other";
-          if (!acc[category]) {
-            acc[category] = [];
-          }
-          acc[category].push(skill);
-          return acc;
-        },
-        {} as Record<string, Skill[]>
-      );
-
-      // Remove duplicates for each category
-      Object.keys(organizedSkills as Record<string, Skill[]>).forEach(
-        (category) => {
-          (organizedSkills as Record<string, Skill[]>)[category] =
-            removeDuplicates(
-              (organizedSkills as Record<string, Skill[]>)[category]
-            );
-        }
-      );
-    } else {
-      // groupedBy === "none"
-      organizedSkills = removeDuplicates(allSkills);
-    }
-
-    return organizedSkills;
-  };
-
-  const skills = groupSkills();
+  const groupedSkills = groupSkills(
+    groupedBy,
+    languages.flatMap((lang) => lang.skills || []).concat(technologies)
+  );
 
   return (
     <Modal title="Skills & Tools" isOpen={isOpen} onClose={onClose}>
@@ -110,32 +47,33 @@ const SkillsModal: React.FC<SkillsModalProps> = ({ isOpen, onClose }) => {
         </div>
         <Dropdown
           selected={groupedBy}
-          options={["category", "language", "none"]}
-          setSelected={setGroupedBy}
+          options={[
+            { slug: "category", entryName: "Category" },
+            { slug: "language", entryName: "Language" },
+            { slug: "none", entryName: "None" },
+          ]}
+          onSelect={setGroupedBy}
         />
       </div>
-      {groupedBy === "none" ? (
-        <div className="mt-4 text-center md:text-left">
-          <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-            {(skills as Skill[]).map((skill, index) => (
-              <Tag key={index}>{skill.skill}</Tag>
-            ))}
-          </div>
-        </div>
-      ) : (
-        Object.entries(skills as Record<string, Skill[]>).map(
-          ([group, skills], index) => (
-            <div key={index} className="mt-4 text-center md:text-left">
-              <HeadingThree title={group} />
-              <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-                {skills.map((skill, index) => (
-                  <Tag key={index}>{skill.skill}</Tag>
-                ))}
-              </div>
+      {Object.entries(groupedSkills as Record<string, Skill[]>).map(
+        ([group, skills], index) => (
+          <div key={index} className="mt-4 text-center md:text-left">
+            <HeadingThree title={group} />
+            <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
+              {skills.map((skill, index) => (
+                <SkillTag key={index} skill={skill} />
+              ))}
             </div>
-          )
+          </div>
         )
       )}
+
+      {/* separator */}
+      <div className="w-full h-px bg-neutral-200 dark:bg-neutral-700 my-8" />
+
+      <Link href="/skills" className="flex justify-center mt-10">
+        <Button variant="outlined">View All Skills</Button>
+      </Link>
     </Modal>
   );
 };

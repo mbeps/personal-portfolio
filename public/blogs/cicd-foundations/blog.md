@@ -1,9 +1,3 @@
----
-title: "Embracing the Future of Software Development: A Comprehensive Guide to CI/CD"
-subtitle: "Mastering Continuous Integration and Continuous Delivery for Enhanced Software Delivery"
-category: "DevOps"
----
-
 - [**Introduction to CI/CD**](#introduction-to-cicd)
 	- [**Define Continuous Integration (CI) and Continuous Delivery (CD)**](#define-continuous-integration-ci-and-continuous-delivery-cd)
 		- [**Continuous Integration (CI)**](#continuous-integration-ci)

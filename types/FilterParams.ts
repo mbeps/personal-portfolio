@@ -6,6 +6,7 @@ interface FilterParams {
   language?: string;
   search?: string;
   archived?: boolean;
+  skillCategory?: string;
 }
 
 export default FilterParams;

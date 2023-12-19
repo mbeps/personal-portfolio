@@ -1,9 +1,3 @@
----
-title: "Embracing DevOps: A Guide to Principles, Practices, and Success Stories"
-subtitle: "Understanding the Impact of DevOps in Modern Software Development"
-category: "DevOps"
----
-
 - [**Introduction to DevOps**](#introduction-to-devops)
 	- [**Defining DevOps and Its Core Principles**](#defining-devops-and-its-core-principles)
 		- [**Core Principles of DevOps:**](#core-principles-of-devops)

@@ -1,5 +1,4 @@
 import getProjectBySlug from "@/actions/getProjectBySlug";
-import Tag from "@/components/Atoms/Tag";
 import Gallery from "@/components/Gallery/Gallery";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
@@ -8,7 +7,10 @@ import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
 import getMediaFromFileSystem from "@/actions/getMediaFromFileSystem";
 import hasProjectCover from "@/actions/hasProjectCover";
 import Button from "@/components/Atoms/Button";
+import SkillTableSection from "@/components/Skills/SkillTableSection";
+import SkillTag from "@/components/Tags/SkillTag";
 import allProjects from "@/constants/projects";
+import { Skill } from "@/types/skills";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -78,12 +80,81 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const slug = params.slug;
 
   const project = getProjectBySlug(slug, allProjects);
-  const projectName = project?.name;
-  const projectTechnologies = project?.technologies;
-  const projectLanguage = project?.programmingLanguage;
-  const projectDescription = project?.description;
+
+  // redirect to not found page if the project is not valid
+  if (!project) {
+    notFound();
+  }
+
+  const projectName = project.name;
+
+  const projectLanguage = project.programmingLanguage;
+  const projectDescription = project.description;
   const hasCoverImage = hasProjectCover(slug);
   const coverImagePath = `/projects/${slug}/cover.png`;
+
+  function technicalGeneralSkills(
+    skills: Skill[],
+    extraSkills: Skill[] = []
+  ): Skill[] {
+    // Combine the original skills and extra skills
+    const combinedSkills = skills.concat(extraSkills);
+
+    return combinedSkills
+      .flatMap((skill) => (skill.skills ? [skill, ...skill.skills] : [skill]))
+      .reduce((uniqueSkills, skill) => {
+        if (!uniqueSkills.some((s) => s.slug === skill.slug)) {
+          uniqueSkills.push(skill);
+        }
+        return uniqueSkills;
+      }, [] as Skill[]);
+  }
+
+  interface SkillCategory {
+    title: string;
+    skillCategories: Record<string, Skill[]>;
+  }
+
+  const filterAndGroupSkills = (
+    skills: Skill[],
+    skillType: "hard" | "general" | "soft",
+    title: string
+  ): SkillCategory => {
+    // Filter skills based on skillType
+    const filteredSkills = skills.filter(
+      (skill) => skill.skillType === skillType
+    );
+
+    // Group the filtered skills by category
+    const grouped = filteredSkills.reduce<Record<string, Skill[]>>(
+      (acc, skill) => {
+        const category = skill.category;
+        (acc[category] = acc[category] || []).push(skill);
+        return acc;
+      },
+      {}
+    );
+
+    return { title, skillCategories: grouped };
+  };
+
+  // Using the new function to group all skill types
+  const allGroupedSkills = {
+    technologies: filterAndGroupSkills(
+      project.technologySkills,
+      "hard",
+      "Technologies"
+    ),
+    generalSkills: filterAndGroupSkills(
+      technicalGeneralSkills(
+        project.technologySkills,
+        project.extraTechnicalGeneralSkills
+      ),
+      "general",
+      "Technical Skills"
+    ),
+    softSkills: filterAndGroupSkills(project.softSkills, "soft", "Soft Skills"),
+  };
 
   /**
    * Gets images and videos from the file system.
@@ -123,11 +194,6 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
     `public/projects/${slug}/report.md`
   )?.content;
 
-  // redirect to not found page if the project is not valid
-  if (!project) {
-    notFound();
-  }
-
   return (
     <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
       <HeadingTwo title={project?.name} />
@@ -164,99 +230,100 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
       )}
 
       {/* Metadata Section */}
-      <div className="flex flex-col md:flex-row gap-4 sm:gap-10">
-        {/* Right */}
-        <div className="md:w-1/2">
-          <div className="mt-4 text-center md:text-left">
-            {/* Description */}
-            <HeadingThree title="Description" />
-            <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-5">
-              <p>{projectDescription}</p>
-            </div>
+      <div className="mt-4">
+        {/* Description Section */}
+        <div className="text-center md:text-left">
+          <HeadingThree title="Description" />
+          <div className="flex flex-wrap justify-center md:justify-start z-10 mt-5">
+            <p>{projectDescription}</p>
+          </div>
+        </div>
 
-            <HeadingThree title="Links" />
-            {/* Links */}
-            <div
-              className="
+        {/* Language Section */}
+        <div className="text-center md:text-left">
+          <HeadingThree title="Language" />
+          <div className="flex flex-wrap justify-center md:justify-start z-10 mt-5">
+            <SkillTag skill={projectLanguage} />
+          </div>
+        </div>
+
+        {/* Skills Section */}
+        <div className="mt-4">
+          <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
+            {Object.values(allGroupedSkills).map(
+              ({ title, skillCategories }) =>
+                skillCategories &&
+                Object.keys(skillCategories).length > 0 && (
+                  <SkillTableSection
+                    key={title}
+                    skillCategories={skillCategories}
+                    title={title}
+                  />
+                )
+            )}
+
+            {/* Links Section */}
+            <div className="text-center md:text-left">
+              <HeadingThree title="Links" />
+              <div
+                className="
               mt-6 flex 
               flex-row 
               justify-center md:justify-start items-center 
-              w-full 
+              w-full md:w-1/3
               gap-2"
-            >
-              {/* GitHub Repo */}
-              {project?.repoURL && (
-                <Link
-                  href={project?.repoURL}
-                  target="_blank"
-                  className="w-auto md:w-full"
-                >
-                  <Button
-                    variant={"ghost"}
-                    className="
-                        text-neutral-900 dark:text-white 
-                        hover:text-neutral-900 
-                        hover:bg-neutral-300
-                        w-auto md:w-full
-                        rounded-full md:rounded-xl
-                      "
+              >
+                {/* GitHub Repo */}
+                {project?.repoURL && (
+                  <Link
+                    href={project?.repoURL}
+                    target="_blank"
+                    className="w-full"
                   >
-                    <div className="flex flex-row justify-center md:justify-start gap-4 w-full">
-                      <BsGithub size={30} />
-                      <p className="hidden md:block mt-1 md:text-left text-center">
-                        Repository
-                      </p>
-                    </div>
-                  </Button>
-                </Link>
-              )}
-              {/* Website */}
-              {project?.siteURL && (
-                <Link
-                  href={project?.siteURL}
-                  target="_blank"
-                  className="w-auto md:w-full"
-                >
-                  <Button
-                    variant={"ghost"}
-                    className="
-                        text-neutral-900 dark:text-white 
-                        hover:text-neutral-900 
-                        hover:bg-neutral-300
-                        w-auto md:w-full
-                        rounded-full md:rounded-xl
-                      "
+                    <Button
+                      variant={"ghost"}
+                      className="
+                text-neutral-900 dark:text-white 
+                hover:text-neutral-900 
+                hover:bg-neutral-300
+                w-full
+                rounded-xl
+              "
+                    >
+                      <div className="flex justify-center md:justify-start gap-4 w-full">
+                        <BsGithub size={30} />
+                        <p className="mt-1">Repository</p>
+                      </div>
+                    </Button>
+                  </Link>
+                )}
+                {/* Website */}
+                {project?.siteURL && (
+                  <Link
+                    href={project?.siteURL}
+                    target="_blank"
+                    className="w-full"
                   >
-                    <div className="flex flex-row justify-center md:justify-start gap-4 w-full">
-                      <BsArrowUpRightCircle size={30} />
-                      <p className="hidden md:block mt-1 md:text-left text-center">
-                        Deployment
-                      </p>
-                    </div>
-                  </Button>
-                </Link>
-              )}
-            </div>
-          </div>
-        </div>
-        {/* Left */}
-        <div className="md:w-1/2">
-          <div className="mt-4 text-center md:text-left">
-            <HeadingThree title="Language" />
-            <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-5">
-              <Tag>{projectLanguage}</Tag>
-            </div>
-          </div>
-          {projectTechnologies && (
-            <div className="mt-4 text-center md:text-left">
-              <HeadingThree title="Technologies" />
-              <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-                {projectTechnologies.map((tech, index) => (
-                  <Tag key={index}>{tech}</Tag>
-                ))}
+                    <Button
+                      variant={"ghost"}
+                      className="
+                text-neutral-900 dark:text-white 
+                hover:text-neutral-900 
+                hover:bg-neutral-300
+                w-full
+                rounded-xl
+              "
+                    >
+                      <div className="flex justify-center md:justify-start gap-4 w-full">
+                        <BsArrowUpRightCircle size={30} />
+                        <p className="mt-1">Deployment</p>
+                      </div>
+                    </Button>
+                  </Link>
+                )}
               </div>
             </div>
-          )}
+          </div>
         </div>
       </div>
 

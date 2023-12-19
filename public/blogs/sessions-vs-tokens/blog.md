@@ -1,9 +1,3 @@
----
-title: "Comparing Session and Token: Navigating Authentication"
-subtitle: "A Detailed Comparison of Authentication Strategies"
-category: "Web Development"
----
-
 - [**Overview**](#overview)
 	- [**What is Session-Based Authentication?**](#what-is-session-based-authentication)
 	- [**What is Token-Based Authentication?**](#what-is-token-based-authentication)

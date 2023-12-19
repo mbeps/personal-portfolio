@@ -1,6 +1,6 @@
 "use client";
 
-import Tag from "@/components/Atoms/Tag";
+import Tag from "@/components/Tags/Tag";
 import LanguageModal from "@/components/Modal/LanguageModal";
 import HeadingThree from "@/components/Text/HeadingThree";
 import { languages } from "@/constants/languages";
@@ -30,7 +30,7 @@ const LanguageSection: React.FC = () => {
    * @returns (Skill[]): list of skills for the language (empty array if the language does not exist)
    */
   const getSkillsByLanguage = (languageName: string): Skill[] => {
-    const language = languages.find((lang) => lang.language === languageName);
+    const language = languages.find((lang) => lang.skill === languageName);
     return language && language.skills ? language.skills : [];
   };
 
@@ -41,9 +41,8 @@ const LanguageSection: React.FC = () => {
         {languages.map((languageData, idx) => (
           <LanguageTagWithModal
             key={idx}
-            language={languageData.language}
-            skills={getSkillsByLanguage(languageData.language)}
-            repository={languageData.repository}
+            language={languageData}
+            skills={getSkillsByLanguage(languageData.skill)}
             handleOpenModal={handleOpenModal}
             handleCloseModal={handleCloseModal}
             isModalOpen={isModalOpen}
@@ -57,7 +56,7 @@ const LanguageSection: React.FC = () => {
 export default LanguageSection;
 
 interface LanguageTagWithModalProps {
-  language: string;
+  language: Skill;
   skills: Skill[];
   repository?: string;
   handleOpenModal: () => void;
@@ -96,7 +95,7 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
   return (
     <>
       <Tag onClick={shouldOpenModal ? handleOpenModal : undefined}>
-        {language}
+        {language.skill}
       </Tag>
       {shouldOpenModal && (
         <LanguageModal
@@ -104,7 +103,6 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
           onClose={handleCloseModal}
           language={language}
           skills={skills}
-          repository={repository}
         />
       )}
     </>

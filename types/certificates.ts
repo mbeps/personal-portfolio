@@ -1,3 +1,5 @@
+import { Skill } from "./skills";
+
 export default interface Certificate {
   name: string;
   slug: string;
@@ -10,7 +12,8 @@ export default interface Certificate {
     | "PMI"
     | "Royal Holloway University";
   credentialURL: string;
-  skills: string[];
+  technicalSkills: Skill[];
+  softSkills: Skill[];
   category:
     | "University"
     | "Programming Languages"

@@ -4,6 +4,7 @@ import { IoIosArrowForward } from "react-icons/io";
 interface TagProps {
   children: React.ReactNode;
   onClick?: () => void;
+  hasHover?: boolean;
 }
 
 /**
@@ -15,7 +16,7 @@ interface TagProps {
  * @param onClick (function) The action to be performed when the tag is clicked
  * @returns (JSX.Element): a tag
  */
-const Tag: React.FC<TagProps> = ({ children, onClick }) => {
+const Tag: React.FC<TagProps> = ({ children, onClick, hasHover }) => {
   const baseClassName = `
     group
     bg-gray-200 dark:bg-red-950
@@ -29,15 +30,14 @@ const Tag: React.FC<TagProps> = ({ children, onClick }) => {
     cursor-pointer
   `;
 
-  const className = onClick
-    ? `${baseClassName} ${hoverClassName}`
-    : baseClassName;
+  const className =
+    onClick || hasHover ? `${baseClassName} ${hoverClassName}` : baseClassName;
 
   return (
     <div className={className} onClick={onClick}>
       <div className="flex items-center justify-between space-x-2">
         <p>{children}</p>
-        {onClick && (
+        {(onClick || hasHover) && (
           <IoIosArrowForward
             className={`md:group-hover:text-red-400 transition-colors duration-200 ${
               children === "..." ? "bounce-horizontal" : ""

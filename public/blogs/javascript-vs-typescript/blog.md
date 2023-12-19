@@ -1,9 +1,3 @@
----
-title: "JavaScript vs TypeScript: A Detailed Comparison"
-subtitle: "Exploring the Advantages and Key Differences between JavaScript and TypeScript"
-category: "Software Engineering"
----
-
 - [**Overview**](#overview)
 - [**Type Systems**](#type-systems)
 - [**Learning Curve**](#learning-curve)

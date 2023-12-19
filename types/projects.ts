@@ -1,3 +1,5 @@
+import { Skill } from "./skills";
+
 /**
  * Interface representing a project.
  */
@@ -8,15 +10,16 @@ export default interface Project {
   imageURL?: string;
   repoURL?: string;
   siteURL?: string;
-  programmingLanguage: string;
-  technologies?: string[];
+  programmingLanguage: Skill;
+  technologySkills: Skill[];
+  extraTechnicalGeneralSkills?: Skill[];
+  softSkills: Skill[];
   type:
-    | "Full-Stack Web Dev"
-    | "Back-End Web Dev"
+    | "Full-Stack Web Development"
+    | "Back-End Web Development"
     | "Machine Learning"
     | "Java Assignments"
-    | "Game Dev"
+    | "Game Development"
     | "Other";
-  tags?: string[];
   archived?: boolean;
 }

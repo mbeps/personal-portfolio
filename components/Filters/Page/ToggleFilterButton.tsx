@@ -3,7 +3,7 @@ import React from "react";
 import { BsFilterLeft } from "react-icons/bs";
 
 interface OpenFilterModalButtonProps {
-  handleOpenFilterModal: () => void;
+  toggleFilter: () => void;
 }
 
 /**
@@ -12,8 +12,8 @@ interface OpenFilterModalButtonProps {
  * @param handleOpenFilterModal () => void - function to open the filter modal
  * @returns (JSX.Element) - button to open the filter modal
  */
-const OpenFilterModalButton: React.FC<OpenFilterModalButtonProps> = ({
-  handleOpenFilterModal,
+const ToggleFilterButton: React.FC<OpenFilterModalButtonProps> = ({
+  toggleFilter: handleOpenFilterModal,
 }) => {
   return (
     <Button
@@ -42,4 +42,4 @@ const OpenFilterModalButton: React.FC<OpenFilterModalButtonProps> = ({
   );
 };
 
-export default OpenFilterModalButton;
+export default ToggleFilterButton;

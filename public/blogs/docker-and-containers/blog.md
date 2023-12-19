@@ -1,9 +1,3 @@
----
-title: "Docker: Unleashing the Power of Containers"
-subtitle: "A Comprehensive Guide to Understanding Docker and Containerization Technology"
-category: "DevOps"
----
-
 - [**Introduction to Docker and Containers**](#introduction-to-docker-and-containers)
 	- [**What is a Container?**](#what-is-a-container)
 	- [**Why are Containers Important?**](#why-are-containers-important)

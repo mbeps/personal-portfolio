@@ -5,6 +5,7 @@ import ProjectItem from "@/components/ProjectItem/ProjectItem";
 import SlideUp from "@/components/Atoms/Slideup";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import allProjects from "@/constants/projects";
+import Link from "next/link";
 
 /**
  * Project section listing the projects I have worked on.
@@ -49,20 +50,15 @@ const ProjectsSection = () => {
                     imageURL={project.imageURL}
                     repoURL={project.repoURL}
                     siteURL={project.siteURL}
-                    programmingLanguage={project.programmingLanguage}
-                    technologies={project.technologies}
-                    type={project.type}
                   />
                 </SlideUp>
               </div>
             ))}
         </div>
 
-        <div className="flex justify-center mt-10">
-          <Button variant="outlined" onClick={"/projects"}>
-            View All Projects
-          </Button>
-        </div>
+        <Link href="/projects" className="flex justify-center mt-10">
+          <Button variant="outlined">View All Projects</Button>
+        </Link>
       </div>
     </section>
   );

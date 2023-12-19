@@ -1,86 +1,144 @@
-import { Language } from "@/types/languages";
 import { Skill } from "@/types/skills";
+import {
+  flask,
+  django,
+  scikitLearn,
+  pandas,
+  numpy,
+  matplotlib,
+  seaborn,
+  keras,
+  jupyterNotebooks,
+  pytest,
+  unittest,
+  sqlalchemy,
+  poetry,
+  pybuilder,
+  nextjs,
+  nextauth,
+  nodejs,
+  jest,
+  vitest,
+  prisma,
+  drizzle,
+  mongoose,
+  npm,
+  yarn,
+  pnpm,
+  maven,
+  gradle,
+  junit,
+  springBoot,
+  hibernate,
+  react,
+  spring,
+} from "./skills/hardSkills";
 
-/**
- * Array of skills for JavaScript and TypeScript.
- * Skills for both languages are the same.
- */
-const JavaScriptTypeScriptSkills: Skill[] = [
-  { skill: "Next.JS", category: "Full-Stack Web Development" },
-  { skill: "NextAuth", category: "Back-End Web Development" },
-  { skill: "Node.JS", category: "Back-End Web Development" },
-  { skill: "React", category: "Front-End Web Development" },
-  { skill: "Jest", category: "Testing" },
-  { skill: "Vitest", category: "Testing" },
-  { skill: "Prisma", category: "Object Relational Mappers" },
-  { skill: "Drizzle", category: "Object Relational Mappers" },
-  { skill: "Mongoose", category: "Object Relational Mappers" },
-  { skill: "NPM", category: "Project Managers" },
-  { skill: "Yarn", category: "Project Managers" },
-  { skill: "PNPM", category: "Project Managers" },
-];
+export const python: Skill = {
+  skill: "Python",
+  skills: [
+    flask,
+    django,
+    scikitLearn,
+    pandas,
+    numpy,
+    matplotlib,
+    seaborn,
+    keras,
+    jupyterNotebooks,
+    pytest,
+    unittest,
+    sqlalchemy,
+    poetry,
+    pybuilder,
+  ],
+  isMainSkill: true,
+  skillType: "hard",
+  category: "Programming Languages",
+  slug: "python",
+};
+
+export const javascript: Skill = {
+  skill: "JavaScript",
+  skills: [
+    nextjs,
+    nextauth,
+    nodejs,
+    react,
+    jest,
+    vitest,
+    prisma,
+    drizzle,
+    mongoose,
+    npm,
+    yarn,
+    pnpm,
+  ],
+  isMainSkill: true,
+  skillType: "hard",
+  category: "Programming Languages",
+  slug: "javascript",
+};
+
+export const typescript: Skill = {
+  skill: "TypeScript",
+  skills: [
+    nextjs,
+    nextauth,
+    nodejs,
+    react,
+    jest,
+    vitest,
+    prisma,
+    drizzle,
+    mongoose,
+    npm,
+    yarn,
+    pnpm,
+  ],
+  isMainSkill: true,
+  skillType: "hard",
+  category: "Programming Languages",
+  slug: "typescript",
+};
+
+export const java: Skill = {
+  skill: "Java",
+  skills: [maven, gradle, junit, spring, springBoot, hibernate],
+  isMainSkill: true,
+  skillType: "hard",
+  category: "Programming Languages",
+  slug: "java",
+};
+
+export const gameMakerLanguage: Skill = {
+  skill: "GameMaker Skill",
+  isMainSkill: false,
+  skillType: "hard",
+  category: "Programming Languages",
+  slug: "game-maker-language",
+};
+
+export const shellScript: Skill = {
+  skill: "Shell Script",
+  isMainSkill: false,
+  skillType: "hard",
+  category: "Programming Languages",
+  slug: "shell",
+};
+
+export const rLanguage: Skill = {
+  skill: "R",
+  isMainSkill: false,
+  skillType: "hard",
+  category: "Programming Languages",
+  slug: "r",
+};
 
 /**
  * Array of languages.
- * Each language has an array of skills and repositories.
+ * Each skill has an array of skills and repositories.
  */
-const languages: Language[] = [
-  {
-    language: "JavaScript",
-    skills: JavaScriptTypeScriptSkills,
-  },
-  {
-    language: "TypeScript",
-    skills: JavaScriptTypeScriptSkills,
-    repository: "projects?type=All&technology=All&language=TypeScript&search=",
-  },
-  {
-    language: "Python",
-    skills: [
-      { skill: "Flask", category: "Back-End Web Development" },
-      { skill: "Django", category: "Back-End Web Development" },
-      { skill: "Scikit Learn", category: "Machine Learning" },
-      { skill: "Pandas", category: "Machine Learning" },
-      { skill: "NumPy", category: "Machine Learning" },
-      { skill: "Matplotlib", category: "Machine Learning" },
-      { skill: "Seaborn", category: "Machine Learning" },
-      { skill: "Keras", category: "Machine Learning" },
-      { skill: "Jupyter Notebooks", category: "Machine Learning" },
-      { skill: "PyTest", category: "Testing" },
-      { skill: "UnitTest", category: "Testing" },
-      { skill: "SQLAlchemy", category: "Object Relational Mappers" },
-      { skill: "Poetry", category: "Project Managers" },
-      { skill: "PyBuilder", category: "Project Managers" },
-    ],
-    repository: "projects?type=All&technology=All&language=Python&search=",
-  },
-  {
-    language: "Java",
-    skills: [
-      { skill: "Maven", category: "Project Managers" },
-      { skill: "Gradle", category: "Project Managers" },
-      { skill: "JUnit", category: "Testing" },
-      { skill: "Spring", category: "Back-End Web Development" },
-      { skill: "Spring Boot", category: "Back-End Web Development" },
-      { skill: "Hibernate", category: "Object Relational Mappers" },
-    ],
-    repository: "projects?type=All&technology=All&language=Java&search=",
-  },
-  {
-    language: "C",
-  },
-  {
-    language: "Haskell",
-  },
-  {
-    language: "Shell",
-  },
-  {
-    language: "PHP",
-  },
-  {
-    language: "Prolog",
-  },
-];
+const languages: Skill[] = [javascript, typescript, python, java];
 
 export { languages };

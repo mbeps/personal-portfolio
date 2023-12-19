@@ -4,6 +4,15 @@ import Link from "next/link";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub, BsInfoCircle } from "react-icons/bs";
 
+interface ProjectItemProps {
+  name: string;
+  slug: string;
+  description: string;
+  imageURL?: string;
+  repoURL?: string;
+  siteURL?: string;
+}
+
 /**
  * Card which displays a projects.
  * Contains:
@@ -31,7 +40,7 @@ import { BsArrowUpRightCircle, BsGithub, BsInfoCircle } from "react-icons/bs";
  * @param type (string): Type of the project
  * @returns (JSX.Element): Project item component
  */
-const ProjectItem: React.FC<Project> = ({
+const ProjectItem: React.FC<ProjectItemProps> = ({
   name,
   slug,
   description,

@@ -1,8 +1,8 @@
-import getBlogMetadata from "@/actions/getBlogMetadata";
 import HeadingOne from "@/components/Text/HeadingOne";
 import { BlogList } from "./components/BlogList";
 import type { Metadata } from "next";
 import PageDescription from "@/components/Atoms/PageDescription";
+import blogs from "@/constants/blogs";
 
 const description = `
   Explore my collection of blogs on various topics. 
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
  * @returns (JSX.Element): page with all blogs
  */
 export default function BlogPage() {
-  let blogMetadata = getBlogMetadata();
+  let blogMetadata = blogs;
 
   return (
     <main>
