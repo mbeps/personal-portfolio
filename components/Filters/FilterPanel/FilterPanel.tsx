@@ -8,6 +8,7 @@ import RadioButton from "../../Inputs/RadioButton";
 import HeadingFour from "../../Text/HeadingFour";
 import HeadingThree from "../../Text/HeadingThree";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
+import ExpandCollapseButton from "@/components/Atoms/ExpandCollapseButton";
 
 interface FilterOverlayProps {
   filterCategories: FilterCategory[];
@@ -158,23 +159,11 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
                   ))}
               </ul>
               {filterCategory.options.length > 5 && (
-                <button
-                  className="
-                  mt-2 
-                  text-red-600 hover:text-red-800
-                  flex items-center
-                "
-                  onClick={() => toggleSection(filterCategory.sectionName)}
-                >
-                  {expandedSections[filterCategory.sectionName]
-                    ? "Show Less"
-                    : "Show More"}
-                  {expandedSections[filterCategory.sectionName] ? (
-                    <MdKeyboardArrowUp size={25} />
-                  ) : (
-                    <MdKeyboardArrowDown size={25} />
-                  )}
-                </button>
+                <ExpandCollapseButton
+                  isExpanded={expandedSections[filterCategory.sectionName]}
+                  onToggle={() => toggleSection(filterCategory.sectionName)}
+                  className="your-custom-class-if-needed"
+                />
               )}
             </div>
           ))}

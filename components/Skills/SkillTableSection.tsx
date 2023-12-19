@@ -6,6 +6,7 @@ import { Skill } from "@/types/skills";
 import React, { useState } from "react";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import SkillTag from "../Tags/SkillTag";
+import ExpandCollapseButton from "../Atoms/ExpandCollapseButton";
 
 interface SkillTableSectionProps {
   skillCategories: Record<string, Skill[]>;
@@ -70,17 +71,11 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
       </div>
 
       {shouldShowToggleButton && (
-        <button
-          className="mt-2 text-red-600 hover:text-red-800 flex items-center"
-          onClick={toggleShowAll}
-        >
-          {showAll ? "Show Less" : "Show More"}
-          {showAll ? (
-            <MdKeyboardArrowUp size={25} />
-          ) : (
-            <MdKeyboardArrowDown size={25} />
-          )}
-        </button>
+        <ExpandCollapseButton
+          isExpanded={showAll}
+          onToggle={toggleShowAll}
+          className="your-custom-class-if-needed"
+        />
       )}
     </div>
   );
