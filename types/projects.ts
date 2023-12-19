@@ -12,6 +12,7 @@ export default interface Project {
   siteURL?: string;
   programmingLanguage: Skill;
   technologySkills: Skill[];
+  extraTechnicalGeneralSkills?: Skill[];
   softSkills: Skill[];
   type:
     | "Full-Stack Web Dev"
@@ -20,6 +21,5 @@ export default interface Project {
     | "Java Assignments"
     | "Game Dev"
     | "Other";
-  tags?: string[];
   archived?: boolean;
 }

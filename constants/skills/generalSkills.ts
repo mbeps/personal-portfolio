@@ -121,8 +121,8 @@ export const linuxDevelopment: Skill = {
 };
 
 export const machineLearning: Skill = {
-  skill: "Machine Learning",
-  category: "Machine Learning",
+  skill: "Artificial Intelligence & Machine Learning",
+  category: "Artificial Intelligence & Machine Learning",
   isMainSkill: false,
   skillType: "general",
   slug: "machine-learning",
@@ -130,15 +130,15 @@ export const machineLearning: Skill = {
 
 export const deepLearning: Skill = {
   skill: "Deep Learning",
-  category: "Machine Learning",
+  category: "Artificial Intelligence & Machine Learning",
   isMainSkill: false,
   skillType: "general",
   slug: "deep-learning",
 };
 
 export const artificialIntelligence: Skill = {
-  skill: "Artificial Intelligence",
-  category: "Artificial Intelligence",
+  skill: "Artificial Intelligence & Machine Learning",
+  category: "Artificial Intelligence & Machine Learning",
   isMainSkill: false,
   skillType: "general",
   slug: "artificial-intelligence",
@@ -146,7 +146,7 @@ export const artificialIntelligence: Skill = {
 
 export const dataScience: Skill = {
   skill: "Data Science",
-  category: "Machine Learning",
+  category: "Data Science",
   isMainSkill: false,
   skillType: "general",
   slug: "data-science",
@@ -154,7 +154,7 @@ export const dataScience: Skill = {
 
 export const hyperparameters: Skill = {
   skill: "Hyperparameters",
-  category: "Machine Learning",
+  category: "Artificial Intelligence & Machine Learning",
   isMainSkill: false,
   skillType: "general",
   slug: "hyperparameters",
@@ -164,13 +164,13 @@ export const boosting: Skill = {
   skill: "Boosting",
   isMainSkill: false,
   skillType: "general",
-  category: "Machine Learning",
+  category: "Artificial Intelligence & Machine Learning",
   slug: "boosting",
 };
 
 export const dataVisualisation: Skill = {
   skill: "Data Visualisation",
-  category: "Machine Learning",
+  category: "Data Science",
   isMainSkill: false,
   skillType: "general",
   slug: "data-visualisation",
@@ -178,7 +178,7 @@ export const dataVisualisation: Skill = {
 
 export const neuralNetworks: Skill = {
   skill: "Neural Networks",
-  category: "Machine Learning",
+  category: "Artificial Intelligence & Machine Learning",
   isMainSkill: false,
   skillType: "general",
   slug: "neural-networks",

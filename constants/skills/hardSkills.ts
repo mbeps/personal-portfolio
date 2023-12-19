@@ -316,7 +316,7 @@ export const pusher: Skill = {
 
 export const openAI: Skill = {
   skill: "OpenAI",
-  category: "Artificial Intelligence",
+  category: "Artificial Intelligence & Machine Learning",
   isMainSkill: true,
   skillType: "hard",
   slug: "open-ai",
@@ -325,7 +325,7 @@ export const openAI: Skill = {
 
 export const replicateAI: Skill = {
   skill: "Replicate AI",
-  category: "Artificial Intelligence",
+  category: "Artificial Intelligence & Machine Learning",
   isMainSkill: true,
   skillType: "hard",
   slug: "repliate-ai",
@@ -653,7 +653,7 @@ export const django: Skill = {
 
 export const scikitLearn: Skill = {
   skill: "Scikit Learn",
-  category: "Machine Learning",
+  category: "Artificial Intelligence & Machine Learning",
   isMainSkill: true,
   skillType: "hard",
   slug: "scikit-learn",
@@ -669,67 +669,43 @@ export const scikitLearn: Skill = {
 
 export const pandas: Skill = {
   skill: "Pandas",
-  category: "Machine Learning",
+  category: "Artificial Intelligence & Machine Learning",
   isMainSkill: true,
   skillType: "hard",
   slug: "pandas",
-  skills: [
-    machineLearning,
-    dataScience,
-    artificialIntelligence,
-    neuralNetworks,
-    dataVisualisation,
-  ],
+  skills: [dataScience, dataVisualisation],
 };
 
 export const numpy: Skill = {
   skill: "NumPy",
-  category: "Machine Learning",
+  category: "Artificial Intelligence & Machine Learning",
   isMainSkill: true,
   skillType: "hard",
   slug: "numpy",
-  skills: [
-    machineLearning,
-    dataScience,
-    artificialIntelligence,
-    neuralNetworks,
-    mathematics,
-  ],
+  skills: [dataScience, mathematics],
 };
 
 export const matplotlib: Skill = {
   skill: "Matplotlib",
-  category: "Machine Learning",
+  category: "Data Science",
   isMainSkill: true,
   skillType: "hard",
   slug: "matplotlib",
-  skills: [
-    machineLearning,
-    dataScience,
-    artificialIntelligence,
-    dataScience,
-    dataVisualisation,
-  ],
+  skills: [dataScience, dataVisualisation],
 };
 
 export const seaborn: Skill = {
   skill: "Seaborn",
-  category: "Machine Learning",
+  category: "Data Science",
   isMainSkill: true,
   skillType: "hard",
   slug: "seaborn",
-  skills: [
-    machineLearning,
-    dataScience,
-    artificialIntelligence,
-    dataScience,
-    dataVisualisation,
-  ],
+  skills: [dataScience, dataVisualisation],
 };
 
 export const keras: Skill = {
   skill: "Keras",
-  category: "Machine Learning",
+  category: "Artificial Intelligence & Machine Learning",
   isMainSkill: true,
   skillType: "hard",
   slug: "keras",
@@ -743,17 +719,11 @@ export const keras: Skill = {
 
 export const jupyterNotebooks: Skill = {
   skill: "Jupyter Notebooks",
-  category: "Machine Learning",
+  category: "Data Science",
   isMainSkill: true,
   skillType: "hard",
   slug: "juptyer-notebooks",
-  skills: [
-    machineLearning,
-    dataScience,
-    artificialIntelligence,
-    dataScience,
-    dataVisualisation,
-  ],
+  skills: [dataScience],
 };
 
 export const pytest: Skill = {
