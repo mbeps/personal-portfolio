@@ -5,7 +5,19 @@ export default function isSkillAssociatedWithBlogs(
   skillToCheck: Skill,
   blogs: BlogMetadata[]
 ): boolean {
-  return blogs.some((blog) =>
-    blog.technicalSkills.some((skill) => skill.slug === skillToCheck.slug)
+  // Function to check nested skills
+  const checkNestedSkills = (skills: Skill[]) =>
+    skills.some(
+      (skill) =>
+        skill.slug === skillToCheck.slug ||
+        (skill.skills || []).some(
+          (nestedSkill) => nestedSkill.slug === skillToCheck.slug
+        )
+    );
+
+  return blogs.some(
+    (blog) =>
+      (blog.technicalSkills && checkNestedSkills(blog.technicalSkills)) ||
+      (blog.softSkills && checkNestedSkills(blog.softSkills))
   );
 }

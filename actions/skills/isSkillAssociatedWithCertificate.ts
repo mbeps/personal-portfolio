@@ -5,13 +5,22 @@ export default function isSkillAssociatedWithCertificates(
   skillToCheck: Skill,
   certificates: Certificate[]
 ): boolean {
-  return certificates.some(
-    (certificate) =>
-      (certificate.technicalSkills || []).some(
-        (skill) => skill.slug === skillToCheck.slug
-      ) ||
-      (certificate.softSkills || []).some(
-        (skill) => skill.slug === skillToCheck.slug
-      )
-  );
+  return certificates.some((certificate) => {
+    // Function to check nested skills
+    const checkNestedSkills = (skills: Skill[]) =>
+      skills.some(
+        (skill) =>
+          skill.slug === skillToCheck.slug ||
+          (skill.skills || []).some(
+            (nestedSkill) => nestedSkill.slug === skillToCheck.slug
+          )
+      );
+
+    // Check technicalSkills and softSkills, including nested skills in technicalSkills
+    return (
+      (certificate.technicalSkills &&
+        checkNestedSkills(certificate.technicalSkills)) ||
+      (certificate.softSkills && checkNestedSkills(certificate.softSkills))
+    );
+  });
 }
