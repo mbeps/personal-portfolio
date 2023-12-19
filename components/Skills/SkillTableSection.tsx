@@ -71,11 +71,9 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
       </div>
 
       {shouldShowToggleButton && (
-        <ExpandCollapseButton
-          isExpanded={showAll}
-          onToggle={toggleShowAll}
-          className="your-custom-class-if-needed"
-        />
+        <div className="flex justify-center md:justify-start">
+          <ExpandCollapseButton isExpanded={showAll} onToggle={toggleShowAll} />
+        </div>
       )}
     </div>
   );

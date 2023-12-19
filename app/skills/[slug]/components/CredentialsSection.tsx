@@ -20,11 +20,13 @@ const CredentialsSection: React.FC<ProjectPageProps> = ({
 
   const filterCertificatesBySkill = (
     certificates: Certificate[],
-    selectedSkill: string
+    selectedSkill: Skill
   ): Certificate[] => {
     const skillMatches = (skill: Skill) =>
-      skill.slug === selectedSkill ||
-      (skill.skills || []).some((subSkill) => subSkill.slug === selectedSkill);
+      skill.slug === selectedSkill.slug ||
+      (skill.skills || []).some(
+        (subSkill) => subSkill.slug === selectedSkill.slug
+      );
 
     return certificates.filter(
       (certificate) =>
@@ -33,10 +35,7 @@ const CredentialsSection: React.FC<ProjectPageProps> = ({
     );
   };
 
-  const filteredCertificates = filterCertificatesBySkill(
-    certificates,
-    skill.slug
-  );
+  const filteredCertificates = filterCertificatesBySkill(certificates, skill);
 
   if (!filteredCertificates || filteredCertificates.length === 0) {
     return;
