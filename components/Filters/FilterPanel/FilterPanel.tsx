@@ -57,7 +57,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
         flex flex-col 
         top-0 right-0 
         h-screen 
-        w-full md:w-[25rem] 
+        w-full md:w-[27rem] 
         z-20 
         transform ${
           isOpen ? "translate-x-0" : "translate-x-full"
