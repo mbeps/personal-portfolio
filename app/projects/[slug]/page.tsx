@@ -242,7 +242,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
 
         {/* Skills Section */}
         <div className="mt-4">
-          <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
+          <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
             {Object.values(allGroupedSkills).map(
               ({ title, skillCategories }) =>
                 skillCategories &&
@@ -254,60 +254,68 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
                   />
                 )
             )}
-          </div>
-        </div>
 
-        {/* Links Section */}
-        <div className="text-center md:text-left">
-          <HeadingThree title="Links" />
-          <div
-            className="
+            {/* Links Section */}
+            <div className="text-center md:text-left">
+              <HeadingThree title="Links" />
+              <div
+                className="
               mt-6 flex 
               flex-row 
               justify-center md:justify-start items-center 
               w-full md:w-1/3
               gap-2"
-          >
-            {/* GitHub Repo */}
-            {project?.repoURL && (
-              <Link href={project?.repoURL} target="_blank" className="w-full">
-                <Button
-                  variant={"ghost"}
-                  className="
+              >
+                {/* GitHub Repo */}
+                {project?.repoURL && (
+                  <Link
+                    href={project?.repoURL}
+                    target="_blank"
+                    className="w-full"
+                  >
+                    <Button
+                      variant={"ghost"}
+                      className="
                 text-neutral-900 dark:text-white 
                 hover:text-neutral-900 
                 hover:bg-neutral-300
                 w-full
                 rounded-xl
               "
-                >
-                  <div className="flex justify-center md:justify-start gap-4 w-full">
-                    <BsGithub size={30} />
-                    <p className="mt-1">Repository</p>
-                  </div>
-                </Button>
-              </Link>
-            )}
-            {/* Website */}
-            {project?.siteURL && (
-              <Link href={project?.siteURL} target="_blank" className="w-full">
-                <Button
-                  variant={"ghost"}
-                  className="
+                    >
+                      <div className="flex justify-center md:justify-start gap-4 w-full">
+                        <BsGithub size={30} />
+                        <p className="mt-1">Repository</p>
+                      </div>
+                    </Button>
+                  </Link>
+                )}
+                {/* Website */}
+                {project?.siteURL && (
+                  <Link
+                    href={project?.siteURL}
+                    target="_blank"
+                    className="w-full"
+                  >
+                    <Button
+                      variant={"ghost"}
+                      className="
                 text-neutral-900 dark:text-white 
                 hover:text-neutral-900 
                 hover:bg-neutral-300
                 w-full
                 rounded-xl
               "
-                >
-                  <div className="flex justify-center md:justify-start gap-4 w-full">
-                    <BsArrowUpRightCircle size={30} />
-                    <p className="mt-1">Deployment</p>
-                  </div>
-                </Button>
-              </Link>
-            )}
+                    >
+                      <div className="flex justify-center md:justify-start gap-4 w-full">
+                        <BsArrowUpRightCircle size={30} />
+                        <p className="mt-1">Deployment</p>
+                      </div>
+                    </Button>
+                  </Link>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>
