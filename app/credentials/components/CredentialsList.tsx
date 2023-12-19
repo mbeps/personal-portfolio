@@ -80,7 +80,16 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
 
   //^ Search Settings
   const searchOptions = {
-    keys: ["name", "issuer", "category", "skills.category", "skills.skill"], // Only search these properties
+    keys: [
+      "name",
+      "issuer",
+      "category",
+      "technicalSkills.skill",
+      "technicalSkills.category",
+      "technicalSkills.skill.skill",
+      "softSkills.skill",
+      "softSkills.category",
+    ], // Only search these properties
     threshold: 0.3, // Lower threshold means more results
   };
 

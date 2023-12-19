@@ -67,8 +67,11 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     keys: [
       "name",
       "programmingLanguage.skill",
-      "skills.skill",
-      "skills.category",
+      "technologySkills.skill",
+      "technologySkills.category",
+      "technologySkills.skill.skill",
+      "softSkills.skill",
+      "softSkills.category",
       "tags",
     ],
     threshold: 0.3, // Lower threshold means more results

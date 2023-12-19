@@ -67,7 +67,16 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
    * These are the same ones from the `BlogMetadata` type.
    */
   const searchOptions = {
-    keys: ["title", "subtitle", "category", "skills.skill", "skills.category"],
+    keys: [
+      "title",
+      "subtitle",
+      "category",
+      "technicalSkills.skill",
+      "technicalSkills.category",
+      "technicalSkills.skill.skill",
+      "softSkills.skill",
+      "softSkills.category",
+    ],
     threshold: 0.3,
   };
 
