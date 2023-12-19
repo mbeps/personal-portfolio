@@ -121,7 +121,7 @@ export const linuxDevelopment: Skill = {
 };
 
 export const machineLearning: Skill = {
-  skill: "Artificial Intelligence & Machine Learning",
+  skill: "Machine Learning",
   category: "Artificial Intelligence & Machine Learning",
   isMainSkill: false,
   skillType: "general",
@@ -137,7 +137,7 @@ export const deepLearning: Skill = {
 };
 
 export const artificialIntelligence: Skill = {
-  skill: "Artificial Intelligence & Machine Learning",
+  skill: "Artificial Intelligence",
   category: "Artificial Intelligence & Machine Learning",
   isMainSkill: false,
   skillType: "general",
