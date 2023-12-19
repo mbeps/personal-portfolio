@@ -10,6 +10,7 @@ export default interface Certificate {
     | "LinkedIn"
     | "NASBA"
     | "PMI"
+    | "GitHub"
     | "Royal Holloway University";
   credentialURL: string;
   technicalSkills: Skill[];

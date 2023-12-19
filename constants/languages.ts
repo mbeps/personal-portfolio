@@ -135,10 +135,27 @@ export const rLanguage: Skill = {
   slug: "r",
 };
 
+export const groovy: Skill = {
+  skill: "Groovy",
+  isMainSkill: false,
+  skillType: "hard",
+  category: "Programming Languages",
+  slug: "groovy",
+};
+
 /**
  * Array of languages.
  * Each skill has an array of skills and repositories.
  */
-const languages: Skill[] = [javascript, typescript, python, java];
+const languages: Skill[] = [
+  javascript,
+  typescript,
+  python,
+  java,
+  gameMakerLanguage,
+  shellScript,
+  rLanguage,
+  groovy,
+];
 
 export { languages };

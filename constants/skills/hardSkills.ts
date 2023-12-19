@@ -157,6 +157,22 @@ export const gitHubActions: Skill = {
   ],
 };
 
+export const gitlabCI: Skill = {
+  skill: "GitLab CI",
+  category: "DevOps",
+  isMainSkill: true,
+  skillType: "hard",
+  slug: "gitlab-ci",
+  skills: [
+    infrastructureAsCode,
+    continuousDelivery,
+    continuousIntegration,
+    continuousDeployment,
+    devOps,
+    automation,
+  ],
+};
+
 export const jenkins: Skill = {
   skill: "Jenkins",
   category: "DevOps",
@@ -1453,6 +1469,7 @@ const hardSkills = [
   gcpCloudScheduler,
   gcpCloudLogging,
   ansible,
+  gitlabCI,
 ] as Skill[];
 
 export default hardSkills;

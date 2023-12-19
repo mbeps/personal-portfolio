@@ -1,5 +1,13 @@
 import Certificate from "@/types/certificates";
-import { java, javascript, python, rLanguage, typescript } from "./languages";
+import {
+  groovy,
+  java,
+  javascript,
+  python,
+  rLanguage,
+  shellScript,
+  typescript,
+} from "./languages";
 import {
   oop,
   algorithms,
@@ -30,6 +38,8 @@ import {
   black,
   designPatterns,
   webDevelopment,
+  linuxDevelopment,
+  automation,
 } from "./skills/generalSkills";
 import {
   html,
@@ -100,6 +110,10 @@ import {
   gcpCloudLogging,
   spring,
   react,
+  gradle,
+  junit,
+  gitLab,
+  gitlabCI,
 } from "./skills/hardSkills";
 import {
   problemSolving,
@@ -115,6 +129,8 @@ import {
   integrationManagement,
   humanResourceManagement,
   creativity,
+  projectManagement,
+  adaptability,
 } from "./skills/softSkills";
 
 const programmingLanguagesCertificates: Certificate[] = [
@@ -276,6 +292,35 @@ const programmingLanguagesCertificates: Certificate[] = [
     ],
   },
   {
+    name: "TypeScript: Object-Oriented Programming",
+    slug: "ed3c16a977b93d46364c0e03d601701094c7f346f08027e0cd3a1d6d52342425",
+    category: "Programming Languages",
+    issuer: "LinkedIn",
+    credentialURL:
+      "https://www.linkedin.com/learning/certificates/ed3c16a977b93d46364c0e03d601701094c7f346f08027e0cd3a1d6d52342425",
+    technicalSkills: [typescript, javascript, oop, algorithms, dataStructures],
+    softSkills: [problemSolving, criticalThinking],
+    description:
+      "This course is designed for JavaScript developers looking to incorporate object-oriented programming principles using TypeScript. It dives into how and why TypeScript uses object-oriented programming models, covering key topics such as inheritance, polymorphism, generics, and encapsulation. The course includes challenges that test your understanding and application of these concepts, providing a hands-on learning experience.",
+    learningOutcomes: [
+      "Understanding classes vs. objects",
+      "Distinguishing prototypes vs. classes",
+      "Implementing constructor and class properties",
+      "Creating methods with TypeScript",
+      "Using Get and Set",
+      "Implementing classes",
+      "Understanding inheritance in TypeScript",
+      "Extending classes in TypeScript",
+      "Implementing super() overrides",
+      "Understanding polymorphism",
+      "Implementing inheritance",
+      "Understanding encapsulation",
+      "Implementing protected and static properties",
+      "Practicing encapsulation",
+    ],
+    archived: true,
+  },
+  {
     name: "JavaScript Essential Training",
     slug: "ade3217d7cef3023f22c8ee034eff28705b7dbfd3981d8377c9b5f61ff39ea51",
     category: "Programming Languages",
@@ -292,6 +337,26 @@ const programmingLanguagesCertificates: Certificate[] = [
       "Applying principles in science, mathematics, and engineering in a design process",
       "Appreciating the design decision-making process and its application in developing new products",
       "Recognizing the effects of engineering issues on the conduct of engineering, including ethical, legal, and social aspects",
+    ],
+    archived: true,
+  },
+  {
+    name: "JavaScript Practice: Object-Oriented Programming",
+    slug: "6f9d825cfa8c3256611a521ec35fe62abd9b7f75636536b59656dcfd57708cf6",
+    category: "Programming Languages",
+    issuer: "LinkedIn",
+    credentialURL:
+      "https://www.linkedin.com/learning/certificates/6f9d825cfa8c3256611a521ec35fe62abd9b7f75636536b59656dcfd57708cf6",
+    technicalSkills: [javascript, oop, algorithms, dataStructures],
+    softSkills: [problemSolving, criticalThinking],
+    description:
+      "This interactive course enhances your JavaScript skills by focusing on object-oriented programming tasks. It provides a hands-on approach to functional and object-oriented programming, with less rigid syntax and greater extensibility. The course includes interactive coding exercises with real-time feedback, offering practical coding practice to advance your skills. It covers creating a course roster with functions, a book function with Object.create(), a country with classes, a food ordering class with getters and setters, and a user/admin class with private properties.",
+    learningOutcomes: [
+      "Creating a roster with functions",
+      "Building a function with Object.create()",
+      "Designing a country with classes",
+      "Developing a class with get and set",
+      "Implementing a User/admin class with private properties",
     ],
     archived: true,
   },
@@ -325,6 +390,66 @@ const programmingLanguagesCertificates: Certificate[] = [
       "Practicing skills with 50+ challenges and assignments.",
       "Designing a unique learning path.",
     ],
+  },
+  {
+    name: "Learning Linux Shell Scripting",
+    slug: "67ef8710bfc2f51163f78c9373df3d7b4674e44b3d2e936318399c6a7fe5bda0",
+    category: "Programming Languages",
+    issuer: "LinkedIn",
+    credentialURL:
+      "https://www.linkedin.com/learning/certificates/67ef8710bfc2f51163f78c9373df3d7b4674e44b3d2e936318399c6a7fe5bda0",
+    technicalSkills: [shellScript, linuxDevelopment],
+    softSkills: [problemSolving, criticalThinking],
+    learningOutcomes: [
+      "Printing to the console",
+      "Commenting out scripts",
+      "Defining variables and parameters",
+      "Creating your first simple script",
+      "Branching and loops",
+      "Reading environment variables",
+      "Reading and writing files",
+      "Watching a process",
+      "Getting input from users",
+      "Handling bad data",
+      "Understanding Shell Scripting Basics",
+      "Implementing Branching and Loops",
+      "Working with Environment Variables",
+      "Defining Functions",
+      "Performing File Operations",
+      "Managing Sleep and Process",
+      "Creating Interactive Scripts",
+    ],
+    description:
+      "This course provides a comprehensive introduction to Linux shell scripting, a powerful tool for automating tasks in Linux. You will learn how to create scripts that can automate many kinds of tasks, from defining variables and parameters to managing system processes. The course also covers how to handle bad input data and create interactive scripts, making your Linux tasks easier, more predictable, and more fun.",
+    archived: true,
+  },
+  {
+    name: "Learning Groovy",
+    slug: "7c14e4c16f72a10046c3d66838e5dd3589fa40ac6cbf6509b235ea6452f430c8",
+    category: "Programming Languages",
+    issuer: "LinkedIn",
+    credentialURL:
+      "https://www.linkedin.com/learning/certificates/7c14e4c16f72a10046c3d66838e5dd3589fa40ac6cbf6509b235ea6452f430c8",
+    technicalSkills: [groovy, oop, dataStructures],
+    softSkills: [problemSolving, criticalThinking],
+    learningOutcomes: [
+      "Understanding Groovy and Java",
+      "Defining Variables and data types",
+      "Creating Classes and methods",
+      "Implementing Conditional structures and loops",
+      "Handling Exceptions",
+      "Using the GDK documentation",
+      "Creating and using a class",
+      "Using convenience annotations",
+      "Understanding Closures",
+      "Working with Collections",
+      "Reading files",
+      "Writing files",
+      "Processing file contents",
+    ],
+    description:
+      "This course provides a comprehensive introduction to Groovy, a powerful and easy-to-use language on the JVM platform. You will learn the basics of working with Groovy, from variables and data types to classes and exception handling. The course also covers more advanced concepts, such as using closures, working with collections, and reading and writing files. After completing this course, you will have the knowledge you need to use Groovy in a variety of contexts, from scripting to full-fledged programming.",
+    archived: true,
   },
 ];
 
@@ -645,25 +770,7 @@ const devOpsCertificates: Certificate[] = [
       "Securing Jenkins with user accounts and permissions.",
     ],
   },
-  {
-    name: "Ansible Essential Training",
-    slug: "5eed7f56e5d7dc61b17a3f5fb3cb9fc42130506e948df550bf00899b5868b0a1",
-    category: "DevOps",
-    issuer: "LinkedIn",
-    credentialURL:
-      "https://www.linkedin.com/learning/certificates/5eed7f56e5d7dc61b17a3f5fb3cb9fc42130506e948df550bf00899b5868b0a1",
-    technicalSkills: [devOps, ansible, infrastructureAsCode],
-    softSkills: [problemSolving, criticalThinking],
-    description: `
-    This course delves into the intermediate to advanced use cases of Ansible, a powerful IT automation engine. It covers the construction and execution of Ansible playbooks, task building, role reuse, and leveraging content from the Ansible community through Ansible Galaxy. Additionally, it explores encrypting secret information, managing network devices with Ansible, and leveraging the power of idempotence, equipping you with the skills to optimize tasks and updates efficiently.`,
-    learningOutcomes: [
-      "Building effective and reusable tasks in Ansible.",
-      "Organizing tasks into roles and managing roles with Ansible Galaxy.",
-      "Encrypting sensitive information with Ansible Vault.",
-      "Performing network management with Ansible.",
-      "Understanding and leveraging idempotence in Ansible.",
-    ],
-  },
+
   {
     name: "GitHub Actions for CI/CD",
     slug: "679b3ba787209cd0d81d1d68e4bfc01e23ae14f9f2bdfa4e85f917025a8e732b",
@@ -687,6 +794,96 @@ const devOpsCertificates: Certificate[] = [
       "Creating continuous delivery workflows with GitHub Actions.",
       "Creating continuous deployment workflows with GitHub Actions.",
     ],
+  },
+  {
+    name: "Career Essentials in GitHub Professional Certificate",
+    slug: "a46589fd9baa43c2c77d7de14e3830cf85648f1a6d5d7a489096d4e1b2a4d279",
+    category: "DevOps",
+    issuer: "GitHub",
+    credentialURL:
+      "https://www.linkedin.com/learning/certificates/0344b0df296833ba35ddabf20563556bc67ee7ed0b83b55e19021443d1b9e496",
+    technicalSkills: [
+      devOps,
+      gitHubActions,
+      continuousIntegration,
+      continuousDeployment,
+      continuousDelivery,
+      docker,
+      infrastructureAsCode,
+      containerization,
+      artificialIntelligence,
+      automation,
+    ],
+    softSkills: [
+      problemSolving,
+      criticalThinking,
+      projectManagement,
+      adaptability,
+    ],
+    description:
+      "This course equips learners with a comprehensive understanding of GitHub, focusing on mastering GitHub Actions and essential career skills. It covers creating, configuring, and deploying actions, publishing custom actions to the GitHub Marketplace, and managing workflows with existing actions. It also delves into Dockerfile generation, action crafting, and release management. The course further explores creating and managing development projects, using labels, task lists, and other project management features, and utilizing GitHub Copilot and GitHub's search features for code discovery and problem-solving.",
+    learningOutcomes: [
+      "Understanding how actions work",
+      "Creating a repo and GitHub Pages",
+      "Converting Python to YAML with Codespaces",
+      "Creating a workflow with existing pi actions",
+      "Creating a generator repo Dockerfile",
+      "Crafting an action",
+      "Testing your actions",
+      "Creating a release",
+      "Understanding Projects vs. classic projects",
+      "Starting your first project",
+      "Assigning items to collaborators",
+      "Starting a project with an issue",
+      "Using labels",
+      "Using task lists",
+      "Using slash commands and emojis",
+      "Understanding GitHub Copilot",
+      "Installing Copilot",
+      "Using basic autocomplete",
+      "Chatting with Copilot",
+      "Outputting to YAML",
+      "Troubleshooting fixes",
+      "Using GitHub code search",
+      "Using the search box and shortcuts",
+      "Understanding search qualifiers",
+      "Understanding syntax operators",
+      "Finding code",
+      "Finding code to learn from",
+    ],
+  },
+  {
+    name: "Continuous Integration and Continuous Delivery with GitLab",
+    slug: "1d8280be68ca069d4bb66ad5618118079be897473794a7812ae940146672801c",
+    category: "DevOps",
+    issuer: "LinkedIn",
+    credentialURL:
+      "https://www.linkedin.com/learning/certificates/1d8280be68ca069d4bb66ad5618118079be897473794a7812ae940146672801c",
+    technicalSkills: [
+      gitLab,
+      gitlabCI,
+      continuousIntegration,
+      continuousDeployment,
+      continuousDelivery,
+    ],
+    softSkills: [problemSolving, criticalThinking],
+    description:
+      "This course focuses on using GitLab, a popular open-source alternative to tools like GitHub and Bitbucket, for continuous integration and continuous delivery (CI/CD) practices. It guides you through setting up a project in GitLab and creating an end-to-end pipeline, enhancing your team's efficiency and software reliability.",
+    learningOutcomes: [
+      "Understanding continuous integration and delivery with GitLab",
+      "Setting up a project in GitLab",
+      "Applying lean manufacturing models",
+      "Creating and running a pipeline",
+      "Adding tests to the pipeline",
+      "Generating a website using GitLab",
+      "Understanding continuous delivery concepts",
+      "Managing environments and environment variables",
+      "Creating a deployment pipeline",
+      "Automating deployments",
+      "Completing a continuous delivery pipeline",
+      "Releasing to production",
+    ],
+    archived: true,
   },
   {
     name: "Docker for Developers",
@@ -720,6 +917,25 @@ const devOpsCertificates: Certificate[] = [
       "Installing Kubernetes and its prerequisites.",
       "Deploying Kubernetes in Docker with kind.",
       "Choosing a strategy for provisioning Kubernetes clusters.",
+    ],
+  },
+  {
+    name: "Ansible Essential Training",
+    slug: "5eed7f56e5d7dc61b17a3f5fb3cb9fc42130506e948df550bf00899b5868b0a1",
+    category: "DevOps",
+    issuer: "LinkedIn",
+    credentialURL:
+      "https://www.linkedin.com/learning/certificates/5eed7f56e5d7dc61b17a3f5fb3cb9fc42130506e948df550bf00899b5868b0a1",
+    technicalSkills: [devOps, ansible, infrastructureAsCode],
+    softSkills: [problemSolving, criticalThinking],
+    description: `
+    This course delves into the intermediate to advanced use cases of Ansible, a powerful IT automation engine. It covers the construction and execution of Ansible playbooks, task building, role reuse, and leveraging content from the Ansible community through Ansible Galaxy. Additionally, it explores encrypting secret information, managing network devices with Ansible, and leveraging the power of idempotence, equipping you with the skills to optimize tasks and updates efficiently.`,
+    learningOutcomes: [
+      "Building effective and reusable tasks in Ansible.",
+      "Organizing tasks into roles and managing roles with Ansible Galaxy.",
+      "Encrypting sensitive information with Ansible Vault.",
+      "Performing network management with Ansible.",
+      "Understanding and leveraging idempotence in Ansible.",
     ],
   },
 ];
@@ -1363,6 +1579,58 @@ const mathematicsCertificates: Certificate[] = [
 
 const softwareEngineeringCertificates: Certificate[] = [
   {
+    name: "Programming Foundations: Algorithms",
+    slug: "e31b0a7d9243f44e8a528fc2d184cd4a3bfbdc789c899c3a9ee47ee511e51fd7",
+    category: "Software Engineering",
+    issuer: "LinkedIn",
+    credentialURL:
+      "https://www.linkedin.com/learning/certificates/e31b0a7d9243f44e8a528fc2d184cd4a3bfbdc789c899c3a9ee47ee511e51fd7",
+    technicalSkills: [algorithms, dataStructures],
+    softSkills: [problemSolving, criticalThinking],
+    learningOutcomes: [
+      "Understanding data structures",
+      "Working with arrays and linked lists",
+      "Implementing stacks and queues",
+      "Understanding and applying hash tables",
+      "Grasping the concept of recursion",
+      "Sorting data using bubble, merge, and quicksort",
+      "Searching data in unordered and ordered lists",
+      "Filtering and counting values with hash tables",
+      "Finding maximum value recursively",
+      "Measuring algorithm performance",
+    ],
+    description:
+      "This course delves into the universal building blocks of programming - algorithms. It covers popular and useful algorithms for searching and sorting information, recursion techniques, and understanding common data structures. The course also explores the performance implications of different algorithms and how to evaluate their performance. Practical examples are demonstrated in Python, but the lessons are applicable to any programming language.",
+    archived: true,
+  },
+  {
+    name: "Programming Foundations: Data Structures",
+    slug: "c5c41ea1aa52982d08705831612aba2e93e69a64e35dd2cce11c28fad12b59f7",
+    category: "Software Engineering",
+    issuer: "LinkedIn",
+    credentialURL:
+      "https://www.linkedin.com/learning/certificates/c5c41ea1aa52982d08705831612aba2e93e69a64e35dd2cce11c28fad12b59f7",
+    technicalSkills: [dataStructures, algorithms],
+    softSkills: [problemSolving, criticalThinking],
+    description: `
+      This course provides an in-depth overview of the most essential data structures for modern programming. 
+      It starts with simple ways of grouping data, like arrays and structs, and gradually introduces more complex data structures, such as linked lists, stacks and queues, hash tables, and trees and graphs. 
+      Each lesson is accompanied by a real-world, practical example that shows the data structures in action. 
+      By the end of the course, you'll have a clear understanding of data structures and understand how to use them in any programming language.
+    `,
+    learningOutcomes: [
+      "Understanding data types: Booleans, numbers, strings, and more",
+      "Working with multidimensional arrays",
+      "Manipulating jagged arrays",
+      "Searching and sorting arrays",
+      "Implementing linked lists",
+      "Utilizing stacks and queues",
+      "Applying hash functions and hash tables",
+      "Building trees and graphs",
+    ],
+    archived: true,
+  },
+  {
     name: "Create an Open-Source Project in Python",
     slug: "6afc37d98889e1ed209d677fd7928ece257125ca8d538ed6b0fa0ed18e4e30d6",
     category: "Software Engineering",
@@ -1380,7 +1648,7 @@ const softwareEngineeringCertificates: Certificate[] = [
       linting,
       black,
     ],
-    softSkills: [problemSolving, criticalThinking],
+    softSkills: [problemSolving, criticalThinking, projectManagement],
     description: `This course guides learners through the process of starting, building, testing, and maintaining an open-source project in Python. It introduces learners to Poetry, a popular dependency management tool, and covers how to write and manage tests using pytest and tox. The course also discusses code tidiness and style guide adherence using PEP 8, Black, Flake8, and pre-commit, and demonstrates how to set up a workflow on GitHub Action. It concludes with best practices for open-source projects.`,
     learningOutcomes: [
       "Using Poetry for Python project and dependency management.",
@@ -1398,7 +1666,7 @@ const softwareEngineeringCertificates: Certificate[] = [
     credentialURL:
       "https://www.linkedin.com/learning/certificates/551778db5ecef81f732b9e48d50db3fe709f877f1ac9c834923b0c96bb636e72",
     technicalSkills: [java, maven],
-    softSkills: [problemSolving, criticalThinking],
+    softSkills: [problemSolving, criticalThinking, projectManagement],
     description: `This course provides a comprehensive introduction to Apache Maven, a powerful build system widely used by Java developers. It covers the basics of using Maven for dependency management, builds, and reporting. The course delves into the project object model (POM), the build life cycle, and the use of Core and Tools plugins for task automation. It also explores dependency management, including the creation of uber JAR files, and concludes with a section on reporting with Maven sites and popular plugins.`,
     learningOutcomes: [
       "Exploring POM files.",
@@ -1408,6 +1676,58 @@ const softwareEngineeringCertificates: Certificate[] = [
       "Generating Maven reports.",
       "Working with Maven sites.",
     ],
+  },
+  {
+    name: "Learning Gradle",
+    slug: "1fcbb76a7feb53dc0b8585896de025b31799feeb7819544ba6e6ebf454ef6769",
+    category: "Software Engineering",
+    issuer: "LinkedIn",
+    credentialURL:
+      "https://www.linkedin.com/learning/certificates/1fcbb76a7feb53dc0b8585896de025b31799feeb7819544ba6e6ebf454ef6769",
+    technicalSkills: [java, gradle, junit],
+    softSkills: [problemSolving, criticalThinking, projectManagement, testing],
+    learningOutcomes: [
+      "Understanding Build files and conventions",
+      "Defining and configuring a task",
+      "Understanding the directed acyclic graph (DAG)",
+      "Learning Build lifecycle phases",
+      "Applying reusable functionality with plugins",
+      "Understanding Domain object runtime representation",
+      "Referencing the documentation",
+      "Defining and executing a task",
+    ],
+    description:
+      "This course offers a deep dive into Gradle, an open-source build automation tool, providing the core concepts and building blocks necessary for automation. You will learn how to define build logic, use Gradle support in IntelliJ IDEA, and understand the three phases of build execution. The course also covers how to locate and apply plugins, create a new task for a compressed TAR file, and gain insights from a deeper look at a Gradle build. After completing this course, you will be equipped to implement and execute build logic with Gradle.",
+  },
+  {
+    name: "Gradle for Java-Based Applications and Libraries",
+    slug: "8c9027d06b51638e29fcac4c109275401f5202a046eb80de8f65fcc20c9c733b",
+    category: "Software Engineering",
+    issuer: "LinkedIn",
+    credentialURL:
+      "https://www.linkedin.com/learning/certificates/8c9027d06b51638e29fcac4c109275401f5202a046eb80de8f65fcc20c9c733b",
+    technicalSkills: [java, gradle, maven],
+    softSkills: [problemSolving, criticalThinking, projectManagement],
+    learningOutcomes: [
+      "Understanding the anatomy of a simple Java project",
+      "Applying the Java plugin",
+      "Compiling Java source code",
+      "Packaging a JAR file",
+      "Exploring the Java Application plugin",
+      "Generating Javadocs for a Java project",
+      "Understanding Dependency Management Basics",
+      "Declaring a dependency on an external library",
+      "Rendering the dependency tree",
+      "Declaring a project dependency",
+      "Using the Maven Publish plugin to publish a library",
+      "Consuming an external dependency",
+      "Using the JUnit 5 test framework",
+      "Declaring JUnit dependencies",
+      "Executing tests and inspecting the results",
+      "Fixing a failed test suite",
+    ],
+    description:
+      "This course provides a comprehensive guide to using Gradle for building and testing Java programs. It covers typical tasks such as compiling code, adding dependencies, running tests, and building a JAR file. The course also delves into the project structure and source code of a simple Java project, the application of the Java plugin for Gradle, and the generation of Javadocs. It further explores the basics of dependency management and the steps to test a Java project and fix a failed test suite. This course is a valuable resource for anyone looking to deepen their Gradle knowledge.",
   },
   {
     name: "Software Testing Foundations: Test Techniques",
@@ -1480,33 +1800,6 @@ const softwareEngineeringCertificates: Certificate[] = [
       "Encapsulating iteration with the Iterator pattern",
       "Creating objects with the Factory Method pattern",
       "Using design principles to guide your object-oriented design",
-    ],
-    archived: true,
-  },
-  {
-    name: "Programming Foundations: Data Structures",
-    slug: "c5c41ea1aa52982d08705831612aba2e93e69a64e35dd2cce11c28fad12b59f7",
-    category: "Software Engineering",
-    issuer: "LinkedIn",
-    credentialURL:
-      "https://www.linkedin.com/learning/certificates/c5c41ea1aa52982d08705831612aba2e93e69a64e35dd2cce11c28fad12b59f7",
-    technicalSkills: [dataStructures, algorithms],
-    softSkills: [problemSolving, criticalThinking],
-    description: `
-      This course provides an in-depth overview of the most essential data structures for modern programming. 
-      It starts with simple ways of grouping data, like arrays and structs, and gradually introduces more complex data structures, such as linked lists, stacks and queues, hash tables, and trees and graphs. 
-      Each lesson is accompanied by a real-world, practical example that shows the data structures in action. 
-      By the end of the course, you'll have a clear understanding of data structures and understand how to use them in any programming language.
-    `,
-    learningOutcomes: [
-      "Understanding data types: Booleans, numbers, strings, and more",
-      "Working with multidimensional arrays",
-      "Manipulating jagged arrays",
-      "Searching and sorting arrays",
-      "Implementing linked lists",
-      "Utilizing stacks and queues",
-      "Applying hash functions and hash tables",
-      "Building trees and graphs",
     ],
     archived: true,
   },
