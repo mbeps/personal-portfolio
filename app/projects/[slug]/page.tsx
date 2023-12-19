@@ -1,5 +1,4 @@
 import getProjectBySlug from "@/actions/getProjectBySlug";
-import Tag from "@/components/Tags/Tag";
 import Gallery from "@/components/Gallery/Gallery";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
@@ -9,6 +8,7 @@ import getMediaFromFileSystem from "@/actions/getMediaFromFileSystem";
 import hasProjectCover from "@/actions/hasProjectCover";
 import Button from "@/components/Atoms/Button";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
+import SkillTag from "@/components/Tags/SkillTag";
 import allProjects from "@/constants/projects";
 import { Skill } from "@/types/skills";
 import { Metadata, ResolvingMetadata } from "next";
@@ -18,8 +18,6 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
-import SkillTag from "@/components/Tags/SkillTag";
-import Project from "@/types/projects";
 
 /**
  * Metadata object for the dynamic project page.
@@ -95,8 +93,14 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const hasCoverImage = hasProjectCover(slug);
   const coverImagePath = `/projects/${slug}/cover.png`;
 
-  function extractNestedSkills(skills: Skill[]): Skill[] {
-    return skills
+  function technicalGeneralSkills(
+    skills: Skill[],
+    extraSkills: Skill[] = []
+  ): Skill[] {
+    // Combine the original skills and extra skills
+    const combinedSkills = skills.concat(extraSkills);
+
+    return combinedSkills
       .flatMap((skill) => (skill.skills ? [skill, ...skill.skills] : [skill]))
       .reduce((uniqueSkills, skill) => {
         if (!uniqueSkills.some((s) => s.slug === skill.slug)) {
@@ -142,7 +146,10 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
       "Technologies"
     ),
     generalSkills: filterAndGroupSkills(
-      extractNestedSkills(project.technologySkills),
+      technicalGeneralSkills(
+        project.technologySkills,
+        project.extraTechnicalGeneralSkills
+      ),
       "general",
       "Technical Skills"
     ),
