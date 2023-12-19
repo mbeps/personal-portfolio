@@ -14,6 +14,7 @@ import React from "react";
 import BlogsSection from "./components/BlogsSection";
 import CredentialsSection from "./components/CredentialsSection";
 import ProjectsSection from "./components/ProjectsSection";
+import PageDescription from "@/components/Atoms/PageDescription";
 
 const allSkills = [...hardSkills, ...generalSkills, ...softSkills];
 
@@ -47,6 +48,12 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
   return (
     <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
       <HeadingOne title={skill.skill} />
+      <PageDescription
+        description={`
+        This is the page displaying all the material related to ${skill.skill}.
+        This can include projects, blogs, and certificates.
+      `}
+      />
 
       <ProjectsSection projects={allProjects} skill={skill} />
       <CredentialsSection certificates={allCertificates} skill={skill} />
