@@ -15,11 +15,11 @@ export default interface Project {
   extraTechnicalGeneralSkills?: Skill[];
   softSkills: Skill[];
   type:
-    | "Full-Stack Web Dev"
-    | "Back-End Web Dev"
+    | "Full-Stack Web Development"
+    | "Back-End Web Development"
     | "Machine Learning"
     | "Java Assignments"
-    | "Game Dev"
+    | "Game Development"
     | "Other";
   archived?: boolean;
 }

@@ -134,7 +134,7 @@ const webdevProjects: Project[] = [
       riskManagement,
     ],
     extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
-    type: "Full-Stack Web Dev",
+    type: "Full-Stack Web Development",
   },
   {
     name: `Ringmaster Messaging`,
@@ -176,7 +176,7 @@ const webdevProjects: Project[] = [
       adaptability,
     ],
     extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
-    type: "Full-Stack Web Dev",
+    type: "Full-Stack Web Development",
   },
   {
     name: `Magician AI`,
@@ -219,7 +219,7 @@ const webdevProjects: Project[] = [
       adaptability,
     ],
     extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
-    type: "Full-Stack Web Dev",
+    type: "Full-Stack Web Development",
   },
   {
     name: `Drumroll Music`,
@@ -254,7 +254,7 @@ const webdevProjects: Project[] = [
       adaptability,
     ],
     extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
-    type: "Full-Stack Web Dev",
+    type: "Full-Stack Web Development",
   },
 ];
 
@@ -271,7 +271,7 @@ const extraWebDevProjects: Project[] = [
       Users can test their knowledge across various topics, choosing between multiple-choice questions or fill-in-the-gap style challenges. 
       With immediate feedback and score tracking, users enhance their understanding.`,
     programmingLanguage: typescript,
-    type: "Full-Stack Web Dev",
+    type: "Full-Stack Web Development",
     technologySkills: [
       nextjs,
       react,
@@ -332,7 +332,7 @@ const extraWebDevProjects: Project[] = [
       adaptability,
     ],
     extraTechnicalGeneralSkills: [oop],
-    type: "Full-Stack Web Dev",
+    type: "Full-Stack Web Development",
     archived: true,
   },
   {
@@ -374,7 +374,7 @@ const extraWebDevProjects: Project[] = [
       adaptability,
       teamwork,
     ],
-    type: "Full-Stack Web Dev",
+    type: "Full-Stack Web Development",
     archived: true,
   },
   {
@@ -410,7 +410,7 @@ const extraWebDevProjects: Project[] = [
       adaptability,
     ],
     extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
-    type: "Full-Stack Web Dev",
+    type: "Full-Stack Web Development",
     archived: true,
   },
 ];
@@ -446,7 +446,7 @@ const backendWebDevProjects: Project[] = [
       adaptability,
     ],
     extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
-    type: "Back-End Web Dev",
+    type: "Back-End Web Development",
   },
   {
     name: `Flask JWT Authentication`,
@@ -466,7 +466,7 @@ const backendWebDevProjects: Project[] = [
       adaptability,
     ],
     extraTechnicalGeneralSkills: [oop],
-    type: "Back-End Web Dev",
+    type: "Back-End Web Development",
     archived: true,
   },
   {
@@ -487,7 +487,7 @@ const backendWebDevProjects: Project[] = [
       adaptability,
     ],
     extraTechnicalGeneralSkills: [oop],
-    type: "Back-End Web Dev",
+    type: "Back-End Web Development",
     archived: true,
   },
   {
@@ -507,7 +507,7 @@ const backendWebDevProjects: Project[] = [
       adaptability,
     ],
     extraTechnicalGeneralSkills: [oop],
-    type: "Back-End Web Dev",
+    type: "Back-End Web Development",
     archived: true,
   },
   {
@@ -528,7 +528,7 @@ const backendWebDevProjects: Project[] = [
       adaptability,
     ],
     extraTechnicalGeneralSkills: [oop],
-    type: "Back-End Web Dev",
+    type: "Back-End Web Development",
     archived: true,
   },
 ];
@@ -751,7 +751,7 @@ const gameDevProjects: Project[] = [
       leadership,
       teamwork,
     ],
-    type: "Game Dev",
+    type: "Game Development",
   },
   {
     name: "Surface Fight",
@@ -762,7 +762,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: gameMakerLanguage,
-    type: "Game Dev",
+    type: "Game Development",
     technologySkills: [gameMakerStudio],
     softSkills: [
       problemSolving,
@@ -784,7 +784,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: gameMakerLanguage,
-    type: "Game Dev",
+    type: "Game Development",
     technologySkills: [gameMakerStudio],
     softSkills: [
       problemSolving,
@@ -806,7 +806,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: gameMakerLanguage,
-    type: "Game Dev",
+    type: "Game Development",
     technologySkills: [gameMakerStudio],
     softSkills: [
       problemSolving,
@@ -827,7 +827,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: gameMakerLanguage,
-    type: "Game Dev",
+    type: "Game Development",
     technologySkills: [gameMakerStudio],
     softSkills: [
       problemSolving,
@@ -848,7 +848,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: gameMakerLanguage,
-    type: "Game Dev",
+    type: "Game Development",
     technologySkills: [gameMakerStudio],
     softSkills: [
       problemSolving,
@@ -869,7 +869,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: gameMakerLanguage,
-    type: "Game Dev",
+    type: "Game Development",
     technologySkills: [gameMakerStudio],
     softSkills: [
       problemSolving,
@@ -889,7 +889,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: gameMakerLanguage,
-    type: "Game Dev",
+    type: "Game Development",
     technologySkills: [gameMakerStudio],
     softSkills: [
       problemSolving,
@@ -909,7 +909,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: gameMakerLanguage,
-    type: "Game Dev",
+    type: "Game Development",
     technologySkills: [gameMakerStudio],
     softSkills: [
       problemSolving,
@@ -930,7 +930,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: gameMakerLanguage,
-    type: "Game Dev",
+    type: "Game Development",
     technologySkills: [gameMakerStudio],
     softSkills: [
       problemSolving,
@@ -951,7 +951,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: gameMakerLanguage,
-    type: "Game Dev",
+    type: "Game Development",
     technologySkills: [gameMakerStudio],
     softSkills: [
       problemSolving,
@@ -972,7 +972,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: gameMakerLanguage,
-    type: "Game Dev",
+    type: "Game Development",
     technologySkills: [gameMakerStudio],
     softSkills: [
       problemSolving,
