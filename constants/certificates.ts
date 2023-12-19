@@ -942,7 +942,7 @@ const devOpsCertificates: Certificate[] = [
     name: "Python Automation and Testing",
     slug: "be0745932c948f80c1f9d32c0703eeaf94a3fdf3d35368a2619b8043ebe1c2f2",
     category: "DevOps",
-    issuer: "LinkedIn",
+    issuer: "NASBA",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/be0745932c948f80c1f9d32c0703eeaf94a3fdf3d35368a2619b8043ebe1c2f2",
     technicalSkills: [
