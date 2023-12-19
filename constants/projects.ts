@@ -150,7 +150,6 @@ const webdevProjects: Project[] = [
       nextjs,
       react,
       nodejs,
-      firebase,
       nextauth,
       mongoDB,
       prisma,
@@ -424,7 +423,7 @@ const backendWebDevProjects: Project[] = [
       This was created to learn how to create a custom backend using Python and Flask.
       `,
     repoURL: `https://github.com/mbeps/Forum-Discussion-Flask-Backend`,
-    programmingLanguage: typescript,
+    programmingLanguage: python,
     technologySkills: [
       flask,
       mySQL,
@@ -456,7 +455,7 @@ const backendWebDevProjects: Project[] = [
       This serves as a foundation to using JWT in other projects using Flask.
       `,
     repoURL: `https://github.com/mbeps/Flask_JWT_Auth`,
-    programmingLanguage: typescript,
+    programmingLanguage: python,
     technologySkills: [flask, jwt, gitHub, git, html, css, poetry],
     softSkills: [
       problemSolving,
@@ -476,7 +475,7 @@ const backendWebDevProjects: Project[] = [
       A simple Django app to learn how to use Django with tokens for authentication.
       This serves as a foundation to using Django in other projects.
       `,
-    programmingLanguage: typescript,
+    programmingLanguage: python,
     repoURL: `https://github.com/mbeps/Django_Auth_Sys`,
     technologySkills: [django, jwt, gitHub, git, html, css, poetry],
     softSkills: [

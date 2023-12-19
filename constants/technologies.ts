@@ -76,9 +76,6 @@ const technologies: Skill[] = [
   mongoDB,
   redis,
 
-  socketIO,
-  pusher,
-
   openAI,
   replicateAI,
 
@@ -91,7 +88,6 @@ const technologies: Skill[] = [
   discrete,
   geometry,
 
-  git,
   vagrant,
 ];
 
