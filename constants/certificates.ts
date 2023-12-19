@@ -938,6 +938,35 @@ const devOpsCertificates: Certificate[] = [
       "Understanding and leveraging idempotence in Ansible.",
     ],
   },
+  {
+    name: "Python Automation and Testing",
+    slug: "be0745932c948f80c1f9d32c0703eeaf94a3fdf3d35368a2619b8043ebe1c2f2",
+    category: "DevOps",
+    issuer: "NASBA",
+    credentialURL:
+      "https://www.linkedin.com/learning/certificates/be0745932c948f80c1f9d32c0703eeaf94a3fdf3d35368a2619b8043ebe1c2f2",
+    technicalSkills: [
+      devOps,
+      python,
+      automation,
+      testing,
+      webDevelopment,
+      html,
+    ],
+    softSkills: [problemSolving, criticalThinking],
+    description:
+      "This course provides a comprehensive guide to automating web UI tests using Python and Selenium WebDriver. It covers the installation of Python, understanding the browsers supported by Selenium, and handling exceptions in Selenium. The course also provides practical examples of automating web UI tests and controlling test timing and execution, equipping you with the skills to enhance your development workflow.",
+    learningOutcomes: [
+      "Installing Python for automation and testing",
+      "Recognizing browsers supported by Selenium",
+      "Finding elements when a unique ID is not available",
+      'Understanding the purpose of "send_keys" in Selenium',
+      "Handling exceptions raised when a function tries to locate an element not yet loaded into the DOM",
+      "Automating web UI tests using Selenium WebDriver and Python",
+      "Controlling test timing and execution with waits",
+    ],
+    archived: true,
+  },
 ];
 
 const webDevelopmentCertificates: Certificate[] = [
