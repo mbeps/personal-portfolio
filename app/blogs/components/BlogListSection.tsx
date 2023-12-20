@@ -1,7 +1,7 @@
 import Grid from "@/components/UI/Grid";
 import BlogItem from "@/components/Blogs/BlogItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import { Blog } from "@/types/blog";
+import Blog from "@/types/blog";
 
 interface BlogListSectionProps {
   groupedBlogs: Record<string, Blog[]>;

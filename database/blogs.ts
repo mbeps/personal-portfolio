@@ -1,4 +1,4 @@
-import { Blog } from "@/types/blog";
+import Blog from "@/types/blog";
 
 import { javascript, typescript } from "./skills/languages";
 import {
