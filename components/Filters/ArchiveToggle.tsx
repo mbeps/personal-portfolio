@@ -1,5 +1,4 @@
 import Toggle from "@/components/Inputs/Toggle";
-import FilterParams from "@/types/FilterParams";
 import Link from "next/link";
 
 interface ArchiveToggleProps {

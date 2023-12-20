@@ -13,8 +13,8 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation"; // Ad
 import { useState } from "react";
 import BlogListSection from "./BlogListSection";
 import ToggleFilterButton from "@/components/Filters/Page/ToggleFilterButton";
-import FilterOption from "@/types/FilterOption";
-import FilterCategory from "@/types/FilterCategory";
+import FilterOption from "@/types/filters/FilterOption";
+import FilterCategory from "@/types/filters/FilterCategory";
 import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
 
 interface BlogListProps {

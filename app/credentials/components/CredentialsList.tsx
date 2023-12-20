@@ -13,8 +13,8 @@ import CredentialListSection from "./CredentialListSection";
 import stringToSlug from "@/actions/stringToSlug";
 import FilterOverlay from "@/components/Filters/FilterPanel/FilterPanel";
 import ToggleFilterButton from "@/components/Filters/Page/ToggleFilterButton";
-import FilterCategory from "@/types/FilterCategory";
-import FilterOption from "@/types/FilterOption";
+import FilterCategory from "@/types/filters/FilterCategory";
+import FilterOption from "@/types/filters/FilterOption";
 import { Skill } from "@/types/skills";
 
 type CredentialsListListProps = {
