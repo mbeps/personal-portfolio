@@ -6,7 +6,7 @@ import Dropdown from "@/components/DropDown/DropDownMenu";
 import SkillTag from "@/components/Tags/SkillTag";
 import HeadingThree from "@/components/Text/HeadingThree";
 import Skill from "@/types/skills";
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 
 interface SkillListProps {
@@ -15,20 +15,20 @@ interface SkillListProps {
 
 const SkillList: React.FC<SkillListProps> = ({ skills }) => {
   const searchParams = useSearchParams();
+  const basePath = usePathname();
+  const router = useRouter();
+
   const selectedGroup = searchParams.get("group") || "category";
   const options = [
     { slug: "category", entryName: "Category" },
-    { slug: "language", entryName: "Language" },
     { slug: "skill-type", entryName: "Skill Type" },
     { slug: "none", entryName: "None" },
   ];
 
   const groupedSkills = groupSkills(selectedGroup, skills);
 
-  const router = useRouter();
-
   function handleSelect(value: string) {
-    router.push(generateUrl({ group: value }, "/skills"));
+    router.push(generateUrl({ group: value }, basePath));
   }
 
   return (

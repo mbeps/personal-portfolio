@@ -2,14 +2,13 @@
 
 import generateUrl from "@/actions/generateUrl";
 import stringToSlug from "@/actions/stringToSlug";
-
 import FilterOverlay from "@/components/Filters/FilterPanel";
 import ClearAllFiltersButton from "@/components/Filters/ClearAllFiltersButton";
 import SearchInput from "@/components/Inputs/SearchInput";
 import Blog from "@/types/blog";
 import Skill from "@/types/skills";
 import Fuse from "fuse.js";
-import { usePathname, useRouter, useSearchParams } from "next/navigation"; // Add this import for Next.js router
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import BlogListSection from "./BlogListSection";
 import ToggleFilterButton from "@/components/Filters/ToggleFilterButton";

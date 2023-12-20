@@ -20,7 +20,7 @@ const allSkills = [
   ...hardSkills,
   ...generalSkills,
   ...softSkills,
-  ...languages,
+  // ...languages,
 ];
 
 function extractSlugs(skills: Skill[]): string[] {
