@@ -30,7 +30,7 @@ const ProjectsSection = () => {
     return null;
   }
 
-  const updatedProjects = updateProjectImages(allProjects);
+  // const updatedProjects = updateProjectImages(allProjects);
 
   return (
     <section id="projects" className="wrapper ">
@@ -38,19 +38,12 @@ const ProjectsSection = () => {
         <HeadingTwo title="Projects" />
 
         <div className="flex flex-col space-y-20 mt-14">
-          {updatedProjects
+          {allProjects
             .filter((project) => allowedSlugs.includes(project.slug))
             .map((project, idx) => (
               <div key={idx}>
                 <SlideUp offset="-150px 0px -150px 0px">
-                  <ProjectItem
-                    name={project.name}
-                    slug={project.slug}
-                    description={project.description}
-                    imageURL={project.imageURL}
-                    repoURL={project.repoURL}
-                    siteURL={project.siteURL}
-                  />
+                  <ProjectItem project={project} />
                 </SlideUp>
               </div>
             ))}

@@ -135,6 +135,7 @@ const webdevProjects: Project[] = [
     ],
     extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
     type: "Full-Stack Web Development",
+    hasImage: true,
   },
   {
     name: `Ringmaster Messaging`,
@@ -176,6 +177,7 @@ const webdevProjects: Project[] = [
     ],
     extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
     type: "Full-Stack Web Development",
+    hasImage: true,
   },
   {
     name: `Magician AI`,
@@ -219,6 +221,7 @@ const webdevProjects: Project[] = [
     ],
     extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
     type: "Full-Stack Web Development",
+    hasImage: true,
   },
   {
     name: `Drumroll Music`,
@@ -254,6 +257,7 @@ const webdevProjects: Project[] = [
     ],
     extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
     type: "Full-Stack Web Development",
+    hasImage: true,
   },
 ];
 
@@ -300,6 +304,7 @@ const extraWebDevProjects: Project[] = [
     ],
     extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
     repoURL: "https://github.com/mbeps/quizmify",
+    hasImage: true,
   },
   {
     name: `Sideshow Articles`,
@@ -333,6 +338,7 @@ const extraWebDevProjects: Project[] = [
     extraTechnicalGeneralSkills: [oop],
     type: "Full-Stack Web Development",
     archived: true,
+    hasImage: true,
   },
   {
     name: `Noodle`,
@@ -375,6 +381,7 @@ const extraWebDevProjects: Project[] = [
     ],
     type: "Full-Stack Web Development",
     archived: true,
+    hasImage: true,
   },
   {
     name: `ConvoGPT`,
@@ -751,6 +758,7 @@ const gameDevProjects: Project[] = [
       teamwork,
     ],
     type: "Game Development",
+    hasImage: true,
   },
   {
     name: "Surface Fight",
@@ -772,6 +780,7 @@ const gameDevProjects: Project[] = [
     ],
     siteURL: "https://bepary-games.itch.io/surface-fight",
     archived: true,
+    hasImage: true,
   },
   {
     name: "Platformer",
@@ -794,6 +803,7 @@ const gameDevProjects: Project[] = [
     ],
     siteURL: "https://bepary-games.itch.io/platformer",
     archived: true,
+    hasImage: true,
   },
   {
     name: "Platformer Death Walk",
@@ -816,6 +826,7 @@ const gameDevProjects: Project[] = [
     ],
     siteURL: "https://bepary-games.itch.io/platformer-death-walk",
     archived: true,
+    hasImage: true,
   },
   {
     name: "Coding Breakout",
@@ -837,6 +848,7 @@ const gameDevProjects: Project[] = [
     ],
     siteURL: "https://bepary-games.itch.io/coding-break-out",
     archived: true,
+    hasImage: true,
   },
   {
     name: "Catch Maruf",
@@ -858,6 +870,7 @@ const gameDevProjects: Project[] = [
     ],
     siteURL: "https://bepary-games.itch.io/catch-maruf",
     archived: true,
+    hasImage: true,
   },
   {
     name: "Against Gravity",
@@ -879,6 +892,7 @@ const gameDevProjects: Project[] = [
     ],
     siteURL: "https://bepary-games.itch.io/against-gravity",
     archived: true,
+    hasImage: true,
   },
   {
     name: "Scrolling Shooter",
@@ -899,6 +913,7 @@ const gameDevProjects: Project[] = [
     ],
     siteURL: "https://bepary-games.itch.io/scrolling-shooter",
     archived: true,
+    hasImage: true,
   },
   {
     name: "Dungeon",
@@ -919,6 +934,7 @@ const gameDevProjects: Project[] = [
     ],
     siteURL: "https://bepary-games.itch.io/dungeon-",
     archived: true,
+    hasImage: true,
   },
   {
     name: " Veg Ninja",
@@ -940,6 +956,7 @@ const gameDevProjects: Project[] = [
     ],
     siteURL: "https://bepary-games.itch.io/vej-ninja",
     archived: true,
+    hasImage: true,
   },
   {
     name: " Angry Cats Space",
@@ -961,6 +978,7 @@ const gameDevProjects: Project[] = [
     ],
     siteURL: "https://bepary-games.itch.io/angry-cats-space",
     archived: true,
+    hasImage: true,
   },
   {
     name: " Angry Cats",
@@ -982,6 +1000,7 @@ const gameDevProjects: Project[] = [
     ],
     siteURL: "https://bepary-games.itch.io/angry-cats-space",
     archived: true,
+    hasImage: true,
   },
 ];
 

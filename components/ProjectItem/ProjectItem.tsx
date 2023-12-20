@@ -1,3 +1,4 @@
+import hasProjectCover from "@/actions/hasProjectCover";
 import Project from "@/types/projects";
 import Image from "next/image";
 import Link from "next/link";
@@ -5,12 +6,7 @@ import React from "react";
 import { BsArrowUpRightCircle, BsGithub, BsInfoCircle } from "react-icons/bs";
 
 interface ProjectItemProps {
-  name: string;
-  slug: string;
-  description: string;
-  imageURL?: string;
-  repoURL?: string;
-  siteURL?: string;
+  project: Project;
 }
 
 /**
@@ -40,19 +36,19 @@ interface ProjectItemProps {
  * @param type (string): Type of the project
  * @returns (JSX.Element): Project item component
  */
-const ProjectItem: React.FC<ProjectItemProps> = ({
-  name,
-  slug,
-  description,
-  imageURL,
-  repoURL,
-  siteURL,
-}) => {
+const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
+  if (project.hasImage) {
+    project = {
+      ...project,
+      imageURL: `/projects/${project.slug}/cover.png`,
+    };
+  }
+
   return (
     <div className="bg-neutral-100 dark:bg-neutral-950 p-4 rounded-xl sm:bg-white sm:dark:bg-neutral-900 sm:p-0 transition-colors duration-700 ">
       <div className="flex flex-col animate-slideUpCubiBezier animation-delay-2 lg:flex-row lg:space-x-12">
         {/* Project Cover */}
-        {imageURL && (
+        {project.imageURL && (
           <div
             className="
                 lg:w-1/2
@@ -62,11 +58,11 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
                 transition-all duration-500 ease-in-out
               "
           >
-            <Link href={`/projects/${slug}`}>
+            <Link href={`/projects/${project.slug}`}>
               <Image
-                src={imageURL}
-                key={imageURL}
-                alt={`${name} cover image`}
+                src={project.imageURL}
+                key={project.imageURL}
+                alt={`${project.name} cover image`}
                 width={1000}
                 height={1000}
                 quality={40}
@@ -78,9 +74,9 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
           </div>
         )}
 
-        <div className={`mt-8 ${imageURL ? "lg:w-1/2" : "lg:w-full"}`}>
+        <div className={`mt-8 ${project.imageURL ? "lg:w-1/2" : "lg:w-full"}`}>
           {/* Project Title */}
-          <Link href={`/projects/${slug}`}>
+          <Link href={`/projects/${project.slug}`}>
             <h1
               className="
                   flex flex-col
@@ -91,13 +87,13 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
                   transition-colors duration-700 ease-in-out
                 "
             >
-              {name}
+              {project.name}
             </h1>
           </Link>
 
           {/* Project Description */}
           <p className="text-xl text-left leading-7 mb-4 text-neutral-600 dark:text-neutral-400">
-            {description}
+            {project.description}
           </p>
 
           {/* Buttons */}
@@ -109,7 +105,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
               space-x-4 mt-8"
           >
             {/* Project Page */}
-            <Link href={`/projects/${slug}`} title="Project Page">
+            <Link href={`/projects/${project.slug}`} title="Project Page">
               <BsInfoCircle
                 size={30}
                 className="md:hover:-translate-y-1 transition-transform cursor-pointer"
@@ -117,8 +113,8 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
             </Link>
 
             {/* Repository */}
-            {repoURL && (
-              <Link href={repoURL} target="_blank" title="Repository">
+            {project.repoURL && (
+              <Link href={project.repoURL} target="_blank" title="Repository">
                 <BsGithub
                   size={30}
                   className="md:hover:-translate-y-1 transition-transform cursor-pointer"
@@ -126,8 +122,8 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
               </Link>
             )}
             {/* Project Website */}
-            {siteURL && (
-              <Link href={siteURL} target="_blank" title="Website">
+            {project.siteURL && (
+              <Link href={project.siteURL} target="_blank" title="Website">
                 <BsArrowUpRightCircle
                   size={30}
                   className="md:hover:-translate-y-1 transition-transform cursor-pointer"
