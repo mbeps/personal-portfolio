@@ -1,8 +1,7 @@
-import updateProjectImages from "@/actions/updateProjectImages";
 import validateSlugs from "@/actions/validateSlug";
 import Button from "@/components/Atoms/Button";
-import ProjectItem from "@/components/ProjectItem/ProjectItem";
 import SlideUp from "@/components/Atoms/Slideup";
+import ProjectItem from "@/components/ProjectItem/ProjectItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import allProjects from "@/constants/projects";
 import Link from "next/link";
@@ -29,8 +28,6 @@ const ProjectsSection = () => {
     console.error("Some slugs in allowedSlugs are not valid.");
     return null;
   }
-
-  // const updatedProjects = updateProjectImages(allProjects);
 
   return (
     <section id="projects" className="wrapper ">

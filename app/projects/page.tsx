@@ -1,4 +1,5 @@
-import updateProjectImages from "@/actions/updateProjectImages";
+import PageDescription from "@/components/Atoms/PageDescription";
+import HeadingOne from "@/components/Text/HeadingOne";
 import {
   backendWebDevProjects,
   extraWebDevProjects,
@@ -11,8 +12,6 @@ import {
 import Project from "@/types/projects";
 import type { Metadata } from "next";
 import ProjectsList from "./components/ProjectsList";
-import HeadingOne from "@/components/Text/HeadingOne";
-import PageDescription from "@/components/Atoms/PageDescription";
 
 const description = `
   Discover my portfolio of projects, both current and archived. 
@@ -47,8 +46,6 @@ const ProjectsPage = () => {
     ...gameDevProjects,
     ...otherProjects,
   ];
-
-  // const updatedProjects = updateProjectImages(allProjects);
 
   return (
     <section id="projects" className="flex flex-col items-start md:items-end">
