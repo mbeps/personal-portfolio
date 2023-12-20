@@ -1,6 +1,4 @@
-import { languages } from "@/constants/languages";
-import { technologies } from "@/constants/technologies";
-import { Skill } from "@/types/skills";
+import Skill from "@/types/skills";
 
 const groupSkills = (
   groupedBy: string,
@@ -26,7 +24,7 @@ const groupSkills = (
   if (groupedBy === "language") {
     organizedSkills = skills.reduce((acc: Record<string, Skill[]>, skill) => {
       if (skill.skills) {
-        acc[skill.skill] = removeDuplicates(skill.skills);
+        acc[skill.name] = removeDuplicates(skill.skills);
       }
       return acc;
     }, {});

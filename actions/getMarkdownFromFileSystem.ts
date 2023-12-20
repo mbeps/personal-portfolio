@@ -15,7 +15,7 @@ const getMarkdownFromFileSystem = (
     const matterResult = matter(content);
     return matterResult;
   } catch (error) {
-    console.log(`Error reading markdown file ${filePath}:`, error);
+    // console.log(`Error reading markdown file ${filePath}:`, error);
     return null;
   }
 };

@@ -1,11 +1,10 @@
-import updateProjectImages from "@/actions/updateProjectImages";
-import validateSlugs from "@/actions/validateSlug";
-import Button from "@/components/Atoms/Button";
+import validateSlugWithProject from "@/actions/projects/validateSlugWithProject";
+import Button from "@/components/Button/Button";
+import SlideUp from "@/components/UI/Slideup";
 import ProjectItem from "@/components/ProjectItem/ProjectItem";
-import SlideUp from "@/components/Atoms/Slideup";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import allProjects from "@/constants/projects";
 import Link from "next/link";
+import allProjects from "@/database/projects";
 
 /**
  * Project section listing the projects I have worked on.
@@ -25,12 +24,10 @@ const ProjectsSection = () => {
   ];
 
   // Validate the slugs
-  if (!validateSlugs(allowedSlugs, allProjects)) {
+  if (!validateSlugWithProject(allowedSlugs, allProjects)) {
     console.error("Some slugs in allowedSlugs are not valid.");
     return null;
   }
-
-  // const updatedProjects = updateProjectImages(allProjects);
 
   return (
     <section id="projects" className="wrapper ">

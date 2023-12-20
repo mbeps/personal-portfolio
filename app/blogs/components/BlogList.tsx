@@ -3,22 +3,22 @@
 import generateUrl from "@/actions/generateUrl";
 import stringToSlug from "@/actions/stringToSlug";
 
-import FilterOverlay from "@/components/Filters/FilterPanel/FilterPanel";
-import ClearAllFiltersButton from "@/components/Filters/Page/ClearAllFiltersButton";
+import FilterOverlay from "@/components/Filters/FilterPanel";
+import ClearAllFiltersButton from "@/components/Filters/ClearAllFiltersButton";
 import SearchInput from "@/components/Inputs/SearchInput";
-import { BlogMetadata } from "@/types/blog";
-import { Skill } from "@/types/skills";
+import { Blog } from "@/types/blog";
+import Skill from "@/types/skills";
 import Fuse from "fuse.js";
 import { usePathname, useRouter, useSearchParams } from "next/navigation"; // Add this import for Next.js router
 import { useState } from "react";
 import BlogListSection from "./BlogListSection";
-import ToggleFilterButton from "@/components/Filters/Page/ToggleFilterButton";
-import FilterOption from "@/types/FilterOption";
-import FilterCategory from "@/types/FilterCategory";
+import ToggleFilterButton from "@/components/Filters/ToggleFilterButton";
+import FilterOption from "@/types/filters/FilterOption";
+import FilterCategory from "@/types/filters/FilterCategory";
 import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
 
 interface BlogListProps {
-  blogs: BlogMetadata[];
+  blogs: Blog[];
 }
 
 /**
@@ -64,7 +64,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   /**
    * Fuse.js options for fuzzy search.
    * These are the only properties that are searched.
-   * These are the same ones from the `BlogMetadata` type.
+   * These are the same ones from the `Blog` type.
    */
   const searchOptions = {
     keys: [
@@ -94,13 +94,11 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   /**
    * Groups the blogs by category.
    * This is used to display the blogs in sections.
-   * @param blogs (BlogMetadata[]) - list of blogs
-   * @returns (Record<string, BlogMetadata[]>) - blogs grouped by category (key)
+   * @param blogs (Blog[]) - list of blogs
+   * @returns (Record<string, Blog[]>) - blogs grouped by category (key)
    */
-  const groupBlogsByType = (
-    blogs: BlogMetadata[]
-  ): Record<string, BlogMetadata[]> => {
-    return blogs.reduce<Record<string, BlogMetadata[]>>((grouped, blog) => {
+  const groupBlogsByType = (blogs: Blog[]): Record<string, Blog[]> => {
+    return blogs.reduce<Record<string, Blog[]>>((grouped, blog) => {
       (grouped[blog.category] = grouped[blog.category] || []).push(blog);
       return grouped;
     }, {});
@@ -111,7 +109,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   const blogCategories: FilterOption[] = [
     { slug: "all", entryName: "All" },
     ...blogs
-      .map((blog: BlogMetadata) => ({
+      .map((blog: Blog) => ({
         slug: stringToSlug(blog.category),
         entryName: blog.category,
       }))
@@ -125,7 +123,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   const skillCategories: FilterOption[] = [
     { slug: "all", entryName: "All" },
     ...blogs
-      .flatMap((blog: BlogMetadata) =>
+      .flatMap((blog: Blog) =>
         blog.technicalSkills.map((skill: Skill) => ({
           slug: stringToSlug(skill.category),
           entryName: skill.category,
@@ -142,10 +140,10 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   const hardSkills: FilterOption[] = [
     { slug: "all", entryName: "All" },
     ...blogs
-      .flatMap((blog: BlogMetadata) =>
+      .flatMap((blog: Blog) =>
         (blog.technicalSkills || [])
           .filter((skill: Skill) => skill.skillType === "hard")
-          .map((skill: Skill) => ({ slug: skill.slug, entryName: skill.skill }))
+          .map((skill: Skill) => ({ slug: skill.slug, entryName: skill.name }))
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -158,10 +156,10 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   const generalSkills: FilterOption[] = [
     { slug: "all", entryName: "All" },
     ...blogs
-      .flatMap((blog: BlogMetadata) =>
+      .flatMap((blog: Blog) =>
         (blog.technicalSkills || [])
           .filter((skill: Skill) => skill.skillType === "general")
-          .map((skill: Skill) => ({ slug: skill.slug, entryName: skill.skill }))
+          .map((skill: Skill) => ({ slug: skill.slug, entryName: skill.name }))
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -174,10 +172,10 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   const softSkills: FilterOption[] = [
     { slug: "all", entryName: "All" },
     ...blogs
-      .flatMap((blog: BlogMetadata) =>
+      .flatMap((blog: Blog) =>
         (blog.technicalSkills || [])
           .filter((skill: Skill) => skill.skillType === "soft")
-          .map((skill: Skill) => ({ slug: skill.slug, entryName: skill.skill }))
+          .map((skill: Skill) => ({ slug: skill.slug, entryName: skill.name }))
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1

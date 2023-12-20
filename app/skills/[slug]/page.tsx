@@ -1,20 +1,19 @@
-import getSkillBySlug from "@/actions/getSkillBySlug";
+import getSkillBySlug from "@/actions/skills/getSkillBySlug";
 import HeadingOne from "@/components/Text/HeadingOne";
-import allCertificates from "@/constants/certificates";
-
-import blogs from "@/constants/blogs";
-import { languages } from "@/constants/languages";
-import allProjects from "@/constants/projects";
-import generalSkills from "@/constants/skills/generalSkills";
-import hardSkills from "@/constants/skills/hardSkills";
-import softSkills from "@/constants/skills/softSkills";
+import allCertificates from "@/database/certificates";
+import blogs from "@/database/blogs";
+import { languages } from "@/database/skills/languages";
+import allProjects from "@/database/projects";
+import generalSkills from "@/database/skills/generalSkills";
+import hardSkills from "@/database/skills/hardSkills";
+import softSkills from "@/database/skills/softSkills";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import React from "react";
 import BlogsSection from "./components/BlogsSection";
 import CredentialsSection from "./components/CredentialsSection";
 import ProjectsSection from "./components/ProjectsSection";
-import PageDescription from "@/components/Atoms/PageDescription";
+import PageDescription from "@/components/UI/PageDescription";
 
 const allSkills = [...hardSkills, ...generalSkills, ...softSkills];
 
@@ -26,8 +25,8 @@ export async function generateMetadata(
   const skill = getSkillBySlug(slug, [...allSkills, ...languages]);
 
   return {
-    title: `Maruf Bepary - Skills: ${skill?.skill}`,
-    description: skill?.skill,
+    title: `Maruf Bepary - Skills: ${skill?.name}`,
+    description: skill?.name,
   };
 }
 
@@ -47,10 +46,10 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
 
   return (
     <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
-      <HeadingOne title={skill.skill} />
+      <HeadingOne title={skill.name} />
       <PageDescription
         description={`
-        This is the page displaying all the material related to ${skill.skill}.
+        This is the page displaying all the material related to ${skill.name}.
         This can include projects, blogs, and certificates.
       `}
       />

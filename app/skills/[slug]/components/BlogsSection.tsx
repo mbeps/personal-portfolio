@@ -1,37 +1,32 @@
 import BlogListSection from "@/app/blogs/components/BlogListSection";
-import Button from "@/components/Atoms/Button";
-import { BlogMetadata } from "@/types/blog";
-import { Skill } from "@/types/skills";
+import Button from "@/components/Button/Button";
+import { Blog } from "@/types/blog";
+import Skill from "@/types/skills";
 import Link from "next/link";
 
 import React from "react";
 
 interface BlogsPageProps {
-  blogs: BlogMetadata[];
+  blogs: Blog[];
   skill: Skill;
 }
 
 const BlogsSection: React.FC<BlogsPageProps> = ({ blogs, skill }) => {
-  const filterBlogsBySkill = (
-    blogs: BlogMetadata[],
-    selectedSkill: string
-  ): BlogMetadata[] => {
+  const filterBlogsBySkill = (blogs: Blog[], selectedSkill: string): Blog[] => {
     return blogs.filter((blog) =>
       blog.technicalSkills.some(
-        (s) => s.skill.toLowerCase() === selectedSkill.toLowerCase()
+        (s) => s.name.toLowerCase() === selectedSkill.toLowerCase()
       )
     );
   };
 
-  const filteredBlogs = filterBlogsBySkill(blogs, skill.skill);
+  const filteredBlogs = filterBlogsBySkill(blogs, skill.name);
 
   if (!filteredBlogs || filteredBlogs.length === 0) {
     return;
   }
 
-  const groupBlogsByCategory = (
-    blogs: BlogMetadata[]
-  ): Record<string, BlogMetadata[]> => {
+  const groupBlogsByCategory = (blogs: Blog[]): Record<string, Blog[]> => {
     return { Blogs: blogs };
   };
 

@@ -7,10 +7,13 @@ import Project from "@/types/projects";
  * @param projects (Project[]): The projects to validate against.
  * @returns (boolean): Whether or not the slugs are valid
  */
-const validateSlugs = (slugs: string[], projects: Project[]): boolean => {
+const validateSlugWithProject = (
+  slugs: string[],
+  projects: Project[]
+): boolean => {
   return slugs.every((slug) =>
     projects.some((project) => project.slug === slug)
   );
 };
 
-export default validateSlugs;
+export default validateSlugWithProject;

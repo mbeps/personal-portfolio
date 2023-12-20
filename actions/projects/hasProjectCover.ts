@@ -6,7 +6,7 @@ import path from "path";
  * @param slug (string) - The slug of the project.
  * @returns (boolean) - Returns true if the cover image exists, false otherwise.
  */
-const hasProjectCover = (slug: string) => {
+export default function hasProjectCover(slug: string) {
   const coverImagePath = path.join("public", "projects", slug, "cover.png");
 
   try {
@@ -19,6 +19,4 @@ const hasProjectCover = (slug: string) => {
     console.error(err);
     return false;
   }
-};
-
-export default hasProjectCover;
+}

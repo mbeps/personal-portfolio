@@ -1,11 +1,10 @@
-import getCertificateBySlug from "@/actions/getCertificateBySlug";
-import Button from "@/components/Atoms/Button";
+import getCertificateBySlug from "@/actions/certificates/getCertificateBySlug";
+import Button from "@/components/Button/Button";
 import Tag from "@/components/Tags/Tag";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import allCertificates from "@/constants/certificates";
-import { Skill } from "@/types/skills";
+import Skill from "@/types/skills";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,6 +12,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle } from "react-icons/bs";
 import { RxTriangleRight } from "react-icons/rx";
+import allCertificates from "@/database/certificates";
 
 /**
  * Metadata object for the dynamic certificate page.
@@ -34,10 +34,6 @@ export async function generateMetadata(
   return {
     title: `Maruf Bepary - Certificates: ${certificate?.name}`,
     description: certificate?.slug,
-    openGraph: {
-      // No images are specified in your Certificate object
-      // but you can add them here if you have them
-    },
   };
 }
 

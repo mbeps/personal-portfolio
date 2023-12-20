@@ -1,14 +1,13 @@
 "use client";
 
-import FilterCategory from "@/types/FilterCategory";
+import ExpandCollapseButton from "@/components/Button/ExpandCollapseButton";
+import FilterCategory from "@/types/filters/FilterCategory";
 import Link from "next/link";
 import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
-import RadioButton from "../../Inputs/RadioButton";
-import HeadingFour from "../../Text/HeadingFour";
-import HeadingThree from "../../Text/HeadingThree";
-import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
-import ExpandCollapseButton from "@/components/Atoms/ExpandCollapseButton";
+import RadioButton from "../Inputs/RadioButton";
+import HeadingFour from "../Text/HeadingFour";
+import HeadingThree from "../Text/HeadingThree";
 
 interface FilterOverlayProps {
   filterCategories: FilterCategory[];

@@ -2,7 +2,7 @@
 
 import generateUrl from "@/actions/generateUrl";
 import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
-import ClearAllFiltersButton from "@/components/Filters/Page/ClearAllFiltersButton";
+import ClearAllFiltersButton from "@/components/Filters/ClearAllFiltersButton";
 import SearchInput from "@/components/Inputs/SearchInput";
 import Certificate from "@/types/certificates";
 import Fuse from "fuse.js";
@@ -11,11 +11,11 @@ import React, { useState } from "react";
 import CredentialListSection from "./CredentialListSection";
 
 import stringToSlug from "@/actions/stringToSlug";
-import FilterOverlay from "@/components/Filters/FilterPanel/FilterPanel";
-import ToggleFilterButton from "@/components/Filters/Page/ToggleFilterButton";
-import FilterCategory from "@/types/FilterCategory";
-import FilterOption from "@/types/FilterOption";
-import { Skill } from "@/types/skills";
+import FilterOverlay from "@/components/Filters/FilterPanel";
+import ToggleFilterButton from "@/components/Filters/ToggleFilterButton";
+import FilterCategory from "@/types/filters/FilterCategory";
+import FilterOption from "@/types/filters/FilterOption";
+import Skill from "@/types/skills";
 
 type CredentialsListListProps = {
   allCertificates: Certificate[];
@@ -168,7 +168,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
           .filter((skill: Skill) => skill.skillType === "hard")
           .map((skill: Skill) => ({
             slug: stringToSlug(skill.slug), // Convert skill name to slug
-            entryName: skill.skill,
+            entryName: skill.name,
           }))
       )
       .reduce((unique, item) => {
@@ -187,7 +187,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
           .filter((skill: Skill) => skill.skillType === "general")
           .map((skill: Skill) => ({
             slug: stringToSlug(skill.slug), // Convert skill name to slug
-            entryName: skill.skill,
+            entryName: skill.name,
           }))
       )
       .reduce((unique, item) => {
@@ -206,7 +206,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
           .filter((skill: Skill) => skill.skillType === "soft")
           .map((skill: Skill) => ({
             slug: stringToSlug(skill.slug), // Convert skill name to slug
-            entryName: skill.skill,
+            entryName: skill.name,
           }))
       )
       .reduce((unique, item) => {

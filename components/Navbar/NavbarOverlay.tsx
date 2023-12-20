@@ -1,4 +1,4 @@
-import { NavItem } from "@/types/pages";
+import NavItem from "@/types/pages";
 import Socials from "../Socials/Socials";
 import NavbarItem from "./NavbarItem";
 import Overlay from "../Sheet/Sheet";

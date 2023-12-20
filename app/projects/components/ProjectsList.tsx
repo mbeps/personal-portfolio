@@ -3,14 +3,14 @@
 import generateUrl from "@/actions/generateUrl";
 
 import stringToSlug from "@/actions/stringToSlug";
-import FilterOverlay from "@/components/Filters/FilterPanel/FilterPanel";
-import ClearAllFiltersButton from "@/components/Filters/Page/ClearAllFiltersButton";
-import ToggleFilterButton from "@/components/Filters/Page/ToggleFilterButton";
+import FilterOverlay from "@/components/Filters/FilterPanel";
+import ClearAllFiltersButton from "@/components/Filters/ClearAllFiltersButton";
+import ToggleFilterButton from "@/components/Filters/ToggleFilterButton";
 import SearchInput from "@/components/Inputs/SearchInput";
-import FilterCategory from "@/types/FilterCategory";
-import FilterOption from "@/types/FilterOption";
+import FilterCategory from "@/types/filters/FilterCategory";
+import FilterOption from "@/types/filters/FilterOption";
 import Project from "@/types/projects";
-import { Skill } from "@/types/skills";
+import Skill from "@/types/skills";
 import Fuse from "fuse.js";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
@@ -104,7 +104,9 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     projects: Project[]
   ): Record<string, Project[]> => {
     return projects.reduce<Record<string, Project[]>>((grouped, project) => {
-      (grouped[project.type] = grouped[project.type] || []).push(project);
+      (grouped[project.category] = grouped[project.category] || []).push(
+        project
+      );
       return grouped;
     }, {});
   };
@@ -120,8 +122,8 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     { slug: "all", entryName: "All" },
     ...allProjects
       .map((project: Project) => ({
-        slug: stringToSlug(project.type),
-        entryName: project.type,
+        slug: stringToSlug(project.category),
+        entryName: project.category,
       }))
       .filter(
         (value, index, self) =>
@@ -140,7 +142,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     ...allProjects
       .map((project: Project) => ({
         slug: project.programmingLanguage.slug,
-        entryName: project.programmingLanguage.skill,
+        entryName: project.programmingLanguage.name,
       }))
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -162,7 +164,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
       .flatMap((project: Project) =>
         (project.technologySkills || []).map((skill: Skill) => ({
           slug: skill.slug,
-          entryName: skill.skill,
+          entryName: skill.name,
         }))
       )
       .reduce((unique, item) => {
@@ -201,7 +203,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
           skill.skills
             ? skill.skills.map((subSkill: Skill) => ({
                 slug: subSkill.slug,
-                entryName: subSkill.skill,
+                entryName: subSkill.name,
               }))
             : []
         )
@@ -220,7 +222,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
       .flatMap((project: Project) =>
         (project.softSkills || []).map((skill: Skill) => ({
           slug: skill.slug,
-          entryName: skill.skill,
+          entryName: skill.name,
         }))
       )
       .reduce((unique, item) => {
@@ -241,7 +243,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const filteredProjects = searchedProjects.filter((project: Project) => {
     const matchesType =
       stringToSlug(selectedSection) === "all" ||
-      stringToSlug(project.type) === stringToSlug(selectedSection);
+      stringToSlug(project.category) === stringToSlug(selectedSection);
 
     const matchesProgrammingLanguage =
       selectedLanguage === "all" ||

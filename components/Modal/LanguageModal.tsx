@@ -2,21 +2,17 @@ import groupSkills from "@/actions/skills/groupSkills";
 import isSkillAssociatedWithBlogs from "@/actions/skills/isSkillAssociatedWithBlogs";
 import isSkillAssociatedWithCertificate from "@/actions/skills/isSkillAssociatedWithCertificate";
 import isSkillAssociatedWithProject from "@/actions/skills/isSkillAssociatedWithProject";
-import blogs from "@/constants/blogs";
-import allCertificates from "@/constants/certificates";
-import allProjects from "@/constants/projects";
-import hardSkills from "@/constants/skills/hardSkills";
-import { Skill } from "@/types/skills";
+import Skill from "@/types/skills";
 import Link from "next/link";
 import React, { useState } from "react";
-import Button from "../Atoms/Button";
+import Button from "../Button/Button";
 import Dropdown from "../DropDown/DropDownMenu";
 import SkillTag from "../Tags/SkillTag";
 import HeadingThree from "../Text/HeadingThree";
 import Modal from "./Modal";
-import { languages } from "@/constants/languages";
-import { technologies } from "@/constants/technologies";
-import getProjectBySlug from "@/actions/getProjectBySlug";
+import allProjects from "@/database/projects";
+import allCertificates from "@/database/certificates";
+import blogs from "@/database/blogs";
 
 interface ProjectModalProps {
   isOpen?: boolean; // whether the modal is open or not
@@ -60,7 +56,7 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
   const hasMaterial = hasProjects || hasCertificates || hasBlogs;
 
   return (
-    <Modal title={language.skill} isOpen={isOpen} onClose={onClose}>
+    <Modal title={language.name} isOpen={isOpen} onClose={onClose}>
       <div className="flex mt-4">
         <div className="flex-grow mr-2 mt-2.5 text-right text-neutral-700 dark:text-neutral-300">
           Group by:
@@ -103,7 +99,7 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
               <Button
                 variant="ghost"
                 className="w-full"
-              >{`${language.skill} Projects`}</Button>
+              >{`${language.name} Projects`}</Button>
             </div>
           </Link>
         </div>
@@ -125,7 +121,7 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
               <Button
                 variant="ghost"
                 className="w-full"
-              >{`${language.skill} Certificates`}</Button>
+              >{`${language.name} Certificates`}</Button>
             </div>
           </Link>
         </div>
@@ -147,7 +143,7 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
               <Button
                 variant="ghost"
                 className="w-full"
-              >{`${language.skill} Blogs`}</Button>
+              >{`${language.name} Blogs`}</Button>
             </div>
           </Link>
         </div>
@@ -170,7 +166,7 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
                 <Button
                   variant="ghost"
                   className="w-full"
-                >{`All ${language.skill} Material`}</Button>
+                >{`All ${language.name} Material`}</Button>
               </div>
             </Link>
           </div>

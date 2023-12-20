@@ -1,4 +1,3 @@
-import hasProjectCover from "@/actions/hasProjectCover";
 import Project from "@/types/projects";
 import Image from "next/image";
 import Link from "next/link";
@@ -40,7 +39,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
   if (project.hasImage) {
     project = {
       ...project,
-      imageURL: `/projects/${project.slug}/cover.png`,
+      thumbnailImage: `/projects/${project.slug}/cover.png`,
     };
   }
 
@@ -48,7 +47,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
     <div className="bg-neutral-100 dark:bg-neutral-950 p-4 rounded-xl sm:bg-white sm:dark:bg-neutral-900 sm:p-0 transition-colors duration-700 ">
       <div className="flex flex-col animate-slideUpCubiBezier animation-delay-2 lg:flex-row lg:space-x-12">
         {/* Project Cover */}
-        {project.imageURL && (
+        {project.thumbnailImage && (
           <div
             className="
                 lg:w-1/2
@@ -60,8 +59,8 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
           >
             <Link href={`/projects/${project.slug}`}>
               <Image
-                src={project.imageURL}
-                key={project.imageURL}
+                src={project.thumbnailImage}
+                key={project.thumbnailImage}
                 alt={`${project.name} cover image`}
                 width={1000}
                 height={1000}
@@ -74,7 +73,11 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
           </div>
         )}
 
-        <div className={`mt-8 ${project.imageURL ? "lg:w-1/2" : "lg:w-full"}`}>
+        <div
+          className={`mt-8 ${
+            project.thumbnailImage ? "lg:w-1/2" : "lg:w-full"
+          }`}
+        >
           {/* Project Title */}
           <Link href={`/projects/${project.slug}`}>
             <h1
@@ -113,8 +116,12 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
             </Link>
 
             {/* Repository */}
-            {project.repoURL && (
-              <Link href={project.repoURL} target="_blank" title="Repository">
+            {project.repositoryURL && (
+              <Link
+                href={project.repositoryURL}
+                target="_blank"
+                title="Repository"
+              >
                 <BsGithub
                   size={30}
                   className="md:hover:-translate-y-1 transition-transform cursor-pointer"
@@ -122,8 +129,12 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
               </Link>
             )}
             {/* Project Website */}
-            {project.siteURL && (
-              <Link href={project.siteURL} target="_blank" title="Website">
+            {project.deploymentURL && (
+              <Link
+                href={project.deploymentURL}
+                target="_blank"
+                title="Website"
+              >
                 <BsArrowUpRightCircle
                   size={30}
                   className="md:hover:-translate-y-1 transition-transform cursor-pointer"

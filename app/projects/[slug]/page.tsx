@@ -1,16 +1,15 @@
-import getProjectBySlug from "@/actions/getProjectBySlug";
+import getProjectBySlug from "@/actions/projects/getProjectBySlug";
 import Gallery from "@/components/Gallery/Gallery";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 
 import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
 import getMediaFromFileSystem from "@/actions/getMediaFromFileSystem";
-import hasProjectCover from "@/actions/hasProjectCover";
-import Button from "@/components/Atoms/Button";
+import hasProjectCover from "@/actions/projects/hasProjectCover";
+import Button from "@/components/Button/Button";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import SkillTag from "@/components/Tags/SkillTag";
-import allProjects from "@/constants/projects";
-import { Skill } from "@/types/skills";
+import Skill from "@/types/skills";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,6 +17,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
+import allProjects from "@/database/projects";
 
 /**
  * Metadata object for the dynamic project page.
@@ -39,10 +39,6 @@ export async function generateMetadata(
   return {
     title: `Maruf Bepary - Projects: ${project?.name}`,
     description: project?.description,
-    openGraph: {
-      // No images are specified in your Project object
-      // but you can add them here if you have them
-    },
   };
 }
 
@@ -274,9 +270,9 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
               gap-2"
               >
                 {/* GitHub Repo */}
-                {project?.repoURL && (
+                {project?.repositoryURL && (
                   <Link
-                    href={project?.repoURL}
+                    href={project?.repositoryURL}
                     target="_blank"
                     className="w-full"
                   >
@@ -298,9 +294,9 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
                   </Link>
                 )}
                 {/* Website */}
-                {project?.siteURL && (
+                {project?.deploymentURL && (
                   <Link
-                    href={project?.siteURL}
+                    href={project?.deploymentURL}
                     target="_blank"
                     className="w-full"
                   >

@@ -2,11 +2,11 @@
 
 import HeadingFour from "@/components/Text/HeadingFour";
 import HeadingThree from "@/components/Text/HeadingThree";
-import { Skill } from "@/types/skills";
+import Skill from "@/types/skills";
 import React, { useState } from "react";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import SkillTag from "../Tags/SkillTag";
-import ExpandCollapseButton from "../Atoms/ExpandCollapseButton";
+import ExpandCollapseButton from "../Button/ExpandCollapseButton";
 
 interface SkillTableSectionProps {
   skillCategories: Record<string, Skill[]>;

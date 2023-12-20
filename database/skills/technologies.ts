@@ -1,4 +1,4 @@
-import { Skill } from "@/types/skills";
+import Skill from "@/types/skills";
 import {
   firebase,
   supabase,
@@ -39,7 +39,7 @@ import {
   geometry,
   git,
   vagrant,
-} from "./skills/hardSkills";
+} from "./hardSkills";
 
 /**
  * Array of technologies.

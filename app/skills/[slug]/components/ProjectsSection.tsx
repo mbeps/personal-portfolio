@@ -1,8 +1,7 @@
-import updateProjectImages from "@/actions/updateProjectImages";
 import ProjectsListSection from "@/app/projects/components/ProjectListSection";
-import Button from "@/components/Atoms/Button";
+import Button from "@/components/Button/Button";
 import Project from "@/types/projects";
-import { Skill } from "@/types/skills";
+import Skill from "@/types/skills";
 import Link from "next/link";
 
 import React from "react";
@@ -13,8 +12,6 @@ interface ProjectPageProps {
 }
 
 const ProjectsSection: React.FC<ProjectPageProps> = ({ projects, skill }) => {
-  projects = updateProjectImages(projects);
-
   const filterProjectsBySkill = (
     projects: Project[],
     selectedSkill: Skill

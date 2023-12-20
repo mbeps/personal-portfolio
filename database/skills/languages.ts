@@ -1,4 +1,4 @@
-import { Skill } from "@/types/skills";
+import Skill from "@/types/skills";
 import {
   flask,
   django,
@@ -32,10 +32,10 @@ import {
   hibernate,
   react,
   spring,
-} from "./skills/hardSkills";
+} from "./hardSkills";
 
 export const python: Skill = {
-  skill: "Python",
+  name: "Python",
   skills: [
     flask,
     django,
@@ -59,7 +59,7 @@ export const python: Skill = {
 };
 
 export const javascript: Skill = {
-  skill: "JavaScript",
+  name: "JavaScript",
   skills: [
     nextjs,
     nextauth,
@@ -81,7 +81,7 @@ export const javascript: Skill = {
 };
 
 export const typescript: Skill = {
-  skill: "TypeScript",
+  name: "TypeScript",
   skills: [
     nextjs,
     nextauth,
@@ -103,7 +103,7 @@ export const typescript: Skill = {
 };
 
 export const java: Skill = {
-  skill: "Java",
+  name: "Java",
   skills: [maven, gradle, junit, spring, springBoot, hibernate],
   isMainSkill: true,
   skillType: "hard",
@@ -112,7 +112,7 @@ export const java: Skill = {
 };
 
 export const gameMakerLanguage: Skill = {
-  skill: "GameMaker Skill",
+  name: "GameMaker Skill",
   isMainSkill: false,
   skillType: "hard",
   category: "Programming Languages",
@@ -120,7 +120,7 @@ export const gameMakerLanguage: Skill = {
 };
 
 export const shellScript: Skill = {
-  skill: "Shell Script",
+  name: "Shell Script",
   isMainSkill: false,
   skillType: "hard",
   category: "Programming Languages",
@@ -128,7 +128,7 @@ export const shellScript: Skill = {
 };
 
 export const rLanguage: Skill = {
-  skill: "R",
+  name: "R",
   isMainSkill: false,
   skillType: "hard",
   category: "Programming Languages",
@@ -136,7 +136,7 @@ export const rLanguage: Skill = {
 };
 
 export const groovy: Skill = {
-  skill: "Groovy",
+  name: "Groovy",
   isMainSkill: false,
   skillType: "hard",
   category: "Programming Languages",

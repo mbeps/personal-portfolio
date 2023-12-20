@@ -1,6 +1,6 @@
 "use client";
 
-import LoadingAnimation from "@/components/Atoms/LoadingAnimation";
+import LoadingAnimation from "@/components/UI/LoadingAnimation";
 
 /**
  * Renders a loading animation while the page is loading.

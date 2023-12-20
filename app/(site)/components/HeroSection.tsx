@@ -1,7 +1,7 @@
 "use client";
 
 import scrollToSection from "@/actions/scrollToSection";
-import Button from "@/components/Atoms/Button";
+import Button from "@/components/Button/Button";
 import Socials from "@/components/Socials/Socials";
 import TextLoop from "@/components/TextLoop/TextLoop";
 import Image from "next/image";

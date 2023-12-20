@@ -5,7 +5,7 @@ import groupSkills from "@/actions/skills/groupSkills";
 import Dropdown from "@/components/DropDown/DropDownMenu";
 import SkillTag from "@/components/Tags/SkillTag";
 import HeadingThree from "@/components/Text/HeadingThree";
-import { Skill } from "@/types/skills";
+import Skill from "@/types/skills";
 import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 

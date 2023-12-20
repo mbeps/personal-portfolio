@@ -1,4 +1,4 @@
-import Button from "@/components/Atoms/Button";
+import Button from "@/components/Button/Button";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

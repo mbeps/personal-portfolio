@@ -1,8 +1,7 @@
-import updateCredentialImages from "@/actions/updateCredentialImages";
 import CredentialListSection from "@/app/credentials/components/CredentialListSection";
-import Button from "@/components/Atoms/Button";
+import Button from "@/components/Button/Button";
 import Certificate from "@/types/certificates";
-import { Skill } from "@/types/skills";
+import Skill from "@/types/skills";
 import Link from "next/link";
 
 import React from "react";
@@ -16,8 +15,6 @@ const CredentialsSection: React.FC<ProjectPageProps> = ({
   certificates,
   skill,
 }) => {
-  certificates = updateCredentialImages(certificates);
-
   const filterCertificatesBySkill = (
     certificates: Certificate[],
     selectedSkill: Skill

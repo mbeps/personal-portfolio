@@ -1,15 +1,15 @@
-import Grid from "@/components/Atoms/Grid";
+import Grid from "@/components/UI/Grid";
 import BlogItem from "@/components/Blogs/BlogItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import { BlogMetadata } from "@/types/blog";
+import { Blog } from "@/types/blog";
 
 interface BlogListSectionProps {
-  groupedBlogs: Record<string, BlogMetadata[]>;
+  groupedBlogs: Record<string, Blog[]>;
 }
 
 /**
  * Displays a list of blogs grouped by category.
- * @param groupedBlogs (Record<string, BlogMetadata[]>) - blogs grouped by category
+ * @param groupedBlogs (Record<string, Blog[]>) - blogs grouped by category
  * @returns (JSX.Element) - list of blogs grouped by category
  */
 const BlogListSection: React.FC<BlogListSectionProps> = ({ groupedBlogs }) => {

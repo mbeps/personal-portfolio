@@ -20,7 +20,7 @@ const getMediaFromFileSystem = (filePath: string): MediaItem[] => {
       })
       .filter((item) => item !== null) as MediaItem[];
   } catch (error) {
-    console.log(`Error reading directory ${filePath}:`, error);
+    // console.log(`Error reading directory ${filePath}:`, error);
     return [];
   }
 };

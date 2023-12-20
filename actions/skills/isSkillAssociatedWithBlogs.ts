@@ -1,9 +1,9 @@
-import { BlogMetadata } from "@/types/blog";
-import { Skill } from "@/types/skills";
+import { Blog } from "@/types/blog";
+import Skill from "@/types/skills";
 
 export default function isSkillAssociatedWithBlogs(
   skillToCheck: Skill,
-  blogs: BlogMetadata[]
+  blogs: Blog[]
 ): boolean {
   // Function to check nested skills
   const checkNestedSkills = (skills: Skill[]) =>

@@ -1,4 +1,5 @@
-import Grid from "@/components/Atoms/Grid";
+import stringToSlug from "@/actions/stringToSlug";
+import Grid from "@/components/UI/Grid";
 import CertificateItem from "@/components/CertificateItem/CertificateItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import Certificate from "@/types/certificates";
@@ -17,28 +18,14 @@ const CredentialsListSection: React.FC<CredentialsListSectionProps> = ({
         Object.keys(groupedCertificates).map(
           (category) =>
             category !== "All" && (
-              <section
-                key={category}
-                id={category.toLowerCase().replace(/\s+/g, "-")}
-              >
+              <section key={category} id={stringToSlug(category)}>
                 <div className="flex flex-col space-y-20">
                   <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
                   <HeadingTwo title={category} />
                   <Grid
                     items={groupedCertificates[category].map(
                       (certificate, idx) => (
-                        <CertificateItem
-                          key={idx}
-                          name={certificate.name}
-                          slug={certificate.slug}
-                          description={certificate.description}
-                          issuer={certificate.issuer}
-                          credentialURL={certificate.credentialURL}
-                          technicalSkills={certificate.technicalSkills}
-                          certificateImage={certificate.certificateImage}
-                          category={certificate.category}
-                          softSkills={[]}
-                        />
+                        <CertificateItem key={idx} certificate={certificate} />
                       )
                     )}
                   />
