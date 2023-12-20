@@ -62,7 +62,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
   const slug = params.slug;
   const blogMetadata = getBlogMetadataBySlug(slug, blogs);
   const blogContent = getMarkdownFromFileSystem(
-    `/blogs/${slug}/blog.md`
+    `public/blogs/${slug}/blog.md`
   )?.content;
 
   if (!blogContent || !blogMetadata) {
