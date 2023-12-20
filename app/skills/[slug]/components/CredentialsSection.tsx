@@ -16,8 +16,6 @@ const CredentialsSection: React.FC<ProjectPageProps> = ({
   certificates,
   skill,
 }) => {
-  certificates = updateCredentialImages(certificates);
-
   const filterCertificatesBySkill = (
     certificates: Certificate[],
     selectedSkill: Skill

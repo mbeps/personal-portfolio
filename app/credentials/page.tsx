@@ -1,11 +1,10 @@
+import PageDescription from "@/components/Atoms/PageDescription";
+import HeadingOne from "@/components/Text/HeadingOne";
 import allCertificates from "@/constants/certificates";
 import Certificate from "@/types/certificates";
 import { Metadata } from "next";
 import React from "react";
 import CredentialsList from "./components/CredentialsList";
-import HeadingOne from "@/components/Text/HeadingOne";
-import PageDescription from "@/components/Atoms/PageDescription";
-import updateCredentialImages from "@/actions/updateCredentialImages";
 
 const description = `
   Explore my collection of certificates and qualifications. 
@@ -25,13 +24,13 @@ export const metadata: Metadata = {
  */
 const CredentialsPage: React.FC = () => {
   const certificates: Certificate[] = [...allCertificates];
-  const updatedCertificates = updateCredentialImages(certificates);
+
   return (
     <section id="projects" className="flex flex-col items-start md:items-end">
       <div className="my-12 pb-12 md:pt-8 md:pb-48 animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
         <HeadingOne title="Credentials" />
         <PageDescription description={description} />
-        <CredentialsList allCertificates={updatedCertificates} />
+        <CredentialsList allCertificates={certificates} />
       </div>
     </section>
   );

@@ -5,7 +5,9 @@ import { BsArrowUpRightCircle, BsInfoCircle } from "react-icons/bs";
 import Certificate from "@/types/certificates";
 import Tag from "../Tags/Tag";
 
-type CertificateItemProps = Certificate;
+interface CertificateItemProps {
+  certificate: Certificate;
+}
 
 /**
  * Card which displays each certificate.
@@ -17,16 +19,14 @@ type CertificateItemProps = Certificate;
  * @param (CertificateItemProps) - props: the content of the certificate
  * @returns (JSX.Element): certificate item component
  */
-const CertificateItem: React.FC<CertificateItemProps> = ({
-  name,
-  slug,
-  description,
-  issuer,
-  credentialURL,
-  certificateImage,
-}) => {
-  const customCredentialPage = `/credentials/${slug}`;
-  const issuerCredentialPage = credentialURL;
+const CertificateItem: React.FC<CertificateItemProps> = ({ certificate }) => {
+  const customCredentialPage = `/credentials/${certificate.slug}`;
+  const issuerCredentialPage = certificate.credentialURL;
+
+  certificate = {
+    ...certificate,
+    certificateImage: `/certificates/${certificate.slug}.jpg`,
+  };
 
   return (
     <div
@@ -41,7 +41,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
       "
     >
       {/* Certificate Image */}
-      {certificateImage && (
+      {certificate.certificateImage && (
         <Link
           href={customCredentialPage}
           className="
@@ -57,12 +57,12 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
           "
         >
           <Image
-            src={certificateImage}
-            alt={`${name} certificate image`}
+            src={certificate.certificateImage}
+            alt={`${certificate.name} certificate image`}
             className="rounded-xl cursor-pointer object-cover"
             width={1000}
             height={1000}
-            quality={40}
+            quality={30}
           />
         </Link>
       )}
@@ -81,12 +81,12 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
               transition-colors duration-700 ease-in-out
               "
           >
-            {name}
+            {certificate.name}
           </h1>
         </Link>
 
         <div className="w-full flex justify-center">
-          <Tag>{issuer}</Tag>
+          <Tag>{certificate.issuer}</Tag>
         </div>
         <div
           className="
@@ -103,7 +103,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
             />
           </Link>
           {/* Link to Credential */}
-          {credentialURL && (
+          {certificate.credentialURL && (
             <Link
               href={issuerCredentialPage}
               target="_blank"
