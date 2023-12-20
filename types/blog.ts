@@ -3,7 +3,7 @@ import { Skill } from "./skills";
 /**
  * Represents a blog.
  */
-export interface BlogMetadata {
+export interface Blog {
   title: string;
   subtitle: string;
   slug: string;

@@ -1,4 +1,4 @@
-import { BlogMetadata } from "@/types/blog";
+import { Blog } from "@/types/blog";
 
 import { javascript, typescript } from "./languages";
 import {
@@ -51,7 +51,7 @@ import {
   projectManagement,
 } from "./skills/softSkills";
 
-const blogs: BlogMetadata[] = [
+const blogs: Blog[] = [
   {
     slug: "backend",
     title: "Exploring Backends: Custom vs Managed Solutions",
