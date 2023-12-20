@@ -1,4 +1,4 @@
-import { SocialLink } from "@/types/social";
+import SocialLink from "@/types/social";
 import React from "react";
 
 interface SocialIconProps extends SocialLink {

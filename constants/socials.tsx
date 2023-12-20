@@ -1,4 +1,4 @@
-import { SocialLink } from "@/types/social";
+import SocialLink from "@/types/social";
 import { AiFillLinkedin, AiOutlineGithub, AiOutlineMail } from "react-icons/ai";
 
 const socialLinks: SocialLink[] = [
