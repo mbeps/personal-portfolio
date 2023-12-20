@@ -1,4 +1,3 @@
-import updateCredentialImages from "@/actions/updateCredentialImages";
 import CredentialListSection from "@/app/credentials/components/CredentialListSection";
 import Button from "@/components/Atoms/Button";
 import Certificate from "@/types/certificates";
