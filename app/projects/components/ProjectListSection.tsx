@@ -28,16 +28,7 @@ const ProjectsListSection: React.FC<ProjectsListSectionProps> = ({
                   <div className="space-y-20">
                     {groupedProjects[type].map((project, idx) => (
                       <div key={idx}>
-                        {/* Assuming ProjectItem is a component for individual project items */}
-                        <ProjectItem
-                          name={project.name}
-                          slug={project.slug}
-                          key={project.imageURL}
-                          description={project.description}
-                          imageURL={project.imageURL}
-                          repoURL={project.repoURL}
-                          siteURL={project.siteURL}
-                        />
+                        <ProjectItem project={project} />
                       </div>
                     ))}
                   </div>

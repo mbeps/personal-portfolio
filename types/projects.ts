@@ -7,9 +7,6 @@ export default interface Project {
   name: string;
   slug: string;
   description: string;
-  imageURL?: string;
-  repoURL?: string;
-  siteURL?: string;
   programmingLanguage: Skill;
   technologySkills: Skill[];
   extraTechnicalGeneralSkills?: Skill[];
@@ -21,5 +18,9 @@ export default interface Project {
     | "Java Assignments"
     | "Game Development"
     | "Other";
+  repoURL?: string;
+  siteURL?: string;
+  imageURL?: string; // added dynamically from file system
+  hasImage?: boolean; // used for adding image path to imageURL
   archived?: boolean;
 }
