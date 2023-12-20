@@ -21,7 +21,6 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
   const selectedGroup = searchParams.get("group") || "category";
   const options = [
     { slug: "category", entryName: "Category" },
-    { slug: "language", entryName: "Language" },
     { slug: "skill-type", entryName: "Skill Type" },
     { slug: "none", entryName: "None" },
   ];
