@@ -3,8 +3,8 @@
 import generateUrl from "@/actions/generateUrl";
 import stringToSlug from "@/actions/stringToSlug";
 
-import FilterOverlay from "@/components/Filters/FilterPanel/FilterPanel";
-import ClearAllFiltersButton from "@/components/Filters/Page/ClearAllFiltersButton";
+import FilterOverlay from "@/components/Filters/FilterPanel";
+import ClearAllFiltersButton from "@/components/Filters/ClearAllFiltersButton";
 import SearchInput from "@/components/Inputs/SearchInput";
 import { Blog } from "@/types/blog";
 import { Skill } from "@/types/skills";
@@ -12,7 +12,7 @@ import Fuse from "fuse.js";
 import { usePathname, useRouter, useSearchParams } from "next/navigation"; // Add this import for Next.js router
 import { useState } from "react";
 import BlogListSection from "./BlogListSection";
-import ToggleFilterButton from "@/components/Filters/Page/ToggleFilterButton";
+import ToggleFilterButton from "@/components/Filters/ToggleFilterButton";
 import FilterOption from "@/types/filters/FilterOption";
 import FilterCategory from "@/types/filters/FilterCategory";
 import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";

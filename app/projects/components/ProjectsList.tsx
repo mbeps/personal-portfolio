@@ -3,9 +3,9 @@
 import generateUrl from "@/actions/generateUrl";
 
 import stringToSlug from "@/actions/stringToSlug";
-import FilterOverlay from "@/components/Filters/FilterPanel/FilterPanel";
-import ClearAllFiltersButton from "@/components/Filters/Page/ClearAllFiltersButton";
-import ToggleFilterButton from "@/components/Filters/Page/ToggleFilterButton";
+import FilterOverlay from "@/components/Filters/FilterPanel";
+import ClearAllFiltersButton from "@/components/Filters/ClearAllFiltersButton";
+import ToggleFilterButton from "@/components/Filters/ToggleFilterButton";
 import SearchInput from "@/components/Inputs/SearchInput";
 import FilterCategory from "@/types/filters/FilterCategory";
 import FilterOption from "@/types/filters/FilterOption";

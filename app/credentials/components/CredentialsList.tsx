@@ -2,7 +2,7 @@
 
 import generateUrl from "@/actions/generateUrl";
 import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
-import ClearAllFiltersButton from "@/components/Filters/Page/ClearAllFiltersButton";
+import ClearAllFiltersButton from "@/components/Filters/ClearAllFiltersButton";
 import SearchInput from "@/components/Inputs/SearchInput";
 import Certificate from "@/types/certificates";
 import Fuse from "fuse.js";
@@ -11,8 +11,8 @@ import React, { useState } from "react";
 import CredentialListSection from "./CredentialListSection";
 
 import stringToSlug from "@/actions/stringToSlug";
-import FilterOverlay from "@/components/Filters/FilterPanel/FilterPanel";
-import ToggleFilterButton from "@/components/Filters/Page/ToggleFilterButton";
+import FilterOverlay from "@/components/Filters/FilterPanel";
+import ToggleFilterButton from "@/components/Filters/ToggleFilterButton";
 import FilterCategory from "@/types/filters/FilterCategory";
 import FilterOption from "@/types/filters/FilterOption";
 import { Skill } from "@/types/skills";
