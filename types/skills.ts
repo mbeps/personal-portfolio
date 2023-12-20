@@ -2,8 +2,8 @@
  * Interface for representing a skill.
  */
 interface Skill {
+  name: string;
   slug: string;
-  skill: string;
   category:
     | "Programming Languages"
     | "Programming Paradigms"

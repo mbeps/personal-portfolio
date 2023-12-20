@@ -30,7 +30,7 @@ const LanguageSection: React.FC = () => {
    * @returns (Skill[]): list of skills for the language (empty array if the language does not exist)
    */
   const getSkillsByLanguage = (languageName: string): Skill[] => {
-    const language = languages.find((lang) => lang.skill === languageName);
+    const language = languages.find((lang) => lang.name === languageName);
     return language && language.skills ? language.skills : [];
   };
 
@@ -44,7 +44,7 @@ const LanguageSection: React.FC = () => {
           <LanguageTagWithModal
             key={idx}
             language={languageData}
-            skills={getSkillsByLanguage(languageData.skill)}
+            skills={getSkillsByLanguage(languageData.name)}
             handleOpenModal={handleOpenModal}
             handleCloseModal={handleCloseModal}
             isModalOpen={isModalOpen}
@@ -97,7 +97,7 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
   return (
     <>
       <Tag onClick={shouldOpenModal ? handleOpenModal : undefined}>
-        {language.skill}
+        {language.name}
       </Tag>
       {shouldOpenModal && (
         <LanguageModal

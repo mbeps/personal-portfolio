@@ -26,8 +26,8 @@ export async function generateMetadata(
   const skill = getSkillBySlug(slug, [...allSkills, ...languages]);
 
   return {
-    title: `Maruf Bepary - Skills: ${skill?.skill}`,
-    description: skill?.skill,
+    title: `Maruf Bepary - Skills: ${skill?.name}`,
+    description: skill?.name,
   };
 }
 
@@ -47,10 +47,10 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
 
   return (
     <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
-      <HeadingOne title={skill.skill} />
+      <HeadingOne title={skill.name} />
       <PageDescription
         description={`
-        This is the page displaying all the material related to ${skill.skill}.
+        This is the page displaying all the material related to ${skill.name}.
         This can include projects, blogs, and certificates.
       `}
       />

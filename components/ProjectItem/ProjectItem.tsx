@@ -1,4 +1,3 @@
-import hasProjectCover from "@/actions/hasProjectCover";
 import Project from "@/types/projects";
 import Image from "next/image";
 import Link from "next/link";

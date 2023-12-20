@@ -143,7 +143,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
       .flatMap((blog: Blog) =>
         (blog.technicalSkills || [])
           .filter((skill: Skill) => skill.skillType === "hard")
-          .map((skill: Skill) => ({ slug: skill.slug, entryName: skill.skill }))
+          .map((skill: Skill) => ({ slug: skill.slug, entryName: skill.name }))
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -159,7 +159,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
       .flatMap((blog: Blog) =>
         (blog.technicalSkills || [])
           .filter((skill: Skill) => skill.skillType === "general")
-          .map((skill: Skill) => ({ slug: skill.slug, entryName: skill.skill }))
+          .map((skill: Skill) => ({ slug: skill.slug, entryName: skill.name }))
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -175,7 +175,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
       .flatMap((blog: Blog) =>
         (blog.technicalSkills || [])
           .filter((skill: Skill) => skill.skillType === "soft")
-          .map((skill: Skill) => ({ slug: skill.slug, entryName: skill.skill }))
+          .map((skill: Skill) => ({ slug: skill.slug, entryName: skill.name }))
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1

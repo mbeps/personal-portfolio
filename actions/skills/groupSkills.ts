@@ -26,7 +26,7 @@ const groupSkills = (
   if (groupedBy === "language") {
     organizedSkills = skills.reduce((acc: Record<string, Skill[]>, skill) => {
       if (skill.skills) {
-        acc[skill.skill] = removeDuplicates(skill.skills);
+        acc[skill.name] = removeDuplicates(skill.skills);
       }
       return acc;
     }, {});

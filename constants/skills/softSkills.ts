@@ -1,7 +1,7 @@
 import { Skill } from "@/types/skills";
 
 export const communication: Skill = {
-  skill: "Communication",
+  name: "Communication",
   isMainSkill: false,
   skillType: "soft",
   category: "Soft Skills",
@@ -9,7 +9,7 @@ export const communication: Skill = {
 };
 
 export const projectManagement: Skill = {
-  skill: "Project Management",
+  name: "Project Management",
   isMainSkill: false,
   skillType: "soft",
   category: "Soft Skills",
@@ -17,7 +17,7 @@ export const projectManagement: Skill = {
 };
 
 export const teamwork: Skill = {
-  skill: "Teamwork",
+  name: "Teamwork",
   isMainSkill: false,
   skillType: "soft",
   category: "Soft Skills",
@@ -25,7 +25,7 @@ export const teamwork: Skill = {
 };
 
 export const leadership: Skill = {
-  skill: "Leadership",
+  name: "Leadership",
   isMainSkill: false,
   skillType: "soft",
   category: "Soft Skills",
@@ -33,7 +33,7 @@ export const leadership: Skill = {
 };
 
 export const problemSolving: Skill = {
-  skill: "Problem Solving",
+  name: "Problem Solving",
   isMainSkill: false,
   skillType: "soft",
   category: "Soft Skills",
@@ -41,7 +41,7 @@ export const problemSolving: Skill = {
 };
 
 export const criticalThinking: Skill = {
-  skill: "Critical Thinking",
+  name: "Critical Thinking",
   isMainSkill: false,
   skillType: "soft",
   category: "Soft Skills",
@@ -49,7 +49,7 @@ export const criticalThinking: Skill = {
 };
 
 export const creativity: Skill = {
-  skill: "Creativity",
+  name: "Creativity",
   isMainSkill: false,
   skillType: "soft",
   category: "Soft Skills",
@@ -57,7 +57,7 @@ export const creativity: Skill = {
 };
 
 export const adaptability: Skill = {
-  skill: "Adaptability",
+  name: "Adaptability",
   isMainSkill: false,
   skillType: "soft",
   category: "Soft Skills",
@@ -65,7 +65,7 @@ export const adaptability: Skill = {
 };
 
 export const timeManagement: Skill = {
-  skill: "Time Management",
+  name: "Time Management",
   isMainSkill: false,
   skillType: "soft",
   category: "Soft Skills",
@@ -73,7 +73,7 @@ export const timeManagement: Skill = {
 };
 
 export const riskManagement: Skill = {
-  skill: "Risk Management",
+  name: "Risk Management",
   isMainSkill: false,
   skillType: "soft",
   category: "Soft Skills",
@@ -81,7 +81,7 @@ export const riskManagement: Skill = {
 };
 
 export const stakeholderManagement: Skill = {
-  skill: "Stakeholder Management",
+  name: "Stakeholder Management",
   isMainSkill: false,
   skillType: "soft",
   category: "Soft Skills",
@@ -89,7 +89,7 @@ export const stakeholderManagement: Skill = {
 };
 
 export const scopeManagement: Skill = {
-  skill: "Scope Management",
+  name: "Scope Management",
   isMainSkill: false,
   skillType: "soft",
   category: "Soft Skills",
@@ -97,7 +97,7 @@ export const scopeManagement: Skill = {
 };
 
 export const costManagement: Skill = {
-  skill: "Cost Management",
+  name: "Cost Management",
   isMainSkill: false,
   skillType: "soft",
   category: "Soft Skills",
@@ -105,7 +105,7 @@ export const costManagement: Skill = {
 };
 
 export const qualityManagement: Skill = {
-  skill: "Quality Management",
+  name: "Quality Management",
   isMainSkill: false,
   skillType: "soft",
   category: "Soft Skills",
@@ -113,7 +113,7 @@ export const qualityManagement: Skill = {
 };
 
 export const procurementManagement: Skill = {
-  skill: "Procurement Management",
+  name: "Procurement Management",
   isMainSkill: false,
   skillType: "soft",
   category: "Soft Skills",
@@ -121,7 +121,7 @@ export const procurementManagement: Skill = {
 };
 
 export const integrationManagement: Skill = {
-  skill: "Integration Management",
+  name: "Integration Management",
   isMainSkill: false,
   skillType: "soft",
   category: "Soft Skills",
@@ -129,7 +129,7 @@ export const integrationManagement: Skill = {
 };
 
 export const humanResourceManagement: Skill = {
-  skill: "Human Resource Management",
+  name: "Human Resource Management",
   isMainSkill: false,
   skillType: "soft",
   category: "Soft Skills",

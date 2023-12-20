@@ -74,8 +74,8 @@ const SkillSection: React.FC = () => {
     const uniqueSkills = new Map<string, Skill>();
 
     allSkills.forEach((skill) => {
-      if (!uniqueSkills.has(skill.skill)) {
-        uniqueSkills.set(skill.skill, skill);
+      if (!uniqueSkills.has(skill.name)) {
+        uniqueSkills.set(skill.name, skill);
       }
     });
 

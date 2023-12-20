@@ -32,15 +32,15 @@ const SkillTag: React.FC<TagProps> = ({ skill }) => {
   let skillLink = `/skills/${skill.slug}`;
   if (!hasMaterial) {
     skillLink = currentPath;
-    return <Tag hasHover={hasMaterial}>{skill.skill}</Tag>;
+    return <Tag hasHover={hasMaterial}>{skill.name}</Tag>;
   }
 
   return (
     <Link
       href={skillLink}
-      title={`Navigate to all material related to ${skill.skill}`}
+      title={`Navigate to all material related to ${skill.name}`}
     >
-      <Tag hasHover={hasMaterial}>{skill.skill}</Tag>
+      <Tag hasHover={hasMaterial}>{skill.name}</Tag>
     </Link>
   );
 };

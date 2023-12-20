@@ -140,7 +140,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     ...allProjects
       .map((project: Project) => ({
         slug: project.programmingLanguage.slug,
-        entryName: project.programmingLanguage.skill,
+        entryName: project.programmingLanguage.name,
       }))
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -162,7 +162,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
       .flatMap((project: Project) =>
         (project.technologySkills || []).map((skill: Skill) => ({
           slug: skill.slug,
-          entryName: skill.skill,
+          entryName: skill.name,
         }))
       )
       .reduce((unique, item) => {
@@ -201,7 +201,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
           skill.skills
             ? skill.skills.map((subSkill: Skill) => ({
                 slug: subSkill.slug,
-                entryName: subSkill.skill,
+                entryName: subSkill.name,
               }))
             : []
         )
@@ -220,7 +220,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
       .flatMap((project: Project) =>
         (project.softSkills || []).map((skill: Skill) => ({
           slug: skill.slug,
-          entryName: skill.skill,
+          entryName: skill.name,
         }))
       )
       .reduce((unique, item) => {

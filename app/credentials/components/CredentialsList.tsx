@@ -168,7 +168,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
           .filter((skill: Skill) => skill.skillType === "hard")
           .map((skill: Skill) => ({
             slug: stringToSlug(skill.slug), // Convert skill name to slug
-            entryName: skill.skill,
+            entryName: skill.name,
           }))
       )
       .reduce((unique, item) => {
@@ -187,7 +187,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
           .filter((skill: Skill) => skill.skillType === "general")
           .map((skill: Skill) => ({
             slug: stringToSlug(skill.slug), // Convert skill name to slug
-            entryName: skill.skill,
+            entryName: skill.name,
           }))
       )
       .reduce((unique, item) => {
@@ -206,7 +206,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
           .filter((skill: Skill) => skill.skillType === "soft")
           .map((skill: Skill) => ({
             slug: stringToSlug(skill.slug), // Convert skill name to slug
-            entryName: skill.skill,
+            entryName: skill.name,
           }))
       )
       .reduce((unique, item) => {

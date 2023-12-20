@@ -15,12 +15,12 @@ const BlogsSection: React.FC<BlogsPageProps> = ({ blogs, skill }) => {
   const filterBlogsBySkill = (blogs: Blog[], selectedSkill: string): Blog[] => {
     return blogs.filter((blog) =>
       blog.technicalSkills.some(
-        (s) => s.skill.toLowerCase() === selectedSkill.toLowerCase()
+        (s) => s.name.toLowerCase() === selectedSkill.toLowerCase()
       )
     );
   };
 
-  const filteredBlogs = filterBlogsBySkill(blogs, skill.skill);
+  const filteredBlogs = filterBlogsBySkill(blogs, skill.name);
 
   if (!filteredBlogs || filteredBlogs.length === 0) {
     return;
