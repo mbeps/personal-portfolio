@@ -1,4 +1,4 @@
-import validateSlugs from "@/actions/validateSlug";
+import validateSlugWithProject from "@/actions/projects/validateSlugWithProject";
 import Button from "@/components/Atoms/Button";
 import SlideUp from "@/components/Atoms/Slideup";
 import ProjectItem from "@/components/ProjectItem/ProjectItem";
@@ -24,7 +24,7 @@ const ProjectsSection = () => {
   ];
 
   // Validate the slugs
-  if (!validateSlugs(allowedSlugs, allProjects)) {
+  if (!validateSlugWithProject(allowedSlugs, allProjects)) {
     console.error("Some slugs in allowedSlugs are not valid.");
     return null;
   }
