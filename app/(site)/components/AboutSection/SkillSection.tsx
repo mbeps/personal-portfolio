@@ -7,7 +7,7 @@ import HeadingThree from "@/components/Text/HeadingThree";
 import Skill from "@/types/skills";
 import { useState } from "react";
 import { languages } from "@/database/skills/languages";
-import { technologies } from "@/database/skills/technologies";
+import { technologies } from "@/database/skills/skills";
 
 /**
  * Displays a list of skills that I have.

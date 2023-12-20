@@ -1,27 +1,19 @@
 import getSkillBySlug from "@/actions/skills/getSkillBySlug";
 import HeadingOne from "@/components/Text/HeadingOne";
-import allCertificates from "@/database/certificates";
+import PageDescription from "@/components/UI/PageDescription";
 import blogs from "@/database/blogs";
-import { languages } from "@/database/skills/languages";
+import allCertificates from "@/database/certificates";
 import allProjects from "@/database/projects";
-import generalSkills from "@/database/skills/generalSkills";
-import hardSkills from "@/database/skills/hardSkills";
-import softSkills from "@/database/skills/softSkills";
+import { languages } from "@/database/skills/languages";
+import allSkills from "@/database/skills/skills";
+import Skill from "@/types/skills";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import React from "react";
 import BlogsSection from "./components/BlogsSection";
 import CredentialsSection from "./components/CredentialsSection";
 import ProjectsSection from "./components/ProjectsSection";
-import PageDescription from "@/components/UI/PageDescription";
-import Skill from "@/types/skills";
-
-const allSkills = [
-  ...hardSkills,
-  ...generalSkills,
-  ...softSkills,
-  // ...languages,
-];
+import hardSkills from "@/database/skills/hardSkills";
 
 function extractSlugs(skills: Skill[]): string[] {
   return skills.map((skill) => skill.slug);
@@ -41,7 +33,7 @@ export async function generateMetadata(
 }
 
 export const generateStaticParams = async () => {
-  return extractSlugs(allSkills).map((slug) => ({ slug }));
+  return extractSlugs(hardSkills).map((slug) => ({ slug }));
 };
 
 interface ProjectPageProps {
