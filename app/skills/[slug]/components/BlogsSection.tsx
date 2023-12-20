@@ -1,7 +1,7 @@
 import BlogListSection from "@/app/blogs/components/BlogListSection";
 import Button from "@/components/Button/Button";
 import { Blog } from "@/types/blog";
-import { Skill } from "@/types/skills";
+import Skill from "@/types/skills";
 import Link from "next/link";
 
 import React from "react";

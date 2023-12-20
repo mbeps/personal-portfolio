@@ -10,7 +10,7 @@ import SearchInput from "@/components/Inputs/SearchInput";
 import FilterCategory from "@/types/filters/FilterCategory";
 import FilterOption from "@/types/filters/FilterOption";
 import Project from "@/types/projects";
-import { Skill } from "@/types/skills";
+import Skill from "@/types/skills";
 import Fuse from "fuse.js";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";

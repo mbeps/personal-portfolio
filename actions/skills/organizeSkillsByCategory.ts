@@ -1,4 +1,4 @@
-import { Skill } from "@/types/skills";
+import Skill from "@/types/skills";
 
 /**
  * Organizes the skills by category.

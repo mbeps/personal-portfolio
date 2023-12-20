@@ -7,7 +7,7 @@ import blogs from "@/constants/blogs";
 import certificates from "@/constants/certificates";
 import allProjects from "@/constants/projects";
 import allSkills from "@/constants/skills";
-import { Skill } from "@/types/skills";
+import Skill from "@/types/skills";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";

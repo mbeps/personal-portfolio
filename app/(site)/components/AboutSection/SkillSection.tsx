@@ -6,7 +6,7 @@ import SkillTag from "@/components/Tags/SkillTag";
 import HeadingThree from "@/components/Text/HeadingThree";
 import { languages } from "@/constants/languages";
 import { technologies } from "@/constants/technologies";
-import { Skill } from "@/types/skills";
+import Skill from "@/types/skills";
 import { useState } from "react";
 
 /**

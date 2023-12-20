@@ -1,5 +1,5 @@
 import { Blog } from "@/types/blog";
-import { Skill } from "@/types/skills";
+import Skill from "@/types/skills";
 
 export default function isSkillAssociatedWithBlogs(
   skillToCheck: Skill,

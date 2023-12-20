@@ -1,6 +1,6 @@
 import { languages } from "@/constants/languages";
 import { technologies } from "@/constants/technologies";
-import { Skill } from "@/types/skills";
+import Skill from "@/types/skills";
 
 const groupSkills = (
   groupedBy: string,

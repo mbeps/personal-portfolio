@@ -5,7 +5,7 @@ import isSkillAssociatedWithProject from "@/actions/skills/isSkillAssociatedWith
 import blogs from "@/constants/blogs";
 import allCertificates from "@/constants/certificates";
 import allProjects from "@/constants/projects";
-import { Skill } from "@/types/skills";
+import Skill from "@/types/skills";
 import Link from "next/link";
 import React, { useState } from "react";
 import Button from "../Button/Button";

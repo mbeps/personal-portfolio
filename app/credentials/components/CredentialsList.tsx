@@ -15,7 +15,7 @@ import FilterOverlay from "@/components/Filters/FilterPanel";
 import ToggleFilterButton from "@/components/Filters/ToggleFilterButton";
 import FilterCategory from "@/types/filters/FilterCategory";
 import FilterOption from "@/types/filters/FilterOption";
-import { Skill } from "@/types/skills";
+import Skill from "@/types/skills";
 
 type CredentialsListListProps = {
   allCertificates: Certificate[];

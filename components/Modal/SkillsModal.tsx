@@ -1,6 +1,6 @@
 import groupSkills from "@/actions/skills/groupSkills";
 import hardSkills from "@/constants/skills/hardSkills";
-import { Skill } from "@/types/skills";
+import Skill from "@/types/skills";
 import React from "react";
 import Dropdown from "../DropDown/DropDownMenu";
 import SkillTag from "../Tags/SkillTag";

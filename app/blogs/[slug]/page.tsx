@@ -4,7 +4,7 @@ import Reader from "@/components/Reader/Reader";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import blogs from "@/constants/blogs";
-import { Skill } from "@/types/skills";
+import Skill from "@/types/skills";
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 

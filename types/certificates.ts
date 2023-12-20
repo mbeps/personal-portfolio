@@ -1,4 +1,4 @@
-import { Skill } from "./skills";
+import Skill from "./skills";
 
 export default interface Certificate {
   name: string;

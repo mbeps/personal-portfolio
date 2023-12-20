@@ -1,5 +1,5 @@
 import Project from "@/types/projects";
-import { Skill } from "@/types/skills";
+import Skill from "@/types/skills";
 
 export default function isSkillAssociatedWithProject(
   skill: Skill,

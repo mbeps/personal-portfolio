@@ -4,7 +4,7 @@ import Tag from "@/components/Tags/Tag";
 import LanguageModal from "@/components/Modal/LanguageModal";
 import HeadingThree from "@/components/Text/HeadingThree";
 import { languages } from "@/constants/languages";
-import { Skill } from "@/types/skills";
+import Skill from "@/types/skills";
 import React, { useState } from "react";
 
 /**

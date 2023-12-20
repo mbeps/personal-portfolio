@@ -7,7 +7,7 @@ import FilterOverlay from "@/components/Filters/FilterPanel";
 import ClearAllFiltersButton from "@/components/Filters/ClearAllFiltersButton";
 import SearchInput from "@/components/Inputs/SearchInput";
 import { Blog } from "@/types/blog";
-import { Skill } from "@/types/skills";
+import Skill from "@/types/skills";
 import Fuse from "fuse.js";
 import { usePathname, useRouter, useSearchParams } from "next/navigation"; // Add this import for Next.js router
 import { useState } from "react";

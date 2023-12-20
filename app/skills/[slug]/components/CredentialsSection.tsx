@@ -1,7 +1,7 @@
 import CredentialListSection from "@/app/credentials/components/CredentialListSection";
 import Button from "@/components/Button/Button";
 import Certificate from "@/types/certificates";
-import { Skill } from "@/types/skills";
+import Skill from "@/types/skills";
 import Link from "next/link";
 
 import React from "react";

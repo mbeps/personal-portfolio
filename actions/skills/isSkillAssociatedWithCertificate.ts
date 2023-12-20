@@ -1,5 +1,5 @@
 import Certificate from "@/types/certificates";
-import { Skill } from "@/types/skills";
+import Skill from "@/types/skills";
 
 export default function isSkillAssociatedWithCertificates(
   skillToCheck: Skill,

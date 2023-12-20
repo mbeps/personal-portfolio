@@ -1,7 +1,7 @@
 /**
  * Interface for representing a skill.
  */
-interface Skill {
+export default interface Skill {
   name: string;
   slug: string;
   category:
@@ -34,7 +34,3 @@ interface Skill {
   isMainSkill: boolean;
   skillType: "hard" | "general" | "soft";
 }
-
-export type { Skill };
-
-// TODO: create a skill category interface

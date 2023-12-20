@@ -10,7 +10,7 @@ import Button from "@/components/Button/Button";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import SkillTag from "@/components/Tags/SkillTag";
 import allProjects from "@/constants/projects";
-import { Skill } from "@/types/skills";
+import Skill from "@/types/skills";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
