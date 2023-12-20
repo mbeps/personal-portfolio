@@ -16,16 +16,26 @@ const ProjectsSection: React.FC<ProjectPageProps> = ({ projects, skill }) => {
     projects: Project[],
     selectedSkill: Skill
   ): Project[] => {
-    const skillMatches = (skill: Skill) =>
-      skill.slug === selectedSkill.slug ||
-      (skill.skills || []).some(
-        (subSkill) => subSkill.slug === selectedSkill.slug
-      );
+    const skillMatches = (skill: Skill): boolean => {
+      // Check if the skill matches
+      if (skill.slug === selectedSkill.slug) {
+        return true;
+      }
+
+      // Check nested skills, if any
+      if (skill.skills && skill.skills.length > 0) {
+        return skill.skills.some((subSkill) => skillMatches(subSkill));
+      }
+
+      return false;
+    };
 
     return projects.filter(
       (project) =>
         project.technologySkills.some(skillMatches) ||
         project.softSkills.some(skillMatches) ||
+        (project.extraTechnicalGeneralSkills &&
+          project.extraTechnicalGeneralSkills.some(skillMatches)) ||
         project.programmingLanguage.slug === selectedSkill.slug
     );
   };

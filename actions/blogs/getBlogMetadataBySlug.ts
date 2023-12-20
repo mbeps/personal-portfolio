@@ -1,4 +1,4 @@
-import { Blog } from "@/types/blog";
+import Blog from "@/types/blog";
 
 /**
  * Gets the blog metadata with the given slug (unique identifier).

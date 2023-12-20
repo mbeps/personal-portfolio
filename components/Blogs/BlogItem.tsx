@@ -1,4 +1,4 @@
-import { Blog } from "@/types/blog";
+import Blog from "@/types/blog";
 import Link from "next/link";
 import React from "react";
 

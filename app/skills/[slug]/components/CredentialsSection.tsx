@@ -6,12 +6,12 @@ import Link from "next/link";
 
 import React from "react";
 
-interface ProjectPageProps {
+interface CredentialsPageProps {
   certificates: Certificate[];
   skill: Skill;
 }
 
-const CredentialsSection: React.FC<ProjectPageProps> = ({
+const CredentialsSection: React.FC<CredentialsPageProps> = ({
   certificates,
   skill,
 }) => {
@@ -19,11 +19,19 @@ const CredentialsSection: React.FC<ProjectPageProps> = ({
     certificates: Certificate[],
     selectedSkill: Skill
   ): Certificate[] => {
-    const skillMatches = (skill: Skill) =>
-      skill.slug === selectedSkill.slug ||
-      (skill.skills || []).some(
-        (subSkill) => subSkill.slug === selectedSkill.slug
-      );
+    const skillMatches = (skill: Skill): boolean => {
+      // Check if the skill matches
+      if (skill.slug === selectedSkill.slug) {
+        return true;
+      }
+
+      // Check nested skills, if any
+      if (skill.skills && skill.skills.length > 0) {
+        return skill.skills.some((subSkill) => skillMatches(subSkill));
+      }
+
+      return false;
+    };
 
     return certificates.filter(
       (certificate) =>

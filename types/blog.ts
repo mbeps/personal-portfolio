@@ -3,7 +3,7 @@ import Skill from "./skills";
 /**
  * Represents a blog.
  */
-export interface Blog {
+export default interface Blog {
   title: string;
   subtitle: string;
   slug: string;

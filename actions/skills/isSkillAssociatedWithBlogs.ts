@@ -1,4 +1,4 @@
-import { Blog } from "@/types/blog";
+import Blog from "@/types/blog";
 import Skill from "@/types/skills";
 
 export default function isSkillAssociatedWithBlogs(

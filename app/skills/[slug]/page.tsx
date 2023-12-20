@@ -14,21 +14,35 @@ import BlogsSection from "./components/BlogsSection";
 import CredentialsSection from "./components/CredentialsSection";
 import ProjectsSection from "./components/ProjectsSection";
 import PageDescription from "@/components/UI/PageDescription";
+import Skill from "@/types/skills";
 
-const allSkills = [...hardSkills, ...generalSkills, ...softSkills];
+const allSkills = [
+  ...hardSkills,
+  ...generalSkills,
+  ...softSkills,
+  ...languages,
+];
+
+function extractSlugs(skills: Skill[]): string[] {
+  return skills.map((skill) => skill.slug);
+}
 
 export async function generateMetadata(
   { params, searchParams }: ProjectPageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const slug = params.slug;
-  const skill = getSkillBySlug(slug, [...allSkills, ...languages]);
+  const skill = getSkillBySlug(slug, [...allSkills]);
 
   return {
     title: `Maruf Bepary - Skills: ${skill?.name}`,
     description: skill?.name,
   };
 }
+
+export const generateStaticParams = async () => {
+  return extractSlugs(allSkills).map((slug) => ({ slug }));
+};
 
 interface ProjectPageProps {
   params: { slug: string };
