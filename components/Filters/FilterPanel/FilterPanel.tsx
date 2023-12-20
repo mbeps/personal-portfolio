@@ -1,6 +1,6 @@
 "use client";
 
-import ExpandCollapseButton from "@/components/UI/ExpandCollapseButton";
+import ExpandCollapseButton from "@/components/Button/ExpandCollapseButton";
 import FilterCategory from "@/types/filters/FilterCategory";
 import Link from "next/link";
 import React, { useState } from "react";
