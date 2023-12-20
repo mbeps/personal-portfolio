@@ -1,4 +1,4 @@
-import { NavItem } from "@/types/pages";
+import NavItem from "@/types/pages";
 
 /**
  * Buttons to be displayed in the navbar.
