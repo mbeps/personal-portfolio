@@ -14,7 +14,7 @@ import React from "react";
 import BlogsSection from "./components/BlogsSection";
 import CredentialsSection from "./components/CredentialsSection";
 import ProjectsSection from "./components/ProjectsSection";
-import PageDescription from "@/components/Atoms/PageDescription";
+import PageDescription from "@/components/UI/PageDescription";
 
 const allSkills = [...hardSkills, ...generalSkills, ...softSkills];
 

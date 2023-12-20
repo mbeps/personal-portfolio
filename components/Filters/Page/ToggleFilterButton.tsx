@@ -1,4 +1,4 @@
-import Button from "@/components/Atoms/Button";
+import Button from "@/components/UI/Button";
 import React from "react";
 import { BsFilterLeft } from "react-icons/bs";
 

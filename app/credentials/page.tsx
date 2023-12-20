@@ -1,4 +1,4 @@
-import PageDescription from "@/components/Atoms/PageDescription";
+import PageDescription from "@/components/UI/PageDescription";
 import HeadingOne from "@/components/Text/HeadingOne";
 import allCertificates from "@/constants/certificates";
 import Certificate from "@/types/certificates";

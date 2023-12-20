@@ -8,7 +8,7 @@ import HeadingThree from "../Text/HeadingThree";
 import Modal from "./Modal";
 import { languages } from "@/constants/languages";
 import { technologies } from "@/constants/technologies";
-import Button from "../Atoms/Button";
+import Button from "../UI/Button";
 import Link from "next/link";
 
 interface SkillsModalProps {

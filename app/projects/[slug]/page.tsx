@@ -6,7 +6,7 @@ import HeadingTwo from "@/components/Text/HeadingTwo";
 import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
 import getMediaFromFileSystem from "@/actions/getMediaFromFileSystem";
 import hasProjectCover from "@/actions/projects/hasProjectCover";
-import Button from "@/components/Atoms/Button";
+import Button from "@/components/UI/Button";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import SkillTag from "@/components/Tags/SkillTag";
 import allProjects from "@/constants/projects";

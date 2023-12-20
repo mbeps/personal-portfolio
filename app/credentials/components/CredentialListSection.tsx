@@ -1,5 +1,5 @@
 import stringToSlug from "@/actions/stringToSlug";
-import Grid from "@/components/Atoms/Grid";
+import Grid from "@/components/UI/Grid";
 import CertificateItem from "@/components/CertificateItem/CertificateItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import Certificate from "@/types/certificates";

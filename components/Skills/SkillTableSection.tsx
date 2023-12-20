@@ -6,7 +6,7 @@ import { Skill } from "@/types/skills";
 import React, { useState } from "react";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import SkillTag from "../Tags/SkillTag";
-import ExpandCollapseButton from "../Atoms/ExpandCollapseButton";
+import ExpandCollapseButton from "../UI/ExpandCollapseButton";
 
 interface SkillTableSectionProps {
   skillCategories: Record<string, Skill[]>;

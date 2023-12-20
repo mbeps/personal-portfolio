@@ -1,4 +1,4 @@
-import PageDescription from "@/components/Atoms/PageDescription";
+import PageDescription from "@/components/UI/PageDescription";
 import HeadingOne from "@/components/Text/HeadingOne";
 import { languages } from "@/constants/languages";
 import allSkills from "@/constants/skills";
