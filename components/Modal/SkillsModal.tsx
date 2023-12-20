@@ -1,15 +1,15 @@
 import groupSkills from "@/actions/skills/groupSkills";
 import hardSkills from "@/database/skills/hardSkills";
+import { languages } from "@/database/skills/languages";
 import Skill from "@/types/skills";
+import Link from "next/link";
 import React from "react";
+import Button from "../Button/Button";
 import Dropdown from "../DropDown/DropDownMenu";
 import SkillTag from "../Tags/SkillTag";
 import HeadingThree from "../Text/HeadingThree";
 import Modal from "./Modal";
-import Button from "../Button/Button";
-import Link from "next/link";
-import { languages } from "@/database/skills/languages";
-import { technologies } from "@/database/skills/technologies";
+import { technologies } from "@/database/skills/skills";
 
 interface SkillsModalProps {
   isOpen?: boolean; // whether the modal is open or not
@@ -28,12 +28,43 @@ interface SkillsModalProps {
  */
 const SkillsModal: React.FC<SkillsModalProps> = ({ isOpen, onClose }) => {
   const [groupedBy, setGroupedBy] = React.useState("category");
-
-  const groupedSkills = groupSkills(
-    groupedBy,
-    languages.flatMap((lang) => lang.skills || []).concat(technologies)
+  const displayedSkills: Skill[] = [...languages, ...technologies].filter(
+    (skill) => skill.isMainSkill
   );
 
+  const groupSkills = (
+    skills: Skill[],
+    groupedBy: string
+  ): Record<string, Skill[]> => {
+    if (groupedBy === "none") {
+      return { None: skills };
+    }
+
+    return skills.reduce((acc, skill) => {
+      // Group by category
+      if (groupedBy === "category") {
+        const key = skill.category;
+        acc[key] = acc[key] || [];
+        acc[key].push(skill);
+      }
+      // Group by language
+      else if (
+        groupedBy === "language" &&
+        skill.category === "Programming Languages"
+      ) {
+        skill.skills?.forEach((subSkill) => {
+          if (subSkill.skillType === "hard" && subSkill.isMainSkill) {
+            const key = skill.name; // Grouping under the main programming language
+            acc[key] = acc[key] || [];
+            acc[key].push(subSkill);
+          }
+        });
+      }
+      return acc;
+    }, {} as Record<string, Skill[]>);
+  };
+
+  const groupedSkills = groupSkills(displayedSkills, groupedBy);
   return (
     <Modal title="Skills & Tools" isOpen={isOpen} onClose={onClose}>
       <div className="flex mt-4">
@@ -55,18 +86,17 @@ const SkillsModal: React.FC<SkillsModalProps> = ({ isOpen, onClose }) => {
           onSelect={setGroupedBy}
         />
       </div>
-      {Object.entries(groupedSkills as Record<string, Skill[]>).map(
-        ([group, skills], index) => (
-          <div key={index} className="mt-4 text-center md:text-left">
-            <HeadingThree title={group} />
-            <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-              {skills.map((skill, index) => (
-                <SkillTag key={index} skill={skill} />
-              ))}
-            </div>
+
+      {Object.entries(groupedSkills).map(([group, skills], index) => (
+        <div key={index} className="mt-4 text-center md:text-left">
+          <HeadingThree title={group} />
+          <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
+            {skills.map((skill, index) => (
+              <SkillTag key={index} skill={skill} />
+            ))}
           </div>
-        )
-      )}
+        </div>
+      ))}
 
       {/* separator */}
       <div className="w-full h-px bg-neutral-200 dark:bg-neutral-700 my-8" />
