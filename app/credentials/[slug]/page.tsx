@@ -34,10 +34,6 @@ export async function generateMetadata(
   return {
     title: `Maruf Bepary - Certificates: ${certificate?.name}`,
     description: certificate?.slug,
-    openGraph: {
-      // No images are specified in your Certificate object
-      // but you can add them here if you have them
-    },
   };
 }
 

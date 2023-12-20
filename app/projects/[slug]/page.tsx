@@ -39,10 +39,6 @@ export async function generateMetadata(
   return {
     title: `Maruf Bepary - Projects: ${project?.name}`,
     description: project?.description,
-    openGraph: {
-      // No images are specified in your Project object
-      // but you can add them here if you have them
-    },
   };
 }
 

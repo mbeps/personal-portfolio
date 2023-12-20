@@ -12,7 +12,7 @@ const getImagesFromFileSystem = (filePath: string): string[] => {
       (file) => file.endsWith(".jpg") || file.endsWith(".png")
     );
   } catch (error) {
-    console.log(`Error reading directory ${filePath}:`, error);
+    // console.log(`Error reading directory ${filePath}:`, error);
     return [];
   }
 };
