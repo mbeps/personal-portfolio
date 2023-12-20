@@ -8,7 +8,7 @@ import { BlogMetadata } from "@/types/blog";
  * @param blogs (BlogMetadata[]) - array of blog metadata
  * @returns (BlogMetadata | null) - blog metadata if found, null otherwise
  */
-export function getBlogMetadataBySlug(
+export default function getBlogMetadataBySlug(
   slug: string,
   blogs: BlogMetadata[]
 ): BlogMetadata | null {

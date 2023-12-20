@@ -1,14 +1,12 @@
+import getBlogMetadataBySlug from "@/actions/blogs/getBlogMetadataBySlug";
 import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
 import Reader from "@/components/Reader/Reader";
+import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import { notFound } from "next/navigation";
-import type { Metadata, ResolvingMetadata } from "next";
-import { getBlogMetadataBySlug } from "@/actions/getBlogMetadataBySlug";
 import blogs from "@/constants/blogs";
 import { Skill } from "@/types/skills";
-import HeadingThree from "@/components/Text/HeadingThree";
-import Tag from "@/components/Tags/Tag";
-import SkillTableSection from "@/components/Skills/SkillTableSection";
+import type { Metadata, ResolvingMetadata } from "next";
+import { notFound } from "next/navigation";
 
 type BlogPageProps = {
   params: { slug: string };
