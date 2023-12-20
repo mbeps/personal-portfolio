@@ -1,5 +1,5 @@
 import ProjectsListSection from "@/app/projects/components/ProjectListSection";
-import Button from "@/components/UI/Button";
+import Button from "@/components/Button/Button";
 import Project from "@/types/projects";
 import { Skill } from "@/types/skills";
 import Link from "next/link";

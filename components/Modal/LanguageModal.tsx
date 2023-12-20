@@ -8,7 +8,7 @@ import allProjects from "@/constants/projects";
 import { Skill } from "@/types/skills";
 import Link from "next/link";
 import React, { useState } from "react";
-import Button from "../UI/Button";
+import Button from "../Button/Button";
 import Dropdown from "../DropDown/DropDownMenu";
 import SkillTag from "../Tags/SkillTag";
 import HeadingThree from "../Text/HeadingThree";

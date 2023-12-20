@@ -1,6 +1,6 @@
 "use client";
 
-import Button from "@/components/UI/Button";
+import Button from "@/components/Button/Button";
 import Reader from "@/components/Reader/Reader";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import React, { useEffect, useState } from "react";

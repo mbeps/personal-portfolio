@@ -1,4 +1,4 @@
-import Button from "@/components/UI/Button";
+import Button from "@/components/Button/Button";
 import Link from "next/link";
 import React from "react";
 import { AiOutlineClear } from "react-icons/ai";

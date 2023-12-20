@@ -1,5 +1,5 @@
 import getCertificateBySlug from "@/actions/certificates/getCertificateBySlug";
-import Button from "@/components/UI/Button";
+import Button from "@/components/Button/Button";
 import Tag from "@/components/Tags/Tag";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingThree from "@/components/Text/HeadingThree";

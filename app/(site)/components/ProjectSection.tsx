@@ -1,5 +1,5 @@
 import validateSlugWithProject from "@/actions/projects/validateSlugWithProject";
-import Button from "@/components/UI/Button";
+import Button from "@/components/Button/Button";
 import SlideUp from "@/components/UI/Slideup";
 import ProjectItem from "@/components/ProjectItem/ProjectItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
