@@ -80,10 +80,8 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
             sticky top-0
             z-10
             bg-neutral-100 dark:bg-black
-           
-            px-4 py-2
+            px-4 py-0
             flex justify-between items-center
-            shadow
             rounded-t-2xl
           "
         >
