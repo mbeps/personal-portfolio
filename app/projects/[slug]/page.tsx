@@ -274,9 +274,9 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
               gap-2"
               >
                 {/* GitHub Repo */}
-                {project?.repoURL && (
+                {project?.repositoryURL && (
                   <Link
-                    href={project?.repoURL}
+                    href={project?.repositoryURL}
                     target="_blank"
                     className="w-full"
                   >
@@ -298,9 +298,9 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
                   </Link>
                 )}
                 {/* Website */}
-                {project?.siteURL && (
+                {project?.deploymentURL && (
                   <Link
-                    href={project?.siteURL}
+                    href={project?.deploymentURL}
                     target="_blank"
                     className="w-full"
                   >

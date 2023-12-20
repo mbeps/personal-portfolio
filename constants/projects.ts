@@ -103,8 +103,8 @@ const webdevProjects: Project[] = [
       a social media platform was developed enabling users to form communities, 
       start discussions, and comment on them, connecting with like-minded individuals.
       `,
-    repoURL: `https://github.com/mbeps/next_discussion_platform`,
-    siteURL: `https://circus-discussion.vercel.app/`,
+    repositoryURL: `https://github.com/mbeps/next_discussion_platform`,
+    deploymentURL: `https://circus-discussion.vercel.app/`,
     programmingLanguage: typescript,
     technologySkills: [
       nextjs,
@@ -134,7 +134,7 @@ const webdevProjects: Project[] = [
       riskManagement,
     ],
     extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
-    type: "Full-Stack Web Development",
+    category: "Full-Stack Web Development",
     hasImage: true,
   },
   {
@@ -144,8 +144,8 @@ const webdevProjects: Project[] = [
       A custom back-end learning project involved creating a straightforward messaging app. 
       Users can chat one-on-one, participate in group chats, send text messages, share images, view active users, and personalize their profiles. 
       `,
-    repoURL: `https://github.com/mbeps/ringmaster-messaging`,
-    siteURL: `https://ringmaster-messaging.vercel.app/`,
+    repositoryURL: `https://github.com/mbeps/ringmaster-messaging`,
+    deploymentURL: `https://ringmaster-messaging.vercel.app/`,
     programmingLanguage: typescript,
     technologySkills: [
       nextjs,
@@ -176,7 +176,7 @@ const webdevProjects: Project[] = [
       adaptability,
     ],
     extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
-    type: "Full-Stack Web Development",
+    category: "Full-Stack Web Development",
     hasImage: true,
   },
   {
@@ -186,9 +186,9 @@ const webdevProjects: Project[] = [
       Magician AI is a SaaS platform that leverages AI to enable users to generate various media types and have dynamic conversations. 
       Developing this project allowed me to explore Stripe, Clerk authentication, and unique AI APIs.
   `,
-    repoURL: `https://github.com/mbeps/magician-ai`,
+    repositoryURL: `https://github.com/mbeps/magician-ai`,
     programmingLanguage: typescript,
-    siteURL: "https://magician-ai.vercel.app/",
+    deploymentURL: "https://magician-ai.vercel.app/",
     technologySkills: [
       nextjs,
       react,
@@ -220,7 +220,7 @@ const webdevProjects: Project[] = [
       adaptability,
     ],
     extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
-    type: "Full-Stack Web Development",
+    category: "Full-Stack Web Development",
     hasImage: true,
   },
   {
@@ -230,7 +230,7 @@ const webdevProjects: Project[] = [
       My first major project using Supabase was a basic music streaming site. 
       Users can upload songs, search and listen to music, as well as like the songs they enjoy.
       `,
-    repoURL: `https://github.com/mbeps/drumroll-music`,
+    repositoryURL: `https://github.com/mbeps/drumroll-music`,
     programmingLanguage: typescript,
     technologySkills: [
       nextjs,
@@ -256,7 +256,7 @@ const webdevProjects: Project[] = [
       adaptability,
     ],
     extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
-    type: "Full-Stack Web Development",
+    category: "Full-Stack Web Development",
     hasImage: true,
   },
 ];
@@ -274,7 +274,7 @@ const extraWebDevProjects: Project[] = [
       Users can test their knowledge across various topics, choosing between multiple-choice questions or fill-in-the-gap style challenges. 
       With immediate feedback and score tracking, users enhance their understanding.`,
     programmingLanguage: typescript,
-    type: "Full-Stack Web Development",
+    category: "Full-Stack Web Development",
     technologySkills: [
       nextjs,
       react,
@@ -303,7 +303,7 @@ const extraWebDevProjects: Project[] = [
       adaptability,
     ],
     extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
-    repoURL: "https://github.com/mbeps/quizmify",
+    repositoryURL: "https://github.com/mbeps/quizmify",
     hasImage: true,
   },
   {
@@ -314,7 +314,7 @@ const extraWebDevProjects: Project[] = [
       Users can read, create, and delete articles. 
       This foundational project paved the way for using Supabase in subsequent projects.
       `,
-    repoURL: `https://github.com/mbeps/sideshow-articles`,
+    repositoryURL: `https://github.com/mbeps/sideshow-articles`,
     programmingLanguage: typescript,
     technologySkills: [
       nextjs,
@@ -336,7 +336,7 @@ const extraWebDevProjects: Project[] = [
       adaptability,
     ],
     extraTechnicalGeneralSkills: [oop],
-    type: "Full-Stack Web Development",
+    category: "Full-Stack Web Development",
     archived: true,
     hasImage: true,
   },
@@ -347,8 +347,8 @@ const extraWebDevProjects: Project[] = [
       During my second year of university, my group and I initiated a project on an open-source learning platform which served as my introduction to full-stack development. 
       This app aids students in managing tasks, assignments, exams, and storing notes and resources.
       `,
-    repoURL: `https://github.com/ixahmedxi/noodle`,
-    siteURL: `https://noodle.run/`,
+    repositoryURL: `https://github.com/ixahmedxi/noodle`,
+    deploymentURL: `https://noodle.run/`,
     programmingLanguage: typescript,
     technologySkills: [
       nextjs,
@@ -379,7 +379,7 @@ const extraWebDevProjects: Project[] = [
       adaptability,
       teamwork,
     ],
-    type: "Full-Stack Web Development",
+    category: "Full-Stack Web Development",
     archived: true,
     hasImage: true,
   },
@@ -391,7 +391,7 @@ const extraWebDevProjects: Project[] = [
       We manually implemented the game's physics using vector theory and physics concepts. 
       Since there were no tutorials or guides available, we relied heavily on the library's documentation.
       `,
-    repoURL: `https://github.com/mbeps/convo-gpt`,
+    repositoryURL: `https://github.com/mbeps/convo-gpt`,
     programmingLanguage: typescript,
     technologySkills: [
       nextjs,
@@ -416,7 +416,7 @@ const extraWebDevProjects: Project[] = [
       adaptability,
     ],
     extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
-    type: "Full-Stack Web Development",
+    category: "Full-Stack Web Development",
     archived: true,
   },
 ];
@@ -429,7 +429,7 @@ const backendWebDevProjects: Project[] = [
       This is a custom backend for the first iteration of the discussion platform. 
       This was created to learn how to create a custom backend using Python and Flask.
       `,
-    repoURL: `https://github.com/mbeps/Forum-Discussion-Flask-Backend`,
+    repositoryURL: `https://github.com/mbeps/Forum-Discussion-Flask-Backend`,
     programmingLanguage: python,
     technologySkills: [
       flask,
@@ -452,7 +452,7 @@ const backendWebDevProjects: Project[] = [
       adaptability,
     ],
     extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
-    type: "Back-End Web Development",
+    category: "Back-End Web Development",
   },
   {
     name: `Flask JWT Authentication`,
@@ -461,7 +461,7 @@ const backendWebDevProjects: Project[] = [
       A simple Flask app to learn how to use JWT for authentication.
       This serves as a foundation to using JWT in other projects using Flask.
       `,
-    repoURL: `https://github.com/mbeps/Flask_JWT_Auth`,
+    repositoryURL: `https://github.com/mbeps/Flask_JWT_Auth`,
     programmingLanguage: python,
     technologySkills: [flask, jwt, gitHub, git, html, css, poetry],
     softSkills: [
@@ -472,7 +472,7 @@ const backendWebDevProjects: Project[] = [
       adaptability,
     ],
     extraTechnicalGeneralSkills: [oop],
-    type: "Back-End Web Development",
+    category: "Back-End Web Development",
     archived: true,
   },
   {
@@ -483,7 +483,7 @@ const backendWebDevProjects: Project[] = [
       This serves as a foundation to using Django in other projects.
       `,
     programmingLanguage: python,
-    repoURL: `https://github.com/mbeps/Django_Auth_Sys`,
+    repositoryURL: `https://github.com/mbeps/Django_Auth_Sys`,
     technologySkills: [django, jwt, gitHub, git, html, css, poetry],
     softSkills: [
       problemSolving,
@@ -493,7 +493,7 @@ const backendWebDevProjects: Project[] = [
       adaptability,
     ],
     extraTechnicalGeneralSkills: [oop],
-    type: "Back-End Web Development",
+    category: "Back-End Web Development",
     archived: true,
   },
   {
@@ -503,7 +503,7 @@ const backendWebDevProjects: Project[] = [
       A simple Next.JS app to experiment with the Clerk Authentication SDK. 
       `,
     programmingLanguage: typescript,
-    repoURL: `https://github.com/mbeps/clerk-demo`,
+    repositoryURL: `https://github.com/mbeps/clerk-demo`,
     technologySkills: [nextjs, clerkAuth, nodejs, gitHub, git, html, css, yarn],
     softSkills: [
       problemSolving,
@@ -513,7 +513,7 @@ const backendWebDevProjects: Project[] = [
       adaptability,
     ],
     extraTechnicalGeneralSkills: [oop],
-    type: "Back-End Web Development",
+    category: "Back-End Web Development",
     archived: true,
   },
   {
@@ -524,7 +524,7 @@ const backendWebDevProjects: Project[] = [
       This does not use the new Next.JS 13 app router as it is not supported as of the time of making this demo. 
       `,
     programmingLanguage: typescript,
-    repoURL: `https://github.com/mbeps/nextjs-auth0`,
+    repositoryURL: `https://github.com/mbeps/nextjs-auth0`,
     technologySkills: [nextjs, auth0, nodejs, gitHub, git, html, css, yarn],
     softSkills: [
       problemSolving,
@@ -534,7 +534,7 @@ const backendWebDevProjects: Project[] = [
       adaptability,
     ],
     extraTechnicalGeneralSkills: [oop],
-    type: "Back-End Web Development",
+    category: "Back-End Web Development",
     archived: true,
   },
 ];
@@ -549,7 +549,7 @@ const machineLearningProjects: Project[] = [
     name: "Adult Income Prediction",
     slug: "adult-income-prediction",
     description: `A project leveraging the UCI Adult Income dataset to predict income brackets using a RandomForestClassifier. Emphasis is on feature engineering, data preprocessing with One-Hot Encoding, and model optimization through hyperparameter tuning.`,
-    repoURL: "https://github.com/mbeps/Adults_Income_Prediction",
+    repositoryURL: "https://github.com/mbeps/Adults_Income_Prediction",
     programmingLanguage: python,
     technologySkills: [
       scikitLearn,
@@ -570,13 +570,13 @@ const machineLearningProjects: Project[] = [
       adaptability,
     ],
     extraTechnicalGeneralSkills: [oop, algorithms],
-    type: "Machine Learning",
+    category: "Machine Learning",
   },
   {
     name: "House Price Prediction",
     slug: "house-price-prediction",
     description: `An analytical approach to predicting California housing prices using the RandomForestRegressor and LinearRegressor, with a focus on data preprocessing and feature engineering.`,
-    repoURL: "https://github.com/your-username/House-Price-Prediction",
+    repositoryURL: "https://github.com/your-username/House-Price-Prediction",
     programmingLanguage: python,
     technologySkills: [
       scikitLearn,
@@ -597,7 +597,7 @@ const machineLearningProjects: Project[] = [
       adaptability,
     ],
     extraTechnicalGeneralSkills: [oop, algorithms],
-    type: "Machine Learning",
+    category: "Machine Learning",
   },
   {
     name: `Assignment 1`,
@@ -606,7 +606,7 @@ const machineLearningProjects: Project[] = [
       Be able to implement machine-learning algorithms, using the Nearest Neighbours algorithm as an example. 
       Have an understanding of ways to apply the ideas and algorithms of machine learning in science and technology.
       `,
-    repoURL: `https://github.com/mbeps/Machine-Learning-Assignment-1`,
+    repositoryURL: `https://github.com/mbeps/Machine-Learning-Assignment-1`,
     programmingLanguage: python,
     technologySkills: [
       scikitLearn,
@@ -624,7 +624,7 @@ const machineLearningProjects: Project[] = [
       adaptability,
     ],
     extraTechnicalGeneralSkills: [oop, algorithms],
-    type: "Machine Learning",
+    category: "Machine Learning",
   },
   {
     name: `Assignment 2`,
@@ -634,7 +634,7 @@ const machineLearningProjects: Project[] = [
       with the Lasso and inductive conformal prediction algorithms as examples. 
       Have an understanding of ways to apply the ideas and algorithms of machine learning in industry and medicine.
     `,
-    repoURL: `https://github.com/mbeps/Machine-Learning-Assignment-2`,
+    repositoryURL: `https://github.com/mbeps/Machine-Learning-Assignment-2`,
     programmingLanguage: python,
     technologySkills: [
       scikitLearn,
@@ -652,7 +652,7 @@ const machineLearningProjects: Project[] = [
       adaptability,
     ],
     extraTechnicalGeneralSkills: [oop, algorithms],
-    type: "Machine Learning",
+    category: "Machine Learning",
   },
   {
     name: `Assignment 3`,
@@ -662,7 +662,7 @@ const machineLearningProjects: Project[] = [
       with the SVM, neural networks, and cross-conformal prediction algorithms as examples. 
       Have an understanding of ways to apply the ideas and algorithms of machine learning in industry.
       `,
-    repoURL: `https://github.com/mbeps/Machine-Learning-Assignment-3`,
+    repositoryURL: `https://github.com/mbeps/Machine-Learning-Assignment-3`,
     programmingLanguage: python,
     technologySkills: [
       scikitLearn,
@@ -680,7 +680,7 @@ const machineLearningProjects: Project[] = [
       adaptability,
     ],
     extraTechnicalGeneralSkills: [oop, algorithms],
-    type: "Machine Learning",
+    category: "Machine Learning",
   },
   {
     name: `Lab Questions`,
@@ -689,7 +689,7 @@ const machineLearningProjects: Project[] = [
       Implemented various machine learning algorithms and techniques learned during the course, 
       such as Nearest Neighbours, conformal prediction, linear regression, Ridge Regression, Lasso, data preprocessing, parameter selection, 
       kernels, neural networks, support vector machines, scikit-learn pipelines, and cross-conformal predictors.`,
-    repoURL: `https://github.com/mbeps/Machine-Learning-Labs-Questions`,
+    repositoryURL: `https://github.com/mbeps/Machine-Learning-Labs-Questions`,
     programmingLanguage: python,
     technologySkills: [
       scikitLearn,
@@ -708,7 +708,7 @@ const machineLearningProjects: Project[] = [
       adaptability,
     ],
     extraTechnicalGeneralSkills: [oop, algorithms],
-    type: "Machine Learning",
+    category: "Machine Learning",
   },
   {
     name: "Computational Finance Assignment",
@@ -716,7 +716,7 @@ const machineLearningProjects: Project[] = [
     description: `
       An assignment exploring valuation of options using methods like Black-Scholes, binomial trees, and Monte Carlo. 
       Also includes theoretical aspects of put-call parity and financial arbitrage opportunities.`,
-    repoURL: `https://github.com/mbeps/Computation_Finance_Assignment`,
+    repositoryURL: `https://github.com/mbeps/Computation_Finance_Assignment`,
     programmingLanguage: python,
     technologySkills: [numpy, matplotlib, jupyterNotebooks],
     softSkills: [
@@ -727,7 +727,7 @@ const machineLearningProjects: Project[] = [
       adaptability,
     ],
     extraTechnicalGeneralSkills: [oop, algorithms],
-    type: "Machine Learning",
+    category: "Machine Learning",
   },
 ];
 
@@ -745,7 +745,7 @@ const gameDevProjects: Project[] = [
       The physics of the game were done manually using vector theory and physics concepts.
       This required us to rely on the documentation as there was no tutorials or guides on how to use the library.
       `,
-    repoURL: `https://github.com/mbeps/Osmos_Game`,
+    repositoryURL: `https://github.com/mbeps/Osmos_Game`,
     programmingLanguage: python,
     technologySkills: [simpleGui],
     softSkills: [
@@ -757,7 +757,7 @@ const gameDevProjects: Project[] = [
       leadership,
       teamwork,
     ],
-    type: "Game Development",
+    category: "Game Development",
     hasImage: true,
   },
   {
@@ -769,7 +769,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: gameMakerLanguage,
-    type: "Game Development",
+    category: "Game Development",
     technologySkills: [gameMakerStudio],
     softSkills: [
       problemSolving,
@@ -778,7 +778,7 @@ const gameDevProjects: Project[] = [
       creativity,
       adaptability,
     ],
-    siteURL: "https://bepary-games.itch.io/surface-fight",
+    deploymentURL: "https://bepary-games.itch.io/surface-fight",
     archived: true,
     hasImage: true,
   },
@@ -792,7 +792,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: gameMakerLanguage,
-    type: "Game Development",
+    category: "Game Development",
     technologySkills: [gameMakerStudio],
     softSkills: [
       problemSolving,
@@ -801,7 +801,7 @@ const gameDevProjects: Project[] = [
       creativity,
       adaptability,
     ],
-    siteURL: "https://bepary-games.itch.io/platformer",
+    deploymentURL: "https://bepary-games.itch.io/platformer",
     archived: true,
     hasImage: true,
   },
@@ -815,7 +815,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: gameMakerLanguage,
-    type: "Game Development",
+    category: "Game Development",
     technologySkills: [gameMakerStudio],
     softSkills: [
       problemSolving,
@@ -824,7 +824,7 @@ const gameDevProjects: Project[] = [
       creativity,
       adaptability,
     ],
-    siteURL: "https://bepary-games.itch.io/platformer-death-walk",
+    deploymentURL: "https://bepary-games.itch.io/platformer-death-walk",
     archived: true,
     hasImage: true,
   },
@@ -837,7 +837,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: gameMakerLanguage,
-    type: "Game Development",
+    category: "Game Development",
     technologySkills: [gameMakerStudio],
     softSkills: [
       problemSolving,
@@ -846,7 +846,7 @@ const gameDevProjects: Project[] = [
       creativity,
       adaptability,
     ],
-    siteURL: "https://bepary-games.itch.io/coding-break-out",
+    deploymentURL: "https://bepary-games.itch.io/coding-break-out",
     archived: true,
     hasImage: true,
   },
@@ -859,7 +859,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: gameMakerLanguage,
-    type: "Game Development",
+    category: "Game Development",
     technologySkills: [gameMakerStudio],
     softSkills: [
       problemSolving,
@@ -868,7 +868,7 @@ const gameDevProjects: Project[] = [
       creativity,
       adaptability,
     ],
-    siteURL: "https://bepary-games.itch.io/catch-maruf",
+    deploymentURL: "https://bepary-games.itch.io/catch-maruf",
     archived: true,
     hasImage: true,
   },
@@ -881,7 +881,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: gameMakerLanguage,
-    type: "Game Development",
+    category: "Game Development",
     technologySkills: [gameMakerStudio],
     softSkills: [
       problemSolving,
@@ -890,7 +890,7 @@ const gameDevProjects: Project[] = [
       creativity,
       adaptability,
     ],
-    siteURL: "https://bepary-games.itch.io/against-gravity",
+    deploymentURL: "https://bepary-games.itch.io/against-gravity",
     archived: true,
     hasImage: true,
   },
@@ -902,7 +902,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: gameMakerLanguage,
-    type: "Game Development",
+    category: "Game Development",
     technologySkills: [gameMakerStudio],
     softSkills: [
       problemSolving,
@@ -911,7 +911,7 @@ const gameDevProjects: Project[] = [
       creativity,
       adaptability,
     ],
-    siteURL: "https://bepary-games.itch.io/scrolling-shooter",
+    deploymentURL: "https://bepary-games.itch.io/scrolling-shooter",
     archived: true,
     hasImage: true,
   },
@@ -923,7 +923,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: gameMakerLanguage,
-    type: "Game Development",
+    category: "Game Development",
     technologySkills: [gameMakerStudio],
     softSkills: [
       problemSolving,
@@ -932,7 +932,7 @@ const gameDevProjects: Project[] = [
       creativity,
       adaptability,
     ],
-    siteURL: "https://bepary-games.itch.io/dungeon-",
+    deploymentURL: "https://bepary-games.itch.io/dungeon-",
     archived: true,
     hasImage: true,
   },
@@ -945,7 +945,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: gameMakerLanguage,
-    type: "Game Development",
+    category: "Game Development",
     technologySkills: [gameMakerStudio],
     softSkills: [
       problemSolving,
@@ -954,7 +954,7 @@ const gameDevProjects: Project[] = [
       creativity,
       adaptability,
     ],
-    siteURL: "https://bepary-games.itch.io/vej-ninja",
+    deploymentURL: "https://bepary-games.itch.io/vej-ninja",
     archived: true,
     hasImage: true,
   },
@@ -967,7 +967,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: gameMakerLanguage,
-    type: "Game Development",
+    category: "Game Development",
     technologySkills: [gameMakerStudio],
     softSkills: [
       problemSolving,
@@ -976,7 +976,7 @@ const gameDevProjects: Project[] = [
       creativity,
       adaptability,
     ],
-    siteURL: "https://bepary-games.itch.io/angry-cats-space",
+    deploymentURL: "https://bepary-games.itch.io/angry-cats-space",
     archived: true,
     hasImage: true,
   },
@@ -989,7 +989,7 @@ const gameDevProjects: Project[] = [
       This was a simple game made back in secondary school. 
     `,
     programmingLanguage: gameMakerLanguage,
-    type: "Game Development",
+    category: "Game Development",
     technologySkills: [gameMakerStudio],
     softSkills: [
       problemSolving,
@@ -998,7 +998,7 @@ const gameDevProjects: Project[] = [
       creativity,
       adaptability,
     ],
-    siteURL: "https://bepary-games.itch.io/angry-cats-space",
+    deploymentURL: "https://bepary-games.itch.io/angry-cats-space",
     archived: true,
     hasImage: true,
   },
@@ -1019,7 +1019,7 @@ const otherProjects: Project[] = [
       All the algorithms are also compared to each other. 
     `,
     programmingLanguage: python,
-    type: "Other",
+    category: "Other",
     technologySkills: [
       matplotlib,
       numpy,
@@ -1036,7 +1036,7 @@ const otherProjects: Project[] = [
       adaptability,
     ],
     extraTechnicalGeneralSkills: [oop, algorithms, dataStructures],
-    repoURL: "https://github.com/mbeps/algorithms",
+    repositoryURL: "https://github.com/mbeps/algorithms",
   },
   {
     name: `Automated Setup`,
@@ -1053,9 +1053,9 @@ const otherProjects: Project[] = [
       creativity,
       adaptability,
     ],
-    repoURL: `https://github.com/mbeps/AutomatedSetup`,
+    repositoryURL: `https://github.com/mbeps/AutomatedSetup`,
     programmingLanguage: shellScript,
-    type: "Other",
+    category: "Other",
   },
   {
     name: `Leetcode Solutions`,
@@ -1066,7 +1066,7 @@ const otherProjects: Project[] = [
       They are also used to practice unit testing.
       CI/CD is also used to run the tests when merging to the main branch.
       `,
-    repoURL: `https://github.com/stars/mbeps/lists/leetcode`,
+    repositoryURL: `https://github.com/stars/mbeps/lists/leetcode`,
     programmingLanguage: python,
     technologySkills: [pytest, gitHubActions, gitHub, git],
     softSkills: [
@@ -1076,7 +1076,7 @@ const otherProjects: Project[] = [
       creativity,
       adaptability,
     ],
-    type: "Other",
+    category: "Other",
   },
 ];
 
@@ -1095,7 +1095,7 @@ const javaAssignments: Project[] = [
       The project involved creating a calculator application, emphasizing the importance of proper version control procedures, 
       test-driven development, documentation, and code quality assurance through linting and styling. 
       The assignment highlighted the significance of following efficient software development processes rather than just focusing on the final implementation.  `,
-    repoURL: `https://github.com/mbeps/Calculator-Assignment`,
+    repositoryURL: `https://github.com/mbeps/Calculator-Assignment`,
     programmingLanguage: java,
     technologySkills: [maven, junit, gitHub, git],
     softSkills: [
@@ -1105,7 +1105,7 @@ const javaAssignments: Project[] = [
       creativity,
       adaptability,
     ],
-    type: "Java Assignments",
+    category: "Java Assignments",
   },
   {
     name: `Botanic-Garden-Planner`,
@@ -1113,7 +1113,7 @@ const javaAssignments: Project[] = [
     description: `
       Simple botanic garden planner app built using Java.
       This was in first year to learn about Java and object oriented programming.`,
-    repoURL: `https://github.com/mbeps/Botanic-Garden-Planner`,
+    repositoryURL: `https://github.com/mbeps/Botanic-Garden-Planner`,
     programmingLanguage: java,
     technologySkills: [junit, gitHub, git],
     softSkills: [
@@ -1123,7 +1123,7 @@ const javaAssignments: Project[] = [
       creativity,
       adaptability,
     ],
-    type: "Java Assignments",
+    category: "Java Assignments",
     archived: true,
   },
   {
@@ -1131,9 +1131,9 @@ const javaAssignments: Project[] = [
     slug: "track-and-trace-assignment",
     description: `Simple app to track Covid cases. 
       This was in first year to learn about Java and object oriented programming.`,
-    repoURL: `https://github.com/mbeps/Track_and_Trace`,
+    repositoryURL: `https://github.com/mbeps/Track_and_Trace`,
     programmingLanguage: java,
-    type: "Java Assignments",
+    category: "Java Assignments",
     technologySkills: [junit, gitHub, git],
     softSkills: [
       problemSolving,
@@ -1148,9 +1148,9 @@ const javaAssignments: Project[] = [
     name: `Hollomon`,
     slug: "hollomon-assignment",
     description: `This was in first year to learn about Java and object oriented programming.`,
-    repoURL: `https://github.com/mbeps/Hollomon`,
+    repositoryURL: `https://github.com/mbeps/Hollomon`,
     programmingLanguage: java,
-    type: "Java Assignments",
+    category: "Java Assignments",
     technologySkills: [junit, gitHub, git],
     softSkills: [
       problemSolving,
@@ -1165,7 +1165,7 @@ const javaAssignments: Project[] = [
     name: `Database Mini Project`,
     slug: "database-mini-project",
     description: `Learning to interact with a database using Java.`,
-    repoURL: `https://github.com/mbeps/DatabasesMiniProject`,
+    repositoryURL: `https://github.com/mbeps/DatabasesMiniProject`,
     programmingLanguage: java,
     technologySkills: [postgreSQL, gitHub, git],
     softSkills: [
@@ -1175,7 +1175,7 @@ const javaAssignments: Project[] = [
       creativity,
       adaptability,
     ],
-    type: "Java Assignments",
+    category: "Java Assignments",
     archived: true,
   },
 ];

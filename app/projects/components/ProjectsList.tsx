@@ -104,7 +104,9 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     projects: Project[]
   ): Record<string, Project[]> => {
     return projects.reduce<Record<string, Project[]>>((grouped, project) => {
-      (grouped[project.type] = grouped[project.type] || []).push(project);
+      (grouped[project.category] = grouped[project.category] || []).push(
+        project
+      );
       return grouped;
     }, {});
   };
@@ -120,8 +122,8 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     { slug: "all", entryName: "All" },
     ...allProjects
       .map((project: Project) => ({
-        slug: stringToSlug(project.type),
-        entryName: project.type,
+        slug: stringToSlug(project.category),
+        entryName: project.category,
       }))
       .filter(
         (value, index, self) =>
@@ -241,7 +243,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const filteredProjects = searchedProjects.filter((project: Project) => {
     const matchesType =
       stringToSlug(selectedSection) === "all" ||
-      stringToSlug(project.type) === stringToSlug(selectedSection);
+      stringToSlug(project.category) === stringToSlug(selectedSection);
 
     const matchesProgrammingLanguage =
       selectedLanguage === "all" ||
