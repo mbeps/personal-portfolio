@@ -1,4 +1,4 @@
-import getCertificateBySlug from "@/actions/getCertificateBySlug";
+import getCertificateBySlug from "@/actions/certificates/getCertificateBySlug";
 import Button from "@/components/Atoms/Button";
 import Tag from "@/components/Tags/Tag";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
