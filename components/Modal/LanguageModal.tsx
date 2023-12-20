@@ -5,7 +5,6 @@ import isSkillAssociatedWithProject from "@/actions/skills/isSkillAssociatedWith
 import blogs from "@/constants/blogs";
 import allCertificates from "@/constants/certificates";
 import allProjects from "@/constants/projects";
-import hardSkills from "@/constants/skills/hardSkills";
 import { Skill } from "@/types/skills";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -14,9 +13,6 @@ import Dropdown from "../DropDown/DropDownMenu";
 import SkillTag from "../Tags/SkillTag";
 import HeadingThree from "../Text/HeadingThree";
 import Modal from "./Modal";
-import { languages } from "@/constants/languages";
-import { technologies } from "@/constants/technologies";
-import getProjectBySlug from "@/actions/getProjectBySlug";
 
 interface ProjectModalProps {
   isOpen?: boolean; // whether the modal is open or not

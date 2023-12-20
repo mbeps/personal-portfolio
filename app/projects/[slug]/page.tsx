@@ -1,11 +1,11 @@
-import getProjectBySlug from "@/actions/getProjectBySlug";
+import getProjectBySlug from "@/actions/projects/getProjectBySlug";
 import Gallery from "@/components/Gallery/Gallery";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 
 import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
 import getMediaFromFileSystem from "@/actions/getMediaFromFileSystem";
-import hasProjectCover from "@/actions/hasProjectCover";
+import hasProjectCover from "@/actions/projects/hasProjectCover";
 import Button from "@/components/Atoms/Button";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import SkillTag from "@/components/Tags/SkillTag";
