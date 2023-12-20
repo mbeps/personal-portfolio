@@ -1,4 +1,4 @@
-import getSkillBySlug from "@/actions/getSkillBySlug";
+import getSkillBySlug from "@/actions/skills/getSkillBySlug";
 import HeadingOne from "@/components/Text/HeadingOne";
 import allCertificates from "@/constants/certificates";
 

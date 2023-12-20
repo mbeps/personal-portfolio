@@ -6,7 +6,9 @@ import { Skill } from "@/types/skills";
  * @param skills (Skill[]) The skills to organize
  * @returns (Record<string, Skill[]>): the skills organized by category
  */
-const organizeSkillsByCategory = (skills: Skill[]) => {
+export default function organizeSkillsByCategory(skills: Skill[]): {
+  [category: string]: Skill[];
+} {
   return skills.reduce(
     (accumulator: { [category: string]: Skill[] }, skill: Skill) => {
       const { category = "Other" } = skill;
@@ -18,6 +20,4 @@ const organizeSkillsByCategory = (skills: Skill[]) => {
     },
     {}
   );
-};
-
-export default organizeSkillsByCategory;
+}
