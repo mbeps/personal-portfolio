@@ -32,7 +32,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const slug = params.slug;
-  const skill = getSkillBySlug(slug, [...allSkills, ...languages]);
+  const skill = getSkillBySlug(slug, [...allSkills]);
 
   return {
     title: `Maruf Bepary - Skills: ${skill?.name}`,
