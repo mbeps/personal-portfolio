@@ -1,6 +1,6 @@
 import { Blog } from "@/types/blog";
 
-import { javascript, typescript } from "./languages";
+import { javascript, typescript } from "./skills/languages";
 import {
   webDevelopment,
   devOps,

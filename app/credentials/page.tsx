@@ -1,10 +1,10 @@
 import PageDescription from "@/components/UI/PageDescription";
 import HeadingOne from "@/components/Text/HeadingOne";
-import allCertificates from "@/constants/certificates";
 import Certificate from "@/types/certificates";
 import { Metadata } from "next";
 import React from "react";
 import CredentialsList from "./components/CredentialsList";
+import allCertificates from "@/database/certificates";
 
 const description = `
   Explore my collection of certificates and qualifications. 

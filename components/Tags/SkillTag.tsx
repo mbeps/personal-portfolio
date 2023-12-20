@@ -3,15 +3,15 @@
 import isSkillAssociatedWithBlogs from "@/actions/skills/isSkillAssociatedWithBlogs";
 import isSkillAssociatedWithCertificate from "@/actions/skills/isSkillAssociatedWithCertificate";
 import isSkillAssociatedWithProject from "@/actions/skills/isSkillAssociatedWithProject";
-import blogs from "@/constants/blogs";
-import certificates from "@/constants/certificates";
-import allProjects from "@/constants/projects";
-import allSkills from "@/constants/skills";
 import Skill from "@/types/skills";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import Tag from "./Tag";
+import blogs from "@/database/blogs";
+import certificates from "@/database/certificates";
+import allProjects from "@/database/projects";
+import allSkills from "@/database/skills/skills";
 
 interface TagProps {
   skill: Skill;

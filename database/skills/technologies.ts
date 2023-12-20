@@ -39,7 +39,7 @@ import {
   geometry,
   git,
   vagrant,
-} from "./skills/hardSkills";
+} from "./hardSkills";
 
 /**
  * Array of technologies.

@@ -1,7 +1,7 @@
 import PageDescription from "@/components/UI/PageDescription";
 import HeadingOne from "@/components/Text/HeadingOne";
-import { languages } from "@/constants/languages";
-import allSkills from "@/constants/skills";
+import { languages } from "@/database/skills/languages";
+import allSkills from "@/database/skills/skills";
 import React from "react";
 import SkillList from "./components/SkillList";
 

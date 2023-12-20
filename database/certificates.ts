@@ -7,7 +7,7 @@ import {
   rLanguage,
   shellScript,
   typescript,
-} from "./languages";
+} from "./skills/languages";
 import {
   oop,
   algorithms,

@@ -1,13 +1,12 @@
 import getSkillBySlug from "@/actions/skills/getSkillBySlug";
 import HeadingOne from "@/components/Text/HeadingOne";
-import allCertificates from "@/constants/certificates";
-
-import blogs from "@/constants/blogs";
-import { languages } from "@/constants/languages";
-import allProjects from "@/constants/projects";
-import generalSkills from "@/constants/skills/generalSkills";
-import hardSkills from "@/constants/skills/hardSkills";
-import softSkills from "@/constants/skills/softSkills";
+import allCertificates from "@/database/certificates";
+import blogs from "@/database/blogs";
+import { languages } from "@/database/skills/languages";
+import allProjects from "@/database/projects";
+import generalSkills from "@/database/skills/generalSkills";
+import hardSkills from "@/database/skills/hardSkills";
+import softSkills from "@/database/skills/softSkills";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import React from "react";

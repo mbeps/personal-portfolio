@@ -59,7 +59,7 @@ import {
   yarn,
   zod,
   zustand,
-} from "@/constants/skills/hardSkills";
+} from "@/database/skills/hardSkills";
 import Project from "@/types/projects";
 import {
   gameMakerLanguage,
@@ -67,7 +67,7 @@ import {
   python,
   shellScript,
   typescript,
-} from "./languages";
+} from "./skills/languages";
 import {
   adaptability,
   communication,

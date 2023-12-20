@@ -32,7 +32,7 @@ import {
   hibernate,
   react,
   spring,
-} from "./skills/hardSkills";
+} from "./hardSkills";
 
 export const python: Skill = {
   name: "Python",

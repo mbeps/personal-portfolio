@@ -3,8 +3,8 @@ import Button from "@/components/Button/Button";
 import SlideUp from "@/components/UI/Slideup";
 import ProjectItem from "@/components/ProjectItem/ProjectItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import allProjects from "@/constants/projects";
 import Link from "next/link";
+import allProjects from "@/database/projects";
 
 /**
  * Project section listing the projects I have worked on.

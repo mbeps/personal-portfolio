@@ -2,9 +2,6 @@ import groupSkills from "@/actions/skills/groupSkills";
 import isSkillAssociatedWithBlogs from "@/actions/skills/isSkillAssociatedWithBlogs";
 import isSkillAssociatedWithCertificate from "@/actions/skills/isSkillAssociatedWithCertificate";
 import isSkillAssociatedWithProject from "@/actions/skills/isSkillAssociatedWithProject";
-import blogs from "@/constants/blogs";
-import allCertificates from "@/constants/certificates";
-import allProjects from "@/constants/projects";
 import Skill from "@/types/skills";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -13,6 +10,9 @@ import Dropdown from "../DropDown/DropDownMenu";
 import SkillTag from "../Tags/SkillTag";
 import HeadingThree from "../Text/HeadingThree";
 import Modal from "./Modal";
+import allProjects from "@/database/projects";
+import allCertificates from "@/database/certificates";
+import blogs from "@/database/blogs";
 
 interface ProjectModalProps {
   isOpen?: boolean; // whether the modal is open or not

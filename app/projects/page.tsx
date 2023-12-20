@@ -8,7 +8,7 @@ import {
   machineLearningProjects,
   otherProjects,
   webdevProjects,
-} from "@/constants/projects";
+} from "@/database/projects";
 import Project from "@/types/projects";
 import type { Metadata } from "next";
 import ProjectsList from "./components/ProjectsList";

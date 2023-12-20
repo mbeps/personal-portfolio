@@ -1,15 +1,15 @@
 import groupSkills from "@/actions/skills/groupSkills";
-import hardSkills from "@/constants/skills/hardSkills";
+import hardSkills from "@/database/skills/hardSkills";
 import Skill from "@/types/skills";
 import React from "react";
 import Dropdown from "../DropDown/DropDownMenu";
 import SkillTag from "../Tags/SkillTag";
 import HeadingThree from "../Text/HeadingThree";
 import Modal from "./Modal";
-import { languages } from "@/constants/languages";
-import { technologies } from "@/constants/technologies";
 import Button from "../Button/Button";
 import Link from "next/link";
+import { languages } from "@/database/skills/languages";
+import { technologies } from "@/database/skills/technologies";
 
 interface SkillsModalProps {
   isOpen?: boolean; // whether the modal is open or not

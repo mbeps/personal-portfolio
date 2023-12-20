@@ -4,7 +4,6 @@ import Tag from "@/components/Tags/Tag";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import allCertificates from "@/constants/certificates";
 import Skill from "@/types/skills";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
@@ -13,6 +12,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle } from "react-icons/bs";
 import { RxTriangleRight } from "react-icons/rx";
+import allCertificates from "@/database/certificates";
 
 /**
  * Metadata object for the dynamic certificate page.

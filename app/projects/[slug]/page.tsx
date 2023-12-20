@@ -9,7 +9,6 @@ import hasProjectCover from "@/actions/projects/hasProjectCover";
 import Button from "@/components/Button/Button";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import SkillTag from "@/components/Tags/SkillTag";
-import allProjects from "@/constants/projects";
 import Skill from "@/types/skills";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
@@ -18,6 +17,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
+import allProjects from "@/database/projects";
 
 /**
  * Metadata object for the dynamic project page.
