@@ -52,7 +52,7 @@ const SkillsModal: React.FC<SkillsModalProps> = ({ isOpen, onClose }) => {
         groupedBy === "language" &&
         skill.category === "Programming Languages"
       ) {
-        skill.skills?.forEach((subSkill) => {
+        skill.technicalGeneralSkills?.forEach((subSkill) => {
           if (subSkill.skillType === "hard" && subSkill.isMainSkill) {
             const key = skill.name; // Grouping under the main programming language
             acc[key] = acc[key] || [];

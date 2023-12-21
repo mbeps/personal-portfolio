@@ -97,7 +97,11 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
     const combinedSkills = skills.concat(extraSkills);
 
     return combinedSkills
-      .flatMap((skill) => (skill.skills ? [skill, ...skill.skills] : [skill]))
+      .flatMap((skill) =>
+        skill.technicalGeneralSkills
+          ? [skill, ...skill.technicalGeneralSkills]
+          : [skill]
+      )
       .reduce((uniqueSkills, skill) => {
         if (!uniqueSkills.some((s) => s.slug === skill.slug)) {
           uniqueSkills.push(skill);

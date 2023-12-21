@@ -39,7 +39,7 @@ export const firebase: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "firebase",
-  skills: [
+  technicalGeneralSkills: [
     databaseManagementSystems,
     noSql,
     databases,
@@ -57,7 +57,7 @@ export const supabase: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "supabsase",
-  skills: [
+  technicalGeneralSkills: [
     databaseManagementSystems,
     noSql,
     databases,
@@ -75,7 +75,7 @@ export const pocketbase: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "pocketbase",
-  skills: [
+  technicalGeneralSkills: [
     databaseManagementSystems,
     noSql,
     databases,
@@ -93,7 +93,7 @@ export const auth0: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "auth0",
-  skills: [userAuthentication, sdks],
+  technicalGeneralSkills: [userAuthentication, sdks],
 };
 
 export const clerkAuth: Skill = {
@@ -102,7 +102,7 @@ export const clerkAuth: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "clerkAuth",
-  skills: [userAuthentication, sdks],
+  technicalGeneralSkills: [userAuthentication, sdks],
 };
 
 export const stripe: Skill = {
@@ -111,7 +111,7 @@ export const stripe: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "stripe",
-  skills: [sdks],
+  technicalGeneralSkills: [sdks],
 };
 
 export const tailwindCSS: Skill = {
@@ -120,7 +120,7 @@ export const tailwindCSS: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "tailwind-css",
-  skills: [webDevelopment, userCentricDesign],
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
 };
 
 export const html: Skill = {
@@ -129,7 +129,7 @@ export const html: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "html",
-  skills: [webDevelopment, userCentricDesign],
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
 };
 
 export const css: Skill = {
@@ -138,7 +138,7 @@ export const css: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "css",
-  skills: [webDevelopment, userCentricDesign],
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
 };
 
 export const gitHubActions: Skill = {
@@ -147,7 +147,7 @@ export const gitHubActions: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "github-actions",
-  skills: [
+  technicalGeneralSkills: [
     infrastructureAsCode,
     continuousDelivery,
     continuousIntegration,
@@ -163,7 +163,7 @@ export const gitlabCI: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "gitlab-ci",
-  skills: [
+  technicalGeneralSkills: [
     infrastructureAsCode,
     continuousDelivery,
     continuousIntegration,
@@ -179,7 +179,7 @@ export const jenkins: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "jenkins",
-  skills: [
+  technicalGeneralSkills: [
     infrastructureAsCode,
     continuousDelivery,
     continuousIntegration,
@@ -195,7 +195,7 @@ export const teamCity: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "teamcity",
-  skills: [
+  technicalGeneralSkills: [
     infrastructureAsCode,
     continuousDelivery,
     continuousIntegration,
@@ -211,7 +211,7 @@ export const docker: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "docker",
-  skills: [containerization],
+  technicalGeneralSkills: [containerization],
 };
 
 export const podman: Skill = {
@@ -220,7 +220,7 @@ export const podman: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "podman",
-  skills: [containerization],
+  technicalGeneralSkills: [containerization],
 };
 
 export const kubernetes: Skill = {
@@ -229,7 +229,7 @@ export const kubernetes: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "kubernetes",
-  skills: [containerization, clusterisation],
+  technicalGeneralSkills: [containerization, clusterisation],
 };
 
 export const rest: Skill = {
@@ -238,7 +238,7 @@ export const rest: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "rest-api",
-  skills: [webDevelopment, apis],
+  technicalGeneralSkills: [webDevelopment, apis],
 };
 
 export const graphQL: Skill = {
@@ -247,7 +247,7 @@ export const graphQL: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "graphql-api",
-  skills: [webDevelopment, apis],
+  technicalGeneralSkills: [webDevelopment, apis],
 };
 
 export const tRPC: Skill = {
@@ -256,7 +256,7 @@ export const tRPC: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "trpc-api",
-  skills: [webDevelopment, apis],
+  technicalGeneralSkills: [webDevelopment, apis],
 };
 
 export const normalisation: Skill = {
@@ -273,7 +273,13 @@ export const postgreSQL: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "postgresql",
-  skills: [databaseManagementSystems, databases, sql, normalisation, indexing],
+  technicalGeneralSkills: [
+    databaseManagementSystems,
+    databases,
+    sql,
+    normalisation,
+    indexing,
+  ],
 };
 
 export const mySQL: Skill = {
@@ -282,7 +288,13 @@ export const mySQL: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "mysql",
-  skills: [databaseManagementSystems, databases, sql, normalisation, indexing],
+  technicalGeneralSkills: [
+    databaseManagementSystems,
+    databases,
+    sql,
+    normalisation,
+    indexing,
+  ],
 };
 
 export const sqlite: Skill = {
@@ -291,7 +303,13 @@ export const sqlite: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "sqlite",
-  skills: [databaseManagementSystems, databases, sql, normalisation, indexing],
+  technicalGeneralSkills: [
+    databaseManagementSystems,
+    databases,
+    sql,
+    normalisation,
+    indexing,
+  ],
 };
 
 export const mongoDB: Skill = {
@@ -300,7 +318,12 @@ export const mongoDB: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "mongodb",
-  skills: [databaseManagementSystems, databases, noSql, indexing],
+  technicalGeneralSkills: [
+    databaseManagementSystems,
+    databases,
+    noSql,
+    indexing,
+  ],
 };
 
 export const redis: Skill = {
@@ -309,7 +332,12 @@ export const redis: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "redis",
-  skills: [databaseManagementSystems, databases, noSql, indexing],
+  technicalGeneralSkills: [
+    databaseManagementSystems,
+    databases,
+    noSql,
+    indexing,
+  ],
 };
 
 export const socketIO: Skill = {
@@ -317,7 +345,7 @@ export const socketIO: Skill = {
   category: "Web Sockets",
   skillType: "hard",
   slug: "socket-io",
-  skills: [webDevelopment],
+  technicalGeneralSkills: [webDevelopment],
 };
 
 export const pusher: Skill = {
@@ -325,7 +353,7 @@ export const pusher: Skill = {
   category: "Web Sockets",
   skillType: "hard",
   slug: "pusher",
-  skills: [webDevelopment],
+  technicalGeneralSkills: [webDevelopment],
 };
 
 export const openAI: Skill = {
@@ -334,7 +362,7 @@ export const openAI: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "open-ai",
-  skills: [apis, artificialIntelligence],
+  technicalGeneralSkills: [apis, artificialIntelligence],
 };
 
 export const replicateAI: Skill = {
@@ -343,7 +371,7 @@ export const replicateAI: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "repliate-ai",
-  skills: [apis, artificialIntelligence],
+  technicalGeneralSkills: [apis, artificialIntelligence],
 };
 
 export const probability: Skill = {
@@ -352,7 +380,7 @@ export const probability: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "probability",
-  skills: [mathematics],
+  technicalGeneralSkills: [mathematics],
 };
 
 export const statistics: Skill = {
@@ -361,7 +389,7 @@ export const statistics: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "statistics",
-  skills: [mathematics],
+  technicalGeneralSkills: [mathematics],
 };
 
 export const calculus: Skill = {
@@ -370,7 +398,7 @@ export const calculus: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "calculus",
-  skills: [mathematics],
+  technicalGeneralSkills: [mathematics],
 };
 
 export const trigonometry: Skill = {
@@ -379,7 +407,7 @@ export const trigonometry: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "trigonomtry",
-  skills: [mathematics],
+  technicalGeneralSkills: [mathematics],
 };
 
 export const algebra: Skill = {
@@ -388,7 +416,7 @@ export const algebra: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "algebra",
-  skills: [mathematics],
+  technicalGeneralSkills: [mathematics],
 };
 
 export const linearAlgebra: Skill = {
@@ -397,7 +425,7 @@ export const linearAlgebra: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "linear-algebra",
-  skills: [mathematics],
+  technicalGeneralSkills: [mathematics],
 };
 
 export const discrete: Skill = {
@@ -406,7 +434,7 @@ export const discrete: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "discrete-mathematics",
-  skills: [mathematics],
+  technicalGeneralSkills: [mathematics],
 };
 
 export const geometry: Skill = {
@@ -415,7 +443,7 @@ export const geometry: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "geometry",
-  skills: [mathematics],
+  technicalGeneralSkills: [mathematics],
 };
 
 export const logics: Skill = {
@@ -424,7 +452,7 @@ export const logics: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "logics",
-  skills: [mathematics],
+  technicalGeneralSkills: [mathematics],
 };
 
 export const vectors: Skill = {
@@ -433,7 +461,7 @@ export const vectors: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "vectors",
-  skills: [mathematics],
+  technicalGeneralSkills: [mathematics],
 };
 
 export const mechanics: Skill = {
@@ -442,7 +470,7 @@ export const mechanics: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "mechanics",
-  skills: [mathematics],
+  technicalGeneralSkills: [mathematics],
 };
 
 export const git: Skill = {
@@ -450,7 +478,7 @@ export const git: Skill = {
   category: "Version Control",
   skillType: "hard",
   slug: "git",
-  skills: [versionControl],
+  technicalGeneralSkills: [versionControl],
 };
 
 export const gitHub: Skill = {
@@ -458,7 +486,7 @@ export const gitHub: Skill = {
   category: "Version Control",
   skillType: "hard",
   slug: "github",
-  skills: [versionControl],
+  technicalGeneralSkills: [versionControl],
 };
 
 export const gitLab: Skill = {
@@ -466,7 +494,7 @@ export const gitLab: Skill = {
   category: "Version Control",
   skillType: "hard",
   slug: "gitlab",
-  skills: [versionControl],
+  technicalGeneralSkills: [versionControl],
 };
 
 export const bitBucket: Skill = {
@@ -474,7 +502,7 @@ export const bitBucket: Skill = {
   category: "Version Control",
   skillType: "hard",
   slug: "bit-bucket",
-  skills: [versionControl],
+  technicalGeneralSkills: [versionControl],
 };
 
 export const vagrant: Skill = {
@@ -483,7 +511,7 @@ export const vagrant: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "valgrant",
-  skills: [infrastructureAsCode, devOps],
+  technicalGeneralSkills: [infrastructureAsCode, devOps],
 };
 
 export const nextjs: Skill = {
@@ -492,7 +520,7 @@ export const nextjs: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "next-js",
-  skills: [webDevelopment, userCentricDesign],
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
 };
 
 export const svelte: Skill = {
@@ -500,7 +528,7 @@ export const svelte: Skill = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "svelte",
-  skills: [webDevelopment, userCentricDesign],
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
 };
 
 export const vue: Skill = {
@@ -508,7 +536,7 @@ export const vue: Skill = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "vue-js",
-  skills: [webDevelopment, userCentricDesign],
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
 };
 
 export const angular: Skill = {
@@ -516,7 +544,7 @@ export const angular: Skill = {
   category: "Full-Stack Web Development",
   skillType: "hard",
   slug: "angular",
-  skills: [webDevelopment, userCentricDesign],
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
 };
 
 export const nuxtjs: Skill = {
@@ -524,7 +552,7 @@ export const nuxtjs: Skill = {
   category: "Full-Stack Web Development",
   skillType: "hard",
   slug: "nuxt-js",
-  skills: [webDevelopment, userCentricDesign],
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
 };
 
 export const svelteKit: Skill = {
@@ -532,7 +560,7 @@ export const svelteKit: Skill = {
   category: "Full-Stack Web Development",
   skillType: "hard",
   slug: "svelte-kit",
-  skills: [webDevelopment, userCentricDesign],
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
 };
 
 export const nextauth: Skill = {
@@ -541,7 +569,7 @@ export const nextauth: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "next-auth",
-  skills: [userAuthentication, webDevelopment],
+  technicalGeneralSkills: [userAuthentication, webDevelopment],
 };
 
 export const nodejs: Skill = {
@@ -550,7 +578,7 @@ export const nodejs: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "node-js",
-  skills: [webDevelopment],
+  technicalGeneralSkills: [webDevelopment],
 };
 
 export const express: Skill = {
@@ -558,7 +586,7 @@ export const express: Skill = {
   category: "Back-End Web Development",
   skillType: "hard",
   slug: "express-js",
-  skills: [webDevelopment, apis],
+  technicalGeneralSkills: [webDevelopment, apis],
 };
 
 export const react: Skill = {
@@ -567,7 +595,7 @@ export const react: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "react-js",
-  skills: [webDevelopment, userCentricDesign],
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
 };
 
 export const jest: Skill = {
@@ -592,7 +620,13 @@ export const prisma: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "prisma-orm",
-  skills: [databaseManagementSystems, databases, sql, indexing, orm],
+  technicalGeneralSkills: [
+    databaseManagementSystems,
+    databases,
+    sql,
+    indexing,
+    orm,
+  ],
 };
 
 export const drizzle: Skill = {
@@ -601,7 +635,13 @@ export const drizzle: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "drizzle-orm",
-  skills: [databaseManagementSystems, databases, sql, indexing, orm],
+  technicalGeneralSkills: [
+    databaseManagementSystems,
+    databases,
+    sql,
+    indexing,
+    orm,
+  ],
 };
 
 export const mongoose: Skill = {
@@ -610,7 +650,13 @@ export const mongoose: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "mongoose-orm",
-  skills: [databaseManagementSystems, databases, noSql, indexing, orm],
+  technicalGeneralSkills: [
+    databaseManagementSystems,
+    databases,
+    noSql,
+    indexing,
+    orm,
+  ],
 };
 
 export const npm: Skill = {
@@ -643,7 +689,7 @@ export const flask: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "flask",
-  skills: [webDevelopment, apis],
+  technicalGeneralSkills: [webDevelopment, apis],
 };
 
 export const django: Skill = {
@@ -652,7 +698,7 @@ export const django: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "django",
-  skills: [webDevelopment, apis],
+  technicalGeneralSkills: [webDevelopment, apis],
 };
 
 export const scikitLearn: Skill = {
@@ -661,7 +707,7 @@ export const scikitLearn: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "scikit-learn",
-  skills: [
+  technicalGeneralSkills: [
     machineLearning,
     dataScience,
     artificialIntelligence,
@@ -677,7 +723,7 @@ export const pandas: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "pandas",
-  skills: [dataScience, dataVisualisation],
+  technicalGeneralSkills: [dataScience, dataVisualisation],
 };
 
 export const numpy: Skill = {
@@ -686,7 +732,7 @@ export const numpy: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "numpy",
-  skills: [dataScience, mathematics],
+  technicalGeneralSkills: [dataScience, mathematics],
 };
 
 export const matplotlib: Skill = {
@@ -695,7 +741,7 @@ export const matplotlib: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "matplotlib",
-  skills: [dataScience, dataVisualisation],
+  technicalGeneralSkills: [dataScience, dataVisualisation],
 };
 
 export const seaborn: Skill = {
@@ -704,7 +750,7 @@ export const seaborn: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "seaborn",
-  skills: [dataScience, dataVisualisation],
+  technicalGeneralSkills: [dataScience, dataVisualisation],
 };
 
 export const keras: Skill = {
@@ -713,7 +759,7 @@ export const keras: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "keras",
-  skills: [
+  technicalGeneralSkills: [
     machineLearning,
     dataScience,
     artificialIntelligence,
@@ -727,7 +773,7 @@ export const jupyterNotebooks: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "juptyer-notebooks",
-  skills: [dataScience],
+  technicalGeneralSkills: [dataScience],
 };
 
 export const pytest: Skill = {
@@ -752,7 +798,13 @@ export const sqlalchemy: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "sqlalchemy",
-  skills: [databaseManagementSystems, databases, sql, indexing, orm],
+  technicalGeneralSkills: [
+    databaseManagementSystems,
+    databases,
+    sql,
+    indexing,
+    orm,
+  ],
 };
 
 export const poetry: Skill = {
@@ -801,7 +853,7 @@ export const spring: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "spring",
-  skills: [webDevelopment, apis],
+  technicalGeneralSkills: [webDevelopment, apis],
 };
 
 export const springBoot: Skill = {
@@ -810,7 +862,7 @@ export const springBoot: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "springboot",
-  skills: [webDevelopment, apis],
+  technicalGeneralSkills: [webDevelopment, apis],
 };
 
 export const hibernate: Skill = {
@@ -819,7 +871,13 @@ export const hibernate: Skill = {
   isMainSkill: true,
   skillType: "hard",
   slug: "hibernate-orm",
-  skills: [databaseManagementSystems, databases, sql, indexing, orm],
+  technicalGeneralSkills: [
+    databaseManagementSystems,
+    databases,
+    sql,
+    indexing,
+    orm,
+  ],
 };
 
 export const chakraUI: Skill = {
@@ -827,7 +885,7 @@ export const chakraUI: Skill = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "chakra-ui",
-  skills: [webDevelopment, userCentricDesign],
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
 };
 
 export const recoil: Skill = {
@@ -835,7 +893,7 @@ export const recoil: Skill = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "recoil",
-  skills: [webDevelopment, stateManagement],
+  technicalGeneralSkills: [webDevelopment, stateManagement],
 };
 
 export const zustand: Skill = {
@@ -843,7 +901,7 @@ export const zustand: Skill = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "zustand",
-  skills: [webDevelopment, stateManagement],
+  technicalGeneralSkills: [webDevelopment, stateManagement],
 };
 
 export const jotai: Skill = {
@@ -851,7 +909,7 @@ export const jotai: Skill = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "jotai",
-  skills: [webDevelopment, stateManagement],
+  technicalGeneralSkills: [webDevelopment, stateManagement],
 };
 
 export const redux: Skill = {
@@ -859,7 +917,7 @@ export const redux: Skill = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "redux",
-  skills: [webDevelopment, stateManagement],
+  technicalGeneralSkills: [webDevelopment, stateManagement],
 };
 
 export const cloudinary: Skill = {
@@ -867,7 +925,7 @@ export const cloudinary: Skill = {
   category: "Back-End Web Development",
   skillType: "hard",
   slug: "cloudinary",
-  skills: [webDevelopment],
+  technicalGeneralSkills: [webDevelopment],
 };
 
 export const headlessUI: Skill = {
@@ -875,7 +933,7 @@ export const headlessUI: Skill = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "headless-ui",
-  skills: [webDevelopment, userCentricDesign],
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
 };
 
 export const shadcnUI: Skill = {
@@ -883,7 +941,7 @@ export const shadcnUI: Skill = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "shadow-ui",
-  skills: [webDevelopment, userCentricDesign],
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
 };
 
 export const radixUI: Skill = {
@@ -891,7 +949,7 @@ export const radixUI: Skill = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "radix-ui",
-  skills: [webDevelopment, userCentricDesign],
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
 };
 
 export const axios: Skill = {
@@ -899,7 +957,7 @@ export const axios: Skill = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "axios",
-  skills: [webDevelopment, apis],
+  technicalGeneralSkills: [webDevelopment, apis],
 };
 
 export const reactQuery: Skill = {
@@ -907,7 +965,7 @@ export const reactQuery: Skill = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "react-query",
-  skills: [webDevelopment, apis],
+  technicalGeneralSkills: [webDevelopment, apis],
 };
 
 export const zod: Skill = {
@@ -922,7 +980,7 @@ export const nextUI: Skill = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "next-ui",
-  skills: [webDevelopment, userCentricDesign],
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
 };
 
 export const nxjs: Skill = {
@@ -937,7 +995,7 @@ export const storybooks: Skill = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "storybooks",
-  skills: [webDevelopment, userCentricDesign],
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
 };
 
 export const cypress: Skill = {
@@ -959,7 +1017,7 @@ export const jwt: Skill = {
   category: "Back-End Web Development",
   skillType: "hard",
   slug: "jtw",
-  skills: [userAuthentication],
+  technicalGeneralSkills: [userAuthentication],
 };
 
 export const simpleGui: Skill = {
@@ -967,7 +1025,7 @@ export const simpleGui: Skill = {
   category: "Back-End Web Development",
   skillType: "hard",
   slug: "simple-gui",
-  skills: [userCentricDesign],
+  technicalGeneralSkills: [userCentricDesign],
 };
 
 export const gameMakerStudio: Skill = {
@@ -975,7 +1033,7 @@ export const gameMakerStudio: Skill = {
   category: "Game Development",
   skillType: "hard",
   slug: "gamemaker-studio",
-  skills: [gameDevelopment],
+  technicalGeneralSkills: [gameDevelopment],
 };
 
 export const tox: Skill = {
@@ -990,7 +1048,7 @@ export const travisCI: Skill = {
   category: "DevOps",
   skillType: "hard",
   slug: "travis-ci",
-  skills: [
+  technicalGeneralSkills: [
     infrastructureAsCode,
     continuousDelivery,
     continuousIntegration,
@@ -1005,7 +1063,7 @@ export const k3s: Skill = {
   category: "DevOps",
   skillType: "hard",
   slug: "aws-ks3",
-  skills: [containerization, clusterisation, cloudComputing],
+  technicalGeneralSkills: [containerization, clusterisation, cloudComputing],
 };
 
 export const awsEC2: Skill = {
@@ -1013,7 +1071,7 @@ export const awsEC2: Skill = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "aws-ec2",
-  skills: [cloudComputing],
+  technicalGeneralSkills: [cloudComputing],
 };
 
 export const awsS3: Skill = {
@@ -1021,7 +1079,7 @@ export const awsS3: Skill = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "aws-s3",
-  skills: [cloudComputing],
+  technicalGeneralSkills: [cloudComputing],
 };
 
 export const awsVPC: Skill = {
@@ -1029,7 +1087,7 @@ export const awsVPC: Skill = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "aws-vpc",
-  skills: [cloudComputing],
+  technicalGeneralSkills: [cloudComputing],
 };
 
 export const awsLambda: Skill = {
@@ -1037,7 +1095,7 @@ export const awsLambda: Skill = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "aws-lambda",
-  skills: [cloudComputing],
+  technicalGeneralSkills: [cloudComputing],
 };
 
 export const awsCloudFormation: Skill = {
@@ -1045,7 +1103,7 @@ export const awsCloudFormation: Skill = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "aws-cloudformation",
-  skills: [cloudComputing],
+  technicalGeneralSkills: [cloudComputing],
 };
 
 export const awsCloudFront: Skill = {
@@ -1053,7 +1111,7 @@ export const awsCloudFront: Skill = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "aws-cloudfront",
-  skills: [cloudComputing],
+  technicalGeneralSkills: [cloudComputing],
 };
 
 export const awsElasticBeanstalk: Skill = {
@@ -1061,7 +1119,7 @@ export const awsElasticBeanstalk: Skill = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "aws-elastic-beanstalk",
-  skills: [cloudComputing],
+  technicalGeneralSkills: [cloudComputing],
 };
 
 export const azureAppService: Skill = {
@@ -1069,7 +1127,7 @@ export const azureAppService: Skill = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "azure-app-service",
-  skills: [cloudComputing],
+  technicalGeneralSkills: [cloudComputing],
 };
 
 export const azureBlobStorage: Skill = {
@@ -1077,7 +1135,7 @@ export const azureBlobStorage: Skill = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "azure-blob-storage",
-  skills: [cloudComputing],
+  technicalGeneralSkills: [cloudComputing],
 };
 
 export const azureDurableFunctions: Skill = {
@@ -1085,7 +1143,7 @@ export const azureDurableFunctions: Skill = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "azure-durable-functions",
-  skills: [cloudComputing],
+  technicalGeneralSkills: [cloudComputing],
 };
 
 export const azureMonitor: Skill = {
@@ -1093,7 +1151,7 @@ export const azureMonitor: Skill = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "azure-monitor",
-  skills: [cloudComputing],
+  technicalGeneralSkills: [cloudComputing],
 };
 
 export const azureFunctions: Skill = {
@@ -1101,7 +1159,7 @@ export const azureFunctions: Skill = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "azure-functions",
-  skills: [cloudComputing],
+  technicalGeneralSkills: [cloudComputing],
 };
 
 export const azureResourceManager: Skill = {
@@ -1109,7 +1167,7 @@ export const azureResourceManager: Skill = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "azure-resource-manager",
-  skills: [cloudComputing],
+  technicalGeneralSkills: [cloudComputing],
 };
 
 export const azureContainers: Skill = {
@@ -1117,7 +1175,7 @@ export const azureContainers: Skill = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "azure-containers",
-  skills: [cloudComputing],
+  technicalGeneralSkills: [cloudComputing],
 };
 
 export const azureContainerRegistry: Skill = {
@@ -1125,7 +1183,7 @@ export const azureContainerRegistry: Skill = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "azure-container-registry",
-  skills: [cloudComputing],
+  technicalGeneralSkills: [cloudComputing],
 };
 
 export const gcpAppEngine: Skill = {
@@ -1133,7 +1191,7 @@ export const gcpAppEngine: Skill = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "gcp-app-engine",
-  skills: [cloudComputing],
+  technicalGeneralSkills: [cloudComputing],
 };
 
 export const gcpCloudSQL: Skill = {
@@ -1141,7 +1199,7 @@ export const gcpCloudSQL: Skill = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "gcp-cloud-sql",
-  skills: [cloudComputing],
+  technicalGeneralSkills: [cloudComputing],
 };
 
 export const gcpCloudStorage: Skill = {
@@ -1149,7 +1207,7 @@ export const gcpCloudStorage: Skill = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "gcp-cloud-storage",
-  skills: [cloudComputing],
+  technicalGeneralSkills: [cloudComputing],
 };
 
 export const gcpCloudTasks: Skill = {
@@ -1157,7 +1215,7 @@ export const gcpCloudTasks: Skill = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "gcp-cloud-tasks",
-  skills: [cloudComputing],
+  technicalGeneralSkills: [cloudComputing],
 };
 
 export const gcpCloudScheduler: Skill = {
@@ -1165,7 +1223,7 @@ export const gcpCloudScheduler: Skill = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "gcp-cloud-scheduler",
-  skills: [cloudComputing],
+  technicalGeneralSkills: [cloudComputing],
 };
 
 export const gcpCloudLogging: Skill = {
@@ -1173,7 +1231,7 @@ export const gcpCloudLogging: Skill = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "gcp-cloud-logging",
-  skills: [cloudComputing],
+  technicalGeneralSkills: [cloudComputing],
 };
 
 export const aws: Skill = {
@@ -1181,7 +1239,7 @@ export const aws: Skill = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "aws",
-  skills: [
+  technicalGeneralSkills: [
     k3s,
     awsEC2,
     awsS3,
@@ -1199,7 +1257,7 @@ export const gcp: Skill = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "gcp",
-  skills: [
+  technicalGeneralSkills: [
     gcpAppEngine,
     gcpCloudSQL,
     gcpCloudStorage,
@@ -1216,7 +1274,7 @@ export const azure: Skill = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "azure",
-  skills: [
+  technicalGeneralSkills: [
     azureAppService,
     azureBlobStorage,
     azureDurableFunctions,
@@ -1234,7 +1292,7 @@ export const gunicorn: Skill = {
   category: "Back-End Web Development",
   skillType: "hard",
   slug: "gunicon",
-  skills: [webDevelopment],
+  technicalGeneralSkills: [webDevelopment],
 };
 
 export const jinja: Skill = {
@@ -1242,7 +1300,7 @@ export const jinja: Skill = {
   category: "Back-End Web Development",
   skillType: "hard",
   slug: "jinja",
-  skills: [webDevelopment],
+  technicalGeneralSkills: [webDevelopment],
 };
 
 export const bootstrap: Skill = {
@@ -1250,7 +1308,7 @@ export const bootstrap: Skill = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "bootstrap",
-  skills: [webDevelopment, userCentricDesign],
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
 };
 
 export const materialUI: Skill = {
@@ -1258,7 +1316,7 @@ export const materialUI: Skill = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "material-ui",
-  skills: [webDevelopment, userCentricDesign],
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
 };
 
 export const semanticUI: Skill = {
@@ -1266,7 +1324,7 @@ export const semanticUI: Skill = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "semantic-ui",
-  skills: [webDevelopment, userCentricDesign],
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
 };
 
 export const antDesign: Skill = {
@@ -1274,7 +1332,7 @@ export const antDesign: Skill = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "ant-design",
-  skills: [webDevelopment, userCentricDesign],
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
 };
 
 export const apollo: Skill = {
@@ -1282,7 +1340,7 @@ export const apollo: Skill = {
   category: "APIs",
   skillType: "hard",
   slug: "apollo",
-  skills: [webDevelopment, apis],
+  technicalGeneralSkills: [webDevelopment, apis],
 };
 
 export const ansible: Skill = {
@@ -1290,7 +1348,7 @@ export const ansible: Skill = {
   category: "DevOps",
   skillType: "hard",
   slug: "ansible",
-  skills: [infrastructureAsCode, devOps, automation],
+  technicalGeneralSkills: [infrastructureAsCode, devOps, automation],
 };
 
 const hardSkills = [

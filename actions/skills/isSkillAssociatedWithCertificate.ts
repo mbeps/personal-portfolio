@@ -11,7 +11,7 @@ export default function isSkillAssociatedWithCertificates(
       skills.some(
         (skill) =>
           skill.slug === skillToCheck.slug ||
-          (skill.skills || []).some(
+          (skill.technicalGeneralSkills || []).some(
             (nestedSkill) => nestedSkill.slug === skillToCheck.slug
           )
       );

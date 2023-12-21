@@ -30,7 +30,7 @@ export default interface Skill {
     | "Automation"
     | "Platform Development"
     | "Soft Skills";
-  skills?: Skill[];
+  technicalGeneralSkills?: Skill[];
   isMainSkill?: boolean;
   skillType: "hard" | "general" | "soft";
 }

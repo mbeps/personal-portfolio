@@ -10,7 +10,7 @@ export default function isSkillAssociatedWithBlogs(
     skills.some(
       (skill) =>
         skill.slug === skillToCheck.slug ||
-        (skill.skills || []).some(
+        (skill.technicalGeneralSkills || []).some(
           (nestedSkill) => nestedSkill.slug === skillToCheck.slug
         )
     );

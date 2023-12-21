@@ -30,8 +30,8 @@ const SkillSection: React.FC = () => {
    * Gets the list of skills from all the languages.
    */
   const allLanguageSkills: Skill[] = languages.reduce((acc, language) => {
-    if (language.skills) {
-      return acc.concat(language.skills);
+    if (language.technicalGeneralSkills) {
+      return acc.concat(language.technicalGeneralSkills);
     }
     return acc;
   }, [] as Skill[]);
