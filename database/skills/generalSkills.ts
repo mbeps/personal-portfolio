@@ -1,17 +1,4 @@
 import Skill from "@/types/skills";
-import {
-  algebra,
-  calculus,
-  discrete,
-  geometry,
-  linearAlgebra,
-  logics,
-  mechanics,
-  probability,
-  statistics,
-  trigonometry,
-  vectors,
-} from "./hardSkills";
 
 export const continuousIntegration: Skill = {
   name: "Continuous Integration",

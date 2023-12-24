@@ -13,11 +13,10 @@ import React from "react";
 import BlogsSection from "./components/BlogsSection";
 import CredentialsSection from "./components/CredentialsSection";
 import ProjectsSection from "./components/ProjectsSection";
-import hardSkills from "@/database/skills/hardSkills";
 
-function extractSlugs(skills: Skill[]): string[] {
-  return skills.map((skill) => skill.slug);
-}
+// function extractSlugs(skills: Skill[]): string[] {
+//   return skills.map((skill) => skill.slug);
+// }
 
 export async function generateMetadata(
   { params, searchParams }: ProjectPageProps,
@@ -32,9 +31,9 @@ export async function generateMetadata(
   };
 }
 
-export const generateStaticParams = async () => {
-  return extractSlugs(hardSkills).map((slug) => ({ slug }));
-};
+// export const generateStaticParams = async () => {
+//   return extractSlugs(allSkills).map((slug) => ({ slug }));
+// };
 
 interface ProjectPageProps {
   params: { slug: string };

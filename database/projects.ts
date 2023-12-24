@@ -1,64 +1,3 @@
-import {
-  auth0,
-  axios,
-  chakraUI,
-  clerkAuth,
-  cloudinary,
-  css,
-  django,
-  docker,
-  firebase,
-  flask,
-  gameMakerStudio,
-  gcp,
-  git,
-  gitHub,
-  gitHubActions,
-  gitLab,
-  headlessUI,
-  html,
-  jest,
-  jotai,
-  junit,
-  jupyterNotebooks,
-  jwt,
-  matplotlib,
-  maven,
-  mongoDB,
-  mySQL,
-  nextUI,
-  nextauth,
-  nextjs,
-  npm,
-  numpy,
-  nxjs,
-  openAI,
-  pandas,
-  pnpm,
-  poetry,
-  postgreSQL,
-  prisma,
-  pusher,
-  pytest,
-  radixUI,
-  react,
-  recoil,
-  replicateAI,
-  rest,
-  scikitLearn,
-  seaborn,
-  shadcnUI,
-  simpleGui,
-  sqlalchemy,
-  storybooks,
-  stripe,
-  supabase,
-  tRPC,
-  tailwindCSS,
-  yarn,
-  zod,
-  zustand,
-} from "@/database/skills/hardSkills";
 import Project from "@/types/projects";
 import {
   gameMakerLanguage,
@@ -87,6 +26,85 @@ import {
   designPatterns,
   oop,
 } from "./skills/generalSkills";
+import {
+  pusher,
+  rest,
+  openAI,
+  replicateAI,
+  tRPC,
+} from "./skills/technicalHardSkills/technicalHardSkillsAPIs";
+import {
+  firebase,
+  nextauth,
+  cloudinary,
+  clerkAuth,
+  stripe,
+  supabase,
+  flask,
+  jwt,
+  django,
+  auth0,
+} from "./skills/technicalHardSkills/technicalHardSkillsBackendWebDev";
+import { gcp } from "./skills/technicalHardSkills/technicalHardSkillsCloudComputing";
+import {
+  mongoDB,
+  prisma,
+  mySQL,
+  postgreSQL,
+  sqlalchemy,
+} from "./skills/technicalHardSkills/technicalHardSkillsDatabases";
+import {
+  docker,
+  gitHubActions,
+} from "./skills/technicalHardSkills/technicalHardSkillsDevOps";
+import {
+  chakraUI,
+  recoil,
+  html,
+  css,
+  tailwindCSS,
+  headlessUI,
+  shadcnUI,
+  radixUI,
+  axios,
+  nextUI,
+  storybooks,
+  jotai,
+  jupyterNotebooks,
+  simpleGui,
+  react,
+  zustand,
+} from "./skills/technicalHardSkills/technicalHardSkillsFrontendWebDev";
+import { nextjs } from "./skills/technicalHardSkills/technicalHardSkillsFullStackWebDev";
+import {
+  scikitLearn,
+  numpy,
+  pandas,
+  matplotlib,
+  seaborn,
+} from "./skills/technicalHardSkills/technicalHardSkillsMLDS";
+import {
+  zod,
+  gameMakerStudio,
+} from "./skills/technicalHardSkills/technicalHardSkillsOthers";
+import {
+  yarn,
+  npm,
+  nxjs,
+  pnpm,
+  poetry,
+  maven,
+} from "./skills/technicalHardSkills/technicalHardSkillsProjectManagers";
+import {
+  jest,
+  pytest,
+  junit,
+} from "./skills/technicalHardSkills/technicalHardSkillsTesting";
+import {
+  git,
+  gitHub,
+  gitLab,
+} from "./skills/technicalHardSkills/technicalHardSkillsVCS";
 
 /**
  * Array of web development projects.

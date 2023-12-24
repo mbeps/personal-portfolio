@@ -41,51 +41,42 @@ import {
   linuxDevelopment,
   automation,
 } from "./skills/generalSkills";
+
 import {
-  html,
-  keras,
-  algebra,
-  statistics,
-  probability,
-  calculus,
-  linearAlgebra,
-  scikitLearn,
-  jenkins,
-  docker,
-  ansible,
-  gitHubActions,
-  kubernetes,
-  travisCI,
-  awsK3s,
-  aws,
-  flask,
+  problemSolving,
+  criticalThinking,
+  timeManagement,
+  riskManagement,
+  stakeholderManagement,
+  communication,
+  scopeManagement,
+  costManagement,
+  qualityManagement,
+  procurementManagement,
+  integrationManagement,
+  humanResourceManagement,
+  creativity,
+  projectManagement,
+  adaptability,
+} from "./skills/softSkills";
+import {
   rest,
-  jwt,
-  mongoDB,
-  css,
-  firebase,
-  gcp,
-  gunicorn,
-  jinja,
-  bootstrap,
-  django,
   graphQL,
   apollo,
-  nextjs,
-  normalisation,
-  redis,
-  discrete,
-  logics,
-  trigonometry,
-  vectors,
-  geometry,
-  mechanics,
-  poetry,
-  pytest,
-  tox,
-  maven,
-  git,
-  gitHub,
+} from "./skills/technicalHardSkills/technicalHardSkillsAPIs";
+import {
+  flask,
+  jwt,
+  firebase,
+  gunicorn,
+  jinja,
+  django,
+  spring,
+} from "./skills/technicalHardSkills/technicalHardSkillsBackendWebDev";
+import {
+  awsK3s,
+  aws,
+  gcp,
   awsEC2,
   awsS3,
   awsVPC,
@@ -107,30 +98,60 @@ import {
   gcpCloudTasks,
   gcpCloudScheduler,
   gcpCloudLogging,
-  spring,
-  react,
-  gradle,
-  junit,
-  gitLab,
-  gitlabCI,
-} from "./skills/hardSkills";
+} from "./skills/technicalHardSkills/technicalHardSkillsCloudComputing";
 import {
-  problemSolving,
-  criticalThinking,
-  timeManagement,
-  riskManagement,
-  stakeholderManagement,
-  communication,
-  scopeManagement,
-  costManagement,
-  qualityManagement,
-  procurementManagement,
-  integrationManagement,
-  humanResourceManagement,
-  creativity,
-  projectManagement,
-  adaptability,
-} from "./skills/softSkills";
+  mongoDB,
+  normalisation,
+  redis,
+} from "./skills/technicalHardSkills/technicalHardSkillsDatabases";
+import {
+  jenkins,
+  docker,
+  gitHubActions,
+  gitlabCI,
+  kubernetes,
+  travisCI,
+  ansible,
+} from "./skills/technicalHardSkills/technicalHardSkillsDevOps";
+import {
+  html,
+  css,
+  bootstrap,
+  react,
+} from "./skills/technicalHardSkills/technicalHardSkillsFrontendWebDev";
+import { nextjs } from "./skills/technicalHardSkills/technicalHardSkillsFullStackWebDev";
+import {
+  keras,
+  scikitLearn,
+} from "./skills/technicalHardSkills/technicalHardSkillsMLDS";
+import {
+  algebra,
+  statistics,
+  probability,
+  calculus,
+  linearAlgebra,
+  discrete,
+  logics,
+  trigonometry,
+  vectors,
+  geometry,
+  mechanics,
+} from "./skills/technicalHardSkills/technicalHardSkillsMaths";
+import {
+  poetry,
+  tox,
+  maven,
+  gradle,
+} from "./skills/technicalHardSkills/technicalHardSkillsProjectManagers";
+import {
+  pytest,
+  junit,
+} from "./skills/technicalHardSkills/technicalHardSkillsTesting";
+import {
+  gitLab,
+  git,
+  gitHub,
+} from "./skills/technicalHardSkills/technicalHardSkillsVCS";
 
 const programmingLanguagesCertificates: Certificate[] = [
   {

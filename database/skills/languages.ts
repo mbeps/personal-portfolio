@@ -2,36 +2,46 @@ import Skill from "@/types/skills";
 import {
   flask,
   django,
+  nextauth,
+  springBoot,
+  spring,
+} from "./technicalHardSkills/technicalHardSkillsBackendWebDev";
+import {
+  sqlalchemy,
+  prisma,
+  drizzle,
+  mongoose,
+  hibernate,
+} from "./technicalHardSkills/technicalHardSkillsDatabases";
+import {
+  jupyterNotebooks,
+  react,
+} from "./technicalHardSkills/technicalHardSkillsFrontendWebDev";
+import { nextjs } from "./technicalHardSkills/technicalHardSkillsFullStackWebDev";
+import {
   scikitLearn,
   pandas,
   numpy,
   matplotlib,
   seaborn,
   keras,
-  jupyterNotebooks,
-  pytest,
-  unittest,
-  sqlalchemy,
+} from "./technicalHardSkills/technicalHardSkillsMLDS";
+import {
   poetry,
   pybuilder,
-  nextjs,
-  nextauth,
-  jest,
-  vitest,
-  prisma,
-  drizzle,
-  mongoose,
   npm,
   yarn,
   pnpm,
   maven,
   gradle,
+} from "./technicalHardSkills/technicalHardSkillsProjectManagers";
+import {
+  pytest,
+  unittest,
+  jest,
+  vitest,
   junit,
-  springBoot,
-  hibernate,
-  react,
-  spring,
-} from "./hardSkills";
+} from "./technicalHardSkills/technicalHardSkillsTesting";
 
 export const python: Skill = {
   name: "Python",

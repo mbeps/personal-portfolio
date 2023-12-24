@@ -1,5 +1,3 @@
-import groupSkills from "@/actions/skills/groupSkills";
-import hardSkills from "@/database/skills/hardSkills";
 import { languages } from "@/database/skills/languages";
 import Skill from "@/types/skills";
 import Link from "next/link";
