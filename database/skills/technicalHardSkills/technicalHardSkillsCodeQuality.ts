@@ -4,7 +4,7 @@ export const black: Skill = {
   name: "Black",
   category: "Code Quality",
   isMainSkill: false,
-  skillType: "general",
+  skillType: "hard",
   slug: "black-linting",
 };
 

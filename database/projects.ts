@@ -104,7 +104,13 @@ import {
   prisma,
   sqlalchemy,
 } from "./skills/technicalHardSkills/technicalHardSkillsORMs";
-import { zod } from "./skills/technicalHardSkills/technicalHardSkillsCodeQuality";
+import {
+  black,
+  checkstyle,
+  eslint,
+  prettier,
+  zod,
+} from "./skills/technicalHardSkills/technicalHardSkillsCodeQuality";
 
 /**
  * Array of web development projects.
@@ -136,6 +142,8 @@ const webdevProjects: Project[] = [
       html,
       css,
       yarn,
+      eslint,
+      prettier,
     ],
     softSkills: [
       problemSolving,
@@ -182,6 +190,8 @@ const webdevProjects: Project[] = [
       html,
       css,
       yarn,
+      eslint,
+      prettier,
     ],
     softSkills: [
       problemSolving,
@@ -225,6 +235,8 @@ const webdevProjects: Project[] = [
       html,
       css,
       yarn,
+      eslint,
+      prettier,
     ],
     softSkills: [
       problemSolving,
@@ -260,6 +272,8 @@ const webdevProjects: Project[] = [
       html,
       css,
       yarn,
+      eslint,
+      prettier,
     ],
     softSkills: [
       problemSolving,
@@ -306,6 +320,8 @@ const extraWebDevProjects: Project[] = [
       html,
       css,
       yarn,
+      eslint,
+      prettier,
     ],
     softSkills: [
       problemSolving,
@@ -380,6 +396,8 @@ const extraWebDevProjects: Project[] = [
       html,
       css,
       pnpm,
+      eslint,
+      prettier,
     ],
     extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
     softSkills: [
@@ -417,6 +435,8 @@ const extraWebDevProjects: Project[] = [
       html,
       css,
       yarn,
+      eslint,
+      prettier,
     ],
     softSkills: [
       problemSolving,
@@ -453,6 +473,7 @@ const backendWebDevProjects: Project[] = [
       git,
       html,
       css,
+      black,
     ],
     softSkills: [
       problemSolving,
@@ -571,6 +592,7 @@ const machineLearningProjects: Project[] = [
       gitHub,
       git,
       poetry,
+      black,
     ],
     softSkills: [
       problemSolving,
@@ -598,6 +620,7 @@ const machineLearningProjects: Project[] = [
       gitHub,
       git,
       poetry,
+      black,
     ],
     softSkills: [
       problemSolving,
@@ -625,6 +648,7 @@ const machineLearningProjects: Project[] = [
       jupyterNotebooks,
       gitHub,
       git,
+      black,
     ],
     softSkills: [
       problemSolving,
@@ -653,6 +677,7 @@ const machineLearningProjects: Project[] = [
       jupyterNotebooks,
       gitHub,
       git,
+      black,
     ],
     softSkills: [
       problemSolving,
@@ -681,6 +706,7 @@ const machineLearningProjects: Project[] = [
       jupyterNotebooks,
       gitHub,
       git,
+      black,
     ],
     softSkills: [
       problemSolving,
@@ -709,6 +735,7 @@ const machineLearningProjects: Project[] = [
       gitHub,
       git,
       poetry,
+      black,
     ],
     softSkills: [
       problemSolving,
@@ -766,6 +793,7 @@ const gameDevProjects: Project[] = [
       adaptability,
       leadership,
       teamwork,
+      black,
     ],
     category: "Game Development",
     hasImage: true,
@@ -1037,6 +1065,7 @@ const otherProjects: Project[] = [
       poetry,
       gitHub,
       git,
+      black,
     ],
     softSkills: [
       problemSolving,
@@ -1107,7 +1136,7 @@ const javaAssignments: Project[] = [
       The assignment highlighted the significance of following efficient software development processes rather than just focusing on the final implementation.  `,
     repositoryURL: `https://github.com/mbeps/Calculator-Assignment`,
     programmingLanguage: java,
-    technologySkills: [maven, junit, gitHub, git],
+    technologySkills: [maven, junit, gitHub, git, checkstyle],
     softSkills: [
       problemSolving,
       projectManagement,
