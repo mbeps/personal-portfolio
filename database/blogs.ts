@@ -37,13 +37,7 @@ import {
   supabase,
   pocketbase,
 } from "./skills/technicalHardSkills/technicalHardSkillsBackendWebDev";
-import {
-  prisma,
-  mongoose,
-  sqlalchemy,
-  hibernate,
-  normalisation,
-} from "./skills/technicalHardSkills/technicalHardSkillsDatabases";
+import { normalisation } from "./skills/technicalHardSkills/technicalHardSkillsDatabases";
 import {
   docker,
   kubernetes,
@@ -60,6 +54,12 @@ import {
   angular,
 } from "./skills/technicalHardSkills/technicalHardSkillsFullStackWebDev";
 import { git } from "./skills/technicalHardSkills/technicalHardSkillsVCS";
+import {
+  prisma,
+  mongoose,
+  sqlalchemy,
+  hibernate,
+} from "./skills/technicalHardSkills/technicalHardSkillsORMs";
 
 const blogs: Blog[] = [
   {

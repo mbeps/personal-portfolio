@@ -14,6 +14,8 @@ import technicalHardSkillsOthers from "./technicalHardSkills/technicalHardSkills
 import technicalHardSkillsProjectManagers from "./technicalHardSkills/technicalHardSkillsProjectManagers";
 import technicalHardSkillsTesting from "./technicalHardSkills/technicalHardSkillsTesting";
 import technicalHardSkillsVCS from "./technicalHardSkills/technicalHardSkillsVCS";
+import technicalHardSkillsORMs from "./technicalHardSkills/technicalHardSkillsORMs";
+import technicalHardSkillsCodeQuality from "./technicalHardSkills/technicalHardSkillsCodeQuality";
 
 const allHardSkills: Skill[] = [
   ...technicalHardSkillsFullStackWebDev,
@@ -29,6 +31,8 @@ const allHardSkills: Skill[] = [
   ...technicalHardSkillsProjectManagers,
   ...technicalHardSkillsTesting,
   ...technicalHardSkillsVCS,
+  ...technicalHardSkillsORMs,
+  ...technicalHardSkillsCodeQuality,
 ];
 
 const allSkills: Skill[] = [...allHardSkills, ...generalSkills, ...softSkills];

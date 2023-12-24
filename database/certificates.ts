@@ -35,7 +35,6 @@ import {
   indexing,
   noSql,
   linting,
-  black,
   designPatterns,
   webDevelopment,
   linuxDevelopment,
@@ -152,6 +151,7 @@ import {
   git,
   gitHub,
 } from "./skills/technicalHardSkills/technicalHardSkillsVCS";
+import { black } from "./skills/technicalHardSkills/technicalHardSkillsCodeQuality";
 
 const programmingLanguagesCertificates: Certificate[] = [
   {

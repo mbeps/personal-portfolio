@@ -76,6 +76,15 @@ export const keras: Skill = {
   ],
 };
 
+export const jupyterNotebooks: Skill = {
+  name: "Jupyter Notebooks",
+  category: "Data Science",
+  isMainSkill: true,
+  skillType: "hard",
+  slug: "juptyer-notebooks",
+  technicalGeneralSkills: [dataScience],
+};
+
 const technicalHardSkillsMachineLearning: Skill[] = [
   scikitLearn,
   pandas,
@@ -83,6 +92,7 @@ const technicalHardSkillsMachineLearning: Skill[] = [
   matplotlib,
   seaborn,
   keras,
+  jupyterNotebooks,
 ];
 
 export default technicalHardSkillsMachineLearning;

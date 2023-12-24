@@ -59,15 +59,6 @@ export const vue: Skill = {
   technicalGeneralSkills: [webDevelopment, userCentricDesign],
 };
 
-export const jupyterNotebooks: Skill = {
-  name: "Jupyter Notebooks",
-  category: "Data Science",
-  isMainSkill: true,
-  skillType: "hard",
-  slug: "juptyer-notebooks",
-  technicalGeneralSkills: [dataScience],
-};
-
 export const chakraUI: Skill = {
   name: "Chakra UI",
   category: "Front-End Web Development",

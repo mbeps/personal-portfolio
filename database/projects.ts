@@ -48,10 +48,8 @@ import {
 import { gcp } from "./skills/technicalHardSkills/technicalHardSkillsCloudComputing";
 import {
   mongoDB,
-  prisma,
   mySQL,
   postgreSQL,
-  sqlalchemy,
 } from "./skills/technicalHardSkills/technicalHardSkillsDatabases";
 import {
   docker,
@@ -70,7 +68,6 @@ import {
   nextUI,
   storybooks,
   jotai,
-  jupyterNotebooks,
   simpleGui,
   react,
   zustand,
@@ -82,11 +79,9 @@ import {
   pandas,
   matplotlib,
   seaborn,
+  jupyterNotebooks,
 } from "./skills/technicalHardSkills/technicalHardSkillsMLDS";
-import {
-  zod,
-  gameMakerStudio,
-} from "./skills/technicalHardSkills/technicalHardSkillsOthers";
+import { gameMakerStudio } from "./skills/technicalHardSkills/technicalHardSkillsOthers";
 import {
   yarn,
   npm,
@@ -105,6 +100,11 @@ import {
   gitHub,
   gitLab,
 } from "./skills/technicalHardSkills/technicalHardSkillsVCS";
+import {
+  prisma,
+  sqlalchemy,
+} from "./skills/technicalHardSkills/technicalHardSkillsORMs";
+import { zod } from "./skills/technicalHardSkills/technicalHardSkillsCodeQuality";
 
 /**
  * Array of web development projects.

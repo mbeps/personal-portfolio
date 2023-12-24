@@ -6,17 +6,7 @@ import {
   springBoot,
   spring,
 } from "./technicalHardSkills/technicalHardSkillsBackendWebDev";
-import {
-  sqlalchemy,
-  prisma,
-  drizzle,
-  mongoose,
-  hibernate,
-} from "./technicalHardSkills/technicalHardSkillsDatabases";
-import {
-  jupyterNotebooks,
-  react,
-} from "./technicalHardSkills/technicalHardSkillsFrontendWebDev";
+import { react } from "./technicalHardSkills/technicalHardSkillsFrontendWebDev";
 import { nextjs } from "./technicalHardSkills/technicalHardSkillsFullStackWebDev";
 import {
   scikitLearn,
@@ -25,6 +15,7 @@ import {
   matplotlib,
   seaborn,
   keras,
+  jupyterNotebooks,
 } from "./technicalHardSkills/technicalHardSkillsMLDS";
 import {
   poetry,
@@ -42,6 +33,13 @@ import {
   vitest,
   junit,
 } from "./technicalHardSkills/technicalHardSkillsTesting";
+import {
+  sqlalchemy,
+  prisma,
+  drizzle,
+  mongoose,
+  hibernate,
+} from "./technicalHardSkills/technicalHardSkillsORMs";
 
 export const python: Skill = {
   name: "Python",

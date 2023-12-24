@@ -40,14 +40,6 @@ export const linting: Skill = {
   slug: "linting",
 };
 
-export const black: Skill = {
-  name: "Black",
-  category: "Code Quality",
-  isMainSkill: false,
-  skillType: "general",
-  slug: "black-linting",
-};
-
 export const oop: Skill = {
   name: "Object Oriented Programming",
   category: "Programming Paradigms",
@@ -389,7 +381,6 @@ const generalSkills = [
   continuousDeployment,
   devOps,
   linting,
-  black,
   oop,
   functionalProgramming,
   algorithms,
