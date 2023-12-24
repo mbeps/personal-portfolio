@@ -1,65 +1,3 @@
-import {
-  auth0,
-  axios,
-  chakraUI,
-  clerkAuth,
-  cloudinary,
-  css,
-  django,
-  docker,
-  firebase,
-  flask,
-  gameMakerStudio,
-  gcp,
-  git,
-  gitHub,
-  gitHubActions,
-  gitLab,
-  headlessUI,
-  html,
-  jest,
-  jotai,
-  junit,
-  jupyterNotebooks,
-  jwt,
-  matplotlib,
-  maven,
-  mongoDB,
-  mySQL,
-  nextUI,
-  nextauth,
-  nextjs,
-  nodejs,
-  npm,
-  numpy,
-  nxjs,
-  openAI,
-  pandas,
-  pnpm,
-  poetry,
-  postgreSQL,
-  prisma,
-  pusher,
-  pytest,
-  radixUI,
-  react,
-  recoil,
-  replicateAI,
-  rest,
-  scikitLearn,
-  seaborn,
-  shadcnUI,
-  simpleGui,
-  sqlalchemy,
-  storybooks,
-  stripe,
-  supabase,
-  tRPC,
-  tailwindCSS,
-  yarn,
-  zod,
-  zustand,
-} from "@/database/skills/hardSkills";
 import Project from "@/types/projects";
 import {
   gameMakerLanguage,
@@ -88,6 +26,85 @@ import {
   designPatterns,
   oop,
 } from "./skills/generalSkills";
+import {
+  pusher,
+  rest,
+  openAI,
+  replicateAI,
+  tRPC,
+} from "./skills/technicalHardSkills/technicalHardSkillsAPIs";
+import {
+  firebase,
+  nextauth,
+  cloudinary,
+  clerkAuth,
+  stripe,
+  supabase,
+  flask,
+  jwt,
+  django,
+  auth0,
+} from "./skills/technicalHardSkills/technicalHardSkillsBackendWebDev";
+import { gcp } from "./skills/technicalHardSkills/technicalHardSkillsCloudComputing";
+import {
+  mongoDB,
+  mySQL,
+  postgreSQL,
+} from "./skills/technicalHardSkills/technicalHardSkillsDatabases";
+import {
+  docker,
+  gitHubActions,
+} from "./skills/technicalHardSkills/technicalHardSkillsDevOps";
+import {
+  chakraUI,
+  recoil,
+  html,
+  css,
+  tailwindCSS,
+  headlessUI,
+  shadcnUI,
+  radixUI,
+  axios,
+  nextUI,
+  storybooks,
+  jotai,
+  simpleGui,
+  react,
+  zustand,
+} from "./skills/technicalHardSkills/technicalHardSkillsFrontendWebDev";
+import { nextjs } from "./skills/technicalHardSkills/technicalHardSkillsFullStackWebDev";
+import {
+  scikitLearn,
+  numpy,
+  pandas,
+  matplotlib,
+  seaborn,
+  jupyterNotebooks,
+} from "./skills/technicalHardSkills/technicalHardSkillsMLDS";
+import { gameMakerStudio } from "./skills/technicalHardSkills/technicalHardSkillsOthers";
+import {
+  yarn,
+  npm,
+  nxjs,
+  pnpm,
+  poetry,
+  maven,
+} from "./skills/technicalHardSkills/technicalHardSkillsProjectManagers";
+import {
+  jest,
+  pytest,
+  junit,
+} from "./skills/technicalHardSkills/technicalHardSkillsTesting";
+import {
+  git,
+  gitHub,
+  gitLab,
+} from "./skills/technicalHardSkills/technicalHardSkillsVCS";
+import {
+  prisma,
+  sqlalchemy,
+} from "./skills/technicalHardSkills/technicalHardSkillsORMs";
+import { zod } from "./skills/technicalHardSkills/technicalHardSkillsCodeQuality";
 
 /**
  * Array of web development projects.
@@ -111,7 +128,6 @@ const webdevProjects: Project[] = [
       react,
       chakraUI,
       firebase,
-      nodejs,
       recoil,
       docker,
       gitHubActions,
@@ -150,7 +166,6 @@ const webdevProjects: Project[] = [
     technologySkills: [
       nextjs,
       react,
-      nodejs,
       nextauth,
       mongoDB,
       prisma,
@@ -195,7 +210,6 @@ const webdevProjects: Project[] = [
       shadcnUI,
       radixUI,
       tailwindCSS,
-      nodejs,
       mySQL,
       zustand,
       clerkAuth,
@@ -235,7 +249,6 @@ const webdevProjects: Project[] = [
     technologySkills: [
       nextjs,
       react,
-      nodejs,
       supabase,
       postgreSQL,
       tailwindCSS,
@@ -280,7 +293,6 @@ const extraWebDevProjects: Project[] = [
       react,
       tailwindCSS,
       shadcnUI,
-      nodejs,
       prisma,
       axios,
       nextauth,
@@ -355,7 +367,6 @@ const extraWebDevProjects: Project[] = [
       react,
       shadcnUI,
       tailwindCSS,
-      nodejs,
       clerkAuth,
       mySQL,
       prisma,
@@ -397,7 +408,6 @@ const extraWebDevProjects: Project[] = [
       nextjs,
       react,
       tailwindCSS,
-      nodejs,
       jotai,
       supabase,
       postgreSQL,
@@ -504,7 +514,7 @@ const backendWebDevProjects: Project[] = [
       `,
     programmingLanguage: typescript,
     repositoryURL: `https://github.com/mbeps/clerk-demo`,
-    technologySkills: [nextjs, clerkAuth, nodejs, gitHub, git, html, css, yarn],
+    technologySkills: [nextjs, clerkAuth, gitHub, git, html, css, yarn],
     softSkills: [
       problemSolving,
       projectManagement,
@@ -525,7 +535,7 @@ const backendWebDevProjects: Project[] = [
       `,
     programmingLanguage: typescript,
     repositoryURL: `https://github.com/mbeps/nextjs-auth0`,
-    technologySkills: [nextjs, auth0, nodejs, gitHub, git, html, css, yarn],
+    technologySkills: [nextjs, auth0, gitHub, git, html, css, yarn],
     softSkills: [
       problemSolving,
       projectManagement,

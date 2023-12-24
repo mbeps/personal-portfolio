@@ -35,58 +35,47 @@ import {
   indexing,
   noSql,
   linting,
-  black,
   designPatterns,
   webDevelopment,
   linuxDevelopment,
   automation,
 } from "./skills/generalSkills";
+
 import {
-  html,
-  keras,
-  algebra,
-  statistics,
-  probability,
-  calculus,
-  linearAlgebra,
-  scikitLearn,
-  jenkins,
-  docker,
-  ansible,
-  gitHubActions,
-  kubernetes,
-  travisCI,
-  k3s,
-  aws,
-  flask,
+  problemSolving,
+  criticalThinking,
+  timeManagement,
+  riskManagement,
+  stakeholderManagement,
+  communication,
+  scopeManagement,
+  costManagement,
+  qualityManagement,
+  procurementManagement,
+  integrationManagement,
+  humanResourceManagement,
+  creativity,
+  projectManagement,
+  adaptability,
+} from "./skills/softSkills";
+import {
   rest,
-  jwt,
-  nodejs,
-  mongoDB,
-  css,
-  firebase,
-  gcp,
-  gunicorn,
-  jinja,
-  bootstrap,
-  django,
   graphQL,
   apollo,
-  nextjs,
-  normalisation,
-  redis,
-  discrete,
-  logics,
-  trigonometry,
-  vectors,
-  geometry,
-  mechanics,
-  poetry,
-  pytest,
-  tox,
-  maven,
-  git,
-  gitHub,
+} from "./skills/technicalHardSkills/technicalHardSkillsAPIs";
+import {
+  flask,
+  jwt,
+  firebase,
+  gunicorn,
+  jinja,
+  django,
+  spring,
+} from "./skills/technicalHardSkills/technicalHardSkillsBackendWebDev";
+import {
+  awsK3s,
+  aws,
+  gcp,
   awsEC2,
   awsS3,
   awsVPC,
@@ -108,30 +97,61 @@ import {
   gcpCloudTasks,
   gcpCloudScheduler,
   gcpCloudLogging,
-  spring,
-  react,
-  gradle,
-  junit,
-  gitLab,
-  gitlabCI,
-} from "./skills/hardSkills";
+} from "./skills/technicalHardSkills/technicalHardSkillsCloudComputing";
 import {
-  problemSolving,
-  criticalThinking,
-  timeManagement,
-  riskManagement,
-  stakeholderManagement,
-  communication,
-  scopeManagement,
-  costManagement,
-  qualityManagement,
-  procurementManagement,
-  integrationManagement,
-  humanResourceManagement,
-  creativity,
-  projectManagement,
-  adaptability,
-} from "./skills/softSkills";
+  mongoDB,
+  normalisation,
+  redis,
+} from "./skills/technicalHardSkills/technicalHardSkillsDatabases";
+import {
+  jenkins,
+  docker,
+  gitHubActions,
+  gitlabCI,
+  kubernetes,
+  travisCI,
+  ansible,
+} from "./skills/technicalHardSkills/technicalHardSkillsDevOps";
+import {
+  html,
+  css,
+  bootstrap,
+  react,
+} from "./skills/technicalHardSkills/technicalHardSkillsFrontendWebDev";
+import { nextjs } from "./skills/technicalHardSkills/technicalHardSkillsFullStackWebDev";
+import {
+  keras,
+  scikitLearn,
+} from "./skills/technicalHardSkills/technicalHardSkillsMLDS";
+import {
+  algebra,
+  statistics,
+  probability,
+  calculus,
+  linearAlgebra,
+  discrete,
+  logics,
+  trigonometry,
+  vectors,
+  geometry,
+  mechanics,
+} from "./skills/technicalHardSkills/technicalHardSkillsMaths";
+import {
+  poetry,
+  tox,
+  maven,
+  gradle,
+} from "./skills/technicalHardSkills/technicalHardSkillsProjectManagers";
+import {
+  pytest,
+  junit,
+} from "./skills/technicalHardSkills/technicalHardSkillsTesting";
+import {
+  gitLab,
+  git,
+  gitHub,
+} from "./skills/technicalHardSkills/technicalHardSkillsVCS";
+import { black } from "./skills/technicalHardSkills/technicalHardSkillsCodeQuality";
 
 const programmingLanguagesCertificates: Certificate[] = [
   {
@@ -910,7 +930,7 @@ const devOpsCertificates: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/a63c2359250f6a04bd19dab4ebd049edb511a1a9f2c3ef66a0a8d1df004f7d8d",
-    technicalSkills: [devOps, kubernetes, docker, k3s, aws],
+    technicalSkills: [devOps, kubernetes, docker, awsK3s, aws],
     softSkills: [problemSolving, criticalThinking],
     description: `This course provides a focused guide on how to provision Kubernetes clusters using kind. It covers the challenges of installing Kubernetes and its prerequisites, and demonstrates how to deploy Kubernetes in Docker using K3s, in both single- and multinode clusters. This course is designed to polish your skills in Kubernetes, containerization, and clusterization.`,
     learningOutcomes: [
@@ -1039,7 +1059,7 @@ const webDevelopmentCertificates: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/c00cb40bda2152dd86d29b813b0d1b172123452a0b87b6017aec13115e693487",
-    technicalSkills: [rest, nodejs, mongoDB, databases],
+    technicalSkills: [rest, mongoDB, databases],
     softSkills: [problemSolving, criticalThinking],
     description: `This course guides learners on how to create a simple, RESTful web API using Node.js and Express, popular JavaScript libraries. It covers setting up the project, including the Express server and testing environment, and creating endpoints for data manipulation in a MongoDB database. The course also explores serving static files like images with the API and introduces additional libraries, such as Koa and LoopBack, that can streamline API development. It's designed for those interested in back-end programming without the need for extensive knowledge in the area.`,
     learningOutcomes: [
@@ -1175,7 +1195,7 @@ const webDevelopmentCertificates: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/ef41e5cf67f7657353febca7c6b206bf7dd8e28497c393790d8a266842c81132",
-    technicalSkills: [nodejs, javascript],
+    technicalSkills: [javascript],
     softSkills: [problemSolving, criticalThinking],
     description: `
     Node.js is a powerful tool for controlling servers, building web applications, and creating event-driven programs. And it takes JavaScript—a language familiar to all web developers—out of the browser. With Node.js, you can build applications that run on your laptop or even the cloud. In this course, learn the essentials of Node.js and start creating your own JavaScript applications. This course shows how to install Node.js and work with the Node.js core, which includes standard input, standard output, the module system, the file system, and how to write and run JavaScript on the server. Upon wrapping up this course, you'll be equipped with fundamental Node.js concepts and techniques that you can put to use in your next project.

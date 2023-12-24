@@ -24,32 +24,42 @@ import {
   artificialIntelligence,
 } from "./skills/generalSkills";
 import {
-  docker,
-  kubernetes,
-  rest,
-  graphQL,
-  firebase,
-  supabase,
-  pocketbase,
-  git,
-  html,
-  css,
-  react,
-  nextjs,
-  angular,
-  svelte,
-  vue,
-  prisma,
-  mongoose,
-  sqlalchemy,
-  hibernate,
-  normalisation,
-} from "./skills/hardSkills";
-import {
   criticalThinking,
   problemSolving,
   projectManagement,
 } from "./skills/softSkills";
+import {
+  rest,
+  graphQL,
+} from "./skills/technicalHardSkills/technicalHardSkillsAPIs";
+import {
+  firebase,
+  supabase,
+  pocketbase,
+} from "./skills/technicalHardSkills/technicalHardSkillsBackendWebDev";
+import { normalisation } from "./skills/technicalHardSkills/technicalHardSkillsDatabases";
+import {
+  docker,
+  kubernetes,
+} from "./skills/technicalHardSkills/technicalHardSkillsDevOps";
+import {
+  html,
+  css,
+  svelte,
+  vue,
+  react,
+} from "./skills/technicalHardSkills/technicalHardSkillsFrontendWebDev";
+import {
+  nextjs,
+  angular,
+} from "./skills/technicalHardSkills/technicalHardSkillsFullStackWebDev";
+import { git } from "./skills/technicalHardSkills/technicalHardSkillsVCS";
+import {
+  prisma,
+  mongoose,
+  sqlalchemy,
+  hibernate,
+} from "./skills/technicalHardSkills/technicalHardSkillsORMs";
 
 const blogs: Blog[] = [
   {

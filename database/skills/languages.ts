@@ -2,6 +2,24 @@ import Skill from "@/types/skills";
 import {
   flask,
   django,
+  nextauth,
+  springBoot,
+  spring,
+  gunicorn,
+  jinja,
+  express,
+} from "./technicalHardSkills/technicalHardSkillsBackendWebDev";
+import {
+  react,
+  svelte,
+  vue,
+} from "./technicalHardSkills/technicalHardSkillsFrontendWebDev";
+import {
+  nextjs,
+  nuxtjs,
+  svelteKit,
+} from "./technicalHardSkills/technicalHardSkillsFullStackWebDev";
+import {
   scikitLearn,
   pandas,
   numpy,
@@ -9,34 +27,42 @@ import {
   seaborn,
   keras,
   jupyterNotebooks,
-  pytest,
-  unittest,
-  sqlalchemy,
+} from "./technicalHardSkills/technicalHardSkillsMLDS";
+import {
   poetry,
   pybuilder,
-  nextjs,
-  nextauth,
-  nodejs,
-  jest,
-  vitest,
-  prisma,
-  drizzle,
-  mongoose,
   npm,
   yarn,
   pnpm,
   maven,
   gradle,
+  nxjs,
+} from "./technicalHardSkills/technicalHardSkillsProjectManagers";
+import {
+  pytest,
+  unittest,
+  jest,
+  vitest,
   junit,
-  springBoot,
+} from "./technicalHardSkills/technicalHardSkillsTesting";
+import {
+  sqlalchemy,
+  prisma,
+  drizzle,
+  mongoose,
   hibernate,
-  react,
-  spring,
-} from "./hardSkills";
+} from "./technicalHardSkills/technicalHardSkillsORMs";
+import {
+  black,
+  eslint,
+  prettier,
+  pyLint,
+  zod,
+} from "./technicalHardSkills/technicalHardSkillsCodeQuality";
 
 export const python: Skill = {
   name: "Python",
-  skills: [
+  technicalHardSkills: [
     flask,
     django,
     scikitLearn,
@@ -51,6 +77,10 @@ export const python: Skill = {
     sqlalchemy,
     poetry,
     pybuilder,
+    gunicorn,
+    jinja,
+    pyLint,
+    black,
   ],
   isMainSkill: true,
   skillType: "hard",
@@ -60,11 +90,14 @@ export const python: Skill = {
 
 export const javascript: Skill = {
   name: "JavaScript",
-  skills: [
+  technicalHardSkills: [
     nextjs,
     nextauth,
-    nodejs,
     react,
+    vue,
+    svelte,
+    nuxtjs,
+    svelteKit,
     jest,
     vitest,
     prisma,
@@ -73,6 +106,11 @@ export const javascript: Skill = {
     npm,
     yarn,
     pnpm,
+    express,
+    nxjs,
+    zod,
+    eslint,
+    prettier,
   ],
   isMainSkill: true,
   skillType: "hard",
@@ -82,11 +120,14 @@ export const javascript: Skill = {
 
 export const typescript: Skill = {
   name: "TypeScript",
-  skills: [
+  technicalHardSkills: [
     nextjs,
     nextauth,
-    nodejs,
     react,
+    vue,
+    svelte,
+    nuxtjs,
+    svelteKit,
     jest,
     vitest,
     prisma,
@@ -95,6 +136,11 @@ export const typescript: Skill = {
     npm,
     yarn,
     pnpm,
+    express,
+    nxjs,
+    zod,
+    eslint,
+    prettier,
   ],
   isMainSkill: true,
   skillType: "hard",
@@ -104,7 +150,7 @@ export const typescript: Skill = {
 
 export const java: Skill = {
   name: "Java",
-  skills: [maven, gradle, junit, spring, springBoot, hibernate],
+  technicalHardSkills: [maven, gradle, junit, spring, springBoot, hibernate],
   isMainSkill: true,
   skillType: "hard",
   category: "Programming Languages",
@@ -112,7 +158,7 @@ export const java: Skill = {
 };
 
 export const gameMakerLanguage: Skill = {
-  name: "GameMaker Skill",
+  name: "GameMaker Language",
   isMainSkill: false,
   skillType: "hard",
   category: "Programming Languages",

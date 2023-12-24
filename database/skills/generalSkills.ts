@@ -1,17 +1,4 @@
 import Skill from "@/types/skills";
-import {
-  algebra,
-  calculus,
-  discrete,
-  geometry,
-  linearAlgebra,
-  logics,
-  mechanics,
-  probability,
-  statistics,
-  trigonometry,
-  vectors,
-} from "./hardSkills";
 
 export const continuousIntegration: Skill = {
   name: "Continuous Integration",
@@ -51,14 +38,6 @@ export const linting: Skill = {
   isMainSkill: false,
   skillType: "general",
   slug: "linting",
-};
-
-export const black: Skill = {
-  name: "Black",
-  category: "Code Quality",
-  isMainSkill: false,
-  skillType: "general",
-  slug: "black-linting",
 };
 
 export const oop: Skill = {
@@ -402,7 +381,6 @@ const generalSkills = [
   continuousDeployment,
   devOps,
   linting,
-  black,
   oop,
   functionalProgramming,
   algorithms,

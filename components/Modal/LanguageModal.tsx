@@ -41,7 +41,10 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
   onClose,
 }) => {
   const [groupedBy, setGroupedBy] = useState("category");
-  const groupedSkills = groupSkills(groupedBy, language.skills || []);
+  const groupedSkills = groupSkills(
+    groupedBy,
+    language.technicalGeneralSkills || []
+  );
 
   const projects = allProjects;
   const certificates = allCertificates;

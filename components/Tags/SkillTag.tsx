@@ -12,6 +12,7 @@ import blogs from "@/database/blogs";
 import certificates from "@/database/certificates";
 import allProjects from "@/database/projects";
 import allSkills from "@/database/skills/skills";
+import hasAssociatedSkills from "@/actions/skills/hasAssociatedSkills";
 
 interface TagProps {
   skill: Skill;
@@ -27,7 +28,8 @@ const SkillTag: React.FC<TagProps> = ({ skill }) => {
   const hasProjects = isSkillAssociatedWithProject(skill, projects);
   const hasCertificates = isSkillAssociatedWithCertificate(skill, certificates);
   const hasBlogs = isSkillAssociatedWithBlogs(skill, allBlogs);
-  const hasMaterial = hasProjects || hasCertificates || hasBlogs;
+  const hasSkill = hasAssociatedSkills(skill, skills);
+  const hasMaterial = hasProjects || hasCertificates || hasBlogs || hasSkill;
 
   let skillLink = `/skills/${skill.slug}`;
   if (!hasMaterial) {

@@ -23,8 +23,13 @@ const ProjectsSection: React.FC<ProjectPageProps> = ({ projects, skill }) => {
       }
 
       // Check nested skills, if any
-      if (skill.skills && skill.skills.length > 0) {
-        return skill.skills.some((subSkill) => skillMatches(subSkill));
+      if (
+        skill.technicalGeneralSkills &&
+        skill.technicalGeneralSkills.length > 0
+      ) {
+        return skill.technicalGeneralSkills.some((subSkill) =>
+          skillMatches(subSkill)
+        );
       }
 
       return false;

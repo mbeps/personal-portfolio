@@ -16,7 +16,7 @@ export default function isSkillAssociatedWithProject(
       projectSkills.some(
         (projectSkill) =>
           projectSkill.slug === skill.slug ||
-          (projectSkill.skills || []).some(
+          (projectSkill.technicalGeneralSkills || []).some(
             (nestedSkill) => nestedSkill.slug === skill.slug
           )
       );

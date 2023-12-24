@@ -200,8 +200,8 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     ...allProjects
       .flatMap((project: Project) =>
         project.technologySkills.flatMap((skill: Skill) =>
-          skill.skills
-            ? skill.skills.map((subSkill: Skill) => ({
+          skill.technicalGeneralSkills
+            ? skill.technicalGeneralSkills.map((subSkill: Skill) => ({
                 slug: subSkill.slug,
                 entryName: subSkill.name,
               }))
@@ -268,7 +268,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
         (skill) =>
           (skill.skillType === "general" &&
             stringToSlug(skill.slug) === stringToSlug(selectedGeneralSkill)) ||
-          (skill.skills || []).some(
+          (skill.technicalGeneralSkills || []).some(
             (nestedSkill) =>
               stringToSlug(nestedSkill.slug) ===
               stringToSlug(selectedGeneralSkill)

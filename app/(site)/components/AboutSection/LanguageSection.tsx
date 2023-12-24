@@ -31,7 +31,9 @@ const LanguageSection: React.FC = () => {
    */
   const getSkillsByLanguage = (languageName: string): Skill[] => {
     const language = languages.find((lang) => lang.name === languageName);
-    return language && language.skills ? language.skills : [];
+    return language && language.technicalGeneralSkills
+      ? language.technicalGeneralSkills
+      : [];
   };
 
   const mainLanguages = languages.filter((lang) => lang.isMainSkill);
