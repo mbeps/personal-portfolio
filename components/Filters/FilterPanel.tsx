@@ -72,8 +72,14 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
           border-1.5 
           border-neutral-200 dark:border-neutral-700 
           bg-neutral-100 dark:bg-black 
-          overflow-y-hidden 
+          overflow-y-auto 
+          scrollbar-width-none 
+          ms-overflow-style-none 
           transition-all duration-700 ease-in-out"
+        style={{
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+        }}
       >
         <div
           className="
