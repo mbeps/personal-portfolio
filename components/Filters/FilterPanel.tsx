@@ -67,7 +67,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
       <div
         className="
           mt-auto 
-          h-[calc(100vh-6rem)] 
+          h-[calc(100vh-4rem)]  md:h-[calc(100vh-6rem)] 
           w-full shadow-2xl md:rounded-2xl 
           border-1.5 
           border-neutral-200 dark:border-neutral-700 
