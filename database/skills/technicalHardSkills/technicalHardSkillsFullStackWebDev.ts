@@ -1,5 +1,6 @@
 import Skill from "@/types/skills";
 import { webDevelopment, userCentricDesign } from "../generalSkills";
+import { react, svelte, vue } from "./technicalHardSkillsFrontendWebDev";
 
 export const nextjs: Skill = {
   name: "Next.js",
@@ -8,6 +9,7 @@ export const nextjs: Skill = {
   skillType: "hard",
   slug: "next-js",
   technicalGeneralSkills: [webDevelopment, userCentricDesign],
+  technicalHardSkills: [react],
 };
 
 export const angular: Skill = {
@@ -24,6 +26,7 @@ export const nuxtjs: Skill = {
   skillType: "hard",
   slug: "nuxt-js",
   technicalGeneralSkills: [webDevelopment, userCentricDesign],
+  technicalHardSkills: [vue],
 };
 
 export const svelteKit: Skill = {
@@ -32,6 +35,7 @@ export const svelteKit: Skill = {
   skillType: "hard",
   slug: "svelte-kit",
   technicalGeneralSkills: [webDevelopment, userCentricDesign],
+  technicalHardSkills: [svelte],
 };
 
 const technicalHardSkillsFullStackWebDev: Skill[] = [

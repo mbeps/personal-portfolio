@@ -10,6 +10,14 @@ export const rest: Skill = {
   technicalGeneralSkills: [webDevelopment, apis],
 };
 
+export const apollo: Skill = {
+  name: "Apollo",
+  category: "APIs",
+  skillType: "hard",
+  slug: "apollo",
+  technicalGeneralSkills: [webDevelopment, apis],
+};
+
 export const graphQL: Skill = {
   name: "GraphQL",
   category: "APIs",
@@ -17,6 +25,7 @@ export const graphQL: Skill = {
   skillType: "hard",
   slug: "graphql-api",
   technicalGeneralSkills: [webDevelopment, apis],
+  technicalHardSkills: [apollo],
 };
 
 export const tRPC: Skill = {
@@ -60,14 +69,6 @@ export const replicateAI: Skill = {
   skillType: "hard",
   slug: "repliate-ai",
   technicalGeneralSkills: [apis, artificialIntelligence],
-};
-
-export const apollo: Skill = {
-  name: "Apollo",
-  category: "APIs",
-  skillType: "hard",
-  slug: "apollo",
-  technicalGeneralSkills: [webDevelopment, apis],
 };
 
 const technicalHardSkillsAPIs = [

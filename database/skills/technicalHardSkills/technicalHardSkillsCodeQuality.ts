@@ -1,5 +1,4 @@
 import Skill from "@/types/skills";
-import { javascript, python, typescript } from "../languages";
 
 export const black: Skill = {
   name: "Black",
@@ -14,7 +13,6 @@ export const zod: Skill = {
   category: "Code Quality",
   skillType: "hard",
   slug: "zod",
-  technicalHardSkills: [javascript, typescript],
 };
 
 export const eslint: Skill = {
@@ -22,7 +20,6 @@ export const eslint: Skill = {
   category: "Code Quality",
   skillType: "hard",
   slug: "eslint",
-  technicalHardSkills: [javascript, typescript],
 };
 
 export const prettier: Skill = {
@@ -30,7 +27,6 @@ export const prettier: Skill = {
   category: "Code Quality",
   skillType: "hard",
   slug: "prettier",
-  technicalHardSkills: [javascript, typescript],
 };
 
 export const pyLint: Skill = {
@@ -38,7 +34,13 @@ export const pyLint: Skill = {
   category: "Code Quality",
   skillType: "hard",
   slug: "pylint",
-  technicalHardSkills: [python],
+};
+
+export const checkstyle: Skill = {
+  name: "Checkstyle",
+  category: "Code Quality",
+  skillType: "hard",
+  slug: "checkstyle",
 };
 
 const technicalHardSkillsCodeQuality: Skill[] = [

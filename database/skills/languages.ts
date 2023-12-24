@@ -5,9 +5,20 @@ import {
   nextauth,
   springBoot,
   spring,
+  gunicorn,
+  jinja,
+  express,
 } from "./technicalHardSkills/technicalHardSkillsBackendWebDev";
-import { react } from "./technicalHardSkills/technicalHardSkillsFrontendWebDev";
-import { nextjs } from "./technicalHardSkills/technicalHardSkillsFullStackWebDev";
+import {
+  react,
+  svelte,
+  vue,
+} from "./technicalHardSkills/technicalHardSkillsFrontendWebDev";
+import {
+  nextjs,
+  nuxtjs,
+  svelteKit,
+} from "./technicalHardSkills/technicalHardSkillsFullStackWebDev";
 import {
   scikitLearn,
   pandas,
@@ -25,6 +36,7 @@ import {
   pnpm,
   maven,
   gradle,
+  nxjs,
 } from "./technicalHardSkills/technicalHardSkillsProjectManagers";
 import {
   pytest,
@@ -40,6 +52,13 @@ import {
   mongoose,
   hibernate,
 } from "./technicalHardSkills/technicalHardSkillsORMs";
+import {
+  black,
+  eslint,
+  prettier,
+  pyLint,
+  zod,
+} from "./technicalHardSkills/technicalHardSkillsCodeQuality";
 
 export const python: Skill = {
   name: "Python",
@@ -58,6 +77,10 @@ export const python: Skill = {
     sqlalchemy,
     poetry,
     pybuilder,
+    gunicorn,
+    jinja,
+    pyLint,
+    black,
   ],
   isMainSkill: true,
   skillType: "hard",
@@ -71,6 +94,10 @@ export const javascript: Skill = {
     nextjs,
     nextauth,
     react,
+    vue,
+    svelte,
+    nuxtjs,
+    svelteKit,
     jest,
     vitest,
     prisma,
@@ -79,6 +106,11 @@ export const javascript: Skill = {
     npm,
     yarn,
     pnpm,
+    express,
+    nxjs,
+    zod,
+    eslint,
+    prettier,
   ],
   isMainSkill: true,
   skillType: "hard",
@@ -92,6 +124,10 @@ export const typescript: Skill = {
     nextjs,
     nextauth,
     react,
+    vue,
+    svelte,
+    nuxtjs,
+    svelteKit,
     jest,
     vitest,
     prisma,
@@ -100,6 +136,11 @@ export const typescript: Skill = {
     npm,
     yarn,
     pnpm,
+    express,
+    nxjs,
+    zod,
+    eslint,
+    prettier,
   ],
   isMainSkill: true,
   skillType: "hard",

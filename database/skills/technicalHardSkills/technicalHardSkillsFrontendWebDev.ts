@@ -1,11 +1,41 @@
 import Skill from "@/types/skills";
 import {
-  webDevelopment,
-  userCentricDesign,
-  dataScience,
-  stateManagement,
   apis,
+  stateManagement,
+  userCentricDesign,
+  webDevelopment,
 } from "../generalSkills";
+
+export const recoil: Skill = {
+  name: "Recoil",
+  category: "Front-End Web Development",
+  skillType: "hard",
+  slug: "recoil",
+  technicalGeneralSkills: [webDevelopment, stateManagement],
+};
+export const zustand: Skill = {
+  name: "Zustand",
+  category: "Front-End Web Development",
+  skillType: "hard",
+  slug: "zustand",
+  technicalGeneralSkills: [webDevelopment, stateManagement],
+};
+
+export const jotai: Skill = {
+  name: "Jotai",
+  category: "Front-End Web Development",
+  skillType: "hard",
+  slug: "jotai",
+  technicalGeneralSkills: [webDevelopment, stateManagement],
+};
+
+export const redux: Skill = {
+  name: "Redux",
+  category: "Front-End Web Development",
+  skillType: "hard",
+  slug: "redux",
+  technicalGeneralSkills: [webDevelopment, stateManagement],
+};
 
 export const tailwindCSS: Skill = {
   name: "Tailwind CSS",
@@ -32,6 +62,7 @@ export const css: Skill = {
   skillType: "hard",
   slug: "css",
   technicalGeneralSkills: [webDevelopment, userCentricDesign],
+  technicalHardSkills: [tailwindCSS],
 };
 
 export const react: Skill = {
@@ -41,6 +72,7 @@ export const react: Skill = {
   skillType: "hard",
   slug: "react-js",
   technicalGeneralSkills: [webDevelopment, userCentricDesign],
+  technicalHardSkills: [recoil, zustand, jotai, redux],
 };
 
 export const svelte: Skill = {
@@ -65,14 +97,6 @@ export const chakraUI: Skill = {
   skillType: "hard",
   slug: "chakra-ui",
   technicalGeneralSkills: [webDevelopment, userCentricDesign],
-};
-
-export const recoil: Skill = {
-  name: "Recoil",
-  category: "Front-End Web Development",
-  skillType: "hard",
-  slug: "recoil",
-  technicalGeneralSkills: [webDevelopment, stateManagement],
 };
 
 export const headlessUI: Skill = {
@@ -160,30 +184,6 @@ export const simpleGui: Skill = {
   skillType: "hard",
   slug: "simple-gui",
   technicalGeneralSkills: [userCentricDesign],
-};
-
-export const zustand: Skill = {
-  name: "Zustand",
-  category: "Front-End Web Development",
-  skillType: "hard",
-  slug: "zustand",
-  technicalGeneralSkills: [webDevelopment, stateManagement],
-};
-
-export const jotai: Skill = {
-  name: "Jotai",
-  category: "Front-End Web Development",
-  skillType: "hard",
-  slug: "jotai",
-  technicalGeneralSkills: [webDevelopment, stateManagement],
-};
-
-export const redux: Skill = {
-  name: "Redux",
-  category: "Front-End Web Development",
-  skillType: "hard",
-  slug: "redux",
-  technicalGeneralSkills: [webDevelopment, stateManagement],
 };
 
 export const axios: Skill = {
