@@ -158,7 +158,7 @@ export const java: Skill = {
 };
 
 export const gameMakerLanguage: Skill = {
-  name: "GameMaker Skill",
+  name: "GameMaker Language",
   isMainSkill: false,
   skillType: "hard",
   category: "Programming Languages",
