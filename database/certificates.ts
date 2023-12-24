@@ -39,6 +39,7 @@ import {
   webDevelopment,
   linuxDevelopment,
   automation,
+  mathematics,
 } from "./skills/generalSkills";
 
 import {
@@ -245,6 +246,7 @@ const programmingLanguagesCertificates: Certificate[] = [
     ],
     archived: true,
   },
+
   {
     name: "Java Programming Masterclass",
     slug: "UC-a14123c1-1def-4710-8836-7c05bfaa2fc7",
@@ -469,6 +471,110 @@ const programmingLanguagesCertificates: Certificate[] = [
     ],
     description:
       "This course provides a comprehensive introduction to Groovy, a powerful and easy-to-use language on the JVM platform. You will learn the basics of working with Groovy, from variables and data types to classes and exception handling. The course also covers more advanced concepts, such as using closures, working with collections, and reading and writing files. After completing this course, you will have the knowledge you need to use Groovy in a variety of contexts, from scripting to full-fledged programming.",
+    archived: true,
+  },
+];
+
+const algorithmsAndDataStructuresCertificates: Certificate[] = [
+  {
+    name: "The Complete Data Structures and Algorithms Course in Python",
+    slug: "UC-74fdc19f-c016-43c5-8b2a-3cb30941205d",
+    category: "Algorithms & Data Structures",
+    issuer: "Udemy",
+    credentialURL:
+      "https://www.udemy.com/certificate/UC-74fdc19f-c016-43c5-8b2a-3cb30941205d/",
+    technicalSkills: [algorithms, dataStructures, python, oop, mathematics],
+    softSkills: [problemSolving, criticalThinking],
+    learningOutcomes: [
+      "Understanding the role and purpose of data structures",
+      "Grasping the fundamentals of recursion",
+      "Solving common recursive problems",
+      "Mastering recursion through intensive exercises",
+      "Interpreting Big O notation for algorithm efficiency",
+      "Preparing for complex Big O notation questions",
+      "Understanding array structures and types",
+      "Exploring list creation and manipulation in Python",
+      "Tackling challenging array and list-based questions",
+      "Enhancing skills with advanced array and list exercises",
+      "Understanding dictionaries and their application",
+      "Grasping the basics and utilities of tuples",
+      "Differentiating types of linked lists",
+      "Understanding and implementing circular singly linked lists",
+      "Exploring the creation and manipulation of doubly linked lists",
+      "Mastering circular doubly linked list operations",
+      "Solving complex linked list problems in interviews",
+      "Understanding stack data structure and its applications",
+      "Grasping the fundamental concepts of queues",
+      "Addressing common interview questions on stacks and queues",
+      "Understanding tree structures and binary trees",
+      "Exploring the creation and manipulation of binary search trees",
+      "Understanding AVL trees and balancing factors",
+      "Grasping the concept of binary heaps",
+      "Understanding the structure and purpose of tries",
+      "Exploring hashing concepts and hash functions",
+      "Understanding various sorting techniques",
+      "Grasping the fundamentals of search algorithms",
+      "Understanding the concepts and types of graphs",
+      "Comprehending the strategy behind greedy algorithms",
+      "Understanding the divide and conquer paradigm",
+      "Grasping the concept of dynamic programming",
+      "Tackling intensive dynamic programming challenges",
+    ],
+    description: `
+    This comprehensive Python Bootcamp offers a deep dive into Data Structures and Algorithms, covering essential topics and interview preparation for top tech companies. 
+    The course progresses from basic to advanced concepts, equipping learners with the skills to excel in professional programming and technical interviews. 
+    Tailored for a diverse audience, from self-taught programmers to seasoned developers, it provides lifetime access to extensive learning materials and a supportive community, all designed to boost career prospects in the tech industry.`,
+  },
+  {
+    name: "Programming Foundations: Algorithms",
+    slug: "e31b0a7d9243f44e8a528fc2d184cd4a3bfbdc789c899c3a9ee47ee511e51fd7",
+    category: "Algorithms & Data Structures",
+    issuer: "LinkedIn",
+    credentialURL:
+      "https://www.linkedin.com/learning/certificates/e31b0a7d9243f44e8a528fc2d184cd4a3bfbdc789c899c3a9ee47ee511e51fd7",
+    technicalSkills: [algorithms, dataStructures],
+    softSkills: [problemSolving, criticalThinking],
+    learningOutcomes: [
+      "Understanding data structures",
+      "Working with arrays and linked lists",
+      "Implementing stacks and queues",
+      "Understanding and applying hash tables",
+      "Grasping the concept of recursion",
+      "Sorting data using bubble, merge, and quicksort",
+      "Searching data in unordered and ordered lists",
+      "Filtering and counting values with hash tables",
+      "Finding maximum value recursively",
+      "Measuring algorithm performance",
+    ],
+    description:
+      "This course delves into the universal building blocks of programming - algorithms. It covers popular and useful algorithms for searching and sorting information, recursion techniques, and understanding common data structures. The course also explores the performance implications of different algorithms and how to evaluate their performance. Practical examples are demonstrated in Python, but the lessons are applicable to any programming language.",
+    archived: true,
+  },
+  {
+    name: "Programming Foundations: Data Structures",
+    slug: "c5c41ea1aa52982d08705831612aba2e93e69a64e35dd2cce11c28fad12b59f7",
+    category: "Algorithms & Data Structures",
+    issuer: "LinkedIn",
+    credentialURL:
+      "https://www.linkedin.com/learning/certificates/c5c41ea1aa52982d08705831612aba2e93e69a64e35dd2cce11c28fad12b59f7",
+    technicalSkills: [dataStructures, algorithms],
+    softSkills: [problemSolving, criticalThinking],
+    description: `
+      This course provides an in-depth overview of the most essential data structures for modern programming. 
+      It starts with simple ways of grouping data, like arrays and structs, and gradually introduces more complex data structures, such as linked lists, stacks and queues, hash tables, and trees and graphs. 
+      Each lesson is accompanied by a real-world, practical example that shows the data structures in action. 
+      By the end of the course, you'll have a clear understanding of data structures and understand how to use them in any programming language.
+    `,
+    learningOutcomes: [
+      "Understanding data types: Booleans, numbers, strings, and more",
+      "Working with multidimensional arrays",
+      "Manipulating jagged arrays",
+      "Searching and sorting arrays",
+      "Implementing linked lists",
+      "Utilizing stacks and queues",
+      "Applying hash functions and hash tables",
+      "Building trees and graphs",
+    ],
     archived: true,
   },
 ];
@@ -1628,58 +1734,6 @@ const mathematicsCertificates: Certificate[] = [
 
 const softwareEngineeringCertificates: Certificate[] = [
   {
-    name: "Programming Foundations: Algorithms",
-    slug: "e31b0a7d9243f44e8a528fc2d184cd4a3bfbdc789c899c3a9ee47ee511e51fd7",
-    category: "Software Engineering",
-    issuer: "LinkedIn",
-    credentialURL:
-      "https://www.linkedin.com/learning/certificates/e31b0a7d9243f44e8a528fc2d184cd4a3bfbdc789c899c3a9ee47ee511e51fd7",
-    technicalSkills: [algorithms, dataStructures],
-    softSkills: [problemSolving, criticalThinking],
-    learningOutcomes: [
-      "Understanding data structures",
-      "Working with arrays and linked lists",
-      "Implementing stacks and queues",
-      "Understanding and applying hash tables",
-      "Grasping the concept of recursion",
-      "Sorting data using bubble, merge, and quicksort",
-      "Searching data in unordered and ordered lists",
-      "Filtering and counting values with hash tables",
-      "Finding maximum value recursively",
-      "Measuring algorithm performance",
-    ],
-    description:
-      "This course delves into the universal building blocks of programming - algorithms. It covers popular and useful algorithms for searching and sorting information, recursion techniques, and understanding common data structures. The course also explores the performance implications of different algorithms and how to evaluate their performance. Practical examples are demonstrated in Python, but the lessons are applicable to any programming language.",
-    archived: true,
-  },
-  {
-    name: "Programming Foundations: Data Structures",
-    slug: "c5c41ea1aa52982d08705831612aba2e93e69a64e35dd2cce11c28fad12b59f7",
-    category: "Software Engineering",
-    issuer: "LinkedIn",
-    credentialURL:
-      "https://www.linkedin.com/learning/certificates/c5c41ea1aa52982d08705831612aba2e93e69a64e35dd2cce11c28fad12b59f7",
-    technicalSkills: [dataStructures, algorithms],
-    softSkills: [problemSolving, criticalThinking],
-    description: `
-      This course provides an in-depth overview of the most essential data structures for modern programming. 
-      It starts with simple ways of grouping data, like arrays and structs, and gradually introduces more complex data structures, such as linked lists, stacks and queues, hash tables, and trees and graphs. 
-      Each lesson is accompanied by a real-world, practical example that shows the data structures in action. 
-      By the end of the course, you'll have a clear understanding of data structures and understand how to use them in any programming language.
-    `,
-    learningOutcomes: [
-      "Understanding data types: Booleans, numbers, strings, and more",
-      "Working with multidimensional arrays",
-      "Manipulating jagged arrays",
-      "Searching and sorting arrays",
-      "Implementing linked lists",
-      "Utilizing stacks and queues",
-      "Applying hash functions and hash tables",
-      "Building trees and graphs",
-    ],
-    archived: true,
-  },
-  {
     name: "Create an Open-Source Project in Python",
     slug: "6afc37d98889e1ed209d677fd7928ece257125ca8d538ed6b0fa0ed18e4e30d6",
     category: "Software Engineering",
@@ -2043,6 +2097,7 @@ export { cloudComputingCertificates };
 
 const allCertificates = [
   ...programmingLanguagesCertificates,
+  ...algorithmsAndDataStructuresCertificates,
   ...databasesCertificates,
   ...softwareEngineeringCertificates,
   ...webDevelopmentCertificates,
