@@ -18,6 +18,7 @@ export default interface Certificate {
   category:
     | "University"
     | "Programming Languages"
+    | "Algorithms & Data Structures"
     | "Web Development"
     | "Software Engineering"
     | "DevOps"
