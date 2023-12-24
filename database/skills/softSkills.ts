@@ -85,7 +85,7 @@ export const stakeholderManagement: Skill = {
   isMainSkill: false,
   skillType: "soft",
   category: "Soft Skills",
-  slug: "",
+  slug: "stakeholder-management",
 };
 
 export const scopeManagement: Skill = {
@@ -93,7 +93,7 @@ export const scopeManagement: Skill = {
   isMainSkill: false,
   skillType: "soft",
   category: "Soft Skills",
-  slug: "stakeholder-management",
+  slug: "scope-management",
 };
 
 export const costManagement: Skill = {
