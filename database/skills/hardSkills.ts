@@ -572,15 +572,6 @@ export const nextauth: Skill = {
   technicalGeneralSkills: [userAuthentication, webDevelopment],
 };
 
-export const nodejs: Skill = {
-  name: "Node.js",
-  category: "Back-End Web Development",
-  isMainSkill: true,
-  skillType: "hard",
-  slug: "node-js",
-  technicalGeneralSkills: [webDevelopment],
-};
-
 export const express: Skill = {
   name: "Express",
   category: "Back-End Web Development",
@@ -1403,7 +1394,6 @@ const hardSkills = [
   vue,
   svelte,
   svelteKit,
-  nodejs,
   express,
   react,
   jest,

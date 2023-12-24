@@ -61,7 +61,6 @@ import {
   flask,
   rest,
   jwt,
-  nodejs,
   mongoDB,
   css,
   firebase,
@@ -1039,7 +1038,7 @@ const webDevelopmentCertificates: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/c00cb40bda2152dd86d29b813b0d1b172123452a0b87b6017aec13115e693487",
-    technicalSkills: [rest, nodejs, mongoDB, databases],
+    technicalSkills: [rest, mongoDB, databases],
     softSkills: [problemSolving, criticalThinking],
     description: `This course guides learners on how to create a simple, RESTful web API using Node.js and Express, popular JavaScript libraries. It covers setting up the project, including the Express server and testing environment, and creating endpoints for data manipulation in a MongoDB database. The course also explores serving static files like images with the API and introduces additional libraries, such as Koa and LoopBack, that can streamline API development. It's designed for those interested in back-end programming without the need for extensive knowledge in the area.`,
     learningOutcomes: [
@@ -1175,7 +1174,7 @@ const webDevelopmentCertificates: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/ef41e5cf67f7657353febca7c6b206bf7dd8e28497c393790d8a266842c81132",
-    technicalSkills: [nodejs, javascript],
+    technicalSkills: [javascript],
     softSkills: [problemSolving, criticalThinking],
     description: `
     Node.js is a powerful tool for controlling servers, building web applications, and creating event-driven programs. And it takes JavaScript—a language familiar to all web developers—out of the browser. With Node.js, you can build applications that run on your laptop or even the cloud. In this course, learn the essentials of Node.js and start creating your own JavaScript applications. This course shows how to install Node.js and work with the Node.js core, which includes standard input, standard output, the module system, the file system, and how to write and run JavaScript on the server. Upon wrapping up this course, you'll be equipped with fundamental Node.js concepts and techniques that you can put to use in your next project.

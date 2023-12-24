@@ -16,7 +16,6 @@ import {
   pybuilder,
   nextjs,
   nextauth,
-  nodejs,
   jest,
   vitest,
   prisma,
@@ -63,7 +62,6 @@ export const javascript: Skill = {
   technicalGeneralSkills: [
     nextjs,
     nextauth,
-    nodejs,
     react,
     jest,
     vitest,
@@ -85,7 +83,6 @@ export const typescript: Skill = {
   technicalGeneralSkills: [
     nextjs,
     nextauth,
-    nodejs,
     react,
     jest,
     vitest,
