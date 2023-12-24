@@ -27,6 +27,7 @@ import technicalHardSkillsTesting from "@/database/skills/technicalHardSkills/te
 import technicalHardSkillsVCS from "@/database/skills/technicalHardSkills/technicalHardSkillsVCS";
 import generalSkills from "@/database/skills/generalSkills";
 import softSkills from "@/database/skills/softSkills";
+import RelatedSkillsSection from "./components/RelatedSkillsSection";
 
 const allSkills: Skill[] = [
   ...technicalHardSkillsFullStackWebDev,
@@ -95,6 +96,7 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
       <ProjectsSection projects={allProjects} skill={skill} />
       <CredentialsSection certificates={allCertificates} skill={skill} />
       <BlogsSection blogs={blogMetadata} skill={skill} />
+      <RelatedSkillsSection skill={skill} />
     </div>
   );
 };

@@ -62,7 +62,7 @@ import {
 
 export const python: Skill = {
   name: "Python",
-  technicalGeneralSkills: [
+  technicalHardSkills: [
     flask,
     django,
     scikitLearn,
@@ -90,7 +90,7 @@ export const python: Skill = {
 
 export const javascript: Skill = {
   name: "JavaScript",
-  technicalGeneralSkills: [
+  technicalHardSkills: [
     nextjs,
     nextauth,
     react,
@@ -120,7 +120,7 @@ export const javascript: Skill = {
 
 export const typescript: Skill = {
   name: "TypeScript",
-  technicalGeneralSkills: [
+  technicalHardSkills: [
     nextjs,
     nextauth,
     react,
@@ -150,7 +150,7 @@ export const typescript: Skill = {
 
 export const java: Skill = {
   name: "Java",
-  technicalGeneralSkills: [maven, gradle, junit, spring, springBoot, hibernate],
+  technicalHardSkills: [maven, gradle, junit, spring, springBoot, hibernate],
   isMainSkill: true,
   skillType: "hard",
   category: "Programming Languages",
