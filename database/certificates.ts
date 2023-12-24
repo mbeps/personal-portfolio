@@ -56,7 +56,7 @@ import {
   gitHubActions,
   kubernetes,
   travisCI,
-  k3s,
+  awsK3s,
   aws,
   flask,
   rest,
@@ -909,7 +909,7 @@ const devOpsCertificates: Certificate[] = [
     issuer: "LinkedIn",
     credentialURL:
       "https://www.linkedin.com/learning/certificates/a63c2359250f6a04bd19dab4ebd049edb511a1a9f2c3ef66a0a8d1df004f7d8d",
-    technicalSkills: [devOps, kubernetes, docker, k3s, aws],
+    technicalSkills: [devOps, kubernetes, docker, awsK3s, aws],
     softSkills: [problemSolving, criticalThinking],
     description: `This course provides a focused guide on how to provision Kubernetes clusters using kind. It covers the challenges of installing Kubernetes and its prerequisites, and demonstrates how to deploy Kubernetes in Docker using K3s, in both single- and multinode clusters. This course is designed to polish your skills in Kubernetes, containerization, and clusterization.`,
     learningOutcomes: [

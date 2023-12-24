@@ -33,6 +33,7 @@ import {
   webDevelopment,
 } from "./generalSkills";
 
+//^ BACK-END WEB DEVELOPMENT
 export const firebase: Skill = {
   name: "Firebase",
   category: "Back-End Web Development",
@@ -105,6 +106,15 @@ export const clerkAuth: Skill = {
   technicalGeneralSkills: [userAuthentication, sdks],
 };
 
+export const nextauth: Skill = {
+  name: "NextAuth",
+  category: "Back-End Web Development",
+  isMainSkill: true,
+  skillType: "hard",
+  slug: "next-auth",
+  technicalGeneralSkills: [userAuthentication, webDevelopment],
+};
+
 export const stripe: Skill = {
   name: "Stripe",
   category: "Back-End Web Development",
@@ -114,6 +124,66 @@ export const stripe: Skill = {
   technicalGeneralSkills: [sdks],
 };
 
+export const express: Skill = {
+  name: "Express",
+  category: "Back-End Web Development",
+  skillType: "hard",
+  slug: "express-js",
+  technicalGeneralSkills: [webDevelopment, apis],
+};
+
+export const flask: Skill = {
+  name: "Flask",
+  category: "Back-End Web Development",
+  isMainSkill: true,
+  skillType: "hard",
+  slug: "flask",
+  technicalGeneralSkills: [webDevelopment, apis],
+};
+
+export const django: Skill = {
+  name: "Django",
+  category: "Back-End Web Development",
+  isMainSkill: true,
+  skillType: "hard",
+  slug: "django",
+  technicalGeneralSkills: [webDevelopment, apis],
+};
+
+export const spring: Skill = {
+  name: "Spring",
+  category: "Back-End Web Development",
+  isMainSkill: true,
+  skillType: "hard",
+  slug: "spring",
+  technicalGeneralSkills: [webDevelopment, apis],
+};
+
+export const springBoot: Skill = {
+  name: "Spring Boot",
+  category: "Back-End Web Development",
+  isMainSkill: true,
+  skillType: "hard",
+  slug: "springboot",
+  technicalGeneralSkills: [webDevelopment, apis],
+};
+
+export const cloudinary: Skill = {
+  name: "Cloudinary",
+  category: "Back-End Web Development",
+  skillType: "hard",
+  slug: "cloudinary",
+  technicalGeneralSkills: [webDevelopment],
+};
+export const jwt: Skill = {
+  name: "JWT",
+  category: "Back-End Web Development",
+  skillType: "hard",
+  slug: "jtw",
+  technicalGeneralSkills: [userAuthentication],
+};
+
+//^ FRONT-END WEB DEVELOPMENT
 export const tailwindCSS: Skill = {
   name: "Tailwind CSS",
   category: "Front-End Web Development",
@@ -141,6 +211,210 @@ export const css: Skill = {
   technicalGeneralSkills: [webDevelopment, userCentricDesign],
 };
 
+export const react: Skill = {
+  name: "React",
+  category: "Front-End Web Development",
+  isMainSkill: true,
+  skillType: "hard",
+  slug: "react-js",
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+};
+
+export const svelte: Skill = {
+  name: "Svelte",
+  category: "Front-End Web Development",
+  skillType: "hard",
+  slug: "svelte",
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+};
+
+export const vue: Skill = {
+  name: "Vue",
+  category: "Front-End Web Development",
+  skillType: "hard",
+  slug: "vue-js",
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+};
+
+export const jupyterNotebooks: Skill = {
+  name: "Jupyter Notebooks",
+  category: "Data Science",
+  isMainSkill: true,
+  skillType: "hard",
+  slug: "juptyer-notebooks",
+  technicalGeneralSkills: [dataScience],
+};
+
+export const chakraUI: Skill = {
+  name: "Chakra UI",
+  category: "Front-End Web Development",
+  skillType: "hard",
+  slug: "chakra-ui",
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+};
+
+export const recoil: Skill = {
+  name: "Recoil",
+  category: "Front-End Web Development",
+  skillType: "hard",
+  slug: "recoil",
+  technicalGeneralSkills: [webDevelopment, stateManagement],
+};
+
+export const headlessUI: Skill = {
+  name: "Headless UI",
+  category: "Front-End Web Development",
+  skillType: "hard",
+  slug: "headless-ui",
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+};
+
+export const shadcnUI: Skill = {
+  name: "Shadcn UI",
+  category: "Front-End Web Development",
+  skillType: "hard",
+  slug: "shadow-ui",
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+};
+
+export const radixUI: Skill = {
+  name: "Radix UI",
+  category: "Front-End Web Development",
+  skillType: "hard",
+  slug: "radix-ui",
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+};
+
+export const reactQuery: Skill = {
+  name: "React Query",
+  category: "Front-End Web Development",
+  skillType: "hard",
+  slug: "react-query",
+  technicalGeneralSkills: [webDevelopment, apis],
+};
+export const nextUI: Skill = {
+  name: "Next UI",
+  category: "Front-End Web Development",
+  skillType: "hard",
+  slug: "next-ui",
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+};
+
+export const bootstrap: Skill = {
+  name: "Bootstrap",
+  category: "Front-End Web Development",
+  skillType: "hard",
+  slug: "bootstrap",
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+};
+
+export const materialUI: Skill = {
+  name: "Material UI",
+  category: "Front-End Web Development",
+  skillType: "hard",
+  slug: "material-ui",
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+};
+
+export const semanticUI: Skill = {
+  name: "Semantic UI",
+  category: "Front-End Web Development",
+  skillType: "hard",
+  slug: "semantic-ui",
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+};
+
+export const antDesign: Skill = {
+  name: "Ant Design",
+  category: "Front-End Web Development",
+  skillType: "hard",
+  slug: "ant-design",
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+};
+
+export const storybooks: Skill = {
+  name: "Storybooks",
+  category: "Front-End Web Development",
+  skillType: "hard",
+  slug: "storybooks",
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+};
+
+export const simpleGui: Skill = {
+  name: "Simple GUI",
+  category: "Front-End Web Development",
+  skillType: "hard",
+  slug: "simple-gui",
+  technicalGeneralSkills: [userCentricDesign],
+};
+
+export const zustand: Skill = {
+  name: "Zustand",
+  category: "Front-End Web Development",
+  skillType: "hard",
+  slug: "zustand",
+  technicalGeneralSkills: [webDevelopment, stateManagement],
+};
+
+export const jotai: Skill = {
+  name: "Jotai",
+  category: "Front-End Web Development",
+  skillType: "hard",
+  slug: "jotai",
+  technicalGeneralSkills: [webDevelopment, stateManagement],
+};
+
+export const redux: Skill = {
+  name: "Redux",
+  category: "Front-End Web Development",
+  skillType: "hard",
+  slug: "redux",
+  technicalGeneralSkills: [webDevelopment, stateManagement],
+};
+
+export const axios: Skill = {
+  name: "Axios",
+  category: "Front-End Web Development",
+  skillType: "hard",
+  slug: "axios",
+  technicalGeneralSkills: [webDevelopment, apis],
+};
+
+//^ FULL-STACK WEB DEVELOPMENT
+export const nextjs: Skill = {
+  name: "Next.js",
+  category: "Full-Stack Web Development",
+  isMainSkill: true,
+  skillType: "hard",
+  slug: "next-js",
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+};
+
+export const angular: Skill = {
+  name: "Angular",
+  category: "Full-Stack Web Development",
+  skillType: "hard",
+  slug: "angular",
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+};
+
+export const nuxtjs: Skill = {
+  name: "Nuxt.js",
+  category: "Full-Stack Web Development",
+  skillType: "hard",
+  slug: "nuxt-js",
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+};
+
+export const svelteKit: Skill = {
+  name: "SvelteKit",
+  category: "Full-Stack Web Development",
+  skillType: "hard",
+  slug: "svelte-kit",
+  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+};
+
+//^ CI/CD
 export const gitHubActions: Skill = {
   name: "GitHub Actions",
   category: "DevOps",
@@ -205,6 +479,22 @@ export const teamCity: Skill = {
   ],
 };
 
+export const travisCI: Skill = {
+  name: "Travis CI",
+  category: "DevOps",
+  skillType: "hard",
+  slug: "travis-ci",
+  technicalGeneralSkills: [
+    infrastructureAsCode,
+    continuousDelivery,
+    continuousIntegration,
+    continuousDeployment,
+    devOps,
+    automation,
+  ],
+};
+
+//^ CONTAINERIZATION
 export const docker: Skill = {
   name: "Docker",
   category: "DevOps",
@@ -232,6 +522,7 @@ export const kubernetes: Skill = {
   technicalGeneralSkills: [containerization, clusterisation],
 };
 
+//^ API
 export const rest: Skill = {
   name: "REST",
   category: "APIs",
@@ -259,6 +550,41 @@ export const tRPC: Skill = {
   technicalGeneralSkills: [webDevelopment, apis],
 };
 
+export const socketIO: Skill = {
+  name: "Socket.IO",
+  category: "Web Sockets",
+  skillType: "hard",
+  slug: "socket-io",
+  technicalGeneralSkills: [webDevelopment],
+};
+
+export const pusher: Skill = {
+  name: "Pusher",
+  category: "Web Sockets",
+  skillType: "hard",
+  slug: "pusher",
+  technicalGeneralSkills: [webDevelopment],
+};
+
+export const openAI: Skill = {
+  name: "OpenAI",
+  category: "Artificial Intelligence & Machine Learning",
+  isMainSkill: true,
+  skillType: "hard",
+  slug: "open-ai",
+  technicalGeneralSkills: [apis, artificialIntelligence],
+};
+
+export const replicateAI: Skill = {
+  name: "Replicate AI",
+  category: "Artificial Intelligence & Machine Learning",
+  isMainSkill: true,
+  skillType: "hard",
+  slug: "repliate-ai",
+  technicalGeneralSkills: [apis, artificialIntelligence],
+};
+
+//^ DATABASES
 export const normalisation: Skill = {
   name: "Normalisation",
   category: "Databases",
@@ -340,40 +666,82 @@ export const redis: Skill = {
   ],
 };
 
-export const socketIO: Skill = {
-  name: "Socket.IO",
-  category: "Web Sockets",
-  skillType: "hard",
-  slug: "socket-io",
-  technicalGeneralSkills: [webDevelopment],
-};
-
-export const pusher: Skill = {
-  name: "Pusher",
-  category: "Web Sockets",
-  skillType: "hard",
-  slug: "pusher",
-  technicalGeneralSkills: [webDevelopment],
-};
-
-export const openAI: Skill = {
-  name: "OpenAI",
-  category: "Artificial Intelligence & Machine Learning",
+export const prisma: Skill = {
+  name: "Prisma",
+  category: "Object Relational Mappers",
   isMainSkill: true,
   skillType: "hard",
-  slug: "open-ai",
-  technicalGeneralSkills: [apis, artificialIntelligence],
+  slug: "prisma-orm",
+  technicalGeneralSkills: [
+    databaseManagementSystems,
+    databases,
+    sql,
+    indexing,
+    orm,
+  ],
 };
 
-export const replicateAI: Skill = {
-  name: "Replicate AI",
-  category: "Artificial Intelligence & Machine Learning",
+export const drizzle: Skill = {
+  name: "Drizzle",
+  category: "Object Relational Mappers",
   isMainSkill: true,
   skillType: "hard",
-  slug: "repliate-ai",
-  technicalGeneralSkills: [apis, artificialIntelligence],
+  slug: "drizzle-orm",
+  technicalGeneralSkills: [
+    databaseManagementSystems,
+    databases,
+    sql,
+    indexing,
+    orm,
+  ],
 };
 
+export const mongoose: Skill = {
+  name: "Mongoose",
+  category: "Object Relational Mappers",
+  isMainSkill: true,
+  skillType: "hard",
+  slug: "mongoose-orm",
+  technicalGeneralSkills: [
+    databaseManagementSystems,
+    databases,
+    noSql,
+    indexing,
+    orm,
+  ],
+};
+
+export const sqlalchemy: Skill = {
+  name: "SQLAlchemy",
+  category: "Object Relational Mappers",
+  isMainSkill: true,
+  skillType: "hard",
+  slug: "sqlalchemy",
+  technicalGeneralSkills: [
+    databaseManagementSystems,
+    databases,
+    sql,
+    indexing,
+    orm,
+  ],
+};
+
+export const hibernate: Skill = {
+  name: "Hibernate",
+  category: "Object Relational Mappers",
+  isMainSkill: true,
+  skillType: "hard",
+  slug: "hibernate-orm",
+  technicalGeneralSkills: [
+    databaseManagementSystems,
+    databases,
+    sql,
+    indexing,
+    orm,
+  ],
+};
+
+//^ MATHS
 export const probability: Skill = {
   name: "Probability",
   category: "Mathematics",
@@ -473,6 +841,7 @@ export const mechanics: Skill = {
   technicalGeneralSkills: [mathematics],
 };
 
+//^ VERSION CONTROL
 export const git: Skill = {
   name: "Git",
   category: "Version Control",
@@ -514,81 +883,7 @@ export const vagrant: Skill = {
   technicalGeneralSkills: [infrastructureAsCode, devOps],
 };
 
-export const nextjs: Skill = {
-  name: "Next.js",
-  category: "Full-Stack Web Development",
-  isMainSkill: true,
-  skillType: "hard",
-  slug: "next-js",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
-};
-
-export const svelte: Skill = {
-  name: "Svelte",
-  category: "Front-End Web Development",
-  skillType: "hard",
-  slug: "svelte",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
-};
-
-export const vue: Skill = {
-  name: "Vue",
-  category: "Front-End Web Development",
-  skillType: "hard",
-  slug: "vue-js",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
-};
-
-export const angular: Skill = {
-  name: "Angular",
-  category: "Full-Stack Web Development",
-  skillType: "hard",
-  slug: "angular",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
-};
-
-export const nuxtjs: Skill = {
-  name: "Nuxt.js",
-  category: "Full-Stack Web Development",
-  skillType: "hard",
-  slug: "nuxt-js",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
-};
-
-export const svelteKit: Skill = {
-  name: "SvelteKit",
-  category: "Full-Stack Web Development",
-  skillType: "hard",
-  slug: "svelte-kit",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
-};
-
-export const nextauth: Skill = {
-  name: "NextAuth",
-  category: "Back-End Web Development",
-  isMainSkill: true,
-  skillType: "hard",
-  slug: "next-auth",
-  technicalGeneralSkills: [userAuthentication, webDevelopment],
-};
-
-export const express: Skill = {
-  name: "Express",
-  category: "Back-End Web Development",
-  skillType: "hard",
-  slug: "express-js",
-  technicalGeneralSkills: [webDevelopment, apis],
-};
-
-export const react: Skill = {
-  name: "React",
-  category: "Front-End Web Development",
-  isMainSkill: true,
-  skillType: "hard",
-  slug: "react-js",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
-};
-
+//^ TESTING
 export const jest: Skill = {
   name: "Jest",
   category: "Testing",
@@ -605,51 +900,45 @@ export const vitest: Skill = {
   slug: "vitest",
 };
 
-export const prisma: Skill = {
-  name: "Prisma",
-  category: "Object Relational Mappers",
+export const pytest: Skill = {
+  name: "PyTest",
+  category: "Testing",
   isMainSkill: true,
   skillType: "hard",
-  slug: "prisma-orm",
-  technicalGeneralSkills: [
-    databaseManagementSystems,
-    databases,
-    sql,
-    indexing,
-    orm,
-  ],
+  slug: "pytest",
 };
 
-export const drizzle: Skill = {
-  name: "Drizzle",
-  category: "Object Relational Mappers",
+export const unittest: Skill = {
+  name: "UnitTest",
+  category: "Testing",
   isMainSkill: true,
   skillType: "hard",
-  slug: "drizzle-orm",
-  technicalGeneralSkills: [
-    databaseManagementSystems,
-    databases,
-    sql,
-    indexing,
-    orm,
-  ],
+  slug: "unittest",
 };
 
-export const mongoose: Skill = {
-  name: "Mongoose",
-  category: "Object Relational Mappers",
+export const junit: Skill = {
+  name: "JUnit",
+  category: "Testing",
   isMainSkill: true,
   skillType: "hard",
-  slug: "mongoose-orm",
-  technicalGeneralSkills: [
-    databaseManagementSystems,
-    databases,
-    noSql,
-    indexing,
-    orm,
-  ],
+  slug: "junit",
 };
 
+export const cypress: Skill = {
+  name: "Cypress",
+  category: "Testing",
+  skillType: "hard",
+  slug: "cypress",
+};
+
+export const reactTestingLibrary: Skill = {
+  name: "React Testing Library",
+  category: "Testing",
+  skillType: "hard",
+  slug: "react-testing-library",
+};
+
+//^ PROJECT MANAGERS
 export const npm: Skill = {
   name: "NPM",
   category: "Project Managers",
@@ -674,24 +963,53 @@ export const pnpm: Skill = {
   slug: "pnpm",
 };
 
-export const flask: Skill = {
-  name: "Flask",
-  category: "Back-End Web Development",
+export const poetry: Skill = {
+  name: "Poetry",
+  category: "Project Managers",
   isMainSkill: true,
   skillType: "hard",
-  slug: "flask",
-  technicalGeneralSkills: [webDevelopment, apis],
+  slug: "poetry-python",
 };
 
-export const django: Skill = {
-  name: "Django",
-  category: "Back-End Web Development",
+export const pybuilder: Skill = {
+  name: "PyBuilder",
+  category: "Project Managers",
   isMainSkill: true,
   skillType: "hard",
-  slug: "django",
-  technicalGeneralSkills: [webDevelopment, apis],
+  slug: "pybuilder",
 };
 
+export const maven: Skill = {
+  name: "Maven",
+  category: "Project Managers",
+  isMainSkill: true,
+  skillType: "hard",
+  slug: "maven",
+};
+
+export const gradle: Skill = {
+  name: "Gradle",
+  category: "Project Managers",
+  isMainSkill: true,
+  skillType: "hard",
+  slug: "gradle",
+};
+
+export const tox: Skill = {
+  name: "Tox",
+  category: "Project Managers",
+  skillType: "hard",
+  slug: "tox",
+};
+
+export const nxjs: Skill = {
+  name: "Nx.js",
+  category: "Project Managers",
+  skillType: "hard",
+  slug: "nx-js",
+};
+
+//^ DATA SCIENCE AND MACHINE LEARNING
 export const scikitLearn: Skill = {
   name: "Scikit Learn",
   category: "Artificial Intelligence & Machine Learning",
@@ -758,265 +1076,11 @@ export const keras: Skill = {
   ],
 };
 
-export const jupyterNotebooks: Skill = {
-  name: "Jupyter Notebooks",
-  category: "Data Science",
-  isMainSkill: true,
-  skillType: "hard",
-  slug: "juptyer-notebooks",
-  technicalGeneralSkills: [dataScience],
-};
-
-export const pytest: Skill = {
-  name: "PyTest",
-  category: "Testing",
-  isMainSkill: true,
-  skillType: "hard",
-  slug: "pytest",
-};
-
-export const unittest: Skill = {
-  name: "UnitTest",
-  category: "Testing",
-  isMainSkill: true,
-  skillType: "hard",
-  slug: "unittest",
-};
-
-export const sqlalchemy: Skill = {
-  name: "SQLAlchemy",
-  category: "Object Relational Mappers",
-  isMainSkill: true,
-  skillType: "hard",
-  slug: "sqlalchemy",
-  technicalGeneralSkills: [
-    databaseManagementSystems,
-    databases,
-    sql,
-    indexing,
-    orm,
-  ],
-};
-
-export const poetry: Skill = {
-  name: "Poetry",
-  category: "Project Managers",
-  isMainSkill: true,
-  skillType: "hard",
-  slug: "poetry-python",
-};
-
-export const pybuilder: Skill = {
-  name: "PyBuilder",
-  category: "Project Managers",
-  isMainSkill: true,
-  skillType: "hard",
-  slug: "pybuilder",
-};
-
-export const maven: Skill = {
-  name: "Maven",
-  category: "Project Managers",
-  isMainSkill: true,
-  skillType: "hard",
-  slug: "maven",
-};
-
-export const gradle: Skill = {
-  name: "Gradle",
-  category: "Project Managers",
-  isMainSkill: true,
-  skillType: "hard",
-  slug: "gradle",
-};
-
-export const junit: Skill = {
-  name: "JUnit",
-  category: "Testing",
-  isMainSkill: true,
-  skillType: "hard",
-  slug: "junit",
-};
-
-export const spring: Skill = {
-  name: "Spring",
-  category: "Back-End Web Development",
-  isMainSkill: true,
-  skillType: "hard",
-  slug: "spring",
-  technicalGeneralSkills: [webDevelopment, apis],
-};
-
-export const springBoot: Skill = {
-  name: "Spring Boot",
-  category: "Back-End Web Development",
-  isMainSkill: true,
-  skillType: "hard",
-  slug: "springboot",
-  technicalGeneralSkills: [webDevelopment, apis],
-};
-
-export const hibernate: Skill = {
-  name: "Hibernate",
-  category: "Object Relational Mappers",
-  isMainSkill: true,
-  skillType: "hard",
-  slug: "hibernate-orm",
-  technicalGeneralSkills: [
-    databaseManagementSystems,
-    databases,
-    sql,
-    indexing,
-    orm,
-  ],
-};
-
-export const chakraUI: Skill = {
-  name: "Chakra UI",
-  category: "Front-End Web Development",
-  skillType: "hard",
-  slug: "chakra-ui",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
-};
-
-export const recoil: Skill = {
-  name: "Recoil",
-  category: "Front-End Web Development",
-  skillType: "hard",
-  slug: "recoil",
-  technicalGeneralSkills: [webDevelopment, stateManagement],
-};
-
-export const zustand: Skill = {
-  name: "Zustand",
-  category: "Front-End Web Development",
-  skillType: "hard",
-  slug: "zustand",
-  technicalGeneralSkills: [webDevelopment, stateManagement],
-};
-
-export const jotai: Skill = {
-  name: "Jotai",
-  category: "Front-End Web Development",
-  skillType: "hard",
-  slug: "jotai",
-  technicalGeneralSkills: [webDevelopment, stateManagement],
-};
-
-export const redux: Skill = {
-  name: "Redux",
-  category: "Front-End Web Development",
-  skillType: "hard",
-  slug: "redux",
-  technicalGeneralSkills: [webDevelopment, stateManagement],
-};
-
-export const cloudinary: Skill = {
-  name: "Cloudinary",
-  category: "Back-End Web Development",
-  skillType: "hard",
-  slug: "cloudinary",
-  technicalGeneralSkills: [webDevelopment],
-};
-
-export const headlessUI: Skill = {
-  name: "Headless UI",
-  category: "Front-End Web Development",
-  skillType: "hard",
-  slug: "headless-ui",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
-};
-
-export const shadcnUI: Skill = {
-  name: "Shadcn UI",
-  category: "Front-End Web Development",
-  skillType: "hard",
-  slug: "shadow-ui",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
-};
-
-export const radixUI: Skill = {
-  name: "Radix UI",
-  category: "Front-End Web Development",
-  skillType: "hard",
-  slug: "radix-ui",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
-};
-
-export const axios: Skill = {
-  name: "Axios",
-  category: "Front-End Web Development",
-  skillType: "hard",
-  slug: "axios",
-  technicalGeneralSkills: [webDevelopment, apis],
-};
-
-export const reactQuery: Skill = {
-  name: "React Query",
-  category: "Front-End Web Development",
-  skillType: "hard",
-  slug: "react-query",
-  technicalGeneralSkills: [webDevelopment, apis],
-};
-
 export const zod: Skill = {
   name: "Zod",
   category: "Core Computer Science",
   skillType: "hard",
   slug: "zod",
-};
-
-export const nextUI: Skill = {
-  name: "Next UI",
-  category: "Front-End Web Development",
-  skillType: "hard",
-  slug: "next-ui",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
-};
-
-export const nxjs: Skill = {
-  name: "Nx.js",
-  category: "Project Managers",
-  skillType: "hard",
-  slug: "nx-js",
-};
-
-export const storybooks: Skill = {
-  name: "Storybooks",
-  category: "Front-End Web Development",
-  skillType: "hard",
-  slug: "storybooks",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
-};
-
-export const cypress: Skill = {
-  name: "Cypress",
-  category: "Testing",
-  skillType: "hard",
-  slug: "cypress",
-};
-
-export const reactTestingLibrary: Skill = {
-  name: "React Testing Library",
-  category: "Testing",
-  skillType: "hard",
-  slug: "react-testing-library",
-};
-
-export const jwt: Skill = {
-  name: "JWT",
-  category: "Back-End Web Development",
-  skillType: "hard",
-  slug: "jtw",
-  technicalGeneralSkills: [userAuthentication],
-};
-
-export const simpleGui: Skill = {
-  name: "Simple GUI",
-  category: "Back-End Web Development",
-  skillType: "hard",
-  slug: "simple-gui",
-  technicalGeneralSkills: [userCentricDesign],
 };
 
 export const gameMakerStudio: Skill = {
@@ -1027,29 +1091,8 @@ export const gameMakerStudio: Skill = {
   technicalGeneralSkills: [gameDevelopment],
 };
 
-export const tox: Skill = {
-  name: "Tox",
-  category: "Project Managers",
-  skillType: "hard",
-  slug: "tox",
-};
-
-export const travisCI: Skill = {
-  name: "Travis CI",
-  category: "DevOps",
-  skillType: "hard",
-  slug: "travis-ci",
-  technicalGeneralSkills: [
-    infrastructureAsCode,
-    continuousDelivery,
-    continuousIntegration,
-    continuousDeployment,
-    devOps,
-    automation,
-  ],
-};
-
-export const k3s: Skill = {
+//^ CLOUD COMPUTING
+export const awsK3s: Skill = {
   name: "K3s",
   category: "DevOps",
   skillType: "hard",
@@ -1230,8 +1273,9 @@ export const aws: Skill = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "aws",
-  technicalGeneralSkills: [
-    k3s,
+  technicalGeneralSkills: [cloudComputing],
+  technicalHardSkills: [
+    awsK3s,
     awsEC2,
     awsS3,
     awsVPC,
@@ -1239,7 +1283,6 @@ export const aws: Skill = {
     awsCloudFormation,
     awsCloudFront,
     awsElasticBeanstalk,
-    cloudComputing,
   ],
 };
 
@@ -1248,15 +1291,14 @@ export const gcp: Skill = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "gcp",
-  technicalGeneralSkills: [
+  technicalGeneralSkills: [cloudComputing],
+  technicalHardSkills: [
     gcpAppEngine,
     gcpCloudSQL,
     gcpCloudStorage,
     gcpCloudTasks,
     gcpCloudScheduler,
     gcpCloudLogging,
-
-    cloudComputing,
   ],
 };
 
@@ -1265,7 +1307,8 @@ export const azure: Skill = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "azure",
-  technicalGeneralSkills: [
+  technicalGeneralSkills: [cloudComputing],
+  technicalHardSkills: [
     azureAppService,
     azureBlobStorage,
     azureDurableFunctions,
@@ -1274,7 +1317,6 @@ export const azure: Skill = {
     azureResourceManager,
     azureContainers,
     azureContainerRegistry,
-    cloudComputing,
   ],
 };
 
@@ -1292,38 +1334,6 @@ export const jinja: Skill = {
   skillType: "hard",
   slug: "jinja",
   technicalGeneralSkills: [webDevelopment],
-};
-
-export const bootstrap: Skill = {
-  name: "Bootstrap",
-  category: "Front-End Web Development",
-  skillType: "hard",
-  slug: "bootstrap",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
-};
-
-export const materialUI: Skill = {
-  name: "Material UI",
-  category: "Front-End Web Development",
-  skillType: "hard",
-  slug: "material-ui",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
-};
-
-export const semanticUI: Skill = {
-  name: "Semantic UI",
-  category: "Front-End Web Development",
-  skillType: "hard",
-  slug: "semantic-ui",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
-};
-
-export const antDesign: Skill = {
-  name: "Ant Design",
-  category: "Front-End Web Development",
-  skillType: "hard",
-  slug: "ant-design",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
 };
 
 export const apollo: Skill = {
@@ -1446,7 +1456,7 @@ const hardSkills = [
   gameMakerStudio,
   tox,
   travisCI,
-  k3s,
+  awsK3s,
   aws,
   gcp,
   azure,
