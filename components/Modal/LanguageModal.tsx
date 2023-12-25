@@ -35,16 +35,13 @@ interface ProjectModalProps {
  * @returns (JSX.Element): modal component (stack of the project
  */
 const LanguageModal: React.FC<ProjectModalProps> = ({
-  skills,
   language,
   isOpen,
   onClose,
 }) => {
   const [groupedBy, setGroupedBy] = useState("category");
-  const groupedSkills = groupSkills(
-    groupedBy,
-    language.technicalGeneralSkills || []
-  );
+  const filteredSkills = (language.technicalHardSkills || []).filter(skill => skill.isMainSkill);
+  const groupedSkills = groupSkills(groupedBy, filteredSkills);
 
   const projects = allProjects;
   const certificates = allCertificates;
