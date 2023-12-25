@@ -23,19 +23,6 @@ const LanguageSection: React.FC = () => {
     setIsModalOpen(false);
   };
 
-  /**
-   * Gets the list of skills for a language if it exists.
-   * Languages that do not have skills are not clickable.
-   * @param languageName (string): name of the language to get the skills for
-   * @returns (Skill[]): list of skills for the language (empty array if the language does not exist)
-   */
-  const getSkillsByLanguage = (languageName: string): Skill[] => {
-    const language = languages.find((lang) => lang.name === languageName);
-    return language && language.technicalGeneralSkills
-      ? language.technicalGeneralSkills
-      : [];
-  };
-
   const mainLanguages = languages.filter((lang) => lang.isMainSkill);
 
   return (
@@ -46,7 +33,6 @@ const LanguageSection: React.FC = () => {
           <LanguageTagWithModal
             key={idx}
             language={languageData}
-            skills={getSkillsByLanguage(languageData.name)}
             handleOpenModal={handleOpenModal}
             handleCloseModal={handleCloseModal}
             isModalOpen={isModalOpen}
@@ -61,7 +47,6 @@ export default LanguageSection;
 
 interface LanguageTagWithModalProps {
   language: Skill;
-  skills: Skill[];
   repository?: string;
   handleOpenModal: () => void;
   handleCloseModal: () => void;
@@ -81,7 +66,6 @@ interface LanguageTagWithModalProps {
  */
 const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
   language,
-  skills,
   repository,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -94,7 +78,7 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
     setIsModalOpen(false);
   };
 
-  const shouldOpenModal = skills.length > 0 || repository;
+  const shouldOpenModal = language.technicalHardSkills && language.technicalHardSkills.length > 0;
 
   return (
     <>
@@ -106,7 +90,7 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
           isOpen={isModalOpen}
           onClose={handleCloseModal}
           language={language}
-          skills={skills}
+          skills={language.technicalHardSkills!}
         />
       )}
     </>
