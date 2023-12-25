@@ -40,8 +40,13 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
   onClose,
 }) => {
   const [groupedBy, setGroupedBy] = useState("category");
-  const filteredSkills = (language.technicalHardSkills || []).filter(skill => skill.isMainSkill);
-  const groupedSkills = groupSkills(groupedBy, language.technicalHardSkills || []);
+  const filteredSkills = (language.technicalHardSkills || []).filter(
+    (skill) => skill.isMainSkill,
+  );
+  const groupedSkills = groupSkills(
+    groupedBy,
+    language.technicalHardSkills || [],
+  );
 
   const projects = allProjects;
   const certificates = allCertificates;
@@ -50,7 +55,7 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
   const hasProjects = isSkillAssociatedWithProject(language, projects);
   const hasCertificates = isSkillAssociatedWithCertificate(
     language,
-    certificates
+    certificates,
   );
   const hasBlogs = isSkillAssociatedWithBlogs(language, allBlogs);
   const hasMaterial = hasProjects || hasCertificates || hasBlogs;
@@ -71,6 +76,7 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
         />
       </div>
 
+      {/* List of skills */}
       {Object.entries(groupedSkills).map(([category, skills], index) => (
         <div key={index} className="mt-4 text-center md:text-left">
           <HeadingThree title={category} />
@@ -82,10 +88,34 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
         </div>
       ))}
 
+      {/* Links */}
       {hasMaterial && (
         <div className="text-center md:text-left">
           <HeadingThree title="Material" />
         </div>
+      )}
+      {hasMaterial && (
+        <>
+          <div
+            className="
+            flex flex-wrap flex-col 
+            text-center md:text-left 
+            justify-start z-10 mt-5 space-y-2"
+          >
+            <Link
+              href={`
+            /skills/${language.slug}
+            `}
+            >
+              <div className="w-full">
+                <Button
+                  variant="gradient"
+                  className="w-full"
+                >{`All ${language.name} Material`}</Button>
+              </div>
+            </Link>
+          </div>
+        </>
       )}
       {hasProjects && (
         <div
@@ -147,30 +177,6 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
             </div>
           </Link>
         </div>
-      )}
-
-      {hasMaterial && (
-        <>
-          <div
-            className="
-            flex flex-wrap flex-col 
-            text-center md:text-left 
-            justify-start z-10 mt-5 space-y-2"
-          >
-            <Link
-              href={`
-            /skills/${language.slug}
-            `}
-            >
-              <div className="w-full">
-                <Button
-                  variant="ghost"
-                  className="w-full"
-                >{`All ${language.name} Material`}</Button>
-              </div>
-            </Link>
-          </div>
-        </>
       )}
     </Modal>
   );
