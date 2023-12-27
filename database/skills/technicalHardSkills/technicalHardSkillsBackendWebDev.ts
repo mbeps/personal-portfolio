@@ -34,7 +34,7 @@ export const supabase: Skill = {
   category: "Back-End Web Development",
   isMainSkill: true,
   skillType: "hard",
-  slug: "supabsase",
+  slug: "supabase",
   technicalGeneralSkills: [
     databaseManagementSystems,
     noSql,
