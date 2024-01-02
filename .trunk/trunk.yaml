@@ -22,7 +22,6 @@ lint:
     - eslint@8.56.0
     - git-diff-check
     - hadolint@2.12.0
-    - markdownlint@0.38.0
     - osv-scanner@1.5.0
     - oxipng@9.0.0
     - prettier@3.1.1
@@ -31,6 +30,8 @@ lint:
     - trivy@0.48.1
     - trufflehog@3.63.7
     - yamllint@1.33.0
+  disabled:
+    - markdownlint
 actions:
   disabled:
     - trunk-announce
