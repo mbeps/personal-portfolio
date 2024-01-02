@@ -44,9 +44,11 @@ import {
   jwt,
   django,
   auth0,
+  edgestore,
 } from "./skills/technicalHardSkills/technicalHardSkillsBackendWebDev";
 import { gcp } from "./skills/technicalHardSkills/technicalHardSkillsCloudComputing";
 import {
+  convex,
   mongoDB,
   mySQL,
   postgreSQL,
@@ -284,6 +286,44 @@ const webdevProjects: Project[] = [
     ],
     extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
     category: "Full-Stack Web Development",
+    hasImage: true,
+  },
+  {
+    name: "Joker Notes",
+    slug: "joker-notes",
+    description: `
+      A simple rich-text note-taking app that allows users to create, edit, and delete notes.
+      `,
+    repositoryURL: `https://github.com/mbeps/joker-notes`,
+    programmingLanguage: typescript,
+    technologySkills: [
+      nextjs,
+      react,
+      shadcnUI,
+      tailwindCSS,
+      radixUI,
+      zustand,
+      zod,
+      convex,
+      edgestore,
+      gitHub,
+      gitHubActions,
+      git,
+      html,
+      css,
+      yarn,
+      eslint,
+      prettier,
+    ],
+    softSkills: [
+      problemSolving,
+      projectManagement,
+      criticalThinking,
+      adaptability,
+    ],
+    extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
+    category: "Full-Stack Web Development",
+    deploymentURL: "https://joker-notes.vercel.app/",
     hasImage: true,
   },
 ];
