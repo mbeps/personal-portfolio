@@ -1,9 +1,9 @@
 "use client";
 
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 import MediaItem from "@/types/MediaItem";
 import Image from "next/image";
 import React from "react";
-import { IoMdPlay } from "react-icons/io";
 import {
   Carousel,
   CarouselApi,
@@ -32,6 +32,8 @@ const Gallery: React.FC<GalleryProps> = ({ mediaItems }) => {
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
 
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
   React.useEffect(() => {
     if (!api) {
       return;
@@ -50,7 +52,7 @@ const Gallery: React.FC<GalleryProps> = ({ mediaItems }) => {
    * This is used as the thumbnail for videos.
    * This is because the videos don't have thumbnails.
    */
-  const firstImageSrc = mediaItems.find((item) => item.type === "image")?.src;
+  // mediaItems.sort((a, b) => (a.type === "video" ? -1 : 1));
 
   return (
     <div className="flex flex-col items-center relative">
@@ -78,8 +80,12 @@ const Gallery: React.FC<GalleryProps> = ({ mediaItems }) => {
               ),
             )}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          {!isMobile && (
+            <>
+              <CarouselPrevious />
+              <CarouselNext />
+            </>
+          )}
         </Carousel>
         <div className="py-2 text-center text-sm text-muted-foreground">
           Slide {current} of {count}
