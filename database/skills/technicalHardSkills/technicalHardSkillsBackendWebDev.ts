@@ -152,6 +152,15 @@ export const cloudinary: Skill = {
   slug: "cloudinary",
   technicalGeneralSkills: [webDevelopment],
 };
+
+export const edgestore: Skill = {
+  name: "Edge Store",
+  category: "Back-End Web Development",
+  skillType: "hard",
+  slug: "edge-store",
+  technicalGeneralSkills: [webDevelopment],
+};
+
 export const jwt: Skill = {
   name: "JWT",
   category: "Back-End Web Development",

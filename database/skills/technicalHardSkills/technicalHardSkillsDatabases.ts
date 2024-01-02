@@ -89,6 +89,14 @@ export const redis: Skill = {
   ],
 };
 
+export const convex: Skill = {
+  name: "Convex",
+  category: "Databases",
+  isMainSkill: false,
+  skillType: "hard",
+  slug: "convex",
+};
+
 const technicalHardSkillsDatabases: Skill[] = [
   normalisation,
   postgreSQL,
@@ -96,6 +104,7 @@ const technicalHardSkillsDatabases: Skill[] = [
   sqlite,
   mongoDB,
   redis,
+  convex,
 ];
 
 export default technicalHardSkillsDatabases;
