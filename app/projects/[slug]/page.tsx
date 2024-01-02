@@ -18,6 +18,8 @@ import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
 import allProjects from "@/database/projects";
+import getImagesFromFileSystem from "@/actions/getImagesFromFileSystem";
+import getVideosFromFileSystem from "@/actions/getVideosFromFileSystem";
 
 /**
  * Metadata object for the dynamic project page.
@@ -27,7 +29,7 @@ import allProjects from "@/database/projects";
  */
 export async function generateMetadata(
   { params, searchParams }: ProjectPageProps,
-  parent: ResolvingMetadata
+  parent: ResolvingMetadata,
 ): Promise<Metadata> {
   // Read route params
   const slug = params.slug;
@@ -83,7 +85,6 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   }
 
   const projectName = project.name;
-
   const projectLanguage = project.programmingLanguage;
   const projectDescription = project.description;
   const hasCoverImage = hasProjectCover(slug);
@@ -91,7 +92,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
 
   function technicalGeneralSkills(
     skills: Skill[],
-    extraSkills: Skill[] = []
+    extraSkills: Skill[] = [],
   ): Skill[] {
     // Combine the original skills and extra skills
     const combinedSkills = skills.concat(extraSkills);
@@ -100,7 +101,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
       .flatMap((skill) =>
         skill.technicalGeneralSkills
           ? [skill, ...skill.technicalGeneralSkills]
-          : [skill]
+          : [skill],
       )
       .reduce((uniqueSkills, skill) => {
         if (!uniqueSkills.some((s) => s.slug === skill.slug)) {
@@ -118,11 +119,11 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const filterAndGroupSkills = (
     skills: Skill[],
     skillType: "hard" | "general" | "soft",
-    title: string
+    title: string,
   ): SkillCategory => {
     // Filter skills based on skillType
     const filteredSkills = skills.filter(
-      (skill) => skill.skillType === skillType
+      (skill) => skill.skillType === skillType,
     );
 
     // Group the filtered skills by category
@@ -132,7 +133,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
         (acc[category] = acc[category] || []).push(skill);
         return acc;
       },
-      {}
+      {},
     );
 
     return { title, skillCategories: grouped };
@@ -143,15 +144,15 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
     technologies: filterAndGroupSkills(
       project.technologySkills,
       "hard",
-      "Technologies"
+      "Technologies",
     ),
     generalSkills: filterAndGroupSkills(
       technicalGeneralSkills(
         project.technologySkills,
-        project.extraTechnicalGeneralSkills
+        project.extraTechnicalGeneralSkills,
       ),
       "general",
-      "Technical Skills"
+      "Technical Skills",
     ),
     softSkills: filterAndGroupSkills(project.softSkills, "soft", "Soft Skills"),
   };
@@ -161,46 +162,49 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
    * These are used to display the gallery.
    * @returns (MediaItem[]): the media items for the gallery
    */
-  const getGallery = () => {
-    let media = getMediaFromFileSystem(`public/projects/${slug}/media`);
+  const getImages = () => {
+    let images = getImagesFromFileSystem(`public/projects/${slug}/media`);
 
     // add the path to the media items
-    if (media) {
-      media = media.map((mediaItem) => {
-        return {
-          ...mediaItem,
-          src: `/projects/${slug}/media/${mediaItem.src}`,
-        };
-      });
-    }
-    return media;
+    images = images.map((image) => `/projects/${slug}/media/${image}`);
+
+    return images;
   };
 
-  const media = getGallery();
+  const getVideos = () => {
+    let videos = getVideosFromFileSystem(`public/projects/${slug}/media`);
+
+    // add the path to the media items
+    videos = videos.map((video) => `/projects/${slug}/media/${video}`);
+
+    return videos;
+  };
+
+  const images = getImages();
+  const videos = getVideos();
 
   /**
    * Get the features and blog content from the file system.
    * This is used to display the features and blog sections.
    */
   const features = getMarkdownFromFileSystem(
-    `public/projects/${slug}/features.md`
+    `public/projects/${slug}/features.md`,
   )?.content;
 
   /**
    * Get the features and blog content from the file system.
    * This is used to display the features and blog sections.
    */
-  const blog = getMarkdownFromFileSystem(
-    `public/projects/${slug}/report.md`
-  )?.content;
+  const blog = getMarkdownFromFileSystem(`public/projects/${slug}/report.md`)
+    ?.content;
 
   return (
     <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
       <HeadingTwo title={project?.name} />
 
       {/* Gallery Section */}
-      {media && media.length > 1 ? (
-        <Gallery mediaItems={media} />
+      {(images && images.length > 1) || (videos && videos.length > 1) ? (
+        <Gallery images={images} videos={videos} />
       ) : hasCoverImage ? (
         <div
           className="
@@ -259,7 +263,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
                     skillCategories={skillCategories}
                     title={title}
                   />
-                )
+                ),
             )}
 
             {/* Links Section */}
