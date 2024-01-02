@@ -1,13 +1,22 @@
+"use client";
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/shadcn/ui/dropdown-menu";
 import { languages } from "@/database/skills/languages";
 import Skill from "@/types/skills";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import Button from "../Button/Button";
 import Dropdown from "../DropDown/DropDownMenu";
 import SkillTag from "../Tags/SkillTag";
 import HeadingThree from "../Text/HeadingThree";
 import Modal from "./Modal";
 import { technologies } from "@/database/skills/skills";
+import { BsChevronDown } from "react-icons/bs";
 
 interface SkillsModalProps {
   isOpen?: boolean; // whether the modal is open or not
@@ -25,42 +34,51 @@ interface SkillsModalProps {
  * @returns (JSX.Element): modal component (stack of the project
  */
 const SkillsModal: React.FC<SkillsModalProps> = ({ isOpen, onClose }) => {
-  const [groupedBy, setGroupedBy] = React.useState("category");
+  const [groupedBy, setGroupedBy] = useState("category");
   const displayedSkills: Skill[] = [...languages, ...technologies].filter(
-    (skill) => skill.isMainSkill
+    (skill) => skill.isMainSkill,
   );
 
   const groupSkills = (
     skills: Skill[],
-    groupedBy: string
+    groupedBy: string,
   ): Record<string, Skill[]> => {
     if (groupedBy === "none") {
       return { None: skills };
     }
 
-    return skills.reduce((acc, skill) => {
-      // Group by category
-      if (groupedBy === "category") {
-        const key = skill.category;
-        acc[key] = acc[key] || [];
-        acc[key].push(skill);
-      }
-      // Group by language
-      else if (
-        groupedBy === "language" &&
-        skill.category === "Programming Languages"
-      ) {
-        skill.technicalGeneralSkills?.forEach((subSkill) => {
-          if (subSkill.skillType === "hard" && subSkill.isMainSkill) {
-            const key = skill.name; // Grouping under the main programming language
-            acc[key] = acc[key] || [];
-            acc[key].push(subSkill);
-          }
-        });
-      }
-      return acc;
-    }, {} as Record<string, Skill[]>);
+    return skills.reduce(
+      (acc, skill) => {
+        // Group by category
+        if (groupedBy === "category") {
+          const key = skill.category;
+          acc[key] = acc[key] || [];
+          acc[key].push(skill);
+        }
+        // Group by language
+        else if (
+          groupedBy === "language" &&
+          skill.category === "Programming Languages"
+        ) {
+          skill.technicalGeneralSkills?.forEach((subSkill) => {
+            if (subSkill.skillType === "hard" && subSkill.isMainSkill) {
+              const key = skill.name; // Grouping under the main programming language
+              acc[key] = acc[key] || [];
+              acc[key].push(subSkill);
+            }
+          });
+        }
+        return acc;
+      },
+      {} as Record<string, Skill[]>,
+    );
   };
+
+  const options = [
+    { slug: "category", entryName: "Category" },
+    { slug: "language", entryName: "Language" },
+    { slug: "none", entryName: "None" },
+  ];
 
   const groupedSkills = groupSkills(displayedSkills, groupedBy);
   return (
@@ -74,15 +92,46 @@ const SkillsModal: React.FC<SkillsModalProps> = ({ isOpen, onClose }) => {
         >
           Group by:
         </div>
-        <Dropdown
-          selected={groupedBy}
-          options={[
-            { slug: "category", entryName: "Category" },
-            { slug: "language", entryName: "Language" },
-            { slug: "none", entryName: "None" },
-          ]}
-          onSelect={setGroupedBy}
-        />
+
+        <DropdownMenu>
+          <DropdownMenuTrigger className="w-48">
+            <Button
+              variant="outlined"
+              className={`
+                px-3 py-2 w-full
+                flex
+                text-base font-medium text-neutral-700 dark:text-neutral-200 capitalize md:hover:text-neutral-700 dark:md:hover:text-neutral-200
+                rounded-xl
+                shadow-md md:hover:shadow-lg focus:shadow-lg
+                bg-neutral-100 dark:bg-neutral-800
+                md:hover:bg-neutral-100 dark:md:hover:bg-neutral-800
+                border-2 border-transparent dark:border-transparent
+                md:hover:border-red-500 dark:md:hover:border-red-800
+                transition-all duration-500 ease-in-out
+          `}
+            >
+              <div className="flex items-start justify-between space-x-2 w-full">
+                <span>Category</span>
+                <BsChevronDown
+                  fontSize={16}
+                  className="text-neutral-700 dark:text-neutral-200 mt-1"
+                />
+              </div>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-48 ">
+            {options.map((option, index) => (
+              <DropdownMenuItem
+                key={index}
+                className={`
+              ${option.slug === groupedBy ? "font-bold" : ""}`}
+                onSelect={() => setGroupedBy(option.slug)}
+              >
+                {option.entryName}
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
 
       {Object.entries(groupedSkills).map(([group, skills], index) => (
