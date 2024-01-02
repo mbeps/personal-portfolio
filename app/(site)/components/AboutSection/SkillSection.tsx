@@ -16,16 +16,6 @@ import { technologies } from "@/database/skills/skills";
  * @returns (JSX.Element): skill section (list of skills)
  */
 const SkillSection: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-
   /**
    * Gets the list of skills from all the languages.
    */
@@ -97,7 +87,7 @@ const SkillSection: React.FC = () => {
         acc[category].push(skill); // Add skill to category
         return acc; // Return updated categories
       },
-      {} as Record<string, Skill[]> // Initialize categories
+      {} as Record<string, Skill[]>, // Initialize categories
     );
 
     // Take the first 'limitPerCategory' skills from each category
@@ -118,14 +108,13 @@ const SkillSection: React.FC = () => {
   return (
     <>
       <HeadingThree title="Skills & Tools" />
-      <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
+      <div className="flex flex-wrap flex-<Tag onClick={handleOpenModal}>...</Tag>row justify-center z-10 md:justify-start">
         {handleDisplaySkills().map((skill: Skill, idx: number) => (
           <SkillTag key={idx} skill={skill} />
         ))}
         <div className="relative group">
-          <Tag onClick={handleOpenModal}>...</Tag>
+          <SkillsModal />
         </div>
-        <SkillsModal isOpen={isModalOpen} onClose={handleCloseModal} />
       </div>
     </>
   );
