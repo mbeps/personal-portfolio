@@ -1,5 +1,5 @@
-import Toggle from "@/components/Inputs/Toggle";
 import Link from "next/link";
+import { Switch } from "../shadcn/ui/switch";
 
 interface ArchiveToggleProps {
   generateUrl: (filters: Record<string, string>, basePath: string) => string;
@@ -25,7 +25,7 @@ export const ArchiveToggle: React.FC<ArchiveToggleProps> = ({
   basePath,
 }) => {
   return (
-    <div className="flex justify-end items-center">
+    <div className="flex justify-end items-center mt-4">
       <span className="mr-2 mb-1 text-neutral-600 dark:text-neutral-400">
         Display archived
       </span>
@@ -35,10 +35,10 @@ export const ArchiveToggle: React.FC<ArchiveToggleProps> = ({
             ...filterProps,
             archived: (!showArchived).toString(), // Convert the boolean to a string
           },
-          basePath
+          basePath,
         )}
       >
-        <Toggle checked={showArchived} />
+        <Switch checked={showArchived} />
       </Link>
     </div>
   );
