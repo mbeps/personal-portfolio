@@ -165,15 +165,11 @@ const SkillsModal: React.FC = () => {
 
         <div
           className="
-                  flex flex-wrap flex-col
-                  text-center md:text-left
-                  justify-start z-10 mt-5 space-y-2"
+            flex flex-wrap flex-col
+            text-center md:text-left
+            justify-start z-10 mt-5"
         >
-          <Link
-            href={`
-                    /skills}
-              `}
-          >
+          <Link href={`/skills}`}>
             <div className="w-full">
               <Button variant="gradient" className="w-full">
                 {`All Technologies & Skills`}
