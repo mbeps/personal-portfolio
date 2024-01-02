@@ -2,12 +2,16 @@
 
 import MediaItem from "@/types/MediaItem";
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
+import { IoMdPlay } from "react-icons/io";
 import {
-  IoIosArrowDropleftCircle,
-  IoIosArrowDroprightCircle,
-  IoMdPlay,
-} from "react-icons/io";
+  Carousel,
+  CarouselApi,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "../shadcn/ui/carousel";
 import VideoPlayer from "./VideoPlayer";
 
 interface GalleryProps {
@@ -24,27 +28,22 @@ interface GalleryProps {
  * @returns (JSX.Element) - Gallery Component
  */
 const Gallery: React.FC<GalleryProps> = ({ mediaItems }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [api, setApi] = React.useState<CarouselApi>();
+  const [current, setCurrent] = React.useState(0);
+  const [count, setCount] = React.useState(0);
 
-  /**
-   * Change the active media to the next media in the gallery.
-   * If the current media is the last image, go to the first media.
-   * Change the active media to the previous media in the gallery.
-   */
-  const handleNext = () => {
-    setActiveIndex((prevIndex) => (prevIndex + 1) % mediaItems.length);
-  };
+  React.useEffect(() => {
+    if (!api) {
+      return;
+    }
 
-  /**
-   * Change the active media to the previous media in the gallery.
-   * If the current media is the first image, go to the last media.
-   * Change the active media to the previous media in the gallery.
-   */
-  const handlePrev = () => {
-    setActiveIndex(
-      (prevIndex) => (prevIndex - 1 + mediaItems.length) % mediaItems.length
-    );
-  };
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap() + 1);
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1);
+    });
+  }, [api]);
 
   /**
    * Get the first image in the gallery.
@@ -55,77 +54,36 @@ const Gallery: React.FC<GalleryProps> = ({ mediaItems }) => {
 
   return (
     <div className="flex flex-col items-center relative">
-      <div className="w-full relative">
-        <IoIosArrowDropleftCircle
-          size={44}
-          className="
-            absolute 
-            left-1 top-1/2 
-            transform -translate-y-1/2 
-            text-3xl 
-            opacity-30 md:hover:opacity-100 
-            cursor-pointer 
-            text-neutral-400 dark:text-neutral-700 md:hover:text-red-500 dark:md:hover:text-red-900 
-            transition-all md:hover:scale-110 duration-300"
-          onClick={handlePrev}
-        />
-
-        {/* Depending on type, show Image or Video */}
-        {mediaItems[activeIndex].type === "image" ? (
-          <Image
-            src={mediaItems[activeIndex].src}
-            alt="Currently Active"
-            quality={90}
-            width={2000}
-            height={1125}
-            priority
-            className="w-full h-[60vh] object-contain rounded-xl bg-neutral-100 dark:bg-neutral-900 transition-colors duration-700 p-2"
-          />
-        ) : (
-          <VideoPlayer src={mediaItems[activeIndex].src} />
-        )}
-
-        <IoIosArrowDroprightCircle
-          size={44}
-          className="absolute right-1 top-1/2 transform -translate-y-1/2 text-3xl opacity-30 md:hover:opacity-100 cursor-pointer text-neutral-400 dark:text-neutral-700 md:hover:text-red-500 dark:md:hover:text-red-900 transition-all md:hover:scale-110 duration-300"
-          onClick={handleNext}
-        />
-      </div>
-
-      <div className="flex flex-wrap justify-center gap-2 mt-4">
-        {mediaItems.map((media, idx) => (
-          <div
-            key={idx}
-            className={`relative w-16 h-16 ${
-              idx === activeIndex
-                ? "border-4 border-red-500 dark:border-red-800 md:hover:border-red-600 dark:md:hover:border-red-500"
-                : "border-2 border-neutral-200 dark:border-neutral-700 md:hover:border-neutral-400 dark:md:hover:border-red-900"
-            } rounded-lg overflow-hidden cursor-pointer transition-all duration-500 transform md:hover:scale-110 ease-in-out`}
-            onClick={() => setActiveIndex(idx)}
-          >
-            <Image
-              src={media.type === "image" ? media.src : firstImageSrc!}
-              quality={1}
-              alt={`Thumbnail ${idx}`}
-              width={150}
-              height={150}
-              loading="lazy"
-              className="w-full h-full object-cover rounded-lg transform md:hover:scale-105 transition-transform duration-500 ease-in-out"
-            />
-            {media.type === "video" && (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <IoMdPlay
-                  size={32}
-                  className="
-                    text-red-500 dark:text-red-900 
-                    opacity-70 md:hover:opacity-100 
-                    transition-all duration-300
-                    "
-                />
-              </div>
+      {/* Media Preview */}
+      <div className="w-full">
+        <Carousel setApi={setApi}>
+          <CarouselContent>
+            {Array.from({ length: mediaItems.length }).map((_, index) =>
+              mediaItems[index].type === "image" ? (
+                <CarouselItem key={index}>
+                  <Image
+                    src={mediaItems[index].src}
+                    alt="Currently Active"
+                    quality={90}
+                    width={2000}
+                    height={1125}
+                    priority
+                    className="w-full h-[60vh] object-contain rounded-xl bg-neutral-100 dark:bg-neutral-900 transition-colors duration-700 p-2"
+                  />
+                </CarouselItem>
+              ) : (
+                <CarouselItem key={index}>
+                  <VideoPlayer src={mediaItems[index].src} />
+                </CarouselItem>
+              ),
             )}
-          </div>
-        ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
+        <div className="py-2 text-center text-sm text-muted-foreground">
+          Slide {current} of {count}
+        </div>
       </div>
     </div>
   );
