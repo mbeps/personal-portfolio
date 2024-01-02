@@ -1,28 +1,27 @@
 "use client";
 
+import groupSkills from "@/actions/skills/groupSkills";
+import isSkillAssociatedWithBlogs from "@/actions/skills/isSkillAssociatedWithBlogs";
+import isSkillAssociatedWithCertificate from "@/actions/skills/isSkillAssociatedWithCertificate";
+import isSkillAssociatedWithProject from "@/actions/skills/isSkillAssociatedWithProject";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/shadcn/ui/dropdown-menu";
-import groupSkills from "@/actions/skills/groupSkills";
-import isSkillAssociatedWithBlogs from "@/actions/skills/isSkillAssociatedWithBlogs";
-import isSkillAssociatedWithCertificate from "@/actions/skills/isSkillAssociatedWithCertificate";
-import isSkillAssociatedWithProject from "@/actions/skills/isSkillAssociatedWithProject";
+import blogs from "@/database/blogs";
+import allCertificates from "@/database/certificates";
+import allProjects from "@/database/projects";
+import FilterOption from "@/types/filters/FilterOption";
 import Skill from "@/types/skills";
 import Link from "next/link";
 import React, { useState } from "react";
+import { BsChevronDown } from "react-icons/bs";
 import Button from "../Button/Button";
-import Dropdown from "../DropDown/DropDownMenu";
 import SkillTag from "../Tags/SkillTag";
 import HeadingThree from "../Text/HeadingThree";
 import Modal from "./Modal";
-import allProjects from "@/database/projects";
-import allCertificates from "@/database/certificates";
-import blogs from "@/database/blogs";
-import FilterOption from "@/types/filters/FilterOption";
-import { BsChevronDown } from "react-icons/bs";
 
 interface ProjectModalProps {
   isOpen?: boolean; // whether the modal is open or not

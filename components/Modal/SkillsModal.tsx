@@ -7,16 +7,16 @@ import {
   DropdownMenuTrigger,
 } from "@/components/shadcn/ui/dropdown-menu";
 import { languages } from "@/database/skills/languages";
+import { technologies } from "@/database/skills/skills";
+import FilterOption from "@/types/filters/FilterOption";
 import Skill from "@/types/skills";
 import Link from "next/link";
 import React, { useState } from "react";
+import { BsChevronDown } from "react-icons/bs";
 import Button from "../Button/Button";
-import Dropdown from "../DropDown/DropDownMenu";
 import SkillTag from "../Tags/SkillTag";
 import HeadingThree from "../Text/HeadingThree";
 import Modal from "./Modal";
-import { technologies } from "@/database/skills/skills";
-import { BsChevronDown } from "react-icons/bs";
 
 interface SkillsModalProps {
   isOpen?: boolean; // whether the modal is open or not
@@ -74,7 +74,7 @@ const SkillsModal: React.FC<SkillsModalProps> = ({ isOpen, onClose }) => {
     );
   };
 
-  const options = [
+  const options: FilterOption[] = [
     { slug: "category", entryName: "Category" },
     { slug: "language", entryName: "Language" },
     { slug: "none", entryName: "None" },
