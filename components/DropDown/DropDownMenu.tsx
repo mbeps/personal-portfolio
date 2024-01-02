@@ -55,12 +55,12 @@ const Dropdown: React.FC<DropdownProps> = ({
           </div>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-48 space-y-1 rounded-xl">
+      <DropdownMenuContent className="w-48 ">
         {options.map((option, index) => (
           <DropdownMenuItem
             key={index}
             className={`
-              py-2 text-md ${option.slug === selected ? "font-bold" : ""}`}
+              ${option.slug === selected ? "font-bold" : ""}`}
             onSelect={() => onSelect(option.slug)}
           >
             {option.entryName}
