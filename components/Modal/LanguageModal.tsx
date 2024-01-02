@@ -1,18 +1,27 @@
+"use client";
+
 import groupSkills from "@/actions/skills/groupSkills";
 import isSkillAssociatedWithBlogs from "@/actions/skills/isSkillAssociatedWithBlogs";
 import isSkillAssociatedWithCertificate from "@/actions/skills/isSkillAssociatedWithCertificate";
 import isSkillAssociatedWithProject from "@/actions/skills/isSkillAssociatedWithProject";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/shadcn/ui/dropdown-menu";
+import blogs from "@/database/blogs";
+import allCertificates from "@/database/certificates";
+import allProjects from "@/database/projects";
+import FilterOption from "@/types/filters/FilterOption";
 import Skill from "@/types/skills";
 import Link from "next/link";
 import React, { useState } from "react";
+import { BsChevronDown } from "react-icons/bs";
 import Button from "../Button/Button";
-import Dropdown from "../DropDown/DropDownMenu";
 import SkillTag from "../Tags/SkillTag";
 import HeadingThree from "../Text/HeadingThree";
 import Modal from "./Modal";
-import allProjects from "@/database/projects";
-import allCertificates from "@/database/certificates";
-import blogs from "@/database/blogs";
 
 interface ProjectModalProps {
   isOpen?: boolean; // whether the modal is open or not
@@ -60,20 +69,56 @@ const LanguageModal: React.FC<ProjectModalProps> = ({
   const hasBlogs = isSkillAssociatedWithBlogs(language, allBlogs);
   const hasMaterial = hasProjects || hasCertificates || hasBlogs;
 
+  const options: FilterOption[] = [
+    { slug: "category", entryName: "Category" },
+    { slug: "none", entryName: "None" },
+  ];
+
   return (
     <Modal title={language.name} isOpen={isOpen} onClose={onClose}>
       <div className="flex mt-4">
         <div className="flex-grow mr-2 mt-2.5 text-right text-neutral-700 dark:text-neutral-300">
           Group by:
         </div>
-        <Dropdown
-          selected={groupedBy}
-          options={[
-            { slug: "category", entryName: "Category" },
-            { slug: "none", entryName: "None" },
-          ]}
-          onSelect={setGroupedBy}
-        />
+        <DropdownMenu>
+          <DropdownMenuTrigger className="w-48">
+            <Button
+              variant="outlined"
+              className={`
+                px-3 py-2 w-full
+                flex
+                text-base font-medium text-neutral-700 dark:text-neutral-200 capitalize md:hover:text-neutral-700 dark:md:hover:text-neutral-200
+                rounded-xl
+                shadow-md md:hover:shadow-lg focus:shadow-lg
+                bg-neutral-100 dark:bg-neutral-800
+                md:hover:bg-neutral-100 dark:md:hover:bg-neutral-800
+                border-2 border-transparent dark:border-transparent
+                md:hover:border-red-500 dark:md:hover:border-red-800
+                transition-all duration-500 ease-in-out
+          `}
+            >
+              <div className="flex items-start justify-between space-x-2 w-full">
+                <span>Category</span>
+                <BsChevronDown
+                  fontSize={16}
+                  className="text-neutral-700 dark:text-neutral-200 mt-1"
+                />
+              </div>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-48 ">
+            {options.map((option, index) => (
+              <DropdownMenuItem
+                key={index}
+                className={`
+              ${option.slug === groupedBy ? "font-bold" : ""}`}
+                onSelect={() => setGroupedBy(option.slug)}
+              >
+                {option.entryName}
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
 
       {/* List of skills */}
