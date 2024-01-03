@@ -23,6 +23,7 @@ import Tag from "../Tags/Tag";
 import HeadingThree from "../Text/HeadingThree";
 import HeadingTwo from "../Text/HeadingTwo";
 import { Button } from "../shadcn/ui/button";
+import groupSkills from "@/actions/skills/groupSkills";
 
 /**
  * Displays a modal for the skills.
@@ -49,48 +50,17 @@ const SkillsModal: React.FC = () => {
     (skill) => skill.isMainSkill,
   );
 
-  const groupSkills = (
-    skills: Skill[],
-    groupedBy: string,
-  ): Record<string, Skill[]> => {
-    if (groupedBy === "none") {
-      return { None: skills };
-    }
-
-    return skills.reduce(
-      (acc, skill) => {
-        // Group by category
-        if (groupedBy === "category") {
-          const key = skill.category;
-          acc[key] = acc[key] || [];
-          acc[key].push(skill);
-        }
-        // Group by language
-        else if (
-          groupedBy === "language" &&
-          skill.category === "Programming Languages"
-        ) {
-          skill.technicalGeneralSkills?.forEach((subSkill) => {
-            if (subSkill.skillType === "hard" && subSkill.isMainSkill) {
-              const key = skill.name; // Grouping under the main programming language
-              acc[key] = acc[key] || [];
-              acc[key].push(subSkill);
-            }
-          });
-        }
-        return acc;
-      },
-      {} as Record<string, Skill[]>,
-    );
-  };
-
   const options: FilterOption[] = [
     { slug: "category", entryName: "Category" },
     { slug: "language", entryName: "Language" },
     { slug: "none", entryName: "None" },
   ];
 
-  const groupedSkills = groupSkills(displayedSkills, groupedBy);
+  const groupedSkills = groupSkills(groupedBy, displayedSkills, [
+    "general",
+    "soft",
+  ]);
+
   return (
     <Dialog>
       <DialogTrigger>
