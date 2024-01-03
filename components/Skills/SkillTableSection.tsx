@@ -37,14 +37,23 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
   return (
     <Tabs
       defaultValue={Object.keys(allGroupedSkills)[0]}
-      className="w-full"
+      className="
+        w-full
+        items-center md:items-start justify-center
+        "
       value={selectedTab}
       onValueChange={setSelectedTab}
     >
       {/* Tab Options */}
-      <TabsList>
+      <TabsList className="mt-6 -mb-2">
         {Object.entries(allGroupedSkills).map(([key, { title }]) => (
-          <TabsTrigger key={key} value={stringToSlug(title)}>
+          <TabsTrigger
+            key={key}
+            value={stringToSlug(title)}
+            className="
+              text-md md:text-xl
+              font-bold"
+          >
             {title}
           </TabsTrigger>
         ))}
@@ -58,8 +67,6 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
             <TabsContent key={key} value={stringToSlug(title)}>
               {/* Original functionality inside each tab content */}
               <div className="mt-4 text-center md:text-left">
-                <HeadingThree title={title} />
-
                 {/* Render each skill category and its skills */}
                 <CategorySkillDisplay skillCategories={skillCategories} />
               </div>
@@ -79,7 +86,7 @@ const CategorySkillDisplay: React.FC<{
   const shouldDisplayTitle = categories.length > 1;
 
   const maxSkillCount = 12;
-  const maxGroupCount = 4;
+  const maxGroupCount = 3;
 
   let skillCount = 0;
   let groupCount = 0;
@@ -112,7 +119,7 @@ const CategorySkillDisplay: React.FC<{
   // Components like SkillTag, HeadingThree, HeadingFour, ExpandCollapseButton should be defined or imported
   return (
     <div>
-      <div className="gap-4 grid grid-cols-2">
+      <div className="gap-4 grid md:grid-cols-2 lg:grid-cols-3">
         {displayedSkills.map(([category, skills]) => (
           <div key={category} className="mb-6">
             {shouldDisplayTitle && <HeadingFour title={category} />}
