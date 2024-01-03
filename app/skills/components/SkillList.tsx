@@ -2,9 +2,9 @@
 
 import generateUrl from "@/actions/generateUrl";
 import groupSkills from "@/actions/skills/groupSkills";
-import Button from "@/components/Button/Button";
 import SkillTag from "@/components/Tags/SkillTag";
 import HeadingThree from "@/components/Text/HeadingThree";
+import { Button } from "@/components/shadcn/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -47,21 +47,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
 
         <DropdownMenu>
           <DropdownMenuTrigger className="w-48">
-            <Button
-              variant="outlined"
-              className={`
-                px-3 py-2 w-full
-                flex
-                text-base font-medium text-neutral-700 dark:text-neutral-200 capitalize md:hover:text-neutral-700 dark:md:hover:text-neutral-200
-                rounded-xl
-                shadow-md md:hover:shadow-lg focus:shadow-lg
-                bg-neutral-100 dark:bg-neutral-800
-                md:hover:bg-neutral-100 dark:md:hover:bg-neutral-800
-                border-2 border-transparent dark:border-transparent
-                md:hover:border-red-500 dark:md:hover:border-red-800
-                transition-all duration-500 ease-in-out
-          `}
-            >
+            <Button variant="default" className="w-full">
               <div className="flex items-start justify-between space-x-2 w-full">
                 <span>Category</span>
                 <BsChevronDown

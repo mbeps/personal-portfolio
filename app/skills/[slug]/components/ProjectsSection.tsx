@@ -1,5 +1,5 @@
 import ProjectsListSection from "@/app/projects/components/ProjectListSection";
-import Button from "@/components/Button/Button";
+import { Button } from "@/components/shadcn/ui/button";
 import Project from "@/types/projects";
 import Skill from "@/types/skills";
 import Link from "next/link";
@@ -14,7 +14,7 @@ interface ProjectPageProps {
 const ProjectsSection: React.FC<ProjectPageProps> = ({ projects, skill }) => {
   const filterProjectsBySkill = (
     projects: Project[],
-    selectedSkill: Skill
+    selectedSkill: Skill,
   ): Project[] => {
     const skillMatches = (skill: Skill): boolean => {
       // Check if the skill matches
@@ -28,7 +28,7 @@ const ProjectsSection: React.FC<ProjectPageProps> = ({ projects, skill }) => {
         skill.technicalGeneralSkills.length > 0
       ) {
         return skill.technicalGeneralSkills.some((subSkill) =>
-          skillMatches(subSkill)
+          skillMatches(subSkill),
         );
       }
 
@@ -41,7 +41,7 @@ const ProjectsSection: React.FC<ProjectPageProps> = ({ projects, skill }) => {
         project.softSkills.some(skillMatches) ||
         (project.extraTechnicalGeneralSkills &&
           project.extraTechnicalGeneralSkills.some(skillMatches)) ||
-        project.programmingLanguage.slug === selectedSkill.slug
+        project.programmingLanguage.slug === selectedSkill.slug,
     );
   };
 
@@ -52,7 +52,7 @@ const ProjectsSection: React.FC<ProjectPageProps> = ({ projects, skill }) => {
   }
 
   const groupProjectsByCurrentSkill = (
-    projects: Project[]
+    projects: Project[],
   ): Record<string, Project[]> => {
     return { Projects: projects };
   };
@@ -64,7 +64,7 @@ const ProjectsSection: React.FC<ProjectPageProps> = ({ projects, skill }) => {
       <ProjectsListSection groupedProjects={groupedProjects} />
 
       <Link href="/projects" className="flex justify-center mt-10">
-        <Button variant="outlined">View All Projects</Button>
+        <Button variant="outline">View All Projects</Button>
       </Link>
     </div>
   );

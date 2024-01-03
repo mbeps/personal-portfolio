@@ -46,7 +46,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
 
   const combinedClassName = twMerge(
     `
-      w-full
+      w-full h-12
       p-2 pl-10
       border-2
       bg-neutral-100 dark:bg-neutral-800
@@ -58,7 +58,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
       shadow-md hover:shadow-lg focus:shadow-lg
       transition-all ease-out duration-500
     `,
-    className
+    className,
   );
 
   const isSearchDisabled = !localSearchTerm;

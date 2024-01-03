@@ -1,5 +1,6 @@
-import Button from "@/components/Button/Button";
+import { Button } from "@/components/shadcn/ui/button";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Maruf Bepary - Page Not Found",
@@ -32,9 +33,11 @@ export default function NotFound() {
       <h2 className="text-neutral-900 dark:text-neutral-100 transition-colors duration-500 text-2xl font-medium mb-4">
         This page does not seem to exist. Navigate back to the home page.
       </h2>
-      <Button onClick={"/"} variant="filled">
-        Home
-      </Button>
+      <Link href={"/"} className="w-full">
+        <Button variant="gradient" className="px-20">
+          Home
+        </Button>
+      </Link>
     </div>
   );
 }

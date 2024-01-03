@@ -1,5 +1,5 @@
 import BlogListSection from "@/app/blogs/components/BlogListSection";
-import Button from "@/components/Button/Button";
+import { Button } from "@/components/shadcn/ui/button";
 import Blog from "@/types/blog";
 import Skill from "@/types/skills";
 import Link from "next/link";
@@ -15,8 +15,8 @@ const BlogsSection: React.FC<BlogsPageProps> = ({ blogs, skill }) => {
   const filterBlogsBySkill = (blogs: Blog[], selectedSkill: string): Blog[] => {
     return blogs.filter((blog) =>
       blog.technicalSkills.some(
-        (s) => s.name.toLowerCase() === selectedSkill.toLowerCase()
-      )
+        (s) => s.name.toLowerCase() === selectedSkill.toLowerCase(),
+      ),
     );
   };
 
@@ -37,7 +37,7 @@ const BlogsSection: React.FC<BlogsPageProps> = ({ blogs, skill }) => {
       <BlogListSection groupedBlogs={groupedBlogs} />
 
       <Link href="/blogs" className="flex justify-center mt-10">
-        <Button variant="outlined">View All Blogs</Button>
+        <Button variant="outline">View All Blogs</Button>
       </Link>
     </div>
   );

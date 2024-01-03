@@ -18,11 +18,11 @@ import Skill from "@/types/skills";
 import Link from "next/link";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
-import Button from "../Button/Button";
 import SkillTag from "../Tags/SkillTag";
 import Tag from "../Tags/Tag";
 import HeadingThree from "../Text/HeadingThree";
 import HeadingTwo from "../Text/HeadingTwo";
+import { Button } from "../shadcn/ui/button";
 
 /**
  * Displays a modal for the skills.
@@ -110,21 +110,7 @@ const SkillsModal: React.FC = () => {
 
           <DropdownMenu>
             <DropdownMenuTrigger className="w-48">
-              <Button
-                variant="outlined"
-                className={`
-                px-3 py-2 w-full
-                flex
-                text-base font-medium text-neutral-700 dark:text-neutral-200 capitalize md:hover:text-neutral-700 dark:md:hover:text-neutral-200
-                rounded-xl
-                shadow-md md:hover:shadow-lg focus:shadow-lg
-                bg-neutral-100 dark:bg-neutral-800
-                md:hover:bg-neutral-100 dark:md:hover:bg-neutral-800
-                border-2 border-transparent dark:border-transparent
-                md:hover:border-red-500 dark:md:hover:border-red-800
-                transition-all duration-500 ease-in-out
-          `}
-              >
+              <Button variant="default" className="w-full">
                 <div className="flex items-start justify-between space-x-2 w-full">
                   <span>Category</span>
                   <BsChevronDown
@@ -169,7 +155,7 @@ const SkillsModal: React.FC = () => {
             text-center md:text-left
             justify-start z-10 mt-5"
         >
-          <Link href={`/skills}`}>
+          <Link href={`/skills`}>
             <div className="w-full">
               <Button variant="gradient" className="w-full">
                 {`All Technologies & Skills`}

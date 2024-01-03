@@ -2,13 +2,13 @@ import getProjectBySlug from "@/actions/projects/getProjectBySlug";
 import Gallery from "@/components/Gallery/Gallery";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-
+import getImagesFromFileSystem from "@/actions/getImagesFromFileSystem";
 import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
-import getMediaFromFileSystem from "@/actions/getMediaFromFileSystem";
+import getVideosFromFileSystem from "@/actions/getVideosFromFileSystem";
 import hasProjectCover from "@/actions/projects/hasProjectCover";
-import Button from "@/components/Button/Button";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import SkillTag from "@/components/Tags/SkillTag";
+import allProjects from "@/database/projects";
 import Skill from "@/types/skills";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
@@ -17,9 +17,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
-import allProjects from "@/database/projects";
-import getImagesFromFileSystem from "@/actions/getImagesFromFileSystem";
-import getVideosFromFileSystem from "@/actions/getVideosFromFileSystem";
+import { Button } from "@/components/shadcn/ui/button";
 
 /**
  * Metadata object for the dynamic project page.
@@ -284,16 +282,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
                     target="_blank"
                     className="w-full"
                   >
-                    <Button
-                      variant={"ghost"}
-                      className="
-                text-neutral-900 dark:text-white 
-                hover:text-neutral-900 
-                hover:bg-neutral-300
-                w-full
-                rounded-xl
-              "
-                    >
+                    <Button>
                       <div className="flex justify-center md:justify-start gap-4 w-full">
                         <BsGithub size={30} />
                         <p className="mt-1">Repository</p>
@@ -308,16 +297,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
                     target="_blank"
                     className="w-full"
                   >
-                    <Button
-                      variant={"ghost"}
-                      className="
-                text-neutral-900 dark:text-white 
-                hover:text-neutral-900 
-                hover:bg-neutral-300
-                w-full
-                rounded-xl
-              "
-                    >
+                    <Button>
                       <div className="flex justify-center md:justify-start gap-4 w-full">
                         <BsArrowUpRightCircle size={30} />
                         <p className="mt-1">Deployment</p>

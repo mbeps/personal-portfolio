@@ -1,9 +1,9 @@
 "use client";
 
 import scrollToSection from "@/actions/scrollToSection";
-import Button from "@/components/Button/Button";
 import Socials from "@/components/Socials/Socials";
 import TextLoop from "@/components/TextLoop/TextLoop";
+import { Button } from "@/components/shadcn/ui/button";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { HiArrowDown } from "react-icons/hi";

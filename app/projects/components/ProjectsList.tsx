@@ -1,19 +1,20 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
-
 import stringToSlug from "@/actions/stringToSlug";
 import FilterOverlay from "@/components/Filters/FilterPanel";
-import ClearAllFiltersButton from "@/components/Filters/ClearAllFiltersButton";
-import ToggleFilterButton from "@/components/Filters/ToggleFilterButton";
 import SearchInput from "@/components/Inputs/SearchInput";
+import { Button } from "@/components/shadcn/ui/button";
 import FilterCategory from "@/types/filters/FilterCategory";
 import FilterOption from "@/types/filters/FilterOption";
 import Project from "@/types/projects";
 import Skill from "@/types/skills";
 import Fuse from "fuse.js";
+import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
+import { AiOutlineClear } from "react-icons/ai";
+import { BsFilterLeft } from "react-icons/bs";
 import { ArchiveToggle } from "../../../components/Filters/ArchiveToggle";
 import ProjectsListSection from "./ProjectListSection";
 
@@ -101,11 +102,11 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
    * @returns (Record<string, Project[]>): object with project types as keys and list of projects as values
    */
   const groupProjectsByType = (
-    projects: Project[]
+    projects: Project[],
   ): Record<string, Project[]> => {
     return projects.reduce<Record<string, Project[]>>((grouped, project) => {
       (grouped[project.category] = grouped[project.category] || []).push(
-        project
+        project,
       );
       return grouped;
     }, {});
@@ -127,7 +128,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
       }))
       .filter(
         (value, index, self) =>
-          self.findIndex((v) => v.slug === value.slug) === index
+          self.findIndex((v) => v.slug === value.slug) === index,
       ),
   ];
 
@@ -165,7 +166,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
         (project.technologySkills || []).map((skill: Skill) => ({
           slug: skill.slug,
           entryName: skill.name,
-        }))
+        })),
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -185,7 +186,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
               slug: stringToSlug(skill.category),
               entryName: skill.category,
             }))
-            .filter(Boolean) || []
+            .filter(Boolean) || [],
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -205,8 +206,8 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
                 slug: subSkill.slug,
                 entryName: subSkill.name,
               }))
-            : []
-        )
+            : [],
+        ),
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -223,7 +224,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
         (project.softSkills || []).map((skill: Skill) => ({
           slug: skill.slug,
           entryName: skill.name,
-        }))
+        })),
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -252,14 +253,14 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     const matchesTechnology =
       selectedTechnology === "all" ||
       (project.technologySkills || []).some(
-        (skill) => skill.slug === selectedTechnology
+        (skill) => skill.slug === selectedTechnology,
       );
 
     const matchesCategory =
       stringToSlug(selectedSkillCategory) === "all" ||
       (project.technologySkills || []).some(
         (skill) =>
-          stringToSlug(skill.category) === stringToSlug(selectedSkillCategory)
+          stringToSlug(skill.category) === stringToSlug(selectedSkillCategory),
       );
 
     const matchesGeneralSkill =
@@ -271,14 +272,14 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
           (skill.technicalGeneralSkills || []).some(
             (nestedSkill) =>
               stringToSlug(nestedSkill.slug) ===
-              stringToSlug(selectedGeneralSkill)
-          )
+              stringToSlug(selectedGeneralSkill),
+          ),
       );
 
     const matchesSoftSkill =
       selectedSoftSkill === "all" ||
       (project.softSkills || []).some(
-        (skill) => stringToSlug(skill.slug) === stringToSlug(selectedSoftSkill)
+        (skill) => stringToSlug(skill.slug) === stringToSlug(selectedSoftSkill),
       );
 
     const matchesArchivedStatus = showArchived || !project.archived;
@@ -317,8 +318,8 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
           [searchParamName]: newSearchTerm, // only this changes
           [archivedParamName]: true.toString(),
         },
-        basePath
-      )
+        basePath,
+      ),
     );
   };
 
@@ -389,12 +390,36 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
         {/* Buttons */}
         <div className="flex flex-row md:flex-1 gap-2 w-full">
           {/* Filter Button */}
-          <ToggleFilterButton toggleFilter={handleToggleFilter} />
+          <Button
+            variant="default"
+            onClick={handleToggleFilter}
+            className="w-full flex justify-start"
+          >
+            <div className="flex items-center space-x-2">
+              <BsFilterLeft
+                fontSize={24}
+                className="text-neutral-700 dark:text-neutral-200"
+              />
+              <span>Filters</span>
+            </div>
+          </Button>
+
           {/* Clear Button */}
-          <ClearAllFiltersButton
-            areFiltersApplied={areFiltersApplied}
-            basePath={basePath}
-          />
+          <Link href={basePath} className="w-full">
+            <Button
+              variant="default"
+              disabled={!areFiltersApplied}
+              className="w-full flex justify-start"
+            >
+              <div className="flex items-center space-x-2">
+                <AiOutlineClear
+                  fontSize={24}
+                  className="text-neutral-700 dark:text-neutral-200"
+                />
+                <span>Clear All</span>
+              </div>
+            </Button>
+          </Link>
         </div>
       </div>
 

@@ -1,5 +1,5 @@
 import CredentialListSection from "@/app/credentials/components/CredentialListSection";
-import Button from "@/components/Button/Button";
+import { Button } from "@/components/shadcn/ui/button";
 import Certificate from "@/types/certificates";
 import Skill from "@/types/skills";
 import Link from "next/link";
@@ -17,7 +17,7 @@ const CredentialsSection: React.FC<CredentialsPageProps> = ({
 }) => {
   const filterCertificatesBySkill = (
     certificates: Certificate[],
-    selectedSkill: Skill
+    selectedSkill: Skill,
   ): Certificate[] => {
     const skillMatches = (skill: Skill): boolean => {
       // Check if the skill matches
@@ -31,7 +31,7 @@ const CredentialsSection: React.FC<CredentialsPageProps> = ({
         skill.technicalGeneralSkills.length > 0
       ) {
         return skill.technicalGeneralSkills.some((subSkill) =>
-          skillMatches(subSkill)
+          skillMatches(subSkill),
         );
       }
 
@@ -41,7 +41,7 @@ const CredentialsSection: React.FC<CredentialsPageProps> = ({
     return certificates.filter(
       (certificate) =>
         certificate.technicalSkills.some(skillMatches) ||
-        certificate.softSkills.some(skillMatches)
+        certificate.softSkills.some(skillMatches),
     );
   };
 
@@ -52,7 +52,7 @@ const CredentialsSection: React.FC<CredentialsPageProps> = ({
   }
 
   const groupCertificatesByCategory = (
-    certificates: Certificate[]
+    certificates: Certificate[],
   ): Record<string, Certificate[]> => {
     return { Certificates: certificates };
   };
@@ -64,7 +64,7 @@ const CredentialsSection: React.FC<CredentialsPageProps> = ({
       <CredentialListSection groupedCertificates={groupedCertificates} />
 
       <Link href="/credentials" className="flex justify-center mt-10">
-        <Button variant="outlined">View All Credentials</Button>
+        <Button variant="outline">View All Credentials</Button>
       </Link>
     </div>
   );

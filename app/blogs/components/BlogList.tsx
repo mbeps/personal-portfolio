@@ -2,19 +2,21 @@
 
 import generateUrl from "@/actions/generateUrl";
 import stringToSlug from "@/actions/stringToSlug";
+import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
 import FilterOverlay from "@/components/Filters/FilterPanel";
-import ClearAllFiltersButton from "@/components/Filters/ClearAllFiltersButton";
 import SearchInput from "@/components/Inputs/SearchInput";
+import { Button } from "@/components/shadcn/ui/button";
 import Blog from "@/types/blog";
+import FilterCategory from "@/types/filters/FilterCategory";
+import FilterOption from "@/types/filters/FilterOption";
 import Skill from "@/types/skills";
 import Fuse from "fuse.js";
+import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
+import { AiOutlineClear } from "react-icons/ai";
+import { BsFilterLeft } from "react-icons/bs";
 import BlogListSection from "./BlogListSection";
-import ToggleFilterButton from "@/components/Filters/ToggleFilterButton";
-import FilterOption from "@/types/filters/FilterOption";
-import FilterCategory from "@/types/filters/FilterCategory";
-import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
 
 interface BlogListProps {
   blogs: Blog[];
@@ -114,7 +116,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
       }))
       .filter(
         (value, index, self) =>
-          self.findIndex((v) => v.slug === value.slug) === index
+          self.findIndex((v) => v.slug === value.slug) === index,
       )
       .sort((a, b) => a.entryName.localeCompare(b.entryName)),
   ];
@@ -126,7 +128,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
         blog.technicalSkills.map((skill: Skill) => ({
           slug: stringToSlug(skill.category),
           entryName: skill.category,
-        }))
+        })),
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -142,7 +144,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
       .flatMap((blog: Blog) =>
         (blog.technicalSkills || [])
           .filter((skill: Skill) => skill.skillType === "hard")
-          .map((skill: Skill) => ({ slug: skill.slug, entryName: skill.name }))
+          .map((skill: Skill) => ({ slug: skill.slug, entryName: skill.name })),
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -158,7 +160,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
       .flatMap((blog: Blog) =>
         (blog.technicalSkills || [])
           .filter((skill: Skill) => skill.skillType === "general")
-          .map((skill: Skill) => ({ slug: skill.slug, entryName: skill.name }))
+          .map((skill: Skill) => ({ slug: skill.slug, entryName: skill.name })),
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -174,7 +176,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
       .flatMap((blog: Blog) =>
         (blog.technicalSkills || [])
           .filter((skill: Skill) => skill.skillType === "soft")
-          .map((skill: Skill) => ({ slug: skill.slug, entryName: skill.name }))
+          .map((skill: Skill) => ({ slug: skill.slug, entryName: skill.name })),
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -201,8 +203,8 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
           [searchParamName]: newSearchTerm, // only thing that changes
           [archivedParamName]: true.toString(),
         },
-        basePath
-      )
+        basePath,
+      ),
     );
   };
 
@@ -217,25 +219,25 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
       selectedSkillCategory === "all" ||
       (blog.technicalSkills || []).some(
         (skill) =>
-          stringToSlug(skill.category) === stringToSlug(selectedSkillCategory)
+          stringToSlug(skill.category) === stringToSlug(selectedSkillCategory),
       );
     const matchesHardSkill =
       selectedTechnicalSkill === "all" ||
       (blog.technicalSkills || []).some(
         (skill) =>
-          skill.slug === selectedTechnicalSkill && skill.skillType === "hard"
+          skill.slug === selectedTechnicalSkill && skill.skillType === "hard",
       );
     const matchesGeneralSkill =
       selectedGeneralSkill === "all" ||
       (blog.technicalSkills || []).some(
         (skill) =>
-          skill.slug === selectedGeneralSkill && skill.skillType === "general"
+          skill.slug === selectedGeneralSkill && skill.skillType === "general",
       );
     const matchesSoftSkill =
       selectedSoftSkill === "all" ||
       (blog.technicalSkills || []).some(
         (skill) =>
-          skill.slug === selectedSoftSkill && skill.skillType === "soft"
+          skill.slug === selectedSoftSkill && skill.skillType === "soft",
       );
     const matchesArchivedStatus = showArchived || !blog.archived;
 
@@ -306,12 +308,36 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
         {/* Buttons */}
         <div className="flex flex-row md:flex-1 gap-2 w-full">
           {/* Filter Button */}
-          <ToggleFilterButton toggleFilter={handleToggleFilter} />
+          <Button
+            variant="default"
+            onClick={handleToggleFilter}
+            className="w-full flex justify-start"
+          >
+            <div className="flex items-center space-x-2">
+              <BsFilterLeft
+                fontSize={24}
+                className="text-neutral-700 dark:text-neutral-200"
+              />
+              <span>Filters</span>
+            </div>
+          </Button>
+
           {/* Clear Button */}
-          <ClearAllFiltersButton
-            areFiltersApplied={areFiltersApplied}
-            basePath={basePath}
-          />
+          <Link href={basePath} className="w-full">
+            <Button
+              variant="default"
+              disabled={!areFiltersApplied}
+              className="w-full flex justify-start"
+            >
+              <div className="flex items-center space-x-2">
+                <AiOutlineClear
+                  fontSize={24}
+                  className="text-neutral-700 dark:text-neutral-200"
+                />
+                <span>Clear All</span>
+              </div>
+            </Button>
+          </Link>
         </div>
       </div>
 
