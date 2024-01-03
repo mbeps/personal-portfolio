@@ -5,10 +5,15 @@ import isSkillAssociatedWithBlogs from "@/actions/skills/isSkillAssociatedWithBl
 import isSkillAssociatedWithCertificate from "@/actions/skills/isSkillAssociatedWithCertificate";
 import isSkillAssociatedWithProject from "@/actions/skills/isSkillAssociatedWithProject";
 import Button from "@/components/Button/Button";
-import Modal from "@/components/Modal/Modal";
 import SkillTag from "@/components/Tags/SkillTag";
 import Tag from "@/components/Tags/Tag";
 import HeadingThree from "@/components/Text/HeadingThree";
+import HeadingTwo from "@/components/Text/HeadingTwo";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/shadcn/ui/dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,15 +29,6 @@ import Skill from "@/types/skills";
 import Link from "next/link";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/shadcn/ui/dialog";
-import HeadingTwo from "@/components/Text/HeadingTwo";
 
 /**
  * Displays a list of languages that I know.
