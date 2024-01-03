@@ -17,14 +17,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/shadcn/ui/tabs";
 import TabbedReader from "./components/TabbedReader";
-import stringToSlug from "@/actions/stringToSlug";
 
 /**
  * Metadata object for the dynamic project page.
