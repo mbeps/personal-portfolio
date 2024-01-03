@@ -1,7 +1,6 @@
 "use client";
 
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-import MediaItem from "@/types/MediaItem";
 import Image from "next/image";
 import React from "react";
 import {
@@ -12,8 +11,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../shadcn/ui/carousel";
-import VideoPlayer from "./VideoPlayer";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../shadcn/ui/tabs";
+import VideoPlayer from "./VideoPlayer";
 
 interface GalleryProps {
   images?: string[];

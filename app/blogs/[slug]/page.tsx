@@ -22,7 +22,7 @@ type BlogPageProps = {
  */
 export async function generateMetadata(
   { params, searchParams }: BlogPageProps,
-  parent: ResolvingMetadata
+  parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const slug = params.slug;
   const allBlogs = blogs;
@@ -61,9 +61,8 @@ export const generateStaticParams = async () => {
 const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
   const slug = params.slug;
   const blogMetadata = getBlogMetadataBySlug(slug, blogs);
-  const blogContent = getMarkdownFromFileSystem(
-    `public/blogs/${slug}/blog.md`
-  )?.content;
+  const blogContent = getMarkdownFromFileSystem(`public/blogs/${slug}/blog.md`)
+    ?.content;
 
   if (!blogContent || !blogMetadata) {
     notFound();
@@ -77,14 +76,14 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
   const filterAndGroupBlogSkills = (
     skills: Skill[] | undefined,
     skillType: "hard" | "general" | "soft",
-    title: string
+    title: string,
   ): SkillCategory => {
     // Handle the case where skills might be undefined
     const validSkills = skills || [];
 
     // Filter skills based on skillType
     const filteredSkills = validSkills.filter(
-      (skill) => skill.skillType === skillType
+      (skill) => skill.skillType === skillType,
     );
 
     // Group the filtered skills by category
@@ -94,7 +93,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
         (acc[category] = acc[category] || []).push(skill);
         return acc;
       },
-      {}
+      {},
     );
 
     return { title, skillCategories: grouped };
@@ -105,17 +104,17 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
     technologies: filterAndGroupBlogSkills(
       blogMetadata?.technicalSkills,
       "hard",
-      "Technologies"
+      "Technologies",
     ),
     generalSkills: filterAndGroupBlogSkills(
       blogMetadata?.technicalSkills,
       "general",
-      "Technical Skills"
+      "Technical Skills",
     ),
     softSkills: filterAndGroupBlogSkills(
       blogMetadata?.softSkills,
       "soft",
-      "Soft Skills"
+      "Soft Skills",
     ),
   };
 
@@ -133,18 +132,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
       <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
 
       <div className="mt-4">
-        <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
-          {Object.values(allGroupedBlogSkills).map(
-            ({ title, skillCategories }) =>
-              Object.keys(skillCategories).length > 0 && (
-                <SkillTableSection
-                  key={title}
-                  skillCategories={skillCategories}
-                  title={title}
-                />
-              )
-          )}
-        </div>
+        <SkillTableSection allGroupedSkills={allGroupedBlogSkills} />
       </div>
     </div>
   );

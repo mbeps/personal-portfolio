@@ -1,28 +1,90 @@
 "use client";
 
 import HeadingFour from "@/components/Text/HeadingFour";
-import HeadingThree from "@/components/Text/HeadingThree";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/shadcn/ui/tabs";
 import Skill from "@/types/skills";
 import React, { useState } from "react";
-import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
-import SkillTag from "../Tags/SkillTag";
 import ExpandCollapseButton from "../Button/ExpandCollapseButton";
+import SkillTag from "../Tags/SkillTag";
+
+interface SkillCategoryProps {
+  title: string;
+  skillCategories: Record<string, Skill[]>;
+}
 
 interface SkillTableSectionProps {
-  skillCategories: Record<string, Skill[]>;
-  title: string;
+  allGroupedSkills: Record<string, SkillCategoryProps>;
 }
 
 const SkillTableSection: React.FC<SkillTableSectionProps> = ({
-  skillCategories,
-  title,
+  allGroupedSkills,
 }) => {
+  const [selectedTab, setSelectedTab] = useState(
+    Object.keys(allGroupedSkills).find(
+      (key) => Object.keys(allGroupedSkills[key].skillCategories).length > 0,
+    ) || "",
+  );
+
+  const stringToSlug = (str: string) => {
+    return str.toLowerCase().replace(/\s+/g, "-");
+  };
+
+  return (
+    <Tabs
+      defaultValue={selectedTab}
+      className="w-full items-center md:items-start justify-center"
+      value={selectedTab}
+      onValueChange={setSelectedTab}
+    >
+      {/* Tab Options */}
+      <TabsList className="mt-6 -mb-2">
+        {Object.entries(allGroupedSkills)
+          .filter(
+            ([_, { skillCategories }]) =>
+              Object.keys(skillCategories).length > 0,
+          ) // Filtering out empty skill categories
+          .map(([key, { title }]) => (
+            <TabsTrigger
+              key={key}
+              value={stringToSlug(title)}
+              className="text-md md:text-xl font-bold"
+            >
+              {title}
+            </TabsTrigger>
+          ))}
+      </TabsList>
+
+      {/* Tab Content */}
+      {Object.entries(allGroupedSkills)
+        .filter(
+          ([_, { skillCategories }]) => Object.keys(skillCategories).length > 0,
+        ) // Filtering out empty skill categories
+        .map(([key, { title, skillCategories }]) => (
+          <TabsContent key={key} value={stringToSlug(title)}>
+            <div className="mt-4 text-center md:text-left">
+              <CategorySkillDisplay skillCategories={skillCategories} />
+            </div>
+          </TabsContent>
+        ))}
+    </Tabs>
+  );
+};
+
+// Break down the original SkillTableSection content into a separate component for cleaner code
+const CategorySkillDisplay: React.FC<{
+  skillCategories: Record<string, Skill[]>;
+}> = ({ skillCategories }) => {
   const [showAll, setShowAll] = useState(false);
   const categories = Object.entries(skillCategories);
   const shouldDisplayTitle = categories.length > 1;
 
   const maxSkillCount = 12;
-  const maxGroupCount = 4;
+  const maxGroupCount = 3;
 
   let skillCount = 0;
   let groupCount = 0;
@@ -32,7 +94,7 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
         if (skillCount < maxSkillCount && groupCount < maxGroupCount) {
           const availableSlots = Math.min(
             maxSkillCount - skillCount,
-            skills.length
+            skills.length,
           );
           acc.push([category, skills.slice(0, availableSlots)]);
           skillCount += availableSlots;
@@ -43,21 +105,19 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
 
   const totalSkillCount = categories.reduce(
     (acc, [_, skills]) => acc + skills.length,
-    0
+    0,
   );
 
-  // Adjust the condition for showing the toggle button
   const shouldShowToggleButton = totalSkillCount > skillCount || showAll;
 
   const toggleShowAll = () => {
     setShowAll(!showAll);
   };
 
+  // Components like SkillTag, HeadingThree, HeadingFour, ExpandCollapseButton should be defined or imported
   return (
-    <div className="mt-4 text-center md:text-left">
-      <HeadingThree title={title} />
-
-      <div className="gap-4">
+    <div>
+      <div className="gap-4 grid md:grid-cols-2 lg:grid-cols-3">
         {displayedSkills.map(([category, skills]) => (
           <div key={category} className="mb-6">
             {shouldDisplayTitle && <HeadingFour title={category} />}
@@ -71,7 +131,7 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
       </div>
 
       {shouldShowToggleButton && (
-        <div className="flex justify-center md:justify-start">
+        <div className="flex justify-center md:justify-center">
           <ExpandCollapseButton isExpanded={showAll} onToggle={toggleShowAll} />
         </div>
       )}

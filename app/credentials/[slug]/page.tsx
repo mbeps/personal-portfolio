@@ -194,19 +194,7 @@ const CredentialPage: React.FC<CredentialPageProps> = ({ params }) => {
       </div>
 
       <div className="mt-4">
-        <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
-          {Object.values(allGroupedCertificateSkills).map(
-            ({ title, skillCategories }) =>
-              skillCategories &&
-              Object.keys(skillCategories).length > 0 && (
-                <SkillTableSection
-                  key={title}
-                  skillCategories={skillCategories}
-                  title={title}
-                />
-              ),
-          )}
-        </div>
+        <SkillTableSection allGroupedSkills={allGroupedCertificateSkills} />
       </div>
 
       <div className="md:grid md:grid-cols-2">

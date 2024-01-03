@@ -1,13 +1,14 @@
-import getProjectBySlug from "@/actions/projects/getProjectBySlug";
-import Gallery from "@/components/Gallery/Gallery";
-import HeadingThree from "@/components/Text/HeadingThree";
-import HeadingTwo from "@/components/Text/HeadingTwo";
 import getImagesFromFileSystem from "@/actions/getImagesFromFileSystem";
 import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
 import getVideosFromFileSystem from "@/actions/getVideosFromFileSystem";
+import getProjectBySlug from "@/actions/projects/getProjectBySlug";
 import hasProjectCover from "@/actions/projects/hasProjectCover";
+import Gallery from "@/components/Gallery/Gallery";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import SkillTag from "@/components/Tags/SkillTag";
+import HeadingThree from "@/components/Text/HeadingThree";
+import HeadingTwo from "@/components/Text/HeadingTwo";
+import { Button } from "@/components/shadcn/ui/button";
 import allProjects from "@/database/projects";
 import Skill from "@/types/skills";
 import { Metadata, ResolvingMetadata } from "next";
@@ -16,8 +17,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/shadcn/ui/tabs";
 import TabbedReader from "./components/TabbedReader";
-import { Button } from "@/components/shadcn/ui/button";
+import stringToSlug from "@/actions/stringToSlug";
 
 /**
  * Metadata object for the dynamic project page.
@@ -155,11 +162,6 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
     softSkills: filterAndGroupSkills(project.softSkills, "soft", "Soft Skills"),
   };
 
-  /**
-   * Gets images and videos from the file system.
-   * These are used to display the gallery.
-   * @returns (MediaItem[]): the media items for the gallery
-   */
   const getImages = () => {
     let images = getImagesFromFileSystem(`public/projects/${slug}/media`);
 
@@ -251,61 +253,52 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
 
         {/* Skills Section */}
         <div className="mt-4">
-          <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
-            {Object.values(allGroupedSkills).map(
-              ({ title, skillCategories }) =>
-                skillCategories &&
-                Object.keys(skillCategories).length > 0 && (
-                  <SkillTableSection
-                    key={title}
-                    skillCategories={skillCategories}
-                    title={title}
-                  />
-                ),
-            )}
+          {/* Skills Section */}
+          <div className="mt-4">
+            <SkillTableSection allGroupedSkills={allGroupedSkills} />
+          </div>
 
-            {/* Links Section */}
-            <div className="text-center md:text-left">
-              <HeadingThree title="Links" />
-              <div
-                className="
+          {/* Links Section */}
+          <div className="text-center md:text-left">
+            <HeadingThree title="Links" />
+            <div
+              className="
               mt-6 flex 
               flex-row 
               justify-center md:justify-start items-center 
               w-full md:w-1/3
               gap-2"
-              >
-                {/* GitHub Repo */}
-                {project?.repositoryURL && (
-                  <Link
-                    href={project?.repositoryURL}
-                    target="_blank"
-                    className="w-full"
-                  >
-                    <Button>
-                      <div className="flex justify-center md:justify-start gap-4 w-full">
-                        <BsGithub size={30} />
-                        <p className="mt-1">Repository</p>
-                      </div>
-                    </Button>
-                  </Link>
-                )}
-                {/* Website */}
-                {project?.deploymentURL && (
-                  <Link
-                    href={project?.deploymentURL}
-                    target="_blank"
-                    className="w-full"
-                  >
-                    <Button>
-                      <div className="flex justify-center md:justify-start gap-4 w-full">
-                        <BsArrowUpRightCircle size={30} />
-                        <p className="mt-1">Deployment</p>
-                      </div>
-                    </Button>
-                  </Link>
-                )}
-              </div>
+            >
+              {/* GitHub Repo */}
+              {project?.repositoryURL && (
+                <Link
+                  href={project?.repositoryURL}
+                  target="_blank"
+                  className="w-full"
+                >
+                  <Button>
+                    <div className="flex justify-center md:justify-start gap-4 w-full">
+                      <BsGithub size={30} />
+                      <p className="mt-1">Repository</p>
+                    </div>
+                  </Button>
+                </Link>
+              )}
+              {/* Website */}
+              {project?.deploymentURL && (
+                <Link
+                  href={project?.deploymentURL}
+                  target="_blank"
+                  className="w-full"
+                >
+                  <Button>
+                    <div className="flex justify-center md:justify-start gap-4 w-full">
+                      <BsArrowUpRightCircle size={30} />
+                      <p className="mt-1">Deployment</p>
+                    </div>
+                  </Button>
+                </Link>
+              )}
             </div>
           </div>
         </div>
