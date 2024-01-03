@@ -17,7 +17,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/shadcn/ui/tabs";
 import TabbedReader from "./components/TabbedReader";
+import stringToSlug from "@/actions/stringToSlug";
 
 /**
  * Metadata object for the dynamic project page.
@@ -246,61 +253,52 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
 
         {/* Skills Section */}
         <div className="mt-4">
-          <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
-            {Object.values(allGroupedSkills).map(
-              ({ title, skillCategories }) =>
-                skillCategories &&
-                Object.keys(skillCategories).length > 0 && (
-                  <SkillTableSection
-                    key={title}
-                    skillCategories={skillCategories}
-                    title={title}
-                  />
-                ),
-            )}
+          {/* Skills Section */}
+          <div className="mt-4">
+            <SkillTableSection allGroupedSkills={allGroupedSkills} />
+          </div>
 
-            {/* Links Section */}
-            <div className="text-center md:text-left">
-              <HeadingThree title="Links" />
-              <div
-                className="
+          {/* Links Section */}
+          <div className="text-center md:text-left">
+            <HeadingThree title="Links" />
+            <div
+              className="
               mt-6 flex 
               flex-row 
               justify-center md:justify-start items-center 
               w-full md:w-1/3
               gap-2"
-              >
-                {/* GitHub Repo */}
-                {project?.repositoryURL && (
-                  <Link
-                    href={project?.repositoryURL}
-                    target="_blank"
-                    className="w-full"
-                  >
-                    <Button>
-                      <div className="flex justify-center md:justify-start gap-4 w-full">
-                        <BsGithub size={30} />
-                        <p className="mt-1">Repository</p>
-                      </div>
-                    </Button>
-                  </Link>
-                )}
-                {/* Website */}
-                {project?.deploymentURL && (
-                  <Link
-                    href={project?.deploymentURL}
-                    target="_blank"
-                    className="w-full"
-                  >
-                    <Button>
-                      <div className="flex justify-center md:justify-start gap-4 w-full">
-                        <BsArrowUpRightCircle size={30} />
-                        <p className="mt-1">Deployment</p>
-                      </div>
-                    </Button>
-                  </Link>
-                )}
-              </div>
+            >
+              {/* GitHub Repo */}
+              {project?.repositoryURL && (
+                <Link
+                  href={project?.repositoryURL}
+                  target="_blank"
+                  className="w-full"
+                >
+                  <Button>
+                    <div className="flex justify-center md:justify-start gap-4 w-full">
+                      <BsGithub size={30} />
+                      <p className="mt-1">Repository</p>
+                    </div>
+                  </Button>
+                </Link>
+              )}
+              {/* Website */}
+              {project?.deploymentURL && (
+                <Link
+                  href={project?.deploymentURL}
+                  target="_blank"
+                  className="w-full"
+                >
+                  <Button>
+                    <div className="flex justify-center md:justify-start gap-4 w-full">
+                      <BsArrowUpRightCircle size={30} />
+                      <p className="mt-1">Deployment</p>
+                    </div>
+                  </Button>
+                </Link>
+              )}
             </div>
           </div>
         </div>
