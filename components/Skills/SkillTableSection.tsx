@@ -1,17 +1,16 @@
 "use client";
 
 import HeadingFour from "@/components/Text/HeadingFour";
-import HeadingThree from "@/components/Text/HeadingThree";
-import Skill from "@/types/skills";
-import React, { useState } from "react";
-import ExpandCollapseButton from "../Button/ExpandCollapseButton";
-import SkillTag from "../Tags/SkillTag";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
 } from "@/components/shadcn/ui/tabs";
+import Skill from "@/types/skills";
+import React, { useState } from "react";
+import ExpandCollapseButton from "../Button/ExpandCollapseButton";
+import SkillTag from "../Tags/SkillTag";
 
 interface SkillCategoryProps {
   title: string;
@@ -26,53 +25,52 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
   allGroupedSkills,
 }) => {
   const [selectedTab, setSelectedTab] = useState(
-    Object.keys(allGroupedSkills)[0],
-  ); // default selected tab
+    Object.keys(allGroupedSkills).find(
+      (key) => Object.keys(allGroupedSkills[key].skillCategories).length > 0,
+    ) || "",
+  );
 
-  // Helper function to slugify the title for consistent tab value keys
   const stringToSlug = (str: string) => {
     return str.toLowerCase().replace(/\s+/g, "-");
   };
 
   return (
     <Tabs
-      defaultValue={Object.keys(allGroupedSkills)[0]}
-      className="
-        w-full
-        items-center md:items-start justify-center
-        "
+      defaultValue={selectedTab}
+      className="w-full items-center md:items-start justify-center"
       value={selectedTab}
       onValueChange={setSelectedTab}
     >
       {/* Tab Options */}
       <TabsList className="mt-6 -mb-2">
-        {Object.entries(allGroupedSkills).map(([key, { title }]) => (
-          <TabsTrigger
-            key={key}
-            value={stringToSlug(title)}
-            className="
-              text-md md:text-xl
-              font-bold"
-          >
-            {title}
-          </TabsTrigger>
-        ))}
+        {Object.entries(allGroupedSkills)
+          .filter(
+            ([_, { skillCategories }]) =>
+              Object.keys(skillCategories).length > 0,
+          ) // Filtering out empty skill categories
+          .map(([key, { title }]) => (
+            <TabsTrigger
+              key={key}
+              value={stringToSlug(title)}
+              className="text-md md:text-xl font-bold"
+            >
+              {title}
+            </TabsTrigger>
+          ))}
       </TabsList>
 
       {/* Tab Content */}
-      {Object.entries(allGroupedSkills).map(
-        ([key, { title, skillCategories }]) =>
-          skillCategories &&
-          Object.keys(skillCategories).length > 0 && (
-            <TabsContent key={key} value={stringToSlug(title)}>
-              {/* Original functionality inside each tab content */}
-              <div className="mt-4 text-center md:text-left">
-                {/* Render each skill category and its skills */}
-                <CategorySkillDisplay skillCategories={skillCategories} />
-              </div>
-            </TabsContent>
-          ),
-      )}
+      {Object.entries(allGroupedSkills)
+        .filter(
+          ([_, { skillCategories }]) => Object.keys(skillCategories).length > 0,
+        ) // Filtering out empty skill categories
+        .map(([key, { title, skillCategories }]) => (
+          <TabsContent key={key} value={stringToSlug(title)}>
+            <div className="mt-4 text-center md:text-left">
+              <CategorySkillDisplay skillCategories={skillCategories} />
+            </div>
+          </TabsContent>
+        ))}
     </Tabs>
   );
 };
