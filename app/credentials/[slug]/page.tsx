@@ -1,5 +1,4 @@
 import getCertificateBySlug from "@/actions/certificates/getCertificateBySlug";
-import Button from "@/components/Button/Button";
 import Tag from "@/components/Tags/Tag";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingThree from "@/components/Text/HeadingThree";
@@ -13,6 +12,7 @@ import React from "react";
 import { BsArrowUpRightCircle } from "react-icons/bs";
 import { RxTriangleRight } from "react-icons/rx";
 import allCertificates from "@/database/certificates";
+import { Button } from "@/components/shadcn/ui/button";
 
 /**
  * Metadata object for the dynamic certificate page.
@@ -22,7 +22,7 @@ import allCertificates from "@/database/certificates";
  */
 export async function generateMetadata(
   { params, searchParams }: CredentialPageProps,
-  parent: ResolvingMetadata
+  parent: ResolvingMetadata,
 ): Promise<Metadata> {
   // Read route params
   const slug = params.slug;
@@ -78,11 +78,11 @@ const CredentialPage: React.FC<CredentialPageProps> = ({ params }) => {
   const filterAndGroupCertificateSkills = (
     skills: Skill[],
     skillType: "hard" | "general" | "soft",
-    title: string
+    title: string,
   ): SkillCategory => {
     // Filter skills based on skillType
     const filteredSkills = skills.filter(
-      (skill) => skill.skillType === skillType
+      (skill) => skill.skillType === skillType,
     );
 
     // Group the filtered skills by category
@@ -92,7 +92,7 @@ const CredentialPage: React.FC<CredentialPageProps> = ({ params }) => {
         (acc[category] = acc[category] || []).push(skill);
         return acc;
       },
-      {}
+      {},
     );
 
     return { title, skillCategories: grouped };
@@ -103,17 +103,17 @@ const CredentialPage: React.FC<CredentialPageProps> = ({ params }) => {
     technologies: filterAndGroupCertificateSkills(
       certificate.technicalSkills,
       "hard",
-      "Technologies"
+      "Technologies",
     ),
     generalSkills: filterAndGroupCertificateSkills(
       certificate.technicalSkills,
       "general",
-      "Technical Skills"
+      "Technical Skills",
     ),
     softSkills: filterAndGroupCertificateSkills(
       certificate.softSkills,
       "soft",
-      "Soft Skills"
+      "Soft Skills",
     ),
   };
 
@@ -204,7 +204,7 @@ const CredentialPage: React.FC<CredentialPageProps> = ({ params }) => {
                   skillCategories={skillCategories}
                   title={title}
                 />
-              )
+              ),
           )}
         </div>
       </div>
@@ -239,16 +239,7 @@ const CredentialPage: React.FC<CredentialPageProps> = ({ params }) => {
                 target="_blank"
                 className="w-auto md:w-full"
               >
-                <Button
-                  variant={"ghost"}
-                  className="
-                    text-neutral-900 dark:text-white 
-                    hover:text-neutral-900 
-                    hover:bg-neutral-300
-                    w-auto md:w-full
-                    rounded-full md:rounded-xl
-                  "
-                >
+                <Button variant="default">
                   <div className="flex flex-row justify-center md:justify-start gap-4 w-full">
                     <BsArrowUpRightCircle size={30} />
                     <p className="hidden md:block mt-1 md:text-left text-center">

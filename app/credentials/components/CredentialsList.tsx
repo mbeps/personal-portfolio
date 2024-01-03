@@ -1,21 +1,22 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
+import stringToSlug from "@/actions/stringToSlug";
 import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
-import ClearAllFiltersButton from "@/components/Filters/ClearAllFiltersButton";
+import FilterOverlay from "@/components/Filters/FilterPanel";
 import SearchInput from "@/components/Inputs/SearchInput";
 import Certificate from "@/types/certificates";
+import FilterCategory from "@/types/filters/FilterCategory";
+import FilterOption from "@/types/filters/FilterOption";
+import Skill from "@/types/skills";
 import Fuse from "fuse.js";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import CredentialListSection from "./CredentialListSection";
-
-import stringToSlug from "@/actions/stringToSlug";
-import FilterOverlay from "@/components/Filters/FilterPanel";
-import ToggleFilterButton from "@/components/Filters/ToggleFilterButton";
-import FilterCategory from "@/types/filters/FilterCategory";
-import FilterOption from "@/types/filters/FilterOption";
-import Skill from "@/types/skills";
+import { Button } from "@/components/shadcn/ui/button";
+import { AiOutlineClear } from "react-icons/ai";
+import Link from "next/link";
+import { BsFilterLeft } from "react-icons/bs";
 
 type CredentialsListListProps = {
   allCertificates: Certificate[];
@@ -49,25 +50,25 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
 
   //^ URL Params Reader
   const selectedIssuer = decodeURIComponent(
-    searchParams.get(issuerParamName) || "all"
+    searchParams.get(issuerParamName) || "all",
   );
   const selectedCategory = decodeURIComponent(
-    searchParams.get(credentialSectionParamName) || "all"
+    searchParams.get(credentialSectionParamName) || "all",
   );
   const selectedSkillCategory = decodeURIComponent(
-    searchParams.get(skillCategoryParamName) || "all"
+    searchParams.get(skillCategoryParamName) || "all",
   );
   const selectedTechnicalSkill = decodeURIComponent(
-    searchParams.get(technicalSkillParamName) || "all"
+    searchParams.get(technicalSkillParamName) || "all",
   );
   const selectedGeneralSkill = decodeURIComponent(
-    searchParams.get(generalSkillParamName) || "all"
+    searchParams.get(generalSkillParamName) || "all",
   );
   const selectedSoftSkill = decodeURIComponent(
-    searchParams.get(softSkillParamName) || "all"
+    searchParams.get(softSkillParamName) || "all",
   );
   const searchTerm = decodeURIComponent(
-    searchParams.get(searchParamName) || ""
+    searchParams.get(searchParamName) || "",
   );
   const showArchived =
     decodeURIComponent(searchParams.get(archivedParamName) || "false") ===
@@ -97,7 +98,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
 
   //^ Group By Category
   const groupCertificatesByCategory = (
-    certificates: Certificate[]
+    certificates: Certificate[],
   ): Record<string, Certificate[]> => {
     return certificates.reduce<Record<string, Certificate[]>>(
       (grouped, certificate) => {
@@ -105,7 +106,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
           grouped[certificate.category] || []).push(certificate);
         return grouped;
       },
-      {}
+      {},
     );
   };
 
@@ -123,7 +124,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
       }))
       .filter(
         (value, index, self) =>
-          self.findIndex((v) => v.slug === value.slug) === index
+          self.findIndex((v) => v.slug === value.slug) === index,
       )
       .sort((a, b) => a.entryName.localeCompare(b.entryName)),
   ];
@@ -150,7 +151,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
         certificate.technicalSkills.map((skill: Skill) => ({
           slug: stringToSlug(skill.category),
           entryName: skill.category,
-        }))
+        })),
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -169,7 +170,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
           .map((skill: Skill) => ({
             slug: stringToSlug(skill.slug), // Convert skill name to slug
             entryName: skill.name,
-          }))
+          })),
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -188,7 +189,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
           .map((skill: Skill) => ({
             slug: stringToSlug(skill.slug), // Convert skill name to slug
             entryName: skill.name,
-          }))
+          })),
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -207,7 +208,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
           .map((skill: Skill) => ({
             slug: stringToSlug(skill.slug), // Convert skill name to slug
             entryName: skill.name,
-          }))
+          })),
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -232,8 +233,8 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
           [searchParamName]: newSearchTerm,
           [archivedParamName]: true.toString(),
         },
-        basePath
-      )
+        basePath,
+      ),
     );
   };
 
@@ -250,25 +251,27 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
         selectedSkillCategory === "all" ||
         (certificate.technicalSkills || []).some(
           (skill) =>
-            stringToSlug(skill.category) === stringToSlug(selectedSkillCategory)
+            stringToSlug(skill.category) ===
+            stringToSlug(selectedSkillCategory),
         );
       const matchesHardSkill =
         selectedTechnicalSkill === "all" ||
         (certificate.technicalSkills || []).some(
           (skill) =>
-            skill.slug === selectedTechnicalSkill && skill.skillType === "hard"
+            skill.slug === selectedTechnicalSkill && skill.skillType === "hard",
         );
       const matchesGeneralSkill =
         selectedGeneralSkill === "all" ||
         (certificate.technicalSkills || []).some(
           (skill) =>
-            skill.slug === selectedGeneralSkill && skill.skillType === "general"
+            skill.slug === selectedGeneralSkill &&
+            skill.skillType === "general",
         );
       const matchesSoftSkill =
         selectedSoftSkill === "all" ||
         (certificate.technicalSkills || []).some(
           (skill) =>
-            skill.slug === selectedSoftSkill && skill.skillType === "soft"
+            skill.slug === selectedSoftSkill && skill.skillType === "soft",
         );
 
       return (
@@ -280,7 +283,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
         matchesGeneralSkill &&
         matchesSoftSkill
       );
-    }
+    },
   );
 
   const groupedCertificates = groupCertificatesByCategory(filteredCertificates);
@@ -349,12 +352,36 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
         {/* Buttons */}
         <div className="flex flex-row md:flex-1 gap-2 w-full">
           {/* Filter Button */}
-          <ToggleFilterButton toggleFilter={handleToggleFilter} />
+          <Button
+            variant="default"
+            onClick={handleToggleFilter}
+            className="w-full flex justify-start"
+          >
+            <div className="flex items-center space-x-2">
+              <BsFilterLeft
+                fontSize={24}
+                className="text-neutral-700 dark:text-neutral-200"
+              />
+              <span>Filters</span>
+            </div>
+          </Button>
+
           {/* Clear Button */}
-          <ClearAllFiltersButton
-            areFiltersApplied={areFiltersApplied}
-            basePath={basePath}
-          />
+          <Link href={basePath} className="w-full">
+            <Button
+              variant="default"
+              disabled={!areFiltersApplied}
+              className="w-full flex justify-start"
+            >
+              <div className="flex items-center space-x-2">
+                <AiOutlineClear
+                  fontSize={24}
+                  className="text-neutral-700 dark:text-neutral-200"
+                />
+                <span>Clear All</span>
+              </div>
+            </Button>
+          </Link>
         </div>
       </div>
 

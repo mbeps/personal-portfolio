@@ -1,10 +1,10 @@
 import validateSlugWithProject from "@/actions/projects/validateSlugWithProject";
-import Button from "@/components/Button/Button";
 import SlideUp from "@/components/UI/Slideup";
 import ProjectItem from "@/components/ProjectItem/ProjectItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import Link from "next/link";
 import allProjects from "@/database/projects";
+import { Button } from "@/components/shadcn/ui/button";
 
 /**
  * Project section listing the projects I have worked on.
@@ -47,7 +47,7 @@ const ProjectsSection = () => {
         </div>
 
         <Link href="/projects" className="flex justify-center mt-10">
-          <Button variant="outlined">View All Projects</Button>
+          <Button variant="outline">View All Projects</Button>
         </Link>
       </div>
     </section>

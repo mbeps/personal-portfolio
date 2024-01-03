@@ -1,8 +1,8 @@
 "use client";
 
-import Button from "@/components/Button/Button";
 import Reader from "@/components/Reader/Reader";
 import HeadingTwo from "@/components/Text/HeadingTwo";
+import { Button } from "@/components/shadcn/ui/button";
 import React, { useEffect, useState } from "react";
 
 type TabbedReaderProps = {
@@ -57,14 +57,16 @@ const TabbedReader: React.FC<TabbedReaderProps> = ({ content }) => {
               <Button
                 onClick={() => setView("features")}
                 variant={view === "features" ? "filled" : "ghost"}
-                className="py-2 w-full"
+                size="sm"
+                className="w-full"
               >
                 Features
               </Button>
               <Button
                 onClick={() => setView("blog")}
                 variant={view === "blog" ? "filled" : "ghost"}
-                className="py-2 w-full"
+                size="sm"
+                className="w-full"
               >
                 Reflection
               </Button>
