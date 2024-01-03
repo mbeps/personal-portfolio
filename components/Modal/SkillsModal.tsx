@@ -1,6 +1,11 @@
 "use client";
 
 import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/shadcn/ui/dialog";
+import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -15,13 +20,9 @@ import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 import Button from "../Button/Button";
 import SkillTag from "../Tags/SkillTag";
+import Tag from "../Tags/Tag";
 import HeadingThree from "../Text/HeadingThree";
-import Modal from "./Modal";
-
-interface SkillsModalProps {
-  isOpen?: boolean; // whether the modal is open or not
-  onClose: () => void; // function to close the modal
-}
+import HeadingTwo from "../Text/HeadingTwo";
 
 /**
  * Displays a modal for the skills.
@@ -33,7 +34,16 @@ interface SkillsModalProps {
  * @param onClose (function) Function to close the modal
  * @returns (JSX.Element): modal component (stack of the project
  */
-const SkillsModal: React.FC<SkillsModalProps> = ({ isOpen, onClose }) => {
+const SkillsModal: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
   const [groupedBy, setGroupedBy] = useState("category");
   const displayedSkills: Skill[] = [...languages, ...technologies].filter(
     (skill) => skill.isMainSkill,
@@ -82,22 +92,27 @@ const SkillsModal: React.FC<SkillsModalProps> = ({ isOpen, onClose }) => {
 
   const groupedSkills = groupSkills(displayedSkills, groupedBy);
   return (
-    <Modal title="Skills & Tools" isOpen={isOpen} onClose={onClose}>
-      <div className="flex mt-4">
-        <div
-          className="
+    <Dialog>
+      <DialogTrigger>
+        <Tag onClick={handleOpenModal}>...</Tag>
+      </DialogTrigger>
+      <DialogContent>
+        <HeadingTwo title="Technologies" />
+        <div className="flex mt-4">
+          <div
+            className="
           flex-grow mr-2 mt-2.5 
           text-right text-neutral-700 dark:text-neutral-300
           "
-        >
-          Group by:
-        </div>
+          >
+            Group by:
+          </div>
 
-        <DropdownMenu>
-          <DropdownMenuTrigger className="w-48">
-            <Button
-              variant="outlined"
-              className={`
+          <DropdownMenu>
+            <DropdownMenuTrigger className="w-48">
+              <Button
+                variant="outlined"
+                className={`
                 px-3 py-2 w-full
                 flex
                 text-base font-medium text-neutral-700 dark:text-neutral-200 capitalize md:hover:text-neutral-700 dark:md:hover:text-neutral-200
@@ -109,49 +124,61 @@ const SkillsModal: React.FC<SkillsModalProps> = ({ isOpen, onClose }) => {
                 md:hover:border-red-500 dark:md:hover:border-red-800
                 transition-all duration-500 ease-in-out
           `}
-            >
-              <div className="flex items-start justify-between space-x-2 w-full">
-                <span>Category</span>
-                <BsChevronDown
-                  fontSize={16}
-                  className="text-neutral-700 dark:text-neutral-200 mt-1"
-                />
-              </div>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-48 ">
-            {options.map((option, index) => (
-              <DropdownMenuItem
-                key={index}
-                className={`
-              ${option.slug === groupedBy ? "font-bold" : ""}`}
-                onSelect={() => setGroupedBy(option.slug)}
               >
-                {option.entryName}
-              </DropdownMenuItem>
-            ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </div>
-
-      {Object.entries(groupedSkills).map(([group, skills], index) => (
-        <div key={index} className="mt-4 text-center md:text-left">
-          <HeadingThree title={group} />
-          <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-            {skills.map((skill, index) => (
-              <SkillTag key={index} skill={skill} />
-            ))}
-          </div>
+                <div className="flex items-start justify-between space-x-2 w-full">
+                  <span>Category</span>
+                  <BsChevronDown
+                    fontSize={16}
+                    className="text-neutral-700 dark:text-neutral-200 mt-1"
+                  />
+                </div>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-48 ">
+              {options.map((option, index) => (
+                <DropdownMenuItem
+                  key={index}
+                  className={`
+              ${option.slug === groupedBy ? "font-bold" : ""}`}
+                  onSelect={() => setGroupedBy(option.slug)}
+                >
+                  {option.entryName}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
-      ))}
 
-      {/* separator */}
-      <div className="w-full h-px bg-neutral-200 dark:bg-neutral-700 my-8" />
+        {Object.entries(groupedSkills).map(([group, skills], index) => (
+          <div key={index} className="mt-4 text-center md:text-left">
+            <HeadingThree title={group} />
+            <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
+              {skills.map((skill, index) => (
+                <SkillTag key={index} skill={skill} />
+              ))}
+            </div>
+          </div>
+        ))}
 
-      <Link href="/skills" className="flex justify-center mt-10">
-        <Button variant="outlined">View All Skills</Button>
-      </Link>
-    </Modal>
+        {/* separator */}
+        <div className="w-full h-px bg-neutral-200 dark:bg-neutral-700 my-8" />
+
+        <div
+          className="
+            flex flex-wrap flex-col
+            text-center md:text-left
+            justify-start z-10 mt-5"
+        >
+          <Link href={`/skills}`}>
+            <div className="w-full">
+              <Button variant="gradient" className="w-full">
+                {`All Technologies & Skills`}
+              </Button>
+            </div>
+          </Link>
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 };
 
