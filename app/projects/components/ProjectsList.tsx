@@ -67,13 +67,13 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const searchOptions = {
     keys: [
       "name",
-      "programmingLanguage.skill",
-      "technologySkills.skill",
+      "programmingLanguage.name",
+      "technologySkills.name",
       "technologySkills.category",
-      "technologySkills.skill.skill",
-      "softSkills.skill",
+      "technologySkills.skill.name",
+      "softSkills.name",
       "softSkills.category",
-      "extraTechnicalGeneralSkills.skill",
+      "extraTechnicalGeneralSkills.name",
       "extraTechnicalGeneralSkills.category",
       "tags",
     ],
