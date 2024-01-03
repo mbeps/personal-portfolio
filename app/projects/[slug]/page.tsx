@@ -1,13 +1,14 @@
-import getProjectBySlug from "@/actions/projects/getProjectBySlug";
-import Gallery from "@/components/Gallery/Gallery";
-import HeadingThree from "@/components/Text/HeadingThree";
-import HeadingTwo from "@/components/Text/HeadingTwo";
 import getImagesFromFileSystem from "@/actions/getImagesFromFileSystem";
 import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
 import getVideosFromFileSystem from "@/actions/getVideosFromFileSystem";
+import getProjectBySlug from "@/actions/projects/getProjectBySlug";
 import hasProjectCover from "@/actions/projects/hasProjectCover";
+import Gallery from "@/components/Gallery/Gallery";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import SkillTag from "@/components/Tags/SkillTag";
+import HeadingThree from "@/components/Text/HeadingThree";
+import HeadingTwo from "@/components/Text/HeadingTwo";
+import { Button } from "@/components/shadcn/ui/button";
 import allProjects from "@/database/projects";
 import Skill from "@/types/skills";
 import { Metadata, ResolvingMetadata } from "next";
@@ -17,7 +18,6 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
-import { Button } from "@/components/shadcn/ui/button";
 
 /**
  * Metadata object for the dynamic project page.
@@ -155,11 +155,6 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
     softSkills: filterAndGroupSkills(project.softSkills, "soft", "Soft Skills"),
   };
 
-  /**
-   * Gets images and videos from the file system.
-   * These are used to display the gallery.
-   * @returns (MediaItem[]): the media items for the gallery
-   */
   const getImages = () => {
     let images = getImagesFromFileSystem(`public/projects/${slug}/media`);
 
