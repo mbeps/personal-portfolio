@@ -70,7 +70,7 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
                       width={2000}
                       height={1125}
                       priority
-                      className="w-full h-[60vh] object-contain rounded-xl bg-neutral-100 dark:bg-neutral-900 transition-colors duration-700 p-2"
+                      className="w-full h-[60vh] object-contain rounded-xl bg-neutral-100 dark:bg-neutral-950 transition-colors duration-700 p-2"
                     />
                   </CarouselItem>
                 ))}
@@ -94,7 +94,7 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
                   <CarouselItem key={index}>
                     <VideoPlayer
                       src={videos?.[index] ?? ""}
-                      className="w-full h-[60vh] object-contain rounded-xl bg-neutral-100 dark:bg-neutral-900 transition-colors duration-700 p-2"
+                      className="w-full h-[60vh] object-contain rounded-xl bg-neutral-100 dark:bg-neutral-950 transition-colors duration-700 p-2"
                     />
                   </CarouselItem>
                 ))}
