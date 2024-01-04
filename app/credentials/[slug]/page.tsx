@@ -228,11 +228,17 @@ const CredentialPage: React.FC<CredentialPageProps> = ({ params }) => {
                 className="w-auto md:w-full"
               >
                 <Button variant="default">
-                  <div className="flex flex-row justify-center md:justify-start gap-4 w-full">
-                    <BsArrowUpRightCircle size={30} />
-                    <p className="hidden md:block mt-1 md:text-left text-center">
-                      Issuer Page
-                    </p>
+                  <div
+                    className="
+                      flex
+                      justify-center md:justify-start
+                      align-center
+                      gap-4
+                      w-full
+                    "
+                  >
+                    <BsArrowUpRightCircle size={26} />
+                    <p>Issuer Page</p>
                   </div>
                 </Button>
               </Link>

@@ -270,9 +270,17 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
                   className="w-full"
                 >
                   <Button>
-                    <div className="flex justify-center md:justify-start gap-4 w-full">
-                      <BsGithub size={30} />
-                      <p className="mt-1">Repository</p>
+                    <div
+                      className="
+                        flex
+                        justify-center md:justify-start
+                        align-center
+                        gap-4
+                        w-full
+                      "
+                    >
+                      <BsGithub size={26} />
+                      <p>Repository</p>
                     </div>
                   </Button>
                 </Link>
@@ -285,9 +293,17 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
                   className="w-full"
                 >
                   <Button>
-                    <div className="flex justify-center md:justify-start gap-4 w-full">
-                      <BsArrowUpRightCircle size={30} />
-                      <p className="mt-1">Deployment</p>
+                    <div
+                      className="
+                        flex
+                        justify-center md:justify-start
+                        align-center
+                        gap-4
+                        w-full
+                      "
+                    >
+                      <BsArrowUpRightCircle size={26} />
+                      <p>Deployment</p>
                     </div>
                   </Button>
                 </Link>
