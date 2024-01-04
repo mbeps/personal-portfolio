@@ -1,13 +1,6 @@
 "use client";
 
-import ExpandCollapseButton from "@/components/Button/ExpandCollapseButton";
-import FilterCategory from "@/types/filters/FilterCategory";
-import Link from "next/link";
-import React, { useState } from "react";
-import { IoClose } from "react-icons/io5";
-import RadioButton from "../Inputs/RadioButton";
-import HeadingFour from "../Text/HeadingFour";
-import HeadingThree from "../Text/HeadingThree";
+import generateUrl from "@/actions/generateUrl";
 import {
   Command,
   CommandEmpty,
@@ -20,10 +13,15 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/shadcn/ui/popover";
-import { Button } from "../shadcn/ui/button";
-import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
-import generateUrl from "@/actions/generateUrl";
+import FilterCategory from "@/types/filters/FilterCategory";
+import { Check } from "lucide-react";
+import Link from "next/link";
+import React, { useState } from "react";
+import { IoClose } from "react-icons/io5";
+import HeadingThree from "../Text/HeadingThree";
+import { Button } from "../shadcn/ui/button";
+import { BsChevronDown } from "react-icons/bs";
 
 interface FilterOverlayProps {
   filterCategories: FilterCategory[];
@@ -39,7 +37,6 @@ interface FilterOverlayProps {
 
 const FilterOverlay: React.FC<FilterOverlayProps> = ({
   filterCategories,
-  generateUrl,
   basePath,
   isOpen,
   toggle,
@@ -52,7 +49,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
         flex flex-col 
         top-0 right-0 
         h-screen 
-        w-full md:w-[27rem] 
+        w-full md:w-[25rem]
         z-20 
         transform ${
           isOpen ? "translate-x-0" : "translate-x-full"
@@ -66,7 +63,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
           h-[calc(100vh-4rem)]  md:h-[calc(100vh-6rem)] 
           w-full shadow-2xl md:rounded-2xl 
           border-1.5 
-          border-neutral-200 dark:border-neutral-700 
+          border-neutral-300 dark:border-neutral-700 
           bg-neutral-100 dark:bg-black 
           overflow-y-auto 
           scrollbar-width-none 
@@ -107,15 +104,17 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
             When applying filters, archived items are displayed automatically.
           </p>
 
-          {filterCategories.map((filterCategory, index) => (
-            <FilterPopover
-              key={index}
-              basePath={basePath}
-              filterCategory={filterCategory}
-              filterCategories={filterCategories}
-              archiveFilter={archiveFilter}
-            />
-          ))}
+          <div className="space-y-3 mt-4 flex flex-col justify-center items-center">
+            {filterCategories.map((filterCategory, index) => (
+              <FilterPopover
+                key={index}
+                basePath={basePath}
+                filterCategory={filterCategory}
+                filterCategories={filterCategories}
+                archiveFilter={archiveFilter}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -141,35 +140,35 @@ const FilterPopover = ({
   basePath,
 }: FilterPopover) => {
   const [isOpen, setOpen] = useState(false);
-
-  const handleRadioButtonChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    sectionName: string,
-  ) => {
-    console.log(
-      `Radio button in section ${sectionName} changed to ${e.target.value}`,
-    );
-  };
+  const gap = "w-4 h-4 mr-2";
 
   return (
     <Popover key={filterCategory.urlParam} open={isOpen} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
-          variant="outline"
+          variant="default"
           role="combobox"
           onClick={() => setOpen(!isOpen)}
-          className="w-[200px] justify-between"
+          className="
+            w-[24rem] md:w-[22rem]
+            justify-between 
+            bg-neutral-200"
         >
-          {filterCategory.sectionName}
+          <span>{filterCategory.sectionName}</span>
+
+          <BsChevronDown
+            fontSize={16}
+            className="text-neutral-700 dark:text-neutral-200 mt-1"
+          />
         </Button>
       </PopoverTrigger>
 
       <PopoverContent className="w-full p-0">
-        <Command>
-          <CommandInput placeholder="Search framework..." />
-          <CommandEmpty>No filter found.</CommandEmpty>
+        <Command className="w-full">
+          <CommandInput placeholder="Search Filter..." />
+          <CommandEmpty>No Filter Found.</CommandEmpty>
 
-          <CommandGroup>
+          <CommandGroup className="w-[24rem] md:w-[22rem] ">
             {filterCategory.options.map((option, i) => (
               <Link
                 key={i}
@@ -192,17 +191,13 @@ const FilterPopover = ({
                 <CommandItem
                   key={option.slug}
                   value={option.slug}
-                  // onSelect functionality should be handled or passed as props
+                  className="pr-4"
                 >
-                  <Check
-                    className={cn(
-                      "w-4 h-4 mr-2",
-                      filterCategory.selectedValue.toLowerCase() ===
-                        option.slug.toLowerCase()
-                        ? "text-primary-500"
-                        : "text-neutral-400",
-                    )}
-                  />
+                  {filterCategory.selectedValue === option.slug ? (
+                    <Check className={cn(gap, "text-red-500")} />
+                  ) : (
+                    <div className={gap}></div>
+                  )}
                   {option.entryName}
                 </CommandItem>
               </Link>
