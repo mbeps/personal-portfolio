@@ -9,6 +9,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
+import { AspectRatio } from "../shadcn/ui/aspect-ratio";
 
 interface ProjectItemProps {
   project: Project;
@@ -64,17 +65,20 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
               "
           >
             <Link href={`/projects/${project.slug}`}>
-              <Image
-                src={project.thumbnailImage}
-                key={project.thumbnailImage}
-                alt={`${project.name} cover image`}
-                width={1000}
-                height={1000}
-                quality={40}
-                className="
-                  rounded-xl 
-                  cursor-pointer"
-              />
+              <AspectRatio ratio={8 / 5} className="overflow-hidden relative">
+                <Image
+                  src={project.thumbnailImage}
+                  key={project.thumbnailImage}
+                  alt={`${project.name} cover image`}
+                  fill={true}
+                  quality={40}
+                  className="
+                    rounded-xl 
+                    cursor-pointer
+                    object-cover
+                  "
+                />
+              </AspectRatio>
             </Link>
           </div>
         )}

@@ -10,6 +10,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
+import { AspectRatio } from "../shadcn/ui/aspect-ratio";
 
 interface CertificateItemProps {
   certificate: Certificate;
@@ -62,14 +63,20 @@ const CertificateItem: React.FC<CertificateItemProps> = ({ certificate }) => {
             overflow-hidden 
           "
         >
-          <Image
-            src={certificate.certificateImage}
-            alt={`${certificate.name} certificate image`}
-            className="rounded-xl cursor-pointer object-cover"
-            width={1000}
-            height={1000}
-            quality={30}
-          />
+          <AspectRatio ratio={8 / 5} className="overflow-hidden relative">
+            <Image
+              key={certificate.slug}
+              src={certificate.certificateImage}
+              alt={`${certificate.name} certificate image`}
+              fill={true}
+              quality={40}
+              className="
+                rounded-xl 
+                cursor-pointer
+                object-cover
+              "
+            />
+          </AspectRatio>
         </Link>
       )}
 
