@@ -1,10 +1,11 @@
 "use client";
 
-import React, { InputHTMLAttributes } from "react";
+import React, { InputHTMLAttributes, useEffect } from "react";
 import { BsSearch } from "react-icons/bs";
 import { twMerge } from "tailwind-merge";
 import { MdClear } from "react-icons/md";
 import { VscSend } from "react-icons/vsc";
+import useIsMounted from "@/hooks/useIsMounted";
 
 interface SearchInputProps {
   searchTerm: string;
@@ -30,10 +31,15 @@ const SearchInput: React.FC<SearchInputProps> = ({
   ...props
 }) => {
   const [localSearchTerm, setLocalSearchTerm] = React.useState(searchTerm);
+  const isMounted = useIsMounted();
 
-  React.useEffect(() => {
+  useEffect(() => {
     setLocalSearchTerm(searchTerm);
   }, [searchTerm]);
+
+  if (!isMounted) {
+    return null;
+  }
 
   // This function was modified to only clear the local input field
   const handleClearSearch = () => {

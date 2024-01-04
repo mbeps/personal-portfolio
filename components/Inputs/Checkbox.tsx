@@ -1,5 +1,6 @@
 "use client";
 
+import useIsMounted from "@/hooks/useIsMounted";
 import React, { ChangeEvent, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -29,12 +30,17 @@ const Checkbox: React.FC<CheckboxProps> = ({
   className,
 }) => {
   const [hovered, setHovered] = useState(false);
+  const isMounted = useIsMounted();
+
+  if (!isMounted) {
+    return null;
+  }
 
   const borderColor = checked
     ? "border-red-500 dark:border-red-900"
     : hovered
-    ? "border-neutral-300 dark:border-red-950"
-    : "border-neutral-200 dark:border-neutral-800";
+      ? "border-neutral-300 dark:border-red-950"
+      : "border-neutral-200 dark:border-neutral-800";
 
   const combinedClassName = twMerge(
     `
@@ -47,7 +53,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
       my-2 
       flex items-center cursor-pointer
     `,
-    className // Merge user-provided className
+    className, // Merge user-provided className
   );
 
   // Add the font weight conditionally based on the checked state

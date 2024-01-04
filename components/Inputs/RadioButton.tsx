@@ -1,5 +1,6 @@
 "use client";
 
+import useIsMounted from "@/hooks/useIsMounted";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -35,6 +36,11 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   onChange,
 }) => {
   const [hovered, setHovered] = useState(false);
+  const isMounted = useIsMounted();
+
+  if (!isMounted) {
+    return null;
+  }
 
   const borderColor = checked
     ? "border-red-500 dark:border-red-900"

@@ -13,15 +13,16 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/shadcn/ui/popover";
+import useIsMounted from "@/hooks/useIsMounted";
 import { cn } from "@/lib/utils";
 import FilterCategory from "@/types/filters/FilterCategory";
 import { Check } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
+import { BsChevronDown } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
 import HeadingThree from "../Text/HeadingThree";
 import { Button } from "../shadcn/ui/button";
-import { BsChevronDown } from "react-icons/bs";
 
 interface FilterOverlayProps {
   filterCategories: FilterCategory[];
@@ -42,6 +43,11 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
   toggle,
   archiveFilter,
 }) => {
+  const isMounted = useIsMounted();
+
+  if (!isMounted) {
+    return null;
+  }
   return (
     <div
       className={`

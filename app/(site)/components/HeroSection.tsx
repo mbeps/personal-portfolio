@@ -4,8 +4,8 @@ import scrollToSection from "@/actions/scrollToSection";
 import Socials from "@/components/Socials/Socials";
 import TextLoop from "@/components/TextLoop/TextLoop";
 import { Button } from "@/components/shadcn/ui/button";
+import useIsMounted from "@/hooks/useIsMounted";
 import Image from "next/image";
-import { useState, useEffect } from "react";
 import { HiArrowDown } from "react-icons/hi";
 
 /**
@@ -13,12 +13,11 @@ import { HiArrowDown } from "react-icons/hi";
  * Contains a short description of myself, a picture and a link to the projects section.
  */
 const HeroSection = () => {
-  const [isMounted, setIsMounted] = useState(false);
+  const isMounted = useIsMounted();
 
-  // useEffect to set the hasMounted state to true after mounting
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  if (!isMounted) {
+    return null;
+  }
 
   /**
    * Array of strings to loop through.

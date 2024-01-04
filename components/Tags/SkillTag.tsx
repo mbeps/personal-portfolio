@@ -13,6 +13,7 @@ import certificates from "@/database/certificates";
 import allProjects from "@/database/projects";
 import allSkills from "@/database/skills/skills";
 import hasAssociatedSkills from "@/actions/skills/hasAssociatedSkills";
+import useIsMounted from "@/hooks/useIsMounted";
 
 interface TagProps {
   skill: Skill;
@@ -20,6 +21,11 @@ interface TagProps {
 
 const SkillTag: React.FC<TagProps> = ({ skill }) => {
   const currentPath = usePathname();
+  const isMounted = useIsMounted();
+
+  if (!isMounted) {
+    return null;
+  }
 
   const skills = allSkills;
   const allBlogs = blogs;

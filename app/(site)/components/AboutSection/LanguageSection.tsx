@@ -24,6 +24,7 @@ import blogs from "@/database/blogs";
 import allCertificates from "@/database/certificates";
 import allProjects from "@/database/projects";
 import { languages } from "@/database/skills/languages";
+import useIsMounted from "@/hooks/useIsMounted";
 import FilterOption from "@/types/filters/FilterOption";
 import Skill from "@/types/skills";
 import Link from "next/link";
@@ -37,6 +38,11 @@ import { BsChevronDown } from "react-icons/bs";
  */
 const LanguageSection: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const isMounted = useIsMounted();
+
+  if (!isMounted) {
+    return null;
+  }
 
   const handleOpenModal = () => {
     setIsModalOpen(true);

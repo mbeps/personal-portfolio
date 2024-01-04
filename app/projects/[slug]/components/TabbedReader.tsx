@@ -3,6 +3,7 @@
 import Reader from "@/components/Reader/Reader";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import { Button } from "@/components/shadcn/ui/button";
+import useIsMounted from "@/hooks/useIsMounted";
 import React, { useEffect, useState } from "react";
 
 type TabbedReaderProps = {
@@ -26,7 +27,7 @@ type TabbedReaderProps = {
 const TabbedReader: React.FC<TabbedReaderProps> = ({ content }) => {
   const hasFeatures = !!content.features;
   const hasBlog = !!content.blog;
-
+  const isMounted = useIsMounted();
   const [view, setView] = useState<"features" | "blog">("features");
 
   useEffect(() => {
@@ -41,6 +42,10 @@ const TabbedReader: React.FC<TabbedReaderProps> = ({ content }) => {
 
   const viewContent = view === "features" ? content.features : content.blog;
   const title = view === "features" ? "Features" : "Reflection";
+
+  if (!isMounted) {
+    return null;
+  }
 
   if (!hasBlog && !hasFeatures) {
     return null;

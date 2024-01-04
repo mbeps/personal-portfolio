@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import useIsMounted from "@/hooks/useIsMounted";
 
 interface TextLoopProps {
   loopItems: string[];
@@ -21,6 +22,7 @@ const SimpleTextLoop: React.FC<TextLoopProps> = ({
   className,
 }) => {
   const [currentItemIndex, setCurrentItemIndex] = useState<number>(0);
+  const isMounted = useIsMounted();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -29,6 +31,10 @@ const SimpleTextLoop: React.FC<TextLoopProps> = ({
 
     return () => clearInterval(interval);
   }, [loopItems, delay]);
+
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <motion.span

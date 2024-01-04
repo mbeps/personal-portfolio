@@ -1,13 +1,12 @@
 "use client";
 
-import Tag from "@/components/Tags/Tag";
 import SkillsModal from "@/components/Modal/SkillsModal";
 import SkillTag from "@/components/Tags/SkillTag";
 import HeadingThree from "@/components/Text/HeadingThree";
-import Skill from "@/types/skills";
-import { useState } from "react";
 import { languages } from "@/database/skills/languages";
 import { technologies } from "@/database/skills/skills";
+import useIsMounted from "@/hooks/useIsMounted";
+import Skill from "@/types/skills";
 
 /**
  * Displays a list of skills that I have.
@@ -16,6 +15,11 @@ import { technologies } from "@/database/skills/skills";
  * @returns (JSX.Element): skill section (list of skills)
  */
 const SkillSection: React.FC = () => {
+  const isMounted = useIsMounted();
+
+  if (!isMounted) {
+    return null;
+  }
   /**
    * Gets the list of skills from all the languages.
    */

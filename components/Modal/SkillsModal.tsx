@@ -24,6 +24,7 @@ import HeadingThree from "../Text/HeadingThree";
 import HeadingTwo from "../Text/HeadingTwo";
 import { Button } from "../shadcn/ui/button";
 import groupSkills from "@/actions/skills/groupSkills";
+import useIsMounted from "@/hooks/useIsMounted";
 
 /**
  * Displays a modal for the skills.
@@ -37,6 +38,12 @@ import groupSkills from "@/actions/skills/groupSkills";
  */
 const SkillsModal: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const isMounted = useIsMounted();
+  const [groupedBy, setGroupedBy] = useState("category");
+
+  if (!isMounted) {
+    return null;
+  }
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -45,7 +52,6 @@ const SkillsModal: React.FC = () => {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
-  const [groupedBy, setGroupedBy] = useState("category");
   const displayedSkills: Skill[] = [...languages, ...technologies].filter(
     (skill) => skill.isMainSkill,
   );
