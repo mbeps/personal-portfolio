@@ -42,7 +42,7 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
       onValueChange={setSelectedTab}
     >
       {/* Tab Options */}
-      <TabsList className="mt-6 -mb-2">
+      <TabsList className="mt-6 -mb-2 w-full md:w-auto">
         {Object.entries(allGroupedSkills)
           .filter(
             ([_, { skillCategories }]) =>
@@ -52,7 +52,7 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
             <TabsTrigger
               key={key}
               value={stringToSlug(title)}
-              className="text-md md:text-xl font-bold"
+              className="text-lg md:text-xl font-bold"
             >
               {title}
             </TabsTrigger>
