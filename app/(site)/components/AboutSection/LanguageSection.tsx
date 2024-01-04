@@ -192,88 +192,92 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
               <HeadingThree title="Material" />
             </div>
           )}
-          {hasMaterial && (
-            <>
-              <div
-                className="
+          <div className="flex flex-col space-y-2">
+            {hasMaterial && (
+              <>
+                <div
+                  className="
                   flex flex-wrap flex-col
                   text-center md:text-left
                   justify-start z-10 mt-5 space-y-2"
+                >
+                  <Link
+                    href={`
+                    /skills/${language.slug}
+              `}
+                  >
+                    <div className="w-full">
+                      <Button variant="gradient" className="w-full">
+                        {`All ${language.name} Material`}
+                      </Button>
+                    </div>
+                  </Link>
+                </div>
+              </>
+            )}
+            {hasProjects && (
+              <div
+                className="
+                flex flex-wrap flex-col
+                text-center md:text-left
+                justify-start z-10 mt-5 space-y-2"
+              >
+                <Link
+                  href={`/projects?archived=true&language=${language.slug}`}
+                >
+                  <div className="w-full">
+                    <Button
+                      variant="ghost"
+                      className="w-full"
+                    >{`${language.name} Projects`}</Button>
+                  </div>
+                </Link>
+              </div>
+            )}
+
+            {hasCertificates && (
+              <div
+                className="
+                flex flex-wrap flex-col
+                text-center md:text-left
+                justify-start z-10 mt-5 space-y-2"
               >
                 <Link
                   href={`
-                    /skills/${language.slug}
+                  /credentials?archived=true&technical=${language.slug}
               `}
                 >
                   <div className="w-full">
-                    <Button variant="gradient" className="w-full">
-                      {`All ${language.name} Material`}
+                    <Button
+                      variant="ghost"
+                      className="w-full"
+                    >{`${language.name} Certificates`}</Button>
+                  </div>
+                </Link>
+              </div>
+            )}
+
+            {hasBlogs && (
+              <div
+                className="
+                flex flex-wrap flex-col
+                text-center md:text-left
+                justify-start z-10 mt-5 space-y-2"
+              >
+                <Link
+                  href={`
+              /blogs?technical=${language.slug}
+              `}
+                >
+                  <div className="w-full">
+                    <Button variant="ghost" className="w-full">
+                      {`${language.name} Blogs`}
                     </Button>
                   </div>
                 </Link>
               </div>
-            </>
-          )}
-          {hasProjects && (
-            <div
-              className="
-                flex flex-wrap flex-col
-                text-center md:text-left
-                justify-start z-10 mt-5 space-y-2"
-            >
-              <Link href={`/projects?archived=true&language=${language.slug}`}>
-                <div className="w-full">
-                  <Button
-                    variant="ghost"
-                    className="w-full"
-                  >{`${language.name} Projects`}</Button>
-                </div>
-              </Link>
-            </div>
-          )}
-
-          {hasCertificates && (
-            <div
-              className="
-                flex flex-wrap flex-col
-                text-center md:text-left
-                justify-start z-10 mt-5 space-y-2"
-            >
-              <Link
-                href={`
-                  /credentials?archived=true&technical=${language.slug}
-              `}
-              >
-                <div className="w-full">
-                  <Button
-                    variant="ghost"
-                    className="w-full"
-                  >{`${language.name} Certificates`}</Button>
-                </div>
-              </Link>
-            </div>
-          )}
-
-          {hasBlogs && (
-            <div
-              className="
-                flex flex-wrap flex-col
-                text-center md:text-left
-                justify-start z-10 mt-5 space-y-2"
-            >
-              <Link
-                href={`
-              /blogs?technical=${language.slug}
-              `}
-              >
-                <div className="w-full">
-                  <Button variant="ghost" className="w-full">
-                    {`${language.name} Blogs`}
-                  </Button>
-                </div>
-              </Link>
-            </div>
-          )}
+            )}
+          </div>
         </DialogContent>
       </Dialog>
     </>

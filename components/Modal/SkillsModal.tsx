@@ -123,7 +123,7 @@ const SkillsModal: React.FC = () => {
           className="
             flex flex-wrap flex-col
             text-center md:text-left
-            justify-start z-10 mt-5"
+            justify-start z-10 -mt-8"
         >
           <Link href={`/skills`}>
             <div className="w-full">
