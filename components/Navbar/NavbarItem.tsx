@@ -1,6 +1,6 @@
 "use client";
 
-import { useNavbarStore } from "@/atoms/navbarStore";
+import { useNavbarStore } from "@/hooks/useNavbarStore";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 

@@ -1,5 +1,5 @@
 "use client";
-import { useNavbarStore } from "@/atoms/navbarStore";
+import { useNavbarStore } from "@/hooks/useNavbarStore";
 import { NAV_ITEMS } from "@/constants/pages";
 import { useEffect, useState } from "react";
 import { IoMdClose, IoMdMenu } from "react-icons/io";
