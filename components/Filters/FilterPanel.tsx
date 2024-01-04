@@ -172,6 +172,7 @@ const FilterPopover = ({
           <CommandGroup>
             {filterCategory.options.map((option, i) => (
               <Link
+                key={i}
                 href={generateUrl(
                   {
                     ...filterCategories.reduce(
