@@ -4,6 +4,12 @@ import Link from "next/link";
 import { BsArrowUpRightCircle, BsInfoCircle } from "react-icons/bs";
 import Certificate from "@/types/certificates";
 import Tag from "../Tags/Tag";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/shadcn/ui/tooltip";
 
 interface CertificateItemProps {
   certificate: Certificate;
@@ -96,24 +102,43 @@ const CertificateItem: React.FC<CertificateItemProps> = ({ certificate }) => {
             space-x-4"
         >
           {/* Link to Credential Page */}
-          <Link href={customCredentialPage}>
-            <BsInfoCircle
-              size={30}
-              className="md:hover:-translate-y-1 transition-transform cursor-pointer"
-            />
-          </Link>
+
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger>
+                <Link href={customCredentialPage}>
+                  <BsInfoCircle
+                    size={30}
+                    className="md:hover:-translate-y-1 transition-transform cursor-pointer"
+                  />
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p className="text-lg">View Certificate Details </p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
           {/* Link to Credential */}
           {certificate.credentialURL && (
-            <Link
-              href={issuerCredentialPage}
-              target="_blank"
-              title="View Credentials on Provider's Website"
-            >
-              <BsArrowUpRightCircle
-                size={30}
-                className="md:hover:-translate-y-1 transition-transform cursor-pointer"
-              />
-            </Link>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Link
+                    href={issuerCredentialPage}
+                    target="_blank"
+                    title="View Credentials on Provider's Website"
+                  >
+                    <BsArrowUpRightCircle
+                      size={30}
+                      className="md:hover:-translate-y-1 transition-transform cursor-pointer"
+                    />
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p className="text-lg">View in Certificate Providers Site</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           )}
         </div>
       </div>
