@@ -20,7 +20,7 @@ const Footer = () => {
         "
       >
         <div className="flex flex-row items-center justify-center space-x-1 text-neutral-500 dark:text-neutral-100">
-          © 2023 Maruf Bepary<a href="/" className="hover:underline"></a>
+          © 2024 Maruf Bepary<a href="/" className="hover:underline"></a>
         </div>
         <Socials />
       </div>
