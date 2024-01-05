@@ -16,7 +16,12 @@ import ProjectsSection from "./components/ProjectsSection";
 import RelatedSkillsSection from "./components/RelatedSkillsSection";
 
 function extractSlugs(skills: Skill[]): string[] {
-  return skills.map((skill) => skill.slug);
+  return skills.map((skill) => {
+    if (!skill.slug) {
+      throw new Error("ERROR: Slug field is empty or missing");
+    }
+    return skill.slug;
+  });
 }
 
 export async function generateMetadata(
