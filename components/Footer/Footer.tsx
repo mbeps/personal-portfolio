@@ -8,7 +8,7 @@ import Socials from "../Socials/Socials";
  */
 const Footer = () => {
   return (
-    <footer className="globalWidth ">
+    <footer>
       <hr className="w-full h-0.5 mx-auto mt-8 bg-neutral-200 dark:bg-neutral-700 border-0"></hr>
       <div
         className="

@@ -120,7 +120,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
 
   return (
     <div>
-      <div className="my-12 text-center">
+      <div className="text-center">
         <HeadingTwo title={blogMetadata?.title} />
         <p className="text-neutral-600 dark:text-neutral-400">
           {blogMetadata?.subtitle}

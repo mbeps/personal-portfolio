@@ -23,6 +23,7 @@ import { BsChevronDown } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
 import HeadingThree from "../Text/HeadingThree";
 import { Button } from "../shadcn/ui/button";
+import { NAVBAR_HEIGHT } from "@/constants/NAVBAR";
 
 interface FilterOverlayProps {
   filterCategories: FilterCategory[];
@@ -54,22 +55,23 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
         fixed 
         flex flex-col 
         top-0 right-0 
-        h-screen 
+        h-full 
+        pt-${NAVBAR_HEIGHT} md:px-2 md:pb-3
         w-full md:w-[25rem]
         z-20 
         transform ${
           isOpen ? "translate-x-0" : "translate-x-full"
         } transition-all duration-700 ease-in-out 
         bg-none 
-        md:px-2 md:pb-3`}
+        `}
     >
       <div
         className="
           mt-auto 
-          h-[calc(100vh-4rem)]  md:h-[calc(100vh-6rem)] 
+          h-full
           w-full shadow-2xl md:rounded-2xl 
-          border-1.5 
-          border-neutral-300 dark:border-neutral-700 
+          border-2
+          border-neutral-200 dark:border-neutral-700 
           bg-neutral-100 dark:bg-black 
           overflow-y-auto 
           scrollbar-width-none 

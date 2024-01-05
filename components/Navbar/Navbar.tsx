@@ -7,6 +7,7 @@ import HomeButton from "./HomeButton";
 import NavbarItem from "./NavbarItem";
 import NavbarOverlay from "./NavbarOverlay";
 import ThemeToggle from "./ThemeToggle";
+import { NAVBAR_HEIGHT } from "@/constants/NAVBAR";
 
 /**
  * Navbar component shown at the top of the page.
@@ -39,6 +40,7 @@ export default function Navbar() {
     <>
       <header
         className={`
+          h-${NAVBAR_HEIGHT}
           w-full mx-auto  
           px-4 sm:px-20 
           fixed 
