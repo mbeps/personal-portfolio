@@ -70,6 +70,7 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
                 {Array.from({ length: images?.length ?? 0 }).map((_, index) => (
                   <CarouselItem key={index}>
                     <Image
+                      key={index}
                       src={images?.[index] ?? ""}
                       alt="Currently Active"
                       quality={90}
