@@ -1,10 +1,12 @@
 "use client";
 
-import React, { InputHTMLAttributes } from "react";
+import React, { InputHTMLAttributes, useEffect } from "react";
 import { BsSearch } from "react-icons/bs";
 import { twMerge } from "tailwind-merge";
 import { MdClear } from "react-icons/md";
 import { VscSend } from "react-icons/vsc";
+import useIsMounted from "@/hooks/useIsMounted";
+import { Search, SendHorizontal, X } from "lucide-react";
 
 interface SearchInputProps {
   searchTerm: string;
@@ -30,10 +32,15 @@ const SearchInput: React.FC<SearchInputProps> = ({
   ...props
 }) => {
   const [localSearchTerm, setLocalSearchTerm] = React.useState(searchTerm);
+  const isMounted = useIsMounted();
 
-  React.useEffect(() => {
+  useEffect(() => {
     setLocalSearchTerm(searchTerm);
   }, [searchTerm]);
+
+  if (!isMounted) {
+    return null;
+  }
 
   // This function was modified to only clear the local input field
   const handleClearSearch = () => {
@@ -47,8 +54,9 @@ const SearchInput: React.FC<SearchInputProps> = ({
   const combinedClassName = twMerge(
     `
       w-full h-12
-      p-2 pl-10
+      px-2 pl-12
       border-2
+      overflow-auto
       bg-neutral-100 dark:bg-neutral-800
       text-neutral-700 dark:text-neutral-200
       border-transparent focus:border-red-500 dark:focus:border-red-900
@@ -68,9 +76,9 @@ const SearchInput: React.FC<SearchInputProps> = ({
       <input
         type="text"
         value={localSearchTerm}
-        onChange={(e) => setLocalSearchTerm(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
+        onChange={(event) => setLocalSearchTerm(event.target.value)}
+        onKeyDown={(event) => {
+          if (event.key === "Enter") {
             handleSearch();
           }
         }}
@@ -78,24 +86,52 @@ const SearchInput: React.FC<SearchInputProps> = ({
         className={combinedClassName}
         {...props}
       />
-      <BsSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-700 dark:text-neutral-200" />
-      {localSearchTerm && (
-        <MdClear
-          className="absolute right-8 top-1/2 transform -translate-y-1/2 text-neutral-700 dark:text-neutral-200 cursor-pointer hover:text-red-500 dark:hover:text-red-800 transition-all ease-out duration-300 hover:scale-125"
-          onClick={handleClearSearch} // Modified to only clear the local input field
-        />
-      )}
-      <button
-        className={`absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-700 dark:text-neutral-200 ${
-          isSearchDisabled
-            ? "cursor-not-allowed opacity-50"
-            : "cursor-pointer hover:text-red-500 dark:hover:text-red-800"
-        } transition-all ease-out duration-300 hover:scale-125`}
-        onClick={handleSearch}
-        disabled={isSearchDisabled}
+      <Search
+        className="
+          absolute 
+          left-4 top-1/2 
+          transform -translate-y-1/2 
+          text-neutral-600 dark:text-neutral-200
+        "
+      />
+
+      <div
+        className="
+          absolute right-2 top-1/2 
+          bg-neutral-100 dark:bg-neutral-800
+          transform -translate-y-1/2 
+          flex flex-row items-end
+          space-x-2
+          pr-2
+          p-1
+          "
       >
-        <VscSend />
-      </button>
+        {localSearchTerm && (
+          <X
+            className="
+            text-neutral-500 cursor-pointer hover:text-red-500 dark:hover:text-red-800 
+            transition-all ease-out duration-300 hover:scale-125
+            "
+            onClick={handleClearSearch}
+          />
+        )}
+        <button
+          className={`
+
+          text-neutral-500 
+          ${
+            isSearchDisabled
+              ? "cursor-not-allowed opacity-50"
+              : "cursor-pointer"
+          } 
+          transition-all ease-out duration-300 hover:scale-125
+          `}
+          onClick={handleSearch}
+          disabled={isSearchDisabled}
+        >
+          <SendHorizontal />
+        </button>
+      </div>
     </div>
   );
 };

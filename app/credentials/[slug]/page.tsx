@@ -13,6 +13,7 @@ import { BsArrowUpRightCircle } from "react-icons/bs";
 import { RxTriangleRight } from "react-icons/rx";
 import allCertificates from "@/database/certificates";
 import { Button } from "@/components/shadcn/ui/button";
+import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 
 /**
  * Metadata object for the dynamic certificate page.
@@ -138,13 +139,15 @@ const CredentialPage: React.FC<CredentialPageProps> = ({ params }) => {
 						bg-neutral-100 dark:bg-neutral-950  
 					"
         >
-          <Image
-            src={certificateImage}
-            alt={`${certificate.name} certificate image`}
-            className="rounded-xl object-cover"
-            width={1000}
-            height={2000}
-          />
+          <AspectRatio ratio={4 / 3} className="overflow-hidden relative">
+            <Image
+              src={certificateImage}
+              alt={`${certificate.name} certificate image`}
+              className="rounded-xl object-cover"
+              fill={true}
+              priority={true}
+            />
+          </AspectRatio>
         </div>
       )}
 
@@ -228,11 +231,17 @@ const CredentialPage: React.FC<CredentialPageProps> = ({ params }) => {
                 className="w-auto md:w-full"
               >
                 <Button variant="default">
-                  <div className="flex flex-row justify-center md:justify-start gap-4 w-full">
-                    <BsArrowUpRightCircle size={30} />
-                    <p className="hidden md:block mt-1 md:text-left text-center">
-                      Issuer Page
-                    </p>
+                  <div
+                    className="
+                      flex
+                      justify-center md:justify-start
+                      align-center
+                      gap-4
+                      w-full
+                    "
+                  >
+                    <BsArrowUpRightCircle size={26} />
+                    <p>Issuer Page</p>
                   </div>
                 </Button>
               </Link>

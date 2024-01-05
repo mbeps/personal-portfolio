@@ -1,31 +1,41 @@
 import Skill from "@/types/skills";
 
 // Function to group skills by language
-const groupByLanguage = (skills: Skill[]): Record<string, Skill[]> => {
-  // Filter skills to include only those categorized as "Programming Languages"
-  const programmingLanguages = skills.filter(
-    (skill) => skill.category === "Programming Languages",
-  );
+export function groupByLanguage(skills: Skill[]): Record<string, Skill[]> {
+  let groupedSkills: Record<string, Skill[]> = {};
 
-  // Reduce the filtered skills to group by language
-  return programmingLanguages.reduce(
-    (acc: Record<string, Skill[]>, languageSkill) => {
-      // The language's name serves as the key, and its technical skills are the group elements
-      if (languageSkill.name) {
-        acc[languageSkill.name] = removeDuplicates([
-          ...(languageSkill.technicalGeneralSkills || []),
-          ...(languageSkill.technicalHardSkills || []),
-          ...(languageSkill.technicalSoftSkills || []),
-        ]);
-      }
-      return acc;
-    },
-    {},
-  );
-};
+  skills.forEach((skill) => {
+    // Determine if the skill is a programming language or should be categorized under "Others"
+    const groupName =
+      skill.category === "Programming Languages" ? skill.name : "Others";
+
+    // Initialize the group in the accumulator if it doesn't exist
+    if (!groupedSkills[groupName]) {
+      groupedSkills[groupName] = [];
+    }
+
+    // Add the skill to the appropriate group
+    groupedSkills[groupName].push(skill);
+
+    // If it's a programming language, include its nested skills
+    if (skill.category === "Programming Languages") {
+      const nestedSkills = [
+        ...(skill.technicalGeneralSkills || []),
+        ...(skill.technicalHardSkills || []),
+        ...(skill.technicalSoftSkills || []),
+      ];
+
+      groupedSkills[groupName] = removeDuplicates(
+        groupedSkills[groupName].concat(nestedSkills),
+      );
+    }
+  });
+
+  return groupedSkills;
+}
 
 // Function to group skills by category
-const groupByCategory = (skills: Skill[]): Record<string, Skill[]> => {
+export function groupByCategory(skills: Skill[]): Record<string, Skill[]> {
   return skills.reduce((acc: Record<string, Skill[]>, skill) => {
     const category = skill.category || "Other";
     if (!acc[category]) {
@@ -34,10 +44,10 @@ const groupByCategory = (skills: Skill[]): Record<string, Skill[]> => {
     acc[category].push(skill);
     return acc;
   }, {});
-};
+}
 
 // Function to group skills by skill type
-const groupBySkillType = (skills: Skill[]): Record<string, Skill[]> => {
+export function groupBySkillType(skills: Skill[]): Record<string, Skill[]> {
   return skills.reduce((acc: Record<string, Skill[]>, skill) => {
     const skillType = skill.skillType || "Other";
     if (!acc[skillType]) {
@@ -46,9 +56,9 @@ const groupBySkillType = (skills: Skill[]): Record<string, Skill[]> => {
     acc[skillType].push(skill);
     return acc;
   }, {});
-};
+}
 
-const removeDuplicates = (skills: Skill[]): Skill[] => {
+export function removeDuplicates(skills: Skill[]): Skill[] {
   const skillSet = new Set();
   const uniqueSkills: Skill[] = [];
 
@@ -61,12 +71,12 @@ const removeDuplicates = (skills: Skill[]): Skill[] => {
   });
 
   return uniqueSkills;
-};
+}
 
-const recursiveFilter = (
+function recursiveFilter(
   skills: Skill[],
   excludedSkillTypes: ("hard" | "general" | "soft")[],
-): Skill[] => {
+): Skill[] {
   return skills
     .filter((skill) => !excludedSkillTypes.includes(skill.skillType))
     .map((skill) => {
@@ -93,13 +103,13 @@ const recursiveFilter = (
 
       return filteredSkill;
     });
-};
+}
 
-const groupSkills = (
+export default function groupSkills(
   groupedBy: string,
   skills: Skill[],
-  excludedSkillTypes?: ("hard" | "general" | "soft")[], // array of skill types to be excluded
-): Record<string, Skill[]> => {
+  excludedSkillTypes?: ("hard" | "general" | "soft")[],
+): Record<string, Skill[]> {
   let organizedSkills: Record<string, Skill[]> = {};
 
   // Filter out the skills of excluded types recursively
@@ -118,7 +128,6 @@ const groupSkills = (
       organizedSkills = groupBySkillType(filteredSkills);
       break;
     default:
-      // groupedBy === "none"
       organizedSkills["None"] = removeDuplicates(filteredSkills);
       break;
   }
@@ -129,6 +138,4 @@ const groupSkills = (
   }
 
   return organizedSkills;
-};
-
-export default groupSkills;
+}

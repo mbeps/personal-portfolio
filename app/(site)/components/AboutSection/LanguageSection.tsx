@@ -24,6 +24,7 @@ import blogs from "@/database/blogs";
 import allCertificates from "@/database/certificates";
 import allProjects from "@/database/projects";
 import { languages } from "@/database/skills/languages";
+import useIsMounted from "@/hooks/useIsMounted";
 import FilterOption from "@/types/filters/FilterOption";
 import Skill from "@/types/skills";
 import Link from "next/link";
@@ -37,6 +38,11 @@ import { BsChevronDown } from "react-icons/bs";
  */
 const LanguageSection: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const isMounted = useIsMounted();
+
+  if (!isMounted) {
+    return null;
+  }
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -188,17 +194,15 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
 
           {/* Links */}
           {hasMaterial && (
-            <div className="text-center md:text-left">
-              <HeadingThree title="Material" />
-            </div>
-          )}
-          {hasMaterial && (
             <>
+              <div className="text-center md:text-left">
+                <HeadingThree title="Material" />
+              </div>
               <div
                 className="
                   flex flex-wrap flex-col
                   text-center md:text-left
-                  justify-start z-10 mt-5 space-y-2"
+                  justify-start z-10 space-y-2"
               >
                 <Link
                   href={`
@@ -213,66 +217,6 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
                 </Link>
               </div>
             </>
-          )}
-          {hasProjects && (
-            <div
-              className="
-                flex flex-wrap flex-col
-                text-center md:text-left
-                justify-start z-10 mt-5 space-y-2"
-            >
-              <Link href={`/projects?archived=true&language=${language.slug}`}>
-                <div className="w-full">
-                  <Button
-                    variant="ghost"
-                    className="w-full"
-                  >{`${language.name} Projects`}</Button>
-                </div>
-              </Link>
-            </div>
-          )}
-
-          {hasCertificates && (
-            <div
-              className="
-                flex flex-wrap flex-col
-                text-center md:text-left
-                justify-start z-10 mt-5 space-y-2"
-            >
-              <Link
-                href={`
-                  /credentials?archived=true&technical=${language.slug}
-              `}
-              >
-                <div className="w-full">
-                  <Button
-                    variant="ghost"
-                    className="w-full"
-                  >{`${language.name} Certificates`}</Button>
-                </div>
-              </Link>
-            </div>
-          )}
-
-          {hasBlogs && (
-            <div
-              className="
-                flex flex-wrap flex-col
-                text-center md:text-left
-                justify-start z-10 mt-5 space-y-2"
-            >
-              <Link
-                href={`
-              /blogs?technical=${language.slug}
-              `}
-              >
-                <div className="w-full">
-                  <Button variant="ghost" className="w-full">
-                    {`${language.name} Blogs`}
-                  </Button>
-                </div>
-              </Link>
-            </div>
           )}
         </DialogContent>
       </Dialog>

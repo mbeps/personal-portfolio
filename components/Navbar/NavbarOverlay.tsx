@@ -2,6 +2,7 @@ import NavItem from "@/types/pages";
 import Socials from "../Socials/Socials";
 import NavbarItem from "./NavbarItem";
 import Overlay from "../Sheet/Sheet";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 interface OverlayProps {
   isOpen: boolean;
@@ -20,6 +21,12 @@ interface OverlayProps {
  * @returns (JSX.Element) - Overlay component
  */
 const NavbarOverlay: React.FC<OverlayProps> = ({ isOpen, toggle, items }) => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
+  if (!isMobile) {
+    return null;
+  }
+
   return (
     <Overlay isOpen={isOpen} toggle={toggle}>
       <div

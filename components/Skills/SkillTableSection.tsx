@@ -11,6 +11,7 @@ import Skill from "@/types/skills";
 import React, { useState } from "react";
 import ExpandCollapseButton from "../Button/ExpandCollapseButton";
 import SkillTag from "../Tags/SkillTag";
+import useIsMounted from "@/hooks/useIsMounted";
 
 interface SkillCategoryProps {
   title: string;
@@ -30,6 +31,12 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
     ) || "",
   );
 
+  const isMounted = useIsMounted();
+
+  if (!isMounted) {
+    return null;
+  }
+
   const stringToSlug = (str: string) => {
     return str.toLowerCase().replace(/\s+/g, "-");
   };
@@ -42,7 +49,7 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
       onValueChange={setSelectedTab}
     >
       {/* Tab Options */}
-      <TabsList className="mt-6 -mb-2">
+      <TabsList className="mt-6 -mb-2 w-full md:w-auto">
         {Object.entries(allGroupedSkills)
           .filter(
             ([_, { skillCategories }]) =>
@@ -52,7 +59,7 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
             <TabsTrigger
               key={key}
               value={stringToSlug(title)}
-              className="text-md md:text-xl font-bold"
+              className="text-lg md:text-xl font-bold"
             >
               {title}
             </TabsTrigger>
@@ -60,6 +67,7 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
       </TabsList>
 
       {/* Tab Content */}
+      {/* Each section */}
       {Object.entries(allGroupedSkills)
         .filter(
           ([_, { skillCategories }]) => Object.keys(skillCategories).length > 0,
@@ -114,10 +122,14 @@ const CategorySkillDisplay: React.FC<{
     setShowAll(!showAll);
   };
 
-  // Components like SkillTag, HeadingThree, HeadingFour, ExpandCollapseButton should be defined or imported
+  // Determine grid style based on the number of categories
+  const gridStyle = shouldDisplayTitle
+    ? "gap-4 grid md:grid-cols-2 lg:grid-cols-3" // for multiple categories
+    : "gap-4 grid grid-cols-1"; // for single category
+
   return (
     <div>
-      <div className="gap-4 grid md:grid-cols-2 lg:grid-cols-3">
+      <div className={gridStyle}>
         {displayedSkills.map(([category, skills]) => (
           <div key={category} className="mb-6">
             {shouldDisplayTitle && <HeadingFour title={category} />}

@@ -30,26 +30,24 @@ const ProjectsSection = () => {
   }
 
   return (
-    <section id="projects" className="wrapper ">
-      <div className="my-12 pb-12 md:pt-16 ">
-        <HeadingTwo title="Projects" />
+    <section id="projects" className="home-section-wrapper">
+      <HeadingTwo title="Projects" />
 
-        <div className="flex flex-col space-y-20 mt-14">
-          {allProjects
-            .filter((project) => allowedSlugs.includes(project.slug))
-            .map((project, idx) => (
-              <div key={idx}>
-                <SlideUp offset="-150px 0px -150px 0px">
-                  <ProjectItem project={project} />
-                </SlideUp>
-              </div>
-            ))}
-        </div>
-
-        <Link href="/projects" className="flex justify-center mt-10">
-          <Button variant="outline">View All Projects</Button>
-        </Link>
+      <div className="flex flex-col space-y-20 mt-14">
+        {allProjects
+          .filter((project) => allowedSlugs.includes(project.slug))
+          .map((project, idx) => (
+            <div key={idx}>
+              <SlideUp offset="-150px 0px -150px 0px">
+                <ProjectItem project={project} />
+              </SlideUp>
+            </div>
+          ))}
       </div>
+
+      <Link href="/projects" className="flex justify-center mt-10">
+        <Button variant="outline">View All Projects</Button>
+      </Link>
     </section>
   );
 };

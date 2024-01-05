@@ -1,9 +1,8 @@
-"use client";
-import Navbar from "@/components/Navbar/Navbar";
-import "./globals.css";
-import { ThemeProvider, useTheme } from "next-themes";
 import Footer from "@/components/Footer/Footer";
-import { useEffect } from "react";
+import Navbar from "@/components/Navbar/Navbar";
+import { Providers } from "@/providers/Providers";
+import "./globals.css";
+import { NAVBAR_HEIGHT } from "@/constants/NAVBAR";
 
 /**
  * Layout component which applies to all pages.
@@ -15,49 +14,38 @@ import { useEffect } from "react";
  * @param children (React.ReactNode): Page content
  * @returns (JSX.Element): Layout component
  */
-export default function RootLayout({
+export default function RootLayoutWithProviders({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const { systemTheme, theme, setTheme } = useTheme();
-  const currentTheme = theme === "system" ? systemTheme : theme;
-
-  // Automatically set website theme to match system theme
-  useEffect(() => {
-    const defaultTheme = window.matchMedia("(prefers-color-scheme: dark)")
-      .matches
-      ? "dark"
-      : "light";
-    setTheme(defaultTheme);
-  }, [setTheme]);
-
   return (
-    <html lang="en" className={currentTheme === "dark" ? "dark" : ""}>
-      <head />
-      <body
-        className={`
-          bg-white dark:bg-neutral-900
-          transition-colors duration-700 ease-in-out
-
-        `}
-      >
-        <ThemeProvider enableSystem={true} attribute="class">
-          <Navbar />
-          <div className="pt-24" />
-          <div
-            className="
-              globalWidth 
-              px-4 sm:px-6  
-              animate-fadeIn animation-delay-2           
-              min-h-[85vh]
-              "
-          >
-            {children}
-          </div>
-          <Footer />
-        </ThemeProvider>
-      </body>
-    </html>
+    <>
+      <html lang="en" suppressHydrationWarning>
+        <body>
+          <Providers>
+            <Navbar />
+            <main
+              className={`
+                bg-white dark:bg-neutral-900
+                transition-colors duration-700 ease-in-out
+                min-h-[calc(100vh-4rem)]
+                pt-${NAVBAR_HEIGHT}
+              `}
+            >
+              <div
+                className="
+                  mx-auto max-w-3xl md:max-w-6xl
+                  pt-10
+                "
+              >
+                {children}
+                <Footer />
+              </div>
+            </main>
+          </Providers>
+        </body>
+      </html>
+    </>
   );
 }

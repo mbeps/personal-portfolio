@@ -16,8 +16,10 @@ const ProjectsListSection: React.FC<ProjectsListSectionProps> = ({
   groupedProjects,
 }) => {
   return (
-    <div className="flex flex-col space-y-10 mt-14">
+    <div className="material-page-wrapper">
+      {/* Each Section */}
       {Object.keys(groupedProjects).length > 0 ? (
+        // Each Project
         Object.keys(groupedProjects).map(
           (type) =>
             type !== "All" && (
@@ -34,10 +36,10 @@ const ProjectsListSection: React.FC<ProjectsListSectionProps> = ({
                   </div>
                 </div>
               </section>
-            )
+            ),
         )
       ) : (
-        <div className="flex justify-center min-w-full mt-14">
+        <div className="flex justify-center min-w-full mt-8">
           <h2 className="text-2xl font-bold">No projects</h2>
         </div>
       )}

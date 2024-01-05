@@ -26,13 +26,25 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
   const router = useRouter();
 
   const selectedGroup = searchParams.get("group") || "category";
+  const excludeHardSkills = searchParams.get("hard") === "true";
+  const excludeGeneralSkills = searchParams.get("general") === "true";
+  const excludeSoftSkills = searchParams.get("soft") === "true";
+
   const options = [
     { slug: "category", entryName: "Category" },
     { slug: "skill-type", entryName: "Skill Type" },
+    { slug: "language", entryName: "Language" },
     { slug: "none", entryName: "None" },
   ];
 
-  const groupedSkills = groupSkills(selectedGroup, skills);
+  const excludedSkillTypes: ("hard" | "general" | "soft")[] = [];
+
+  if (excludeHardSkills) excludedSkillTypes.push("hard");
+  if (excludeGeneralSkills) excludedSkillTypes.push("general");
+  if (excludeSoftSkills) excludedSkillTypes.push("soft");
+
+  // Group skills with the exclusion list
+  const groupedSkills = groupSkills(selectedGroup, skills, excludedSkillTypes);
 
   function handleSelect(value: string) {
     router.push(generateUrl({ group: value }, basePath));

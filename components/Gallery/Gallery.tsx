@@ -2,7 +2,7 @@
 
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Carousel,
   CarouselApi,
@@ -13,6 +13,7 @@ import {
 } from "../shadcn/ui/carousel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../shadcn/ui/tabs";
 import VideoPlayer from "./VideoPlayer";
+import useIsMounted from "@/hooks/useIsMounted";
 
 interface GalleryProps {
   images?: string[];
@@ -34,8 +35,9 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
   const [count, setCount] = React.useState(0);
 
   const isMobile = useMediaQuery("(max-width: 768px)");
+  const isMounted = useIsMounted();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!api) {
       return;
     }
@@ -47,6 +49,10 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
       setCurrent(api.selectedScrollSnap() + 1);
     });
   }, [api]);
+
+  if (!isMounted) {
+    return null;
+  }
 
   if (!images && !videos) {
     return null;
@@ -64,13 +70,14 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
                 {Array.from({ length: images?.length ?? 0 }).map((_, index) => (
                   <CarouselItem key={index}>
                     <Image
+                      key={index}
                       src={images?.[index] ?? ""}
                       alt="Currently Active"
                       quality={90}
                       width={2000}
                       height={1125}
                       priority
-                      className="w-full h-[60vh] object-contain rounded-xl bg-neutral-100 dark:bg-neutral-900 transition-colors duration-700 p-2"
+                      className="w-full h-[60vh] object-contain rounded-xl bg-neutral-100 dark:bg-neutral-950 transition-colors duration-700 p-2"
                     />
                   </CarouselItem>
                 ))}
@@ -94,7 +101,7 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
                   <CarouselItem key={index}>
                     <VideoPlayer
                       src={videos?.[index] ?? ""}
-                      className="w-full h-[60vh] object-contain rounded-xl bg-neutral-100 dark:bg-neutral-900 transition-colors duration-700 p-2"
+                      className="w-full h-[60vh] object-contain rounded-xl bg-neutral-100 dark:bg-neutral-950 transition-colors duration-700 p-2"
                     />
                   </CarouselItem>
                 ))}

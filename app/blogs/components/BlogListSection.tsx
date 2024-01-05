@@ -14,7 +14,7 @@ interface BlogListSectionProps {
  */
 const BlogListSection: React.FC<BlogListSectionProps> = ({ groupedBlogs }) => {
   return (
-    <div className="my-12 pb-12 md:pt-2 md:pb-36 space-y-4 md:space-y-10">
+    <div className="material-page-wrapper">
       {Object.keys(groupedBlogs).length > 0 ? (
         Object.keys(groupedBlogs).map(
           (category) =>
@@ -23,7 +23,7 @@ const BlogListSection: React.FC<BlogListSectionProps> = ({ groupedBlogs }) => {
                 key={category}
                 id={category.toLowerCase().replace(/\s+/g, "-")}
               >
-                <div className="flex flex-col space-y-20">
+                <div className="flex flex-col space-y-10">
                   <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
                   {/* Assuming HeadingTwo is a component you have for rendering titles */}
                   <HeadingTwo title={category} />
@@ -34,10 +34,10 @@ const BlogListSection: React.FC<BlogListSectionProps> = ({ groupedBlogs }) => {
                   />
                 </div>
               </section>
-            )
+            ),
         )
       ) : (
-        <div className="flex justify-center min-w-full mt-14">
+        <div className="flex justify-center min-w-full mt-8">
           <h2 className="text-2xl font-bold">No blogs found</h2>
         </div>
       )}
