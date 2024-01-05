@@ -67,6 +67,7 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
       </TabsList>
 
       {/* Tab Content */}
+      {/* Each section */}
       {Object.entries(allGroupedSkills)
         .filter(
           ([_, { skillCategories }]) => Object.keys(skillCategories).length > 0,
@@ -121,10 +122,14 @@ const CategorySkillDisplay: React.FC<{
     setShowAll(!showAll);
   };
 
-  // Components like SkillTag, HeadingThree, HeadingFour, ExpandCollapseButton should be defined or imported
+  // Determine grid style based on the number of categories
+  const gridStyle = shouldDisplayTitle
+    ? "gap-4 grid md:grid-cols-2 lg:grid-cols-3" // for multiple categories
+    : "gap-4 grid grid-cols-1"; // for single category
+
   return (
     <div>
-      <div className="gap-4 grid md:grid-cols-2 lg:grid-cols-3">
+      <div className={gridStyle}>
         {displayedSkills.map(([category, skills]) => (
           <div key={category} className="mb-6">
             {shouldDisplayTitle && <HeadingFour title={category} />}
