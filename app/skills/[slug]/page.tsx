@@ -56,7 +56,7 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
   }
 
   return (
-    <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
+    <div className="material-page-wrapper">
       <HeadingOne title={skill.name} />
       <PageDescription
         description={`
