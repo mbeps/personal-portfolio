@@ -30,7 +30,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section id="home" className="wrapper">
+    <section id="home" className="home-section-wrapper">
       <div
         className="
           flex flex-col 

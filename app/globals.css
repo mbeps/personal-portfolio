@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer components {
-  .wrapper {
+  .home-section-wrapper {
     @apply min-h-[85vh] w-full flex flex-col align-middle justify-center;
   }
   .material-page-wrapper {

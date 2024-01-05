@@ -30,7 +30,7 @@ const ProjectsSection = () => {
   }
 
   return (
-    <section id="projects" className="wrapper">
+    <section id="projects" className="home-section-wrapper">
       <HeadingTwo title="Projects" />
 
       <div className="flex flex-col space-y-20 mt-14">
