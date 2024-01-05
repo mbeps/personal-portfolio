@@ -18,6 +18,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
+import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 
 /**
  * Metadata object for the dynamic project page.
@@ -208,19 +209,20 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
             animate-fadeIn animation-delay-2
           "
         >
-          <Image
-            src={coverImagePath}
-            alt="Project Image"
-            quality={90}
-            width={2000}
-            height={1125}
-            priority
-            className="
-              w-full
-              object-contain rounded-xl 
-              transition-colors duration-700
+          <AspectRatio ratio={8 / 5} className="overflow-hidden relative">
+            <Image
+              src={coverImagePath}
+              alt="Project Image"
+              quality={90}
+              fill={true}
+              priority
+              className="
+                w-full
+                object-cover rounded-xl 
+                transition-colors duration-700
             "
-          />
+            />
+          </AspectRatio>
         </div>
       ) : (
         <></>
