@@ -4,7 +4,7 @@
 
 @layer components {
   .wrapper {
-    @apply min-h-[85vh] w-full;
+    @apply min-h-[85vh] w-full flex flex-col align-middle justify-center;
   }
 }
 

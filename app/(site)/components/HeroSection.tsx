@@ -30,10 +30,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section
-      id="home"
-      className="wrapper flex flex-col justify-between items-center"
-    >
+    <section id="home" className="wrapper">
       <div
         className="
           flex flex-col 
