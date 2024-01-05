@@ -5,6 +5,7 @@ import blogs from "@/database/blogs";
 import allCertificates from "@/database/certificates";
 import allProjects from "@/database/projects";
 import { languages } from "@/database/skills/languages";
+import allSkills from "@/database/skills/skills";
 import Skill from "@/types/skills";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
@@ -12,41 +13,7 @@ import React from "react";
 import BlogsSection from "./components/BlogsSection";
 import CredentialsSection from "./components/CredentialsSection";
 import ProjectsSection from "./components/ProjectsSection";
-import technicalHardSkillsAPIs from "@/database/skills/technicalHardSkills/technicalHardSkillsAPIs";
-import technicalHardSkillsBackendWebDev from "@/database/skills/technicalHardSkills/technicalHardSkillsBackendWebDev";
-import technicalHardSkillsCloudComputing from "@/database/skills/technicalHardSkills/technicalHardSkillsCloudComputing";
-import technicalHardSkillsDatabases from "@/database/skills/technicalHardSkills/technicalHardSkillsDatabases";
-import technicalHardSkillsDevOps from "@/database/skills/technicalHardSkills/technicalHardSkillsDevOps";
-import technicalHardSkillsFrontendWebDev from "@/database/skills/technicalHardSkills/technicalHardSkillsFrontendWebDev";
-import technicalHardSkillsFullStackWebDev from "@/database/skills/technicalHardSkills/technicalHardSkillsFullStackWebDev";
-import technicalHardSkillsMLDS from "@/database/skills/technicalHardSkills/technicalHardSkillsMLDS";
-import technicalHardSkillsMaths from "@/database/skills/technicalHardSkills/technicalHardSkillsMaths";
-import technicalHardSkillsOthers from "@/database/skills/technicalHardSkills/technicalHardSkillsOthers";
-import technicalHardSkillsProjectManagers from "@/database/skills/technicalHardSkills/technicalHardSkillsProjectManagers";
-import technicalHardSkillsTesting from "@/database/skills/technicalHardSkills/technicalHardSkillsTesting";
-import technicalHardSkillsVCS from "@/database/skills/technicalHardSkills/technicalHardSkillsVCS";
-import generalSkills from "@/database/skills/generalSkills";
-import softSkills from "@/database/skills/softSkills";
 import RelatedSkillsSection from "./components/RelatedSkillsSection";
-
-const allSkills: Skill[] = [
-  ...technicalHardSkillsFullStackWebDev,
-  ...technicalHardSkillsAPIs,
-  ...technicalHardSkillsBackendWebDev,
-  ...technicalHardSkillsCloudComputing,
-  ...technicalHardSkillsDatabases,
-  ...technicalHardSkillsDevOps,
-  ...technicalHardSkillsFrontendWebDev,
-  ...technicalHardSkillsMaths,
-  ...technicalHardSkillsMLDS,
-  ...technicalHardSkillsOthers,
-  ...technicalHardSkillsProjectManagers,
-  ...technicalHardSkillsTesting,
-  ...technicalHardSkillsVCS,
-  ...languages,
-  ...generalSkills,
-  ...softSkills,
-];
 
 function extractSlugs(skills: Skill[]): string[] {
   return skills.map((skill) => skill.slug);
@@ -54,7 +21,7 @@ function extractSlugs(skills: Skill[]): string[] {
 
 export async function generateMetadata(
   { params, searchParams }: ProjectPageProps,
-  parent: ResolvingMetadata
+  parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const slug = params.slug;
   const skill = getSkillBySlug(slug, [...allSkills]);
