@@ -18,7 +18,7 @@ import { cn } from "@/lib/utils";
 import FilterCategory from "@/types/filters/FilterCategory";
 import { Check } from "lucide-react";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
 import HeadingThree from "../Text/HeadingThree";
@@ -46,9 +46,29 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
 }) => {
   const isMounted = useIsMounted();
 
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        toggle(); // Assuming toggle() is the method to close the modal
+      }
+    };
+
+    if (isMounted) {
+      window.addEventListener("keydown", handleEscape);
+    }
+
+    // Cleanup the event listener
+    return () => {
+      if (isMounted) {
+        window.removeEventListener("keydown", handleEscape);
+      }
+    };
+  }, [isMounted, toggle]);
+
   if (!isMounted) {
     return null;
   }
+
   return (
     <div
       className={`
