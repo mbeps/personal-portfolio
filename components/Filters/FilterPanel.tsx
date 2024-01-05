@@ -191,12 +191,12 @@ const FilterPopover = ({
         </Button>
       </PopoverTrigger>
 
-      <PopoverContent className="w-full p-0">
-        <Command className="w-full">
+      <PopoverContent className="w-[24rem] md:w-[22rem] p-0">
+        <Command className="w-[24rem] md:w-[22rem]">
           <CommandInput placeholder="Search Filter..." />
           <CommandEmpty>No Filter Found.</CommandEmpty>
 
-          <CommandGroup className="w-[24rem] md:w-[22rem] ">
+          <CommandGroup className="w-[24rem] md:w-[22rem]">
             {filterCategory.options.map((option, i) => (
               <Link
                 key={i}
@@ -215,11 +215,12 @@ const FilterPopover = ({
                   },
                   basePath,
                 )}
+                className="w-full"
               >
                 <CommandItem
                   key={option.slug}
                   value={option.slug}
-                  className="pr-4"
+                  className="pr-4 w-[24rem] md:w-[22rem]"
                 >
                   {filterCategory.selectedValue === option.slug ? (
                     <Check className={cn(gap, "text-red-500")} />
