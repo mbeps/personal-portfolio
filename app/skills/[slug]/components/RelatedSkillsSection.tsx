@@ -20,7 +20,7 @@ const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
       ...getHardSkillsFromHardTechnicalSkill(skill),
       ...getHardSkillsFromGeneralTechnicalSkill(skill, allSkills),
       ...getGeneralSkillsFromHardTechnicalSkill(skill),
-    ])
+    ]),
   );
 
   if (!skillTechnologies || skillTechnologies.length === 0) {
