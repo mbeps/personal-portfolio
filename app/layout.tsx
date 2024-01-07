@@ -36,7 +36,7 @@ export default function RootLayoutWithProviders({
               <div
                 className="
                   mx-auto max-w-3xl md:max-w-6xl
-                  pt-10
+                  pt-10 p-1.5 md:p-0
                 "
               >
                 {children}
