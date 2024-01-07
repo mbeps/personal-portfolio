@@ -14,6 +14,7 @@ import { RxTriangleRight } from "react-icons/rx";
 import allCertificates from "@/database/certificates";
 import { Button } from "@/components/shadcn/ui/button";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
+import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
 
 /**
  * Metadata object for the dynamic certificate page.
@@ -69,49 +70,19 @@ const CredentialPage: React.FC<CredentialPageProps> = ({ params }) => {
     notFound();
   }
 
-  // Interface for SkillCategory remains the same
-  interface SkillCategory {
-    title: string;
-    skillCategories: Record<string, Skill[]>;
-  }
-
-  // New function to handle both filtering and grouping/organizing
-  const filterAndGroupCertificateSkills = (
-    skills: Skill[],
-    skillType: "hard" | "general" | "soft",
-    title: string,
-  ): SkillCategory => {
-    // Filter skills based on skillType
-    const filteredSkills = skills.filter(
-      (skill) => skill.skillType === skillType,
-    );
-
-    // Group the filtered skills by category
-    const grouped = filteredSkills.reduce<Record<string, Skill[]>>(
-      (acc, skill) => {
-        const category = skill.category;
-        (acc[category] = acc[category] || []).push(skill);
-        return acc;
-      },
-      {},
-    );
-
-    return { title, skillCategories: grouped };
-  };
-
   // Simplified grouping of skill types for certificates
   const allGroupedCertificateSkills = {
-    technologies: filterAndGroupCertificateSkills(
+    technologies: filterAndGroupSkills(
       certificate.technicalSkills,
       "hard",
       "Technologies",
     ),
-    generalSkills: filterAndGroupCertificateSkills(
+    generalSkills: filterAndGroupSkills(
       certificate.technicalSkills,
       "general",
       "Technical Skills",
     ),
-    softSkills: filterAndGroupCertificateSkills(
+    softSkills: filterAndGroupSkills(
       certificate.softSkills,
       "soft",
       "Soft Skills",

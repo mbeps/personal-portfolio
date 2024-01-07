@@ -15,10 +15,6 @@ import { HiArrowDown } from "react-icons/hi";
 const HeroSection = () => {
   const isMounted = useIsMounted();
 
-  if (!isMounted) {
-    return null;
-  }
-
   /**
    * Array of strings to loop through.
    */

@@ -5,7 +5,6 @@ import SkillTag from "@/components/Tags/SkillTag";
 import HeadingThree from "@/components/Text/HeadingThree";
 import { languages } from "@/database/skills/languages";
 import { technologies } from "@/database/skills/skills";
-import useIsMounted from "@/hooks/useIsMounted";
 import Skill from "@/types/skills";
 
 /**
@@ -15,11 +14,6 @@ import Skill from "@/types/skills";
  * @returns (JSX.Element): skill section (list of skills)
  */
 const SkillSection: React.FC = () => {
-  const isMounted = useIsMounted();
-
-  if (!isMounted) {
-    return null;
-  }
   /**
    * Gets the list of skills from all the languages.
    */

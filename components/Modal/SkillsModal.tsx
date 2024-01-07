@@ -67,6 +67,10 @@ const SkillsModal: React.FC = () => {
     "soft",
   ]);
 
+  const currentGroupedName =
+    options.find((option) => option.slug === groupedBy)?.entryName ||
+    "Category";
+
   return (
     <Dialog>
       <DialogTrigger>
@@ -88,7 +92,7 @@ const SkillsModal: React.FC = () => {
             <DropdownMenuTrigger className="w-48">
               <Button variant="default" className="w-full">
                 <div className="flex items-start justify-between space-x-2 w-full">
-                  <span>Category</span>
+                  <span>{currentGroupedName}</span>
                   <BsChevronDown
                     fontSize={16}
                     className="text-neutral-700 dark:text-neutral-200 mt-1"

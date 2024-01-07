@@ -19,6 +19,7 @@ import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
+import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
 
 /**
  * Metadata object for the dynamic project page.
@@ -110,34 +111,6 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
       }, [] as Skill[]);
   }
 
-  interface SkillCategory {
-    title: string;
-    skillCategories: Record<string, Skill[]>;
-  }
-
-  const filterAndGroupSkills = (
-    skills: Skill[],
-    skillType: "hard" | "general" | "soft",
-    title: string,
-  ): SkillCategory => {
-    // Filter skills based on skillType
-    const filteredSkills = skills.filter(
-      (skill) => skill.skillType === skillType,
-    );
-
-    // Group the filtered skills by category
-    const grouped = filteredSkills.reduce<Record<string, Skill[]>>(
-      (acc, skill) => {
-        const category = skill.category;
-        (acc[category] = acc[category] || []).push(skill);
-        return acc;
-      },
-      {},
-    );
-
-    return { title, skillCategories: grouped };
-  };
-
   // Using the new function to group all skill types
   const allGroupedSkills = {
     technologies: filterAndGroupSkills(
@@ -199,33 +172,33 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
       {/* Gallery Section */}
       {(images && images.length > 1) || (videos && videos.length > 1) ? (
         <Gallery images={images} videos={videos} />
-      ) : hasCoverImage ? (
-        <div
-          className="
-            w-full 
-            flex items-center justify-center 
-            relative 
-            z-0
-            animate-fadeIn animation-delay-2
-          "
-        >
-          <AspectRatio ratio={8 / 5} className="overflow-hidden relative">
-            <Image
-              src={coverImagePath}
-              alt="Project Image"
-              quality={90}
-              fill={true}
-              priority
-              className="
-                w-full
-                object-cover rounded-xl 
-                transition-colors duration-700
-            "
-            />
-          </AspectRatio>
-        </div>
       ) : (
-        <></>
+        hasCoverImage && (
+          <div
+            className="
+              w-full 
+              flex items-center justify-center 
+              relative 
+              z-0
+              animate-fadeIn animation-delay-2
+            "
+          >
+            <AspectRatio ratio={8 / 5} className="overflow-hidden relative">
+              <Image
+                src={coverImagePath}
+                alt="Project Image"
+                quality={90}
+                fill={true}
+                priority
+                className="
+                  w-full
+                  object-cover rounded-xl 
+                  transition-colors duration-700
+                "
+              />
+            </AspectRatio>
+          </div>
+        )
       )}
 
       {/* Metadata Section */}

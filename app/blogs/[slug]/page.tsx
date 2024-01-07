@@ -1,5 +1,6 @@
 import getBlogMetadataBySlug from "@/actions/blogs/getBlogMetadataBySlug";
 import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
+import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
 import Reader from "@/components/Reader/Reader";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
@@ -68,50 +69,19 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
     notFound();
   }
 
-  interface SkillCategory {
-    title: string;
-    skillCategories: Record<string, Skill[]>;
-  }
-
-  const filterAndGroupBlogSkills = (
-    skills: Skill[] | undefined,
-    skillType: "hard" | "general" | "soft",
-    title: string,
-  ): SkillCategory => {
-    // Handle the case where skills might be undefined
-    const validSkills = skills || [];
-
-    // Filter skills based on skillType
-    const filteredSkills = validSkills.filter(
-      (skill) => skill.skillType === skillType,
-    );
-
-    // Group the filtered skills by category
-    const grouped = filteredSkills.reduce<Record<string, Skill[]>>(
-      (acc, skill) => {
-        const category = skill.category;
-        (acc[category] = acc[category] || []).push(skill);
-        return acc;
-      },
-      {},
-    );
-
-    return { title, skillCategories: grouped };
-  };
-
   // Using the new function to group all skill types for the blog
   const allGroupedBlogSkills = {
-    technologies: filterAndGroupBlogSkills(
+    technologies: filterAndGroupSkills(
       blogMetadata?.technicalSkills,
       "hard",
       "Technologies",
     ),
-    generalSkills: filterAndGroupBlogSkills(
+    generalSkills: filterAndGroupSkills(
       blogMetadata?.technicalSkills,
       "general",
       "Technical Skills",
     ),
-    softSkills: filterAndGroupBlogSkills(
+    softSkills: filterAndGroupSkills(
       blogMetadata?.softSkills,
       "soft",
       "Soft Skills",

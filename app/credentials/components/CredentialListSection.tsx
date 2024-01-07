@@ -37,7 +37,7 @@ const CredentialsListSection: React.FC<CredentialsListSectionProps> = ({
         )
       ) : (
         <div className="flex justify-center min-w-full mt-1">
-          <h2 className="text-2xl font-bold">No certificates</h2>
+          <h2 className="text-2xl font-bold">No Matching Certificates</h2>
         </div>
       )}
     </div>

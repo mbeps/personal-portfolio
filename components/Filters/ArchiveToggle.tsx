@@ -2,9 +2,9 @@ import Link from "next/link";
 import { Switch } from "../shadcn/ui/switch";
 
 interface ArchiveToggleProps {
-  generateUrl: (filters: Record<string, string>, basePath: string) => string;
+  generateUrl: (filters: [string, string][], basePath: string) => string;
+  filterProps: [string, string][];
   showArchived: boolean;
-  filterProps: Record<string, string>;
   basePath: string;
 }
 
@@ -24,20 +24,18 @@ export const ArchiveToggle: React.FC<ArchiveToggleProps> = ({
   filterProps,
   basePath,
 }) => {
+  // Explicitly define filtersWithArchive as an array of [string, string] tuples
+  const filtersWithArchive: [string, string][] = [
+    ...filterProps,
+    ["archived", (!showArchived).toString()], // Correctly inferred as [string, string]
+  ];
+
   return (
     <div className="flex justify-end items-center mt-4">
       <span className="mr-2 mb-1 text-neutral-600 dark:text-neutral-400">
         Display archived
       </span>
-      <Link
-        href={generateUrl(
-          {
-            ...filterProps,
-            archived: (!showArchived).toString(), // Convert the boolean to a string
-          },
-          basePath,
-        )}
-      >
+      <Link href={generateUrl(filtersWithArchive, basePath)}>
         <Switch checked={showArchived} />
       </Link>
     </div>

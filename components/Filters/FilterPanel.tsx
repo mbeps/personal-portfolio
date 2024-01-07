@@ -27,7 +27,7 @@ import { NAVBAR_HEIGHT } from "@/constants/NAVBAR";
 
 interface FilterOverlayProps {
   filterCategories: FilterCategory[];
-  generateUrl: (params: Record<string, string>, basePath: string) => string;
+  generateUrl: (filters: [string, string][], basePath: string) => string;
   basePath: string;
   isOpen: boolean;
   toggle: () => void;
@@ -201,18 +201,17 @@ const FilterPopover = ({
               <Link
                 key={i}
                 href={generateUrl(
-                  {
-                    ...filterCategories.reduce(
-                      (acc, currentCategory) => ({
-                        ...acc,
-                        [currentCategory.urlParam]:
-                          currentCategory.selectedValue,
-                      }),
-                      {},
-                    ),
-                    [filterCategory.urlParam]: option.slug,
-                    [archiveFilter.paramName]: "true",
-                  },
+                  [
+                    ...filterCategories.map(
+                      (category) =>
+                        [category.urlParam, category.selectedValue] as [
+                          string,
+                          string,
+                        ],
+                    ), // Asserting the type as [string, string]
+                    [filterCategory.urlParam, option.slug],
+                    [archiveFilter.paramName, archiveFilter.status.toString()],
+                  ],
                   basePath,
                 )}
                 className="w-full"
@@ -220,7 +219,7 @@ const FilterPopover = ({
                 <CommandItem
                   key={option.slug}
                   value={option.slug}
-                  className="pr-4 w-[24rem] md:w-[22rem]"
+                  className="pr-4 w-full"
                 >
                   {filterCategory.selectedValue === option.slug ? (
                     <Check className={cn(gap, "text-red-500")} />

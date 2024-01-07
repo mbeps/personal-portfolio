@@ -60,8 +60,8 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
       <HeadingOne title={skill.name} />
       <PageDescription
         description={`
-        This is the page displaying all the material related to ${skill.name}.
-        This can include projects, blogs, and certificates.
+          This is the page displaying all the material related to ${skill.name}.
+          This can include projects, blogs, and certificates.
       `}
       />
 
