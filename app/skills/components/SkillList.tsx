@@ -122,6 +122,10 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
     },
   ];
 
+  const currentGroupName =
+    options.find((option) => option.slug === selectedGroup)?.entryName ||
+    "Category";
+
   return (
     <div>
       <div className="flex mt-4 justify-end w-full">
@@ -133,7 +137,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
               <DropdownMenuTrigger className="w-full">
                 <Button variant="default" className="w-full">
                   <div className="flex items-start justify-between space-x-2 w-full">
-                    <span>Category</span>
+                    <span>{currentGroupName}</span>
                     <BsChevronDown
                       fontSize={16}
                       className="text-neutral-700 dark:text-neutral-200 mt-1"
@@ -177,7 +181,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
             </PopoverTrigger>
 
             <PopoverContent className="w-[24rem] md:w-[20rem] p-0">
-              <Command className="w-full border-2 border-neutral-200">
+              <Command className="w-full border-2 border-neutral-200 dark:border-neutral-950">
                 <CommandInput placeholder="Search Filter..." />
                 <CommandEmpty>No Filter Found.</CommandEmpty>
 
