@@ -195,14 +195,14 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   const updateSearchTerm = (newSearchTerm: string) => {
     router.push(
       generateUrl(
-        {
-          [blogSectionParamName]: selectedBlogSection,
-          [skillCategoryParamName]: selectedSkillCategory,
-          [technicalSkillParamName]: selectedTechnicalSkill,
-          [softSkillParamName]: selectedSoftSkill,
-          [searchParamName]: newSearchTerm, // only thing that changes
-          [archivedParamName]: true.toString(),
-        },
+        [
+          [blogSectionParamName, selectedBlogSection],
+          [skillCategoryParamName, selectedSkillCategory],
+          [technicalSkillParamName, selectedTechnicalSkill],
+          [softSkillParamName, selectedSoftSkill],
+          [searchParamName, newSearchTerm], // only thing that changes
+          [archivedParamName, true.toString()],
+        ],
         basePath,
       ),
     );
@@ -345,13 +345,14 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
       <ArchiveToggle
         generateUrl={generateUrl}
         showArchived={showArchived}
-        filterProps={{
-          [blogSectionParamName]: selectedBlogSection,
-          [skillCategoryParamName]: selectedSkillCategory,
-          [technicalSkillParamName]: selectedTechnicalSkill,
-          [softSkillParamName]: selectedSoftSkill,
-          [searchParamName]: searchTerm,
-        }}
+        filterProps={[
+          [blogSectionParamName, selectedBlogSection],
+          [skillCategoryParamName, selectedSkillCategory],
+          [technicalSkillParamName, selectedTechnicalSkill],
+          [generalSkillParamName, selectedGeneralSkill],
+          [softSkillParamName, selectedSoftSkill],
+          [searchParamName, searchTerm], // only thing that changes
+        ]}
         basePath={basePath}
       />
 

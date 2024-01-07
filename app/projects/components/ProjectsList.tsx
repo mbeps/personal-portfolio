@@ -308,16 +308,16 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const updateSearchTerm = (newSearchTerm: string) => {
     router.push(
       generateUrl(
-        {
-          [sectionParamName]: selectedSection,
-          [technologyParamName]: selectedTechnology,
-          [languageParamName]: selectedLanguage,
-          [skillCategoryParamName]: selectedSkillCategory,
-          [generalSkillParamName]: selectedGeneralSkill,
-          [softSkillParamName]: selectedSoftSkill,
-          [searchParamName]: newSearchTerm, // only this changes
-          [archivedParamName]: true.toString(),
-        },
+        [
+          [sectionParamName, selectedSection],
+          [technologyParamName, selectedTechnology],
+          [languageParamName, selectedLanguage],
+          [skillCategoryParamName, selectedSkillCategory],
+          [generalSkillParamName, selectedGeneralSkill],
+          [softSkillParamName, selectedSoftSkill],
+          [searchParamName, newSearchTerm], // only this changes
+          [archivedParamName, true.toString()], // converted to string as it's a boolean
+        ],
         basePath,
       ),
     );
@@ -427,15 +427,15 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
       <ArchiveToggle
         generateUrl={generateUrl}
         showArchived={showArchived}
-        filterProps={{
-          [sectionParamName]: selectedSection,
-          [technologyParamName]: selectedTechnology,
-          [languageParamName]: selectedLanguage,
-          [skillCategoryParamName]: selectedSkillCategory,
-          [generalSkillParamName]: selectedGeneralSkill,
-          [softSkillParamName]: selectedSoftSkill,
-          [searchParamName]: searchTerm,
-        }}
+        filterProps={[
+          [sectionParamName, selectedSection],
+          [technologyParamName, selectedTechnology],
+          [languageParamName, selectedLanguage],
+          [skillCategoryParamName, selectedSkillCategory],
+          [generalSkillParamName, selectedGeneralSkill],
+          [softSkillParamName, selectedSoftSkill],
+          [searchParamName, searchTerm], // only this changes
+        ]}
         basePath={basePath}
       />
 

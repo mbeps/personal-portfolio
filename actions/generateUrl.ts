@@ -2,22 +2,29 @@
  * Generates the URL for the projects page.
  * These are the URL parameters that are used for filtering and searching.
  * Once filters and search are applied, the URL is updated.
+ * Replaces URL parameters with the latest values.
  */
-const generateUrl = (
-  params: Record<string, string>,
+export default function generateUrl(
+  params: [string, string][],
   basePath: string,
-  format: boolean = false
-): string => {
-  const queryParts = Object.entries(params).map(([key, value]) => {
-    const encodedValue = encodeURIComponent(value.trim() || "");
-    return `${key.toLowerCase()}=${encodedValue}`;
-  });
+): string {
+  // Step 1: Create an object with the latest values for each key
+  // Define the accumulator with an index signature
+  const paramsObj = params.reduce<Record<string, string>>(
+    (acc, [key, value]) => {
+      acc[key.toLowerCase()] = value.trim(); // Ensure only last value is kept
+      return acc;
+    },
+    {},
+  );
 
-  const queryString = queryParts.join("&");
+  // Step 2: Convert the object back into an array of tuples
+  const uniqueParams = Object.entries(paramsObj);
 
-  return format
-    ? `${basePath}?\n  ${queryString.replace(/&/g, "\n  &")}`
-    : `${basePath}?${queryString}`;
-};
+  // Step 3: Encode each parameter and construct the query string
+  const queryString = uniqueParams
+    .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
+    .join("&");
 
-export default generateUrl;
+  return `${basePath}?${queryString}`;
+}

@@ -222,17 +222,17 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
   const updateSearchTerm = (newSearchTerm: string) => {
     router.push(
       generateUrl(
-        {
-          [issuerParamName]: selectedIssuer,
-          [credentialSectionParamName]: selectedCategory,
-          [skillCategoryParamName]: selectedSkillCategory,
-          [technicalSkillParamName]: selectedTechnicalSkill,
-          [generalSkillParamName]: selectedGeneralSkill,
-          [softSkillParamName]: selectedSoftSkill,
+        [
+          [issuerParamName, selectedIssuer],
+          [credentialSectionParamName, selectedCategory],
+          [skillCategoryParamName, selectedSkillCategory],
+          [technicalSkillParamName, selectedTechnicalSkill],
+          [generalSkillParamName, selectedGeneralSkill],
+          [softSkillParamName, selectedSoftSkill],
 
-          [searchParamName]: newSearchTerm,
-          [archivedParamName]: true.toString(),
-        },
+          [searchParamName, newSearchTerm],
+          [archivedParamName, true.toString()],
+        ],
         basePath,
       ),
     );
@@ -389,11 +389,15 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
       <ArchiveToggle
         generateUrl={generateUrl}
         showArchived={showArchived}
-        filterProps={{
-          category: selectedCategory,
-          issuer: selectedIssuer,
-          search: searchTerm,
-        }}
+        filterProps={[
+          [issuerParamName, selectedIssuer],
+          [credentialSectionParamName, selectedCategory],
+          [skillCategoryParamName, selectedSkillCategory],
+          [technicalSkillParamName, selectedTechnicalSkill],
+          [generalSkillParamName, selectedGeneralSkill],
+          [softSkillParamName, selectedSoftSkill],
+          [searchParamName, searchTerm],
+        ]}
         basePath={basePath}
       />
 
