@@ -122,87 +122,89 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
 
   return (
     <div>
-      <div className="flex mt-4 w-full justify-end">
-        {/* Group By */}
-        <div className="flex mr-2 mt-2.5 text-right text-neutral-700 dark:text-neutral-300">
-          Group by:
-        </div>
-        <DropdownMenu>
-          <DropdownMenuTrigger className="w-48">
-            <Button variant="default" className="w-full">
-              <div className="flex items-start justify-between space-x-2 w-full">
-                <span>Category</span>
+      <div className="flex mt-4 justify-end w-full">
+        <div className="flex flex-col md:flex-row gap-2 w-full md:w-1/2">
+          {/* Group By */}
+          <div className="flex flex-row gap-3 text-right text-neutral-700 dark:text-neutral-300 w-full">
+            <p className="mt-3 w-auto md:w-2/5 whitespace-nowrap">Group by:</p>
+            <DropdownMenu>
+              <DropdownMenuTrigger className="w-full">
+                <Button variant="default" className="w-full">
+                  <div className="flex items-start justify-between space-x-2 w-full">
+                    <span>Category</span>
+                    <BsChevronDown
+                      fontSize={16}
+                      className="text-neutral-700 dark:text-neutral-200 mt-1"
+                    />
+                  </div>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-80 md:w-48 ">
+                {options.map((option, index) => (
+                  <DropdownMenuItem
+                    key={index}
+                    className={`
+                  ${option.slug === selectedGroup ? "font-bold" : ""}`}
+                    onSelect={() => handleSelect(option.slug)}
+                  >
+                    {option.entryName}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+
+          {/* Filter */}
+          <Popover open={isOpen} onOpenChange={setOpen}>
+            <PopoverTrigger asChild>
+              <Button
+                variant="default"
+                role="combobox"
+                onClick={() => setOpen(!isOpen)}
+                className="
+                  w-full 
+                  justify-between
+                  "
+              >
+                <span>Exclude Skills</span>
                 <BsChevronDown
                   fontSize={16}
                   className="text-neutral-700 dark:text-neutral-200 mt-1"
                 />
-              </div>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-48 ">
-            {options.map((option, index) => (
-              <DropdownMenuItem
-                key={index}
-                className={`
-                  ${option.slug === selectedGroup ? "font-bold" : ""}`}
-                onSelect={() => handleSelect(option.slug)}
-              >
-                {option.entryName}
-              </DropdownMenuItem>
-            ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
+              </Button>
+            </PopoverTrigger>
 
-        {/* Filter */}
-        <Popover open={isOpen} onOpenChange={setOpen}>
-          <PopoverTrigger asChild>
-            <Button
-              variant="default"
-              role="combobox"
-              onClick={() => setOpen(!isOpen)}
-              className="
-                w-[24rem] md:w-[22rem]
-                justify-between
-                bg-neutral-200"
-            >
-              <span>Exclude Skills</span>
-              <BsChevronDown
-                fontSize={16}
-                className="text-neutral-700 dark:text-neutral-200 mt-1"
-              />
-            </Button>
-          </PopoverTrigger>
+            <PopoverContent className="w-[24rem] md:w-[22rem] p-0">
+              <Command className="w-[24rem] md:w-[22rem]">
+                <CommandInput placeholder="Search Filter..." />
+                <CommandEmpty>No Filter Found.</CommandEmpty>
 
-          <PopoverContent className="w-[24rem] md:w-[22rem] p-0">
-            <Command className="w-[24rem] md:w-[22rem]">
-              <CommandInput placeholder="Search Filter..." />
-              <CommandEmpty>No Filter Found.</CommandEmpty>
-
-              <CommandGroup className="w-[24rem] md:w-[22rem]">
-                {filterParams.map((filter, i) => (
-                  <Link
-                    key={i}
-                    href={generateFilterUrl([filter], basePath)}
-                    className="w-full"
-                  >
-                    <CommandItem
-                      key={filter.urlParamName}
-                      value={filter.urlParamName}
-                      className="pr-4 w-[24rem] md:w-[22rem]"
+                <CommandGroup className="w-[24rem] md:w-[22rem]">
+                  {filterParams.map((filter, i) => (
+                    <Link
+                      key={i}
+                      href={generateFilterUrl([filter], basePath)}
+                      className="w-full"
                     >
-                      {!filter.selected ? (
-                        <Check className={cn(gap, "text-red-500")} />
-                      ) : (
-                        <div className={gap}></div>
-                      )}
-                      {filter.entryName}
-                    </CommandItem>
-                  </Link>
-                ))}
-              </CommandGroup>
-            </Command>
-          </PopoverContent>
-        </Popover>
+                      <CommandItem
+                        key={filter.urlParamName}
+                        value={filter.urlParamName}
+                        className="pr-4 w-[24rem] md:w-[22rem]"
+                      >
+                        {!filter.selected ? (
+                          <Check className={cn(gap, "text-red-500")} />
+                        ) : (
+                          <div className={gap}></div>
+                        )}
+                        {filter.entryName}
+                      </CommandItem>
+                    </Link>
+                  ))}
+                </CommandGroup>
+              </Command>
+            </PopoverContent>
+          </Popover>
+        </div>
       </div>
 
       {/* List of Skills */}
