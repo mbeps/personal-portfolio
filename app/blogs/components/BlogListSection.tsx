@@ -38,7 +38,7 @@ const BlogListSection: React.FC<BlogListSectionProps> = ({ groupedBlogs }) => {
         )
       ) : (
         <div className="flex justify-center min-w-full mt-8">
-          <h2 className="text-2xl font-bold">No blogs found</h2>
+          <h2 className="text-2xl font-bold">No Matching Blogs</h2>
         </div>
       )}
     </div>

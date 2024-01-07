@@ -40,7 +40,7 @@ const ProjectsListSection: React.FC<ProjectsListSectionProps> = ({
         )
       ) : (
         <div className="flex justify-center min-w-full mt-8">
-          <h2 className="text-2xl font-bold">No projects</h2>
+          <h2 className="text-2xl font-bold">No Matching Projects</h2>
         </div>
       )}
     </div>
