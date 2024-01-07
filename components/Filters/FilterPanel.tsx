@@ -220,7 +220,7 @@ const FilterPopover = ({
                 <CommandItem
                   key={option.slug}
                   value={option.slug}
-                  className="pr-4 w-[24rem] md:w-[22rem]"
+                  className="pr-4 w-full"
                 >
                   {filterCategory.selectedValue === option.slug ? (
                     <Check className={cn(gap, "text-red-500")} />
