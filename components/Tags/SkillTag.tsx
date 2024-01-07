@@ -17,15 +17,11 @@ import useIsMounted from "@/hooks/useIsMounted";
 
 interface TagProps {
   skill: Skill;
+  hide?: boolean;
 }
 
-const SkillTag: React.FC<TagProps> = ({ skill }) => {
+const SkillTag: React.FC<TagProps> = ({ skill, hide }) => {
   const currentPath = usePathname();
-  const isMounted = useIsMounted();
-
-  if (!isMounted) {
-    return null;
-  }
 
   const skills = allSkills;
   const allBlogs = blogs;
@@ -36,6 +32,10 @@ const SkillTag: React.FC<TagProps> = ({ skill }) => {
   const hasBlogs = isSkillAssociatedWithBlogs(skill, allBlogs);
   const hasSkill = hasAssociatedSkills(skill, skills);
   const hasMaterial = hasProjects || hasCertificates || hasBlogs || hasSkill;
+
+  if (hide && !hasMaterial) {
+    return <></>;
+  }
 
   let skillLink = `/skills/${skill.slug}`;
   if (!hasMaterial) {

@@ -11,24 +11,51 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/shadcn/ui/dropdown-menu";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+} from "@/components/shadcn/ui/command";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/shadcn/ui/popover";
 import Skill from "@/types/skills";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 import { BsChevronDown } from "react-icons/bs";
+import Link from "next/link";
+import { Check } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface SkillListProps {
   skills: Skill[];
 }
 
 const SkillList: React.FC<SkillListProps> = ({ skills }) => {
+  const [isOpen, setOpen] = React.useState(false);
+
   const searchParams = useSearchParams();
-  const basePath = usePathname();
+  const basePath = "/skills";
   const router = useRouter();
 
-  const selectedGroup = searchParams.get("group") || "category";
-  const excludeHardSkills = searchParams.get("hard") === "true";
-  const excludeGeneralSkills = searchParams.get("general") === "true";
-  const excludeSoftSkills = searchParams.get("soft") === "true";
+  const gap = "w-4 h-4 mr-2";
+
+  const groupParamName = "group";
+  const hardSkillParamName = "hard";
+  const generalSkillParamName = "general";
+  const softSkillParamName = "soft";
+  const noMaterialParamName = "no-material";
+
+  const selectedGroup = searchParams.get(groupParamName) || "category";
+  const excludeHardSkills = searchParams.get(hardSkillParamName) === "true";
+  const excludeGeneralSkills =
+    searchParams.get(generalSkillParamName) === "true";
+  const excludeSoftSkills = searchParams.get(softSkillParamName) === "true";
+  const excludeNoMaterial = searchParams.get(noMaterialParamName) === "true";
 
   const options = [
     { slug: "category", entryName: "Category" },
@@ -50,13 +77,56 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
     router.push(generateUrl({ group: value }, basePath));
   }
 
+  interface FilterParams {
+    entryName: string;
+    urlParamName: string;
+    value: string;
+    selected: boolean;
+  }
+
+  const filterParams: FilterParams[] = [
+    {
+      entryName: "Hard Skills",
+      urlParamName: hardSkillParamName,
+      value: excludeHardSkills ? "false" : "true",
+      selected: excludeHardSkills,
+    },
+    {
+      entryName: "General Skills",
+      urlParamName: generalSkillParamName,
+      value: excludeGeneralSkills ? "false" : "true",
+      selected: excludeGeneralSkills,
+    },
+    {
+      entryName: "Soft Skills",
+      urlParamName: softSkillParamName,
+      value: excludeSoftSkills ? "false" : "true",
+      selected: excludeSoftSkills,
+    },
+    {
+      entryName: "No Material",
+      urlParamName: noMaterialParamName,
+      value: excludeNoMaterial ? "false" : "true",
+      selected: excludeNoMaterial,
+    },
+  ];
+
+  function generateFilterUrl(filterParams: FilterParams[], basePath: string) {
+    const queryParts = filterParams.map((filter) => {
+      return `${filter.urlParamName}=${encodeURIComponent(filter.value)}`;
+    });
+
+    const queryString = queryParts.join("&");
+    return `${basePath}?${queryString}`;
+  }
+
   return (
     <div>
       <div className="flex mt-4 w-full justify-end">
+        {/* Group By */}
         <div className="flex mr-2 mt-2.5 text-right text-neutral-700 dark:text-neutral-300">
           Group by:
         </div>
-
         <DropdownMenu>
           <DropdownMenuTrigger className="w-48">
             <Button variant="default" className="w-full">
@@ -82,15 +152,67 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
             ))}
           </DropdownMenuContent>
         </DropdownMenu>
+
+        {/* Filter */}
+        <Popover open={isOpen} onOpenChange={setOpen}>
+          <PopoverTrigger asChild>
+            <Button
+              variant="default"
+              role="combobox"
+              onClick={() => setOpen(!isOpen)}
+              className="
+                w-[24rem] md:w-[22rem]
+                justify-between
+                bg-neutral-200"
+            >
+              <span>Exclude Skills</span>
+              <BsChevronDown
+                fontSize={16}
+                className="text-neutral-700 dark:text-neutral-200 mt-1"
+              />
+            </Button>
+          </PopoverTrigger>
+
+          <PopoverContent className="w-[24rem] md:w-[22rem] p-0">
+            <Command className="w-[24rem] md:w-[22rem]">
+              <CommandInput placeholder="Search Filter..." />
+              <CommandEmpty>No Filter Found.</CommandEmpty>
+
+              <CommandGroup className="w-[24rem] md:w-[22rem]">
+                {filterParams.map((filter, i) => (
+                  <Link
+                    key={i}
+                    href={generateFilterUrl([filter], basePath)}
+                    className="w-full"
+                  >
+                    <CommandItem
+                      key={filter.urlParamName}
+                      value={filter.urlParamName}
+                      className="pr-4 w-[24rem] md:w-[22rem]"
+                    >
+                      {!filter.selected ? (
+                        <Check className={cn(gap, "text-red-500")} />
+                      ) : (
+                        <div className={gap}></div>
+                      )}
+                      {filter.entryName}
+                    </CommandItem>
+                  </Link>
+                ))}
+              </CommandGroup>
+            </Command>
+          </PopoverContent>
+        </Popover>
       </div>
 
+      {/* List of Skills */}
       <div className="mt-4 text-center md:text-left">
         {Object.keys(groupedSkills).map((group) => (
           <div key={group}>
             <HeadingThree title={group[0].toUpperCase() + group.slice(1)} />
             <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
               {groupedSkills[group].map((skill, index) => (
-                <SkillTag key={index} skill={skill} />
+                <SkillTag key={index} skill={skill} hide={excludeNoMaterial} />
               ))}
             </div>
           </div>
