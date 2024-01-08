@@ -13,7 +13,12 @@ import certificates from "@/database/certificates";
 import allProjects from "@/database/projects";
 import allSkills from "@/database/skills/skills";
 import hasAssociatedSkills from "@/actions/skills/hasAssociatedSkills";
-import useIsMounted from "@/hooks/useIsMounted";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/shadcn/ui/tooltip";
 
 interface TagProps {
   skill: Skill;
@@ -44,12 +49,18 @@ const SkillTag: React.FC<TagProps> = ({ skill, hide }) => {
   }
 
   return (
-    <Link
-      href={skillLink}
-      title={`Navigate to all material related to ${skill.name}`}
-    >
-      <Tag hasHover={hasMaterial}>{skill.name}</Tag>
-    </Link>
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger>
+          <Link href={skillLink}>
+            <Tag hasHover={hasMaterial}>{skill.name}</Tag>
+          </Link>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p className="text-lg">{`Navigate to all material related to ${skill.name}`}</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   );
 };
 

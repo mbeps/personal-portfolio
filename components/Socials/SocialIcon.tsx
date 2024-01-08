@@ -1,5 +1,12 @@
 import SocialLink from "@/types/social";
 import React from "react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/shadcn/ui/tooltip";
+import Link from "next/link";
 
 interface SocialIconProps extends SocialLink {
   iconSize?: number;
@@ -22,23 +29,26 @@ const SocialIcon: React.FC<SocialIconProps> = ({
   isEmail = false,
   iconSize = 30,
 }) => (
-  <div title={name}>
-    <a
-      href={isEmail ? `mailto:${link}` : link}
-      rel="noreferrer"
-      target="_blank"
-    >
-      <IconComponent
-        className="
-          md:hover:-translate-y-1 
-          cursor-pointer 
-          text-neutral-600 dark:text-neutral-200
-          transition-all duration-300
-          "
-        size={iconSize}
-      />
-    </a>
-  </div>
+  <TooltipProvider>
+    <Tooltip>
+      <TooltipTrigger>
+        <Link href={isEmail ? `mailto:${link}` : link} target="_blank">
+          <IconComponent
+            className="
+              md:hover:-translate-y-1
+              cursor-pointer
+              text-neutral-600 dark:text-neutral-200
+              transition-all duration-300
+            "
+            size={iconSize}
+          />
+        </Link>
+      </TooltipTrigger>
+      <TooltipContent>
+        <p className="text-lg">{name}</p>
+      </TooltipContent>
+    </Tooltip>
+  </TooltipProvider>
 );
 
 export default SocialIcon;
