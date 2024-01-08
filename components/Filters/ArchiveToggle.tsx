@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { Switch } from "../shadcn/ui/switch";
+import FilterOption from "@/types/filters/FilterOption";
 
 interface ArchiveToggleProps {
-  generateUrl: (filters: [string, string][], basePath: string) => string;
-  filterProps: [string, string][];
+  generateUrl: (filters: FilterOption[], basePath: string) => string;
+  filterProps: FilterOption[];
   showArchived: boolean;
   basePath: string;
 }
@@ -24,10 +25,10 @@ export const ArchiveToggle: React.FC<ArchiveToggleProps> = ({
   filterProps,
   basePath,
 }) => {
-  // Explicitly define filtersWithArchive as an array of [string, string] tuples
-  const filtersWithArchive: [string, string][] = [
-    ...filterProps,
-    ["archived", (!showArchived).toString()], // Correctly inferred as [string, string]
+  // Filters with the addition of the "archived" toggle status
+  const filtersWithArchive: FilterOption[] = [
+    ...filterProps, // Assuming filterProps is already an array of FilterOption
+    { entryName: "archived", slug: (!showArchived).toString() }, // Correctly constructing a FilterOption object
   ];
 
   return (

@@ -6,12 +6,6 @@ import SkillTag from "@/components/Tags/SkillTag";
 import HeadingThree from "@/components/Text/HeadingThree";
 import { Button } from "@/components/shadcn/ui/button";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/shadcn/ui/dropdown-menu";
-import {
   Command,
   CommandEmpty,
   CommandGroup,
@@ -19,17 +13,24 @@ import {
   CommandItem,
 } from "@/components/shadcn/ui/command";
 import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/shadcn/ui/dropdown-menu";
+import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/shadcn/ui/popover";
+import { cn } from "@/lib/utils";
+import FilterOption from "@/types/filters/FilterOption";
 import Skill from "@/types/skills";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { Check } from "lucide-react";
+import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
-import Link from "next/link";
-import { Check } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 interface SkillListProps {
   skills: Skill[];
@@ -74,14 +75,26 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
   const groupedSkills = groupSkills(selectedGroup, skills, excludedSkillTypes);
 
   function handleSelect(value: string) {
-    // Construct the array of tuples including all current search parameters
-    const params: [string, string][] = [
-      [groupParamName, value], // Updating the group
+    // Construct the array of FilterOption objects including all current search parameters
+    const params: FilterOption[] = [
+      { entryName: groupParamName, slug: value }, // Updating the group
       // Include the current state of all filters
-      [hardSkillParamName, excludeHardSkills ? "true" : "false"],
-      [generalSkillParamName, excludeGeneralSkills ? "true" : "false"],
-      [softSkillParamName, excludeSoftSkills ? "true" : "false"],
-      [noMaterialParamName, excludeNoMaterial ? "true" : "false"],
+      {
+        entryName: hardSkillParamName,
+        slug: excludeHardSkills ? "true" : "false",
+      },
+      {
+        entryName: generalSkillParamName,
+        slug: excludeGeneralSkills ? "true" : "false",
+      },
+      {
+        entryName: softSkillParamName,
+        slug: excludeSoftSkills ? "true" : "false",
+      },
+      {
+        entryName: noMaterialParamName,
+        slug: excludeNoMaterial ? "true" : "false",
+      },
     ];
 
     // Generate the URL with all parameters and navigate
@@ -192,28 +205,28 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
                       href={generateUrl(
                         [
                           // Include the current state of all filters
-                          [groupParamName, selectedGroup],
-                          [
-                            hardSkillParamName,
-                            excludeHardSkills ? "true" : "false",
-                          ],
-                          [
-                            generalSkillParamName,
-                            excludeGeneralSkills ? "true" : "false",
-                          ],
-                          [
-                            softSkillParamName,
-                            excludeSoftSkills ? "true" : "false",
-                          ],
-                          [
-                            noMaterialParamName,
-                            excludeNoMaterial ? "true" : "false",
-                          ],
+                          { entryName: groupParamName, slug: selectedGroup },
+                          {
+                            entryName: hardSkillParamName,
+                            slug: excludeHardSkills ? "true" : "false",
+                          },
+                          {
+                            entryName: generalSkillParamName,
+                            slug: excludeGeneralSkills ? "true" : "false",
+                          },
+                          {
+                            entryName: softSkillParamName,
+                            slug: excludeSoftSkills ? "true" : "false",
+                          },
+                          {
+                            entryName: noMaterialParamName,
+                            slug: excludeNoMaterial ? "true" : "false",
+                          },
                           // Toggle current filter
-                          [
-                            filter.urlParamName,
-                            filter.selected ? "false" : "true",
-                          ],
+                          {
+                            entryName: filter.urlParamName,
+                            slug: filter.selected ? "false" : "true",
+                          },
                         ],
                         basePath,
                       )}

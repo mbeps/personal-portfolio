@@ -26,10 +26,10 @@ import { IoClose } from "react-icons/io5";
 import HeadingThree from "../Text/HeadingThree";
 import { Button } from "../shadcn/ui/button";
 import { ArchiveToggle } from "./ArchiveToggle";
+import FilterOption from "@/types/filters/FilterOption";
 
 interface FilterOverlayProps {
   filterCategories: FilterCategory[];
-  generateUrl: (filters: [string, string][], basePath: string) => string;
   basePath: string;
   isOpen: boolean;
   toggle: () => void;
@@ -73,12 +73,17 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
     return null;
   }
 
-  const filterProps: [string, string][] = filterCategories.map(
-    (category) =>
-      [category.urlParam, category.selectedValue] as [string, string],
+  const filterProps: FilterOption[] = filterCategories.map(
+    (category): FilterOption => ({
+      entryName: category.urlParam, // Assuming urlParam is a suitable match for entryName
+      slug: category.selectedValue, // Assuming selectedValue is a suitable match for slug
+    }),
   );
 
-  filterProps.push([archiveFilter.paramName, archiveFilter.status.toString()]);
+  filterProps.push({
+    entryName: archiveFilter.paramName, // Assuming paramName is a suitable match for entryName
+    slug: archiveFilter.status.toString(), // status converted to string for slug
+  });
 
   return (
     <div
@@ -249,15 +254,18 @@ const FilterPopover = ({
                 key={i}
                 href={generateUrl(
                   [
-                    ...filterCategories.map(
-                      (category) =>
-                        [category.urlParam, category.selectedValue] as [
-                          string,
-                          string,
-                        ],
-                    ), // Asserting the type as [string, string]
-                    [filterCategory.urlParam, option.slug],
-                    [archiveFilter.paramName, archiveFilter.status.toString()],
+                    ...filterCategories.map((category) => ({
+                      entryName: category.urlParam, // Assuming urlParam maps to entryName
+                      slug: category.selectedValue, // Assuming selectedValue maps to slug
+                    })),
+                    {
+                      entryName: filterCategory.urlParam, // Assuming urlParam maps to entryName
+                      slug: option.slug, // Using slug directly from option
+                    },
+                    {
+                      entryName: archiveFilter.paramName, // Assuming paramName maps to entryName
+                      slug: archiveFilter.status.toString(), // status converted to string for slug
+                    },
                   ],
                   basePath,
                 )}
