@@ -453,6 +453,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
           paramName: archivedParamName,
           status: showArchived,
         }}
+        areFiltersApplied={areFiltersApplied}
       />
     </>
   );

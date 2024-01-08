@@ -13,17 +13,19 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/shadcn/ui/popover";
+import { NAVBAR_HEIGHT } from "@/constants/NAVBAR";
 import useIsMounted from "@/hooks/useIsMounted";
 import { cn } from "@/lib/utils";
 import FilterCategory from "@/types/filters/FilterCategory";
 import { Check } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { AiOutlineClear } from "react-icons/ai";
 import { BsChevronDown } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
 import HeadingThree from "../Text/HeadingThree";
 import { Button } from "../shadcn/ui/button";
-import { NAVBAR_HEIGHT } from "@/constants/NAVBAR";
+import { ArchiveToggle } from "./ArchiveToggle";
 
 interface FilterOverlayProps {
   filterCategories: FilterCategory[];
@@ -35,6 +37,7 @@ interface FilterOverlayProps {
     paramName: string;
     status: boolean;
   };
+  areFiltersApplied: boolean;
 }
 
 const FilterOverlay: React.FC<FilterOverlayProps> = ({
@@ -43,6 +46,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
   isOpen,
   toggle,
   archiveFilter,
+  areFiltersApplied,
 }) => {
   const isMounted = useIsMounted();
 
@@ -69,6 +73,13 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
     return null;
   }
 
+  const filterProps: [string, string][] = filterCategories.map(
+    (category) =>
+      [category.urlParam, category.selectedValue] as [string, string],
+  );
+
+  filterProps.push([archiveFilter.paramName, archiveFilter.status.toString()]);
+
   return (
     <div
       className={`
@@ -91,7 +102,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
           h-full
           w-full shadow-2xl md:rounded-2xl 
           border-2
-          border-neutral-200 dark:border-neutral-700 
+          border-neutral-200 dark:border-neutral-800
           bg-neutral-100 dark:bg-black 
           overflow-y-auto 
           scrollbar-width-none 
@@ -132,6 +143,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
             When applying filters, archived items are displayed automatically.
           </p>
 
+          {/* Filter Options */}
           <div className="space-y-3 mt-4 flex flex-col justify-center items-center">
             {filterCategories.map((filterCategory, index) => (
               <FilterPopover
@@ -142,6 +154,41 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
                 archiveFilter={archiveFilter}
               />
             ))}
+          </div>
+
+          {/* Buttons */}
+          <div
+            className="
+              pt-3 mt-8
+              flex flex-col
+              space-y-2
+              border-t border-neutral-300 dark:border-neutral-700
+            "
+          >
+            {/* Archive Toggle */}
+            <ArchiveToggle
+              generateUrl={generateUrl}
+              showArchived={archiveFilter.status}
+              filterProps={filterProps}
+              basePath={basePath}
+            />
+
+            {/* Clear Button */}
+            <Link href={basePath} className="w-full">
+              <Button
+                variant="default"
+                disabled={!areFiltersApplied}
+                className="w-full flex justify-start bg-neutral-200"
+              >
+                <div className="flex items-center space-x-2">
+                  <AiOutlineClear
+                    fontSize={24}
+                    className="text-neutral-700 dark:text-neutral-200"
+                  />
+                  <span>Clear All</span>
+                </div>
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

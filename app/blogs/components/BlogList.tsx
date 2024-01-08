@@ -370,6 +370,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
           paramName: archivedParamName,
           status: showArchived,
         }}
+        areFiltersApplied={areFiltersApplied}
       />
     </>
   );

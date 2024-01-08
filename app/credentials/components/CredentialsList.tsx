@@ -414,6 +414,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
           paramName: archivedParamName,
           status: showArchived,
         }}
+        areFiltersApplied={areFiltersApplied}
       />
     </>
   );
