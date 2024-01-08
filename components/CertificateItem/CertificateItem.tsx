@@ -1,15 +1,14 @@
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { BsArrowUpRightCircle, BsInfoCircle } from "react-icons/bs";
-import Certificate from "@/types/certificates";
-import Tag from "../Tags/Tag";
 import {
   Tooltip,
   TooltipContent,
-  TooltipProvider,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
+import Certificate from "@/types/certificates";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+import { BsArrowUpRightCircle, BsInfoCircle } from "react-icons/bs";
+import Tag from "../Tags/Tag";
 import { AspectRatio } from "../shadcn/ui/aspect-ratio";
 
 interface CertificateItemProps {
@@ -110,42 +109,38 @@ const CertificateItem: React.FC<CertificateItemProps> = ({ certificate }) => {
         >
           {/* Link to Credential Page */}
 
-          <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger>
+              <Link href={customCredentialPage}>
+                <BsInfoCircle
+                  size={30}
+                  className="md:hover:-translate-y-1 transition-transform cursor-pointer"
+                />
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p className="text-lg">View Certificate Details </p>
+            </TooltipContent>
+          </Tooltip>
+          {/* Link to Credential */}
+          {certificate.credentialURL && (
             <Tooltip>
               <TooltipTrigger>
-                <Link href={customCredentialPage}>
-                  <BsInfoCircle
+                <Link
+                  href={issuerCredentialPage}
+                  target="_blank"
+                  title="View Credentials on Provider's Website"
+                >
+                  <BsArrowUpRightCircle
                     size={30}
                     className="md:hover:-translate-y-1 transition-transform cursor-pointer"
                   />
                 </Link>
               </TooltipTrigger>
               <TooltipContent>
-                <p className="text-lg">View Certificate Details </p>
+                <p className="text-lg">View in Certificate Providers Site</p>
               </TooltipContent>
             </Tooltip>
-          </TooltipProvider>
-          {/* Link to Credential */}
-          {certificate.credentialURL && (
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger>
-                  <Link
-                    href={issuerCredentialPage}
-                    target="_blank"
-                    title="View Credentials on Provider's Website"
-                  >
-                    <BsArrowUpRightCircle
-                      size={30}
-                      className="md:hover:-translate-y-1 transition-transform cursor-pointer"
-                    />
-                  </Link>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p className="text-lg">View in Certificate Providers Site</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
           )}
         </div>
       </div>

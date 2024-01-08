@@ -6,7 +6,6 @@ import { BsArrowUpRightCircle, BsGithub, BsInfoCircle } from "react-icons/bs";
 import {
   Tooltip,
   TooltipContent,
-  TooltipProvider,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
 import { AspectRatio } from "../shadcn/ui/aspect-ratio";
@@ -119,57 +118,51 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
           >
             {/* Project Page */}
 
-            <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger>
+                <Link href={`/projects/${project.slug}`}>
+                  <BsInfoCircle
+                    size={30}
+                    className="md:hover:-translate-y-1 transition-transform cursor-pointer"
+                  />
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>View Project Details</p>
+              </TooltipContent>
+            </Tooltip>
+
+            {/* Repository */}
+            {project.repositoryURL && (
               <Tooltip>
                 <TooltipTrigger>
-                  <Link href={`/projects/${project.slug}`}>
-                    <BsInfoCircle
+                  <Link href={project.repositoryURL} target="_blank">
+                    <BsGithub
                       size={30}
                       className="md:hover:-translate-y-1 transition-transform cursor-pointer"
                     />
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>View Project Details</p>
+                  <p>GitHub Repository for Project</p>
                 </TooltipContent>
               </Tooltip>
-            </TooltipProvider>
-
-            {/* Repository */}
-            {project.repositoryURL && (
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <Link href={project.repositoryURL} target="_blank">
-                      <BsGithub
-                        size={30}
-                        className="md:hover:-translate-y-1 transition-transform cursor-pointer"
-                      />
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>GitHub Repository for Project</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
             )}
             {/* Project Website */}
             {project.deploymentURL && (
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <Link href={project.deploymentURL} target="_blank">
-                      <BsArrowUpRightCircle
-                        size={30}
-                        className="md:hover:-translate-y-1 transition-transform cursor-pointer"
-                      />
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Project Website</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Link href={project.deploymentURL} target="_blank">
+                    <BsArrowUpRightCircle
+                      size={30}
+                      className="md:hover:-translate-y-1 transition-transform cursor-pointer"
+                    />
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Project Website</p>
+                </TooltipContent>
+              </Tooltip>
             )}
           </div>
         </div>
