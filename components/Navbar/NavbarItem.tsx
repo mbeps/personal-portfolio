@@ -2,7 +2,7 @@
 
 import { useNavbarStore } from "@/hooks/useNavbarStore";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 interface NavbarItemProps {
@@ -19,7 +19,6 @@ interface NavbarItemProps {
  * @returns (JSX.Element) - A navbar item component
  */
 const NavbarItem: React.FC<NavbarItemProps> = ({ to, children }) => {
-  const router = useRouter();
   const pathname = usePathname();
   const { isOpen: isOverlayOpen, close: closeOverlay } = useNavbarStore();
 
