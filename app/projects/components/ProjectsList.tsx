@@ -309,14 +309,14 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
     router.push(
       generateUrl(
         [
-          [sectionParamName, selectedSection],
-          [technologyParamName, selectedTechnology],
-          [languageParamName, selectedLanguage],
-          [skillCategoryParamName, selectedSkillCategory],
-          [generalSkillParamName, selectedGeneralSkill],
-          [softSkillParamName, selectedSoftSkill],
-          [searchParamName, newSearchTerm], // only this changes
-          [archivedParamName, true.toString()], // converted to string as it's a boolean
+          { entryName: sectionParamName, slug: selectedSection },
+          { entryName: technologyParamName, slug: selectedTechnology },
+          { entryName: languageParamName, slug: selectedLanguage },
+          { entryName: skillCategoryParamName, slug: selectedSkillCategory },
+          { entryName: generalSkillParamName, slug: selectedGeneralSkill },
+          { entryName: softSkillParamName, slug: selectedSoftSkill },
+          { entryName: searchParamName, slug: newSearchTerm },
+          { entryName: archivedParamName, slug: true.toString() },
         ],
         basePath,
       ),
@@ -428,13 +428,13 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
         generateUrl={generateUrl}
         showArchived={showArchived}
         filterProps={[
-          [sectionParamName, selectedSection],
-          [technologyParamName, selectedTechnology],
-          [languageParamName, selectedLanguage],
-          [skillCategoryParamName, selectedSkillCategory],
-          [generalSkillParamName, selectedGeneralSkill],
-          [softSkillParamName, selectedSoftSkill],
-          [searchParamName, searchTerm], // only this changes
+          { entryName: sectionParamName, slug: selectedSection },
+          { entryName: technologyParamName, slug: selectedTechnology },
+          { entryName: languageParamName, slug: selectedLanguage },
+          { entryName: skillCategoryParamName, slug: selectedSkillCategory },
+          { entryName: generalSkillParamName, slug: selectedGeneralSkill },
+          { entryName: softSkillParamName, slug: selectedSoftSkill },
+          { entryName: searchParamName, slug: searchTerm },
         ]}
         basePath={basePath}
       />
@@ -447,12 +447,12 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
         isOpen={isFilterOpen}
         toggle={handleToggleFilter}
         filterCategories={filterCategories}
-        generateUrl={generateUrl}
         basePath={basePath}
         archiveFilter={{
           paramName: archivedParamName,
           status: showArchived,
         }}
+        areFiltersApplied={areFiltersApplied}
       />
     </>
   );

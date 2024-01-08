@@ -196,12 +196,12 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
     router.push(
       generateUrl(
         [
-          [blogSectionParamName, selectedBlogSection],
-          [skillCategoryParamName, selectedSkillCategory],
-          [technicalSkillParamName, selectedTechnicalSkill],
-          [softSkillParamName, selectedSoftSkill],
-          [searchParamName, newSearchTerm], // only thing that changes
-          [archivedParamName, true.toString()],
+          { entryName: blogSectionParamName, slug: selectedBlogSection },
+          { entryName: skillCategoryParamName, slug: selectedSkillCategory },
+          { entryName: technicalSkillParamName, slug: selectedTechnicalSkill },
+          { entryName: softSkillParamName, slug: selectedSoftSkill },
+          { entryName: searchParamName, slug: newSearchTerm },
+          { entryName: archivedParamName, slug: true.toString() },
         ],
         basePath,
       ),
@@ -346,12 +346,12 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
         generateUrl={generateUrl}
         showArchived={showArchived}
         filterProps={[
-          [blogSectionParamName, selectedBlogSection],
-          [skillCategoryParamName, selectedSkillCategory],
-          [technicalSkillParamName, selectedTechnicalSkill],
-          [generalSkillParamName, selectedGeneralSkill],
-          [softSkillParamName, selectedSoftSkill],
-          [searchParamName, searchTerm], // only thing that changes
+          { entryName: blogSectionParamName, slug: selectedBlogSection },
+          { entryName: skillCategoryParamName, slug: selectedSkillCategory },
+          { entryName: technicalSkillParamName, slug: selectedTechnicalSkill },
+          { entryName: generalSkillParamName, slug: selectedGeneralSkill },
+          { entryName: softSkillParamName, slug: selectedSoftSkill },
+          { entryName: searchParamName, slug: searchTerm },
         ]}
         basePath={basePath}
       />
@@ -364,12 +364,12 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
         isOpen={isFilterOpen}
         toggle={handleToggleFilter}
         filterCategories={filterCategories}
-        generateUrl={generateUrl}
         basePath={basePath}
         archiveFilter={{
           paramName: archivedParamName,
           status: showArchived,
         }}
+        areFiltersApplied={areFiltersApplied}
       />
     </>
   );

@@ -1,3 +1,5 @@
+import FilterOption from "@/types/filters/FilterOption";
+
 /**
  * Generates the URL for the projects page.
  * These are the URL parameters that are used for filtering and searching.
@@ -5,23 +7,22 @@
  * Replaces URL parameters with the latest values.
  */
 export default function generateUrl(
-  params: [string, string][],
+  params: FilterOption[],
   basePath: string,
 ): string {
-  // Step 1: Create an object with the latest values for each key
   // Define the accumulator with an index signature
-  const paramsObj = params.reduce<Record<string, string>>(
-    (acc, [key, value]) => {
-      acc[key.toLowerCase()] = value.trim(); // Ensure only last value is kept
-      return acc;
-    },
-    {},
-  );
+  const paramsObj = params.reduce<Record<string, string>>((acc, param) => {
+    // Assuming each param is a FilterOption object
+    const key = param.entryName.toLowerCase(); // Or any other property that should represent the parameter name
+    const value = param.slug; // Using slug as the value for the URL parameter
+    acc[key] = value.trim(); // Ensure only last value is kept
+    return acc;
+  }, {});
 
-  // Step 2: Convert the object back into an array of tuples
+  // Convert the object back into an array of tuples
   const uniqueParams = Object.entries(paramsObj);
 
-  // Step 3: Encode each parameter and construct the query string
+  // Encode each parameter and construct the query string
   const queryString = uniqueParams
     .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
     .join("&");

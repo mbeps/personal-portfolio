@@ -223,15 +223,15 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     router.push(
       generateUrl(
         [
-          [issuerParamName, selectedIssuer],
-          [credentialSectionParamName, selectedCategory],
-          [skillCategoryParamName, selectedSkillCategory],
-          [technicalSkillParamName, selectedTechnicalSkill],
-          [generalSkillParamName, selectedGeneralSkill],
-          [softSkillParamName, selectedSoftSkill],
+          { entryName: issuerParamName, slug: selectedIssuer },
+          { entryName: credentialSectionParamName, slug: selectedCategory },
+          { entryName: skillCategoryParamName, slug: selectedSkillCategory },
+          { entryName: technicalSkillParamName, slug: selectedTechnicalSkill },
+          { entryName: generalSkillParamName, slug: selectedGeneralSkill },
+          { entryName: softSkillParamName, slug: selectedSoftSkill },
 
-          [searchParamName, newSearchTerm],
-          [archivedParamName, true.toString()],
+          { entryName: searchParamName, slug: newSearchTerm },
+          { entryName: archivedParamName, slug: true.toString() },
         ],
         basePath,
       ),
@@ -390,13 +390,13 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
         generateUrl={generateUrl}
         showArchived={showArchived}
         filterProps={[
-          [issuerParamName, selectedIssuer],
-          [credentialSectionParamName, selectedCategory],
-          [skillCategoryParamName, selectedSkillCategory],
-          [technicalSkillParamName, selectedTechnicalSkill],
-          [generalSkillParamName, selectedGeneralSkill],
-          [softSkillParamName, selectedSoftSkill],
-          [searchParamName, searchTerm],
+          { entryName: issuerParamName, slug: selectedIssuer },
+          { entryName: credentialSectionParamName, slug: selectedCategory },
+          { entryName: skillCategoryParamName, slug: selectedSkillCategory },
+          { entryName: technicalSkillParamName, slug: selectedTechnicalSkill },
+          { entryName: generalSkillParamName, slug: selectedGeneralSkill },
+          { entryName: softSkillParamName, slug: selectedSoftSkill },
+          { entryName: searchParamName, slug: searchTerm },
         ]}
         basePath={basePath}
       />
@@ -408,12 +408,12 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
         isOpen={isFilterOpen}
         toggle={handleToggleFilter}
         filterCategories={filterCategories}
-        generateUrl={generateUrl}
         basePath={basePath}
         archiveFilter={{
           paramName: archivedParamName,
           status: showArchived,
         }}
+        areFiltersApplied={areFiltersApplied}
       />
     </>
   );
