@@ -165,19 +165,11 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
           <div
             className="
               pt-3 mt-8
-              flex flex-col
-              space-y-2
+              flex flex-row
+              space-x-2
               border-t border-neutral-300 dark:border-neutral-700
             "
           >
-            {/* Archive Toggle */}
-            <ArchiveToggle
-              generateUrl={generateUrl}
-              showArchived={archiveFilter.status}
-              filterProps={filterProps}
-              basePath={basePath}
-            />
-
             {/* Clear Button */}
             <Link href={basePath} className="w-full">
               <Button
@@ -194,6 +186,16 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
                 </div>
               </Button>
             </Link>
+
+            {/* Archive Toggle */}
+            <div className="w-full -mt-1">
+              <ArchiveToggle
+                generateUrl={generateUrl}
+                showArchived={archiveFilter.status}
+                filterProps={filterProps}
+                basePath={basePath}
+              />
+            </div>
           </div>
         </div>
       </div>
