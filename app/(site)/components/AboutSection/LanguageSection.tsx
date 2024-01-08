@@ -20,6 +20,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/shadcn/ui/dropdown-menu";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/shadcn/ui/tooltip";
 import blogs from "@/database/blogs";
 import allCertificates from "@/database/certificates";
 import allProjects from "@/database/projects";
@@ -145,9 +150,16 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
     <>
       <Dialog>
         <DialogTrigger>
-          <Tag onClick={shouldOpenModal ? handleOpenModal : undefined}>
-            {language.name}
-          </Tag>
+          <Tooltip>
+            <TooltipTrigger>
+              <Tag onClick={shouldOpenModal ? handleOpenModal : undefined}>
+                {language.name}
+              </Tag>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p className="text-lg">{`View technologies related to ${language.name}`}</p>
+            </TooltipContent>
+          </Tooltip>
         </DialogTrigger>
         <DialogContent>
           <HeadingTwo title={language.name} />
