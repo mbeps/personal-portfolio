@@ -1,7 +1,8 @@
 "use client";
 
 import { useNavbarStore } from "@/hooks/useNavbarStore";
-import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 interface NavbarItemProps {
@@ -18,7 +19,6 @@ interface NavbarItemProps {
  * @returns (JSX.Element) - A navbar item component
  */
 const NavbarItem: React.FC<NavbarItemProps> = ({ to, children }) => {
-  const router = useRouter();
   const pathname = usePathname();
   const { isOpen: isOverlayOpen, close: closeOverlay } = useNavbarStore();
 
@@ -30,7 +30,6 @@ const NavbarItem: React.FC<NavbarItemProps> = ({ to, children }) => {
     if (isOverlayOpen) {
       closeOverlay();
     }
-    router.push(to);
   };
 
   let active = pathname === to;
@@ -50,7 +49,7 @@ const NavbarItem: React.FC<NavbarItemProps> = ({ to, children }) => {
   `;
 
   return (
-    <div className={navbarItemStyle} onClick={() => handleClick()}>
+    <Link href={to} className={navbarItemStyle} onClick={() => handleClick()}>
       {children}
       <span
         className="
@@ -64,7 +63,7 @@ const NavbarItem: React.FC<NavbarItemProps> = ({ to, children }) => {
             -translate-x-[100%] md:group-hover:translate-x-0 transition-transform 
             duration-300"
       />
-    </div>
+    </Link>
   );
 };
 
