@@ -16,7 +16,6 @@ import hasAssociatedSkills from "@/actions/skills/hasAssociatedSkills";
 import {
   Tooltip,
   TooltipContent,
-  TooltipProvider,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
 
@@ -49,18 +48,16 @@ const SkillTag: React.FC<TagProps> = ({ skill, hide }) => {
   }
 
   return (
-    <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger>
-          <Link href={skillLink}>
-            <Tag hasHover={hasMaterial}>{skill.name}</Tag>
-          </Link>
-        </TooltipTrigger>
-        <TooltipContent>
-          <p className="text-lg">{`Navigate to all material related to ${skill.name}`}</p>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+    <Tooltip>
+      <TooltipTrigger>
+        <Link href={skillLink}>
+          <Tag hasHover={hasMaterial}>{skill.name}</Tag>
+        </Link>
+      </TooltipTrigger>
+      <TooltipContent>
+        <p className="text-lg">{`Navigate to all material related to ${skill.name}`}</p>
+      </TooltipContent>
+    </Tooltip>
   );
 };
 
