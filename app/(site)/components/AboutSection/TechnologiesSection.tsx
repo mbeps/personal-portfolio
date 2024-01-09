@@ -6,6 +6,12 @@ import HeadingThree from "@/components/Text/HeadingThree";
 import { languages } from "@/database/skills/languages";
 import { technologies } from "@/database/skills/skills";
 import Skill from "@/types/skills";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/shadcn/ui/tooltip";
 
 /**
  * Displays a list of skills that I have.
@@ -112,7 +118,14 @@ const TechnologiesSection: React.FC = () => {
         ))}
         <div className="relative group">
           {/* Tag that opens skills modal */}
-          <TechnologiesModal />
+          <Tooltip>
+            <TooltipTrigger>
+              <TechnologiesModal />
+            </TooltipTrigger>
+            <TooltipContent>
+              <p className="text-lg">View More Technologies</p>
+            </TooltipContent>
+          </Tooltip>
         </div>
       </div>
     </>
