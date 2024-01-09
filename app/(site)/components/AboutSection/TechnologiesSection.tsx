@@ -1,6 +1,6 @@
 "use client";
 
-import SkillsModal from "@/components/Modal/SkillsModal";
+import TechnologiesModal from "@/components/Modal/TechnologiesModal";
 import SkillTag from "@/components/Tags/SkillTag";
 import HeadingThree from "@/components/Text/HeadingThree";
 import { languages } from "@/database/skills/languages";
@@ -13,7 +13,7 @@ import Skill from "@/types/skills";
  * There is an option to view more skills which will open a modal.
  * @returns (JSX.Element): skill section (list of skills)
  */
-const SkillSection: React.FC = () => {
+const TechnologiesSection: React.FC = () => {
   /**
    * Gets the list of skills from all the languages.
    */
@@ -105,17 +105,18 @@ const SkillSection: React.FC = () => {
 
   return (
     <>
-      <HeadingThree title="Skills & Tools" />
-      <div className="flex flex-wrap flex-<Tag onClick={handleOpenModal}>...</Tag>row justify-center z-10 md:justify-start">
+      <HeadingThree title="Technologies" />
+      <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
         {handleDisplaySkills().map((skill: Skill, idx: number) => (
           <SkillTag key={idx} skill={skill} />
         ))}
         <div className="relative group">
-          <SkillsModal />
+          {/* Tag that opens skills modal */}
+          <TechnologiesModal />
         </div>
       </div>
     </>
   );
 };
 
-export default SkillSection;
+export default TechnologiesSection;

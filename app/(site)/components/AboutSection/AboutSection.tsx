@@ -1,5 +1,5 @@
 import LanguageSection from "./LanguageSection";
-import SkillSection from "./SkillSection";
+import TechnologiesSection from "./TechnologiesSection";
 
 /**
  * About section component.
@@ -79,7 +79,7 @@ const AboutSection = () => {
         <div className="text-center md:w-1/2 md:text-left ">
           <LanguageSection />
           <div className="h-1 mt-2 md:mt-6 " />
-          <SkillSection />
+          <TechnologiesSection />
         </div>
       </div>
     </section>
