@@ -112,7 +112,7 @@ const TechnologiesSection: React.FC = () => {
   return (
     <>
       <HeadingThree title="Technologies" />
-      <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
+      <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start -mt-2">
         {handleDisplaySkills().map((skill: Skill, idx: number) => (
           <SkillTag key={idx} skill={skill} />
         ))}

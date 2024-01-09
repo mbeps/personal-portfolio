@@ -62,7 +62,7 @@ const LanguageSection: React.FC = () => {
   return (
     <>
       <HeadingThree title="Languages" />
-      <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
+      <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start -mt-2">
         {mainLanguages.map((languageData, idx) => (
           <LanguageTagWithModal
             key={idx}

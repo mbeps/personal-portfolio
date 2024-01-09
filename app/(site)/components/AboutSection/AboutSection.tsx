@@ -78,7 +78,7 @@ const AboutSection = () => {
         {/* Right section */}
         <div className="text-center md:w-1/2 md:text-left ">
           <LanguageSection />
-          <div className="h-1 mt-2 md:mt-6 " />
+          <div className="h-1 mt-2 md:mt-4" />
           <TechnologiesSection />
         </div>
       </div>
