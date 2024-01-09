@@ -36,7 +36,7 @@ import useIsMounted from "@/hooks/useIsMounted";
  * @param onClose (function) Function to close the modal
  * @returns (JSX.Element): modal component (stack of the project
  */
-const SkillsModal: React.FC = () => {
+const TechnologiesModal: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const isMounted = useIsMounted();
   const [groupedBy, setGroupedBy] = useState("category");
@@ -148,4 +148,4 @@ const SkillsModal: React.FC = () => {
   );
 };
 
-export default SkillsModal;
+export default TechnologiesModal;

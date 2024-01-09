@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Socials from "../Socials/Socials";
 
 /**
@@ -20,7 +21,9 @@ const Footer = () => {
         "
       >
         <div className="flex flex-row items-center justify-center space-x-1 text-neutral-500 dark:text-neutral-100">
-          © 2024 Maruf Bepary<a href="/" className="hover:underline"></a>
+          <Link href="/">
+            <p>© 2024 Maruf Bepary</p>
+          </Link>
         </div>
         <Socials />
       </div>

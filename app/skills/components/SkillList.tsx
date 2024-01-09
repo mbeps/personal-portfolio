@@ -194,7 +194,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
             </PopoverTrigger>
 
             <PopoverContent className="w-[24rem] md:w-[20rem] p-0">
-              <Command className="w-full border-2 border-neutral-200 dark:border-neutral-950">
+              <Command className="w-full border-1 border-neutral-200 dark:border-neutral-950">
                 <CommandInput placeholder="Search Filter..." />
                 <CommandEmpty>No Filter Found.</CommandEmpty>
 
