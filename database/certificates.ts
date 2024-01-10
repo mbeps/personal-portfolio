@@ -600,6 +600,7 @@ const machineLearningCertificates: Certificate[] = [
       "Using the random forest algorithm.",
       "Fitting a basic boosting model.",
     ],
+    archived: true,
   },
   {
     name: "Applied Machine Learning: Foundations",
@@ -627,6 +628,7 @@ const machineLearningCertificates: Certificate[] = [
       "Tuning hyperparameters.",
       "Evaluating a model.",
     ],
+    archived: true,
   },
   {
     name: "Artificial Intelligence Foundations: Machine Learning",
@@ -646,6 +648,7 @@ const machineLearningCertificates: Certificate[] = [
       "Evaluating model performance.",
       "Operationalizing a machine learning pipeline.",
     ],
+    archived: true,
   },
   {
     name: "Artificial Intelligence Foundations: Neural Networks",
@@ -664,6 +667,7 @@ const machineLearningCertificates: Certificate[] = [
       "Building a neural network using Keras.",
       "Optimizing a neural network.",
     ],
+    archived: true,
   },
   {
     name: "Data Science Foundations: Fundamentals",
@@ -761,6 +765,7 @@ const machineLearningCertificates: Certificate[] = [
       "Defining components of effective data visualization.",
       "Assessing the role of ethics and agency in data science.",
     ],
+    archived: true,
   },
   {
     name: "Machine Learning Foundations: Linear Algebra",
@@ -784,6 +789,7 @@ const machineLearningCertificates: Certificate[] = [
       "Using data visualization tools.",
       "Evaluating understanding of course material.",
     ],
+    archived: true,
   },
   {
     name: "Machine Learning Foundations: Probability",
@@ -804,6 +810,7 @@ const machineLearningCertificates: Certificate[] = [
       "Learning about continuous probability distribution.",
       "Discovering Bayes' theorem and its applications.",
     ],
+    archived: true,
   },
   {
     name: "Machine Learning with Scikit-Learn",
@@ -823,6 +830,7 @@ const machineLearningCertificates: Certificate[] = [
       "Learning K-means clustering technique.",
       "Understanding principal component analysis (PCA).",
     ],
+    archived: true,
   },
 ];
 
@@ -895,6 +903,7 @@ const devOpsCertificates: Certificate[] = [
       "Understanding artifacts and testing in Jenkins.",
       "Securing Jenkins with user accounts and permissions.",
     ],
+    archived: true,
   },
 
   {
@@ -920,6 +929,7 @@ const devOpsCertificates: Certificate[] = [
       "Creating continuous delivery workflows with GitHub Actions.",
       "Creating continuous deployment workflows with GitHub Actions.",
     ],
+    archived: true,
   },
   {
     name: "Career Essentials in GitHub Professional Certificate",
@@ -1115,6 +1125,7 @@ const webDevelopmentCertificates: Certificate[] = [
       "Exporting project's requirements file.",
       "Testing APIs with Postman.",
     ],
+    archived: true,
   },
   {
     name: "Learning REST APIs",
@@ -1175,6 +1186,7 @@ const webDevelopmentCertificates: Certificate[] = [
       "Exploring additional libraries for API development.",
       "Understanding basics of RESTful APIs and CRUD operations.",
     ],
+    archived: true,
   },
   {
     name: "CSS Fundamentals: Unlock the Power of Web Styling",
@@ -1193,6 +1205,7 @@ const webDevelopmentCertificates: Certificate[] = [
       "Creating layouts with flexbox, grid, and frameworks.",
       "Using browser tools and validation tools for CSS.",
     ],
+    archived: true,
   },
   {
     name: "Firebase Essential Training",
@@ -1760,6 +1773,7 @@ const softwareEngineeringCertificates: Certificate[] = [
       "Using tox for standardized testing across Python versions and environments.",
       "Setting up a GitHub Action workflow for automated testing and code coverage.",
     ],
+    archived: true,
   },
   {
     name: "Introducing Maven",
@@ -1779,6 +1793,7 @@ const softwareEngineeringCertificates: Certificate[] = [
       "Generating Maven reports.",
       "Working with Maven sites.",
     ],
+    archived: true,
   },
   {
     name: "Learning Gradle",
@@ -1801,6 +1816,7 @@ const softwareEngineeringCertificates: Certificate[] = [
     ],
     description:
       "This course offers a deep dive into Gradle, an open-source build automation tool, providing the core concepts and building blocks necessary for automation. You will learn how to define build logic, use Gradle support in IntelliJ IDEA, and understand the three phases of build execution. The course also covers how to locate and apply plugins, create a new task for a compressed TAR file, and gain insights from a deeper look at a Gradle build. After completing this course, you will be equipped to implement and execute build logic with Gradle.",
+    archived: true,
   },
   {
     name: "Gradle for Java-Based Applications and Libraries",
@@ -1831,6 +1847,7 @@ const softwareEngineeringCertificates: Certificate[] = [
     ],
     description:
       "This course provides a comprehensive guide to using Gradle for building and testing Java programs. It covers typical tasks such as compiling code, adding dependencies, running tests, and building a JAR file. The course also delves into the project structure and source code of a simple Java project, the application of the Java plugin for Gradle, and the generation of Javadocs. It further explores the basics of dependency management and the steps to test a Java project and fix a failed test suite. This course is a valuable resource for anyone looking to deepen their Gradle knowledge.",
+    archived: true,
   },
   {
     name: "Software Testing Foundations: Test Techniques",
