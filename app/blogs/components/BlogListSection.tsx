@@ -2,6 +2,7 @@ import Grid from "@/components/UI/Grid";
 import BlogItem from "@/components/Blogs/BlogItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import Blog from "@/types/blog";
+import stringToSlug from "@/actions/stringToSlug";
 
 interface BlogListSectionProps {
   groupedBlogs: Record<string, Blog[]>;
@@ -19,10 +20,7 @@ const BlogListSection: React.FC<BlogListSectionProps> = ({ groupedBlogs }) => {
         Object.keys(groupedBlogs).map(
           (category) =>
             category !== "All" && (
-              <section
-                key={category}
-                id={category.toLowerCase().replace(/\s+/g, "-")}
-              >
+              <section key={category} id={stringToSlug(category)}>
                 <div className="flex flex-col space-y-10">
                   <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
                   {/* Assuming HeadingTwo is a component you have for rendering titles */}

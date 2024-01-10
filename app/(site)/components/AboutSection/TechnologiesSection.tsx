@@ -123,7 +123,7 @@ const TechnologiesSection: React.FC = () => {
               <TechnologiesModal />
             </TooltipTrigger>
             <TooltipContent>
-              <p className="text-lg">View More Technologies</p>
+              <p>View More Technologies</p>
             </TooltipContent>
           </Tooltip>
         </div>

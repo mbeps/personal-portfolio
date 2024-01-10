@@ -119,7 +119,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({ certificate }) => {
               </Link>
             </TooltipTrigger>
             <TooltipContent>
-              <p className="text-lg">View Certificate Details </p>
+              <p>View Certificate Details </p>
             </TooltipContent>
           </Tooltip>
           {/* Link to Credential */}
@@ -138,7 +138,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({ certificate }) => {
                 </Link>
               </TooltipTrigger>
               <TooltipContent>
-                <p className="text-lg">View in Certificate Providers Site</p>
+                <p>View in Certificate Providers Site</p>
               </TooltipContent>
             </Tooltip>
           )}
