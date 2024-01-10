@@ -157,7 +157,7 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
               </Tag>
             </TooltipTrigger>
             <TooltipContent>
-              <p className="text-lg">{`View technologies related to ${language.name}`}</p>
+              <p>{`View technologies related to ${language.name}`}</p>
             </TooltipContent>
           </Tooltip>
         </DialogTrigger>

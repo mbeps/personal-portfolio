@@ -55,7 +55,7 @@ const SkillTag: React.FC<TagProps> = ({ skill, hide }) => {
         </Link>
       </TooltipTrigger>
       <TooltipContent>
-        <p className="text-lg">{`Navigate to all material related to ${skill.name}`}</p>
+        <p>{`Navigate to all material related to ${skill.name}`}</p>
       </TooltipContent>
     </Tooltip>
   );

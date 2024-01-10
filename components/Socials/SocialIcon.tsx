@@ -43,7 +43,7 @@ const SocialIcon: React.FC<SocialIconProps> = ({
       </Link>
     </TooltipTrigger>
     <TooltipContent>
-      <p className="text-lg">{name}</p>
+      <p>{name}</p>
     </TooltipContent>
   </Tooltip>
 );
