@@ -250,7 +250,7 @@ const FilterPopover = ({
           <CommandInput placeholder="Search Filter..." />
           <CommandEmpty>No Filter Found.</CommandEmpty>
 
-          <CommandGroup className="w-[24rem] md:w-[22rem]">
+          <CommandGroup className="w-[24rem] md:w-[22rem] max-h-[25vh]">
             {filterCategory.options.map((option, i) => (
               <Link
                 key={i}
