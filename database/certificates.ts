@@ -1,4 +1,4 @@
-import Certificate from "@/types/certificates";
+import CertificateInterface from "@/interfaces/CertificateInterface";
 import {
   groovy,
   java,
@@ -154,7 +154,7 @@ import {
 } from "./skills/technicalHardSkills/technicalHardSkillsVCS";
 import { black } from "./skills/technicalHardSkills/technicalHardSkillsCodeQuality";
 
-const programmingLanguagesCertificates: Certificate[] = [
+const programmingLanguagesCertificates: CertificateInterface[] = [
   {
     name: "Python Programming Masterclass",
     slug: "UC-a3c47af2-7eb8-4f5b-8309-08559c519d5a",
@@ -475,7 +475,7 @@ const programmingLanguagesCertificates: Certificate[] = [
   },
 ];
 
-const algorithmsAndDataStructuresCertificates: Certificate[] = [
+const algorithmsAndDataStructuresCertificates: CertificateInterface[] = [
   {
     name: "The Complete Data Structures and Algorithms Course in Python",
     slug: "UC-74fdc19f-c016-43c5-8b2a-3cb30941205d",
@@ -579,7 +579,7 @@ const algorithmsAndDataStructuresCertificates: Certificate[] = [
   },
 ];
 
-const machineLearningCertificates: Certificate[] = [
+const machineLearningCertificates: CertificateInterface[] = [
   {
     name: "Applied Machine Learning: Algorithms",
     slug: "964c3b1a049a60afa6bcbb55179e326c7e5cea11db0db7b8d3390be8fc5925e1",
@@ -834,7 +834,7 @@ const machineLearningCertificates: Certificate[] = [
   },
 ];
 
-const devOpsCertificates: Certificate[] = [
+const devOpsCertificates: CertificateInterface[] = [
   {
     name: "DevOps Foundations",
     slug: "1c6fedf1993d58cfe2f906e4fe4db5b4eddda6ea5fa7f8999436b07682ffe3f7",
@@ -1105,7 +1105,7 @@ const devOpsCertificates: Certificate[] = [
   },
 ];
 
-const webDevelopmentCertificates: Certificate[] = [
+const webDevelopmentCertificates: CertificateInterface[] = [
   {
     name: "Building RESTful APIs with Flask",
     slug: "c5ccec418e67284d7945832543376e344173867d424cc1c7c7e7f4235b14debe",
@@ -1385,7 +1385,7 @@ const webDevelopmentCertificates: Certificate[] = [
   },
 ];
 
-const databasesCertificates: Certificate[] = [
+const databasesCertificates: CertificateInterface[] = [
   {
     name: "Database Management System (DBMS) & SQL",
     slug: "UC-b49387a5-5a13-4b1a-aba1-73cac775c026",
@@ -1476,7 +1476,7 @@ const databasesCertificates: Certificate[] = [
   },
 ];
 
-const mathematicsCertificates: Certificate[] = [
+const mathematicsCertificates: CertificateInterface[] = [
   {
     name: "Discrete Mathematics",
     slug: "UC-8d13c37d-5013-4873-b4fd-56a867ad853d",
@@ -1745,7 +1745,7 @@ const mathematicsCertificates: Certificate[] = [
   },
 ];
 
-const softwareEngineeringCertificates: Certificate[] = [
+const softwareEngineeringCertificates: CertificateInterface[] = [
   {
     name: "Create an Open-Source Project in Python",
     slug: "6afc37d98889e1ed209d677fd7928ece257125ca8d538ed6b0fa0ed18e4e30d6",
@@ -1925,7 +1925,7 @@ const softwareEngineeringCertificates: Certificate[] = [
   },
 ];
 
-const managementCertificates: Certificate[] = [
+const managementCertificates: CertificateInterface[] = [
   {
     name: "Project Management Foundations",
     slug: "8ab210e2af6b2df598aa3e27db515103158cd049367cf6afd9949d874b7677eb",
@@ -1998,7 +1998,7 @@ const managementCertificates: Certificate[] = [
   },
 ];
 
-const cloudComputingCertificates: Certificate[] = [
+const cloudComputingCertificates: CertificateInterface[] = [
   {
     name: "AWS Essential Training for Developers",
     slug: "29e1352bda64cbc78e2f3fbf7205d2761bd8c465925eba7c4cf699aab8cf72b4",

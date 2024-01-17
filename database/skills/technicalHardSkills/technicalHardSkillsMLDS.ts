@@ -1,4 +1,4 @@
-import Skill from "@/types/skills";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import {
   machineLearning,
   dataScience,
@@ -10,7 +10,7 @@ import {
   mathematics,
 } from "../generalSkills";
 
-export const scikitLearn: Skill = {
+export const scikitLearn: SkillInterface = {
   name: "Scikit Learn",
   category: "Artificial Intelligence & Machine Learning",
   isMainSkill: true,
@@ -26,7 +26,7 @@ export const scikitLearn: Skill = {
   ],
 };
 
-export const pandas: Skill = {
+export const pandas: SkillInterface = {
   name: "Pandas",
   category: "Artificial Intelligence & Machine Learning",
   isMainSkill: true,
@@ -35,7 +35,7 @@ export const pandas: Skill = {
   technicalGeneralSkills: [dataScience, dataVisualisation],
 };
 
-export const numpy: Skill = {
+export const numpy: SkillInterface = {
   name: "NumPy",
   category: "Artificial Intelligence & Machine Learning",
   isMainSkill: true,
@@ -44,7 +44,7 @@ export const numpy: Skill = {
   technicalGeneralSkills: [dataScience, mathematics],
 };
 
-export const matplotlib: Skill = {
+export const matplotlib: SkillInterface = {
   name: "Matplotlib",
   category: "Data Science",
   isMainSkill: true,
@@ -53,7 +53,7 @@ export const matplotlib: Skill = {
   technicalGeneralSkills: [dataScience, dataVisualisation],
 };
 
-export const seaborn: Skill = {
+export const seaborn: SkillInterface = {
   name: "Seaborn",
   category: "Data Science",
   isMainSkill: true,
@@ -62,7 +62,7 @@ export const seaborn: Skill = {
   technicalGeneralSkills: [dataScience, dataVisualisation],
 };
 
-export const keras: Skill = {
+export const keras: SkillInterface = {
   name: "Keras",
   category: "Artificial Intelligence & Machine Learning",
   isMainSkill: true,
@@ -76,7 +76,7 @@ export const keras: Skill = {
   ],
 };
 
-export const jupyterNotebooks: Skill = {
+export const jupyterNotebooks: SkillInterface = {
   name: "Jupyter Notebooks",
   category: "Data Science",
   isMainSkill: true,
@@ -85,7 +85,7 @@ export const jupyterNotebooks: Skill = {
   technicalGeneralSkills: [dataScience],
 };
 
-const technicalHardSkillsMachineLearning: Skill[] = [
+const technicalHardSkillsMachineLearning: SkillInterface[] = [
   scikitLearn,
   pandas,
   numpy,

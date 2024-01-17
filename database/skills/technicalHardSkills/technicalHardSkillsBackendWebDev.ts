@@ -1,4 +1,4 @@
-import Skill from "@/types/skills";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import {
   databaseManagementSystems,
   noSql,
@@ -11,7 +11,7 @@ import {
   apis,
 } from "../generalSkills";
 
-export const firebase: Skill = {
+export const firebase: SkillInterface = {
   name: "Firebase",
   category: "Back-End Web Development",
   isMainSkill: true,
@@ -29,7 +29,7 @@ export const firebase: Skill = {
   ],
 };
 
-export const supabase: Skill = {
+export const supabase: SkillInterface = {
   name: "Supabase",
   category: "Back-End Web Development",
   isMainSkill: true,
@@ -47,7 +47,7 @@ export const supabase: Skill = {
   ],
 };
 
-export const pocketbase: Skill = {
+export const pocketbase: SkillInterface = {
   name: "PocketBase",
   category: "Back-End Web Development",
   isMainSkill: true,
@@ -65,7 +65,7 @@ export const pocketbase: Skill = {
   ],
 };
 
-export const auth0: Skill = {
+export const auth0: SkillInterface = {
   name: "Auth0",
   category: "Back-End Web Development",
   isMainSkill: true,
@@ -74,7 +74,7 @@ export const auth0: Skill = {
   technicalGeneralSkills: [userAuthentication, sdks],
 };
 
-export const clerkAuth: Skill = {
+export const clerkAuth: SkillInterface = {
   name: "Clerk Auth",
   category: "Back-End Web Development",
   isMainSkill: true,
@@ -83,7 +83,7 @@ export const clerkAuth: Skill = {
   technicalGeneralSkills: [userAuthentication, sdks],
 };
 
-export const nextauth: Skill = {
+export const nextauth: SkillInterface = {
   name: "NextAuth",
   category: "Back-End Web Development",
   isMainSkill: true,
@@ -92,7 +92,7 @@ export const nextauth: Skill = {
   technicalGeneralSkills: [userAuthentication, webDevelopment],
 };
 
-export const stripe: Skill = {
+export const stripe: SkillInterface = {
   name: "Stripe",
   category: "Back-End Web Development",
   isMainSkill: true,
@@ -101,7 +101,7 @@ export const stripe: Skill = {
   technicalGeneralSkills: [sdks],
 };
 
-export const express: Skill = {
+export const express: SkillInterface = {
   name: "Express",
   category: "Back-End Web Development",
   skillType: "hard",
@@ -109,7 +109,7 @@ export const express: Skill = {
   technicalGeneralSkills: [webDevelopment, apis],
 };
 
-export const flask: Skill = {
+export const flask: SkillInterface = {
   name: "Flask",
   category: "Back-End Web Development",
   isMainSkill: true,
@@ -118,7 +118,7 @@ export const flask: Skill = {
   technicalGeneralSkills: [webDevelopment, apis],
 };
 
-export const django: Skill = {
+export const django: SkillInterface = {
   name: "Django",
   category: "Back-End Web Development",
   isMainSkill: true,
@@ -127,7 +127,7 @@ export const django: Skill = {
   technicalGeneralSkills: [webDevelopment, apis],
 };
 
-export const spring: Skill = {
+export const spring: SkillInterface = {
   name: "Spring",
   category: "Back-End Web Development",
   isMainSkill: true,
@@ -136,7 +136,7 @@ export const spring: Skill = {
   technicalGeneralSkills: [webDevelopment, apis],
 };
 
-export const springBoot: Skill = {
+export const springBoot: SkillInterface = {
   name: "Spring Boot",
   category: "Back-End Web Development",
   isMainSkill: true,
@@ -145,7 +145,7 @@ export const springBoot: Skill = {
   technicalGeneralSkills: [webDevelopment, apis],
 };
 
-export const cloudinary: Skill = {
+export const cloudinary: SkillInterface = {
   name: "Cloudinary",
   category: "Back-End Web Development",
   skillType: "hard",
@@ -153,7 +153,7 @@ export const cloudinary: Skill = {
   technicalGeneralSkills: [webDevelopment],
 };
 
-export const edgestore: Skill = {
+export const edgestore: SkillInterface = {
   name: "Edge Store",
   category: "Back-End Web Development",
   skillType: "hard",
@@ -161,7 +161,7 @@ export const edgestore: Skill = {
   technicalGeneralSkills: [webDevelopment],
 };
 
-export const jwt: Skill = {
+export const jwt: SkillInterface = {
   name: "JWT",
   category: "Back-End Web Development",
   skillType: "hard",
@@ -169,7 +169,7 @@ export const jwt: Skill = {
   technicalGeneralSkills: [userAuthentication],
 };
 
-export const gunicorn: Skill = {
+export const gunicorn: SkillInterface = {
   name: "Gunicorn",
   category: "Back-End Web Development",
   skillType: "hard",
@@ -177,7 +177,7 @@ export const gunicorn: Skill = {
   technicalGeneralSkills: [webDevelopment],
 };
 
-export const jinja: Skill = {
+export const jinja: SkillInterface = {
   name: "Jinja",
   category: "Back-End Web Development",
   skillType: "hard",
@@ -185,7 +185,7 @@ export const jinja: Skill = {
   technicalGeneralSkills: [webDevelopment],
 };
 
-const technicalHardSkillsBackendWebDev: Skill[] = [
+const technicalHardSkillsBackendWebDev: SkillInterface[] = [
   firebase,
   supabase,
   pocketbase,

@@ -1,8 +1,10 @@
-import Skill from "@/types/skills";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 // Function to group skills by language
-export function groupByLanguage(skills: Skill[]): Record<string, Skill[]> {
-  let groupedSkills: Record<string, Skill[]> = {};
+export function groupByLanguage(
+  skills: SkillInterface[],
+): Record<string, SkillInterface[]> {
+  let groupedSkills: Record<string, SkillInterface[]> = {};
 
   skills.forEach((skill) => {
     // Determine if the skill is a programming language or should be categorized under "Others"
@@ -35,8 +37,10 @@ export function groupByLanguage(skills: Skill[]): Record<string, Skill[]> {
 }
 
 // Function to group skills by category
-export function groupByCategory(skills: Skill[]): Record<string, Skill[]> {
-  return skills.reduce((acc: Record<string, Skill[]>, skill) => {
+export function groupByCategory(
+  skills: SkillInterface[],
+): Record<string, SkillInterface[]> {
+  return skills.reduce((acc: Record<string, SkillInterface[]>, skill) => {
     const category = skill.category || "Other";
     if (!acc[category]) {
       acc[category] = [];
@@ -47,8 +51,10 @@ export function groupByCategory(skills: Skill[]): Record<string, Skill[]> {
 }
 
 // Function to group skills by skill type
-export function groupBySkillType(skills: Skill[]): Record<string, Skill[]> {
-  return skills.reduce((acc: Record<string, Skill[]>, skill) => {
+export function groupBySkillType(
+  skills: SkillInterface[],
+): Record<string, SkillInterface[]> {
+  return skills.reduce((acc: Record<string, SkillInterface[]>, skill) => {
     const skillType = skill.skillType || "Other";
     if (!acc[skillType]) {
       acc[skillType] = [];
@@ -58,9 +64,9 @@ export function groupBySkillType(skills: Skill[]): Record<string, Skill[]> {
   }, {});
 }
 
-export function removeDuplicates(skills: Skill[]): Skill[] {
+export function removeDuplicates(skills: SkillInterface[]): SkillInterface[] {
   const skillSet = new Set();
-  const uniqueSkills: Skill[] = [];
+  const uniqueSkills: SkillInterface[] = [];
 
   skills.forEach((skill) => {
     const serializedSkill = JSON.stringify(skill);
@@ -74,13 +80,13 @@ export function removeDuplicates(skills: Skill[]): Skill[] {
 }
 
 function recursiveFilter(
-  skills: Skill[],
+  skills: SkillInterface[],
   excludedSkillTypes: ("hard" | "general" | "soft")[],
-): Skill[] {
+): SkillInterface[] {
   return skills
     .filter((skill) => !excludedSkillTypes.includes(skill.skillType))
     .map((skill) => {
-      const filteredSkill: Skill = { ...skill };
+      const filteredSkill: SkillInterface = { ...skill };
 
       if (filteredSkill.technicalGeneralSkills) {
         filteredSkill.technicalGeneralSkills = recursiveFilter(
@@ -107,10 +113,10 @@ function recursiveFilter(
 
 export default function groupSkills(
   groupedBy: string,
-  skills: Skill[],
+  skills: SkillInterface[],
   excludedSkillTypes?: ("hard" | "general" | "soft")[],
-): Record<string, Skill[]> {
-  let organizedSkills: Record<string, Skill[]> = {};
+): Record<string, SkillInterface[]> {
+  let organizedSkills: Record<string, SkillInterface[]> = {};
 
   // Filter out the skills of excluded types recursively
   const filteredSkills = excludedSkillTypes

@@ -30,8 +30,8 @@ import allCertificates from "@/database/certificates";
 import allProjects from "@/database/projects";
 import { languages } from "@/database/skills/languages";
 import useIsMounted from "@/hooks/useIsMounted";
-import FilterOption from "@/types/filters/FilterOption";
-import Skill from "@/types/skills";
+import FilterOption from "@/interfaces/filters/FilterOption";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Link from "next/link";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
@@ -80,7 +80,7 @@ const LanguageSection: React.FC = () => {
 export default LanguageSection;
 
 interface LanguageTagWithModalProps {
-  language: Skill;
+  language: SkillInterface;
   repository?: string;
   handleOpenModal: () => void;
   handleCloseModal: () => void;

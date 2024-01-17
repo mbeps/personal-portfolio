@@ -1,7 +1,7 @@
-import Skill from "@/types/skills";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import { mathematics } from "../generalSkills";
 
-export const probability: Skill = {
+export const probability: SkillInterface = {
   name: "Probability",
   category: "Mathematics",
   isMainSkill: true,
@@ -10,7 +10,7 @@ export const probability: Skill = {
   technicalGeneralSkills: [mathematics],
 };
 
-export const statistics: Skill = {
+export const statistics: SkillInterface = {
   name: "Statistics",
   category: "Mathematics",
   isMainSkill: true,
@@ -19,7 +19,7 @@ export const statistics: Skill = {
   technicalGeneralSkills: [mathematics],
 };
 
-export const calculus: Skill = {
+export const calculus: SkillInterface = {
   name: "Calculus",
   category: "Mathematics",
   isMainSkill: true,
@@ -28,7 +28,7 @@ export const calculus: Skill = {
   technicalGeneralSkills: [mathematics],
 };
 
-export const trigonometry: Skill = {
+export const trigonometry: SkillInterface = {
   name: "Trigonometry",
   category: "Mathematics",
   isMainSkill: true,
@@ -37,7 +37,7 @@ export const trigonometry: Skill = {
   technicalGeneralSkills: [mathematics],
 };
 
-export const algebra: Skill = {
+export const algebra: SkillInterface = {
   name: "Algebra",
   category: "Mathematics",
   isMainSkill: true,
@@ -46,7 +46,7 @@ export const algebra: Skill = {
   technicalGeneralSkills: [mathematics],
 };
 
-export const linearAlgebra: Skill = {
+export const linearAlgebra: SkillInterface = {
   name: "Linear Algebra",
   category: "Mathematics",
   isMainSkill: true,
@@ -55,7 +55,7 @@ export const linearAlgebra: Skill = {
   technicalGeneralSkills: [mathematics],
 };
 
-export const discrete: Skill = {
+export const discrete: SkillInterface = {
   name: "Discrete",
   category: "Mathematics",
   isMainSkill: true,
@@ -64,7 +64,7 @@ export const discrete: Skill = {
   technicalGeneralSkills: [mathematics],
 };
 
-export const geometry: Skill = {
+export const geometry: SkillInterface = {
   name: "Geometry",
   category: "Mathematics",
   isMainSkill: true,
@@ -73,7 +73,7 @@ export const geometry: Skill = {
   technicalGeneralSkills: [mathematics],
 };
 
-export const logics: Skill = {
+export const logics: SkillInterface = {
   name: "Logics",
   category: "Mathematics",
   isMainSkill: true,
@@ -82,7 +82,7 @@ export const logics: Skill = {
   technicalGeneralSkills: [mathematics],
 };
 
-export const vectors: Skill = {
+export const vectors: SkillInterface = {
   name: "Vectors",
   category: "Mathematics",
   isMainSkill: true,
@@ -91,7 +91,7 @@ export const vectors: Skill = {
   technicalGeneralSkills: [mathematics],
 };
 
-export const mechanics: Skill = {
+export const mechanics: SkillInterface = {
   name: "Mechanics",
   category: "Mathematics",
   isMainSkill: true,
@@ -100,7 +100,7 @@ export const mechanics: Skill = {
   technicalGeneralSkills: [mathematics],
 };
 
-const technicalHardSkillsMaths: Skill[] = [
+const technicalHardSkillsMaths: SkillInterface[] = [
   probability,
   statistics,
   calculus,

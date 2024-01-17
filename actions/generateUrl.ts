@@ -1,4 +1,4 @@
-import FilterOption from "@/types/filters/FilterOption";
+import FilterOption from "@/interfaces/filters/FilterOption";
 
 /**
  * Generates the URL for the projects page.

@@ -1,4 +1,4 @@
-import Skill from "@/types/skills";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import {
   databaseManagementSystems,
   databases,
@@ -8,7 +8,7 @@ import {
   orm,
 } from "../generalSkills";
 
-export const normalisation: Skill = {
+export const normalisation: SkillInterface = {
   name: "Normalisation",
   category: "Databases",
   isMainSkill: true,
@@ -16,7 +16,7 @@ export const normalisation: Skill = {
   slug: "database-normalisation",
 };
 
-export const postgreSQL: Skill = {
+export const postgreSQL: SkillInterface = {
   name: "PostgreSQL",
   category: "Databases",
   isMainSkill: true,
@@ -31,7 +31,7 @@ export const postgreSQL: Skill = {
   ],
 };
 
-export const mySQL: Skill = {
+export const mySQL: SkillInterface = {
   name: "MySQL",
   category: "Databases",
   isMainSkill: true,
@@ -46,7 +46,7 @@ export const mySQL: Skill = {
   ],
 };
 
-export const sqlite: Skill = {
+export const sqlite: SkillInterface = {
   name: "SQLite",
   category: "Databases",
   isMainSkill: true,
@@ -61,7 +61,7 @@ export const sqlite: Skill = {
   ],
 };
 
-export const mongoDB: Skill = {
+export const mongoDB: SkillInterface = {
   name: "MongoDB",
   category: "Databases",
   isMainSkill: true,
@@ -75,7 +75,7 @@ export const mongoDB: Skill = {
   ],
 };
 
-export const redis: Skill = {
+export const redis: SkillInterface = {
   name: "Redis",
   category: "Databases",
   isMainSkill: true,
@@ -89,7 +89,7 @@ export const redis: Skill = {
   ],
 };
 
-export const convex: Skill = {
+export const convex: SkillInterface = {
   name: "Convex",
   category: "Databases",
   isMainSkill: false,
@@ -97,7 +97,7 @@ export const convex: Skill = {
   slug: "convex",
 };
 
-const technicalHardSkillsDatabases: Skill[] = [
+const technicalHardSkillsDatabases: SkillInterface[] = [
   normalisation,
   postgreSQL,
   mySQL,

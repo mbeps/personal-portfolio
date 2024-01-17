@@ -1,11 +1,11 @@
-import Skill from "@/types/skills";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import {
   containerization,
   clusterisation,
   cloudComputing,
 } from "../generalSkills";
 
-export const awsK3s: Skill = {
+export const awsK3s: SkillInterface = {
   name: "K3s",
   category: "DevOps",
   skillType: "hard",
@@ -13,7 +13,7 @@ export const awsK3s: Skill = {
   technicalGeneralSkills: [containerization, clusterisation, cloudComputing],
 };
 
-export const awsEC2: Skill = {
+export const awsEC2: SkillInterface = {
   name: "Elastic Compute Cloud (EC2)",
   category: "Cloud Computing",
   skillType: "hard",
@@ -21,7 +21,7 @@ export const awsEC2: Skill = {
   technicalGeneralSkills: [cloudComputing],
 };
 
-export const awsS3: Skill = {
+export const awsS3: SkillInterface = {
   name: "Simple Storage Service (S3)",
   category: "Cloud Computing",
   skillType: "hard",
@@ -29,7 +29,7 @@ export const awsS3: Skill = {
   technicalGeneralSkills: [cloudComputing],
 };
 
-export const awsVPC: Skill = {
+export const awsVPC: SkillInterface = {
   name: "Virtual Private Cloud (VPC)",
   category: "Cloud Computing",
   skillType: "hard",
@@ -37,7 +37,7 @@ export const awsVPC: Skill = {
   technicalGeneralSkills: [cloudComputing],
 };
 
-export const awsLambda: Skill = {
+export const awsLambda: SkillInterface = {
   name: "Lambda",
   category: "Cloud Computing",
   skillType: "hard",
@@ -45,7 +45,7 @@ export const awsLambda: Skill = {
   technicalGeneralSkills: [cloudComputing],
 };
 
-export const awsCloudFormation: Skill = {
+export const awsCloudFormation: SkillInterface = {
   name: "CloudFormation",
   category: "Cloud Computing",
   skillType: "hard",
@@ -53,7 +53,7 @@ export const awsCloudFormation: Skill = {
   technicalGeneralSkills: [cloudComputing],
 };
 
-export const awsCloudFront: Skill = {
+export const awsCloudFront: SkillInterface = {
   name: "CloudFront",
   category: "Cloud Computing",
   skillType: "hard",
@@ -61,7 +61,7 @@ export const awsCloudFront: Skill = {
   technicalGeneralSkills: [cloudComputing],
 };
 
-export const awsElasticBeanstalk: Skill = {
+export const awsElasticBeanstalk: SkillInterface = {
   name: "Elastic Beanstalk",
   category: "Cloud Computing",
   skillType: "hard",
@@ -69,7 +69,7 @@ export const awsElasticBeanstalk: Skill = {
   technicalGeneralSkills: [cloudComputing],
 };
 
-export const azureAppService: Skill = {
+export const azureAppService: SkillInterface = {
   name: "Azure App Service",
   category: "Cloud Computing",
   skillType: "hard",
@@ -77,7 +77,7 @@ export const azureAppService: Skill = {
   technicalGeneralSkills: [cloudComputing],
 };
 
-export const azureBlobStorage: Skill = {
+export const azureBlobStorage: SkillInterface = {
   name: "Azure Blob Storage",
   category: "Cloud Computing",
   skillType: "hard",
@@ -85,7 +85,7 @@ export const azureBlobStorage: Skill = {
   technicalGeneralSkills: [cloudComputing],
 };
 
-export const azureDurableFunctions: Skill = {
+export const azureDurableFunctions: SkillInterface = {
   name: "Durable Functions",
   category: "Cloud Computing",
   skillType: "hard",
@@ -93,7 +93,7 @@ export const azureDurableFunctions: Skill = {
   technicalGeneralSkills: [cloudComputing],
 };
 
-export const azureMonitor: Skill = {
+export const azureMonitor: SkillInterface = {
   name: "Azure Monitor",
   category: "Cloud Computing",
   skillType: "hard",
@@ -101,7 +101,7 @@ export const azureMonitor: Skill = {
   technicalGeneralSkills: [cloudComputing],
 };
 
-export const azureFunctions: Skill = {
+export const azureFunctions: SkillInterface = {
   name: "Azure Functions",
   category: "Cloud Computing",
   skillType: "hard",
@@ -109,7 +109,7 @@ export const azureFunctions: Skill = {
   technicalGeneralSkills: [cloudComputing],
 };
 
-export const azureResourceManager: Skill = {
+export const azureResourceManager: SkillInterface = {
   name: "Azure Resource Manager",
   category: "Cloud Computing",
   skillType: "hard",
@@ -117,7 +117,7 @@ export const azureResourceManager: Skill = {
   technicalGeneralSkills: [cloudComputing],
 };
 
-export const azureContainers: Skill = {
+export const azureContainers: SkillInterface = {
   name: "Containers",
   category: "Cloud Computing",
   skillType: "hard",
@@ -125,7 +125,7 @@ export const azureContainers: Skill = {
   technicalGeneralSkills: [cloudComputing],
 };
 
-export const azureContainerRegistry: Skill = {
+export const azureContainerRegistry: SkillInterface = {
   name: "Azure Container Registry",
   category: "Cloud Computing",
   skillType: "hard",
@@ -133,7 +133,7 @@ export const azureContainerRegistry: Skill = {
   technicalGeneralSkills: [cloudComputing],
 };
 
-export const gcpAppEngine: Skill = {
+export const gcpAppEngine: SkillInterface = {
   name: "App Engine",
   category: "Cloud Computing",
   skillType: "hard",
@@ -141,7 +141,7 @@ export const gcpAppEngine: Skill = {
   technicalGeneralSkills: [cloudComputing],
 };
 
-export const gcpCloudSQL: Skill = {
+export const gcpCloudSQL: SkillInterface = {
   name: "Cloud SQL",
   category: "Cloud Computing",
   skillType: "hard",
@@ -149,7 +149,7 @@ export const gcpCloudSQL: Skill = {
   technicalGeneralSkills: [cloudComputing],
 };
 
-export const gcpCloudStorage: Skill = {
+export const gcpCloudStorage: SkillInterface = {
   name: "Cloud Storage",
   category: "Cloud Computing",
   skillType: "hard",
@@ -157,7 +157,7 @@ export const gcpCloudStorage: Skill = {
   technicalGeneralSkills: [cloudComputing],
 };
 
-export const gcpCloudTasks: Skill = {
+export const gcpCloudTasks: SkillInterface = {
   name: "Cloud Tasks",
   category: "Cloud Computing",
   skillType: "hard",
@@ -165,7 +165,7 @@ export const gcpCloudTasks: Skill = {
   technicalGeneralSkills: [cloudComputing],
 };
 
-export const gcpCloudScheduler: Skill = {
+export const gcpCloudScheduler: SkillInterface = {
   name: "Cloud Scheduler",
   category: "Cloud Computing",
   skillType: "hard",
@@ -173,7 +173,7 @@ export const gcpCloudScheduler: Skill = {
   technicalGeneralSkills: [cloudComputing],
 };
 
-export const gcpCloudLogging: Skill = {
+export const gcpCloudLogging: SkillInterface = {
   name: "Cloud Logging",
   category: "Cloud Computing",
   skillType: "hard",
@@ -181,7 +181,7 @@ export const gcpCloudLogging: Skill = {
   technicalGeneralSkills: [cloudComputing],
 };
 
-export const aws: Skill = {
+export const aws: SkillInterface = {
   name: "Amazon Web Services",
   category: "Cloud Computing",
   skillType: "hard",
@@ -199,7 +199,7 @@ export const aws: Skill = {
   ],
 };
 
-export const gcp: Skill = {
+export const gcp: SkillInterface = {
   name: "Google Cloud Platform",
   category: "Cloud Computing",
   skillType: "hard",
@@ -215,7 +215,7 @@ export const gcp: Skill = {
   ],
 };
 
-export const azure: Skill = {
+export const azure: SkillInterface = {
   name: "Microsoft Azure",
   category: "Cloud Computing",
   skillType: "hard",
@@ -233,7 +233,7 @@ export const azure: Skill = {
   ],
 };
 
-const technicalHardSkillsCloudComputing: Skill[] = [
+const technicalHardSkillsCloudComputing: SkillInterface[] = [
   aws,
   gcp,
   azure,

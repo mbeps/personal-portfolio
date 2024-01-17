@@ -1,22 +1,22 @@
 import ProjectsListSection from "@/app/projects/components/ProjectListSection";
 import { Button } from "@/components/shadcn/ui/button";
-import Project from "@/types/projects";
-import Skill from "@/types/skills";
+import ProjectInterface from "@/interfaces/ProjectInterface";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Link from "next/link";
 
 import React from "react";
 
 interface ProjectPageProps {
-  projects: Project[];
-  skill: Skill;
+  projects: ProjectInterface[];
+  skill: SkillInterface;
 }
 
 const ProjectsSection: React.FC<ProjectPageProps> = ({ projects, skill }) => {
   const filterProjectsBySkill = (
-    projects: Project[],
-    selectedSkill: Skill,
-  ): Project[] => {
-    const skillMatches = (skill: Skill): boolean => {
+    projects: ProjectInterface[],
+    selectedSkill: SkillInterface,
+  ): ProjectInterface[] => {
+    const skillMatches = (skill: SkillInterface): boolean => {
       // Check if the skill matches
       if (skill.slug === selectedSkill.slug) {
         return true;
@@ -52,8 +52,8 @@ const ProjectsSection: React.FC<ProjectPageProps> = ({ projects, skill }) => {
   }
 
   const groupProjectsByCurrentSkill = (
-    projects: Project[],
-  ): Record<string, Project[]> => {
+    projects: ProjectInterface[],
+  ): Record<string, ProjectInterface[]> => {
     return { Projects: projects };
   };
 

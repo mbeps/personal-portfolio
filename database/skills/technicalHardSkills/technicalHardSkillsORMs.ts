@@ -1,4 +1,4 @@
-import Skill from "@/types/skills";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import {
   databaseManagementSystems,
   databases,
@@ -14,7 +14,7 @@ import {
   sqlite,
 } from "./technicalHardSkillsDatabases";
 
-export const mongoose: Skill = {
+export const mongoose: SkillInterface = {
   name: "Mongoose",
   category: "Object Relational Mappers",
   isMainSkill: true,
@@ -30,7 +30,7 @@ export const mongoose: Skill = {
   technicalHardSkills: [mongoDB],
 };
 
-export const prisma: Skill = {
+export const prisma: SkillInterface = {
   name: "Prisma",
   category: "Object Relational Mappers",
   isMainSkill: true,
@@ -46,7 +46,7 @@ export const prisma: Skill = {
   technicalHardSkills: [mongoDB, postgreSQL, mySQL, sqlite],
 };
 
-export const drizzle: Skill = {
+export const drizzle: SkillInterface = {
   name: "Drizzle",
   category: "Object Relational Mappers",
   isMainSkill: true,
@@ -62,7 +62,7 @@ export const drizzle: Skill = {
   technicalHardSkills: [postgreSQL, mySQL, sqlite],
 };
 
-export const sqlalchemy: Skill = {
+export const sqlalchemy: SkillInterface = {
   name: "SQLAlchemy",
   category: "Object Relational Mappers",
   isMainSkill: true,
@@ -78,7 +78,7 @@ export const sqlalchemy: Skill = {
   technicalHardSkills: [postgreSQL, mySQL, sqlite],
 };
 
-export const hibernate: Skill = {
+export const hibernate: SkillInterface = {
   name: "Hibernate",
   category: "Object Relational Mappers",
   isMainSkill: true,
@@ -94,7 +94,7 @@ export const hibernate: Skill = {
   technicalHardSkills: [postgreSQL, mySQL, sqlite],
 };
 
-const technicalHardSkillsORMs: Skill[] = [
+const technicalHardSkillsORMs: SkillInterface[] = [
   mongoose,
   prisma,
   drizzle,

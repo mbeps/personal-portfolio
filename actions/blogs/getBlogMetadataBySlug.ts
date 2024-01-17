@@ -1,4 +1,4 @@
-import Blog from "@/types/blog";
+import BlogInterface from "@/interfaces/BlogInterface";
 
 /**
  * Gets the blog metadata with the given slug (unique identifier).
@@ -10,7 +10,7 @@ import Blog from "@/types/blog";
  */
 export default function getBlogMetadataBySlug(
   slug: string,
-  blogs: Blog[]
-): Blog | null {
+  blogs: BlogInterface[],
+): BlogInterface | null {
   return blogs.find((blog) => blog.slug === slug) || null;
 }

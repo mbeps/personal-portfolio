@@ -1,6 +1,6 @@
-import Skill from "@/types/skills";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 
-export const jest: Skill = {
+export const jest: SkillInterface = {
   name: "Jest",
   category: "Testing",
   isMainSkill: true,
@@ -8,7 +8,7 @@ export const jest: Skill = {
   slug: "jest",
 };
 
-export const vitest: Skill = {
+export const vitest: SkillInterface = {
   name: "Vitest",
   category: "Testing",
   isMainSkill: true,
@@ -16,7 +16,7 @@ export const vitest: Skill = {
   slug: "vitest",
 };
 
-export const pytest: Skill = {
+export const pytest: SkillInterface = {
   name: "PyTest",
   category: "Testing",
   isMainSkill: true,
@@ -24,7 +24,7 @@ export const pytest: Skill = {
   slug: "pytest",
 };
 
-export const unittest: Skill = {
+export const unittest: SkillInterface = {
   name: "UnitTest",
   category: "Testing",
   isMainSkill: true,
@@ -32,7 +32,7 @@ export const unittest: Skill = {
   slug: "unittest",
 };
 
-export const junit: Skill = {
+export const junit: SkillInterface = {
   name: "JUnit",
   category: "Testing",
   isMainSkill: true,
@@ -40,21 +40,21 @@ export const junit: Skill = {
   slug: "junit",
 };
 
-export const cypress: Skill = {
+export const cypress: SkillInterface = {
   name: "Cypress",
   category: "Testing",
   skillType: "hard",
   slug: "cypress",
 };
 
-export const reactTestingLibrary: Skill = {
+export const reactTestingLibrary: SkillInterface = {
   name: "React Testing Library",
   category: "Testing",
   skillType: "hard",
   slug: "react-testing-library",
 };
 
-const technicalHardSkillsTesting: Skill[] = [
+const technicalHardSkillsTesting: SkillInterface[] = [
   jest,
   vitest,
   pytest,

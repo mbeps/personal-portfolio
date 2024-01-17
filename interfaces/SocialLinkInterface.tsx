@@ -3,7 +3,7 @@ import { IconType } from "react-icons";
 /**
  * Social link interface.
  */
-export default interface SocialLink {
+export default interface SocialLinkInterface {
   name: string;
   link: string;
   IconComponent: IconType;

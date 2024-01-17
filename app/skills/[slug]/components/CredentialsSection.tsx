@@ -1,14 +1,14 @@
 import CredentialListSection from "@/app/credentials/components/CredentialListSection";
 import { Button } from "@/components/shadcn/ui/button";
-import Certificate from "@/types/certificates";
-import Skill from "@/types/skills";
+import CertificateInterface from "@/interfaces/CertificateInterface";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Link from "next/link";
 
 import React from "react";
 
 interface CredentialsPageProps {
-  certificates: Certificate[];
-  skill: Skill;
+  certificates: CertificateInterface[];
+  skill: SkillInterface;
 }
 
 const CredentialsSection: React.FC<CredentialsPageProps> = ({
@@ -16,10 +16,10 @@ const CredentialsSection: React.FC<CredentialsPageProps> = ({
   skill,
 }) => {
   const filterCertificatesBySkill = (
-    certificates: Certificate[],
-    selectedSkill: Skill,
-  ): Certificate[] => {
-    const skillMatches = (skill: Skill): boolean => {
+    certificates: CertificateInterface[],
+    selectedSkill: SkillInterface,
+  ): CertificateInterface[] => {
+    const skillMatches = (skill: SkillInterface): boolean => {
       // Check if the skill matches
       if (skill.slug === selectedSkill.slug) {
         return true;
@@ -52,8 +52,8 @@ const CredentialsSection: React.FC<CredentialsPageProps> = ({
   }
 
   const groupCertificatesByCategory = (
-    certificates: Certificate[],
-  ): Record<string, Certificate[]> => {
+    certificates: CertificateInterface[],
+  ): Record<string, CertificateInterface[]> => {
     return { Certificates: certificates };
   };
 

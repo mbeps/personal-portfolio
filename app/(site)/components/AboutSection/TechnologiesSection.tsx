@@ -5,7 +5,7 @@ import SkillTag from "@/components/Tags/SkillTag";
 import HeadingThree from "@/components/Text/HeadingThree";
 import { languages } from "@/database/skills/languages";
 import { technologies } from "@/database/skills/skills";
-import Skill from "@/types/skills";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import {
   Tooltip,
   TooltipContent,
@@ -23,12 +23,15 @@ const TechnologiesSection: React.FC = () => {
   /**
    * Gets the list of skills from all the languages.
    */
-  const allLanguageSkills: Skill[] = languages.reduce((acc, language) => {
-    if (language.technicalGeneralSkills) {
-      return acc.concat(language.technicalGeneralSkills);
-    }
-    return acc;
-  }, [] as Skill[]);
+  const allLanguageSkills: SkillInterface[] = languages.reduce(
+    (acc, language) => {
+      if (language.technicalGeneralSkills) {
+        return acc.concat(language.technicalGeneralSkills);
+      }
+      return acc;
+    },
+    [] as SkillInterface[],
+  );
 
   /**
    * List of all skills.
@@ -54,7 +57,7 @@ const TechnologiesSection: React.FC = () => {
    * List of all skills.
    * This includes skills from languages and technologies.
    */
-  const allSkills: Skill[] = allLanguageSkills
+  const allSkills: SkillInterface[] = allLanguageSkills
     .concat(technologies)
     .filter((skill) => !ignoredCategories.includes(skill.category || "Other"));
 
@@ -64,8 +67,8 @@ const TechnologiesSection: React.FC = () => {
    * @param limit (number): the number of skills to take
    * @returns (string[]): list of skill names
    */
-  const firstNSkills = (limit: number): Skill[] => {
-    const uniqueSkills = new Map<string, Skill>();
+  const firstNSkills = (limit: number): SkillInterface[] => {
+    const uniqueSkills = new Map<string, SkillInterface>();
 
     allSkills.forEach((skill) => {
       if (!uniqueSkills.has(skill.name)) {
@@ -82,20 +85,22 @@ const TechnologiesSection: React.FC = () => {
    * @param limitPerCategory (number): the number of skills to take from each category
    * @returns (string[]): list of skill names
    */
-  const firstNSkillsPerCategory = (limitPerCategory: number): Skill[] => {
+  const firstNSkillsPerCategory = (
+    limitPerCategory: number,
+  ): SkillInterface[] => {
     // Categorize the skills
-    const categories: Record<string, Skill[]> = allSkills.reduce(
+    const categories: Record<string, SkillInterface[]> = allSkills.reduce(
       (acc, skill) => {
         const category = skill.category || "Other"; // If no category, put in 'Other' category
         if (!acc[category]) acc[category] = []; // Initialize category
         acc[category].push(skill); // Add skill to category
         return acc; // Return updated categories
       },
-      {} as Record<string, Skill[]>, // Initialize categories
+      {} as Record<string, SkillInterface[]>, // Initialize categories
     );
 
     // Take the first 'limitPerCategory' skills from each category
-    let skills: Skill[] = []; // List of skills
+    let skills: SkillInterface[] = []; // List of skills
     Object.values(categories).forEach((categorySkills) => {
       const firstSkills = categorySkills.slice(0, limitPerCategory); // Take the first 'limitPerCategory' skills
       skills = skills.concat(firstSkills); // Merge with existing skills
@@ -113,7 +118,7 @@ const TechnologiesSection: React.FC = () => {
     <>
       <HeadingThree title="Technologies" />
       <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start -mt-2">
-        {handleDisplaySkills().map((skill: Skill, idx: number) => (
+        {handleDisplaySkills().map((skill: SkillInterface, idx: number) => (
           <SkillTag key={idx} skill={skill} />
         ))}
         <div className="relative group">

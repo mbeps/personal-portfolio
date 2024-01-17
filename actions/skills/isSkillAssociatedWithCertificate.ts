@@ -1,19 +1,19 @@
-import Certificate from "@/types/certificates";
-import Skill from "@/types/skills";
+import CertificateInterface from "@/interfaces/CertificateInterface";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 export default function isSkillAssociatedWithCertificates(
-  skillToCheck: Skill,
-  certificates: Certificate[]
+  skillToCheck: SkillInterface,
+  certificates: CertificateInterface[],
 ): boolean {
   return certificates.some((certificate) => {
     // Function to check nested skills
-    const checkNestedSkills = (skills: Skill[]) =>
+    const checkNestedSkills = (skills: SkillInterface[]) =>
       skills.some(
         (skill) =>
           skill.slug === skillToCheck.slug ||
           (skill.technicalGeneralSkills || []).some(
-            (nestedSkill) => nestedSkill.slug === skillToCheck.slug
-          )
+            (nestedSkill) => nestedSkill.slug === skillToCheck.slug,
+          ),
       );
 
     // Check technicalSkills and softSkills, including nested skills in technicalSkills

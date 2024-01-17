@@ -1,10 +1,10 @@
-import Project from "@/types/projects";
+import ProjectInterface from "@/interfaces/ProjectInterface";
 import ProjectItem from "@/components/ProjectItem/ProjectItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import stringToSlug from "@/actions/stringToSlug";
 
 interface ProjectsListSectionProps {
-  groupedProjects: Record<string, Project[]>;
+  groupedProjects: Record<string, ProjectInterface[]>;
 }
 
 /**

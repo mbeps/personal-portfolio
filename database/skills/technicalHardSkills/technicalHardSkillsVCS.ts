@@ -1,8 +1,8 @@
-import Skill from "@/types/skills";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import { versionControl } from "../generalSkills";
 import { gitHubActions, gitlabCI } from "./technicalHardSkillsDevOps";
 
-export const gitHub: Skill = {
+export const gitHub: SkillInterface = {
   name: "GitHub",
   category: "Version Control",
   skillType: "hard",
@@ -11,7 +11,7 @@ export const gitHub: Skill = {
   technicalHardSkills: [gitHubActions],
 };
 
-export const gitLab: Skill = {
+export const gitLab: SkillInterface = {
   name: "GitLab",
   category: "Version Control",
   skillType: "hard",
@@ -20,7 +20,7 @@ export const gitLab: Skill = {
   technicalHardSkills: [gitlabCI],
 };
 
-export const bitBucket: Skill = {
+export const bitBucket: SkillInterface = {
   name: "BitBucket",
   category: "Version Control",
   skillType: "hard",
@@ -28,7 +28,7 @@ export const bitBucket: Skill = {
   technicalGeneralSkills: [versionControl],
 };
 
-export const git: Skill = {
+export const git: SkillInterface = {
   name: "Git",
   category: "Version Control",
   skillType: "hard",
@@ -37,6 +37,11 @@ export const git: Skill = {
   technicalHardSkills: [gitHub, gitLab, bitBucket],
 };
 
-const technicalHardSkillsVCS: Skill[] = [git, gitHub, gitLab, bitBucket];
+const technicalHardSkillsVCS: SkillInterface[] = [
+  git,
+  gitHub,
+  gitLab,
+  bitBucket,
+];
 
 export default technicalHardSkillsVCS;

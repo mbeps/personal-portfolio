@@ -1,8 +1,8 @@
-import Skill from "@/types/skills";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 export default function hasAssociatedSkills(
-  skill: Skill,
-  skills: Skill[]
+  skill: SkillInterface,
+  skills: SkillInterface[],
 ): boolean {
   // Check if the skill has its own technicalGeneralSkills or technicalHardSkills
   if (

@@ -7,7 +7,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/shadcn/ui/tabs";
-import Skill from "@/types/skills";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import React, { useState } from "react";
 import ExpandCollapseButton from "../Button/ExpandCollapseButton";
 import SkillTag from "../Tags/SkillTag";
@@ -16,7 +16,7 @@ import stringToSlug from "@/actions/stringToSlug";
 
 interface SkillCategoryProps {
   title: string;
-  skillCategories: Record<string, Skill[]>;
+  skillCategories: Record<string, SkillInterface[]>;
 }
 
 interface SkillTableSectionProps {
@@ -82,7 +82,7 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
 
 // Break down the original SkillTableSection content into a separate component for cleaner code
 const CategorySkillDisplay: React.FC<{
-  skillCategories: Record<string, Skill[]>;
+  skillCategories: Record<string, SkillInterface[]>;
 }> = ({ skillCategories }) => {
   const [showAll, setShowAll] = useState(false);
   const categories = Object.entries(skillCategories);
@@ -95,18 +95,21 @@ const CategorySkillDisplay: React.FC<{
   let groupCount = 0;
   const displayedSkills = showAll
     ? categories
-    : categories.reduce((acc: [string, Skill[]][], [category, skills]) => {
-        if (skillCount < maxSkillCount && groupCount < maxGroupCount) {
-          const availableSlots = Math.min(
-            maxSkillCount - skillCount,
-            skills.length,
-          );
-          acc.push([category, skills.slice(0, availableSlots)]);
-          skillCount += availableSlots;
-          groupCount++;
-        }
-        return acc;
-      }, []);
+    : categories.reduce(
+        (acc: [string, SkillInterface[]][], [category, skills]) => {
+          if (skillCount < maxSkillCount && groupCount < maxGroupCount) {
+            const availableSlots = Math.min(
+              maxSkillCount - skillCount,
+              skills.length,
+            );
+            acc.push([category, skills.slice(0, availableSlots)]);
+            skillCount += availableSlots;
+            groupCount++;
+          }
+          return acc;
+        },
+        [],
+      );
 
   const totalSkillCount = categories.reduce(
     (acc, [_, skills]) => acc + skills.length,

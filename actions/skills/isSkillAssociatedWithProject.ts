@@ -1,9 +1,9 @@
-import Project from "@/types/projects";
-import Skill from "@/types/skills";
+import ProjectInterface from "@/interfaces/ProjectInterface";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 export default function isSkillAssociatedWithProject(
-  skill: Skill,
-  projects: Project[]
+  skill: SkillInterface,
+  projects: ProjectInterface[],
 ): boolean {
   return projects.some((project) => {
     // Check if the skill matches the project's programmingLanguage
@@ -12,13 +12,13 @@ export default function isSkillAssociatedWithProject(
     }
 
     // Function to check nested skills
-    const checkNestedSkills = (projectSkills: Skill[]) =>
+    const checkNestedSkills = (projectSkills: SkillInterface[]) =>
       projectSkills.some(
         (projectSkill) =>
           projectSkill.slug === skill.slug ||
           (projectSkill.technicalGeneralSkills || []).some(
-            (nestedSkill) => nestedSkill.slug === skill.slug
-          )
+            (nestedSkill) => nestedSkill.slug === skill.slug,
+          ),
       );
 
     // Check technologySkills, extraTechnicalGeneralSkills and softSkills

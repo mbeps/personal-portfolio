@@ -1,4 +1,4 @@
-import Skill from "@/types/skills";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import {
   flask,
   django,
@@ -60,7 +60,7 @@ import {
   zod,
 } from "./technicalHardSkills/technicalHardSkillsCodeQuality";
 
-export const python: Skill = {
+export const python: SkillInterface = {
   name: "Python",
   technicalHardSkills: [
     flask,
@@ -88,7 +88,7 @@ export const python: Skill = {
   slug: "python",
 };
 
-export const javascript: Skill = {
+export const javascript: SkillInterface = {
   name: "JavaScript",
   technicalHardSkills: [
     nextjs,
@@ -118,7 +118,7 @@ export const javascript: Skill = {
   slug: "javascript",
 };
 
-export const typescript: Skill = {
+export const typescript: SkillInterface = {
   name: "TypeScript",
   technicalHardSkills: [
     nextjs,
@@ -148,7 +148,7 @@ export const typescript: Skill = {
   slug: "typescript",
 };
 
-export const java: Skill = {
+export const java: SkillInterface = {
   name: "Java",
   technicalHardSkills: [maven, gradle, junit, spring, springBoot, hibernate],
   isMainSkill: true,
@@ -157,7 +157,7 @@ export const java: Skill = {
   slug: "java",
 };
 
-export const gameMakerLanguage: Skill = {
+export const gameMakerLanguage: SkillInterface = {
   name: "GameMaker Language",
   isMainSkill: false,
   skillType: "hard",
@@ -165,7 +165,7 @@ export const gameMakerLanguage: Skill = {
   slug: "game-maker-language",
 };
 
-export const shellScript: Skill = {
+export const shellScript: SkillInterface = {
   name: "Shell Script",
   isMainSkill: false,
   skillType: "hard",
@@ -173,7 +173,7 @@ export const shellScript: Skill = {
   slug: "shell",
 };
 
-export const rLanguage: Skill = {
+export const rLanguage: SkillInterface = {
   name: "R",
   isMainSkill: false,
   skillType: "hard",
@@ -181,7 +181,7 @@ export const rLanguage: Skill = {
   slug: "r",
 };
 
-export const groovy: Skill = {
+export const groovy: SkillInterface = {
   name: "Groovy",
   isMainSkill: false,
   skillType: "hard",
@@ -193,7 +193,7 @@ export const groovy: Skill = {
  * Array of languages.
  * Each skill has an array of skills and repositories.
  */
-const languages: Skill[] = [
+const languages: SkillInterface[] = [
   javascript,
   typescript,
   python,

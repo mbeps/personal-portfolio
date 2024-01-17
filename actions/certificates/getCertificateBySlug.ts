@@ -1,4 +1,4 @@
-import Certificate from "@/types/certificates";
+import CertificateInterface from "@/interfaces/CertificateInterface";
 
 /**
  * Gets all the details of a certificate from its unique slug.
@@ -8,8 +8,8 @@ import Certificate from "@/types/certificates";
  */
 function getCertificateBySlug(
   slug: string,
-  certificates: Certificate[]
-): Certificate | undefined {
+  certificates: CertificateInterface[],
+): CertificateInterface | undefined {
   return certificates.find((certificate) => certificate.slug === slug);
 }
 

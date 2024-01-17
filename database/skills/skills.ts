@@ -1,4 +1,4 @@
-import Skill from "@/types/skills";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import softSkills from "./softSkills";
 import generalSkills from "./generalSkills";
 import technicalHardSkillsFullStackWebDev from "./technicalHardSkills/technicalHardSkillsFullStackWebDev";
@@ -17,7 +17,7 @@ import technicalHardSkillsVCS from "./technicalHardSkills/technicalHardSkillsVCS
 import technicalHardSkillsORMs from "./technicalHardSkills/technicalHardSkillsORMs";
 import technicalHardSkillsCodeQuality from "./technicalHardSkills/technicalHardSkillsCodeQuality";
 
-const allHardSkills: Skill[] = [
+const allHardSkills: SkillInterface[] = [
   ...technicalHardSkillsFullStackWebDev,
   ...technicalHardSkillsAPIs,
   ...technicalHardSkillsBackendWebDev,
@@ -35,10 +35,14 @@ const allHardSkills: Skill[] = [
   ...technicalHardSkillsCodeQuality,
 ];
 
-const allSkills: Skill[] = [...allHardSkills, ...generalSkills, ...softSkills];
+const allSkills: SkillInterface[] = [
+  ...allHardSkills,
+  ...generalSkills,
+  ...softSkills,
+];
 
-export const technologies: Skill[] = allHardSkills.filter(
-  (skill) => skill.isMainSkill
+export const technologies: SkillInterface[] = allHardSkills.filter(
+  (skill) => skill.isMainSkill,
 );
 
 export default allSkills;

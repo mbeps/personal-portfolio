@@ -5,10 +5,10 @@ import stringToSlug from "@/actions/stringToSlug";
 import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
 import FilterOverlay from "@/components/Filters/FilterPanel";
 import SearchInput from "@/components/Inputs/SearchInput";
-import Certificate from "@/types/certificates";
-import FilterCategory from "@/types/filters/FilterCategory";
-import FilterOption from "@/types/filters/FilterOption";
-import Skill from "@/types/skills";
+import CertificateInterface from "@/interfaces/CertificateInterface";
+import FilterCategory from "@/interfaces/filters/FilterCategory";
+import FilterOption from "@/interfaces/filters/FilterOption";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Fuse from "fuse.js";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
@@ -19,7 +19,7 @@ import Link from "next/link";
 import { BsFilterLeft } from "react-icons/bs";
 
 type CredentialsListListProps = {
-  allCertificates: Certificate[];
+  allCertificates: CertificateInterface[];
 };
 
 /**
@@ -98,9 +98,9 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
 
   //^ Group By Category
   const groupCertificatesByCategory = (
-    certificates: Certificate[],
-  ): Record<string, Certificate[]> => {
-    return certificates.reduce<Record<string, Certificate[]>>(
+    certificates: CertificateInterface[],
+  ): Record<string, CertificateInterface[]> => {
+    return certificates.reduce<Record<string, CertificateInterface[]>>(
       (grouped, certificate) => {
         (grouped[certificate.category] =
           grouped[certificate.category] || []).push(certificate);
@@ -118,7 +118,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
   const certificateCategories: FilterOption[] = [
     { slug: "all", entryName: "All" },
     ...allCertificates
-      .map((certificate: Certificate) => ({
+      .map((certificate: CertificateInterface) => ({
         slug: stringToSlug(certificate.category),
         entryName: certificate.category,
       }))
@@ -132,7 +132,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
   const certificateIssuers: FilterOption[] = [
     { slug: "all", entryName: "All" },
     ...allCertificates
-      .map((certificate: Certificate) => ({
+      .map((certificate: CertificateInterface) => ({
         slug: stringToSlug(certificate.issuer),
         entryName: certificate.issuer,
       }))
@@ -147,8 +147,8 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
   const skillCategories: FilterOption[] = [
     { slug: "all", entryName: "All" },
     ...allCertificates
-      .flatMap((certificate: Certificate) =>
-        certificate.technicalSkills.map((skill: Skill) => ({
+      .flatMap((certificate: CertificateInterface) =>
+        certificate.technicalSkills.map((skill: SkillInterface) => ({
           slug: stringToSlug(skill.category),
           entryName: skill.category,
         })),
@@ -164,10 +164,10 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
   const hardSkills: FilterOption[] = [
     { slug: "all", entryName: "All" },
     ...allCertificates
-      .flatMap((certificate: Certificate) =>
+      .flatMap((certificate: CertificateInterface) =>
         certificate.technicalSkills
-          .filter((skill: Skill) => skill.skillType === "hard")
-          .map((skill: Skill) => ({
+          .filter((skill: SkillInterface) => skill.skillType === "hard")
+          .map((skill: SkillInterface) => ({
             slug: stringToSlug(skill.slug), // Convert skill name to slug
             entryName: skill.name,
           })),
@@ -183,10 +183,10 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
   const generalSkills: FilterOption[] = [
     { slug: "all", entryName: "All" },
     ...allCertificates
-      .flatMap((certificate: Certificate) =>
+      .flatMap((certificate: CertificateInterface) =>
         certificate.technicalSkills
-          .filter((skill: Skill) => skill.skillType === "general")
-          .map((skill: Skill) => ({
+          .filter((skill: SkillInterface) => skill.skillType === "general")
+          .map((skill: SkillInterface) => ({
             slug: stringToSlug(skill.slug), // Convert skill name to slug
             entryName: skill.name,
           })),
@@ -202,10 +202,10 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
   const softSkills: FilterOption[] = [
     { slug: "all", entryName: "All" },
     ...allCertificates
-      .flatMap((certificate: Certificate) =>
+      .flatMap((certificate: CertificateInterface) =>
         certificate.technicalSkills
-          .filter((skill: Skill) => skill.skillType === "soft")
-          .map((skill: Skill) => ({
+          .filter((skill: SkillInterface) => skill.skillType === "soft")
+          .map((skill: SkillInterface) => ({
             slug: stringToSlug(skill.slug), // Convert skill name to slug
             entryName: skill.name,
           })),
@@ -239,7 +239,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
   };
 
   const filteredCertificates = searchedCertificates.filter(
-    (certificate: Certificate) => {
+    (certificate: CertificateInterface) => {
       const matchesIssuer =
         selectedIssuer === "all" ||
         stringToSlug(certificate.issuer) === stringToSlug(selectedIssuer);

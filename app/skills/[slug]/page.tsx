@@ -6,7 +6,7 @@ import allCertificates from "@/database/certificates";
 import allProjects from "@/database/projects";
 import { languages } from "@/database/skills/languages";
 import allSkills from "@/database/skills/skills";
-import Skill from "@/types/skills";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import React from "react";
@@ -15,7 +15,7 @@ import CredentialsSection from "./components/CredentialsSection";
 import ProjectsSection from "./components/ProjectsSection";
 import RelatedSkillsSection from "./components/RelatedSkillsSection";
 
-function extractSlugs(skills: Skill[]): string[] {
+function extractSlugs(skills: SkillInterface[]): string[] {
   return skills.map((skill) => {
     if (!skill.slug) {
       throw new Error("ERROR: Slug field is empty or missing");

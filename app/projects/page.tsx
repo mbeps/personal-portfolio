@@ -9,7 +9,7 @@ import {
   otherProjects,
   webdevProjects,
 } from "@/database/projects";
-import Project from "@/types/projects";
+import ProjectInterface from "@/interfaces/ProjectInterface";
 import type { Metadata } from "next";
 import ProjectsList from "./components/ProjectsList";
 
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
  * @returns (JSX.Element): Projects page
  */
 const ProjectsPage = () => {
-  const allProjects: Project[] = [
+  const allProjects: ProjectInterface[] = [
     ...webdevProjects,
     ...extraWebDevProjects,
     ...backendWebDevProjects,

@@ -1,7 +1,7 @@
-import Skill from "@/types/skills";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 export default function getGeneralSkillsFromHardTechnicalSkill(
-  skill: Skill
-): Skill[] {
+  skill: SkillInterface,
+): SkillInterface[] {
   return skill.technicalGeneralSkills || [];
 }

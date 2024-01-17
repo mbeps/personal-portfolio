@@ -1,4 +1,4 @@
-import Project from "@/types/projects";
+import ProjectInterface from "@/interfaces/ProjectInterface";
 
 /**
  * Gets the project with the given slug (unique identifier).
@@ -10,8 +10,8 @@ import Project from "@/types/projects";
  */
 function getProjectBySlug(
   slug: string,
-  projects: Project[]
-): Project | undefined {
+  projects: ProjectInterface[],
+): ProjectInterface | undefined {
   return projects.find((project) => project.slug === slug);
 }
 

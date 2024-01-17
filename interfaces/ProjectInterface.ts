@@ -1,16 +1,16 @@
-import Skill from "./skills";
+import SkillInterface from "./skills/SkillInterface";
 
 /**
  * Interface representing a project.
  */
-export default interface Project {
+export default interface ProjectInterface {
   name: string;
   slug: string;
   description: string;
-  programmingLanguage: Skill;
-  technologySkills: Skill[];
-  extraTechnicalGeneralSkills?: Skill[];
-  softSkills: Skill[];
+  programmingLanguage: SkillInterface;
+  technologySkills: SkillInterface[];
+  extraTechnicalGeneralSkills?: SkillInterface[];
+  softSkills: SkillInterface[];
   category:
     | "Full-Stack Web Development"
     | "Back-End Web Development"

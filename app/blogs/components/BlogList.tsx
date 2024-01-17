@@ -6,10 +6,9 @@ import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
 import FilterOverlay from "@/components/Filters/FilterPanel";
 import SearchInput from "@/components/Inputs/SearchInput";
 import { Button } from "@/components/shadcn/ui/button";
-import Blog from "@/types/blog";
-import FilterCategory from "@/types/filters/FilterCategory";
-import FilterOption from "@/types/filters/FilterOption";
-import Skill from "@/types/skills";
+import FilterCategory from "@/interfaces/filters/FilterCategory";
+import FilterOption from "@/interfaces/filters/FilterOption";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Fuse from "fuse.js";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -17,9 +16,10 @@ import { useState } from "react";
 import { AiOutlineClear } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
 import BlogListSection from "./BlogListSection";
+import BlogInterface from "@/interfaces/BlogInterface";
 
 interface BlogListProps {
-  blogs: Blog[];
+  blogs: BlogInterface[];
 }
 
 /**
@@ -98,8 +98,10 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
    * @param blogs (Blog[]) - list of blogs
    * @returns (Record<string, Blog[]>) - blogs grouped by category (key)
    */
-  const groupBlogsByType = (blogs: Blog[]): Record<string, Blog[]> => {
-    return blogs.reduce<Record<string, Blog[]>>((grouped, blog) => {
+  const groupBlogsByType = (
+    blogs: BlogInterface[],
+  ): Record<string, BlogInterface[]> => {
+    return blogs.reduce<Record<string, BlogInterface[]>>((grouped, blog) => {
       (grouped[blog.category] = grouped[blog.category] || []).push(blog);
       return grouped;
     }, {});
@@ -110,7 +112,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   const blogCategories: FilterOption[] = [
     { slug: "all", entryName: "All" },
     ...blogs
-      .map((blog: Blog) => ({
+      .map((blog: BlogInterface) => ({
         slug: stringToSlug(blog.category),
         entryName: blog.category,
       }))
@@ -124,8 +126,8 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   const skillCategories: FilterOption[] = [
     { slug: "all", entryName: "All" },
     ...blogs
-      .flatMap((blog: Blog) =>
-        blog.technicalSkills.map((skill: Skill) => ({
+      .flatMap((blog: BlogInterface) =>
+        blog.technicalSkills.map((skill: SkillInterface) => ({
           slug: stringToSlug(skill.category),
           entryName: skill.category,
         })),
@@ -141,10 +143,13 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   const hardSkills: FilterOption[] = [
     { slug: "all", entryName: "All" },
     ...blogs
-      .flatMap((blog: Blog) =>
+      .flatMap((blog: BlogInterface) =>
         (blog.technicalSkills || [])
-          .filter((skill: Skill) => skill.skillType === "hard")
-          .map((skill: Skill) => ({ slug: skill.slug, entryName: skill.name })),
+          .filter((skill: SkillInterface) => skill.skillType === "hard")
+          .map((skill: SkillInterface) => ({
+            slug: skill.slug,
+            entryName: skill.name,
+          })),
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -157,10 +162,13 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   const generalSkills: FilterOption[] = [
     { slug: "all", entryName: "All" },
     ...blogs
-      .flatMap((blog: Blog) =>
+      .flatMap((blog: BlogInterface) =>
         (blog.technicalSkills || [])
-          .filter((skill: Skill) => skill.skillType === "general")
-          .map((skill: Skill) => ({ slug: skill.slug, entryName: skill.name })),
+          .filter((skill: SkillInterface) => skill.skillType === "general")
+          .map((skill: SkillInterface) => ({
+            slug: skill.slug,
+            entryName: skill.name,
+          })),
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -173,10 +181,13 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   const softSkills: FilterOption[] = [
     { slug: "all", entryName: "All" },
     ...blogs
-      .flatMap((blog: Blog) =>
+      .flatMap((blog: BlogInterface) =>
         (blog.technicalSkills || [])
-          .filter((skill: Skill) => skill.skillType === "soft")
-          .map((skill: Skill) => ({ slug: skill.slug, entryName: skill.name })),
+          .filter((skill: SkillInterface) => skill.skillType === "soft")
+          .map((skill: SkillInterface) => ({
+            slug: skill.slug,
+            entryName: skill.name,
+          })),
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1

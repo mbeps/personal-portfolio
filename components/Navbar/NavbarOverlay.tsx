@@ -1,13 +1,13 @@
-import NavItem from "@/types/pages";
 import Socials from "../Socials/Socials";
 import NavbarItem from "./NavbarItem";
 import Overlay from "../Sheet/Sheet";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
+import NavigationItemInterface from "@/interfaces/NavigationItemInterface";
 
 interface OverlayProps {
   isOpen: boolean;
   toggle: () => void;
-  items: Array<NavItem>;
+  items: Array<NavigationItemInterface>;
 }
 
 /**
