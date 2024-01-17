@@ -3,17 +3,17 @@ import { useState } from "react";
 import ExpandCollapseButton from "../Button/ExpandCollapseButton";
 import SkillTag from "../Tags/SkillTag";
 import HeadingFour from "../Text/HeadingFour";
+import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 
 interface CategorySkillDisplayProps {
-  skillCategories: Record<string, SkillInterface[]>;
+  skillCategories: SkillsCategoryInterface[];
 }
 
 const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
   skillCategories,
 }) => {
   const [showAll, setShowAll] = useState(false);
-  const categories = Object.entries(skillCategories);
-  const shouldDisplayTitle = categories.length > 1;
+  const shouldDisplayTitle = skillCategories.length > 1;
 
   const maxSkillCount = 12;
   const maxGroupCount = 3;
@@ -21,25 +21,25 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
   let skillCount = 0;
   let groupCount = 0;
   const displayedSkills = showAll
-    ? categories
-    : categories.reduce(
-        (acc: [string, SkillInterface[]][], [category, skills]) => {
-          if (skillCount < maxSkillCount && groupCount < maxGroupCount) {
-            const availableSlots = Math.min(
-              maxSkillCount - skillCount,
-              skills.length,
-            );
-            acc.push([category, skills.slice(0, availableSlots)]);
-            skillCount += availableSlots;
-            groupCount++;
-          }
-          return acc;
-        },
-        [],
-      );
+    ? skillCategories
+    : skillCategories.reduce((acc: SkillsCategoryInterface[], categoryData) => {
+        if (skillCount < maxSkillCount && groupCount < maxGroupCount) {
+          const availableSlots = Math.min(
+            maxSkillCount - skillCount,
+            categoryData.skills.length,
+          );
+          acc.push({
+            ...categoryData,
+            skills: categoryData.skills.slice(0, availableSlots),
+          });
+          skillCount += availableSlots;
+          groupCount++;
+        }
+        return acc;
+      }, []);
 
-  const totalSkillCount = categories.reduce(
-    (acc, [_, skills]) => acc + skills.length,
+  const totalSkillCount = skillCategories.reduce(
+    (acc, categoryData) => acc + categoryData.skills.length,
     0,
   );
 
@@ -57,11 +57,13 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
   return (
     <div>
       <div className={gridStyle}>
-        {displayedSkills.map(([category, skills]) => (
-          <div key={category} className="mb-6">
-            {shouldDisplayTitle && <HeadingFour title={category} />}
+        {displayedSkills.map((categoryData) => (
+          <div key={categoryData.skillCategoryName} className="mb-6">
+            {shouldDisplayTitle && (
+              <HeadingFour title={categoryData.skillCategoryName} />
+            )}
             <div className="flex flex-wrap justify-center md:justify-start">
-              {skills.map((skill, index) => (
+              {categoryData.skills.map((skill, index) => (
                 <SkillTag key={skill.slug} skill={skill} />
               ))}
             </div>

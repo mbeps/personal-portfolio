@@ -1,23 +1,26 @@
 import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 
 // Function to group skills by language
 export function groupByLanguage(
   skills: SkillInterface[],
-): Record<string, SkillInterface[]> {
-  let groupedSkills: Record<string, SkillInterface[]> = {};
+): SkillsCategoryInterface[] {
+  let groupedSkills: SkillsCategoryInterface[] = [];
 
   skills.forEach((skill) => {
     // Determine if the skill is a programming language or should be categorized under "Others"
     const groupName =
       skill.category === "Programming Languages" ? skill.name : "Others";
 
-    // Initialize the group in the accumulator if it doesn't exist
-    if (!groupedSkills[groupName]) {
-      groupedSkills[groupName] = [];
+    // Find or initialize the group in the groupedSkills array
+    let group = groupedSkills.find((g) => g.skillCategoryName === groupName);
+    if (!group) {
+      group = { skillCategoryName: groupName, skills: [] };
+      groupedSkills.push(group);
     }
 
     // Add the skill to the appropriate group
-    groupedSkills[groupName].push(skill);
+    group.skills.push(skill);
 
     // If it's a programming language, include its nested skills
     if (skill.category === "Programming Languages") {
@@ -27,9 +30,7 @@ export function groupByLanguage(
         ...(skill.technicalSoftSkills || []),
       ];
 
-      groupedSkills[groupName] = removeDuplicates(
-        groupedSkills[groupName].concat(nestedSkills),
-      );
+      group.skills = removeDuplicates(group.skills.concat(nestedSkills));
     }
   });
 
@@ -39,29 +40,43 @@ export function groupByLanguage(
 // Function to group skills by category
 export function groupByCategory(
   skills: SkillInterface[],
-): Record<string, SkillInterface[]> {
-  return skills.reduce((acc: Record<string, SkillInterface[]>, skill) => {
+): SkillsCategoryInterface[] {
+  return skills.reduce((acc: SkillsCategoryInterface[], skill) => {
     const category = skill.category || "Other";
-    if (!acc[category]) {
-      acc[category] = [];
+
+    // Find an existing category or create a new one
+    let categoryGroup = acc.find((c) => c.skillCategoryName === category);
+    if (!categoryGroup) {
+      categoryGroup = { skillCategoryName: category, skills: [] };
+      acc.push(categoryGroup);
     }
-    acc[category].push(skill);
+
+    // Add the skill to the appropriate category group
+    categoryGroup.skills.push(skill);
+
     return acc;
-  }, {});
+  }, []);
 }
 
 // Function to group skills by skill type
 export function groupBySkillType(
   skills: SkillInterface[],
-): Record<string, SkillInterface[]> {
-  return skills.reduce((acc: Record<string, SkillInterface[]>, skill) => {
+): SkillsCategoryInterface[] {
+  return skills.reduce((acc: SkillsCategoryInterface[], skill) => {
     const skillType = skill.skillType || "Other";
-    if (!acc[skillType]) {
-      acc[skillType] = [];
+
+    // Find an existing skill type category or create a new one
+    let skillTypeGroup = acc.find((c) => c.skillCategoryName === skillType);
+    if (!skillTypeGroup) {
+      skillTypeGroup = { skillCategoryName: skillType, skills: [] };
+      acc.push(skillTypeGroup);
     }
-    acc[skillType].push(skill);
+
+    // Add the skill to the appropriate skill type category
+    skillTypeGroup.skills.push(skill);
+
     return acc;
-  }, {});
+  }, []);
 }
 
 export function removeDuplicates(skills: SkillInterface[]): SkillInterface[] {
@@ -115,8 +130,8 @@ export default function groupSkills(
   groupedBy: string,
   skills: SkillInterface[],
   excludedSkillTypes?: ("hard" | "general" | "soft")[],
-): Record<string, SkillInterface[]> {
-  let organizedSkills: Record<string, SkillInterface[]> = {};
+): SkillsCategoryInterface[] {
+  let organizedSkills: SkillsCategoryInterface[] = [];
 
   // Filter out the skills of excluded types recursively
   const filteredSkills = excludedSkillTypes
@@ -134,14 +149,21 @@ export default function groupSkills(
       organizedSkills = groupBySkillType(filteredSkills);
       break;
     default:
-      organizedSkills["None"] = removeDuplicates(filteredSkills);
+      // Handle the default case to group all skills under a 'None' category
+      organizedSkills = [
+        {
+          skillCategoryName: "None",
+          skills: removeDuplicates(filteredSkills),
+        },
+      ];
       break;
   }
 
-  // Remove duplicates for each category
-  for (const key in organizedSkills) {
-    organizedSkills[key] = removeDuplicates(organizedSkills[key]);
-  }
+  // Remove duplicates for each skill category
+  organizedSkills = organizedSkills.map((category) => ({
+    ...category,
+    skills: removeDuplicates(category.skills),
+  }));
 
   return organizedSkills;
 }

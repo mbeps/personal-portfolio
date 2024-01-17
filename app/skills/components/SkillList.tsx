@@ -25,12 +25,12 @@ import {
 } from "@/components/shadcn/ui/popover";
 import { cn } from "@/lib/utils";
 import FilterOption from "@/interfaces/filters/FilterOption";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
 import { Check } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 interface SkillListProps {
   skills: SkillInterface[];
@@ -255,12 +255,17 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
 
       {/* List of Skills */}
       <div className="mt-4 text-center md:text-left">
-        {Object.keys(groupedSkills).length > 0 ? (
-          Object.keys(groupedSkills).map((group) => (
-            <div key={group}>
-              <HeadingThree title={group[0].toUpperCase() + group.slice(1)} />
+        {groupedSkills.length > 0 ? (
+          groupedSkills.map((categoryData) => (
+            <div key={categoryData.skillCategoryName}>
+              <HeadingThree
+                title={
+                  categoryData.skillCategoryName[0].toUpperCase() +
+                  categoryData.skillCategoryName.slice(1)
+                }
+              />
               <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-                {groupedSkills[group].map((skill, index) => (
+                {categoryData.skills.map((skill, index) => (
                   <SkillTag
                     key={index}
                     skill={skill}

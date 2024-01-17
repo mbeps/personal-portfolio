@@ -12,6 +12,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
+import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 
 /**
  * Displays a list of skills that I have.
@@ -88,21 +89,29 @@ const TechnologiesSection: React.FC = () => {
   const firstNSkillsPerCategory = (
     limitPerCategory: number,
   ): SkillInterface[] => {
-    // Categorize the skills
-    const categories: Record<string, SkillInterface[]> = allSkills.reduce(
+    // Categorize the skills into an array of SkillsCategoryInterface
+    const skillCategories: SkillsCategoryInterface[] = allSkills.reduce(
       (acc, skill) => {
         const category = skill.category || "Other"; // If no category, put in 'Other' category
-        if (!acc[category]) acc[category] = []; // Initialize category
-        acc[category].push(skill); // Add skill to category
-        return acc; // Return updated categories
+        const existingCategory = acc.find(
+          (c) => c.skillCategoryName === category,
+        );
+
+        if (existingCategory) {
+          existingCategory.skills.push(skill);
+        } else {
+          acc.push({ skillCategoryName: category, skills: [skill] });
+        }
+
+        return acc;
       },
-      {} as Record<string, SkillInterface[]>, // Initialize categories
+      [] as SkillsCategoryInterface[],
     );
 
     // Take the first 'limitPerCategory' skills from each category
     let skills: SkillInterface[] = []; // List of skills
-    Object.values(categories).forEach((categorySkills) => {
-      const firstSkills = categorySkills.slice(0, limitPerCategory); // Take the first 'limitPerCategory' skills
+    skillCategories.forEach((categoryData) => {
+      const firstSkills = categoryData.skills.slice(0, limitPerCategory); // Take the first 'limitPerCategory' skills
       skills = skills.concat(firstSkills); // Merge with existing skills
     });
 

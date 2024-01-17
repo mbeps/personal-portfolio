@@ -8,13 +8,13 @@ import {
   TabsTrigger,
 } from "@/components/shadcn/ui/tabs";
 import useIsMounted from "@/hooks/useIsMounted";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import React, { useState } from "react";
 import CategorySkillDisplay from "./CategorySkillDisplay";
 
 interface SkillCategoryProps {
   title: string;
-  skillCategories: Record<string, SkillInterface[]>;
+  skillCategories: SkillsCategoryInterface[];
 }
 
 interface SkillTableSectionProps {
@@ -26,7 +26,7 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
 }) => {
   const [selectedTab, setSelectedTab] = useState(
     Object.keys(allGroupedSkills).find(
-      (key) => Object.keys(allGroupedSkills[key].skillCategories).length > 0,
+      (key) => allGroupedSkills[key].skillCategories.length > 0,
     ) || "",
   );
 
@@ -46,10 +46,7 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
       {/* Tab Options */}
       <TabsList className="mt-6 -mb-2 w-full md:w-auto">
         {Object.entries(allGroupedSkills)
-          .filter(
-            ([_, { skillCategories }]) =>
-              Object.keys(skillCategories).length > 0,
-          ) // Filtering out empty skill categories
+          .filter(([_, { skillCategories }]) => skillCategories.length > 0) // Filtering out empty skill categories
           .map(([key, { title }]) => (
             <TabsTrigger
               key={key}
@@ -64,12 +61,11 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
       {/* Tab Content */}
       {/* Each section */}
       {Object.entries(allGroupedSkills)
-        .filter(
-          ([_, { skillCategories }]) => Object.keys(skillCategories).length > 0,
-        ) // Filtering out empty skill categories
+        .filter(([_, { skillCategories }]) => skillCategories.length > 0) // Filtering out empty skill categories
         .map(([key, { title, skillCategories }]) => (
           <TabsContent key={key} value={stringToSlug(title)}>
             <div className="mt-4 text-center md:text-left">
+              {/* Adjust CategorySkillDisplay to accept the new structure */}
               <CategorySkillDisplay skillCategories={skillCategories} />
             </div>
           </TabsContent>

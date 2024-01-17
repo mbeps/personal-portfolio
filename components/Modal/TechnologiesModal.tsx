@@ -116,12 +116,12 @@ const TechnologiesModal: React.FC = () => {
           </DropdownMenu>
         </div>
 
-        {Object.entries(groupedSkills).map(([group, skills], index) => (
+        {groupedSkills.map((categoryData, index) => (
           <div key={index} className="mt-4 text-center md:text-left">
-            <HeadingThree title={group} />
+            <HeadingThree title={categoryData.skillCategoryName} />
             <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-              {skills.map((skill, index) => (
-                <SkillTag key={index} skill={skill} />
+              {categoryData.skills.map((skill, skillIndex) => (
+                <SkillTag key={skillIndex} skill={skill} />
               ))}
             </div>
           </div>

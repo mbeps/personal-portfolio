@@ -1,8 +1,9 @@
 import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 
 interface SkillCategory {
   title: string;
-  skillCategories: Record<string, SkillInterface[]>;
+  skillCategories: SkillsCategoryInterface[];
 }
 
 export default function filterAndGroupSkills(
@@ -15,15 +16,24 @@ export default function filterAndGroupSkills(
     (skill) => skill.skillType === skillType,
   );
 
-  // Group the filtered skills by category
-  const grouped = filteredSkills.reduce<Record<string, SkillInterface[]>>(
+  // Group the filtered skills directly into an array of SkillsCategoryInterface
+  const skillCategories: SkillsCategoryInterface[] = filteredSkills.reduce(
     (acc, skill) => {
       const category = skill.category;
-      (acc[category] = acc[category] || []).push(skill);
+      const existingCategory = acc.find(
+        (c) => c.skillCategoryName === category,
+      );
+
+      if (existingCategory) {
+        existingCategory.skills.push(skill);
+      } else {
+        acc.push({ skillCategoryName: category, skills: [skill] });
+      }
+
       return acc;
     },
-    {},
+    [] as SkillsCategoryInterface[],
   );
 
-  return { title, skillCategories: grouped };
+  return { title, skillCategories };
 }
