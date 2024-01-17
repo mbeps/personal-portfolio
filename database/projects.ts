@@ -1,4 +1,4 @@
-import Project from "@/types/projects";
+import ProjectInterface from "@/interfaces/ProjectInterface";
 import {
   gameMakerLanguage,
   java,
@@ -117,9 +117,9 @@ import {
 /**
  * Array of web development projects.
  * This is used to populate the projects page.
- * @type {Project[]}
+ * @type {ProjectInterface[]}
  */
-const webdevProjects: Project[] = [
+const webdevProjects: ProjectInterface[] = [
   {
     name: `Circus Discussions`,
     slug: "circus-discussions",
@@ -331,9 +331,9 @@ const webdevProjects: Project[] = [
 /**
  * Array of extra web development projects.
  * This is used to populate the projects page.
- * @type {Project[]}
+ * @type {ProjectInterface[]}
  */
-const extraWebDevProjects: Project[] = [
+const extraWebDevProjects: ProjectInterface[] = [
   {
     name: "Quizmify",
     slug: "quizmify",
@@ -491,7 +491,7 @@ const extraWebDevProjects: Project[] = [
   },
 ];
 
-const backendWebDevProjects: Project[] = [
+const backendWebDevProjects: ProjectInterface[] = [
   {
     name: `Flask Forum Backend`,
     slug: "flask-forum-backend",
@@ -613,9 +613,9 @@ const backendWebDevProjects: Project[] = [
 /**
  * Array of machine learning projects.
  * This is used to populate the projects page.
- * @type {Project[]}
+ * @type {ProjectInterface[]}
  */
-const machineLearningProjects: Project[] = [
+const machineLearningProjects: ProjectInterface[] = [
   {
     name: "Adult Income Prediction",
     slug: "adult-income-prediction",
@@ -811,9 +811,9 @@ const machineLearningProjects: Project[] = [
 /**
  * Array of game development projects.
  * This is used to populate the projects page.
- * @type {Project[]}
+ * @type {ProjectInterface[]}
  */
-const gameDevProjects: Project[] = [
+const gameDevProjects: ProjectInterface[] = [
   {
     name: `Osmos Game`,
     slug: "osmos-game",
@@ -1085,9 +1085,9 @@ const gameDevProjects: Project[] = [
 /**
  * Array of other projects.
  * This is used to populate the projects page.
- * @type {Project[]}
+ * @type {ProjectInterface[]}
  */
-const otherProjects: Project[] = [
+const otherProjects: ProjectInterface[] = [
   {
     name: `Searching & Sorting`,
     slug: `searching-sorting-algorithms`,
@@ -1162,9 +1162,9 @@ const otherProjects: Project[] = [
 /**
  * Array of some Java assignments.
  * This is used to populate the projects page.
- * @type {Project[]}
+ * @type {ProjectInterface[]}
  */
-const javaAssignments: Project[] = [
+const javaAssignments: ProjectInterface[] = [
   {
     name: `Calculator`,
     slug: "calculator-assignment",

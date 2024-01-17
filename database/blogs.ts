@@ -1,5 +1,3 @@
-import Blog from "@/types/blog";
-
 import { javascript, typescript } from "./skills/languages";
 import {
   webDevelopment,
@@ -60,8 +58,9 @@ import {
   sqlalchemy,
   hibernate,
 } from "./skills/technicalHardSkills/technicalHardSkillsORMs";
+import BlogInterface from "@/interfaces/BlogInterface";
 
-const blogs: Blog[] = [
+const blogs: BlogInterface[] = [
   {
     slug: "backend",
     title: "Exploring Backends: Custom vs Managed Solutions",

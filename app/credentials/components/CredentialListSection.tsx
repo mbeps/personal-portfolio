@@ -2,11 +2,11 @@ import stringToSlug from "@/actions/stringToSlug";
 import Grid from "@/components/UI/Grid";
 import CertificateItem from "@/components/CertificateItem/CertificateItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import Certificate from "@/types/certificates";
+import CertificateInterface from "@/interfaces/CertificateInterface";
 import React from "react";
 
 interface CredentialsListSectionProps {
-  groupedCertificates: Record<string, Certificate[]>;
+  groupedCertificates: Record<string, CertificateInterface[]>;
 }
 
 const CredentialsListSection: React.FC<CredentialsListSectionProps> = ({

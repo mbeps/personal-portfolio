@@ -1,21 +1,20 @@
 "use client";
 
-import HeadingFour from "@/components/Text/HeadingFour";
+import stringToSlug from "@/actions/stringToSlug";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
 } from "@/components/shadcn/ui/tabs";
-import Skill from "@/types/skills";
-import React, { useState } from "react";
-import ExpandCollapseButton from "../Button/ExpandCollapseButton";
-import SkillTag from "../Tags/SkillTag";
 import useIsMounted from "@/hooks/useIsMounted";
+import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
+import React, { useState } from "react";
+import CategorySkillDisplay from "./CategorySkillDisplay";
 
 interface SkillCategoryProps {
   title: string;
-  skillCategories: Record<string, Skill[]>;
+  skillCategories: SkillsCategoryInterface[];
 }
 
 interface SkillTableSectionProps {
@@ -27,7 +26,7 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
 }) => {
   const [selectedTab, setSelectedTab] = useState(
     Object.keys(allGroupedSkills).find(
-      (key) => Object.keys(allGroupedSkills[key].skillCategories).length > 0,
+      (key) => allGroupedSkills[key].skillCategories.length > 0,
     ) || "",
   );
 
@@ -36,10 +35,6 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
   if (!isMounted) {
     return null;
   }
-
-  const stringToSlug = (str: string) => {
-    return str.toLowerCase().replace(/\s+/g, "-");
-  };
 
   return (
     <Tabs
@@ -51,10 +46,7 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
       {/* Tab Options */}
       <TabsList className="mt-6 -mb-2 w-full md:w-auto">
         {Object.entries(allGroupedSkills)
-          .filter(
-            ([_, { skillCategories }]) =>
-              Object.keys(skillCategories).length > 0,
-          ) // Filtering out empty skill categories
+          .filter(([_, { skillCategories }]) => skillCategories.length > 0) // Filtering out empty skill categories
           .map(([key, { title }]) => (
             <TabsTrigger
               key={key}
@@ -69,12 +61,11 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
       {/* Tab Content */}
       {/* Each section */}
       {Object.entries(allGroupedSkills)
-        .filter(
-          ([_, { skillCategories }]) => Object.keys(skillCategories).length > 0,
-        ) // Filtering out empty skill categories
+        .filter(([_, { skillCategories }]) => skillCategories.length > 0) // Filtering out empty skill categories
         .map(([key, { title, skillCategories }]) => (
           <TabsContent key={key} value={stringToSlug(title)}>
             <div className="mt-4 text-center md:text-left">
+              {/* Adjust CategorySkillDisplay to accept the new structure */}
               <CategorySkillDisplay skillCategories={skillCategories} />
             </div>
           </TabsContent>
@@ -84,71 +75,5 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
 };
 
 // Break down the original SkillTableSection content into a separate component for cleaner code
-const CategorySkillDisplay: React.FC<{
-  skillCategories: Record<string, Skill[]>;
-}> = ({ skillCategories }) => {
-  const [showAll, setShowAll] = useState(false);
-  const categories = Object.entries(skillCategories);
-  const shouldDisplayTitle = categories.length > 1;
-
-  const maxSkillCount = 12;
-  const maxGroupCount = 3;
-
-  let skillCount = 0;
-  let groupCount = 0;
-  const displayedSkills = showAll
-    ? categories
-    : categories.reduce((acc: [string, Skill[]][], [category, skills]) => {
-        if (skillCount < maxSkillCount && groupCount < maxGroupCount) {
-          const availableSlots = Math.min(
-            maxSkillCount - skillCount,
-            skills.length,
-          );
-          acc.push([category, skills.slice(0, availableSlots)]);
-          skillCount += availableSlots;
-          groupCount++;
-        }
-        return acc;
-      }, []);
-
-  const totalSkillCount = categories.reduce(
-    (acc, [_, skills]) => acc + skills.length,
-    0,
-  );
-
-  const shouldShowToggleButton = totalSkillCount > skillCount || showAll;
-
-  const toggleShowAll = () => {
-    setShowAll(!showAll);
-  };
-
-  // Determine grid style based on the number of categories
-  const gridStyle = shouldDisplayTitle
-    ? "gap-4 grid md:grid-cols-2 lg:grid-cols-3" // for multiple categories
-    : "gap-4 grid grid-cols-1"; // for single category
-
-  return (
-    <div>
-      <div className={gridStyle}>
-        {displayedSkills.map(([category, skills]) => (
-          <div key={category} className="mb-6">
-            {shouldDisplayTitle && <HeadingFour title={category} />}
-            <div className="flex flex-wrap justify-center md:justify-start">
-              {skills.map((skill, index) => (
-                <SkillTag key={skill.slug} skill={skill} />
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {shouldShowToggleButton && (
-        <div className="flex justify-center md:justify-center">
-          <ExpandCollapseButton isExpanded={showAll} onToggle={toggleShowAll} />
-        </div>
-      )}
-    </div>
-  );
-};
 
 export default SkillTableSection;

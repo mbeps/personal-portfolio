@@ -1,6 +1,6 @@
-import Skill from "@/types/skills";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 
-export const npm: Skill = {
+export const npm: SkillInterface = {
   name: "NPM",
   category: "Project Managers",
   isMainSkill: true,
@@ -8,7 +8,7 @@ export const npm: Skill = {
   slug: "npm",
 };
 
-export const yarn: Skill = {
+export const yarn: SkillInterface = {
   name: "Yarn",
   category: "Project Managers",
   isMainSkill: true,
@@ -16,7 +16,7 @@ export const yarn: Skill = {
   slug: "yarn",
 };
 
-export const pnpm: Skill = {
+export const pnpm: SkillInterface = {
   name: "PNPM",
   category: "Project Managers",
   isMainSkill: true,
@@ -24,7 +24,7 @@ export const pnpm: Skill = {
   slug: "pnpm",
 };
 
-export const poetry: Skill = {
+export const poetry: SkillInterface = {
   name: "Poetry",
   category: "Project Managers",
   isMainSkill: true,
@@ -32,7 +32,7 @@ export const poetry: Skill = {
   slug: "poetry-python",
 };
 
-export const pybuilder: Skill = {
+export const pybuilder: SkillInterface = {
   name: "PyBuilder",
   category: "Project Managers",
   isMainSkill: true,
@@ -40,7 +40,7 @@ export const pybuilder: Skill = {
   slug: "pybuilder",
 };
 
-export const maven: Skill = {
+export const maven: SkillInterface = {
   name: "Maven",
   category: "Project Managers",
   isMainSkill: true,
@@ -48,7 +48,7 @@ export const maven: Skill = {
   slug: "maven",
 };
 
-export const gradle: Skill = {
+export const gradle: SkillInterface = {
   name: "Gradle",
   category: "Project Managers",
   isMainSkill: true,
@@ -56,21 +56,21 @@ export const gradle: Skill = {
   slug: "gradle",
 };
 
-export const tox: Skill = {
+export const tox: SkillInterface = {
   name: "Tox",
   category: "Project Managers",
   skillType: "hard",
   slug: "tox",
 };
 
-export const nxjs: Skill = {
+export const nxjs: SkillInterface = {
   name: "Nx.js",
   category: "Project Managers",
   skillType: "hard",
   slug: "nx-js",
 };
 
-const technicalHardSkillsProjectManagers: Skill[] = [
+const technicalHardSkillsProjectManagers: SkillInterface[] = [
   npm,
   yarn,
   pnpm,

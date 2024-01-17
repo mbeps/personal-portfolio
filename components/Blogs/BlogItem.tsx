@@ -1,4 +1,4 @@
-import Blog from "@/types/blog";
+import BlogInterface from "@/interfaces/BlogInterface";
 import Link from "next/link";
 import React from "react";
 
@@ -7,7 +7,7 @@ import React from "react";
  * @param props: Blog metadata used in the card
  * @returns (JSX.Element): card with blog metadata
  */
-const BlogItem: React.FC<Blog> = (props) => {
+const BlogItem: React.FC<BlogInterface> = (props) => {
   return (
     <Link href={`/blogs/${props.slug}`}>
       <div

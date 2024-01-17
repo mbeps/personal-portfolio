@@ -1,6 +1,6 @@
-import Skill from "@/types/skills";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 
-export const continuousIntegration: Skill = {
+export const continuousIntegration: SkillInterface = {
   name: "Continuous Integration",
   category: "DevOps",
   isMainSkill: false,
@@ -8,7 +8,7 @@ export const continuousIntegration: Skill = {
   slug: "continuous-integration",
 };
 
-export const continuousDelivery: Skill = {
+export const continuousDelivery: SkillInterface = {
   name: "Continuous Delivery",
   category: "DevOps",
   isMainSkill: false,
@@ -16,7 +16,7 @@ export const continuousDelivery: Skill = {
   slug: "continuous-delivery",
 };
 
-export const continuousDeployment: Skill = {
+export const continuousDeployment: SkillInterface = {
   name: "Continuous Deployment",
   category: "DevOps",
   isMainSkill: false,
@@ -24,7 +24,7 @@ export const continuousDeployment: Skill = {
   slug: "continuous-deployment",
 };
 
-export const devOps: Skill = {
+export const devOps: SkillInterface = {
   name: "DevOps",
   category: "DevOps",
   isMainSkill: false,
@@ -32,7 +32,7 @@ export const devOps: Skill = {
   slug: "devops",
 };
 
-export const linting: Skill = {
+export const linting: SkillInterface = {
   name: "Linting",
   category: "Code Quality",
   isMainSkill: false,
@@ -40,7 +40,7 @@ export const linting: Skill = {
   slug: "linting",
 };
 
-export const oop: Skill = {
+export const oop: SkillInterface = {
   name: "Object Oriented Programming",
   category: "Programming Paradigms",
   isMainSkill: false,
@@ -48,7 +48,7 @@ export const oop: Skill = {
   slug: "object-oriented-programming",
 };
 
-export const functionalProgramming: Skill = {
+export const functionalProgramming: SkillInterface = {
   name: "Functional Programming",
   category: "Programming Paradigms",
   isMainSkill: false,
@@ -56,7 +56,7 @@ export const functionalProgramming: Skill = {
   slug: "functional-programming",
 };
 
-export const algorithms: Skill = {
+export const algorithms: SkillInterface = {
   name: "Algorithms",
   category: "Core Computer Science",
   isMainSkill: false,
@@ -64,7 +64,7 @@ export const algorithms: Skill = {
   slug: "algorithm",
 };
 
-export const dataStructures: Skill = {
+export const dataStructures: SkillInterface = {
   name: "Data Structures",
   category: "Core Computer Science",
   isMainSkill: false,
@@ -72,7 +72,7 @@ export const dataStructures: Skill = {
   slug: "data-structures",
 };
 
-export const androidDevelopment: Skill = {
+export const androidDevelopment: SkillInterface = {
   name: "Android Development",
   category: "Platform Development",
   isMainSkill: false,
@@ -80,7 +80,7 @@ export const androidDevelopment: Skill = {
   slug: "android-development",
 };
 
-export const iosDevelopment: Skill = {
+export const iosDevelopment: SkillInterface = {
   name: "iOS Development",
   category: "Platform Development",
   isMainSkill: false,
@@ -88,7 +88,7 @@ export const iosDevelopment: Skill = {
   slug: "ios-development",
 };
 
-export const windowsDevelopment: Skill = {
+export const windowsDevelopment: SkillInterface = {
   name: "Windows Development",
   category: "Platform Development",
   isMainSkill: false,
@@ -96,7 +96,7 @@ export const windowsDevelopment: Skill = {
   slug: "windows-development",
 };
 
-export const macDevelopment: Skill = {
+export const macDevelopment: SkillInterface = {
   name: "Mac Development",
   category: "Platform Development",
   isMainSkill: false,
@@ -104,7 +104,7 @@ export const macDevelopment: Skill = {
   slug: "macos-development",
 };
 
-export const linuxDevelopment: Skill = {
+export const linuxDevelopment: SkillInterface = {
   name: "Linux Development",
   category: "Platform Development",
   isMainSkill: false,
@@ -112,7 +112,7 @@ export const linuxDevelopment: Skill = {
   slug: "linux-development",
 };
 
-export const machineLearning: Skill = {
+export const machineLearning: SkillInterface = {
   name: "Machine Learning",
   category: "Artificial Intelligence & Machine Learning",
   isMainSkill: false,
@@ -120,7 +120,7 @@ export const machineLearning: Skill = {
   slug: "machine-learning",
 };
 
-export const deepLearning: Skill = {
+export const deepLearning: SkillInterface = {
   name: "Deep Learning",
   category: "Artificial Intelligence & Machine Learning",
   isMainSkill: false,
@@ -128,7 +128,7 @@ export const deepLearning: Skill = {
   slug: "deep-learning",
 };
 
-export const artificialIntelligence: Skill = {
+export const artificialIntelligence: SkillInterface = {
   name: "Artificial Intelligence",
   category: "Artificial Intelligence & Machine Learning",
   isMainSkill: false,
@@ -136,7 +136,7 @@ export const artificialIntelligence: Skill = {
   slug: "artificial-intelligence",
 };
 
-export const dataScience: Skill = {
+export const dataScience: SkillInterface = {
   name: "Data Science",
   category: "Data Science",
   isMainSkill: false,
@@ -144,7 +144,7 @@ export const dataScience: Skill = {
   slug: "data-science",
 };
 
-export const hyperparameters: Skill = {
+export const hyperparameters: SkillInterface = {
   name: "Hyperparameters",
   category: "Artificial Intelligence & Machine Learning",
   isMainSkill: false,
@@ -152,7 +152,7 @@ export const hyperparameters: Skill = {
   slug: "hyperparameters",
 };
 
-export const boosting: Skill = {
+export const boosting: SkillInterface = {
   name: "Boosting",
   isMainSkill: false,
   skillType: "general",
@@ -160,7 +160,7 @@ export const boosting: Skill = {
   slug: "boosting",
 };
 
-export const dataVisualisation: Skill = {
+export const dataVisualisation: SkillInterface = {
   name: "Data Visualisation",
   category: "Data Science",
   isMainSkill: false,
@@ -168,7 +168,7 @@ export const dataVisualisation: Skill = {
   slug: "data-visualisation",
 };
 
-export const neuralNetworks: Skill = {
+export const neuralNetworks: SkillInterface = {
   name: "Neural Networks",
   category: "Artificial Intelligence & Machine Learning",
   isMainSkill: false,
@@ -176,7 +176,7 @@ export const neuralNetworks: Skill = {
   slug: "neural-networks",
 };
 
-export const apis: Skill = {
+export const apis: SkillInterface = {
   name: "APIs",
   category: "APIs",
   isMainSkill: false,
@@ -184,7 +184,7 @@ export const apis: Skill = {
   slug: "apis",
 };
 
-export const databases: Skill = {
+export const databases: SkillInterface = {
   name: "Databases",
   category: "Databases",
   isMainSkill: false,
@@ -192,7 +192,7 @@ export const databases: Skill = {
   slug: "databases",
 };
 
-export const webSockets: Skill = {
+export const webSockets: SkillInterface = {
   name: "Web Sockets",
   category: "Web Sockets",
   isMainSkill: false,
@@ -200,7 +200,7 @@ export const webSockets: Skill = {
   slug: "web-sockets",
 };
 
-export const sql: Skill = {
+export const sql: SkillInterface = {
   name: "Relational Databases (SQL)",
   category: "Databases",
   isMainSkill: false,
@@ -208,7 +208,7 @@ export const sql: Skill = {
   slug: "sql",
 };
 
-export const noSql: Skill = {
+export const noSql: SkillInterface = {
   name: "Non Relational Databases (NoSQL)",
   category: "Databases",
   isMainSkill: false,
@@ -216,7 +216,7 @@ export const noSql: Skill = {
   slug: "no-sql",
 };
 
-export const orm: Skill = {
+export const orm: SkillInterface = {
   name: "Object Relational Mapping",
   category: "Databases",
   isMainSkill: false,
@@ -224,7 +224,7 @@ export const orm: Skill = {
   slug: "orm",
 };
 
-export const testing: Skill = {
+export const testing: SkillInterface = {
   name: "Testing",
   category: "Testing",
   isMainSkill: false,
@@ -232,7 +232,7 @@ export const testing: Skill = {
   slug: "testing",
 };
 
-export const containerization: Skill = {
+export const containerization: SkillInterface = {
   name: "Containerization",
   category: "DevOps",
   isMainSkill: false,
@@ -240,7 +240,7 @@ export const containerization: Skill = {
   slug: "containerization",
 };
 
-export const clusterisation: Skill = {
+export const clusterisation: SkillInterface = {
   name: "Clusterisation",
   category: "DevOps",
   isMainSkill: false,
@@ -248,7 +248,7 @@ export const clusterisation: Skill = {
   slug: "clusterisation",
 };
 
-export const infrastructureAsCode: Skill = {
+export const infrastructureAsCode: SkillInterface = {
   name: "Infrastructure as Code",
   category: "DevOps",
   isMainSkill: false,
@@ -256,7 +256,7 @@ export const infrastructureAsCode: Skill = {
   slug: "infrastructure-as-code",
 };
 
-export const automation: Skill = {
+export const automation: SkillInterface = {
   name: "Automation",
   category: "Automation",
   isMainSkill: false,
@@ -264,7 +264,7 @@ export const automation: Skill = {
   slug: "automation",
 };
 
-export const databaseManagementSystems: Skill = {
+export const databaseManagementSystems: SkillInterface = {
   name: "Database Management Systems",
   category: "Databases",
   isMainSkill: false,
@@ -272,7 +272,7 @@ export const databaseManagementSystems: Skill = {
   slug: "database-management-systems",
 };
 
-export const indexing: Skill = {
+export const indexing: SkillInterface = {
   name: "Indexing",
   category: "Databases",
   isMainSkill: false,
@@ -280,7 +280,7 @@ export const indexing: Skill = {
   slug: "database-indexing",
 };
 
-export const cloudComputing: Skill = {
+export const cloudComputing: SkillInterface = {
   name: "Cloud Computing",
   category: "Cloud Computing",
   isMainSkill: false,
@@ -288,7 +288,7 @@ export const cloudComputing: Skill = {
   slug: "cloud-computing",
 };
 
-export const designPatterns: Skill = {
+export const designPatterns: SkillInterface = {
   name: "Design Patterns",
   category: "Code Quality",
   isMainSkill: false,
@@ -296,7 +296,7 @@ export const designPatterns: Skill = {
   slug: "design-patterns",
 };
 
-export const userAuthentication: Skill = {
+export const userAuthentication: SkillInterface = {
   name: "User Authentication",
   category: "Back-End Web Development",
   isMainSkill: false,
@@ -304,7 +304,7 @@ export const userAuthentication: Skill = {
   slug: "user-authentication",
 };
 
-export const webDevelopment: Skill = {
+export const webDevelopment: SkillInterface = {
   name: "Web Development",
   category: "Platform Development",
   isMainSkill: false,
@@ -312,7 +312,7 @@ export const webDevelopment: Skill = {
   slug: "web-development",
 };
 
-export const sdks: Skill = {
+export const sdks: SkillInterface = {
   name: "SDK",
   category: "SDKs",
   isMainSkill: true,
@@ -320,7 +320,7 @@ export const sdks: Skill = {
   slug: "sdks",
 };
 
-export const userCentricDesign: Skill = {
+export const userCentricDesign: SkillInterface = {
   name: "User Centric Design",
   category: "Front-End Web Development",
   isMainSkill: false,
@@ -328,7 +328,7 @@ export const userCentricDesign: Skill = {
   slug: "user-centric-design",
 };
 
-export const gameDevelopment: Skill = {
+export const gameDevelopment: SkillInterface = {
   name: "Game Development",
   category: "Game Development",
   isMainSkill: false,
@@ -336,7 +336,7 @@ export const gameDevelopment: Skill = {
   slug: "game-development",
 };
 
-export const mathematics: Skill = {
+export const mathematics: SkillInterface = {
   name: "Mathematics",
   category: "Mathematics",
   isMainSkill: false,
@@ -357,7 +357,7 @@ export const mathematics: Skill = {
   // ],
 };
 
-export const versionControl: Skill = {
+export const versionControl: SkillInterface = {
   name: "Version Control",
   category: "Version Control",
   isMainSkill: false,
@@ -365,7 +365,7 @@ export const versionControl: Skill = {
   slug: "version-control",
 };
 
-export const stateManagement: Skill = {
+export const stateManagement: SkillInterface = {
   name: "State Management",
   category: "Front-End Web Development",
   isMainSkill: false,

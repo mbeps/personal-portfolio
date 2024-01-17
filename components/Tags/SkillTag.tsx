@@ -3,7 +3,7 @@
 import isSkillAssociatedWithBlogs from "@/actions/skills/isSkillAssociatedWithBlogs";
 import isSkillAssociatedWithCertificate from "@/actions/skills/isSkillAssociatedWithCertificate";
 import isSkillAssociatedWithProject from "@/actions/skills/isSkillAssociatedWithProject";
-import Skill from "@/types/skills";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -20,7 +20,7 @@ import {
 } from "@/components/shadcn/ui/tooltip";
 
 interface TagProps {
-  skill: Skill;
+  skill: SkillInterface;
   hide?: boolean;
 }
 

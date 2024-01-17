@@ -1,9 +1,9 @@
-import NavItem from "@/types/pages";
+import NavigationItemInterface from "@/interfaces/NavigationItemInterface";
 
 /**
  * Buttons to be displayed in the navbar.
  */
-const NAV_ITEMS: Array<NavItem> = [
+const NAV_ITEMS: Array<NavigationItemInterface> = [
   {
     label: "Home",
     page: "/",

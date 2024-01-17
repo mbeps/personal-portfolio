@@ -8,11 +8,11 @@ import {
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import allSkills from "@/database/skills/skills";
-import Skill from "@/types/skills";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import React from "react";
 
 interface RelatedSkillsSectionProps {
-  skill: Skill;
+  skill: SkillInterface;
 }
 
 const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({

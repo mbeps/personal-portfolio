@@ -13,8 +13,8 @@ import {
 } from "@/components/shadcn/ui/dropdown-menu";
 import { languages } from "@/database/skills/languages";
 import { technologies } from "@/database/skills/skills";
-import FilterOption from "@/types/filters/FilterOption";
-import Skill from "@/types/skills";
+import FilterOption from "@/interfaces/filters/FilterOption";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Link from "next/link";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
@@ -52,9 +52,10 @@ const TechnologiesModal: React.FC = () => {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
-  const displayedSkills: Skill[] = [...languages, ...technologies].filter(
-    (skill) => skill.isMainSkill,
-  );
+  const displayedSkills: SkillInterface[] = [
+    ...languages,
+    ...technologies,
+  ].filter((skill) => skill.isMainSkill);
 
   const options: FilterOption[] = [
     { slug: "category", entryName: "Category" },
@@ -115,12 +116,12 @@ const TechnologiesModal: React.FC = () => {
           </DropdownMenu>
         </div>
 
-        {Object.entries(groupedSkills).map(([group, skills], index) => (
+        {groupedSkills.map((categoryData, index) => (
           <div key={index} className="mt-4 text-center md:text-left">
-            <HeadingThree title={group} />
+            <HeadingThree title={categoryData.skillCategoryName} />
             <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-              {skills.map((skill, index) => (
-                <SkillTag key={index} skill={skill} />
+              {categoryData.skills.map((skill, skillIndex) => (
+                <SkillTag key={skillIndex} skill={skill} />
               ))}
             </div>
           </div>

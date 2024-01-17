@@ -1,18 +1,21 @@
 import BlogListSection from "@/app/blogs/components/BlogListSection";
 import { Button } from "@/components/shadcn/ui/button";
-import Blog from "@/types/blog";
-import Skill from "@/types/skills";
+import BlogInterface from "@/interfaces/BlogInterface";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Link from "next/link";
 
 import React from "react";
 
 interface BlogsPageProps {
-  blogs: Blog[];
-  skill: Skill;
+  blogs: BlogInterface[];
+  skill: SkillInterface;
 }
 
 const BlogsSection: React.FC<BlogsPageProps> = ({ blogs, skill }) => {
-  const filterBlogsBySkill = (blogs: Blog[], selectedSkill: string): Blog[] => {
+  const filterBlogsBySkill = (
+    blogs: BlogInterface[],
+    selectedSkill: string,
+  ): BlogInterface[] => {
     return blogs.filter((blog) =>
       blog.technicalSkills.some(
         (s) => s.name.toLowerCase() === selectedSkill.toLowerCase(),
@@ -26,7 +29,9 @@ const BlogsSection: React.FC<BlogsPageProps> = ({ blogs, skill }) => {
     return;
   }
 
-  const groupBlogsByCategory = (blogs: Blog[]): Record<string, Blog[]> => {
+  const groupBlogsByCategory = (
+    blogs: BlogInterface[],
+  ): Record<string, BlogInterface[]> => {
     return { Blogs: blogs };
   };
 

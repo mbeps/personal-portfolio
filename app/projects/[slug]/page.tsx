@@ -10,7 +10,7 @@ import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import { Button } from "@/components/shadcn/ui/button";
 import allProjects from "@/database/projects";
-import Skill from "@/types/skills";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -91,9 +91,9 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const coverImagePath = `/projects/${slug}/cover.png`;
 
   function technicalGeneralSkills(
-    skills: Skill[],
-    extraSkills: Skill[] = [],
-  ): Skill[] {
+    skills: SkillInterface[],
+    extraSkills: SkillInterface[] = [],
+  ): SkillInterface[] {
     // Combine the original skills and extra skills
     const combinedSkills = skills.concat(extraSkills);
 
@@ -108,7 +108,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
           uniqueSkills.push(skill);
         }
         return uniqueSkills;
-      }, [] as Skill[]);
+      }, [] as SkillInterface[]);
   }
 
   // Using the new function to group all skill types

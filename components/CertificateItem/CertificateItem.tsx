@@ -3,7 +3,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
-import Certificate from "@/types/certificates";
+import CertificateInterface from "@/interfaces/CertificateInterface";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -12,7 +12,7 @@ import Tag from "../Tags/Tag";
 import { AspectRatio } from "../shadcn/ui/aspect-ratio";
 
 interface CertificateItemProps {
-  certificate: Certificate;
+  certificate: CertificateInterface;
 }
 
 /**

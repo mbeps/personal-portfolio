@@ -1,4 +1,4 @@
-import Skill from "@/types/skills";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import {
   infrastructureAsCode,
   continuousDelivery,
@@ -10,7 +10,7 @@ import {
   containerization,
 } from "../generalSkills";
 
-export const gitHubActions: Skill = {
+export const gitHubActions: SkillInterface = {
   name: "GitHub Actions",
   category: "DevOps",
   isMainSkill: true,
@@ -26,7 +26,7 @@ export const gitHubActions: Skill = {
   ],
 };
 
-export const gitlabCI: Skill = {
+export const gitlabCI: SkillInterface = {
   name: "GitLab CI",
   category: "DevOps",
   isMainSkill: true,
@@ -42,7 +42,7 @@ export const gitlabCI: Skill = {
   ],
 };
 
-export const jenkins: Skill = {
+export const jenkins: SkillInterface = {
   name: "Jenkins",
   category: "DevOps",
   isMainSkill: true,
@@ -58,7 +58,7 @@ export const jenkins: Skill = {
   ],
 };
 
-export const teamCity: Skill = {
+export const teamCity: SkillInterface = {
   name: "TeamCity",
   category: "DevOps",
   isMainSkill: true,
@@ -74,7 +74,7 @@ export const teamCity: Skill = {
   ],
 };
 
-export const travisCI: Skill = {
+export const travisCI: SkillInterface = {
   name: "Travis CI",
   category: "DevOps",
   skillType: "hard",
@@ -89,7 +89,7 @@ export const travisCI: Skill = {
   ],
 };
 
-export const docker: Skill = {
+export const docker: SkillInterface = {
   name: "Docker",
   category: "DevOps",
   isMainSkill: true,
@@ -98,7 +98,7 @@ export const docker: Skill = {
   technicalGeneralSkills: [containerization],
 };
 
-export const podman: Skill = {
+export const podman: SkillInterface = {
   name: "Podman",
   category: "DevOps",
   isMainSkill: true,
@@ -107,7 +107,7 @@ export const podman: Skill = {
   technicalGeneralSkills: [containerization],
 };
 
-export const kubernetes: Skill = {
+export const kubernetes: SkillInterface = {
   name: "Kubernetes",
   category: "DevOps",
   isMainSkill: true,
@@ -116,7 +116,7 @@ export const kubernetes: Skill = {
   technicalGeneralSkills: [containerization, clusterisation],
 };
 
-export const ansible: Skill = {
+export const ansible: SkillInterface = {
   name: "Ansible",
   category: "DevOps",
   skillType: "hard",
@@ -124,7 +124,7 @@ export const ansible: Skill = {
   technicalGeneralSkills: [infrastructureAsCode, devOps, automation],
 };
 
-export const vagrant: Skill = {
+export const vagrant: SkillInterface = {
   name: "Vagrant",
   category: "DevOps",
   isMainSkill: true,
@@ -133,7 +133,7 @@ export const vagrant: Skill = {
   technicalGeneralSkills: [infrastructureAsCode, devOps],
 };
 
-const technicalHardSkillsDevOps: Skill[] = [
+const technicalHardSkillsDevOps: SkillInterface[] = [
   gitHubActions,
   gitlabCI,
   jenkins,

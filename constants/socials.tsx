@@ -1,7 +1,7 @@
-import SocialLink from "@/types/social";
+import SocialLinkInterface from "@/interfaces/SocialLinkInterface";
 import { AiFillLinkedin, AiOutlineGithub, AiOutlineMail } from "react-icons/ai";
 
-const socialLinks: SocialLink[] = [
+const socialLinks: SocialLinkInterface[] = [
   {
     name: "GitHub",
     link: "https://github.com/mbeps",

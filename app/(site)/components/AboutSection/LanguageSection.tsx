@@ -30,8 +30,8 @@ import allCertificates from "@/database/certificates";
 import allProjects from "@/database/projects";
 import { languages } from "@/database/skills/languages";
 import useIsMounted from "@/hooks/useIsMounted";
-import FilterOption from "@/types/filters/FilterOption";
-import Skill from "@/types/skills";
+import FilterOption from "@/interfaces/filters/FilterOption";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Link from "next/link";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
@@ -80,7 +80,7 @@ const LanguageSection: React.FC = () => {
 export default LanguageSection;
 
 interface LanguageTagWithModalProps {
-  language: Skill;
+  language: SkillInterface;
   repository?: string;
   handleOpenModal: () => void;
   handleCloseModal: () => void;
@@ -196,12 +196,12 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
 
           {/* List of skills */}
           <div className="space-y-1">
-            {Object.entries(groupedSkills).map(([category, skills], index) => (
+            {groupedSkills.map((categoryData, index) => (
               <div key={index} className="text-center md:text-left">
-                <HeadingThree title={category} />
+                <HeadingThree title={categoryData.skillCategoryName} />
                 <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-                  {skills.map((skill, index) => (
-                    <SkillTag key={index} skill={skill} />
+                  {categoryData.skills.map((skill, skillIndex) => (
+                    <SkillTag key={skillIndex} skill={skill} />
                   ))}
                 </div>
               </div>

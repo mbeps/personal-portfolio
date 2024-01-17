@@ -1,7 +1,7 @@
-import Skill from "@/types/skills";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import { webDevelopment, apis, artificialIntelligence } from "../generalSkills";
 
-export const rest: Skill = {
+export const rest: SkillInterface = {
   name: "REST",
   category: "APIs",
   isMainSkill: true,
@@ -10,7 +10,7 @@ export const rest: Skill = {
   technicalGeneralSkills: [webDevelopment, apis],
 };
 
-export const apollo: Skill = {
+export const apollo: SkillInterface = {
   name: "Apollo",
   category: "APIs",
   skillType: "hard",
@@ -18,7 +18,7 @@ export const apollo: Skill = {
   technicalGeneralSkills: [webDevelopment, apis],
 };
 
-export const graphQL: Skill = {
+export const graphQL: SkillInterface = {
   name: "GraphQL",
   category: "APIs",
   isMainSkill: true,
@@ -28,7 +28,7 @@ export const graphQL: Skill = {
   technicalHardSkills: [apollo],
 };
 
-export const tRPC: Skill = {
+export const tRPC: SkillInterface = {
   name: "tRPC",
   category: "APIs",
   isMainSkill: true,
@@ -37,7 +37,7 @@ export const tRPC: Skill = {
   technicalGeneralSkills: [webDevelopment, apis],
 };
 
-export const socketIO: Skill = {
+export const socketIO: SkillInterface = {
   name: "Socket.IO",
   category: "Web Sockets",
   skillType: "hard",
@@ -45,7 +45,7 @@ export const socketIO: Skill = {
   technicalGeneralSkills: [webDevelopment],
 };
 
-export const pusher: Skill = {
+export const pusher: SkillInterface = {
   name: "Pusher",
   category: "Web Sockets",
   skillType: "hard",
@@ -53,7 +53,7 @@ export const pusher: Skill = {
   technicalGeneralSkills: [webDevelopment],
 };
 
-export const openAI: Skill = {
+export const openAI: SkillInterface = {
   name: "OpenAI",
   category: "Artificial Intelligence & Machine Learning",
   isMainSkill: true,
@@ -62,7 +62,7 @@ export const openAI: Skill = {
   technicalGeneralSkills: [apis, artificialIntelligence],
 };
 
-export const replicateAI: Skill = {
+export const replicateAI: SkillInterface = {
   name: "Replicate AI",
   category: "Artificial Intelligence & Machine Learning",
   isMainSkill: true,

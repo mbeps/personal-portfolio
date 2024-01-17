@@ -16,7 +16,7 @@ import {
 import { NAVBAR_HEIGHT } from "@/constants/NAVBAR";
 import useIsMounted from "@/hooks/useIsMounted";
 import { cn } from "@/lib/utils";
-import FilterCategory from "@/types/filters/FilterCategory";
+import FilterCategory from "@/interfaces/filters/FilterCategory";
 import { Check } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -26,7 +26,7 @@ import { IoClose } from "react-icons/io5";
 import HeadingThree from "../Text/HeadingThree";
 import { Button } from "../shadcn/ui/button";
 import { ArchiveToggle } from "./ArchiveToggle";
-import FilterOption from "@/types/filters/FilterOption";
+import FilterOption from "@/interfaces/filters/FilterOption";
 
 interface FilterOverlayProps {
   filterCategories: FilterCategory[];
@@ -266,7 +266,7 @@ const FilterPopover = ({
                     },
                     {
                       entryName: archiveFilter.paramName, // Assuming paramName maps to entryName
-                      slug: archiveFilter.status.toString(), // status converted to string for slug
+                      slug: true.toString(), // status converted to string for slug
                     },
                   ],
                   basePath,

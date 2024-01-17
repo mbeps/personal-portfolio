@@ -1,8 +1,8 @@
-import Skill from "@/types/skills";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 export default function getSkillBySlug(
   slug: string,
-  skillsArray: Skill[]
-): Skill | undefined {
+  skillsArray: SkillInterface[],
+): SkillInterface | undefined {
   return skillsArray.find((skill) => skill.slug === slug);
 }

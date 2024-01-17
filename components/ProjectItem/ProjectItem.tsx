@@ -1,4 +1,4 @@
-import Project from "@/types/projects";
+import ProjectInterface from "@/interfaces/ProjectInterface";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -11,7 +11,7 @@ import {
 import { AspectRatio } from "../shadcn/ui/aspect-ratio";
 
 interface ProjectItemProps {
-  project: Project;
+  project: ProjectInterface;
 }
 
 /**

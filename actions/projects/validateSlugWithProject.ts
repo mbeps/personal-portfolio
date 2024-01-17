@@ -1,4 +1,4 @@
-import Project from "@/types/projects";
+import ProjectInterface from "@/interfaces/ProjectInterface";
 
 /**
  * Validates that the slugs are valid.
@@ -9,10 +9,10 @@ import Project from "@/types/projects";
  */
 const validateSlugWithProject = (
   slugs: string[],
-  projects: Project[]
+  projects: ProjectInterface[],
 ): boolean => {
   return slugs.every((slug) =>
-    projects.some((project) => project.slug === slug)
+    projects.some((project) => project.slug === slug),
   );
 };
 

@@ -5,7 +5,7 @@ import Reader from "@/components/Reader/Reader";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import blogs from "@/database/blogs";
-import Skill from "@/types/skills";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 

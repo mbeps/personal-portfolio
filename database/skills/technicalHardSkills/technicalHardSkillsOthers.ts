@@ -1,7 +1,7 @@
-import Skill from "@/types/skills";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import { gameDevelopment } from "../generalSkills";
 
-export const gameMakerStudio: Skill = {
+export const gameMakerStudio: SkillInterface = {
   name: "GameMaker Studio 2",
   category: "Game Development",
   skillType: "hard",
@@ -9,6 +9,6 @@ export const gameMakerStudio: Skill = {
   technicalGeneralSkills: [gameDevelopment],
 };
 
-const technicalHardSkillsGameDev: Skill[] = [gameMakerStudio];
+const technicalHardSkillsGameDev: SkillInterface[] = [gameMakerStudio];
 
 export default technicalHardSkillsGameDev;

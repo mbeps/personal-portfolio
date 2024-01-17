@@ -1,6 +1,6 @@
-import Skill from "./skills";
+import SkillInterface from "./skills/SkillInterface";
 
-export default interface Certificate {
+export default interface CertificateInterface {
   name: string;
   slug: string;
   description?: string;
@@ -13,8 +13,8 @@ export default interface Certificate {
     | "GitHub"
     | "Royal Holloway University";
   credentialURL: string;
-  technicalSkills: Skill[];
-  softSkills: Skill[];
+  technicalSkills: SkillInterface[];
+  softSkills: SkillInterface[];
   category:
     | "University"
     | "Programming Languages"

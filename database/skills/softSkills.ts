@@ -1,6 +1,6 @@
-import Skill from "@/types/skills";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 
-export const communication: Skill = {
+export const communication: SkillInterface = {
   name: "Communication",
   isMainSkill: false,
   skillType: "soft",
@@ -8,7 +8,7 @@ export const communication: Skill = {
   slug: "communication",
 };
 
-export const projectManagement: Skill = {
+export const projectManagement: SkillInterface = {
   name: "Project Management",
   isMainSkill: false,
   skillType: "soft",
@@ -16,7 +16,7 @@ export const projectManagement: Skill = {
   slug: "project-management",
 };
 
-export const teamwork: Skill = {
+export const teamwork: SkillInterface = {
   name: "Teamwork",
   isMainSkill: false,
   skillType: "soft",
@@ -24,7 +24,7 @@ export const teamwork: Skill = {
   slug: "teamwork",
 };
 
-export const leadership: Skill = {
+export const leadership: SkillInterface = {
   name: "Leadership",
   isMainSkill: false,
   skillType: "soft",
@@ -32,7 +32,7 @@ export const leadership: Skill = {
   slug: "leadership",
 };
 
-export const problemSolving: Skill = {
+export const problemSolving: SkillInterface = {
   name: "Problem Solving",
   isMainSkill: false,
   skillType: "soft",
@@ -40,7 +40,7 @@ export const problemSolving: Skill = {
   slug: "problem-solving",
 };
 
-export const criticalThinking: Skill = {
+export const criticalThinking: SkillInterface = {
   name: "Critical Thinking",
   isMainSkill: false,
   skillType: "soft",
@@ -48,7 +48,7 @@ export const criticalThinking: Skill = {
   slug: "critical-thinking",
 };
 
-export const creativity: Skill = {
+export const creativity: SkillInterface = {
   name: "Creativity",
   isMainSkill: false,
   skillType: "soft",
@@ -56,7 +56,7 @@ export const creativity: Skill = {
   slug: "creativity",
 };
 
-export const adaptability: Skill = {
+export const adaptability: SkillInterface = {
   name: "Adaptability",
   isMainSkill: false,
   skillType: "soft",
@@ -64,7 +64,7 @@ export const adaptability: Skill = {
   slug: "adaptability",
 };
 
-export const timeManagement: Skill = {
+export const timeManagement: SkillInterface = {
   name: "Time Management",
   isMainSkill: false,
   skillType: "soft",
@@ -72,7 +72,7 @@ export const timeManagement: Skill = {
   slug: "time-management",
 };
 
-export const riskManagement: Skill = {
+export const riskManagement: SkillInterface = {
   name: "Risk Management",
   isMainSkill: false,
   skillType: "soft",
@@ -80,7 +80,7 @@ export const riskManagement: Skill = {
   slug: "risk-management",
 };
 
-export const stakeholderManagement: Skill = {
+export const stakeholderManagement: SkillInterface = {
   name: "Stakeholder Management",
   isMainSkill: false,
   skillType: "soft",
@@ -88,7 +88,7 @@ export const stakeholderManagement: Skill = {
   slug: "stakeholder-management",
 };
 
-export const scopeManagement: Skill = {
+export const scopeManagement: SkillInterface = {
   name: "Scope Management",
   isMainSkill: false,
   skillType: "soft",
@@ -96,7 +96,7 @@ export const scopeManagement: Skill = {
   slug: "scope-management",
 };
 
-export const costManagement: Skill = {
+export const costManagement: SkillInterface = {
   name: "Cost Management",
   isMainSkill: false,
   skillType: "soft",
@@ -104,7 +104,7 @@ export const costManagement: Skill = {
   slug: "cost-management",
 };
 
-export const qualityManagement: Skill = {
+export const qualityManagement: SkillInterface = {
   name: "Quality Management",
   isMainSkill: false,
   skillType: "soft",
@@ -112,7 +112,7 @@ export const qualityManagement: Skill = {
   slug: "quality-management",
 };
 
-export const procurementManagement: Skill = {
+export const procurementManagement: SkillInterface = {
   name: "Procurement Management",
   isMainSkill: false,
   skillType: "soft",
@@ -120,7 +120,7 @@ export const procurementManagement: Skill = {
   slug: "procurement-management",
 };
 
-export const integrationManagement: Skill = {
+export const integrationManagement: SkillInterface = {
   name: "Integration Management",
   isMainSkill: false,
   skillType: "soft",
@@ -128,7 +128,7 @@ export const integrationManagement: Skill = {
   slug: "integration-management",
 };
 
-export const humanResourceManagement: Skill = {
+export const humanResourceManagement: SkillInterface = {
   name: "Human Resource Management",
   isMainSkill: false,
   skillType: "soft",
@@ -136,7 +136,7 @@ export const humanResourceManagement: Skill = {
   slug: "human-resource-management",
 };
 
-const softSkills: Skill[] = [
+const softSkills: SkillInterface[] = [
   communication,
   projectManagement,
   teamwork,

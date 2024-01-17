@@ -1,7 +1,7 @@
 /**
  * Interface for representing a skill.
  */
-export default interface Skill {
+export default interface SkillInterface {
   name: string;
   slug: string;
   category:
@@ -30,9 +30,9 @@ export default interface Skill {
     | "Automation"
     | "Platform Development"
     | "Soft Skills";
-  technicalGeneralSkills?: Skill[];
-  technicalHardSkills?: Skill[];
-  technicalSoftSkills?: Skill[];
+  technicalGeneralSkills?: SkillInterface[];
+  technicalHardSkills?: SkillInterface[];
+  technicalSoftSkills?: SkillInterface[];
   isMainSkill?: boolean;
   skillType: "hard" | "general" | "soft";
 }
