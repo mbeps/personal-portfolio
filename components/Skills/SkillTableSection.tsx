@@ -12,6 +12,7 @@ import React, { useState } from "react";
 import ExpandCollapseButton from "../Button/ExpandCollapseButton";
 import SkillTag from "../Tags/SkillTag";
 import useIsMounted from "@/hooks/useIsMounted";
+import stringToSlug from "@/actions/stringToSlug";
 
 interface SkillCategoryProps {
   title: string;
@@ -36,10 +37,6 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
   if (!isMounted) {
     return null;
   }
-
-  const stringToSlug = (str: string) => {
-    return str.toLowerCase().replace(/\s+/g, "-");
-  };
 
   return (
     <Tabs
