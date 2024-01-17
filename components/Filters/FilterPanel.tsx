@@ -266,7 +266,7 @@ const FilterPopover = ({
                     },
                     {
                       entryName: archiveFilter.paramName, // Assuming paramName maps to entryName
-                      slug: archiveFilter.status.toString(), // status converted to string for slug
+                      slug: true.toString(), // status converted to string for slug
                     },
                   ],
                   basePath,
