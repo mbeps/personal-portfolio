@@ -339,7 +339,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
 
   return (
     <>
-      <div className="flex flex-col md:flex-row items-center w-full mt-12 p-2 gap-4">
+      <div className="flex flex-col md:flex-row items-center w-full mt-12 py-2 gap-4">
         {/* Search input */}
         <div className="w-full md:flex-1">
           <SearchInput
