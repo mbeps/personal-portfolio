@@ -1,6 +1,6 @@
 import SkillsCategoryInterface from "./SkillsCategoryInterface";
 
-export default interface GroupedSkillsInterface {
+export default interface GroupedSkillsCategoriesInterface {
   title: string;
   skillCategories: SkillsCategoryInterface[];
 }

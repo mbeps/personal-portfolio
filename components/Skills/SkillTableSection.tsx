@@ -8,24 +8,29 @@ import {
   TabsTrigger,
 } from "@/components/shadcn/ui/tabs";
 import useIsMounted from "@/hooks/useIsMounted";
-import GroupedSkillsInterface from "@/interfaces/skills/GroupedSkillsInterface";
+import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import React, { useState } from "react";
 import CategorySkillDisplay from "./CategorySkillDisplay";
 
 interface SkillTableSectionProps {
-  allGroupedSkills: GroupedSkillsInterface[];
+  allGroupedSkills: GroupedSkillsCategoriesInterface[];
 }
 
 const SkillTableSection: React.FC<SkillTableSectionProps> = ({
   allGroupedSkills,
 }) => {
-  const [selectedTab, setSelectedTab] = useState(
-    allGroupedSkills.length > 0 ? stringToSlug(allGroupedSkills[0].title) : "",
-  );
+  const [selectedTab, setSelectedTab] = useState(() => {
+    // Find the first group with non-empty skill categories
+    const nonEmptyGroup =
+      Array.isArray(allGroupedSkills) &&
+      allGroupedSkills.find((group) => group.skillCategories.length > 0);
+    return nonEmptyGroup ? stringToSlug(nonEmptyGroup.title) : "";
+  });
 
   const isMounted = useIsMounted();
 
-  if (!isMounted) {
+  // Do not render if not mounted or if there are no tabs with content
+  if (!isMounted || !selectedTab) {
     return null;
   }
 

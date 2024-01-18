@@ -30,23 +30,23 @@ const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
     return;
   }
 
-  const allGroupedBlogSkills = {
-    technologies: filterAndGroupSkills(
+  const allGroupedBlogSkills = [
+    filterAndGroupSkills(
       getTechnologiesFromHardTechnicalSkill(skill),
       "hard",
       "Technologies",
     ),
-    generalSkills: filterAndGroupSkills(
+    filterAndGroupSkills(
       getGeneralSkillsFromHardTechnicalSkill(skill),
       "general",
       "Technical Skills",
     ),
-    softSkills: filterAndGroupSkills(
+    filterAndGroupSkills(
       getHardSkillsFromGeneralTechnicalSkill(skill, allSkills),
       "soft",
       "Soft Skills",
     ),
-  };
+  ];
 
   return (
     <>
