@@ -8,26 +8,19 @@ import {
   TabsTrigger,
 } from "@/components/shadcn/ui/tabs";
 import useIsMounted from "@/hooks/useIsMounted";
-import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
+import GroupedSkillsInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import React, { useState } from "react";
 import CategorySkillDisplay from "./CategorySkillDisplay";
 
-interface SkillCategoryProps {
-  title: string;
-  skillCategories: SkillsCategoryInterface[];
-}
-
 interface SkillTableSectionProps {
-  allGroupedSkills: Record<string, SkillCategoryProps>;
+  allGroupedSkills: GroupedSkillsInterface[];
 }
 
 const SkillTableSection: React.FC<SkillTableSectionProps> = ({
   allGroupedSkills,
 }) => {
   const [selectedTab, setSelectedTab] = useState(
-    Object.keys(allGroupedSkills).find(
-      (key) => allGroupedSkills[key].skillCategories.length > 0,
-    ) || "",
+    allGroupedSkills.length > 0 ? stringToSlug(allGroupedSkills[0].title) : "",
   );
 
   const isMounted = useIsMounted();
@@ -45,11 +38,11 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
     >
       {/* Tab Options */}
       <TabsList className="mt-6 -mb-2 w-full md:w-auto">
-        {Object.entries(allGroupedSkills)
-          .filter(([_, { skillCategories }]) => skillCategories.length > 0) // Filtering out empty skill categories
-          .map(([key, { title }]) => (
+        {allGroupedSkills
+          .filter(({ skillCategories }) => skillCategories.length > 0) // Filtering out empty skill categories
+          .map(({ title }) => (
             <TabsTrigger
-              key={key}
+              key={stringToSlug(title)}
               value={stringToSlug(title)}
               className="text-lg md:text-xl font-bold"
             >
@@ -59,11 +52,10 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
       </TabsList>
 
       {/* Tab Content */}
-      {/* Each section */}
-      {Object.entries(allGroupedSkills)
-        .filter(([_, { skillCategories }]) => skillCategories.length > 0) // Filtering out empty skill categories
-        .map(([key, { title, skillCategories }]) => (
-          <TabsContent key={key} value={stringToSlug(title)}>
+      {allGroupedSkills
+        .filter(({ skillCategories }) => skillCategories.length > 0) // Filtering out empty skill categories
+        .map(({ title, skillCategories }) => (
+          <TabsContent key={stringToSlug(title)} value={stringToSlug(title)}>
             <div className="mt-4 text-center md:text-left">
               {/* Adjust CategorySkillDisplay to accept the new structure */}
               <CategorySkillDisplay skillCategories={skillCategories} />
@@ -73,7 +65,5 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
     </Tabs>
   );
 };
-
-// Break down the original SkillTableSection content into a separate component for cleaner code
 
 export default SkillTableSection;

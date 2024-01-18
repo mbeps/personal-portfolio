@@ -70,23 +70,15 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
   }
 
   // Using the new function to group all skill types for the blog
-  const allGroupedBlogSkills = {
-    technologies: filterAndGroupSkills(
-      blogMetadata?.technicalSkills,
-      "hard",
-      "Technologies",
-    ),
-    generalSkills: filterAndGroupSkills(
+  const allGroupedBlogSkills = [
+    filterAndGroupSkills(blogMetadata?.technicalSkills, "hard", "Technologies"),
+    filterAndGroupSkills(
       blogMetadata?.technicalSkills,
       "general",
       "Technical Skills",
     ),
-    softSkills: filterAndGroupSkills(
-      blogMetadata?.softSkills,
-      "soft",
-      "Soft Skills",
-    ),
-  };
+    filterAndGroupSkills(blogMetadata?.softSkills, "soft", "Soft Skills"),
+  ];
 
   return (
     <div>
