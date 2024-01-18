@@ -35,7 +35,7 @@ const SkillTag: React.FC<TagProps> = ({ skill, hide }) => {
   const hasCertificates = isSkillAssociatedWithCertificate(skill, certificates);
   const hasBlogs = isSkillAssociatedWithBlogs(skill, allBlogs);
   const hasSkill = hasAssociatedSkills(skill, skills);
-  const hasMaterial = hasProjects || hasCertificates || hasBlogs || hasSkill;
+  const hasMaterial = hasProjects || hasCertificates || hasBlogs;
 
   if (hide && !hasMaterial) {
     return <></>;
