@@ -1,16 +1,12 @@
+import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
-
-interface SkillCategory {
-  title: string;
-  skillCategories: SkillsCategoryInterface[];
-}
 
 export default function filterAndGroupSkills(
   skills: SkillInterface[],
   skillType: "hard" | "general" | "soft",
   title: string,
-): SkillCategory {
+): GroupedSkillsCategoriesInterface {
   // Filter skills based on skillType
   const filteredSkills = skills.filter(
     (skill) => skill.skillType === skillType,

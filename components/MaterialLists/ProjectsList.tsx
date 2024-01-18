@@ -12,7 +12,7 @@ interface ProjectsListSectionProps {
  * @param groupedProjects (Record<string, Project[]>) - object of projects grouped by type
  * @returns (JSX.Element) - section for displaying projects
  */
-const ProjectsListSection: React.FC<ProjectsListSectionProps> = ({
+const ProjectsList: React.FC<ProjectsListSectionProps> = ({
   groupedProjects,
 }) => {
   return (
@@ -47,4 +47,4 @@ const ProjectsListSection: React.FC<ProjectsListSectionProps> = ({
   );
 };
 
-export default ProjectsListSection;
+export default ProjectsList;

@@ -16,13 +16,13 @@ import React, { useState } from "react";
 import { AiOutlineClear } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
 import { ArchiveToggle } from "../../../components/Filters/ArchiveToggle";
-import ProjectsListSection from "./ProjectListSection";
+import ProjectsList from "../../../components/MaterialLists/ProjectsList";
 
 type ProjectsListProps = {
   allProjects: ProjectInterface[];
 };
 
-const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
+const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
   //^ Hooks
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const searchParams = useSearchParams();
@@ -385,7 +385,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row items-center w-full mt-12 p-2 gap-4">
+      <div className="flex flex-col md:flex-row items-center w-full mt-12 py-2 gap-4">
         {/* Search input */}
         <div className="w-full md:flex-1">
           <SearchInput
@@ -448,7 +448,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
       />
 
       {/* List of projects */}
-      <ProjectsListSection groupedProjects={groupedProjects} />
+      <ProjectsList groupedProjects={groupedProjects} />
 
       {/* Filter Modal */}
       <FilterOverlay
@@ -466,4 +466,4 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ allProjects }) => {
   );
 };
 
-export default ProjectsList;
+export default ProjectsView;

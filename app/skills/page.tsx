@@ -3,7 +3,7 @@ import HeadingOne from "@/components/Text/HeadingOne";
 import { languages } from "@/database/skills/languages";
 import allSkills from "@/database/skills/skills";
 import React from "react";
-import SkillList from "./components/SkillList";
+import SkillList from "../../components/MaterialLists/SkillList";
 
 const description = `
 	Explore my collection of skills on various topics. 

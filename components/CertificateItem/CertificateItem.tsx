@@ -37,45 +37,45 @@ const CertificateItem: React.FC<CertificateItemProps> = ({ certificate }) => {
   return (
     <div
       className="
-      bg-neutral-100 dark:bg-neutral-950  
-      p-3 lg:p-6 rounded-xl 
-      transition-colors duration-700 
-      flex flex-col
-      animate-slideUpCubiBezier animation-delay-2
-      h-full 
-      md:min-w-[550px] md:max-w-[550px]
+        bg-neutral-100 dark:bg-neutral-950
+        p-3 lg:p-6 rounded-xl
+        transition-colors duration-700
+        flex flex-col
+        animate-slideUpCubiBezier animation-delay-2
+        h-full
+        w-full
       "
     >
       {/* Certificate Image */}
       {certificate.certificateImage && (
-        <Link
-          href={customCredentialPage}
-          className="
+        <Link href={customCredentialPage}>
+          <div
+            className="
             flex justify-center
             rounded-xl
-            transform md:hover:scale-105 
+            transform md:hover:scale-105
             shadow-xl md:hover:shadow-2xl
             transition-all duration-500 ease-in-out
-            h-68 md:78 lg:h-96
             mb-6
             w-full
-            overflow-hidden 
-          "
-        >
-          <AspectRatio ratio={8 / 5} className="overflow-hidden relative">
-            <Image
-              key={certificate.slug}
-              src={certificate.certificateImage}
-              alt={`${certificate.name} certificate image`}
-              fill={true}
-              quality={40}
-              className="
+            overflow-hidden
+        "
+          >
+            <AspectRatio ratio={4 / 3} className="overflow-hidden relative">
+              <Image
+                key={certificate.slug}
+                src={certificate.certificateImage}
+                alt={`${certificate.name} certificate image`}
+                fill={true}
+                quality={40}
+                className="
                 rounded-xl 
                 cursor-pointer
                 object-cover
               "
-            />
-          </AspectRatio>
+              />
+            </AspectRatio>
+          </div>
         </Link>
       )}
 

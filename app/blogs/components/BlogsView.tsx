@@ -5,122 +5,116 @@ import stringToSlug from "@/actions/stringToSlug";
 import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
 import FilterOverlay from "@/components/Filters/FilterPanel";
 import SearchInput from "@/components/Inputs/SearchInput";
-import CertificateInterface from "@/interfaces/CertificateInterface";
+import { Button } from "@/components/shadcn/ui/button";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Fuse from "fuse.js";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import React, { useState } from "react";
-import CredentialListSection from "./CredentialListSection";
-import { Button } from "@/components/shadcn/ui/button";
-import { AiOutlineClear } from "react-icons/ai";
 import Link from "next/link";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
+import { AiOutlineClear } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
+import BlogInterface from "@/interfaces/BlogInterface";
+import BlogsList from "@/components/MaterialLists/BlogsList";
 
-type CredentialsListListProps = {
-  allCertificates: CertificateInterface[];
-};
+interface BlogListProps {
+  blogs: BlogInterface[];
+}
 
 /**
- * Displays a list of all certificates.
- * The user can filter the certificates by category and issuer.
- * The user can also search for certificates by name, issuer, tags, skills, and category.
- * @param allCertificates (Certificate[]): list of all certificates
- * @returns (JSX.Element): list of all certificates
+ * Displays a list of all blogs that can be opened.
+ * Also allows the user to filter and search the blogs.
+ * @returns (JSX.Element): page with all blogs
  */
-const CredentialsList: React.FC<CredentialsListListProps> = ({
-  allCertificates,
-}) => {
+export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
   //^ Hooks
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [isFilterOpen, setIsFilterModalOpen] = useState(false);
+  const router = useRouter();
   const searchParams = useSearchParams();
   const basePath = usePathname();
-  const router = useRouter();
 
   //^ URL Params Strings
-  const issuerParamName = "issuer";
-  const credentialSectionParamName = "section";
-  const skillCategoryParamName = "category";
+  const blogSectionParamName = "category";
+  const skillCategoryParamName = "skill";
   const technicalSkillParamName = "technical";
   const generalSkillParamName = "general";
   const softSkillParamName = "soft";
-  const archivedParamName = "archived";
+
   const searchParamName = "search";
+  const archivedParamName = "archived";
 
   //^ URL Params Reader
-  const selectedIssuer = decodeURIComponent(
-    searchParams.get(issuerParamName) || "all",
-  );
-  const selectedCategory = decodeURIComponent(
-    searchParams.get(credentialSectionParamName) || "all",
-  );
-  const selectedSkillCategory = decodeURIComponent(
-    searchParams.get(skillCategoryParamName) || "all",
-  );
-  const selectedTechnicalSkill = decodeURIComponent(
-    searchParams.get(technicalSkillParamName) || "all",
-  );
-  const selectedGeneralSkill = decodeURIComponent(
-    searchParams.get(generalSkillParamName) || "all",
-  );
-  const selectedSoftSkill = decodeURIComponent(
-    searchParams.get(softSkillParamName) || "all",
-  );
-  const searchTerm = decodeURIComponent(
-    searchParams.get(searchParamName) || "",
-  );
-  const showArchived =
-    decodeURIComponent(searchParams.get(archivedParamName) || "false") ===
-    "true";
+  const selectedBlogSection = searchParams.get(blogSectionParamName) || "all";
+  const selectedSkillCategory =
+    searchParams.get(skillCategoryParamName) || "all";
+  const selectedTechnicalSkill =
+    searchParams.get(technicalSkillParamName) || "all";
+  const selectedGeneralSkill = searchParams.get(generalSkillParamName) || "all";
+  const selectedSoftSkill = searchParams.get(softSkillParamName) || "all";
 
-  //^ Modal Controls
+  const searchTerm = searchParams.get(searchParamName) || "";
+  const showArchived =
+    (searchParams.get(archivedParamName) || "false").toLowerCase() === "true";
+
   const handleToggleFilter = () => {
-    setIsFilterOpen(!isFilterOpen);
+    setIsFilterModalOpen(!isFilterOpen);
   };
 
   //^ Search Settings
+  /**
+   * Fuse.js options for fuzzy search.
+   * These are the only properties that are searched.
+   * These are the same ones from the `Blog` type.
+   */
   const searchOptions = {
     keys: [
-      "name",
-      "issuer",
+      "title",
+      "subtitle",
       "category",
       "technicalSkills.name",
       "technicalSkills.category",
       "technicalSkills.skill.name",
       "softSkills.name",
       "softSkills.category",
-    ], // Only search these properties
-    threshold: 0.3, // Lower threshold means more results
+    ],
+    threshold: 0.3,
   };
 
-  const fuse = new Fuse(allCertificates, searchOptions);
+  const fuse = new Fuse(blogs, searchOptions);
+
+  /**
+   * Searches the blogs using the search term.
+   * Only searches the title, subtitle, and category.
+   */
+  const searchedBlogs = searchTerm
+    ? fuse.search(searchTerm).map((result) => result.item)
+    : blogs;
 
   //^ Group By Category
-  const groupCertificatesByCategory = (
-    certificates: CertificateInterface[],
-  ): Record<string, CertificateInterface[]> => {
-    return certificates.reduce<Record<string, CertificateInterface[]>>(
-      (grouped, certificate) => {
-        (grouped[certificate.category] =
-          grouped[certificate.category] || []).push(certificate);
-        return grouped;
-      },
-      {},
-    );
+  /**
+   * Groups the blogs by category.
+   * This is used to display the blogs in sections.
+   * @param blogs (Blog[]) - list of blogs
+   * @returns (Record<string, Blog[]>) - blogs grouped by category (key)
+   */
+  const groupBlogsByType = (
+    blogs: BlogInterface[],
+  ): Record<string, BlogInterface[]> => {
+    return blogs.reduce<Record<string, BlogInterface[]>>((grouped, blog) => {
+      (grouped[blog.category] = grouped[blog.category] || []).push(blog);
+      return grouped;
+    }, {});
   };
 
-  const searchedCertificates = searchTerm
-    ? fuse.search(searchTerm).map((result) => result.item)
-    : allCertificates;
-
   //^ Filter Options List
-  const certificateCategories: FilterOption[] = [
+
+  const blogCategories: FilterOption[] = [
     { slug: "all", entryName: "All" },
-    ...allCertificates
-      .map((certificate: CertificateInterface) => ({
-        slug: stringToSlug(certificate.category),
-        entryName: certificate.category,
+    ...blogs
+      .map((blog: BlogInterface) => ({
+        slug: stringToSlug(blog.category),
+        entryName: blog.category,
       }))
       .filter(
         (value, index, self) =>
@@ -129,26 +123,11 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
       .sort((a, b) => a.entryName.localeCompare(b.entryName)),
   ];
 
-  const certificateIssuers: FilterOption[] = [
-    { slug: "all", entryName: "All" },
-    ...allCertificates
-      .map((certificate: CertificateInterface) => ({
-        slug: stringToSlug(certificate.issuer),
-        entryName: certificate.issuer,
-      }))
-      .reduce((unique, item) => {
-        return unique.findIndex((v) => v.slug === item.slug) !== -1
-          ? unique
-          : [...unique, item];
-      }, [] as FilterOption[])
-      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
-  ];
-
   const skillCategories: FilterOption[] = [
     { slug: "all", entryName: "All" },
-    ...allCertificates
-      .flatMap((certificate: CertificateInterface) =>
-        certificate.technicalSkills.map((skill: SkillInterface) => ({
+    ...blogs
+      .flatMap((blog: BlogInterface) =>
+        blog.technicalSkills.map((skill: SkillInterface) => ({
           slug: stringToSlug(skill.category),
           entryName: skill.category,
         })),
@@ -163,12 +142,12 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
 
   const hardSkills: FilterOption[] = [
     { slug: "all", entryName: "All" },
-    ...allCertificates
-      .flatMap((certificate: CertificateInterface) =>
-        certificate.technicalSkills
+    ...blogs
+      .flatMap((blog: BlogInterface) =>
+        (blog.technicalSkills || [])
           .filter((skill: SkillInterface) => skill.skillType === "hard")
           .map((skill: SkillInterface) => ({
-            slug: stringToSlug(skill.slug), // Convert skill name to slug
+            slug: skill.slug,
             entryName: skill.name,
           })),
       )
@@ -182,12 +161,12 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
 
   const generalSkills: FilterOption[] = [
     { slug: "all", entryName: "All" },
-    ...allCertificates
-      .flatMap((certificate: CertificateInterface) =>
-        certificate.technicalSkills
+    ...blogs
+      .flatMap((blog: BlogInterface) =>
+        (blog.technicalSkills || [])
           .filter((skill: SkillInterface) => skill.skillType === "general")
           .map((skill: SkillInterface) => ({
-            slug: stringToSlug(skill.slug), // Convert skill name to slug
+            slug: skill.slug,
             entryName: skill.name,
           })),
       )
@@ -201,12 +180,12 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
 
   const softSkills: FilterOption[] = [
     { slug: "all", entryName: "All" },
-    ...allCertificates
-      .flatMap((certificate: CertificateInterface) =>
-        certificate.technicalSkills
+    ...blogs
+      .flatMap((blog: BlogInterface) =>
+        (blog.technicalSkills || [])
           .filter((skill: SkillInterface) => skill.skillType === "soft")
           .map((skill: SkillInterface) => ({
-            slug: stringToSlug(skill.slug), // Convert skill name to slug
+            slug: skill.slug,
             entryName: skill.name,
           })),
       )
@@ -219,17 +198,19 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
   ];
 
   //^ Filtering Logic
+  /**
+   * Updates the search term in the URL.
+   * This updates the state which changes the blogs being displayed.
+   * @param newSearchTerm (string) - new search term
+   */
   const updateSearchTerm = (newSearchTerm: string) => {
     router.push(
       generateUrl(
         [
-          { entryName: issuerParamName, slug: selectedIssuer },
-          { entryName: credentialSectionParamName, slug: selectedCategory },
+          { entryName: blogSectionParamName, slug: selectedBlogSection },
           { entryName: skillCategoryParamName, slug: selectedSkillCategory },
           { entryName: technicalSkillParamName, slug: selectedTechnicalSkill },
-          { entryName: generalSkillParamName, slug: selectedGeneralSkill },
           { entryName: softSkillParamName, slug: selectedSoftSkill },
-
           { entryName: searchParamName, slug: newSearchTerm },
           { entryName: archivedParamName, slug: true.toString() },
         ],
@@ -238,117 +219,103 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     );
   };
 
-  const filteredCertificates = searchedCertificates.filter(
-    (certificate: CertificateInterface) => {
-      const matchesIssuer =
-        selectedIssuer === "all" ||
-        stringToSlug(certificate.issuer) === stringToSlug(selectedIssuer);
-      const matchesCategory =
-        selectedCategory === "all" ||
-        stringToSlug(certificate.category) === stringToSlug(selectedCategory);
-      const matchesArchivedStatus = showArchived || !certificate.archived;
-      const matchesSkillCategory =
-        selectedSkillCategory === "all" ||
-        (certificate.technicalSkills || []).some(
-          (skill) =>
-            stringToSlug(skill.category) ===
-            stringToSlug(selectedSkillCategory),
-        );
-      const matchesHardSkill =
-        selectedTechnicalSkill === "all" ||
-        (certificate.technicalSkills || []).some(
-          (skill) =>
-            skill.slug === selectedTechnicalSkill && skill.skillType === "hard",
-        );
-      const matchesGeneralSkill =
-        selectedGeneralSkill === "all" ||
-        (certificate.technicalSkills || []).some(
-          (skill) =>
-            skill.slug === selectedGeneralSkill &&
-            skill.skillType === "general",
-        );
-      const matchesSoftSkill =
-        selectedSoftSkill === "all" ||
-        (certificate.technicalSkills || []).some(
-          (skill) =>
-            skill.slug === selectedSoftSkill && skill.skillType === "soft",
-        );
-
-      return (
-        matchesIssuer &&
-        matchesCategory &&
-        matchesArchivedStatus &&
-        matchesSkillCategory &&
-        matchesHardSkill &&
-        matchesGeneralSkill &&
-        matchesSoftSkill
+  /**
+   * Filters the blogs by category selected by the user.
+   */
+  const filteredBlogs = searchedBlogs.filter((blog) => {
+    const matchesBlogSection =
+      selectedBlogSection === "all" ||
+      stringToSlug(blog.category) === stringToSlug(selectedBlogSection);
+    const matchesSkillCategory =
+      selectedSkillCategory === "all" ||
+      (blog.technicalSkills || []).some(
+        (skill) =>
+          stringToSlug(skill.category) === stringToSlug(selectedSkillCategory),
       );
-    },
-  );
+    const matchesHardSkill =
+      selectedTechnicalSkill === "all" ||
+      (blog.technicalSkills || []).some(
+        (skill) =>
+          skill.slug === selectedTechnicalSkill && skill.skillType === "hard",
+      );
+    const matchesGeneralSkill =
+      selectedGeneralSkill === "all" ||
+      (blog.technicalSkills || []).some(
+        (skill) =>
+          skill.slug === selectedGeneralSkill && skill.skillType === "general",
+      );
+    const matchesSoftSkill =
+      selectedSoftSkill === "all" ||
+      (blog.technicalSkills || []).some(
+        (skill) =>
+          skill.slug === selectedSoftSkill && skill.skillType === "soft",
+      );
+    const matchesArchivedStatus = showArchived || !blog.archived;
 
-  const groupedCertificates = groupCertificatesByCategory(filteredCertificates);
+    return (
+      matchesBlogSection &&
+      matchesSkillCategory &&
+      matchesHardSkill &&
+      matchesGeneralSkill &&
+      matchesSoftSkill &&
+      matchesArchivedStatus
+    );
+  });
+
+  const groupedBlogs = groupBlogsByType(filteredBlogs);
 
   const areFiltersApplied =
-    selectedIssuer !== "all" ||
-    selectedCategory !== "all" ||
+    selectedBlogSection !== "all" ||
     selectedSkillCategory !== "all" ||
     selectedTechnicalSkill !== "all" ||
     selectedGeneralSkill !== "all" ||
     selectedSoftSkill !== "all" ||
-    searchTerm !== "" ||
-    showArchived;
+    searchTerm !== "";
 
   const filterCategories: FilterCategory[] = [
     {
-      sectionName: "Issuer",
-      urlParam: issuerParamName,
-      options: certificateIssuers,
-      selectedValue: selectedIssuer,
-    },
-    {
-      sectionName: "Category",
-      urlParam: credentialSectionParamName,
-      options: certificateCategories,
-      selectedValue: selectedCategory,
+      sectionName: "Section",
+      urlParam: blogSectionParamName,
+      selectedValue: selectedBlogSection,
+      options: blogCategories,
     },
     {
       sectionName: "Skill Category",
       urlParam: skillCategoryParamName,
-      options: skillCategories,
       selectedValue: selectedSkillCategory,
+      options: skillCategories,
     },
     {
       sectionName: "Technical Skill",
       urlParam: technicalSkillParamName,
-      options: hardSkills,
       selectedValue: selectedTechnicalSkill,
+      options: hardSkills,
     },
     {
       sectionName: "General Skill",
       urlParam: generalSkillParamName,
-      options: generalSkills,
       selectedValue: selectedGeneralSkill,
+      options: generalSkills,
     },
     {
       sectionName: "Soft Skill",
       urlParam: softSkillParamName,
-      options: softSkills,
       selectedValue: selectedSoftSkill,
+      options: softSkills,
     },
   ];
 
   return (
     <>
-      <div className="flex flex-col md:flex-row items-center w-full mt-12 p-2 gap-4">
+      <div className="flex flex-col md:flex-row items-center w-full mt-12 py-2 gap-4">
         {/* Search input */}
         <div className="w-full md:flex-1">
           <SearchInput
             searchTerm={searchTerm}
             updateSearchTerm={updateSearchTerm}
-            placeholder="Search certificate name or metadata"
+            placeholder="Search blog name or metadata"
           />
         </div>
-
         {/* Buttons */}
         <div className="flex flex-row md:flex-1 gap-2 w-full">
           {/* Filter Button */}
@@ -390,8 +357,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
         generateUrl={generateUrl}
         showArchived={showArchived}
         filterProps={[
-          { entryName: issuerParamName, slug: selectedIssuer },
-          { entryName: credentialSectionParamName, slug: selectedCategory },
+          { entryName: blogSectionParamName, slug: selectedBlogSection },
           { entryName: skillCategoryParamName, slug: selectedSkillCategory },
           { entryName: technicalSkillParamName, slug: selectedTechnicalSkill },
           { entryName: generalSkillParamName, slug: selectedGeneralSkill },
@@ -401,8 +367,9 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
         basePath={basePath}
       />
 
-      {/* List of projects */}
-      <CredentialListSection groupedCertificates={groupedCertificates} />
+      {/* Blog List */}
+      <BlogsList groupedBlogs={groupedBlogs} />
+
       {/* Filter Modal */}
       <FilterOverlay
         isOpen={isFilterOpen}
@@ -418,4 +385,5 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     </>
   );
 };
-export default CredentialsList;
+
+export default BlogsView;

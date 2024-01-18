@@ -1,4 +1,4 @@
-import CredentialListSection from "@/app/credentials/components/CredentialListSection";
+import CredentialsList from "@/components/MaterialLists/CredentialsList";
 import { Button } from "@/components/shadcn/ui/button";
 import CertificateInterface from "@/interfaces/CertificateInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
@@ -60,12 +60,14 @@ const CredentialsSection: React.FC<CredentialsPageProps> = ({
   const groupedCertificates = groupCertificatesByCategory(filteredCertificates);
 
   return (
-    <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
-      <CredentialListSection groupedCertificates={groupedCertificates} />
+    <div className="flex flex-col space-y-10 align-top relative">
+      <CredentialsList groupedCertificates={groupedCertificates} />
 
-      <Link href="/credentials" className="flex justify-center mt-10">
-        <Button variant="outline">View All Credentials</Button>
-      </Link>
+      <div className="flex justify-center mt-10">
+        <Link href="/credentials">
+          <Button variant="outline">View All Credentials</Button>
+        </Link>
+      </div>
     </div>
   );
 };

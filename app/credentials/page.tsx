@@ -3,7 +3,7 @@ import HeadingOne from "@/components/Text/HeadingOne";
 import CertificateInterface from "@/interfaces/CertificateInterface";
 import { Metadata } from "next";
 import React from "react";
-import CredentialsList from "./components/CredentialsList";
+import CredentialsView from "./components/CredentialsView";
 import allCertificates from "@/database/certificates";
 
 const description = `
@@ -30,7 +30,7 @@ const CredentialsPage: React.FC = () => {
       <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
         <HeadingOne title="Credentials" />
         <PageDescription description={description} />
-        <CredentialsList allCertificates={certificates} />
+        <CredentialsView allCertificates={certificates} />
       </div>
     </section>
   );

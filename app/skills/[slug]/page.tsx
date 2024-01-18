@@ -56,7 +56,7 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
   }
 
   return (
-    <div className="material-page-wrapper">
+    <div className="">
       <HeadingOne title={skill.name} />
       <PageDescription
         description={`

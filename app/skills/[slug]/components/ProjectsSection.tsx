@@ -1,4 +1,4 @@
-import ProjectsListSection from "@/app/projects/components/ProjectListSection";
+import ProjectsList from "@/components/MaterialLists/ProjectsList";
 import { Button } from "@/components/shadcn/ui/button";
 import ProjectInterface from "@/interfaces/ProjectInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
@@ -60,12 +60,14 @@ const ProjectsSection: React.FC<ProjectPageProps> = ({ projects, skill }) => {
   const groupedProjects = groupProjectsByCurrentSkill(filteredProjects);
 
   return (
-    <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
-      <ProjectsListSection groupedProjects={groupedProjects} />
+    <div className="flex flex-col space-y-10 align-top relative">
+      <ProjectsList groupedProjects={groupedProjects} />
 
-      <Link href="/projects" className="flex justify-center mt-10">
-        <Button variant="outline">View All Projects</Button>
-      </Link>
+      <div className="flex justify-center mt-10">
+        <Link href="/projects">
+          <Button variant="outline">View All Projects</Button>
+        </Link>
+      </div>
     </div>
   );
 };
