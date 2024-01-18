@@ -49,10 +49,13 @@ const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
   };
 
   return (
-    <div className="mt-4 text-center md:text-left">
-      <HeadingTwo title="Related Skills" />
-      <SkillTableSection allGroupedSkills={allGroupedBlogSkills} />
-    </div>
+    <>
+      <div className="border-b border-gray-200 dark:border-neutral-600 py-5" />
+      <div className="mt-4 text-center md:text-left">
+        <HeadingTwo title="Related Skills" />
+        <SkillTableSection allGroupedSkills={allGroupedBlogSkills} />
+      </div>
+    </>
   );
 };
 

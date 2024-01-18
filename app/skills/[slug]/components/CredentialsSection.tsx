@@ -60,7 +60,7 @@ const CredentialsSection: React.FC<CredentialsPageProps> = ({
   const groupedCertificates = groupCertificatesByCategory(filteredCertificates);
 
   return (
-    <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
+    <div className="flex flex-col space-y-10 align-top relative">
       <CredentialListSection groupedCertificates={groupedCertificates} />
 
       <div className="flex justify-center mt-10">

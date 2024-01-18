@@ -60,7 +60,7 @@ const ProjectsSection: React.FC<ProjectPageProps> = ({ projects, skill }) => {
   const groupedProjects = groupProjectsByCurrentSkill(filteredProjects);
 
   return (
-    <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
+    <div className="flex flex-col space-y-10 align-top relative">
       <ProjectsListSection groupedProjects={groupedProjects} />
 
       <div className="flex justify-center mt-10">

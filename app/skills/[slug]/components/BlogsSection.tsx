@@ -38,7 +38,7 @@ const BlogsSection: React.FC<BlogsPageProps> = ({ blogs, skill }) => {
   const groupedBlogs = groupBlogsByCategory(filteredBlogs);
 
   return (
-    <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
+    <div className="flex flex-col space-y-10 align-top relative">
       <BlogListSection groupedBlogs={groupedBlogs} />
 
       <div className="flex justify-center mt-10">
