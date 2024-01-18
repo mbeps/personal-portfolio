@@ -9,7 +9,7 @@ interface CredentialsListSectionProps {
   groupedCertificates: Record<string, CertificateInterface[]>;
 }
 
-const CredentialsListSection: React.FC<CredentialsListSectionProps> = ({
+const CredentialsList: React.FC<CredentialsListSectionProps> = ({
   groupedCertificates,
 }) => {
   return (
@@ -44,4 +44,4 @@ const CredentialsListSection: React.FC<CredentialsListSectionProps> = ({
   );
 };
 
-export default CredentialsListSection;
+export default CredentialsList;

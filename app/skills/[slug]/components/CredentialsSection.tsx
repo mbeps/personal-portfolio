@@ -1,4 +1,4 @@
-import CredentialListSection from "@/app/credentials/components/CredentialListSection";
+import CredentialsList from "@/components/MaterialLists/CredentialsList";
 import { Button } from "@/components/shadcn/ui/button";
 import CertificateInterface from "@/interfaces/CertificateInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
@@ -61,7 +61,7 @@ const CredentialsSection: React.FC<CredentialsPageProps> = ({
 
   return (
     <div className="flex flex-col space-y-10 align-top relative">
-      <CredentialListSection groupedCertificates={groupedCertificates} />
+      <CredentialsList groupedCertificates={groupedCertificates} />
 
       <div className="flex justify-center mt-10">
         <Link href="/credentials">

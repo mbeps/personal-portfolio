@@ -1,4 +1,4 @@
-import BlogListSection from "@/app/blogs/components/BlogListSection";
+import BlogsList from "@/components/MaterialLists/BlogsList";
 import { Button } from "@/components/shadcn/ui/button";
 import BlogInterface from "@/interfaces/BlogInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
@@ -39,7 +39,7 @@ const BlogsSection: React.FC<BlogsPageProps> = ({ blogs, skill }) => {
 
   return (
     <div className="flex flex-col space-y-10 align-top relative">
-      <BlogListSection groupedBlogs={groupedBlogs} />
+      <BlogsList groupedBlogs={groupedBlogs} />
 
       <div className="flex justify-center mt-10">
         <Link href="/blogs">

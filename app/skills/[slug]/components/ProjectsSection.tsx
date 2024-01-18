@@ -1,4 +1,4 @@
-import ProjectsListSection from "@/app/projects/components/ProjectListSection";
+import ProjectsList from "@/components/MaterialLists/ProjectsList";
 import { Button } from "@/components/shadcn/ui/button";
 import ProjectInterface from "@/interfaces/ProjectInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
@@ -61,7 +61,7 @@ const ProjectsSection: React.FC<ProjectPageProps> = ({ projects, skill }) => {
 
   return (
     <div className="flex flex-col space-y-10 align-top relative">
-      <ProjectsListSection groupedProjects={groupedProjects} />
+      <ProjectsList groupedProjects={groupedProjects} />
 
       <div className="flex justify-center mt-10">
         <Link href="/projects">

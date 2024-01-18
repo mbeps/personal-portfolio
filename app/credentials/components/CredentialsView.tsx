@@ -12,11 +12,11 @@ import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Fuse from "fuse.js";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
-import CredentialListSection from "./CredentialListSection";
 import { Button } from "@/components/shadcn/ui/button";
 import { AiOutlineClear } from "react-icons/ai";
 import Link from "next/link";
 import { BsFilterLeft } from "react-icons/bs";
+import CredentialsList from "@/components/MaterialLists/CredentialsList";
 
 type CredentialsListListProps = {
   allCertificates: CertificateInterface[];
@@ -29,7 +29,7 @@ type CredentialsListListProps = {
  * @param allCertificates (Certificate[]): list of all certificates
  * @returns (JSX.Element): list of all certificates
  */
-const CredentialsList: React.FC<CredentialsListListProps> = ({
+const CredentialsView: React.FC<CredentialsListListProps> = ({
   allCertificates,
 }) => {
   //^ Hooks
@@ -402,7 +402,7 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
       />
 
       {/* List of projects */}
-      <CredentialListSection groupedCertificates={groupedCertificates} />
+      <CredentialsList groupedCertificates={groupedCertificates} />
       {/* Filter Modal */}
       <FilterOverlay
         isOpen={isFilterOpen}
@@ -418,4 +418,4 @@ const CredentialsList: React.FC<CredentialsListListProps> = ({
     </>
   );
 };
-export default CredentialsList;
+export default CredentialsView;

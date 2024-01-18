@@ -15,8 +15,8 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { AiOutlineClear } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
-import BlogListSection from "./BlogListSection";
 import BlogInterface from "@/interfaces/BlogInterface";
+import BlogsList from "@/components/MaterialLists/BlogsList";
 
 interface BlogListProps {
   blogs: BlogInterface[];
@@ -27,7 +27,7 @@ interface BlogListProps {
  * Also allows the user to filter and search the blogs.
  * @returns (JSX.Element): page with all blogs
  */
-export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
+export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
   //^ Hooks
   const [isFilterOpen, setIsFilterModalOpen] = useState(false);
   const router = useRouter();
@@ -368,7 +368,7 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
       />
 
       {/* Blog List */}
-      <BlogListSection groupedBlogs={groupedBlogs} />
+      <BlogsList groupedBlogs={groupedBlogs} />
 
       {/* Filter Modal */}
       <FilterOverlay
@@ -386,4 +386,4 @@ export const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
   );
 };
 
-export default BlogList;
+export default BlogsView;

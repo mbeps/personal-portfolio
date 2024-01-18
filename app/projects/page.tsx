@@ -11,7 +11,7 @@ import {
 } from "@/database/projects";
 import ProjectInterface from "@/interfaces/ProjectInterface";
 import type { Metadata } from "next";
-import ProjectsList from "./components/ProjectsList";
+import ProjectsView from "./components/ProjectsView";
 
 const description = `
   Discover my portfolio of projects, both current and archived. 
@@ -52,7 +52,7 @@ const ProjectsPage = () => {
       <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
         <HeadingOne title="Projects" />
         <PageDescription description={description} />
-        <ProjectsList allProjects={allProjects} />
+        <ProjectsView allProjects={allProjects} />
       </div>
     </section>
   );

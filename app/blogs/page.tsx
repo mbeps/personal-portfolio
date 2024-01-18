@@ -1,5 +1,5 @@
 import HeadingOne from "@/components/Text/HeadingOne";
-import { BlogList } from "./components/BlogList";
+import { BlogsView } from "./components/BlogsView";
 import type { Metadata } from "next";
 import PageDescription from "@/components/UI/PageDescription";
 import blogs from "@/database/blogs";
@@ -28,7 +28,7 @@ export default function BlogPage() {
           <HeadingOne title="Blog" />
           <PageDescription description={description} />
 
-          <BlogList blogs={blogMetadata} />
+          <BlogsView blogs={blogMetadata} />
         </div>
       </section>
     </main>

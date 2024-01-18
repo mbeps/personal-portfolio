@@ -13,7 +13,7 @@ interface BlogListSectionProps {
  * @param groupedBlogs (Record<string, Blog[]>) - blogs grouped by category
  * @returns (JSX.Element) - list of blogs grouped by category
  */
-const BlogListSection: React.FC<BlogListSectionProps> = ({ groupedBlogs }) => {
+const BlogsList: React.FC<BlogListSectionProps> = ({ groupedBlogs }) => {
   return (
     <div className="material-page-wrapper">
       {Object.keys(groupedBlogs).length > 0 ? (
@@ -43,4 +43,4 @@ const BlogListSection: React.FC<BlogListSectionProps> = ({ groupedBlogs }) => {
   );
 };
 
-export default BlogListSection;
+export default BlogsList;
