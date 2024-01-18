@@ -63,9 +63,11 @@ const CredentialsSection: React.FC<CredentialsPageProps> = ({
     <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
       <CredentialListSection groupedCertificates={groupedCertificates} />
 
-      <Link href="/credentials" className="flex justify-center mt-10">
-        <Button variant="outline">View All Credentials</Button>
-      </Link>
+      <div className="flex justify-center mt-10">
+        <Link href="/credentials">
+          <Button variant="outline">View All Credentials</Button>
+        </Link>
+      </div>
     </div>
   );
 };

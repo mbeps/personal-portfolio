@@ -45,9 +45,11 @@ const ProjectsSection = () => {
           ))}
       </div>
 
-      <Link href="/projects" className="flex justify-center mt-10">
-        <Button variant="outline">View All Projects</Button>
-      </Link>
+      <div className="flex justify-center mt-10">
+        <Link href="/projects">
+          <Button variant="outline">View All Projects</Button>
+        </Link>
+      </div>
     </section>
   );
 };

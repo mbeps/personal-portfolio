@@ -41,9 +41,11 @@ const BlogsSection: React.FC<BlogsPageProps> = ({ blogs, skill }) => {
     <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
       <BlogListSection groupedBlogs={groupedBlogs} />
 
-      <Link href="/blogs" className="flex justify-center mt-10">
-        <Button variant="outline">View All Blogs</Button>
-      </Link>
+      <div className="flex justify-center mt-10">
+        <Link href="/blogs">
+          <Button variant="outline">View All Blogs</Button>
+        </Link>
+      </div>
     </div>
   );
 };

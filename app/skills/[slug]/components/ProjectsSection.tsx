@@ -63,9 +63,11 @@ const ProjectsSection: React.FC<ProjectPageProps> = ({ projects, skill }) => {
     <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
       <ProjectsListSection groupedProjects={groupedProjects} />
 
-      <Link href="/projects" className="flex justify-center mt-10">
-        <Button variant="outline">View All Projects</Button>
-      </Link>
+      <div className="flex justify-center mt-10">
+        <Link href="/projects">
+          <Button variant="outline">View All Projects</Button>
+        </Link>
+      </div>
     </div>
   );
 };
