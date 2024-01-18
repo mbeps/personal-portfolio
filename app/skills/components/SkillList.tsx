@@ -52,11 +52,11 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
   const noMaterialParamName = "no-material";
 
   const selectedGroup = searchParams.get(groupParamName) || "category";
-  const excludeHardSkills = searchParams.get(hardSkillParamName) === "true";
-  const excludeGeneralSkills =
+  const includeHardSkills = searchParams.get(hardSkillParamName) === "true";
+  const includeGeneralSkills =
     searchParams.get(generalSkillParamName) === "true";
-  const excludeSoftSkills = searchParams.get(softSkillParamName) === "true";
-  const excludeNoMaterial = searchParams.get(noMaterialParamName) === "true";
+  const includeSoftSkills = searchParams.get(softSkillParamName) === "true";
+  const includeNoMaterial = searchParams.get(noMaterialParamName) === "true";
 
   const options = [
     { slug: "category", entryName: "Category" },
@@ -65,14 +65,14 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
     { slug: "none", entryName: "None" },
   ];
 
-  const excludedSkillTypes: ("hard" | "general" | "soft")[] = [];
+  const includeSkillTypes: ("hard" | "general" | "soft")[] = [];
 
-  if (excludeHardSkills) excludedSkillTypes.push("hard");
-  if (excludeGeneralSkills) excludedSkillTypes.push("general");
-  if (excludeSoftSkills) excludedSkillTypes.push("soft");
+  if (includeHardSkills) includeSkillTypes.push("hard");
+  if (includeGeneralSkills) includeSkillTypes.push("general");
+  if (includeSoftSkills) includeSkillTypes.push("soft");
 
-  // Group skills with the exclusion list
-  const groupedSkills = groupSkills(selectedGroup, skills, excludedSkillTypes);
+  // Group skills with the inclusion list
+  const groupedSkills = groupSkills(selectedGroup, skills, includeSkillTypes);
 
   function handleSelect(value: string) {
     // Construct the array of FilterOption objects including all current search parameters
@@ -81,19 +81,19 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
       // Include the current state of all filters
       {
         entryName: hardSkillParamName,
-        slug: excludeHardSkills ? "true" : "false",
+        slug: includeHardSkills ? "true" : "false",
       },
       {
         entryName: generalSkillParamName,
-        slug: excludeGeneralSkills ? "true" : "false",
+        slug: includeGeneralSkills ? "true" : "false",
       },
       {
         entryName: softSkillParamName,
-        slug: excludeSoftSkills ? "true" : "false",
+        slug: includeSoftSkills ? "true" : "false",
       },
       {
         entryName: noMaterialParamName,
-        slug: excludeNoMaterial ? "true" : "false",
+        slug: includeNoMaterial ? "true" : "false",
       },
     ];
 
@@ -112,26 +112,26 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
     {
       entryName: "Hard Skills",
       urlParamName: hardSkillParamName,
-      value: excludeHardSkills ? "false" : "true",
-      selected: excludeHardSkills,
+      value: includeHardSkills ? "false" : "true",
+      selected: includeHardSkills,
     },
     {
       entryName: "General Skills",
       urlParamName: generalSkillParamName,
-      value: excludeGeneralSkills ? "false" : "true",
-      selected: excludeGeneralSkills,
+      value: includeGeneralSkills ? "false" : "true",
+      selected: includeGeneralSkills,
     },
     {
       entryName: "Soft Skills",
       urlParamName: softSkillParamName,
-      value: excludeSoftSkills ? "false" : "true",
-      selected: excludeSoftSkills,
+      value: includeSoftSkills ? "false" : "true",
+      selected: includeSoftSkills,
     },
     {
       entryName: "No Material",
       urlParamName: noMaterialParamName,
-      value: excludeNoMaterial ? "false" : "true",
-      selected: excludeNoMaterial,
+      value: includeNoMaterial ? "false" : "true",
+      selected: includeNoMaterial,
     },
   ];
 
@@ -185,7 +185,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
                   justify-between
                   "
               >
-                <span>Exclude Skills</span>
+                <span>Include Skills</span>
                 <BsChevronDown
                   fontSize={16}
                   className="text-neutral-700 dark:text-neutral-200 mt-1"
@@ -208,19 +208,19 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
                           { entryName: groupParamName, slug: selectedGroup },
                           {
                             entryName: hardSkillParamName,
-                            slug: excludeHardSkills ? "true" : "false",
+                            slug: includeHardSkills ? "true" : "false",
                           },
                           {
                             entryName: generalSkillParamName,
-                            slug: excludeGeneralSkills ? "true" : "false",
+                            slug: includeGeneralSkills ? "true" : "false",
                           },
                           {
                             entryName: softSkillParamName,
-                            slug: excludeSoftSkills ? "true" : "false",
+                            slug: includeSoftSkills ? "true" : "false",
                           },
                           {
                             entryName: noMaterialParamName,
-                            slug: excludeNoMaterial ? "true" : "false",
+                            slug: includeNoMaterial ? "true" : "false",
                           },
                           // Toggle current filter
                           {
@@ -269,7 +269,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
                   <SkillTag
                     key={index}
                     skill={skill}
-                    hide={excludeNoMaterial}
+                    hide={includeNoMaterial}
                   />
                 ))}
               </div>
