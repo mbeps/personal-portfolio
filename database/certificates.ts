@@ -72,6 +72,7 @@ import {
   jinja,
   django,
   spring,
+  springBoot,
 } from "./skills/technicalHardSkills/technicalHardSkillsBackendWebDev";
 import {
   awsK3s,
@@ -153,6 +154,7 @@ import {
   gitHub,
 } from "./skills/technicalHardSkills/technicalHardSkillsVCS";
 import { black } from "./skills/technicalHardSkills/technicalHardSkillsCodeQuality";
+import { symphony } from "./skills/technicalHardSkills/technicalHardSkillsOthers";
 
 const programmingLanguagesCertificates: CertificateInterface[] = [
   {
@@ -2110,6 +2112,32 @@ const cloudComputingCertificates: CertificateInterface[] = [
   },
 ];
 
+const otherCertificates: CertificateInterface[] = [
+  {
+    name: "Symphony Certified Bot Developer (Java)",
+    slug: "e398f5d1-7d46-4585-9ab2-effa2176920f",
+    category: "Other",
+    issuer: "Symphony Solutions",
+    certificateURL:
+      "https://www.credly.com/badges/e398f5d1-7d46-4585-9ab2-effa2176920f",
+    technicalSkills: [java, springBoot, rest, symphony, automation],
+    softSkills: [problemSolving, criticalThinking],
+    description: `
+      This certification is awarded to developers who have successfully completed the Symphony Certified Bot Developer (Java) training course. It covers the fundamentals of building a bot for the Symphony platform, including the use of the Symphony Java Client library, the Symphony REST API, and the Symphony Elements API. The course also covers the use of Spring Boot to create a simple bot application, and the use of the Symphony Elements API to create a bot with a user interface.
+    `,
+    learningOutcomes: [
+      "Understanding the value proposition of bots and their types",
+      "Learning the structure and architecture of BDK for Java",
+      "Configuring and initializing a bot in BDK for Java",
+      "Using REST API clients in BDK for Java",
+      "Handling real-time events and form submissions in BDK for Java",
+      "Creating and handling activities in BDK for Java",
+      "Implementing message templating in BDK for Java",
+      "Converting a BDK 2.0 project to Spring Boot and using BDK 2.0 with Spring Boot",
+    ],
+  },
+];
+
 export { cloudComputingCertificates };
 
 const allCertificates = [
@@ -2123,6 +2151,7 @@ const allCertificates = [
   ...cloudComputingCertificates,
   ...mathematicsCertificates,
   ...managementCertificates,
+  ...otherCertificates,
 ];
 
 export default allCertificates;

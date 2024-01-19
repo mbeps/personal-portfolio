@@ -9,6 +9,14 @@ export const gameMakerStudio: SkillInterface = {
   technicalGeneralSkills: [gameDevelopment],
 };
 
-const technicalHardSkillsGameDev: SkillInterface[] = [gameMakerStudio];
+export const symphony: SkillInterface = {
+  name: "Symphony Solutions",
+  category: "Automation",
+  skillType: "hard",
+  slug: "symphony-solutions",
+  technicalGeneralSkills: [gameDevelopment],
+};
 
-export default technicalHardSkillsGameDev;
+const technicalHardSkillsOthers: SkillInterface[] = [gameMakerStudio, symphony];
+
+export default technicalHardSkillsOthers;
