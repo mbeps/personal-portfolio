@@ -54,7 +54,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({ certificate }) => {
             flex justify-center
             rounded-xl
             transform md:hover:scale-105
-            shadow-xl md:hover:shadow-2xl
+            shadow-lg md:hover:shadow-2xl
             transition-all duration-500 ease-in-out
             mb-6
             w-full
@@ -69,9 +69,9 @@ const CertificateItem: React.FC<CertificateItemProps> = ({ certificate }) => {
                 fill={true}
                 quality={40}
                 className="
-                rounded-xl 
-                cursor-pointer
-                object-cover
+                  rounded-xl
+                  cursor-pointer
+                  object-cover
               "
               />
             </AspectRatio>
