@@ -1,25 +1,30 @@
 import NavigationItemInterface from "@/interfaces/NavigationItemInterface";
 
-/**
- * Buttons to be displayed in the navbar.
- */
+export const HOME: NavigationItemInterface = {
+  label: "Home",
+  path: "/",
+};
+
+export const PROJECTS: NavigationItemInterface = {
+  label: "Projects",
+  path: "/projects",
+};
+
+export const CREDENTIALS: NavigationItemInterface = {
+  label: "Credentials",
+  path: "/credentials",
+};
+
+export const BLOG: NavigationItemInterface = {
+  label: "Blog",
+  path: "/blogs",
+};
+
 const NAV_ITEMS: Array<NavigationItemInterface> = [
-  {
-    label: "Home",
-    page: "/",
-  },
-  {
-    label: "Projects",
-    page: "/projects",
-  },
-  {
-    label: "Credentials",
-    page: "/credentials",
-  },
-  {
-    label: "Blog",
-    page: "/blogs",
-  },
+  HOME,
+  PROJECTS,
+  CREDENTIALS,
+  BLOG,
 ];
 
-export { NAV_ITEMS };
+export default NAV_ITEMS;

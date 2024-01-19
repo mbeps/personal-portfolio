@@ -1,6 +1,6 @@
 "use client";
 import { useNavbarStore } from "@/hooks/useNavbarStore";
-import { NAV_ITEMS } from "@/constants/pages";
+import NAV_ITEMS from "@/constants/pages";
 import { useEffect, useState } from "react";
 import { IoMdClose, IoMdMenu } from "react-icons/io";
 import HomeButton from "./HomeButton";
@@ -96,7 +96,7 @@ export default function Navbar() {
                     key={item.label}
                     className="flex justify-center w-full md:w-auto"
                   >
-                    <NavbarItem to={item.page}>{item.label}</NavbarItem>
+                    <NavbarItem to={item.path}>{item.label}</NavbarItem>
                   </div>
                 );
               })}

@@ -41,7 +41,7 @@ const NavbarOverlay: React.FC<OverlayProps> = ({ isOpen, toggle, items }) => {
         {items.map((item, index) => {
           return (
             <div key={index} className="flex justify-center w-full md:w-auto">
-              <NavbarItem to={item.page}>{item.label}</NavbarItem>
+              <NavbarItem to={item.path}>{item.label}</NavbarItem>
             </div>
           );
         })}
