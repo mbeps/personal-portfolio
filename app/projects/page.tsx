@@ -12,6 +12,7 @@ import {
 import ProjectInterface from "@/interfaces/ProjectInterface";
 import type { Metadata } from "next";
 import ProjectsView from "./components/ProjectsView";
+import { PROJECTS } from "@/constants/pages";
 
 const description = `
   Discover my portfolio of projects, both current and archived. 
@@ -20,7 +21,7 @@ const description = `
 `;
 
 export const metadata: Metadata = {
-  title: "Maruf Bepary - Projects",
+  title: `Maruf Bepary - ${PROJECTS.label}`,
   description: description,
 };
 
@@ -50,7 +51,7 @@ const ProjectsPage = () => {
   return (
     <section id="projects" className="flex flex-col items-start md:items-end">
       <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
-        <HeadingOne title="Projects" />
+        <HeadingOne title={PROJECTS.label} />
         <PageDescription description={description} />
         <ProjectsView allProjects={allProjects} />
       </div>

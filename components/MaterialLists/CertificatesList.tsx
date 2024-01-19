@@ -5,11 +5,11 @@ import HeadingTwo from "@/components/Text/HeadingTwo";
 import CertificateInterface from "@/interfaces/CertificateInterface";
 import React from "react";
 
-interface CredentialsListSectionProps {
+interface CertificatesListProps {
   groupedCertificates: Record<string, CertificateInterface[]>;
 }
 
-const CredentialsList: React.FC<CredentialsListSectionProps> = ({
+const CertificatesList: React.FC<CertificatesListProps> = ({
   groupedCertificates,
 }) => {
   return (
@@ -44,4 +44,4 @@ const CredentialsList: React.FC<CredentialsListSectionProps> = ({
   );
 };
 
-export default CredentialsList;
+export default CertificatesList;

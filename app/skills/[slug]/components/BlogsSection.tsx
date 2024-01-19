@@ -1,5 +1,6 @@
 import BlogsList from "@/components/MaterialLists/BlogsList";
 import { Button } from "@/components/shadcn/ui/button";
+import { BLOG } from "@/constants/pages";
 import BlogInterface from "@/interfaces/BlogInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Link from "next/link";
@@ -12,6 +13,8 @@ interface BlogsPageProps {
 }
 
 const BlogsSection: React.FC<BlogsPageProps> = ({ blogs, skill }) => {
+  const basePath = BLOG.path;
+
   const filterBlogsBySkill = (
     blogs: BlogInterface[],
     selectedSkill: string,
@@ -42,7 +45,7 @@ const BlogsSection: React.FC<BlogsPageProps> = ({ blogs, skill }) => {
       <BlogsList groupedBlogs={groupedBlogs} />
 
       <div className="flex justify-center mt-10">
-        <Link href="/blogs">
+        <Link href={basePath}>
           <Button variant="outline">View All Blogs</Button>
         </Link>
       </div>

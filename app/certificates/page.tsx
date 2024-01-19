@@ -3,17 +3,18 @@ import HeadingOne from "@/components/Text/HeadingOne";
 import CertificateInterface from "@/interfaces/CertificateInterface";
 import { Metadata } from "next";
 import React from "react";
-import CredentialsView from "./components/CredentialsView";
+import CertificatesView from "./components/CertificatesView";
 import allCertificates from "@/database/certificates";
+import { CERTIFICATES } from "@/constants/pages";
 
 const description = `
   Explore my collection of certificates and qualifications. 
   Use filters to refine your search by issuer and category. 
-  Archived credentials are initially hidden.
+  Archived certificates are initially hidden.
 `;
 
 export const metadata: Metadata = {
-  title: "Maruf Bepary - Credentials",
+  title: `Maruf Bepary - ${CERTIFICATES.label}`,
   description: description,
 };
 
@@ -22,17 +23,18 @@ export const metadata: Metadata = {
  * Certificates are grouped by type.
  * The user can filter the certificates by category and issuer.
  */
-const CredentialsPage: React.FC = () => {
+const CertificatesPage: React.FC = () => {
   const certificates: CertificateInterface[] = [...allCertificates];
 
   return (
     <section id="projects" className="flex flex-col items-start md:items-end">
       <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
-        <HeadingOne title="Credentials" />
+        <HeadingOne title={CERTIFICATES.label} />
         <PageDescription description={description} />
-        <CredentialsView allCertificates={certificates} />
+        <CertificatesView allCertificates={certificates} />
       </div>
     </section>
   );
 };
-export default CredentialsPage;
+
+export default CertificatesPage;

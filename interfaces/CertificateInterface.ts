@@ -12,7 +12,7 @@ export default interface CertificateInterface {
     | "PMI"
     | "GitHub"
     | "Royal Holloway University";
-  credentialURL: string;
+  certificateURL: string;
   technicalSkills: SkillInterface[];
   softSkills: SkillInterface[];
   category:

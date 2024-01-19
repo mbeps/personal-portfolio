@@ -23,7 +23,7 @@ import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
  * @returns (Promise<Metadata>): metadata for the certificate (title and description)
  */
 export async function generateMetadata(
-  { params, searchParams }: CredentialPageProps,
+  { params, searchParams }: CertificatesPageProps,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   // Read route params
@@ -43,7 +43,7 @@ export const generateStaticParams = async () => {
   return allCertificates.map((certificate) => ({ slug: certificate.slug }));
 };
 
-type CredentialPageProps = {
+type CertificatesPageProps = {
   params: { slug: string };
   searchParams: { [key: string]: string | string[] | undefined };
 };
@@ -62,7 +62,7 @@ type CredentialPageProps = {
  * @param params (CredentialPageProps) - props: the content of the certificate
  * @returns (JSX.Element): certificate page component
  */
-const CredentialPage: React.FC<CredentialPageProps> = ({ params }) => {
+const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
   const slug = params.slug;
 
   const certificate = getCertificateBySlug(slug, allCertificates);
@@ -187,9 +187,9 @@ const CredentialPage: React.FC<CredentialPageProps> = ({ params }) => {
               gap-2"
           >
             {/* Issuer Page */}
-            {certificate.credentialURL && (
+            {certificate.certificateURL && (
               <Link
-                href={certificate.credentialURL}
+                href={certificate.certificateURL}
                 target="_blank"
                 className="w-auto md:w-full"
               >
@@ -215,4 +215,4 @@ const CredentialPage: React.FC<CredentialPageProps> = ({ params }) => {
     </div>
   );
 };
-export default CredentialPage;
+export default CertificatesPage;

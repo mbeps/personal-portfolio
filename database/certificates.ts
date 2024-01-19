@@ -160,7 +160,7 @@ const programmingLanguagesCertificates: CertificateInterface[] = [
     slug: "UC-a3c47af2-7eb8-4f5b-8309-08559c519d5a",
     category: "Programming Languages",
     issuer: "Udemy",
-    credentialURL:
+    certificateURL:
       "https://www.udemy.com/certificate/UC-a3c47af2-7eb8-4f5b-8309-08559c519d5a/",
     technicalSkills: [python, oop, algorithms, dataStructures],
     softSkills: [problemSolving, criticalThinking],
@@ -183,7 +183,7 @@ const programmingLanguagesCertificates: CertificateInterface[] = [
     slug: "c235083fcf3a5aadda62a3aac5f1846098135e9058d9c5c72073ef88891b0395",
     category: "Programming Languages",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/c235083fcf3a5aadda62a3aac5f1846098135e9058d9c5c72073ef88891b0395",
     technicalSkills: [python, oop, algorithms, dataStructures],
     softSkills: [problemSolving, criticalThinking],
@@ -208,7 +208,7 @@ const programmingLanguagesCertificates: CertificateInterface[] = [
     slug: "3df6c589b5151377ce45f231cfacf8ca04a02875fa88996a8831c1c9b70c527a",
     category: "Programming Languages",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/3df6c589b5151377ce45f231cfacf8ca04a02875fa88996a8831c1c9b70c527a",
     technicalSkills: [python, oop, algorithms, dataStructures],
     softSkills: [problemSolving, criticalThinking],
@@ -231,7 +231,7 @@ const programmingLanguagesCertificates: CertificateInterface[] = [
     slug: "71bbbecbbc9b1489e357c3a2091860ae5b02b3ff0e415ce5748b8746d990b8dd",
     category: "Programming Languages",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/71bbbecbbc9b1489e357c3a2091860ae5b02b3ff0e415ce5748b8746d990b8dd",
     technicalSkills: [python, oop, algorithms, dataStructures, html],
     softSkills: [problemSolving, criticalThinking],
@@ -252,7 +252,7 @@ const programmingLanguagesCertificates: CertificateInterface[] = [
     slug: "UC-a14123c1-1def-4710-8836-7c05bfaa2fc7",
     category: "Programming Languages",
     issuer: "Udemy",
-    credentialURL:
+    certificateURL:
       "https://www.udemy.com/certificate/UC-a14123c1-1def-4710-8836-7c05bfaa2fc7/",
     technicalSkills: [
       java,
@@ -279,7 +279,7 @@ const programmingLanguagesCertificates: CertificateInterface[] = [
     category: "Programming Languages",
     issuer: "LinkedIn",
     description: `This course focuses on enhancing your Java programming skills by teaching the basics of object-oriented programming. It aims to help you write secure, scalable, and easily debuggable code. The course emphasizes practical examples over abstract concepts, with a deep dive into the source code and several challenges to apply what you've learned. It not only guides you on how to apply object-oriented principles in your programs but also explains how Java leverages these principles internally.`,
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/77ad2602bbb22e29478a06792cd4bd0a91dda794cca7b2bbe4e333c193770a22",
     technicalSkills: [java, oop, algorithms, dataStructures],
     softSkills: [problemSolving, criticalThinking],
@@ -298,7 +298,7 @@ const programmingLanguagesCertificates: CertificateInterface[] = [
     slug: "b1761a41ef8dd23125db776561db0b90ae53842518d029015374a2daee08e4e3",
     category: "Programming Languages",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/b1761a41ef8dd23125db776561db0b90ae53842518d029015374a2daee08e4e3",
     technicalSkills: [typescript, javascript, oop, algorithms, dataStructures],
     softSkills: [problemSolving, criticalThinking],
@@ -318,7 +318,7 @@ const programmingLanguagesCertificates: CertificateInterface[] = [
     slug: "ed3c16a977b93d46364c0e03d601701094c7f346f08027e0cd3a1d6d52342425",
     category: "Programming Languages",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/ed3c16a977b93d46364c0e03d601701094c7f346f08027e0cd3a1d6d52342425",
     technicalSkills: [typescript, javascript, oop, algorithms, dataStructures],
     softSkills: [problemSolving, criticalThinking],
@@ -347,7 +347,7 @@ const programmingLanguagesCertificates: CertificateInterface[] = [
     slug: "ade3217d7cef3023f22c8ee034eff28705b7dbfd3981d8377c9b5f61ff39ea51",
     category: "Programming Languages",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/ade3217d7cef3023f22c8ee034eff28705b7dbfd3981d8377c9b5f61ff39ea51",
     technicalSkills: [javascript, oop, algorithms, dataStructures, html, css],
     softSkills: [problemSolving, criticalThinking],
@@ -367,7 +367,7 @@ const programmingLanguagesCertificates: CertificateInterface[] = [
     slug: "6f9d825cfa8c3256611a521ec35fe62abd9b7f75636536b59656dcfd57708cf6",
     category: "Programming Languages",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/6f9d825cfa8c3256611a521ec35fe62abd9b7f75636536b59656dcfd57708cf6",
     technicalSkills: [javascript, oop, algorithms, dataStructures],
     softSkills: [problemSolving, criticalThinking],
@@ -387,7 +387,7 @@ const programmingLanguagesCertificates: CertificateInterface[] = [
     slug: "UC-cf6c70b6-c34c-4400-b8f8-b9a7abc9f18a",
     category: "Programming Languages",
     issuer: "Udemy",
-    credentialURL:
+    certificateURL:
       "https://www.udemy.com/certificate/UC-cf6c70b6-c34c-4400-b8f8-b9a7abc9f18a/",
     technicalSkills: [
       javascript,
@@ -418,7 +418,7 @@ const programmingLanguagesCertificates: CertificateInterface[] = [
     slug: "67ef8710bfc2f51163f78c9373df3d7b4674e44b3d2e936318399c6a7fe5bda0",
     category: "Programming Languages",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/67ef8710bfc2f51163f78c9373df3d7b4674e44b3d2e936318399c6a7fe5bda0",
     technicalSkills: [shellScript, linuxDevelopment],
     softSkills: [problemSolving, criticalThinking],
@@ -450,7 +450,7 @@ const programmingLanguagesCertificates: CertificateInterface[] = [
     slug: "7c14e4c16f72a10046c3d66838e5dd3589fa40ac6cbf6509b235ea6452f430c8",
     category: "Programming Languages",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/7c14e4c16f72a10046c3d66838e5dd3589fa40ac6cbf6509b235ea6452f430c8",
     technicalSkills: [groovy, oop, dataStructures],
     softSkills: [problemSolving, criticalThinking],
@@ -481,7 +481,7 @@ const algorithmsAndDataStructuresCertificates: CertificateInterface[] = [
     slug: "UC-74fdc19f-c016-43c5-8b2a-3cb30941205d",
     category: "Algorithms & Data Structures",
     issuer: "Udemy",
-    credentialURL:
+    certificateURL:
       "https://www.udemy.com/certificate/UC-74fdc19f-c016-43c5-8b2a-3cb30941205d/",
     technicalSkills: [algorithms, dataStructures, python, oop, mathematics],
     softSkills: [problemSolving, criticalThinking],
@@ -530,7 +530,7 @@ const algorithmsAndDataStructuresCertificates: CertificateInterface[] = [
     slug: "e31b0a7d9243f44e8a528fc2d184cd4a3bfbdc789c899c3a9ee47ee511e51fd7",
     category: "Algorithms & Data Structures",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/e31b0a7d9243f44e8a528fc2d184cd4a3bfbdc789c899c3a9ee47ee511e51fd7",
     technicalSkills: [algorithms, dataStructures],
     softSkills: [problemSolving, criticalThinking],
@@ -555,7 +555,7 @@ const algorithmsAndDataStructuresCertificates: CertificateInterface[] = [
     slug: "c5c41ea1aa52982d08705831612aba2e93e69a64e35dd2cce11c28fad12b59f7",
     category: "Algorithms & Data Structures",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/c5c41ea1aa52982d08705831612aba2e93e69a64e35dd2cce11c28fad12b59f7",
     technicalSkills: [dataStructures, algorithms],
     softSkills: [problemSolving, criticalThinking],
@@ -585,7 +585,7 @@ const machineLearningCertificates: CertificateInterface[] = [
     slug: "964c3b1a049a60afa6bcbb55179e326c7e5cea11db0db7b8d3390be8fc5925e1",
     category: "Machine Learning",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/964c3b1a049a60afa6bcbb55179e326c7e5cea11db0db7b8d3390be8fc5925e1",
     technicalSkills: [machineLearning, algorithms, hyperparameters, boosting],
     softSkills: [problemSolving, criticalThinking],
@@ -607,7 +607,7 @@ const machineLearningCertificates: CertificateInterface[] = [
     slug: "50182c40b257c756e5d8aea70a9f69f14566da4d3cae7dab86f236554cc7238e",
     category: "Machine Learning",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/50182c40b257c756e5d8aea70a9f69f14566da4d3cae7dab86f236554cc7238e",
     technicalSkills: [
       machineLearning,
@@ -635,7 +635,7 @@ const machineLearningCertificates: CertificateInterface[] = [
     slug: "3610d0d7891a746bbe207505c8ec6cfab58723ca973e3082f139a349059248c9",
     category: "Machine Learning",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/3610d0d7891a746bbe207505c8ec6cfab58723ca973e3082f139a349059248c9",
     technicalSkills: [machineLearning, dataScience, dataVisualisation],
     softSkills: [problemSolving, criticalThinking],
@@ -655,7 +655,7 @@ const machineLearningCertificates: CertificateInterface[] = [
     slug: "5dda55caa1ccf02b29f3c0f5d526c8c026f7fc346a6cad6d9c84f98aba3e2514",
     category: "Machine Learning",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/5dda55caa1ccf02b29f3c0f5d526c8c026f7fc346a6cad6d9c84f98aba3e2514",
     technicalSkills: [machineLearning, keras, neuralNetworks, deepLearning],
     softSkills: [problemSolving, criticalThinking],
@@ -674,7 +674,7 @@ const machineLearningCertificates: CertificateInterface[] = [
     slug: "e9cb305b4da5f38726226d31e5eef5da66504838131739c389a2d056ed31cf3f",
     category: "Machine Learning",
     issuer: "NASBA",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/e9cb305b4da5f38726226d31e5eef5da66504838131739c389a2d056ed31cf3f",
     technicalSkills: [
       dataScience,
@@ -706,7 +706,7 @@ const machineLearningCertificates: CertificateInterface[] = [
     slug: "9f61617caf2fc21f029abd857a03a29758d7e822215d3677eb938b4e29e5da78",
     category: "Machine Learning",
     issuer: "NASBA",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/9f61617caf2fc21f029abd857a03a29758d7e822215d3677eb938b4e29e5da78",
     technicalSkills: [
       machineLearning,
@@ -740,7 +740,7 @@ const machineLearningCertificates: CertificateInterface[] = [
     slug: "94c788dba6f1c97ceee751315c30b6dc6f4267025733c3de55a315d83a36386d",
     category: "Machine Learning",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/94c788dba6f1c97ceee751315c30b6dc6f4267025733c3de55a315d83a36386d",
     technicalSkills: [
       calculus,
@@ -772,7 +772,7 @@ const machineLearningCertificates: CertificateInterface[] = [
     slug: "ec6ac0178fb92ba75dd38a95ae48316efb6f4e0e9abcb6bf5431b48021ff8441",
     category: "Machine Learning",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/ec6ac0178fb92ba75dd38a95ae48316efb6f4e0e9abcb6bf5431b48021ff8441",
     technicalSkills: [linearAlgebra, algorithms, sql, databases],
     softSkills: [problemSolving, criticalThinking],
@@ -796,7 +796,7 @@ const machineLearningCertificates: CertificateInterface[] = [
     slug: "b7334fe5b4d04bef6dab5d2ed69080e9ffc590475eba2057046b6ca4a6cf2fba",
     category: "Machine Learning",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/b7334fe5b4d04bef6dab5d2ed69080e9ffc590475eba2057046b6ca4a6cf2fba",
     technicalSkills: [probability, algorithms],
     softSkills: [problemSolving, criticalThinking],
@@ -817,7 +817,7 @@ const machineLearningCertificates: CertificateInterface[] = [
     slug: "3c31f8f11d8ecbd7156dd75b8ae2d7c7db59a8342e3ae7780496b637ac894bb8",
     category: "Machine Learning",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/3c31f8f11d8ecbd7156dd75b8ae2d7c7db59a8342e3ae7780496b637ac894bb8",
     technicalSkills: [scikitLearn, python],
     softSkills: [problemSolving, criticalThinking],
@@ -840,7 +840,7 @@ const devOpsCertificates: CertificateInterface[] = [
     slug: "1c6fedf1993d58cfe2f906e4fe4db5b4eddda6ea5fa7f8999436b07682ffe3f7",
     category: "DevOps",
     issuer: "NASBA",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/1c6fedf1993d58cfe2f906e4fe4db5b4eddda6ea5fa7f8999436b07682ffe3f7",
     technicalSkills: [devOps],
     softSkills: [problemSolving, criticalThinking],
@@ -862,7 +862,7 @@ const devOpsCertificates: CertificateInterface[] = [
     slug: "6bf47e122551142911c5a636edfee564ff0d57bd07a52888c6c52246946f7747",
     category: "DevOps",
     issuer: "NASBA",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/6bf47e122551142911c5a636edfee564ff0d57bd07a52888c6c52246946f7747",
     technicalSkills: [devOps, continuousIntegration, continuousDeployment],
     softSkills: [problemSolving, criticalThinking],
@@ -881,7 +881,7 @@ const devOpsCertificates: CertificateInterface[] = [
     slug: "b1f7a0e46c3659d0d1c25396bbd7838b2374b12afcff7404a0d5077b68e9ebfc",
     category: "DevOps",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/b1f7a0e46c3659d0d1c25396bbd7838b2374b12afcff7404a0d5077b68e9ebfc",
     technicalSkills: [
       devOps,
@@ -911,7 +911,7 @@ const devOpsCertificates: CertificateInterface[] = [
     slug: "679b3ba787209cd0d81d1d68e4bfc01e23ae14f9f2bdfa4e85f917025a8e732b",
     category: "DevOps",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/679b3ba787209cd0d81d1d68e4bfc01e23ae14f9f2bdfa4e85f917025a8e732b",
     technicalSkills: [
       devOps,
@@ -936,7 +936,7 @@ const devOpsCertificates: CertificateInterface[] = [
     slug: "a46589fd9baa43c2c77d7de14e3830cf85648f1a6d5d7a489096d4e1b2a4d279",
     category: "DevOps",
     issuer: "GitHub",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/0344b0df296833ba35ddabf20563556bc67ee7ed0b83b55e19021443d1b9e496",
     technicalSkills: [
       devOps,
@@ -993,7 +993,7 @@ const devOpsCertificates: CertificateInterface[] = [
     slug: "1d8280be68ca069d4bb66ad5618118079be897473794a7812ae940146672801c",
     category: "DevOps",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/1d8280be68ca069d4bb66ad5618118079be897473794a7812ae940146672801c",
     technicalSkills: [
       gitLab,
@@ -1026,7 +1026,7 @@ const devOpsCertificates: CertificateInterface[] = [
     slug: "bf3b572548b56f714cc70ee2c1447312a84869f6a93edb55e3d13b13337f3bd5",
     category: "DevOps",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/bf3b572548b56f714cc70ee2c1447312a84869f6a93edb55e3d13b13337f3bd5",
     technicalSkills: [devOps, docker, containerization, kubernetes, travisCI],
     softSkills: [problemSolving, criticalThinking],
@@ -1044,7 +1044,7 @@ const devOpsCertificates: CertificateInterface[] = [
     slug: "a63c2359250f6a04bd19dab4ebd049edb511a1a9f2c3ef66a0a8d1df004f7d8d",
     category: "DevOps",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/a63c2359250f6a04bd19dab4ebd049edb511a1a9f2c3ef66a0a8d1df004f7d8d",
     technicalSkills: [devOps, kubernetes, docker, awsK3s, aws],
     softSkills: [problemSolving, criticalThinking],
@@ -1060,7 +1060,7 @@ const devOpsCertificates: CertificateInterface[] = [
     slug: "5eed7f56e5d7dc61b17a3f5fb3cb9fc42130506e948df550bf00899b5868b0a1",
     category: "DevOps",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/5eed7f56e5d7dc61b17a3f5fb3cb9fc42130506e948df550bf00899b5868b0a1",
     technicalSkills: [devOps, ansible, infrastructureAsCode],
     softSkills: [problemSolving, criticalThinking],
@@ -1079,7 +1079,7 @@ const devOpsCertificates: CertificateInterface[] = [
     slug: "be0745932c948f80c1f9d32c0703eeaf94a3fdf3d35368a2619b8043ebe1c2f2",
     category: "DevOps",
     issuer: "NASBA",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/be0745932c948f80c1f9d32c0703eeaf94a3fdf3d35368a2619b8043ebe1c2f2",
     technicalSkills: [
       devOps,
@@ -1111,7 +1111,7 @@ const webDevelopmentCertificates: CertificateInterface[] = [
     slug: "c5ccec418e67284d7945832543376e344173867d424cc1c7c7e7f4235b14debe",
     category: "Web Development",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/c5ccec418e67284d7945832543376e344173867d424cc1c7c7e7f4235b14debe",
     technicalSkills: [flask, python, rest, apis, jwt, databases, sql],
     softSkills: [problemSolving, criticalThinking],
@@ -1132,7 +1132,7 @@ const webDevelopmentCertificates: CertificateInterface[] = [
     slug: "d16b210de3459c563295c4868ac19097bdddf84976d2137fa08293ec698f3380",
     category: "Web Development",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/d16b210de3459c563295c4868ac19097bdddf84976d2137fa08293ec698f3380",
     technicalSkills: [rest, apis],
     softSkills: [problemSolving, criticalThinking],
@@ -1152,7 +1152,7 @@ const webDevelopmentCertificates: CertificateInterface[] = [
     slug: "a54ec39fe8ae07277cfbfb553a61f1d6a0c95f23969a3f665d5e5c0afbd9fd68",
     category: "Web Development",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/a54ec39fe8ae07277cfbfb553a61f1d6a0c95f23969a3f665d5e5c0afbd9fd68",
     technicalSkills: [rest, apis],
     softSkills: [problemSolving, criticalThinking],
@@ -1174,7 +1174,7 @@ const webDevelopmentCertificates: CertificateInterface[] = [
     slug: "c00cb40bda2152dd86d29b813b0d1b172123452a0b87b6017aec13115e693487",
     category: "Web Development",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/c00cb40bda2152dd86d29b813b0d1b172123452a0b87b6017aec13115e693487",
     technicalSkills: [rest, mongoDB, databases],
     softSkills: [problemSolving, criticalThinking],
@@ -1193,7 +1193,7 @@ const webDevelopmentCertificates: CertificateInterface[] = [
     slug: "ff054b4dd1a8fec0eb00ee80a59bc82e5fed3e50b11bba3e3cd33026f0a0eee0",
     category: "Web Development",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/ff054b4dd1a8fec0eb00ee80a59bc82e5fed3e50b11bba3e3cd33026f0a0eee0",
     technicalSkills: [css, html],
     softSkills: [problemSolving, criticalThinking],
@@ -1212,7 +1212,7 @@ const webDevelopmentCertificates: CertificateInterface[] = [
     slug: "5b6b19227f501cb7dab97b2378a58bc7740bd590a2e44916bf07ba59fd2fc06f",
     category: "Web Development",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/5b6b19227f501cb7dab97b2378a58bc7740bd590a2e44916bf07ba59fd2fc06f",
     technicalSkills: [firebase, gcp],
     softSkills: [problemSolving, criticalThinking],
@@ -1232,7 +1232,7 @@ const webDevelopmentCertificates: CertificateInterface[] = [
     slug: "4585e03073dcdf552484e6a6d9bc407d1b7e0ad3872d6a3b114d3e3d0869e9ea",
     category: "Web Development",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/4585e03073dcdf552484e6a6d9bc407d1b7e0ad3872d6a3b114d3e3d0869e9ea",
     technicalSkills: [python, flask, gunicorn, jinja, bootstrap, rest],
     softSkills: [problemSolving, criticalThinking],
@@ -1254,7 +1254,7 @@ const webDevelopmentCertificates: CertificateInterface[] = [
     slug: "7b5e4d7314ff1b615a3ae959f0d936e66808a5f718a85e42813d957d4ec492d7",
     category: "Web Development",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/7b5e4d7314ff1b615a3ae959f0d936e66808a5f718a85e42813d957d4ec492d7",
     technicalSkills: [python, django, css, html, javascript],
     softSkills: [problemSolving, criticalThinking],
@@ -1272,7 +1272,7 @@ const webDevelopmentCertificates: CertificateInterface[] = [
     slug: "3c1654b23256c27553b9d6288d9592aa47fe825a7bf85714283f3e61e26f6f58",
     category: "Web Development",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/3c1654b23256c27553b9d6288d9592aa47fe825a7bf85714283f3e61e26f6f58",
     technicalSkills: [graphQL, apollo, mongoDB, sql, databases],
     softSkills: [problemSolving, criticalThinking],
@@ -1289,7 +1289,7 @@ const webDevelopmentCertificates: CertificateInterface[] = [
     slug: "983c6ba63131250c1d3df7e13f5e8f8951c02cb64c02c33d99e80df23cf3c869",
     category: "Web Development",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/983c6ba63131250c1d3df7e13f5e8f8951c02cb64c02c33d99e80df23cf3c869",
     technicalSkills: [html],
     softSkills: [problemSolving, criticalThinking, creativity],
@@ -1312,7 +1312,7 @@ const webDevelopmentCertificates: CertificateInterface[] = [
     slug: "ef41e5cf67f7657353febca7c6b206bf7dd8e28497c393790d8a266842c81132",
     category: "Web Development",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/ef41e5cf67f7657353febca7c6b206bf7dd8e28497c393790d8a266842c81132",
     technicalSkills: [javascript],
     softSkills: [problemSolving, criticalThinking],
@@ -1333,7 +1333,7 @@ const webDevelopmentCertificates: CertificateInterface[] = [
     slug: "f2226c0a5de58874e8b882b91fe8945f69d0f0b6de15fa70a09082a08bd464fd",
     category: "Web Development",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/f2226c0a5de58874e8b882b91fe8945f69d0f0b6de15fa70a09082a08bd464fd",
     technicalSkills: [react, javascript, testing, html, css],
     softSkills: [problemSolving, criticalThinking, creativity],
@@ -1351,7 +1351,7 @@ const webDevelopmentCertificates: CertificateInterface[] = [
     slug: "a2ae9eb61db705535ebd73746bfe20e0988633b80ade57c12aa523a9bbdae3db",
     category: "Web Development",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/a2ae9eb61db705535ebd73746bfe20e0988633b80ade57c12aa523a9bbdae3db",
     technicalSkills: [nextjs, react, javascript, html, css],
     softSkills: [problemSolving, criticalThinking, creativity],
@@ -1368,7 +1368,7 @@ const webDevelopmentCertificates: CertificateInterface[] = [
     slug: "UC-431983c4-3861-46fc-866e-d97bd5edab77",
     category: "Web Development",
     issuer: "Udemy",
-    credentialURL:
+    certificateURL:
       "https://www.udemy.com/certificate/UC-431983c4-3861-46fc-866e-d97bd5edab77/",
     technicalSkills: [typescript, react, javascript, html, css],
     softSkills: [problemSolving, criticalThinking, creativity],
@@ -1391,7 +1391,7 @@ const databasesCertificates: CertificateInterface[] = [
     slug: "UC-b49387a5-5a13-4b1a-aba1-73cac775c026",
     category: "Databases",
     issuer: "Udemy",
-    credentialURL:
+    certificateURL:
       "https://www.udemy.com/certificate/UC-b49387a5-5a13-4b1a-aba1-73cac775c026/",
     technicalSkills: [sql, databaseManagementSystems, normalisation, indexing],
     softSkills: [problemSolving, criticalThinking],
@@ -1416,7 +1416,7 @@ const databasesCertificates: CertificateInterface[] = [
     slug: "8b2d47f66f59b8b9724a6c1f05f15e27a9b08c3caaf95169c1d6c64537a1d066",
     category: "Databases",
     issuer: "NASBA",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/8b2d47f66f59b8b9724a6c1f05f15e27a9b08c3caaf95169c1d6c64537a1d066",
     technicalSkills: [sql],
     softSkills: [problemSolving, criticalThinking],
@@ -1437,7 +1437,7 @@ const databasesCertificates: CertificateInterface[] = [
     slug: "f024344050a592ea0bb2ada78e0175fabecabab2248ffeb58671b9fe4adfc141",
     category: "Databases",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/f024344050a592ea0bb2ada78e0175fabecabab2248ffeb58671b9fe4adfc141",
     technicalSkills: [mongoDB, noSql, databaseManagementSystems, indexing],
     softSkills: [problemSolving, criticalThinking],
@@ -1460,7 +1460,7 @@ const databasesCertificates: CertificateInterface[] = [
     slug: "209aec09fbb007c809840a071b5db71dc8e08da5b92799121e158ed1e185062b",
     category: "Databases",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/209aec09fbb007c809840a071b5db71dc8e08da5b92799121e158ed1e185062b",
     technicalSkills: [redis, noSql, databaseManagementSystems],
     softSkills: [problemSolving, criticalThinking],
@@ -1482,7 +1482,7 @@ const mathematicsCertificates: CertificateInterface[] = [
     slug: "UC-8d13c37d-5013-4873-b4fd-56a867ad853d",
     category: "Mathematics",
     issuer: "Udemy",
-    credentialURL:
+    certificateURL:
       "https://www.udemy.com/certificate/UC-8d13c37d-5013-4873-b4fd-56a867ad853d/",
     technicalSkills: [discrete, logics, probability, statistics],
     softSkills: [problemSolving, criticalThinking],
@@ -1508,7 +1508,7 @@ const mathematicsCertificates: CertificateInterface[] = [
     slug: "UC-630e6292-a0ee-4ebb-94f0-ebaeedb101a8",
     category: "Mathematics",
     issuer: "Udemy",
-    credentialURL:
+    certificateURL:
       "https://www.udemy.com/certificate/UC-630e6292-a0ee-4ebb-94f0-ebaeedb101a8/",
     technicalSkills: [algebra, trigonometry, calculus, vectors],
     softSkills: [problemSolving, criticalThinking],
@@ -1534,7 +1534,7 @@ const mathematicsCertificates: CertificateInterface[] = [
     slug: "UC-f951f5eb-0e4c-4fd6-8db0-29c24e616a2b",
     category: "Mathematics",
     issuer: "Udemy",
-    credentialURL:
+    certificateURL:
       "https://www.udemy.com/certificate/UC-f951f5eb-0e4c-4fd6-8db0-29c24e616a2b/",
     technicalSkills: [algebra, geometry, trigonometry, calculus],
     softSkills: [problemSolving, criticalThinking],
@@ -1562,7 +1562,7 @@ const mathematicsCertificates: CertificateInterface[] = [
     slug: "UC-84beb6d6-275d-41ff-8215-c4918454b846",
     category: "Mathematics",
     issuer: "Udemy",
-    credentialURL:
+    certificateURL:
       "https://www.udemy.com/certificate/UC-84beb6d6-275d-41ff-8215-c4918454b846/",
     technicalSkills: [mechanics],
     softSkills: [problemSolving, criticalThinking],
@@ -1581,7 +1581,7 @@ const mathematicsCertificates: CertificateInterface[] = [
     slug: "UC-729218f1-da7b-4684-857f-78f9920686f2",
     category: "Mathematics",
     issuer: "Udemy",
-    credentialURL:
+    certificateURL:
       "https://www.udemy.com/certificate/UC-729218f1-da7b-4684-857f-78f9920686f2/",
     technicalSkills: [mechanics],
     softSkills: [problemSolving, criticalThinking],
@@ -1603,7 +1603,7 @@ const mathematicsCertificates: CertificateInterface[] = [
     slug: "UC-4a1b790f-b0d8-430b-8dfd-d40a60c0ebee",
     category: "Mathematics",
     issuer: "Udemy",
-    credentialURL:
+    certificateURL:
       "https://www.udemy.com/certificate/UC-4a1b790f-b0d8-430b-8dfd-d40a60c0ebee/",
     technicalSkills: [probability, statistics],
     softSkills: [problemSolving, criticalThinking],
@@ -1628,7 +1628,7 @@ const mathematicsCertificates: CertificateInterface[] = [
     slug: "UC-1efbccad-5f12-4002-85cc-1efebfb81e34",
     category: "Mathematics",
     issuer: "Udemy",
-    credentialURL:
+    certificateURL:
       "https://www.udemy.com/certificate/UC-1efbccad-5f12-4002-85cc-1efebfb81e34/",
     technicalSkills: [probability, statistics],
     softSkills: [problemSolving, criticalThinking],
@@ -1649,7 +1649,7 @@ const mathematicsCertificates: CertificateInterface[] = [
     slug: "UC-5aabeb79-4fb8-4cab-a5d5-3daa1b009170",
     category: "Mathematics",
     issuer: "Udemy",
-    credentialURL:
+    certificateURL:
       "https://www.udemy.com/certificate/UC-5aabeb79-4fb8-4cab-a5d5-3daa1b009170/",
     technicalSkills: [mechanics],
     softSkills: [problemSolving, criticalThinking],
@@ -1676,7 +1676,7 @@ const mathematicsCertificates: CertificateInterface[] = [
     slug: "UC-e2179bc4-5760-4a77-88a4-a2738d22a96e",
     category: "Mathematics",
     issuer: "Udemy",
-    credentialURL:
+    certificateURL:
       "https://www.udemy.com/certificate/UC-e2179bc4-5760-4a77-88a4-a2738d22a96e/",
     technicalSkills: [algebra, trigonometry, calculus, vectors],
     softSkills: [problemSolving, criticalThinking],
@@ -1714,7 +1714,7 @@ const mathematicsCertificates: CertificateInterface[] = [
     slug: "UC-fbc6d079-db3f-405f-8c32-f242b266d826",
     category: "Mathematics",
     issuer: "Udemy",
-    credentialURL:
+    certificateURL:
       "https://www.udemy.com/certificate/UC-fbc6d079-db3f-405f-8c32-f242b266d826/",
     technicalSkills: [probability, statistics],
     softSkills: [problemSolving, criticalThinking],
@@ -1751,7 +1751,7 @@ const softwareEngineeringCertificates: CertificateInterface[] = [
     slug: "6afc37d98889e1ed209d677fd7928ece257125ca8d538ed6b0fa0ed18e4e30d6",
     category: "Software Engineering",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/6afc37d98889e1ed209d677fd7928ece257125ca8d538ed6b0fa0ed18e4e30d6",
     technicalSkills: [
       python,
@@ -1780,7 +1780,7 @@ const softwareEngineeringCertificates: CertificateInterface[] = [
     slug: "551778db5ecef81f732b9e48d50db3fe709f877f1ac9c834923b0c96bb636e72",
     category: "Software Engineering",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/551778db5ecef81f732b9e48d50db3fe709f877f1ac9c834923b0c96bb636e72",
     technicalSkills: [java, maven],
     softSkills: [problemSolving, criticalThinking, projectManagement],
@@ -1800,7 +1800,7 @@ const softwareEngineeringCertificates: CertificateInterface[] = [
     slug: "1fcbb76a7feb53dc0b8585896de025b31799feeb7819544ba6e6ebf454ef6769",
     category: "Software Engineering",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/1fcbb76a7feb53dc0b8585896de025b31799feeb7819544ba6e6ebf454ef6769",
     technicalSkills: [java, gradle, junit],
     softSkills: [problemSolving, criticalThinking, projectManagement, testing],
@@ -1823,7 +1823,7 @@ const softwareEngineeringCertificates: CertificateInterface[] = [
     slug: "8c9027d06b51638e29fcac4c109275401f5202a046eb80de8f65fcc20c9c733b",
     category: "Software Engineering",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/8c9027d06b51638e29fcac4c109275401f5202a046eb80de8f65fcc20c9c733b",
     technicalSkills: [java, gradle, maven],
     softSkills: [problemSolving, criticalThinking, projectManagement],
@@ -1854,7 +1854,7 @@ const softwareEngineeringCertificates: CertificateInterface[] = [
     slug: "f3297827ac972df2c87c56883f1217ba051a4f12df86886d33f902f2fda5614c",
     category: "Software Engineering",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/f3297827ac972df2c87c56883f1217ba051a4f12df86886d33f902f2fda5614c",
     technicalSkills: [testing],
     softSkills: [problemSolving, criticalThinking],
@@ -1871,7 +1871,7 @@ const softwareEngineeringCertificates: CertificateInterface[] = [
     slug: "UC-ba00c0c9-221d-4939-99b4-90244570a81b",
     category: "Software Engineering",
     issuer: "Udemy",
-    credentialURL:
+    certificateURL:
       "https://www.udemy.com/certificate/UC-ba00c0c9-221d-4939-99b4-90244570a81b/",
     technicalSkills: [git, gitHub],
     softSkills: [problemSolving, criticalThinking],
@@ -1902,7 +1902,7 @@ const softwareEngineeringCertificates: CertificateInterface[] = [
     slug: "f14a53c061bc271d233daeb5f46d5441dc2e86f386420c0fbd846291a5cccaf8",
     category: "Software Engineering",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/f14a53c061bc271d233daeb5f46d5441dc2e86f386420c0fbd846291a5cccaf8",
     technicalSkills: [designPatterns, oop, python, java, javascript],
     softSkills: [problemSolving, criticalThinking],
@@ -1931,7 +1931,7 @@ const managementCertificates: CertificateInterface[] = [
     slug: "8ab210e2af6b2df598aa3e27db515103158cd049367cf6afd9949d874b7677eb",
     category: "Management",
     issuer: "NASBA",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/8ab210e2af6b2df598aa3e27db515103158cd049367cf6afd9949d874b7677eb",
     softSkills: [
       timeManagement,
@@ -1966,7 +1966,7 @@ const managementCertificates: CertificateInterface[] = [
     slug: "23788be7119de6bc027865d8345bcd7e8c98563fc1a8a373351e05fa79e1b6ef",
     category: "Management",
     issuer: "PMI",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/23788be7119de6bc027865d8345bcd7e8c98563fc1a8a373351e05fa79e1b6ef",
     softSkills: [
       timeManagement,
@@ -2004,7 +2004,7 @@ const cloudComputingCertificates: CertificateInterface[] = [
     slug: "29e1352bda64cbc78e2f3fbf7205d2761bd8c465925eba7c4cf699aab8cf72b4",
     category: "Cloud Computing",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/29e1352bda64cbc78e2f3fbf7205d2761bd8c465925eba7c4cf699aab8cf72b4",
     technicalSkills: [
       aws,
@@ -2048,7 +2048,7 @@ const cloudComputingCertificates: CertificateInterface[] = [
     slug: "bf0cac80ff7e3f2b8148e20d6ea1fccb6eb15457a184229fee9ff439f652cfba",
     category: "Cloud Computing",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/bf0cac80ff7e3f2b8148e20d6ea1fccb6eb15457a184229fee9ff439f652cfba",
     technicalSkills: [
       azure,
@@ -2086,7 +2086,7 @@ const cloudComputingCertificates: CertificateInterface[] = [
     slug: "1bc3074a5e84539c7bc5fdeeee83438602cc303ba648ec90ef5fc018693e62a1",
     category: "Cloud Computing",
     issuer: "LinkedIn",
-    credentialURL:
+    certificateURL:
       "https://www.linkedin.com/learning/certificates/1bc3074a5e84539c7bc5fdeeee83438602cc303ba648ec90ef5fc018693e62a1",
     technicalSkills: [
       gcp,

@@ -1,20 +1,23 @@
-import CredentialsList from "@/components/MaterialLists/CredentialsList";
+import CertificatesList from "@/components/MaterialLists/CertificatesList";
 import { Button } from "@/components/shadcn/ui/button";
+import { CERTIFICATES } from "@/constants/pages";
 import CertificateInterface from "@/interfaces/CertificateInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Link from "next/link";
 
 import React from "react";
 
-interface CredentialsPageProps {
+interface CertificatesSectionProps {
   certificates: CertificateInterface[];
   skill: SkillInterface;
 }
 
-const CredentialsSection: React.FC<CredentialsPageProps> = ({
+const CertificatesSection: React.FC<CertificatesSectionProps> = ({
   certificates,
   skill,
 }) => {
+  const basePath = CERTIFICATES.path;
+
   const filterCertificatesBySkill = (
     certificates: CertificateInterface[],
     selectedSkill: SkillInterface,
@@ -61,15 +64,15 @@ const CredentialsSection: React.FC<CredentialsPageProps> = ({
 
   return (
     <div className="flex flex-col space-y-10 align-top relative">
-      <CredentialsList groupedCertificates={groupedCertificates} />
+      <CertificatesList groupedCertificates={groupedCertificates} />
 
       <div className="flex justify-center mt-10">
-        <Link href="/credentials">
-          <Button variant="outline">View All Credentials</Button>
+        <Link href={basePath}>
+          <Button variant="outline">View All Certificates</Button>
         </Link>
       </div>
     </div>
   );
 };
 
-export default CredentialsSection;
+export default CertificatesSection;

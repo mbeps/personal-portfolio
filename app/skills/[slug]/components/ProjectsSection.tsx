@@ -1,5 +1,6 @@
 import ProjectsList from "@/components/MaterialLists/ProjectsList";
 import { Button } from "@/components/shadcn/ui/button";
+import { PROJECTS } from "@/constants/pages";
 import ProjectInterface from "@/interfaces/ProjectInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Link from "next/link";
@@ -12,6 +13,8 @@ interface ProjectPageProps {
 }
 
 const ProjectsSection: React.FC<ProjectPageProps> = ({ projects, skill }) => {
+  const basePath = PROJECTS.path;
+
   const filterProjectsBySkill = (
     projects: ProjectInterface[],
     selectedSkill: SkillInterface,
@@ -64,7 +67,7 @@ const ProjectsSection: React.FC<ProjectPageProps> = ({ projects, skill }) => {
       <ProjectsList groupedProjects={groupedProjects} />
 
       <div className="flex justify-center mt-10">
-        <Link href="/projects">
+        <Link href={basePath}>
           <Button variant="outline">View All Projects</Button>
         </Link>
       </div>

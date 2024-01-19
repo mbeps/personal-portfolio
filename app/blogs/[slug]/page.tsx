@@ -4,8 +4,8 @@ import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
 import Reader from "@/components/Reader/Reader";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
+import { BLOG } from "@/constants/pages";
 import blogs from "@/database/blogs";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -61,9 +61,11 @@ export const generateStaticParams = async () => {
  */
 const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
   const slug = params.slug;
+  const basePath = BLOG.path;
   const blogMetadata = getBlogMetadataBySlug(slug, blogs);
-  const blogContent = getMarkdownFromFileSystem(`public/blogs/${slug}/blog.md`)
-    ?.content;
+  const blogContent = getMarkdownFromFileSystem(
+    `public${basePath}/${slug}/blog.md`,
+  )?.content;
 
   if (!blogContent || !blogMetadata) {
     notFound();

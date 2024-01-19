@@ -3,5 +3,5 @@
  */
 export default interface NavigationItemInterface {
   label: string;
-  page: string;
+  path: string;
 }
