@@ -9,6 +9,7 @@ import {
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
 import { AspectRatio } from "../shadcn/ui/aspect-ratio";
+import { PROJECTS } from "@/constants/pages";
 
 interface ProjectItemProps {
   project: ProjectInterface;
@@ -42,10 +43,12 @@ interface ProjectItemProps {
  * @returns (JSX.Element): Project item component
  */
 const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
+  const basePath = PROJECTS.path;
+
   if (project.hasImage) {
     project = {
       ...project,
-      thumbnailImage: `/projects/${project.slug}/cover.png`,
+      thumbnailImage: `${basePath}/${project.slug}/cover.png`,
     };
   }
 
@@ -63,7 +66,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
                 transition-all duration-500 ease-in-out
               "
           >
-            <Link href={`/projects/${project.slug}`}>
+            <Link href={`${basePath}/${project.slug}`}>
               <AspectRatio ratio={8 / 5} className="overflow-hidden relative">
                 <Image
                   src={project.thumbnailImage}
@@ -88,7 +91,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
           }`}
         >
           {/* Project Title */}
-          <Link href={`/projects/${project.slug}`}>
+          <Link href={`${basePath}/${project.slug}`}>
             <h1
               className="
                   flex flex-col
@@ -120,7 +123,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
 
             <Tooltip>
               <TooltipTrigger>
-                <Link href={`/projects/${project.slug}`}>
+                <Link href={`${basePath}/${project.slug}`}>
                   <BsInfoCircle
                     size={30}
                     className="md:hover:-translate-y-1 transition-transform cursor-pointer"

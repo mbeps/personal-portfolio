@@ -20,6 +20,7 @@ import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
+import { PROJECTS } from "@/constants/pages";
 
 /**
  * Metadata object for the dynamic project page.
@@ -76,7 +77,7 @@ interface ProjectPageProps {
  */
 const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const slug = params.slug;
-
+  const basePath = PROJECTS.path;
   const project = getProjectBySlug(slug, allProjects);
 
   // redirect to not found page if the project is not valid
@@ -88,7 +89,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const projectLanguage = project.programmingLanguage;
   const projectDescription = project.description;
   const hasCoverImage = hasProjectCover(slug);
-  const coverImagePath = `/projects/${slug}/cover.png`;
+  const coverImagePath = `${basePath}/${slug}/cover.png`;
 
   function technicalGeneralSkills(
     skills: SkillInterface[],
@@ -126,19 +127,19 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   ];
 
   const getImages = () => {
-    let images = getImagesFromFileSystem(`public/projects/${slug}/media`);
+    let images = getImagesFromFileSystem(`public${basePath}/${slug}/media`);
 
     // add the path to the media items
-    images = images.map((image) => `/projects/${slug}/media/${image}`);
+    images = images.map((image) => `${basePath}/${slug}/media/${image}`);
 
     return images;
   };
 
   const getVideos = () => {
-    let videos = getVideosFromFileSystem(`public/projects/${slug}/media`);
+    let videos = getVideosFromFileSystem(`public${basePath}/${slug}/media`);
 
     // add the path to the media items
-    videos = videos.map((video) => `/projects/${slug}/media/${video}`);
+    videos = videos.map((video) => `${basePath}/${slug}/media/${video}`);
 
     return videos;
   };
@@ -151,14 +152,14 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
    * This is used to display the features and blog sections.
    */
   const features = getMarkdownFromFileSystem(
-    `public/projects/${slug}/features.md`,
+    `public${basePath}/${slug}/features.md`,
   )?.content;
 
   /**
    * Get the features and blog content from the file system.
    * This is used to display the features and blog sections.
    */
-  const blog = getMarkdownFromFileSystem(`public/projects/${slug}/report.md`)
+  const blog = getMarkdownFromFileSystem(`public${basePath}/${slug}/report.md`)
     ?.content;
 
   return (

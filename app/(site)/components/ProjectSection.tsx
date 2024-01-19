@@ -5,6 +5,7 @@ import HeadingTwo from "@/components/Text/HeadingTwo";
 import Link from "next/link";
 import allProjects from "@/database/projects";
 import { Button } from "@/components/shadcn/ui/button";
+import { PROJECTS } from "@/constants/pages";
 
 /**
  * Project section listing the projects I have worked on.
@@ -14,6 +15,8 @@ import { Button } from "@/components/shadcn/ui/button";
  * @returns (JSX.Element): Projects section
  */
 const ProjectsSection = () => {
+  const basePath = PROJECTS.path;
+
   /**
    * Only projects matching these slugs will be shown.
    */
@@ -46,7 +49,7 @@ const ProjectsSection = () => {
       </div>
 
       <div className="flex justify-center mt-10">
-        <Link href="/projects">
+        <Link href={basePath}>
           <Button variant="outline">View All Projects</Button>
         </Link>
       </div>
