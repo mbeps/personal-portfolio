@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import React from "react";
 import CertificatesView from "./components/CertificatesView";
 import allCertificates from "@/database/certificates";
+import { CERTIFICATES } from "@/constants/pages";
 
 const description = `
   Explore my collection of certificates and qualifications. 
@@ -13,7 +14,7 @@ const description = `
 `;
 
 export const metadata: Metadata = {
-  title: "Maruf Bepary - Certificates",
+  title: `Maruf Bepary - ${CERTIFICATES.label}`,
   description: description,
 };
 
@@ -28,7 +29,7 @@ const CertificatesPage: React.FC = () => {
   return (
     <section id="projects" className="flex flex-col items-start md:items-end">
       <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
-        <HeadingOne title="Certificates" />
+        <HeadingOne title={CERTIFICATES.label} />
         <PageDescription description={description} />
         <CertificatesView allCertificates={certificates} />
       </div>

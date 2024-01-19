@@ -13,6 +13,8 @@ interface ProjectPageProps {
 }
 
 const ProjectsSection: React.FC<ProjectPageProps> = ({ projects, skill }) => {
+  const basePath = PROJECTS.path;
+
   const filterProjectsBySkill = (
     projects: ProjectInterface[],
     selectedSkill: SkillInterface,
@@ -65,7 +67,7 @@ const ProjectsSection: React.FC<ProjectPageProps> = ({ projects, skill }) => {
       <ProjectsList groupedProjects={groupedProjects} />
 
       <div className="flex justify-center mt-10">
-        <Link href={PROJECTS.path}>
+        <Link href={basePath}>
           <Button variant="outline">View All Projects</Button>
         </Link>
       </div>

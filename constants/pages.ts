@@ -10,7 +10,7 @@ export const PROJECTS: NavigationItemInterface = {
   path: "/projects",
 };
 
-export const CREDENTIALS: NavigationItemInterface = {
+export const CERTIFICATES: NavigationItemInterface = {
   label: "Certificates",
   path: "/certificates",
 };
@@ -23,7 +23,7 @@ export const BLOG: NavigationItemInterface = {
 const NAV_ITEMS: Array<NavigationItemInterface> = [
   HOME,
   PROJECTS,
-  CREDENTIALS,
+  CERTIFICATES,
   BLOG,
 ];
 

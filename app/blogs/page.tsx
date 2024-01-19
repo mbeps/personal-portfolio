@@ -3,6 +3,7 @@ import { BlogsView } from "./components/BlogsView";
 import type { Metadata } from "next";
 import PageDescription from "@/components/UI/PageDescription";
 import blogs from "@/database/blogs";
+import { BLOG } from "@/constants/pages";
 
 const description = `
   Explore my collection of blogs on various topics. 
@@ -10,7 +11,7 @@ const description = `
 `;
 
 export const metadata: Metadata = {
-  title: "Maruf Bepary - Blogs",
+  title: `Maruf Bepary - ${BLOG.label}`,
   description: description,
 };
 /**
@@ -25,7 +26,7 @@ export default function BlogPage() {
     <main>
       <section id="blogs">
         <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
-          <HeadingOne title="Blog" />
+          <HeadingOne title={BLOG.label} />
           <PageDescription description={description} />
 
           <BlogsView blogs={blogMetadata} />
