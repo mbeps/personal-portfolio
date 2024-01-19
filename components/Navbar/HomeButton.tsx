@@ -7,19 +7,19 @@ import Link from "next/link";
  */
 const HomeButton: React.FC = () => {
   return (
-    <Link href="/">
-      <div className="container flex items-center space-x-2 cursor-pointer">
+    <div className="cursor-pointer">
+      <Link href="/">
         <h2
           className="
-          text-2xl font-bold
-          md:hover:text-red-500 md:dark:hover:text-red-800
-          transition-colors duration-700 ease-in-out
+            text-2xl font-bold
+            md:hover:text-red-500 md:dark:hover:text-red-800
+            transition-colors duration-700 ease-in-out
           "
         >
           Maruf Bepary
         </h2>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 
