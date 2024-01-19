@@ -26,8 +26,8 @@ interface CertificateItemProps {
  * @returns (JSX.Element): certificate item component
  */
 const CertificateItem: React.FC<CertificateItemProps> = ({ certificate }) => {
-  const customCredentialPage = `/credentials/${certificate.slug}`;
-  const issuerCredentialPage = certificate.credentialURL;
+  const customCertificatePage = `/credentials/${certificate.slug}`;
+  const issuerCertificatePage = certificate.certificateURL;
 
   certificate = {
     ...certificate,
@@ -48,7 +48,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({ certificate }) => {
     >
       {/* Certificate Image */}
       {certificate.certificateImage && (
-        <Link href={customCredentialPage}>
+        <Link href={customCertificatePage}>
           <div
             className="
             flex justify-center
@@ -85,7 +85,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({ certificate }) => {
         gap-8 px-4 py-4"
       >
         {/* Certificate Title */}
-        <Link href={customCredentialPage}>
+        <Link href={customCertificatePage}>
           <h1
             className="
               text-3xl md:text-4xl font-bold text-center 
@@ -111,7 +111,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({ certificate }) => {
 
           <Tooltip>
             <TooltipTrigger>
-              <Link href={customCredentialPage}>
+              <Link href={customCertificatePage}>
                 <BsInfoCircle
                   size={30}
                   className="md:hover:-translate-y-1 transition-transform cursor-pointer"
@@ -123,13 +123,13 @@ const CertificateItem: React.FC<CertificateItemProps> = ({ certificate }) => {
             </TooltipContent>
           </Tooltip>
           {/* Link to Credential */}
-          {certificate.credentialURL && (
+          {certificate.certificateURL && (
             <Tooltip>
               <TooltipTrigger>
                 <Link
-                  href={issuerCredentialPage}
+                  href={issuerCertificatePage}
                   target="_blank"
-                  title="View Credentials on Provider's Website"
+                  title="View Certificates on Provider's Website"
                 >
                   <BsArrowUpRightCircle
                     size={30}

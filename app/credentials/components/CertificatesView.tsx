@@ -16,9 +16,9 @@ import { Button } from "@/components/shadcn/ui/button";
 import { AiOutlineClear } from "react-icons/ai";
 import Link from "next/link";
 import { BsFilterLeft } from "react-icons/bs";
-import CredentialsList from "@/components/MaterialLists/CredentialsList";
+import CertificatesList from "@/components/MaterialLists/CertificatesList";
 
-type CredentialsListListProps = {
+type CertificatesListListProps = {
   allCertificates: CertificateInterface[];
 };
 
@@ -29,7 +29,7 @@ type CredentialsListListProps = {
  * @param allCertificates (Certificate[]): list of all certificates
  * @returns (JSX.Element): list of all certificates
  */
-const CredentialsView: React.FC<CredentialsListListProps> = ({
+const CertificatesView: React.FC<CertificatesListListProps> = ({
   allCertificates,
 }) => {
   //^ Hooks
@@ -40,7 +40,7 @@ const CredentialsView: React.FC<CredentialsListListProps> = ({
 
   //^ URL Params Strings
   const issuerParamName = "issuer";
-  const credentialSectionParamName = "section";
+  const certificateSectionParamName = "section";
   const skillCategoryParamName = "category";
   const technicalSkillParamName = "technical";
   const generalSkillParamName = "general";
@@ -53,7 +53,7 @@ const CredentialsView: React.FC<CredentialsListListProps> = ({
     searchParams.get(issuerParamName) || "all",
   );
   const selectedCategory = decodeURIComponent(
-    searchParams.get(credentialSectionParamName) || "all",
+    searchParams.get(certificateSectionParamName) || "all",
   );
   const selectedSkillCategory = decodeURIComponent(
     searchParams.get(skillCategoryParamName) || "all",
@@ -224,7 +224,7 @@ const CredentialsView: React.FC<CredentialsListListProps> = ({
       generateUrl(
         [
           { entryName: issuerParamName, slug: selectedIssuer },
-          { entryName: credentialSectionParamName, slug: selectedCategory },
+          { entryName: certificateSectionParamName, slug: selectedCategory },
           { entryName: skillCategoryParamName, slug: selectedSkillCategory },
           { entryName: technicalSkillParamName, slug: selectedTechnicalSkill },
           { entryName: generalSkillParamName, slug: selectedGeneralSkill },
@@ -307,7 +307,7 @@ const CredentialsView: React.FC<CredentialsListListProps> = ({
     },
     {
       sectionName: "Category",
-      urlParam: credentialSectionParamName,
+      urlParam: certificateSectionParamName,
       options: certificateCategories,
       selectedValue: selectedCategory,
     },
@@ -391,7 +391,7 @@ const CredentialsView: React.FC<CredentialsListListProps> = ({
         showArchived={showArchived}
         filterProps={[
           { entryName: issuerParamName, slug: selectedIssuer },
-          { entryName: credentialSectionParamName, slug: selectedCategory },
+          { entryName: certificateSectionParamName, slug: selectedCategory },
           { entryName: skillCategoryParamName, slug: selectedSkillCategory },
           { entryName: technicalSkillParamName, slug: selectedTechnicalSkill },
           { entryName: generalSkillParamName, slug: selectedGeneralSkill },
@@ -402,7 +402,7 @@ const CredentialsView: React.FC<CredentialsListListProps> = ({
       />
 
       {/* List of projects */}
-      <CredentialsList groupedCertificates={groupedCertificates} />
+      <CertificatesList groupedCertificates={groupedCertificates} />
       {/* Filter Modal */}
       <FilterOverlay
         isOpen={isFilterOpen}
@@ -418,4 +418,4 @@ const CredentialsView: React.FC<CredentialsListListProps> = ({
     </>
   );
 };
-export default CredentialsView;
+export default CertificatesView;

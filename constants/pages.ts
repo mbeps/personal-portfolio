@@ -11,7 +11,7 @@ export const PROJECTS: NavigationItemInterface = {
 };
 
 export const CREDENTIALS: NavigationItemInterface = {
-  label: "Credentials",
+  label: "Certificates",
   path: "/credentials",
 };
 

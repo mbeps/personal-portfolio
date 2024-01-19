@@ -11,7 +11,7 @@ import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import React from "react";
 import BlogsSection from "./components/BlogsSection";
-import CredentialsSection from "./components/CredentialsSection";
+import CertificatesSection from "./components/CertificatesSection";
 import ProjectsSection from "./components/ProjectsSection";
 import RelatedSkillsSection from "./components/RelatedSkillsSection";
 
@@ -66,7 +66,7 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
       />
 
       <ProjectsSection projects={allProjects} skill={skill} />
-      <CredentialsSection certificates={allCertificates} skill={skill} />
+      <CertificatesSection certificates={allCertificates} skill={skill} />
       <BlogsSection blogs={blogMetadata} skill={skill} />
       <RelatedSkillsSection skill={skill} />
     </div>
