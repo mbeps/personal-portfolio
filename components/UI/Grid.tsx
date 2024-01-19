@@ -20,7 +20,7 @@ const Grid: React.FC<GridProps> = ({ items }) => {
         if (isLastItem && isOddTotal) {
           return (
             <div key={idx} className="md:col-span-2 flex justify-center">
-              <div className="w-1/2">{item}</div>
+              <div className="w-full md:w-1/2">{item}</div>
             </div>
           );
         } else {
