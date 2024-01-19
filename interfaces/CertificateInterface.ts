@@ -11,7 +11,8 @@ export default interface CertificateInterface {
     | "NASBA"
     | "PMI"
     | "GitHub"
-    | "Royal Holloway University";
+    | "Royal Holloway University"
+    | "Symphony Solutions";
   certificateURL: string;
   technicalSkills: SkillInterface[];
   softSkills: SkillInterface[];
