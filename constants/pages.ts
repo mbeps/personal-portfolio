@@ -12,7 +12,7 @@ export const PROJECTS: NavigationItemInterface = {
 
 export const CREDENTIALS: NavigationItemInterface = {
   label: "Certificates",
-  path: "/credentials",
+  path: "/certificates",
 };
 
 export const BLOG: NavigationItemInterface = {

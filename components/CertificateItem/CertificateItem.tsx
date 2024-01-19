@@ -10,6 +10,7 @@ import React from "react";
 import { BsArrowUpRightCircle, BsInfoCircle } from "react-icons/bs";
 import Tag from "../Tags/Tag";
 import { AspectRatio } from "../shadcn/ui/aspect-ratio";
+import { CREDENTIALS } from "@/constants/pages";
 
 interface CertificateItemProps {
   certificate: CertificateInterface;
@@ -26,12 +27,13 @@ interface CertificateItemProps {
  * @returns (JSX.Element): certificate item component
  */
 const CertificateItem: React.FC<CertificateItemProps> = ({ certificate }) => {
-  const customCertificatePage = `/credentials/${certificate.slug}`;
+  const basePath = CREDENTIALS.path;
+  const customCertificatePage = `${basePath}/${certificate.slug}`;
   const issuerCertificatePage = certificate.certificateURL;
 
   certificate = {
     ...certificate,
-    certificateImage: `/certificates/${certificate.slug}.jpg`,
+    certificateImage: `${basePath}/${certificate.slug}.jpg`,
   };
 
   return (

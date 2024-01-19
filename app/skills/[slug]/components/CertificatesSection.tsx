@@ -1,5 +1,6 @@
 import CertificatesList from "@/components/MaterialLists/CertificatesList";
 import { Button } from "@/components/shadcn/ui/button";
+import { CREDENTIALS } from "@/constants/pages";
 import CertificateInterface from "@/interfaces/CertificateInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Link from "next/link";
@@ -64,7 +65,7 @@ const CertificatesSection: React.FC<CertificatesSectionProps> = ({
       <CertificatesList groupedCertificates={groupedCertificates} />
 
       <div className="flex justify-center mt-10">
-        <Link href="/credentials">
+        <Link href={CREDENTIALS.path}>
           <Button variant="outline">View All Certificates</Button>
         </Link>
       </div>
