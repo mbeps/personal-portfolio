@@ -37,7 +37,7 @@ export async function generateMetadata(
 
   return {
     title: `Maruf Bepary - Skills: ${skill?.name}`,
-    description: skill?.name,
+    description: skill.name,
   };
 }
 
