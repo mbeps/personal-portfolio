@@ -14,6 +14,8 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../shadcn/ui/tabs";
 import VideoPlayer from "./VideoPlayer";
 import useIsMounted from "@/hooks/useIsMounted";
+import { Button } from "../shadcn/ui/button";
+import { LiaImageSolid, LiaVideoSolid } from "react-icons/lia";
 
 interface GalleryProps {
   images?: string[];
@@ -65,7 +67,10 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
         <Tabs defaultValue="images" className="w-full">
           {/* Images */}
           <TabsContent value="images" className="w-full">
-            <Carousel setApi={setApi}>
+            <Carousel
+              setApi={setApi}
+              className="bg-neutral-100 dark:bg-neutral-950 rounded-xl"
+            >
               <CarouselContent>
                 {Array.from({ length: images?.length ?? 0 }).map((_, index) => (
                   <CarouselItem key={index}>
@@ -77,7 +82,13 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
                       width={2000}
                       height={1125}
                       priority
-                      className="w-full h-[60vh] object-contain rounded-xl bg-neutral-100 dark:bg-neutral-950 transition-colors duration-700 p-2"
+                      className="
+                        w-full h-[60vh] 
+                        object-contain 
+                        rounded-xl 
+                        
+                        transition-colors duration-700 
+                        p-2"
                     />
                   </CarouselItem>
                 ))}
@@ -95,7 +106,10 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
           </TabsContent>
           {/* Video Demos */}
           <TabsContent value="demo">
-            <Carousel setApi={setApi}>
+            <Carousel
+              setApi={setApi}
+              className="bg-neutral-100 dark:bg-neutral-950 rounded-xl"
+            >
               <CarouselContent>
                 {Array.from({ length: videos?.length ?? 0 }).map((_, index) => (
                   <CarouselItem key={index}>
@@ -119,9 +133,29 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
           </TabsContent>
 
           <div className="flex justify-center items-center">
-            <TabsList>
-              <TabsTrigger value="images">Images</TabsTrigger>
-              <TabsTrigger value="demo">Videos</TabsTrigger>
+            <TabsList className="rounded-full">
+              <TabsTrigger
+                value="images"
+                className="
+                  flex flex-row space-x-1 
+                  text-neutral-700 dark:text-neutral-200 text-md
+                  rounded-full
+                  "
+              >
+                <LiaImageSolid fontSize={20} />
+                <span>Images</span>
+              </TabsTrigger>
+              <TabsTrigger
+                value="demo"
+                className="
+                  flex flex-row space-x-1 
+                  text-neutral-700 dark:text-neutral-200 text-md
+                  rounded-full
+                  "
+              >
+                <LiaVideoSolid fontSize={20} />
+                <span>Videos</span>
+              </TabsTrigger>
             </TabsList>
           </div>
         </Tabs>
