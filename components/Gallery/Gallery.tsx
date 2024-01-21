@@ -14,6 +14,8 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../shadcn/ui/tabs";
 import VideoPlayer from "./VideoPlayer";
 import useIsMounted from "@/hooks/useIsMounted";
+import { Button } from "../shadcn/ui/button";
+import { LiaImageSolid, LiaVideoSolid } from "react-icons/lia";
 
 interface GalleryProps {
   images?: string[];
@@ -120,8 +122,28 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
 
           <div className="flex justify-center items-center">
             <TabsList>
-              <TabsTrigger value="images">Images</TabsTrigger>
-              <TabsTrigger value="demo">Videos</TabsTrigger>
+              <TabsTrigger 
+                value="images" 
+                className="
+                  flex flex-row space-x-1 
+                  text-neutral-700 dark:text-neutral-200 text-lg
+                  ">
+                    <LiaImageSolid fontSize={20}/>
+                    <span>
+                      Images
+                    </span>
+              </TabsTrigger>
+              <TabsTrigger 
+                value="demo" 
+                className="
+                  flex flex-row space-x-1 
+                  text-neutral-700 dark:text-neutral-200 text-lg
+                  ">
+                    <LiaVideoSolid fontSize={20}/>
+                    <span>
+                      Videos
+                    </span>
+              </TabsTrigger>
             </TabsList>
           </div>
         </Tabs>
