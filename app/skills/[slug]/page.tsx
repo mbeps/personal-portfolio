@@ -31,6 +31,10 @@ export async function generateMetadata(
   const slug = params.slug;
   const skill = getSkillBySlug(slug, [...allSkills]);
 
+  if (!skill) {
+    notFound();
+  }
+
   return {
     title: `Maruf Bepary - Skills: ${skill?.name}`,
     description: skill?.name,
