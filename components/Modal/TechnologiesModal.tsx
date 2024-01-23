@@ -25,6 +25,7 @@ import HeadingTwo from "../Text/HeadingTwo";
 import { Button } from "../shadcn/ui/button";
 import groupSkills from "@/actions/skills/groupSkills";
 import useIsMounted from "@/hooks/useIsMounted";
+import { ScrollArea } from "../shadcn/ui/scroll-area";
 
 /**
  * Displays a modal for the skills.
@@ -78,72 +79,80 @@ const TechnologiesModal: React.FC = () => {
         <Tag onClick={handleOpenModal}>...</Tag>
       </DialogTrigger>
       <DialogContent>
-        <HeadingTwo title="Technologies" />
-        <div className="flex mt-4">
-          <div
-            className="
-          flex-grow mr-2 mt-2.5 
-          text-right text-neutral-700 dark:text-neutral-300
-          "
-          >
-            Group by:
-          </div>
+        <div className="h-full w-full pt-6">
+          <HeadingTwo title="Technologies" />
+        </div>
 
-          <DropdownMenu>
-            <DropdownMenuTrigger className="w-48">
-              <Button variant="default" className="w-full">
-                <div className="flex items-start justify-between space-x-2 w-full">
-                  <span>{currentGroupedName}</span>
-                  <BsChevronDown
-                    fontSize={16}
-                    className="text-neutral-700 dark:text-neutral-200 mt-1"
-                  />
+        <ScrollArea className="h-full w-full">
+          <div className="px-6 pb-4">
+            <div className="flex mt-4">
+              <div
+                className="
+                  flex-grow mr-2 mt-2.5
+                  text-right text-neutral-700 dark:text-neutral-300
+              "
+              >
+                Group by:
+              </div>
+
+              <DropdownMenu>
+                <DropdownMenuTrigger className="w-48">
+                  <Button variant="default" className="w-full">
+                    <div className="flex items-start justify-between space-x-2 w-full">
+                      <span>{currentGroupedName}</span>
+                      <BsChevronDown
+                        fontSize={16}
+                        className="text-neutral-700 dark:text-neutral-200 mt-1"
+                      />
+                    </div>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-48 ">
+                  {options.map((option, index) => (
+                    <DropdownMenuItem
+                      key={index}
+                      className={`${
+                        option.slug === groupedBy ? "font-bold" : ""
+                      }`}
+                      onSelect={() => setGroupedBy(option.slug)}
+                    >
+                      {option.entryName}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+
+            {groupedSkills.map((categoryData, index) => (
+              <div key={index} className="mt-4 text-center md:text-left">
+                <HeadingThree title={categoryData.skillCategoryName} />
+                <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
+                  {categoryData.skills.map((skill, skillIndex) => (
+                    <SkillTag key={skillIndex} skill={skill} />
+                  ))}
                 </div>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-48 ">
-              {options.map((option, index) => (
-                <DropdownMenuItem
-                  key={index}
-                  className={`
-              ${option.slug === groupedBy ? "font-bold" : ""}`}
-                  onSelect={() => setGroupedBy(option.slug)}
-                >
-                  {option.entryName}
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
+              </div>
+            ))}
 
-        {groupedSkills.map((categoryData, index) => (
-          <div key={index} className="mt-4 text-center md:text-left">
-            <HeadingThree title={categoryData.skillCategoryName} />
-            <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-              {categoryData.skills.map((skill, skillIndex) => (
-                <SkillTag key={skillIndex} skill={skill} />
-              ))}
+            {/* separator */}
+            <div className="w-full h-px bg-neutral-200 dark:bg-neutral-700 my-8" />
+
+            <div
+              className="
+                flex flex-wrap flex-col
+                text-center md:text-left
+                justify-start z-10 -mt-8"
+            >
+              <Link href={`/skills`}>
+                <div className="w-full">
+                  <Button variant="gradient" className="w-full">
+                    {`All Technologies & Skills`}
+                  </Button>
+                </div>
+              </Link>
             </div>
           </div>
-        ))}
-
-        {/* separator */}
-        <div className="w-full h-px bg-neutral-200 dark:bg-neutral-700 my-8" />
-
-        <div
-          className="
-            flex flex-wrap flex-col
-            text-center md:text-left
-            justify-start z-10 -mt-8"
-        >
-          <Link href={`/skills`}>
-            <div className="w-full">
-              <Button variant="gradient" className="w-full">
-                {`All Technologies & Skills`}
-              </Button>
-            </div>
-          </Link>
-        </div>
+        </ScrollArea>
       </DialogContent>
     </Dialog>
   );
