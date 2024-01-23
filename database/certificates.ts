@@ -1385,6 +1385,33 @@ const webDevelopmentCertificates: CertificateInterface[] = [
       "General usage of React with TypeScript.",
     ],
   },
+  {
+    name: "Spring Boot For Beginners",
+    slug: "l4wvdvdd",
+    category: "Web Development",
+    issuer: "Amigoscode",
+    certificateURL: "https://app.amigoscode.com/courses/267273/certificate",
+    technicalSkills: [springBoot, java, rest, apis, jwt, databases, sql],
+    softSkills: [problemSolving, criticalThinking],
+    learningOutcomes: [
+      "Understanding the basics of Spring Boot",
+      "Setting up a Spring Boot application using Spring Initializr",
+      "Configuring an embedded web server in Spring Boot",
+      "Creating your first API in Spring Boot",
+      "Understanding the Spring Web MVC",
+      "Converting Java objects to JSON objects",
+      "Understanding the N Tier Diagram and Model",
+      "Setting up a Postgres DB and configuring the datasource",
+      "Creating a database with Spring Data JPA",
+      "Building a CRUD API with Spring Boot",
+    ],
+    description: `
+      This course provides a comprehensive guide to Spring Boot, a popular Java-based framework for building web applications.
+      It covers the basics of Spring Boot, including setting up a Spring Boot application, configuring an embedded web server, and creating your first API.
+      The course also explores the Spring Web MVC, converting Java objects to JSON objects, and setting up a Postgres DB and configuring the datasource.
+      It's designed to equip learners with the skills to build their own web applications with Spring Boot.
+    `,
+  },
 ];
 
 const databasesCertificates: CertificateInterface[] = [
