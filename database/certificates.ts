@@ -2123,7 +2123,9 @@ const otherCertificates: CertificateInterface[] = [
     technicalSkills: [java, springBoot, rest, symphony, automation],
     softSkills: [problemSolving, criticalThinking],
     description: `
-      This certification is awarded to developers who have successfully completed the Symphony Certified Bot Developer (Java) training course. It covers the fundamentals of building a bot for the Symphony platform, including the use of the Symphony Java Client library, the Symphony REST API, and the Symphony Elements API. The course also covers the use of Spring Boot to create a simple bot application, and the use of the Symphony Elements API to create a bot with a user interface.
+      This certification is awarded to developers who have successfully completed the Symphony Certified Bot Developer (Java) training course.
+      It covers the fundamentals of building a bot for the Symphony platform, including the use of the Symphony Java Client library, the Symphony REST API, and the Symphony Elements API.
+      The course also covers the use of Spring Boot to create a simple bot application, and the use of the Symphony Elements API to create a bot with a user interface.
     `,
     learningOutcomes: [
       "Understanding the value proposition of bots and their types",
@@ -2134,6 +2136,31 @@ const otherCertificates: CertificateInterface[] = [
       "Creating and handling activities in BDK for Java",
       "Implementing message templating in BDK for Java",
       "Converting a BDK 2.0 project to Spring Boot and using BDK 2.0 with Spring Boot",
+    ],
+  },
+  {
+    name: "Symphony Certified Bot Developer (Python)",
+    slug: "d87290c2-7db7-45c2-89e2-ebd2c41e8b85",
+    category: "Other",
+    issuer: "Symphony Solutions",
+    certificateURL:
+      "https://www.credly.com/badges/d87290c2-7db7-45c2-89e2-ebd2c41e8b85",
+    technicalSkills: [python, poetry, jinja, rest, symphony, automation],
+    softSkills: [problemSolving, criticalThinking],
+    description: `
+      This certification is awarded to developers who have successfully completed the Symphony Certified Bot Developer (Python) training course.
+      It covers the fundamentals of building a bot for the Symphony platform, including the use of the Symphony Python Client library, the Symphony REST API, and the Symphony Elements API.
+      The course also covers the use of Poetry to create a simple bot application, and the use of the Symphony Elements API to create a bot with a user interface.
+    `,
+    learningOutcomes: [
+      "Understanding the value proposition and types of bots",
+      "Learning the structure and architecture of BDK for Python",
+      "Configuring and initializing a bot in BDK for Python",
+      "Using REST API clients in BDK for Python",
+      "Handling real-time events and form submissions in BDK for Python",
+      "Creating and handling activities in BDK for Python",
+      "Implementing message templating in BDK for Python",
+      "Understanding high availability and Datafeed 2.0 in BDK for Python",
     ],
   },
 ];
