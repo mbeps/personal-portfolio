@@ -132,32 +132,43 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
             </div>
           </TabsContent>
 
-          <div className="flex justify-center items-center">
-            <TabsList className="rounded-full">
-              <TabsTrigger
-                value="images"
-                className="
-                  flex flex-row space-x-1 
+          {/* Tabs List */}
+
+          {images && images.length > 0 && videos && videos.length > 0 && (
+            <div className="flex justify-center items-center">
+              <TabsList className="rounded-full">
+                {/* Images */}
+                {images && images.length > 0 && (
+                  <TabsTrigger
+                    value="images"
+                    className="
+                  flex flex-row space-x-1
                   text-neutral-700 dark:text-neutral-200 text-md
                   rounded-full
                   "
-              >
-                <LiaImageSolid fontSize={20} />
-                <span>Images</span>
-              </TabsTrigger>
-              <TabsTrigger
-                value="demo"
-                className="
-                  flex flex-row space-x-1 
+                  >
+                    <LiaImageSolid fontSize={20} />
+                    <span>Images</span>
+                  </TabsTrigger>
+                )}
+
+                {/* Videos */}
+                {videos && videos.length > 0 && (
+                  <TabsTrigger
+                    value="demo"
+                    className="
+                  flex flex-row space-x-1
                   text-neutral-700 dark:text-neutral-200 text-md
                   rounded-full
                   "
-              >
-                <LiaVideoSolid fontSize={20} />
-                <span>Videos</span>
-              </TabsTrigger>
-            </TabsList>
-          </div>
+                  >
+                    <LiaVideoSolid fontSize={20} />
+                    <span>Videos</span>
+                  </TabsTrigger>
+                )}
+              </TabsList>
+            </div>
+          )}
         </Tabs>
       </div>
     </div>
