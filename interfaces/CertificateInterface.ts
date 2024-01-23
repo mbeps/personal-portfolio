@@ -12,7 +12,8 @@ export default interface CertificateInterface {
     | "PMI"
     | "GitHub"
     | "Royal Holloway University"
-    | "Symphony Solutions";
+    | "Symphony Solutions"
+    | "Amigoscode";
   certificateURL: string;
   technicalSkills: SkillInterface[];
   softSkills: SkillInterface[];
