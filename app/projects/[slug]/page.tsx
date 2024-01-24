@@ -91,35 +91,10 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const hasCoverImage = hasProjectCover(slug);
   const coverImagePath = `${basePath}/${slug}/cover.png`;
 
-  function technicalGeneralSkills(
-    skills: SkillInterface[],
-    extraSkills: SkillInterface[] = [],
-  ): SkillInterface[] {
-    // Combine the original skills and extra skills
-    const combinedSkills = skills.concat(extraSkills);
-
-    return combinedSkills
-      .flatMap((skill) =>
-        skill.technicalGeneralSkills
-          ? [skill, ...skill.technicalGeneralSkills]
-          : [skill],
-      )
-      .reduce((uniqueSkills, skill) => {
-        if (!uniqueSkills.some((s) => s.slug === skill.slug)) {
-          uniqueSkills.push(skill);
-        }
-        return uniqueSkills;
-      }, [] as SkillInterface[]);
-  }
-
   // Using the new function to group all skill types
   const allGroupedSkills = [
     filterAndGroupSkills(project.skills, "hard", "Technologies"),
-    filterAndGroupSkills(
-      technicalGeneralSkills(project.skills),
-      "general",
-      "Technical Skills",
-    ),
+    filterAndGroupSkills(project.skills, "general", "Technical Skills"),
     filterAndGroupSkills(project.skills, "soft", "Soft Skills"),
   ];
 

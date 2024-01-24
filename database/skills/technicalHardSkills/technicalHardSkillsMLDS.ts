@@ -9,6 +9,7 @@ import {
   dataVisualisation,
   mathematics,
 } from "../generalSkills";
+import { python } from "../languages";
 
 export const scikitLearn: SkillInterface = {
   name: "Scikit Learn",
@@ -16,7 +17,8 @@ export const scikitLearn: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "scikit-learn",
-  technicalGeneralSkills: [
+  relatedSkills: [
+    python,
     machineLearning,
     dataScience,
     artificialIntelligence,
@@ -32,7 +34,7 @@ export const pandas: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "pandas",
-  technicalGeneralSkills: [dataScience, dataVisualisation],
+  relatedSkills: [python, dataScience, dataVisualisation],
 };
 
 export const numpy: SkillInterface = {
@@ -41,7 +43,7 @@ export const numpy: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "numpy",
-  technicalGeneralSkills: [dataScience, mathematics],
+  relatedSkills: [python, dataScience, mathematics],
 };
 
 export const matplotlib: SkillInterface = {
@@ -50,7 +52,7 @@ export const matplotlib: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "matplotlib",
-  technicalGeneralSkills: [dataScience, dataVisualisation],
+  relatedSkills: [python, dataScience, dataVisualisation],
 };
 
 export const seaborn: SkillInterface = {
@@ -59,7 +61,7 @@ export const seaborn: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "seaborn",
-  technicalGeneralSkills: [dataScience, dataVisualisation],
+  relatedSkills: [python, dataScience, dataVisualisation],
 };
 
 export const keras: SkillInterface = {
@@ -68,7 +70,8 @@ export const keras: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "keras",
-  technicalGeneralSkills: [
+  relatedSkills: [
+    python,
     machineLearning,
     dataScience,
     artificialIntelligence,
@@ -82,7 +85,7 @@ export const jupyterNotebooks: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "juptyer-notebooks",
-  technicalGeneralSkills: [dataScience],
+  relatedSkills: [python, dataScience],
 };
 
 const technicalHardSkillsMachineLearning: SkillInterface[] = [

@@ -6,7 +6,7 @@ export const gameMakerStudio: SkillInterface = {
   category: "Game Development",
   skillType: "hard",
   slug: "gamemaker-studio",
-  technicalGeneralSkills: [gameDevelopment],
+  relatedSkills: [gameDevelopment],
 };
 
 export const symphony: SkillInterface = {
@@ -14,7 +14,7 @@ export const symphony: SkillInterface = {
   category: "Automation",
   skillType: "hard",
   slug: "symphony-solutions",
-  technicalGeneralSkills: [gameDevelopment],
+  relatedSkills: [gameDevelopment],
 };
 
 const technicalHardSkillsOthers: SkillInterface[] = [gameMakerStudio, symphony];

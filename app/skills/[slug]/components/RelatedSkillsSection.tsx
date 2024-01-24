@@ -1,10 +1,6 @@
 import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
-import getGeneralSkillsFromHardTechnicalSkill from "@/actions/skills/getGeneralSkillsFromHardTechnicalSkill";
-import getHardSkillsFromGeneralTechnicalSkill from "@/actions/skills/getHardSkillsFromGeneralTechnicalSkill";
-import {
-  default as getHardSkillsFromHardTechnicalSkill,
-  default as getTechnologiesFromHardTechnicalSkill,
-} from "@/actions/skills/getHardSkillsFromHardTechnicalSkill";
+import filterSkillsByType from "@/actions/skills/filterSkillsByType";
+import getAssociatedSkills from "@/actions/skills/getAssociatedSkills";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import allSkills from "@/database/skills/skills";
@@ -18,13 +14,7 @@ interface RelatedSkillsSectionProps {
 const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
   skill,
 }) => {
-  const skillTechnologies = Array.from(
-    new Set([
-      ...getHardSkillsFromHardTechnicalSkill(skill),
-      ...getHardSkillsFromGeneralTechnicalSkill(skill, allSkills),
-      ...getGeneralSkillsFromHardTechnicalSkill(skill),
-    ]),
-  );
+  const skillTechnologies = getAssociatedSkills(allSkills, skill);
 
   if (!skillTechnologies || skillTechnologies.length === 0) {
     return;
@@ -32,17 +22,17 @@ const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
 
   const allGroupedBlogSkills = [
     filterAndGroupSkills(
-      getTechnologiesFromHardTechnicalSkill(skill),
+      filterSkillsByType(skillTechnologies, "hard"),
       "hard",
       "Technologies",
     ),
     filterAndGroupSkills(
-      getGeneralSkillsFromHardTechnicalSkill(skill),
+      filterSkillsByType(skillTechnologies, "general"),
       "general",
       "Technical Skills",
     ),
     filterAndGroupSkills(
-      getHardSkillsFromGeneralTechnicalSkill(skill, allSkills),
+      filterSkillsByType(skillTechnologies, "soft"),
       "soft",
       "Soft Skills",
     ),

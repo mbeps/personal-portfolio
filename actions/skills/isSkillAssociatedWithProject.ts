@@ -11,14 +11,19 @@ export default function isSkillAssociatedWithProject(
       return true;
     }
 
-    // Check if the skill is in the project's skills array
-    // Includes both direct match and nested technicalGeneralSkills match
-    return project.skills.some(
-      (projectSkill) =>
-        projectSkill.slug === skill.slug ||
-        (projectSkill.technicalGeneralSkills || []).some(
-          (nestedSkill) => nestedSkill.slug === skill.slug,
-        ),
-    );
+    // Recursive function to check nested skills
+    const checkNestedSkills = (
+      skills: SkillInterface[],
+      skillSlug: string,
+    ): boolean => {
+      return skills.some(
+        (s) =>
+          s.slug === skillSlug ||
+          (s.relatedSkills && checkNestedSkills(s.relatedSkills, skillSlug)),
+      );
+    };
+
+    // Check if the skill is in the project's skills array, including nested skills
+    return checkNestedSkills(project.skills, skill.slug);
   });
 }

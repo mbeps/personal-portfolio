@@ -10,6 +10,7 @@ import {
   webDevelopment,
   apis,
 } from "../generalSkills";
+import { java, javascript, python, typescript } from "../languages";
 
 export const firebase: SkillInterface = {
   name: "Firebase",
@@ -17,7 +18,7 @@ export const firebase: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "firebase",
-  technicalGeneralSkills: [
+  relatedSkills: [
     databaseManagementSystems,
     noSql,
     databases,
@@ -35,7 +36,7 @@ export const supabase: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "supabase",
-  technicalGeneralSkills: [
+  relatedSkills: [
     databaseManagementSystems,
     noSql,
     databases,
@@ -53,7 +54,7 @@ export const pocketbase: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "pocketbase",
-  technicalGeneralSkills: [
+  relatedSkills: [
     databaseManagementSystems,
     noSql,
     databases,
@@ -71,7 +72,7 @@ export const auth0: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "auth0",
-  technicalGeneralSkills: [userAuthentication, sdks],
+  relatedSkills: [userAuthentication, sdks],
 };
 
 export const clerkAuth: SkillInterface = {
@@ -80,7 +81,7 @@ export const clerkAuth: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "clerkAuth",
-  technicalGeneralSkills: [userAuthentication, sdks],
+  relatedSkills: [userAuthentication, sdks],
 };
 
 export const nextauth: SkillInterface = {
@@ -89,7 +90,7 @@ export const nextauth: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "next-auth",
-  technicalGeneralSkills: [userAuthentication, webDevelopment],
+  relatedSkills: [javascript, typescript, userAuthentication, webDevelopment],
 };
 
 export const stripe: SkillInterface = {
@@ -98,7 +99,7 @@ export const stripe: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "stripe",
-  technicalGeneralSkills: [sdks],
+  relatedSkills: [sdks],
 };
 
 export const express: SkillInterface = {
@@ -106,7 +107,7 @@ export const express: SkillInterface = {
   category: "Back-End Web Development",
   skillType: "hard",
   slug: "express-js",
-  technicalGeneralSkills: [webDevelopment, apis],
+  relatedSkills: [javascript, typescript, webDevelopment, apis],
 };
 
 export const flask: SkillInterface = {
@@ -115,7 +116,7 @@ export const flask: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "flask",
-  technicalGeneralSkills: [webDevelopment, apis],
+  relatedSkills: [webDevelopment, apis, python],
 };
 
 export const django: SkillInterface = {
@@ -124,7 +125,7 @@ export const django: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "django",
-  technicalGeneralSkills: [webDevelopment, apis],
+  relatedSkills: [webDevelopment, apis, python],
 };
 
 export const spring: SkillInterface = {
@@ -133,7 +134,7 @@ export const spring: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "spring",
-  technicalGeneralSkills: [webDevelopment, apis],
+  relatedSkills: [webDevelopment, apis, java],
 };
 
 export const springBoot: SkillInterface = {
@@ -142,7 +143,7 @@ export const springBoot: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "springboot",
-  technicalGeneralSkills: [webDevelopment, apis],
+  relatedSkills: [java, webDevelopment, apis],
 };
 
 export const cloudinary: SkillInterface = {
@@ -150,7 +151,7 @@ export const cloudinary: SkillInterface = {
   category: "Back-End Web Development",
   skillType: "hard",
   slug: "cloudinary",
-  technicalGeneralSkills: [webDevelopment],
+  relatedSkills: [webDevelopment],
 };
 
 export const edgestore: SkillInterface = {
@@ -158,7 +159,7 @@ export const edgestore: SkillInterface = {
   category: "Back-End Web Development",
   skillType: "hard",
   slug: "edge-store",
-  technicalGeneralSkills: [webDevelopment],
+  relatedSkills: [webDevelopment],
 };
 
 export const jwt: SkillInterface = {
@@ -166,7 +167,7 @@ export const jwt: SkillInterface = {
   category: "Back-End Web Development",
   skillType: "hard",
   slug: "jtw",
-  technicalGeneralSkills: [userAuthentication],
+  relatedSkills: [userAuthentication],
 };
 
 export const gunicorn: SkillInterface = {
@@ -174,15 +175,15 @@ export const gunicorn: SkillInterface = {
   category: "Back-End Web Development",
   skillType: "hard",
   slug: "gunicon",
-  technicalGeneralSkills: [webDevelopment],
+  relatedSkills: [python, webDevelopment],
 };
 
 export const jinja: SkillInterface = {
   name: "Jinja",
-  category: "Back-End Web Development",
+  category: "Code Quality",
   skillType: "hard",
   slug: "jinja",
-  technicalGeneralSkills: [webDevelopment],
+  relatedSkills: [python, webDevelopment],
 };
 
 const technicalHardSkillsBackendWebDev: SkillInterface[] = [

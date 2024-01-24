@@ -7,8 +7,7 @@ export const gitHub: SkillInterface = {
   category: "Version Control",
   skillType: "hard",
   slug: "github",
-  technicalGeneralSkills: [versionControl],
-  technicalHardSkills: [gitHubActions],
+  relatedSkills: [versionControl, gitHubActions],
 };
 
 export const gitLab: SkillInterface = {
@@ -16,8 +15,7 @@ export const gitLab: SkillInterface = {
   category: "Version Control",
   skillType: "hard",
   slug: "gitlab",
-  technicalGeneralSkills: [versionControl],
-  technicalHardSkills: [gitlabCI],
+  relatedSkills: [versionControl, gitlabCI],
 };
 
 export const bitBucket: SkillInterface = {
@@ -25,7 +23,7 @@ export const bitBucket: SkillInterface = {
   category: "Version Control",
   skillType: "hard",
   slug: "bit-bucket",
-  technicalGeneralSkills: [versionControl],
+  relatedSkills: [versionControl],
 };
 
 export const git: SkillInterface = {
@@ -33,8 +31,7 @@ export const git: SkillInterface = {
   category: "Version Control",
   skillType: "hard",
   slug: "git",
-  technicalGeneralSkills: [versionControl],
-  technicalHardSkills: [gitHub, gitLab, bitBucket],
+  relatedSkills: [versionControl, gitHub, gitLab, bitBucket],
 };
 
 const technicalHardSkillsVCS: SkillInterface[] = [

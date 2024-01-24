@@ -7,7 +7,7 @@ export const rest: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "rest-api",
-  technicalGeneralSkills: [webDevelopment, apis],
+  relatedSkills: [webDevelopment, apis],
 };
 
 export const apollo: SkillInterface = {
@@ -15,7 +15,7 @@ export const apollo: SkillInterface = {
   category: "APIs",
   skillType: "hard",
   slug: "apollo",
-  technicalGeneralSkills: [webDevelopment, apis],
+  relatedSkills: [webDevelopment, apis],
 };
 
 export const graphQL: SkillInterface = {
@@ -24,8 +24,7 @@ export const graphQL: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "graphql-api",
-  technicalGeneralSkills: [webDevelopment, apis],
-  technicalHardSkills: [apollo],
+  relatedSkills: [webDevelopment, apis, apollo],
 };
 
 export const tRPC: SkillInterface = {
@@ -34,7 +33,7 @@ export const tRPC: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "trpc-api",
-  technicalGeneralSkills: [webDevelopment, apis],
+  relatedSkills: [webDevelopment, apis],
 };
 
 export const socketIO: SkillInterface = {
@@ -42,7 +41,7 @@ export const socketIO: SkillInterface = {
   category: "Web Sockets",
   skillType: "hard",
   slug: "socket-io",
-  technicalGeneralSkills: [webDevelopment],
+  relatedSkills: [webDevelopment],
 };
 
 export const pusher: SkillInterface = {
@@ -50,7 +49,7 @@ export const pusher: SkillInterface = {
   category: "Web Sockets",
   skillType: "hard",
   slug: "pusher",
-  technicalGeneralSkills: [webDevelopment],
+  relatedSkills: [webDevelopment],
 };
 
 export const openAI: SkillInterface = {
@@ -59,7 +58,7 @@ export const openAI: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "open-ai",
-  technicalGeneralSkills: [apis, artificialIntelligence],
+  relatedSkills: [apis, artificialIntelligence],
 };
 
 export const replicateAI: SkillInterface = {
@@ -68,7 +67,7 @@ export const replicateAI: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "repliate-ai",
-  technicalGeneralSkills: [apis, artificialIntelligence],
+  relatedSkills: [apis, artificialIntelligence],
 };
 
 const technicalHardSkillsAPIs = [

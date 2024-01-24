@@ -1,3 +1,4 @@
+import filterBlogsBySkill from "@/actions/blogs/filterBlogsBySkill";
 import BlogsList from "@/components/MaterialLists/BlogsList";
 import { Button } from "@/components/shadcn/ui/button";
 import { BLOG } from "@/constants/pages";
@@ -14,15 +15,6 @@ interface BlogsPageProps {
 
 const BlogsSection: React.FC<BlogsPageProps> = ({ blogs, skill }) => {
   const basePath = BLOG.path;
-
-  const filterBlogsBySkill = (
-    blogs: BlogInterface[],
-    selectedSkill: SkillInterface,
-  ): BlogInterface[] => {
-    return blogs.filter((blog) =>
-      blog.skills.some((s) => s.slug === selectedSkill.slug),
-    );
-  };
 
   const filteredBlogs = filterBlogsBySkill(blogs, skill);
 

@@ -3,15 +3,14 @@
 import TechnologiesModal from "@/components/Modal/TechnologiesModal";
 import SkillTag from "@/components/Tags/SkillTag";
 import HeadingThree from "@/components/Text/HeadingThree";
-import { languages } from "@/database/skills/languages";
-import { technologies } from "@/database/skills/skills";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
 import {
   Tooltip,
   TooltipContent,
-  TooltipProvider,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
+import { languages } from "@/database/skills/languages";
+import { technologies } from "@/database/skills/skills";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 
 /**
@@ -22,30 +21,12 @@ import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface
  */
 const TechnologiesSection: React.FC = () => {
   /**
-   * Gets the list of skills from all the languages.
-   */
-  const allLanguageSkills: SkillInterface[] = languages.reduce(
-    (acc, language) => {
-      if (language.technicalGeneralSkills) {
-        return acc.concat(language.technicalGeneralSkills);
-      }
-      return acc;
-    },
-    [] as SkillInterface[],
-  );
-
-  /**
-   * List of all skills.
-   * This includes skills from languages and technologies.
-   */
-  // const allSkills: Skill[] = allLanguageSkills.concat(technologies);
-
-  /**
    * This is a list of categories that should be ignored.
    * Any skills that are in these categories will not be displayed.
    * This categories are from the Skill type.
    */
   const ignoredCategories: string[] = [
+    "Programming Languages",
     "Project Managers",
     "Object Relational Mappers",
     "Version Control System",
@@ -53,6 +34,16 @@ const TechnologiesSection: React.FC = () => {
     "Mathematics",
     "Other",
   ];
+
+  /**
+   * Gets the list of related skills from all the languages.
+   */
+  const allLanguageSkills: SkillInterface[] = languages.reduce(
+    (acc, language) => {
+      return acc.concat(language.relatedSkills || []);
+    },
+    [] as SkillInterface[],
+  );
 
   /**
    * List of all skills.

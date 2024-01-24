@@ -1,4 +1,5 @@
 import SkillInterface from "@/interfaces/skills/SkillInterface";
+import { java, javascript, python, typescript } from "../languages";
 
 export const npm: SkillInterface = {
   name: "NPM",
@@ -6,6 +7,7 @@ export const npm: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "npm",
+  relatedSkills: [javascript, typescript],
 };
 
 export const yarn: SkillInterface = {
@@ -14,6 +16,7 @@ export const yarn: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "yarn",
+  relatedSkills: [javascript, typescript],
 };
 
 export const pnpm: SkillInterface = {
@@ -22,6 +25,7 @@ export const pnpm: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "pnpm",
+  relatedSkills: [javascript, typescript],
 };
 
 export const poetry: SkillInterface = {
@@ -30,6 +34,7 @@ export const poetry: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "poetry-python",
+  relatedSkills: [python],
 };
 
 export const pybuilder: SkillInterface = {
@@ -38,6 +43,7 @@ export const pybuilder: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "pybuilder",
+  relatedSkills: [python],
 };
 
 export const maven: SkillInterface = {
@@ -46,6 +52,7 @@ export const maven: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "maven",
+  relatedSkills: [java],
 };
 
 export const gradle: SkillInterface = {
@@ -54,6 +61,7 @@ export const gradle: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "gradle",
+  relatedSkills: [java],
 };
 
 export const tox: SkillInterface = {
@@ -68,6 +76,7 @@ export const nxjs: SkillInterface = {
   category: "Project Managers",
   skillType: "hard",
   slug: "nx-js",
+  relatedSkills: [javascript, typescript],
 };
 
 const technicalHardSkillsProjectManagers: SkillInterface[] = [

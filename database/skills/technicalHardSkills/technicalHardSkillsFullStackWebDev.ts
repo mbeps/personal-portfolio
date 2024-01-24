@@ -1,6 +1,7 @@
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import { webDevelopment, userCentricDesign } from "../generalSkills";
 import { react, svelte, vue } from "./technicalHardSkillsFrontendWebDev";
+import { javascript, typescript } from "../languages";
 
 export const nextjs: SkillInterface = {
   name: "Next.js",
@@ -8,8 +9,13 @@ export const nextjs: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "next-js",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
-  technicalHardSkills: [react],
+  relatedSkills: [
+    javascript,
+    typescript,
+    webDevelopment,
+    userCentricDesign,
+    react,
+  ],
 };
 
 export const angular: SkillInterface = {
@@ -17,7 +23,7 @@ export const angular: SkillInterface = {
   category: "Full-Stack Web Development",
   skillType: "hard",
   slug: "angular",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+  relatedSkills: [webDevelopment, userCentricDesign],
 };
 
 export const nuxtjs: SkillInterface = {
@@ -25,8 +31,13 @@ export const nuxtjs: SkillInterface = {
   category: "Full-Stack Web Development",
   skillType: "hard",
   slug: "nuxt-js",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
-  technicalHardSkills: [vue],
+  relatedSkills: [
+    javascript,
+    typescript,
+    webDevelopment,
+    userCentricDesign,
+    vue,
+  ],
 };
 
 export const svelteKit: SkillInterface = {
@@ -34,8 +45,13 @@ export const svelteKit: SkillInterface = {
   category: "Full-Stack Web Development",
   skillType: "hard",
   slug: "svelte-kit",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
-  technicalHardSkills: [svelte],
+  relatedSkills: [
+    javascript,
+    typescript,
+    webDevelopment,
+    userCentricDesign,
+    svelte,
+  ],
 };
 
 const technicalHardSkillsFullStackWebDev: SkillInterface[] = [

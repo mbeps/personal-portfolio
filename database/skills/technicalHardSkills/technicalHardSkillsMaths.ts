@@ -7,7 +7,7 @@ export const probability: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "probability",
-  technicalGeneralSkills: [mathematics],
+  relatedSkills: [mathematics],
 };
 
 export const statistics: SkillInterface = {
@@ -16,7 +16,7 @@ export const statistics: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "statistics",
-  technicalGeneralSkills: [mathematics],
+  relatedSkills: [mathematics],
 };
 
 export const calculus: SkillInterface = {
@@ -25,7 +25,7 @@ export const calculus: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "calculus",
-  technicalGeneralSkills: [mathematics],
+  relatedSkills: [mathematics],
 };
 
 export const trigonometry: SkillInterface = {
@@ -34,7 +34,7 @@ export const trigonometry: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "trigonomtry",
-  technicalGeneralSkills: [mathematics],
+  relatedSkills: [mathematics],
 };
 
 export const algebra: SkillInterface = {
@@ -43,7 +43,7 @@ export const algebra: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "algebra",
-  technicalGeneralSkills: [mathematics],
+  relatedSkills: [mathematics],
 };
 
 export const linearAlgebra: SkillInterface = {
@@ -52,7 +52,7 @@ export const linearAlgebra: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "linear-algebra",
-  technicalGeneralSkills: [mathematics],
+  relatedSkills: [mathematics],
 };
 
 export const discrete: SkillInterface = {
@@ -61,7 +61,7 @@ export const discrete: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "discrete-mathematics",
-  technicalGeneralSkills: [mathematics],
+  relatedSkills: [mathematics],
 };
 
 export const geometry: SkillInterface = {
@@ -70,7 +70,7 @@ export const geometry: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "geometry",
-  technicalGeneralSkills: [mathematics],
+  relatedSkills: [mathematics],
 };
 
 export const logics: SkillInterface = {
@@ -79,7 +79,7 @@ export const logics: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "logics",
-  technicalGeneralSkills: [mathematics],
+  relatedSkills: [mathematics],
 };
 
 export const vectors: SkillInterface = {
@@ -88,7 +88,7 @@ export const vectors: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "vectors",
-  technicalGeneralSkills: [mathematics],
+  relatedSkills: [mathematics],
 };
 
 export const mechanics: SkillInterface = {
@@ -97,7 +97,7 @@ export const mechanics: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "mechanics",
-  technicalGeneralSkills: [mathematics],
+  relatedSkills: [mathematics],
 };
 
 const technicalHardSkillsMaths: SkillInterface[] = [

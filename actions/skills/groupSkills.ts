@@ -1,40 +1,75 @@
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 
-// Function to group skills by language
 export function groupByLanguage(
   skills: SkillInterface[],
 ): SkillsCategoryInterface[] {
-  let groupedSkills: SkillsCategoryInterface[] = [];
+  const groupedSkills: { [key: string]: SkillInterface[] } = {};
+  const noLanguageGroup = "No Language";
 
   skills.forEach((skill) => {
-    // Determine if the skill is a programming language or should be categorized under "Others"
-    const groupName =
-      skill.category === "Programming Languages" ? skill.name : "Others";
+    // If the skill is a programming language, add it to its own category
+    if (skill.category === "Programming Languages") {
+      const languageName = skill.name;
 
-    // Find or initialize the group in the groupedSkills array
-    let group = groupedSkills.find((g) => g.skillCategoryName === groupName);
-    if (!group) {
-      group = { skillCategoryName: groupName, skills: [] };
-      groupedSkills.push(group);
+      if (!groupedSkills[languageName]) {
+        groupedSkills[languageName] = [];
+      }
+
+      groupedSkills[languageName].push(skill);
     }
 
-    // Add the skill to the appropriate group
-    group.skills.push(skill);
+    // Check if the skill is associated with any programming language
+    skill.relatedSkills?.forEach((relatedSkill) => {
+      if (relatedSkill.category === "Programming Languages") {
+        const languageName = relatedSkill.name;
 
-    // If it's a programming language, include its nested skills
-    if (skill.category === "Programming Languages") {
-      const nestedSkills = [
-        ...(skill.technicalGeneralSkills || []),
-        ...(skill.technicalHardSkills || []),
-        ...(skill.technicalSoftSkills || []),
-      ];
+        if (!groupedSkills[languageName]) {
+          groupedSkills[languageName] = [];
+        }
 
-      group.skills = removeDuplicates(group.skills.concat(nestedSkills));
+        groupedSkills[languageName].push(skill);
+      }
+    });
+
+    // If no associated programming language is found, group it under 'No Language'
+    if (
+      !(
+        skill.category === "Programming Languages" ||
+        (skill.relatedSkills &&
+          skill.relatedSkills.some(
+            (relatedSkill) => relatedSkill.category === "Programming Languages",
+          ))
+      )
+    ) {
+      if (!groupedSkills[noLanguageGroup]) {
+        groupedSkills[noLanguageGroup] = [];
+      }
+      groupedSkills[noLanguageGroup].push(skill);
     }
   });
 
-  return groupedSkills;
+  // Separately handle the 'No Language' group
+  const noLanguageSkills = groupedSkills[noLanguageGroup];
+  delete groupedSkills[noLanguageGroup];
+
+  // Convert groupedSkills object into SkillsCategoryInterface array and sort by category name
+  const sortedGroupedSkills = Object.keys(groupedSkills)
+    .sort()
+    .map((skillCategoryName) => ({
+      skillCategoryName,
+      skills: groupedSkills[skillCategoryName],
+    }));
+
+  // Add the 'No Language' category at the end
+  if (noLanguageSkills) {
+    sortedGroupedSkills.push({
+      skillCategoryName: noLanguageGroup,
+      skills: noLanguageSkills,
+    });
+  }
+
+  return sortedGroupedSkills;
 }
 
 // Function to group skills by category
@@ -103,21 +138,9 @@ function recursiveFilter(
     .map((skill) => {
       const filteredSkill: SkillInterface = { ...skill };
 
-      if (filteredSkill.technicalGeneralSkills) {
-        filteredSkill.technicalGeneralSkills = recursiveFilter(
-          filteredSkill.technicalGeneralSkills,
-          excludedSkillTypes,
-        );
-      }
-      if (filteredSkill.technicalHardSkills) {
-        filteredSkill.technicalHardSkills = recursiveFilter(
-          filteredSkill.technicalHardSkills,
-          excludedSkillTypes,
-        );
-      }
-      if (filteredSkill.technicalSoftSkills) {
-        filteredSkill.technicalSoftSkills = recursiveFilter(
-          filteredSkill.technicalSoftSkills,
+      if (filteredSkill.relatedSkills) {
+        filteredSkill.relatedSkills = recursiveFilter(
+          filteredSkill.relatedSkills,
           excludedSkillTypes,
         );
       }

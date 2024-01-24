@@ -1,3 +1,4 @@
+import filterCertificatesBySkill from "@/actions/certificates/filterCertificatesBySkill";
 import CertificatesList from "@/components/MaterialLists/CertificatesList";
 import { Button } from "@/components/shadcn/ui/button";
 import { CERTIFICATES } from "@/constants/pages";
@@ -17,34 +18,6 @@ const CertificatesSection: React.FC<CertificatesSectionProps> = ({
   skill,
 }) => {
   const basePath = CERTIFICATES.path;
-
-  const filterCertificatesBySkill = (
-    certificates: CertificateInterface[],
-    selectedSkill: SkillInterface,
-  ): CertificateInterface[] => {
-    const skillMatches = (skill: SkillInterface): boolean => {
-      // Check if the skill matches
-      if (skill.slug === selectedSkill.slug) {
-        return true;
-      }
-
-      // Check nested skills, if any
-      if (
-        skill.technicalGeneralSkills &&
-        skill.technicalGeneralSkills.length > 0
-      ) {
-        return skill.technicalGeneralSkills.some((subSkill) =>
-          skillMatches(subSkill),
-        );
-      }
-
-      return false;
-    };
-
-    return certificates.filter((certificate) =>
-      certificate.skills.some(skillMatches),
-    );
-  };
 
   const filteredCertificates = filterCertificatesBySkill(certificates, skill);
 
