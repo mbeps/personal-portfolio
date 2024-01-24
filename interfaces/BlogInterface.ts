@@ -7,8 +7,7 @@ export default interface BlogInterface {
   title: string;
   subtitle: string;
   slug: string;
-  technicalSkills: SkillInterface[];
-  softSkills: SkillInterface[];
+  skills: SkillInterface[];
   archived?: boolean;
   category:
     | "Web Development"

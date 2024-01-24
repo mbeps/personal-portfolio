@@ -17,6 +17,7 @@ import { AiOutlineClear } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
 import BlogInterface from "@/interfaces/BlogInterface";
 import BlogsList from "@/components/MaterialLists/BlogsList";
+import filterSkillsByType from "@/actions/skills/filterSkillsByType";
 
 interface BlogListProps {
   blogs: BlogInterface[];
@@ -127,7 +128,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
     { slug: "all", entryName: "All" },
     ...blogs
       .flatMap((blog: BlogInterface) =>
-        blog.technicalSkills.map((skill: SkillInterface) => ({
+        blog.skills.map((skill: SkillInterface) => ({
           slug: stringToSlug(skill.category),
           entryName: skill.category,
         })),
@@ -144,12 +145,12 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
     { slug: "all", entryName: "All" },
     ...blogs
       .flatMap((blog: BlogInterface) =>
-        (blog.technicalSkills || [])
-          .filter((skill: SkillInterface) => skill.skillType === "hard")
-          .map((skill: SkillInterface) => ({
+        filterSkillsByType(blog.skills, "hard").map(
+          (skill: SkillInterface) => ({
             slug: skill.slug,
             entryName: skill.name,
-          })),
+          }),
+        ),
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -163,12 +164,12 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
     { slug: "all", entryName: "All" },
     ...blogs
       .flatMap((blog: BlogInterface) =>
-        (blog.technicalSkills || [])
-          .filter((skill: SkillInterface) => skill.skillType === "general")
-          .map((skill: SkillInterface) => ({
+        filterSkillsByType(blog.skills, "general").map(
+          (skill: SkillInterface) => ({
             slug: skill.slug,
             entryName: skill.name,
-          })),
+          }),
+        ),
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -182,12 +183,12 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
     { slug: "all", entryName: "All" },
     ...blogs
       .flatMap((blog: BlogInterface) =>
-        (blog.technicalSkills || [])
-          .filter((skill: SkillInterface) => skill.skillType === "soft")
-          .map((skill: SkillInterface) => ({
+        filterSkillsByType(blog.skills, "soft").map(
+          (skill: SkillInterface) => ({
             slug: skill.slug,
             entryName: skill.name,
-          })),
+          }),
+        ),
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -228,27 +229,24 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
       stringToSlug(blog.category) === stringToSlug(selectedBlogSection);
     const matchesSkillCategory =
       selectedSkillCategory === "all" ||
-      (blog.technicalSkills || []).some(
+      blog.skills.some(
         (skill) =>
           stringToSlug(skill.category) === stringToSlug(selectedSkillCategory),
       );
     const matchesHardSkill =
       selectedTechnicalSkill === "all" ||
-      (blog.technicalSkills || []).some(
-        (skill) =>
-          skill.slug === selectedTechnicalSkill && skill.skillType === "hard",
+      filterSkillsByType(blog.skills, "hard").some(
+        (skill) => skill.slug === selectedTechnicalSkill,
       );
     const matchesGeneralSkill =
       selectedGeneralSkill === "all" ||
-      (blog.technicalSkills || []).some(
-        (skill) =>
-          skill.slug === selectedGeneralSkill && skill.skillType === "general",
+      filterSkillsByType(blog.skills, "general").some(
+        (skill) => skill.slug === selectedGeneralSkill,
       );
     const matchesSoftSkill =
       selectedSoftSkill === "all" ||
-      (blog.technicalSkills || []).some(
-        (skill) =>
-          skill.slug === selectedSoftSkill && skill.skillType === "soft",
+      filterSkillsByType(blog.skills, "soft").some(
+        (skill) => skill.slug === selectedSoftSkill,
       );
     const matchesArchivedStatus = showArchived || !blog.archived;
 
