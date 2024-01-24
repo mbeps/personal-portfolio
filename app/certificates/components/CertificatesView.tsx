@@ -17,6 +17,7 @@ import { AiOutlineClear } from "react-icons/ai";
 import Link from "next/link";
 import { BsFilterLeft } from "react-icons/bs";
 import CertificatesList from "@/components/MaterialLists/CertificatesList";
+import filterSkillsByType from "@/actions/skills/filterSkillsByType";
 
 type CertificatesListListProps = {
   allCertificates: CertificateInterface[];
@@ -148,7 +149,7 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
     { slug: "all", entryName: "All" },
     ...allCertificates
       .flatMap((certificate: CertificateInterface) =>
-        certificate.technicalSkills.map((skill: SkillInterface) => ({
+        certificate.skills.map((skill: SkillInterface) => ({
           slug: stringToSlug(skill.category),
           entryName: skill.category,
         })),
@@ -165,12 +166,12 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
     { slug: "all", entryName: "All" },
     ...allCertificates
       .flatMap((certificate: CertificateInterface) =>
-        certificate.technicalSkills
-          .filter((skill: SkillInterface) => skill.skillType === "hard")
-          .map((skill: SkillInterface) => ({
+        filterSkillsByType(certificate.skills, "hard").map(
+          (skill: SkillInterface) => ({
             slug: stringToSlug(skill.slug), // Convert skill name to slug
             entryName: skill.name,
-          })),
+          }),
+        ),
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -184,12 +185,12 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
     { slug: "all", entryName: "All" },
     ...allCertificates
       .flatMap((certificate: CertificateInterface) =>
-        certificate.technicalSkills
-          .filter((skill: SkillInterface) => skill.skillType === "general")
-          .map((skill: SkillInterface) => ({
+        filterSkillsByType(certificate.skills, "general").map(
+          (skill: SkillInterface) => ({
             slug: stringToSlug(skill.slug), // Convert skill name to slug
             entryName: skill.name,
-          })),
+          }),
+        ),
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -203,12 +204,12 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
     { slug: "all", entryName: "All" },
     ...allCertificates
       .flatMap((certificate: CertificateInterface) =>
-        certificate.technicalSkills
-          .filter((skill: SkillInterface) => skill.skillType === "soft")
-          .map((skill: SkillInterface) => ({
+        filterSkillsByType(certificate.skills, "soft").map(
+          (skill: SkillInterface) => ({
             slug: stringToSlug(skill.slug), // Convert skill name to slug
             entryName: skill.name,
-          })),
+          }),
+        ),
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -249,29 +250,25 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
       const matchesArchivedStatus = showArchived || !certificate.archived;
       const matchesSkillCategory =
         selectedSkillCategory === "all" ||
-        (certificate.technicalSkills || []).some(
+        certificate.skills.some(
           (skill) =>
             stringToSlug(skill.category) ===
             stringToSlug(selectedSkillCategory),
         );
       const matchesHardSkill =
         selectedTechnicalSkill === "all" ||
-        (certificate.technicalSkills || []).some(
-          (skill) =>
-            skill.slug === selectedTechnicalSkill && skill.skillType === "hard",
+        filterSkillsByType(certificate.skills, "hard").some(
+          (skill) => skill.slug === selectedTechnicalSkill,
         );
       const matchesGeneralSkill =
         selectedGeneralSkill === "all" ||
-        (certificate.technicalSkills || []).some(
-          (skill) =>
-            skill.slug === selectedGeneralSkill &&
-            skill.skillType === "general",
+        filterSkillsByType(certificate.skills, "general").some(
+          (skill) => skill.slug === selectedGeneralSkill,
         );
       const matchesSoftSkill =
         selectedSoftSkill === "all" ||
-        (certificate.technicalSkills || []).some(
-          (skill) =>
-            skill.slug === selectedSoftSkill && skill.skillType === "soft",
+        filterSkillsByType(certificate.skills, "soft").some(
+          (skill) => skill.slug === selectedSoftSkill,
         );
 
       return (

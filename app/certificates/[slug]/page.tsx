@@ -72,13 +72,9 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
 
   // Simplified grouping of skill types for certificates
   const allGroupedCertificateSkills = [
-    filterAndGroupSkills(certificate.technicalSkills, "hard", "Technologies"),
-    filterAndGroupSkills(
-      certificate.technicalSkills,
-      "general",
-      "Technical Skills",
-    ),
-    filterAndGroupSkills(certificate.softSkills, "soft", "Soft Skills"),
+    filterAndGroupSkills(certificate.skills, "hard", "Technologies"),
+    filterAndGroupSkills(certificate.skills, "general", "Technical Skills"),
+    filterAndGroupSkills(certificate.skills, "soft", "Soft Skills"),
   ];
 
   const certificateImage = `/certificates/${slug}.jpg`;

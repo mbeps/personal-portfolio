@@ -15,8 +15,7 @@ export default interface CertificateInterface {
     | "Symphony Solutions"
     | "Amigoscode";
   certificateURL: string;
-  technicalSkills: SkillInterface[];
-  softSkills: SkillInterface[];
+  skills: SkillInterface[];
   category:
     | "University"
     | "Programming Languages"
