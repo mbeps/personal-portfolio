@@ -15,9 +15,6 @@ export default function isSkillAssociatedWithBlogs(
         ),
     );
 
-  return blogs.some(
-    (blog) =>
-      (blog.technicalSkills && checkNestedSkills(blog.technicalSkills)) ||
-      (blog.softSkills && checkNestedSkills(blog.softSkills)),
-  );
+  // Check the unified skills array, including nested skills
+  return blogs.some((blog) => checkNestedSkills(blog.skills));
 }

@@ -41,10 +41,8 @@ const CertificatesSection: React.FC<CertificatesSectionProps> = ({
       return false;
     };
 
-    return certificates.filter(
-      (certificate) =>
-        certificate.technicalSkills.some(skillMatches) ||
-        certificate.softSkills.some(skillMatches),
+    return certificates.filter((certificate) =>
+      certificate.skills.some(skillMatches),
     );
   };
 

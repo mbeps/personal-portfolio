@@ -8,9 +8,7 @@ export default interface ProjectInterface {
   slug: string;
   description: string;
   programmingLanguage: SkillInterface;
-  technologySkills: SkillInterface[];
-  extraTechnicalGeneralSkills?: SkillInterface[];
-  softSkills: SkillInterface[];
+  skills: SkillInterface[];
   category:
     | "Full-Stack Web Development"
     | "Back-End Web Development"

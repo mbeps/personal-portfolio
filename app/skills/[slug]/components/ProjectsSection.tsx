@@ -40,10 +40,7 @@ const ProjectsSection: React.FC<ProjectPageProps> = ({ projects, skill }) => {
 
     return projects.filter(
       (project) =>
-        project.technologySkills.some(skillMatches) ||
-        project.softSkills.some(skillMatches) ||
-        (project.extraTechnicalGeneralSkills &&
-          project.extraTechnicalGeneralSkills.some(skillMatches)) ||
+        project.skills.some(skillMatches) ||
         project.programmingLanguage.slug === selectedSkill.slug,
     );
   };

@@ -17,16 +17,14 @@ const BlogsSection: React.FC<BlogsPageProps> = ({ blogs, skill }) => {
 
   const filterBlogsBySkill = (
     blogs: BlogInterface[],
-    selectedSkill: string,
+    selectedSkill: SkillInterface,
   ): BlogInterface[] => {
     return blogs.filter((blog) =>
-      blog.technicalSkills.some(
-        (s) => s.name.toLowerCase() === selectedSkill.toLowerCase(),
-      ),
+      blog.skills.some((s) => s.slug === selectedSkill.slug),
     );
   };
 
-  const filteredBlogs = filterBlogsBySkill(blogs, skill.name);
+  const filteredBlogs = filterBlogsBySkill(blogs, skill);
 
   if (!filteredBlogs || filteredBlogs.length === 0) {
     return;

@@ -17,6 +17,7 @@ import { AiOutlineClear } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
 import { ArchiveToggle } from "../../../components/Filters/ArchiveToggle";
 import ProjectsList from "../../../components/MaterialLists/ProjectsList";
+import filterSkillsByType from "@/actions/skills/filterSkillsByType";
 
 type ProjectsListProps = {
   allProjects: ProjectInterface[];
@@ -166,10 +167,12 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
     { slug: "all", entryName: "All" },
     ...allProjects
       .flatMap((project: ProjectInterface) =>
-        (project.technologySkills || []).map((skill: SkillInterface) => ({
-          slug: skill.slug,
-          entryName: skill.name,
-        })),
+        filterSkillsByType(project.skills, "hard").map(
+          (skill: SkillInterface) => ({
+            slug: skill.slug,
+            entryName: skill.name,
+          }),
+        ),
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -182,14 +185,13 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const categories: FilterOption[] = [
     { slug: "all", entryName: "All" },
     ...allProjects
-      .flatMap(
-        (project: ProjectInterface) =>
-          project.technologySkills
-            ?.map((skill: SkillInterface) => ({
-              slug: stringToSlug(skill.category),
-              entryName: skill.category,
-            }))
-            .filter(Boolean) || [],
+      .flatMap((project: ProjectInterface) =>
+        project.skills
+          .map((skill: SkillInterface) => ({
+            slug: stringToSlug(skill.category),
+            entryName: skill.category,
+          }))
+          .filter(Boolean),
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -203,13 +205,11 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
     { slug: "all", entryName: "All" },
     ...allProjects
       .flatMap((project: ProjectInterface) =>
-        project.technologySkills.flatMap((skill: SkillInterface) =>
-          skill.technicalGeneralSkills
-            ? skill.technicalGeneralSkills.map((subSkill: SkillInterface) => ({
-                slug: subSkill.slug,
-                entryName: subSkill.name,
-              }))
-            : [],
+        filterSkillsByType(project.skills, "general").map(
+          (skill: SkillInterface) => ({
+            slug: skill.slug,
+            entryName: skill.name,
+          }),
         ),
       )
       .reduce((unique, item) => {
@@ -224,10 +224,12 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
     { slug: "all", entryName: "All" },
     ...allProjects
       .flatMap((project: ProjectInterface) =>
-        (project.softSkills || []).map((skill: SkillInterface) => ({
-          slug: skill.slug,
-          entryName: skill.name,
-        })),
+        filterSkillsByType(project.skills, "soft").map(
+          (skill: SkillInterface) => ({
+            slug: skill.slug,
+            entryName: skill.name,
+          }),
+        ),
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -256,13 +258,13 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
 
       const matchesTechnology =
         selectedTechnology === "all" ||
-        (project.technologySkills || []).some(
+        filterSkillsByType(project.skills, "hard").some(
           (skill) => skill.slug === selectedTechnology,
         );
 
       const matchesCategory =
         stringToSlug(selectedSkillCategory) === "all" ||
-        (project.technologySkills || []).some(
+        project.skills.some(
           (skill) =>
             stringToSlug(skill.category) ===
             stringToSlug(selectedSkillCategory),
@@ -270,21 +272,14 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
 
       const matchesGeneralSkill =
         selectedGeneralSkill === "all" ||
-        (project.technologySkills || []).some(
+        filterSkillsByType(project.skills, "general").some(
           (skill) =>
-            (skill.skillType === "general" &&
-              stringToSlug(skill.slug) ===
-                stringToSlug(selectedGeneralSkill)) ||
-            (skill.technicalGeneralSkills || []).some(
-              (nestedSkill) =>
-                stringToSlug(nestedSkill.slug) ===
-                stringToSlug(selectedGeneralSkill),
-            ),
+            stringToSlug(skill.slug) === stringToSlug(selectedGeneralSkill),
         );
 
       const matchesSoftSkill =
         selectedSoftSkill === "all" ||
-        (project.softSkills || []).some(
+        filterSkillsByType(project.skills, "soft").some(
           (skill) =>
             stringToSlug(skill.slug) === stringToSlug(selectedSoftSkill),
         );

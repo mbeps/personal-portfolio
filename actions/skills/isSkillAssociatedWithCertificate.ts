@@ -16,11 +16,7 @@ export default function isSkillAssociatedWithCertificates(
           ),
       );
 
-    // Check technicalSkills and softSkills, including nested skills in technicalSkills
-    return (
-      (certificate.technicalSkills &&
-        checkNestedSkills(certificate.technicalSkills)) ||
-      (certificate.softSkills && checkNestedSkills(certificate.softSkills))
-    );
+    // Check the unified skills array, including nested skills
+    return checkNestedSkills(certificate.skills);
   });
 }
