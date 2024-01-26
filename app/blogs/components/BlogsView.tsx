@@ -221,9 +221,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
     );
   };
 
-  /**
-   * Filters the blogs by category selected by the user.
-   */
+  //^ Filtering Logic
   const filteredBlogs = searchedBlogs.filter((blog) => {
     const matchesBlogSection =
       selectedBlogSection === "all" ||
