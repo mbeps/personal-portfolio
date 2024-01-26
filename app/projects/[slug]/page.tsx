@@ -1,11 +1,11 @@
 import getImagesFromFileSystem from "@/actions/getImagesFromFileSystem";
 import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
 import getVideosFromFileSystem from "@/actions/getVideosFromFileSystem";
-import getProjectBySlug from "@/actions/projects/getProjectBySlug";
+import getContentBySlug from "@/actions/material/getContentBySlug";
 import hasProjectCover from "@/actions/projects/hasProjectCover";
 import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
-import getAssociatedSkillsFromList from "@/actions/skills/getAssociatedSkillsFromList";
+import { getAssociatedNestedSkills } from "@/actions/skills/getAssociatedSkills";
 import Gallery from "@/components/Gallery/Gallery";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import SkillTag from "@/components/Tags/SkillTag";
@@ -15,6 +15,7 @@ import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
 import { PROJECTS } from "@/constants/pages";
 import allProjects from "@/database/projects";
+import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -22,7 +23,6 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
-import { getAssociatedNestedSkills } from "@/actions/skills/getAssociatedSkills";
 
 /**
  * Metadata object for the dynamic project page.
@@ -38,7 +38,7 @@ export async function generateMetadata(
   const slug = params.slug;
 
   // Assume getProjectBySlug function fetches project by slug
-  const project = getProjectBySlug(slug, allProjects);
+  const project = getContentBySlug(slug, allProjects);
 
   // Create metadata based on the project details
   return {
@@ -80,7 +80,7 @@ interface ProjectPageProps {
 const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const slug = params.slug;
   const basePath = PROJECTS.path;
-  const project = getProjectBySlug(slug, allProjects);
+  const project = getContentBySlug<ProjectInterface>(slug, allProjects);
 
   // redirect to not found page if the project is not valid
   if (!project) {

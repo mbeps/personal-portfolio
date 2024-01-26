@@ -1,5 +1,5 @@
-import getBlogMetadataBySlug from "@/actions/blogs/getBlogMetadataBySlug";
 import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
+import getContentBySlug from "@/actions/material/getContentBySlug";
 import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
 import { getAssociatedNestedSkills } from "@/actions/skills/getAssociatedSkills";
@@ -8,6 +8,7 @@ import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import { BLOG } from "@/constants/pages";
 import blogs from "@/database/blogs";
+import BlogInterface from "@/interfaces/material/BlogInterface";
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -31,7 +32,7 @@ export async function generateMetadata(
   const allBlogs = blogs;
 
   // Assume getBlogMetadataById function fetches metadata by slug
-  const blog = getBlogMetadataBySlug(slug, allBlogs);
+  const blog = getContentBySlug<BlogInterface>(slug, allBlogs);
 
   return {
     title: `Maruf Bepary - Blogs: ${blog?.name}`,
@@ -64,7 +65,7 @@ export const generateStaticParams = async () => {
 const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
   const slug = params.slug;
   const basePath = BLOG.path;
-  const blogMetadata = getBlogMetadataBySlug(slug, blogs);
+  const blogMetadata = getContentBySlug<BlogInterface>(slug, blogs);
   const blogContent = getMarkdownFromFileSystem(
     `public${basePath}/${slug}/blog.md`,
   )?.content;
