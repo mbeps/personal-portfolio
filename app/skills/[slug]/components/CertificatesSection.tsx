@@ -2,7 +2,7 @@ import filterCertificatesBySkill from "@/actions/certificates/filterCertificates
 import CertificatesList from "@/components/MaterialLists/CertificatesList";
 import { Button } from "@/components/shadcn/ui/button";
 import { CERTIFICATES } from "@/constants/pages";
-import CertificateInterface from "@/interfaces/CertificateInterface";
+import CertificateInterface from "@/interfaces/material/CertificateInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Link from "next/link";
 

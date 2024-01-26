@@ -1,4 +1,4 @@
-import ProjectInterface from "@/interfaces/ProjectInterface";
+import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import {
   gameMakerLanguage,
   java,

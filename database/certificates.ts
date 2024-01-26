@@ -1,4 +1,4 @@
-import CertificateInterface from "@/interfaces/CertificateInterface";
+import CertificateInterface from "@/interfaces/material/CertificateInterface";
 import {
   groovy,
   java,

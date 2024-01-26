@@ -2,7 +2,7 @@ import filterBlogsBySkill from "@/actions/blogs/filterBlogsBySkill";
 import BlogsList from "@/components/MaterialLists/BlogsList";
 import { Button } from "@/components/shadcn/ui/button";
 import { BLOG } from "@/constants/pages";
-import BlogInterface from "@/interfaces/BlogInterface";
+import BlogInterface from "@/interfaces/material/BlogInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Link from "next/link";
 

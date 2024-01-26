@@ -7,7 +7,7 @@ import SearchInput from "@/components/Inputs/SearchInput";
 import { Button } from "@/components/shadcn/ui/button";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
-import ProjectInterface from "@/interfaces/ProjectInterface";
+import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Fuse from "fuse.js";
 import Link from "next/link";

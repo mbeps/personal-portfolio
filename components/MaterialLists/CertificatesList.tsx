@@ -2,7 +2,7 @@ import stringToSlug from "@/actions/stringToSlug";
 import Grid from "@/components/UI/Grid";
 import CertificateItem from "@/components/CertificateItem/CertificateItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import CertificateInterface from "@/interfaces/CertificateInterface";
+import CertificateInterface from "@/interfaces/material/CertificateInterface";
 import React from "react";
 
 interface CertificatesListProps {

@@ -1,4 +1,4 @@
-import MaterialInterface from "./BaseContentInterface";
+import MaterialInterface from "./MaterialInterface";
 
 export default interface CertificateInterface extends MaterialInterface {
   description?: string;

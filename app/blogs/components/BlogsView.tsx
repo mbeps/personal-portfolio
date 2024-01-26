@@ -15,7 +15,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { AiOutlineClear } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
-import BlogInterface from "@/interfaces/BlogInterface";
+import BlogInterface from "@/interfaces/material/BlogInterface";
 import BlogsList from "@/components/MaterialLists/BlogsList";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
 

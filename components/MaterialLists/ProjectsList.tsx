@@ -1,4 +1,4 @@
-import ProjectInterface from "@/interfaces/ProjectInterface";
+import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import ProjectItem from "@/components/ProjectItem/ProjectItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import stringToSlug from "@/actions/stringToSlug";

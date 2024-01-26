@@ -1,4 +1,4 @@
-import CertificateInterface from "@/interfaces/CertificateInterface";
+import CertificateInterface from "@/interfaces/material/CertificateInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 export default function isSkillAssociatedWithCertificates(

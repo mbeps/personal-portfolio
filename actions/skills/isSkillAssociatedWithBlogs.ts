@@ -1,4 +1,4 @@
-import BlogInterface from "@/interfaces/BlogInterface";
+import BlogInterface from "@/interfaces/material/BlogInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 export default function isSkillAssociatedWithBlogs(

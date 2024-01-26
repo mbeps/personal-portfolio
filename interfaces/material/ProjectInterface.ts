@@ -1,5 +1,5 @@
-import MaterialInterface from "./BaseContentInterface";
-import SkillInterface from "./skills/SkillInterface";
+import MaterialInterface from "./MaterialInterface";
+import SkillInterface from "../skills/SkillInterface";
 
 export default interface ProjectInterface extends MaterialInterface {
   description: string;

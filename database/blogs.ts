@@ -58,7 +58,7 @@ import {
   sqlalchemy,
   hibernate,
 } from "./skills/technicalHardSkills/technicalHardSkillsORMs";
-import BlogInterface from "@/interfaces/BlogInterface";
+import BlogInterface from "@/interfaces/material/BlogInterface";
 
 const blogs: BlogInterface[] = [
   {

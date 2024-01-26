@@ -2,7 +2,7 @@ import filterProjectsBySkill from "@/actions/projects/filterProjectsBySkill";
 import ProjectsList from "@/components/MaterialLists/ProjectsList";
 import { Button } from "@/components/shadcn/ui/button";
 import { PROJECTS } from "@/constants/pages";
-import ProjectInterface from "@/interfaces/ProjectInterface";
+import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Link from "next/link";
 

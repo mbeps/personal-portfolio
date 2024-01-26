@@ -1,4 +1,4 @@
-import ProjectInterface from "@/interfaces/ProjectInterface";
+import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 export default function isSkillAssociatedWithProject(

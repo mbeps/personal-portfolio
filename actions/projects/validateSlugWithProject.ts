@@ -1,4 +1,4 @@
-import ProjectInterface from "@/interfaces/ProjectInterface";
+import ProjectInterface from "@/interfaces/material/ProjectInterface";
 
 /**
  * Validates that the slugs are valid.

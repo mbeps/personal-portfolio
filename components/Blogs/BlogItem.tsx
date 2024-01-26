@@ -1,5 +1,5 @@
 import { BLOG } from "@/constants/pages";
-import BlogInterface from "@/interfaces/BlogInterface";
+import BlogInterface from "@/interfaces/material/BlogInterface";
 import Link from "next/link";
 import React from "react";
 

@@ -1,4 +1,4 @@
-import SkillInterface from "./skills/SkillInterface";
+import SkillInterface from "../skills/SkillInterface";
 
 export default interface MaterialInterface {
   name: string;

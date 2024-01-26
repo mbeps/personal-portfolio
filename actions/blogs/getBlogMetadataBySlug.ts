@@ -1,4 +1,4 @@
-import BlogInterface from "@/interfaces/BlogInterface";
+import BlogInterface from "@/interfaces/material/BlogInterface";
 
 /**
  * Gets the blog metadata with the given slug (unique identifier).

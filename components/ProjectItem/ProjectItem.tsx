@@ -1,4 +1,4 @@
-import ProjectInterface from "@/interfaces/ProjectInterface";
+import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
