@@ -3,14 +3,18 @@ import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
 import getVideosFromFileSystem from "@/actions/getVideosFromFileSystem";
 import getProjectBySlug from "@/actions/projects/getProjectBySlug";
 import hasProjectCover from "@/actions/projects/hasProjectCover";
+import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
+import filterSkillsByType from "@/actions/skills/filterSkillsByType";
+import getAssociatedSkillsFromList from "@/actions/skills/getAssociatedSkillsFromList";
 import Gallery from "@/components/Gallery/Gallery";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import SkillTag from "@/components/Tags/SkillTag";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
+import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
+import { PROJECTS } from "@/constants/pages";
 import allProjects from "@/database/projects";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,9 +22,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
-import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
-import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
-import { PROJECTS } from "@/constants/pages";
+import { getAssociatedNestedSkills } from "@/actions/skills/getAssociatedSkills";
 
 /**
  * Metadata object for the dynamic project page.
@@ -91,11 +93,18 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const hasCoverImage = hasProjectCover(slug);
   const coverImagePath = `${basePath}/${slug}/cover.png`;
 
+  const technologies = filterSkillsByType(project.skills, "hard");
+  const generalSkills = getAssociatedNestedSkills(
+    technologies,
+    "general",
+  ).concat(filterSkillsByType(project.skills, "general"));
+  const softSkills = filterSkillsByType(project.skills, "soft");
+
   // Using the new function to group all skill types
   const allGroupedSkills = [
-    filterAndGroupSkills(project.skills, "hard", "Technologies"),
-    filterAndGroupSkills(project.skills, "general", "Technical Skills"),
-    filterAndGroupSkills(project.skills, "soft", "Soft Skills"),
+    filterAndGroupSkills(technologies, "hard", "Technologies"),
+    filterAndGroupSkills(generalSkills, "general", "Technical Skills"),
+    filterAndGroupSkills(softSkills, "soft", "Soft Skills"),
   ];
 
   const getImages = () => {

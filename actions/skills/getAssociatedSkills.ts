@@ -51,7 +51,6 @@ export function getAssociatedMentionedSkills(
 }
 
 export function getAssociatedNestedSkills(
-  skills: SkillInterface[],
   skillToCheck: SkillInterface | SkillInterface[],
   skillType: "hard" | "general" | "soft" | "all" = "all",
 ): SkillInterface[] {
@@ -89,7 +88,6 @@ export default function getAssociatedSkills(
     skillType,
   );
   const associatedNestedSkills = getAssociatedNestedSkills(
-    skills,
     skillToCheck,
     skillType,
   );
