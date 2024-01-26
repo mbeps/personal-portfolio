@@ -1,9 +1,7 @@
 import MaterialInterface from "./MaterialInterface";
-import SkillInterface from "../skills/SkillInterface";
 
 export default interface ProjectInterface extends MaterialInterface {
   description: string;
-  programmingLanguage: SkillInterface;
   category:
     | "Full-Stack Web Development"
     | "Back-End Web Development"

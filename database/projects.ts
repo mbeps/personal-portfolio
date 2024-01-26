@@ -130,8 +130,8 @@ const webdevProjects: ProjectInterface[] = [
       `,
     repositoryURL: `https://github.com/mbeps/next_discussion_platform`,
     deploymentURL: `https://circus-discussion.vercel.app/`,
-    programmingLanguage: typescript,
     skills: [
+      typescript,
       nextjs,
       react,
       chakraUI,
@@ -173,8 +173,9 @@ const webdevProjects: ProjectInterface[] = [
       `,
     repositoryURL: `https://github.com/mbeps/ringmaster-messaging`,
     deploymentURL: `https://ringmaster-messaging.vercel.app/`,
-    programmingLanguage: typescript,
+
     skills: [
+      typescript,
       nextjs,
       react,
       nextauth,
@@ -216,9 +217,9 @@ const webdevProjects: ProjectInterface[] = [
       Developing this project allowed me to explore Stripe, Clerk authentication, and unique AI APIs.
   `,
     repositoryURL: `https://github.com/mbeps/magician-ai`,
-    programmingLanguage: typescript,
     deploymentURL: "https://magician-ai.vercel.app/",
     skills: [
+      typescript,
       nextjs,
       react,
       shadcnUI,
@@ -262,8 +263,8 @@ const webdevProjects: ProjectInterface[] = [
       Users can upload songs, search and listen to music, as well as like the songs they enjoy.
       `,
     repositoryURL: `https://github.com/mbeps/drumroll-music`,
-    programmingLanguage: typescript,
     skills: [
+      typescript,
       nextjs,
       react,
       supabase,
@@ -299,8 +300,8 @@ const webdevProjects: ProjectInterface[] = [
       A simple rich-text note-taking app that allows users to create, edit, and delete notes.
       `,
     repositoryURL: `https://github.com/mbeps/joker-notes`,
-    programmingLanguage: typescript,
     skills: [
+      typescript,
       nextjs,
       react,
       shadcnUI,
@@ -345,9 +346,9 @@ const extraWebDevProjects: ProjectInterface[] = [
     description: `An intuitive platform for dynamic quiz generation. 
       Users can test their knowledge across various topics, choosing between multiple-choice questions or fill-in-the-gap style challenges. 
       With immediate feedback and score tracking, users enhance their understanding.`,
-    programmingLanguage: typescript,
     category: "Full-Stack Web Development",
     skills: [
+      typescript,
       nextjs,
       react,
       tailwindCSS,
@@ -389,8 +390,8 @@ const extraWebDevProjects: ProjectInterface[] = [
       This foundational project paved the way for using Supabase in subsequent projects.
       `,
     repositoryURL: `https://github.com/mbeps/sideshow-articles`,
-    programmingLanguage: typescript,
     skills: [
+      typescript,
       nextjs,
       react,
       supabase,
@@ -422,8 +423,8 @@ const extraWebDevProjects: ProjectInterface[] = [
       `,
     repositoryURL: `https://github.com/ixahmedxi/noodle`,
     deploymentURL: `https://noodle.run/`,
-    programmingLanguage: typescript,
     skills: [
+      typescript,
       nextjs,
       react,
       shadcnUI,
@@ -466,8 +467,8 @@ const extraWebDevProjects: ProjectInterface[] = [
       Since there were no tutorials or guides available, we relied heavily on the library's documentation.
       `,
     repositoryURL: `https://github.com/mbeps/convo-gpt`,
-    programmingLanguage: typescript,
     skills: [
+      typescript,
       nextjs,
       react,
       tailwindCSS,
@@ -506,8 +507,8 @@ const backendWebDevProjects: ProjectInterface[] = [
       This was created to learn how to create a custom backend using Python and Flask.
       `,
     repositoryURL: `https://github.com/mbeps/Forum-Discussion-Flask-Backend`,
-    programmingLanguage: python,
     skills: [
+      python,
       flask,
       mySQL,
       sqlalchemy,
@@ -540,8 +541,8 @@ const backendWebDevProjects: ProjectInterface[] = [
       This serves as a foundation to using JWT in other projects using Flask.
       `,
     repositoryURL: `https://github.com/mbeps/Flask_JWT_Auth`,
-    programmingLanguage: python,
     skills: [
+      python,
       flask,
       jwt,
       gitHub,
@@ -566,9 +567,9 @@ const backendWebDevProjects: ProjectInterface[] = [
       A simple Django app to learn how to use Django with tokens for authentication.
       This serves as a foundation to using Django in other projects.
       `,
-    programmingLanguage: python,
     repositoryURL: `https://github.com/mbeps/Django_Auth_Sys`,
     skills: [
+      python,
       django,
       jwt,
       gitHub,
@@ -592,9 +593,9 @@ const backendWebDevProjects: ProjectInterface[] = [
     description: `
       A simple Next.JS app to experiment with the Clerk Authentication SDK. 
       `,
-    programmingLanguage: typescript,
     repositoryURL: `https://github.com/mbeps/clerk-demo`,
     skills: [
+      typescript,
       nextjs,
       clerkAuth,
       gitHub,
@@ -619,9 +620,9 @@ const backendWebDevProjects: ProjectInterface[] = [
       A simple Next.JS app to experiment with the Auth0 Authentication SDK. 
       This does not use the new Next.JS 13 app router as it is not supported as of the time of making this demo. 
       `,
-    programmingLanguage: typescript,
     repositoryURL: `https://github.com/mbeps/nextjs-auth0`,
     skills: [
+      typescript,
       nextjs,
       auth0,
       gitHub,
@@ -652,9 +653,9 @@ const machineLearningProjects: ProjectInterface[] = [
     slug: "adult-income-prediction",
     description: `A project leveraging the UCI Adult Income dataset to predict income brackets using a RandomForestClassifier. Emphasis is on feature engineering, data preprocessing with One-Hot Encoding, and model optimization through hyperparameter tuning.`,
     repositoryURL: "https://github.com/mbeps/Adults_Income_Prediction",
-    programmingLanguage: python,
     skills: [
       scikitLearn,
+      python,
       numpy,
       pandas,
       matplotlib,
@@ -680,8 +681,8 @@ const machineLearningProjects: ProjectInterface[] = [
     slug: "house-price-prediction",
     description: `An analytical approach to predicting California housing prices using the RandomForestRegressor and LinearRegressor, with a focus on data preprocessing and feature engineering.`,
     repositoryURL: "https://github.com/your-username/House-Price-Prediction",
-    programmingLanguage: python,
     skills: [
+      python,
       scikitLearn,
       numpy,
       pandas,
@@ -710,8 +711,8 @@ const machineLearningProjects: ProjectInterface[] = [
       Have an understanding of ways to apply the ideas and algorithms of machine learning in science and technology.
       `,
     repositoryURL: `https://github.com/mbeps/Machine-Learning-Assignment-1`,
-    programmingLanguage: python,
     skills: [
+      python,
       scikitLearn,
       numpy,
       matplotlib,
@@ -738,8 +739,8 @@ const machineLearningProjects: ProjectInterface[] = [
       Have an understanding of ways to apply the ideas and algorithms of machine learning in industry and medicine.
     `,
     repositoryURL: `https://github.com/mbeps/Machine-Learning-Assignment-2`,
-    programmingLanguage: python,
     skills: [
+      python,
       scikitLearn,
       numpy,
       matplotlib,
@@ -766,8 +767,8 @@ const machineLearningProjects: ProjectInterface[] = [
       Have an understanding of ways to apply the ideas and algorithms of machine learning in industry.
       `,
     repositoryURL: `https://github.com/mbeps/Machine-Learning-Assignment-3`,
-    programmingLanguage: python,
     skills: [
+      python,
       scikitLearn,
       numpy,
       matplotlib,
@@ -793,8 +794,8 @@ const machineLearningProjects: ProjectInterface[] = [
       such as Nearest Neighbours, conformal prediction, linear regression, Ridge Regression, Lasso, data preprocessing, parameter selection, 
       kernels, neural networks, support vector machines, scikit-learn pipelines, and cross-conformal predictors.`,
     repositoryURL: `https://github.com/mbeps/Machine-Learning-Labs-Questions`,
-    programmingLanguage: python,
     skills: [
+      python,
       scikitLearn,
       numpy,
       matplotlib,
@@ -820,8 +821,8 @@ const machineLearningProjects: ProjectInterface[] = [
       An assignment exploring valuation of options using methods like Black-Scholes, binomial trees, and Monte Carlo. 
       Also includes theoretical aspects of put-call parity and financial arbitrage opportunities.`,
     repositoryURL: `https://github.com/mbeps/Computation_Finance_Assignment`,
-    programmingLanguage: python,
     skills: [
+      python,
       numpy,
       matplotlib,
       jupyterNotebooks,
@@ -852,8 +853,8 @@ const gameDevProjects: ProjectInterface[] = [
       This required us to rely on the documentation as there was no tutorials or guides on how to use the library.
       `,
     repositoryURL: `https://github.com/mbeps/Osmos_Game`,
-    programmingLanguage: python,
     skills: [
+      python,
       simpleGui,
       gitHub,
       git,
@@ -877,9 +878,9 @@ const gameDevProjects: ProjectInterface[] = [
       Every time he kills all the skeletons more of them will come at once.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: gameMakerLanguage,
     category: "Game Development",
     skills: [
+      gameMakerLanguage,
       gameMakerStudio,
       problemSolving,
       projectManagement,
@@ -900,9 +901,9 @@ const gameDevProjects: ProjectInterface[] = [
       This is also a multiplayer game.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: gameMakerLanguage,
     category: "Game Development",
     skills: [
+      gameMakerLanguage,
       gameMakerStudio,
       problemSolving,
       projectManagement,
@@ -923,9 +924,9 @@ const gameDevProjects: ProjectInterface[] = [
       This is also a multiplayer game.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: gameMakerLanguage,
     category: "Game Development",
     skills: [
+      gameMakerLanguage,
       gameMakerStudio,
       problemSolving,
       projectManagement,
@@ -945,9 +946,9 @@ const gameDevProjects: ProjectInterface[] = [
       and the goal is to destroy them all by repeatedly bouncing a ball off a paddle into them.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: gameMakerLanguage,
     category: "Game Development",
     skills: [
+      gameMakerLanguage,
       gameMakerStudio,
       problemSolving,
       projectManagement,
@@ -967,9 +968,9 @@ const gameDevProjects: ProjectInterface[] = [
       as many times as possible within a given time limit.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: gameMakerLanguage,
     category: "Game Development",
     skills: [
+      gameMakerLanguage,
       gameMakerStudio,
       problemSolving,
       projectManagement,
@@ -989,9 +990,9 @@ const gameDevProjects: ProjectInterface[] = [
       by making use of the gravity switch and avoiding the obstacles.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: gameMakerLanguage,
     category: "Game Development",
     skills: [
+      gameMakerLanguage,
       gameMakerStudio,
       problemSolving,
       projectManagement,
@@ -1010,9 +1011,9 @@ const gameDevProjects: ProjectInterface[] = [
       This is a game where the aim is to shoot the enemies and avoid their bullets.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: gameMakerLanguage,
     category: "Game Development",
     skills: [
+      gameMakerLanguage,
       gameMakerStudio,
       problemSolving,
       projectManagement,
@@ -1031,9 +1032,9 @@ const gameDevProjects: ProjectInterface[] = [
       A very simple 3D game where the aim is to reach the end of the level through the maze.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: gameMakerLanguage,
     category: "Game Development",
     skills: [
+      gameMakerLanguage,
       gameMakerStudio,
       problemSolving,
       projectManagement,
@@ -1053,9 +1054,9 @@ const gameDevProjects: ProjectInterface[] = [
       This is very similar to the popular game Fruit Ninja.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: gameMakerLanguage,
     category: "Game Development",
     skills: [
+      gameMakerLanguage,
       gameMakerStudio,
       problemSolving,
       projectManagement,
@@ -1075,9 +1076,9 @@ const gameDevProjects: ProjectInterface[] = [
       This is very similar to the popular game Angry Birds.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: gameMakerLanguage,
     category: "Game Development",
     skills: [
+      gameMakerLanguage,
       gameMakerStudio,
       problemSolving,
       projectManagement,
@@ -1097,9 +1098,9 @@ const gameDevProjects: ProjectInterface[] = [
       This is very similar to the popular game Angry Birds.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: gameMakerLanguage,
     category: "Game Development",
     skills: [
+      gameMakerLanguage,
       gameMakerStudio,
       problemSolving,
       projectManagement,
@@ -1127,9 +1128,9 @@ const otherProjects: ProjectInterface[] = [
       Each algorithms is explained. 
       All the algorithms are also compared to each other. 
     `,
-    programmingLanguage: python,
     category: "Other",
     skills: [
+      python,
       matplotlib,
       numpy,
       jupyterNotebooks,
@@ -1158,6 +1159,7 @@ const otherProjects: ProjectInterface[] = [
       `,
     skills: [
       shellScript,
+      shellScript,
       gitHub,
       git,
       problemSolving,
@@ -1167,7 +1169,6 @@ const otherProjects: ProjectInterface[] = [
       adaptability,
     ],
     repositoryURL: `https://github.com/mbeps/AutomatedSetup`,
-    programmingLanguage: shellScript,
     category: "Other",
   },
   {
@@ -1180,8 +1181,8 @@ const otherProjects: ProjectInterface[] = [
       CI/CD is also used to run the tests when merging to the main branch.
       `,
     repositoryURL: `https://github.com/stars/mbeps/lists/leetcode`,
-    programmingLanguage: python,
     skills: [
+      python,
       pytest,
       gitHubActions,
       gitHub,
@@ -1212,8 +1213,8 @@ const javaAssignments: ProjectInterface[] = [
       test-driven development, documentation, and code quality assurance through linting and styling. 
       The assignment highlighted the significance of following efficient software development processes rather than just focusing on the final implementation.  `,
     repositoryURL: `https://github.com/mbeps/Calculator-Assignment`,
-    programmingLanguage: java,
     skills: [
+      java,
       maven,
       junit,
       gitHub,
@@ -1234,8 +1235,8 @@ const javaAssignments: ProjectInterface[] = [
       Simple botanic garden planner app built using Java.
       This was in first year to learn about Java and object oriented programming.`,
     repositoryURL: `https://github.com/mbeps/Botanic-Garden-Planner`,
-    programmingLanguage: java,
     skills: [
+      java,
       junit,
       gitHub,
       git,
@@ -1254,9 +1255,9 @@ const javaAssignments: ProjectInterface[] = [
     description: `Simple app to track Covid cases. 
       This was in first year to learn about Java and object oriented programming.`,
     repositoryURL: `https://github.com/mbeps/Track_and_Trace`,
-    programmingLanguage: java,
     category: "Java Assignments",
     skills: [
+      java,
       junit,
       gitHub,
       git,
@@ -1273,9 +1274,9 @@ const javaAssignments: ProjectInterface[] = [
     slug: "hollomon-assignment",
     description: `This was in first year to learn about Java and object oriented programming.`,
     repositoryURL: `https://github.com/mbeps/Hollomon`,
-    programmingLanguage: java,
     category: "Java Assignments",
     skills: [
+      java,
       junit,
       gitHub,
       git,
@@ -1292,8 +1293,8 @@ const javaAssignments: ProjectInterface[] = [
     slug: "database-mini-project",
     description: `Learning to interact with a database using Java.`,
     repositoryURL: `https://github.com/mbeps/DatabasesMiniProject`,
-    programmingLanguage: java,
     skills: [
+      java,
       postgreSQL,
       gitHub,
       git,

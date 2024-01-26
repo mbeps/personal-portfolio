@@ -87,18 +87,24 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
     notFound();
   }
 
+  const projectLanguages = project.skills.filter(
+    (skill) => skill.category === "Programming Languages",
+  );
+  const projectSkillsWithoutLanguage = project.skills.filter(
+    (skill) => skill.category !== "Programming Languages",
+  );
+
   const projectName = project.name;
-  const projectLanguage = project.programmingLanguage;
   const projectDescription = project.description;
   const hasCoverImage = hasProjectCover(slug);
   const coverImagePath = `${basePath}/${slug}/cover.png`;
 
-  const technologies = filterSkillsByType(project.skills, "hard");
+  const technologies = filterSkillsByType(projectSkillsWithoutLanguage, "hard");
   const generalSkills = getAssociatedNestedSkills(
     technologies,
     "general",
-  ).concat(filterSkillsByType(project.skills, "general"));
-  const softSkills = filterSkillsByType(project.skills, "soft");
+  ).concat(filterSkillsByType(projectSkillsWithoutLanguage, "general"));
+  const softSkills = filterSkillsByType(projectSkillsWithoutLanguage, "soft");
 
   // Using the new function to group all skill types
   const allGroupedSkills = [
@@ -190,12 +196,18 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
         </div>
 
         {/* Language Section */}
-        <div className="text-center md:text-left">
-          <HeadingThree title="Language" />
-          <div className="flex flex-wrap justify-center md:justify-start z-10 mt-5">
-            <SkillTag skill={projectLanguage} />
+        {projectLanguages && projectLanguages.length > 0 && (
+          <div className="text-center md:text-left">
+            <HeadingThree
+              title={projectLanguages.length > 1 ? "Languages" : "Language"}
+            />
+            <div className="flex flex-wrap justify-center md:justify-start z-10 mt-5">
+              {projectLanguages.map((language, index) => (
+                <SkillTag key={index} skill={language} />
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Skills Section */}
         <div className="mt-4">

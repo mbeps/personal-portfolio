@@ -6,11 +6,6 @@ export default function isSkillAssociatedWithProject(
   projects: ProjectInterface[],
 ): boolean {
   return projects.some((project) => {
-    // Check if the skill matches the project's programmingLanguage
-    if (project.programmingLanguage.slug === skill.slug) {
-      return true;
-    }
-
     // Recursive function to check nested skills
     const checkNestedSkills = (
       skills: SkillInterface[],

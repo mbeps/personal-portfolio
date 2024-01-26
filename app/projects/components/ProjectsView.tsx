@@ -65,17 +65,14 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
    * These are the only properties that are searched.
    * These are the same ones from the Project type.
    */
-  // TODO: update this to work with combined skills
   const searchOptions = {
     keys: [
       "name",
       "category",
-      "issuer",
       "skills.name",
       "skills.category",
       "skills.relatedSkills.name",
       "skills.relatedSkills.category",
-      "programmingLanguage.name",
     ],
     threshold: 0.3, // Lower threshold means more results
   };
@@ -144,14 +141,15 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const programmingLanguages: FilterOption[] = [
     { slug: "all", entryName: "All" },
     ...allProjects
-      .map((project: ProjectInterface) => ({
-        slug: project.programmingLanguage.slug,
-        entryName: project.programmingLanguage.name,
-      }))
-      .reduce((unique, item) => {
-        return unique.findIndex((v) => v.slug === item.slug) !== -1
+      .flatMap((project: ProjectInterface) =>
+        project.skills.filter(
+          (skill) => skill.category === "Programming Languages",
+        ),
+      )
+      .reduce((unique, skill) => {
+        return unique.findIndex((v) => v.slug === skill.slug) !== -1
           ? unique
-          : [...unique, item];
+          : [...unique, { slug: skill.slug, entryName: skill.name }];
       }, [] as FilterOption[]),
     // .sort((a, b) => a.entryName.localeCompare(b.entryName)),
   ];
@@ -166,12 +164,15 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
     { slug: "all", entryName: "All" },
     ...allProjects
       .flatMap((project: ProjectInterface) =>
-        filterSkillsByType(project.skills, "hard").map(
-          (skill: SkillInterface) => ({
+        filterSkillsByType(project.skills, "hard")
+          .filter(
+            (skill: SkillInterface) =>
+              skill.category !== "Programming Languages",
+          )
+          .map((skill: SkillInterface) => ({
             slug: skill.slug,
             entryName: skill.name,
-          }),
-        ),
+          })),
       )
       .reduce((unique, item) => {
         return unique.findIndex((v) => v.slug === item.slug) !== -1
@@ -253,7 +254,11 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
 
       const matchesProgrammingLanguage =
         selectedLanguage === "all" ||
-        project.programmingLanguage.slug === selectedLanguage;
+        project.skills.some(
+          (skill) =>
+            skill.category === "Programming Languages" &&
+            skill.slug === selectedLanguage,
+        );
 
       const matchesTechnology =
         selectedTechnology === "all" ||
