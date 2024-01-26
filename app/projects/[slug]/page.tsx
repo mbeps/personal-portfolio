@@ -2,7 +2,7 @@ import getImagesFromFileSystem from "@/actions/getImagesFromFileSystem";
 import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
 import getVideosFromFileSystem from "@/actions/getVideosFromFileSystem";
 import getContentBySlug from "@/actions/material/getContentBySlug";
-import hasProjectCover from "@/actions/projects/hasProjectCover";
+import hasProjectCover from "@/actions/material/projects/hasProjectCover";
 import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
 import { getAssociatedNestedSkills } from "@/actions/skills/getAssociatedSkills";
