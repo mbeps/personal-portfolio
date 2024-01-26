@@ -1,30 +1,32 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
+import filterCertificatesByIssuer from "@/actions/material/certificates/filterCertificatesByIssuer";
+import generateIssuerFilterOptions from "@/actions/material/certificates/generateIssuerFilterOptions";
+import filterMaterialByArchivedStatus, {
+  filterMaterialByCategory,
+  filterMaterialBySkill,
+  filterMaterialBySkillCategory,
+} from "@/actions/material/filterMaterials";
+import generateFilterOptionsByCategory from "@/actions/material/generateFilterOptionsByCategory";
+import generateFilterOptionsBySkillCategories from "@/actions/material/generateFilterOptionsBySkillCategories";
+import generateFilterOptionsBySkillType from "@/actions/material/generateFilterOptionsBySkillType";
+import groupMaterialsByCategory from "@/actions/material/groupMaterialsByCategory";
 import stringToSlug from "@/actions/stringToSlug";
 import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
 import FilterOverlay from "@/components/Filters/FilterPanel";
 import SearchInput from "@/components/Inputs/SearchInput";
-import CertificateInterface from "@/interfaces/material/CertificateInterface";
+import CertificatesList from "@/components/MaterialLists/CertificatesList";
+import { Button } from "@/components/shadcn/ui/button";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import CertificateInterface from "@/interfaces/material/CertificateInterface";
 import Fuse from "fuse.js";
+import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
-import { Button } from "@/components/shadcn/ui/button";
 import { AiOutlineClear } from "react-icons/ai";
-import Link from "next/link";
 import { BsFilterLeft } from "react-icons/bs";
-import CertificatesList from "@/components/MaterialLists/CertificatesList";
-import filterSkillsByType from "@/actions/skills/filterSkillsByType";
-import filterCertificatesByIssuer from "@/actions/material/certificates/filterCertificatesByIssuer";
-import filterMaterialByArchivedStatus, {
-  filterMaterialByCategory,
-  filterMaterialBySkillCategory,
-  filterMaterialBySkill,
-} from "@/actions/material/filterMaterials";
-import groupMaterialsByCategory from "@/actions/material/groupMaterialsByCategory";
 
 type CertificatesListListProps = {
   allCertificates: CertificateInterface[];
@@ -108,108 +110,33 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
     : allCertificates;
 
   //^ Filter Options List
-  const certificateCategories: FilterOption[] = [
-    { slug: "all", entryName: "All" },
-    ...allCertificates
-      .map((certificate: CertificateInterface) => ({
-        slug: stringToSlug(certificate.category),
-        entryName: certificate.category,
-      }))
-      .filter(
-        (value, index, self) =>
-          self.findIndex((v) => v.slug === value.slug) === index,
-      )
-      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
-  ];
+  const certificateCategories: FilterOption[] =
+    generateFilterOptionsByCategory<CertificateInterface>(allCertificates);
 
-  const certificateIssuers: FilterOption[] = [
-    { slug: "all", entryName: "All" },
-    ...allCertificates
-      .map((certificate: CertificateInterface) => ({
-        slug: stringToSlug(certificate.issuer),
-        entryName: certificate.issuer,
-      }))
-      .reduce((unique, item) => {
-        return unique.findIndex((v) => v.slug === item.slug) !== -1
-          ? unique
-          : [...unique, item];
-      }, [] as FilterOption[])
-      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
-  ];
+  const certificateIssuers = generateIssuerFilterOptions(allCertificates);
 
-  const skillCategories: FilterOption[] = [
-    { slug: "all", entryName: "All" },
-    ...allCertificates
-      .flatMap((certificate: CertificateInterface) =>
-        certificate.skills.map((skill: SkillInterface) => ({
-          slug: stringToSlug(skill.category),
-          entryName: skill.category,
-        })),
-      )
-      .reduce((unique, item) => {
-        return unique.findIndex((v) => v.slug === item.slug) !== -1
-          ? unique
-          : [...unique, item];
-      }, [] as FilterOption[])
-      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
-  ];
+  const skillCategories: FilterOption[] =
+    generateFilterOptionsBySkillCategories<CertificateInterface>(
+      allCertificates,
+    );
 
-  const hardSkills: FilterOption[] = [
-    { slug: "all", entryName: "All" },
-    ...allCertificates
-      .flatMap((certificate: CertificateInterface) =>
-        filterSkillsByType(certificate.skills, "hard").map(
-          (skill: SkillInterface) => ({
-            slug: stringToSlug(skill.slug), // Convert skill name to slug
-            entryName: skill.name,
-          }),
-        ),
-      )
-      .reduce((unique, item) => {
-        return unique.findIndex((v) => v.slug === item.slug) !== -1
-          ? unique
-          : [...unique, item];
-      }, [] as FilterOption[])
-      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
-  ];
+  const hardSkills: FilterOption[] =
+    generateFilterOptionsBySkillType<CertificateInterface>(
+      allCertificates,
+      "hard",
+    );
 
-  const generalSkills: FilterOption[] = [
-    { slug: "all", entryName: "All" },
-    ...allCertificates
-      .flatMap((certificate: CertificateInterface) =>
-        filterSkillsByType(certificate.skills, "general").map(
-          (skill: SkillInterface) => ({
-            slug: stringToSlug(skill.slug), // Convert skill name to slug
-            entryName: skill.name,
-          }),
-        ),
-      )
-      .reduce((unique, item) => {
-        return unique.findIndex((v) => v.slug === item.slug) !== -1
-          ? unique
-          : [...unique, item];
-      }, [] as FilterOption[])
-      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
-  ];
+  const generalSkills: FilterOption[] =
+    generateFilterOptionsBySkillType<CertificateInterface>(
+      allCertificates,
+      "general",
+    );
 
-  const softSkills: FilterOption[] = [
-    { slug: "all", entryName: "All" },
-    ...allCertificates
-      .flatMap((certificate: CertificateInterface) =>
-        filterSkillsByType(certificate.skills, "soft").map(
-          (skill: SkillInterface) => ({
-            slug: stringToSlug(skill.slug), // Convert skill name to slug
-            entryName: skill.name,
-          }),
-        ),
-      )
-      .reduce((unique, item) => {
-        return unique.findIndex((v) => v.slug === item.slug) !== -1
-          ? unique
-          : [...unique, item];
-      }, [] as FilterOption[])
-      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
-  ];
+  const softSkills: FilterOption[] =
+    generateFilterOptionsBySkillType<CertificateInterface>(
+      allCertificates,
+      "soft",
+    );
 
   //^ Filtering Logic
   const updateSearchTerm = (newSearchTerm: string) => {
