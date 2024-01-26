@@ -14,25 +14,25 @@ interface RelatedSkillsSectionProps {
 const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
   skill,
 }) => {
-  const skillTechnologies = getAssociatedSkills(allSkills, skill, "hard");
+  const allAssociatedSkills = getAssociatedSkills(allSkills, skill);
 
-  if (!skillTechnologies || skillTechnologies.length === 0) {
-    return;
+  if (!allAssociatedSkills || allAssociatedSkills.length === 0) {
+    return null;
   }
 
-  const allGroupedBlogSkills = [
+  const allGroupedSkills = [
     filterAndGroupSkills(
-      filterSkillsByType(skillTechnologies, "hard"),
+      filterSkillsByType(allAssociatedSkills, "hard"),
       "hard",
       "Technologies",
     ),
     filterAndGroupSkills(
-      filterSkillsByType(skillTechnologies, "general"),
+      filterSkillsByType(allAssociatedSkills, "general"),
       "general",
       "Technical Skills",
     ),
     filterAndGroupSkills(
-      filterSkillsByType(skillTechnologies, "soft"),
+      filterSkillsByType(allAssociatedSkills, "soft"),
       "soft",
       "Soft Skills",
     ),
@@ -43,7 +43,7 @@ const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
       <div className="border-b border-gray-200 dark:border-neutral-600 py-5" />
       <div className="mt-4 text-center md:text-left">
         <HeadingTwo title="Related Skills" />
-        <SkillTableSection allGroupedSkills={allGroupedBlogSkills} />
+        <SkillTableSection allGroupedSkills={allGroupedSkills} />
       </div>
     </>
   );
