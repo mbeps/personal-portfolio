@@ -22,6 +22,11 @@ import groupMaterialsByCategory from "@/actions/material/groupMaterialsByCategor
 import generateFilterOptionsByCategory from "@/actions/material/generateFilterOptionsByCategory";
 import generateFilterOptionsBySkillCategories from "@/actions/material/generateFilterOptionsBySkillCategories";
 import generateFilterOptionsBySkillType from "@/actions/material/generateFilterOptionsBySkillType";
+import filterMaterialByArchivedStatus, {
+  filterMaterialByCategory,
+  filterMaterialBySkillCategory,
+  filterMaterialBySkill,
+} from "@/actions/material/filterMaterials";
 
 interface BlogListProps {
   blogs: BlogInterface[];
@@ -137,42 +142,56 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
   };
 
   //^ Filtering Logic
-  const filteredBlogs = searchedBlogs.filter((blog) => {
-    const matchesBlogSection =
-      selectedBlogSection === "all" ||
-      stringToSlug(blog.category) === stringToSlug(selectedBlogSection);
-    const matchesSkillCategory =
-      selectedSkillCategory === "all" ||
-      blog.skills.some(
-        (skill) =>
-          stringToSlug(skill.category) === stringToSlug(selectedSkillCategory),
-      );
-    const matchesHardSkill =
-      selectedTechnicalSkill === "all" ||
-      filterSkillsByType(blog.skills, "hard").some(
-        (skill) => skill.slug === selectedTechnicalSkill,
-      );
-    const matchesGeneralSkill =
-      selectedGeneralSkill === "all" ||
-      filterSkillsByType(blog.skills, "general").some(
-        (skill) => skill.slug === selectedGeneralSkill,
-      );
-    const matchesSoftSkill =
-      selectedSoftSkill === "all" ||
-      filterSkillsByType(blog.skills, "soft").some(
-        (skill) => skill.slug === selectedSoftSkill,
-      );
-    const matchesArchivedStatus = showArchived || !blog.archived;
+  let filteredBlogs = searchedBlogs;
 
-    return (
-      matchesBlogSection &&
-      matchesSkillCategory &&
-      matchesHardSkill &&
-      matchesGeneralSkill &&
-      matchesSoftSkill &&
-      matchesArchivedStatus
+  // Filter by blog category
+  if (selectedBlogSection !== "all") {
+    filteredBlogs = filterMaterialByCategory<BlogInterface>(
+      stringToSlug(selectedBlogSection),
+      filteredBlogs,
     );
-  });
+  }
+
+  // Filter by skill category
+  if (selectedSkillCategory !== "all") {
+    filteredBlogs = filterMaterialBySkillCategory<BlogInterface>(
+      stringToSlug(selectedSkillCategory),
+      filteredBlogs,
+    );
+  }
+
+  // Filter by hard skill
+  if (selectedTechnicalSkill !== "all") {
+    filteredBlogs = filterMaterialBySkill<BlogInterface>(
+      selectedTechnicalSkill,
+      filteredBlogs,
+      "hard",
+    );
+  }
+
+  // Filter by general skill
+  if (selectedGeneralSkill !== "all") {
+    filteredBlogs = filterMaterialBySkill<BlogInterface>(
+      selectedGeneralSkill,
+      filteredBlogs,
+      "general",
+    );
+  }
+
+  // Filter by soft skill
+  if (selectedSoftSkill !== "all") {
+    filteredBlogs = filterMaterialBySkill<BlogInterface>(
+      selectedSoftSkill,
+      filteredBlogs,
+      "soft",
+    );
+  }
+
+  // Filter by archived status
+  filteredBlogs = filterMaterialByArchivedStatus<BlogInterface>(
+    showArchived,
+    filteredBlogs,
+  );
 
   const groupedBlogs = groupMaterialsByCategory(filteredBlogs);
 
