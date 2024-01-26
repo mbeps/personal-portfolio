@@ -10,12 +10,7 @@ export default function filterProjectsBySkill(
     skillList: SkillInterface[],
     skillToCheck: SkillInterface,
   ): boolean => {
-    return skillList.some(
-      (skill) =>
-        skill.slug === skillToCheck.slug ||
-        (skill.relatedSkills &&
-          includesSkill(skill.relatedSkills, skillToCheck)),
-    );
+    return skillList.some((skill) => skill.slug === skillToCheck.slug);
   };
 
   return projects.filter(
