@@ -18,6 +18,12 @@ import { BsFilterLeft } from "react-icons/bs";
 import { ArchiveToggle } from "../../../components/Filters/ArchiveToggle";
 import ProjectsList from "../../../components/MaterialLists/ProjectsList";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
+import filterMaterialByArchivedStatus, {
+  filterMaterialByCategory,
+  filterMaterialBySkill,
+  filterMaterialBySkillCategory,
+} from "@/actions/material/filterMaterials";
+import filterProjectsByProgrammingLanguage from "@/actions/material/projects/filterProjectsByProgrammingLanguage";
 
 type ProjectsListProps = {
   allProjects: ProjectInterface[];
@@ -246,60 +252,63 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
    * If 'All' is selected, then all projects are displayed.
    * Archived projects are not displayed by default.
    */
-  const filteredProjects = searchedProjects.filter(
-    (project: ProjectInterface) => {
-      const matchesType =
-        stringToSlug(selectedSection) === "all" ||
-        stringToSlug(project.category) === stringToSlug(selectedSection);
+  let filteredProjects = searchedProjects;
 
-      const matchesProgrammingLanguage =
-        selectedLanguage === "all" ||
-        project.skills.some(
-          (skill) =>
-            skill.category === "Programming Languages" &&
-            skill.slug === selectedLanguage,
-        );
+  // Filter by project type category
+  if (stringToSlug(selectedSection) !== "all") {
+    filteredProjects = filterMaterialByCategory<ProjectInterface>(
+      stringToSlug(selectedSection),
+      filteredProjects,
+    );
+  }
 
-      const matchesTechnology =
-        selectedTechnology === "all" ||
-        filterSkillsByType(project.skills, "hard").some(
-          (skill) => skill.slug === selectedTechnology,
-        );
+  // Filter by programming language
+  if (selectedLanguage !== "all") {
+    filteredProjects = filterProjectsByProgrammingLanguage(
+      selectedLanguage,
+      filteredProjects,
+    );
+  }
 
-      const matchesCategory =
-        stringToSlug(selectedSkillCategory) === "all" ||
-        project.skills.some(
-          (skill) =>
-            stringToSlug(skill.category) ===
-            stringToSlug(selectedSkillCategory),
-        );
+  // Filter by technology (assuming you have a similar function for technologies)
+  if (selectedTechnology !== "all") {
+    filteredProjects = filterMaterialBySkill<ProjectInterface>(
+      selectedTechnology,
+      filteredProjects,
+      "hard",
+    );
+  }
 
-      const matchesGeneralSkill =
-        selectedGeneralSkill === "all" ||
-        filterSkillsByType(project.skills, "general").some(
-          (skill) =>
-            stringToSlug(skill.slug) === stringToSlug(selectedGeneralSkill),
-        );
+  // Filter by skill category
+  if (stringToSlug(selectedSkillCategory) !== "all") {
+    filteredProjects = filterMaterialBySkillCategory<ProjectInterface>(
+      stringToSlug(selectedSkillCategory),
+      filteredProjects,
+    );
+  }
 
-      const matchesSoftSkill =
-        selectedSoftSkill === "all" ||
-        filterSkillsByType(project.skills, "soft").some(
-          (skill) =>
-            stringToSlug(skill.slug) === stringToSlug(selectedSoftSkill),
-        );
+  // Filter by general skill
+  if (selectedGeneralSkill !== "all") {
+    filteredProjects = filterMaterialBySkill<ProjectInterface>(
+      selectedGeneralSkill,
+      filteredProjects,
+      "general",
+    );
+  }
 
-      const matchesArchivedStatus = showArchived || !project.archived;
+  // Filter by soft skill
+  if (selectedSoftSkill !== "all") {
+    filteredProjects = filterMaterialBySkill<ProjectInterface>(
+      selectedSoftSkill,
+      filteredProjects,
+      "soft",
+    );
+  }
 
-      return (
-        matchesType &&
-        matchesProgrammingLanguage &&
-        matchesTechnology &&
-        matchesCategory &&
-        matchesGeneralSkill &&
-        matchesSoftSkill &&
-        matchesArchivedStatus
-      );
-    },
+  // Filter by archived status
+  filteredProjects = filterMaterialByArchivedStatus<ProjectInterface>(
+    showArchived,
+    filteredProjects,
   );
 
   /**
