@@ -18,6 +18,12 @@ import Link from "next/link";
 import { BsFilterLeft } from "react-icons/bs";
 import CertificatesList from "@/components/MaterialLists/CertificatesList";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
+import filterCertificatesByIssuer from "@/actions/material/certificates/filterCertificatesByIssuer";
+import filterMaterialByArchivedStatus, {
+  filterMaterialByCategory,
+  filterMaterialBySkillCategory,
+  filterMaterialBySkill,
+} from "@/actions/material/filterMaterials";
 
 type CertificatesListListProps = {
   allCertificates: CertificateInterface[];
@@ -238,48 +244,63 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
     );
   };
 
-  const filteredCertificates = searchedCertificates.filter(
-    (certificate: CertificateInterface) => {
-      const matchesIssuer =
-        selectedIssuer === "all" ||
-        stringToSlug(certificate.issuer) === stringToSlug(selectedIssuer);
-      const matchesCategory =
-        selectedCategory === "all" ||
-        stringToSlug(certificate.category) === stringToSlug(selectedCategory);
-      const matchesArchivedStatus = showArchived || !certificate.archived;
-      const matchesSkillCategory =
-        selectedSkillCategory === "all" ||
-        certificate.skills.some(
-          (skill) =>
-            stringToSlug(skill.category) ===
-            stringToSlug(selectedSkillCategory),
-        );
-      const matchesHardSkill =
-        selectedTechnicalSkill === "all" ||
-        filterSkillsByType(certificate.skills, "hard").some(
-          (skill) => skill.slug === selectedTechnicalSkill,
-        );
-      const matchesGeneralSkill =
-        selectedGeneralSkill === "all" ||
-        filterSkillsByType(certificate.skills, "general").some(
-          (skill) => skill.slug === selectedGeneralSkill,
-        );
-      const matchesSoftSkill =
-        selectedSoftSkill === "all" ||
-        filterSkillsByType(certificate.skills, "soft").some(
-          (skill) => skill.slug === selectedSoftSkill,
-        );
+  let filteredCertificates = searchedCertificates;
 
-      return (
-        matchesIssuer &&
-        matchesCategory &&
-        matchesArchivedStatus &&
-        matchesSkillCategory &&
-        matchesHardSkill &&
-        matchesGeneralSkill &&
-        matchesSoftSkill
-      );
-    },
+  // Filter by issuer
+  if (selectedIssuer !== "all") {
+    filteredCertificates = filterCertificatesByIssuer(
+      selectedIssuer,
+      filteredCertificates,
+    );
+  }
+
+  // Filter by certificate category
+  if (selectedCategory !== "all") {
+    filteredCertificates = filterMaterialByCategory<CertificateInterface>(
+      stringToSlug(selectedCategory),
+      filteredCertificates,
+    );
+  }
+
+  // Filter by skill category
+  if (selectedSkillCategory !== "all") {
+    filteredCertificates = filterMaterialBySkillCategory<CertificateInterface>(
+      stringToSlug(selectedSkillCategory),
+      filteredCertificates,
+    );
+  }
+
+  // Filter by hard skill
+  if (selectedTechnicalSkill !== "all") {
+    filteredCertificates = filterMaterialBySkill<CertificateInterface>(
+      selectedTechnicalSkill,
+      filteredCertificates,
+      "hard",
+    );
+  }
+
+  // Filter by general skill
+  if (selectedGeneralSkill !== "all") {
+    filteredCertificates = filterMaterialBySkill<CertificateInterface>(
+      selectedGeneralSkill,
+      filteredCertificates,
+      "general",
+    );
+  }
+
+  // Filter by soft skill
+  if (selectedSoftSkill !== "all") {
+    filteredCertificates = filterMaterialBySkill<CertificateInterface>(
+      selectedSoftSkill,
+      filteredCertificates,
+      "soft",
+    );
+  }
+
+  // Filter by archived status
+  filteredCertificates = filterMaterialByArchivedStatus<CertificateInterface>(
+    showArchived,
+    filteredCertificates,
   );
 
   const groupedCertificates = groupCertificatesByCategory(filteredCertificates);
