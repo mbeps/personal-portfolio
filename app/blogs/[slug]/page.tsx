@@ -34,7 +34,7 @@ export async function generateMetadata(
   const blog = getBlogMetadataBySlug(slug, allBlogs);
 
   return {
-    title: `Maruf Bepary - Blogs: ${blog?.title}`,
+    title: `Maruf Bepary - Blogs: ${blog?.name}`,
     description: blog?.subtitle,
   };
 }
@@ -90,7 +90,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
   return (
     <div>
       <div className="text-center">
-        <HeadingTwo title={blogMetadata?.title} />
+        <HeadingTwo title={blogMetadata?.name} />
         <p className="text-neutral-600 dark:text-neutral-400">
           {blogMetadata?.subtitle}
         </p>

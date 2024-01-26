@@ -1,14 +1,11 @@
+import MaterialInterface from "./BaseContentInterface";
 import SkillInterface from "./skills/SkillInterface";
 
 /**
  * Represents a blog.
  */
-export default interface BlogInterface {
-  title: string;
+export default interface BlogInterface extends MaterialInterface {
   subtitle: string;
-  slug: string;
-  skills: SkillInterface[];
-  archived?: boolean;
   category:
     | "Web Development"
     | "Software Engineering"

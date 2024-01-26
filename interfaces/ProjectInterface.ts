@@ -1,14 +1,9 @@
+import MaterialInterface from "./BaseContentInterface";
 import SkillInterface from "./skills/SkillInterface";
 
-/**
- * Interface representing a project.
- */
-export default interface ProjectInterface {
-  name: string;
-  slug: string;
+export default interface ProjectInterface extends MaterialInterface {
   description: string;
   programmingLanguage: SkillInterface;
-  skills: SkillInterface[];
   category:
     | "Full-Stack Web Development"
     | "Back-End Web Development"
@@ -20,5 +15,4 @@ export default interface ProjectInterface {
   deploymentURL?: string;
   thumbnailImage?: string; // added dynamically from file system
   hasImage?: boolean; // used for adding image path to imageURL
-  archived?: boolean;
 }

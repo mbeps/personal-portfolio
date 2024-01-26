@@ -65,6 +65,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
    * These are the only properties that are searched.
    * These are the same ones from the Project type.
    */
+  // TODO: update this to work with combined skills
   const searchOptions = {
     keys: [
       "name",

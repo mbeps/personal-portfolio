@@ -68,6 +68,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
    * These are the only properties that are searched.
    * These are the same ones from the `Blog` type.
    */
+  // TODO: Update this to work with combined skills
   const searchOptions = {
     keys: [
       "title",
