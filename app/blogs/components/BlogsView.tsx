@@ -19,6 +19,9 @@ import BlogInterface from "@/interfaces/material/BlogInterface";
 import BlogsList from "@/components/MaterialLists/BlogsList";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
 import groupMaterialsByCategory from "@/actions/material/groupMaterialsByCategory";
+import generateFilterOptionsByCategory from "@/actions/material/generateFilterOptionsByCategory";
+import generateFilterOptionsBySkillCategories from "@/actions/material/generateFilterOptionsBySkillCategories";
+import generateFilterOptionsBySkillType from "@/actions/material/generateFilterOptionsBySkillType";
 
 interface BlogListProps {
   blogs: BlogInterface[];
@@ -96,93 +99,20 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
 
   //^ Filter Options List
 
-  const blogCategories: FilterOption[] = [
-    { slug: "all", entryName: "All" },
-    ...blogs
-      .map((blog: BlogInterface) => ({
-        slug: stringToSlug(blog.category),
-        entryName: blog.category,
-      }))
-      .filter(
-        (value, index, self) =>
-          self.findIndex((v) => v.slug === value.slug) === index,
-      )
-      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
-  ];
+  const blogCategories: FilterOption[] =
+    generateFilterOptionsByCategory<BlogInterface>(blogs);
 
-  const skillCategories: FilterOption[] = [
-    { slug: "all", entryName: "All" },
-    ...blogs
-      .flatMap((blog: BlogInterface) =>
-        blog.skills.map((skill: SkillInterface) => ({
-          slug: stringToSlug(skill.category),
-          entryName: skill.category,
-        })),
-      )
-      .reduce((unique, item) => {
-        return unique.findIndex((v) => v.slug === item.slug) !== -1
-          ? unique
-          : [...unique, item];
-      }, [] as FilterOption[])
-      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
-  ];
+  const skillCategories: FilterOption[] =
+    generateFilterOptionsBySkillCategories<BlogInterface>(blogs);
 
-  const hardSkills: FilterOption[] = [
-    { slug: "all", entryName: "All" },
-    ...blogs
-      .flatMap((blog: BlogInterface) =>
-        filterSkillsByType(blog.skills, "hard").map(
-          (skill: SkillInterface) => ({
-            slug: skill.slug,
-            entryName: skill.name,
-          }),
-        ),
-      )
-      .reduce((unique, item) => {
-        return unique.findIndex((v) => v.slug === item.slug) !== -1
-          ? unique
-          : [...unique, item];
-      }, [] as FilterOption[])
-      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
-  ];
+  const hardSkills: FilterOption[] =
+    generateFilterOptionsBySkillType<BlogInterface>(blogs, "hard");
 
-  const generalSkills: FilterOption[] = [
-    { slug: "all", entryName: "All" },
-    ...blogs
-      .flatMap((blog: BlogInterface) =>
-        filterSkillsByType(blog.skills, "general").map(
-          (skill: SkillInterface) => ({
-            slug: skill.slug,
-            entryName: skill.name,
-          }),
-        ),
-      )
-      .reduce((unique, item) => {
-        return unique.findIndex((v) => v.slug === item.slug) !== -1
-          ? unique
-          : [...unique, item];
-      }, [] as FilterOption[])
-      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
-  ];
+  const generalSkills: FilterOption[] =
+    generateFilterOptionsBySkillType<BlogInterface>(blogs, "general");
 
-  const softSkills: FilterOption[] = [
-    { slug: "all", entryName: "All" },
-    ...blogs
-      .flatMap((blog: BlogInterface) =>
-        filterSkillsByType(blog.skills, "soft").map(
-          (skill: SkillInterface) => ({
-            slug: skill.slug,
-            entryName: skill.name,
-          }),
-        ),
-      )
-      .reduce((unique, item) => {
-        return unique.findIndex((v) => v.slug === item.slug) !== -1
-          ? unique
-          : [...unique, item];
-      }, [] as FilterOption[])
-      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
-  ];
+  const softSkills: FilterOption[] =
+    generateFilterOptionsBySkillType<BlogInterface>(blogs, "soft");
 
   //^ Filtering Logic
   /**
