@@ -28,6 +28,7 @@ import generateFilterOptionsByCategory from "@/actions/material/generateFilterOp
 import generateFilterOptionsForProgrammingLanguages from "@/actions/material/projects/generateFilterOptionsForProgrammingLanguages";
 import generateFilterOptionsBySkillType from "@/actions/material/generateFilterOptionsBySkillType";
 import generateFilterOptionsBySkillCategories from "@/actions/material/generateFilterOptionsBySkillCategories";
+import groupMaterialsByCategory from "@/actions/material/groupMaterialsByCategory";
 
 type ProjectsListProps = {
   allProjects: ProjectInterface[];
@@ -100,27 +101,6 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const searchedProjects = searchTerm
     ? fuse.search(searchTerm).map((result) => result.item)
     : allProjects;
-
-  //^ Group By Type
-  /**
-   * Groups the projects by type.
-   * Each project type is a key in the object.
-   * @param projects (Project[]): list of projects to be grouped by type
-   * @returns (Record<string, Project[]>): object with project types as keys and list of projects as values
-   */
-  const groupProjectsByType = (
-    projects: ProjectInterface[],
-  ): Record<string, ProjectInterface[]> => {
-    return projects.reduce<Record<string, ProjectInterface[]>>(
-      (grouped, project) => {
-        (grouped[project.category] = grouped[project.category] || []).push(
-          project,
-        );
-        return grouped;
-      },
-      {},
-    );
-  };
 
   //^ Filter Options List
   /**
@@ -231,7 +211,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
   /**
    * Projects categorized by type.
    */
-  const groupedProjects = groupProjectsByType(filteredProjects);
+  const groupedProjects = groupMaterialsByCategory(filteredProjects);
 
   /**
    * Updates the search term in the URL.

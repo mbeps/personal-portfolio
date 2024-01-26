@@ -24,6 +24,7 @@ import filterMaterialByArchivedStatus, {
   filterMaterialBySkillCategory,
   filterMaterialBySkill,
 } from "@/actions/material/filterMaterials";
+import groupMaterialsByCategory from "@/actions/material/groupMaterialsByCategory";
 
 type CertificatesListListProps = {
   allCertificates: CertificateInterface[];
@@ -101,20 +102,6 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
   };
 
   const fuse = new Fuse(allCertificates, searchOptions);
-
-  //^ Group By Category
-  const groupCertificatesByCategory = (
-    certificates: CertificateInterface[],
-  ): Record<string, CertificateInterface[]> => {
-    return certificates.reduce<Record<string, CertificateInterface[]>>(
-      (grouped, certificate) => {
-        (grouped[certificate.category] =
-          grouped[certificate.category] || []).push(certificate);
-        return grouped;
-      },
-      {},
-    );
-  };
 
   const searchedCertificates = searchTerm
     ? fuse.search(searchTerm).map((result) => result.item)
@@ -303,7 +290,7 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
     filteredCertificates,
   );
 
-  const groupedCertificates = groupCertificatesByCategory(filteredCertificates);
+  const groupedCertificates = groupMaterialsByCategory(filteredCertificates);
 
   const areFiltersApplied =
     selectedIssuer !== "all" ||

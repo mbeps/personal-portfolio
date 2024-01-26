@@ -18,6 +18,7 @@ import { BsFilterLeft } from "react-icons/bs";
 import BlogInterface from "@/interfaces/material/BlogInterface";
 import BlogsList from "@/components/MaterialLists/BlogsList";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
+import groupMaterialsByCategory from "@/actions/material/groupMaterialsByCategory";
 
 interface BlogListProps {
   blogs: BlogInterface[];
@@ -92,22 +93,6 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
   const searchedBlogs = searchTerm
     ? fuse.search(searchTerm).map((result) => result.item)
     : blogs;
-
-  //^ Group By Category
-  /**
-   * Groups the blogs by category.
-   * This is used to display the blogs in sections.
-   * @param blogs (Blog[]) - list of blogs
-   * @returns (Record<string, Blog[]>) - blogs grouped by category (key)
-   */
-  const groupBlogsByType = (
-    blogs: BlogInterface[],
-  ): Record<string, BlogInterface[]> => {
-    return blogs.reduce<Record<string, BlogInterface[]>>((grouped, blog) => {
-      (grouped[blog.category] = grouped[blog.category] || []).push(blog);
-      return grouped;
-    }, {});
-  };
 
   //^ Filter Options List
 
@@ -259,7 +244,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
     );
   });
 
-  const groupedBlogs = groupBlogsByType(filteredBlogs);
+  const groupedBlogs = groupMaterialsByCategory(filteredBlogs);
 
   const areFiltersApplied =
     selectedBlogSection !== "all" ||
