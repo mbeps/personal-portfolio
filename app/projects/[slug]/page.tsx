@@ -1,6 +1,3 @@
-import getImagesFromFileSystem from "@/actions/getImagesFromFileSystem";
-import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
-import getVideosFromFileSystem from "@/actions/getVideosFromFileSystem";
 import getContentBySlug from "@/actions/material/getContentBySlug";
 import hasProjectCover from "@/actions/material/projects/hasProjectCover";
 import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
@@ -23,6 +20,9 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
+import getImagesFromFileSystem from "@/actions/file-system/getImagesFromFileSystem";
+import getVideosFromFileSystem from "@/actions/file-system/getVideosFromFileSystem";
+import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
 
 /**
  * Metadata object for the dynamic project page.

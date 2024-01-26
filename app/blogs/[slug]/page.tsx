@@ -1,4 +1,4 @@
-import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
+import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
 import getContentBySlug from "@/actions/material/getContentBySlug";
 import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
