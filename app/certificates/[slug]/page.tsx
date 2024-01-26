@@ -15,6 +15,8 @@ import allCertificates from "@/database/certificates";
 import { Button } from "@/components/shadcn/ui/button";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
+import filterSkillsByType from "@/actions/skills/filterSkillsByType";
+import { getAssociatedNestedSkills } from "@/actions/skills/getAssociatedSkills";
 
 /**
  * Metadata object for the dynamic certificate page.
@@ -70,13 +72,19 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
     notFound();
   }
 
-  // Simplified grouping of skill types for certificates
-  const allGroupedCertificateSkills = [
-    filterAndGroupSkills(certificate.skills, "hard", "Technologies"),
-    filterAndGroupSkills(certificate.skills, "general", "Technical Skills"),
-    filterAndGroupSkills(certificate.skills, "soft", "Soft Skills"),
-  ];
+  const technologies = filterSkillsByType(certificate.skills, "hard");
+  const generalSkills = getAssociatedNestedSkills(
+    technologies,
+    "general",
+  ).concat(filterSkillsByType(certificate.skills, "general"));
+  const softSkills = filterSkillsByType(certificate.skills, "soft");
 
+  // Simplified grouping of skill types for certificates
+  const allGroupedSkills = [
+    filterAndGroupSkills(technologies, "hard", "Technologies"),
+    filterAndGroupSkills(generalSkills, "general", "Technical Skills"),
+    filterAndGroupSkills(softSkills, "soft", "Soft Skills"),
+  ];
   const certificateImage = `/certificates/${slug}.jpg`;
 
   return (
@@ -156,7 +164,7 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
       </div>
 
       <div className="mt-4">
-        <SkillTableSection allGroupedSkills={allGroupedCertificateSkills} />
+        <SkillTableSection allGroupedSkills={allGroupedSkills} />
       </div>
 
       <div className="md:grid md:grid-cols-2">

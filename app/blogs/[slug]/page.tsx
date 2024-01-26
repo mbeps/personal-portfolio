@@ -2,6 +2,7 @@ import getBlogMetadataBySlug from "@/actions/blogs/getBlogMetadataBySlug";
 import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
 import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
+import { getAssociatedNestedSkills } from "@/actions/skills/getAssociatedSkills";
 import Reader from "@/components/Reader/Reader";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
@@ -73,13 +74,16 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
   }
 
   const technologies = filterSkillsByType(blogMetadata.skills, "hard");
-  const technicalSkills = filterSkillsByType(blogMetadata.skills, "general");
+  const generalSkills = getAssociatedNestedSkills(
+    technologies,
+    "general",
+  ).concat(filterSkillsByType(blogMetadata.skills, "general"));
   const softSkills = filterSkillsByType(blogMetadata.skills, "soft");
 
-  // Using the new function to group all skill types for the blog
-  const allGroupedBlogSkills = [
-    filterAndGroupSkills(technicalSkills, "hard", "Technologies"),
-    filterAndGroupSkills(technicalSkills, "general", "Technical Skills"),
+  // Using the new function to group all skill types
+  const allGroupedSkills = [
+    filterAndGroupSkills(technologies, "hard", "Technologies"),
+    filterAndGroupSkills(generalSkills, "general", "Technical Skills"),
     filterAndGroupSkills(softSkills, "soft", "Soft Skills"),
   ];
 
@@ -97,7 +101,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
       <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
 
       <div className="mt-4">
-        <SkillTableSection allGroupedSkills={allGroupedBlogSkills} />
+        <SkillTableSection allGroupedSkills={allGroupedSkills} />
       </div>
     </div>
   );
