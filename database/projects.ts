@@ -2,6 +2,7 @@ import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import {
   gameMakerLanguage,
   java,
+  javascript,
   python,
   shellScript,
   typescript,
@@ -132,6 +133,7 @@ const webdevProjects: ProjectInterface[] = [
     deploymentURL: `https://circus-discussion.vercel.app/`,
     skills: [
       typescript,
+      javascript,
       nextjs,
       react,
       chakraUI,
@@ -176,6 +178,7 @@ const webdevProjects: ProjectInterface[] = [
 
     skills: [
       typescript,
+      javascript,
       nextjs,
       react,
       nextauth,
@@ -220,6 +223,7 @@ const webdevProjects: ProjectInterface[] = [
     deploymentURL: "https://magician-ai.vercel.app/",
     skills: [
       typescript,
+      javascript,
       nextjs,
       react,
       shadcnUI,
@@ -265,6 +269,7 @@ const webdevProjects: ProjectInterface[] = [
     repositoryURL: `https://github.com/mbeps/drumroll-music`,
     skills: [
       typescript,
+      javascript,
       nextjs,
       react,
       supabase,
@@ -302,6 +307,7 @@ const webdevProjects: ProjectInterface[] = [
     repositoryURL: `https://github.com/mbeps/joker-notes`,
     skills: [
       typescript,
+      javascript,
       nextjs,
       react,
       shadcnUI,
@@ -349,6 +355,7 @@ const extraWebDevProjects: ProjectInterface[] = [
     category: "Full-Stack Web Development",
     skills: [
       typescript,
+      javascript,
       nextjs,
       react,
       tailwindCSS,
@@ -392,6 +399,7 @@ const extraWebDevProjects: ProjectInterface[] = [
     repositoryURL: `https://github.com/mbeps/sideshow-articles`,
     skills: [
       typescript,
+      javascript,
       nextjs,
       react,
       supabase,
@@ -425,6 +433,7 @@ const extraWebDevProjects: ProjectInterface[] = [
     deploymentURL: `https://noodle.run/`,
     skills: [
       typescript,
+      javascript,
       nextjs,
       react,
       shadcnUI,
@@ -469,6 +478,7 @@ const extraWebDevProjects: ProjectInterface[] = [
     repositoryURL: `https://github.com/mbeps/convo-gpt`,
     skills: [
       typescript,
+      javascript,
       nextjs,
       react,
       tailwindCSS,
@@ -596,6 +606,7 @@ const backendWebDevProjects: ProjectInterface[] = [
     repositoryURL: `https://github.com/mbeps/clerk-demo`,
     skills: [
       typescript,
+      javascript,
       nextjs,
       clerkAuth,
       gitHub,
@@ -623,6 +634,7 @@ const backendWebDevProjects: ProjectInterface[] = [
     repositoryURL: `https://github.com/mbeps/nextjs-auth0`,
     skills: [
       typescript,
+      javascript,
       nextjs,
       auth0,
       gitHub,
