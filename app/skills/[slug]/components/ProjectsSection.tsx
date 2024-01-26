@@ -1,4 +1,4 @@
-import filterProjectsBySkill from "@/actions/projects/filterProjectsBySkill";
+import filterContentBySkill from "@/actions/material/filterContentBySkill";
 import ProjectsList from "@/components/MaterialLists/ProjectsList";
 import { Button } from "@/components/shadcn/ui/button";
 import { PROJECTS } from "@/constants/pages";
@@ -16,7 +16,10 @@ interface ProjectPageProps {
 const ProjectsSection: React.FC<ProjectPageProps> = ({ projects, skill }) => {
   const basePath = PROJECTS.path;
 
-  const filteredProjects = filterProjectsBySkill(projects, skill);
+  const filteredProjects = filterContentBySkill<ProjectInterface>(
+    projects,
+    skill,
+  );
 
   if (!filteredProjects || filteredProjects.length === 0) {
     return;

@@ -1,4 +1,4 @@
-import filterCertificatesBySkill from "@/actions/certificates/filterCertificatesBySkill";
+import filterContentBySkill from "@/actions/material/filterContentBySkill";
 import CertificatesList from "@/components/MaterialLists/CertificatesList";
 import { Button } from "@/components/shadcn/ui/button";
 import { CERTIFICATES } from "@/constants/pages";
@@ -19,7 +19,10 @@ const CertificatesSection: React.FC<CertificatesSectionProps> = ({
 }) => {
   const basePath = CERTIFICATES.path;
 
-  const filteredCertificates = filterCertificatesBySkill(certificates, skill);
+  const filteredCertificates = filterContentBySkill<CertificateInterface>(
+    certificates,
+    skill,
+  );
 
   if (!filteredCertificates || filteredCertificates.length === 0) {
     return;
