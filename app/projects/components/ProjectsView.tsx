@@ -69,15 +69,13 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const searchOptions = {
     keys: [
       "name",
+      "category",
+      "issuer",
+      "skills.name",
+      "skills.category",
+      "skills.relatedSkills.name",
+      "skills.relatedSkills.category",
       "programmingLanguage.name",
-      "technologySkills.name",
-      "technologySkills.category",
-      "technologySkills.skill.name",
-      "softSkills.name",
-      "softSkills.category",
-      "extraTechnicalGeneralSkills.name",
-      "extraTechnicalGeneralSkills.category",
-      "tags",
     ],
     threshold: 0.3, // Lower threshold means more results
   };

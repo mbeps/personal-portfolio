@@ -71,14 +71,14 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
   // TODO: Update this to work with combined skills
   const searchOptions = {
     keys: [
-      "title",
-      "subtitle",
+      "name",
       "category",
-      "technicalSkills.name",
-      "technicalSkills.category",
-      "technicalSkills.skill.name",
-      "softSkills.name",
-      "softSkills.category",
+      "issuer",
+      "skills.name",
+      "skills.category",
+      "skills.relatedSkills.name",
+      "skills.relatedSkills.category",
+      "programmingLanguage.name",
     ],
     threshold: 0.3,
   };

@@ -84,13 +84,12 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
   const searchOptions = {
     keys: [
       "name",
-      "issuer",
       "category",
-      "technicalSkills.name",
-      "technicalSkills.category",
-      "technicalSkills.skill.name",
-      "softSkills.name",
-      "softSkills.category",
+      "issuer",
+      "skills.name",
+      "skills.category",
+      "skills.relatedSkills.name",
+      "skills.relatedSkills.category",
     ], // Only search these properties
     threshold: 0.3, // Lower threshold means more results
   };
