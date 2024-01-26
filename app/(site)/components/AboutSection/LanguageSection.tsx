@@ -109,7 +109,11 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const languageSkills =
-    getAssociatedSkills(filterSkillsByType(allSkills, "hard"), language) || [];
+    getAssociatedSkills(
+      filterSkillsByType(allSkills, "hard"),
+      language,
+      "hard",
+    ) || [];
 
   const handleOpenModal = () => {
     setIsModalOpen(true);

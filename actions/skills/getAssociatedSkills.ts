@@ -3,6 +3,7 @@ import SkillInterface from "@/interfaces/skills/SkillInterface";
 export default function getAssociatedSkills(
   skills: SkillInterface[],
   skillToCheck: SkillInterface | SkillInterface[],
+  skillType: "hard" | "general" | "soft" | "all" = "all",
 ): SkillInterface[] {
   const associatedSkills: SkillInterface[] = [];
 
@@ -23,11 +24,12 @@ export default function getAssociatedSkills(
   };
 
   const checkSkillsAssociation = (checkSkill: SkillInterface) => {
-    // Iterate over each skill and check for association
+    // Iterate over each skill and check for association and type match
     skills.forEach((skill) => {
       if (
         isSkillAssociated(skill, checkSkill.slug) &&
-        skill.slug !== checkSkill.slug
+        skill.slug !== checkSkill.slug &&
+        (skillType === "all" || !skillType || skill.skillType === skillType)
       ) {
         associatedSkills.push(skill);
       }

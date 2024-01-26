@@ -14,7 +14,7 @@ interface RelatedSkillsSectionProps {
 const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
   skill,
 }) => {
-  const skillTechnologies = getAssociatedSkills(allSkills, skill);
+  const skillTechnologies = getAssociatedSkills(allSkills, skill, "hard");
 
   if (!skillTechnologies || skillTechnologies.length === 0) {
     return;
