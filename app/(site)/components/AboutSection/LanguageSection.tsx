@@ -25,6 +25,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
+import { ScrollArea } from "@/components/shadcn/ui/scroll-area";
 import blogs from "@/database/blogs";
 import allCertificates from "@/database/certificates";
 import allProjects from "@/database/projects";
@@ -162,78 +163,82 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
           </Tooltip>
         </DialogTrigger>
         <DialogContent>
-          <HeadingTwo title={language.name} />
-          <div className="flex mt-4">
-            <div className="flex-grow mr-2 mt-2.5 text-right text-neutral-700 dark:text-neutral-300">
-              Group by:
-            </div>
-            <DropdownMenu>
-              <DropdownMenuTrigger className="w-48">
-                <Button variant="default" className="w-full">
-                  <div className="flex items-start justify-between space-x-2 w-full">
-                    <span>{currentGroupedName}</span>
-                    <BsChevronDown
-                      fontSize={16}
-                      className="text-neutral-700 dark:text-neutral-200 mt-1"
-                    />
-                  </div>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-48 ">
-                {options.map((option, index) => (
-                  <DropdownMenuItem
-                    key={index}
-                    className={`
-                ${option.slug === groupedBy ? "font-bold" : ""}`}
-                    onSelect={() => setGroupedBy(option.slug)}
-                  >
-                    {option.entryName}
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
+          <div className="h-full w-full pt-6">
+            <HeadingTwo title={language.name} />
           </div>
-
-          {/* List of skills */}
-          <div className="space-y-1">
-            {groupedSkills.map((categoryData, index) => (
-              <div key={index} className="text-center md:text-left">
-                <HeadingThree title={categoryData.skillCategoryName} />
-                <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-                  {categoryData.skills.map((skill, skillIndex) => (
-                    <SkillTag key={skillIndex} skill={skill} />
-                  ))}
+          <ScrollArea className="h-full w-full">
+            <div className="px-6 pb-4">
+              {/* Grouping Dropdown */}
+              <div className="flex mt-4">
+                <div className="flex-grow mr-2 mt-2.5 text-right text-neutral-700 dark:text-neutral-300">
+                  Group by:
                 </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Links */}
-          {hasMaterial && (
-            <>
-              <div className="text-center md:text-left">
-                <HeadingThree title="Material" />
-              </div>
-              <div
-                className="
-                  flex flex-wrap flex-col
-                  text-center md:text-left
-                  justify-start z-10 space-y-2"
-              >
-                <Link
-                  href={`
-                    /skills/${language.slug}
-              `}
-                >
-                  <div className="w-full">
-                    <Button variant="gradient" className="w-full">
-                      {`All ${language.name} Material`}
+                <DropdownMenu>
+                  <DropdownMenuTrigger className="w-48">
+                    <Button variant="default" className="w-full">
+                      <div className="flex items-start justify-between space-x-2 w-full">
+                        <span>{currentGroupedName}</span>
+                        <BsChevronDown
+                          fontSize={16}
+                          className="text-neutral-700 dark:text-neutral-200 mt-1"
+                        />
+                      </div>
                     </Button>
-                  </div>
-                </Link>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-48">
+                    {options.map((option, index) => (
+                      <DropdownMenuItem
+                        key={index}
+                        className={`${
+                          option.slug === groupedBy ? "font-bold" : ""
+                        }`}
+                        onSelect={() => setGroupedBy(option.slug)}
+                      >
+                        {option.entryName}
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </div>
-            </>
-          )}
+
+              {/* List of skills */}
+              <div className="space-y-1">
+                {groupedSkills.map((categoryData, index) => (
+                  <div key={index} className="text-center md:text-left">
+                    <HeadingThree title={categoryData.skillCategoryName} />
+                    <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
+                      {categoryData.skills.map((skill, skillIndex) => (
+                        <SkillTag key={skillIndex} skill={skill} />
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Links */}
+              {hasMaterial && (
+                <>
+                  <div className="text-center md:text-left">
+                    <HeadingThree title="Material" />
+                  </div>
+                  <div
+                    className="
+                      flex flex-wrap flex-col
+                      text-center md:text-left
+                      justify-start z-10 space-y-2"
+                  >
+                    <Link href={`/skills/${language.slug}`}>
+                      <div className="w-full">
+                        <Button variant="gradient" className="w-full">
+                          {`All ${language.name} Material`}
+                        </Button>
+                      </div>
+                    </Link>
+                  </div>
+                </>
+              )}
+            </div>
+          </ScrollArea>
         </DialogContent>
       </Dialog>
     </>
