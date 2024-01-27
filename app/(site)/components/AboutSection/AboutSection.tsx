@@ -1,5 +1,7 @@
+import Reader from "@/components/Reader/Reader";
 import LanguageSection from "./LanguageSection";
 import TechnologiesSection from "./TechnologiesSection";
+import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
 
 /**
  * About section component.
@@ -14,6 +16,8 @@ import TechnologiesSection from "./TechnologiesSection";
  * @returns (JSX.Element): About section
  */
 const AboutSection = () => {
+  const blogContent = getMarkdownFromFileSystem(`public/about-me.md`)?.content;
+
   return (
     <section id="about" className="home-section-wrapper">
       <h1 className="text-center font-bold text-4xl">
@@ -36,43 +40,7 @@ const AboutSection = () => {
             Get to know me!
           </h1>
 
-          <p>
-            Greetings! I&apos;m Maruf, a{" "}
-            <span className="font-bold">software engineer</span> from Royal
-            Holloway University with a First Class Honours in Computer Science.
-            My journey is driven intensely by{" "}
-            <span className="font-bold">curiosity</span> and an unyielding
-            passion for innovative technology.
-          </p>
-          <div className="m-2.5" />
-          <p>
-            My experience spans the{" "}
-            <span className="font-bold">software development lifecycle</span>.
-            Yet, I see every day as a new opportunity to learn. With a penchant
-            for <span className="font-bold">constantly adapting</span>, pushing
-            boundaries, and{" "}
-            <span className="font-bold">challenging the norms</span>, my
-            explorations have led me into the depths of{" "}
-            <span className="font-bold">Machine Learning</span> and{" "}
-            <span className="font-bold">Mathematics</span>. Presently, I&apos;m
-            deepening my understanding of advanced ML techniques.
-          </p>
-          <div className="m-2.5" />
-          <p>
-            Additionally, my commitment to{" "}
-            <span className="font-bold">problem-solving</span> and{" "}
-            <span className="font-bold">creativity</span> has introduced me to
-            the world of <span className="font-bold">DevOps</span> via Udemy.
-            Here, I&apos;m amalgamating innovation with efficiency to refine and
-            automate tech processes.
-          </p>
-          <div className="m-2.5" />
-          <p>
-            Outside the realm of code, my passions include football, badminton,
-            science literature, and travel. Every day is an adventure, and I
-            believe in <span className="font-bold">seizing every moment</span>{" "}
-            with <span className="font-bold">unbridled enthusiasm</span>.
-          </p>
+          <Reader content={blogContent} size="base" />
         </div>
 
         {/* Right section */}
