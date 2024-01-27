@@ -36,6 +36,9 @@ import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Link from "next/link";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
+import getAssociatedSkills from "@/actions/skills/getAssociatedSkills";
+import allSkills from "@/database/skills/skills";
+import filterSkillsByType from "@/actions/skills/filterSkillsByType";
 
 /**
  * Displays a list of languages that I know.
@@ -104,7 +107,13 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
   repository,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const skills = language.technicalHardSkills || [];
+
+  const languageSkills =
+    getAssociatedSkills(
+      filterSkillsByType(allSkills, "hard"),
+      language,
+      "hard",
+    ) || [];
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -114,17 +123,14 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
     setIsModalOpen(false);
   };
 
-  const shouldOpenModal =
-    language.technicalHardSkills && language.technicalHardSkills.length > 0;
+  const shouldOpenModal = languageSkills && languageSkills.length > 0;
 
   const [groupedBy, setGroupedBy] = useState("category");
-  const filteredSkills = (language.technicalHardSkills || []).filter(
+  // Adjusted filtering based on the merged skills field
+  const filteredSkills = (languageSkills || []).filter(
     (skill) => skill.isMainSkill,
   );
-  const groupedSkills = groupSkills(
-    groupedBy,
-    language.technicalHardSkills || [],
-  );
+  const groupedSkills = groupSkills(groupedBy, languageSkills || []);
 
   const projects = allProjects;
   const certificates = allCertificates;

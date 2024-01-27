@@ -5,20 +5,21 @@ import {
   userCentricDesign,
   webDevelopment,
 } from "../generalSkills";
+import { javascript, typescript } from "../languages";
 
 export const recoil: SkillInterface = {
   name: "Recoil",
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "recoil",
-  technicalGeneralSkills: [webDevelopment, stateManagement],
+  relatedSkills: [webDevelopment, stateManagement],
 };
 export const zustand: SkillInterface = {
   name: "Zustand",
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "zustand",
-  technicalGeneralSkills: [webDevelopment, stateManagement],
+  relatedSkills: [webDevelopment, stateManagement],
 };
 
 export const jotai: SkillInterface = {
@@ -26,7 +27,7 @@ export const jotai: SkillInterface = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "jotai",
-  technicalGeneralSkills: [webDevelopment, stateManagement],
+  relatedSkills: [webDevelopment, stateManagement],
 };
 
 export const redux: SkillInterface = {
@@ -34,7 +35,7 @@ export const redux: SkillInterface = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "redux",
-  technicalGeneralSkills: [webDevelopment, stateManagement],
+  relatedSkills: [webDevelopment, stateManagement],
 };
 
 export const tailwindCSS: SkillInterface = {
@@ -43,7 +44,7 @@ export const tailwindCSS: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "tailwind-css",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+  relatedSkills: [webDevelopment, userCentricDesign],
 };
 
 export const html: SkillInterface = {
@@ -52,7 +53,7 @@ export const html: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "html",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+  relatedSkills: [webDevelopment, userCentricDesign],
 };
 
 export const css: SkillInterface = {
@@ -61,8 +62,7 @@ export const css: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "css",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
-  technicalHardSkills: [tailwindCSS],
+  relatedSkills: [webDevelopment, userCentricDesign, tailwindCSS],
 };
 
 export const react: SkillInterface = {
@@ -71,8 +71,16 @@ export const react: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "react-js",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
-  technicalHardSkills: [recoil, zustand, jotai, redux],
+  relatedSkills: [
+    javascript,
+    typescript,
+    webDevelopment,
+    userCentricDesign,
+    recoil,
+    zustand,
+    jotai,
+    redux,
+  ],
 };
 
 export const svelte: SkillInterface = {
@@ -80,7 +88,7 @@ export const svelte: SkillInterface = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "svelte",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+  relatedSkills: [javascript, typescript, webDevelopment, userCentricDesign],
 };
 
 export const vue: SkillInterface = {
@@ -88,7 +96,7 @@ export const vue: SkillInterface = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "vue-js",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+  relatedSkills: [javascript, typescript, webDevelopment, userCentricDesign],
 };
 
 export const chakraUI: SkillInterface = {
@@ -96,7 +104,7 @@ export const chakraUI: SkillInterface = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "chakra-ui",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+  relatedSkills: [webDevelopment, userCentricDesign],
 };
 
 export const headlessUI: SkillInterface = {
@@ -104,7 +112,7 @@ export const headlessUI: SkillInterface = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "headless-ui",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+  relatedSkills: [webDevelopment, userCentricDesign],
 };
 
 export const shadcnUI: SkillInterface = {
@@ -112,7 +120,7 @@ export const shadcnUI: SkillInterface = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "shadow-ui",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+  relatedSkills: [webDevelopment, userCentricDesign],
 };
 
 export const radixUI: SkillInterface = {
@@ -120,7 +128,7 @@ export const radixUI: SkillInterface = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "radix-ui",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+  relatedSkills: [webDevelopment, userCentricDesign],
 };
 
 export const reactQuery: SkillInterface = {
@@ -128,14 +136,14 @@ export const reactQuery: SkillInterface = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "react-query",
-  technicalGeneralSkills: [webDevelopment, apis],
+  relatedSkills: [webDevelopment, apis],
 };
 export const nextUI: SkillInterface = {
   name: "Next UI",
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "next-ui",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+  relatedSkills: [webDevelopment, userCentricDesign],
 };
 
 export const bootstrap: SkillInterface = {
@@ -143,7 +151,7 @@ export const bootstrap: SkillInterface = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "bootstrap",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+  relatedSkills: [webDevelopment, userCentricDesign],
 };
 
 export const materialUI: SkillInterface = {
@@ -151,7 +159,7 @@ export const materialUI: SkillInterface = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "material-ui",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+  relatedSkills: [webDevelopment, userCentricDesign],
 };
 
 export const semanticUI: SkillInterface = {
@@ -159,7 +167,7 @@ export const semanticUI: SkillInterface = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "semantic-ui",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+  relatedSkills: [webDevelopment, userCentricDesign],
 };
 
 export const antDesign: SkillInterface = {
@@ -167,7 +175,7 @@ export const antDesign: SkillInterface = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "ant-design",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+  relatedSkills: [webDevelopment, userCentricDesign],
 };
 
 export const storybooks: SkillInterface = {
@@ -175,7 +183,7 @@ export const storybooks: SkillInterface = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "storybooks",
-  technicalGeneralSkills: [webDevelopment, userCentricDesign],
+  relatedSkills: [webDevelopment, userCentricDesign],
 };
 
 export const simpleGui: SkillInterface = {
@@ -183,7 +191,7 @@ export const simpleGui: SkillInterface = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "simple-gui",
-  technicalGeneralSkills: [userCentricDesign],
+  relatedSkills: [userCentricDesign],
 };
 
 export const axios: SkillInterface = {
@@ -191,7 +199,7 @@ export const axios: SkillInterface = {
   category: "Front-End Web Development",
   skillType: "hard",
   slug: "axios",
-  technicalGeneralSkills: [webDevelopment, apis],
+  relatedSkills: [webDevelopment, apis],
 };
 
 const technicalHardSkillsFrontendWebDev: SkillInterface[] = [

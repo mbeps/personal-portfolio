@@ -10,7 +10,7 @@ export const awsK3s: SkillInterface = {
   category: "DevOps",
   skillType: "hard",
   slug: "aws-ks3",
-  technicalGeneralSkills: [containerization, clusterisation, cloudComputing],
+  relatedSkills: [containerization, clusterisation, cloudComputing],
 };
 
 export const awsEC2: SkillInterface = {
@@ -18,7 +18,7 @@ export const awsEC2: SkillInterface = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "aws-ec2",
-  technicalGeneralSkills: [cloudComputing],
+  relatedSkills: [cloudComputing],
 };
 
 export const awsS3: SkillInterface = {
@@ -26,7 +26,7 @@ export const awsS3: SkillInterface = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "aws-s3",
-  technicalGeneralSkills: [cloudComputing],
+  relatedSkills: [cloudComputing],
 };
 
 export const awsVPC: SkillInterface = {
@@ -34,7 +34,7 @@ export const awsVPC: SkillInterface = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "aws-vpc",
-  technicalGeneralSkills: [cloudComputing],
+  relatedSkills: [cloudComputing],
 };
 
 export const awsLambda: SkillInterface = {
@@ -42,7 +42,7 @@ export const awsLambda: SkillInterface = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "aws-lambda",
-  technicalGeneralSkills: [cloudComputing],
+  relatedSkills: [cloudComputing],
 };
 
 export const awsCloudFormation: SkillInterface = {
@@ -50,7 +50,7 @@ export const awsCloudFormation: SkillInterface = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "aws-cloudformation",
-  technicalGeneralSkills: [cloudComputing],
+  relatedSkills: [cloudComputing],
 };
 
 export const awsCloudFront: SkillInterface = {
@@ -58,7 +58,7 @@ export const awsCloudFront: SkillInterface = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "aws-cloudfront",
-  technicalGeneralSkills: [cloudComputing],
+  relatedSkills: [cloudComputing],
 };
 
 export const awsElasticBeanstalk: SkillInterface = {
@@ -66,7 +66,7 @@ export const awsElasticBeanstalk: SkillInterface = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "aws-elastic-beanstalk",
-  technicalGeneralSkills: [cloudComputing],
+  relatedSkills: [cloudComputing],
 };
 
 export const azureAppService: SkillInterface = {
@@ -74,7 +74,7 @@ export const azureAppService: SkillInterface = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "azure-app-service",
-  technicalGeneralSkills: [cloudComputing],
+  relatedSkills: [cloudComputing],
 };
 
 export const azureBlobStorage: SkillInterface = {
@@ -82,7 +82,7 @@ export const azureBlobStorage: SkillInterface = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "azure-blob-storage",
-  technicalGeneralSkills: [cloudComputing],
+  relatedSkills: [cloudComputing],
 };
 
 export const azureDurableFunctions: SkillInterface = {
@@ -90,7 +90,7 @@ export const azureDurableFunctions: SkillInterface = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "azure-durable-functions",
-  technicalGeneralSkills: [cloudComputing],
+  relatedSkills: [cloudComputing],
 };
 
 export const azureMonitor: SkillInterface = {
@@ -98,7 +98,7 @@ export const azureMonitor: SkillInterface = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "azure-monitor",
-  technicalGeneralSkills: [cloudComputing],
+  relatedSkills: [cloudComputing],
 };
 
 export const azureFunctions: SkillInterface = {
@@ -106,7 +106,7 @@ export const azureFunctions: SkillInterface = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "azure-functions",
-  technicalGeneralSkills: [cloudComputing],
+  relatedSkills: [cloudComputing],
 };
 
 export const azureResourceManager: SkillInterface = {
@@ -114,7 +114,7 @@ export const azureResourceManager: SkillInterface = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "azure-resource-manager",
-  technicalGeneralSkills: [cloudComputing],
+  relatedSkills: [cloudComputing],
 };
 
 export const azureContainers: SkillInterface = {
@@ -122,7 +122,7 @@ export const azureContainers: SkillInterface = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "azure-containers",
-  technicalGeneralSkills: [cloudComputing],
+  relatedSkills: [cloudComputing],
 };
 
 export const azureContainerRegistry: SkillInterface = {
@@ -130,7 +130,7 @@ export const azureContainerRegistry: SkillInterface = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "azure-container-registry",
-  technicalGeneralSkills: [cloudComputing],
+  relatedSkills: [cloudComputing],
 };
 
 export const gcpAppEngine: SkillInterface = {
@@ -138,7 +138,7 @@ export const gcpAppEngine: SkillInterface = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "gcp-app-engine",
-  technicalGeneralSkills: [cloudComputing],
+  relatedSkills: [cloudComputing],
 };
 
 export const gcpCloudSQL: SkillInterface = {
@@ -146,7 +146,7 @@ export const gcpCloudSQL: SkillInterface = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "gcp-cloud-sql",
-  technicalGeneralSkills: [cloudComputing],
+  relatedSkills: [cloudComputing],
 };
 
 export const gcpCloudStorage: SkillInterface = {
@@ -154,7 +154,7 @@ export const gcpCloudStorage: SkillInterface = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "gcp-cloud-storage",
-  technicalGeneralSkills: [cloudComputing],
+  relatedSkills: [cloudComputing],
 };
 
 export const gcpCloudTasks: SkillInterface = {
@@ -162,7 +162,7 @@ export const gcpCloudTasks: SkillInterface = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "gcp-cloud-tasks",
-  technicalGeneralSkills: [cloudComputing],
+  relatedSkills: [cloudComputing],
 };
 
 export const gcpCloudScheduler: SkillInterface = {
@@ -170,7 +170,7 @@ export const gcpCloudScheduler: SkillInterface = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "gcp-cloud-scheduler",
-  technicalGeneralSkills: [cloudComputing],
+  relatedSkills: [cloudComputing],
 };
 
 export const gcpCloudLogging: SkillInterface = {
@@ -178,7 +178,7 @@ export const gcpCloudLogging: SkillInterface = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "gcp-cloud-logging",
-  technicalGeneralSkills: [cloudComputing],
+  relatedSkills: [cloudComputing],
 };
 
 export const aws: SkillInterface = {
@@ -186,8 +186,8 @@ export const aws: SkillInterface = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "aws",
-  technicalGeneralSkills: [cloudComputing],
-  technicalHardSkills: [
+  relatedSkills: [
+    cloudComputing,
     awsK3s,
     awsEC2,
     awsS3,
@@ -204,8 +204,8 @@ export const gcp: SkillInterface = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "gcp",
-  technicalGeneralSkills: [cloudComputing],
-  technicalHardSkills: [
+  relatedSkills: [
+    cloudComputing,
     gcpAppEngine,
     gcpCloudSQL,
     gcpCloudStorage,
@@ -220,8 +220,8 @@ export const azure: SkillInterface = {
   category: "Cloud Computing",
   skillType: "hard",
   slug: "azure",
-  technicalGeneralSkills: [cloudComputing],
-  technicalHardSkills: [
+  relatedSkills: [
+    cloudComputing,
     azureAppService,
     azureBlobStorage,
     azureDurableFunctions,

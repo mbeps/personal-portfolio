@@ -1,10 +1,6 @@
 import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
-import getGeneralSkillsFromHardTechnicalSkill from "@/actions/skills/getGeneralSkillsFromHardTechnicalSkill";
-import getHardSkillsFromGeneralTechnicalSkill from "@/actions/skills/getHardSkillsFromGeneralTechnicalSkill";
-import {
-  default as getHardSkillsFromHardTechnicalSkill,
-  default as getTechnologiesFromHardTechnicalSkill,
-} from "@/actions/skills/getHardSkillsFromHardTechnicalSkill";
+import filterSkillsByType from "@/actions/skills/filterSkillsByType";
+import getAssociatedSkills from "@/actions/skills/getAssociatedSkills";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import allSkills from "@/database/skills/skills";
@@ -18,31 +14,25 @@ interface RelatedSkillsSectionProps {
 const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
   skill,
 }) => {
-  const skillTechnologies = Array.from(
-    new Set([
-      ...getHardSkillsFromHardTechnicalSkill(skill),
-      ...getHardSkillsFromGeneralTechnicalSkill(skill, allSkills),
-      ...getGeneralSkillsFromHardTechnicalSkill(skill),
-    ]),
-  );
+  const allAssociatedSkills = getAssociatedSkills(allSkills, skill);
 
-  if (!skillTechnologies || skillTechnologies.length === 0) {
-    return;
+  if (!allAssociatedSkills || allAssociatedSkills.length === 0) {
+    return null;
   }
 
-  const allGroupedBlogSkills = [
+  const allGroupedSkills = [
     filterAndGroupSkills(
-      getTechnologiesFromHardTechnicalSkill(skill),
+      filterSkillsByType(allAssociatedSkills, "hard"),
       "hard",
       "Technologies",
     ),
     filterAndGroupSkills(
-      getGeneralSkillsFromHardTechnicalSkill(skill),
+      filterSkillsByType(allAssociatedSkills, "general"),
       "general",
       "Technical Skills",
     ),
     filterAndGroupSkills(
-      getHardSkillsFromGeneralTechnicalSkill(skill, allSkills),
+      filterSkillsByType(allAssociatedSkills, "soft"),
       "soft",
       "Soft Skills",
     ),
@@ -53,7 +43,7 @@ const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
       <div className="border-b border-gray-200 dark:border-neutral-600 py-5" />
       <div className="mt-4 text-center md:text-left">
         <HeadingTwo title="Related Skills" />
-        <SkillTableSection allGroupedSkills={allGroupedBlogSkills} />
+        <SkillTableSection allGroupedSkills={allGroupedSkills} />
       </div>
     </>
   );

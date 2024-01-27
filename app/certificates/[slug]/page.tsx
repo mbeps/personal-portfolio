@@ -1,4 +1,3 @@
-import getCertificateBySlug from "@/actions/certificates/getCertificateBySlug";
 import Tag from "@/components/Tags/Tag";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingThree from "@/components/Text/HeadingThree";
@@ -15,6 +14,10 @@ import allCertificates from "@/database/certificates";
 import { Button } from "@/components/shadcn/ui/button";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
+import filterSkillsByType from "@/actions/skills/filterSkillsByType";
+import { getAssociatedNestedSkills } from "@/actions/skills/getAssociatedSkills";
+import CertificateInterface from "@/interfaces/material/CertificateInterface";
+import getContentBySlug from "@/actions/material/getContentBySlug";
 
 /**
  * Metadata object for the dynamic certificate page.
@@ -30,7 +33,10 @@ export async function generateMetadata(
   const slug = params.slug;
 
   // Assume getCertificateBySlug function fetches certificate by slug
-  const certificate = getCertificateBySlug(slug, allCertificates);
+  const certificate = getContentBySlug<CertificateInterface>(
+    slug,
+    allCertificates,
+  );
 
   // Create metadata based on the certificate details
   return {
@@ -65,22 +71,27 @@ type CertificatesPageProps = {
 const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
   const slug = params.slug;
 
-  const certificate = getCertificateBySlug(slug, allCertificates);
+  const certificate = getContentBySlug<CertificateInterface>(
+    slug,
+    allCertificates,
+  );
   if (!certificate) {
     notFound();
   }
 
-  // Simplified grouping of skill types for certificates
-  const allGroupedCertificateSkills = [
-    filterAndGroupSkills(certificate.technicalSkills, "hard", "Technologies"),
-    filterAndGroupSkills(
-      certificate.technicalSkills,
-      "general",
-      "Technical Skills",
-    ),
-    filterAndGroupSkills(certificate.softSkills, "soft", "Soft Skills"),
-  ];
+  const technologies = filterSkillsByType(certificate.skills, "hard");
+  const generalSkills = getAssociatedNestedSkills(
+    technologies,
+    "general",
+  ).concat(filterSkillsByType(certificate.skills, "general"));
+  const softSkills = filterSkillsByType(certificate.skills, "soft");
 
+  // Simplified grouping of skill types for certificates
+  const allGroupedSkills = [
+    filterAndGroupSkills(technologies, "hard", "Technologies"),
+    filterAndGroupSkills(generalSkills, "general", "Technical Skills"),
+    filterAndGroupSkills(softSkills, "soft", "Soft Skills"),
+  ];
   const certificateImage = `/certificates/${slug}.jpg`;
 
   return (
@@ -160,7 +171,7 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
       </div>
 
       <div className="mt-4">
-        <SkillTableSection allGroupedSkills={allGroupedCertificateSkills} />
+        <SkillTableSection allGroupedSkills={allGroupedSkills} />
       </div>
 
       <div className="md:grid md:grid-cols-2">

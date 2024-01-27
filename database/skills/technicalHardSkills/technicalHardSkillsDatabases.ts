@@ -22,7 +22,7 @@ export const postgreSQL: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "postgresql",
-  technicalGeneralSkills: [
+  relatedSkills: [
     databaseManagementSystems,
     databases,
     sql,
@@ -37,7 +37,7 @@ export const mySQL: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "mysql",
-  technicalGeneralSkills: [
+  relatedSkills: [
     databaseManagementSystems,
     databases,
     sql,
@@ -52,7 +52,7 @@ export const sqlite: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "sqlite",
-  technicalGeneralSkills: [
+  relatedSkills: [
     databaseManagementSystems,
     databases,
     sql,
@@ -67,12 +67,7 @@ export const mongoDB: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "mongodb",
-  technicalGeneralSkills: [
-    databaseManagementSystems,
-    databases,
-    noSql,
-    indexing,
-  ],
+  relatedSkills: [databaseManagementSystems, databases, noSql, indexing],
 };
 
 export const redis: SkillInterface = {
@@ -81,12 +76,7 @@ export const redis: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "redis",
-  technicalGeneralSkills: [
-    databaseManagementSystems,
-    databases,
-    noSql,
-    indexing,
-  ],
+  relatedSkills: [databaseManagementSystems, databases, noSql, indexing],
 };
 
 export const convex: SkillInterface = {

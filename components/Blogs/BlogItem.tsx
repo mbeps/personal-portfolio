@@ -1,5 +1,5 @@
 import { BLOG } from "@/constants/pages";
-import BlogInterface from "@/interfaces/BlogInterface";
+import BlogInterface from "@/interfaces/material/BlogInterface";
 import Link from "next/link";
 import React from "react";
 
@@ -28,7 +28,7 @@ const BlogItem: React.FC<BlogInterface> = (props) => {
         transition-all duration-500 ease-in-out"
       >
         <h2 className=" text-xl font-bold  mb-4 text-neutral-900 dark:text-neutral-100">
-          {props.title}
+          {props.name}
         </h2>
         <p
           className="

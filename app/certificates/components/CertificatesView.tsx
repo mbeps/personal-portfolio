@@ -1,22 +1,32 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
+import filterCertificatesByIssuer from "@/actions/material/certificates/filterCertificatesByIssuer";
+import generateIssuerFilterOptions from "@/actions/material/certificates/generateIssuerFilterOptions";
+import filterMaterialByArchivedStatus, {
+  filterMaterialByCategory,
+  filterMaterialBySkill,
+  filterMaterialBySkillCategory,
+} from "@/actions/material/filterMaterials";
+import generateFilterOptionsByCategory from "@/actions/material/generateFilterOptionsByCategory";
+import generateFilterOptionsBySkillCategories from "@/actions/material/generateFilterOptionsBySkillCategories";
+import generateFilterOptionsBySkillType from "@/actions/material/generateFilterOptionsBySkillType";
+import groupMaterialsByCategory from "@/actions/material/groupMaterialsByCategory";
 import stringToSlug from "@/actions/stringToSlug";
 import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
 import FilterOverlay from "@/components/Filters/FilterPanel";
 import SearchInput from "@/components/Inputs/SearchInput";
-import CertificateInterface from "@/interfaces/CertificateInterface";
+import CertificatesList from "@/components/MaterialLists/CertificatesList";
+import { Button } from "@/components/shadcn/ui/button";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import CertificateInterface from "@/interfaces/material/CertificateInterface";
 import Fuse from "fuse.js";
+import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
-import { Button } from "@/components/shadcn/ui/button";
 import { AiOutlineClear } from "react-icons/ai";
-import Link from "next/link";
 import { BsFilterLeft } from "react-icons/bs";
-import CertificatesList from "@/components/MaterialLists/CertificatesList";
 
 type CertificatesListListProps = {
   allCertificates: CertificateInterface[];
@@ -83,140 +93,50 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
   const searchOptions = {
     keys: [
       "name",
-      "issuer",
       "category",
-      "technicalSkills.name",
-      "technicalSkills.category",
-      "technicalSkills.skill.name",
-      "softSkills.name",
-      "softSkills.category",
+      "issuer",
+      "skills.name",
+      "skills.category",
+      "skills.relatedSkills.name",
+      "skills.relatedSkills.category",
     ], // Only search these properties
     threshold: 0.3, // Lower threshold means more results
   };
 
   const fuse = new Fuse(allCertificates, searchOptions);
 
-  //^ Group By Category
-  const groupCertificatesByCategory = (
-    certificates: CertificateInterface[],
-  ): Record<string, CertificateInterface[]> => {
-    return certificates.reduce<Record<string, CertificateInterface[]>>(
-      (grouped, certificate) => {
-        (grouped[certificate.category] =
-          grouped[certificate.category] || []).push(certificate);
-        return grouped;
-      },
-      {},
-    );
-  };
-
   const searchedCertificates = searchTerm
     ? fuse.search(searchTerm).map((result) => result.item)
     : allCertificates;
 
   //^ Filter Options List
-  const certificateCategories: FilterOption[] = [
-    { slug: "all", entryName: "All" },
-    ...allCertificates
-      .map((certificate: CertificateInterface) => ({
-        slug: stringToSlug(certificate.category),
-        entryName: certificate.category,
-      }))
-      .filter(
-        (value, index, self) =>
-          self.findIndex((v) => v.slug === value.slug) === index,
-      )
-      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
-  ];
+  const certificateCategories: FilterOption[] =
+    generateFilterOptionsByCategory<CertificateInterface>(allCertificates);
 
-  const certificateIssuers: FilterOption[] = [
-    { slug: "all", entryName: "All" },
-    ...allCertificates
-      .map((certificate: CertificateInterface) => ({
-        slug: stringToSlug(certificate.issuer),
-        entryName: certificate.issuer,
-      }))
-      .reduce((unique, item) => {
-        return unique.findIndex((v) => v.slug === item.slug) !== -1
-          ? unique
-          : [...unique, item];
-      }, [] as FilterOption[])
-      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
-  ];
+  const certificateIssuers = generateIssuerFilterOptions(allCertificates);
 
-  const skillCategories: FilterOption[] = [
-    { slug: "all", entryName: "All" },
-    ...allCertificates
-      .flatMap((certificate: CertificateInterface) =>
-        certificate.technicalSkills.map((skill: SkillInterface) => ({
-          slug: stringToSlug(skill.category),
-          entryName: skill.category,
-        })),
-      )
-      .reduce((unique, item) => {
-        return unique.findIndex((v) => v.slug === item.slug) !== -1
-          ? unique
-          : [...unique, item];
-      }, [] as FilterOption[])
-      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
-  ];
+  const skillCategories: FilterOption[] =
+    generateFilterOptionsBySkillCategories<CertificateInterface>(
+      allCertificates,
+    );
 
-  const hardSkills: FilterOption[] = [
-    { slug: "all", entryName: "All" },
-    ...allCertificates
-      .flatMap((certificate: CertificateInterface) =>
-        certificate.technicalSkills
-          .filter((skill: SkillInterface) => skill.skillType === "hard")
-          .map((skill: SkillInterface) => ({
-            slug: stringToSlug(skill.slug), // Convert skill name to slug
-            entryName: skill.name,
-          })),
-      )
-      .reduce((unique, item) => {
-        return unique.findIndex((v) => v.slug === item.slug) !== -1
-          ? unique
-          : [...unique, item];
-      }, [] as FilterOption[])
-      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
-  ];
+  const hardSkills: FilterOption[] =
+    generateFilterOptionsBySkillType<CertificateInterface>(
+      allCertificates,
+      "hard",
+    );
 
-  const generalSkills: FilterOption[] = [
-    { slug: "all", entryName: "All" },
-    ...allCertificates
-      .flatMap((certificate: CertificateInterface) =>
-        certificate.technicalSkills
-          .filter((skill: SkillInterface) => skill.skillType === "general")
-          .map((skill: SkillInterface) => ({
-            slug: stringToSlug(skill.slug), // Convert skill name to slug
-            entryName: skill.name,
-          })),
-      )
-      .reduce((unique, item) => {
-        return unique.findIndex((v) => v.slug === item.slug) !== -1
-          ? unique
-          : [...unique, item];
-      }, [] as FilterOption[])
-      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
-  ];
+  const generalSkills: FilterOption[] =
+    generateFilterOptionsBySkillType<CertificateInterface>(
+      allCertificates,
+      "general",
+    );
 
-  const softSkills: FilterOption[] = [
-    { slug: "all", entryName: "All" },
-    ...allCertificates
-      .flatMap((certificate: CertificateInterface) =>
-        certificate.technicalSkills
-          .filter((skill: SkillInterface) => skill.skillType === "soft")
-          .map((skill: SkillInterface) => ({
-            slug: stringToSlug(skill.slug), // Convert skill name to slug
-            entryName: skill.name,
-          })),
-      )
-      .reduce((unique, item) => {
-        return unique.findIndex((v) => v.slug === item.slug) !== -1
-          ? unique
-          : [...unique, item];
-      }, [] as FilterOption[])
-      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
-  ];
+  const softSkills: FilterOption[] =
+    generateFilterOptionsBySkillType<CertificateInterface>(
+      allCertificates,
+      "soft",
+    );
 
   //^ Filtering Logic
   const updateSearchTerm = (newSearchTerm: string) => {
@@ -238,55 +158,66 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
     );
   };
 
-  const filteredCertificates = searchedCertificates.filter(
-    (certificate: CertificateInterface) => {
-      const matchesIssuer =
-        selectedIssuer === "all" ||
-        stringToSlug(certificate.issuer) === stringToSlug(selectedIssuer);
-      const matchesCategory =
-        selectedCategory === "all" ||
-        stringToSlug(certificate.category) === stringToSlug(selectedCategory);
-      const matchesArchivedStatus = showArchived || !certificate.archived;
-      const matchesSkillCategory =
-        selectedSkillCategory === "all" ||
-        (certificate.technicalSkills || []).some(
-          (skill) =>
-            stringToSlug(skill.category) ===
-            stringToSlug(selectedSkillCategory),
-        );
-      const matchesHardSkill =
-        selectedTechnicalSkill === "all" ||
-        (certificate.technicalSkills || []).some(
-          (skill) =>
-            skill.slug === selectedTechnicalSkill && skill.skillType === "hard",
-        );
-      const matchesGeneralSkill =
-        selectedGeneralSkill === "all" ||
-        (certificate.technicalSkills || []).some(
-          (skill) =>
-            skill.slug === selectedGeneralSkill &&
-            skill.skillType === "general",
-        );
-      const matchesSoftSkill =
-        selectedSoftSkill === "all" ||
-        (certificate.technicalSkills || []).some(
-          (skill) =>
-            skill.slug === selectedSoftSkill && skill.skillType === "soft",
-        );
+  let filteredCertificates = searchedCertificates;
 
-      return (
-        matchesIssuer &&
-        matchesCategory &&
-        matchesArchivedStatus &&
-        matchesSkillCategory &&
-        matchesHardSkill &&
-        matchesGeneralSkill &&
-        matchesSoftSkill
-      );
-    },
+  // Filter by issuer
+  if (selectedIssuer !== "all") {
+    filteredCertificates = filterCertificatesByIssuer(
+      selectedIssuer,
+      filteredCertificates,
+    );
+  }
+
+  // Filter by certificate category
+  if (selectedCategory !== "all") {
+    filteredCertificates = filterMaterialByCategory<CertificateInterface>(
+      stringToSlug(selectedCategory),
+      filteredCertificates,
+    );
+  }
+
+  // Filter by skill category
+  if (selectedSkillCategory !== "all") {
+    filteredCertificates = filterMaterialBySkillCategory<CertificateInterface>(
+      stringToSlug(selectedSkillCategory),
+      filteredCertificates,
+    );
+  }
+
+  // Filter by hard skill
+  if (selectedTechnicalSkill !== "all") {
+    filteredCertificates = filterMaterialBySkill<CertificateInterface>(
+      selectedTechnicalSkill,
+      filteredCertificates,
+      "hard",
+    );
+  }
+
+  // Filter by general skill
+  if (selectedGeneralSkill !== "all") {
+    filteredCertificates = filterMaterialBySkill<CertificateInterface>(
+      selectedGeneralSkill,
+      filteredCertificates,
+      "general",
+    );
+  }
+
+  // Filter by soft skill
+  if (selectedSoftSkill !== "all") {
+    filteredCertificates = filterMaterialBySkill<CertificateInterface>(
+      selectedSoftSkill,
+      filteredCertificates,
+      "soft",
+    );
+  }
+
+  // Filter by archived status
+  filteredCertificates = filterMaterialByArchivedStatus<CertificateInterface>(
+    showArchived,
+    filteredCertificates,
   );
 
-  const groupedCertificates = groupCertificatesByCategory(filteredCertificates);
+  const groupedCertificates = groupMaterialsByCategory(filteredCertificates);
 
   const areFiltersApplied =
     selectedIssuer !== "all" ||

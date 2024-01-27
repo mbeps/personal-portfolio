@@ -1,36 +1,30 @@
-import ProjectInterface from "@/interfaces/ProjectInterface";
+import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import ProjectItem from "@/components/ProjectItem/ProjectItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import stringToSlug from "@/actions/stringToSlug";
+import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 
 interface ProjectsListSectionProps {
-  groupedProjects: Record<string, ProjectInterface[]>;
+  groupedProjects: MaterialGroupInterface[];
 }
 
-/**
- * Section for displaying projects.
- * @param groupedProjects (Record<string, Project[]>) - object of projects grouped by type
- * @returns (JSX.Element) - section for displaying projects
- */
 const ProjectsList: React.FC<ProjectsListSectionProps> = ({
   groupedProjects,
 }) => {
   return (
     <div className="material-page-wrapper">
-      {/* Each Section */}
-      {Object.keys(groupedProjects).length > 0 ? (
-        // Each Project
-        Object.keys(groupedProjects).map(
-          (type) =>
-            type !== "All" && (
-              <section key={type} id={stringToSlug(type)}>
+      {groupedProjects.length > 0 ? (
+        groupedProjects.map(
+          (group) =>
+            group.groupName !== "All" && (
+              <section key={group.groupName} id={stringToSlug(group.groupName)}>
                 <div className="flex flex-col space-y-10">
                   <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
-                  <HeadingTwo title={type} />
+                  <HeadingTwo title={group.groupName} />
                   <div className="space-y-20">
-                    {groupedProjects[type].map((project, idx) => (
+                    {group.materials.map((project, idx) => (
                       <div key={idx}>
-                        <ProjectItem project={project} />
+                        <ProjectItem project={project as ProjectInterface} />
                       </div>
                     ))}
                   </div>

@@ -16,7 +16,7 @@ export const gitHubActions: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "github-actions",
-  technicalGeneralSkills: [
+  relatedSkills: [
     infrastructureAsCode,
     continuousDelivery,
     continuousIntegration,
@@ -32,7 +32,7 @@ export const gitlabCI: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "gitlab-ci",
-  technicalGeneralSkills: [
+  relatedSkills: [
     infrastructureAsCode,
     continuousDelivery,
     continuousIntegration,
@@ -48,7 +48,7 @@ export const jenkins: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "jenkins",
-  technicalGeneralSkills: [
+  relatedSkills: [
     infrastructureAsCode,
     continuousDelivery,
     continuousIntegration,
@@ -64,7 +64,7 @@ export const teamCity: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "teamcity",
-  technicalGeneralSkills: [
+  relatedSkills: [
     infrastructureAsCode,
     continuousDelivery,
     continuousIntegration,
@@ -79,7 +79,7 @@ export const travisCI: SkillInterface = {
   category: "DevOps",
   skillType: "hard",
   slug: "travis-ci",
-  technicalGeneralSkills: [
+  relatedSkills: [
     infrastructureAsCode,
     continuousDelivery,
     continuousIntegration,
@@ -95,7 +95,7 @@ export const docker: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "docker",
-  technicalGeneralSkills: [containerization],
+  relatedSkills: [containerization],
 };
 
 export const podman: SkillInterface = {
@@ -104,7 +104,7 @@ export const podman: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "podman",
-  technicalGeneralSkills: [containerization],
+  relatedSkills: [containerization],
 };
 
 export const kubernetes: SkillInterface = {
@@ -113,7 +113,7 @@ export const kubernetes: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "kubernetes",
-  technicalGeneralSkills: [containerization, clusterisation],
+  relatedSkills: [containerization, clusterisation],
 };
 
 export const ansible: SkillInterface = {
@@ -121,7 +121,7 @@ export const ansible: SkillInterface = {
   category: "DevOps",
   skillType: "hard",
   slug: "ansible",
-  technicalGeneralSkills: [infrastructureAsCode, devOps, automation],
+  relatedSkills: [infrastructureAsCode, devOps, automation],
 };
 
 export const vagrant: SkillInterface = {
@@ -130,7 +130,7 @@ export const vagrant: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "valgrant",
-  technicalGeneralSkills: [infrastructureAsCode, devOps],
+  relatedSkills: [infrastructureAsCode, devOps],
 };
 
 const technicalHardSkillsDevOps: SkillInterface[] = [

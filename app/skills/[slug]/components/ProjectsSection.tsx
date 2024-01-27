@@ -1,7 +1,9 @@
+import filterContentBySkill from "@/actions/material/filterContentBySkill";
+import groupMaterialsBySkill from "@/actions/material/groupMaterialsBySkill";
 import ProjectsList from "@/components/MaterialLists/ProjectsList";
 import { Button } from "@/components/shadcn/ui/button";
 import { PROJECTS } from "@/constants/pages";
-import ProjectInterface from "@/interfaces/ProjectInterface";
+import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Link from "next/link";
 
@@ -15,52 +17,17 @@ interface ProjectPageProps {
 const ProjectsSection: React.FC<ProjectPageProps> = ({ projects, skill }) => {
   const basePath = PROJECTS.path;
 
-  const filterProjectsBySkill = (
-    projects: ProjectInterface[],
-    selectedSkill: SkillInterface,
-  ): ProjectInterface[] => {
-    const skillMatches = (skill: SkillInterface): boolean => {
-      // Check if the skill matches
-      if (skill.slug === selectedSkill.slug) {
-        return true;
-      }
-
-      // Check nested skills, if any
-      if (
-        skill.technicalGeneralSkills &&
-        skill.technicalGeneralSkills.length > 0
-      ) {
-        return skill.technicalGeneralSkills.some((subSkill) =>
-          skillMatches(subSkill),
-        );
-      }
-
-      return false;
-    };
-
-    return projects.filter(
-      (project) =>
-        project.technologySkills.some(skillMatches) ||
-        project.softSkills.some(skillMatches) ||
-        (project.extraTechnicalGeneralSkills &&
-          project.extraTechnicalGeneralSkills.some(skillMatches)) ||
-        project.programmingLanguage.slug === selectedSkill.slug,
-    );
-  };
-
-  const filteredProjects = filterProjectsBySkill(projects, skill);
+  const filteredProjects = filterContentBySkill<ProjectInterface>(
+    projects,
+    skill,
+  );
 
   if (!filteredProjects || filteredProjects.length === 0) {
     return;
   }
 
-  const groupProjectsByCurrentSkill = (
-    projects: ProjectInterface[],
-  ): Record<string, ProjectInterface[]> => {
-    return { Projects: projects };
-  };
-
-  const groupedProjects = groupProjectsByCurrentSkill(filteredProjects);
+  const groupedProjects =
+    groupMaterialsBySkill<ProjectInterface>(filteredProjects);
 
   return (
     <div className="flex flex-col space-y-10 align-top relative">

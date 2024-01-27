@@ -1,8 +1,6 @@
-import SkillInterface from "./skills/SkillInterface";
+import MaterialInterface from "./MaterialInterface";
 
-export default interface CertificateInterface {
-  name: string;
-  slug: string;
+export default interface CertificateInterface extends MaterialInterface {
   description?: string;
   issuer:
     | "Coursera"
@@ -15,8 +13,6 @@ export default interface CertificateInterface {
     | "Symphony Solutions"
     | "Amigoscode";
   certificateURL: string;
-  technicalSkills: SkillInterface[];
-  softSkills: SkillInterface[];
   category:
     | "University"
     | "Programming Languages"
@@ -30,7 +26,6 @@ export default interface CertificateInterface {
     | "Cloud Computing"
     | "Management"
     | "Other";
-  archived?: boolean;
   certificateImage?: string;
   learningOutcomes?: string[];
 }

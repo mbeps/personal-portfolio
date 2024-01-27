@@ -1,4 +1,5 @@
 import SkillInterface from "@/interfaces/skills/SkillInterface";
+import { java, javascript, python, typescript } from "../languages";
 
 export const jest: SkillInterface = {
   name: "Jest",
@@ -6,6 +7,7 @@ export const jest: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "jest",
+  relatedSkills: [javascript, typescript],
 };
 
 export const vitest: SkillInterface = {
@@ -14,6 +16,7 @@ export const vitest: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "vitest",
+  relatedSkills: [javascript, typescript],
 };
 
 export const pytest: SkillInterface = {
@@ -22,6 +25,7 @@ export const pytest: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "pytest",
+  relatedSkills: [python],
 };
 
 export const unittest: SkillInterface = {
@@ -30,6 +34,7 @@ export const unittest: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "unittest",
+  relatedSkills: [python],
 };
 
 export const junit: SkillInterface = {
@@ -38,6 +43,7 @@ export const junit: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "junit",
+  relatedSkills: [java],
 };
 
 export const cypress: SkillInterface = {

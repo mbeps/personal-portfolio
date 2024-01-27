@@ -13,6 +13,7 @@ import {
   postgreSQL,
   sqlite,
 } from "./technicalHardSkillsDatabases";
+import { java, javascript, python, typescript } from "../languages";
 
 export const mongoose: SkillInterface = {
   name: "Mongoose",
@@ -20,14 +21,16 @@ export const mongoose: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "mongoose-orm",
-  technicalGeneralSkills: [
+  relatedSkills: [
+    javascript,
+    typescript,
     databaseManagementSystems,
     databases,
     noSql,
     indexing,
     orm,
+    mongoDB,
   ],
-  technicalHardSkills: [mongoDB],
 };
 
 export const prisma: SkillInterface = {
@@ -36,14 +39,19 @@ export const prisma: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "prisma-orm",
-  technicalGeneralSkills: [
+  relatedSkills: [
     databaseManagementSystems,
     databases,
     sql,
     indexing,
     orm,
+    mongoDB,
+    postgreSQL,
+    mySQL,
+    sqlite,
+    javascript,
+    typescript,
   ],
-  technicalHardSkills: [mongoDB, postgreSQL, mySQL, sqlite],
 };
 
 export const drizzle: SkillInterface = {
@@ -52,14 +60,18 @@ export const drizzle: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "drizzle-orm",
-  technicalGeneralSkills: [
+  relatedSkills: [
+    javascript,
+    typescript,
     databaseManagementSystems,
     databases,
     sql,
     indexing,
     orm,
+    postgreSQL,
+    mySQL,
+    sqlite,
   ],
-  technicalHardSkills: [postgreSQL, mySQL, sqlite],
 };
 
 export const sqlalchemy: SkillInterface = {
@@ -68,14 +80,17 @@ export const sqlalchemy: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "sqlalchemy",
-  technicalGeneralSkills: [
+  relatedSkills: [
+    python,
     databaseManagementSystems,
     databases,
     sql,
     indexing,
     orm,
+    postgreSQL,
+    mySQL,
+    sqlite,
   ],
-  technicalHardSkills: [postgreSQL, mySQL, sqlite],
 };
 
 export const hibernate: SkillInterface = {
@@ -84,14 +99,17 @@ export const hibernate: SkillInterface = {
   isMainSkill: true,
   skillType: "hard",
   slug: "hibernate-orm",
-  technicalGeneralSkills: [
+  relatedSkills: [
+    java,
     databaseManagementSystems,
     databases,
     sql,
     indexing,
     orm,
+    postgreSQL,
+    mySQL,
+    sqlite,
   ],
-  technicalHardSkills: [postgreSQL, mySQL, sqlite],
 };
 
 const technicalHardSkillsORMs: SkillInterface[] = [

@@ -1,22 +1,32 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
+import filterMaterialByArchivedStatus, {
+  filterMaterialByCategory,
+  filterMaterialBySkill,
+  filterMaterialBySkillCategory,
+} from "@/actions/material/filterMaterials";
+import generateFilterOptionsByCategory from "@/actions/material/generateFilterOptionsByCategory";
+import generateFilterOptionsBySkillCategories from "@/actions/material/generateFilterOptionsBySkillCategories";
+import generateFilterOptionsBySkillType from "@/actions/material/generateFilterOptionsBySkillType";
+import groupMaterialsByCategory from "@/actions/material/groupMaterialsByCategory";
+import filterProjectsByProgrammingLanguage from "@/actions/material/projects/filterProjectsByProgrammingLanguage";
+import generateFilterOptionsForProgrammingLanguages from "@/actions/material/projects/generateFilterOptionsForProgrammingLanguages";
 import stringToSlug from "@/actions/stringToSlug";
+import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
 import FilterOverlay from "@/components/Filters/FilterPanel";
 import SearchInput from "@/components/Inputs/SearchInput";
+import ProjectsList from "@/components/MaterialLists/ProjectsList";
 import { Button } from "@/components/shadcn/ui/button";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
-import ProjectInterface from "@/interfaces/ProjectInterface";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import Fuse from "fuse.js";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import { AiOutlineClear } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
-import { ArchiveToggle } from "../../../components/Filters/ArchiveToggle";
-import ProjectsList from "../../../components/MaterialLists/ProjectsList";
 
 type ProjectsListProps = {
   allProjects: ProjectInterface[];
@@ -67,15 +77,11 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const searchOptions = {
     keys: [
       "name",
-      "programmingLanguage.name",
-      "technologySkills.name",
-      "technologySkills.category",
-      "technologySkills.skill.name",
-      "softSkills.name",
-      "softSkills.category",
-      "extraTechnicalGeneralSkills.name",
-      "extraTechnicalGeneralSkills.category",
-      "tags",
+      "category",
+      "skills.name",
+      "skills.category",
+      "skills.relatedSkills.name",
+      "skills.relatedSkills.category",
     ],
     threshold: 0.3, // Lower threshold means more results
   };
@@ -94,27 +100,6 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
     ? fuse.search(searchTerm).map((result) => result.item)
     : allProjects;
 
-  //^ Group By Type
-  /**
-   * Groups the projects by type.
-   * Each project type is a key in the object.
-   * @param projects (Project[]): list of projects to be grouped by type
-   * @returns (Record<string, Project[]>): object with project types as keys and list of projects as values
-   */
-  const groupProjectsByType = (
-    projects: ProjectInterface[],
-  ): Record<string, ProjectInterface[]> => {
-    return projects.reduce<Record<string, ProjectInterface[]>>(
-      (grouped, project) => {
-        (grouped[project.category] = grouped[project.category] || []).push(
-          project,
-        );
-        return grouped;
-      },
-      {},
-    );
-  };
-
   //^ Filter Options List
   /**
    * List of project types to be displayed in the filter.
@@ -122,18 +107,8 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
    * Appends all unique project types to the list.
    * Project types are from the 'type' property of each project.
    */
-  const projectTypes: FilterOption[] = [
-    { slug: "all", entryName: "All" },
-    ...allProjects
-      .map((project: ProjectInterface) => ({
-        slug: stringToSlug(project.category),
-        entryName: project.category,
-      }))
-      .filter(
-        (value, index, self) =>
-          self.findIndex((v) => v.slug === value.slug) === index,
-      ),
-  ];
+  const projectTypes =
+    generateFilterOptionsByCategory<ProjectInterface>(allProjects);
 
   /**
    * List of programming languages to be displayed in the filter.
@@ -141,20 +116,8 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
    * Appends all unique programming languages to the list.
    * Programming languages are from the 'programmingLanguage' property of each project.
    */
-  const programmingLanguages: FilterOption[] = [
-    { slug: "all", entryName: "All" },
-    ...allProjects
-      .map((project: ProjectInterface) => ({
-        slug: project.programmingLanguage.slug,
-        entryName: project.programmingLanguage.name,
-      }))
-      .reduce((unique, item) => {
-        return unique.findIndex((v) => v.slug === item.slug) !== -1
-          ? unique
-          : [...unique, item];
-      }, [] as FilterOption[]),
-    // .sort((a, b) => a.entryName.localeCompare(b.entryName)),
-  ];
+  const programmingLanguages =
+    generateFilterOptionsForProgrammingLanguages<ProjectInterface>(allProjects);
 
   /**
    * List of technologies to be displayed in the filter.
@@ -162,80 +125,20 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
    * Appends all unique technologies to the list.
    * Technologies are from the 'technologies' property of each project.
    */
-  const technologies: FilterOption[] = [
-    { slug: "all", entryName: "All" },
-    ...allProjects
-      .flatMap((project: ProjectInterface) =>
-        (project.technologySkills || []).map((skill: SkillInterface) => ({
-          slug: skill.slug,
-          entryName: skill.name,
-        })),
-      )
-      .reduce((unique, item) => {
-        return unique.findIndex((v) => v.slug === item.slug) !== -1
-          ? unique
-          : [...unique, item];
-      }, [] as FilterOption[])
-      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
-  ];
+  const technologies = generateFilterOptionsBySkillType<ProjectInterface>(
+    allProjects,
+    "hard",
+    "Programming Languages",
+  );
 
-  const categories: FilterOption[] = [
-    { slug: "all", entryName: "All" },
-    ...allProjects
-      .flatMap(
-        (project: ProjectInterface) =>
-          project.technologySkills
-            ?.map((skill: SkillInterface) => ({
-              slug: stringToSlug(skill.category),
-              entryName: skill.category,
-            }))
-            .filter(Boolean) || [],
-      )
-      .reduce((unique, item) => {
-        return unique.findIndex((v) => v.slug === item.slug) !== -1
-          ? unique
-          : [...unique, item];
-      }, [] as FilterOption[])
-      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
-  ];
+  const categories =
+    generateFilterOptionsBySkillCategories<ProjectInterface>(allProjects);
 
-  const generalSkills: FilterOption[] = [
-    { slug: "all", entryName: "All" },
-    ...allProjects
-      .flatMap((project: ProjectInterface) =>
-        project.technologySkills.flatMap((skill: SkillInterface) =>
-          skill.technicalGeneralSkills
-            ? skill.technicalGeneralSkills.map((subSkill: SkillInterface) => ({
-                slug: subSkill.slug,
-                entryName: subSkill.name,
-              }))
-            : [],
-        ),
-      )
-      .reduce((unique, item) => {
-        return unique.findIndex((v) => v.slug === item.slug) !== -1
-          ? unique
-          : [...unique, item];
-      }, [] as FilterOption[])
-      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
-  ];
+  const generalSkills: FilterOption[] =
+    generateFilterOptionsBySkillType<ProjectInterface>(allProjects, "general");
 
-  const softSkills: FilterOption[] = [
-    { slug: "all", entryName: "All" },
-    ...allProjects
-      .flatMap((project: ProjectInterface) =>
-        (project.softSkills || []).map((skill: SkillInterface) => ({
-          slug: skill.slug,
-          entryName: skill.name,
-        })),
-      )
-      .reduce((unique, item) => {
-        return unique.findIndex((v) => v.slug === item.slug) !== -1
-          ? unique
-          : [...unique, item];
-      }, [] as FilterOption[])
-      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
-  ];
+  const softSkills: FilterOption[] =
+    generateFilterOptionsBySkillType<ProjectInterface>(allProjects, "soft");
 
   //^ Filtering Logic
   /**
@@ -244,69 +147,69 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
    * If 'All' is selected, then all projects are displayed.
    * Archived projects are not displayed by default.
    */
-  const filteredProjects = searchedProjects.filter(
-    (project: ProjectInterface) => {
-      const matchesType =
-        stringToSlug(selectedSection) === "all" ||
-        stringToSlug(project.category) === stringToSlug(selectedSection);
+  let filteredProjects = searchedProjects;
 
-      const matchesProgrammingLanguage =
-        selectedLanguage === "all" ||
-        project.programmingLanguage.slug === selectedLanguage;
+  // Filter by project type category
+  if (stringToSlug(selectedSection) !== "all") {
+    filteredProjects = filterMaterialByCategory<ProjectInterface>(
+      stringToSlug(selectedSection),
+      filteredProjects,
+    );
+  }
 
-      const matchesTechnology =
-        selectedTechnology === "all" ||
-        (project.technologySkills || []).some(
-          (skill) => skill.slug === selectedTechnology,
-        );
+  // Filter by programming language
+  if (selectedLanguage !== "all") {
+    filteredProjects = filterProjectsByProgrammingLanguage(
+      selectedLanguage,
+      filteredProjects,
+    );
+  }
 
-      const matchesCategory =
-        stringToSlug(selectedSkillCategory) === "all" ||
-        (project.technologySkills || []).some(
-          (skill) =>
-            stringToSlug(skill.category) ===
-            stringToSlug(selectedSkillCategory),
-        );
+  // Filter by technology (assuming you have a similar function for technologies)
+  if (selectedTechnology !== "all") {
+    filteredProjects = filterMaterialBySkill<ProjectInterface>(
+      selectedTechnology,
+      filteredProjects,
+      "hard",
+    );
+  }
 
-      const matchesGeneralSkill =
-        selectedGeneralSkill === "all" ||
-        (project.technologySkills || []).some(
-          (skill) =>
-            (skill.skillType === "general" &&
-              stringToSlug(skill.slug) ===
-                stringToSlug(selectedGeneralSkill)) ||
-            (skill.technicalGeneralSkills || []).some(
-              (nestedSkill) =>
-                stringToSlug(nestedSkill.slug) ===
-                stringToSlug(selectedGeneralSkill),
-            ),
-        );
+  // Filter by skill category
+  if (stringToSlug(selectedSkillCategory) !== "all") {
+    filteredProjects = filterMaterialBySkillCategory<ProjectInterface>(
+      stringToSlug(selectedSkillCategory),
+      filteredProjects,
+    );
+  }
 
-      const matchesSoftSkill =
-        selectedSoftSkill === "all" ||
-        (project.softSkills || []).some(
-          (skill) =>
-            stringToSlug(skill.slug) === stringToSlug(selectedSoftSkill),
-        );
+  // Filter by general skill
+  if (selectedGeneralSkill !== "all") {
+    filteredProjects = filterMaterialBySkill<ProjectInterface>(
+      selectedGeneralSkill,
+      filteredProjects,
+      "general",
+    );
+  }
 
-      const matchesArchivedStatus = showArchived || !project.archived;
+  // Filter by soft skill
+  if (selectedSoftSkill !== "all") {
+    filteredProjects = filterMaterialBySkill<ProjectInterface>(
+      selectedSoftSkill,
+      filteredProjects,
+      "soft",
+    );
+  }
 
-      return (
-        matchesType &&
-        matchesProgrammingLanguage &&
-        matchesTechnology &&
-        matchesCategory &&
-        matchesGeneralSkill &&
-        matchesSoftSkill &&
-        matchesArchivedStatus
-      );
-    },
+  // Filter by archived status
+  filteredProjects = filterMaterialByArchivedStatus<ProjectInterface>(
+    showArchived,
+    filteredProjects,
   );
 
   /**
    * Projects categorized by type.
    */
-  const groupedProjects = groupProjectsByType(filteredProjects);
+  const groupedProjects = groupMaterialsByCategory(filteredProjects);
 
   /**
    * Updates the search term in the URL.

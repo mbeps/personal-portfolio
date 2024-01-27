@@ -9,7 +9,7 @@ import {
   otherProjects,
   webdevProjects,
 } from "@/database/projects";
-import ProjectInterface from "@/interfaces/ProjectInterface";
+import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import type { Metadata } from "next";
 import ProjectsView from "./components/ProjectsView";
 import { PROJECTS } from "@/constants/pages";

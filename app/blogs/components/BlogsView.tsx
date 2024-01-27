@@ -1,22 +1,30 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
+import filterMaterialByArchivedStatus, {
+  filterMaterialByCategory,
+  filterMaterialBySkill,
+  filterMaterialBySkillCategory,
+} from "@/actions/material/filterMaterials";
+import generateFilterOptionsByCategory from "@/actions/material/generateFilterOptionsByCategory";
+import generateFilterOptionsBySkillCategories from "@/actions/material/generateFilterOptionsBySkillCategories";
+import generateFilterOptionsBySkillType from "@/actions/material/generateFilterOptionsBySkillType";
+import groupMaterialsByCategory from "@/actions/material/groupMaterialsByCategory";
 import stringToSlug from "@/actions/stringToSlug";
 import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
 import FilterOverlay from "@/components/Filters/FilterPanel";
 import SearchInput from "@/components/Inputs/SearchInput";
+import BlogsList from "@/components/MaterialLists/BlogsList";
 import { Button } from "@/components/shadcn/ui/button";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import BlogInterface from "@/interfaces/material/BlogInterface";
 import Fuse from "fuse.js";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { AiOutlineClear } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
-import BlogInterface from "@/interfaces/BlogInterface";
-import BlogsList from "@/components/MaterialLists/BlogsList";
 
 interface BlogListProps {
   blogs: BlogInterface[];
@@ -67,16 +75,17 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
    * These are the only properties that are searched.
    * These are the same ones from the `Blog` type.
    */
+  // TODO: Update this to work with combined skills
   const searchOptions = {
     keys: [
-      "title",
-      "subtitle",
+      "name",
       "category",
-      "technicalSkills.name",
-      "technicalSkills.category",
-      "technicalSkills.skill.name",
-      "softSkills.name",
-      "softSkills.category",
+      "issuer",
+      "skills.name",
+      "skills.category",
+      "skills.relatedSkills.name",
+      "skills.relatedSkills.category",
+      "programmingLanguage.name",
     ],
     threshold: 0.3,
   };
@@ -91,111 +100,22 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
     ? fuse.search(searchTerm).map((result) => result.item)
     : blogs;
 
-  //^ Group By Category
-  /**
-   * Groups the blogs by category.
-   * This is used to display the blogs in sections.
-   * @param blogs (Blog[]) - list of blogs
-   * @returns (Record<string, Blog[]>) - blogs grouped by category (key)
-   */
-  const groupBlogsByType = (
-    blogs: BlogInterface[],
-  ): Record<string, BlogInterface[]> => {
-    return blogs.reduce<Record<string, BlogInterface[]>>((grouped, blog) => {
-      (grouped[blog.category] = grouped[blog.category] || []).push(blog);
-      return grouped;
-    }, {});
-  };
-
   //^ Filter Options List
 
-  const blogCategories: FilterOption[] = [
-    { slug: "all", entryName: "All" },
-    ...blogs
-      .map((blog: BlogInterface) => ({
-        slug: stringToSlug(blog.category),
-        entryName: blog.category,
-      }))
-      .filter(
-        (value, index, self) =>
-          self.findIndex((v) => v.slug === value.slug) === index,
-      )
-      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
-  ];
+  const blogCategories: FilterOption[] =
+    generateFilterOptionsByCategory<BlogInterface>(blogs);
 
-  const skillCategories: FilterOption[] = [
-    { slug: "all", entryName: "All" },
-    ...blogs
-      .flatMap((blog: BlogInterface) =>
-        blog.technicalSkills.map((skill: SkillInterface) => ({
-          slug: stringToSlug(skill.category),
-          entryName: skill.category,
-        })),
-      )
-      .reduce((unique, item) => {
-        return unique.findIndex((v) => v.slug === item.slug) !== -1
-          ? unique
-          : [...unique, item];
-      }, [] as FilterOption[])
-      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
-  ];
+  const skillCategories: FilterOption[] =
+    generateFilterOptionsBySkillCategories<BlogInterface>(blogs);
 
-  const hardSkills: FilterOption[] = [
-    { slug: "all", entryName: "All" },
-    ...blogs
-      .flatMap((blog: BlogInterface) =>
-        (blog.technicalSkills || [])
-          .filter((skill: SkillInterface) => skill.skillType === "hard")
-          .map((skill: SkillInterface) => ({
-            slug: skill.slug,
-            entryName: skill.name,
-          })),
-      )
-      .reduce((unique, item) => {
-        return unique.findIndex((v) => v.slug === item.slug) !== -1
-          ? unique
-          : [...unique, item];
-      }, [] as FilterOption[])
-      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
-  ];
+  const hardSkills: FilterOption[] =
+    generateFilterOptionsBySkillType<BlogInterface>(blogs, "hard");
 
-  const generalSkills: FilterOption[] = [
-    { slug: "all", entryName: "All" },
-    ...blogs
-      .flatMap((blog: BlogInterface) =>
-        (blog.technicalSkills || [])
-          .filter((skill: SkillInterface) => skill.skillType === "general")
-          .map((skill: SkillInterface) => ({
-            slug: skill.slug,
-            entryName: skill.name,
-          })),
-      )
-      .reduce((unique, item) => {
-        return unique.findIndex((v) => v.slug === item.slug) !== -1
-          ? unique
-          : [...unique, item];
-      }, [] as FilterOption[])
-      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
-  ];
+  const generalSkills: FilterOption[] =
+    generateFilterOptionsBySkillType<BlogInterface>(blogs, "general");
 
-  const softSkills: FilterOption[] = [
-    { slug: "all", entryName: "All" },
-    ...blogs
-      .flatMap((blog: BlogInterface) =>
-        (blog.technicalSkills || [])
-          .filter((skill: SkillInterface) => skill.skillType === "soft")
-          .map((skill: SkillInterface) => ({
-            slug: skill.slug,
-            entryName: skill.name,
-          })),
-      )
-      .reduce((unique, item) => {
-        return unique.findIndex((v) => v.slug === item.slug) !== -1
-          ? unique
-          : [...unique, item];
-      }, [] as FilterOption[])
-      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
-  ];
+  const softSkills: FilterOption[] =
+    generateFilterOptionsBySkillType<BlogInterface>(blogs, "soft");
 
   //^ Filtering Logic
   /**
@@ -219,50 +139,59 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
     );
   };
 
-  /**
-   * Filters the blogs by category selected by the user.
-   */
-  const filteredBlogs = searchedBlogs.filter((blog) => {
-    const matchesBlogSection =
-      selectedBlogSection === "all" ||
-      stringToSlug(blog.category) === stringToSlug(selectedBlogSection);
-    const matchesSkillCategory =
-      selectedSkillCategory === "all" ||
-      (blog.technicalSkills || []).some(
-        (skill) =>
-          stringToSlug(skill.category) === stringToSlug(selectedSkillCategory),
-      );
-    const matchesHardSkill =
-      selectedTechnicalSkill === "all" ||
-      (blog.technicalSkills || []).some(
-        (skill) =>
-          skill.slug === selectedTechnicalSkill && skill.skillType === "hard",
-      );
-    const matchesGeneralSkill =
-      selectedGeneralSkill === "all" ||
-      (blog.technicalSkills || []).some(
-        (skill) =>
-          skill.slug === selectedGeneralSkill && skill.skillType === "general",
-      );
-    const matchesSoftSkill =
-      selectedSoftSkill === "all" ||
-      (blog.technicalSkills || []).some(
-        (skill) =>
-          skill.slug === selectedSoftSkill && skill.skillType === "soft",
-      );
-    const matchesArchivedStatus = showArchived || !blog.archived;
+  //^ Filtering Logic
+  let filteredBlogs = searchedBlogs;
 
-    return (
-      matchesBlogSection &&
-      matchesSkillCategory &&
-      matchesHardSkill &&
-      matchesGeneralSkill &&
-      matchesSoftSkill &&
-      matchesArchivedStatus
+  // Filter by blog category
+  if (selectedBlogSection !== "all") {
+    filteredBlogs = filterMaterialByCategory<BlogInterface>(
+      stringToSlug(selectedBlogSection),
+      filteredBlogs,
     );
-  });
+  }
 
-  const groupedBlogs = groupBlogsByType(filteredBlogs);
+  // Filter by skill category
+  if (selectedSkillCategory !== "all") {
+    filteredBlogs = filterMaterialBySkillCategory<BlogInterface>(
+      stringToSlug(selectedSkillCategory),
+      filteredBlogs,
+    );
+  }
+
+  // Filter by hard skill
+  if (selectedTechnicalSkill !== "all") {
+    filteredBlogs = filterMaterialBySkill<BlogInterface>(
+      selectedTechnicalSkill,
+      filteredBlogs,
+      "hard",
+    );
+  }
+
+  // Filter by general skill
+  if (selectedGeneralSkill !== "all") {
+    filteredBlogs = filterMaterialBySkill<BlogInterface>(
+      selectedGeneralSkill,
+      filteredBlogs,
+      "general",
+    );
+  }
+
+  // Filter by soft skill
+  if (selectedSoftSkill !== "all") {
+    filteredBlogs = filterMaterialBySkill<BlogInterface>(
+      selectedSoftSkill,
+      filteredBlogs,
+      "soft",
+    );
+  }
+
+  // Filter by archived status
+  filteredBlogs = filterMaterialByArchivedStatus<BlogInterface>(
+    showArchived,
+    filteredBlogs,
+  );
+
+  const groupedBlogs = groupMaterialsByCategory(filteredBlogs);
 
   const areFiltersApplied =
     selectedBlogSection !== "all" ||

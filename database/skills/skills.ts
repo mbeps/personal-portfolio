@@ -16,6 +16,7 @@ import technicalHardSkillsTesting from "./technicalHardSkills/technicalHardSkill
 import technicalHardSkillsVCS from "./technicalHardSkills/technicalHardSkillsVCS";
 import technicalHardSkillsORMs from "./technicalHardSkills/technicalHardSkillsORMs";
 import technicalHardSkillsCodeQuality from "./technicalHardSkills/technicalHardSkillsCodeQuality";
+import { languages } from "./languages";
 
 const allHardSkills: SkillInterface[] = [
   ...technicalHardSkillsFullStackWebDev,
@@ -39,6 +40,7 @@ const allSkills: SkillInterface[] = [
   ...allHardSkills,
   ...generalSkills,
   ...softSkills,
+  ...languages,
 ];
 
 export const technologies: SkillInterface[] = allHardSkills.filter(

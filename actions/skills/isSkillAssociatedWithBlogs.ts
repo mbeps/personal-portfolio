@@ -1,23 +1,25 @@
-import BlogInterface from "@/interfaces/BlogInterface";
+import BlogInterface from "@/interfaces/material/BlogInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 export default function isSkillAssociatedWithBlogs(
   skillToCheck: SkillInterface,
   blogs: BlogInterface[],
 ): boolean {
-  // Function to check nested skills
-  const checkNestedSkills = (skills: SkillInterface[]) =>
-    skills.some(
+  // Function to recursively check nested skills
+  const checkNestedSkills = (
+    skills: SkillInterface[],
+    skillSlug: string,
+  ): boolean => {
+    return skills.some(
       (skill) =>
-        skill.slug === skillToCheck.slug ||
-        (skill.technicalGeneralSkills || []).some(
-          (nestedSkill) => nestedSkill.slug === skillToCheck.slug,
-        ),
+        skill.slug === skillSlug ||
+        (skill.relatedSkills &&
+          checkNestedSkills(skill.relatedSkills, skillSlug)),
     );
+  };
 
-  return blogs.some(
-    (blog) =>
-      (blog.technicalSkills && checkNestedSkills(blog.technicalSkills)) ||
-      (blog.softSkills && checkNestedSkills(blog.softSkills)),
+  // Check the skills array of each blog, including nested skills
+  return blogs.some((blog) =>
+    checkNestedSkills(blog.skills, skillToCheck.slug),
   );
 }

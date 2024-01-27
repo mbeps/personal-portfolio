@@ -58,32 +58,25 @@ import {
   sqlalchemy,
   hibernate,
 } from "./skills/technicalHardSkills/technicalHardSkillsORMs";
-import BlogInterface from "@/interfaces/BlogInterface";
+import BlogInterface from "@/interfaces/material/BlogInterface";
 
 const blogs: BlogInterface[] = [
   {
     slug: "backend",
-    title: "Exploring Backends: Custom vs Managed Solutions",
+    name: "Exploring Backends: Custom vs Managed Solutions",
     subtitle:
       "An In-depth Analysis of Backend Development Approaches, Tools, and Security Considerations",
-    technicalSkills: [
-      webDevelopment,
-      cloudComputing,
-      firebase,
-      supabase,
-      pocketbase,
-    ],
-    softSkills: [],
+    skills: [webDevelopment, cloudComputing, firebase, supabase, pocketbase],
+
     category: "Web Development",
   },
   {
     slug: "cicd-foundations",
-    title:
-      "Embracing the Future of Software Development: A Comprehensive Guide to CI/CD",
+    name: "Embracing the Future of Software Development: A Comprehensive Guide to CI/CD",
     subtitle:
       "Mastering Continuous Integration and Continuous Delivery for Enhanced Software Delivery",
     category: "DevOps",
-    technicalSkills: [
+    skills: [
       devOps,
       continuousIntegration,
       continuousDelivery,
@@ -94,17 +87,18 @@ const blogs: BlogInterface[] = [
       projectManagement,
       cloudComputing,
       infrastructureAsCode,
+      problemSolving,
+      projectManagement,
+      criticalThinking,
     ],
-    softSkills: [problemSolving, projectManagement, criticalThinking],
   },
   {
     slug: "devops-foundations",
-    title:
-      "Embracing DevOps: A Guide to Principles, Practices, and Success Stories",
+    name: "Embracing DevOps: A Guide to Principles, Practices, and Success Stories",
     subtitle:
       "Understanding the Impact of DevOps in Modern Software Development",
     category: "DevOps",
-    technicalSkills: [
+    skills: [
       devOps,
       continuousIntegration,
       continuousDelivery,
@@ -115,26 +109,27 @@ const blogs: BlogInterface[] = [
       infrastructureAsCode,
       automation,
       git,
+      problemSolving,
+      projectManagement,
+      criticalThinking,
     ],
-    softSkills: [problemSolving, projectManagement, criticalThinking],
   },
   {
-    title: "Docker: Unleashing the Power of Containers",
+    name: "Docker: Unleashing the Power of Containers",
     subtitle:
       "A Comprehensive Guide to Understanding Docker and Containerization Technology",
     category: "DevOps",
-    technicalSkills: [devOps, docker, containerization],
-    softSkills: [problemSolving],
+    skills: [devOps, docker, containerization, problemSolving],
+
     slug: "docker-and-containers",
   },
   {
-    title:
-      "Front-End Development and the Essential Role of Libraries and Frameworks",
+    name: "Front-End Development and the Essential Role of Libraries and Frameworks",
     slug: "front-end",
     subtitle:
       "A comprehensive introduction to standard front-end web development using libraries and frameworks",
     category: "Web Development",
-    technicalSkills: [
+    skills: [
       webDevelopment,
       html,
       css,
@@ -145,46 +140,44 @@ const blogs: BlogInterface[] = [
       svelte,
       vue,
     ],
-    softSkills: [],
   },
   {
     slug: "javascript-vs-typescript",
-    title: "JavaScript vs TypeScript: A Detailed Comparison",
+    name: "JavaScript vs TypeScript: A Detailed Comparison",
     subtitle:
       "Exploring the Advantages and Key Differences between JavaScript and TypeScript",
     category: "Software Engineering",
-    technicalSkills: [javascript, typescript],
-    softSkills: [],
+    skills: [javascript, typescript],
   },
   {
     slug: "kubernetes",
-    title: "Kubernetes Guide: Mastering Container Orchestration",
+    name: "Kubernetes Guide: Mastering Container Orchestration",
     subtitle: "An Overview of Components, Tools, and Best Practices",
     category: "DevOps",
-    technicalSkills: [devOps, kubernetes, docker, containerization],
-    softSkills: [],
+    skills: [devOps, kubernetes, docker, containerization],
   },
   {
     slug: "machine-learning-foundations",
-    title: "Exploring the Depths of Machine Learning",
+    name: "Exploring the Depths of Machine Learning",
     subtitle:
       "A Comprehensive Guide to Machine Learning: Concepts, Challenges, and Real-World Impact",
     category: "Machine Learning",
-    technicalSkills: [
+    skills: [
       machineLearning,
       algorithms,
       dataScience,
       artificialIntelligence,
+      problemSolving,
+      criticalThinking,
     ],
-    softSkills: [problemSolving, criticalThinking],
   },
   {
     slug: "orm",
-    title: "Understanding Object-Relational Mapping (ORM)",
+    name: "Understanding Object-Relational Mapping (ORM)",
     subtitle:
       "A Comprehensive Overview of ORM, Its Advantages, Disadvantages, and Role in Modern Web Application Development",
     category: "Databases",
-    technicalSkills: [
+    skills: [
       databaseManagementSystems,
       databases,
       sql,
@@ -193,66 +186,53 @@ const blogs: BlogInterface[] = [
       mongoose,
       sqlalchemy,
       hibernate,
+      problemSolving,
     ],
-    softSkills: [problemSolving],
   },
   {
     slug: "rest-graphql-api",
-    title: "Comparing GraphQL and REST: A Detailed Overview",
+    name: "Comparing GraphQL and REST: A Detailed Overview",
     subtitle: "Choosing the Right API Design Approach",
     category: "Web Development",
-    technicalSkills: [webDevelopment, apis, rest, graphQL],
-    softSkills: [problemSolving],
+    skills: [webDevelopment, apis, rest, graphQL, problemSolving],
   },
   {
     slug: "sdk-vs-api",
-    title: "SDKs vs APIs: A Comparative Guide",
+    name: "SDKs vs APIs: A Comparative Guide",
     subtitle: "Understanding Their Roles in Software Development",
     category: "Web Development",
-    technicalSkills: [apis, sdks],
-    softSkills: [],
+    skills: [apis, sdks],
   },
   {
     slug: "sessions-vs-tokens",
-    title: "Comparing Session and Token: Navigating Authentication",
+    name: "Comparing Session and Token: Navigating Authentication",
     subtitle: "A Detailed Comparison of Authentication Strategies",
     category: "Web Development",
-    technicalSkills: [webDevelopment, userAuthentication],
-    softSkills: [],
+    skills: [webDevelopment, userAuthentication],
   },
   {
     slug: "software-testing",
-    title: "Comprehensive Guide to Software Testing",
+    name: "Comprehensive Guide to Software Testing",
     subtitle:
       "Exploring Functional and Non-Functional Testing Techniques, Tools, and Challenges",
     category: "Software Engineering",
-    technicalSkills: [testing],
-    softSkills: [problemSolving],
+    skills: [testing, problemSolving],
   },
   {
     slug: "sql-vs-nosql-databases",
-    title:
-      "Exploring Databases: A Comparative Study of Relational and Non-Relational Models",
+    name: "Exploring Databases: A Comparative Study of Relational and Non-Relational Models",
     subtitle:
       "An In-depth Analysis of Database Systems and their Role in Software Engineering and Web Development",
     category: "Databases",
-    technicalSkills: [
-      databaseManagementSystems,
-      databases,
-      sql,
-      noSql,
-      normalisation,
-    ],
-    softSkills: [],
+    skills: [databaseManagementSystems, databases, sql, noSql, normalisation],
   },
   {
     slug: "sync-vs-async",
-    title: "Sync vs Async: Deep Dive into Programming Models",
+    name: "Sync vs Async: Deep Dive into Programming Models",
     subtitle:
       "Understanding and Optimizing Synchronous and Asynchronous Programming",
     category: "Software Engineering",
-    technicalSkills: [webDevelopment],
-    softSkills: [],
+    skills: [webDevelopment],
   },
 ];
 

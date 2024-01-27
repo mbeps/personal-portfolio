@@ -1,6 +1,6 @@
 import PageDescription from "@/components/UI/PageDescription";
 import HeadingOne from "@/components/Text/HeadingOne";
-import CertificateInterface from "@/interfaces/CertificateInterface";
+import CertificateInterface from "@/interfaces/material/CertificateInterface";
 import { Metadata } from "next";
 import React from "react";
 import CertificatesView from "./components/CertificatesView";

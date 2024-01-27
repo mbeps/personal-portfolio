@@ -1,16 +1,18 @@
-import getImagesFromFileSystem from "@/actions/getImagesFromFileSystem";
-import getMarkdownFromFileSystem from "@/actions/getMarkdownFromFileSystem";
-import getVideosFromFileSystem from "@/actions/getVideosFromFileSystem";
-import getProjectBySlug from "@/actions/projects/getProjectBySlug";
-import hasProjectCover from "@/actions/projects/hasProjectCover";
+import getContentBySlug from "@/actions/material/getContentBySlug";
+import hasProjectCover from "@/actions/material/projects/hasProjectCover";
+import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
+import filterSkillsByType from "@/actions/skills/filterSkillsByType";
+import { getAssociatedNestedSkills } from "@/actions/skills/getAssociatedSkills";
 import Gallery from "@/components/Gallery/Gallery";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import SkillTag from "@/components/Tags/SkillTag";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
+import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
+import { PROJECTS } from "@/constants/pages";
 import allProjects from "@/database/projects";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,9 +20,9 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
-import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
-import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
-import { PROJECTS } from "@/constants/pages";
+import getImagesFromFileSystem from "@/actions/file-system/getImagesFromFileSystem";
+import getVideosFromFileSystem from "@/actions/file-system/getVideosFromFileSystem";
+import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
 
 /**
  * Metadata object for the dynamic project page.
@@ -36,7 +38,7 @@ export async function generateMetadata(
   const slug = params.slug;
 
   // Assume getProjectBySlug function fetches project by slug
-  const project = getProjectBySlug(slug, allProjects);
+  const project = getContentBySlug(slug, allProjects);
 
   // Create metadata based on the project details
   return {
@@ -78,52 +80,37 @@ interface ProjectPageProps {
 const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const slug = params.slug;
   const basePath = PROJECTS.path;
-  const project = getProjectBySlug(slug, allProjects);
+  const project = getContentBySlug<ProjectInterface>(slug, allProjects);
 
   // redirect to not found page if the project is not valid
   if (!project) {
     notFound();
   }
 
+  const projectLanguages = project.skills.filter(
+    (skill) => skill.category === "Programming Languages",
+  );
+  const projectSkillsWithoutLanguage = project.skills.filter(
+    (skill) => skill.category !== "Programming Languages",
+  );
+
   const projectName = project.name;
-  const projectLanguage = project.programmingLanguage;
   const projectDescription = project.description;
   const hasCoverImage = hasProjectCover(slug);
   const coverImagePath = `${basePath}/${slug}/cover.png`;
 
-  function technicalGeneralSkills(
-    skills: SkillInterface[],
-    extraSkills: SkillInterface[] = [],
-  ): SkillInterface[] {
-    // Combine the original skills and extra skills
-    const combinedSkills = skills.concat(extraSkills);
-
-    return combinedSkills
-      .flatMap((skill) =>
-        skill.technicalGeneralSkills
-          ? [skill, ...skill.technicalGeneralSkills]
-          : [skill],
-      )
-      .reduce((uniqueSkills, skill) => {
-        if (!uniqueSkills.some((s) => s.slug === skill.slug)) {
-          uniqueSkills.push(skill);
-        }
-        return uniqueSkills;
-      }, [] as SkillInterface[]);
-  }
+  const technologies = filterSkillsByType(projectSkillsWithoutLanguage, "hard");
+  const generalSkills = getAssociatedNestedSkills(
+    technologies,
+    "general",
+  ).concat(filterSkillsByType(projectSkillsWithoutLanguage, "general"));
+  const softSkills = filterSkillsByType(projectSkillsWithoutLanguage, "soft");
 
   // Using the new function to group all skill types
   const allGroupedSkills = [
-    filterAndGroupSkills(project.technologySkills, "hard", "Technologies"),
-    filterAndGroupSkills(
-      technicalGeneralSkills(
-        project.technologySkills,
-        project.extraTechnicalGeneralSkills,
-      ),
-      "general",
-      "Technical Skills",
-    ),
-    filterAndGroupSkills(project.softSkills, "soft", "Soft Skills"),
+    filterAndGroupSkills(technologies, "hard", "Technologies"),
+    filterAndGroupSkills(generalSkills, "general", "Technical Skills"),
+    filterAndGroupSkills(softSkills, "soft", "Soft Skills"),
   ];
 
   const getImages = () => {
@@ -209,12 +196,18 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
         </div>
 
         {/* Language Section */}
-        <div className="text-center md:text-left">
-          <HeadingThree title="Language" />
-          <div className="flex flex-wrap justify-center md:justify-start z-10 mt-5">
-            <SkillTag skill={projectLanguage} />
+        {projectLanguages && projectLanguages.length > 0 && (
+          <div className="text-center md:text-left">
+            <HeadingThree
+              title={projectLanguages.length > 1 ? "Languages" : "Language"}
+            />
+            <div className="flex flex-wrap justify-center md:justify-start z-10 mt-5">
+              {projectLanguages.map((language, index) => (
+                <SkillTag key={index} skill={language} />
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Skills Section */}
         <div className="mt-4">

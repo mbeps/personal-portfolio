@@ -1,4 +1,5 @@
 import SkillInterface from "@/interfaces/skills/SkillInterface";
+import { javascript, python, typescript } from "../languages";
 
 export const black: SkillInterface = {
   name: "Black",
@@ -6,6 +7,7 @@ export const black: SkillInterface = {
   isMainSkill: false,
   skillType: "hard",
   slug: "black-linting",
+  relatedSkills: [python],
 };
 
 export const zod: SkillInterface = {
@@ -13,6 +15,7 @@ export const zod: SkillInterface = {
   category: "Code Quality",
   skillType: "hard",
   slug: "zod",
+  relatedSkills: [typescript],
 };
 
 export const eslint: SkillInterface = {
@@ -20,6 +23,7 @@ export const eslint: SkillInterface = {
   category: "Code Quality",
   skillType: "hard",
   slug: "eslint",
+  relatedSkills: [javascript, typescript],
 };
 
 export const prettier: SkillInterface = {
@@ -27,6 +31,7 @@ export const prettier: SkillInterface = {
   category: "Code Quality",
   skillType: "hard",
   slug: "prettier",
+  relatedSkills: [javascript, typescript],
 };
 
 export const pyLint: SkillInterface = {
@@ -34,6 +39,7 @@ export const pyLint: SkillInterface = {
   category: "Code Quality",
   skillType: "hard",
   slug: "pylint",
+  relatedSkills: [python],
 };
 
 export const checkstyle: SkillInterface = {

@@ -1,4 +1,3 @@
-import validateSlugWithProject from "@/actions/projects/validateSlugWithProject";
 import SlideUp from "@/components/UI/Slideup";
 import ProjectItem from "@/components/ProjectItem/ProjectItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
@@ -6,6 +5,8 @@ import Link from "next/link";
 import allProjects from "@/database/projects";
 import { Button } from "@/components/shadcn/ui/button";
 import { PROJECTS } from "@/constants/pages";
+import validateSlugsWithContent from "@/actions/material/validateSlugsWithContent";
+import ProjectInterface from "@/interfaces/material/ProjectInterface";
 
 /**
  * Project section listing the projects I have worked on.
@@ -27,7 +28,7 @@ const ProjectsSection = () => {
   ];
 
   // Validate the slugs
-  if (!validateSlugWithProject(allowedSlugs, allProjects)) {
+  if (!validateSlugsWithContent<ProjectInterface>(allowedSlugs, allProjects)) {
     console.error("Some slugs in allowedSlugs are not valid.");
     return null;
   }

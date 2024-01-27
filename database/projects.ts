@@ -1,7 +1,8 @@
-import ProjectInterface from "@/interfaces/ProjectInterface";
+import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import {
   gameMakerLanguage,
   java,
+  javascript,
   python,
   shellScript,
   typescript,
@@ -130,8 +131,9 @@ const webdevProjects: ProjectInterface[] = [
       `,
     repositoryURL: `https://github.com/mbeps/next_discussion_platform`,
     deploymentURL: `https://circus-discussion.vercel.app/`,
-    programmingLanguage: typescript,
-    technologySkills: [
+    skills: [
+      typescript,
+      javascript,
       nextjs,
       react,
       chakraUI,
@@ -146,8 +148,7 @@ const webdevProjects: ProjectInterface[] = [
       yarn,
       eslint,
       prettier,
-    ],
-    softSkills: [
+
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -158,8 +159,10 @@ const webdevProjects: ProjectInterface[] = [
       stakeholderManagement,
       communication,
       riskManagement,
+      oop,
+      designPatterns,
+      algorithms,
     ],
-    extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
     category: "Full-Stack Web Development",
     hasImage: true,
   },
@@ -172,8 +175,10 @@ const webdevProjects: ProjectInterface[] = [
       `,
     repositoryURL: `https://github.com/mbeps/ringmaster-messaging`,
     deploymentURL: `https://ringmaster-messaging.vercel.app/`,
-    programmingLanguage: typescript,
-    technologySkills: [
+
+    skills: [
+      typescript,
+      javascript,
       nextjs,
       react,
       nextauth,
@@ -194,15 +199,16 @@ const webdevProjects: ProjectInterface[] = [
       yarn,
       eslint,
       prettier,
-    ],
-    softSkills: [
+
       problemSolving,
       projectManagement,
       criticalThinking,
       creativity,
       adaptability,
+      oop,
+      designPatterns,
+      algorithms,
     ],
-    extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
     category: "Full-Stack Web Development",
     hasImage: true,
   },
@@ -214,9 +220,10 @@ const webdevProjects: ProjectInterface[] = [
       Developing this project allowed me to explore Stripe, Clerk authentication, and unique AI APIs.
   `,
     repositoryURL: `https://github.com/mbeps/magician-ai`,
-    programmingLanguage: typescript,
     deploymentURL: "https://magician-ai.vercel.app/",
-    technologySkills: [
+    skills: [
+      typescript,
+      javascript,
       nextjs,
       react,
       shadcnUI,
@@ -239,15 +246,16 @@ const webdevProjects: ProjectInterface[] = [
       yarn,
       eslint,
       prettier,
-    ],
-    softSkills: [
+
       problemSolving,
       projectManagement,
       criticalThinking,
       creativity,
       adaptability,
+      oop,
+      designPatterns,
+      algorithms,
     ],
-    extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
     category: "Full-Stack Web Development",
     hasImage: true,
   },
@@ -259,8 +267,9 @@ const webdevProjects: ProjectInterface[] = [
       Users can upload songs, search and listen to music, as well as like the songs they enjoy.
       `,
     repositoryURL: `https://github.com/mbeps/drumroll-music`,
-    programmingLanguage: typescript,
-    technologySkills: [
+    skills: [
+      typescript,
+      javascript,
       nextjs,
       react,
       supabase,
@@ -276,15 +285,16 @@ const webdevProjects: ProjectInterface[] = [
       yarn,
       eslint,
       prettier,
-    ],
-    softSkills: [
+
       problemSolving,
       projectManagement,
       criticalThinking,
       creativity,
       adaptability,
+      oop,
+      designPatterns,
+      algorithms,
     ],
-    extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
     category: "Full-Stack Web Development",
     hasImage: true,
   },
@@ -295,8 +305,9 @@ const webdevProjects: ProjectInterface[] = [
       A simple rich-text note-taking app that allows users to create, edit, and delete notes.
       `,
     repositoryURL: `https://github.com/mbeps/joker-notes`,
-    programmingLanguage: typescript,
-    technologySkills: [
+    skills: [
+      typescript,
+      javascript,
       nextjs,
       react,
       shadcnUI,
@@ -314,14 +325,15 @@ const webdevProjects: ProjectInterface[] = [
       yarn,
       eslint,
       prettier,
-    ],
-    softSkills: [
+
       problemSolving,
       projectManagement,
       criticalThinking,
       adaptability,
+      oop,
+      designPatterns,
+      algorithms,
     ],
-    extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
     category: "Full-Stack Web Development",
     deploymentURL: "https://joker-notes.vercel.app/",
     hasImage: true,
@@ -340,9 +352,10 @@ const extraWebDevProjects: ProjectInterface[] = [
     description: `An intuitive platform for dynamic quiz generation. 
       Users can test their knowledge across various topics, choosing between multiple-choice questions or fill-in-the-gap style challenges. 
       With immediate feedback and score tracking, users enhance their understanding.`,
-    programmingLanguage: typescript,
     category: "Full-Stack Web Development",
-    technologySkills: [
+    skills: [
+      typescript,
+      javascript,
       nextjs,
       react,
       tailwindCSS,
@@ -362,15 +375,16 @@ const extraWebDevProjects: ProjectInterface[] = [
       yarn,
       eslint,
       prettier,
-    ],
-    softSkills: [
+
       problemSolving,
       projectManagement,
       criticalThinking,
       creativity,
       adaptability,
+      oop,
+      designPatterns,
+      algorithms,
     ],
-    extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
     repositoryURL: "https://github.com/mbeps/quizmify",
     hasImage: true,
   },
@@ -383,8 +397,9 @@ const extraWebDevProjects: ProjectInterface[] = [
       This foundational project paved the way for using Supabase in subsequent projects.
       `,
     repositoryURL: `https://github.com/mbeps/sideshow-articles`,
-    programmingLanguage: typescript,
-    technologySkills: [
+    skills: [
+      typescript,
+      javascript,
       nextjs,
       react,
       supabase,
@@ -395,15 +410,14 @@ const extraWebDevProjects: ProjectInterface[] = [
       html,
       css,
       npm,
-    ],
-    softSkills: [
+
       problemSolving,
       projectManagement,
       criticalThinking,
       creativity,
       adaptability,
+      oop,
     ],
-    extraTechnicalGeneralSkills: [oop],
     category: "Full-Stack Web Development",
     archived: true,
     hasImage: true,
@@ -417,8 +431,9 @@ const extraWebDevProjects: ProjectInterface[] = [
       `,
     repositoryURL: `https://github.com/ixahmedxi/noodle`,
     deploymentURL: `https://noodle.run/`,
-    programmingLanguage: typescript,
-    technologySkills: [
+    skills: [
+      typescript,
+      javascript,
       nextjs,
       react,
       shadcnUI,
@@ -438,9 +453,9 @@ const extraWebDevProjects: ProjectInterface[] = [
       pnpm,
       eslint,
       prettier,
-    ],
-    extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
-    softSkills: [
+      oop,
+      designPatterns,
+      algorithms,
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -461,8 +476,9 @@ const extraWebDevProjects: ProjectInterface[] = [
       Since there were no tutorials or guides available, we relied heavily on the library's documentation.
       `,
     repositoryURL: `https://github.com/mbeps/convo-gpt`,
-    programmingLanguage: typescript,
-    technologySkills: [
+    skills: [
+      typescript,
+      javascript,
       nextjs,
       react,
       tailwindCSS,
@@ -477,15 +493,16 @@ const extraWebDevProjects: ProjectInterface[] = [
       yarn,
       eslint,
       prettier,
-    ],
-    softSkills: [
+
       problemSolving,
       projectManagement,
       criticalThinking,
       creativity,
       adaptability,
+      oop,
+      designPatterns,
+      algorithms,
     ],
-    extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
     category: "Full-Stack Web Development",
     archived: true,
   },
@@ -500,8 +517,8 @@ const backendWebDevProjects: ProjectInterface[] = [
       This was created to learn how to create a custom backend using Python and Flask.
       `,
     repositoryURL: `https://github.com/mbeps/Forum-Discussion-Flask-Backend`,
-    programmingLanguage: python,
-    technologySkills: [
+    skills: [
+      python,
       flask,
       mySQL,
       sqlalchemy,
@@ -514,15 +531,16 @@ const backendWebDevProjects: ProjectInterface[] = [
       html,
       css,
       black,
-    ],
-    softSkills: [
+
       problemSolving,
       projectManagement,
       criticalThinking,
       creativity,
       adaptability,
+      oop,
+      designPatterns,
+      algorithms,
     ],
-    extraTechnicalGeneralSkills: [oop, designPatterns, algorithms],
     category: "Back-End Web Development",
   },
   {
@@ -533,16 +551,22 @@ const backendWebDevProjects: ProjectInterface[] = [
       This serves as a foundation to using JWT in other projects using Flask.
       `,
     repositoryURL: `https://github.com/mbeps/Flask_JWT_Auth`,
-    programmingLanguage: python,
-    technologySkills: [flask, jwt, gitHub, git, html, css, poetry],
-    softSkills: [
+    skills: [
+      python,
+      flask,
+      jwt,
+      gitHub,
+      git,
+      html,
+      css,
+      poetry,
       problemSolving,
       projectManagement,
       criticalThinking,
       creativity,
       adaptability,
+      oop,
     ],
-    extraTechnicalGeneralSkills: [oop],
     category: "Back-End Web Development",
     archived: true,
   },
@@ -553,17 +577,23 @@ const backendWebDevProjects: ProjectInterface[] = [
       A simple Django app to learn how to use Django with tokens for authentication.
       This serves as a foundation to using Django in other projects.
       `,
-    programmingLanguage: python,
     repositoryURL: `https://github.com/mbeps/Django_Auth_Sys`,
-    technologySkills: [django, jwt, gitHub, git, html, css, poetry],
-    softSkills: [
+    skills: [
+      python,
+      django,
+      jwt,
+      gitHub,
+      git,
+      html,
+      css,
+      poetry,
       problemSolving,
       projectManagement,
       criticalThinking,
       creativity,
       adaptability,
+      oop,
     ],
-    extraTechnicalGeneralSkills: [oop],
     category: "Back-End Web Development",
     archived: true,
   },
@@ -573,17 +603,24 @@ const backendWebDevProjects: ProjectInterface[] = [
     description: `
       A simple Next.JS app to experiment with the Clerk Authentication SDK. 
       `,
-    programmingLanguage: typescript,
     repositoryURL: `https://github.com/mbeps/clerk-demo`,
-    technologySkills: [nextjs, clerkAuth, gitHub, git, html, css, yarn],
-    softSkills: [
+    skills: [
+      typescript,
+      javascript,
+      nextjs,
+      clerkAuth,
+      gitHub,
+      git,
+      html,
+      css,
+      yarn,
       problemSolving,
       projectManagement,
       criticalThinking,
       creativity,
       adaptability,
+      oop,
     ],
-    extraTechnicalGeneralSkills: [oop],
     category: "Back-End Web Development",
     archived: true,
   },
@@ -594,17 +631,24 @@ const backendWebDevProjects: ProjectInterface[] = [
       A simple Next.JS app to experiment with the Auth0 Authentication SDK. 
       This does not use the new Next.JS 13 app router as it is not supported as of the time of making this demo. 
       `,
-    programmingLanguage: typescript,
     repositoryURL: `https://github.com/mbeps/nextjs-auth0`,
-    technologySkills: [nextjs, auth0, gitHub, git, html, css, yarn],
-    softSkills: [
+    skills: [
+      typescript,
+      javascript,
+      nextjs,
+      auth0,
+      gitHub,
+      git,
+      html,
+      css,
+      yarn,
       problemSolving,
       projectManagement,
       criticalThinking,
       creativity,
       adaptability,
+      oop,
     ],
-    extraTechnicalGeneralSkills: [oop],
     category: "Back-End Web Development",
     archived: true,
   },
@@ -621,9 +665,9 @@ const machineLearningProjects: ProjectInterface[] = [
     slug: "adult-income-prediction",
     description: `A project leveraging the UCI Adult Income dataset to predict income brackets using a RandomForestClassifier. Emphasis is on feature engineering, data preprocessing with One-Hot Encoding, and model optimization through hyperparameter tuning.`,
     repositoryURL: "https://github.com/mbeps/Adults_Income_Prediction",
-    programmingLanguage: python,
-    technologySkills: [
+    skills: [
       scikitLearn,
+      python,
       numpy,
       pandas,
       matplotlib,
@@ -633,15 +677,15 @@ const machineLearningProjects: ProjectInterface[] = [
       git,
       poetry,
       black,
-    ],
-    softSkills: [
+
       problemSolving,
       projectManagement,
       criticalThinking,
       creativity,
       adaptability,
+      oop,
+      algorithms,
     ],
-    extraTechnicalGeneralSkills: [oop, algorithms],
     category: "Machine Learning",
   },
   {
@@ -649,8 +693,8 @@ const machineLearningProjects: ProjectInterface[] = [
     slug: "house-price-prediction",
     description: `An analytical approach to predicting California housing prices using the RandomForestRegressor and LinearRegressor, with a focus on data preprocessing and feature engineering.`,
     repositoryURL: "https://github.com/your-username/House-Price-Prediction",
-    programmingLanguage: python,
-    technologySkills: [
+    skills: [
+      python,
       scikitLearn,
       numpy,
       pandas,
@@ -661,15 +705,14 @@ const machineLearningProjects: ProjectInterface[] = [
       git,
       poetry,
       black,
-    ],
-    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
       creativity,
       adaptability,
+      oop,
+      algorithms,
     ],
-    extraTechnicalGeneralSkills: [oop, algorithms],
     category: "Machine Learning",
   },
   {
@@ -680,8 +723,8 @@ const machineLearningProjects: ProjectInterface[] = [
       Have an understanding of ways to apply the ideas and algorithms of machine learning in science and technology.
       `,
     repositoryURL: `https://github.com/mbeps/Machine-Learning-Assignment-1`,
-    programmingLanguage: python,
-    technologySkills: [
+    skills: [
+      python,
       scikitLearn,
       numpy,
       matplotlib,
@@ -689,15 +732,14 @@ const machineLearningProjects: ProjectInterface[] = [
       gitHub,
       git,
       black,
-    ],
-    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
       creativity,
       adaptability,
+      oop,
+      algorithms,
     ],
-    extraTechnicalGeneralSkills: [oop, algorithms],
     category: "Machine Learning",
   },
   {
@@ -709,8 +751,8 @@ const machineLearningProjects: ProjectInterface[] = [
       Have an understanding of ways to apply the ideas and algorithms of machine learning in industry and medicine.
     `,
     repositoryURL: `https://github.com/mbeps/Machine-Learning-Assignment-2`,
-    programmingLanguage: python,
-    technologySkills: [
+    skills: [
+      python,
       scikitLearn,
       numpy,
       matplotlib,
@@ -718,15 +760,14 @@ const machineLearningProjects: ProjectInterface[] = [
       gitHub,
       git,
       black,
-    ],
-    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
       creativity,
       adaptability,
+      oop,
+      algorithms,
     ],
-    extraTechnicalGeneralSkills: [oop, algorithms],
     category: "Machine Learning",
   },
   {
@@ -738,8 +779,8 @@ const machineLearningProjects: ProjectInterface[] = [
       Have an understanding of ways to apply the ideas and algorithms of machine learning in industry.
       `,
     repositoryURL: `https://github.com/mbeps/Machine-Learning-Assignment-3`,
-    programmingLanguage: python,
-    technologySkills: [
+    skills: [
+      python,
       scikitLearn,
       numpy,
       matplotlib,
@@ -747,15 +788,14 @@ const machineLearningProjects: ProjectInterface[] = [
       gitHub,
       git,
       black,
-    ],
-    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
       creativity,
       adaptability,
+      oop,
+      algorithms,
     ],
-    extraTechnicalGeneralSkills: [oop, algorithms],
     category: "Machine Learning",
   },
   {
@@ -766,8 +806,8 @@ const machineLearningProjects: ProjectInterface[] = [
       such as Nearest Neighbours, conformal prediction, linear regression, Ridge Regression, Lasso, data preprocessing, parameter selection, 
       kernels, neural networks, support vector machines, scikit-learn pipelines, and cross-conformal predictors.`,
     repositoryURL: `https://github.com/mbeps/Machine-Learning-Labs-Questions`,
-    programmingLanguage: python,
-    technologySkills: [
+    skills: [
+      python,
       scikitLearn,
       numpy,
       matplotlib,
@@ -776,15 +816,14 @@ const machineLearningProjects: ProjectInterface[] = [
       git,
       poetry,
       black,
-    ],
-    softSkills: [
       problemSolving,
       projectManagement,
       criticalThinking,
       creativity,
       adaptability,
+      oop,
+      algorithms,
     ],
-    extraTechnicalGeneralSkills: [oop, algorithms],
     category: "Machine Learning",
   },
   {
@@ -794,16 +833,19 @@ const machineLearningProjects: ProjectInterface[] = [
       An assignment exploring valuation of options using methods like Black-Scholes, binomial trees, and Monte Carlo. 
       Also includes theoretical aspects of put-call parity and financial arbitrage opportunities.`,
     repositoryURL: `https://github.com/mbeps/Computation_Finance_Assignment`,
-    programmingLanguage: python,
-    technologySkills: [numpy, matplotlib, jupyterNotebooks],
-    softSkills: [
+    skills: [
+      python,
+      numpy,
+      matplotlib,
+      jupyterNotebooks,
       problemSolving,
       projectManagement,
       criticalThinking,
       creativity,
       adaptability,
+      oop,
+      algorithms,
     ],
-    extraTechnicalGeneralSkills: [oop, algorithms],
     category: "Machine Learning",
   },
 ];
@@ -823,9 +865,11 @@ const gameDevProjects: ProjectInterface[] = [
       This required us to rely on the documentation as there was no tutorials or guides on how to use the library.
       `,
     repositoryURL: `https://github.com/mbeps/Osmos_Game`,
-    programmingLanguage: python,
-    technologySkills: [simpleGui],
-    softSkills: [
+    skills: [
+      python,
+      simpleGui,
+      gitHub,
+      git,
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -846,10 +890,10 @@ const gameDevProjects: ProjectInterface[] = [
       Every time he kills all the skeletons more of them will come at once.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: gameMakerLanguage,
     category: "Game Development",
-    technologySkills: [gameMakerStudio],
-    softSkills: [
+    skills: [
+      gameMakerLanguage,
+      gameMakerStudio,
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -869,10 +913,10 @@ const gameDevProjects: ProjectInterface[] = [
       This is also a multiplayer game.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: gameMakerLanguage,
     category: "Game Development",
-    technologySkills: [gameMakerStudio],
-    softSkills: [
+    skills: [
+      gameMakerLanguage,
+      gameMakerStudio,
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -892,10 +936,10 @@ const gameDevProjects: ProjectInterface[] = [
       This is also a multiplayer game.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: gameMakerLanguage,
     category: "Game Development",
-    technologySkills: [gameMakerStudio],
-    softSkills: [
+    skills: [
+      gameMakerLanguage,
+      gameMakerStudio,
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -914,10 +958,10 @@ const gameDevProjects: ProjectInterface[] = [
       and the goal is to destroy them all by repeatedly bouncing a ball off a paddle into them.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: gameMakerLanguage,
     category: "Game Development",
-    technologySkills: [gameMakerStudio],
-    softSkills: [
+    skills: [
+      gameMakerLanguage,
+      gameMakerStudio,
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -936,10 +980,10 @@ const gameDevProjects: ProjectInterface[] = [
       as many times as possible within a given time limit.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: gameMakerLanguage,
     category: "Game Development",
-    technologySkills: [gameMakerStudio],
-    softSkills: [
+    skills: [
+      gameMakerLanguage,
+      gameMakerStudio,
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -958,10 +1002,10 @@ const gameDevProjects: ProjectInterface[] = [
       by making use of the gravity switch and avoiding the obstacles.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: gameMakerLanguage,
     category: "Game Development",
-    technologySkills: [gameMakerStudio],
-    softSkills: [
+    skills: [
+      gameMakerLanguage,
+      gameMakerStudio,
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -979,10 +1023,10 @@ const gameDevProjects: ProjectInterface[] = [
       This is a game where the aim is to shoot the enemies and avoid their bullets.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: gameMakerLanguage,
     category: "Game Development",
-    technologySkills: [gameMakerStudio],
-    softSkills: [
+    skills: [
+      gameMakerLanguage,
+      gameMakerStudio,
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1000,10 +1044,10 @@ const gameDevProjects: ProjectInterface[] = [
       A very simple 3D game where the aim is to reach the end of the level through the maze.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: gameMakerLanguage,
     category: "Game Development",
-    technologySkills: [gameMakerStudio],
-    softSkills: [
+    skills: [
+      gameMakerLanguage,
+      gameMakerStudio,
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1022,10 +1066,10 @@ const gameDevProjects: ProjectInterface[] = [
       This is very similar to the popular game Fruit Ninja.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: gameMakerLanguage,
     category: "Game Development",
-    technologySkills: [gameMakerStudio],
-    softSkills: [
+    skills: [
+      gameMakerLanguage,
+      gameMakerStudio,
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1044,10 +1088,10 @@ const gameDevProjects: ProjectInterface[] = [
       This is very similar to the popular game Angry Birds.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: gameMakerLanguage,
     category: "Game Development",
-    technologySkills: [gameMakerStudio],
-    softSkills: [
+    skills: [
+      gameMakerLanguage,
+      gameMakerStudio,
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1066,10 +1110,10 @@ const gameDevProjects: ProjectInterface[] = [
       This is very similar to the popular game Angry Birds.
       This was a simple game made back in secondary school. 
     `,
-    programmingLanguage: gameMakerLanguage,
     category: "Game Development",
-    technologySkills: [gameMakerStudio],
-    softSkills: [
+    skills: [
+      gameMakerLanguage,
+      gameMakerStudio,
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1096,9 +1140,9 @@ const otherProjects: ProjectInterface[] = [
       Each algorithms is explained. 
       All the algorithms are also compared to each other. 
     `,
-    programmingLanguage: python,
     category: "Other",
-    technologySkills: [
+    skills: [
+      python,
       matplotlib,
       numpy,
       jupyterNotebooks,
@@ -1106,15 +1150,16 @@ const otherProjects: ProjectInterface[] = [
       gitHub,
       git,
       black,
-    ],
-    softSkills: [
+
       problemSolving,
       projectManagement,
       criticalThinking,
       creativity,
       adaptability,
+      oop,
+      algorithms,
+      dataStructures,
     ],
-    extraTechnicalGeneralSkills: [oop, algorithms, dataStructures],
     repositoryURL: "https://github.com/mbeps/algorithms",
   },
   {
@@ -1124,8 +1169,11 @@ const otherProjects: ProjectInterface[] = [
       A shell script which automates the setup of a new Linux machine.
       This is specifically for my Fedora install.
       `,
-    technologySkills: [shellScript, gitHub, git],
-    softSkills: [
+    skills: [
+      shellScript,
+      shellScript,
+      gitHub,
+      git,
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1133,7 +1181,6 @@ const otherProjects: ProjectInterface[] = [
       adaptability,
     ],
     repositoryURL: `https://github.com/mbeps/AutomatedSetup`,
-    programmingLanguage: shellScript,
     category: "Other",
   },
   {
@@ -1146,9 +1193,12 @@ const otherProjects: ProjectInterface[] = [
       CI/CD is also used to run the tests when merging to the main branch.
       `,
     repositoryURL: `https://github.com/stars/mbeps/lists/leetcode`,
-    programmingLanguage: python,
-    technologySkills: [pytest, gitHubActions, gitHub, git],
-    softSkills: [
+    skills: [
+      python,
+      pytest,
+      gitHubActions,
+      gitHub,
+      git,
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1175,9 +1225,13 @@ const javaAssignments: ProjectInterface[] = [
       test-driven development, documentation, and code quality assurance through linting and styling. 
       The assignment highlighted the significance of following efficient software development processes rather than just focusing on the final implementation.  `,
     repositoryURL: `https://github.com/mbeps/Calculator-Assignment`,
-    programmingLanguage: java,
-    technologySkills: [maven, junit, gitHub, git, checkstyle],
-    softSkills: [
+    skills: [
+      java,
+      maven,
+      junit,
+      gitHub,
+      git,
+      checkstyle,
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1193,9 +1247,11 @@ const javaAssignments: ProjectInterface[] = [
       Simple botanic garden planner app built using Java.
       This was in first year to learn about Java and object oriented programming.`,
     repositoryURL: `https://github.com/mbeps/Botanic-Garden-Planner`,
-    programmingLanguage: java,
-    technologySkills: [junit, gitHub, git],
-    softSkills: [
+    skills: [
+      java,
+      junit,
+      gitHub,
+      git,
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1211,10 +1267,12 @@ const javaAssignments: ProjectInterface[] = [
     description: `Simple app to track Covid cases. 
       This was in first year to learn about Java and object oriented programming.`,
     repositoryURL: `https://github.com/mbeps/Track_and_Trace`,
-    programmingLanguage: java,
     category: "Java Assignments",
-    technologySkills: [junit, gitHub, git],
-    softSkills: [
+    skills: [
+      java,
+      junit,
+      gitHub,
+      git,
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1228,10 +1286,12 @@ const javaAssignments: ProjectInterface[] = [
     slug: "hollomon-assignment",
     description: `This was in first year to learn about Java and object oriented programming.`,
     repositoryURL: `https://github.com/mbeps/Hollomon`,
-    programmingLanguage: java,
     category: "Java Assignments",
-    technologySkills: [junit, gitHub, git],
-    softSkills: [
+    skills: [
+      java,
+      junit,
+      gitHub,
+      git,
       problemSolving,
       projectManagement,
       criticalThinking,
@@ -1245,9 +1305,11 @@ const javaAssignments: ProjectInterface[] = [
     slug: "database-mini-project",
     description: `Learning to interact with a database using Java.`,
     repositoryURL: `https://github.com/mbeps/DatabasesMiniProject`,
-    programmingLanguage: java,
-    technologySkills: [postgreSQL, gitHub, git],
-    softSkills: [
+    skills: [
+      java,
+      postgreSQL,
+      gitHub,
+      git,
       problemSolving,
       projectManagement,
       criticalThinking,
