@@ -114,6 +114,9 @@ import {
   prettier,
   zod,
 } from "./skills/technicalHardSkills/technicalHardSkillsCodeQuality";
+import MaterialInterface from "@/interfaces/material/MaterialInterface";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
+import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
 
 /**
  * Array of web development projects.
@@ -1334,7 +1337,7 @@ export {
 /**
  * Array of all projects.
  */
-const allProjects = [
+const allProjects = addNestedSkillsMaterialList<ProjectInterface>([
   ...webdevProjects,
   ...machineLearningProjects,
   ...extraWebDevProjects,
@@ -1342,6 +1345,6 @@ const allProjects = [
   ...otherProjects,
   ...javaAssignments,
   ...backendWebDevProjects,
-];
+]);
 
 export default allProjects;

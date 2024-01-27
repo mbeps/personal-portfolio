@@ -80,10 +80,7 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
   }
 
   const technologies = filterSkillsByType(certificate.skills, "hard");
-  const generalSkills = getAssociatedNestedSkills(
-    technologies,
-    "general",
-  ).concat(filterSkillsByType(certificate.skills, "general"));
+  const generalSkills = filterSkillsByType(certificate.skills, "general");
   const softSkills = filterSkillsByType(certificate.skills, "soft");
 
   // Simplified grouping of skill types for certificates
