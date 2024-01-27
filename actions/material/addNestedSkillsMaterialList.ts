@@ -6,30 +6,31 @@ export default function addNestedSkillsMaterialList<
 >(
   materials: T[],
   skillTypeToAdd: "hard" | "general" | "soft" | "all" = "general",
+  skillTypeToCheck: "hard" | "general" | "soft" | "all" = "hard",
 ): T[] {
   return materials.map((material) => {
-    // Start with the original list of skills
-    const processedSkills: SkillInterface[] = [...material.skills];
+    // Clone the material to avoid mutating the original object
+    const newMaterial = { ...material, skills: [...material.skills] };
 
-    function addSkill(skill: SkillInterface) {
-      // Check if the skill matches the specified type or if all types are to be added
-      if (
-        (skillTypeToAdd === "all" || skill.skillType === skillTypeToAdd) &&
-        !processedSkills.some((s) => s.slug === skill.slug)
-      ) {
-        processedSkills.push(skill);
+    // Iterate over each skill in the material
+    material.skills.forEach((skill) => {
+      // Check if the skill matches the skillTypeToCheck
+      if (skillTypeToCheck === "all" || skill.skillType === skillTypeToCheck) {
+        // Add related skills if they match skillTypeToAdd
+        skill.relatedSkills?.forEach((relatedSkill) => {
+          if (
+            skillTypeToAdd === "all" ||
+            relatedSkill.skillType === skillTypeToAdd
+          ) {
+            // Avoid adding duplicate skills
+            if (!newMaterial.skills.some((s) => s.slug === relatedSkill.slug)) {
+              newMaterial.skills.push(relatedSkill);
+            }
+          }
+        });
       }
+    });
 
-      // Process nested skills
-      skill.relatedSkills?.forEach(addSkill);
-    }
-
-    // Process nested skills for each skill in the original list
-    material.skills.forEach(addSkill);
-
-    return {
-      ...material,
-      skills: processedSkills,
-    };
+    return newMaterial;
   });
 }
