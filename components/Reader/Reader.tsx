@@ -4,7 +4,7 @@ import React from "react";
 
 type ReaderProps = {
   content: string | undefined;
-  size?: "sm" | "base" | "md" | "lg"
+  size?: "sm" | "base" | "md" | "lg";
 };
 
 /**
@@ -12,12 +12,12 @@ type ReaderProps = {
  * @param content (string): Markdown content to render
  * @returns (JSX.Element): rendered Markdown content
  */
-const Reader: React.FC<ReaderProps> = ({ content, size }) => {
+const Reader: React.FC<ReaderProps> = ({ content, size = "lg" }) => {
   return (
     <article
       className={`
         prose
-        lg:prose-${size || "lg"}
+        lg:prose-${size}
         dark:prose-invert
         prose-img:rounded-lg
         max-w-none
