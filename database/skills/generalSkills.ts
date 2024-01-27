@@ -47,7 +47,6 @@ export const oop: SkillInterface = {
   isMainSkill: false,
   skillType: "general",
   slug: "object-oriented-programming",
-  relatedSkills: [python, java, javascript, typescript, rLanguage],
 };
 
 export const functionalProgramming: SkillInterface = {
@@ -56,7 +55,6 @@ export const functionalProgramming: SkillInterface = {
   isMainSkill: false,
   skillType: "general",
   slug: "functional-programming",
-  relatedSkills: [python, java, javascript, typescript, rLanguage],
 };
 
 export const algorithms: SkillInterface = {

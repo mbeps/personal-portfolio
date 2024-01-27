@@ -75,10 +75,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
   }
 
   const technologies = filterSkillsByType(blogMetadata.skills, "hard");
-  const generalSkills = getAssociatedNestedSkills(
-    technologies,
-    "general",
-  ).concat(filterSkillsByType(blogMetadata.skills, "general"));
+  const generalSkills = filterSkillsByType(blogMetadata.skills, "general");
   const softSkills = filterSkillsByType(blogMetadata.skills, "soft");
 
   // Using the new function to group all skill types

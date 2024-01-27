@@ -100,10 +100,10 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const coverImagePath = `${basePath}/${slug}/cover.png`;
 
   const technologies = filterSkillsByType(projectSkillsWithoutLanguage, "hard");
-  const generalSkills = getAssociatedNestedSkills(
-    technologies,
+  const generalSkills = filterSkillsByType(
+    projectSkillsWithoutLanguage,
     "general",
-  ).concat(filterSkillsByType(projectSkillsWithoutLanguage, "general"));
+  );
   const softSkills = filterSkillsByType(projectSkillsWithoutLanguage, "soft");
 
   // Using the new function to group all skill types

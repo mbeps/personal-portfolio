@@ -155,6 +155,9 @@ import {
 } from "./skills/technicalHardSkills/technicalHardSkillsVCS";
 import { black } from "./skills/technicalHardSkills/technicalHardSkillsCodeQuality";
 import { symphony } from "./skills/technicalHardSkills/technicalHardSkillsOthers";
+import MaterialInterface from "@/interfaces/material/MaterialInterface";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
+import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
 
 const programmingLanguagesCertificates: CertificateInterface[] = [
   {
@@ -2511,7 +2514,7 @@ const otherCertificates: CertificateInterface[] = [
 
 export { cloudComputingCertificates };
 
-const allCertificates = [
+const allCertificates = addNestedSkillsMaterialList<CertificateInterface>([
   ...programmingLanguagesCertificates,
   ...algorithmsAndDataStructuresCertificates,
   ...databasesCertificates,
@@ -2523,6 +2526,6 @@ const allCertificates = [
   ...mathematicsCertificates,
   ...managementCertificates,
   ...otherCertificates,
-];
+]);
 
 export default allCertificates;

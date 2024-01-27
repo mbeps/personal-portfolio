@@ -59,8 +59,9 @@ import {
   hibernate,
 } from "./skills/technicalHardSkills/technicalHardSkillsORMs";
 import BlogInterface from "@/interfaces/material/BlogInterface";
+import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
 
-const blogs: BlogInterface[] = [
+const blogs: BlogInterface[] = addNestedSkillsMaterialList<BlogInterface>([
   {
     slug: "backend",
     name: "Exploring Backends: Custom vs Managed Solutions",
@@ -234,6 +235,6 @@ const blogs: BlogInterface[] = [
     category: "Software Engineering",
     skills: [webDevelopment],
   },
-];
+]);
 
 export default blogs;
