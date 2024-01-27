@@ -1,34 +1,32 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
+import filterMaterialByArchivedStatus, {
+  filterMaterialByCategory,
+  filterMaterialBySkill,
+  filterMaterialBySkillCategory,
+} from "@/actions/material/filterMaterials";
+import generateFilterOptionsByCategory from "@/actions/material/generateFilterOptionsByCategory";
+import generateFilterOptionsBySkillCategories from "@/actions/material/generateFilterOptionsBySkillCategories";
+import generateFilterOptionsBySkillType from "@/actions/material/generateFilterOptionsBySkillType";
+import groupMaterialsByCategory from "@/actions/material/groupMaterialsByCategory";
+import filterProjectsByProgrammingLanguage from "@/actions/material/projects/filterProjectsByProgrammingLanguage";
+import generateFilterOptionsForProgrammingLanguages from "@/actions/material/projects/generateFilterOptionsForProgrammingLanguages";
 import stringToSlug from "@/actions/stringToSlug";
+import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
 import FilterOverlay from "@/components/Filters/FilterPanel";
 import SearchInput from "@/components/Inputs/SearchInput";
+import ProjectsList from "@/components/MaterialLists/ProjectsList";
 import { Button } from "@/components/shadcn/ui/button";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Fuse from "fuse.js";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import { AiOutlineClear } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
-import { ArchiveToggle } from "../../../components/Filters/ArchiveToggle";
-import ProjectsList from "../../../components/MaterialLists/ProjectsList";
-import filterSkillsByType from "@/actions/skills/filterSkillsByType";
-import filterMaterialByArchivedStatus, {
-  filterMaterialByCategory,
-  filterMaterialBySkill,
-  filterMaterialBySkillCategory,
-} from "@/actions/material/filterMaterials";
-import filterProjectsByProgrammingLanguage from "@/actions/material/projects/filterProjectsByProgrammingLanguage";
-import generateFilterOptionsByCategory from "@/actions/material/generateFilterOptionsByCategory";
-import generateFilterOptionsForProgrammingLanguages from "@/actions/material/projects/generateFilterOptionsForProgrammingLanguages";
-import generateFilterOptionsBySkillType from "@/actions/material/generateFilterOptionsBySkillType";
-import generateFilterOptionsBySkillCategories from "@/actions/material/generateFilterOptionsBySkillCategories";
-import groupMaterialsByCategory from "@/actions/material/groupMaterialsByCategory";
 
 type ProjectsListProps = {
   allProjects: ProjectInterface[];

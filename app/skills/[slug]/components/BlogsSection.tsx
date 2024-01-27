@@ -1,4 +1,5 @@
 import filterContentBySkill from "@/actions/material/filterContentBySkill";
+import groupMaterialsBySkill from "@/actions/material/groupMaterialsBySkill";
 import BlogsList from "@/components/MaterialLists/BlogsList";
 import { Button } from "@/components/shadcn/ui/button";
 import { BLOG } from "@/constants/pages";
@@ -22,13 +23,7 @@ const BlogsSection: React.FC<BlogsPageProps> = ({ blogs, skill }) => {
     return;
   }
 
-  const groupBlogsByCategory = (
-    blogs: BlogInterface[],
-  ): Record<string, BlogInterface[]> => {
-    return { Blogs: blogs };
-  };
-
-  const groupedBlogs = groupBlogsByCategory(filteredBlogs);
+  const groupedBlogs = groupMaterialsBySkill<BlogInterface>(filteredBlogs);
 
   return (
     <div className="flex flex-col space-y-10 align-top relative">

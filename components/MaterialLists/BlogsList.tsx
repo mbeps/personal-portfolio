@@ -3,31 +3,27 @@ import BlogItem from "@/components/Blogs/BlogItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import stringToSlug from "@/actions/stringToSlug";
 import BlogInterface from "@/interfaces/material/BlogInterface";
+import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 
 interface BlogListSectionProps {
-  groupedBlogs: Record<string, BlogInterface[]>;
+  groupedBlogs: MaterialGroupInterface[];
 }
 
-/**
- * Displays a list of blogs grouped by category.
- * @param groupedBlogs (Record<string, Blog[]>) - blogs grouped by category
- * @returns (JSX.Element) - list of blogs grouped by category
- */
 const BlogsList: React.FC<BlogListSectionProps> = ({ groupedBlogs }) => {
   return (
     <div className="material-page-wrapper">
-      {Object.keys(groupedBlogs).length > 0 ? (
-        Object.keys(groupedBlogs).map(
-          (category) =>
-            category !== "All" && (
-              <section key={category} id={stringToSlug(category)}>
+      {groupedBlogs.length > 0 ? (
+        groupedBlogs.map(
+          (group) =>
+            group.groupName !== "All" && (
+              <section key={group.groupName} id={stringToSlug(group.groupName)}>
                 <div className="flex flex-col space-y-10">
                   <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
                   {/* Assuming HeadingTwo is a component you have for rendering titles */}
-                  <HeadingTwo title={category} />
+                  <HeadingTwo title={group.groupName} />
                   <Grid
-                    items={groupedBlogs[category].map((blog, idx) => (
-                      <BlogItem key={idx} {...blog} />
+                    items={group.materials.map((blog, idx) => (
+                      <BlogItem key={idx} {...(blog as BlogInterface)} />
                     ))}
                   />
                 </div>

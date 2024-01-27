@@ -1,4 +1,5 @@
 import filterContentBySkill from "@/actions/material/filterContentBySkill";
+import groupMaterialsBySkill from "@/actions/material/groupMaterialsBySkill";
 import ProjectsList from "@/components/MaterialLists/ProjectsList";
 import { Button } from "@/components/shadcn/ui/button";
 import { PROJECTS } from "@/constants/pages";
@@ -25,13 +26,8 @@ const ProjectsSection: React.FC<ProjectPageProps> = ({ projects, skill }) => {
     return;
   }
 
-  const groupProjectsByCurrentSkill = (
-    projects: ProjectInterface[],
-  ): Record<string, ProjectInterface[]> => {
-    return { Projects: projects };
-  };
-
-  const groupedProjects = groupProjectsByCurrentSkill(filteredProjects);
+  const groupedProjects =
+    groupMaterialsBySkill<ProjectInterface>(filteredProjects);
 
   return (
     <div className="flex flex-col space-y-10 align-top relative">

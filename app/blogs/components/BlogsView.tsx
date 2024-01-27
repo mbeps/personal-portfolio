@@ -1,32 +1,30 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
+import filterMaterialByArchivedStatus, {
+  filterMaterialByCategory,
+  filterMaterialBySkill,
+  filterMaterialBySkillCategory,
+} from "@/actions/material/filterMaterials";
+import generateFilterOptionsByCategory from "@/actions/material/generateFilterOptionsByCategory";
+import generateFilterOptionsBySkillCategories from "@/actions/material/generateFilterOptionsBySkillCategories";
+import generateFilterOptionsBySkillType from "@/actions/material/generateFilterOptionsBySkillType";
+import groupMaterialsByCategory from "@/actions/material/groupMaterialsByCategory";
 import stringToSlug from "@/actions/stringToSlug";
 import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
 import FilterOverlay from "@/components/Filters/FilterPanel";
 import SearchInput from "@/components/Inputs/SearchInput";
+import BlogsList from "@/components/MaterialLists/BlogsList";
 import { Button } from "@/components/shadcn/ui/button";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import BlogInterface from "@/interfaces/material/BlogInterface";
 import Fuse from "fuse.js";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { AiOutlineClear } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
-import BlogInterface from "@/interfaces/material/BlogInterface";
-import BlogsList from "@/components/MaterialLists/BlogsList";
-import filterSkillsByType from "@/actions/skills/filterSkillsByType";
-import groupMaterialsByCategory from "@/actions/material/groupMaterialsByCategory";
-import generateFilterOptionsByCategory from "@/actions/material/generateFilterOptionsByCategory";
-import generateFilterOptionsBySkillCategories from "@/actions/material/generateFilterOptionsBySkillCategories";
-import generateFilterOptionsBySkillType from "@/actions/material/generateFilterOptionsBySkillType";
-import filterMaterialByArchivedStatus, {
-  filterMaterialByCategory,
-  filterMaterialBySkillCategory,
-  filterMaterialBySkill,
-} from "@/actions/material/filterMaterials";
 
 interface BlogListProps {
   blogs: BlogInterface[];

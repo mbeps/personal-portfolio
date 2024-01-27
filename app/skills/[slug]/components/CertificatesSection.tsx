@@ -1,4 +1,5 @@
 import filterContentBySkill from "@/actions/material/filterContentBySkill";
+import groupMaterialsBySkill from "@/actions/material/groupMaterialsBySkill";
 import CertificatesList from "@/components/MaterialLists/CertificatesList";
 import { Button } from "@/components/shadcn/ui/button";
 import { CERTIFICATES } from "@/constants/pages";
@@ -28,13 +29,8 @@ const CertificatesSection: React.FC<CertificatesSectionProps> = ({
     return;
   }
 
-  const groupCertificatesByCategory = (
-    certificates: CertificateInterface[],
-  ): Record<string, CertificateInterface[]> => {
-    return { Certificates: certificates };
-  };
-
-  const groupedCertificates = groupCertificatesByCategory(filteredCertificates);
+  const groupedCertificates =
+    groupMaterialsBySkill<CertificateInterface>(filteredCertificates);
 
   return (
     <div className="flex flex-col space-y-10 align-top relative">
