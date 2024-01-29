@@ -1,8 +1,8 @@
-import Socials from "../Socials/Socials";
-import NavbarItem from "./NavbarItem";
-import Overlay from "../Sheet/Sheet";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import NavigationItemInterface from "@/interfaces/NavigationItemInterface";
+import Overlay from "../Sheet/Sheet";
+import Socials from "../Socials/Socials";
+import NavbarItem from "./NavbarItem";
 
 interface OverlayProps {
   isOpen: boolean;

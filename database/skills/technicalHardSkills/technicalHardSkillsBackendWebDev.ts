@@ -1,14 +1,14 @@
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import {
+  apis,
+  cloudComputing,
   databaseManagementSystems,
-  noSql,
   databases,
   indexing,
-  cloudComputing,
-  userAuthentication,
+  noSql,
   sdks,
+  userAuthentication,
   webDevelopment,
-  apis,
 } from "../generalSkills";
 import { java, javascript, python, typescript } from "../languages";
 

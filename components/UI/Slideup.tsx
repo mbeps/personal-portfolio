@@ -28,7 +28,7 @@ export default function SlideUp({ children, offset = "0px" }: Props) {
           }
         });
       },
-      { rootMargin: offset }
+      { rootMargin: offset },
     );
 
     if (ref.current) {

@@ -1,12 +1,9 @@
 "use client";
 
-import React, { InputHTMLAttributes, useEffect } from "react";
-import { BsSearch } from "react-icons/bs";
-import { twMerge } from "tailwind-merge";
-import { MdClear } from "react-icons/md";
-import { VscSend } from "react-icons/vsc";
 import useIsMounted from "@/hooks/useIsMounted";
 import { Search, SendHorizontal, X } from "lucide-react";
+import React, { useEffect } from "react";
+import { twMerge } from "tailwind-merge";
 
 interface SearchInputProps {
   searchTerm: string;

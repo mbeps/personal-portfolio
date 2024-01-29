@@ -1,13 +1,13 @@
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import {
-  machineLearning,
-  dataScience,
   artificialIntelligence,
-  hyperparameters,
   boosting,
-  neuralNetworks,
+  dataScience,
   dataVisualisation,
+  hyperparameters,
+  machineLearning,
   mathematics,
+  neuralNetworks,
 } from "../generalSkills";
 import { python } from "../languages";
 

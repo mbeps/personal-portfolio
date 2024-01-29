@@ -1,8 +1,8 @@
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import {
-  containerization,
-  clusterisation,
   cloudComputing,
+  clusterisation,
+  containerization,
 } from "../generalSkills";
 
 export const awsK3s: SkillInterface = {

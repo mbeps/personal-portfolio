@@ -1,5 +1,4 @@
 import SkillInterface from "@/interfaces/skills/SkillInterface";
-import { java, javascript, python, rLanguage, typescript } from "./languages";
 
 export const continuousIntegration: SkillInterface = {
   name: "Continuous Integration",

@@ -2,7 +2,6 @@ import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFile
 import getContentBySlug from "@/actions/material/getContentBySlug";
 import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
-import { getAssociatedNestedSkills } from "@/actions/skills/getAssociatedSkills";
 import Reader from "@/components/Reader/Reader";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";

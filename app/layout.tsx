@@ -1,8 +1,8 @@
 import Footer from "@/components/Footer/Footer";
 import Navbar from "@/components/Navbar/Navbar";
+import { NAVBAR_HEIGHT } from "@/constants/NAVBAR";
 import { Providers } from "@/providers/Providers";
 import "./globals.css";
-import { NAVBAR_HEIGHT } from "@/constants/NAVBAR";
 
 /**
  * Layout component which applies to all pages.

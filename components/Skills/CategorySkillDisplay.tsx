@@ -1,9 +1,8 @@
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import { useState } from "react";
 import ExpandCollapseButton from "../Button/ExpandCollapseButton";
 import SkillTag from "../Tags/SkillTag";
 import HeadingFour from "../Text/HeadingFour";
-import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 
 interface CategorySkillDisplayProps {
   skillCategories: SkillsCategoryInterface[];

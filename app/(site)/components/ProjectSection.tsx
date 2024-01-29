@@ -1,12 +1,12 @@
-import SlideUp from "@/components/UI/Slideup";
+import validateSlugsWithContent from "@/actions/material/validateSlugsWithContent";
 import ProjectItem from "@/components/ProjectItem/ProjectItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import Link from "next/link";
-import allProjects from "@/database/projects";
+import SlideUp from "@/components/UI/Slideup";
 import { Button } from "@/components/shadcn/ui/button";
 import { PROJECTS } from "@/constants/pages";
-import validateSlugsWithContent from "@/actions/material/validateSlugsWithContent";
+import allProjects from "@/database/projects";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
+import Link from "next/link";
 
 /**
  * Project section listing the projects I have worked on.

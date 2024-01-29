@@ -1,39 +1,41 @@
-import { javascript, typescript } from "./skills/languages";
+import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
+import BlogInterface from "@/interfaces/material/BlogInterface";
 import {
-  webDevelopment,
-  devOps,
-  continuousIntegration,
-  continuousDelivery,
-  containerization,
-  cloudComputing,
-  infrastructureAsCode,
-  machineLearning,
   algorithms,
+  apis,
+  artificialIntelligence,
+  automation,
+  cloudComputing,
+  containerization,
+  continuousDelivery,
+  continuousIntegration,
+  dataScience,
   databaseManagementSystems,
   databases,
-  sql,
-  apis,
-  userAuthentication,
-  testing,
+  devOps,
+  infrastructureAsCode,
+  machineLearning,
   noSql,
   sdks,
-  automation,
-  dataScience,
-  artificialIntelligence,
+  sql,
+  testing,
+  userAuthentication,
+  webDevelopment,
 } from "./skills/generalSkills";
+import { javascript, typescript } from "./skills/languages";
 import {
   criticalThinking,
   problemSolving,
   projectManagement,
 } from "./skills/softSkills";
 import {
-  rest,
   graphQL,
+  rest,
 } from "./skills/technicalHardSkills/technicalHardSkillsAPIs";
 import {
   firebase,
-  supabase,
   pocketbase,
+  supabase,
 } from "./skills/technicalHardSkills/technicalHardSkillsBackendWebDev";
 import { normalisation } from "./skills/technicalHardSkills/technicalHardSkillsDatabases";
 import {
@@ -41,25 +43,23 @@ import {
   kubernetes,
 } from "./skills/technicalHardSkills/technicalHardSkillsDevOps";
 import {
-  html,
   css,
+  html,
+  react,
   svelte,
   vue,
-  react,
 } from "./skills/technicalHardSkills/technicalHardSkillsFrontendWebDev";
 import {
-  nextjs,
   angular,
+  nextjs,
 } from "./skills/technicalHardSkills/technicalHardSkillsFullStackWebDev";
-import { git } from "./skills/technicalHardSkills/technicalHardSkillsVCS";
 import {
-  prisma,
-  mongoose,
-  sqlalchemy,
   hibernate,
+  mongoose,
+  prisma,
+  sqlalchemy,
 } from "./skills/technicalHardSkills/technicalHardSkillsORMs";
-import BlogInterface from "@/interfaces/material/BlogInterface";
-import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
+import { git } from "./skills/technicalHardSkills/technicalHardSkillsVCS";
 
 const blogs: BlogInterface[] = addNestedSkillsMaterialList<BlogInterface>([
   {

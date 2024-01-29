@@ -1,7 +1,7 @@
+import type { Metadata } from "next";
 import AboutSection from "./components/AboutSection/AboutSection";
 import HeroSection from "./components/HeroSection";
 import ProjectsSection from "./components/ProjectSection";
-import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Maruf Bepary",

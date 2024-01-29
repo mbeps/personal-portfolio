@@ -1,5 +1,4 @@
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 export default function addNestedSkillsMaterialList<
   T extends MaterialInterface,

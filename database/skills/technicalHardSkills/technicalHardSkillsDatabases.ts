@@ -2,10 +2,9 @@ import SkillInterface from "@/interfaces/skills/SkillInterface";
 import {
   databaseManagementSystems,
   databases,
-  sql,
   indexing,
   noSql,
-  orm,
+  sql
 } from "../generalSkills";
 
 export const normalisation: SkillInterface = {

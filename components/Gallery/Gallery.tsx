@@ -1,8 +1,10 @@
 "use client";
 
+import useIsMounted from "@/hooks/useIsMounted";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import Image from "next/image";
 import React, { useEffect } from "react";
+import { LiaImageSolid, LiaVideoSolid } from "react-icons/lia";
 import {
   Carousel,
   CarouselApi,
@@ -13,9 +15,6 @@ import {
 } from "../shadcn/ui/carousel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../shadcn/ui/tabs";
 import VideoPlayer from "./VideoPlayer";
-import useIsMounted from "@/hooks/useIsMounted";
-import { Button } from "../shadcn/ui/button";
-import { LiaImageSolid, LiaVideoSolid } from "react-icons/lia";
 
 interface GalleryProps {
   images?: string[];

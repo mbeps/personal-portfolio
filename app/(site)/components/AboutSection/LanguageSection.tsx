@@ -1,5 +1,7 @@
 "use client";
 
+import filterSkillsByType from "@/actions/skills/filterSkillsByType";
+import getAssociatedSkills from "@/actions/skills/getAssociatedSkills";
 import groupSkills from "@/actions/skills/groupSkills";
 import isSkillAssociatedWithBlogs from "@/actions/skills/isSkillAssociatedWithBlogs";
 import isSkillAssociatedWithCertificate from "@/actions/skills/isSkillAssociatedWithCertificate";
@@ -20,25 +22,23 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/shadcn/ui/dropdown-menu";
+import { ScrollArea } from "@/components/shadcn/ui/scroll-area";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
-import { ScrollArea } from "@/components/shadcn/ui/scroll-area";
 import blogs from "@/database/blogs";
 import allCertificates from "@/database/certificates";
 import allProjects from "@/database/projects";
 import { languages } from "@/database/skills/languages";
+import allSkills from "@/database/skills/skills";
 import useIsMounted from "@/hooks/useIsMounted";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Link from "next/link";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
-import getAssociatedSkills from "@/actions/skills/getAssociatedSkills";
-import allSkills from "@/database/skills/skills";
-import filterSkillsByType from "@/actions/skills/filterSkillsByType";
 
 /**
  * Displays a list of languages that I know.

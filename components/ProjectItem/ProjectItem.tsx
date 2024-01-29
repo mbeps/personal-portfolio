@@ -1,15 +1,15 @@
-import ProjectInterface from "@/interfaces/material/ProjectInterface";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import { BsArrowUpRightCircle, BsGithub, BsInfoCircle } from "react-icons/bs";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
-import { AspectRatio } from "../shadcn/ui/aspect-ratio";
 import { PROJECTS } from "@/constants/pages";
+import ProjectInterface from "@/interfaces/material/ProjectInterface";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+import { BsArrowUpRightCircle, BsGithub, BsInfoCircle } from "react-icons/bs";
+import { AspectRatio } from "../shadcn/ui/aspect-ratio";
 
 interface ProjectItemProps {
   project: ProjectInterface;
