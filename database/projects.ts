@@ -1,4 +1,17 @@
+import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
+import {
+  algorithms,
+  artificialIntelligence,
+  boosting,
+  dataScience,
+  dataStructures,
+  designPatterns,
+  hyperparameters,
+  machineLearning,
+  neuralNetworks,
+  oop,
+} from "./skills/generalSkills";
 import {
   gameMakerLanguage,
   java,
@@ -22,32 +35,33 @@ import {
   timeManagement,
 } from "./skills/softSkills";
 import {
-  algorithms,
-  dataStructures,
-  designPatterns,
-  oop,
-} from "./skills/generalSkills";
-import {
-  pusher,
-  rest,
   openAI,
+  pusher,
   replicateAI,
+  rest,
   tRPC,
 } from "./skills/technicalHardSkills/technicalHardSkillsAPIs";
 import {
-  firebase,
-  nextauth,
-  cloudinary,
+  auth0,
   clerkAuth,
-  stripe,
-  supabase,
+  cloudinary,
+  django,
+  edgestore,
+  firebase,
   flask,
   jwt,
-  django,
-  auth0,
-  edgestore,
+  nextauth,
+  stripe,
+  supabase,
 } from "./skills/technicalHardSkills/technicalHardSkillsBackendWebDev";
 import { gcp } from "./skills/technicalHardSkills/technicalHardSkillsCloudComputing";
+import {
+  black,
+  checkstyle,
+  eslint,
+  prettier,
+  zod,
+} from "./skills/technicalHardSkills/technicalHardSkillsCodeQuality";
 import {
   convex,
   mongoDB,
@@ -59,64 +73,63 @@ import {
   gitHubActions,
 } from "./skills/technicalHardSkills/technicalHardSkillsDevOps";
 import {
-  chakraUI,
-  recoil,
-  html,
-  css,
-  tailwindCSS,
-  headlessUI,
-  shadcnUI,
-  radixUI,
   axios,
-  nextUI,
-  storybooks,
+  chakraUI,
+  css,
+  headlessUI,
+  html,
   jotai,
-  simpleGui,
+  nextUI,
+  radixUI,
   react,
+  recoil,
+  shadcnUI,
+  simpleGui,
+  storybooks,
+  tailwindCSS,
   zustand,
 } from "./skills/technicalHardSkills/technicalHardSkillsFrontendWebDev";
 import { nextjs } from "./skills/technicalHardSkills/technicalHardSkillsFullStackWebDev";
 import {
-  scikitLearn,
+  jupyterNotebooks,
+  matplotlib,
   numpy,
   pandas,
-  matplotlib,
+  scikitLearn,
   seaborn,
-  jupyterNotebooks,
 } from "./skills/technicalHardSkills/technicalHardSkillsMLDS";
+import {
+  algebra,
+  calculus,
+  linearAlgebra,
+  mechanics,
+  probability,
+  statistics,
+  vectors,
+} from "./skills/technicalHardSkills/technicalHardSkillsMaths";
+import {
+  prisma,
+  sqlalchemy,
+} from "./skills/technicalHardSkills/technicalHardSkillsORMs";
 import { gameMakerStudio } from "./skills/technicalHardSkills/technicalHardSkillsOthers";
 import {
-  yarn,
+  maven,
   npm,
   nxjs,
   pnpm,
   poetry,
-  maven,
+  yarn,
 } from "./skills/technicalHardSkills/technicalHardSkillsProjectManagers";
 import {
   jest,
-  pytest,
   junit,
+  pytest,
 } from "./skills/technicalHardSkills/technicalHardSkillsTesting";
 import {
   git,
   gitHub,
   gitLab,
 } from "./skills/technicalHardSkills/technicalHardSkillsVCS";
-import {
-  prisma,
-  sqlalchemy,
-} from "./skills/technicalHardSkills/technicalHardSkillsORMs";
-import {
-  black,
-  checkstyle,
-  eslint,
-  prettier,
-  zod,
-} from "./skills/technicalHardSkills/technicalHardSkillsCodeQuality";
-import MaterialInterface from "@/interfaces/material/MaterialInterface";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
-import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
 
 /**
  * Array of web development projects.
@@ -848,8 +861,42 @@ const machineLearningProjects: ProjectInterface[] = [
       adaptability,
       oop,
       algorithms,
+      algebra,
+      calculus,
+      linearAlgebra,
+      vectors,
+      statistics,
+      probability,
+      mechanics,
     ],
     category: "Machine Learning",
+  },
+  {
+    name: "Machine Learning Theory Practice",
+    slug: "machine-learning-theory-practice",
+    description: `
+      A collection of machine learning theory questions and answers.
+      This is used to practice for exams and tests.
+      `,
+    category: "Machine Learning",
+    repositoryURL: `https://github.com/mbeps/Machine-Learning-Theory-Practice`,
+    skills: [
+      machineLearning,
+      dataScience,
+      artificialIntelligence,
+      hyperparameters,
+      boosting,
+      neuralNetworks,
+      problemSolving,
+      criticalThinking,
+      creativity,
+      adaptability,
+      algorithms,
+      vectors,
+      statistics,
+      probability,
+      linearAlgebra,
+    ],
   },
 ];
 
