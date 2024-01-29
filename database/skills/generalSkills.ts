@@ -342,19 +342,6 @@ export const mathematics: SkillInterface = {
   isMainSkill: false,
   skillType: "general",
   slug: "mathematics",
-  // skills: [
-  //   probability,
-  //   statistics,
-  //   calculus,
-  //   trigonometry,
-  //   algebra,
-  //   linearAlgebra,
-  //   discrete,
-  //   geometry,
-  //   logics,
-  //   vectors,
-  //   mechanics,
-  // ],
 };
 
 export const versionControl: SkillInterface = {
@@ -415,6 +402,7 @@ const generalSkills = [
   userAuthentication,
   webDevelopment,
   gameDevelopment,
+  mathematics,
 ];
 
 export default generalSkills;
