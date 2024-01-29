@@ -3,6 +3,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
+import { CERTIFICATES } from "@/constants/pages";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,7 +11,6 @@ import React from "react";
 import { BsArrowUpRightCircle, BsInfoCircle } from "react-icons/bs";
 import Tag from "../Tags/Tag";
 import { AspectRatio } from "../shadcn/ui/aspect-ratio";
-import { CERTIFICATES } from "@/constants/pages";
 
 interface CertificateItemProps {
   certificate: CertificateInterface;

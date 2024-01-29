@@ -1,11 +1,11 @@
-import React from "react";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
-import Link from "next/link";
 import SocialLinkInterface from "@/interfaces/SocialLinkInterface";
+import Link from "next/link";
+import React from "react";
 
 interface SocialIconProps extends SocialLinkInterface {
   iconSize?: number;

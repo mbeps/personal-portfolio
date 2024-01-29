@@ -2,18 +2,18 @@ import SkillInterface from "@/interfaces/skills/SkillInterface";
 import {
   databaseManagementSystems,
   databases,
-  noSql,
   indexing,
+  noSql,
   orm,
   sql,
 } from "../generalSkills";
+import { java, javascript, python, typescript } from "../languages";
 import {
   mongoDB,
   mySQL,
   postgreSQL,
   sqlite,
 } from "./technicalHardSkillsDatabases";
-import { java, javascript, python, typescript } from "../languages";
 
 export const mongoose: SkillInterface = {
   name: "Mongoose",

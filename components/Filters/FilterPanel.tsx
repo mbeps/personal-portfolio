@@ -15,8 +15,9 @@ import {
 } from "@/components/shadcn/ui/popover";
 import { NAVBAR_HEIGHT } from "@/constants/NAVBAR";
 import useIsMounted from "@/hooks/useIsMounted";
-import { cn } from "@/lib/utils";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
+import FilterOption from "@/interfaces/filters/FilterOption";
+import { cn } from "@/lib/utils";
 import { Check } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -26,7 +27,6 @@ import { IoClose } from "react-icons/io5";
 import HeadingThree from "../Text/HeadingThree";
 import { Button } from "../shadcn/ui/button";
 import { ArchiveToggle } from "./ArchiveToggle";
-import FilterOption from "@/interfaces/filters/FilterOption";
 
 interface FilterOverlayProps {
   filterCategories: FilterCategory[];

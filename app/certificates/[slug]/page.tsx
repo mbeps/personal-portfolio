@@ -1,8 +1,14 @@
-import Tag from "@/components/Tags/Tag";
+import getContentBySlug from "@/actions/material/getContentBySlug";
+import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
+import filterSkillsByType from "@/actions/skills/filterSkillsByType";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
+import Tag from "@/components/Tags/Tag";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
+import { Button } from "@/components/shadcn/ui/button";
+import allCertificates from "@/database/certificates";
+import CertificateInterface from "@/interfaces/material/CertificateInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,14 +16,6 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle } from "react-icons/bs";
 import { RxTriangleRight } from "react-icons/rx";
-import allCertificates from "@/database/certificates";
-import { Button } from "@/components/shadcn/ui/button";
-import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
-import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
-import filterSkillsByType from "@/actions/skills/filterSkillsByType";
-import { getAssociatedNestedSkills } from "@/actions/skills/getAssociatedSkills";
-import CertificateInterface from "@/interfaces/material/CertificateInterface";
-import getContentBySlug from "@/actions/material/getContentBySlug";
 
 /**
  * Metadata object for the dynamic certificate page.

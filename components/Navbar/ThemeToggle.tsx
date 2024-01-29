@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
+import React, { useEffect, useState } from "react";
 import { RiMoonFill, RiSunLine } from "react-icons/ri";
 
 /**

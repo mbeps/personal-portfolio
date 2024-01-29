@@ -1,5 +1,6 @@
-import PageDescription from "@/components/UI/PageDescription";
 import HeadingOne from "@/components/Text/HeadingOne";
+import PageDescription from "@/components/UI/PageDescription";
+import { PROJECTS } from "@/constants/pages";
 import {
   backendWebDevProjects,
   extraWebDevProjects,
@@ -12,7 +13,6 @@ import {
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import type { Metadata } from "next";
 import ProjectsView from "./components/ProjectsView";
-import { PROJECTS } from "@/constants/pages";
 
 const description = `
   Discover my portfolio of projects, both current and archived. 

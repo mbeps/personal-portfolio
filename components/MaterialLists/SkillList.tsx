@@ -23,14 +23,14 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/shadcn/ui/popover";
-import { cn } from "@/lib/utils";
 import FilterOption from "@/interfaces/filters/FilterOption";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
+import { cn } from "@/lib/utils";
 import { Check } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 interface SkillListProps {
   skills: SkillInterface[];

@@ -1,9 +1,9 @@
 import HeadingOne from "@/components/Text/HeadingOne";
-import { BlogsView } from "./components/BlogsView";
-import type { Metadata } from "next";
 import PageDescription from "@/components/UI/PageDescription";
-import blogs from "@/database/blogs";
 import { BLOG } from "@/constants/pages";
+import blogs from "@/database/blogs";
+import type { Metadata } from "next";
+import { BlogsView } from "./components/BlogsView";
 
 const description = `
   Explore my collection of blogs on various topics. 

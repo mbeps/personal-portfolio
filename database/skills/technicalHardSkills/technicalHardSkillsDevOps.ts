@@ -1,13 +1,13 @@
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import {
-  infrastructureAsCode,
-  continuousDelivery,
-  continuousIntegration,
-  continuousDeployment,
-  devOps,
   automation,
   clusterisation,
   containerization,
+  continuousDelivery,
+  continuousDeployment,
+  continuousIntegration,
+  devOps,
+  infrastructureAsCode,
 } from "../generalSkills";
 
 export const gitHubActions: SkillInterface = {

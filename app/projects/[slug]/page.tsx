@@ -1,8 +1,10 @@
+import getImagesFromFileSystem from "@/actions/file-system/getImagesFromFileSystem";
+import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
+import getVideosFromFileSystem from "@/actions/file-system/getVideosFromFileSystem";
 import getContentBySlug from "@/actions/material/getContentBySlug";
 import hasProjectCover from "@/actions/material/projects/hasProjectCover";
 import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
-import { getAssociatedNestedSkills } from "@/actions/skills/getAssociatedSkills";
 import Gallery from "@/components/Gallery/Gallery";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import SkillTag from "@/components/Tags/SkillTag";
@@ -20,9 +22,6 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
-import getImagesFromFileSystem from "@/actions/file-system/getImagesFromFileSystem";
-import getVideosFromFileSystem from "@/actions/file-system/getVideosFromFileSystem";
-import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
 
 /**
  * Metadata object for the dynamic project page.

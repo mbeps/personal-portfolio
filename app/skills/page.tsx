@@ -1,8 +1,7 @@
-import PageDescription from "@/components/UI/PageDescription";
 import HeadingOne from "@/components/Text/HeadingOne";
+import PageDescription from "@/components/UI/PageDescription";
 import { languages } from "@/database/skills/languages";
 import allSkills from "@/database/skills/skills";
-import React from "react";
 import SkillList from "../../components/MaterialLists/SkillList";
 
 const description = `

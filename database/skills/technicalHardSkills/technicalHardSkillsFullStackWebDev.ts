@@ -1,7 +1,7 @@
 import SkillInterface from "@/interfaces/skills/SkillInterface";
-import { webDevelopment, userCentricDesign } from "../generalSkills";
-import { react, svelte, vue } from "./technicalHardSkillsFrontendWebDev";
+import { userCentricDesign, webDevelopment } from "../generalSkills";
 import { javascript, typescript } from "../languages";
+import { react, svelte, vue } from "./technicalHardSkillsFrontendWebDev";
 
 export const nextjs: SkillInterface = {
   name: "Next.js",

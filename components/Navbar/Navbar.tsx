@@ -1,13 +1,13 @@
 "use client";
-import { useNavbarStore } from "@/hooks/useNavbarStore";
+import { NAVBAR_HEIGHT } from "@/constants/NAVBAR";
 import NAV_ITEMS from "@/constants/pages";
+import { useNavbarStore } from "@/hooks/useNavbarStore";
 import { useEffect, useState } from "react";
 import { IoMdClose, IoMdMenu } from "react-icons/io";
 import HomeButton from "./HomeButton";
 import NavbarItem from "./NavbarItem";
 import NavbarOverlay from "./NavbarOverlay";
 import ThemeToggle from "./ThemeToggle";
-import { NAVBAR_HEIGHT } from "@/constants/NAVBAR";
 
 /**
  * Navbar component shown at the top of the page.

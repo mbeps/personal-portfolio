@@ -1,6 +1,6 @@
+import FilterOption from "@/interfaces/filters/FilterOption";
 import Link from "next/link";
 import { Switch } from "../shadcn/ui/switch";
-import FilterOption from "@/interfaces/filters/FilterOption";
 
 interface ArchiveToggleProps {
   generateUrl: (filters: FilterOption[], basePath: string) => string;
