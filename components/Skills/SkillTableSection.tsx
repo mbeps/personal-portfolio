@@ -46,12 +46,22 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
       onValueChange={setSelectedTab}
     >
       {/* Tab Options */}
-      <TabsList className="mt-6 -mb-2 w-full md:w-auto">
+      <TabsList className="
+        mt-6 md:-ml-4
+        w-full md:w-auto 
+        bg-transparent 
+        flex-col md:flex-row
+        ">
         {nonEmptySkillCategories.map(({ title }) => (
           <TabsTrigger
             key={stringToSlug(title)}
             value={stringToSlug(title)}
-            className="text-lg md:text-xl font-bold"
+            className="
+              text-2xl md:text-2xl font-bold
+              data-[state=inactive]:text-neutral-400 dark:data-[state=inactive]:text-neutral-600
+              data-[state=active]:shadow-none data-[state=active]:bg-transparent
+              transition-all duration-500
+              "
           >
             {title}
           </TabsTrigger>
