@@ -4,7 +4,6 @@ import { javascript, python, typescript } from "../languages";
 export const black: SkillInterface = {
   name: "Black",
   category: "Code Quality",
-  isMainSkill: false,
   skillType: "hard",
   slug: "black-linting",
   relatedSkills: [python],
