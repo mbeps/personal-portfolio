@@ -69,7 +69,8 @@ const CertificateItem: React.FC<CertificateItemProps> = ({ certificate }) => {
                 src={certificate.certificateImage}
                 alt={`${certificate.name} certificate image`}
                 fill={true}
-                quality={40}
+                quality={20}
+                loading='lazy'
                 className="
                   rounded-xl
                   cursor-pointer

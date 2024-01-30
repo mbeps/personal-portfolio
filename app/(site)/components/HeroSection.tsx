@@ -34,7 +34,7 @@ const HeroSection = () => {
           animate-fadeIn animation-delay-2
           md:flex-row md:space-x-12 md:text-left  
           my-auto w-full
-"
+        "
       >
         {/* Profile Image */}
         <div className="flex md:w-1/2 justify-center p-8 md:p-0">
@@ -44,6 +44,9 @@ const HeroSection = () => {
             width={325}
             height={325}
             className="rounded-full shadow-2xl"
+            quality={60}
+            loading="eager"
+            priority
           />
         </div>
 

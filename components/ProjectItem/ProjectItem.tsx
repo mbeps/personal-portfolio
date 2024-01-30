@@ -73,7 +73,8 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
                   key={project.thumbnailImage}
                   alt={`${project.name} cover image`}
                   fill={true}
-                  quality={40}
+                  loading='lazy'
+                  quality={15}
                   className="
                     rounded-xl 
                     cursor-pointer
@@ -86,9 +87,8 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
         )}
 
         <div
-          className={`mt-8 ${
-            project.thumbnailImage ? "lg:w-1/2" : "lg:w-full"
-          }`}
+          className={`mt-8 ${project.thumbnailImage ? "lg:w-1/2" : "lg:w-full"
+            }`}
         >
           {/* Project Title */}
           <Link href={`${basePath}/${project.slug}`}>
