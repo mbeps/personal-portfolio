@@ -52,7 +52,7 @@ interface ProjectPageProps {
 
 const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
   const slug = params.slug;
-  const skill = getSkillBySlug(slug, [...allSkills, ...languages]);
+  const skill = getSkillBySlug(slug, [...allSkills]);
   const blogMetadata = blogs;
 
   if (!skill) {

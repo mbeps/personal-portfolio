@@ -30,7 +30,6 @@ export const graphQL: SkillInterface = {
 export const tRPC: SkillInterface = {
   name: "tRPC",
   category: "APIs",
-  isMainSkill: true,
   skillType: "hard",
   slug: "trpc-api",
   relatedSkills: [webDevelopment, apis],

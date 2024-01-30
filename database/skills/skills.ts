@@ -18,7 +18,7 @@ import technicalHardSkillsProjectManagers from "./technicalHardSkills/technicalH
 import technicalHardSkillsTesting from "./technicalHardSkills/technicalHardSkillsTesting";
 import technicalHardSkillsVCS from "./technicalHardSkills/technicalHardSkillsVCS";
 
-const allHardSkills: SkillInterface[] = [
+const hardSkills: SkillInterface[] = [
   ...technicalHardSkillsFullStackWebDev,
   ...technicalHardSkillsAPIs,
   ...technicalHardSkillsBackendWebDev,
@@ -37,13 +37,13 @@ const allHardSkills: SkillInterface[] = [
 ];
 
 const allSkills: SkillInterface[] = [
-  ...allHardSkills,
+  ...hardSkills,
   ...generalSkills,
   ...softSkills,
   ...languages,
 ];
 
-export const technologies: SkillInterface[] = allHardSkills.filter(
+export const technologies: SkillInterface[] = hardSkills.filter(
   (skill) => skill.isMainSkill,
 );
 

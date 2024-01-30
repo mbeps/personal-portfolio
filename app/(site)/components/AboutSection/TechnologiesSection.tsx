@@ -32,6 +32,9 @@ const TechnologiesSection: React.FC = () => {
     "Version Control System",
     "Web Sockets",
     "Mathematics",
+    // "Testing",
+    "Cloud Computing",
+    "Automation",
     "Other",
   ];
 
@@ -56,20 +59,20 @@ const TechnologiesSection: React.FC = () => {
   /**
    * Gets the first 'limit' skills.
    * These are then displayed as tags.
-   * @param limit (number): the number of skills to take
+   * @param totalLimit (number): the number of skills to take
    * @returns (string[]): list of skill names
    */
-  const firstNSkills = (limit: number): SkillInterface[] => {
+  function firstNSkills(skillsToLimit: SkillInterface[], totalLimit: number): SkillInterface[] {
     const uniqueSkills = new Map<string, SkillInterface>();
 
-    allSkills.forEach((skill) => {
+    skillsToLimit.forEach((skill) => {
       if (!uniqueSkills.has(skill.name)) {
         uniqueSkills.set(skill.name, skill);
       }
     });
 
-    return Array.from(uniqueSkills.values()).slice(0, limit);
-  };
+    return Array.from(uniqueSkills.values()).slice(0, totalLimit);
+  }
 
   /**
    * Gets the first few skills from each category.
@@ -77,11 +80,9 @@ const TechnologiesSection: React.FC = () => {
    * @param limitPerCategory (number): the number of skills to take from each category
    * @returns (string[]): list of skill names
    */
-  const firstNSkillsPerCategory = (
-    limitPerCategory: number,
-  ): SkillInterface[] => {
+  function firstNSkillsPerCategory(skillsToLimit: SkillInterface[], limitPerCategory: number): SkillInterface[] {
     // Categorize the skills into an array of SkillsCategoryInterface
-    const skillCategories: SkillsCategoryInterface[] = allSkills.reduce(
+    const skillCategories: SkillsCategoryInterface[] = skillsToLimit.reduce(
       (acc, skill) => {
         const category = skill.category || "Other"; // If no category, put in 'Other' category
         const existingCategory = acc.find(
@@ -107,11 +108,11 @@ const TechnologiesSection: React.FC = () => {
     });
 
     return skills;
-  };
+  }
 
   const handleDisplaySkills = () => {
-    return firstNSkillsPerCategory(2).slice(0, 16);
-    return firstNSkills(100);
+    return firstNSkillsPerCategory(technologies, 2).slice(0, 16);
+    return firstNSkills(technologies, 100);
   };
 
   return (
