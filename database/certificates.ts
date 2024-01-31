@@ -1065,7 +1065,7 @@ const devOpsCertificates: CertificateInterface[] = [
     category: "DevOps",
     issuer: "GitHub",
     certificateURL:
-      "https://www.linkedin.com/learning/certificates/0344b0df296833ba35ddabf20563556bc67ee7ed0b83b55e19021443d1b9e496",
+      "https://www.linkedin.com/learning/certificates/a46589fd9baa43c2c77d7de14e3830cf85648f1a6d5d7a489096d4e1b2a4d279",
     skills: [
       devOps,
       gitHubActions,
