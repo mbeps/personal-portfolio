@@ -15,7 +15,7 @@ export default interface SkillInterface {
     | "Testing"
     | "Project Managers"
     | "Data Science"
-    | "Artificial Intelligence & Machine Learning"
+    | "Artificial Intelligence"
     | "Cloud Computing"
     | "Databases"
     | "APIs"

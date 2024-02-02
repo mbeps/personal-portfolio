@@ -114,7 +114,7 @@ export const linuxDevelopment: SkillInterface = {
 
 export const machineLearning: SkillInterface = {
   name: "Machine Learning",
-  category: "Artificial Intelligence & Machine Learning",
+  category: "Artificial Intelligence",
   isMainSkill: false,
   skillType: "general",
   slug: "machine-learning",
@@ -122,7 +122,7 @@ export const machineLearning: SkillInterface = {
 
 export const deepLearning: SkillInterface = {
   name: "Deep Learning",
-  category: "Artificial Intelligence & Machine Learning",
+  category: "Artificial Intelligence",
   isMainSkill: false,
   skillType: "general",
   slug: "deep-learning",
@@ -130,7 +130,7 @@ export const deepLearning: SkillInterface = {
 
 export const artificialIntelligence: SkillInterface = {
   name: "Artificial Intelligence",
-  category: "Artificial Intelligence & Machine Learning",
+  category: "Artificial Intelligence",
   isMainSkill: false,
   skillType: "general",
   slug: "artificial-intelligence",
@@ -146,7 +146,7 @@ export const dataScience: SkillInterface = {
 
 export const hyperparameters: SkillInterface = {
   name: "Hyperparameters",
-  category: "Artificial Intelligence & Machine Learning",
+  category: "Artificial Intelligence",
   isMainSkill: false,
   skillType: "general",
   slug: "hyperparameters",
@@ -156,7 +156,7 @@ export const boosting: SkillInterface = {
   name: "Boosting",
   isMainSkill: false,
   skillType: "general",
-  category: "Artificial Intelligence & Machine Learning",
+  category: "Artificial Intelligence",
   slug: "boosting",
 };
 
@@ -170,7 +170,7 @@ export const dataVisualisation: SkillInterface = {
 
 export const neuralNetworks: SkillInterface = {
   name: "Neural Networks",
-  category: "Artificial Intelligence & Machine Learning",
+  category: "Artificial Intelligence",
   isMainSkill: false,
   skillType: "general",
   slug: "neural-networks",

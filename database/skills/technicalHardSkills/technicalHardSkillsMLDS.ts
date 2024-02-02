@@ -13,7 +13,7 @@ import { python } from "../languages";
 
 export const scikitLearn: SkillInterface = {
   name: "Scikit Learn",
-  category: "Artificial Intelligence & Machine Learning",
+  category: "Artificial Intelligence",
   isMainSkill: true,
   skillType: "hard",
   slug: "scikit-learn",
@@ -30,7 +30,7 @@ export const scikitLearn: SkillInterface = {
 
 export const pandas: SkillInterface = {
   name: "Pandas",
-  category: "Artificial Intelligence & Machine Learning",
+  category: "Artificial Intelligence",
   isMainSkill: true,
   skillType: "hard",
   slug: "pandas",
@@ -39,7 +39,7 @@ export const pandas: SkillInterface = {
 
 export const numpy: SkillInterface = {
   name: "NumPy",
-  category: "Artificial Intelligence & Machine Learning",
+  category: "Artificial Intelligence",
   isMainSkill: true,
   skillType: "hard",
   slug: "numpy",
@@ -66,7 +66,7 @@ export const seaborn: SkillInterface = {
 
 export const keras: SkillInterface = {
   name: "Keras",
-  category: "Artificial Intelligence & Machine Learning",
+  category: "Artificial Intelligence",
   isMainSkill: true,
   skillType: "hard",
   slug: "keras",
