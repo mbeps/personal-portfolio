@@ -1,11 +1,9 @@
 "use client";
 
+import isSkillAssociatedWithMaterial from "@/actions/material/isSkillAssociatedWithMaterial";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
 import getAssociatedSkills from "@/actions/skills/getAssociatedSkills";
 import groupSkills from "@/actions/skills/groupSkills";
-import isSkillAssociatedWithBlogs from "@/actions/skills/isSkillAssociatedWithBlogs";
-import isSkillAssociatedWithCertificate from "@/actions/skills/isSkillAssociatedWithCertificate";
-import isSkillAssociatedWithProject from "@/actions/skills/isSkillAssociatedWithProject";
 import SkillTag from "@/components/Tags/SkillTag";
 import Tag from "@/components/Tags/Tag";
 import HeadingThree from "@/components/Text/HeadingThree";
@@ -35,6 +33,10 @@ import { languages } from "@/database/skills/languages";
 import allSkills from "@/database/skills/skills";
 import useIsMounted from "@/hooks/useIsMounted";
 import FilterOption from "@/interfaces/filters/FilterOption";
+import BlogInterface from "@/interfaces/material/BlogInterface";
+import CertificateInterface from "@/interfaces/material/CertificateInterface";
+import MaterialInterface from "@/interfaces/material/MaterialInterface";
+import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -132,17 +134,12 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
   );
   const groupedSkills = groupSkills(groupedBy, languageSkills || []);
 
-  const projects = allProjects;
-  const certificates = allCertificates;
-  const allBlogs = blogs;
+  const projects: ProjectInterface[] = allProjects;
+  const certificates: CertificateInterface[] = allCertificates;
+  const allBlogs: BlogInterface[] = blogs;
+  const allMaterial: MaterialInterface[] = [...projects, ...certificates, ...allBlogs];
 
-  const hasProjects = isSkillAssociatedWithProject(language, projects);
-  const hasCertificates = isSkillAssociatedWithCertificate(
-    language,
-    certificates,
-  );
-  const hasBlogs = isSkillAssociatedWithBlogs(language, allBlogs);
-  const hasMaterial = hasProjects || hasCertificates || hasBlogs;
+  const hasMaterial = isSkillAssociatedWithMaterial(language, allMaterial);
 
   const options: FilterOption[] = [
     { slug: "category", entryName: "Category" },
@@ -195,9 +192,8 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
                     {options.map((option, index) => (
                       <DropdownMenuItem
                         key={index}
-                        className={`${
-                          option.slug === groupedBy ? "font-bold" : ""
-                        }`}
+                        className={`${option.slug === groupedBy ? "font-bold" : ""
+                          }`}
                         onSelect={() => setGroupedBy(option.slug)}
                       >
                         {option.entryName}
