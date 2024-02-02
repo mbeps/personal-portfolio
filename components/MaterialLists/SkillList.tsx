@@ -1,6 +1,7 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
+import findAllMaterialsAttributedToSkill from "@/actions/material/findAllMaterialsAttributedToSkill";
 import groupSkills from "@/actions/skills/groupSkills";
 import SkillTag from "@/components/Tags/SkillTag";
 import HeadingThree from "@/components/Text/HeadingThree";
@@ -23,6 +24,10 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/shadcn/ui/popover";
+import blogs from "@/database/blogs";
+import certificates from "@/database/certificates";
+import projects from "@/database/projects";
+import { nextjs } from "@/database/skills/technicalHardSkills/technicalHardSkillsFullStackWebDev";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
@@ -39,6 +44,8 @@ interface SkillListProps {
 
 const SkillList: React.FC<SkillListProps> = ({ skills }) => {
   const [isOpen, setOpen] = useState(false);
+
+  const allMaterial = [...projects, ...certificates, ...blogs];
 
   const searchParams = useSearchParams();
   const basePath = "/skills";
@@ -57,7 +64,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
   const includeGeneralSkills =
     searchParams.get(generalSkillParamName) === "true";
   const includeSoftSkills = searchParams.get(softSkillParamName) === "true";
-  const includeNoMaterial = searchParams.get(noMaterialParamName) === "true";
+  const includeNoMaterial = searchParams.get(noMaterialParamName) === "true"; // false by default
 
   //^ LOGIC FOR DISPLAYING FILTERED SKILLS
   const options = [
@@ -273,7 +280,10 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
                   <SkillTag
                     key={index}
                     skill={skill}
-                    hide={includeNoMaterial}
+                    hide={
+                      !(findAllMaterialsAttributedToSkill(skill, allMaterial).length >= 5)
+                      && includeNoMaterial
+                    }
                   />
                 ))}
               </div>

@@ -34,7 +34,7 @@ const SkillTag: React.FC<TagProps> = ({ skill, hide }) => {
 
   const hasMaterial = isSkillAssociatedWithMaterial(skill, allMaterial);
 
-  if (hide && !hasMaterial) {
+  if (hide) {
     return <></>;
   }
 
