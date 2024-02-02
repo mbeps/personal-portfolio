@@ -1,5 +1,4 @@
 import MaterialInterface from "./MaterialInterface";
-import SkillInterface from "../skills/SkillInterface";
 
 /**
  * Represents a blog.

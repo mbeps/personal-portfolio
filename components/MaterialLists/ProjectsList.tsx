@@ -1,15 +1,11 @@
-import ProjectInterface from "@/interfaces/material/ProjectInterface";
+import stringToSlug from "@/actions/stringToSlug";
 import ProjectItem from "@/components/ProjectItem/ProjectItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import stringToSlug from "@/actions/stringToSlug";
-import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
+import ProjectInterface from "@/interfaces/material/ProjectInterface";
+import MaterialListProps from "@/interfaces/props/MaterialListProps";
 
-interface ProjectsListSectionProps {
-  groupedProjects: MaterialGroupInterface[];
-}
-
-const ProjectsList: React.FC<ProjectsListSectionProps> = ({
-  groupedProjects,
+const ProjectsList: React.FC<MaterialListProps> = ({
+  groupedMaterial: groupedProjects,
 }) => {
   return (
     <div className="material-page-wrapper">

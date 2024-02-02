@@ -25,6 +25,7 @@ import {
 } from "@/components/shadcn/ui/popover";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import { cn } from "@/lib/utils";
 import { Check } from "lucide-react";
 import Link from "next/link";
@@ -58,6 +59,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
   const includeSoftSkills = searchParams.get(softSkillParamName) === "true";
   const includeNoMaterial = searchParams.get(noMaterialParamName) === "true";
 
+  //^ LOGIC FOR DISPLAYING FILTERED SKILLS
   const options = [
     { slug: "category", entryName: "Category" },
     { slug: "skill-type", entryName: "Skill Type" },
@@ -72,8 +74,9 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
   if (includeSoftSkills) includeSkillTypes.push("soft");
 
   // Group skills with the inclusion list
-  const groupedSkills = groupSkills(selectedGroup, skills, includeSkillTypes);
+  const groupedSkills: SkillsCategoryInterface[] = groupSkills(selectedGroup, skills, includeSkillTypes);
 
+  //^ LOGIC FOR HANDLING FILTERS
   function handleSelect(value: string) {
     // Construct the array of FilterOption objects including all current search parameters
     const params: FilterOption[] = [
@@ -135,6 +138,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
     },
   ];
 
+  // currently selected group from the dropdown
   const currentGroupName =
     options.find((option) => option.slug === selectedGroup)?.entryName ||
     "Category";

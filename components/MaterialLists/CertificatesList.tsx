@@ -1,17 +1,13 @@
 import stringToSlug from "@/actions/stringToSlug";
-import Grid from "@/components/UI/Grid";
 import CertificateItem from "@/components/CertificateItem/CertificateItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
+import Grid from "@/components/UI/Grid";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
+import MaterialListProps from "@/interfaces/props/MaterialListProps";
 import React from "react";
-import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 
-interface CertificatesListProps {
-  groupedCertificates: MaterialGroupInterface[];
-}
-
-const CertificatesList: React.FC<CertificatesListProps> = ({
-  groupedCertificates,
+const CertificatesList: React.FC<MaterialListProps> = ({
+  groupedMaterial: groupedCertificates,
 }) => {
   return (
     <div className="material-page-wrapper">

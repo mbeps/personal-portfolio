@@ -1,15 +1,11 @@
-import Grid from "@/components/UI/Grid";
+import stringToSlug from "@/actions/stringToSlug";
 import BlogItem from "@/components/Blogs/BlogItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import stringToSlug from "@/actions/stringToSlug";
+import Grid from "@/components/UI/Grid";
 import BlogInterface from "@/interfaces/material/BlogInterface";
-import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
+import MaterialListProps from "@/interfaces/props/MaterialListProps";
 
-interface BlogListSectionProps {
-  groupedBlogs: MaterialGroupInterface[];
-}
-
-const BlogsList: React.FC<BlogListSectionProps> = ({ groupedBlogs }) => {
+const BlogsList: React.FC<MaterialListProps> = ({ groupedMaterial: groupedBlogs }) => {
   return (
     <div className="material-page-wrapper">
       {groupedBlogs.length > 0 ? (

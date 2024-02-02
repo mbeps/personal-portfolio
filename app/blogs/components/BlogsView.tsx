@@ -297,7 +297,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
       />
 
       {/* Blog List */}
-      <BlogsList groupedBlogs={groupedBlogs} />
+      <BlogsList groupedMaterial={groupedBlogs} />
 
       {/* Filter Modal */}
       <FilterOverlay
