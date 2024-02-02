@@ -351,7 +351,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
       />
 
       {/* List of projects */}
-      <ProjectsList groupedProjects={groupedProjects} />
+      <ProjectsList groupedMaterial={groupedProjects} />
 
       {/* Filter Modal */}
       <FilterOverlay

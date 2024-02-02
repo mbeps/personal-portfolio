@@ -333,7 +333,7 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
       />
 
       {/* List of projects */}
-      <CertificatesList groupedCertificates={groupedCertificates} />
+      <CertificatesList groupedMaterial={groupedCertificates} />
       {/* Filter Modal */}
       <FilterOverlay
         isOpen={isFilterOpen}
