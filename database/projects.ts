@@ -708,7 +708,7 @@ const machineLearningProjects: ProjectInterface[] = [
     name: "House Price Prediction",
     slug: "house-price-prediction",
     description: `An analytical approach to predicting California housing prices using the RandomForestRegressor and LinearRegressor, with a focus on data preprocessing and feature engineering.`,
-    repositoryURL: "https://github.com/your-username/House-Price-Prediction",
+    repositoryURL: "https://github.com/mbeps/House_Price_Prediction",
     skills: [
       python,
       scikitLearn,
