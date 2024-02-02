@@ -53,7 +53,7 @@ export const pusher: SkillInterface = {
 
 export const openAI: SkillInterface = {
   name: "OpenAI",
-  category: "Artificial Intelligence & Machine Learning",
+  category: "Artificial Intelligence",
   isMainSkill: true,
   skillType: "hard",
   slug: "open-ai",
@@ -62,7 +62,7 @@ export const openAI: SkillInterface = {
 
 export const replicateAI: SkillInterface = {
   name: "Replicate AI",
-  category: "Artificial Intelligence & Machine Learning",
+  category: "Artificial Intelligence",
   isMainSkill: true,
   skillType: "hard",
   slug: "repliate-ai",
