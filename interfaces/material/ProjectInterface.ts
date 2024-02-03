@@ -12,5 +12,4 @@ export default interface ProjectInterface extends MaterialInterface {
   repositoryURL?: string;
   deploymentURL?: string;
   thumbnailImage?: string; // added dynamically from file system
-  hasImage?: boolean; // used for adding image path to imageURL
 }

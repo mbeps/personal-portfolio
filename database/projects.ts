@@ -130,6 +130,7 @@ import {
   gitHub,
   gitLab,
 } from "./skills/technicalHardSkills/technicalHardSkillsVCS";
+import updateProjectImages from "@/actions/file-system/updateProjectImages";
 
 /**
  * Array of web development projects.
@@ -180,7 +181,7 @@ const webdevProjects: ProjectInterface[] = [
       algorithms,
     ],
     category: "Full-Stack Web Development",
-    hasImage: true,
+    
   },
   {
     name: `Ringmaster Messaging`,
@@ -226,7 +227,7 @@ const webdevProjects: ProjectInterface[] = [
       algorithms,
     ],
     category: "Full-Stack Web Development",
-    hasImage: true,
+    
   },
   {
     name: `Magician AI`,
@@ -273,7 +274,7 @@ const webdevProjects: ProjectInterface[] = [
       algorithms,
     ],
     category: "Full-Stack Web Development",
-    hasImage: true,
+    
   },
   {
     name: `Drumroll Music`,
@@ -312,7 +313,7 @@ const webdevProjects: ProjectInterface[] = [
       algorithms,
     ],
     category: "Full-Stack Web Development",
-    hasImage: true,
+    
   },
   {
     name: "Joker Notes",
@@ -352,7 +353,7 @@ const webdevProjects: ProjectInterface[] = [
     ],
     category: "Full-Stack Web Development",
     deploymentURL: "https://joker-notes.vercel.app/",
-    hasImage: true,
+    
   },
 ];
 
@@ -402,7 +403,7 @@ const extraWebDevProjects: ProjectInterface[] = [
       algorithms,
     ],
     repositoryURL: "https://github.com/mbeps/quizmify",
-    hasImage: true,
+    
   },
   {
     name: `Sideshow Articles`,
@@ -436,7 +437,7 @@ const extraWebDevProjects: ProjectInterface[] = [
     ],
     category: "Full-Stack Web Development",
     archived: true,
-    hasImage: true,
+    
   },
   {
     name: `Noodle`,
@@ -481,7 +482,7 @@ const extraWebDevProjects: ProjectInterface[] = [
     ],
     category: "Full-Stack Web Development",
     archived: true,
-    hasImage: true,
+    
   },
   {
     name: `ConvoGPT`,
@@ -930,7 +931,7 @@ const gameDevProjects: ProjectInterface[] = [
       black,
     ],
     category: "Game Development",
-    hasImage: true,
+    
   },
   {
     name: "Surface Fight",
@@ -952,7 +953,7 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/surface-fight",
     archived: true,
-    hasImage: true,
+    
   },
   {
     name: "Platformer",
@@ -975,7 +976,7 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/platformer",
     archived: true,
-    hasImage: true,
+    
   },
   {
     name: "Platformer Death Walk",
@@ -998,7 +999,7 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/platformer-death-walk",
     archived: true,
-    hasImage: true,
+    
   },
   {
     name: "Coding Breakout",
@@ -1020,7 +1021,7 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/coding-break-out",
     archived: true,
-    hasImage: true,
+    
   },
   {
     name: "Catch Maruf",
@@ -1042,7 +1043,7 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/catch-maruf",
     archived: true,
-    hasImage: true,
+    
   },
   {
     name: "Against Gravity",
@@ -1064,7 +1065,7 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/against-gravity",
     archived: true,
-    hasImage: true,
+    
   },
   {
     name: "Scrolling Shooter",
@@ -1085,7 +1086,7 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/scrolling-shooter",
     archived: true,
-    hasImage: true,
+    
   },
   {
     name: "Dungeon",
@@ -1106,7 +1107,7 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/dungeon-",
     archived: true,
-    hasImage: true,
+    
   },
   {
     name: " Veg Ninja",
@@ -1128,7 +1129,7 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/vej-ninja",
     archived: true,
-    hasImage: true,
+    
   },
   {
     name: " Angry Cats Space",
@@ -1150,7 +1151,7 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/angry-cats-space",
     archived: true,
-    hasImage: true,
+    
   },
   {
     name: " Angry Cats",
@@ -1172,7 +1173,7 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/angry-cats-space",
     archived: true,
-    hasImage: true,
+    
   },
 ];
 

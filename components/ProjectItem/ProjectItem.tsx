@@ -45,12 +45,7 @@ interface ProjectItemProps {
 const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
   const basePath = PROJECTS.path;
 
-  if (project.hasImage) {
-    project = {
-      ...project,
-      thumbnailImage: `${basePath}/${project.slug}/cover.png`,
-    };
-  }
+
 
   return (
     <div className="bg-neutral-100 dark:bg-neutral-950 p-4 rounded-xl sm:bg-white sm:dark:bg-neutral-900 sm:p-0 transition-colors duration-700 ">
