@@ -4,6 +4,7 @@ import { PROJECTS } from "@/constants/pages";
 import allProjects from "@/database/projects";
 import type { Metadata } from "next";
 import ProjectsView from "./components/ProjectsView";
+import updateProjectImages from "@/actions/file-system/updateProjectImages";
 
 const description = `
   Discover my portfolio of projects, both current and archived. 
@@ -34,7 +35,7 @@ const ProjectsPage = () => {
       <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
         <HeadingOne title={PROJECTS.label} />
         <PageDescription description={description} />
-        <ProjectsView allProjects={allProjects} />
+        <ProjectsView allProjects={updateProjectImages(allProjects)} />
       </div>
     </section>
   );

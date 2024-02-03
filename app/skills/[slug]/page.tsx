@@ -20,6 +20,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 import RelatedSkillsSection from "./components/RelatedSkillsSection";
+import updateProjectImages from "@/actions/file-system/updateProjectImages";
 
 function extractSlugs(skills: SkillInterface[]): string[] {
   return skills.map((skill) => {
@@ -75,7 +76,7 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
   const sections: MaterialSectionInterface[] = [
     {
       name: "Projects",
-      materials: allProjects,
+      materials: updateProjectImages(allProjects),
       basePath: PROJECTS.path,
       ListComponent: ProjectsList,
     },

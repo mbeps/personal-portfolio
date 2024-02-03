@@ -1385,7 +1385,7 @@ export {
 /**
  * Array of all projects.
  */
-const allProjects = updateProjectImages(addNestedSkillsMaterialList<ProjectInterface>([
+const allProjects = addNestedSkillsMaterialList<ProjectInterface>([
   ...webdevProjects,
   ...machineLearningProjects,
   ...extraWebDevProjects,
@@ -1393,6 +1393,6 @@ const allProjects = updateProjectImages(addNestedSkillsMaterialList<ProjectInter
   ...otherProjects,
   ...javaAssignments,
   ...backendWebDevProjects,
-]));
+]);
 
 export default allProjects;
