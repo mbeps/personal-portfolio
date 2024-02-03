@@ -20,7 +20,7 @@ export default interface CertificateInterface extends MaterialInterface {
     | "Web Development"
     | "Software Engineering"
     | "DevOps"
-    | "Machine Learning"
+    | "Artificial Intelligence"
     | "Mathematics"
     | "Databases"
     | "Cloud Computing"
