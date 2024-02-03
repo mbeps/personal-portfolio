@@ -130,6 +130,7 @@ import {
   gitHub,
   gitLab,
 } from "./skills/technicalHardSkills/technicalHardSkillsVCS";
+import updateProjectImages from "@/actions/file-system/updateProjectImages";
 
 /**
  * Array of web development projects.
@@ -1384,7 +1385,7 @@ export {
 /**
  * Array of all projects.
  */
-const allProjects = addNestedSkillsMaterialList<ProjectInterface>([
+const allProjects = updateProjectImages(addNestedSkillsMaterialList<ProjectInterface>([
   ...webdevProjects,
   ...machineLearningProjects,
   ...extraWebDevProjects,
@@ -1392,6 +1393,6 @@ const allProjects = addNestedSkillsMaterialList<ProjectInterface>([
   ...otherProjects,
   ...javaAssignments,
   ...backendWebDevProjects,
-]);
+]));
 
 export default allProjects;

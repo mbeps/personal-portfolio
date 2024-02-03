@@ -1,16 +1,7 @@
 import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/UI/PageDescription";
 import { PROJECTS } from "@/constants/pages";
-import {
-  backendWebDevProjects,
-  extraWebDevProjects,
-  gameDevProjects,
-  javaAssignments,
-  machineLearningProjects,
-  otherProjects,
-  webdevProjects,
-} from "@/database/projects";
-import ProjectInterface from "@/interfaces/material/ProjectInterface";
+import allProjects from "@/database/projects";
 import type { Metadata } from "next";
 import ProjectsView from "./components/ProjectsView";
 
@@ -38,16 +29,6 @@ export const metadata: Metadata = {
  * @returns (JSX.Element): Projects page
  */
 const ProjectsPage = () => {
-  const allProjects: ProjectInterface[] = [
-    ...webdevProjects,
-    ...extraWebDevProjects,
-    ...backendWebDevProjects,
-    ...machineLearningProjects,
-    ...javaAssignments,
-    ...gameDevProjects,
-    ...otherProjects,
-  ];
-
   return (
     <section id="projects" className="flex flex-col items-start md:items-end">
       <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
