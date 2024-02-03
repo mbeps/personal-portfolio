@@ -162,7 +162,7 @@ const blogs: BlogInterface[] = addNestedSkillsMaterialList<BlogInterface>([
     name: "Exploring the Depths of Machine Learning",
     subtitle:
       "A Comprehensive Guide to Machine Learning: Concepts, Challenges, and Real-World Impact",
-    category: "Machine Learning",
+    category: "Artificial Intelligence",
     skills: [
       machineLearning,
       algorithms,

@@ -664,9 +664,9 @@ const algorithmsAndDataStructuresCertificates: CertificateInterface[] = [
 
 const machineLearningCertificates: CertificateInterface[] = [
   {
-    name: "Applied Machine Learning: Algorithms",
+    name: "Applied Artificial Intelligence: Algorithms",
     slug: "964c3b1a049a60afa6bcbb55179e326c7e5cea11db0db7b8d3390be8fc5925e1",
-    category: "Machine Learning",
+    category: "Artificial Intelligence",
     issuer: "LinkedIn",
     certificateURL:
       "https://www.linkedin.com/learning/certificates/964c3b1a049a60afa6bcbb55179e326c7e5cea11db0db7b8d3390be8fc5925e1",
@@ -679,7 +679,7 @@ const machineLearningCertificates: CertificateInterface[] = [
       criticalThinking,
     ],
 
-    description: `This course is the second installment in the Applied Machine Learning series, delving into a variety of algorithms from logistic regression to gradient boosting. It provides a structured approach to choosing the best algorithm for a given problem, considering each algorithm's pros and cons. The course enhances your understanding of what drives each algorithm, their benefits, and drawbacks, equipping you with a significant competitive advantage as a data scientist.`,
+    description: `This course is the second installment in the Applied Artificial Intelligence series, delving into a variety of algorithms from logistic regression to gradient boosting. It provides a structured approach to choosing the best algorithm for a given problem, considering each algorithm's pros and cons. The course enhances your understanding of what drives each algorithm, their benefits, and drawbacks, equipping you with a significant competitive advantage as a data scientist.`,
     learningOutcomes: [
       "Understanding models vs. algorithms.",
       "Cleaning continuous and categorical variables.",
@@ -693,9 +693,9 @@ const machineLearningCertificates: CertificateInterface[] = [
     archived: true,
   },
   {
-    name: "Applied Machine Learning: Foundations",
+    name: "Applied Artificial Intelligence: Foundations",
     slug: "50182c40b257c756e5d8aea70a9f69f14566da4d3cae7dab86f236554cc7238e",
-    category: "Machine Learning",
+    category: "Artificial Intelligence",
     issuer: "LinkedIn",
     certificateURL:
       "https://www.linkedin.com/learning/certificates/50182c40b257c756e5d8aea70a9f69f14566da4d3cae7dab86f236554cc7238e",
@@ -708,14 +708,14 @@ const machineLearningCertificates: CertificateInterface[] = [
       criticalThinking,
     ],
 
-    description: `This course is the first part of the Applied Machine Learning series, focusing on the foundations of machine learning. It provides a pragmatic approach to solving machine learning problems, from exploratory data analysis to model evaluation. The course does not focus on any specific algorithm but provides the tools to efficiently solve a wide range of machine learning problems, making it a valuable resource for anyone looking to delve into the field of machine learning.`,
+    description: `This course is the first part of the Applied Artificial Intelligence series, focusing on the foundations of machine learning. It provides a pragmatic approach to solving machine learning problems, from exploratory data analysis to model evaluation. The course does not focus on any specific algorithm but provides the tools to efficiently solve a wide range of machine learning problems, making it a valuable resource for anyone looking to delve into the field of machine learning.`,
     learningOutcomes: [
       "Understanding what is machine learning.",
-      "Differentiating Machine Learning, Deep Learning, and Artificial Intelligence.",
-      "Handling common challenges in Machine Learning.",
+      "Differentiating Artificial Intelligence, Deep Learning, and Artificial Intelligence.",
+      "Handling common challenges in Artificial Intelligence.",
       "Plotting continuous and categorical features.",
       "Cleaning continuous and categorical data.",
-      "Measuring success in Machine Learning.",
+      "Measuring success in Artificial Intelligence.",
       "Identifying overfitting and underfitting.",
       "Tuning hyperparameters.",
       "Evaluating a model.",
@@ -723,9 +723,9 @@ const machineLearningCertificates: CertificateInterface[] = [
     archived: true,
   },
   {
-    name: "Artificial Intelligence Foundations: Machine Learning",
+    name: "Artificial Intelligence Foundations: Artificial Intelligence",
     slug: "3610d0d7891a746bbe207505c8ec6cfab58723ca973e3082f139a349059248c9",
-    category: "Machine Learning",
+    category: "Artificial Intelligence",
     issuer: "LinkedIn",
     certificateURL:
       "https://www.linkedin.com/learning/certificates/3610d0d7891a746bbe207505c8ec6cfab58723ca973e3082f139a349059248c9",
@@ -751,7 +751,7 @@ const machineLearningCertificates: CertificateInterface[] = [
   {
     name: "Artificial Intelligence Foundations: Neural Networks",
     slug: "5dda55caa1ccf02b29f3c0f5d526c8c026f7fc346a6cad6d9c84f98aba3e2514",
-    category: "Machine Learning",
+    category: "Artificial Intelligence",
     issuer: "LinkedIn",
     certificateURL:
       "https://www.linkedin.com/learning/certificates/5dda55caa1ccf02b29f3c0f5d526c8c026f7fc346a6cad6d9c84f98aba3e2514",
@@ -777,7 +777,7 @@ const machineLearningCertificates: CertificateInterface[] = [
   {
     name: "Data Science Foundations: Fundamentals",
     slug: "e9cb305b4da5f38726226d31e5eef5da66504838131739c389a2d056ed31cf3f",
-    category: "Machine Learning",
+    category: "Artificial Intelligence",
     issuer: "NASBA",
     certificateURL:
       "https://www.linkedin.com/learning/certificates/e9cb305b4da5f38726226d31e5eef5da66504838131739c389a2d056ed31cf3f",
@@ -811,7 +811,7 @@ const machineLearningCertificates: CertificateInterface[] = [
   {
     name: "Introduction to Artificial Intelligence",
     slug: "9f61617caf2fc21f029abd857a03a29758d7e822215d3677eb938b4e29e5da78",
-    category: "Machine Learning",
+    category: "Artificial Intelligence",
     issuer: "NASBA",
     certificateURL:
       "https://www.linkedin.com/learning/certificates/9f61617caf2fc21f029abd857a03a29758d7e822215d3677eb938b4e29e5da78",
@@ -845,9 +845,9 @@ const machineLearningCertificates: CertificateInterface[] = [
     ],
   },
   {
-    name: "Machine Learning Foundations: Calculus",
+    name: "Artificial Intelligence Foundations: Calculus",
     slug: "94c788dba6f1c97ceee751315c30b6dc6f4267025733c3de55a315d83a36386d",
-    category: "Machine Learning",
+    category: "Artificial Intelligence",
     issuer: "LinkedIn",
     certificateURL:
       "https://www.linkedin.com/learning/certificates/94c788dba6f1c97ceee751315c30b6dc6f4267025733c3de55a315d83a36386d",
@@ -864,7 +864,7 @@ const machineLearningCertificates: CertificateInterface[] = [
     ],
 
     description: `
-    In this course, I delve into the foundational aspects of calculus that are crucial for understanding and implementing machine learning algorithms. I guide you through the exploration of functions, derivatives, integrals, and the basics of multivariate calculus. The course is designed to equip you with the necessary skills in Machine Learning, Calculus, and Mathematics. It covers a wide range of learning outcomes, including the evaluation of data sources, data visualization, and the ethical considerations in data science.
+    In this course, I delve into the foundational aspects of calculus that are crucial for understanding and implementing machine learning algorithms. I guide you through the exploration of functions, derivatives, integrals, and the basics of multivariate calculus. The course is designed to equip you with the necessary skills in Artificial Intelligence, Calculus, and Mathematics. It covers a wide range of learning outcomes, including the evaluation of data sources, data visualization, and the ethical considerations in data science.
     `,
     learningOutcomes: [
       "Assessing skills for a data science career.",
@@ -879,9 +879,9 @@ const machineLearningCertificates: CertificateInterface[] = [
     archived: true,
   },
   {
-    name: "Machine Learning Foundations: Linear Algebra",
+    name: "Artificial Intelligence Foundations: Linear Algebra",
     slug: "ec6ac0178fb92ba75dd38a95ae48316efb6f4e0e9abcb6bf5431b48021ff8441",
-    category: "Machine Learning",
+    category: "Artificial Intelligence",
     issuer: "LinkedIn",
     certificateURL:
       "https://www.linkedin.com/learning/certificates/ec6ac0178fb92ba75dd38a95ae48316efb6f4e0e9abcb6bf5431b48021ff8441",
@@ -910,9 +910,9 @@ const machineLearningCertificates: CertificateInterface[] = [
     archived: true,
   },
   {
-    name: "Machine Learning Foundations: Probability",
+    name: "Artificial Intelligence Foundations: Probability",
     slug: "b7334fe5b4d04bef6dab5d2ed69080e9ffc590475eba2057046b6ca4a6cf2fba",
-    category: "Machine Learning",
+    category: "Artificial Intelligence",
     issuer: "LinkedIn",
     certificateURL:
       "https://www.linkedin.com/learning/certificates/b7334fe5b4d04bef6dab5d2ed69080e9ffc590475eba2057046b6ca4a6cf2fba",
@@ -931,9 +931,9 @@ const machineLearningCertificates: CertificateInterface[] = [
     archived: true,
   },
   {
-    name: "Machine Learning with Scikit-Learn",
+    name: "Artificial Intelligence with Scikit-Learn",
     slug: "3c31f8f11d8ecbd7156dd75b8ae2d7c7db59a8342e3ae7780496b637ac894bb8",
-    category: "Machine Learning",
+    category: "Artificial Intelligence",
     issuer: "LinkedIn",
     certificateURL:
       "https://www.linkedin.com/learning/certificates/3c31f8f11d8ecbd7156dd75b8ae2d7c7db59a8342e3ae7780496b637ac894bb8",

@@ -10,7 +10,7 @@ export default interface BlogInterface extends MaterialInterface {
     | "Software Engineering"
     | "Databases"
     | "DevOps"
-    | "Machine Learning"
+    | "Artificial Intelligence"
     | "Mathematics"
     | "Other";
 }
