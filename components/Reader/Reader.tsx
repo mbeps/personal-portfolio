@@ -16,7 +16,7 @@ const Reader: React.FC<ReaderProps> = ({ content, size = "lg" }) => {
     <article
       className={`
         prose
-        lg:prose-${size}
+        ${size && `lg:prose-${size}`}
         dark:prose-invert
         prose-img:rounded-lg
         max-w-none
@@ -26,4 +26,5 @@ const Reader: React.FC<ReaderProps> = ({ content, size = "lg" }) => {
     </article>
   );
 };
+
 export default Reader;
