@@ -68,7 +68,7 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
           <TabsContent value="images" className="w-full">
             <Carousel
               setApi={setApi}
-              className="bg-neutral-100 dark:bg-neutral-950 rounded-xl"
+              className="bg-neutral-100 dark:bg-neutral-950 rounded-xl transition-colors duration-700"
             >
               <CarouselContent>
                 {Array.from({ length: images?.length ?? 0 }).map((_, index) => (
@@ -85,7 +85,6 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
                         w-full h-[60vh] 
                         object-contain 
                         rounded-xl 
-                        
                         transition-colors duration-700 
                         p-2"
                     />
@@ -135,16 +134,17 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
 
           {images && images.length > 0 && videos && videos.length > 0 && (
             <div className="flex justify-center items-center">
-              <TabsList className="rounded-full">
+              <TabsList className="rounded-full flex flex-row space-x-1 transition-colors duration-700">
                 {/* Images */}
                 {images && images.length > 0 && (
                   <TabsTrigger
                     value="images"
                     className="
-                  flex flex-row space-x-1
-                  text-neutral-700 dark:text-neutral-200 text-md
-                  rounded-full
-                  "
+                      flex flex-row space-x-2
+                      text-neutral-700 dark:text-neutral-200 text-md
+                      rounded-full
+                      transition-colors duration-700
+                      "
                   >
                     <LiaImageSolid fontSize={20} />
                     <span>Images</span>
@@ -156,9 +156,10 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
                   <TabsTrigger
                     value="demo"
                     className="
-                  flex flex-row space-x-1
-                  text-neutral-700 dark:text-neutral-200 text-md
-                  rounded-full
+                      flex flex-row space-x-2
+                      text-neutral-700 dark:text-neutral-200 text-md
+                      rounded-full
+                      transition-colors duration-700
                   "
                   >
                     <LiaVideoSolid fontSize={20} />

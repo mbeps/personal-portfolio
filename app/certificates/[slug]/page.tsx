@@ -134,11 +134,11 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
 
       {/* Certificate Description */}
       {certificate.description && (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col">
           <div className="md:text-left text-center">
             <HeadingThree title="Description" />
           </div>
-          <p className="text-lg">{certificate.description}</p>
+          <p className="text-lg text-neutral-800 dark:text-neutral-300">{certificate.description}</p>
         </div>
       )}
 
@@ -156,7 +156,7 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
                     <div className="mr-2 mt-1.5">
                       <RxTriangleRight />
                     </div>
-                    <div>{outcome}</div>
+                    <div className="text-neutral-800 dark:text-neutral-300">{outcome}</div>
                   </li>
                 ))}
               </ul>
