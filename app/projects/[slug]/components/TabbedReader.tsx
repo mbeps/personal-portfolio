@@ -3,6 +3,12 @@
 import Reader from "@/components/Reader/Reader";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import { Button } from "@/components/shadcn/ui/button";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/shadcn/ui/tabs";
 import useIsMounted from "@/hooks/useIsMounted";
 import React, { useEffect, useState } from "react";
 
@@ -28,20 +34,20 @@ const TabbedReader: React.FC<TabbedReaderProps> = ({ content }) => {
   const hasFeatures = !!content.features;
   const hasBlog = !!content.blog;
   const isMounted = useIsMounted();
-  const [view, setView] = useState<"features" | "blog">("features");
+  const [view, setView] = useState<"features" | "reflection">("features");
 
   useEffect(() => {
     if (!hasFeatures && hasBlog) {
-      setView("blog");
+      // If there is no features, but there is a blog, set the view to "blog"
+      setView("reflection");
     } else if (!hasBlog && hasFeatures) {
+      // If there is no blog, but there are features, set the view to "features"
       setView("features");
     } else if (!hasBlog && !hasFeatures) {
+      // If there are no features or blog, set the view to "none"
       return;
     }
   }, [hasFeatures, hasBlog]);
-
-  const viewContent = view === "features" ? content.features : content.blog;
-  const title = view === "features" ? "Features" : "Reflection";
 
   if (!isMounted) {
     return null;
@@ -52,36 +58,62 @@ const TabbedReader: React.FC<TabbedReaderProps> = ({ content }) => {
   }
 
   return (
-    <>
-      <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
-
-      <div className="w-full space-y-7">
+    <div
+      className="
+        flex flex-col items-center
+        border-t border-gray-200 dark:border-neutral-600
+        pt-8
+      "
+    >
+      <Tabs defaultValue={view} className="w-full space-y-6">
+        {/* Options */}
         {hasFeatures && hasBlog && (
-          <div className="flex flex-row justify-center">
-            <div className="flex flex-row w-full md:w-1/2 space-x-2">
-              <Button
-                onClick={() => setView("features")}
-                variant={view === "features" ? "filled" : "ghost"}
-                size="sm"
-                className="w-full"
+          <div className="flex justify-center items-center">
+            <TabsList className="
+              rounded-full
+              w-full md:w-2/5
+              flex flex-row space-x-1
+              transition-colors duration-700
+              md:text-lg
+              ">
+              <TabsTrigger
+                value="features"
+                className="
+                  px-6 py-2
+                  w-full
+                  text-neutral-400 dark:text-neutral-200 text-md
+                  rounded-full
+                  transition-colors duration-700
+                  "
               >
                 Features
-              </Button>
-              <Button
-                onClick={() => setView("blog")}
-                variant={view === "blog" ? "filled" : "ghost"}
-                size="sm"
-                className="w-full"
+              </TabsTrigger>
+              <TabsTrigger
+                value="reflection"
+                className="
+                  px-6
+                  w-full
+                  text-neutral-400 dark:text-neutral-200 text-md
+                  rounded-full
+                  transition-colors duration-700
+                  "
               >
                 Reflection
-              </Button>
-            </div>
+              </TabsTrigger>
+            </TabsList>
           </div>
         )}
-        <HeadingTwo title={title} />
-        <Reader content={viewContent} />
-      </div>
-    </>
+        {/* Content */}
+        <TabsContent value="features">
+          <HeadingTwo title="Features" />
+          <Reader content={content.features} />
+        </TabsContent>
+        <TabsContent value="reflection">
+          <HeadingTwo title="Reflection" />
+          <Reader content={content.blog} />
+        </TabsContent>
+      </Tabs>
+    </div>
   );
 };
 
