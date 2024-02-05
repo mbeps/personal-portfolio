@@ -3,6 +3,7 @@ import { useState } from "react";
 import ExpandCollapseButton from "../Button/ExpandCollapseButton";
 import SkillTag from "../Tags/SkillTag";
 import HeadingFour from "../Text/HeadingFour";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 interface CategorySkillDisplayProps {
   skillCategories: SkillsCategoryInterface[];
@@ -13,9 +14,10 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
 }) => {
   const [showAll, setShowAll] = useState(false);
   const shouldDisplayTitle = skillCategories.length > 1;
+  const isTablet = useMediaQuery("(max-width: 976px)");
 
   const maxSkillCount = 12;
-  const maxGroupCount = 3;
+  const maxGroupCount = isTablet ? 2 : 3; // Number of columns to display
 
   let skillCount = 0;
   let groupCount = 0;
@@ -49,8 +51,8 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
   };
 
   // Determine grid style based on the number of categories
-  const gridStyle = shouldDisplayTitle
-    ? "gap-4 grid md:grid-cols-2 lg:grid-cols-3" // for multiple categories
+  const gridStyle: string = shouldDisplayTitle
+    ? `gap-4 grid md:grid-cols-2 lg:grid-cols-3` // for multiple categories
     : "gap-4 grid grid-cols-1"; // for single category
 
   return (
