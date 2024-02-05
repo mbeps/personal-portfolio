@@ -137,7 +137,11 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
   const projects: ProjectInterface[] = allProjects;
   const certificates: CertificateInterface[] = allCertificates;
   const allBlogs: BlogInterface[] = blogs;
-  const allMaterial: MaterialInterface[] = [...projects, ...certificates, ...allBlogs];
+  const allMaterial: MaterialInterface[] = [
+    ...projects,
+    ...certificates,
+    ...allBlogs,
+  ];
 
   const hasMaterial = isSkillAssociatedWithMaterial(language, allMaterial);
 
@@ -192,8 +196,9 @@ const LanguageTagWithModal: React.FC<LanguageTagWithModalProps> = ({
                     {options.map((option, index) => (
                       <DropdownMenuItem
                         key={index}
-                        className={`${option.slug === groupedBy ? "font-bold" : ""
-                          }`}
+                        className={`${
+                          option.slug === groupedBy ? "font-bold" : ""
+                        }`}
                         onSelect={() => setGroupedBy(option.slug)}
                       >
                         {option.entryName}
