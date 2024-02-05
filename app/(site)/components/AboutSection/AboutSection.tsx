@@ -27,15 +27,15 @@ const AboutSection = () => {
 
       <div
         className="
-            flex flex-col md:flex-row 
-            space-y-10 md:space-y-0
-            items-stretch justify-center align-top 
-            md:space-x-10  md:p-4 
-            md:text-left 
-          "
+          flex flex-col lg:flex-row
+          space-y-10 md:space-y-5 lg:space-y-0
+          items-stretch justify-center align-top
+          lg:space-x-10 lg:p-4
+          lg:text-left
+        "
       >
         {/* Left section */}
-        <div className="md:w-1/2">
+        <div className="lg:w-1/2">
           <h1 className="text-center text-2xl font-bold mb-6 mt-6 md:text-left">
             Get to know me!
           </h1>
@@ -44,7 +44,7 @@ const AboutSection = () => {
         </div>
 
         {/* Right section */}
-        <div className="text-center md:w-1/2 md:text-left ">
+        <div className="text-center lg:w-1/2 md:text-left ">
           <LanguageSection />
           <div className="h-1 mt-2 md:mt-4" />
           <TechnologiesSection />

@@ -62,7 +62,10 @@ const TechnologiesSection: React.FC = () => {
    * @param totalLimit (number): the number of skills to take
    * @returns (string[]): list of skill names
    */
-  function firstNSkills(skillsToLimit: SkillInterface[], totalLimit: number): SkillInterface[] {
+  function firstNSkills(
+    skillsToLimit: SkillInterface[],
+    totalLimit: number,
+  ): SkillInterface[] {
     const uniqueSkills = new Map<string, SkillInterface>();
 
     skillsToLimit.forEach((skill) => {
@@ -80,7 +83,10 @@ const TechnologiesSection: React.FC = () => {
    * @param limitPerCategory (number): the number of skills to take from each category
    * @returns (string[]): list of skill names
    */
-  function firstNSkillsPerCategory(skillsToLimit: SkillInterface[], limitPerCategory: number): SkillInterface[] {
+  function firstNSkillsPerCategory(
+    skillsToLimit: SkillInterface[],
+    limitPerCategory: number,
+  ): SkillInterface[] {
     // Categorize the skills into an array of SkillsCategoryInterface
     const skillCategories: SkillsCategoryInterface[] = skillsToLimit.reduce(
       (acc, skill) => {
