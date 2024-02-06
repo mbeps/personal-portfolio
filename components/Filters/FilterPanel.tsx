@@ -118,6 +118,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
             bg-neutral-100 dark:bg-black
             px-4 py-0
             flex justify-between items-center
+            transition-all duration-700 ease-in-out
             rounded-t-2xl
           "
         >
