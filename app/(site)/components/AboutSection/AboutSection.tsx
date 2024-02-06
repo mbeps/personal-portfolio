@@ -40,7 +40,7 @@ const AboutSection = () => {
             Get to know me!
           </h1>
 
-          <Reader content={blogContent} size="base" />
+          <Reader content={blogContent} />
         </div>
 
         {/* Right section */}
