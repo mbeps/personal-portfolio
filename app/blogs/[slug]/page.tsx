@@ -93,7 +93,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
         </p>
       </div>
 
-      <Reader content={blogContent} />
+      <Reader content={blogContent} size="lg:prose-lg" />
 
       <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
 

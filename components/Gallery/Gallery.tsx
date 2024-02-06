@@ -144,6 +144,7 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
                       text-neutral-700 dark:text-neutral-200 text-md
                       rounded-full
                       transition-colors duration-700
+                      px-6
                       "
                   >
                     <LiaImageSolid fontSize={20} />
@@ -160,6 +161,7 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
                       text-neutral-700 dark:text-neutral-200 text-md
                       rounded-full
                       transition-colors duration-700
+                      px-6
                   "
                   >
                     <LiaVideoSolid fontSize={20} />

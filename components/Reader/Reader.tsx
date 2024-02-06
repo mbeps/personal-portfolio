@@ -3,7 +3,8 @@ import React from "react";
 
 type ReaderProps = {
   content: string | undefined;
-  size?: "sm" | "base" | "md" | "lg";
+  //! just giving the size without prose does not work
+  size?: "lg:prose-sm" | "lg:prose-base" | "lg:prose-md" | "lg:prose-lg";
 };
 
 /**
@@ -16,7 +17,7 @@ const Reader: React.FC<ReaderProps> = ({ content, size = "lg" }) => {
     <article
       className={`
         prose
-        ${size && `lg:prose-${size}`}
+        ${size}
         dark:prose-invert
         prose-img:rounded-lg
         max-w-none
