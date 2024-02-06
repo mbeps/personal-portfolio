@@ -69,13 +69,15 @@ const TabbedReader: React.FC<TabbedReaderProps> = ({ content }) => {
         {/* Options */}
         {hasFeatures && hasBlog && (
           <div className="flex justify-center items-center">
-            <TabsList className="
+            <TabsList
+              className="
               rounded-full
               w-full md:w-2/5
               flex flex-row space-x-1
               transition-colors duration-700
               md:text-lg
-              ">
+              "
+            >
               <TabsTrigger
                 value="features"
                 className="
@@ -106,11 +108,11 @@ const TabbedReader: React.FC<TabbedReaderProps> = ({ content }) => {
         {/* Content */}
         <TabsContent value="features">
           <HeadingTwo title="Features" />
-          <Reader content={content.features} />
+          <Reader content={content.features} size="lg:prose-lg" />
         </TabsContent>
         <TabsContent value="reflection">
           <HeadingTwo title="Reflection" />
-          <Reader content={content.blog} />
+          <Reader content={content.blog} size="lg:prose-lg" />
         </TabsContent>
       </Tabs>
     </div>
