@@ -1,5 +1,5 @@
 import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
-import BlogInterface from "@/interfaces/material/BlogInterface";
+import BlogInterface, { BlogCategories } from "@/interfaces/material/BlogInterface";
 import {
   algorithms,
   apis,
@@ -69,14 +69,14 @@ const blogs: BlogInterface[] = addNestedSkillsMaterialList<BlogInterface>([
       "An In-depth Analysis of Backend Development Approaches, Tools, and Security Considerations",
     skills: [webDevelopment, cloudComputing, firebase, supabase, pocketbase],
 
-    category: "Web Development",
+    category: BlogCategories.WebDevelopment,
   },
   {
     slug: "cicd-foundations",
     name: "Embracing the Future of Software Development: A Comprehensive Guide to CI/CD",
     subtitle:
       "Mastering Continuous Integration and Continuous Delivery for Enhanced Software Delivery",
-    category: "DevOps",
+    category: BlogCategories.DevOps,
     skills: [
       devOps,
       continuousIntegration,
@@ -98,7 +98,7 @@ const blogs: BlogInterface[] = addNestedSkillsMaterialList<BlogInterface>([
     name: "Embracing DevOps: A Guide to Principles, Practices, and Success Stories",
     subtitle:
       "Understanding the Impact of DevOps in Modern Software Development",
-    category: "DevOps",
+    category: BlogCategories.DevOps,
     skills: [
       devOps,
       continuousIntegration,
@@ -119,7 +119,7 @@ const blogs: BlogInterface[] = addNestedSkillsMaterialList<BlogInterface>([
     name: "Docker: Unleashing the Power of Containers",
     subtitle:
       "A Comprehensive Guide to Understanding Docker and Containerization Technology",
-    category: "DevOps",
+    category: BlogCategories.DevOps,
     skills: [devOps, docker, containerization, problemSolving],
 
     slug: "docker-and-containers",
@@ -129,7 +129,7 @@ const blogs: BlogInterface[] = addNestedSkillsMaterialList<BlogInterface>([
     slug: "front-end",
     subtitle:
       "A comprehensive introduction to standard front-end web development using libraries and frameworks",
-    category: "Web Development",
+    category: BlogCategories.WebDevelopment,
     skills: [
       webDevelopment,
       html,
@@ -147,14 +147,14 @@ const blogs: BlogInterface[] = addNestedSkillsMaterialList<BlogInterface>([
     name: "JavaScript vs TypeScript: A Detailed Comparison",
     subtitle:
       "Exploring the Advantages and Key Differences between JavaScript and TypeScript",
-    category: "Software Engineering",
+    category: BlogCategories.SoftwareEngineering,
     skills: [javascript, typescript],
   },
   {
     slug: "kubernetes",
     name: "Kubernetes Guide: Mastering Container Orchestration",
     subtitle: "An Overview of Components, Tools, and Best Practices",
-    category: "DevOps",
+    category: BlogCategories.DevOps,
     skills: [devOps, kubernetes, docker, containerization],
   },
   {
@@ -162,7 +162,7 @@ const blogs: BlogInterface[] = addNestedSkillsMaterialList<BlogInterface>([
     name: "Exploring the Depths of Machine Learning",
     subtitle:
       "A Comprehensive Guide to Machine Learning: Concepts, Challenges, and Real-World Impact",
-    category: "Artificial Intelligence",
+    category: BlogCategories.ArtificialIntelligence,
     skills: [
       machineLearning,
       algorithms,
@@ -177,7 +177,7 @@ const blogs: BlogInterface[] = addNestedSkillsMaterialList<BlogInterface>([
     name: "Understanding Object-Relational Mapping (ORM)",
     subtitle:
       "A Comprehensive Overview of ORM, Its Advantages, Disadvantages, and Role in Modern Web Application Development",
-    category: "Databases",
+    category: BlogCategories.Databases,
     skills: [
       databaseManagementSystems,
       databases,
@@ -194,21 +194,21 @@ const blogs: BlogInterface[] = addNestedSkillsMaterialList<BlogInterface>([
     slug: "rest-graphql-api",
     name: "Comparing GraphQL and REST: A Detailed Overview",
     subtitle: "Choosing the Right API Design Approach",
-    category: "Web Development",
+    category: BlogCategories.WebDevelopment,
     skills: [webDevelopment, apis, rest, graphQL, problemSolving],
   },
   {
     slug: "sdk-vs-api",
     name: "SDKs vs APIs: A Comparative Guide",
     subtitle: "Understanding Their Roles in Software Development",
-    category: "Web Development",
+    category: BlogCategories.SoftwareEngineering,
     skills: [apis, sdks],
   },
   {
     slug: "sessions-vs-tokens",
     name: "Comparing Session and Token: Navigating Authentication",
     subtitle: "A Detailed Comparison of Authentication Strategies",
-    category: "Web Development",
+    category: BlogCategories.WebDevelopment,
     skills: [webDevelopment, userAuthentication],
   },
   {
@@ -216,7 +216,7 @@ const blogs: BlogInterface[] = addNestedSkillsMaterialList<BlogInterface>([
     name: "Comprehensive Guide to Software Testing",
     subtitle:
       "Exploring Functional and Non-Functional Testing Techniques, Tools, and Challenges",
-    category: "Software Engineering",
+    category: BlogCategories.SoftwareEngineering,
     skills: [testing, problemSolving],
   },
   {
@@ -224,7 +224,7 @@ const blogs: BlogInterface[] = addNestedSkillsMaterialList<BlogInterface>([
     name: "Exploring Databases: A Comparative Study of Relational and Non-Relational Models",
     subtitle:
       "An In-depth Analysis of Database Systems and their Role in Software Engineering and Web Development",
-    category: "Databases",
+    category: BlogCategories.Databases,
     skills: [databaseManagementSystems, databases, sql, noSql, normalisation],
   },
   {
@@ -232,7 +232,7 @@ const blogs: BlogInterface[] = addNestedSkillsMaterialList<BlogInterface>([
     name: "Sync vs Async: Deep Dive into Programming Models",
     subtitle:
       "Understanding and Optimizing Synchronous and Asynchronous Programming",
-    category: "Software Engineering",
+    category: BlogCategories.SoftwareEngineering,
     skills: [webDevelopment],
   },
 ]);
