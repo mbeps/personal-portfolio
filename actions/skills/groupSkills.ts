@@ -1,4 +1,7 @@
-import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import SkillInterface, {
+  SkillCategories,
+  SkillTypes,
+} from "@/interfaces/skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 
 export function groupByLanguage(
@@ -9,7 +12,7 @@ export function groupByLanguage(
 
   skills.forEach((skill) => {
     // If the skill is a programming language, add it to its own category
-    if (skill.category === "Programming Languages") {
+    if (skill.category === SkillCategories.ProgrammingLanguages) {
       const languageName = skill.name;
 
       if (!groupedSkills[languageName]) {
@@ -21,7 +24,7 @@ export function groupByLanguage(
 
     // Check if the skill is associated with any programming language
     skill.relatedSkills?.forEach((relatedSkill) => {
-      if (relatedSkill.category === "Programming Languages") {
+      if (relatedSkill.category === SkillCategories.ProgrammingLanguages) {
         const languageName = relatedSkill.name;
 
         if (!groupedSkills[languageName]) {
@@ -35,10 +38,11 @@ export function groupByLanguage(
     // If no associated programming language is found, group it under 'No Language'
     if (
       !(
-        skill.category === "Programming Languages" ||
+        skill.category === SkillCategories.ProgrammingLanguages ||
         (skill.relatedSkills &&
           skill.relatedSkills.some(
-            (relatedSkill) => relatedSkill.category === "Programming Languages"
+            (relatedSkill) =>
+              relatedSkill.category === SkillCategories.ProgrammingLanguages
           ))
       )
     ) {

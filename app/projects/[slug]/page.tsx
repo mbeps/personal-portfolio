@@ -22,7 +22,10 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
-import { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import {
+  SkillCategories,
+  SkillTypes,
+} from "@/interfaces/skills/SkillInterface";
 
 /**
  * Metadata object for the dynamic project page.
@@ -88,10 +91,10 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   }
 
   const projectLanguages = project.skills.filter(
-    (skill) => skill.category === "Programming Languages"
+    (skill) => skill.category === SkillCategories.ProgrammingLanguages
   );
   const projectSkillsWithoutLanguage = project.skills.filter(
-    (skill) => skill.category !== "Programming Languages"
+    (skill) => skill.category !== SkillCategories.ProgrammingLanguages
   );
 
   const projectName = project.name;

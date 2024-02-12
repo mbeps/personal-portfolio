@@ -1,9 +1,12 @@
-import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import SkillInterface, {
+  SkillCategories,
+  SkillTypes,
+} from "@/interfaces/skills/SkillInterface";
 import { java, javascript, python, typescript } from "../languages";
 
 export const npm: SkillInterface = {
   name: "NPM",
-  category: "Project Managers",
+  category: SkillCategories.ProjectManagers,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "npm",
@@ -12,7 +15,7 @@ export const npm: SkillInterface = {
 
 export const yarn: SkillInterface = {
   name: "Yarn",
-  category: "Project Managers",
+  category: SkillCategories.ProjectManagers,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "yarn",
@@ -21,7 +24,7 @@ export const yarn: SkillInterface = {
 
 export const pnpm: SkillInterface = {
   name: "PNPM",
-  category: "Project Managers",
+  category: SkillCategories.ProjectManagers,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "pnpm",
@@ -30,7 +33,7 @@ export const pnpm: SkillInterface = {
 
 export const poetry: SkillInterface = {
   name: "Poetry",
-  category: "Project Managers",
+  category: SkillCategories.ProjectManagers,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "poetry-python",
@@ -39,7 +42,7 @@ export const poetry: SkillInterface = {
 
 export const pybuilder: SkillInterface = {
   name: "PyBuilder",
-  category: "Project Managers",
+  category: SkillCategories.ProjectManagers,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "pybuilder",
@@ -48,7 +51,7 @@ export const pybuilder: SkillInterface = {
 
 export const maven: SkillInterface = {
   name: "Maven",
-  category: "Project Managers",
+  category: SkillCategories.ProjectManagers,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "maven",
@@ -57,7 +60,7 @@ export const maven: SkillInterface = {
 
 export const gradle: SkillInterface = {
   name: "Gradle",
-  category: "Project Managers",
+  category: SkillCategories.ProjectManagers,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "gradle",
@@ -66,14 +69,14 @@ export const gradle: SkillInterface = {
 
 export const tox: SkillInterface = {
   name: "Tox",
-  category: "Project Managers",
+  category: SkillCategories.ProjectManagers,
   skillType: SkillTypes.Hard,
   slug: "tox",
 };
 
 export const nxjs: SkillInterface = {
   name: "Nx.js",
-  category: "Project Managers",
+  category: SkillCategories.ProjectManagers,
   skillType: SkillTypes.Hard,
   slug: "nx-js",
   relatedSkills: [javascript, typescript],

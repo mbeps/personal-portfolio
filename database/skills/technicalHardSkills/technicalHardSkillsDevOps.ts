@@ -1,4 +1,7 @@
-import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import SkillInterface, {
+  SkillCategories,
+  SkillTypes,
+} from "@/interfaces/skills/SkillInterface";
 import {
   automation,
   clusterisation,
@@ -12,7 +15,7 @@ import {
 
 export const gitHubActions: SkillInterface = {
   name: "GitHub Actions",
-  category: "DevOps",
+  category: SkillCategories.DevOps,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "github-actions",
@@ -28,7 +31,7 @@ export const gitHubActions: SkillInterface = {
 
 export const gitlabCI: SkillInterface = {
   name: "GitLab CI",
-  category: "DevOps",
+  category: SkillCategories.DevOps,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "gitlab-ci",
@@ -44,7 +47,7 @@ export const gitlabCI: SkillInterface = {
 
 export const jenkins: SkillInterface = {
   name: "Jenkins",
-  category: "DevOps",
+  category: SkillCategories.DevOps,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "jenkins",
@@ -60,7 +63,7 @@ export const jenkins: SkillInterface = {
 
 export const teamCity: SkillInterface = {
   name: "TeamCity",
-  category: "DevOps",
+  category: SkillCategories.DevOps,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "teamcity",
@@ -76,7 +79,7 @@ export const teamCity: SkillInterface = {
 
 export const travisCI: SkillInterface = {
   name: "Travis CI",
-  category: "DevOps",
+  category: SkillCategories.DevOps,
   skillType: SkillTypes.Hard,
   slug: "travis-ci",
   relatedSkills: [
@@ -91,7 +94,7 @@ export const travisCI: SkillInterface = {
 
 export const docker: SkillInterface = {
   name: "Docker",
-  category: "DevOps",
+  category: SkillCategories.DevOps,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "docker",
@@ -100,7 +103,7 @@ export const docker: SkillInterface = {
 
 export const podman: SkillInterface = {
   name: "Podman",
-  category: "DevOps",
+  category: SkillCategories.DevOps,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "podman",
@@ -109,7 +112,7 @@ export const podman: SkillInterface = {
 
 export const kubernetes: SkillInterface = {
   name: "Kubernetes",
-  category: "DevOps",
+  category: SkillCategories.DevOps,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "kubernetes",
@@ -118,7 +121,7 @@ export const kubernetes: SkillInterface = {
 
 export const ansible: SkillInterface = {
   name: "Ansible",
-  category: "DevOps",
+  category: SkillCategories.DevOps,
   skillType: SkillTypes.Hard,
   slug: "ansible",
   relatedSkills: [infrastructureAsCode, devOps, automation],
@@ -126,7 +129,7 @@ export const ansible: SkillInterface = {
 
 export const vagrant: SkillInterface = {
   name: "Vagrant",
-  category: "DevOps",
+  category: SkillCategories.DevOps,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "valgrant",

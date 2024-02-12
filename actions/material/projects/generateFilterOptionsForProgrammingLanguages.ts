@@ -1,16 +1,17 @@
 import FilterOption from "@/interfaces/filters/FilterOption";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
+import { SkillCategories } from "@/interfaces/skills/SkillInterface";
 
 export default function generateFilterOptionsForProgrammingLanguages<
-  T extends MaterialInterface,
+  T extends MaterialInterface
 >(allMaterials: T[]): FilterOption[] {
   return [
     { slug: "all", entryName: "All" },
     ...allMaterials
       .flatMap((material) =>
         material.skills.filter(
-          (skill) => skill.category === "Programming Languages",
-        ),
+          (skill) => skill.category === SkillCategories.ProgrammingLanguages
+        )
       )
       .reduce((unique, skill) => {
         if (unique.findIndex((v) => v.slug === skill.slug) === -1) {

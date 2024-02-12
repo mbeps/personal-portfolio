@@ -21,7 +21,10 @@ import { Button } from "@/components/shadcn/ui/button";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
-import { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import {
+  SkillCategories,
+  SkillTypes,
+} from "@/interfaces/skills/SkillInterface";
 import Fuse from "fuse.js";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -129,7 +132,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const technologies = generateFilterOptionsBySkillType<ProjectInterface>(
     allProjects,
     SkillTypes.Hard,
-    "Programming Languages"
+    SkillCategories.ProgrammingLanguages
   );
 
   const categories =
