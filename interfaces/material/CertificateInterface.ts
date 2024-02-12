@@ -1,31 +1,37 @@
 import MaterialInterface from "./MaterialInterface";
 
+export enum CertificateIssuers {
+  Coursera = "Coursera",
+  Udemy = "Udemy",
+  LinkedIn = "LinkedIn",
+  NASBA = "NASBA",
+  PMI = "PMI",
+  GitHub = "GitHub",
+  RoyalHollowayUniversity = "Royal Holloway University",
+  SymphonySolutions = "Symphony Solutions",
+  Amigoscode = "Amigoscode"
+}
+
+export enum CertificateCategories {
+  University = "University",
+  ProgrammingLanguages = "Programming Languages",
+  AlgorithmsDataStructures = "Algorithms & Data Structures",
+  WebDevelopment = "Web Development",
+  SoftwareEngineering = "Software Engineering",
+  DevOps = "DevOps",
+  ArtificialIntelligence = "Artificial Intelligence",
+  Mathematics = "Mathematics",
+  Databases = "Databases",
+  CloudComputing = "Cloud Computing",
+  Management = "Management",
+  Other = "Other"
+}
+
 export default interface CertificateInterface extends MaterialInterface {
   description?: string;
-  issuer:
-    | "Coursera"
-    | "Udemy"
-    | "LinkedIn"
-    | "NASBA"
-    | "PMI"
-    | "GitHub"
-    | "Royal Holloway University"
-    | "Symphony Solutions"
-    | "Amigoscode";
+  issuer: CertificateIssuers;
   certificateURL: string;
-  category:
-    | "University"
-    | "Programming Languages"
-    | "Algorithms & Data Structures"
-    | "Web Development"
-    | "Software Engineering"
-    | "DevOps"
-    | "Artificial Intelligence"
-    | "Mathematics"
-    | "Databases"
-    | "Cloud Computing"
-    | "Management"
-    | "Other";
+  category: CertificateCategories;
   certificateImage?: string;
   learningOutcomes?: string[];
 }
