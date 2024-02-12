@@ -32,7 +32,6 @@ const TechnologiesSection: React.FC = () => {
     "Version Control System",
     "Web Sockets",
     "Mathematics",
-    // "Testing",
     "Cloud Computing",
     "Automation",
     "Other",
@@ -52,7 +51,7 @@ const TechnologiesSection: React.FC = () => {
    * List of all skills.
    * This includes skills from languages and technologies.
    */
-  const allSkills: SkillInterface[] = allLanguageSkills
+  const displayedSkills: SkillInterface[] = allLanguageSkills
     .concat(technologies)
     .filter((skill) => !ignoredCategories.includes(skill.category || "Other"));
 
@@ -117,8 +116,7 @@ const TechnologiesSection: React.FC = () => {
   }
 
   const handleDisplaySkills = () => {
-    return firstNSkillsPerCategory(technologies, 2).slice(0, 16);
-    return firstNSkills(technologies, 100);
+    return firstNSkills(firstNSkillsPerCategory(displayedSkills, 2), 16);
   };
 
   return (
