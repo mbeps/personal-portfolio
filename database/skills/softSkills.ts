@@ -1,9 +1,9 @@
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
 
 export const communication: SkillInterface = {
   name: "Communication",
   isMainSkill: false,
-  skillType: "soft",
+  skillType: SkillTypes.Soft,
   category: "Soft Skills",
   slug: "communication",
 };
@@ -11,7 +11,7 @@ export const communication: SkillInterface = {
 export const projectManagement: SkillInterface = {
   name: "Project Management",
   isMainSkill: false,
-  skillType: "soft",
+  skillType: SkillTypes.Soft,
   category: "Soft Skills",
   slug: "project-management",
 };
@@ -19,7 +19,7 @@ export const projectManagement: SkillInterface = {
 export const teamwork: SkillInterface = {
   name: "Teamwork",
   isMainSkill: false,
-  skillType: "soft",
+  skillType: SkillTypes.Soft,
   category: "Soft Skills",
   slug: "teamwork",
 };
@@ -27,7 +27,7 @@ export const teamwork: SkillInterface = {
 export const leadership: SkillInterface = {
   name: "Leadership",
   isMainSkill: false,
-  skillType: "soft",
+  skillType: SkillTypes.Soft,
   category: "Soft Skills",
   slug: "leadership",
 };
@@ -35,7 +35,7 @@ export const leadership: SkillInterface = {
 export const problemSolving: SkillInterface = {
   name: "Problem Solving",
   isMainSkill: false,
-  skillType: "soft",
+  skillType: SkillTypes.Soft,
   category: "Soft Skills",
   slug: "problem-solving",
 };
@@ -43,7 +43,7 @@ export const problemSolving: SkillInterface = {
 export const criticalThinking: SkillInterface = {
   name: "Critical Thinking",
   isMainSkill: false,
-  skillType: "soft",
+  skillType: SkillTypes.Soft,
   category: "Soft Skills",
   slug: "critical-thinking",
 };
@@ -51,7 +51,7 @@ export const criticalThinking: SkillInterface = {
 export const creativity: SkillInterface = {
   name: "Creativity",
   isMainSkill: false,
-  skillType: "soft",
+  skillType: SkillTypes.Soft,
   category: "Soft Skills",
   slug: "creativity",
 };
@@ -59,7 +59,7 @@ export const creativity: SkillInterface = {
 export const adaptability: SkillInterface = {
   name: "Adaptability",
   isMainSkill: false,
-  skillType: "soft",
+  skillType: SkillTypes.Soft,
   category: "Soft Skills",
   slug: "adaptability",
 };
@@ -67,7 +67,7 @@ export const adaptability: SkillInterface = {
 export const timeManagement: SkillInterface = {
   name: "Time Management",
   isMainSkill: false,
-  skillType: "soft",
+  skillType: SkillTypes.Soft,
   category: "Soft Skills",
   slug: "time-management",
 };
@@ -75,7 +75,7 @@ export const timeManagement: SkillInterface = {
 export const riskManagement: SkillInterface = {
   name: "Risk Management",
   isMainSkill: false,
-  skillType: "soft",
+  skillType: SkillTypes.Soft,
   category: "Soft Skills",
   slug: "risk-management",
 };
@@ -83,7 +83,7 @@ export const riskManagement: SkillInterface = {
 export const stakeholderManagement: SkillInterface = {
   name: "Stakeholder Management",
   isMainSkill: false,
-  skillType: "soft",
+  skillType: SkillTypes.Soft,
   category: "Soft Skills",
   slug: "stakeholder-management",
 };
@@ -91,7 +91,7 @@ export const stakeholderManagement: SkillInterface = {
 export const scopeManagement: SkillInterface = {
   name: "Scope Management",
   isMainSkill: false,
-  skillType: "soft",
+  skillType: SkillTypes.Soft,
   category: "Soft Skills",
   slug: "scope-management",
 };
@@ -99,7 +99,7 @@ export const scopeManagement: SkillInterface = {
 export const costManagement: SkillInterface = {
   name: "Cost Management",
   isMainSkill: false,
-  skillType: "soft",
+  skillType: SkillTypes.Soft,
   category: "Soft Skills",
   slug: "cost-management",
 };
@@ -107,7 +107,7 @@ export const costManagement: SkillInterface = {
 export const qualityManagement: SkillInterface = {
   name: "Quality Management",
   isMainSkill: false,
-  skillType: "soft",
+  skillType: SkillTypes.Soft,
   category: "Soft Skills",
   slug: "quality-management",
 };
@@ -115,7 +115,7 @@ export const qualityManagement: SkillInterface = {
 export const procurementManagement: SkillInterface = {
   name: "Procurement Management",
   isMainSkill: false,
-  skillType: "soft",
+  skillType: SkillTypes.Soft,
   category: "Soft Skills",
   slug: "procurement-management",
 };
@@ -123,7 +123,7 @@ export const procurementManagement: SkillInterface = {
 export const integrationManagement: SkillInterface = {
   name: "Integration Management",
   isMainSkill: false,
-  skillType: "soft",
+  skillType: SkillTypes.Soft,
   category: "Soft Skills",
   slug: "integration-management",
 };
@@ -131,7 +131,7 @@ export const integrationManagement: SkillInterface = {
 export const humanResourceManagement: SkillInterface = {
   name: "Human Resource Management",
   isMainSkill: false,
-  skillType: "soft",
+  skillType: SkillTypes.Soft,
   category: "Soft Skills",
   slug: "human-resource-management",
 };

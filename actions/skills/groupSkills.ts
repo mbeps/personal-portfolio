@@ -1,8 +1,8 @@
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 
 export function groupByLanguage(
-  skills: SkillInterface[],
+  skills: SkillInterface[]
 ): SkillsCategoryInterface[] {
   const groupedSkills: { [key: string]: SkillInterface[] } = {};
   const noLanguageGroup = "No Language";
@@ -38,7 +38,7 @@ export function groupByLanguage(
         skill.category === "Programming Languages" ||
         (skill.relatedSkills &&
           skill.relatedSkills.some(
-            (relatedSkill) => relatedSkill.category === "Programming Languages",
+            (relatedSkill) => relatedSkill.category === "Programming Languages"
           ))
       )
     ) {
@@ -74,7 +74,7 @@ export function groupByLanguage(
 
 // Function to group skills by category
 export function groupByCategory(
-  skills: SkillInterface[],
+  skills: SkillInterface[]
 ): SkillsCategoryInterface[] {
   return skills.reduce((acc: SkillsCategoryInterface[], skill) => {
     const category = skill.category || "Other";
@@ -95,7 +95,7 @@ export function groupByCategory(
 
 // Function to group skills by skill type
 export function groupBySkillType(
-  skills: SkillInterface[],
+  skills: SkillInterface[]
 ): SkillsCategoryInterface[] {
   return skills.reduce((acc: SkillsCategoryInterface[], skill) => {
     const skillType = skill.skillType || "Other";
@@ -131,7 +131,7 @@ export function removeDuplicates(skills: SkillInterface[]): SkillInterface[] {
 
 function recursiveFilter(
   skills: SkillInterface[],
-  excludedSkillTypes: ("hard" | "general" | "soft")[],
+  excludedSkillTypes: SkillTypes[] = [] // Default to an empty array if no types are to be excluded
 ): SkillInterface[] {
   return skills
     .filter((skill) => !excludedSkillTypes.includes(skill.skillType))
@@ -141,7 +141,7 @@ function recursiveFilter(
       if (filteredSkill.relatedSkills) {
         filteredSkill.relatedSkills = recursiveFilter(
           filteredSkill.relatedSkills,
-          excludedSkillTypes,
+          excludedSkillTypes
         );
       }
 
@@ -152,11 +152,11 @@ function recursiveFilter(
 export default function groupSkills(
   groupedBy: string,
   skills: SkillInterface[],
-  excludedSkillTypes?: ("hard" | "general" | "soft")[],
+  excludedSkillTypes?: SkillTypes[] // Use SkillTypes[] or undefined
 ): SkillsCategoryInterface[] {
   let organizedSkills: SkillsCategoryInterface[] = [];
 
-  // Filter out the skills of excluded types recursively
+  // Use the refactored recursiveFilter with SkillTypes enum
   const filteredSkills = excludedSkillTypes
     ? recursiveFilter(skills, excludedSkillTypes)
     : skills;
@@ -172,20 +172,18 @@ export default function groupSkills(
       organizedSkills = groupBySkillType(filteredSkills);
       break;
     default:
-      // Handle the default case to group all skills under a 'None' category
       organizedSkills = [
         {
           skillCategoryName: "None",
-          skills: removeDuplicates(filteredSkills),
+          skills: removeDuplicates(filteredSkills), // Assuming removeDuplicates is defined elsewhere
         },
       ];
       break;
   }
 
-  // Remove duplicates for each skill category
   organizedSkills = organizedSkills.map((category) => ({
     ...category,
-    skills: removeDuplicates(category.skills),
+    skills: removeDuplicates(category.skills), // Assuming removeDuplicates is defined elsewhere
   }));
 
   return organizedSkills;

@@ -22,6 +22,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
+import { SkillTypes } from "@/interfaces/skills/SkillInterface";
 
 /**
  * Metadata object for the dynamic project page.
@@ -31,7 +32,7 @@ import TabbedReader from "./components/TabbedReader";
  */
 export async function generateMetadata(
   { params, searchParams }: ProjectPageProps,
-  parent: ResolvingMetadata,
+  parent: ResolvingMetadata
 ): Promise<Metadata> {
   // Read route params
   const slug = params.slug;
@@ -87,10 +88,10 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   }
 
   const projectLanguages = project.skills.filter(
-    (skill) => skill.category === "Programming Languages",
+    (skill) => skill.category === "Programming Languages"
   );
   const projectSkillsWithoutLanguage = project.skills.filter(
-    (skill) => skill.category !== "Programming Languages",
+    (skill) => skill.category !== "Programming Languages"
   );
 
   const projectName = project.name;
@@ -98,18 +99,24 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const hasCoverImage = hasProjectCover(slug);
   const coverImagePath = `${basePath}/${slug}/cover.png`;
 
-  const technologies = filterSkillsByType(projectSkillsWithoutLanguage, "hard");
+  const technologies = filterSkillsByType(
+    projectSkillsWithoutLanguage,
+    SkillTypes.Hard
+  );
   const generalSkills = filterSkillsByType(
     projectSkillsWithoutLanguage,
-    "general",
+    SkillTypes.General
   );
-  const softSkills = filterSkillsByType(projectSkillsWithoutLanguage, "soft");
+  const softSkills = filterSkillsByType(
+    projectSkillsWithoutLanguage,
+    SkillTypes.Soft
+  );
 
   // Using the new function to group all skill types
   const allGroupedSkills = [
-    filterAndGroupSkills(technologies, "hard", "Technologies"),
-    filterAndGroupSkills(generalSkills, "general", "Technical Skills"),
-    filterAndGroupSkills(softSkills, "soft", "Soft Skills"),
+    filterAndGroupSkills(technologies, SkillTypes.Hard, "Technologies"),
+    filterAndGroupSkills(generalSkills, SkillTypes.General, "Technical Skills"),
+    filterAndGroupSkills(softSkills, SkillTypes.Soft, "Soft Skills"),
   ];
 
   const getImages = () => {
@@ -138,15 +145,16 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
    * This is used to display the features and blog sections.
    */
   const features = getMarkdownFromFileSystem(
-    `public${basePath}/${slug}/features.md`,
+    `public${basePath}/${slug}/features.md`
   )?.content;
 
   /**
    * Get the features and blog content from the file system.
    * This is used to display the features and blog sections.
    */
-  const blog = getMarkdownFromFileSystem(`public${basePath}/${slug}/report.md`)
-    ?.content;
+  const blog = getMarkdownFromFileSystem(
+    `public${basePath}/${slug}/report.md`
+  )?.content;
 
   return (
     <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
@@ -190,7 +198,9 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
         <div className="text-center md:text-left">
           <HeadingThree title="Description" />
           <div className="flex flex-wrap justify-center md:justify-start z-10 mt-5">
-            <p className="text-neutral-800 dark:text-neutral-300">{projectDescription}</p>
+            <p className="text-neutral-800 dark:text-neutral-300">
+              {projectDescription}
+            </p>
           </div>
         </div>
 

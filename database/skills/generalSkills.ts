@@ -1,10 +1,10 @@
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
 
 export const continuousIntegration: SkillInterface = {
   name: "Continuous Integration",
   category: "DevOps",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "continuous-integration",
 };
 
@@ -12,7 +12,7 @@ export const continuousDelivery: SkillInterface = {
   name: "Continuous Delivery",
   category: "DevOps",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "continuous-delivery",
 };
 
@@ -20,7 +20,7 @@ export const continuousDeployment: SkillInterface = {
   name: "Continuous Deployment",
   category: "DevOps",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "continuous-deployment",
 };
 
@@ -28,7 +28,7 @@ export const devOps: SkillInterface = {
   name: "DevOps",
   category: "DevOps",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "devops",
 };
 
@@ -36,7 +36,7 @@ export const linting: SkillInterface = {
   name: "Linting",
   category: "Code Quality",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "linting",
 };
 
@@ -44,7 +44,7 @@ export const oop: SkillInterface = {
   name: "Object Oriented Programming",
   category: "Programming Paradigms",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "object-oriented-programming",
 };
 
@@ -52,7 +52,7 @@ export const functionalProgramming: SkillInterface = {
   name: "Functional Programming",
   category: "Programming Paradigms",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "functional-programming",
 };
 
@@ -60,7 +60,7 @@ export const algorithms: SkillInterface = {
   name: "Algorithms",
   category: "Core Computer Science",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "algorithm",
 };
 
@@ -68,7 +68,7 @@ export const dataStructures: SkillInterface = {
   name: "Data Structures",
   category: "Core Computer Science",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "data-structures",
 };
 
@@ -76,7 +76,7 @@ export const androidDevelopment: SkillInterface = {
   name: "Android Development",
   category: "Platform Development",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "android-development",
 };
 
@@ -84,7 +84,7 @@ export const iosDevelopment: SkillInterface = {
   name: "iOS Development",
   category: "Platform Development",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "ios-development",
 };
 
@@ -92,7 +92,7 @@ export const windowsDevelopment: SkillInterface = {
   name: "Windows Development",
   category: "Platform Development",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "windows-development",
 };
 
@@ -100,7 +100,7 @@ export const macDevelopment: SkillInterface = {
   name: "Mac Development",
   category: "Platform Development",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "macos-development",
 };
 
@@ -108,7 +108,7 @@ export const linuxDevelopment: SkillInterface = {
   name: "Linux Development",
   category: "Platform Development",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "linux-development",
 };
 
@@ -116,7 +116,7 @@ export const machineLearning: SkillInterface = {
   name: "Machine Learning",
   category: "Artificial Intelligence",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "machine-learning",
 };
 
@@ -124,7 +124,7 @@ export const deepLearning: SkillInterface = {
   name: "Deep Learning",
   category: "Artificial Intelligence",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "deep-learning",
 };
 
@@ -132,7 +132,7 @@ export const artificialIntelligence: SkillInterface = {
   name: "Artificial Intelligence",
   category: "Artificial Intelligence",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "artificial-intelligence",
 };
 
@@ -140,7 +140,7 @@ export const dataScience: SkillInterface = {
   name: "Data Science",
   category: "Data Science",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "data-science",
 };
 
@@ -148,14 +148,14 @@ export const hyperparameters: SkillInterface = {
   name: "Hyperparameters",
   category: "Artificial Intelligence",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "hyperparameters",
 };
 
 export const boosting: SkillInterface = {
   name: "Boosting",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   category: "Artificial Intelligence",
   slug: "boosting",
 };
@@ -164,7 +164,7 @@ export const dataVisualisation: SkillInterface = {
   name: "Data Visualisation",
   category: "Data Science",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "data-visualisation",
 };
 
@@ -172,7 +172,7 @@ export const neuralNetworks: SkillInterface = {
   name: "Neural Networks",
   category: "Artificial Intelligence",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "neural-networks",
 };
 
@@ -180,7 +180,7 @@ export const apis: SkillInterface = {
   name: "APIs",
   category: "APIs",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "apis",
 };
 
@@ -188,7 +188,7 @@ export const databases: SkillInterface = {
   name: "Databases",
   category: "Databases",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "databases",
 };
 
@@ -196,7 +196,7 @@ export const webSockets: SkillInterface = {
   name: "Web Sockets",
   category: "Web Sockets",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "web-sockets",
 };
 
@@ -204,7 +204,7 @@ export const sql: SkillInterface = {
   name: "Relational Databases (SQL)",
   category: "Databases",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "sql",
 };
 
@@ -212,7 +212,7 @@ export const noSql: SkillInterface = {
   name: "Non Relational Databases (NoSQL)",
   category: "Databases",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "no-sql",
 };
 
@@ -220,7 +220,7 @@ export const orm: SkillInterface = {
   name: "Object Relational Mapping",
   category: "Databases",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "orm",
 };
 
@@ -228,7 +228,7 @@ export const testing: SkillInterface = {
   name: "Testing",
   category: "Testing",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "testing",
 };
 
@@ -236,7 +236,7 @@ export const containerization: SkillInterface = {
   name: "Containerization",
   category: "DevOps",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "containerization",
 };
 
@@ -244,7 +244,7 @@ export const clusterisation: SkillInterface = {
   name: "Clusterisation",
   category: "DevOps",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "clusterisation",
 };
 
@@ -252,7 +252,7 @@ export const infrastructureAsCode: SkillInterface = {
   name: "Infrastructure as Code",
   category: "DevOps",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "infrastructure-as-code",
 };
 
@@ -260,7 +260,7 @@ export const automation: SkillInterface = {
   name: "Automation",
   category: "Automation",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "automation",
 };
 
@@ -268,7 +268,7 @@ export const databaseManagementSystems: SkillInterface = {
   name: "Database Management Systems",
   category: "Databases",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "database-management-systems",
 };
 
@@ -276,7 +276,7 @@ export const indexing: SkillInterface = {
   name: "Indexing",
   category: "Databases",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "database-indexing",
 };
 
@@ -284,7 +284,7 @@ export const cloudComputing: SkillInterface = {
   name: "Cloud Computing",
   category: "Cloud Computing",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "cloud-computing",
 };
 
@@ -292,7 +292,7 @@ export const designPatterns: SkillInterface = {
   name: "Design Patterns",
   category: "Code Quality",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "design-patterns",
 };
 
@@ -300,7 +300,7 @@ export const userAuthentication: SkillInterface = {
   name: "User Authentication",
   category: "Back-End Web Development",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "user-authentication",
 };
 
@@ -308,7 +308,7 @@ export const webDevelopment: SkillInterface = {
   name: "Web Development",
   category: "Platform Development",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "web-development",
 };
 
@@ -316,7 +316,7 @@ export const sdks: SkillInterface = {
   name: "SDK",
   category: "SDKs",
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.General,
   slug: "sdks",
 };
 
@@ -324,7 +324,7 @@ export const userCentricDesign: SkillInterface = {
   name: "User Centric Design",
   category: "Front-End Web Development",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "user-centric-design",
 };
 
@@ -332,7 +332,7 @@ export const gameDevelopment: SkillInterface = {
   name: "Game Development",
   category: "Game Development",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "game-development",
 };
 
@@ -340,7 +340,7 @@ export const mathematics: SkillInterface = {
   name: "Mathematics",
   category: "Mathematics",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "mathematics",
 };
 
@@ -348,7 +348,7 @@ export const versionControl: SkillInterface = {
   name: "Version Control",
   category: "Version Control",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "version-control",
 };
 
@@ -356,7 +356,7 @@ export const stateManagement: SkillInterface = {
   name: "State Management",
   category: "Front-End Web Development",
   isMainSkill: false,
-  skillType: "general",
+  skillType: SkillTypes.General,
   slug: "state-management",
 };
 

@@ -1,11 +1,11 @@
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
 import { webDevelopment, apis, artificialIntelligence } from "../generalSkills";
 
 export const rest: SkillInterface = {
   name: "REST",
   category: "APIs",
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "rest-api",
   relatedSkills: [webDevelopment, apis],
 };
@@ -13,7 +13,7 @@ export const rest: SkillInterface = {
 export const apollo: SkillInterface = {
   name: "Apollo",
   category: "APIs",
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "apollo",
   relatedSkills: [webDevelopment, apis],
 };
@@ -22,7 +22,7 @@ export const graphQL: SkillInterface = {
   name: "GraphQL",
   category: "APIs",
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "graphql-api",
   relatedSkills: [webDevelopment, apis, apollo],
 };
@@ -30,7 +30,7 @@ export const graphQL: SkillInterface = {
 export const tRPC: SkillInterface = {
   name: "tRPC",
   category: "APIs",
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "trpc-api",
   relatedSkills: [webDevelopment, apis],
 };
@@ -38,7 +38,7 @@ export const tRPC: SkillInterface = {
 export const socketIO: SkillInterface = {
   name: "Socket.IO",
   category: "Web Sockets",
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "socket-io",
   relatedSkills: [webDevelopment],
 };
@@ -46,7 +46,7 @@ export const socketIO: SkillInterface = {
 export const pusher: SkillInterface = {
   name: "Pusher",
   category: "Web Sockets",
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "pusher",
   relatedSkills: [webDevelopment],
 };
@@ -55,7 +55,7 @@ export const openAI: SkillInterface = {
   name: "OpenAI",
   category: "Artificial Intelligence",
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "open-ai",
   relatedSkills: [apis, artificialIntelligence],
 };
@@ -64,7 +64,7 @@ export const replicateAI: SkillInterface = {
   name: "Replicate AI",
   category: "Artificial Intelligence",
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "repliate-ai",
   relatedSkills: [apis, artificialIntelligence],
 };

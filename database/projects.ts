@@ -1,5 +1,7 @@
 import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
-import ProjectInterface, { ProjectCategories } from "@/interfaces/material/ProjectInterface";
+import ProjectInterface, {
+  ProjectCategories,
+} from "@/interfaces/material/ProjectInterface";
 import {
   algorithms,
   artificialIntelligence,
@@ -131,6 +133,7 @@ import {
   gitLab,
 } from "./skills/technicalHardSkills/technicalHardSkillsVCS";
 import updateProjectImages from "@/actions/file-system/updateProjectImages";
+import { SkillTypes } from "@/interfaces/skills/SkillInterface";
 
 /**
  * Array of web development projects.
@@ -181,7 +184,6 @@ const webdevProjects: ProjectInterface[] = [
       algorithms,
     ],
     category: ProjectCategories.FullStackWebDevelopment,
-    
   },
   {
     name: `Ringmaster Messaging`,
@@ -227,7 +229,6 @@ const webdevProjects: ProjectInterface[] = [
       algorithms,
     ],
     category: ProjectCategories.FullStackWebDevelopment,
-    
   },
   {
     name: `Magician AI`,
@@ -274,7 +275,6 @@ const webdevProjects: ProjectInterface[] = [
       algorithms,
     ],
     category: ProjectCategories.FullStackWebDevelopment,
-    
   },
   {
     name: `Drumroll Music`,
@@ -313,7 +313,6 @@ const webdevProjects: ProjectInterface[] = [
       algorithms,
     ],
     category: ProjectCategories.FullStackWebDevelopment,
-    
   },
   {
     name: "Joker Notes",
@@ -353,7 +352,6 @@ const webdevProjects: ProjectInterface[] = [
     ],
     category: ProjectCategories.FullStackWebDevelopment,
     deploymentURL: "https://joker-notes.vercel.app/",
-    
   },
 ];
 
@@ -403,7 +401,6 @@ const extraWebDevProjects: ProjectInterface[] = [
       algorithms,
     ],
     repositoryURL: "https://github.com/mbeps/quizmify",
-    
   },
   {
     name: `Sideshow Articles`,
@@ -437,7 +434,6 @@ const extraWebDevProjects: ProjectInterface[] = [
     ],
     category: ProjectCategories.FullStackWebDevelopment,
     archived: true,
-    
   },
   {
     name: `Noodle`,
@@ -482,7 +478,6 @@ const extraWebDevProjects: ProjectInterface[] = [
     ],
     category: ProjectCategories.FullStackWebDevelopment,
     archived: true,
-    
   },
   {
     name: `ConvoGPT`,
@@ -931,7 +926,6 @@ const gameDevProjects: ProjectInterface[] = [
       black,
     ],
     category: ProjectCategories.GameDevelopment,
-    
   },
   {
     name: "Surface Fight",
@@ -953,7 +947,6 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/surface-fight",
     archived: true,
-    
   },
   {
     name: "Platformer",
@@ -976,7 +969,6 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/platformer",
     archived: true,
-    
   },
   {
     name: "Platformer Death Walk",
@@ -999,7 +991,6 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/platformer-death-walk",
     archived: true,
-    
   },
   {
     name: "Coding Breakout",
@@ -1021,7 +1012,6 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/coding-break-out",
     archived: true,
-    
   },
   {
     name: "Catch Maruf",
@@ -1043,7 +1033,6 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/catch-maruf",
     archived: true,
-    
   },
   {
     name: "Against Gravity",
@@ -1065,7 +1054,6 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/against-gravity",
     archived: true,
-    
   },
   {
     name: "Scrolling Shooter",
@@ -1086,7 +1074,6 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/scrolling-shooter",
     archived: true,
-    
   },
   {
     name: "Dungeon",
@@ -1107,7 +1094,6 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/dungeon-",
     archived: true,
-    
   },
   {
     name: " Veg Ninja",
@@ -1129,7 +1115,6 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/vej-ninja",
     archived: true,
-    
   },
   {
     name: " Angry Cats Space",
@@ -1151,7 +1136,6 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/angry-cats-space",
     archived: true,
-    
   },
   {
     name: " Angry Cats",
@@ -1173,7 +1157,6 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/angry-cats-space",
     archived: true,
-    
   },
 ];
 
@@ -1385,14 +1368,18 @@ export {
 /**
  * Array of all projects.
  */
-const allProjects = addNestedSkillsMaterialList<ProjectInterface>([
-  ...webdevProjects,
-  ...machineLearningProjects,
-  ...extraWebDevProjects,
-  ...gameDevProjects,
-  ...otherProjects,
-  ...javaAssignments,
-  ...backendWebDevProjects,
-]);
+const allProjects = addNestedSkillsMaterialList<ProjectInterface>(
+  [
+    ...webdevProjects,
+    ...machineLearningProjects,
+    ...extraWebDevProjects,
+    ...gameDevProjects,
+    ...otherProjects,
+    ...javaAssignments,
+    ...backendWebDevProjects,
+  ],
+  SkillTypes.General,
+  SkillTypes.Hard
+);
 
 export default allProjects;

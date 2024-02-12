@@ -1,8 +1,8 @@
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
 
 export default function filterSkillsByType(
   skills: SkillInterface[],
-  skillType: "hard" | "general" | "soft",
+  skillType: SkillTypes
 ): SkillInterface[] {
   return skills.filter((skill) => skill.skillType === skillType);
 }

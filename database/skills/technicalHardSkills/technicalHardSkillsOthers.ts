@@ -1,10 +1,10 @@
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
 import { gameDevelopment } from "../generalSkills";
 
 export const gameMakerStudio: SkillInterface = {
   name: "GameMaker Studio 2",
   category: "Game Development",
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "gamemaker-studio",
   relatedSkills: [gameDevelopment],
 };
@@ -12,7 +12,7 @@ export const gameMakerStudio: SkillInterface = {
 export const symphony: SkillInterface = {
   name: "Symphony Solutions",
   category: "Automation",
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "symphony-solutions",
   relatedSkills: [gameDevelopment],
 };

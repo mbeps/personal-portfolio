@@ -1,4 +1,7 @@
-import CertificateInterface, { CertificateCategories, CertificateIssuers } from "@/interfaces/material/CertificateInterface";
+import CertificateInterface, {
+  CertificateCategories,
+  CertificateIssuers,
+} from "@/interfaces/material/CertificateInterface";
 import {
   algorithms,
   androidDevelopment,
@@ -156,6 +159,7 @@ import {
   gitHub,
   gitLab,
 } from "./skills/technicalHardSkills/technicalHardSkillsVCS";
+import { SkillTypes } from "@/interfaces/skills/SkillInterface";
 
 const programmingLanguagesCertificates: CertificateInterface[] = [
   {
@@ -2512,18 +2516,22 @@ const otherCertificates: CertificateInterface[] = [
 
 export { cloudComputingCertificates };
 
-const allCertificates = addNestedSkillsMaterialList<CertificateInterface>([
-  ...programmingLanguagesCertificates,
-  ...algorithmsAndDataStructuresCertificates,
-  ...databasesCertificates,
-  ...softwareEngineeringCertificates,
-  ...webDevelopmentCertificates,
-  ...machineLearningCertificates,
-  ...devOpsCertificates,
-  ...cloudComputingCertificates,
-  ...mathematicsCertificates,
-  ...managementCertificates,
-  ...otherCertificates,
-]);
+const allCertificates = addNestedSkillsMaterialList<CertificateInterface>(
+  [
+    ...programmingLanguagesCertificates,
+    ...algorithmsAndDataStructuresCertificates,
+    ...databasesCertificates,
+    ...softwareEngineeringCertificates,
+    ...webDevelopmentCertificates,
+    ...machineLearningCertificates,
+    ...devOpsCertificates,
+    ...cloudComputingCertificates,
+    ...mathematicsCertificates,
+    ...managementCertificates,
+    ...otherCertificates,
+  ],
+  SkillTypes.General,
+  SkillTypes.Hard
+);
 
 export default allCertificates;

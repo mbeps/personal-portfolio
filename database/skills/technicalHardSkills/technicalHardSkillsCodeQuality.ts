@@ -1,10 +1,10 @@
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
 import { javascript, python, typescript } from "../languages";
 
 export const black: SkillInterface = {
   name: "Black",
   category: "Code Quality",
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "black-linting",
   relatedSkills: [python],
 };
@@ -12,7 +12,7 @@ export const black: SkillInterface = {
 export const zod: SkillInterface = {
   name: "Zod",
   category: "Code Quality",
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "zod",
   relatedSkills: [typescript],
 };
@@ -20,7 +20,7 @@ export const zod: SkillInterface = {
 export const eslint: SkillInterface = {
   name: "ESLint",
   category: "Code Quality",
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "eslint",
   relatedSkills: [javascript, typescript],
 };
@@ -28,7 +28,7 @@ export const eslint: SkillInterface = {
 export const prettier: SkillInterface = {
   name: "Prettier",
   category: "Code Quality",
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "prettier",
   relatedSkills: [javascript, typescript],
 };
@@ -36,7 +36,7 @@ export const prettier: SkillInterface = {
 export const pyLint: SkillInterface = {
   name: "PyLint",
   category: "Code Quality",
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "pylint",
   relatedSkills: [python],
 };
@@ -44,7 +44,7 @@ export const pyLint: SkillInterface = {
 export const checkstyle: SkillInterface = {
   name: "Checkstyle",
   category: "Code Quality",
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "checkstyle",
 };
 

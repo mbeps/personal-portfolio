@@ -1,4 +1,4 @@
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
 import {
   artificialIntelligence,
   boosting,
@@ -15,7 +15,7 @@ export const scikitLearn: SkillInterface = {
   name: "Scikit Learn",
   category: "Artificial Intelligence",
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "scikit-learn",
   relatedSkills: [
     python,
@@ -32,7 +32,7 @@ export const pandas: SkillInterface = {
   name: "Pandas",
   category: "Artificial Intelligence",
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "pandas",
   relatedSkills: [python, dataScience, dataVisualisation],
 };
@@ -41,7 +41,7 @@ export const numpy: SkillInterface = {
   name: "NumPy",
   category: "Artificial Intelligence",
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "numpy",
   relatedSkills: [python, dataScience, mathematics],
 };
@@ -50,7 +50,7 @@ export const matplotlib: SkillInterface = {
   name: "Matplotlib",
   category: "Data Science",
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "matplotlib",
   relatedSkills: [python, dataScience, dataVisualisation],
 };
@@ -59,7 +59,7 @@ export const seaborn: SkillInterface = {
   name: "Seaborn",
   category: "Data Science",
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "seaborn",
   relatedSkills: [python, dataScience, dataVisualisation],
 };
@@ -68,7 +68,7 @@ export const keras: SkillInterface = {
   name: "Keras",
   category: "Artificial Intelligence",
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "keras",
   relatedSkills: [
     python,
@@ -83,7 +83,7 @@ export const jupyterNotebooks: SkillInterface = {
   name: "Jupyter Notebooks",
   category: "Data Science",
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "juptyer-notebooks",
   relatedSkills: [python, dataScience],
 };

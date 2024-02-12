@@ -1,9 +1,9 @@
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
 
 export const python: SkillInterface = {
   name: "Python",
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   category: "Programming Languages",
   slug: "python",
 };
@@ -11,7 +11,7 @@ export const python: SkillInterface = {
 export const javascript: SkillInterface = {
   name: "JavaScript",
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   category: "Programming Languages",
   slug: "javascript",
 };
@@ -19,7 +19,7 @@ export const javascript: SkillInterface = {
 export const typescript: SkillInterface = {
   name: "TypeScript",
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   category: "Programming Languages",
   slug: "typescript",
 };
@@ -27,7 +27,7 @@ export const typescript: SkillInterface = {
 export const java: SkillInterface = {
   name: "Java",
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   category: "Programming Languages",
   slug: "java",
 };
@@ -35,7 +35,7 @@ export const java: SkillInterface = {
 export const gameMakerLanguage: SkillInterface = {
   name: "GameMaker Language",
   isMainSkill: false,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   category: "Programming Languages",
   slug: "game-maker-language",
 };
@@ -43,7 +43,7 @@ export const gameMakerLanguage: SkillInterface = {
 export const shellScript: SkillInterface = {
   name: "Shell Script",
   isMainSkill: false,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   category: "Programming Languages",
   slug: "shell",
 };
@@ -51,7 +51,7 @@ export const shellScript: SkillInterface = {
 export const rLanguage: SkillInterface = {
   name: "R",
   isMainSkill: false,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   category: "Programming Languages",
   slug: "r",
 };
@@ -59,7 +59,7 @@ export const rLanguage: SkillInterface = {
 export const groovy: SkillInterface = {
   name: "Groovy",
   isMainSkill: false,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   category: "Programming Languages",
   slug: "groovy",
 };

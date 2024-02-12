@@ -21,6 +21,7 @@ import { Button } from "@/components/shadcn/ui/button";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
+import { SkillTypes } from "@/interfaces/skills/SkillInterface";
 import Fuse from "fuse.js";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -127,18 +128,24 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
    */
   const technologies = generateFilterOptionsBySkillType<ProjectInterface>(
     allProjects,
-    "hard",
-    "Programming Languages",
+    SkillTypes.Hard,
+    "Programming Languages"
   );
 
   const categories =
     generateFilterOptionsBySkillCategories<ProjectInterface>(allProjects);
 
   const generalSkills: FilterOption[] =
-    generateFilterOptionsBySkillType<ProjectInterface>(allProjects, "general");
+    generateFilterOptionsBySkillType<ProjectInterface>(
+      allProjects,
+      SkillTypes.General
+    );
 
   const softSkills: FilterOption[] =
-    generateFilterOptionsBySkillType<ProjectInterface>(allProjects, "soft");
+    generateFilterOptionsBySkillType<ProjectInterface>(
+      allProjects,
+      SkillTypes.Soft
+    );
 
   //^ Filtering Logic
   /**
@@ -153,7 +160,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
   if (stringToSlug(selectedSection) !== "all") {
     filteredProjects = filterMaterialByCategory<ProjectInterface>(
       stringToSlug(selectedSection),
-      filteredProjects,
+      filteredProjects
     );
   }
 
@@ -161,7 +168,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
   if (selectedLanguage !== "all") {
     filteredProjects = filterProjectsByProgrammingLanguage(
       selectedLanguage,
-      filteredProjects,
+      filteredProjects
     );
   }
 
@@ -170,7 +177,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
     filteredProjects = filterMaterialBySkill<ProjectInterface>(
       selectedTechnology,
       filteredProjects,
-      "hard",
+      SkillTypes.Hard
     );
   }
 
@@ -178,7 +185,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
   if (stringToSlug(selectedSkillCategory) !== "all") {
     filteredProjects = filterMaterialBySkillCategory<ProjectInterface>(
       stringToSlug(selectedSkillCategory),
-      filteredProjects,
+      filteredProjects
     );
   }
 
@@ -187,7 +194,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
     filteredProjects = filterMaterialBySkill<ProjectInterface>(
       selectedGeneralSkill,
       filteredProjects,
-      "general",
+      SkillTypes.General
     );
   }
 
@@ -196,14 +203,14 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
     filteredProjects = filterMaterialBySkill<ProjectInterface>(
       selectedSoftSkill,
       filteredProjects,
-      "soft",
+      SkillTypes.Soft
     );
   }
 
   // Filter by archived status
   filteredProjects = filterMaterialByArchivedStatus<ProjectInterface>(
     showArchived,
-    filteredProjects,
+    filteredProjects
   );
 
   /**
@@ -229,8 +236,8 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
           { entryName: searchParamName, slug: newSearchTerm },
           { entryName: archivedParamName, slug: true.toString() },
         ],
-        basePath,
-      ),
+        basePath
+      )
     );
   };
 

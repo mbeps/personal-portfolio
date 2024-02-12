@@ -19,6 +19,7 @@ import { Button } from "@/components/shadcn/ui/button";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import BlogInterface from "@/interfaces/material/BlogInterface";
+import { SkillTypes } from "@/interfaces/skills/SkillInterface";
 import Fuse from "fuse.js";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -75,7 +76,6 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
    * These are the only properties that are searched.
    * These are the same ones from the `Blog` type.
    */
-  // TODO: Update this to work with combined skills
   const searchOptions = {
     keys: [
       "name",
@@ -109,13 +109,13 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
     generateFilterOptionsBySkillCategories<BlogInterface>(blogs);
 
   const hardSkills: FilterOption[] =
-    generateFilterOptionsBySkillType<BlogInterface>(blogs, "hard");
+    generateFilterOptionsBySkillType<BlogInterface>(blogs, SkillTypes.Hard);
 
   const generalSkills: FilterOption[] =
-    generateFilterOptionsBySkillType<BlogInterface>(blogs, "general");
+    generateFilterOptionsBySkillType<BlogInterface>(blogs, SkillTypes.General);
 
   const softSkills: FilterOption[] =
-    generateFilterOptionsBySkillType<BlogInterface>(blogs, "soft");
+    generateFilterOptionsBySkillType<BlogInterface>(blogs, SkillTypes.Soft);
 
   //^ Filtering Logic
   /**
@@ -134,8 +134,8 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
           { entryName: searchParamName, slug: newSearchTerm },
           { entryName: archivedParamName, slug: true.toString() },
         ],
-        basePath,
-      ),
+        basePath
+      )
     );
   };
 
@@ -146,7 +146,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
   if (selectedBlogSection !== "all") {
     filteredBlogs = filterMaterialByCategory<BlogInterface>(
       stringToSlug(selectedBlogSection),
-      filteredBlogs,
+      filteredBlogs
     );
   }
 
@@ -154,7 +154,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
   if (selectedSkillCategory !== "all") {
     filteredBlogs = filterMaterialBySkillCategory<BlogInterface>(
       stringToSlug(selectedSkillCategory),
-      filteredBlogs,
+      filteredBlogs
     );
   }
 
@@ -163,7 +163,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
     filteredBlogs = filterMaterialBySkill<BlogInterface>(
       selectedTechnicalSkill,
       filteredBlogs,
-      "hard",
+      SkillTypes.Hard
     );
   }
 
@@ -172,7 +172,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
     filteredBlogs = filterMaterialBySkill<BlogInterface>(
       selectedGeneralSkill,
       filteredBlogs,
-      "general",
+      SkillTypes.General
     );
   }
 
@@ -181,14 +181,14 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
     filteredBlogs = filterMaterialBySkill<BlogInterface>(
       selectedSoftSkill,
       filteredBlogs,
-      "soft",
+      SkillTypes.Soft
     );
   }
 
   // Filter by archived status
   filteredBlogs = filterMaterialByArchivedStatus<BlogInterface>(
     showArchived,
-    filteredBlogs,
+    filteredBlogs
   );
 
   const groupedBlogs = groupMaterialsByCategory(filteredBlogs);
