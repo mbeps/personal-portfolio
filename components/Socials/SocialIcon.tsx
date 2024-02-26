@@ -25,12 +25,11 @@ const SocialIcon: React.FC<SocialIconProps> = ({
   name,
   link,
   IconComponent,
-  isEmail = false,
   iconSize = 30,
 }) => (
   <Tooltip>
     <TooltipTrigger>
-      <Link href={isEmail ? `mailto:${link}` : link} target="_blank">
+      <Link href={link} target="_blank">
         <IconComponent
           className="
               md:hover:-translate-y-1
