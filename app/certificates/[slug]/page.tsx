@@ -9,6 +9,7 @@ import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
 import allCertificates from "@/database/certificates";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
+import { SkillTypes } from "@/interfaces/skills/SkillInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,6 +17,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle } from "react-icons/bs";
 import { RxTriangleRight } from "react-icons/rx";
+import developerName from "@/constants/developerName";
 
 /**
  * Metadata object for the dynamic certificate page.
@@ -25,7 +27,7 @@ import { RxTriangleRight } from "react-icons/rx";
  */
 export async function generateMetadata(
   { params, searchParams }: CertificatesPageProps,
-  parent: ResolvingMetadata,
+  parent: ResolvingMetadata
 ): Promise<Metadata> {
   // Read route params
   const slug = params.slug;
@@ -33,12 +35,12 @@ export async function generateMetadata(
   // Assume getCertificateBySlug function fetches certificate by slug
   const certificate = getContentBySlug<CertificateInterface>(
     slug,
-    allCertificates,
+    allCertificates
   );
 
   // Create metadata based on the certificate details
   return {
-    title: `Maruf Bepary - Certificates: ${certificate?.name}`,
+    title: `${developerName} - Certificates: ${certificate?.name}`,
     description: certificate?.slug,
   };
 }
@@ -71,21 +73,24 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
 
   const certificate = getContentBySlug<CertificateInterface>(
     slug,
-    allCertificates,
+    allCertificates
   );
   if (!certificate) {
     notFound();
   }
 
-  const technologies = filterSkillsByType(certificate.skills, "hard");
-  const generalSkills = filterSkillsByType(certificate.skills, "general");
-  const softSkills = filterSkillsByType(certificate.skills, "soft");
+  const technologies = filterSkillsByType(certificate.skills, SkillTypes.Hard);
+  const generalSkills = filterSkillsByType(
+    certificate.skills,
+    SkillTypes.General
+  );
+  const softSkills = filterSkillsByType(certificate.skills, SkillTypes.Soft);
 
   // Simplified grouping of skill types for certificates
   const allGroupedSkills = [
-    filterAndGroupSkills(technologies, "hard", "Technologies"),
-    filterAndGroupSkills(generalSkills, "general", "Technical Skills"),
-    filterAndGroupSkills(softSkills, "soft", "Soft Skills"),
+    filterAndGroupSkills(technologies, SkillTypes.Hard, "Technologies"),
+    filterAndGroupSkills(generalSkills, SkillTypes.General, "Technical Skills"),
+    filterAndGroupSkills(softSkills, SkillTypes.Soft, "Soft Skills"),
   ];
   const certificateImage = `/certificates/${slug}.jpg`;
 
@@ -138,7 +143,9 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
           <div className="md:text-left text-center">
             <HeadingThree title="Description" />
           </div>
-          <p className="text-lg text-neutral-800 dark:text-neutral-300">{certificate.description}</p>
+          <p className="text-lg text-neutral-800 dark:text-neutral-300">
+            {certificate.description}
+          </p>
         </div>
       )}
 
@@ -156,7 +163,9 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
                     <div className="mr-2 mt-1.5">
                       <RxTriangleRight />
                     </div>
-                    <div className="text-neutral-800 dark:text-neutral-300">{outcome}</div>
+                    <div className="text-neutral-800 dark:text-neutral-300">
+                      {outcome}
+                    </div>
                   </li>
                 ))}
               </ul>

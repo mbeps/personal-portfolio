@@ -1,16 +1,16 @@
 import MaterialInterface from "./MaterialInterface";
 
-/**
- * Represents a blog.
- */
+export enum BlogCategories {
+  WebDevelopment = "Web Development",
+  SoftwareEngineering = "Software Engineering",
+  Databases = "Databases",
+  DevOps = "DevOps",
+  ArtificialIntelligence = "Artificial Intelligence",
+  Mathematics = "Mathematics",
+  Other = "Other"
+}
+
 export default interface BlogInterface extends MaterialInterface {
   subtitle: string;
-  category:
-    | "Web Development"
-    | "Software Engineering"
-    | "Databases"
-    | "DevOps"
-    | "Artificial Intelligence"
-    | "Mathematics"
-    | "Other";
+  category: BlogCategories;
 }

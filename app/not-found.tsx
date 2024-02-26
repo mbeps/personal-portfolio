@@ -1,9 +1,10 @@
 import { Button } from "@/components/shadcn/ui/button";
+import developerName from "@/constants/developerName";
 import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Maruf Bepary - Page Not Found",
+  title: `${developerName} - Page Not Found`,
   description:
     "The page you are looking for does not exist. Navigate back to the home page",
 };

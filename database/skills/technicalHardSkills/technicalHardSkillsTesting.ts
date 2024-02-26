@@ -1,62 +1,65 @@
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillInterface, {
+  SkillCategories,
+  SkillTypes,
+} from "@/interfaces/skills/SkillInterface";
 import { java, javascript, python, typescript } from "../languages";
 
 export const jest: SkillInterface = {
   name: "Jest",
-  category: "Testing",
+  category: SkillCategories.Testing,
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "jest",
   relatedSkills: [javascript, typescript],
 };
 
 export const vitest: SkillInterface = {
   name: "Vitest",
-  category: "Testing",
+  category: SkillCategories.Testing,
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "vitest",
   relatedSkills: [javascript, typescript],
 };
 
 export const pytest: SkillInterface = {
   name: "PyTest",
-  category: "Testing",
+  category: SkillCategories.Testing,
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "pytest",
   relatedSkills: [python],
 };
 
 export const unittest: SkillInterface = {
   name: "UnitTest",
-  category: "Testing",
+  category: SkillCategories.Testing,
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "unittest",
   relatedSkills: [python],
 };
 
 export const junit: SkillInterface = {
   name: "JUnit",
-  category: "Testing",
+  category: SkillCategories.Testing,
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "junit",
   relatedSkills: [java],
 };
 
 export const cypress: SkillInterface = {
   name: "Cypress",
-  category: "Testing",
-  skillType: "hard",
+  category: SkillCategories.Testing,
+  skillType: SkillTypes.Hard,
   slug: "cypress",
 };
 
 export const reactTestingLibrary: SkillInterface = {
   name: "React Testing Library",
-  category: "Testing",
-  skillType: "hard",
+  category: SkillCategories.Testing,
+  skillType: SkillTypes.Hard,
   slug: "react-testing-library",
 };
 

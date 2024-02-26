@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import AboutSection from "./components/AboutSection/AboutSection";
 import HeroSection from "./components/HeroSection";
 import ProjectsSection from "./components/ProjectSection";
+import developerName from "@/constants/developerName";
 
 export const metadata: Metadata = {
-  title: "Maruf Bepary",
+  title: developerName,
   description: `The homepage for my personal website. 
     It contains information about me, my projects and my contact information.
     I am a software developer and a computer science student graduate from Royal Holloway, University of London.

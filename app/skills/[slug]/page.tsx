@@ -21,6 +21,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import RelatedSkillsSection from "./components/RelatedSkillsSection";
 import updateProjectImages from "@/actions/file-system/updateProjectImages";
+import developerName from "@/constants/developerName";
 
 function extractSlugs(skills: SkillInterface[]): string[] {
   return skills.map((skill) => {
@@ -40,7 +41,7 @@ interface MaterialSectionInterface {
 
 export async function generateMetadata(
   { params, searchParams }: ProjectPageProps,
-  parent: ResolvingMetadata,
+  parent: ResolvingMetadata
 ): Promise<Metadata> {
   const slug = params.slug;
   const skill = getSkillBySlug(slug, [...allSkills]);
@@ -50,7 +51,7 @@ export async function generateMetadata(
   }
 
   return {
-    title: `Maruf Bepary - Skills: ${skill?.name}`,
+    title: `${developerName} - Skills: ${skill?.name}`,
     description: skill.name,
   };
 }
@@ -140,7 +141,7 @@ const MaterialSection: React.FC<MaterialSectionProps> = ({
 
   const groupedMaterials = groupMaterialsByMaterialType(
     filteredMaterials,
-    name,
+    name
   );
 
   return (

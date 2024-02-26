@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Socials from "../Socials/Socials";
+import developerName from "@/constants/developerName";
 
 /**
  * Footer to be displayed at the bottom of the page.
@@ -22,7 +23,7 @@ const Footer = () => {
       >
         <div className="flex flex-row items-center justify-center space-x-1 text-neutral-500 dark:text-neutral-100">
           <Link href="/">
-            <p>© 2024 Maruf Bepary</p>
+            <p>{`© 2024 ${developerName}`}</p>
           </Link>
         </div>
         <Socials />

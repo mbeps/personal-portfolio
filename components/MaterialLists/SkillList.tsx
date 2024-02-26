@@ -29,7 +29,7 @@ import certificates from "@/database/certificates";
 import projects from "@/database/projects";
 import { nextjs } from "@/database/skills/technicalHardSkills/technicalHardSkillsFullStackWebDev";
 import FilterOption from "@/interfaces/filters/FilterOption";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import { cn } from "@/lib/utils";
 import { Check } from "lucide-react";
@@ -67,21 +67,25 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
   const includeNoMaterial = searchParams.get(noMaterialParamName) === "true"; // false by default
 
   //^ LOGIC FOR DISPLAYING FILTERED SKILLS
-  const options = [
+  const options: FilterOption[] = [
     { slug: "category", entryName: "Category" },
     { slug: "skill-type", entryName: "Skill Type" },
     { slug: "language", entryName: "Language" },
     { slug: "none", entryName: "None" },
   ];
 
-  const includeSkillTypes: ("hard" | "general" | "soft")[] = [];
+  const includeSkillTypes: SkillTypes[] = [];
 
-  if (includeHardSkills) includeSkillTypes.push("hard");
-  if (includeGeneralSkills) includeSkillTypes.push("general");
-  if (includeSoftSkills) includeSkillTypes.push("soft");
+  if (includeHardSkills) includeSkillTypes.push(SkillTypes.Hard);
+  if (includeGeneralSkills) includeSkillTypes.push(SkillTypes.General);
+  if (includeSoftSkills) includeSkillTypes.push(SkillTypes.Soft);
 
   // Group skills with the inclusion list
-  const groupedSkills: SkillsCategoryInterface[] = groupSkills(selectedGroup, skills, includeSkillTypes);
+  const groupedSkills: SkillsCategoryInterface[] = groupSkills(
+    selectedGroup,
+    skills,
+    includeSkillTypes
+  );
 
   //^ LOGIC FOR HANDLING FILTERS
   function handleSelect(value: string) {
@@ -239,7 +243,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
                             slug: filter.selected ? "false" : "true",
                           },
                         ],
-                        basePath,
+                        basePath
                       )}
                       className="w-full"
                     >
@@ -281,8 +285,10 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
                     key={index}
                     skill={skill}
                     hide={
-                      !(findAllMaterialsAttributedToSkill(skill, allMaterial).length >= 5)
-                      && includeNoMaterial
+                      !(
+                        findAllMaterialsAttributedToSkill(skill, allMaterial)
+                          .length >= 5
+                      ) && includeNoMaterial
                     }
                   />
                 ))}

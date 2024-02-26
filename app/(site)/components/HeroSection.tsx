@@ -4,6 +4,8 @@ import scrollToSection from "@/actions/scrollToSection";
 import Socials from "@/components/Socials/Socials";
 import TextLoop from "@/components/TextLoop/TextLoop";
 import { Button } from "@/components/shadcn/ui/button";
+import developerName from "@/constants/developerName";
+import subtitles from "@/constants/subtitles";
 import useIsMounted from "@/hooks/useIsMounted";
 import Image from "next/image";
 import { HiArrowDown } from "react-icons/hi";
@@ -14,16 +16,6 @@ import { HiArrowDown } from "react-icons/hi";
  */
 const HeroSection = () => {
   const isMounted = useIsMounted();
-
-  /**
-   * Array of strings to loop through.
-   */
-  const loopItems = [
-    "Software Engineering",
-    "Full-Stack Development",
-    "Machine Learning",
-    "Mathematics",
-  ];
 
   return (
     <section id="home" className="home-section-wrapper">
@@ -50,7 +42,7 @@ const HeroSection = () => {
           {/* Profile Image */}
           <Image
             src="/profile.png"
-            alt="Profile image of Maruf Bepary"
+            alt="Profile image of the developer"
             width={325}
             height={325}
             className="rounded-full shadow-2xl"
@@ -65,18 +57,19 @@ const HeroSection = () => {
           className="
             md:mt-2
             lg:w-3/5 w-full
-            space-y-7 md:space-y-5
+            space-y-7 md:space-y-4
             items-center justify-center lg:justify-start
         "
         >
-          <h1 className="text-5xl md:text-7xl font-bold mt-6 md:mt-0 mb-6">
-            {`Hi, I'm Maruf!`}
-          </h1>
+          <div className="flex flex-col space-y-4">
+            <h1 className="text-3xl md:text-5xl font-normal">{`Hi, I'm`}</h1>
+            <h1 className="text-5xl md:text-7xl font-bold">{developerName}</h1>
+          </div>
 
           {/* Roles */}
           {isMounted && (
             <TextLoop
-              loopItems={loopItems}
+              loopItems={subtitles}
               implementation="typewriter"
               className="
                 text-2xl md:text-4xl font-semibold

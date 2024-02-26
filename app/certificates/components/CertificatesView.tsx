@@ -21,6 +21,7 @@ import { Button } from "@/components/shadcn/ui/button";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
+import { SkillTypes } from "@/interfaces/skills/SkillInterface";
 import Fuse from "fuse.js";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -60,25 +61,25 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
 
   //^ URL Params Reader
   const selectedIssuer = decodeURIComponent(
-    searchParams.get(issuerParamName) || "all",
+    searchParams.get(issuerParamName) || "all"
   );
   const selectedCategory = decodeURIComponent(
-    searchParams.get(certificateSectionParamName) || "all",
+    searchParams.get(certificateSectionParamName) || "all"
   );
   const selectedSkillCategory = decodeURIComponent(
-    searchParams.get(skillCategoryParamName) || "all",
+    searchParams.get(skillCategoryParamName) || "all"
   );
   const selectedTechnicalSkill = decodeURIComponent(
-    searchParams.get(technicalSkillParamName) || "all",
+    searchParams.get(technicalSkillParamName) || "all"
   );
   const selectedGeneralSkill = decodeURIComponent(
-    searchParams.get(generalSkillParamName) || "all",
+    searchParams.get(generalSkillParamName) || "all"
   );
   const selectedSoftSkill = decodeURIComponent(
-    searchParams.get(softSkillParamName) || "all",
+    searchParams.get(softSkillParamName) || "all"
   );
   const searchTerm = decodeURIComponent(
-    searchParams.get(searchParamName) || "",
+    searchParams.get(searchParamName) || ""
   );
   const showArchived =
     decodeURIComponent(searchParams.get(archivedParamName) || "false") ===
@@ -117,25 +118,25 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
 
   const skillCategories: FilterOption[] =
     generateFilterOptionsBySkillCategories<CertificateInterface>(
-      allCertificates,
+      allCertificates
     );
 
   const hardSkills: FilterOption[] =
     generateFilterOptionsBySkillType<CertificateInterface>(
       allCertificates,
-      "hard",
+      SkillTypes.Hard
     );
 
   const generalSkills: FilterOption[] =
     generateFilterOptionsBySkillType<CertificateInterface>(
       allCertificates,
-      "general",
+      SkillTypes.General
     );
 
   const softSkills: FilterOption[] =
     generateFilterOptionsBySkillType<CertificateInterface>(
       allCertificates,
-      "soft",
+      SkillTypes.Soft
     );
 
   //^ Filtering Logic
@@ -153,8 +154,8 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
           { entryName: searchParamName, slug: newSearchTerm },
           { entryName: archivedParamName, slug: true.toString() },
         ],
-        basePath,
-      ),
+        basePath
+      )
     );
   };
 
@@ -164,7 +165,7 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
   if (selectedIssuer !== "all") {
     filteredCertificates = filterCertificatesByIssuer(
       selectedIssuer,
-      filteredCertificates,
+      filteredCertificates
     );
   }
 
@@ -172,7 +173,7 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
   if (selectedCategory !== "all") {
     filteredCertificates = filterMaterialByCategory<CertificateInterface>(
       stringToSlug(selectedCategory),
-      filteredCertificates,
+      filteredCertificates
     );
   }
 
@@ -180,7 +181,7 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
   if (selectedSkillCategory !== "all") {
     filteredCertificates = filterMaterialBySkillCategory<CertificateInterface>(
       stringToSlug(selectedSkillCategory),
-      filteredCertificates,
+      filteredCertificates
     );
   }
 
@@ -189,7 +190,7 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
     filteredCertificates = filterMaterialBySkill<CertificateInterface>(
       selectedTechnicalSkill,
       filteredCertificates,
-      "hard",
+      SkillTypes.Hard
     );
   }
 
@@ -198,7 +199,7 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
     filteredCertificates = filterMaterialBySkill<CertificateInterface>(
       selectedGeneralSkill,
       filteredCertificates,
-      "general",
+      SkillTypes.General
     );
   }
 
@@ -207,14 +208,14 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
     filteredCertificates = filterMaterialBySkill<CertificateInterface>(
       selectedSoftSkill,
       filteredCertificates,
-      "soft",
+      SkillTypes.Soft
     );
   }
 
   // Filter by archived status
   filteredCertificates = filterMaterialByArchivedStatus<CertificateInterface>(
     showArchived,
-    filteredCertificates,
+    filteredCertificates
   );
 
   const groupedCertificates = groupMaterialsByCategory(filteredCertificates);

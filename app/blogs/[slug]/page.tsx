@@ -8,8 +8,10 @@ import HeadingTwo from "@/components/Text/HeadingTwo";
 import { BLOG } from "@/constants/pages";
 import blogs from "@/database/blogs";
 import BlogInterface from "@/interfaces/material/BlogInterface";
+import { SkillTypes } from "@/interfaces/skills/SkillInterface";
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
+import developerName from "@/constants/developerName";
 
 type BlogPageProps = {
   params: { slug: string };
@@ -25,7 +27,7 @@ type BlogPageProps = {
  */
 export async function generateMetadata(
   { params, searchParams }: BlogPageProps,
-  parent: ResolvingMetadata,
+  parent: ResolvingMetadata
 ): Promise<Metadata> {
   const slug = params.slug;
   const allBlogs = blogs;
@@ -34,7 +36,7 @@ export async function generateMetadata(
   const blog = getContentBySlug<BlogInterface>(slug, allBlogs);
 
   return {
-    title: `Maruf Bepary - Blogs: ${blog?.name}`,
+    title: `${developerName} - Blogs: ${blog?.name}`,
     description: blog?.subtitle,
   };
 }
@@ -66,22 +68,25 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
   const basePath = BLOG.path;
   const blogMetadata = getContentBySlug<BlogInterface>(slug, blogs);
   const blogContent = getMarkdownFromFileSystem(
-    `public${basePath}/${slug}/blog.md`,
+    `public${basePath}/${slug}/blog.md`
   )?.content;
 
   if (!blogContent || !blogMetadata) {
     notFound();
   }
 
-  const technologies = filterSkillsByType(blogMetadata.skills, "hard");
-  const generalSkills = filterSkillsByType(blogMetadata.skills, "general");
-  const softSkills = filterSkillsByType(blogMetadata.skills, "soft");
+  const technologies = filterSkillsByType(blogMetadata.skills, SkillTypes.Hard);
+  const generalSkills = filterSkillsByType(
+    blogMetadata.skills,
+    SkillTypes.General
+  );
+  const softSkills = filterSkillsByType(blogMetadata.skills, SkillTypes.Soft);
 
   // Using the new function to group all skill types
   const allGroupedSkills = [
-    filterAndGroupSkills(technologies, "hard", "Technologies"),
-    filterAndGroupSkills(generalSkills, "general", "Technical Skills"),
-    filterAndGroupSkills(softSkills, "soft", "Soft Skills"),
+    filterAndGroupSkills(technologies, SkillTypes.Hard, "Technologies"),
+    filterAndGroupSkills(generalSkills, SkillTypes.General, "Technical Skills"),
+    filterAndGroupSkills(softSkills, SkillTypes.Soft, "Soft Skills"),
   ];
 
   return (

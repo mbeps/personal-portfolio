@@ -1,5 +1,7 @@
 import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
-import ProjectInterface from "@/interfaces/material/ProjectInterface";
+import ProjectInterface, {
+  ProjectCategories,
+} from "@/interfaces/material/ProjectInterface";
 import {
   algorithms,
   artificialIntelligence,
@@ -131,6 +133,7 @@ import {
   gitLab,
 } from "./skills/technicalHardSkills/technicalHardSkillsVCS";
 import updateProjectImages from "@/actions/file-system/updateProjectImages";
+import { SkillTypes } from "@/interfaces/skills/SkillInterface";
 
 /**
  * Array of web development projects.
@@ -180,8 +183,7 @@ const webdevProjects: ProjectInterface[] = [
       designPatterns,
       algorithms,
     ],
-    category: "Full-Stack Web Development",
-    
+    category: ProjectCategories.FullStackWebDevelopment,
   },
   {
     name: `Ringmaster Messaging`,
@@ -226,8 +228,7 @@ const webdevProjects: ProjectInterface[] = [
       designPatterns,
       algorithms,
     ],
-    category: "Full-Stack Web Development",
-    
+    category: ProjectCategories.FullStackWebDevelopment,
   },
   {
     name: `Magician AI`,
@@ -273,8 +274,7 @@ const webdevProjects: ProjectInterface[] = [
       designPatterns,
       algorithms,
     ],
-    category: "Full-Stack Web Development",
-    
+    category: ProjectCategories.FullStackWebDevelopment,
   },
   {
     name: `Drumroll Music`,
@@ -312,8 +312,7 @@ const webdevProjects: ProjectInterface[] = [
       designPatterns,
       algorithms,
     ],
-    category: "Full-Stack Web Development",
-    
+    category: ProjectCategories.FullStackWebDevelopment,
   },
   {
     name: "Joker Notes",
@@ -351,9 +350,8 @@ const webdevProjects: ProjectInterface[] = [
       designPatterns,
       algorithms,
     ],
-    category: "Full-Stack Web Development",
+    category: ProjectCategories.FullStackWebDevelopment,
     deploymentURL: "https://joker-notes.vercel.app/",
-    
   },
 ];
 
@@ -369,7 +367,7 @@ const extraWebDevProjects: ProjectInterface[] = [
     description: `An intuitive platform for dynamic quiz generation. 
       Users can test their knowledge across various topics, choosing between multiple-choice questions or fill-in-the-gap style challenges. 
       With immediate feedback and score tracking, users enhance their understanding.`,
-    category: "Full-Stack Web Development",
+    category: ProjectCategories.FullStackWebDevelopment,
     skills: [
       typescript,
       javascript,
@@ -403,7 +401,6 @@ const extraWebDevProjects: ProjectInterface[] = [
       algorithms,
     ],
     repositoryURL: "https://github.com/mbeps/quizmify",
-    
   },
   {
     name: `Sideshow Articles`,
@@ -435,9 +432,8 @@ const extraWebDevProjects: ProjectInterface[] = [
       adaptability,
       oop,
     ],
-    category: "Full-Stack Web Development",
+    category: ProjectCategories.FullStackWebDevelopment,
     archived: true,
-    
   },
   {
     name: `Noodle`,
@@ -480,9 +476,8 @@ const extraWebDevProjects: ProjectInterface[] = [
       adaptability,
       teamwork,
     ],
-    category: "Full-Stack Web Development",
+    category: ProjectCategories.FullStackWebDevelopment,
     archived: true,
-    
   },
   {
     name: `ConvoGPT`,
@@ -520,7 +515,7 @@ const extraWebDevProjects: ProjectInterface[] = [
       designPatterns,
       algorithms,
     ],
-    category: "Full-Stack Web Development",
+    category: ProjectCategories.FullStackWebDevelopment,
     archived: true,
   },
 ];
@@ -558,7 +553,7 @@ const backendWebDevProjects: ProjectInterface[] = [
       designPatterns,
       algorithms,
     ],
-    category: "Back-End Web Development",
+    category: ProjectCategories.BackEndWebDevelopment,
   },
   {
     name: `Flask JWT Authentication`,
@@ -584,7 +579,7 @@ const backendWebDevProjects: ProjectInterface[] = [
       adaptability,
       oop,
     ],
-    category: "Back-End Web Development",
+    category: ProjectCategories.BackEndWebDevelopment,
     archived: true,
   },
   {
@@ -611,7 +606,7 @@ const backendWebDevProjects: ProjectInterface[] = [
       adaptability,
       oop,
     ],
-    category: "Back-End Web Development",
+    category: ProjectCategories.BackEndWebDevelopment,
     archived: true,
   },
   {
@@ -638,7 +633,7 @@ const backendWebDevProjects: ProjectInterface[] = [
       adaptability,
       oop,
     ],
-    category: "Back-End Web Development",
+    category: ProjectCategories.BackEndWebDevelopment,
     archived: true,
   },
   {
@@ -666,7 +661,7 @@ const backendWebDevProjects: ProjectInterface[] = [
       adaptability,
       oop,
     ],
-    category: "Back-End Web Development",
+    category: ProjectCategories.BackEndWebDevelopment,
     archived: true,
   },
 ];
@@ -703,7 +698,7 @@ const machineLearningProjects: ProjectInterface[] = [
       oop,
       algorithms,
     ],
-    category: "Machine Learning",
+    category: ProjectCategories.MachineLearning,
   },
   {
     name: "House Price Prediction",
@@ -730,7 +725,7 @@ const machineLearningProjects: ProjectInterface[] = [
       oop,
       algorithms,
     ],
-    category: "Machine Learning",
+    category: ProjectCategories.MachineLearning,
   },
   {
     name: `Assignment 1`,
@@ -757,7 +752,7 @@ const machineLearningProjects: ProjectInterface[] = [
       oop,
       algorithms,
     ],
-    category: "Machine Learning",
+    category: ProjectCategories.MachineLearning,
   },
   {
     name: `Assignment 2`,
@@ -785,7 +780,7 @@ const machineLearningProjects: ProjectInterface[] = [
       oop,
       algorithms,
     ],
-    category: "Machine Learning",
+    category: ProjectCategories.MachineLearning,
   },
   {
     name: `Assignment 3`,
@@ -813,7 +808,7 @@ const machineLearningProjects: ProjectInterface[] = [
       oop,
       algorithms,
     ],
-    category: "Machine Learning",
+    category: ProjectCategories.MachineLearning,
   },
   {
     name: `Lab Questions`,
@@ -841,7 +836,7 @@ const machineLearningProjects: ProjectInterface[] = [
       oop,
       algorithms,
     ],
-    category: "Machine Learning",
+    category: ProjectCategories.MachineLearning,
   },
   {
     name: "Computational Finance Assignment",
@@ -870,7 +865,7 @@ const machineLearningProjects: ProjectInterface[] = [
       probability,
       mechanics,
     ],
-    category: "Machine Learning",
+    category: ProjectCategories.MachineLearning,
   },
   {
     name: "Machine Learning Theory Practice",
@@ -879,7 +874,7 @@ const machineLearningProjects: ProjectInterface[] = [
       A collection of machine learning theory questions and answers.
       This is used to practice for exams and tests.
       `,
-    category: "Machine Learning",
+    category: ProjectCategories.MachineLearning,
     repositoryURL: `https://github.com/mbeps/Machine-Learning-Theory-Practice`,
     skills: [
       machineLearning,
@@ -930,8 +925,7 @@ const gameDevProjects: ProjectInterface[] = [
       teamwork,
       black,
     ],
-    category: "Game Development",
-    
+    category: ProjectCategories.GameDevelopment,
   },
   {
     name: "Surface Fight",
@@ -941,7 +935,7 @@ const gameDevProjects: ProjectInterface[] = [
       Every time he kills all the skeletons more of them will come at once.
       This was a simple game made back in secondary school. 
     `,
-    category: "Game Development",
+    category: ProjectCategories.GameDevelopment,
     skills: [
       gameMakerLanguage,
       gameMakerStudio,
@@ -953,7 +947,6 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/surface-fight",
     archived: true,
-    
   },
   {
     name: "Platformer",
@@ -964,7 +957,7 @@ const gameDevProjects: ProjectInterface[] = [
       This is also a multiplayer game.
       This was a simple game made back in secondary school. 
     `,
-    category: "Game Development",
+    category: ProjectCategories.GameDevelopment,
     skills: [
       gameMakerLanguage,
       gameMakerStudio,
@@ -976,7 +969,6 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/platformer",
     archived: true,
-    
   },
   {
     name: "Platformer Death Walk",
@@ -987,7 +979,7 @@ const gameDevProjects: ProjectInterface[] = [
       This is also a multiplayer game.
       This was a simple game made back in secondary school. 
     `,
-    category: "Game Development",
+    category: ProjectCategories.GameDevelopment,
     skills: [
       gameMakerLanguage,
       gameMakerStudio,
@@ -999,7 +991,6 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/platformer-death-walk",
     archived: true,
-    
   },
   {
     name: "Coding Breakout",
@@ -1009,7 +1000,7 @@ const gameDevProjects: ProjectInterface[] = [
       and the goal is to destroy them all by repeatedly bouncing a ball off a paddle into them.
       This was a simple game made back in secondary school. 
     `,
-    category: "Game Development",
+    category: ProjectCategories.GameDevelopment,
     skills: [
       gameMakerLanguage,
       gameMakerStudio,
@@ -1021,7 +1012,6 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/coding-break-out",
     archived: true,
-    
   },
   {
     name: "Catch Maruf",
@@ -1031,7 +1021,7 @@ const gameDevProjects: ProjectInterface[] = [
       as many times as possible within a given time limit.
       This was a simple game made back in secondary school. 
     `,
-    category: "Game Development",
+    category: ProjectCategories.GameDevelopment,
     skills: [
       gameMakerLanguage,
       gameMakerStudio,
@@ -1043,7 +1033,6 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/catch-maruf",
     archived: true,
-    
   },
   {
     name: "Against Gravity",
@@ -1053,7 +1042,7 @@ const gameDevProjects: ProjectInterface[] = [
       by making use of the gravity switch and avoiding the obstacles.
       This was a simple game made back in secondary school. 
     `,
-    category: "Game Development",
+    category: ProjectCategories.GameDevelopment,
     skills: [
       gameMakerLanguage,
       gameMakerStudio,
@@ -1065,7 +1054,6 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/against-gravity",
     archived: true,
-    
   },
   {
     name: "Scrolling Shooter",
@@ -1074,7 +1062,7 @@ const gameDevProjects: ProjectInterface[] = [
       This is a game where the aim is to shoot the enemies and avoid their bullets.
       This was a simple game made back in secondary school. 
     `,
-    category: "Game Development",
+    category: ProjectCategories.GameDevelopment,
     skills: [
       gameMakerLanguage,
       gameMakerStudio,
@@ -1086,7 +1074,6 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/scrolling-shooter",
     archived: true,
-    
   },
   {
     name: "Dungeon",
@@ -1095,7 +1082,7 @@ const gameDevProjects: ProjectInterface[] = [
       A very simple 3D game where the aim is to reach the end of the level through the maze.
       This was a simple game made back in secondary school. 
     `,
-    category: "Game Development",
+    category: ProjectCategories.GameDevelopment,
     skills: [
       gameMakerLanguage,
       gameMakerStudio,
@@ -1107,7 +1094,6 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/dungeon-",
     archived: true,
-    
   },
   {
     name: " Veg Ninja",
@@ -1117,7 +1103,7 @@ const gameDevProjects: ProjectInterface[] = [
       This is very similar to the popular game Fruit Ninja.
       This was a simple game made back in secondary school. 
     `,
-    category: "Game Development",
+    category: ProjectCategories.GameDevelopment,
     skills: [
       gameMakerLanguage,
       gameMakerStudio,
@@ -1129,7 +1115,6 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/vej-ninja",
     archived: true,
-    
   },
   {
     name: " Angry Cats Space",
@@ -1139,7 +1124,7 @@ const gameDevProjects: ProjectInterface[] = [
       This is very similar to the popular game Angry Birds.
       This was a simple game made back in secondary school. 
     `,
-    category: "Game Development",
+    category: ProjectCategories.GameDevelopment,
     skills: [
       gameMakerLanguage,
       gameMakerStudio,
@@ -1151,7 +1136,6 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/angry-cats-space",
     archived: true,
-    
   },
   {
     name: " Angry Cats",
@@ -1161,7 +1145,7 @@ const gameDevProjects: ProjectInterface[] = [
       This is very similar to the popular game Angry Birds.
       This was a simple game made back in secondary school. 
     `,
-    category: "Game Development",
+    category: ProjectCategories.GameDevelopment,
     skills: [
       gameMakerLanguage,
       gameMakerStudio,
@@ -1173,7 +1157,6 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     deploymentURL: "https://bepary-games.itch.io/angry-cats-space",
     archived: true,
-    
   },
 ];
 
@@ -1191,7 +1174,7 @@ const otherProjects: ProjectInterface[] = [
       Each algorithms is explained. 
       All the algorithms are also compared to each other. 
     `,
-    category: "Other",
+    category: ProjectCategories.Other,
     skills: [
       python,
       matplotlib,
@@ -1232,7 +1215,7 @@ const otherProjects: ProjectInterface[] = [
       adaptability,
     ],
     repositoryURL: `https://github.com/mbeps/AutomatedSetup`,
-    category: "Other",
+    category: ProjectCategories.Other,
   },
   {
     name: `Leetcode Solutions`,
@@ -1256,7 +1239,7 @@ const otherProjects: ProjectInterface[] = [
       creativity,
       adaptability,
     ],
-    category: "Other",
+    category: ProjectCategories.Other,
   },
 ];
 
@@ -1289,7 +1272,7 @@ const javaAssignments: ProjectInterface[] = [
       creativity,
       adaptability,
     ],
-    category: "Java Assignments",
+    category: ProjectCategories.JavaAssignments,
   },
   {
     name: `Botanic-Garden-Planner`,
@@ -1309,7 +1292,7 @@ const javaAssignments: ProjectInterface[] = [
       creativity,
       adaptability,
     ],
-    category: "Java Assignments",
+    category: ProjectCategories.JavaAssignments,
     archived: true,
   },
   {
@@ -1318,7 +1301,7 @@ const javaAssignments: ProjectInterface[] = [
     description: `Simple app to track Covid cases. 
       This was in first year to learn about Java and object oriented programming.`,
     repositoryURL: `https://github.com/mbeps/Track_and_Trace`,
-    category: "Java Assignments",
+    category: ProjectCategories.JavaAssignments,
     skills: [
       java,
       junit,
@@ -1337,7 +1320,7 @@ const javaAssignments: ProjectInterface[] = [
     slug: "hollomon-assignment",
     description: `This was in first year to learn about Java and object oriented programming.`,
     repositoryURL: `https://github.com/mbeps/Hollomon`,
-    category: "Java Assignments",
+    category: ProjectCategories.JavaAssignments,
     skills: [
       java,
       junit,
@@ -1367,7 +1350,7 @@ const javaAssignments: ProjectInterface[] = [
       creativity,
       adaptability,
     ],
-    category: "Java Assignments",
+    category: ProjectCategories.JavaAssignments,
     archived: true,
   },
 ];
@@ -1385,14 +1368,18 @@ export {
 /**
  * Array of all projects.
  */
-const allProjects = addNestedSkillsMaterialList<ProjectInterface>([
-  ...webdevProjects,
-  ...machineLearningProjects,
-  ...extraWebDevProjects,
-  ...gameDevProjects,
-  ...otherProjects,
-  ...javaAssignments,
-  ...backendWebDevProjects,
-]);
+const allProjects = addNestedSkillsMaterialList<ProjectInterface>(
+  [
+    ...webdevProjects,
+    ...machineLearningProjects,
+    ...extraWebDevProjects,
+    ...gameDevProjects,
+    ...otherProjects,
+    ...javaAssignments,
+    ...backendWebDevProjects,
+  ],
+  SkillTypes.General,
+  SkillTypes.Hard
+);
 
 export default allProjects;

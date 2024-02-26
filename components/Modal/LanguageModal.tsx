@@ -35,7 +35,7 @@ import BlogInterface from "@/interfaces/material/BlogInterface";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
 import Link from "next/link";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
@@ -67,9 +67,9 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
 
   const languageSkills =
     getAssociatedSkills(
-      filterSkillsByType(allSkills, "hard"),
+      filterSkillsByType(allSkills, SkillTypes.Hard),
       language,
-      "hard",
+      SkillTypes.Hard
     ) || [];
 
   const handleOpenModal = () => {
@@ -85,7 +85,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
   const [groupedBy, setGroupedBy] = useState("category");
   // Adjusted filtering based on the merged skills field
   const filteredSkills = (languageSkills || []).filter(
-    (skill) => skill.isMainSkill,
+    (skill) => skill.isMainSkill
   );
   const groupedSkills = groupSkills(groupedBy, languageSkills || []);
 

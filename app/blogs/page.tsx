@@ -4,6 +4,7 @@ import { BLOG } from "@/constants/pages";
 import blogs from "@/database/blogs";
 import type { Metadata } from "next";
 import { BlogsView } from "./components/BlogsView";
+import developerName from "@/constants/developerName";
 
 const description = `
   Explore my collection of blogs on various topics. 
@@ -11,7 +12,7 @@ const description = `
 `;
 
 export const metadata: Metadata = {
-  title: `Maruf Bepary - ${BLOG.label}`,
+  title: `${developerName} - ${BLOG.label}`,
   description: description,
 };
 /**

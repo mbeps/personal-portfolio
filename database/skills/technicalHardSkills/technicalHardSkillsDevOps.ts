@@ -1,4 +1,7 @@
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillInterface, {
+  SkillCategories,
+  SkillTypes,
+} from "@/interfaces/skills/SkillInterface";
 import {
   automation,
   clusterisation,
@@ -12,9 +15,9 @@ import {
 
 export const gitHubActions: SkillInterface = {
   name: "GitHub Actions",
-  category: "DevOps",
+  category: SkillCategories.DevOps,
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "github-actions",
   relatedSkills: [
     infrastructureAsCode,
@@ -28,9 +31,9 @@ export const gitHubActions: SkillInterface = {
 
 export const gitlabCI: SkillInterface = {
   name: "GitLab CI",
-  category: "DevOps",
+  category: SkillCategories.DevOps,
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "gitlab-ci",
   relatedSkills: [
     infrastructureAsCode,
@@ -44,9 +47,9 @@ export const gitlabCI: SkillInterface = {
 
 export const jenkins: SkillInterface = {
   name: "Jenkins",
-  category: "DevOps",
+  category: SkillCategories.DevOps,
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "jenkins",
   relatedSkills: [
     infrastructureAsCode,
@@ -60,9 +63,9 @@ export const jenkins: SkillInterface = {
 
 export const teamCity: SkillInterface = {
   name: "TeamCity",
-  category: "DevOps",
+  category: SkillCategories.DevOps,
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "teamcity",
   relatedSkills: [
     infrastructureAsCode,
@@ -76,8 +79,8 @@ export const teamCity: SkillInterface = {
 
 export const travisCI: SkillInterface = {
   name: "Travis CI",
-  category: "DevOps",
-  skillType: "hard",
+  category: SkillCategories.DevOps,
+  skillType: SkillTypes.Hard,
   slug: "travis-ci",
   relatedSkills: [
     infrastructureAsCode,
@@ -91,44 +94,44 @@ export const travisCI: SkillInterface = {
 
 export const docker: SkillInterface = {
   name: "Docker",
-  category: "DevOps",
+  category: SkillCategories.DevOps,
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "docker",
   relatedSkills: [containerization],
 };
 
 export const podman: SkillInterface = {
   name: "Podman",
-  category: "DevOps",
+  category: SkillCategories.DevOps,
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "podman",
   relatedSkills: [containerization],
 };
 
 export const kubernetes: SkillInterface = {
   name: "Kubernetes",
-  category: "DevOps",
+  category: SkillCategories.DevOps,
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "kubernetes",
   relatedSkills: [containerization, clusterisation],
 };
 
 export const ansible: SkillInterface = {
   name: "Ansible",
-  category: "DevOps",
-  skillType: "hard",
+  category: SkillCategories.DevOps,
+  skillType: SkillTypes.Hard,
   slug: "ansible",
   relatedSkills: [infrastructureAsCode, devOps, automation],
 };
 
 export const vagrant: SkillInterface = {
   name: "Vagrant",
-  category: "DevOps",
+  category: SkillCategories.DevOps,
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "valgrant",
   relatedSkills: [infrastructureAsCode, devOps],
 };

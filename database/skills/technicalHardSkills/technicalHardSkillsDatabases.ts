@@ -1,25 +1,28 @@
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillInterface, {
+  SkillCategories,
+  SkillTypes,
+} from "@/interfaces/skills/SkillInterface";
 import {
   databaseManagementSystems,
   databases,
   indexing,
   noSql,
-  sql
+  sql,
 } from "../generalSkills";
 
 export const normalisation: SkillInterface = {
   name: "Normalisation",
-  category: "Databases",
+  category: SkillCategories.Databases,
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "database-normalisation",
 };
 
 export const postgreSQL: SkillInterface = {
   name: "PostgreSQL",
-  category: "Databases",
+  category: SkillCategories.Databases,
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "postgresql",
   relatedSkills: [
     databaseManagementSystems,
@@ -32,9 +35,9 @@ export const postgreSQL: SkillInterface = {
 
 export const mySQL: SkillInterface = {
   name: "MySQL",
-  category: "Databases",
+  category: SkillCategories.Databases,
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "mysql",
   relatedSkills: [
     databaseManagementSystems,
@@ -47,9 +50,9 @@ export const mySQL: SkillInterface = {
 
 export const sqlite: SkillInterface = {
   name: "SQLite",
-  category: "Databases",
+  category: SkillCategories.Databases,
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "sqlite",
   relatedSkills: [
     databaseManagementSystems,
@@ -62,27 +65,27 @@ export const sqlite: SkillInterface = {
 
 export const mongoDB: SkillInterface = {
   name: "MongoDB",
-  category: "Databases",
+  category: SkillCategories.Databases,
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "mongodb",
   relatedSkills: [databaseManagementSystems, databases, noSql, indexing],
 };
 
 export const redis: SkillInterface = {
   name: "Redis",
-  category: "Databases",
+  category: SkillCategories.Databases,
   isMainSkill: true,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "redis",
   relatedSkills: [databaseManagementSystems, databases, noSql, indexing],
 };
 
 export const convex: SkillInterface = {
   name: "Convex",
-  category: "Databases",
+  category: SkillCategories.Databases,
   isMainSkill: false,
-  skillType: "hard",
+  skillType: SkillTypes.Hard,
   slug: "convex",
 };
 

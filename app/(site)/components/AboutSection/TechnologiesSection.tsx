@@ -10,7 +10,9 @@ import {
 } from "@/components/shadcn/ui/tooltip";
 import { languages } from "@/database/skills/languages";
 import { technologies } from "@/database/skills/skills";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillInterface, {
+  SkillCategories,
+} from "@/interfaces/skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 
 /**
@@ -25,16 +27,15 @@ const TechnologiesSection: React.FC = () => {
    * Any skills that are in these categories will not be displayed.
    * This categories are from the Skill type.
    */
-  const ignoredCategories: string[] = [
-    "Programming Languages",
-    "Project Managers",
-    "Object Relational Mappers",
-    "Version Control System",
-    "Web Sockets",
-    "Mathematics",
-    "Cloud Computing",
-    "Automation",
-    "Other",
+  const ignoredCategories = [
+    SkillCategories.ProgrammingLanguages,
+    SkillCategories.ProjectManagers,
+    SkillCategories.ObjectRelationalMappers,
+    SkillCategories.VersionControl,
+    SkillCategories.WebSockets,
+    SkillCategories.Mathematics,
+    SkillCategories.CloudComputing,
+    SkillCategories.Automation,
   ];
 
   /**
@@ -44,7 +45,7 @@ const TechnologiesSection: React.FC = () => {
     (acc, language) => {
       return acc.concat(language.relatedSkills || []);
     },
-    [] as SkillInterface[],
+    [] as SkillInterface[]
   );
 
   /**
@@ -63,7 +64,7 @@ const TechnologiesSection: React.FC = () => {
    */
   function firstNSkills(
     skillsToLimit: SkillInterface[],
-    totalLimit: number,
+    totalLimit: number
   ): SkillInterface[] {
     const uniqueSkills = new Map<string, SkillInterface>();
 
@@ -84,14 +85,14 @@ const TechnologiesSection: React.FC = () => {
    */
   function firstNSkillsPerCategory(
     skillsToLimit: SkillInterface[],
-    limitPerCategory: number,
+    limitPerCategory: number
   ): SkillInterface[] {
     // Categorize the skills into an array of SkillsCategoryInterface
     const skillCategories: SkillsCategoryInterface[] = skillsToLimit.reduce(
       (acc, skill) => {
         const category = skill.category || "Other"; // If no category, put in 'Other' category
         const existingCategory = acc.find(
-          (c) => c.skillCategoryName === category,
+          (c) => c.skillCategoryName === category
         );
 
         if (existingCategory) {
@@ -102,7 +103,7 @@ const TechnologiesSection: React.FC = () => {
 
         return acc;
       },
-      [] as SkillsCategoryInterface[],
+      [] as SkillsCategoryInterface[]
     );
 
     // Take the first 'limitPerCategory' skills from each category
