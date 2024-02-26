@@ -56,13 +56,14 @@ const HeroSection = () => {
           className="
             md:mt-2
             lg:w-3/5 w-full
-            space-y-7 md:space-y-5
+            space-y-7 md:space-y-4
             items-center justify-center lg:justify-start
         "
         >
-          <h1 className="text-5xl md:text-7xl font-bold mt-6 md:mt-0 mb-6">
-            {`Hi, I'm Maruf!`}
-          </h1>
+          <div className="flex flex-col space-y-4">
+            <h1 className="text-3xl md:text-5xl font-normal">{`Hi, I'm`}</h1>
+            <h1 className="text-5xl md:text-7xl font-bold">{`Maruf Bepary`}</h1>
+          </div>
 
           {/* Roles */}
           {isMounted && (
