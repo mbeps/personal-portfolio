@@ -35,7 +35,6 @@ const Socials: React.FC<SocialsProps> = ({ className, iconSize }) => {
           name={link.name}
           link={link.link}
           IconComponent={link.IconComponent}
-          isEmail={link.isEmail}
           iconSize={iconSize}
         />
       ))}
