@@ -9,6 +9,8 @@ import developerName from "@/constants/developerName";
  * @returns (JSX.Element): Footer component
  */
 const Footer = () => {
+  const currentYear = new Date().getFullYear() || 2024;
+
   return (
     <footer>
       <hr className="w-full h-0.5 mx-auto mt-8 bg-neutral-200 dark:bg-neutral-700 border-0"></hr>
@@ -23,7 +25,7 @@ const Footer = () => {
       >
         <div className="flex flex-row items-center justify-center space-x-1 text-neutral-500 dark:text-neutral-100">
           <Link href="/">
-            <p>{`© 2024 ${developerName}`}</p>
+            <p>{`© ${currentYear} ${developerName}`}</p>
           </Link>
         </div>
         <Socials />
