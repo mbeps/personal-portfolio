@@ -4,6 +4,7 @@ import scrollToSection from "@/actions/scrollToSection";
 import Socials from "@/components/Socials/Socials";
 import TextLoop from "@/components/TextLoop/TextLoop";
 import { Button } from "@/components/shadcn/ui/button";
+import subtitles from "@/constants/subtitles";
 import useIsMounted from "@/hooks/useIsMounted";
 import Image from "next/image";
 import { HiArrowDown } from "react-icons/hi";
@@ -14,16 +15,6 @@ import { HiArrowDown } from "react-icons/hi";
  */
 const HeroSection = () => {
   const isMounted = useIsMounted();
-
-  /**
-   * Array of strings to loop through.
-   */
-  const loopItems = [
-    "Software Engineering",
-    "Full-Stack Development",
-    "Machine Learning",
-    "Mathematics",
-  ];
 
   return (
     <section id="home" className="home-section-wrapper">
@@ -76,7 +67,7 @@ const HeroSection = () => {
           {/* Roles */}
           {isMounted && (
             <TextLoop
-              loopItems={loopItems}
+              loopItems={subtitles}
               implementation="typewriter"
               className="
                 text-2xl md:text-4xl font-semibold
