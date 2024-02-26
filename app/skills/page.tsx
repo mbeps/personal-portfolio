@@ -3,6 +3,7 @@ import PageDescription from "@/components/UI/PageDescription";
 import { languages } from "@/database/skills/languages";
 import allSkills from "@/database/skills/skills";
 import SkillList from "../../components/MaterialLists/SkillList";
+import developerName from "@/constants/developerName";
 
 const description = `
 	Explore my collection of skills on various topics. 
@@ -10,7 +11,7 @@ const description = `
 `;
 
 export const metadata = {
-  title: "Maruf Bepary - Skills",
+  title: `${developerName} - Skills`,
   description: description,
 };
 

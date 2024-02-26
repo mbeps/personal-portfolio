@@ -5,6 +5,7 @@ import allProjects from "@/database/projects";
 import type { Metadata } from "next";
 import ProjectsView from "./components/ProjectsView";
 import updateProjectImages from "@/actions/file-system/updateProjectImages";
+import developerName from "@/constants/developerName";
 
 const description = `
   Discover my portfolio of projects, both current and archived. 
@@ -13,7 +14,7 @@ const description = `
 `;
 
 export const metadata: Metadata = {
-  title: `Maruf Bepary - ${PROJECTS.label}`,
+  title: `${developerName} - ${PROJECTS.label}`,
   description: description,
 };
 

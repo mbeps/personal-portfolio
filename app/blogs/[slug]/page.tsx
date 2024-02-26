@@ -11,6 +11,7 @@ import BlogInterface from "@/interfaces/material/BlogInterface";
 import { SkillTypes } from "@/interfaces/skills/SkillInterface";
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
+import developerName from "@/constants/developerName";
 
 type BlogPageProps = {
   params: { slug: string };
@@ -35,7 +36,7 @@ export async function generateMetadata(
   const blog = getContentBySlug<BlogInterface>(slug, allBlogs);
 
   return {
-    title: `Maruf Bepary - Blogs: ${blog?.name}`,
+    title: `${developerName} - Blogs: ${blog?.name}`,
     description: blog?.subtitle,
   };
 }

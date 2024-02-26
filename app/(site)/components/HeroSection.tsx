@@ -4,6 +4,7 @@ import scrollToSection from "@/actions/scrollToSection";
 import Socials from "@/components/Socials/Socials";
 import TextLoop from "@/components/TextLoop/TextLoop";
 import { Button } from "@/components/shadcn/ui/button";
+import developerName from "@/constants/developerName";
 import subtitles from "@/constants/subtitles";
 import useIsMounted from "@/hooks/useIsMounted";
 import Image from "next/image";
@@ -41,7 +42,7 @@ const HeroSection = () => {
           {/* Profile Image */}
           <Image
             src="/profile.png"
-            alt="Profile image of Maruf Bepary"
+            alt="Profile image of the developer"
             width={325}
             height={325}
             className="rounded-full shadow-2xl"
@@ -62,7 +63,7 @@ const HeroSection = () => {
         >
           <div className="flex flex-col space-y-4">
             <h1 className="text-3xl md:text-5xl font-normal">{`Hi, I'm`}</h1>
-            <h1 className="text-5xl md:text-7xl font-bold">{`Maruf Bepary`}</h1>
+            <h1 className="text-5xl md:text-7xl font-bold">{developerName}</h1>
           </div>
 
           {/* Roles */}

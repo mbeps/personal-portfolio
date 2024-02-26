@@ -6,6 +6,7 @@ import CertificateInterface from "@/interfaces/material/CertificateInterface";
 import { Metadata } from "next";
 import React from "react";
 import CertificatesView from "./components/CertificatesView";
+import developerName from "@/constants/developerName";
 
 const description = `
   Explore my collection of certificates and qualifications. 
@@ -14,7 +15,7 @@ const description = `
 `;
 
 export const metadata: Metadata = {
-  title: `Maruf Bepary - ${CERTIFICATES.label}`,
+  title: `${developerName} - ${CERTIFICATES.label}`,
   description: description,
 };
 

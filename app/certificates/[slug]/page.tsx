@@ -17,6 +17,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle } from "react-icons/bs";
 import { RxTriangleRight } from "react-icons/rx";
+import developerName from "@/constants/developerName";
 
 /**
  * Metadata object for the dynamic certificate page.
@@ -39,7 +40,7 @@ export async function generateMetadata(
 
   // Create metadata based on the certificate details
   return {
-    title: `Maruf Bepary - Certificates: ${certificate?.name}`,
+    title: `${developerName} - Certificates: ${certificate?.name}`,
     description: certificate?.slug,
   };
 }

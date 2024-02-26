@@ -1,3 +1,4 @@
+import developerName from "@/constants/developerName";
 import Link from "next/link";
 
 /**
@@ -16,7 +17,7 @@ const HomeButton: React.FC = () => {
             transition-colors duration-700 ease-in-out
           "
         >
-          Maruf Bepary
+          {developerName}
         </h2>
       </Link>
     </div>

@@ -26,6 +26,7 @@ import {
   SkillCategories,
   SkillTypes,
 } from "@/interfaces/skills/SkillInterface";
+import developerName from "@/constants/developerName";
 
 /**
  * Metadata object for the dynamic project page.
@@ -45,7 +46,7 @@ export async function generateMetadata(
 
   // Create metadata based on the project details
   return {
-    title: `Maruf Bepary - Projects: ${project?.name}`,
+    title: `${developerName} - Projects: ${project?.name}`,
     description: project?.description,
   };
 }
