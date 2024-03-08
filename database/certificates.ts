@@ -1,6 +1,4 @@
-import CertificateInterface, {
-  CertificateCategories,
-} from "@/interfaces/material/CertificateInterface";
+import CertificateInterface from "@/interfaces/material/CertificateInterface";
 import {
   algorithms,
   androidDevelopment,
@@ -160,12 +158,13 @@ import {
 } from "./skills/technicalHardSkills/technicalHardSkillsVCS";
 import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
 import { CertificateIssuersEnum } from "@/enums/CertificateIssuersEnum";
+import { CertificateCategoriesEnum } from "@/enums/CertificateCategoriesEnum";
 
 const programmingLanguagesCertificates: CertificateInterface[] = [
   {
     name: "Python Programming Masterclass",
     slug: "UC-a3c47af2-7eb8-4f5b-8309-08559c519d5a",
-    category: CertificateCategories.ProgrammingLanguages,
+    category: CertificateCategoriesEnum.ProgrammingLanguages,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-a3c47af2-7eb8-4f5b-8309-08559c519d5a/",
@@ -195,7 +194,7 @@ const programmingLanguagesCertificates: CertificateInterface[] = [
   {
     name: "Advanced Python",
     slug: "c235083fcf3a5aadda62a3aac5f1846098135e9058d9c5c72073ef88891b0395",
-    category: CertificateCategories.ProgrammingLanguages,
+    category: CertificateCategoriesEnum.ProgrammingLanguages,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/c235083fcf3a5aadda62a3aac5f1846098135e9058d9c5c72073ef88891b0395",
@@ -227,7 +226,7 @@ const programmingLanguagesCertificates: CertificateInterface[] = [
   {
     name: "Python Object-Oriented Programming",
     slug: "3df6c589b5151377ce45f231cfacf8ca04a02875fa88996a8831c1c9b70c527a",
-    category: CertificateCategories.ProgrammingLanguages,
+    category: CertificateCategoriesEnum.ProgrammingLanguages,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/3df6c589b5151377ce45f231cfacf8ca04a02875fa88996a8831c1c9b70c527a",
@@ -257,7 +256,7 @@ const programmingLanguagesCertificates: CertificateInterface[] = [
   {
     name: "Learning Python",
     slug: "71bbbecbbc9b1489e357c3a2091860ae5b02b3ff0e415ce5748b8746d990b8dd",
-    category: CertificateCategories.ProgrammingLanguages,
+    category: CertificateCategoriesEnum.ProgrammingLanguages,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/71bbbecbbc9b1489e357c3a2091860ae5b02b3ff0e415ce5748b8746d990b8dd",
@@ -286,7 +285,7 @@ const programmingLanguagesCertificates: CertificateInterface[] = [
   {
     name: "Java Programming Masterclass",
     slug: "UC-a14123c1-1def-4710-8836-7c05bfaa2fc7",
-    category: CertificateCategories.ProgrammingLanguages,
+    category: CertificateCategoriesEnum.ProgrammingLanguages,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-a14123c1-1def-4710-8836-7c05bfaa2fc7/",
@@ -314,7 +313,7 @@ const programmingLanguagesCertificates: CertificateInterface[] = [
   {
     name: "Java Object-Oriented Programming",
     slug: "77ad2602bbb22e29478a06792cd4bd0a91dda794cca7b2bbe4e333c193770a22",
-    category: CertificateCategories.ProgrammingLanguages,
+    category: CertificateCategoriesEnum.ProgrammingLanguages,
     issuer: CertificateIssuersEnum.LinkedIn,
     description: `This course focuses on enhancing your Java programming skills by teaching the basics of object-oriented programming. It aims to help you write secure, scalable, and easily debuggable code. The course emphasizes practical examples over abstract concepts, with a deep dive into the source code and several challenges to apply what you've learned. It not only guides you on how to apply object-oriented principles in your programs but also explains how Java leverages these principles internally.`,
     certificateURL:
@@ -341,7 +340,7 @@ const programmingLanguagesCertificates: CertificateInterface[] = [
   {
     name: "Learning TypeScript",
     slug: "b1761a41ef8dd23125db776561db0b90ae53842518d029015374a2daee08e4e3",
-    category: CertificateCategories.ProgrammingLanguages,
+    category: CertificateCategoriesEnum.ProgrammingLanguages,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/b1761a41ef8dd23125db776561db0b90ae53842518d029015374a2daee08e4e3",
@@ -369,7 +368,7 @@ const programmingLanguagesCertificates: CertificateInterface[] = [
   {
     name: "TypeScript: Object-Oriented Programming",
     slug: "ed3c16a977b93d46364c0e03d601701094c7f346f08027e0cd3a1d6d52342425",
-    category: CertificateCategories.ProgrammingLanguages,
+    category: CertificateCategoriesEnum.ProgrammingLanguages,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/ed3c16a977b93d46364c0e03d601701094c7f346f08027e0cd3a1d6d52342425",
@@ -406,7 +405,7 @@ const programmingLanguagesCertificates: CertificateInterface[] = [
   {
     name: "JavaScript Essential Training",
     slug: "ade3217d7cef3023f22c8ee034eff28705b7dbfd3981d8377c9b5f61ff39ea51",
-    category: CertificateCategories.ProgrammingLanguages,
+    category: CertificateCategoriesEnum.ProgrammingLanguages,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/ade3217d7cef3023f22c8ee034eff28705b7dbfd3981d8377c9b5f61ff39ea51",
@@ -435,7 +434,7 @@ const programmingLanguagesCertificates: CertificateInterface[] = [
   {
     name: "JavaScript Practice: Object-Oriented Programming",
     slug: "6f9d825cfa8c3256611a521ec35fe62abd9b7f75636536b59656dcfd57708cf6",
-    category: CertificateCategories.ProgrammingLanguages,
+    category: CertificateCategoriesEnum.ProgrammingLanguages,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/6f9d825cfa8c3256611a521ec35fe62abd9b7f75636536b59656dcfd57708cf6",
@@ -462,7 +461,7 @@ const programmingLanguagesCertificates: CertificateInterface[] = [
   {
     name: "The Complete JavaScript Course 2023: From Zero to Expert!",
     slug: "UC-cf6c70b6-c34c-4400-b8f8-b9a7abc9f18a",
-    category: CertificateCategories.ProgrammingLanguages,
+    category: CertificateCategoriesEnum.ProgrammingLanguages,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-cf6c70b6-c34c-4400-b8f8-b9a7abc9f18a/",
@@ -495,7 +494,7 @@ const programmingLanguagesCertificates: CertificateInterface[] = [
   {
     name: "Learning Linux Shell Scripting",
     slug: "67ef8710bfc2f51163f78c9373df3d7b4674e44b3d2e936318399c6a7fe5bda0",
-    category: CertificateCategories.ProgrammingLanguages,
+    category: CertificateCategoriesEnum.ProgrammingLanguages,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/67ef8710bfc2f51163f78c9373df3d7b4674e44b3d2e936318399c6a7fe5bda0",
@@ -527,7 +526,7 @@ const programmingLanguagesCertificates: CertificateInterface[] = [
   {
     name: "Learning Groovy",
     slug: "7c14e4c16f72a10046c3d66838e5dd3589fa40ac6cbf6509b235ea6452f430c8",
-    category: CertificateCategories.ProgrammingLanguages,
+    category: CertificateCategoriesEnum.ProgrammingLanguages,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/7c14e4c16f72a10046c3d66838e5dd3589fa40ac6cbf6509b235ea6452f430c8",
@@ -558,7 +557,7 @@ const algorithmsAndDataStructuresCertificates: CertificateInterface[] = [
   {
     name: "The Complete Data Structures and Algorithms Course in Python",
     slug: "UC-74fdc19f-c016-43c5-8b2a-3cb30941205d",
-    category: CertificateCategories.AlgorithmsDataStructures,
+    category: CertificateCategoriesEnum.AlgorithmsDataStructures,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-74fdc19f-c016-43c5-8b2a-3cb30941205d/",
@@ -615,7 +614,7 @@ const algorithmsAndDataStructuresCertificates: CertificateInterface[] = [
   {
     name: "Programming Foundations: Algorithms",
     slug: "e31b0a7d9243f44e8a528fc2d184cd4a3bfbdc789c899c3a9ee47ee511e51fd7",
-    category: CertificateCategories.AlgorithmsDataStructures,
+    category: CertificateCategoriesEnum.AlgorithmsDataStructures,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/e31b0a7d9243f44e8a528fc2d184cd4a3bfbdc789c899c3a9ee47ee511e51fd7",
@@ -640,7 +639,7 @@ const algorithmsAndDataStructuresCertificates: CertificateInterface[] = [
   {
     name: "Programming Foundations: Data Structures",
     slug: "c5c41ea1aa52982d08705831612aba2e93e69a64e35dd2cce11c28fad12b59f7",
-    category: CertificateCategories.AlgorithmsDataStructures,
+    category: CertificateCategoriesEnum.AlgorithmsDataStructures,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/c5c41ea1aa52982d08705831612aba2e93e69a64e35dd2cce11c28fad12b59f7",
@@ -670,7 +669,7 @@ const machineLearningCertificates: CertificateInterface[] = [
   {
     name: "Applied Artificial Intelligence: Algorithms",
     slug: "964c3b1a049a60afa6bcbb55179e326c7e5cea11db0db7b8d3390be8fc5925e1",
-    category: CertificateCategories.ArtificialIntelligence,
+    category: CertificateCategoriesEnum.ArtificialIntelligence,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/964c3b1a049a60afa6bcbb55179e326c7e5cea11db0db7b8d3390be8fc5925e1",
@@ -699,7 +698,7 @@ const machineLearningCertificates: CertificateInterface[] = [
   {
     name: "Applied Artificial Intelligence: Foundations",
     slug: "50182c40b257c756e5d8aea70a9f69f14566da4d3cae7dab86f236554cc7238e",
-    category: CertificateCategories.ArtificialIntelligence,
+    category: CertificateCategoriesEnum.ArtificialIntelligence,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/50182c40b257c756e5d8aea70a9f69f14566da4d3cae7dab86f236554cc7238e",
@@ -729,7 +728,7 @@ const machineLearningCertificates: CertificateInterface[] = [
   {
     name: "Artificial Intelligence Foundations: Artificial Intelligence",
     slug: "3610d0d7891a746bbe207505c8ec6cfab58723ca973e3082f139a349059248c9",
-    category: CertificateCategories.ArtificialIntelligence,
+    category: CertificateCategoriesEnum.ArtificialIntelligence,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/3610d0d7891a746bbe207505c8ec6cfab58723ca973e3082f139a349059248c9",
@@ -755,7 +754,7 @@ const machineLearningCertificates: CertificateInterface[] = [
   {
     name: "Artificial Intelligence Foundations: Neural Networks",
     slug: "5dda55caa1ccf02b29f3c0f5d526c8c026f7fc346a6cad6d9c84f98aba3e2514",
-    category: CertificateCategories.ArtificialIntelligence,
+    category: CertificateCategoriesEnum.ArtificialIntelligence,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/5dda55caa1ccf02b29f3c0f5d526c8c026f7fc346a6cad6d9c84f98aba3e2514",
@@ -781,7 +780,7 @@ const machineLearningCertificates: CertificateInterface[] = [
   {
     name: "Data Science Foundations: Fundamentals",
     slug: "e9cb305b4da5f38726226d31e5eef5da66504838131739c389a2d056ed31cf3f",
-    category: CertificateCategories.ArtificialIntelligence,
+    category: CertificateCategoriesEnum.ArtificialIntelligence,
     issuer: CertificateIssuersEnum.NASBA,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/e9cb305b4da5f38726226d31e5eef5da66504838131739c389a2d056ed31cf3f",
@@ -815,7 +814,7 @@ const machineLearningCertificates: CertificateInterface[] = [
   {
     name: "Introduction to Artificial Intelligence",
     slug: "9f61617caf2fc21f029abd857a03a29758d7e822215d3677eb938b4e29e5da78",
-    category: CertificateCategories.ArtificialIntelligence,
+    category: CertificateCategoriesEnum.ArtificialIntelligence,
     issuer: CertificateIssuersEnum.NASBA,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/9f61617caf2fc21f029abd857a03a29758d7e822215d3677eb938b4e29e5da78",
@@ -851,7 +850,7 @@ const machineLearningCertificates: CertificateInterface[] = [
   {
     name: "Artificial Intelligence Foundations: Calculus",
     slug: "94c788dba6f1c97ceee751315c30b6dc6f4267025733c3de55a315d83a36386d",
-    category: CertificateCategories.ArtificialIntelligence,
+    category: CertificateCategoriesEnum.ArtificialIntelligence,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/94c788dba6f1c97ceee751315c30b6dc6f4267025733c3de55a315d83a36386d",
@@ -885,7 +884,7 @@ const machineLearningCertificates: CertificateInterface[] = [
   {
     name: "Artificial Intelligence Foundations: Linear Algebra",
     slug: "ec6ac0178fb92ba75dd38a95ae48316efb6f4e0e9abcb6bf5431b48021ff8441",
-    category: CertificateCategories.ArtificialIntelligence,
+    category: CertificateCategoriesEnum.ArtificialIntelligence,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/ec6ac0178fb92ba75dd38a95ae48316efb6f4e0e9abcb6bf5431b48021ff8441",
@@ -916,7 +915,7 @@ const machineLearningCertificates: CertificateInterface[] = [
   {
     name: "Artificial Intelligence Foundations: Probability",
     slug: "b7334fe5b4d04bef6dab5d2ed69080e9ffc590475eba2057046b6ca4a6cf2fba",
-    category: CertificateCategories.ArtificialIntelligence,
+    category: CertificateCategoriesEnum.ArtificialIntelligence,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/b7334fe5b4d04bef6dab5d2ed69080e9ffc590475eba2057046b6ca4a6cf2fba",
@@ -937,7 +936,7 @@ const machineLearningCertificates: CertificateInterface[] = [
   {
     name: "Artificial Intelligence with Scikit-Learn",
     slug: "3c31f8f11d8ecbd7156dd75b8ae2d7c7db59a8342e3ae7780496b637ac894bb8",
-    category: CertificateCategories.ArtificialIntelligence,
+    category: CertificateCategoriesEnum.ArtificialIntelligence,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/3c31f8f11d8ecbd7156dd75b8ae2d7c7db59a8342e3ae7780496b637ac894bb8",
@@ -960,7 +959,7 @@ const devOpsCertificates: CertificateInterface[] = [
   {
     name: "DevOps Foundations",
     slug: "1c6fedf1993d58cfe2f906e4fe4db5b4eddda6ea5fa7f8999436b07682ffe3f7",
-    category: CertificateCategories.DevOps,
+    category: CertificateCategoriesEnum.DevOps,
     issuer: CertificateIssuersEnum.NASBA,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/1c6fedf1993d58cfe2f906e4fe4db5b4eddda6ea5fa7f8999436b07682ffe3f7",
@@ -982,7 +981,7 @@ const devOpsCertificates: CertificateInterface[] = [
   {
     name: "DevOps Foundations: Continuous Delivery/Continuous Integration",
     slug: "6bf47e122551142911c5a636edfee564ff0d57bd07a52888c6c52246946f7747",
-    category: CertificateCategories.DevOps,
+    category: CertificateCategoriesEnum.DevOps,
     issuer: CertificateIssuersEnum.NASBA,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/6bf47e122551142911c5a636edfee564ff0d57bd07a52888c6c52246946f7747",
@@ -1007,7 +1006,7 @@ const devOpsCertificates: CertificateInterface[] = [
   {
     name: "Jenkins Essential Training",
     slug: "b1f7a0e46c3659d0d1c25396bbd7838b2374b12afcff7404a0d5077b68e9ebfc",
-    category: CertificateCategories.DevOps,
+    category: CertificateCategoriesEnum.DevOps,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/b1f7a0e46c3659d0d1c25396bbd7838b2374b12afcff7404a0d5077b68e9ebfc",
@@ -1039,7 +1038,7 @@ const devOpsCertificates: CertificateInterface[] = [
   {
     name: "GitHub Actions for CI/CD",
     slug: "679b3ba787209cd0d81d1d68e4bfc01e23ae14f9f2bdfa4e85f917025a8e732b",
-    category: CertificateCategories.DevOps,
+    category: CertificateCategoriesEnum.DevOps,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/679b3ba787209cd0d81d1d68e4bfc01e23ae14f9f2bdfa4e85f917025a8e732b",
@@ -1066,7 +1065,7 @@ const devOpsCertificates: CertificateInterface[] = [
   {
     name: "Career Essentials in GitHub Professional Certificate",
     slug: "a46589fd9baa43c2c77d7de14e3830cf85648f1a6d5d7a489096d4e1b2a4d279",
-    category: CertificateCategories.DevOps,
+    category: CertificateCategoriesEnum.DevOps,
     issuer: CertificateIssuersEnum.GitHub,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/a46589fd9baa43c2c77d7de14e3830cf85648f1a6d5d7a489096d4e1b2a4d279",
@@ -1122,7 +1121,7 @@ const devOpsCertificates: CertificateInterface[] = [
   {
     name: "Continuous Integration and Continuous Delivery with GitLab",
     slug: "1d8280be68ca069d4bb66ad5618118079be897473794a7812ae940146672801c",
-    category: CertificateCategories.DevOps,
+    category: CertificateCategoriesEnum.DevOps,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/1d8280be68ca069d4bb66ad5618118079be897473794a7812ae940146672801c",
@@ -1157,7 +1156,7 @@ const devOpsCertificates: CertificateInterface[] = [
   {
     name: "Docker for Developers",
     slug: "bf3b572548b56f714cc70ee2c1447312a84869f6a93edb55e3d13b13337f3bd5",
-    category: CertificateCategories.DevOps,
+    category: CertificateCategoriesEnum.DevOps,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/bf3b572548b56f714cc70ee2c1447312a84869f6a93edb55e3d13b13337f3bd5",
@@ -1183,7 +1182,7 @@ const devOpsCertificates: CertificateInterface[] = [
   {
     name: "Kubernetes: Provisioning with kind",
     slug: "a63c2359250f6a04bd19dab4ebd049edb511a1a9f2c3ef66a0a8d1df004f7d8d",
-    category: CertificateCategories.DevOps,
+    category: CertificateCategoriesEnum.DevOps,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/a63c2359250f6a04bd19dab4ebd049edb511a1a9f2c3ef66a0a8d1df004f7d8d",
@@ -1207,7 +1206,7 @@ const devOpsCertificates: CertificateInterface[] = [
   {
     name: "Ansible Essential Training",
     slug: "5eed7f56e5d7dc61b17a3f5fb3cb9fc42130506e948df550bf00899b5868b0a1",
-    category: CertificateCategories.DevOps,
+    category: CertificateCategoriesEnum.DevOps,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/5eed7f56e5d7dc61b17a3f5fb3cb9fc42130506e948df550bf00899b5868b0a1",
@@ -1232,7 +1231,7 @@ const devOpsCertificates: CertificateInterface[] = [
   {
     name: "Python Automation and Testing",
     slug: "be0745932c948f80c1f9d32c0703eeaf94a3fdf3d35368a2619b8043ebe1c2f2",
-    category: CertificateCategories.DevOps,
+    category: CertificateCategoriesEnum.DevOps,
     issuer: CertificateIssuersEnum.NASBA,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/be0745932c948f80c1f9d32c0703eeaf94a3fdf3d35368a2619b8043ebe1c2f2",
@@ -1266,7 +1265,7 @@ const webDevelopmentCertificates: CertificateInterface[] = [
   {
     name: "Building RESTful APIs with Flask",
     slug: "c5ccec418e67284d7945832543376e344173867d424cc1c7c7e7f4235b14debe",
-    category: CertificateCategories.WebDevelopment,
+    category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/c5ccec418e67284d7945832543376e344173867d424cc1c7c7e7f4235b14debe",
@@ -1297,7 +1296,7 @@ const webDevelopmentCertificates: CertificateInterface[] = [
   {
     name: "Learning REST APIs",
     slug: "d16b210de3459c563295c4868ac19097bdddf84976d2137fa08293ec698f3380",
-    category: CertificateCategories.WebDevelopment,
+    category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/d16b210de3459c563295c4868ac19097bdddf84976d2137fa08293ec698f3380",
@@ -1317,7 +1316,7 @@ const webDevelopmentCertificates: CertificateInterface[] = [
   {
     name: "Designing RESTful APIs",
     slug: "a54ec39fe8ae07277cfbfb553a61f1d6a0c95f23969a3f665d5e5c0afbd9fd68",
-    category: CertificateCategories.WebDevelopment,
+    category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/a54ec39fe8ae07277cfbfb553a61f1d6a0c95f23969a3f665d5e5c0afbd9fd68",
@@ -1339,7 +1338,7 @@ const webDevelopmentCertificates: CertificateInterface[] = [
   {
     name: "RESTful APIs with Node.js and Express",
     slug: "c00cb40bda2152dd86d29b813b0d1b172123452a0b87b6017aec13115e693487",
-    category: CertificateCategories.WebDevelopment,
+    category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/c00cb40bda2152dd86d29b813b0d1b172123452a0b87b6017aec13115e693487",
@@ -1358,7 +1357,7 @@ const webDevelopmentCertificates: CertificateInterface[] = [
   {
     name: "CSS Fundamentals: Unlock the Power of Web Styling",
     slug: "ff054b4dd1a8fec0eb00ee80a59bc82e5fed3e50b11bba3e3cd33026f0a0eee0",
-    category: CertificateCategories.WebDevelopment,
+    category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/ff054b4dd1a8fec0eb00ee80a59bc82e5fed3e50b11bba3e3cd33026f0a0eee0",
@@ -1377,7 +1376,7 @@ const webDevelopmentCertificates: CertificateInterface[] = [
   {
     name: "Firebase Essential Training",
     slug: "5b6b19227f501cb7dab97b2378a58bc7740bd590a2e44916bf07ba59fd2fc06f",
-    category: CertificateCategories.WebDevelopment,
+    category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/5b6b19227f501cb7dab97b2378a58bc7740bd590a2e44916bf07ba59fd2fc06f",
@@ -1397,7 +1396,7 @@ const webDevelopmentCertificates: CertificateInterface[] = [
   {
     name: "Flask Essential Training",
     slug: "4585e03073dcdf552484e6a6d9bc407d1b7e0ad3872d6a3b114d3e3d0869e9ea",
-    category: CertificateCategories.WebDevelopment,
+    category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/4585e03073dcdf552484e6a6d9bc407d1b7e0ad3872d6a3b114d3e3d0869e9ea",
@@ -1428,7 +1427,7 @@ const webDevelopmentCertificates: CertificateInterface[] = [
   {
     name: "Learning Django",
     slug: "7b5e4d7314ff1b615a3ae959f0d936e66808a5f718a85e42813d957d4ec492d7",
-    category: CertificateCategories.WebDevelopment,
+    category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/7b5e4d7314ff1b615a3ae959f0d936e66808a5f718a85e42813d957d4ec492d7",
@@ -1454,7 +1453,7 @@ const webDevelopmentCertificates: CertificateInterface[] = [
   {
     name: "GraphQL Essential Training",
     slug: "3c1654b23256c27553b9d6288d9592aa47fe825a7bf85714283f3e61e26f6f58",
-    category: CertificateCategories.WebDevelopment,
+    category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/3c1654b23256c27553b9d6288d9592aa47fe825a7bf85714283f3e61e26f6f58",
@@ -1479,7 +1478,7 @@ const webDevelopmentCertificates: CertificateInterface[] = [
   {
     name: "HTML Essential Training",
     slug: "983c6ba63131250c1d3df7e13f5e8f8951c02cb64c02c33d99e80df23cf3c869",
-    category: CertificateCategories.WebDevelopment,
+    category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/983c6ba63131250c1d3df7e13f5e8f8951c02cb64c02c33d99e80df23cf3c869",
@@ -1502,7 +1501,7 @@ const webDevelopmentCertificates: CertificateInterface[] = [
   {
     name: "Node.js Essential Training",
     slug: "ef41e5cf67f7657353febca7c6b206bf7dd8e28497c393790d8a266842c81132",
-    category: CertificateCategories.WebDevelopment,
+    category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/ef41e5cf67f7657353febca7c6b206bf7dd8e28497c393790d8a266842c81132",
@@ -1523,7 +1522,7 @@ const webDevelopmentCertificates: CertificateInterface[] = [
   {
     name: "React.js Essential Training",
     slug: "f2226c0a5de58874e8b882b91fe8945f69d0f0b6de15fa70a09082a08bd464fd",
-    category: CertificateCategories.WebDevelopment,
+    category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/f2226c0a5de58874e8b882b91fe8945f69d0f0b6de15fa70a09082a08bd464fd",
@@ -1550,7 +1549,7 @@ const webDevelopmentCertificates: CertificateInterface[] = [
   {
     name: "Learning Next.js",
     slug: "a2ae9eb61db705535ebd73746bfe20e0988633b80ade57c12aa523a9bbdae3db",
-    category: CertificateCategories.WebDevelopment,
+    category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/a2ae9eb61db705535ebd73746bfe20e0988633b80ade57c12aa523a9bbdae3db",
@@ -1576,7 +1575,7 @@ const webDevelopmentCertificates: CertificateInterface[] = [
   {
     name: "Using TypeScript with React",
     slug: "UC-431983c4-3861-46fc-866e-d97bd5edab77",
-    category: CertificateCategories.WebDevelopment,
+    category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-431983c4-3861-46fc-866e-d97bd5edab77/",
@@ -1605,7 +1604,7 @@ const webDevelopmentCertificates: CertificateInterface[] = [
   {
     name: "Spring Boot For Beginners",
     slug: "l4wvdvdd",
-    category: CertificateCategories.WebDevelopment,
+    category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.Amigoscode,
     certificateURL: "https://app.amigoscode.com/courses/267273/certificate",
     skills: [
@@ -1645,7 +1644,7 @@ const databasesCertificates: CertificateInterface[] = [
   {
     name: "Database Management System (DBMS) & SQL",
     slug: "UC-b49387a5-5a13-4b1a-aba1-73cac775c026",
-    category: CertificateCategories.Databases,
+    category: CertificateCategoriesEnum.Databases,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-b49387a5-5a13-4b1a-aba1-73cac775c026/",
@@ -1677,7 +1676,7 @@ const databasesCertificates: CertificateInterface[] = [
   {
     name: "Database Foundations: Intro to Databases",
     slug: "8b2d47f66f59b8b9724a6c1f05f15e27a9b08c3caaf95169c1d6c64537a1d066",
-    category: CertificateCategories.Databases,
+    category: CertificateCategoriesEnum.Databases,
     issuer: CertificateIssuersEnum.NASBA,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/8b2d47f66f59b8b9724a6c1f05f15e27a9b08c3caaf95169c1d6c64537a1d066",
@@ -1698,7 +1697,7 @@ const databasesCertificates: CertificateInterface[] = [
   {
     name: "Introduction to MongoDB",
     slug: "f024344050a592ea0bb2ada78e0175fabecabab2248ffeb58671b9fe4adfc141",
-    category: CertificateCategories.Databases,
+    category: CertificateCategoriesEnum.Databases,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/f024344050a592ea0bb2ada78e0175fabecabab2248ffeb58671b9fe4adfc141",
@@ -1728,7 +1727,7 @@ const databasesCertificates: CertificateInterface[] = [
   {
     name: "Redis Essential Training",
     slug: "209aec09fbb007c809840a071b5db71dc8e08da5b92799121e158ed1e185062b",
-    category: CertificateCategories.Databases,
+    category: CertificateCategoriesEnum.Databases,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/209aec09fbb007c809840a071b5db71dc8e08da5b92799121e158ed1e185062b",
@@ -1756,7 +1755,7 @@ const mathematicsCertificates: CertificateInterface[] = [
   {
     name: "Discrete Mathematics",
     slug: "UC-8d13c37d-5013-4873-b4fd-56a867ad853d",
-    category: CertificateCategories.Mathematics,
+    category: CertificateCategoriesEnum.Mathematics,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-8d13c37d-5013-4873-b4fd-56a867ad853d/",
@@ -1789,7 +1788,7 @@ const mathematicsCertificates: CertificateInterface[] = [
   {
     name: "A-Level Maths: Pure (Year 1 / AS)",
     slug: "UC-630e6292-a0ee-4ebb-94f0-ebaeedb101a8",
-    category: CertificateCategories.Mathematics,
+    category: CertificateCategoriesEnum.Mathematics,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-630e6292-a0ee-4ebb-94f0-ebaeedb101a8/",
@@ -1822,7 +1821,7 @@ const mathematicsCertificates: CertificateInterface[] = [
   {
     name: "A-Level Maths: Pure (Year 2)",
     slug: "UC-f951f5eb-0e4c-4fd6-8db0-29c24e616a2b",
-    category: CertificateCategories.Mathematics,
+    category: CertificateCategoriesEnum.Mathematics,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-f951f5eb-0e4c-4fd6-8db0-29c24e616a2b/",
@@ -1857,7 +1856,7 @@ const mathematicsCertificates: CertificateInterface[] = [
   {
     name: "A-Level Maths: Mechanics (Year 1 / AS)",
     slug: "UC-84beb6d6-275d-41ff-8215-c4918454b846",
-    category: CertificateCategories.Mathematics,
+    category: CertificateCategoriesEnum.Mathematics,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-84beb6d6-275d-41ff-8215-c4918454b846/",
@@ -1876,7 +1875,7 @@ const mathematicsCertificates: CertificateInterface[] = [
   {
     name: "A-Level Maths: Mechanics (Year 2)",
     slug: "UC-729218f1-da7b-4684-857f-78f9920686f2",
-    category: CertificateCategories.Mathematics,
+    category: CertificateCategoriesEnum.Mathematics,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-729218f1-da7b-4684-857f-78f9920686f2/",
@@ -1898,7 +1897,7 @@ const mathematicsCertificates: CertificateInterface[] = [
   {
     name: "A-Level Maths: Statistics (Year 1 / AS)",
     slug: "UC-4a1b790f-b0d8-430b-8dfd-d40a60c0ebee",
-    category: CertificateCategories.Mathematics,
+    category: CertificateCategoriesEnum.Mathematics,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-4a1b790f-b0d8-430b-8dfd-d40a60c0ebee/",
@@ -1923,7 +1922,7 @@ const mathematicsCertificates: CertificateInterface[] = [
   {
     name: "A-Level Maths: Statistics (Year 2)",
     slug: "UC-1efbccad-5f12-4002-85cc-1efebfb81e34",
-    category: CertificateCategories.Mathematics,
+    category: CertificateCategoriesEnum.Mathematics,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-1efbccad-5f12-4002-85cc-1efebfb81e34/",
@@ -1943,7 +1942,7 @@ const mathematicsCertificates: CertificateInterface[] = [
   {
     name: "Complete A-Level Maths: Mechanics in 5 Lectures",
     slug: "UC-5aabeb79-4fb8-4cab-a5d5-3daa1b009170",
-    category: CertificateCategories.Mathematics,
+    category: CertificateCategoriesEnum.Mathematics,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-5aabeb79-4fb8-4cab-a5d5-3daa1b009170/",
@@ -1970,7 +1969,7 @@ const mathematicsCertificates: CertificateInterface[] = [
   {
     name: "Complete A-Level Pure Maths Course in 10 Lectures",
     slug: "UC-e2179bc4-5760-4a77-88a4-a2738d22a96e",
-    category: CertificateCategories.Mathematics,
+    category: CertificateCategoriesEnum.Mathematics,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-e2179bc4-5760-4a77-88a4-a2738d22a96e/",
@@ -2015,7 +2014,7 @@ const mathematicsCertificates: CertificateInterface[] = [
   {
     name: "Complete A-Level Maths: Statistics in 6 Lectures",
     slug: "UC-fbc6d079-db3f-405f-8c32-f242b266d826",
-    category: CertificateCategories.Mathematics,
+    category: CertificateCategoriesEnum.Mathematics,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-fbc6d079-db3f-405f-8c32-f242b266d826/",
@@ -2052,7 +2051,7 @@ const softwareEngineeringCertificates: CertificateInterface[] = [
   {
     name: "Create an Open-Source Project in Python",
     slug: "6afc37d98889e1ed209d677fd7928ece257125ca8d538ed6b0fa0ed18e4e30d6",
-    category: CertificateCategories.SoftwareEngineering,
+    category: CertificateCategoriesEnum.SoftwareEngineering,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/6afc37d98889e1ed209d677fd7928ece257125ca8d538ed6b0fa0ed18e4e30d6",
@@ -2084,7 +2083,7 @@ const softwareEngineeringCertificates: CertificateInterface[] = [
   {
     name: "Introducing Maven",
     slug: "551778db5ecef81f732b9e48d50db3fe709f877f1ac9c834923b0c96bb636e72",
-    category: CertificateCategories.SoftwareEngineering,
+    category: CertificateCategoriesEnum.SoftwareEngineering,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/551778db5ecef81f732b9e48d50db3fe709f877f1ac9c834923b0c96bb636e72",
@@ -2104,7 +2103,7 @@ const softwareEngineeringCertificates: CertificateInterface[] = [
   {
     name: "Learning Gradle",
     slug: "1fcbb76a7feb53dc0b8585896de025b31799feeb7819544ba6e6ebf454ef6769",
-    category: CertificateCategories.SoftwareEngineering,
+    category: CertificateCategoriesEnum.SoftwareEngineering,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/1fcbb76a7feb53dc0b8585896de025b31799feeb7819544ba6e6ebf454ef6769",
@@ -2135,7 +2134,7 @@ const softwareEngineeringCertificates: CertificateInterface[] = [
   {
     name: "Gradle for Java-Based Applications and Libraries",
     slug: "8c9027d06b51638e29fcac4c109275401f5202a046eb80de8f65fcc20c9c733b",
-    category: CertificateCategories.SoftwareEngineering,
+    category: CertificateCategoriesEnum.SoftwareEngineering,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/8c9027d06b51638e29fcac4c109275401f5202a046eb80de8f65fcc20c9c733b",
@@ -2173,7 +2172,7 @@ const softwareEngineeringCertificates: CertificateInterface[] = [
   {
     name: "Software Testing Foundations: Test Techniques",
     slug: "f3297827ac972df2c87c56883f1217ba051a4f12df86886d33f902f2fda5614c",
-    category: CertificateCategories.SoftwareEngineering,
+    category: CertificateCategoriesEnum.SoftwareEngineering,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/f3297827ac972df2c87c56883f1217ba051a4f12df86886d33f902f2fda5614c",
@@ -2190,7 +2189,7 @@ const softwareEngineeringCertificates: CertificateInterface[] = [
   {
     name: "The Git & Github Bootcamp",
     slug: "UC-ba00c0c9-221d-4939-99b4-90244570a81b",
-    category: CertificateCategories.SoftwareEngineering,
+    category: CertificateCategoriesEnum.SoftwareEngineering,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-ba00c0c9-221d-4939-99b4-90244570a81b/",
@@ -2221,7 +2220,7 @@ const softwareEngineeringCertificates: CertificateInterface[] = [
   {
     name: "Programming Foundations: Design Patterns",
     slug: "f14a53c061bc271d233daeb5f46d5441dc2e86f386420c0fbd846291a5cccaf8",
-    category: CertificateCategories.SoftwareEngineering,
+    category: CertificateCategoriesEnum.SoftwareEngineering,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/f14a53c061bc271d233daeb5f46d5441dc2e86f386420c0fbd846291a5cccaf8",
@@ -2258,7 +2257,7 @@ const managementCertificates: CertificateInterface[] = [
   {
     name: "Project Management Foundations",
     slug: "8ab210e2af6b2df598aa3e27db515103158cd049367cf6afd9949d874b7677eb",
-    category: CertificateCategories.Management,
+    category: CertificateCategoriesEnum.Management,
     issuer: CertificateIssuersEnum.NASBA,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/8ab210e2af6b2df598aa3e27db515103158cd049367cf6afd9949d874b7677eb",
@@ -2293,7 +2292,7 @@ const managementCertificates: CertificateInterface[] = [
   {
     name: "Project Management Foundations",
     slug: "23788be7119de6bc027865d8345bcd7e8c98563fc1a8a373351e05fa79e1b6ef",
-    category: CertificateCategories.Management,
+    category: CertificateCategoriesEnum.Management,
     issuer: CertificateIssuersEnum.PMI,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/23788be7119de6bc027865d8345bcd7e8c98563fc1a8a373351e05fa79e1b6ef",
@@ -2330,7 +2329,7 @@ const cloudComputingCertificates: CertificateInterface[] = [
   {
     name: "AWS Essential Training for Developers",
     slug: "29e1352bda64cbc78e2f3fbf7205d2761bd8c465925eba7c4cf699aab8cf72b4",
-    category: CertificateCategories.CloudComputing,
+    category: CertificateCategoriesEnum.CloudComputing,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/29e1352bda64cbc78e2f3fbf7205d2761bd8c465925eba7c4cf699aab8cf72b4",
@@ -2376,7 +2375,7 @@ const cloudComputingCertificates: CertificateInterface[] = [
   {
     name: "Azure Essential Training for Developers",
     slug: "bf0cac80ff7e3f2b8148e20d6ea1fccb6eb15457a184229fee9ff439f652cfba",
-    category: CertificateCategories.CloudComputing,
+    category: CertificateCategoriesEnum.CloudComputing,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/bf0cac80ff7e3f2b8148e20d6ea1fccb6eb15457a184229fee9ff439f652cfba",
@@ -2416,7 +2415,7 @@ const cloudComputingCertificates: CertificateInterface[] = [
   {
     name: "Google Cloud Platform (GCP) Essential Training for Developers",
     slug: "1bc3074a5e84539c7bc5fdeeee83438602cc303ba648ec90ef5fc018693e62a1",
-    category: CertificateCategories.CloudComputing,
+    category: CertificateCategoriesEnum.CloudComputing,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/1bc3074a5e84539c7bc5fdeeee83438602cc303ba648ec90ef5fc018693e62a1",
@@ -2448,7 +2447,7 @@ const otherCertificates: CertificateInterface[] = [
   {
     name: "Symphony Certified Bot Developer (Java)",
     slug: "e398f5d1-7d46-4585-9ab2-effa2176920f",
-    category: CertificateCategories.Other,
+    category: CertificateCategoriesEnum.Other,
     issuer: CertificateIssuersEnum.SymphonySolutions,
     certificateURL:
       "https://www.credly.com/badges/e398f5d1-7d46-4585-9ab2-effa2176920f",
@@ -2481,7 +2480,7 @@ const otherCertificates: CertificateInterface[] = [
   {
     name: "Symphony Certified Bot Developer (Python)",
     slug: "d87290c2-7db7-45c2-89e2-ebd2c41e8b85",
-    category: CertificateCategories.Other,
+    category: CertificateCategoriesEnum.Other,
     issuer: CertificateIssuersEnum.SymphonySolutions,
     certificateURL:
       "https://www.credly.com/badges/d87290c2-7db7-45c2-89e2-ebd2c41e8b85",
