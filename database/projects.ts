@@ -132,7 +132,7 @@ import {
 } from "./skills/technicalHardSkills/technicalHardSkillsVCS";
 import updateProjectImages from "@/actions/file-system/updateProjectImages";
 import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
-import { ProjectCategoriesEnum } from "@/enums/ProjectCategoriesEnum";
+import ProjectCategoriesEnum from "@/enums/ProjectCategoriesEnum";
 
 /**
  * Array of web development projects.

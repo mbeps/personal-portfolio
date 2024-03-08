@@ -1,6 +1,6 @@
-import { CertificateIssuersEnum } from "@/enums/CertificateIssuersEnum";
+import CertificateIssuersEnum from "@/enums/CertificateIssuersEnum";
 import MaterialInterface from "./MaterialInterface";
-import { CertificateCategoriesEnum } from "@/enums/CertificateCategoriesEnum";
+import CertificateCategoriesEnum from "@/enums/CertificateCategoriesEnum";
 
 export default interface CertificateInterface extends MaterialInterface {
   description?: string;

@@ -1,4 +1,4 @@
-export enum CertificateCategoriesEnum {
+enum CertificateCategoriesEnum {
   University = "University",
   ProgrammingLanguages = "Programming Languages",
   AlgorithmsDataStructures = "Algorithms & Data Structures",
@@ -12,3 +12,5 @@ export enum CertificateCategoriesEnum {
   Management = "Management",
   Other = "Other",
 }
+
+export default CertificateCategoriesEnum;

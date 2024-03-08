@@ -1,4 +1,4 @@
-export enum CertificateIssuersEnum {
+enum CertificateIssuersEnum {
   Coursera = "Coursera",
   Udemy = "Udemy",
   LinkedIn = "LinkedIn",
@@ -9,3 +9,5 @@ export enum CertificateIssuersEnum {
   SymphonySolutions = "Symphony Solutions",
   Amigoscode = "Amigoscode",
 }
+
+export default CertificateIssuersEnum;

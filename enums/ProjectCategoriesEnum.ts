@@ -1,4 +1,4 @@
-export enum ProjectCategoriesEnum {
+enum ProjectCategoriesEnum {
   FullStackWebDevelopment = "Full-Stack Web Development",
   BackEndWebDevelopment = "Back-End Web Development",
   MachineLearning = "Machine Learning",
@@ -6,3 +6,5 @@ export enum ProjectCategoriesEnum {
   GameDevelopment = "Game Development",
   Other = "Other",
 }
+
+export default ProjectCategoriesEnum;

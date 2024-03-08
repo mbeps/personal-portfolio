@@ -1,4 +1,4 @@
-export enum BlogCategoriesEnum {
+enum BlogCategoriesEnum {
   WebDevelopment = "Web Development",
   SoftwareEngineering = "Software Engineering",
   Databases = "Databases",
@@ -7,3 +7,5 @@ export enum BlogCategoriesEnum {
   Mathematics = "Mathematics",
   Other = "Other",
 }
+
+export default BlogCategoriesEnum;
