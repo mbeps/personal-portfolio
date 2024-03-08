@@ -22,7 +22,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
-import { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import { SkillTypesEnum } from "@/interfaces/skills/SkillInterface";
 import developerName from "@/constants/developerName";
 import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
 
@@ -103,22 +103,26 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
 
   const technologies = filterSkillsByType(
     projectSkillsWithoutLanguage,
-    SkillTypes.Hard
+    SkillTypesEnum.Hard
   );
   const generalSkills = filterSkillsByType(
     projectSkillsWithoutLanguage,
-    SkillTypes.General
+    SkillTypesEnum.General
   );
   const softSkills = filterSkillsByType(
     projectSkillsWithoutLanguage,
-    SkillTypes.Soft
+    SkillTypesEnum.Soft
   );
 
   // Using the new function to group all skill types
   const allGroupedSkills = [
-    filterAndGroupSkills(technologies, SkillTypes.Hard, "Technologies"),
-    filterAndGroupSkills(generalSkills, SkillTypes.General, "Technical Skills"),
-    filterAndGroupSkills(softSkills, SkillTypes.Soft, "Soft Skills"),
+    filterAndGroupSkills(technologies, SkillTypesEnum.Hard, "Technologies"),
+    filterAndGroupSkills(
+      generalSkills,
+      SkillTypesEnum.General,
+      "Technical Skills"
+    ),
+    filterAndGroupSkills(softSkills, SkillTypesEnum.Soft, "Soft Skills"),
   ];
 
   const getImages = () => {

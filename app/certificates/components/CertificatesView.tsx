@@ -21,7 +21,7 @@ import { Button } from "@/components/shadcn/ui/button";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
-import { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import { SkillTypesEnum } from "@/interfaces/skills/SkillInterface";
 import Fuse from "fuse.js";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -124,19 +124,19 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
   const hardSkills: FilterOption[] =
     generateFilterOptionsBySkillType<CertificateInterface>(
       allCertificates,
-      SkillTypes.Hard
+      SkillTypesEnum.Hard
     );
 
   const generalSkills: FilterOption[] =
     generateFilterOptionsBySkillType<CertificateInterface>(
       allCertificates,
-      SkillTypes.General
+      SkillTypesEnum.General
     );
 
   const softSkills: FilterOption[] =
     generateFilterOptionsBySkillType<CertificateInterface>(
       allCertificates,
-      SkillTypes.Soft
+      SkillTypesEnum.Soft
     );
 
   //^ Filtering Logic
@@ -190,7 +190,7 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
     filteredCertificates = filterMaterialBySkill<CertificateInterface>(
       selectedTechnicalSkill,
       filteredCertificates,
-      SkillTypes.Hard
+      SkillTypesEnum.Hard
     );
   }
 
@@ -199,7 +199,7 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
     filteredCertificates = filterMaterialBySkill<CertificateInterface>(
       selectedGeneralSkill,
       filteredCertificates,
-      SkillTypes.General
+      SkillTypesEnum.General
     );
   }
 
@@ -208,7 +208,7 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
     filteredCertificates = filterMaterialBySkill<CertificateInterface>(
       selectedSoftSkill,
       filteredCertificates,
-      SkillTypes.Soft
+      SkillTypesEnum.Soft
     );
   }
 

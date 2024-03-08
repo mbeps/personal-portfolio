@@ -19,7 +19,7 @@ import { Button } from "@/components/shadcn/ui/button";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import BlogInterface from "@/interfaces/material/BlogInterface";
-import { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import { SkillTypesEnum } from "@/interfaces/skills/SkillInterface";
 import Fuse from "fuse.js";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -109,13 +109,16 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
     generateFilterOptionsBySkillCategories<BlogInterface>(blogs);
 
   const hardSkills: FilterOption[] =
-    generateFilterOptionsBySkillType<BlogInterface>(blogs, SkillTypes.Hard);
+    generateFilterOptionsBySkillType<BlogInterface>(blogs, SkillTypesEnum.Hard);
 
   const generalSkills: FilterOption[] =
-    generateFilterOptionsBySkillType<BlogInterface>(blogs, SkillTypes.General);
+    generateFilterOptionsBySkillType<BlogInterface>(
+      blogs,
+      SkillTypesEnum.General
+    );
 
   const softSkills: FilterOption[] =
-    generateFilterOptionsBySkillType<BlogInterface>(blogs, SkillTypes.Soft);
+    generateFilterOptionsBySkillType<BlogInterface>(blogs, SkillTypesEnum.Soft);
 
   //^ Filtering Logic
   /**
@@ -163,7 +166,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
     filteredBlogs = filterMaterialBySkill<BlogInterface>(
       selectedTechnicalSkill,
       filteredBlogs,
-      SkillTypes.Hard
+      SkillTypesEnum.Hard
     );
   }
 
@@ -172,7 +175,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
     filteredBlogs = filterMaterialBySkill<BlogInterface>(
       selectedGeneralSkill,
       filteredBlogs,
-      SkillTypes.General
+      SkillTypesEnum.General
     );
   }
 
@@ -181,7 +184,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
     filteredBlogs = filterMaterialBySkill<BlogInterface>(
       selectedSoftSkill,
       filteredBlogs,
-      SkillTypes.Soft
+      SkillTypesEnum.Soft
     );
   }
 

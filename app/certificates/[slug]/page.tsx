@@ -9,7 +9,7 @@ import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
 import allCertificates from "@/database/certificates";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
-import { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import { SkillTypesEnum } from "@/interfaces/skills/SkillInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -79,18 +79,28 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
     notFound();
   }
 
-  const technologies = filterSkillsByType(certificate.skills, SkillTypes.Hard);
+  const technologies = filterSkillsByType(
+    certificate.skills,
+    SkillTypesEnum.Hard
+  );
   const generalSkills = filterSkillsByType(
     certificate.skills,
-    SkillTypes.General
+    SkillTypesEnum.General
   );
-  const softSkills = filterSkillsByType(certificate.skills, SkillTypes.Soft);
+  const softSkills = filterSkillsByType(
+    certificate.skills,
+    SkillTypesEnum.Soft
+  );
 
   // Simplified grouping of skill types for certificates
   const allGroupedSkills = [
-    filterAndGroupSkills(technologies, SkillTypes.Hard, "Technologies"),
-    filterAndGroupSkills(generalSkills, SkillTypes.General, "Technical Skills"),
-    filterAndGroupSkills(softSkills, SkillTypes.Soft, "Soft Skills"),
+    filterAndGroupSkills(technologies, SkillTypesEnum.Hard, "Technologies"),
+    filterAndGroupSkills(
+      generalSkills,
+      SkillTypesEnum.General,
+      "Technical Skills"
+    ),
+    filterAndGroupSkills(softSkills, SkillTypesEnum.Soft, "Soft Skills"),
   ];
   const certificateImage = `/certificates/${slug}.jpg`;
 

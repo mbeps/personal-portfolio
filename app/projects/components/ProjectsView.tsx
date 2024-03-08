@@ -21,7 +21,7 @@ import { Button } from "@/components/shadcn/ui/button";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
-import { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import { SkillTypesEnum } from "@/interfaces/skills/SkillInterface";
 import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
 import Fuse from "fuse.js";
 import Link from "next/link";
@@ -129,7 +129,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
    */
   const technologies = generateFilterOptionsBySkillType<ProjectInterface>(
     allProjects,
-    SkillTypes.Hard,
+    SkillTypesEnum.Hard,
     SkillCategoriesEnum.ProgrammingLanguages
   );
 
@@ -139,13 +139,13 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const generalSkills: FilterOption[] =
     generateFilterOptionsBySkillType<ProjectInterface>(
       allProjects,
-      SkillTypes.General
+      SkillTypesEnum.General
     );
 
   const softSkills: FilterOption[] =
     generateFilterOptionsBySkillType<ProjectInterface>(
       allProjects,
-      SkillTypes.Soft
+      SkillTypesEnum.Soft
     );
 
   //^ Filtering Logic
@@ -178,7 +178,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
     filteredProjects = filterMaterialBySkill<ProjectInterface>(
       selectedTechnology,
       filteredProjects,
-      SkillTypes.Hard
+      SkillTypesEnum.Hard
     );
   }
 
@@ -195,7 +195,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
     filteredProjects = filterMaterialBySkill<ProjectInterface>(
       selectedGeneralSkill,
       filteredProjects,
-      SkillTypes.General
+      SkillTypesEnum.General
     );
   }
 
@@ -204,7 +204,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
     filteredProjects = filterMaterialBySkill<ProjectInterface>(
       selectedSoftSkill,
       filteredProjects,
-      SkillTypes.Soft
+      SkillTypesEnum.Soft
     );
   }
 

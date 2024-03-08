@@ -8,7 +8,7 @@ import HeadingTwo from "@/components/Text/HeadingTwo";
 import { BLOG } from "@/constants/pages";
 import blogs from "@/database/blogs";
 import BlogInterface from "@/interfaces/material/BlogInterface";
-import { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import { SkillTypesEnum } from "@/interfaces/skills/SkillInterface";
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import developerName from "@/constants/developerName";
@@ -75,18 +75,28 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
     notFound();
   }
 
-  const technologies = filterSkillsByType(blogMetadata.skills, SkillTypes.Hard);
+  const technologies = filterSkillsByType(
+    blogMetadata.skills,
+    SkillTypesEnum.Hard
+  );
   const generalSkills = filterSkillsByType(
     blogMetadata.skills,
-    SkillTypes.General
+    SkillTypesEnum.General
   );
-  const softSkills = filterSkillsByType(blogMetadata.skills, SkillTypes.Soft);
+  const softSkills = filterSkillsByType(
+    blogMetadata.skills,
+    SkillTypesEnum.Soft
+  );
 
   // Using the new function to group all skill types
   const allGroupedSkills = [
-    filterAndGroupSkills(technologies, SkillTypes.Hard, "Technologies"),
-    filterAndGroupSkills(generalSkills, SkillTypes.General, "Technical Skills"),
-    filterAndGroupSkills(softSkills, SkillTypes.Soft, "Soft Skills"),
+    filterAndGroupSkills(technologies, SkillTypesEnum.Hard, "Technologies"),
+    filterAndGroupSkills(
+      generalSkills,
+      SkillTypesEnum.General,
+      "Technical Skills"
+    ),
+    filterAndGroupSkills(softSkills, SkillTypesEnum.Soft, "Soft Skills"),
   ];
 
   return (

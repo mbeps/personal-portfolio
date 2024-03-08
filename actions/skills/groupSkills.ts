@@ -1,5 +1,7 @@
 import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
-import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import SkillInterface, {
+  SkillTypesEnum,
+} from "@/interfaces/skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 
 export function groupByLanguage(
@@ -133,7 +135,7 @@ export function removeDuplicates(skills: SkillInterface[]): SkillInterface[] {
 
 function recursiveFilter(
   skills: SkillInterface[],
-  excludedSkillTypes: SkillTypes[] = [] // Default to an empty array if no types are to be excluded
+  excludedSkillTypes: SkillTypesEnum[] = [] // Default to an empty array if no types are to be excluded
 ): SkillInterface[] {
   return skills
     .filter((skill) => !excludedSkillTypes.includes(skill.skillType))
@@ -154,7 +156,7 @@ function recursiveFilter(
 export default function groupSkills(
   groupedBy: string,
   skills: SkillInterface[],
-  excludedSkillTypes?: SkillTypes[] // Use SkillTypes[] or undefined
+  excludedSkillTypes?: SkillTypesEnum[] // Use SkillTypes[] or undefined
 ): SkillsCategoryInterface[] {
   let organizedSkills: SkillsCategoryInterface[] = [];
 

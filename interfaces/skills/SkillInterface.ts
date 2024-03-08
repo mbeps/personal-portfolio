@@ -1,6 +1,6 @@
 import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
 
-export enum SkillTypes {
+export enum SkillTypesEnum {
   Hard = "hard",
   General = "general",
   Soft = "soft",
@@ -15,5 +15,5 @@ export default interface SkillInterface {
   category: SkillCategoriesEnum;
   relatedSkills?: SkillInterface[];
   isMainSkill?: boolean;
-  skillType: SkillTypes;
+  skillType: SkillTypesEnum;
 }

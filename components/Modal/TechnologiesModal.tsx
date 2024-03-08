@@ -16,7 +16,9 @@ import { languages } from "@/database/skills/languages";
 import { technologies } from "@/database/skills/skills";
 import useIsMounted from "@/hooks/useIsMounted";
 import FilterOption from "@/interfaces/filters/FilterOption";
-import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import SkillInterface, {
+  SkillTypesEnum,
+} from "@/interfaces/skills/SkillInterface";
 import Link from "next/link";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
@@ -65,8 +67,8 @@ const TechnologiesModal: React.FC = () => {
   ];
 
   const groupedSkills = groupSkills(groupedBy, displayedSkills, [
-    SkillTypes.General,
-    SkillTypes.Soft,
+    SkillTypesEnum.General,
+    SkillTypesEnum.Soft,
   ]);
 
   const currentGroupedName =

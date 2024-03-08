@@ -4,7 +4,9 @@ import getAssociatedSkills from "@/actions/skills/getAssociatedSkills";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import allSkills from "@/database/skills/skills";
-import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import SkillInterface, {
+  SkillTypesEnum,
+} from "@/interfaces/skills/SkillInterface";
 import React from "react";
 
 interface RelatedSkillsSectionProps {
@@ -22,18 +24,18 @@ const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
 
   const allGroupedSkills = [
     filterAndGroupSkills(
-      filterSkillsByType(allAssociatedSkills, SkillTypes.Hard),
-      SkillTypes.Hard,
+      filterSkillsByType(allAssociatedSkills, SkillTypesEnum.Hard),
+      SkillTypesEnum.Hard,
       "Technologies"
     ),
     filterAndGroupSkills(
-      filterSkillsByType(allAssociatedSkills, SkillTypes.General),
-      SkillTypes.General,
+      filterSkillsByType(allAssociatedSkills, SkillTypesEnum.General),
+      SkillTypesEnum.General,
       "Technical Skills"
     ),
     filterAndGroupSkills(
-      filterSkillsByType(allAssociatedSkills, SkillTypes.Soft),
-      SkillTypes.Soft,
+      filterSkillsByType(allAssociatedSkills, SkillTypesEnum.Soft),
+      SkillTypesEnum.Soft,
       "Soft Skills"
     ),
   ];

@@ -1,12 +1,12 @@
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
-import { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import { SkillTypesEnum } from "@/interfaces/skills/SkillInterface";
 
 export default function addNestedSkillsMaterialList<
-  T extends MaterialInterface,
+  T extends MaterialInterface
 >(
   materials: T[],
-  skillTypeToAdd?: SkillTypes, // Use SkillTypes enum or undefined for "all"
-  skillTypeToCheck?: SkillTypes, // Use SkillTypes enum or undefined for "all"
+  skillTypeToAdd?: SkillTypesEnum, // Use SkillTypes enum or undefined for "all"
+  skillTypeToCheck?: SkillTypesEnum // Use SkillTypes enum or undefined for "all"
 ): T[] {
   return materials.map((material) => {
     // Clone the material to avoid mutating the original object

@@ -133,7 +133,7 @@ import {
   gitLab,
 } from "./skills/technicalHardSkills/technicalHardSkillsVCS";
 import updateProjectImages from "@/actions/file-system/updateProjectImages";
-import { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import { SkillTypesEnum } from "@/interfaces/skills/SkillInterface";
 
 /**
  * Array of web development projects.
@@ -1378,8 +1378,8 @@ const allProjects = addNestedSkillsMaterialList<ProjectInterface>(
     ...javaAssignments,
     ...backendWebDevProjects,
   ],
-  SkillTypes.General,
-  SkillTypes.Hard
+  SkillTypesEnum.General,
+  SkillTypesEnum.Hard
 );
 
 export default allProjects;

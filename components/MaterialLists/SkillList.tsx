@@ -29,7 +29,9 @@ import certificates from "@/database/certificates";
 import projects from "@/database/projects";
 import { nextjs } from "@/database/skills/technicalHardSkills/technicalHardSkillsFullStackWebDev";
 import FilterOption from "@/interfaces/filters/FilterOption";
-import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import SkillInterface, {
+  SkillTypesEnum,
+} from "@/interfaces/skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import { cn } from "@/lib/utils";
 import { Check } from "lucide-react";
@@ -74,11 +76,11 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
     { slug: "none", entryName: "None" },
   ];
 
-  const includeSkillTypes: SkillTypes[] = [];
+  const includeSkillTypes: SkillTypesEnum[] = [];
 
-  if (includeHardSkills) includeSkillTypes.push(SkillTypes.Hard);
-  if (includeGeneralSkills) includeSkillTypes.push(SkillTypes.General);
-  if (includeSoftSkills) includeSkillTypes.push(SkillTypes.Soft);
+  if (includeHardSkills) includeSkillTypes.push(SkillTypesEnum.Hard);
+  if (includeGeneralSkills) includeSkillTypes.push(SkillTypesEnum.General);
+  if (includeSoftSkills) includeSkillTypes.push(SkillTypesEnum.Soft);
 
   // Group skills with the inclusion list
   const groupedSkills: SkillsCategoryInterface[] = groupSkills(

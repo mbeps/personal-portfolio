@@ -1,10 +1,12 @@
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
-import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import SkillInterface, {
+  SkillTypesEnum,
+} from "@/interfaces/skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 
 export default function filterAndGroupSkills(
   skills: SkillInterface[],
-  skillType: SkillTypes,
+  skillType: SkillTypesEnum,
   title: string
 ): GroupedSkillsCategoriesInterface {
   // Filter skills based on skillType

@@ -1,13 +1,13 @@
 import FilterOption from "@/interfaces/filters/FilterOption";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 import stringToSlug from "../stringToSlug";
-import { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import { SkillTypesEnum } from "@/interfaces/skills/SkillInterface";
 
 export default function generateFilterOptionsBySkillType<
   T extends MaterialInterface
 >(
   allMaterials: T[],
-  skillType: SkillTypes,
+  skillType: SkillTypesEnum,
   excludeCategory?: string
 ): FilterOption[] {
   return [

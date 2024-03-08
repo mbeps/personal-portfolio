@@ -1,8 +1,10 @@
-import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import SkillInterface, {
+  SkillTypesEnum,
+} from "@/interfaces/skills/SkillInterface";
 
 export default function filterSkillsByType(
   skills: SkillInterface[],
-  skillType: SkillTypes
+  skillType: SkillTypesEnum
 ): SkillInterface[] {
   return skills.filter((skill) => skill.skillType === skillType);
 }

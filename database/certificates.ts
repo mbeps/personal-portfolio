@@ -159,7 +159,7 @@ import {
   gitHub,
   gitLab,
 } from "./skills/technicalHardSkills/technicalHardSkillsVCS";
-import { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import { SkillTypesEnum } from "@/interfaces/skills/SkillInterface";
 
 const programmingLanguagesCertificates: CertificateInterface[] = [
   {
@@ -2530,8 +2530,8 @@ const allCertificates = addNestedSkillsMaterialList<CertificateInterface>(
     ...managementCertificates,
     ...otherCertificates,
   ],
-  SkillTypes.General,
-  SkillTypes.Hard
+  SkillTypesEnum.General,
+  SkillTypesEnum.Hard
 );
 
 export default allCertificates;

@@ -35,7 +35,9 @@ import BlogInterface from "@/interfaces/material/BlogInterface";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
-import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import SkillInterface, {
+  SkillTypesEnum,
+} from "@/interfaces/skills/SkillInterface";
 import Link from "next/link";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
@@ -67,9 +69,9 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
 
   const languageSkills =
     getAssociatedSkills(
-      filterSkillsByType(allSkills, SkillTypes.Hard),
+      filterSkillsByType(allSkills, SkillTypesEnum.Hard),
       language,
-      SkillTypes.Hard
+      SkillTypesEnum.Hard
     ) || [];
 
   const handleOpenModal = () => {

@@ -1,5 +1,7 @@
 import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
-import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import SkillInterface, {
+  SkillTypesEnum,
+} from "@/interfaces/skills/SkillInterface";
 import {
   databaseManagementSystems,
   databases,
@@ -20,7 +22,7 @@ export const mongoose: SkillInterface = {
   name: "Mongoose",
   category: SkillCategoriesEnum.ObjectRelationalMappers,
   isMainSkill: true,
-  skillType: SkillTypes.Hard,
+  skillType: SkillTypesEnum.Hard,
   slug: "mongoose-orm",
   relatedSkills: [
     javascript,
@@ -38,7 +40,7 @@ export const prisma: SkillInterface = {
   name: "Prisma",
   category: SkillCategoriesEnum.ObjectRelationalMappers,
   isMainSkill: true,
-  skillType: SkillTypes.Hard,
+  skillType: SkillTypesEnum.Hard,
   slug: "prisma-orm",
   relatedSkills: [
     databaseManagementSystems,
@@ -59,7 +61,7 @@ export const drizzle: SkillInterface = {
   name: "Drizzle",
   category: SkillCategoriesEnum.ObjectRelationalMappers,
   isMainSkill: true,
-  skillType: SkillTypes.Hard,
+  skillType: SkillTypesEnum.Hard,
   slug: "drizzle-orm",
   relatedSkills: [
     javascript,
@@ -79,7 +81,7 @@ export const sqlalchemy: SkillInterface = {
   name: "SQLAlchemy",
   category: SkillCategoriesEnum.ObjectRelationalMappers,
   isMainSkill: true,
-  skillType: SkillTypes.Hard,
+  skillType: SkillTypesEnum.Hard,
   slug: "sqlalchemy",
   relatedSkills: [
     python,
@@ -98,7 +100,7 @@ export const hibernate: SkillInterface = {
   name: "Hibernate",
   category: SkillCategoriesEnum.ObjectRelationalMappers,
   isMainSkill: true,
-  skillType: SkillTypes.Hard,
+  skillType: SkillTypesEnum.Hard,
   slug: "hibernate-orm",
   relatedSkills: [
     java,

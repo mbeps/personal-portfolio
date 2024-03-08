@@ -1,11 +1,11 @@
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 import stringToSlug from "../stringToSlug";
-import { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import { SkillTypesEnum } from "@/interfaces/skills/SkillInterface";
 
 export function filterMaterialBySkill<T extends MaterialInterface>(
   skillSlug: string,
   materials: T[],
-  skillType: SkillTypes
+  skillType: SkillTypesEnum
 ): T[] {
   return materials.filter((material) =>
     material.skills.some(

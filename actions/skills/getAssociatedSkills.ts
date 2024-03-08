@@ -1,9 +1,11 @@
-import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import SkillInterface, {
+  SkillTypesEnum,
+} from "@/interfaces/skills/SkillInterface";
 
 export function getAssociatedMentionedSkills(
   skills: SkillInterface[],
   skillToCheck: SkillInterface | SkillInterface[],
-  skillType?: SkillTypes // No default value needed, undefined signifies "all"
+  skillType?: SkillTypesEnum // No default value needed, undefined signifies "all"
 ): SkillInterface[] {
   const associatedSkills: SkillInterface[] = [];
 
@@ -50,7 +52,7 @@ export function getAssociatedMentionedSkills(
 
 export function getAssociatedNestedSkills(
   skillToCheck: SkillInterface | SkillInterface[],
-  skillType?: SkillTypes // Use SkillTypes or undefined, default is implicitly all
+  skillType?: SkillTypesEnum // Use SkillTypes or undefined, default is implicitly all
 ): SkillInterface[] {
   const isSingleSkill = !Array.isArray(skillToCheck);
   const skillsToCheck: SkillInterface[] = isSingleSkill
@@ -78,7 +80,7 @@ export function getAssociatedNestedSkills(
 export default function getAssociatedSkills(
   skills: SkillInterface[],
   skillToCheck: SkillInterface | SkillInterface[],
-  skillType?: SkillTypes // No default value needed; undefined signifies "all"
+  skillType?: SkillTypesEnum // No default value needed; undefined signifies "all"
 ): SkillInterface[] {
   // Get skills from both functions
   const associatedMentionedSkills = getAssociatedMentionedSkills(

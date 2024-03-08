@@ -1,10 +1,12 @@
 import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
-import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import SkillInterface, {
+  SkillTypesEnum,
+} from "@/interfaces/skills/SkillInterface";
 
 export const python: SkillInterface = {
   name: "Python",
   isMainSkill: true,
-  skillType: SkillTypes.Hard,
+  skillType: SkillTypesEnum.Hard,
   category: SkillCategoriesEnum.ProgrammingLanguages,
   slug: "python",
 };
@@ -12,7 +14,7 @@ export const python: SkillInterface = {
 export const javascript: SkillInterface = {
   name: "JavaScript",
   isMainSkill: true,
-  skillType: SkillTypes.Hard,
+  skillType: SkillTypesEnum.Hard,
   category: SkillCategoriesEnum.ProgrammingLanguages,
   slug: "javascript",
 };
@@ -20,7 +22,7 @@ export const javascript: SkillInterface = {
 export const typescript: SkillInterface = {
   name: "TypeScript",
   isMainSkill: true,
-  skillType: SkillTypes.Hard,
+  skillType: SkillTypesEnum.Hard,
   category: SkillCategoriesEnum.ProgrammingLanguages,
   slug: "typescript",
 };
@@ -28,7 +30,7 @@ export const typescript: SkillInterface = {
 export const java: SkillInterface = {
   name: "Java",
   isMainSkill: true,
-  skillType: SkillTypes.Hard,
+  skillType: SkillTypesEnum.Hard,
   category: SkillCategoriesEnum.ProgrammingLanguages,
   slug: "java",
 };
@@ -36,7 +38,7 @@ export const java: SkillInterface = {
 export const gameMakerLanguage: SkillInterface = {
   name: "GameMaker Language",
   isMainSkill: false,
-  skillType: SkillTypes.Hard,
+  skillType: SkillTypesEnum.Hard,
   category: SkillCategoriesEnum.ProgrammingLanguages,
   slug: "game-maker-language",
 };
@@ -44,7 +46,7 @@ export const gameMakerLanguage: SkillInterface = {
 export const shellScript: SkillInterface = {
   name: "Shell Script",
   isMainSkill: false,
-  skillType: SkillTypes.Hard,
+  skillType: SkillTypesEnum.Hard,
   category: SkillCategoriesEnum.ProgrammingLanguages,
   slug: "shell",
 };
@@ -52,7 +54,7 @@ export const shellScript: SkillInterface = {
 export const rLanguage: SkillInterface = {
   name: "R",
   isMainSkill: false,
-  skillType: SkillTypes.Hard,
+  skillType: SkillTypesEnum.Hard,
   category: SkillCategoriesEnum.ProgrammingLanguages,
   slug: "r",
 };
@@ -60,7 +62,7 @@ export const rLanguage: SkillInterface = {
 export const groovy: SkillInterface = {
   name: "Groovy",
   isMainSkill: false,
-  skillType: SkillTypes.Hard,
+  skillType: SkillTypesEnum.Hard,
   category: SkillCategoriesEnum.ProgrammingLanguages,
   slug: "groovy",
 };

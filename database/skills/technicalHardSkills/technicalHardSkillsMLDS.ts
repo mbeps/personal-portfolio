@@ -1,5 +1,7 @@
 import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
-import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import SkillInterface, {
+  SkillTypesEnum,
+} from "@/interfaces/skills/SkillInterface";
 import {
   artificialIntelligence,
   boosting,
@@ -16,7 +18,7 @@ export const scikitLearn: SkillInterface = {
   name: "Scikit Learn",
   category: SkillCategoriesEnum.ArtificialIntelligence,
   isMainSkill: true,
-  skillType: SkillTypes.Hard,
+  skillType: SkillTypesEnum.Hard,
   slug: "scikit-learn",
   relatedSkills: [
     python,
@@ -33,7 +35,7 @@ export const pandas: SkillInterface = {
   name: "Pandas",
   category: SkillCategoriesEnum.ArtificialIntelligence,
   isMainSkill: true,
-  skillType: SkillTypes.Hard,
+  skillType: SkillTypesEnum.Hard,
   slug: "pandas",
   relatedSkills: [python, dataScience, dataVisualisation],
 };
@@ -42,7 +44,7 @@ export const numpy: SkillInterface = {
   name: "NumPy",
   category: SkillCategoriesEnum.ArtificialIntelligence,
   isMainSkill: true,
-  skillType: SkillTypes.Hard,
+  skillType: SkillTypesEnum.Hard,
   slug: "numpy",
   relatedSkills: [python, dataScience, mathematics],
 };
@@ -51,7 +53,7 @@ export const matplotlib: SkillInterface = {
   name: "Matplotlib",
   category: SkillCategoriesEnum.DataScience,
   isMainSkill: true,
-  skillType: SkillTypes.Hard,
+  skillType: SkillTypesEnum.Hard,
   slug: "matplotlib",
   relatedSkills: [python, dataScience, dataVisualisation],
 };
@@ -60,7 +62,7 @@ export const seaborn: SkillInterface = {
   name: "Seaborn",
   category: SkillCategoriesEnum.DataScience,
   isMainSkill: true,
-  skillType: SkillTypes.Hard,
+  skillType: SkillTypesEnum.Hard,
   slug: "seaborn",
   relatedSkills: [python, dataScience, dataVisualisation],
 };
@@ -69,7 +71,7 @@ export const keras: SkillInterface = {
   name: "Keras",
   category: SkillCategoriesEnum.ArtificialIntelligence,
   isMainSkill: true,
-  skillType: SkillTypes.Hard,
+  skillType: SkillTypesEnum.Hard,
   slug: "keras",
   relatedSkills: [
     python,
@@ -84,7 +86,7 @@ export const jupyterNotebooks: SkillInterface = {
   name: "Jupyter Notebooks",
   category: SkillCategoriesEnum.DataScience,
   isMainSkill: true,
-  skillType: SkillTypes.Hard,
+  skillType: SkillTypesEnum.Hard,
   slug: "juptyer-notebooks",
   relatedSkills: [python, dataScience],
 };

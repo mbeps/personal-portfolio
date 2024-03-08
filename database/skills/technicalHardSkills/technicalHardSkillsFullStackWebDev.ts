@@ -1,5 +1,7 @@
 import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
-import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import SkillInterface, {
+  SkillTypesEnum,
+} from "@/interfaces/skills/SkillInterface";
 import { userCentricDesign, webDevelopment } from "../generalSkills";
 import { javascript, typescript } from "../languages";
 import { react, svelte, vue } from "./technicalHardSkillsFrontendWebDev";
@@ -8,7 +10,7 @@ export const nextjs: SkillInterface = {
   name: "Next.js",
   category: SkillCategoriesEnum.FullStackWebDevelopment,
   isMainSkill: true,
-  skillType: SkillTypes.Hard,
+  skillType: SkillTypesEnum.Hard,
   slug: "next-js",
   relatedSkills: [
     javascript,
@@ -22,7 +24,7 @@ export const nextjs: SkillInterface = {
 export const angular: SkillInterface = {
   name: "Angular",
   category: SkillCategoriesEnum.FullStackWebDevelopment,
-  skillType: SkillTypes.Hard,
+  skillType: SkillTypesEnum.Hard,
   slug: "angular",
   relatedSkills: [webDevelopment, userCentricDesign],
 };
@@ -30,7 +32,7 @@ export const angular: SkillInterface = {
 export const nuxtjs: SkillInterface = {
   name: "Nuxt.js",
   category: SkillCategoriesEnum.FullStackWebDevelopment,
-  skillType: SkillTypes.Hard,
+  skillType: SkillTypesEnum.Hard,
   slug: "nuxt-js",
   relatedSkills: [
     javascript,
@@ -44,7 +46,7 @@ export const nuxtjs: SkillInterface = {
 export const svelteKit: SkillInterface = {
   name: "SvelteKit",
   category: SkillCategoriesEnum.FullStackWebDevelopment,
-  skillType: SkillTypes.Hard,
+  skillType: SkillTypesEnum.Hard,
   slug: "svelte-kit",
   relatedSkills: [
     javascript,
