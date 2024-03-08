@@ -6,7 +6,7 @@ import HeadingTwo from "@/components/Text/HeadingTwo";
 import allSkills from "@/database/skills/skills";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import React from "react";
-import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 
 interface RelatedSkillsSectionProps {
   skill: SkillInterface;

@@ -1,7 +1,7 @@
 import FilterOption from "@/interfaces/filters/FilterOption";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 import stringToSlug from "../stringToSlug";
-import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 
 export default function generateFilterOptionsBySkillType<
   T extends MaterialInterface

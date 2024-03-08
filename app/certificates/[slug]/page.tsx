@@ -9,7 +9,7 @@ import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
 import allCertificates from "@/database/certificates";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
-import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";

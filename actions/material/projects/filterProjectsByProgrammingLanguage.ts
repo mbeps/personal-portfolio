@@ -1,4 +1,4 @@
-import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
+import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
 
 export default function filterProjectsByProgrammingLanguage(

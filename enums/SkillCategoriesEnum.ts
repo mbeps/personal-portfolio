@@ -1,4 +1,4 @@
-export enum SkillCategoriesEnum {
+enum SkillCategoriesEnum {
   ProgrammingLanguages = "Programming Languages",
   ProgrammingParadigms = "Programming Paradigms",
   FrontEndWebDevelopment = "Front-End Web Development",
@@ -24,3 +24,5 @@ export enum SkillCategoriesEnum {
   Automation = "Automation",
   SoftSkills = "Soft Skills",
 }
+
+export default SkillCategoriesEnum;

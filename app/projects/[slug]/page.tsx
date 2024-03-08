@@ -22,9 +22,9 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
-import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import developerName from "@/constants/developerName";
-import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
+import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 
 /**
  * Metadata object for the dynamic project page.

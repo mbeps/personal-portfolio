@@ -1,4 +1,4 @@
-import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
+import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import {
   apis,
@@ -12,7 +12,7 @@ import {
   webDevelopment,
 } from "../generalSkills";
 import { java, javascript, python, typescript } from "../languages";
-import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 
 export const firebase: SkillInterface = {
   name: "Firebase",

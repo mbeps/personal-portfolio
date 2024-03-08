@@ -1,9 +1,9 @@
-import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
+import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import { userCentricDesign, webDevelopment } from "../generalSkills";
 import { javascript, typescript } from "../languages";
 import { react, svelte, vue } from "./technicalHardSkillsFrontendWebDev";
-import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 
 export const nextjs: SkillInterface = {
   name: "Next.js",

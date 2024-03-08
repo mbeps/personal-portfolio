@@ -1,6 +1,6 @@
 import SkillInterface from "@/interfaces/skills/SkillInterface";
-import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
-import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
+import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 
 export const communication: SkillInterface = {
   name: "Communication",

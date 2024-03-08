@@ -156,7 +156,7 @@ import {
   gitHub,
   gitLab,
 } from "./skills/technicalHardSkills/technicalHardSkillsVCS";
-import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import CertificateIssuersEnum from "@/enums/CertificateIssuersEnum";
 import CertificateCategoriesEnum from "@/enums/CertificateCategoriesEnum";
 

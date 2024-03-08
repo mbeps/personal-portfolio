@@ -1,6 +1,6 @@
 import FilterOption from "@/interfaces/filters/FilterOption";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
-import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
+import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 
 export default function generateFilterOptionsForProgrammingLanguages<
   T extends MaterialInterface

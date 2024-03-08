@@ -26,7 +26,7 @@ import HeadingThree from "../Text/HeadingThree";
 import HeadingTwo from "../Text/HeadingTwo";
 import { Button } from "../shadcn/ui/button";
 import { ScrollArea } from "../shadcn/ui/scroll-area";
-import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 
 /**
  * Displays a modal for the skills.

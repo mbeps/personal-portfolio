@@ -39,7 +39,7 @@ import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Link from "next/link";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
-import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 
 interface LanguageTagWithModalProps {
   language: SkillInterface;

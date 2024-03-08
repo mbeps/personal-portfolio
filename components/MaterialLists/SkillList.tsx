@@ -27,7 +27,7 @@ import {
 import blogs from "@/database/blogs";
 import certificates from "@/database/certificates";
 import projects from "@/database/projects";
-import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";

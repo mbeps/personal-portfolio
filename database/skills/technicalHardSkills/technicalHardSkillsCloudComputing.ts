@@ -1,11 +1,11 @@
-import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
+import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import {
   cloudComputing,
   clusterisation,
   containerization,
 } from "../generalSkills";
-import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 
 export const awsK3s: SkillInterface = {
   name: "K3s",

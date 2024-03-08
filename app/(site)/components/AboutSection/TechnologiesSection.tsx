@@ -10,7 +10,7 @@ import {
 } from "@/components/shadcn/ui/tooltip";
 import { languages } from "@/database/skills/languages";
 import { technologies } from "@/database/skills/skills";
-import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
+import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 

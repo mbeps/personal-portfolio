@@ -1,4 +1,4 @@
-import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
+import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import {
   automation,
@@ -10,7 +10,7 @@ import {
   devOps,
   infrastructureAsCode,
 } from "../generalSkills";
-import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 
 export const gitHubActions: SkillInterface = {
   name: "GitHub Actions",

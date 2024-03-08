@@ -1,4 +1,4 @@
-import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
+import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import {
   databaseManagementSystems,
@@ -7,7 +7,7 @@ import {
   noSql,
   sql,
 } from "../generalSkills";
-import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 
 export const normalisation: SkillInterface = {
   name: "Normalisation",

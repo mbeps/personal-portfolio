@@ -131,7 +131,7 @@ import {
   gitLab,
 } from "./skills/technicalHardSkills/technicalHardSkillsVCS";
 import updateProjectImages from "@/actions/file-system/updateProjectImages";
-import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import ProjectCategoriesEnum from "@/enums/ProjectCategoriesEnum";
 
 /**
