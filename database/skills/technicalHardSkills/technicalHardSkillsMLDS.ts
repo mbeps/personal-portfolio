@@ -1,7 +1,5 @@
 import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
-import SkillInterface, {
-  SkillTypesEnum,
-} from "@/interfaces/skills/SkillInterface";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import {
   artificialIntelligence,
   boosting,
@@ -13,6 +11,7 @@ import {
   neuralNetworks,
 } from "../generalSkills";
 import { python } from "../languages";
+import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
 
 export const scikitLearn: SkillInterface = {
   name: "Scikit Learn",

@@ -16,9 +16,7 @@ import { languages } from "@/database/skills/languages";
 import { technologies } from "@/database/skills/skills";
 import useIsMounted from "@/hooks/useIsMounted";
 import FilterOption from "@/interfaces/filters/FilterOption";
-import SkillInterface, {
-  SkillTypesEnum,
-} from "@/interfaces/skills/SkillInterface";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Link from "next/link";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
@@ -28,6 +26,7 @@ import HeadingThree from "../Text/HeadingThree";
 import HeadingTwo from "../Text/HeadingTwo";
 import { Button } from "../shadcn/ui/button";
 import { ScrollArea } from "../shadcn/ui/scroll-area";
+import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
 
 /**
  * Displays a modal for the skills.

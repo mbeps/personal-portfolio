@@ -27,11 +27,9 @@ import {
 import blogs from "@/database/blogs";
 import certificates from "@/database/certificates";
 import projects from "@/database/projects";
-import { nextjs } from "@/database/skills/technicalHardSkills/technicalHardSkillsFullStackWebDev";
+import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
 import FilterOption from "@/interfaces/filters/FilterOption";
-import SkillInterface, {
-  SkillTypesEnum,
-} from "@/interfaces/skills/SkillInterface";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import { cn } from "@/lib/utils";
 import { Check } from "lucide-react";

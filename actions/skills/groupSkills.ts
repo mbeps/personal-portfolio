@@ -1,8 +1,7 @@
 import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
-import SkillInterface, {
-  SkillTypesEnum,
-} from "@/interfaces/skills/SkillInterface";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
+import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
 
 export function groupByLanguage(
   skills: SkillInterface[]

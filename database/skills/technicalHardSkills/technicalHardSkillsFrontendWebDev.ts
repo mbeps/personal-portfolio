@@ -1,7 +1,5 @@
 import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
-import SkillInterface, {
-  SkillTypesEnum,
-} from "@/interfaces/skills/SkillInterface";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import {
   apis,
   stateManagement,
@@ -9,6 +7,7 @@ import {
   webDevelopment,
 } from "../generalSkills";
 import { javascript, typescript } from "../languages";
+import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
 
 export const recoil: SkillInterface = {
   name: "Recoil",

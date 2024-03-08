@@ -159,7 +159,7 @@ import {
   gitHub,
   gitLab,
 } from "./skills/technicalHardSkills/technicalHardSkillsVCS";
-import { SkillTypesEnum } from "@/interfaces/skills/SkillInterface";
+import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
 
 const programmingLanguagesCertificates: CertificateInterface[] = [
   {

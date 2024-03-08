@@ -1,5 +1,5 @@
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
-import { SkillTypesEnum } from "@/interfaces/skills/SkillInterface";
+import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
 
 export default function addNestedSkillsMaterialList<
   T extends MaterialInterface

@@ -21,7 +21,7 @@ import { Button } from "@/components/shadcn/ui/button";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
-import { SkillTypesEnum } from "@/interfaces/skills/SkillInterface";
+import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
 import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
 import Fuse from "fuse.js";
 import Link from "next/link";

@@ -22,7 +22,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
-import { SkillTypesEnum } from "@/interfaces/skills/SkillInterface";
+import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
 import developerName from "@/constants/developerName";
 import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
 

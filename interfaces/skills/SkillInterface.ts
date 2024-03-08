@@ -1,10 +1,5 @@
 import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
-
-export enum SkillTypesEnum {
-  Hard = "hard",
-  General = "general",
-  Soft = "soft",
-}
+import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
 
 /**
  * Interface for representing a skill.

@@ -62,7 +62,7 @@ import {
   sqlalchemy,
 } from "./skills/technicalHardSkills/technicalHardSkillsORMs";
 import { git } from "./skills/technicalHardSkills/technicalHardSkillsVCS";
-import { SkillTypesEnum } from "@/interfaces/skills/SkillInterface";
+import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
 
 const blogs: BlogInterface[] = addNestedSkillsMaterialList<BlogInterface>(
   [

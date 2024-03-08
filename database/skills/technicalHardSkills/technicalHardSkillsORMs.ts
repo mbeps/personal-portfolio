@@ -1,7 +1,5 @@
 import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
-import SkillInterface, {
-  SkillTypesEnum,
-} from "@/interfaces/skills/SkillInterface";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import {
   databaseManagementSystems,
   databases,
@@ -17,6 +15,7 @@ import {
   postgreSQL,
   sqlite,
 } from "./technicalHardSkillsDatabases";
+import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
 
 export const mongoose: SkillInterface = {
   name: "Mongoose",

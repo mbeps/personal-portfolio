@@ -8,7 +8,7 @@ import HeadingTwo from "@/components/Text/HeadingTwo";
 import { BLOG } from "@/constants/pages";
 import blogs from "@/database/blogs";
 import BlogInterface from "@/interfaces/material/BlogInterface";
-import { SkillTypesEnum } from "@/interfaces/skills/SkillInterface";
+import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import developerName from "@/constants/developerName";

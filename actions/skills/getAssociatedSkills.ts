@@ -1,6 +1,5 @@
-import SkillInterface, {
-  SkillTypesEnum,
-} from "@/interfaces/skills/SkillInterface";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
+import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
 
 export function getAssociatedMentionedSkills(
   skills: SkillInterface[],

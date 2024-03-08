@@ -1,8 +1,7 @@
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
-import SkillInterface, {
-  SkillTypesEnum,
-} from "@/interfaces/skills/SkillInterface";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
+import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
 
 export default function filterAndGroupSkills(
   skills: SkillInterface[],

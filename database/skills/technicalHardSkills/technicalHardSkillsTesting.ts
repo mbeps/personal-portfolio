@@ -1,8 +1,7 @@
 import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
-import SkillInterface, {
-  SkillTypesEnum,
-} from "@/interfaces/skills/SkillInterface";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import { java, javascript, python, typescript } from "../languages";
+import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
 
 export const jest: SkillInterface = {
   name: "Jest",

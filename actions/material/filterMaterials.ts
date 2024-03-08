@@ -1,6 +1,6 @@
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 import stringToSlug from "../stringToSlug";
-import { SkillTypesEnum } from "@/interfaces/skills/SkillInterface";
+import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
 
 export function filterMaterialBySkill<T extends MaterialInterface>(
   skillSlug: string,

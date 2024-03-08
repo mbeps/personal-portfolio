@@ -35,12 +35,11 @@ import BlogInterface from "@/interfaces/material/BlogInterface";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
-import SkillInterface, {
-  SkillTypesEnum,
-} from "@/interfaces/skills/SkillInterface";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Link from "next/link";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
+import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
 
 interface LanguageTagWithModalProps {
   language: SkillInterface;
