@@ -1,16 +1,5 @@
+import { CertificateIssuersEnum } from "@/enums/CertificateIssuersEnum";
 import MaterialInterface from "./MaterialInterface";
-
-export enum CertificateIssuers {
-  Coursera = "Coursera",
-  Udemy = "Udemy",
-  LinkedIn = "LinkedIn",
-  NASBA = "NASBA",
-  PMI = "PMI",
-  GitHub = "GitHub",
-  RoyalHollowayUniversity = "Royal Holloway University",
-  SymphonySolutions = "Symphony Solutions",
-  Amigoscode = "Amigoscode"
-}
 
 export enum CertificateCategories {
   University = "University",
@@ -24,12 +13,12 @@ export enum CertificateCategories {
   Databases = "Databases",
   CloudComputing = "Cloud Computing",
   Management = "Management",
-  Other = "Other"
+  Other = "Other",
 }
 
 export default interface CertificateInterface extends MaterialInterface {
   description?: string;
-  issuer: CertificateIssuers;
+  issuer: CertificateIssuersEnum;
   certificateURL: string;
   category: CertificateCategories;
   certificateImage?: string;
