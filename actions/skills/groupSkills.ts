@@ -1,7 +1,5 @@
-import SkillInterface, {
-  SkillCategories,
-  SkillTypes,
-} from "@/interfaces/skills/SkillInterface";
+import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
+import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 
 export function groupByLanguage(
@@ -12,7 +10,7 @@ export function groupByLanguage(
 
   skills.forEach((skill) => {
     // If the skill is a programming language, add it to its own category
-    if (skill.category === SkillCategories.ProgrammingLanguages) {
+    if (skill.category === SkillCategoriesEnum.ProgrammingLanguages) {
       const languageName = skill.name;
 
       if (!groupedSkills[languageName]) {
@@ -24,7 +22,7 @@ export function groupByLanguage(
 
     // Check if the skill is associated with any programming language
     skill.relatedSkills?.forEach((relatedSkill) => {
-      if (relatedSkill.category === SkillCategories.ProgrammingLanguages) {
+      if (relatedSkill.category === SkillCategoriesEnum.ProgrammingLanguages) {
         const languageName = relatedSkill.name;
 
         if (!groupedSkills[languageName]) {
@@ -38,11 +36,11 @@ export function groupByLanguage(
     // If no associated programming language is found, group it under 'No Language'
     if (
       !(
-        skill.category === SkillCategories.ProgrammingLanguages ||
+        skill.category === SkillCategoriesEnum.ProgrammingLanguages ||
         (skill.relatedSkills &&
           skill.relatedSkills.some(
             (relatedSkill) =>
-              relatedSkill.category === SkillCategories.ProgrammingLanguages
+              relatedSkill.category === SkillCategoriesEnum.ProgrammingLanguages
           ))
       )
     ) {

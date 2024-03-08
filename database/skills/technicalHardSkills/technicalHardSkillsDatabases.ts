@@ -1,7 +1,5 @@
-import SkillInterface, {
-  SkillCategories,
-  SkillTypes,
-} from "@/interfaces/skills/SkillInterface";
+import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
+import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
 import {
   databaseManagementSystems,
   databases,
@@ -12,7 +10,7 @@ import {
 
 export const normalisation: SkillInterface = {
   name: "Normalisation",
-  category: SkillCategories.Databases,
+  category: SkillCategoriesEnum.Databases,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "database-normalisation",
@@ -20,7 +18,7 @@ export const normalisation: SkillInterface = {
 
 export const postgreSQL: SkillInterface = {
   name: "PostgreSQL",
-  category: SkillCategories.Databases,
+  category: SkillCategoriesEnum.Databases,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "postgresql",
@@ -35,7 +33,7 @@ export const postgreSQL: SkillInterface = {
 
 export const mySQL: SkillInterface = {
   name: "MySQL",
-  category: SkillCategories.Databases,
+  category: SkillCategoriesEnum.Databases,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "mysql",
@@ -50,7 +48,7 @@ export const mySQL: SkillInterface = {
 
 export const sqlite: SkillInterface = {
   name: "SQLite",
-  category: SkillCategories.Databases,
+  category: SkillCategoriesEnum.Databases,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "sqlite",
@@ -65,7 +63,7 @@ export const sqlite: SkillInterface = {
 
 export const mongoDB: SkillInterface = {
   name: "MongoDB",
-  category: SkillCategories.Databases,
+  category: SkillCategoriesEnum.Databases,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "mongodb",
@@ -74,7 +72,7 @@ export const mongoDB: SkillInterface = {
 
 export const redis: SkillInterface = {
   name: "Redis",
-  category: SkillCategories.Databases,
+  category: SkillCategoriesEnum.Databases,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "redis",
@@ -83,7 +81,7 @@ export const redis: SkillInterface = {
 
 export const convex: SkillInterface = {
   name: "Convex",
-  category: SkillCategories.Databases,
+  category: SkillCategoriesEnum.Databases,
   isMainSkill: false,
   skillType: SkillTypes.Hard,
   slug: "convex",

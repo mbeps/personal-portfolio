@@ -10,9 +10,8 @@ import {
 } from "@/components/shadcn/ui/tooltip";
 import { languages } from "@/database/skills/languages";
 import { technologies } from "@/database/skills/skills";
-import SkillInterface, {
-  SkillCategories,
-} from "@/interfaces/skills/SkillInterface";
+import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 
 /**
@@ -28,14 +27,14 @@ const TechnologiesSection: React.FC = () => {
    * This categories are from the Skill type.
    */
   const ignoredCategories = [
-    SkillCategories.ProgrammingLanguages,
-    SkillCategories.ProjectManagers,
-    SkillCategories.ObjectRelationalMappers,
-    SkillCategories.VersionControl,
-    SkillCategories.WebSockets,
-    SkillCategories.Mathematics,
-    SkillCategories.CloudComputing,
-    SkillCategories.Automation,
+    SkillCategoriesEnum.ProgrammingLanguages,
+    SkillCategoriesEnum.ProjectManagers,
+    SkillCategoriesEnum.ObjectRelationalMappers,
+    SkillCategoriesEnum.VersionControl,
+    SkillCategoriesEnum.WebSockets,
+    SkillCategoriesEnum.Mathematics,
+    SkillCategoriesEnum.CloudComputing,
+    SkillCategoriesEnum.Automation,
   ];
 
   /**

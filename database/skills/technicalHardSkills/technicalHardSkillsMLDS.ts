@@ -1,7 +1,5 @@
-import SkillInterface, {
-  SkillCategories,
-  SkillTypes,
-} from "@/interfaces/skills/SkillInterface";
+import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
+import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
 import {
   artificialIntelligence,
   boosting,
@@ -16,7 +14,7 @@ import { python } from "../languages";
 
 export const scikitLearn: SkillInterface = {
   name: "Scikit Learn",
-  category: SkillCategories.ArtificialIntelligence,
+  category: SkillCategoriesEnum.ArtificialIntelligence,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "scikit-learn",
@@ -33,7 +31,7 @@ export const scikitLearn: SkillInterface = {
 
 export const pandas: SkillInterface = {
   name: "Pandas",
-  category: SkillCategories.ArtificialIntelligence,
+  category: SkillCategoriesEnum.ArtificialIntelligence,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "pandas",
@@ -42,7 +40,7 @@ export const pandas: SkillInterface = {
 
 export const numpy: SkillInterface = {
   name: "NumPy",
-  category: SkillCategories.ArtificialIntelligence,
+  category: SkillCategoriesEnum.ArtificialIntelligence,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "numpy",
@@ -51,7 +49,7 @@ export const numpy: SkillInterface = {
 
 export const matplotlib: SkillInterface = {
   name: "Matplotlib",
-  category: SkillCategories.DataScience,
+  category: SkillCategoriesEnum.DataScience,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "matplotlib",
@@ -60,7 +58,7 @@ export const matplotlib: SkillInterface = {
 
 export const seaborn: SkillInterface = {
   name: "Seaborn",
-  category: SkillCategories.DataScience,
+  category: SkillCategoriesEnum.DataScience,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "seaborn",
@@ -69,7 +67,7 @@ export const seaborn: SkillInterface = {
 
 export const keras: SkillInterface = {
   name: "Keras",
-  category: SkillCategories.ArtificialIntelligence,
+  category: SkillCategoriesEnum.ArtificialIntelligence,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "keras",
@@ -84,7 +82,7 @@ export const keras: SkillInterface = {
 
 export const jupyterNotebooks: SkillInterface = {
   name: "Jupyter Notebooks",
-  category: SkillCategories.DataScience,
+  category: SkillCategoriesEnum.DataScience,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "juptyer-notebooks",

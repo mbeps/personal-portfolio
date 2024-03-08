@@ -1,6 +1,6 @@
 import FilterOption from "@/interfaces/filters/FilterOption";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
-import { SkillCategories } from "@/interfaces/skills/SkillInterface";
+import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
 
 export default function generateFilterOptionsForProgrammingLanguages<
   T extends MaterialInterface
@@ -10,7 +10,7 @@ export default function generateFilterOptionsForProgrammingLanguages<
     ...allMaterials
       .flatMap((material) =>
         material.skills.filter(
-          (skill) => skill.category === SkillCategories.ProgrammingLanguages
+          (skill) => skill.category === SkillCategoriesEnum.ProgrammingLanguages
         )
       )
       .reduce((unique, skill) => {

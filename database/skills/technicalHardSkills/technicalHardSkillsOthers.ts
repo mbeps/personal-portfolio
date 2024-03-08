@@ -1,12 +1,10 @@
-import SkillInterface, {
-  SkillCategories,
-  SkillTypes,
-} from "@/interfaces/skills/SkillInterface";
+import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
+import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
 import { gameDevelopment } from "../generalSkills";
 
 export const gameMakerStudio: SkillInterface = {
   name: "GameMaker Studio 2",
-  category: SkillCategories.GameDevelopment,
+  category: SkillCategoriesEnum.GameDevelopment,
   skillType: SkillTypes.Hard,
   slug: "gamemaker-studio",
   relatedSkills: [gameDevelopment],
@@ -14,7 +12,7 @@ export const gameMakerStudio: SkillInterface = {
 
 export const symphony: SkillInterface = {
   name: "Symphony Solutions",
-  category: SkillCategories.Automation,
+  category: SkillCategoriesEnum.Automation,
   skillType: SkillTypes.Hard,
   slug: "symphony-solutions",
   relatedSkills: [gameDevelopment],

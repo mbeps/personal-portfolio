@@ -1,12 +1,10 @@
-import SkillInterface, {
-  SkillCategories,
-  SkillTypes,
-} from "@/interfaces/skills/SkillInterface";
+import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
+import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
 import { mathematics } from "../generalSkills";
 
 export const probability: SkillInterface = {
   name: "Probability",
-  category: SkillCategories.Mathematics,
+  category: SkillCategoriesEnum.Mathematics,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "probability",
@@ -15,7 +13,7 @@ export const probability: SkillInterface = {
 
 export const statistics: SkillInterface = {
   name: "Statistics",
-  category: SkillCategories.Mathematics,
+  category: SkillCategoriesEnum.Mathematics,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "statistics",
@@ -24,7 +22,7 @@ export const statistics: SkillInterface = {
 
 export const calculus: SkillInterface = {
   name: "Calculus",
-  category: SkillCategories.Mathematics,
+  category: SkillCategoriesEnum.Mathematics,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "calculus",
@@ -33,7 +31,7 @@ export const calculus: SkillInterface = {
 
 export const trigonometry: SkillInterface = {
   name: "Trigonometry",
-  category: SkillCategories.Mathematics,
+  category: SkillCategoriesEnum.Mathematics,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "trigonomtry",
@@ -42,7 +40,7 @@ export const trigonometry: SkillInterface = {
 
 export const algebra: SkillInterface = {
   name: "Algebra",
-  category: SkillCategories.Mathematics,
+  category: SkillCategoriesEnum.Mathematics,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "algebra",
@@ -51,7 +49,7 @@ export const algebra: SkillInterface = {
 
 export const linearAlgebra: SkillInterface = {
   name: "Linear Algebra",
-  category: SkillCategories.Mathematics,
+  category: SkillCategoriesEnum.Mathematics,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "linear-algebra",
@@ -60,7 +58,7 @@ export const linearAlgebra: SkillInterface = {
 
 export const discrete: SkillInterface = {
   name: "Discrete",
-  category: SkillCategories.Mathematics,
+  category: SkillCategoriesEnum.Mathematics,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "discrete-mathematics",
@@ -69,7 +67,7 @@ export const discrete: SkillInterface = {
 
 export const geometry: SkillInterface = {
   name: "Geometry",
-  category: SkillCategories.Mathematics,
+  category: SkillCategoriesEnum.Mathematics,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "geometry",
@@ -78,7 +76,7 @@ export const geometry: SkillInterface = {
 
 export const logics: SkillInterface = {
   name: "Logics",
-  category: SkillCategories.Mathematics,
+  category: SkillCategoriesEnum.Mathematics,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "logics",
@@ -87,7 +85,7 @@ export const logics: SkillInterface = {
 
 export const vectors: SkillInterface = {
   name: "Vectors",
-  category: SkillCategories.Mathematics,
+  category: SkillCategoriesEnum.Mathematics,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "vectors",
@@ -96,7 +94,7 @@ export const vectors: SkillInterface = {
 
 export const mechanics: SkillInterface = {
   name: "Mechanics",
-  category: SkillCategories.Mathematics,
+  category: SkillCategoriesEnum.Mathematics,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "mechanics",

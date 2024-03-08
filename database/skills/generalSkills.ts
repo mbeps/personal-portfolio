@@ -1,11 +1,9 @@
-import SkillInterface, {
-  SkillCategories,
-  SkillTypes,
-} from "@/interfaces/skills/SkillInterface";
+import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
+import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
 
 export const continuousIntegration: SkillInterface = {
   name: "Continuous Integration",
-  category: SkillCategories.DevOps,
+  category: SkillCategoriesEnum.DevOps,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "continuous-integration",
@@ -13,7 +11,7 @@ export const continuousIntegration: SkillInterface = {
 
 export const continuousDelivery: SkillInterface = {
   name: "Continuous Delivery",
-  category: SkillCategories.DevOps,
+  category: SkillCategoriesEnum.DevOps,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "continuous-delivery",
@@ -21,7 +19,7 @@ export const continuousDelivery: SkillInterface = {
 
 export const continuousDeployment: SkillInterface = {
   name: "Continuous Deployment",
-  category: SkillCategories.DevOps,
+  category: SkillCategoriesEnum.DevOps,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "continuous-deployment",
@@ -29,7 +27,7 @@ export const continuousDeployment: SkillInterface = {
 
 export const devOps: SkillInterface = {
   name: "DevOps",
-  category: SkillCategories.DevOps,
+  category: SkillCategoriesEnum.DevOps,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "devops",
@@ -37,7 +35,7 @@ export const devOps: SkillInterface = {
 
 export const linting: SkillInterface = {
   name: "Linting",
-  category: SkillCategories.CodeQuality,
+  category: SkillCategoriesEnum.CodeQuality,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "linting",
@@ -45,7 +43,7 @@ export const linting: SkillInterface = {
 
 export const oop: SkillInterface = {
   name: "Object Oriented Programming",
-  category: SkillCategories.ProgrammingParadigms,
+  category: SkillCategoriesEnum.ProgrammingParadigms,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "object-oriented-programming",
@@ -53,7 +51,7 @@ export const oop: SkillInterface = {
 
 export const functionalProgramming: SkillInterface = {
   name: "Functional Programming",
-  category: SkillCategories.ProgrammingParadigms,
+  category: SkillCategoriesEnum.ProgrammingParadigms,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "functional-programming",
@@ -61,7 +59,7 @@ export const functionalProgramming: SkillInterface = {
 
 export const algorithms: SkillInterface = {
   name: "Algorithms",
-  category: SkillCategories.CoreComputerScience,
+  category: SkillCategoriesEnum.CoreComputerScience,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "algorithm",
@@ -69,7 +67,7 @@ export const algorithms: SkillInterface = {
 
 export const dataStructures: SkillInterface = {
   name: "Data Structures",
-  category: SkillCategories.CoreComputerScience,
+  category: SkillCategoriesEnum.CoreComputerScience,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "data-structures",
@@ -77,7 +75,7 @@ export const dataStructures: SkillInterface = {
 
 export const androidDevelopment: SkillInterface = {
   name: "Android Development",
-  category: SkillCategories.PlatformDevelopment,
+  category: SkillCategoriesEnum.PlatformDevelopment,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "android-development",
@@ -85,7 +83,7 @@ export const androidDevelopment: SkillInterface = {
 
 export const iosDevelopment: SkillInterface = {
   name: "iOS Development",
-  category: SkillCategories.PlatformDevelopment,
+  category: SkillCategoriesEnum.PlatformDevelopment,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "ios-development",
@@ -93,7 +91,7 @@ export const iosDevelopment: SkillInterface = {
 
 export const windowsDevelopment: SkillInterface = {
   name: "Windows Development",
-  category: SkillCategories.PlatformDevelopment,
+  category: SkillCategoriesEnum.PlatformDevelopment,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "windows-development",
@@ -101,7 +99,7 @@ export const windowsDevelopment: SkillInterface = {
 
 export const macDevelopment: SkillInterface = {
   name: "Mac Development",
-  category: SkillCategories.PlatformDevelopment,
+  category: SkillCategoriesEnum.PlatformDevelopment,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "macos-development",
@@ -109,7 +107,7 @@ export const macDevelopment: SkillInterface = {
 
 export const linuxDevelopment: SkillInterface = {
   name: "Linux Development",
-  category: SkillCategories.PlatformDevelopment,
+  category: SkillCategoriesEnum.PlatformDevelopment,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "linux-development",
@@ -117,7 +115,7 @@ export const linuxDevelopment: SkillInterface = {
 
 export const machineLearning: SkillInterface = {
   name: "Machine Learning",
-  category: SkillCategories.ArtificialIntelligence,
+  category: SkillCategoriesEnum.ArtificialIntelligence,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "machine-learning",
@@ -125,7 +123,7 @@ export const machineLearning: SkillInterface = {
 
 export const deepLearning: SkillInterface = {
   name: "Deep Learning",
-  category: SkillCategories.ArtificialIntelligence,
+  category: SkillCategoriesEnum.ArtificialIntelligence,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "deep-learning",
@@ -133,7 +131,7 @@ export const deepLearning: SkillInterface = {
 
 export const artificialIntelligence: SkillInterface = {
   name: "Artificial Intelligence",
-  category: SkillCategories.ArtificialIntelligence,
+  category: SkillCategoriesEnum.ArtificialIntelligence,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "artificial-intelligence",
@@ -141,7 +139,7 @@ export const artificialIntelligence: SkillInterface = {
 
 export const dataScience: SkillInterface = {
   name: "Data Science",
-  category: SkillCategories.DataScience,
+  category: SkillCategoriesEnum.DataScience,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "data-science",
@@ -149,7 +147,7 @@ export const dataScience: SkillInterface = {
 
 export const hyperparameters: SkillInterface = {
   name: "Hyperparameters",
-  category: SkillCategories.ArtificialIntelligence,
+  category: SkillCategoriesEnum.ArtificialIntelligence,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "hyperparameters",
@@ -159,13 +157,13 @@ export const boosting: SkillInterface = {
   name: "Boosting",
   isMainSkill: false,
   skillType: SkillTypes.General,
-  category: SkillCategories.ArtificialIntelligence,
+  category: SkillCategoriesEnum.ArtificialIntelligence,
   slug: "boosting",
 };
 
 export const dataVisualisation: SkillInterface = {
   name: "Data Visualisation",
-  category: SkillCategories.DataScience,
+  category: SkillCategoriesEnum.DataScience,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "data-visualisation",
@@ -173,7 +171,7 @@ export const dataVisualisation: SkillInterface = {
 
 export const neuralNetworks: SkillInterface = {
   name: "Neural Networks",
-  category: SkillCategories.ArtificialIntelligence,
+  category: SkillCategoriesEnum.ArtificialIntelligence,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "neural-networks",
@@ -181,7 +179,7 @@ export const neuralNetworks: SkillInterface = {
 
 export const apis: SkillInterface = {
   name: "APIs",
-  category: SkillCategories.APIs,
+  category: SkillCategoriesEnum.APIs,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "apis",
@@ -189,7 +187,7 @@ export const apis: SkillInterface = {
 
 export const databases: SkillInterface = {
   name: "Databases",
-  category: SkillCategories.Databases,
+  category: SkillCategoriesEnum.Databases,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "databases",
@@ -197,7 +195,7 @@ export const databases: SkillInterface = {
 
 export const webSockets: SkillInterface = {
   name: "Web Sockets",
-  category: SkillCategories.WebSockets,
+  category: SkillCategoriesEnum.WebSockets,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "web-sockets",
@@ -205,7 +203,7 @@ export const webSockets: SkillInterface = {
 
 export const sql: SkillInterface = {
   name: "Relational Databases (SQL)",
-  category: SkillCategories.Databases,
+  category: SkillCategoriesEnum.Databases,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "sql",
@@ -213,7 +211,7 @@ export const sql: SkillInterface = {
 
 export const noSql: SkillInterface = {
   name: "Non Relational Databases (NoSQL)",
-  category: SkillCategories.Databases,
+  category: SkillCategoriesEnum.Databases,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "no-sql",
@@ -221,7 +219,7 @@ export const noSql: SkillInterface = {
 
 export const orm: SkillInterface = {
   name: "Object Relational Mapping",
-  category: SkillCategories.Databases,
+  category: SkillCategoriesEnum.Databases,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "orm",
@@ -229,7 +227,7 @@ export const orm: SkillInterface = {
 
 export const testing: SkillInterface = {
   name: "Testing",
-  category: SkillCategories.Testing,
+  category: SkillCategoriesEnum.Testing,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "testing",
@@ -237,7 +235,7 @@ export const testing: SkillInterface = {
 
 export const containerization: SkillInterface = {
   name: "Containerization",
-  category: SkillCategories.DevOps,
+  category: SkillCategoriesEnum.DevOps,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "containerization",
@@ -245,7 +243,7 @@ export const containerization: SkillInterface = {
 
 export const clusterisation: SkillInterface = {
   name: "Clusterisation",
-  category: SkillCategories.DevOps,
+  category: SkillCategoriesEnum.DevOps,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "clusterisation",
@@ -253,7 +251,7 @@ export const clusterisation: SkillInterface = {
 
 export const infrastructureAsCode: SkillInterface = {
   name: "Infrastructure as Code",
-  category: SkillCategories.DevOps,
+  category: SkillCategoriesEnum.DevOps,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "infrastructure-as-code",
@@ -261,7 +259,7 @@ export const infrastructureAsCode: SkillInterface = {
 
 export const automation: SkillInterface = {
   name: "Automation",
-  category: SkillCategories.Automation,
+  category: SkillCategoriesEnum.Automation,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "automation",
@@ -269,7 +267,7 @@ export const automation: SkillInterface = {
 
 export const databaseManagementSystems: SkillInterface = {
   name: "Database Management Systems",
-  category: SkillCategories.Databases,
+  category: SkillCategoriesEnum.Databases,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "database-management-systems",
@@ -277,7 +275,7 @@ export const databaseManagementSystems: SkillInterface = {
 
 export const indexing: SkillInterface = {
   name: "Indexing",
-  category: SkillCategories.Databases,
+  category: SkillCategoriesEnum.Databases,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "database-indexing",
@@ -285,7 +283,7 @@ export const indexing: SkillInterface = {
 
 export const cloudComputing: SkillInterface = {
   name: "Cloud Computing",
-  category: SkillCategories.CloudComputing,
+  category: SkillCategoriesEnum.CloudComputing,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "cloud-computing",
@@ -293,7 +291,7 @@ export const cloudComputing: SkillInterface = {
 
 export const designPatterns: SkillInterface = {
   name: "Design Patterns",
-  category: SkillCategories.CodeQuality,
+  category: SkillCategoriesEnum.CodeQuality,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "design-patterns",
@@ -301,7 +299,7 @@ export const designPatterns: SkillInterface = {
 
 export const userAuthentication: SkillInterface = {
   name: "User Authentication",
-  category: SkillCategories.BackEndWebDevelopment,
+  category: SkillCategoriesEnum.BackEndWebDevelopment,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "user-authentication",
@@ -309,7 +307,7 @@ export const userAuthentication: SkillInterface = {
 
 export const webDevelopment: SkillInterface = {
   name: "Web Development",
-  category: SkillCategories.PlatformDevelopment,
+  category: SkillCategoriesEnum.PlatformDevelopment,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "web-development",
@@ -317,7 +315,7 @@ export const webDevelopment: SkillInterface = {
 
 export const sdks: SkillInterface = {
   name: "SDK",
-  category: SkillCategories.SDKs,
+  category: SkillCategoriesEnum.SDKs,
   isMainSkill: true,
   skillType: SkillTypes.General,
   slug: "sdks",
@@ -325,7 +323,7 @@ export const sdks: SkillInterface = {
 
 export const userCentricDesign: SkillInterface = {
   name: "User Centric Design",
-  category: SkillCategories.FrontEndWebDevelopment,
+  category: SkillCategoriesEnum.FrontEndWebDevelopment,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "user-centric-design",
@@ -333,7 +331,7 @@ export const userCentricDesign: SkillInterface = {
 
 export const gameDevelopment: SkillInterface = {
   name: "Game Development",
-  category: SkillCategories.GameDevelopment,
+  category: SkillCategoriesEnum.GameDevelopment,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "game-development",
@@ -341,7 +339,7 @@ export const gameDevelopment: SkillInterface = {
 
 export const mathematics: SkillInterface = {
   name: "Mathematics",
-  category: SkillCategories.Mathematics,
+  category: SkillCategoriesEnum.Mathematics,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "mathematics",
@@ -349,7 +347,7 @@ export const mathematics: SkillInterface = {
 
 export const versionControl: SkillInterface = {
   name: "Version Control",
-  category: SkillCategories.VersionControl,
+  category: SkillCategoriesEnum.VersionControl,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "version-control",
@@ -357,7 +355,7 @@ export const versionControl: SkillInterface = {
 
 export const stateManagement: SkillInterface = {
   name: "State Management",
-  category: SkillCategories.FrontEndWebDevelopment,
+  category: SkillCategoriesEnum.FrontEndWebDevelopment,
   isMainSkill: false,
   skillType: SkillTypes.General,
   slug: "state-management",

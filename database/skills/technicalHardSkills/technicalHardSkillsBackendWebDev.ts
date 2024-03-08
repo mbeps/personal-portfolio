@@ -1,7 +1,5 @@
-import SkillInterface, {
-  SkillCategories,
-  SkillTypes,
-} from "@/interfaces/skills/SkillInterface";
+import { SkillCategoriesEnum } from "@/enums/SkillCategoriesEnum";
+import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
 import {
   apis,
   cloudComputing,
@@ -17,7 +15,7 @@ import { java, javascript, python, typescript } from "../languages";
 
 export const firebase: SkillInterface = {
   name: "Firebase",
-  category: SkillCategories.BackEndWebDevelopment,
+  category: SkillCategoriesEnum.BackEndWebDevelopment,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "firebase",
@@ -35,7 +33,7 @@ export const firebase: SkillInterface = {
 
 export const supabase: SkillInterface = {
   name: "Supabase",
-  category: SkillCategories.BackEndWebDevelopment,
+  category: SkillCategoriesEnum.BackEndWebDevelopment,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "supabase",
@@ -53,7 +51,7 @@ export const supabase: SkillInterface = {
 
 export const pocketbase: SkillInterface = {
   name: "PocketBase",
-  category: SkillCategories.BackEndWebDevelopment,
+  category: SkillCategoriesEnum.BackEndWebDevelopment,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "pocketbase",
@@ -71,7 +69,7 @@ export const pocketbase: SkillInterface = {
 
 export const auth0: SkillInterface = {
   name: "Auth0",
-  category: SkillCategories.BackEndWebDevelopment,
+  category: SkillCategoriesEnum.BackEndWebDevelopment,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "auth0",
@@ -80,7 +78,7 @@ export const auth0: SkillInterface = {
 
 export const clerkAuth: SkillInterface = {
   name: "Clerk Auth",
-  category: SkillCategories.BackEndWebDevelopment,
+  category: SkillCategoriesEnum.BackEndWebDevelopment,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "clerkAuth",
@@ -89,7 +87,7 @@ export const clerkAuth: SkillInterface = {
 
 export const nextauth: SkillInterface = {
   name: "NextAuth",
-  category: SkillCategories.BackEndWebDevelopment,
+  category: SkillCategoriesEnum.BackEndWebDevelopment,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "next-auth",
@@ -98,7 +96,7 @@ export const nextauth: SkillInterface = {
 
 export const stripe: SkillInterface = {
   name: "Stripe",
-  category: SkillCategories.BackEndWebDevelopment,
+  category: SkillCategoriesEnum.BackEndWebDevelopment,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "stripe",
@@ -107,7 +105,7 @@ export const stripe: SkillInterface = {
 
 export const express: SkillInterface = {
   name: "Express",
-  category: SkillCategories.BackEndWebDevelopment,
+  category: SkillCategoriesEnum.BackEndWebDevelopment,
   skillType: SkillTypes.Hard,
   slug: "express-js",
   relatedSkills: [javascript, typescript, webDevelopment, apis],
@@ -115,7 +113,7 @@ export const express: SkillInterface = {
 
 export const flask: SkillInterface = {
   name: "Flask",
-  category: SkillCategories.BackEndWebDevelopment,
+  category: SkillCategoriesEnum.BackEndWebDevelopment,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "flask",
@@ -124,7 +122,7 @@ export const flask: SkillInterface = {
 
 export const django: SkillInterface = {
   name: "Django",
-  category: SkillCategories.BackEndWebDevelopment,
+  category: SkillCategoriesEnum.BackEndWebDevelopment,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "django",
@@ -133,7 +131,7 @@ export const django: SkillInterface = {
 
 export const spring: SkillInterface = {
   name: "Spring",
-  category: SkillCategories.BackEndWebDevelopment,
+  category: SkillCategoriesEnum.BackEndWebDevelopment,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "spring",
@@ -142,7 +140,7 @@ export const spring: SkillInterface = {
 
 export const springBoot: SkillInterface = {
   name: "Spring Boot",
-  category: SkillCategories.BackEndWebDevelopment,
+  category: SkillCategoriesEnum.BackEndWebDevelopment,
   isMainSkill: true,
   skillType: SkillTypes.Hard,
   slug: "springboot",
@@ -151,7 +149,7 @@ export const springBoot: SkillInterface = {
 
 export const cloudinary: SkillInterface = {
   name: "Cloudinary",
-  category: SkillCategories.BackEndWebDevelopment,
+  category: SkillCategoriesEnum.BackEndWebDevelopment,
   skillType: SkillTypes.Hard,
   slug: "cloudinary",
   relatedSkills: [webDevelopment],
@@ -159,7 +157,7 @@ export const cloudinary: SkillInterface = {
 
 export const edgestore: SkillInterface = {
   name: "Edge Store",
-  category: SkillCategories.BackEndWebDevelopment,
+  category: SkillCategoriesEnum.BackEndWebDevelopment,
   skillType: SkillTypes.Hard,
   slug: "edge-store",
   relatedSkills: [webDevelopment],
@@ -167,7 +165,7 @@ export const edgestore: SkillInterface = {
 
 export const jwt: SkillInterface = {
   name: "JWT",
-  category: SkillCategories.BackEndWebDevelopment,
+  category: SkillCategoriesEnum.BackEndWebDevelopment,
   skillType: SkillTypes.Hard,
   slug: "jtw",
   relatedSkills: [userAuthentication],
@@ -175,7 +173,7 @@ export const jwt: SkillInterface = {
 
 export const gunicorn: SkillInterface = {
   name: "Gunicorn",
-  category: SkillCategories.BackEndWebDevelopment,
+  category: SkillCategoriesEnum.BackEndWebDevelopment,
   skillType: SkillTypes.Hard,
   slug: "gunicon",
   relatedSkills: [python, webDevelopment],
@@ -183,7 +181,7 @@ export const gunicorn: SkillInterface = {
 
 export const jinja: SkillInterface = {
   name: "Jinja",
-  category: SkillCategories.CodeQuality,
+  category: SkillCategoriesEnum.CodeQuality,
   skillType: SkillTypes.Hard,
   slug: "jinja",
   relatedSkills: [python, webDevelopment],
