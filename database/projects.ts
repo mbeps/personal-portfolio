@@ -1,7 +1,5 @@
 import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
-import ProjectInterface, {
-  ProjectCategories,
-} from "@/interfaces/material/ProjectInterface";
+import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import {
   algorithms,
   artificialIntelligence,
@@ -134,6 +132,7 @@ import {
 } from "./skills/technicalHardSkills/technicalHardSkillsVCS";
 import updateProjectImages from "@/actions/file-system/updateProjectImages";
 import { SkillTypesEnum } from "@/enums/SkillTypesEnum";
+import { ProjectCategoriesEnum } from "@/enums/ProjectCategoriesEnum";
 
 /**
  * Array of web development projects.
@@ -183,7 +182,7 @@ const webdevProjects: ProjectInterface[] = [
       designPatterns,
       algorithms,
     ],
-    category: ProjectCategories.FullStackWebDevelopment,
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
   },
   {
     name: `Ringmaster Messaging`,
@@ -228,7 +227,7 @@ const webdevProjects: ProjectInterface[] = [
       designPatterns,
       algorithms,
     ],
-    category: ProjectCategories.FullStackWebDevelopment,
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
   },
   {
     name: `Magician AI`,
@@ -274,7 +273,7 @@ const webdevProjects: ProjectInterface[] = [
       designPatterns,
       algorithms,
     ],
-    category: ProjectCategories.FullStackWebDevelopment,
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
   },
   {
     name: `Drumroll Music`,
@@ -312,7 +311,7 @@ const webdevProjects: ProjectInterface[] = [
       designPatterns,
       algorithms,
     ],
-    category: ProjectCategories.FullStackWebDevelopment,
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
   },
   {
     name: "Joker Notes",
@@ -350,7 +349,7 @@ const webdevProjects: ProjectInterface[] = [
       designPatterns,
       algorithms,
     ],
-    category: ProjectCategories.FullStackWebDevelopment,
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
     deploymentURL: "https://joker-notes.vercel.app/",
   },
 ];
@@ -367,7 +366,7 @@ const extraWebDevProjects: ProjectInterface[] = [
     description: `An intuitive platform for dynamic quiz generation. 
       Users can test their knowledge across various topics, choosing between multiple-choice questions or fill-in-the-gap style challenges. 
       With immediate feedback and score tracking, users enhance their understanding.`,
-    category: ProjectCategories.FullStackWebDevelopment,
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
     skills: [
       typescript,
       javascript,
@@ -432,7 +431,7 @@ const extraWebDevProjects: ProjectInterface[] = [
       adaptability,
       oop,
     ],
-    category: ProjectCategories.FullStackWebDevelopment,
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
     archived: true,
   },
   {
@@ -476,7 +475,7 @@ const extraWebDevProjects: ProjectInterface[] = [
       adaptability,
       teamwork,
     ],
-    category: ProjectCategories.FullStackWebDevelopment,
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
     archived: true,
   },
   {
@@ -515,7 +514,7 @@ const extraWebDevProjects: ProjectInterface[] = [
       designPatterns,
       algorithms,
     ],
-    category: ProjectCategories.FullStackWebDevelopment,
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
     archived: true,
   },
 ];
@@ -553,7 +552,7 @@ const backendWebDevProjects: ProjectInterface[] = [
       designPatterns,
       algorithms,
     ],
-    category: ProjectCategories.BackEndWebDevelopment,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
   },
   {
     name: `Flask JWT Authentication`,
@@ -579,7 +578,7 @@ const backendWebDevProjects: ProjectInterface[] = [
       adaptability,
       oop,
     ],
-    category: ProjectCategories.BackEndWebDevelopment,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
     archived: true,
   },
   {
@@ -606,7 +605,7 @@ const backendWebDevProjects: ProjectInterface[] = [
       adaptability,
       oop,
     ],
-    category: ProjectCategories.BackEndWebDevelopment,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
     archived: true,
   },
   {
@@ -633,7 +632,7 @@ const backendWebDevProjects: ProjectInterface[] = [
       adaptability,
       oop,
     ],
-    category: ProjectCategories.BackEndWebDevelopment,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
     archived: true,
   },
   {
@@ -661,7 +660,7 @@ const backendWebDevProjects: ProjectInterface[] = [
       adaptability,
       oop,
     ],
-    category: ProjectCategories.BackEndWebDevelopment,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
     archived: true,
   },
 ];
@@ -698,7 +697,7 @@ const machineLearningProjects: ProjectInterface[] = [
       oop,
       algorithms,
     ],
-    category: ProjectCategories.MachineLearning,
+    category: ProjectCategoriesEnum.MachineLearning,
   },
   {
     name: "House Price Prediction",
@@ -725,7 +724,7 @@ const machineLearningProjects: ProjectInterface[] = [
       oop,
       algorithms,
     ],
-    category: ProjectCategories.MachineLearning,
+    category: ProjectCategoriesEnum.MachineLearning,
   },
   {
     name: `Assignment 1`,
@@ -752,7 +751,7 @@ const machineLearningProjects: ProjectInterface[] = [
       oop,
       algorithms,
     ],
-    category: ProjectCategories.MachineLearning,
+    category: ProjectCategoriesEnum.MachineLearning,
   },
   {
     name: `Assignment 2`,
@@ -780,7 +779,7 @@ const machineLearningProjects: ProjectInterface[] = [
       oop,
       algorithms,
     ],
-    category: ProjectCategories.MachineLearning,
+    category: ProjectCategoriesEnum.MachineLearning,
   },
   {
     name: `Assignment 3`,
@@ -808,7 +807,7 @@ const machineLearningProjects: ProjectInterface[] = [
       oop,
       algorithms,
     ],
-    category: ProjectCategories.MachineLearning,
+    category: ProjectCategoriesEnum.MachineLearning,
   },
   {
     name: `Lab Questions`,
@@ -836,7 +835,7 @@ const machineLearningProjects: ProjectInterface[] = [
       oop,
       algorithms,
     ],
-    category: ProjectCategories.MachineLearning,
+    category: ProjectCategoriesEnum.MachineLearning,
   },
   {
     name: "Computational Finance Assignment",
@@ -865,7 +864,7 @@ const machineLearningProjects: ProjectInterface[] = [
       probability,
       mechanics,
     ],
-    category: ProjectCategories.MachineLearning,
+    category: ProjectCategoriesEnum.MachineLearning,
   },
   {
     name: "Machine Learning Theory Practice",
@@ -874,7 +873,7 @@ const machineLearningProjects: ProjectInterface[] = [
       A collection of machine learning theory questions and answers.
       This is used to practice for exams and tests.
       `,
-    category: ProjectCategories.MachineLearning,
+    category: ProjectCategoriesEnum.MachineLearning,
     repositoryURL: `https://github.com/mbeps/Machine-Learning-Theory-Practice`,
     skills: [
       machineLearning,
@@ -925,7 +924,7 @@ const gameDevProjects: ProjectInterface[] = [
       teamwork,
       black,
     ],
-    category: ProjectCategories.GameDevelopment,
+    category: ProjectCategoriesEnum.GameDevelopment,
   },
   {
     name: "Surface Fight",
@@ -935,7 +934,7 @@ const gameDevProjects: ProjectInterface[] = [
       Every time he kills all the skeletons more of them will come at once.
       This was a simple game made back in secondary school. 
     `,
-    category: ProjectCategories.GameDevelopment,
+    category: ProjectCategoriesEnum.GameDevelopment,
     skills: [
       gameMakerLanguage,
       gameMakerStudio,
@@ -957,7 +956,7 @@ const gameDevProjects: ProjectInterface[] = [
       This is also a multiplayer game.
       This was a simple game made back in secondary school. 
     `,
-    category: ProjectCategories.GameDevelopment,
+    category: ProjectCategoriesEnum.GameDevelopment,
     skills: [
       gameMakerLanguage,
       gameMakerStudio,
@@ -979,7 +978,7 @@ const gameDevProjects: ProjectInterface[] = [
       This is also a multiplayer game.
       This was a simple game made back in secondary school. 
     `,
-    category: ProjectCategories.GameDevelopment,
+    category: ProjectCategoriesEnum.GameDevelopment,
     skills: [
       gameMakerLanguage,
       gameMakerStudio,
@@ -1000,7 +999,7 @@ const gameDevProjects: ProjectInterface[] = [
       and the goal is to destroy them all by repeatedly bouncing a ball off a paddle into them.
       This was a simple game made back in secondary school. 
     `,
-    category: ProjectCategories.GameDevelopment,
+    category: ProjectCategoriesEnum.GameDevelopment,
     skills: [
       gameMakerLanguage,
       gameMakerStudio,
@@ -1021,7 +1020,7 @@ const gameDevProjects: ProjectInterface[] = [
       as many times as possible within a given time limit.
       This was a simple game made back in secondary school. 
     `,
-    category: ProjectCategories.GameDevelopment,
+    category: ProjectCategoriesEnum.GameDevelopment,
     skills: [
       gameMakerLanguage,
       gameMakerStudio,
@@ -1042,7 +1041,7 @@ const gameDevProjects: ProjectInterface[] = [
       by making use of the gravity switch and avoiding the obstacles.
       This was a simple game made back in secondary school. 
     `,
-    category: ProjectCategories.GameDevelopment,
+    category: ProjectCategoriesEnum.GameDevelopment,
     skills: [
       gameMakerLanguage,
       gameMakerStudio,
@@ -1062,7 +1061,7 @@ const gameDevProjects: ProjectInterface[] = [
       This is a game where the aim is to shoot the enemies and avoid their bullets.
       This was a simple game made back in secondary school. 
     `,
-    category: ProjectCategories.GameDevelopment,
+    category: ProjectCategoriesEnum.GameDevelopment,
     skills: [
       gameMakerLanguage,
       gameMakerStudio,
@@ -1082,7 +1081,7 @@ const gameDevProjects: ProjectInterface[] = [
       A very simple 3D game where the aim is to reach the end of the level through the maze.
       This was a simple game made back in secondary school. 
     `,
-    category: ProjectCategories.GameDevelopment,
+    category: ProjectCategoriesEnum.GameDevelopment,
     skills: [
       gameMakerLanguage,
       gameMakerStudio,
@@ -1103,7 +1102,7 @@ const gameDevProjects: ProjectInterface[] = [
       This is very similar to the popular game Fruit Ninja.
       This was a simple game made back in secondary school. 
     `,
-    category: ProjectCategories.GameDevelopment,
+    category: ProjectCategoriesEnum.GameDevelopment,
     skills: [
       gameMakerLanguage,
       gameMakerStudio,
@@ -1124,7 +1123,7 @@ const gameDevProjects: ProjectInterface[] = [
       This is very similar to the popular game Angry Birds.
       This was a simple game made back in secondary school. 
     `,
-    category: ProjectCategories.GameDevelopment,
+    category: ProjectCategoriesEnum.GameDevelopment,
     skills: [
       gameMakerLanguage,
       gameMakerStudio,
@@ -1145,7 +1144,7 @@ const gameDevProjects: ProjectInterface[] = [
       This is very similar to the popular game Angry Birds.
       This was a simple game made back in secondary school. 
     `,
-    category: ProjectCategories.GameDevelopment,
+    category: ProjectCategoriesEnum.GameDevelopment,
     skills: [
       gameMakerLanguage,
       gameMakerStudio,
@@ -1174,7 +1173,7 @@ const otherProjects: ProjectInterface[] = [
       Each algorithms is explained. 
       All the algorithms are also compared to each other. 
     `,
-    category: ProjectCategories.Other,
+    category: ProjectCategoriesEnum.Other,
     skills: [
       python,
       matplotlib,
@@ -1215,7 +1214,7 @@ const otherProjects: ProjectInterface[] = [
       adaptability,
     ],
     repositoryURL: `https://github.com/mbeps/AutomatedSetup`,
-    category: ProjectCategories.Other,
+    category: ProjectCategoriesEnum.Other,
   },
   {
     name: `Leetcode Solutions`,
@@ -1239,7 +1238,7 @@ const otherProjects: ProjectInterface[] = [
       creativity,
       adaptability,
     ],
-    category: ProjectCategories.Other,
+    category: ProjectCategoriesEnum.Other,
   },
 ];
 
@@ -1272,7 +1271,7 @@ const javaAssignments: ProjectInterface[] = [
       creativity,
       adaptability,
     ],
-    category: ProjectCategories.JavaAssignments,
+    category: ProjectCategoriesEnum.JavaAssignments,
   },
   {
     name: `Botanic-Garden-Planner`,
@@ -1292,7 +1291,7 @@ const javaAssignments: ProjectInterface[] = [
       creativity,
       adaptability,
     ],
-    category: ProjectCategories.JavaAssignments,
+    category: ProjectCategoriesEnum.JavaAssignments,
     archived: true,
   },
   {
@@ -1301,7 +1300,7 @@ const javaAssignments: ProjectInterface[] = [
     description: `Simple app to track Covid cases. 
       This was in first year to learn about Java and object oriented programming.`,
     repositoryURL: `https://github.com/mbeps/Track_and_Trace`,
-    category: ProjectCategories.JavaAssignments,
+    category: ProjectCategoriesEnum.JavaAssignments,
     skills: [
       java,
       junit,
@@ -1320,7 +1319,7 @@ const javaAssignments: ProjectInterface[] = [
     slug: "hollomon-assignment",
     description: `This was in first year to learn about Java and object oriented programming.`,
     repositoryURL: `https://github.com/mbeps/Hollomon`,
-    category: ProjectCategories.JavaAssignments,
+    category: ProjectCategoriesEnum.JavaAssignments,
     skills: [
       java,
       junit,
@@ -1350,7 +1349,7 @@ const javaAssignments: ProjectInterface[] = [
       creativity,
       adaptability,
     ],
-    category: ProjectCategories.JavaAssignments,
+    category: ProjectCategoriesEnum.JavaAssignments,
     archived: true,
   },
 ];
