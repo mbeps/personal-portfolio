@@ -3,6 +3,7 @@ enum MaterialSlugEnum {
   CICD = "cicd-foundations",
   DevOps = "devops-foundations",
   Docker = "docker-and-containers",
+  Frontend = "front-end",
   JavaScriptVsTypeScript = "javascript-vs-typescript",
   Kubernetes = "kubernetes",
   MachineLearningFoundations = "machine-learning-foundations",
