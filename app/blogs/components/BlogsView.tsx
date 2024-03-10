@@ -2,14 +2,26 @@
 
 import generateUrl from "@/actions/generateUrl";
 import filterMaterialByArchivedStatus, {
+  filterMaterialByArchivedStatusHashMap,
   filterMaterialByCategory,
+  filterMaterialByCategoryHashMap,
   filterMaterialBySkill,
   filterMaterialBySkillCategory,
+  filterMaterialBySkillCategoryHashMap,
+  filterMaterialBySkillHashMap,
 } from "@/actions/material/filterMaterials";
-import generateFilterOptionsByCategory from "@/actions/material/generateFilterOptionsByCategory";
-import generateFilterOptionsBySkillCategories from "@/actions/material/generateFilterOptionsBySkillCategories";
-import generateFilterOptionsBySkillType from "@/actions/material/generateFilterOptionsBySkillType";
-import groupMaterialsByCategory from "@/actions/material/groupMaterialsByCategory";
+import generateFilterOptionsByCategory, {
+  generateFilterOptionsByCategoryHashMap,
+} from "@/actions/material/generateFilterOptionsByCategory";
+import generateFilterOptionsBySkillCategories, {
+  generateFilterOptionsBySkillCategoriesHashMap,
+} from "@/actions/material/generateFilterOptionsBySkillCategories";
+import generateFilterOptionsBySkillType, {
+  generateFilterOptionsBySkillTypeHashMap,
+} from "@/actions/material/generateFilterOptionsBySkillType";
+import groupMaterialsByCategory, {
+  groupMaterialsByCategoryHashMap,
+} from "@/actions/material/groupMaterialsByCategory";
 import stringToSlug from "@/actions/stringToSlug";
 import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
 import FilterOverlay from "@/components/Filters/FilterPanel";
@@ -28,7 +40,7 @@ import { AiOutlineClear } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
 
 interface BlogListProps {
-  blogs: BlogInterface[];
+  blogs: { [key: string]: BlogInterface };
 }
 
 /**
@@ -90,35 +102,46 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
     threshold: 0.3,
   };
 
-  const fuse = new Fuse(blogs, searchOptions);
+  // // Inside your BlogsView component, before using Fuse.js
 
-  /**
-   * Searches the blogs using the search term.
-   * Only searches the title, subtitle, and category.
-   */
-  const searchedBlogs = searchTerm
-    ? fuse.search(searchTerm).map((result) => result.item)
-    : blogs;
+  // const blogArray: BlogInterface[] = Object.values(blogs);
+
+  // // Now, you can use blogArray with Fuse.js without the type error
+  // const fuse = new Fuse(blogArray, searchOptions);
+
+  // /**
+  //  * Searches the blogs using the search term.
+  //  * Only searches the title, subtitle, and category.
+  //  */
+  // const searchedBlogs = searchTerm
+  //   ? fuse.search(searchTerm).map((result) => result.item)
+  //   : blogArray;
 
   //^ Filter Options List
 
   const blogCategories: FilterOption[] =
-    generateFilterOptionsByCategory<BlogInterface>(blogs);
+    generateFilterOptionsByCategoryHashMap<BlogInterface>(blogs);
 
   const skillCategories: FilterOption[] =
-    generateFilterOptionsBySkillCategories<BlogInterface>(blogs);
+    generateFilterOptionsBySkillCategoriesHashMap<BlogInterface>(blogs);
 
   const hardSkills: FilterOption[] =
-    generateFilterOptionsBySkillType<BlogInterface>(blogs, SkillTypesEnum.Hard);
+    generateFilterOptionsBySkillTypeHashMap<BlogInterface>(
+      blogs,
+      SkillTypesEnum.Hard
+    );
 
   const generalSkills: FilterOption[] =
-    generateFilterOptionsBySkillType<BlogInterface>(
+    generateFilterOptionsBySkillTypeHashMap<BlogInterface>(
       blogs,
       SkillTypesEnum.General
     );
 
   const softSkills: FilterOption[] =
-    generateFilterOptionsBySkillType<BlogInterface>(blogs, SkillTypesEnum.Soft);
+    generateFilterOptionsBySkillTypeHashMap<BlogInterface>(
+      blogs,
+      SkillTypesEnum.Soft
+    );
 
   //^ Filtering Logic
   /**
@@ -143,11 +166,11 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
   };
 
   //^ Filtering Logic
-  let filteredBlogs = searchedBlogs;
+  let filteredBlogs = blogs;
 
   // Filter by blog category
   if (selectedBlogSection !== "all") {
-    filteredBlogs = filterMaterialByCategory<BlogInterface>(
+    filteredBlogs = filterMaterialByCategoryHashMap<BlogInterface>(
       stringToSlug(selectedBlogSection),
       filteredBlogs
     );
@@ -155,7 +178,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
 
   // Filter by skill category
   if (selectedSkillCategory !== "all") {
-    filteredBlogs = filterMaterialBySkillCategory<BlogInterface>(
+    filteredBlogs = filterMaterialBySkillCategoryHashMap<BlogInterface>(
       stringToSlug(selectedSkillCategory),
       filteredBlogs
     );
@@ -163,7 +186,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
 
   // Filter by hard skill
   if (selectedTechnicalSkill !== "all") {
-    filteredBlogs = filterMaterialBySkill<BlogInterface>(
+    filteredBlogs = filterMaterialBySkillHashMap<BlogInterface>(
       selectedTechnicalSkill,
       filteredBlogs,
       SkillTypesEnum.Hard
@@ -172,7 +195,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
 
   // Filter by general skill
   if (selectedGeneralSkill !== "all") {
-    filteredBlogs = filterMaterialBySkill<BlogInterface>(
+    filteredBlogs = filterMaterialBySkillHashMap<BlogInterface>(
       selectedGeneralSkill,
       filteredBlogs,
       SkillTypesEnum.General
@@ -181,7 +204,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
 
   // Filter by soft skill
   if (selectedSoftSkill !== "all") {
-    filteredBlogs = filterMaterialBySkill<BlogInterface>(
+    filteredBlogs = filterMaterialBySkillHashMap<BlogInterface>(
       selectedSoftSkill,
       filteredBlogs,
       SkillTypesEnum.Soft
@@ -189,12 +212,12 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
   }
 
   // Filter by archived status
-  filteredBlogs = filterMaterialByArchivedStatus<BlogInterface>(
+  filteredBlogs = filterMaterialByArchivedStatusHashMap<BlogInterface>(
     showArchived,
     filteredBlogs
   );
 
-  const groupedBlogs = groupMaterialsByCategory(filteredBlogs);
+  const groupedBlogs = groupMaterialsByCategoryHashMap(filteredBlogs);
 
   const areFiltersApplied =
     selectedBlogSection !== "all" ||
