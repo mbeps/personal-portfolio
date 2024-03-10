@@ -38,6 +38,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { AiOutlineClear } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
+import applySearchResultsToHashMap from "@/actions/material/applySearchResultsToHashMap";
 
 interface BlogListProps {
   blogs: { [key: string]: BlogInterface };
@@ -102,20 +103,24 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
     threshold: 0.3,
   };
 
-  // // Inside your BlogsView component, before using Fuse.js
+  // Inside your BlogsView component, before using Fuse.js
 
-  // const blogArray: BlogInterface[] = Object.values(blogs);
+  // Assuming blogs is your original hashmap of BlogInterface objects
+  const blogArray: BlogInterface[] = Object.values(blogs);
 
-  // // Now, you can use blogArray with Fuse.js without the type error
-  // const fuse = new Fuse(blogArray, searchOptions);
+  // Setting up Fuse.js with blogArray and searchOptions
+  const fuse = new Fuse(blogArray, searchOptions);
 
-  // /**
-  //  * Searches the blogs using the search term.
-  //  * Only searches the title, subtitle, and category.
-  //  */
-  // const searchedBlogs = searchTerm
-  //   ? fuse.search(searchTerm).map((result) => result.item)
-  //   : blogArray;
+  // Perform search with Fuse.js
+  const searchedBlogsArray = searchTerm
+    ? fuse.search(searchTerm).map((result) => result.item)
+    : blogArray;
+
+  // Apply the filtered search results back to the original hashmap structure
+  const filteredBlogsHashMap = applySearchResultsToHashMap(
+    searchedBlogsArray,
+    blogs
+  );
 
   //^ Filter Options List
 
@@ -166,7 +171,8 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
   };
 
   //^ Filtering Logic
-  let filteredBlogs = blogs;
+  // let filteredBlogs = searchedBlogs;
+  let filteredBlogs = filteredBlogsHashMap;
 
   // Filter by blog category
   if (selectedBlogSection !== "all") {
