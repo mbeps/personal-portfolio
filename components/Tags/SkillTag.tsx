@@ -28,9 +28,19 @@ const SkillTag: React.FC<TagProps> = ({ skill, hide }) => {
   const currentPath = usePathname();
 
   const skills: SkillInterface[] = allSkills;
-  const allBlogs: BlogInterface[] = blogs;
+  const allBlogs: {
+    [key: string]: BlogInterface;
+  } = blogs;
+  // TODO: Remove array translation once all the other material use hashmaps
+  const blogsArray: BlogInterface[] = Object.values(allBlogs);
+
   const projects: ProjectInterface[] = allProjects;
-  const allMaterial: MaterialInterface[] = [...projects, ...certificates, ...allBlogs];
+
+  const allMaterial: MaterialInterface[] = [
+    ...projects,
+    ...certificates,
+    ...blogsArray,
+  ];
 
   const hasMaterial = isSkillAssociatedWithMaterial(skill, allMaterial);
 

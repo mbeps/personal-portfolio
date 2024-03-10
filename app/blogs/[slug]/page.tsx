@@ -1,17 +1,19 @@
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
-import getContentBySlug from "@/actions/material/getContentBySlug";
+import getContentBySlug, {
+  getContentBySlugHashMap,
+} from "@/actions/material/getContentBySlug";
 import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
 import Reader from "@/components/Reader/Reader";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
+import developerName from "@/constants/developerName";
 import { BLOG } from "@/constants/pages";
 import blogs from "@/database/blogs";
-import BlogInterface from "@/interfaces/material/BlogInterface";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import BlogInterface from "@/interfaces/material/BlogInterface";
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
-import developerName from "@/constants/developerName";
 
 type BlogPageProps = {
   params: { slug: string };
@@ -33,7 +35,7 @@ export async function generateMetadata(
   const allBlogs = blogs;
 
   // Assume getBlogMetadataById function fetches metadata by slug
-  const blog = getContentBySlug<BlogInterface>(slug, allBlogs);
+  const blog = getContentBySlugHashMap<BlogInterface>(slug, allBlogs);
 
   return {
     title: `${developerName} - Blogs: ${blog?.name}`,
@@ -52,9 +54,9 @@ export const generateStaticParams = async () => {
   // get all blogs with metadata
   const allBlogs = blogs;
 
-  // Map through all blogs and return an array of objects with the slug for each blog
-  return allBlogs.map((blog) => ({
-    slug: blog.slug,
+  // Convert hashmap values to an array and map through all blogs
+  return Object.values(allBlogs).map((blog) => ({
+    params: { slug: blog.slug },
   }));
 };
 
@@ -66,7 +68,7 @@ export const generateStaticParams = async () => {
 const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
   const slug = params.slug;
   const basePath = BLOG.path;
-  const blogMetadata = getContentBySlug<BlogInterface>(slug, blogs);
+  const blogMetadata = getContentBySlugHashMap<BlogInterface>(slug, blogs);
   const blogContent = getMarkdownFromFileSystem(
     `public${basePath}/${slug}/blog.md`
   )?.content;
