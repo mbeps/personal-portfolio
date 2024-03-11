@@ -1,11 +1,11 @@
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 
-export default function findAllMaterialsAttributedToSkill(
+export default function countMaterialsAttributedToSkill(
   skillToCheck: SkillInterface,
   allMaterialsMap: { [key: string]: MaterialInterface }
-): { [key: string]: MaterialInterface } {
-  // Function remains unchanged, checks if a skill or related skill is present
+): number {
+  // Reuse the same logic for checking if a skill or its related skill is present in a material
   const isSkillOrRelatedSkillPresent = (
     skills: SkillInterface[],
     skillSlug: string
@@ -20,16 +20,16 @@ export default function findAllMaterialsAttributedToSkill(
     );
   };
 
-  // Filter materials by iterating over the hashmap, converting it to an array of materials first
-  const attributedMaterialsMap = Object.entries(allMaterialsMap).reduce(
+  // Instead of accumulating materials, count the number of materials that match the criteria
+  const count = Object.entries(allMaterialsMap).reduce(
     (acc, [key, material]) => {
       if (isSkillOrRelatedSkillPresent(material.skills, skillToCheck.slug)) {
-        acc[key] = material;
+        acc += 1; // Increment the counter for each material that matches the skill check
       }
       return acc;
     },
-    {} as { [key: string]: MaterialInterface }
-  );
+    0
+  ); // Initialize the accumulator as 0 for counting
 
-  return attributedMaterialsMap;
+  return count; // Return the count of materials attributed to the skill
 }
