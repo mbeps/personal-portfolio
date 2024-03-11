@@ -90,14 +90,16 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
   );
   const groupedSkills = groupSkills(groupedBy, languageSkills || []);
 
-  const projects: ProjectInterface[] = allProjects;
-  const certificates: CertificateInterface[] = certificatesWithoutNestedSkills;
-  const allBlogs: BlogInterface[] = blogs;
-  const allMaterial: MaterialInterface[] = [
+  const projects: { [key: string]: ProjectInterface } = allProjects;
+  const certificates: {
+    [key: string]: CertificateInterface;
+  } = certificatesWithoutNestedSkills;
+  const allBlogs: { [key: string]: BlogInterface } = blogs;
+  const allMaterial: { [key: string]: MaterialInterface } = {
     ...projects,
     ...certificates,
     ...allBlogs,
-  ];
+  };
 
   const hasMaterial = isSkillAssociatedWithMaterial(language, allMaterial);
 

@@ -39,7 +39,7 @@ const ProjectsSection = () => {
       <HeadingTwo title="Projects" />
 
       <div className="flex flex-col space-y-20 mt-14">
-        {updateProjectImages(allProjects)
+        {Object.values(updateProjectImages(allProjects))
           .filter((project) => allowedSlugs.includes(project.slug))
           .map((project, idx) => (
             <div key={idx}>

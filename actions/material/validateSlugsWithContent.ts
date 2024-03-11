@@ -2,7 +2,7 @@ import MaterialInterface from "@/interfaces/material/MaterialInterface";
 
 export default function validateSlugsWithContent<T extends MaterialInterface>(
   slugs: string[],
-  contentItems: T[],
+  contentItemsMap: { [key: string]: T }
 ): boolean {
-  return slugs.every((slug) => contentItems.some((item) => item.slug === slug));
+  return slugs.every((slug) => contentItemsMap.hasOwnProperty(slug));
 }
