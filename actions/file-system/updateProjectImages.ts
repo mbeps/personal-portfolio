@@ -9,6 +9,7 @@ import hasProjectCover from "../material/projects/hasProjectCover";
  * This only works on the server as it requires access to the file system.
  * Only server components can use this function.
  * @param projects (Project[]) - Array of project objects.
+ * @deprecated Cover location will be added directly to the project object in the database.
  */
 export default function updateProjectImagesHashMap(projectsMap: {
   [key: string]: ProjectInterface;

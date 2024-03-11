@@ -1,5 +1,10 @@
-import filterContentBySkill from "@/actions/material/filterContentBySkill";
-import groupMaterialsByMaterialType from "@/actions/material/groupMaterialsByMaterialType";
+import updateProjectImages from "@/actions/file-system/updateProjectImages";
+import filterContentBySkill, {
+  filterContentBySkillHashMap,
+} from "@/actions/material/filterContentBySkill";
+import groupMaterialsByMaterialType, {
+  groupMaterialsByMaterialTypeHashMap,
+} from "@/actions/material/groupMaterialsByMaterialType";
 import getSkillBySlug from "@/actions/skills/getSkillBySlug";
 import BlogsList from "@/components/MaterialLists/BlogsList";
 import CertificatesList from "@/components/MaterialLists/CertificatesList";
@@ -7,9 +12,10 @@ import ProjectsList from "@/components/MaterialLists/ProjectsList";
 import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/UI/PageDescription";
 import { Button } from "@/components/shadcn/ui/button";
+import developerName from "@/constants/developerName";
 import { BLOG, CERTIFICATES, PROJECTS } from "@/constants/pages";
 import blogs from "@/database/blogs";
-import certificatesWithoutNestedSkills from "@/database/certificates";
+import allCertificates from "@/database/certificates";
 import allProjects from "@/database/projects";
 import allSkills from "@/database/skills/skills";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
@@ -20,8 +26,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 import RelatedSkillsSection from "./components/RelatedSkillsSection";
-import updateProjectImages from "@/actions/file-system/updateProjectImages";
-import developerName from "@/constants/developerName";
 
 function extractSlugs(skills: SkillInterface[]): string[] {
   return skills.map((skill) => {
@@ -34,7 +38,7 @@ function extractSlugs(skills: SkillInterface[]): string[] {
 
 interface MaterialSectionInterface {
   name: "Projects" | "Certificates" | "Blogs";
-  materials: MaterialInterface[];
+  materials: { [key: string]: MaterialInterface };
   basePath: string;
   ListComponent: React.ComponentType<MaterialListProps>;
 }
@@ -83,7 +87,7 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
     },
     {
       name: "Certificates",
-      materials: certificatesWithoutNestedSkills,
+      materials: allCertificates,
       basePath: CERTIFICATES.path,
       ListComponent: CertificatesList,
     },
@@ -133,13 +137,13 @@ const MaterialSection: React.FC<MaterialSectionProps> = ({
   basePath,
   ListComponent,
 }) => {
-  const filteredMaterials = filterContentBySkill(materials, skill);
+  const filteredMaterials = filterContentBySkillHashMap(materials, skill);
 
-  if (!filteredMaterials || filteredMaterials.length === 0) {
+  if (!filteredMaterials || Object.keys(filteredMaterials).length === 0) {
     return null;
   }
 
-  const groupedMaterials = groupMaterialsByMaterialType(
+  const groupedMaterials = groupMaterialsByMaterialTypeHashMap(
     filteredMaterials,
     name
   );
