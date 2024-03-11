@@ -27,7 +27,7 @@ import {
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
 import blogs from "@/database/blogs";
-import allCertificates from "@/database/certificates";
+import certificatesWithoutNestedSkills from "@/database/certificates";
 import allProjects from "@/database/projects";
 import allSkills from "@/database/skills/skills";
 import FilterOption from "@/interfaces/filters/FilterOption";
@@ -91,7 +91,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
   const groupedSkills = groupSkills(groupedBy, languageSkills || []);
 
   const projects: ProjectInterface[] = allProjects;
-  const certificates: CertificateInterface[] = allCertificates;
+  const certificates: CertificateInterface[] = certificatesWithoutNestedSkills;
   const allBlogs: BlogInterface[] = blogs;
   const allMaterial: MaterialInterface[] = [
     ...projects,

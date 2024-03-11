@@ -18,6 +18,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import Tag from "./Tag";
+import CertificateInterface from "@/interfaces/material/CertificateInterface";
+import allCertificates from "@/database/certificates";
 
 interface TagProps {
   skill: SkillInterface;
@@ -32,7 +34,9 @@ const SkillTag: React.FC<TagProps> = ({ skill, hide }) => {
     [key: string]: BlogInterface;
   } = blogs;
   // TODO: Remove array translation once all the other material use hashmaps
+
   const blogsArray: BlogInterface[] = Object.values(allBlogs);
+  const certificates: CertificateInterface[] = Object.values(allCertificates);
 
   const projects: ProjectInterface[] = allProjects;
 

@@ -1,4 +1,4 @@
-import getContentBySlug from "@/actions/material/getContentBySlug";
+import { getContentBySlugHashMap } from "@/actions/material/getContentBySlug";
 import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
@@ -7,9 +7,12 @@ import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
-import allCertificates from "@/database/certificates";
-import CertificateInterface from "@/interfaces/material/CertificateInterface";
+import developerName from "@/constants/developerName";
+import allCertificates, {
+  certificatesWithoutNestedSkills,
+} from "@/database/certificates";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import CertificateInterface from "@/interfaces/material/CertificateInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,7 +20,6 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle } from "react-icons/bs";
 import { RxTriangleRight } from "react-icons/rx";
-import developerName from "@/constants/developerName";
 
 /**
  * Metadata object for the dynamic certificate page.
@@ -33,7 +35,7 @@ export async function generateMetadata(
   const slug = params.slug;
 
   // Assume getCertificateBySlug function fetches certificate by slug
-  const certificate = getContentBySlug<CertificateInterface>(
+  const certificate = getContentBySlugHashMap<CertificateInterface>(
     slug,
     allCertificates
   );
@@ -46,7 +48,9 @@ export async function generateMetadata(
 }
 
 export const generateStaticParams = async () => {
-  return allCertificates.map((certificate) => ({ slug: certificate.slug }));
+  return Object.values(allCertificates).map((certificate) => ({
+    params: { slug: certificate.slug },
+  }));
 };
 
 type CertificatesPageProps = {
@@ -71,7 +75,7 @@ type CertificatesPageProps = {
 const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
   const slug = params.slug;
 
-  const certificate = getContentBySlug<CertificateInterface>(
+  const certificate = getContentBySlugHashMap<CertificateInterface>(
     slug,
     allCertificates
   );

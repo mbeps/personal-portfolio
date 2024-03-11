@@ -64,7 +64,7 @@ import {
 } from "./skills/technicalHardSkills/technicalHardSkillsORMs";
 import { git } from "./skills/technicalHardSkills/technicalHardSkillsVCS";
 
-const blogsMap = {
+const blogsMap: { [key: string]: BlogInterface } = {
   [MaterialSlugEnum.Backend]: {
     slug: MaterialSlugEnum.Backend,
     name: "Exploring Backends: Custom vs Managed Solutions",

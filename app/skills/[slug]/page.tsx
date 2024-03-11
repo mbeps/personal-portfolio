@@ -9,7 +9,7 @@ import PageDescription from "@/components/UI/PageDescription";
 import { Button } from "@/components/shadcn/ui/button";
 import { BLOG, CERTIFICATES, PROJECTS } from "@/constants/pages";
 import blogs from "@/database/blogs";
-import allCertificates from "@/database/certificates";
+import certificatesWithoutNestedSkills from "@/database/certificates";
 import allProjects from "@/database/projects";
 import allSkills from "@/database/skills/skills";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
@@ -83,7 +83,7 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
     },
     {
       name: "Certificates",
-      materials: allCertificates,
+      materials: certificatesWithoutNestedSkills,
       basePath: CERTIFICATES.path,
       ListComponent: CertificatesList,
     },

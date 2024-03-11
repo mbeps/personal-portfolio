@@ -1,7 +1,7 @@
 import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/UI/PageDescription";
 import { CERTIFICATES } from "@/constants/pages";
-import allCertificates from "@/database/certificates";
+import certificatesWithoutNestedSkills from "@/database/certificates";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
 import { Metadata } from "next";
 import React from "react";
@@ -25,7 +25,9 @@ export const metadata: Metadata = {
  * The user can filter the certificates by category and issuer.
  */
 const CertificatesPage: React.FC = () => {
-  const certificates: CertificateInterface[] = [...allCertificates];
+  const certificates: CertificateInterface[] = [
+    ...certificatesWithoutNestedSkills,
+  ];
 
   return (
     <section id="projects" className="flex flex-col items-start md:items-end">
