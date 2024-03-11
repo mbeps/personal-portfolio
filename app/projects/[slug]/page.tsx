@@ -1,7 +1,9 @@
 import getImagesFromFileSystem from "@/actions/file-system/getImagesFromFileSystem";
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
 import getVideosFromFileSystem from "@/actions/file-system/getVideosFromFileSystem";
-import getContentBySlug from "@/actions/material/getContentBySlug";
+import getContentBySlug, {
+  getContentBySlugHashMap,
+} from "@/actions/material/getContentBySlug";
 import hasProjectCover from "@/actions/material/projects/hasProjectCover";
 import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
@@ -40,7 +42,7 @@ export async function generateMetadata(
   const slug = params.slug;
 
   // Assume getProjectBySlug function fetches project by slug
-  const project = getContentBySlug(slug, allProjects);
+  const project = getContentBySlugHashMap(slug, allProjects);
 
   // Create metadata based on the project details
   return {
@@ -56,7 +58,9 @@ export async function generateMetadata(
  * This improves the performance of the website.
  */
 export const generateStaticParams = async () => {
-  return allProjects.map((project) => ({ slug: project.slug }));
+  return Object.values(allProjects).map((project) => ({
+    params: { slug: project.slug },
+  }));
 };
 
 interface ProjectPageProps {
@@ -82,7 +86,7 @@ interface ProjectPageProps {
 const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const slug = params.slug;
   const basePath = PROJECTS.path;
-  const project = getContentBySlug<ProjectInterface>(slug, allProjects);
+  const project = getContentBySlugHashMap<ProjectInterface>(slug, allProjects);
 
   // redirect to not found page if the project is not valid
   if (!project) {

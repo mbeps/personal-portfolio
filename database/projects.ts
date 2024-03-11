@@ -1,4 +1,6 @@
-import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
+import { addNestedSkillsMaterialListHashMap } from "@/actions/material/addNestedSkillsMaterialList";
+import ProjectCategoriesEnum from "@/enums/ProjectCategoriesEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import {
   algorithms,
@@ -130,19 +132,19 @@ import {
   gitHub,
   gitLab,
 } from "./skills/technicalHardSkills/technicalHardSkillsVCS";
-import updateProjectImages from "@/actions/file-system/updateProjectImages";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
-import ProjectCategoriesEnum from "@/enums/ProjectCategoriesEnum";
+import ProjectSlugEnum from "@/enums/MaterialSlugEnums/ProjectsSlugEnum";
 
 /**
  * Array of web development projects.
  * This is used to populate the projects page.
  * @type {ProjectInterface[]}
  */
-const webdevProjects: ProjectInterface[] = [
-  {
+const projectMap: {
+  [key: string]: ProjectInterface;
+} = {
+  [ProjectSlugEnum.CircusDiscussions]: {
     name: `Circus Discussions`,
-    slug: "circus-discussions",
+    slug: ProjectSlugEnum.CircusDiscussions,
     description: `
       For a final year university project, 
       a social media platform was developed enabling users to form communities, 
@@ -184,9 +186,9 @@ const webdevProjects: ProjectInterface[] = [
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
   },
-  {
+  [ProjectSlugEnum.RingmasterMessaging]: {
     name: `Ringmaster Messaging`,
-    slug: "ringmaster-messaging",
+    slug: ProjectSlugEnum.RingmasterMessaging,
     description: `
       A custom back-end learning project involved creating a straightforward messaging app. 
       Users can chat one-on-one, participate in group chats, send text messages, share images, view active users, and personalize their profiles. 
@@ -229,9 +231,9 @@ const webdevProjects: ProjectInterface[] = [
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
   },
-  {
+  [ProjectSlugEnum.MagicianAI]: {
     name: `Magician AI`,
-    slug: "magician-ai",
+    slug: ProjectSlugEnum.MagicianAI,
     description: `
       Magician AI is a SaaS platform that leverages AI to enable users to generate various media types and have dynamic conversations. 
       Developing this project allowed me to explore Stripe, Clerk authentication, and unique AI APIs.
@@ -275,9 +277,9 @@ const webdevProjects: ProjectInterface[] = [
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
   },
-  {
+  [ProjectSlugEnum.DrumrollMusic]: {
     name: `Drumroll Music`,
-    slug: "drumroll-music",
+    slug: ProjectSlugEnum.DrumrollMusic,
     description: `
       My first major project using Supabase was a basic music streaming site. 
       Users can upload songs, search and listen to music, as well as like the songs they enjoy.
@@ -313,9 +315,9 @@ const webdevProjects: ProjectInterface[] = [
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
   },
-  {
+  [ProjectSlugEnum.JokerNotes]: {
     name: "Joker Notes",
-    slug: "joker-notes",
+    slug: ProjectSlugEnum.JokerNotes,
     description: `
       A simple rich-text note-taking app that allows users to create, edit, and delete notes.
       `,
@@ -352,17 +354,11 @@ const webdevProjects: ProjectInterface[] = [
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     deploymentURL: "https://joker-notes.vercel.app/",
   },
-];
 
-/**
- * Array of extra web development projects.
- * This is used to populate the projects page.
- * @type {ProjectInterface[]}
- */
-const extraWebDevProjects: ProjectInterface[] = [
-  {
+  //^ Extra Web Development Projects
+  [ProjectSlugEnum.Quizmify]: {
     name: "Quizmify",
-    slug: "quizmify",
+    slug: ProjectSlugEnum.Quizmify,
     description: `An intuitive platform for dynamic quiz generation. 
       Users can test their knowledge across various topics, choosing between multiple-choice questions or fill-in-the-gap style challenges. 
       With immediate feedback and score tracking, users enhance their understanding.`,
@@ -401,9 +397,9 @@ const extraWebDevProjects: ProjectInterface[] = [
     ],
     repositoryURL: "https://github.com/mbeps/quizmify",
   },
-  {
+  [ProjectSlugEnum.SideshowArticles]: {
     name: `Sideshow Articles`,
-    slug: "sideshow-articles",
+    slug: ProjectSlugEnum.SideshowArticles,
     description: `
       To familiarize myself with Supabase, I developed a simple website for reading and writing articles. 
       Users can read, create, and delete articles. 
@@ -434,9 +430,9 @@ const extraWebDevProjects: ProjectInterface[] = [
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     archived: true,
   },
-  {
+  [ProjectSlugEnum.Noodle]: {
     name: `Noodle`,
-    slug: "noodle",
+    slug: ProjectSlugEnum.Noodle,
     description: `
       During my second year of university, my group and I initiated a project on an open-source learning platform which served as my introduction to full-stack development. 
       This app aids students in managing tasks, assignments, exams, and storing notes and resources.
@@ -478,9 +474,9 @@ const extraWebDevProjects: ProjectInterface[] = [
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     archived: true,
   },
-  {
+  [ProjectSlugEnum.ConvoGPT]: {
     name: `ConvoGPT`,
-    slug: "convo-gpt",
+    slug: ProjectSlugEnum.ConvoGPT,
     description: `
       In my first year of university, my group and I developed a simple game using SimpleGUI for a project. 
       We manually implemented the game's physics using vector theory and physics concepts. 
@@ -517,12 +513,11 @@ const extraWebDevProjects: ProjectInterface[] = [
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     archived: true,
   },
-];
 
-const backendWebDevProjects: ProjectInterface[] = [
-  {
+  //^ Backend Web Development Projects
+  [ProjectSlugEnum.FlaskForumBackend]: {
     name: `Flask Forum Backend`,
-    slug: "flask-forum-backend",
+    slug: ProjectSlugEnum.FlaskForumBackend,
     description: `
       This is a custom backend for the first iteration of the discussion platform. 
       This was created to learn how to create a custom backend using Python and Flask.
@@ -554,9 +549,9 @@ const backendWebDevProjects: ProjectInterface[] = [
     ],
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
   },
-  {
+  [ProjectSlugEnum.FlaskJWTAuthentication]: {
     name: `Flask JWT Authentication`,
-    slug: "flask-jwt-authentication",
+    slug: ProjectSlugEnum.FlaskJWTAuthentication,
     description: `
       A simple Flask app to learn how to use JWT for authentication.
       This serves as a foundation to using JWT in other projects using Flask.
@@ -581,9 +576,9 @@ const backendWebDevProjects: ProjectInterface[] = [
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     archived: true,
   },
-  {
+  [ProjectSlugEnum.DjangoAuthentication]: {
     name: `Django Authentication`,
-    slug: "django-authentication",
+    slug: ProjectSlugEnum.DjangoAuthentication,
     description: `
       A simple Django app to learn how to use Django with tokens for authentication.
       This serves as a foundation to using Django in other projects.
@@ -608,9 +603,9 @@ const backendWebDevProjects: ProjectInterface[] = [
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     archived: true,
   },
-  {
+  [ProjectSlugEnum.ClerkAuthentication]: {
     name: `Clerk Authentication`,
-    slug: "clerk-authentication",
+    slug: ProjectSlugEnum.ClerkAuthentication,
     description: `
       A simple Next.JS app to experiment with the Clerk Authentication SDK. 
       `,
@@ -635,9 +630,9 @@ const backendWebDevProjects: ProjectInterface[] = [
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     archived: true,
   },
-  {
+  [ProjectSlugEnum.Auth0Authentication]: {
     name: `Auth0 Authentication`,
-    slug: "auth0-authentication",
+    slug: ProjectSlugEnum.Auth0Authentication,
     description: `
       A simple Next.JS app to experiment with the Auth0 Authentication SDK. 
       This does not use the new Next.JS 13 app router as it is not supported as of the time of making this demo. 
@@ -663,17 +658,11 @@ const backendWebDevProjects: ProjectInterface[] = [
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     archived: true,
   },
-];
 
-/**
- * Array of machine learning projects.
- * This is used to populate the projects page.
- * @type {ProjectInterface[]}
- */
-const machineLearningProjects: ProjectInterface[] = [
-  {
+  //^ Artificial Intelligence Projects
+  [ProjectSlugEnum.AdultIncomePrediction]: {
     name: "Adult Income Prediction",
-    slug: "adult-income-prediction",
+    slug: ProjectSlugEnum.AdultIncomePrediction,
     description: `A project leveraging the UCI Adult Income dataset to predict income brackets using a RandomForestClassifier. Emphasis is on feature engineering, data preprocessing with One-Hot Encoding, and model optimization through hyperparameter tuning.`,
     repositoryURL: "https://github.com/mbeps/Adults_Income_Prediction",
     skills: [
@@ -699,9 +688,9 @@ const machineLearningProjects: ProjectInterface[] = [
     ],
     category: ProjectCategoriesEnum.MachineLearning,
   },
-  {
+  [ProjectSlugEnum.HousePricePrediction]: {
     name: "House Price Prediction",
-    slug: "house-price-prediction",
+    slug: ProjectSlugEnum.HousePricePrediction,
     description: `An analytical approach to predicting California housing prices using the RandomForestRegressor and LinearRegressor, with a focus on data preprocessing and feature engineering.`,
     repositoryURL: "https://github.com/mbeps/House_Price_Prediction",
     skills: [
@@ -726,9 +715,9 @@ const machineLearningProjects: ProjectInterface[] = [
     ],
     category: ProjectCategoriesEnum.MachineLearning,
   },
-  {
+  [ProjectSlugEnum.MachineLearningAssignment1]: {
     name: `Assignment 1`,
-    slug: "machine-learning-assignment-1",
+    slug: ProjectSlugEnum.MachineLearningAssignment1,
     description: `
       Be able to implement machine-learning algorithms, using the Nearest Neighbours algorithm as an example. 
       Have an understanding of ways to apply the ideas and algorithms of machine learning in science and technology.
@@ -753,9 +742,9 @@ const machineLearningProjects: ProjectInterface[] = [
     ],
     category: ProjectCategoriesEnum.MachineLearning,
   },
-  {
+  [ProjectSlugEnum.MachineLearningAssignment2]: {
     name: `Assignment 2`,
-    slug: "machine-learning-assignment-2",
+    slug: ProjectSlugEnum.MachineLearningAssignment2,
     description: `
       Be able to use and implement machine-learning algorithms, 
       with the Lasso and inductive conformal prediction algorithms as examples. 
@@ -781,9 +770,9 @@ const machineLearningProjects: ProjectInterface[] = [
     ],
     category: ProjectCategoriesEnum.MachineLearning,
   },
-  {
+  [ProjectSlugEnum.MachineLearningAssignment3]: {
     name: `Assignment 3`,
-    slug: "machine-learning-assignment-3",
+    slug: ProjectSlugEnum.MachineLearningAssignment3,
     description: `
       Be able to use and implement machine-learning algorithms, 
       with the SVM, neural networks, and cross-conformal prediction algorithms as examples. 
@@ -809,9 +798,9 @@ const machineLearningProjects: ProjectInterface[] = [
     ],
     category: ProjectCategoriesEnum.MachineLearning,
   },
-  {
+  [ProjectSlugEnum.MachineLearningLabQuestions]: {
     name: `Lab Questions`,
-    slug: "machine-learning-lab-questions",
+    slug: ProjectSlugEnum.MachineLearningLabQuestions,
     description: `
       Implemented various machine learning algorithms and techniques learned during the course, 
       such as Nearest Neighbours, conformal prediction, linear regression, Ridge Regression, Lasso, data preprocessing, parameter selection, 
@@ -837,9 +826,9 @@ const machineLearningProjects: ProjectInterface[] = [
     ],
     category: ProjectCategoriesEnum.MachineLearning,
   },
-  {
+  [ProjectSlugEnum.ComputationalFinanceAssignment]: {
     name: "Computational Finance Assignment",
-    slug: "computational-finance-assignment",
+    slug: ProjectSlugEnum.ComputationalFinanceAssignment,
     description: `
       An assignment exploring valuation of options using methods like Black-Scholes, binomial trees, and Monte Carlo. 
       Also includes theoretical aspects of put-call parity and financial arbitrage opportunities.`,
@@ -866,9 +855,9 @@ const machineLearningProjects: ProjectInterface[] = [
     ],
     category: ProjectCategoriesEnum.MachineLearning,
   },
-  {
+  [ProjectSlugEnum.MachineLearningTheoryPractice]: {
     name: "Machine Learning Theory Practice",
-    slug: "machine-learning-theory-practice",
+    slug: ProjectSlugEnum.MachineLearningTheoryPractice,
     description: `
       A collection of machine learning theory questions and answers.
       This is used to practice for exams and tests.
@@ -893,17 +882,117 @@ const machineLearningProjects: ProjectInterface[] = [
       linearAlgebra,
     ],
   },
-];
 
-/**
- * Array of game development projects.
- * This is used to populate the projects page.
- * @type {ProjectInterface[]}
- */
-const gameDevProjects: ProjectInterface[] = [
-  {
+  //^ Java Assignments
+  [ProjectSlugEnum.JavaCalculatorAssignment]: {
+    name: `Calculator`,
+    slug: ProjectSlugEnum.JavaCalculatorAssignment,
+    description: `
+      Simple calculator app built using Java as a Maven project. 
+      This was a second year Java assignment focused on software engineering methodologies. 
+      The project involved creating a calculator application, emphasizing the importance of proper version control procedures, 
+      test-driven development, documentation, and code quality assurance through linting and styling. 
+      The assignment highlighted the significance of following efficient software development processes rather than just focusing on the final implementation.  `,
+    repositoryURL: `https://github.com/mbeps/Calculator-Assignment`,
+    skills: [
+      java,
+      maven,
+      junit,
+      gitHub,
+      git,
+      checkstyle,
+      problemSolving,
+      projectManagement,
+      criticalThinking,
+      creativity,
+      adaptability,
+    ],
+    category: ProjectCategoriesEnum.JavaAssignments,
+  },
+  [ProjectSlugEnum.BotanicGardenPlannerAssignment]: {
+    name: `Botanic-Garden-Planner`,
+    slug: ProjectSlugEnum.BotanicGardenPlannerAssignment,
+    description: `
+      Simple botanic garden planner app built using Java.
+      This was in first year to learn about Java and object oriented programming.`,
+    repositoryURL: `https://github.com/mbeps/Botanic-Garden-Planner`,
+    skills: [
+      java,
+      junit,
+      gitHub,
+      git,
+      problemSolving,
+      projectManagement,
+      criticalThinking,
+      creativity,
+      adaptability,
+    ],
+    category: ProjectCategoriesEnum.JavaAssignments,
+    archived: true,
+  },
+  [ProjectSlugEnum.TrackAndTraceAssignment]: {
+    name: "Track & Trace",
+    slug: ProjectSlugEnum.TrackAndTraceAssignment,
+    description: `Simple app to track Covid cases. 
+      This was in first year to learn about Java and object oriented programming.`,
+    repositoryURL: `https://github.com/mbeps/Track_and_Trace`,
+    category: ProjectCategoriesEnum.JavaAssignments,
+    skills: [
+      java,
+      junit,
+      gitHub,
+      git,
+      problemSolving,
+      projectManagement,
+      criticalThinking,
+      creativity,
+      adaptability,
+    ],
+    archived: true,
+  },
+  [ProjectSlugEnum.HollomonAssignment]: {
+    name: `Hollomon`,
+    slug: ProjectSlugEnum.HollomonAssignment,
+    description: `This was in first year to learn about Java and object oriented programming.`,
+    repositoryURL: `https://github.com/mbeps/Hollomon`,
+    category: ProjectCategoriesEnum.JavaAssignments,
+    skills: [
+      java,
+      junit,
+      gitHub,
+      git,
+      problemSolving,
+      projectManagement,
+      criticalThinking,
+      creativity,
+      adaptability,
+    ],
+    archived: true,
+  },
+  [ProjectSlugEnum.DatabasesMiniProject]: {
+    name: `Database Mini Project`,
+    slug: ProjectSlugEnum.DatabasesMiniProject,
+    description: `Learning to interact with a database using Java.`,
+    repositoryURL: `https://github.com/mbeps/DatabasesMiniProject`,
+    skills: [
+      java,
+      postgreSQL,
+      gitHub,
+      git,
+      problemSolving,
+      projectManagement,
+      criticalThinking,
+      creativity,
+      adaptability,
+    ],
+    category: ProjectCategoriesEnum.JavaAssignments,
+    archived: true,
+  },
+
+  //^ Game Development Projects
+  [ProjectSlugEnum.OsmosGame]: {
     name: `Osmos Game`,
-    slug: "osmos-game",
+    slug: ProjectSlugEnum.OsmosGame,
     description: `
       This is a simple game created using SimpleGUI for a group project in my first year of university. 
       The physics of the game were done manually using vector theory and physics concepts.
@@ -926,9 +1015,9 @@ const gameDevProjects: ProjectInterface[] = [
     ],
     category: ProjectCategoriesEnum.GameDevelopment,
   },
-  {
+  [ProjectSlugEnum.SurfaceFight]: {
     name: "Surface Fight",
-    slug: "surface-fight",
+    slug: ProjectSlugEnum.SurfaceFight,
     description: `
       The game is about a robot shooting skeletons and trying to survive. 
       Every time he kills all the skeletons more of them will come at once.
@@ -947,9 +1036,9 @@ const gameDevProjects: ProjectInterface[] = [
     deploymentURL: "https://bepary-games.itch.io/surface-fight",
     archived: true,
   },
-  {
+  [ProjectSlugEnum.Platformer]: {
     name: "Platformer",
-    slug: "platformer",
+    slug: ProjectSlugEnum.Platformer,
     description: `
       This is a basic and easy to play platform game which is similar to Super Mario.
       Players must defeat the enemies and reach the end of the level.
@@ -969,9 +1058,9 @@ const gameDevProjects: ProjectInterface[] = [
     deploymentURL: "https://bepary-games.itch.io/platformer",
     archived: true,
   },
-  {
+  [ProjectSlugEnum.PlatformerDeathWalk]: {
     name: "Platformer Death Walk",
-    slug: "platformer-death-walk",
+    slug: ProjectSlugEnum.PlatformerDeathWalk,
     description: `
       This is a basic and easy to play platform game which is similar to Super Mario.
       Players must defeat all the enemies to reach the end of the level.
@@ -991,9 +1080,9 @@ const gameDevProjects: ProjectInterface[] = [
     deploymentURL: "https://bepary-games.itch.io/platformer-death-walk",
     archived: true,
   },
-  {
+  [ProjectSlugEnum.CodingBreakout]: {
     name: "Coding Breakout",
-    slug: "coding-breakout",
+    slug: ProjectSlugEnum.CodingBreakout,
     description: `
       In Breakout, a layer of bricks lines the top third of the screen
       and the goal is to destroy them all by repeatedly bouncing a ball off a paddle into them.
@@ -1012,9 +1101,9 @@ const gameDevProjects: ProjectInterface[] = [
     deploymentURL: "https://bepary-games.itch.io/coding-break-out",
     archived: true,
   },
-  {
+  [ProjectSlugEnum.CatchMaruf]: {
     name: "Catch Maruf",
-    slug: "catch-maruf",
+    slug: ProjectSlugEnum.CatchMaruf,
     description: `
       A basic game where the focus is to click on a character
       as many times as possible within a given time limit.
@@ -1033,9 +1122,9 @@ const gameDevProjects: ProjectInterface[] = [
     deploymentURL: "https://bepary-games.itch.io/catch-maruf",
     archived: true,
   },
-  {
+  [ProjectSlugEnum.AgainstGravity]: {
     name: "Against Gravity",
-    slug: "against-gravity",
+    slug: ProjectSlugEnum.AgainstGravity,
     description: `
       A basic game where the aim is to reach the end of the level
       by making use of the gravity switch and avoiding the obstacles.
@@ -1054,9 +1143,9 @@ const gameDevProjects: ProjectInterface[] = [
     deploymentURL: "https://bepary-games.itch.io/against-gravity",
     archived: true,
   },
-  {
+  [ProjectSlugEnum.ScrollingShooter]: {
     name: "Scrolling Shooter",
-    slug: "scrolling-shooter",
+    slug: ProjectSlugEnum.ScrollingShooter,
     description: `
       This is a game where the aim is to shoot the enemies and avoid their bullets.
       This was a simple game made back in secondary school. 
@@ -1074,9 +1163,9 @@ const gameDevProjects: ProjectInterface[] = [
     deploymentURL: "https://bepary-games.itch.io/scrolling-shooter",
     archived: true,
   },
-  {
+  [ProjectSlugEnum.Dungeon]: {
     name: "Dungeon",
-    slug: "dungeon",
+    slug: ProjectSlugEnum.Dungeon,
     description: `
       A very simple 3D game where the aim is to reach the end of the level through the maze.
       This was a simple game made back in secondary school. 
@@ -1094,9 +1183,9 @@ const gameDevProjects: ProjectInterface[] = [
     deploymentURL: "https://bepary-games.itch.io/dungeon-",
     archived: true,
   },
-  {
+  [ProjectSlugEnum.VegNinja]: {
     name: " Veg Ninja",
-    slug: "veg-ninja",
+    slug: ProjectSlugEnum.VegNinja,
     description: `
       A simple game where the aim is to cut the vegetables and avoid the bombs.
       This is very similar to the popular game Fruit Ninja.
@@ -1115,9 +1204,9 @@ const gameDevProjects: ProjectInterface[] = [
     deploymentURL: "https://bepary-games.itch.io/vej-ninja",
     archived: true,
   },
-  {
+  [ProjectSlugEnum.AngryCatsSpace]: {
     name: " Angry Cats Space",
-    slug: "angry-cats-space",
+    slug: ProjectSlugEnum.AngryCatsSpace,
     description: `
       A game where the aim is to shoot the cats to kill all the rats. 
       This is very similar to the popular game Angry Birds.
@@ -1136,9 +1225,9 @@ const gameDevProjects: ProjectInterface[] = [
     deploymentURL: "https://bepary-games.itch.io/angry-cats-space",
     archived: true,
   },
-  {
+  [ProjectSlugEnum.AngryCats]: {
     name: " Angry Cats",
-    slug: "angry-cats",
+    slug: ProjectSlugEnum.AngryCats,
     description: `
       A game where the aim is to shoot the cats to kill all the rats. 
       This is very similar to the popular game Angry Birds.
@@ -1157,17 +1246,11 @@ const gameDevProjects: ProjectInterface[] = [
     deploymentURL: "https://bepary-games.itch.io/angry-cats-space",
     archived: true,
   },
-];
 
-/**
- * Array of other projects.
- * This is used to populate the projects page.
- * @type {ProjectInterface[]}
- */
-const otherProjects: ProjectInterface[] = [
-  {
-    name: `Searching & Sorting`,
-    slug: `searching-sorting-algorithms`,
+  //^ Other Projects
+  [ProjectSlugEnum.SearchingAndSortingAlgorithms]: {
+    name: `Searching & Sorting Algorithms`,
+    slug: ProjectSlugEnum.SearchingAndSortingAlgorithms,
     description: `
       Jupyter Notebook containing various searching and sorting algorithms.
       Each algorithms is explained. 
@@ -1195,9 +1278,9 @@ const otherProjects: ProjectInterface[] = [
     ],
     repositoryURL: "https://github.com/mbeps/algorithms",
   },
-  {
+  [ProjectSlugEnum.AutomatedSetup]: {
     name: `Automated Setup`,
-    slug: "automated-setup",
+    slug: ProjectSlugEnum.AutomatedSetup,
     description: `
       A shell script which automates the setup of a new Linux machine.
       This is specifically for my Fedora install.
@@ -1216,9 +1299,9 @@ const otherProjects: ProjectInterface[] = [
     repositoryURL: `https://github.com/mbeps/AutomatedSetup`,
     category: ProjectCategoriesEnum.Other,
   },
-  {
+  [ProjectSlugEnum.Leetcode]: {
     name: `Leetcode Solutions`,
-    slug: "leetcode",
+    slug: ProjectSlugEnum.Leetcode,
     description: `
       A collection of Leetcode solutions in Python. 
       This is used to practice algorithms and data structures.
@@ -1240,143 +1323,15 @@ const otherProjects: ProjectInterface[] = [
     ],
     category: ProjectCategoriesEnum.Other,
   },
-];
-
-/**
- * Array of some Java assignments.
- * This is used to populate the projects page.
- * @type {ProjectInterface[]}
- */
-const javaAssignments: ProjectInterface[] = [
-  {
-    name: `Calculator`,
-    slug: "calculator-assignment",
-    description: `
-      Simple calculator app built using Java as a Maven project. 
-      This was a second year Java assignment focused on software engineering methodologies. 
-      The project involved creating a calculator application, emphasizing the importance of proper version control procedures, 
-      test-driven development, documentation, and code quality assurance through linting and styling. 
-      The assignment highlighted the significance of following efficient software development processes rather than just focusing on the final implementation.  `,
-    repositoryURL: `https://github.com/mbeps/Calculator-Assignment`,
-    skills: [
-      java,
-      maven,
-      junit,
-      gitHub,
-      git,
-      checkstyle,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-    ],
-    category: ProjectCategoriesEnum.JavaAssignments,
-  },
-  {
-    name: `Botanic-Garden-Planner`,
-    slug: "botanic-garden-planner-assignment",
-    description: `
-      Simple botanic garden planner app built using Java.
-      This was in first year to learn about Java and object oriented programming.`,
-    repositoryURL: `https://github.com/mbeps/Botanic-Garden-Planner`,
-    skills: [
-      java,
-      junit,
-      gitHub,
-      git,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-    ],
-    category: ProjectCategoriesEnum.JavaAssignments,
-    archived: true,
-  },
-  {
-    name: "Track & Trace",
-    slug: "track-and-trace-assignment",
-    description: `Simple app to track Covid cases. 
-      This was in first year to learn about Java and object oriented programming.`,
-    repositoryURL: `https://github.com/mbeps/Track_and_Trace`,
-    category: ProjectCategoriesEnum.JavaAssignments,
-    skills: [
-      java,
-      junit,
-      gitHub,
-      git,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-    ],
-    archived: true,
-  },
-  {
-    name: `Hollomon`,
-    slug: "hollomon-assignment",
-    description: `This was in first year to learn about Java and object oriented programming.`,
-    repositoryURL: `https://github.com/mbeps/Hollomon`,
-    category: ProjectCategoriesEnum.JavaAssignments,
-    skills: [
-      java,
-      junit,
-      gitHub,
-      git,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-    ],
-    archived: true,
-  },
-  {
-    name: `Database Mini Project`,
-    slug: "database-mini-project",
-    description: `Learning to interact with a database using Java.`,
-    repositoryURL: `https://github.com/mbeps/DatabasesMiniProject`,
-    skills: [
-      java,
-      postgreSQL,
-      gitHub,
-      git,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-    ],
-    category: ProjectCategoriesEnum.JavaAssignments,
-    archived: true,
-  },
-];
-
-export {
-  backendWebDevProjects,
-  extraWebDevProjects,
-  gameDevProjects,
-  javaAssignments,
-  machineLearningProjects,
-  otherProjects,
-  webdevProjects,
 };
+
+export { projectMap };
 
 /**
  * Array of all projects.
  */
-const allProjects = addNestedSkillsMaterialList<ProjectInterface>(
-  [
-    ...webdevProjects,
-    ...machineLearningProjects,
-    ...extraWebDevProjects,
-    ...gameDevProjects,
-    ...otherProjects,
-    ...javaAssignments,
-    ...backendWebDevProjects,
-  ],
+const allProjects = addNestedSkillsMaterialListHashMap<ProjectInterface>(
+  projectMap,
   SkillTypesEnum.General,
   SkillTypesEnum.Hard
 );

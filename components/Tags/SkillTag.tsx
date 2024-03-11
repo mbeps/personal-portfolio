@@ -34,11 +34,9 @@ const SkillTag: React.FC<TagProps> = ({ skill, hide }) => {
     [key: string]: BlogInterface;
   } = blogs;
   // TODO: Remove array translation once all the other material use hashmaps
-
   const blogsArray: BlogInterface[] = Object.values(allBlogs);
   const certificates: CertificateInterface[] = Object.values(allCertificates);
-
-  const projects: ProjectInterface[] = allProjects;
+  const projects: ProjectInterface[] = Object.values(allProjects);
 
   const allMaterial: MaterialInterface[] = [
     ...projects,
