@@ -36,7 +36,7 @@ const ProjectsPage = () => {
       <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
         <HeadingOne title={PROJECTS.label} />
         <PageDescription description={description} />
-        <ProjectsView allProjects={updateProjectImages(allProjects)} />
+        <ProjectsView projects={updateProjectImages(allProjects)} />
       </div>
     </section>
   );

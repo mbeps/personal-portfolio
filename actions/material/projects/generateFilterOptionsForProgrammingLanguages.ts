@@ -4,17 +4,17 @@ import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 
 export default function generateFilterOptionsForProgrammingLanguages<
   T extends MaterialInterface
->(allMaterials: T[]): FilterOption[] {
+>(allMaterialsMap: { [key: string]: T }): FilterOption[] {
   return [
     { slug: "all", entryName: "All" },
-    ...allMaterials
+    ...Object.values(allMaterialsMap)
       .flatMap((material) =>
         material.skills.filter(
           (skill) => skill.category === SkillCategoriesEnum.ProgrammingLanguages
         )
       )
       .reduce((unique, skill) => {
-        if (unique.findIndex((v) => v.slug === skill.slug) === -1) {
+        if (!unique.some((v) => v.slug === skill.slug)) {
           unique.push({ slug: skill.slug, entryName: skill.name });
         }
         return unique;

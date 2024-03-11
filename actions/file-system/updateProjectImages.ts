@@ -9,18 +9,19 @@ import hasProjectCover from "../material/projects/hasProjectCover";
  * This only works on the server as it requires access to the file system.
  * Only server components can use this function.
  * @param projects (Project[]) - Array of project objects.
- * @returns (Project[]) - Array of project objects with updated imageURL fields.
  */
-const updateProjectImages = (projects: ProjectInterface[]): ProjectInterface[] => {
-  return projects.map((project) => {
+export default function updateProjectImagesHashMap(projectsMap: {
+  [key: string]: ProjectInterface;
+}): { [key: string]: ProjectInterface } {
+  return Object.entries(projectsMap).reduce((acc, [key, project]) => {
     if (hasProjectCover(project.slug)) {
-      return {
+      acc[key] = {
         ...project,
         thumbnailImage: `/projects/${project.slug}/cover.png`,
       };
+    } else {
+      acc[key] = project;
     }
-    return project;
-  });
-};
-
-export default updateProjectImages;
+    return acc;
+  }, {} as { [key: string]: ProjectInterface });
+}

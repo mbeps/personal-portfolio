@@ -1,15 +1,17 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
-import filterMaterialByArchivedStatus, {
-  filterMaterialByCategory,
-  filterMaterialBySkill,
-  filterMaterialBySkillCategory,
+import applySearchResultsToHashMap from "@/actions/material/applySearchResultsToHashMap";
+import {
+  filterMaterialByArchivedStatusHashMap,
+  filterMaterialByCategoryHashMap,
+  filterMaterialBySkillCategoryHashMap,
+  filterMaterialBySkillHashMap,
 } from "@/actions/material/filterMaterials";
-import generateFilterOptionsByCategory from "@/actions/material/generateFilterOptionsByCategory";
-import generateFilterOptionsBySkillCategories from "@/actions/material/generateFilterOptionsBySkillCategories";
-import generateFilterOptionsBySkillType from "@/actions/material/generateFilterOptionsBySkillType";
-import groupMaterialsByCategory from "@/actions/material/groupMaterialsByCategory";
+import { generateFilterOptionsByCategoryHashMap } from "@/actions/material/generateFilterOptionsByCategory";
+import { generateFilterOptionsBySkillCategoriesHashMap } from "@/actions/material/generateFilterOptionsBySkillCategories";
+import { generateFilterOptionsBySkillTypeHashMap } from "@/actions/material/generateFilterOptionsBySkillType";
+import { groupMaterialsByCategoryHashMap } from "@/actions/material/groupMaterialsByCategory";
 import filterProjectsByProgrammingLanguage from "@/actions/material/projects/filterProjectsByProgrammingLanguage";
 import generateFilterOptionsForProgrammingLanguages from "@/actions/material/projects/generateFilterOptionsForProgrammingLanguages";
 import stringToSlug from "@/actions/stringToSlug";
@@ -18,11 +20,11 @@ import FilterOverlay from "@/components/Filters/FilterPanel";
 import SearchInput from "@/components/Inputs/SearchInput";
 import ProjectsList from "@/components/MaterialLists/ProjectsList";
 import { Button } from "@/components/shadcn/ui/button";
+import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
-import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import Fuse from "fuse.js";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -31,10 +33,10 @@ import { AiOutlineClear } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
 
 type ProjectsListProps = {
-  allProjects: ProjectInterface[];
+  projects: { [key: string]: ProjectInterface };
 };
 
-const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
+const ProjectsView: React.FC<ProjectsListProps> = ({ projects }) => {
   //^ Hooks
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const searchParams = useSearchParams();
@@ -88,19 +90,26 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
     threshold: 0.3, // Lower threshold means more results
   };
 
+  const projectsArray: ProjectInterface[] = Object.values(projects);
+
   /**
    * Fuse object that is used to search the projects.
    * @param allProjects (Project[]): list of all projects
    * @param options (Fuse.IFuseOptions<Project>): options for fuzzy search
    */
-  const fuse = new Fuse(allProjects, searchOptions);
+  const fuse = new Fuse(projectsArray, searchOptions);
 
   /**
    * List of projects that match the search term.
    */
   const searchedProjects = searchTerm
     ? fuse.search(searchTerm).map((result) => result.item)
-    : allProjects;
+    : projectsArray;
+
+  const filteredProjectsHashMap = applySearchResultsToHashMap(
+    searchedProjects,
+    projects
+  );
 
   //^ Filter Options List
   /**
@@ -110,7 +119,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
    * Project types are from the 'type' property of each project.
    */
   const projectTypes =
-    generateFilterOptionsByCategory<ProjectInterface>(allProjects);
+    generateFilterOptionsByCategoryHashMap<ProjectInterface>(projects);
 
   /**
    * List of programming languages to be displayed in the filter.
@@ -119,7 +128,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
    * Programming languages are from the 'programmingLanguage' property of each project.
    */
   const programmingLanguages =
-    generateFilterOptionsForProgrammingLanguages<ProjectInterface>(allProjects);
+    generateFilterOptionsForProgrammingLanguages<ProjectInterface>(projects);
 
   /**
    * List of technologies to be displayed in the filter.
@@ -127,24 +136,25 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
    * Appends all unique technologies to the list.
    * Technologies are from the 'technologies' property of each project.
    */
-  const technologies = generateFilterOptionsBySkillType<ProjectInterface>(
-    allProjects,
-    SkillTypesEnum.Hard,
-    SkillCategoriesEnum.ProgrammingLanguages
-  );
+  const technologies =
+    generateFilterOptionsBySkillTypeHashMap<ProjectInterface>(
+      projects,
+      SkillTypesEnum.Hard,
+      SkillCategoriesEnum.ProgrammingLanguages
+    );
 
   const categories =
-    generateFilterOptionsBySkillCategories<ProjectInterface>(allProjects);
+    generateFilterOptionsBySkillCategoriesHashMap<ProjectInterface>(projects);
 
   const generalSkills: FilterOption[] =
-    generateFilterOptionsBySkillType<ProjectInterface>(
-      allProjects,
+    generateFilterOptionsBySkillTypeHashMap<ProjectInterface>(
+      projects,
       SkillTypesEnum.General
     );
 
   const softSkills: FilterOption[] =
-    generateFilterOptionsBySkillType<ProjectInterface>(
-      allProjects,
+    generateFilterOptionsBySkillTypeHashMap<ProjectInterface>(
+      projects,
       SkillTypesEnum.Soft
     );
 
@@ -155,11 +165,11 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
    * If 'All' is selected, then all projects are displayed.
    * Archived projects are not displayed by default.
    */
-  let filteredProjects = searchedProjects;
+  let filteredProjects = filteredProjectsHashMap;
 
   // Filter by project type category
   if (stringToSlug(selectedSection) !== "all") {
-    filteredProjects = filterMaterialByCategory<ProjectInterface>(
+    filteredProjects = filterMaterialByCategoryHashMap<ProjectInterface>(
       stringToSlug(selectedSection),
       filteredProjects
     );
@@ -175,7 +185,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
 
   // Filter by technology (assuming you have a similar function for technologies)
   if (selectedTechnology !== "all") {
-    filteredProjects = filterMaterialBySkill<ProjectInterface>(
+    filteredProjects = filterMaterialBySkillHashMap<ProjectInterface>(
       selectedTechnology,
       filteredProjects,
       SkillTypesEnum.Hard
@@ -184,7 +194,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
 
   // Filter by skill category
   if (stringToSlug(selectedSkillCategory) !== "all") {
-    filteredProjects = filterMaterialBySkillCategory<ProjectInterface>(
+    filteredProjects = filterMaterialBySkillCategoryHashMap<ProjectInterface>(
       stringToSlug(selectedSkillCategory),
       filteredProjects
     );
@@ -192,7 +202,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
 
   // Filter by general skill
   if (selectedGeneralSkill !== "all") {
-    filteredProjects = filterMaterialBySkill<ProjectInterface>(
+    filteredProjects = filterMaterialBySkillHashMap<ProjectInterface>(
       selectedGeneralSkill,
       filteredProjects,
       SkillTypesEnum.General
@@ -201,7 +211,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
 
   // Filter by soft skill
   if (selectedSoftSkill !== "all") {
-    filteredProjects = filterMaterialBySkill<ProjectInterface>(
+    filteredProjects = filterMaterialBySkillHashMap<ProjectInterface>(
       selectedSoftSkill,
       filteredProjects,
       SkillTypesEnum.Soft
@@ -209,7 +219,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
   }
 
   // Filter by archived status
-  filteredProjects = filterMaterialByArchivedStatus<ProjectInterface>(
+  filteredProjects = filterMaterialByArchivedStatusHashMap<ProjectInterface>(
     showArchived,
     filteredProjects
   );
@@ -217,7 +227,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
   /**
    * Projects categorized by type.
    */
-  const groupedProjects = groupMaterialsByCategory(filteredProjects);
+  const groupedProjects = groupMaterialsByCategoryHashMap(filteredProjects);
 
   /**
    * Updates the search term in the URL.

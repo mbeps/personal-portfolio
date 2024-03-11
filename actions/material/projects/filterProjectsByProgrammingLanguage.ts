@@ -3,13 +3,23 @@ import ProjectInterface from "@/interfaces/material/ProjectInterface";
 
 export default function filterProjectsByProgrammingLanguage(
   programmingLanguageSlug: string,
-  projects: ProjectInterface[]
-): ProjectInterface[] {
-  return projects.filter((project) =>
-    project.skills.some(
-      (skill) =>
-        skill.category === SkillCategoriesEnum.ProgrammingLanguages &&
-        skill.slug === programmingLanguageSlug
-    )
+  projectsMap: { [key: string]: ProjectInterface }
+): { [key: string]: ProjectInterface } {
+  const filteredProjectsMap = Object.entries(projectsMap).reduce(
+    (acc, [key, project]) => {
+      if (
+        project.skills.some(
+          (skill) =>
+            skill.category === SkillCategoriesEnum.ProgrammingLanguages &&
+            skill.slug === programmingLanguageSlug
+        )
+      ) {
+        acc[key] = project;
+      }
+      return acc;
+    },
+    {} as { [key: string]: ProjectInterface }
   );
+
+  return filteredProjectsMap;
 }
