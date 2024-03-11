@@ -1,27 +1,29 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
+import applySearchResultsToHashMap from "@/actions/material/applySearchResultsToHashMap";
 import filterCertificatesByIssuer from "@/actions/material/certificates/filterCertificatesByIssuer";
-import generateIssuerFilterOptions from "@/actions/material/certificates/generateIssuerFilterOptions";
-import filterMaterialByArchivedStatus, {
-  filterMaterialByCategory,
-  filterMaterialBySkill,
-  filterMaterialBySkillCategory,
+import { generateIssuerFilterOptionsHashMap } from "@/actions/material/certificates/generateIssuerFilterOptions";
+import {
+  filterMaterialByArchivedStatusHashMap,
+  filterMaterialByCategoryHashMap,
+  filterMaterialBySkillCategoryHashMap,
+  filterMaterialBySkillHashMap,
 } from "@/actions/material/filterMaterials";
-import generateFilterOptionsByCategory from "@/actions/material/generateFilterOptionsByCategory";
-import generateFilterOptionsBySkillCategories from "@/actions/material/generateFilterOptionsBySkillCategories";
-import generateFilterOptionsBySkillType from "@/actions/material/generateFilterOptionsBySkillType";
-import groupMaterialsByCategory from "@/actions/material/groupMaterialsByCategory";
+import { generateFilterOptionsByCategoryHashMap } from "@/actions/material/generateFilterOptionsByCategory";
+import { generateFilterOptionsBySkillCategoriesHashMap } from "@/actions/material/generateFilterOptionsBySkillCategories";
+import { generateFilterOptionsBySkillTypeHashMap } from "@/actions/material/generateFilterOptionsBySkillType";
+import { groupMaterialsByCategoryHashMap } from "@/actions/material/groupMaterialsByCategory";
 import stringToSlug from "@/actions/stringToSlug";
 import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
 import FilterOverlay from "@/components/Filters/FilterPanel";
 import SearchInput from "@/components/Inputs/SearchInput";
 import CertificatesList from "@/components/MaterialLists/CertificatesList";
 import { Button } from "@/components/shadcn/ui/button";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import Fuse from "fuse.js";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -30,18 +32,18 @@ import { AiOutlineClear } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
 
 type CertificatesListListProps = {
-  allCertificates: CertificateInterface[];
+  certificates: { [key: string]: CertificateInterface };
 };
 
 /**
  * Displays a list of all certificates.
  * The user can filter the certificates by category and issuer.
  * The user can also search for certificates by name, issuer, tags, skills, and category.
- * @param allCertificates (Certificate[]): list of all certificates
+ * @param certificates (Certificate[]): list of all certificates
  * @returns (JSX.Element): list of all certificates
  */
 const CertificatesView: React.FC<CertificatesListListProps> = ({
-  allCertificates,
+  certificates,
 }) => {
   //^ Hooks
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -104,38 +106,48 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
     threshold: 0.3, // Lower threshold means more results
   };
 
-  const fuse = new Fuse(allCertificates, searchOptions);
+  const certificateArray: CertificateInterface[] = Object.values(certificates);
 
-  const searchedCertificates = searchTerm
+  const fuse = new Fuse(certificateArray, searchOptions);
+
+  // search array of certificates
+
+  const searchedCertificatesArray: CertificateInterface[] = searchTerm
     ? fuse.search(searchTerm).map((result) => result.item)
-    : allCertificates;
+    : certificateArray;
+
+  // Apply the filtered search results back to the original hashmap structure
+  const filteredBlogsHashMap = applySearchResultsToHashMap(
+    searchedCertificatesArray,
+    certificates
+  );
 
   //^ Filter Options List
   const certificateCategories: FilterOption[] =
-    generateFilterOptionsByCategory<CertificateInterface>(allCertificates);
+    generateFilterOptionsByCategoryHashMap<CertificateInterface>(certificates);
 
-  const certificateIssuers = generateIssuerFilterOptions(allCertificates);
+  const certificateIssuers = generateIssuerFilterOptionsHashMap(certificates);
 
   const skillCategories: FilterOption[] =
-    generateFilterOptionsBySkillCategories<CertificateInterface>(
-      allCertificates
+    generateFilterOptionsBySkillCategoriesHashMap<CertificateInterface>(
+      certificates
     );
 
   const hardSkills: FilterOption[] =
-    generateFilterOptionsBySkillType<CertificateInterface>(
-      allCertificates,
+    generateFilterOptionsBySkillTypeHashMap<CertificateInterface>(
+      certificates,
       SkillTypesEnum.Hard
     );
 
   const generalSkills: FilterOption[] =
-    generateFilterOptionsBySkillType<CertificateInterface>(
-      allCertificates,
+    generateFilterOptionsBySkillTypeHashMap<CertificateInterface>(
+      certificates,
       SkillTypesEnum.General
     );
 
   const softSkills: FilterOption[] =
-    generateFilterOptionsBySkillType<CertificateInterface>(
-      allCertificates,
+    generateFilterOptionsBySkillTypeHashMap<CertificateInterface>(
+      certificates,
       SkillTypesEnum.Soft
     );
 
@@ -159,7 +171,7 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
     );
   };
 
-  let filteredCertificates = searchedCertificates;
+  let filteredCertificates = filteredBlogsHashMap;
 
   // Filter by issuer
   if (selectedIssuer !== "all") {
@@ -171,23 +183,25 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
 
   // Filter by certificate category
   if (selectedCategory !== "all") {
-    filteredCertificates = filterMaterialByCategory<CertificateInterface>(
-      stringToSlug(selectedCategory),
-      filteredCertificates
-    );
+    filteredCertificates =
+      filterMaterialByCategoryHashMap<CertificateInterface>(
+        stringToSlug(selectedCategory),
+        filteredCertificates
+      );
   }
 
   // Filter by skill category
   if (selectedSkillCategory !== "all") {
-    filteredCertificates = filterMaterialBySkillCategory<CertificateInterface>(
-      stringToSlug(selectedSkillCategory),
-      filteredCertificates
-    );
+    filteredCertificates =
+      filterMaterialBySkillCategoryHashMap<CertificateInterface>(
+        stringToSlug(selectedSkillCategory),
+        filteredCertificates
+      );
   }
 
   // Filter by hard skill
   if (selectedTechnicalSkill !== "all") {
-    filteredCertificates = filterMaterialBySkill<CertificateInterface>(
+    filteredCertificates = filterMaterialBySkillHashMap<CertificateInterface>(
       selectedTechnicalSkill,
       filteredCertificates,
       SkillTypesEnum.Hard
@@ -196,7 +210,7 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
 
   // Filter by general skill
   if (selectedGeneralSkill !== "all") {
-    filteredCertificates = filterMaterialBySkill<CertificateInterface>(
+    filteredCertificates = filterMaterialBySkillHashMap<CertificateInterface>(
       selectedGeneralSkill,
       filteredCertificates,
       SkillTypesEnum.General
@@ -205,7 +219,7 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
 
   // Filter by soft skill
   if (selectedSoftSkill !== "all") {
-    filteredCertificates = filterMaterialBySkill<CertificateInterface>(
+    filteredCertificates = filterMaterialBySkillHashMap<CertificateInterface>(
       selectedSoftSkill,
       filteredCertificates,
       SkillTypesEnum.Soft
@@ -213,12 +227,14 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
   }
 
   // Filter by archived status
-  filteredCertificates = filterMaterialByArchivedStatus<CertificateInterface>(
-    showArchived,
-    filteredCertificates
-  );
+  filteredCertificates =
+    filterMaterialByArchivedStatusHashMap<CertificateInterface>(
+      showArchived,
+      filteredCertificates
+    );
 
-  const groupedCertificates = groupMaterialsByCategory(filteredCertificates);
+  const groupedCertificates =
+    groupMaterialsByCategoryHashMap(filteredCertificates);
 
   const areFiltersApplied =
     selectedIssuer !== "all" ||
