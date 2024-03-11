@@ -1,4 +1,4 @@
-import { getContentBySlugHashMap } from "@/actions/material/getContentBySlug";
+import getContentBySlug from "@/actions/material/getContentBySlug";
 import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
@@ -8,9 +8,7 @@ import HeadingTwo from "@/components/Text/HeadingTwo";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
-import allCertificates, {
-  certificatesWithoutNestedSkills,
-} from "@/database/certificates";
+import allCertificates from "@/database/certificates";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
 import { Metadata, ResolvingMetadata } from "next";
@@ -35,7 +33,7 @@ export async function generateMetadata(
   const slug = params.slug;
 
   // Assume getCertificateBySlug function fetches certificate by slug
-  const certificate = getContentBySlugHashMap<CertificateInterface>(
+  const certificate = getContentBySlug<CertificateInterface>(
     slug,
     allCertificates
   );
@@ -75,7 +73,7 @@ type CertificatesPageProps = {
 const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
   const slug = params.slug;
 
-  const certificate = getContentBySlugHashMap<CertificateInterface>(
+  const certificate = getContentBySlug<CertificateInterface>(
     slug,
     allCertificates
   );

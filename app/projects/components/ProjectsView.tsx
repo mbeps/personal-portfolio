@@ -1,17 +1,17 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
-import applySearchResultsToHashMap from "@/actions/material/applySearchResultsToHashMap";
+import applySearchResultsToMaterial from "@/actions/material/applySearchResultsToHashMap";
 import {
-  filterMaterialByArchivedStatusHashMap,
-  filterMaterialByCategoryHashMap,
-  filterMaterialBySkillCategoryHashMap,
-  filterMaterialBySkillHashMap,
+  filterMaterialByArchivedStatus,
+  filterMaterialByCategory,
+  filterMaterialBySkillCategory,
+  filterMaterialBySkill,
 } from "@/actions/material/filterMaterials";
-import { generateFilterOptionsByCategoryHashMap } from "@/actions/material/generateFilterOptionsByCategory";
-import { generateFilterOptionsBySkillCategoriesHashMap } from "@/actions/material/generateFilterOptionsBySkillCategories";
-import { generateFilterOptionsBySkillTypeHashMap } from "@/actions/material/generateFilterOptionsBySkillType";
-import { groupMaterialsByCategoryHashMap } from "@/actions/material/groupMaterialsByCategory";
+import generateFilterOptionsByCategory from "@/actions/material/generateFilterOptionsByCategory";
+import { generateFilterOptionsBySkillCategories } from "@/actions/material/generateFilterOptionsBySkillCategories";
+import generateFilterOptionsBySkillType from "@/actions/material/generateFilterOptionsBySkillType";
+import groupMaterialsByCategory from "@/actions/material/groupMaterialsByCategory";
 import filterProjectsByProgrammingLanguage from "@/actions/material/projects/filterProjectsByProgrammingLanguage";
 import generateFilterOptionsForProgrammingLanguages from "@/actions/material/projects/generateFilterOptionsForProgrammingLanguages";
 import stringToSlug from "@/actions/stringToSlug";
@@ -106,7 +106,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ projects }) => {
     ? fuse.search(searchTerm).map((result) => result.item)
     : projectsArray;
 
-  const filteredProjectsHashMap = applySearchResultsToHashMap(
+  const filteredProjectsHashMap = applySearchResultsToMaterial(
     searchedProjects,
     projects
   );
@@ -119,7 +119,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ projects }) => {
    * Project types are from the 'type' property of each project.
    */
   const projectTypes =
-    generateFilterOptionsByCategoryHashMap<ProjectInterface>(projects);
+    generateFilterOptionsByCategory<ProjectInterface>(projects);
 
   /**
    * List of programming languages to be displayed in the filter.
@@ -136,24 +136,23 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ projects }) => {
    * Appends all unique technologies to the list.
    * Technologies are from the 'technologies' property of each project.
    */
-  const technologies =
-    generateFilterOptionsBySkillTypeHashMap<ProjectInterface>(
-      projects,
-      SkillTypesEnum.Hard,
-      SkillCategoriesEnum.ProgrammingLanguages
-    );
+  const technologies = generateFilterOptionsBySkillType<ProjectInterface>(
+    projects,
+    SkillTypesEnum.Hard,
+    SkillCategoriesEnum.ProgrammingLanguages
+  );
 
   const categories =
-    generateFilterOptionsBySkillCategoriesHashMap<ProjectInterface>(projects);
+    generateFilterOptionsBySkillCategories<ProjectInterface>(projects);
 
   const generalSkills: FilterOption[] =
-    generateFilterOptionsBySkillTypeHashMap<ProjectInterface>(
+    generateFilterOptionsBySkillType<ProjectInterface>(
       projects,
       SkillTypesEnum.General
     );
 
   const softSkills: FilterOption[] =
-    generateFilterOptionsBySkillTypeHashMap<ProjectInterface>(
+    generateFilterOptionsBySkillType<ProjectInterface>(
       projects,
       SkillTypesEnum.Soft
     );
@@ -169,7 +168,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ projects }) => {
 
   // Filter by project type category
   if (stringToSlug(selectedSection) !== "all") {
-    filteredProjects = filterMaterialByCategoryHashMap<ProjectInterface>(
+    filteredProjects = filterMaterialByCategory<ProjectInterface>(
       stringToSlug(selectedSection),
       filteredProjects
     );
@@ -185,7 +184,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ projects }) => {
 
   // Filter by technology (assuming you have a similar function for technologies)
   if (selectedTechnology !== "all") {
-    filteredProjects = filterMaterialBySkillHashMap<ProjectInterface>(
+    filteredProjects = filterMaterialBySkill<ProjectInterface>(
       selectedTechnology,
       filteredProjects,
       SkillTypesEnum.Hard
@@ -194,7 +193,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ projects }) => {
 
   // Filter by skill category
   if (stringToSlug(selectedSkillCategory) !== "all") {
-    filteredProjects = filterMaterialBySkillCategoryHashMap<ProjectInterface>(
+    filteredProjects = filterMaterialBySkillCategory<ProjectInterface>(
       stringToSlug(selectedSkillCategory),
       filteredProjects
     );
@@ -202,7 +201,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ projects }) => {
 
   // Filter by general skill
   if (selectedGeneralSkill !== "all") {
-    filteredProjects = filterMaterialBySkillHashMap<ProjectInterface>(
+    filteredProjects = filterMaterialBySkill<ProjectInterface>(
       selectedGeneralSkill,
       filteredProjects,
       SkillTypesEnum.General
@@ -211,7 +210,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ projects }) => {
 
   // Filter by soft skill
   if (selectedSoftSkill !== "all") {
-    filteredProjects = filterMaterialBySkillHashMap<ProjectInterface>(
+    filteredProjects = filterMaterialBySkill<ProjectInterface>(
       selectedSoftSkill,
       filteredProjects,
       SkillTypesEnum.Soft
@@ -219,7 +218,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ projects }) => {
   }
 
   // Filter by archived status
-  filteredProjects = filterMaterialByArchivedStatusHashMap<ProjectInterface>(
+  filteredProjects = filterMaterialByArchivedStatus<ProjectInterface>(
     showArchived,
     filteredProjects
   );
@@ -227,7 +226,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ projects }) => {
   /**
    * Projects categorized by type.
    */
-  const groupedProjects = groupMaterialsByCategoryHashMap(filteredProjects);
+  const groupedProjects = groupMaterialsByCategory(filteredProjects);
 
   /**
    * Updates the search term in the URL.

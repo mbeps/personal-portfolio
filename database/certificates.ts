@@ -42,7 +42,7 @@ import {
   typescript,
 } from "./skills/languages";
 
-import { addNestedSkillsMaterialListHashMap } from "@/actions/material/addNestedSkillsMaterialList";
+import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
 import CertificateCategoriesEnum from "@/enums/CertificateCategoriesEnum";
 import CertificateIssuersEnum from "@/enums/CertificateIssuersEnum";
 import CertificateSlugEnum from "@/enums/MaterialSlugEnums/CertificateSlugEnum";
@@ -2508,11 +2508,10 @@ const certificatesWithoutNestedSkills: {
 
 export { certificatesWithoutNestedSkills };
 
-const allCertificates =
-  addNestedSkillsMaterialListHashMap<CertificateInterface>(
-    certificatesWithoutNestedSkills,
-    SkillTypesEnum.General,
-    SkillTypesEnum.Hard
-  );
+const allCertificates = addNestedSkillsMaterialList<CertificateInterface>(
+  certificatesWithoutNestedSkills,
+  SkillTypesEnum.General,
+  SkillTypesEnum.Hard
+);
 
 export default allCertificates;

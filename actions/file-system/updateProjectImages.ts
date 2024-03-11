@@ -11,7 +11,7 @@ import hasProjectCover from "../material/projects/hasProjectCover";
  * @param projects (Project[]) - Array of project objects.
  * @deprecated Cover location will be added directly to the project object in the database.
  */
-export default function updateProjectImagesHashMap(projectsMap: {
+export default function updateProjectImages(projectsMap: {
   [key: string]: ProjectInterface;
 }): { [key: string]: ProjectInterface } {
   return Object.entries(projectsMap).reduce((acc, [key, project]) => {

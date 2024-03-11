@@ -1,4 +1,4 @@
-import { addNestedSkillsMaterialListHashMap } from "@/actions/material/addNestedSkillsMaterialList";
+import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
 import BlogCategoriesEnum from "@/enums/BlogCategoriesEnum";
 import MaterialSlugEnum from "@/enums/MaterialSlugEnums/BlogSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
@@ -238,7 +238,7 @@ const blogsMap: { [key: string]: BlogInterface } = {
   },
 };
 
-const blogs = addNestedSkillsMaterialListHashMap<BlogInterface>(
+const blogs = addNestedSkillsMaterialList<BlogInterface>(
   blogsMap,
   SkillTypesEnum.General,
   SkillTypesEnum.Hard

@@ -1,6 +1,6 @@
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 
-export default function applySearchResultsToHashMap<
+export default function applySearchResultsToMaterial<
   T extends MaterialInterface
 >(
   filteredArray: T[],

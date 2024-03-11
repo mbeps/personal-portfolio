@@ -1,4 +1,4 @@
-import { addNestedSkillsMaterialListHashMap } from "@/actions/material/addNestedSkillsMaterialList";
+import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
 import ProjectCategoriesEnum from "@/enums/ProjectCategoriesEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
@@ -1330,7 +1330,7 @@ export { projectMap };
 /**
  * Array of all projects.
  */
-const allProjects = addNestedSkillsMaterialListHashMap<ProjectInterface>(
+const allProjects = addNestedSkillsMaterialList<ProjectInterface>(
   projectMap,
   SkillTypesEnum.General,
   SkillTypesEnum.Hard

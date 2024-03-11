@@ -1,7 +1,5 @@
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
-import getContentBySlug, {
-  getContentBySlugHashMap,
-} from "@/actions/material/getContentBySlug";
+import getContentBySlug from "@/actions/material/getContentBySlug";
 import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
 import Reader from "@/components/Reader/Reader";
@@ -35,7 +33,7 @@ export async function generateMetadata(
   const allBlogs = blogs;
 
   // Assume getBlogMetadataById function fetches metadata by slug
-  const blog = getContentBySlugHashMap<BlogInterface>(slug, allBlogs);
+  const blog = getContentBySlug<BlogInterface>(slug, allBlogs);
 
   return {
     title: `${developerName} - Blogs: ${blog?.name}`,
@@ -68,7 +66,7 @@ export const generateStaticParams = async () => {
 const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
   const slug = params.slug;
   const basePath = BLOG.path;
-  const blogMetadata = getContentBySlugHashMap<BlogInterface>(slug, blogs);
+  const blogMetadata = getContentBySlug<BlogInterface>(slug, blogs);
   const blogContent = getMarkdownFromFileSystem(
     `public${basePath}/${slug}/blog.md`
   )?.content;

@@ -1,10 +1,6 @@
 import updateProjectImages from "@/actions/file-system/updateProjectImages";
-import filterContentBySkill, {
-  filterContentBySkillHashMap,
-} from "@/actions/material/filterContentBySkill";
-import groupMaterialsByMaterialType, {
-  groupMaterialsByMaterialTypeHashMap,
-} from "@/actions/material/groupMaterialsByMaterialType";
+import filterContentBySkill from "@/actions/material/filterContentBySkill";
+import groupMaterialsByMaterialType from "@/actions/material/groupMaterialsByMaterialType";
 import getSkillBySlug from "@/actions/skills/getSkillBySlug";
 import BlogsList from "@/components/MaterialLists/BlogsList";
 import CertificatesList from "@/components/MaterialLists/CertificatesList";
@@ -137,13 +133,13 @@ const MaterialSection: React.FC<MaterialSectionProps> = ({
   basePath,
   ListComponent,
 }) => {
-  const filteredMaterials = filterContentBySkillHashMap(materials, skill);
+  const filteredMaterials = filterContentBySkill(materials, skill);
 
   if (!filteredMaterials || Object.keys(filteredMaterials).length === 0) {
     return null;
   }
 
-  const groupedMaterials = groupMaterialsByMaterialTypeHashMap(
+  const groupedMaterials = groupMaterialsByMaterialType(
     filteredMaterials,
     name
   );

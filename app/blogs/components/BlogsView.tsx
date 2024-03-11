@@ -1,44 +1,33 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
-import filterMaterialByArchivedStatus, {
-  filterMaterialByArchivedStatusHashMap,
+import applySearchResultsToMaterial from "@/actions/material/applySearchResultsToHashMap";
+import {
+  filterMaterialByArchivedStatus,
   filterMaterialByCategory,
-  filterMaterialByCategoryHashMap,
-  filterMaterialBySkill,
   filterMaterialBySkillCategory,
-  filterMaterialBySkillCategoryHashMap,
-  filterMaterialBySkillHashMap,
+  filterMaterialBySkill,
 } from "@/actions/material/filterMaterials";
-import generateFilterOptionsByCategory, {
-  generateFilterOptionsByCategoryHashMap,
-} from "@/actions/material/generateFilterOptionsByCategory";
-import generateFilterOptionsBySkillCategories, {
-  generateFilterOptionsBySkillCategoriesHashMap,
-} from "@/actions/material/generateFilterOptionsBySkillCategories";
-import generateFilterOptionsBySkillType, {
-  generateFilterOptionsBySkillTypeHashMap,
-} from "@/actions/material/generateFilterOptionsBySkillType";
-import groupMaterialsByCategory, {
-  groupMaterialsByCategoryHashMap,
-} from "@/actions/material/groupMaterialsByCategory";
+import generateFilterOptionsByCategory from "@/actions/material/generateFilterOptionsByCategory";
+import { generateFilterOptionsBySkillCategories } from "@/actions/material/generateFilterOptionsBySkillCategories";
+import generateFilterOptionsBySkillType from "@/actions/material/generateFilterOptionsBySkillType";
+import groupMaterialsByCategory from "@/actions/material/groupMaterialsByCategory";
 import stringToSlug from "@/actions/stringToSlug";
 import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
 import FilterOverlay from "@/components/Filters/FilterPanel";
 import SearchInput from "@/components/Inputs/SearchInput";
 import BlogsList from "@/components/MaterialLists/BlogsList";
 import { Button } from "@/components/shadcn/ui/button";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import BlogInterface from "@/interfaces/material/BlogInterface";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import Fuse from "fuse.js";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { AiOutlineClear } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
-import applySearchResultsToHashMap from "@/actions/material/applySearchResultsToHashMap";
 
 interface BlogListProps {
   blogs: { [key: string]: BlogInterface };
@@ -117,7 +106,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
     : blogArray;
 
   // Apply the filtered search results back to the original hashmap structure
-  const filteredBlogsHashMap = applySearchResultsToHashMap(
+  const filteredBlogsHashMap = applySearchResultsToMaterial(
     searchedBlogsArray,
     blogs
   );
@@ -125,28 +114,22 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
   //^ Filter Options List
 
   const blogCategories: FilterOption[] =
-    generateFilterOptionsByCategoryHashMap<BlogInterface>(blogs);
+    generateFilterOptionsByCategory<BlogInterface>(blogs);
 
   const skillCategories: FilterOption[] =
-    generateFilterOptionsBySkillCategoriesHashMap<BlogInterface>(blogs);
+    generateFilterOptionsBySkillCategories<BlogInterface>(blogs);
 
   const hardSkills: FilterOption[] =
-    generateFilterOptionsBySkillTypeHashMap<BlogInterface>(
-      blogs,
-      SkillTypesEnum.Hard
-    );
+    generateFilterOptionsBySkillType<BlogInterface>(blogs, SkillTypesEnum.Hard);
 
   const generalSkills: FilterOption[] =
-    generateFilterOptionsBySkillTypeHashMap<BlogInterface>(
+    generateFilterOptionsBySkillType<BlogInterface>(
       blogs,
       SkillTypesEnum.General
     );
 
   const softSkills: FilterOption[] =
-    generateFilterOptionsBySkillTypeHashMap<BlogInterface>(
-      blogs,
-      SkillTypesEnum.Soft
-    );
+    generateFilterOptionsBySkillType<BlogInterface>(blogs, SkillTypesEnum.Soft);
 
   //^ Filtering Logic
   /**
@@ -176,7 +159,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
 
   // Filter by blog category
   if (selectedBlogSection !== "all") {
-    filteredBlogs = filterMaterialByCategoryHashMap<BlogInterface>(
+    filteredBlogs = filterMaterialByCategory<BlogInterface>(
       stringToSlug(selectedBlogSection),
       filteredBlogs
     );
@@ -184,7 +167,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
 
   // Filter by skill category
   if (selectedSkillCategory !== "all") {
-    filteredBlogs = filterMaterialBySkillCategoryHashMap<BlogInterface>(
+    filteredBlogs = filterMaterialBySkillCategory<BlogInterface>(
       stringToSlug(selectedSkillCategory),
       filteredBlogs
     );
@@ -192,7 +175,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
 
   // Filter by hard skill
   if (selectedTechnicalSkill !== "all") {
-    filteredBlogs = filterMaterialBySkillHashMap<BlogInterface>(
+    filteredBlogs = filterMaterialBySkill<BlogInterface>(
       selectedTechnicalSkill,
       filteredBlogs,
       SkillTypesEnum.Hard
@@ -201,7 +184,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
 
   // Filter by general skill
   if (selectedGeneralSkill !== "all") {
-    filteredBlogs = filterMaterialBySkillHashMap<BlogInterface>(
+    filteredBlogs = filterMaterialBySkill<BlogInterface>(
       selectedGeneralSkill,
       filteredBlogs,
       SkillTypesEnum.General
@@ -210,7 +193,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
 
   // Filter by soft skill
   if (selectedSoftSkill !== "all") {
-    filteredBlogs = filterMaterialBySkillHashMap<BlogInterface>(
+    filteredBlogs = filterMaterialBySkill<BlogInterface>(
       selectedSoftSkill,
       filteredBlogs,
       SkillTypesEnum.Soft
@@ -218,12 +201,12 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
   }
 
   // Filter by archived status
-  filteredBlogs = filterMaterialByArchivedStatusHashMap<BlogInterface>(
+  filteredBlogs = filterMaterialByArchivedStatus<BlogInterface>(
     showArchived,
     filteredBlogs
   );
 
-  const groupedBlogs = groupMaterialsByCategoryHashMap(filteredBlogs);
+  const groupedBlogs = groupMaterialsByCategory(filteredBlogs);
 
   const areFiltersApplied =
     selectedBlogSection !== "all" ||

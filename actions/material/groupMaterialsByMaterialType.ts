@@ -4,22 +4,8 @@ import MaterialInterface from "@/interfaces/material/MaterialInterface";
 export default function groupMaterialsByMaterialType<
   T extends MaterialInterface
 >(
-  materials: T[],
-  groupName: "Projects" | "Certificates" | "Blogs"
-): MaterialGroupInterface[] {
-  return [
-    {
-      groupName: groupName,
-      materials: materials,
-    },
-  ];
-}
-
-export function groupMaterialsByMaterialTypeHashMap<
-  T extends MaterialInterface
->(
   materialsMap: { [key: string]: T },
-  groupName: "Projects" | "Certificates" | "Blogs"
+  groupName: "Projects" | "Certificates" | "Blogs" //TODO: Use enums instead of string literals
 ): MaterialGroupInterface[] {
   // Convert hashmap to array of MaterialInterface objects
   const materialsArray: T[] = Object.values(materialsMap);

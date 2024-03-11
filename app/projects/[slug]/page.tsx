@@ -1,9 +1,7 @@
 import getImagesFromFileSystem from "@/actions/file-system/getImagesFromFileSystem";
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
 import getVideosFromFileSystem from "@/actions/file-system/getVideosFromFileSystem";
-import getContentBySlug, {
-  getContentBySlugHashMap,
-} from "@/actions/material/getContentBySlug";
+import getContentBySlug from "@/actions/material/getContentBySlug";
 import hasProjectCover from "@/actions/material/projects/hasProjectCover";
 import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
@@ -42,7 +40,7 @@ export async function generateMetadata(
   const slug = params.slug;
 
   // Assume getProjectBySlug function fetches project by slug
-  const project = getContentBySlugHashMap(slug, allProjects);
+  const project = getContentBySlug(slug, allProjects);
 
   // Create metadata based on the project details
   return {
@@ -86,7 +84,7 @@ interface ProjectPageProps {
 const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const slug = params.slug;
   const basePath = PROJECTS.path;
-  const project = getContentBySlugHashMap<ProjectInterface>(slug, allProjects);
+  const project = getContentBySlug<ProjectInterface>(slug, allProjects);
 
   // redirect to not found page if the project is not valid
   if (!project) {
