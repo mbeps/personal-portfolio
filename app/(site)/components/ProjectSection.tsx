@@ -41,12 +41,14 @@ const ProjectsSection = () => {
       <HeadingTwo title="Projects" />
 
       <div className="flex flex-col space-y-20 mt-14">
-        {Object.values(updateProjectImages(projectDatabase))
-          .filter((project) => allowedSlugs.includes(project.slug))
-          .map((project, idx) => (
-            <div key={idx}>
+        {Object.entries(updateProjectImages(projectDatabase))
+          .filter(([key, _]) => allowedSlugs.includes(key))
+          .map(([key, project], idx) => (
+            <div key={key}>
+              {" "}
+              {/* Use the project's key as the unique key instead of idx */}
               <SlideUp offset="-150px 0px -150px 0px">
-                <ProjectItem project={project} />
+                <ProjectItem project={project} path={key} />
               </SlideUp>
             </div>
           ))}

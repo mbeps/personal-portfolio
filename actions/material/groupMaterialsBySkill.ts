@@ -1,21 +1,27 @@
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 
-export default function groupMaterialsBySkill<T extends MaterialInterface>(
-  materials: T[],
-): MaterialGroupInterface[] {
-  const grouped = materials.reduce<Record<string, T[]>>((acc, material) => {
-    material.skills.forEach((skill) => {
-      if (!acc[skill.name]) {
-        acc[skill.name] = [];
-      }
-      acc[skill.name].push(material);
-    });
-    return acc;
-  }, {});
+export default function groupMaterialsBySkill<
+  T extends MaterialInterface
+>(materialsMap: { [key: string]: T }): MaterialGroupInterface[] {
+  // Create a temporary structure to hold skill name to material keys mapping
+  const skillToKeys: Record<string, string[]> = {};
 
-  return Object.keys(grouped).map((groupName) => ({
+  Object.entries(materialsMap).forEach(([key, material]) => {
+    material.skills.forEach((skill) => {
+      if (!skillToKeys[skill.name]) {
+        skillToKeys[skill.name] = [];
+      }
+      skillToKeys[skill.name].push(key);
+    });
+  });
+
+  // Convert the temporary structure into the desired format
+  return Object.keys(skillToKeys).map((groupName) => ({
     groupName,
-    materials: grouped[groupName],
+    materials: skillToKeys[groupName].reduce((acc, key) => {
+      acc[key] = materialsMap[key];
+      return acc;
+    }, {} as { [key: string]: T }),
   }));
 }

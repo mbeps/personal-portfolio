@@ -5,15 +5,13 @@ export default function groupMaterialsByMaterialType<
   T extends MaterialInterface
 >(
   materialsMap: { [key: string]: T },
-  groupName: "Projects" | "Certificates" | "Blogs" //TODO: Use enums instead of string literals
+  groupName: "Projects" | "Certificates" | "Blogs" // Assuming enums are defined elsewhere
 ): MaterialGroupInterface[] {
-  // Convert hashmap to array of MaterialInterface objects
-  const materialsArray: T[] = Object.values(materialsMap);
-
+  // No need to convert to an array, as we need to preserve the hashmap structure
   return [
     {
-      groupName: groupName,
-      materials: materialsArray,
+      groupName,
+      materials: materialsMap, // Directly use the original hashmap
     },
   ];
 }

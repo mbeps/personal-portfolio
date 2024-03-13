@@ -6,12 +6,19 @@ export default function applySearchResultsToMaterial<
   filteredArray: T[],
   originalHashMap: { [key: string]: T }
 ): { [key: string]: T } {
+  const keyMap: Map<T, string> = new Map();
+
+  // Reverse-map objects to their keys
+  Object.entries(originalHashMap).forEach(([key, item]) => {
+    keyMap.set(item, key);
+  });
+
   const filteredHashMap: { [key: string]: T } = {};
 
   filteredArray.forEach((item) => {
-    const itemInHashMap = originalHashMap[item.slug];
-    if (itemInHashMap) {
-      filteredHashMap[item.slug] = itemInHashMap;
+    const key = keyMap.get(item);
+    if (key) {
+      filteredHashMap[key] = item;
     }
   });
 
