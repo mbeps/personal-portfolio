@@ -22,6 +22,7 @@ import ProjectsList from "@/components/MaterialLists/ProjectsList";
 import { Button } from "@/components/shadcn/ui/button";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import useFuseSearch from "@/hooks/useFuseSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
@@ -78,37 +79,19 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ projects }) => {
    * These are the only properties that are searched.
    * These are the same ones from the Project type.
    */
-  const searchOptions = {
-    keys: [
-      "name",
-      "category",
-      "skills.name",
-      "skills.category",
-      "skills.relatedSkills.name",
-      "skills.relatedSkills.category",
-    ],
-    threshold: 0.3, // Lower threshold means more results
-  };
+  const searchOptions = [
+    "name",
+    "category",
+    "skills.name",
+    "skills.category",
+    "skills.relatedSkills.name",
+    "skills.relatedSkills.category",
+  ];
 
-  const projectsArray: ProjectInterface[] = Object.values(projects);
-
-  /**
-   * Fuse object that is used to search the projects.
-   * @param allProjects (Project[]): list of all projects
-   * @param options (Fuse.IFuseOptions<Project>): options for fuzzy search
-   */
-  const fuse = new Fuse(projectsArray, searchOptions);
-
-  /**
-   * List of projects that match the search term.
-   */
-  const searchedProjects = searchTerm
-    ? fuse.search(searchTerm).map((result) => result.item)
-    : projectsArray;
-
-  const filteredProjectsHashMap = applySearchResultsToMaterial(
-    searchedProjects,
-    projects
+  const filteredProjectsHashMap = useFuseSearch(
+    projects,
+    searchTerm,
+    searchOptions
   );
 
   //^ Filter Options List

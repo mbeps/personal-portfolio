@@ -19,6 +19,7 @@ import SearchInput from "@/components/Inputs/SearchInput";
 import BlogsList from "@/components/MaterialLists/BlogsList";
 import { Button } from "@/components/shadcn/ui/button";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import useFuseSearch from "@/hooks/useFuseSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import BlogInterface from "@/interfaces/material/BlogInterface";
@@ -72,44 +73,20 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
     setIsFilterModalOpen(!isFilterOpen);
   };
 
-  //^ Search Settings
-  /**
-   * Fuse.js options for fuzzy search.
-   * These are the only properties that are searched.
-   * These are the same ones from the `Blog` type.
-   */
-  const searchOptions = {
-    keys: [
-      "name",
-      "category",
-      "issuer",
-      "skills.name",
-      "skills.category",
-      "skills.relatedSkills.name",
-      "skills.relatedSkills.category",
-      "programmingLanguage.name",
-    ],
-    threshold: 0.3,
-  };
+  // Define your search options
+  const searchOptions = [
+    "name",
+    "category",
+    "issuer",
+    "skills.name",
+    "skills.category",
+    "skills.relatedSkills.name",
+    "skills.relatedSkills.category",
+    "programmingLanguage.name",
+  ];
 
-  // Inside your BlogsView component, before using Fuse.js
-
-  // Assuming blogs is your original hashmap of BlogInterface objects
-  const blogArray: BlogInterface[] = Object.values(blogs);
-
-  // Setting up Fuse.js with blogArray and searchOptions
-  const fuse = new Fuse(blogArray, searchOptions);
-
-  // Perform search with Fuse.js
-  const searchedBlogsArray = searchTerm
-    ? fuse.search(searchTerm).map((result) => result.item)
-    : blogArray;
-
-  // Apply the filtered search results back to the original hashmap structure
-  const filteredBlogsHashMap = applySearchResultsToMaterial(
-    searchedBlogsArray,
-    blogs
-  );
+  // Use the custom hook to perform the search
+  const filteredBlogsHashMap = useFuseSearch(blogs, searchTerm, searchOptions);
 
   //^ Filter Options List
 

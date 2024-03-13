@@ -21,6 +21,7 @@ import SearchInput from "@/components/Inputs/SearchInput";
 import CertificatesList from "@/components/MaterialLists/CertificatesList";
 import { Button } from "@/components/shadcn/ui/button";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import useFuseSearch from "@/hooks/useFuseSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
@@ -93,33 +94,20 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
   };
 
   //^ Search Settings
-  const searchOptions = {
-    keys: [
-      "name",
-      "category",
-      "issuer",
-      "skills.name",
-      "skills.category",
-      "skills.relatedSkills.name",
-      "skills.relatedSkills.category",
-    ], // Only search these properties
-    threshold: 0.3, // Lower threshold means more results
-  };
+  const searchOptions = [
+    "name",
+    "category",
+    "issuer",
+    "skills.name",
+    "skills.category",
+    "skills.relatedSkills.name",
+    "skills.relatedSkills.category",
+  ];
 
-  const certificateArray: CertificateInterface[] = Object.values(certificates);
-
-  const fuse = new Fuse(certificateArray, searchOptions);
-
-  // search array of certificates
-
-  const searchedCertificatesArray: CertificateInterface[] = searchTerm
-    ? fuse.search(searchTerm).map((result) => result.item)
-    : certificateArray;
-
-  // Apply the filtered search results back to the original hashmap structure
-  const filteredBlogsHashMap = applySearchResultsToMaterial(
-    searchedCertificatesArray,
-    certificates
+  const filteredCertificatesHashMap = useFuseSearch(
+    certificates,
+    searchTerm,
+    searchOptions
   );
 
   //^ Filter Options List
@@ -169,7 +157,7 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
     );
   };
 
-  let filteredCertificates = filteredBlogsHashMap;
+  let filteredCertificates = filteredCertificatesHashMap;
 
   // Filter by issuer
   if (selectedIssuer !== "all") {
