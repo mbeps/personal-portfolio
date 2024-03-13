@@ -238,7 +238,9 @@ const blogsMap: { [key: string]: BlogInterface } = {
   },
 };
 
-const blogs = addNestedSkillsMaterialList<BlogInterface>(
+const blogs: {
+  [key: string]: BlogInterface;
+} = addNestedSkillsMaterialList<BlogInterface>(
   blogsMap,
   SkillTypesEnum.General,
   SkillTypesEnum.Hard

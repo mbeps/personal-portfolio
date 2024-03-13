@@ -26,9 +26,9 @@ import {
   PopoverTrigger,
 } from "@/components/shadcn/ui/popover";
 import blogs from "@/database/blogs";
-import allCertificates from "@/database/certificates";
+import certificateDatabase from "@/database/certificates";
 import certificates from "@/database/certificates";
-import allProjects from "@/database/projects";
+import projectDatabase from "@/database/projects";
 import projects from "@/database/projects";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import FilterOption from "@/interfaces/filters/FilterOption";
@@ -50,8 +50,8 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
   const [isOpen, setOpen] = useState(false);
 
   const allMaterial: { [key: string]: MaterialInterface } = {
-    ...allProjects,
-    ...allCertificates,
+    ...projectDatabase,
+    ...certificateDatabase,
     ...blogs,
   };
 

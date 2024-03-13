@@ -11,8 +11,8 @@ import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
 import { BLOG, CERTIFICATES, PROJECTS } from "@/constants/pages";
 import blogs from "@/database/blogs";
-import allCertificates from "@/database/certificates";
-import allProjects from "@/database/projects";
+import certificateDatabase from "@/database/certificates";
+import projectDatabase from "@/database/projects";
 import allSkills from "@/database/skills/skills";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 import MaterialListProps from "@/interfaces/props/MaterialListProps";
@@ -77,13 +77,13 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
   const sections: MaterialSectionInterface[] = [
     {
       name: "Projects",
-      materials: updateProjectImages(allProjects),
+      materials: updateProjectImages(projectDatabase),
       basePath: PROJECTS.path,
       ListComponent: ProjectsList,
     },
     {
       name: "Certificates",
-      materials: allCertificates,
+      materials: certificateDatabase,
       basePath: CERTIFICATES.path,
       ListComponent: CertificatesList,
     },

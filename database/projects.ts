@@ -1325,15 +1325,15 @@ const projectMap: {
   },
 };
 
-export { projectMap };
-
 /**
  * Array of all projects.
  */
-const allProjects = addNestedSkillsMaterialList<ProjectInterface>(
+const projectDatabase: {
+  [key: string]: ProjectInterface;
+} = addNestedSkillsMaterialList<ProjectInterface>(
   projectMap,
   SkillTypesEnum.General,
   SkillTypesEnum.Hard
 );
 
-export default allProjects;
+export default projectDatabase;

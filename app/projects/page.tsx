@@ -1,7 +1,7 @@
 import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/UI/PageDescription";
 import { PROJECTS } from "@/constants/pages";
-import allProjects from "@/database/projects";
+import projectDatabase from "@/database/projects";
 import type { Metadata } from "next";
 import ProjectsView from "./components/ProjectsView";
 import updateProjectImages from "@/actions/file-system/updateProjectImages";
@@ -36,7 +36,7 @@ const ProjectsPage = () => {
       <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
         <HeadingOne title={PROJECTS.label} />
         <PageDescription description={description} />
-        <ProjectsView projects={updateProjectImages(allProjects)} />
+        <ProjectsView projects={updateProjectImages(projectDatabase)} />
       </div>
     </section>
   );

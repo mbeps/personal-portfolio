@@ -8,7 +8,7 @@ import HeadingTwo from "@/components/Text/HeadingTwo";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
-import allCertificates from "@/database/certificates";
+import certificateDatabase from "@/database/certificates";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
 import { Metadata, ResolvingMetadata } from "next";
@@ -35,7 +35,7 @@ export async function generateMetadata(
   // Assume getCertificateBySlug function fetches certificate by slug
   const certificate = getContentBySlug<CertificateInterface>(
     slug,
-    allCertificates
+    certificateDatabase
   );
 
   // Create metadata based on the certificate details
@@ -46,7 +46,7 @@ export async function generateMetadata(
 }
 
 export const generateStaticParams = async () => {
-  return Object.values(allCertificates).map((certificate) => ({
+  return Object.values(certificateDatabase).map((certificate) => ({
     params: { slug: certificate.slug },
   }));
 };
@@ -75,7 +75,7 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
 
   const certificate = getContentBySlug<CertificateInterface>(
     slug,
-    allCertificates
+    certificateDatabase
   );
   if (!certificate) {
     notFound();

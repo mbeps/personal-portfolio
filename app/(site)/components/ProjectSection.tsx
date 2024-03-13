@@ -5,7 +5,7 @@ import HeadingTwo from "@/components/Text/HeadingTwo";
 import SlideUp from "@/components/UI/Slideup";
 import { Button } from "@/components/shadcn/ui/button";
 import { PROJECTS } from "@/constants/pages";
-import allProjects from "@/database/projects";
+import projectDatabase from "@/database/projects";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import Link from "next/link";
 
@@ -29,7 +29,9 @@ const ProjectsSection = () => {
   ];
 
   // Validate the slugs
-  if (!validateSlugsWithContent<ProjectInterface>(allowedSlugs, allProjects)) {
+  if (
+    !validateSlugsWithContent<ProjectInterface>(allowedSlugs, projectDatabase)
+  ) {
     console.error("Some slugs in allowedSlugs are not valid.");
     return null;
   }
@@ -39,7 +41,7 @@ const ProjectsSection = () => {
       <HeadingTwo title="Projects" />
 
       <div className="flex flex-col space-y-20 mt-14">
-        {Object.values(updateProjectImages(allProjects))
+        {Object.values(updateProjectImages(projectDatabase))
           .filter((project) => allowedSlugs.includes(project.slug))
           .map((project, idx) => (
             <div key={idx}>

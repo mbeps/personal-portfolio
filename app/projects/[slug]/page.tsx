@@ -13,7 +13,7 @@ import HeadingTwo from "@/components/Text/HeadingTwo";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
 import { PROJECTS } from "@/constants/pages";
-import allProjects from "@/database/projects";
+import projectDatabase from "@/database/projects";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
@@ -40,7 +40,7 @@ export async function generateMetadata(
   const slug = params.slug;
 
   // Assume getProjectBySlug function fetches project by slug
-  const project = getContentBySlug(slug, allProjects);
+  const project = getContentBySlug(slug, projectDatabase);
 
   // Create metadata based on the project details
   return {
@@ -56,7 +56,7 @@ export async function generateMetadata(
  * This improves the performance of the website.
  */
 export const generateStaticParams = async () => {
-  return Object.values(allProjects).map((project) => ({
+  return Object.values(projectDatabase).map((project) => ({
     params: { slug: project.slug },
   }));
 };
@@ -84,7 +84,7 @@ interface ProjectPageProps {
 const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const slug = params.slug;
   const basePath = PROJECTS.path;
-  const project = getContentBySlug<ProjectInterface>(slug, allProjects);
+  const project = getContentBySlug<ProjectInterface>(slug, projectDatabase);
 
   // redirect to not found page if the project is not valid
   if (!project) {

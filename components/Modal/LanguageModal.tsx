@@ -28,7 +28,7 @@ import {
 } from "@/components/shadcn/ui/tooltip";
 import blogs from "@/database/blogs";
 import certificatesWithoutNestedSkills from "@/database/certificates";
-import allProjects from "@/database/projects";
+import projectDatabase from "@/database/projects";
 import allSkills from "@/database/skills/skills";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import BlogInterface from "@/interfaces/material/BlogInterface";
@@ -90,7 +90,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
   );
   const groupedSkills = groupSkills(groupedBy, languageSkills || []);
 
-  const projects: { [key: string]: ProjectInterface } = allProjects;
+  const projects: { [key: string]: ProjectInterface } = projectDatabase;
   const certificates: {
     [key: string]: CertificateInterface;
   } = certificatesWithoutNestedSkills;

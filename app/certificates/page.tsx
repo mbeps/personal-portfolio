@@ -2,7 +2,7 @@ import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/UI/PageDescription";
 import developerName from "@/constants/developerName";
 import { CERTIFICATES } from "@/constants/pages";
-import allCertificates from "@/database/certificates";
+import certificateDatabase from "@/database/certificates";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
 import { Metadata } from "next";
 import React from "react";
@@ -32,7 +32,7 @@ const CertificatesPage: React.FC = () => {
       <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
         <HeadingOne title={CERTIFICATES.label} />
         <PageDescription description={description} />
-        <CertificatesView certificates={allCertificates} />
+        <CertificatesView certificates={certificateDatabase} />
       </div>
     </section>
   );

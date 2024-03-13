@@ -161,7 +161,7 @@ import {
   gitLab,
 } from "./skills/technicalHardSkills/technicalHardSkillsVCS";
 
-const certificatesWithoutNestedSkills: {
+const certificateMap: {
   [key: string]: CertificateInterface;
 } = {
   //^ Programming Languages
@@ -2506,12 +2506,12 @@ const certificatesWithoutNestedSkills: {
   },
 };
 
-export { certificatesWithoutNestedSkills };
-
-const allCertificates = addNestedSkillsMaterialList<CertificateInterface>(
-  certificatesWithoutNestedSkills,
+const certificateDatabase: {
+  [key: string]: CertificateInterface;
+} = addNestedSkillsMaterialList<CertificateInterface>(
+  certificateMap,
   SkillTypesEnum.General,
   SkillTypesEnum.Hard
 );
 
-export default allCertificates;
+export default certificateDatabase;

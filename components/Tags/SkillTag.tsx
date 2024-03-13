@@ -7,8 +7,8 @@ import {
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
 import blogs from "@/database/blogs";
-import allCertificates from "@/database/certificates";
-import allProjects from "@/database/projects";
+import certificateDatabase from "@/database/certificates";
+import projectDatabase from "@/database/projects";
 import allSkills from "@/database/skills/skills";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
@@ -28,8 +28,8 @@ const SkillTag: React.FC<TagProps> = ({ skill, hide }) => {
   const skills: SkillInterface[] = allSkills;
 
   const allMaterial: { [key: string]: MaterialInterface } = {
-    ...allProjects,
-    ...allCertificates,
+    ...projectDatabase,
+    ...certificateDatabase,
     ...blogs,
   };
 
