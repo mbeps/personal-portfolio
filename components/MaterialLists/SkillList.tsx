@@ -2,7 +2,6 @@
 
 import generateUrl from "@/actions/generateUrl";
 import countMaterialsAttributedToSkill from "@/actions/material/countMaterialsAttributedToSkill";
-import findAllMaterialsAttributedToSkill from "@/actions/material/findAllMaterialsAttributedToSkill";
 import groupSkills from "@/actions/skills/groupSkills";
 import SkillTag from "@/components/Tags/SkillTag";
 import HeadingThree from "@/components/Text/HeadingThree";
@@ -25,14 +24,9 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/shadcn/ui/popover";
-import blogs from "@/database/blogs";
-import certificateDatabase from "@/database/certificates";
-import certificates from "@/database/certificates";
-import projectDatabase from "@/database/projects";
-import projects from "@/database/projects";
+import materialDatabase from "@/database/material";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import FilterOption from "@/interfaces/filters/FilterOption";
-import MaterialInterface from "@/interfaces/material/MaterialInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import { cn } from "@/lib/utils";
@@ -48,12 +42,6 @@ interface SkillListProps {
 
 const SkillList: React.FC<SkillListProps> = ({ skills }) => {
   const [isOpen, setOpen] = useState(false);
-
-  const allMaterial: { [key: string]: MaterialInterface } = {
-    ...projectDatabase,
-    ...certificateDatabase,
-    ...blogs,
-  };
 
   const searchParams = useSearchParams();
   const basePath = "/skills";
@@ -294,7 +282,10 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
                     skill={skill}
                     hide={
                       !(
-                        countMaterialsAttributedToSkill(skill, allMaterial) >= 5
+                        countMaterialsAttributedToSkill(
+                          skill,
+                          materialDatabase
+                        ) >= 5
                       ) && includeNoMaterial
                     }
                   />

@@ -26,20 +26,14 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
-import blogs from "@/database/blogs";
-import certificatesWithoutNestedSkills from "@/database/certificates";
-import projectDatabase from "@/database/projects";
+import materialDatabase from "@/database/material";
 import allSkills from "@/database/skills/skills";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import FilterOption from "@/interfaces/filters/FilterOption";
-import BlogInterface from "@/interfaces/material/BlogInterface";
-import CertificateInterface from "@/interfaces/material/CertificateInterface";
-import MaterialInterface from "@/interfaces/material/MaterialInterface";
-import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Link from "next/link";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
 
 interface LanguageTagWithModalProps {
   language: SkillInterface;
@@ -90,18 +84,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
   );
   const groupedSkills = groupSkills(groupedBy, languageSkills || []);
 
-  const projects: { [key: string]: ProjectInterface } = projectDatabase;
-  const certificates: {
-    [key: string]: CertificateInterface;
-  } = certificatesWithoutNestedSkills;
-  const allBlogs: { [key: string]: BlogInterface } = blogs;
-  const allMaterial: { [key: string]: MaterialInterface } = {
-    ...projects,
-    ...certificates,
-    ...allBlogs,
-  };
-
-  const hasMaterial = isSkillAssociatedWithMaterial(language, allMaterial);
+  const hasMaterial = isSkillAssociatedWithMaterial(language, materialDatabase);
 
   const options: FilterOption[] = [
     { slug: "category", entryName: "Category" },

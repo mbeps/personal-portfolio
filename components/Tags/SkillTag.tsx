@@ -6,11 +6,8 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
-import blogs from "@/database/blogs";
-import certificateDatabase from "@/database/certificates";
-import projectDatabase from "@/database/projects";
+import materialDatabase from "@/database/material";
 import allSkills from "@/database/skills/skills";
-import MaterialInterface from "@/interfaces/material/MaterialInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -27,15 +24,9 @@ const SkillTag: React.FC<TagProps> = ({ skill, hide }) => {
 
   const skills: SkillInterface[] = allSkills;
 
-  const allMaterial: { [key: string]: MaterialInterface } = {
-    ...projectDatabase,
-    ...certificateDatabase,
-    ...blogs,
-  };
-
   const hasMaterial: boolean = isSkillAssociatedWithMaterial(
     skill,
-    allMaterial
+    materialDatabase
   );
 
   if (hide) {
