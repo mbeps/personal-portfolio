@@ -49,8 +49,8 @@ export async function generateMetadata(
  * @returns (Array): array of blogs
  */
 export const generateStaticParams = async () => {
-  return Object.entries(blogDatabase).map(([slug, blog]) => ({
-    params: { slug },
+  return Object.keys(blogDatabase).map((slug) => ({
+    slug,
   }));
 };
 

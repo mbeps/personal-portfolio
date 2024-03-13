@@ -56,8 +56,8 @@ export async function generateMetadata(
  * This improves the performance of the website.
  */
 export const generateStaticParams = async () => {
-  return Object.entries(projectDatabase).map(([slug, project]) => ({
-    params: { slug },
+  return Object.keys(projectDatabase).map((slug) => ({
+    slug,
   }));
 };
 

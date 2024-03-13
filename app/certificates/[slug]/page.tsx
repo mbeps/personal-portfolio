@@ -46,8 +46,8 @@ export async function generateMetadata(
 }
 
 export const generateStaticParams = async () => {
-  return Object.entries(certificateDatabase).map(([slug, certificate]) => ({
-    params: { slug },
+  return Object.keys(certificateDatabase).map((slug) => ({
+    slug,
   }));
 };
 
