@@ -13,6 +13,7 @@ import { AspectRatio } from "../shadcn/ui/aspect-ratio";
 
 interface ProjectItemProps {
   project: ProjectInterface;
+  path: string;
 }
 
 /**
@@ -42,7 +43,7 @@ interface ProjectItemProps {
  * @param type (string): Type of the project
  * @returns (JSX.Element): Project item component
  */
-const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
+const ProjectItem: React.FC<ProjectItemProps> = ({ project, path }) => {
   const basePath = PROJECTS_PAGE.path;
 
   return (
@@ -59,7 +60,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
                 transition-all duration-500 ease-in-out
               "
           >
-            <Link href={`${basePath}/${project.slug}`}>
+            <Link href={`${basePath}/${path}`}>
               <AspectRatio ratio={8 / 5} className="overflow-hidden relative">
                 <Image
                   src={project.thumbnailImage}
@@ -85,7 +86,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
           }`}
         >
           {/* Project Title */}
-          <Link href={`${basePath}/${project.slug}`}>
+          <Link href={`${basePath}/${path}`}>
             <h1
               className="
                   flex flex-col
@@ -117,7 +118,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
 
             <Tooltip>
               <TooltipTrigger>
-                <Link href={`${basePath}/${project.slug}`}>
+                <Link href={`${basePath}/${path}`}>
                   <BsInfoCircle
                     size={30}
                     className="md:hover:-translate-y-1 transition-transform cursor-pointer"

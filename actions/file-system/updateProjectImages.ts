@@ -15,10 +15,11 @@ export default function updateProjectImages(projectsMap: {
   [key: string]: ProjectInterface;
 }): { [key: string]: ProjectInterface } {
   return Object.entries(projectsMap).reduce((acc, [key, project]) => {
-    if (hasProjectCover(project.slug)) {
+    if (hasProjectCover(key)) {
+      // Assuming hasProjectCover now uses the project's key
       acc[key] = {
         ...project,
-        thumbnailImage: `/projects/${project.slug}/cover.png`,
+        thumbnailImage: `/projects/${key}/cover.png`,
       };
     } else {
       acc[key] = project;

@@ -18,15 +18,18 @@ const ProjectsList: React.FC<MaterialListProps> = ({
                   <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
                   <HeadingTwo title={group.groupName} />
                   <div className="space-y-20">
-                    {group.materials.map((project, idx) => (
-                      <div key={idx}>
-                        <ProjectItem project={project as ProjectInterface} />
+                    {Object.entries(group.materials).map(([key, project]) => (
+                      <div key={key}>
+                        <ProjectItem
+                          path={key}
+                          project={project as ProjectInterface}
+                        />
                       </div>
                     ))}
                   </div>
                 </div>
               </section>
-            ),
+            )
         )
       ) : (
         <div className="flex justify-center min-w-full mt-8">
