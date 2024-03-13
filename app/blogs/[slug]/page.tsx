@@ -7,7 +7,7 @@ import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import developerName from "@/constants/developerName";
 import { BLOG_PAGE } from "@/constants/pages";
-import blogs from "@/database/blogs";
+import blogDatabase from "@/database/blogs";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import BlogInterface from "@/interfaces/material/BlogInterface";
 import type { Metadata, ResolvingMetadata } from "next";
@@ -30,7 +30,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const slug = params.slug;
-  const allBlogs = blogs;
+  const allBlogs = blogDatabase;
 
   // Assume getBlogMetadataById function fetches metadata by slug
   const blog = getContentBySlug<BlogInterface>(slug, allBlogs);
@@ -49,12 +49,8 @@ export async function generateMetadata(
  * @returns (Array): array of blogs
  */
 export const generateStaticParams = async () => {
-  // get all blogs with metadata
-  const allBlogs = blogs;
-
-  // Convert hashmap values to an array and map through all blogs
-  return Object.values(allBlogs).map((blog) => ({
-    params: { slug: blog.slug },
+  return Object.entries(blogDatabase).map(([slug, blog]) => ({
+    params: { slug },
   }));
 };
 
@@ -66,7 +62,7 @@ export const generateStaticParams = async () => {
 const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
   const slug = params.slug;
   const basePath = BLOG_PAGE.path;
-  const blogMetadata = getContentBySlug<BlogInterface>(slug, blogs);
+  const blogMetadata = getContentBySlug<BlogInterface>(slug, blogDatabase);
   const blogContent = getMarkdownFromFileSystem(
     `public${basePath}/${slug}/blog.md`
   )?.content;

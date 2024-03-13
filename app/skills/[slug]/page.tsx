@@ -10,7 +10,7 @@ import PageDescription from "@/components/UI/PageDescription";
 import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
 import { BLOG_PAGE, CERTIFICATES_PAGE, PROJECTS_PAGE } from "@/constants/pages";
-import blogs from "@/database/blogs";
+import blogDatabase from "@/database/blogs";
 import certificateDatabase from "@/database/certificates";
 import projectDatabase from "@/database/projects";
 import allSkills from "@/database/skills/skills";
@@ -68,7 +68,7 @@ interface ProjectPageProps {
 const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
   const slug = params.slug;
   const skill = getSkillBySlug(slug, [...allSkills]);
-  const blogMetadata = blogs;
+  const blogMetadata = blogDatabase;
 
   if (!skill) {
     notFound();

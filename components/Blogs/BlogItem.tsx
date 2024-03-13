@@ -3,16 +3,20 @@ import BlogInterface from "@/interfaces/material/BlogInterface";
 import Link from "next/link";
 import React from "react";
 
+interface BlogItemProps extends BlogInterface {
+  path: string;
+}
+
 /**
  * Displays a card which allows the user to open a blog.
  * @param props: Blog metadata used in the card
  * @returns (JSX.Element): card with blog metadata
  */
-const BlogItem: React.FC<BlogInterface> = (props) => {
+const BlogItem: React.FC<BlogItemProps> = (props) => {
   const basePath = BLOG_PAGE.path;
 
   return (
-    <Link href={`${basePath}/${props.slug}`}>
+    <Link href={`${basePath}/${props.path}`}>
       <div
         className="
           flex flex-col

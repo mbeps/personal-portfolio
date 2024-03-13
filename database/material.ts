@@ -1,12 +1,12 @@
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
-import blogs from "./blogs";
+import blogDatabase from "./blogs";
 import certificateDatabase from "./certificates";
 import projectDatabase from "./projects";
 
 const materialDatabase: { [key: string]: MaterialInterface } = {
   ...projectDatabase,
   ...certificateDatabase,
-  ...blogs,
+  ...blogDatabase,
 };
 
 export default materialDatabase;

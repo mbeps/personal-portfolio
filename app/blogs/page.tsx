@@ -1,7 +1,7 @@
 import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/UI/PageDescription";
 import { BLOG_PAGE } from "@/constants/pages";
-import blogs from "@/database/blogs";
+import blogDatabase from "@/database/blogs";
 import type { Metadata } from "next";
 import { BlogsView } from "./components/BlogsView";
 import developerName from "@/constants/developerName";
@@ -16,8 +16,6 @@ export const metadata: Metadata = {
  * @returns (JSX.Element): page with all blogs
  */
 export default function BlogPage() {
-  let blogMetadata = blogs;
-
   return (
     <main>
       <section id="blogs">
@@ -25,7 +23,7 @@ export default function BlogPage() {
           <HeadingOne title={BLOG_PAGE.label} />
           <PageDescription description={BLOG_PAGE.description} />
 
-          <BlogsView blogs={blogMetadata} />
+          <BlogsView blogs={blogDatabase} />
         </div>
       </section>
     </main>

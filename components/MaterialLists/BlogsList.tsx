@@ -5,7 +5,9 @@ import Grid from "@/components/UI/Grid";
 import BlogInterface from "@/interfaces/material/BlogInterface";
 import MaterialListProps from "@/interfaces/props/MaterialListProps";
 
-const BlogsList: React.FC<MaterialListProps> = ({ groupedMaterial: groupedBlogs }) => {
+const BlogsList: React.FC<MaterialListProps> = ({
+  groupedMaterial: groupedBlogs,
+}) => {
   return (
     <div className="material-page-wrapper">
       {groupedBlogs.length > 0 ? (
@@ -18,13 +20,19 @@ const BlogsList: React.FC<MaterialListProps> = ({ groupedMaterial: groupedBlogs 
                   {/* Assuming HeadingTwo is a component you have for rendering titles */}
                   <HeadingTwo title={group.groupName} />
                   <Grid
-                    items={group.materials.map((blog, idx) => (
-                      <BlogItem key={idx} {...(blog as BlogInterface)} />
-                    ))}
+                    items={Object.entries(group.materials).map(
+                      ([key, blog]) => (
+                        <BlogItem
+                          key={key}
+                          path={key}
+                          {...(blog as BlogInterface)}
+                        />
+                      )
+                    )}
                   />
                 </div>
               </section>
-            ),
+            )
         )
       ) : (
         <div className="flex justify-center min-w-full mt-8">

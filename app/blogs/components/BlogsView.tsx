@@ -1,12 +1,11 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
-import applySearchResultsToMaterial from "@/actions/material/applySearchResultsToHashMap";
 import {
   filterMaterialByArchivedStatus,
   filterMaterialByCategory,
-  filterMaterialBySkillCategory,
   filterMaterialBySkill,
+  filterMaterialBySkillCategory,
 } from "@/actions/material/filterMaterials";
 import generateFilterOptionsByCategory from "@/actions/material/generateFilterOptionsByCategory";
 import { generateFilterOptionsBySkillCategories } from "@/actions/material/generateFilterOptionsBySkillCategories";
@@ -23,7 +22,6 @@ import useFuseSearch from "@/hooks/useFuseSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import BlogInterface from "@/interfaces/material/BlogInterface";
-import Fuse from "fuse.js";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
@@ -131,7 +129,6 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
   };
 
   //^ Filtering Logic
-  // let filteredBlogs = searchedBlogs;
   let filteredBlogs = filteredBlogsHashMap;
 
   // Filter by blog category

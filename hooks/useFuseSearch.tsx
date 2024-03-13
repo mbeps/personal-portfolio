@@ -39,13 +39,25 @@ function useFuseSearch<T extends MaterialInterface>(
       : itemsArray;
   }, [fuse, itemsArray, searchTerm]);
 
-  // Convert the searched items back into a hashmap
+  // Create a reverse lookup map for item names to keys
+  const nameToKeyMap = useMemo(() => {
+    return Object.keys(itemsMap).reduce((acc, key) => {
+      const item = itemsMap[key];
+      acc[item.name] = key; // Assuming 'name' is a unique identifier
+      return acc;
+    }, {} as { [name: string]: string });
+  }, [itemsMap]);
+
+  // Convert the searched items back into a hashmap using the reverse lookup
   const filteredItemsMap = useMemo(() => {
     return searchedItems.reduce((acc, item) => {
-      acc[item.slug] = item;
+      const key = nameToKeyMap[item.name]; // Retrieve the original key using the item's name
+      if (key) {
+        acc[key] = item;
+      }
       return acc;
     }, {} as { [key: string]: T });
-  }, [searchedItems]);
+  }, [searchedItems, nameToKeyMap]);
 
   return filteredItemsMap;
 }

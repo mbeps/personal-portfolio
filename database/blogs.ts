@@ -66,7 +66,6 @@ import { git } from "./skills/technicalHardSkills/technicalHardSkillsVCS";
 
 const blogsMap: { [key: string]: BlogInterface } = {
   [MaterialSlugEnum.Backend]: {
-    slug: MaterialSlugEnum.Backend,
     name: "Exploring Backends: Custom vs Managed Solutions",
     subtitle:
       "An In-depth Analysis of Backend Development Approaches, Tools, and Security Considerations",
@@ -74,7 +73,6 @@ const blogsMap: { [key: string]: BlogInterface } = {
     category: BlogCategoriesEnum.WebDevelopment,
   },
   [MaterialSlugEnum.CICD]: {
-    slug: MaterialSlugEnum.CICD,
     name: "Embracing the Future of Software Development: A Comprehensive Guide to CI/CD",
     subtitle:
       "Mastering Continuous Integration and Continuous Delivery for Enhanced Software Delivery",
@@ -96,7 +94,6 @@ const blogsMap: { [key: string]: BlogInterface } = {
     ],
   },
   [MaterialSlugEnum.DevOps]: {
-    slug: MaterialSlugEnum.DevOps,
     name: "Embracing DevOps: A Guide to Principles, Practices, and Success Stories",
     subtitle:
       "Understanding the Impact of DevOps in Modern Software Development",
@@ -118,7 +115,6 @@ const blogsMap: { [key: string]: BlogInterface } = {
     ],
   },
   [MaterialSlugEnum.Docker]: {
-    slug: MaterialSlugEnum.Docker,
     name: "Docker: Unleashing the Power of Containers",
     subtitle:
       "A Comprehensive Guide to Understanding Docker and Containerization Technology",
@@ -126,7 +122,6 @@ const blogsMap: { [key: string]: BlogInterface } = {
     skills: [devOps, docker, containerization, problemSolving],
   },
   [MaterialSlugEnum.Frontend]: {
-    slug: MaterialSlugEnum.Frontend,
     name: "Front-End Development and the Essential Role of Libraries and Frameworks",
     subtitle:
       "A comprehensive introduction to standard front-end web development using libraries and frameworks",
@@ -144,7 +139,6 @@ const blogsMap: { [key: string]: BlogInterface } = {
     ],
   },
   [MaterialSlugEnum.JavaScriptVsTypeScript]: {
-    slug: MaterialSlugEnum.JavaScriptVsTypeScript,
     name: "JavaScript vs TypeScript: A Detailed Comparison",
     subtitle:
       "Exploring the Advantages and Key Differences between JavaScript and TypeScript",
@@ -152,14 +146,12 @@ const blogsMap: { [key: string]: BlogInterface } = {
     skills: [javascript, typescript],
   },
   [MaterialSlugEnum.Kubernetes]: {
-    slug: MaterialSlugEnum.Kubernetes,
     name: "Kubernetes Guide: Mastering Container Orchestration",
     subtitle: "An Overview of Components, Tools, and Best Practices",
     category: BlogCategoriesEnum.DevOps,
     skills: [devOps, kubernetes, docker, containerization],
   },
   [MaterialSlugEnum.MachineLearningFoundations]: {
-    slug: MaterialSlugEnum.MachineLearningFoundations,
     name: "Exploring the Depths of Machine Learning",
     subtitle:
       "A Comprehensive Guide to Machine Learning: Concepts, Challenges, and Real-World Impact",
@@ -174,7 +166,6 @@ const blogsMap: { [key: string]: BlogInterface } = {
     ],
   },
   [MaterialSlugEnum.ORM]: {
-    slug: MaterialSlugEnum.ORM,
     name: "Understanding Object-Relational Mapping (ORM)",
     subtitle:
       "A Comprehensive Overview of ORM, Its Advantages, Disadvantages, and Role in Modern Web Application Development",
@@ -192,28 +183,24 @@ const blogsMap: { [key: string]: BlogInterface } = {
     ],
   },
   [MaterialSlugEnum.RESTGraphQL]: {
-    slug: MaterialSlugEnum.RESTGraphQL,
     name: "Comparing GraphQL and REST: A Detailed Overview",
     subtitle: "Choosing the Right API Design Approach",
     category: BlogCategoriesEnum.WebDevelopment,
     skills: [webDevelopment, apis, rest, graphQL, problemSolving],
   },
   [MaterialSlugEnum.SDKvsAPI]: {
-    slug: MaterialSlugEnum.SDKvsAPI,
     name: "SDKs vs APIs: A Comparative Guide",
     subtitle: "Understanding Their Roles in Software Development",
     category: BlogCategoriesEnum.SoftwareEngineering,
     skills: [apis, sdks],
   },
   [MaterialSlugEnum.SessionsVsTokens]: {
-    slug: MaterialSlugEnum.SessionsVsTokens,
     name: "Comparing Session and Token: Navigating Authentication",
     subtitle: "A Detailed Comparison of Authentication Strategies",
     category: BlogCategoriesEnum.WebDevelopment,
     skills: [webDevelopment, userAuthentication],
   },
   [MaterialSlugEnum.SoftwareTesting]: {
-    slug: MaterialSlugEnum.SoftwareTesting,
     name: "Comprehensive Guide to Software Testing",
     subtitle:
       "Exploring Functional and Non-Functional Testing Techniques, Tools, and Challenges",
@@ -221,7 +208,6 @@ const blogsMap: { [key: string]: BlogInterface } = {
     skills: [testing, problemSolving],
   },
   [MaterialSlugEnum.SQLNOSQL]: {
-    slug: MaterialSlugEnum.SQLNOSQL,
     name: "Exploring Databases: A Comparative Study of Relational and Non-Relational Models",
     subtitle:
       "An In-depth Analysis of Database Systems and their Role in Software Engineering and Web Development",
@@ -229,7 +215,6 @@ const blogsMap: { [key: string]: BlogInterface } = {
     skills: [databaseManagementSystems, databases, sql, noSql, normalisation],
   },
   [MaterialSlugEnum.SyncAsync]: {
-    slug: MaterialSlugEnum.SyncAsync,
     name: "Sync vs Async: Deep Dive into Programming Models",
     subtitle:
       "Understanding and Optimizing Synchronous and Asynchronous Programming",
@@ -238,7 +223,7 @@ const blogsMap: { [key: string]: BlogInterface } = {
   },
 };
 
-const blogs: {
+const blogDatabase: {
   [key: string]: BlogInterface;
 } = addNestedSkillsMaterialList<BlogInterface>(
   blogsMap,
@@ -246,4 +231,4 @@ const blogs: {
   SkillTypesEnum.Hard
 );
 
-export default blogs;
+export default blogDatabase;

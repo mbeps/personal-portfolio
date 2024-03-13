@@ -4,22 +4,29 @@ import MaterialInterface from "@/interfaces/material/MaterialInterface";
 export default function groupMaterialsByCategory<
   T extends MaterialInterface
 >(materialsMap: { [key: string]: T }): MaterialGroupInterface[] {
-  const materialsArray: T[] = Object.values(materialsMap);
+  // Convert the hashmap into an array of entries ([key, value] pairs)
+  const materialsEntries: [string, T][] = Object.entries(materialsMap);
 
-  return materialsArray.reduce<MaterialGroupInterface[]>((groups, material) => {
-    const groupIndex = groups.findIndex(
-      (group) => group.groupName === material.category
-    );
+  return materialsEntries.reduce<MaterialGroupInterface[]>(
+    (groups, [key, material]) => {
+      // Find the index of the group that matches the current material's category
+      const groupIndex = groups.findIndex(
+        (group) => group.groupName === material.category
+      );
 
-    if (groupIndex === -1) {
-      groups.push({
-        groupName: material.category,
-        materials: [material],
-      });
-    } else {
-      groups[groupIndex].materials.push(material);
-    }
+      // If the group doesn't exist, create a new group with the material added to its hashmap
+      if (groupIndex === -1) {
+        groups.push({
+          groupName: material.category,
+          materials: { [key]: material }, // Initialize with the current material as a hashmap
+        });
+      } else {
+        // If the group exists, add the current material to the group's materials hashmap
+        groups[groupIndex].materials[key] = material;
+      }
 
-    return groups;
-  }, []);
+      return groups;
+    },
+    []
+  );
 }
