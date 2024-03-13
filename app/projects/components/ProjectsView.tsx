@@ -1,12 +1,11 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
-import applySearchResultsToMaterial from "@/actions/material/applySearchResultsToHashMap";
 import {
   filterMaterialByArchivedStatus,
   filterMaterialByCategory,
-  filterMaterialBySkillCategory,
   filterMaterialBySkill,
+  filterMaterialBySkillCategory,
 } from "@/actions/material/filterMaterials";
 import generateFilterOptionsByCategory from "@/actions/material/generateFilterOptionsByCategory";
 import { generateFilterOptionsBySkillCategories } from "@/actions/material/generateFilterOptionsBySkillCategories";
@@ -26,7 +25,6 @@ import useFuseSearch from "@/hooks/useFuseSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
-import Fuse from "fuse.js";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
@@ -93,52 +91,6 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ projects }) => {
     searchTerm,
     searchOptions
   );
-
-  //^ Filter Options List
-  /**
-   * List of project types to be displayed in the filter.
-   * Adds 'All' as the first option.
-   * Appends all unique project types to the list.
-   * Project types are from the 'type' property of each project.
-   */
-  const projectTypes =
-    generateFilterOptionsByCategory<ProjectInterface>(projects);
-
-  /**
-   * List of programming languages to be displayed in the filter.
-   * Adds 'All' as the first option.
-   * Appends all unique programming languages to the list.
-   * Programming languages are from the 'programmingLanguage' property of each project.
-   */
-  const programmingLanguages =
-    generateFilterOptionsForProgrammingLanguages<ProjectInterface>(projects);
-
-  /**
-   * List of technologies to be displayed in the filter.
-   * Adds 'All' as the first option.
-   * Appends all unique technologies to the list.
-   * Technologies are from the 'technologies' property of each project.
-   */
-  const technologies = generateFilterOptionsBySkillType<ProjectInterface>(
-    projects,
-    SkillTypesEnum.Hard,
-    SkillCategoriesEnum.ProgrammingLanguages
-  );
-
-  const categories =
-    generateFilterOptionsBySkillCategories<ProjectInterface>(projects);
-
-  const generalSkills: FilterOption[] =
-    generateFilterOptionsBySkillType<ProjectInterface>(
-      projects,
-      SkillTypesEnum.General
-    );
-
-  const softSkills: FilterOption[] =
-    generateFilterOptionsBySkillType<ProjectInterface>(
-      projects,
-      SkillTypesEnum.Soft
-    );
 
   //^ Filtering Logic
   /**
@@ -252,37 +204,51 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ projects }) => {
       sectionName: "Section",
       urlParam: sectionParamName,
       selectedValue: selectedSection,
-      options: projectTypes,
+      options: generateFilterOptionsByCategory<ProjectInterface>(projects),
     },
     {
       sectionName: "Programming Language",
       urlParam: languageParamName,
       selectedValue: selectedLanguage,
-      options: programmingLanguages,
+      options:
+        generateFilterOptionsForProgrammingLanguages<ProjectInterface>(
+          projects
+        ),
     },
     {
       sectionName: "Technology",
       urlParam: technologyParamName,
       selectedValue: selectedTechnology,
-      options: technologies,
+      options: generateFilterOptionsBySkillType<ProjectInterface>(
+        projects,
+        SkillTypesEnum.Hard,
+        SkillCategoriesEnum.ProgrammingLanguages
+      ),
     },
     {
       sectionName: "Category",
       urlParam: skillCategoryParamName,
       selectedValue: selectedSkillCategory,
-      options: categories,
+      options:
+        generateFilterOptionsBySkillCategories<ProjectInterface>(projects),
     },
     {
       sectionName: "General Skill",
       urlParam: generalSkillParamName,
       selectedValue: selectedGeneralSkill,
-      options: generalSkills,
+      options: generateFilterOptionsBySkillType<ProjectInterface>(
+        projects,
+        SkillTypesEnum.General
+      ),
     },
     {
       sectionName: "Soft Skill",
       urlParam: softSkillParamName,
       selectedValue: selectedSoftSkill,
-      options: softSkills,
+      options: generateFilterOptionsBySkillType<ProjectInterface>(
+        projects,
+        SkillTypesEnum.Soft
+      ),
     },
   ];
 

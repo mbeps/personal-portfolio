@@ -20,7 +20,6 @@ import { Button } from "@/components/shadcn/ui/button";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import useFuseSearch from "@/hooks/useFuseSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
-import FilterOption from "@/interfaces/filters/FilterOption";
 import BlogInterface from "@/interfaces/material/BlogInterface";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -85,26 +84,6 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
 
   // Use the custom hook to perform the search
   const filteredBlogsHashMap = useFuseSearch(blogs, searchTerm, searchOptions);
-
-  //^ Filter Options List
-
-  const blogCategories: FilterOption[] =
-    generateFilterOptionsByCategory<BlogInterface>(blogs);
-
-  const skillCategories: FilterOption[] =
-    generateFilterOptionsBySkillCategories<BlogInterface>(blogs);
-
-  const hardSkills: FilterOption[] =
-    generateFilterOptionsBySkillType<BlogInterface>(blogs, SkillTypesEnum.Hard);
-
-  const generalSkills: FilterOption[] =
-    generateFilterOptionsBySkillType<BlogInterface>(
-      blogs,
-      SkillTypesEnum.General
-    );
-
-  const softSkills: FilterOption[] =
-    generateFilterOptionsBySkillType<BlogInterface>(blogs, SkillTypesEnum.Soft);
 
   //^ Filtering Logic
   /**
@@ -195,31 +174,40 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
       sectionName: "Section",
       urlParam: blogSectionParamName,
       selectedValue: selectedBlogSection,
-      options: blogCategories,
+      options: generateFilterOptionsByCategory<BlogInterface>(blogs),
     },
     {
       sectionName: "Skill Category",
       urlParam: skillCategoryParamName,
       selectedValue: selectedSkillCategory,
-      options: skillCategories,
+      options: generateFilterOptionsBySkillCategories<BlogInterface>(blogs),
     },
     {
       sectionName: "Technical Skill",
       urlParam: technicalSkillParamName,
       selectedValue: selectedTechnicalSkill,
-      options: hardSkills,
+      options: generateFilterOptionsBySkillType<BlogInterface>(
+        blogs,
+        SkillTypesEnum.Hard
+      ),
     },
     {
       sectionName: "General Skill",
       urlParam: generalSkillParamName,
       selectedValue: selectedGeneralSkill,
-      options: generalSkills,
+      options: generateFilterOptionsBySkillType<BlogInterface>(
+        blogs,
+        SkillTypesEnum.General
+      ),
     },
     {
       sectionName: "Soft Skill",
       urlParam: softSkillParamName,
       selectedValue: selectedSoftSkill,
-      options: softSkills,
+      options: generateFilterOptionsBySkillType<BlogInterface>(
+        blogs,
+        SkillTypesEnum.Soft
+      ),
     },
   ];
 

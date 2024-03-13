@@ -1,14 +1,13 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
-import applySearchResultsToMaterial from "@/actions/material/applySearchResultsToHashMap";
 import filterCertificatesByIssuer from "@/actions/material/certificates/filterCertificatesByIssuer";
 import generateIssuerFilterOptions from "@/actions/material/certificates/generateIssuerFilterOptions";
 import {
   filterMaterialByArchivedStatus,
   filterMaterialByCategory,
-  filterMaterialBySkillCategory,
   filterMaterialBySkill,
+  filterMaterialBySkillCategory,
 } from "@/actions/material/filterMaterials";
 import generateFilterOptionsByCategory from "@/actions/material/generateFilterOptionsByCategory";
 import { generateFilterOptionsBySkillCategories } from "@/actions/material/generateFilterOptionsBySkillCategories";
@@ -25,7 +24,6 @@ import useFuseSearch from "@/hooks/useFuseSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
-import Fuse from "fuse.js";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
@@ -109,33 +107,6 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
     searchTerm,
     searchOptions
   );
-
-  //^ Filter Options List
-  const certificateCategories: FilterOption[] =
-    generateFilterOptionsByCategory<CertificateInterface>(certificates);
-
-  const certificateIssuers = generateIssuerFilterOptions(certificates);
-
-  const skillCategories: FilterOption[] =
-    generateFilterOptionsBySkillCategories<CertificateInterface>(certificates);
-
-  const hardSkills: FilterOption[] =
-    generateFilterOptionsBySkillType<CertificateInterface>(
-      certificates,
-      SkillTypesEnum.Hard
-    );
-
-  const generalSkills: FilterOption[] =
-    generateFilterOptionsBySkillType<CertificateInterface>(
-      certificates,
-      SkillTypesEnum.General
-    );
-
-  const softSkills: FilterOption[] =
-    generateFilterOptionsBySkillType<CertificateInterface>(
-      certificates,
-      SkillTypesEnum.Soft
-    );
 
   //^ Filtering Logic
   const updateSearchTerm = (newSearchTerm: string) => {
@@ -232,38 +203,51 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
     {
       sectionName: "Issuer",
       urlParam: issuerParamName,
-      options: certificateIssuers,
       selectedValue: selectedIssuer,
+      options: generateIssuerFilterOptions(certificates),
     },
     {
       sectionName: "Category",
       urlParam: certificateSectionParamName,
-      options: certificateCategories,
       selectedValue: selectedCategory,
+      options:
+        generateFilterOptionsByCategory<CertificateInterface>(certificates),
     },
     {
       sectionName: "Skill Category",
       urlParam: skillCategoryParamName,
-      options: skillCategories,
       selectedValue: selectedSkillCategory,
+      options:
+        generateFilterOptionsBySkillCategories<CertificateInterface>(
+          certificates
+        ),
     },
     {
       sectionName: "Technical Skill",
       urlParam: technicalSkillParamName,
-      options: hardSkills,
       selectedValue: selectedTechnicalSkill,
+      options: generateFilterOptionsBySkillType<CertificateInterface>(
+        certificates,
+        SkillTypesEnum.Hard
+      ),
     },
     {
       sectionName: "General Skill",
       urlParam: generalSkillParamName,
-      options: generalSkills,
       selectedValue: selectedGeneralSkill,
+      options: generateFilterOptionsBySkillType<CertificateInterface>(
+        certificates,
+        SkillTypesEnum.General
+      ),
     },
     {
       sectionName: "Soft Skill",
       urlParam: softSkillParamName,
-      options: softSkills,
       selectedValue: selectedSoftSkill,
+      options: generateFilterOptionsBySkillType<CertificateInterface>(
+        certificates,
+        SkillTypesEnum.Soft
+      ),
     },
   ];
 
