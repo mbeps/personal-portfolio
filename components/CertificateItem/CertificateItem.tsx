@@ -14,6 +14,7 @@ import { AspectRatio } from "../shadcn/ui/aspect-ratio";
 
 interface CertificateItemProps {
   certificate: CertificateInterface;
+  path: string;
 }
 
 /**
@@ -26,14 +27,17 @@ interface CertificateItemProps {
  * @param (CertificateItemProps) - props: the content of the certificate
  * @returns (JSX.Element): certificate item component
  */
-const CertificateItem: React.FC<CertificateItemProps> = ({ certificate }) => {
+const CertificateItem: React.FC<CertificateItemProps> = ({
+  certificate,
+  path,
+}) => {
   const basePath = CERTIFICATES_PAGE.path;
-  const customCertificatePage = `${basePath}/${certificate.slug}`;
+  const customCertificatePage = `${basePath}/${path}`;
   const issuerCertificatePage = certificate.certificateURL;
 
   certificate = {
     ...certificate,
-    certificateImage: `${basePath}/${certificate.slug}.jpg`,
+    certificateImage: `${basePath}/${path}.jpg`,
   };
 
   return (
@@ -65,7 +69,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({ certificate }) => {
           >
             <AspectRatio ratio={4 / 3} className="overflow-hidden relative">
               <Image
-                key={certificate.slug}
+                key={path}
                 src={certificate.certificateImage}
                 alt={`${certificate.name} certificate image`}
                 fill={true}

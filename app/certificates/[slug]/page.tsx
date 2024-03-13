@@ -41,13 +41,13 @@ export async function generateMetadata(
   // Create metadata based on the certificate details
   return {
     title: `${developerName} - Certificates: ${certificate?.name}`,
-    description: certificate?.slug,
+    description: certificate?.description,
   };
 }
 
 export const generateStaticParams = async () => {
-  return Object.values(certificateDatabase).map((certificate) => ({
-    params: { slug: certificate.slug },
+  return Object.entries(certificateDatabase).map(([slug, certificate]) => ({
+    params: { slug },
   }));
 };
 
