@@ -12,7 +12,7 @@ import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
-import { PROJECTS } from "@/constants/pages";
+import { PROJECTS_PAGE } from "@/constants/pages";
 import projectDatabase from "@/database/projects";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import { Metadata, ResolvingMetadata } from "next";
@@ -83,7 +83,7 @@ interface ProjectPageProps {
  */
 const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const slug = params.slug;
-  const basePath = PROJECTS.path;
+  const basePath = PROJECTS_PAGE.path;
   const project = getContentBySlug<ProjectInterface>(slug, projectDatabase);
 
   // redirect to not found page if the project is not valid

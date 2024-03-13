@@ -1,4 +1,4 @@
-import { BLOG } from "@/constants/pages";
+import { BLOG_PAGE } from "@/constants/pages";
 import BlogInterface from "@/interfaces/material/BlogInterface";
 import Link from "next/link";
 import React from "react";
@@ -9,7 +9,7 @@ import React from "react";
  * @returns (JSX.Element): card with blog metadata
  */
 const BlogItem: React.FC<BlogInterface> = (props) => {
-  const basePath = BLOG.path;
+  const basePath = BLOG_PAGE.path;
 
   return (
     <Link href={`${basePath}/${props.slug}`}>

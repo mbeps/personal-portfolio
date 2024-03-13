@@ -4,7 +4,7 @@ import ProjectItem from "@/components/ProjectItem/ProjectItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import SlideUp from "@/components/UI/Slideup";
 import { Button } from "@/components/shadcn/ui/button";
-import { PROJECTS } from "@/constants/pages";
+import { PROJECTS_PAGE } from "@/constants/pages";
 import projectDatabase from "@/database/projects";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import Link from "next/link";
@@ -17,7 +17,7 @@ import Link from "next/link";
  * @returns (JSX.Element): Projects section
  */
 const ProjectsSection = () => {
-  const basePath = PROJECTS.path;
+  const basePath = PROJECTS_PAGE.path;
 
   /**
    * Only projects matching these slugs will be shown.

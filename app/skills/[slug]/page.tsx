@@ -9,7 +9,7 @@ import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/UI/PageDescription";
 import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
-import { BLOG, CERTIFICATES, PROJECTS } from "@/constants/pages";
+import { BLOG_PAGE, CERTIFICATES_PAGE, PROJECTS_PAGE } from "@/constants/pages";
 import blogs from "@/database/blogs";
 import certificateDatabase from "@/database/certificates";
 import projectDatabase from "@/database/projects";
@@ -78,19 +78,19 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
     {
       name: "Projects",
       materials: updateProjectImages(projectDatabase),
-      basePath: PROJECTS.path,
+      basePath: PROJECTS_PAGE.path,
       ListComponent: ProjectsList,
     },
     {
       name: "Certificates",
       materials: certificateDatabase,
-      basePath: CERTIFICATES.path,
+      basePath: CERTIFICATES_PAGE.path,
       ListComponent: CertificatesList,
     },
     {
       name: "Blogs",
       materials: blogMetadata,
-      basePath: BLOG.path,
+      basePath: BLOG_PAGE.path,
       ListComponent: BlogsList,
     },
   ];

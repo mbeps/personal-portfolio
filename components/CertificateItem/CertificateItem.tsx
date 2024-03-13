@@ -3,7 +3,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
-import { CERTIFICATES } from "@/constants/pages";
+import { CERTIFICATES_PAGE } from "@/constants/pages";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
 import Image from "next/image";
 import Link from "next/link";
@@ -27,7 +27,7 @@ interface CertificateItemProps {
  * @returns (JSX.Element): certificate item component
  */
 const CertificateItem: React.FC<CertificateItemProps> = ({ certificate }) => {
-  const basePath = CERTIFICATES.path;
+  const basePath = CERTIFICATES_PAGE.path;
   const customCertificatePage = `${basePath}/${certificate.slug}`;
   const issuerCertificatePage = certificate.certificateURL;
 
@@ -70,7 +70,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({ certificate }) => {
                 alt={`${certificate.name} certificate image`}
                 fill={true}
                 quality={20}
-                loading='lazy'
+                loading="lazy"
                 className="
                   rounded-xl
                   cursor-pointer

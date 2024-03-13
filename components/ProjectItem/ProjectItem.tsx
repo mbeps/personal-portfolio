@@ -3,7 +3,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
-import { PROJECTS } from "@/constants/pages";
+import { PROJECTS_PAGE } from "@/constants/pages";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import Image from "next/image";
 import Link from "next/link";
@@ -43,9 +43,7 @@ interface ProjectItemProps {
  * @returns (JSX.Element): Project item component
  */
 const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
-  const basePath = PROJECTS.path;
-
-
+  const basePath = PROJECTS_PAGE.path;
 
   return (
     <div className="bg-neutral-100 dark:bg-neutral-950 p-4 rounded-xl sm:bg-white sm:dark:bg-neutral-900 sm:p-0 transition-colors duration-700 ">
@@ -68,7 +66,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
                   key={project.thumbnailImage}
                   alt={`${project.name} cover image`}
                   fill={true}
-                  loading='lazy'
+                  loading="lazy"
                   quality={15}
                   className="
                     rounded-xl 
@@ -82,8 +80,9 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project }) => {
         )}
 
         <div
-          className={`mt-8 ${project.thumbnailImage ? "lg:w-1/2" : "lg:w-full"
-            }`}
+          className={`mt-8 ${
+            project.thumbnailImage ? "lg:w-1/2" : "lg:w-full"
+          }`}
         >
           {/* Project Title */}
           <Link href={`${basePath}/${project.slug}`}>

@@ -6,7 +6,7 @@ import Reader from "@/components/Reader/Reader";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import developerName from "@/constants/developerName";
-import { BLOG } from "@/constants/pages";
+import { BLOG_PAGE } from "@/constants/pages";
 import blogs from "@/database/blogs";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import BlogInterface from "@/interfaces/material/BlogInterface";
@@ -65,7 +65,7 @@ export const generateStaticParams = async () => {
  */
 const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
   const slug = params.slug;
-  const basePath = BLOG.path;
+  const basePath = BLOG_PAGE.path;
   const blogMetadata = getContentBySlug<BlogInterface>(slug, blogs);
   const blogContent = getMarkdownFromFileSystem(
     `public${basePath}/${slug}/blog.md`

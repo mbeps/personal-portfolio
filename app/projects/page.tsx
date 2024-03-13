@@ -1,21 +1,15 @@
 import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/UI/PageDescription";
-import { PROJECTS } from "@/constants/pages";
+import { PROJECTS_PAGE } from "@/constants/pages";
 import projectDatabase from "@/database/projects";
 import type { Metadata } from "next";
 import ProjectsView from "./components/ProjectsView";
 import updateProjectImages from "@/actions/file-system/updateProjectImages";
 import developerName from "@/constants/developerName";
 
-const description = `
-  Discover my portfolio of projects, both current and archived. 
-  Use filters to narrow down projects by category, programming language, and technologies. 
-  Archived projects are hidden by default.
-`;
-
 export const metadata: Metadata = {
-  title: `${developerName} - ${PROJECTS.label}`,
-  description: description,
+  title: `${developerName} - ${PROJECTS_PAGE.label}`,
+  description: PROJECTS_PAGE.description,
 };
 
 /**
@@ -34,8 +28,8 @@ const ProjectsPage = () => {
   return (
     <section id="projects" className="flex flex-col items-start md:items-end">
       <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
-        <HeadingOne title={PROJECTS.label} />
-        <PageDescription description={description} />
+        <HeadingOne title={PROJECTS_PAGE.label} />
+        <PageDescription description={PROJECTS_PAGE.description} />
         <ProjectsView projects={updateProjectImages(projectDatabase)} />
       </div>
     </section>
