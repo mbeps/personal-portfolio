@@ -1,19 +1,7 @@
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
-import {
-  apis,
-  cloudComputing,
-  databaseManagementSystems,
-  databases,
-  indexing,
-  noSql,
-  sdks,
-  userAuthentication,
-  webDevelopment,
-} from "../generalSkills";
-import { java, javascript, python, typescript } from "../languages";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 const technicalHardSkillsBackendWebDev: { [key: string]: SkillInterface } = {
   [SkillSlugEnum.Firebase]: {
@@ -22,14 +10,15 @@ const technicalHardSkillsBackendWebDev: { [key: string]: SkillInterface } = {
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
     relatedSkills: [
-      databaseManagementSystems,
-      noSql,
-      databases,
-      indexing,
-      cloudComputing,
-      userAuthentication,
-      sdks,
-      webDevelopment,
+      SkillSlugEnum.DatabaseManagementSystems,
+      SkillSlugEnum.NonRelationalDatabases,
+      SkillSlugEnum.Databases,
+      SkillSlugEnum.DatabaseIndexing,
+      SkillSlugEnum.CloudComputing,
+      SkillSlugEnum.UserAuthentication,
+      SkillSlugEnum.SDKs,
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.GCP,
     ],
   },
   [SkillSlugEnum.Supabase]: {
@@ -38,14 +27,14 @@ const technicalHardSkillsBackendWebDev: { [key: string]: SkillInterface } = {
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
     relatedSkills: [
-      databaseManagementSystems,
-      noSql,
-      databases,
-      indexing,
-      cloudComputing,
-      userAuthentication,
-      sdks,
-      webDevelopment,
+      SkillSlugEnum.DatabaseManagementSystems,
+      SkillSlugEnum.RelationalDatabases,
+      SkillSlugEnum.DatabaseIndexing,
+      SkillSlugEnum.Databases,
+      SkillSlugEnum.CloudComputing,
+      SkillSlugEnum.UserAuthentication,
+      SkillSlugEnum.SDKs,
+      SkillSlugEnum.WebDevelopment,
     ],
   },
   [SkillSlugEnum.PocketBase]: {
@@ -54,14 +43,14 @@ const technicalHardSkillsBackendWebDev: { [key: string]: SkillInterface } = {
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
     relatedSkills: [
-      databaseManagementSystems,
-      noSql,
-      databases,
-      indexing,
-      cloudComputing,
-      userAuthentication,
-      sdks,
-      webDevelopment,
+      SkillSlugEnum.DatabaseManagementSystems,
+      SkillSlugEnum.RelationalDatabases,
+      SkillSlugEnum.Databases,
+      SkillSlugEnum.DatabaseIndexing,
+      SkillSlugEnum.CloudComputing,
+      SkillSlugEnum.UserAuthentication,
+      SkillSlugEnum.SDKs,
+      SkillSlugEnum.WebDevelopment,
     ],
   },
   [SkillSlugEnum.Auth0]: {
@@ -69,86 +58,112 @@ const technicalHardSkillsBackendWebDev: { [key: string]: SkillInterface } = {
     category: SkillCategoriesEnum.BackEndWebDevelopment,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [userAuthentication, sdks],
+    relatedSkills: [SkillSlugEnum.UserAuthentication, SkillSlugEnum.SDKs],
   },
   [SkillSlugEnum.ClerkAuth]: {
     name: "Clerk Auth",
     category: SkillCategoriesEnum.BackEndWebDevelopment,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [userAuthentication, sdks],
+    relatedSkills: [SkillSlugEnum.UserAuthentication, SkillSlugEnum.SDKs],
   },
   [SkillSlugEnum.NextAuth]: {
     name: "NextAuth",
     category: SkillCategoriesEnum.BackEndWebDevelopment,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [javascript, typescript, userAuthentication, webDevelopment],
+    relatedSkills: [
+      SkillSlugEnum.JavaScript,
+      SkillSlugEnum.TypeScript,
+      SkillSlugEnum.UserAuthentication,
+      SkillSlugEnum.WebDevelopment,
+    ],
   },
   [SkillSlugEnum.Stripe]: {
     name: "Stripe",
     category: SkillCategoriesEnum.BackEndWebDevelopment,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [sdks],
+    relatedSkills: [SkillSlugEnum.SDKs],
   },
   [SkillSlugEnum.ExpressJS]: {
     name: "Express",
     category: SkillCategoriesEnum.BackEndWebDevelopment,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [javascript, typescript, webDevelopment, apis],
+    relatedSkills: [
+      SkillSlugEnum.JavaScript,
+      SkillSlugEnum.TypeScript,
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.APIs,
+    ],
   },
   [SkillSlugEnum.Flask]: {
     name: "Flask",
     category: SkillCategoriesEnum.BackEndWebDevelopment,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [webDevelopment, apis, python],
+    relatedSkills: [
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.APIs,
+      SkillSlugEnum.Python,
+    ],
   },
   [SkillSlugEnum.Django]: {
     name: "Django",
     category: SkillCategoriesEnum.BackEndWebDevelopment,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [webDevelopment, apis, python],
+    relatedSkills: [
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.APIs,
+      SkillSlugEnum.Python,
+    ],
   },
   [SkillSlugEnum.Spring]: {
     name: "Spring",
     category: SkillCategoriesEnum.BackEndWebDevelopment,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [webDevelopment, apis, java],
+    relatedSkills: [
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.APIs,
+      SkillSlugEnum.Java,
+    ],
   },
   [SkillSlugEnum.SpringBoot]: {
     name: "Spring Boot",
     category: SkillCategoriesEnum.BackEndWebDevelopment,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [java, webDevelopment, apis],
+    relatedSkills: [
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.APIs,
+      SkillSlugEnum.Java,
+    ],
   },
   [SkillSlugEnum.Cloudinary]: {
     name: "Cloudinary",
     category: SkillCategoriesEnum.BackEndWebDevelopment,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [webDevelopment],
+    relatedSkills: [SkillSlugEnum.Cloudinary],
   },
   [SkillSlugEnum.EdgeStore]: {
     name: "Edge Store",
     category: SkillCategoriesEnum.BackEndWebDevelopment,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [webDevelopment],
+    relatedSkills: [SkillSlugEnum.WebDevelopment],
   },
   [SkillSlugEnum.Gunicorn]: {
     name: "Gunicorn",
     category: SkillCategoriesEnum.BackEndWebDevelopment,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [python, webDevelopment],
+    relatedSkills: [SkillSlugEnum.Python, SkillSlugEnum.WebDevelopment],
   },
   [SkillSlugEnum.Jinja]: {
     name: "Jinja",
     category: SkillCategoriesEnum.CodeQuality,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [python, webDevelopment],
+    relatedSkills: [SkillSlugEnum.Python, SkillSlugEnum.WebDevelopment],
   },
 };
 

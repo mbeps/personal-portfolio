@@ -1,21 +1,25 @@
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
-import { gameDevelopment } from "../generalSkills";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 const technicalHardSkillsOthers: { [key: string]: SkillInterface } = {
   [SkillSlugEnum.GameMakerStudio]: {
     name: "GameMaker Studio 2",
     category: SkillCategoriesEnum.GameDevelopment,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [gameDevelopment],
+    relatedSkills: [SkillSlugEnum.GameDevelopment],
   },
   [SkillSlugEnum.Symphony]: {
     name: "Symphony Solutions",
     category: SkillCategoriesEnum.Automation,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [],
+    relatedSkills: [
+      SkillSlugEnum.Java,
+      SkillSlugEnum.Python,
+      SkillSlugEnum.Automation,
+      SkillSlugEnum.SDKs,
+    ],
   },
 };
 

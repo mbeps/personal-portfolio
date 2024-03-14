@@ -1,14 +1,7 @@
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
-import {
-  databaseManagementSystems,
-  databases,
-  indexing,
-  noSql,
-  sql,
-} from "../generalSkills";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 const technicalHardSkillsDatabases: { [key: string]: SkillInterface } = {
   [SkillSlugEnum.Normalisation]: {
@@ -16,6 +9,11 @@ const technicalHardSkillsDatabases: { [key: string]: SkillInterface } = {
     category: SkillCategoriesEnum.Databases,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
+    relatedSkills: [
+      SkillSlugEnum.DatabaseManagementSystems,
+      SkillSlugEnum.RelationalDatabases,
+      SkillSlugEnum.Databases,
+    ],
   },
   [SkillSlugEnum.PostgreSQL]: {
     name: "PostgreSQL",
@@ -23,11 +21,11 @@ const technicalHardSkillsDatabases: { [key: string]: SkillInterface } = {
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
     relatedSkills: [
-      databaseManagementSystems,
-      databases,
-      sql,
-      normalisation,
-      indexing,
+      SkillSlugEnum.DatabaseManagementSystems,
+      SkillSlugEnum.Databases,
+      SkillSlugEnum.RelationalDatabases,
+      SkillSlugEnum.Normalisation,
+      SkillSlugEnum.DatabaseIndexing,
     ],
   },
   [SkillSlugEnum.MySQL]: {
@@ -36,11 +34,11 @@ const technicalHardSkillsDatabases: { [key: string]: SkillInterface } = {
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
     relatedSkills: [
-      databaseManagementSystems,
-      databases,
-      sql,
-      normalisation,
-      indexing,
+      SkillSlugEnum.DatabaseManagementSystems,
+      SkillSlugEnum.Databases,
+      SkillSlugEnum.RelationalDatabases,
+      SkillSlugEnum.Normalisation,
+      SkillSlugEnum.DatabaseIndexing,
     ],
   },
   [SkillSlugEnum.SQLite]: {
@@ -49,11 +47,11 @@ const technicalHardSkillsDatabases: { [key: string]: SkillInterface } = {
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
     relatedSkills: [
-      databaseManagementSystems,
-      databases,
-      sql,
-      normalisation,
-      indexing,
+      SkillSlugEnum.DatabaseManagementSystems,
+      SkillSlugEnum.Databases,
+      SkillSlugEnum.RelationalDatabases,
+      SkillSlugEnum.Normalisation,
+      SkillSlugEnum.DatabaseIndexing,
     ],
   },
   [SkillSlugEnum.MongoDB]: {
@@ -61,20 +59,36 @@ const technicalHardSkillsDatabases: { [key: string]: SkillInterface } = {
     category: SkillCategoriesEnum.Databases,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [databaseManagementSystems, databases, noSql, indexing],
+    relatedSkills: [
+      SkillSlugEnum.DatabaseManagementSystems,
+      SkillSlugEnum.Databases,
+      SkillSlugEnum.NonRelationalDatabases,
+      SkillSlugEnum.DatabaseIndexing,
+    ],
   },
   [SkillSlugEnum.Redis]: {
     name: "Redis",
     category: SkillCategoriesEnum.Databases,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [databaseManagementSystems, databases, noSql, indexing],
+    relatedSkills: [
+      SkillSlugEnum.DatabaseManagementSystems,
+      SkillSlugEnum.Databases,
+      SkillSlugEnum.NonRelationalDatabases,
+      SkillSlugEnum.DatabaseIndexing,
+    ],
   },
   [SkillSlugEnum.Convex]: {
     name: "Convex",
     category: SkillCategoriesEnum.Databases,
     isMainSkill: false,
     skillType: SkillTypesEnum.Hard,
+    relatedSkills: [
+      SkillSlugEnum.DatabaseManagementSystems,
+      SkillSlugEnum.Databases,
+      SkillSlugEnum.NonRelationalDatabases,
+      SkillSlugEnum.DatabaseIndexing,
+    ],
   },
 };
 

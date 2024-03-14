@@ -1,170 +1,233 @@
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
-import {
-  apis,
-  stateManagement,
-  userCentricDesign,
-  webDevelopment,
-} from "../generalSkills";
-import { javascript, typescript } from "../languages";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 const technicalHardSkillsFrontendWebDev: { [key: string]: SkillInterface } = {
   [SkillSlugEnum.Recoil]: {
     name: "Recoil",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [webDevelopment, stateManagement],
+    relatedSkills: [
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.StateManagement,
+    ],
   },
   [SkillSlugEnum.Zustand]: {
     name: "Zustand",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [webDevelopment, stateManagement],
+    relatedSkills: [
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.StateManagement,
+    ],
   },
   [SkillSlugEnum.Jotai]: {
     name: "Jotai",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [webDevelopment, stateManagement],
+    relatedSkills: [
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.StateManagement,
+    ],
   },
 
   [SkillSlugEnum.Redux]: {
     name: "Redux",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [webDevelopment, stateManagement],
+    relatedSkills: [
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.StateManagement,
+    ],
   },
   [SkillSlugEnum.TailwindCSS]: {
     name: "Tailwind CSS",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [webDevelopment, userCentricDesign],
+    relatedSkills: [
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.UserCentricDesign,
+    ],
   },
   [SkillSlugEnum.HTML]: {
     name: "HTML",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [webDevelopment, userCentricDesign],
+    relatedSkills: [
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.UserCentricDesign,
+    ],
   },
   [SkillSlugEnum.CSS]: {
     name: "CSS",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [webDevelopment, userCentricDesign, tailwindCSS],
+    relatedSkills: [
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.UserCentricDesign,
+    ],
   },
-  [SkillSlugEnum.React]: {
+  [SkillSlugEnum.ReactJS]: {
     name: "React",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
     relatedSkills: [
-      javascript,
-      typescript,
-      webDevelopment,
-      userCentricDesign,
-      recoil,
-      zustand,
-      jotai,
-      redux,
+      SkillSlugEnum.JavaScript,
+      SkillSlugEnum.TypeScript,
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.UserCentricDesign,
+      SkillSlugEnum.Recoil,
+      SkillSlugEnum.Zustand,
+      SkillSlugEnum.Jotai,
+      SkillSlugEnum.Redux,
     ],
   },
-  [SkillSlugEnum.Svelte]: {
+  [SkillSlugEnum.SvelteJS]: {
     name: "Svelte",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [javascript, typescript, webDevelopment, userCentricDesign],
+    relatedSkills: [
+      SkillSlugEnum.JavaScript,
+      SkillSlugEnum.TypeScript,
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.UserCentricDesign,
+    ],
   },
 
-  [SkillSlugEnum.Vue]: {
+  [SkillSlugEnum.VueJS]: {
     name: "Vue",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [javascript, typescript, webDevelopment, userCentricDesign],
+    relatedSkills: [
+      SkillSlugEnum.JavaScript,
+      SkillSlugEnum.TypeScript,
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.UserAuthentication,
+    ],
   },
   [SkillSlugEnum.ChakraUI]: {
     name: "Chakra UI",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [webDevelopment, userCentricDesign],
+    relatedSkills: [
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.UserCentricDesign,
+    ],
   },
 
   [SkillSlugEnum.HeadlessUI]: {
     name: "Headless UI",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [webDevelopment, userCentricDesign],
+    relatedSkills: [
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.UserCentricDesign,
+      SkillSlugEnum.ReactJS,
+      SkillSlugEnum.VueJS,
+    ],
   },
   [SkillSlugEnum.ShadcnUI]: {
     name: "Shadcn UI",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [webDevelopment, userCentricDesign],
+    relatedSkills: [
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.UserCentricDesign,
+      SkillSlugEnum.ReactJS,
+    ],
   },
   [SkillSlugEnum.RadixUI]: {
     name: "Radix UI",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [webDevelopment, userCentricDesign],
+    relatedSkills: [
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.UserCentricDesign,
+      SkillSlugEnum.ReactJS,
+    ],
   },
 
   [SkillSlugEnum.ReactQuery]: {
     name: "React Query",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [webDevelopment, apis],
+    relatedSkills: [
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.UserCentricDesign,
+      SkillSlugEnum.ReactJS,
+    ],
   },
   [SkillSlugEnum.NextUI]: {
     name: "Next UI",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [webDevelopment, userCentricDesign],
+    relatedSkills: [
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.UserCentricDesign,
+      SkillSlugEnum.ReactJS,
+    ],
   },
   [SkillSlugEnum.Bootstrap]: {
     name: "Bootstrap",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [webDevelopment, userCentricDesign],
+    relatedSkills: [
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.UserCentricDesign,
+    ],
   },
   [SkillSlugEnum.MaterialUI]: {
     name: "Material UI",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [webDevelopment, userCentricDesign],
+    relatedSkills: [
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.UserCentricDesign,
+    ],
   },
   [SkillSlugEnum.SemanticUI]: {
     name: "Semantic UI",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [webDevelopment, userCentricDesign],
+    relatedSkills: [
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.UserCentricDesign,
+    ],
   },
   [SkillSlugEnum.AntDesign]: {
     name: "Ant Design",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [webDevelopment, userCentricDesign],
+    relatedSkills: [
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.UserCentricDesign,
+    ],
   },
   [SkillSlugEnum.StoryBooks]: {
     name: "Storybooks",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [webDevelopment, userCentricDesign],
+    relatedSkills: [
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.UserCentricDesign,
+    ],
   },
   [SkillSlugEnum.SimpleGUI]: {
     name: "Simple GUI",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [userCentricDesign],
+    relatedSkills: [SkillSlugEnum.UserCentricDesign],
   },
   [SkillSlugEnum.Axios]: {
     name: "Axios",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [webDevelopment, apis],
+    relatedSkills: [SkillSlugEnum.WebDevelopment, SkillSlugEnum.APIs],
   },
 };
 

@@ -1,4 +1,5 @@
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
+import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 
 /**
@@ -7,7 +8,7 @@ import SkillTypesEnum from "@/enums/SkillTypesEnum";
 export default interface SkillInterface {
   name: string;
   category: SkillCategoriesEnum;
-  relatedSkills?: SkillInterface[];
+  relatedSkills?: SkillSlugEnum[];
   isMainSkill?: boolean;
   skillType: SkillTypesEnum;
 }

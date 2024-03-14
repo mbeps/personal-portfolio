@@ -50,9 +50,9 @@ enum SkillSlugEnum {
   NuxtJS = "nuxt-js",
 
   //^ Frontend Web Development
-  React = "react",
-  Svelte = "svelte",
-  Vue = "vue-js",
+  ReactJS = "react",
+  SvelteJS = "svelte",
+  VueJS = "vue-js",
   Recoil = "recoil",
   Zustand = "zustand",
   Jotai = "jotai",

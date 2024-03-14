@@ -1,34 +1,43 @@
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
-import { versionControl } from "../generalSkills";
-import { gitHubActions, gitlabCI } from "./technicalHardSkillsDevOps";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 const technicalHardSkillsVCS: { [key: string]: SkillInterface } = {
   [SkillSlugEnum.Git]: {
     name: "Git",
     category: SkillCategoriesEnum.VersionControl,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [versionControl, gitHub, gitLab, bitBucket],
+    relatedSkills: [
+      SkillSlugEnum.VersionControlSystems,
+      SkillSlugEnum.GitHub,
+      SkillSlugEnum.GitLab,
+      SkillSlugEnum.BitBucket,
+    ],
   },
   [SkillSlugEnum.GitHub]: {
     name: "GitHub",
     category: SkillCategoriesEnum.VersionControl,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [versionControl, gitHubActions],
+    relatedSkills: [
+      SkillSlugEnum.VersionControlSystems,
+      SkillSlugEnum.GitHubActions,
+    ],
   },
   [SkillSlugEnum.GitLab]: {
     name: "GitLab",
     category: SkillCategoriesEnum.VersionControl,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [versionControl, gitlabCI],
+    relatedSkills: [
+      SkillSlugEnum.VersionControlSystems,
+      SkillSlugEnum.GitLabCI,
+    ],
   },
   [SkillSlugEnum.BitBucket]: {
     name: "BitBucket",
     category: SkillCategoriesEnum.VersionControl,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [versionControl],
+    relatedSkills: [SkillSlugEnum.VersionControlSystems],
   },
 };
 

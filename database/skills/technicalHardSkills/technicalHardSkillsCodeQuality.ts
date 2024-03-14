@@ -1,44 +1,48 @@
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
-import { javascript, python, typescript } from "../languages";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 const technicalHardSkillsCodeQuality: { [key: string]: SkillInterface } = {
   [SkillSlugEnum.Black]: {
     name: "Black",
     category: SkillCategoriesEnum.CodeQuality,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [python],
+    relatedSkills: [SkillSlugEnum.Python, SkillSlugEnum.Linting],
   },
   [SkillSlugEnum.Zod]: {
     name: "Zod",
     category: SkillCategoriesEnum.CodeQuality,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [typescript],
+    relatedSkills: [SkillSlugEnum.TypeScript],
   },
   [SkillSlugEnum.ESLint]: {
     name: "ESLint",
     category: SkillCategoriesEnum.CodeQuality,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [javascript, typescript],
+    relatedSkills: [
+      SkillSlugEnum.JavaScript,
+      SkillSlugEnum.TypeScript,
+      SkillSlugEnum.Linting,
+    ],
   },
   [SkillSlugEnum.Prettier]: {
     name: "Prettier",
     category: SkillCategoriesEnum.CodeQuality,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [javascript, typescript],
+    relatedSkills: [SkillSlugEnum.JavaScript, SkillSlugEnum.TypeScript],
   },
   [SkillSlugEnum.PyLint]: {
     name: "PyLint",
     category: SkillCategoriesEnum.CodeQuality,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [python],
+    relatedSkills: [SkillSlugEnum.Python, SkillSlugEnum.Linting],
   },
   [SkillSlugEnum.Checkstyle]: {
     name: "Checkstyle",
     category: SkillCategoriesEnum.CodeQuality,
     skillType: SkillTypesEnum.Hard,
+    relatedSkills: [SkillSlugEnum.Java, SkillSlugEnum.Linting],
   },
 };
 

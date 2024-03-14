@@ -1,8 +1,7 @@
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
-import { java, javascript, python, typescript } from "../languages";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 const technicalHardSkillsProjectManagers: { [key: string]: SkillInterface } = {
   [SkillSlugEnum.NPM]: {
@@ -10,49 +9,49 @@ const technicalHardSkillsProjectManagers: { [key: string]: SkillInterface } = {
     category: SkillCategoriesEnum.ProjectManagers,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [javascript, typescript],
+    relatedSkills: [SkillSlugEnum.Java, SkillSlugEnum.TypeScript],
   },
   [SkillSlugEnum.Yarn]: {
     name: "Yarn",
     category: SkillCategoriesEnum.ProjectManagers,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [javascript, typescript],
+    relatedSkills: [SkillSlugEnum.Java, SkillSlugEnum.TypeScript],
   },
   [SkillSlugEnum.PNPM]: {
     name: "PNPM",
     category: SkillCategoriesEnum.ProjectManagers,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [javascript, typescript],
+    relatedSkills: [SkillSlugEnum.Java, SkillSlugEnum.TypeScript],
   },
   [SkillSlugEnum.Poetry]: {
     name: "Poetry",
     category: SkillCategoriesEnum.ProjectManagers,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [python],
+    relatedSkills: [SkillSlugEnum.Python],
   },
   [SkillSlugEnum.PyBuilder]: {
     name: "PyBuilder",
     category: SkillCategoriesEnum.ProjectManagers,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [python],
+    relatedSkills: [SkillSlugEnum.Python],
   },
   [SkillSlugEnum.Maven]: {
     name: "Maven",
     category: SkillCategoriesEnum.ProjectManagers,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [java],
+    relatedSkills: [SkillSlugEnum.Java],
   },
   [SkillSlugEnum.Gradle]: {
     name: "Gradle",
     category: SkillCategoriesEnum.ProjectManagers,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [java],
+    relatedSkills: [SkillSlugEnum.Java],
   },
   [SkillSlugEnum.Tox]: {
     name: "Tox",
@@ -63,7 +62,7 @@ const technicalHardSkillsProjectManagers: { [key: string]: SkillInterface } = {
     name: "Nx.js",
     category: SkillCategoriesEnum.ProjectManagers,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [javascript, typescript],
+    relatedSkills: [SkillSlugEnum.Java, SkillSlugEnum.TypeScript],
   },
 };
 

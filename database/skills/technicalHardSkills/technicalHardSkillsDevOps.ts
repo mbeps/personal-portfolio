@@ -1,17 +1,7 @@
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
-import {
-  automation,
-  clusterisation,
-  containerization,
-  continuousDelivery,
-  continuousDeployment,
-  continuousIntegration,
-  devOps,
-  infrastructureAsCode,
-} from "../generalSkills";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 const technicalHardSkillsDevOps: { [key: string]: SkillInterface } = {
   [SkillSlugEnum.GitHubActions]: {
@@ -20,12 +10,13 @@ const technicalHardSkillsDevOps: { [key: string]: SkillInterface } = {
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
     relatedSkills: [
-      infrastructureAsCode,
-      continuousDelivery,
-      continuousIntegration,
-      continuousDeployment,
-      devOps,
-      automation,
+      SkillSlugEnum.InfrastructureAsCode,
+      SkillSlugEnum.ContinuousDelivery,
+      SkillSlugEnum.ContinuousIntegration,
+      SkillSlugEnum.ContinuousDeployment,
+      SkillSlugEnum.DevOps,
+      SkillSlugEnum.Automation,
+      SkillSlugEnum.GitHub,
     ],
   },
   [SkillSlugEnum.GitLabCI]: {
@@ -34,12 +25,13 @@ const technicalHardSkillsDevOps: { [key: string]: SkillInterface } = {
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
     relatedSkills: [
-      infrastructureAsCode,
-      continuousDelivery,
-      continuousIntegration,
-      continuousDeployment,
-      devOps,
-      automation,
+      SkillSlugEnum.InfrastructureAsCode,
+      SkillSlugEnum.ContinuousDelivery,
+      SkillSlugEnum.ContinuousIntegration,
+      SkillSlugEnum.ContinuousDeployment,
+      SkillSlugEnum.DevOps,
+      SkillSlugEnum.Automation,
+      SkillSlugEnum.GitLab,
     ],
   },
   [SkillSlugEnum.Jenkins]: {
@@ -48,12 +40,13 @@ const technicalHardSkillsDevOps: { [key: string]: SkillInterface } = {
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
     relatedSkills: [
-      infrastructureAsCode,
-      continuousDelivery,
-      continuousIntegration,
-      continuousDeployment,
-      devOps,
-      automation,
+      SkillSlugEnum.InfrastructureAsCode,
+      SkillSlugEnum.ContinuousDelivery,
+      SkillSlugEnum.ContinuousIntegration,
+      SkillSlugEnum.ContinuousDeployment,
+      SkillSlugEnum.DevOps,
+      SkillSlugEnum.Automation,
+      SkillSlugEnum.Groovy,
     ],
   },
   [SkillSlugEnum.TeamCity]: {
@@ -62,12 +55,12 @@ const technicalHardSkillsDevOps: { [key: string]: SkillInterface } = {
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
     relatedSkills: [
-      infrastructureAsCode,
-      continuousDelivery,
-      continuousIntegration,
-      continuousDeployment,
-      devOps,
-      automation,
+      SkillSlugEnum.InfrastructureAsCode,
+      SkillSlugEnum.ContinuousDelivery,
+      SkillSlugEnum.ContinuousIntegration,
+      SkillSlugEnum.ContinuousDeployment,
+      SkillSlugEnum.DevOps,
+      SkillSlugEnum.Automation,
     ],
   },
   [SkillSlugEnum.Docker]: {
@@ -75,34 +68,46 @@ const technicalHardSkillsDevOps: { [key: string]: SkillInterface } = {
     category: SkillCategoriesEnum.DevOps,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [containerization],
+    relatedSkills: [SkillSlugEnum.Containerisation, SkillSlugEnum.DevOps],
   },
   [SkillSlugEnum.Podman]: {
     name: "Podman",
     category: SkillCategoriesEnum.DevOps,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [containerization],
+    relatedSkills: [SkillSlugEnum.Containerisation, SkillSlugEnum.DevOps],
   },
   [SkillSlugEnum.Kubernetes]: {
     name: "Kubernetes",
     category: SkillCategoriesEnum.DevOps,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [containerization, clusterisation],
+    relatedSkills: [
+      SkillSlugEnum.Containerisation,
+      SkillSlugEnum.DevOps,
+      SkillSlugEnum.Clusterisation,
+    ],
   },
   [SkillSlugEnum.Ansible]: {
     name: "Ansible",
     category: SkillCategoriesEnum.DevOps,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [infrastructureAsCode, devOps, automation],
+    relatedSkills: [
+      SkillSlugEnum.InfrastructureAsCode,
+      SkillSlugEnum.DevOps,
+      SkillSlugEnum.Automation,
+    ],
   },
   [SkillSlugEnum.Vagrant]: {
     name: "Vagrant",
     category: SkillCategoriesEnum.DevOps,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [infrastructureAsCode, devOps],
+    relatedSkills: [
+      SkillSlugEnum.InfrastructureAsCode,
+      SkillSlugEnum.DevOps,
+      SkillSlugEnum.Automation,
+    ],
   },
 };
 

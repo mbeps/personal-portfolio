@@ -1,10 +1,7 @@
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
-import { userCentricDesign, webDevelopment } from "../generalSkills";
-import { javascript, typescript } from "../languages";
-import { react, svelte, vue } from "./technicalHardSkillsFrontendWebDev";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 const technicalHardSkillsFullStackWebDev: { [key: string]: SkillInterface } = {
   [SkillSlugEnum.NextJS]: {
@@ -14,11 +11,11 @@ const technicalHardSkillsFullStackWebDev: { [key: string]: SkillInterface } = {
     skillType: SkillTypesEnum.Hard,
 
     relatedSkills: [
-      javascript,
-      typescript,
-      webDevelopment,
-      userCentricDesign,
-      react,
+      SkillSlugEnum.JavaScript,
+      SkillSlugEnum.TypeScript,
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.UserCentricDesign,
+      SkillSlugEnum.ReactJS,
     ],
   },
 
@@ -27,7 +24,10 @@ const technicalHardSkillsFullStackWebDev: { [key: string]: SkillInterface } = {
     category: SkillCategoriesEnum.FullStackWebDevelopment,
     skillType: SkillTypesEnum.Hard,
 
-    relatedSkills: [webDevelopment, userCentricDesign],
+    relatedSkills: [
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.UserCentricDesign,
+    ],
   },
   [SkillSlugEnum.NuxtJS]: {
     name: "Nuxt.js",
@@ -35,11 +35,11 @@ const technicalHardSkillsFullStackWebDev: { [key: string]: SkillInterface } = {
     skillType: SkillTypesEnum.Hard,
 
     relatedSkills: [
-      javascript,
-      typescript,
-      webDevelopment,
-      userCentricDesign,
-      vue,
+      SkillSlugEnum.JavaScript,
+      SkillSlugEnum.TypeScript,
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.UserCentricDesign,
+      SkillSlugEnum.VueJS,
     ],
   },
   [SkillSlugEnum.SvelteKit]: {
@@ -48,11 +48,11 @@ const technicalHardSkillsFullStackWebDev: { [key: string]: SkillInterface } = {
     skillType: SkillTypesEnum.Hard,
 
     relatedSkills: [
-      javascript,
-      typescript,
-      webDevelopment,
-      userCentricDesign,
-      svelte,
+      SkillSlugEnum.JavaScript,
+      SkillSlugEnum.TypeScript,
+      SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.UserCentricDesign,
+      SkillSlugEnum.SvelteJS,
     ],
   },
 };

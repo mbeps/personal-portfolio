@@ -1,18 +1,7 @@
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
-import {
-  artificialIntelligence,
-  boosting,
-  dataScience,
-  dataVisualisation,
-  hyperparameters,
-  machineLearning,
-  mathematics,
-  neuralNetworks,
-} from "../generalSkills";
-import { python } from "../languages";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 const technicalHardSkillsMachineLearning: { [key: string]: SkillInterface } = {
   [SkillSlugEnum.ScikitLearn]: {
@@ -21,13 +10,13 @@ const technicalHardSkillsMachineLearning: { [key: string]: SkillInterface } = {
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
     relatedSkills: [
-      python,
-      machineLearning,
-      dataScience,
-      artificialIntelligence,
-      hyperparameters,
-      boosting,
-      neuralNetworks,
+      SkillSlugEnum.Python,
+      SkillSlugEnum.MachineLearning,
+      SkillSlugEnum.DataScience,
+      SkillSlugEnum.ContinuousIntegration,
+      SkillSlugEnum.Hyperparameters,
+      SkillSlugEnum.Boosting,
+      SkillSlugEnum.NeuralNetworks,
     ],
   },
   [SkillSlugEnum.Pandas]: {
@@ -35,28 +24,44 @@ const technicalHardSkillsMachineLearning: { [key: string]: SkillInterface } = {
     category: SkillCategoriesEnum.ArtificialIntelligence,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [python, dataScience, dataVisualisation],
+    relatedSkills: [
+      SkillSlugEnum.Python,
+      SkillSlugEnum.DataScience,
+      SkillSlugEnum.DataVisualisation,
+    ],
   },
   [SkillSlugEnum.NumPy]: {
     name: "NumPy",
     category: SkillCategoriesEnum.ArtificialIntelligence,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [python, dataScience, mathematics],
+    relatedSkills: [
+      SkillSlugEnum.Python,
+      SkillSlugEnum.DataScience,
+      SkillSlugEnum.Mathematics,
+    ],
   },
   [SkillSlugEnum.Matplotlib]: {
     name: "Matplotlib",
     category: SkillCategoriesEnum.DataScience,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [python, dataScience, dataVisualisation],
+    relatedSkills: [
+      SkillSlugEnum.Python,
+      SkillSlugEnum.DataScience,
+      SkillSlugEnum.DataVisualisation,
+    ],
   },
   [SkillSlugEnum.Seaborn]: {
     name: "Seaborn",
     category: SkillCategoriesEnum.DataScience,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [python, dataScience, dataVisualisation],
+    relatedSkills: [
+      SkillSlugEnum.Python,
+      SkillSlugEnum.DataScience,
+      SkillSlugEnum.DataVisualisation,
+    ],
   },
   [SkillSlugEnum.Keras]: {
     name: "Keras",
@@ -64,11 +69,12 @@ const technicalHardSkillsMachineLearning: { [key: string]: SkillInterface } = {
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
     relatedSkills: [
-      python,
-      machineLearning,
-      dataScience,
-      artificialIntelligence,
-      neuralNetworks,
+      SkillSlugEnum.Python,
+      SkillSlugEnum.MachineLearning,
+      SkillSlugEnum.DataScience,
+      SkillSlugEnum.ArtificialIntelligence,
+      SkillSlugEnum.NeuralNetworks,
+      SkillSlugEnum.DeepLearning,
     ],
   },
   [SkillSlugEnum.Jupyter]: {
@@ -76,7 +82,7 @@ const technicalHardSkillsMachineLearning: { [key: string]: SkillInterface } = {
     category: SkillCategoriesEnum.DataScience,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [python, dataScience],
+    relatedSkills: [SkillSlugEnum.Python, SkillSlugEnum.DataScience],
   },
 };
 
