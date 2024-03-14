@@ -6,5 +6,5 @@ export default interface ProjectInterface extends MaterialInterface {
   category: ProjectCategoriesEnum;
   repositoryURL?: string;
   deploymentURL?: string;
-  thumbnailImage?: string; // added dynamically from file system
+  thumbnailImage?: string;
 }

@@ -1,11 +1,10 @@
 import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/UI/PageDescription";
+import developerName from "@/constants/developerName";
 import { PROJECTS_PAGE } from "@/constants/pages";
 import projectDatabase from "@/database/projects";
 import type { Metadata } from "next";
 import ProjectsView from "./components/ProjectsView";
-import updateProjectImages from "@/actions/file-system/updateProjectImages";
-import developerName from "@/constants/developerName";
 
 export const metadata: Metadata = {
   title: `${developerName} - ${PROJECTS_PAGE.label}`,
@@ -30,7 +29,7 @@ const ProjectsPage = () => {
       <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
         <HeadingOne title={PROJECTS_PAGE.label} />
         <PageDescription description={PROJECTS_PAGE.description} />
-        <ProjectsView projects={updateProjectImages(projectDatabase)} />
+        <ProjectsView projects={projectDatabase} />
       </div>
     </section>
   );

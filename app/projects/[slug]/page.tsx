@@ -2,7 +2,6 @@ import getImagesFromFileSystem from "@/actions/file-system/getImagesFromFileSyst
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
 import getVideosFromFileSystem from "@/actions/file-system/getVideosFromFileSystem";
 import getContentBySlug from "@/actions/material/getContentBySlug";
-import hasProjectCover from "@/actions/material/projects/hasProjectCover";
 import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
 import Gallery from "@/components/Gallery/Gallery";
@@ -12,8 +11,11 @@ import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
+import developerName from "@/constants/developerName";
 import { PROJECTS_PAGE } from "@/constants/pages";
 import projectDatabase from "@/database/projects";
+import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
@@ -22,9 +24,6 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
-import developerName from "@/constants/developerName";
-import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 
 /**
  * Metadata object for the dynamic project page.
@@ -100,7 +99,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
 
   const projectName = project.name;
   const projectDescription = project.description;
-  const hasCoverImage = hasProjectCover(slug);
+  const hasCoverImage = project.thumbnailImage !== undefined;
   const coverImagePath = `${basePath}/${slug}/cover.png`;
 
   const technologies = filterSkillsByType(

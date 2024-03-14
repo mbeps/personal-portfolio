@@ -1,4 +1,3 @@
-import updateProjectImages from "@/actions/file-system/updateProjectImages";
 import validateSlugsWithContent from "@/actions/material/validateSlugsWithContent";
 import ProjectItem from "@/components/ProjectItem/ProjectItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
@@ -41,7 +40,7 @@ const ProjectsSection = () => {
       <HeadingTwo title="Projects" />
 
       <div className="flex flex-col space-y-20 mt-14">
-        {Object.entries(updateProjectImages(projectDatabase))
+        {Object.entries(projectDatabase)
           .filter(([key, _]) => allowedSlugs.includes(key))
           .map(([key, project], idx) => (
             <div key={key}>

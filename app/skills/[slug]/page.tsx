@@ -1,4 +1,3 @@
-import updateProjectImages from "@/actions/file-system/updateProjectImages";
 import filterContentBySkill from "@/actions/material/filterContentBySkill";
 import groupMaterialsByMaterialType from "@/actions/material/groupMaterialsByMaterialType";
 import getSkillBySlug from "@/actions/skills/getSkillBySlug";
@@ -77,7 +76,7 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
   const sections: MaterialSectionInterface[] = [
     {
       name: "Projects",
-      materials: updateProjectImages(projectDatabase),
+      materials: projectDatabase,
       basePath: PROJECTS_PAGE.path,
       ListComponent: ProjectsList,
     },

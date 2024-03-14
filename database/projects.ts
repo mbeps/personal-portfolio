@@ -133,6 +133,7 @@ import {
   gitLab,
 } from "./skills/technicalHardSkills/technicalHardSkillsVCS";
 import ProjectSlugEnum from "@/enums/MaterialSlugEnums/ProjectsSlugEnum";
+import addProjectThumbnail from "@/actions/material/projects/addProjectThumbnail";
 
 /**
  * Array of web development projects.
@@ -184,6 +185,7 @@ const projectMap: {
       algorithms,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    thumbnailImage: addProjectThumbnail(ProjectSlugEnum.CircusDiscussions),
   },
   [ProjectSlugEnum.RingmasterMessaging]: {
     name: `Ringmaster Messaging`,
@@ -228,6 +230,7 @@ const projectMap: {
       algorithms,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    thumbnailImage: addProjectThumbnail(ProjectSlugEnum.RingmasterMessaging),
   },
   [ProjectSlugEnum.MagicianAI]: {
     name: `Magician AI`,
@@ -273,6 +276,7 @@ const projectMap: {
       algorithms,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    thumbnailImage: addProjectThumbnail(ProjectSlugEnum.MagicianAI),
   },
   [ProjectSlugEnum.DrumrollMusic]: {
     name: `Drumroll Music`,
@@ -310,6 +314,7 @@ const projectMap: {
       algorithms,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    thumbnailImage: addProjectThumbnail(ProjectSlugEnum.DrumrollMusic),
   },
   [ProjectSlugEnum.JokerNotes]: {
     name: "Joker Notes",
@@ -348,6 +353,7 @@ const projectMap: {
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     deploymentURL: "https://joker-notes.vercel.app/",
+    thumbnailImage: addProjectThumbnail(ProjectSlugEnum.JokerNotes),
   },
 
   //^ Extra Web Development Projects
@@ -390,6 +396,7 @@ const projectMap: {
       algorithms,
     ],
     repositoryURL: "https://github.com/mbeps/quizmify",
+    thumbnailImage: addProjectThumbnail(ProjectSlugEnum.Quizmify),
   },
   [ProjectSlugEnum.SideshowArticles]: {
     name: `Sideshow Articles`,
@@ -422,6 +429,7 @@ const projectMap: {
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     archived: true,
+    thumbnailImage: addProjectThumbnail(ProjectSlugEnum.SideshowArticles),
   },
   [ProjectSlugEnum.Noodle]: {
     name: `Noodle`,
@@ -465,6 +473,7 @@ const projectMap: {
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     archived: true,
+    thumbnailImage: addProjectThumbnail(ProjectSlugEnum.Noodle),
   },
   [ProjectSlugEnum.ConvoGPT]: {
     name: `ConvoGPT`,
@@ -503,6 +512,7 @@ const projectMap: {
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     archived: true,
+    thumbnailImage: addProjectThumbnail(ProjectSlugEnum.ConvoGPT),
   },
 
   //^ Backend Web Development Projects
@@ -986,6 +996,7 @@ const projectMap: {
       black,
     ],
     category: ProjectCategoriesEnum.GameDevelopment,
+    thumbnailImage: addProjectThumbnail(ProjectSlugEnum.OsmosGame),
   },
   [ProjectSlugEnum.SurfaceFight]: {
     name: "Surface Fight",
@@ -1006,6 +1017,7 @@ const projectMap: {
     ],
     deploymentURL: "https://bepary-games.itch.io/surface-fight",
     archived: true,
+    thumbnailImage: addProjectThumbnail(ProjectSlugEnum.SurfaceFight),
   },
   [ProjectSlugEnum.Platformer]: {
     name: "Platformer",
@@ -1027,6 +1039,7 @@ const projectMap: {
     ],
     deploymentURL: "https://bepary-games.itch.io/platformer",
     archived: true,
+    thumbnailImage: addProjectThumbnail(ProjectSlugEnum.Platformer),
   },
   [ProjectSlugEnum.PlatformerDeathWalk]: {
     name: "Platformer Death Walk",
@@ -1048,6 +1061,7 @@ const projectMap: {
     ],
     deploymentURL: "https://bepary-games.itch.io/platformer-death-walk",
     archived: true,
+    thumbnailImage: addProjectThumbnail(ProjectSlugEnum.PlatformerDeathWalk),
   },
   [ProjectSlugEnum.CodingBreakout]: {
     name: "Coding Breakout",
@@ -1068,6 +1082,7 @@ const projectMap: {
     ],
     deploymentURL: "https://bepary-games.itch.io/coding-break-out",
     archived: true,
+    thumbnailImage: addProjectThumbnail(ProjectSlugEnum.CodingBreakout),
   },
   [ProjectSlugEnum.CatchMaruf]: {
     name: "Catch Maruf",
@@ -1088,6 +1103,7 @@ const projectMap: {
     ],
     deploymentURL: "https://bepary-games.itch.io/catch-maruf",
     archived: true,
+    thumbnailImage: addProjectThumbnail(ProjectSlugEnum.CatchMaruf),
   },
   [ProjectSlugEnum.AgainstGravity]: {
     name: "Against Gravity",
@@ -1108,6 +1124,7 @@ const projectMap: {
     ],
     deploymentURL: "https://bepary-games.itch.io/against-gravity",
     archived: true,
+    thumbnailImage: addProjectThumbnail(ProjectSlugEnum.AgainstGravity),
   },
   [ProjectSlugEnum.ScrollingShooter]: {
     name: "Scrolling Shooter",
@@ -1127,6 +1144,7 @@ const projectMap: {
     ],
     deploymentURL: "https://bepary-games.itch.io/scrolling-shooter",
     archived: true,
+    thumbnailImage: addProjectThumbnail(ProjectSlugEnum.ScrollingShooter),
   },
   [ProjectSlugEnum.Dungeon]: {
     name: "Dungeon",
@@ -1146,6 +1164,7 @@ const projectMap: {
     ],
     deploymentURL: "https://bepary-games.itch.io/dungeon-",
     archived: true,
+    thumbnailImage: addProjectThumbnail(ProjectSlugEnum.Dungeon),
   },
   [ProjectSlugEnum.VegNinja]: {
     name: " Veg Ninja",
@@ -1166,6 +1185,7 @@ const projectMap: {
     ],
     deploymentURL: "https://bepary-games.itch.io/vej-ninja",
     archived: true,
+    thumbnailImage: addProjectThumbnail(ProjectSlugEnum.VegNinja),
   },
   [ProjectSlugEnum.AngryCatsSpace]: {
     name: " Angry Cats Space",
@@ -1186,6 +1206,7 @@ const projectMap: {
     ],
     deploymentURL: "https://bepary-games.itch.io/angry-cats-space",
     archived: true,
+    thumbnailImage: addProjectThumbnail(ProjectSlugEnum.AngryCatsSpace),
   },
   [ProjectSlugEnum.AngryCats]: {
     name: " Angry Cats",
@@ -1206,6 +1227,7 @@ const projectMap: {
     ],
     deploymentURL: "https://bepary-games.itch.io/angry-cats-space",
     archived: true,
+    thumbnailImage: addProjectThumbnail(ProjectSlugEnum.AngryCats),
   },
 
   //^ Other Projects
