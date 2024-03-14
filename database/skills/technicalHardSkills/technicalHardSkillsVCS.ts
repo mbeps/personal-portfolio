@@ -3,44 +3,33 @@ import SkillInterface from "@/interfaces/skills/SkillInterface";
 import { versionControl } from "../generalSkills";
 import { gitHubActions, gitlabCI } from "./technicalHardSkillsDevOps";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillSlugEnum from "@/enums/SkillSlugEnum";
 
-export const gitHub: SkillInterface = {
-  name: "GitHub",
-  category: SkillCategoriesEnum.VersionControl,
-  skillType: SkillTypesEnum.Hard,
-  slug: "github",
-  relatedSkills: [versionControl, gitHubActions],
+const technicalHardSkillsVCS: { [key: string]: SkillInterface } = {
+  [SkillSlugEnum.Git]: {
+    name: "Git",
+    category: SkillCategoriesEnum.VersionControl,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [versionControl, gitHub, gitLab, bitBucket],
+  },
+  [SkillSlugEnum.GitHub]: {
+    name: "GitHub",
+    category: SkillCategoriesEnum.VersionControl,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [versionControl, gitHubActions],
+  },
+  [SkillSlugEnum.GitLab]: {
+    name: "GitLab",
+    category: SkillCategoriesEnum.VersionControl,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [versionControl, gitlabCI],
+  },
+  [SkillSlugEnum.BitBucket]: {
+    name: "BitBucket",
+    category: SkillCategoriesEnum.VersionControl,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [versionControl],
+  },
 };
-
-export const gitLab: SkillInterface = {
-  name: "GitLab",
-  category: SkillCategoriesEnum.VersionControl,
-  skillType: SkillTypesEnum.Hard,
-  slug: "gitlab",
-  relatedSkills: [versionControl, gitlabCI],
-};
-
-export const bitBucket: SkillInterface = {
-  name: "BitBucket",
-  category: SkillCategoriesEnum.VersionControl,
-  skillType: SkillTypesEnum.Hard,
-  slug: "bit-bucket",
-  relatedSkills: [versionControl],
-};
-
-export const git: SkillInterface = {
-  name: "Git",
-  category: SkillCategoriesEnum.VersionControl,
-  skillType: SkillTypesEnum.Hard,
-  slug: "git",
-  relatedSkills: [versionControl, gitHub, gitLab, bitBucket],
-};
-
-const technicalHardSkillsVCS: SkillInterface[] = [
-  git,
-  gitHub,
-  gitLab,
-  bitBucket,
-];
 
 export default technicalHardSkillsVCS;

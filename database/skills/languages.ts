@@ -1,84 +1,61 @@
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
-
-export const python: SkillInterface = {
-  name: "Python",
-  isMainSkill: true,
-  skillType: SkillTypesEnum.Hard,
-  category: SkillCategoriesEnum.ProgrammingLanguages,
-  slug: "python",
-};
-
-export const javascript: SkillInterface = {
-  name: "JavaScript",
-  isMainSkill: true,
-  skillType: SkillTypesEnum.Hard,
-  category: SkillCategoriesEnum.ProgrammingLanguages,
-  slug: "javascript",
-};
-
-export const typescript: SkillInterface = {
-  name: "TypeScript",
-  isMainSkill: true,
-  skillType: SkillTypesEnum.Hard,
-  category: SkillCategoriesEnum.ProgrammingLanguages,
-  slug: "typescript",
-};
-
-export const java: SkillInterface = {
-  name: "Java",
-  isMainSkill: true,
-  skillType: SkillTypesEnum.Hard,
-  category: SkillCategoriesEnum.ProgrammingLanguages,
-  slug: "java",
-};
-
-export const gameMakerLanguage: SkillInterface = {
-  name: "GameMaker Language",
-  isMainSkill: false,
-  skillType: SkillTypesEnum.Hard,
-  category: SkillCategoriesEnum.ProgrammingLanguages,
-  slug: "game-maker-language",
-};
-
-export const shellScript: SkillInterface = {
-  name: "Shell Script",
-  isMainSkill: false,
-  skillType: SkillTypesEnum.Hard,
-  category: SkillCategoriesEnum.ProgrammingLanguages,
-  slug: "shell",
-};
-
-export const rLanguage: SkillInterface = {
-  name: "R",
-  isMainSkill: false,
-  skillType: SkillTypesEnum.Hard,
-  category: SkillCategoriesEnum.ProgrammingLanguages,
-  slug: "r",
-};
-
-export const groovy: SkillInterface = {
-  name: "Groovy",
-  isMainSkill: false,
-  skillType: SkillTypesEnum.Hard,
-  category: SkillCategoriesEnum.ProgrammingLanguages,
-  slug: "groovy",
-};
+import SkillSlugEnum from "@/enums/SkillSlugEnum";
 
 /**
  * Array of languages.
  * Each skill has an array of skills and repositories.
  */
-const languages: SkillInterface[] = [
-  javascript,
-  typescript,
-  python,
-  java,
-  gameMakerLanguage,
-  shellScript,
-  rLanguage,
-  groovy,
-];
+const languages: { [key: string]: SkillInterface } = {
+  [SkillSlugEnum.Python]: {
+    name: "Python",
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    category: SkillCategoriesEnum.ProgrammingLanguages,
+  },
+  [SkillSlugEnum.JavaScript]: {
+    name: "JavaScript",
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    category: SkillCategoriesEnum.ProgrammingLanguages,
+  },
+  [SkillSlugEnum.TypeScript]: {
+    name: "TypeScript",
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    category: SkillCategoriesEnum.ProgrammingLanguages,
+  },
+  [SkillSlugEnum.Java]: {
+    name: "Java",
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    category: SkillCategoriesEnum.ProgrammingLanguages,
+  },
+  [SkillSlugEnum.GameMakerLanguage]: {
+    name: "GameMaker Language",
+    isMainSkill: false,
+    skillType: SkillTypesEnum.Hard,
+    category: SkillCategoriesEnum.ProgrammingLanguages,
+  },
+  [SkillSlugEnum.ShellScript]: {
+    name: "Shell Script",
+    isMainSkill: false,
+    skillType: SkillTypesEnum.Hard,
+    category: SkillCategoriesEnum.ProgrammingLanguages,
+  },
+  [SkillSlugEnum.RLanguage]: {
+    name: "R",
+    isMainSkill: false,
+    skillType: SkillTypesEnum.Hard,
+    category: SkillCategoriesEnum.ProgrammingLanguages,
+  },
+  [SkillSlugEnum.Groovy]: {
+    name: "Groovy",
+    isMainSkill: false,
+    skillType: SkillTypesEnum.Hard,
+    category: SkillCategoriesEnum.ProgrammingLanguages,
+  },
+};
 
 export { languages };

@@ -16,110 +16,96 @@ import {
   sqlite,
 } from "./technicalHardSkillsDatabases";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillSlugEnum from "@/enums/SkillSlugEnum";
 
-export const mongoose: SkillInterface = {
-  name: "Mongoose",
-  category: SkillCategoriesEnum.ObjectRelationalMappers,
-  isMainSkill: true,
-  skillType: SkillTypesEnum.Hard,
-  slug: "mongoose-orm",
-  relatedSkills: [
-    javascript,
-    typescript,
-    databaseManagementSystems,
-    databases,
-    noSql,
-    indexing,
-    orm,
-    mongoDB,
-  ],
+const technicalHardSkillsORMs: { [key: string]: SkillInterface } = {
+  [SkillSlugEnum.Monoose]: {
+    name: "Mongoose",
+    category: SkillCategoriesEnum.ObjectRelationalMappers,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [
+      javascript,
+      typescript,
+      databaseManagementSystems,
+      databases,
+      noSql,
+      indexing,
+      orm,
+      mongoDB,
+    ],
+  },
+  [SkillSlugEnum.Prisma]: {
+    name: "Prisma",
+    category: SkillCategoriesEnum.ObjectRelationalMappers,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [
+      databaseManagementSystems,
+      databases,
+      sql,
+      indexing,
+      orm,
+      mongoDB,
+      postgreSQL,
+      mySQL,
+      sqlite,
+      javascript,
+      typescript,
+    ],
+  },
+  [SkillSlugEnum.Drizzle]: {
+    name: "Drizzle",
+    category: SkillCategoriesEnum.ObjectRelationalMappers,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [
+      javascript,
+      typescript,
+      databaseManagementSystems,
+      databases,
+      sql,
+      indexing,
+      orm,
+      postgreSQL,
+      mySQL,
+      sqlite,
+    ],
+  },
+  [SkillSlugEnum.SQLAlchemy]: {
+    name: "SQLAlchemy",
+    category: SkillCategoriesEnum.ObjectRelationalMappers,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [
+      python,
+      databaseManagementSystems,
+      databases,
+      sql,
+      indexing,
+      orm,
+      postgreSQL,
+      mySQL,
+      sqlite,
+    ],
+  },
+  [SkillSlugEnum.Hibernate]: {
+    name: "Hibernate",
+    category: SkillCategoriesEnum.ObjectRelationalMappers,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [
+      java,
+      databaseManagementSystems,
+      databases,
+      sql,
+      indexing,
+      orm,
+      postgreSQL,
+      mySQL,
+      sqlite,
+    ],
+  },
 };
-
-export const prisma: SkillInterface = {
-  name: "Prisma",
-  category: SkillCategoriesEnum.ObjectRelationalMappers,
-  isMainSkill: true,
-  skillType: SkillTypesEnum.Hard,
-  slug: "prisma-orm",
-  relatedSkills: [
-    databaseManagementSystems,
-    databases,
-    sql,
-    indexing,
-    orm,
-    mongoDB,
-    postgreSQL,
-    mySQL,
-    sqlite,
-    javascript,
-    typescript,
-  ],
-};
-
-export const drizzle: SkillInterface = {
-  name: "Drizzle",
-  category: SkillCategoriesEnum.ObjectRelationalMappers,
-  isMainSkill: true,
-  skillType: SkillTypesEnum.Hard,
-  slug: "drizzle-orm",
-  relatedSkills: [
-    javascript,
-    typescript,
-    databaseManagementSystems,
-    databases,
-    sql,
-    indexing,
-    orm,
-    postgreSQL,
-    mySQL,
-    sqlite,
-  ],
-};
-
-export const sqlalchemy: SkillInterface = {
-  name: "SQLAlchemy",
-  category: SkillCategoriesEnum.ObjectRelationalMappers,
-  isMainSkill: true,
-  skillType: SkillTypesEnum.Hard,
-  slug: "sqlalchemy",
-  relatedSkills: [
-    python,
-    databaseManagementSystems,
-    databases,
-    sql,
-    indexing,
-    orm,
-    postgreSQL,
-    mySQL,
-    sqlite,
-  ],
-};
-
-export const hibernate: SkillInterface = {
-  name: "Hibernate",
-  category: SkillCategoriesEnum.ObjectRelationalMappers,
-  isMainSkill: true,
-  skillType: SkillTypesEnum.Hard,
-  slug: "hibernate-orm",
-  relatedSkills: [
-    java,
-    databaseManagementSystems,
-    databases,
-    sql,
-    indexing,
-    orm,
-    postgreSQL,
-    mySQL,
-    sqlite,
-  ],
-};
-
-const technicalHardSkillsORMs: SkillInterface[] = [
-  mongoose,
-  prisma,
-  drizzle,
-  sqlalchemy,
-  hibernate,
-];
 
 export default technicalHardSkillsORMs;

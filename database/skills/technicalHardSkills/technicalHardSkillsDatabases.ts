@@ -8,94 +8,74 @@ import {
   sql,
 } from "../generalSkills";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillSlugEnum from "@/enums/SkillSlugEnum";
 
-export const normalisation: SkillInterface = {
-  name: "Normalisation",
-  category: SkillCategoriesEnum.Databases,
-  isMainSkill: true,
-  skillType: SkillTypesEnum.Hard,
-  slug: "database-normalisation",
+const technicalHardSkillsDatabases: { [key: string]: SkillInterface } = {
+  [SkillSlugEnum.Normalisation]: {
+    name: "Normalisation",
+    category: SkillCategoriesEnum.Databases,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+  },
+  [SkillSlugEnum.PostgreSQL]: {
+    name: "PostgreSQL",
+    category: SkillCategoriesEnum.Databases,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [
+      databaseManagementSystems,
+      databases,
+      sql,
+      normalisation,
+      indexing,
+    ],
+  },
+  [SkillSlugEnum.MySQL]: {
+    name: "MySQL",
+    category: SkillCategoriesEnum.Databases,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [
+      databaseManagementSystems,
+      databases,
+      sql,
+      normalisation,
+      indexing,
+    ],
+  },
+  [SkillSlugEnum.SQLite]: {
+    name: "SQLite",
+    category: SkillCategoriesEnum.Databases,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [
+      databaseManagementSystems,
+      databases,
+      sql,
+      normalisation,
+      indexing,
+    ],
+  },
+  [SkillSlugEnum.MongoDB]: {
+    name: "MongoDB",
+    category: SkillCategoriesEnum.Databases,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [databaseManagementSystems, databases, noSql, indexing],
+  },
+  [SkillSlugEnum.Redis]: {
+    name: "Redis",
+    category: SkillCategoriesEnum.Databases,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [databaseManagementSystems, databases, noSql, indexing],
+  },
+  [SkillSlugEnum.Convex]: {
+    name: "Convex",
+    category: SkillCategoriesEnum.Databases,
+    isMainSkill: false,
+    skillType: SkillTypesEnum.Hard,
+  },
 };
-
-export const postgreSQL: SkillInterface = {
-  name: "PostgreSQL",
-  category: SkillCategoriesEnum.Databases,
-  isMainSkill: true,
-  skillType: SkillTypesEnum.Hard,
-  slug: "postgresql",
-  relatedSkills: [
-    databaseManagementSystems,
-    databases,
-    sql,
-    normalisation,
-    indexing,
-  ],
-};
-
-export const mySQL: SkillInterface = {
-  name: "MySQL",
-  category: SkillCategoriesEnum.Databases,
-  isMainSkill: true,
-  skillType: SkillTypesEnum.Hard,
-  slug: "mysql",
-  relatedSkills: [
-    databaseManagementSystems,
-    databases,
-    sql,
-    normalisation,
-    indexing,
-  ],
-};
-
-export const sqlite: SkillInterface = {
-  name: "SQLite",
-  category: SkillCategoriesEnum.Databases,
-  isMainSkill: true,
-  skillType: SkillTypesEnum.Hard,
-  slug: "sqlite",
-  relatedSkills: [
-    databaseManagementSystems,
-    databases,
-    sql,
-    normalisation,
-    indexing,
-  ],
-};
-
-export const mongoDB: SkillInterface = {
-  name: "MongoDB",
-  category: SkillCategoriesEnum.Databases,
-  isMainSkill: true,
-  skillType: SkillTypesEnum.Hard,
-  slug: "mongodb",
-  relatedSkills: [databaseManagementSystems, databases, noSql, indexing],
-};
-
-export const redis: SkillInterface = {
-  name: "Redis",
-  category: SkillCategoriesEnum.Databases,
-  isMainSkill: true,
-  skillType: SkillTypesEnum.Hard,
-  slug: "redis",
-  relatedSkills: [databaseManagementSystems, databases, noSql, indexing],
-};
-
-export const convex: SkillInterface = {
-  name: "Convex",
-  category: SkillCategoriesEnum.Databases,
-  isMainSkill: false,
-  skillType: SkillTypesEnum.Hard,
-  slug: "convex",
-};
-
-const technicalHardSkillsDatabases: SkillInterface[] = [
-  normalisation,
-  postgreSQL,
-  mySQL,
-  sqlite,
-  mongoDB,
-  redis,
-  convex,
-];
 
 export default technicalHardSkillsDatabases;

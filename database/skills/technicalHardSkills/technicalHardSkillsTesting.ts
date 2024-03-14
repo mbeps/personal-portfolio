@@ -2,74 +2,54 @@ import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import { java, javascript, python, typescript } from "../languages";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillSlugEnum from "@/enums/SkillSlugEnum";
 
-export const jest: SkillInterface = {
-  name: "Jest",
-  category: SkillCategoriesEnum.Testing,
-  isMainSkill: true,
-  skillType: SkillTypesEnum.Hard,
-  slug: "jest",
-  relatedSkills: [javascript, typescript],
+const technicalHardSkillsTesting: { [key: string]: SkillInterface } = {
+  [SkillSlugEnum.Jest]: {
+    name: "Jest",
+    category: SkillCategoriesEnum.Testing,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [javascript, typescript],
+  },
+  [SkillSlugEnum.Vitest]: {
+    name: "Vitest",
+    category: SkillCategoriesEnum.Testing,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [javascript, typescript],
+  },
+  [SkillSlugEnum.PyTest]: {
+    name: "PyTest",
+    category: SkillCategoriesEnum.Testing,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [python],
+  },
+  [SkillSlugEnum.UnitTest]: {
+    name: "UnitTest",
+    category: SkillCategoriesEnum.Testing,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [python],
+  },
+  [SkillSlugEnum.JUnit]: {
+    name: "JUnit",
+    category: SkillCategoriesEnum.Testing,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [java],
+  },
+  [SkillSlugEnum.Cypress]: {
+    name: "Cypress",
+    category: SkillCategoriesEnum.Testing,
+    skillType: SkillTypesEnum.Hard,
+  },
+  [SkillSlugEnum.ReactTestingLibrary]: {
+    name: "React Testing Library",
+    category: SkillCategoriesEnum.Testing,
+    skillType: SkillTypesEnum.Hard,
+  },
 };
-
-export const vitest: SkillInterface = {
-  name: "Vitest",
-  category: SkillCategoriesEnum.Testing,
-  isMainSkill: true,
-  skillType: SkillTypesEnum.Hard,
-  slug: "vitest",
-  relatedSkills: [javascript, typescript],
-};
-
-export const pytest: SkillInterface = {
-  name: "PyTest",
-  category: SkillCategoriesEnum.Testing,
-  isMainSkill: true,
-  skillType: SkillTypesEnum.Hard,
-  slug: "pytest",
-  relatedSkills: [python],
-};
-
-export const unittest: SkillInterface = {
-  name: "UnitTest",
-  category: SkillCategoriesEnum.Testing,
-  isMainSkill: true,
-  skillType: SkillTypesEnum.Hard,
-  slug: "unittest",
-  relatedSkills: [python],
-};
-
-export const junit: SkillInterface = {
-  name: "JUnit",
-  category: SkillCategoriesEnum.Testing,
-  isMainSkill: true,
-  skillType: SkillTypesEnum.Hard,
-  slug: "junit",
-  relatedSkills: [java],
-};
-
-export const cypress: SkillInterface = {
-  name: "Cypress",
-  category: SkillCategoriesEnum.Testing,
-  skillType: SkillTypesEnum.Hard,
-  slug: "cypress",
-};
-
-export const reactTestingLibrary: SkillInterface = {
-  name: "React Testing Library",
-  category: SkillCategoriesEnum.Testing,
-  skillType: SkillTypesEnum.Hard,
-  slug: "react-testing-library",
-};
-
-const technicalHardSkillsTesting: SkillInterface[] = [
-  jest,
-  vitest,
-  pytest,
-  unittest,
-  junit,
-  cypress,
-  reactTestingLibrary,
-];
 
 export default technicalHardSkillsTesting;
