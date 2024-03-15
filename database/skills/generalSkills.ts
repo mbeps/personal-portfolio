@@ -392,7 +392,7 @@ const generalSkills: { [key: string]: SkillInterface } = {
     isMainSkill: false,
     skillType: SkillTypesEnum.General,
     relatedSkills: [
-      SkillSlugEnum.Monoose,
+      SkillSlugEnum.Mongoose,
       SkillSlugEnum.Prisma,
       SkillSlugEnum.Drizzle,
       SkillSlugEnum.SQLAlchemy,

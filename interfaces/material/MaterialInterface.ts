@@ -1,8 +1,8 @@
-import SkillInterface from "../skills/SkillInterface";
+import SkillSlugEnum from "@/enums/SkillSlugEnum";
 
 export default interface MaterialInterface {
   name: string;
-  skills: SkillInterface[];
+  skills: SkillSlugEnum[];
   category: string;
   archived?: boolean;
 }

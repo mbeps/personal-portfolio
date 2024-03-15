@@ -4,7 +4,7 @@ import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 const technicalHardSkillsORMs: { [key: string]: SkillInterface } = {
-  [SkillSlugEnum.Monoose]: {
+  [SkillSlugEnum.Mongoose]: {
     name: "Mongoose",
     category: SkillCategoriesEnum.ObjectRelationalMappers,
     isMainSkill: true,

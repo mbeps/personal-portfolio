@@ -35,6 +35,7 @@ const technicalHardSkillsBackendWebDev: { [key: string]: SkillInterface } = {
       SkillSlugEnum.UserAuthentication,
       SkillSlugEnum.SDKs,
       SkillSlugEnum.WebDevelopment,
+      SkillSlugEnum.PostgreSQL,
     ],
   },
   [SkillSlugEnum.PocketBase]: {

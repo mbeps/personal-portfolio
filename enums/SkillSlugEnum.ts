@@ -91,7 +91,7 @@ enum SkillSlugEnum {
   DatabaseIndexing = "indexing",
 
   //^ Object-Relational Mappers
-  Monoose = "moongose",
+  Mongoose = "moongose",
   Prisma = "prisma",
   Drizzle = "drizzle",
   SQLAlchemy = "sqlalchemy",
