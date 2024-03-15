@@ -27,7 +27,7 @@ import {
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
 import materialDatabase from "@/database/material";
-import allSkills from "@/database/skills/skills";
+import skillsDatabase from "@/database/skills/skills";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
@@ -62,7 +62,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
 
   const languageSkills =
     getAssociatedSkills(
-      filterSkillsByType(allSkills, SkillTypesEnum.Hard),
+      filterSkillsByType(skillsDatabase, SkillTypesEnum.Hard),
       language,
       SkillTypesEnum.Hard
     ) || [];

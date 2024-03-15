@@ -12,7 +12,7 @@ import { BLOG_PAGE, CERTIFICATES_PAGE, PROJECTS_PAGE } from "@/constants/pages";
 import blogDatabase from "@/database/blogs";
 import certificateDatabase from "@/database/certificates";
 import projectDatabase from "@/database/projects";
-import allSkills from "@/database/skills/skills";
+import skillsDatabase from "@/database/skills/skills";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 import MaterialListProps from "@/interfaces/props/MaterialListProps";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
@@ -43,7 +43,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const slug = params.slug;
-  const skill = getSkillBySlug(slug, [...allSkills]);
+  const skill = getSkillBySlug(slug, [...skillsDatabase]);
 
   if (!skill) {
     notFound();
@@ -56,7 +56,7 @@ export async function generateMetadata(
 }
 
 export const generateStaticParams = async () => {
-  return extractSlugs(allSkills).map((slug) => ({ slug }));
+  return extractSlugs(skillsDatabase).map((slug) => ({ slug }));
 };
 
 interface ProjectPageProps {
@@ -66,7 +66,7 @@ interface ProjectPageProps {
 
 const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
   const slug = params.slug;
-  const skill = getSkillBySlug(slug, [...allSkills]);
+  const skill = getSkillBySlug(slug, [...skillsDatabase]);
   const blogMetadata = blogDatabase;
 
   if (!skill) {

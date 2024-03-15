@@ -3,7 +3,7 @@ import filterSkillsByType from "@/actions/skills/filterSkillsByType";
 import getAssociatedSkills from "@/actions/skills/getAssociatedSkills";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import allSkills from "@/database/skills/skills";
+import skillsDatabase from "@/database/skills/skills";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import React from "react";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
@@ -15,7 +15,7 @@ interface RelatedSkillsSectionProps {
 const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
   skill,
 }) => {
-  const allAssociatedSkills = getAssociatedSkills(allSkills, skill);
+  const allAssociatedSkills = getAssociatedSkills(skillsDatabase, skill);
 
   if (!allAssociatedSkills || allAssociatedSkills.length === 0) {
     return null;
