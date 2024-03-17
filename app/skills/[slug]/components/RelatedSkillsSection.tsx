@@ -1,6 +1,6 @@
 import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
-import getAssociatedSkills from "@/actions/skills/getAssociatedSkills";
+import getAssociatedSkillsHashmap from "@/actions/skills/getAssociatedSkills";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import skillsDatabase from "@/database/skills/skills";
@@ -15,7 +15,7 @@ interface RelatedSkillsSectionProps {
 const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
   skill,
 }) => {
-  const allAssociatedSkills = getAssociatedSkills(skillsDatabase, skill);
+  const allAssociatedSkills = getAssociatedSkillsHashmap(skillsDatabase, skill);
 
   if (!allAssociatedSkills || allAssociatedSkills.length === 0) {
     return null;

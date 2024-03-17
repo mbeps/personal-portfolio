@@ -2,7 +2,7 @@
 
 import isSkillAssociatedWithMaterial from "@/actions/material/isSkillAssociatedWithMaterial";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
-import getAssociatedSkills from "@/actions/skills/getAssociatedSkills";
+import getAssociatedSkillsHashmap from "@/actions/skills/getAssociatedSkills";
 import groupSkills from "@/actions/skills/groupSkills";
 import SkillTag from "@/components/Tags/SkillTag";
 import Tag from "@/components/Tags/Tag";
@@ -59,7 +59,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
 
   const languageSkills: {
     [key: string]: SkillInterface;
-  } = getAssociatedSkills(
+  } = getAssociatedSkillsHashmap(
     skillsDatabase,
     languageIdentifier,
     SkillTypesEnum.Hard

@@ -2,10 +2,9 @@
 
 import LanguageModal from "@/components/Modal/LanguageModal";
 import HeadingThree from "@/components/Text/HeadingThree";
-import skillsDatabase from "@/database/skills/skills";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import useIsMounted from "@/hooks/useIsMounted";
-import React, { useState } from "react";
+import React from "react";
 
 /**
  * Displays a list of languages that I know.

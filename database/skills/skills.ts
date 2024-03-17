@@ -2373,12 +2373,3 @@ const skillsDatabase: { [key: string]: SkillInterface } = {
 };
 
 export default skillsDatabase;
-
-export const technologies: { [key: string]: SkillInterface } = Object.entries(
-  skillsDatabase
-)
-  .filter(([_, skill]) => skill.skillType === SkillTypesEnum.Hard)
-  .reduce((acc, [key, skill]) => {
-    acc[key] = skill;
-    return acc;
-  }, {} as { [key: string]: SkillInterface });

@@ -2,7 +2,7 @@ import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 
-export default function getAssociatedSkills(
+export default function getAssociatedSkillsHashmap(
   skills: { [key: string]: SkillInterface },
   skillKey: SkillSlugEnum,
   skillType?: SkillTypesEnum // Optional parameter for filtering by skill type
@@ -28,3 +28,5 @@ export default function getAssociatedSkills(
 
   return associatedSkills;
 }
+
+// TODO: Create a function that only returns the array of enums

@@ -1,5 +1,6 @@
 "use client";
 
+import filterCategoriesFromSkills from "@/actions/skills/filterCategoriesFromSkills";
 import groupSkills from "@/actions/skills/groupSkills";
 import {
   Dialog,
@@ -12,11 +13,13 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/shadcn/ui/dropdown-menu";
-import { languages } from "@/database/skills/languages";
-import { technologies } from "@/database/skills/skills";
+import skillsDatabase from "@/database/skills/skills";
+import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import useIsMounted from "@/hooks/useIsMounted";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import Link from "next/link";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
@@ -26,7 +29,6 @@ import HeadingThree from "../Text/HeadingThree";
 import HeadingTwo from "../Text/HeadingTwo";
 import { Button } from "../shadcn/ui/button";
 import { ScrollArea } from "../shadcn/ui/scroll-area";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
 
 /**
  * Displays a modal for the skills.
@@ -54,10 +56,6 @@ const TechnologiesModal: React.FC = () => {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
-  const displayedSkills: SkillInterface[] = [
-    ...languages,
-    ...technologies,
-  ].filter((skill) => skill.isMainSkill);
 
   const options: FilterOption[] = [
     { slug: "category", entryName: "Category" },
@@ -65,10 +63,37 @@ const TechnologiesModal: React.FC = () => {
     { slug: "none", entryName: "None" },
   ];
 
-  const groupedSkills = groupSkills(groupedBy, displayedSkills, [
-    SkillTypesEnum.General,
-    SkillTypesEnum.Soft,
-  ]);
+  const mainSkills: { [key: string]: SkillInterface } = {};
+
+  Object.entries(skillsDatabase).forEach(([key, skill]) => {
+    if (skill.isMainSkill) {
+      mainSkills[key] = skill;
+    }
+  });
+
+  const ignoredCategories: SkillCategoriesEnum[] = [
+    SkillCategoriesEnum.ProgrammingLanguages,
+    SkillCategoriesEnum.ProjectManagers,
+    SkillCategoriesEnum.ObjectRelationalMappers,
+    SkillCategoriesEnum.VersionControl,
+    SkillCategoriesEnum.WebSockets,
+    SkillCategoriesEnum.Mathematics,
+    SkillCategoriesEnum.CloudComputing,
+    SkillCategoriesEnum.Automation,
+  ];
+
+  /**
+   * Only technologies (hard skills) are displayed.
+   * Skills from programming languages are not displayed.
+   */
+  const skillsToDisplay: { [key: string]: SkillInterface } =
+    filterCategoriesFromSkills(mainSkills, ignoredCategories);
+
+  const groupedSkills: SkillsCategoryInterface[] = groupSkills(
+    groupedBy,
+    skillsToDisplay,
+    [SkillTypesEnum.General, SkillTypesEnum.Soft]
+  );
 
   const currentGroupedName =
     options.find((option) => option.slug === groupedBy)?.entryName ||
@@ -87,6 +112,7 @@ const TechnologiesModal: React.FC = () => {
         <ScrollArea className="h-full w-full">
           <div className="px-6 pb-4">
             <div className="flex mt-4">
+              {/* Drop Down */}
               <div
                 className="
                   flex-grow mr-2 mt-2.5
@@ -124,13 +150,16 @@ const TechnologiesModal: React.FC = () => {
               </DropdownMenu>
             </div>
 
+            {/* List of Skills */}
             {groupedSkills.map((categoryData, index) => (
               <div key={index} className="mt-4 text-center md:text-left">
                 <HeadingThree title={categoryData.skillCategoryName} />
                 <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-                  {categoryData.skills.map((skill, skillIndex) => (
-                    <SkillTag key={skillIndex} skill={skill} />
-                  ))}
+                  {Object.values(categoryData.skills).map(
+                    (skill: SkillInterface, skillIndex: number) => (
+                      <SkillTag key={skillIndex} skill={skill} />
+                    )
+                  )}
                 </div>
               </div>
             ))}
@@ -138,6 +167,7 @@ const TechnologiesModal: React.FC = () => {
             {/* separator */}
             <div className="w-full h-px bg-neutral-200 dark:bg-neutral-700 my-8" />
 
+            {/* All Material Button */}
             <div
               className="
                 flex flex-wrap flex-col
