@@ -252,7 +252,6 @@ const skillsDatabase: { [key: string]: SkillInterface } = {
   [SkillSlugEnum.HTML]: {
     name: "HTML",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
     relatedSkills: [
       SkillSlugEnum.WebDevelopment,
@@ -262,7 +261,6 @@ const skillsDatabase: { [key: string]: SkillInterface } = {
   [SkillSlugEnum.CSS]: {
     name: "CSS",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
     relatedSkills: [
       SkillSlugEnum.WebDevelopment,

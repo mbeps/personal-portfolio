@@ -45,6 +45,13 @@ function aggregateAllLanguagesSkills(
  * @returns (JSX.Element): skill section (list of skills)
  */
 const TechnologiesSection: React.FC = () => {
+  const mainSkills: { [key: string]: SkillInterface } = {};
+
+  Object.entries(skillsDatabase).forEach(([key, skill]) => {
+    if (skill.isMainSkill) {
+      mainSkills[key] = skill;
+    }
+  });
   /**
    * This is a list of categories that should be ignored.
    * Any skills that are in these categories will not be displayed.
@@ -66,7 +73,7 @@ const TechnologiesSection: React.FC = () => {
    * Skills from programming languages are not displayed.
    */
   const skillsToDisplay: { [key: string]: SkillInterface } =
-    filterCategoriesFromSkills(skillsDatabase, ignoredCategories);
+    filterCategoriesFromSkills(mainSkills, ignoredCategories);
 
   /**
    * Gets the first 'limit' skills.
