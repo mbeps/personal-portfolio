@@ -3,11 +3,11 @@ import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 export default function getAssociatedSkillsHashmap(
-  skills: { [key: string]: SkillInterface },
+  skills: Database<SkillInterface>,
   skillKey: SkillSlugEnum,
   skillType?: SkillTypesEnum // Optional parameter for filtering by skill type
-): { [key: string]: SkillInterface } {
-  const associatedSkills: { [key: string]: SkillInterface } = {};
+): Database<SkillInterface> {
+  const associatedSkills: Database<SkillInterface> = {};
 
   // Find the primary skill using the provided slug
   const primarySkill: SkillInterface = skills[skillKey];

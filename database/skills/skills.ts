@@ -3,7 +3,7 @@ import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 
-const skillsDatabase: { [key: string]: SkillInterface } = {
+const skillsDatabase: Database<SkillInterface> = {
   //^ Languages
   [SkillSlugEnum.Python]: {
     name: "Python",

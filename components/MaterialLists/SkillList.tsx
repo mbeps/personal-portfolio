@@ -38,7 +38,7 @@ import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 
 interface SkillListProps {
-  skills: { [key: string]: SkillInterface };
+  skills: Database<SkillInterface>;
 }
 
 const SkillList: React.FC<SkillListProps> = ({ skills }) => {

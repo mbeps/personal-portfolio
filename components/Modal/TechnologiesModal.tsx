@@ -63,7 +63,7 @@ const TechnologiesModal: React.FC = () => {
     { slug: "none", entryName: "None" },
   ];
 
-  const mainSkills: { [key: string]: SkillInterface } = {};
+  const mainSkills: Database<SkillInterface> = {};
 
   Object.entries(skillsDatabase).forEach(([key, skill]) => {
     if (skill.isMainSkill) {
@@ -86,8 +86,10 @@ const TechnologiesModal: React.FC = () => {
    * Only technologies (hard skills) are displayed.
    * Skills from programming languages are not displayed.
    */
-  const skillsToDisplay: { [key: string]: SkillInterface } =
-    filterCategoriesFromSkills(mainSkills, ignoredCategories);
+  const skillsToDisplay: Database<SkillInterface> = filterCategoriesFromSkills(
+    mainSkills,
+    ignoredCategories
+  );
 
   const groupedSkills: SkillsCategoryInterface[] = groupSkills(
     groupedBy,

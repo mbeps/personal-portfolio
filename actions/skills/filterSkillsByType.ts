@@ -2,11 +2,11 @@ import SkillInterface from "@/interfaces/skills/SkillInterface";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 
 export default function filterSkillsByType(
-  skills: { [key: string]: SkillInterface },
+  skills: Database<SkillInterface>,
   skillType: SkillTypesEnum
-): { [key: string]: SkillInterface } {
+): Database<SkillInterface> {
   // Initialize an empty hashmap for the filtered skills
-  const filteredSkills: { [key: string]: SkillInterface } = {};
+  const filteredSkills: Database<SkillInterface> = {};
 
   // Iterate over the skills hashmap
   Object.entries(skills).forEach(([key, skill]) => {

@@ -16,28 +16,6 @@ import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 
-function aggregateAllLanguagesSkills(
-  skills: { [key: string]: SkillInterface },
-  allLanguages: SkillSlugEnum[]
-): { [key: string]: SkillInterface } {
-  const aggregatedSkills: { [key: string]: SkillInterface } = {};
-
-  // Iterate over all language slugs
-  allLanguages.forEach((languageSlug) => {
-    // Use the provided function to get associated skills for each language with 'Hard' skillType
-    const associatedSkillsForLanguage = getAssociatedSkillsHashmap(
-      skills,
-      languageSlug,
-      SkillTypesEnum.Hard
-    );
-
-    // Merge the associated skills into the aggregatedSkills hashmap
-    Object.assign(aggregatedSkills, associatedSkillsForLanguage);
-  });
-
-  return aggregatedSkills;
-}
-
 /**
  * Displays a list of skills that I have.
  * These skills may or many not have languages associated with them.
@@ -45,7 +23,7 @@ function aggregateAllLanguagesSkills(
  * @returns (JSX.Element): skill section (list of skills)
  */
 const TechnologiesSection: React.FC = () => {
-  const mainSkills: { [key: string]: SkillInterface } = {};
+  const mainSkills: Database<SkillInterface> = {};
 
   Object.entries(skillsDatabase).forEach(([key, skill]) => {
     if (skill.isMainSkill) {
@@ -72,8 +50,10 @@ const TechnologiesSection: React.FC = () => {
    * Only technologies (hard skills) are displayed.
    * Skills from programming languages are not displayed.
    */
-  const skillsToDisplay: { [key: string]: SkillInterface } =
-    filterCategoriesFromSkills(mainSkills, ignoredCategories);
+  const skillsToDisplay: Database<SkillInterface> = filterCategoriesFromSkills(
+    mainSkills,
+    ignoredCategories
+  );
 
   /**
    * Gets the first 'limit' skills.
@@ -82,10 +62,10 @@ const TechnologiesSection: React.FC = () => {
    * @returns (string[]): list of skill names
    */
   function firstNSkills(
-    skills: { [key: string]: SkillInterface },
+    skills: Database<SkillInterface>,
     totalLimit: number
-  ): { [key: string]: SkillInterface } {
-    const limitedSkills: { [key: string]: SkillInterface } = {};
+  ): Database<SkillInterface> {
+    const limitedSkills: Database<SkillInterface> = {};
     let count = 0;
 
     // Iterate over the hashmap entries
@@ -108,12 +88,12 @@ const TechnologiesSection: React.FC = () => {
    * @returns (string[]): list of skill names
    */
   function firstNSkillsPerCategory(
-    skills: { [key: string]: SkillInterface },
+    skills: Database<SkillInterface>,
     limitPerCategory: number
-  ): { [key: string]: SkillInterface } {
+  ): Database<SkillInterface> {
     // Categorize the skills into a hashmap of categories with each category holding a hashmap of skills
     const skillCategories: {
-      [categoryName: string]: { [key: string]: SkillInterface };
+      [categoryName: string]: Database<SkillInterface>;
     } = {};
 
     Object.entries(skills).forEach(([skillKey, skill]) => {
@@ -128,7 +108,7 @@ const TechnologiesSection: React.FC = () => {
     });
 
     // Take the first 'limitPerCategory' skills from each category and merge them into a single hashmap
-    const limitedSkills: { [key: string]: SkillInterface } = {};
+    const limitedSkills: Database<SkillInterface> = {};
 
     Object.keys(skillCategories).forEach((categoryName) => {
       const categorySkills = skillCategories[categoryName];

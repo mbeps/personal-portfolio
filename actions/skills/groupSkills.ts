@@ -7,7 +7,7 @@ function groupByLanguage(skills: {
   [key: string]: SkillInterface;
 }): SkillsCategoryInterface[] {
   const groupedSkills: {
-    [skillCategoryName: string]: { [key: string]: SkillInterface };
+    [skillCategoryName: string]: Database<SkillInterface>;
   } = {};
 
   // Helper function to add skill to the appropriate group
@@ -105,9 +105,9 @@ export function groupBySkillType(skills: {
 }
 
 function recursiveFilter(
-  skills: { [key: string]: SkillInterface },
+  skills: Database<SkillInterface>,
   excludedSkillTypes: SkillTypesEnum[] = []
-): { [key: string]: SkillInterface } {
+): Database<SkillInterface> {
   // Explicitly type the accumulator in the reduce function
   const filteredSkills = Object.entries(skills).reduce<{
     [key: string]: SkillInterface;
@@ -125,7 +125,7 @@ function recursiveFilter(
 
 export default function groupSkills(
   groupedBy: string,
-  skills: { [key: string]: SkillInterface },
+  skills: Database<SkillInterface>,
   excludedSkillTypes?: SkillTypesEnum[] // Use SkillTypesEnum[] or undefined
 ): SkillsCategoryInterface[] {
   let organizedSkills: SkillsCategoryInterface[] = [];

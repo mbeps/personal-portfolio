@@ -8,10 +8,10 @@ import SkillInterface from "@/interfaces/skills/SkillInterface";
  * @returns The filtered skills hashmap.
  */
 export default function filterCategoriesFromSkills(
-  skills: { [key: string]: SkillInterface },
+  skills: Database<SkillInterface>,
   ignoredCategories: SkillCategoriesEnum[]
-): { [key: string]: SkillInterface } {
-  const filteredSkills: { [key: string]: SkillInterface } = {};
+): Database<SkillInterface> {
+  const filteredSkills: Database<SkillInterface> = {};
 
   Object.entries(skills).forEach(([key, skill]) => {
     if (!ignoredCategories.includes(skill.category)) {
