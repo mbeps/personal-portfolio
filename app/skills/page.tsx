@@ -1,9 +1,8 @@
 import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/UI/PageDescription";
-import { languages } from "@/database/skills/languages";
+import developerName from "@/constants/developerName";
 import skillsDatabase from "@/database/skills/skills";
 import SkillList from "../../components/MaterialLists/SkillList";
-import developerName from "@/constants/developerName";
 
 const description = `
 	Explore my collection of skills on various topics. 
@@ -16,8 +15,6 @@ export const metadata = {
 };
 
 export default function SkillPage() {
-  const skills = [...languages, ...skillsDatabase];
-
   return (
     <main>
       <section id="blogs">
@@ -25,7 +22,7 @@ export default function SkillPage() {
           <HeadingOne title="Skills" />
           <PageDescription description={description} />
 
-          <SkillList skills={skills} />
+          <SkillList skills={skillsDatabase} />
         </div>
       </section>
     </main>

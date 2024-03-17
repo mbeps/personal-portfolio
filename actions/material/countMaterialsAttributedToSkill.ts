@@ -1,35 +1,40 @@
+import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 export default function countMaterialsAttributedToSkill(
-  skillToCheck: SkillInterface,
+  skillKeyToCheck: SkillSlugEnum,
+  allSkills: { [key: string]: SkillInterface },
   allMaterialsMap: { [key: string]: MaterialInterface }
 ): number {
-  // Reuse the same logic for checking if a skill or its related skill is present in a material
+  // Adapt the logic to work with skill keys and check if a skill or its related skill is present in a material
   const isSkillOrRelatedSkillPresent = (
-    skills: SkillInterface[],
-    skillSlug: string
+    materialSkillKeys: SkillSlugEnum[]
   ): boolean => {
-    return skills.some(
-      (skill) =>
-        skill.slug === skillSlug ||
-        (skill.relatedSkills &&
-          skill.relatedSkills.some(
-            (relatedSkill) => relatedSkill.slug === skillSlug
-          ))
-    );
+    if (materialSkillKeys.includes(skillKeyToCheck)) {
+      return true;
+    }
+    // Check related skills for each skill in the material
+    for (let skillKey of materialSkillKeys) {
+      const skill = allSkills[skillKey];
+      if (
+        skill &&
+        skill.relatedSkills &&
+        skill.relatedSkills.includes(skillKeyToCheck)
+      ) {
+        return true;
+      }
+    }
+    return false;
   };
 
-  // Instead of accumulating materials, count the number of materials that match the criteria
-  const count = Object.entries(allMaterialsMap).reduce(
-    (acc, [key, material]) => {
-      if (isSkillOrRelatedSkillPresent(material.skills, skillToCheck.slug)) {
-        acc += 1; // Increment the counter for each material that matches the skill check
-      }
-      return acc;
-    },
-    0
-  ); // Initialize the accumulator as 0 for counting
+  // Count the number of materials that include the skill or its related skills
+  const count = Object.values(allMaterialsMap).reduce((acc, material) => {
+    if (isSkillOrRelatedSkillPresent(material.skills)) {
+      acc += 1;
+    }
+    return acc;
+  }, 0);
 
-  return count; // Return the count of materials attributed to the skill
+  return count;
 }

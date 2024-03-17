@@ -25,6 +25,7 @@ import {
   PopoverTrigger,
 } from "@/components/shadcn/ui/popover";
 import materialDatabase from "@/database/material";
+import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
@@ -37,7 +38,7 @@ import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 
 interface SkillListProps {
-  skills: SkillInterface[];
+  skills: { [key: string]: SkillInterface };
 }
 
 const SkillList: React.FC<SkillListProps> = ({ skills }) => {
@@ -276,20 +277,23 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
                 }
               />
               <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-                {categoryData.skills.map((skill, index) => (
-                  <SkillTag
-                    key={index}
-                    skill={skill}
-                    hide={
-                      !(
-                        countMaterialsAttributedToSkill(
-                          skill,
-                          materialDatabase
-                        ) >= 5
-                      ) && includeNoMaterial
-                    }
-                  />
-                ))}
+                {Object.entries(categoryData.skills).map(
+                  ([skillKey, skill], index) => (
+                    <SkillTag
+                      key={skillKey} // Use skillKey as the key for better React key usage
+                      skill={skill}
+                      hide={
+                        !(
+                          countMaterialsAttributedToSkill(
+                            skillKey as SkillSlugEnum,
+                            skills,
+                            materialDatabase
+                          ) >= 5
+                        ) && includeNoMaterial
+                      }
+                    />
+                  )
+                )}
               </div>
             </div>
           ))
