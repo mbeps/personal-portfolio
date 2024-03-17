@@ -19,7 +19,7 @@ export default function Home() {
     <main>
       <div className="flex flex-col space-y-8 md:space-y-36">
         <HeroSection />
-        {/* <AboutSection /> */}
+        <AboutSection />
         {/* <ProjectsSection /> */}
       </div>
     </main>

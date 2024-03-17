@@ -28,6 +28,7 @@ import {
 } from "@/components/shadcn/ui/tooltip";
 import materialDatabase from "@/database/material";
 import skillsDatabase from "@/database/skills/skills";
+import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
@@ -36,11 +37,7 @@ import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 
 interface LanguageTagWithModalProps {
-  language: SkillInterface;
-  repository?: string;
-  handleOpenModal: () => void;
-  handleCloseModal: () => void;
-  isModalOpen: boolean;
+  languageIdentifier: SkillSlugEnum;
 }
 
 /**
@@ -55,17 +52,18 @@ interface LanguageTagWithModalProps {
  * @returns (JSX.Element): language tag with modal (stack of the language
  */
 const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
-  language,
-  repository,
+  languageIdentifier,
 }) => {
+  const language: SkillInterface = skillsDatabase[languageIdentifier];
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const languageSkills =
-    getAssociatedSkills(
-      filterSkillsByType(skillsDatabase, SkillTypesEnum.Hard),
-      language,
-      SkillTypesEnum.Hard
-    ) || [];
+  const languageSkills: {
+    [key: string]: SkillInterface;
+  } = getAssociatedSkills(
+    skillsDatabase,
+    languageIdentifier,
+    SkillTypesEnum.Hard
+  );
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -75,13 +73,11 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
     setIsModalOpen(false);
   };
 
-  const shouldOpenModal = languageSkills && languageSkills.length > 0;
+  const shouldOpenModal =
+    language.relatedSkills && language.relatedSkills.length > 0;
 
   const [groupedBy, setGroupedBy] = useState("category");
-  // Adjusted filtering based on the merged skills field
-  const filteredSkills = (languageSkills || []).filter(
-    (skill) => skill.isMainSkill
-  );
+
   const groupedSkills = groupSkills(groupedBy, languageSkills || []);
 
   const hasMaterial = isSkillAssociatedWithMaterial(language, materialDatabase);
@@ -156,9 +152,11 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
                   <div key={index} className="text-center md:text-left">
                     <HeadingThree title={categoryData.skillCategoryName} />
                     <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-                      {categoryData.skills.map((skill, skillIndex) => (
-                        <SkillTag key={skillIndex} skill={skill} />
-                      ))}
+                      {Object.entries(categoryData.skills).map(
+                        ([skillKey, skill], index) => (
+                          <SkillTag key={skillKey} skill={skill} />
+                        )
+                      )}
                     </div>
                   </div>
                 ))}
@@ -176,7 +174,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
 												text-center md:text-left
 												justify-start z-10 space-y-2"
                   >
-                    <Link href={`/skills/${language.slug}`}>
+                    <Link href={`/skills/${languageIdentifier as string}`}>
                       <div className="w-full">
                         <Button variant="gradient" className="w-full">
                           {`All ${language.name} Material`}
