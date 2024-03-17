@@ -103,16 +103,19 @@ export function groupBySkillType(skills: {
     []
   );
 }
+
 function recursiveFilter(
   skills: { [key: string]: SkillInterface },
   excludedSkillTypes: SkillTypesEnum[] = []
 ): { [key: string]: SkillInterface } {
-  // Filter out the skills by excludedSkillTypes at the top level
-  const filteredSkills = Object.entries(skills).reduce((acc, [key, skill]) => {
+  // Explicitly type the accumulator in the reduce function
+  const filteredSkills = Object.entries(skills).reduce<{
+    [key: string]: SkillInterface;
+  }>((acc, [key, skill]) => {
     // Check if the current skill's type is not in the excluded list
     if (!excludedSkillTypes.includes(skill.skillType)) {
       // If not excluded, add to the accumulator
-      acc[key] = { ...skill }; //TODO: Create new interface
+      acc[key] = skill; // Directly use skill object, no need to spread it
     }
     return acc;
   }, {});
