@@ -1,6 +1,7 @@
 import getContentBySlug from "@/actions/material/getContentBySlug";
 import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
+import getSkillsDatabaseFromArrayID from "@/actions/skills/getSkillsDatabaseFromArrayID";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import Tag from "@/components/Tags/Tag";
 import HeadingThree from "@/components/Text/HeadingThree";
@@ -9,8 +10,10 @@ import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
 import certificateDatabase from "@/database/certificates";
+import skillsDatabase from "@/database/skills/skills";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -81,16 +84,19 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
     notFound();
   }
 
+  const skillsAssociatedWithCertificate: Database<SkillInterface> =
+    getSkillsDatabaseFromArrayID(skillsDatabase, certificate.skills);
+
   const technologies = filterSkillsByType(
-    certificate.skills,
+    skillsAssociatedWithCertificate,
     SkillTypesEnum.Hard
   );
   const generalSkills = filterSkillsByType(
-    certificate.skills,
+    skillsAssociatedWithCertificate,
     SkillTypesEnum.General
   );
   const softSkills = filterSkillsByType(
-    certificate.skills,
+    skillsAssociatedWithCertificate,
     SkillTypesEnum.Soft
   );
 
