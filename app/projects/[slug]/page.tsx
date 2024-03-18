@@ -24,6 +24,12 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
+import getSkillsDatabaseFromArrayID from "@/actions/skills/getSkillsDatabaseFromArrayID";
+import skillsDatabase from "@/database/skills/skills";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
+import filterSkillsByCategory from "@/actions/skills/filterSkillsByCategory";
+import filterSkillsExcludingCategory from "@/actions/skills/filterSkillsExcludingCategory";
+import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 
 /**
  * Metadata object for the dynamic project page.
@@ -90,33 +96,40 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
     notFound();
   }
 
-  const projectLanguages = project.skills.filter(
-    (skill) => skill.category === SkillCategoriesEnum.ProgrammingLanguages
-  );
-  const projectSkillsWithoutLanguage = project.skills.filter(
-    (skill) => skill.category !== SkillCategoriesEnum.ProgrammingLanguages
-  );
-
   const projectName = project.name;
   const projectDescription = project.description;
   const hasCoverImage = project.thumbnailImage !== undefined;
   const coverImagePath = `${basePath}/${slug}/cover.png`;
 
-  const technologies = filterSkillsByType(
+  const skillsAssociatedWithProjects: Database<SkillInterface> =
+    getSkillsDatabaseFromArrayID(skillsDatabase, project.skills);
+
+  const projectLanguages: Database<SkillInterface> = filterSkillsByCategory(
+    skillsAssociatedWithProjects,
+    SkillCategoriesEnum.ProgrammingLanguages
+  );
+
+  const projectSkillsWithoutLanguage: Database<SkillInterface> =
+    filterSkillsExcludingCategory(
+      skillsAssociatedWithProjects,
+      SkillCategoriesEnum.ProgrammingLanguages
+    );
+
+  const technologies: Database<SkillInterface> = filterSkillsByType(
     projectSkillsWithoutLanguage,
     SkillTypesEnum.Hard
   );
-  const generalSkills = filterSkillsByType(
+  const generalSkills: Database<SkillInterface> = filterSkillsByType(
     projectSkillsWithoutLanguage,
     SkillTypesEnum.General
   );
-  const softSkills = filterSkillsByType(
+  const softSkills: Database<SkillInterface> = filterSkillsByType(
     projectSkillsWithoutLanguage,
     SkillTypesEnum.Soft
   );
 
   // Using the new function to group all skill types
-  const allGroupedSkills = [
+  const allGroupedSkills: GroupedSkillsCategoriesInterface[] = [
     filterAndGroupSkills(technologies, SkillTypesEnum.Hard, "Technologies"),
     filterAndGroupSkills(
       generalSkills,
@@ -212,15 +225,21 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
         </div>
 
         {/* Language Section */}
-        {projectLanguages && projectLanguages.length > 0 && (
+        {projectLanguages && Object.keys(projectLanguages).length > 0 && (
           <div className="text-center md:text-left">
             <HeadingThree
-              title={projectLanguages.length > 1 ? "Languages" : "Language"}
+              title={
+                Object.keys(projectLanguages).length > 1
+                  ? "Languages"
+                  : "Language"
+              }
             />
             <div className="flex flex-wrap justify-center md:justify-start z-10 mt-5">
-              {projectLanguages.map((language, index) => (
-                <SkillTag key={index} skill={language} />
-              ))}
+              {Object.entries(projectLanguages).map(
+                ([key, language], index) => (
+                  <SkillTag key={key} skill={language} />
+                )
+              )}
             </div>
           </div>
         )}
