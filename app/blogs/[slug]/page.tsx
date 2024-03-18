@@ -2,14 +2,17 @@ import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFile
 import getContentBySlug from "@/actions/material/getContentBySlug";
 import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
+import getSkillsDatabaseFromArrayID from "@/actions/skills/getSkillsDatabaseFromArrayID";
 import Reader from "@/components/Reader/Reader";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import developerName from "@/constants/developerName";
 import { BLOG_PAGE } from "@/constants/pages";
 import blogDatabase from "@/database/blogs";
+import skillsDatabase from "@/database/skills/skills";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import BlogInterface from "@/interfaces/material/BlogInterface";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -71,16 +74,19 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
     notFound();
   }
 
-  const technologies = filterSkillsByType(
-    blogMetadata.skills,
+  const skillsAssociatedWithBlog: Database<SkillInterface> =
+    getSkillsDatabaseFromArrayID(skillsDatabase, blogMetadata.skills);
+
+  const technologies: Database<SkillInterface> = filterSkillsByType(
+    skillsAssociatedWithBlog,
     SkillTypesEnum.Hard
   );
-  const generalSkills = filterSkillsByType(
-    blogMetadata.skills,
+  const generalSkills: Database<SkillInterface> = filterSkillsByType(
+    skillsAssociatedWithBlog,
     SkillTypesEnum.General
   );
-  const softSkills = filterSkillsByType(
-    blogMetadata.skills,
+  const softSkills: Database<SkillInterface> = filterSkillsByType(
+    skillsAssociatedWithBlog,
     SkillTypesEnum.Soft
   );
 

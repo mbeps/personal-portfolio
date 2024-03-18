@@ -4,6 +4,7 @@ import ExpandCollapseButton from "../Button/ExpandCollapseButton";
 import SkillTag from "../Tags/SkillTag";
 import HeadingFour from "../Text/HeadingFour";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 interface CategorySkillDisplayProps {
   skillCategories: SkillsCategoryInterface[];
@@ -21,17 +22,25 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
 
   let skillCount = 0;
   let groupCount = 0;
-  const displayedSkills = showAll
+  const displayedSkills: SkillsCategoryInterface[] = showAll
     ? skillCategories
     : skillCategories.reduce((acc: SkillsCategoryInterface[], categoryData) => {
         if (skillCount < maxSkillCount && groupCount < maxGroupCount) {
+          const categorySkillsEntries = Object.entries(categoryData.skills);
           const availableSlots = Math.min(
             maxSkillCount - skillCount,
-            categoryData.skills.length,
+            categorySkillsEntries.length
           );
+          const limitedSkills = categorySkillsEntries
+            .slice(0, availableSlots)
+            .reduce((skillAcc, [skillKey, skillValue]) => {
+              skillAcc[skillKey] = skillValue;
+              return skillAcc;
+            }, {} as Database<SkillInterface>);
+
           acc.push({
-            ...categoryData,
-            skills: categoryData.skills.slice(0, availableSlots),
+            skillCategoryName: categoryData.skillCategoryName,
+            skills: limitedSkills,
           });
           skillCount += availableSlots;
           groupCount++;
@@ -39,12 +48,13 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
         return acc;
       }, []);
 
-  const totalSkillCount = skillCategories.reduce(
-    (acc, categoryData) => acc + categoryData.skills.length,
-    0,
+  const totalSkillCount: number = skillCategories.reduce(
+    (acc, categoryData) => acc + Object.keys(categoryData.skills).length,
+    0
   );
 
-  const shouldShowToggleButton = totalSkillCount > skillCount || showAll;
+  const shouldShowToggleButton: boolean =
+    totalSkillCount > skillCount || showAll;
 
   const toggleShowAll = () => {
     setShowAll(!showAll);
@@ -64,9 +74,11 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
               <HeadingFour title={categoryData.skillCategoryName} />
             )}
             <div className="flex flex-wrap justify-center md:justify-start">
-              {categoryData.skills.map((skill, index) => (
-                <SkillTag key={skill.slug} skill={skill} />
-              ))}
+              {Object.values(categoryData.skills).map(
+                (skill: SkillInterface) => (
+                  <SkillTag key={skill.name} skill={skill} />
+                )
+              )}
             </div>
           </div>
         ))}

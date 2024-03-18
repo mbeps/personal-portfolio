@@ -4,33 +4,29 @@ import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 
 export default function filterAndGroupSkills(
-  skills: SkillInterface[],
+  skills: Database<SkillInterface>,
   skillType: SkillTypesEnum,
   title: string
 ): GroupedSkillsCategoriesInterface {
-  // Filter skills based on skillType
-  const filteredSkills = skills.filter(
-    (skill) => skill.skillType === skillType
-  );
+  // Initialize an empty array for grouped categories
+  const skillCategories: SkillsCategoryInterface[] = [];
 
-  // Group the filtered skills directly into an array of SkillsCategoryInterface
-  const skillCategories: SkillsCategoryInterface[] = filteredSkills.reduce(
-    (acc, skill) => {
-      const category = skill.category;
-      const existingCategory = acc.find(
-        (c) => c.skillCategoryName === category
+  Object.entries(skills).forEach(([skillKey, skill]) => {
+    // Filter skills based on skillType
+    if (skill.skillType === skillType) {
+      // Find or create category group
+      let categoryGroup = skillCategories.find(
+        (category) => category.skillCategoryName === skill.category
       );
-
-      if (existingCategory) {
-        existingCategory.skills.push(skill);
-      } else {
-        acc.push({ skillCategoryName: category, skills: [skill] });
+      if (!categoryGroup) {
+        categoryGroup = { skillCategoryName: skill.category, skills: {} };
+        skillCategories.push(categoryGroup);
       }
 
-      return acc;
-    },
-    [] as SkillsCategoryInterface[]
-  );
+      // Add skill to the appropriate category group's hashmap
+      categoryGroup.skills[skillKey] = skill;
+    }
+  });
 
   return { title, skillCategories };
 }
