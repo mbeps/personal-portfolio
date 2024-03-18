@@ -86,7 +86,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
   ];
 
   // Use the custom hook to perform the search
-  const filteredBlogsHashMap = useFuseSearch(blogs, searchTerm, searchOptions); //!
+  const filteredBlogsHashMap = useFuseSearch(blogs, searchTerm, searchOptions);
 
   //^ Filtering Logic
   /**
@@ -95,7 +95,6 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
    * @param newSearchTerm (string) - new search term
    */
   const updateSearchTerm = (newSearchTerm: string) => {
-    //!
     router.push(
       generateUrl(
         [
@@ -175,7 +174,6 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
     searchTerm !== "";
 
   //^ Filter Categories
-  //TODO: update these to use skill hashmap
   const filterCategories: FilterCategory[] = [
     {
       sectionName: "Section",
