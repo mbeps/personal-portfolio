@@ -11,7 +11,6 @@ import generateFilterOptionsByCategory from "@/actions/material/generateFilterOp
 import { generateFilterOptionsBySkillCategories } from "@/actions/material/generateFilterOptionsBySkillCategories";
 import generateFilterOptionsBySkillType from "@/actions/material/generateFilterOptionsBySkillType";
 import groupMaterialsByCategory from "@/actions/material/groupMaterialsByCategory";
-import filterProjectsByProgrammingLanguage from "@/actions/material/projects/filterProjectsByProgrammingLanguage";
 import generateFilterOptionsForProgrammingLanguages from "@/actions/material/projects/generateFilterOptionsForProgrammingLanguages";
 import stringToSlug from "@/actions/stringToSlug";
 import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
@@ -19,11 +18,11 @@ import FilterOverlay from "@/components/Filters/FilterPanel";
 import SearchInput from "@/components/Inputs/SearchInput";
 import ProjectsList from "@/components/MaterialLists/ProjectsList";
 import { Button } from "@/components/shadcn/ui/button";
-import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
+import skillsDatabase from "@/database/skills/skills";
+import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import useFuseSearch from "@/hooks/useFuseSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
-import FilterOption from "@/interfaces/filters/FilterOption";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -111,8 +110,8 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ projects }) => {
 
   // Filter by programming language
   if (selectedLanguage !== "all") {
-    filteredProjects = filterProjectsByProgrammingLanguage(
-      selectedLanguage,
+    filteredProjects = filterMaterialBySkill(
+      selectedLanguage as SkillSlugEnum,
       filteredProjects
     );
   }
@@ -120,35 +119,33 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ projects }) => {
   // Filter by technology (assuming you have a similar function for technologies)
   if (selectedTechnology !== "all") {
     filteredProjects = filterMaterialBySkill<ProjectInterface>(
-      selectedTechnology,
-      filteredProjects,
-      SkillTypesEnum.Hard
+      selectedTechnology as SkillSlugEnum,
+      filteredProjects
     );
   }
 
   // Filter by skill category
   if (stringToSlug(selectedSkillCategory) !== "all") {
     filteredProjects = filterMaterialBySkillCategory<ProjectInterface>(
+      filteredProjects,
       stringToSlug(selectedSkillCategory),
-      filteredProjects
+      skillsDatabase
     );
   }
 
   // Filter by general skill
   if (selectedGeneralSkill !== "all") {
     filteredProjects = filterMaterialBySkill<ProjectInterface>(
-      selectedGeneralSkill,
-      filteredProjects,
-      SkillTypesEnum.General
+      selectedGeneralSkill as SkillSlugEnum,
+      filteredProjects
     );
   }
 
   // Filter by soft skill
   if (selectedSoftSkill !== "all") {
     filteredProjects = filterMaterialBySkill<ProjectInterface>(
-      selectedSoftSkill,
-      filteredProjects,
-      SkillTypesEnum.Soft
+      selectedSoftSkill as SkillSlugEnum,
+      filteredProjects
     );
   }
 
@@ -210,10 +207,10 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ projects }) => {
       sectionName: "Programming Language",
       urlParam: languageParamName,
       selectedValue: selectedLanguage,
-      options:
-        generateFilterOptionsForProgrammingLanguages<ProjectInterface>(
-          projects
-        ),
+      options: generateFilterOptionsForProgrammingLanguages<ProjectInterface>(
+        projects,
+        skillsDatabase
+      ),
     },
     {
       sectionName: "Technology",
@@ -221,16 +218,18 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ projects }) => {
       selectedValue: selectedTechnology,
       options: generateFilterOptionsBySkillType<ProjectInterface>(
         projects,
-        SkillTypesEnum.Hard,
-        SkillCategoriesEnum.ProgrammingLanguages
+        skillsDatabase,
+        SkillTypesEnum.Hard
       ),
     },
     {
       sectionName: "Category",
       urlParam: skillCategoryParamName,
       selectedValue: selectedSkillCategory,
-      options:
-        generateFilterOptionsBySkillCategories<ProjectInterface>(projects),
+      options: generateFilterOptionsBySkillCategories<ProjectInterface>(
+        projects,
+        skillsDatabase
+      ),
     },
     {
       sectionName: "General Skill",
@@ -238,6 +237,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ projects }) => {
       selectedValue: selectedGeneralSkill,
       options: generateFilterOptionsBySkillType<ProjectInterface>(
         projects,
+        skillsDatabase,
         SkillTypesEnum.General
       ),
     },
@@ -247,6 +247,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ projects }) => {
       selectedValue: selectedSoftSkill,
       options: generateFilterOptionsBySkillType<ProjectInterface>(
         projects,
+        skillsDatabase,
         SkillTypesEnum.Soft
       ),
     },
