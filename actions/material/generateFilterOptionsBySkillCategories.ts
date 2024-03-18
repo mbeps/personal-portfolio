@@ -1,18 +1,29 @@
 import FilterOption from "@/interfaces/filters/FilterOption";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 import stringToSlug from "../stringToSlug";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 export function generateFilterOptionsBySkillCategories<
   T extends MaterialInterface
->(allMaterialsMap: { [key: string]: T }): FilterOption[] {
+>(
+  allMaterialsMap: { [key: string]: T },
+  skillsMap: { [key: string]: SkillInterface }
+): FilterOption[] {
   return [
     { slug: "all", entryName: "All" },
     ...Object.values(allMaterialsMap)
       .flatMap((material) =>
-        material.skills.map((skill) => ({
-          slug: stringToSlug(skill.category),
-          entryName: skill.category,
-        }))
+        material.skills.flatMap((skillSlug) => {
+          const skill = skillsMap[skillSlug];
+          return skill
+            ? [
+                {
+                  slug: stringToSlug(skill.category),
+                  entryName: skill.category,
+                },
+              ]
+            : [];
+        })
       )
       .reduce((unique, item) => {
         if (!unique.some((v) => v.slug === item.slug)) {

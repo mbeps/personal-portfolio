@@ -1,27 +1,23 @@
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 import stringToSlug from "../stringToSlug";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 export function filterMaterialBySkill<T extends MaterialInterface>(
-  skillSlug: string,
-  materialsMap: { [key: string]: T },
-  skillType: SkillTypesEnum
+  skillSlug: SkillSlugEnum,
+  materialsMap: { [key: string]: T }
 ): { [key: string]: T } {
-  const filteredMaterialsMap = Object.entries(materialsMap).reduce(
-    (acc, [key, material]) => {
-      if (
-        material.skills.some(
-          (skill) => skill.slug === skillSlug && skill.skillType === skillType
-        )
-      ) {
-        acc[key] = material;
-      }
-      return acc;
-    },
-    {} as { [key: string]: T }
-  );
+  const filteredMaterials: { [key: string]: T } = {};
 
-  return filteredMaterialsMap;
+  for (const key in materialsMap) {
+    const material = materialsMap[key];
+    if (material.skills.includes(skillSlug)) {
+      filteredMaterials[key] = material;
+    }
+  }
+
+  return filteredMaterials;
 }
 
 export function filterMaterialByCategory<T extends MaterialInterface>(
@@ -42,25 +38,25 @@ export function filterMaterialByCategory<T extends MaterialInterface>(
 }
 
 export function filterMaterialBySkillCategory<T extends MaterialInterface>(
+  materialsMap: { [key: string]: T },
   skillCategory: string,
-  materialsMap: { [key: string]: T }
+  skillsMap: { [key: string]: SkillInterface }
 ): { [key: string]: T } {
-  const filteredMaterialsMap = Object.entries(materialsMap).reduce(
-    (acc, [key, material]) => {
-      if (
-        material.skills.some(
-          (skill) =>
-            stringToSlug(skill.category) === stringToSlug(skillCategory)
-        )
-      ) {
-        acc[key] = material;
-      }
-      return acc;
-    },
-    {} as { [key: string]: T }
-  );
+  const filteredMaterials: { [key: string]: T } = {};
+  const targetCategorySlug = stringToSlug(skillCategory);
 
-  return filteredMaterialsMap;
+  for (const materialKey in materialsMap) {
+    const material = materialsMap[materialKey];
+    for (const skillSlug of material.skills) {
+      const skill = skillsMap[skillSlug];
+      if (skill && stringToSlug(skill.category) === targetCategorySlug) {
+        filteredMaterials[materialKey] = material;
+        break; // Assuming a material only needs one matching skill category to be included
+      }
+    }
+  }
+
+  return filteredMaterials;
 }
 
 export function filterMaterialByArchivedStatus<T extends MaterialInterface>(

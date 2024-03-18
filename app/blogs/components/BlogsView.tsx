@@ -17,10 +17,13 @@ import FilterOverlay from "@/components/Filters/FilterPanel";
 import SearchInput from "@/components/Inputs/SearchInput";
 import BlogsList from "@/components/MaterialLists/BlogsList";
 import { Button } from "@/components/shadcn/ui/button";
+import skillsDatabase from "@/database/skills/skills";
+import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import useFuseSearch from "@/hooks/useFuseSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import BlogInterface from "@/interfaces/material/BlogInterface";
+import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
@@ -83,7 +86,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
   ];
 
   // Use the custom hook to perform the search
-  const filteredBlogsHashMap = useFuseSearch(blogs, searchTerm, searchOptions);
+  const filteredBlogsHashMap = useFuseSearch(blogs, searchTerm, searchOptions); //!
 
   //^ Filtering Logic
   /**
@@ -92,6 +95,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
    * @param newSearchTerm (string) - new search term
    */
   const updateSearchTerm = (newSearchTerm: string) => {
+    //!
     router.push(
       generateUrl(
         [
@@ -108,7 +112,9 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
   };
 
   //^ Filtering Logic
-  let filteredBlogs = filteredBlogsHashMap;
+  let filteredBlogs: {
+    [key: string]: BlogInterface;
+  } = filteredBlogsHashMap;
 
   // Filter by blog category
   if (selectedBlogSection !== "all") {
@@ -121,35 +127,33 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
   // Filter by skill category
   if (selectedSkillCategory !== "all") {
     filteredBlogs = filterMaterialBySkillCategory<BlogInterface>(
+      filteredBlogs,
       stringToSlug(selectedSkillCategory),
-      filteredBlogs
+      skillsDatabase
     );
   }
 
   // Filter by hard skill
   if (selectedTechnicalSkill !== "all") {
     filteredBlogs = filterMaterialBySkill<BlogInterface>(
-      selectedTechnicalSkill,
-      filteredBlogs,
-      SkillTypesEnum.Hard
+      selectedTechnicalSkill as SkillSlugEnum,
+      filteredBlogs
     );
   }
 
   // Filter by general skill
   if (selectedGeneralSkill !== "all") {
     filteredBlogs = filterMaterialBySkill<BlogInterface>(
-      selectedGeneralSkill,
-      filteredBlogs,
-      SkillTypesEnum.General
+      selectedGeneralSkill as SkillSlugEnum,
+      filteredBlogs
     );
   }
 
   // Filter by soft skill
   if (selectedSoftSkill !== "all") {
     filteredBlogs = filterMaterialBySkill<BlogInterface>(
-      selectedSoftSkill,
-      filteredBlogs,
-      SkillTypesEnum.Soft
+      selectedSoftSkill as SkillSlugEnum,
+      filteredBlogs
     );
   }
 
@@ -159,7 +163,8 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
     filteredBlogs
   );
 
-  const groupedBlogs = groupMaterialsByCategory(filteredBlogs);
+  const groupedBlogs: MaterialGroupInterface[] =
+    groupMaterialsByCategory(filteredBlogs);
 
   const areFiltersApplied =
     selectedBlogSection !== "all" ||
@@ -169,6 +174,8 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
     selectedSoftSkill !== "all" ||
     searchTerm !== "";
 
+  //^ Filter Categories
+  //TODO: update these to use skill hashmap
   const filterCategories: FilterCategory[] = [
     {
       sectionName: "Section",
@@ -180,7 +187,10 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
       sectionName: "Skill Category",
       urlParam: skillCategoryParamName,
       selectedValue: selectedSkillCategory,
-      options: generateFilterOptionsBySkillCategories<BlogInterface>(blogs),
+      options: generateFilterOptionsBySkillCategories<BlogInterface>(
+        blogs,
+        skillsDatabase
+      ),
     },
     {
       sectionName: "Technical Skill",
@@ -188,6 +198,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
       selectedValue: selectedTechnicalSkill,
       options: generateFilterOptionsBySkillType<BlogInterface>(
         blogs,
+        skillsDatabase,
         SkillTypesEnum.Hard
       ),
     },
@@ -197,6 +208,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
       selectedValue: selectedGeneralSkill,
       options: generateFilterOptionsBySkillType<BlogInterface>(
         blogs,
+        skillsDatabase,
         SkillTypesEnum.General
       ),
     },
@@ -206,6 +218,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
       selectedValue: selectedSoftSkill,
       options: generateFilterOptionsBySkillType<BlogInterface>(
         blogs,
+        skillsDatabase,
         SkillTypesEnum.Soft
       ),
     },
