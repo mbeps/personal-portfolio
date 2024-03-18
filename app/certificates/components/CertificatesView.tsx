@@ -19,6 +19,8 @@ import FilterOverlay from "@/components/Filters/FilterPanel";
 import SearchInput from "@/components/Inputs/SearchInput";
 import CertificatesList from "@/components/MaterialLists/CertificatesList";
 import { Button } from "@/components/shadcn/ui/button";
+import skillsDatabase from "@/database/skills/skills";
+import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import useFuseSearch from "@/hooks/useFuseSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
@@ -149,35 +151,33 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
   // Filter by skill category
   if (selectedSkillCategory !== "all") {
     filteredCertificates = filterMaterialBySkillCategory<CertificateInterface>(
+      filteredCertificates,
       stringToSlug(selectedSkillCategory),
-      filteredCertificates
+      skillsDatabase
     );
   }
 
   // Filter by hard skill
   if (selectedTechnicalSkill !== "all") {
     filteredCertificates = filterMaterialBySkill<CertificateInterface>(
-      selectedTechnicalSkill,
-      filteredCertificates,
-      SkillTypesEnum.Hard
+      selectedTechnicalSkill as SkillSlugEnum,
+      filteredCertificates
     );
   }
 
   // Filter by general skill
   if (selectedGeneralSkill !== "all") {
     filteredCertificates = filterMaterialBySkill<CertificateInterface>(
-      selectedGeneralSkill,
-      filteredCertificates,
-      SkillTypesEnum.General
+      selectedGeneralSkill as SkillSlugEnum,
+      filteredCertificates
     );
   }
 
   // Filter by soft skill
   if (selectedSoftSkill !== "all") {
     filteredCertificates = filterMaterialBySkill<CertificateInterface>(
-      selectedSoftSkill,
-      filteredCertificates,
-      SkillTypesEnum.Soft
+      selectedSoftSkill as SkillSlugEnum,
+      filteredCertificates
     );
   }
 
@@ -217,10 +217,10 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
       sectionName: "Skill Category",
       urlParam: skillCategoryParamName,
       selectedValue: selectedSkillCategory,
-      options:
-        generateFilterOptionsBySkillCategories<CertificateInterface>(
-          certificates
-        ),
+      options: generateFilterOptionsBySkillCategories<CertificateInterface>(
+        certificates,
+        skillsDatabase
+      ),
     },
     {
       sectionName: "Technical Skill",
@@ -228,6 +228,7 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
       selectedValue: selectedTechnicalSkill,
       options: generateFilterOptionsBySkillType<CertificateInterface>(
         certificates,
+        skillsDatabase,
         SkillTypesEnum.Hard
       ),
     },
@@ -237,6 +238,7 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
       selectedValue: selectedGeneralSkill,
       options: generateFilterOptionsBySkillType<CertificateInterface>(
         certificates,
+        skillsDatabase,
         SkillTypesEnum.General
       ),
     },
@@ -246,6 +248,7 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
       selectedValue: selectedSoftSkill,
       options: generateFilterOptionsBySkillType<CertificateInterface>(
         certificates,
+        skillsDatabase,
         SkillTypesEnum.Soft
       ),
     },
