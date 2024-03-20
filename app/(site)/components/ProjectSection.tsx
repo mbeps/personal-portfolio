@@ -44,8 +44,6 @@ const ProjectsSection = () => {
           .filter(([key, _]) => allowedSlugs.includes(key))
           .map(([key, project], idx) => (
             <div key={key}>
-              {" "}
-              {/* Use the project's key as the unique key instead of idx */}
               <SlideUp offset="-150px 0px -150px 0px">
                 <ProjectItem project={project} path={key} />
               </SlideUp>
