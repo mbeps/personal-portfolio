@@ -81,3 +81,6 @@ enum CertificateSlugEnum {
 }
 
 export default CertificateSlugEnum;
+
+export const CertificateSlugArray: CertificateSlugEnum[] =
+  Object.values(CertificateSlugEnum);

@@ -255,3 +255,5 @@ enum SkillSlugEnum {
 }
 
 export default SkillSlugEnum;
+
+export const skillSlugArray: SkillSlugEnum[] = Object.values(SkillSlugEnum);

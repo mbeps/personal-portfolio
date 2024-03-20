@@ -17,3 +17,6 @@ enum MaterialSlugEnum {
 }
 
 export default MaterialSlugEnum;
+
+export const MaterialSlugArray: MaterialSlugEnum[] =
+  Object.values(MaterialSlugEnum);
