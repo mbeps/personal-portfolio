@@ -4,36 +4,41 @@ import getAssociatedSkillsHashmap from "@/actions/skills/getAssociatedSkills";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import skillsDatabase from "@/database/skills/skills";
+import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import React from "react";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
 
 interface RelatedSkillsSectionProps {
-  skill: SkillInterface;
+  skill: SkillSlugEnum;
 }
 
 const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
   skill,
 }) => {
-  const allAssociatedSkills = getAssociatedSkillsHashmap(skillsDatabase, skill);
+  const allAssociatedSkillsMap: Database<SkillInterface> =
+    getAssociatedSkillsHashmap(skillsDatabase, skill);
 
-  if (!allAssociatedSkills || allAssociatedSkills.length === 0) {
+  const associatedSkills: SkillSlugEnum[] | undefined =
+    skillsDatabase[skill].relatedSkills;
+
+  if (!associatedSkills || associatedSkills.length === 0) {
     return null;
   }
 
   const allGroupedSkills = [
     filterAndGroupSkills(
-      filterSkillsByType(allAssociatedSkills, SkillTypesEnum.Hard),
+      filterSkillsByType(allAssociatedSkillsMap, SkillTypesEnum.Hard),
       SkillTypesEnum.Hard,
       "Technologies"
     ),
     filterAndGroupSkills(
-      filterSkillsByType(allAssociatedSkills, SkillTypesEnum.General),
+      filterSkillsByType(allAssociatedSkillsMap, SkillTypesEnum.General),
       SkillTypesEnum.General,
       "Technical Skills"
     ),
     filterAndGroupSkills(
-      filterSkillsByType(allAssociatedSkills, SkillTypesEnum.Soft),
+      filterSkillsByType(allAssociatedSkillsMap, SkillTypesEnum.Soft),
       SkillTypesEnum.Soft,
       "Soft Skills"
     ),

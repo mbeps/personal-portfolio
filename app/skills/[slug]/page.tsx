@@ -1,6 +1,4 @@
-import filterContentBySkill from "@/actions/material/filterContentBySkill";
 import groupMaterialsByMaterialType from "@/actions/material/groupMaterialsByMaterialType";
-import getSkillBySlug from "@/actions/skills/getSkillBySlug";
 import BlogsList from "@/components/MaterialLists/BlogsList";
 import CertificatesList from "@/components/MaterialLists/CertificatesList";
 import ProjectsList from "@/components/MaterialLists/ProjectsList";
@@ -21,15 +19,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 import RelatedSkillsSection from "./components/RelatedSkillsSection";
-
-function extractSlugs(skills: SkillInterface[]): string[] {
-  return skills.map((skill) => {
-    if (!skill.slug) {
-      throw new Error("ERROR: Slug field is empty or missing");
-    }
-    return skill.slug;
-  });
-}
+import SkillSlugEnum, { skillSlugArray } from "@/enums/SkillSlugEnum";
+import { filterMaterialBySkill } from "@/actions/material/filterMaterials";
 
 interface MaterialSectionInterface {
   name: "Projects" | "Certificates" | "Blogs";
@@ -42,8 +33,9 @@ export async function generateMetadata(
   { params, searchParams }: ProjectPageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const slug = params.slug;
-  const skill = getSkillBySlug(slug, [...skillsDatabase]);
+  const slug: string = params.slug;
+  const skill: SkillInterface | undefined =
+    skillsDatabase[slug as SkillSlugEnum];
 
   if (!skill) {
     notFound();
@@ -56,7 +48,7 @@ export async function generateMetadata(
 }
 
 export const generateStaticParams = async () => {
-  return extractSlugs(skillsDatabase).map((slug) => ({ slug }));
+  return skillSlugArray.map((slug) => ({ slug }));
 };
 
 interface ProjectPageProps {
@@ -65,9 +57,8 @@ interface ProjectPageProps {
 }
 
 const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
-  const slug = params.slug;
-  const skill = getSkillBySlug(slug, [...skillsDatabase]);
-  const blogMetadata = blogDatabase;
+  const slug: string = params.slug;
+  const skill: SkillInterface = skillsDatabase[slug as SkillSlugEnum];
 
   if (!skill) {
     notFound();
@@ -88,7 +79,7 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
     },
     {
       name: "Blogs",
-      materials: blogMetadata,
+      materials: blogDatabase,
       basePath: BLOG_PAGE.path,
       ListComponent: BlogsList,
     },
@@ -109,12 +100,12 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
           key={index}
           name={name}
           materials={materials}
-          skill={skill}
+          skillSlug={slug}
           basePath={basePath}
           ListComponent={ListComponent}
         />
       ))}
-      <RelatedSkillsSection skill={skill} />
+      <RelatedSkillsSection skill={slug as SkillSlugEnum} />
     </div>
   );
 };
@@ -122,17 +113,20 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
 export default SkillPage;
 
 interface MaterialSectionProps extends MaterialSectionInterface {
-  skill: SkillInterface;
+  skillSlug: string;
 }
 
 const MaterialSection: React.FC<MaterialSectionProps> = ({
   name,
   materials,
-  skill,
+  skillSlug,
   basePath,
   ListComponent,
 }) => {
-  const filteredMaterials = filterContentBySkill(materials, skill);
+  const filteredMaterials = filterMaterialBySkill(
+    skillSlug as SkillSlugEnum,
+    materials
+  );
 
   if (!filteredMaterials || Object.keys(filteredMaterials).length === 0) {
     return null;
