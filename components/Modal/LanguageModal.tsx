@@ -27,7 +27,7 @@ import {
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
 import materialDatabase from "@/database/material";
-import skillsDatabase from "@/database/skills/skills";
+import skillsHashmap from "@/database/skills/skills";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import FilterOption from "@/interfaces/filters/FilterOption";
@@ -54,13 +54,13 @@ interface LanguageTagWithModalProps {
 const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
   languageIdentifier,
 }) => {
-  const language: SkillInterface = skillsDatabase[languageIdentifier];
+  const language: SkillInterface = skillsHashmap[languageIdentifier];
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const languageSkills: {
     [key: string]: SkillInterface;
   } = getAssociatedSkillsHashmap(
-    skillsDatabase,
+    skillsHashmap,
     languageIdentifier,
     SkillTypesEnum.Hard
   );

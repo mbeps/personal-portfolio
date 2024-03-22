@@ -10,7 +10,7 @@ import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
 import certificateDatabase from "@/database/certificates";
-import skillsDatabase from "@/database/skills/skills";
+import skillsHashmap from "@/database/skills/skills";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
@@ -85,7 +85,7 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
   }
 
   const skillsAssociatedWithCertificate: Database<SkillInterface> =
-    getSkillsDatabaseFromArrayID(skillsDatabase, certificate.skills);
+    getSkillsDatabaseFromArrayID(skillsHashmap, certificate.skills);
 
   const technologies = filterSkillsByType(
     skillsAssociatedWithCertificate,

@@ -9,7 +9,7 @@ import HeadingTwo from "@/components/Text/HeadingTwo";
 import developerName from "@/constants/developerName";
 import { BLOG_PAGE } from "@/constants/pages";
 import blogDatabase from "@/database/blogs";
-import skillsDatabase from "@/database/skills/skills";
+import skillsHashmap from "@/database/skills/skills";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import BlogInterface from "@/interfaces/material/BlogInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
@@ -75,7 +75,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
   }
 
   const skillsAssociatedWithBlog: Database<SkillInterface> =
-    getSkillsDatabaseFromArrayID(skillsDatabase, blogMetadata.skills);
+    getSkillsDatabaseFromArrayID(skillsHashmap, blogMetadata.skills);
 
   const technologies: Database<SkillInterface> = filterSkillsByType(
     skillsAssociatedWithBlog,

@@ -13,7 +13,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/shadcn/ui/dropdown-menu";
-import skillsDatabase from "@/database/skills/skills";
+import skillsHashmap from "@/database/skills/skills";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import useIsMounted from "@/hooks/useIsMounted";
@@ -65,7 +65,7 @@ const TechnologiesModal: React.FC = () => {
 
   const mainSkills: Database<SkillInterface> = {};
 
-  Object.entries(skillsDatabase).forEach(([key, skill]) => {
+  Object.entries(skillsHashmap).forEach(([key, skill]) => {
     if (skill.isMainSkill) {
       mainSkills[key] = skill;
     }

@@ -3,7 +3,7 @@ import filterSkillsByType from "@/actions/skills/filterSkillsByType";
 import getAssociatedSkillsHashmap from "@/actions/skills/getAssociatedSkills";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import skillsDatabase from "@/database/skills/skills";
+import skillsHashmap from "@/database/skills/skills";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
@@ -17,10 +17,10 @@ const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
   skill,
 }) => {
   const allAssociatedSkillsMap: Database<SkillInterface> =
-    getAssociatedSkillsHashmap(skillsDatabase, skill);
+    getAssociatedSkillsHashmap(skillsHashmap, skill);
 
   const associatedSkills: SkillSlugEnum[] | undefined =
-    skillsDatabase[skill].relatedSkills;
+    skillsHashmap[skill].relatedSkills;
 
   if (!associatedSkills || associatedSkills.length === 0) {
     return null;

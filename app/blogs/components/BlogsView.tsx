@@ -17,7 +17,7 @@ import FilterOverlay from "@/components/Filters/FilterPanel";
 import SearchInput from "@/components/Inputs/SearchInput";
 import BlogsList from "@/components/MaterialLists/BlogsList";
 import { Button } from "@/components/shadcn/ui/button";
-import skillsDatabase from "@/database/skills/skills";
+import skillsHashmap from "@/database/skills/skills";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import useFuseSearch from "@/hooks/useFuseSearch";
@@ -128,7 +128,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
     filteredBlogs = filterMaterialBySkillCategory<BlogInterface>(
       filteredBlogs,
       stringToSlug(selectedSkillCategory),
-      skillsDatabase
+      skillsHashmap
     );
   }
 
@@ -187,7 +187,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
       selectedValue: selectedSkillCategory,
       options: generateFilterOptionsBySkillCategories<BlogInterface>(
         blogs,
-        skillsDatabase
+        skillsHashmap
       ),
     },
     {
@@ -196,7 +196,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
       selectedValue: selectedTechnicalSkill,
       options: generateFilterOptionsBySkillType<BlogInterface>(
         blogs,
-        skillsDatabase,
+        skillsHashmap,
         SkillTypesEnum.Hard
       ),
     },
@@ -206,7 +206,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
       selectedValue: selectedGeneralSkill,
       options: generateFilterOptionsBySkillType<BlogInterface>(
         blogs,
-        skillsDatabase,
+        skillsHashmap,
         SkillTypesEnum.General
       ),
     },
@@ -216,7 +216,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
       selectedValue: selectedSoftSkill,
       options: generateFilterOptionsBySkillType<BlogInterface>(
         blogs,
-        skillsDatabase,
+        skillsHashmap,
         SkillTypesEnum.Soft
       ),
     },

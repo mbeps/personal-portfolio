@@ -19,7 +19,7 @@ import FilterOverlay from "@/components/Filters/FilterPanel";
 import SearchInput from "@/components/Inputs/SearchInput";
 import CertificatesList from "@/components/MaterialLists/CertificatesList";
 import { Button } from "@/components/shadcn/ui/button";
-import skillsDatabase from "@/database/skills/skills";
+import skillsHashmap from "@/database/skills/skills";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import useFuseSearch from "@/hooks/useFuseSearch";
@@ -153,7 +153,7 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
     filteredCertificates = filterMaterialBySkillCategory<CertificateInterface>(
       filteredCertificates,
       stringToSlug(selectedSkillCategory),
-      skillsDatabase
+      skillsHashmap
     );
   }
 
@@ -219,7 +219,7 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
       selectedValue: selectedSkillCategory,
       options: generateFilterOptionsBySkillCategories<CertificateInterface>(
         certificates,
-        skillsDatabase
+        skillsHashmap
       ),
     },
     {
@@ -228,7 +228,7 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
       selectedValue: selectedTechnicalSkill,
       options: generateFilterOptionsBySkillType<CertificateInterface>(
         certificates,
-        skillsDatabase,
+        skillsHashmap,
         SkillTypesEnum.Hard
       ),
     },
@@ -238,7 +238,7 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
       selectedValue: selectedGeneralSkill,
       options: generateFilterOptionsBySkillType<CertificateInterface>(
         certificates,
-        skillsDatabase,
+        skillsHashmap,
         SkillTypesEnum.General
       ),
     },
@@ -248,7 +248,7 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
       selectedValue: selectedSoftSkill,
       options: generateFilterOptionsBySkillType<CertificateInterface>(
         certificates,
-        skillsDatabase,
+        skillsHashmap,
         SkillTypesEnum.Soft
       ),
     },

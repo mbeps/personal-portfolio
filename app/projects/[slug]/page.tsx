@@ -25,7 +25,7 @@ import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
 import getSkillsDatabaseFromArrayID from "@/actions/skills/getSkillsDatabaseFromArrayID";
-import skillsDatabase from "@/database/skills/skills";
+import skillsHashmap from "@/database/skills/skills";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import { filterSkillSlugsByCategoryArrayOfKeys } from "@/actions/skills/filterSkillsByCategory";
 import filterSkillsExcludingCategory from "@/actions/skills/filterSkillsExcludingCategory";
@@ -103,7 +103,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const coverImagePath = `${basePath}/${slug}/cover.png`;
 
   const skillsAssociatedWithProjects: Database<SkillInterface> =
-    getSkillsDatabaseFromArrayID(skillsDatabase, project.skills);
+    getSkillsDatabaseFromArrayID(skillsHashmap, project.skills);
 
   const projectLanguages: SkillSlugEnum[] =
     filterSkillSlugsByCategoryArrayOfKeys(

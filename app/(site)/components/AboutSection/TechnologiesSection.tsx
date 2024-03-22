@@ -10,7 +10,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
-import skillsDatabase from "@/database/skills/skills";
+import skillsHashmap from "@/database/skills/skills";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
@@ -25,7 +25,7 @@ import SkillInterface from "@/interfaces/skills/SkillInterface";
 const TechnologiesSection: React.FC = () => {
   const mainSkills: Database<SkillInterface> = {};
 
-  Object.entries(skillsDatabase).forEach(([key, skill]) => {
+  Object.entries(skillsHashmap).forEach(([key, skill]) => {
     if (skill.isMainSkill) {
       mainSkills[key] = skill;
     }

@@ -18,7 +18,7 @@ import FilterOverlay from "@/components/Filters/FilterPanel";
 import SearchInput from "@/components/Inputs/SearchInput";
 import ProjectsList from "@/components/MaterialLists/ProjectsList";
 import { Button } from "@/components/shadcn/ui/button";
-import skillsDatabase from "@/database/skills/skills";
+import skillsHashmap from "@/database/skills/skills";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import useFuseSearch from "@/hooks/useFuseSearch";
@@ -129,7 +129,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ projects }) => {
     filteredProjects = filterMaterialBySkillCategory<ProjectInterface>(
       filteredProjects,
       stringToSlug(selectedSkillCategory),
-      skillsDatabase
+      skillsHashmap
     );
   }
 
@@ -209,7 +209,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ projects }) => {
       selectedValue: selectedLanguage,
       options: generateFilterOptionsForProgrammingLanguages<ProjectInterface>(
         projects,
-        skillsDatabase
+        skillsHashmap
       ),
     },
     {
@@ -218,7 +218,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ projects }) => {
       selectedValue: selectedTechnology,
       options: generateFilterOptionsBySkillType<ProjectInterface>(
         projects,
-        skillsDatabase,
+        skillsHashmap,
         SkillTypesEnum.Hard
       ),
     },
@@ -228,7 +228,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ projects }) => {
       selectedValue: selectedSkillCategory,
       options: generateFilterOptionsBySkillCategories<ProjectInterface>(
         projects,
-        skillsDatabase
+        skillsHashmap
       ),
     },
     {
@@ -237,7 +237,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ projects }) => {
       selectedValue: selectedGeneralSkill,
       options: generateFilterOptionsBySkillType<ProjectInterface>(
         projects,
-        skillsDatabase,
+        skillsHashmap,
         SkillTypesEnum.General
       ),
     },
@@ -247,7 +247,7 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ projects }) => {
       selectedValue: selectedSoftSkill,
       options: generateFilterOptionsBySkillType<ProjectInterface>(
         projects,
-        skillsDatabase,
+        skillsHashmap,
         SkillTypesEnum.Soft
       ),
     },

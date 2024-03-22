@@ -10,7 +10,7 @@ import { BLOG_PAGE, CERTIFICATES_PAGE, PROJECTS_PAGE } from "@/constants/pages";
 import blogDatabase from "@/database/blogs";
 import certificateDatabase from "@/database/certificates";
 import projectDatabase from "@/database/projects";
-import skillsDatabase from "@/database/skills/skills";
+import skillsHashmap from "@/database/skills/skills";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 import MaterialListProps from "@/interfaces/props/MaterialListProps";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
@@ -35,7 +35,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const slug: string = params.slug;
   const skill: SkillInterface | undefined =
-    skillsDatabase[slug as SkillSlugEnum];
+    skillsHashmap[slug as SkillSlugEnum];
 
   if (!skill) {
     notFound();
@@ -58,7 +58,7 @@ interface ProjectPageProps {
 
 const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
   const slug: string = params.slug;
-  const skill: SkillInterface = skillsDatabase[slug as SkillSlugEnum];
+  const skill: SkillInterface = skillsHashmap[slug as SkillSlugEnum];
 
   if (!skill) {
     notFound();
