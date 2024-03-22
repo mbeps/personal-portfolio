@@ -25,10 +25,10 @@ import {
   PopoverTrigger,
 } from "@/components/shadcn/ui/popover";
 import materialDatabase from "@/database/material";
+import skillsHashmap from "@/database/skills/skills";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import FilterOption from "@/interfaces/filters/FilterOption";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import { cn } from "@/lib/utils";
 import { Check } from "lucide-react";
@@ -38,7 +38,7 @@ import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 
 interface SkillListProps {
-  skills: Database<SkillInterface>;
+  skills: SkillSlugEnum[];
 }
 
 const SkillList: React.FC<SkillListProps> = ({ skills }) => {
@@ -56,12 +56,15 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
   const softSkillParamName = "soft";
   const noMaterialParamName = "no-material";
 
-  const selectedGroup = searchParams.get(groupParamName) || "category";
-  const includeHardSkills = searchParams.get(hardSkillParamName) === "true";
-  const includeGeneralSkills =
+  const selectedGroup: string = searchParams.get(groupParamName) || "category";
+  const includeHardSkills: boolean =
+    searchParams.get(hardSkillParamName) === "true";
+  const includeGeneralSkills: boolean =
     searchParams.get(generalSkillParamName) === "true";
-  const includeSoftSkills = searchParams.get(softSkillParamName) === "true";
-  const includeNoMaterial = searchParams.get(noMaterialParamName) === "true"; // false by default
+  const includeSoftSkills: boolean =
+    searchParams.get(softSkillParamName) === "true";
+  const includeNoMaterial: boolean =
+    searchParams.get(noMaterialParamName) === "true"; // false by default
 
   //^ LOGIC FOR DISPLAYING FILTERED SKILLS
   const options: FilterOption[] = [
@@ -81,6 +84,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
   const groupedSkills: SkillsCategoryInterface[] = groupSkills(
     selectedGroup,
     skills,
+    skillsHashmap,
     includeSkillTypes
   );
 
@@ -281,12 +285,12 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
                   ([skillKey, skill], index) => (
                     <SkillTag
                       key={skillKey} // Use skillKey as the key for better React key usage
-                      skill={skill}
+                      skillKey={skill}
                       hide={
                         !(
                           countMaterialsAttributedToSkill(
                             skillKey as SkillSlugEnum,
-                            skills,
+                            skillsHashmap,
                             materialDatabase
                           ) >= 5
                         ) && includeNoMaterial

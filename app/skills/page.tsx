@@ -1,7 +1,7 @@
 import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/UI/PageDescription";
 import developerName from "@/constants/developerName";
-import skillsHashmap from "@/database/skills/skills";
+import { skillSlugArray } from "@/enums/SkillSlugEnum";
 import SkillList from "../../components/MaterialLists/SkillList";
 
 const description = `
@@ -22,7 +22,7 @@ export default function SkillPage() {
           <HeadingOne title="Skills" />
           <PageDescription description={description} />
 
-          <SkillList skills={skillsHashmap} />
+          <SkillList skills={skillSlugArray} />
         </div>
       </section>
     </main>
