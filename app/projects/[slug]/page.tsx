@@ -3,6 +3,9 @@ import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFile
 import getVideosFromFileSystem from "@/actions/file-system/getVideosFromFileSystem";
 import getContentBySlug from "@/actions/material/getContentBySlug";
 import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
+import filterSkillSlugsByCategory, {
+  filterSkillSlugsExcludingCategory,
+} from "@/actions/skills/filterSkillsByCategory";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
 import Gallery from "@/components/Gallery/Gallery";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
@@ -14,9 +17,12 @@ import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
 import { PROJECTS_PAGE } from "@/constants/pages";
 import projectDatabase from "@/database/projects";
+import skillsHashmap from "@/database/skills/skills";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
+import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
+import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -24,13 +30,6 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
-import getSkillsDatabaseFromArrayID from "@/actions/skills/getSkillsDatabaseFromArrayID";
-import skillsHashmap from "@/database/skills/skills";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
-import { filterSkillSlugsByCategoryArrayOfKeys } from "@/actions/skills/filterSkillsByCategory";
-import filterSkillsExcludingCategory from "@/actions/skills/filterSkillsExcludingCategory";
-import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
-import SkillSlugEnum from "@/enums/SkillSlugEnum";
 
 /**
  * Metadata object for the dynamic project page.
@@ -102,43 +101,55 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const hasCoverImage = project.thumbnailImage !== undefined;
   const coverImagePath = `${basePath}/${slug}/cover.png`;
 
-  const skillsAssociatedWithProjects: Database<SkillInterface> =
-    getSkillsDatabaseFromArrayID(skillsHashmap, project.skills);
+  const projectLanguages: SkillSlugEnum[] = filterSkillSlugsByCategory(
+    project.skills,
+    skillsHashmap,
+    SkillCategoriesEnum.ProgrammingLanguages
+  );
 
-  const projectLanguages: SkillSlugEnum[] =
-    filterSkillSlugsByCategoryArrayOfKeys(
-      skillsAssociatedWithProjects,
+  const projectSkillsWithoutLanguage: SkillSlugEnum[] =
+    filterSkillSlugsExcludingCategory(
+      project.skills,
+      skillsHashmap,
       SkillCategoriesEnum.ProgrammingLanguages
     );
 
-  const projectSkillsWithoutLanguage: Database<SkillInterface> =
-    filterSkillsExcludingCategory(
-      skillsAssociatedWithProjects,
-      SkillCategoriesEnum.ProgrammingLanguages
-    );
-
-  const technologies: Database<SkillInterface> = filterSkillsByType(
+  const technologies: SkillSlugEnum[] = filterSkillsByType(
     projectSkillsWithoutLanguage,
+    skillsHashmap,
     SkillTypesEnum.Hard
   );
-  const generalSkills: Database<SkillInterface> = filterSkillsByType(
+  const generalSkills: SkillSlugEnum[] = filterSkillsByType(
     projectSkillsWithoutLanguage,
+    skillsHashmap,
     SkillTypesEnum.General
   );
-  const softSkills: Database<SkillInterface> = filterSkillsByType(
+  const softSkills: SkillSlugEnum[] = filterSkillsByType(
     projectSkillsWithoutLanguage,
+    skillsHashmap,
     SkillTypesEnum.Soft
   );
 
   // Using the new function to group all skill types
   const allGroupedSkills: GroupedSkillsCategoriesInterface[] = [
-    filterAndGroupSkills(technologies, SkillTypesEnum.Hard, "Technologies"),
+    filterAndGroupSkills(
+      technologies,
+      skillsHashmap,
+      SkillTypesEnum.Hard,
+      "Technologies"
+    ),
     filterAndGroupSkills(
       generalSkills,
+      skillsHashmap,
       SkillTypesEnum.General,
       "Technical Skills"
     ),
-    filterAndGroupSkills(softSkills, SkillTypesEnum.Soft, "Soft Skills"),
+    filterAndGroupSkills(
+      softSkills,
+      skillsHashmap,
+      SkillTypesEnum.Soft,
+      "Soft Skills"
+    ),
   ];
 
   const getImages = () => {
