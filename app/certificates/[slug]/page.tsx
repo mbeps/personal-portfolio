@@ -1,7 +1,6 @@
 import getContentBySlug from "@/actions/material/getContentBySlug";
 import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
-import getSkillsDatabaseFromArrayID from "@/actions/skills/getSkillsDatabaseFromArrayID";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import Tag from "@/components/Tags/Tag";
 import HeadingThree from "@/components/Text/HeadingThree";
@@ -11,9 +10,9 @@ import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
 import certificateDatabase from "@/database/certificates";
 import skillsHashmap from "@/database/skills/skills";
+import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -84,31 +83,42 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
     notFound();
   }
 
-  const skillsAssociatedWithCertificate: Database<SkillInterface> =
-    getSkillsDatabaseFromArrayID(skillsHashmap, certificate.skills);
-
-  const technologies = filterSkillsByType(
-    skillsAssociatedWithCertificate,
+  const technologies: SkillSlugEnum[] = filterSkillsByType(
+    certificate.skills,
+    skillsHashmap,
     SkillTypesEnum.Hard
   );
-  const generalSkills = filterSkillsByType(
-    skillsAssociatedWithCertificate,
+  const generalSkills: SkillSlugEnum[] = filterSkillsByType(
+    certificate.skills,
+    skillsHashmap,
     SkillTypesEnum.General
   );
-  const softSkills = filterSkillsByType(
-    skillsAssociatedWithCertificate,
+  const softSkills: SkillSlugEnum[] = filterSkillsByType(
+    certificate.skills,
+    skillsHashmap,
     SkillTypesEnum.Soft
   );
 
   // Simplified grouping of skill types for certificates
   const allGroupedSkills = [
-    filterAndGroupSkills(technologies, SkillTypesEnum.Hard, "Technologies"),
+    filterAndGroupSkills(
+      technologies,
+      skillsHashmap,
+      SkillTypesEnum.Hard,
+      "Technologies"
+    ),
     filterAndGroupSkills(
       generalSkills,
+      skillsHashmap,
       SkillTypesEnum.General,
       "Technical Skills"
     ),
-    filterAndGroupSkills(softSkills, SkillTypesEnum.Soft, "Soft Skills"),
+    filterAndGroupSkills(
+      softSkills,
+      skillsHashmap,
+      SkillTypesEnum.Soft,
+      "Soft Skills"
+    ),
   ];
   const certificateImage = `/certificates/${slug}.jpg`;
 
