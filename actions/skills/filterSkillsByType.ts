@@ -1,21 +1,24 @@
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillSlugEnum from "@/enums/SkillSlugEnum";
 
 export default function filterSkillsByType(
-  skills: Database<SkillInterface>,
+  skillSlugs: SkillSlugEnum[],
+  allSkills: Database<SkillInterface>,
   skillType: SkillTypesEnum
-): Database<SkillInterface> {
-  // Initialize an empty hashmap for the filtered skills
-  const filteredSkills: Database<SkillInterface> = {};
+): SkillSlugEnum[] {
+  // Initialize an empty array for the filtered skill slugs
+  const filteredSkillSlugs: SkillSlugEnum[] = [];
 
-  // Iterate over the skills hashmap
-  Object.entries(skills).forEach(([key, skill]) => {
+  // Iterate over the skill slugs array
+  skillSlugs.forEach((skillSlug) => {
+    const skill = allSkills[skillSlug];
     // Check if the skill's type matches the specified skillType
-    if (skill.skillType === skillType) {
-      // If it matches, add it to the filteredSkills hashmap
-      filteredSkills[key] = skill;
+    if (skill && skill.skillType === skillType) {
+      // If it matches, add the slug to the filteredSkillSlugs array
+      filteredSkillSlugs.push(skillSlug);
     }
   });
 
-  return filteredSkills;
+  return filteredSkillSlugs;
 }

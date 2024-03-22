@@ -23,26 +23,22 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
 
   let skillCount = 0;
   let groupCount = 0;
+
   const displayedSkills: SkillsCategoryInterface[] = showAll
     ? skillCategories
     : skillCategories.reduce((acc: SkillsCategoryInterface[], categoryData) => {
         if (skillCount < maxSkillCount && groupCount < maxGroupCount) {
-          const categorySkillsEntries = Object.entries(categoryData.skills);
           const availableSlots = Math.min(
             maxSkillCount - skillCount,
-            categorySkillsEntries.length
+            categoryData.skills.length
           );
-          const limitedSkills = categorySkillsEntries
-            .slice(0, availableSlots)
-            .reduce((skillAcc, [skillKey, skillValue]) => {
-              skillAcc[skillKey] = skillValue;
-              return skillAcc;
-            }, {} as Database<SkillInterface>);
+          const limitedSkills = categoryData.skills.slice(0, availableSlots);
 
           acc.push({
             skillCategoryName: categoryData.skillCategoryName,
             skills: limitedSkills,
           });
+
           skillCount += availableSlots;
           groupCount++;
         }
@@ -75,14 +71,9 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
               <HeadingFour title={categoryData.skillCategoryName} />
             )}
             <div className="flex flex-wrap justify-center md:justify-start">
-              {Object.entries(categoryData.skills).map(
-                ([skillKey, skill]: [string, SkillInterface]) => (
-                  <SkillTag
-                    key={skill.name}
-                    skillKey={skillKey as SkillSlugEnum}
-                  />
-                )
-              )}
+              {categoryData.skills.map((skillSlug) => (
+                <SkillTag key={skillSlug} skillKey={skillSlug} />
+              ))}
             </div>
           </div>
         ))}

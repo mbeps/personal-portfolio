@@ -2,7 +2,6 @@ import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFile
 import getContentBySlug from "@/actions/material/getContentBySlug";
 import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
-import getSkillsDatabaseFromArrayID from "@/actions/skills/getSkillsDatabaseFromArrayID";
 import Reader from "@/components/Reader/Reader";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
@@ -10,6 +9,7 @@ import developerName from "@/constants/developerName";
 import { BLOG_PAGE } from "@/constants/pages";
 import blogDatabase from "@/database/blogs";
 import skillsHashmap from "@/database/skills/skills";
+import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import BlogInterface from "@/interfaces/material/BlogInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
@@ -74,31 +74,42 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
     notFound();
   }
 
-  const skillsAssociatedWithBlog: Database<SkillInterface> =
-    getSkillsDatabaseFromArrayID(skillsHashmap, blogMetadata.skills);
-
-  const technologies: Database<SkillInterface> = filterSkillsByType(
-    skillsAssociatedWithBlog,
+  const technologies: SkillSlugEnum[] = filterSkillsByType(
+    blogMetadata.skills,
+    skillsHashmap,
     SkillTypesEnum.Hard
   );
-  const generalSkills: Database<SkillInterface> = filterSkillsByType(
-    skillsAssociatedWithBlog,
+  const generalSkills: SkillSlugEnum[] = filterSkillsByType(
+    blogMetadata.skills,
+    skillsHashmap,
     SkillTypesEnum.General
   );
-  const softSkills: Database<SkillInterface> = filterSkillsByType(
-    skillsAssociatedWithBlog,
+  const softSkills: SkillSlugEnum[] = filterSkillsByType(
+    blogMetadata.skills,
+    skillsHashmap,
     SkillTypesEnum.Soft
   );
 
   // Using the new function to group all skill types
   const allGroupedSkills = [
-    filterAndGroupSkills(technologies, SkillTypesEnum.Hard, "Technologies"),
+    filterAndGroupSkills(
+      technologies,
+      skillsHashmap,
+      SkillTypesEnum.Hard,
+      "Technologies"
+    ),
     filterAndGroupSkills(
       generalSkills,
+      skillsHashmap,
       SkillTypesEnum.General,
       "Technical Skills"
     ),
-    filterAndGroupSkills(softSkills, SkillTypesEnum.Soft, "Soft Skills"),
+    filterAndGroupSkills(
+      softSkills,
+      skillsHashmap,
+      SkillTypesEnum.Soft,
+      "Soft Skills"
+    ),
   ];
 
   return (
