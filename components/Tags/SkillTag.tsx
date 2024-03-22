@@ -13,19 +13,20 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import Tag from "./Tag";
+import SkillSlugEnum from "@/enums/SkillSlugEnum";
 
 interface TagProps {
-  skill: SkillInterface;
+  skillKey: SkillSlugEnum;
   hide?: boolean;
 }
 
-const SkillTag: React.FC<TagProps> = ({ skill, hide }) => {
-  const currentPath = usePathname();
+const SkillTag: React.FC<TagProps> = ({ skillKey, hide }) => {
+  const currentPath: string = usePathname();
 
-  const skills: SkillInterface[] = skillsDatabase;
+  const skill: SkillInterface = skillsDatabase[skillKey];
 
   const hasMaterial: boolean = isSkillAssociatedWithMaterial(
-    skill,
+    skillKey,
     materialDatabase
   );
 
@@ -33,7 +34,7 @@ const SkillTag: React.FC<TagProps> = ({ skill, hide }) => {
     return <></>;
   }
 
-  let skillLink = `/skills/${skill.slug}`;
+  let skillLink = `/skills/${skillKey}`;
   if (!hasMaterial) {
     skillLink = currentPath;
     return <Tag hasHover={hasMaterial}>{skill.name}</Tag>;

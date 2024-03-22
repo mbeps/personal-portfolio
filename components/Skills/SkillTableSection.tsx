@@ -28,7 +28,7 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
     return nonEmptyGroup ? stringToSlug(nonEmptyGroup.title) : "";
   });
 
-  const isMounted = useIsMounted();
+  const isMounted: boolean = useIsMounted();
 
   // Do not render if not mounted or if there are no tabs with content
   if (!isMounted || !selectedTab) {
@@ -36,7 +36,8 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
   }
 
   // Use the function to get non-empty skill categories
-  const nonEmptySkillCategories = filterNonEmptySkillCategories(allGroupedSkills);
+  const nonEmptySkillCategories =
+    filterNonEmptySkillCategories(allGroupedSkills);
 
   return (
     <Tabs
@@ -46,12 +47,14 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
       onValueChange={setSelectedTab}
     >
       {/* Tab Options */}
-      <TabsList className="
+      <TabsList
+        className="
         mt-6 md:-ml-4
         w-full md:w-auto 
         bg-transparent 
         flex-col md:flex-row
-        ">
+        "
+      >
         {nonEmptySkillCategories.map(({ title }) => (
           <TabsTrigger
             key={stringToSlug(title)}

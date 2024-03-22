@@ -27,9 +27,10 @@ import TabbedReader from "./components/TabbedReader";
 import getSkillsDatabaseFromArrayID from "@/actions/skills/getSkillsDatabaseFromArrayID";
 import skillsDatabase from "@/database/skills/skills";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
-import filterSkillsByCategory from "@/actions/skills/filterSkillsByCategory";
+import { filterSkillSlugsByCategoryArrayOfKeys } from "@/actions/skills/filterSkillsByCategory";
 import filterSkillsExcludingCategory from "@/actions/skills/filterSkillsExcludingCategory";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
+import SkillSlugEnum from "@/enums/SkillSlugEnum";
 
 /**
  * Metadata object for the dynamic project page.
@@ -104,10 +105,11 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const skillsAssociatedWithProjects: Database<SkillInterface> =
     getSkillsDatabaseFromArrayID(skillsDatabase, project.skills);
 
-  const projectLanguages: Database<SkillInterface> = filterSkillsByCategory(
-    skillsAssociatedWithProjects,
-    SkillCategoriesEnum.ProgrammingLanguages
-  );
+  const projectLanguages: SkillSlugEnum[] =
+    filterSkillSlugsByCategoryArrayOfKeys(
+      skillsAssociatedWithProjects,
+      SkillCategoriesEnum.ProgrammingLanguages
+    );
 
   const projectSkillsWithoutLanguage: Database<SkillInterface> =
     filterSkillsExcludingCategory(
@@ -235,11 +237,9 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
               }
             />
             <div className="flex flex-wrap justify-center md:justify-start z-10 mt-5">
-              {Object.entries(projectLanguages).map(
-                ([key, language], index) => (
-                  <SkillTag key={key} skill={language} />
-                )
-              )}
+              {projectLanguages.map((language, index) => (
+                <SkillTag key={index} skillKey={language} />
+              ))}
             </div>
           </div>
         )}

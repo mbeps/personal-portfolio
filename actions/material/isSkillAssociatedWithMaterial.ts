@@ -1,25 +1,19 @@
+import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
 
-export default function isSkillAssociatedWithMaterial(
-  skillToCheck: SkillInterface,
+export default // Correcting the function signature by removing the duplicated type declaration
+function isSkillAssociatedWithMaterial(
+  skillToCheck: SkillSlugEnum,
   materialsMap: { [key: string]: MaterialInterface }
 ): boolean {
-  // Helper function remains unchanged, it recursively checks if a skill is present in a list of skills
-  const checkNestedSkills = (
-    skills: SkillInterface[],
-    skillSlug: string
-  ): boolean => {
-    return skills.some(
-      (skill) =>
-        skill.slug === skillSlug ||
-        (skill.relatedSkills &&
-          checkNestedSkills(skill.relatedSkills, skillSlug))
-    );
-  };
-
-  // Convert hashmap to array of material objects before applying the check
-  return Object.values(materialsMap).some((material) =>
-    checkNestedSkills(material.skills, skillToCheck.slug)
-  );
+  // Loop through the materialsMap
+  for (const materialKey in materialsMap) {
+    // Check if the current material's skills array includes the skillToCheck
+    if (materialsMap[materialKey].skills.includes(skillToCheck)) {
+      // If found, return true
+      return true;
+    }
+  }
+  // If the loop completes without finding the skill, return false
+  return false;
 }

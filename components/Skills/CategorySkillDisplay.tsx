@@ -5,6 +5,7 @@ import SkillTag from "../Tags/SkillTag";
 import HeadingFour from "../Text/HeadingFour";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillSlugEnum from "@/enums/SkillSlugEnum";
 
 interface CategorySkillDisplayProps {
   skillCategories: SkillsCategoryInterface[];
@@ -74,9 +75,12 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
               <HeadingFour title={categoryData.skillCategoryName} />
             )}
             <div className="flex flex-wrap justify-center md:justify-start">
-              {Object.values(categoryData.skills).map(
-                (skill: SkillInterface) => (
-                  <SkillTag key={skill.name} skill={skill} />
+              {Object.entries(categoryData.skills).map(
+                ([skillKey, skill]: [string, SkillInterface]) => (
+                  <SkillTag
+                    key={skill.name}
+                    skillKey={skillKey as SkillSlugEnum}
+                  />
                 )
               )}
             </div>
