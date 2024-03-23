@@ -2,7 +2,6 @@ import stringToSlug from "@/actions/stringToSlug";
 import CertificateItem from "@/components/CertificateItem/CertificateItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import Grid from "@/components/UI/Grid";
-import CertificateInterface from "@/interfaces/material/CertificateInterface";
 import MaterialListProps from "@/interfaces/props/MaterialListProps";
 import React from "react";
 
@@ -20,15 +19,12 @@ const CertificatesList: React.FC<MaterialListProps> = ({
                   <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
                   <HeadingTwo title={group.groupName} />
                   <Grid
-                    items={Object.entries(group.materialsKeys).map(
-                      ([key, certificate]) => (
-                        <CertificateItem
-                          key={key}
-                          path={key}
-                          certificate={certificate as CertificateInterface}
-                        />
-                      )
-                    )}
+                    items={group.materialsKeys.map((certificateKey) => (
+                      <CertificateItem
+                        key={certificateKey}
+                        certificateKey={certificateKey}
+                      />
+                    ))}
                   />
                 </div>
               </section>

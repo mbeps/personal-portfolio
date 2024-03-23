@@ -3,17 +3,17 @@ import CertificateInterface from "@/interfaces/material/CertificateInterface";
 
 export default function filterCertificatesByIssuer(
   issuer: string,
+  materialKeys: string[],
   certificatesMap: { [key: string]: CertificateInterface }
-): { [key: string]: CertificateInterface } {
-  const filteredCertificates = Object.entries(certificatesMap).reduce(
-    (acc, [key, certificate]) => {
-      if (stringToSlug(certificate.issuer) === stringToSlug(issuer)) {
-        acc[key] = certificate;
-      }
-      return acc;
-    },
-    {} as { [key: string]: CertificateInterface }
-  );
-
-  return filteredCertificates;
+): string[] {
+  return materialKeys.reduce<string[]>((acc, key) => {
+    const certificate = certificatesMap[key];
+    if (
+      certificate &&
+      stringToSlug(certificate.issuer) === stringToSlug(issuer)
+    ) {
+      acc.push(key); // Adding the key to the accumulator if the certificate matches the issuer
+    }
+    return acc;
+  }, []);
 }

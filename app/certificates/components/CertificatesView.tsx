@@ -19,22 +19,20 @@ import FilterOverlay from "@/components/Filters/FilterPanel";
 import SearchInput from "@/components/Inputs/SearchInput";
 import CertificatesList from "@/components/MaterialLists/CertificatesList";
 import { Button } from "@/components/shadcn/ui/button";
+import certificateDatabase from "@/database/certificates";
 import skillsHashmap from "@/database/skills/skills";
+import CertificateSlugEnum from "@/enums/MaterialSlugEnums/CertificateSlugEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import useFuseSearch from "@/hooks/useFuseSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
-import FilterOption from "@/interfaces/filters/FilterOption";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
+import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import { AiOutlineClear } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
-
-type CertificatesListListProps = {
-  certificates: { [key: string]: CertificateInterface };
-};
 
 /**
  * Displays a list of all certificates.
@@ -43,13 +41,11 @@ type CertificatesListListProps = {
  * @param certificates (Certificate[]): list of all certificates
  * @returns (JSX.Element): list of all certificates
  */
-const CertificatesView: React.FC<CertificatesListListProps> = ({
-  certificates,
-}) => {
+const CertificatesView: React.FC = () => {
   //^ Hooks
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const searchParams = useSearchParams();
-  const basePath = usePathname();
+  const basePath: string = usePathname();
   const router = useRouter();
 
   //^ URL Params Strings
@@ -63,28 +59,28 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
   const searchParamName = "search";
 
   //^ URL Params Reader
-  const selectedIssuer = decodeURIComponent(
+  const selectedIssuer: string = decodeURIComponent(
     searchParams.get(issuerParamName) || "all"
   );
-  const selectedCategory = decodeURIComponent(
+  const selectedCategory: string = decodeURIComponent(
     searchParams.get(certificateSectionParamName) || "all"
   );
-  const selectedSkillCategory = decodeURIComponent(
+  const selectedSkillCategory: string = decodeURIComponent(
     searchParams.get(skillCategoryParamName) || "all"
   );
-  const selectedTechnicalSkill = decodeURIComponent(
+  const selectedTechnicalSkill: string = decodeURIComponent(
     searchParams.get(technicalSkillParamName) || "all"
   );
-  const selectedGeneralSkill = decodeURIComponent(
+  const selectedGeneralSkill: string = decodeURIComponent(
     searchParams.get(generalSkillParamName) || "all"
   );
-  const selectedSoftSkill = decodeURIComponent(
+  const selectedSoftSkill: string = decodeURIComponent(
     searchParams.get(softSkillParamName) || "all"
   );
-  const searchTerm = decodeURIComponent(
+  const searchTerm: string = decodeURIComponent(
     searchParams.get(searchParamName) || ""
   );
-  const showArchived =
+  const showArchived: boolean =
     decodeURIComponent(searchParams.get(archivedParamName) || "false") ===
     "true";
 
@@ -94,7 +90,7 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
   };
 
   //^ Search Settings
-  const searchOptions = [
+  const searchOptions: string[] = [
     "name",
     "category",
     "issuer",
@@ -104,14 +100,14 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
     "skills.relatedSkills.category",
   ];
 
-  const filteredCertificatesHashMap = useFuseSearch(
-    certificates,
+  let filteredCertificateSlugArray: CertificateSlugEnum[] = useFuseSearch(
+    certificateDatabase,
     searchTerm,
     searchOptions
-  );
+  ) as CertificateSlugEnum[];
 
   //^ Filtering Logic
-  const updateSearchTerm = (newSearchTerm: string) => {
+  function updateSearchTerm(newSearchTerm: string): void {
     router.push(
       generateUrl(
         [
@@ -128,66 +124,75 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
         basePath
       )
     );
-  };
-
-  let filteredCertificates = filteredCertificatesHashMap;
+  }
 
   // Filter by issuer
   if (selectedIssuer !== "all") {
-    filteredCertificates = filterCertificatesByIssuer(
+    filteredCertificateSlugArray = filterCertificatesByIssuer(
       selectedIssuer,
-      filteredCertificates
-    );
+      filteredCertificateSlugArray,
+      certificateDatabase
+    ) as CertificateSlugEnum[];
   }
 
   // Filter by certificate category
   if (selectedCategory !== "all") {
-    filteredCertificates = filterMaterialByCategory<CertificateInterface>(
-      stringToSlug(selectedCategory),
-      filteredCertificates
-    );
+    filteredCertificateSlugArray =
+      filterMaterialByCategory<CertificateInterface>(
+        stringToSlug(selectedCategory),
+        filteredCertificateSlugArray,
+        certificateDatabase
+      ) as CertificateSlugEnum[];
   }
 
   // Filter by skill category
   if (selectedSkillCategory !== "all") {
-    filteredCertificates = filterMaterialBySkillCategory<CertificateInterface>(
-      filteredCertificates,
-      stringToSlug(selectedSkillCategory),
-      skillsHashmap
-    );
+    filteredCertificateSlugArray =
+      filterMaterialBySkillCategory<CertificateInterface>(
+        filteredCertificateSlugArray,
+        certificateDatabase,
+        stringToSlug(selectedSkillCategory),
+        skillsHashmap
+      ) as CertificateSlugEnum[];
   }
 
   // Filter by hard skill
   if (selectedTechnicalSkill !== "all") {
-    filteredCertificates = filterMaterialBySkill<CertificateInterface>(
+    filteredCertificateSlugArray = filterMaterialBySkill<CertificateInterface>(
       selectedTechnicalSkill as SkillSlugEnum,
-      filteredCertificates
-    );
+      filteredCertificateSlugArray,
+      certificateDatabase
+    ) as CertificateSlugEnum[];
   }
 
   // Filter by general skill
   if (selectedGeneralSkill !== "all") {
-    filteredCertificates = filterMaterialBySkill<CertificateInterface>(
+    filteredCertificateSlugArray = filterMaterialBySkill<CertificateInterface>(
       selectedGeneralSkill as SkillSlugEnum,
-      filteredCertificates
-    );
+      filteredCertificateSlugArray,
+      certificateDatabase
+    ) as CertificateSlugEnum[];
   }
 
   // Filter by soft skill
   if (selectedSoftSkill !== "all") {
-    filteredCertificates = filterMaterialBySkill<CertificateInterface>(
+    filteredCertificateSlugArray = filterMaterialBySkill<CertificateInterface>(
       selectedSoftSkill as SkillSlugEnum,
-      filteredCertificates
-    );
+      filteredCertificateSlugArray,
+      certificateDatabase
+    ) as CertificateSlugEnum[];
   }
 
   // Filter by archived status
-  filteredCertificates = filterMaterialByArchivedStatus<CertificateInterface>(
-    showArchived,
-    filteredCertificates
-  );
+  filteredCertificateSlugArray =
+    filterMaterialByArchivedStatus<CertificateInterface>(
+      showArchived,
+      filteredCertificateSlugArray,
+      certificateDatabase
+    ) as CertificateSlugEnum[];
 
-  const groupedCertificates = groupMaterialsByCategory(filteredCertificates);
+  const groupedCertificates: MaterialGroupInterface[] =
+    groupMaterialsByCategory(filteredCertificateSlugArray, certificateDatabase);
 
   const areFiltersApplied =
     selectedIssuer !== "all" ||
@@ -204,21 +209,23 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
       sectionName: "Issuer",
       urlParam: issuerParamName,
       selectedValue: selectedIssuer,
-      options: generateIssuerFilterOptions(certificates),
+      options: generateIssuerFilterOptions(certificateDatabase),
     },
     {
       sectionName: "Category",
       urlParam: certificateSectionParamName,
       selectedValue: selectedCategory,
       options:
-        generateFilterOptionsByCategory<CertificateInterface>(certificates),
+        generateFilterOptionsByCategory<CertificateInterface>(
+          certificateDatabase
+        ),
     },
     {
       sectionName: "Skill Category",
       urlParam: skillCategoryParamName,
       selectedValue: selectedSkillCategory,
       options: generateFilterOptionsBySkillCategories<CertificateInterface>(
-        certificates,
+        certificateDatabase,
         skillsHashmap
       ),
     },
@@ -227,7 +234,7 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
       urlParam: technicalSkillParamName,
       selectedValue: selectedTechnicalSkill,
       options: generateFilterOptionsBySkillType<CertificateInterface>(
-        certificates,
+        certificateDatabase,
         skillsHashmap,
         SkillTypesEnum.Hard
       ),
@@ -237,7 +244,7 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
       urlParam: generalSkillParamName,
       selectedValue: selectedGeneralSkill,
       options: generateFilterOptionsBySkillType<CertificateInterface>(
-        certificates,
+        certificateDatabase,
         skillsHashmap,
         SkillTypesEnum.General
       ),
@@ -247,7 +254,7 @@ const CertificatesView: React.FC<CertificatesListListProps> = ({
       urlParam: softSkillParamName,
       selectedValue: selectedSoftSkill,
       options: generateFilterOptionsBySkillType<CertificateInterface>(
-        certificates,
+        certificateDatabase,
         skillsHashmap,
         SkillTypesEnum.Soft
       ),

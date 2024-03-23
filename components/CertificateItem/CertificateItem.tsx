@@ -11,10 +11,10 @@ import React from "react";
 import { BsArrowUpRightCircle, BsInfoCircle } from "react-icons/bs";
 import Tag from "../Tags/Tag";
 import { AspectRatio } from "../shadcn/ui/aspect-ratio";
+import certificateDatabase from "@/database/certificates";
 
 interface CertificateItemProps {
-  certificate: CertificateInterface;
-  path: string;
+  certificateKey: string;
 }
 
 /**
@@ -28,16 +28,17 @@ interface CertificateItemProps {
  * @returns (JSX.Element): certificate item component
  */
 const CertificateItem: React.FC<CertificateItemProps> = ({
-  certificate,
-  path,
+  certificateKey,
 }) => {
-  const basePath = CERTIFICATES_PAGE.path;
-  const customCertificatePage = `${basePath}/${path}`;
-  const issuerCertificatePage = certificate.certificateURL;
+  const basePath: string = CERTIFICATES_PAGE.path;
+  let certificate: CertificateInterface = certificateDatabase[certificateKey];
+
+  const customCertificatePage = `${basePath}/${certificateKey}`;
+  const issuerCertificatePage: string = certificate.certificateURL;
 
   certificate = {
     ...certificate,
-    certificateImage: `${basePath}/${path}.jpg`,
+    certificateImage: `${basePath}/${certificateKey}.jpg`,
   };
 
   return (
@@ -69,7 +70,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
           >
             <AspectRatio ratio={4 / 3} className="overflow-hidden relative">
               <Image
-                key={path}
+                key={certificateKey}
                 src={certificate.certificateImage}
                 alt={`${certificate.name} certificate image`}
                 fill={true}
