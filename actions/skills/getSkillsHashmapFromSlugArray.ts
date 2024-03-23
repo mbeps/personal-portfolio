@@ -1,7 +1,7 @@
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 
-export default function getSkillsDatabaseFromArrayID(
+export default function getSkillsHashmapFromSlugArray(
   skills: Database<SkillInterface>,
   skillIDs: SkillSlugEnum[]
 ): Database<SkillInterface> {

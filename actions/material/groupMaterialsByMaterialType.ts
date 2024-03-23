@@ -11,7 +11,7 @@ export default function groupMaterialsByMaterialType<
   return [
     {
       groupName,
-      materials: materialsMap, // Directly use the original hashmap
+      materialsKeys: materialsMap, // Directly use the original hashmap
     },
   ];
 }

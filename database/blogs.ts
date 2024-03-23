@@ -1,12 +1,12 @@
 import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
 import BlogCategoriesEnum from "@/enums/BlogCategoriesEnum";
-import MaterialSlugEnum from "@/enums/MaterialSlugEnums/BlogSlugEnum";
+import BlogSlugEnum from "@/enums/MaterialSlugEnums/BlogSlugEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import BlogInterface from "@/interfaces/material/BlogInterface";
 
 const blogsMap: { [key: string]: BlogInterface } = {
-  [MaterialSlugEnum.Backend]: {
+  [BlogSlugEnum.Backend]: {
     name: "Exploring Backends: Custom vs Managed Solutions",
     subtitle:
       "An In-depth Analysis of Backend Development Approaches, Tools, and Security Considerations",
@@ -19,7 +19,7 @@ const blogsMap: { [key: string]: BlogInterface } = {
     ],
     category: BlogCategoriesEnum.WebDevelopment,
   },
-  [MaterialSlugEnum.CICD]: {
+  [BlogSlugEnum.CICD]: {
     name: "Embracing the Future of Software Development: A Comprehensive Guide to CI/CD",
     subtitle:
       "Mastering Continuous Integration and Continuous Delivery for Enhanced Software Delivery",
@@ -40,7 +40,7 @@ const blogsMap: { [key: string]: BlogInterface } = {
       SkillSlugEnum.CriticalThinking,
     ],
   },
-  [MaterialSlugEnum.DevOps]: {
+  [BlogSlugEnum.DevOps]: {
     name: "Embracing DevOps: A Guide to Principles, Practices, and Success Stories",
     subtitle:
       "Understanding the Impact of DevOps in Modern Software Development",
@@ -61,7 +61,7 @@ const blogsMap: { [key: string]: BlogInterface } = {
       SkillSlugEnum.CriticalThinking,
     ],
   },
-  [MaterialSlugEnum.Docker]: {
+  [BlogSlugEnum.Docker]: {
     name: "Docker: Unleashing the Power of Containers",
     subtitle:
       "A Comprehensive Guide to Understanding Docker and Containerization Technology",
@@ -73,7 +73,7 @@ const blogsMap: { [key: string]: BlogInterface } = {
       SkillSlugEnum.ProblemSolving,
     ],
   },
-  [MaterialSlugEnum.Frontend]: {
+  [BlogSlugEnum.Frontend]: {
     name: "Front-End Development and the Essential Role of Libraries and Frameworks",
     subtitle:
       "A comprehensive introduction to standard front-end web development using libraries and frameworks",
@@ -90,14 +90,14 @@ const blogsMap: { [key: string]: BlogInterface } = {
       SkillSlugEnum.VueJS,
     ],
   },
-  [MaterialSlugEnum.JavaScriptVsTypeScript]: {
+  [BlogSlugEnum.JavaScriptVsTypeScript]: {
     name: "JavaScript vs TypeScript: A Detailed Comparison",
     subtitle:
       "Exploring the Advantages and Key Differences between JavaScript and TypeScript",
     category: BlogCategoriesEnum.SoftwareEngineering,
     skills: [SkillSlugEnum.JavaScript, SkillSlugEnum.TypeScript],
   },
-  [MaterialSlugEnum.Kubernetes]: {
+  [BlogSlugEnum.Kubernetes]: {
     name: "Kubernetes Guide: Mastering Container Orchestration",
     subtitle: "An Overview of Components, Tools, and Best Practices",
     category: BlogCategoriesEnum.DevOps,
@@ -108,7 +108,7 @@ const blogsMap: { [key: string]: BlogInterface } = {
       SkillSlugEnum.Containerisation,
     ],
   },
-  [MaterialSlugEnum.MachineLearningFoundations]: {
+  [BlogSlugEnum.MachineLearningFoundations]: {
     name: "Exploring the Depths of Machine Learning",
     subtitle:
       "A Comprehensive Guide to Machine Learning: Concepts, Challenges, and Real-World Impact",
@@ -122,7 +122,7 @@ const blogsMap: { [key: string]: BlogInterface } = {
       SkillSlugEnum.CriticalThinking,
     ],
   },
-  [MaterialSlugEnum.ORM]: {
+  [BlogSlugEnum.ORM]: {
     name: "Understanding Object-Relational Mapping (ORM)",
     subtitle:
       "A Comprehensive Overview of ORM, Its Advantages, Disadvantages, and Role in Modern Web Application Development",
@@ -141,7 +141,7 @@ const blogsMap: { [key: string]: BlogInterface } = {
       SkillSlugEnum.Probability,
     ],
   },
-  [MaterialSlugEnum.RESTGraphQL]: {
+  [BlogSlugEnum.RESTGraphQL]: {
     name: "Comparing GraphQL and REST: A Detailed Overview",
     subtitle: "Choosing the Right API Design Approach",
     category: BlogCategoriesEnum.WebDevelopment,
@@ -153,26 +153,26 @@ const blogsMap: { [key: string]: BlogInterface } = {
       SkillSlugEnum.ProblemSolving,
     ],
   },
-  [MaterialSlugEnum.SDKvsAPI]: {
+  [BlogSlugEnum.SDKvsAPI]: {
     name: "SDKs vs APIs: A Comparative Guide",
     subtitle: "Understanding Their Roles in Software Development",
     category: BlogCategoriesEnum.SoftwareEngineering,
     skills: [SkillSlugEnum.APIs, SkillSlugEnum.SDKs],
   },
-  [MaterialSlugEnum.SessionsVsTokens]: {
+  [BlogSlugEnum.SessionsVsTokens]: {
     name: "Comparing Session and Token: Navigating Authentication",
     subtitle: "A Detailed Comparison of Authentication Strategies",
     category: BlogCategoriesEnum.WebDevelopment,
     skills: [SkillSlugEnum.WebDevelopment, SkillSlugEnum.UserAuthentication],
   },
-  [MaterialSlugEnum.SoftwareTesting]: {
+  [BlogSlugEnum.SoftwareTesting]: {
     name: "Comprehensive Guide to Software Testing",
     subtitle:
       "Exploring Functional and Non-Functional Testing Techniques, Tools, and Challenges",
     category: BlogCategoriesEnum.SoftwareEngineering,
     skills: [SkillSlugEnum.Testing, SkillSlugEnum.ProblemSolving],
   },
-  [MaterialSlugEnum.SQLNOSQL]: {
+  [BlogSlugEnum.SQLNOSQL]: {
     name: "Exploring Databases: A Comparative Study of Relational and Non-Relational Models",
     subtitle:
       "An In-depth Analysis of Database Systems and their Role in Software Engineering and Web Development",
@@ -185,7 +185,7 @@ const blogsMap: { [key: string]: BlogInterface } = {
       SkillSlugEnum.Normalisation,
     ],
   },
-  [MaterialSlugEnum.SyncAsync]: {
+  [BlogSlugEnum.SyncAsync]: {
     name: "Sync vs Async: Deep Dive into Programming Models",
     subtitle:
       "Understanding and Optimizing Synchronous and Asynchronous Programming",

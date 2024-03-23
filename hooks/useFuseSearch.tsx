@@ -13,7 +13,7 @@ function useFuseSearch<T extends MaterialInterface>(
   itemsMap: { [key: string]: T },
   searchTerm: string,
   searchKeys: string[]
-): { [key: string]: T } {
+): string[] {
   // Define search options inside the hook, with fixed threshold and dynamic keys
   const searchOptions = useMemo(
     () => ({
@@ -59,7 +59,7 @@ function useFuseSearch<T extends MaterialInterface>(
     }, {} as { [key: string]: T });
   }, [searchedItems, nameToKeyMap]);
 
-  return filteredItemsMap;
+  return Object.keys(filteredItemsMap);
 }
 
 export default useFuseSearch;

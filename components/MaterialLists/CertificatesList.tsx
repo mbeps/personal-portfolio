@@ -20,7 +20,7 @@ const CertificatesList: React.FC<MaterialListProps> = ({
                   <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
                   <HeadingTwo title={group.groupName} />
                   <Grid
-                    items={Object.entries(group.materials).map(
+                    items={Object.entries(group.materialsKeys).map(
                       ([key, certificate]) => (
                         <CertificateItem
                           key={key}

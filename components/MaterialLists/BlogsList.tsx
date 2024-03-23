@@ -2,7 +2,6 @@ import stringToSlug from "@/actions/stringToSlug";
 import BlogItem from "@/components/Blogs/BlogItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import Grid from "@/components/UI/Grid";
-import BlogInterface from "@/interfaces/material/BlogInterface";
 import MaterialListProps from "@/interfaces/props/MaterialListProps";
 
 const BlogsList: React.FC<MaterialListProps> = ({
@@ -20,15 +19,9 @@ const BlogsList: React.FC<MaterialListProps> = ({
                   {/* Assuming HeadingTwo is a component you have for rendering titles */}
                   <HeadingTwo title={group.groupName} />
                   <Grid
-                    items={Object.entries(group.materials).map(
-                      ([key, blog]) => (
-                        <BlogItem
-                          key={key}
-                          path={key}
-                          {...(blog as BlogInterface)}
-                        />
-                      )
-                    )}
+                    items={group.materialsKeys.map((blogSlug) => (
+                      <BlogItem key={blogSlug} blogKey={blogSlug} />
+                    ))}
                   />
                 </div>
               </section>

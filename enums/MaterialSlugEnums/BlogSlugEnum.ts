@@ -1,4 +1,4 @@
-enum MaterialSlugEnum {
+enum BlogSlugEnum {
   Backend = "backend",
   CICD = "cicd-foundations",
   DevOps = "devops-foundations",
@@ -16,7 +16,6 @@ enum MaterialSlugEnum {
   SyncAsync = "sync-vs-async",
 }
 
-export default MaterialSlugEnum;
+export default BlogSlugEnum;
 
-export const MaterialSlugArray: MaterialSlugEnum[] =
-  Object.values(MaterialSlugEnum);
+export const MaterialSlugArray: BlogSlugEnum[] = Object.values(BlogSlugEnum);

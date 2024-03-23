@@ -1,10 +1,9 @@
 import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/UI/PageDescription";
+import developerName from "@/constants/developerName";
 import { BLOG_PAGE } from "@/constants/pages";
-import blogDatabase from "@/database/blogs";
 import type { Metadata } from "next";
 import { BlogsView } from "./components/BlogsView";
-import developerName from "@/constants/developerName";
 
 export const metadata: Metadata = {
   title: `${developerName} - ${BLOG_PAGE.label}`,
@@ -23,7 +22,7 @@ export default function BlogPage() {
           <HeadingOne title={BLOG_PAGE.label} />
           <PageDescription description={BLOG_PAGE.description} />
 
-          <BlogsView blogs={blogDatabase} />
+          <BlogsView />
         </div>
       </section>
     </main>

@@ -1,10 +1,11 @@
 import { BLOG_PAGE } from "@/constants/pages";
+import blogDatabase from "@/database/blogs";
 import BlogInterface from "@/interfaces/material/BlogInterface";
 import Link from "next/link";
 import React from "react";
 
-interface BlogItemProps extends BlogInterface {
-  path: string;
+interface BlogItemProps {
+  blogKey: string;
 }
 
 /**
@@ -12,11 +13,12 @@ interface BlogItemProps extends BlogInterface {
  * @param props: Blog metadata used in the card
  * @returns (JSX.Element): card with blog metadata
  */
-const BlogItem: React.FC<BlogItemProps> = (props) => {
-  const basePath = BLOG_PAGE.path;
+const BlogItem: React.FC<BlogItemProps> = ({ blogKey }) => {
+  const basePath: string = BLOG_PAGE.path;
+  const blogData: BlogInterface = blogDatabase[blogKey];
 
   return (
-    <Link href={`${basePath}/${props.path}`}>
+    <Link href={`${basePath}/${blogKey}`}>
       <div
         className="
           flex flex-col
@@ -32,13 +34,13 @@ const BlogItem: React.FC<BlogItemProps> = (props) => {
           transition-all duration-500 ease-in-out"
       >
         <h2 className=" text-xl font-bold  mb-4 text-neutral-900 dark:text-neutral-100">
-          {props.name}
+          {blogData.name}
         </h2>
         <p
           className="
         text-neutral-700 dark:text-neutral-300"
         >
-          {props.subtitle}
+          {blogData.subtitle}
         </p>
       </div>
     </Link>

@@ -17,7 +17,9 @@ import FilterOverlay from "@/components/Filters/FilterPanel";
 import SearchInput from "@/components/Inputs/SearchInput";
 import BlogsList from "@/components/MaterialLists/BlogsList";
 import { Button } from "@/components/shadcn/ui/button";
+import blogDatabase from "@/database/blogs";
 import skillsHashmap from "@/database/skills/skills";
+import BlogSlugEnum from "@/enums/MaterialSlugEnums/BlogSlugEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import useFuseSearch from "@/hooks/useFuseSearch";
@@ -30,21 +32,17 @@ import { useState } from "react";
 import { AiOutlineClear } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
 
-interface BlogListProps {
-  blogs: { [key: string]: BlogInterface };
-}
-
 /**
  * Displays a list of all blogs that can be opened.
  * Also allows the user to filter and search the blogs.
  * @returns (JSX.Element): page with all blogs
  */
-export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
+export const BlogsView: React.FC = () => {
   //^ Hooks
   const [isFilterOpen, setIsFilterModalOpen] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
-  const basePath = usePathname();
+  const basePath: string = usePathname();
 
   //^ URL Params Strings
   const blogSectionParamName = "category";
@@ -57,16 +55,19 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
   const archivedParamName = "archived";
 
   //^ URL Params Reader
-  const selectedBlogSection = searchParams.get(blogSectionParamName) || "all";
-  const selectedSkillCategory =
+  const selectedBlogSection: string =
+    searchParams.get(blogSectionParamName) || "all";
+  const selectedSkillCategory: string =
     searchParams.get(skillCategoryParamName) || "all";
-  const selectedTechnicalSkill =
+  const selectedTechnicalSkill: string =
     searchParams.get(technicalSkillParamName) || "all";
-  const selectedGeneralSkill = searchParams.get(generalSkillParamName) || "all";
-  const selectedSoftSkill = searchParams.get(softSkillParamName) || "all";
+  const selectedGeneralSkill: string =
+    searchParams.get(generalSkillParamName) || "all";
+  const selectedSoftSkill: string =
+    searchParams.get(softSkillParamName) || "all";
 
-  const searchTerm = searchParams.get(searchParamName) || "";
-  const showArchived =
+  const searchTerm: string = searchParams.get(searchParamName) || "";
+  const showArchived: boolean =
     (searchParams.get(archivedParamName) || "false").toLowerCase() === "true";
 
   const handleToggleFilter = () => {
@@ -74,7 +75,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
   };
 
   // Define your search options
-  const searchOptions = [
+  const searchOptions: string[] = [
     "name",
     "category",
     "issuer",
@@ -86,7 +87,11 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
   ];
 
   // Use the custom hook to perform the search
-  const filteredBlogsHashMap = useFuseSearch(blogs, searchTerm, searchOptions);
+  let filteredBlogsSlugArray: BlogSlugEnum[] = useFuseSearch(
+    blogDatabase,
+    searchTerm,
+    searchOptions
+  ) as BlogSlugEnum[];
 
   //^ Filtering Logic
   /**
@@ -94,7 +99,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
    * This updates the state which changes the blogs being displayed.
    * @param newSearchTerm (string) - new search term
    */
-  const updateSearchTerm = (newSearchTerm: string) => {
+  function updateSearchTerm(newSearchTerm: string): void {
     router.push(
       generateUrl(
         [
@@ -108,64 +113,69 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
         basePath
       )
     );
-  };
+  }
 
   //^ Filtering Logic
-  let filteredBlogs: {
-    [key: string]: BlogInterface;
-  } = filteredBlogsHashMap;
 
   // Filter by blog category
   if (selectedBlogSection !== "all") {
-    filteredBlogs = filterMaterialByCategory<BlogInterface>(
+    filteredBlogsSlugArray = filterMaterialByCategory<BlogInterface>(
       stringToSlug(selectedBlogSection),
-      filteredBlogs
-    );
+      filteredBlogsSlugArray,
+      blogDatabase
+    ) as BlogSlugEnum[];
   }
 
   // Filter by skill category
   if (selectedSkillCategory !== "all") {
-    filteredBlogs = filterMaterialBySkillCategory<BlogInterface>(
-      filteredBlogs,
+    filteredBlogsSlugArray = filterMaterialBySkillCategory<BlogInterface>(
+      filteredBlogsSlugArray,
+      blogDatabase,
       stringToSlug(selectedSkillCategory),
       skillsHashmap
-    );
+    ) as BlogSlugEnum[];
   }
 
   // Filter by hard skill
   if (selectedTechnicalSkill !== "all") {
-    filteredBlogs = filterMaterialBySkill<BlogInterface>(
+    filteredBlogsSlugArray = filterMaterialBySkill<BlogInterface>(
       selectedTechnicalSkill as SkillSlugEnum,
-      filteredBlogs
-    );
+      filteredBlogsSlugArray,
+      blogDatabase
+    ) as BlogSlugEnum[];
   }
 
   // Filter by general skill
   if (selectedGeneralSkill !== "all") {
-    filteredBlogs = filterMaterialBySkill<BlogInterface>(
+    filteredBlogsSlugArray = filterMaterialBySkill<BlogInterface>(
       selectedGeneralSkill as SkillSlugEnum,
-      filteredBlogs
-    );
+      filteredBlogsSlugArray,
+      blogDatabase
+    ) as BlogSlugEnum[];
   }
 
   // Filter by soft skill
   if (selectedSoftSkill !== "all") {
-    filteredBlogs = filterMaterialBySkill<BlogInterface>(
+    filteredBlogsSlugArray = filterMaterialBySkill<BlogInterface>(
       selectedSoftSkill as SkillSlugEnum,
-      filteredBlogs
-    );
+      filteredBlogsSlugArray,
+      blogDatabase
+    ) as BlogSlugEnum[];
   }
 
   // Filter by archived status
-  filteredBlogs = filterMaterialByArchivedStatus<BlogInterface>(
+  filteredBlogsSlugArray = filterMaterialByArchivedStatus<BlogInterface>(
     showArchived,
-    filteredBlogs
+    filteredBlogsSlugArray,
+    blogDatabase
+  ) as BlogSlugEnum[];
+
+  const groupedBlogs: MaterialGroupInterface[] = groupMaterialsByCategory(
+    filteredBlogsSlugArray,
+    blogDatabase
   );
 
-  const groupedBlogs: MaterialGroupInterface[] =
-    groupMaterialsByCategory(filteredBlogs);
-
-  const areFiltersApplied =
+  const areFiltersApplied: boolean =
     selectedBlogSection !== "all" ||
     selectedSkillCategory !== "all" ||
     selectedTechnicalSkill !== "all" ||
@@ -179,14 +189,14 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
       sectionName: "Section",
       urlParam: blogSectionParamName,
       selectedValue: selectedBlogSection,
-      options: generateFilterOptionsByCategory<BlogInterface>(blogs),
+      options: generateFilterOptionsByCategory<BlogInterface>(blogDatabase),
     },
     {
       sectionName: "Skill Category",
       urlParam: skillCategoryParamName,
       selectedValue: selectedSkillCategory,
       options: generateFilterOptionsBySkillCategories<BlogInterface>(
-        blogs,
+        blogDatabase,
         skillsHashmap
       ),
     },
@@ -195,7 +205,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
       urlParam: technicalSkillParamName,
       selectedValue: selectedTechnicalSkill,
       options: generateFilterOptionsBySkillType<BlogInterface>(
-        blogs,
+        blogDatabase,
         skillsHashmap,
         SkillTypesEnum.Hard
       ),
@@ -205,7 +215,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
       urlParam: generalSkillParamName,
       selectedValue: selectedGeneralSkill,
       options: generateFilterOptionsBySkillType<BlogInterface>(
-        blogs,
+        blogDatabase,
         skillsHashmap,
         SkillTypesEnum.General
       ),
@@ -215,7 +225,7 @@ export const BlogsView: React.FC<BlogListProps> = ({ blogs }) => {
       urlParam: softSkillParamName,
       selectedValue: selectedSoftSkill,
       options: generateFilterOptionsBySkillType<BlogInterface>(
-        blogs,
+        blogDatabase,
         skillsHashmap,
         SkillTypesEnum.Soft
       ),

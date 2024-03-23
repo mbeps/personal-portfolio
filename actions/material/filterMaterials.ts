@@ -1,78 +1,78 @@
-import MaterialInterface from "@/interfaces/material/MaterialInterface";
-import stringToSlug from "../stringToSlug";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import MaterialInterface from "@/interfaces/material/MaterialInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
+import stringToSlug from "../stringToSlug";
 
 export function filterMaterialBySkill<T extends MaterialInterface>(
   skillSlug: SkillSlugEnum,
+  materialKeys: string[],
   materialsMap: { [key: string]: T }
-): { [key: string]: T } {
-  const filteredMaterials: { [key: string]: T } = {};
+): string[] {
+  const filteredMaterialSlugs: string[] = [];
 
-  for (const key in materialsMap) {
+  materialKeys.forEach((key) => {
     const material = materialsMap[key];
-    if (material.skills.includes(skillSlug)) {
-      filteredMaterials[key] = material;
+    if (material && material.skills.includes(skillSlug)) {
+      filteredMaterialSlugs.push(key);
     }
-  }
+  });
 
-  return filteredMaterials;
+  return filteredMaterialSlugs;
 }
 
 export function filterMaterialByCategory<T extends MaterialInterface>(
   category: string,
-  materialsMap: { [key: string]: T }
-): { [key: string]: T } {
-  const filteredMaterials = Object.entries(materialsMap).reduce(
-    (acc, [key, material]) => {
-      if (stringToSlug(material.category) === stringToSlug(category)) {
-        acc[key] = material;
-      }
-      return acc;
-    },
-    {} as { [key: string]: T }
-  );
+  materialKeys: string[],
+  materialsMap: { [key: string]: T } // Keep materialsMap for accessing material details
+): string[] {
+  const filteredMaterialSlugs = materialKeys.reduce((acc: string[], key) => {
+    const material = materialsMap[key];
+    if (
+      material &&
+      stringToSlug(material.category) === stringToSlug(category)
+    ) {
+      acc.push(key);
+    }
+    return acc;
+  }, []); // Initialize the accumulator as an empty array of strings
 
-  return filteredMaterials;
+  return filteredMaterialSlugs;
 }
 
 export function filterMaterialBySkillCategory<T extends MaterialInterface>(
+  materialKeys: string[],
   materialsMap: { [key: string]: T },
   skillCategory: string,
   skillsMap: { [key: string]: SkillInterface }
-): { [key: string]: T } {
-  const filteredMaterials: { [key: string]: T } = {};
+): string[] {
+  const filteredMaterialSlugs: string[] = [];
   const targetCategorySlug = stringToSlug(skillCategory);
 
-  for (const materialKey in materialsMap) {
+  for (const materialKey of materialKeys) {
     const material = materialsMap[materialKey];
     for (const skillSlug of material.skills) {
       const skill = skillsMap[skillSlug];
       if (skill && stringToSlug(skill.category) === targetCategorySlug) {
-        filteredMaterials[materialKey] = material;
+        filteredMaterialSlugs.push(materialKey);
         break; // Assuming a material only needs one matching skill category to be included
       }
     }
   }
 
-  return filteredMaterials;
+  return filteredMaterialSlugs;
 }
 
 export function filterMaterialByArchivedStatus<T extends MaterialInterface>(
   includeArchived: boolean,
+  materialKeys: string[],
   materialsMap: { [key: string]: T }
-): { [key: string]: T } {
-  const filteredMaterialsMap = Object.entries(materialsMap).reduce(
-    (acc, [key, material]) => {
-      const shouldBeIncluded = includeArchived ? true : !material.archived;
-      if (shouldBeIncluded) {
-        acc[key] = material;
-      }
-      return acc;
-    },
-    {} as { [key: string]: T }
-  );
-
-  return filteredMaterialsMap;
+): string[] {
+  return materialKeys.reduce<string[]>((acc, key) => {
+    const material = materialsMap[key];
+    const shouldBeIncluded = includeArchived ? true : !material.archived;
+    if (shouldBeIncluded) {
+      acc.push(key);
+    }
+    return acc;
+  }, []);
 }
