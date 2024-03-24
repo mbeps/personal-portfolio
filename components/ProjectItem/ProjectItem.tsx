@@ -10,10 +10,10 @@ import Link from "next/link";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub, BsInfoCircle } from "react-icons/bs";
 import { AspectRatio } from "../shadcn/ui/aspect-ratio";
+import projectDatabase from "@/database/projects";
 
 interface ProjectItemProps {
-  project: ProjectInterface;
-  path: string;
+  projectKey: string;
 }
 
 /**
@@ -43,14 +43,15 @@ interface ProjectItemProps {
  * @param type (string): Type of the project
  * @returns (JSX.Element): Project item component
  */
-const ProjectItem: React.FC<ProjectItemProps> = ({ project, path }) => {
-  const basePath = PROJECTS_PAGE.path;
+const ProjectItem: React.FC<ProjectItemProps> = ({ projectKey }) => {
+  const basePath: string = PROJECTS_PAGE.path;
+  const projectData: ProjectInterface = projectDatabase[projectKey];
 
   return (
     <div className="bg-neutral-100 dark:bg-neutral-950 p-4 rounded-xl sm:bg-white sm:dark:bg-neutral-900 sm:p-0 transition-colors duration-700 ">
       <div className="flex flex-col animate-slideUpCubiBezier animation-delay-2 lg:flex-row lg:space-x-12">
         {/* Project Cover */}
-        {project.thumbnailImage && (
+        {projectData.thumbnailImage && (
           <div
             className="
                 lg:w-1/2
@@ -60,12 +61,12 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, path }) => {
                 transition-all duration-500 ease-in-out
               "
           >
-            <Link href={`${basePath}/${path}`}>
+            <Link href={`${basePath}/${projectKey}`}>
               <AspectRatio ratio={8 / 5} className="overflow-hidden relative">
                 <Image
-                  src={project.thumbnailImage}
-                  key={project.thumbnailImage}
-                  alt={`${project.name} cover image`}
+                  src={projectData.thumbnailImage}
+                  key={projectData.thumbnailImage}
+                  alt={`${projectData.name} cover image`}
                   fill={true}
                   loading="lazy"
                   quality={15}
@@ -82,11 +83,11 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, path }) => {
 
         <div
           className={`mt-8 ${
-            project.thumbnailImage ? "lg:w-1/2" : "lg:w-full"
+            projectData.thumbnailImage ? "lg:w-1/2" : "lg:w-full"
           }`}
         >
           {/* Project Title */}
-          <Link href={`${basePath}/${path}`}>
+          <Link href={`${basePath}/${projectKey}`}>
             <h1
               className="
                   flex flex-col
@@ -97,13 +98,13 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, path }) => {
                   transition-colors duration-700 ease-in-out
                 "
             >
-              {project.name}
+              {projectData.name}
             </h1>
           </Link>
 
           {/* Project Description */}
           <p className="text-xl text-left leading-7 mb-4 text-neutral-600 dark:text-neutral-400">
-            {project.description}
+            {projectData.description}
           </p>
 
           {/* Buttons */}
@@ -118,7 +119,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, path }) => {
 
             <Tooltip>
               <TooltipTrigger>
-                <Link href={`${basePath}/${path}`}>
+                <Link href={`${basePath}/${projectKey}`}>
                   <BsInfoCircle
                     size={30}
                     className="md:hover:-translate-y-1 transition-transform cursor-pointer"
@@ -131,10 +132,10 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, path }) => {
             </Tooltip>
 
             {/* Repository */}
-            {project.repositoryURL && (
+            {projectData.repositoryURL && (
               <Tooltip>
                 <TooltipTrigger>
-                  <Link href={project.repositoryURL} target="_blank">
+                  <Link href={projectData.repositoryURL} target="_blank">
                     <BsGithub
                       size={30}
                       className="md:hover:-translate-y-1 transition-transform cursor-pointer"
@@ -147,10 +148,10 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, path }) => {
               </Tooltip>
             )}
             {/* Project Website */}
-            {project.deploymentURL && (
+            {projectData.deploymentURL && (
               <Tooltip>
                 <TooltipTrigger>
-                  <Link href={project.deploymentURL} target="_blank">
+                  <Link href={projectData.deploymentURL} target="_blank">
                     <BsArrowUpRightCircle
                       size={30}
                       className="md:hover:-translate-y-1 transition-transform cursor-pointer"
