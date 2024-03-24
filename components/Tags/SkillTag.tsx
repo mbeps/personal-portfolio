@@ -22,35 +22,34 @@ interface TagProps {
 
 const SkillTag: React.FC<TagProps> = ({ skillKey, hide }) => {
   const currentPath: string = usePathname();
-
   const skill: SkillInterface = skillsHashmap[skillKey];
 
-  const hasMaterial: boolean = isSkillAssociatedWithMaterial(
+  const hasMaterial: ConstrainBoolean = isSkillAssociatedWithMaterial(
     skillKey,
     materialDatabase
   );
 
-  if (hide) {
+  if (hide || !skill) {
     return <></>;
   }
 
-  let skillLink = `/skills/${skillKey}`;
-  if (!hasMaterial) {
-    skillLink = currentPath;
-    return <Tag hasHover={hasMaterial}>{skill.name}</Tag>;
-  }
+  // If the skill exists but there's no associated material, adjust the link accordingly
+  let skillLink: string = hasMaterial ? `/skills/${skillKey}` : currentPath;
 
-  return (
+  // Render the skill tag with a link if there's associated material, otherwise just show the tag
+  return hasMaterial ? (
     <Tooltip>
       <TooltipTrigger>
         <Link href={skillLink}>
-          <Tag hasHover={hasMaterial}>{skill.name}</Tag>
+          <Tag hasHover={true}>{skill.name}</Tag>
         </Link>
       </TooltipTrigger>
       <TooltipContent>
         <p>{`Navigate to all material related to ${skill.name}`}</p>
       </TooltipContent>
     </Tooltip>
+  ) : (
+    <Tag hasHover={false}>{skill.name}</Tag>
   );
 };
 

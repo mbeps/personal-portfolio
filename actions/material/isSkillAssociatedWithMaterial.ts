@@ -1,8 +1,7 @@
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 
-export default // Correcting the function signature by removing the duplicated type declaration
-function isSkillAssociatedWithMaterial(
+export default function isSkillAssociatedWithMaterial(
   skillToCheck: SkillSlugEnum,
   materialsMap: { [key: string]: MaterialInterface }
 ): boolean {

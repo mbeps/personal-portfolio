@@ -12,7 +12,7 @@ import React from "react";
  * This modal will display the skills and repositories for the language.
  */
 const LanguageSection: React.FC = () => {
-  const isMounted = useIsMounted();
+  const isMounted: boolean = useIsMounted();
 
   if (!isMounted) {
     return null;

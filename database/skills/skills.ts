@@ -733,6 +733,23 @@ const skillsHashmap: Database<SkillInterface> = {
       SkillSlugEnum.SQLite,
     ],
   },
+  [SkillSlugEnum.TypeORM]: {
+    name: "TypeORM",
+    category: SkillCategoriesEnum.ObjectRelationalMappers,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [
+      SkillSlugEnum.JavaScript,
+      SkillSlugEnum.TypeScript,
+      SkillSlugEnum.DatabaseManagementSystems,
+      SkillSlugEnum.Databases,
+      SkillSlugEnum.RelationalDatabases,
+      SkillSlugEnum.DatabaseIndexing,
+      SkillSlugEnum.ObjectRelationalMapping,
+      SkillSlugEnum.PostgreSQL,
+      SkillSlugEnum.MySQL,
+      SkillSlugEnum.SQLite,
+    ],
+  },
   [SkillSlugEnum.SQLAlchemy]: {
     name: "SQLAlchemy",
     category: SkillCategoriesEnum.ObjectRelationalMappers,
@@ -856,6 +873,17 @@ const skillsHashmap: Database<SkillInterface> = {
   [SkillSlugEnum.Ansible]: {
     name: "Ansible",
     category: SkillCategoriesEnum.DevOps,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [
+      SkillSlugEnum.InfrastructureAsCode,
+      SkillSlugEnum.DevOps,
+      SkillSlugEnum.Automation,
+    ],
+  },
+  [SkillSlugEnum.Terraform]: {
+    name: "Terraform",
+    category: SkillCategoriesEnum.DevOps,
+    isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
     relatedSkills: [
       SkillSlugEnum.InfrastructureAsCode,
@@ -1457,6 +1485,13 @@ const skillsHashmap: Database<SkillInterface> = {
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
     relatedSkills: [SkillSlugEnum.Java, SkillSlugEnum.TypeScript],
+  },
+  [SkillSlugEnum.Pip]: {
+    name: "Pip",
+    category: SkillCategoriesEnum.ProjectManagers,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [SkillSlugEnum.Python],
   },
   [SkillSlugEnum.Poetry]: {
     name: "Poetry",
@@ -2371,3 +2406,7 @@ const skillsHashmap: Database<SkillInterface> = {
 };
 
 export default skillsHashmap;
+
+export const skillSlugArrayNew: SkillSlugEnum[] = Object.keys(
+  skillsHashmap
+) as SkillSlugEnum[];

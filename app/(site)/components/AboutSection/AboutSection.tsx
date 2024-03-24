@@ -16,7 +16,8 @@ import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFile
  * @returns (JSX.Element): About section
  */
 const AboutSection = () => {
-  const blogContent = getMarkdownFromFileSystem(`public/about-me.md`)?.content;
+  const blogContent: string | undefined =
+    getMarkdownFromFileSystem(`public/about-me.md`)?.content;
 
   return (
     <section id="about" className="home-section-wrapper">
@@ -47,7 +48,7 @@ const AboutSection = () => {
         <div className="text-center lg:w-1/2 md:text-left ">
           <LanguageSection />
           <div className="h-1 mt-2 md:mt-4" />
-          <TechnologiesSection />
+          {/* <TechnologiesSection /> */}
         </div>
       </div>
     </section>

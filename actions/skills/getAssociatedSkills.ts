@@ -2,31 +2,29 @@ import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 
-export default function getAssociatedSkillsHashmap(
-  skills: Database<SkillInterface>,
+/**
+ * @deprecated
+ */
+export default function getAssociatedSkills(
+  skillsHashmap: Database<SkillInterface>,
   skillKey: SkillSlugEnum,
   skillType?: SkillTypesEnum // Optional parameter for filtering by skill type
-): Database<SkillInterface> {
-  const associatedSkills: Database<SkillInterface> = {};
+): SkillSlugEnum[] {
+  // get all the skills from the array of keys
 
-  // Find the primary skill using the provided slug
-  const primarySkill: SkillInterface = skills[skillKey];
+  let associatedSkills: SkillSlugEnum[] = [];
 
-  // If the primary skill exists and has related skills, find and add them to the associatedSkills hashmap
+  // Find the primary skill from the array using the provided slug
+  const primarySkill: SkillInterface | undefined = skillsHashmap[skillKey];
+
+  // If the primary skill exists and has related skills, filter and add them to the associatedSkills array
   if (primarySkill && primarySkill.relatedSkills) {
-    primarySkill.relatedSkills.forEach((relatedSkillSlug) => {
-      const relatedSkill = skills[relatedSkillSlug];
-      // If a skillType is specified, only add related skills of that type; otherwise, add all related skills
-      if (
-        relatedSkill &&
-        (!skillType || relatedSkill.skillType === skillType)
-      ) {
-        associatedSkills[relatedSkillSlug] = relatedSkill;
-      }
+    associatedSkills = primarySkill.relatedSkills.filter((relatedSkillSlug) => {
+      const relatedSkill = skillsHashmap[relatedSkillSlug];
+      return (
+        relatedSkill && (!skillType || relatedSkill.skillType === skillType)
+      );
     });
   }
-
   return associatedSkills;
 }
-
-// TODO: Create a function that only returns the array of enums

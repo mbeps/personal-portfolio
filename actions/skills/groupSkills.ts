@@ -3,6 +3,7 @@ import SkillInterface from "@/interfaces/skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import filterSkillsBySlugs from "./filterSkillsBySlugs";
 
 function groupByLanguage(
   skillSlugs: SkillSlugEnum[],
@@ -10,45 +11,39 @@ function groupByLanguage(
 ): SkillsCategoryInterface[] {
   const groupedSkills: { [skillCategoryName: string]: SkillSlugEnum[] } = {};
 
-  // Helper function to add skill slug to the appropriate group
-  const addSkillSlugToGroup = (groupName: string, skillSlug: SkillSlugEnum) => {
-    if (!groupedSkills[groupName]) {
-      groupedSkills[groupName] = [];
-    }
-    groupedSkills[groupName].push(skillSlug);
-  };
-
   skillSlugs.forEach((skillSlug) => {
     const skill = allSkills[skillSlug];
-    if (skill.category === SkillCategoriesEnum.ProgrammingLanguages) {
-      // This skill is a programming language, add it directly to its own group
-      addSkillSlugToGroup(skill.name, skillSlug);
-    } else {
-      // Check if the skill is associated with any programming language
-      let associatedWithLanguage = false;
-      if (skill.relatedSkills) {
-        for (let relatedSkillSlug of skill.relatedSkills) {
-          const relatedSkill = allSkills[relatedSkillSlug];
-          if (
-            relatedSkill &&
-            relatedSkill.category === SkillCategoriesEnum.ProgrammingLanguages
-          ) {
-            // Skill is associated with a programming language
-            addSkillSlugToGroup(relatedSkill.name, skillSlug);
-            associatedWithLanguage = true;
-            break; // Stop checking once an association is found
-          }
-        }
-      }
+    // Skip if the skill is not found in allSkills
+    if (!skill) {
+      console.warn(`Skill not found for slug: ${skillSlug}`);
+      return;
+    }
 
-      if (!associatedWithLanguage) {
-        // If the skill isn't associated with any language, add it to the "No Language" group
-        addSkillSlugToGroup("No Language", skillSlug);
+    // Directly group skills that are categorized as programming languages
+    if (skill.category === SkillCategoriesEnum.ProgrammingLanguages) {
+      if (!groupedSkills[skill.name]) {
+        groupedSkills[skill.name] = [];
       }
+      groupedSkills[skill.name].push(skillSlug);
+    } else if (skill.relatedSkills && skill.relatedSkills.length > 0) {
+      // For skills not directly categorized as programming languages, check their related skills
+      skill.relatedSkills.forEach((relatedSkillSlug) => {
+        const relatedSkill = allSkills[relatedSkillSlug];
+        // Only group if the related skill is found and is a programming language
+        if (
+          relatedSkill &&
+          relatedSkill.category === SkillCategoriesEnum.ProgrammingLanguages
+        ) {
+          if (!groupedSkills[relatedSkill.name]) {
+            groupedSkills[relatedSkill.name] = [];
+          }
+          groupedSkills[relatedSkill.name].push(skillSlug);
+        }
+      });
     }
   });
 
-  // Convert the hashmap to the expected array format
+  // Convert the groupedSkills object into an array of SkillsCategoryInterface
   return Object.entries(groupedSkills).map(([skillCategoryName, skills]) => ({
     skillCategoryName,
     skills,
@@ -59,22 +54,31 @@ export function groupByCategory(
   skillSlugs: SkillSlugEnum[],
   allSkills: { [key: string]: SkillInterface }
 ): SkillsCategoryInterface[] {
-  return skillSlugs.reduce((acc: SkillsCategoryInterface[], skillSlug) => {
-    const skill = allSkills[skillSlug];
-    const category = skill.category || "Other";
+  // Object to hold the grouping
+  const categories: { [key: string]: SkillSlugEnum[] } = {};
 
-    // Find an existing category or create a new one
-    let categoryGroup = acc.find((c) => c.skillCategoryName === category);
-    if (!categoryGroup) {
-      categoryGroup = { skillCategoryName: category, skills: [] };
-      acc.push(categoryGroup);
+  skillSlugs.forEach((slug) => {
+    const skill = allSkills[slug];
+    if (skill) {
+      const category = skill.category;
+      // Initialize the category array if it doesn't exist
+      if (!categories[category]) {
+        categories[category] = [];
+      }
+      // Add the skillSlug to the appropriate category
+      categories[category].push(slug);
     }
+  });
 
-    // Add the skill slug to the appropriate category
-    categoryGroup.skills.push(skillSlug);
+  // Convert the categories object to an array of SkillsCategoryInterface
+  const result: SkillsCategoryInterface[] = Object.keys(categories).map(
+    (key) => ({
+      skillCategoryName: key,
+      skills: categories[key],
+    })
+  );
 
-    return acc;
-  }, []);
+  return result;
 }
 
 // Function to group skills by skill type
@@ -82,38 +86,71 @@ export function groupBySkillType(
   skillSlugs: SkillSlugEnum[],
   allSkills: { [key: string]: SkillInterface }
 ): SkillsCategoryInterface[] {
-  return skillSlugs.reduce((acc: SkillsCategoryInterface[], skillSlug) => {
-    const skill = allSkills[skillSlug];
-    const skillType = skill.skillType || "Other";
+  // Object to hold the grouping by skillType
+  const skillTypes: { [key: string]: SkillSlugEnum[] } = {};
 
-    // Find an existing skill type category or create a new one
-    let skillTypeGroup = acc.find((c) => c.skillCategoryName === skillType);
-    if (!skillTypeGroup) {
-      skillTypeGroup = { skillCategoryName: skillType, skills: [] };
-      acc.push(skillTypeGroup);
+  skillSlugs.forEach((slug) => {
+    const skill = allSkills[slug];
+    if (skill) {
+      const skillType = skill.skillType;
+      // Initialize the skillType array if it doesn't exist
+      if (!skillTypes[skillType]) {
+        skillTypes[skillType] = [];
+      }
+      // Add the skillSlug to the appropriate skillType
+      skillTypes[skillType].push(slug);
     }
+  });
 
-    // Add the skill slug to the appropriate skill type category
-    skillTypeGroup.skills.push(skillSlug);
+  // Convert the skillTypes object to an array of SkillsCategoryInterface
+  const result: SkillsCategoryInterface[] = Object.keys(skillTypes).map(
+    (key) => ({
+      skillCategoryName: key,
+      skills: skillTypes[key],
+    })
+  );
 
-    return acc;
-  }, []);
+  return result;
 }
 
 function recursiveFilter(
   skillSlugs: SkillSlugEnum[],
   allSkills: { [key: string]: SkillInterface },
-  excludedSkillTypes: SkillTypesEnum[] = []
+  excludedSkillTypes: SkillTypesEnum[] = [],
+  processedSkills: Set<SkillSlugEnum> = new Set<SkillSlugEnum>() // To keep track of processed skills
 ): SkillSlugEnum[] {
-  // Filter skill slugs based on whether their corresponding skill type is not in the excluded list
-  // Ensure that a skill exists for each slug before checking its type
-  const filteredSkillSlugs = skillSlugs.filter((skillSlug) => {
-    const skill = allSkills[skillSlug];
-    // Check if the skill exists and its type is not in the excluded list
-    return skill && !excludedSkillTypes.includes(skill.skillType);
+  // Filtered skills to return
+  let filteredSkills: SkillSlugEnum[] = [];
+
+  skillSlugs.forEach((slug) => {
+    // If the skill has already been processed, skip it to avoid infinite recursion
+    if (processedSkills.has(slug)) return;
+
+    const skill = allSkills[slug];
+    if (skill) {
+      // Mark this skill as processed
+      processedSkills.add(slug);
+
+      // If the skill's type is not in the excluded list, add it to the filtered list
+      if (!excludedSkillTypes.includes(skill.skillType)) {
+        filteredSkills.push(slug);
+
+        // If the skill has related skills, recursively filter those as well
+        if (skill.relatedSkills && skill.relatedSkills.length > 0) {
+          const relatedFilteredSkills = recursiveFilter(
+            skill.relatedSkills,
+            allSkills,
+            excludedSkillTypes,
+            processedSkills
+          );
+          // Combine the current filtered skills with those from related skills
+          filteredSkills = filteredSkills.concat(relatedFilteredSkills);
+        }
+      }
+    }
   });
 
-  return filteredSkillSlugs;
+  return filteredSkills;
 }
 
 export default function groupSkills(
@@ -124,30 +161,48 @@ export default function groupSkills(
 ): SkillsCategoryInterface[] {
   let organizedSkills: SkillsCategoryInterface[] = [];
 
+  const skillsRelatedToKeys: { [key in SkillSlugEnum]?: SkillInterface } =
+    filterSkillsBySlugs(skillSlugs, allSkills);
+
   // Adjust the recursiveFilter function to filter out skills based on excludedSkillTypes
   const filteredSkillSlugs = excludedSkillTypes
-    ? recursiveFilter(skillSlugs, allSkills, excludedSkillTypes)
+    ? recursiveFilter(skillSlugs, skillsRelatedToKeys, excludedSkillTypes)
     : skillSlugs;
 
+  // Validate filteredSkillSlugs to ensure they exist in allSkills
+  const validatedSkillSlugs = filteredSkillSlugs.filter((slug) =>
+    skillsRelatedToKeys.hasOwnProperty(slug)
+  );
+
+  // Then use validatedSkillSlugs in your switch-case logic
   switch (groupedBy) {
     case "language":
-      organizedSkills = groupByLanguage(filteredSkillSlugs, allSkills);
+      organizedSkills = groupByLanguage(
+        validatedSkillSlugs,
+        skillsRelatedToKeys
+      );
       break;
     case "category":
-      organizedSkills = groupByCategory(filteredSkillSlugs, allSkills);
+      organizedSkills = groupByCategory(
+        validatedSkillSlugs,
+        skillsRelatedToKeys
+      );
       break;
     case "skill-type":
-      organizedSkills = groupBySkillType(filteredSkillSlugs, allSkills);
+      organizedSkills = groupBySkillType(
+        validatedSkillSlugs,
+        skillsRelatedToKeys
+      );
       break;
     default:
-      // Construct a default grouping if none of the criteria match
       organizedSkills = [
         {
           skillCategoryName: "None",
-          skills: filteredSkillSlugs,
+          skills: validatedSkillSlugs,
         },
       ];
       break;
   }
+
   return organizedSkills;
 }

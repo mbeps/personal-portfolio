@@ -1,10 +1,7 @@
 "use client";
 
 import isSkillAssociatedWithMaterial from "@/actions/material/isSkillAssociatedWithMaterial";
-import filterSkillsByType from "@/actions/skills/filterSkillsByType";
-import getAssociatedSkillsHashmap from "@/actions/skills/getAssociatedSkills";
-import groupSkills from "@/actions/skills/groupSkills";
-import SkillTag from "@/components/Tags/SkillTag";
+import getAssociatedSkills from "@/actions/skills/getAssociatedSkills";
 import Tag from "@/components/Tags/Tag";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
@@ -27,14 +24,19 @@ import {
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
 import materialDatabase from "@/database/material";
-import skillsHashmap from "@/database/skills/skills";
-import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import skillsHashmap, { skillSlugArrayNew } from "@/database/skills/skills";
+import SkillSlugEnum, { skillSlugArray } from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import Link from "next/link";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
+import SkillTag from "../Tags/SkillTag";
+import groupSkills from "@/actions/skills/groupSkills";
+import { filterSkillSlugsExcludingCategory } from "@/actions/skills/filterSkillsByCategory";
+import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 
 interface LanguageTagWithModalProps {
   languageIdentifier: SkillSlugEnum;
@@ -56,38 +58,39 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
 }) => {
   const language: SkillInterface = skillsHashmap[languageIdentifier];
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [groupedBy, setGroupedBy] = useState("category");
 
-  const languageSkills: {
-    [key: string]: SkillInterface;
-  } = getAssociatedSkillsHashmap(
+  const languageSkillsSlug: SkillSlugEnum[] = filterSkillSlugsExcludingCategory(
+    language.relatedSkills || [],
     skillsHashmap,
-    languageIdentifier,
-    SkillTypesEnum.Hard
+    SkillCategoriesEnum.ProgrammingLanguages
   );
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
+  const shouldOpenModal: boolean | undefined =
+    language?.relatedSkills && language.relatedSkills.length > 0;
 
-  const shouldOpenModal =
-    language.relatedSkills && language.relatedSkills.length > 0;
+  const groupedSkills: SkillsCategoryInterface[] = groupSkills(
+    groupedBy,
+    languageSkillsSlug,
+    skillsHashmap,
+    [SkillTypesEnum.General, SkillTypesEnum.Soft]
+  );
 
-  const [groupedBy, setGroupedBy] = useState("category");
-
-  const groupedSkills = groupSkills(groupedBy, languageSkills || []);
-
-  const hasMaterial = isSkillAssociatedWithMaterial(language, materialDatabase);
+  const hasMaterial: boolean = isSkillAssociatedWithMaterial(
+    languageIdentifier,
+    materialDatabase
+  );
 
   const options: FilterOption[] = [
     { slug: "category", entryName: "Category" },
     { slug: "none", entryName: "None" },
   ];
 
-  const currentGroupedName =
+  const currentGroupedName: string =
     options.find((option) => option.slug === groupedBy)?.entryName ||
     "Category";
 
@@ -152,11 +155,9 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
                   <div key={index} className="text-center md:text-left">
                     <HeadingThree title={categoryData.skillCategoryName} />
                     <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-                      {Object.entries(categoryData.skills).map(
-                        ([skillKey, skill], index) => (
-                          <SkillTag key={skillKey} skill={skill} />
-                        )
-                      )}
+                      {categoryData.skills.map((skillKey, index) => (
+                        <SkillTag key={index} skillKey={skillKey} />
+                      ))}
                     </div>
                   </div>
                 ))}
