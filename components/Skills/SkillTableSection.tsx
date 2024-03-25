@@ -11,7 +11,7 @@ import useIsMounted from "@/hooks/useIsMounted";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import React, { useState } from "react";
 import CategorySkillDisplay from "./CategorySkillDisplay";
-import filterNonEmptySkillCategories from "@/actions/skills/filterNonEmptySkillCategories";
+import filterNonEmptySkillCategories from "@/actions/skills/filter/filterNonEmptySkillCategories";
 
 interface SkillTableSectionProps {
   allGroupedSkills: GroupedSkillsCategoriesInterface[];

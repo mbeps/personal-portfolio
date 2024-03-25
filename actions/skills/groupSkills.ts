@@ -3,7 +3,7 @@ import SkillInterface from "@/interfaces/skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
-import filterSkillsBySlugs from "./filterSkillsBySlugs";
+import filterSkillsBySlugs from "./filter/filterSkillsBySlugs";
 
 function groupByLanguage(
   skillSlugs: SkillSlugEnum[],

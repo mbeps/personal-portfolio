@@ -1,5 +1,5 @@
-import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
-import filterSkillsByType from "@/actions/skills/filterSkillsByType";
+import filterAndGroupSkills from "@/actions/skills/filter/filterAndGroupSkills";
+import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import skillDatabase from "@/database/skills";

@@ -1,11 +1,11 @@
 import getImagesFromFileSystem from "@/actions/file-system/getImagesFromFileSystem";
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
 import getVideosFromFileSystem from "@/actions/file-system/getVideosFromFileSystem";
-import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
+import filterAndGroupSkills from "@/actions/skills/filter/filterAndGroupSkills";
 import filterSkillSlugsByCategory, {
   filterSkillSlugsExcludingCategory,
-} from "@/actions/skills/filterSkillsByCategory";
-import filterSkillsByType from "@/actions/skills/filterSkillsByType";
+} from "@/actions/skills/filter/filterSkillsByCategory";
+import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
 import Gallery from "@/components/Gallery/Gallery";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import SkillTag from "@/components/Tags/SkillTag";
