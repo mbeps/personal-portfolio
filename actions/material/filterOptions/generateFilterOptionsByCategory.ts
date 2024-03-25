@@ -1,6 +1,6 @@
 import FilterOption from "@/interfaces/filters/FilterOption";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
-import stringToSlug from "../stringToSlug";
+import stringToSlug from "../../stringToSlug";
 
 export default function generateFilterOptionsByCategory<
   T extends MaterialInterface
