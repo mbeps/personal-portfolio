@@ -1,6 +1,3 @@
-import groupMaterialsByMaterialType, {
-  MaterialType,
-} from "@/actions/material/groupMaterialsByMaterialType";
 import BlogsList from "@/components/MaterialLists/BlogsList";
 import CertificatesList from "@/components/MaterialLists/CertificatesList";
 import ProjectsList from "@/components/MaterialLists/ProjectsList";
@@ -24,6 +21,9 @@ import { notFound } from "next/navigation";
 import React from "react";
 import RelatedSkillsSection from "./components/RelatedSkillsSection";
 import filterMaterialBySkill from "@/actions/material/filter/filterMaterialBySkill";
+import groupMaterialsByMaterialType, {
+  MaterialType,
+} from "@/actions/material/group/groupMaterialsByMaterialType";
 
 interface MaterialSectionInterface {
   name: MaterialType;
