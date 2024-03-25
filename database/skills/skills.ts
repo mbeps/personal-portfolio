@@ -986,103 +986,6 @@ const skillsHashmap: Database<SkillInterface> = {
     relatedSkills: [SkillSlugEnum.Python, SkillSlugEnum.DataScience],
   },
 
-  //^ Mathematics
-  [SkillSlugEnum.Probability]: {
-    name: "Probability",
-    category: SkillCategoriesEnum.Mathematics,
-    isMainSkill: true,
-    skillType: SkillTypesEnum.Hard,
-    relatedSkills: [
-      SkillSlugEnum.Mathematics,
-      SkillSlugEnum.MachineLearning,
-      SkillSlugEnum.DeepLearning,
-      SkillSlugEnum.ArtificialIntelligence,
-    ],
-  },
-  [SkillSlugEnum.Statistics]: {
-    name: "Statistics",
-    category: SkillCategoriesEnum.Mathematics,
-    isMainSkill: true,
-    skillType: SkillTypesEnum.Hard,
-    relatedSkills: [
-      SkillSlugEnum.Mathematics,
-      SkillSlugEnum.MachineLearning,
-      SkillSlugEnum.DeepLearning,
-      SkillSlugEnum.ArtificialIntelligence,
-    ],
-  },
-  [SkillSlugEnum.Calculus]: {
-    name: "Calculus",
-    category: SkillCategoriesEnum.Mathematics,
-    isMainSkill: true,
-    skillType: SkillTypesEnum.Hard,
-    relatedSkills: [
-      SkillSlugEnum.Mathematics,
-      SkillSlugEnum.MachineLearning,
-      SkillSlugEnum.DeepLearning,
-      SkillSlugEnum.ArtificialIntelligence,
-    ],
-  },
-  [SkillSlugEnum.Trigonometry]: {
-    name: "Trigonometry",
-    category: SkillCategoriesEnum.Mathematics,
-    isMainSkill: true,
-    skillType: SkillTypesEnum.Hard,
-    relatedSkills: [SkillSlugEnum.Mathematics],
-  },
-  [SkillSlugEnum.Algebra]: {
-    name: "Algebra",
-    category: SkillCategoriesEnum.Mathematics,
-    isMainSkill: true,
-    skillType: SkillTypesEnum.Hard,
-    relatedSkills: [
-      SkillSlugEnum.Mathematics,
-      SkillSlugEnum.MachineLearning,
-      SkillSlugEnum.DeepLearning,
-      SkillSlugEnum.ArtificialIntelligence,
-    ],
-  },
-  [SkillSlugEnum.LinearAlgebra]: {
-    name: "Linear Algebra",
-    category: SkillCategoriesEnum.Mathematics,
-    isMainSkill: true,
-    skillType: SkillTypesEnum.Hard,
-    relatedSkills: [
-      SkillSlugEnum.Mathematics,
-      SkillSlugEnum.MachineLearning,
-      SkillSlugEnum.DeepLearning,
-      SkillSlugEnum.ArtificialIntelligence,
-    ],
-  },
-  [SkillSlugEnum.Discrete]: {
-    name: "Discrete",
-    category: SkillCategoriesEnum.Mathematics,
-    isMainSkill: true,
-    skillType: SkillTypesEnum.Hard,
-    relatedSkills: [SkillSlugEnum.Mathematics],
-  },
-  [SkillSlugEnum.Geometry]: {
-    name: "Geometry",
-    category: SkillCategoriesEnum.Mathematics,
-    isMainSkill: true,
-    skillType: SkillTypesEnum.Hard,
-    relatedSkills: [SkillSlugEnum.Mathematics],
-  },
-  [SkillSlugEnum.Logics]: {
-    name: "Logics",
-    category: SkillCategoriesEnum.Mathematics,
-    isMainSkill: true,
-    skillType: SkillTypesEnum.Hard,
-    relatedSkills: [SkillSlugEnum.Mathematics],
-  },
-  [SkillSlugEnum.Mechanics]: {
-    name: "Mechanics",
-    category: SkillCategoriesEnum.Mathematics,
-    isMainSkill: true,
-    skillType: SkillTypesEnum.Hard,
-    relatedSkills: [SkillSlugEnum.Mathematics],
-  },
-
   //^ APIs and Web Services
   [SkillSlugEnum.REST]: {
     name: "REST",
@@ -1463,6 +1366,103 @@ const skillsHashmap: Database<SkillInterface> = {
     category: SkillCategoriesEnum.CloudComputing,
     skillType: SkillTypesEnum.Hard,
     relatedSkills: [SkillSlugEnum.CloudComputing],
+  },
+
+  //^ Mathematics
+  [SkillSlugEnum.Probability]: {
+    name: "Probability",
+    category: SkillCategoriesEnum.Mathematics,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [
+      SkillSlugEnum.Mathematics,
+      SkillSlugEnum.MachineLearning,
+      SkillSlugEnum.DeepLearning,
+      SkillSlugEnum.ArtificialIntelligence,
+    ],
+  },
+  [SkillSlugEnum.Statistics]: {
+    name: "Statistics",
+    category: SkillCategoriesEnum.Mathematics,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [
+      SkillSlugEnum.Mathematics,
+      SkillSlugEnum.MachineLearning,
+      SkillSlugEnum.DeepLearning,
+      SkillSlugEnum.ArtificialIntelligence,
+    ],
+  },
+  [SkillSlugEnum.Calculus]: {
+    name: "Calculus",
+    category: SkillCategoriesEnum.Mathematics,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [
+      SkillSlugEnum.Mathematics,
+      SkillSlugEnum.MachineLearning,
+      SkillSlugEnum.DeepLearning,
+      SkillSlugEnum.ArtificialIntelligence,
+    ],
+  },
+  [SkillSlugEnum.Trigonometry]: {
+    name: "Trigonometry",
+    category: SkillCategoriesEnum.Mathematics,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [SkillSlugEnum.Mathematics],
+  },
+  [SkillSlugEnum.Algebra]: {
+    name: "Algebra",
+    category: SkillCategoriesEnum.Mathematics,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [
+      SkillSlugEnum.Mathematics,
+      SkillSlugEnum.MachineLearning,
+      SkillSlugEnum.DeepLearning,
+      SkillSlugEnum.ArtificialIntelligence,
+    ],
+  },
+  [SkillSlugEnum.LinearAlgebra]: {
+    name: "Linear Algebra",
+    category: SkillCategoriesEnum.Mathematics,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [
+      SkillSlugEnum.Mathematics,
+      SkillSlugEnum.MachineLearning,
+      SkillSlugEnum.DeepLearning,
+      SkillSlugEnum.ArtificialIntelligence,
+    ],
+  },
+  [SkillSlugEnum.Discrete]: {
+    name: "Discrete",
+    category: SkillCategoriesEnum.Mathematics,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [SkillSlugEnum.Mathematics],
+  },
+  [SkillSlugEnum.Geometry]: {
+    name: "Geometry",
+    category: SkillCategoriesEnum.Mathematics,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [SkillSlugEnum.Mathematics],
+  },
+  [SkillSlugEnum.Logics]: {
+    name: "Logics",
+    category: SkillCategoriesEnum.Mathematics,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [SkillSlugEnum.Mathematics],
+  },
+  [SkillSlugEnum.Mechanics]: {
+    name: "Mechanics",
+    category: SkillCategoriesEnum.Mathematics,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [SkillSlugEnum.Mathematics],
   },
 
   //^ Project Management
