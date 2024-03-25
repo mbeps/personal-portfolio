@@ -1,7 +1,9 @@
 "use client";
 
 import filterCategoriesFromSkills from "@/actions/skills/filter/filterCategoriesFromSkills";
-import groupSkills, { GroupByOptions } from "@/actions/skills/groupSkills";
+import groupSkills, {
+  GroupByOptions,
+} from "@/actions/skills/group/groupSkills";
 import {
   Dialog,
   DialogContent,

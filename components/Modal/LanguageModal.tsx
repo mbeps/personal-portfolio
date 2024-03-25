@@ -1,7 +1,9 @@
 "use client";
 
 import isSkillAssociatedWithMaterial from "@/actions/material/isSkillAssociatedWithMaterial";
-import groupSkills, { GroupByOptions } from "@/actions/skills/groupSkills";
+import groupSkills, {
+  GroupByOptions,
+} from "@/actions/skills/group/groupSkills";
 import Tag from "@/components/Tags/Tag";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
