@@ -3,7 +3,7 @@ import MaterialInterface from "@/interfaces/material/MaterialInterface";
 
 export default function isSkillAssociatedWithMaterial(
   skillToCheck: SkillSlugEnum,
-  materialsMap: { [key: string]: MaterialInterface }
+  materialsMap: Database<MaterialInterface>
 ): boolean {
   // Loop through the materialsMap
   for (const materialKey in materialsMap) {

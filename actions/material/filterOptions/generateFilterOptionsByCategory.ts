@@ -4,7 +4,7 @@ import stringToSlug from "../../stringToSlug";
 
 export default function generateFilterOptionsByCategory<
   T extends MaterialInterface
->(allMaterialsMap: { [key: string]: T }): FilterOption[] {
+>(allMaterialsMap: Database<T>): FilterOption[] {
   return [
     { slug: "all", entryName: "All" },
     ...Object.values(allMaterialsMap)

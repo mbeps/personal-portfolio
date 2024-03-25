@@ -7,12 +7,12 @@ import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 export default function addNestedSkillsMaterialList<
   T extends MaterialInterface
 >(
-  materialsMap: { [key: string]: T },
-  skillsHashmap: { [key: string]: SkillInterface },
+  materialsMap: Database<T>,
+  skillsHashmap: Database<SkillInterface>,
   ignoredCategories: SkillCategoriesEnum[],
   skillTypeToAdd?: SkillTypesEnum,
   skillTypeToCheck?: SkillTypesEnum
-): { [key: string]: T } {
+): Database<T> {
   // Iterate over each material
   Object.keys(materialsMap).forEach((materialKey) => {
     const material = materialsMap[materialKey];

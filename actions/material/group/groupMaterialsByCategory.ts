@@ -3,7 +3,7 @@ import MaterialInterface from "@/interfaces/material/MaterialInterface";
 
 export default function groupMaterialsByCategory<T extends MaterialInterface>(
   materialSlugs: string[],
-  materialsMap: { [key: string]: T }
+  materialsMap: Database<T>
 ): MaterialGroupInterface[] {
   return materialSlugs.reduce<MaterialGroupInterface[]>((groups, slug) => {
     const material = materialsMap[slug];

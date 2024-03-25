@@ -11,7 +11,7 @@ export default function groupMaterialsByMaterialType<
   T extends MaterialInterface
 >(
   materialKeys: string[],
-  materialsMap: { [key: string]: T },
+  materialsMap: Database<T>,
   groupName: MaterialType
 ): MaterialGroupInterface[] {
   // Filter materialKeys to ensure they exist in the materialsMap

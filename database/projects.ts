@@ -13,9 +13,7 @@ import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
  * This is used to populate the projects page.
  * @type {ProjectInterface[]}
  */
-const projectMap: {
-  [key: string]: ProjectInterface;
-} = {
+const projectMap: Database<ProjectInterface> = {
   [ProjectSlugEnum.CircusDiscussions]: {
     name: `Circus Discussions`,
     description: `
@@ -1206,14 +1204,13 @@ export const projectKeys: ProjectSlugEnum[] = Object.keys(
 /**
  * Array of all projects.
  */
-const projectDatabase: {
-  [key: string]: ProjectInterface;
-} = addNestedSkillsMaterialList<ProjectInterface>(
-  projectMap,
-  skillDatabase,
-  [SkillCategoriesEnum.ProgrammingLanguages],
-  SkillTypesEnum.General,
-  SkillTypesEnum.Hard
-);
+const projectDatabase: Database<ProjectInterface> =
+  addNestedSkillsMaterialList<ProjectInterface>(
+    projectMap,
+    skillDatabase,
+    [SkillCategoriesEnum.ProgrammingLanguages],
+    SkillTypesEnum.General,
+    SkillTypesEnum.Hard
+  );
 
 export default projectDatabase;

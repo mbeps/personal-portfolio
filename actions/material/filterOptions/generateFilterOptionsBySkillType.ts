@@ -8,8 +8,8 @@ import SkillInterface from "@/interfaces/skills/SkillInterface";
 export default function generateFilterOptionsBySkillType<
   T extends MaterialInterface
 >(
-  allMaterialsMap: { [key: string]: T },
-  skillsMap: { [key: string]: SkillInterface },
+  allMaterialsMap: Database<T>,
+  skillsMap: Database<SkillInterface>,
   skillType: SkillTypesEnum,
   excludeCategory?: SkillCategoriesEnum
 ): FilterOption[] {

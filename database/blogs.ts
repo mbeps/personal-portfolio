@@ -7,7 +7,7 @@ import BlogInterface from "@/interfaces/material/BlogInterface";
 import skillDatabase from "./skills";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 
-const blogsMap: { [key: string]: BlogInterface } = {
+const blogsMap: Database<BlogInterface> = {
   [BlogSlugEnum.Backend]: {
     name: "Exploring Backends: Custom vs Managed Solutions",
     subtitle:
@@ -198,14 +198,13 @@ const blogsMap: { [key: string]: BlogInterface } = {
 
 export const blogKeys: BlogSlugEnum[] = Object.keys(blogsMap) as BlogSlugEnum[];
 
-const blogDatabase: {
-  [key: string]: BlogInterface;
-} = addNestedSkillsMaterialList<BlogInterface>(
-  blogsMap,
-  skillDatabase,
-  [SkillCategoriesEnum.ProgrammingLanguages],
-  SkillTypesEnum.General,
-  SkillTypesEnum.Hard
-);
+const blogDatabase: Database<BlogInterface> =
+  addNestedSkillsMaterialList<BlogInterface>(
+    blogsMap,
+    skillDatabase,
+    [SkillCategoriesEnum.ProgrammingLanguages],
+    SkillTypesEnum.General,
+    SkillTypesEnum.Hard
+  );
 
 export default blogDatabase;

@@ -6,8 +6,8 @@ import SkillInterface from "@/interfaces/skills/SkillInterface";
 export function generateFilterOptionsBySkillCategories<
   T extends MaterialInterface
 >(
-  allMaterialsMap: { [key: string]: T },
-  skillsMap: { [key: string]: SkillInterface }
+  allMaterialsMap: Database<T>,
+  skillsMap: Database<SkillInterface>
 ): FilterOption[] {
   return [
     { slug: "all", entryName: "All" },

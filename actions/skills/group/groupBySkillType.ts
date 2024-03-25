@@ -5,10 +5,10 @@ import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface
 // Function to group skills by skill type
 export default function groupBySkillType(
   skillSlugs: SkillSlugEnum[],
-  allSkills: { [key: string]: SkillInterface }
+  allSkills: Database<SkillInterface>
 ): SkillsCategoryInterface[] {
   // Object to hold the grouping by skillType
-  const skillTypes: { [key: string]: SkillSlugEnum[] } = {};
+  const skillTypes: Database<SkillSlugEnum[]> = {};
 
   skillSlugs.forEach((slug) => {
     const skill = allSkills[slug];

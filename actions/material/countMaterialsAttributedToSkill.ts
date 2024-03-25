@@ -5,7 +5,7 @@ import SkillInterface from "@/interfaces/skills/SkillInterface";
 export default function countMaterialsAttributedToSkill(
   skillKeyToCheck: SkillSlugEnum,
   allSkills: Database<SkillInterface>,
-  allMaterialsMap: { [key: string]: MaterialInterface }
+  allMaterialsMap: Database<MaterialInterface>
 ): number {
   // Adapt the logic to work with skill keys and check if a skill or its related skill is present in a material
   const isSkillOrRelatedSkillPresent = (

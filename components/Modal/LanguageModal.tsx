@@ -63,7 +63,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
   // Utility function to filter for main skills excluding a specific category
   const filterMainSkillsExcludingCategory = (
     skillSlugs: SkillSlugEnum[],
-    skillsHashmap: { [key: string]: SkillInterface },
+    skillsHashmap: Database<SkillInterface>,
     excludedCategory: SkillCategoriesEnum
   ): SkillSlugEnum[] => {
     return skillSlugs.filter((slug) => {

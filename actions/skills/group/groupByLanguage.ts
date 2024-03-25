@@ -5,7 +5,7 @@ import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface
 
 export default function groupByLanguage(
   skillSlugs: SkillSlugEnum[],
-  allSkills: { [key: string]: SkillInterface }
+  allSkills: Database<SkillInterface>
 ): SkillsCategoryInterface[] {
   const groupedSkills: { [skillCategoryName: string]: SkillSlugEnum[] } = {};
   const noLanguageSkills: SkillSlugEnum[] = []; // Temporarily hold skills not related to any language

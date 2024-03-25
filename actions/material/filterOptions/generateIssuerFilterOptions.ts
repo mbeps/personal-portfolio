@@ -2,9 +2,9 @@ import stringToSlug from "@/actions/stringToSlug";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
 
-export default function generateIssuerFilterOptions(certificatesMap: {
-  [key: string]: CertificateInterface;
-}): FilterOption[] {
+export default function generateIssuerFilterOptions(
+  certificatesMap: Database<CertificateInterface>
+): FilterOption[] {
   return [
     { slug: "all", entryName: "All" },
     ...Object.values(certificatesMap)

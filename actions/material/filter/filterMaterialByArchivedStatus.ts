@@ -5,7 +5,7 @@ export default function filterMaterialByArchivedStatus<
 >(
   includeArchived: boolean,
   materialKeys: string[],
-  materialsMap: { [key: string]: T }
+  materialsMap: Database<T>
 ): string[] {
   return materialKeys.reduce<string[]>((acc, key) => {
     const material = materialsMap[key];

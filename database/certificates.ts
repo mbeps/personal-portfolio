@@ -9,9 +9,7 @@ import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import skillDatabase from "./skills";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 
-const certificateMap: {
-  [key: string]: CertificateInterface;
-} = {
+const certificateMap: Database<CertificateInterface> = {
   //^ Programming Languages
   [CertificateSlugEnum.UdemyPythonProgrammingMasterclass]: {
     name: "Python Programming Masterclass",
@@ -2390,14 +2388,13 @@ export const certificateKeys: CertificateSlugEnum[] = Object.keys(
   certificateMap
 ) as CertificateSlugEnum[];
 
-const certificateDatabase: {
-  [key: string]: CertificateInterface;
-} = addNestedSkillsMaterialList<CertificateInterface>(
-  certificateMap,
-  skillDatabase,
-  [SkillCategoriesEnum.ProgrammingLanguages],
-  SkillTypesEnum.General,
-  SkillTypesEnum.Hard
-);
+const certificateDatabase: Database<CertificateInterface> =
+  addNestedSkillsMaterialList<CertificateInterface>(
+    certificateMap,
+    skillDatabase,
+    [SkillCategoriesEnum.ProgrammingLanguages],
+    SkillTypesEnum.General,
+    SkillTypesEnum.Hard
+  );
 
 export default certificateDatabase;

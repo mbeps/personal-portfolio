@@ -3,7 +3,7 @@ import blogDatabase from "./blogs";
 import certificateDatabase from "./certificates";
 import projectDatabase from "./projects";
 
-const materialDatabase: { [key: string]: MaterialInterface } = {
+const materialDatabase: Database<MaterialInterface> = {
   ...projectDatabase,
   ...certificateDatabase,
   ...blogDatabase,

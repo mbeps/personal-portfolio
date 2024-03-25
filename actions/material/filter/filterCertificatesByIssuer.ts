@@ -4,7 +4,7 @@ import CertificateInterface from "@/interfaces/material/CertificateInterface";
 export default function filterCertificatesByIssuer(
   issuer: string,
   materialKeys: string[],
-  certificatesMap: { [key: string]: CertificateInterface }
+  certificatesMap: Database<CertificateInterface>
 ): string[] {
   return materialKeys.reduce<string[]>((acc, key) => {
     const certificate = certificatesMap[key];

@@ -28,7 +28,7 @@ import groupMaterialsByMaterialType, {
 interface MaterialSectionInterface {
   name: MaterialType;
   materials: string[];
-  materialHashmap: { [key: string]: MaterialInterface };
+  materialHashmap: Database<MaterialInterface>;
   basePath: string;
   ListComponent: React.ComponentType<MaterialListProps>;
 }

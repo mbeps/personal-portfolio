@@ -6,8 +6,8 @@ import SkillInterface from "@/interfaces/skills/SkillInterface";
 export default function generateFilterOptionsForProgrammingLanguages<
   T extends MaterialInterface
 >(
-  allMaterialsMap: { [key: string]: T },
-  skillsMap: { [key: string]: SkillInterface } // Added parameter for skills hashmap
+  allMaterialsMap: Database<T>,
+  skillsMap: Database<SkillInterface> // Added parameter for skills hashmap
 ): FilterOption[] {
   return [
     { slug: "all", entryName: "All" },

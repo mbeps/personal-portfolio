@@ -6,9 +6,9 @@ export default function filterMaterialBySkillCategory<
   T extends MaterialInterface
 >(
   materialKeys: string[],
-  materialsMap: { [key: string]: T },
+  materialsMap: Database<T>,
   skillCategory: string,
-  skillsMap: { [key: string]: SkillInterface }
+  skillsMap: Database<SkillInterface>
 ): string[] {
   const filteredMaterialSlugs: string[] = [];
   const targetCategorySlug = stringToSlug(skillCategory);

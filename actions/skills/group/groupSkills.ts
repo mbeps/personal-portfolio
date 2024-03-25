@@ -9,7 +9,7 @@ import groupBySkillType from "./groupBySkillType";
 
 function recursiveFilter(
   skillSlugs: SkillSlugEnum[],
-  allSkills: { [key: string]: SkillInterface },
+  allSkills: Database<SkillInterface>,
   excludedSkillTypes: SkillTypesEnum[] = [],
   processedSkills: Set<SkillSlugEnum> = new Set<SkillSlugEnum>() // To keep track of processed skills
 ): SkillSlugEnum[] {
@@ -56,7 +56,7 @@ export enum GroupByOptions {
 export default function groupSkills(
   groupedBy: GroupByOptions,
   skillSlugs: SkillSlugEnum[],
-  allSkills: { [key: string]: SkillInterface },
+  allSkills: Database<SkillInterface>,
   excludedSkillTypes?: SkillTypesEnum[] // Use SkillTypesEnum[] or undefined
 ): SkillsCategoryInterface[] {
   let organizedSkills: SkillsCategoryInterface[] = [];

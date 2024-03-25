@@ -10,7 +10,7 @@ import MaterialInterface from "@/interfaces/material/MaterialInterface";
  * @returns A hashmap of items that match the search term.
  */
 function useFuseSearch<T extends MaterialInterface>(
-  itemsMap: { [key: string]: T },
+  itemsMap: Database<T>,
   searchTerm: string,
   searchKeys: string[]
 ): string[] {
@@ -56,7 +56,7 @@ function useFuseSearch<T extends MaterialInterface>(
         acc[key] = item;
       }
       return acc;
-    }, {} as { [key: string]: T });
+    }, {} as Database<T>);
   }, [searchedItems, nameToKeyMap]);
 
   return Object.keys(filteredItemsMap);

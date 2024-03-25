@@ -4,7 +4,7 @@ import MaterialInterface from "@/interfaces/material/MaterialInterface";
 export default function filterMaterialBySkill<T extends MaterialInterface>(
   skillSlug: SkillSlugEnum,
   materialKeys: string[],
-  materialsMap: { [key: string]: T }
+  materialsMap: Database<T>
 ): string[] {
   const filteredMaterialSlugs: string[] = [];
 
