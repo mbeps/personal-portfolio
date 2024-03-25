@@ -10,6 +10,7 @@ function groupByLanguage(
   allSkills: { [key: string]: SkillInterface }
 ): SkillsCategoryInterface[] {
   const groupedSkills: { [skillCategoryName: string]: SkillSlugEnum[] } = {};
+  const noLanguageSkills: SkillSlugEnum[] = []; // Temporarily hold skills not related to any language
 
   skillSlugs.forEach((skillSlug) => {
     const skill = allSkills[skillSlug];
@@ -19,8 +20,11 @@ function groupByLanguage(
       return;
     }
 
+    let isRelatedToProgrammingLanguage = false;
+
     // Directly group skills that are categorized as programming languages
     if (skill.category === SkillCategoriesEnum.ProgrammingLanguages) {
+      isRelatedToProgrammingLanguage = true;
       if (!groupedSkills[skill.name]) {
         groupedSkills[skill.name] = [];
       }
@@ -34,15 +38,24 @@ function groupByLanguage(
           relatedSkill &&
           relatedSkill.category === SkillCategoriesEnum.ProgrammingLanguages
         ) {
-          if (!groupedSkills[relatedSkill.name]) {
-            groupedSkills[relatedSkill.name] = [];
-          }
-          groupedSkills[relatedSkill.name].push(skillSlug);
+          isRelatedToProgrammingLanguage = true;
+          const languageName = relatedSkill.name;
+          groupedSkills[languageName] = groupedSkills[languageName] || [];
+          groupedSkills[languageName].push(skillSlug);
         }
       });
-      //TODO: Move all the other skills to a separate category called 'No Language'
+    }
+
+    // Collect skills not related to any programming language
+    if (!isRelatedToProgrammingLanguage) {
+      noLanguageSkills.push(skillSlug);
     }
   });
+
+  // Add 'No Languages' group at the end
+  if (noLanguageSkills.length > 0) {
+    groupedSkills["No Languages"] = noLanguageSkills;
+  }
 
   // Convert the groupedSkills object into an array of SkillsCategoryInterface
   return Object.entries(groupedSkills).map(([skillCategoryName, skills]) => ({
