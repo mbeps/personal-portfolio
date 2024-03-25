@@ -1,4 +1,5 @@
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
+import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 /**
@@ -10,14 +11,12 @@ import SkillInterface from "@/interfaces/skills/SkillInterface";
 export default function filterCategoriesFromSkills(
   skills: Database<SkillInterface>,
   ignoredCategories: SkillCategoriesEnum[]
-): Database<SkillInterface> {
-  const filteredSkills: Database<SkillInterface> = {};
-
-  Object.entries(skills).forEach(([key, skill]) => {
-    if (!ignoredCategories.includes(skill.category)) {
-      filteredSkills[key] = skill;
-    }
-  });
-
-  return filteredSkills;
+): SkillSlugEnum[] {
+  // Use Object.keys() to get an array of all skill slugs (keys)
+  // Then filter this array based on whether the skill's category is not in ignoredCategories
+  return Object.keys(skills).filter((skillSlug) => {
+    const skill = skills[skillSlug];
+    // Include the skillSlug in the result if its category is not ignored
+    return !ignoredCategories.includes(skill.category);
+  }) as SkillSlugEnum[];
 }

@@ -40,6 +40,7 @@ function groupByLanguage(
           groupedSkills[relatedSkill.name].push(skillSlug);
         }
       });
+      //TODO: Move all the other skills to a separate category called 'No Language'
     }
   });
 
@@ -154,7 +155,7 @@ function recursiveFilter(
 }
 
 export default function groupSkills(
-  groupedBy: string,
+  groupedBy: string, //TODO: Use enums for the groupedBy parameter
   skillSlugs: SkillSlugEnum[],
   allSkills: { [key: string]: SkillInterface },
   excludedSkillTypes?: SkillTypesEnum[] // Use SkillTypesEnum[] or undefined

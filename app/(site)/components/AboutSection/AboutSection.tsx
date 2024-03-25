@@ -48,7 +48,7 @@ const AboutSection = () => {
         <div className="text-center lg:w-1/2 md:text-left ">
           <LanguageSection />
           <div className="h-1 mt-2 md:mt-4" />
-          {/* <TechnologiesSection /> */}
+          <TechnologiesSection />
         </div>
       </div>
     </section>

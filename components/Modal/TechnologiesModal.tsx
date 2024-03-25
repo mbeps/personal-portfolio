@@ -13,7 +13,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/shadcn/ui/dropdown-menu";
-import skillsHashmap from "@/database/skills/skills";
+import skillsHashmap, { skillSlugArrayNew } from "@/database/skills/skills";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import useIsMounted from "@/hooks/useIsMounted";
@@ -29,6 +29,7 @@ import HeadingThree from "../Text/HeadingThree";
 import HeadingTwo from "../Text/HeadingTwo";
 import { Button } from "../shadcn/ui/button";
 import { ScrollArea } from "../shadcn/ui/scroll-area";
+import SkillSlugEnum from "@/enums/SkillSlugEnum";
 
 /**
  * Displays a modal for the skills.
@@ -42,7 +43,7 @@ import { ScrollArea } from "../shadcn/ui/scroll-area";
  */
 const TechnologiesModal: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const isMounted = useIsMounted();
+  const isMounted: boolean = useIsMounted();
   const [groupedBy, setGroupedBy] = useState("category");
 
   if (!isMounted) {
@@ -53,51 +54,52 @@ const TechnologiesModal: React.FC = () => {
     setIsModalOpen(true);
   };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-
   const options: FilterOption[] = [
     { slug: "category", entryName: "Category" },
     { slug: "language", entryName: "Language" },
     { slug: "none", entryName: "None" },
   ];
 
-  const mainSkills: Database<SkillInterface> = {};
+  const mainSkillsHashMap: Database<SkillInterface> = {};
 
   Object.entries(skillsHashmap).forEach(([key, skill]) => {
     if (skill.isMainSkill) {
-      mainSkills[key] = skill;
+      mainSkillsHashMap[key] = skill;
     }
   });
 
   const ignoredCategories: SkillCategoriesEnum[] = [
-    SkillCategoriesEnum.ProgrammingLanguages,
     SkillCategoriesEnum.ProjectManagers,
     SkillCategoriesEnum.ObjectRelationalMappers,
     SkillCategoriesEnum.VersionControl,
     SkillCategoriesEnum.WebSockets,
-    SkillCategoriesEnum.Mathematics,
     SkillCategoriesEnum.CloudComputing,
     SkillCategoriesEnum.Automation,
+    ...(groupedBy !== "language"
+      ? [SkillCategoriesEnum.ProgrammingLanguages]
+      : []),
   ];
 
   /**
    * Only technologies (hard skills) are displayed.
    * Skills from programming languages are not displayed.
    */
-  const skillsToDisplay: Database<SkillInterface> = filterCategoriesFromSkills(
-    mainSkills,
+  const skillsToDisplay: SkillSlugEnum[] = filterCategoriesFromSkills(
+    mainSkillsHashMap,
     ignoredCategories
   );
 
+  /**
+   * Skill groups which are then displayed.
+   */
   const groupedSkills: SkillsCategoryInterface[] = groupSkills(
     groupedBy,
     skillsToDisplay,
+    skillsHashmap,
     [SkillTypesEnum.General, SkillTypesEnum.Soft]
   );
 
-  const currentGroupedName =
+  const currentGroupedName: string =
     options.find((option) => option.slug === groupedBy)?.entryName ||
     "Category";
 
@@ -157,11 +159,9 @@ const TechnologiesModal: React.FC = () => {
               <div key={index} className="mt-4 text-center md:text-left">
                 <HeadingThree title={categoryData.skillCategoryName} />
                 <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-                  {Object.values(categoryData.skills).map(
-                    (skill: SkillInterface, skillIndex: number) => (
-                      <SkillTag key={skillIndex} skill={skill} />
-                    )
-                  )}
+                  {categoryData.skills.map((skillSlug) => (
+                    <SkillTag key={skillSlug} skillKey={skillSlug} />
+                  ))}
                 </div>
               </div>
             ))}

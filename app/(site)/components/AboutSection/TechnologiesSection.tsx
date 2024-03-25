@@ -1,7 +1,6 @@
 "use client";
 
 import filterCategoriesFromSkills from "@/actions/skills/filterCategoriesFromSkills";
-import getAssociatedSkillsHashmap from "@/actions/skills/getAssociatedSkills";
 import TechnologiesModal from "@/components/Modal/TechnologiesModal";
 import SkillTag from "@/components/Tags/SkillTag";
 import HeadingThree from "@/components/Text/HeadingThree";
@@ -13,7 +12,6 @@ import {
 import skillsHashmap from "@/database/skills/skills";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 /**
@@ -30,6 +28,11 @@ const TechnologiesSection: React.FC = () => {
       mainSkills[key] = skill;
     }
   });
+
+  const mainSkillSlugs: SkillSlugEnum[] = Object.keys(
+    mainSkills
+  ) as SkillSlugEnum[];
+
   /**
    * This is a list of categories that should be ignored.
    * Any skills that are in these categories will not be displayed.
@@ -50,7 +53,7 @@ const TechnologiesSection: React.FC = () => {
    * Only technologies (hard skills) are displayed.
    * Skills from programming languages are not displayed.
    */
-  const skillsToDisplay: Database<SkillInterface> = filterCategoriesFromSkills(
+  const skillsToDisplay: SkillSlugEnum[] = filterCategoriesFromSkills(
     mainSkills,
     ignoredCategories
   );
@@ -62,23 +65,10 @@ const TechnologiesSection: React.FC = () => {
    * @returns (string[]): list of skill names
    */
   function firstNSkills(
-    skills: Database<SkillInterface>,
+    skillKeys: SkillSlugEnum[],
     totalLimit: number
-  ): Database<SkillInterface> {
-    const limitedSkills: Database<SkillInterface> = {};
-    let count = 0;
-
-    // Iterate over the hashmap entries
-    for (const [key, skill] of Object.entries(skills)) {
-      if (count < totalLimit) {
-        limitedSkills[key] = skill;
-        count += 1;
-      } else {
-        break; // Stop adding skills once the totalLimit is reached
-      }
-    }
-
-    return limitedSkills;
+  ): SkillSlugEnum[] {
+    return skillKeys.slice(0, totalLimit);
   }
 
   /**
@@ -88,57 +78,46 @@ const TechnologiesSection: React.FC = () => {
    * @returns (string[]): list of skill names
    */
   function firstNSkillsPerCategory(
-    skills: Database<SkillInterface>,
+    skillKeys: SkillSlugEnum[],
     limitPerCategory: number
-  ): Database<SkillInterface> {
-    // Categorize the skills into a hashmap of categories with each category holding a hashmap of skills
-    const skillCategories: {
-      [categoryName: string]: Database<SkillInterface>;
-    } = {};
+  ): SkillSlugEnum[] {
+    const skillCategories: { [categoryName: string]: SkillSlugEnum[] } = {};
+    let limitedSkillSlugs: SkillSlugEnum[] = [];
 
-    Object.entries(skills).forEach(([skillKey, skill]) => {
-      const category = skill.category || "Other"; // If no category, put in 'Other' category
+    // Organize skill slugs into categories
+    skillKeys.forEach((skillSlug) => {
+      const skillDetails: SkillInterface = skillsHashmap[skillSlug];
+      const category: SkillCategoriesEnum = skillDetails.category || "Other";
 
       if (!skillCategories[category]) {
-        skillCategories[category] = {};
+        skillCategories[category] = [];
       }
 
-      // Add skill to the appropriate category
-      skillCategories[category][skillKey] = skill;
+      skillCategories[category].push(skillSlug);
     });
 
-    // Take the first 'limitPerCategory' skills from each category and merge them into a single hashmap
-    const limitedSkills: Database<SkillInterface> = {};
-
-    Object.keys(skillCategories).forEach((categoryName) => {
-      const categorySkills = skillCategories[categoryName];
-      let count = 0;
-      for (const [skillKey, skill] of Object.entries(categorySkills)) {
-        if (count < limitPerCategory) {
-          limitedSkills[skillKey] = skill;
-          count++;
-        } else {
-          break; // Stop adding skills once the limitPerCategory is reached
-        }
-      }
+    // Collect the first 'limitPerCategory' skill slugs from each category
+    Object.values(skillCategories).forEach((categorySlugs) => {
+      limitedSkillSlugs = [
+        ...limitedSkillSlugs,
+        ...categorySlugs.slice(0, limitPerCategory),
+      ];
     });
 
-    return limitedSkills;
+    return limitedSkillSlugs;
   }
 
-  const handleDisplaySkills = () => {
+  function handleDisplaySkills(): SkillSlugEnum[] {
     return firstNSkills(firstNSkillsPerCategory(skillsToDisplay, 2), 16);
-  };
+  }
 
   return (
     <>
       <HeadingThree title="Technologies" />
       <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start -mt-2">
-        {Object.values(handleDisplaySkills()).map(
-          (skill: SkillInterface, idx: number) => (
-            <SkillTag key={idx} skill={skill} />
-          )
-        )}
+        {handleDisplaySkills().map((skillSlug: SkillSlugEnum, idx: number) => (
+          <SkillTag key={idx} skillKey={skillSlug} />
+        ))}
 
         <div className="relative group">
           {/* Tag that opens skills modal */}
