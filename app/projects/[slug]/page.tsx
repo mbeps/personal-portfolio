@@ -1,7 +1,6 @@
 import getImagesFromFileSystem from "@/actions/file-system/getImagesFromFileSystem";
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
 import getVideosFromFileSystem from "@/actions/file-system/getVideosFromFileSystem";
-import getContentBySlug from "@/actions/material/getContentBySlug";
 import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
 import filterSkillSlugsByCategory, {
   filterSkillSlugsExcludingCategory,
@@ -21,7 +20,6 @@ import skillDatabase from "@/database/skills";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
-import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
@@ -45,7 +43,7 @@ export async function generateMetadata(
   const slug = params.slug;
 
   // Assume getProjectBySlug function fetches project by slug
-  const project = getContentBySlug(slug, projectDatabase);
+  const project = projectDatabase[slug];
 
   // Create metadata based on the project details
   return {
@@ -89,7 +87,7 @@ interface ProjectPageProps {
 const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const slug = params.slug;
   const basePath = PROJECTS_PAGE.path;
-  const project = getContentBySlug<ProjectInterface>(slug, projectDatabase);
+  const project = projectDatabase[slug];
 
   // redirect to not found page if the project is not valid
   if (!project) {

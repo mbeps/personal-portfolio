@@ -1,12 +1,9 @@
-import validateSlugsWithContent from "@/actions/material/validateSlugsWithContent";
 import ProjectItem from "@/components/ProjectItem/ProjectItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import SlideUp from "@/components/UI/Slideup";
 import { Button } from "@/components/shadcn/ui/button";
 import { PROJECTS_PAGE } from "@/constants/pages";
-import projectDatabase from "@/database/projects";
 import ProjectSlugEnum from "@/enums/MaterialSlugEnums/ProjectsSlugEnum";
-import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import Link from "next/link";
 
 /**

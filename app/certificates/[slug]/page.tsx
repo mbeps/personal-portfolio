@@ -1,4 +1,3 @@
-import getContentBySlug from "@/actions/material/getContentBySlug";
 import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
@@ -35,10 +34,7 @@ export async function generateMetadata(
   const slug = params.slug;
 
   // Assume getCertificateBySlug function fetches certificate by slug
-  const certificate = getContentBySlug<CertificateInterface>(
-    slug,
-    certificateDatabase
-  );
+  const certificate = certificateDatabase[slug];
 
   // Create metadata based on the certificate details
   return {
@@ -75,10 +71,8 @@ type CertificatesPageProps = {
 const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
   const slug = params.slug;
 
-  const certificate = getContentBySlug<CertificateInterface>(
-    slug,
-    certificateDatabase
-  );
+  const certificate: CertificateInterface = certificateDatabase[slug];
+
   if (!certificate) {
     notFound();
   }
