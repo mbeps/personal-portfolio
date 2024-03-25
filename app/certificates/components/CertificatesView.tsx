@@ -1,14 +1,7 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
-import filterCertificatesByIssuer from "@/actions/material/certificates/filterCertificatesByIssuer";
 import generateIssuerFilterOptions from "@/actions/material/filterOptions/generateIssuerFilterOptions";
-import {
-  filterMaterialByArchivedStatus,
-  filterMaterialByCategory,
-  filterMaterialBySkill,
-  filterMaterialBySkillCategory,
-} from "@/actions/material/filterMaterials";
 import generateFilterOptionsByCategory from "@/actions/material/filterOptions/generateFilterOptionsByCategory";
 import { generateFilterOptionsBySkillCategories } from "@/actions/material/filterOptions/generateFilterOptionsBySkillCategories";
 import generateFilterOptionsBySkillType from "@/actions/material/filterOptions/generateFilterOptionsBySkillType";
@@ -33,6 +26,11 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import { AiOutlineClear } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
+import filterMaterialBySkill from "@/actions/material/filter/filterMaterialBySkill";
+import filterMaterialByCategory from "@/actions/material/filter/filterMaterialByCategory";
+import filterMaterialBySkillCategory from "@/actions/material/filter/filterMaterialBySkillCategory";
+import filterMaterialByArchivedStatus from "@/actions/material/filter/filterMaterialByArchivedStatus";
+import filterCertificatesByIssuer from "@/actions/material/filter/filterCertificatesByIssuer";
 
 /**
  * Displays a list of all certificates.

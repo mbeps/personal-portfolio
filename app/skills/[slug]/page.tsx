@@ -1,4 +1,3 @@
-import { filterMaterialBySkill } from "@/actions/material/filterMaterials";
 import groupMaterialsByMaterialType, {
   MaterialType,
 } from "@/actions/material/groupMaterialsByMaterialType";
@@ -24,6 +23,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 import RelatedSkillsSection from "./components/RelatedSkillsSection";
+import filterMaterialBySkill from "@/actions/material/filter/filterMaterialBySkill";
 
 interface MaterialSectionInterface {
   name: MaterialType;

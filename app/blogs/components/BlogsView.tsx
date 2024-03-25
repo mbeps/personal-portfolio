@@ -1,12 +1,10 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
-import {
-  filterMaterialByArchivedStatus,
-  filterMaterialByCategory,
-  filterMaterialBySkill,
-  filterMaterialBySkillCategory,
-} from "@/actions/material/filterMaterials";
+import filterMaterialByArchivedStatus from "@/actions/material/filter/filterMaterialByArchivedStatus";
+import filterMaterialByCategory from "@/actions/material/filter/filterMaterialByCategory";
+import filterMaterialBySkill from "@/actions/material/filter/filterMaterialBySkill";
+import filterMaterialBySkillCategory from "@/actions/material/filter/filterMaterialBySkillCategory";
 import generateFilterOptionsByCategory from "@/actions/material/filterOptions/generateFilterOptionsByCategory";
 import { generateFilterOptionsBySkillCategories } from "@/actions/material/filterOptions/generateFilterOptionsBySkillCategories";
 import generateFilterOptionsBySkillType from "@/actions/material/filterOptions/generateFilterOptionsBySkillType";
