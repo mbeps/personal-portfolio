@@ -60,15 +60,25 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [groupedBy, setGroupedBy] = useState("category");
 
-  const languageSkillsSlug: SkillSlugEnum[] = filterSkillSlugsExcludingCategory(
+  // Utility function to filter for main skills excluding a specific category
+  const filterMainSkillsExcludingCategory = (
+    skillSlugs: SkillSlugEnum[],
+    skillsHashmap: { [key: string]: SkillInterface },
+    excludedCategory: SkillCategoriesEnum
+  ): SkillSlugEnum[] => {
+    return skillSlugs.filter((slug) => {
+      const skill = skillsHashmap[slug];
+      return skill.isMainSkill && skill.category !== excludedCategory;
+    });
+  };
+
+  const languageSkillsSlug: SkillSlugEnum[] = filterMainSkillsExcludingCategory(
     language.relatedSkills || [],
     skillsHashmap,
     SkillCategoriesEnum.ProgrammingLanguages
   );
 
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
+  const handleOpenModal = () => setIsModalOpen(true);
 
   const shouldOpenModal: boolean | undefined =
     language?.relatedSkills && language.relatedSkills.length > 0;
