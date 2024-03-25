@@ -1,5 +1,7 @@
 import { filterMaterialBySkill } from "@/actions/material/filterMaterials";
-import groupMaterialsByMaterialType from "@/actions/material/groupMaterialsByMaterialType";
+import groupMaterialsByMaterialType, {
+  MaterialType,
+} from "@/actions/material/groupMaterialsByMaterialType";
 import BlogsList from "@/components/MaterialLists/BlogsList";
 import CertificatesList from "@/components/MaterialLists/CertificatesList";
 import ProjectsList from "@/components/MaterialLists/ProjectsList";
@@ -27,7 +29,7 @@ import React from "react";
 import RelatedSkillsSection from "./components/RelatedSkillsSection";
 
 interface MaterialSectionInterface {
-  name: "Projects" | "Certificates" | "Blogs";
+  name: MaterialType;
   materials: string[];
   materialHashmap: { [key: string]: MaterialInterface };
   basePath: string;
@@ -71,21 +73,21 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
 
   const sections: MaterialSectionInterface[] = [
     {
-      name: "Projects",
+      name: MaterialType.Projects,
       materials: ProjectSlugArray,
       materialHashmap: projectDatabase,
       basePath: PROJECTS_PAGE.path,
       ListComponent: ProjectsList,
     },
     {
-      name: "Certificates",
+      name: MaterialType.Certificates,
       materials: CertificateSlugArray,
       materialHashmap: certificateDatabase,
       basePath: CERTIFICATES_PAGE.path,
       ListComponent: CertificatesList,
     },
     {
-      name: "Blogs",
+      name: MaterialType.Blogs,
       materials: MaterialSlugArray,
       materialHashmap: blogDatabase,
       basePath: BLOG_PAGE.path,
