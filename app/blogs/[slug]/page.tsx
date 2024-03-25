@@ -8,7 +8,7 @@ import HeadingTwo from "@/components/Text/HeadingTwo";
 import developerName from "@/constants/developerName";
 import { BLOG_PAGE } from "@/constants/pages";
 import blogDatabase from "@/database/blogs";
-import skillsHashmap from "@/database/skills/skills";
+import skillDatabase from "@/database/skills/skills";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import BlogInterface from "@/interfaces/material/BlogInterface";
@@ -76,17 +76,17 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
 
   const technologies: SkillSlugEnum[] = filterSkillsByType(
     blogMetadata.skills,
-    skillsHashmap,
+    skillDatabase,
     SkillTypesEnum.Hard
   );
   const generalSkills: SkillSlugEnum[] = filterSkillsByType(
     blogMetadata.skills,
-    skillsHashmap,
+    skillDatabase,
     SkillTypesEnum.General
   );
   const softSkills: SkillSlugEnum[] = filterSkillsByType(
     blogMetadata.skills,
-    skillsHashmap,
+    skillDatabase,
     SkillTypesEnum.Soft
   );
 
@@ -94,19 +94,19 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
   const allGroupedSkills = [
     filterAndGroupSkills(
       technologies,
-      skillsHashmap,
+      skillDatabase,
       SkillTypesEnum.Hard,
       "Technologies"
     ),
     filterAndGroupSkills(
       generalSkills,
-      skillsHashmap,
+      skillDatabase,
       SkillTypesEnum.General,
       "Technical Skills"
     ),
     filterAndGroupSkills(
       softSkills,
-      skillsHashmap,
+      skillDatabase,
       SkillTypesEnum.Soft,
       "Soft Skills"
     ),

@@ -1,7 +1,7 @@
 "use client";
 
 import isSkillAssociatedWithMaterial from "@/actions/material/isSkillAssociatedWithMaterial";
-import getAssociatedSkills from "@/actions/skills/getAssociatedSkills";
+import groupSkills, { GroupByOptions } from "@/actions/skills/groupSkills";
 import Tag from "@/components/Tags/Tag";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
@@ -24,8 +24,9 @@ import {
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
 import materialDatabase from "@/database/material";
-import skillsHashmap, { skillSlugArrayNew } from "@/database/skills/skills";
-import SkillSlugEnum, { skillSlugArray } from "@/enums/SkillSlugEnum";
+import skillDatabase from "@/database/skills/skills";
+import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
+import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
@@ -34,9 +35,6 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 import SkillTag from "../Tags/SkillTag";
-import groupSkills, { GroupByOptions } from "@/actions/skills/groupSkills";
-import { filterSkillSlugsExcludingCategory } from "@/actions/skills/filterSkillsByCategory";
-import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 
 interface LanguageTagWithModalProps {
   languageIdentifier: SkillSlugEnum;
@@ -56,7 +54,7 @@ interface LanguageTagWithModalProps {
 const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
   languageIdentifier,
 }) => {
-  const language: SkillInterface = skillsHashmap[languageIdentifier];
+  const language: SkillInterface = skillDatabase[languageIdentifier];
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [groupedBy, setGroupedBy] = useState("category");
 
@@ -74,7 +72,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
 
   const languageSkillsSlug: SkillSlugEnum[] = filterMainSkillsExcludingCategory(
     language.relatedSkills || [],
-    skillsHashmap,
+    skillDatabase,
     SkillCategoriesEnum.ProgrammingLanguages
   );
 
@@ -86,7 +84,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
   const groupedSkills: SkillsCategoryInterface[] = groupSkills(
     groupedBy as GroupByOptions,
     languageSkillsSlug,
-    skillsHashmap,
+    skillDatabase,
     [SkillTypesEnum.General, SkillTypesEnum.Soft]
   );
 

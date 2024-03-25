@@ -20,7 +20,7 @@ import SearchInput from "@/components/Inputs/SearchInput";
 import CertificatesList from "@/components/MaterialLists/CertificatesList";
 import { Button } from "@/components/shadcn/ui/button";
 import certificateDatabase from "@/database/certificates";
-import skillsHashmap from "@/database/skills/skills";
+import skillDatabase from "@/database/skills/skills";
 import CertificateSlugEnum from "@/enums/MaterialSlugEnums/CertificateSlugEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
@@ -152,7 +152,7 @@ const CertificatesView: React.FC = () => {
         filteredCertificateSlugArray,
         certificateDatabase,
         stringToSlug(selectedSkillCategory),
-        skillsHashmap
+        skillDatabase
       ) as CertificateSlugEnum[];
   }
 
@@ -226,7 +226,7 @@ const CertificatesView: React.FC = () => {
       selectedValue: selectedSkillCategory,
       options: generateFilterOptionsBySkillCategories<CertificateInterface>(
         certificateDatabase,
-        skillsHashmap
+        skillDatabase
       ),
     },
     {
@@ -235,7 +235,7 @@ const CertificatesView: React.FC = () => {
       selectedValue: selectedTechnicalSkill,
       options: generateFilterOptionsBySkillType<CertificateInterface>(
         certificateDatabase,
-        skillsHashmap,
+        skillDatabase,
         SkillTypesEnum.Hard
       ),
     },
@@ -245,7 +245,7 @@ const CertificatesView: React.FC = () => {
       selectedValue: selectedGeneralSkill,
       options: generateFilterOptionsBySkillType<CertificateInterface>(
         certificateDatabase,
-        skillsHashmap,
+        skillDatabase,
         SkillTypesEnum.General
       ),
     },
@@ -255,7 +255,7 @@ const CertificatesView: React.FC = () => {
       selectedValue: selectedSoftSkill,
       options: generateFilterOptionsBySkillType<CertificateInterface>(
         certificateDatabase,
-        skillsHashmap,
+        skillDatabase,
         SkillTypesEnum.Soft
       ),
     },

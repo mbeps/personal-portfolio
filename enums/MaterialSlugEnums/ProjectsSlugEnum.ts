@@ -44,6 +44,3 @@ enum ProjectSlugEnum {
 }
 
 export default ProjectSlugEnum;
-
-export const ProjectSlugArray: ProjectSlugEnum[] =
-  Object.values(ProjectSlugEnum);

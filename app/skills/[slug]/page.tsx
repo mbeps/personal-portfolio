@@ -10,13 +10,10 @@ import PageDescription from "@/components/UI/PageDescription";
 import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
 import { BLOG_PAGE, CERTIFICATES_PAGE, PROJECTS_PAGE } from "@/constants/pages";
-import blogDatabase from "@/database/blogs";
-import certificateDatabase from "@/database/certificates";
-import projectDatabase from "@/database/projects";
-import skillsHashmap, { skillSlugArrayNew } from "@/database/skills/skills";
-import { MaterialSlugArray } from "@/enums/MaterialSlugEnums/BlogSlugEnum";
-import { CertificateSlugArray } from "@/enums/MaterialSlugEnums/CertificateSlugEnum";
-import { ProjectSlugArray } from "@/enums/MaterialSlugEnums/ProjectsSlugEnum";
+import blogDatabase, { blogKeys } from "@/database/blogs";
+import certificateDatabase, { certificateKeys } from "@/database/certificates";
+import projectDatabase, { projectKeys } from "@/database/projects";
+import skillDatabase, { skillKeys } from "@/database/skills/skills";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
@@ -42,7 +39,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const slug: string = params.slug;
   const skill: SkillInterface | undefined =
-    skillsHashmap[slug as SkillSlugEnum];
+    skillDatabase[slug as SkillSlugEnum];
 
   if (!skill) {
     notFound();
@@ -55,7 +52,7 @@ export async function generateMetadata(
 }
 
 export const generateStaticParams = async () => {
-  return skillSlugArrayNew.map((slug) => ({ slug }));
+  return skillKeys.map((slug) => ({ slug }));
 };
 
 interface ProjectPageProps {
@@ -65,7 +62,7 @@ interface ProjectPageProps {
 
 const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
   const skillSlug: string = params.slug;
-  const skill: SkillInterface = skillsHashmap[skillSlug as SkillSlugEnum];
+  const skill: SkillInterface = skillDatabase[skillSlug as SkillSlugEnum];
 
   if (!skill) {
     notFound();
@@ -74,21 +71,21 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
   const sections: MaterialSectionInterface[] = [
     {
       name: MaterialType.Projects,
-      materials: ProjectSlugArray,
+      materials: projectKeys,
       materialHashmap: projectDatabase,
       basePath: PROJECTS_PAGE.path,
       ListComponent: ProjectsList,
     },
     {
       name: MaterialType.Certificates,
-      materials: CertificateSlugArray,
+      materials: certificateKeys,
       materialHashmap: certificateDatabase,
       basePath: CERTIFICATES_PAGE.path,
       ListComponent: CertificatesList,
     },
     {
       name: MaterialType.Blogs,
-      materials: MaterialSlugArray,
+      materials: blogKeys,
       materialHashmap: blogDatabase,
       basePath: BLOG_PAGE.path,
       ListComponent: BlogsList,

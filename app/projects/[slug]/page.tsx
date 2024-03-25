@@ -17,7 +17,7 @@ import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
 import { PROJECTS_PAGE } from "@/constants/pages";
 import projectDatabase from "@/database/projects";
-import skillsHashmap from "@/database/skills/skills";
+import skillDatabase from "@/database/skills/skills";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
@@ -103,30 +103,30 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
 
   const projectLanguages: SkillSlugEnum[] = filterSkillSlugsByCategory(
     project.skills,
-    skillsHashmap,
+    skillDatabase,
     SkillCategoriesEnum.ProgrammingLanguages
   );
 
   const projectSkillsWithoutLanguage: SkillSlugEnum[] =
     filterSkillSlugsExcludingCategory(
       project.skills,
-      skillsHashmap,
+      skillDatabase,
       SkillCategoriesEnum.ProgrammingLanguages
     );
 
   const technologies: SkillSlugEnum[] = filterSkillsByType(
     projectSkillsWithoutLanguage,
-    skillsHashmap,
+    skillDatabase,
     SkillTypesEnum.Hard
   );
   const generalSkills: SkillSlugEnum[] = filterSkillsByType(
     projectSkillsWithoutLanguage,
-    skillsHashmap,
+    skillDatabase,
     SkillTypesEnum.General
   );
   const softSkills: SkillSlugEnum[] = filterSkillsByType(
     projectSkillsWithoutLanguage,
-    skillsHashmap,
+    skillDatabase,
     SkillTypesEnum.Soft
   );
 
@@ -134,19 +134,19 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const allGroupedSkills: GroupedSkillsCategoriesInterface[] = [
     filterAndGroupSkills(
       technologies,
-      skillsHashmap,
+      skillDatabase,
       SkillTypesEnum.Hard,
       "Technologies"
     ),
     filterAndGroupSkills(
       generalSkills,
-      skillsHashmap,
+      skillDatabase,
       SkillTypesEnum.General,
       "Technical Skills"
     ),
     filterAndGroupSkills(
       softSkills,
-      skillsHashmap,
+      skillDatabase,
       SkillTypesEnum.Soft,
       "Soft Skills"
     ),

@@ -255,9 +255,3 @@ enum SkillSlugEnum {
 }
 
 export default SkillSlugEnum;
-
-//TODO: Remove This because it has been replaced
-/**
- * @deprecated
- */
-export const skillSlugArray: SkillSlugEnum[] = Object.values(SkillSlugEnum);

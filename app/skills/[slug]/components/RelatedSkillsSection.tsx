@@ -2,7 +2,7 @@ import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import skillsHashmap from "@/database/skills/skills";
+import skillDatabase from "@/database/skills/skills";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
@@ -16,7 +16,7 @@ interface RelatedSkillsSectionProps {
 const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
   skillKey,
 }) => {
-  const skill: SkillInterface = skillsHashmap[skillKey];
+  const skill: SkillInterface = skillDatabase[skillKey];
 
   const associatedSkills: SkillSlugEnum[] = skill.relatedSkills || [];
 
@@ -36,11 +36,11 @@ const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
     skillTypeGroups.map(({ type, title }) => {
       const filteredSkills: SkillSlugEnum[] = filterSkillsByType(
         associatedSkills,
-        skillsHashmap,
+        skillDatabase,
         type
       );
 
-      return filterAndGroupSkills(filteredSkills, skillsHashmap, type, title);
+      return filterAndGroupSkills(filteredSkills, skillDatabase, type, title);
     });
 
   return (

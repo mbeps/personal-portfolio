@@ -7,7 +7,7 @@ import {
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
 import materialDatabase from "@/database/material";
-import skillsHashmap from "@/database/skills/skills";
+import skillDatabase from "@/database/skills/skills";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -22,7 +22,7 @@ interface TagProps {
 
 const SkillTag: React.FC<TagProps> = ({ skillKey, hide }) => {
   const currentPath: string = usePathname();
-  const skill: SkillInterface = skillsHashmap[skillKey];
+  const skill: SkillInterface = skillDatabase[skillKey];
 
   const hasMaterial: ConstrainBoolean = isSkillAssociatedWithMaterial(
     skillKey,

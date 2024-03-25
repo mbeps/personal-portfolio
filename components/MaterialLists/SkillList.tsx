@@ -25,7 +25,7 @@ import {
   PopoverTrigger,
 } from "@/components/shadcn/ui/popover";
 import materialDatabase from "@/database/material";
-import skillsHashmap from "@/database/skills/skills";
+import skillDatabase from "@/database/skills/skills";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import FilterOption from "@/interfaces/filters/FilterOption";
@@ -84,7 +84,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
   const groupedSkills: SkillsCategoryInterface[] = groupSkills(
     selectedGroup as GroupByOptions,
     skills,
-    skillsHashmap,
+    skillDatabase,
     includeSkillTypes
   );
 
@@ -290,7 +290,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
                         !(
                           countMaterialsAttributedToSkill(
                             skillKey as SkillSlugEnum,
-                            skillsHashmap,
+                            skillDatabase,
                             materialDatabase
                           ) >= 5
                         ) && includeNoMaterial

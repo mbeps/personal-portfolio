@@ -3,7 +3,7 @@ import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 
-const skillsHashmap: Database<SkillInterface> = {
+const skillDatabase: Database<SkillInterface> = {
   //^ Languages
   [SkillSlugEnum.Python]: {
     name: "Python",
@@ -2406,8 +2406,8 @@ const skillsHashmap: Database<SkillInterface> = {
   },
 };
 
-export default skillsHashmap;
+export default skillDatabase;
 
-export const skillSlugArrayNew: SkillSlugEnum[] = Object.keys(
-  skillsHashmap
+export const skillKeys: SkillSlugEnum[] = Object.keys(
+  skillDatabase
 ) as SkillSlugEnum[];

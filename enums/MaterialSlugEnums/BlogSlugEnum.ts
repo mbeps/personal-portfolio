@@ -17,5 +17,3 @@ enum BlogSlugEnum {
 }
 
 export default BlogSlugEnum;
-
-export const MaterialSlugArray: BlogSlugEnum[] = Object.values(BlogSlugEnum);

@@ -6,7 +6,7 @@ import CertificateIssuersEnum from "@/enums/CertificateIssuersEnum";
 import CertificateSlugEnum from "@/enums/MaterialSlugEnums/CertificateSlugEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
-import skillsHashmap from "./skills/skills";
+import skillDatabase from "./skills/skills";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 
 const certificateMap: {
@@ -2386,11 +2386,15 @@ const certificateMap: {
   },
 };
 
+export const certificateKeys: CertificateSlugEnum[] = Object.keys(
+  certificateMap
+) as CertificateSlugEnum[];
+
 const certificateDatabase: {
   [key: string]: CertificateInterface;
 } = addNestedSkillsMaterialList<CertificateInterface>(
   certificateMap,
-  skillsHashmap,
+  skillDatabase,
   [SkillCategoriesEnum.ProgrammingLanguages],
   SkillTypesEnum.General,
   SkillTypesEnum.Hard

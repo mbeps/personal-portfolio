@@ -5,7 +5,7 @@ import ProjectCategoriesEnum from "@/enums/ProjectCategoriesEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
-import skillsHashmap from "./skills/skills";
+import skillDatabase from "./skills/skills";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 
 /**
@@ -1201,6 +1201,9 @@ const projectMap: {
   },
 };
 
+export const projectKeys: ProjectSlugEnum[] = Object.keys(
+  projectMap
+) as ProjectSlugEnum[];
 /**
  * Array of all projects.
  */
@@ -1208,7 +1211,7 @@ const projectDatabase: {
   [key: string]: ProjectInterface;
 } = addNestedSkillsMaterialList<ProjectInterface>(
   projectMap,
-  skillsHashmap,
+  skillDatabase,
   [SkillCategoriesEnum.ProgrammingLanguages],
   SkillTypesEnum.General,
   SkillTypesEnum.Hard

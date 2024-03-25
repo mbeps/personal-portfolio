@@ -19,7 +19,7 @@ import SearchInput from "@/components/Inputs/SearchInput";
 import ProjectsList from "@/components/MaterialLists/ProjectsList";
 import { Button } from "@/components/shadcn/ui/button";
 import projectDatabase from "@/database/projects";
-import skillsHashmap from "@/database/skills/skills";
+import skillDatabase from "@/database/skills/skills";
 import ProjectSlugEnum from "@/enums/MaterialSlugEnums/ProjectsSlugEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
@@ -128,7 +128,7 @@ const ProjectsView: React.FC = () => {
       filteredProjectsSlugArray,
       projectDatabase,
       stringToSlug(selectedSkillCategory),
-      skillsHashmap
+      skillDatabase
     ) as ProjectSlugEnum[];
   }
 
@@ -215,7 +215,7 @@ const ProjectsView: React.FC = () => {
       selectedValue: selectedLanguage,
       options: generateFilterOptionsForProgrammingLanguages<ProjectInterface>(
         projectDatabase,
-        skillsHashmap
+        skillDatabase
       ),
     },
     {
@@ -224,7 +224,7 @@ const ProjectsView: React.FC = () => {
       selectedValue: selectedTechnology,
       options: generateFilterOptionsBySkillType<ProjectInterface>(
         projectDatabase,
-        skillsHashmap,
+        skillDatabase,
         SkillTypesEnum.Hard
       ),
     },
@@ -234,7 +234,7 @@ const ProjectsView: React.FC = () => {
       selectedValue: selectedSkillCategory,
       options: generateFilterOptionsBySkillCategories<ProjectInterface>(
         projectDatabase,
-        skillsHashmap
+        skillDatabase
       ),
     },
     {
@@ -243,7 +243,7 @@ const ProjectsView: React.FC = () => {
       selectedValue: selectedGeneralSkill,
       options: generateFilterOptionsBySkillType<ProjectInterface>(
         projectDatabase,
-        skillsHashmap,
+        skillDatabase,
         SkillTypesEnum.General
       ),
     },
@@ -253,7 +253,7 @@ const ProjectsView: React.FC = () => {
       selectedValue: selectedSoftSkill,
       options: generateFilterOptionsBySkillType<ProjectInterface>(
         projectDatabase,
-        skillsHashmap,
+        skillDatabase,
         SkillTypesEnum.Soft
       ),
     },

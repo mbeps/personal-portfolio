@@ -18,7 +18,7 @@ import SearchInput from "@/components/Inputs/SearchInput";
 import BlogsList from "@/components/MaterialLists/BlogsList";
 import { Button } from "@/components/shadcn/ui/button";
 import blogDatabase from "@/database/blogs";
-import skillsHashmap from "@/database/skills/skills";
+import skillDatabase from "@/database/skills/skills";
 import BlogSlugEnum from "@/enums/MaterialSlugEnums/BlogSlugEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
@@ -132,7 +132,7 @@ export const BlogsView: React.FC = () => {
       filteredBlogsSlugArray,
       blogDatabase,
       stringToSlug(selectedSkillCategory),
-      skillsHashmap
+      skillDatabase
     ) as BlogSlugEnum[];
   }
 
@@ -197,7 +197,7 @@ export const BlogsView: React.FC = () => {
       selectedValue: selectedSkillCategory,
       options: generateFilterOptionsBySkillCategories<BlogInterface>(
         blogDatabase,
-        skillsHashmap
+        skillDatabase
       ),
     },
     {
@@ -206,7 +206,7 @@ export const BlogsView: React.FC = () => {
       selectedValue: selectedTechnicalSkill,
       options: generateFilterOptionsBySkillType<BlogInterface>(
         blogDatabase,
-        skillsHashmap,
+        skillDatabase,
         SkillTypesEnum.Hard
       ),
     },
@@ -216,7 +216,7 @@ export const BlogsView: React.FC = () => {
       selectedValue: selectedGeneralSkill,
       options: generateFilterOptionsBySkillType<BlogInterface>(
         blogDatabase,
-        skillsHashmap,
+        skillDatabase,
         SkillTypesEnum.General
       ),
     },
@@ -226,7 +226,7 @@ export const BlogsView: React.FC = () => {
       selectedValue: selectedSoftSkill,
       options: generateFilterOptionsBySkillType<BlogInterface>(
         blogDatabase,
-        skillsHashmap,
+        skillDatabase,
         SkillTypesEnum.Soft
       ),
     },
