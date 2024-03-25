@@ -5,6 +5,7 @@ import SlideUp from "@/components/UI/Slideup";
 import { Button } from "@/components/shadcn/ui/button";
 import { PROJECTS_PAGE } from "@/constants/pages";
 import projectDatabase from "@/database/projects";
+import ProjectSlugEnum from "@/enums/MaterialSlugEnums/ProjectsSlugEnum";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import Link from "next/link";
 
@@ -16,39 +17,29 @@ import Link from "next/link";
  * @returns (JSX.Element): Projects section
  */
 const ProjectsSection = () => {
-  const basePath = PROJECTS_PAGE.path;
+  const basePath: string = PROJECTS_PAGE.path;
 
   /**
    * Only projects matching these slugs will be shown.
    */
-  const allowedSlugs = [
-    "circus-discussions",
-    "ringmaster-messaging",
-    "magician-ai",
+  const displayedProjects: string[] = [
+    ProjectSlugEnum.CircusDiscussions,
+    ProjectSlugEnum.RingmasterMessaging,
+    ProjectSlugEnum.MagicianAI,
   ];
-
-  // Validate the slugs
-  if (
-    !validateSlugsWithContent<ProjectInterface>(allowedSlugs, projectDatabase)
-  ) {
-    console.error("Some slugs in allowedSlugs are not valid.");
-    return null;
-  }
 
   return (
     <section id="projects" className="home-section-wrapper">
       <HeadingTwo title="Projects" />
 
       <div className="flex flex-col space-y-20 mt-14">
-        {Object.entries(projectDatabase)
-          .filter(([key, _]) => allowedSlugs.includes(key))
-          .map(([key, project], idx) => (
-            <div key={key}>
-              <SlideUp offset="-150px 0px -150px 0px">
-                <ProjectItem project={project} path={key} />
-              </SlideUp>
-            </div>
-          ))}
+        {displayedProjects.map((slug, idx) => (
+          <div key={slug}>
+            <SlideUp offset="-150px 0px -150px 0px">
+              <ProjectItem projectKey={slug} />
+            </SlideUp>
+          </div>
+        ))}
       </div>
 
       <div className="flex justify-center mt-10">
