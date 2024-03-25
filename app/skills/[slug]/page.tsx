@@ -1,3 +1,4 @@
+import { filterMaterialBySkill } from "@/actions/material/filterMaterials";
 import groupMaterialsByMaterialType from "@/actions/material/groupMaterialsByMaterialType";
 import BlogsList from "@/components/MaterialLists/BlogsList";
 import CertificatesList from "@/components/MaterialLists/CertificatesList";
@@ -10,7 +11,12 @@ import { BLOG_PAGE, CERTIFICATES_PAGE, PROJECTS_PAGE } from "@/constants/pages";
 import blogDatabase from "@/database/blogs";
 import certificateDatabase from "@/database/certificates";
 import projectDatabase from "@/database/projects";
-import skillsHashmap from "@/database/skills/skills";
+import skillsHashmap, { skillSlugArrayNew } from "@/database/skills/skills";
+import { MaterialSlugArray } from "@/enums/MaterialSlugEnums/BlogSlugEnum";
+import { CertificateSlugArray } from "@/enums/MaterialSlugEnums/CertificateSlugEnum";
+import { ProjectSlugArray } from "@/enums/MaterialSlugEnums/ProjectsSlugEnum";
+import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 import MaterialListProps from "@/interfaces/props/MaterialListProps";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
@@ -19,12 +25,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 import RelatedSkillsSection from "./components/RelatedSkillsSection";
-import SkillSlugEnum, { skillSlugArray } from "@/enums/SkillSlugEnum";
-import { filterMaterialBySkill } from "@/actions/material/filterMaterials";
 
 interface MaterialSectionInterface {
   name: "Projects" | "Certificates" | "Blogs";
-  materials: { [key: string]: MaterialInterface };
+  materials: string[];
+  materialHashmap: { [key: string]: MaterialInterface };
   basePath: string;
   ListComponent: React.ComponentType<MaterialListProps>;
 }
@@ -48,7 +53,7 @@ export async function generateMetadata(
 }
 
 export const generateStaticParams = async () => {
-  return skillSlugArray.map((slug) => ({ slug }));
+  return skillSlugArrayNew.map((slug) => ({ slug }));
 };
 
 interface ProjectPageProps {
@@ -57,8 +62,8 @@ interface ProjectPageProps {
 }
 
 const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
-  const slug: string = params.slug;
-  const skill: SkillInterface = skillsHashmap[slug as SkillSlugEnum];
+  const skillSlug: string = params.slug;
+  const skill: SkillInterface = skillsHashmap[skillSlug as SkillSlugEnum];
 
   if (!skill) {
     notFound();
@@ -67,19 +72,22 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
   const sections: MaterialSectionInterface[] = [
     {
       name: "Projects",
-      materials: projectDatabase,
+      materials: ProjectSlugArray,
+      materialHashmap: projectDatabase,
       basePath: PROJECTS_PAGE.path,
       ListComponent: ProjectsList,
     },
     {
       name: "Certificates",
-      materials: certificateDatabase,
+      materials: CertificateSlugArray,
+      materialHashmap: certificateDatabase,
       basePath: CERTIFICATES_PAGE.path,
       ListComponent: CertificatesList,
     },
     {
       name: "Blogs",
-      materials: blogDatabase,
+      materials: MaterialSlugArray,
+      materialHashmap: blogDatabase,
       basePath: BLOG_PAGE.path,
       ListComponent: BlogsList,
     },
@@ -94,18 +102,21 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
           This can include projects, blogs, and certificates.
       `}
       />
+      {sections.map(
+        ({ name, materials, basePath, ListComponent, materialHashmap }) => (
+          <MaterialSection
+            key={name}
+            name={name}
+            materials={materials}
+            materialHashmap={materialHashmap}
+            skillSlug={skillSlug}
+            basePath={basePath}
+            ListComponent={ListComponent}
+          />
+        )
+      )}
 
-      {sections.map(({ name, materials, basePath, ListComponent }, index) => (
-        <MaterialSection
-          key={index}
-          name={name}
-          materials={materials}
-          skillSlug={slug}
-          basePath={basePath}
-          ListComponent={ListComponent}
-        />
-      ))}
-      <RelatedSkillsSection skill={slug as SkillSlugEnum} />
+      <RelatedSkillsSection skillKey={skillSlug as SkillSlugEnum} />
     </div>
   );
 };
@@ -119,23 +130,24 @@ interface MaterialSectionProps extends MaterialSectionInterface {
 const MaterialSection: React.FC<MaterialSectionProps> = ({
   name,
   materials,
+  materialHashmap,
   skillSlug,
   basePath,
   ListComponent,
 }) => {
-  const filteredMaterials = filterMaterialBySkill(
+  const filteredMaterials: string[] = filterMaterialBySkill(
     skillSlug as SkillSlugEnum,
-    materials
+    materials,
+    materialHashmap
   );
 
-  if (!filteredMaterials || Object.keys(filteredMaterials).length === 0) {
+  // No list to display
+  if (!filteredMaterials || filteredMaterials.length === 0) {
     return null;
   }
 
-  const groupedMaterials = groupMaterialsByMaterialType(
-    filteredMaterials,
-    name
-  );
+  const groupedMaterials: MaterialGroupInterface[] =
+    groupMaterialsByMaterialType(filteredMaterials, materialHashmap, name);
 
   return (
     <div className="flex flex-col space-y-10 align-top relative">

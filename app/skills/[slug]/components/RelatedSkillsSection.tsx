@@ -1,48 +1,47 @@
 import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
 import filterSkillsByType from "@/actions/skills/filterSkillsByType";
-import getAssociatedSkillsHashmap from "@/actions/skills/getAssociatedSkills";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import skillsHashmap from "@/database/skills/skills";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import React from "react";
 
 interface RelatedSkillsSectionProps {
-  skill: SkillSlugEnum;
+  skillKey: SkillSlugEnum;
 }
 
 const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
-  skill,
+  skillKey,
 }) => {
-  const allAssociatedSkillsMap: Database<SkillInterface> =
-    getAssociatedSkillsHashmap(skillsHashmap, skill);
+  const skill: SkillInterface = skillsHashmap[skillKey];
 
-  const associatedSkills: SkillSlugEnum[] | undefined =
-    skillsHashmap[skill].relatedSkills;
+  const associatedSkills: SkillSlugEnum[] = skill.relatedSkills || [];
 
   if (!associatedSkills || associatedSkills.length === 0) {
     return null;
   }
 
-  const allGroupedSkills = [
-    filterAndGroupSkills(
-      filterSkillsByType(allAssociatedSkillsMap, SkillTypesEnum.Hard),
-      SkillTypesEnum.Hard,
-      "Technologies"
-    ),
-    filterAndGroupSkills(
-      filterSkillsByType(allAssociatedSkillsMap, SkillTypesEnum.General),
-      SkillTypesEnum.General,
-      "Technical Skills"
-    ),
-    filterAndGroupSkills(
-      filterSkillsByType(allAssociatedSkillsMap, SkillTypesEnum.Soft),
-      SkillTypesEnum.Soft,
-      "Soft Skills"
-    ),
+  // Define the skill types and their corresponding group titles
+  const skillTypeGroups = [
+    { type: SkillTypesEnum.Hard, title: "Technologies" },
+    { type: SkillTypesEnum.General, title: "Technical Skills" },
+    { type: SkillTypesEnum.Soft, title: "Soft Skills" },
   ];
+
+  // Use map to iterate over each group, filter, and then group the skills accordingly
+  const allGroupedSkills: GroupedSkillsCategoriesInterface[] =
+    skillTypeGroups.map(({ type, title }) => {
+      const filteredSkills: SkillSlugEnum[] = filterSkillsByType(
+        associatedSkills,
+        skillsHashmap,
+        type
+      );
+
+      return filterAndGroupSkills(filteredSkills, skillsHashmap, type, title);
+    });
 
   return (
     <>

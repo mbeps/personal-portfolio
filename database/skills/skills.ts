@@ -161,6 +161,7 @@ const skillsHashmap: Database<SkillInterface> = {
       SkillSlugEnum.WebDevelopment,
       SkillSlugEnum.UserCentricDesign,
       SkillSlugEnum.ReactJS,
+      SkillSlugEnum.NextAuth,
     ],
   },
 
