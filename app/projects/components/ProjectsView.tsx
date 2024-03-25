@@ -19,7 +19,7 @@ import SearchInput from "@/components/Inputs/SearchInput";
 import ProjectsList from "@/components/MaterialLists/ProjectsList";
 import { Button } from "@/components/shadcn/ui/button";
 import projectDatabase from "@/database/projects";
-import skillDatabase from "@/database/skills/skills";
+import skillDatabase from "@/database/skills";
 import ProjectSlugEnum from "@/enums/MaterialSlugEnums/ProjectsSlugEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";

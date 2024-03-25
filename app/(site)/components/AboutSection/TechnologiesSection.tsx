@@ -9,7 +9,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
-import skillDatabase from "@/database/skills/skills";
+import skillDatabase from "@/database/skills";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";

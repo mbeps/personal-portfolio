@@ -7,7 +7,7 @@ import {
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
 import materialDatabase from "@/database/material";
-import skillDatabase from "@/database/skills/skills";
+import skillDatabase from "@/database/skills";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Link from "next/link";
 import { usePathname } from "next/navigation";

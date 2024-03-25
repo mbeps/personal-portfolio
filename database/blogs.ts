@@ -4,7 +4,7 @@ import BlogSlugEnum from "@/enums/MaterialSlugEnums/BlogSlugEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import BlogInterface from "@/interfaces/material/BlogInterface";
-import skillDatabase from "./skills/skills";
+import skillDatabase from "./skills";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 
 const blogsMap: { [key: string]: BlogInterface } = {

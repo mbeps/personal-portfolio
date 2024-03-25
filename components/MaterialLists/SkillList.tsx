@@ -25,7 +25,7 @@ import {
   PopoverTrigger,
 } from "@/components/shadcn/ui/popover";
 import materialDatabase from "@/database/material";
-import skillDatabase from "@/database/skills/skills";
+import skillDatabase from "@/database/skills";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import FilterOption from "@/interfaces/filters/FilterOption";

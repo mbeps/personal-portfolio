@@ -6,7 +6,7 @@ import CertificateIssuersEnum from "@/enums/CertificateIssuersEnum";
 import CertificateSlugEnum from "@/enums/MaterialSlugEnums/CertificateSlugEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
-import skillDatabase from "./skills/skills";
+import skillDatabase from "./skills";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 
 const certificateMap: {

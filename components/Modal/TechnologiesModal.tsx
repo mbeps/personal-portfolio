@@ -13,7 +13,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/shadcn/ui/dropdown-menu";
-import skillDatabase, { skillKeys } from "@/database/skills/skills";
+import skillDatabase, { skillKeys } from "@/database/skills";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import useIsMounted from "@/hooks/useIsMounted";

@@ -13,7 +13,7 @@ import { BLOG_PAGE, CERTIFICATES_PAGE, PROJECTS_PAGE } from "@/constants/pages";
 import blogDatabase, { blogKeys } from "@/database/blogs";
 import certificateDatabase, { certificateKeys } from "@/database/certificates";
 import projectDatabase, { projectKeys } from "@/database/projects";
-import skillDatabase, { skillKeys } from "@/database/skills/skills";
+import skillDatabase, { skillKeys } from "@/database/skills";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";

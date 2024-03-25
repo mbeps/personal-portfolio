@@ -5,7 +5,7 @@ import ProjectCategoriesEnum from "@/enums/ProjectCategoriesEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
-import skillDatabase from "./skills/skills";
+import skillDatabase from "./skills";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 
 /**
@@ -87,7 +87,6 @@ const projectMap: {
       SkillSlugEnum.Docker,
       SkillSlugEnum.GitHubActions,
       SkillSlugEnum.GitHub,
-      SkillSlugEnum.GCP,
       SkillSlugEnum.Git,
       SkillSlugEnum.HTML,
       SkillSlugEnum.CSS,

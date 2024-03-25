@@ -18,7 +18,7 @@ import SearchInput from "@/components/Inputs/SearchInput";
 import BlogsList from "@/components/MaterialLists/BlogsList";
 import { Button } from "@/components/shadcn/ui/button";
 import blogDatabase from "@/database/blogs";
-import skillDatabase from "@/database/skills/skills";
+import skillDatabase from "@/database/skills";
 import BlogSlugEnum from "@/enums/MaterialSlugEnums/BlogSlugEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
