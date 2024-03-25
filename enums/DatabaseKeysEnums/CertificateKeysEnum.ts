@@ -1,4 +1,4 @@
-enum CertificateSlugEnum {
+enum CertificateKeysEnum {
   UdemyPythonProgrammingMasterclass = "UC-a3c47af2-7eb8-4f5b-8309-08559c519d5a",
   LinkedInLearningPythonAdvanced = "c235083fcf3a5aadda62a3aac5f1846098135e9058d9c5c72073ef88891b0395",
   LinkedInPythonObjectOrientedProgramming = "3df6c589b5151377ce45f231cfacf8ca04a02875fa88996a8831c1c9b70c527a",
@@ -80,4 +80,4 @@ enum CertificateSlugEnum {
   SymphonyCertifiedBotDeveloperPython = "d87290c2-7db7-45c2-89e2-ebd2c41e8b85",
 }
 
-export default CertificateSlugEnum;
+export default CertificateKeysEnum;

@@ -28,7 +28,7 @@ import {
 } from "@/components/shadcn/ui/popover";
 import materialDatabase from "@/database/material";
 import skillDatabase from "@/database/skills";
-import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
@@ -40,7 +40,7 @@ import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 
 interface SkillListProps {
-  skills: SkillSlugEnum[];
+  skills: SkillKeysEnum[];
 }
 
 const SkillList: React.FC<SkillListProps> = ({ skills }) => {
@@ -291,7 +291,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
                       hide={
                         !(
                           countMaterialsAttributedToSkill(
-                            skillKey as SkillSlugEnum,
+                            skillKey as SkillKeysEnum,
                             skillDatabase,
                             materialDatabase
                           ) >= 5

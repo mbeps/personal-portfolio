@@ -1,4 +1,4 @@
-enum BlogSlugEnum {
+enum BlogKeysEnum {
   Backend = "backend",
   CICD = "cicd-foundations",
   DevOps = "devops-foundations",
@@ -16,4 +16,4 @@ enum BlogSlugEnum {
   SyncAsync = "sync-vs-async",
 }
 
-export default BlogSlugEnum;
+export default BlogKeysEnum;

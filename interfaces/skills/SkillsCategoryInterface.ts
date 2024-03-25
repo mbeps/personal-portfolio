@@ -1,6 +1,6 @@
-import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 
 export default interface SkillsCategoryInterface {
   skillCategoryName: string;
-  skills: SkillSlugEnum[];
+  skills: SkillKeysEnum[];
 }

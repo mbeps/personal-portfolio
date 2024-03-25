@@ -3,7 +3,7 @@ import HeadingTwo from "@/components/Text/HeadingTwo";
 import SlideUp from "@/components/UI/Slideup";
 import { Button } from "@/components/shadcn/ui/button";
 import { PROJECTS_PAGE } from "@/constants/pages";
-import ProjectSlugEnum from "@/enums/MaterialSlugEnums/ProjectsSlugEnum";
+import ProjectKeysEnum from "@/enums/DatabaseKeysEnums/ProjectKeysEnum";
 import Link from "next/link";
 
 /**
@@ -20,9 +20,9 @@ const ProjectsSection = () => {
    * Only projects matching these slugs will be shown.
    */
   const displayedProjects: string[] = [
-    ProjectSlugEnum.CircusDiscussions,
-    ProjectSlugEnum.RingmasterMessaging,
-    ProjectSlugEnum.MagicianAI,
+    ProjectKeysEnum.CircusDiscussions,
+    ProjectKeysEnum.RingmasterMessaging,
+    ProjectKeysEnum.MagicianAI,
   ];
 
   return (

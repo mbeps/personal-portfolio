@@ -1,4 +1,4 @@
-enum ProjectSlugEnum {
+enum ProjectKeysEnum {
   CircusDiscussions = "circus-discussions",
   RingmasterMessaging = "ringmaster-messaging",
   MagicianAI = "magician-ai",
@@ -43,4 +43,4 @@ enum ProjectSlugEnum {
   DatabasesMiniProject = "databases-mini-project",
 }
 
-export default ProjectSlugEnum;
+export default ProjectKeysEnum;

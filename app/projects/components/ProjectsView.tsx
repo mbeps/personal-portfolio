@@ -14,8 +14,8 @@ import ProjectsList from "@/components/MaterialLists/ProjectsList";
 import { Button } from "@/components/shadcn/ui/button";
 import projectDatabase from "@/database/projects";
 import skillDatabase from "@/database/skills";
-import ProjectSlugEnum from "@/enums/MaterialSlugEnums/ProjectsSlugEnum";
-import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import ProjectKeysEnum from "@/enums/DatabaseKeysEnums/ProjectKeysEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import useFuseSearch from "@/hooks/useFuseSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
@@ -85,11 +85,11 @@ const ProjectsView: React.FC = () => {
     "skills.relatedSkills.category",
   ];
 
-  let filteredProjectsSlugArray: ProjectSlugEnum[] = useFuseSearch(
+  let filteredProjectsSlugArray: ProjectKeysEnum[] = useFuseSearch(
     projectDatabase,
     searchTerm,
     searchOptions
-  ) as ProjectSlugEnum[];
+  ) as ProjectKeysEnum[];
 
   //^ Filtering Logic
 
@@ -99,25 +99,25 @@ const ProjectsView: React.FC = () => {
       stringToSlug(selectedSection),
       filteredProjectsSlugArray,
       projectDatabase
-    ) as ProjectSlugEnum[];
+    ) as ProjectKeysEnum[];
   }
 
   // Filter by programming language
   if (selectedLanguage !== "all") {
     filteredProjectsSlugArray = filterMaterialBySkill(
-      selectedLanguage as SkillSlugEnum,
+      selectedLanguage as SkillKeysEnum,
       filteredProjectsSlugArray,
       projectDatabase
-    ) as ProjectSlugEnum[];
+    ) as ProjectKeysEnum[];
   }
 
   // Filter by technology (assuming you have a similar function for technologies)
   if (selectedTechnology !== "all") {
     filteredProjectsSlugArray = filterMaterialBySkill<ProjectInterface>(
-      selectedTechnology as SkillSlugEnum,
+      selectedTechnology as SkillKeysEnum,
       filteredProjectsSlugArray,
       projectDatabase
-    ) as ProjectSlugEnum[];
+    ) as ProjectKeysEnum[];
   }
 
   // Filter by skill category
@@ -127,25 +127,25 @@ const ProjectsView: React.FC = () => {
       projectDatabase,
       stringToSlug(selectedSkillCategory),
       skillDatabase
-    ) as ProjectSlugEnum[];
+    ) as ProjectKeysEnum[];
   }
 
   // Filter by general skill
   if (selectedGeneralSkill !== "all") {
     filteredProjectsSlugArray = filterMaterialBySkill<ProjectInterface>(
-      selectedGeneralSkill as SkillSlugEnum,
+      selectedGeneralSkill as SkillKeysEnum,
       filteredProjectsSlugArray,
       projectDatabase
-    ) as ProjectSlugEnum[];
+    ) as ProjectKeysEnum[];
   }
 
   // Filter by soft skill
   if (selectedSoftSkill !== "all") {
     filteredProjectsSlugArray = filterMaterialBySkill<ProjectInterface>(
-      selectedSoftSkill as SkillSlugEnum,
+      selectedSoftSkill as SkillKeysEnum,
       filteredProjectsSlugArray,
       projectDatabase
-    ) as ProjectSlugEnum[];
+    ) as ProjectKeysEnum[];
   }
 
   // Filter by archived status
@@ -153,7 +153,7 @@ const ProjectsView: React.FC = () => {
     showArchived,
     filteredProjectsSlugArray,
     projectDatabase
-  ) as ProjectSlugEnum[];
+  ) as ProjectKeysEnum[];
 
   /**
    * Projects categorized by type.

@@ -28,7 +28,7 @@ import {
 import materialDatabase from "@/database/material";
 import skillDatabase from "@/database/skills";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
-import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
@@ -39,7 +39,7 @@ import { BsChevronDown } from "react-icons/bs";
 import SkillTag from "../Tags/SkillTag";
 
 interface LanguageTagWithModalProps {
-  languageIdentifier: SkillSlugEnum;
+  languageIdentifier: SkillKeysEnum;
 }
 
 /**
@@ -62,17 +62,17 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
 
   // Utility function to filter for main skills excluding a specific category
   const filterMainSkillsExcludingCategory = (
-    skillSlugs: SkillSlugEnum[],
+    skillSlugs: SkillKeysEnum[],
     skillsHashmap: Database<SkillInterface>,
     excludedCategory: SkillCategoriesEnum
-  ): SkillSlugEnum[] => {
+  ): SkillKeysEnum[] => {
     return skillSlugs.filter((slug) => {
       const skill = skillsHashmap[slug];
       return skill.isMainSkill && skill.category !== excludedCategory;
     });
   };
 
-  const languageSkillsSlug: SkillSlugEnum[] = filterMainSkillsExcludingCategory(
+  const languageSkillsSlug: SkillKeysEnum[] = filterMainSkillsExcludingCategory(
     language.relatedSkills || [],
     skillDatabase,
     SkillCategoriesEnum.ProgrammingLanguages

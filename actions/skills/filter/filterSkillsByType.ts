@@ -1,14 +1,14 @@
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
-import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 
 export default function filterSkillsByType(
-  skillSlugs: SkillSlugEnum[],
+  skillSlugs: SkillKeysEnum[],
   allSkills: Database<SkillInterface>,
   skillType: SkillTypesEnum
-): SkillSlugEnum[] {
+): SkillKeysEnum[] {
   // Initialize an empty array for the filtered skill slugs
-  const filteredSkillSlugs: SkillSlugEnum[] = [];
+  const filteredSkillSlugs: SkillKeysEnum[] = [];
 
   // Iterate over the skill slugs array
   skillSlugs.forEach((skillSlug) => {

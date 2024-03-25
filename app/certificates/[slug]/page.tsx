@@ -9,7 +9,7 @@ import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
 import certificateDatabase from "@/database/certificates";
 import skillDatabase from "@/database/skills";
-import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
 import { Metadata, ResolvingMetadata } from "next";
@@ -77,17 +77,17 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
     notFound();
   }
 
-  const technologies: SkillSlugEnum[] = filterSkillsByType(
+  const technologies: SkillKeysEnum[] = filterSkillsByType(
     certificate.skills,
     skillDatabase,
     SkillTypesEnum.Hard
   );
-  const generalSkills: SkillSlugEnum[] = filterSkillsByType(
+  const generalSkills: SkillKeysEnum[] = filterSkillsByType(
     certificate.skills,
     skillDatabase,
     SkillTypesEnum.General
   );
-  const softSkills: SkillSlugEnum[] = filterSkillsByType(
+  const softSkills: SkillKeysEnum[] = filterSkillsByType(
     certificate.skills,
     skillDatabase,
     SkillTypesEnum.Soft

@@ -5,7 +5,7 @@ import SkillTag from "../Tags/SkillTag";
 import HeadingFour from "../Text/HeadingFour";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
-import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 
 interface CategorySkillDisplayProps {
   skillCategories: SkillsCategoryInterface[];

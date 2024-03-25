@@ -1,9 +1,9 @@
-import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 export default function getSkillsHashmapFromSlugArray(
   skills: Database<SkillInterface>,
-  skillIDs: SkillSlugEnum[]
+  skillIDs: SkillKeysEnum[]
 ): Database<SkillInterface> {
   const filteredSkills: Database<SkillInterface> = {};
 

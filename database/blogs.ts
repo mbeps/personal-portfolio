@@ -1,202 +1,202 @@
 import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
 import BlogCategoriesEnum from "@/enums/BlogCategoriesEnum";
-import BlogSlugEnum from "@/enums/MaterialSlugEnums/BlogSlugEnum";
-import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import BlogKeysEnum from "@/enums/DatabaseKeysEnums/BlogKeysEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import BlogInterface from "@/interfaces/material/BlogInterface";
 import skillDatabase from "./skills";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 
 const blogsMap: Database<BlogInterface> = {
-  [BlogSlugEnum.Backend]: {
+  [BlogKeysEnum.Backend]: {
     name: "Exploring Backends: Custom vs Managed Solutions",
     subtitle:
       "An In-depth Analysis of Backend Development Approaches, Tools, and Security Considerations",
     skills: [
-      SkillSlugEnum.WebDevelopment,
-      SkillSlugEnum.CloudComputing,
-      SkillSlugEnum.Firebase,
-      SkillSlugEnum.Supabase,
-      SkillSlugEnum.PocketBase,
+      SkillKeysEnum.WebDevelopment,
+      SkillKeysEnum.CloudComputing,
+      SkillKeysEnum.Firebase,
+      SkillKeysEnum.Supabase,
+      SkillKeysEnum.PocketBase,
     ],
     category: BlogCategoriesEnum.WebDevelopment,
   },
-  [BlogSlugEnum.CICD]: {
+  [BlogKeysEnum.CICD]: {
     name: "Embracing the Future of Software Development: A Comprehensive Guide to CI/CD",
     subtitle:
       "Mastering Continuous Integration and Continuous Delivery for Enhanced Software Delivery",
     category: BlogCategoriesEnum.DevOps,
     skills: [
-      SkillSlugEnum.DevOps,
-      SkillSlugEnum.ContinuousIntegration,
-      SkillSlugEnum.ContinuousDelivery,
-      SkillSlugEnum.ContinuousDeployment,
-      SkillSlugEnum.Docker,
-      SkillSlugEnum.Kubernetes,
-      SkillSlugEnum.Containerisation,
-      SkillSlugEnum.ProjectManagement,
-      SkillSlugEnum.CloudComputing,
-      SkillSlugEnum.InfrastructureAsCode,
-      SkillSlugEnum.ProblemSolving,
-      SkillSlugEnum.ProjectManagement,
-      SkillSlugEnum.CriticalThinking,
+      SkillKeysEnum.DevOps,
+      SkillKeysEnum.ContinuousIntegration,
+      SkillKeysEnum.ContinuousDelivery,
+      SkillKeysEnum.ContinuousDeployment,
+      SkillKeysEnum.Docker,
+      SkillKeysEnum.Kubernetes,
+      SkillKeysEnum.Containerisation,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CloudComputing,
+      SkillKeysEnum.InfrastructureAsCode,
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
     ],
   },
-  [BlogSlugEnum.DevOps]: {
+  [BlogKeysEnum.DevOps]: {
     name: "Embracing DevOps: A Guide to Principles, Practices, and Success Stories",
     subtitle:
       "Understanding the Impact of DevOps in Modern Software Development",
     category: BlogCategoriesEnum.DevOps,
     skills: [
-      SkillSlugEnum.DevOps,
-      SkillSlugEnum.IntegrationManagement,
-      SkillSlugEnum.ContinuousDelivery,
-      SkillSlugEnum.ContinuousDeployment,
-      SkillSlugEnum.Containerisation,
-      SkillSlugEnum.ProjectManagement,
-      SkillSlugEnum.CloudComputing,
-      SkillSlugEnum.InfrastructureAsCode,
-      SkillSlugEnum.Automation,
-      SkillSlugEnum.Git,
-      SkillSlugEnum.ProblemSolving,
-      SkillSlugEnum.ProjectManagement,
-      SkillSlugEnum.CriticalThinking,
+      SkillKeysEnum.DevOps,
+      SkillKeysEnum.IntegrationManagement,
+      SkillKeysEnum.ContinuousDelivery,
+      SkillKeysEnum.ContinuousDeployment,
+      SkillKeysEnum.Containerisation,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CloudComputing,
+      SkillKeysEnum.InfrastructureAsCode,
+      SkillKeysEnum.Automation,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
     ],
   },
-  [BlogSlugEnum.Docker]: {
+  [BlogKeysEnum.Docker]: {
     name: "Docker: Unleashing the Power of Containers",
     subtitle:
       "A Comprehensive Guide to Understanding Docker and Containerization Technology",
     category: BlogCategoriesEnum.DevOps,
     skills: [
-      SkillSlugEnum.DevOps,
-      SkillSlugEnum.Docker,
-      SkillSlugEnum.Containerisation,
-      SkillSlugEnum.ProblemSolving,
+      SkillKeysEnum.DevOps,
+      SkillKeysEnum.Docker,
+      SkillKeysEnum.Containerisation,
+      SkillKeysEnum.ProblemSolving,
     ],
   },
-  [BlogSlugEnum.Frontend]: {
+  [BlogKeysEnum.Frontend]: {
     name: "Front-End Development and the Essential Role of Libraries and Frameworks",
     subtitle:
       "A comprehensive introduction to standard front-end web development using libraries and frameworks",
     category: BlogCategoriesEnum.WebDevelopment,
     skills: [
-      SkillSlugEnum.WebDevelopment,
-      SkillSlugEnum.HTML,
-      SkillSlugEnum.CSS,
-      SkillSlugEnum.JavaScript,
-      SkillSlugEnum.ReactJS,
-      SkillSlugEnum.NextJS,
-      SkillSlugEnum.AngularJS,
-      SkillSlugEnum.SvelteJS,
-      SkillSlugEnum.VueJS,
+      SkillKeysEnum.WebDevelopment,
+      SkillKeysEnum.HTML,
+      SkillKeysEnum.CSS,
+      SkillKeysEnum.JavaScript,
+      SkillKeysEnum.ReactJS,
+      SkillKeysEnum.NextJS,
+      SkillKeysEnum.AngularJS,
+      SkillKeysEnum.SvelteJS,
+      SkillKeysEnum.VueJS,
     ],
   },
-  [BlogSlugEnum.JavaScriptVsTypeScript]: {
+  [BlogKeysEnum.JavaScriptVsTypeScript]: {
     name: "JavaScript vs TypeScript: A Detailed Comparison",
     subtitle:
       "Exploring the Advantages and Key Differences between JavaScript and TypeScript",
     category: BlogCategoriesEnum.SoftwareEngineering,
-    skills: [SkillSlugEnum.JavaScript, SkillSlugEnum.TypeScript],
+    skills: [SkillKeysEnum.JavaScript, SkillKeysEnum.TypeScript],
   },
-  [BlogSlugEnum.Kubernetes]: {
+  [BlogKeysEnum.Kubernetes]: {
     name: "Kubernetes Guide: Mastering Container Orchestration",
     subtitle: "An Overview of Components, Tools, and Best Practices",
     category: BlogCategoriesEnum.DevOps,
     skills: [
-      SkillSlugEnum.DevOps,
-      SkillSlugEnum.Kubernetes,
-      SkillSlugEnum.Docker,
-      SkillSlugEnum.Containerisation,
+      SkillKeysEnum.DevOps,
+      SkillKeysEnum.Kubernetes,
+      SkillKeysEnum.Docker,
+      SkillKeysEnum.Containerisation,
     ],
   },
-  [BlogSlugEnum.MachineLearningFoundations]: {
+  [BlogKeysEnum.MachineLearningFoundations]: {
     name: "Exploring the Depths of Machine Learning",
     subtitle:
       "A Comprehensive Guide to Machine Learning: Concepts, Challenges, and Real-World Impact",
     category: BlogCategoriesEnum.ArtificialIntelligence,
     skills: [
-      SkillSlugEnum.MachineLearning,
-      SkillSlugEnum.Algorithms,
-      SkillSlugEnum.DataScience,
-      SkillSlugEnum.ArtificialIntelligence,
-      SkillSlugEnum.ProblemSolving,
-      SkillSlugEnum.CriticalThinking,
+      SkillKeysEnum.MachineLearning,
+      SkillKeysEnum.Algorithms,
+      SkillKeysEnum.DataScience,
+      SkillKeysEnum.ArtificialIntelligence,
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.CriticalThinking,
     ],
   },
-  [BlogSlugEnum.ORM]: {
+  [BlogKeysEnum.ORM]: {
     name: "Understanding Object-Relational Mapping (ORM)",
     subtitle:
       "A Comprehensive Overview of ORM, Its Advantages, Disadvantages, and Role in Modern Web Application Development",
     category: BlogCategoriesEnum.Databases,
     skills: [
-      SkillSlugEnum.DatabaseManagementSystems,
-      SkillSlugEnum.Databases,
-      SkillSlugEnum.RelationalDatabases,
-      SkillSlugEnum.NonRelationalDatabases,
-      SkillSlugEnum.ObjectRelationalMapping,
-      SkillSlugEnum.Prisma,
-      SkillSlugEnum.Drizzle,
-      SkillSlugEnum.Mongoose,
-      SkillSlugEnum.SQLAlchemy,
-      SkillSlugEnum.Hibernate,
-      SkillSlugEnum.Probability,
+      SkillKeysEnum.DatabaseManagementSystems,
+      SkillKeysEnum.Databases,
+      SkillKeysEnum.RelationalDatabases,
+      SkillKeysEnum.NonRelationalDatabases,
+      SkillKeysEnum.ObjectRelationalMapping,
+      SkillKeysEnum.Prisma,
+      SkillKeysEnum.Drizzle,
+      SkillKeysEnum.Mongoose,
+      SkillKeysEnum.SQLAlchemy,
+      SkillKeysEnum.Hibernate,
+      SkillKeysEnum.Probability,
     ],
   },
-  [BlogSlugEnum.RESTGraphQL]: {
+  [BlogKeysEnum.RESTGraphQL]: {
     name: "Comparing GraphQL and REST: A Detailed Overview",
     subtitle: "Choosing the Right API Design Approach",
     category: BlogCategoriesEnum.WebDevelopment,
     skills: [
-      SkillSlugEnum.WebDevelopment,
-      SkillSlugEnum.APIs,
-      SkillSlugEnum.REST,
-      SkillSlugEnum.GraphQL,
-      SkillSlugEnum.ProblemSolving,
+      SkillKeysEnum.WebDevelopment,
+      SkillKeysEnum.APIs,
+      SkillKeysEnum.REST,
+      SkillKeysEnum.GraphQL,
+      SkillKeysEnum.ProblemSolving,
     ],
   },
-  [BlogSlugEnum.SDKvsAPI]: {
+  [BlogKeysEnum.SDKvsAPI]: {
     name: "SDKs vs APIs: A Comparative Guide",
     subtitle: "Understanding Their Roles in Software Development",
     category: BlogCategoriesEnum.SoftwareEngineering,
-    skills: [SkillSlugEnum.APIs, SkillSlugEnum.SDKs],
+    skills: [SkillKeysEnum.APIs, SkillKeysEnum.SDKs],
   },
-  [BlogSlugEnum.SessionsVsTokens]: {
+  [BlogKeysEnum.SessionsVsTokens]: {
     name: "Comparing Session and Token: Navigating Authentication",
     subtitle: "A Detailed Comparison of Authentication Strategies",
     category: BlogCategoriesEnum.WebDevelopment,
-    skills: [SkillSlugEnum.WebDevelopment, SkillSlugEnum.UserAuthentication],
+    skills: [SkillKeysEnum.WebDevelopment, SkillKeysEnum.UserAuthentication],
   },
-  [BlogSlugEnum.SoftwareTesting]: {
+  [BlogKeysEnum.SoftwareTesting]: {
     name: "Comprehensive Guide to Software Testing",
     subtitle:
       "Exploring Functional and Non-Functional Testing Techniques, Tools, and Challenges",
     category: BlogCategoriesEnum.SoftwareEngineering,
-    skills: [SkillSlugEnum.Testing, SkillSlugEnum.ProblemSolving],
+    skills: [SkillKeysEnum.Testing, SkillKeysEnum.ProblemSolving],
   },
-  [BlogSlugEnum.SQLNOSQL]: {
+  [BlogKeysEnum.SQLNOSQL]: {
     name: "Exploring Databases: A Comparative Study of Relational and Non-Relational Models",
     subtitle:
       "An In-depth Analysis of Database Systems and their Role in Software Engineering and Web Development",
     category: BlogCategoriesEnum.Databases,
     skills: [
-      SkillSlugEnum.DatabaseManagementSystems,
-      SkillSlugEnum.Databases,
-      SkillSlugEnum.RelationalDatabases,
-      SkillSlugEnum.NonRelationalDatabases,
-      SkillSlugEnum.Normalisation,
+      SkillKeysEnum.DatabaseManagementSystems,
+      SkillKeysEnum.Databases,
+      SkillKeysEnum.RelationalDatabases,
+      SkillKeysEnum.NonRelationalDatabases,
+      SkillKeysEnum.Normalisation,
     ],
   },
-  [BlogSlugEnum.SyncAsync]: {
+  [BlogKeysEnum.SyncAsync]: {
     name: "Sync vs Async: Deep Dive into Programming Models",
     subtitle:
       "Understanding and Optimizing Synchronous and Asynchronous Programming",
     category: BlogCategoriesEnum.SoftwareEngineering,
-    skills: [SkillSlugEnum.WebDevelopment],
+    skills: [SkillKeysEnum.WebDevelopment],
   },
 };
 
-export const blogKeys: BlogSlugEnum[] = Object.keys(blogsMap) as BlogSlugEnum[];
+export const blogKeys: BlogKeysEnum[] = Object.keys(blogsMap) as BlogKeysEnum[];
 
 const blogDatabase: Database<BlogInterface> =
   addNestedSkillsMaterialList<BlogInterface>(

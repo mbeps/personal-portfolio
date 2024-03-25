@@ -31,7 +31,7 @@ import HeadingThree from "../Text/HeadingThree";
 import HeadingTwo from "../Text/HeadingTwo";
 import { Button } from "../shadcn/ui/button";
 import { ScrollArea } from "../shadcn/ui/scroll-area";
-import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 
 /**
  * Displays a modal for the skills.
@@ -86,7 +86,7 @@ const TechnologiesModal: React.FC = () => {
    * Only technologies (hard skills) are displayed.
    * Skills from programming languages are not displayed.
    */
-  const skillsToDisplay: SkillSlugEnum[] = filterCategoriesFromSkills(
+  const skillsToDisplay: SkillKeysEnum[] = filterCategoriesFromSkills(
     mainSkillsHashMap,
     ignoredCategories
   );

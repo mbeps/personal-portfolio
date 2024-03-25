@@ -1,8 +1,8 @@
-import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 
 export default function filterMaterialBySkill<T extends MaterialInterface>(
-  skillSlug: SkillSlugEnum,
+  skillSlug: SkillKeysEnum,
   materialKeys: string[],
   materialsMap: Database<T>
 ): string[] {

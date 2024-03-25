@@ -13,10 +13,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import Tag from "./Tag";
-import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 
 interface TagProps {
-  skillKey: SkillSlugEnum;
+  skillKey: SkillKeysEnum;
   hide?: boolean;
 }
 

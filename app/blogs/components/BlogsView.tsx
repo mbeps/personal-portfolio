@@ -17,8 +17,8 @@ import BlogsList from "@/components/MaterialLists/BlogsList";
 import { Button } from "@/components/shadcn/ui/button";
 import blogDatabase from "@/database/blogs";
 import skillDatabase from "@/database/skills";
-import BlogSlugEnum from "@/enums/MaterialSlugEnums/BlogSlugEnum";
-import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import BlogKeysEnum from "@/enums/DatabaseKeysEnums/BlogKeysEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import useFuseSearch from "@/hooks/useFuseSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
@@ -85,11 +85,11 @@ export const BlogsView: React.FC = () => {
   ];
 
   // Use the custom hook to perform the search
-  let filteredBlogsSlugArray: BlogSlugEnum[] = useFuseSearch(
+  let filteredBlogsSlugArray: BlogKeysEnum[] = useFuseSearch(
     blogDatabase,
     searchTerm,
     searchOptions
-  ) as BlogSlugEnum[];
+  ) as BlogKeysEnum[];
 
   //^ Filtering Logic
   /**
@@ -121,7 +121,7 @@ export const BlogsView: React.FC = () => {
       stringToSlug(selectedBlogSection),
       filteredBlogsSlugArray,
       blogDatabase
-    ) as BlogSlugEnum[];
+    ) as BlogKeysEnum[];
   }
 
   // Filter by skill category
@@ -131,34 +131,34 @@ export const BlogsView: React.FC = () => {
       blogDatabase,
       stringToSlug(selectedSkillCategory),
       skillDatabase
-    ) as BlogSlugEnum[];
+    ) as BlogKeysEnum[];
   }
 
   // Filter by hard skill
   if (selectedTechnicalSkill !== "all") {
     filteredBlogsSlugArray = filterMaterialBySkill<BlogInterface>(
-      selectedTechnicalSkill as SkillSlugEnum,
+      selectedTechnicalSkill as SkillKeysEnum,
       filteredBlogsSlugArray,
       blogDatabase
-    ) as BlogSlugEnum[];
+    ) as BlogKeysEnum[];
   }
 
   // Filter by general skill
   if (selectedGeneralSkill !== "all") {
     filteredBlogsSlugArray = filterMaterialBySkill<BlogInterface>(
-      selectedGeneralSkill as SkillSlugEnum,
+      selectedGeneralSkill as SkillKeysEnum,
       filteredBlogsSlugArray,
       blogDatabase
-    ) as BlogSlugEnum[];
+    ) as BlogKeysEnum[];
   }
 
   // Filter by soft skill
   if (selectedSoftSkill !== "all") {
     filteredBlogsSlugArray = filterMaterialBySkill<BlogInterface>(
-      selectedSoftSkill as SkillSlugEnum,
+      selectedSoftSkill as SkillKeysEnum,
       filteredBlogsSlugArray,
       blogDatabase
-    ) as BlogSlugEnum[];
+    ) as BlogKeysEnum[];
   }
 
   // Filter by archived status
@@ -166,7 +166,7 @@ export const BlogsView: React.FC = () => {
     showArchived,
     filteredBlogsSlugArray,
     blogDatabase
-  ) as BlogSlugEnum[];
+  ) as BlogKeysEnum[];
 
   const groupedBlogs: MaterialGroupInterface[] = groupMaterialsByCategory(
     filteredBlogsSlugArray,

@@ -3,14 +3,14 @@ import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import skillDatabase from "@/database/skills";
-import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import React from "react";
 
 interface RelatedSkillsSectionProps {
-  skillKey: SkillSlugEnum;
+  skillKey: SkillKeysEnum;
 }
 
 const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
@@ -18,7 +18,7 @@ const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
 }) => {
   const skill: SkillInterface = skillDatabase[skillKey];
 
-  const associatedSkills: SkillSlugEnum[] = skill.relatedSkills || [];
+  const associatedSkills: SkillKeysEnum[] = skill.relatedSkills || [];
 
   if (!associatedSkills || associatedSkills.length === 0) {
     return null;
@@ -34,7 +34,7 @@ const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
   // Use map to iterate over each group, filter, and then group the skills accordingly
   const allGroupedSkills: GroupedSkillsCategoriesInterface[] =
     skillTypeGroups.map(({ type, title }) => {
-      const filteredSkills: SkillSlugEnum[] = filterSkillsByType(
+      const filteredSkills: SkillKeysEnum[] = filterSkillsByType(
         associatedSkills,
         skillDatabase,
         type

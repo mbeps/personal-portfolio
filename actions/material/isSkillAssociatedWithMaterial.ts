@@ -1,8 +1,8 @@
-import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 
 export default function isSkillAssociatedWithMaterial(
-  skillToCheck: SkillSlugEnum,
+  skillToCheck: SkillKeysEnum,
   materialsMap: Database<MaterialInterface>
 ): boolean {
   // Loop through the materialsMap

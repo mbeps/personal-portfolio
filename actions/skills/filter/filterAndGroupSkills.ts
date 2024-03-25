@@ -2,10 +2,10 @@ import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsI
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
-import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 
 export default function filterAndGroupSkills(
-  skillSlugs: SkillSlugEnum[],
+  skillSlugs: SkillKeysEnum[],
   allSkills: Database<SkillInterface>, // Assuming this is passed into the function
   skillType: SkillTypesEnum,
   title: string

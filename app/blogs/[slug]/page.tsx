@@ -8,7 +8,7 @@ import developerName from "@/constants/developerName";
 import { BLOG_PAGE } from "@/constants/pages";
 import blogDatabase from "@/database/blogs";
 import skillDatabase from "@/database/skills";
-import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
@@ -71,17 +71,17 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
     notFound();
   }
 
-  const technologies: SkillSlugEnum[] = filterSkillsByType(
+  const technologies: SkillKeysEnum[] = filterSkillsByType(
     blogMetadata.skills,
     skillDatabase,
     SkillTypesEnum.Hard
   );
-  const generalSkills: SkillSlugEnum[] = filterSkillsByType(
+  const generalSkills: SkillKeysEnum[] = filterSkillsByType(
     blogMetadata.skills,
     skillDatabase,
     SkillTypesEnum.General
   );
-  const softSkills: SkillSlugEnum[] = filterSkillsByType(
+  const softSkills: SkillKeysEnum[] = filterSkillsByType(
     blogMetadata.skills,
     skillDatabase,
     SkillTypesEnum.Soft

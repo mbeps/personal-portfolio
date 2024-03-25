@@ -10,7 +10,7 @@ import blogDatabase, { blogKeys } from "@/database/blogs";
 import certificateDatabase, { certificateKeys } from "@/database/certificates";
 import projectDatabase, { projectKeys } from "@/database/projects";
 import skillDatabase, { skillKeys } from "@/database/skills";
-import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 import MaterialListProps from "@/interfaces/props/MaterialListProps";
@@ -39,7 +39,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const slug: string = params.slug;
   const skill: SkillInterface | undefined =
-    skillDatabase[slug as SkillSlugEnum];
+    skillDatabase[slug as SkillKeysEnum];
 
   if (!skill) {
     notFound();
@@ -62,7 +62,7 @@ interface ProjectPageProps {
 
 const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
   const skillSlug: string = params.slug;
-  const skill: SkillInterface = skillDatabase[skillSlug as SkillSlugEnum];
+  const skill: SkillInterface = skillDatabase[skillSlug as SkillKeysEnum];
 
   if (!skill) {
     notFound();
@@ -115,7 +115,7 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
         )
       )}
 
-      <RelatedSkillsSection skillKey={skillSlug as SkillSlugEnum} />
+      <RelatedSkillsSection skillKey={skillSlug as SkillKeysEnum} />
     </div>
   );
 };
@@ -135,7 +135,7 @@ const MaterialSection: React.FC<MaterialSectionProps> = ({
   ListComponent,
 }) => {
   const filteredMaterials: string[] = filterMaterialBySkill(
-    skillSlug as SkillSlugEnum,
+    skillSlug as SkillKeysEnum,
     materials,
     materialHashmap
   );

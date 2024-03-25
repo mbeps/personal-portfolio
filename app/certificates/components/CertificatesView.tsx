@@ -14,8 +14,8 @@ import CertificatesList from "@/components/MaterialLists/CertificatesList";
 import { Button } from "@/components/shadcn/ui/button";
 import certificateDatabase from "@/database/certificates";
 import skillDatabase from "@/database/skills";
-import CertificateSlugEnum from "@/enums/MaterialSlugEnums/CertificateSlugEnum";
-import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import CertificateKeysEnum from "@/enums/DatabaseKeysEnums/CertificateKeysEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import useFuseSearch from "@/hooks/useFuseSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
@@ -98,11 +98,11 @@ const CertificatesView: React.FC = () => {
     "skills.relatedSkills.category",
   ];
 
-  let filteredCertificateSlugArray: CertificateSlugEnum[] = useFuseSearch(
+  let filteredCertificateSlugArray: CertificateKeysEnum[] = useFuseSearch(
     certificateDatabase,
     searchTerm,
     searchOptions
-  ) as CertificateSlugEnum[];
+  ) as CertificateKeysEnum[];
 
   //^ Filtering Logic
   function updateSearchTerm(newSearchTerm: string): void {
@@ -130,7 +130,7 @@ const CertificatesView: React.FC = () => {
       selectedIssuer,
       filteredCertificateSlugArray,
       certificateDatabase
-    ) as CertificateSlugEnum[];
+    ) as CertificateKeysEnum[];
   }
 
   // Filter by certificate category
@@ -140,7 +140,7 @@ const CertificatesView: React.FC = () => {
         stringToSlug(selectedCategory),
         filteredCertificateSlugArray,
         certificateDatabase
-      ) as CertificateSlugEnum[];
+      ) as CertificateKeysEnum[];
   }
 
   // Filter by skill category
@@ -151,34 +151,34 @@ const CertificatesView: React.FC = () => {
         certificateDatabase,
         stringToSlug(selectedSkillCategory),
         skillDatabase
-      ) as CertificateSlugEnum[];
+      ) as CertificateKeysEnum[];
   }
 
   // Filter by hard skill
   if (selectedTechnicalSkill !== "all") {
     filteredCertificateSlugArray = filterMaterialBySkill<CertificateInterface>(
-      selectedTechnicalSkill as SkillSlugEnum,
+      selectedTechnicalSkill as SkillKeysEnum,
       filteredCertificateSlugArray,
       certificateDatabase
-    ) as CertificateSlugEnum[];
+    ) as CertificateKeysEnum[];
   }
 
   // Filter by general skill
   if (selectedGeneralSkill !== "all") {
     filteredCertificateSlugArray = filterMaterialBySkill<CertificateInterface>(
-      selectedGeneralSkill as SkillSlugEnum,
+      selectedGeneralSkill as SkillKeysEnum,
       filteredCertificateSlugArray,
       certificateDatabase
-    ) as CertificateSlugEnum[];
+    ) as CertificateKeysEnum[];
   }
 
   // Filter by soft skill
   if (selectedSoftSkill !== "all") {
     filteredCertificateSlugArray = filterMaterialBySkill<CertificateInterface>(
-      selectedSoftSkill as SkillSlugEnum,
+      selectedSoftSkill as SkillKeysEnum,
       filteredCertificateSlugArray,
       certificateDatabase
-    ) as CertificateSlugEnum[];
+    ) as CertificateKeysEnum[];
   }
 
   // Filter by archived status
@@ -187,7 +187,7 @@ const CertificatesView: React.FC = () => {
       showArchived,
       filteredCertificateSlugArray,
       certificateDatabase
-    ) as CertificateSlugEnum[];
+    ) as CertificateKeysEnum[];
 
   const groupedCertificates: MaterialGroupInterface[] =
     groupMaterialsByCategory(filteredCertificateSlugArray, certificateDatabase);

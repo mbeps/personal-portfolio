@@ -1,4 +1,4 @@
-import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
@@ -8,13 +8,13 @@ import groupByLanguage from "./groupByLanguage";
 import groupBySkillType from "./groupBySkillType";
 
 function recursiveFilter(
-  skillSlugs: SkillSlugEnum[],
+  skillSlugs: SkillKeysEnum[],
   allSkills: Database<SkillInterface>,
   excludedSkillTypes: SkillTypesEnum[] = [],
-  processedSkills: Set<SkillSlugEnum> = new Set<SkillSlugEnum>() // To keep track of processed skills
-): SkillSlugEnum[] {
+  processedSkills: Set<SkillKeysEnum> = new Set<SkillKeysEnum>() // To keep track of processed skills
+): SkillKeysEnum[] {
   // Filtered skills to return
-  let filteredSkills: SkillSlugEnum[] = [];
+  let filteredSkills: SkillKeysEnum[] = [];
 
   skillSlugs.forEach((slug) => {
     // If the skill has already been processed, skip it to avoid infinite recursion
@@ -55,13 +55,13 @@ export enum GroupByOptions {
 
 export default function groupSkills(
   groupedBy: GroupByOptions,
-  skillSlugs: SkillSlugEnum[],
+  skillSlugs: SkillKeysEnum[],
   allSkills: Database<SkillInterface>,
   excludedSkillTypes?: SkillTypesEnum[] // Use SkillTypesEnum[] or undefined
 ): SkillsCategoryInterface[] {
   let organizedSkills: SkillsCategoryInterface[] = [];
 
-  const skillsRelatedToKeys: { [key in SkillSlugEnum]?: SkillInterface } =
+  const skillsRelatedToKeys: { [key in SkillKeysEnum]?: SkillInterface } =
     filterSkillsBySlugs(skillSlugs, allSkills);
 
   // Adjust the recursiveFilter function to filter out skills based on excludedSkillTypes

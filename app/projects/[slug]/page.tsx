@@ -18,7 +18,7 @@ import { PROJECTS_PAGE } from "@/constants/pages";
 import projectDatabase from "@/database/projects";
 import skillDatabase from "@/database/skills";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
-import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import { Metadata, ResolvingMetadata } from "next";
@@ -99,30 +99,30 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const hasCoverImage = project.thumbnailImage !== undefined;
   const coverImagePath = `${basePath}/${slug}/cover.png`;
 
-  const projectLanguages: SkillSlugEnum[] = filterSkillSlugsByCategory(
+  const projectLanguages: SkillKeysEnum[] = filterSkillSlugsByCategory(
     project.skills,
     skillDatabase,
     SkillCategoriesEnum.ProgrammingLanguages
   );
 
-  const projectSkillsWithoutLanguage: SkillSlugEnum[] =
+  const projectSkillsWithoutLanguage: SkillKeysEnum[] =
     filterSkillSlugsExcludingCategory(
       project.skills,
       skillDatabase,
       SkillCategoriesEnum.ProgrammingLanguages
     );
 
-  const technologies: SkillSlugEnum[] = filterSkillsByType(
+  const technologies: SkillKeysEnum[] = filterSkillsByType(
     projectSkillsWithoutLanguage,
     skillDatabase,
     SkillTypesEnum.Hard
   );
-  const generalSkills: SkillSlugEnum[] = filterSkillsByType(
+  const generalSkills: SkillKeysEnum[] = filterSkillsByType(
     projectSkillsWithoutLanguage,
     skillDatabase,
     SkillTypesEnum.General
   );
-  const softSkills: SkillSlugEnum[] = filterSkillsByType(
+  const softSkills: SkillKeysEnum[] = filterSkillsByType(
     projectSkillsWithoutLanguage,
     skillDatabase,
     SkillTypesEnum.Soft

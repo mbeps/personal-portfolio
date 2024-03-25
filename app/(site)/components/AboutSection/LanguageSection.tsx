@@ -2,7 +2,7 @@
 
 import LanguageModal from "@/components/Modal/LanguageModal";
 import HeadingThree from "@/components/Text/HeadingThree";
-import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import useIsMounted from "@/hooks/useIsMounted";
 import React from "react";
 
@@ -18,11 +18,11 @@ const LanguageSection: React.FC = () => {
     return null;
   }
 
-  const mainLanguages: SkillSlugEnum[] = [
-    SkillSlugEnum.Python,
-    SkillSlugEnum.JavaScript,
-    SkillSlugEnum.TypeScript,
-    SkillSlugEnum.Java,
+  const mainLanguages: SkillKeysEnum[] = [
+    SkillKeysEnum.Python,
+    SkillKeysEnum.JavaScript,
+    SkillKeysEnum.TypeScript,
+    SkillKeysEnum.Java,
   ];
 
   return (

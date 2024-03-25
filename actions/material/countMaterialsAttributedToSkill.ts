@@ -1,15 +1,15 @@
-import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 export default function countMaterialsAttributedToSkill(
-  skillKeyToCheck: SkillSlugEnum,
+  skillKeyToCheck: SkillKeysEnum,
   allSkills: Database<SkillInterface>,
   allMaterialsMap: Database<MaterialInterface>
 ): number {
   // Adapt the logic to work with skill keys and check if a skill or its related skill is present in a material
   const isSkillOrRelatedSkillPresent = (
-    materialSkillKeys: SkillSlugEnum[]
+    materialSkillKeys: SkillKeysEnum[]
   ): boolean => {
     if (materialSkillKeys.includes(skillKeyToCheck)) {
       return true;

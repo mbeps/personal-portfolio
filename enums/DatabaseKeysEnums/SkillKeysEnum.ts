@@ -1,4 +1,4 @@
-enum SkillSlugEnum {
+enum SkillKeysEnum {
   //^ Languages
   Python = "python",
   JavaScript = "javascript",
@@ -254,4 +254,4 @@ enum SkillSlugEnum {
   HumanResourceManagement = "human-resource-management",
 }
 
-export default SkillSlugEnum;
+export default SkillKeysEnum;

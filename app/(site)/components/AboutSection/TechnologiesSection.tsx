@@ -11,7 +11,7 @@ import {
 } from "@/components/shadcn/ui/tooltip";
 import skillDatabase from "@/database/skills";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
-import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 /**
@@ -29,9 +29,9 @@ const TechnologiesSection: React.FC = () => {
     }
   });
 
-  const mainSkillSlugs: SkillSlugEnum[] = Object.keys(
+  const mainSkillSlugs: SkillKeysEnum[] = Object.keys(
     mainSkills
-  ) as SkillSlugEnum[];
+  ) as SkillKeysEnum[];
 
   /**
    * This is a list of categories that should be ignored.
@@ -53,7 +53,7 @@ const TechnologiesSection: React.FC = () => {
    * Only technologies (hard skills) are displayed.
    * Skills from programming languages are not displayed.
    */
-  const skillsToDisplay: SkillSlugEnum[] = filterCategoriesFromSkills(
+  const skillsToDisplay: SkillKeysEnum[] = filterCategoriesFromSkills(
     mainSkills,
     ignoredCategories
   );
@@ -65,9 +65,9 @@ const TechnologiesSection: React.FC = () => {
    * @returns (string[]): list of skill names
    */
   function firstNSkills(
-    skillKeys: SkillSlugEnum[],
+    skillKeys: SkillKeysEnum[],
     totalLimit: number
-  ): SkillSlugEnum[] {
+  ): SkillKeysEnum[] {
     return skillKeys.slice(0, totalLimit);
   }
 
@@ -78,11 +78,11 @@ const TechnologiesSection: React.FC = () => {
    * @returns (string[]): list of skill names
    */
   function firstNSkillsPerCategory(
-    skillKeys: SkillSlugEnum[],
+    skillKeys: SkillKeysEnum[],
     limitPerCategory: number
-  ): SkillSlugEnum[] {
-    const skillCategories: { [categoryName: string]: SkillSlugEnum[] } = {};
-    let limitedSkillSlugs: SkillSlugEnum[] = [];
+  ): SkillKeysEnum[] {
+    const skillCategories: { [categoryName: string]: SkillKeysEnum[] } = {};
+    let limitedSkillSlugs: SkillKeysEnum[] = [];
 
     // Organize skill slugs into categories
     skillKeys.forEach((skillSlug) => {
@@ -107,7 +107,7 @@ const TechnologiesSection: React.FC = () => {
     return limitedSkillSlugs;
   }
 
-  function handleDisplaySkills(): SkillSlugEnum[] {
+  function handleDisplaySkills(): SkillKeysEnum[] {
     return firstNSkills(firstNSkillsPerCategory(skillsToDisplay, 2), 16);
   }
 
@@ -115,7 +115,7 @@ const TechnologiesSection: React.FC = () => {
     <>
       <HeadingThree title="Technologies" />
       <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start -mt-2">
-        {handleDisplaySkills().map((skillSlug: SkillSlugEnum, idx: number) => (
+        {handleDisplaySkills().map((skillSlug: SkillKeysEnum, idx: number) => (
           <SkillTag key={idx} skillKey={skillSlug} />
         ))}
 

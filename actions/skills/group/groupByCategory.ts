@@ -1,13 +1,13 @@
-import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 
 export default function groupByCategory(
-  skillSlugs: SkillSlugEnum[],
+  skillSlugs: SkillKeysEnum[],
   allSkills: Database<SkillInterface>
 ): SkillsCategoryInterface[] {
   // Object to hold the grouping
-  const categories: Database<SkillSlugEnum[]> = {};
+  const categories: Database<SkillKeysEnum[]> = {};
 
   skillSlugs.forEach((slug) => {
     const skill = allSkills[slug];

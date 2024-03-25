@@ -1,7 +1,7 @@
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
-import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 
 export default function addNestedSkillsMaterialList<
@@ -18,7 +18,7 @@ export default function addNestedSkillsMaterialList<
     const material = materialsMap[materialKey];
 
     // Use a Set to store skills to ensure uniqueness
-    const skillsToAddSet: Set<SkillSlugEnum> = new Set(material.skills);
+    const skillsToAddSet: Set<SkillKeysEnum> = new Set(material.skills);
 
     // Iterate over each skill in the material's skills array
     material.skills.forEach((skillSlug) => {
