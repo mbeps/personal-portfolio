@@ -7,12 +7,12 @@ enum BlogSlugEnum {
   JavaScriptVsTypeScript = "javascript-vs-typescript",
   Kubernetes = "kubernetes",
   MachineLearningFoundations = "machine-learning-foundations",
-  ORM = "orms",
+  ORM = "orm",
   RESTGraphQL = "rest-graphql-api",
   SDKvsAPI = "sdk-vs-api",
   SessionsVsTokens = "sessions-vs-tokens",
   SoftwareTesting = "software-testing",
-  SQLNOSQL = "sql-vs-nosql",
+  SQLNOSQL = "sql-vs-nosql-databases",
   SyncAsync = "sync-vs-async",
 }
 

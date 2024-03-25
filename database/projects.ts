@@ -5,6 +5,7 @@ import ProjectCategoriesEnum from "@/enums/ProjectCategoriesEnum";
 import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
+import skillsHashmap from "./skills/skills";
 
 /**
  * Array of web development projects.
@@ -1206,6 +1207,7 @@ const projectDatabase: {
   [key: string]: ProjectInterface;
 } = addNestedSkillsMaterialList<ProjectInterface>(
   projectMap,
+  skillsHashmap,
   SkillTypesEnum.General,
   SkillTypesEnum.Hard
 );
