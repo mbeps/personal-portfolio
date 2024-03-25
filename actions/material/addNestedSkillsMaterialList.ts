@@ -1,42 +1,43 @@
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillSlugEnum from "@/enums/SkillSlugEnum";
+import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 
 export default function addNestedSkillsMaterialList<
   T extends MaterialInterface
 >(
   materialsMap: { [key: string]: T },
-  skillsHashmap: { [key: string]: SkillInterface }, // Add skillsHashmap parameter
-  skillTypeToAdd?: SkillTypesEnum, // Use SkillTypes enum or undefined for "all"
-  skillTypeToCheck?: SkillTypesEnum // Use SkillTypes enum or undefined for "all"
+  skillsHashmap: { [key: string]: SkillInterface },
+  ignoredCategories: SkillCategoriesEnum[],
+  skillTypeToAdd?: SkillTypesEnum,
+  skillTypeToCheck?: SkillTypesEnum
 ): { [key: string]: T } {
-  const updatedMaterialsMap: { [key: string]: T } = {};
+  // Iterate over each material
+  Object.keys(materialsMap).forEach((materialKey) => {
+    const material = materialsMap[materialKey];
 
-  Object.entries(materialsMap).forEach(([slug, material]) => {
-    // Clone the material to avoid mutating the original object
-    const newMaterial: T = {
-      ...material,
-      skills: [...material.skills],
-    };
+    // Use a Set to store skills to ensure uniqueness
+    const skillsToAddSet: Set<SkillSlugEnum> = new Set(material.skills);
 
-    // Iterate over each skill slug in the material
+    // Iterate over each skill in the material's skills array
     material.skills.forEach((skillSlug) => {
-      const skill = skillsHashmap[skillSlug]; // Retrieve the skill by its slug
-      if (skill) {
-        // Check if the skill matches the skillTypeToCheck
+      const skill = skillsHashmap[skillSlug];
+
+      // Check if the skill's category is not in the ignored categories
+      if (!ignoredCategories.includes(skill.category)) {
+        // Check if the current skill matches the type to check (or if type to check is undefined)
         if (!skillTypeToCheck || skill.skillType === skillTypeToCheck) {
-          // Add related skills if they match skillTypeToAdd
+          // Add related skills if they match the type to add (or if type to add is undefined)
           skill.relatedSkills?.forEach((relatedSkillSlug) => {
-            const relatedSkill = skillsHashmap[relatedSkillSlug]; // Retrieve the related skill by its slug
-            if (relatedSkill) {
+            const relatedSkill = skillsHashmap[relatedSkillSlug];
+            // Ensure the related skill is not in an ignored category
+            if (!ignoredCategories.includes(relatedSkill.category)) {
               if (
                 !skillTypeToAdd ||
                 relatedSkill.skillType === skillTypeToAdd
               ) {
-                // Avoid adding duplicate skill slugs
-                if (!newMaterial.skills.includes(relatedSkillSlug)) {
-                  newMaterial.skills.push(relatedSkillSlug);
-                }
+                skillsToAddSet.add(relatedSkillSlug);
               }
             }
           });
@@ -44,8 +45,9 @@ export default function addNestedSkillsMaterialList<
       }
     });
 
-    updatedMaterialsMap[slug] = newMaterial;
+    // Convert the Set back to an array and assign it to the material's skills
+    material.skills = Array.from(skillsToAddSet);
   });
 
-  return updatedMaterialsMap;
+  return materialsMap;
 }

@@ -5,6 +5,7 @@ import SkillSlugEnum from "@/enums/SkillSlugEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import BlogInterface from "@/interfaces/material/BlogInterface";
 import skillsHashmap from "./skills/skills";
+import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 
 const blogsMap: { [key: string]: BlogInterface } = {
   [BlogSlugEnum.Backend]: {
@@ -200,6 +201,7 @@ const blogDatabase: {
 } = addNestedSkillsMaterialList<BlogInterface>(
   blogsMap,
   skillsHashmap,
+  [SkillCategoriesEnum.ProgrammingLanguages],
   SkillTypesEnum.General,
   SkillTypesEnum.Hard
 );
