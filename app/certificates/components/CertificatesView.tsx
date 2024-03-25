@@ -2,7 +2,7 @@
 
 import generateUrl from "@/actions/generateUrl";
 import filterCertificatesByIssuer from "@/actions/material/certificates/filterCertificatesByIssuer";
-import generateIssuerFilterOptions from "@/actions/material/certificates/generateIssuerFilterOptions";
+import generateIssuerFilterOptions from "@/actions/material/filterOptions/generateIssuerFilterOptions";
 import {
   filterMaterialByArchivedStatus,
   filterMaterialByCategory,
