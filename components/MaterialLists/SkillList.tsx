@@ -2,7 +2,7 @@
 
 import generateUrl from "@/actions/generateUrl";
 import countMaterialsAttributedToSkill from "@/actions/material/countMaterialsAttributedToSkill";
-import groupSkills from "@/actions/skills/groupSkills";
+import groupSkills, { GroupByOptions } from "@/actions/skills/groupSkills";
 import SkillTag from "@/components/Tags/SkillTag";
 import HeadingThree from "@/components/Text/HeadingThree";
 import { Button } from "@/components/shadcn/ui/button";
@@ -82,7 +82,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
 
   // Group skills with the inclusion list
   const groupedSkills: SkillsCategoryInterface[] = groupSkills(
-    selectedGroup,
+    selectedGroup as GroupByOptions,
     skills,
     skillsHashmap,
     includeSkillTypes

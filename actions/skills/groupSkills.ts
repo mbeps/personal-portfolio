@@ -167,8 +167,14 @@ function recursiveFilter(
   return filteredSkills;
 }
 
+export enum GroupByOptions {
+  Language = "language",
+  Category = "category",
+  SkillType = "skill-type",
+}
+
 export default function groupSkills(
-  groupedBy: string, //TODO: Use enums for the groupedBy parameter
+  groupedBy: GroupByOptions,
   skillSlugs: SkillSlugEnum[],
   allSkills: { [key: string]: SkillInterface },
   excludedSkillTypes?: SkillTypesEnum[] // Use SkillTypesEnum[] or undefined

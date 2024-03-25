@@ -1,7 +1,7 @@
 "use client";
 
 import filterCategoriesFromSkills from "@/actions/skills/filterCategoriesFromSkills";
-import groupSkills from "@/actions/skills/groupSkills";
+import groupSkills, { GroupByOptions } from "@/actions/skills/groupSkills";
 import {
   Dialog,
   DialogContent,
@@ -93,7 +93,7 @@ const TechnologiesModal: React.FC = () => {
    * Skill groups which are then displayed.
    */
   const groupedSkills: SkillsCategoryInterface[] = groupSkills(
-    groupedBy,
+    groupedBy as GroupByOptions,
     skillsToDisplay,
     skillsHashmap,
     [SkillTypesEnum.General, SkillTypesEnum.Soft]

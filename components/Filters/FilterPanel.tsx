@@ -77,7 +77,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
     (category): FilterOption => ({
       entryName: category.urlParam, // Assuming urlParam is a suitable match for entryName
       slug: category.selectedValue, // Assuming selectedValue is a suitable match for slug
-    }),
+    })
   );
 
   filterProps.push({
@@ -158,7 +158,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
           {/* Buttons */}
           <div
             className="
-              pt-3 mt-8
+              pt-3 mt-5
               flex flex-row
               space-x-2
               border-t border-neutral-300 dark:border-neutral-700
@@ -263,7 +263,7 @@ const FilterPopover = ({
                       slug: true.toString(), // status converted to string for slug
                     },
                   ],
-                  basePath,
+                  basePath
                 )}
                 className="w-full"
               >

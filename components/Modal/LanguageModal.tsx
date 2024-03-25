@@ -34,7 +34,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 import SkillTag from "../Tags/SkillTag";
-import groupSkills from "@/actions/skills/groupSkills";
+import groupSkills, { GroupByOptions } from "@/actions/skills/groupSkills";
 import { filterSkillSlugsExcludingCategory } from "@/actions/skills/filterSkillsByCategory";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 
@@ -84,7 +84,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
     language?.relatedSkills && language.relatedSkills.length > 0;
 
   const groupedSkills: SkillsCategoryInterface[] = groupSkills(
-    groupedBy,
+    groupedBy as GroupByOptions,
     languageSkillsSlug,
     skillsHashmap,
     [SkillTypesEnum.General, SkillTypesEnum.Soft]
