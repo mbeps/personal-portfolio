@@ -4,10 +4,12 @@ import MaterialInterface from "@/interfaces/material/MaterialInterface";
 
 /**
  * Custom hook for performing a fuzzy search using Fuse.js on a hashmap of items.
+ *
  * @param itemsMap - A hashmap of items to search.
  * @param searchTerm - The term to search for.
  * @param searchOptions - Fuse.js search options.
- * @returns A hashmap of items that match the search term.
+ * @returns A list of keys of the items that match the search term.
+ * @see {@link https://fusejs.io/} for more information on Fuse.js.
  */
 function useFuseSearch<T extends MaterialInterface>(
   itemsMap: Database<T>,
