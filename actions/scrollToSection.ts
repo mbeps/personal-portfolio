@@ -3,14 +3,14 @@
  *
  * @param sectionName (string): the name of the section to scroll to
  */
-const scrollToSection = (sectionName: string) => {
-  const element = document.getElementById(sectionName as string);
+export default function scrollToSection(sectionName: string) {
+  const element: HTMLElement | null = document.getElementById(
+    sectionName as string
+  );
   if (element) {
     window.scrollTo({
       top: element.offsetTop,
       behavior: "smooth",
     });
   }
-};
-
-export default scrollToSection;
+}
