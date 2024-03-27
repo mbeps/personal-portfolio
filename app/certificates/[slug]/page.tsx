@@ -1,4 +1,4 @@
-import filterAndGroupSkills from "@/actions/skills/filter/filterAndGroupSkills";
+import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
 import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import Tag from "@/components/Tags/Tag";
@@ -95,19 +95,19 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
 
   // Simplified grouping of skill types for certificates
   const allGroupedSkills = [
-    filterAndGroupSkills(
+    categoriseAndGroupSkills(
       technologies,
       skillDatabase,
       SkillTypesEnum.Hard,
       "Technologies"
     ),
-    filterAndGroupSkills(
+    categoriseAndGroupSkills(
       generalSkills,
       skillDatabase,
       SkillTypesEnum.General,
       "Technical Skills"
     ),
-    filterAndGroupSkills(
+    categoriseAndGroupSkills(
       softSkills,
       skillDatabase,
       SkillTypesEnum.Soft,

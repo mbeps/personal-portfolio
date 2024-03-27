@@ -1,8 +1,8 @@
 import getImagesFromFileSystem from "@/actions/file-system/getImagesFromFileSystem";
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
 import getVideosFromFileSystem from "@/actions/file-system/getVideosFromFileSystem";
-import filterAndGroupSkills from "@/actions/skills/filter/filterAndGroupSkills";
-import filterSkillSlugsByCategory, {
+import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
+import filterSkillsByCategory, {
   filterSkillSlugsExcludingCategory,
 } from "@/actions/skills/filter/filterSkillsByCategory";
 import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
@@ -99,7 +99,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const hasCoverImage = project.thumbnailImage !== undefined;
   const coverImagePath = `${basePath}/${slug}/cover.png`;
 
-  const projectLanguages: SkillKeysEnum[] = filterSkillSlugsByCategory(
+  const projectLanguages: SkillKeysEnum[] = filterSkillsByCategory(
     project.skills,
     skillDatabase,
     SkillCategoriesEnum.ProgrammingLanguages
@@ -130,19 +130,19 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
 
   // Using the new function to group all skill types
   const allGroupedSkills: GroupedSkillsCategoriesInterface[] = [
-    filterAndGroupSkills(
+    categoriseAndGroupSkills(
       technologies,
       skillDatabase,
       SkillTypesEnum.Hard,
       "Technologies"
     ),
-    filterAndGroupSkills(
+    categoriseAndGroupSkills(
       generalSkills,
       skillDatabase,
       SkillTypesEnum.General,
       "Technical Skills"
     ),
-    filterAndGroupSkills(
+    categoriseAndGroupSkills(
       softSkills,
       skillDatabase,
       SkillTypesEnum.Soft,

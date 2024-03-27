@@ -1,4 +1,4 @@
-import filterAndGroupSkills from "@/actions/skills/filter/filterAndGroupSkills";
+import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
 import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
@@ -40,7 +40,12 @@ const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
         type
       );
 
-      return filterAndGroupSkills(filteredSkills, skillDatabase, type, title);
+      return categoriseAndGroupSkills(
+        filteredSkills,
+        skillDatabase,
+        type,
+        title
+      );
     });
 
   return (

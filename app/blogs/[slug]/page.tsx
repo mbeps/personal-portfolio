@@ -1,5 +1,5 @@
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
-import filterAndGroupSkills from "@/actions/skills/filter/filterAndGroupSkills";
+import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
 import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
 import Reader from "@/components/Reader/Reader";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
@@ -89,19 +89,19 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
 
   // Using the new function to group all skill types
   const allGroupedSkills = [
-    filterAndGroupSkills(
+    categoriseAndGroupSkills(
       technologies,
       skillDatabase,
       SkillTypesEnum.Hard,
       "Technologies"
     ),
-    filterAndGroupSkills(
+    categoriseAndGroupSkills(
       generalSkills,
       skillDatabase,
       SkillTypesEnum.General,
       "Technical Skills"
     ),
-    filterAndGroupSkills(
+    categoriseAndGroupSkills(
       softSkills,
       skillDatabase,
       SkillTypesEnum.Soft,

@@ -2,15 +2,21 @@ import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 
+/**
+ * Groups the skill according to their category.
+ *
+ * @param skillKeys The keys of the skills to group
+ * @param skillsDatabase The database of all skills to access the skill data
+ * @returns The skills grouped by their category
+ */
 export default function groupByCategory(
-  skillSlugs: SkillKeysEnum[],
-  allSkills: Database<SkillInterface>
+  skillKeys: SkillKeysEnum[],
+  skillsDatabase: Database<SkillInterface>
 ): SkillsCategoryInterface[] {
-  // Object to hold the grouping
   const categories: Database<SkillKeysEnum[]> = {};
 
-  skillSlugs.forEach((slug) => {
-    const skill = allSkills[slug];
+  skillKeys.forEach((skillKey) => {
+    const skill: SkillInterface = skillsDatabase[skillKey];
     if (skill) {
       const category = skill.category;
       // Initialize the category array if it doesn't exist
@@ -18,7 +24,7 @@ export default function groupByCategory(
         categories[category] = [];
       }
       // Add the skillSlug to the appropriate category
-      categories[category].push(slug);
+      categories[category].push(skillKey);
     }
   });
 

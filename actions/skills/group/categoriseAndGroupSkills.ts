@@ -4,17 +4,29 @@ import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 
-export default function filterAndGroupSkills(
-  skillSlugs: SkillKeysEnum[],
-  allSkills: Database<SkillInterface>, // Assuming this is passed into the function
+/**
+ * Categorise and group skills based on the skill type.
+ * It filters the skills, for example technologies, technical skills and soft skills.
+ * Then it categorises the filtered skills based on the category and groups them.
+ * Finally, it groups the categories and returns the grouped categories.
+ *
+ * @param skillKeys The keys of the skills to filter and group
+ * @param skillsDatabase  The database of all skills to access the skill data
+ * @param skillType The type of skill to filter
+ * @param title The title of the grouped categories
+ * @returns The grouped categories of the filtered skills
+ */
+export default function categoriseAndGroupSkills(
+  skillKeys: SkillKeysEnum[],
+  skillsDatabase: Database<SkillInterface>,
   skillType: SkillTypesEnum,
   title: string
 ): GroupedSkillsCategoriesInterface {
   // Initialize an empty array for grouped categories
   const skillCategories: SkillsCategoryInterface[] = [];
 
-  skillSlugs.forEach((skillSlug) => {
-    const skill = allSkills[skillSlug];
+  skillKeys.forEach((skillSlug) => {
+    const skill: SkillInterface = skillsDatabase[skillSlug];
     // Filter skills based on skillType
     if (skill && skill.skillType === skillType) {
       // Find or create category group

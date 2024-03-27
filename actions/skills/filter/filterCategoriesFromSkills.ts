@@ -4,19 +4,17 @@ import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 /**
  * Filter out skills that belong to the specified categories.
- * @param skills - The skills hashmap to filter.
- * @param ignoredCategories - The categories to ignore.
- * @returns The filtered skills hashmap.
+ *
+ * @param skillsDatabase The database of all skills that need to be filtered
+ * @param ignoredCategories The categories to ignore
+ * @returns The filtered skill keys
  */
 export default function filterCategoriesFromSkills(
-  skills: Database<SkillInterface>,
+  skillsDatabase: Database<SkillInterface>,
   ignoredCategories: SkillCategoriesEnum[]
 ): SkillKeysEnum[] {
-  // Use Object.keys() to get an array of all skill slugs (keys)
-  // Then filter this array based on whether the skill's category is not in ignoredCategories
-  return Object.keys(skills).filter((skillSlug) => {
-    const skill = skills[skillSlug];
-    // Include the skillSlug in the result if its category is not ignored
+  return Object.keys(skillsDatabase).filter((skillKey) => {
+    const skill: SkillInterface = skillsDatabase[skillKey];
     return !ignoredCategories.includes(skill.category);
   }) as SkillKeysEnum[];
 }
