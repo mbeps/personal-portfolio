@@ -11,8 +11,11 @@ export const metadata: Metadata = {
 };
 /**
  * Displays a list of all blogs that can be opened.
- * Also allows the user to search for blogs.
- * @returns (JSX.Element): page with all blogs
+ * Also allows the user to search and filter the blogs.
+ * These blogs are displayed into categories.
+ *
+ * @returns Page with all blogs
+ * @requires {@link BlogsView} component to display the blogs and filter/search them
  */
 export default function BlogPage() {
   return (

@@ -33,7 +33,9 @@ import { BsFilterLeft } from "react-icons/bs";
 /**
  * Displays a list of all blogs that can be opened.
  * Also allows the user to filter and search the blogs.
- * @returns (JSX.Element): page with all blogs
+ * These blogs are displayed into categories.
+ *
+ * @returns Component showing all blogs, search bar and filters
  */
 export const BlogsView: React.FC = () => {
   //^ Hooks
@@ -68,9 +70,9 @@ export const BlogsView: React.FC = () => {
   const showArchived: boolean =
     (searchParams.get(archivedParamName) || "false").toLowerCase() === "true";
 
-  const handleToggleFilter = () => {
+  function handleToggleFilter() {
     setIsFilterModalOpen(!isFilterOpen);
-  };
+  }
 
   // Define your search options
   const searchOptions: string[] = [

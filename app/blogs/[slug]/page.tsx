@@ -12,6 +12,7 @@ import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
+import BlogInterface from "@/interfaces/material/BlogInterface";
 
 type BlogPageProps = {
   params: { slug: string };
@@ -21,19 +22,16 @@ type BlogPageProps = {
 /**
  * Metadata object for the dynamic blog page.
  * Each blog page has a unique title and description.
- * @param (BlogPageProps) - props: the content of the blog
- * @param parent (ResolvingMetadata) - parent metadata
- * @returns (Promise<Metadata>): metadata for the blog (title and description
+ * @param params: the slug of the blog used to fetch the blog metadata
+ * @param parent: the parent metadata object
+ * @returns Metadata for the blog (title and description
  */
 export async function generateMetadata(
   { params, searchParams }: BlogPageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const slug = params.slug;
-  const allBlogs = blogDatabase;
-
-  // Assume getBlogMetadataById function fetches metadata by slug
-  const blog = blogDatabase[slug];
+  const slug: string = params.slug;
+  const blog: BlogInterface = blogDatabase[slug];
 
   return {
     title: `${developerName} - Blogs: ${blog?.name}`,
@@ -56,14 +54,16 @@ export const generateStaticParams = async () => {
 
 /**
  * Page displaying the rendered markdown which can be read by the user.
- * @param props: the content of the blog
- * @returns (JSX.Element): content of the blog
+ * The blog also displays the skills used in the blog.
+ *
+ * @param props The content of the blog
+ * @returns Content of the blog and the skills used
  */
 const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
-  const slug = params.slug;
-  const basePath = BLOG_PAGE.path;
-  const blogMetadata = blogDatabase[slug];
-  const blogContent = getMarkdownFromFileSystem(
+  const slug: string = params.slug;
+  const basePath: string = BLOG_PAGE.path;
+  const blogMetadata: BlogInterface = blogDatabase[slug];
+  const blogContent: string | undefined = getMarkdownFromFileSystem(
     `public${basePath}/${slug}/blog.md`
   )?.content;
 
