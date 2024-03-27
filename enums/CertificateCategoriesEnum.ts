@@ -1,3 +1,7 @@
+/**
+ * This enum represents the categories of certificates that a user can have.
+ * This enum is used to avoid hardcoding the categories in the code, getting autocompletion support and avoiding typos.
+ */
 enum CertificateCategoriesEnum {
   University = "University",
   ProgrammingLanguages = "Programming Languages",
