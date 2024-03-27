@@ -28,22 +28,17 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
+import ProjectInterface from "@/interfaces/material/ProjectInterface";
 
-/**
- * Metadata object for the dynamic project page.
- * @param (ProjectPageProps) - props: the content of the project
- * @param parent (ResolvingMetadata) - parent metadata
- * @returns (Promise<Metadata>): metadata for the project (title and description)
- */
 export async function generateMetadata(
   { params, searchParams }: ProjectPageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   // Read route params
-  const slug = params.slug;
+  const slug: string = params.slug;
 
   // Assume getProjectBySlug function fetches project by slug
-  const project = projectDatabase[slug];
+  const project: ProjectInterface = projectDatabase[slug];
 
   // Create metadata based on the project details
   return {
@@ -70,34 +65,31 @@ interface ProjectPageProps {
 }
 
 /**
- * Displays the page for a specific project.
- * The project is determined by the slug in the URL.
- * At the top, the gallery of images is displayed for the project (if available).
- * If the project has no images, the project image is displayed instead.
- * If the project has no images or project image, a placeholder is displayed.
- * Bellow the gallery is the project's metadata:
- * - Description (left side on desktop, top on mobile)
- * - Language (right side on desktop, top on mobile)
- * - Technologies (right side on desktop, bottom on mobile)
- * - Links (left side on desktop, bottom on mobile)
- * Bellow the metadata is the features section.
- * @param props (ProjectPageProps): the project slug
- * @returns (JSX.Element): Project Page Component
+ * Page displaying the project details including:
+ * - Gallery of images and videos if available
+ * - Description of the projects
+ * - Programming languages used
+ * - Table showing technologies used, and general and soft skills associated
+ * - Links to the project repository and deployment
+ * - Features and blog content
+ *
+ * @param props The identifier of the project from the URL used to fetch the project
+ * @returns Page displaying the project and its details
  */
 const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
-  const slug = params.slug;
-  const basePath = PROJECTS_PAGE.path;
-  const project = projectDatabase[slug];
+  const slug: string = params.slug;
+  const basePath: string = PROJECTS_PAGE.path;
+  const project: ProjectInterface = projectDatabase[slug];
 
   // redirect to not found page if the project is not valid
   if (!project) {
     notFound();
   }
 
-  const projectName = project.name;
-  const projectDescription = project.description;
-  const hasCoverImage = project.thumbnailImage !== undefined;
-  const coverImagePath = `${basePath}/${slug}/cover.png`;
+  const projectName: string = project.name;
+  const projectDescription: string = project.description;
+  const hasCoverImage: boolean = project.thumbnailImage !== undefined;
+  const coverImagePath: string = `${basePath}/${slug}/cover.png`;
 
   const projectLanguages: SkillKeysEnum[] = filterSkillsByCategory(
     project.skills,
@@ -150,32 +142,36 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
     ),
   ];
 
-  const getImages = () => {
-    let images = getImagesFromFileSystem(`public${basePath}/${slug}/media`);
+  function getImages() {
+    let images: string[] = getImagesFromFileSystem(
+      `public${basePath}/${slug}/media`
+    );
 
     // add the path to the media items
     images = images.map((image) => `${basePath}/${slug}/media/${image}`);
 
     return images;
-  };
+  }
 
-  const getVideos = () => {
-    let videos = getVideosFromFileSystem(`public${basePath}/${slug}/media`);
+  function getVideos() {
+    let videos: string[] = getVideosFromFileSystem(
+      `public${basePath}/${slug}/media`
+    );
 
     // add the path to the media items
     videos = videos.map((video) => `${basePath}/${slug}/media/${video}`);
 
     return videos;
-  };
+  }
 
-  const images = getImages();
-  const videos = getVideos();
+  const images: string[] = getImages();
+  const videos: string[] = getVideos();
 
   /**
    * Get the features and blog content from the file system.
    * This is used to display the features and blog sections.
    */
-  const features = getMarkdownFromFileSystem(
+  const features: string | undefined = getMarkdownFromFileSystem(
     `public${basePath}/${slug}/features.md`
   )?.content;
 
@@ -183,7 +179,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
    * Get the features and blog content from the file system.
    * This is used to display the features and blog sections.
    */
-  const blog = getMarkdownFromFileSystem(
+  const blog: string | undefined = getMarkdownFromFileSystem(
     `public${basePath}/${slug}/report.md`
   )?.content;
 

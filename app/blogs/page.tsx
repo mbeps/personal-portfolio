@@ -25,7 +25,6 @@ export default function BlogPage() {
         <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
           <HeadingOne title={BLOG_PAGE.label} />
           <PageDescription description={BLOG_PAGE.description} />
-
           <BlogsView />
         </div>
       </section>

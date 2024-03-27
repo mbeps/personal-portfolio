@@ -1,11 +1,15 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
+import filterMaterialByArchivedStatus from "@/actions/material/filter/filterMaterialByArchivedStatus";
+import filterMaterialByCategory from "@/actions/material/filter/filterMaterialByCategory";
+import filterMaterialBySkill from "@/actions/material/filter/filterMaterialBySkill";
+import filterMaterialBySkillCategory from "@/actions/material/filter/filterMaterialBySkillCategory";
 import generateFilterOptionsByCategory from "@/actions/material/filterOptions/generateFilterOptionsByCategory";
 import { generateFilterOptionsBySkillCategories } from "@/actions/material/filterOptions/generateFilterOptionsBySkillCategories";
 import generateFilterOptionsBySkillType from "@/actions/material/filterOptions/generateFilterOptionsBySkillType";
-import groupMaterialsByCategory from "@/actions/material/group/groupMaterialsByCategory";
 import generateFilterOptionsForProgrammingLanguages from "@/actions/material/filterOptions/generateFilterOptionsForProgrammingLanguages";
+import groupMaterialsByCategory from "@/actions/material/group/groupMaterialsByCategory";
 import stringToSlug from "@/actions/stringToSlug";
 import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
 import FilterOverlay from "@/components/Filters/FilterPanel";
@@ -26,11 +30,14 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import { AiOutlineClear } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
-import filterMaterialBySkill from "@/actions/material/filter/filterMaterialBySkill";
-import filterMaterialByCategory from "@/actions/material/filter/filterMaterialByCategory";
-import filterMaterialBySkillCategory from "@/actions/material/filter/filterMaterialBySkillCategory";
-import filterMaterialByArchivedStatus from "@/actions/material/filter/filterMaterialByArchivedStatus";
 
+/**
+ * Displays a list of all projects that I have worked on.
+ * Also allows the user to search and filter the projects.
+ * These projects are displayed into categories.
+ *
+ * @returns Component showing all the projects, search bar and filters.
+ */
 const ProjectsView: React.FC = () => {
   //^ Hooks
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -76,7 +83,7 @@ const ProjectsView: React.FC = () => {
    * These are the only properties that are searched.
    * These are the same ones from the Project type.
    */
-  const searchOptions = [
+  const searchOptions: string[] = [
     "name",
     "category",
     "skills.name",

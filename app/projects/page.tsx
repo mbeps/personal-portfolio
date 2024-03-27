@@ -2,7 +2,6 @@ import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/UI/PageDescription";
 import developerName from "@/constants/developerName";
 import { PROJECTS_PAGE } from "@/constants/pages";
-import projectDatabase from "@/database/projects";
 import type { Metadata } from "next";
 import ProjectsView from "./components/ProjectsView";
 
@@ -12,16 +11,12 @@ export const metadata: Metadata = {
 };
 
 /**
- * Projects page displaying multiple types of projects that I worked on.
- * Projects are grouped by type.
- * The categories are displayed in this order.
- * The user can filter the projects by type, language, and other options.
- * The user can also search for a specific project:
- * - Name of the project
- * - Programming language
- * - Type of project
- * - Technologies used
- * @returns (JSX.Element): Projects page
+ * Displays a list of all projects that I have worked on.
+ * Also allows the user to search and filter the projects.
+ * These projects are displayed into categories.
+ *
+ * @returns Page with all projects
+ * @requires {@link ProjectsView} component to display the projects and filter/search them
  */
 const ProjectsPage = () => {
   return (
