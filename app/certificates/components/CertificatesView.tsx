@@ -89,7 +89,6 @@ const CertificatesView: React.FC = () => {
 
   //^ Search Settings
   const searchOptions: string[] = [
-    "name",
     "category",
     "issuer",
     "skills.name",
