@@ -5,7 +5,7 @@ import LoadingAnimation from "@/components/UI/LoadingAnimation";
 /**
  * Renders a loading animation while the page is loading.
  *
- * @returns (React.FC): loading page
+ * @returns Loading page
  */
 const Loading = () => {
   return <LoadingAnimation />;
