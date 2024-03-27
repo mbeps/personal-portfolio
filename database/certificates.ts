@@ -9,6 +9,11 @@ import skillDatabase from "./skills";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import CertificateKeysEnum from "@/enums/DatabaseKeysEnums/CertificateKeysEnum";
 
+/**
+ * Hashmap of certificates with keys as {@link CertificateKeysEnum} and values as {@link CertificateInterface}.
+ * The order of the certificates is the order that is used when displaying the certificates on the website.
+ * The order of the skills is the order that is used when displaying the skills on the website.
+ */
 const certificateMap: Database<CertificateInterface> = {
   //^ Programming Languages
   [CertificateKeysEnum.UdemyPythonProgrammingMasterclass]: {
@@ -2384,10 +2389,23 @@ const certificateMap: Database<CertificateInterface> = {
   },
 };
 
+/**
+ * List of keys for the certificates that can be used to uniquely identify the certificate.
+ */
 export const certificateKeys: CertificateKeysEnum[] = Object.keys(
   certificateMap
 ) as CertificateKeysEnum[];
 
+/**
+ * Hashmap of certificates with keys as {@link CertificateKeysEnum} and values as {@link CertificateInterface}.
+ * The certificates are the certifications that I have completed and received.
+ * The order skills is the order that is used when displaying the skills on the website.
+ *
+ * There are certain sub-skills for the skills that are directly listed under the skill objects within this hashmap.
+ * For each of those skills, the sub-skill is added to the list of skills for the blog.
+ * These sub-skills are specifically general skills related to the technologies but are not part of programming languages.
+ * Programming languages have many sub-skills that are not directly related to the blogs above.
+ */
 const certificateDatabase: Database<CertificateInterface> =
   addNestedSkillsMaterialList<CertificateInterface>(
     certificateMap,

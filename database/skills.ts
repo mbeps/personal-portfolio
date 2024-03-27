@@ -3,6 +3,10 @@ import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 
+/**
+ * Hashmap of skills with keys as {@link SkillKeysEnum} and values as {@link SkillInterface}.
+ * The order of skills and sub-skills is the order that is used when displaying the skills on the website.
+ */
 const skillDatabase: Database<SkillInterface> = {
   //^ Languages
   [SkillKeysEnum.Python]: {
@@ -2408,6 +2412,9 @@ const skillDatabase: Database<SkillInterface> = {
 
 export default skillDatabase;
 
+/**
+ * List of keys for the skills that can be used to uniquely identify the skills.
+ */
 export const skillKeys: SkillKeysEnum[] = Object.keys(
   skillDatabase
 ) as SkillKeysEnum[];

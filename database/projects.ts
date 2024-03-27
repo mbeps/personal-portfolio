@@ -9,9 +9,9 @@ import skillDatabase from "./skills";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 
 /**
- * Array of web development projects.
- * This is used to populate the projects page.
- * @type {ProjectInterface[]}
+ * Hashmap of projects with keys as {@link SkillKeysEnum} and values as {@link ProjectInterface}.
+ * The order of the projects is the order that is used when displaying the projects on the website.
+ * The order skills is the order that is used when displaying the skills on the website.
  */
 const projectMap: Database<ProjectInterface> = {
   [ProjectKeysEnum.CircusDiscussions]: {
@@ -1198,11 +1198,22 @@ const projectMap: Database<ProjectInterface> = {
   },
 };
 
+/**
+ * List of keys for the projects that can be used to uniquely identify the project.
+ */
 export const projectKeys: ProjectKeysEnum[] = Object.keys(
   projectMap
 ) as ProjectKeysEnum[];
+
 /**
- * Array of all projects.
+ * Hashmap of projects with keys as {@link SkillKeysEnum} and values as {@link ProjectInterface}.
+ * The order of the projects is the order that is used when displaying the projects on the website.
+ * The order skills is the order that is used when displaying the skills on the website.
+ *
+ * There are certain sub-skills for the skills that are directly listed under the skill objects within this hashmap.
+ * For each of those skills, the sub-skill is added to the list of skills for the blog.
+ * These sub-skills are specifically general skills related to the technologies but are not part of programming languages.
+ * Programming languages have many sub-skills that are not directly related to the blogs above.
  */
 const projectDatabase: Database<ProjectInterface> =
   addNestedSkillsMaterialList<ProjectInterface>(
