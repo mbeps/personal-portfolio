@@ -1,3 +1,11 @@
+/**
+ * This enum is used to represent the keys of the certificates in the database.
+ * This enum is used to avoid hardcoding the keys in the code, getting autocompletion support and avoiding typos.
+ * The strings correspond to location of the markdown files in the blog folder at `public/certificates/`.
+ * Whenever a new certificate is added to the database, a new key should be added to this enum.
+ *
+ * @see {@link certificateMap} at `database/certificates.ts`
+ */
 enum CertificateKeysEnum {
   UdemyPythonProgrammingMasterclass = "UC-a3c47af2-7eb8-4f5b-8309-08559c519d5a",
   LinkedInLearningPythonAdvanced = "c235083fcf3a5aadda62a3aac5f1846098135e9058d9c5c72073ef88891b0395",
