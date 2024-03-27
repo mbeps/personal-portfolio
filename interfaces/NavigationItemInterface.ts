@@ -6,7 +6,7 @@
  * The fields are:
  * - `label`: the label of the navigation item
  * - `path`: the URL path of the navigation item the user will be redirected to
- * - `description`: the description of the page the user will be redirected to
+ * - `description`: the description of the page the user will be redirected to for SEO purposes
  */
 export default interface NavigationItemInterface {
   label: string;

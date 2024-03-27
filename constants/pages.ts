@@ -1,5 +1,9 @@
 import NavigationItemInterface from "@/interfaces/NavigationItemInterface";
 
+/**
+ * Navigation item for the home page.
+ * This is where the user can find information about me, my projects, and my contact information.
+ */
 export const HOME_PAGE: NavigationItemInterface = {
   label: "Home",
   path: "/",
@@ -11,6 +15,10 @@ export const HOME_PAGE: NavigationItemInterface = {
   `,
 };
 
+/**
+ * Navigation item for the projects page.
+ * This is where the user can view my projects and filter them according to their preferences.
+ */
 export const PROJECTS_PAGE: NavigationItemInterface = {
   label: "Projects",
   path: "/projects",
@@ -21,6 +29,10 @@ export const PROJECTS_PAGE: NavigationItemInterface = {
   `,
 };
 
+/**
+ * Navigation item for the certificates page.
+ * This is where the user can view my certificates and filter them according to their preferences.
+ */
 export const CERTIFICATES_PAGE: NavigationItemInterface = {
   label: "Certificates",
   path: "/certificates",
@@ -31,6 +43,10 @@ export const CERTIFICATES_PAGE: NavigationItemInterface = {
   `,
 };
 
+/**
+ * Navigation item for the blog page.
+ * This is where the user can view my blogs and filter them according to their preferences.
+ */
 export const BLOG_PAGE: NavigationItemInterface = {
   label: "Blog",
   path: "/blogs",
@@ -40,6 +56,12 @@ export const BLOG_PAGE: NavigationItemInterface = {
   `,
 };
 
+/**
+ * List of navigation items that are displayed in the navbar.
+ * Users can navigate to these pages by clicking on the respective items.
+ * The description may be displayed on every page and it is used for SEO purposes.
+ * The order of the items is the order that is used when displaying the items on the website.
+ */
 const NAV_ITEMS: Array<NavigationItemInterface> = [
   HOME_PAGE,
   PROJECTS_PAGE,
