@@ -2,39 +2,51 @@ import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 
+/**
+ * Counts the number of materials attributed to a skill or its related skills.
+ * For example, a skill can have multiple projects, certificates, etc attributed to it.
+ *
+ * @param skillKey The key of the skill to count the materials attributed to
+ * @param skillsDatabase The database of all skills to access the related skills
+ * @param materialsDatabase The database of all materials to count the materials attributed to the skill
+ * @returns The number of materials attributed to the skill
+ */
 export default function countMaterialsAttributedToSkill(
-  skillKeyToCheck: SkillKeysEnum,
-  allSkills: Database<SkillInterface>,
-  allMaterialsMap: Database<MaterialInterface>
+  skillKey: SkillKeysEnum,
+  skillsDatabase: Database<SkillInterface>,
+  materialsDatabase: Database<MaterialInterface>
 ): number {
-  // Adapt the logic to work with skill keys and check if a skill or its related skill is present in a material
-  const isSkillOrRelatedSkillPresent = (
+  // checks if the skill or its related skills are present in the material
+  function isSkillOrRelatedSkillPresent(
     materialSkillKeys: SkillKeysEnum[]
-  ): boolean => {
-    if (materialSkillKeys.includes(skillKeyToCheck)) {
+  ): boolean {
+    if (materialSkillKeys.includes(skillKey)) {
       return true;
     }
     // Check related skills for each skill in the material
     for (let skillKey of materialSkillKeys) {
-      const skill = allSkills[skillKey];
+      const skill: SkillInterface = skillsDatabase[skillKey];
       if (
         skill &&
         skill.relatedSkills &&
-        skill.relatedSkills.includes(skillKeyToCheck)
+        skill.relatedSkills.includes(skillKey)
       ) {
         return true;
       }
     }
     return false;
-  };
+  }
 
   // Count the number of materials that include the skill or its related skills
-  const count = Object.values(allMaterialsMap).reduce((acc, material) => {
-    if (isSkillOrRelatedSkillPresent(material.skills)) {
-      acc += 1;
-    }
-    return acc;
-  }, 0);
+  const count: number = Object.values(materialsDatabase).reduce(
+    (acc, material) => {
+      if (isSkillOrRelatedSkillPresent(material.skills)) {
+        acc += 1;
+      }
+      return acc;
+    },
+    0
+  );
 
   return count;
 }

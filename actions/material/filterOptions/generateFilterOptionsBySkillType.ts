@@ -5,20 +5,31 @@ import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 
+/**
+ * Generates the filter options based on the categories of the materials.
+ * For all the materials, it will generate a filter option for each unique category within the skills.
+ * These are then used as options the user can select to filter the materials.
+ *
+ * @param materialsDatabase The database of all materials from which to generate the filter options
+ * @param skillsDatabase The database of all skills from which to generate the filter options
+ * @param skillType The specific skill type to filter for in the materials
+ * @param excludeCategory Category to exclude from the filter options
+ * @returns The filter options generated from the categories of the materials
+ */
 export default function generateFilterOptionsBySkillType<
   T extends MaterialInterface
 >(
-  allMaterialsMap: Database<T>,
-  skillsMap: Database<SkillInterface>,
+  materialsDatabase: Database<T>,
+  skillsDatabase: Database<SkillInterface>,
   skillType: SkillTypesEnum,
   excludeCategory?: SkillCategoriesEnum
 ): FilterOption[] {
   return [
     { slug: "all", entryName: "All" },
-    ...Object.values(allMaterialsMap)
+    ...Object.values(materialsDatabase)
       .flatMap((material) =>
         material.skills
-          .map((skillSlug) => skillsMap[skillSlug]) // Map slugs to SkillInterface objects
+          .map((skillSlug) => skillsDatabase[skillSlug]) // Map slugs to SkillInterface objects
           .filter(
             (skill) =>
               skill && // Ensure the skill exists

@@ -3,18 +3,27 @@ import MaterialInterface from "@/interfaces/material/MaterialInterface";
 import stringToSlug from "../../stringToSlug";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 
+/**
+ * Generates the filter options based on the categories of the materials.
+ * For all the materials, it will generate a filter option for each unique category within the skills.
+ * These are then used as options the user can select to filter the materials.
+ *
+ * @param materialsDatabase The database of all materials from which to generate the filter options
+ * @param skillDatabase The database of all skills from which to generate the filter options
+ * @returns The filter options generated from the categories of the materials
+ */
 export function generateFilterOptionsBySkillCategories<
   T extends MaterialInterface
 >(
-  allMaterialsMap: Database<T>,
-  skillsMap: Database<SkillInterface>
+  materialsDatabase: Database<T>,
+  skillDatabase: Database<SkillInterface>
 ): FilterOption[] {
   return [
     { slug: "all", entryName: "All" },
-    ...Object.values(allMaterialsMap)
+    ...Object.values(materialsDatabase)
       .flatMap((material) =>
         material.skills.flatMap((skillSlug) => {
-          const skill = skillsMap[skillSlug];
+          const skill = skillDatabase[skillSlug];
           return skill
             ? [
                 {

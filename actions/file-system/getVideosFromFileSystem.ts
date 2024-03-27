@@ -2,8 +2,8 @@ import fs from "fs";
 
 /**
  * Get all videos from a directory so that they can be displayed in the UI.
- * @param filePath: path to the directory where the videos are stored
- * @returns: a list of video file names
+ * @param filePath Path to the directory where the videos are stored
+ * @returns A list of video file names
  */
 export default function getVideosFromFileSystem(filePath: string): string[] {
   try {

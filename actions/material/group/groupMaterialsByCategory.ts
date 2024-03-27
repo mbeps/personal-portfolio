@@ -1,12 +1,20 @@
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 
+/**
+ * Groups the materials by their category.
+ * This creates a group with the category name and the keys of the materials that belong to that category.
+ *
+ * @param materialsKeys The keys of the materials to group
+ * @param materialsDatabase The database of all materials to access the material details
+ * @returns The materials grouped by their category
+ */
 export default function groupMaterialsByCategory<T extends MaterialInterface>(
-  materialSlugs: string[],
-  materialsMap: Database<T>
+  materialsKeys: string[],
+  materialsDatabase: Database<T>
 ): MaterialGroupInterface[] {
-  return materialSlugs.reduce<MaterialGroupInterface[]>((groups, slug) => {
-    const material = materialsMap[slug];
+  return materialsKeys.reduce<MaterialGroupInterface[]>((groups, slug) => {
+    const material: T = materialsDatabase[slug];
     if (!material) {
       return groups; // Skip if the material isn't found in the map
     }

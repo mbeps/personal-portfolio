@@ -1,14 +1,21 @@
 import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 
+/**
+ * Checks whether a skill is associated with any material.
+ *
+ * @param skillKey The key of the skill to check for
+ * @param materialsDatabase  The database of all materials to check for the skill
+ * @returns Whether the skill is associated with any material
+ */
 export default function isSkillAssociatedWithMaterial(
-  skillToCheck: SkillKeysEnum,
-  materialsMap: Database<MaterialInterface>
+  skillKey: SkillKeysEnum,
+  materialsDatabase: Database<MaterialInterface>
 ): boolean {
   // Loop through the materialsMap
-  for (const materialKey in materialsMap) {
+  for (const materialKey in materialsDatabase) {
     // Check if the current material's skills array includes the skillToCheck
-    if (materialsMap[materialKey].skills.includes(skillToCheck)) {
+    if (materialsDatabase[materialKey].skills.includes(skillKey)) {
       // If found, return true
       return true;
     }

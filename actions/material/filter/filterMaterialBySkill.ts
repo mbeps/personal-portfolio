@@ -1,16 +1,25 @@
 import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 
+/**
+ * Filters the materials that match a specific skill.
+ * Only the materials that contain the skill will be included.
+ *
+ * @param skillKey The specific skill to filter for in the materials
+ * @param materialKeys The keys of the materials to filter
+ * @param materialDatabase All the materials in the database so that we can access the material details
+ * @returns The keys of the materials that match the skill
+ */
 export default function filterMaterialBySkill<T extends MaterialInterface>(
-  skillSlug: SkillKeysEnum,
+  skillKey: SkillKeysEnum,
   materialKeys: string[],
-  materialsMap: Database<T>
+  materialDatabase: Database<T>
 ): string[] {
   const filteredMaterialSlugs: string[] = [];
 
   materialKeys.forEach((key) => {
-    const material = materialsMap[key];
-    if (material && material.skills.includes(skillSlug)) {
+    const material: T = materialDatabase[key];
+    if (material && material.skills.includes(skillKey)) {
       filteredMaterialSlugs.push(key);
     }
   });

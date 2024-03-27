@@ -3,18 +3,27 @@ import MaterialInterface from "@/interfaces/material/MaterialInterface";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 
+/**
+ * Generates the filter options based on the programming languages of the materials.
+ * For all the materials, it will generate a filter option for each unique programming language within the skills.
+ * These are then used as options the user can select to filter the materials.
+ *
+ * @param materialsDatabase The database of all materials from which to generate the filter options
+ * @param skillsDatabase The database of all skills from which to generate the filter options
+ * @returns The filter options generated from the programming languages of the materials
+ */
 export default function generateFilterOptionsForProgrammingLanguages<
   T extends MaterialInterface
 >(
-  allMaterialsMap: Database<T>,
-  skillsMap: Database<SkillInterface> // Added parameter for skills hashmap
+  materialsDatabase: Database<T>,
+  skillsDatabase: Database<SkillInterface>
 ): FilterOption[] {
   return [
     { slug: "all", entryName: "All" },
-    ...Object.values(allMaterialsMap)
+    ...Object.values(materialsDatabase)
       .flatMap((material) =>
         material.skills.flatMap((skillSlug) => {
-          const skill = skillsMap[skillSlug];
+          const skill = skillsDatabase[skillSlug];
           return skill &&
             skill.category === SkillCategoriesEnum.ProgrammingLanguages
             ? [{ slug: skillSlug, entryName: skill.name }]
