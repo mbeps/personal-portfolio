@@ -12,10 +12,15 @@ import { HiArrowDown } from "react-icons/hi";
 
 /**
  * Hero section component shown at the top of the page.
- * Contains a short description of myself, a picture and a link to the projects section.
+ * Contains:
+ * - Profile image of myself
+ * - My full name
+ * - My roles which loop through a list
+ * - Social media links such as GitHub, LinkedIn, and email
+ * - Buttons to navigate to the projects and about sections
  */
 const HeroSection = () => {
-  const isMounted = useIsMounted();
+  const isMounted: boolean = useIsMounted();
 
   return (
     <section id="home" className="home-section-wrapper">

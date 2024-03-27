@@ -8,16 +8,21 @@ import React from "react";
 
 /**
  * Displays a list of languages that I know.
- * Some of the tags can be clicked which will open a modal.
+ * The tags can be clicked which will open a modal where technologies about the language are displayed.
+ * There is also a view more button that redirects to a page showing all the materials (projects, certifications, etc.) related to the language.
  * This modal will display the skills and repositories for the language.
  */
 const LanguageSection: React.FC = () => {
   const isMounted: boolean = useIsMounted();
 
+  // If the component is not mounted, do not display anything.
   if (!isMounted) {
     return null;
   }
 
+  /**
+   * The list of main languages that will be displayed.
+   */
   const mainLanguages: SkillKeysEnum[] = [
     SkillKeysEnum.Python,
     SkillKeysEnum.JavaScript,

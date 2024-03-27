@@ -16,9 +16,9 @@ import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 /**
  * Displays a list of skills that I have.
- * These skills may or many not have languages associated with them.
- * There is an option to view more skills which will open a modal.
- * @returns (JSX.Element): skill section (list of skills)
+ * They can be clicked which would redirect to a page showing all the materials (projects, certifications, etc.) related to the skill.
+ * There is also a button that opens a modal where all the skills are displayed.
+ * @returns Skill section (list of skills)
  */
 const TechnologiesSection: React.FC = () => {
   const mainSkills: Database<SkillInterface> = {};
@@ -61,8 +61,8 @@ const TechnologiesSection: React.FC = () => {
   /**
    * Gets the first 'limit' skills.
    * These are then displayed as tags.
-   * @param totalLimit (number): the number of skills to take
-   * @returns (string[]): list of skill names
+   * @param totalLimit The number of skills to take
+   * @returns List of skill names
    */
   function firstNSkills(
     skillKeys: SkillKeysEnum[],
@@ -74,8 +74,8 @@ const TechnologiesSection: React.FC = () => {
   /**
    * Gets the first few skills from each category.
    * These are then displayed as tags.
-   * @param limitPerCategory (number): the number of skills to take from each category
-   * @returns (string[]): list of skill names
+   * @param limitPerCategory The number of skills to take from each category
+   * @returns List of skill names
    */
   function firstNSkillsPerCategory(
     skillKeys: SkillKeysEnum[],

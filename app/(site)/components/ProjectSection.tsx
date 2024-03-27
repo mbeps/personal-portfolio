@@ -11,13 +11,14 @@ import Link from "next/link";
  * Each card shows the name, description and a link to the GitHub repository.
  * Some cards also show a link to the live site.
  * There is also an image of the projects.
- * @returns (JSX.Element): Projects section
+ * @returns Projects section
  */
 const ProjectsSection = () => {
   const basePath: string = PROJECTS_PAGE.path;
 
   /**
    * Only projects matching these slugs will be shown.
+   * In other words, only these projects will be displayed on the home page.
    */
   const displayedProjects: string[] = [
     ProjectKeysEnum.CircusDiscussions,

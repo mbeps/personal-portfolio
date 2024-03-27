@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 /**
  * Home page which contains the Hero, About and Projects sections.
- * @returns (JSX.Element): Home page
+ * @returns Home page
  */
 export default function Home() {
   return (
