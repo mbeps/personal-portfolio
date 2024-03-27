@@ -33,11 +33,11 @@ import filterMaterialByArchivedStatus from "@/actions/material/filter/filterMate
 import filterCertificatesByIssuer from "@/actions/material/filter/filterCertificatesByIssuer";
 
 /**
- * Displays a list of all certificates.
- * The user can filter the certificates by category and issuer.
- * The user can also search for certificates by name, issuer, tags, skills, and category.
- * @param certificates (Certificate[]): list of all certificates
- * @returns (JSX.Element): list of all certificates
+ * Displays a list of all certificates that I have.
+ * Also allows the user to search and filter the certificates.
+ * These certificates are displayed into categories.
+ *
+ * @returns Page with all certificates
  */
 const CertificatesView: React.FC = () => {
   //^ Hooks
@@ -83,9 +83,9 @@ const CertificatesView: React.FC = () => {
     "true";
 
   //^ Modal Controls
-  const handleToggleFilter = () => {
+  function handleToggleFilter() {
     setIsFilterOpen(!isFilterOpen);
-  };
+  }
 
   //^ Search Settings
   const searchOptions: string[] = [

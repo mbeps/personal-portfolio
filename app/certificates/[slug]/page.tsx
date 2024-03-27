@@ -31,10 +31,8 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   // Read route params
-  const slug = params.slug;
-
-  // Assume getCertificateBySlug function fetches certificate by slug
-  const certificate = certificateDatabase[slug];
+  const slug: string = params.slug;
+  const certificate: CertificateInterface = certificateDatabase[slug];
 
   // Create metadata based on the certificate details
   return {
@@ -65,11 +63,12 @@ type CertificatesPageProps = {
  * - The learning outcomes of the certificate
  * - The skills of the certificate
  * - The issuer page of the certificate
- * @param params (CredentialPageProps) - props: the content of the certificate
- * @returns (JSX.Element): certificate page component
+ *
+ * @param params The certificate identifier used to fetch the certificate
+ * @returns Page displaying the certificate and its details
  */
 const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
-  const slug = params.slug;
+  const slug: string = params.slug;
 
   const certificate: CertificateInterface = certificateDatabase[slug];
 

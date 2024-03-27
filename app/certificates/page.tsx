@@ -12,9 +12,12 @@ export const metadata: Metadata = {
 };
 
 /**
- * Certificates page displaying multiple types of certificates that I have.
- * Certificates are grouped by type.
- * The user can filter the certificates by category and issuer.
+ * Displays a list of all certificates that I have.
+ * Also allows the user to search and filter the certificates.
+ * These certificates are displayed into categories.
+ *
+ * @returns Page with all certificates
+ * @requires {@link CertificatesView} component to display the certificates and filter/search them
  */
 const CertificatesPage: React.FC = () => {
   return (

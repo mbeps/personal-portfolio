@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: `${developerName} - ${BLOG_PAGE.label}`,
   description: BLOG_PAGE.description,
 };
+
 /**
  * Displays a list of all blogs that can be opened.
  * Also allows the user to search and filter the blogs.
