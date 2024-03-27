@@ -36,6 +36,7 @@ import filterCertificatesByIssuer from "@/actions/material/filter/filterCertific
  * Displays a list of all certificates that I have.
  * Also allows the user to search and filter the certificates.
  * These certificates are displayed into categories.
+ * Because this uses hooks, it is a client-side only component.
  *
  * @returns Page with all certificates
  */

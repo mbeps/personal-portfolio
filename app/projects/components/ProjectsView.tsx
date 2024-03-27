@@ -35,6 +35,7 @@ import { BsFilterLeft } from "react-icons/bs";
  * Displays a list of all projects that I have worked on.
  * Also allows the user to search and filter the projects.
  * These projects are displayed into categories.
+ * Because this uses hooks, it is a client-side only component.
  *
  * @returns Component showing all the projects, search bar and filters.
  */

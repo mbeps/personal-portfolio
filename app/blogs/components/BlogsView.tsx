@@ -34,6 +34,7 @@ import { BsFilterLeft } from "react-icons/bs";
  * Displays a list of all blogs that can be opened.
  * Also allows the user to filter and search the blogs.
  * These blogs are displayed into categories.
+ * Because this uses hooks, it is a client-side only component.
  *
  * @returns Component showing all blogs, search bar and filters
  */
