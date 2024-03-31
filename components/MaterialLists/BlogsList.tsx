@@ -24,11 +24,10 @@ const BlogsList: React.FC<MaterialListProps> = ({
               <section key={group.groupName} id={stringToSlug(group.groupName)}>
                 <div className="flex flex-col space-y-10">
                   <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
-                  {/* Assuming HeadingTwo is a component you have for rendering titles */}
                   <HeadingTwo title={group.groupName} />
                   <Grid
-                    items={group.materialsKeys.map((blogSlug) => (
-                      <BlogItem key={blogSlug} blogKey={blogSlug} />
+                    items={group.materialsKeys.map((blogKey) => (
+                      <BlogItem key={blogKey} blogKey={blogKey} />
                     ))}
                   />
                 </div>
