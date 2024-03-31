@@ -29,16 +29,19 @@ export default function generateFilterOptionsBySkillType<
     ...Object.values(materialsDatabase)
       .flatMap((material) =>
         material.skills
-          .map((skillSlug) => skillsDatabase[skillSlug]) // Map slugs to SkillInterface objects
+          .map((skillKey) => ({
+            skill: skillsDatabase[skillKey],
+            slug: skillKey, // Use skillSlug for unique identification
+          }))
           .filter(
-            (skill) =>
+            ({ skill, slug }) =>
               skill && // Ensure the skill exists
               skill.skillType === skillType &&
               (!excludeCategory || skill.category !== excludeCategory)
           )
       )
-      .map((skill) => ({
-        slug: stringToSlug(skill.name), // Convert the skill name to a slug
+      .map(({ skill, slug: skillKey }) => ({
+        slug: skillKey, // Use the skill key as the slug
         entryName: skill.name,
       }))
       .reduce((unique, item) => {
