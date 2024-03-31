@@ -43,6 +43,12 @@ interface SkillListProps {
   skills: SkillKeysEnum[];
 }
 
+/**
+ * Component displaying all the skills that I have learned and worked with.
+ * These skills can be grouped into categories and certain type skills can be ignored.
+ *
+ * @returns Page with all skills
+ */
 const SkillList: React.FC<SkillListProps> = ({ skills }) => {
   const [isOpen, setOpen] = useState(false);
 

@@ -33,6 +33,16 @@ interface MaterialSectionInterface {
   ListComponent: React.ComponentType<MaterialListProps>;
 }
 
+/**
+ * Generates the metadata for the skill page.
+ * This includes the title and description of the page.
+ * This is used for SEO purposes.
+ *
+ * @param props The props for the skill page.
+ * @param parent The parent metadata that is being resolved.
+ * @returns The metadata for the skill page.
+ * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ */
 export async function generateMetadata(
   { params, searchParams }: ProjectPageProps,
   parent: ResolvingMetadata
@@ -51,6 +61,16 @@ export async function generateMetadata(
   };
 }
 
+/**
+/**
+ * Generates the static paths for the skills.
+ * These are then used to pre-render the projects pages.
+ * This Incremental Static Regeneration allows the projects to be displayed without a server.
+ * This improves the performance of the website.
+ * 
+ * @returns A list of all the slugs for the static pages that need to be generated.
+ * @see https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration
+ */
 export const generateStaticParams = async () => {
   return skillKeys.map((slug) => ({ slug }));
 };
@@ -60,16 +80,29 @@ interface ProjectPageProps {
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
+/**
+ * Page displaying all the material related to a given skill and its sub-skills.
+ * This includes projects, blogs, and certificates.
+ *
+ * @param param0 The data for the skill page.
+ * @returns Skill page that displays all the material related to a given skill.
+ */
 const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
-  const skillSlug: string = params.slug;
-  const skill: SkillInterface = skillDatabase[skillSlug as SkillKeysEnum];
+  const skillKey: string = params.slug;
+  const skill: SkillInterface = skillDatabase[skillKey as SkillKeysEnum];
 
   if (!skill) {
     notFound();
   }
 
+  /**
+   * The sections to display on the skill page.
+   * Each section is the material type (Projects, Certificates, Blogs).
+   * These are iterated over to display the material for each section.
+   */
   const sections: MaterialSectionInterface[] = [
     {
+      // Projects
       name: MaterialType.Projects,
       materials: projectKeys,
       materialHashmap: projectDatabase,
@@ -77,6 +110,7 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
       ListComponent: ProjectsList,
     },
     {
+      // Certificates
       name: MaterialType.Certificates,
       materials: certificateKeys,
       materialHashmap: certificateDatabase,
@@ -84,6 +118,7 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
       ListComponent: CertificatesList,
     },
     {
+      // Blogs
       name: MaterialType.Blogs,
       materials: blogKeys,
       materialHashmap: blogDatabase,
@@ -108,14 +143,14 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
             name={name}
             materials={materials}
             materialHashmap={materialHashmap}
-            skillSlug={skillSlug}
+            skillKey={skillKey}
             basePath={basePath}
             ListComponent={ListComponent}
           />
         )
       )}
 
-      <RelatedSkillsSection skillKey={skillSlug as SkillKeysEnum} />
+      <RelatedSkillsSection skillKey={skillKey as SkillKeysEnum} />
     </div>
   );
 };
@@ -123,19 +158,30 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
 export default SkillPage;
 
 interface MaterialSectionProps extends MaterialSectionInterface {
-  skillSlug: string;
+  skillKey: string;
 }
 
+/**
+ * Component displaying a section of a specific material type for a given skill.
+ *
+ * @param name The name of section according to the material type.
+ * @param materials The list of materials to display.
+ * @param materialHashmap The hashmap of all the materials to access the material data.
+ * @param skillKey The key of the skill to filter the materials by.
+ * @param basePath The base path for the material type to direct the user to the material page.
+ * @param ListComponent The component to display the list of materials.
+ * @returns Section displaying all the material for a given skill.
+ */
 const MaterialSection: React.FC<MaterialSectionProps> = ({
   name,
   materials,
   materialHashmap,
-  skillSlug,
+  skillKey,
   basePath,
   ListComponent,
 }) => {
   const filteredMaterials: string[] = filterMaterialBySkill(
-    skillSlug as SkillKeysEnum,
+    skillKey as SkillKeysEnum,
     materials,
     materialHashmap
   );
@@ -145,6 +191,10 @@ const MaterialSection: React.FC<MaterialSectionProps> = ({
     return null;
   }
 
+  /**
+   * Groups the materials by their material type.
+   * This is similar to the each materials dedicated page.
+   */
   const groupedMaterials: MaterialGroupInterface[] =
     groupMaterialsByMaterialType(filteredMaterials, materialHashmap, name);
 

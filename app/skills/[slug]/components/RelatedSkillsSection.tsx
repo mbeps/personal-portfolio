@@ -13,6 +13,14 @@ interface RelatedSkillsSectionProps {
   skillKey: SkillKeysEnum;
 }
 
+/**
+ * Displays all the sub-skills for a given skill.
+ * These skills are grouped by their skill type (Hard, General, Soft) and displayed in a table format.
+ * Each group of skills is also categorised by their skill category.\
+ *
+ * @param skillKey The key of the skill to display the related skills for.
+ * @returns A React component that displays all the related skills for a given skill.
+ */
 const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
   skillKey,
 }) => {

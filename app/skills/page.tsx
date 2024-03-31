@@ -14,6 +14,11 @@ export const metadata = {
   description: description,
 };
 
+/**
+ * Page displaying all the skills that I have learned and worked with.
+ * These skills can be grouped into categories and certain type skills can be ignored.
+ * @returns Page with all skills
+ */
 export default function SkillPage() {
   return (
     <main>
