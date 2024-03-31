@@ -15,7 +15,7 @@ import ThemeToggle from "./ThemeToggle";
  * It also displays a hamburger menu for mobile devices.
  * When the hamburger menu is clicked, it opens a sidebar with the links to other pages.
  *
- * @returns (JSX.Element): Navbar component
+ * @returns Navbar component
  */
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -23,7 +23,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 0;
+      const isScrolled: boolean = window.scrollY > 0;
       setScrolled(isScrolled);
     };
 
@@ -34,7 +34,7 @@ export default function Navbar() {
     };
   }, []);
 
-  const transitionDuration = isOverlayOpen ? "1000ms" : "700ms";
+  const transitionDuration: string = isOverlayOpen ? "1000ms" : "700ms";
 
   return (
     <>

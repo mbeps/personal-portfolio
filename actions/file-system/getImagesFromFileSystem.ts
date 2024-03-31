@@ -1,13 +1,13 @@
 import fs from "fs";
 
 /**
- * Get all images from a directory
- * @param filePath (string) - path to directory
- * @returns (string[]) - array of image file names
+ * Get all images from a directory so that they can be displayed in the UI.
+ * @param filePath path to the directory where the images are stored
+ * @returns a list of image file names
  */
-const getImagesFromFileSystem = (filePath: string): string[] => {
+export default function getImagesFromFileSystem(filePath: string): string[] {
   try {
-    const files = fs.readdirSync(filePath);
+    const files: string[] = fs.readdirSync(filePath);
     return files.filter(
       (file) => file.endsWith(".jpg") || file.endsWith(".png")
     );
@@ -15,6 +15,4 @@ const getImagesFromFileSystem = (filePath: string): string[] => {
     // console.log(`Error reading directory ${filePath}:`, error);
     return [];
   }
-};
-
-export default getImagesFromFileSystem;
+}

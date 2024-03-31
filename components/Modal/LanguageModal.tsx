@@ -1,10 +1,9 @@
 "use client";
 
 import isSkillAssociatedWithMaterial from "@/actions/material/isSkillAssociatedWithMaterial";
-import filterSkillsByType from "@/actions/skills/filterSkillsByType";
-import getAssociatedSkills from "@/actions/skills/getAssociatedSkills";
-import groupSkills from "@/actions/skills/groupSkills";
-import SkillTag from "@/components/Tags/SkillTag";
+import groupSkills, {
+  GroupByOptions,
+} from "@/actions/skills/group/groupSkills";
 import Tag from "@/components/Tags/Tag";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
@@ -26,26 +25,21 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
-import blogs from "@/database/blogs";
-import allCertificates from "@/database/certificates";
-import allProjects from "@/database/projects";
-import allSkills from "@/database/skills/skills";
+import materialDatabase from "@/database/material";
+import skillDatabase from "@/database/skills";
+import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import FilterOption from "@/interfaces/filters/FilterOption";
-import BlogInterface from "@/interfaces/material/BlogInterface";
-import CertificateInterface from "@/interfaces/material/CertificateInterface";
-import MaterialInterface from "@/interfaces/material/MaterialInterface";
-import ProjectInterface from "@/interfaces/material/ProjectInterface";
-import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import Link from "next/link";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
+import SkillTag from "../Tags/SkillTag";
 
 interface LanguageTagWithModalProps {
-  language: SkillInterface;
-  repository?: string;
-  handleOpenModal: () => void;
-  handleCloseModal: () => void;
-  isModalOpen: boolean;
+  languageIdentifier: SkillKeysEnum;
 }
 
 /**
@@ -54,58 +48,68 @@ interface LanguageTagWithModalProps {
  * The modal displays the skills and repositories for the language.
  * If the language does not have any skills or repositories, the modal cannot be opened.
  *
- * @param language (string): name of the language
- * @param skills (Skill[]): list of skills for the language
- * @param repositories (Repository[]): list of repositories for the language
- * @returns (JSX.Element): language tag with modal (stack of the language
+ * @param language Name of the language
+ * @param skills List of skills for the language
+ * @param repositories List of repositories for the language
+ * @returns Language tag with modal (stack of the language
  */
 const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
-  language,
-  repository,
+  languageIdentifier,
 }) => {
+  const language: SkillInterface = skillDatabase[languageIdentifier];
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const languageSkills =
-    getAssociatedSkills(
-      filterSkillsByType(allSkills, SkillTypes.Hard),
-      language,
-      SkillTypes.Hard
-    ) || [];
-
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const shouldOpenModal = languageSkills && languageSkills.length > 0;
-
   const [groupedBy, setGroupedBy] = useState("category");
-  // Adjusted filtering based on the merged skills field
-  const filteredSkills = (languageSkills || []).filter(
-    (skill) => skill.isMainSkill
+
+  /**
+   * Utility function to filter for main skills excluding a specific category.
+   *
+   * @param skillSlugs List of skill slugs to filter
+   * @param skillsHashmap Hashmap of skills
+   * @param excludedCategory Category to exclude
+   * @returns Filtered list of skill slugs
+   */
+  function filterMainSkillsExcludingCategory(
+    skillSlugs: SkillKeysEnum[],
+    skillsHashmap: Database<SkillInterface>,
+    excludedCategory: SkillCategoriesEnum
+  ): SkillKeysEnum[] {
+    return skillSlugs.filter((slug) => {
+      const skill: SkillInterface = skillsHashmap[slug];
+      return skill.isMainSkill && skill.category !== excludedCategory;
+    });
+  }
+
+  const languageSkillsSlug: SkillKeysEnum[] = filterMainSkillsExcludingCategory(
+    language.relatedSkills || [],
+    skillDatabase,
+    SkillCategoriesEnum.ProgrammingLanguages
   );
-  const groupedSkills = groupSkills(groupedBy, languageSkills || []);
 
-  const projects: ProjectInterface[] = allProjects;
-  const certificates: CertificateInterface[] = allCertificates;
-  const allBlogs: BlogInterface[] = blogs;
-  const allMaterial: MaterialInterface[] = [
-    ...projects,
-    ...certificates,
-    ...allBlogs,
-  ];
+  function handleOpenModal(): void {
+    setIsModalOpen(true);
+  }
 
-  const hasMaterial = isSkillAssociatedWithMaterial(language, allMaterial);
+  const shouldOpenModal: boolean | undefined =
+    language?.relatedSkills && language.relatedSkills.length > 0;
+
+  const groupedSkills: SkillsCategoryInterface[] = groupSkills(
+    groupedBy as GroupByOptions,
+    languageSkillsSlug,
+    skillDatabase,
+    [SkillTypesEnum.General, SkillTypesEnum.Soft]
+  );
+
+  const hasMaterial: boolean = isSkillAssociatedWithMaterial(
+    languageIdentifier,
+    materialDatabase
+  );
 
   const options: FilterOption[] = [
     { slug: "category", entryName: "Category" },
     { slug: "none", entryName: "None" },
   ];
 
-  const currentGroupedName =
+  const currentGroupedName: string =
     options.find((option) => option.slug === groupedBy)?.entryName ||
     "Category";
 
@@ -170,8 +174,8 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
                   <div key={index} className="text-center md:text-left">
                     <HeadingThree title={categoryData.skillCategoryName} />
                     <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-                      {categoryData.skills.map((skill, skillIndex) => (
-                        <SkillTag key={skillIndex} skill={skill} />
+                      {categoryData.skills.map((skillKey, index) => (
+                        <SkillTag key={index} skillKey={skillKey} />
                       ))}
                     </div>
                   </div>
@@ -190,7 +194,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
 												text-center md:text-left
 												justify-start z-10 space-y-2"
                   >
-                    <Link href={`/skills/${language.slug}`}>
+                    <Link href={`/skills/${languageIdentifier as string}`}>
                       <div className="w-full">
                         <Button variant="gradient" className="w-full">
                           {`All ${language.name} Material`}

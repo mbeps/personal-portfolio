@@ -11,9 +11,9 @@ interface Props {
  * Animates the content by sliding it up.
  * Anything wrapped around it is animated.
  *
- * @param offset (string) The offset of the element from the viewport
- * @param children (ReactNode) The content to be animated
- * @returns (JSX.Element): animated content
+ * @param offset The offset of the element from the viewport
+ * @param children The content to be animated
+ * @returns Animated content
  */
 export default function SlideUp({ children, offset = "0px" }: Props) {
   const ref = useRef(null);
@@ -28,7 +28,7 @@ export default function SlideUp({ children, offset = "0px" }: Props) {
           }
         });
       },
-      { rootMargin: offset },
+      { rootMargin: offset }
     );
 
     if (ref.current) {

@@ -11,7 +11,7 @@ type SocialsProps = {
 /**
  * Socials component that displays social links.
  *
- * @returns (JSX.Element) - Socials component
+ * @returns Socials component
  */
 const Socials: React.FC<SocialsProps> = ({ className, iconSize }) => {
   const baseStyles = `
@@ -25,7 +25,7 @@ const Socials: React.FC<SocialsProps> = ({ className, iconSize }) => {
   `;
 
   // Merge the base styles with the className passed in as a prop.
-  const mergedStyles = twMerge(baseStyles, className);
+  const mergedStyles: string = twMerge(baseStyles, className);
 
   return (
     <div className={mergedStyles}>

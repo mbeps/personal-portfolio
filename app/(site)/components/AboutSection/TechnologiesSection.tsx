@@ -1,5 +1,6 @@
 "use client";
 
+import filterCategoriesFromSkills from "@/actions/skills/filter/filterCategoriesFromSkills";
 import TechnologiesModal from "@/components/Modal/TechnologiesModal";
 import SkillTag from "@/components/Tags/SkillTag";
 import HeadingThree from "@/components/Text/HeadingThree";
@@ -8,125 +9,116 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
-import { languages } from "@/database/skills/languages";
-import { technologies } from "@/database/skills/skills";
-import SkillInterface, {
-  SkillCategories,
-} from "@/interfaces/skills/SkillInterface";
-import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
+import skillDatabase from "@/database/skills";
+import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 
 /**
  * Displays a list of skills that I have.
- * These skills may or many not have languages associated with them.
- * There is an option to view more skills which will open a modal.
- * @returns (JSX.Element): skill section (list of skills)
+ * They can be clicked which would redirect to a page showing all the materials (projects, certifications, etc.) related to the skill.
+ * There is also a button that opens a modal where all the skills are displayed.
+ * @returns Skill section (list of skills)
  */
 const TechnologiesSection: React.FC = () => {
+  const mainSkills: Database<SkillInterface> = {};
+
+  Object.entries(skillDatabase).forEach(([key, skill]) => {
+    if (skill.isMainSkill) {
+      mainSkills[key] = skill;
+    }
+  });
+
+  const mainSkillSlugs: SkillKeysEnum[] = Object.keys(
+    mainSkills
+  ) as SkillKeysEnum[];
+
   /**
    * This is a list of categories that should be ignored.
    * Any skills that are in these categories will not be displayed.
    * This categories are from the Skill type.
    */
-  const ignoredCategories = [
-    SkillCategories.ProgrammingLanguages,
-    SkillCategories.ProjectManagers,
-    SkillCategories.ObjectRelationalMappers,
-    SkillCategories.VersionControl,
-    SkillCategories.WebSockets,
-    SkillCategories.Mathematics,
-    SkillCategories.CloudComputing,
-    SkillCategories.Automation,
+  const ignoredCategories: SkillCategoriesEnum[] = [
+    SkillCategoriesEnum.ProgrammingLanguages,
+    SkillCategoriesEnum.ProjectManagers,
+    SkillCategoriesEnum.ObjectRelationalMappers,
+    SkillCategoriesEnum.VersionControl,
+    SkillCategoriesEnum.WebSockets,
+    SkillCategoriesEnum.Mathematics,
+    SkillCategoriesEnum.CloudComputing,
+    SkillCategoriesEnum.Automation,
   ];
 
   /**
-   * Gets the list of related skills from all the languages.
+   * Only technologies (hard skills) are displayed.
+   * Skills from programming languages are not displayed.
    */
-  const allLanguageSkills: SkillInterface[] = languages.reduce(
-    (acc, language) => {
-      return acc.concat(language.relatedSkills || []);
-    },
-    [] as SkillInterface[]
+  const skillsToDisplay: SkillKeysEnum[] = filterCategoriesFromSkills(
+    mainSkills,
+    ignoredCategories
   );
-
-  /**
-   * List of all skills.
-   * This includes skills from languages and technologies.
-   */
-  const displayedSkills: SkillInterface[] = allLanguageSkills
-    .concat(technologies)
-    .filter((skill) => !ignoredCategories.includes(skill.category || "Other"));
 
   /**
    * Gets the first 'limit' skills.
    * These are then displayed as tags.
-   * @param totalLimit (number): the number of skills to take
-   * @returns (string[]): list of skill names
+   * @param totalLimit The number of skills to take
+   * @returns List of skill names
    */
   function firstNSkills(
-    skillsToLimit: SkillInterface[],
+    skillKeys: SkillKeysEnum[],
     totalLimit: number
-  ): SkillInterface[] {
-    const uniqueSkills = new Map<string, SkillInterface>();
-
-    skillsToLimit.forEach((skill) => {
-      if (!uniqueSkills.has(skill.name)) {
-        uniqueSkills.set(skill.name, skill);
-      }
-    });
-
-    return Array.from(uniqueSkills.values()).slice(0, totalLimit);
+  ): SkillKeysEnum[] {
+    return skillKeys.slice(0, totalLimit);
   }
 
   /**
    * Gets the first few skills from each category.
    * These are then displayed as tags.
-   * @param limitPerCategory (number): the number of skills to take from each category
-   * @returns (string[]): list of skill names
+   * @param limitPerCategory The number of skills to take from each category
+   * @returns List of skill names
    */
   function firstNSkillsPerCategory(
-    skillsToLimit: SkillInterface[],
+    skillKeys: SkillKeysEnum[],
     limitPerCategory: number
-  ): SkillInterface[] {
-    // Categorize the skills into an array of SkillsCategoryInterface
-    const skillCategories: SkillsCategoryInterface[] = skillsToLimit.reduce(
-      (acc, skill) => {
-        const category = skill.category || "Other"; // If no category, put in 'Other' category
-        const existingCategory = acc.find(
-          (c) => c.skillCategoryName === category
-        );
+  ): SkillKeysEnum[] {
+    const skillCategories: { [categoryName: string]: SkillKeysEnum[] } = {};
+    let limitedSkillSlugs: SkillKeysEnum[] = [];
 
-        if (existingCategory) {
-          existingCategory.skills.push(skill);
-        } else {
-          acc.push({ skillCategoryName: category, skills: [skill] });
-        }
+    // Organize skill slugs into categories
+    skillKeys.forEach((skillSlug) => {
+      const skillDetails: SkillInterface = skillDatabase[skillSlug];
+      const category: SkillCategoriesEnum = skillDetails.category || "Other";
 
-        return acc;
-      },
-      [] as SkillsCategoryInterface[]
-    );
+      if (!skillCategories[category]) {
+        skillCategories[category] = [];
+      }
 
-    // Take the first 'limitPerCategory' skills from each category
-    let skills: SkillInterface[] = []; // List of skills
-    skillCategories.forEach((categoryData) => {
-      const firstSkills = categoryData.skills.slice(0, limitPerCategory); // Take the first 'limitPerCategory' skills
-      skills = skills.concat(firstSkills); // Merge with existing skills
+      skillCategories[category].push(skillSlug);
     });
 
-    return skills;
+    // Collect the first 'limitPerCategory' skill slugs from each category
+    Object.values(skillCategories).forEach((categorySlugs) => {
+      limitedSkillSlugs = [
+        ...limitedSkillSlugs,
+        ...categorySlugs.slice(0, limitPerCategory),
+      ];
+    });
+
+    return limitedSkillSlugs;
   }
 
-  const handleDisplaySkills = () => {
-    return firstNSkills(firstNSkillsPerCategory(displayedSkills, 2), 16);
-  };
+  function handleDisplaySkills(): SkillKeysEnum[] {
+    return firstNSkills(firstNSkillsPerCategory(skillsToDisplay, 2), 16);
+  }
 
   return (
     <>
       <HeadingThree title="Technologies" />
       <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start -mt-2">
-        {handleDisplaySkills().map((skill: SkillInterface, idx: number) => (
-          <SkillTag key={idx} skill={skill} />
+        {handleDisplaySkills().map((skillSlug: SkillKeysEnum, idx: number) => (
+          <SkillTag key={idx} skillKey={skillSlug} />
         ))}
+
         <div className="relative group">
           {/* Tag that opens skills modal */}
           <Tooltip>

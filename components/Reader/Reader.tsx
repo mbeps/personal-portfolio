@@ -8,9 +8,12 @@ type ReaderProps = {
 };
 
 /**
- * Renders Markdown content into HTML.
- * @param content (string): Markdown content to render
- * @returns (JSX.Element): rendered Markdown content
+ * Renders Markdown content into HTML so that it can be displayed on the page.
+ * The markdown content is displayed in a reader-friendly format similar to how Markdown readers display content.
+ *
+ * @param content Markdown content to render
+ * @param size Size of the text in the reader
+ * @returns Rendered Markdown content
  */
 const Reader: React.FC<ReaderProps> = ({ content, size = "lg" }) => {
   return (

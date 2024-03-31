@@ -1,15 +1,17 @@
-import getContentBySlug from "@/actions/material/getContentBySlug";
-import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
-import filterSkillsByType from "@/actions/skills/filterSkillsByType";
+import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
+import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import Tag from "@/components/Tags/Tag";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
-import allCertificates from "@/database/certificates";
+import developerName from "@/constants/developerName";
+import certificateDatabase from "@/database/certificates";
+import skillDatabase from "@/database/skills";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
-import { SkillTypes } from "@/interfaces/skills/SkillInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,36 +19,46 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle } from "react-icons/bs";
 import { RxTriangleRight } from "react-icons/rx";
-import developerName from "@/constants/developerName";
 
 /**
- * Metadata object for the dynamic certificate page.
- * @param (CredentialPageProps) - props: the content of the certificate
- * @param parent (ResolvingMetadata) - parent metadata
- * @returns (Promise<Metadata>): metadata for the certificate (title and description)
+ * Generates the metadata for the certificates page.
+ * This includes the title and description of the page.
+ * This is used for SEO purposes.
+ *
+ * @param props The props for the skill page.
+ * @param parent The parent metadata that is being resolved.
+ * @returns The metadata for the certificates page.
+ * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
  */
 export async function generateMetadata(
   { params, searchParams }: CertificatesPageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   // Read route params
-  const slug = params.slug;
-
-  // Assume getCertificateBySlug function fetches certificate by slug
-  const certificate = getContentBySlug<CertificateInterface>(
-    slug,
-    allCertificates
-  );
+  const certificateKey: string = params.slug;
+  const certificate: CertificateInterface = certificateDatabase[certificateKey];
 
   // Create metadata based on the certificate details
   return {
     title: `${developerName} - Certificates: ${certificate?.name}`,
-    description: certificate?.slug,
+    description: certificate?.description,
   };
 }
 
+/**
+ * Generates the metadata for the skill page.
+ * This includes the title and description of the page.
+ * This is used for SEO purposes.
+ *
+ * @param props The props for the skill page.
+ * @param parent The parent metadata that is being resolved.
+ * @returns The metadata for the skill page.
+ * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ */
 export const generateStaticParams = async () => {
-  return allCertificates.map((certificate) => ({ slug: certificate.slug }));
+  return Object.keys(certificateDatabase).map((slug) => ({
+    slug,
+  }));
 };
 
 type CertificatesPageProps = {
@@ -65,34 +77,56 @@ type CertificatesPageProps = {
  * - The learning outcomes of the certificate
  * - The skills of the certificate
  * - The issuer page of the certificate
- * @param params (CredentialPageProps) - props: the content of the certificate
- * @returns (JSX.Element): certificate page component
+ *
+ * @param params The certificate identifier used to fetch the certificate
+ * @returns Page displaying the certificate and its details
  */
 const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
-  const slug = params.slug;
+  const certificateKey: string = params.slug;
+  const certificate: CertificateInterface = certificateDatabase[certificateKey];
 
-  const certificate = getContentBySlug<CertificateInterface>(
-    slug,
-    allCertificates
-  );
   if (!certificate) {
     notFound();
   }
 
-  const technologies = filterSkillsByType(certificate.skills, SkillTypes.Hard);
-  const generalSkills = filterSkillsByType(
+  const technologies: SkillKeysEnum[] = filterSkillsByType(
     certificate.skills,
-    SkillTypes.General
+    skillDatabase,
+    SkillTypesEnum.Hard
   );
-  const softSkills = filterSkillsByType(certificate.skills, SkillTypes.Soft);
+  const generalSkills: SkillKeysEnum[] = filterSkillsByType(
+    certificate.skills,
+    skillDatabase,
+    SkillTypesEnum.General
+  );
+  const softSkills: SkillKeysEnum[] = filterSkillsByType(
+    certificate.skills,
+    skillDatabase,
+    SkillTypesEnum.Soft
+  );
 
   // Simplified grouping of skill types for certificates
   const allGroupedSkills = [
-    filterAndGroupSkills(technologies, SkillTypes.Hard, "Technologies"),
-    filterAndGroupSkills(generalSkills, SkillTypes.General, "Technical Skills"),
-    filterAndGroupSkills(softSkills, SkillTypes.Soft, "Soft Skills"),
+    categoriseAndGroupSkills(
+      technologies,
+      skillDatabase,
+      SkillTypesEnum.Hard,
+      "Technologies"
+    ),
+    categoriseAndGroupSkills(
+      generalSkills,
+      skillDatabase,
+      SkillTypesEnum.General,
+      "Technical Skills"
+    ),
+    categoriseAndGroupSkills(
+      softSkills,
+      skillDatabase,
+      SkillTypesEnum.Soft,
+      "Soft Skills"
+    ),
   ];
-  const certificateImage = `/certificates/${slug}.jpg`;
+  const certificateImage = `/certificates/${certificateKey}.jpg`;
 
   return (
     <div className="space-y-6 align-top min-h-[85vh] relative">
@@ -133,7 +167,7 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
           text-neutral-400 dark:text-neutral-600 
             overflow-auto break-words"
         >
-          {slug}
+          {certificateKey}
         </p>
       </div>
 

@@ -4,6 +4,13 @@ interface GridProps {
   items: ReactNode[];
 }
 
+/**
+ * Grid component which displays items in a 2-column grid layout.
+ * If the total number of items is odd, the last item will be centered.
+ *
+ * @param items Items to be displayed in a grid
+ * @returns All the items in a grid layout
+ */
 const Grid: React.FC<GridProps> = ({ items }) => {
   const isOddTotal = items.length % 2 !== 0;
 

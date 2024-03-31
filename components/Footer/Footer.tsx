@@ -4,12 +4,12 @@ import developerName from "@/constants/developerName";
 
 /**
  * Footer to be displayed at the bottom of the page.
- * Contains links to social media accounts.
+ * Contains links to social media accounts and the developer's name.
  *
- * @returns (JSX.Element): Footer component
+ * @returns Footer component
  */
 const Footer = () => {
-  const currentYear = new Date().getFullYear() || 2024;
+  const currentYear: number = new Date().getFullYear() || 2024;
 
   return (
     <footer>

@@ -1,4 +1,5 @@
 "use client";
+
 import useIsMounted from "@/hooks/useIsMounted";
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
@@ -11,10 +12,11 @@ interface TextLoopProps {
 
 /**
  * Loops through an array of strings and displays them one by one.
- * @param loopItems (string[]) - Array of strings to loop through
- * @param delay (number) - Delay between each loop in milliseconds
- * @param className (string) - Class name to apply to the span element
- * @returns (JSX.Element): A span element that loops through the given array of strings
+ *
+ * @param loopItems Array of strings to loop through
+ * @param delay Delay between each loop in milliseconds
+ * @param className Class name to apply to the span element
+ * @returns A span element that loops through the given array of strings
  */
 const SimpleTextLoop: React.FC<TextLoopProps> = ({
   loopItems,

@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
 
+/**
+ * A custom hook that returns a boolean indicating whether the media query matches the current viewport.
+ * This is useful for checking the viewport size and applying responsive styles.
+ * Foe example, displaying certain elements only on mobile.
+ */
 export function useMediaQuery(query: string): boolean {
   const getMatches = (query: string): boolean => {
     // Prevents SSR issues

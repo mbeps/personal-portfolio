@@ -9,18 +9,19 @@ interface CheckboxProps {
   checked: boolean;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   label: string;
-  className?: string; // Adding the className prop
+  className?: string;
 }
 
 /**
  * Checkbox component which allows the user to select multiple options.
  * The checkbox is checked when the user clicks on it.
- * @param id (string): The id of the checkbox.
- * @param checked (boolean): Whether the checkbox is checked or not.
- * @param onChange (function): A function that handles the onChange event.
- * @param label (string): The label of the checkbox.
- * @param className (string): The custom classes to be applied to the checkbox.
- * @returns (JSX.Element): A checkbox component.
+ *
+ * @param id  The ID of the checkbox.
+ * @param checked Whether the checkbox is checked or not.
+ * @param onChange A function that handles the onChange event.
+ * @param label The label of the checkbox.
+ * @param className The custom classes to be applied to the checkbox.
+ * @returns A checkbox component.
  */
 const Checkbox: React.FC<CheckboxProps> = ({
   id,
@@ -30,7 +31,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
   className,
 }) => {
   const [hovered, setHovered] = useState(false);
-  const isMounted = useIsMounted();
+  const isMounted: boolean = useIsMounted();
 
   if (!isMounted) {
     return null;
@@ -39,8 +40,8 @@ const Checkbox: React.FC<CheckboxProps> = ({
   const borderColor = checked
     ? "border-red-500 dark:border-red-900"
     : hovered
-      ? "border-neutral-300 dark:border-red-950"
-      : "border-neutral-200 dark:border-neutral-800";
+    ? "border-neutral-300 dark:border-red-950"
+    : "border-neutral-200 dark:border-neutral-800";
 
   const combinedClassName = twMerge(
     `
@@ -53,11 +54,11 @@ const Checkbox: React.FC<CheckboxProps> = ({
       my-2 
       flex items-center cursor-pointer
     `,
-    className, // Merge user-provided className
+    className // Merge user-provided className
   );
 
   // Add the font weight conditionally based on the checked state
-  const labelClassName = checked ? "font-bold" : "";
+  const labelClassName: string = checked ? "font-bold" : "";
 
   return (
     <label

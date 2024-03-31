@@ -1,30 +1,72 @@
 import NavigationItemInterface from "@/interfaces/NavigationItemInterface";
 
-export const HOME: NavigationItemInterface = {
+/**
+ * Navigation item for the home page.
+ * This is where the user can find information about me, my projects, and my contact information.
+ */
+export const HOME_PAGE: NavigationItemInterface = {
   label: "Home",
   path: "/",
+  description: `
+    The homepage for my personal website. 
+    It contains information about me, my projects and my contact information.
+    I am a software developer and a computer science student graduate from Royal Holloway, University of London.
+    Graduate | Computer Science | Software Developer | Full Stack Developer | Software Engineer
+  `,
 };
 
-export const PROJECTS: NavigationItemInterface = {
+/**
+ * Navigation item for the projects page.
+ * This is where the user can view my projects and filter them according to their preferences.
+ */
+export const PROJECTS_PAGE: NavigationItemInterface = {
   label: "Projects",
   path: "/projects",
+  description: `
+    Discover my portfolio of projects, both current and archived. 
+    Use filters to narrow down projects by category, programming language, and technologies. 
+    Archived projects are hidden by default.
+  `,
 };
 
-export const CERTIFICATES: NavigationItemInterface = {
+/**
+ * Navigation item for the certificates page.
+ * This is where the user can view my certificates and filter them according to their preferences.
+ */
+export const CERTIFICATES_PAGE: NavigationItemInterface = {
   label: "Certificates",
   path: "/certificates",
+  description: `
+    Explore my collection of certificates and qualifications. 
+    Use filters to refine your search by issuer and category. 
+    Archived certificates are initially hidden.
+  `,
 };
 
-export const BLOG: NavigationItemInterface = {
+/**
+ * Navigation item for the blog page.
+ * This is where the user can view my blogs and filter them according to their preferences.
+ */
+export const BLOG_PAGE: NavigationItemInterface = {
   label: "Blog",
   path: "/blogs",
+  description: `
+    Explore my collection of blogs on various topics. 
+    Use the search bar to find specific blogs or filter them by category.
+  `,
 };
 
+/**
+ * List of navigation items that are displayed in the navbar.
+ * Users can navigate to these pages by clicking on the respective items.
+ * The description may be displayed on every page and it is used for SEO purposes.
+ * The order of the items is the order that is used when displaying the items on the website.
+ */
 const NAV_ITEMS: Array<NavigationItemInterface> = [
-  HOME,
-  PROJECTS,
-  CERTIFICATES,
-  BLOG,
+  HOME_PAGE,
+  PROJECTS_PAGE,
+  CERTIFICATES_PAGE,
+  BLOG_PAGE,
 ];
 
 export default NAV_ITEMS;

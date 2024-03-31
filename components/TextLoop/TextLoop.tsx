@@ -13,8 +13,9 @@ type TextLoopProps = {
  * Can loop over the text in a variety of styles:
  * - Simple: loops through the text in a subtle animation
  * - Type Writer: loops through the text in as a type writer
- * @param loopItems (string[]) - Array of strings to loop through
- * @param implementation ("simple" | "typewriter") - The implementation to use for looping through the text
+ *
+ * @param loopItems Array of strings to loop through
+ * @param implementation The implementation to use for looping through the text
  */
 const TextLoop: React.FC<TextLoopProps> = ({
   loopItems,

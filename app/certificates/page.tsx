@@ -1,38 +1,41 @@
 import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/UI/PageDescription";
-import { CERTIFICATES } from "@/constants/pages";
-import allCertificates from "@/database/certificates";
-import CertificateInterface from "@/interfaces/material/CertificateInterface";
+import developerName from "@/constants/developerName";
+import { CERTIFICATES_PAGE } from "@/constants/pages";
 import { Metadata } from "next";
 import React from "react";
 import CertificatesView from "./components/CertificatesView";
-import developerName from "@/constants/developerName";
 
-const description = `
-  Explore my collection of certificates and qualifications. 
-  Use filters to refine your search by issuer and category. 
-  Archived certificates are initially hidden.
-`;
-
+/**
+ * Generates the metadata for the certificates page.
+ * This includes the title and description of the page.
+ * This is used for SEO purposes.
+ *
+ * @param props The props for the skill page.
+ * @param parent The parent metadata that is being resolved.
+ * @returns The metadata for the certificates page.
+ * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ */
 export const metadata: Metadata = {
-  title: `${developerName} - ${CERTIFICATES.label}`,
-  description: description,
+  title: `${developerName} - ${CERTIFICATES_PAGE.label}`,
+  description: CERTIFICATES_PAGE.description,
 };
 
 /**
- * Certificates page displaying multiple types of certificates that I have.
- * Certificates are grouped by type.
- * The user can filter the certificates by category and issuer.
+ * Displays a list of all certificates that I have.
+ * Also allows the user to search and filter the certificates.
+ * These certificates are displayed into categories.
+ *
+ * @returns Page with all certificates
+ * @requires {@link CertificatesView} component to display the certificates and filter/search them
  */
 const CertificatesPage: React.FC = () => {
-  const certificates: CertificateInterface[] = [...allCertificates];
-
   return (
     <section id="projects" className="flex flex-col items-start md:items-end">
       <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
-        <HeadingOne title={CERTIFICATES.label} />
-        <PageDescription description={description} />
-        <CertificatesView allCertificates={certificates} />
+        <HeadingOne title={CERTIFICATES_PAGE.label} />
+        <PageDescription description={CERTIFICATES_PAGE.description} />
+        <CertificatesView />
       </div>
     </section>
   );

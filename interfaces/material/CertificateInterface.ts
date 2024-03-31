@@ -1,37 +1,29 @@
+import CertificateIssuersEnum from "@/enums/CertificateIssuersEnum";
 import MaterialInterface from "./MaterialInterface";
+import CertificateCategoriesEnum from "@/enums/CertificateCategoriesEnum";
 
-export enum CertificateIssuers {
-  Coursera = "Coursera",
-  Udemy = "Udemy",
-  LinkedIn = "LinkedIn",
-  NASBA = "NASBA",
-  PMI = "PMI",
-  GitHub = "GitHub",
-  RoyalHollowayUniversity = "Royal Holloway University",
-  SymphonySolutions = "Symphony Solutions",
-  Amigoscode = "Amigoscode"
-}
-
-export enum CertificateCategories {
-  University = "University",
-  ProgrammingLanguages = "Programming Languages",
-  AlgorithmsDataStructures = "Algorithms & Data Structures",
-  WebDevelopment = "Web Development",
-  SoftwareEngineering = "Software Engineering",
-  DevOps = "DevOps",
-  ArtificialIntelligence = "Artificial Intelligence",
-  Mathematics = "Mathematics",
-  Databases = "Databases",
-  CloudComputing = "Cloud Computing",
-  Management = "Management",
-  Other = "Other"
-}
-
+/**
+ * Interface representing a certificate's metadata and not the content.
+ * These certificates are displayed on the website and show the certificates earned by the user.
+ *
+ * The fields are:
+ * - `description`: the description of the certificate explaining what the certificate is about
+ * - `issuer`: the issuer of the certificate like Coursera, Udemy, etc.
+ * - `certificateURL`: the URL of the certificate in the issuer's website
+ * - `category`: the category of the certificate which is one of the categories defined in {@link CertificateCategoriesEnum}
+ * - `certificateImage`: the image of the certificate added dynamically from function
+ * - `learningOutcomes`: the learning outcomes of the certificate
+ *
+ * Importantly, because this extends the `MaterialInterface`,
+ * it inherits the field `skills` which is an array of `SkillKeysEnum` which is used to represent the skills that are associated to understand the material.
+ *
+ * @requires {@link MaterialInterface} to inherit the fields of the material
+ */
 export default interface CertificateInterface extends MaterialInterface {
   description?: string;
-  issuer: CertificateIssuers;
+  issuer: CertificateIssuersEnum;
   certificateURL: string;
-  category: CertificateCategories;
+  category: CertificateCategoriesEnum;
   certificateImage?: string;
   learningOutcomes?: string[];
 }

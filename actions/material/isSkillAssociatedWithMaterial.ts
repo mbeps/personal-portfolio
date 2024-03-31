@@ -1,25 +1,25 @@
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
 
+/**
+ * Checks whether a skill is associated with any material.
+ *
+ * @param skillKey The key of the skill to check for
+ * @param materialsDatabase  The database of all materials to check for the skill
+ * @returns Whether the skill is associated with any material
+ */
 export default function isSkillAssociatedWithMaterial(
-  skillToCheck: SkillInterface,
-  materials: MaterialInterface[],
+  skillKey: SkillKeysEnum,
+  materialsDatabase: Database<MaterialInterface>
 ): boolean {
-  // Helper function to recursively check if a skill is present in a list of skills
-  const checkNestedSkills = (
-    skills: SkillInterface[],
-    skillSlug: string,
-  ): boolean => {
-    return skills.some(
-      (skill) =>
-        skill.slug === skillSlug ||
-        (skill.relatedSkills &&
-          checkNestedSkills(skill.relatedSkills, skillSlug)),
-    );
-  };
-
-  // Check if the skill is associated with any of the given materials
-  return materials.some((material) =>
-    checkNestedSkills(material.skills, skillToCheck.slug),
-  );
+  // Loop through the materialsMap
+  for (const materialKey in materialsDatabase) {
+    // Check if the current material's skills array includes the skillToCheck
+    if (materialsDatabase[materialKey].skills.includes(skillKey)) {
+      // If found, return true
+      return true;
+    }
+  }
+  // If the loop completes without finding the skill, return false
+  return false;
 }

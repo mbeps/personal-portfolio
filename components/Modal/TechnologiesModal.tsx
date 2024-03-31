@@ -1,6 +1,9 @@
 "use client";
 
-import groupSkills from "@/actions/skills/groupSkills";
+import filterCategoriesFromSkills from "@/actions/skills/filter/filterCategoriesFromSkills";
+import groupSkills, {
+  GroupByOptions,
+} from "@/actions/skills/group/groupSkills";
 import {
   Dialog,
   DialogContent,
@@ -12,11 +15,13 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/shadcn/ui/dropdown-menu";
-import { languages } from "@/database/skills/languages";
-import { technologies } from "@/database/skills/skills";
+import skillDatabase, { skillKeys } from "@/database/skills";
+import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import useIsMounted from "@/hooks/useIsMounted";
 import FilterOption from "@/interfaces/filters/FilterOption";
-import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import Link from "next/link";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
@@ -26,37 +31,30 @@ import HeadingThree from "../Text/HeadingThree";
 import HeadingTwo from "../Text/HeadingTwo";
 import { Button } from "../shadcn/ui/button";
 import { ScrollArea } from "../shadcn/ui/scroll-area";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 
 /**
  * Displays a modal for the skills.
- * The modal displays the skills organized by category or by language.
- * This modal displays skills from languages and technologies.
+ * The modal displays the skills organised by category or by language.
+ * The user can choose how to group the skills.
  *
- * @param languages (Language[]) The languages of the modal
- * @param isOpen (boolean) Whether the modal is open or not
- * @param onClose (function) Function to close the modal
- * @returns (JSX.Element): modal component (stack of the project
+ * @param languages The languages of the modal
+ * @param isOpen Whether the modal is open or not
+ * @param onClose Function to close the modal
+ * @returns Modal component (stack of the project
  */
 const TechnologiesModal: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const isMounted = useIsMounted();
+  const isMounted: boolean = useIsMounted();
   const [groupedBy, setGroupedBy] = useState("category");
 
   if (!isMounted) {
     return null;
   }
 
-  const handleOpenModal = () => {
+  function handleOpenModal(): void {
     setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-  const displayedSkills: SkillInterface[] = [
-    ...languages,
-    ...technologies,
-  ].filter((skill) => skill.isMainSkill);
+  }
 
   const options: FilterOption[] = [
     { slug: "category", entryName: "Category" },
@@ -64,12 +62,53 @@ const TechnologiesModal: React.FC = () => {
     { slug: "none", entryName: "None" },
   ];
 
-  const groupedSkills = groupSkills(groupedBy, displayedSkills, [
-    SkillTypes.General,
-    SkillTypes.Soft,
-  ]);
+  const mainSkillsHashMap: Database<SkillInterface> = {};
 
-  const currentGroupedName =
+  Object.entries(skillDatabase).forEach(([key, skill]) => {
+    if (skill.isMainSkill) {
+      mainSkillsHashMap[key] = skill;
+    }
+  });
+
+  /**
+   * Ignored categories which are not displayed in the modal.
+   * The programming languages are not displayed when the skills are grouped by language.
+   * However, the programming languages are displayed when the skills are grouped by category.
+   * This is because if the programming languages are ignored, their sub-skills will not be displayed.
+   * However, when the skills are grouped by category, the programming languages are displayed which is not needed.
+   */
+  const ignoredCategories: SkillCategoriesEnum[] = [
+    SkillCategoriesEnum.ProjectManagers,
+    SkillCategoriesEnum.ObjectRelationalMappers,
+    SkillCategoriesEnum.VersionControl,
+    SkillCategoriesEnum.WebSockets,
+    SkillCategoriesEnum.CloudComputing,
+    SkillCategoriesEnum.Automation,
+    ...(groupedBy !== "language"
+      ? [SkillCategoriesEnum.ProgrammingLanguages]
+      : []),
+  ];
+
+  /**
+   * Only technologies (hard skills) are displayed.
+   * Skills from programming languages are not displayed.
+   */
+  const skillsToDisplay: SkillKeysEnum[] = filterCategoriesFromSkills(
+    mainSkillsHashMap,
+    ignoredCategories
+  );
+
+  /**
+   * Skill groups which are then displayed.
+   */
+  const groupedSkills: SkillsCategoryInterface[] = groupSkills(
+    groupedBy as GroupByOptions,
+    skillsToDisplay,
+    skillDatabase,
+    [SkillTypesEnum.General, SkillTypesEnum.Soft]
+  );
+
+  const currentGroupedName: string =
     options.find((option) => option.slug === groupedBy)?.entryName ||
     "Category";
 
@@ -86,6 +125,7 @@ const TechnologiesModal: React.FC = () => {
         <ScrollArea className="h-full w-full">
           <div className="px-6 pb-4">
             <div className="flex mt-4">
+              {/* Drop Down */}
               <div
                 className="
                   flex-grow mr-2 mt-2.5
@@ -123,12 +163,13 @@ const TechnologiesModal: React.FC = () => {
               </DropdownMenu>
             </div>
 
+            {/* List of Skills */}
             {groupedSkills.map((categoryData, index) => (
               <div key={index} className="mt-4 text-center md:text-left">
                 <HeadingThree title={categoryData.skillCategoryName} />
                 <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-                  {categoryData.skills.map((skill, skillIndex) => (
-                    <SkillTag key={skillIndex} skill={skill} />
+                  {categoryData.skills.map((skillSlug) => (
+                    <SkillTag key={skillSlug} skillKey={skillSlug} />
                   ))}
                 </div>
               </div>
@@ -137,6 +178,7 @@ const TechnologiesModal: React.FC = () => {
             {/* separator */}
             <div className="w-full h-px bg-neutral-200 dark:bg-neutral-700 my-8" />
 
+            {/* All Material Button */}
             <div
               className="
                 flex flex-wrap flex-col

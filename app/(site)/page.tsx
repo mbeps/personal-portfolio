@@ -3,18 +3,16 @@ import AboutSection from "./components/AboutSection/AboutSection";
 import HeroSection from "./components/HeroSection";
 import ProjectsSection from "./components/ProjectSection";
 import developerName from "@/constants/developerName";
+import { HOME_PAGE } from "@/constants/pages";
 
 export const metadata: Metadata = {
   title: developerName,
-  description: `The homepage for my personal website. 
-    It contains information about me, my projects and my contact information.
-    I am a software developer and a computer science student graduate from Royal Holloway, University of London.
-    Graduate | Computer Science | Software Developer | Full Stack Developer | Software Engineer`,
+  description: HOME_PAGE.description,
 };
 
 /**
  * Home page which contains the Hero, About and Projects sections.
- * @returns (JSX.Element): Home page
+ * @returns Home page
  */
 export default function Home() {
   return (

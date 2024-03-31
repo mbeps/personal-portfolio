@@ -1,42 +1,40 @@
 import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/UI/PageDescription";
-import { PROJECTS } from "@/constants/pages";
-import allProjects from "@/database/projects";
+import developerName from "@/constants/developerName";
+import { PROJECTS_PAGE } from "@/constants/pages";
 import type { Metadata } from "next";
 import ProjectsView from "./components/ProjectsView";
-import updateProjectImages from "@/actions/file-system/updateProjectImages";
-import developerName from "@/constants/developerName";
 
-const description = `
-  Discover my portfolio of projects, both current and archived. 
-  Use filters to narrow down projects by category, programming language, and technologies. 
-  Archived projects are hidden by default.
-`;
-
+/**
+ * Generates the metadata for the project page.
+ * This includes the title and description of the page.
+ * This is used for SEO purposes.
+ *
+ * @param props The props for the skill page.
+ * @param parent The parent metadata that is being resolved.
+ * @returns The metadata for the project page.
+ * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ */
 export const metadata: Metadata = {
-  title: `${developerName} - ${PROJECTS.label}`,
-  description: description,
+  title: `${developerName} - ${PROJECTS_PAGE.label}`,
+  description: PROJECTS_PAGE.description,
 };
 
 /**
- * Projects page displaying multiple types of projects that I worked on.
- * Projects are grouped by type.
- * The categories are displayed in this order.
- * The user can filter the projects by type, language, and other options.
- * The user can also search for a specific project:
- * - Name of the project
- * - Programming language
- * - Type of project
- * - Technologies used
- * @returns (JSX.Element): Projects page
+ * Displays a list of all projects that I have worked on.
+ * Also allows the user to search and filter the projects.
+ * These projects are displayed into categories.
+ *
+ * @returns Page with all projects
+ * @requires {@link ProjectsView} component to display the projects and filter/search them
  */
 const ProjectsPage = () => {
   return (
     <section id="projects" className="flex flex-col items-start md:items-end">
       <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
-        <HeadingOne title={PROJECTS.label} />
-        <PageDescription description={description} />
-        <ProjectsView allProjects={updateProjectImages(allProjects)} />
+        <HeadingOne title={PROJECTS_PAGE.label} />
+        <PageDescription description={PROJECTS_PAGE.description} />
+        <ProjectsView />
       </div>
     </section>
   );

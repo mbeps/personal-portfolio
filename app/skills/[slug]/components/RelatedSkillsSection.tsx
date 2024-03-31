@@ -1,42 +1,60 @@
-import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
-import filterSkillsByType from "@/actions/skills/filterSkillsByType";
-import getAssociatedSkills from "@/actions/skills/getAssociatedSkills";
+import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
+import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import allSkills from "@/database/skills/skills";
-import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import skillDatabase from "@/database/skills";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
 import React from "react";
 
 interface RelatedSkillsSectionProps {
-  skill: SkillInterface;
+  skillKey: SkillKeysEnum;
 }
 
+/**
+ * Displays all the sub-skills for a given skill.
+ * These skills are grouped by their skill type (Hard, General, Soft) and displayed in a table format.
+ * Each group of skills is also categorised by their skill category.\
+ *
+ * @param skillKey The key of the skill to display the related skills for.
+ * @returns A React component that displays all the related skills for a given skill.
+ */
 const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
-  skill,
+  skillKey,
 }) => {
-  const allAssociatedSkills = getAssociatedSkills(allSkills, skill);
+  const skill: SkillInterface = skillDatabase[skillKey];
 
-  if (!allAssociatedSkills || allAssociatedSkills.length === 0) {
+  const associatedSkills: SkillKeysEnum[] = skill.relatedSkills || [];
+
+  if (!associatedSkills || associatedSkills.length === 0) {
     return null;
   }
 
-  const allGroupedSkills = [
-    filterAndGroupSkills(
-      filterSkillsByType(allAssociatedSkills, SkillTypes.Hard),
-      SkillTypes.Hard,
-      "Technologies"
-    ),
-    filterAndGroupSkills(
-      filterSkillsByType(allAssociatedSkills, SkillTypes.General),
-      SkillTypes.General,
-      "Technical Skills"
-    ),
-    filterAndGroupSkills(
-      filterSkillsByType(allAssociatedSkills, SkillTypes.Soft),
-      SkillTypes.Soft,
-      "Soft Skills"
-    ),
+  // Define the skill types and their corresponding group titles
+  const skillTypeGroups = [
+    { type: SkillTypesEnum.Hard, title: "Technologies" },
+    { type: SkillTypesEnum.General, title: "Technical Skills" },
+    { type: SkillTypesEnum.Soft, title: "Soft Skills" },
   ];
+
+  // Use map to iterate over each group, filter, and then group the skills accordingly
+  const allGroupedSkills: GroupedSkillsCategoriesInterface[] =
+    skillTypeGroups.map(({ type, title }) => {
+      const filteredSkills: SkillKeysEnum[] = filterSkillsByType(
+        associatedSkills,
+        skillDatabase,
+        type
+      );
+
+      return categoriseAndGroupSkills(
+        filteredSkills,
+        skillDatabase,
+        type,
+        title
+      );
+    });
 
   return (
     <>

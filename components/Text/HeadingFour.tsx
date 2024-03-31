@@ -7,8 +7,8 @@ interface HeadingFourProps {
 /**
  * Heading 4 text component shown under heading 3.
  *
- * @param title (string): heading to be displayed for each section
- * @returns (JSX.Element): subheading component
+ * @param title Heading to be displayed for each section
+ * @returns Subheading component
  */
 const HeadingFour: React.FC<HeadingFourProps> = ({ title }) => {
   return (

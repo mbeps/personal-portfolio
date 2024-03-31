@@ -12,12 +12,12 @@ interface TagProps {
  * Has hover effect and little arrow when clickable.
  * If it is not clickable, it will not have the hover effect.
  * If the tag is a "..." it will have a little animation.
- * @param children (React.ReactNode) The content of the tag
- * @param onClick (function) The action to be performed when the tag is clicked
+ * @param childrenThe content of the tag
+ * @param onClick The action to be performed when the tag is clicked
  * @returns (JSX.Element): a tag
  */
 const Tag: React.FC<TagProps> = ({ children, onClick, hasHover }) => {
-  const baseClassName = `
+  const baseClassName: string = `
     group
     bg-gray-200 dark:bg-red-950
     px-4 py-2 mr-2 mt-2 rounded-lg
@@ -26,13 +26,14 @@ const Tag: React.FC<TagProps> = ({ children, onClick, hasHover }) => {
     border-2 border-gray-200 dark:border-red-950
     shadow-sm
   `;
-  const hoverClassName = `
+
+  const hoverClassName: string = `
     md:hover:border-gray-400 md:hover:dark:border-red-900
     hover:shadow-md
     cursor-pointer
   `;
 
-  const className =
+  const className: string =
     onClick || hasHover ? `${baseClassName} ${hoverClassName}` : baseClassName;
 
   return (

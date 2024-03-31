@@ -1,17 +1,18 @@
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
-import getContentBySlug from "@/actions/material/getContentBySlug";
-import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
-import filterSkillsByType from "@/actions/skills/filterSkillsByType";
+import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
+import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
 import Reader from "@/components/Reader/Reader";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import { BLOG } from "@/constants/pages";
-import blogs from "@/database/blogs";
+import developerName from "@/constants/developerName";
+import { BLOG_PAGE } from "@/constants/pages";
+import blogDatabase from "@/database/blogs";
+import skillDatabase from "@/database/skills";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import BlogInterface from "@/interfaces/material/BlogInterface";
-import { SkillTypes } from "@/interfaces/skills/SkillInterface";
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
-import developerName from "@/constants/developerName";
 
 type BlogPageProps = {
   params: { slug: string };
@@ -19,21 +20,21 @@ type BlogPageProps = {
 };
 
 /**
- * Metadata object for the dynamic blog page.
- * Each blog page has a unique title and description.
- * @param (BlogPageProps) - props: the content of the blog
- * @param parent (ResolvingMetadata) - parent metadata
- * @returns (Promise<Metadata>): metadata for the blog (title and description
+ * Generates the metadata for the blog page.
+ * This includes the title and description of the page.
+ * This is used for SEO purposes.
+ *
+ * @param props The props for the skill page.
+ * @param parent The parent metadata that is being resolved.
+ * @returns The metadata for the blog page.
+ * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
  */
 export async function generateMetadata(
   { params, searchParams }: BlogPageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const slug = params.slug;
-  const allBlogs = blogs;
-
-  // Assume getBlogMetadataById function fetches metadata by slug
-  const blog = getContentBySlug<BlogInterface>(slug, allBlogs);
+  const blogKey: string = params.slug;
+  const blog: BlogInterface = blogDatabase[blogKey];
 
   return {
     title: `${developerName} - Blogs: ${blog?.name}`,
@@ -42,51 +43,76 @@ export async function generateMetadata(
 }
 
 /**
- * Generates the static paths for the blogs.
- * This means that the blog are pre-rendered and can be opened without a server.
- * This is Incremental Static Regeneration and improves the performance of the website.
- * This improves the performance of the website.
- * @returns (Array): array of blogs
+ * Generates the metadata for the blogs page.
+ * This includes the title and description of the page.
+ * This is used for SEO purposes.
+ *
+ * @param props The props for the skill page.
+ * @param parent The parent metadata that is being resolved.
+ * @returns The metadata for the blogs page.
+ * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
  */
 export const generateStaticParams = async () => {
-  // get all blogs with metadata
-  const allBlogs = blogs;
-
-  // Map through all blogs and return an array of objects with the slug for each blog
-  return allBlogs.map((blog) => ({
-    slug: blog.slug,
+  return Object.keys(blogDatabase).map((slug) => ({
+    slug,
   }));
 };
 
 /**
  * Page displaying the rendered markdown which can be read by the user.
- * @param props: the content of the blog
- * @returns (JSX.Element): content of the blog
+ * The blog also displays the skills used in the blog.
+ *
+ * @param props The content of the blog
+ * @returns Content of the blog and the skills used
  */
 const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
-  const slug = params.slug;
-  const basePath = BLOG.path;
-  const blogMetadata = getContentBySlug<BlogInterface>(slug, blogs);
-  const blogContent = getMarkdownFromFileSystem(
-    `public${basePath}/${slug}/blog.md`
+  const blogKey: string = params.slug;
+  const basePath: string = BLOG_PAGE.path;
+  const blogMetadata: BlogInterface = blogDatabase[blogKey];
+  const blogContent: string | undefined = getMarkdownFromFileSystem(
+    `public${basePath}/${blogKey}/blog.md`
   )?.content;
 
   if (!blogContent || !blogMetadata) {
     notFound();
   }
 
-  const technologies = filterSkillsByType(blogMetadata.skills, SkillTypes.Hard);
-  const generalSkills = filterSkillsByType(
+  const technologies: SkillKeysEnum[] = filterSkillsByType(
     blogMetadata.skills,
-    SkillTypes.General
+    skillDatabase,
+    SkillTypesEnum.Hard
   );
-  const softSkills = filterSkillsByType(blogMetadata.skills, SkillTypes.Soft);
+  const generalSkills: SkillKeysEnum[] = filterSkillsByType(
+    blogMetadata.skills,
+    skillDatabase,
+    SkillTypesEnum.General
+  );
+  const softSkills: SkillKeysEnum[] = filterSkillsByType(
+    blogMetadata.skills,
+    skillDatabase,
+    SkillTypesEnum.Soft
+  );
 
   // Using the new function to group all skill types
   const allGroupedSkills = [
-    filterAndGroupSkills(technologies, SkillTypes.Hard, "Technologies"),
-    filterAndGroupSkills(generalSkills, SkillTypes.General, "Technical Skills"),
-    filterAndGroupSkills(softSkills, SkillTypes.Soft, "Soft Skills"),
+    categoriseAndGroupSkills(
+      technologies,
+      skillDatabase,
+      SkillTypesEnum.Hard,
+      "Technologies"
+    ),
+    categoriseAndGroupSkills(
+      generalSkills,
+      skillDatabase,
+      SkillTypesEnum.General,
+      "Technical Skills"
+    ),
+    categoriseAndGroupSkills(
+      softSkills,
+      skillDatabase,
+      SkillTypesEnum.Soft,
+      "Soft Skills"
+    ),
   ];
 
   return (

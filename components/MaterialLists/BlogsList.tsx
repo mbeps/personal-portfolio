@@ -1,11 +1,20 @@
 import stringToSlug from "@/actions/stringToSlug";
-import BlogItem from "@/components/Blogs/BlogItem";
+import BlogItem from "@/components/MaterialItems/BlogItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import Grid from "@/components/UI/Grid";
-import BlogInterface from "@/interfaces/material/BlogInterface";
 import MaterialListProps from "@/interfaces/props/MaterialListProps";
 
-const BlogsList: React.FC<MaterialListProps> = ({ groupedMaterial: groupedBlogs }) => {
+/**
+ * List of blogs grouped by category to be displayed section by section.
+ * Each section contains a title and a list of blogs.
+ * If there are no blogs to display, a message is shown.
+ *
+ * @param groupedBlogs List of blogs grouped by category to be displayed section by section
+ * @returns A list of blogs grouped by category
+ */
+const BlogsList: React.FC<MaterialListProps> = ({
+  groupedMaterial: groupedBlogs,
+}) => {
   return (
     <div className="material-page-wrapper">
       {groupedBlogs.length > 0 ? (
@@ -15,16 +24,15 @@ const BlogsList: React.FC<MaterialListProps> = ({ groupedMaterial: groupedBlogs 
               <section key={group.groupName} id={stringToSlug(group.groupName)}>
                 <div className="flex flex-col space-y-10">
                   <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
-                  {/* Assuming HeadingTwo is a component you have for rendering titles */}
                   <HeadingTwo title={group.groupName} />
                   <Grid
-                    items={group.materials.map((blog, idx) => (
-                      <BlogItem key={idx} {...(blog as BlogInterface)} />
+                    items={group.materialsKeys.map((blogKey) => (
+                      <BlogItem key={blogKey} blogKey={blogKey} />
                     ))}
                   />
                 </div>
               </section>
-            ),
+            )
         )
       ) : (
         <div className="flex justify-center min-w-full mt-8">

@@ -1,33 +1,65 @@
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
-import { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 
+/**
+ * Adds sub-skills to the materials database based on the related skills which are already present.
+ * For each material, it will iterate over the skills and add any related skills that match the specified skill type.
+ * This is useful for adding nested skills to materials, such as adding frameworks to a programming language.
+ *
+ * @param materialsDatabase The database of all materials to add nested skills to
+ * @param skillsDatabase  The database of all skills to check for related skills
+ * @param ignoredCategories The categories of skills to ignore when adding nested skills
+ * @param skillTypeToAdd Skill types to check from the related skills for nested skills
+ * @param skillTypeToCheck Skill types that can be added to the material
+ * @returns The materials database with nested skills added
+ */
 export default function addNestedSkillsMaterialList<
-  T extends MaterialInterface,
+  T extends MaterialInterface
 >(
-  materials: T[],
-  skillTypeToAdd?: SkillTypes, // Use SkillTypes enum or undefined for "all"
-  skillTypeToCheck?: SkillTypes, // Use SkillTypes enum or undefined for "all"
-): T[] {
-  return materials.map((material) => {
-    // Clone the material to avoid mutating the original object
-    const newMaterial = { ...material, skills: [...material.skills] };
+  materialsDatabase: Database<T>,
+  skillsDatabase: Database<SkillInterface>,
+  ignoredCategories: SkillCategoriesEnum[],
+  skillTypeToAdd?: SkillTypesEnum,
+  skillTypeToCheck?: SkillTypesEnum
+): Database<T> {
+  // Iterate over each material
+  Object.keys(materialsDatabase).forEach((materialKey) => {
+    const material: T = materialsDatabase[materialKey];
 
-    // Iterate over each skill in the material
-    material.skills.forEach((skill) => {
-      // Check if the skill matches the skillTypeToCheck
-      if (!skillTypeToCheck || skill.skillType === skillTypeToCheck) {
-        // Add related skills if they match skillTypeToAdd
-        skill.relatedSkills?.forEach((relatedSkill) => {
-          if (!skillTypeToAdd || relatedSkill.skillType === skillTypeToAdd) {
-            // Avoid adding duplicate skills
-            if (!newMaterial.skills.some((s) => s.slug === relatedSkill.slug)) {
-              newMaterial.skills.push(relatedSkill);
+    // Use a Set to store skills to ensure uniqueness
+    const skillsToAddSet: Set<SkillKeysEnum> = new Set(material.skills);
+
+    // Iterate over each skill in the material's skills array
+    material.skills.forEach((skillSlug) => {
+      const skill = skillsDatabase[skillSlug];
+
+      // Check if the skill's category is not in the ignored categories
+      if (!ignoredCategories.includes(skill.category)) {
+        // Check if the current skill matches the type to check (or if type to check is undefined)
+        if (!skillTypeToCheck || skill.skillType === skillTypeToCheck) {
+          // Add related skills if they match the type to add (or if type to add is undefined)
+          skill.relatedSkills?.forEach((relatedSkillSlug) => {
+            const relatedSkill = skillsDatabase[relatedSkillSlug];
+            // Ensure the related skill is not in an ignored category
+            if (!ignoredCategories.includes(relatedSkill.category)) {
+              if (
+                !skillTypeToAdd ||
+                relatedSkill.skillType === skillTypeToAdd
+              ) {
+                skillsToAddSet.add(relatedSkillSlug);
+              }
             }
-          }
-        });
+          });
+        }
       }
     });
 
-    return newMaterial;
+    // Convert the Set back to an array and assign it to the material's skills
+    material.skills = Array.from(skillsToAddSet);
   });
+
+  return materialsDatabase;
 }

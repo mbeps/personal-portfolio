@@ -6,55 +6,59 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
-import blogs from "@/database/blogs";
-import certificates from "@/database/certificates";
-import allProjects from "@/database/projects";
-import allSkills from "@/database/skills/skills";
-import BlogInterface from "@/interfaces/material/BlogInterface";
-import MaterialInterface from "@/interfaces/material/MaterialInterface";
-import ProjectInterface from "@/interfaces/material/ProjectInterface";
+import materialDatabase from "@/database/material";
+import skillDatabase from "@/database/skills";
 import SkillInterface from "@/interfaces/skills/SkillInterface";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import Tag from "./Tag";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 
 interface TagProps {
-  skill: SkillInterface;
+  skillKey: SkillKeysEnum;
   hide?: boolean;
 }
 
-const SkillTag: React.FC<TagProps> = ({ skill, hide }) => {
-  const currentPath = usePathname();
+/**
+ * Tag component for displaying a skill.
+ * This component can be clicked to navigate to the skill's material if the skill has associated material.
+ * Associated material are projects, blogs, certifications, etc.
+ *
+ * @param skillKey The key of the skill to be displayed
+ * @param hide Whether to hide the tag or not
+ * @returns A tag with the name of the skill
+ */
+const SkillTag: React.FC<TagProps> = ({ skillKey, hide }) => {
+  const currentPath: string = usePathname();
+  const skill: SkillInterface = skillDatabase[skillKey];
 
-  const skills: SkillInterface[] = allSkills;
-  const allBlogs: BlogInterface[] = blogs;
-  const projects: ProjectInterface[] = allProjects;
-  const allMaterial: MaterialInterface[] = [...projects, ...certificates, ...allBlogs];
+  const hasMaterial: ConstrainBoolean = isSkillAssociatedWithMaterial(
+    skillKey,
+    materialDatabase
+  );
 
-  const hasMaterial = isSkillAssociatedWithMaterial(skill, allMaterial);
-
-  if (hide) {
+  if (hide || !skill) {
     return <></>;
   }
 
-  let skillLink = `/skills/${skill.slug}`;
-  if (!hasMaterial) {
-    skillLink = currentPath;
-    return <Tag hasHover={hasMaterial}>{skill.name}</Tag>;
-  }
+  // If the skill exists but there's no associated material, adjust the link accordingly
+  let skillLink: string = hasMaterial ? `/skills/${skillKey}` : currentPath;
 
-  return (
+  // Render the skill tag with a link if there's associated material, otherwise just show the tag
+  return hasMaterial ? (
     <Tooltip>
       <TooltipTrigger>
         <Link href={skillLink}>
-          <Tag hasHover={hasMaterial}>{skill.name}</Tag>
+          <Tag hasHover={true}>{skill.name}</Tag>
         </Link>
       </TooltipTrigger>
       <TooltipContent>
         <p>{`Navigate to all material related to ${skill.name}`}</p>
       </TooltipContent>
     </Tooltip>
+  ) : (
+    <Tag hasHover={false}>{skill.name}</Tag>
   );
 };
 

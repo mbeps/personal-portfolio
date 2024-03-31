@@ -1,10 +1,11 @@
 import getImagesFromFileSystem from "@/actions/file-system/getImagesFromFileSystem";
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
 import getVideosFromFileSystem from "@/actions/file-system/getVideosFromFileSystem";
-import getContentBySlug from "@/actions/material/getContentBySlug";
-import hasProjectCover from "@/actions/material/projects/hasProjectCover";
-import filterAndGroupSkills from "@/actions/skills/filterAndGroupSkills";
-import filterSkillsByType from "@/actions/skills/filterSkillsByType";
+import filterSkillsByCategory, {
+  filterSkillSlugsExcludingCategory,
+} from "@/actions/skills/filter/filterSkillsByCategory";
+import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
+import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
 import Gallery from "@/components/Gallery/Gallery";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import SkillTag from "@/components/Tags/SkillTag";
@@ -12,9 +13,15 @@ import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
-import { PROJECTS } from "@/constants/pages";
-import allProjects from "@/database/projects";
+import developerName from "@/constants/developerName";
+import { PROJECTS_PAGE } from "@/constants/pages";
+import projectDatabase from "@/database/projects";
+import skillDatabase from "@/database/skills";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
+import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -22,27 +29,26 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
-import {
-  SkillCategories,
-  SkillTypes,
-} from "@/interfaces/skills/SkillInterface";
-import developerName from "@/constants/developerName";
 
 /**
- * Metadata object for the dynamic project page.
- * @param (ProjectPageProps) - props: the content of the project
- * @param parent (ResolvingMetadata) - parent metadata
- * @returns (Promise<Metadata>): metadata for the project (title and description)
+ * Generates the metadata for the project page.
+ * This includes the title and description of the page.
+ * This is used for SEO purposes.
+ *
+ * @param props The props for the project page.
+ * @param parent The parent metadata that is being resolved.
+ * @returns The metadata for the project page.
+ * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
  */
 export async function generateMetadata(
   { params, searchParams }: ProjectPageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   // Read route params
-  const slug = params.slug;
+  const projectKey: string = params.slug;
 
   // Assume getProjectBySlug function fetches project by slug
-  const project = getContentBySlug(slug, allProjects);
+  const project: ProjectInterface = projectDatabase[projectKey];
 
   // Create metadata based on the project details
   return {
@@ -56,9 +62,14 @@ export async function generateMetadata(
  * These are then used to pre-render the projects pages.
  * This Incremental Static Regeneration allows the projects to be displayed without a server.
  * This improves the performance of the website.
+ *
+ * @returns A list of all the keys for the static pages that need to be generated.
+ * @see https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration
  */
 export const generateStaticParams = async () => {
-  return allProjects.map((project) => ({ slug: project.slug }));
+  return Object.keys(projectDatabase).map((slug) => ({
+    slug,
+  }));
 };
 
 interface ProjectPageProps {
@@ -67,97 +78,120 @@ interface ProjectPageProps {
 }
 
 /**
- * Displays the page for a specific project.
- * The project is determined by the slug in the URL.
- * At the top, the gallery of images is displayed for the project (if available).
- * If the project has no images, the project image is displayed instead.
- * If the project has no images or project image, a placeholder is displayed.
- * Bellow the gallery is the project's metadata:
- * - Description (left side on desktop, top on mobile)
- * - Language (right side on desktop, top on mobile)
- * - Technologies (right side on desktop, bottom on mobile)
- * - Links (left side on desktop, bottom on mobile)
- * Bellow the metadata is the features section.
- * @param props (ProjectPageProps): the project slug
- * @returns (JSX.Element): Project Page Component
+ * Page displaying the project details including:
+ * - Gallery of images and videos if available
+ * - Description of the projects
+ * - Programming languages used
+ * - Table showing technologies used, and general and soft skills associated
+ * - Links to the project repository and deployment
+ * - Features and blog content
+ *
+ * @param props The identifier of the project from the URL used to fetch the project
+ * @returns Page displaying the project and its details
  */
 const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
-  const slug = params.slug;
-  const basePath = PROJECTS.path;
-  const project = getContentBySlug<ProjectInterface>(slug, allProjects);
+  const projectKey: string = params.slug;
+  const basePath: string = PROJECTS_PAGE.path;
+  const project: ProjectInterface = projectDatabase[projectKey];
 
   // redirect to not found page if the project is not valid
   if (!project) {
     notFound();
   }
 
-  const projectLanguages = project.skills.filter(
-    (skill) => skill.category === SkillCategories.ProgrammingLanguages
-  );
-  const projectSkillsWithoutLanguage = project.skills.filter(
-    (skill) => skill.category !== SkillCategories.ProgrammingLanguages
+  const hasCoverImage: boolean = project.thumbnailImage !== undefined;
+  const coverImagePath: string = `${basePath}/${projectKey}/cover.png`;
+
+  const projectLanguages: SkillKeysEnum[] = filterSkillsByCategory(
+    project.skills,
+    skillDatabase,
+    SkillCategoriesEnum.ProgrammingLanguages
   );
 
-  const projectName = project.name;
-  const projectDescription = project.description;
-  const hasCoverImage = hasProjectCover(slug);
-  const coverImagePath = `${basePath}/${slug}/cover.png`;
+  const projectSkillsWithoutLanguage: SkillKeysEnum[] =
+    filterSkillSlugsExcludingCategory(
+      project.skills,
+      skillDatabase,
+      SkillCategoriesEnum.ProgrammingLanguages
+    );
 
-  const technologies = filterSkillsByType(
+  const technologies: SkillKeysEnum[] = filterSkillsByType(
     projectSkillsWithoutLanguage,
-    SkillTypes.Hard
+    skillDatabase,
+    SkillTypesEnum.Hard
   );
-  const generalSkills = filterSkillsByType(
+  const generalSkills: SkillKeysEnum[] = filterSkillsByType(
     projectSkillsWithoutLanguage,
-    SkillTypes.General
+    skillDatabase,
+    SkillTypesEnum.General
   );
-  const softSkills = filterSkillsByType(
+  const softSkills: SkillKeysEnum[] = filterSkillsByType(
     projectSkillsWithoutLanguage,
-    SkillTypes.Soft
+    skillDatabase,
+    SkillTypesEnum.Soft
   );
 
   // Using the new function to group all skill types
-  const allGroupedSkills = [
-    filterAndGroupSkills(technologies, SkillTypes.Hard, "Technologies"),
-    filterAndGroupSkills(generalSkills, SkillTypes.General, "Technical Skills"),
-    filterAndGroupSkills(softSkills, SkillTypes.Soft, "Soft Skills"),
+  const allGroupedSkills: GroupedSkillsCategoriesInterface[] = [
+    categoriseAndGroupSkills(
+      technologies,
+      skillDatabase,
+      SkillTypesEnum.Hard,
+      "Technologies"
+    ),
+    categoriseAndGroupSkills(
+      generalSkills,
+      skillDatabase,
+      SkillTypesEnum.General,
+      "Technical Skills"
+    ),
+    categoriseAndGroupSkills(
+      softSkills,
+      skillDatabase,
+      SkillTypesEnum.Soft,
+      "Soft Skills"
+    ),
   ];
 
-  const getImages = () => {
-    let images = getImagesFromFileSystem(`public${basePath}/${slug}/media`);
+  function getImages(): string[] {
+    let images: string[] = getImagesFromFileSystem(
+      `public${basePath}/${projectKey}/media`
+    );
 
     // add the path to the media items
-    images = images.map((image) => `${basePath}/${slug}/media/${image}`);
+    images = images.map((image) => `${basePath}/${projectKey}/media/${image}`);
 
     return images;
-  };
+  }
 
-  const getVideos = () => {
-    let videos = getVideosFromFileSystem(`public${basePath}/${slug}/media`);
+  function getVideos(): string[] {
+    let videos: string[] = getVideosFromFileSystem(
+      `public${basePath}/${projectKey}/media`
+    );
 
     // add the path to the media items
-    videos = videos.map((video) => `${basePath}/${slug}/media/${video}`);
+    videos = videos.map((video) => `${basePath}/${projectKey}/media/${video}`);
 
     return videos;
-  };
+  }
 
-  const images = getImages();
-  const videos = getVideos();
+  const images: string[] = getImages();
+  const videos: string[] = getVideos();
 
   /**
    * Get the features and blog content from the file system.
    * This is used to display the features and blog sections.
    */
-  const features = getMarkdownFromFileSystem(
-    `public${basePath}/${slug}/features.md`
+  const features: string | undefined = getMarkdownFromFileSystem(
+    `public${basePath}/${projectKey}/features.md`
   )?.content;
 
   /**
    * Get the features and blog content from the file system.
    * This is used to display the features and blog sections.
    */
-  const blog = getMarkdownFromFileSystem(
-    `public${basePath}/${slug}/report.md`
+  const blog: string | undefined = getMarkdownFromFileSystem(
+    `public${basePath}/${projectKey}/report.md`
   )?.content;
 
   return (
@@ -203,20 +237,24 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
           <HeadingThree title="Description" />
           <div className="flex flex-wrap justify-center md:justify-start z-10 mt-5">
             <p className="text-neutral-800 dark:text-neutral-300">
-              {projectDescription}
+              {project.description}
             </p>
           </div>
         </div>
 
         {/* Language Section */}
-        {projectLanguages && projectLanguages.length > 0 && (
+        {projectLanguages && Object.keys(projectLanguages).length > 0 && (
           <div className="text-center md:text-left">
             <HeadingThree
-              title={projectLanguages.length > 1 ? "Languages" : "Language"}
+              title={
+                Object.keys(projectLanguages).length > 1
+                  ? "Languages"
+                  : "Language"
+              }
             />
             <div className="flex flex-wrap justify-center md:justify-start z-10 mt-5">
               {projectLanguages.map((language, index) => (
-                <SkillTag key={index} skill={language} />
+                <SkillTag key={index} skillKey={language} />
               ))}
             </div>
           </div>

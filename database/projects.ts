@@ -1,149 +1,21 @@
 import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
-import ProjectInterface, {
-  ProjectCategories,
-} from "@/interfaces/material/ProjectInterface";
-import {
-  algorithms,
-  artificialIntelligence,
-  boosting,
-  dataScience,
-  dataStructures,
-  designPatterns,
-  hyperparameters,
-  machineLearning,
-  neuralNetworks,
-  oop,
-} from "./skills/generalSkills";
-import {
-  gameMakerLanguage,
-  java,
-  javascript,
-  python,
-  shellScript,
-  typescript,
-} from "./skills/languages";
-import {
-  adaptability,
-  communication,
-  creativity,
-  criticalThinking,
-  leadership,
-  problemSolving,
-  projectManagement,
-  riskManagement,
-  scopeManagement,
-  stakeholderManagement,
-  teamwork,
-  timeManagement,
-} from "./skills/softSkills";
-import {
-  openAI,
-  pusher,
-  replicateAI,
-  rest,
-  tRPC,
-} from "./skills/technicalHardSkills/technicalHardSkillsAPIs";
-import {
-  auth0,
-  clerkAuth,
-  cloudinary,
-  django,
-  edgestore,
-  firebase,
-  flask,
-  jwt,
-  nextauth,
-  stripe,
-  supabase,
-} from "./skills/technicalHardSkills/technicalHardSkillsBackendWebDev";
-import { gcp } from "./skills/technicalHardSkills/technicalHardSkillsCloudComputing";
-import {
-  black,
-  checkstyle,
-  eslint,
-  prettier,
-  zod,
-} from "./skills/technicalHardSkills/technicalHardSkillsCodeQuality";
-import {
-  convex,
-  mongoDB,
-  mySQL,
-  postgreSQL,
-} from "./skills/technicalHardSkills/technicalHardSkillsDatabases";
-import {
-  docker,
-  gitHubActions,
-} from "./skills/technicalHardSkills/technicalHardSkillsDevOps";
-import {
-  axios,
-  chakraUI,
-  css,
-  headlessUI,
-  html,
-  jotai,
-  nextUI,
-  radixUI,
-  react,
-  recoil,
-  shadcnUI,
-  simpleGui,
-  storybooks,
-  tailwindCSS,
-  zustand,
-} from "./skills/technicalHardSkills/technicalHardSkillsFrontendWebDev";
-import { nextjs } from "./skills/technicalHardSkills/technicalHardSkillsFullStackWebDev";
-import {
-  jupyterNotebooks,
-  matplotlib,
-  numpy,
-  pandas,
-  scikitLearn,
-  seaborn,
-} from "./skills/technicalHardSkills/technicalHardSkillsMLDS";
-import {
-  algebra,
-  calculus,
-  linearAlgebra,
-  mechanics,
-  probability,
-  statistics,
-  vectors,
-} from "./skills/technicalHardSkills/technicalHardSkillsMaths";
-import {
-  prisma,
-  sqlalchemy,
-} from "./skills/technicalHardSkills/technicalHardSkillsORMs";
-import { gameMakerStudio } from "./skills/technicalHardSkills/technicalHardSkillsOthers";
-import {
-  maven,
-  npm,
-  nxjs,
-  pnpm,
-  poetry,
-  yarn,
-} from "./skills/technicalHardSkills/technicalHardSkillsProjectManagers";
-import {
-  jest,
-  junit,
-  pytest,
-} from "./skills/technicalHardSkills/technicalHardSkillsTesting";
-import {
-  git,
-  gitHub,
-  gitLab,
-} from "./skills/technicalHardSkills/technicalHardSkillsVCS";
-import updateProjectImages from "@/actions/file-system/updateProjectImages";
-import { SkillTypes } from "@/interfaces/skills/SkillInterface";
+import addProjectThumbnail from "@/actions/material/projects/addProjectThumbnail";
+import ProjectKeysEnum from "@/enums/DatabaseKeysEnums/ProjectKeysEnum";
+import ProjectCategoriesEnum from "@/enums/ProjectCategoriesEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import ProjectInterface from "@/interfaces/material/ProjectInterface";
+import skillDatabase from "./skills";
+import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 
 /**
- * Array of web development projects.
- * This is used to populate the projects page.
- * @type {ProjectInterface[]}
+ * Hashmap of projects with keys as {@link SkillKeysEnum} and values as {@link ProjectInterface}.
+ * The order of the projects is the order that is used when displaying the projects on the website.
+ * The order skills is the order that is used when displaying the skills on the website.
  */
-const webdevProjects: ProjectInterface[] = [
-  {
+const projectMap: Database<ProjectInterface> = {
+  [ProjectKeysEnum.CircusDiscussions]: {
     name: `Circus Discussions`,
-    slug: "circus-discussions",
     description: `
       For a final year university project, 
       a social media platform was developed enabling users to form communities, 
@@ -152,42 +24,43 @@ const webdevProjects: ProjectInterface[] = [
     repositoryURL: `https://github.com/mbeps/next_discussion_platform`,
     deploymentURL: `https://circus-discussion.vercel.app/`,
     skills: [
-      typescript,
-      javascript,
-      nextjs,
-      react,
-      chakraUI,
-      firebase,
-      recoil,
-      docker,
-      gitHubActions,
-      gcp,
-      git,
-      html,
-      css,
-      yarn,
-      eslint,
-      prettier,
+      SkillKeysEnum.TypeScript,
+      SkillKeysEnum.JavaScript,
+      SkillKeysEnum.NextJS,
+      SkillKeysEnum.ReactJS,
+      SkillKeysEnum.ChakraUI,
+      SkillKeysEnum.Firebase,
+      SkillKeysEnum.Recoil,
+      SkillKeysEnum.Docker,
+      SkillKeysEnum.GitHubActions,
+      SkillKeysEnum.GitHub,
+      SkillKeysEnum.GCP,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.HTML,
+      SkillKeysEnum.CSS,
+      SkillKeysEnum.Yarn,
+      SkillKeysEnum.ESLint,
+      SkillKeysEnum.Prettier,
 
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-      timeManagement,
-      scopeManagement,
-      stakeholderManagement,
-      communication,
-      riskManagement,
-      oop,
-      designPatterns,
-      algorithms,
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+      SkillKeysEnum.TimeManagement,
+      SkillKeysEnum.ScopeManagement,
+      SkillKeysEnum.StakeholderManagement,
+      SkillKeysEnum.Communication,
+      SkillKeysEnum.RiskManagement,
+      SkillKeysEnum.ObjectOrientedProgramming,
+      SkillKeysEnum.DesignPatterns,
+      SkillKeysEnum.Algorithms,
     ],
-    category: ProjectCategories.FullStackWebDevelopment,
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    thumbnailImage: addProjectThumbnail(ProjectKeysEnum.CircusDiscussions),
   },
-  {
+  [ProjectKeysEnum.RingmasterMessaging]: {
     name: `Ringmaster Messaging`,
-    slug: "ringmaster-messaging",
     description: `
       A custom back-end learning project involved creating a straightforward messaging app. 
       Users can chat one-on-one, participate in group chats, send text messages, share images, view active users, and personalize their profiles. 
@@ -196,43 +69,43 @@ const webdevProjects: ProjectInterface[] = [
     deploymentURL: `https://ringmaster-messaging.vercel.app/`,
 
     skills: [
-      typescript,
-      javascript,
-      nextjs,
-      react,
-      nextauth,
-      mongoDB,
-      prisma,
-      pusher,
-      cloudinary,
-      rest,
-      tailwindCSS,
-      headlessUI,
-      zustand,
-      docker,
-      gitHub,
-      gitHubActions,
-      git,
-      html,
-      css,
-      yarn,
-      eslint,
-      prettier,
+      SkillKeysEnum.TypeScript,
+      SkillKeysEnum.JavaScript,
+      SkillKeysEnum.NextJS,
+      SkillKeysEnum.ReactJS,
+      SkillKeysEnum.NextAuth,
+      SkillKeysEnum.MongoDB,
+      SkillKeysEnum.Prisma,
+      SkillKeysEnum.Pusher,
+      SkillKeysEnum.Cloudinary,
+      SkillKeysEnum.REST,
+      SkillKeysEnum.TailwindCSS,
+      SkillKeysEnum.HeadlessUI,
+      SkillKeysEnum.Zustand,
+      SkillKeysEnum.Docker,
+      SkillKeysEnum.GitHubActions,
+      SkillKeysEnum.GitHub,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.HTML,
+      SkillKeysEnum.CSS,
+      SkillKeysEnum.Yarn,
+      SkillKeysEnum.ESLint,
+      SkillKeysEnum.Prettier,
 
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-      oop,
-      designPatterns,
-      algorithms,
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+      SkillKeysEnum.ObjectOrientedProgramming,
+      SkillKeysEnum.DesignPatterns,
+      SkillKeysEnum.Algorithms,
     ],
-    category: ProjectCategories.FullStackWebDevelopment,
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    thumbnailImage: addProjectThumbnail(ProjectKeysEnum.RingmasterMessaging),
   },
-  {
+  [ProjectKeysEnum.MagicianAI]: {
     name: `Magician AI`,
-    slug: "magician-ai",
     description: `
       Magician AI is a SaaS platform that leverages AI to enable users to generate various media types and have dynamic conversations. 
       Developing this project allowed me to explore Stripe, Clerk authentication, and unique AI APIs.
@@ -240,171 +113,166 @@ const webdevProjects: ProjectInterface[] = [
     repositoryURL: `https://github.com/mbeps/magician-ai`,
     deploymentURL: "https://magician-ai.vercel.app/",
     skills: [
-      typescript,
-      javascript,
-      nextjs,
-      react,
-      shadcnUI,
-      radixUI,
-      tailwindCSS,
-      mySQL,
-      zustand,
-      clerkAuth,
-      prisma,
-      stripe,
-      rest,
-      openAI,
-      replicateAI,
-      docker,
-      gitHub,
-      gitHubActions,
-      git,
-      html,
-      css,
-      yarn,
-      eslint,
-      prettier,
+      SkillKeysEnum.TypeScript,
+      SkillKeysEnum.JavaScript,
+      SkillKeysEnum.NextJS,
+      SkillKeysEnum.ReactJS,
+      SkillKeysEnum.ShadcnUI,
+      SkillKeysEnum.RadixUI,
+      SkillKeysEnum.TailwindCSS,
+      SkillKeysEnum.MySQL,
+      SkillKeysEnum.ClerkAuth,
+      SkillKeysEnum.Prisma,
+      SkillKeysEnum.Stripe,
+      SkillKeysEnum.REST,
+      SkillKeysEnum.OpenAI,
+      SkillKeysEnum.ReplicateAI,
+      SkillKeysEnum.Zustand,
+      SkillKeysEnum.Docker,
+      SkillKeysEnum.GitHubActions,
+      SkillKeysEnum.GCP,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.HTML,
+      SkillKeysEnum.CSS,
+      SkillKeysEnum.Yarn,
+      SkillKeysEnum.ESLint,
+      SkillKeysEnum.Prettier,
 
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-      oop,
-      designPatterns,
-      algorithms,
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+      SkillKeysEnum.ObjectOrientedProgramming,
+      SkillKeysEnum.DesignPatterns,
+      SkillKeysEnum.Algorithms,
     ],
-    category: ProjectCategories.FullStackWebDevelopment,
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    thumbnailImage: addProjectThumbnail(ProjectKeysEnum.MagicianAI),
   },
-  {
+  [ProjectKeysEnum.DrumrollMusic]: {
     name: `Drumroll Music`,
-    slug: "drumroll-music",
     description: `
       My first major project using Supabase was a basic music streaming site. 
       Users can upload songs, search and listen to music, as well as like the songs they enjoy.
       `,
     repositoryURL: `https://github.com/mbeps/drumroll-music`,
     skills: [
-      typescript,
-      javascript,
-      nextjs,
-      react,
-      supabase,
-      postgreSQL,
-      tailwindCSS,
-      radixUI,
-      zustand,
-      gitHub,
-      gitHubActions,
-      git,
-      html,
-      css,
-      yarn,
-      eslint,
-      prettier,
+      SkillKeysEnum.TypeScript,
+      SkillKeysEnum.JavaScript,
+      SkillKeysEnum.NextJS,
+      SkillKeysEnum.ReactJS,
+      SkillKeysEnum.Supabase,
+      SkillKeysEnum.PostgreSQL,
+      SkillKeysEnum.TailwindCSS,
+      SkillKeysEnum.RadixUI,
+      SkillKeysEnum.Zustand,
+      SkillKeysEnum.GitHubActions,
+      SkillKeysEnum.GCP,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.HTML,
+      SkillKeysEnum.CSS,
+      SkillKeysEnum.Yarn,
+      SkillKeysEnum.ESLint,
+      SkillKeysEnum.Prettier,
 
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-      oop,
-      designPatterns,
-      algorithms,
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+      SkillKeysEnum.ObjectOrientedProgramming,
+      SkillKeysEnum.DesignPatterns,
+      SkillKeysEnum.Algorithms,
     ],
-    category: ProjectCategories.FullStackWebDevelopment,
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    thumbnailImage: addProjectThumbnail(ProjectKeysEnum.DrumrollMusic),
   },
-  {
+  [ProjectKeysEnum.JokerNotes]: {
     name: "Joker Notes",
-    slug: "joker-notes",
     description: `
       A simple rich-text note-taking app that allows users to create, edit, and delete notes.
       `,
     repositoryURL: `https://github.com/mbeps/joker-notes`,
     skills: [
-      typescript,
-      javascript,
-      nextjs,
-      react,
-      shadcnUI,
-      tailwindCSS,
-      radixUI,
-      zustand,
-      zod,
-      convex,
-      edgestore,
-      gitHub,
-      gitHubActions,
-      git,
-      html,
-      css,
-      yarn,
-      eslint,
-      prettier,
+      SkillKeysEnum.TypeScript,
+      SkillKeysEnum.JavaScript,
+      SkillKeysEnum.NextJS,
+      SkillKeysEnum.ReactJS,
+      SkillKeysEnum.ShadcnUI,
+      SkillKeysEnum.RadixUI,
+      SkillKeysEnum.TailwindCSS,
+      SkillKeysEnum.Zustand,
+      SkillKeysEnum.Zod,
+      SkillKeysEnum.Convex,
+      SkillKeysEnum.EdgeStore,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.GitHub,
+      SkillKeysEnum.GitHubActions,
+      SkillKeysEnum.HTML,
+      SkillKeysEnum.CSS,
+      SkillKeysEnum.Yarn,
+      SkillKeysEnum.ESLint,
+      SkillKeysEnum.Prettier,
 
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      adaptability,
-      oop,
-      designPatterns,
-      algorithms,
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+      SkillKeysEnum.ObjectOrientedProgramming,
+      SkillKeysEnum.DesignPatterns,
+      SkillKeysEnum.Algorithms,
     ],
-    category: ProjectCategories.FullStackWebDevelopment,
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
     deploymentURL: "https://joker-notes.vercel.app/",
+    thumbnailImage: addProjectThumbnail(ProjectKeysEnum.JokerNotes),
   },
-];
 
-/**
- * Array of extra web development projects.
- * This is used to populate the projects page.
- * @type {ProjectInterface[]}
- */
-const extraWebDevProjects: ProjectInterface[] = [
-  {
+  //^ Extra Web Development Projects
+  [ProjectKeysEnum.Quizmify]: {
     name: "Quizmify",
-    slug: "quizmify",
     description: `An intuitive platform for dynamic quiz generation. 
       Users can test their knowledge across various topics, choosing between multiple-choice questions or fill-in-the-gap style challenges. 
       With immediate feedback and score tracking, users enhance their understanding.`,
-    category: ProjectCategories.FullStackWebDevelopment,
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
     skills: [
-      typescript,
-      javascript,
-      nextjs,
-      react,
-      tailwindCSS,
-      shadcnUI,
-      prisma,
-      axios,
-      nextauth,
-      zod,
-      mySQL,
-      openAI,
-      docker,
-      gitHub,
-      gitHubActions,
-      git,
-      html,
-      css,
-      yarn,
-      eslint,
-      prettier,
+      SkillKeysEnum.TypeScript,
+      SkillKeysEnum.JavaScript,
+      SkillKeysEnum.NextJS,
+      SkillKeysEnum.ReactJS,
+      SkillKeysEnum.ShadcnUI,
+      SkillKeysEnum.RadixUI,
+      SkillKeysEnum.TailwindCSS,
+      SkillKeysEnum.Prisma,
+      SkillKeysEnum.Axios,
+      SkillKeysEnum.NextAuth,
+      SkillKeysEnum.Zod,
+      SkillKeysEnum.MySQL,
+      SkillKeysEnum.OpenAI,
+      SkillKeysEnum.Docker,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.GitHub,
+      SkillKeysEnum.HTML,
+      SkillKeysEnum.CSS,
+      SkillKeysEnum.Yarn,
+      SkillKeysEnum.ESLint,
+      SkillKeysEnum.Prettier,
 
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-      oop,
-      designPatterns,
-      algorithms,
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+      SkillKeysEnum.ObjectOrientedProgramming,
+      SkillKeysEnum.DesignPatterns,
+      SkillKeysEnum.Algorithms,
     ],
     repositoryURL: "https://github.com/mbeps/quizmify",
+    thumbnailImage: addProjectThumbnail(ProjectKeysEnum.Quizmify),
   },
-  {
+  [ProjectKeysEnum.SideshowArticles]: {
     name: `Sideshow Articles`,
-    slug: "sideshow-articles",
     description: `
       To familiarize myself with Supabase, I developed a simple website for reading and writing articles. 
       Users can read, create, and delete articles. 
@@ -412,32 +280,32 @@ const extraWebDevProjects: ProjectInterface[] = [
       `,
     repositoryURL: `https://github.com/mbeps/sideshow-articles`,
     skills: [
-      typescript,
-      javascript,
-      nextjs,
-      react,
-      supabase,
-      postgreSQL,
-      nextUI,
-      gitHub,
-      git,
-      html,
-      css,
-      npm,
+      SkillKeysEnum.TypeScript,
+      SkillKeysEnum.JavaScript,
+      SkillKeysEnum.NextJS,
+      SkillKeysEnum.ReactJS,
+      SkillKeysEnum.Supabase,
+      SkillKeysEnum.PostgreSQL,
+      SkillKeysEnum.NextUI,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.GitHub,
+      SkillKeysEnum.HTML,
+      SkillKeysEnum.CSS,
+      SkillKeysEnum.NPM,
 
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-      oop,
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+      SkillKeysEnum.ObjectOrientedProgramming,
     ],
-    category: ProjectCategories.FullStackWebDevelopment,
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
     archived: true,
+    thumbnailImage: addProjectThumbnail(ProjectKeysEnum.SideshowArticles),
   },
-  {
+  [ProjectKeysEnum.Noodle]: {
     name: `Noodle`,
-    slug: "noodle",
     description: `
       During my second year of university, my group and I initiated a project on an open-source learning platform which served as my introduction to full-stack development. 
       This app aids students in managing tasks, assignments, exams, and storing notes and resources.
@@ -445,43 +313,44 @@ const extraWebDevProjects: ProjectInterface[] = [
     repositoryURL: `https://github.com/ixahmedxi/noodle`,
     deploymentURL: `https://noodle.run/`,
     skills: [
-      typescript,
-      javascript,
-      nextjs,
-      react,
-      shadcnUI,
-      tailwindCSS,
-      clerkAuth,
-      mySQL,
-      prisma,
-      tRPC,
-      storybooks,
-      nxjs,
-      jest,
-      gitHub,
-      gitHubActions,
-      git,
-      html,
-      css,
-      pnpm,
-      eslint,
-      prettier,
-      oop,
-      designPatterns,
-      algorithms,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-      teamwork,
+      SkillKeysEnum.TypeScript,
+      SkillKeysEnum.JavaScript,
+      SkillKeysEnum.NextJS,
+      SkillKeysEnum.ReactJS,
+      SkillKeysEnum.ShadcnUI,
+      SkillKeysEnum.RadixUI,
+      SkillKeysEnum.TailwindCSS,
+      SkillKeysEnum.MySQL,
+      SkillKeysEnum.Prisma,
+      SkillKeysEnum.TRPC,
+      SkillKeysEnum.StoryBooks,
+      SkillKeysEnum.NxJS,
+      SkillKeysEnum.Jest,
+      SkillKeysEnum.GitHub,
+      SkillKeysEnum.GitHubActions,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.HTML,
+      SkillKeysEnum.CSS,
+      SkillKeysEnum.PNPM,
+      SkillKeysEnum.ESLint,
+      SkillKeysEnum.Prettier,
+      SkillKeysEnum.ObjectOrientedProgramming,
+      SkillKeysEnum.DesignPatterns,
+
+      SkillKeysEnum.Algorithms,
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+      SkillKeysEnum.Teamwork,
     ],
-    category: ProjectCategories.FullStackWebDevelopment,
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
     archived: true,
+    thumbnailImage: addProjectThumbnail(ProjectKeysEnum.Noodle),
   },
-  {
+  [ProjectKeysEnum.ConvoGPT]: {
     name: `ConvoGPT`,
-    slug: "convo-gpt",
     description: `
       In my first year of university, my group and I developed a simple game using SimpleGUI for a project. 
       We manually implemented the game's physics using vector theory and physics concepts. 
@@ -489,274 +358,253 @@ const extraWebDevProjects: ProjectInterface[] = [
       `,
     repositoryURL: `https://github.com/mbeps/convo-gpt`,
     skills: [
-      typescript,
-      javascript,
-      nextjs,
-      react,
-      tailwindCSS,
-      jotai,
-      supabase,
-      postgreSQL,
-      openAI,
-      gitHub,
-      git,
-      html,
-      css,
-      yarn,
-      eslint,
-      prettier,
+      SkillKeysEnum.TypeScript,
+      SkillKeysEnum.JavaScript,
+      SkillKeysEnum.NextJS,
+      SkillKeysEnum.ReactJS,
+      SkillKeysEnum.TailwindCSS,
+      SkillKeysEnum.Jotai,
+      SkillKeysEnum.Supabase,
+      SkillKeysEnum.PostgreSQL,
+      SkillKeysEnum.OpenAI,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.GitHub,
+      SkillKeysEnum.HTML,
+      SkillKeysEnum.CSS,
+      SkillKeysEnum.Yarn,
+      SkillKeysEnum.ESLint,
+      SkillKeysEnum.Prettier,
 
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-      oop,
-      designPatterns,
-      algorithms,
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+      SkillKeysEnum.ObjectOrientedProgramming,
+      SkillKeysEnum.DesignPatterns,
     ],
-    category: ProjectCategories.FullStackWebDevelopment,
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
     archived: true,
+    thumbnailImage: addProjectThumbnail(ProjectKeysEnum.ConvoGPT),
   },
-];
 
-const backendWebDevProjects: ProjectInterface[] = [
-  {
+  //^ Backend Web Development Projects
+  [ProjectKeysEnum.FlaskForumBackend]: {
     name: `Flask Forum Backend`,
-    slug: "flask-forum-backend",
     description: `
       This is a custom backend for the first iteration of the discussion platform. 
       This was created to learn how to create a custom backend using Python and Flask.
       `,
     repositoryURL: `https://github.com/mbeps/Forum-Discussion-Flask-Backend`,
     skills: [
-      python,
-      flask,
-      mySQL,
-      sqlalchemy,
-      rest,
-      poetry,
-      gitHub,
-      gitLab,
-      gitHubActions,
-      git,
-      html,
-      css,
-      black,
+      SkillKeysEnum.Python,
+      SkillKeysEnum.Flask,
+      SkillKeysEnum.MySQL,
+      SkillKeysEnum.SQLAlchemy,
+      SkillKeysEnum.REST,
+      SkillKeysEnum.Poetry,
+      SkillKeysEnum.GitHub,
+      SkillKeysEnum.GitLab,
+      SkillKeysEnum.GitHubActions,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.Black,
 
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-      oop,
-      designPatterns,
-      algorithms,
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.TimeManagement,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+      SkillKeysEnum.ObjectOrientedProgramming,
+      SkillKeysEnum.DesignPatterns,
+      SkillKeysEnum.Algorithms,
     ],
-    category: ProjectCategories.BackEndWebDevelopment,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
   },
-  {
+  [ProjectKeysEnum.FlaskJWTAuthentication]: {
     name: `Flask JWT Authentication`,
-    slug: "flask-jwt-authentication",
     description: `
       A simple Flask app to learn how to use JWT for authentication.
       This serves as a foundation to using JWT in other projects using Flask.
       `,
     repositoryURL: `https://github.com/mbeps/Flask_JWT_Auth`,
     skills: [
-      python,
-      flask,
-      jwt,
-      gitHub,
-      git,
-      html,
-      css,
-      poetry,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-      oop,
+      SkillKeysEnum.Python,
+      SkillKeysEnum.Flask,
+      SkillKeysEnum.GitHub,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.Poetry,
+
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+      SkillKeysEnum.ObjectOrientedProgramming,
     ],
-    category: ProjectCategories.BackEndWebDevelopment,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
     archived: true,
   },
-  {
+  [ProjectKeysEnum.DjangoAuthentication]: {
     name: `Django Authentication`,
-    slug: "django-authentication",
     description: `
       A simple Django app to learn how to use Django with tokens for authentication.
       This serves as a foundation to using Django in other projects.
       `,
     repositoryURL: `https://github.com/mbeps/Django_Auth_Sys`,
     skills: [
-      python,
-      django,
-      jwt,
-      gitHub,
-      git,
-      html,
-      css,
-      poetry,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-      oop,
+      SkillKeysEnum.Python,
+      SkillKeysEnum.Django,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.GitHub,
+      SkillKeysEnum.Poetry,
+
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+      SkillKeysEnum.ObjectOrientedProgramming,
     ],
-    category: ProjectCategories.BackEndWebDevelopment,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
     archived: true,
   },
-  {
+  [ProjectKeysEnum.ClerkAuthentication]: {
     name: `Clerk Authentication`,
-    slug: "clerk-authentication",
     description: `
       A simple Next.JS app to experiment with the Clerk Authentication SDK. 
       `,
     repositoryURL: `https://github.com/mbeps/clerk-demo`,
     skills: [
-      typescript,
-      javascript,
-      nextjs,
-      clerkAuth,
-      gitHub,
-      git,
-      html,
-      css,
-      yarn,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-      oop,
+      SkillKeysEnum.TypeScript,
+      SkillKeysEnum.JavaScript,
+      SkillKeysEnum.NextJS,
+      SkillKeysEnum.ClerkAuth,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.GitHub,
+      SkillKeysEnum.Yarn,
+
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.TimeManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+      SkillKeysEnum.ObjectOrientedProgramming,
     ],
-    category: ProjectCategories.BackEndWebDevelopment,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
     archived: true,
   },
-  {
+  [ProjectKeysEnum.Auth0Authentication]: {
     name: `Auth0 Authentication`,
-    slug: "auth0-authentication",
     description: `
       A simple Next.JS app to experiment with the Auth0 Authentication SDK. 
       This does not use the new Next.JS 13 app router as it is not supported as of the time of making this demo. 
       `,
     repositoryURL: `https://github.com/mbeps/nextjs-auth0`,
     skills: [
-      typescript,
-      javascript,
-      nextjs,
-      auth0,
-      gitHub,
-      git,
-      html,
-      css,
-      yarn,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-      oop,
+      SkillKeysEnum.TypeScript,
+      SkillKeysEnum.JavaScript,
+      SkillKeysEnum.NextJS,
+      SkillKeysEnum.Auth0,
+      SkillKeysEnum.GitHub,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.Yarn,
+
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+      SkillKeysEnum.ObjectOrientedProgramming,
     ],
-    category: ProjectCategories.BackEndWebDevelopment,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
     archived: true,
   },
-];
 
-/**
- * Array of machine learning projects.
- * This is used to populate the projects page.
- * @type {ProjectInterface[]}
- */
-const machineLearningProjects: ProjectInterface[] = [
-  {
+  //^ Artificial Intelligence Projects
+  [ProjectKeysEnum.AdultIncomePrediction]: {
     name: "Adult Income Prediction",
-    slug: "adult-income-prediction",
     description: `A project leveraging the UCI Adult Income dataset to predict income brackets using a RandomForestClassifier. Emphasis is on feature engineering, data preprocessing with One-Hot Encoding, and model optimization through hyperparameter tuning.`,
     repositoryURL: "https://github.com/mbeps/Adults_Income_Prediction",
     skills: [
-      scikitLearn,
-      python,
-      numpy,
-      pandas,
-      matplotlib,
-      seaborn,
-      jupyterNotebooks,
-      gitHub,
-      git,
-      poetry,
-      black,
+      SkillKeysEnum.Python,
+      SkillKeysEnum.ScikitLearn,
+      SkillKeysEnum.NumPy,
+      SkillKeysEnum.Pandas,
+      SkillKeysEnum.Matplotlib,
+      SkillKeysEnum.Seaborn,
+      SkillKeysEnum.Jupyter,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.GitHub,
+      SkillKeysEnum.Poetry,
+      SkillKeysEnum.Black,
 
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-      oop,
-      algorithms,
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+      SkillKeysEnum.ObjectOrientedProgramming,
+      SkillKeysEnum.Algorithms,
     ],
-    category: ProjectCategories.MachineLearning,
+    category: ProjectCategoriesEnum.MachineLearning,
   },
-  {
+  [ProjectKeysEnum.HousePricePrediction]: {
     name: "House Price Prediction",
-    slug: "house-price-prediction",
     description: `An analytical approach to predicting California housing prices using the RandomForestRegressor and LinearRegressor, with a focus on data preprocessing and feature engineering.`,
     repositoryURL: "https://github.com/mbeps/House_Price_Prediction",
     skills: [
-      python,
-      scikitLearn,
-      numpy,
-      pandas,
-      matplotlib,
-      seaborn,
-      jupyterNotebooks,
-      gitHub,
-      git,
-      poetry,
-      black,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-      oop,
-      algorithms,
+      SkillKeysEnum.Python,
+      SkillKeysEnum.ScikitLearn,
+      SkillKeysEnum.NumPy,
+      SkillKeysEnum.Pandas,
+      SkillKeysEnum.Matplotlib,
+      SkillKeysEnum.Seaborn,
+      SkillKeysEnum.Jupyter,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.GitHub,
+      SkillKeysEnum.Poetry,
+      SkillKeysEnum.Black,
+
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+      SkillKeysEnum.ObjectOrientedProgramming,
+      SkillKeysEnum.Algorithms,
     ],
-    category: ProjectCategories.MachineLearning,
+    category: ProjectCategoriesEnum.MachineLearning,
   },
-  {
+  [ProjectKeysEnum.MachineLearningAssignment1]: {
     name: `Assignment 1`,
-    slug: "machine-learning-assignment-1",
     description: `
       Be able to implement machine-learning algorithms, using the Nearest Neighbours algorithm as an example. 
       Have an understanding of ways to apply the ideas and algorithms of machine learning in science and technology.
       `,
     repositoryURL: `https://github.com/mbeps/Machine-Learning-Assignment-1`,
     skills: [
-      python,
-      scikitLearn,
-      numpy,
-      matplotlib,
-      jupyterNotebooks,
-      gitHub,
-      git,
-      black,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-      oop,
-      algorithms,
+      SkillKeysEnum.Python,
+      SkillKeysEnum.ScikitLearn,
+      SkillKeysEnum.NumPy,
+      SkillKeysEnum.Matplotlib,
+      SkillKeysEnum.Jupyter,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.GitHub,
+      SkillKeysEnum.Black,
+
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+      SkillKeysEnum.ObjectOrientedProgramming,
+      SkillKeysEnum.Algorithms,
     ],
-    category: ProjectCategories.MachineLearning,
+    category: ProjectCategoriesEnum.MachineLearning,
   },
-  {
+  [ProjectKeysEnum.MachineLearningAssignment2]: {
     name: `Assignment 2`,
-    slug: "machine-learning-assignment-2",
     description: `
       Be able to use and implement machine-learning algorithms, 
       with the Lasso and inductive conformal prediction algorithms as examples. 
@@ -764,27 +612,27 @@ const machineLearningProjects: ProjectInterface[] = [
     `,
     repositoryURL: `https://github.com/mbeps/Machine-Learning-Assignment-2`,
     skills: [
-      python,
-      scikitLearn,
-      numpy,
-      matplotlib,
-      jupyterNotebooks,
-      gitHub,
-      git,
-      black,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-      oop,
-      algorithms,
+      SkillKeysEnum.Python,
+      SkillKeysEnum.ScikitLearn,
+      SkillKeysEnum.NumPy,
+      SkillKeysEnum.Matplotlib,
+      SkillKeysEnum.Jupyter,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.GitHub,
+      SkillKeysEnum.Black,
+
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+      SkillKeysEnum.ObjectOrientedProgramming,
+      SkillKeysEnum.Algorithms,
     ],
-    category: ProjectCategories.MachineLearning,
+    category: ProjectCategoriesEnum.MachineLearning,
   },
-  {
+  [ProjectKeysEnum.MachineLearningAssignment3]: {
     name: `Assignment 3`,
-    slug: "machine-learning-assignment-3",
     description: `
       Be able to use and implement machine-learning algorithms, 
       with the SVM, neural networks, and cross-conformal prediction algorithms as examples. 
@@ -792,466 +640,112 @@ const machineLearningProjects: ProjectInterface[] = [
       `,
     repositoryURL: `https://github.com/mbeps/Machine-Learning-Assignment-3`,
     skills: [
-      python,
-      scikitLearn,
-      numpy,
-      matplotlib,
-      jupyterNotebooks,
-      gitHub,
-      git,
-      black,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-      oop,
-      algorithms,
+      SkillKeysEnum.Python,
+      SkillKeysEnum.ScikitLearn,
+      SkillKeysEnum.NumPy,
+      SkillKeysEnum.Matplotlib,
+      SkillKeysEnum.Jupyter,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.GitHub,
+      SkillKeysEnum.Black,
+
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+      SkillKeysEnum.ObjectOrientedProgramming,
+      SkillKeysEnum.Algorithms,
     ],
-    category: ProjectCategories.MachineLearning,
+    category: ProjectCategoriesEnum.MachineLearning,
   },
-  {
+  [ProjectKeysEnum.MachineLearningLabQuestions]: {
     name: `Lab Questions`,
-    slug: "machine-learning-lab-questions",
     description: `
       Implemented various machine learning algorithms and techniques learned during the course, 
       such as Nearest Neighbours, conformal prediction, linear regression, Ridge Regression, Lasso, data preprocessing, parameter selection, 
       kernels, neural networks, support vector machines, scikit-learn pipelines, and cross-conformal predictors.`,
     repositoryURL: `https://github.com/mbeps/Machine-Learning-Labs-Questions`,
     skills: [
-      python,
-      scikitLearn,
-      numpy,
-      matplotlib,
-      jupyterNotebooks,
-      gitHub,
-      git,
-      poetry,
-      black,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-      oop,
-      algorithms,
+      SkillKeysEnum.Python,
+      SkillKeysEnum.ScikitLearn,
+      SkillKeysEnum.NumPy,
+      SkillKeysEnum.Matplotlib,
+      SkillKeysEnum.Jupyter,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.GitHub,
+      SkillKeysEnum.Black,
+
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+      SkillKeysEnum.ObjectOrientedProgramming,
+      SkillKeysEnum.Algorithms,
     ],
-    category: ProjectCategories.MachineLearning,
+    category: ProjectCategoriesEnum.MachineLearning,
   },
-  {
+  [ProjectKeysEnum.ComputationalFinanceAssignment]: {
     name: "Computational Finance Assignment",
-    slug: "computational-finance-assignment",
     description: `
       An assignment exploring valuation of options using methods like Black-Scholes, binomial trees, and Monte Carlo. 
       Also includes theoretical aspects of put-call parity and financial arbitrage opportunities.`,
     repositoryURL: `https://github.com/mbeps/Computation_Finance_Assignment`,
     skills: [
-      python,
-      numpy,
-      matplotlib,
-      jupyterNotebooks,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-      oop,
-      algorithms,
-      algebra,
-      calculus,
-      linearAlgebra,
-      vectors,
-      statistics,
-      probability,
-      mechanics,
+      SkillKeysEnum.Python,
+      SkillKeysEnum.NumPy,
+      SkillKeysEnum.Matplotlib,
+      SkillKeysEnum.Jupyter,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.GitHub,
+
+      SkillKeysEnum.Probability,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+      SkillKeysEnum.ObjectOrientedProgramming,
+      SkillKeysEnum.Algorithms,
+      SkillKeysEnum.Algebra,
+      SkillKeysEnum.Calculus,
+      SkillKeysEnum.LinearAlgebra,
+      SkillKeysEnum.Statistics,
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.Mechanics,
     ],
-    category: ProjectCategories.MachineLearning,
+    category: ProjectCategoriesEnum.MachineLearning,
   },
-  {
+  [ProjectKeysEnum.MachineLearningTheoryPractice]: {
     name: "Machine Learning Theory Practice",
-    slug: "machine-learning-theory-practice",
     description: `
       A collection of machine learning theory questions and answers.
       This is used to practice for exams and tests.
       `,
-    category: ProjectCategories.MachineLearning,
+    category: ProjectCategoriesEnum.MachineLearning,
     repositoryURL: `https://github.com/mbeps/Machine-Learning-Theory-Practice`,
     skills: [
-      machineLearning,
-      dataScience,
-      artificialIntelligence,
-      hyperparameters,
-      boosting,
-      neuralNetworks,
-      problemSolving,
-      criticalThinking,
-      creativity,
-      adaptability,
-      algorithms,
-      vectors,
-      statistics,
-      probability,
-      linearAlgebra,
-    ],
-  },
-];
+      SkillKeysEnum.MachineLearning,
+      SkillKeysEnum.DataScience,
+      SkillKeysEnum.ArtificialIntelligence,
+      SkillKeysEnum.Hyperparameters,
+      SkillKeysEnum.Boosting,
+      SkillKeysEnum.NeuralNetworks,
 
-/**
- * Array of game development projects.
- * This is used to populate the projects page.
- * @type {ProjectInterface[]}
- */
-const gameDevProjects: ProjectInterface[] = [
-  {
-    name: `Osmos Game`,
-    slug: "osmos-game",
-    description: `
-      This is a simple game created using SimpleGUI for a group project in my first year of university. 
-      The physics of the game were done manually using vector theory and physics concepts.
-      This required us to rely on the documentation as there was no tutorials or guides on how to use the library.
-      `,
-    repositoryURL: `https://github.com/mbeps/Osmos_Game`,
-    skills: [
-      python,
-      simpleGui,
-      gitHub,
-      git,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-      leadership,
-      teamwork,
-      black,
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+      SkillKeysEnum.Algorithms,
+      SkillKeysEnum.LinearAlgebra,
+      SkillKeysEnum.Statistics,
+      SkillKeysEnum.Probability,
     ],
-    category: ProjectCategories.GameDevelopment,
   },
-  {
-    name: "Surface Fight",
-    slug: "surface-fight",
-    description: `
-      The game is about a robot shooting skeletons and trying to survive. 
-      Every time he kills all the skeletons more of them will come at once.
-      This was a simple game made back in secondary school. 
-    `,
-    category: ProjectCategories.GameDevelopment,
-    skills: [
-      gameMakerLanguage,
-      gameMakerStudio,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-    ],
-    deploymentURL: "https://bepary-games.itch.io/surface-fight",
-    archived: true,
-  },
-  {
-    name: "Platformer",
-    slug: "platformer",
-    description: `
-      This is a basic and easy to play platform game which is similar to Super Mario.
-      Players must defeat the enemies and reach the end of the level.
-      This is also a multiplayer game.
-      This was a simple game made back in secondary school. 
-    `,
-    category: ProjectCategories.GameDevelopment,
-    skills: [
-      gameMakerLanguage,
-      gameMakerStudio,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-    ],
-    deploymentURL: "https://bepary-games.itch.io/platformer",
-    archived: true,
-  },
-  {
-    name: "Platformer Death Walk",
-    slug: "platformer-death-walk",
-    description: `
-      This is a basic and easy to play platform game which is similar to Super Mario.
-      Players must defeat all the enemies to reach the end of the level.
-      This is also a multiplayer game.
-      This was a simple game made back in secondary school. 
-    `,
-    category: ProjectCategories.GameDevelopment,
-    skills: [
-      gameMakerLanguage,
-      gameMakerStudio,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-    ],
-    deploymentURL: "https://bepary-games.itch.io/platformer-death-walk",
-    archived: true,
-  },
-  {
-    name: "Coding Breakout",
-    slug: "coding-breakout",
-    description: `
-      In Breakout, a layer of bricks lines the top third of the screen
-      and the goal is to destroy them all by repeatedly bouncing a ball off a paddle into them.
-      This was a simple game made back in secondary school. 
-    `,
-    category: ProjectCategories.GameDevelopment,
-    skills: [
-      gameMakerLanguage,
-      gameMakerStudio,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-    ],
-    deploymentURL: "https://bepary-games.itch.io/coding-break-out",
-    archived: true,
-  },
-  {
-    name: "Catch Maruf",
-    slug: "catch-maruf",
-    description: `
-      A basic game where the focus is to click on a character
-      as many times as possible within a given time limit.
-      This was a simple game made back in secondary school. 
-    `,
-    category: ProjectCategories.GameDevelopment,
-    skills: [
-      gameMakerLanguage,
-      gameMakerStudio,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-    ],
-    deploymentURL: "https://bepary-games.itch.io/catch-maruf",
-    archived: true,
-  },
-  {
-    name: "Against Gravity",
-    slug: "against-gravity",
-    description: `
-      A basic game where the aim is to reach the end of the level
-      by making use of the gravity switch and avoiding the obstacles.
-      This was a simple game made back in secondary school. 
-    `,
-    category: ProjectCategories.GameDevelopment,
-    skills: [
-      gameMakerLanguage,
-      gameMakerStudio,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-    ],
-    deploymentURL: "https://bepary-games.itch.io/against-gravity",
-    archived: true,
-  },
-  {
-    name: "Scrolling Shooter",
-    slug: "scrolling-shooter",
-    description: `
-      This is a game where the aim is to shoot the enemies and avoid their bullets.
-      This was a simple game made back in secondary school. 
-    `,
-    category: ProjectCategories.GameDevelopment,
-    skills: [
-      gameMakerLanguage,
-      gameMakerStudio,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-    ],
-    deploymentURL: "https://bepary-games.itch.io/scrolling-shooter",
-    archived: true,
-  },
-  {
-    name: "Dungeon",
-    slug: "dungeon",
-    description: `
-      A very simple 3D game where the aim is to reach the end of the level through the maze.
-      This was a simple game made back in secondary school. 
-    `,
-    category: ProjectCategories.GameDevelopment,
-    skills: [
-      gameMakerLanguage,
-      gameMakerStudio,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-    ],
-    deploymentURL: "https://bepary-games.itch.io/dungeon-",
-    archived: true,
-  },
-  {
-    name: " Veg Ninja",
-    slug: "veg-ninja",
-    description: `
-      A simple game where the aim is to cut the vegetables and avoid the bombs.
-      This is very similar to the popular game Fruit Ninja.
-      This was a simple game made back in secondary school. 
-    `,
-    category: ProjectCategories.GameDevelopment,
-    skills: [
-      gameMakerLanguage,
-      gameMakerStudio,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-    ],
-    deploymentURL: "https://bepary-games.itch.io/vej-ninja",
-    archived: true,
-  },
-  {
-    name: " Angry Cats Space",
-    slug: "angry-cats-space",
-    description: `
-      A game where the aim is to shoot the cats to kill all the rats. 
-      This is very similar to the popular game Angry Birds.
-      This was a simple game made back in secondary school. 
-    `,
-    category: ProjectCategories.GameDevelopment,
-    skills: [
-      gameMakerLanguage,
-      gameMakerStudio,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-    ],
-    deploymentURL: "https://bepary-games.itch.io/angry-cats-space",
-    archived: true,
-  },
-  {
-    name: " Angry Cats",
-    slug: "angry-cats",
-    description: `
-      A game where the aim is to shoot the cats to kill all the rats. 
-      This is very similar to the popular game Angry Birds.
-      This was a simple game made back in secondary school. 
-    `,
-    category: ProjectCategories.GameDevelopment,
-    skills: [
-      gameMakerLanguage,
-      gameMakerStudio,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-    ],
-    deploymentURL: "https://bepary-games.itch.io/angry-cats-space",
-    archived: true,
-  },
-];
 
-/**
- * Array of other projects.
- * This is used to populate the projects page.
- * @type {ProjectInterface[]}
- */
-const otherProjects: ProjectInterface[] = [
-  {
-    name: `Searching & Sorting`,
-    slug: `searching-sorting-algorithms`,
-    description: `
-      Jupyter Notebook containing various searching and sorting algorithms.
-      Each algorithms is explained. 
-      All the algorithms are also compared to each other. 
-    `,
-    category: ProjectCategories.Other,
-    skills: [
-      python,
-      matplotlib,
-      numpy,
-      jupyterNotebooks,
-      poetry,
-      gitHub,
-      git,
-      black,
-
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-      oop,
-      algorithms,
-      dataStructures,
-    ],
-    repositoryURL: "https://github.com/mbeps/algorithms",
-  },
-  {
-    name: `Automated Setup`,
-    slug: "automated-setup",
-    description: `
-      A shell script which automates the setup of a new Linux machine.
-      This is specifically for my Fedora install.
-      `,
-    skills: [
-      shellScript,
-      shellScript,
-      gitHub,
-      git,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-    ],
-    repositoryURL: `https://github.com/mbeps/AutomatedSetup`,
-    category: ProjectCategories.Other,
-  },
-  {
-    name: `Leetcode Solutions`,
-    slug: "leetcode",
-    description: `
-      A collection of Leetcode solutions in Python. 
-      This is used to practice algorithms and data structures.
-      They are also used to practice unit testing.
-      CI/CD is also used to run the tests when merging to the main branch.
-      `,
-    repositoryURL: `https://github.com/stars/mbeps/lists/leetcode`,
-    skills: [
-      python,
-      pytest,
-      gitHubActions,
-      gitHub,
-      git,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
-    ],
-    category: ProjectCategories.Other,
-  },
-];
-
-/**
- * Array of some Java assignments.
- * This is used to populate the projects page.
- * @type {ProjectInterface[]}
- */
-const javaAssignments: ProjectInterface[] = [
-  {
+  //^ Java Assignments
+  [ProjectKeysEnum.JavaCalculatorAssignment]: {
     name: `Calculator`,
-    slug: "calculator-assignment",
     description: `
       Simple calculator app built using Java as a Maven project. 
       This was a second year Java assignment focused on software engineering methodologies. 
@@ -1260,126 +754,474 @@ const javaAssignments: ProjectInterface[] = [
       The assignment highlighted the significance of following efficient software development processes rather than just focusing on the final implementation.  `,
     repositoryURL: `https://github.com/mbeps/Calculator-Assignment`,
     skills: [
-      java,
-      maven,
-      junit,
-      gitHub,
-      git,
-      checkstyle,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
+      SkillKeysEnum.Java,
+      SkillKeysEnum.Maven,
+      SkillKeysEnum.JUnit,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.GitHub,
+      SkillKeysEnum.Checkstyle,
+
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
     ],
-    category: ProjectCategories.JavaAssignments,
+    category: ProjectCategoriesEnum.JavaAssignments,
   },
-  {
+  [ProjectKeysEnum.BotanicGardenPlannerAssignment]: {
     name: `Botanic-Garden-Planner`,
-    slug: "botanic-garden-planner-assignment",
     description: `
       Simple botanic garden planner app built using Java.
       This was in first year to learn about Java and object oriented programming.`,
     repositoryURL: `https://github.com/mbeps/Botanic-Garden-Planner`,
     skills: [
-      java,
-      junit,
-      gitHub,
-      git,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
+      SkillKeysEnum.Java,
+      SkillKeysEnum.JUnit,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.GitHub,
+
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
     ],
-    category: ProjectCategories.JavaAssignments,
+    category: ProjectCategoriesEnum.JavaAssignments,
     archived: true,
   },
-  {
+  [ProjectKeysEnum.TrackAndTraceAssignment]: {
     name: "Track & Trace",
-    slug: "track-and-trace-assignment",
     description: `Simple app to track Covid cases. 
       This was in first year to learn about Java and object oriented programming.`,
     repositoryURL: `https://github.com/mbeps/Track_and_Trace`,
-    category: ProjectCategories.JavaAssignments,
+    category: ProjectCategoriesEnum.JavaAssignments,
     skills: [
-      java,
-      junit,
-      gitHub,
-      git,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
+      SkillKeysEnum.Java,
+      SkillKeysEnum.JUnit,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.GitHub,
+
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
     ],
     archived: true,
   },
-  {
+  [ProjectKeysEnum.HollomonAssignment]: {
     name: `Hollomon`,
-    slug: "hollomon-assignment",
     description: `This was in first year to learn about Java and object oriented programming.`,
     repositoryURL: `https://github.com/mbeps/Hollomon`,
-    category: ProjectCategories.JavaAssignments,
+    category: ProjectCategoriesEnum.JavaAssignments,
     skills: [
-      java,
-      junit,
-      gitHub,
-      git,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
+      SkillKeysEnum.Java,
+      SkillKeysEnum.JUnit,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.Git,
+
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
     ],
     archived: true,
   },
-  {
+  [ProjectKeysEnum.DatabasesMiniProject]: {
     name: `Database Mini Project`,
-    slug: "database-mini-project",
     description: `Learning to interact with a database using Java.`,
     repositoryURL: `https://github.com/mbeps/DatabasesMiniProject`,
     skills: [
-      java,
-      postgreSQL,
-      gitHub,
-      git,
-      problemSolving,
-      projectManagement,
-      criticalThinking,
-      creativity,
-      adaptability,
+      SkillKeysEnum.Java,
+      SkillKeysEnum.PostgreSQL,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.GitHub,
+
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
     ],
-    category: ProjectCategories.JavaAssignments,
+    category: ProjectCategoriesEnum.JavaAssignments,
     archived: true,
   },
-];
 
-export {
-  backendWebDevProjects,
-  extraWebDevProjects,
-  gameDevProjects,
-  javaAssignments,
-  machineLearningProjects,
-  otherProjects,
-  webdevProjects,
+  //^ Game Development Projects
+  [ProjectKeysEnum.OsmosGame]: {
+    name: `Osmos Game`,
+    description: `
+      This is a simple game created using SimpleGUI for a group project in my first year of university. 
+      The physics of the game were done manually using vector theory and physics concepts.
+      This required us to rely on the documentation as there was no tutorials or guides on how to use the library.
+      `,
+    repositoryURL: `https://github.com/mbeps/Osmos_Game`,
+    skills: [
+      SkillKeysEnum.Python,
+      SkillKeysEnum.SimpleGUI,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.GitHub,
+      SkillKeysEnum.Black,
+
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+      SkillKeysEnum.Leadership,
+      SkillKeysEnum.Teamwork,
+      SkillKeysEnum.Communication,
+    ],
+    category: ProjectCategoriesEnum.GameDevelopment,
+    thumbnailImage: addProjectThumbnail(ProjectKeysEnum.OsmosGame),
+  },
+  [ProjectKeysEnum.SurfaceFight]: {
+    name: "Surface Fight",
+    description: `
+      The game is about a robot shooting skeletons and trying to survive. 
+      Every time he kills all the skeletons more of them will come at once.
+      This was a simple game made back in secondary school. 
+    `,
+    category: ProjectCategoriesEnum.GameDevelopment,
+    skills: [
+      SkillKeysEnum.GameMakerLanguage,
+      SkillKeysEnum.GameMakerStudio,
+
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+    ],
+    deploymentURL: "https://bepary-games.itch.io/surface-fight",
+    archived: true,
+    thumbnailImage: addProjectThumbnail(ProjectKeysEnum.SurfaceFight),
+  },
+  [ProjectKeysEnum.Platformer]: {
+    name: "Platformer",
+    description: `
+      This is a basic and easy to play platform game which is similar to Super Mario.
+      Players must defeat the enemies and reach the end of the level.
+      This is also a multiplayer game.
+      This was a simple game made back in secondary school. 
+    `,
+    category: ProjectCategoriesEnum.GameDevelopment,
+    skills: [
+      SkillKeysEnum.GameMakerLanguage,
+      SkillKeysEnum.GameMakerStudio,
+
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+    ],
+    deploymentURL: "https://bepary-games.itch.io/platformer",
+    archived: true,
+    thumbnailImage: addProjectThumbnail(ProjectKeysEnum.Platformer),
+  },
+  [ProjectKeysEnum.PlatformerDeathWalk]: {
+    name: "Platformer Death Walk",
+    description: `
+      This is a basic and easy to play platform game which is similar to Super Mario.
+      Players must defeat all the enemies to reach the end of the level.
+      This is also a multiplayer game.
+      This was a simple game made back in secondary school. 
+    `,
+    category: ProjectCategoriesEnum.GameDevelopment,
+    skills: [
+      SkillKeysEnum.GameMakerLanguage,
+      SkillKeysEnum.GameMakerStudio,
+
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+    ],
+    deploymentURL: "https://bepary-games.itch.io/platformer-death-walk",
+    archived: true,
+    thumbnailImage: addProjectThumbnail(ProjectKeysEnum.PlatformerDeathWalk),
+  },
+  [ProjectKeysEnum.CodingBreakout]: {
+    name: "Coding Breakout",
+    description: `
+      In Breakout, a layer of bricks lines the top third of the screen
+      and the goal is to destroy them all by repeatedly bouncing a ball off a paddle into them.
+      This was a simple game made back in secondary school. 
+    `,
+    category: ProjectCategoriesEnum.GameDevelopment,
+    skills: [
+      SkillKeysEnum.GameMakerLanguage,
+      SkillKeysEnum.GameMakerStudio,
+
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+    ],
+    deploymentURL: "https://bepary-games.itch.io/coding-break-out",
+    archived: true,
+    thumbnailImage: addProjectThumbnail(ProjectKeysEnum.CodingBreakout),
+  },
+  [ProjectKeysEnum.CatchMaruf]: {
+    name: "Catch Maruf",
+    description: `
+      A basic game where the focus is to click on a character
+      as many times as possible within a given time limit.
+      This was a simple game made back in secondary school. 
+    `,
+    category: ProjectCategoriesEnum.GameDevelopment,
+    skills: [
+      SkillKeysEnum.GameMakerLanguage,
+      SkillKeysEnum.GameMakerStudio,
+
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+    ],
+    deploymentURL: "https://bepary-games.itch.io/catch-maruf",
+    archived: true,
+    thumbnailImage: addProjectThumbnail(ProjectKeysEnum.CatchMaruf),
+  },
+  [ProjectKeysEnum.AgainstGravity]: {
+    name: "Against Gravity",
+    description: `
+      A basic game where the aim is to reach the end of the level
+      by making use of the gravity switch and avoiding the obstacles.
+      This was a simple game made back in secondary school. 
+    `,
+    category: ProjectCategoriesEnum.GameDevelopment,
+    skills: [
+      SkillKeysEnum.GameMakerLanguage,
+      SkillKeysEnum.GameMakerStudio,
+
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+    ],
+    deploymentURL: "https://bepary-games.itch.io/against-gravity",
+    archived: true,
+    thumbnailImage: addProjectThumbnail(ProjectKeysEnum.AgainstGravity),
+  },
+  [ProjectKeysEnum.ScrollingShooter]: {
+    name: "Scrolling Shooter",
+    description: `
+      This is a game where the aim is to shoot the enemies and avoid their bullets.
+      This was a simple game made back in secondary school. 
+    `,
+    category: ProjectCategoriesEnum.GameDevelopment,
+    skills: [
+      SkillKeysEnum.GameMakerLanguage,
+      SkillKeysEnum.GameMakerStudio,
+
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+    ],
+    deploymentURL: "https://bepary-games.itch.io/scrolling-shooter",
+    archived: true,
+    thumbnailImage: addProjectThumbnail(ProjectKeysEnum.ScrollingShooter),
+  },
+  [ProjectKeysEnum.Dungeon]: {
+    name: "Dungeon",
+    description: `
+      A very simple 3D game where the aim is to reach the end of the level through the maze.
+      This was a simple game made back in secondary school. 
+    `,
+    category: ProjectCategoriesEnum.GameDevelopment,
+    skills: [
+      SkillKeysEnum.GameMakerLanguage,
+      SkillKeysEnum.GameMakerStudio,
+
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+    ],
+    deploymentURL: "https://bepary-games.itch.io/dungeon-",
+    archived: true,
+    thumbnailImage: addProjectThumbnail(ProjectKeysEnum.Dungeon),
+  },
+  [ProjectKeysEnum.VegNinja]: {
+    name: " Veg Ninja",
+    description: `
+      A simple game where the aim is to cut the vegetables and avoid the bombs.
+      This is very similar to the popular game Fruit Ninja.
+      This was a simple game made back in secondary school. 
+    `,
+    category: ProjectCategoriesEnum.GameDevelopment,
+    skills: [
+      SkillKeysEnum.GameMakerLanguage,
+      SkillKeysEnum.GameMakerStudio,
+
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+    ],
+    deploymentURL: "https://bepary-games.itch.io/vej-ninja",
+    archived: true,
+    thumbnailImage: addProjectThumbnail(ProjectKeysEnum.VegNinja),
+  },
+  [ProjectKeysEnum.AngryCatsSpace]: {
+    name: " Angry Cats Space",
+    description: `
+      A game where the aim is to shoot the cats to kill all the rats. 
+      This is very similar to the popular game Angry Birds.
+      This was a simple game made back in secondary school. 
+    `,
+    category: ProjectCategoriesEnum.GameDevelopment,
+    skills: [
+      SkillKeysEnum.GameMakerLanguage,
+      SkillKeysEnum.GameMakerStudio,
+
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+    ],
+    deploymentURL: "https://bepary-games.itch.io/angry-cats-space",
+    archived: true,
+    thumbnailImage: addProjectThumbnail(ProjectKeysEnum.AngryCatsSpace),
+  },
+  [ProjectKeysEnum.AngryCats]: {
+    name: " Angry Cats",
+    description: `
+      A game where the aim is to shoot the cats to kill all the rats. 
+      This is very similar to the popular game Angry Birds.
+      This was a simple game made back in secondary school. 
+    `,
+    category: ProjectCategoriesEnum.GameDevelopment,
+    skills: [
+      SkillKeysEnum.GameMakerLanguage,
+      SkillKeysEnum.GameMakerStudio,
+
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+    ],
+    deploymentURL: "https://bepary-games.itch.io/angry-cats-space",
+    archived: true,
+    thumbnailImage: addProjectThumbnail(ProjectKeysEnum.AngryCats),
+  },
+
+  //^ Other Projects
+  [ProjectKeysEnum.SearchingAndSortingAlgorithms]: {
+    name: `Searching & Sorting Algorithms`,
+    description: `
+      Jupyter Notebook containing various searching and sorting algorithms.
+      Each algorithms is explained. 
+      All the algorithms are also compared to each other. 
+    `,
+    category: ProjectCategoriesEnum.Other,
+    skills: [
+      SkillKeysEnum.Python,
+      SkillKeysEnum.Matplotlib,
+      SkillKeysEnum.NumPy,
+      SkillKeysEnum.Jupyter,
+      SkillKeysEnum.Poetry,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.GitHub,
+      SkillKeysEnum.Black,
+
+      SkillKeysEnum.DataStructures,
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+      SkillKeysEnum.ObjectOrientedProgramming,
+      SkillKeysEnum.Algorithms,
+    ],
+    repositoryURL: "https://github.com/mbeps/algorithms",
+  },
+  [ProjectKeysEnum.AutomatedSetup]: {
+    name: `Automated Setup`,
+    description: `
+      A shell script which automates the setup of a new Linux machine.
+      This is specifically for my Fedora install.
+      `,
+    skills: [
+      SkillKeysEnum.ShellScript,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.GitHub,
+
+      SkillKeysEnum.DataStructures,
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+    ],
+    repositoryURL: `https://github.com/mbeps/AutomatedSetup`,
+    category: ProjectCategoriesEnum.Other,
+  },
+  [ProjectKeysEnum.Leetcode]: {
+    name: `Leetcode Solutions`,
+    description: `
+      A collection of Leetcode solutions in Python. 
+      This is used to practice algorithms and data structures.
+      They are also used to practice unit testing.
+      CI/CD is also used to run the tests when merging to the main branch.
+      `,
+    repositoryURL: `https://github.com/stars/mbeps/lists/leetcode`,
+    skills: [
+      SkillKeysEnum.Python,
+      SkillKeysEnum.PyTest,
+      SkillKeysEnum.Git,
+      SkillKeysEnum.GitHub,
+      SkillKeysEnum.GitHubActions,
+
+      SkillKeysEnum.DataStructures,
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.ProjectManagement,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.Creativity,
+      SkillKeysEnum.Adaptability,
+    ],
+    category: ProjectCategoriesEnum.Other,
+  },
 };
 
 /**
- * Array of all projects.
+ * List of keys for the projects that can be used to uniquely identify the project.
  */
-const allProjects = addNestedSkillsMaterialList<ProjectInterface>(
-  [
-    ...webdevProjects,
-    ...machineLearningProjects,
-    ...extraWebDevProjects,
-    ...gameDevProjects,
-    ...otherProjects,
-    ...javaAssignments,
-    ...backendWebDevProjects,
-  ],
-  SkillTypes.General,
-  SkillTypes.Hard
-);
+export const projectKeys: ProjectKeysEnum[] = Object.keys(
+  projectMap
+) as ProjectKeysEnum[];
 
-export default allProjects;
+/**
+ * Hashmap of projects with keys as {@link SkillKeysEnum} and values as {@link ProjectInterface}.
+ * The order of the projects is the order that is used when displaying the projects on the website.
+ * The order skills is the order that is used when displaying the skills on the website.
+ *
+ * There are certain sub-skills for the skills that are directly listed under the skill objects within this hashmap.
+ * For each of those skills, the sub-skill is added to the list of skills for the blog.
+ * These sub-skills are specifically general skills related to the technologies but are not part of programming languages.
+ * Programming languages have many sub-skills that are not directly related to the blogs above.
+ */
+const projectDatabase: Database<ProjectInterface> =
+  addNestedSkillsMaterialList<ProjectInterface>(
+    projectMap,
+    skillDatabase,
+    [SkillCategoriesEnum.ProgrammingLanguages],
+    SkillTypesEnum.General,
+    SkillTypesEnum.Hard
+  );
+
+export default projectDatabase;

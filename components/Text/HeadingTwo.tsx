@@ -7,8 +7,8 @@ interface HeadingTwoProps {
 /**
  * Heading 2 text component shown at the top of each section.
  *
- * @param title (string): Heading to be displayed for each section
- * @returns (JSX.Element): Title component
+ * @param title Heading to be displayed for each section
+ * @returns Title component
  */
 const HeadingTwo: React.FC<HeadingTwoProps> = ({ title }) => {
   return (

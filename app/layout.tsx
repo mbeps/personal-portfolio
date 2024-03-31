@@ -11,8 +11,8 @@ import "./globals.css";
  * - Footer
  * - Children (page content)
  * It also applies the theme to the page.
- * @param children (React.ReactNode): Page content
- * @returns (JSX.Element): Layout component
+ * @param children Page content
+ * @returns Layout component
  */
 export default function RootLayoutWithProviders({
   children,

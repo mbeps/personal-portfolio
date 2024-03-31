@@ -1,46 +1,49 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
-import filterMaterialByArchivedStatus, {
-  filterMaterialByCategory,
-  filterMaterialBySkill,
-  filterMaterialBySkillCategory,
-} from "@/actions/material/filterMaterials";
-import generateFilterOptionsByCategory from "@/actions/material/generateFilterOptionsByCategory";
-import generateFilterOptionsBySkillCategories from "@/actions/material/generateFilterOptionsBySkillCategories";
-import generateFilterOptionsBySkillType from "@/actions/material/generateFilterOptionsBySkillType";
-import groupMaterialsByCategory from "@/actions/material/groupMaterialsByCategory";
-import filterProjectsByProgrammingLanguage from "@/actions/material/projects/filterProjectsByProgrammingLanguage";
-import generateFilterOptionsForProgrammingLanguages from "@/actions/material/projects/generateFilterOptionsForProgrammingLanguages";
+import filterMaterialByArchivedStatus from "@/actions/material/filter/filterMaterialByArchivedStatus";
+import filterMaterialByCategory from "@/actions/material/filter/filterMaterialByCategory";
+import filterMaterialBySkill from "@/actions/material/filter/filterMaterialBySkill";
+import filterMaterialBySkillCategory from "@/actions/material/filter/filterMaterialBySkillCategory";
+import generateFilterOptionsByCategory from "@/actions/material/filterOptions/generateFilterOptionsByCategory";
+import { generateFilterOptionsBySkillCategories } from "@/actions/material/filterOptions/generateFilterOptionsBySkillCategories";
+import generateFilterOptionsBySkillType from "@/actions/material/filterOptions/generateFilterOptionsBySkillType";
+import generateFilterOptionsForProgrammingLanguages from "@/actions/material/filterOptions/generateFilterOptionsForProgrammingLanguages";
+import groupMaterialsByCategory from "@/actions/material/group/groupMaterialsByCategory";
 import stringToSlug from "@/actions/stringToSlug";
 import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
 import FilterOverlay from "@/components/Filters/FilterPanel";
 import SearchInput from "@/components/Inputs/SearchInput";
 import ProjectsList from "@/components/MaterialLists/ProjectsList";
 import { Button } from "@/components/shadcn/ui/button";
+import projectDatabase from "@/database/projects";
+import skillDatabase from "@/database/skills";
+import ProjectKeysEnum from "@/enums/DatabaseKeysEnums/ProjectKeysEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import useFuseSearch from "@/hooks/useFuseSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
-import FilterOption from "@/interfaces/filters/FilterOption";
+import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
-import {
-  SkillCategories,
-  SkillTypes,
-} from "@/interfaces/skills/SkillInterface";
-import Fuse from "fuse.js";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import { AiOutlineClear } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
 
-type ProjectsListProps = {
-  allProjects: ProjectInterface[];
-};
-
-const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
+/**
+ * Displays a list of all projects that I have worked on.
+ * Also allows the user to search and filter the projects.
+ * These projects are displayed into categories.
+ * Because this uses hooks, it is a client-side only component.
+ *
+ * @returns Component showing all the projects, search bar and filters.
+ */
+const ProjectsView: React.FC = () => {
   //^ Hooks
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const searchParams = useSearchParams();
-  const basePath = usePathname();
+  const basePath: string = usePathname();
   const router = useRouter();
 
   //^ URL Params Strings
@@ -55,16 +58,19 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
   const searchParamName = "search";
 
   //^ URL Params Reader
-  const selectedTechnology = searchParams.get(technologyParamName) || "all";
-  const selectedLanguage = searchParams.get(languageParamName) || "all";
-  const selectedSection = searchParams.get(sectionParamName) || "all";
+  const selectedTechnology: string =
+    searchParams.get(technologyParamName) || "all";
+  const selectedLanguage: string = searchParams.get(languageParamName) || "all";
+  const selectedSection: string = searchParams.get(sectionParamName) || "all";
   const selectedSkillCategory =
     searchParams.get(skillCategoryParamName) || "all";
-  const selectedGeneralSkill = searchParams.get(generalSkillParamName) || "all";
-  const selectedSoftSkill = searchParams.get(softSkillParamName) || "all";
+  const selectedGeneralSkill: string =
+    searchParams.get(generalSkillParamName) || "all";
+  const selectedSoftSkill: string =
+    searchParams.get(softSkillParamName) || "all";
 
-  const searchTerm = searchParams.get(searchParamName) || "";
-  const showArchived =
+  const searchTerm: string = searchParams.get(searchParamName) || "";
+  const showArchived: boolean =
     (searchParams.get(archivedParamName) || "false") === "true";
 
   //^ Modal Controls
@@ -78,148 +84,92 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
    * These are the only properties that are searched.
    * These are the same ones from the Project type.
    */
-  const searchOptions = {
-    keys: [
-      "name",
-      "category",
-      "skills.name",
-      "skills.category",
-      "skills.relatedSkills.name",
-      "skills.relatedSkills.category",
-    ],
-    threshold: 0.3, // Lower threshold means more results
-  };
+  const searchOptions: string[] = [
+    "name",
+    "category",
+    "skills.name",
+    "skills.category",
+    "skills.relatedSkills.name",
+    "skills.relatedSkills.category",
+  ];
 
-  /**
-   * Fuse object that is used to search the projects.
-   * @param allProjects (Project[]): list of all projects
-   * @param options (Fuse.IFuseOptions<Project>): options for fuzzy search
-   */
-  const fuse = new Fuse(allProjects, searchOptions);
-
-  /**
-   * List of projects that match the search term.
-   */
-  const searchedProjects = searchTerm
-    ? fuse.search(searchTerm).map((result) => result.item)
-    : allProjects;
-
-  //^ Filter Options List
-  /**
-   * List of project types to be displayed in the filter.
-   * Adds 'All' as the first option.
-   * Appends all unique project types to the list.
-   * Project types are from the 'type' property of each project.
-   */
-  const projectTypes =
-    generateFilterOptionsByCategory<ProjectInterface>(allProjects);
-
-  /**
-   * List of programming languages to be displayed in the filter.
-   * Adds 'All' as the first option.
-   * Appends all unique programming languages to the list.
-   * Programming languages are from the 'programmingLanguage' property of each project.
-   */
-  const programmingLanguages =
-    generateFilterOptionsForProgrammingLanguages<ProjectInterface>(allProjects);
-
-  /**
-   * List of technologies to be displayed in the filter.
-   * Adds 'All' as the first option.
-   * Appends all unique technologies to the list.
-   * Technologies are from the 'technologies' property of each project.
-   */
-  const technologies = generateFilterOptionsBySkillType<ProjectInterface>(
-    allProjects,
-    SkillTypes.Hard,
-    SkillCategories.ProgrammingLanguages
-  );
-
-  const categories =
-    generateFilterOptionsBySkillCategories<ProjectInterface>(allProjects);
-
-  const generalSkills: FilterOption[] =
-    generateFilterOptionsBySkillType<ProjectInterface>(
-      allProjects,
-      SkillTypes.General
-    );
-
-  const softSkills: FilterOption[] =
-    generateFilterOptionsBySkillType<ProjectInterface>(
-      allProjects,
-      SkillTypes.Soft
-    );
+  let filteredProjectsSlugArray: ProjectKeysEnum[] = useFuseSearch(
+    projectDatabase,
+    searchTerm,
+    searchOptions
+  ) as ProjectKeysEnum[];
 
   //^ Filtering Logic
-  /**
-   * Filters the projects based on the the filter options.
-   * Both language and type can be filtered.
-   * If 'All' is selected, then all projects are displayed.
-   * Archived projects are not displayed by default.
-   */
-  let filteredProjects = searchedProjects;
 
   // Filter by project type category
   if (stringToSlug(selectedSection) !== "all") {
-    filteredProjects = filterMaterialByCategory<ProjectInterface>(
+    filteredProjectsSlugArray = filterMaterialByCategory<ProjectInterface>(
       stringToSlug(selectedSection),
-      filteredProjects
-    );
+      filteredProjectsSlugArray,
+      projectDatabase
+    ) as ProjectKeysEnum[];
   }
 
   // Filter by programming language
   if (selectedLanguage !== "all") {
-    filteredProjects = filterProjectsByProgrammingLanguage(
-      selectedLanguage,
-      filteredProjects
-    );
+    filteredProjectsSlugArray = filterMaterialBySkill(
+      selectedLanguage as SkillKeysEnum,
+      filteredProjectsSlugArray,
+      projectDatabase
+    ) as ProjectKeysEnum[];
   }
 
   // Filter by technology (assuming you have a similar function for technologies)
   if (selectedTechnology !== "all") {
-    filteredProjects = filterMaterialBySkill<ProjectInterface>(
-      selectedTechnology,
-      filteredProjects,
-      SkillTypes.Hard
-    );
+    filteredProjectsSlugArray = filterMaterialBySkill<ProjectInterface>(
+      selectedTechnology as SkillKeysEnum,
+      filteredProjectsSlugArray,
+      projectDatabase
+    ) as ProjectKeysEnum[];
   }
 
   // Filter by skill category
   if (stringToSlug(selectedSkillCategory) !== "all") {
-    filteredProjects = filterMaterialBySkillCategory<ProjectInterface>(
+    filteredProjectsSlugArray = filterMaterialBySkillCategory<ProjectInterface>(
+      filteredProjectsSlugArray,
+      projectDatabase,
       stringToSlug(selectedSkillCategory),
-      filteredProjects
-    );
+      skillDatabase
+    ) as ProjectKeysEnum[];
   }
 
   // Filter by general skill
   if (selectedGeneralSkill !== "all") {
-    filteredProjects = filterMaterialBySkill<ProjectInterface>(
-      selectedGeneralSkill,
-      filteredProjects,
-      SkillTypes.General
-    );
+    filteredProjectsSlugArray = filterMaterialBySkill<ProjectInterface>(
+      selectedGeneralSkill as SkillKeysEnum,
+      filteredProjectsSlugArray,
+      projectDatabase
+    ) as ProjectKeysEnum[];
   }
 
   // Filter by soft skill
   if (selectedSoftSkill !== "all") {
-    filteredProjects = filterMaterialBySkill<ProjectInterface>(
-      selectedSoftSkill,
-      filteredProjects,
-      SkillTypes.Soft
-    );
+    filteredProjectsSlugArray = filterMaterialBySkill<ProjectInterface>(
+      selectedSoftSkill as SkillKeysEnum,
+      filteredProjectsSlugArray,
+      projectDatabase
+    ) as ProjectKeysEnum[];
   }
 
   // Filter by archived status
-  filteredProjects = filterMaterialByArchivedStatus<ProjectInterface>(
+  filteredProjectsSlugArray = filterMaterialByArchivedStatus<ProjectInterface>(
     showArchived,
-    filteredProjects
-  );
+    filteredProjectsSlugArray,
+    projectDatabase
+  ) as ProjectKeysEnum[];
 
   /**
    * Projects categorized by type.
    */
-  const groupedProjects = groupMaterialsByCategory(filteredProjects);
+  const groupedProjects: MaterialGroupInterface[] = groupMaterialsByCategory(
+    filteredProjectsSlugArray,
+    projectDatabase
+  );
 
   /**
    * Updates the search term in the URL.
@@ -262,37 +212,56 @@ const ProjectsView: React.FC<ProjectsListProps> = ({ allProjects }) => {
       sectionName: "Section",
       urlParam: sectionParamName,
       selectedValue: selectedSection,
-      options: projectTypes,
+      options:
+        generateFilterOptionsByCategory<ProjectInterface>(projectDatabase),
     },
     {
       sectionName: "Programming Language",
       urlParam: languageParamName,
       selectedValue: selectedLanguage,
-      options: programmingLanguages,
+      options: generateFilterOptionsForProgrammingLanguages<ProjectInterface>(
+        projectDatabase,
+        skillDatabase
+      ),
     },
     {
       sectionName: "Technology",
       urlParam: technologyParamName,
       selectedValue: selectedTechnology,
-      options: technologies,
+      options: generateFilterOptionsBySkillType<ProjectInterface>(
+        projectDatabase,
+        skillDatabase,
+        SkillTypesEnum.Hard
+      ),
     },
     {
       sectionName: "Category",
       urlParam: skillCategoryParamName,
       selectedValue: selectedSkillCategory,
-      options: categories,
+      options: generateFilterOptionsBySkillCategories<ProjectInterface>(
+        projectDatabase,
+        skillDatabase
+      ),
     },
     {
       sectionName: "General Skill",
       urlParam: generalSkillParamName,
       selectedValue: selectedGeneralSkill,
-      options: generalSkills,
+      options: generateFilterOptionsBySkillType<ProjectInterface>(
+        projectDatabase,
+        skillDatabase,
+        SkillTypesEnum.General
+      ),
     },
     {
       sectionName: "Soft Skill",
       urlParam: softSkillParamName,
       selectedValue: selectedSoftSkill,
-      options: softSkills,
+      options: generateFilterOptionsBySkillType<ProjectInterface>(
+        projectDatabase,
+        skillDatabase,
+        SkillTypesEnum.Soft
+      ),
     },
   ];
 

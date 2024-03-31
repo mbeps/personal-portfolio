@@ -4,7 +4,8 @@ import Link from "next/link";
 /**
  * Home button component.
  * It displays the logo and links to the home page.
- * @returns (JSX.Element): Home button component
+ *
+ * @returns Home button component
  */
 const HomeButton: React.FC = () => {
   return (

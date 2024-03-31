@@ -10,14 +10,14 @@ interface ArchiveToggleProps {
 }
 
 /**
- * Toggle component used for toggling between showing archived projects and not showing archived projects.
- * @param generateUrl (function) - function that generates the url for the archive toggle
- * @param showArchived (boolean) - whether or not to show archived projects
- * @param selectedType (string) - the selected project type
- * @param selectedTechnology (string) - the selected project technology
- * @param selectedLanguage (string) - the selected project language
- * @param searchTerm (string) - the search term
- * @returns (JSX.Element) - the archive toggle component (JSX.Element
+ * Toggle component used for toggling between showing archived material and not showing archived material.
+ *
+ * @param generateUrl Function to generate the URL with the new filter options
+ * @param showArchived If the archived material should be shown
+ * @param filterProps The current filter options
+ * @param basePath The base path for the URL
+ * @returns Toggle component to show archived material
+ * @see Switch https://ui.shadcn.com/docs/components/switch
  */
 export const ArchiveToggle: React.FC<ArchiveToggleProps> = ({
   generateUrl,

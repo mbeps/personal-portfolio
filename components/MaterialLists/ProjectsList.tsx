@@ -1,9 +1,16 @@
 import stringToSlug from "@/actions/stringToSlug";
-import ProjectItem from "@/components/ProjectItem/ProjectItem";
+import ProjectItem from "@/components/MaterialItems/ProjectItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import MaterialListProps from "@/interfaces/props/MaterialListProps";
 
+/**
+ * List of projects grouped by category to be displayed section by section.
+ * Each section contains a title and a list of projects.
+ * If there are no projects to display, a message is shown.
+ *
+ * @param groupedProjects List of projects grouped by category to be displayed section by section
+ * @returns A list of projects grouped by category
+ */
 const ProjectsList: React.FC<MaterialListProps> = ({
   groupedMaterial: groupedProjects,
 }) => {
@@ -18,15 +25,15 @@ const ProjectsList: React.FC<MaterialListProps> = ({
                   <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
                   <HeadingTwo title={group.groupName} />
                   <div className="space-y-20">
-                    {group.materials.map((project, idx) => (
-                      <div key={idx}>
-                        <ProjectItem project={project as ProjectInterface} />
+                    {group.materialsKeys.map((projectKey) => (
+                      <div key={projectKey}>
+                        <ProjectItem projectKey={projectKey} />
                       </div>
                     ))}
                   </div>
                 </div>
               </section>
-            ),
+            )
         )
       ) : (
         <div className="flex justify-center min-w-full mt-8">

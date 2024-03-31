@@ -13,10 +13,15 @@ import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFile
  * The skills, languages and technologies are displayed as tags.
  * Some of these tags can be clicked which will open a modal.
  * There is also a view more button that opens a modal to show more skills, languages or technologies.
- * @returns (JSX.Element): About section
+ * @returns About section
  */
 const AboutSection = () => {
-  const blogContent = getMarkdownFromFileSystem(`public/about-me.md`)?.content;
+  /**
+   * About me written in markdown.
+   * This markdown is converted to HTML and displayed on the page.
+   */
+  const blogContent: string | undefined =
+    getMarkdownFromFileSystem(`public/about-me.md`)?.content;
 
   return (
     <section id="about" className="home-section-wrapper">

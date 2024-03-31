@@ -7,8 +7,8 @@ interface HeadingOneProps {
 /**
  * Heading 1 text component shown at the top of each section but under main headings.
  *
- * @param title (string): heading to be displayed for each section
- * @returns (JSX.Element): subheading component
+ * @param title Heading to be displayed for each section
+ * @returns Subheading component
  */
 const HeadingOne: React.FC<HeadingOneProps> = ({ title }) => {
   return (

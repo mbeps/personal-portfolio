@@ -1,8 +1,10 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
-import findAllMaterialsAttributedToSkill from "@/actions/material/findAllMaterialsAttributedToSkill";
-import groupSkills from "@/actions/skills/groupSkills";
+import countMaterialsAttributedToSkill from "@/actions/material/countMaterialsAttributedToSkill";
+import groupSkills, {
+  GroupByOptions,
+} from "@/actions/skills/group/groupSkills";
 import SkillTag from "@/components/Tags/SkillTag";
 import HeadingThree from "@/components/Text/HeadingThree";
 import { Button } from "@/components/shadcn/ui/button";
@@ -24,32 +26,41 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/shadcn/ui/popover";
-import blogs from "@/database/blogs";
-import certificates from "@/database/certificates";
-import projects from "@/database/projects";
-import { nextjs } from "@/database/skills/technicalHardSkills/technicalHardSkillsFullStackWebDev";
+import materialDatabase from "@/database/material";
+import skillDatabase from "@/database/skills";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import FilterOption from "@/interfaces/filters/FilterOption";
-import SkillInterface, { SkillTypes } from "@/interfaces/skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import { cn } from "@/lib/utils";
 import { Check } from "lucide-react";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import {
+  ReadonlyURLSearchParams,
+  useRouter,
+  useSearchParams,
+} from "next/navigation";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 
 interface SkillListProps {
-  skills: SkillInterface[];
+  skills: SkillKeysEnum[];
 }
 
+/**
+ * Component displaying all the skills that I have learned and worked with.
+ * These skills can be grouped into categories and certain type skills can be ignored.
+ * Skills can also be filtered by the number of materials attributed to them.
+ *
+ * @returns List of skills grouped by category and controls to filter them
+ */
 const SkillList: React.FC<SkillListProps> = ({ skills }) => {
   const [isOpen, setOpen] = useState(false);
 
-  const allMaterial = [...projects, ...certificates, ...blogs];
-
-  const searchParams = useSearchParams();
+  const searchParams: ReadonlyURLSearchParams = useSearchParams();
   const basePath = "/skills";
-  const router = useRouter();
+  const router: AppRouterInstance = useRouter();
 
   const gap = "w-4 h-4 mr-2";
 
@@ -59,12 +70,15 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
   const softSkillParamName = "soft";
   const noMaterialParamName = "no-material";
 
-  const selectedGroup = searchParams.get(groupParamName) || "category";
-  const includeHardSkills = searchParams.get(hardSkillParamName) === "true";
-  const includeGeneralSkills =
+  const selectedGroup: string = searchParams.get(groupParamName) || "category";
+  const includeHardSkills: boolean =
+    searchParams.get(hardSkillParamName) === "true";
+  const includeGeneralSkills: boolean =
     searchParams.get(generalSkillParamName) === "true";
-  const includeSoftSkills = searchParams.get(softSkillParamName) === "true";
-  const includeNoMaterial = searchParams.get(noMaterialParamName) === "true"; // false by default
+  const includeSoftSkills: boolean =
+    searchParams.get(softSkillParamName) === "true";
+  const includeNoMaterial: boolean =
+    searchParams.get(noMaterialParamName) === "true"; // false by default
 
   //^ LOGIC FOR DISPLAYING FILTERED SKILLS
   const options: FilterOption[] = [
@@ -74,16 +88,17 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
     { slug: "none", entryName: "None" },
   ];
 
-  const includeSkillTypes: SkillTypes[] = [];
+  const includeSkillTypes: SkillTypesEnum[] = [];
 
-  if (includeHardSkills) includeSkillTypes.push(SkillTypes.Hard);
-  if (includeGeneralSkills) includeSkillTypes.push(SkillTypes.General);
-  if (includeSoftSkills) includeSkillTypes.push(SkillTypes.Soft);
+  if (includeHardSkills) includeSkillTypes.push(SkillTypesEnum.Hard);
+  if (includeGeneralSkills) includeSkillTypes.push(SkillTypesEnum.General);
+  if (includeSoftSkills) includeSkillTypes.push(SkillTypesEnum.Soft);
 
   // Group skills with the inclusion list
   const groupedSkills: SkillsCategoryInterface[] = groupSkills(
-    selectedGroup,
+    selectedGroup as GroupByOptions,
     skills,
+    skillDatabase,
     includeSkillTypes
   );
 
@@ -280,18 +295,23 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
                 }
               />
               <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-                {categoryData.skills.map((skill, index) => (
-                  <SkillTag
-                    key={index}
-                    skill={skill}
-                    hide={
-                      !(
-                        findAllMaterialsAttributedToSkill(skill, allMaterial)
-                          .length >= 5
-                      ) && includeNoMaterial
-                    }
-                  />
-                ))}
+                {Object.entries(categoryData.skills).map(
+                  ([skillKey, skill], index) => (
+                    <SkillTag
+                      key={skillKey} // Use skillKey as the key for better React key usage
+                      skillKey={skill}
+                      hide={
+                        !(
+                          countMaterialsAttributedToSkill(
+                            skillKey as SkillKeysEnum,
+                            skillDatabase,
+                            materialDatabase
+                          ) >= 5
+                        ) && includeNoMaterial
+                      }
+                    />
+                  )
+                )}
               </div>
             </div>
           ))

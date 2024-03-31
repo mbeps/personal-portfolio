@@ -1,12 +1,9 @@
-import updateProjectImages from "@/actions/file-system/updateProjectImages";
-import validateSlugsWithContent from "@/actions/material/validateSlugsWithContent";
-import ProjectItem from "@/components/ProjectItem/ProjectItem";
+import ProjectItem from "@/components/MaterialItems/ProjectItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import SlideUp from "@/components/UI/Slideup";
 import { Button } from "@/components/shadcn/ui/button";
-import { PROJECTS } from "@/constants/pages";
-import allProjects from "@/database/projects";
-import ProjectInterface from "@/interfaces/material/ProjectInterface";
+import { PROJECTS_PAGE } from "@/constants/pages";
+import ProjectKeysEnum from "@/enums/DatabaseKeysEnums/ProjectKeysEnum";
 import Link from "next/link";
 
 /**
@@ -14,40 +11,33 @@ import Link from "next/link";
  * Each card shows the name, description and a link to the GitHub repository.
  * Some cards also show a link to the live site.
  * There is also an image of the projects.
- * @returns (JSX.Element): Projects section
+ * @returns Projects section
  */
 const ProjectsSection = () => {
-  const basePath = PROJECTS.path;
+  const basePath: string = PROJECTS_PAGE.path;
 
   /**
    * Only projects matching these slugs will be shown.
+   * In other words, only these projects will be displayed on the home page.
    */
-  const allowedSlugs = [
-    "circus-discussions",
-    "ringmaster-messaging",
-    "magician-ai",
+  const displayedProjects: string[] = [
+    ProjectKeysEnum.CircusDiscussions,
+    ProjectKeysEnum.RingmasterMessaging,
+    ProjectKeysEnum.MagicianAI,
   ];
-
-  // Validate the slugs
-  if (!validateSlugsWithContent<ProjectInterface>(allowedSlugs, allProjects)) {
-    console.error("Some slugs in allowedSlugs are not valid.");
-    return null;
-  }
 
   return (
     <section id="projects" className="home-section-wrapper">
       <HeadingTwo title="Projects" />
 
       <div className="flex flex-col space-y-20 mt-14">
-        {updateProjectImages(allProjects)
-          .filter((project) => allowedSlugs.includes(project.slug))
-          .map((project, idx) => (
-            <div key={idx}>
-              <SlideUp offset="-150px 0px -150px 0px">
-                <ProjectItem project={project} />
-              </SlideUp>
-            </div>
-          ))}
+        {displayedProjects.map((slug, idx) => (
+          <div key={slug}>
+            <SlideUp offset="-150px 0px -150px 0px">
+              <ProjectItem projectKey={slug} />
+            </SlideUp>
+          </div>
+        ))}
       </div>
 
       <div className="flex justify-center mt-10">

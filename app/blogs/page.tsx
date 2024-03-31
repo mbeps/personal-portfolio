@@ -1,36 +1,41 @@
 import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/UI/PageDescription";
-import { BLOG } from "@/constants/pages";
-import blogs from "@/database/blogs";
+import developerName from "@/constants/developerName";
+import { BLOG_PAGE } from "@/constants/pages";
 import type { Metadata } from "next";
 import { BlogsView } from "./components/BlogsView";
-import developerName from "@/constants/developerName";
 
-const description = `
-  Explore my collection of blogs on various topics. 
-  Use the search bar to find specific blogs or filter them by category.
-`;
-
+/**
+ * Generates the metadata for the blog page.
+ * This includes the title and description of the page.
+ * This is used for SEO purposes.
+ *
+ * @param props The props for the skill page.
+ * @param parent The parent metadata that is being resolved.
+ * @returns The metadata for the blog page.
+ * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ */
 export const metadata: Metadata = {
-  title: `${developerName} - ${BLOG.label}`,
-  description: description,
+  title: `${developerName} - ${BLOG_PAGE.label}`,
+  description: BLOG_PAGE.description,
 };
+
 /**
  * Displays a list of all blogs that can be opened.
- * Also allows the user to search for blogs.
- * @returns (JSX.Element): page with all blogs
+ * Also allows the user to search and filter the blogs.
+ * These blogs are displayed into categories.
+ *
+ * @returns Page with all blogs
+ * @requires {@link BlogsView} component to display the blogs and filter/search them
  */
 export default function BlogPage() {
-  let blogMetadata = blogs;
-
   return (
     <main>
       <section id="blogs">
         <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
-          <HeadingOne title={BLOG.label} />
-          <PageDescription description={description} />
-
-          <BlogsView blogs={blogMetadata} />
+          <HeadingOne title={BLOG_PAGE.label} />
+          <PageDescription description={BLOG_PAGE.description} />
+          <BlogsView />
         </div>
       </section>
     </main>

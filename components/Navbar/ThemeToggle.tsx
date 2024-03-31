@@ -6,7 +6,8 @@ import { RiMoonFill, RiSunLine } from "react-icons/ri";
 
 /**
  * A button to toggle the theme (dark or light).
- * @returns (JSX.Element): a button to toggle the theme (dark or light)
+ *
+ * @returns A button to toggle the theme (dark or light)
  */
 const ThemeToggle: React.FC = () => {
   const { resolvedTheme, setTheme } = useTheme();

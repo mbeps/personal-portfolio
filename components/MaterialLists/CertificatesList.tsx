@@ -1,11 +1,18 @@
 import stringToSlug from "@/actions/stringToSlug";
-import CertificateItem from "@/components/CertificateItem/CertificateItem";
+import CertificateItem from "@/components/MaterialItems/CertificateItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import Grid from "@/components/UI/Grid";
-import CertificateInterface from "@/interfaces/material/CertificateInterface";
 import MaterialListProps from "@/interfaces/props/MaterialListProps";
 import React from "react";
 
+/**
+ * List of certificates grouped by category to be displayed section by section.
+ * Each section contains a title and a list of certificates.
+ * If there are no certificates to display, a message is shown.
+ *
+ * @param groupedCertificates List of certificates grouped by category to be displayed section by section
+ * @returns A list of certificates grouped by category
+ */
 const CertificatesList: React.FC<MaterialListProps> = ({
   groupedMaterial: groupedCertificates,
 }) => {
@@ -20,16 +27,16 @@ const CertificatesList: React.FC<MaterialListProps> = ({
                   <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
                   <HeadingTwo title={group.groupName} />
                   <Grid
-                    items={group.materials.map((certificate, idx) => (
+                    items={group.materialsKeys.map((certificateKey) => (
                       <CertificateItem
-                        key={idx}
-                        certificate={certificate as CertificateInterface}
+                        key={certificateKey}
+                        certificateKey={certificateKey}
                       />
                     ))}
                   />
                 </div>
               </section>
-            ),
+            )
         )
       ) : (
         <div className="flex justify-center min-w-full mt-8">
