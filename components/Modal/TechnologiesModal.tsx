@@ -35,13 +35,13 @@ import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 
 /**
  * Displays a modal for the skills.
- * The modal displays the skills organized by category or by language.
- * This modal displays skills from languages and technologies.
+ * The modal displays the skills organised by category or by language.
+ * The user can choose how to group the skills.
  *
- * @param languages (Language[]) The languages of the modal
- * @param isOpen (boolean) Whether the modal is open or not
- * @param onClose (function) Function to close the modal
- * @returns (JSX.Element): modal component (stack of the project
+ * @param languages The languages of the modal
+ * @param isOpen Whether the modal is open or not
+ * @param onClose Function to close the modal
+ * @returns Modal component (stack of the project
  */
 const TechnologiesModal: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -52,9 +52,9 @@ const TechnologiesModal: React.FC = () => {
     return null;
   }
 
-  const handleOpenModal = () => {
+  function handleOpenModal(): void {
     setIsModalOpen(true);
-  };
+  }
 
   const options: FilterOption[] = [
     { slug: "category", entryName: "Category" },
@@ -70,6 +70,13 @@ const TechnologiesModal: React.FC = () => {
     }
   });
 
+  /**
+   * Ignored categories which are not displayed in the modal.
+   * The programming languages are not displayed when the skills are grouped by language.
+   * However, the programming languages are displayed when the skills are grouped by category.
+   * This is because if the programming languages are ignored, their sub-skills will not be displayed.
+   * However, when the skills are grouped by category, the programming languages are displayed which is not needed.
+   */
   const ignoredCategories: SkillCategoriesEnum[] = [
     SkillCategoriesEnum.ProjectManagers,
     SkillCategoriesEnum.ObjectRelationalMappers,

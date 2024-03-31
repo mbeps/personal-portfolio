@@ -10,8 +10,10 @@ interface BlogItemProps {
 
 /**
  * Displays a card which allows the user to open a blog.
- * @param props: Blog metadata used in the card
- * @returns (JSX.Element): card with blog metadata
+ * This card contains the name and subtitle of the blog.
+ *
+ * @param blogKey Blog metadata used in the card
+ * @returns Card with blog metadata
  */
 const BlogItem: React.FC<BlogItemProps> = ({ blogKey }) => {
   const basePath: string = BLOG_PAGE.path;

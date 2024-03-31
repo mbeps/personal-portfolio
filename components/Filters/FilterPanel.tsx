@@ -1,32 +1,18 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-} from "@/components/shadcn/ui/command";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/shadcn/ui/popover";
 import { NAVBAR_HEIGHT } from "@/constants/NAVBAR";
 import useIsMounted from "@/hooks/useIsMounted";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
-import { cn } from "@/lib/utils";
-import { Check } from "lucide-react";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { AiOutlineClear } from "react-icons/ai";
-import { BsChevronDown } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
 import HeadingThree from "../Text/HeadingThree";
 import { Button } from "../shadcn/ui/button";
 import { ArchiveToggle } from "./ArchiveToggle";
+import FilterPopover from "./FilterPopover";
 
 interface FilterOverlayProps {
   filterCategories: FilterCategory[];
@@ -40,6 +26,21 @@ interface FilterOverlayProps {
   areFiltersApplied: boolean;
 }
 
+/**
+ * This displays the filter overlay with the filter options.
+ * The component is outside the screen and slides in when opened.
+ * This component takes the necessary filter options and displays them in a list.
+ * Once a filter is chosen, the URL is updated with the new filter options.
+ * This URL is then listed to from the page calling the filter overlay and the content is updated.
+ *
+ * @param filterCategories The title of the filtering options
+ * @param basePath The base path for the URL of the current page
+ * @param isOpen If the filter overlay is open
+ * @param toggle Function to toggle the filter overlay
+ * @param archiveFilter The status of the archive filter
+ * @param areFiltersApplied If filters are applied
+ * @returns Overlay component with filter options
+ */
 const FilterOverlay: React.FC<FilterOverlayProps> = ({
   filterCategories,
   basePath,
@@ -48,7 +49,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
   archiveFilter,
   areFiltersApplied,
 }) => {
-  const isMounted = useIsMounted();
+  const isMounted: boolean = useIsMounted();
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
@@ -198,92 +199,3 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
 };
 
 export default FilterOverlay;
-
-interface FilterPopover {
-  filterCategory: FilterCategory;
-  filterCategories: FilterCategory[];
-  basePath: string;
-  archiveFilter: {
-    paramName: string;
-    status: boolean;
-  };
-}
-
-const FilterPopover = ({
-  filterCategory,
-  filterCategories,
-  archiveFilter,
-  basePath,
-}: FilterPopover) => {
-  const [isOpen, setOpen] = useState(false);
-  const gap = "w-4 h-4 mr-2";
-
-  return (
-    <Popover key={filterCategory.urlParam} open={isOpen} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
-        <Button
-          variant="default"
-          role="combobox"
-          onClick={() => setOpen(!isOpen)}
-          className="
-            w-[24rem] md:w-[22rem]
-            justify-between 
-            bg-neutral-200"
-        >
-          <span>{filterCategory.sectionName}</span>
-
-          <BsChevronDown
-            fontSize={16}
-            className="text-neutral-700 dark:text-neutral-200 mt-1"
-          />
-        </Button>
-      </PopoverTrigger>
-
-      <PopoverContent className="w-[24rem] md:w-[22rem] p-0">
-        <Command className="w-[24rem] md:w-[22rem]">
-          <CommandInput placeholder="Search Filter..." />
-          <CommandEmpty>No Filter Found.</CommandEmpty>
-
-          <CommandGroup className="w-[24rem] md:w-[22rem] max-h-[25vh]">
-            {filterCategory.options.map((option, i) => (
-              <Link
-                key={i}
-                href={generateUrl(
-                  [
-                    ...filterCategories.map((category) => ({
-                      entryName: category.urlParam, // Assuming urlParam maps to entryName
-                      slug: category.selectedValue, // Assuming selectedValue maps to slug
-                    })),
-                    {
-                      entryName: filterCategory.urlParam, // Assuming urlParam maps to entryName
-                      slug: option.slug, // Using slug directly from option
-                    },
-                    {
-                      entryName: archiveFilter.paramName, // Assuming paramName maps to entryName
-                      slug: true.toString(), // status converted to string for slug
-                    },
-                  ],
-                  basePath
-                )}
-                className="w-full"
-              >
-                <CommandItem
-                  key={option.slug}
-                  value={option.slug}
-                  className="pr-4 w-full"
-                >
-                  {filterCategory.selectedValue === option.slug ? (
-                    <Check className={cn(gap, "text-red-500")} />
-                  ) : (
-                    <div className={gap}></div>
-                  )}
-                  {option.entryName}
-                </CommandItem>
-              </Link>
-            ))}
-          </CommandGroup>
-        </Command>
-      </PopoverContent>
-    </Popover>
-  );
-};

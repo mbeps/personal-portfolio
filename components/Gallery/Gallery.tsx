@@ -27,16 +27,20 @@ interface GalleryProps {
  * Bellow are the thumbnails of the available images and videos.
  * Clicking on a thumbnail will change the preview to that image.
  * There are also buttons on the left and right of the preview to change the image.
- * @param (GalleryProps) - images: list of images and videos to display
- * @returns (JSX.Element) - Gallery Component
+ *
+ * @param images List of image URLs to display
+ * @param videos List of video URLs to display
+ * @returns Gallery component with images and videos
+ * @see Carousel https://ui.shadcn.com/docs/components/carousel
+ * @see Tabs https://ui.shadcn.com/docs/components/tabs
  */
 const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
 
-  const isMobile = useMediaQuery("(max-width: 768px)");
-  const isMounted = useIsMounted();
+  const isMobile: boolean = useMediaQuery("(max-width: 768px)");
+  const isMounted: boolean = useIsMounted();
 
   useEffect(() => {
     if (!api) {
@@ -55,6 +59,7 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
     return null;
   }
 
+  // If there are no images or videos do not render the gallery
   if (!images && !videos) {
     return null;
   }

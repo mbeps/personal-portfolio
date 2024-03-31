@@ -11,10 +11,10 @@ interface OverlayProps {
  * Overlay component that pops up from the right side of the screen.
  * It displays the children passed to it.
  *
- * @param isOpen (boolean) - Whether the overlay is open or not
- * @param toggle (function) - Function to toggle the overlay
- * @param children (ReactNode) - Children to render inside the overlay
- * @returns (JSX.Element) - Overlay component
+ * @param isOpen Whether the overlay is open or not
+ * @param toggle Function to toggle the overlay
+ * @param children Children to render inside the overlay
+ * @returns Overlay component
  */
 
 const Overlay: React.FC<OverlayProps> = ({

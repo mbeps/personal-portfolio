@@ -1,28 +1,35 @@
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import { useState } from "react";
 import ExpandCollapseButton from "../Button/ExpandCollapseButton";
 import SkillTag from "../Tags/SkillTag";
 import HeadingFour from "../Text/HeadingFour";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 
 interface CategorySkillDisplayProps {
   skillCategories: SkillsCategoryInterface[];
 }
 
+/**
+ * Component displaying skills in categories.
+ * Foe example, programming languages, DevOps, Web Development, etc.
+ * These are from the skills database `skillTypes` property as defined in {@link SkillInterface}.
+ * If there is only one category, the title of the category is not displayed and the skills are displayed in a single column.
+ *
+ * @param skillCategories Skills to be displayed in the table in categories
+ * @returns A section containing a table of skills grouped by categories
+ */
 const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
   skillCategories,
 }) => {
   const [showAll, setShowAll] = useState(false);
-  const shouldDisplayTitle = skillCategories.length > 1;
-  const isTablet = useMediaQuery("(max-width: 976px)");
+  const shouldDisplayTitle: boolean = skillCategories.length > 1;
+  const isTablet: boolean = useMediaQuery("(max-width: 976px)");
 
-  const maxSkillCount = 12;
-  const maxGroupCount = isTablet ? 2 : 3; // Number of columns to display
+  const maxSkillCount: number = 12;
+  const maxGroupCount: number = isTablet ? 2 : 3; // Number of columns to display
 
-  let skillCount = 0;
-  let groupCount = 0;
+  let skillCount: number = 0;
+  let groupCount: number = 0;
 
   const displayedSkills: SkillsCategoryInterface[] = showAll
     ? skillCategories
@@ -53,9 +60,9 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
   const shouldShowToggleButton: boolean =
     totalSkillCount > skillCount || showAll;
 
-  const toggleShowAll = () => {
+  function toggleShowAll(): void {
     setShowAll(!showAll);
-  };
+  }
 
   // Determine grid style based on the number of categories
   const gridStyle: string = shouldDisplayTitle

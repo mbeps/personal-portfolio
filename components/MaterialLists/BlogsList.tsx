@@ -4,6 +4,14 @@ import HeadingTwo from "@/components/Text/HeadingTwo";
 import Grid from "@/components/UI/Grid";
 import MaterialListProps from "@/interfaces/props/MaterialListProps";
 
+/**
+ * List of blogs grouped by category to be displayed section by section.
+ * Each section contains a title and a list of blogs.
+ * If there are no blogs to display, a message is shown.
+ *
+ * @param groupedBlogs List of blogs grouped by category to be displayed section by section
+ * @returns A list of blogs grouped by category
+ */
 const BlogsList: React.FC<MaterialListProps> = ({
   groupedMaterial: groupedBlogs,
 }) => {

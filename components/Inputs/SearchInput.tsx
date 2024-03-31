@@ -15,11 +15,12 @@ interface SearchInputProps {
 /**
  * Component for a search input element.
  * Allows the user to search for a specific term by inputting text.
- * @param searchTerm (string): The current search term inputted by the user.
- * @param setSearchTerm (function): A function that sets the search term.
- * @param props (object): The props of the input element.
- * @param className (string): The custom classes to be applied to the input element.
- * @returns (JSX.Element): A search input element.
+ *
+ * @param searchTerm The current search term inputted by the user.
+ * @param setSearchTerm A function that sets the search term.
+ * @param props The props of the input element.
+ * @param className The custom classes to be applied to the input element.
+ * @returns A search input element.
  */
 const SearchInput: React.FC<SearchInputProps> = ({
   searchTerm,
@@ -29,7 +30,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
   ...props
 }) => {
   const [localSearchTerm, setLocalSearchTerm] = React.useState(searchTerm);
-  const isMounted = useIsMounted();
+  const isMounted: boolean = useIsMounted();
 
   useEffect(() => {
     setLocalSearchTerm(searchTerm);
@@ -40,13 +41,13 @@ const SearchInput: React.FC<SearchInputProps> = ({
   }
 
   // This function was modified to only clear the local input field
-  const handleClearSearch = () => {
+  function handleClearSearch(): void {
     setLocalSearchTerm("");
-  };
+  }
 
-  const handleSearch = () => {
+  function handleSearch(): void {
     updateSearchTerm(localSearchTerm);
-  };
+  }
 
   const combinedClassName = twMerge(
     `
@@ -63,7 +64,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
       shadow-md hover:shadow-lg focus:shadow-lg
       transition-all ease-out duration-500
     `,
-    className,
+    className
   );
 
   const isSearchDisabled = !localSearchTerm;

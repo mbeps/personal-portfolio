@@ -34,8 +34,13 @@ import FilterOption from "@/interfaces/filters/FilterOption";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import { cn } from "@/lib/utils";
 import { Check } from "lucide-react";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import {
+  ReadonlyURLSearchParams,
+  useRouter,
+  useSearchParams,
+} from "next/navigation";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 
@@ -46,15 +51,16 @@ interface SkillListProps {
 /**
  * Component displaying all the skills that I have learned and worked with.
  * These skills can be grouped into categories and certain type skills can be ignored.
+ * Skills can also be filtered by the number of materials attributed to them.
  *
- * @returns Page with all skills
+ * @returns List of skills grouped by category and controls to filter them
  */
 const SkillList: React.FC<SkillListProps> = ({ skills }) => {
   const [isOpen, setOpen] = useState(false);
 
-  const searchParams = useSearchParams();
+  const searchParams: ReadonlyURLSearchParams = useSearchParams();
   const basePath = "/skills";
-  const router = useRouter();
+  const router: AppRouterInstance = useRouter();
 
   const gap = "w-4 h-4 mr-2";
 

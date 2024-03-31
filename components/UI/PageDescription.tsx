@@ -6,8 +6,9 @@ type PageDescriptionProps = {
 
 /**
  * Component used for displaying a description of the page.
- * @param description (string): description of the page
- * @returns (JSX.Element): description of the page
+ *
+ * @param description Description of the page
+ * @returns Description of the page
  */
 const PageDescription: React.FC<PageDescriptionProps> = ({ description }) => {
   return (
@@ -22,4 +23,5 @@ const PageDescription: React.FC<PageDescriptionProps> = ({ description }) => {
     </div>
   );
 };
+
 export default PageDescription;

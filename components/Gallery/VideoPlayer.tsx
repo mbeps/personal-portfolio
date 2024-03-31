@@ -8,10 +8,10 @@ interface VideoPlayerProps {
 
 /**
  * Video Player Component which allows users to view a video.
- * @param src (string): the source of the video
- * @param type (string): the type of the video
- * @param className (string): the class name of the video
- * @returns (JSX.Element): Video Player Component
+ * @param src The URL of the video to be played
+ * @param type The type of the video file
+ * @param className Additional classes for styling
+ * @returns Video player component with the video *
  */
 const VideoPlayer: React.FC<VideoPlayerProps> = ({
   src,

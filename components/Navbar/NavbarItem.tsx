@@ -19,24 +19,24 @@ interface NavbarItemProps {
  * @returns (JSX.Element) - A navbar item component
  */
 const NavbarItem: React.FC<NavbarItemProps> = ({ to, children }) => {
-  const pathname = usePathname();
+  const pathname: string = usePathname();
   const { isOpen: isOverlayOpen, close: closeOverlay } = useNavbarStore();
 
   /**
    * Handles the click event of the navbar item.
    * It closes the overlay and navigates to the page.
    */
-  const handleClick = () => {
+  function handleClick() {
     if (isOverlayOpen) {
       closeOverlay();
     }
-  };
+  }
 
-  let active = pathname === to;
+  let isActive: boolean = pathname === to;
 
   const navbarItemStyle = `
     block lg:inline-block 
-    ${active ? "font-bold" : "font-normal"} 
+    ${isActive ? "font-bold" : "font-normal"} 
     text-neutral-900 dark:text-neutral-100 text-center
     md:dark:hover:text-neutral-200 
     px-4 py-3 m-2 w-full md:w-26
@@ -53,15 +53,15 @@ const NavbarItem: React.FC<NavbarItemProps> = ({ to, children }) => {
       {children}
       <span
         className="
-            w-full h-[3px]   
-            rounded-full
-            
-            absolute 
-            bottom-[2px]    
-            left-0 inline-block 
-            bg-red-500 dark:bg-red-900 
-            -translate-x-[100%] md:group-hover:translate-x-0 transition-transform 
-            duration-300"
+          w-full h-[3px]   
+          rounded-full
+          
+          absolute 
+          bottom-[2px]    
+          left-0 inline-block 
+          bg-red-500 dark:bg-red-900 
+          -translate-x-[100%] md:group-hover:translate-x-0 transition-transform 
+          duration-300"
       />
     </Link>
   );

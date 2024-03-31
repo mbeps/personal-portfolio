@@ -48,10 +48,10 @@ interface LanguageTagWithModalProps {
  * The modal displays the skills and repositories for the language.
  * If the language does not have any skills or repositories, the modal cannot be opened.
  *
- * @param language (string): name of the language
- * @param skills (Skill[]): list of skills for the language
- * @param repositories (Repository[]): list of repositories for the language
- * @returns (JSX.Element): language tag with modal (stack of the language
+ * @param language Name of the language
+ * @param skills List of skills for the language
+ * @param repositories List of repositories for the language
+ * @returns Language tag with modal (stack of the language
  */
 const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
   languageIdentifier,
@@ -60,17 +60,24 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [groupedBy, setGroupedBy] = useState("category");
 
-  // Utility function to filter for main skills excluding a specific category
-  const filterMainSkillsExcludingCategory = (
+  /**
+   * Utility function to filter for main skills excluding a specific category.
+   *
+   * @param skillSlugs List of skill slugs to filter
+   * @param skillsHashmap Hashmap of skills
+   * @param excludedCategory Category to exclude
+   * @returns Filtered list of skill slugs
+   */
+  function filterMainSkillsExcludingCategory(
     skillSlugs: SkillKeysEnum[],
     skillsHashmap: Database<SkillInterface>,
     excludedCategory: SkillCategoriesEnum
-  ): SkillKeysEnum[] => {
+  ): SkillKeysEnum[] {
     return skillSlugs.filter((slug) => {
-      const skill = skillsHashmap[slug];
+      const skill: SkillInterface = skillsHashmap[slug];
       return skill.isMainSkill && skill.category !== excludedCategory;
     });
-  };
+  }
 
   const languageSkillsSlug: SkillKeysEnum[] = filterMainSkillsExcludingCategory(
     language.relatedSkills || [],
@@ -78,7 +85,9 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
     SkillCategoriesEnum.ProgrammingLanguages
   );
 
-  const handleOpenModal = () => setIsModalOpen(true);
+  function handleOpenModal(): void {
+    setIsModalOpen(true);
+  }
 
   const shouldOpenModal: boolean | undefined =
     language?.relatedSkills && language.relatedSkills.length > 0;

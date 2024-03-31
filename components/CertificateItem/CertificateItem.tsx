@@ -4,6 +4,7 @@ import {
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
 import { CERTIFICATES_PAGE } from "@/constants/pages";
+import certificateDatabase from "@/database/certificates";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,7 +12,6 @@ import React from "react";
 import { BsArrowUpRightCircle, BsInfoCircle } from "react-icons/bs";
 import Tag from "../Tags/Tag";
 import { AspectRatio } from "../shadcn/ui/aspect-ratio";
-import certificateDatabase from "@/database/certificates";
 
 interface CertificateItemProps {
   certificateKey: string;
@@ -24,20 +24,22 @@ interface CertificateItemProps {
  * - Unique slug of the certificate
  * - Issuer of the certificate
  * - Button to open details about the certificate or issuer website
- * @param (CertificateItemProps) - props: the content of the certificate
- * @returns (JSX.Element): certificate item component
+ *
+ * @param certificateKey Unique key of the certificate
+ * @returns Card with certificate metadata
  */
 const CertificateItem: React.FC<CertificateItemProps> = ({
   certificateKey,
 }) => {
   const basePath: string = CERTIFICATES_PAGE.path;
-  let certificate: CertificateInterface = certificateDatabase[certificateKey];
+  let certificateData: CertificateInterface =
+    certificateDatabase[certificateKey];
 
-  const customCertificatePage = `${basePath}/${certificateKey}`;
-  const issuerCertificatePage: string = certificate.certificateURL;
+  const customCertificatePage: string = `${basePath}/${certificateKey}`;
+  const issuerCertificatePage: string = certificateData.certificateURL;
 
-  certificate = {
-    ...certificate,
+  certificateData = {
+    ...certificateData,
     certificateImage: `${basePath}/${certificateKey}.jpg`,
   };
 
@@ -54,7 +56,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
       "
     >
       {/* Certificate Image */}
-      {certificate.certificateImage && (
+      {certificateData.certificateImage && (
         <Link href={customCertificatePage}>
           <div
             className="
@@ -71,8 +73,8 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
             <AspectRatio ratio={4 / 3} className="overflow-hidden relative">
               <Image
                 key={certificateKey}
-                src={certificate.certificateImage}
-                alt={`${certificate.name} certificate image`}
+                src={certificateData.certificateImage}
+                alt={`${certificateData.name} certificate image`}
                 fill={true}
                 quality={20}
                 loading="lazy"
@@ -101,12 +103,12 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
               transition-colors duration-700 ease-in-out
               "
           >
-            {certificate.name}
+            {certificateData.name}
           </h1>
         </Link>
 
         <div className="w-full flex justify-center">
-          <Tag>{certificate.issuer}</Tag>
+          <Tag>{certificateData.issuer}</Tag>
         </div>
         <div
           className="
@@ -131,7 +133,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
             </TooltipContent>
           </Tooltip>
           {/* Link to Credential */}
-          {certificate.certificateURL && (
+          {certificateData.certificateURL && (
             <Tooltip>
               <TooltipTrigger>
                 <Link

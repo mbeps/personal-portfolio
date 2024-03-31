@@ -1,9 +1,16 @@
 import stringToSlug from "@/actions/stringToSlug";
 import ProjectItem from "@/components/ProjectItem/ProjectItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import MaterialListProps from "@/interfaces/props/MaterialListProps";
 
+/**
+ * List of projects grouped by category to be displayed section by section.
+ * Each section contains a title and a list of projects.
+ * If there are no projects to display, a message is shown.
+ *
+ * @param groupedProjects List of projects grouped by category to be displayed section by section
+ * @returns A list of projects grouped by category
+ */
 const ProjectsList: React.FC<MaterialListProps> = ({
   groupedMaterial: groupedProjects,
 }) => {

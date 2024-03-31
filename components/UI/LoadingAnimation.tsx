@@ -6,7 +6,7 @@ import { BounceLoader } from "react-spinners";
  * Loading animation component which displays a loading animation.
  * This is used on loading pages while content is being fetched.
  *
- * @returns (React.ReactNode): loading animation
+ * @returns Loading animation
  */
 const LoadingAnimation = () => {
   return (

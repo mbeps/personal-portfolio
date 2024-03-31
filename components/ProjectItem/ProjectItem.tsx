@@ -30,18 +30,8 @@ interface ProjectItemProps {
  * Some projects have an image that is displayed on the left side of the card.
  * This image is clickable and redirects to the project page.
  *
- * @param name (string): Name of the project
- * @param slug (string): Slug of the project used for routing
- * @param description (string): Description of the project
- * @param imageURL (string): URL of the image of the project
- * @param repoURL (string): URL of the GitHub repository of the project
- * @param repoURL (string): URL of the GitHub repository of the project
- * @param siteURL (string): URL of the live site of the project
- * @param articleURL (string): URL of the article of the project
- * @param programmingLanguage (string): Programming language of the project
- * @param technologies (string[]): List of technologies used in the project
- * @param type (string): Type of the project
- * @returns (JSX.Element): Project item component
+ * @param projectKey Key of the project to be displayed
+ * @returns A card which displays a project
  */
 const ProjectItem: React.FC<ProjectItemProps> = ({ projectKey }) => {
   const basePath: string = PROJECTS_PAGE.path;

@@ -17,6 +17,16 @@ interface SkillTableSectionProps {
   allGroupedSkills: GroupedSkillsCategoriesInterface[];
 }
 
+/**
+ * Component displaying skills.
+ * These skills are grouped; for example, technologies, technical skills, soft skills, etc.
+ * Each of the skills in these groups are also cateogorised by their types;
+ * for example, languages, frameworks, etc.
+ *
+ * @param allGroupedSkills Skills to be displayed in the table as groups
+ * @returns A section containing a table of skills grouped by categories
+ * @requires CategorySkillDisplay Component for displaying the categorised skills within the groups
+ */
 const SkillTableSection: React.FC<SkillTableSectionProps> = ({
   allGroupedSkills,
 }) => {
@@ -36,7 +46,7 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
   }
 
   // Use the function to get non-empty skill categories
-  const nonEmptySkillCategories =
+  const nonEmptySkillCategories: GroupedSkillsCategoriesInterface[] =
     filterNonEmptySkillCategories(allGroupedSkills);
 
   return (
