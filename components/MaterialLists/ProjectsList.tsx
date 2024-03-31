@@ -1,5 +1,5 @@
 import stringToSlug from "@/actions/stringToSlug";
-import ProjectItem from "@/components/ProjectItem/ProjectItem";
+import ProjectItem from "@/components/MaterialItems/ProjectItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import MaterialListProps from "@/interfaces/props/MaterialListProps";
 

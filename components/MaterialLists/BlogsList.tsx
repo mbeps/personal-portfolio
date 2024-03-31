@@ -1,5 +1,5 @@
 import stringToSlug from "@/actions/stringToSlug";
-import BlogItem from "@/components/Blogs/BlogItem";
+import BlogItem from "@/components/MaterialItems/BlogItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import Grid from "@/components/UI/Grid";
 import MaterialListProps from "@/interfaces/props/MaterialListProps";

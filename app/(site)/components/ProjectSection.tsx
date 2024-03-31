@@ -1,4 +1,4 @@
-import ProjectItem from "@/components/ProjectItem/ProjectItem";
+import ProjectItem from "@/components/MaterialItems/ProjectItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import SlideUp from "@/components/UI/Slideup";
 import { Button } from "@/components/shadcn/ui/button";
