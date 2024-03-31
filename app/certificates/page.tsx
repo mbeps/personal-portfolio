@@ -6,6 +6,16 @@ import { Metadata } from "next";
 import React from "react";
 import CertificatesView from "./components/CertificatesView";
 
+/**
+ * Generates the metadata for the certificates page.
+ * This includes the title and description of the page.
+ * This is used for SEO purposes.
+ *
+ * @param props The props for the skill page.
+ * @param parent The parent metadata that is being resolved.
+ * @returns The metadata for the certificates page.
+ * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ */
 export const metadata: Metadata = {
   title: `${developerName} - ${CERTIFICATES_PAGE.label}`,
   description: CERTIFICATES_PAGE.description,

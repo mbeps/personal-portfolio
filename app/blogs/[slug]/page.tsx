@@ -1,6 +1,6 @@
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
-import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
 import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
+import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
 import Reader from "@/components/Reader/Reader";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
@@ -10,9 +10,9 @@ import blogDatabase from "@/database/blogs";
 import skillDatabase from "@/database/skills";
 import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import BlogInterface from "@/interfaces/material/BlogInterface";
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
-import BlogInterface from "@/interfaces/material/BlogInterface";
 
 type BlogPageProps = {
   params: { slug: string };
@@ -20,18 +20,21 @@ type BlogPageProps = {
 };
 
 /**
- * Metadata object for the dynamic blog page.
- * Each blog page has a unique title and description.
- * @param params: the slug of the blog used to fetch the blog metadata
- * @param parent: the parent metadata object
- * @returns Metadata for the blog (title and description
+ * Generates the metadata for the blog page.
+ * This includes the title and description of the page.
+ * This is used for SEO purposes.
+ *
+ * @param props The props for the skill page.
+ * @param parent The parent metadata that is being resolved.
+ * @returns The metadata for the blog page.
+ * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
  */
 export async function generateMetadata(
   { params, searchParams }: BlogPageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const slug: string = params.slug;
-  const blog: BlogInterface = blogDatabase[slug];
+  const blogKey: string = params.slug;
+  const blog: BlogInterface = blogDatabase[blogKey];
 
   return {
     title: `${developerName} - Blogs: ${blog?.name}`,
@@ -40,11 +43,14 @@ export async function generateMetadata(
 }
 
 /**
- * Generates the static paths for the blogs.
- * This means that the blog are pre-rendered and can be opened without a server.
- * This is Incremental Static Regeneration and improves the performance of the website.
- * This improves the performance of the website.
- * @returns (Array): array of blogs
+ * Generates the metadata for the blogs page.
+ * This includes the title and description of the page.
+ * This is used for SEO purposes.
+ *
+ * @param props The props for the skill page.
+ * @param parent The parent metadata that is being resolved.
+ * @returns The metadata for the blogs page.
+ * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
  */
 export const generateStaticParams = async () => {
   return Object.keys(blogDatabase).map((slug) => ({
@@ -60,11 +66,11 @@ export const generateStaticParams = async () => {
  * @returns Content of the blog and the skills used
  */
 const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
-  const slug: string = params.slug;
+  const blogKey: string = params.slug;
   const basePath: string = BLOG_PAGE.path;
-  const blogMetadata: BlogInterface = blogDatabase[slug];
+  const blogMetadata: BlogInterface = blogDatabase[blogKey];
   const blogContent: string | undefined = getMarkdownFromFileSystem(
-    `public${basePath}/${slug}/blog.md`
+    `public${basePath}/${blogKey}/blog.md`
   )?.content;
 
   if (!blogContent || !blogMetadata) {

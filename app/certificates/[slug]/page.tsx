@@ -1,5 +1,5 @@
-import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
 import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
+import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import Tag from "@/components/Tags/Tag";
 import HeadingThree from "@/components/Text/HeadingThree";
@@ -21,18 +21,22 @@ import { BsArrowUpRightCircle } from "react-icons/bs";
 import { RxTriangleRight } from "react-icons/rx";
 
 /**
- * Metadata object for the dynamic certificate page.
- * @param (CredentialPageProps) - props: the content of the certificate
- * @param parent (ResolvingMetadata) - parent metadata
- * @returns (Promise<Metadata>): metadata for the certificate (title and description)
+ * Generates the metadata for the certificates page.
+ * This includes the title and description of the page.
+ * This is used for SEO purposes.
+ *
+ * @param props The props for the skill page.
+ * @param parent The parent metadata that is being resolved.
+ * @returns The metadata for the certificates page.
+ * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
  */
 export async function generateMetadata(
   { params, searchParams }: CertificatesPageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   // Read route params
-  const slug: string = params.slug;
-  const certificate: CertificateInterface = certificateDatabase[slug];
+  const certificateKey: string = params.slug;
+  const certificate: CertificateInterface = certificateDatabase[certificateKey];
 
   // Create metadata based on the certificate details
   return {
@@ -41,6 +45,16 @@ export async function generateMetadata(
   };
 }
 
+/**
+ * Generates the metadata for the skill page.
+ * This includes the title and description of the page.
+ * This is used for SEO purposes.
+ *
+ * @param props The props for the skill page.
+ * @param parent The parent metadata that is being resolved.
+ * @returns The metadata for the skill page.
+ * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ */
 export const generateStaticParams = async () => {
   return Object.keys(certificateDatabase).map((slug) => ({
     slug,
@@ -68,9 +82,8 @@ type CertificatesPageProps = {
  * @returns Page displaying the certificate and its details
  */
 const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
-  const slug: string = params.slug;
-
-  const certificate: CertificateInterface = certificateDatabase[slug];
+  const certificateKey: string = params.slug;
+  const certificate: CertificateInterface = certificateDatabase[certificateKey];
 
   if (!certificate) {
     notFound();
@@ -113,7 +126,7 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
       "Soft Skills"
     ),
   ];
-  const certificateImage = `/certificates/${slug}.jpg`;
+  const certificateImage = `/certificates/${certificateKey}.jpg`;
 
   return (
     <div className="space-y-6 align-top min-h-[85vh] relative">
@@ -154,7 +167,7 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
           text-neutral-400 dark:text-neutral-600 
             overflow-auto break-words"
         >
-          {slug}
+          {certificateKey}
         </p>
       </div>
 

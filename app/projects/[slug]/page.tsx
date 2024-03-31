@@ -1,11 +1,11 @@
 import getImagesFromFileSystem from "@/actions/file-system/getImagesFromFileSystem";
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
 import getVideosFromFileSystem from "@/actions/file-system/getVideosFromFileSystem";
-import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
 import filterSkillsByCategory, {
   filterSkillSlugsExcludingCategory,
 } from "@/actions/skills/filter/filterSkillsByCategory";
 import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
+import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
 import Gallery from "@/components/Gallery/Gallery";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import SkillTag from "@/components/Tags/SkillTag";
@@ -17,9 +17,10 @@ import developerName from "@/constants/developerName";
 import { PROJECTS_PAGE } from "@/constants/pages";
 import projectDatabase from "@/database/projects";
 import skillDatabase from "@/database/skills";
-import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
@@ -28,17 +29,26 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
-import ProjectInterface from "@/interfaces/material/ProjectInterface";
 
+/**
+ * Generates the metadata for the project page.
+ * This includes the title and description of the page.
+ * This is used for SEO purposes.
+ *
+ * @param props The props for the project page.
+ * @param parent The parent metadata that is being resolved.
+ * @returns The metadata for the project page.
+ * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ */
 export async function generateMetadata(
   { params, searchParams }: ProjectPageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   // Read route params
-  const slug: string = params.slug;
+  const projectKey: string = params.slug;
 
   // Assume getProjectBySlug function fetches project by slug
-  const project: ProjectInterface = projectDatabase[slug];
+  const project: ProjectInterface = projectDatabase[projectKey];
 
   // Create metadata based on the project details
   return {
@@ -52,6 +62,9 @@ export async function generateMetadata(
  * These are then used to pre-render the projects pages.
  * This Incremental Static Regeneration allows the projects to be displayed without a server.
  * This improves the performance of the website.
+ *
+ * @returns A list of all the keys for the static pages that need to be generated.
+ * @see https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration
  */
 export const generateStaticParams = async () => {
   return Object.keys(projectDatabase).map((slug) => ({
@@ -77,19 +90,17 @@ interface ProjectPageProps {
  * @returns Page displaying the project and its details
  */
 const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
-  const slug: string = params.slug;
+  const projectKey: string = params.slug;
   const basePath: string = PROJECTS_PAGE.path;
-  const project: ProjectInterface = projectDatabase[slug];
+  const project: ProjectInterface = projectDatabase[projectKey];
 
   // redirect to not found page if the project is not valid
   if (!project) {
     notFound();
   }
 
-  const projectName: string = project.name;
-  const projectDescription: string = project.description;
   const hasCoverImage: boolean = project.thumbnailImage !== undefined;
-  const coverImagePath: string = `${basePath}/${slug}/cover.png`;
+  const coverImagePath: string = `${basePath}/${projectKey}/cover.png`;
 
   const projectLanguages: SkillKeysEnum[] = filterSkillsByCategory(
     project.skills,
@@ -142,24 +153,24 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
     ),
   ];
 
-  function getImages() {
+  function getImages(): string[] {
     let images: string[] = getImagesFromFileSystem(
-      `public${basePath}/${slug}/media`
+      `public${basePath}/${projectKey}/media`
     );
 
     // add the path to the media items
-    images = images.map((image) => `${basePath}/${slug}/media/${image}`);
+    images = images.map((image) => `${basePath}/${projectKey}/media/${image}`);
 
     return images;
   }
 
-  function getVideos() {
+  function getVideos(): string[] {
     let videos: string[] = getVideosFromFileSystem(
-      `public${basePath}/${slug}/media`
+      `public${basePath}/${projectKey}/media`
     );
 
     // add the path to the media items
-    videos = videos.map((video) => `${basePath}/${slug}/media/${video}`);
+    videos = videos.map((video) => `${basePath}/${projectKey}/media/${video}`);
 
     return videos;
   }
@@ -172,7 +183,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
    * This is used to display the features and blog sections.
    */
   const features: string | undefined = getMarkdownFromFileSystem(
-    `public${basePath}/${slug}/features.md`
+    `public${basePath}/${projectKey}/features.md`
   )?.content;
 
   /**
@@ -180,7 +191,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
    * This is used to display the features and blog sections.
    */
   const blog: string | undefined = getMarkdownFromFileSystem(
-    `public${basePath}/${slug}/report.md`
+    `public${basePath}/${projectKey}/report.md`
   )?.content;
 
   return (
@@ -226,7 +237,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
           <HeadingThree title="Description" />
           <div className="flex flex-wrap justify-center md:justify-start z-10 mt-5">
             <p className="text-neutral-800 dark:text-neutral-300">
-              {projectDescription}
+              {project.description}
             </p>
           </div>
         </div>

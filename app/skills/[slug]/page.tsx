@@ -1,3 +1,7 @@
+import filterMaterialBySkill from "@/actions/material/filter/filterMaterialBySkill";
+import groupMaterialsByMaterialType, {
+  MaterialType,
+} from "@/actions/material/group/groupMaterialsByMaterialType";
 import BlogsList from "@/components/MaterialLists/BlogsList";
 import CertificatesList from "@/components/MaterialLists/CertificatesList";
 import ProjectsList from "@/components/MaterialLists/ProjectsList";
@@ -20,10 +24,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 import RelatedSkillsSection from "./components/RelatedSkillsSection";
-import filterMaterialBySkill from "@/actions/material/filter/filterMaterialBySkill";
-import groupMaterialsByMaterialType, {
-  MaterialType,
-} from "@/actions/material/group/groupMaterialsByMaterialType";
 
 interface MaterialSectionInterface {
   name: MaterialType;
@@ -47,9 +47,9 @@ export async function generateMetadata(
   { params, searchParams }: ProjectPageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const slug: string = params.slug;
+  const skillKey: string = params.slug;
   const skill: SkillInterface | undefined =
-    skillDatabase[slug as SkillKeysEnum];
+    skillDatabase[skillKey as SkillKeysEnum];
 
   if (!skill) {
     notFound();
@@ -68,7 +68,7 @@ export async function generateMetadata(
  * This Incremental Static Regeneration allows the projects to be displayed without a server.
  * This improves the performance of the website.
  * 
- * @returns A list of all the slugs for the static pages that need to be generated.
+ * @returns A list of all the keys for the static pages that need to be generated.
  * @see https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration
  */
 export const generateStaticParams = async () => {
