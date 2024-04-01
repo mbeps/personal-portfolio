@@ -56,6 +56,7 @@ enum CertificateKeysEnum {
   LinkedInPythonAutomationAndTesting = "be0745932c948f80c1f9d32c0703eeaf94a3fdf3d35368a2619b8043ebe1c2f2",
 
   //^ Web Development
+  UdemyCompleteWebAndMobileDesigner = "UC-ee90fb03-d39d-4b04-be62-cca69beed918",
   LinkedInBuildingRESTfulAPIsWithFlask = "c5ccec418e67284d7945832543376e344173867d424cc1c7c7e7f4235b14debe",
   LinkedInLearningRESTAPIs = "d16b210de3459c563295c4868ac19097bdddf84976d2137fa08293ec698f3380",
   LinkedInDesigningRESTfulAPIS = "a54ec39fe8ae07277cfbfb553a61f1d6a0c95f23969a3f665d5e5c0afbd9fd68",

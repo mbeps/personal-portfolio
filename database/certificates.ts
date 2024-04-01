@@ -1309,6 +1309,38 @@ const certificateMap: Database<CertificateInterface> = {
   },
 
   //^ Web Development
+  [CertificateKeysEnum.UdemyCompleteWebAndMobileDesigner]: {
+    name: "Complete Web & Mobile Designer: UI/UX, Figma + more",
+    category: CertificateCategoriesEnum.WebDevelopment,
+    issuer: CertificateIssuersEnum.Udemy,
+    certificateURL:
+      "https://www.udemy.com/certificate/UC-4c7f3f7d-4e4f-4f2d-8c1f-4f1d4b0f1a1c/",
+    skills: [
+      SkillKeysEnum.HTML,
+      SkillKeysEnum.CSS,
+      SkillKeysEnum.ReactJS,
+      SkillKeysEnum.UserCentricDesign,
+      SkillKeysEnum.WebDevelopment,
+    ],
+    learningOutcomes: [
+      "Understanding the basics of sketching, inspiration, and Figma for web and mobile design",
+      "Creating user flows and sitemaps in Figma",
+      "Developing wireframes and prototypes for web and mobile interfaces",
+      "Gathering and incorporating feedback into design iterations",
+      "Applying design theory and accessibility principles in visual design",
+      "Utilizing grids, typography, color, imagery, and iconography in design",
+      "Designing forms and UI elements with best practices",
+      "Exploring application design and design systems",
+      "Analyzing and applying design patterns in mobile design",
+      "Incorporating motion and microinteractions into design",
+      "Building a design system and executing high-fidelity prototyping with Figma",
+      "Converting Figma designs into live websites using HTML and CSS",
+      "Understanding and applying HTML5 and CSS3, including CSS Grid, Flexbox, and animations",
+      "Deploying a website online",
+    ],
+    description: `
+      This course offers a comprehensive journey into the world of Web and Mobile Design, focusing on User Interface and User Experience (UI/UX). It equips students with the skills to use modern design tools like Figma, enabling them to go from zero to job-ready. The course covers a full workflow, from initial sketching and inspiration, through creating user flows, wireframes, and prototypes, to final high-fidelity prototyping. It emphasizes design theory, accessibility principles, and best practices in forms and UI elements design. The course also explores application design, design systems, and design patterns in mobile design. It further delves into the practical side of converting designs into live websites using HTML and CSS, and deploying them online. This hands-on curriculum provides a solid foundation for a career in design, whether in a top tech company or as a freelance contractor.`,
+  },
   [CertificateKeysEnum.LinkedInBuildingRESTfulAPIsWithFlask]: {
     name: "Building RESTful APIs with Flask",
     category: CertificateCategoriesEnum.WebDevelopment,
