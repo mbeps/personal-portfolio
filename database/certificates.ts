@@ -934,9 +934,9 @@ const certificateMap: Database<CertificateInterface> = {
       certificateURL:
         "https://www.linkedin.com/learning/certificates/a46589fd9baa43c2c77d7de14e3830cf85648f1a6d5d7a489096d4e1b2a4d279",
       skills: [
-        SkillKeysEnum.DevOps,
         SkillKeysEnum.GitHub,
         SkillKeysEnum.GitHubActions,
+        SkillKeysEnum.DevOps,
         SkillKeysEnum.ContinuousIntegration,
         SkillKeysEnum.ContinuousDeployment,
         SkillKeysEnum.ContinuousDelivery,
@@ -981,7 +981,114 @@ const certificateMap: Database<CertificateInterface> = {
         "Finding code",
         "Finding code to learn from",
       ],
+      relatedMaterials: [CertificateKeysEnum.LinkedInPracticalGitHubActions],
     },
+  [CertificateKeysEnum.LinkedInPracticalGitHubActions]: {
+    name: "Practical GitHub Actions",
+    category: CertificateCategoriesEnum.DevOps,
+    issuer: CertificateIssuersEnum.LinkedIn,
+    certificateURL:
+      "https://www.linkedin.com/learning/certificates/0344b0df296833ba35ddabf20563556bc67ee7ed0b83b55e19021443d1b9e496",
+    skills: [
+      SkillKeysEnum.GitHub,
+      SkillKeysEnum.GitHubActions,
+      SkillKeysEnum.Python,
+      SkillKeysEnum.ContinuousIntegration,
+      SkillKeysEnum.ContinuousDeployment,
+      SkillKeysEnum.ContinuousDelivery,
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.InfrastructureAsCode,
+    ],
+    description: `
+      This course provides a comprehensive guide to GitHub Actions, a powerful tool that allows developers to automate repetitive tasks and solve recurring problems. 
+      It covers the fundamentals of GitHub Actions, the process of publishing a marketplace action, and the steps to create a workflow, a generator repo Dockerfile, entry point, and action.yml file. 
+      The course also includes practical exercises on testing and releasing GitHub Actions. 
+      This knowledge is essential for developers aiming to enhance their skills and efficiency, and for recent computer science graduates seeking to stand out in the competitive job market.
+    `,
+    learningOutcomes: [
+      "Understanding how GitHub actions work",
+      "Creating a repository and GitHub Pages",
+      "Using Python to process YAML with Codespaces",
+      "Finalizing the RSS feed",
+      "Creating a workflow with existing actions",
+      "Creating a generator repository Dockerfile",
+      "Creating an entry point",
+      "Crafting an action.yml file",
+      "Testing your GitHub actions",
+      "Creating a release",
+      "Planning for next steps in GitHub actions",
+    ],
+    relatedMaterials: [
+      CertificateKeysEnum.LinkedInCareerEssentialsInGitHubProfessionalCertificate,
+    ],
+  },
+  [CertificateKeysEnum.LinkedInPracticalGitHubCopilot]: {
+    name: "Practical GitHub Copilot",
+    category: CertificateCategoriesEnum.DevOps,
+    issuer: CertificateIssuersEnum.LinkedIn,
+    certificateURL:
+      "https://www.linkedin.com/learning/certificates/ad4d86c0701098c35103dbac08143317758a73d23a01ff729ac668a6122e2555",
+    skills: [
+      SkillKeysEnum.GitHub,
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.InfrastructureAsCode,
+    ],
+    learningOutcomes: [
+      "Understanding what GitHub Copilot is",
+      "Differentiating between Copilot for Individuals and Copilot for Business",
+      "Installing GitHub Copilot",
+      "Retrieving the repository",
+      "Using basic autocomplete",
+      "Navigating the autocompletions panel",
+      "Interacting with the chat panel",
+      "Generating data with GitHub Copilot",
+      "Chatting with GitHub Copilot",
+      "Outputting to YAML",
+      "Understanding history and file names",
+      "Troubleshooting fixes with GitHub Copilot",
+      "Writing comments with GitHub Copilot",
+      "Planning for next steps in using GitHub Copilot",
+    ],
+    description: `
+      This course offers a deep dive into GitHub Copilot, a paid service that is transforming the way developers write code. It provides hands-on training on how to use Copilot to solve specific coding problems and increase productivity. The course covers everything from setting up Copilot, navigating its tools, to refining the results. It also explores practical applications of Copilot's powerful features. This course is ideal for anyone interested in leveraging Copilot to become a more efficient developer.`,
+    relatedMaterials: [
+      CertificateKeysEnum.LinkedInCareerEssentialsInGitHubProfessionalCertificate,
+    ],
+    archived: true,
+  },
+  [CertificateKeysEnum.LinkedInPracticalGitHubCodeSearch]: {
+    name: "Practical GitHub Code Search",
+    category: CertificateCategoriesEnum.DevOps,
+    issuer: CertificateIssuersEnum.LinkedIn,
+    certificateURL:
+      "https://www.linkedin.com/learning/certificates/d8b18aabca615328a553a9e89cae98917a956c87e3498749edbef3cf50e25f0b",
+    skills: [
+      SkillKeysEnum.GitHub,
+      SkillKeysEnum.ProblemSolving,
+      SkillKeysEnum.CriticalThinking,
+      SkillKeysEnum.InfrastructureAsCode,
+    ],
+    learningOutcomes: [
+      "Searching like a pro with GitHub",
+      "Understanding GitHub code search",
+      "Using the search box and shortcuts",
+      "Applying search qualifiers",
+      "Interpreting search results",
+      "Utilizing syntax operators",
+      "Finding specific code",
+      "Locating code to learn from",
+      "Analyzing code results",
+      "Planning for next steps in GitHub code search",
+    ],
+    description: `
+      This course is a comprehensive guide to navigating and utilizing the search features of GitHub, the world's largest developer platform. It provides practical knowledge on how to effectively use the search box, shortcuts, qualifiers, and operators, and how to refine search results. The course also delves into searching for code, including finding code to learn from and improving code search results. This course is perfect for anyone seeking to enhance their ability to search, understand, and retrieve code on GitHub more efficiently.`,
+    relatedMaterials: [
+      CertificateKeysEnum.LinkedInCareerEssentialsInGitHubProfessionalCertificate,
+    ],
+    archived: true,
+  },
   [CertificateKeysEnum.LinkedInContinuousIntegrationAndDContinuousDeliveryWithGitLab]:
     {
       name: "Continuous Integration and Continuous Delivery with GitLab",
@@ -2208,6 +2315,46 @@ const certificateMap: Database<CertificateInterface> = {
       "Determining processes for procuring resources.",
       "Developing a project schedule.",
       "Monitoring and controlling progress and performance.",
+    ],
+    archived: true,
+  },
+  [CertificateKeysEnum.PMIPracticalProjectManagementAndCollaboration]: {
+    name: "Practical Project Management and Collaboration",
+    category: CertificateCategoriesEnum.Management,
+    issuer: CertificateIssuersEnum.PMI,
+    certificateURL:
+      "https://www.linkedin.com/learning/certificates/2816ac02fcccf39993020826512ff9ac6f82177fbe867c5ab9b1b01710eb784a",
+    skills: [
+      SkillKeysEnum.TimeManagement,
+      SkillKeysEnum.Communication,
+      SkillKeysEnum.ScopeManagement,
+    ],
+    learningOutcomes: [
+      "Creating projects for development",
+      "Distinguishing between projects and classic projects",
+      "Initiating your first project",
+      "Managing project settings and fields",
+      "Utilizing view categories",
+      "Converting drafts to issues",
+      "Assigning items to collaborators",
+      "Starting a project with an issue",
+      "Integrating project items with pull requests",
+      "Using saved replies",
+      "Applying labels",
+      "Managing task lists",
+      "Implementing slash commands and emojis",
+      "Applying views and filters",
+      "Analyzing insights",
+      "Planning for next steps in project management",
+    ],
+    description: `
+      This course delves into the advanced features of GitHub, focusing on its project management and collaboration tools. 
+      It guides learners through the process of setting up a project, customizing settings, managing pull requests, and assigning tasks to collaborators. 
+      The course also explores various project tools such as labels, task lists, slash commands, emojis, views, filters, and insights. 
+      This practical knowledge is invaluable for anyone seeking to leverage GitHub for more than just a code repository, enabling better team collaboration and code quality.
+    `,
+    relatedMaterials: [
+      CertificateKeysEnum.LinkedInCareerEssentialsInGitHubProfessionalCertificate,
     ],
     archived: true,
   },
