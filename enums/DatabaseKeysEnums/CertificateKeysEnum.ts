@@ -19,6 +19,7 @@ enum CertificateKeysEnum {
   LinkedInJavaScriptEssentialTraining = "ade3217d7cef3023f22c8ee034eff28705b7dbfd3981d8377c9b5f61ff39ea51",
   LinkedInJavaScriptPracticeObjectOrientedProgramming = "6f9d825cfa8c3256611a521ec35fe62abd9b7f75636536b59656dcfd57708cf6",
   UdemyTheCompleteJavaScriptCourse = "UC-cf6c70b6-c34c-4400-b8f8-b9a7abc9f18a",
+  UdemyUnderstandingTypeScript = "UC-2c118eb6-d835-4b2e-8280-fc2ee49f095b",
   LinkedInLearningLinuxShellScripting = "67ef8710bfc2f51163f78c9373df3d7b4674e44b3d2e936318399c6a7fe5bda0",
   LinkedInLearningGroovy = "7c14e4c16f72a10046c3d66838e5dd3589fa40ac6cbf6509b235ea6452f430c8",
 
