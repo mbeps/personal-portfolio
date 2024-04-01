@@ -197,11 +197,18 @@ enum SkillKeysEnum {
 
   //^ Cloud Computing
   AWS = "aws",
+  AWS_CloudWatch = "aws-cloudwatch",
+  AWS_ApplicationLoadBalancer = "aws-application-load-balancer",
+  AWS_ElasticCache = "aws-elastic-cache",
   AWS_K3s = "aws-k3s",
   AWS_EC2 = "aws-ec2",
   AWS_S3 = "aws-s3",
   AWS_VPC = "aws-vpc",
   AWS_Lambda = "aws-lambda",
+  AWS_ElasticFileSystem = "aws-elastic-filesystem",
+  AWS_ElasticBlockStore = "aws-elastic-block-store",
+  AWS_RelationalDatabaseService = "aws-relational-database-service",
+  AWS_AutoScaling = "aws-auto-scaling",
   AWS_CloudFormation = "aws-cloudformation",
   AWS_CloudFront = "aws-cloudfront",
   AWS_ElasticBeanstalk = "aws-elastic-beanstalk",
@@ -240,6 +247,7 @@ enum SkillKeysEnum {
 
   //^ Others
   Symphony = "symphony",
+  Networking = "networking",
 
   //^ Soft Skills
   Communication = "communication",

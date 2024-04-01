@@ -10,6 +10,7 @@ import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
  * - `skills`: the skills associated with the material
  * - `category`: the category of the material
  * - `archived`: whether the material is archived
+ * - `relatedMaterials`: the related materials associated with the material
  *
  * Importantly, the `skills` field is an array of `SkillKeysEnum` which is used to represent the skills that are associated to understand the material.
  * Because there are different types of skills, they can be categorised dynamically by the codebase; for example, technologies, technical knowledge, and soft skills.
@@ -21,4 +22,5 @@ export default interface MaterialInterface {
   skills: SkillKeysEnum[];
   category: string;
   archived?: boolean;
+  relatedMaterials?: string[];
 }
