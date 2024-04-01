@@ -40,6 +40,7 @@ enum CertificateKeysEnum {
   LinkedInArtificialIntelligenceWithSciKitLearn = "3c31f8f11d8ecbd7156dd75b8ae2d7c7db59a8342e3ae7780496b637ac894bb8",
 
   //^ DevOps
+  UdemyDevOpsBeginnersToAdvanced = "UC-a32e2678-8ca1-4b45-8973-ba173b2029cd",
   NASBADevOpsFoundations = "1c6fedf1993d58cfe2f906e4fe4db5b4eddda6ea5fa7f8999436b07682ffe3f7",
   NASBADevOpsFoundationsContinuousDeliveryContinuousIntegration = "6bf47e122551142911c5a636edfee564ff0d57bd07a52888c6c52246946f7747",
   LinkedInJenkinsEssentialTraining = "b1f7a0e46c3659d0d1c25396bbd7838b2374b12afcff7404a0d5077b68e9ebfc",
