@@ -57,6 +57,19 @@ export const BLOG_PAGE: NavigationItemInterface = {
 };
 
 /**
+ * Navigation item for the education page.
+ * This is where the user can view my education history and qualifications.
+ * For each qualification, the user can view the modules that I have studied.
+ */
+export const EDUCATION_PAGE: NavigationItemInterface = {
+  label: "Education",
+  path: "/education",
+  description: `
+    Explore my education history and qualifications and view the modules I have studied.
+  `,
+};
+
+/**
  * List of navigation items that are displayed in the navbar.
  * Users can navigate to these pages by clicking on the respective items.
  * The description may be displayed on every page and it is used for SEO purposes.
@@ -67,6 +80,7 @@ const NAV_ITEMS: Array<NavigationItemInterface> = [
   PROJECTS_PAGE,
   CERTIFICATES_PAGE,
   BLOG_PAGE,
+  EDUCATION_PAGE,
 ];
 
 export default NAV_ITEMS;

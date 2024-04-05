@@ -1,8 +1,12 @@
+import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
 import ProjectKeysEnum from "@/enums/DatabaseKeysEnums/ProjectKeysEnum";
 import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import UniversityModuleKeysEnum from "@/enums/DatabaseKeysEnums/UniversityModuleKeysEnum";
 import ModuleYearGroups from "@/enums/ModuleYearGroups";
+import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import UniversityModuleInterface from "@/interfaces/material/UniversityModuleInterface";
+import skillDatabase from "./skills";
 
 const modulesMap: Database<UniversityModuleInterface> = {
   //^ Royal Holloway University of London
@@ -687,3 +691,18 @@ const modulesMap: Database<UniversityModuleInterface> = {
     archived: true,
   },
 };
+
+export const moduleKeys: UniversityModuleKeysEnum[] = Object.keys(
+  modulesMap
+) as UniversityModuleKeysEnum[];
+
+const moduleDatabase: Database<UniversityModuleInterface> =
+  addNestedSkillsMaterialList<UniversityModuleInterface>(
+    modulesMap,
+    skillDatabase,
+    [SkillCategoriesEnum.ProgrammingLanguages],
+    SkillTypesEnum.General,
+    SkillTypesEnum.Hard
+  );
+
+export default moduleDatabase;
