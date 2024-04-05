@@ -6,7 +6,8 @@ export default interface UniversityCourseInterface extends MaterialInterface {
   grade: string;
   score?: number;
   modules: UniversityModuleKeysEnum[];
-  certificate: string;
+  certificate?: string;
   startYear: number;
   endYear: number;
+  university: string;
 }
