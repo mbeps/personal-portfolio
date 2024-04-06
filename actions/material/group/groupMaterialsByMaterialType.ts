@@ -5,6 +5,8 @@ export enum MaterialType {
   Projects = "Projects",
   Certificates = "Certificates",
   Blogs = "Blogs",
+  Courses = "Courses",
+  Modules = "Modules",
 }
 
 /**

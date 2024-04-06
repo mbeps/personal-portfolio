@@ -9,7 +9,12 @@ import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/UI/PageDescription";
 import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
-import { BLOG_PAGE, CERTIFICATES_PAGE, PROJECTS_PAGE } from "@/constants/pages";
+import {
+  BLOG_PAGE,
+  CERTIFICATES_PAGE,
+  EDUCATION_PAGE,
+  PROJECTS_PAGE,
+} from "@/constants/pages";
 import blogDatabase, { blogKeys } from "@/database/blogs";
 import certificateDatabase, { certificateKeys } from "@/database/certificates";
 import projectDatabase, { projectKeys } from "@/database/projects";
@@ -24,6 +29,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 import RelatedSkillsSection from "./components/RelatedSkillsSection";
+import moduleDatabase, { moduleKeys } from "@/database/modules";
+import courseDatabase, { courseKeys } from "@/database/courses";
+import ModuleList from "@/components/MaterialLists/ModuleList";
 
 interface MaterialSectionInterface {
   name: MaterialType;
@@ -124,6 +132,14 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
       materialHashmap: blogDatabase,
       basePath: BLOG_PAGE.path,
       ListComponent: BlogsList,
+    },
+    {
+      // Modules
+      name: MaterialType.Modules,
+      materials: moduleKeys,
+      materialHashmap: moduleDatabase,
+      basePath: `${EDUCATION_PAGE.path}/rhul-computer-science`,
+      ListComponent: ModuleList,
     },
   ];
 
