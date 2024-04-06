@@ -179,7 +179,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
   },
   [UniversityModuleKeysEnum.RHUL_SoftwareDesign]: {
     name: "Software Design",
-    category: ModuleYearGroups.Year2,
+    category: ModuleYearGroups.Year1,
     skills: [
       SkillKeysEnum.ProblemSolving,
       SkillKeysEnum.CriticalThinking,

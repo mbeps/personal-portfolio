@@ -2,31 +2,34 @@ import React, { ReactNode } from "react";
 
 interface GridProps {
   items: ReactNode[];
+  gap?: number; // optional gap prop
 }
 
 /**
  * Grid component which displays items in a 2-column grid layout.
  * If the total number of items is odd, the last item will be centered.
+ * The gap between items can be customized.
  *
  * @param items Items to be displayed in a grid
+ * @param gap The gap between grid items, default is 5
  * @returns All the items in a grid layout
  */
-const Grid: React.FC<GridProps> = ({ items }) => {
+const Grid: React.FC<GridProps> = ({ items, gap = 5 }) => {
   const isOddTotal = items.length % 2 !== 0;
 
   return (
     <div
-      className="
+      className={`
         grid grid-cols-1 md:grid-cols-2
-        gap-5 md:gap-x-5
-      "
+        gap-${gap} md:gap-x-${gap}
+      `}
     >
       {items.map((item, idx) => {
         const isLastItem = idx === items.length - 1;
-        // last item on grid
         if (isLastItem && isOddTotal) {
+          // last item on grid
           return (
-            <div key={idx} className="md:col-span-2 flex justify-center">
+            <div key={idx} className={`md:col-span-2 flex justify-center`}>
               <div className="w-full md:w-1/2">{item}</div>
             </div>
           );
