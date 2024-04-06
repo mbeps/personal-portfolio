@@ -23,13 +23,13 @@ import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupS
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 
-type CertificatesPageProps = {
+type CoursesPageProps = {
   params: { slug: string };
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
 export async function generateMetadata(
-  { params, searchParams }: CertificatesPageProps,
+  { params, searchParams }: CoursesPageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   // Read route params
@@ -49,7 +49,7 @@ export const generateStaticParams = async () => {
   }));
 };
 
-const CoursesPage: React.FC<CertificatesPageProps> = ({ params }) => {
+const CoursesPage: React.FC<CoursesPageProps> = ({ params }) => {
   const courseKey: string = params.slug;
   const courseData: UniversityCourseInterface = courseDatabase[courseKey];
   const basePath: string = EDUCATION_PAGE.path;
@@ -166,7 +166,7 @@ const CoursesPage: React.FC<CertificatesPageProps> = ({ params }) => {
           <Grid
             gap={1}
             items={group.materialsKeys.map((moduleKey, idx) => (
-              <Link href={`/${basePath}/${courseKey}/${moduleKey}`} key={idx}>
+              <Link href={`${basePath}/${courseKey}/${moduleKey}`} key={idx}>
                 <Tag hasHover>{moduleDatabase[moduleKey].name}</Tag>
               </Link>
             ))}
