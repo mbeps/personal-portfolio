@@ -175,10 +175,7 @@ const CoursesPage: React.FC<CertificatesPageProps> = ({ params }) => {
       ))}
 
       {/* Skills */}
-      <HeadingThree title="Skills" />
-      <div className="mt-4">
-        <SkillTableSection allGroupedSkills={allGroupedSkills} />
-      </div>
+      <SkillTableSection allGroupedSkills={allGroupedSkills} />
     </div>
   );
 };
