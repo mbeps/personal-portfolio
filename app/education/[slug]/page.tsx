@@ -15,6 +15,13 @@ import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface
 import Tag from "@/components/Tags/Tag";
 import Grid from "@/components/UI/Grid";
 import HeadingFour from "@/components/Text/HeadingFour";
+import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
+import skillDatabase from "@/database/skills";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
+import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
+import SkillTableSection from "@/components/Skills/SkillTableSection";
 
 type CertificatesPageProps = {
   params: { slug: string };
@@ -57,6 +64,43 @@ const CoursesPage: React.FC<CertificatesPageProps> = ({ params }) => {
     courseData.modules,
     moduleDatabase
   );
+
+  const technologies: SkillKeysEnum[] = filterSkillsByType(
+    courseData.skills,
+    skillDatabase,
+    SkillTypesEnum.Hard
+  );
+  const generalSkills: SkillKeysEnum[] = filterSkillsByType(
+    courseData.skills,
+    skillDatabase,
+    SkillTypesEnum.General
+  );
+  const softSkills: SkillKeysEnum[] = filterSkillsByType(
+    courseData.skills,
+    skillDatabase,
+    SkillTypesEnum.Soft
+  );
+
+  const allGroupedSkills: GroupedSkillsCategoriesInterface[] = [
+    categoriseAndGroupSkills(
+      technologies,
+      skillDatabase,
+      SkillTypesEnum.Hard,
+      "Technologies"
+    ),
+    categoriseAndGroupSkills(
+      generalSkills,
+      skillDatabase,
+      SkillTypesEnum.General,
+      "Technical Skills"
+    ),
+    categoriseAndGroupSkills(
+      softSkills,
+      skillDatabase,
+      SkillTypesEnum.Soft,
+      "Soft Skills"
+    ),
+  ];
 
   return (
     <div className="">
@@ -113,6 +157,8 @@ const CoursesPage: React.FC<CertificatesPageProps> = ({ params }) => {
           </div>
         </div>
       </div>
+
+      {/* Modules */}
       <HeadingThree title="Modules" />
       {groupedModules.map((group, index) => (
         <div key={index} className="mb-4">
@@ -127,6 +173,12 @@ const CoursesPage: React.FC<CertificatesPageProps> = ({ params }) => {
           />
         </div>
       ))}
+
+      {/* Skills */}
+      <HeadingThree title="Skills" />
+      <div className="mt-4">
+        <SkillTableSection allGroupedSkills={allGroupedSkills} />
+      </div>
     </div>
   );
 };
