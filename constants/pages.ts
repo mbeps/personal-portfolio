@@ -70,7 +70,21 @@ export const EDUCATION_PAGE: NavigationItemInterface = {
 };
 
 /**
+ * Navigation item for the skills page.
+ * This is where the user can view my skills and filter them according to their preferences.
+ */
+export const SKILL_PAGE: NavigationItemInterface = {
+  label: "Skills",
+  path: "/skills",
+  description: `
+    Explore my collection of skills on various topics. 
+    You will be able to navigate to projects, certificates and blogs directly from here.
+  `,
+};
+
+/**
  * List of navigation items that are displayed in the navbar.
+ * If the constant is not added here, it will not be displayed in the navbar.
  * Users can navigate to these pages by clicking on the respective items.
  * The description may be displayed on every page and it is used for SEO purposes.
  * The order of the items is the order that is used when displaying the items on the website.
