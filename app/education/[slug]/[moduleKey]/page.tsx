@@ -116,6 +116,34 @@ const ModulePage: React.FC<ModulePageProps> = ({ params }) => {
 
       {/* Skills */}
       <SkillTableSection allGroupedSkills={allGroupedSkills} />
+
+      {/* Module Code */}
+      <div
+        className="
+          py-4
+          flex space-x-1 w-full
+          text-xl text-neutral-800 dark:text-neutral-300
+          "
+      >
+        <p className="font-bold">Module Code:</p>
+        <p>{moduleKey}</p>
+      </div>
+
+      {/* Level */}
+
+      {/* Score */}
+      {moduleData.score && (
+        <div
+          className="
+            py-4
+            flex space-x-1 w-full
+            text-xl text-neutral-800 dark:text-neutral-300
+          "
+        >
+          <p className="font-bold">Score:</p>
+          <p>{`${moduleData.score}%`}</p>
+        </div>
+      )}
     </div>
   );
 };
