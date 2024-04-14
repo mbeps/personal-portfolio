@@ -1,13 +1,6 @@
+import MaterialType from "@/enums/MaterialType";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
-
-export enum MaterialType {
-  Projects = "Projects",
-  Certificates = "Certificates",
-  Blogs = "Blogs",
-  Courses = "Courses",
-  Modules = "Modules",
-}
 
 /**
  * Groups the materials based on the material type as defined in {@link MaterialType}.
