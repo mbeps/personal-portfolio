@@ -17,4 +17,6 @@ const materialDatabase: Database<MaterialInterface> = {
   ...courseDatabase,
 };
 
+export const materialKeys: string[] = Object.keys(materialDatabase);
+
 export default materialDatabase;
