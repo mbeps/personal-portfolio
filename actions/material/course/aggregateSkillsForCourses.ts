@@ -3,7 +3,15 @@ import UniversityModuleKeysEnum from "@/enums/DatabaseKeysEnums/UniversityModule
 import UniversityCourseInterface from "@/interfaces/material/UniversityCourseInterface";
 import UniversityModuleInterface from "@/interfaces/material/UniversityModuleInterface";
 
-//TODO: Add documentation
+/**
+ * Adds the skills from a course's modules to the course's skills itself.
+ * This works multiple courses at once.
+ * All the skills that are related to a module are also related to the course.
+ *
+ * @param coursesDatabase Courses to which the skills are to be added.
+ * @param modulesDatabase All the modules to access the data related to the modules.
+ * @returns The courses with the aggregated skills.
+ */
 export default function aggregateSkillsForCourses(
   coursesDatabase: Database<UniversityCourseInterface>,
   modulesDatabase: Database<UniversityModuleInterface>
