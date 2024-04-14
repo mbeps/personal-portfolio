@@ -243,6 +243,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Comparing and contrasting Agile and Waterfall methodologies to determine their applicability in different software development scenarios",
       "Practicing SCRUM and other Agile techniques to enhance team collaboration and project management in software development",
     ],
+    relatedMaterials: [ProjectKeysEnum.JavaCalculatorAssignment],
     parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
   },
   [UniversityModuleKeysEnum.RHUL_TeamProject]: {
@@ -284,6 +285,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Analyzing real-world case studies to understand the application of ethical principles and professional standards in software engineering",
       "Gaining in-depth knowledge of Function Point Analysis, including methodologies, applications, and its historical context",
     ],
+    relatedMaterials: [ProjectKeysEnum.Noodle],
     parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
   },
   [UniversityModuleKeysEnum.RHUL_OperatingSystems]: {
@@ -348,6 +350,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Understanding JDBC",
       "Learning normalisation theory",
     ],
+    relatedMaterials: [ProjectKeysEnum.DatabasesMiniProject],
     parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
   },
   [UniversityModuleKeysEnum.RHUL_AlgorithmsAndComplexity]: {
@@ -437,7 +440,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
     category: ModuleYearGroups.Year2,
     skills: [
       SkillKeysEnum.CyberSecurity,
-      // SkillKeysEnum.Cryptography,
+      SkillKeysEnum.Cryptography,
       SkillKeysEnum.Mathematics,
       SkillKeysEnum.ProblemSolving,
       SkillKeysEnum.CriticalThinking,
@@ -629,6 +632,10 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Implementing advanced UI features such as push notifications",
       "Exploring the use of emerging platforms such as blockchain in web development",
     ],
+    relatedMaterials: [
+      ProjectKeysEnum.CircusDiscussions,
+      ProjectKeysEnum.FlaskForumBackend,
+    ],
     parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
   },
   [UniversityModuleKeysEnum.RHUL_MachineLearning]: {
@@ -664,6 +671,13 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Gaining a broad understanding of various prediction algorithms in Machine Learning",
     ],
     parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
+    relatedMaterials: [
+      ProjectKeysEnum.MachineLearningAssignment1,
+      ProjectKeysEnum.MachineLearningAssignment2,
+      ProjectKeysEnum.MachineLearningAssignment3,
+      ProjectKeysEnum.MachineLearningLabQuestions,
+      ProjectKeysEnum.MachineLearningTheoryPractice,
+    ],
   },
   [UniversityModuleKeysEnum.RHUL_ComputationalFinance]: {
     name: "Computational Finance",
@@ -697,6 +711,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Discussing the applicability and limitations of financial models in the real-world context",
       "Exploring market efficiency hypotheses and current trends in finance",
     ],
+    relatedMaterials: [ProjectKeysEnum.ComputationalFinanceAssignment],
     parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
   },
   [UniversityModuleKeysEnum.RHUL_SecurityManagement]: {
