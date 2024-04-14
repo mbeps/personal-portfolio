@@ -13,6 +13,9 @@ enum SkillKeysEnum {
   Java = "java",
   GameMakerLanguage = "game-maker-language",
   ShellScript = "shell",
+  C = "c",
+  Haskell = "haskell",
+  Scala = "scala",
   RLanguage = "r",
   Groovy = "groovy",
   ObjectOrientedProgramming = "oop",
@@ -248,6 +251,11 @@ enum SkillKeysEnum {
   //^ Others
   Symphony = "symphony",
   Networking = "networking",
+
+  //^ Security
+  Cryptography = "cryptography",
+  Security = "security",
+  CyberSecurity = "cyber-security",
 
   //^ Soft Skills
   Communication = "communication",

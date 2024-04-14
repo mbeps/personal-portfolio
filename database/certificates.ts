@@ -2731,7 +2731,11 @@ const certificateMap: Database<CertificateInterface> = {
       issuer: CertificateIssuersEnum.LinkedIn,
       certificateURL:
         "https://www.linkedin.com/learning/certificates/cbcd6eaa43aa1e91c0d04e31bd886af185ceb513298b7567d1ebfafa48bb2b2b",
-      skills: [SkillKeysEnum.ProblemSolving, SkillKeysEnum.CriticalThinking],
+      skills: [
+        SkillKeysEnum.C,
+        SkillKeysEnum.ProblemSolving,
+        SkillKeysEnum.CriticalThinking,
+      ],
       learningOutcomes: [
         "Understanding what memory is and why we need to manage it",
         "Distinguishing between stack and heap memory",

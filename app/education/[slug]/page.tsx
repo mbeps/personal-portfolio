@@ -102,6 +102,7 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params }) => {
     ),
   ];
 
+  //TODO: Hide archived modules by default
   return (
     <div className="">
       <HeadingTwo title={courseData.name} />

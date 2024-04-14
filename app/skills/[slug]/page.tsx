@@ -4,6 +4,7 @@ import groupMaterialsByMaterialType, {
 } from "@/actions/material/group/groupMaterialsByMaterialType";
 import BlogsList from "@/components/MaterialLists/BlogsList";
 import CertificatesList from "@/components/MaterialLists/CertificatesList";
+import ModuleList from "@/components/MaterialLists/ModuleList";
 import ProjectsList from "@/components/MaterialLists/ProjectsList";
 import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/UI/PageDescription";
@@ -17,6 +18,7 @@ import {
 } from "@/constants/pages";
 import blogDatabase, { blogKeys } from "@/database/blogs";
 import certificateDatabase, { certificateKeys } from "@/database/certificates";
+import moduleDatabase, { moduleKeys } from "@/database/modules";
 import projectDatabase, { projectKeys } from "@/database/projects";
 import skillDatabase, { skillKeys } from "@/database/skills";
 import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
@@ -29,9 +31,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 import RelatedSkillsSection from "./components/RelatedSkillsSection";
-import moduleDatabase, { moduleKeys } from "@/database/modules";
-import courseDatabase, { courseKeys } from "@/database/courses";
-import ModuleList from "@/components/MaterialLists/ModuleList";
 
 interface MaterialSectionInterface {
   name: MaterialType;
@@ -138,6 +137,7 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
       name: MaterialType.Modules,
       materials: moduleKeys,
       materialHashmap: moduleDatabase,
+      //TODO: Dynamically find base path based on parent course
       basePath: `${EDUCATION_PAGE.path}/rhul-computer-science`,
       ListComponent: ModuleList,
     },
@@ -149,7 +149,7 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
       <PageDescription
         description={`
           This is the page displaying all the material related to ${skill.name}.
-          This can include projects, blogs, and certificates.
+          This can include projects, blogs, certificates and university modules.
       `}
       />
       {sections.map(
@@ -176,6 +176,9 @@ export default SkillPage;
 interface MaterialSectionProps extends MaterialSectionInterface {
   skillKey: string;
 }
+
+//TODO: Remove button to view all modules
+//TODO: Create generic list component
 
 /**
  * Component displaying a section of a specific material type for a given skill.

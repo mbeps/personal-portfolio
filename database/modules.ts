@@ -7,6 +7,7 @@ import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import UniversityModuleInterface from "@/interfaces/material/UniversityModuleInterface";
 import skillDatabase from "./skills";
+import UniversityCourseKeysEnum from "@/enums/DatabaseKeysEnums/UniversityCourseKeysEnum";
 
 const modulesMap: Database<UniversityModuleInterface> = {
   //^ Royal Holloway University of London
@@ -36,6 +37,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Solving challenging problems using linked lists",
       "Preparing for final in-class test and exercise class",
     ],
+    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
   },
   [UniversityModuleKeysEnum.RHUL_ObjectOrientedProgramming2]: {
     name: "Object Oriented Programming 2",
@@ -64,6 +66,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Applying knowledge of streams, inheritance, sorting, and Java in a practical assignment",
       "Understanding threads and concurrency in Java",
     ],
+    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
   },
   [UniversityModuleKeysEnum.RHUL_ProgrammingLaboratory]: {
     name: "Programming Laboratory",
@@ -95,6 +98,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Working effectively in programming teams",
       "Preparing for group projects and understanding the requirements for games projects",
     ],
+    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
   },
   [UniversityModuleKeysEnum.RHUL_InternetServices]: {
     name: "Internet Services",
@@ -123,6 +127,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Beginning the study of network security",
     ],
     archived: true,
+    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
   },
   [UniversityModuleKeysEnum.RHUL_MathematicalStructures]: {
     name: "Mathematical Structures (Discrete Mathematics)",
@@ -148,6 +153,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Calculating mean and variance of a random variable",
       "Studying geometric distribution",
     ],
+    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
   },
   [UniversityModuleKeysEnum.RHUL_MachineFundamentals]: {
     name: "Machine Fundamentals",
@@ -176,6 +182,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Studying pushdown automata and Turing machines",
     ],
     archived: true,
+    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
   },
   [UniversityModuleKeysEnum.RHUL_SoftwareDesign]: {
     name: "Software Design",
@@ -199,6 +206,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Participating in lab sessions to apply theoretical knowledge in practical scenarios, focusing on Coursework 2 and task planning.",
       "Reflecting on learned concepts and applying them to real-world scenarios, particularly in software task analysis and planning, to prepare for the final summative quiz.",
     ],
+    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
   },
 
   //* Year 2
@@ -235,6 +243,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Comparing and contrasting Agile and Waterfall methodologies to determine their applicability in different software development scenarios",
       "Practicing SCRUM and other Agile techniques to enhance team collaboration and project management in software development",
     ],
+    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
   },
   [UniversityModuleKeysEnum.RHUL_TeamProject]: {
     name: "Team Project",
@@ -275,12 +284,13 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Analyzing real-world case studies to understand the application of ethical principles and professional standards in software engineering",
       "Gaining in-depth knowledge of Function Point Analysis, including methodologies, applications, and its historical context",
     ],
+    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
   },
   [UniversityModuleKeysEnum.RHUL_OperatingSystems]: {
     name: "Operating Systems",
     category: ModuleYearGroups.Year2,
     skills: [
-      // SkillKeysEnum.C,
+      SkillKeysEnum.C,
       SkillKeysEnum.ProblemSolving,
       SkillKeysEnum.CriticalThinking,
       SkillKeysEnum.TimeManagement,
@@ -312,6 +322,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Creating a dynamic doubly-linked list in C to simulate virtual memory management in an OS",
     ],
     archived: true,
+    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
   },
   [UniversityModuleKeysEnum.RHUL_Databases]: {
     name: "Databases",
@@ -337,6 +348,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Understanding JDBC",
       "Learning normalisation theory",
     ],
+    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
   },
   [UniversityModuleKeysEnum.RHUL_AlgorithmsAndComplexity]: {
     name: "Algorithms and Complexity",
@@ -363,6 +375,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Studying advanced graph algorithm topics, such as handling distances with negative weights and the Floyd-Warshall algorithm",
       "Investigating graph coloring and its algorithmic implementations",
     ],
+    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
   },
   [UniversityModuleKeysEnum.RHUL_MultidimensionalDataProcessing]: {
     name: "Multidimensional Data Processing (Linear Algebra)",
@@ -388,6 +401,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Understanding the introduction of principal components analysis (PCA)",
       "Learning about PCA and SVD, applications",
     ],
+    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
   },
   [UniversityModuleKeysEnum.RHUL_ArtificialIntelligence]: {
     name: "Artificial Intelligence",
@@ -416,12 +430,13 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Mastering SWI-Prolog for implementing AI solutions and completing course-related tasks",
       "Engaging with coursework to apply theoretical concepts in practical scenarios, receiving feedback to enhance learning",
     ],
+    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
   },
   [UniversityModuleKeysEnum.RHUL_IntroductionToInformationSecurity]: {
     name: "Introduction to Information Security",
     category: ModuleYearGroups.Year2,
     skills: [
-      // SkillKeysEnum.CyberSecurity,
+      SkillKeysEnum.CyberSecurity,
       // SkillKeysEnum.Cryptography,
       SkillKeysEnum.Mathematics,
       SkillKeysEnum.ProblemSolving,
@@ -442,6 +457,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Continuing with network security, including detailed discussions on firewall types, intrusion detection systems, and IPsec for virtual private networks",
     ],
     archived: true,
+    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
   },
 
   //* Year 3
@@ -480,6 +496,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Gaining insights from industry alumni on practical applications of UX principles",
       "Understanding the UX industry landscape and employability skills through expert sessions",
     ],
+    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
   },
   [UniversityModuleKeysEnum.RHUL_ITProjectManagement]: {
     name: "IT Project Management",
@@ -521,11 +538,14 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Gaining insight into the necessary skills, job market outlook for project managers, and the relevant code of ethics",
     ],
     archived: true,
+    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
   },
   [UniversityModuleKeysEnum.RHUL_FunctionalProgramming]: {
     name: "Functional Programming",
     category: ModuleYearGroups.Year3,
     skills: [
+      SkillKeysEnum.Haskell,
+      SkillKeysEnum.Scala,
       SkillKeysEnum.FunctionalProgramming,
       SkillKeysEnum.ProblemSolving,
       SkillKeysEnum.CriticalThinking,
@@ -548,6 +568,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Understanding lazy evaluation in Haskell",
       "Exploring advanced topics in functional programming, including advanced type systems",
     ],
+    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
   },
   [UniversityModuleKeysEnum.RHUL_FinalYearProject]: {
     name: "Final Year Project (Web Development)",
@@ -608,6 +629,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Implementing advanced UI features such as push notifications",
       "Exploring the use of emerging platforms such as blockchain in web development",
     ],
+    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
   },
   [UniversityModuleKeysEnum.RHUL_MachineLearning]: {
     name: "Machine Learning",
@@ -641,6 +663,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Studying cross-conformal predictors and their efficiency",
       "Gaining a broad understanding of various prediction algorithms in Machine Learning",
     ],
+    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
   },
   [UniversityModuleKeysEnum.RHUL_ComputationalFinance]: {
     name: "Computational Finance",
@@ -674,12 +697,13 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Discussing the applicability and limitations of financial models in the real-world context",
       "Exploring market efficiency hypotheses and current trends in finance",
     ],
+    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
   },
   [UniversityModuleKeysEnum.RHUL_SecurityManagement]: {
     name: "Security Management",
     category: ModuleYearGroups.Year3,
     skills: [
-      // SkillKeysEnum.CyberSecurity,
+      SkillKeysEnum.CyberSecurity,
       SkillKeysEnum.ProblemSolving,
       SkillKeysEnum.CriticalThinking,
       SkillKeysEnum.TimeManagement,
@@ -697,6 +721,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Reviewing and revising the concepts learned throughout the module",
     ],
     archived: true,
+    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
   },
 };
 

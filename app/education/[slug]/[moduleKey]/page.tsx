@@ -85,6 +85,7 @@ const ModulePage: React.FC<ModulePageProps> = ({ params }) => {
     ),
   ];
 
+  //TODO: Go back to parent course
   return (
     <div>
       <HeadingTwo title={moduleData.name} />

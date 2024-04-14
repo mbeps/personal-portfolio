@@ -27,6 +27,7 @@ enum SkillCategoriesEnum {
   CoreComputerScience = "Core Computer Science",
   Automation = "Automation",
   SoftSkills = "Soft Skills",
+  Security = "Security",
 }
 
 export default SkillCategoriesEnum;
