@@ -1,7 +1,7 @@
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import developerName from "@/constants/developerName";
 import { EDUCATION_PAGE } from "@/constants/pages";
-import courseDatabase from "@/database/courses";
+import courseDatabase, { courseKeys } from "@/database/courses";
 import UniversityCourseInterface from "@/interfaces/material/UniversityCourseInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
@@ -10,7 +10,7 @@ import Image from "next/image";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import HeadingThree from "@/components/Text/HeadingThree";
 import groupMaterialsByCategory from "@/actions/material/group/groupMaterialsByCategory";
-import moduleDatabase from "@/database/modules";
+import moduleDatabase, { moduleKeys } from "@/database/modules";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import Tag from "@/components/Tags/Tag";
 import Grid from "@/components/UI/Grid";
@@ -23,12 +23,27 @@ import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupS
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import MaterialList from "@/components/MaterialLists/MaterialList";
+import filterMaterialByArchivedStatus from "@/actions/material/filter/filterMaterialByArchivedStatus";
+import UniversityModuleKeysEnum from "@/enums/DatabaseKeysEnums/UniversityModuleKeysEnum";
+import UniversityModuleInterface from "@/interfaces/material/UniversityModuleInterface";
+import generateUrl from "@/actions/generateUrl";
+import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
 
 type CoursesPageProps = {
   params: { slug: string };
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
+/**
+ * Generates the metadata for the course page.
+ * This includes the title and description of the page.
+ * This is used for SEO purposes.
+ *
+ * @param props The props for the project page.
+ * @param parent The parent metadata that is being resolved.
+ * @returns The metadata for the project page.
+ * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ */
 export async function generateMetadata(
   { params, searchParams }: CoursesPageProps,
   parent: ResolvingMetadata
@@ -44,13 +59,33 @@ export async function generateMetadata(
   };
 }
 
+/**
+ * Generates the static paths for the courses.
+ * These are then used to pre-render the courses pages.
+ * This Incremental Static Regeneration allows the courses to be displayed without a server.
+ * This improves the performance of the website.
+ *
+ * @returns A list of all the keys for the static pages that need to be generated.
+ * @see https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration
+ */
 export const generateStaticParams = async () => {
   return Object.keys(courseDatabase).map((slug) => ({
     slug,
   }));
 };
 
-const CoursesPage: React.FC<CoursesPageProps> = ({ params }) => {
+/**
+ * Page for displaying a specific course including:
+ * - Certificate
+ * - University
+ * - Classification
+ * - Modules
+ * - Skills
+ * - Related Materials
+ * @param props Details about the page
+ * @returns The course page
+ */
+const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
   const courseKey: string = params.slug;
   const courseData: UniversityCourseInterface = courseDatabase[courseKey];
   const basePath: string = EDUCATION_PAGE.path;
@@ -61,11 +96,21 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params }) => {
 
   const courseImage = `${basePath}/${courseKey}.jpg`;
 
+  const showArchived: boolean = (searchParams.archived || "false") === "true";
+
+  let filteredModules: UniversityModuleKeysEnum[] = moduleKeys;
+  filteredModules = filterMaterialByArchivedStatus<UniversityModuleInterface>(
+    showArchived,
+    filteredModules,
+    moduleDatabase
+  ) as UniversityModuleKeysEnum[];
+
   const groupedModules: MaterialGroupInterface[] = groupMaterialsByCategory(
-    courseData.modules,
+    filteredModules,
     moduleDatabase
   );
 
+  //^ Skills
   const technologies: SkillKeysEnum[] = filterSkillsByType(
     courseData.skills,
     skillDatabase,
@@ -103,7 +148,6 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params }) => {
     ),
   ];
 
-  //TODO: Hide archived modules by default
   return (
     <div className="">
       <HeadingTwo title={courseData.name} />
@@ -160,8 +204,14 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params }) => {
         </div>
       </div>
 
-      {/* Modules */}
       <HeadingThree title="Modules" />
+      <ArchiveToggle
+        generateUrl={generateUrl}
+        showArchived={showArchived}
+        filterProps={[]}
+        basePath={`${basePath}/${courseKey}`}
+      />
+      {/* Modules */}
       {groupedModules.map((group, index) => (
         <div key={index} className="mb-4">
           <HeadingFour title={group.groupName} />
