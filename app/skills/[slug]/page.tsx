@@ -11,6 +11,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import RelatedSkillsSection from "./components/RelatedSkillsSection";
 import MaterialList from "@/components/MaterialLists/MaterialList";
+import HeadingTwo from "@/components/Text/HeadingTwo";
 
 /**
  * Generates the metadata for the skill page.
@@ -41,12 +42,11 @@ export async function generateMetadata(
 }
 
 /**
-/**
  * Generates the static paths for the skills.
  * These are then used to pre-render the projects pages.
  * This Incremental Static Regeneration allows the projects to be displayed without a server.
  * This improves the performance of the website.
- * 
+ *
  * @returns A list of all the keys for the static pages that need to be generated.
  * @see https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration
  */
@@ -89,7 +89,13 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
           This can include projects, blogs, certificates and university modules.
       `}
       />
+
+      {/* Material Section */}
+      <div className="pt-8" />
+      <HeadingTwo title="Material" />
       <MaterialList materialKeys={filteredMaterials} />
+
+      {/* Skills Section */}
       <RelatedSkillsSection skillKey={skillKey as SkillKeysEnum} />
     </div>
   );

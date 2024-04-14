@@ -29,7 +29,9 @@ const ModuleList: React.FC<ModuleListProps> = ({
     <div className="material-page-wrapper border-t border-gray-200 dark:border-neutral-600 pt-10">
       {groupedModules.map((group, index) => (
         <div key={index} className="mb-4">
-          <HeadingComponent title={`University ${group.groupName}`} />
+          {groupedModules.length > 1 && (
+            <HeadingComponent title={`University ${group.groupName}`} />
+          )}
           <Grid
             gap={1}
             items={group.materialsKeys.map((moduleKey, idx) => {

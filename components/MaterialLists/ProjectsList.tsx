@@ -22,8 +22,12 @@ const ProjectsList: React.FC<MaterialListProps> = ({
             group.groupName !== "All" && (
               <section key={group.groupName} id={stringToSlug(group.groupName)}>
                 <div className="flex flex-col space-y-10">
-                  <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
-                  <HeadingTwo title={group.groupName} />
+                  {groupedProjects.length > 1 && (
+                    <>
+                      <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
+                      <HeadingTwo title={group.groupName} />
+                    </>
+                  )}
                   <div className="space-y-20">
                     {group.materialsKeys.map((projectKey) => (
                       <div key={projectKey}>
