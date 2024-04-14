@@ -15,6 +15,7 @@ import filterNonEmptySkillCategories from "@/actions/skills/filter/filterNonEmpt
 
 interface SkillTableSectionProps {
   allGroupedSkills: GroupedSkillsCategoriesInterface[];
+  maxSkillsPerCategory?: number;
 }
 
 /**
@@ -29,6 +30,7 @@ interface SkillTableSectionProps {
  */
 const SkillTableSection: React.FC<SkillTableSectionProps> = ({
   allGroupedSkills,
+  maxSkillsPerCategory = 5,
 }) => {
   const [selectedTab, setSelectedTab] = useState(() => {
     // Find the first group with non-empty skill categories
@@ -86,7 +88,10 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
         <TabsContent key={stringToSlug(title)} value={stringToSlug(title)}>
           <div className="mt-4 text-center md:text-left">
             {/* Adjust CategorySkillDisplay to accept the new structure */}
-            <CategorySkillDisplay skillCategories={skillCategories} />
+            <CategorySkillDisplay
+              skillCategories={skillCategories}
+              maxSkillsPerCategory={maxSkillsPerCategory}
+            />
           </div>
         </TabsContent>
       ))}
