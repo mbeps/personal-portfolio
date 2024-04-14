@@ -3,14 +3,29 @@ import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupS
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/shadcn/ui/breadcrumb";
+import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
+import { EDUCATION_PAGE } from "@/constants/pages";
+import courseDatabase from "@/database/courses";
 import moduleDatabase from "@/database/modules";
 import skillDatabase from "@/database/skills";
 import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import UniversityCourseInterface from "@/interfaces/material/UniversityCourseInterface";
 import UniversityModuleInterface from "@/interfaces/material/UniversityModuleInterface";
-import { ResolvingMetadata, Metadata } from "next";
+import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
+import { Slash } from "lucide-react";
+import { Metadata, ResolvingMetadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
+import { IoIosArrowBack } from "react-icons/io";
 import { RxTriangleRight } from "react-icons/rx";
 
 type ModulePageProps = {
@@ -42,6 +57,8 @@ export const generateStaticParams = async () => {
 const ModulePage: React.FC<ModulePageProps> = ({ params }) => {
   const moduleKey: string = params.moduleKey;
   const moduleData: UniversityModuleInterface = moduleDatabase[moduleKey];
+  const parentCourse: UniversityCourseInterface =
+    courseDatabase[moduleData.parentCourse];
 
   if (!moduleData) {
     notFound();
@@ -64,7 +81,7 @@ const ModulePage: React.FC<ModulePageProps> = ({ params }) => {
   );
 
   // Simplified grouping of skill types for certificates
-  const allGroupedSkills = [
+  const allGroupedSkills: GroupedSkillsCategoriesInterface[] = [
     categoriseAndGroupSkills(
       technologies,
       skillDatabase,
@@ -85,10 +102,27 @@ const ModulePage: React.FC<ModulePageProps> = ({ params }) => {
     ),
   ];
 
-  //TODO: Go back to parent course
   return (
     <div>
       <HeadingTwo title={moduleData.name} />
+
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink
+              href={`${EDUCATION_PAGE.path}/${moduleData.parentCourse}`}
+            >
+              {parentCourse.name}
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>{moduleData.name}</BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
 
       <div className="mt-4 ">
         {/* Learning Outcomes */}
