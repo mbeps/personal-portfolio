@@ -1,5 +1,6 @@
 import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
 import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
+import MaterialList from "@/components/MaterialLists/MaterialList";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import Tag from "@/components/Tags/Tag";
 import HeadingThree from "@/components/Text/HeadingThree";
@@ -83,24 +84,25 @@ type CertificatesPageProps = {
  */
 const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
   const certificateKey: string = params.slug;
-  const certificate: CertificateInterface = certificateDatabase[certificateKey];
+  const certificateData: CertificateInterface =
+    certificateDatabase[certificateKey];
 
-  if (!certificate) {
+  if (!certificateData) {
     notFound();
   }
 
   const technologies: SkillKeysEnum[] = filterSkillsByType(
-    certificate.skills,
+    certificateData.skills,
     skillDatabase,
     SkillTypesEnum.Hard
   );
   const generalSkills: SkillKeysEnum[] = filterSkillsByType(
-    certificate.skills,
+    certificateData.skills,
     skillDatabase,
     SkillTypesEnum.General
   );
   const softSkills: SkillKeysEnum[] = filterSkillsByType(
-    certificate.skills,
+    certificateData.skills,
     skillDatabase,
     SkillTypesEnum.Soft
   );
@@ -130,7 +132,7 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
 
   return (
     <div className="space-y-6 align-top min-h-[85vh] relative">
-      <HeadingTwo title={certificate.name} />
+      <HeadingTwo title={certificateData.name} />
 
       {/* Certificate Image */}
       {certificateImage && (
@@ -150,7 +152,7 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
           <AspectRatio ratio={4 / 3} className="overflow-hidden relative">
             <Image
               src={certificateImage}
-              alt={`${certificate.name} certificate image`}
+              alt={`${certificateData.name} certificate image`}
               className="rounded-xl object-cover"
               fill={true}
               priority={true}
@@ -172,27 +174,27 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
       </div>
 
       {/* Certificate Description */}
-      {certificate.description && (
+      {certificateData.description && (
         <div className="flex flex-col">
           <div className="md:text-left text-center">
             <HeadingThree title="Description" />
           </div>
           <p className="text-lg text-neutral-800 dark:text-neutral-300">
-            {certificate.description}
+            {certificateData.description}
           </p>
         </div>
       )}
 
       <div className="mt-4 ">
         {/* Credentials ID */}
-        {certificate.learningOutcomes && (
+        {certificateData.learningOutcomes && (
           <>
             <div className="text-center lg:text-left">
               <HeadingThree title="Learning Objectives" />
             </div>
             <div>
               <ul className="list-none text-lg">
-                {certificate.learningOutcomes.map((outcome, index) => (
+                {certificateData.learningOutcomes.map((outcome, index) => (
                   <li key={index} className="flex mb-1.5">
                     <div className="mr-2 mt-1.5">
                       <RxTriangleRight />
@@ -218,7 +220,7 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
             <HeadingThree title="Certificate Issuer" />
           </div>
           <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-5">
-            <Tag>{certificate.issuer}</Tag>
+            <Tag>{certificateData.issuer}</Tag>
           </div>
         </div>
 
@@ -236,9 +238,9 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
               gap-2"
           >
             {/* Issuer Page */}
-            {certificate.certificateURL && (
+            {certificateData.certificateURL && (
               <Link
-                href={certificate.certificateURL}
+                href={certificateData.certificateURL}
                 target="_blank"
                 className="w-auto md:w-full"
               >
@@ -261,6 +263,14 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
           </div>
         </div>
       </div>
+
+      {certificateData.relatedMaterials &&
+        certificateData.relatedMaterials.length > 0 && (
+          <>
+            <div className="border-b border-gray-200 dark:border-neutral-600 pb-4" />
+            <MaterialList materialKeys={certificateData.relatedMaterials} />
+          </>
+        )}
     </div>
   );
 };

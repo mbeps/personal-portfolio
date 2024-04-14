@@ -1,9 +1,10 @@
-import aggregateSkillsForCourses from "@/actions/material/course/aggregateSkillsForCourses";
+import aggregateSkillsForCourses from "@/actions/material/course/aggregate/aggregateSkillsForCourses";
 import ProjectKeysEnum from "@/enums/DatabaseKeysEnums/ProjectKeysEnum";
 import UniversityCourseKeysEnum from "@/enums/DatabaseKeysEnums/UniversityCourseKeysEnum";
 import UniversityModuleKeysEnum from "@/enums/DatabaseKeysEnums/UniversityModuleKeysEnum";
 import UniversityCourseInterface from "@/interfaces/material/UniversityCourseInterface";
 import moduleDatabase from "./modules";
+import aggregateRelatedMaterialsForCourses from "@/actions/material/course/aggregate/aggregateRelatedMaterialsForCourses";
 
 const courseMap: Database<UniversityCourseInterface> = {
   [UniversityCourseKeysEnum.RHUL_ComputerScience]: {
@@ -59,7 +60,14 @@ export const courseKeys: UniversityCourseKeysEnum[] = Object.keys(
   courseMap
 ) as UniversityCourseKeysEnum[];
 
-const courseDatabase: Database<UniversityCourseInterface> =
+// adds skills from modules to the courses
+let courseDatabase: Database<UniversityCourseInterface> =
   aggregateSkillsForCourses(courseMap, moduleDatabase);
+
+// adds related materials from modules to the courses
+courseDatabase = aggregateRelatedMaterialsForCourses(
+  courseDatabase,
+  moduleDatabase
+);
 
 export default courseDatabase;

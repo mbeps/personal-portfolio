@@ -22,6 +22,7 @@ import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
+import MaterialList from "@/components/MaterialLists/MaterialList";
 
 type CoursesPageProps = {
   params: { slug: string };
@@ -177,6 +178,14 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params }) => {
 
       {/* Skills */}
       <SkillTableSection allGroupedSkills={allGroupedSkills} />
+
+      {courseData.relatedMaterials &&
+        courseData.relatedMaterials.length > 0 && (
+          <>
+            <div className="border-b border-gray-200 dark:border-neutral-600 pb-4" />
+            <MaterialList materialKeys={courseData.relatedMaterials} />
+          </>
+        )}
     </div>
   );
 };
