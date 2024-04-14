@@ -21,11 +21,12 @@ export default function NotFound() {
   return (
     <div
       className="
-      flex flex-col
-      items-center justify-center 
-      animate-fadeIn animation-delay-2 
-      my-10 py-16 sm:py-32 md:py-48 
-      text-center 
+        flex flex-col
+        items-center justify-center 
+        animate-fadeIn animation-delay-2 
+        my-10 py-16 sm:py-32 md:py-48 
+        text-center 
+        min-h-[85vh]
       "
     >
       <h1 className="text-5xl font-semibold text-red-500 dark:text-red-700 my-6">
