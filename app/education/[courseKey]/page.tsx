@@ -11,6 +11,7 @@ import HeadingFour from "@/components/Text/HeadingFour";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import Grid from "@/components/UI/Grid";
+import PageDescription from "@/components/UI/PageDescription";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import developerName from "@/constants/developerName";
 import { EDUCATION_PAGE } from "@/constants/pages";
@@ -30,7 +31,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 type CoursesPageProps = {
-  params: { slug: string };
+  params: { courseKey: string };
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
@@ -49,7 +50,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   // Read route params
-  const courseKey: string = params.slug;
+  const courseKey: string = params.courseKey;
   const course: UniversityCourseInterface = courseDatabase[courseKey];
 
   // Create metadata based on the course details
@@ -69,8 +70,8 @@ export async function generateMetadata(
  * @see https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration
  */
 export const generateStaticParams = async () => {
-  return Object.keys(courseDatabase).map((slug) => ({
-    slug,
+  return Object.keys(courseDatabase).map((courseKey) => ({
+    courseKey,
   }));
 };
 
@@ -86,7 +87,7 @@ export const generateStaticParams = async () => {
  * @returns The course page
  */
 const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
-  const courseKey: string = params.slug;
+  const courseKey: string = params.courseKey;
   const courseData: UniversityCourseInterface = courseDatabase[courseKey];
   const basePath: string = EDUCATION_PAGE.path;
 
@@ -234,6 +235,9 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
         courseData.relatedMaterials.length > 0 && (
           <>
             <div className="border-b border-gray-200 dark:border-neutral-600 pb-4" />
+            <PageDescription
+              description={`List of material directly related to ${courseData.name}`}
+            />
             <MaterialList materialKeys={courseData.relatedMaterials} />
           </>
         )}

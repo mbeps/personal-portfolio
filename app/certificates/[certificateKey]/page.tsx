@@ -5,15 +5,18 @@ import SkillTableSection from "@/components/Skills/SkillTableSection";
 import Tag from "@/components/Tags/Tag";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
+import PageDescription from "@/components/UI/PageDescription";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
+import { CERTIFICATES_PAGE } from "@/constants/pages";
 import certificateDatabase from "@/database/certificates";
 import skillDatabase from "@/database/skills";
 import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import MaterialType from "@/enums/MaterialType";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
+import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -37,7 +40,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   // Read route params
-  const certificateKey: string = params.slug;
+  const certificateKey: string = params.certificateKey;
   const certificate: CertificateInterface = certificateDatabase[certificateKey];
 
   // Create metadata based on the certificate details
@@ -58,13 +61,13 @@ export async function generateMetadata(
  * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
  */
 export const generateStaticParams = async () => {
-  return Object.keys(certificateDatabase).map((slug) => ({
-    slug,
+  return Object.keys(certificateDatabase).map((certificateKey) => ({
+    certificateKey,
   }));
 };
 
 type CertificatesPageProps = {
-  params: { slug: string };
+  params: { certificateKey: string };
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
@@ -84,7 +87,7 @@ type CertificatesPageProps = {
  * @returns Page displaying the certificate and its details
  */
 const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
-  const certificateKey: string = params.slug;
+  const certificateKey: string = params.certificateKey;
   const certificateData: CertificateInterface =
     certificateDatabase[certificateKey];
 
@@ -109,7 +112,7 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
   );
 
   // Simplified grouping of skill types for certificates
-  const allGroupedSkills = [
+  const allGroupedSkills: GroupedSkillsCategoriesInterface[] = [
     categoriseAndGroupSkills(
       technologies,
       skillDatabase,
@@ -129,7 +132,8 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
       "Soft Skills"
     ),
   ];
-  const certificateImage = `/certificates/${certificateKey}.jpg`;
+
+  const certificateImage = `${CERTIFICATES_PAGE.path}/${certificateKey}.jpg`;
 
   return (
     <div className="space-y-6 align-top min-h-[85vh] relative">
@@ -269,6 +273,9 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
         certificateData.relatedMaterials.length > 0 && (
           <>
             <div className="border-b border-gray-200 dark:border-neutral-600 pb-4" />
+            <PageDescription
+              description={`List of material directly related to ${certificateData.name}`}
+            />{" "}
             <MaterialList
               materialKeys={certificateData.relatedMaterials}
               defaultTab={MaterialType.Certificates}

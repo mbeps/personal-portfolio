@@ -30,6 +30,7 @@ import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
 import MaterialList from "@/components/MaterialLists/MaterialList";
+import PageDescription from "@/components/UI/PageDescription";
 
 /**
  * Generates the metadata for the project page.
@@ -46,7 +47,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   // Read route params
-  const projectKey: string = params.slug;
+  const projectKey: string = params.projectKey;
 
   // Assume getProjectBySlug function fetches project by slug
   const project: ProjectInterface = projectDatabase[projectKey];
@@ -68,13 +69,13 @@ export async function generateMetadata(
  * @see https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration
  */
 export const generateStaticParams = async () => {
-  return Object.keys(projectDatabase).map((slug) => ({
-    slug,
+  return Object.keys(projectDatabase).map((projectKey) => ({
+    projectKey,
   }));
 };
 
 interface ProjectPageProps {
-  params: { slug: string };
+  params: { projectKey: string };
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
@@ -91,7 +92,7 @@ interface ProjectPageProps {
  * @returns Page displaying the project and its details
  */
 const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
-  const projectKey: string = params.slug;
+  const projectKey: string = params.projectKey;
   const basePath: string = PROJECTS_PAGE.path;
   const projectData: ProjectInterface = projectDatabase[projectKey];
 
@@ -336,6 +337,9 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
         projectData.relatedMaterials.length > 0 && (
           <>
             <div className="border-b border-gray-200 dark:border-neutral-600 pb-4" />
+            <PageDescription
+              description={`List of material directly related to ${projectData.name}`}
+            />
             <MaterialList materialKeys={projectData.relatedMaterials} />
           </>
         )}

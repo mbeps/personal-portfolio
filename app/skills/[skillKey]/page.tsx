@@ -27,7 +27,7 @@ export async function generateMetadata(
   { params, searchParams }: ProjectPageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const skillKey: string = params.slug;
+  const skillKey: string = params.skillKey;
   const skill: SkillInterface | undefined =
     skillDatabase[skillKey as SkillKeysEnum];
 
@@ -51,11 +51,11 @@ export async function generateMetadata(
  * @see https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration
  */
 export const generateStaticParams = async () => {
-  return skillKeys.map((slug) => ({ slug }));
+  return skillKeys.map((skillKey) => ({ skillKey }));
 };
 
 interface ProjectPageProps {
-  params: { slug: string };
+  params: { skillKey: string };
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
@@ -67,7 +67,7 @@ interface ProjectPageProps {
  * @returns Skill page that displays all the material related to a given skill.
  */
 const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
-  const skillKey: string = params.slug;
+  const skillKey: string = params.skillKey;
   const skillData: SkillInterface = skillDatabase[skillKey as SkillKeysEnum];
 
   if (!skillData) {

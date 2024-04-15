@@ -5,13 +5,7 @@ import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import DynamicBreadcrumb from "@/components/UI/DynamicBreadcrumb";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbSeparator,
-} from "@/components/shadcn/ui/breadcrumb";
+import PageDescription from "@/components/UI/PageDescription";
 import developerName from "@/constants/developerName";
 import { EDUCATION_PAGE, HOME_PAGE } from "@/constants/pages";
 import courseDatabase from "@/database/courses";
@@ -66,8 +60,8 @@ export async function generateMetadata(
  * @see https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration
  */
 export const generateStaticParams = async () => {
-  return Object.keys(moduleDatabase).map((module) => ({
-    module,
+  return Object.keys(moduleDatabase).map((moduleKey) => ({
+    moduleKey,
   }));
 };
 
@@ -202,6 +196,9 @@ const ModulePage: React.FC<ModulePageProps> = ({ params }) => {
         moduleData.relatedMaterials.length > 0 && (
           <>
             <div className="border-b border-gray-200 dark:border-neutral-600 pb-4" />
+            <PageDescription
+              description={`List of material directly related to ${moduleData.name}`}
+            />
             <MaterialList materialKeys={moduleData.relatedMaterials} />
           </>
         )}
