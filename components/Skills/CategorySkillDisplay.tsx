@@ -7,7 +7,6 @@ import HeadingFour from "../Text/HeadingFour";
 
 interface CategorySkillDisplayProps {
   skillCategories: SkillsCategoryInterface[];
-  maxSkillsPerCategory?: number;
 }
 
 /**
@@ -17,30 +16,49 @@ interface CategorySkillDisplayProps {
  * If there is only one category, the title of the category is not displayed and the skills are displayed in a single column.
  *
  * @param skillCategories Skills to be displayed in the table in categories
- * @param maxSkillsPerCategory Maximum number of skills to display per category
  * @returns A section containing a table of skills grouped by categories
  */
 const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
   skillCategories,
-  maxSkillsPerCategory = 5,
 }) => {
   const [showAll, setShowAll] = useState(false);
   const shouldDisplayTitle: boolean = skillCategories.length > 1;
   const isTablet: boolean = useMediaQuery("(max-width: 976px)");
 
+  const maxSkillCount: number = 18;
   const maxGroupCount: number = isTablet ? 2 : 3; // Number of columns to display
+
+  let skillCount: number = 0;
+  let groupCount: number = 0;
 
   const displayedSkills: SkillsCategoryInterface[] = showAll
     ? skillCategories
-    : skillCategories.slice(0, maxGroupCount).map((categoryData) => ({
-        skillCategoryName: categoryData.skillCategoryName,
-        skills: categoryData.skills.slice(0, maxSkillsPerCategory),
-      }));
+    : skillCategories.reduce((acc: SkillsCategoryInterface[], categoryData) => {
+        if (skillCount < maxSkillCount && groupCount < maxGroupCount) {
+          const availableSlots = Math.min(
+            maxSkillCount - skillCount,
+            categoryData.skills.length
+          );
+          const limitedSkills = categoryData.skills.slice(0, availableSlots);
+
+          acc.push({
+            skillCategoryName: categoryData.skillCategoryName,
+            skills: limitedSkills,
+          });
+
+          skillCount += availableSlots;
+          groupCount++;
+        }
+        return acc;
+      }, []);
+
+  const totalSkillCount: number = skillCategories.reduce(
+    (acc, categoryData) => acc + Object.keys(categoryData.skills).length,
+    0
+  );
 
   const shouldShowToggleButton: boolean =
-    skillCategories.some(
-      (categoryData) => categoryData.skills.length > maxSkillsPerCategory
-    ) || showAll;
+    totalSkillCount > skillCount || showAll;
 
   function toggleShowAll(): void {
     setShowAll(!showAll);
