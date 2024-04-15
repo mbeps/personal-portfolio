@@ -4,6 +4,7 @@ import MaterialList from "@/components/MaterialLists/MaterialList";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
+import DynamicBreadcrumb from "@/components/UI/DynamicBreadcrumb";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -12,7 +13,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/shadcn/ui/breadcrumb";
 import developerName from "@/constants/developerName";
-import { EDUCATION_PAGE } from "@/constants/pages";
+import { EDUCATION_PAGE, HOME_PAGE } from "@/constants/pages";
 import courseDatabase from "@/database/courses";
 import moduleDatabase from "@/database/modules";
 import skillDatabase from "@/database/skills";
@@ -126,33 +127,21 @@ const ModulePage: React.FC<ModulePageProps> = ({ params }) => {
     ),
   ];
 
+  const breadcrumbData = [
+    { name: HOME_PAGE.label, path: HOME_PAGE.path },
+    { name: EDUCATION_PAGE.label, path: EDUCATION_PAGE.path },
+    {
+      name: parentCourse.name,
+      path: `${EDUCATION_PAGE.path}/${moduleData.parentCourse}`,
+    },
+    { name: moduleData.name },
+  ];
+
   return (
     <div>
       <HeadingTwo title={moduleData.name} />
 
-      <Breadcrumb>
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/">Home</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink href={`${EDUCATION_PAGE.path}`}>
-              {EDUCATION_PAGE.label}
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink
-              href={`${EDUCATION_PAGE.path}/${moduleData.parentCourse}`}
-            >
-              {parentCourse.name}
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>{moduleData.name}</BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
+      <DynamicBreadcrumb breadcrumbs={breadcrumbData} />
 
       <div className="mt-4 ">
         {/* Learning Outcomes */}
