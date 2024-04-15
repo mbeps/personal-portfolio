@@ -9,6 +9,7 @@ import UniversityModuleInterface from "@/interfaces/material/UniversityModuleInt
 import skillDatabase from "./skills";
 import UniversityCourseKeysEnum from "@/enums/DatabaseKeysEnums/UniversityCourseKeysEnum";
 
+//TODO: Add documentation
 const modulesMap: Database<UniversityModuleInterface> = {
   //^ Royal Holloway University of London
   //* Year 1
@@ -740,6 +741,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
   },
 };
 
+//TODO: Add documentation
 export const moduleKeys: UniversityModuleKeysEnum[] = Object.keys(
   modulesMap
 ) as UniversityModuleKeysEnum[];

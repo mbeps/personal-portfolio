@@ -1,3 +1,4 @@
+//TODO: Add documentation
 enum UniversityModuleKeysEnum {
   RHUL_ObjectOrientedProgramming1 = "CS1811",
   RHUL_ObjectOrientedProgramming2 = "CS1812",

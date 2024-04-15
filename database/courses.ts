@@ -6,6 +6,7 @@ import UniversityCourseInterface from "@/interfaces/material/UniversityCourseInt
 import moduleDatabase from "./modules";
 import aggregateRelatedMaterialsForCourses from "@/actions/material/course/aggregate/aggregateRelatedMaterialsForCourses";
 
+//TODO: Add documentation
 const courseMap: Database<UniversityCourseInterface> = {
   [UniversityCourseKeysEnum.RHUL_ComputerScience]: {
     name: "Computer Science",
@@ -56,6 +57,7 @@ const courseMap: Database<UniversityCourseInterface> = {
   },
 };
 
+//TODO: Add documentation
 export const courseKeys: UniversityCourseKeysEnum[] = Object.keys(
   courseMap
 ) as UniversityCourseKeysEnum[];
