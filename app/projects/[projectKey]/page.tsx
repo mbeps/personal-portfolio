@@ -29,6 +29,8 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
+import MaterialList from "@/components/MaterialLists/MaterialList";
+import PageDescription from "@/components/UI/PageDescription";
 
 /**
  * Generates the metadata for the project page.
@@ -45,7 +47,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   // Read route params
-  const projectKey: string = params.slug;
+  const projectKey: string = params.projectKey;
 
   // Assume getProjectBySlug function fetches project by slug
   const project: ProjectInterface = projectDatabase[projectKey];
@@ -67,13 +69,13 @@ export async function generateMetadata(
  * @see https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration
  */
 export const generateStaticParams = async () => {
-  return Object.keys(projectDatabase).map((slug) => ({
-    slug,
+  return Object.keys(projectDatabase).map((projectKey) => ({
+    projectKey,
   }));
 };
 
 interface ProjectPageProps {
-  params: { slug: string };
+  params: { projectKey: string };
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
@@ -90,27 +92,27 @@ interface ProjectPageProps {
  * @returns Page displaying the project and its details
  */
 const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
-  const projectKey: string = params.slug;
+  const projectKey: string = params.projectKey;
   const basePath: string = PROJECTS_PAGE.path;
-  const project: ProjectInterface = projectDatabase[projectKey];
+  const projectData: ProjectInterface = projectDatabase[projectKey];
 
   // redirect to not found page if the project is not valid
-  if (!project) {
+  if (!projectData) {
     notFound();
   }
 
-  const hasCoverImage: boolean = project.thumbnailImage !== undefined;
+  const hasCoverImage: boolean = projectData.thumbnailImage !== undefined;
   const coverImagePath: string = `${basePath}/${projectKey}/cover.png`;
 
   const projectLanguages: SkillKeysEnum[] = filterSkillsByCategory(
-    project.skills,
+    projectData.skills,
     skillDatabase,
     SkillCategoriesEnum.ProgrammingLanguages
   );
 
   const projectSkillsWithoutLanguage: SkillKeysEnum[] =
     filterSkillSlugsExcludingCategory(
-      project.skills,
+      projectData.skills,
       skillDatabase,
       SkillCategoriesEnum.ProgrammingLanguages
     );
@@ -196,7 +198,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
 
   return (
     <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
-      <HeadingTwo title={project?.name} />
+      <HeadingTwo title={projectData?.name} />
 
       {/* Gallery Section */}
       {(images && images.length > 1) || (videos && videos.length > 1) ? (
@@ -237,7 +239,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
           <HeadingThree title="Description" />
           <div className="flex flex-wrap justify-center md:justify-start z-10 mt-5">
             <p className="text-neutral-800 dark:text-neutral-300">
-              {project.description}
+              {projectData.description}
             </p>
           </div>
         </div>
@@ -279,9 +281,9 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
               gap-2"
             >
               {/* GitHub Repo */}
-              {project?.repositoryURL && (
+              {projectData?.repositoryURL && (
                 <Link
-                  href={project?.repositoryURL}
+                  href={projectData?.repositoryURL}
                   target="_blank"
                   className="w-full"
                 >
@@ -302,9 +304,9 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
                 </Link>
               )}
               {/* Website */}
-              {project?.deploymentURL && (
+              {projectData?.deploymentURL && (
                 <Link
-                  href={project?.deploymentURL}
+                  href={projectData?.deploymentURL}
                   target="_blank"
                   className="w-full"
                 >
@@ -330,6 +332,17 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
       </div>
 
       <TabbedReader content={{ features, blog }} />
+
+      {projectData.relatedMaterials &&
+        projectData.relatedMaterials.length > 0 && (
+          <>
+            <div className="border-b border-gray-200 dark:border-neutral-600 pb-4" />
+            <PageDescription
+              description={`List of material directly related to ${projectData.name}`}
+            />
+            <MaterialList materialKeys={projectData.relatedMaterials} />
+          </>
+        )}
     </div>
   );
 };

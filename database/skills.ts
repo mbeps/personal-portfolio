@@ -138,6 +138,24 @@ const skillDatabase: Database<SkillInterface> = {
     skillType: SkillTypesEnum.Hard,
     category: SkillCategoriesEnum.ProgrammingLanguages,
   },
+  [SkillKeysEnum.C]: {
+    name: "C",
+    isMainSkill: false,
+    skillType: SkillTypesEnum.Hard,
+    category: SkillCategoriesEnum.ProgrammingLanguages,
+  },
+  [SkillKeysEnum.Haskell]: {
+    name: "Haskell",
+    isMainSkill: false,
+    skillType: SkillTypesEnum.Hard,
+    category: SkillCategoriesEnum.ProgrammingLanguages,
+  },
+  [SkillKeysEnum.Scala]: {
+    name: "Scala",
+    isMainSkill: false,
+    skillType: SkillTypesEnum.Hard,
+    category: SkillCategoriesEnum.ProgrammingLanguages,
+  },
   [SkillKeysEnum.RLanguage]: {
     name: "R",
     isMainSkill: false,
@@ -447,6 +465,8 @@ const skillDatabase: Database<SkillInterface> = {
       SkillKeysEnum.SDKs,
       SkillKeysEnum.WebDevelopment,
       SkillKeysEnum.GCP,
+      SkillKeysEnum.Security,
+      SkillKeysEnum.CyberSecurity,
     ],
   },
   [SkillKeysEnum.Supabase]: {
@@ -464,6 +484,8 @@ const skillDatabase: Database<SkillInterface> = {
       SkillKeysEnum.SDKs,
       SkillKeysEnum.WebDevelopment,
       SkillKeysEnum.PostgreSQL,
+      SkillKeysEnum.Security,
+      SkillKeysEnum.CyberSecurity,
     ],
   },
   [SkillKeysEnum.PocketBase]: {
@@ -480,6 +502,8 @@ const skillDatabase: Database<SkillInterface> = {
       SkillKeysEnum.UserAuthentication,
       SkillKeysEnum.SDKs,
       SkillKeysEnum.WebDevelopment,
+      SkillKeysEnum.Security,
+      SkillKeysEnum.CyberSecurity,
     ],
   },
   [SkillKeysEnum.Auth0]: {
@@ -487,14 +511,24 @@ const skillDatabase: Database<SkillInterface> = {
     category: SkillCategoriesEnum.BackEndWebDevelopment,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [SkillKeysEnum.UserAuthentication, SkillKeysEnum.SDKs],
+    relatedSkills: [
+      SkillKeysEnum.UserAuthentication,
+      SkillKeysEnum.SDKs,
+      SkillKeysEnum.Security,
+      SkillKeysEnum.CyberSecurity,
+    ],
   },
   [SkillKeysEnum.ClerkAuth]: {
     name: "Clerk Auth",
     category: SkillCategoriesEnum.BackEndWebDevelopment,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [SkillKeysEnum.UserAuthentication, SkillKeysEnum.SDKs],
+    relatedSkills: [
+      SkillKeysEnum.UserAuthentication,
+      SkillKeysEnum.SDKs,
+      SkillKeysEnum.Security,
+      SkillKeysEnum.CyberSecurity,
+    ],
   },
   [SkillKeysEnum.NextAuth]: {
     name: "NextAuth",
@@ -506,6 +540,8 @@ const skillDatabase: Database<SkillInterface> = {
       SkillKeysEnum.TypeScript,
       SkillKeysEnum.UserAuthentication,
       SkillKeysEnum.WebDevelopment,
+      SkillKeysEnum.Security,
+      SkillKeysEnum.CyberSecurity,
     ],
   },
   [SkillKeysEnum.Stripe]: {
@@ -513,7 +549,11 @@ const skillDatabase: Database<SkillInterface> = {
     category: SkillCategoriesEnum.BackEndWebDevelopment,
     isMainSkill: true,
     skillType: SkillTypesEnum.Hard,
-    relatedSkills: [SkillKeysEnum.SDKs],
+    relatedSkills: [
+      SkillKeysEnum.SDKs,
+      SkillKeysEnum.Security,
+      SkillKeysEnum.CyberSecurity,
+    ],
   },
   [SkillKeysEnum.ExpressJS]: {
     name: "Express",
@@ -524,6 +564,8 @@ const skillDatabase: Database<SkillInterface> = {
       SkillKeysEnum.TypeScript,
       SkillKeysEnum.WebDevelopment,
       SkillKeysEnum.APIs,
+      SkillKeysEnum.Security,
+      SkillKeysEnum.CyberSecurity,
     ],
   },
   [SkillKeysEnum.Flask]: {
@@ -535,6 +577,8 @@ const skillDatabase: Database<SkillInterface> = {
       SkillKeysEnum.WebDevelopment,
       SkillKeysEnum.APIs,
       SkillKeysEnum.Python,
+      SkillKeysEnum.Security,
+      SkillKeysEnum.CyberSecurity,
     ],
   },
   [SkillKeysEnum.Django]: {
@@ -546,6 +590,8 @@ const skillDatabase: Database<SkillInterface> = {
       SkillKeysEnum.WebDevelopment,
       SkillKeysEnum.APIs,
       SkillKeysEnum.Python,
+      SkillKeysEnum.Security,
+      SkillKeysEnum.CyberSecurity,
     ],
   },
   [SkillKeysEnum.Spring]: {
@@ -557,6 +603,8 @@ const skillDatabase: Database<SkillInterface> = {
       SkillKeysEnum.WebDevelopment,
       SkillKeysEnum.APIs,
       SkillKeysEnum.Java,
+      SkillKeysEnum.Security,
+      SkillKeysEnum.CyberSecurity,
     ],
   },
   [SkillKeysEnum.SpringBoot]: {
@@ -568,6 +616,8 @@ const skillDatabase: Database<SkillInterface> = {
       SkillKeysEnum.WebDevelopment,
       SkillKeysEnum.APIs,
       SkillKeysEnum.Java,
+      SkillKeysEnum.Security,
+      SkillKeysEnum.CyberSecurity,
     ],
   },
   [SkillKeysEnum.Cloudinary]: {
@@ -1609,6 +1659,49 @@ const skillDatabase: Database<SkillInterface> = {
       SkillKeysEnum.Automation,
       SkillKeysEnum.SDKs,
     ],
+  },
+
+  //^ Security
+  [SkillKeysEnum.Cryptography]: {
+    name: "Cryptography",
+    category: SkillCategoriesEnum.Security,
+    isMainSkill: false,
+    skillType: SkillTypesEnum.Hard,
+    relatedSkills: [
+      SkillKeysEnum.Security,
+      SkillKeysEnum.CyberSecurity,
+      SkillKeysEnum.Cryptography,
+    ],
+  },
+  [SkillKeysEnum.CyberSecurity]: {
+    name: "Cyber-Security",
+    category: SkillCategoriesEnum.Security,
+    isMainSkill: false,
+    skillType: SkillTypesEnum.General,
+    relatedSkills: [
+      SkillKeysEnum.Security,
+      SkillKeysEnum.CyberSecurity,
+      SkillKeysEnum.Cryptography,
+    ],
+  },
+  [SkillKeysEnum.Security]: {
+    name: "Security",
+    category: SkillCategoriesEnum.Security,
+    isMainSkill: false,
+    skillType: SkillTypesEnum.General,
+    relatedSkills: [
+      SkillKeysEnum.Security,
+      SkillKeysEnum.CyberSecurity,
+      SkillKeysEnum.Cryptography,
+    ],
+  },
+
+  //^ Others
+  [SkillKeysEnum.Networking]: {
+    name: "Networking",
+    category: SkillCategoriesEnum.Security,
+    isMainSkill: false,
+    skillType: SkillTypesEnum.General,
   },
 
   //^ General Technical Skills

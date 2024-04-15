@@ -26,6 +26,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/shadcn/ui/popover";
+import { SKILL_PAGE } from "@/constants/pages";
 import materialDatabase from "@/database/material";
 import skillDatabase from "@/database/skills";
 import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
@@ -59,7 +60,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
   const [isOpen, setOpen] = useState(false);
 
   const searchParams: ReadonlyURLSearchParams = useSearchParams();
-  const basePath = "/skills";
+  const basePath: string = SKILL_PAGE.path;
   const router: AppRouterInstance = useRouter();
 
   const gap = "w-4 h-4 mr-2";

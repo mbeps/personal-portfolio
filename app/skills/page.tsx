@@ -3,15 +3,7 @@ import PageDescription from "@/components/UI/PageDescription";
 import developerName from "@/constants/developerName";
 import { skillKeys } from "@/database/skills";
 import SkillList from "../../components/MaterialLists/SkillList";
-
-/**
- * The description for the skill page.
- * This is rendered at the top of the page and used as metadata for SEO purposes.
- */
-const description = `
-	Explore my collection of skills on various topics. 
-	You will be able to navigate to projects, certificates and blogs directly from here.
-`;
+import { SKILL_PAGE } from "@/constants/pages";
 
 /**
  * Generates the metadata for the skill page.
@@ -25,7 +17,7 @@ const description = `
  */
 export const metadata = {
   title: `${developerName} - Skills`,
-  description: description,
+  description: SKILL_PAGE.description,
 };
 
 /**
@@ -39,7 +31,7 @@ export default function SkillPage() {
       <section id="blogs">
         <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
           <HeadingOne title="Skills" />
-          <PageDescription description={description} />
+          <PageDescription description={SKILL_PAGE.description} />
 
           <SkillList skills={skillKeys} />
         </div>

@@ -1,12 +1,15 @@
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
 import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
 import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
+import MaterialList from "@/components/MaterialLists/MaterialList";
 import Reader from "@/components/Reader/Reader";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
+import PageDescription from "@/components/UI/PageDescription";
 import developerName from "@/constants/developerName";
 import { BLOG_PAGE } from "@/constants/pages";
 import blogDatabase from "@/database/blogs";
+import certificateDatabase from "@/database/certificates";
 import skillDatabase from "@/database/skills";
 import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
@@ -15,7 +18,7 @@ import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 
 type BlogPageProps = {
-  params: { slug: string };
+  params: { blogKey: string };
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
@@ -33,7 +36,7 @@ export async function generateMetadata(
   { params, searchParams }: BlogPageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const blogKey: string = params.slug;
+  const blogKey: string = params.blogKey;
   const blog: BlogInterface = blogDatabase[blogKey];
 
   return {
@@ -53,8 +56,8 @@ export async function generateMetadata(
  * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
  */
 export const generateStaticParams = async () => {
-  return Object.keys(blogDatabase).map((slug) => ({
-    slug,
+  return Object.keys(blogDatabase).map((blogKey) => ({
+    blogKey,
   }));
 };
 
@@ -66,29 +69,29 @@ export const generateStaticParams = async () => {
  * @returns Content of the blog and the skills used
  */
 const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
-  const blogKey: string = params.slug;
+  const blogKey: string = params.blogKey;
   const basePath: string = BLOG_PAGE.path;
-  const blogMetadata: BlogInterface = blogDatabase[blogKey];
+  const blogData: BlogInterface = blogDatabase[blogKey];
   const blogContent: string | undefined = getMarkdownFromFileSystem(
     `public${basePath}/${blogKey}/blog.md`
   )?.content;
 
-  if (!blogContent || !blogMetadata) {
+  if (!blogContent || !blogData) {
     notFound();
   }
 
   const technologies: SkillKeysEnum[] = filterSkillsByType(
-    blogMetadata.skills,
+    blogData.skills,
     skillDatabase,
     SkillTypesEnum.Hard
   );
   const generalSkills: SkillKeysEnum[] = filterSkillsByType(
-    blogMetadata.skills,
+    blogData.skills,
     skillDatabase,
     SkillTypesEnum.General
   );
   const softSkills: SkillKeysEnum[] = filterSkillsByType(
-    blogMetadata.skills,
+    blogData.skills,
     skillDatabase,
     SkillTypesEnum.Soft
   );
@@ -118,9 +121,9 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
   return (
     <div>
       <div className="text-center">
-        <HeadingTwo title={blogMetadata?.name} />
+        <HeadingTwo title={blogData?.name} />
         <p className="text-neutral-600 dark:text-neutral-400">
-          {blogMetadata?.subtitle}
+          {blogData?.subtitle}
         </p>
       </div>
 
@@ -131,6 +134,16 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
       <div className="mt-4">
         <SkillTableSection allGroupedSkills={allGroupedSkills} />
       </div>
+
+      {blogData.relatedMaterials && blogData.relatedMaterials.length > 0 && (
+        <>
+          <div className="border-b border-gray-200 dark:border-neutral-600 pb-4" />
+          <PageDescription
+            description={`List of material directly related to ${certificateDatabase.name}`}
+          />
+          <MaterialList materialKeys={blogData.relatedMaterials} />
+        </>
+      )}
     </div>
   );
 };

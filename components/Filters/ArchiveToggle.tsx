@@ -36,7 +36,7 @@ export const ArchiveToggle: React.FC<ArchiveToggleProps> = ({
       <span className="mr-2 mb-1 text-neutral-600 dark:text-neutral-400">
         Display archived
       </span>
-      <Link href={generateUrl(filtersWithArchive, basePath)}>
+      <Link href={generateUrl(filtersWithArchive, basePath)} scroll={false}>
         <Switch checked={showArchived} />
       </Link>
     </div>

@@ -577,7 +577,7 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.MachineLearning,
   },
   [ProjectKeysEnum.MachineLearningAssignment1]: {
-    name: `Assignment 1`,
+    name: `Machine Learning Assignment 1`,
     description: `
       Be able to implement machine-learning algorithms, using the Nearest Neighbours algorithm as an example. 
       Have an understanding of ways to apply the ideas and algorithms of machine learning in science and technology.
@@ -604,7 +604,7 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.MachineLearning,
   },
   [ProjectKeysEnum.MachineLearningAssignment2]: {
-    name: `Assignment 2`,
+    name: `Machine Learning Assignment 2`,
     description: `
       Be able to use and implement machine-learning algorithms, 
       with the Lasso and inductive conformal prediction algorithms as examples. 
@@ -632,7 +632,7 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.MachineLearning,
   },
   [ProjectKeysEnum.MachineLearningAssignment3]: {
-    name: `Assignment 3`,
+    name: `Machine Learning Assignment 3`,
     description: `
       Be able to use and implement machine-learning algorithms, 
       with the SVM, neural networks, and cross-conformal prediction algorithms as examples. 
@@ -660,7 +660,7 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.MachineLearning,
   },
   [ProjectKeysEnum.MachineLearningLabQuestions]: {
-    name: `Lab Questions`,
+    name: `Machine Learning Lab Questions`,
     description: `
       Implemented various machine learning algorithms and techniques learned during the course, 
       such as Nearest Neighbours, conformal prediction, linear regression, Ridge Regression, Lasso, data preprocessing, parameter selection, 

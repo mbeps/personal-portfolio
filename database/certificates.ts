@@ -1105,7 +1105,12 @@ const certificateMap: Database<CertificateInterface> = {
         "Finding code",
         "Finding code to learn from",
       ],
-      relatedMaterials: [CertificateKeysEnum.LinkedInPracticalGitHubActions],
+      relatedMaterials: [
+        CertificateKeysEnum.LinkedInPracticalGitHubActions,
+        CertificateKeysEnum.LinkedInPracticalGitHubCodeSearch,
+        CertificateKeysEnum.LinkedInPracticalGitHubCopilot,
+        CertificateKeysEnum.PMIPracticalProjectManagementAndCollaboration,
+      ],
     },
   [CertificateKeysEnum.LinkedInPracticalGitHubActions]: {
     name: "Practical GitHub Actions",
@@ -1922,6 +1927,7 @@ const certificateMap: Database<CertificateInterface> = {
       "Introduction to MongoDB Data Modeling.",
       "Using MongoDB Transactions.",
     ],
+    archived: true,
   },
   [CertificateKeysEnum.LinkedInRedisEssentialTraining]: {
     name: "Redis Essential Training",
@@ -1946,6 +1952,7 @@ const certificateMap: Database<CertificateInterface> = {
       "Applying Redis knowledge to practical examples.",
       "Comparing Redis to relational databases and using key naming strategies.",
     ],
+    archived: true,
   },
 
   //^ Mathematics
@@ -2615,6 +2622,7 @@ const certificateMap: Database<CertificateInterface> = {
     relatedMaterials: [
       CertificateKeysEnum.LinkedInBecomeAProgrammerFoundations,
     ],
+    archived: true,
   },
   [CertificateKeysEnum.LinkedInProgrammingFoundationsAlgorithms2]: {
     name: "Programming Foundations: Algorithms",
@@ -2731,7 +2739,11 @@ const certificateMap: Database<CertificateInterface> = {
       issuer: CertificateIssuersEnum.LinkedIn,
       certificateURL:
         "https://www.linkedin.com/learning/certificates/cbcd6eaa43aa1e91c0d04e31bd886af185ceb513298b7567d1ebfafa48bb2b2b",
-      skills: [SkillKeysEnum.ProblemSolving, SkillKeysEnum.CriticalThinking],
+      skills: [
+        SkillKeysEnum.C,
+        SkillKeysEnum.ProblemSolving,
+        SkillKeysEnum.CriticalThinking,
+      ],
       learningOutcomes: [
         "Understanding what memory is and why we need to manage it",
         "Distinguishing between stack and heap memory",
@@ -3010,7 +3022,8 @@ const certificateMap: Database<CertificateInterface> = {
       SkillKeysEnum.ProblemSolving,
       SkillKeysEnum.CriticalThinking,
     ],
-    description: `This course provides a comprehensive guide on how to optimally host your application within AWS, covering services like IaaS, DBaaS, PaaS, and SaaS through hands-on examples. It delves into DevOps and security within AWS, and prepares learners for the AWS Cloud Practitioner Certification (CLF-C02) exam. The course covers a wide range of topics, from creating an IAM user group and using the Cost Explorer, to exploring AWS offerings for mobile app development and maintaining cloud infrastructure scripts with CloudFormation. It also includes a look into AWS's artificial intelligence services and the AWS Well-Architected Framework.`,
+    description: `
+      This course provides a comprehensive guide on how to optimally host your application within AWS, covering services like IaaS, DBaaS, PaaS, and SaaS through hands-on examples. It delves into DevOps and security within AWS, and prepares learners for the AWS Cloud Practitioner Certification (CLF-C02) exam. The course covers a wide range of topics, from creating an IAM user group and using the Cost Explorer, to exploring AWS offerings for mobile app development and maintaining cloud infrastructure scripts with CloudFormation. It also includes a look into AWS's artificial intelligence services and the AWS Well-Architected Framework.`,
     learningOutcomes: [
       "Creating an IAM user group, user, and access key.",
       "Using the Cost Explorer to analyze service usage.",
@@ -3035,6 +3048,7 @@ const certificateMap: Database<CertificateInterface> = {
       "Discovering AWS services for web traffic filtering and audit trailing.",
       "Learning AWS Well-Architected Framework for cloud infrastructure.",
     ],
+    archived: true,
   },
   [CertificateKeysEnum.LinkedInAzureEssentialTrainingForDevelopers]: {
     name: "Azure Essential Training for Developers",
@@ -3057,7 +3071,8 @@ const certificateMap: Database<CertificateInterface> = {
       SkillKeysEnum.ProblemSolving,
       SkillKeysEnum.CriticalThinking,
     ],
-    description: `This course provides a comprehensive introduction to Azure, focusing on the fundamentals necessary for developers to start building, deploying, and managing applications on this popular cloud platform. It offers a detailed overview of Azure's capabilities and services, from storage options to Kubernetes Service scaling strategies. The course is designed to equip learners with the knowledge needed for a deeper exploration of their topics of interest, making it a valuable resource for those new to Azure or those comparing it against other ecosystems.`,
+    description: `
+      This course provides a comprehensive introduction to Azure, focusing on the fundamentals necessary for developers to start building, deploying, and managing applications on this popular cloud platform. It offers a detailed overview of Azure's capabilities and services, from storage options to Kubernetes Service scaling strategies. The course is designed to equip learners with the knowledge needed for a deeper exploration of their topics of interest, making it a valuable resource for those new to Azure or those comparing it against other ecosystems.`,
     learningOutcomes: [
       "Understanding Azure subscriptions, resource groups, and regions.",
       "Exploring the capabilities of Azure App Service.",
@@ -3073,6 +3088,7 @@ const certificateMap: Database<CertificateInterface> = {
       "Creating containers in Azure.",
       "Publishing container images to the Azure Container Registry.",
     ],
+    archived: true,
   },
   [CertificateKeysEnum.LinkedInLearningGoogleCloudPlatformEssentialTraining]: {
     name: "Google Cloud Platform (GCP) Essential Training for Developers",
@@ -3091,7 +3107,8 @@ const certificateMap: Database<CertificateInterface> = {
       SkillKeysEnum.ProblemSolving,
       SkillKeysEnum.CriticalThinking,
     ],
-    description: `This course provides a comprehensive guide to designing, building, and maintaining applications in Google Cloud Platform (GCP). It covers best practices for deploying and configuring optimized settings in App Engine, setting up Cloud SQL application architecture, managing distributed queues in Cloud Tasks, and using GCP tools like Cloud Logging for application optimization. The course is designed to equip learners with the skills needed to leverage the multitude of cloud computing services provided by GCP, making it a valuable resource for developers in the cloud computing domain.`,
+    description: `
+      This course provides a comprehensive guide to designing, building, and maintaining applications in Google Cloud Platform (GCP). It covers best practices for deploying and configuring optimized settings in App Engine, setting up Cloud SQL application architecture, managing distributed queues in Cloud Tasks, and using GCP tools like Cloud Logging for application optimization. The course is designed to equip learners with the skills needed to leverage the multitude of cloud computing services provided by GCP, making it a valuable resource for developers in the cloud computing domain.`,
     learningOutcomes: [
       "Designing, building, and maintaining applications in GCP.",
       "Deploying and configuring optimized settings in App Engine.",
@@ -3100,6 +3117,7 @@ const certificateMap: Database<CertificateInterface> = {
       "Running background tasks with Google Cloud Tasks and cron jobs with Google Cloud Scheduler.",
       "Logging, debugging, and optimizing apps with Google Operations tools.",
     ],
+    archived: true,
   },
 
   //^ Symphony
