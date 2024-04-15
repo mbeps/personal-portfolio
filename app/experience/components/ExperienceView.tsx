@@ -1,11 +1,13 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
+import filterRolesByType from "@/actions/material/experience/filterRolesByType";
 import filterMaterialByArchivedStatus from "@/actions/material/filter/filterMaterialByArchivedStatus";
 import filterMaterialByCategory from "@/actions/material/filter/filterMaterialByCategory";
 import filterMaterialBySkill from "@/actions/material/filter/filterMaterialBySkill";
 import filterMaterialBySkillCategory from "@/actions/material/filter/filterMaterialBySkillCategory";
 import generateFilterOptionsByCategory from "@/actions/material/filterOptions/generateFilterOptionsByCategory";
+import { generateFilterOptionsByRoleType } from "@/actions/material/filterOptions/generateFilterOptionsByRoleType";
 import { generateFilterOptionsBySkillCategories } from "@/actions/material/filterOptions/generateFilterOptionsBySkillCategories";
 import generateFilterOptionsBySkillType from "@/actions/material/filterOptions/generateFilterOptionsBySkillType";
 import groupMaterialsByCategory from "@/actions/material/group/groupMaterialsByCategory";
@@ -18,7 +20,9 @@ import { Button } from "@/components/shadcn/ui/button";
 import rolesDatabase from "@/database/roles";
 import skillDatabase from "@/database/skills";
 import BlogKeysEnum from "@/enums/DatabaseKeysEnums/BlogKeysEnum";
+import RoleKeyEnum from "@/enums/DatabaseKeysEnums/RoleKeyEnum";
 import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import ExperienceTypeEnum from "@/enums/ExperienceType";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import useFuseSearch from "@/hooks/useFuseSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
@@ -47,7 +51,7 @@ export const BlogsView: React.FC = () => {
 
   //^ URL Params Strings
   const categoryParamName = "category";
-  // const workTypeParamName = "type";
+  const workTypeParamName = "type";
   const skillCategoryParamName = "skill";
   const technicalSkillParamName = "technical";
   const generalSkillParamName = "general";
@@ -59,7 +63,7 @@ export const BlogsView: React.FC = () => {
   //^ URL Params Reader
   const selectedWorkSection: string =
     searchParams.get(categoryParamName) || "all";
-  // const selectedWorkType: string = searchParams.get(workTypeParamName) || "all";
+  const selectedWorkType: string = searchParams.get(workTypeParamName) || "all";
   const selectedSkillCategory: string =
     searchParams.get(skillCategoryParamName) || "all";
   const selectedTechnicalSkill: string =
@@ -88,11 +92,11 @@ export const BlogsView: React.FC = () => {
   ];
 
   // Use the custom hook to perform the search
-  let filteredWorkKeysArray: BlogKeysEnum[] = useFuseSearch(
+  let filteredWorkKeysArray: RoleKeyEnum[] = useFuseSearch(
     rolesDatabase,
     searchTerm,
     searchOptions
-  ) as BlogKeysEnum[];
+  ) as RoleKeyEnum[];
 
   //^ Filtering Logic
   /**
@@ -105,7 +109,7 @@ export const BlogsView: React.FC = () => {
       generateUrl(
         [
           { entryName: categoryParamName, slug: selectedWorkSection },
-          // { entryName: workTypeParamName, slug: selectedWorkType },
+          { entryName: workTypeParamName, slug: selectedWorkType },
           { entryName: skillCategoryParamName, slug: selectedSkillCategory },
           { entryName: technicalSkillParamName, slug: selectedTechnicalSkill },
           { entryName: softSkillParamName, slug: selectedSoftSkill },
@@ -119,13 +123,21 @@ export const BlogsView: React.FC = () => {
 
   //^ Filtering Logic
 
-  // Filter by blog category
+  // Filter by category
   if (selectedWorkSection !== "all") {
     filteredWorkKeysArray = filterMaterialByCategory<RoleInterface>(
       stringToSlug(selectedWorkSection),
       filteredWorkKeysArray,
       rolesDatabase
-    ) as BlogKeysEnum[];
+    ) as RoleKeyEnum[];
+  }
+
+  if (selectedWorkType !== "all") {
+    filteredWorkKeysArray = filterRolesByType<RoleInterface>(
+      stringToSlug(selectedWorkType) as ExperienceTypeEnum,
+      filteredWorkKeysArray,
+      rolesDatabase
+    ) as RoleKeyEnum[];
   }
 
   // Filter by skill category
@@ -135,7 +147,7 @@ export const BlogsView: React.FC = () => {
       rolesDatabase,
       stringToSlug(selectedSkillCategory),
       skillDatabase
-    ) as BlogKeysEnum[];
+    ) as RoleKeyEnum[];
   }
 
   // Filter by hard skill
@@ -144,7 +156,7 @@ export const BlogsView: React.FC = () => {
       selectedTechnicalSkill as SkillKeysEnum,
       filteredWorkKeysArray,
       rolesDatabase
-    ) as BlogKeysEnum[];
+    ) as RoleKeyEnum[];
   }
 
   // Filter by general skill
@@ -153,7 +165,7 @@ export const BlogsView: React.FC = () => {
       selectedGeneralSkill as SkillKeysEnum,
       filteredWorkKeysArray,
       rolesDatabase
-    ) as BlogKeysEnum[];
+    ) as RoleKeyEnum[];
   }
 
   // Filter by soft skill
@@ -162,7 +174,7 @@ export const BlogsView: React.FC = () => {
       selectedSoftSkill as SkillKeysEnum,
       filteredWorkKeysArray,
       rolesDatabase
-    ) as BlogKeysEnum[];
+    ) as RoleKeyEnum[];
   }
 
   // Filter by archived status
@@ -170,7 +182,7 @@ export const BlogsView: React.FC = () => {
     showArchived,
     filteredWorkKeysArray,
     rolesDatabase
-  ) as BlogKeysEnum[];
+  ) as RoleKeyEnum[];
 
   const groupedBlogs: MaterialGroupInterface[] = groupMaterialsByCategory(
     filteredWorkKeysArray,
@@ -179,6 +191,7 @@ export const BlogsView: React.FC = () => {
 
   const areFiltersApplied: boolean =
     selectedWorkSection !== "all" ||
+    selectedWorkType !== "all" ||
     selectedSkillCategory !== "all" ||
     selectedTechnicalSkill !== "all" ||
     selectedGeneralSkill !== "all" ||
@@ -192,6 +205,12 @@ export const BlogsView: React.FC = () => {
       urlParam: categoryParamName,
       selectedValue: selectedWorkSection,
       options: generateFilterOptionsByCategory<RoleInterface>(rolesDatabase),
+    },
+    {
+      sectionName: "Employment Type",
+      urlParam: workTypeParamName,
+      selectedValue: selectedWorkType,
+      options: generateFilterOptionsByRoleType<RoleInterface>(rolesDatabase),
     },
     {
       sectionName: "Skill Category",
