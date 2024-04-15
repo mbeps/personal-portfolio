@@ -3,6 +3,7 @@ import PageDescription from "@/components/UI/PageDescription";
 import developerName from "@/constants/developerName";
 import { EXPERIENCE_PAGE } from "@/constants/pages";
 import type { Metadata } from "next";
+import ExperienceView from "./components/ExperienceView";
 
 /**
  * Generates the metadata for the work experience page.
@@ -34,6 +35,7 @@ export default function BlogPage() {
         <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
           <HeadingOne title={EXPERIENCE_PAGE.label} />
           <PageDescription description={EXPERIENCE_PAGE.description} />
+          <ExperienceView />
         </div>
       </section>
     </main>

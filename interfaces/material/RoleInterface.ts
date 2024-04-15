@@ -1,7 +1,7 @@
 import ExperienceCategories from "@/enums/ExperienceCategories";
 import MaterialInterface from "./MaterialInterface";
 import ExperienceTypeEnum from "@/enums/ExperienceType";
-import CompanyEnum from "@/enums/DatabaseKeysEnums/ExperienceCompanyEnum";
+import CompanyKeyEnum from "@/enums/DatabaseKeysEnums/ExperienceCompanyEnum";
 
 //TODO: Add documentation
 export default interface RoleInterface extends MaterialInterface {
@@ -9,6 +9,6 @@ export default interface RoleInterface extends MaterialInterface {
   type: ExperienceTypeEnum;
   startDate: string;
   endDate: string | "Present";
-  company: CompanyEnum;
+  company: CompanyKeyEnum;
   responsibilities: string[];
 }
