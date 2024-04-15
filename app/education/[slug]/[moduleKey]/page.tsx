@@ -137,6 +137,12 @@ const ModulePage: React.FC<ModulePageProps> = ({ params }) => {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
+            <BreadcrumbLink href={`${EDUCATION_PAGE.path}`}>
+              {EDUCATION_PAGE.label}
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
             <BreadcrumbLink
               href={`${EDUCATION_PAGE.path}/${moduleData.parentCourse}`}
             >
