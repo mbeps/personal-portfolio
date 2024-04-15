@@ -88,10 +88,7 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
         <TabsContent key={stringToSlug(title)} value={stringToSlug(title)}>
           <div className="mt-4 text-center md:text-left">
             {/* Adjust CategorySkillDisplay to accept the new structure */}
-            <CategorySkillDisplay
-              skillCategories={skillCategories}
-              maxSkillsPerCategory={maxSkillsPerCategory}
-            />
+            <CategorySkillDisplay skillCategories={skillCategories} />
           </div>
         </TabsContent>
       ))}
