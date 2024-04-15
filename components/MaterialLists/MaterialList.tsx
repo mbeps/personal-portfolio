@@ -34,6 +34,7 @@ interface MaterialSectionInterface {
 
 interface MaterialSectionProps {
   materialKeys: string[];
+  defaultTab?: MaterialType;
 }
 
 /**
@@ -47,8 +48,11 @@ interface MaterialSectionProps {
  * @param materialKeys The keys of the material to display.
  * @returns Section displaying all the material for a given skill.
  */
-const MaterialList: React.FC<MaterialSectionProps> = ({ materialKeys }) => {
-  const [selectedTab, setSelectedTab] = useState("");
+const MaterialList: React.FC<MaterialSectionProps> = ({
+  materialKeys,
+  defaultTab,
+}) => {
+  const [selectedTab, setSelectedTab] = useState(defaultTab || "");
 
   if (!materialKeys || materialKeys.length === 0) {
     return null;

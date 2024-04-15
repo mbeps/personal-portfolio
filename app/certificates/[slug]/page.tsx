@@ -11,6 +11,7 @@ import developerName from "@/constants/developerName";
 import certificateDatabase from "@/database/certificates";
 import skillDatabase from "@/database/skills";
 import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import MaterialType from "@/enums/MaterialType";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
 import { Metadata, ResolvingMetadata } from "next";
@@ -268,7 +269,10 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
         certificateData.relatedMaterials.length > 0 && (
           <>
             <div className="border-b border-gray-200 dark:border-neutral-600 pb-4" />
-            <MaterialList materialKeys={certificateData.relatedMaterials} />
+            <MaterialList
+              materialKeys={certificateData.relatedMaterials}
+              defaultTab={MaterialType.Certificates}
+            />
           </>
         )}
     </div>
