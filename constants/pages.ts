@@ -90,7 +90,6 @@ export const SKILL_PAGE: NavigationItemInterface = {
  * The order of the items is the order that is used when displaying the items on the website.
  */
 const NAV_ITEMS: Array<NavigationItemInterface> = [
-  HOME_PAGE,
   PROJECTS_PAGE,
   CERTIFICATES_PAGE,
   BLOG_PAGE,
