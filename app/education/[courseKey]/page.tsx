@@ -156,16 +156,15 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
       <div
         className="
 					grid grid-cols-1 lg:grid-cols-2 lg:grid-flow-col-reverse 
-					p-2 space-x-0 lg:space-x-6"
+					space-x-0 lg:space-x-6"
       >
         {/* Left */}
         <div
           className="
 						rounded-xl
 						transition-all duration-500 ease-in-out
-						p-3
+						p-1 lg:p-3
 						bg-neutral-100 dark:bg-neutral-950  
-            
 			"
         >
           <AspectRatio ratio={1 / 1.4} className="overflow-hidden relative">
