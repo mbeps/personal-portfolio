@@ -67,6 +67,13 @@ const MaterialList: React.FC<MaterialSectionProps> = ({
       ListComponent: ProjectsList,
     },
     {
+      name: MaterialType.Modules,
+      materials: moduleKeys,
+      materialHashmap: moduleDatabase,
+      ListComponent: ModuleList,
+    },
+    //TODO: Add Work Experience
+    {
       name: MaterialType.Certificates,
       materials: certificateKeys,
       materialHashmap: certificateDatabase,
@@ -79,12 +86,6 @@ const MaterialList: React.FC<MaterialSectionProps> = ({
       materialHashmap: blogDatabase,
       basePath: BLOG_PAGE.path,
       ListComponent: BlogsList,
-    },
-    {
-      name: MaterialType.Modules,
-      materials: moduleKeys,
-      materialHashmap: moduleDatabase,
-      ListComponent: ModuleList,
     },
   ];
 

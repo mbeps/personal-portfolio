@@ -11,10 +11,10 @@ import courseDatabase from "./courses";
  */
 const materialDatabase: Database<MaterialInterface> = {
   ...projectDatabase,
+  ...courseDatabase,
+  ...moduleDatabase,
   ...certificateDatabase,
   ...blogDatabase,
-  ...moduleDatabase,
-  ...courseDatabase,
 };
 
 export const materialKeys: string[] = Object.keys(materialDatabase);
