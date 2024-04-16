@@ -1,10 +1,7 @@
+import addCompanyThumbnail from "@/actions/material/experience/addCompanyThumbnail";
 import CompanyKeyEnum from "@/enums/DatabaseKeysEnums/ExperienceCompanyEnum";
 import RoleKeyEnum from "@/enums/DatabaseKeysEnums/RoleKeyEnum";
 import CompanyInterface from "@/interfaces/material/CompanyInterface";
-
-function addCompanyThumbnail(key: string): string {
-  return `/companies/${key}/logo.png`;
-}
 
 const companiesMap: Database<CompanyInterface> = {
   [CompanyKeyEnum.Commerzbank]: {
