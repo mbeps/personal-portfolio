@@ -16,11 +16,21 @@ function useFuseSearch<T extends MaterialInterface>(
   searchTerm: string,
   searchKeys: string[]
 ): string[] {
-  // Define search options inside the hook, with fixed threshold and dynamic keys
+  // Enhanced search options to handle nested arrays
   const searchOptions = useMemo(
     () => ({
-      keys: searchKeys,
+      keys: searchKeys.map((key) => {
+        // Adding custom path logic for nested arrays like 'skills'
+        if (key.includes("skills")) {
+          return {
+            name: key,
+            getFn: (item: T) => item.skills.map((skill) => skill.toString()), // Assuming enum values are converted to string for comparison
+          };
+        }
+        return key;
+      }),
       threshold: 0.3, // Fixed threshold
+      includeScore: true, // Optional: include scoring to debug or refine searches
     }),
     [searchKeys]
   );
@@ -45,7 +55,7 @@ function useFuseSearch<T extends MaterialInterface>(
   const nameToKeyMap = useMemo(() => {
     return Object.keys(itemsMap).reduce((acc, key) => {
       const item = itemsMap[key];
-      acc[item.name] = key; // Assuming 'name' is a unique identifier
+      acc[item.name] = key;
       return acc;
     }, {} as { [name: string]: string });
   }, [itemsMap]);
@@ -53,7 +63,7 @@ function useFuseSearch<T extends MaterialInterface>(
   // Convert the searched items back into a hashmap using the reverse lookup
   const filteredItemsMap = useMemo(() => {
     return searchedItems.reduce((acc, item) => {
-      const key = nameToKeyMap[item.name]; // Retrieve the original key using the item's name
+      const key = nameToKeyMap[item.name];
       if (key) {
         acc[key] = item;
       }
