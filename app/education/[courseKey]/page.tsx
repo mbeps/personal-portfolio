@@ -205,7 +205,11 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
         </div>
       </div>
 
-      <HeadingThree title="Modules" />
+      <div className="text-center lg:text-left">
+        <HeadingThree title="Modules" />
+      </div>
+
+      {/* Archive Toggle */}
       <ArchiveToggle
         generateUrl={generateUrl}
         showArchived={showArchived}

@@ -122,12 +122,14 @@ const BlogPage: React.FC<RolePageProps> = ({ params }) => {
   //TODO: Add link to company page
   return (
     <div>
-      <div className="text-center">
+      <div>
         <HeadingTwo title={roleData?.name} />
       </div>
 
       {/* Details */}
-      <HeadingThree title="Details" />
+      <div className="text-center lg:text-left">
+        <HeadingThree title="Details" />
+      </div>
       <DetailsTable
         details={[
           { heading: "Company", value: companyData.name },
