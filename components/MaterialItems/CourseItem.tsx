@@ -28,8 +28,7 @@ const CourseItem: React.FC<CourseItemProps> = ({ courseKey }) => {
         transition-colors duration-700
         flex flex-col
         animate-slideUpCubiBezier animation-delay-2
-        h-full
-        w-full
+        h-full w-full
       "
     >
       {/* Certificate Image */}
