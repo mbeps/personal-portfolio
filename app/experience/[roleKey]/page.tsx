@@ -119,6 +119,7 @@ const BlogPage: React.FC<RolePageProps> = ({ params }) => {
     ),
   ];
 
+  //TODO: Add link to company page
   return (
     <div>
       <div className="text-center">

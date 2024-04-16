@@ -7,6 +7,7 @@ import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import skillDatabase from "./skills";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
+import UniversityModuleKeysEnum from "@/enums/DatabaseKeysEnums/UniversityModuleKeysEnum";
 
 /**
  * Hashmap of projects with keys as {@link SkillKeysEnum} and values as {@link ProjectInterface}.
@@ -58,6 +59,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     thumbnailImage: addProjectThumbnail(ProjectKeysEnum.CircusDiscussions),
+    relatedMaterials: [UniversityModuleKeysEnum.RHUL_FinalYearProject],
   },
   [ProjectKeysEnum.RingmasterMessaging]: {
     name: `Ringmaster Messaging`,

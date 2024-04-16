@@ -114,7 +114,6 @@ const MaterialList: React.FC<MaterialSectionProps> = ({
     >
       <TabsList
         className="
-          mt-6 md:-ml-4
           w-full md:w-auto 
           bg-transparent 
           flex-col md:flex-row
