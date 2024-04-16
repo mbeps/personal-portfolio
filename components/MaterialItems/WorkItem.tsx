@@ -79,7 +79,7 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
 					text-left
 					"
       >
-        <Link href={rolePage} target="_blank">
+        <Link href={rolePage}>
           <h2
             className="               
               text-3xl md:text-3xl font-bold  
@@ -100,6 +100,7 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
           {companyData.website ? (
             <Link
               href={companyData.website}
+              target="_blank"
               className="
                 font-bold
                 hover:underline 
