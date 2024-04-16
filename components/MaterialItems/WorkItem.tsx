@@ -33,7 +33,8 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
               p-1.5 bg-neutral-300 dark:bg-neutral-800
               transition-all duration-500 ease-in-out
               w-[85px] h-[85px]
-"
+              hover:scale-105 hover:shadow-xl
+            "
           >
             <Link href={rolePage}>
               <AspectRatio
