@@ -26,7 +26,7 @@ const ModuleList: React.FC<ModuleListProps> = ({
     headingSize === "HeadingTwo" ? HeadingTwo : HeadingFour;
 
   return (
-    <div className="material-page-wrapper border-t border-gray-200 dark:border-neutral-600 pt-10">
+    <div>
       {groupedModules.map((group, index) => (
         <div key={index} className="mb-4">
           {groupedModules.length > 1 && (
