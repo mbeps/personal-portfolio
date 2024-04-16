@@ -123,7 +123,6 @@ const BlogPage: React.FC<RolePageProps> = ({ params }) => {
     ),
   ];
 
-  //TODO: Add link to company page
   return (
     <div>
       <HeadingTwo title={roleData?.name} />

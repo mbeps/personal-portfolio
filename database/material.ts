@@ -1,9 +1,10 @@
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 import blogDatabase from "./blogs";
 import certificateDatabase from "./certificates";
-import projectDatabase from "./projects";
-import moduleDatabase from "./modules";
 import courseDatabase from "./courses";
+import moduleDatabase from "./modules";
+import projectDatabase from "./projects";
+import rolesDatabase from "./roles";
 
 /**
  * Hashmap of materials with keys as {@link MaterialKeysEnum} and values as {@link MaterialInterface}.
@@ -12,6 +13,7 @@ import courseDatabase from "./courses";
 const materialDatabase: Database<MaterialInterface> = {
   ...projectDatabase,
   ...courseDatabase,
+  ...rolesDatabase,
   ...moduleDatabase,
   ...certificateDatabase,
   ...blogDatabase,

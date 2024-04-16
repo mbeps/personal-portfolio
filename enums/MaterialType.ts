@@ -9,10 +9,11 @@
  */
 enum MaterialType {
   Projects = "Projects",
-  Certificates = "Certificates",
-  Blogs = "Blogs",
   Courses = "Courses",
   Modules = "Modules",
+  WorkExperience = "Work Experience",
+  Certificates = "Certificates",
+  Blogs = "Blogs",
 }
 
 export default MaterialType;

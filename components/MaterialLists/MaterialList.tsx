@@ -6,7 +6,12 @@ import CertificatesList from "@/components/MaterialLists/CertificatesList";
 import ModuleList from "@/components/MaterialLists/ModuleList";
 import ProjectsList from "@/components/MaterialLists/ProjectsList";
 import { Button } from "@/components/shadcn/ui/button";
-import { BLOG_PAGE, CERTIFICATES_PAGE, PROJECTS_PAGE } from "@/constants/pages";
+import {
+  BLOG_PAGE,
+  CERTIFICATES_PAGE,
+  EXPERIENCE_PAGE,
+  PROJECTS_PAGE,
+} from "@/constants/pages";
 import blogDatabase, { blogKeys } from "@/database/blogs";
 import certificateDatabase, { certificateKeys } from "@/database/certificates";
 import moduleDatabase, { moduleKeys } from "@/database/modules";
@@ -23,6 +28,8 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/shadcn/ui/tabs";
+import rolesDatabase, { roleKeys } from "@/database/roles";
+import WorkList from "./WorkList";
 
 interface MaterialSectionInterface {
   name: MaterialType;
@@ -60,6 +67,7 @@ const MaterialList: React.FC<MaterialSectionProps> = ({
 
   const sections: MaterialSectionInterface[] = [
     {
+      // Projects
       name: MaterialType.Projects,
       materials: projectKeys,
       materialHashmap: projectDatabase,
@@ -67,13 +75,21 @@ const MaterialList: React.FC<MaterialSectionProps> = ({
       ListComponent: ProjectsList,
     },
     {
+      // University Modules
       name: MaterialType.Modules,
       materials: moduleKeys,
       materialHashmap: moduleDatabase,
       ListComponent: ModuleList,
     },
-    //TODO: Add Work Experience
     {
+      name: MaterialType.WorkExperience,
+      materials: roleKeys,
+      materialHashmap: rolesDatabase,
+      ListComponent: WorkList,
+      basePath: EXPERIENCE_PAGE.path,
+    },
+    {
+      // Certificates
       name: MaterialType.Certificates,
       materials: certificateKeys,
       materialHashmap: certificateDatabase,
@@ -81,6 +97,7 @@ const MaterialList: React.FC<MaterialSectionProps> = ({
       ListComponent: CertificatesList,
     },
     {
+      // Blogs
       name: MaterialType.Blogs,
       materials: blogKeys,
       materialHashmap: blogDatabase,
@@ -117,6 +134,7 @@ const MaterialList: React.FC<MaterialSectionProps> = ({
           w-full md:w-auto 
           bg-transparent 
           flex-col md:flex-row
+          -ml-4
           "
       >
         {nonEmptySections.map(({ name }) => (
