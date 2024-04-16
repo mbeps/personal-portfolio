@@ -5,6 +5,7 @@ import SkillTableSection from "@/components/Skills/SkillTableSection";
 import Tag from "@/components/Tags/Tag";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
+import StringList from "@/components/Text/StringList";
 import PageDescription from "@/components/UI/PageDescription";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
@@ -197,20 +198,7 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
             <div className="text-center lg:text-left">
               <HeadingThree title="Learning Objectives" />
             </div>
-            <div>
-              <ul className="list-none text-lg">
-                {certificateData.learningOutcomes.map((outcome, index) => (
-                  <li key={index} className="flex mb-1.5">
-                    <div className="mr-2 mt-1.5">
-                      <RxTriangleRight />
-                    </div>
-                    <div className="text-neutral-800 dark:text-neutral-300">
-                      {outcome}
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <StringList items={certificateData.learningOutcomes} />
           </>
         )}
       </div>

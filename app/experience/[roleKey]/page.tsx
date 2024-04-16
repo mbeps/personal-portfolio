@@ -4,6 +4,7 @@ import MaterialList from "@/components/MaterialLists/MaterialList";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
+import StringList from "@/components/Text/StringList";
 import DetailsTable from "@/components/UI/DetailsTable";
 import PageDescription from "@/components/UI/PageDescription";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
@@ -189,20 +190,7 @@ const BlogPage: React.FC<RolePageProps> = ({ params }) => {
             <div className="text-center lg:text-left">
               <HeadingThree title="Responsibilities" />
             </div>
-            <div>
-              <ul className="list-none text-lg">
-                {roleData.responsibilities.map((responsibility, index) => (
-                  <li key={index} className="flex mb-1.5">
-                    <div className="mr-2 mt-1.5">
-                      <RxTriangleRight />
-                    </div>
-                    <div className="text-neutral-800 dark:text-neutral-300">
-                      {responsibility}
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <StringList items={roleData.responsibilities} />
           </>
         )}
       </div>
