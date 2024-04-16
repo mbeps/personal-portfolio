@@ -40,9 +40,17 @@ const ModuleList: React.FC<ModuleListProps> = ({
                 courseDatabase
               );
               return (
-                <Link href={`${basePath}/${courseKey}/${moduleKey}`} key={idx}>
-                  <Tag hasHover>{moduleDatabase[moduleKey].name}</Tag>
-                </Link>
+                <div
+                  key={idx}
+                  className="animate-slideUpCubiBezier animation-delay-1"
+                >
+                  <Link
+                    href={`${basePath}/${courseKey}/${moduleKey}`}
+                    key={idx}
+                  >
+                    <Tag hasHover>{moduleDatabase[moduleKey].name}</Tag>
+                  </Link>
+                </div>
               );
             })}
           />

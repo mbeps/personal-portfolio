@@ -22,7 +22,10 @@ const WorkList: React.FC<MaterialListProps> = ({
                   )}
                   <div className="space-y-10">
                     {group.materialsKeys.map((roleKey) => (
-                      <div key={roleKey}>
+                      <div
+                        key={roleKey}
+                        className="animate-slideUpCubiBezier animation-delay-1"
+                      >
                         <WorkItem roleKey={roleKey} />
                       </div>
                     ))}

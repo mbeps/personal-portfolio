@@ -39,7 +39,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ projectKey }) => {
 
   return (
     <div className="bg-neutral-100 dark:bg-neutral-950 p-4 rounded-xl sm:bg-white sm:dark:bg-neutral-900 sm:p-0 transition-colors duration-700 ">
-      <div className="flex flex-col animate-slideUpCubiBezier animation-delay-2 lg:flex-row lg:space-x-12">
+      <div className="flex flex-col lg:flex-row lg:space-x-12">
         {/* Project Cover */}
         {projectData.thumbnailImage && (
           <div

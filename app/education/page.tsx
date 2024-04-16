@@ -36,7 +36,7 @@ export default function EducationPage() {
           <HeadingOne title={EDUCATION_PAGE.label} />
           <PageDescription description={EDUCATION_PAGE.description} />
 
-          <div className="py-8">
+          <div className="py-8 animate-slideUpCubiBezier animation-delay-2">
             <Grid
               items={courseKeys.map((courseKey) => (
                 <CourseItem key={courseKey} courseKey={courseKey} />

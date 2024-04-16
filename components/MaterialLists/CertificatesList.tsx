@@ -32,10 +32,12 @@ const CertificatesList: React.FC<MaterialListProps> = ({
                   )}
                   <Grid
                     items={group.materialsKeys.map((certificateKey) => (
-                      <CertificateItem
+                      <div
+                        className="animate-slideUpCubiBezier animation-delay-1"
                         key={certificateKey}
-                        certificateKey={certificateKey}
-                      />
+                      >
+                        <CertificateItem certificateKey={certificateKey} />
+                      </div>
                     ))}
                   />
                 </div>
