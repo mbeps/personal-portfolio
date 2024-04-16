@@ -23,7 +23,7 @@ const DetailsTable: React.FC<TableProps> = ({ details }) => {
       {details.map((detail, index) => (
         <div key={index}>
           <HeadingFour title={detail.heading} />
-          <p className="mt-2 text-neutral-800 dark:text-neutral-300">
+          <p className="mt-2 text-neutral-800 dark:text-neutral-200">
             {detail.value}
           </p>
         </div>

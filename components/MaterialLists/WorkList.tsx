@@ -13,14 +13,14 @@ const WorkList: React.FC<MaterialListProps> = ({
           (group) =>
             group.groupName !== "All" && (
               <section key={group.groupName} id={stringToSlug(group.groupName)}>
-                <div className="flex flex-col space-y-10">
+                <div className="flex flex-col space-y-5">
                   {groupedRoles.length > 1 && (
                     <>
                       <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
                       <HeadingTwo title={group.groupName} />
                     </>
                   )}
-                  <div className="space-y-20">
+                  <div className="space-y-10">
                     {group.materialsKeys.map((roleKey) => (
                       <div key={roleKey}>
                         <WorkItem roleKey={roleKey} />

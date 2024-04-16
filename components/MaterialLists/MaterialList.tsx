@@ -82,7 +82,7 @@ const MaterialList: React.FC<MaterialSectionProps> = ({
       ListComponent: ModuleList,
     },
     {
-      name: MaterialType.WorkExperience,
+      name: MaterialType.WorkExperiences,
       materials: roleKeys,
       materialHashmap: rolesDatabase,
       ListComponent: WorkList,

@@ -11,7 +11,7 @@ enum MaterialType {
   Projects = "Projects",
   Courses = "Courses",
   Modules = "Modules",
-  WorkExperience = "Work Experience",
+  WorkExperiences = "Work Experiences",
   Certificates = "Certificates",
   Blogs = "Blogs",
 }

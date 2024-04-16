@@ -22,7 +22,15 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
   const rolePage: string = `${basePath}/${roleKey}`;
 
   return (
-    <div className="flex flex-row gap-4">
+    <div
+      className="
+        flex flex-row 
+        gap-4 
+        p-4
+        bg-neutral-100 dark:bg-neutral-950 rounded-xl
+        transition-all duration-500 ease-in-out
+        "
+    >
       {/* Logo */}
       <div className="py-3">
         {companyData.logo && (
@@ -30,7 +38,7 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
             className="
               rounded-full 
               shadow-lg 
-              p-1.5 bg-neutral-300 dark:bg-neutral-800
+              p-1.5 
               transition-all duration-500 ease-in-out
               w-[85px] h-[85px]
               hover:scale-105 hover:shadow-xl
@@ -46,9 +54,9 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
                   alt={`Logo for ${companyData.name}`}
                   fill={true}
                   className="
-                  rounded-full 
-                  shadow-lg object-cover
-                  transition-all duration-500 ease-in-out
+                    rounded-full 
+                    shadow-lg object-cover
+                    transition-all duration-500 ease-in-out
                 "
                   quality={30}
                   loading="eager"
@@ -66,39 +74,48 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
           flex flex-col
           p-4 space-y-2 sm:p-0
           ease-in-out
-					bg-neutral-100 dark:bg-neutral-950 
-					sm:bg-white sm:dark:bg-neutral-900  
 					rounded-xl 
 					transition-colors duration-700 
-					text-center md:text-left
+					text-left
 					"
       >
-        <Link href={rolePage}>
+        <Link href={rolePage} target="_blank">
           <h2
             className="               
-						text-3xl md:text-3xl font-bold  
-            md:hover:text-red-500 md:dark:hover:text-red-800
-            transition-colors duration-700 ease-in-out"
+              text-3xl md:text-3xl font-bold  
+              md:hover:text-red-500 md:dark:hover:text-red-800
+              transition-colors duration-700 ease-in-out"
           >
             {roleData.name}
           </h2>
         </Link>
-        <div className="flex items-center space-x-2 font-bold text-lg mb-2 text-neutral-500 dark:text-neutral-400">
+        <div
+          className="
+            flex flex-col md:flex-row
+            space-x-0 md:space-x-4
+            text-lg 
+            mb-2 
+            text-neutral-500 dark:text-neutral-400"
+        >
           {companyData.website ? (
             <Link
               href={companyData.website}
-              className="hover:underline hover:text-red-500 hover:dark:text-red-700"
+              className="
+                font-bold
+                hover:underline 
+                hover:text-red-500 hover:dark:text-red-700
+                transition-colors duration-300 ease-in-out"
             >
               {companyData.name}
             </Link>
           ) : (
             <span>{companyData.name}</span>
           )}
-          <BsDot />
+          {/* <BsDot /> */}
           <span>{companyData.location}</span>
         </div>
 
-        <p>{`${roleData.startDate} - ${roleData.endDate}`}</p>
+        <p className="text-neutral-800 dark:text-neutral-300">{`${roleData.startDate} - ${roleData.endDate}`}</p>
 
         <div
           className="
