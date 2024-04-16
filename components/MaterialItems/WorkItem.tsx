@@ -19,10 +19,12 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
   const roleData: RoleInterface = rolesDatabase[roleKey];
   const companyData: CompanyInterface = companyDatabase[roleData.company];
 
+  const rolePage: string = `${basePath}/${roleKey}`;
+
   return (
     <div className="flex flex-row gap-4">
       {/* Logo */}
-      <div className="flex items-center">
+      <div className="py-3">
         {companyData.logo && (
           <div
             className="
@@ -33,24 +35,26 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
               w-[85px] h-[85px]
 "
           >
-            <AspectRatio
-              ratio={1 / 1}
-              className="overflow-hidden relative w-full bg-white rounded-full"
-            >
-              <Image
-                src={companyData.logo}
-                alt={`Logo for ${companyData.name}`}
-                fill={true}
-                className="
+            <Link href={rolePage}>
+              <AspectRatio
+                ratio={1 / 1}
+                className="overflow-hidden relative w-full bg-white rounded-full"
+              >
+                <Image
+                  src={companyData.logo}
+                  alt={`Logo for ${companyData.name}`}
+                  fill={true}
+                  className="
                   rounded-full 
                   shadow-lg object-cover
                   transition-all duration-500 ease-in-out
                 "
-                quality={30}
-                loading="eager"
-                priority
-              />
-            </AspectRatio>
+                  quality={30}
+                  loading="eager"
+                  priority
+                />
+              </AspectRatio>
+            </Link>
           </div>
         )}
       </div>
@@ -68,7 +72,7 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
 					text-center md:text-left
 					"
       >
-        <Link href={`${basePath}/${roleKey}`}>
+        <Link href={rolePage}>
           <h2
             className="               
 						text-3xl md:text-3xl font-bold  
@@ -107,7 +111,7 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
 
           <Tooltip>
             <TooltipTrigger>
-              <Link href={`${basePath}/${roleKey}`}>
+              <Link href={rolePage}>
                 <BsInfoCircle
                   size={30}
                   className="md:hover:-translate-y-1 transition-transform cursor-pointer"
