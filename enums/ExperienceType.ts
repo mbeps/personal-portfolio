@@ -1,8 +1,6 @@
 enum ExperienceTypeEnum {
-  FullTime = "Full Time",
-  PartTime = "Part Time",
-  Contract = "contract",
-  Freelance = "Freelance",
+  Professional = "Professional",
+  Volunteering = "Volunteering",
 }
 
 export default ExperienceTypeEnum;

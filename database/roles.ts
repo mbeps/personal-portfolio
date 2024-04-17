@@ -10,8 +10,8 @@ import RoleInterface from "@/interfaces/material/RoleInterface";
 const rolesMap: Database<RoleInterface> = {
   [RoleKeyEnum.CommerzbankDevOpsEngineer]: {
     name: "DevOps Engineer",
-    category: ExperienceCategories.Professional,
-    type: ExperienceTypeEnum.FullTime,
+    category: ExperienceCategories.Software,
+    type: ExperienceTypeEnum.Professional,
     skills: [
       SkillKeysEnum.Python,
       SkillKeysEnum.Java,
@@ -76,8 +76,8 @@ const rolesMap: Database<RoleInterface> = {
   },
   [RoleKeyEnum.GnomeFoundationCommunityMember]: {
     name: "Community Member",
-    category: ExperienceCategories.Volunteer,
-    type: ExperienceTypeEnum.Freelance,
+    category: ExperienceCategories.Software,
+    type: ExperienceTypeEnum.Volunteering,
     company: CompanyKeyEnum.GnomeFoundation,
     startDate: "October 2022",
     endDate: "Present",
@@ -111,8 +111,8 @@ const rolesMap: Database<RoleInterface> = {
   },
   [RoleKeyEnum.GoogleRHULDevelopersClubSoftwareEngineer]: {
     name: "Software Engineer",
-    category: ExperienceCategories.Volunteer,
-    type: ExperienceTypeEnum.Freelance,
+    category: ExperienceCategories.Software,
+    type: ExperienceTypeEnum.Volunteering,
     skills: [
       SkillKeysEnum.Python,
       SkillKeysEnum.TypeScript,
@@ -175,8 +175,8 @@ const rolesMap: Database<RoleInterface> = {
   },
   [RoleKeyEnum.AJTuitionCentreTutor]: {
     name: "Mathematics Tutor",
-    category: ExperienceCategories.Professional,
-    type: ExperienceTypeEnum.PartTime,
+    category: ExperienceCategories.Other,
+    type: ExperienceTypeEnum.Professional,
     company: CompanyKeyEnum.AJTuitionCentre,
     startDate: "September 2018",
     endDate: "March 2020",
@@ -200,8 +200,8 @@ const rolesMap: Database<RoleInterface> = {
   },
   [RoleKeyEnum.MadhusTeamLeader]: {
     name: "Team Leader",
-    category: ExperienceCategories.Professional,
-    type: ExperienceTypeEnum.PartTime,
+    category: ExperienceCategories.Other,
+    type: ExperienceTypeEnum.Professional,
     company: CompanyKeyEnum.Madhus,
     startDate: "June 2018",
     endDate: "December 2019",

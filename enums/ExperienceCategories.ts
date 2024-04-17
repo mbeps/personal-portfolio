@@ -1,7 +1,7 @@
 //TODO: Add documentation
 enum ExperienceCategories {
-  Professional = "Professional",
-  Volunteer = "Volunteer",
+  Software = "Software",
+  Other = "Other",
 }
 
 export default ExperienceCategories;
