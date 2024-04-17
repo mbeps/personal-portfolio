@@ -13,9 +13,31 @@ const companiesMap: Database<CompanyInterface> = {
   },
   [CompanyKeyEnum.GoogleRHULDevelopersClub]: {
     name: "Google x RHUL Developers Club",
-    location: "London, UK",
+    location: "Egham, UK",
     positions: [RoleKeyEnum.GoogleRHULDevelopersClubSoftwareEngineer],
+    website: "https://www.linkedin.com/company/rhul-dev/",
     logo: addCompanyThumbnail(CompanyKeyEnum.GoogleRHULDevelopersClub),
+  },
+  [CompanyKeyEnum.AJTuitionCentre]: {
+    name: "Mathematics Tutor",
+    location: "London, UK",
+    positions: [RoleKeyEnum.AJTuitionCentreTutor],
+    website: "https://www.ajlearning.co.uk/",
+    logo: addCompanyThumbnail(CompanyKeyEnum.AJTuitionCentre),
+  },
+  [CompanyKeyEnum.Madhus]: {
+    name: "Madhu's",
+    location: "London, UK",
+    website: "https://www.madhus.co.uk/",
+    positions: [RoleKeyEnum.MadhusTeamLeader],
+    logo: addCompanyThumbnail(CompanyKeyEnum.Madhus),
+  },
+  [CompanyKeyEnum.GnomeFoundation]: {
+    name: "Gnome Foundation",
+    location: "Remote",
+    website: "https://foundation.gnome.org/",
+    positions: [RoleKeyEnum.GnomeFoundationCommunityMember],
+    logo: addCompanyThumbnail(CompanyKeyEnum.GnomeFoundation),
   },
 };
 
