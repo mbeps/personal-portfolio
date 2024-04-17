@@ -237,11 +237,10 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
       {courseData.relatedMaterials &&
         courseData.relatedMaterials.length > 0 && (
           <>
-            <div className="border-b border-gray-200 dark:border-neutral-600 pb-4" />
-            <PageDescription
-              description={`List of material directly related to ${courseData.name}`}
+            <MaterialList
+              materialKeys={courseData.relatedMaterials}
+              sectionName={courseData.name}
             />
-            <MaterialList materialKeys={courseData.relatedMaterials} />
           </>
         )}
     </div>

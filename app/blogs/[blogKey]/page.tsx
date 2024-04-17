@@ -137,11 +137,10 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
 
       {blogData.relatedMaterials && blogData.relatedMaterials.length > 0 && (
         <>
-          <div className="border-b border-gray-200 dark:border-neutral-600 pb-4" />
-          <PageDescription
-            description={`List of material directly related to ${certificateDatabase.name}`}
+          <MaterialList
+            materialKeys={blogData.relatedMaterials}
+            sectionName={blogData.name}
           />
-          <MaterialList materialKeys={blogData.relatedMaterials} />
         </>
       )}
     </div>

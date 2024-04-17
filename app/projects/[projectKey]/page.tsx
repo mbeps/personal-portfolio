@@ -336,11 +336,10 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
       {projectData.relatedMaterials &&
         projectData.relatedMaterials.length > 0 && (
           <>
-            <div className="border-b border-gray-200 dark:border-neutral-600 pb-4" />
-            <PageDescription
-              description={`List of material directly related to ${projectData.name}`}
+            <MaterialList
+              materialKeys={projectData.relatedMaterials}
+              sectionName={projectData.name}
             />
-            <MaterialList materialKeys={projectData.relatedMaterials} />
           </>
         )}
     </div>

@@ -93,7 +93,7 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
       {/* Material Section */}
       <div className="pt-8" />
       <HeadingTwo title="Material" />
-      <MaterialList materialKeys={filteredMaterials} />
+      <MaterialList materialKeys={filteredMaterials} isCollapsible={false} />
 
       {/* Skills Section */}
       <RelatedSkillsSection skillKey={skillKey as SkillKeysEnum} />

@@ -260,13 +260,10 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
       {certificateData.relatedMaterials &&
         certificateData.relatedMaterials.length > 0 && (
           <>
-            <div className="border-b border-gray-200 dark:border-neutral-600 pb-4" />
-            <PageDescription
-              description={`List of material directly related to ${certificateData.name}`}
-            />{" "}
             <MaterialList
               materialKeys={certificateData.relatedMaterials}
               defaultTab={MaterialType.Certificates}
+              sectionName={certificateData.name}
             />
           </>
         )}

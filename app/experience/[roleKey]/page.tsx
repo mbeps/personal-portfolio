@@ -219,11 +219,10 @@ const BlogPage: React.FC<RolePageProps> = ({ params }) => {
 
       {roleData.relatedMaterials && roleData.relatedMaterials.length > 0 && (
         <>
-          <div className="border-b border-gray-200 dark:border-neutral-600 pb-4" />
-          <PageDescription
-            description={`List of material directly related to ${roleData.name}`}
+          <MaterialList
+            materialKeys={roleData.relatedMaterials}
+            sectionName={roleData.name}
           />
-          <MaterialList materialKeys={roleData.relatedMaterials} />
         </>
       )}
     </div>

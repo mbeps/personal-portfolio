@@ -183,11 +183,10 @@ const ModulePage: React.FC<ModulePageProps> = ({ params }) => {
       {moduleData.relatedMaterials &&
         moduleData.relatedMaterials.length > 0 && (
           <>
-            <div className="border-b border-gray-200 dark:border-neutral-600 pb-4" />
-            <PageDescription
-              description={`List of material directly related to ${moduleData.name}`}
+            <MaterialList
+              materialKeys={moduleData.relatedMaterials}
+              sectionName={moduleData.name}
             />
-            <MaterialList materialKeys={moduleData.relatedMaterials} />
           </>
         )}
     </div>
