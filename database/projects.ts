@@ -422,6 +422,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillKeysEnum.Algorithms,
     ],
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
+    relatedMaterials: [UniversityModuleKeysEnum.RHUL_FinalYearProject],
   },
   [ProjectKeysEnum.FlaskJWTAuthentication]: {
     name: `Flask JWT Authentication`,
@@ -604,6 +605,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillKeysEnum.Algorithms,
     ],
     category: ProjectCategoriesEnum.MachineLearning,
+    relatedMaterials: [UniversityModuleKeysEnum.RHUL_MachineLearning],
   },
   [ProjectKeysEnum.MachineLearningAssignment2]: {
     name: `Machine Learning Assignment 2`,
@@ -660,6 +662,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillKeysEnum.Algorithms,
     ],
     category: ProjectCategoriesEnum.MachineLearning,
+    relatedMaterials: [UniversityModuleKeysEnum.RHUL_MachineLearning],
   },
   [ProjectKeysEnum.MachineLearningLabQuestions]: {
     name: `Machine Learning Lab Questions`,
@@ -687,6 +690,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillKeysEnum.Algorithms,
     ],
     category: ProjectCategoriesEnum.MachineLearning,
+    relatedMaterials: [UniversityModuleKeysEnum.RHUL_MachineLearning],
   },
   [ProjectKeysEnum.ComputationalFinanceAssignment]: {
     name: "Computational Finance Assignment",
@@ -717,6 +721,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillKeysEnum.Mechanics,
     ],
     category: ProjectCategoriesEnum.MachineLearning,
+    relatedMaterials: [UniversityModuleKeysEnum.RHUL_ComputationalFinance],
   },
   [ProjectKeysEnum.MachineLearningTheoryPractice]: {
     name: "Machine Learning Theory Practice",
@@ -743,6 +748,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillKeysEnum.Statistics,
       SkillKeysEnum.Probability,
     ],
+    relatedMaterials: [UniversityModuleKeysEnum.RHUL_MachineLearning],
   },
 
   //^ Java Assignments
@@ -770,6 +776,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillKeysEnum.Adaptability,
     ],
     category: ProjectCategoriesEnum.JavaAssignments,
+    relatedMaterials: [UniversityModuleKeysEnum.RHUL_SoftwareEngineering],
   },
   [ProjectKeysEnum.BotanicGardenPlannerAssignment]: {
     name: `Botanic-Garden-Planner`,
@@ -810,6 +817,9 @@ const projectMap: Database<ProjectInterface> = {
       SkillKeysEnum.Creativity,
       SkillKeysEnum.Adaptability,
     ],
+    relatedMaterials: [
+      UniversityModuleKeysEnum.RHUL_ObjectOrientedProgramming1,
+    ],
     archived: true,
   },
   [ProjectKeysEnum.HollomonAssignment]: {
@@ -829,6 +839,10 @@ const projectMap: Database<ProjectInterface> = {
       SkillKeysEnum.Creativity,
       SkillKeysEnum.Adaptability,
     ],
+    relatedMaterials: [
+      UniversityModuleKeysEnum.RHUL_ObjectOrientedProgramming2,
+    ],
+
     archived: true,
   },
   [ProjectKeysEnum.DatabasesMiniProject]: {
@@ -848,6 +862,8 @@ const projectMap: Database<ProjectInterface> = {
       SkillKeysEnum.Adaptability,
     ],
     category: ProjectCategoriesEnum.JavaAssignments,
+    relatedMaterials: [UniversityModuleKeysEnum.RHUL_Databases],
+
     archived: true,
   },
 
@@ -878,6 +894,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.GameDevelopment,
     thumbnailImage: addProjectThumbnail(ProjectKeysEnum.OsmosGame),
+    relatedMaterials: [UniversityModuleKeysEnum.RHUL_ProgrammingLaboratory],
   },
   [ProjectKeysEnum.SurfaceFight]: {
     name: "Surface Fight",
