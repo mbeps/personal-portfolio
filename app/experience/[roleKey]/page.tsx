@@ -10,7 +10,6 @@ import PageDescription from "@/components/UI/PageDescription";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
-import certificateDatabase from "@/database/certificates";
 import companyDatabase from "@/database/companies";
 import rolesDatabase from "@/database/roles";
 import skillDatabase from "@/database/skills";
@@ -222,7 +221,7 @@ const BlogPage: React.FC<RolePageProps> = ({ params }) => {
         <>
           <div className="border-b border-gray-200 dark:border-neutral-600 pb-4" />
           <PageDescription
-            description={`List of material directly related to ${certificateDatabase.name}`}
+            description={`List of material directly related to ${roleData.name}`}
           />
           <MaterialList materialKeys={roleData.relatedMaterials} />
         </>
