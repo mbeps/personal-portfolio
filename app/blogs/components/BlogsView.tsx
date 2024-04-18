@@ -204,7 +204,7 @@ export const BlogsView: React.FC = () => {
       options: generateFilterOptionsBySkillType<BlogInterface>(
         blogDatabase,
         skillDatabase,
-        SkillTypesEnum.Hard
+        SkillTypesEnum.Technology
       ),
     },
     {
@@ -214,7 +214,7 @@ export const BlogsView: React.FC = () => {
       options: generateFilterOptionsBySkillType<BlogInterface>(
         blogDatabase,
         skillDatabase,
-        SkillTypesEnum.General
+        SkillTypesEnum.Technical
       ),
     },
     {

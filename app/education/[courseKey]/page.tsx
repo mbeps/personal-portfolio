@@ -115,12 +115,12 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
   const technologies: SkillKeysEnum[] = filterSkillsByType(
     courseData.skills,
     skillDatabase,
-    SkillTypesEnum.Hard
+    SkillTypesEnum.Technology
   );
   const generalSkills: SkillKeysEnum[] = filterSkillsByType(
     courseData.skills,
     skillDatabase,
-    SkillTypesEnum.General
+    SkillTypesEnum.Technical
   );
   const softSkills: SkillKeysEnum[] = filterSkillsByType(
     courseData.skills,
@@ -132,13 +132,13 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
     categoriseAndGroupSkills(
       technologies,
       skillDatabase,
-      SkillTypesEnum.Hard,
+      SkillTypesEnum.Technology,
       "Technologies"
     ),
     categoriseAndGroupSkills(
       generalSkills,
       skillDatabase,
-      SkillTypesEnum.General,
+      SkillTypesEnum.Technical,
       "Technical Skills"
     ),
     categoriseAndGroupSkills(

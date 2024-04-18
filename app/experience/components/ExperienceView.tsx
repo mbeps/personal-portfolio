@@ -222,7 +222,7 @@ export const BlogsView: React.FC = () => {
       options: generateFilterOptionsBySkillType<RoleInterface>(
         rolesDatabase,
         skillDatabase,
-        SkillTypesEnum.Hard
+        SkillTypesEnum.Technology
       ),
     },
     {
@@ -232,7 +232,7 @@ export const BlogsView: React.FC = () => {
       options: generateFilterOptionsBySkillType<RoleInterface>(
         rolesDatabase,
         skillDatabase,
-        SkillTypesEnum.General
+        SkillTypesEnum.Technical
       ),
     },
     {

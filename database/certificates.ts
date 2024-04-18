@@ -3371,8 +3371,8 @@ const certificateDatabase: Database<CertificateInterface> =
     certificateMap,
     skillDatabase,
     [SkillCategoriesEnum.ProgrammingLanguages],
-    SkillTypesEnum.General,
-    SkillTypesEnum.Hard
+    SkillTypesEnum.Technical,
+    SkillTypesEnum.Technology
   );
 
 export default certificateDatabase;

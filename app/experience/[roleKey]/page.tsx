@@ -89,12 +89,12 @@ const BlogPage: React.FC<RolePageProps> = ({ params }) => {
   const technologies: SkillKeysEnum[] = filterSkillsByType(
     roleData.skills,
     skillDatabase,
-    SkillTypesEnum.Hard
+    SkillTypesEnum.Technology
   );
   const generalSkills: SkillKeysEnum[] = filterSkillsByType(
     roleData.skills,
     skillDatabase,
-    SkillTypesEnum.General
+    SkillTypesEnum.Technical
   );
   const softSkills: SkillKeysEnum[] = filterSkillsByType(
     roleData.skills,
@@ -106,13 +106,13 @@ const BlogPage: React.FC<RolePageProps> = ({ params }) => {
     categoriseAndGroupSkills(
       technologies,
       skillDatabase,
-      SkillTypesEnum.Hard,
+      SkillTypesEnum.Technology,
       "Technologies"
     ),
     categoriseAndGroupSkills(
       generalSkills,
       skillDatabase,
-      SkillTypesEnum.General,
+      SkillTypesEnum.Technical,
       "Technical Skills"
     ),
     categoriseAndGroupSkills(

@@ -227,7 +227,7 @@ const ProjectsView: React.FC = () => {
       options: generateFilterOptionsBySkillType<ProjectInterface>(
         projectDatabase,
         skillDatabase,
-        SkillTypesEnum.Hard
+        SkillTypesEnum.Technology
       ),
     },
     {
@@ -246,7 +246,7 @@ const ProjectsView: React.FC = () => {
       options: generateFilterOptionsBySkillType<ProjectInterface>(
         projectDatabase,
         skillDatabase,
-        SkillTypesEnum.General
+        SkillTypesEnum.Technical
       ),
     },
     {

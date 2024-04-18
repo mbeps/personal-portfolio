@@ -99,12 +99,12 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
   const technologies: SkillKeysEnum[] = filterSkillsByType(
     certificateData.skills,
     skillDatabase,
-    SkillTypesEnum.Hard
+    SkillTypesEnum.Technology
   );
   const generalSkills: SkillKeysEnum[] = filterSkillsByType(
     certificateData.skills,
     skillDatabase,
-    SkillTypesEnum.General
+    SkillTypesEnum.Technical
   );
   const softSkills: SkillKeysEnum[] = filterSkillsByType(
     certificateData.skills,
@@ -117,13 +117,13 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
     categoriseAndGroupSkills(
       technologies,
       skillDatabase,
-      SkillTypesEnum.Hard,
+      SkillTypesEnum.Technology,
       "Technologies"
     ),
     categoriseAndGroupSkills(
       generalSkills,
       skillDatabase,
-      SkillTypesEnum.General,
+      SkillTypesEnum.Technical,
       "Technical Skills"
     ),
     categoriseAndGroupSkills(

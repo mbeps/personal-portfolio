@@ -1239,8 +1239,8 @@ const projectDatabase: Database<ProjectInterface> =
     projectMap,
     skillDatabase,
     [SkillCategoriesEnum.ProgrammingLanguages],
-    SkillTypesEnum.General,
-    SkillTypesEnum.Hard
+    SkillTypesEnum.Technical,
+    SkillTypesEnum.Technology
   );
 
 export default projectDatabase;

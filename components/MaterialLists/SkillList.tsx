@@ -91,8 +91,8 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
 
   const includeSkillTypes: SkillTypesEnum[] = [];
 
-  if (includeHardSkills) includeSkillTypes.push(SkillTypesEnum.Hard);
-  if (includeGeneralSkills) includeSkillTypes.push(SkillTypesEnum.General);
+  if (includeHardSkills) includeSkillTypes.push(SkillTypesEnum.Technology);
+  if (includeGeneralSkills) includeSkillTypes.push(SkillTypesEnum.Technical);
   if (includeSoftSkills) includeSkillTypes.push(SkillTypesEnum.Soft);
 
   // Group skills with the inclusion list

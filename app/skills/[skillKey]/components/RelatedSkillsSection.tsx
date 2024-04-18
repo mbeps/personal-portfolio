@@ -34,8 +34,8 @@ const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
 
   // Define the skill types and their corresponding group titles
   const skillTypeGroups = [
-    { type: SkillTypesEnum.Hard, title: "Technologies" },
-    { type: SkillTypesEnum.General, title: "Technical Skills" },
+    { type: SkillTypesEnum.Technology, title: "Technologies" },
+    { type: SkillTypesEnum.Technical, title: "Technical Skills" },
     { type: SkillTypesEnum.Soft, title: "Soft Skills" },
   ];
 

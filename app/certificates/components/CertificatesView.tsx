@@ -231,7 +231,7 @@ const CertificatesView: React.FC = () => {
       options: generateFilterOptionsBySkillType<CertificateInterface>(
         certificateDatabase,
         skillDatabase,
-        SkillTypesEnum.Hard
+        SkillTypesEnum.Technology
       ),
     },
     {
@@ -241,7 +241,7 @@ const CertificatesView: React.FC = () => {
       options: generateFilterOptionsBySkillType<CertificateInterface>(
         certificateDatabase,
         skillDatabase,
-        SkillTypesEnum.General
+        SkillTypesEnum.Technical
       ),
     },
     {

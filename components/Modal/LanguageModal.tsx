@@ -96,7 +96,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
     groupedBy as GroupByOptions,
     languageSkillsSlug,
     skillDatabase,
-    [SkillTypesEnum.General, SkillTypesEnum.Soft]
+    [SkillTypesEnum.Technical, SkillTypesEnum.Soft]
   );
 
   const hasMaterial: boolean = isSkillAssociatedWithMaterial(
