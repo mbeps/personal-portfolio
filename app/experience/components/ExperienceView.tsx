@@ -1,6 +1,7 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
+import checkForArchivedMaterials from "@/actions/material/checkForArchivedMaterials";
 import filterRolesByType from "@/actions/material/experience/filterRolesByType";
 import filterMaterialByArchivedStatus from "@/actions/material/filter/filterMaterialByArchivedStatus";
 import filterMaterialByCategory from "@/actions/material/filter/filterMaterialByCategory";
@@ -259,6 +260,7 @@ export const BlogsView: React.FC = () => {
         showArchived={showArchived}
         generateUrl={generateUrl}
         areFiltersApplied={areFiltersApplied}
+        hasArchivedMaterials={checkForArchivedMaterials(rolesDatabase)}
       />
 
       {/* Work List */}

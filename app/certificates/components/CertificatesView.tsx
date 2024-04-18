@@ -1,6 +1,7 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
+import checkForArchivedMaterials from "@/actions/material/checkForArchivedMaterials";
 import filterCertificatesByIssuer from "@/actions/material/filter/filterCertificatesByIssuer";
 import filterMaterialByArchivedStatus from "@/actions/material/filter/filterMaterialByArchivedStatus";
 import filterMaterialByCategory from "@/actions/material/filter/filterMaterialByCategory";
@@ -268,6 +269,7 @@ const CertificatesView: React.FC = () => {
         showArchived={showArchived}
         generateUrl={generateUrl}
         areFiltersApplied={areFiltersApplied}
+        hasArchivedMaterials={checkForArchivedMaterials(certificateDatabase)}
       />
 
       {/* List of certificates */}

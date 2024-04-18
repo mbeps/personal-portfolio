@@ -1,6 +1,7 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
+import checkForArchivedMaterials from "@/actions/material/checkForArchivedMaterials";
 import filterMaterialByArchivedStatus from "@/actions/material/filter/filterMaterialByArchivedStatus";
 import filterMaterialByCategory from "@/actions/material/filter/filterMaterialByCategory";
 import filterMaterialBySkill from "@/actions/material/filter/filterMaterialBySkill";
@@ -273,6 +274,7 @@ const ProjectsView: React.FC = () => {
         showArchived={showArchived}
         generateUrl={generateUrl}
         areFiltersApplied={areFiltersApplied}
+        hasArchivedMaterials={checkForArchivedMaterials(projectDatabase)}
       />
 
       {/* List of projects */}

@@ -28,6 +28,7 @@ interface FilterSectionProps {
   showArchived: boolean;
   generateUrl: (filters: FilterOption[], basePath: string) => string;
   areFiltersApplied: boolean;
+  hasArchivedMaterials: boolean;
 }
 
 const FilterSection: React.FC<FilterSectionProps> = ({
@@ -41,6 +42,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
   showArchived,
   generateUrl,
   areFiltersApplied,
+  hasArchivedMaterials,
 }) => {
   // Generate filterProps dynamically from filterCategories
   const filterProps = filterCategories.map((category) => ({
@@ -140,13 +142,16 @@ const FilterSection: React.FC<FilterSectionProps> = ({
                 </Link>
               </div>
             </div>
+
             {/* Archive Toggle */}
-            <ArchiveToggle
-              generateUrl={generateUrl}
-              showArchived={showArchived}
-              filterProps={filterProps}
-              basePath={basePath}
-            />
+            {hasArchivedMaterials && (
+              <ArchiveToggle
+                generateUrl={generateUrl}
+                showArchived={showArchived}
+                filterProps={filterProps}
+                basePath={basePath}
+              />
+            )}
 
             {/* Filter Modal */}
             <FilterOverlay
@@ -159,6 +164,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
                 status: showArchived,
               }}
               areFiltersApplied={areFiltersApplied}
+              hasArchivedMaterials={hasArchivedMaterials}
             />
           </div>
         </AccordionContent>

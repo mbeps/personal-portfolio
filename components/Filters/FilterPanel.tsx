@@ -24,6 +24,7 @@ interface FilterOverlayProps {
     status: boolean;
   };
   areFiltersApplied: boolean;
+  hasArchivedMaterials: boolean;
 }
 
 /**
@@ -48,6 +49,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
   toggle,
   archiveFilter,
   areFiltersApplied,
+  hasArchivedMaterials,
 }) => {
   const isMounted: boolean = useIsMounted();
 
@@ -183,14 +185,18 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
             </Link>
 
             {/* Archive Toggle */}
-            <div className="w-full -mt-1">
-              <ArchiveToggle
-                generateUrl={generateUrl}
-                showArchived={archiveFilter.status}
-                filterProps={filterProps}
-                basePath={basePath}
-              />
-            </div>
+            {hasArchivedMaterials && (
+              <div className="w-full -mt-1">
+                <div className="w-full -mt-1">
+                  <ArchiveToggle
+                    generateUrl={generateUrl}
+                    showArchived={archiveFilter.status}
+                    filterProps={filterProps}
+                    basePath={basePath}
+                  />
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
