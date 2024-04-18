@@ -62,9 +62,9 @@ const FilterSection: React.FC<FilterSectionProps> = ({
           py-1 px-3 mt-4
           rounded-xl
           border
-          border-neutral-200 dark:border-neutral-700
-          hover:border-neutral-300 dark:hover:border-neutral-600
-          bg-neutral-50 dark:bg-neutral-950
+          border-neutral-200 dark:border-neutral-800
+          hover:border-neutral-300 dark:hover:border-neutral-700
+          bg-neutral-50 dark:bg-black
           shadow-sm hover:shadow-md
           transition-all duration-500 ease-in-out
           "

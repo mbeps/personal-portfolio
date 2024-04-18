@@ -29,8 +29,8 @@ const MaterialList: React.FC<MaterialTabsProps> = ({
           className="
             rounded-xl px-3
             border
-            border-neutral-200 dark:border-neutral-700
-            hover:border-neutral-300 dark:hover:border-neutral-600
+            border-neutral-200 dark:border-neutral-800
+            hover:border-neutral-300 dark:hover:border-neutral-700
             bg-neutral-50 dark:bg-neutral-950
             shadow-sm hover:shadow-md
             transition-all duration-500 ease-in-out"

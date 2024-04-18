@@ -44,7 +44,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ projectKey }) => {
       p-4 sm:p-0
       rounded-xl 
       sm:bg-white sm:dark:bg-neutral-900 
-      border border-neutral-200 dark:border-neutral-700 lg:border-0
+      border border-neutral-200 dark:border-neutral-800 lg:border-0
       shadow-sm lg:shadow-none
       transition-colors duration-700 "
     >

@@ -29,7 +29,7 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
         p-4
         bg-neutral-100 dark:bg-neutral-950 rounded-xl
         transition-all duration-500 ease-in-out
-        border border-neutral-200 dark:border-neutral-700
+        border border-neutral-200 dark:border-neutral-800
         shadow-sm
         "
     >
