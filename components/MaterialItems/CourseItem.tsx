@@ -24,6 +24,8 @@ const CourseItem: React.FC<CourseItemProps> = ({ courseKey }) => {
     <div
       className="
         bg-neutral-100 dark:bg-neutral-950
+        border border-neutral-200 dark:border-neutral-700
+        shadow-sm
         p-3 lg:p-6 rounded-xl
         transition-colors duration-700
         flex flex-col
@@ -39,7 +41,7 @@ const CourseItem: React.FC<CourseItemProps> = ({ courseKey }) => {
             flex justify-center
             rounded-xl
             transform md:hover:scale-105
-            shadow-lg md:hover:shadow-2xl
+            shadow-sm md:hover:shadow-lg
             transition-all duration-500 ease-in-out
             mb-6
             w-full

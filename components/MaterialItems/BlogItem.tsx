@@ -30,6 +30,7 @@ const BlogItem: React.FC<BlogItemProps> = ({ blogKey }) => {
           bg-neutral-100 dark:bg-neutral-800
           md:hover:bg-neutral-200 md:dark:hover:bg-red-950
           p-4
+          border border-neutral-200 dark:border-neutral-700
           rounded-xl
           shadow-md md:hover:shadow-lg
           transform md:hover:scale-105

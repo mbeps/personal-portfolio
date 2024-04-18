@@ -29,6 +29,8 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
         p-4
         bg-neutral-100 dark:bg-neutral-950 rounded-xl
         transition-all duration-500 ease-in-out
+        border border-neutral-200 dark:border-neutral-700
+        shadow-sm
         "
     >
       {/* Logo */}
@@ -37,11 +39,10 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
           <div
             className="
               rounded-full 
-              shadow-lg 
               p-1.5 
               transition-all duration-500 ease-in-out
               w-[85px] h-[85px]
-              hover:scale-105 hover:shadow-xl
+              hover:scale-105 hover:shadow-lg
             "
           >
             <Link href={rolePage}>

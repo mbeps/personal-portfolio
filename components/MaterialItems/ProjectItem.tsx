@@ -38,17 +38,26 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ projectKey }) => {
   const projectData: ProjectInterface = projectDatabase[projectKey];
 
   return (
-    <div className="bg-neutral-100 dark:bg-neutral-950 p-4 rounded-xl sm:bg-white sm:dark:bg-neutral-900 sm:p-0 transition-colors duration-700 ">
+    <div
+      className="
+      bg-neutral-100 dark:bg-neutral-950 
+      p-4 sm:p-0
+      rounded-xl 
+      sm:bg-white sm:dark:bg-neutral-900 
+      border border-neutral-200 dark:border-neutral-700 lg:border-0
+      shadow-sm lg:shadow-none
+      transition-colors duration-700 "
+    >
       <div className="flex flex-col lg:flex-row lg:space-x-12">
         {/* Project Cover */}
         {projectData.thumbnailImage && (
           <div
             className="
-                lg:w-1/2
-                rounded-xl
-                transform md:hover:scale-105 
-                shadow-xl md:hover:shadow-2xl
-                transition-all duration-500 ease-in-out
+              lg:w-1/2
+              rounded-xl
+              transform md:hover:scale-105 
+              shadow-xl md:hover:shadow-2xl
+              transition-all duration-500 ease-in-out
               "
           >
             <Link href={`${basePath}/${projectKey}`}>
