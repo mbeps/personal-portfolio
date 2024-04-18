@@ -1997,6 +1997,7 @@ const certificateMap: Database<CertificateInterface> = {
       "https://www.udemy.com/certificate/UC-ce8f7b45-5864-438c-870c-43061c80386c/",
     skills: [
       SkillKeysEnum.Algebra,
+      SkillKeysEnum.Mathematics,
       SkillKeysEnum.ProblemSolving,
       SkillKeysEnum.CriticalThinking,
     ],
@@ -2043,6 +2044,8 @@ const certificateMap: Database<CertificateInterface> = {
       "https://www.udemy.com/course/linear-algebra-course/?couponCode=ST7MT41824",
     skills: [
       SkillKeysEnum.LinearAlgebra,
+      SkillKeysEnum.Algebra,
+      SkillKeysEnum.Mathematics,
       SkillKeysEnum.ProblemSolving,
       SkillKeysEnum.CriticalThinking,
     ],
@@ -2140,6 +2143,7 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.udemy.com/certificate/UC-630e6292-a0ee-4ebb-94f0-ebaeedb101a8/",
     skills: [
+      SkillKeysEnum.Mathematics,
       SkillKeysEnum.Algebra,
       SkillKeysEnum.Trigonometry,
       SkillKeysEnum.Calculus,
@@ -2173,6 +2177,7 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.udemy.com/certificate/UC-f951f5eb-0e4c-4fd6-8db0-29c24e616a2b/",
     skills: [
+      SkillKeysEnum.Mathematics,
       SkillKeysEnum.Algebra,
       SkillKeysEnum.Geometry,
       SkillKeysEnum.Trigonometry,
@@ -2208,6 +2213,7 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.udemy.com/certificate/UC-84beb6d6-275d-41ff-8215-c4918454b846/",
     skills: [
+      SkillKeysEnum.Mathematics,
       SkillKeysEnum.Mechanics,
       SkillKeysEnum.ProblemSolving,
       SkillKeysEnum.CriticalThinking,
@@ -2230,6 +2236,7 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.udemy.com/certificate/UC-729218f1-da7b-4684-857f-78f9920686f2/",
     skills: [
+      SkillKeysEnum.Mathematics,
       SkillKeysEnum.Mechanics,
       SkillKeysEnum.Algebra,
       SkillKeysEnum.ProblemSolving,
@@ -2256,6 +2263,7 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.udemy.com/certificate/UC-4a1b790f-b0d8-430b-8dfd-d40a60c0ebee/",
     skills: [
+      SkillKeysEnum.Mathematics,
       SkillKeysEnum.Probability,
       SkillKeysEnum.Statistics,
       SkillKeysEnum.ProblemSolving,
@@ -2285,6 +2293,7 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.udemy.com/certificate/UC-1efbccad-5f12-4002-85cc-1efebfb81e34/",
     skills: [
+      SkillKeysEnum.Mathematics,
       SkillKeysEnum.Probability,
       SkillKeysEnum.Statistics,
       SkillKeysEnum.ProblemSolving,
@@ -2310,6 +2319,7 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.udemy.com/certificate/UC-5aabeb79-4fb8-4cab-a5d5-3daa1b009170/",
     skills: [
+      SkillKeysEnum.Mathematics,
       SkillKeysEnum.Mechanics,
       SkillKeysEnum.Algebra,
       SkillKeysEnum.ProblemSolving,
@@ -2340,6 +2350,7 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.udemy.com/certificate/UC-e2179bc4-5760-4a77-88a4-a2738d22a96e/",
     skills: [
+      SkillKeysEnum.Mathematics,
       SkillKeysEnum.Algebra,
       SkillKeysEnum.Trigonometry,
       SkillKeysEnum.Calculus,
@@ -2383,6 +2394,7 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.udemy.com/certificate/UC-fbc6d079-db3f-405f-8c32-f242b266d826/",
     skills: [
+      SkillKeysEnum.Mathematics,
       SkillKeysEnum.Probability,
       SkillKeysEnum.Statistics,
       SkillKeysEnum.ProblemSolving,
