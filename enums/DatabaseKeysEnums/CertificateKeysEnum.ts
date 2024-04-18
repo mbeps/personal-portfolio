@@ -83,6 +83,8 @@ enum CertificateKeysEnum {
 
   //^ Mathematics
   UdemyDiscreteMathematics = "UC-8d13c37d-5013-4873-b4fd-56a867ad853d",
+  UdemyBecomeAnAlgebraMaster = "UC-ce8f7b45-5864-438c-870c-43061c80386c",
+  UdemyBecomeALinearAlgebraMaster = "UC-753c138c-b4f5-47fa-bb8a-5eb0db6203de",
   UdemyALevelMathsPureYear1 = "UC-630e6292-a0ee-4ebb-94f0-ebaeedb101a8",
   UdemyALevelMathsPureYear2 = "UC-f951f5eb-0e4c-4fd6-8db0-29c24e616a2b",
   UdemyALevelMathsMechanicsYear1 = "UC-84beb6d6-275d-41ff-8215-c4918454b846",
