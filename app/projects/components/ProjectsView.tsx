@@ -11,11 +11,8 @@ import generateFilterOptionsBySkillType from "@/actions/material/filterOptions/g
 import generateFilterOptionsForProgrammingLanguages from "@/actions/material/filterOptions/generateFilterOptionsForProgrammingLanguages";
 import groupMaterialsByCategory from "@/actions/material/group/groupMaterialsByCategory";
 import stringToSlug from "@/actions/stringToSlug";
-import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
-import FilterOverlay from "@/components/Filters/FilterPanel";
-import SearchInput from "@/components/Inputs/SearchInput";
+import FilterSection from "@/components/Filters/FilterSection";
 import ProjectsList from "@/components/MaterialLists/ProjectsList";
-import { Button } from "@/components/shadcn/ui/button";
 import projectDatabase from "@/database/projects";
 import skillDatabase from "@/database/skills";
 import ProjectKeysEnum from "@/enums/DatabaseKeysEnums/ProjectKeysEnum";
@@ -25,11 +22,8 @@ import useFuseSearch from "@/hooks/useFuseSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
-import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
-import { AiOutlineClear } from "react-icons/ai";
-import { BsFilterLeft } from "react-icons/bs";
 
 /**
  * Displays a list of all projects that I have worked on.
@@ -267,83 +261,20 @@ const ProjectsView: React.FC = () => {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row items-center w-full mt-12 py-2 gap-4">
-        {/* Search input */}
-        <div className="w-full md:flex-1">
-          <SearchInput
-            searchTerm={searchTerm}
-            updateSearchTerm={updateSearchTerm}
-            placeholder="Search project name or metadata"
-          />
-        </div>
-
-        {/* Buttons */}
-        <div className="flex flex-row md:flex-1 gap-2 w-full">
-          {/* Filter Button */}
-          <Button
-            variant="default"
-            onClick={handleToggleFilter}
-            className="w-full flex justify-start"
-          >
-            <div className="flex items-center space-x-2">
-              <BsFilterLeft
-                fontSize={24}
-                className="text-neutral-700 dark:text-neutral-200"
-              />
-              <span>Filters</span>
-            </div>
-          </Button>
-
-          {/* Clear Button */}
-          <Link href={basePath} className="w-full">
-            <Button
-              variant="default"
-              disabled={!areFiltersApplied}
-              className="w-full flex justify-start"
-            >
-              <div className="flex items-center space-x-2">
-                <AiOutlineClear
-                  fontSize={24}
-                  className="text-neutral-700 dark:text-neutral-200"
-                />
-                <span>Clear All</span>
-              </div>
-            </Button>
-          </Link>
-        </div>
-      </div>
-
-      {/* Toggle to display archived projects */}
-      <ArchiveToggle
-        generateUrl={generateUrl}
-        showArchived={showArchived}
-        filterProps={[
-          { entryName: sectionParamName, slug: selectedSection },
-          { entryName: technologyParamName, slug: selectedTechnology },
-          { entryName: languageParamName, slug: selectedLanguage },
-          { entryName: skillCategoryParamName, slug: selectedSkillCategory },
-          { entryName: generalSkillParamName, slug: selectedGeneralSkill },
-          { entryName: softSkillParamName, slug: selectedSoftSkill },
-          { entryName: searchParamName, slug: searchTerm },
-        ]}
+      <FilterSection
         basePath={basePath}
+        searchTerm={searchTerm}
+        updateSearchTerm={updateSearchTerm}
+        handleToggleFilter={handleToggleFilter}
+        isFilterOpen={isFilterOpen}
+        filterCategories={filterCategories}
+        showArchived={showArchived}
+        generateUrl={generateUrl}
+        areFiltersApplied={areFiltersApplied}
       />
 
       {/* List of projects */}
       <ProjectsList groupedMaterial={groupedProjects} />
-
-      {/* Filter Modal */}
-      <FilterOverlay
-        isOpen={isFilterOpen}
-        toggle={handleToggleFilter}
-        filterCategories={filterCategories}
-        basePath={basePath}
-        archiveFilter={{
-          paramName: archivedParamName,
-          status: showArchived,
-        }}
-        areFiltersApplied={areFiltersApplied}
-      />
     </>
   );
 };
