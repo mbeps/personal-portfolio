@@ -12,6 +12,7 @@ import groupMaterialsByCategory from "@/actions/material/group/groupMaterialsByC
 import stringToSlug from "@/actions/stringToSlug";
 import FilterSection from "@/components/Filters/FilterSection";
 import BlogsList from "@/components/MaterialLists/BlogsList";
+import { BLOG_PAGE } from "@/constants/pages";
 import blogDatabase from "@/database/blogs";
 import skillDatabase from "@/database/skills";
 import BlogKeysEnum from "@/enums/DatabaseKeysEnums/BlogKeysEnum";
@@ -230,6 +231,7 @@ export const BlogsView: React.FC = () => {
   return (
     <>
       <FilterSection
+        name={BLOG_PAGE.label}
         basePath={basePath}
         searchTerm={searchTerm}
         updateSearchTerm={updateSearchTerm}

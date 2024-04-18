@@ -13,6 +13,7 @@ import groupMaterialsByCategory from "@/actions/material/group/groupMaterialsByC
 import stringToSlug from "@/actions/stringToSlug";
 import FilterSection from "@/components/Filters/FilterSection";
 import ProjectsList from "@/components/MaterialLists/ProjectsList";
+import { PROJECTS_PAGE } from "@/constants/pages";
 import projectDatabase from "@/database/projects";
 import skillDatabase from "@/database/skills";
 import ProjectKeysEnum from "@/enums/DatabaseKeysEnums/ProjectKeysEnum";
@@ -262,6 +263,7 @@ const ProjectsView: React.FC = () => {
   return (
     <>
       <FilterSection
+        name={PROJECTS_PAGE.label}
         basePath={basePath}
         searchTerm={searchTerm}
         updateSearchTerm={updateSearchTerm}

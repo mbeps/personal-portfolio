@@ -249,6 +249,7 @@ export const BlogsView: React.FC = () => {
   return (
     <>
       <FilterSection
+        name="Roles"
         basePath={basePath}
         searchTerm={searchTerm}
         updateSearchTerm={updateSearchTerm}

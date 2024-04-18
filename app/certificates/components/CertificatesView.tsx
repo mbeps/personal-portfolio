@@ -14,6 +14,7 @@ import groupMaterialsByCategory from "@/actions/material/group/groupMaterialsByC
 import stringToSlug from "@/actions/stringToSlug";
 import FilterSection from "@/components/Filters/FilterSection";
 import CertificatesList from "@/components/MaterialLists/CertificatesList";
+import { CERTIFICATES_PAGE } from "@/constants/pages";
 import certificateDatabase from "@/database/certificates";
 import skillDatabase from "@/database/skills";
 import CertificateKeysEnum from "@/enums/DatabaseKeysEnums/CertificateKeysEnum";
@@ -257,6 +258,7 @@ const CertificatesView: React.FC = () => {
   return (
     <>
       <FilterSection
+        name={CERTIFICATES_PAGE.label}
         basePath={basePath}
         searchTerm={searchTerm}
         updateSearchTerm={updateSearchTerm}
