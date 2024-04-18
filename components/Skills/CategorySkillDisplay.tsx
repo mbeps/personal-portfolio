@@ -1,7 +1,7 @@
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import { useState } from "react";
-import ExpandCollapseButton from "../Button/ExpandCollapseButton";
+import ExpandCollapseButton from "../UI/ExpandCollapseButton";
 import SkillTag from "../Tags/SkillTag";
 import HeadingFour from "../Text/HeadingFour";
 
