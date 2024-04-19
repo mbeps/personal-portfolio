@@ -1,6 +1,5 @@
 "use client";
 
-import generateUrl from "@/actions/generateUrl";
 import checkForArchivedMaterials from "@/actions/material/checkForArchivedMaterials";
 import filterMaterialByArchivedStatus from "@/actions/material/filter/filterMaterialByArchivedStatus";
 import filterMaterialByCategory from "@/actions/material/filter/filterMaterialByCategory";
@@ -23,7 +22,7 @@ import useFuseSearch from "@/hooks/useFuseSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import BlogInterface from "@/interfaces/material/BlogInterface";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 
 /**
  * Displays a list of all blogs that can be opened.
@@ -35,7 +34,6 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
  */
 export const BlogsView: React.FC = () => {
   //^ Hooks
-  const router = useRouter();
   const searchParams = useSearchParams();
   const basePath: string = usePathname();
 
@@ -74,7 +72,6 @@ export const BlogsView: React.FC = () => {
     "skills.category",
     "skills.relatedSkills.name",
     "skills.relatedSkills.category",
-    "programmingLanguage.name",
   ];
 
   // Use the custom hook to perform the search
@@ -85,29 +82,6 @@ export const BlogsView: React.FC = () => {
   ) as BlogKeysEnum[];
 
   //^ Filtering Logic
-  /**
-   * Updates the search term in the URL.
-   * This updates the state which changes the blogs being displayed.
-   * @param newSearchTerm (string) - new search term
-   */
-  function updateSearchTerm(newSearchTerm: string): void {
-    router.push(
-      generateUrl(
-        [
-          { entryName: blogSectionParamName, slug: selectedBlogSection },
-          { entryName: skillCategoryParamName, slug: selectedSkillCategory },
-          { entryName: technicalSkillParamName, slug: selectedTechnicalSkill },
-          { entryName: softSkillParamName, slug: selectedSoftSkill },
-          { entryName: searchParamName, slug: newSearchTerm },
-          { entryName: archivedParamName, slug: true.toString() },
-        ],
-        basePath
-      )
-    );
-  }
-
-  //^ Filtering Logic
-
   // Filter by blog category
   if (selectedBlogSection !== "all") {
     filteredBlogsSlugArray = filterMaterialByCategory<BlogInterface>(
@@ -229,13 +203,17 @@ export const BlogsView: React.FC = () => {
       <FilterSection
         name={BLOG_PAGE.label}
         basePath={basePath}
-        searchTerm={searchTerm}
-        updateSearchTerm={updateSearchTerm}
+        searchFilter={{
+          searchTerm: searchTerm,
+          searchParamName: searchParamName,
+        }}
         filterCategories={filterCategories}
-        showArchived={showArchived}
-        generateUrl={generateUrl}
         areFiltersApplied={areFiltersApplied}
-        hasArchivedMaterials={checkForArchivedMaterials(blogDatabase)}
+        archiveFilter={{
+          paramName: archivedParamName,
+          showArchived: showArchived,
+          hasArchivedMaterials: checkForArchivedMaterials(blogDatabase),
+        }}
       />
 
       {/* Blog List */}

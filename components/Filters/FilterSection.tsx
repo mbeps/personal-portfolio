@@ -1,7 +1,7 @@
 "use client";
 
 import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
-import FilterOverlay from "@/components/Filters/FilterPanel";
+import FilterPanel from "@/components/Filters/FilterPanel";
 import SearchInput from "@/components/Inputs/SearchInput";
 import { Button } from "@/components/shadcn/ui/button";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
@@ -16,49 +16,71 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/shadcn/ui/accordion";
+import SearchFilter from "@/interfaces/filters/SearchFilter";
+import ArchiveFilter from "@/interfaces/filters/ArchiveFilter";
+import generateUrl from "@/actions/generateUrl";
+import { useRouter } from "next/navigation";
 
 interface FilterSectionProps {
   name: string;
   basePath: string;
-  searchTerm: string;
-  updateSearchTerm: (searchTerm: string) => void;
   filterCategories: FilterCategory[];
-  showArchived: boolean;
-  generateUrl: (filters: FilterOption[], basePath: string) => string;
   areFiltersApplied: boolean;
-  hasArchivedMaterials: boolean;
+  searchFilter: SearchFilter;
+  archiveFilter: ArchiveFilter;
 }
 
 const FilterSection: React.FC<FilterSectionProps> = ({
   name,
   basePath,
-  searchTerm,
-  updateSearchTerm,
+  searchFilter,
   filterCategories,
-  showArchived,
-  generateUrl,
   areFiltersApplied,
-  hasArchivedMaterials,
+  archiveFilter,
 }) => {
+  const router = useRouter();
+
   // Generate filterProps dynamically from filterCategories
-  const filterProps: FilterOption[] = filterCategories.map((category) => ({
-    entryName: category.urlParam,
-    slug: category.selectedValue,
-  }));
+  const filterProps: FilterOption[] = filterCategories.map(
+    (category): FilterOption => ({
+      entryName: category.urlParam,
+      slug: category.selectedValue,
+    })
+  );
 
-  // Ensure search term is always included
+  // With search term
   filterProps.push({
-    entryName: "search",
-    slug: searchTerm,
+    entryName: searchFilter.searchParamName,
+    slug: searchFilter.searchTerm,
   });
 
-  // Add archive status to filterProps
+  // With archive filter
   filterProps.push({
-    entryName: "archived",
-    slug: showArchived.toString(),
+    entryName: archiveFilter.paramName,
+    slug: archiveFilter.showArchived.toString(),
   });
 
-  const message: string = hasArchivedMaterials
+  //TODO: Add documentation
+  function updateSearchTerm(newSearchTerm: string) {
+    const updatedFilterProps: FilterOption[] = filterProps.map((filterProp) => {
+      // update the search term
+      if (filterProp.entryName === searchFilter.searchParamName) {
+        return { ...filterProp, slug: newSearchTerm };
+      }
+      // show archived materials
+      if (filterProp.entryName === archiveFilter.paramName) {
+        return { ...filterProp, slug: true.toString() };
+      }
+      return filterProp;
+    });
+
+    // Generate the new URL with the updated filter settings.
+    const newUrl: string = generateUrl(updatedFilterProps, basePath);
+
+    router.push(newUrl);
+  }
+
+  const message: string = archiveFilter.hasArchivedMaterials
     ? `Searching, Filtering and Archived ${name}`
     : `Searching & Filtering ${name}`;
 
@@ -106,9 +128,9 @@ const FilterSection: React.FC<FilterSectionProps> = ({
                 {/* Search input */}
                 <div className="w-full md:flex-1">
                   <SearchInput
-                    searchTerm={searchTerm}
+                    searchTerm={searchFilter.searchTerm}
                     updateSearchTerm={updateSearchTerm}
-                    placeholder="Search blog name or metadata"
+                    placeholder={`Search for ${name} name or metadata`}
                   />
                 </div>
                 {/* Buttons */}
@@ -132,7 +154,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
                     </div>
                   </Button>
                   {/* Clear Button */}
-                  <Link href={basePath} className="w-full">
+                  <Link href={basePath} className="w-full" scroll={false}>
                     <Button
                       variant="default"
                       disabled={!areFiltersApplied}
@@ -156,10 +178,9 @@ const FilterSection: React.FC<FilterSectionProps> = ({
               </div>
 
               {/* Archive Toggle */}
-              {hasArchivedMaterials && (
+              {archiveFilter.hasArchivedMaterials && (
                 <ArchiveToggle
-                  generateUrl={generateUrl}
-                  showArchived={showArchived}
+                  showArchived={archiveFilter.showArchived}
                   filterProps={filterProps}
                   basePath={basePath}
                 />
@@ -169,17 +190,18 @@ const FilterSection: React.FC<FilterSectionProps> = ({
         </AccordionItem>
       </Accordion>
       {/* Filter Modal */}
-      <FilterOverlay
+      <FilterPanel
         isOpen={isFilterOpen}
         toggle={handleToggleFilter}
         filterCategories={filterCategories}
         basePath={basePath}
         archiveFilter={{
-          paramName: "archived",
-          status: showArchived,
+          paramName: archiveFilter.paramName,
+          showArchived: archiveFilter.showArchived,
+          hasArchivedMaterials: archiveFilter.hasArchivedMaterials,
         }}
         areFiltersApplied={areFiltersApplied}
-        hasArchivedMaterials={hasArchivedMaterials}
+        searchFilter={searchFilter}
       />
     </>
   );

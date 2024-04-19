@@ -1,8 +1,8 @@
 "use client";
 
-import generateUrl from "@/actions/generateUrl";
 import { NAVBAR_HEIGHT } from "@/constants/NAVBAR";
 import useIsMounted from "@/hooks/useIsMounted";
+import ArchiveFilter from "@/interfaces/filters/ArchiveFilter";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import Link from "next/link";
@@ -13,18 +13,16 @@ import HeadingThree from "../Text/HeadingThree";
 import { Button } from "../shadcn/ui/button";
 import { ArchiveToggle } from "./ArchiveToggle";
 import FilterPopover from "./FilterPopover";
+import SearchFilter from "@/interfaces/filters/SearchFilter";
 
 interface FilterOverlayProps {
   filterCategories: FilterCategory[];
+  archiveFilter: ArchiveFilter;
+  searchFilter: SearchFilter;
   basePath: string;
   isOpen: boolean;
   toggle: () => void;
-  archiveFilter: {
-    paramName: string;
-    status: boolean;
-  };
   areFiltersApplied: boolean;
-  hasArchivedMaterials: boolean;
 }
 
 /**
@@ -49,7 +47,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
   toggle,
   archiveFilter,
   areFiltersApplied,
-  hasArchivedMaterials,
+  searchFilter,
 }) => {
   const isMounted: boolean = useIsMounted();
 
@@ -85,7 +83,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
 
   filterProps.push({
     entryName: archiveFilter.paramName, // Assuming paramName is a suitable match for entryName
-    slug: archiveFilter.status.toString(), // status converted to string for slug
+    slug: archiveFilter.showArchived.toString(), // status converted to string for slug
   });
 
   return (
@@ -154,6 +152,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
                 filterCategory={filterCategory}
                 filterCategories={filterCategories}
                 archiveFilter={archiveFilter}
+                searchFilter={searchFilter}
               />
             ))}
           </div>
@@ -168,7 +167,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
             "
           >
             {/* Clear Button */}
-            <Link href={basePath} className="w-full">
+            <Link href={basePath} className="w-full" scroll={false}>
               <Button
                 variant="default"
                 disabled={!areFiltersApplied}
@@ -185,12 +184,11 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
             </Link>
 
             {/* Archive Toggle */}
-            {hasArchivedMaterials && (
+            {archiveFilter.hasArchivedMaterials && (
               <div className="w-full -mt-1">
                 <div className="w-full -mt-1">
                   <ArchiveToggle
-                    generateUrl={generateUrl}
-                    showArchived={archiveFilter.status}
+                    showArchived={archiveFilter.showArchived}
                     filterProps={filterProps}
                     basePath={basePath}
                   />

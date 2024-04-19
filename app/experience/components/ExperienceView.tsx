@@ -1,6 +1,5 @@
 "use client";
 
-import generateUrl from "@/actions/generateUrl";
 import checkForArchivedMaterials from "@/actions/material/checkForArchivedMaterials";
 import filterRolesByType from "@/actions/material/experience/filterRolesByType";
 import filterMaterialByArchivedStatus from "@/actions/material/filter/filterMaterialByArchivedStatus";
@@ -25,7 +24,7 @@ import useFuseSearch from "@/hooks/useFuseSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import RoleInterface from "@/interfaces/material/RoleInterface";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 
 /**
  * Displays a list of all blogs that can be opened.
@@ -37,7 +36,6 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
  */
 export const BlogsView: React.FC = () => {
   //^ Hooks
-  const router = useRouter();
   const searchParams = useSearchParams();
   const basePath: string = usePathname();
 
@@ -87,30 +85,6 @@ export const BlogsView: React.FC = () => {
   ) as RoleKeyEnum[];
 
   //^ Filtering Logic
-  /**
-   * Updates the search term in the URL.
-   * This updates the state which changes the blogs being displayed.
-   * @param newSearchTerm (string) - new search term
-   */
-  function updateSearchTerm(newSearchTerm: string): void {
-    router.push(
-      generateUrl(
-        [
-          { entryName: categoryParamName, slug: selectedWorkSection },
-          { entryName: workTypeParamName, slug: selectedWorkType },
-          { entryName: skillCategoryParamName, slug: selectedSkillCategory },
-          { entryName: technicalSkillParamName, slug: selectedTechnicalSkill },
-          { entryName: softSkillParamName, slug: selectedSoftSkill },
-          { entryName: searchParamName, slug: newSearchTerm },
-          { entryName: archivedParamName, slug: true.toString() },
-        ],
-        basePath
-      )
-    );
-  }
-
-  //^ Filtering Logic
-
   // Filter by category
   if (selectedWorkSection !== "all") {
     filteredWorkKeysArray = filterMaterialByCategory<RoleInterface>(
@@ -247,13 +221,17 @@ export const BlogsView: React.FC = () => {
       <FilterSection
         name="Roles"
         basePath={basePath}
-        searchTerm={searchTerm}
-        updateSearchTerm={updateSearchTerm}
+        searchFilter={{
+          searchTerm: searchTerm,
+          searchParamName: searchParamName,
+        }}
+        archiveFilter={{
+          paramName: archivedParamName,
+          showArchived: showArchived,
+          hasArchivedMaterials: checkForArchivedMaterials(rolesDatabase),
+        }}
         filterCategories={filterCategories}
-        showArchived={showArchived}
-        generateUrl={generateUrl}
         areFiltersApplied={areFiltersApplied}
-        hasArchivedMaterials={checkForArchivedMaterials(rolesDatabase)}
       />
 
       {/* Work List */}

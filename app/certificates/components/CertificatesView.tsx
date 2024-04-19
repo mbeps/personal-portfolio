@@ -1,6 +1,5 @@
 "use client";
 
-import generateUrl from "@/actions/generateUrl";
 import checkForArchivedMaterials from "@/actions/material/checkForArchivedMaterials";
 import filterCertificatesByIssuer from "@/actions/material/filter/filterCertificatesByIssuer";
 import filterMaterialByArchivedStatus from "@/actions/material/filter/filterMaterialByArchivedStatus";
@@ -25,8 +24,8 @@ import useFuseSearch from "@/hooks/useFuseSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import React, { useState } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
+import React from "react";
 
 /**
  * Displays a list of all certificates that I have.
@@ -40,7 +39,6 @@ const CertificatesView: React.FC = () => {
   //^ Hooks
   const searchParams = useSearchParams();
   const basePath: string = usePathname();
-  const router = useRouter();
 
   //^ URL Params Strings
   const issuerParamName = "issuer";
@@ -96,25 +94,6 @@ const CertificatesView: React.FC = () => {
   ) as CertificateKeysEnum[];
 
   //^ Filtering Logic
-  function updateSearchTerm(newSearchTerm: string): void {
-    router.push(
-      generateUrl(
-        [
-          { entryName: issuerParamName, slug: selectedIssuer },
-          { entryName: certificateSectionParamName, slug: selectedCategory },
-          { entryName: skillCategoryParamName, slug: selectedSkillCategory },
-          { entryName: technicalSkillParamName, slug: selectedTechnicalSkill },
-          { entryName: generalSkillParamName, slug: selectedGeneralSkill },
-          { entryName: softSkillParamName, slug: selectedSoftSkill },
-
-          { entryName: searchParamName, slug: newSearchTerm },
-          { entryName: archivedParamName, slug: true.toString() },
-        ],
-        basePath
-      )
-    );
-  }
-
   // Filter by issuer
   if (selectedIssuer !== "all") {
     filteredCertificateSlugArray = filterCertificatesByIssuer(
@@ -255,13 +234,17 @@ const CertificatesView: React.FC = () => {
       <FilterSection
         name={CERTIFICATES_PAGE.label}
         basePath={basePath}
-        searchTerm={searchTerm}
-        updateSearchTerm={updateSearchTerm}
+        searchFilter={{
+          searchTerm: searchTerm,
+          searchParamName: searchParamName,
+        }}
         filterCategories={filterCategories}
-        showArchived={showArchived}
-        generateUrl={generateUrl}
         areFiltersApplied={areFiltersApplied}
-        hasArchivedMaterials={checkForArchivedMaterials(certificateDatabase)}
+        archiveFilter={{
+          paramName: archivedParamName,
+          showArchived: showArchived,
+          hasArchivedMaterials: checkForArchivedMaterials(certificateDatabase),
+        }}
       />
 
       {/* List of certificates */}

@@ -211,7 +211,6 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
 
       {/* Archive Toggle */}
       <ArchiveToggle
-        generateUrl={generateUrl}
         showArchived={showArchived}
         filterProps={[]}
         basePath={`${basePath}/${courseKey}`}

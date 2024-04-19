@@ -1,6 +1,5 @@
 "use client";
 
-import generateUrl from "@/actions/generateUrl";
 import checkForArchivedMaterials from "@/actions/material/checkForArchivedMaterials";
 import filterMaterialByArchivedStatus from "@/actions/material/filter/filterMaterialByArchivedStatus";
 import filterMaterialByCategory from "@/actions/material/filter/filterMaterialByCategory";
@@ -24,7 +23,7 @@ import useFuseSearch from "@/hooks/useFuseSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import React from "react";
 
 /**
@@ -39,7 +38,6 @@ const ProjectsView: React.FC = () => {
   //^ Hooks
   const searchParams = useSearchParams();
   const basePath: string = usePathname();
-  const router = useRouter();
 
   //^ URL Params Strings
   const technologyParamName = "technology";
@@ -90,7 +88,6 @@ const ProjectsView: React.FC = () => {
   ) as ProjectKeysEnum[];
 
   //^ Filtering Logic
-
   // Filter by project type category
   if (stringToSlug(selectedSection) !== "all") {
     filteredProjectsSlugArray = filterMaterialByCategory<ProjectInterface>(
@@ -162,32 +159,9 @@ const ProjectsView: React.FC = () => {
   );
 
   /**
-   * Updates the search term in the URL.
-   * This is used when the user types in the search input.
-   * @param newSearchTerm (string): new search term
-   */
-  const updateSearchTerm = (newSearchTerm: string) => {
-    router.push(
-      generateUrl(
-        [
-          { entryName: sectionParamName, slug: selectedSection },
-          { entryName: technologyParamName, slug: selectedTechnology },
-          { entryName: languageParamName, slug: selectedLanguage },
-          { entryName: skillCategoryParamName, slug: selectedSkillCategory },
-          { entryName: generalSkillParamName, slug: selectedGeneralSkill },
-          { entryName: softSkillParamName, slug: selectedSoftSkill },
-          { entryName: searchParamName, slug: newSearchTerm },
-          { entryName: archivedParamName, slug: true.toString() },
-        ],
-        basePath
-      )
-    );
-  };
-
-  /**
    * Checks if any filters are applied.
    */
-  const areFiltersApplied =
+  const areFiltersApplied: boolean =
     selectedSection !== "all" ||
     selectedTechnology !== "all" ||
     selectedLanguage !== "all" ||
@@ -260,13 +234,17 @@ const ProjectsView: React.FC = () => {
       <FilterSection
         name={PROJECTS_PAGE.label}
         basePath={basePath}
-        searchTerm={searchTerm}
-        updateSearchTerm={updateSearchTerm}
+        searchFilter={{
+          searchTerm: searchTerm,
+          searchParamName: searchParamName,
+        }}
         filterCategories={filterCategories}
-        showArchived={showArchived}
-        generateUrl={generateUrl}
+        archiveFilter={{
+          paramName: archivedParamName,
+          showArchived: showArchived,
+          hasArchivedMaterials: checkForArchivedMaterials(projectDatabase),
+        }}
         areFiltersApplied={areFiltersApplied}
-        hasArchivedMaterials={checkForArchivedMaterials(projectDatabase)}
       />
 
       {/* List of projects */}

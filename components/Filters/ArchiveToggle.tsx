@@ -1,9 +1,9 @@
 import FilterOption from "@/interfaces/filters/FilterOption";
 import Link from "next/link";
 import { Switch } from "../shadcn/ui/switch";
+import generateUrl from "@/actions/generateUrl";
 
 interface ArchiveToggleProps {
-  generateUrl: (filters: FilterOption[], basePath: string) => string;
   filterProps: FilterOption[];
   showArchived: boolean;
   basePath: string;
@@ -20,7 +20,6 @@ interface ArchiveToggleProps {
  * @see Switch https://ui.shadcn.com/docs/components/switch
  */
 export const ArchiveToggle: React.FC<ArchiveToggleProps> = ({
-  generateUrl,
   showArchived,
   filterProps,
   basePath,
