@@ -39,9 +39,9 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
           <div
             className="
               rounded-full 
-              p-1.5 
               transition-all duration-500 ease-in-out
               w-[85px] h-[85px]
+              border-2 border-neutral-200 dark:border-neutral-900
               hover:scale-105 hover:shadow-lg
             "
           >
