@@ -104,8 +104,8 @@ export const SKILL_PAGE: NavigationItemInterface = {
  */
 const NAV_ITEMS: Array<NavigationItemInterface> = [
   PROJECTS_PAGE,
-  EDUCATION_PAGE,
   EXPERIENCE_PAGE,
+  EDUCATION_PAGE,
   CERTIFICATES_PAGE,
   BLOG_PAGE,
 ];
