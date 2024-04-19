@@ -71,18 +71,19 @@ const MaterialTab: React.FC<MaterialTabsProps> = ({
       ListComponent: ProjectsList,
     },
     {
-      // University Modules
-      name: MaterialType.Modules,
-      materials: moduleKeys,
-      materialHashmap: moduleDatabase,
-      ListComponent: ModuleList,
-    },
-    {
+      // Work Experiences
       name: MaterialType.WorkExperiences,
       materials: roleKeys,
       materialHashmap: rolesDatabase,
       ListComponent: WorkList,
       basePath: EXPERIENCE_PAGE.path,
+    },
+    {
+      // University Modules
+      name: MaterialType.Modules,
+      materials: moduleKeys,
+      materialHashmap: moduleDatabase,
+      ListComponent: ModuleList,
     },
     {
       // Certificates
