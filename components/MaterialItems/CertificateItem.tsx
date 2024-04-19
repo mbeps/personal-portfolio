@@ -137,11 +137,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
           {certificateData.certificateURL && (
             <Tooltip>
               <TooltipTrigger>
-                <Link
-                  href={issuerCertificatePage}
-                  target="_blank"
-                  title="View Certificates on Provider's Website"
-                >
+                <Link href={issuerCertificatePage} target="_blank">
                   <BsArrowUpRightCircle
                     size={30}
                     className="md:hover:-translate-y-1 transition-transform cursor-pointer"

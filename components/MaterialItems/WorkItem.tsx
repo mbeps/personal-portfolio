@@ -146,11 +146,7 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
           {companyData.website && (
             <Tooltip>
               <TooltipTrigger>
-                <Link
-                  href={companyData.website}
-                  target="_blank"
-                  title="View Certificates on Provider's Website"
-                >
+                <Link href={companyData.website} target="_blank">
                   <BsArrowUpRightCircle
                     size={30}
                     className="md:hover:-translate-y-1 transition-transform cursor-pointer"
@@ -158,7 +154,7 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
                 </Link>
               </TooltipTrigger>
               <TooltipContent>
-                <p>View in Certificate Providers Site</p>
+                <p>Navigate to company website</p>
               </TooltipContent>
             </Tooltip>
           )}
