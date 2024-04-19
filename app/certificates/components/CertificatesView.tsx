@@ -38,7 +38,6 @@ import React, { useState } from "react";
  */
 const CertificatesView: React.FC = () => {
   //^ Hooks
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const searchParams = useSearchParams();
   const basePath: string = usePathname();
   const router = useRouter();
@@ -78,11 +77,6 @@ const CertificatesView: React.FC = () => {
   const showArchived: boolean =
     decodeURIComponent(searchParams.get(archivedParamName) || "false") ===
     "true";
-
-  //^ Modal Controls
-  function handleToggleFilter() {
-    setIsFilterOpen(!isFilterOpen);
-  }
 
   //^ Search Settings
   const searchOptions: string[] = [
@@ -263,8 +257,6 @@ const CertificatesView: React.FC = () => {
         basePath={basePath}
         searchTerm={searchTerm}
         updateSearchTerm={updateSearchTerm}
-        handleToggleFilter={handleToggleFilter}
-        isFilterOpen={isFilterOpen}
         filterCategories={filterCategories}
         showArchived={showArchived}
         generateUrl={generateUrl}

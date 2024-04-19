@@ -25,7 +25,7 @@ import FilterCategory from "@/interfaces/filters/FilterCategory";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import React, { useState } from "react";
+import React from "react";
 
 /**
  * Displays a list of all projects that I have worked on.
@@ -37,7 +37,6 @@ import React, { useState } from "react";
  */
 const ProjectsView: React.FC = () => {
   //^ Hooks
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const searchParams = useSearchParams();
   const basePath: string = usePathname();
   const router = useRouter();
@@ -68,11 +67,6 @@ const ProjectsView: React.FC = () => {
   const searchTerm: string = searchParams.get(searchParamName) || "";
   const showArchived: boolean =
     (searchParams.get(archivedParamName) || "false") === "true";
-
-  //^ Modal Controls
-  const handleToggleFilter = () => {
-    setIsFilterOpen(!isFilterOpen);
-  };
 
   //^ Search Settings
   /**
@@ -268,8 +262,6 @@ const ProjectsView: React.FC = () => {
         basePath={basePath}
         searchTerm={searchTerm}
         updateSearchTerm={updateSearchTerm}
-        handleToggleFilter={handleToggleFilter}
-        isFilterOpen={isFilterOpen}
         filterCategories={filterCategories}
         showArchived={showArchived}
         generateUrl={generateUrl}

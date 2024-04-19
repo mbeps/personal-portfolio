@@ -7,7 +7,7 @@ import { Button } from "@/components/shadcn/ui/button";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineClear } from "react-icons/ai";
 import { BsFilterLeft } from "react-icons/bs";
 import {
@@ -22,8 +22,6 @@ interface FilterSectionProps {
   basePath: string;
   searchTerm: string;
   updateSearchTerm: (searchTerm: string) => void;
-  handleToggleFilter: () => void;
-  isFilterOpen: boolean;
   filterCategories: FilterCategory[];
   showArchived: boolean;
   generateUrl: (filters: FilterOption[], basePath: string) => string;
@@ -36,8 +34,6 @@ const FilterSection: React.FC<FilterSectionProps> = ({
   basePath,
   searchTerm,
   updateSearchTerm,
-  handleToggleFilter,
-  isFilterOpen,
   filterCategories,
   showArchived,
   generateUrl,
@@ -45,7 +41,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
   hasArchivedMaterials,
 }) => {
   // Generate filterProps dynamically from filterCategories
-  const filterProps = filterCategories.map((category) => ({
+  const filterProps: FilterOption[] = filterCategories.map((category) => ({
     entryName: category.urlParam,
     slug: category.selectedValue,
   }));
@@ -56,11 +52,21 @@ const FilterSection: React.FC<FilterSectionProps> = ({
     slug: showArchived.toString(),
   });
 
+  const message: string = hasArchivedMaterials
+    ? `Searching, Filtering and Archived ${name}`
+    : `Searching & Filtering ${name}`;
+
+  const [isFilterOpen, setIsFilterModalOpen] = useState(false);
+  function handleToggleFilter() {
+    setIsFilterModalOpen(!isFilterOpen);
+  }
+
   return (
-    <Accordion type="single" collapsible>
-      <AccordionItem
-        value="item-1"
-        className="
+    <>
+      <Accordion type="single" collapsible>
+        <AccordionItem
+          value="item-1"
+          className="
           py-1 px-3 mt-4
           rounded-xl
           border
@@ -70,106 +76,106 @@ const FilterSection: React.FC<FilterSectionProps> = ({
           shadow-sm hover:shadow-md
           transition-all duration-500 ease-in-out
           "
-      >
-        <AccordionTrigger>
-          <p
-            className="
+        >
+          <AccordionTrigger>
+            <p
+              className="
               text-lg 
               text-neutral-600 dark:text-neutral-400
               font-semibold
               "
-          >
-            {`Searching & Filtering ${name}`}
-          </p>
-        </AccordionTrigger>
-        <AccordionContent>
-          <div className="flex flex-col gap-2">
-            <div
-              className="
+            >
+              {message}
+            </p>
+          </AccordionTrigger>
+          <AccordionContent>
+            <div className="flex flex-col gap-2">
+              <div
+                className="
                 flex flex-col md:flex-row 
                 items-center 
                 w-full 
                 py-2 gap-4"
-            >
-              {/* Search input */}
-              <div className="w-full md:flex-1">
-                <SearchInput
-                  searchTerm={searchTerm}
-                  updateSearchTerm={updateSearchTerm}
-                  placeholder="Search blog name or metadata"
-                />
-              </div>
-              {/* Buttons */}
-              <div className="flex flex-row md:flex-1 gap-2 w-full">
-                {/* Filter Button */}
-                <Button
-                  variant="default"
-                  onClick={handleToggleFilter}
-                  className="
+              >
+                {/* Search input */}
+                <div className="w-full md:flex-1">
+                  <SearchInput
+                    searchTerm={searchTerm}
+                    updateSearchTerm={updateSearchTerm}
+                    placeholder="Search blog name or metadata"
+                  />
+                </div>
+                {/* Buttons */}
+                <div className="flex flex-row md:flex-1 gap-2 w-full">
+                  {/* Filter Button */}
+                  <Button
+                    variant="default"
+                    onClick={handleToggleFilter}
+                    className="
                     w-full 
                     flex justify-start 
                     shadow-sm hover:shadow-md
                     border border-neutral-300 dark:border-neutral-700 "
-                >
-                  <div className="flex items-center space-x-2">
-                    <BsFilterLeft
-                      fontSize={24}
-                      className="text-neutral-700 dark:text-neutral-200"
-                    />
-                    <span>Filters</span>
-                  </div>
-                </Button>
-                {/* Clear Button */}
-                <Link href={basePath} className="w-full">
-                  <Button
-                    variant="default"
-                    disabled={!areFiltersApplied}
-                    className="
+                  >
+                    <div className="flex items-center space-x-2">
+                      <BsFilterLeft
+                        fontSize={24}
+                        className="text-neutral-700 dark:text-neutral-200"
+                      />
+                      <span>Filters</span>
+                    </div>
+                  </Button>
+                  {/* Clear Button */}
+                  <Link href={basePath} className="w-full">
+                    <Button
+                      variant="default"
+                      disabled={!areFiltersApplied}
+                      className="
                       w-full 
                       flex justify-start
                       shadow-sm hover:shadow-md
                       border border-neutral-300 dark:border-neutral-700
                       "
-                  >
-                    <div className="flex items-center space-x-2">
-                      <AiOutlineClear
-                        fontSize={24}
-                        className="text-neutral-700 dark:text-neutral-200"
-                      />
-                      <span>Clear All</span>
-                    </div>
-                  </Button>
-                </Link>
+                    >
+                      <div className="flex items-center space-x-2">
+                        <AiOutlineClear
+                          fontSize={24}
+                          className="text-neutral-700 dark:text-neutral-200"
+                        />
+                        <span>Clear All</span>
+                      </div>
+                    </Button>
+                  </Link>
+                </div>
               </div>
+
+              {/* Archive Toggle */}
+              {hasArchivedMaterials && (
+                <ArchiveToggle
+                  generateUrl={generateUrl}
+                  showArchived={showArchived}
+                  filterProps={filterProps}
+                  basePath={basePath}
+                />
+              )}
             </div>
-
-            {/* Archive Toggle */}
-            {hasArchivedMaterials && (
-              <ArchiveToggle
-                generateUrl={generateUrl}
-                showArchived={showArchived}
-                filterProps={filterProps}
-                basePath={basePath}
-              />
-            )}
-
-            {/* Filter Modal */}
-            <FilterOverlay
-              isOpen={isFilterOpen}
-              toggle={handleToggleFilter}
-              filterCategories={filterCategories}
-              basePath={basePath}
-              archiveFilter={{
-                paramName: "archived",
-                status: showArchived,
-              }}
-              areFiltersApplied={areFiltersApplied}
-              hasArchivedMaterials={hasArchivedMaterials}
-            />
-          </div>
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+      {/* Filter Modal */}
+      <FilterOverlay
+        isOpen={isFilterOpen}
+        toggle={handleToggleFilter}
+        filterCategories={filterCategories}
+        basePath={basePath}
+        archiveFilter={{
+          paramName: "archived",
+          status: showArchived,
+        }}
+        areFiltersApplied={areFiltersApplied}
+        hasArchivedMaterials={hasArchivedMaterials}
+      />
+    </>
   );
 };
 

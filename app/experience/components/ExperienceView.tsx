@@ -26,7 +26,6 @@ import FilterCategory from "@/interfaces/filters/FilterCategory";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import RoleInterface from "@/interfaces/material/RoleInterface";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
 
 /**
  * Displays a list of all blogs that can be opened.
@@ -38,7 +37,6 @@ import { useState } from "react";
  */
 export const BlogsView: React.FC = () => {
   //^ Hooks
-  const [isFilterOpen, setIsFilterModalOpen] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
   const basePath: string = usePathname();
@@ -70,10 +68,6 @@ export const BlogsView: React.FC = () => {
   const searchTerm: string = searchParams.get(searchParamName) || "";
   const showArchived: boolean =
     (searchParams.get(archivedParamName) || "false").toLowerCase() === "true";
-
-  function handleToggleFilter() {
-    setIsFilterModalOpen(!isFilterOpen);
-  }
 
   // Define your search options
   const searchOptions: string[] = [
@@ -255,8 +249,6 @@ export const BlogsView: React.FC = () => {
         basePath={basePath}
         searchTerm={searchTerm}
         updateSearchTerm={updateSearchTerm}
-        handleToggleFilter={handleToggleFilter}
-        isFilterOpen={isFilterOpen}
         filterCategories={filterCategories}
         showArchived={showArchived}
         generateUrl={generateUrl}
