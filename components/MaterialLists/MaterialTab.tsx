@@ -131,7 +131,7 @@ const MaterialTab: React.FC<MaterialTabsProps> = ({
           w-full md:w-auto 
           bg-transparent 
           flex-col md:flex-row
-          -ml-4
+          ml-0 md:-ml-4 
           "
       >
         {nonEmptySections.map(({ name }) => (

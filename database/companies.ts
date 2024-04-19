@@ -19,7 +19,7 @@ const companiesMap: Database<CompanyInterface> = {
     logo: addCompanyThumbnail(CompanyKeyEnum.GoogleRHULDevelopersClub),
   },
   [CompanyKeyEnum.AJTuitionCentre]: {
-    name: "Mathematics Tutor",
+    name: "AJ Tuition Centre",
     location: "London, UK",
     positions: [RoleKeyEnum.AJTuitionCentreTutor],
     website: "https://www.ajlearning.co.uk/",

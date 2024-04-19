@@ -46,6 +46,12 @@ const FilterSection: React.FC<FilterSectionProps> = ({
     slug: category.selectedValue,
   }));
 
+  // Ensure search term is always included
+  filterProps.push({
+    entryName: "search",
+    slug: searchTerm,
+  });
+
   // Add archive status to filterProps
   filterProps.push({
     entryName: "archived",
