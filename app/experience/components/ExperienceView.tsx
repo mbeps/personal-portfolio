@@ -190,7 +190,8 @@ export const BlogsView: React.FC = () => {
     selectedTechnicalSkill !== "all" ||
     selectedGeneralSkill !== "all" ||
     selectedSoftSkill !== "all" ||
-    searchTerm !== "";
+    searchTerm !== "" ||
+    showArchived;
 
   //^ Filter Categories
   const filterCategories: FilterCategory[] = [
