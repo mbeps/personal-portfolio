@@ -6,10 +6,10 @@ import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import StringList from "@/components/Text/StringList";
 import DetailsTable from "@/components/UI/DetailsTable";
-import PageDescription from "@/components/UI/PageDescription";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
+import { EXPERIENCE_PAGE } from "@/constants/pages";
 import companyDatabase from "@/database/companies";
 import rolesDatabase from "@/database/roles";
 import skillDatabase from "@/database/skills";
@@ -19,12 +19,10 @@ import CompanyInterface from "@/interfaces/material/CompanyInterface";
 import RoleInterface from "@/interfaces/material/RoleInterface";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import type { Metadata, ResolvingMetadata } from "next";
-import { cookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BsArrowUpRightCircle } from "react-icons/bs";
-import { RxTriangleRight } from "react-icons/rx";
 
 type RolePageProps = {
   params: { roleKey: string };
@@ -49,7 +47,7 @@ export async function generateMetadata(
   const role: RoleInterface = rolesDatabase[roleKey];
 
   return {
-    title: `${developerName} - Roles: ${role?.name}`,
+    title: `${developerName} - ${EXPERIENCE_PAGE.label}: ${role?.name}`,
     description: `${role.type} ${role.name} at ${role?.company}`,
   };
 }
