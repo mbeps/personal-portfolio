@@ -1,28 +1,105 @@
-Welcome to my personal portfolio website! Explore my skills, projects, and who I am as a developer. With a responsive design, light/dark mode, and captivating sections, let's embark on this journey together. Connect with me in the footer for collaboration and exciting opportunities. Let's inspire through technology and creativity!
+This portfolio website is designed to showcase a comprehensive journey through my educational background, professional experiences, and personal achievements. It features detailed sections on skills, project portfolios, work experiences, university courses, and certificates, all organized to highlight the depth and diversity of my expertise. Interactive functionalities like browsing, filtering, and viewing related materials enhance user engagement, providing a thorough insight into my capabilities and achievements. The site is tailored to be user-friendly with features like light and dark mode and a responsive interface, making it accessible and appealing for all visitors.
+
+# **What the Website Showcases**
+
+## **Skills Showcase**
+
+- **View All Skills Grouped into Categories**: Easily browse a comprehensive list of all skills, organized into intuitive categories such as programming languages, web development, and more.
+
+- **Group by**: Users can view skills grouped by categories such as skill types or programming languages, which further shows subskills like libraries and frameworks associated with each main skill.
+
+- **Filter By**: Implement filters to display skills based on criteria like technology type, general or soft skills, or whether there are related materials (such as projects or certificates) associated with them.
+
+- **View Material Related to Skill**: Access all materials related to a particular skill, organized by type, such as projects, certificates, or work experiences that demonstrate your proficiency.
+
+- **View Related Skills**: Explore related skills and technologies; for example, selecting Python might display related subskills like Flask or NumPy, showcasing how interconnected skills enhance your capabilities.
+## **Project Portfolio**
+
+- **Browse Projects in Different Categories**: Easily explore projects sorted into distinct categories like web development, data analysis, and more to find topics that interest you.
+
+- **Filtering & Searching Projects**: Utilise dynamic filters and a search bar to quickly locate projects by keywords, technologies used, skills, and other metadata.
+
+- **Archived Projects**: Access a special section that houses all past projects, allowing you to review older or completed works at your leisure.
+
+- **View Gallery & Demo Videos**: Discover more about each project through a visual gallery and demo videos showcasing the functionality and design of the projects.
+
+- **View Technologies, Technical & Soft Skills for the Project**: Learn about the technologies used in the projects, along with the technical and soft skills demonstrated in each project's execution.
+
+- **Navigate to Repository & Deployed Project**: Direct links are provided to both the GitHub repository for code insights and the deployed project to see the live application.
+
+- **View List of Features**: Detailed listings of all features implemented in each project, highlighting the scope and functionality of the work.
+
+- **View Reflective Report**: Read reflective reports that provide insights into the learning experiences and challenges faced during the project development.
+
+- **View Other Related Materials**: Access additional materials related to each project, such as research papers, presentations, and related documentation.
 
 
-# **Features**
+## **Work Experience & Volunteering**
 
-- **Skills Showcase**: This section displays my proficiency in various languages, skills, and technologies. Skills are grouped together for convenient viewing, with modal presentations offering detailed insights. Select languages include comprehensive details to provide a deeper understanding of my expertise.
+- **Browse Roles in Different Categories**: Explore entries categorized under professional work or volunteering to find experiences that match your interests or field of work.
 
-- **Project Portfolio**: 
-  - **Categories & Filters**: Projects are categorized for easy navigation. You can filter projects by categories like web development, machine learning, etc., as well as by language or technologies used.
-  - **Search & Archive**: A search function allows for quick project discovery. Additionally, archived projects are available but not displayed by default.
-  - **Project Details**: Clicking on a project opens its dedicated page, featuring a gallery of images, demo videos, a descriptive overview, and the project's tech stack.
-  - **Links & Reports**: Access direct links to the project's GitHub repository and deployed site if available. Projects may also include a list of features and reflective reports.
+- **Filtering & Searching Roles**: Use search tools and filters to quickly find roles by keywords, industry, technologies, skills, etc.
 
-- **Credentials Section**:
-  - **Certificates & Qualifications**: View my array of certificates and qualifications, sortable by issuer and category, and searchable for ease of access.
-  - **Archived Credentials**: Some credentials are archived and not shown by default, ensuring a streamlined experience.
-  - **Detailed Certificate View**: Opening a certificate reveals its image, description, learning outcomes, issuing authority, skills gained, and a link to the issuer's page if available.
+- **Archived Roles**: Access a comprehensive archive of past roles, providing a historical view of your professional growth and volunteer contributions.
 
-- **Blog Space**:
-  - **Technical Blogs**: Read markdown blogs where I share my thoughts and experiences in technology and programming.
-  - **Organization & Accessibility**: Blogs are grouped into categories. Users can search and filter blogs by category for a tailored reading experience.
-  - **Detailed Blog Articles**: Clicking on a blog title opens the full article, providing an immersive and informative reading experience.
+- **Viewing Details About the Role**: Detailed view of each role including the company name, location, industry (e.g., software engineering), and the start and end dates of the employment or volunteering period.
 
-- **Light and Dark Mode**: Switch between light and dark modes to suit your browsing preferences, ensuring a comfortable and personalized experience.
+- **Responsibilities**: Discover the specific responsibilities and tasks associated with each role, outlining the scope and impact of your involvement.
 
+- **View Technologies, Technical & Soft Skills for the Role**: Learn about the technologies you worked with, along with the technical and soft skills developed during each role.
+
+- **View Other Related Materials**: Access additional documents and materials related to each role, such as letters of recommendation, certificates of achievement, and project summaries.
+
+
+## **University Education History**
+
+- **Browse University Courses**: Explore a comprehensive list of all courses undertaken during your university education.
+
+- **View Course Details**: See detailed information about each course, including the name of the university, type of degree obtained, classification, and the academic years during which the course was taken.
+
+- **View Course Modules**: Browse through course modules organized by year. Each module can be clicked to reveal more details such as learning outcomes, technologies used, and skills developed.
+
+- **View Technologies, Technical & Soft Skills for the Course**: Get insights into the technologies and skills, both technical and soft, that were emphasized and developed in each course.
+
+- **View Other Related Materials**: Access a variety of related materials for each course, including project reports, case studies, and research papers that complement the educational experience.
+
+
+## **Certificates & Online Courses**
+
+- **Browse Certificates in Different Categories**: Explore certificates organized by categories such as technology, management, or creative arts to easily find those that match your interests or professional needs.
+
+- **Filtering & Searching Certificates**: Use powerful search and filtering tools to sort through certificates by name, skills, technologies, or the issuing organization.
+
+- **Archived Certificates**: Access a special section containing archived certificates, allowing you to review certifications that may no longer be current but still showcase your lifelong learning journey.
+
+- **View Certificate**: Directly view each certificate, displaying the official document or badge awarded upon completion.
+
+- **Read Information**: Learn more about each certificate, including a detailed description and the specific learning objectives it covered.
+
+- **View Technologies, Technical & Soft Skills for the Role**: Discover the technologies, technical, and soft skills associated with each course, highlighting what you have learned and how it applies to your professional capabilities.
+
+- **View Other Related Materials**: Access additional materials linked to each certificate, such as related certificates, projects completed during the course, and supplementary learning resources.
+
+
+## **Blog Space**
+
+- **Browse Blogs in Different Categories**: Explore a variety of blog posts categorized by topics such as technology, career advice, personal development, and more, tailored to engage a diverse audience.
+
+- **Filtering & Searching Blogs**: Utilize intuitive search tools and filters to find blog posts based on keywords, publication date, or popularity.
+
+- **Read Blog**: Access each blog post directly, allowing you to read the content in full, including multimedia elements like images and videos embedded within.
+
+- **View Technologies, Technical & Soft Skills for the Role**: Gain insights into the technologies discussed, as well as the technical and soft skills that are highlighted in each blog post.
+
+- **View Other Related Materials**: Discover additional materials related to each blog post, such as downloadable resources, external articles, and related blog entries that expand on the topic discussed.
+
+
+# **Other Features**
+
+## **Light and Dark Mode**
+Switch between light and dark modes to suit your browsing preferences, ensuring a comfortable and personalized experience.
+
+## **Responsive Interface**
 My portfolio is designed to be responsive and engaging, inviting you to explore my journey in the world of development with ease and interest.
 
 # **Requirements**
