@@ -1,16 +1,18 @@
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 
-//TODO: Add documentation
+/**
+ * Checks if there are any archived materials in the database.
+ *
+ * @param database Database of materials to check for archived materials
+ * @returns Whether there are any archived materials in the database
+ */
 export default function checkForArchivedMaterials(
   database: Database<MaterialInterface>
 ): boolean {
-  // Loop through each material in the database
   for (const key in database) {
     if (database[key].archived) {
-      // If an archived material is found, return true
       return true;
     }
   }
-  // If no archived material is found after checking all, return false
   return false;
 }

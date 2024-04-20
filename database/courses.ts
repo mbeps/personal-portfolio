@@ -6,7 +6,11 @@ import UniversityCourseInterface from "@/interfaces/material/UniversityCourseInt
 import moduleDatabase from "./modules";
 import aggregateRelatedMaterialsForCourses from "@/actions/material/course/aggregate/aggregateRelatedMaterialsForCourses";
 
-//TODO: Add documentation
+/**
+ * Hashmap of the courses I have studied at university.
+ * The keys are defined in {@link UniversityCourseKeysEnum}.
+ * The order of the courses is the order that will be used to display them.
+ */
 const courseMap: Database<UniversityCourseInterface> = {
   [UniversityCourseKeysEnum.RHUL_ComputerScience]: {
     name: "Computer Science",
@@ -57,16 +61,23 @@ const courseMap: Database<UniversityCourseInterface> = {
   },
 };
 
-//TODO: Add documentation
+/**
+ * List of keys for the courses that I have studied at university.
+ */
 export const courseKeys: UniversityCourseKeysEnum[] = Object.keys(
   courseMap
 ) as UniversityCourseKeysEnum[];
 
 // adds skills from modules to the courses
+/**
+ * Database of the courses I have studied at university.
+ * The keys are defined in {@link UniversityCourseKeysEnum}.
+ * The order of the courses is the order that will be used to display them.
+ * This contains all the skills and related materials for each course which is fetched from the courses modules.
+ */
 let courseDatabase: Database<UniversityCourseInterface> =
   aggregateSkillsForCourses(courseMap, moduleDatabase);
 
-// adds related materials from modules to the courses
 courseDatabase = aggregateRelatedMaterialsForCourses(
   courseDatabase,
   moduleDatabase

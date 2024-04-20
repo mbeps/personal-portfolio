@@ -1,4 +1,11 @@
-//TODO: Add documentation
+/**
+ * This enum is used to represent the keys of the university modules in the database.
+ * This enum is used to avoid hardcoding the keys in the code, getting autocompletion support and avoiding typos.
+ * The strings correspond to location of the markdown files in the blog folder at `public/university-modules/`.
+ * Whenever a new university module is added to the database, a new key should be added to this enum.
+ *
+ * @see {@link universityModuleMap} at `database/university-modules.ts`
+ */
 enum UniversityModuleKeysEnum {
   RHUL_ObjectOrientedProgramming1 = "CS1811",
   RHUL_ObjectOrientedProgramming2 = "CS1812",

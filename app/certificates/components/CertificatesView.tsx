@@ -33,7 +33,7 @@ import React from "react";
  * These certificates are displayed into categories.
  * Because this uses hooks, it is a client-side only component.
  *
- * @returns Page with all certificates
+ * @returns Components with all the grouped certificates and controls to filter them.
  */
 const CertificatesView: React.FC = () => {
   //^ Hooks

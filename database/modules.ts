@@ -9,7 +9,11 @@ import UniversityModuleInterface from "@/interfaces/material/UniversityModuleInt
 import skillDatabase from "./skills";
 import UniversityCourseKeysEnum from "@/enums/DatabaseKeysEnums/UniversityCourseKeysEnum";
 
-//TODO: Add documentation
+/**
+ * Hashmap of the modules I have studied at university.
+ * The keys are defined in {@link UniversityModuleKeysEnum}.
+ * The order of the modules is the order that will be used to display them.
+ */
 const modulesMap: Database<UniversityModuleInterface> = {
   //^ Royal Holloway University of London
   //* Year 1
@@ -741,11 +745,23 @@ const modulesMap: Database<UniversityModuleInterface> = {
   },
 };
 
-//TODO: Add documentation
+/**
+ * List of all module keys that can uniquely identify each module.
+ */
 export const moduleKeys: UniversityModuleKeysEnum[] = Object.keys(
   modulesMap
 ) as UniversityModuleKeysEnum[];
 
+/**
+ * Hashmap of the modules I have studied at university.
+ * The keys are defined in {@link UniversityModuleKeysEnum}.
+ * The order of the modules is the order that will be used to display them.
+ *
+ * There are certain sub-skills for the skills that are directly listed under the skill objects within this hashmap.
+ * For each of those skills, the sub-skill is added to the list of skills for the blog.
+ * These sub-skills are specifically general skills related to the technologies but are not part of programming languages.
+ * Programming languages have many sub-skills that are not directly related to the blogs above.
+ */
 const moduleDatabase: Database<UniversityModuleInterface> =
   addNestedSkillsMaterialList<UniversityModuleInterface>(
     modulesMap,

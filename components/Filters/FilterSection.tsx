@@ -30,6 +30,23 @@ interface FilterSectionProps {
   archiveFilter: ArchiveFilter;
 }
 
+/**
+ * A component that allows the user to filter, search and view archived materials.
+ * These are hidden behind an accordion trigger to keep the UI clean and take less space.
+ * Inside this component, there is a:
+ * - Search input allowing the user to type a string and find materials based on metadata
+ * - Filter button that opens a modal with all the filter options
+ * - Clear button that resets all the filters including the search term and archive filter
+ * - Archive toggle that allows the user to show/hide archived materials (only displayed if there are archived materials)
+ *
+ * @param name The name of the page so that it can be displayed in the accordion trigger
+ * @param basePath The base path for the current page
+ * @param searchFilter The currently applied search term
+ * @param filterCategories All the filter categories
+ * @param areFiltersApplied Whether any filters are currently applied
+ * @param archiveFilter The status of the archive filter
+ * @returns Component that displays the filter section for the page
+ */
 const FilterSection: React.FC<FilterSectionProps> = ({
   name,
   basePath,
@@ -60,7 +77,13 @@ const FilterSection: React.FC<FilterSectionProps> = ({
     slug: archiveFilter.showArchived.toString(),
   });
 
-  //TODO: Add documentation
+  /**
+   * Function which updates the search term in the URL.
+   * This keeps all the other filters the same and only updates the search term.
+   * It also automatically toggles all the archived materials to be shown.
+   *
+   * @param newSearchTerm The new search term to update the search filter with
+   */
   function updateSearchTerm(newSearchTerm: string) {
     const updatedFilterProps: FilterOption[] = filterProps.map((filterProp) => {
       // update the search term
@@ -80,6 +103,11 @@ const FilterSection: React.FC<FilterSectionProps> = ({
     router.push(newUrl);
   }
 
+  /**
+   * Message to display in the accordion trigger based on the archive filter.
+   * If there are archived materials, it will display "Searching, Filtering and Archived {name}".
+   * If there are no archived materials, it will display "Searching & Filtering {name}".
+   */
   const message: string = archiveFilter.hasArchivedMaterials
     ? `Searching, Filtering and Archived ${name}`
     : `Searching & Filtering ${name}`;
@@ -153,6 +181,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
                       <span>Filters</span>
                     </div>
                   </Button>
+
                   {/* Clear Button */}
                   <Link href={basePath} className="w-full" scroll={false}>
                     <Button
@@ -189,6 +218,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
           </AccordionContent>
         </AccordionItem>
       </Accordion>
+
       {/* Filter Modal */}
       <FilterPanel
         isOpen={isFilterOpen}

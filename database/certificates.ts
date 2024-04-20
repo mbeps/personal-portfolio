@@ -3,11 +3,11 @@ import CertificateInterface from "@/interfaces/material/CertificateInterface";
 import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
 import CertificateCategoriesEnum from "@/enums/CertificateCategoriesEnum";
 import CertificateIssuersEnum from "@/enums/CertificateIssuersEnum";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
-import skillDatabase, { skillKeys } from "./skills";
-import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import CertificateKeysEnum from "@/enums/DatabaseKeysEnums/CertificateKeysEnum";
+import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
+import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import skillDatabase from "./skills";
 
 /**
  * Hashmap of certificates with keys as {@link CertificateKeysEnum} and values as {@link CertificateInterface}.

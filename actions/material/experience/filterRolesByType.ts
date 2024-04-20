@@ -2,7 +2,14 @@ import stringToSlug from "@/actions/stringToSlug";
 import ExperienceTypeEnum from "@/enums/ExperienceType";
 import RoleInterface from "@/interfaces/material/RoleInterface";
 
-//TODO: Add documentation
+/**
+ * Filters the roles by the type of experience, for example "work" or "volunteer".
+ *
+ * @param targetType The type of experience to filter by
+ * @param roleKeys The keys of the roles to filter
+ * @param rolesDatabase The database of all roles for access to the role details
+ * @returns The keys of the roles that match the experience type
+ */
 export default function filterRolesByType<T extends RoleInterface>(
   targetType: ExperienceTypeEnum,
   roleKeys: string[],

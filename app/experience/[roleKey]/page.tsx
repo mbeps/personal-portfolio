@@ -72,10 +72,14 @@ export const generateStaticParams = async () => {
  * Page displaying the details about my work experience.
  * This would show the specific things I have done in the past.
  *
+ * The page also displays:
+ * - The skills covered in the role
+ * - Related materials
+ *
  * @param props The props for the work experience page.
  * @returns Content of the work experience page.
  */
-const BlogPage: React.FC<RolePageProps> = ({ params }) => {
+const RolePage: React.FC<RolePageProps> = ({ params }) => {
   const roleKey: string = params.roleKey;
   const roleData: RoleInterface = rolesDatabase[roleKey];
   const companyData: CompanyInterface = companyDatabase[roleData.company];
@@ -227,4 +231,4 @@ const BlogPage: React.FC<RolePageProps> = ({ params }) => {
   );
 };
 
-export default BlogPage;
+export default RolePage;

@@ -14,6 +14,7 @@ import skillDatabase from "@/database/skills";
 import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import BlogInterface from "@/interfaces/material/BlogInterface";
+import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -63,9 +64,11 @@ export const generateStaticParams = async () => {
 
 /**
  * Page displaying the rendered markdown which can be read by the user.
- * The blog also displays the skills used in the blog.
+ * The page also displays:
+ * - The skills covered in the blog
+ * - Related materials
  *
- * @param props The content of the blog
+ * @param params The parameters for the blog page
  * @returns Content of the blog and the skills used
  */
 const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
@@ -97,7 +100,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
   );
 
   // Using the new function to group all skill types
-  const allGroupedSkills = [
+  const allGroupedSkills: GroupedSkillsCategoriesInterface[] = [
     categoriseAndGroupSkills(
       technologies,
       skillDatabase,

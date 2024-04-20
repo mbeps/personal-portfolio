@@ -31,7 +31,6 @@ interface FilterPopover {
   basePath: string;
 }
 
-//TODO: Update documentation
 /**
  * Popover component displaying the filtering options for the user.
  * This is similar to a dropdown menu but with a search bar to find the desired filter.
@@ -40,10 +39,11 @@ interface FilterPopover {
  * @param filterCategory The current filter category
  * @param filterCategories All the filter categories
  * @param archiveFilter The status of the archive filter
+ * @param searchFilter The currently applied search term
  * @param basePath The base path for the current page
  * @returns Popover component with filter options
  */
-const FilterPopover = ({
+const FilterPopover: React.FC<FilterPopover> = ({
   filterCategory,
   filterCategories,
   archiveFilter,

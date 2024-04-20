@@ -2,7 +2,14 @@ import stringToSlug from "@/actions/stringToSlug";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import RoleInterface from "@/interfaces/material/RoleInterface";
 
-//TODO: Add documentation
+/**
+ * Generates the filter options based on the types of the roles.
+ * For all the roles, it will generate a filter option for each unique type.
+ * These are then used as options the user can select to filter the roles.
+ *
+ * @param roleDatabase The database of all roles from which to generate the filter options
+ * @returns The filter options generated from the types of the roles
+ */
 export function generateFilterOptionsByRoleType<T extends RoleInterface>(
   roleDatabase: Database<T>
 ): FilterOption[] {

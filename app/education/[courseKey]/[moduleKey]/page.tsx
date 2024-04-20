@@ -70,8 +70,11 @@ export const generateStaticParams = async () => {
  * Page displaying details about a module in a course.
  * This includes the learning outcomes, skills, and related material.
  *
+ * The page also displays:
+ * - The skills covered in the module
+ * - Related materials
  *
- * @param param0 The data for the module page.
+ * @param params The data for the module page
  * @returns A page displaying the module details
  */
 const ModulePage: React.FC<ModulePageProps> = ({ params }) => {

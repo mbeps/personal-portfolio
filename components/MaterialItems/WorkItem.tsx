@@ -3,17 +3,30 @@ import companyDatabase from "@/database/companies";
 import rolesDatabase from "@/database/roles";
 import CompanyInterface from "@/interfaces/material/CompanyInterface";
 import RoleInterface from "@/interfaces/material/RoleInterface";
-import Link from "next/link";
-import { BsArrowUpRightCircle, BsDot, BsInfoCircle } from "react-icons/bs";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../shadcn/ui/tooltip";
 import Image from "next/image";
+import Link from "next/link";
+import { BsArrowUpRightCircle, BsInfoCircle } from "react-icons/bs";
 import { AspectRatio } from "../shadcn/ui/aspect-ratio";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../shadcn/ui/tooltip";
 
 interface WorkItemProps {
   roleKey: string;
 }
 
-//TODO: Add documentation
+/**
+ * Card which displays a role/work entry with quick information.
+ * Contains:
+ * - Name of the role
+ * - Company name (with link to company website)
+ * - Location of the company
+ * - Date range of the role
+ * - Logo of the company
+ * - Link to the role page
+ * - Link to the company website
+ *
+ * @param roleKey Key of the role to be displayed
+ * @returns A card which displays a role
+ */
 const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
   const basePath: string = EXPERIENCE_PAGE.path;
   const roleData: RoleInterface = rolesDatabase[roleKey];

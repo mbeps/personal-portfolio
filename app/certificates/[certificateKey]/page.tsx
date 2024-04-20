@@ -83,8 +83,11 @@ type CertificatesPageProps = {
  * - The learning outcomes of the certificate
  * - The skills of the certificate
  * - The issuer page of the certificate
+ * The page also displays:
+ * - The skills covered in the certificate
+ * - Related materials
  *
- * @param params The certificate identifier used to fetch the certificate
+ * @param params Parameters for the certificate page
  * @returns Page displaying the certificate and its details
  */
 const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {

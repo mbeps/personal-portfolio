@@ -83,6 +83,11 @@ export const generateStaticParams = async () => {
  * - Modules
  * - Skills
  * - Related Materials
+ *
+ * The page also displays:
+ * - The skills covered in the course
+ * - Related materials
+ *
  * @param props Details about the page
  * @returns The course page
  */
