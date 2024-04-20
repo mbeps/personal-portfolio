@@ -7,6 +7,7 @@ import filterSkillsByCategory, {
 import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
 import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
 import Gallery from "@/components/Gallery/Gallery";
+import MaterialList from "@/components/MaterialLists/MaterialList";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import SkillTag from "@/components/Tags/SkillTag";
 import HeadingThree from "@/components/Text/HeadingThree";
@@ -29,8 +30,6 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
-import MaterialList from "@/components/MaterialLists/MaterialList";
-import PageDescription from "@/components/UI/PageDescription";
 
 /**
  * Generates the metadata for the project page.
@@ -197,7 +196,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   )?.content;
 
   return (
-    <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
+    <div className="flex flex-col space-y-1 align-top min-h-[85vh] relative">
       <HeadingTwo title={projectData?.name} />
 
       {/* Gallery Section */}
@@ -233,11 +232,11 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
       )}
 
       {/* Metadata Section */}
-      <div className="mt-4">
+      <div className="mt-4 pb-10 border-b border-gray-200 dark:border-neutral-600 space-y-3">
         {/* Description Section */}
         <div className="text-center md:text-left">
           <HeadingThree title="Description" />
-          <div className="flex flex-wrap justify-center md:justify-start z-10 mt-5">
+          <div className="flex flex-wrap justify-center md:justify-start z-10 mt-2">
             <p className="text-neutral-800 dark:text-neutral-300">
               {projectData.description}
             </p>
@@ -254,7 +253,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
                   : "Language"
               }
             />
-            <div className="flex flex-wrap justify-center md:justify-start z-10 mt-5">
+            <div className="flex flex-wrap justify-center md:justify-start z-10 mt-2">
               {projectLanguages.map((language, index) => (
                 <SkillTag key={index} skillKey={language} />
               ))}
@@ -263,76 +262,76 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
         )}
 
         {/* Skills Section */}
-        <div className="mt-4">
-          {/* Skills Section */}
-          <div className="mt-4">
-            <SkillTableSection allGroupedSkills={allGroupedSkills} />
-          </div>
+        <div>
+          <SkillTableSection allGroupedSkills={allGroupedSkills} />
+        </div>
 
-          {/* Links Section */}
-          <div className="text-center md:text-left">
-            <HeadingThree title="Links" />
-            <div
-              className="
+        {/* Links Section */}
+        <div className="text-center md:text-left">
+          <HeadingThree title="Links" />
+          <div
+            className="
               mt-6 flex 
               flex-row 
               justify-center md:justify-start items-center 
               w-full md:w-1/3
               gap-2"
-            >
-              {/* GitHub Repo */}
-              {projectData?.repositoryURL && (
-                <Link
-                  href={projectData?.repositoryURL}
-                  target="_blank"
-                  className="w-full"
-                >
-                  <Button>
-                    <div
-                      className="
+          >
+            {/* GitHub Repo */}
+            {projectData?.repositoryURL && (
+              <Link
+                href={projectData?.repositoryURL}
+                target="_blank"
+                className="w-full"
+              >
+                <Button>
+                  <div
+                    className="
                         flex
                         justify-center md:justify-start
                         align-center
                         gap-4
                         w-full
                       "
-                    >
-                      <BsGithub size={26} />
-                      <p>Repository</p>
-                    </div>
-                  </Button>
-                </Link>
-              )}
-              {/* Website */}
-              {projectData?.deploymentURL && (
-                <Link
-                  href={projectData?.deploymentURL}
-                  target="_blank"
-                  className="w-full"
-                >
-                  <Button>
-                    <div
-                      className="
+                  >
+                    <BsGithub size={26} />
+                    <p>Repository</p>
+                  </div>
+                </Button>
+              </Link>
+            )}
+            {/* Website */}
+            {projectData?.deploymentURL && (
+              <Link
+                href={projectData?.deploymentURL}
+                target="_blank"
+                className="w-full"
+              >
+                <Button>
+                  <div
+                    className="
                         flex
                         justify-center md:justify-start
                         align-center
                         gap-4
                         w-full
                       "
-                    >
-                      <BsArrowUpRightCircle size={26} />
-                      <p>Deployment</p>
-                    </div>
-                  </Button>
-                </Link>
-              )}
-            </div>
+                  >
+                    <BsArrowUpRightCircle size={26} />
+                    <p>Deployment</p>
+                  </div>
+                </Button>
+              </Link>
+            )}
           </div>
         </div>
       </div>
 
-      <TabbedReader content={{ features, blog }} />
+      <div>
+        <TabbedReader content={{ features, blog }} />
+      </div>
 
+      {/* Related Materials Section */}
       {projectData.relatedMaterials &&
         projectData.relatedMaterials.length > 0 && (
           <>

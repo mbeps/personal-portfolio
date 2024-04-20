@@ -150,7 +150,7 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
   ];
 
   return (
-    <div className="">
+    <div>
       <HeadingTwo title={courseData.name} />
 
       <div

@@ -70,7 +70,7 @@ const CourseItem: React.FC<CourseItemProps> = ({ courseKey }) => {
       <div
         className="
         flex flex-col 
-        gap-8 px-4 py-4"
+        gap-5 px-4 py-4"
       >
         {/* Certificate Title */}
         <Link href={`education/${courseKey}`}>

@@ -16,7 +16,7 @@ const WorkList: React.FC<MaterialListProps> = ({
                 <div className="flex flex-col space-y-5">
                   {groupedRoles.length > 1 && (
                     <>
-                      <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
+                      <div className="border-b border-gray-200 dark:border-neutral-600 pb-1" />
                       <HeadingTwo title={group.groupName} />
                     </>
                   )}

@@ -80,7 +80,7 @@ const MaterialTab: React.FC<MaterialTabsProps> = ({
     },
     {
       // University Modules
-      name: MaterialType.Modules,
+      name: MaterialType.UniversityModules,
       materials: moduleKeys,
       materialHashmap: moduleDatabase,
       ListComponent: ModuleList,
