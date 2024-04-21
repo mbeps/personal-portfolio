@@ -15,7 +15,7 @@ import CompanyInterface from "@/database/Companies/CompanyInterface";
 import rolesDatabase from "@/database/Roles/RoleDatabaseMap";
 import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import RoleInterface from "@/database/Roles/RoleInterface";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import type { Metadata, ResolvingMetadata } from "next";

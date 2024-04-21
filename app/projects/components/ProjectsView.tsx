@@ -18,7 +18,7 @@ import projectDatabaseMap from "@/database/Projects/ProjectDatabaseMap";
 import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 import ProjectDatabaseKeys from "@/database/Projects/ProjectDatabaseKeys";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import useFuseSearch from "@/hooks/useFuseSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";

@@ -1,6 +1,6 @@
-import ExperienceCategoriesEnum from "@/enums/ExperienceCategoriesEnum";
+import ExperienceCategoriesEnum from "@/enums/Experience/ExperienceCategoriesEnum";
 import MaterialInterface from "../Materials/MaterialInterface";
-import ExperienceTypeEnum from "@/enums/ExperienceTypeEnum";
+import ExperienceTypeEnum from "@/enums/Experience/ExperienceTypeEnum";
 import CompanyDatabaseKeys from "@/database/Companies/CompanyDatabaseKeys";
 
 /**

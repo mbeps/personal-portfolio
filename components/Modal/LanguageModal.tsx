@@ -27,9 +27,9 @@ import {
 } from "@/components/shadcn/ui/tooltip";
 import materialDatabaseMap from "@/database/Materials/MaterialDatabaseMap";
 import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
-import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
+import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import SkillInterface from "@/database/Skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";

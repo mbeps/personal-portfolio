@@ -4,7 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/shadcn/ui/accordion";
-import MaterialTypeEnum from "@/enums/MaterialTypeEnum";
+import MaterialTypeEnum from "@/enums/Material/MaterialTypeEnum";
 import React from "react";
 import MaterialTab from "./MaterialTab";
 

@@ -1,12 +1,12 @@
 import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
 import addProjectThumbnail from "@/actions/material/projects/addProjectThumbnail";
 import ProjectDatabaseKeys from "@/database/Projects/ProjectDatabaseKeys";
-import ProjectCategoriesEnum from "@/enums/ProjectCategoriesEnum";
+import ProjectCategoriesEnum from "@/enums/Project/ProjectCategoriesEnum";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import ProjectInterface from "@/database/Projects/ProjectInterface";
 import skillDatabaseMap from "../Skills/SkillDatabaseMap";
-import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
+import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
 import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
 
 /**

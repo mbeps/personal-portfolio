@@ -13,7 +13,7 @@ import CourseInterface from "@/database/Courses/CourseInterface";
 import moduleDatabaseMap from "@/database/Modules/ModuleDatabaseMap";
 import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import ModuleInterface from "@/database/Modules/ModuleInterface";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import { Metadata, ResolvingMetadata } from "next";

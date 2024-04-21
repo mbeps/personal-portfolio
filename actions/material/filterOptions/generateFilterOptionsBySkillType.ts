@@ -1,8 +1,8 @@
 import FilterOption from "@/interfaces/filters/FilterOption";
 import MaterialInterface from "@/database/Materials/MaterialInterface";
 import stringToSlug from "../../stringToSlug";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
-import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
+import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
+import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
 import SkillInterface from "@/database/Skills/SkillInterface";
 
 /**

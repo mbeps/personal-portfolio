@@ -1,6 +1,6 @@
 import FilterOption from "@/interfaces/filters/FilterOption";
 import MaterialInterface from "@/database/Materials/MaterialInterface";
-import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
+import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
 import SkillInterface from "@/database/Skills/SkillInterface";
 
 /**

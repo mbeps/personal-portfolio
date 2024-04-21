@@ -1,4 +1,4 @@
-import MaterialTypeEnum from "@/enums/MaterialTypeEnum";
+import MaterialTypeEnum from "@/enums/Material/MaterialTypeEnum";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import MaterialInterface from "@/database/Materials/MaterialInterface";
 

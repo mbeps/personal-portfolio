@@ -1,6 +1,6 @@
-import CertificateIssuersEnum from "@/enums/CertificateIssuersEnum";
+import CertificateIssuersEnum from "@/enums/Certificate/CertificateIssuersEnum";
 import MaterialInterface from "../Materials/MaterialInterface";
-import CertificateCategoriesEnum from "@/enums/CertificateCategoriesEnum";
+import CertificateCategoriesEnum from "@/enums/Certificate/CertificateCategoriesEnum";
 
 /**
  * Interface representing a certificate's metadata and not the content.

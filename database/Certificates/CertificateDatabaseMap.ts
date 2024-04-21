@@ -1,12 +1,11 @@
 import CertificateInterface from "@/database/Certificates/CertificateInterface";
-
 import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
-import CertificateCategoriesEnum from "@/enums/CertificateCategoriesEnum";
-import CertificateIssuersEnum from "@/enums/CertificateIssuersEnum";
 import CertificateDatabaseKeys from "@/database/Certificates/CertificateDatabaseKeys";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import CertificateCategoriesEnum from "@/enums/Certificate/CertificateCategoriesEnum";
+import CertificateIssuersEnum from "@/enums/Certificate/CertificateIssuersEnum";
+import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
+import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import skillDatabaseMap from "../Skills/SkillDatabaseMap";
 
 /**
@@ -18,7 +17,6 @@ const certificateMap: Database<CertificateInterface> = {
   //^ Programming Languages
   [CertificateDatabaseKeys.UdemyPythonProgrammingMasterclass]: {
     name: "Python Programming Masterclass",
-
     category: CertificateCategoriesEnum.ProgrammingLanguages,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
@@ -31,7 +29,8 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
-    description: `The Python Programming Masterclass on is an all-encompassing course designed to impart a deep understanding of Python, one of the most sought-after programming languages in the tech industry. This course is tailored for both beginners and existing programmers, focusing on core Python concepts, Object-Oriented Programming, algorithms, and data structures. It uniquely combines theoretical knowledge with practical coding exercises, preparing students for advanced areas like machine learning and data science. By the end of the course, learners will have mastered both Python 2 and Python 3, equipped with the skills to develop robust Python applications and the confidence to tackle real-world programming challenges.`,
+    description: `
+      The Python Programming Masterclass on is an all-encompassing course designed to impart a deep understanding of Python, one of the most sought-after programming languages in the tech industry. This course is tailored for both beginners and existing programmers, focusing on core Python concepts, Object-Oriented Programming, algorithms, and data structures. It uniquely combines theoretical knowledge with practical coding exercises, preparing students for advanced areas like machine learning and data science. By the end of the course, learners will have mastered both Python 2 and Python 3, equipped with the skills to develop robust Python applications and the confidence to tackle real-world programming challenges.`,
     learningOutcomes: [
       "Understand Python syntax, keywords, and basic structures",
       "Implement Object-Oriented Programming in Python",
@@ -45,7 +44,6 @@ const certificateMap: Database<CertificateInterface> = {
   },
   [CertificateDatabaseKeys.LinkedInLearningPythonAdvanced]: {
     name: "Advanced Python",
-
     category: CertificateCategoriesEnum.ProgrammingLanguages,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
@@ -58,7 +56,6 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
-
     description: `
     This course offers an in-depth exploration of advanced Python features, focusing on enhancing code efficiency and readability. It covers a range of topics including object-oriented programming, logging for performance tracking, porting code from Python 2 to 3, and data manipulation. The course is designed to help you master Python's powerful features and flexibility, enabling you to build sophisticated applications.
     `,

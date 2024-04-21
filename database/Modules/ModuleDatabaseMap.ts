@@ -2,9 +2,9 @@ import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMater
 import ProjectDatabaseKeys from "@/database/Projects/ProjectDatabaseKeys";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
-import ModuleYearGroupsEnum from "@/enums/ModuleYearGroupsEnum";
-import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import ModuleYearGroupsEnum from "@/enums/Module/ModuleYearGroupsEnum";
+import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
+import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import ModuleInterface from "@/database/Modules/ModuleInterface";
 import skillDatabaseMap from "../Skills/SkillDatabaseMap";
 import CourseDatabaseKeys from "@/database/Courses/CourseDatabaseKeys";

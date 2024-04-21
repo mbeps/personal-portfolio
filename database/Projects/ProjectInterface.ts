@@ -1,4 +1,4 @@
-import ProjectCategoriesEnum from "@/enums/ProjectCategoriesEnum";
+import ProjectCategoriesEnum from "@/enums/Project/ProjectCategoriesEnum";
 import MaterialInterface from "../Materials/MaterialInterface";
 
 /**

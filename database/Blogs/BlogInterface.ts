@@ -1,4 +1,4 @@
-import BlogCategoriesEnum from "@/enums/BlogCategoriesEnum";
+import BlogCategoriesEnum from "@/enums/Blog/BlogCategoriesEnum";
 import MaterialInterface from "../Materials/MaterialInterface";
 
 /**

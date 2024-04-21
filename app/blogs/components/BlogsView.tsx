@@ -17,7 +17,7 @@ import BlogDatabaseKeys from "@/database/Blogs/BlogDatabaseKeys";
 import blogsDatabaseMap from "@/database/Blogs/BlogsDatabaseMap";
 import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import useFuseSearch from "@/hooks/useFuseSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import BlogInterface from "@/database/Blogs/BlogInterface";

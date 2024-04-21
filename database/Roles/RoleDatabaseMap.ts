@@ -2,8 +2,8 @@ import CertificateDatabaseKeys from "@/database/Certificates/CertificateDatabase
 import ProjectDatabaseKeys from "@/database/Projects/ProjectDatabaseKeys";
 import RoleDatabaseKeys from "@/database/Roles/RoleDatabaseKeys";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import ExperienceCategoriesEnum from "@/enums/ExperienceCategoriesEnum";
-import ExperienceTypeEnum from "@/enums/ExperienceTypeEnum";
+import ExperienceCategoriesEnum from "@/enums/Experience/ExperienceCategoriesEnum";
+import ExperienceTypeEnum from "@/enums/Experience/ExperienceTypeEnum";
 import RoleInterface from "@/database/Roles/RoleInterface";
 import CompanyDatabaseKeys from "../Companies/CompanyDatabaseKeys";
 

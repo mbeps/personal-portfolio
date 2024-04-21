@@ -1,5 +1,5 @@
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import SkillInterface from "@/database/Skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import getSkillsDatabaseFromKeys from "../get/getSkillsDatabaseFromKeys";

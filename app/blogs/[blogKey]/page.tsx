@@ -11,7 +11,7 @@ import BlogInterface from "@/database/Blogs/BlogInterface";
 import blogsDatabaseMap from "@/database/Blogs/BlogsDatabaseMap";
 import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";

@@ -6,17 +6,16 @@ import Tag from "@/components/Tags/Tag";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import StringList from "@/components/Text/StringList";
-import PageDescription from "@/components/UI/PageDescription";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
 import { CERTIFICATES_PAGE } from "@/constants/pages";
 import certificateDatabaseMap from "@/database/Certificates/CertificateDatabaseMap";
-import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import MaterialTypeEnum from "@/enums/MaterialTypeEnum";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import CertificateInterface from "@/database/Certificates/CertificateInterface";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
+import MaterialTypeEnum from "@/enums/Material/MaterialTypeEnum";
+import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
@@ -24,7 +23,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle } from "react-icons/bs";
-import { RxTriangleRight } from "react-icons/rx";
 
 /**
  * Generates the metadata for the certificates page.

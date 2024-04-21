@@ -18,8 +18,8 @@ import {
 import skillDatabaseMap, {
   skillDatabaseKeys,
 } from "@/database/Skills/SkillDatabaseMap";
-import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
+import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import useIsMounted from "@/hooks/useIsMounted";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import SkillInterface from "@/database/Skills/SkillInterface";

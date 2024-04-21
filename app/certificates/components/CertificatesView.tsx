@@ -19,7 +19,7 @@ import CertificateDatabaseKeys from "@/database/Certificates/CertificateDatabase
 import certificateDatabaseMap from "@/database/Certificates/CertificateDatabaseMap";
 import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import useFuseSearch from "@/hooks/useFuseSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import CertificateInterface from "@/database/Certificates/CertificateInterface";

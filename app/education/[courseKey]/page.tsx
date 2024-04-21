@@ -22,7 +22,7 @@ import moduleDatabaseMap, {
 import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import CourseInterface from "@/database/Courses/CourseInterface";
 import ModuleInterface from "@/database/Modules/ModuleInterface";

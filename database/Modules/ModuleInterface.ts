@@ -1,4 +1,4 @@
-import ModuleYearGroupsEnum from "@/enums/ModuleYearGroupsEnum";
+import ModuleYearGroupsEnum from "@/enums/Module/ModuleYearGroupsEnum";
 import MaterialInterface from "../Materials/MaterialInterface";
 import CourseDatabaseKeys from "@/database/Courses/CourseDatabaseKeys";
 

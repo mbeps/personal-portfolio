@@ -4,7 +4,7 @@ import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import SkillInterface from "@/database/Skills/SkillInterface";
 import React from "react";

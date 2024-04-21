@@ -30,7 +30,7 @@ import { SKILL_PAGE } from "@/constants/pages";
 import materialDatabaseMap from "@/database/Materials/MaterialDatabaseMap";
 import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import { cn } from "@/lib/utils";
