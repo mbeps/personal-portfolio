@@ -106,7 +106,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
         className="
           mt-auto 
           h-full
-          w-full shadow-2xl md:rounded-2xl 
+          w-full shadow-lg md:rounded-lg 
           border-2
           border-neutral-200 dark:border-neutral-800
           bg-neutral-100 dark:bg-black 
