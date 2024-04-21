@@ -1,4 +1,4 @@
-import ModuleYearGroups from "@/enums/ModuleYearGroups";
+import ModuleYearGroupsEnum from "@/enums/ModuleYearGroupsEnum";
 import MaterialInterface from "./MaterialInterface";
 import UniversityCourseKeysEnum from "@/enums/DatabaseKeysEnums/UniversityCourseKeysEnum";
 
@@ -9,7 +9,7 @@ import UniversityCourseKeysEnum from "@/enums/DatabaseKeysEnums/UniversityCourse
  * The fields are:
  * - `learningOutcomes`: the learning outcomes of the module
  * - `score`: the score achieved in the module
- * - `category`: the year group of the module which is one of the categories defined in {@link ModuleYearGroups}
+ * - `category`: the year group of the module which is one of the categories defined in {@link ModuleYearGroupsEnum}
  * - `parentCourse`: the course to which the module belongs
  *
  * Importantly, because the `UniversityModuleInterface` extends the `MaterialInterface`, it inherits the field `skills` which is an array of `SkillKeysEnum` which is used to represent the skills that are associated to understand the material.
@@ -17,6 +17,6 @@ import UniversityCourseKeysEnum from "@/enums/DatabaseKeysEnums/UniversityCourse
 export default interface UniversityModuleInterface extends MaterialInterface {
   learningOutcomes: string[];
   score?: number;
-  category: ModuleYearGroups;
+  category: ModuleYearGroupsEnum;
   parentCourse: UniversityCourseKeysEnum;
 }

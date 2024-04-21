@@ -1,9 +1,9 @@
-import MaterialType from "@/enums/MaterialType";
+import MaterialTypeEnum from "@/enums/MaterialTypeEnum";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 
 /**
- * Groups the materials based on the material type as defined in {@link MaterialType}.
+ * Groups the materials based on the material type as defined in {@link MaterialTypeEnum}.
  * A name for the group is provided.
  *
  * @param materialsKeys The keys of the materials to group
@@ -16,7 +16,7 @@ export default function groupMaterialsByMaterialType<
 >(
   materialsKeys: string[],
   materialsDatabase: Database<T>,
-  groupName: MaterialType
+  groupName: MaterialTypeEnum
 ): MaterialGroupInterface[] {
   // Filter materialKeys to ensure they exist in the materialsMap
   const validMaterialsKeys: string[] = materialsKeys.filter(

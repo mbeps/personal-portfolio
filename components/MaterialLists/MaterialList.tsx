@@ -4,13 +4,13 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/shadcn/ui/accordion";
-import MaterialType from "@/enums/MaterialType";
+import MaterialTypeEnum from "@/enums/MaterialTypeEnum";
 import React from "react";
 import MaterialTab from "./MaterialTab";
 
 export interface MaterialTabsProps {
   materialKeys: string[];
-  defaultTab?: MaterialType;
+  defaultTab?: MaterialTypeEnum;
   isCollapsible?: boolean;
   sectionName?: string;
 }

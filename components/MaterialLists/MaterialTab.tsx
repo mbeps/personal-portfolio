@@ -23,7 +23,7 @@ import certificateDatabase, { certificateKeys } from "@/database/certificates";
 import moduleDatabase, { moduleKeys } from "@/database/modules";
 import projectDatabase, { projectKeys } from "@/database/projects";
 import rolesDatabase, { roleKeys } from "@/database/roles";
-import MaterialType from "@/enums/MaterialType";
+import MaterialTypeEnum from "@/enums/MaterialTypeEnum";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import MaterialInterface from "@/interfaces/material/MaterialInterface";
 import MaterialListProps from "@/interfaces/props/MaterialListProps";
@@ -33,7 +33,7 @@ import { MaterialTabsProps } from "./MaterialList";
 import WorkList from "./WorkList";
 
 interface MaterialSectionInterface {
-  name: MaterialType;
+  name: MaterialTypeEnum;
   materials: string[];
   materialHashmap: Database<MaterialInterface>;
   basePath?: string;
@@ -64,7 +64,7 @@ const MaterialTab: React.FC<MaterialTabsProps> = ({
   const sections: MaterialSectionInterface[] = [
     {
       // Projects
-      name: MaterialType.Projects,
+      name: MaterialTypeEnum.Projects,
       materials: projectKeys,
       materialHashmap: projectDatabase,
       basePath: PROJECTS_PAGE.path,
@@ -72,7 +72,7 @@ const MaterialTab: React.FC<MaterialTabsProps> = ({
     },
     {
       // Work Experiences
-      name: MaterialType.WorkExperiences,
+      name: MaterialTypeEnum.WorkExperiences,
       materials: roleKeys,
       materialHashmap: rolesDatabase,
       ListComponent: WorkList,
@@ -80,14 +80,14 @@ const MaterialTab: React.FC<MaterialTabsProps> = ({
     },
     {
       // University Modules
-      name: MaterialType.UniversityModules,
+      name: MaterialTypeEnum.UniversityModules,
       materials: moduleKeys,
       materialHashmap: moduleDatabase,
       ListComponent: ModuleList,
     },
     {
       // Certificates
-      name: MaterialType.Certificates,
+      name: MaterialTypeEnum.Certificates,
       materials: certificateKeys,
       materialHashmap: certificateDatabase,
       basePath: CERTIFICATES_PAGE.path,
@@ -95,7 +95,7 @@ const MaterialTab: React.FC<MaterialTabsProps> = ({
     },
     {
       // Blogs
-      name: MaterialType.Blogs,
+      name: MaterialTypeEnum.Blogs,
       materials: blogKeys,
       materialHashmap: blogDatabase,
       basePath: BLOG_PAGE.path,

@@ -18,7 +18,7 @@ import rolesDatabase from "@/database/roles";
 import skillDatabase from "@/database/skills";
 import RoleKeyEnum from "@/enums/DatabaseKeysEnums/RoleKeyEnum";
 import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
-import ExperienceTypeEnum from "@/enums/ExperienceType";
+import ExperienceTypeEnum from "@/enums/ExperienceTypeEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import useFuseSearch from "@/hooks/useFuseSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";

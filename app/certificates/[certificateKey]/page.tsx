@@ -14,7 +14,7 @@ import { CERTIFICATES_PAGE } from "@/constants/pages";
 import certificateDatabase from "@/database/certificates";
 import skillDatabase from "@/database/skills";
 import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
-import MaterialType from "@/enums/MaterialType";
+import MaterialTypeEnum from "@/enums/MaterialTypeEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import CertificateInterface from "@/interfaces/material/CertificateInterface";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
@@ -266,7 +266,7 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
             <>
               <MaterialList
                 materialKeys={certificateData.relatedMaterials}
-                defaultTab={MaterialType.Certificates}
+                defaultTab={MaterialTypeEnum.Certificates}
                 sectionName={certificateData.name}
               />
             </>

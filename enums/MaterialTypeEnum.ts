@@ -7,7 +7,7 @@
  * @see {@link CourseInterface}
  * @see {@link UniversityModuleInterface}
  */
-enum MaterialType {
+enum MaterialTypeEnum {
   Projects = "Projects",
   Courses = "Courses",
   UniversityModules = "University Modules",
@@ -16,4 +16,4 @@ enum MaterialType {
   Blogs = "Blogs",
 }
 
-export default MaterialType;
+export default MaterialTypeEnum;

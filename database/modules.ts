@@ -2,7 +2,7 @@ import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMater
 import ProjectKeysEnum from "@/enums/DatabaseKeysEnums/ProjectKeysEnum";
 import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
 import UniversityModuleKeysEnum from "@/enums/DatabaseKeysEnums/UniversityModuleKeysEnum";
-import ModuleYearGroups from "@/enums/ModuleYearGroups";
+import ModuleYearGroupsEnum from "@/enums/ModuleYearGroupsEnum";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import UniversityModuleInterface from "@/interfaces/material/UniversityModuleInterface";
@@ -19,7 +19,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
   //* Year 1
   [UniversityModuleKeysEnum.RHUL_ObjectOrientedProgramming1]: {
     name: "Object Oriented Programming 1",
-    category: ModuleYearGroups.Year1,
+    category: ModuleYearGroupsEnum.Year1,
     skills: [
       SkillKeysEnum.Java,
       SkillKeysEnum.ObjectOrientedProgramming,
@@ -46,7 +46,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
   },
   [UniversityModuleKeysEnum.RHUL_ObjectOrientedProgramming2]: {
     name: "Object Oriented Programming 2",
-    category: ModuleYearGroups.Year1,
+    category: ModuleYearGroupsEnum.Year1,
     skills: [
       SkillKeysEnum.Java,
       SkillKeysEnum.ObjectOrientedProgramming,
@@ -75,7 +75,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
   },
   [UniversityModuleKeysEnum.RHUL_ProgrammingLaboratory]: {
     name: "Programming Laboratory",
-    category: ModuleYearGroups.Year1,
+    category: ModuleYearGroupsEnum.Year1,
     skills: [
       SkillKeysEnum.Python,
       SkillKeysEnum.SimpleGUI,
@@ -107,7 +107,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
   },
   [UniversityModuleKeysEnum.RHUL_InternetServices]: {
     name: "Internet Services",
-    category: ModuleYearGroups.Year1,
+    category: ModuleYearGroupsEnum.Year1,
     skills: [
       SkillKeysEnum.HTML,
       SkillKeysEnum.CSS,
@@ -136,7 +136,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
   },
   [UniversityModuleKeysEnum.RHUL_MathematicalStructures]: {
     name: "Mathematical Structures (Discrete Mathematics)",
-    category: ModuleYearGroups.Year1,
+    category: ModuleYearGroupsEnum.Year1,
     skills: [
       SkillKeysEnum.Mathematics,
       SkillKeysEnum.Discrete,
@@ -162,7 +162,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
   },
   [UniversityModuleKeysEnum.RHUL_MachineFundamentals]: {
     name: "Machine Fundamentals",
-    category: ModuleYearGroups.Year1,
+    category: ModuleYearGroupsEnum.Year1,
     skills: [
       SkillKeysEnum.Mathematics,
       SkillKeysEnum.Logics,
@@ -191,7 +191,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
   },
   [UniversityModuleKeysEnum.RHUL_SoftwareDesign]: {
     name: "Software Design",
-    category: ModuleYearGroups.Year1,
+    category: ModuleYearGroupsEnum.Year1,
     skills: [
       SkillKeysEnum.ProblemSolving,
       SkillKeysEnum.CriticalThinking,
@@ -217,7 +217,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
   //* Year 2
   [UniversityModuleKeysEnum.RHUL_SoftwareEngineering]: {
     name: "Software Engineering",
-    category: ModuleYearGroups.Year2,
+    category: ModuleYearGroupsEnum.Year2,
     skills: [
       SkillKeysEnum.Java,
       SkillKeysEnum.JUnit,
@@ -253,7 +253,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
   },
   [UniversityModuleKeysEnum.RHUL_TeamProject]: {
     name: "Team Project",
-    category: ModuleYearGroups.Year2,
+    category: ModuleYearGroupsEnum.Year2,
     skills: [
       SkillKeysEnum.TypeScript,
       SkillKeysEnum.Prisma,
@@ -295,7 +295,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
   },
   [UniversityModuleKeysEnum.RHUL_OperatingSystems]: {
     name: "Operating Systems",
-    category: ModuleYearGroups.Year2,
+    category: ModuleYearGroupsEnum.Year2,
     skills: [
       SkillKeysEnum.C,
       SkillKeysEnum.ProblemSolving,
@@ -333,7 +333,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
   },
   [UniversityModuleKeysEnum.RHUL_Databases]: {
     name: "Databases",
-    category: ModuleYearGroups.Year2,
+    category: ModuleYearGroupsEnum.Year2,
     skills: [
       SkillKeysEnum.RelationalDatabases,
       SkillKeysEnum.Normalisation,
@@ -360,7 +360,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
   },
   [UniversityModuleKeysEnum.RHUL_AlgorithmsAndComplexity]: {
     name: "Algorithms and Complexity",
-    category: ModuleYearGroups.Year2,
+    category: ModuleYearGroupsEnum.Year2,
     skills: [
       SkillKeysEnum.Algorithms,
       SkillKeysEnum.Java,
@@ -387,7 +387,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
   },
   [UniversityModuleKeysEnum.RHUL_MultidimensionalDataProcessing]: {
     name: "Multidimensional Data Processing (Linear Algebra)",
-    category: ModuleYearGroups.Year2,
+    category: ModuleYearGroupsEnum.Year2,
     skills: [
       SkillKeysEnum.LinearAlgebra,
       SkillKeysEnum.Python,
@@ -413,7 +413,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
   },
   [UniversityModuleKeysEnum.RHUL_ArtificialIntelligence]: {
     name: "Artificial Intelligence",
-    category: ModuleYearGroups.Year2,
+    category: ModuleYearGroupsEnum.Year2,
     skills: [
       SkillKeysEnum.ArtificialIntelligence,
       SkillKeysEnum.Algorithms,
@@ -442,7 +442,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
   },
   [UniversityModuleKeysEnum.RHUL_IntroductionToInformationSecurity]: {
     name: "Introduction to Information Security",
-    category: ModuleYearGroups.Year2,
+    category: ModuleYearGroupsEnum.Year2,
     skills: [
       SkillKeysEnum.CyberSecurity,
       SkillKeysEnum.Cryptography,
@@ -471,7 +471,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
   //* Year 3
   [UniversityModuleKeysEnum.RHUL_UserCentredDesign]: {
     name: "User Centred Design",
-    category: ModuleYearGroups.Year3,
+    category: ModuleYearGroupsEnum.Year3,
     skills: [
       SkillKeysEnum.UserCentricDesign,
       SkillKeysEnum.Teamwork,
@@ -508,7 +508,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
   },
   [UniversityModuleKeysEnum.RHUL_ITProjectManagement]: {
     name: "IT Project Management",
-    category: ModuleYearGroups.Year3,
+    category: ModuleYearGroupsEnum.Year3,
     skills: [
       SkillKeysEnum.ProjectManagement,
       SkillKeysEnum.Communication,
@@ -550,7 +550,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
   },
   [UniversityModuleKeysEnum.RHUL_FunctionalProgramming]: {
     name: "Functional Programming",
-    category: ModuleYearGroups.Year3,
+    category: ModuleYearGroupsEnum.Year3,
     skills: [
       SkillKeysEnum.Haskell,
       SkillKeysEnum.Scala,
@@ -580,7 +580,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
   },
   [UniversityModuleKeysEnum.RHUL_FinalYearProject]: {
     name: "Final Year Project (Web Development)",
-    category: ModuleYearGroups.Year3,
+    category: ModuleYearGroupsEnum.Year3,
     skills: [
       SkillKeysEnum.TypeScript,
       SkillKeysEnum.JavaScript,
@@ -645,7 +645,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
   },
   [UniversityModuleKeysEnum.RHUL_MachineLearning]: {
     name: "Machine Learning",
-    category: ModuleYearGroups.Year3,
+    category: ModuleYearGroupsEnum.Year3,
     skills: [
       SkillKeysEnum.Python,
       SkillKeysEnum.MachineLearning,
@@ -686,7 +686,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
   },
   [UniversityModuleKeysEnum.RHUL_ComputationalFinance]: {
     name: "Computational Finance",
-    category: ModuleYearGroups.Year3,
+    category: ModuleYearGroupsEnum.Year3,
     skills: [
       SkillKeysEnum.Python,
       SkillKeysEnum.Probability,
@@ -721,7 +721,7 @@ const modulesMap: Database<UniversityModuleInterface> = {
   },
   [UniversityModuleKeysEnum.RHUL_SecurityManagement]: {
     name: "Security Management",
-    category: ModuleYearGroups.Year3,
+    category: ModuleYearGroupsEnum.Year3,
     skills: [
       SkillKeysEnum.CyberSecurity,
       SkillKeysEnum.ProblemSolving,

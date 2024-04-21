@@ -3,14 +3,14 @@ import CompanyKeyEnum from "@/enums/DatabaseKeysEnums/ExperienceCompanyEnum";
 import ProjectKeysEnum from "@/enums/DatabaseKeysEnums/ProjectKeysEnum";
 import RoleKeyEnum from "@/enums/DatabaseKeysEnums/RoleKeyEnum";
 import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
-import ExperienceCategories from "@/enums/ExperienceCategories";
-import ExperienceTypeEnum from "@/enums/ExperienceType";
+import ExperienceCategoriesEnum from "@/enums/ExperienceCategoriesEnum";
+import ExperienceTypeEnum from "@/enums/ExperienceTypeEnum";
 import RoleInterface from "@/interfaces/material/RoleInterface";
 
 const rolesMap: Database<RoleInterface> = {
   [RoleKeyEnum.CommerzbankDevOpsEngineer]: {
     name: "DevOps Engineer",
-    category: ExperienceCategories.Software,
+    category: ExperienceCategoriesEnum.Software,
     type: ExperienceTypeEnum.Professional,
     skills: [
       SkillKeysEnum.Python,
@@ -76,7 +76,7 @@ const rolesMap: Database<RoleInterface> = {
   },
   [RoleKeyEnum.GnomeFoundationCommunityMember]: {
     name: "Community Member",
-    category: ExperienceCategories.Software,
+    category: ExperienceCategoriesEnum.Software,
     type: ExperienceTypeEnum.Volunteering,
     company: CompanyKeyEnum.GnomeFoundation,
     startDate: "October 2022",
@@ -111,7 +111,7 @@ const rolesMap: Database<RoleInterface> = {
   },
   [RoleKeyEnum.GoogleRHULDevelopersClubSoftwareEngineer]: {
     name: "Software Engineer",
-    category: ExperienceCategories.Software,
+    category: ExperienceCategoriesEnum.Software,
     type: ExperienceTypeEnum.Volunteering,
     skills: [
       SkillKeysEnum.Python,
@@ -175,7 +175,7 @@ const rolesMap: Database<RoleInterface> = {
   },
   [RoleKeyEnum.AJTuitionCentreTutor]: {
     name: "Mathematics Tutor",
-    category: ExperienceCategories.Other,
+    category: ExperienceCategoriesEnum.Other,
     type: ExperienceTypeEnum.Professional,
     company: CompanyKeyEnum.AJTuitionCentre,
     startDate: "September 2018",
@@ -200,7 +200,7 @@ const rolesMap: Database<RoleInterface> = {
   },
   [RoleKeyEnum.MadhusTeamLeader]: {
     name: "Team Leader",
-    category: ExperienceCategories.Other,
+    category: ExperienceCategoriesEnum.Other,
     type: ExperienceTypeEnum.Professional,
     company: CompanyKeyEnum.Madhus,
     startDate: "June 2018",

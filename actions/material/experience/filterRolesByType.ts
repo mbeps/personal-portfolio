@@ -1,5 +1,5 @@
 import stringToSlug from "@/actions/stringToSlug";
-import ExperienceTypeEnum from "@/enums/ExperienceType";
+import ExperienceTypeEnum from "@/enums/ExperienceTypeEnum";
 import RoleInterface from "@/interfaces/material/RoleInterface";
 
 /**

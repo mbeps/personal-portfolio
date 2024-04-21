@@ -1,13 +1,14 @@
-import ExperienceCategories from "@/enums/ExperienceCategories";
+import ExperienceCategoriesEnum from "@/enums/ExperienceCategoriesEnum";
 import MaterialInterface from "./MaterialInterface";
-import ExperienceTypeEnum from "@/enums/ExperienceType";
+import ExperienceTypeEnum from "@/enums/ExperienceTypeEnum";
 import CompanyKeyEnum from "@/enums/DatabaseKeysEnums/ExperienceCompanyEnum";
+
 /**
  * Interface representing a role related to work experience.
  * These roles are displayed on the website and show the roles held by the user.
  *
  * The fields are:
- * - `category`: the category of the role which is one of the categories defined in {@link ExperienceCategories}
+ * - `category`: the category of the role which is one of the categories defined in {@link ExperienceCategoriesEnum}
  * - `type`: the type of the experience which is one of the types defined in {@link ExperienceTypeEnum}
  * - `startDate`: the start date of the role
  * - `endDate`: the end date of the role
@@ -18,7 +19,7 @@ import CompanyKeyEnum from "@/enums/DatabaseKeysEnums/ExperienceCompanyEnum";
  * it inherits the field `skills` which is an array of `SkillKeysEnum` which is used to represent the skills that are associated to understand the material.
  */
 export default interface RoleInterface extends MaterialInterface {
-  category: ExperienceCategories;
+  category: ExperienceCategoriesEnum;
   type: ExperienceTypeEnum;
   startDate: string;
   endDate: string | "Present";
