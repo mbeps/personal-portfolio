@@ -7,6 +7,7 @@ import filterSkillsByCategory, {
 import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
 import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
 import Gallery from "@/components/Gallery/Gallery";
+import MaterialList from "@/components/MaterialLists/MaterialList";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import SkillTag from "@/components/Tags/SkillTag";
 import HeadingThree from "@/components/Text/HeadingThree";
@@ -15,12 +16,9 @@ import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
 import { PROJECTS_PAGE } from "@/constants/pages";
-import projectDatabase from "@/database/projects";
-import skillDatabase from "@/database/skills";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
-import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
-import ProjectInterface from "@/interfaces/material/ProjectInterface";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
+import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
@@ -29,8 +27,9 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
-import MaterialList from "@/components/MaterialLists/MaterialList";
-import PageDescription from "@/components/UI/PageDescription";
+import projectDatabaseMap from "@/database/Projects/ProjectDatabaseMap";
+import ProjectInterface from "@/database/Projects/ProjectInterface";
+import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 
 /**
  * Generates the metadata for the project page.
@@ -50,7 +49,7 @@ export async function generateMetadata(
   const projectKey: string = params.projectKey;
 
   // Assume getProjectBySlug function fetches project by slug
-  const project: ProjectInterface = projectDatabase[projectKey];
+  const project: ProjectInterface = projectDatabaseMap[projectKey];
 
   // Create metadata based on the project details
   return {
@@ -69,7 +68,7 @@ export async function generateMetadata(
  * @see https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration
  */
 export const generateStaticParams = async () => {
-  return Object.keys(projectDatabase).map((projectKey) => ({
+  return Object.keys(projectDatabaseMap).map((projectKey) => ({
     projectKey,
   }));
 };
@@ -94,7 +93,7 @@ interface ProjectPageProps {
 const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const projectKey: string = params.projectKey;
   const basePath: string = PROJECTS_PAGE.path;
-  const projectData: ProjectInterface = projectDatabase[projectKey];
+  const projectData: ProjectInterface = projectDatabaseMap[projectKey];
 
   // redirect to not found page if the project is not valid
   if (!projectData) {
@@ -104,32 +103,32 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const hasCoverImage: boolean = projectData.thumbnailImage !== undefined;
   const coverImagePath: string = `${basePath}/${projectKey}/cover.png`;
 
-  const projectLanguages: SkillKeysEnum[] = filterSkillsByCategory(
+  const projectLanguages: SkillDatabaseKeys[] = filterSkillsByCategory(
     projectData.skills,
-    skillDatabase,
+    skillDatabaseMap,
     SkillCategoriesEnum.ProgrammingLanguages
   );
 
-  const projectSkillsWithoutLanguage: SkillKeysEnum[] =
+  const projectSkillsWithoutLanguage: SkillDatabaseKeys[] =
     filterSkillSlugsExcludingCategory(
       projectData.skills,
-      skillDatabase,
+      skillDatabaseMap,
       SkillCategoriesEnum.ProgrammingLanguages
     );
 
-  const technologies: SkillKeysEnum[] = filterSkillsByType(
+  const technologies: SkillDatabaseKeys[] = filterSkillsByType(
     projectSkillsWithoutLanguage,
-    skillDatabase,
-    SkillTypesEnum.Hard
+    skillDatabaseMap,
+    SkillTypesEnum.Technology
   );
-  const generalSkills: SkillKeysEnum[] = filterSkillsByType(
+  const generalSkills: SkillDatabaseKeys[] = filterSkillsByType(
     projectSkillsWithoutLanguage,
-    skillDatabase,
-    SkillTypesEnum.General
+    skillDatabaseMap,
+    SkillTypesEnum.Technical
   );
-  const softSkills: SkillKeysEnum[] = filterSkillsByType(
+  const softSkills: SkillDatabaseKeys[] = filterSkillsByType(
     projectSkillsWithoutLanguage,
-    skillDatabase,
+    skillDatabaseMap,
     SkillTypesEnum.Soft
   );
 
@@ -137,19 +136,19 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const allGroupedSkills: GroupedSkillsCategoriesInterface[] = [
     categoriseAndGroupSkills(
       technologies,
-      skillDatabase,
-      SkillTypesEnum.Hard,
+      skillDatabaseMap,
+      SkillTypesEnum.Technology,
       "Technologies"
     ),
     categoriseAndGroupSkills(
       generalSkills,
-      skillDatabase,
-      SkillTypesEnum.General,
+      skillDatabaseMap,
+      SkillTypesEnum.Technical,
       "Technical Skills"
     ),
     categoriseAndGroupSkills(
       softSkills,
-      skillDatabase,
+      skillDatabaseMap,
       SkillTypesEnum.Soft,
       "Soft Skills"
     ),
@@ -197,7 +196,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   )?.content;
 
   return (
-    <div className="flex flex-col space-y-10 align-top min-h-[85vh] relative">
+    <div className="flex flex-col space-y-1 align-top min-h-[85vh] relative">
       <HeadingTwo title={projectData?.name} />
 
       {/* Gallery Section */}
@@ -233,11 +232,11 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
       )}
 
       {/* Metadata Section */}
-      <div className="mt-4">
+      <div className="mt-4 pb-10 border-b border-gray-200 dark:border-neutral-600 space-y-3">
         {/* Description Section */}
         <div className="text-center md:text-left">
           <HeadingThree title="Description" />
-          <div className="flex flex-wrap justify-center md:justify-start z-10 mt-5">
+          <div className="flex flex-wrap justify-center md:justify-start z-10 mt-2">
             <p className="text-neutral-800 dark:text-neutral-300">
               {projectData.description}
             </p>
@@ -254,7 +253,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
                   : "Language"
               }
             />
-            <div className="flex flex-wrap justify-center md:justify-start z-10 mt-5">
+            <div className="flex flex-wrap justify-center md:justify-start z-10 mt-2">
               {projectLanguages.map((language, index) => (
                 <SkillTag key={index} skillKey={language} />
               ))}
@@ -263,84 +262,83 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
         )}
 
         {/* Skills Section */}
-        <div className="mt-4">
-          {/* Skills Section */}
-          <div className="mt-4">
-            <SkillTableSection allGroupedSkills={allGroupedSkills} />
-          </div>
+        <div>
+          <SkillTableSection allGroupedSkills={allGroupedSkills} />
+        </div>
 
-          {/* Links Section */}
-          <div className="text-center md:text-left">
-            <HeadingThree title="Links" />
-            <div
-              className="
+        {/* Links Section */}
+        <div className="text-center md:text-left">
+          <HeadingThree title="Links" />
+          <div
+            className="
               mt-6 flex 
               flex-row 
               justify-center md:justify-start items-center 
               w-full md:w-1/3
               gap-2"
-            >
-              {/* GitHub Repo */}
-              {projectData?.repositoryURL && (
-                <Link
-                  href={projectData?.repositoryURL}
-                  target="_blank"
-                  className="w-full"
-                >
-                  <Button>
-                    <div
-                      className="
+          >
+            {/* GitHub Repo */}
+            {projectData?.repositoryURL && (
+              <Link
+                href={projectData?.repositoryURL}
+                target="_blank"
+                className="w-full"
+              >
+                <Button>
+                  <div
+                    className="
                         flex
                         justify-center md:justify-start
                         align-center
                         gap-4
                         w-full
                       "
-                    >
-                      <BsGithub size={26} />
-                      <p>Repository</p>
-                    </div>
-                  </Button>
-                </Link>
-              )}
-              {/* Website */}
-              {projectData?.deploymentURL && (
-                <Link
-                  href={projectData?.deploymentURL}
-                  target="_blank"
-                  className="w-full"
-                >
-                  <Button>
-                    <div
-                      className="
+                  >
+                    <BsGithub size={26} />
+                    <p>Repository</p>
+                  </div>
+                </Button>
+              </Link>
+            )}
+            {/* Website */}
+            {projectData?.deploymentURL && (
+              <Link
+                href={projectData?.deploymentURL}
+                target="_blank"
+                className="w-full"
+              >
+                <Button>
+                  <div
+                    className="
                         flex
                         justify-center md:justify-start
                         align-center
                         gap-4
                         w-full
                       "
-                    >
-                      <BsArrowUpRightCircle size={26} />
-                      <p>Deployment</p>
-                    </div>
-                  </Button>
-                </Link>
-              )}
-            </div>
+                  >
+                    <BsArrowUpRightCircle size={26} />
+                    <p>Deployment</p>
+                  </div>
+                </Button>
+              </Link>
+            )}
           </div>
         </div>
       </div>
 
-      <TabbedReader content={{ features, blog }} />
+      <div>
+        <TabbedReader content={{ features, blog }} />
+      </div>
 
+      {/* Related Materials Section */}
       {projectData.relatedMaterials &&
         projectData.relatedMaterials.length > 0 && (
           <>
-            <div className="border-b border-gray-200 dark:border-neutral-600 pb-4" />
-            <PageDescription
-              description={`List of material directly related to ${projectData.name}`}
+            <MaterialList
+              materialKeys={projectData.relatedMaterials}
+              sectionName={projectData.name}
             />
-            <MaterialList materialKeys={projectData.relatedMaterials} />
           </>
         )}
     </div>

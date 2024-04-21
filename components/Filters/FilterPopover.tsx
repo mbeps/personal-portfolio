@@ -20,15 +20,15 @@ import Link from "next/link";
 import { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 import { Button } from "../shadcn/ui/button";
+import ArchiveFilter from "@/interfaces/filters/ArchiveFilter";
+import SearchFilter from "@/interfaces/filters/SearchFilter";
 
 interface FilterPopover {
   filterCategory: FilterCategory;
   filterCategories: FilterCategory[];
+  archiveFilter: ArchiveFilter;
+  searchFilter: SearchFilter;
   basePath: string;
-  archiveFilter: {
-    paramName: string;
-    status: boolean;
-  };
 }
 
 /**
@@ -39,14 +39,16 @@ interface FilterPopover {
  * @param filterCategory The current filter category
  * @param filterCategories All the filter categories
  * @param archiveFilter The status of the archive filter
+ * @param searchFilter The currently applied search term
  * @param basePath The base path for the current page
  * @returns Popover component with filter options
  */
-const FilterPopover = ({
+const FilterPopover: React.FC<FilterPopover> = ({
   filterCategory,
   filterCategories,
   archiveFilter,
   basePath,
+  searchFilter,
 }: FilterPopover) => {
   const [isOpen, setOpen] = useState(false);
   const gap = "w-4 h-4 mr-2";
@@ -84,16 +86,24 @@ const FilterPopover = ({
                 href={generateUrl(
                   [
                     ...filterCategories.map((category) => ({
-                      entryName: category.urlParam, // Assuming urlParam maps to entryName
-                      slug: category.selectedValue, // Assuming selectedValue maps to slug
+                      // Existing filters
+                      entryName: category.urlParam,
+                      slug: category.selectedValue,
                     })),
                     {
-                      entryName: filterCategory.urlParam, // Assuming urlParam maps to entryName
-                      slug: option.slug, // Using slug directly from option
+                      // Include the current search term dynamically
+                      entryName: searchFilter.searchParamName,
+                      slug: searchFilter.searchTerm,
                     },
                     {
-                      entryName: archiveFilter.paramName, // Assuming paramName maps to entryName
-                      slug: true.toString(), // status converted to string for slug
+                      // Always show archived material when a filter is selected
+                      entryName: archiveFilter.paramName,
+                      slug: true.toString(),
+                    },
+                    {
+                      // New filter being applied
+                      entryName: filterCategory.urlParam,
+                      slug: option.slug,
                     },
                   ],
                   basePath

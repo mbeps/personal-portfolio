@@ -1,5 +1,5 @@
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
-import MaterialInterface from "@/interfaces/material/MaterialInterface";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import MaterialInterface from "@/database/Materials/MaterialInterface";
 
 /**
  * Checks whether a skill is associated with any material.
@@ -9,7 +9,7 @@ import MaterialInterface from "@/interfaces/material/MaterialInterface";
  * @returns Whether the skill is associated with any material
  */
 export default function isSkillAssociatedWithMaterial(
-  skillKey: SkillKeysEnum,
+  skillKey: SkillDatabaseKeys,
   materialsDatabase: Database<MaterialInterface>
 ): boolean {
   // Loop through the materialsMap

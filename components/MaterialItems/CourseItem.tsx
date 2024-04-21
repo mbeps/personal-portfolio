@@ -1,6 +1,6 @@
 import { EDUCATION_PAGE } from "@/constants/pages";
-import courseDatabase from "@/database/courses";
-import UniversityCourseInterface from "@/interfaces/material/UniversityCourseInterface";
+import courseDatabaseMap from "@/database/Courses/CourseDatabaseMap";
+import CourseInterface from "@/database/Courses/CourseInterface";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -13,7 +13,7 @@ interface CourseItemProps {
 
 const CourseItem: React.FC<CourseItemProps> = ({ courseKey }) => {
   const basePath: string = EDUCATION_PAGE.path;
-  let courseData: UniversityCourseInterface = courseDatabase[courseKey];
+  let courseData: CourseInterface = courseDatabaseMap[courseKey];
 
   courseData = {
     ...courseData,
@@ -24,12 +24,13 @@ const CourseItem: React.FC<CourseItemProps> = ({ courseKey }) => {
     <div
       className="
         bg-neutral-100 dark:bg-neutral-950
+        border border-neutral-200 dark:border-neutral-800
+        shadow-sm
         p-3 lg:p-6 rounded-xl
         transition-colors duration-700
         flex flex-col
         animate-slideUpCubiBezier animation-delay-2
-        h-full
-        w-full
+        h-full w-full
       "
     >
       {/* Certificate Image */}
@@ -40,7 +41,7 @@ const CourseItem: React.FC<CourseItemProps> = ({ courseKey }) => {
             flex justify-center
             rounded-xl
             transform md:hover:scale-105
-            shadow-lg md:hover:shadow-2xl
+            shadow-sm md:hover:shadow-lg
             transition-all duration-500 ease-in-out
             mb-6
             w-full
@@ -69,7 +70,7 @@ const CourseItem: React.FC<CourseItemProps> = ({ courseKey }) => {
       <div
         className="
         flex flex-col 
-        gap-8 px-4 py-4"
+        gap-5 px-4 py-4"
       >
         {/* Certificate Title */}
         <Link href={`education/${courseKey}`}>

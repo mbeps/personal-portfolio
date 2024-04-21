@@ -1,5 +1,5 @@
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
-import MaterialInterface from "@/interfaces/material/MaterialInterface";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import MaterialInterface from "@/database/Materials/MaterialInterface";
 
 /**
  * Filters the materials that match a specific skill.
@@ -11,7 +11,7 @@ import MaterialInterface from "@/interfaces/material/MaterialInterface";
  * @returns The keys of the materials that match the skill
  */
 export default function filterMaterialBySkill<T extends MaterialInterface>(
-  skillKey: SkillKeysEnum,
+  skillKey: SkillDatabaseKeys,
   materialKeys: string[],
   materialDatabase: Database<T>
 ): string[] {

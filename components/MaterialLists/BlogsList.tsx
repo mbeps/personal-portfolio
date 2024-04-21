@@ -22,16 +22,21 @@ const BlogsList: React.FC<MaterialListProps> = ({
           (group) =>
             group.groupName !== "All" && (
               <section key={group.groupName} id={stringToSlug(group.groupName)}>
-                <div className="flex flex-col space-y-10">
+                <div className="flex flex-col space-y-5">
                   {groupedBlogs.length > 1 && (
                     <>
-                      <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
+                      <div className="border-b border-gray-200 dark:border-neutral-600 pb-1" />
                       <HeadingTwo title={group.groupName} />
                     </>
                   )}
                   <Grid
                     items={group.materialsKeys.map((blogKey) => (
-                      <BlogItem key={blogKey} blogKey={blogKey} />
+                      <div
+                        key={blogKey}
+                        className="animate-slideUpCubiBezier animation-delay-1"
+                      >
+                        <BlogItem key={blogKey} blogKey={blogKey} />
+                      </div>
                     ))}
                   />
                 </div>

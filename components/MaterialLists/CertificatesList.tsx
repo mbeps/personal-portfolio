@@ -23,19 +23,21 @@ const CertificatesList: React.FC<MaterialListProps> = ({
           (group) =>
             group.groupName !== "All" && (
               <section key={group.groupName} id={stringToSlug(group.groupName)}>
-                <div className="flex flex-col space-y-10">
+                <div className="flex flex-col space-y-6">
                   {groupedCertificates.length > 1 && (
                     <>
-                      <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
+                      <div className="border-b border-gray-200 dark:border-neutral-600 pb-1" />
                       <HeadingTwo title={group.groupName} />
                     </>
                   )}
                   <Grid
                     items={group.materialsKeys.map((certificateKey) => (
-                      <CertificateItem
+                      <div
+                        className="animate-slideUpCubiBezier animation-delay-1 h-full"
                         key={certificateKey}
-                        certificateKey={certificateKey}
-                      />
+                      >
+                        <CertificateItem certificateKey={certificateKey} />
+                      </div>
                     ))}
                   />
                 </div>

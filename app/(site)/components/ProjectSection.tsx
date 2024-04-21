@@ -3,7 +3,7 @@ import HeadingTwo from "@/components/Text/HeadingTwo";
 import SlideUp from "@/components/UI/Slideup";
 import { Button } from "@/components/shadcn/ui/button";
 import { PROJECTS_PAGE } from "@/constants/pages";
-import ProjectKeysEnum from "@/enums/DatabaseKeysEnums/ProjectKeysEnum";
+import ProjectDatabaseKeys from "@/database/Projects/ProjectDatabaseKeys";
 import Link from "next/link";
 
 /**
@@ -21,9 +21,9 @@ const ProjectsSection = () => {
    * In other words, only these projects will be displayed on the home page.
    */
   const displayedProjects: string[] = [
-    ProjectKeysEnum.CircusDiscussions,
-    ProjectKeysEnum.RingmasterMessaging,
-    ProjectKeysEnum.MagicianAI,
+    ProjectDatabaseKeys.CircusDiscussions,
+    ProjectDatabaseKeys.RingmasterMessaging,
+    ProjectDatabaseKeys.MagicianAI,
   ];
 
   return (

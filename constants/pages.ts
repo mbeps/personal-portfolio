@@ -70,6 +70,19 @@ export const EDUCATION_PAGE: NavigationItemInterface = {
 };
 
 /**
+ * Navigation item for the education page.
+ * This is where the user can view my education history and qualifications.
+ * For each qualification, the user can view the modules that I have studied.
+ */
+export const EXPERIENCE_PAGE: NavigationItemInterface = {
+  label: "Experience",
+  path: "/experience",
+  description: `
+    Dive into my professional journey. 
+    Discover the roles I've embraced, projects I've spearheaded, and the impact I've made.
+  `,
+};
+/**
  * Navigation item for the skills page.
  * This is where the user can view my skills and filter them according to their preferences.
  */
@@ -91,9 +104,10 @@ export const SKILL_PAGE: NavigationItemInterface = {
  */
 const NAV_ITEMS: Array<NavigationItemInterface> = [
   PROJECTS_PAGE,
+  EXPERIENCE_PAGE,
+  EDUCATION_PAGE,
   CERTIFICATES_PAGE,
   BLOG_PAGE,
-  EDUCATION_PAGE,
 ];
 
 export default NAV_ITEMS;

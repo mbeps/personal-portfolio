@@ -1,6 +1,6 @@
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
-import UniversityCourseInterface from "@/interfaces/material/UniversityCourseInterface";
-import UniversityModuleInterface from "@/interfaces/material/UniversityModuleInterface";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import CourseInterface from "@/database/Courses/CourseInterface";
+import ModuleInterface from "@/database/Modules/ModuleInterface";
 
 /**
  * Adds the skills a course's modules to the course's skills itself.
@@ -11,15 +11,15 @@ import UniversityModuleInterface from "@/interfaces/material/UniversityModuleInt
  * @returns The courses with the aggregated skills.
  */
 export default function aggregateSkillsForCourse(
-  course: UniversityCourseInterface,
-  modulesDatabase: Database<UniversityModuleInterface>
-): UniversityCourseInterface {
+  course: CourseInterface,
+  modulesDatabase: Database<ModuleInterface>
+): CourseInterface {
   // Start with existing skills in the course, if any
-  let aggregatedSkills: SkillKeysEnum[] = [...course.skills];
+  let aggregatedSkills: SkillDatabaseKeys[] = [...course.skills];
 
   // Iterate over each module key in the course
   course.modules.forEach((moduleKey) => {
-    const moduleData: UniversityModuleInterface = modulesDatabase[moduleKey]; // Avoid using 'module' as a variable name
+    const moduleData: ModuleInterface = modulesDatabase[moduleKey]; // Avoid using 'module' as a variable name
     // Ensure the moduleData exists and has skills
     if (moduleData && moduleData.skills) {
       // Aggregate the skills

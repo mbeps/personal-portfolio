@@ -1,5 +1,5 @@
+import MaterialInterface from "@/database/Materials/MaterialInterface";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
-import MaterialInterface from "@/interfaces/material/MaterialInterface";
 
 /**
  * Groups the materials by their category.

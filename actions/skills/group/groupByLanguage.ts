@@ -1,14 +1,15 @@
-import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import SkillInterface from "@/database/Skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 
 export default function groupByLanguage(
-  skillKeys: SkillKeysEnum[],
+  skillKeys: SkillDatabaseKeys[],
   skillsDatabase: Database<SkillInterface>
 ): SkillsCategoryInterface[] {
-  const groupedSkills: { [skillCategoryName: string]: SkillKeysEnum[] } = {};
-  const noLanguageSkills: SkillKeysEnum[] = []; // Temporarily hold skills not related to any language
+  const groupedSkills: { [skillCategoryName: string]: SkillDatabaseKeys[] } =
+    {};
+  const noLanguageSkills: SkillDatabaseKeys[] = []; // Temporarily hold skills not related to any language
 
   skillKeys.forEach((skillKey) => {
     const skill: SkillInterface = skillsDatabase[skillKey];

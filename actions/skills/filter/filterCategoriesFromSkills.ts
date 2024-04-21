@@ -1,6 +1,6 @@
-import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import SkillInterface from "@/database/Skills/SkillInterface";
 
 /**
  * Filter out skills that belong to the specified categories.
@@ -12,9 +12,9 @@ import SkillInterface from "@/interfaces/skills/SkillInterface";
 export default function filterCategoriesFromSkills(
   skillsDatabase: Database<SkillInterface>,
   ignoredCategories: SkillCategoriesEnum[]
-): SkillKeysEnum[] {
+): SkillDatabaseKeys[] {
   return Object.keys(skillsDatabase).filter((skillKey) => {
     const skill: SkillInterface = skillsDatabase[skillKey];
     return !ignoredCategories.includes(skill.category);
-  }) as SkillKeysEnum[];
+  }) as SkillDatabaseKeys[];
 }

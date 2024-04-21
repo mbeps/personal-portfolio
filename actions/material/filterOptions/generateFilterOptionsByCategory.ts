@@ -1,5 +1,5 @@
 import FilterOption from "@/interfaces/filters/FilterOption";
-import MaterialInterface from "@/interfaces/material/MaterialInterface";
+import MaterialInterface from "@/database/Materials/MaterialInterface";
 import stringToSlug from "../../stringToSlug";
 
 /**

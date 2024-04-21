@@ -9,10 +9,10 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
-import skillDatabase from "@/database/skills";
-import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
+import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import SkillInterface from "@/database/Skills/SkillInterface";
 
 /**
  * Displays a list of skills that I have.
@@ -23,15 +23,15 @@ import SkillInterface from "@/interfaces/skills/SkillInterface";
 const TechnologiesSection: React.FC = () => {
   const mainSkills: Database<SkillInterface> = {};
 
-  Object.entries(skillDatabase).forEach(([key, skill]) => {
+  Object.entries(skillDatabaseMap).forEach(([key, skill]) => {
     if (skill.isMainSkill) {
       mainSkills[key] = skill;
     }
   });
 
-  const mainSkillSlugs: SkillKeysEnum[] = Object.keys(
+  const mainSkillSlugs: SkillDatabaseKeys[] = Object.keys(
     mainSkills
-  ) as SkillKeysEnum[];
+  ) as SkillDatabaseKeys[];
 
   /**
    * This is a list of categories that should be ignored.
@@ -53,7 +53,7 @@ const TechnologiesSection: React.FC = () => {
    * Only technologies (hard skills) are displayed.
    * Skills from programming languages are not displayed.
    */
-  const skillsToDisplay: SkillKeysEnum[] = filterCategoriesFromSkills(
+  const skillsToDisplay: SkillDatabaseKeys[] = filterCategoriesFromSkills(
     mainSkills,
     ignoredCategories
   );
@@ -65,9 +65,9 @@ const TechnologiesSection: React.FC = () => {
    * @returns List of skill names
    */
   function firstNSkills(
-    skillKeys: SkillKeysEnum[],
+    skillKeys: SkillDatabaseKeys[],
     totalLimit: number
-  ): SkillKeysEnum[] {
+  ): SkillDatabaseKeys[] {
     return skillKeys.slice(0, totalLimit);
   }
 
@@ -78,15 +78,15 @@ const TechnologiesSection: React.FC = () => {
    * @returns List of skill names
    */
   function firstNSkillsPerCategory(
-    skillKeys: SkillKeysEnum[],
+    skillKeys: SkillDatabaseKeys[],
     limitPerCategory: number
-  ): SkillKeysEnum[] {
-    const skillCategories: { [categoryName: string]: SkillKeysEnum[] } = {};
-    let limitedSkillSlugs: SkillKeysEnum[] = [];
+  ): SkillDatabaseKeys[] {
+    const skillCategories: { [categoryName: string]: SkillDatabaseKeys[] } = {};
+    let limitedSkillSlugs: SkillDatabaseKeys[] = [];
 
     // Organize skill slugs into categories
     skillKeys.forEach((skillSlug) => {
-      const skillDetails: SkillInterface = skillDatabase[skillSlug];
+      const skillDetails: SkillInterface = skillDatabaseMap[skillSlug];
       const category: SkillCategoriesEnum = skillDetails.category || "Other";
 
       if (!skillCategories[category]) {
@@ -107,7 +107,7 @@ const TechnologiesSection: React.FC = () => {
     return limitedSkillSlugs;
   }
 
-  function handleDisplaySkills(): SkillKeysEnum[] {
+  function handleDisplaySkills(): SkillDatabaseKeys[] {
     return firstNSkills(firstNSkillsPerCategory(skillsToDisplay, 2), 16);
   }
 
@@ -115,9 +115,11 @@ const TechnologiesSection: React.FC = () => {
     <>
       <HeadingThree title="Technologies" />
       <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start -mt-2">
-        {handleDisplaySkills().map((skillSlug: SkillKeysEnum, idx: number) => (
-          <SkillTag key={idx} skillKey={skillSlug} />
-        ))}
+        {handleDisplaySkills().map(
+          (skillSlug: SkillDatabaseKeys, idx: number) => (
+            <SkillTag key={idx} skillKey={skillSlug} />
+          )
+        )}
 
         <div className="relative group">
           {/* Tag that opens skills modal */}

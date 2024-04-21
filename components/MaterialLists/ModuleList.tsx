@@ -1,9 +1,9 @@
 import findCourseKeyForModule from "@/actions/material/course/findCourseKeyForModule";
 import Grid from "@/components/UI/Grid";
 import { EDUCATION_PAGE } from "@/constants/pages";
-import courseDatabase from "@/database/courses";
-import moduleDatabase from "@/database/modules";
-import UniversityModuleKeysEnum from "@/enums/DatabaseKeysEnums/UniversityModuleKeysEnum";
+import courseDatabaseMap from "@/database/Courses/CourseDatabaseMap";
+import moduleDatabaseMap from "@/database/Modules/ModuleDatabaseMap";
+import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import Link from "next/link";
 import Tag from "../Tags/Tag";
@@ -26,7 +26,7 @@ const ModuleList: React.FC<ModuleListProps> = ({
     headingSize === "HeadingTwo" ? HeadingTwo : HeadingFour;
 
   return (
-    <div className="material-page-wrapper border-t border-gray-200 dark:border-neutral-600 pt-10">
+    <div>
       {groupedModules.map((group, index) => (
         <div key={index} className="mb-4">
           {groupedModules.length > 1 && (
@@ -36,13 +36,21 @@ const ModuleList: React.FC<ModuleListProps> = ({
             gap={1}
             items={group.materialsKeys.map((moduleKey, idx) => {
               const courseKey = findCourseKeyForModule(
-                moduleKey as UniversityModuleKeysEnum,
-                courseDatabase
+                moduleKey as ModuleDatabaseKeys,
+                courseDatabaseMap
               );
               return (
-                <Link href={`${basePath}/${courseKey}/${moduleKey}`} key={idx}>
-                  <Tag hasHover>{moduleDatabase[moduleKey].name}</Tag>
-                </Link>
+                <div
+                  key={idx}
+                  className="animate-slideUpCubiBezier animation-delay-1"
+                >
+                  <Link
+                    href={`${basePath}/${courseKey}/${moduleKey}`}
+                    key={idx}
+                  >
+                    <Tag hasHover>{moduleDatabaseMap[moduleKey].name}</Tag>
+                  </Link>
+                </div>
               );
             })}
           />

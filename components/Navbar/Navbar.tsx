@@ -87,7 +87,7 @@ export default function Navbar() {
               className="
               md:flex
               items-center justify-center 
-              space-y-8 md:space-x-6 md:space-y-0"
+              space-y-7 md:space-x-5 md:space-y-0"
             >
               {/* Links  */}
               {NAV_ITEMS.map((item) => {

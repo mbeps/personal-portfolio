@@ -1,5 +1,5 @@
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import SkillInterface from "@/database/Skills/SkillInterface";
 
 /**
  * Gets the skills database from the given skill keys.
@@ -9,7 +9,7 @@ import SkillInterface from "@/interfaces/skills/SkillInterface";
  * @returns The skills database from the given skill keys
  */
 export default function getSkillsDatabaseFromKeys(
-  skillKeys: SkillKeysEnum[],
+  skillKeys: SkillDatabaseKeys[],
   skillsDatabase: Database<SkillInterface>
 ): Database<SkillInterface> {
   const filteredSkills: Database<SkillInterface> = {};

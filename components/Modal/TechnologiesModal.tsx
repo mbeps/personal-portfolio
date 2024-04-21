@@ -15,12 +15,14 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/shadcn/ui/dropdown-menu";
-import skillDatabase, { skillKeys } from "@/database/skills";
-import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
+import skillDatabaseMap, {
+  skillDatabaseKeys,
+} from "@/database/Skills/SkillDatabaseMap";
+import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
+import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import useIsMounted from "@/hooks/useIsMounted";
 import FilterOption from "@/interfaces/filters/FilterOption";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillInterface from "@/database/Skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -31,7 +33,7 @@ import HeadingThree from "../Text/HeadingThree";
 import HeadingTwo from "../Text/HeadingTwo";
 import { Button } from "../shadcn/ui/button";
 import { ScrollArea } from "../shadcn/ui/scroll-area";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 
 /**
  * Displays a modal for the skills.
@@ -64,7 +66,7 @@ const TechnologiesModal: React.FC = () => {
 
   const mainSkillsHashMap: Database<SkillInterface> = {};
 
-  Object.entries(skillDatabase).forEach(([key, skill]) => {
+  Object.entries(skillDatabaseMap).forEach(([key, skill]) => {
     if (skill.isMainSkill) {
       mainSkillsHashMap[key] = skill;
     }
@@ -93,7 +95,7 @@ const TechnologiesModal: React.FC = () => {
    * Only technologies (hard skills) are displayed.
    * Skills from programming languages are not displayed.
    */
-  const skillsToDisplay: SkillKeysEnum[] = filterCategoriesFromSkills(
+  const skillsToDisplay: SkillDatabaseKeys[] = filterCategoriesFromSkills(
     mainSkillsHashMap,
     ignoredCategories
   );
@@ -104,8 +106,8 @@ const TechnologiesModal: React.FC = () => {
   const groupedSkills: SkillsCategoryInterface[] = groupSkills(
     groupedBy as GroupByOptions,
     skillsToDisplay,
-    skillDatabase,
-    [SkillTypesEnum.General, SkillTypesEnum.Soft]
+    skillDatabaseMap,
+    [SkillTypesEnum.Technical, SkillTypesEnum.Soft]
   );
 
   const currentGroupedName: string =

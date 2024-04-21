@@ -21,16 +21,19 @@ const ProjectsList: React.FC<MaterialListProps> = ({
           (group) =>
             group.groupName !== "All" && (
               <section key={group.groupName} id={stringToSlug(group.groupName)}>
-                <div className="flex flex-col space-y-10">
+                <div className="flex flex-col space-y-6">
                   {groupedProjects.length > 1 && (
                     <>
-                      <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
+                      <div className="border-b border-gray-200 dark:border-neutral-600 pb-1" />
                       <HeadingTwo title={group.groupName} />
                     </>
                   )}
                   <div className="space-y-20">
                     {group.materialsKeys.map((projectKey) => (
-                      <div key={projectKey}>
+                      <div
+                        key={projectKey}
+                        className="animate-slideUpCubiBezier animation-delay-1"
+                      >
                         <ProjectItem projectKey={projectKey} />
                       </div>
                     ))}

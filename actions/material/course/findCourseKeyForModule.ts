@@ -1,9 +1,9 @@
-import UniversityModuleKeysEnum from "@/enums/DatabaseKeysEnums/UniversityModuleKeysEnum";
-import UniversityCourseInterface from "@/interfaces/material/UniversityCourseInterface";
+import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
+import CourseInterface from "@/database/Courses/CourseInterface";
 
 export default function findCourseKeyForModule(
-  moduleKey: UniversityModuleKeysEnum,
-  coursesDatabase: Database<UniversityCourseInterface>
+  moduleKey: ModuleDatabaseKeys,
+  coursesDatabase: Database<CourseInterface>
 ): string | null {
   // Iterate through the courses to find the one related to the specified module
   for (const [courseKey, course] of Object.entries(coursesDatabase)) {

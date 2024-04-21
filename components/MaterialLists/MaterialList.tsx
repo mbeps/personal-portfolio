@@ -1,164 +1,69 @@
-"use client";
-
-import groupMaterialsByMaterialType from "@/actions/material/group/groupMaterialsByMaterialType";
-import BlogsList from "@/components/MaterialLists/BlogsList";
-import CertificatesList from "@/components/MaterialLists/CertificatesList";
-import ModuleList from "@/components/MaterialLists/ModuleList";
-import ProjectsList from "@/components/MaterialLists/ProjectsList";
-import { Button } from "@/components/shadcn/ui/button";
-import { BLOG_PAGE, CERTIFICATES_PAGE, PROJECTS_PAGE } from "@/constants/pages";
-import blogDatabase, { blogKeys } from "@/database/blogs";
-import certificateDatabase, { certificateKeys } from "@/database/certificates";
-import moduleDatabase, { moduleKeys } from "@/database/modules";
-import projectDatabase, { projectKeys } from "@/database/projects";
-import MaterialType from "@/enums/MaterialType";
-import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
-import MaterialInterface from "@/interfaces/material/MaterialInterface";
-import MaterialListProps from "@/interfaces/props/MaterialListProps";
-import Link from "next/link";
-import React, { useState } from "react";
 import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/shadcn/ui/tabs";
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/shadcn/ui/accordion";
+import MaterialTypeEnum from "@/enums/Material/MaterialTypeEnum";
+import React from "react";
+import MaterialTab from "./MaterialTab";
 
-interface MaterialSectionInterface {
-  name: MaterialType;
-  materials: string[];
-  materialHashmap: Database<MaterialInterface>;
-  basePath?: string;
-  ListComponent: React.ComponentType<MaterialListProps>;
-}
-
-interface MaterialSectionProps {
+export interface MaterialTabsProps {
   materialKeys: string[];
-  defaultTab?: MaterialType;
+  defaultTab?: MaterialTypeEnum;
+  isCollapsible?: boolean;
+  sectionName?: string;
 }
 
 /**
- * Component displaying a list of all materials.
- * This includes:
- * - Projects
- * - Certificates
- * - Blogs
- * - Modules
+ * A component displaying all the materials in a tabbed list.
+ * Each tab contains a list of materials of a specific type, for example, 'projects', certificates', etc.
+ * This allows the user to quickly view the materials of a specific type without having to scroll through a long list.
  *
- * @param materialKeys The keys of the material to display.
- * @returns Section displaying all the material for a given skill.
+ * When `isCollapsible` is true, the list is displayed in an accordion format which is collapsed by default.
+ * When `isCollapsible` is false, the list is displayed directly without the accordion and it cannot be collapsed.
+ *
+ * @param materialKeys List of keys for the materials that need to be displayed
+ * @param defaultTab The default tab to be displayed when the list is rendered
+ * @param isCollapsible Whether the list should be collapsible or not
+ * @param sectionName The name of the section that the materials are related to which is displayed in the accordion trigger
+ * @returns A tabbed list of materials
  */
-const MaterialList: React.FC<MaterialSectionProps> = ({
+const MaterialList: React.FC<MaterialTabsProps> = ({
   materialKeys,
   defaultTab,
+  isCollapsible = true,
+  sectionName,
 }) => {
-  const [selectedTab, setSelectedTab] = useState(defaultTab || "");
-
-  if (!materialKeys || materialKeys.length === 0) {
-    return null;
-  }
-
-  const sections: MaterialSectionInterface[] = [
-    {
-      name: MaterialType.Projects,
-      materials: projectKeys,
-      materialHashmap: projectDatabase,
-      basePath: PROJECTS_PAGE.path,
-      ListComponent: ProjectsList,
-    },
-    {
-      name: MaterialType.Certificates,
-      materials: certificateKeys,
-      materialHashmap: certificateDatabase,
-      basePath: CERTIFICATES_PAGE.path,
-      ListComponent: CertificatesList,
-    },
-    {
-      name: MaterialType.Blogs,
-      materials: blogKeys,
-      materialHashmap: blogDatabase,
-      basePath: BLOG_PAGE.path,
-      ListComponent: BlogsList,
-    },
-    {
-      name: MaterialType.Modules,
-      materials: moduleKeys,
-      materialHashmap: moduleDatabase,
-      ListComponent: ModuleList,
-    },
-  ];
-
-  // Filter out sections with no materials
-  const nonEmptySections: MaterialSectionInterface[] = sections.filter(
-    ({ materials, materialHashmap, name }) => {
-      const groupedMaterials: MaterialGroupInterface[] =
-        groupMaterialsByMaterialType(materialKeys, materialHashmap, name);
-      return (
-        groupedMaterials[0] && groupedMaterials[0].materialsKeys.length > 0
-      );
-    }
-  );
-
-  // Set default tab if none is selected
-  if (!selectedTab && nonEmptySections.length > 0) {
-    setSelectedTab(nonEmptySections[0].name);
-  }
-
-  return (
-    <Tabs
-      defaultValue={selectedTab}
-      className="w-full items-center md:items-start justify-center"
-      value={selectedTab}
-      onValueChange={setSelectedTab}
-    >
-      <TabsList
-        className="
-          mt-6 md:-ml-4
-          w-full md:w-auto 
-          bg-transparent 
-          flex-col md:flex-row
-          "
-      >
-        {nonEmptySections.map(({ name }) => (
-          <TabsTrigger
-            key={name}
-            value={name}
+  return isCollapsible ? (
+    <Accordion type="single" collapsible className="mt-16">
+      <AccordionItem value="item-1" className="border-none">
+        <AccordionTrigger
+          className="
+            rounded-xl px-3
+            border
+            border-neutral-200 dark:border-neutral-800
+            hover:border-neutral-300 dark:hover:border-neutral-700
+            bg-neutral-50 dark:bg-neutral-950
+            shadow-sm hover:shadow-md
+            transition-all duration-500 ease-in-out"
+        >
+          <p
             className="
-              text-2xl md:text-2xl font-bold
-              data-[state=inactive]:text-neutral-400 dark:data-[state=inactive]:text-neutral-600
-              data-[state=active]:shadow-none data-[state=active]:bg-transparent
-              transition-all duration-500
+              text-lg font-semibold text-left
+              text-neutral-700 dark:text-neutral-300
               "
           >
-            {name}
-          </TabsTrigger>
-        ))}
-      </TabsList>
-
-      {nonEmptySections.map(
-        ({ name, materialHashmap, ListComponent, basePath }) => {
-          const groupedMaterials = groupMaterialsByMaterialType(
-            materialKeys,
-            materialHashmap,
-            name
-          );
-          return (
-            <TabsContent key={name} value={name}>
-              <div className="mt-4 text-center md:text-left">
-                <ListComponent groupedMaterial={groupedMaterials} />
-                {basePath && (
-                  <div className="flex justify-center mt-10">
-                    <Link href={basePath}>
-                      <Button variant="outline">{`View All ${name}`}</Button>
-                    </Link>
-                  </div>
-                )}
-              </div>
-            </TabsContent>
-          );
-        }
-      )}
-    </Tabs>
+            {`List of material directly related to ${sectionName}`}
+          </p>
+        </AccordionTrigger>
+        <AccordionContent className="mt-4">
+          <MaterialTab materialKeys={materialKeys} defaultTab={defaultTab} />
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  ) : (
+    <MaterialTab materialKeys={materialKeys} defaultTab={defaultTab} />
   );
 };
 

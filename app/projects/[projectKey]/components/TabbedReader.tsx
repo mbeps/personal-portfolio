@@ -61,7 +61,6 @@ const TabbedReader: React.FC<TabbedReaderProps> = ({ content }) => {
     <div
       className="
         flex flex-col items-center
-        border-t border-gray-200 dark:border-neutral-600
         pt-8
       "
     >

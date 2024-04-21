@@ -1,6 +1,6 @@
-import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import SkillInterface from "@/database/Skills/SkillInterface";
 
 /**
  * Filters skills which belong to a specific category.
@@ -12,12 +12,12 @@ import SkillInterface from "@/interfaces/skills/SkillInterface";
  * @returns The filtered skill keys which belong to the specific category
  */
 export default function filterSkillsByCategory(
-  skillKeys: SkillKeysEnum[],
+  skillKeys: SkillDatabaseKeys[],
   skillsDatabase: Database<SkillInterface>,
   specificCategory: SkillCategoriesEnum
-): SkillKeysEnum[] {
+): SkillDatabaseKeys[] {
   // Initialize an empty array for the filtered skill slugs
-  const filteredSkillSlugs: SkillKeysEnum[] = [];
+  const filteredSkillSlugs: SkillDatabaseKeys[] = [];
 
   // Iterate over the skill slugs array
   skillKeys.forEach((skillKey) => {
@@ -42,12 +42,12 @@ export default function filterSkillsByCategory(
  * @returns The filtered skill keys which do not belong to the excluded category
  */
 export function filterSkillSlugsExcludingCategory(
-  skillKeys: SkillKeysEnum[],
+  skillKeys: SkillDatabaseKeys[],
   skillsDatabase: Database<SkillInterface>, // Assuming this is passed into the function
   excludedCategory: SkillCategoriesEnum
-): SkillKeysEnum[] {
+): SkillDatabaseKeys[] {
   // Initialize an empty array for the skill slugs that do not match the excluded category
-  const nonMatchingSkillSlugs: SkillKeysEnum[] = [];
+  const nonMatchingSkillSlugs: SkillDatabaseKeys[] = [];
 
   // Iterate over the skill slugs array
   skillKeys.forEach((skillKey) => {

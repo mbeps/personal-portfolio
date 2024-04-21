@@ -10,6 +10,7 @@
  * When a user selects this option, the URL will be updated with the slug 'javascript'.
  */
 export default interface FilterOption {
+  //TODO: change names to paramName and paramValue
   entryName: string;
   slug: string;
 }

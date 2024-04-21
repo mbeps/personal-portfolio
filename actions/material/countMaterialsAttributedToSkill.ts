@@ -1,6 +1,6 @@
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
-import MaterialInterface from "@/interfaces/material/MaterialInterface";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import MaterialInterface from "@/database/Materials/MaterialInterface";
+import SkillInterface from "@/database/Skills/SkillInterface";
 
 /**
  * Counts the number of materials attributed to a skill or its related skills.
@@ -12,13 +12,13 @@ import SkillInterface from "@/interfaces/skills/SkillInterface";
  * @returns The number of materials attributed to the skill
  */
 export default function countMaterialsAttributedToSkill(
-  skillKey: SkillKeysEnum,
+  skillKey: SkillDatabaseKeys,
   skillsDatabase: Database<SkillInterface>,
   materialsDatabase: Database<MaterialInterface>
 ): number {
   // checks if the skill or its related skills are present in the material
   function isSkillOrRelatedSkillPresent(
-    materialSkillKeys: SkillKeysEnum[]
+    materialSkillKeys: SkillDatabaseKeys[]
   ): boolean {
     if (materialSkillKeys.includes(skillKey)) {
       return true;

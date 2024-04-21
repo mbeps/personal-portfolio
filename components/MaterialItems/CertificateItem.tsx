@@ -4,8 +4,8 @@ import {
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
 import { CERTIFICATES_PAGE } from "@/constants/pages";
-import certificateDatabase from "@/database/certificates";
-import CertificateInterface from "@/interfaces/material/CertificateInterface";
+import certificateDatabaseMap from "@/database/Certificates/CertificateDatabaseMap";
+import CertificateInterface from "@/database/Certificates/CertificateInterface";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -33,7 +33,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
 }) => {
   const basePath: string = CERTIFICATES_PAGE.path;
   let certificateData: CertificateInterface =
-    certificateDatabase[certificateKey];
+    certificateDatabaseMap[certificateKey];
 
   const customCertificatePage: string = `${basePath}/${certificateKey}`;
   const issuerCertificatePage: string = certificateData.certificateURL;
@@ -47,12 +47,12 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
     <div
       className="
         bg-neutral-100 dark:bg-neutral-950
+        border border-neutral-200 dark:border-neutral-800
         p-3 lg:p-6 rounded-xl
         transition-colors duration-700
         flex flex-col
-        animate-slideUpCubiBezier animation-delay-2
-        h-full
-        w-full
+        h-full w-full
+        shadow-sm
       "
     >
       {/* Certificate Image */}
@@ -63,7 +63,8 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
             flex justify-center
             rounded-xl
             transform md:hover:scale-105
-            shadow-lg md:hover:shadow-2xl
+            shadow-sm md:hover:shadow-lg
+            border border-neutral-100 dark:border-neutral-800
             transition-all duration-500 ease-in-out
             mb-6
             w-full
@@ -136,11 +137,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
           {certificateData.certificateURL && (
             <Tooltip>
               <TooltipTrigger>
-                <Link
-                  href={issuerCertificatePage}
-                  target="_blank"
-                  title="View Certificates on Provider's Website"
-                >
+                <Link href={issuerCertificatePage} target="_blank">
                   <BsArrowUpRightCircle
                     size={30}
                     className="md:hover:-translate-y-1 transition-transform cursor-pointer"

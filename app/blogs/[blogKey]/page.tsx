@@ -5,15 +5,14 @@ import MaterialList from "@/components/MaterialLists/MaterialList";
 import Reader from "@/components/Reader/Reader";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import PageDescription from "@/components/UI/PageDescription";
 import developerName from "@/constants/developerName";
 import { BLOG_PAGE } from "@/constants/pages";
-import blogDatabase from "@/database/blogs";
-import certificateDatabase from "@/database/certificates";
-import skillDatabase from "@/database/skills";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
-import SkillTypesEnum from "@/enums/SkillTypesEnum";
-import BlogInterface from "@/interfaces/material/BlogInterface";
+import BlogInterface from "@/database/Blogs/BlogInterface";
+import blogsDatabaseMap from "@/database/Blogs/BlogsDatabaseMap";
+import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
+import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -37,7 +36,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const blogKey: string = params.blogKey;
-  const blog: BlogInterface = blogDatabase[blogKey];
+  const blog: BlogInterface = blogsDatabaseMap[blogKey];
 
   return {
     title: `${developerName} - Blogs: ${blog?.name}`,
@@ -56,22 +55,24 @@ export async function generateMetadata(
  * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
  */
 export const generateStaticParams = async () => {
-  return Object.keys(blogDatabase).map((blogKey) => ({
+  return Object.keys(blogsDatabaseMap).map((blogKey) => ({
     blogKey,
   }));
 };
 
 /**
  * Page displaying the rendered markdown which can be read by the user.
- * The blog also displays the skills used in the blog.
+ * The page also displays:
+ * - The skills covered in the blog
+ * - Related materials
  *
- * @param props The content of the blog
+ * @param params The parameters for the blog page
  * @returns Content of the blog and the skills used
  */
 const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
   const blogKey: string = params.blogKey;
   const basePath: string = BLOG_PAGE.path;
-  const blogData: BlogInterface = blogDatabase[blogKey];
+  const blogData: BlogInterface = blogsDatabaseMap[blogKey];
   const blogContent: string | undefined = getMarkdownFromFileSystem(
     `public${basePath}/${blogKey}/blog.md`
   )?.content;
@@ -80,39 +81,39 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
     notFound();
   }
 
-  const technologies: SkillKeysEnum[] = filterSkillsByType(
+  const technologies: SkillDatabaseKeys[] = filterSkillsByType(
     blogData.skills,
-    skillDatabase,
-    SkillTypesEnum.Hard
+    skillDatabaseMap,
+    SkillTypesEnum.Technology
   );
-  const generalSkills: SkillKeysEnum[] = filterSkillsByType(
+  const generalSkills: SkillDatabaseKeys[] = filterSkillsByType(
     blogData.skills,
-    skillDatabase,
-    SkillTypesEnum.General
+    skillDatabaseMap,
+    SkillTypesEnum.Technical
   );
-  const softSkills: SkillKeysEnum[] = filterSkillsByType(
+  const softSkills: SkillDatabaseKeys[] = filterSkillsByType(
     blogData.skills,
-    skillDatabase,
+    skillDatabaseMap,
     SkillTypesEnum.Soft
   );
 
   // Using the new function to group all skill types
-  const allGroupedSkills = [
+  const allGroupedSkills: GroupedSkillsCategoriesInterface[] = [
     categoriseAndGroupSkills(
       technologies,
-      skillDatabase,
-      SkillTypesEnum.Hard,
+      skillDatabaseMap,
+      SkillTypesEnum.Technology,
       "Technologies"
     ),
     categoriseAndGroupSkills(
       generalSkills,
-      skillDatabase,
-      SkillTypesEnum.General,
+      skillDatabaseMap,
+      SkillTypesEnum.Technical,
       "Technical Skills"
     ),
     categoriseAndGroupSkills(
       softSkills,
-      skillDatabase,
+      skillDatabaseMap,
       SkillTypesEnum.Soft,
       "Soft Skills"
     ),
@@ -137,11 +138,10 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
 
       {blogData.relatedMaterials && blogData.relatedMaterials.length > 0 && (
         <>
-          <div className="border-b border-gray-200 dark:border-neutral-600 pb-4" />
-          <PageDescription
-            description={`List of material directly related to ${certificateDatabase.name}`}
+          <MaterialList
+            materialKeys={blogData.relatedMaterials}
+            sectionName={blogData.name}
           />
-          <MaterialList materialKeys={blogData.relatedMaterials} />
         </>
       )}
     </div>
