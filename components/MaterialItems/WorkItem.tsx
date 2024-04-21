@@ -1,8 +1,8 @@
 import { EXPERIENCE_PAGE } from "@/constants/pages";
-import companyDatabase from "@/database/companies";
-import rolesDatabase from "@/database/roles";
-import CompanyInterface from "@/interfaces/material/CompanyInterface";
-import RoleInterface from "@/interfaces/material/RoleInterface";
+import companyDatabaseMap from "@/database/Companies/CompanyDatabaseMap";
+import rolesDatabase from "@/database/Roles/RoleDatabaseMap";
+import CompanyInterface from "@/database/Companies/CompanyInterface";
+import RoleInterface from "@/database/Roles/RoleInterface";
 import Image from "next/image";
 import Link from "next/link";
 import { BsArrowUpRightCircle, BsInfoCircle } from "react-icons/bs";
@@ -30,7 +30,7 @@ interface WorkItemProps {
 const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
   const basePath: string = EXPERIENCE_PAGE.path;
   const roleData: RoleInterface = rolesDatabase[roleKey];
-  const companyData: CompanyInterface = companyDatabase[roleData.company];
+  const companyData: CompanyInterface = companyDatabaseMap[roleData.company];
 
   const rolePage: string = `${basePath}/${roleKey}`;
 

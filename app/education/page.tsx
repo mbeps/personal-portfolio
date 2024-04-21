@@ -4,7 +4,7 @@ import Grid from "@/components/UI/Grid";
 import PageDescription from "@/components/UI/PageDescription";
 import developerName from "@/constants/developerName";
 import { EDUCATION_PAGE } from "@/constants/pages";
-import { courseKeys } from "@/database/courses";
+import { courseDatabaseKeys } from "@/database/Courses/CourseDatabaseMap";
 import type { Metadata } from "next";
 
 /**
@@ -38,7 +38,7 @@ export default function EducationPage() {
 
           <div className="py-8 animate-slideUpCubiBezier animation-delay-2">
             <Grid
-              items={courseKeys.map((courseKey) => (
+              items={courseDatabaseKeys.map((courseKey) => (
                 <CourseItem key={courseKey} courseKey={courseKey} />
               ))}
             />

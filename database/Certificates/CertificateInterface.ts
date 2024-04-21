@@ -1,5 +1,5 @@
 import CertificateIssuersEnum from "@/enums/CertificateIssuersEnum";
-import MaterialInterface from "./MaterialInterface";
+import MaterialInterface from "../Materials/MaterialInterface";
 import CertificateCategoriesEnum from "@/enums/CertificateCategoriesEnum";
 
 /**

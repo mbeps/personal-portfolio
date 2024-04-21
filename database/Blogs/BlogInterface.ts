@@ -1,5 +1,5 @@
 import BlogCategoriesEnum from "@/enums/BlogCategoriesEnum";
-import MaterialInterface from "./MaterialInterface";
+import MaterialInterface from "../Materials/MaterialInterface";
 
 /**
  * Interface representing a blog's metadata and not the content.

@@ -4,8 +4,8 @@ import {
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
 import { CERTIFICATES_PAGE } from "@/constants/pages";
-import certificateDatabase from "@/database/certificates";
-import CertificateInterface from "@/interfaces/material/CertificateInterface";
+import certificateDatabaseMap from "@/database/Certificates/CertificateDatabaseMap";
+import CertificateInterface from "@/database/Certificates/CertificateInterface";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -33,7 +33,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
 }) => {
   const basePath: string = CERTIFICATES_PAGE.path;
   let certificateData: CertificateInterface =
-    certificateDatabase[certificateKey];
+    certificateDatabaseMap[certificateKey];
 
   const customCertificatePage: string = `${basePath}/${certificateKey}`;
   const issuerCertificatePage: string = certificateData.certificateURL;

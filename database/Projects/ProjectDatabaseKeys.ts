@@ -6,7 +6,7 @@
  *
  * @see {@link projectMap} at `database/projects.ts`
  */
-enum ProjectKeysEnum {
+enum ProjectDatabaseKeys {
   CircusDiscussions = "circus-discussions",
   RingmasterMessaging = "ringmaster-messaging",
   MagicianAI = "magician-ai",
@@ -51,4 +51,4 @@ enum ProjectKeysEnum {
   DatabasesMiniProject = "databases-mini-project",
 }
 
-export default ProjectKeysEnum;
+export default ProjectDatabaseKeys;

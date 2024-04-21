@@ -1,6 +1,6 @@
 import stringToSlug from "@/actions/stringToSlug";
-import MaterialInterface from "@/interfaces/material/MaterialInterface";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import MaterialInterface from "@/database/Materials/MaterialInterface";
+import SkillInterface from "@/database/Skills/SkillInterface";
 
 /**
  * Filters the materials that match a specific skill category.

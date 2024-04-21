@@ -14,15 +14,15 @@ import stringToSlug from "@/actions/stringToSlug";
 import FilterSection from "@/components/Filters/FilterSection";
 import ProjectsList from "@/components/MaterialLists/ProjectsList";
 import { PROJECTS_PAGE } from "@/constants/pages";
-import projectDatabase from "@/database/projects";
-import skillDatabase from "@/database/skills";
-import ProjectKeysEnum from "@/enums/DatabaseKeysEnums/ProjectKeysEnum";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import projectDatabaseMap from "@/database/Projects/ProjectDatabaseMap";
+import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
+import ProjectDatabaseKeys from "@/database/Projects/ProjectDatabaseKeys";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import useFuseSearch from "@/hooks/useFuseSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
-import ProjectInterface from "@/interfaces/material/ProjectInterface";
+import ProjectInterface from "@/database/Projects/ProjectInterface";
 import { usePathname, useSearchParams } from "next/navigation";
 import React from "react";
 
@@ -81,11 +81,11 @@ const ProjectsView: React.FC = () => {
     "skills.relatedSkills.category",
   ];
 
-  let filteredProjectsSlugArray: ProjectKeysEnum[] = useFuseSearch(
-    projectDatabase,
+  let filteredProjectsSlugArray: ProjectDatabaseKeys[] = useFuseSearch(
+    projectDatabaseMap,
     searchTerm,
     searchOptions
-  ) as ProjectKeysEnum[];
+  ) as ProjectDatabaseKeys[];
 
   //^ Filtering Logic
   // Filter by project type category
@@ -93,69 +93,69 @@ const ProjectsView: React.FC = () => {
     filteredProjectsSlugArray = filterMaterialByCategory<ProjectInterface>(
       stringToSlug(selectedSection),
       filteredProjectsSlugArray,
-      projectDatabase
-    ) as ProjectKeysEnum[];
+      projectDatabaseMap
+    ) as ProjectDatabaseKeys[];
   }
 
   // Filter by programming language
   if (selectedLanguage !== "all") {
     filteredProjectsSlugArray = filterMaterialBySkill(
-      selectedLanguage as SkillKeysEnum,
+      selectedLanguage as SkillDatabaseKeys,
       filteredProjectsSlugArray,
-      projectDatabase
-    ) as ProjectKeysEnum[];
+      projectDatabaseMap
+    ) as ProjectDatabaseKeys[];
   }
 
   // Filter by technology (assuming you have a similar function for technologies)
   if (selectedTechnology !== "all") {
     filteredProjectsSlugArray = filterMaterialBySkill<ProjectInterface>(
-      selectedTechnology as SkillKeysEnum,
+      selectedTechnology as SkillDatabaseKeys,
       filteredProjectsSlugArray,
-      projectDatabase
-    ) as ProjectKeysEnum[];
+      projectDatabaseMap
+    ) as ProjectDatabaseKeys[];
   }
 
   // Filter by skill category
   if (stringToSlug(selectedSkillCategory) !== "all") {
     filteredProjectsSlugArray = filterMaterialBySkillCategory<ProjectInterface>(
       filteredProjectsSlugArray,
-      projectDatabase,
+      projectDatabaseMap,
       stringToSlug(selectedSkillCategory),
-      skillDatabase
-    ) as ProjectKeysEnum[];
+      skillDatabaseMap
+    ) as ProjectDatabaseKeys[];
   }
 
   // Filter by general skill
   if (selectedGeneralSkill !== "all") {
     filteredProjectsSlugArray = filterMaterialBySkill<ProjectInterface>(
-      selectedGeneralSkill as SkillKeysEnum,
+      selectedGeneralSkill as SkillDatabaseKeys,
       filteredProjectsSlugArray,
-      projectDatabase
-    ) as ProjectKeysEnum[];
+      projectDatabaseMap
+    ) as ProjectDatabaseKeys[];
   }
 
   // Filter by soft skill
   if (selectedSoftSkill !== "all") {
     filteredProjectsSlugArray = filterMaterialBySkill<ProjectInterface>(
-      selectedSoftSkill as SkillKeysEnum,
+      selectedSoftSkill as SkillDatabaseKeys,
       filteredProjectsSlugArray,
-      projectDatabase
-    ) as ProjectKeysEnum[];
+      projectDatabaseMap
+    ) as ProjectDatabaseKeys[];
   }
 
   // Filter by archived status
   filteredProjectsSlugArray = filterMaterialByArchivedStatus<ProjectInterface>(
     showArchived,
     filteredProjectsSlugArray,
-    projectDatabase
-  ) as ProjectKeysEnum[];
+    projectDatabaseMap
+  ) as ProjectDatabaseKeys[];
 
   /**
    * Projects categorized by type.
    */
   const groupedProjects: MaterialGroupInterface[] = groupMaterialsByCategory(
     filteredProjectsSlugArray,
-    projectDatabase
+    projectDatabaseMap
   );
 
   /**
@@ -177,15 +177,15 @@ const ProjectsView: React.FC = () => {
       urlParam: sectionParamName,
       selectedValue: selectedSection,
       options:
-        generateFilterOptionsByCategory<ProjectInterface>(projectDatabase),
+        generateFilterOptionsByCategory<ProjectInterface>(projectDatabaseMap),
     },
     {
       sectionName: "Programming Language",
       urlParam: languageParamName,
       selectedValue: selectedLanguage,
       options: generateFilterOptionsForProgrammingLanguages<ProjectInterface>(
-        projectDatabase,
-        skillDatabase
+        projectDatabaseMap,
+        skillDatabaseMap
       ),
     },
     {
@@ -193,8 +193,8 @@ const ProjectsView: React.FC = () => {
       urlParam: technologyParamName,
       selectedValue: selectedTechnology,
       options: generateFilterOptionsBySkillType<ProjectInterface>(
-        projectDatabase,
-        skillDatabase,
+        projectDatabaseMap,
+        skillDatabaseMap,
         SkillTypesEnum.Technology
       ),
     },
@@ -203,8 +203,8 @@ const ProjectsView: React.FC = () => {
       urlParam: skillCategoryParamName,
       selectedValue: selectedSkillCategory,
       options: generateFilterOptionsBySkillCategories<ProjectInterface>(
-        projectDatabase,
-        skillDatabase
+        projectDatabaseMap,
+        skillDatabaseMap
       ),
     },
     {
@@ -212,8 +212,8 @@ const ProjectsView: React.FC = () => {
       urlParam: generalSkillParamName,
       selectedValue: selectedGeneralSkill,
       options: generateFilterOptionsBySkillType<ProjectInterface>(
-        projectDatabase,
-        skillDatabase,
+        projectDatabaseMap,
+        skillDatabaseMap,
         SkillTypesEnum.Technical
       ),
     },
@@ -222,8 +222,8 @@ const ProjectsView: React.FC = () => {
       urlParam: softSkillParamName,
       selectedValue: selectedSoftSkill,
       options: generateFilterOptionsBySkillType<ProjectInterface>(
-        projectDatabase,
-        skillDatabase,
+        projectDatabaseMap,
+        skillDatabaseMap,
         SkillTypesEnum.Soft
       ),
     },
@@ -242,7 +242,7 @@ const ProjectsView: React.FC = () => {
         archiveFilter={{
           paramName: archivedParamName,
           showArchived: showArchived,
-          hasArchivedMaterials: checkForArchivedMaterials(projectDatabase),
+          hasArchivedMaterials: checkForArchivedMaterials(projectDatabaseMap),
         }}
         areFiltersApplied={areFiltersApplied}
       />

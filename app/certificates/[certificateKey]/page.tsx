@@ -11,12 +11,12 @@ import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
 import { CERTIFICATES_PAGE } from "@/constants/pages";
-import certificateDatabase from "@/database/certificates";
-import skillDatabase from "@/database/skills";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import certificateDatabaseMap from "@/database/Certificates/CertificateDatabaseMap";
+import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import MaterialTypeEnum from "@/enums/MaterialTypeEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
-import CertificateInterface from "@/interfaces/material/CertificateInterface";
+import CertificateInterface from "@/database/Certificates/CertificateInterface";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
@@ -42,7 +42,8 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   // Read route params
   const certificateKey: string = params.certificateKey;
-  const certificate: CertificateInterface = certificateDatabase[certificateKey];
+  const certificate: CertificateInterface =
+    certificateDatabaseMap[certificateKey];
 
   // Create metadata based on the certificate details
   return {
@@ -62,7 +63,7 @@ export async function generateMetadata(
  * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
  */
 export const generateStaticParams = async () => {
-  return Object.keys(certificateDatabase).map((certificateKey) => ({
+  return Object.keys(certificateDatabaseMap).map((certificateKey) => ({
     certificateKey,
   }));
 };
@@ -93,25 +94,25 @@ type CertificatesPageProps = {
 const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
   const certificateKey: string = params.certificateKey;
   const certificateData: CertificateInterface =
-    certificateDatabase[certificateKey];
+    certificateDatabaseMap[certificateKey];
 
   if (!certificateData) {
     notFound();
   }
 
-  const technologies: SkillKeysEnum[] = filterSkillsByType(
+  const technologies: SkillDatabaseKeys[] = filterSkillsByType(
     certificateData.skills,
-    skillDatabase,
+    skillDatabaseMap,
     SkillTypesEnum.Technology
   );
-  const generalSkills: SkillKeysEnum[] = filterSkillsByType(
+  const generalSkills: SkillDatabaseKeys[] = filterSkillsByType(
     certificateData.skills,
-    skillDatabase,
+    skillDatabaseMap,
     SkillTypesEnum.Technical
   );
-  const softSkills: SkillKeysEnum[] = filterSkillsByType(
+  const softSkills: SkillDatabaseKeys[] = filterSkillsByType(
     certificateData.skills,
-    skillDatabase,
+    skillDatabaseMap,
     SkillTypesEnum.Soft
   );
 
@@ -119,19 +120,19 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
   const allGroupedSkills: GroupedSkillsCategoriesInterface[] = [
     categoriseAndGroupSkills(
       technologies,
-      skillDatabase,
+      skillDatabaseMap,
       SkillTypesEnum.Technology,
       "Technologies"
     ),
     categoriseAndGroupSkills(
       generalSkills,
-      skillDatabase,
+      skillDatabaseMap,
       SkillTypesEnum.Technical,
       "Technical Skills"
     ),
     categoriseAndGroupSkills(
       softSkills,
-      skillDatabase,
+      skillDatabaseMap,
       SkillTypesEnum.Soft,
       "Soft Skills"
     ),

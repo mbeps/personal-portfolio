@@ -1,4 +1,4 @@
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 
 /**
  * Interface representing a category of skills.
@@ -9,9 +9,9 @@ import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
  * The keys are stored which are then used to reference the skills in the database.
  * For example, the skills can be grouped into programming languages, DevOps, Web Development, etc.
  *
- * @requires {@link SkillKeysEnum} to represent the list of skills (identifiers) that are grouped together.
+ * @requires {@link SkillDatabaseKeys} to represent the list of skills (identifiers) that are grouped together.
  */
 export default interface SkillsCategoryInterface {
   skillCategoryName: string;
-  skills: SkillKeysEnum[];
+  skills: SkillDatabaseKeys[];
 }

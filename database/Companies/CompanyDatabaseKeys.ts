@@ -6,7 +6,7 @@
  *
  * @see {@link companyMap} at `database/companies.ts`
  */
-enum CompanyKeyEnum {
+enum CompanyDatabaseKeys {
   Commerzbank = "commerzbank",
   GoogleRHULDevelopersClub = "google-x-rhul-developers-club",
   AJTuitionCentre = "aj-tuition-centre",
@@ -16,4 +16,4 @@ enum CompanyKeyEnum {
   WGraduates = "w-graduates",
 }
 
-export default CompanyKeyEnum;
+export default CompanyDatabaseKeys;

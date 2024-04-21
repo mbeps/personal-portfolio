@@ -2,15 +2,15 @@ import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
 import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import skillDatabase from "@/database/skills";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillInterface from "@/database/Skills/SkillInterface";
 import React from "react";
 
 interface RelatedSkillsSectionProps {
-  skillKey: SkillKeysEnum;
+  skillKey: SkillDatabaseKeys;
 }
 
 /**
@@ -24,9 +24,9 @@ interface RelatedSkillsSectionProps {
 const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
   skillKey,
 }) => {
-  const skill: SkillInterface = skillDatabase[skillKey];
+  const skill: SkillInterface = skillDatabaseMap[skillKey];
 
-  const associatedSkills: SkillKeysEnum[] = skill.relatedSkills || [];
+  const associatedSkills: SkillDatabaseKeys[] = skill.relatedSkills || [];
 
   if (!associatedSkills || associatedSkills.length === 0) {
     return null;
@@ -42,15 +42,15 @@ const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
   // Use map to iterate over each group, filter, and then group the skills accordingly
   const allGroupedSkills: GroupedSkillsCategoriesInterface[] =
     skillTypeGroups.map(({ type, title }) => {
-      const filteredSkills: SkillKeysEnum[] = filterSkillsByType(
+      const filteredSkills: SkillDatabaseKeys[] = filterSkillsByType(
         associatedSkills,
-        skillDatabase,
+        skillDatabaseMap,
         type
       );
 
       return categoriseAndGroupSkills(
         filteredSkills,
-        skillDatabase,
+        skillDatabaseMap,
         type,
         title
       );

@@ -1,6 +1,6 @@
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillInterface from "@/database/Skills/SkillInterface";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 
 /**
  * Filters skills which belong to a specific skill type.
@@ -12,12 +12,12 @@ import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
  * @returns Filtered skill keys which belong to the specified skill type
  */
 export default function filterSkillsByType(
-  skillKeys: SkillKeysEnum[],
+  skillKeys: SkillDatabaseKeys[],
   skillsDatabase: Database<SkillInterface>,
   skillType: SkillTypesEnum
-): SkillKeysEnum[] {
+): SkillDatabaseKeys[] {
   // Initialize an empty array for the filtered skill slugs
-  const filteredSkillSlugs: SkillKeysEnum[] = [];
+  const filteredSkillSlugs: SkillDatabaseKeys[] = [];
 
   // Iterate over the skill slugs array
   skillKeys.forEach((skillSlug) => {

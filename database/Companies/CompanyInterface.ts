@@ -1,4 +1,4 @@
-import RoleKeyEnum from "@/enums/DatabaseKeysEnums/RoleKeyEnum";
+import RoleDatabaseKeys from "@/database/Roles/RoleDatabaseKeys";
 
 /**
  * Interface representing a company related to work experience.
@@ -9,6 +9,6 @@ export default interface CompanyInterface {
   name: string;
   website?: string;
   location: string;
-  positions: RoleKeyEnum[];
+  positions: RoleDatabaseKeys[];
   logo?: string;
 }

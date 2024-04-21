@@ -1,6 +1,6 @@
 import { EDUCATION_PAGE } from "@/constants/pages";
-import courseDatabase from "@/database/courses";
-import UniversityCourseInterface from "@/interfaces/material/UniversityCourseInterface";
+import courseDatabaseMap from "@/database/Courses/CourseDatabaseMap";
+import CourseInterface from "@/database/Courses/CourseInterface";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -13,7 +13,7 @@ interface CourseItemProps {
 
 const CourseItem: React.FC<CourseItemProps> = ({ courseKey }) => {
   const basePath: string = EDUCATION_PAGE.path;
-  let courseData: UniversityCourseInterface = courseDatabase[courseKey];
+  let courseData: CourseInterface = courseDatabaseMap[courseKey];
 
   courseData = {
     ...courseData,

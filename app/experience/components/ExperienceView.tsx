@@ -14,16 +14,16 @@ import groupMaterialsByCategory from "@/actions/material/group/groupMaterialsByC
 import stringToSlug from "@/actions/stringToSlug";
 import FilterSection from "@/components/Filters/FilterSection";
 import WorkList from "@/components/MaterialLists/WorkList";
-import rolesDatabase from "@/database/roles";
-import skillDatabase from "@/database/skills";
-import RoleKeyEnum from "@/enums/DatabaseKeysEnums/RoleKeyEnum";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import RoleDatabaseKeys from "@/database/Roles/RoleDatabaseKeys";
+import rolesDatabase from "@/database/Roles/RoleDatabaseMap";
+import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import ExperienceTypeEnum from "@/enums/ExperienceTypeEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import useFuseSearch from "@/hooks/useFuseSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
-import RoleInterface from "@/interfaces/material/RoleInterface";
+import RoleInterface from "@/database/Roles/RoleInterface";
 import { usePathname, useSearchParams } from "next/navigation";
 
 /**
@@ -78,11 +78,11 @@ export const BlogsView: React.FC = () => {
   ];
 
   // Use the custom hook to perform the search
-  let filteredWorkKeysArray: RoleKeyEnum[] = useFuseSearch(
+  let filteredWorkKeysArray: RoleDatabaseKeys[] = useFuseSearch(
     rolesDatabase,
     searchTerm,
     searchOptions
-  ) as RoleKeyEnum[];
+  ) as RoleDatabaseKeys[];
 
   //^ Filtering Logic
   // Filter by category
@@ -91,7 +91,7 @@ export const BlogsView: React.FC = () => {
       stringToSlug(selectedWorkSection),
       filteredWorkKeysArray,
       rolesDatabase
-    ) as RoleKeyEnum[];
+    ) as RoleDatabaseKeys[];
   }
 
   if (selectedWorkType !== "all") {
@@ -99,7 +99,7 @@ export const BlogsView: React.FC = () => {
       stringToSlug(selectedWorkType) as ExperienceTypeEnum,
       filteredWorkKeysArray,
       rolesDatabase
-    ) as RoleKeyEnum[];
+    ) as RoleDatabaseKeys[];
   }
 
   // Filter by skill category
@@ -108,35 +108,35 @@ export const BlogsView: React.FC = () => {
       filteredWorkKeysArray,
       rolesDatabase,
       stringToSlug(selectedSkillCategory),
-      skillDatabase
-    ) as RoleKeyEnum[];
+      skillDatabaseMap
+    ) as RoleDatabaseKeys[];
   }
 
   // Filter by hard skill
   if (selectedTechnicalSkill !== "all") {
     filteredWorkKeysArray = filterMaterialBySkill<RoleInterface>(
-      selectedTechnicalSkill as SkillKeysEnum,
+      selectedTechnicalSkill as SkillDatabaseKeys,
       filteredWorkKeysArray,
       rolesDatabase
-    ) as RoleKeyEnum[];
+    ) as RoleDatabaseKeys[];
   }
 
   // Filter by general skill
   if (selectedGeneralSkill !== "all") {
     filteredWorkKeysArray = filterMaterialBySkill<RoleInterface>(
-      selectedGeneralSkill as SkillKeysEnum,
+      selectedGeneralSkill as SkillDatabaseKeys,
       filteredWorkKeysArray,
       rolesDatabase
-    ) as RoleKeyEnum[];
+    ) as RoleDatabaseKeys[];
   }
 
   // Filter by soft skill
   if (selectedSoftSkill !== "all") {
     filteredWorkKeysArray = filterMaterialBySkill<RoleInterface>(
-      selectedSoftSkill as SkillKeysEnum,
+      selectedSoftSkill as SkillDatabaseKeys,
       filteredWorkKeysArray,
       rolesDatabase
-    ) as RoleKeyEnum[];
+    ) as RoleDatabaseKeys[];
   }
 
   // Filter by archived status
@@ -144,7 +144,7 @@ export const BlogsView: React.FC = () => {
     showArchived,
     filteredWorkKeysArray,
     rolesDatabase
-  ) as RoleKeyEnum[];
+  ) as RoleDatabaseKeys[];
 
   const groupedBlogs: MaterialGroupInterface[] = groupMaterialsByCategory(
     filteredWorkKeysArray,
@@ -181,7 +181,7 @@ export const BlogsView: React.FC = () => {
       selectedValue: selectedSkillCategory,
       options: generateFilterOptionsBySkillCategories<RoleInterface>(
         rolesDatabase,
-        skillDatabase
+        skillDatabaseMap
       ),
     },
     {
@@ -190,7 +190,7 @@ export const BlogsView: React.FC = () => {
       selectedValue: selectedTechnicalSkill,
       options: generateFilterOptionsBySkillType<RoleInterface>(
         rolesDatabase,
-        skillDatabase,
+        skillDatabaseMap,
         SkillTypesEnum.Technology
       ),
     },
@@ -200,7 +200,7 @@ export const BlogsView: React.FC = () => {
       selectedValue: selectedGeneralSkill,
       options: generateFilterOptionsBySkillType<RoleInterface>(
         rolesDatabase,
-        skillDatabase,
+        skillDatabaseMap,
         SkillTypesEnum.Technical
       ),
     },
@@ -210,7 +210,7 @@ export const BlogsView: React.FC = () => {
       selectedValue: selectedSoftSkill,
       options: generateFilterOptionsBySkillType<RoleInterface>(
         rolesDatabase,
-        skillDatabase,
+        skillDatabaseMap,
         SkillTypesEnum.Soft
       ),
     },

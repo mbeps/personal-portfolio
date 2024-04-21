@@ -15,15 +15,17 @@ import PageDescription from "@/components/UI/PageDescription";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import developerName from "@/constants/developerName";
 import { EDUCATION_PAGE } from "@/constants/pages";
-import courseDatabase from "@/database/courses";
-import moduleDatabase, { moduleKeys } from "@/database/modules";
-import skillDatabase from "@/database/skills";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
-import UniversityModuleKeysEnum from "@/enums/DatabaseKeysEnums/UniversityModuleKeysEnum";
+import courseDatabaseMap from "@/database/Courses/CourseDatabaseMap";
+import moduleDatabaseMap, {
+  moduleDatabaseKeys,
+} from "@/database/Modules/ModuleDatabaseMap";
+import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
-import UniversityCourseInterface from "@/interfaces/material/UniversityCourseInterface";
-import UniversityModuleInterface from "@/interfaces/material/UniversityModuleInterface";
+import CourseInterface from "@/database/Courses/CourseInterface";
+import ModuleInterface from "@/database/Modules/ModuleInterface";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
@@ -51,7 +53,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   // Read route params
   const courseKey: string = params.courseKey;
-  const course: UniversityCourseInterface = courseDatabase[courseKey];
+  const course: CourseInterface = courseDatabaseMap[courseKey];
 
   // Create metadata based on the course details
   return {
@@ -70,7 +72,7 @@ export async function generateMetadata(
  * @see https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration
  */
 export const generateStaticParams = async () => {
-  return Object.keys(courseDatabase).map((courseKey) => ({
+  return Object.keys(courseDatabaseMap).map((courseKey) => ({
     courseKey,
   }));
 };
@@ -93,7 +95,7 @@ export const generateStaticParams = async () => {
  */
 const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
   const courseKey: string = params.courseKey;
-  const courseData: UniversityCourseInterface = courseDatabase[courseKey];
+  const courseData: CourseInterface = courseDatabaseMap[courseKey];
   const basePath: string = EDUCATION_PAGE.path;
 
   if (!courseData) {
@@ -104,51 +106,51 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
 
   const showArchived: boolean = (searchParams.archived || "false") === "true";
 
-  let filteredModules: UniversityModuleKeysEnum[] = moduleKeys;
-  filteredModules = filterMaterialByArchivedStatus<UniversityModuleInterface>(
+  let filteredModules: ModuleDatabaseKeys[] = moduleDatabaseKeys;
+  filteredModules = filterMaterialByArchivedStatus<ModuleInterface>(
     showArchived,
     filteredModules,
-    moduleDatabase
-  ) as UniversityModuleKeysEnum[];
+    moduleDatabaseMap
+  ) as ModuleDatabaseKeys[];
 
   const groupedModules: MaterialGroupInterface[] = groupMaterialsByCategory(
     filteredModules,
-    moduleDatabase
+    moduleDatabaseMap
   );
 
   //^ Skills
-  const technologies: SkillKeysEnum[] = filterSkillsByType(
+  const technologies: SkillDatabaseKeys[] = filterSkillsByType(
     courseData.skills,
-    skillDatabase,
+    skillDatabaseMap,
     SkillTypesEnum.Technology
   );
-  const generalSkills: SkillKeysEnum[] = filterSkillsByType(
+  const generalSkills: SkillDatabaseKeys[] = filterSkillsByType(
     courseData.skills,
-    skillDatabase,
+    skillDatabaseMap,
     SkillTypesEnum.Technical
   );
-  const softSkills: SkillKeysEnum[] = filterSkillsByType(
+  const softSkills: SkillDatabaseKeys[] = filterSkillsByType(
     courseData.skills,
-    skillDatabase,
+    skillDatabaseMap,
     SkillTypesEnum.Soft
   );
 
   const allGroupedSkills: GroupedSkillsCategoriesInterface[] = [
     categoriseAndGroupSkills(
       technologies,
-      skillDatabase,
+      skillDatabaseMap,
       SkillTypesEnum.Technology,
       "Technologies"
     ),
     categoriseAndGroupSkills(
       generalSkills,
-      skillDatabase,
+      skillDatabaseMap,
       SkillTypesEnum.Technical,
       "Technical Skills"
     ),
     categoriseAndGroupSkills(
       softSkills,
-      skillDatabase,
+      skillDatabaseMap,
       SkillTypesEnum.Soft,
       "Soft Skills"
     ),
@@ -228,7 +230,7 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
             gap={1}
             items={group.materialsKeys.map((moduleKey, idx) => (
               <Link href={`${basePath}/${courseKey}/${moduleKey}`} key={idx}>
-                <Tag hasHover>{moduleDatabase[moduleKey].name}</Tag>
+                <Tag hasHover>{moduleDatabaseMap[moduleKey].name}</Tag>
               </Link>
             ))}
           />

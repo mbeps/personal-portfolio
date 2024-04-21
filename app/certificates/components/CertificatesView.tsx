@@ -15,14 +15,14 @@ import stringToSlug from "@/actions/stringToSlug";
 import FilterSection from "@/components/Filters/FilterSection";
 import CertificatesList from "@/components/MaterialLists/CertificatesList";
 import { CERTIFICATES_PAGE } from "@/constants/pages";
-import certificateDatabase from "@/database/certificates";
-import skillDatabase from "@/database/skills";
-import CertificateKeysEnum from "@/enums/DatabaseKeysEnums/CertificateKeysEnum";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import CertificateDatabaseKeys from "@/database/Certificates/CertificateDatabaseKeys";
+import certificateDatabaseMap from "@/database/Certificates/CertificateDatabaseMap";
+import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import useFuseSearch from "@/hooks/useFuseSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
-import CertificateInterface from "@/interfaces/material/CertificateInterface";
+import CertificateInterface from "@/database/Certificates/CertificateInterface";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import { usePathname, useSearchParams } from "next/navigation";
 import React from "react";
@@ -87,11 +87,11 @@ const CertificatesView: React.FC = () => {
     "skills.relatedSkills.category",
   ];
 
-  let filteredCertificateSlugArray: CertificateKeysEnum[] = useFuseSearch(
-    certificateDatabase,
+  let filteredCertificateSlugArray: CertificateDatabaseKeys[] = useFuseSearch(
+    certificateDatabaseMap,
     searchTerm,
     searchOptions
-  ) as CertificateKeysEnum[];
+  ) as CertificateDatabaseKeys[];
 
   //^ Filtering Logic
   // Filter by issuer
@@ -99,8 +99,8 @@ const CertificatesView: React.FC = () => {
     filteredCertificateSlugArray = filterCertificatesByIssuer(
       selectedIssuer,
       filteredCertificateSlugArray,
-      certificateDatabase
-    ) as CertificateKeysEnum[];
+      certificateDatabaseMap
+    ) as CertificateDatabaseKeys[];
   }
 
   // Filter by certificate category
@@ -109,8 +109,8 @@ const CertificatesView: React.FC = () => {
       filterMaterialByCategory<CertificateInterface>(
         stringToSlug(selectedCategory),
         filteredCertificateSlugArray,
-        certificateDatabase
-      ) as CertificateKeysEnum[];
+        certificateDatabaseMap
+      ) as CertificateDatabaseKeys[];
   }
 
   // Filter by skill category
@@ -118,37 +118,37 @@ const CertificatesView: React.FC = () => {
     filteredCertificateSlugArray =
       filterMaterialBySkillCategory<CertificateInterface>(
         filteredCertificateSlugArray,
-        certificateDatabase,
+        certificateDatabaseMap,
         stringToSlug(selectedSkillCategory),
-        skillDatabase
-      ) as CertificateKeysEnum[];
+        skillDatabaseMap
+      ) as CertificateDatabaseKeys[];
   }
 
   // Filter by hard skill
   if (selectedTechnicalSkill !== "all") {
     filteredCertificateSlugArray = filterMaterialBySkill<CertificateInterface>(
-      selectedTechnicalSkill as SkillKeysEnum,
+      selectedTechnicalSkill as SkillDatabaseKeys,
       filteredCertificateSlugArray,
-      certificateDatabase
-    ) as CertificateKeysEnum[];
+      certificateDatabaseMap
+    ) as CertificateDatabaseKeys[];
   }
 
   // Filter by general skill
   if (selectedGeneralSkill !== "all") {
     filteredCertificateSlugArray = filterMaterialBySkill<CertificateInterface>(
-      selectedGeneralSkill as SkillKeysEnum,
+      selectedGeneralSkill as SkillDatabaseKeys,
       filteredCertificateSlugArray,
-      certificateDatabase
-    ) as CertificateKeysEnum[];
+      certificateDatabaseMap
+    ) as CertificateDatabaseKeys[];
   }
 
   // Filter by soft skill
   if (selectedSoftSkill !== "all") {
     filteredCertificateSlugArray = filterMaterialBySkill<CertificateInterface>(
-      selectedSoftSkill as SkillKeysEnum,
+      selectedSoftSkill as SkillDatabaseKeys,
       filteredCertificateSlugArray,
-      certificateDatabase
-    ) as CertificateKeysEnum[];
+      certificateDatabaseMap
+    ) as CertificateDatabaseKeys[];
   }
 
   // Filter by archived status
@@ -156,11 +156,14 @@ const CertificatesView: React.FC = () => {
     filterMaterialByArchivedStatus<CertificateInterface>(
       showArchived,
       filteredCertificateSlugArray,
-      certificateDatabase
-    ) as CertificateKeysEnum[];
+      certificateDatabaseMap
+    ) as CertificateDatabaseKeys[];
 
   const groupedCertificates: MaterialGroupInterface[] =
-    groupMaterialsByCategory(filteredCertificateSlugArray, certificateDatabase);
+    groupMaterialsByCategory(
+      filteredCertificateSlugArray,
+      certificateDatabaseMap
+    );
 
   const areFiltersApplied =
     selectedIssuer !== "all" ||
@@ -177,24 +180,23 @@ const CertificatesView: React.FC = () => {
       sectionName: "Issuer",
       urlParam: issuerParamName,
       selectedValue: selectedIssuer,
-      options: generateIssuerFilterOptions(certificateDatabase),
+      options: generateIssuerFilterOptions(certificateDatabaseMap),
     },
     {
       sectionName: "Category",
       urlParam: certificateSectionParamName,
       selectedValue: selectedCategory,
-      options:
-        generateFilterOptionsByCategory<CertificateInterface>(
-          certificateDatabase
-        ),
+      options: generateFilterOptionsByCategory<CertificateInterface>(
+        certificateDatabaseMap
+      ),
     },
     {
       sectionName: "Skill Category",
       urlParam: skillCategoryParamName,
       selectedValue: selectedSkillCategory,
       options: generateFilterOptionsBySkillCategories<CertificateInterface>(
-        certificateDatabase,
-        skillDatabase
+        certificateDatabaseMap,
+        skillDatabaseMap
       ),
     },
     {
@@ -202,8 +204,8 @@ const CertificatesView: React.FC = () => {
       urlParam: technicalSkillParamName,
       selectedValue: selectedTechnicalSkill,
       options: generateFilterOptionsBySkillType<CertificateInterface>(
-        certificateDatabase,
-        skillDatabase,
+        certificateDatabaseMap,
+        skillDatabaseMap,
         SkillTypesEnum.Technology
       ),
     },
@@ -212,8 +214,8 @@ const CertificatesView: React.FC = () => {
       urlParam: generalSkillParamName,
       selectedValue: selectedGeneralSkill,
       options: generateFilterOptionsBySkillType<CertificateInterface>(
-        certificateDatabase,
-        skillDatabase,
+        certificateDatabaseMap,
+        skillDatabaseMap,
         SkillTypesEnum.Technical
       ),
     },
@@ -222,8 +224,8 @@ const CertificatesView: React.FC = () => {
       urlParam: softSkillParamName,
       selectedValue: selectedSoftSkill,
       options: generateFilterOptionsBySkillType<CertificateInterface>(
-        certificateDatabase,
-        skillDatabase,
+        certificateDatabaseMap,
+        skillDatabaseMap,
         SkillTypesEnum.Soft
       ),
     },
@@ -243,7 +245,9 @@ const CertificatesView: React.FC = () => {
         archiveFilter={{
           paramName: archivedParamName,
           showArchived: showArchived,
-          hasArchivedMaterials: checkForArchivedMaterials(certificateDatabase),
+          hasArchivedMaterials: checkForArchivedMaterials(
+            certificateDatabaseMap
+          ),
         }}
       />
 

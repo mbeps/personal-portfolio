@@ -27,9 +27,9 @@ import {
   PopoverTrigger,
 } from "@/components/shadcn/ui/popover";
 import { SKILL_PAGE } from "@/constants/pages";
-import materialDatabase from "@/database/material";
-import skillDatabase from "@/database/skills";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import materialDatabaseMap from "@/database/Materials/MaterialDatabaseMap";
+import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
@@ -46,7 +46,7 @@ import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 
 interface SkillListProps {
-  skills: SkillKeysEnum[];
+  skills: SkillDatabaseKeys[];
 }
 
 /**
@@ -99,7 +99,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
   const groupedSkills: SkillsCategoryInterface[] = groupSkills(
     selectedGroup as GroupByOptions,
     skills,
-    skillDatabase,
+    skillDatabaseMap,
     includeSkillTypes
   );
 
@@ -304,9 +304,9 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
                       hide={
                         !(
                           countMaterialsAttributedToSkill(
-                            skillKey as SkillKeysEnum,
-                            skillDatabase,
-                            materialDatabase
+                            skillKey as SkillDatabaseKeys,
+                            skillDatabaseMap,
+                            materialDatabaseMap
                           ) >= 5
                         ) && includeNoMaterial
                       }

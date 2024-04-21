@@ -1,7 +1,7 @@
 import ExperienceCategoriesEnum from "@/enums/ExperienceCategoriesEnum";
-import MaterialInterface from "./MaterialInterface";
+import MaterialInterface from "../Materials/MaterialInterface";
 import ExperienceTypeEnum from "@/enums/ExperienceTypeEnum";
-import CompanyKeyEnum from "@/enums/DatabaseKeysEnums/ExperienceCompanyEnum";
+import CompanyDatabaseKeys from "@/database/Companies/CompanyDatabaseKeys";
 
 /**
  * Interface representing a role related to work experience.
@@ -12,7 +12,7 @@ import CompanyKeyEnum from "@/enums/DatabaseKeysEnums/ExperienceCompanyEnum";
  * - `type`: the type of the experience which is one of the types defined in {@link ExperienceTypeEnum}
  * - `startDate`: the start date of the role
  * - `endDate`: the end date of the role
- * - `company`: the company where the role was held which is one of the companies defined in {@link CompanyKeyEnum}
+ * - `company`: the company where the role was held which is one of the companies defined in {@link CompanyDatabaseKeys}
  * - `responsibilities`: the responsibilities of the role
  *
  * Importantly, because this extends the `MaterialInterface`,
@@ -23,6 +23,6 @@ export default interface RoleInterface extends MaterialInterface {
   type: ExperienceTypeEnum;
   startDate: string;
   endDate: string | "Present";
-  company: CompanyKeyEnum;
+  company: CompanyDatabaseKeys;
   responsibilities: string[];
 }

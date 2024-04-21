@@ -6,8 +6,8 @@
  *
  * @see {@link universityCourseMap} at `database/university-courses.ts`
  */
-enum UniversityCourseKeysEnum {
+enum CourseDatabaseKeys {
   RHUL_ComputerScience = "rhul-computer-science",
 }
 
-export default UniversityCourseKeysEnum;
+export default CourseDatabaseKeys;

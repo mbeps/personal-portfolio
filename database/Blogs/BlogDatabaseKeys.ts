@@ -6,7 +6,7 @@
  *
  * @see {@link blogMap} at `database/blogs.ts`
  */
-enum BlogKeysEnum {
+enum BlogDatabaseKeys {
   Backend = "backend",
   CICD = "cicd-foundations",
   DevOps = "devops-foundations",
@@ -24,4 +24,4 @@ enum BlogKeysEnum {
   SyncAsync = "sync-vs-async",
 }
 
-export default BlogKeysEnum;
+export default BlogDatabaseKeys;

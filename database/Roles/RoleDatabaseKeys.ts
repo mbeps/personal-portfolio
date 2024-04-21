@@ -6,7 +6,7 @@
  *
  * @see {@link roleMap} at `database/roles.ts`
  */
-enum RoleKeyEnum {
+enum RoleDatabaseKeys {
   CommerzbankDevOpsEngineer = "commerzbank-devops-engineer",
   GoogleRHULDevelopersClubSoftwareEngineer = "google-x-rhul-developers-club-software-engineer",
   AJTuitionCentreTutor = "aj-tuition-centre-tutor",
@@ -15,4 +15,4 @@ enum RoleKeyEnum {
   GnomeFoundationCommunityMember = "gnome-foundation-community-member",
 }
 
-export default RoleKeyEnum;
+export default RoleDatabaseKeys;

@@ -1,6 +1,6 @@
 import MaterialTypeEnum from "@/enums/MaterialTypeEnum";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
-import MaterialInterface from "@/interfaces/material/MaterialInterface";
+import MaterialInterface from "@/database/Materials/MaterialInterface";
 
 /**
  * Groups the materials based on the material type as defined in {@link MaterialTypeEnum}.

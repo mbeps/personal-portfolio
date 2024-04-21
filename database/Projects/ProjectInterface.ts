@@ -1,5 +1,5 @@
 import ProjectCategoriesEnum from "@/enums/ProjectCategoriesEnum";
-import MaterialInterface from "./MaterialInterface";
+import MaterialInterface from "../Materials/MaterialInterface";
 
 /**
  * Interface representing a project's metadata.

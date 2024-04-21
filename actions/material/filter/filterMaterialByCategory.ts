@@ -1,5 +1,5 @@
 import stringToSlug from "@/actions/stringToSlug";
-import MaterialInterface from "@/interfaces/material/MaterialInterface";
+import MaterialInterface from "@/database/Materials/MaterialInterface";
 
 /**
  * Filters the materials that match a specific category.

@@ -25,13 +25,13 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
-import materialDatabase from "@/database/material";
-import skillDatabase from "@/database/skills";
+import materialDatabaseMap from "@/database/Materials/MaterialDatabaseMap";
+import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import FilterOption from "@/interfaces/filters/FilterOption";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillInterface from "@/database/Skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -39,7 +39,7 @@ import { BsChevronDown } from "react-icons/bs";
 import SkillTag from "../Tags/SkillTag";
 
 interface LanguageTagWithModalProps {
-  languageIdentifier: SkillKeysEnum;
+  languageIdentifier: SkillDatabaseKeys;
 }
 
 /**
@@ -56,7 +56,7 @@ interface LanguageTagWithModalProps {
 const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
   languageIdentifier,
 }) => {
-  const language: SkillInterface = skillDatabase[languageIdentifier];
+  const language: SkillInterface = skillDatabaseMap[languageIdentifier];
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [groupedBy, setGroupedBy] = useState("category");
 
@@ -69,21 +69,22 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
    * @returns Filtered list of skill slugs
    */
   function filterMainSkillsExcludingCategory(
-    skillSlugs: SkillKeysEnum[],
+    skillSlugs: SkillDatabaseKeys[],
     skillsHashmap: Database<SkillInterface>,
     excludedCategory: SkillCategoriesEnum
-  ): SkillKeysEnum[] {
+  ): SkillDatabaseKeys[] {
     return skillSlugs.filter((slug) => {
       const skill: SkillInterface = skillsHashmap[slug];
       return skill.isMainSkill && skill.category !== excludedCategory;
     });
   }
 
-  const languageSkillsSlug: SkillKeysEnum[] = filterMainSkillsExcludingCategory(
-    language.relatedSkills || [],
-    skillDatabase,
-    SkillCategoriesEnum.ProgrammingLanguages
-  );
+  const languageSkillsSlug: SkillDatabaseKeys[] =
+    filterMainSkillsExcludingCategory(
+      language.relatedSkills || [],
+      skillDatabaseMap,
+      SkillCategoriesEnum.ProgrammingLanguages
+    );
 
   function handleOpenModal(): void {
     setIsModalOpen(true);
@@ -95,13 +96,13 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
   const groupedSkills: SkillsCategoryInterface[] = groupSkills(
     groupedBy as GroupByOptions,
     languageSkillsSlug,
-    skillDatabase,
+    skillDatabaseMap,
     [SkillTypesEnum.Technical, SkillTypesEnum.Soft]
   );
 
   const hasMaterial: boolean = isSkillAssociatedWithMaterial(
     languageIdentifier,
-    materialDatabase
+    materialDatabaseMap
   );
 
   const options: FilterOption[] = [

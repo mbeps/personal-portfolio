@@ -1,22 +1,22 @@
-import CertificateInterface from "@/interfaces/material/CertificateInterface";
+import CertificateInterface from "@/database/Certificates/CertificateInterface";
 
 import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
 import CertificateCategoriesEnum from "@/enums/CertificateCategoriesEnum";
 import CertificateIssuersEnum from "@/enums/CertificateIssuersEnum";
-import CertificateKeysEnum from "@/enums/DatabaseKeysEnums/CertificateKeysEnum";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import CertificateDatabaseKeys from "@/database/Certificates/CertificateDatabaseKeys";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
-import skillDatabase from "./skills";
+import skillDatabaseMap from "../Skills/SkillDatabaseMap";
 
 /**
- * Hashmap of certificates with keys as {@link CertificateKeysEnum} and values as {@link CertificateInterface}.
+ * Hashmap of certificates with keys as {@link CertificateDatabaseKeys} and values as {@link CertificateInterface}.
  * The order of the certificates is the order that is used when displaying the certificates on the website.
  * The order of the skills is the order that is used when displaying the skills on the website.
  */
 const certificateMap: Database<CertificateInterface> = {
   //^ Programming Languages
-  [CertificateKeysEnum.UdemyPythonProgrammingMasterclass]: {
+  [CertificateDatabaseKeys.UdemyPythonProgrammingMasterclass]: {
     name: "Python Programming Masterclass",
 
     category: CertificateCategoriesEnum.ProgrammingLanguages,
@@ -24,12 +24,12 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.udemy.com/certificate/UC-a3c47af2-7eb8-4f5b-8309-08559c519d5a/",
     skills: [
-      SkillKeysEnum.Python,
-      SkillKeysEnum.ObjectOrientedProgramming,
-      SkillKeysEnum.Algorithms,
-      SkillKeysEnum.DataStructures,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.DataStructures,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `The Python Programming Masterclass on is an all-encompassing course designed to impart a deep understanding of Python, one of the most sought-after programming languages in the tech industry. This course is tailored for both beginners and existing programmers, focusing on core Python concepts, Object-Oriented Programming, algorithms, and data structures. It uniquely combines theoretical knowledge with practical coding exercises, preparing students for advanced areas like machine learning and data science. By the end of the course, learners will have mastered both Python 2 and Python 3, equipped with the skills to develop robust Python applications and the confidence to tackle real-world programming challenges.`,
     learningOutcomes: [
@@ -43,7 +43,7 @@ const certificateMap: Database<CertificateInterface> = {
       "Build foundational skills for advanced Python fields like machine learning and data science",
     ],
   },
-  [CertificateKeysEnum.LinkedInLearningPythonAdvanced]: {
+  [CertificateDatabaseKeys.LinkedInLearningPythonAdvanced]: {
     name: "Advanced Python",
 
     category: CertificateCategoriesEnum.ProgrammingLanguages,
@@ -51,12 +51,12 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.linkedin.com/learning/certificates/c235083fcf3a5aadda62a3aac5f1846098135e9058d9c5c72073ef88891b0395",
     skills: [
-      SkillKeysEnum.Python,
-      SkillKeysEnum.ObjectOrientedProgramming,
-      SkillKeysEnum.Algorithms,
-      SkillKeysEnum.DataStructures,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.DataStructures,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
 
     description: `
@@ -75,7 +75,7 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInPythonObjectOrientedProgramming]: {
+  [CertificateDatabaseKeys.LinkedInPythonObjectOrientedProgramming]: {
     name: "Python Object-Oriented Programming",
 
     category: CertificateCategoriesEnum.ProgrammingLanguages,
@@ -83,12 +83,12 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.linkedin.com/learning/certificates/3df6c589b5151377ce45f231cfacf8ca04a02875fa88996a8831c1c9b70c527a",
     skills: [
-      SkillKeysEnum.Python,
-      SkillKeysEnum.ObjectOrientedProgramming,
-      SkillKeysEnum.Algorithms,
-      SkillKeysEnum.DataStructures,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.DataStructures,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
 
     description: `
@@ -105,7 +105,7 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInLearningPython]: {
+  [CertificateDatabaseKeys.LinkedInLearningPython]: {
     name: "Learning Python",
 
     category: CertificateCategoriesEnum.ProgrammingLanguages,
@@ -113,13 +113,13 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.linkedin.com/learning/certificates/71bbbecbbc9b1489e357c3a2091860ae5b02b3ff0e415ce5748b8746d990b8dd",
     skills: [
-      SkillKeysEnum.Python,
-      SkillKeysEnum.ObjectOrientedProgramming,
-      SkillKeysEnum.Algorithms,
-      SkillKeysEnum.DataStructures,
-      SkillKeysEnum.HTML,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.DataStructures,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
 
     description: `
@@ -133,7 +133,7 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.UdemyJavaProgrammingMasterclass]: {
+  [CertificateDatabaseKeys.UdemyJavaProgrammingMasterclass]: {
     name: "Java Programming Masterclass",
 
     category: CertificateCategoriesEnum.ProgrammingLanguages,
@@ -141,14 +141,14 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.udemy.com/certificate/UC-a14123c1-1def-4710-8836-7c05bfaa2fc7/",
     skills: [
-      SkillKeysEnum.Java,
-      SkillKeysEnum.ObjectOrientedProgramming,
-      SkillKeysEnum.Algorithms,
-      SkillKeysEnum.DataStructures,
-      SkillKeysEnum.Spring,
-      SkillKeysEnum.AndroidDevelopment,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.DataStructures,
+      SkillDatabaseKeys.Spring,
+      SkillDatabaseKeys.AndroidDevelopment,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
 
     description: `This course offers a comprehensive and continuously updated curriculum on Java programming, suitable for all levels of expertise. With a focus on core Java skills, industry best practices, and proficiency in various Java versions, it aims to prepare students for Java developer positions and Oracle Java Certificate exams. The course also provides a strong foundation for transitioning to other areas like the Spring Framework and Android development.`,
@@ -161,7 +161,7 @@ const certificateMap: Database<CertificateInterface> = {
       "Obtaining proficiency in Java 17, as well as older versions including Java 11 and Java 8, is a key learning outcome.",
     ],
   },
-  [CertificateKeysEnum.JavaObjectOrientedProgramming]: {
+  [CertificateDatabaseKeys.JavaObjectOrientedProgramming]: {
     name: "Java Object-Oriented Programming",
 
     category: CertificateCategoriesEnum.ProgrammingLanguages,
@@ -170,12 +170,12 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.linkedin.com/learning/certificates/77ad2602bbb22e29478a06792cd4bd0a91dda794cca7b2bbe4e333c193770a22",
     skills: [
-      SkillKeysEnum.Java,
-      SkillKeysEnum.ObjectOrientedProgramming,
-      SkillKeysEnum.Algorithms,
-      SkillKeysEnum.DataStructures,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.DataStructures,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
 
     learningOutcomes: [
@@ -188,7 +188,7 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInLearningTypeScript]: {
+  [CertificateDatabaseKeys.LinkedInLearningTypeScript]: {
     name: "Learning TypeScript",
 
     category: CertificateCategoriesEnum.ProgrammingLanguages,
@@ -196,13 +196,13 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.linkedin.com/learning/certificates/b1761a41ef8dd23125db776561db0b90ae53842518d029015374a2daee08e4e3",
     skills: [
-      SkillKeysEnum.TypeScript,
-      SkillKeysEnum.JavaScript,
-      SkillKeysEnum.ObjectOrientedProgramming,
-      SkillKeysEnum.Algorithms,
-      SkillKeysEnum.DataStructures,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.DataStructures,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     archived: true,
     description: `
@@ -216,7 +216,7 @@ const certificateMap: Database<CertificateInterface> = {
       "Developing effective communication skills through written reports and presentations",
     ],
   },
-  [CertificateKeysEnum.LinkedInTypeScriptObjectOrientedProgramming]: {
+  [CertificateDatabaseKeys.LinkedInTypeScriptObjectOrientedProgramming]: {
     name: "TypeScript: Object-Oriented Programming",
 
     category: CertificateCategoriesEnum.ProgrammingLanguages,
@@ -224,13 +224,13 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.linkedin.com/learning/certificates/ed3c16a977b93d46364c0e03d601701094c7f346f08027e0cd3a1d6d52342425",
     skills: [
-      SkillKeysEnum.TypeScript,
-      SkillKeysEnum.JavaScript,
-      SkillKeysEnum.ObjectOrientedProgramming,
-      SkillKeysEnum.Algorithms,
-      SkillKeysEnum.DataStructures,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.DataStructures,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
 
     description:
@@ -253,7 +253,7 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInJavaScriptEssentialTraining]: {
+  [CertificateDatabaseKeys.LinkedInJavaScriptEssentialTraining]: {
     name: "JavaScript Essential Training",
 
     category: CertificateCategoriesEnum.ProgrammingLanguages,
@@ -261,14 +261,14 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.linkedin.com/learning/certificates/ade3217d7cef3023f22c8ee034eff28705b7dbfd3981d8377c9b5f61ff39ea51",
     skills: [
-      SkillKeysEnum.JavaScript,
-      SkillKeysEnum.ObjectOrientedProgramming,
-      SkillKeysEnum.Algorithms,
-      SkillKeysEnum.DataStructures,
-      SkillKeysEnum.HTML,
-      SkillKeysEnum.CSS,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.DataStructures,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.CSS,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `
     This course provides a comprehensive understanding of JavaScript, a scripting language essential for dynamic web development. It covers core principles to advanced topics, helping you build dynamic interfaces and advanced interactions. The course includes interactive coding exercises for hands-on practice, making it suitable for anyone looking to enhance their JavaScript skills and understanding of web technologies.
@@ -281,33 +281,34 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInJavaScriptPracticeObjectOrientedProgramming]: {
-    name: "JavaScript Practice: Object-Oriented Programming",
-    category: CertificateCategoriesEnum.ProgrammingLanguages,
-    issuer: CertificateIssuersEnum.LinkedIn,
-    certificateURL:
-      "https://www.linkedin.com/learning/certificates/6f9d825cfa8c3256611a521ec35fe62abd9b7f75636536b59656dcfd57708cf6",
-    skills: [
-      SkillKeysEnum.JavaScript,
-      SkillKeysEnum.ObjectOrientedProgramming,
-      SkillKeysEnum.Algorithms,
-      SkillKeysEnum.DataStructures,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-    ],
+  [CertificateDatabaseKeys.LinkedInJavaScriptPracticeObjectOrientedProgramming]:
+    {
+      name: "JavaScript Practice: Object-Oriented Programming",
+      category: CertificateCategoriesEnum.ProgrammingLanguages,
+      issuer: CertificateIssuersEnum.LinkedIn,
+      certificateURL:
+        "https://www.linkedin.com/learning/certificates/6f9d825cfa8c3256611a521ec35fe62abd9b7f75636536b59656dcfd57708cf6",
+      skills: [
+        SkillDatabaseKeys.JavaScript,
+        SkillDatabaseKeys.ObjectOrientedProgramming,
+        SkillDatabaseKeys.Algorithms,
+        SkillDatabaseKeys.DataStructures,
+        SkillDatabaseKeys.ProblemSolving,
+        SkillDatabaseKeys.CriticalThinking,
+      ],
 
-    description:
-      "This interactive course enhances your JavaScript skills by focusing on object-oriented programming tasks. It provides a hands-on approach to functional and object-oriented programming, with less rigid syntax and greater extensibility. The course includes interactive coding exercises with real-time feedback, offering practical coding practice to advance your skills. It covers creating a course roster with functions, a book function with Object.create(), a country with classes, a food ordering class with getters and setters, and a user/admin class with private properties.",
-    learningOutcomes: [
-      "Creating a roster with functions",
-      "Building a function with Object.create()",
-      "Designing a country with classes",
-      "Developing a class with get and set",
-      "Implementing a User/admin class with private properties",
-    ],
-    archived: true,
-  },
-  [CertificateKeysEnum.UdemyTheCompleteJavaScriptCourse]: {
+      description:
+        "This interactive course enhances your JavaScript skills by focusing on object-oriented programming tasks. It provides a hands-on approach to functional and object-oriented programming, with less rigid syntax and greater extensibility. The course includes interactive coding exercises with real-time feedback, offering practical coding practice to advance your skills. It covers creating a course roster with functions, a book function with Object.create(), a country with classes, a food ordering class with getters and setters, and a user/admin class with private properties.",
+      learningOutcomes: [
+        "Creating a roster with functions",
+        "Building a function with Object.create()",
+        "Designing a country with classes",
+        "Developing a class with get and set",
+        "Implementing a User/admin class with private properties",
+      ],
+      archived: true,
+    },
+  [CertificateDatabaseKeys.UdemyTheCompleteJavaScriptCourse]: {
     name: "The Complete JavaScript Course 2023: From Zero to Expert!",
 
     category: CertificateCategoriesEnum.ProgrammingLanguages,
@@ -315,13 +316,13 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.udemy.com/certificate/UC-cf6c70b6-c34c-4400-b8f8-b9a7abc9f18a/",
     skills: [
-      SkillKeysEnum.JavaScript,
-      SkillKeysEnum.ObjectOrientedProgramming,
-      SkillKeysEnum.Algorithms,
-      SkillKeysEnum.DataStructures,
-      SkillKeysEnum.WebDevelopment,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.DataStructures,
+      SkillDatabaseKeys.WebDevelopment,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
 
     description: `This comprehensive and in-depth course covers JavaScript from fundamentals to advanced applications, making it suitable for learners at all levels. It offers a blend of practical code examples, important theory, and complete projects, preparing you for advanced front-end frameworks and real-world skills needed in a developer job. The course is designed in a modular way, allowing you to learn at your own pace, and by the end, you will have the knowledge and confidence to ace job interviews and become a professional developer.`,
@@ -340,20 +341,20 @@ const certificateMap: Database<CertificateInterface> = {
       "Designing a unique learning path.",
     ],
   },
-  [CertificateKeysEnum.UdemyUnderstandingTypeScript]: {
+  [CertificateDatabaseKeys.UdemyUnderstandingTypeScript]: {
     name: "Understanding TypeScript",
     category: CertificateCategoriesEnum.ProgrammingLanguages,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-2c118eb6-d835-4b2e-8280-fc2ee49f095b/",
     skills: [
-      SkillKeysEnum.TypeScript,
-      SkillKeysEnum.JavaScript,
-      SkillKeysEnum.ObjectOrientedProgramming,
-      SkillKeysEnum.Algorithms,
-      SkillKeysEnum.DataStructures,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.DataStructures,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     learningOutcomes: [
       "Understanding TypeScript types vs JavaScript types",
@@ -381,19 +382,19 @@ const certificateMap: Database<CertificateInterface> = {
       Provides a comprehensive understanding of TypeScript, a statically typed superset of JavaScript that adds robust type-checking capabilities to the language. This course is crucial for developers as it covers a wide range of topics from basic type understanding to advanced concepts like generics and decorators. It also includes practical applications such as setting up a React + TypeScript project, executing TypeScript code with Node.js and Express, and implementing CRUD operations in a Node + Express app. By the end of the course, learners will have a solid foundation in TypeScript, enhancing their JavaScript skills and making them more versatile in both front-end and back-end development.
     `,
   },
-  [CertificateKeysEnum.LinkedInLearningLinuxShellScripting]: {
+  [CertificateDatabaseKeys.LinkedInLearningLinuxShellScripting]: {
     name: "Learning Linux Shell Scripting",
     category: CertificateCategoriesEnum.ProgrammingLanguages,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/67ef8710bfc2f51163f78c9373df3d7b4674e44b3d2e936318399c6a7fe5bda0",
     skills: [
-      SkillKeysEnum.ShellScript,
-      SkillKeysEnum.LinuxDevelopment,
-      SkillKeysEnum.Automation,
-      SkillKeysEnum.DevOps,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.ShellScript,
+      SkillDatabaseKeys.LinuxDevelopment,
+      SkillDatabaseKeys.Automation,
+      SkillDatabaseKeys.DevOps,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     learningOutcomes: [
       "Printing to the console",
@@ -418,18 +419,18 @@ const certificateMap: Database<CertificateInterface> = {
       "This course provides a comprehensive introduction to Linux shell scripting, a powerful tool for automating tasks in Linux. You will learn how to create scripts that can automate many kinds of tasks, from defining variables and parameters to managing system processes. The course also covers how to handle bad input data and create interactive scripts, making your Linux tasks easier, more predictable, and more fun.",
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInLearningGroovy]: {
+  [CertificateDatabaseKeys.LinkedInLearningGroovy]: {
     name: "Learning Groovy",
     category: CertificateCategoriesEnum.ProgrammingLanguages,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/7c14e4c16f72a10046c3d66838e5dd3589fa40ac6cbf6509b235ea6452f430c8",
     skills: [
-      SkillKeysEnum.Groovy,
-      SkillKeysEnum.ObjectOrientedProgramming,
-      SkillKeysEnum.DataStructures,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Groovy,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.DataStructures,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
 
     learningOutcomes: [
@@ -453,7 +454,7 @@ const certificateMap: Database<CertificateInterface> = {
   },
 
   //^ Algorithms and Data Structures
-  [CertificateKeysEnum.UdemyTheCompleteDataStructuresAndAlgorithmsCourseInPython]:
+  [CertificateDatabaseKeys.UdemyTheCompleteDataStructuresAndAlgorithmsCourseInPython]:
     {
       name: "The Complete Data Structures and Algorithms Course in Python",
 
@@ -462,13 +463,13 @@ const certificateMap: Database<CertificateInterface> = {
       certificateURL:
         "https://www.udemy.com/certificate/UC-74fdc19f-c016-43c5-8b2a-3cb30941205d/",
       skills: [
-        SkillKeysEnum.Algorithms,
-        SkillKeysEnum.DataStructures,
-        SkillKeysEnum.Python,
-        SkillKeysEnum.ObjectOrientedProgramming,
-        SkillKeysEnum.Mathematics,
-        SkillKeysEnum.ProblemSolving,
-        SkillKeysEnum.CriticalThinking,
+        SkillDatabaseKeys.Algorithms,
+        SkillDatabaseKeys.DataStructures,
+        SkillDatabaseKeys.Python,
+        SkillDatabaseKeys.ObjectOrientedProgramming,
+        SkillDatabaseKeys.Mathematics,
+        SkillDatabaseKeys.ProblemSolving,
+        SkillDatabaseKeys.CriticalThinking,
       ],
 
       learningOutcomes: [
@@ -511,17 +512,17 @@ const certificateMap: Database<CertificateInterface> = {
     The course progresses from basic to advanced concepts, equipping learners with the skills to excel in professional programming and technical interviews. 
     Tailored for a diverse audience, from self-taught programmers to seasoned developers, it provides lifetime access to extensive learning materials and a supportive community, all designed to boost career prospects in the tech industry.`,
     },
-  [CertificateKeysEnum.LinkedInProgrammingFoundationsAlgorithms]: {
+  [CertificateDatabaseKeys.LinkedInProgrammingFoundationsAlgorithms]: {
     name: "Programming Foundations: Algorithms",
     category: CertificateCategoriesEnum.AlgorithmsDataStructures,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/e31b0a7d9243f44e8a528fc2d184cd4a3bfbdc789c899c3a9ee47ee511e51fd7",
     skills: [
-      SkillKeysEnum.Algorithms,
-      SkillKeysEnum.DataStructures,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.DataStructures,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     learningOutcomes: [
       "Understanding data structures",
@@ -539,17 +540,17 @@ const certificateMap: Database<CertificateInterface> = {
       "This course delves into the universal building blocks of programming - algorithms. It covers popular and useful algorithms for searching and sorting information, recursion techniques, and understanding common data structures. The course also explores the performance implications of different algorithms and how to evaluate their performance. Practical examples are demonstrated in Python, but the lessons are applicable to any programming language.",
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInProgrammingFoundationsDataStructures]: {
+  [CertificateDatabaseKeys.LinkedInProgrammingFoundationsDataStructures]: {
     name: "Programming Foundations: Data Structures",
     category: CertificateCategoriesEnum.AlgorithmsDataStructures,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/c5c41ea1aa52982d08705831612aba2e93e69a64e35dd2cce11c28fad12b59f7",
     skills: [
-      SkillKeysEnum.DataStructures,
-      SkillKeysEnum.Algorithms,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.DataStructures,
+      SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `
       This course provides an in-depth overview of the most essential data structures for modern programming. 
@@ -571,19 +572,19 @@ const certificateMap: Database<CertificateInterface> = {
   },
 
   //^ Artificial Intelligence
-  [CertificateKeysEnum.LinkedInAppliedArtificialIntelligenceAlgorithms]: {
+  [CertificateDatabaseKeys.LinkedInAppliedArtificialIntelligenceAlgorithms]: {
     name: "Applied Artificial Intelligence: Algorithms",
     category: CertificateCategoriesEnum.ArtificialIntelligence,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/964c3b1a049a60afa6bcbb55179e326c7e5cea11db0db7b8d3390be8fc5925e1",
     skills: [
-      SkillKeysEnum.MachineLearning,
-      SkillKeysEnum.Algorithms,
-      SkillKeysEnum.Hyperparameters,
-      SkillKeysEnum.Boosting,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.Hyperparameters,
+      SkillDatabaseKeys.Boosting,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `This course is the second installment in the Applied Artificial Intelligence series, delving into a variety of algorithms from logistic regression to gradient boosting. It provides a structured approach to choosing the best algorithm for a given problem, considering each algorithm's pros and cons. The course enhances your understanding of what drives each algorithm, their benefits, and drawbacks, equipping you with a significant competitive advantage as a data scientist.`,
     learningOutcomes: [
@@ -598,19 +599,19 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInAppliedArtificialIntelligenceFoundations]: {
+  [CertificateDatabaseKeys.LinkedInAppliedArtificialIntelligenceFoundations]: {
     name: "Applied Artificial Intelligence: Foundations",
     category: CertificateCategoriesEnum.ArtificialIntelligence,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/50182c40b257c756e5d8aea70a9f69f14566da4d3cae7dab86f236554cc7238e",
     skills: [
-      SkillKeysEnum.MachineLearning,
-      SkillKeysEnum.DataStructures,
-      SkillKeysEnum.DataVisualisation,
-      SkillKeysEnum.Hyperparameters,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataStructures,
+      SkillDatabaseKeys.DataVisualisation,
+      SkillDatabaseKeys.Hyperparameters,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `This course is the first part of the Applied Artificial Intelligence series, focusing on the foundations of machine learning. It provides a pragmatic approach to solving machine learning problems, from exploratory data analysis to model evaluation. The course does not focus on any specific algorithm but provides the tools to efficiently solve a wide range of machine learning problems, making it a valuable resource for anyone looking to delve into the field of machine learning.`,
     learningOutcomes: [
@@ -626,7 +627,7 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInArtificialIntelligenceFoundationsArtificialIntelligence]:
+  [CertificateDatabaseKeys.LinkedInArtificialIntelligenceFoundationsArtificialIntelligence]:
     {
       name: "Artificial Intelligence Foundations: Artificial Intelligence",
       category: CertificateCategoriesEnum.ArtificialIntelligence,
@@ -634,11 +635,11 @@ const certificateMap: Database<CertificateInterface> = {
       certificateURL:
         "https://www.linkedin.com/learning/certificates/3610d0d7891a746bbe207505c8ec6cfab58723ca973e3082f139a349059248c9",
       skills: [
-        SkillKeysEnum.MachineLearning,
-        SkillKeysEnum.DataScience,
-        SkillKeysEnum.DataVisualisation,
-        SkillKeysEnum.ProblemSolving,
-        SkillKeysEnum.CriticalThinking,
+        SkillDatabaseKeys.MachineLearning,
+        SkillDatabaseKeys.DataScience,
+        SkillDatabaseKeys.DataVisualisation,
+        SkillDatabaseKeys.ProblemSolving,
+        SkillDatabaseKeys.CriticalThinking,
       ],
       description: `This course provides a hands-on approach to machine learning, one of the most exciting branches of artificial intelligence. It covers the entire machine learning lifecycle, from data sourcing and preparation to model training and evaluation. The course also includes building a machine learning pipeline to streamline the process. It's a great resource for those looking to understand the steps required to build machine learning systems.`,
       learningOutcomes: [
@@ -651,7 +652,7 @@ const certificateMap: Database<CertificateInterface> = {
       ],
       archived: true,
     },
-  [CertificateKeysEnum.LinkedInArtificialIntelligenceFoundationsNeuralNetworks]:
+  [CertificateDatabaseKeys.LinkedInArtificialIntelligenceFoundationsNeuralNetworks]:
     {
       name: "Artificial Intelligence Foundations: Neural Networks",
       category: CertificateCategoriesEnum.ArtificialIntelligence,
@@ -659,12 +660,12 @@ const certificateMap: Database<CertificateInterface> = {
       certificateURL:
         "https://www.linkedin.com/learning/certificates/5dda55caa1ccf02b29f3c0f5d526c8c026f7fc346a6cad6d9c84f98aba3e2514",
       skills: [
-        SkillKeysEnum.MachineLearning,
-        SkillKeysEnum.Keras,
-        SkillKeysEnum.NeuralNetworks,
-        SkillKeysEnum.DeepLearning,
-        SkillKeysEnum.ProblemSolving,
-        SkillKeysEnum.CriticalThinking,
+        SkillDatabaseKeys.MachineLearning,
+        SkillDatabaseKeys.Keras,
+        SkillDatabaseKeys.NeuralNetworks,
+        SkillDatabaseKeys.DeepLearning,
+        SkillDatabaseKeys.ProblemSolving,
+        SkillDatabaseKeys.CriticalThinking,
       ],
       description: `This course offers a comprehensive introduction to the principles and techniques of artificial neural networks, including their components, common models, and applications. It provides hands-on experience in building and training a neural network using the Keras Sequential API. The course is designed to help learners gain a solid understanding of how to build, train, improve, and use neural networks.`,
       learningOutcomes: [
@@ -676,7 +677,7 @@ const certificateMap: Database<CertificateInterface> = {
       ],
       archived: true,
     },
-  [CertificateKeysEnum.NASBADataScienceFoundationsFundamentals]: {
+  [CertificateDatabaseKeys.NASBADataScienceFoundationsFundamentals]: {
     name: "Data Science Foundations: Fundamentals",
 
     category: CertificateCategoriesEnum.ArtificialIntelligence,
@@ -684,19 +685,19 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.linkedin.com/learning/certificates/e9cb305b4da5f38726226d31e5eef5da66504838131739c389a2d056ed31cf3f",
     skills: [
-      SkillKeysEnum.DataScience,
-      SkillKeysEnum.MachineLearning,
-      SkillKeysEnum.APIs,
-      SkillKeysEnum.Python,
-      SkillKeysEnum.RLanguage,
-      SkillKeysEnum.RelationalDatabases,
-      SkillKeysEnum.Databases,
-      SkillKeysEnum.Algebra,
-      SkillKeysEnum.Statistics,
-      SkillKeysEnum.Probability,
-      SkillKeysEnum.LinearAlgebra,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.APIs,
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.RLanguage,
+      SkillDatabaseKeys.RelationalDatabases,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.Algebra,
+      SkillDatabaseKeys.Statistics,
+      SkillDatabaseKeys.Probability,
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `This course provides an accessible, non-technical introduction to the field of data science, covering its vocabulary, skills, jobs, tools, and techniques. It offers insights into how data science can help improve decision-making, gain deeper insights, and enhance work efficiency. The course also discusses ethics and accountability in data science, making it a comprehensive resource for anyone interested in this rapidly growing field.`,
     learningOutcomes: [
@@ -710,19 +711,19 @@ const certificateMap: Database<CertificateInterface> = {
       "Defining components of effective data visualization.",
     ],
   },
-  [CertificateKeysEnum.NASBAIntroductionsToArtificialIntelligence]: {
+  [CertificateDatabaseKeys.NASBAIntroductionsToArtificialIntelligence]: {
     name: "Introduction to Artificial Intelligence",
     category: CertificateCategoriesEnum.ArtificialIntelligence,
     issuer: CertificateIssuersEnum.NASBA,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/9f61617caf2fc21f029abd857a03a29758d7e822215d3677eb938b4e29e5da78",
     skills: [
-      SkillKeysEnum.MachineLearning,
-      SkillKeysEnum.ArtificialIntelligence,
-      SkillKeysEnum.DeepLearning,
-      SkillKeysEnum.DataVisualisation,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.DataVisualisation,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `This course offers a high-level overview of artificial intelligence, making it accessible to non-technical professionals like project managers, product managers, directors, and executives. It simplifies complex concepts in machine learning, artificial neural networks, and deep learning, helping learners understand how AI can enhance their products, life, and career. The course also provides insights into the top tools in the field, making it a valuable resource for anyone interested in AI.`,
     learningOutcomes: [
@@ -744,7 +745,7 @@ const certificateMap: Database<CertificateInterface> = {
       "Evaluating understanding of course material.",
     ],
   },
-  [CertificateKeysEnum.LinkedInArtificialIntelligenceFoundationsCalculus]: {
+  [CertificateDatabaseKeys.LinkedInArtificialIntelligenceFoundationsCalculus]: {
     name: "Artificial Intelligence Foundations: Calculus",
 
     category: CertificateCategoriesEnum.ArtificialIntelligence,
@@ -752,16 +753,16 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.linkedin.com/learning/certificates/94c788dba6f1c97ceee751315c30b6dc6f4267025733c3de55a315d83a36386d",
     skills: [
-      SkillKeysEnum.Calculus,
-      SkillKeysEnum.Algebra,
-      SkillKeysEnum.DataVisualisation,
-      SkillKeysEnum.Python,
-      SkillKeysEnum.ObjectRelationalMapping,
-      SkillKeysEnum.Databases,
-      SkillKeysEnum.RelationalDatabases,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.Mathematics,
+      SkillDatabaseKeys.Calculus,
+      SkillDatabaseKeys.Algebra,
+      SkillDatabaseKeys.DataVisualisation,
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.ObjectRelationalMapping,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.RelationalDatabases,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Mathematics,
     ],
 
     description: `
@@ -779,7 +780,7 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInArtificialIntelligenceFoundationsLinearAlgebra]:
+  [CertificateDatabaseKeys.LinkedInArtificialIntelligenceFoundationsLinearAlgebra]:
     {
       name: "Artificial Intelligence Foundations: Linear Algebra",
       category: CertificateCategoriesEnum.ArtificialIntelligence,
@@ -787,13 +788,13 @@ const certificateMap: Database<CertificateInterface> = {
       certificateURL:
         "https://www.linkedin.com/learning/certificates/ec6ac0178fb92ba75dd38a95ae48316efb6f4e0e9abcb6bf5431b48021ff8441",
       skills: [
-        SkillKeysEnum.LinearAlgebra,
-        SkillKeysEnum.Algorithms,
-        SkillKeysEnum.RelationalDatabases,
-        SkillKeysEnum.Databases,
-        SkillKeysEnum.ProblemSolving,
-        SkillKeysEnum.CriticalThinking,
-        SkillKeysEnum.Mathematics,
+        SkillDatabaseKeys.LinearAlgebra,
+        SkillDatabaseKeys.Algorithms,
+        SkillDatabaseKeys.RelationalDatabases,
+        SkillDatabaseKeys.Databases,
+        SkillDatabaseKeys.ProblemSolving,
+        SkillDatabaseKeys.CriticalThinking,
+        SkillDatabaseKeys.Mathematics,
       ],
       description: `This course provides an in-depth exploration of linear algebra, a key foundation for machine learning algorithms. It covers essential topics such as vector arithmetic, matrix properties, advanced operations, and matrix transformation, along with important algorithms. By the end of the course, you'll be ready to apply the principles of linear algebra to your machine learning projects, enhancing your understanding and implementation of these algorithms.`,
       learningOutcomes: [
@@ -810,42 +811,43 @@ const certificateMap: Database<CertificateInterface> = {
       ],
       archived: true,
     },
-  [CertificateKeysEnum.LinkedInArtificialIntelligenceFoundationsProbability]: {
-    name: "Artificial Intelligence Foundations: Probability",
-    category: CertificateCategoriesEnum.ArtificialIntelligence,
-    issuer: CertificateIssuersEnum.LinkedIn,
-    certificateURL:
-      "https://www.linkedin.com/learning/certificates/b7334fe5b4d04bef6dab5d2ed69080e9ffc590475eba2057046b6ca4a6cf2fba",
-    skills: [
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.Algorithms,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.Mathematics,
-    ],
-    description: `
+  [CertificateDatabaseKeys.LinkedInArtificialIntelligenceFoundationsProbability]:
+    {
+      name: "Artificial Intelligence Foundations: Probability",
+      category: CertificateCategoriesEnum.ArtificialIntelligence,
+      issuer: CertificateIssuersEnum.LinkedIn,
+      certificateURL:
+        "https://www.linkedin.com/learning/certificates/b7334fe5b4d04bef6dab5d2ed69080e9ffc590475eba2057046b6ca4a6cf2fba",
+      skills: [
+        SkillDatabaseKeys.ProblemSolving,
+        SkillDatabaseKeys.Algorithms,
+        SkillDatabaseKeys.ProblemSolving,
+        SkillDatabaseKeys.CriticalThinking,
+        SkillDatabaseKeys.Mathematics,
+      ],
+      description: `
     This course offers an in-depth exploration of probability and its application in the design and implementation of reliable machine learning algorithms. It covers the core concepts and functionalities of probability, including the rules of probability, joint and marginal probability, discrete and continuous probability distributions, and Bayes' theorem. By the end of the course, you'll have the essential tools and techniques for successful probabilistic modeling in machine learning.`,
-    learningOutcomes: [
-      "Learning basics of probability theory in machine learning.",
-      "Understanding sum rule, product rule, and conditional probability.",
-      "Calculating joint and marginal probability.",
-      "Exploring common discrete probability distributions.",
-      "Learning about continuous probability distribution.",
-      "Discovering Bayes' theorem and its applications.",
-    ],
-    archived: true,
-  },
-  [CertificateKeysEnum.LinkedInArtificialIntelligenceWithSciKitLearn]: {
+      learningOutcomes: [
+        "Learning basics of probability theory in machine learning.",
+        "Understanding sum rule, product rule, and conditional probability.",
+        "Calculating joint and marginal probability.",
+        "Exploring common discrete probability distributions.",
+        "Learning about continuous probability distribution.",
+        "Discovering Bayes' theorem and its applications.",
+      ],
+      archived: true,
+    },
+  [CertificateDatabaseKeys.LinkedInArtificialIntelligenceWithSciKitLearn]: {
     name: "Artificial Intelligence with Scikit-Learn",
     category: CertificateCategoriesEnum.ArtificialIntelligence,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/3c31f8f11d8ecbd7156dd75b8ae2d7c7db59a8342e3ae7780496b637ac894bb8",
     skills: [
-      SkillKeysEnum.ScikitLearn,
-      SkillKeysEnum.Python,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.ScikitLearn,
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `This course focuses on the application of scikit-learn, a popular open-source Python library, for both supervised and unsupervised machine learning. It covers practical techniques such as linear and logistic regression, decision trees, random forest models, K-means clustering, and principal component analysis (PCA). Additionally, it teaches how to create scikit-learn pipelines for cleaner, bug-resilient code. By the end of the course, you'll be able to understand the strengths and weaknesses of each scikit-learn algorithm and build more efficient machine learning models.`,
     learningOutcomes: [
@@ -860,45 +862,45 @@ const certificateMap: Database<CertificateInterface> = {
   },
 
   //^ DevOps
-  [CertificateKeysEnum.UdemyDevOpsBeginnersToAdvanced]: {
+  [CertificateDatabaseKeys.UdemyDevOpsBeginnersToAdvanced]: {
     name: "DevOps: Beginners to Advanced",
     category: CertificateCategoriesEnum.DevOps,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-a32e2678-8ca1-4b45-8973-ba173b2029cd/",
     skills: [
-      SkillKeysEnum.Jenkins,
-      SkillKeysEnum.Docker,
-      SkillKeysEnum.Containerisation,
-      SkillKeysEnum.Kubernetes,
-      SkillKeysEnum.Clusterisation,
-      SkillKeysEnum.Ansible,
-      SkillKeysEnum.Vagrant,
-      SkillKeysEnum.Terraform,
-      SkillKeysEnum.InfrastructureAsCode,
-      SkillKeysEnum.Automation,
-      SkillKeysEnum.VersionControlSystems,
-      SkillKeysEnum.AWS,
-      SkillKeysEnum.AWS_CloudWatch,
-      SkillKeysEnum.AWS_ApplicationLoadBalancer,
-      SkillKeysEnum.AWS_ElasticCache,
-      SkillKeysEnum.AWS_ElasticFileSystem,
-      SkillKeysEnum.AWS_ElasticBlockStore,
-      SkillKeysEnum.AWS_RelationalDatabaseService,
-      SkillKeysEnum.AWS_AutoScaling,
-      SkillKeysEnum.AWS_CloudFormation,
-      SkillKeysEnum.AWS_CloudFront,
-      SkillKeysEnum.AWS_ElasticBeanstalk,
-      SkillKeysEnum.ShellScript,
-      SkillKeysEnum.Python,
-      SkillKeysEnum.Java,
-      SkillKeysEnum.DevOps,
-      SkillKeysEnum.ContinuousIntegration,
-      SkillKeysEnum.ContinuousDeployment,
-      SkillKeysEnum.Git,
-      SkillKeysEnum.ContinuousDelivery,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Jenkins,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.Containerisation,
+      SkillDatabaseKeys.Kubernetes,
+      SkillDatabaseKeys.Clusterisation,
+      SkillDatabaseKeys.Ansible,
+      SkillDatabaseKeys.Vagrant,
+      SkillDatabaseKeys.Terraform,
+      SkillDatabaseKeys.InfrastructureAsCode,
+      SkillDatabaseKeys.Automation,
+      SkillDatabaseKeys.VersionControlSystems,
+      SkillDatabaseKeys.AWS,
+      SkillDatabaseKeys.AWS_CloudWatch,
+      SkillDatabaseKeys.AWS_ApplicationLoadBalancer,
+      SkillDatabaseKeys.AWS_ElasticCache,
+      SkillDatabaseKeys.AWS_ElasticFileSystem,
+      SkillDatabaseKeys.AWS_ElasticBlockStore,
+      SkillDatabaseKeys.AWS_RelationalDatabaseService,
+      SkillDatabaseKeys.AWS_AutoScaling,
+      SkillDatabaseKeys.AWS_CloudFormation,
+      SkillDatabaseKeys.AWS_CloudFront,
+      SkillDatabaseKeys.AWS_ElasticBeanstalk,
+      SkillDatabaseKeys.ShellScript,
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.DevOps,
+      SkillDatabaseKeys.ContinuousIntegration,
+      SkillDatabaseKeys.ContinuousDeployment,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.ContinuousDelivery,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     learningOutcomes: [
       "Understanding the basics of Linux and server management in Linux",
@@ -943,16 +945,16 @@ const certificateMap: Database<CertificateInterface> = {
       This course provides a comprehensive introduction to DevOps, starting from the very basics of command line and progressing to hands-on demonstrations of various tools and technologies integral to DevOps. It is designed for anyone looking to delve into the world of DevOps, regardless of their prior knowledge or experience. The course simplifies the complex landscape of DevOps by guiding learners on the right technologies to choose from the myriad available. A unique aspect of this course is its practical approach, where learners get to set up their own projects, thereby gaining a deeper understanding of how various technologies in DevOps work together. The course also covers key DevOps principles such as infrastructure automation, continuous delivery, and reliability engineering, and discusses the future of organizations transitioning from the cloud to serverless architectures.
     `,
   },
-  [CertificateKeysEnum.NASBADevOpsFoundations]: {
+  [CertificateDatabaseKeys.NASBADevOpsFoundations]: {
     name: "DevOps Foundations",
     category: CertificateCategoriesEnum.DevOps,
     issuer: CertificateIssuersEnum.NASBA,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/1c6fedf1993d58cfe2f906e4fe4db5b4eddda6ea5fa7f8999436b07682ffe3f7",
     skills: [
-      SkillKeysEnum.DevOps,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.DevOps,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `
     This course provides an overview of the DevOps culture, emphasizing the core value of CAMS (culture, automation, measurement, and sharing). It explores various methodologies and tools that an organization can adopt to transition into DevOps, including both agile and lean project management principles and how traditional principles like ITIL, ITSM, and SDLC fit within DevOps. The course concludes with a discussion on the three main tenets of DevOps—infrastructure automation, continuous delivery, and reliability engineering—and a brief look into the future of organizations transitioning from the cloud to serverless architectures.`,
@@ -967,7 +969,7 @@ const certificateMap: Database<CertificateInterface> = {
       "Describing resources to learn or apply DevOps.",
     ],
   },
-  [CertificateKeysEnum.NASBADevOpsFoundationsContinuousDeliveryContinuousIntegration]:
+  [CertificateDatabaseKeys.NASBADevOpsFoundationsContinuousDeliveryContinuousIntegration]:
     {
       name: "DevOps Foundations: Continuous Delivery/Continuous Integration",
       category: CertificateCategoriesEnum.DevOps,
@@ -975,12 +977,12 @@ const certificateMap: Database<CertificateInterface> = {
       certificateURL:
         "https://www.linkedin.com/learning/certificates/6bf47e122551142911c5a636edfee564ff0d57bd07a52888c6c52246946f7747",
       skills: [
-        SkillKeysEnum.DevOps,
-        SkillKeysEnum.ContinuousDelivery,
-        SkillKeysEnum.ContinuousDeployment,
-        SkillKeysEnum.ContinuousIntegration,
-        SkillKeysEnum.ProblemSolving,
-        SkillKeysEnum.CriticalThinking,
+        SkillDatabaseKeys.DevOps,
+        SkillDatabaseKeys.ContinuousDelivery,
+        SkillDatabaseKeys.ContinuousDeployment,
+        SkillDatabaseKeys.ContinuousIntegration,
+        SkillDatabaseKeys.ProblemSolving,
+        SkillDatabaseKeys.CriticalThinking,
       ],
 
       description: `This course delves into the concepts of continuous integration and continuous delivery (CI/CD), demonstrating these principles through the construction of a build pipeline. It covers the journey of an app from development to production, discussing version control, building artifacts, unit testing, and deployment. The course also provides practical advice on CI/CD best practices, common pitfalls, and workarounds, equipping you with the knowledge to navigate your journey to continuous delivery.`,
@@ -993,23 +995,23 @@ const certificateMap: Database<CertificateInterface> = {
         "Exploring methods for software testing and best practices.",
       ],
     },
-  [CertificateKeysEnum.LinkedInJenkinsEssentialTraining]: {
+  [CertificateDatabaseKeys.LinkedInJenkinsEssentialTraining]: {
     name: "Jenkins Essential Training",
     category: CertificateCategoriesEnum.DevOps,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/b1f7a0e46c3659d0d1c25396bbd7838b2374b12afcff7404a0d5077b68e9ebfc",
     skills: [
-      SkillKeysEnum.DevOps,
-      SkillKeysEnum.Jenkins,
-      SkillKeysEnum.ContinuousIntegration,
-      SkillKeysEnum.ContinuousDeployment,
-      SkillKeysEnum.ContinuousDelivery,
-      SkillKeysEnum.Testing,
-      SkillKeysEnum.Docker,
-      SkillKeysEnum.Containerisation,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.DevOps,
+      SkillDatabaseKeys.Jenkins,
+      SkillDatabaseKeys.ContinuousIntegration,
+      SkillDatabaseKeys.ContinuousDeployment,
+      SkillDatabaseKeys.ContinuousDelivery,
+      SkillDatabaseKeys.Testing,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.Containerisation,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `
     This course focuses on Jenkins, a popular DevOps suite known for its open-source extensibility and ease of use. It covers the fundamentals of the platform, including how to automate builds, test, secure deployments, create a pipeline, and integrate with version control systems. The course also delves into distributing agents like Docker containers, running and publishing tests, producing artifacts for review, and securing your DevOps loop by configuring users and permissions. Practical challenges at the end of each section allow you to apply your new skills.`,
@@ -1023,22 +1025,22 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInGitHubActionsForCICD]: {
+  [CertificateDatabaseKeys.LinkedInGitHubActionsForCICD]: {
     name: "GitHub Actions for CI/CD",
     category: CertificateCategoriesEnum.DevOps,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/679b3ba787209cd0d81d1d68e4bfc01e23ae14f9f2bdfa4e85f917025a8e732b",
     skills: [
-      SkillKeysEnum.DevOps,
-      SkillKeysEnum.Git,
-      SkillKeysEnum.GitHub,
-      SkillKeysEnum.GitHubActions,
-      SkillKeysEnum.ContinuousIntegration,
-      SkillKeysEnum.ContinuousDeployment,
-      SkillKeysEnum.ContinuousDelivery,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.DevOps,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.GitHub,
+      SkillDatabaseKeys.GitHubActions,
+      SkillDatabaseKeys.ContinuousIntegration,
+      SkillDatabaseKeys.ContinuousDeployment,
+      SkillDatabaseKeys.ContinuousDelivery,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `
     This course focuses on the use of GitHub Actions, a built-in automation tool in GitHub, for continuous integration, continuous delivery, and continuous deployment. It provides theory, demonstrations, and exercises for developers adopting GitHub Actions for their projects. The course aims to guide engineers on how to automate the complexities of software delivery, allowing them to focus on delivering value directly to users. It complements other courses on GitHub Actions by demonstrating industry best practices for creating workflows.`,
@@ -1050,7 +1052,7 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInCareerEssentialsInGitHubProfessionalCertificate]:
+  [CertificateDatabaseKeys.LinkedInCareerEssentialsInGitHubProfessionalCertificate]:
     {
       name: "Career Essentials in GitHub Professional Certificate",
       category: CertificateCategoriesEnum.DevOps,
@@ -1058,21 +1060,21 @@ const certificateMap: Database<CertificateInterface> = {
       certificateURL:
         "https://www.linkedin.com/learning/certificates/a46589fd9baa43c2c77d7de14e3830cf85648f1a6d5d7a489096d4e1b2a4d279",
       skills: [
-        SkillKeysEnum.GitHub,
-        SkillKeysEnum.GitHubActions,
-        SkillKeysEnum.DevOps,
-        SkillKeysEnum.ContinuousIntegration,
-        SkillKeysEnum.ContinuousDeployment,
-        SkillKeysEnum.ContinuousDelivery,
-        SkillKeysEnum.Docker,
-        SkillKeysEnum.InfrastructureAsCode,
-        SkillKeysEnum.Containerisation,
-        SkillKeysEnum.ArtificialIntelligence,
-        SkillKeysEnum.Automation,
-        SkillKeysEnum.ProblemSolving,
-        SkillKeysEnum.CriticalThinking,
-        SkillKeysEnum.ProjectManagement,
-        SkillKeysEnum.Adaptability,
+        SkillDatabaseKeys.GitHub,
+        SkillDatabaseKeys.GitHubActions,
+        SkillDatabaseKeys.DevOps,
+        SkillDatabaseKeys.ContinuousIntegration,
+        SkillDatabaseKeys.ContinuousDeployment,
+        SkillDatabaseKeys.ContinuousDelivery,
+        SkillDatabaseKeys.Docker,
+        SkillDatabaseKeys.InfrastructureAsCode,
+        SkillDatabaseKeys.Containerisation,
+        SkillDatabaseKeys.ArtificialIntelligence,
+        SkillDatabaseKeys.Automation,
+        SkillDatabaseKeys.ProblemSolving,
+        SkillDatabaseKeys.CriticalThinking,
+        SkillDatabaseKeys.ProjectManagement,
+        SkillDatabaseKeys.Adaptability,
       ],
       description:
         "This course equips learners with a comprehensive understanding of GitHub, focusing on mastering GitHub Actions and essential career skills. It covers creating, configuring, and deploying actions, publishing custom actions to the GitHub Marketplace, and managing workflows with existing actions. It also delves into Dockerfile generation, action crafting, and release management. The course further explores creating and managing development projects, using labels, task lists, and other project management features, and utilizing GitHub Copilot and GitHub's search features for code discovery and problem-solving.",
@@ -1106,28 +1108,28 @@ const certificateMap: Database<CertificateInterface> = {
         "Finding code to learn from",
       ],
       relatedMaterials: [
-        CertificateKeysEnum.LinkedInPracticalGitHubActions,
-        CertificateKeysEnum.LinkedInPracticalGitHubCodeSearch,
-        CertificateKeysEnum.LinkedInPracticalGitHubCopilot,
-        CertificateKeysEnum.PMIPracticalProjectManagementAndCollaboration,
+        CertificateDatabaseKeys.LinkedInPracticalGitHubActions,
+        CertificateDatabaseKeys.LinkedInPracticalGitHubCodeSearch,
+        CertificateDatabaseKeys.LinkedInPracticalGitHubCopilot,
+        CertificateDatabaseKeys.PMIPracticalProjectManagementAndCollaboration,
       ],
     },
-  [CertificateKeysEnum.LinkedInPracticalGitHubActions]: {
+  [CertificateDatabaseKeys.LinkedInPracticalGitHubActions]: {
     name: "Practical GitHub Actions",
     category: CertificateCategoriesEnum.DevOps,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/0344b0df296833ba35ddabf20563556bc67ee7ed0b83b55e19021443d1b9e496",
     skills: [
-      SkillKeysEnum.GitHub,
-      SkillKeysEnum.GitHubActions,
-      SkillKeysEnum.Python,
-      SkillKeysEnum.ContinuousIntegration,
-      SkillKeysEnum.ContinuousDeployment,
-      SkillKeysEnum.ContinuousDelivery,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.InfrastructureAsCode,
+      SkillDatabaseKeys.GitHub,
+      SkillDatabaseKeys.GitHubActions,
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.ContinuousIntegration,
+      SkillDatabaseKeys.ContinuousDeployment,
+      SkillDatabaseKeys.ContinuousDelivery,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.InfrastructureAsCode,
     ],
     description: `
       This course provides a comprehensive guide to GitHub Actions, a powerful tool that allows developers to automate repetitive tasks and solve recurring problems. 
@@ -1149,21 +1151,21 @@ const certificateMap: Database<CertificateInterface> = {
       "Planning for next steps in GitHub actions",
     ],
     relatedMaterials: [
-      CertificateKeysEnum.LinkedInCareerEssentialsInGitHubProfessionalCertificate,
+      CertificateDatabaseKeys.LinkedInCareerEssentialsInGitHubProfessionalCertificate,
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInPracticalGitHubCopilot]: {
+  [CertificateDatabaseKeys.LinkedInPracticalGitHubCopilot]: {
     name: "Practical GitHub Copilot",
     category: CertificateCategoriesEnum.DevOps,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/ad4d86c0701098c35103dbac08143317758a73d23a01ff729ac668a6122e2555",
     skills: [
-      SkillKeysEnum.GitHub,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.InfrastructureAsCode,
+      SkillDatabaseKeys.GitHub,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.InfrastructureAsCode,
     ],
     learningOutcomes: [
       "Understanding what GitHub Copilot is",
@@ -1184,21 +1186,21 @@ const certificateMap: Database<CertificateInterface> = {
     description: `
       This course offers a deep dive into GitHub Copilot, a paid service that is transforming the way developers write code. It provides hands-on training on how to use Copilot to solve specific coding problems and increase productivity. The course covers everything from setting up Copilot, navigating its tools, to refining the results. It also explores practical applications of Copilot's powerful features. This course is ideal for anyone interested in leveraging Copilot to become a more efficient developer.`,
     relatedMaterials: [
-      CertificateKeysEnum.LinkedInCareerEssentialsInGitHubProfessionalCertificate,
+      CertificateDatabaseKeys.LinkedInCareerEssentialsInGitHubProfessionalCertificate,
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInPracticalGitHubCodeSearch]: {
+  [CertificateDatabaseKeys.LinkedInPracticalGitHubCodeSearch]: {
     name: "Practical GitHub Code Search",
     category: CertificateCategoriesEnum.DevOps,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/d8b18aabca615328a553a9e89cae98917a956c87e3498749edbef3cf50e25f0b",
     skills: [
-      SkillKeysEnum.GitHub,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.InfrastructureAsCode,
+      SkillDatabaseKeys.GitHub,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.InfrastructureAsCode,
     ],
     learningOutcomes: [
       "Searching like a pro with GitHub",
@@ -1215,11 +1217,11 @@ const certificateMap: Database<CertificateInterface> = {
     description: `
       This course is a comprehensive guide to navigating and utilizing the search features of GitHub, the world's largest developer platform. It provides practical knowledge on how to effectively use the search box, shortcuts, qualifiers, and operators, and how to refine search results. The course also delves into searching for code, including finding code to learn from and improving code search results. This course is perfect for anyone seeking to enhance their ability to search, understand, and retrieve code on GitHub more efficiently.`,
     relatedMaterials: [
-      CertificateKeysEnum.LinkedInCareerEssentialsInGitHubProfessionalCertificate,
+      CertificateDatabaseKeys.LinkedInCareerEssentialsInGitHubProfessionalCertificate,
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInContinuousIntegrationAndDContinuousDeliveryWithGitLab]:
+  [CertificateDatabaseKeys.LinkedInContinuousIntegrationAndDContinuousDeliveryWithGitLab]:
     {
       name: "Continuous Integration and Continuous Delivery with GitLab",
       category: CertificateCategoriesEnum.DevOps,
@@ -1227,13 +1229,13 @@ const certificateMap: Database<CertificateInterface> = {
       certificateURL:
         "https://www.linkedin.com/learning/certificates/1d8280be68ca069d4bb66ad5618118079be897473794a7812ae940146672801c",
       skills: [
-        SkillKeysEnum.GitLab,
-        SkillKeysEnum.GitLabCI,
-        SkillKeysEnum.ContinuousIntegration,
-        SkillKeysEnum.ContinuousDeployment,
-        SkillKeysEnum.ContinuousDelivery,
-        SkillKeysEnum.ProblemSolving,
-        SkillKeysEnum.CriticalThinking,
+        SkillDatabaseKeys.GitLab,
+        SkillDatabaseKeys.GitLabCI,
+        SkillDatabaseKeys.ContinuousIntegration,
+        SkillDatabaseKeys.ContinuousDeployment,
+        SkillDatabaseKeys.ContinuousDelivery,
+        SkillDatabaseKeys.ProblemSolving,
+        SkillDatabaseKeys.CriticalThinking,
       ],
       description:
         "This course focuses on using GitLab, a popular open-source alternative to tools like GitHub and Bitbucket, for continuous integration and continuous delivery (CI/CD) practices. It guides you through setting up a project in GitLab and creating an end-to-end pipeline, enhancing your team's efficiency and software reliability.",
@@ -1253,19 +1255,19 @@ const certificateMap: Database<CertificateInterface> = {
       ],
       archived: true,
     },
-  [CertificateKeysEnum.LinkedInDockerForDevelopers]: {
+  [CertificateDatabaseKeys.LinkedInDockerForDevelopers]: {
     name: "Docker for Developers",
     category: CertificateCategoriesEnum.DevOps,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/bf3b572548b56f714cc70ee2c1447312a84869f6a93edb55e3d13b13337f3bd5",
     skills: [
-      SkillKeysEnum.DevOps,
-      SkillKeysEnum.Docker,
-      SkillKeysEnum.Containerisation,
-      SkillKeysEnum.Kubernetes,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.DevOps,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.Containerisation,
+      SkillDatabaseKeys.Kubernetes,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `This course provides a comprehensive guide to leveraging Docker for application development. It covers everything from creating your first Docker image to deploying your app to the cloud. The course is designed to equip learners with practical skills such as setting up a full-stack environment with Docker, deploying and adding nodes to a Docker swarm, creating a cluster using Kubernetes, and integrating GitHub with Travis for Docker projects.`,
     learningOutcomes: [
@@ -1277,20 +1279,20 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInKubernetesProvisioningWithKind]: {
+  [CertificateDatabaseKeys.LinkedInKubernetesProvisioningWithKind]: {
     name: "Kubernetes: Provisioning with kind",
     category: CertificateCategoriesEnum.DevOps,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/a63c2359250f6a04bd19dab4ebd049edb511a1a9f2c3ef66a0a8d1df004f7d8d",
     skills: [
-      SkillKeysEnum.DevOps,
-      SkillKeysEnum.Kubernetes,
-      SkillKeysEnum.Docker,
-      SkillKeysEnum.AWS,
-      SkillKeysEnum.AWS_K3s,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.DevOps,
+      SkillDatabaseKeys.Kubernetes,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.AWS,
+      SkillDatabaseKeys.AWS_K3s,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `This course provides a focused guide on how to provision Kubernetes clusters using kind. It covers the challenges of installing Kubernetes and its prerequisites, and demonstrates how to deploy Kubernetes in Docker using K3s, in both single- and multinode clusters. This course is designed to polish your skills in Kubernetes, containerization, and clusterization.`,
     learningOutcomes: [
@@ -1300,18 +1302,18 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInAnsibleEssentialTraining]: {
+  [CertificateDatabaseKeys.LinkedInAnsibleEssentialTraining]: {
     name: "Ansible Essential Training",
     category: CertificateCategoriesEnum.DevOps,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/5eed7f56e5d7dc61b17a3f5fb3cb9fc42130506e948df550bf00899b5868b0a1",
     skills: [
-      SkillKeysEnum.DevOps,
-      SkillKeysEnum.Ansible,
-      SkillKeysEnum.InfrastructureAsCode,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.DevOps,
+      SkillDatabaseKeys.Ansible,
+      SkillDatabaseKeys.InfrastructureAsCode,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `
     This course delves into the intermediate to advanced use cases of Ansible, a powerful IT automation engine. It covers the construction and execution of Ansible playbooks, task building, role reuse, and leveraging content from the Ansible community through Ansible Galaxy. Additionally, it explores encrypting secret information, managing network devices with Ansible, and leveraging the power of idempotence, equipping you with the skills to optimize tasks and updates efficiently.`,
@@ -1324,21 +1326,21 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInPythonAutomationAndTesting]: {
+  [CertificateDatabaseKeys.LinkedInPythonAutomationAndTesting]: {
     name: "Python Automation and Testing",
     category: CertificateCategoriesEnum.DevOps,
     issuer: CertificateIssuersEnum.NASBA,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/be0745932c948f80c1f9d32c0703eeaf94a3fdf3d35368a2619b8043ebe1c2f2",
     skills: [
-      SkillKeysEnum.DevOps,
-      SkillKeysEnum.Python,
-      SkillKeysEnum.Automation,
-      SkillKeysEnum.Testing,
-      SkillKeysEnum.WebDevelopment,
-      SkillKeysEnum.HTML,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.DevOps,
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.Automation,
+      SkillDatabaseKeys.Testing,
+      SkillDatabaseKeys.WebDevelopment,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description:
       "This course provides a comprehensive guide to automating web UI tests using Python and Selenium WebDriver. It covers the installation of Python, understanding the browsers supported by Selenium, and handling exceptions in Selenium. The course also provides practical examples of automating web UI tests and controlling test timing and execution, equipping you with the skills to enhance your development workflow.",
@@ -1355,41 +1357,41 @@ const certificateMap: Database<CertificateInterface> = {
   },
 
   //^ Web Development
-  [CertificateKeysEnum.UdemyCompleteNodeJSDeveloper]: {
+  [CertificateDatabaseKeys.UdemyCompleteNodeJSDeveloper]: {
     name: "The Complete Node.js Developer",
     category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-0d6bad64-17f2-4f85-a86b-450e0ce72ffa/",
     skills: [
-      SkillKeysEnum.NPM,
-      SkillKeysEnum.ReactJS,
-      SkillKeysEnum.ExpressJS,
-      SkillKeysEnum.MongoDB,
-      SkillKeysEnum.Mongoose,
-      SkillKeysEnum.REST,
-      SkillKeysEnum.APIs,
-      SkillKeysEnum.DatabaseManagementSystems,
-      SkillKeysEnum.Databases,
-      SkillKeysEnum.REST,
-      SkillKeysEnum.GraphQL,
-      SkillKeysEnum.MongoDB,
-      SkillKeysEnum.NonRelationalDatabases,
-      SkillKeysEnum.RelationalDatabases,
-      SkillKeysEnum.WebSockets,
-      SkillKeysEnum.SocketIO,
-      SkillKeysEnum.Docker,
-      SkillKeysEnum.AWS_EC2,
-      SkillKeysEnum.Auth0,
-      SkillKeysEnum.Containerisation,
-      SkillKeysEnum.ContinuousDelivery,
-      SkillKeysEnum.ContinuousDeployment,
-      SkillKeysEnum.ContinuousDelivery,
-      SkillKeysEnum.DesignPatterns,
-      SkillKeysEnum.WebDevelopment,
-      SkillKeysEnum.Testing,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.NPM,
+      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.ExpressJS,
+      SkillDatabaseKeys.MongoDB,
+      SkillDatabaseKeys.Mongoose,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.APIs,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.GraphQL,
+      SkillDatabaseKeys.MongoDB,
+      SkillDatabaseKeys.NonRelationalDatabases,
+      SkillDatabaseKeys.RelationalDatabases,
+      SkillDatabaseKeys.WebSockets,
+      SkillDatabaseKeys.SocketIO,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.AWS_EC2,
+      SkillDatabaseKeys.Auth0,
+      SkillDatabaseKeys.Containerisation,
+      SkillDatabaseKeys.ContinuousDelivery,
+      SkillDatabaseKeys.ContinuousDeployment,
+      SkillDatabaseKeys.ContinuousDelivery,
+      SkillDatabaseKeys.DesignPatterns,
+      SkillDatabaseKeys.WebDevelopment,
+      SkillDatabaseKeys.Testing,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     learningOutcomes: [
       "Understanding Node internals, including Libuv, threads, processes, and the event loop",
@@ -1415,18 +1417,18 @@ const certificateMap: Database<CertificateInterface> = {
       This course offers an in-depth exploration of NodeJS, transforming learners into proficient Back End or Fullstack developers. It's project-based, featuring the creation of a NASA Space launch application using NodeJS, Express Framework, RESTful APIs, GraphQL, and more. The curriculum guides learners from Node basics to advanced topics, enabling informed decisions on architecture and tools for future projects. The course aims to instill a deep understanding of principles, challenging learners to transition from beginners to the top 10% of NodeJS backend developers.
     `,
   },
-  [CertificateKeysEnum.UdemyCompleteWebAndMobileDesigner]: {
+  [CertificateDatabaseKeys.UdemyCompleteWebAndMobileDesigner]: {
     name: "Complete Web & Mobile Designer: UI/UX, Figma + more",
     category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-4c7f3f7d-4e4f-4f2d-8c1f-4f1d4b0f1a1c/",
     skills: [
-      SkillKeysEnum.HTML,
-      SkillKeysEnum.CSS,
-      SkillKeysEnum.ReactJS,
-      SkillKeysEnum.UserCentricDesign,
-      SkillKeysEnum.WebDevelopment,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.CSS,
+      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.UserCentricDesign,
+      SkillDatabaseKeys.WebDevelopment,
     ],
     learningOutcomes: [
       "Understanding the basics of sketching, inspiration, and Figma for web and mobile design",
@@ -1447,21 +1449,21 @@ const certificateMap: Database<CertificateInterface> = {
     description: `
       This course offers a comprehensive journey into the world of Web and Mobile Design, focusing on User Interface and User Experience (UI/UX). It equips students with the skills to use modern design tools like Figma, enabling them to go from zero to job-ready. The course covers a full workflow, from initial sketching and inspiration, through creating user flows, wireframes, and prototypes, to final high-fidelity prototyping. It emphasizes design theory, accessibility principles, and best practices in forms and UI elements design. The course also explores application design, design systems, and design patterns in mobile design. It further delves into the practical side of converting designs into live websites using HTML and CSS, and deploying them online. This hands-on curriculum provides a solid foundation for a career in design, whether in a top tech company or as a freelance contractor.`,
   },
-  [CertificateKeysEnum.LinkedInBuildingRESTfulAPIsWithFlask]: {
+  [CertificateDatabaseKeys.LinkedInBuildingRESTfulAPIsWithFlask]: {
     name: "Building RESTful APIs with Flask",
     category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/c5ccec418e67284d7945832543376e344173867d424cc1c7c7e7f4235b14debe",
     skills: [
-      SkillKeysEnum.Python,
-      SkillKeysEnum.Flask,
-      SkillKeysEnum.REST,
-      SkillKeysEnum.APIs,
-      SkillKeysEnum.Databases,
-      SkillKeysEnum.RelationalDatabases,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.Flask,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.APIs,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.RelationalDatabases,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `This course provides fundamental knowledge on building RESTful APIs, a crucial component for web and mobile projects. It offers a hands-on approach to quickly building, securing, and testing an effective RESTful API using Python and Flask, the Python microframework. The course covers database access, authentication, and other common tasks in Flask, and introduces key plugins that enhance the use of Flask. It's designed to equip learners with the skills to enable highly connected interactions between applications.
     `,
@@ -1475,17 +1477,17 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInLearningRESTAPIs]: {
+  [CertificateDatabaseKeys.LinkedInLearningRESTAPIs]: {
     name: "Learning REST APIs",
     category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/d16b210de3459c563295c4868ac19097bdddf84976d2137fa08293ec698f3380",
     skills: [
-      SkillKeysEnum.REST,
-      SkillKeysEnum.APIs,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.APIs,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `This course introduces the basics of REST APIs, explaining their importance and how they can enhance application efficiency. It explores the relationship between HTTP and REST APIs, the six constraints of REST, and HTTP status messages. The course also guides learners on how to start consuming REST APIs to integrate them into data-driven applications, making it a valuable resource for those looking to understand and utilize REST APIs.`,
     learningOutcomes: [
@@ -1498,17 +1500,17 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInDesigningRESTfulAPIS]: {
+  [CertificateDatabaseKeys.LinkedInDesigningRESTfulAPIS]: {
     name: "Designing RESTful APIs",
     category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/a54ec39fe8ae07277cfbfb553a61f1d6a0c95f23969a3f665d5e5c0afbd9fd68",
     skills: [
-      SkillKeysEnum.REST,
-      SkillKeysEnum.APIs,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.APIs,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `This course provides a comprehensive guide on planning and modeling APIs, a crucial skill for any developer creating websites. It introduces the six REST design constraints that guide architecture and offers advice on identifying system users and their activities. The course emphasizes the importance of validating your design before building it and explores the necessary HTTP concepts and REST constraints. It concludes with a discussion on common API design patterns, making it a valuable resource for developers looking to enhance their API design skills.`,
     learningOutcomes: [
@@ -1524,18 +1526,18 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInRESTfulAPIsWithNodeJSAndExpress]: {
+  [CertificateDatabaseKeys.LinkedInRESTfulAPIsWithNodeJSAndExpress]: {
     name: "RESTful APIs with Node.js and Express",
     category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/c00cb40bda2152dd86d29b813b0d1b172123452a0b87b6017aec13115e693487",
     skills: [
-      SkillKeysEnum.REST,
-      SkillKeysEnum.MongoDB,
-      SkillKeysEnum.Databases,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.MongoDB,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `This course guides learners on how to create a simple, RESTful web API using Node.js and Express, popular JavaScript libraries. It covers setting up the project, including the Express server and testing environment, and creating endpoints for data manipulation in a MongoDB database. The course also explores serving static files like images with the API and introduces additional libraries, such as Koa and LoopBack, that can streamline API development. It's designed for those interested in back-end programming without the need for extensive knowledge in the area.`,
     learningOutcomes: [
@@ -1547,17 +1549,17 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInCSSFundamentalsUnlockThePowerOfWebStyling]: {
+  [CertificateDatabaseKeys.LinkedInCSSFundamentalsUnlockThePowerOfWebStyling]: {
     name: "CSS Fundamentals: Unlock the Power of Web Styling",
     category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/ff054b4dd1a8fec0eb00ee80a59bc82e5fed3e50b11bba3e3cd33026f0a0eee0",
     skills: [
-      SkillKeysEnum.CSS,
-      SkillKeysEnum.HTML,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.CSS,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `This course offers a comprehensive exploration of Cascading Style Sheets (CSS), the language that enhances HTML's appearance in the browser. It provides an overview of what CSS is, how it works with HTML, authoring options, and common CSS concepts like the CSS box model, fonts, and color. The course is designed to be flexible, allowing learners to either follow it from start to finish or jump to specific topics of interest. It aims to lay a solid foundation for working with styles on the web, making it a valuable resource for those looking to master the fundamentals of CSS.`,
     learningOutcomes: [
@@ -1569,18 +1571,18 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInFirebaseEssentialTraining]: {
+  [CertificateDatabaseKeys.LinkedInFirebaseEssentialTraining]: {
     name: "Firebase Essential Training",
     category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/5b6b19227f501cb7dab97b2378a58bc7740bd590a2e44916bf07ba59fd2fc06f",
     skills: [
-      SkillKeysEnum.Firebase,
-      SkillKeysEnum.GCP,
-      SkillKeysEnum.CloudComputing,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Firebase,
+      SkillDatabaseKeys.GCP,
+      SkillDatabaseKeys.CloudComputing,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `This course provides a comprehensive guide on integrating Firebase into a React application, transforming it into a fully functional app. It covers Firebase's capabilities, including Firebase Authentication, which eliminates the need for setting up an authentication server, and Cloud Functions for defining back-end functionality. The course aims to help developers leverage Firebase to handle concerns like performance, security, offline functionality, hosting, and authentication, allowing them to focus on building user-centric applications.`,
     learningOutcomes: [
@@ -1593,21 +1595,21 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInFlaskEssentialTraining]: {
+  [CertificateDatabaseKeys.LinkedInFlaskEssentialTraining]: {
     name: "Flask Essential Training",
     category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/4585e03073dcdf552484e6a6d9bc407d1b7e0ad3872d6a3b114d3e3d0869e9ea",
     skills: [
-      SkillKeysEnum.Python,
-      SkillKeysEnum.Flask,
-      SkillKeysEnum.Gunicorn,
-      SkillKeysEnum.Jinja,
-      SkillKeysEnum.Bootstrap,
-      SkillKeysEnum.REST,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.Flask,
+      SkillDatabaseKeys.Gunicorn,
+      SkillDatabaseKeys.Jinja,
+      SkillDatabaseKeys.Bootstrap,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `This course offers a comprehensive guide to Flask, a Python framework for building lightweight and dynamic web applications. It covers the pros and cons of working with Flask, the creation of a Flask app, data flow, working with Jinja templates, using blueprints and views for organization, testing, and deployment with Gunicorn. The course provides training and hands-on examples, making it a valuable resource for those looking to quickly learn and start using Flask.`,
     learningOutcomes: [
@@ -1623,20 +1625,20 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInLearningDjango]: {
+  [CertificateDatabaseKeys.LinkedInLearningDjango]: {
     name: "Learning Django",
     category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/7b5e4d7314ff1b615a3ae959f0d936e66808a5f718a85e42813d957d4ec492d7",
     skills: [
-      SkillKeysEnum.Python,
-      SkillKeysEnum.Django,
-      SkillKeysEnum.CSS,
-      SkillKeysEnum.HTML,
-      SkillKeysEnum.JavaScript,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.Django,
+      SkillDatabaseKeys.CSS,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `This course provides a comprehensive introduction to Django, a free and open-source framework designed on top of Python that supports data-driven architecture. It guides learners through creating a Django project, defining a data model and fields, querying the database, and using Django's built-in URL handlers, views, and templates. The course also covers how to enhance Django templates with CSS and JavaScript, making it a valuable resource for those looking to quickly start and efficiently manage web applications with Django.`,
     learningOutcomes: [
@@ -1648,20 +1650,20 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInGraphQLEssentialTraining]: {
+  [CertificateDatabaseKeys.LinkedInGraphQLEssentialTraining]: {
     name: "GraphQL Essential Training",
     category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/3c1654b23256c27553b9d6288d9592aa47fe825a7bf85714283f3e61e26f6f58",
     skills: [
-      SkillKeysEnum.GraphQL,
-      SkillKeysEnum.Apollo,
-      SkillKeysEnum.MongoDB,
-      SkillKeysEnum.NonRelationalDatabases,
-      SkillKeysEnum.Databases,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.GraphQL,
+      SkillDatabaseKeys.Apollo,
+      SkillDatabaseKeys.MongoDB,
+      SkillDatabaseKeys.NonRelationalDatabases,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `This course provides an introduction to GraphQL, a query language for APIs that optimizes data retrieval. It covers the setup of GraphQL, exploration of the GraphQL schema, and understanding of basic types and fields. The course also guides learners on setting up persistence using SQL and MongoDB with GraphQL, adding new items with mutations, and leveraging advanced features in queries. It's designed to equip learners with the skills to efficiently use GraphQL for their data needs.`,
     learningOutcomes: [
@@ -1672,18 +1674,18 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInHTMLEssentialTraining]: {
+  [CertificateDatabaseKeys.LinkedInHTMLEssentialTraining]: {
     name: "HTML Essential Training",
     category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/983c6ba63131250c1d3df7e13f5e8f8951c02cb64c02c33d99e80df23cf3c869",
     skills: [
-      SkillKeysEnum.HTML,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.Creativity,
-      SkillKeysEnum.UserCentricDesign,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.UserCentricDesign,
     ],
     description: `This course provides a comprehensive guide to crafting excellent HTML, the foundation of website and web application development. It emphasizes the importance of semantic markup, which ensures content is understood by both human audiences and computer systems, including screen readers and search engines. The course covers all fundamental concepts needed to use HTML thoughtfully, making it a valuable resource for those looking to enhance their web development skills.`,
     learningOutcomes: [
@@ -1699,18 +1701,18 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInNodeJsEssentialTraining]: {
+  [CertificateDatabaseKeys.LinkedInNodeJsEssentialTraining]: {
     name: "Node.js Essential Training",
     category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/ef41e5cf67f7657353febca7c6b206bf7dd8e28497c393790d8a266842c81132",
     skills: [
-      SkillKeysEnum.JavaScript,
-      SkillKeysEnum.WebDevelopment,
-      SkillKeysEnum.APIs,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.WebDevelopment,
+      SkillDatabaseKeys.APIs,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `
     Node.js is a powerful tool for controlling servers, building web applications, and creating event-driven programs. And it takes JavaScript—a language familiar to all web developers—out of the browser. With Node.js, you can build applications that run on your laptop or even the cloud. In this course, learn the essentials of Node.js and start creating your own JavaScript applications. This course shows how to install Node.js and work with the Node.js core, which includes standard input, standard output, the module system, the file system, and how to write and run JavaScript on the server. Upon wrapping up this course, you'll be equipped with fundamental Node.js concepts and techniques that you can put to use in your next project.
@@ -1724,23 +1726,23 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInReactJsEssentialTraining]: {
+  [CertificateDatabaseKeys.LinkedInReactJsEssentialTraining]: {
     name: "React.js Essential Training",
     category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/f2226c0a5de58874e8b882b91fe8945f69d0f0b6de15fa70a09082a08bd464fd",
     skills: [
-      SkillKeysEnum.ReactJS,
-      SkillKeysEnum.JavaScript,
-      SkillKeysEnum.Testing,
-      SkillKeysEnum.HTML,
-      SkillKeysEnum.CSS,
-      SkillKeysEnum.WebDevelopment,
-      SkillKeysEnum.UserCentricDesign,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.Creativity,
+      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.Testing,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.CSS,
+      SkillDatabaseKeys.WebDevelopment,
+      SkillDatabaseKeys.UserCentricDesign,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
     ],
     description: `This course offers an introduction to React.js, a JavaScript library known for its reusable components and scalability, making applications more maintainable and efficient. It covers the basics of the React library, the modern syntax and best practices for creating React components, setting up Chrome tools for React, working with built-in Hooks, and using the Create React App for testing. By the end of the course, learners will be equipped with the essentials of React.js, preparing them to build their own browser-based projects.`,
     learningOutcomes: [
@@ -1752,23 +1754,23 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInLearningNextJs]: {
+  [CertificateDatabaseKeys.LinkedInLearningNextJs]: {
     name: "Learning Next.js",
     category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/a2ae9eb61db705535ebd73746bfe20e0988633b80ade57c12aa523a9bbdae3db",
     skills: [
-      SkillKeysEnum.NextJS,
-      SkillKeysEnum.ReactJS,
-      SkillKeysEnum.JavaScript,
-      SkillKeysEnum.HTML,
-      SkillKeysEnum.CSS,
-      SkillKeysEnum.WebDevelopment,
-      SkillKeysEnum.UserCentricDesign,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.Creativity,
+      SkillDatabaseKeys.NextJS,
+      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.CSS,
+      SkillDatabaseKeys.WebDevelopment,
+      SkillDatabaseKeys.UserCentricDesign,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
     ],
     description: `This course provides a comprehensive guide to Next.js, a popular, React-based web development framework that combines the benefits of server-side rendering with the speed and ease of a single-page app. It covers basic features like pages, data fetching, and layout options, as well as advanced topics like dynamic and API routes. The course aims to equip learners with the skills to build, manage, and customize a complete web application from scratch in JavaScript, offering a seamless developer experience with zero configuration and lightning-fast, dynamic page speeds.`,
     learningOutcomes: [
@@ -1779,22 +1781,22 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInUsingTypeScriptWithReact]: {
+  [CertificateDatabaseKeys.LinkedInUsingTypeScriptWithReact]: {
     name: "Using TypeScript with React",
     category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-431983c4-3861-46fc-866e-d97bd5edab77/",
     skills: [
-      SkillKeysEnum.TypeScript,
-      SkillKeysEnum.ReactJS,
-      SkillKeysEnum.JavaScript,
-      SkillKeysEnum.HTML,
-      SkillKeysEnum.CSS,
-      SkillKeysEnum.UserCentricDesign,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.Creativity,
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.CSS,
+      SkillDatabaseKeys.UserCentricDesign,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
     ],
     description: `This course equips learners with the necessary TypeScript skills to confidently build React applications. It covers how to describe types for function and class components, use higher order components and render props patterns, and import third-party libraries and their types. The course includes practical projects using TypeScript with Redux and Next.js framework with Apollo GraphQL libraries. It's designed for those with prior React experience who want to learn TypeScript, enhancing their front-end development skills.`,
     learningOutcomes: [
@@ -1807,20 +1809,20 @@ const certificateMap: Database<CertificateInterface> = {
       "General usage of React with TypeScript.",
     ],
   },
-  [CertificateKeysEnum.AmigoscodeSpringBootForBeginners]: {
+  [CertificateDatabaseKeys.AmigoscodeSpringBootForBeginners]: {
     name: "Spring Boot For Beginners",
     category: CertificateCategoriesEnum.WebDevelopment,
     issuer: CertificateIssuersEnum.Amigoscode,
     certificateURL: "https://app.amigoscode.com/courses/267273/certificate",
     skills: [
-      SkillKeysEnum.SpringBoot,
-      SkillKeysEnum.Java,
-      SkillKeysEnum.REST,
-      SkillKeysEnum.APIs,
-      SkillKeysEnum.Databases,
-      SkillKeysEnum.RelationalDatabases,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.APIs,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.RelationalDatabases,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     learningOutcomes: [
       "Understanding the basics of Spring Boot",
@@ -1844,22 +1846,22 @@ const certificateMap: Database<CertificateInterface> = {
   },
 
   //^ Databases
-  [CertificateKeysEnum.UdemyDatabaseManagementSystemAndSQL]: {
+  [CertificateDatabaseKeys.UdemyDatabaseManagementSystemAndSQL]: {
     name: "Database Management System (DBMS) & SQL",
     category: CertificateCategoriesEnum.Databases,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-b49387a5-5a13-4b1a-aba1-73cac775c026/",
     skills: [
-      SkillKeysEnum.RelationalDatabases,
-      SkillKeysEnum.DatabaseManagementSystems,
-      SkillKeysEnum.Databases,
-      SkillKeysEnum.Normalisation,
-      SkillKeysEnum.DatabaseIndexing,
-      SkillKeysEnum.Discrete,
-      SkillKeysEnum.Mathematics,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.RelationalDatabases,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.Normalisation,
+      SkillDatabaseKeys.DatabaseIndexing,
+      SkillDatabaseKeys.Discrete,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `
       This comprehensive course offers an in-depth exploration of Database Management Systems (DBMS) and SQL,
@@ -1877,17 +1879,17 @@ const certificateMap: Database<CertificateInterface> = {
       "Gain insights into advanced database concepts for competitive exams and professional certification",
     ],
   },
-  [CertificateKeysEnum.NASBADatabaseFoundationsIntroToDatabases]: {
+  [CertificateDatabaseKeys.NASBADatabaseFoundationsIntroToDatabases]: {
     name: "Database Foundations: Intro to Databases",
     category: CertificateCategoriesEnum.Databases,
     issuer: CertificateIssuersEnum.NASBA,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/8b2d47f66f59b8b9724a6c1f05f15e27a9b08c3caaf95169c1d6c64537a1d066",
     skills: [
-      SkillKeysEnum.Databases,
-      SkillKeysEnum.RelationalDatabases,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.RelationalDatabases,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `
     This course guides you through setting up container-based servers, connecting a management GUI, and building a database. It covers how to set up a database playground, include a user-friendly graphical interface, create table objects, add data to a table, and retrieve and manipulate data. The course is applicable to learners on any operating system and includes exercise files for hands-on practice. It concludes with suggestions for continuing your learning journey.`,
@@ -1901,20 +1903,20 @@ const certificateMap: Database<CertificateInterface> = {
       "Using SQL to manipulate retrieved database data.",
     ],
   },
-  [CertificateKeysEnum.LinkedInIntroductionToMongoDB]: {
+  [CertificateDatabaseKeys.LinkedInIntroductionToMongoDB]: {
     name: "Introduction to MongoDB",
     category: CertificateCategoriesEnum.Databases,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/f024344050a592ea0bb2ada78e0175fabecabab2248ffeb58671b9fe4adfc141",
     skills: [
-      SkillKeysEnum.MongoDB,
-      SkillKeysEnum.Databases,
-      SkillKeysEnum.NonRelationalDatabases,
-      SkillKeysEnum.DatabaseManagementSystems,
-      SkillKeysEnum.DatabaseIndexing,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.MongoDB,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.NonRelationalDatabases,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.DatabaseIndexing,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `
     This course provides foundational knowledge and skills for working with MongoDB, a popular document model database. It covers an introduction to MongoDB Atlas, data structuring, connection to a MongoDB database, and performing key tasks such as CRUD operations, aggregation, indexing, data modeling, transactions, and creating a user search experience. By the end of the course, you'll be equipped to start working with MongoDB.`,
@@ -1931,19 +1933,19 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInRedisEssentialTraining]: {
+  [CertificateDatabaseKeys.LinkedInRedisEssentialTraining]: {
     name: "Redis Essential Training",
     category: CertificateCategoriesEnum.Databases,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/209aec09fbb007c809840a071b5db71dc8e08da5b92799121e158ed1e185062b",
     skills: [
-      SkillKeysEnum.Databases,
-      SkillKeysEnum.Redis,
-      SkillKeysEnum.NonRelationalDatabases,
-      SkillKeysEnum.DatabaseManagementSystems,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.Redis,
+      SkillDatabaseKeys.NonRelationalDatabases,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `
     This course covers the core concepts and basic functionality of Redis, an open-source, in-memory database. It guides you through the fundamentals of working with data structures, exploring hashes, lists and sets, key naming strategies, and various ways to read and represent data. The course also delves into pub/sub, message buses, streams, and keyspace notifications. By the end, you'll be equipped to deploy Redis as a database, a cache, a message broker, or a streaming engine.`,
@@ -1958,7 +1960,7 @@ const certificateMap: Database<CertificateInterface> = {
   },
 
   //^ Mathematics
-  [CertificateKeysEnum.UdemyDiscreteMathematics]: {
+  [CertificateDatabaseKeys.UdemyDiscreteMathematics]: {
     name: "Discrete Mathematics",
 
     category: CertificateCategoriesEnum.Mathematics,
@@ -1966,12 +1968,12 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.udemy.com/certificate/UC-8d13c37d-5013-4873-b4fd-56a867ad853d/",
     skills: [
-      SkillKeysEnum.Discrete,
-      SkillKeysEnum.Logics,
-      SkillKeysEnum.Probability,
-      SkillKeysEnum.Statistics,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Discrete,
+      SkillDatabaseKeys.Logics,
+      SkillDatabaseKeys.Probability,
+      SkillDatabaseKeys.Statistics,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
 
     description: `
@@ -1991,17 +1993,17 @@ const certificateMap: Database<CertificateInterface> = {
       "Learning fundamental concepts in Graph Theory.",
     ],
   },
-  [CertificateKeysEnum.UdemyBecomeAnAlgebraMaster]: {
+  [CertificateDatabaseKeys.UdemyBecomeAnAlgebraMaster]: {
     name: "Become an Algebra Master",
     category: CertificateCategoriesEnum.Mathematics,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-ce8f7b45-5864-438c-870c-43061c80386c/",
     skills: [
-      SkillKeysEnum.Algebra,
-      SkillKeysEnum.Mathematics,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Algebra,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     learningOutcomes: [
       "Understanding the basic concepts of algebra including operations, variables, and equations.",
@@ -2038,18 +2040,18 @@ const certificateMap: Database<CertificateInterface> = {
         This course offers comprehensive training in Algebra through a combination of video lessons, text notes, quizzes, and workbooks. It is structured into multiple sections that cover various algebraic topics, such as operations, equations, polynomials, functions, and more advanced concepts like logarithmic functions. Each section provides videos where problems are solved and explained, notes that summarize key concepts, and quizzes to test comprehension. For further practice, each section also includes workbooks with additional problems to reinforce learning. The course is designed to make complex mathematical topics accessible and understandable.
         `,
   },
-  [CertificateKeysEnum.UdemyBecomeALinearAlgebraMaster]: {
+  [CertificateDatabaseKeys.UdemyBecomeALinearAlgebraMaster]: {
     name: "Become a Linear Algebra Master",
     category: CertificateCategoriesEnum.Mathematics,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/course/linear-algebra-course/?couponCode=ST7MT41824",
     skills: [
-      SkillKeysEnum.LinearAlgebra,
-      SkillKeysEnum.Algebra,
-      SkillKeysEnum.Mathematics,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.Algebra,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     learningOutcomes: [
       "Introducing operations on one matrix",
@@ -2138,20 +2140,20 @@ const certificateMap: Database<CertificateInterface> = {
     description: `
       The course described provides an extensive exploration of Linear Algebra through a variety of teaching materials, including video lessons and text explanations. It is segmented into numerous sections that cover fundamental and advanced topics such as operations on matrices, matrix-vector products, transformations, and properties of vectors and spaces. Each topic includes practical applications such as solving linear systems, matrix multiplication, and exploring vector spaces and transformations. Additionally, the course offers quizzes for assessment and workbooks for extra practice to ensure thorough understanding and application of the concepts taught. Special topics include orthogonality, basis changes, and eigenvalues and eigenvectors. This structured approach aims to simplify complex Linear Algebra concepts for better learning and comprehension.`,
   },
-  [CertificateKeysEnum.UdemyALevelMathsPureYear1]: {
+  [CertificateDatabaseKeys.UdemyALevelMathsPureYear1]: {
     name: "A-Level Maths: Pure (Year 1 / AS)",
     category: CertificateCategoriesEnum.Mathematics,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-630e6292-a0ee-4ebb-94f0-ebaeedb101a8/",
     skills: [
-      SkillKeysEnum.Mathematics,
-      SkillKeysEnum.Algebra,
-      SkillKeysEnum.Trigonometry,
-      SkillKeysEnum.Calculus,
-      SkillKeysEnum.LinearAlgebra,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.Algebra,
+      SkillDatabaseKeys.Trigonometry,
+      SkillDatabaseKeys.Calculus,
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `
       This course covers all the pure content in A-Level AS maths, suitable for all major exam boards. It delves into equations and inequalities, graphs, straight line graphs, circles, polynomial division, proof, binomial expansion, trigonometry, vectors, differentiation, integration, and exponentials and logarithms. The course includes explanatory videos, quizzes, and worksheets with questions from real A-Level past papers, providing a comprehensive understanding of A-Level AS maths.`,
@@ -2172,21 +2174,21 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.UdemyALevelMathsPureYear2]: {
+  [CertificateDatabaseKeys.UdemyALevelMathsPureYear2]: {
     name: "A-Level Maths: Pure (Year 2)",
     category: CertificateCategoriesEnum.Mathematics,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-f951f5eb-0e4c-4fd6-8db0-29c24e616a2b/",
     skills: [
-      SkillKeysEnum.Mathematics,
-      SkillKeysEnum.Algebra,
-      SkillKeysEnum.Geometry,
-      SkillKeysEnum.Trigonometry,
-      SkillKeysEnum.Calculus,
-      SkillKeysEnum.LinearAlgebra,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.Algebra,
+      SkillDatabaseKeys.Geometry,
+      SkillDatabaseKeys.Trigonometry,
+      SkillDatabaseKeys.Calculus,
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `
     This course covers the second year pure content in A-Level Maths, suitable for all major exam boards. It explores parametric equations, functions in graphs, binomial expansion, radians, trigonometric functions and identities, differentiation, integration, numerical methods, and vectors. The course includes explanatory videos, quizzes, and worksheets with questions from real A-Level past papers, providing a comprehensive understanding of advanced pure maths.
@@ -2208,17 +2210,17 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.UdemyALevelMathsMechanicsYear1]: {
+  [CertificateDatabaseKeys.UdemyALevelMathsMechanicsYear1]: {
     name: "A-Level Maths: Mechanics (Year 1 / AS)",
     category: CertificateCategoriesEnum.Mathematics,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-84beb6d6-275d-41ff-8215-c4918454b846/",
     skills: [
-      SkillKeysEnum.Mathematics,
-      SkillKeysEnum.Mechanics,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.Mechanics,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `
     This course focuses on A-Level Mechanics, providing an understanding of key concepts such as Newton's laws of motion, kinematics, dynamics, and variable acceleration. It includes the application of constant acceleration formulae (SUVAT) and calculus to motion problems, understanding vectors, and using a calculator for A-level mechanics. The course offers a comprehensive understanding of A-Level Mechanics through various learning outcomes.`,
@@ -2231,18 +2233,18 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.UdemyALevelMathsMechanicsYear2]: {
+  [CertificateDatabaseKeys.UdemyALevelMathsMechanicsYear2]: {
     name: "A-Level Maths: Mechanics (Year 2)",
     category: CertificateCategoriesEnum.Mathematics,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-729218f1-da7b-4684-857f-78f9920686f2/",
     skills: [
-      SkillKeysEnum.Mathematics,
-      SkillKeysEnum.Mechanics,
-      SkillKeysEnum.Algebra,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.Mechanics,
+      SkillDatabaseKeys.Algebra,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `
     This course covers the mechanics component of maths A-Level 2nd year content, building on the first year course content. It is suitable for all major exam boards and is ideal for anyone interested in furthering their understanding of the subject. The course delves into moments, kinematics, and dynamics, teaching students how to calculate the moment of a force, model a projectile flying through the air, and work with friction in various scenarios.`,
@@ -2258,18 +2260,18 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.UdemyALevelStatisticsYear1]: {
+  [CertificateDatabaseKeys.UdemyALevelStatisticsYear1]: {
     name: "A-Level Maths: Statistics (Year 1 / AS)",
     category: CertificateCategoriesEnum.Mathematics,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-4a1b790f-b0d8-430b-8dfd-d40a60c0ebee/",
     skills: [
-      SkillKeysEnum.Mathematics,
-      SkillKeysEnum.Probability,
-      SkillKeysEnum.Statistics,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.Probability,
+      SkillDatabaseKeys.Statistics,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `
     This course covers the statistics component of maths A-Level AS content, suitable for all major exam boards. It provides an introduction to statistics, teaching students how to analyze and represent data, understand bivariate data, probability, binomial distribution, hypothesis tests, sampling, and large data sets. The course is ideal for anyone interested in getting started with statistics.`,
@@ -2288,18 +2290,18 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.UdemyALevelStatisticsYear2]: {
+  [CertificateDatabaseKeys.UdemyALevelStatisticsYear2]: {
     name: "A-Level Maths: Statistics (Year 2)",
     category: CertificateCategoriesEnum.Mathematics,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-1efbccad-5f12-4002-85cc-1efebfb81e34/",
     skills: [
-      SkillKeysEnum.Mathematics,
-      SkillKeysEnum.Probability,
-      SkillKeysEnum.Statistics,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.Probability,
+      SkillDatabaseKeys.Statistics,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `This course covers the statistics component of maths A-Level 2nd year content, building on the first year course content. It is suitable for all major exam boards and is ideal for anyone interested in furthering their understanding of the subject. The course delves into correlation, regression, conditional probability, and the normal distribution, teaching students how to measure correlation, calculate equations of regression lines, explore conditional probability problems, and use the normal distribution.`,
     learningOutcomes: [
@@ -2314,18 +2316,18 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.UdemyCompleteALevelMathsMechanics]: {
+  [CertificateDatabaseKeys.UdemyCompleteALevelMathsMechanics]: {
     name: "Complete A-Level Maths: Mechanics in 5 Lectures",
     category: CertificateCategoriesEnum.Mathematics,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-5aabeb79-4fb8-4cab-a5d5-3daa1b009170/",
     skills: [
-      SkillKeysEnum.Mathematics,
-      SkillKeysEnum.Mechanics,
-      SkillKeysEnum.Algebra,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.Mechanics,
+      SkillDatabaseKeys.Algebra,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `
     This course, designed by Westbound Maths, covers the entire A-Level Applied Maths: Mechanics syllabus, representing a significant portion of the final exam weight for the A-Level Mathematics qualification. The course delves into topics such as forces, moments, vectors, and kinematics, providing a comprehensive understanding of A-Level Applied Maths: Mechanics.
@@ -2345,20 +2347,20 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.UdemyCompleteALevelPureMaths]: {
+  [CertificateDatabaseKeys.UdemyCompleteALevelPureMaths]: {
     name: "Complete A-Level Pure Maths Course in 10 Lectures",
     category: CertificateCategoriesEnum.Mathematics,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-e2179bc4-5760-4a77-88a4-a2738d22a96e/",
     skills: [
-      SkillKeysEnum.Mathematics,
-      SkillKeysEnum.Algebra,
-      SkillKeysEnum.Trigonometry,
-      SkillKeysEnum.Calculus,
-      SkillKeysEnum.LinearAlgebra,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.Algebra,
+      SkillDatabaseKeys.Trigonometry,
+      SkillDatabaseKeys.Calculus,
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `
     This course, designed by Westbound Maths, covers the entire A-Level Pure Maths syllabus, representing a significant portion of the final exam weight for the A-Level Mathematics qualification. The course delves into topics such as sequence and series, binomial expansion, trigonometry, algebra, functions, parametric equations, differentiation, and integration, providing a comprehensive understanding of A-Level Pure Maths.`,
@@ -2389,18 +2391,18 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.UdemyCompleteALevelMathsStatistics]: {
+  [CertificateDatabaseKeys.UdemyCompleteALevelMathsStatistics]: {
     name: "Complete A-Level Maths: Statistics in 6 Lectures",
     category: CertificateCategoriesEnum.Mathematics,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
       "https://www.udemy.com/certificate/UC-fbc6d079-db3f-405f-8c32-f242b266d826/",
     skills: [
-      SkillKeysEnum.Mathematics,
-      SkillKeysEnum.Probability,
-      SkillKeysEnum.Statistics,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.Probability,
+      SkillDatabaseKeys.Statistics,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `
     This course, designed by Westbound Maths, covers the entire A-Level Applied Maths: Statistics syllabus, representing a significant portion of the final exam weight for the A-Level Mathematics qualification. The course delves into topics such as statistical sampling methods, statistical measures, correlation, regression, discrete and continuous probability distribution, hypothesis testing, and probability, providing a comprehensive understanding of A-Level Applied Maths: Statistics.`,
@@ -2429,7 +2431,7 @@ const certificateMap: Database<CertificateInterface> = {
   },
 
   //^ Software Engineering
-  [CertificateKeysEnum.LinkedInCreateAnOpenSourceProjectInPython]: {
+  [CertificateDatabaseKeys.LinkedInCreateAnOpenSourceProjectInPython]: {
     name: "Create an Open-Source Project in Python",
 
     category: CertificateCategoriesEnum.SoftwareEngineering,
@@ -2437,19 +2439,19 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.linkedin.com/learning/certificates/6afc37d98889e1ed209d677fd7928ece257125ca8d538ed6b0fa0ed18e4e30d6",
     skills: [
-      SkillKeysEnum.Python,
-      SkillKeysEnum.Poetry,
-      SkillKeysEnum.PyTest,
-      SkillKeysEnum.Tox,
-      SkillKeysEnum.GitHub,
-      SkillKeysEnum.GitHubActions,
-      SkillKeysEnum.ContinuousIntegration,
-      SkillKeysEnum.ContinuousDeployment,
-      SkillKeysEnum.Linting,
-      SkillKeysEnum.Black,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.ProjectManagement,
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.Poetry,
+      SkillDatabaseKeys.PyTest,
+      SkillDatabaseKeys.Tox,
+      SkillDatabaseKeys.GitHub,
+      SkillDatabaseKeys.GitHubActions,
+      SkillDatabaseKeys.ContinuousIntegration,
+      SkillDatabaseKeys.ContinuousDeployment,
+      SkillDatabaseKeys.Linting,
+      SkillDatabaseKeys.Black,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.ProjectManagement,
     ],
 
     description: `This course guides learners through the process of starting, building, testing, and maintaining an open-source project in Python. It introduces learners to Poetry, a popular dependency management tool, and covers how to write and manage tests using pytest and tox. The course also discusses code tidiness and style guide adherence using PEP 8, Black, Flake8, and pre-commit, and demonstrates how to set up a workflow on GitHub Action. It concludes with best practices for open-source projects.`,
@@ -2462,18 +2464,18 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInIntroducingMaven]: {
+  [CertificateDatabaseKeys.LinkedInIntroducingMaven]: {
     name: "Introducing Maven",
     category: CertificateCategoriesEnum.SoftwareEngineering,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/551778db5ecef81f732b9e48d50db3fe709f877f1ac9c834923b0c96bb636e72",
     skills: [
-      SkillKeysEnum.Java,
-      SkillKeysEnum.Maven,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.ProjectManagement,
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.Maven,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.ProjectManagement,
     ],
     description: `This course provides a comprehensive introduction to Apache Maven, a powerful build system widely used by Java developers. It covers the basics of using Maven for dependency management, builds, and reporting. The course delves into the project object model (POM), the build life cycle, and the use of Core and Tools plugins for task automation. It also explores dependency management, including the creation of uber JAR files, and concludes with a section on reporting with Maven sites and popular plugins.`,
     learningOutcomes: [
@@ -2486,20 +2488,20 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInLearningGradle]: {
+  [CertificateDatabaseKeys.LinkedInLearningGradle]: {
     name: "Learning Gradle",
     category: CertificateCategoriesEnum.SoftwareEngineering,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/1fcbb76a7feb53dc0b8585896de025b31799feeb7819544ba6e6ebf454ef6769",
     skills: [
-      SkillKeysEnum.Java,
-      SkillKeysEnum.Gradle,
-      SkillKeysEnum.JUnit,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.ProjectManagement,
-      SkillKeysEnum.Testing,
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.Gradle,
+      SkillDatabaseKeys.JUnit,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.Testing,
     ],
     learningOutcomes: [
       "Understanding Build files and conventions",
@@ -2515,52 +2517,53 @@ const certificateMap: Database<CertificateInterface> = {
       "This course offers a deep dive into Gradle, an open-source build automation tool, providing the core concepts and building blocks necessary for automation. You will learn how to define build logic, use Gradle support in IntelliJ IDEA, and understand the three phases of build execution. The course also covers how to locate and apply plugins, create a new task for a compressed TAR file, and gain insights from a deeper look at a Gradle build. After completing this course, you will be equipped to implement and execute build logic with Gradle.",
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInGradleForJavaBasedApplicationsAndLibraries]: {
-    name: "Gradle for Java-Based Applications and Libraries",
-    category: CertificateCategoriesEnum.SoftwareEngineering,
-    issuer: CertificateIssuersEnum.LinkedIn,
-    certificateURL:
-      "https://www.linkedin.com/learning/certificates/8c9027d06b51638e29fcac4c109275401f5202a046eb80de8f65fcc20c9c733b",
-    skills: [
-      SkillKeysEnum.Java,
-      SkillKeysEnum.Gradle,
-      SkillKeysEnum.Maven,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.ProjectManagement,
-    ],
-    learningOutcomes: [
-      "Understanding the anatomy of a simple Java project",
-      "Applying the Java plugin",
-      "Compiling Java source code",
-      "Packaging a JAR file",
-      "Exploring the Java Application plugin",
-      "Generating Javadocs for a Java project",
-      "Understanding Dependency Management Basics",
-      "Declaring a dependency on an external library",
-      "Rendering the dependency tree",
-      "Declaring a project dependency",
-      "Using the Maven Publish plugin to publish a library",
-      "Consuming an external dependency",
-      "Using the JUnit 5 test framework",
-      "Declaring JUnit dependencies",
-      "Executing tests and inspecting the results",
-      "Fixing a failed test suite",
-    ],
-    description:
-      "This course provides a comprehensive guide to using Gradle for building and testing Java programs. It covers typical tasks such as compiling code, adding dependencies, running tests, and building a JAR file. The course also delves into the project structure and source code of a simple Java project, the application of the Java plugin for Gradle, and the generation of Javadocs. It further explores the basics of dependency management and the steps to test a Java project and fix a failed test suite. This course is a valuable resource for anyone looking to deepen their Gradle knowledge.",
-    archived: true,
-  },
-  [CertificateKeysEnum.LinkedInSoftwareTestingFoundationsTestTechniques]: {
+  [CertificateDatabaseKeys.LinkedInGradleForJavaBasedApplicationsAndLibraries]:
+    {
+      name: "Gradle for Java-Based Applications and Libraries",
+      category: CertificateCategoriesEnum.SoftwareEngineering,
+      issuer: CertificateIssuersEnum.LinkedIn,
+      certificateURL:
+        "https://www.linkedin.com/learning/certificates/8c9027d06b51638e29fcac4c109275401f5202a046eb80de8f65fcc20c9c733b",
+      skills: [
+        SkillDatabaseKeys.Java,
+        SkillDatabaseKeys.Gradle,
+        SkillDatabaseKeys.Maven,
+        SkillDatabaseKeys.ProblemSolving,
+        SkillDatabaseKeys.CriticalThinking,
+        SkillDatabaseKeys.ProjectManagement,
+      ],
+      learningOutcomes: [
+        "Understanding the anatomy of a simple Java project",
+        "Applying the Java plugin",
+        "Compiling Java source code",
+        "Packaging a JAR file",
+        "Exploring the Java Application plugin",
+        "Generating Javadocs for a Java project",
+        "Understanding Dependency Management Basics",
+        "Declaring a dependency on an external library",
+        "Rendering the dependency tree",
+        "Declaring a project dependency",
+        "Using the Maven Publish plugin to publish a library",
+        "Consuming an external dependency",
+        "Using the JUnit 5 test framework",
+        "Declaring JUnit dependencies",
+        "Executing tests and inspecting the results",
+        "Fixing a failed test suite",
+      ],
+      description:
+        "This course provides a comprehensive guide to using Gradle for building and testing Java programs. It covers typical tasks such as compiling code, adding dependencies, running tests, and building a JAR file. The course also delves into the project structure and source code of a simple Java project, the application of the Java plugin for Gradle, and the generation of Javadocs. It further explores the basics of dependency management and the steps to test a Java project and fix a failed test suite. This course is a valuable resource for anyone looking to deepen their Gradle knowledge.",
+      archived: true,
+    },
+  [CertificateDatabaseKeys.LinkedInSoftwareTestingFoundationsTestTechniques]: {
     name: "Software Testing Foundations: Test Techniques",
     category: CertificateCategoriesEnum.SoftwareEngineering,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/f3297827ac972df2c87c56883f1217ba051a4f12df86886d33f902f2fda5614c",
     skills: [
-      SkillKeysEnum.Testing,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Testing,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `
     This course emphasizes the importance of technique in software testing, aiming to refine and hone the skills of software testers. It covers key testing techniques like black-box testing, white-box testing, and experienced-based testing. The course also provides advice on how to effectively communicate the testing process to ensure results are not lost in technical jargon, making it a valuable resource for software testers looking to enhance their skills or prepare for an ISTQB certification.`,
@@ -2571,7 +2574,7 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.UdemyTheGitAndGitHubBootcamp]: {
+  [CertificateDatabaseKeys.UdemyTheGitAndGitHubBootcamp]: {
     name: "The Git & Github Bootcamp",
 
     category: CertificateCategoriesEnum.SoftwareEngineering,
@@ -2579,10 +2582,10 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.udemy.com/certificate/UC-ba00c0c9-221d-4939-99b4-90244570a81b/",
     skills: [
-      SkillKeysEnum.Git,
-      SkillKeysEnum.GitHub,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.GitHub,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `
     This comprehensive course provides an in-depth understanding of Git and GitHub, essential tools for any code-related field. The course is divided into four units: Git Essentials, Next Level Git, Github & Collaboration, and The Tricky Bits. It covers everything from basic Git mechanics like committing and branching, to advanced topics like rebasing and interactive rebase. The course also delves into collaboration workflows, contributing to open source projects, and using features like Github Gists and Github Pages. With numerous diagrams, visual references, and exercises, this course offers a practical and engaging approach to mastering Git and GitHub.`,
@@ -2606,20 +2609,20 @@ const certificateMap: Database<CertificateInterface> = {
       "Sharing code and snippets using Github Gists.",
     ],
   },
-  [CertificateKeysEnum.LinkedInProgrammingFoundationsDesignPatterns]: {
+  [CertificateDatabaseKeys.LinkedInProgrammingFoundationsDesignPatterns]: {
     name: "Programming Foundations: Design Patterns",
     category: CertificateCategoriesEnum.SoftwareEngineering,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/f14a53c061bc271d233daeb5f46d5441dc2e86f386420c0fbd846291a5cccaf8",
     skills: [
-      SkillKeysEnum.DesignPatterns,
-      SkillKeysEnum.ObjectOrientedProgramming,
-      SkillKeysEnum.Python,
-      SkillKeysEnum.Java,
-      SkillKeysEnum.JavaScript,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.DesignPatterns,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `
       A course that offers reusable solutions to common challenges in software development. 
@@ -2637,53 +2640,53 @@ const certificateMap: Database<CertificateInterface> = {
       "Using design principles to guide your object-oriented design",
     ],
     relatedMaterials: [
-      CertificateKeysEnum.LinkedInBecomeAProgrammerFoundations,
+      CertificateDatabaseKeys.LinkedInBecomeAProgrammerFoundations,
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInBecomeAProgrammerFoundations]: {
+  [CertificateDatabaseKeys.LinkedInBecomeAProgrammerFoundations]: {
     name: "Become a Programmer: Foundations",
     category: CertificateCategoriesEnum.SoftwareEngineering,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/e77314151bd35fb801bf98d39ab9bb75c479fb18880b4d781ccaabebebe28c16",
     skills: [
-      SkillKeysEnum.Databases,
-      SkillKeysEnum.DatabaseManagementSystems,
-      SkillKeysEnum.ObjectOrientedProgramming,
-      SkillKeysEnum.Python,
-      SkillKeysEnum.Algorithms,
-      SkillKeysEnum.DataStructures,
-      SkillKeysEnum.DesignPatterns,
-      SkillKeysEnum.APIs,
-      SkillKeysEnum.Testing,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.DataStructures,
+      SkillDatabaseKeys.DesignPatterns,
+      SkillDatabaseKeys.APIs,
+      SkillDatabaseKeys.Testing,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     learningOutcomes: [],
     relatedMaterials: [
-      CertificateKeysEnum.LinkedInProgrammingFoundationsFundamentals,
-      CertificateKeysEnum.LinkedInProgrammingFoundationsBeyondTheFundamentals,
-      CertificateKeysEnum.LinkedInProgrammingFoundationsAlgorithms2,
-      CertificateKeysEnum.LinkedInProgrammingFoundationsDataStructures2,
-      CertificateKeysEnum.LinkedInProgrammingFoundationsDatabases,
-      CertificateKeysEnum.LinkedInProgrammingFoundationsMemoryPointersAndGarbageCollection,
-      CertificateKeysEnum.LinkedInProgrammingFoundationsAPIsAndWebServices,
-      CertificateKeysEnum.LinkedInProgrammingFoundationsSecureCoding,
-      CertificateKeysEnum.LinkedInProgrammingFoundationsTestDrivenDevelopment,
-      CertificateKeysEnum.LinkedInProgrammingFoundationsSoftwareTestingQA,
-      CertificateKeysEnum.LinkedInProgrammingFoundationsDesignPatterns,
+      CertificateDatabaseKeys.LinkedInProgrammingFoundationsFundamentals,
+      CertificateDatabaseKeys.LinkedInProgrammingFoundationsBeyondTheFundamentals,
+      CertificateDatabaseKeys.LinkedInProgrammingFoundationsAlgorithms2,
+      CertificateDatabaseKeys.LinkedInProgrammingFoundationsDataStructures2,
+      CertificateDatabaseKeys.LinkedInProgrammingFoundationsDatabases,
+      CertificateDatabaseKeys.LinkedInProgrammingFoundationsMemoryPointersAndGarbageCollection,
+      CertificateDatabaseKeys.LinkedInProgrammingFoundationsAPIsAndWebServices,
+      CertificateDatabaseKeys.LinkedInProgrammingFoundationsSecureCoding,
+      CertificateDatabaseKeys.LinkedInProgrammingFoundationsTestDrivenDevelopment,
+      CertificateDatabaseKeys.LinkedInProgrammingFoundationsSoftwareTestingQA,
+      CertificateDatabaseKeys.LinkedInProgrammingFoundationsDesignPatterns,
     ],
   },
-  [CertificateKeysEnum.LinkedInProgrammingFoundationsFundamentals]: {
+  [CertificateDatabaseKeys.LinkedInProgrammingFoundationsFundamentals]: {
     name: "Programming Foundations: Fundamentals",
     category: CertificateCategoriesEnum.SoftwareEngineering,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/d6f139fdc8993ba2bd1503ac0ea0ff06ace73daf1570845e88637719ce5ddd68",
-    skills: [SkillKeysEnum.Python, SkillKeysEnum.ProblemSolving],
+    skills: [SkillDatabaseKeys.Python, SkillDatabaseKeys.ProblemSolving],
     relatedMaterials: [
-      CertificateKeysEnum.LinkedInBecomeAProgrammerFoundations,
+      CertificateDatabaseKeys.LinkedInBecomeAProgrammerFoundations,
     ],
     learningOutcomes: [
       "Understanding the fundamentals of programming",
@@ -2707,99 +2710,101 @@ const certificateMap: Database<CertificateInterface> = {
     `,
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInProgrammingFoundationsBeyondTheFundamentals]: {
-    name: "Programming Foundations: Beyond the Fundamentals",
-    category: CertificateCategoriesEnum.SoftwareEngineering,
-    issuer: CertificateIssuersEnum.LinkedIn,
-    certificateURL:
-      "https://www.linkedin.com/learning/certificates/53e2a4e2313cb8c190ba310b04933611ea792de252614d9846c7fd2963ae300b",
-    skills: [
-      SkillKeysEnum.Python,
-      SkillKeysEnum.Algorithms,
-      SkillKeysEnum.DataStructures,
-      SkillKeysEnum.ObjectOrientedProgramming,
-      SkillKeysEnum.Testing,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-    ],
-    relatedMaterials: [
-      CertificateKeysEnum.LinkedInBecomeAProgrammerFoundations,
-    ],
-    learningOutcomes: [
-      "Broadening knowledge of programming fundamentals",
-      "Configuring your programming environment",
-      "Understanding and creating simple and complex collections",
-      "Working with collections in different languages",
-      "Introducing iteration and creating for loops",
-      "Comparing types of external code and working with modules",
-      "Understanding libraries and frameworks",
-      "Combining and manipulating strings, and finding patterns in strings",
-      "Creating regular expressions",
-      "Choosing a code style and writing pseudocode",
-      "Introducing and working with file input and output",
-      "Introducing debugging and debugging code in an IDE",
-      "Interpreting error messages and debugging without error messages",
-      "Creating a test case",
-      "Introducing object-oriented programming and using built-in classes",
-      "Creating custom classes and objects",
-      "Exploring advanced topics in programming, including memory management, multithreading, and algorithms",
-      "Planning for next steps in your programming journey",
-    ],
-    description: `
+  [CertificateDatabaseKeys.LinkedInProgrammingFoundationsBeyondTheFundamentals]:
+    {
+      name: "Programming Foundations: Beyond the Fundamentals",
+      category: CertificateCategoriesEnum.SoftwareEngineering,
+      issuer: CertificateIssuersEnum.LinkedIn,
+      certificateURL:
+        "https://www.linkedin.com/learning/certificates/53e2a4e2313cb8c190ba310b04933611ea792de252614d9846c7fd2963ae300b",
+      skills: [
+        SkillDatabaseKeys.Python,
+        SkillDatabaseKeys.Algorithms,
+        SkillDatabaseKeys.DataStructures,
+        SkillDatabaseKeys.ObjectOrientedProgramming,
+        SkillDatabaseKeys.Testing,
+        SkillDatabaseKeys.ProblemSolving,
+        SkillDatabaseKeys.CriticalThinking,
+      ],
+      relatedMaterials: [
+        CertificateDatabaseKeys.LinkedInBecomeAProgrammerFoundations,
+      ],
+      learningOutcomes: [
+        "Broadening knowledge of programming fundamentals",
+        "Configuring your programming environment",
+        "Understanding and creating simple and complex collections",
+        "Working with collections in different languages",
+        "Introducing iteration and creating for loops",
+        "Comparing types of external code and working with modules",
+        "Understanding libraries and frameworks",
+        "Combining and manipulating strings, and finding patterns in strings",
+        "Creating regular expressions",
+        "Choosing a code style and writing pseudocode",
+        "Introducing and working with file input and output",
+        "Introducing debugging and debugging code in an IDE",
+        "Interpreting error messages and debugging without error messages",
+        "Creating a test case",
+        "Introducing object-oriented programming and using built-in classes",
+        "Creating custom classes and objects",
+        "Exploring advanced topics in programming, including memory management, multithreading, and algorithms",
+        "Planning for next steps in your programming journey",
+      ],
+      description: `
       This course takes you further on your coding journey, delving into intermediate and advanced programming concepts using Python. It covers topics such as working with collections, iterating through collections, understanding external code, using modules, and distinguishing between libraries and frameworks. The course also explores string manipulation, regular expressions, and the impact of code style on code quality. It provides practical insights into choosing a code style and using pseudocode in your coding process. This course is an excellent choice for those looking to expand their programming skills beyond the basics.`,
-    archived: true,
-  },
-  [CertificateKeysEnum.LinkedInProgrammingFoundationsObjectOrientedDesign]: {
-    name: "Programming Foundations: Object-Oriented Design",
-    category: CertificateCategoriesEnum.SoftwareEngineering,
-    issuer: CertificateIssuersEnum.LinkedIn,
-    certificateURL:
-      "https://www.linkedin.com/learning/certificates/190a56bee558ac47ecc390563ebb20e4eebaccc00a1f1a7180dec108e371985d",
-    skills: [
-      SkillKeysEnum.ObjectOrientedProgramming,
-      SkillKeysEnum.DesignPatterns,
-      SkillKeysEnum.Testing,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-    ],
-    learningOutcomes: [
-      "Understanding object-oriented design principles",
-      "Identifying and working with objects and classes",
-      "Applying abstraction and encapsulation concepts",
-      "Implementing inheritance and polymorphism",
-      "Analyzing, designing, and programming using UML",
-      "Defining and working with FURPS+ requirements",
-      "Creating and diagramming use cases",
-      "Writing and interpreting user stories",
-      "Identifying objects and class relationships",
-      "Assigning class responsibilities and using CRC cards",
-      "Creating class diagrams and converting them into code",
-      "Working with multiple constructors and static attributes/methods",
-      "Identifying and implementing inheritance situations",
-      "Understanding and using abstract and concrete classes",
-      "Working with interfaces, aggregation, and composition",
-      "Understanding OOP support in different languages",
-      "Applying general development principles",
-      "Understanding software testing and design patterns",
-    ],
-    description: `
+      archived: true,
+    },
+  [CertificateDatabaseKeys.LinkedInProgrammingFoundationsObjectOrientedDesign]:
+    {
+      name: "Programming Foundations: Object-Oriented Design",
+      category: CertificateCategoriesEnum.SoftwareEngineering,
+      issuer: CertificateIssuersEnum.LinkedIn,
+      certificateURL:
+        "https://www.linkedin.com/learning/certificates/190a56bee558ac47ecc390563ebb20e4eebaccc00a1f1a7180dec108e371985d",
+      skills: [
+        SkillDatabaseKeys.ObjectOrientedProgramming,
+        SkillDatabaseKeys.DesignPatterns,
+        SkillDatabaseKeys.Testing,
+        SkillDatabaseKeys.ProblemSolving,
+        SkillDatabaseKeys.CriticalThinking,
+      ],
+      learningOutcomes: [
+        "Understanding object-oriented design principles",
+        "Identifying and working with objects and classes",
+        "Applying abstraction and encapsulation concepts",
+        "Implementing inheritance and polymorphism",
+        "Analyzing, designing, and programming using UML",
+        "Defining and working with FURPS+ requirements",
+        "Creating and diagramming use cases",
+        "Writing and interpreting user stories",
+        "Identifying objects and class relationships",
+        "Assigning class responsibilities and using CRC cards",
+        "Creating class diagrams and converting them into code",
+        "Working with multiple constructors and static attributes/methods",
+        "Identifying and implementing inheritance situations",
+        "Understanding and using abstract and concrete classes",
+        "Working with interfaces, aggregation, and composition",
+        "Understanding OOP support in different languages",
+        "Applying general development principles",
+        "Understanding software testing and design patterns",
+      ],
+      description: `
       This course provides a comprehensive introduction to object-oriented design, a crucial aspect of software development that allows for planning applications before writing any code. It covers foundational concepts in an engaging and interactive manner, helping you quickly develop your skills. The course guides you through the process of taking app requirements, identifying use cases, and mapping out classes using Universal Modeling Language (UML). The final design can then be translated into code using popular object-oriented programming languages like Java, C#, Ruby, or Python. This course is an excellent resource for anyone looking to understand and apply object-oriented design principles in their software development process.`,
-    relatedMaterials: [
-      CertificateKeysEnum.LinkedInBecomeAProgrammerFoundations,
-    ],
-    archived: true,
-  },
-  [CertificateKeysEnum.LinkedInProgrammingFoundationsAlgorithms2]: {
+      relatedMaterials: [
+        CertificateDatabaseKeys.LinkedInBecomeAProgrammerFoundations,
+      ],
+      archived: true,
+    },
+  [CertificateDatabaseKeys.LinkedInProgrammingFoundationsAlgorithms2]: {
     name: "Programming Foundations: Algorithms",
     category: CertificateCategoriesEnum.SoftwareEngineering,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/664e3f8841cfa46b854e98b98f27b306b26657ae2b05839700edd376fcd65d9b",
     skills: [
-      SkillKeysEnum.Algorithms,
-      SkillKeysEnum.DataStructures,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.DataStructures,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     learningOutcomes: [
       "Understanding the power and importance of algorithms",
@@ -2820,22 +2825,22 @@ const certificateMap: Database<CertificateInterface> = {
     description: `
       This course provides an in-depth exploration of algorithms, the universal building blocks of programming that power everyday software. It offers a practical approach to understanding and applying some of the most popular and useful algorithms for searching and sorting information, working with recursion, and understanding common data structures. The course also delves into the performance implications of different algorithms and how to evaluate them effectively. While the algorithms are demonstrated in Python, the lessons are applicable to any programming language. The course is designed to be interactive, allowing you to follow along with the examples in a hassle-free environment. This course is an excellent resource for anyone looking to deepen their understanding of algorithms and their application in programming.`,
     relatedMaterials: [
-      CertificateKeysEnum.LinkedInBecomeAProgrammerFoundations,
+      CertificateDatabaseKeys.LinkedInBecomeAProgrammerFoundations,
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInProgrammingFoundationsDataStructures2]: {
+  [CertificateDatabaseKeys.LinkedInProgrammingFoundationsDataStructures2]: {
     name: "Programming Foundations: Data Structures",
     category: CertificateCategoriesEnum.SoftwareEngineering,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/fd7a3bce3b7829c061da04bfa8420b534c91c5b6b35955ec536895721202a457",
     skills: [
-      SkillKeysEnum.Python,
-      SkillKeysEnum.DataStructures,
-      SkillKeysEnum.Algorithms,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.DataStructures,
+      SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     learningOutcomes: [
       "Understanding the concept of data and data structures",
@@ -2853,25 +2858,25 @@ const certificateMap: Database<CertificateInterface> = {
       This course offers a comprehensive overview of essential data structures for modern programming, particularly in Python. It starts with simple ways of grouping data like arrays, lists, and tuples, and gradually introduces more complex data structures such as dictionaries, sets, queues, and stacks. Each lesson is accompanied by a practical, real-world example that demonstrates the data structures in action. The course not only enhances your understanding of data structures but also equips you with the knowledge to leverage them effectively in your coding projects. It emphasizes the impact of data structure choices on the performance and efficiency of applications, making it a valuable resource for any programmer aiming to deepen their understanding of what's going on "under the hood".`,
     archived: true,
     relatedMaterials: [
-      CertificateKeysEnum.LinkedInBecomeAProgrammerFoundations,
+      CertificateDatabaseKeys.LinkedInBecomeAProgrammerFoundations,
     ],
   },
-  [CertificateKeysEnum.LinkedInProgrammingFoundationsDatabases]: {
+  [CertificateDatabaseKeys.LinkedInProgrammingFoundationsDatabases]: {
     name: "Programming Foundations: Databases",
     category: CertificateCategoriesEnum.SoftwareEngineering,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/c09365e0dcab16c1136a527b386b4a9d817a925d3ddede71b1f8c92195dce880",
     skills: [
-      SkillKeysEnum.Databases,
-      SkillKeysEnum.DatabaseManagementSystems,
-      SkillKeysEnum.Normalisation,
-      SkillKeysEnum.DatabaseIndexing,
-      SkillKeysEnum.RelationalDatabases,
-      SkillKeysEnum.Discrete,
-      SkillKeysEnum.Mathematics,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.Normalisation,
+      SkillDatabaseKeys.DatabaseIndexing,
+      SkillDatabaseKeys.RelationalDatabases,
+      SkillDatabaseKeys.Discrete,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     learningOutcomes: [
       "Understanding the benefits of databases and structured data",
@@ -2895,11 +2900,11 @@ const certificateMap: Database<CertificateInterface> = {
     description: `
       This course provides a solid foundation for getting started with database programming. It covers the essentials of databases, providing a consistent, organized structure for storing and retrieving large amounts of data. The course delves into key terminology such as normal forms, ACID and CRUD, referential integrity, transactions, records, and tables. It also explores the role of keys and unique values in a relational model. The course guides you through designing an optimal system to contain your data, starting with the core tables and relationships. It also teaches you how to write queries to extract necessary data and how to balance the different demands of storage, access, performance, and security. Practical examples and clear explanations are provided throughout the course to help you design databases that can meet the needs of your applications, your data, and your users.`,
     relatedMaterials: [
-      CertificateKeysEnum.LinkedInBecomeAProgrammerFoundations,
+      CertificateDatabaseKeys.LinkedInBecomeAProgrammerFoundations,
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInProgrammingFoundationsMemoryPointersAndGarbageCollection]:
+  [CertificateDatabaseKeys.LinkedInProgrammingFoundationsMemoryPointersAndGarbageCollection]:
     {
       name: "Programming Foundations: Memory, Pointers, and Garbage Collection",
       category: CertificateCategoriesEnum.SoftwareEngineering,
@@ -2907,9 +2912,9 @@ const certificateMap: Database<CertificateInterface> = {
       certificateURL:
         "https://www.linkedin.com/learning/certificates/cbcd6eaa43aa1e91c0d04e31bd886af185ceb513298b7567d1ebfafa48bb2b2b",
       skills: [
-        SkillKeysEnum.C,
-        SkillKeysEnum.ProblemSolving,
-        SkillKeysEnum.CriticalThinking,
+        SkillDatabaseKeys.C,
+        SkillDatabaseKeys.ProblemSolving,
+        SkillDatabaseKeys.CriticalThinking,
       ],
       learningOutcomes: [
         "Understanding what memory is and why we need to manage it",
@@ -2926,23 +2931,23 @@ const certificateMap: Database<CertificateInterface> = {
       description: `
         This course takes your foundational programming skills to the next level by diving deeper into how code really works, with a particular focus on memory management. It reveals that much like humans, computers also have short- and long-term memory, and most programming tasks involve moving values around in this memory. The course provides valuable tips on making code more efficient and fixing it when it breaks. It also walks you through best practices and power skills to improve your overall performance. By the end of this course, you'll have a deeper understanding of memory management and be equipped with the knowledge to avoid and debug common memory leaks.`,
       relatedMaterials: [
-        CertificateKeysEnum.LinkedInBecomeAProgrammerFoundations,
+        CertificateDatabaseKeys.LinkedInBecomeAProgrammerFoundations,
       ],
       archived: true,
     },
-  [CertificateKeysEnum.LinkedInProgrammingFoundationsAPIsAndWebServices]: {
+  [CertificateDatabaseKeys.LinkedInProgrammingFoundationsAPIsAndWebServices]: {
     name: "Programming Foundations: APIs and Web Services",
     category: CertificateCategoriesEnum.SoftwareEngineering,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/defb0bb2a25136a0517193e67c9d2a7a3c8a0eaa1720055d1091735e0a039cf0",
     skills: [
-      SkillKeysEnum.APIs,
-      SkillKeysEnum.REST,
-      SkillKeysEnum.GraphQL,
-      SkillKeysEnum.WebDevelopment,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.APIs,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.GraphQL,
+      SkillDatabaseKeys.WebDevelopment,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     learningOutcomes: [
       "Understanding web services and their advantages",
@@ -2963,10 +2968,10 @@ const certificateMap: Database<CertificateInterface> = {
     `,
     archived: true,
     relatedMaterials: [
-      CertificateKeysEnum.LinkedInBecomeAProgrammerFoundations,
+      CertificateDatabaseKeys.LinkedInBecomeAProgrammerFoundations,
     ],
   },
-  [CertificateKeysEnum.LinkedInProgrammingFoundationsSecureCoding]: {
+  [CertificateDatabaseKeys.LinkedInProgrammingFoundationsSecureCoding]: {
     name: "Programming Foundations: Secure Coding",
     category: CertificateCategoriesEnum.SoftwareEngineering,
     issuer: CertificateIssuersEnum.LinkedIn,
@@ -2975,8 +2980,8 @@ const certificateMap: Database<CertificateInterface> = {
     skills: [
       // SkillKeysEnum.Security,
       // SkillKeysEnum.Cybersecurity,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     learningOutcomes: [
       "Understanding the goal of secure coding and the mindset of an attacker",
@@ -2993,52 +2998,53 @@ const certificateMap: Database<CertificateInterface> = {
     description: `
       This course provides a fundamental understanding of secure coding practices, teaching you how to incorporate security into the software development life cycle. It emphasizes the importance of adopting the mindset of a security professional and identifying common insecure code issues. The course covers a range of topics including understanding attackers and risks, documenting your risks, and issues related to web client-server and thick app-client-server interactions. It also delves into authorization and cryptography issues. The course concludes with an overview of implementing security in each phase of the software development life cycle, providing you with the knowledge to strengthen the security posture of your applications.`,
     relatedMaterials: [
-      CertificateKeysEnum.LinkedInBecomeAProgrammerFoundations,
+      CertificateDatabaseKeys.LinkedInBecomeAProgrammerFoundations,
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInProgrammingFoundationsTestDrivenDevelopment]: {
-    name: "Programming Foundations: Test-Driven Development",
-    category: CertificateCategoriesEnum.SoftwareEngineering,
-    issuer: CertificateIssuersEnum.LinkedIn,
-    certificateURL:
-      "https://www.linkedin.com/learning/certificates/0572df657cb2e2e06f47b43669f87869afe82657c6151630f43ec2a0e720da16",
-    skills: [
-      SkillKeysEnum.Java,
-      SkillKeysEnum.JUnit,
-      SkillKeysEnum.Testing,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-    ],
-    learningOutcomes: [
-      "Understanding the concept of test-driven development (TDD) and its role in Agile",
-      "Learning about xUnit and JUnit frameworks",
-      "Writing effective test cases",
-      "Navigating the iterative red-green-refactor cycle in TDD",
-      "Refactoring to improve the design of the code",
-      "Understanding the structure of tests and the use of assertions",
-      "Learning how to test exceptions",
-      "Exploring various TDD tools and frameworks",
-      "Understanding assertion frameworks",
-      "Learning about test doubles and mocking",
-    ],
-    description:
-      "This course provides a comprehensive understanding of test-driven development (TDD), a formal process that allows you to build testing into your daily routine. It emphasizes the importance of running tests many times a day, providing instant feedback on the quality of your code. The course covers what makes a good test, the importance of failure over success, and how to measure and repeatedly run tests. It also explores the jargon of TDD, including test suites, test harnesses, mock and stub objects, and more. Additionally, the course provides insights into how TDD is used in common programming languages and environments, and the tools and frameworks that exist to help you succeed. The course ultimately emphasizes the time and cost savings that a good TDD workflow can provide.",
-    relatedMaterials: [
-      CertificateKeysEnum.LinkedInBecomeAProgrammerFoundations,
-    ],
-    archived: true,
-  },
-  [CertificateKeysEnum.LinkedInProgrammingFoundationsSoftwareTestingQA]: {
+  [CertificateDatabaseKeys.LinkedInProgrammingFoundationsTestDrivenDevelopment]:
+    {
+      name: "Programming Foundations: Test-Driven Development",
+      category: CertificateCategoriesEnum.SoftwareEngineering,
+      issuer: CertificateIssuersEnum.LinkedIn,
+      certificateURL:
+        "https://www.linkedin.com/learning/certificates/0572df657cb2e2e06f47b43669f87869afe82657c6151630f43ec2a0e720da16",
+      skills: [
+        SkillDatabaseKeys.Java,
+        SkillDatabaseKeys.JUnit,
+        SkillDatabaseKeys.Testing,
+        SkillDatabaseKeys.ProblemSolving,
+        SkillDatabaseKeys.CriticalThinking,
+      ],
+      learningOutcomes: [
+        "Understanding the concept of test-driven development (TDD) and its role in Agile",
+        "Learning about xUnit and JUnit frameworks",
+        "Writing effective test cases",
+        "Navigating the iterative red-green-refactor cycle in TDD",
+        "Refactoring to improve the design of the code",
+        "Understanding the structure of tests and the use of assertions",
+        "Learning how to test exceptions",
+        "Exploring various TDD tools and frameworks",
+        "Understanding assertion frameworks",
+        "Learning about test doubles and mocking",
+      ],
+      description:
+        "This course provides a comprehensive understanding of test-driven development (TDD), a formal process that allows you to build testing into your daily routine. It emphasizes the importance of running tests many times a day, providing instant feedback on the quality of your code. The course covers what makes a good test, the importance of failure over success, and how to measure and repeatedly run tests. It also explores the jargon of TDD, including test suites, test harnesses, mock and stub objects, and more. Additionally, the course provides insights into how TDD is used in common programming languages and environments, and the tools and frameworks that exist to help you succeed. The course ultimately emphasizes the time and cost savings that a good TDD workflow can provide.",
+      relatedMaterials: [
+        CertificateDatabaseKeys.LinkedInBecomeAProgrammerFoundations,
+      ],
+      archived: true,
+    },
+  [CertificateDatabaseKeys.LinkedInProgrammingFoundationsSoftwareTestingQA]: {
     name: "Programming Foundations: Software Testing/QA",
     category: CertificateCategoriesEnum.SoftwareEngineering,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/adff28e35ee3401b29a9bcfdecdb1888e99ea4d440f1bf1cd4d920e539bfdbcd",
     skills: [
-      SkillKeysEnum.Testing,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Testing,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     learningOutcomes: [
       "Understanding the concept of quality assurance (QA) and its importance",
@@ -3056,29 +3062,29 @@ const certificateMap: Database<CertificateInterface> = {
     description: `
       This course provides a comprehensive understanding of software testing and quality assurance (QA), crucial aspects of the software development life cycle. It covers the roles and responsibilities of QA professionals, the importance of collaboration in QA, and the creation of a test strategy. The course also delves into the different types of testing, including manual, UI automation, integration, performance, and security testing. It provides insights into identifying, reporting, and triaging bugs, as well as communicating bugs to the team. The course concludes with an overview of how to know when testing is complete and how to set expectations and goals for QA. This course is an excellent resource for anyone looking to deepen their understanding of software testing and quality assurance.`,
     relatedMaterials: [
-      CertificateKeysEnum.LinkedInBecomeAProgrammerFoundations,
+      CertificateDatabaseKeys.LinkedInBecomeAProgrammerFoundations,
     ],
     archived: true,
   },
 
   //^ Management
-  [CertificateKeysEnum.NASBAProjectManagementFoundations]: {
+  [CertificateDatabaseKeys.NASBAProjectManagementFoundations]: {
     name: "Project Management Foundations",
     category: CertificateCategoriesEnum.Management,
     issuer: CertificateIssuersEnum.NASBA,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/8ab210e2af6b2df598aa3e27db515103158cd049367cf6afd9949d874b7677eb",
     skills: [
-      SkillKeysEnum.TimeManagement,
-      SkillKeysEnum.RiskManagement,
-      SkillKeysEnum.StakeholderManagement,
-      SkillKeysEnum.Communication,
-      SkillKeysEnum.ScopeManagement,
-      SkillKeysEnum.CostManagement,
-      SkillKeysEnum.QualityManagement,
-      SkillKeysEnum.ProcurementManagement,
-      SkillKeysEnum.IntegrationManagement,
-      SkillKeysEnum.HumanResourceManagement,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.RiskManagement,
+      SkillDatabaseKeys.StakeholderManagement,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.ScopeManagement,
+      SkillDatabaseKeys.CostManagement,
+      SkillDatabaseKeys.QualityManagement,
+      SkillDatabaseKeys.ProcurementManagement,
+      SkillDatabaseKeys.IntegrationManagement,
+      SkillDatabaseKeys.HumanResourceManagement,
     ],
     description: `This course offers a comprehensive understanding of project management fundamentals, applicable to both small and complex enterprise-wide initiatives. It covers key aspects from establishing project goals and building a project plan, to managing resources, meeting deadlines, and closing the project. The course also provides tips for effective communication, meeting management, and gaining customer acceptance. It includes exercises based on a healthcare/IT case study project and provides an overview of the changes introduced in the Project Management Institute's latest guide.`,
     learningOutcomes: [
@@ -3095,7 +3101,7 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.PMIProjectManagementFoundations]: {
+  [CertificateDatabaseKeys.PMIProjectManagementFoundations]: {
     name: "Project Management Foundations",
 
     category: CertificateCategoriesEnum.Management,
@@ -3103,16 +3109,16 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.linkedin.com/learning/certificates/23788be7119de6bc027865d8345bcd7e8c98563fc1a8a373351e05fa79e1b6ef",
     skills: [
-      SkillKeysEnum.TimeManagement,
-      SkillKeysEnum.RiskManagement,
-      SkillKeysEnum.StakeholderManagement,
-      SkillKeysEnum.Communication,
-      SkillKeysEnum.ScopeManagement,
-      SkillKeysEnum.CostManagement,
-      SkillKeysEnum.QualityManagement,
-      SkillKeysEnum.ProcurementManagement,
-      SkillKeysEnum.IntegrationManagement,
-      SkillKeysEnum.HumanResourceManagement,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.RiskManagement,
+      SkillDatabaseKeys.StakeholderManagement,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.ScopeManagement,
+      SkillDatabaseKeys.CostManagement,
+      SkillDatabaseKeys.QualityManagement,
+      SkillDatabaseKeys.ProcurementManagement,
+      SkillDatabaseKeys.IntegrationManagement,
+      SkillDatabaseKeys.HumanResourceManagement,
     ],
     description: `This course offers a comprehensive understanding of project management fundamentals, applicable to both small and complex enterprise-wide initiatives. It covers key aspects from establishing project goals and building a project plan, to managing resources, meeting deadlines, and closing the project. The course also provides tips for effective communication, meeting management, and gaining customer acceptance. It includes exercises based on a healthcare/IT case study project and provides an overview of the changes introduced in the Project Management Institute's latest guide.`,
     learningOutcomes: [
@@ -3129,16 +3135,16 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.PMIPracticalProjectManagementAndCollaboration]: {
+  [CertificateDatabaseKeys.PMIPracticalProjectManagementAndCollaboration]: {
     name: "Practical Project Management and Collaboration",
     category: CertificateCategoriesEnum.Management,
     issuer: CertificateIssuersEnum.PMI,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/2816ac02fcccf39993020826512ff9ac6f82177fbe867c5ab9b1b01710eb784a",
     skills: [
-      SkillKeysEnum.TimeManagement,
-      SkillKeysEnum.Communication,
-      SkillKeysEnum.ScopeManagement,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.ScopeManagement,
     ],
     learningOutcomes: [
       "Creating projects for development",
@@ -3165,29 +3171,29 @@ const certificateMap: Database<CertificateInterface> = {
       This practical knowledge is invaluable for anyone seeking to leverage GitHub for more than just a code repository, enabling better team collaboration and code quality.
     `,
     relatedMaterials: [
-      CertificateKeysEnum.LinkedInCareerEssentialsInGitHubProfessionalCertificate,
+      CertificateDatabaseKeys.LinkedInCareerEssentialsInGitHubProfessionalCertificate,
     ],
     archived: true,
   },
 
   //^ Cloud Computing
-  [CertificateKeysEnum.LinkedInAWSEssentialTrainingForDevelopers]: {
+  [CertificateDatabaseKeys.LinkedInAWSEssentialTrainingForDevelopers]: {
     name: "AWS Essential Training for Developers",
     category: CertificateCategoriesEnum.CloudComputing,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/29e1352bda64cbc78e2f3fbf7205d2761bd8c465925eba7c4cf699aab8cf72b4",
     skills: [
-      SkillKeysEnum.AWS,
-      SkillKeysEnum.AWS_EC2,
-      SkillKeysEnum.AWS_S3,
-      SkillKeysEnum.AWS_VPC,
-      SkillKeysEnum.AWS_Lambda,
-      SkillKeysEnum.AWS_CloudFormation,
-      SkillKeysEnum.AWS_CloudFront,
-      SkillKeysEnum.NonRelationalDatabases,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.AWS,
+      SkillDatabaseKeys.AWS_EC2,
+      SkillDatabaseKeys.AWS_S3,
+      SkillDatabaseKeys.AWS_VPC,
+      SkillDatabaseKeys.AWS_Lambda,
+      SkillDatabaseKeys.AWS_CloudFormation,
+      SkillDatabaseKeys.AWS_CloudFront,
+      SkillDatabaseKeys.NonRelationalDatabases,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `
       This course provides a comprehensive guide on how to optimally host your application within AWS, covering services like IaaS, DBaaS, PaaS, and SaaS through hands-on examples. It delves into DevOps and security within AWS, and prepares learners for the AWS Cloud Practitioner Certification (CLF-C02) exam. The course covers a wide range of topics, from creating an IAM user group and using the Cost Explorer, to exploring AWS offerings for mobile app development and maintaining cloud infrastructure scripts with CloudFormation. It also includes a look into AWS's artificial intelligence services and the AWS Well-Architected Framework.`,
@@ -3217,26 +3223,26 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInAzureEssentialTrainingForDevelopers]: {
+  [CertificateDatabaseKeys.LinkedInAzureEssentialTrainingForDevelopers]: {
     name: "Azure Essential Training for Developers",
     category: CertificateCategoriesEnum.CloudComputing,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
       "https://www.linkedin.com/learning/certificates/bf0cac80ff7e3f2b8148e20d6ea1fccb6eb15457a184229fee9ff439f652cfba",
     skills: [
-      SkillKeysEnum.Azure,
-      SkillKeysEnum.Azure_AppService,
-      SkillKeysEnum.Azure_BlobStorage,
-      SkillKeysEnum.Azure_DurableFunctions,
-      SkillKeysEnum.Azure_Monitor,
-      SkillKeysEnum.Redis,
-      SkillKeysEnum.Azure_Functions,
-      SkillKeysEnum.HumanResourceManagement,
-      SkillKeysEnum.Containerisation,
-      SkillKeysEnum.Azure_ContainerRegistry,
-      SkillKeysEnum.Kubernetes,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Azure,
+      SkillDatabaseKeys.Azure_AppService,
+      SkillDatabaseKeys.Azure_BlobStorage,
+      SkillDatabaseKeys.Azure_DurableFunctions,
+      SkillDatabaseKeys.Azure_Monitor,
+      SkillDatabaseKeys.Redis,
+      SkillDatabaseKeys.Azure_Functions,
+      SkillDatabaseKeys.HumanResourceManagement,
+      SkillDatabaseKeys.Containerisation,
+      SkillDatabaseKeys.Azure_ContainerRegistry,
+      SkillDatabaseKeys.Kubernetes,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `
       This course provides a comprehensive introduction to Azure, focusing on the fundamentals necessary for developers to start building, deploying, and managing applications on this popular cloud platform. It offers a detailed overview of Azure's capabilities and services, from storage options to Kubernetes Service scaling strategies. The course is designed to equip learners with the knowledge needed for a deeper exploration of their topics of interest, making it a valuable resource for those new to Azure or those comparing it against other ecosystems.`,
@@ -3257,51 +3263,52 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     archived: true,
   },
-  [CertificateKeysEnum.LinkedInLearningGoogleCloudPlatformEssentialTraining]: {
-    name: "Google Cloud Platform (GCP) Essential Training for Developers",
-    category: CertificateCategoriesEnum.CloudComputing,
-    issuer: CertificateIssuersEnum.LinkedIn,
-    certificateURL:
-      "https://www.linkedin.com/learning/certificates/1bc3074a5e84539c7bc5fdeeee83438602cc303ba648ec90ef5fc018693e62a1",
-    skills: [
-      SkillKeysEnum.GCP,
-      SkillKeysEnum.GCP_AppEngine,
-      SkillKeysEnum.GCP_CloudSQL,
-      SkillKeysEnum.GCP_CloudStorage,
-      SkillKeysEnum.GCP_CloudTasks,
-      SkillKeysEnum.GCP_CloudScheduler,
-      SkillKeysEnum.GCP_Logging,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-    ],
-    description: `
+  [CertificateDatabaseKeys.LinkedInLearningGoogleCloudPlatformEssentialTraining]:
+    {
+      name: "Google Cloud Platform (GCP) Essential Training for Developers",
+      category: CertificateCategoriesEnum.CloudComputing,
+      issuer: CertificateIssuersEnum.LinkedIn,
+      certificateURL:
+        "https://www.linkedin.com/learning/certificates/1bc3074a5e84539c7bc5fdeeee83438602cc303ba648ec90ef5fc018693e62a1",
+      skills: [
+        SkillDatabaseKeys.GCP,
+        SkillDatabaseKeys.GCP_AppEngine,
+        SkillDatabaseKeys.GCP_CloudSQL,
+        SkillDatabaseKeys.GCP_CloudStorage,
+        SkillDatabaseKeys.GCP_CloudTasks,
+        SkillDatabaseKeys.GCP_CloudScheduler,
+        SkillDatabaseKeys.GCP_Logging,
+        SkillDatabaseKeys.ProblemSolving,
+        SkillDatabaseKeys.CriticalThinking,
+      ],
+      description: `
       This course provides a comprehensive guide to designing, building, and maintaining applications in Google Cloud Platform (GCP). It covers best practices for deploying and configuring optimized settings in App Engine, setting up Cloud SQL application architecture, managing distributed queues in Cloud Tasks, and using GCP tools like Cloud Logging for application optimization. The course is designed to equip learners with the skills needed to leverage the multitude of cloud computing services provided by GCP, making it a valuable resource for developers in the cloud computing domain.`,
-    learningOutcomes: [
-      "Designing, building, and maintaining applications in GCP.",
-      "Deploying and configuring optimized settings in App Engine.",
-      "Setting up Cloud SQL application architecture and connecting to the database from App Engine.",
-      "Saving and serving files through Google Cloud Storage with secure permissions and signed URLs.",
-      "Running background tasks with Google Cloud Tasks and cron jobs with Google Cloud Scheduler.",
-      "Logging, debugging, and optimizing apps with Google Operations tools.",
-    ],
-    archived: true,
-  },
+      learningOutcomes: [
+        "Designing, building, and maintaining applications in GCP.",
+        "Deploying and configuring optimized settings in App Engine.",
+        "Setting up Cloud SQL application architecture and connecting to the database from App Engine.",
+        "Saving and serving files through Google Cloud Storage with secure permissions and signed URLs.",
+        "Running background tasks with Google Cloud Tasks and cron jobs with Google Cloud Scheduler.",
+        "Logging, debugging, and optimizing apps with Google Operations tools.",
+      ],
+      archived: true,
+    },
 
   //^ Symphony
-  [CertificateKeysEnum.SymphonyCertifiedBotDeveloperJava]: {
+  [CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava]: {
     name: "Symphony Certified Bot Developer (Java)",
     category: CertificateCategoriesEnum.Other,
     issuer: CertificateIssuersEnum.SymphonySolutions,
     certificateURL:
       "https://www.credly.com/badges/e398f5d1-7d46-4585-9ab2-effa2176920f",
     skills: [
-      SkillKeysEnum.Java,
-      SkillKeysEnum.SpringBoot,
-      SkillKeysEnum.REST,
-      SkillKeysEnum.Symphony,
-      SkillKeysEnum.Automation,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.Symphony,
+      SkillDatabaseKeys.Automation,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `
       This certification is awarded to developers who have successfully completed the Symphony Certified Bot Developer (Java) training course.
@@ -3319,21 +3326,21 @@ const certificateMap: Database<CertificateInterface> = {
       "Converting a BDK 2.0 project to Spring Boot and using BDK 2.0 with Spring Boot",
     ],
   },
-  [CertificateKeysEnum.SymphonyCertifiedBotDeveloperPython]: {
+  [CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperPython]: {
     name: "Symphony Certified Bot Developer (Python)",
     category: CertificateCategoriesEnum.Other,
     issuer: CertificateIssuersEnum.SymphonySolutions,
     certificateURL:
       "https://www.credly.com/badges/d87290c2-7db7-45c2-89e2-ebd2c41e8b85",
     skills: [
-      SkillKeysEnum.Python,
-      SkillKeysEnum.Poetry,
-      SkillKeysEnum.Jinja,
-      SkillKeysEnum.REST,
-      SkillKeysEnum.Symphony,
-      SkillKeysEnum.Automation,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.Poetry,
+      SkillDatabaseKeys.Jinja,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.Symphony,
+      SkillDatabaseKeys.Automation,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
     description: `
       This certification is awarded to developers who have successfully completed the Symphony Certified Bot Developer (Python) training course.
@@ -3356,12 +3363,12 @@ const certificateMap: Database<CertificateInterface> = {
 /**
  * List of keys for the certificates that can be used to uniquely identify the certificate.
  */
-export const certificateKeys: CertificateKeysEnum[] = Object.keys(
+export const certificateDatabaseKeys: CertificateDatabaseKeys[] = Object.keys(
   certificateMap
-) as CertificateKeysEnum[];
+) as CertificateDatabaseKeys[];
 
 /**
- * Hashmap of certificates with keys as {@link CertificateKeysEnum} and values as {@link CertificateInterface}.
+ * Hashmap of certificates with keys as {@link CertificateDatabaseKeys} and values as {@link CertificateInterface}.
  * The certificates are the certifications that I have completed and received.
  * The order skills is the order that is used when displaying the skills on the website.
  *
@@ -3370,13 +3377,13 @@ export const certificateKeys: CertificateKeysEnum[] = Object.keys(
  * These sub-skills are specifically general skills related to the technologies but are not part of programming languages.
  * Programming languages have many sub-skills that are not directly related to the blogs above.
  */
-const certificateDatabase: Database<CertificateInterface> =
+const certificateDatabaseMap: Database<CertificateInterface> =
   addNestedSkillsMaterialList<CertificateInterface>(
     certificateMap,
-    skillDatabase,
+    skillDatabaseMap,
     [SkillCategoriesEnum.ProgrammingLanguages],
     SkillTypesEnum.Technical,
     SkillTypesEnum.Technology
   );
 
-export default certificateDatabase;
+export default certificateDatabaseMap;

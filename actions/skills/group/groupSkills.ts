@@ -1,6 +1,6 @@
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import SkillInterface from "@/database/Skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import getSkillsDatabaseFromKeys from "../get/getSkillsDatabaseFromKeys";
 import groupByCategory from "./groupByCategory";
@@ -18,13 +18,13 @@ import groupBySkillType from "./groupBySkillType";
  * @returns Filtered skill keys which belong to the specified skill type
  */
 function recursiveFilter(
-  skillKeys: SkillKeysEnum[],
+  skillKeys: SkillDatabaseKeys[],
   skillsDatabase: Database<SkillInterface>,
   excludedSkillTypes: SkillTypesEnum[] = [],
-  processedSkills: Set<SkillKeysEnum> = new Set<SkillKeysEnum>()
-): SkillKeysEnum[] {
+  processedSkills: Set<SkillDatabaseKeys> = new Set<SkillDatabaseKeys>()
+): SkillDatabaseKeys[] {
   // Filtered skills to return
-  let filteredSkills: SkillKeysEnum[] = [];
+  let filteredSkills: SkillDatabaseKeys[] = [];
 
   skillKeys.forEach((skillKey) => {
     // If the skill has already been processed, skip it to avoid infinite recursion
@@ -80,22 +80,22 @@ export enum GroupByOptions {
  */
 export default function groupSkills(
   groupedBy: GroupByOptions,
-  skillKeys: SkillKeysEnum[],
+  skillKeys: SkillDatabaseKeys[],
   skillsDatabase: Database<SkillInterface>,
   excludedSkillTypes?: SkillTypesEnum[]
 ): SkillsCategoryInterface[] {
   let organizedSkills: SkillsCategoryInterface[] = [];
 
-  const skillsRelatedToKeys: { [key in SkillKeysEnum]?: SkillInterface } =
+  const skillsRelatedToKeys: { [key in SkillDatabaseKeys]?: SkillInterface } =
     getSkillsDatabaseFromKeys(skillKeys, skillsDatabase);
 
   // Adjust the recursiveFilter function to filter out skills based on excludedSkillTypes
-  const filteredSkillSlugs: SkillKeysEnum[] = excludedSkillTypes
+  const filteredSkillSlugs: SkillDatabaseKeys[] = excludedSkillTypes
     ? recursiveFilter(skillKeys, skillsRelatedToKeys, excludedSkillTypes)
     : skillKeys;
 
   // Validate filteredSkillSlugs to ensure they exist in allSkills
-  const validatedSkillSlugs: SkillKeysEnum[] = filteredSkillSlugs.filter(
+  const validatedSkillSlugs: SkillDatabaseKeys[] = filteredSkillSlugs.filter(
     (slug) => skillsRelatedToKeys.hasOwnProperty(slug)
   );
 

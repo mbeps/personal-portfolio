@@ -1,4 +1,4 @@
-import MaterialInterface from "@/interfaces/material/MaterialInterface";
+import MaterialInterface from "@/database/Materials/MaterialInterface";
 
 /**
  * Checks if there are any archived materials in the database.

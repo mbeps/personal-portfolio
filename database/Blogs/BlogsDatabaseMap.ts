@@ -1,213 +1,218 @@
 import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
 import BlogCategoriesEnum from "@/enums/BlogCategoriesEnum";
-import BlogKeysEnum from "@/enums/DatabaseKeysEnums/BlogKeysEnum";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import BlogDatabaseKeys from "@/database/Blogs/BlogDatabaseKeys";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
-import BlogInterface from "@/interfaces/material/BlogInterface";
-import skillDatabase from "./skills";
+import BlogInterface from "@/database/Blogs/BlogInterface";
+import skillDatabaseMap from "../Skills/SkillDatabaseMap";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 
 /**
- * Hashmap of blogs with keys as {@link BlogKeysEnum} and values as {@link BlogInterface}.
+ * Hashmap of blogs with keys as {@link BlogDatabaseKeys} and values as {@link BlogInterface}.
  * The order of the blogs is the order that is used when displaying the blogs on the website.
  * The order of the skills is the order that is used when displaying the skills on the website.
  */
 const blogsMap: Database<BlogInterface> = {
-  [BlogKeysEnum.Backend]: {
+  [BlogDatabaseKeys.Backend]: {
     name: "Exploring Backends: Custom vs Managed Solutions",
     subtitle:
       "An In-depth Analysis of Backend Development Approaches, Tools, and Security Considerations",
     skills: [
-      SkillKeysEnum.WebDevelopment,
-      SkillKeysEnum.CloudComputing,
-      SkillKeysEnum.Firebase,
-      SkillKeysEnum.Supabase,
-      SkillKeysEnum.PocketBase,
+      SkillDatabaseKeys.WebDevelopment,
+      SkillDatabaseKeys.CloudComputing,
+      SkillDatabaseKeys.Firebase,
+      SkillDatabaseKeys.Supabase,
+      SkillDatabaseKeys.PocketBase,
     ],
     category: BlogCategoriesEnum.WebDevelopment,
   },
-  [BlogKeysEnum.CICD]: {
+  [BlogDatabaseKeys.CICD]: {
     name: "Embracing the Future of Software Development: A Comprehensive Guide to CI/CD",
     subtitle:
       "Mastering Continuous Integration and Continuous Delivery for Enhanced Software Delivery",
     category: BlogCategoriesEnum.DevOps,
     skills: [
-      SkillKeysEnum.DevOps,
-      SkillKeysEnum.ContinuousIntegration,
-      SkillKeysEnum.ContinuousDelivery,
-      SkillKeysEnum.ContinuousDeployment,
-      SkillKeysEnum.Docker,
-      SkillKeysEnum.Kubernetes,
-      SkillKeysEnum.Containerisation,
-      SkillKeysEnum.ProjectManagement,
-      SkillKeysEnum.CloudComputing,
-      SkillKeysEnum.InfrastructureAsCode,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.ProjectManagement,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.DevOps,
+      SkillDatabaseKeys.ContinuousIntegration,
+      SkillDatabaseKeys.ContinuousDelivery,
+      SkillDatabaseKeys.ContinuousDeployment,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.Kubernetes,
+      SkillDatabaseKeys.Containerisation,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CloudComputing,
+      SkillDatabaseKeys.InfrastructureAsCode,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
     ],
   },
-  [BlogKeysEnum.DevOps]: {
+  [BlogDatabaseKeys.DevOps]: {
     name: "Embracing DevOps: A Guide to Principles, Practices, and Success Stories",
     subtitle:
       "Understanding the Impact of DevOps in Modern Software Development",
     category: BlogCategoriesEnum.DevOps,
     skills: [
-      SkillKeysEnum.DevOps,
-      SkillKeysEnum.IntegrationManagement,
-      SkillKeysEnum.ContinuousDelivery,
-      SkillKeysEnum.ContinuousDeployment,
-      SkillKeysEnum.Containerisation,
-      SkillKeysEnum.ProjectManagement,
-      SkillKeysEnum.CloudComputing,
-      SkillKeysEnum.InfrastructureAsCode,
-      SkillKeysEnum.Automation,
-      SkillKeysEnum.Git,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.ProjectManagement,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.DevOps,
+      SkillDatabaseKeys.IntegrationManagement,
+      SkillDatabaseKeys.ContinuousDelivery,
+      SkillDatabaseKeys.ContinuousDeployment,
+      SkillDatabaseKeys.Containerisation,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CloudComputing,
+      SkillDatabaseKeys.InfrastructureAsCode,
+      SkillDatabaseKeys.Automation,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
     ],
   },
-  [BlogKeysEnum.Docker]: {
+  [BlogDatabaseKeys.Docker]: {
     name: "Docker: Unleashing the Power of Containers",
     subtitle:
       "A Comprehensive Guide to Understanding Docker and Containerization Technology",
     category: BlogCategoriesEnum.DevOps,
     skills: [
-      SkillKeysEnum.DevOps,
-      SkillKeysEnum.Docker,
-      SkillKeysEnum.Containerisation,
-      SkillKeysEnum.ProblemSolving,
+      SkillDatabaseKeys.DevOps,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.Containerisation,
+      SkillDatabaseKeys.ProblemSolving,
     ],
   },
-  [BlogKeysEnum.Frontend]: {
+  [BlogDatabaseKeys.Frontend]: {
     name: "Front-End Development and the Essential Role of Libraries and Frameworks",
     subtitle:
       "A comprehensive introduction to standard front-end web development using libraries and frameworks",
     category: BlogCategoriesEnum.WebDevelopment,
     skills: [
-      SkillKeysEnum.WebDevelopment,
-      SkillKeysEnum.HTML,
-      SkillKeysEnum.CSS,
-      SkillKeysEnum.JavaScript,
-      SkillKeysEnum.ReactJS,
-      SkillKeysEnum.NextJS,
-      SkillKeysEnum.AngularJS,
-      SkillKeysEnum.SvelteJS,
-      SkillKeysEnum.VueJS,
+      SkillDatabaseKeys.WebDevelopment,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.CSS,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.NextJS,
+      SkillDatabaseKeys.AngularJS,
+      SkillDatabaseKeys.SvelteJS,
+      SkillDatabaseKeys.VueJS,
     ],
   },
-  [BlogKeysEnum.JavaScriptVsTypeScript]: {
+  [BlogDatabaseKeys.JavaScriptVsTypeScript]: {
     name: "JavaScript vs TypeScript: A Detailed Comparison",
     subtitle:
       "Exploring the Advantages and Key Differences between JavaScript and TypeScript",
     category: BlogCategoriesEnum.SoftwareEngineering,
-    skills: [SkillKeysEnum.JavaScript, SkillKeysEnum.TypeScript],
+    skills: [SkillDatabaseKeys.JavaScript, SkillDatabaseKeys.TypeScript],
   },
-  [BlogKeysEnum.Kubernetes]: {
+  [BlogDatabaseKeys.Kubernetes]: {
     name: "Kubernetes Guide: Mastering Container Orchestration",
     subtitle: "An Overview of Components, Tools, and Best Practices",
     category: BlogCategoriesEnum.DevOps,
     skills: [
-      SkillKeysEnum.DevOps,
-      SkillKeysEnum.Kubernetes,
-      SkillKeysEnum.Docker,
-      SkillKeysEnum.Containerisation,
+      SkillDatabaseKeys.DevOps,
+      SkillDatabaseKeys.Kubernetes,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.Containerisation,
     ],
   },
-  [BlogKeysEnum.MachineLearningFoundations]: {
+  [BlogDatabaseKeys.MachineLearningFoundations]: {
     name: "Exploring the Depths of Machine Learning",
     subtitle:
       "A Comprehensive Guide to Machine Learning: Concepts, Challenges, and Real-World Impact",
     category: BlogCategoriesEnum.ArtificialIntelligence,
     skills: [
-      SkillKeysEnum.MachineLearning,
-      SkillKeysEnum.Algorithms,
-      SkillKeysEnum.DataScience,
-      SkillKeysEnum.ArtificialIntelligence,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
     ],
   },
-  [BlogKeysEnum.ORM]: {
+  [BlogDatabaseKeys.ORM]: {
     name: "Understanding Object-Relational Mapping (ORM)",
     subtitle:
       "A Comprehensive Overview of ORM, Its Advantages, Disadvantages, and Role in Modern Web Application Development",
     category: BlogCategoriesEnum.Databases,
     skills: [
-      SkillKeysEnum.DatabaseManagementSystems,
-      SkillKeysEnum.Databases,
-      SkillKeysEnum.RelationalDatabases,
-      SkillKeysEnum.NonRelationalDatabases,
-      SkillKeysEnum.ObjectRelationalMapping,
-      SkillKeysEnum.Prisma,
-      SkillKeysEnum.Drizzle,
-      SkillKeysEnum.Mongoose,
-      SkillKeysEnum.SQLAlchemy,
-      SkillKeysEnum.Hibernate,
-      SkillKeysEnum.Probability,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.RelationalDatabases,
+      SkillDatabaseKeys.NonRelationalDatabases,
+      SkillDatabaseKeys.ObjectRelationalMapping,
+      SkillDatabaseKeys.Prisma,
+      SkillDatabaseKeys.Drizzle,
+      SkillDatabaseKeys.Mongoose,
+      SkillDatabaseKeys.SQLAlchemy,
+      SkillDatabaseKeys.Hibernate,
+      SkillDatabaseKeys.Probability,
     ],
   },
-  [BlogKeysEnum.RESTGraphQL]: {
+  [BlogDatabaseKeys.RESTGraphQL]: {
     name: "Comparing GraphQL and REST: A Detailed Overview",
     subtitle: "Choosing the Right API Design Approach",
     category: BlogCategoriesEnum.WebDevelopment,
     skills: [
-      SkillKeysEnum.WebDevelopment,
-      SkillKeysEnum.APIs,
-      SkillKeysEnum.REST,
-      SkillKeysEnum.GraphQL,
-      SkillKeysEnum.ProblemSolving,
+      SkillDatabaseKeys.WebDevelopment,
+      SkillDatabaseKeys.APIs,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.GraphQL,
+      SkillDatabaseKeys.ProblemSolving,
     ],
   },
-  [BlogKeysEnum.SDKvsAPI]: {
+  [BlogDatabaseKeys.SDKvsAPI]: {
     name: "SDKs vs APIs: A Comparative Guide",
     subtitle: "Understanding Their Roles in Software Development",
     category: BlogCategoriesEnum.SoftwareEngineering,
-    skills: [SkillKeysEnum.APIs, SkillKeysEnum.SDKs],
+    skills: [SkillDatabaseKeys.APIs, SkillDatabaseKeys.SDKs],
   },
-  [BlogKeysEnum.SessionsVsTokens]: {
+  [BlogDatabaseKeys.SessionsVsTokens]: {
     name: "Comparing Session and Token: Navigating Authentication",
     subtitle: "A Detailed Comparison of Authentication Strategies",
     category: BlogCategoriesEnum.WebDevelopment,
-    skills: [SkillKeysEnum.WebDevelopment, SkillKeysEnum.UserAuthentication],
+    skills: [
+      SkillDatabaseKeys.WebDevelopment,
+      SkillDatabaseKeys.UserAuthentication,
+    ],
   },
-  [BlogKeysEnum.SoftwareTesting]: {
+  [BlogDatabaseKeys.SoftwareTesting]: {
     name: "Comprehensive Guide to Software Testing",
     subtitle:
       "Exploring Functional and Non-Functional Testing Techniques, Tools, and Challenges",
     category: BlogCategoriesEnum.SoftwareEngineering,
-    skills: [SkillKeysEnum.Testing, SkillKeysEnum.ProblemSolving],
+    skills: [SkillDatabaseKeys.Testing, SkillDatabaseKeys.ProblemSolving],
   },
-  [BlogKeysEnum.SQLNOSQL]: {
+  [BlogDatabaseKeys.SQLNOSQL]: {
     name: "Exploring Databases: A Comparative Study of Relational and Non-Relational Models",
     subtitle:
       "An In-depth Analysis of Database Systems and their Role in Software Engineering and Web Development",
     category: BlogCategoriesEnum.Databases,
     skills: [
-      SkillKeysEnum.DatabaseManagementSystems,
-      SkillKeysEnum.Databases,
-      SkillKeysEnum.RelationalDatabases,
-      SkillKeysEnum.NonRelationalDatabases,
-      SkillKeysEnum.Normalisation,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.RelationalDatabases,
+      SkillDatabaseKeys.NonRelationalDatabases,
+      SkillDatabaseKeys.Normalisation,
     ],
   },
-  [BlogKeysEnum.SyncAsync]: {
+  [BlogDatabaseKeys.SyncAsync]: {
     name: "Sync vs Async: Deep Dive into Programming Models",
     subtitle:
       "Understanding and Optimizing Synchronous and Asynchronous Programming",
     category: BlogCategoriesEnum.SoftwareEngineering,
-    skills: [SkillKeysEnum.WebDevelopment],
+    skills: [SkillDatabaseKeys.WebDevelopment],
   },
 };
 
 /**
  * List of keys for the blogs that can be used to uniquely identify the blogs.
  */
-export const blogKeys: BlogKeysEnum[] = Object.keys(blogsMap) as BlogKeysEnum[];
+export const blogDatabaseKeys: BlogDatabaseKeys[] = Object.keys(
+  blogsMap
+) as BlogDatabaseKeys[];
 
 /**
- * Hashmap of blogs with keys as {@link BlogKeysEnum} and values as {@link BlogInterface}.
+ * Hashmap of blogs with keys as {@link BlogDatabaseKeys} and values as {@link BlogInterface}.
  * The order of the blogs is the order that is used when displaying the blogs on the website.
  * The order of the skills is the order that is used when displaying the skills on the website.
  *
@@ -216,13 +221,13 @@ export const blogKeys: BlogKeysEnum[] = Object.keys(blogsMap) as BlogKeysEnum[];
  * These sub-skills are specifically general skills related to the technologies but are not part of programming languages.
  * Programming languages have many sub-skills that are not directly related to the blogs above.
  */
-const blogDatabase: Database<BlogInterface> =
+const blogsDatabaseMap: Database<BlogInterface> =
   addNestedSkillsMaterialList<BlogInterface>(
     blogsMap,
-    skillDatabase,
+    skillDatabaseMap,
     [SkillCategoriesEnum.ProgrammingLanguages],
     SkillTypesEnum.Technical,
     SkillTypesEnum.Technology
   );
 
-export default blogDatabase;
+export default blogsDatabaseMap;

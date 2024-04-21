@@ -1,6 +1,6 @@
 import { BLOG_PAGE } from "@/constants/pages";
-import blogDatabase from "@/database/blogs";
-import BlogInterface from "@/interfaces/material/BlogInterface";
+import blogsDatabaseMap from "@/database/Blogs/BlogsDatabaseMap";
+import BlogInterface from "@/database/Blogs/BlogInterface";
 import Link from "next/link";
 import React from "react";
 
@@ -17,7 +17,7 @@ interface BlogItemProps {
  */
 const BlogItem: React.FC<BlogItemProps> = ({ blogKey }) => {
   const basePath: string = BLOG_PAGE.path;
-  const blogData: BlogInterface = blogDatabase[blogKey];
+  const blogData: BlogInterface = blogsDatabaseMap[blogKey];
 
   return (
     <>

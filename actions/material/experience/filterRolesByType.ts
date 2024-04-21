@@ -1,6 +1,6 @@
 import stringToSlug from "@/actions/stringToSlug";
+import RoleInterface from "@/database/Roles/RoleInterface";
 import ExperienceTypeEnum from "@/enums/ExperienceTypeEnum";
-import RoleInterface from "@/interfaces/material/RoleInterface";
 
 /**
  * Filters the roles by the type of experience, for example "work" or "volunteer".

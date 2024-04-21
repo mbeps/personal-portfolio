@@ -10,13 +10,13 @@ import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
 import { EXPERIENCE_PAGE } from "@/constants/pages";
-import companyDatabase from "@/database/companies";
-import rolesDatabase from "@/database/roles";
-import skillDatabase from "@/database/skills";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import companyDatabaseMap from "@/database/Companies/CompanyDatabaseMap";
+import CompanyInterface from "@/database/Companies/CompanyInterface";
+import rolesDatabase from "@/database/Roles/RoleDatabaseMap";
+import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
-import CompanyInterface from "@/interfaces/material/CompanyInterface";
-import RoleInterface from "@/interfaces/material/RoleInterface";
+import RoleInterface from "@/database/Roles/RoleInterface";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import type { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
@@ -82,44 +82,44 @@ export const generateStaticParams = async () => {
 const RolePage: React.FC<RolePageProps> = ({ params }) => {
   const roleKey: string = params.roleKey;
   const roleData: RoleInterface = rolesDatabase[roleKey];
-  const companyData: CompanyInterface = companyDatabase[roleData.company];
+  const companyData: CompanyInterface = companyDatabaseMap[roleData.company];
 
   if (!roleData) {
     notFound();
   }
 
-  const technologies: SkillKeysEnum[] = filterSkillsByType(
+  const technologies: SkillDatabaseKeys[] = filterSkillsByType(
     roleData.skills,
-    skillDatabase,
+    skillDatabaseMap,
     SkillTypesEnum.Technology
   );
-  const generalSkills: SkillKeysEnum[] = filterSkillsByType(
+  const generalSkills: SkillDatabaseKeys[] = filterSkillsByType(
     roleData.skills,
-    skillDatabase,
+    skillDatabaseMap,
     SkillTypesEnum.Technical
   );
-  const softSkills: SkillKeysEnum[] = filterSkillsByType(
+  const softSkills: SkillDatabaseKeys[] = filterSkillsByType(
     roleData.skills,
-    skillDatabase,
+    skillDatabaseMap,
     SkillTypesEnum.Soft
   );
 
   const allGroupedSkills: GroupedSkillsCategoriesInterface[] = [
     categoriseAndGroupSkills(
       technologies,
-      skillDatabase,
+      skillDatabaseMap,
       SkillTypesEnum.Technology,
       "Technologies"
     ),
     categoriseAndGroupSkills(
       generalSkills,
-      skillDatabase,
+      skillDatabaseMap,
       SkillTypesEnum.Technical,
       "Technical Skills"
     ),
     categoriseAndGroupSkills(
       softSkills,
-      skillDatabase,
+      skillDatabaseMap,
       SkillTypesEnum.Soft,
       "Soft Skills"
     ),

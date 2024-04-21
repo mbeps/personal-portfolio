@@ -6,20 +6,18 @@ import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import StringList from "@/components/Text/StringList";
 import DynamicBreadcrumb from "@/components/UI/DynamicBreadcrumb";
-import PageDescription from "@/components/UI/PageDescription";
 import developerName from "@/constants/developerName";
 import { EDUCATION_PAGE, HOME_PAGE } from "@/constants/pages";
-import courseDatabase from "@/database/courses";
-import moduleDatabase from "@/database/modules";
-import skillDatabase from "@/database/skills";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import courseDatabaseMap from "@/database/Courses/CourseDatabaseMap";
+import CourseInterface from "@/database/Courses/CourseInterface";
+import moduleDatabaseMap from "@/database/Modules/ModuleDatabaseMap";
+import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
-import UniversityCourseInterface from "@/interfaces/material/UniversityCourseInterface";
-import UniversityModuleInterface from "@/interfaces/material/UniversityModuleInterface";
+import ModuleInterface from "@/database/Modules/ModuleInterface";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
-import { RxTriangleRight } from "react-icons/rx";
 
 type ModulePageProps = {
   params: { moduleKey: string };
@@ -42,7 +40,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   // Read route params
   const moduleKey: string = params.moduleKey;
-  const moduleData: UniversityModuleInterface = moduleDatabase[moduleKey];
+  const moduleData: ModuleInterface = moduleDatabaseMap[moduleKey];
 
   // Create metadata based on the course details
   return {
@@ -61,7 +59,7 @@ export async function generateMetadata(
  * @see https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration
  */
 export const generateStaticParams = async () => {
-  return Object.keys(moduleDatabase).map((moduleKey) => ({
+  return Object.keys(moduleDatabaseMap).map((moduleKey) => ({
     moduleKey,
   }));
 };
@@ -79,27 +77,27 @@ export const generateStaticParams = async () => {
  */
 const ModulePage: React.FC<ModulePageProps> = ({ params }) => {
   const moduleKey: string = params.moduleKey;
-  const moduleData: UniversityModuleInterface = moduleDatabase[moduleKey];
-  const parentCourse: UniversityCourseInterface =
-    courseDatabase[moduleData.parentCourse];
+  const moduleData: ModuleInterface = moduleDatabaseMap[moduleKey];
+  const parentCourse: CourseInterface =
+    courseDatabaseMap[moduleData.parentCourse];
 
   if (!moduleData) {
     notFound();
   }
 
-  const technologies: SkillKeysEnum[] = filterSkillsByType(
+  const technologies: SkillDatabaseKeys[] = filterSkillsByType(
     moduleData.skills,
-    skillDatabase,
+    skillDatabaseMap,
     SkillTypesEnum.Technology
   );
-  const generalSkills: SkillKeysEnum[] = filterSkillsByType(
+  const generalSkills: SkillDatabaseKeys[] = filterSkillsByType(
     moduleData.skills,
-    skillDatabase,
+    skillDatabaseMap,
     SkillTypesEnum.Technical
   );
-  const softSkills: SkillKeysEnum[] = filterSkillsByType(
+  const softSkills: SkillDatabaseKeys[] = filterSkillsByType(
     moduleData.skills,
-    skillDatabase,
+    skillDatabaseMap,
     SkillTypesEnum.Soft
   );
 
@@ -107,19 +105,19 @@ const ModulePage: React.FC<ModulePageProps> = ({ params }) => {
   const allGroupedSkills: GroupedSkillsCategoriesInterface[] = [
     categoriseAndGroupSkills(
       technologies,
-      skillDatabase,
+      skillDatabaseMap,
       SkillTypesEnum.Technology,
       "Technologies"
     ),
     categoriseAndGroupSkills(
       generalSkills,
-      skillDatabase,
+      skillDatabaseMap,
       SkillTypesEnum.Technical,
       "Technical Skills"
     ),
     categoriseAndGroupSkills(
       softSkills,
-      skillDatabase,
+      skillDatabaseMap,
       SkillTypesEnum.Soft,
       "Soft Skills"
     ),

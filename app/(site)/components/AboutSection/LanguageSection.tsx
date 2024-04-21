@@ -2,7 +2,7 @@
 
 import LanguageModal from "@/components/Modal/LanguageModal";
 import HeadingThree from "@/components/Text/HeadingThree";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import useIsMounted from "@/hooks/useIsMounted";
 import React from "react";
 
@@ -23,11 +23,11 @@ const LanguageSection: React.FC = () => {
   /**
    * The list of main languages that will be displayed.
    */
-  const mainLanguages: SkillKeysEnum[] = [
-    SkillKeysEnum.Python,
-    SkillKeysEnum.JavaScript,
-    SkillKeysEnum.TypeScript,
-    SkillKeysEnum.Java,
+  const mainLanguages: SkillDatabaseKeys[] = [
+    SkillDatabaseKeys.Python,
+    SkillDatabaseKeys.JavaScript,
+    SkillDatabaseKeys.TypeScript,
+    SkillDatabaseKeys.Java,
   ];
 
   return (

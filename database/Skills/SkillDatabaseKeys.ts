@@ -5,7 +5,7 @@
  *
  * @see {@link skillDatabase} at `interfaces/skills.ts`
  */
-enum SkillKeysEnum {
+enum SkillDatabaseKeys {
   //^ Languages
   Python = "python",
   JavaScript = "javascript",
@@ -277,4 +277,4 @@ enum SkillKeysEnum {
   HumanResourceManagement = "human-resource-management",
 }
 
-export default SkillKeysEnum;
+export default SkillDatabaseKeys;

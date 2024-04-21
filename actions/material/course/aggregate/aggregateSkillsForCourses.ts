@@ -1,7 +1,7 @@
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
-import UniversityModuleKeysEnum from "@/enums/DatabaseKeysEnums/UniversityModuleKeysEnum";
-import UniversityCourseInterface from "@/interfaces/material/UniversityCourseInterface";
-import UniversityModuleInterface from "@/interfaces/material/UniversityModuleInterface";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
+import CourseInterface from "@/database/Courses/CourseInterface";
+import ModuleInterface from "@/database/Modules/ModuleInterface";
 
 /**
  * Adds the skills from a course's modules to the course's skills itself.
@@ -13,22 +13,22 @@ import UniversityModuleInterface from "@/interfaces/material/UniversityModuleInt
  * @returns The courses with the aggregated skills.
  */
 export default function aggregateSkillsForCourses(
-  coursesDatabase: Database<UniversityCourseInterface>,
-  modulesDatabase: Database<UniversityModuleInterface>
-): Database<UniversityCourseInterface> {
+  coursesDatabase: Database<CourseInterface>,
+  modulesDatabase: Database<ModuleInterface>
+): Database<CourseInterface> {
   // Create a new object to store the updated courses with aggregated skills
-  const updatedCoursesDatabase: Database<UniversityCourseInterface> = {};
+  const updatedCoursesDatabase: Database<CourseInterface> = {};
 
   // Iterate over each course in the database
   Object.keys(coursesDatabase).forEach((courseKey) => {
-    const course: UniversityCourseInterface = coursesDatabase[courseKey];
+    const course: CourseInterface = coursesDatabase[courseKey];
 
     // Start with existing skills in the course, if any
-    let aggregatedSkills: SkillKeysEnum[] = [...course.skills];
+    let aggregatedSkills: SkillDatabaseKeys[] = [...course.skills];
 
     // Iterate over each module key in the course
-    course.modules.forEach((moduleKey: UniversityModuleKeysEnum) => {
-      const moduleData: UniversityModuleInterface = modulesDatabase[moduleKey];
+    course.modules.forEach((moduleKey: ModuleDatabaseKeys) => {
+      const moduleData: ModuleInterface = modulesDatabase[moduleKey];
       // Ensure the moduleData exists and has skills
       if (moduleData && moduleData.skills) {
         // Aggregate the skills

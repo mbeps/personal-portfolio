@@ -4,13 +4,13 @@ import {
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
 import { PROJECTS_PAGE } from "@/constants/pages";
-import ProjectInterface from "@/interfaces/material/ProjectInterface";
+import ProjectInterface from "@/database/Projects/ProjectInterface";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub, BsInfoCircle } from "react-icons/bs";
 import { AspectRatio } from "../shadcn/ui/aspect-ratio";
-import projectDatabase from "@/database/projects";
+import projectDatabaseMap from "@/database/Projects/ProjectDatabaseMap";
 
 interface ProjectItemProps {
   projectKey: string;
@@ -35,7 +35,7 @@ interface ProjectItemProps {
  */
 const ProjectItem: React.FC<ProjectItemProps> = ({ projectKey }) => {
   const basePath: string = PROJECTS_PAGE.path;
-  const projectData: ProjectInterface = projectDatabase[projectKey];
+  const projectData: ProjectInterface = projectDatabaseMap[projectKey];
 
   return (
     <div

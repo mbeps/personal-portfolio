@@ -13,14 +13,14 @@ import stringToSlug from "@/actions/stringToSlug";
 import FilterSection from "@/components/Filters/FilterSection";
 import BlogsList from "@/components/MaterialLists/BlogsList";
 import { BLOG_PAGE } from "@/constants/pages";
-import blogDatabase from "@/database/blogs";
-import skillDatabase from "@/database/skills";
-import BlogKeysEnum from "@/enums/DatabaseKeysEnums/BlogKeysEnum";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import BlogDatabaseKeys from "@/database/Blogs/BlogDatabaseKeys";
+import blogsDatabaseMap from "@/database/Blogs/BlogsDatabaseMap";
+import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
 import useFuseSearch from "@/hooks/useFuseSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
-import BlogInterface from "@/interfaces/material/BlogInterface";
+import BlogInterface from "@/database/Blogs/BlogInterface";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import { usePathname, useSearchParams } from "next/navigation";
 
@@ -75,11 +75,11 @@ export const BlogsView: React.FC = () => {
   ];
 
   // Use the custom hook to perform the search
-  let filteredBlogsSlugArray: BlogKeysEnum[] = useFuseSearch(
-    blogDatabase,
+  let filteredBlogsSlugArray: BlogDatabaseKeys[] = useFuseSearch(
+    blogsDatabaseMap,
     searchTerm,
     searchOptions
-  ) as BlogKeysEnum[];
+  ) as BlogDatabaseKeys[];
 
   //^ Filtering Logic
   // Filter by blog category
@@ -87,57 +87,57 @@ export const BlogsView: React.FC = () => {
     filteredBlogsSlugArray = filterMaterialByCategory<BlogInterface>(
       stringToSlug(selectedBlogSection),
       filteredBlogsSlugArray,
-      blogDatabase
-    ) as BlogKeysEnum[];
+      blogsDatabaseMap
+    ) as BlogDatabaseKeys[];
   }
 
   // Filter by skill category
   if (selectedSkillCategory !== "all") {
     filteredBlogsSlugArray = filterMaterialBySkillCategory<BlogInterface>(
       filteredBlogsSlugArray,
-      blogDatabase,
+      blogsDatabaseMap,
       stringToSlug(selectedSkillCategory),
-      skillDatabase
-    ) as BlogKeysEnum[];
+      skillDatabaseMap
+    ) as BlogDatabaseKeys[];
   }
 
   // Filter by hard skill
   if (selectedTechnicalSkill !== "all") {
     filteredBlogsSlugArray = filterMaterialBySkill<BlogInterface>(
-      selectedTechnicalSkill as SkillKeysEnum,
+      selectedTechnicalSkill as SkillDatabaseKeys,
       filteredBlogsSlugArray,
-      blogDatabase
-    ) as BlogKeysEnum[];
+      blogsDatabaseMap
+    ) as BlogDatabaseKeys[];
   }
 
   // Filter by general skill
   if (selectedGeneralSkill !== "all") {
     filteredBlogsSlugArray = filterMaterialBySkill<BlogInterface>(
-      selectedGeneralSkill as SkillKeysEnum,
+      selectedGeneralSkill as SkillDatabaseKeys,
       filteredBlogsSlugArray,
-      blogDatabase
-    ) as BlogKeysEnum[];
+      blogsDatabaseMap
+    ) as BlogDatabaseKeys[];
   }
 
   // Filter by soft skill
   if (selectedSoftSkill !== "all") {
     filteredBlogsSlugArray = filterMaterialBySkill<BlogInterface>(
-      selectedSoftSkill as SkillKeysEnum,
+      selectedSoftSkill as SkillDatabaseKeys,
       filteredBlogsSlugArray,
-      blogDatabase
-    ) as BlogKeysEnum[];
+      blogsDatabaseMap
+    ) as BlogDatabaseKeys[];
   }
 
   // Filter by archived status
   filteredBlogsSlugArray = filterMaterialByArchivedStatus<BlogInterface>(
     showArchived,
     filteredBlogsSlugArray,
-    blogDatabase
-  ) as BlogKeysEnum[];
+    blogsDatabaseMap
+  ) as BlogDatabaseKeys[];
 
   const groupedBlogs: MaterialGroupInterface[] = groupMaterialsByCategory(
     filteredBlogsSlugArray,
-    blogDatabase
+    blogsDatabaseMap
   );
 
   const areFiltersApplied: boolean =
@@ -155,15 +155,15 @@ export const BlogsView: React.FC = () => {
       sectionName: "Section",
       urlParam: blogSectionParamName,
       selectedValue: selectedBlogSection,
-      options: generateFilterOptionsByCategory<BlogInterface>(blogDatabase),
+      options: generateFilterOptionsByCategory<BlogInterface>(blogsDatabaseMap),
     },
     {
       sectionName: "Skill Category",
       urlParam: skillCategoryParamName,
       selectedValue: selectedSkillCategory,
       options: generateFilterOptionsBySkillCategories<BlogInterface>(
-        blogDatabase,
-        skillDatabase
+        blogsDatabaseMap,
+        skillDatabaseMap
       ),
     },
     {
@@ -171,8 +171,8 @@ export const BlogsView: React.FC = () => {
       urlParam: technicalSkillParamName,
       selectedValue: selectedTechnicalSkill,
       options: generateFilterOptionsBySkillType<BlogInterface>(
-        blogDatabase,
-        skillDatabase,
+        blogsDatabaseMap,
+        skillDatabaseMap,
         SkillTypesEnum.Technology
       ),
     },
@@ -181,8 +181,8 @@ export const BlogsView: React.FC = () => {
       urlParam: generalSkillParamName,
       selectedValue: selectedGeneralSkill,
       options: generateFilterOptionsBySkillType<BlogInterface>(
-        blogDatabase,
-        skillDatabase,
+        blogsDatabaseMap,
+        skillDatabaseMap,
         SkillTypesEnum.Technical
       ),
     },
@@ -191,8 +191,8 @@ export const BlogsView: React.FC = () => {
       urlParam: softSkillParamName,
       selectedValue: selectedSoftSkill,
       options: generateFilterOptionsBySkillType<BlogInterface>(
-        blogDatabase,
-        skillDatabase,
+        blogsDatabaseMap,
+        skillDatabaseMap,
         SkillTypesEnum.Soft
       ),
     },
@@ -212,7 +212,7 @@ export const BlogsView: React.FC = () => {
         archiveFilter={{
           paramName: archivedParamName,
           showArchived: showArchived,
-          hasArchivedMaterials: checkForArchivedMaterials(blogDatabase),
+          hasArchivedMaterials: checkForArchivedMaterials(blogsDatabaseMap),
         }}
       />
 

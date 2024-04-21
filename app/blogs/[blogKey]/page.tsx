@@ -5,15 +5,13 @@ import MaterialList from "@/components/MaterialLists/MaterialList";
 import Reader from "@/components/Reader/Reader";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import PageDescription from "@/components/UI/PageDescription";
 import developerName from "@/constants/developerName";
 import { BLOG_PAGE } from "@/constants/pages";
-import blogDatabase from "@/database/blogs";
-import certificateDatabase from "@/database/certificates";
-import skillDatabase from "@/database/skills";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import BlogInterface from "@/database/Blogs/BlogInterface";
+import blogsDatabaseMap from "@/database/Blogs/BlogsDatabaseMap";
+import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
-import BlogInterface from "@/interfaces/material/BlogInterface";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
@@ -38,7 +36,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const blogKey: string = params.blogKey;
-  const blog: BlogInterface = blogDatabase[blogKey];
+  const blog: BlogInterface = blogsDatabaseMap[blogKey];
 
   return {
     title: `${developerName} - Blogs: ${blog?.name}`,
@@ -57,7 +55,7 @@ export async function generateMetadata(
  * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
  */
 export const generateStaticParams = async () => {
-  return Object.keys(blogDatabase).map((blogKey) => ({
+  return Object.keys(blogsDatabaseMap).map((blogKey) => ({
     blogKey,
   }));
 };
@@ -74,7 +72,7 @@ export const generateStaticParams = async () => {
 const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
   const blogKey: string = params.blogKey;
   const basePath: string = BLOG_PAGE.path;
-  const blogData: BlogInterface = blogDatabase[blogKey];
+  const blogData: BlogInterface = blogsDatabaseMap[blogKey];
   const blogContent: string | undefined = getMarkdownFromFileSystem(
     `public${basePath}/${blogKey}/blog.md`
   )?.content;
@@ -83,19 +81,19 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
     notFound();
   }
 
-  const technologies: SkillKeysEnum[] = filterSkillsByType(
+  const technologies: SkillDatabaseKeys[] = filterSkillsByType(
     blogData.skills,
-    skillDatabase,
+    skillDatabaseMap,
     SkillTypesEnum.Technology
   );
-  const generalSkills: SkillKeysEnum[] = filterSkillsByType(
+  const generalSkills: SkillDatabaseKeys[] = filterSkillsByType(
     blogData.skills,
-    skillDatabase,
+    skillDatabaseMap,
     SkillTypesEnum.Technical
   );
-  const softSkills: SkillKeysEnum[] = filterSkillsByType(
+  const softSkills: SkillDatabaseKeys[] = filterSkillsByType(
     blogData.skills,
-    skillDatabase,
+    skillDatabaseMap,
     SkillTypesEnum.Soft
   );
 
@@ -103,19 +101,19 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
   const allGroupedSkills: GroupedSkillsCategoriesInterface[] = [
     categoriseAndGroupSkills(
       technologies,
-      skillDatabase,
+      skillDatabaseMap,
       SkillTypesEnum.Technology,
       "Technologies"
     ),
     categoriseAndGroupSkills(
       generalSkills,
-      skillDatabase,
+      skillDatabaseMap,
       SkillTypesEnum.Technical,
       "Technical Skills"
     ),
     categoriseAndGroupSkills(
       softSkills,
-      skillDatabase,
+      skillDatabaseMap,
       SkillTypesEnum.Soft,
       "Soft Skills"
     ),

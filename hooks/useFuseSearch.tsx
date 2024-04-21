@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import Fuse from "fuse.js";
-import MaterialInterface from "@/interfaces/material/MaterialInterface";
+import MaterialInterface from "@/database/Materials/MaterialInterface";
 
 /**
  * Custom hook for performing a fuzzy search using Fuse.js on a hashmap of items.

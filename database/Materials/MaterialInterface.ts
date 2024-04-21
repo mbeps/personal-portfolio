@@ -1,4 +1,4 @@
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 
 /**
  * Interface representing general material.
@@ -15,11 +15,11 @@ import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
  * Importantly, the `skills` field is an array of `SkillKeysEnum` which is used to represent the skills that are associated to understand the material.
  * Because there are different types of skills, they can be categorised dynamically by the codebase; for example, technologies, technical knowledge, and soft skills.
  *
- * @requires {@link SkillKeysEnum} to represent the skills associated with the material
+ * @requires {@link SkillDatabaseKeys} to represent the skills associated with the material
  */
 export default interface MaterialInterface {
   name: string;
-  skills: SkillKeysEnum[];
+  skills: SkillDatabaseKeys[];
   category: string;
   archived?: boolean;
   relatedMaterials?: string[];

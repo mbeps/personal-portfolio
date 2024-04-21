@@ -1,8 +1,8 @@
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import SkillInterface from "@/database/Skills/SkillInterface";
 
 /**
  * Categorise and group skills based on the skill type.
@@ -17,7 +17,7 @@ import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
  * @returns The grouped categories of the filtered skills
  */
 export default function categoriseAndGroupSkills(
-  skillKeys: SkillKeysEnum[],
+  skillKeys: SkillDatabaseKeys[],
   skillsDatabase: Database<SkillInterface>,
   skillType: SkillTypesEnum,
   title: string

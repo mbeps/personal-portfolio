@@ -6,17 +6,17 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
-import materialDatabase from "@/database/material";
-import skillDatabase from "@/database/skills";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import materialDatabaseMap from "@/database/Materials/MaterialDatabaseMap";
+import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
+import SkillInterface from "@/database/Skills/SkillInterface";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import Tag from "./Tag";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 
 interface TagProps {
-  skillKey: SkillKeysEnum;
+  skillKey: SkillDatabaseKeys;
   hide?: boolean;
 }
 
@@ -31,11 +31,11 @@ interface TagProps {
  */
 const SkillTag: React.FC<TagProps> = ({ skillKey, hide }) => {
   const currentPath: string = usePathname();
-  const skill: SkillInterface = skillDatabase[skillKey];
+  const skill: SkillInterface = skillDatabaseMap[skillKey];
 
   const hasMaterial: ConstrainBoolean = isSkillAssociatedWithMaterial(
     skillKey,
-    materialDatabase
+    materialDatabaseMap
   );
 
   if (hide || !skill) {

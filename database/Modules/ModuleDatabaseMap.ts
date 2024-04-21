@@ -1,33 +1,33 @@
 import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
-import ProjectKeysEnum from "@/enums/DatabaseKeysEnums/ProjectKeysEnum";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
-import UniversityModuleKeysEnum from "@/enums/DatabaseKeysEnums/UniversityModuleKeysEnum";
+import ProjectDatabaseKeys from "@/database/Projects/ProjectDatabaseKeys";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
 import ModuleYearGroupsEnum from "@/enums/ModuleYearGroupsEnum";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
-import UniversityModuleInterface from "@/interfaces/material/UniversityModuleInterface";
-import skillDatabase from "./skills";
-import UniversityCourseKeysEnum from "@/enums/DatabaseKeysEnums/UniversityCourseKeysEnum";
+import ModuleInterface from "@/database/Modules/ModuleInterface";
+import skillDatabaseMap from "../Skills/SkillDatabaseMap";
+import CourseDatabaseKeys from "@/database/Courses/CourseDatabaseKeys";
 
 /**
  * Hashmap of the modules I have studied at university.
- * The keys are defined in {@link UniversityModuleKeysEnum}.
+ * The keys are defined in {@link ModuleDatabaseKeys}.
  * The order of the modules is the order that will be used to display them.
  */
-const modulesMap: Database<UniversityModuleInterface> = {
+const modulesMap: Database<ModuleInterface> = {
   //^ Royal Holloway University of London
   //* Year 1
-  [UniversityModuleKeysEnum.RHUL_ObjectOrientedProgramming1]: {
+  [ModuleDatabaseKeys.RHUL_ObjectOrientedProgramming1]: {
     name: "Object Oriented Programming 1",
     category: ModuleYearGroupsEnum.Year1,
     skills: [
-      SkillKeysEnum.Java,
-      SkillKeysEnum.ObjectOrientedProgramming,
-      SkillKeysEnum.DataStructures,
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.DataStructures,
     ],
     relatedMaterials: [
-      ProjectKeysEnum.TrackAndTraceAssignment,
-      ProjectKeysEnum.HollomonAssignment,
+      ProjectDatabaseKeys.TrackAndTraceAssignment,
+      ProjectDatabaseKeys.HollomonAssignment,
     ],
     learningOutcomes: [
       "Introducing basic concepts of computer programming",
@@ -42,20 +42,20 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Solving challenging problems using linked lists",
       "Preparing for final in-class test and exercise class",
     ],
-    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
+    parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
-  [UniversityModuleKeysEnum.RHUL_ObjectOrientedProgramming2]: {
+  [ModuleDatabaseKeys.RHUL_ObjectOrientedProgramming2]: {
     name: "Object Oriented Programming 2",
     category: ModuleYearGroupsEnum.Year1,
     skills: [
-      SkillKeysEnum.Java,
-      SkillKeysEnum.ObjectOrientedProgramming,
-      SkillKeysEnum.DataStructures,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.TimeManagement,
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.DataStructures,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.TimeManagement,
     ],
-    relatedMaterials: [ProjectKeysEnum.BotanicGardenPlannerAssignment],
+    relatedMaterials: [ProjectDatabaseKeys.BotanicGardenPlannerAssignment],
     learningOutcomes: [
       "Exploring enumerated types and recursion in Java",
       "Defining recursive data types and handling exceptions",
@@ -71,26 +71,26 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Applying knowledge of streams, inheritance, sorting, and Java in a practical assignment",
       "Understanding threads and concurrency in Java",
     ],
-    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
+    parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
-  [UniversityModuleKeysEnum.RHUL_ProgrammingLaboratory]: {
+  [ModuleDatabaseKeys.RHUL_ProgrammingLaboratory]: {
     name: "Programming Laboratory",
     category: ModuleYearGroupsEnum.Year1,
     skills: [
-      SkillKeysEnum.Python,
-      SkillKeysEnum.SimpleGUI,
-      SkillKeysEnum.ObjectOrientedProgramming,
-      SkillKeysEnum.DataStructures,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.Leadership,
-      SkillKeysEnum.Communication,
-      SkillKeysEnum.ProjectManagement,
-      SkillKeysEnum.TimeManagement,
-      SkillKeysEnum.Creativity,
-      SkillKeysEnum.Adaptability,
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.SimpleGUI,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.DataStructures,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Leadership,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
     ],
-    relatedMaterials: [ProjectKeysEnum.OsmosGame],
+    relatedMaterials: [ProjectDatabaseKeys.OsmosGame],
     learningOutcomes: [
       "Understanding computational thinking and basic coding",
       "Translating problem-solving thoughts into precise instructions for computers",
@@ -103,18 +103,18 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Working effectively in programming teams",
       "Preparing for group projects and understanding the requirements for games projects",
     ],
-    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
+    parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
-  [UniversityModuleKeysEnum.RHUL_InternetServices]: {
+  [ModuleDatabaseKeys.RHUL_InternetServices]: {
     name: "Internet Services",
     category: ModuleYearGroupsEnum.Year1,
     skills: [
-      SkillKeysEnum.HTML,
-      SkillKeysEnum.CSS,
-      SkillKeysEnum.JavaScript,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.TimeManagement,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.CSS,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.TimeManagement,
     ],
     learningOutcomes: [
       "Understanding the organization and components of the course",
@@ -132,17 +132,17 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Beginning the study of network security",
     ],
     archived: true,
-    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
+    parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
-  [UniversityModuleKeysEnum.RHUL_MathematicalStructures]: {
+  [ModuleDatabaseKeys.RHUL_MathematicalStructures]: {
     name: "Mathematical Structures (Discrete Mathematics)",
     category: ModuleYearGroupsEnum.Year1,
     skills: [
-      SkillKeysEnum.Mathematics,
-      SkillKeysEnum.Discrete,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.TimeManagement,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.Discrete,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.TimeManagement,
     ],
     learningOutcomes: [
       "Understanding the importance of Mathematical Structures for Computer Science",
@@ -158,17 +158,17 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Calculating mean and variance of a random variable",
       "Studying geometric distribution",
     ],
-    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
+    parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
-  [UniversityModuleKeysEnum.RHUL_MachineFundamentals]: {
+  [ModuleDatabaseKeys.RHUL_MachineFundamentals]: {
     name: "Machine Fundamentals",
     category: ModuleYearGroupsEnum.Year1,
     skills: [
-      SkillKeysEnum.Mathematics,
-      SkillKeysEnum.Logics,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.TimeManagement,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.Logics,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.TimeManagement,
     ],
     learningOutcomes: [
       "Understanding the representation of numbers inside a computer",
@@ -187,20 +187,20 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Studying pushdown automata and Turing machines",
     ],
     archived: true,
-    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
+    parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
-  [UniversityModuleKeysEnum.RHUL_SoftwareDesign]: {
+  [ModuleDatabaseKeys.RHUL_SoftwareDesign]: {
     name: "Software Design",
     category: ModuleYearGroupsEnum.Year1,
     skills: [
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.Leadership,
-      SkillKeysEnum.Communication,
-      SkillKeysEnum.ProjectManagement,
-      SkillKeysEnum.TimeManagement,
-      SkillKeysEnum.Creativity,
-      SkillKeysEnum.Adaptability,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Leadership,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
     ],
     learningOutcomes: [
       "Understanding the fundamentals of Software Engineering, including key concepts, activities, and the characteristics of good software.",
@@ -211,26 +211,26 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Participating in lab sessions to apply theoretical knowledge in practical scenarios, focusing on Coursework 2 and task planning.",
       "Reflecting on learned concepts and applying them to real-world scenarios, particularly in software task analysis and planning, to prepare for the final summative quiz.",
     ],
-    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
+    parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
 
   //* Year 2
-  [UniversityModuleKeysEnum.RHUL_SoftwareEngineering]: {
+  [ModuleDatabaseKeys.RHUL_SoftwareEngineering]: {
     name: "Software Engineering",
     category: ModuleYearGroupsEnum.Year2,
     skills: [
-      SkillKeysEnum.Java,
-      SkillKeysEnum.JUnit,
-      SkillKeysEnum.ObjectOrientedProgramming,
-      SkillKeysEnum.DesignPatterns,
-      SkillKeysEnum.VersionControlSystems,
-      SkillKeysEnum.DevOps,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.Communication,
-      SkillKeysEnum.ProjectManagement,
-      SkillKeysEnum.TimeManagement,
-      SkillKeysEnum.Adaptability,
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.JUnit,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.DesignPatterns,
+      SkillDatabaseKeys.VersionControlSystems,
+      SkillDatabaseKeys.DevOps,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.Adaptability,
     ],
     learningOutcomes: [
       "Tracing the evolution of software engineering from traditional practices to modern Agile methodologies",
@@ -248,32 +248,32 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Comparing and contrasting Agile and Waterfall methodologies to determine their applicability in different software development scenarios",
       "Practicing SCRUM and other Agile techniques to enhance team collaboration and project management in software development",
     ],
-    relatedMaterials: [ProjectKeysEnum.JavaCalculatorAssignment],
-    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
+    relatedMaterials: [ProjectDatabaseKeys.JavaCalculatorAssignment],
+    parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
-  [UniversityModuleKeysEnum.RHUL_TeamProject]: {
+  [ModuleDatabaseKeys.RHUL_TeamProject]: {
     name: "Team Project",
     category: ModuleYearGroupsEnum.Year2,
     skills: [
-      SkillKeysEnum.TypeScript,
-      SkillKeysEnum.Prisma,
-      SkillKeysEnum.NextAuth,
-      SkillKeysEnum.NextJS,
-      SkillKeysEnum.ReactJS,
-      SkillKeysEnum.GraphQL,
-      SkillKeysEnum.Apollo,
-      SkillKeysEnum.Leadership,
-      SkillKeysEnum.ObjectOrientedProgramming,
-      SkillKeysEnum.DesignPatterns,
-      SkillKeysEnum.VersionControlSystems,
-      SkillKeysEnum.DevOps,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.Teamwork,
-      SkillKeysEnum.Communication,
-      SkillKeysEnum.ProjectManagement,
-      SkillKeysEnum.TimeManagement,
-      SkillKeysEnum.Adaptability,
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.Prisma,
+      SkillDatabaseKeys.NextAuth,
+      SkillDatabaseKeys.NextJS,
+      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.GraphQL,
+      SkillDatabaseKeys.Apollo,
+      SkillDatabaseKeys.Leadership,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.DesignPatterns,
+      SkillDatabaseKeys.VersionControlSystems,
+      SkillDatabaseKeys.DevOps,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.Adaptability,
     ],
     learningOutcomes: [
       "Understanding the basics and historical context of Software Engineering",
@@ -290,17 +290,17 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Analyzing real-world case studies to understand the application of ethical principles and professional standards in software engineering",
       "Gaining in-depth knowledge of Function Point Analysis, including methodologies, applications, and its historical context",
     ],
-    relatedMaterials: [ProjectKeysEnum.Noodle],
-    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
+    relatedMaterials: [ProjectDatabaseKeys.Noodle],
+    parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
-  [UniversityModuleKeysEnum.RHUL_OperatingSystems]: {
+  [ModuleDatabaseKeys.RHUL_OperatingSystems]: {
     name: "Operating Systems",
     category: ModuleYearGroupsEnum.Year2,
     skills: [
-      SkillKeysEnum.C,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.TimeManagement,
+      SkillDatabaseKeys.C,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.TimeManagement,
     ],
     learningOutcomes: [
       "Understanding the basic components of an Operating System (OS) and their management",
@@ -329,21 +329,21 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Creating a dynamic doubly-linked list in C to simulate virtual memory management in an OS",
     ],
     archived: true,
-    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
+    parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
-  [UniversityModuleKeysEnum.RHUL_Databases]: {
+  [ModuleDatabaseKeys.RHUL_Databases]: {
     name: "Databases",
     category: ModuleYearGroupsEnum.Year2,
     skills: [
-      SkillKeysEnum.RelationalDatabases,
-      SkillKeysEnum.Normalisation,
-      SkillKeysEnum.DatabaseIndexing,
-      SkillKeysEnum.PostgreSQL,
-      SkillKeysEnum.Java,
-      SkillKeysEnum.DatabaseManagementSystems,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.TimeManagement,
+      SkillDatabaseKeys.RelationalDatabases,
+      SkillDatabaseKeys.Normalisation,
+      SkillDatabaseKeys.DatabaseIndexing,
+      SkillDatabaseKeys.PostgreSQL,
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.TimeManagement,
     ],
     learningOutcomes: [
       "Understanding the logistics, overview, examples, and history of databases",
@@ -355,18 +355,18 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Understanding JDBC",
       "Learning normalisation theory",
     ],
-    relatedMaterials: [ProjectKeysEnum.DatabasesMiniProject],
-    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
+    relatedMaterials: [ProjectDatabaseKeys.DatabasesMiniProject],
+    parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
-  [UniversityModuleKeysEnum.RHUL_AlgorithmsAndComplexity]: {
+  [ModuleDatabaseKeys.RHUL_AlgorithmsAndComplexity]: {
     name: "Algorithms and Complexity",
     category: ModuleYearGroupsEnum.Year2,
     skills: [
-      SkillKeysEnum.Algorithms,
-      SkillKeysEnum.Java,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.TimeManagement,
+      SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.TimeManagement,
     ],
     learningOutcomes: [
       "Understanding fundamental algorithms, including sorting and searching",
@@ -383,19 +383,19 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Studying advanced graph algorithm topics, such as handling distances with negative weights and the Floyd-Warshall algorithm",
       "Investigating graph coloring and its algorithmic implementations",
     ],
-    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
+    parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
-  [UniversityModuleKeysEnum.RHUL_MultidimensionalDataProcessing]: {
+  [ModuleDatabaseKeys.RHUL_MultidimensionalDataProcessing]: {
     name: "Multidimensional Data Processing (Linear Algebra)",
     category: ModuleYearGroupsEnum.Year2,
     skills: [
-      SkillKeysEnum.LinearAlgebra,
-      SkillKeysEnum.Python,
-      SkillKeysEnum.NumPy,
-      SkillKeysEnum.Matplotlib,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.TimeManagement,
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.NumPy,
+      SkillDatabaseKeys.Matplotlib,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.TimeManagement,
     ],
     learningOutcomes: [
       "Understanding the introduction and background of multidimensional data processing",
@@ -409,18 +409,18 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Understanding the introduction of principal components analysis (PCA)",
       "Learning about PCA and SVD, applications",
     ],
-    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
+    parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
-  [UniversityModuleKeysEnum.RHUL_ArtificialIntelligence]: {
+  [ModuleDatabaseKeys.RHUL_ArtificialIntelligence]: {
     name: "Artificial Intelligence",
     category: ModuleYearGroupsEnum.Year2,
     skills: [
-      SkillKeysEnum.ArtificialIntelligence,
-      SkillKeysEnum.Algorithms,
-      SkillKeysEnum.Logics,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.TimeManagement,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.Logics,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.TimeManagement,
     ],
     learningOutcomes: [
       "Understanding the foundational concepts of AI and its historical background",
@@ -438,18 +438,18 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Mastering SWI-Prolog for implementing AI solutions and completing course-related tasks",
       "Engaging with coursework to apply theoretical concepts in practical scenarios, receiving feedback to enhance learning",
     ],
-    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
+    parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
-  [UniversityModuleKeysEnum.RHUL_IntroductionToInformationSecurity]: {
+  [ModuleDatabaseKeys.RHUL_IntroductionToInformationSecurity]: {
     name: "Introduction to Information Security",
     category: ModuleYearGroupsEnum.Year2,
     skills: [
-      SkillKeysEnum.CyberSecurity,
-      SkillKeysEnum.Cryptography,
-      SkillKeysEnum.Mathematics,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.TimeManagement,
+      SkillDatabaseKeys.CyberSecurity,
+      SkillDatabaseKeys.Cryptography,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.TimeManagement,
     ],
     learningOutcomes: [
       "Understanding basic concepts of information security and the historical perspective of classical cryptography",
@@ -465,22 +465,22 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Continuing with network security, including detailed discussions on firewall types, intrusion detection systems, and IPsec for virtual private networks",
     ],
     archived: true,
-    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
+    parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
 
   //* Year 3
-  [UniversityModuleKeysEnum.RHUL_UserCentredDesign]: {
+  [ModuleDatabaseKeys.RHUL_UserCentredDesign]: {
     name: "User Centred Design",
     category: ModuleYearGroupsEnum.Year3,
     skills: [
-      SkillKeysEnum.UserCentricDesign,
-      SkillKeysEnum.Teamwork,
-      SkillKeysEnum.Communication,
-      SkillKeysEnum.Creativity,
-      SkillKeysEnum.QualityManagement,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.TimeManagement,
+      SkillDatabaseKeys.UserCentricDesign,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.QualityManagement,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.TimeManagement,
     ],
     learningOutcomes: [
       "Understanding the principles and importance of User-Centred Design (UCD)",
@@ -504,24 +504,24 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Gaining insights from industry alumni on practical applications of UX principles",
       "Understanding the UX industry landscape and employability skills through expert sessions",
     ],
-    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
+    parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
-  [UniversityModuleKeysEnum.RHUL_ITProjectManagement]: {
+  [ModuleDatabaseKeys.RHUL_ITProjectManagement]: {
     name: "IT Project Management",
     category: ModuleYearGroupsEnum.Year3,
     skills: [
-      SkillKeysEnum.ProjectManagement,
-      SkillKeysEnum.Communication,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.TimeManagement,
-      SkillKeysEnum.RiskManagement,
-      SkillKeysEnum.StakeholderManagement,
-      SkillKeysEnum.ScopeManagement,
-      SkillKeysEnum.CostManagement,
-      SkillKeysEnum.QualityManagement,
-      SkillKeysEnum.ProcurementManagement,
-      SkillKeysEnum.IntegrationManagement,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.RiskManagement,
+      SkillDatabaseKeys.StakeholderManagement,
+      SkillDatabaseKeys.ScopeManagement,
+      SkillDatabaseKeys.CostManagement,
+      SkillDatabaseKeys.QualityManagement,
+      SkillDatabaseKeys.ProcurementManagement,
+      SkillDatabaseKeys.IntegrationManagement,
     ],
     learningOutcomes: [
       "Understanding what constitutes a project, its lifecycle, and key characteristics",
@@ -546,18 +546,18 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Gaining insight into the necessary skills, job market outlook for project managers, and the relevant code of ethics",
     ],
     archived: true,
-    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
+    parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
-  [UniversityModuleKeysEnum.RHUL_FunctionalProgramming]: {
+  [ModuleDatabaseKeys.RHUL_FunctionalProgramming]: {
     name: "Functional Programming",
     category: ModuleYearGroupsEnum.Year3,
     skills: [
-      SkillKeysEnum.Haskell,
-      SkillKeysEnum.Scala,
-      SkillKeysEnum.FunctionalProgramming,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.TimeManagement,
+      SkillDatabaseKeys.Haskell,
+      SkillDatabaseKeys.Scala,
+      SkillDatabaseKeys.FunctionalProgramming,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.TimeManagement,
     ],
     learningOutcomes: [
       "Understanding the history and development of functional programming",
@@ -576,51 +576,51 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Understanding lazy evaluation in Haskell",
       "Exploring advanced topics in functional programming, including advanced type systems",
     ],
-    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
+    parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
-  [UniversityModuleKeysEnum.RHUL_FinalYearProject]: {
+  [ModuleDatabaseKeys.RHUL_FinalYearProject]: {
     name: "Final Year Project (Web Development)",
     category: ModuleYearGroupsEnum.Year3,
     skills: [
-      SkillKeysEnum.TypeScript,
-      SkillKeysEnum.JavaScript,
-      SkillKeysEnum.NextJS,
-      SkillKeysEnum.ReactJS,
-      SkillKeysEnum.ChakraUI,
-      SkillKeysEnum.Firebase,
-      SkillKeysEnum.Recoil,
-      SkillKeysEnum.Docker,
-      SkillKeysEnum.GitHubActions,
-      SkillKeysEnum.GitHub,
-      SkillKeysEnum.GCP,
-      SkillKeysEnum.Git,
-      SkillKeysEnum.HTML,
-      SkillKeysEnum.CSS,
-      SkillKeysEnum.Yarn,
-      SkillKeysEnum.ESLint,
-      SkillKeysEnum.Prettier,
-      SkillKeysEnum.Python,
-      SkillKeysEnum.SQLAlchemy,
-      SkillKeysEnum.Flask,
-      SkillKeysEnum.RelationalDatabases,
-      SkillKeysEnum.Normalisation,
-      SkillKeysEnum.DatabaseIndexing,
-      SkillKeysEnum.Poetry,
-      SkillKeysEnum.REST,
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJS,
+      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.ChakraUI,
+      SkillDatabaseKeys.Firebase,
+      SkillDatabaseKeys.Recoil,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.GitHubActions,
+      SkillDatabaseKeys.GitHub,
+      SkillDatabaseKeys.GCP,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.CSS,
+      SkillDatabaseKeys.Yarn,
+      SkillDatabaseKeys.ESLint,
+      SkillDatabaseKeys.Prettier,
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.SQLAlchemy,
+      SkillDatabaseKeys.Flask,
+      SkillDatabaseKeys.RelationalDatabases,
+      SkillDatabaseKeys.Normalisation,
+      SkillDatabaseKeys.DatabaseIndexing,
+      SkillDatabaseKeys.Poetry,
+      SkillDatabaseKeys.REST,
 
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.ProjectManagement,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.Creativity,
-      SkillKeysEnum.Adaptability,
-      SkillKeysEnum.TimeManagement,
-      SkillKeysEnum.ScopeManagement,
-      SkillKeysEnum.StakeholderManagement,
-      SkillKeysEnum.Communication,
-      SkillKeysEnum.RiskManagement,
-      SkillKeysEnum.ObjectOrientedProgramming,
-      SkillKeysEnum.DesignPatterns,
-      SkillKeysEnum.Algorithms,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.ScopeManagement,
+      SkillDatabaseKeys.StakeholderManagement,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.RiskManagement,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.DesignPatterns,
+      SkillDatabaseKeys.Algorithms,
     ],
     learningOutcomes: [
       "Designing and implementing a full-stack web application realizing an online service",
@@ -638,26 +638,26 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Exploring the use of emerging platforms such as blockchain in web development",
     ],
     relatedMaterials: [
-      ProjectKeysEnum.CircusDiscussions,
-      ProjectKeysEnum.FlaskForumBackend,
+      ProjectDatabaseKeys.CircusDiscussions,
+      ProjectDatabaseKeys.FlaskForumBackend,
     ],
-    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
+    parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
-  [UniversityModuleKeysEnum.RHUL_MachineLearning]: {
+  [ModuleDatabaseKeys.RHUL_MachineLearning]: {
     name: "Machine Learning",
     category: ModuleYearGroupsEnum.Year3,
     skills: [
-      SkillKeysEnum.Python,
-      SkillKeysEnum.MachineLearning,
-      SkillKeysEnum.ScikitLearn,
-      SkillKeysEnum.NumPy,
-      SkillKeysEnum.Matplotlib,
-      SkillKeysEnum.Jupyter,
-      SkillKeysEnum.Algorithms,
-      SkillKeysEnum.Algebra,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.TimeManagement,
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.ScikitLearn,
+      SkillDatabaseKeys.NumPy,
+      SkillDatabaseKeys.Matplotlib,
+      SkillDatabaseKeys.Jupyter,
+      SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.Algebra,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.TimeManagement,
     ],
     learningOutcomes: [
       "Understanding the fundamental concepts of Machine Learning",
@@ -675,27 +675,27 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Studying cross-conformal predictors and their efficiency",
       "Gaining a broad understanding of various prediction algorithms in Machine Learning",
     ],
-    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
+    parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
     relatedMaterials: [
-      ProjectKeysEnum.MachineLearningAssignment1,
-      ProjectKeysEnum.MachineLearningAssignment2,
-      ProjectKeysEnum.MachineLearningAssignment3,
-      ProjectKeysEnum.MachineLearningLabQuestions,
-      ProjectKeysEnum.MachineLearningTheoryPractice,
+      ProjectDatabaseKeys.MachineLearningAssignment1,
+      ProjectDatabaseKeys.MachineLearningAssignment2,
+      ProjectDatabaseKeys.MachineLearningAssignment3,
+      ProjectDatabaseKeys.MachineLearningLabQuestions,
+      ProjectDatabaseKeys.MachineLearningTheoryPractice,
     ],
   },
-  [UniversityModuleKeysEnum.RHUL_ComputationalFinance]: {
+  [ModuleDatabaseKeys.RHUL_ComputationalFinance]: {
     name: "Computational Finance",
     category: ModuleYearGroupsEnum.Year3,
     skills: [
-      SkillKeysEnum.Python,
-      SkillKeysEnum.Probability,
-      SkillKeysEnum.Statistics,
-      SkillKeysEnum.Calculus,
-      SkillKeysEnum.Mechanics,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.TimeManagement,
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.Probability,
+      SkillDatabaseKeys.Statistics,
+      SkillDatabaseKeys.Calculus,
+      SkillDatabaseKeys.Mechanics,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.TimeManagement,
     ],
     learningOutcomes: [
       "Understanding the main functions of the financial system and the role of this module within it",
@@ -716,18 +716,18 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Discussing the applicability and limitations of financial models in the real-world context",
       "Exploring market efficiency hypotheses and current trends in finance",
     ],
-    relatedMaterials: [ProjectKeysEnum.ComputationalFinanceAssignment],
-    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
+    relatedMaterials: [ProjectDatabaseKeys.ComputationalFinanceAssignment],
+    parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
-  [UniversityModuleKeysEnum.RHUL_SecurityManagement]: {
+  [ModuleDatabaseKeys.RHUL_SecurityManagement]: {
     name: "Security Management",
     category: ModuleYearGroupsEnum.Year3,
     skills: [
-      SkillKeysEnum.CyberSecurity,
-      SkillKeysEnum.ProblemSolving,
-      SkillKeysEnum.CriticalThinking,
-      SkillKeysEnum.TimeManagement,
-      SkillKeysEnum.RiskManagement,
+      SkillDatabaseKeys.CyberSecurity,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.RiskManagement,
     ],
     learningOutcomes: [
       "Understanding the fundamental concepts of information security",
@@ -741,20 +741,20 @@ const modulesMap: Database<UniversityModuleInterface> = {
       "Reviewing and revising the concepts learned throughout the module",
     ],
     archived: true,
-    parentCourse: UniversityCourseKeysEnum.RHUL_ComputerScience,
+    parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
 };
 
 /**
  * List of all module keys that can uniquely identify each module.
  */
-export const moduleKeys: UniversityModuleKeysEnum[] = Object.keys(
+export const moduleDatabaseKeys: ModuleDatabaseKeys[] = Object.keys(
   modulesMap
-) as UniversityModuleKeysEnum[];
+) as ModuleDatabaseKeys[];
 
 /**
  * Hashmap of the modules I have studied at university.
- * The keys are defined in {@link UniversityModuleKeysEnum}.
+ * The keys are defined in {@link ModuleDatabaseKeys}.
  * The order of the modules is the order that will be used to display them.
  *
  * There are certain sub-skills for the skills that are directly listed under the skill objects within this hashmap.
@@ -762,13 +762,13 @@ export const moduleKeys: UniversityModuleKeysEnum[] = Object.keys(
  * These sub-skills are specifically general skills related to the technologies but are not part of programming languages.
  * Programming languages have many sub-skills that are not directly related to the blogs above.
  */
-const moduleDatabase: Database<UniversityModuleInterface> =
-  addNestedSkillsMaterialList<UniversityModuleInterface>(
+const moduleDatabaseMap: Database<ModuleInterface> =
+  addNestedSkillsMaterialList<ModuleInterface>(
     modulesMap,
-    skillDatabase,
+    skillDatabaseMap,
     [SkillCategoriesEnum.ProgrammingLanguages],
     SkillTypesEnum.Technical,
     SkillTypesEnum.Technology
   );
 
-export default moduleDatabase;
+export default moduleDatabaseMap;

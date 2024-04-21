@@ -6,7 +6,7 @@
  *
  * @see {@link universityModuleMap} at `database/university-modules.ts`
  */
-enum UniversityModuleKeysEnum {
+enum ModuleDatabaseKeys {
   RHUL_ObjectOrientedProgramming1 = "CS1811",
   RHUL_ObjectOrientedProgramming2 = "CS1812",
   RHUL_ProgrammingLaboratory = "CS1822",
@@ -31,4 +31,4 @@ enum UniversityModuleKeysEnum {
   RHUL_SecurityManagement = "IY3501",
 }
 
-export default UniversityModuleKeysEnum;
+export default ModuleDatabaseKeys;

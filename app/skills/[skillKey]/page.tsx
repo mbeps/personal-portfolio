@@ -2,16 +2,20 @@ import filterMaterialBySkill from "@/actions/material/filter/filterMaterialBySki
 import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/UI/PageDescription";
 import developerName from "@/constants/developerName";
-import materialDatabase, { materialKeys } from "@/database/material";
-import skillDatabase, { skillKeys } from "@/database/skills";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
-import SkillInterface from "@/interfaces/skills/SkillInterface";
+import skillDatabaseMap, {
+  skillDatabaseKeys,
+} from "@/database/Skills/SkillDatabaseMap";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import SkillInterface from "@/database/Skills/SkillInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import React from "react";
 import RelatedSkillsSection from "./components/RelatedSkillsSection";
 import MaterialList from "@/components/MaterialLists/MaterialList";
 import HeadingTwo from "@/components/Text/HeadingTwo";
+import materialDatabaseMap, {
+  materialKeys,
+} from "@/database/Materials/MaterialDatabaseMap";
 
 /**
  * Generates the metadata for the skill page.
@@ -29,7 +33,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const skillKey: string = params.skillKey;
   const skill: SkillInterface | undefined =
-    skillDatabase[skillKey as SkillKeysEnum];
+    skillDatabaseMap[skillKey as SkillDatabaseKeys];
 
   if (!skill) {
     notFound();
@@ -51,7 +55,7 @@ export async function generateMetadata(
  * @see https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration
  */
 export const generateStaticParams = async () => {
-  return skillKeys.map((skillKey) => ({ skillKey }));
+  return skillDatabaseKeys.map((skillKey) => ({ skillKey }));
 };
 
 interface ProjectPageProps {
@@ -68,16 +72,17 @@ interface ProjectPageProps {
  */
 const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
   const skillKey: string = params.skillKey;
-  const skillData: SkillInterface = skillDatabase[skillKey as SkillKeysEnum];
+  const skillData: SkillInterface =
+    skillDatabaseMap[skillKey as SkillDatabaseKeys];
 
   if (!skillData) {
     notFound();
   }
 
   const filteredMaterials: string[] = filterMaterialBySkill(
-    skillKey as SkillKeysEnum,
+    skillKey as SkillDatabaseKeys,
     materialKeys,
-    materialDatabase
+    materialDatabaseMap
   );
 
   return (
@@ -96,7 +101,7 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
       <MaterialList materialKeys={filteredMaterials} isCollapsible={false} />
 
       {/* Skills Section */}
-      <RelatedSkillsSection skillKey={skillKey as SkillKeysEnum} />
+      <RelatedSkillsSection skillKey={skillKey as SkillDatabaseKeys} />
     </div>
   );
 };

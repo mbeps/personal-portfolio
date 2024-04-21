@@ -1,6 +1,6 @@
 import stringToSlug from "@/actions/stringToSlug";
 import FilterOption from "@/interfaces/filters/FilterOption";
-import CertificateInterface from "@/interfaces/material/CertificateInterface";
+import CertificateInterface from "@/database/Certificates/CertificateInterface";
 
 /**
  * Generates the filter options based on the issuers of the certificates.

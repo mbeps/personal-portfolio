@@ -16,12 +16,9 @@ import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
 import { PROJECTS_PAGE } from "@/constants/pages";
-import projectDatabase from "@/database/projects";
-import skillDatabase from "@/database/skills";
-import SkillKeysEnum from "@/enums/DatabaseKeysEnums/SkillKeysEnum";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import SkillCategoriesEnum from "@/enums/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/SkillTypesEnum";
-import ProjectInterface from "@/interfaces/material/ProjectInterface";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
@@ -30,6 +27,9 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import TabbedReader from "./components/TabbedReader";
+import projectDatabaseMap from "@/database/Projects/ProjectDatabaseMap";
+import ProjectInterface from "@/database/Projects/ProjectInterface";
+import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 
 /**
  * Generates the metadata for the project page.
@@ -49,7 +49,7 @@ export async function generateMetadata(
   const projectKey: string = params.projectKey;
 
   // Assume getProjectBySlug function fetches project by slug
-  const project: ProjectInterface = projectDatabase[projectKey];
+  const project: ProjectInterface = projectDatabaseMap[projectKey];
 
   // Create metadata based on the project details
   return {
@@ -68,7 +68,7 @@ export async function generateMetadata(
  * @see https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration
  */
 export const generateStaticParams = async () => {
-  return Object.keys(projectDatabase).map((projectKey) => ({
+  return Object.keys(projectDatabaseMap).map((projectKey) => ({
     projectKey,
   }));
 };
@@ -93,7 +93,7 @@ interface ProjectPageProps {
 const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const projectKey: string = params.projectKey;
   const basePath: string = PROJECTS_PAGE.path;
-  const projectData: ProjectInterface = projectDatabase[projectKey];
+  const projectData: ProjectInterface = projectDatabaseMap[projectKey];
 
   // redirect to not found page if the project is not valid
   if (!projectData) {
@@ -103,32 +103,32 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const hasCoverImage: boolean = projectData.thumbnailImage !== undefined;
   const coverImagePath: string = `${basePath}/${projectKey}/cover.png`;
 
-  const projectLanguages: SkillKeysEnum[] = filterSkillsByCategory(
+  const projectLanguages: SkillDatabaseKeys[] = filterSkillsByCategory(
     projectData.skills,
-    skillDatabase,
+    skillDatabaseMap,
     SkillCategoriesEnum.ProgrammingLanguages
   );
 
-  const projectSkillsWithoutLanguage: SkillKeysEnum[] =
+  const projectSkillsWithoutLanguage: SkillDatabaseKeys[] =
     filterSkillSlugsExcludingCategory(
       projectData.skills,
-      skillDatabase,
+      skillDatabaseMap,
       SkillCategoriesEnum.ProgrammingLanguages
     );
 
-  const technologies: SkillKeysEnum[] = filterSkillsByType(
+  const technologies: SkillDatabaseKeys[] = filterSkillsByType(
     projectSkillsWithoutLanguage,
-    skillDatabase,
+    skillDatabaseMap,
     SkillTypesEnum.Technology
   );
-  const generalSkills: SkillKeysEnum[] = filterSkillsByType(
+  const generalSkills: SkillDatabaseKeys[] = filterSkillsByType(
     projectSkillsWithoutLanguage,
-    skillDatabase,
+    skillDatabaseMap,
     SkillTypesEnum.Technical
   );
-  const softSkills: SkillKeysEnum[] = filterSkillsByType(
+  const softSkills: SkillDatabaseKeys[] = filterSkillsByType(
     projectSkillsWithoutLanguage,
-    skillDatabase,
+    skillDatabaseMap,
     SkillTypesEnum.Soft
   );
 
@@ -136,19 +136,19 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const allGroupedSkills: GroupedSkillsCategoriesInterface[] = [
     categoriseAndGroupSkills(
       technologies,
-      skillDatabase,
+      skillDatabaseMap,
       SkillTypesEnum.Technology,
       "Technologies"
     ),
     categoriseAndGroupSkills(
       generalSkills,
-      skillDatabase,
+      skillDatabaseMap,
       SkillTypesEnum.Technical,
       "Technical Skills"
     ),
     categoriseAndGroupSkills(
       softSkills,
-      skillDatabase,
+      skillDatabaseMap,
       SkillTypesEnum.Soft,
       "Soft Skills"
     ),
