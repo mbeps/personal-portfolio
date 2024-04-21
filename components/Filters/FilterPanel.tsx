@@ -107,7 +107,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
           mt-auto 
           h-full
           w-full shadow-lg md:rounded-lg 
-          border-2
+          border
           border-neutral-200 dark:border-neutral-800
           bg-neutral-100 dark:bg-black 
           transition-all duration-700 ease-in-out"
