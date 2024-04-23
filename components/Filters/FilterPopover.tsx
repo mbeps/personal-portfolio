@@ -61,9 +61,11 @@ const FilterPopover: React.FC<FilterPopover> = ({
           role="combobox"
           onClick={() => setOpen(!isOpen)}
           className="
+            border-2 border-neutral-200 dark:border-neutral-700
+            shadow-sm
             w-[24rem] md:w-[22rem]
             justify-between 
-            bg-neutral-200"
+            bg-neutral-100"
         >
           <span>{filterCategory.sectionName}</span>
 

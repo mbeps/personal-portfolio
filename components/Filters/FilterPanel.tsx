@@ -106,17 +106,17 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
         className="
           mt-auto 
           h-full
-          w-full shadow-lg md:rounded-lg 
+          w-full shadow-lg md:rounded-xl 
           border
           border-neutral-200 dark:border-neutral-800
-          bg-neutral-100 dark:bg-black 
+          bg-neutral-50 dark:bg-black 
           transition-all duration-700 ease-in-out"
       >
         <div
           className="
             sticky top-0
             z-10
-            bg-neutral-100 dark:bg-black
+            bg-neutral-50 dark:bg-black
             px-4 py-0
             flex justify-between items-center
             transition-all duration-700 ease-in-out
