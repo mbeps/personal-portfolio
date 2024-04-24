@@ -20,6 +20,7 @@ import SearchFilter from "@/interfaces/filters/SearchFilter";
 import ArchiveFilter from "@/interfaces/filters/ArchiveFilter";
 import generateUrl from "@/actions/generateUrl";
 import { useRouter } from "next/navigation";
+import { MdOutlineManageSearch } from "react-icons/md";
 
 interface FilterSectionProps {
   name: string;
@@ -134,15 +135,21 @@ const FilterSection: React.FC<FilterSectionProps> = ({
             "
         >
           <AccordionTrigger>
-            <p
-              className="
-              text-lg 
-              text-neutral-600 dark:text-neutral-400
-              font-semibold
-              "
-            >
-              {message}
-            </p>
+            <div className="flex items-center space-x-3">
+              <MdOutlineManageSearch
+                size={28}
+                className="text-neutral-600 dark:text-neutral-400"
+              />
+              <p
+                className="
+                  text-lg 
+                  text-neutral-600 dark:text-neutral-400
+                  font-semibold
+                  "
+              >
+                {message}
+              </p>
+            </div>
           </AccordionTrigger>
           <AccordionContent>
             <div className="flex flex-col gap-2">

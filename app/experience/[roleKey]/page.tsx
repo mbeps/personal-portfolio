@@ -200,24 +200,30 @@ const RolePage: React.FC<RolePageProps> = ({ params }) => {
         <SkillTableSection allGroupedSkills={allGroupedSkills} />
       </div>
 
-      {companyData.website && (
-        <Link href={companyData.website} target="_blank" className="w-full">
-          <Button>
-            <div
-              className="
+      <div className="mt-4">
+        {companyData.website && (
+          <Link
+            href={companyData.website}
+            target="_blank"
+            className="w-full flex justify-center md:justify-start"
+          >
+            <Button>
+              <div
+                className="
                   flex
                   justify-center md:justify-start
                   align-center
                   gap-4
                   w-full
                 "
-            >
-              <BsArrowUpRightCircle size={26} />
-              <p>{`${companyData.name} website`}</p>
-            </div>
-          </Button>
-        </Link>
-      )}
+              >
+                <BsArrowUpRightCircle size={26} />
+                <p>{`${companyData.name} website`}</p>
+              </div>
+            </Button>
+          </Link>
+        )}
+      </div>
 
       {roleData.relatedMaterials && roleData.relatedMaterials.length > 0 && (
         <>

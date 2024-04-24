@@ -106,17 +106,17 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
         className="
           mt-auto 
           h-full
-          w-full shadow-lg md:rounded-lg 
+          w-full shadow-lg md:rounded-xl 
           border
           border-neutral-200 dark:border-neutral-800
-          bg-neutral-100 dark:bg-black 
+          bg-neutral-50 dark:bg-black 
           transition-all duration-700 ease-in-out"
       >
         <div
           className="
             sticky top-0
             z-10
-            bg-neutral-100 dark:bg-black
+            bg-neutral-50 dark:bg-black
             px-4 py-0
             flex justify-between items-center
             transition-all duration-700 ease-in-out
@@ -149,7 +149,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
               <FilterPopover
                 key={index}
                 basePath={basePath}
-                filterCategory={filterCategory}
+                selectedFilterCategory={filterCategory}
                 filterCategories={filterCategories}
                 archiveFilter={archiveFilter}
                 searchFilter={searchFilter}
@@ -171,7 +171,11 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
               <Button
                 variant="default"
                 disabled={!areFiltersApplied}
-                className="w-full flex justify-start bg-neutral-200"
+                className="
+                  w-full 
+                  flex justify-start 
+                  bg-neutral-100 
+                  border border-neutral-300 dark:border-neutral-700"
               >
                 <div className="flex items-center space-x-2">
                   <AiOutlineClear
@@ -185,7 +189,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
 
             {/* Archive Toggle */}
             {archiveFilter.hasArchivedMaterials && (
-              <div className="w-full -mt-1">
+              <div className="w-full">
                 <div className="w-full -mt-1">
                   <ArchiveToggle
                     showArchived={archiveFilter.showArchived}

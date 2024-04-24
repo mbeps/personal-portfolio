@@ -11,12 +11,13 @@ const buttonVariants = cva(
       variant: {
         default: `
           text-neutral-700 dark:text-neutral-200 capitalize md:hover:text-neutral-700 dark:md:hover:text-neutral-200
-          shadow-md md:hover:shadow-lg focus:shadow-lg
+          shadow-sm md:hover:shadow-lg focus:shadow-lg
           bg-neutral-100 dark:bg-neutral-800
           md:hover:bg-neutral-100 dark:md:hover:bg-neutral-800
           border-2 border-transparent dark:border-transparent
           md:hover:border-red-500 dark:md:hover:border-red-800
           transition-all duration-500 ease-in-out
+          border border-neutral-300 dark:border-neutral-700
           `,
         filled: `
           text-neutral-100
@@ -61,7 +62,7 @@ const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  },
+  }
 );
 
 export interface ButtonProps
@@ -80,7 +81,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       />
     );
-  },
+  }
 );
 Button.displayName = "Button";
 

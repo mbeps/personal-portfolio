@@ -91,7 +91,7 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
       <PageDescription
         description={`
           This is the page displaying all the material related to ${skillData.name}.
-          This can include projects, blogs, certificates and university modules.
+          This can include projects, blogs, certificates, university modules and work experience along with sub-skills.
       `}
       />
 

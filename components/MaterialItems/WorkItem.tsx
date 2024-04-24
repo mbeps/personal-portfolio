@@ -37,9 +37,8 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
   return (
     <div
       className="
-        flex flex-row 
-        gap-4 
-        p-4
+        flex flex-col md:flex-row 
+        p-4 space-x-0 md:space-x-8 space-y-2 md:space-y-0
         bg-neutral-100 dark:bg-neutral-950 rounded-xl
         transition-all duration-500 ease-in-out
         border border-neutral-200 dark:border-neutral-800
@@ -47,7 +46,7 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
         "
     >
       {/* Logo */}
-      <div className="py-3">
+      <div className="py-3 flex items-center justify-center md:justify-start">
         {companyData.logo && (
           <div
             className="
@@ -71,7 +70,7 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
                     rounded-full 
                     shadow-lg object-cover
                     transition-all duration-500 ease-in-out
-                "
+            "
                   quality={30}
                   loading="eager"
                   priority
@@ -86,7 +85,8 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
       <div
         className="
           flex flex-col
-          p-4 space-y-2 sm:p-0
+          items-center md:items-start 
+          space-y-2 sm:p-0
           ease-in-out
 					rounded-xl 
 					transition-colors duration-700 
@@ -109,7 +109,9 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
             space-x-0 md:space-x-4
             text-lg 
             mb-2 
-            text-neutral-500 dark:text-neutral-400"
+            text-neutral-500 dark:text-neutral-400
+            items-center justify-center md:justify-start
+            "
         >
           {companyData.website ? (
             <Link
@@ -126,7 +128,6 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
           ) : (
             <span>{companyData.name}</span>
           )}
-          {/* <BsDot /> */}
           <span>{companyData.location}</span>
         </div>
 
