@@ -1168,6 +1168,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Algorithms,
     ],
     repositoryURL: "https://github.com/mbeps/algorithms",
+    archived: true,
   },
   [ProjectDatabaseKeys.AutomatedSetup]: {
     name: `Automated Setup`,
@@ -1189,6 +1190,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     repositoryURL: `https://github.com/mbeps/AutomatedSetup`,
     category: ProjectCategoriesEnum.Other,
+    archived: true,
   },
   [ProjectDatabaseKeys.Leetcode]: {
     name: `Leetcode Solutions`,
@@ -1214,6 +1216,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Adaptability,
     ],
     category: ProjectCategoriesEnum.Other,
+    archived: true,
   },
 };
 
