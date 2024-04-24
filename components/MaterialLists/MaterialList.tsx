@@ -7,6 +7,7 @@ import {
 import MaterialTypeEnum from "@/enums/Material/MaterialTypeEnum";
 import React from "react";
 import MaterialTab from "./MaterialTab";
+import { GrAppsRounded } from "react-icons/gr";
 
 export interface MaterialTabsProps {
   materialKeys: string[];
@@ -48,14 +49,18 @@ const MaterialList: React.FC<MaterialTabsProps> = ({
             shadow-sm hover:shadow-md
             transition-all duration-500 ease-in-out"
         >
-          <p
-            className="
-              text-lg font-semibold text-left
-              text-neutral-700 dark:text-neutral-300
-              "
-          >
-            {`List of material directly related to ${sectionName}`}
-          </p>
+          <div className="flex items-center space-x-3">
+            <GrAppsRounded size={24} className="text-neutral-500" />
+            <p
+              className="
+                  text-lg 
+                  text-neutral-600 dark:text-neutral-400
+                  font-semibold
+                  "
+            >
+              {`List of material directly related to ${sectionName}`}
+            </p>
+          </div>
         </AccordionTrigger>
         <AccordionContent className="mt-4">
           <MaterialTab materialKeys={materialKeys} defaultTab={defaultTab} />
