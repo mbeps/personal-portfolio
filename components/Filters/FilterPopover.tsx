@@ -65,9 +65,19 @@ const FilterPopover: React.FC<FilterPopover> = ({
             shadow-sm
             w-[24rem] md:w-[22rem]
             justify-between 
-            bg-neutral-100"
+            bg-neutral-100
+            py-2 h-full"
         >
-          <span>{filterCategory.sectionName}</span>
+          <div className="flex flex-col space-y-1 items-start">
+            <span>{filterCategory.sectionName}</span>
+            <span
+              className="
+              text-sm
+              text-neutral-500 dark:text-neutral-400"
+            >
+              {filterCategory.selectedValue}
+            </span>
+          </div>
 
           <BsChevronDown
             fontSize={16}
