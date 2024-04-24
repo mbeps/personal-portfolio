@@ -171,7 +171,11 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
               <Button
                 variant="default"
                 disabled={!areFiltersApplied}
-                className="w-full flex justify-start bg-neutral-200"
+                className="
+                  w-full 
+                  flex justify-start 
+                  bg-neutral-100 
+                  border border-neutral-300 dark:border-neutral-700"
               >
                 <div className="flex items-center space-x-2">
                   <AiOutlineClear
@@ -185,7 +189,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
 
             {/* Archive Toggle */}
             {archiveFilter.hasArchivedMaterials && (
-              <div className="w-full -mt-1">
+              <div className="w-full">
                 <div className="w-full -mt-1">
                   <ArchiveToggle
                     showArchived={archiveFilter.showArchived}
