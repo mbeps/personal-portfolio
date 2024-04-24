@@ -149,7 +149,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
               <FilterPopover
                 key={index}
                 basePath={basePath}
-                filterCategory={filterCategory}
+                selectedFilterCategory={filterCategory}
                 filterCategories={filterCategories}
                 archiveFilter={archiveFilter}
                 searchFilter={searchFilter}
