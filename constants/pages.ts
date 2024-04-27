@@ -82,6 +82,7 @@ export const EXPERIENCE_PAGE: NavigationItemInterface = {
     Discover the roles I've embraced, projects I've spearheaded, and the impact I've made.
   `,
 };
+
 /**
  * Navigation item for the skills page.
  * This is where the user can view my skills and filter them according to their preferences.
@@ -92,6 +93,14 @@ export const SKILL_PAGE: NavigationItemInterface = {
   description: `
     Explore my collection of skills on various topics. 
     You will be able to navigate to projects, certificates and blogs directly from here.
+  `,
+};
+
+export const ABOUT_PAGE: NavigationItemInterface = {
+  label: "About",
+  path: "/about",
+  description: `
+    
   `,
 };
 

@@ -20,8 +20,9 @@ const AboutSection = () => {
    * About me written in markdown.
    * This markdown is converted to HTML and displayed on the page.
    */
-  const blogContent: string | undefined =
-    getMarkdownFromFileSystem(`public/about-me.md`)?.content;
+  const blogContent: string | undefined = getMarkdownFromFileSystem(
+    `public/about/short.md`
+  )?.content;
 
   return (
     <section id="about" className="home-section-wrapper">
