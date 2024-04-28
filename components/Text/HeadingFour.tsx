@@ -16,7 +16,7 @@ const HeadingFour: React.FC<HeadingFourProps> = ({ title }) => {
       className="
 				font-bold text-lg 
 				mb-2 
-				text-neutral-500 dark:text-neutral-400"
+				text-neutral-700 dark:text-neutral-200"
     >
       {title}
     </h4>
