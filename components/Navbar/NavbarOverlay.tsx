@@ -39,13 +39,15 @@ const NavbarOverlay: React.FC<OverlayProps> = ({ isOpen, toggle, items }) => {
 				"
       >
         {/* Links */}
-        {items.map((item, index) => {
-          return (
-            <div key={index} className="flex justify-center w-full md:w-auto">
-              <NavbarItem to={item.path}>{item.label}</NavbarItem>
-            </div>
-          );
-        })}
+        {items
+          .filter((item) => item.isMain)
+          .map((item, index) => {
+            return (
+              <div key={index} className="flex justify-center w-full md:w-auto">
+                <NavbarItem href={item.path}>{item.label}</NavbarItem>
+              </div>
+            );
+          })}
       </div>
 
       <div className="w-full pb-20">

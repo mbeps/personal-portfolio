@@ -2,6 +2,8 @@ import Reader from "@/components/Reader/Reader";
 import LanguageSection from "./LanguageSection";
 import TechnologiesSection from "./TechnologiesSection";
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
+import { Button } from "@/components/shadcn/ui/button";
+import Link from "next/link";
 
 /**
  * About section component.
@@ -20,8 +22,9 @@ const AboutSection = () => {
    * About me written in markdown.
    * This markdown is converted to HTML and displayed on the page.
    */
-  const blogContent: string | undefined =
-    getMarkdownFromFileSystem(`public/about-me.md`)?.content;
+  const blogContent: string | undefined = getMarkdownFromFileSystem(
+    `public/about/short.md`
+  )?.content;
 
   return (
     <section id="about" className="home-section-wrapper">
@@ -45,7 +48,19 @@ const AboutSection = () => {
             Get to know me!
           </h1>
 
-          <Reader content={blogContent} />
+          <div className="space-y-2">
+            <Reader content={blogContent} />
+            <Link
+              href="/about"
+              className="
+                font-bold
+                hover:underline 
+                hover:text-red-500 hover:dark:text-red-700
+                transition-colors duration-300 ease-in-out"
+            >
+              {`Read More About Me!`}
+            </Link>
+          </div>
         </div>
 
         {/* Right section */}
