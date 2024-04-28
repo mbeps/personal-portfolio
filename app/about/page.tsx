@@ -58,7 +58,7 @@ export default function About() {
       >
         {/* Left section */}
         <div className="lg:w-full">
-          <Reader content={aboutContent} size="lg:prose-lg" />{" "}
+          <Reader content={aboutContent} size="lg:prose-lg" />
         </div>
 
         {/* Right section */}
@@ -69,7 +69,7 @@ export default function About() {
             alt="Profile image of the developer"
             width={250}
             height={250}
-            className="rounded-full shadow-xl hidden lg:block"
+            className="rounded-full shadow-xl hidden lg:block mt-8"
             quality={60}
             loading="eager"
             priority

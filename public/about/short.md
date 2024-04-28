@@ -1,6 +1,5 @@
-Greetings! I'm Maruf, a **software engineer** from Royal Holloway University with a First Class Honours in Computer Science. My journey is driven intensely by **curiosity** and an unyielding passion for innovative technology.
+I'm a proud alumnus of Royal Holloway University of London, where I earned a **First-Class Honours** degree in **Computer Science**. 
 
-My experience spans the **software development lifecycle**. Yet, I see every day as a new opportunity to learn. With a penchant for **constantly adapting**, pushing boundaries, and challenging the norms, my explorations have led me into the depths of **Machine Learning** and **Mathematics**. Presently, I'm deepening my understanding of advanced ML techniques.
+My professional journey is deeply rooted in a broad spectrum of technical fields, including **Software Engineering**, **Web Development**, **Machine Learning**, **DevOps**, and **Mathematics**. Over the years, I have completed numerous **projects** and obtained several **certifications** that demonstrate my expertise and commitment to these areas.
 
-
-Outside the realm of code, my passions include football, badminton, science literature, and travel. Every day is an adventure, and I believe in **seizing every moment** with **unbridled enthusiasm**.
+Currently, I work as a **DevOps Engineer** at Commerzbank, where I apply my extensive skills to optimise and enhance operational workflows. Additionally, I am actively involved in **volunteering** within the field, contributing my time and expertise to various initiatives.
