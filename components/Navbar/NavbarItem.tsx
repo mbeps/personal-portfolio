@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import React from "react";
 
 interface NavbarItemProps {
-  to: string;
+  href: string;
   children: React.ReactNode;
 }
 
@@ -14,11 +14,11 @@ interface NavbarItemProps {
  * Navbar button that navigates to a different page when clicked.
  * It also highlights the button when the user is on the page it links to.
  * The button is also highlighted when the user hovers over it.
- * @param to (string) - The path to navigate to when the navbar item is clicked
- * @param children (ReactNode) - The content to display inside the navbar item
- * @returns (JSX.Element) - A navbar item component
+ * @param to The path to navigate to when the navbar item is clicked
+ * @param children The content to display inside the navbar item
+ * @returns A navbar item component
  */
-const NavbarItem: React.FC<NavbarItemProps> = ({ to, children }) => {
+const NavbarItem: React.FC<NavbarItemProps> = ({ href, children }) => {
   const pathname: string = usePathname();
   const { isOpen: isOverlayOpen, close: closeOverlay } = useNavbarStore();
 
@@ -32,7 +32,7 @@ const NavbarItem: React.FC<NavbarItemProps> = ({ to, children }) => {
     }
   }
 
-  let isActive: boolean = pathname === to;
+  let isActive: boolean = pathname === href;
 
   const navbarItemStyle = `
     block lg:inline-block 
@@ -49,8 +49,10 @@ const NavbarItem: React.FC<NavbarItemProps> = ({ to, children }) => {
   `;
 
   return (
-    <Link href={to} className={navbarItemStyle} onClick={() => handleClick()}>
+    <Link href={href} className={navbarItemStyle} onClick={() => handleClick()}>
       {children}
+
+      {/* Hover Underline */}
       <span
         className="
           w-full h-[3px]   

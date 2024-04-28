@@ -1,4 +1,3 @@
-import generateUrl from "@/actions/generateUrl";
 import filterMaterialByArchivedStatus from "@/actions/material/filter/filterMaterialByArchivedStatus";
 import groupMaterialsByCategory from "@/actions/material/group/groupMaterialsByCategory";
 import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
@@ -11,21 +10,20 @@ import HeadingFour from "@/components/Text/HeadingFour";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import Grid from "@/components/UI/Grid";
-import PageDescription from "@/components/UI/PageDescription";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import developerName from "@/constants/developerName";
 import { EDUCATION_PAGE } from "@/constants/pages";
 import courseDatabaseMap from "@/database/Courses/CourseDatabaseMap";
+import CourseInterface from "@/database/Courses/CourseInterface";
+import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
 import moduleDatabaseMap, {
   moduleDatabaseKeys,
 } from "@/database/Modules/ModuleDatabaseMap";
-import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
+import ModuleInterface from "@/database/Modules/ModuleInterface";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
+import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
-import CourseInterface from "@/database/Courses/CourseInterface";
-import ModuleInterface from "@/database/Modules/ModuleInterface";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";

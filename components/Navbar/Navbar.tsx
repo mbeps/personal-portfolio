@@ -1,4 +1,5 @@
 "use client";
+
 import { NAVBAR_HEIGHT } from "@/constants/NAVBAR";
 import NAV_ITEMS from "@/constants/pages";
 import { useNavbarStore } from "@/hooks/useNavbarStore";
@@ -8,6 +9,7 @@ import HomeButton from "./HomeButton";
 import NavbarItem from "./NavbarItem";
 import NavbarOverlay from "./NavbarOverlay";
 import ThemeToggle from "./ThemeToggle";
+import NavbarSection from "./NavbarSection";
 
 /**
  * Navbar component shown at the top of the page.
@@ -62,6 +64,8 @@ export default function Navbar() {
         <div className="justify-between md:items-center md:flex mx-auto max-w-[2560px]">
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
             <HomeButton />
+
+            {/* Mobile Only */}
             <div className="md:hidden flex items-center">
               {/* Dark / Light Mode toggle for mobile */}
               <ThemeToggle />
@@ -82,30 +86,9 @@ export default function Navbar() {
               </button>
             </div>
           </div>
-          <div className="hidden md:block">
-            <div
-              className="
-              md:flex
-              items-center justify-center 
-              space-y-7 md:space-x-5 md:space-y-0"
-            >
-              {/* Links  */}
-              {NAV_ITEMS.map((item) => {
-                return (
-                  <div
-                    key={item.label}
-                    className="flex justify-center w-full md:w-auto"
-                  >
-                    <NavbarItem to={item.path}>{item.label}</NavbarItem>
-                  </div>
-                );
-              })}
-              {/* Dark / Light Mode toggle for desktop */}
-              <div className="hidden md:block">
-                <ThemeToggle />
-              </div>
-            </div>
-          </div>
+
+          {/* Desktop Only */}
+          <NavbarSection items={NAV_ITEMS} />
         </div>
       </header>
       <NavbarOverlay

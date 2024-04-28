@@ -12,4 +12,5 @@ export default interface NavigationItemInterface {
   label: string;
   path: string;
   description: string;
+  isMain?: boolean;
 }
