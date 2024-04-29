@@ -4,10 +4,15 @@ import HeroSection from "./components/HeroSection";
 import ProjectsSection from "./components/ProjectSection";
 import developerName from "@/constants/developerName";
 import { HOME_PAGE } from "@/constants/pages";
+import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
+
+const aboutContent: string | undefined = getMarkdownFromFileSystem(
+  `public/about/short.md`
+)?.content.replace(/^\*/gm, "");
 
 export const metadata: Metadata = {
   title: developerName,
-  description: HOME_PAGE.description,
+  description: aboutContent || HOME_PAGE.description,
 };
 
 /**
