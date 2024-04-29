@@ -80,7 +80,7 @@ const FilterPopover: React.FC<FilterPopover> = ({
           className="
             border border-neutral-300 dark:border-neutral-700
             shadow-sm
-            w-[24rem] md:w-[22rem]
+            w-full
             justify-between 
             bg-neutral-100
             py-2 h-full"
@@ -103,12 +103,12 @@ const FilterPopover: React.FC<FilterPopover> = ({
         </Button>
       </PopoverTrigger>
 
-      <PopoverContent className="w-[24rem] md:w-[22rem] p-0">
-        <Command className="w-[24rem] md:w-[22rem]">
+      <PopoverContent className="w-[24rem] md:w-[21rem] p-0">
+        <Command className="w-full">
           <CommandInput placeholder="Search Filter..." />
           <CommandEmpty>No Filter Found.</CommandEmpty>
 
-          <CommandGroup className="w-[24rem] md:w-[22rem] max-h-[25vh]">
+          <CommandGroup className="w-full max-h-[25vh]">
             {selectedFilterCategory.options.map((option, i) => (
               <Link
                 key={i}

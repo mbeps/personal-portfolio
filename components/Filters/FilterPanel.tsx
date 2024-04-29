@@ -94,7 +94,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
         top-0 right-0 
         h-full 
         pt-${NAVBAR_HEIGHT} md:px-2 md:pb-3
-        w-full md:w-[25rem]
+        w-full md:w-[24rem]
         z-20 
         transform ${
           isOpen ? "translate-x-0" : "translate-x-full"
@@ -167,16 +167,17 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
             "
           >
             {/* Clear Button */}
-            <Link href={basePath} className="w-full" scroll={false}>
-              <Button
-                variant="default"
-                disabled={!areFiltersApplied}
-                className="
-                  w-full 
-                  flex justify-start 
-                  bg-neutral-100 
-                  border border-neutral-300 dark:border-neutral-700"
-              >
+            <Button
+              variant="default"
+              disabled={!areFiltersApplied}
+              className="
+                w-auto
+                px-6
+                flex justify-start 
+                bg-neutral-100 
+                border border-neutral-300 dark:border-neutral-700"
+            >
+              <Link href={basePath} className="w-full" scroll={false}>
                 <div className="flex items-center space-x-2">
                   <AiOutlineClear
                     fontSize={24}
@@ -184,8 +185,8 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
                   />
                   <span>Clear All</span>
                 </div>
-              </Button>
-            </Link>
+              </Link>
+            </Button>
 
             {/* Archive Toggle */}
             {archiveFilter.hasArchivedMaterials && (
