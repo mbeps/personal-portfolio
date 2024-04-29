@@ -115,7 +115,7 @@ const projectMap: Database<ProjectInterface> = {
       Developing this project allowed me to explore Stripe, Clerk authentication, and unique AI APIs.
   `,
     repositoryURL: `https://github.com/mbeps/magician-ai`,
-    deploymentURL: "https://magician-ai.vercel.app/",
+    // deploymentURL: "https://magician-ai.vercel.app/",
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,

@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
-import developerName from "@/constants/developerName";
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
-import { notFound } from "next/navigation";
-import HeadingTwo from "@/components/Text/HeadingTwo";
 import Reader from "@/components/Reader/Reader";
-import Image from "next/image";
-import DetailsTable from "@/components/UI/DetailsTable";
 import Socials from "@/components/Socials/Socials";
+import HeadingOne from "@/components/Text/HeadingOne";
+import DetailsTable from "@/components/UI/DetailsTable";
+import developerName from "@/constants/developerName";
+import type { Metadata } from "next";
+import Image from "next/image";
+import { notFound } from "next/navigation";
 
 const aboutContent: string | undefined =
   getMarkdownFromFileSystem(`public/about/long.md`)?.content;
@@ -28,7 +28,7 @@ export default function About() {
   return (
     <main>
       <div className="text-center">
-        <HeadingTwo title="About Me!" />
+        <HeadingOne title="About Me" />
       </div>
 
       {/* Profile Image */}
