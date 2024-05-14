@@ -110,8 +110,8 @@ const FilterSection: React.FC<FilterSectionProps> = ({
    * If there are no archived materials, it will display "Searching & Filtering {name}".
    */
   const message: string = archiveFilter.hasArchivedMaterials
-    ? `Searching, Filtering and Archived ${name}`
-    : `Searching & Filtering ${name}`;
+    ? `Search, Filter and View Archived ${name}`
+    : `Search & Filter ${name}`;
 
   const [isFilterOpen, setIsFilterModalOpen] = useState(false);
   function handleToggleFilter() {
