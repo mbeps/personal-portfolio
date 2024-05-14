@@ -1,5 +1,5 @@
 import React from "react";
-import { RxTriangleRight } from "react-icons/rx";
+import { TbCircleFilled } from "react-icons/tb";
 
 interface StringListProps {
   items: string[];
@@ -8,13 +8,13 @@ interface StringListProps {
 const StringList: React.FC<StringListProps> = ({ items }) => {
   return (
     <div>
-      <ul className="list-none text-lg">
+      <ul className="list-none text-lg flex flex-col gap-6">
         {items.map((item, index) => (
-          <li key={index} className="flex mb-1.5">
-            <div className="mr-2 mt-1.5">
-              <RxTriangleRight />
+          <li key={index} className="flex">
+            <div className="mr-2">
+              <TbCircleFilled size={6} className="mt-3 mx-3 text-neutral-500" />
             </div>
-            <div className="text-neutral-800 dark:text-neutral-300">{item}</div>
+            <div className="text-neutral-900 dark:text-neutral-200">{item}</div>
           </li>
         ))}
       </ul>
