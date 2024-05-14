@@ -221,6 +221,8 @@ const modulesMap: Database<ModuleInterface> = {
     skills: [
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.JUnit,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.Maven,
       SkillDatabaseKeys.ObjectOrientedProgramming,
       SkillDatabaseKeys.DesignPatterns,
       SkillDatabaseKeys.VersionControlSystems,

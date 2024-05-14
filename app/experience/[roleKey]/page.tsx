@@ -23,6 +23,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BsArrowUpRightCircle } from "react-icons/bs";
+import Reader from "@/components/Reader/Reader";
+import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
 
 type RolePageProps = {
   params: { roleKey: string };
@@ -125,6 +127,12 @@ const RolePage: React.FC<RolePageProps> = ({ params }) => {
     ),
   ];
 
+  const responsibilities: string | undefined = getMarkdownFromFileSystem(
+    `public/roles/${roleKey}/responsabilities.md`
+  )?.content;
+
+  const hasResponsibilities: boolean = !!responsibilities;
+
   return (
     <div>
       <HeadingTwo title={roleData?.name} />
@@ -151,10 +159,10 @@ const RolePage: React.FC<RolePageProps> = ({ params }) => {
                   alt={`Logo for ${companyData.name}`}
                   fill={true}
                   className="
-                rounded-full 
-                shadow-lg object-cover
-                transition-all duration-500 ease-in-out
-        "
+                    rounded-full 
+                    shadow-lg object-cover
+                    transition-all duration-500 ease-in-out
+                  "
                   quality={30}
                   loading="eager"
                   priority
@@ -186,12 +194,12 @@ const RolePage: React.FC<RolePageProps> = ({ params }) => {
       {/* Learning Outcomes */}
       <div className="mt-4">
         {/* Responsibilities ID */}
-        {roleData.responsibilities && (
+        {hasResponsibilities && (
           <>
             <div className="text-center lg:text-left">
               <HeadingThree title="Responsibilities" />
             </div>
-            <StringList items={roleData.responsibilities} />
+            <Reader content={responsibilities} size="lg:prose-lg" />
           </>
         )}
       </div>

@@ -1284,7 +1284,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.AWS_ApplicationLoadBalancer]: {
     name: "Application Load Balancer (ALB)",
-    category: SkillCategoriesEnum.DevOps,
+    category: SkillCategoriesEnum.CloudComputing,
     skillType: SkillTypesEnum.Technology,
   },
   [SkillDatabaseKeys.AWS_ElasticCache]: {

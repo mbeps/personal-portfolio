@@ -67,7 +67,7 @@ const HeroSection = () => {
         "
         >
           <div className="flex flex-col space-y-4">
-            <h1 className="text-3xl md:text-5xl font-normal">{`Hi, I'm`}</h1>
+            <h2 className="text-3xl md:text-5xl font-normal">{`Hi, I'm`}</h2>
             <h1 className="text-5xl md:text-7xl font-bold">{developerName}</h1>
           </div>
 

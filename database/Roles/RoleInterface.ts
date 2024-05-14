@@ -24,5 +24,4 @@ export default interface RoleInterface extends MaterialInterface {
   startDate: string;
   endDate: string | "Present";
   company: CompanyDatabaseKeys;
-  responsibilities: string[];
 }
