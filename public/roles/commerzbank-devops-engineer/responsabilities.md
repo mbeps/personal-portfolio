@@ -8,7 +8,7 @@
 
 - **Front-End Development**: Creating user interfaces for Spring Boot APIs using NextJS, React, and TypeScript.
 
-- **Containerization with Docker**: Containerizing Symphony components like agent server, pod, and key manager using Docker. This simplified system management and allowed multiple instances on the same server, reducing costs by minimizing the number of servers needed.
+- **Containerization**: Containerizing Symphony components like agent server, pod, and key manager using Docker. This simplified system management and allowed multiple instances on the same server, reducing costs by minimizing the number of servers needed.
 
 - **Cloud Migration**: Managed the transition from AWS to GCP to reduce costs for the bank.
 
@@ -24,6 +24,6 @@
 
 - **Adaptability**: Adapting to new technologies, processes, and environments.
 
-- **Planning and Documentation**: Planned migrations, designed code architectures, and wrote detailed documentation. Managed tasks using Jira.
+- **Planning**: Planned migrations, designed code architectures, and wrote detailed documentation. Managed tasks using Jira.
 
-- **Communication and Critical Thinking**: Communicated with Symphony for codebase migration. Coordinated with various teams and departments. Clearly communicated technical ideas and collaborated effectively with team members.
+- **Communication**: Communicated with Symphony for codebase migration. Coordinated with various teams and departments. Clearly communicated technical ideas and collaborated effectively with team members.
