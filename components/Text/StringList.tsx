@@ -5,6 +5,12 @@ interface StringListProps {
   items: string[];
 }
 
+/**
+ * Renders a list of strings with bullet points.
+ *
+ * @param items - An array of strings to render.
+ * @returns A list of strings with bullet points.
+ */
 const StringList: React.FC<StringListProps> = ({ items }) => {
   return (
     <div>
