@@ -1,7 +1,9 @@
 import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/UI/PageDescription";
 import developerName from "@/constants/developerName";
-import { skillDatabaseKeys } from "@/database/Skills/SkillDatabaseMap";
+import skillDatabaseMap, {
+  skillDatabaseKeys,
+} from "@/database/Skills/SkillDatabaseMap";
 import SkillList from "../../components/MaterialLists/SkillList";
 import { SKILL_PAGE } from "@/constants/pages";
 
@@ -23,6 +25,9 @@ export const metadata = {
 /**
  * Page displaying all the skills that I have learned and worked with.
  * These skills can be grouped into categories and certain type skills can be ignored.
+ *
+ * A list of all skills is added to the page for SEO purposes.
+ * This is not visible to the user.
  * @returns Page with all skills
  */
 export default function SkillPage() {
@@ -31,8 +36,15 @@ export default function SkillPage() {
       <section id="blogs">
         <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
           <HeadingOne title="Skills" />
-          <PageDescription description={SKILL_PAGE.description} />
 
+          {/* Invisible divs for SEO */}
+          {Object.values(skillDatabaseMap).map((skill) => (
+            <div key={skill.name} className="sr-only">
+              {skill.name}
+            </div>
+          ))}
+
+          <PageDescription description={SKILL_PAGE.description} />
           <SkillList skills={skillDatabaseKeys} />
         </div>
       </section>

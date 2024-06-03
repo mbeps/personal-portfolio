@@ -4,7 +4,9 @@ import Grid from "@/components/UI/Grid";
 import PageDescription from "@/components/UI/PageDescription";
 import developerName from "@/constants/developerName";
 import { EDUCATION_PAGE } from "@/constants/pages";
-import { courseDatabaseKeys } from "@/database/Courses/CourseDatabaseMap";
+import courseDatabaseMap, {
+  courseDatabaseKeys,
+} from "@/database/Courses/CourseDatabaseMap";
 import type { Metadata } from "next";
 
 /**
@@ -26,6 +28,9 @@ export const metadata: Metadata = {
  * Displays a list of all education history and qualifications.
  * User can open an entry and view more details about the qualification such as the modules studied.
  *
+ * A list of all courses along with their universities and grades are added to the page for SEO purposes.
+ * This is not visible to the user.
+ *
  * @returns Page with education history and qualifications
  */
 export default function EducationPage() {
@@ -34,6 +39,14 @@ export default function EducationPage() {
       <section id="blogs">
         <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
           <HeadingOne title={EDUCATION_PAGE.label} />
+
+          {/* Invisible divs for SEO */}
+          {Object.values(courseDatabaseMap).map((course) => (
+            <div key={course.name} className="sr-only">
+              {course.name} from {course.university} with {course.grade}.
+            </div>
+          ))}
+
           <PageDescription description={EDUCATION_PAGE.description} />
 
           <div className="py-8 animate-slideUpCubiBezier animation-delay-2">

@@ -142,6 +142,10 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
     <div className="space-y-6 align-top min-h-[85vh] relative">
       <HeadingTwo title={certificateData.name} />
 
+      <div className="sr-only">
+        <h3>{certificateData.description}</h3>
+      </div>
+
       <div className="space-y-1">
         {/* Certificate Image */}
         {certificateImage && (

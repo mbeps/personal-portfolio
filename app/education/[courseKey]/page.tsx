@@ -158,6 +158,10 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
     <div>
       <HeadingTwo title={courseData.name} />
 
+      <div className="sr-only">
+        <h3>{`${courseData.grade} in ${courseData.name} from ${courseData?.university}`}</h3>
+      </div>
+
       <div
         className="
 					grid grid-cols-1 lg:grid-cols-2 lg:grid-flow-col-reverse 
