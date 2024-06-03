@@ -122,6 +122,17 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.AndroidDevelopment,
     ],
   },
+  [SkillDatabaseKeys.Kotlin]: {
+    name: "Kotlin",
+    skillType: SkillTypesEnum.Technology,
+    category: SkillCategoriesEnum.ProgrammingLanguages,
+    relatedSkills: [
+      SkillDatabaseKeys.JUnit,
+      SkillDatabaseKeys.Gradle,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.AndroidDevelopment,
+    ],
+  },
   [SkillDatabaseKeys.GameMakerLanguage]: {
     name: "GameMaker Language",
     isMainSkill: false,
