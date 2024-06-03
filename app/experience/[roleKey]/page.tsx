@@ -137,6 +137,10 @@ const RolePage: React.FC<RolePageProps> = ({ params }) => {
     <div>
       <HeadingTwo title={roleData?.name} />
 
+      <div className="sr-only">
+        <h3>{`${roleData.name} at ${roleData?.company}`}</h3>
+      </div>
+
       {companyData.logo && companyData.website && (
         <div className="flex items-center justify-center">
           <div

@@ -199,6 +199,10 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
     <div className="flex flex-col space-y-1 align-top min-h-[85vh] relative">
       <HeadingTwo title={projectData?.name} />
 
+      <div className="sr-only">
+        <h3>{projectData.description}</h3>
+      </div>
+
       {/* Gallery Section */}
       {(images && images.length > 1) || (videos && videos.length > 1) ? (
         <Gallery images={images} videos={videos} />

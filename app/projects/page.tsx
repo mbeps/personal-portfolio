@@ -2,6 +2,7 @@ import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/UI/PageDescription";
 import developerName from "@/constants/developerName";
 import { PROJECTS_PAGE } from "@/constants/pages";
+import projectDatabaseMap from "@/database/Projects/ProjectDatabaseMap";
 import type { Metadata } from "next";
 import ProjectsView from "./components/ProjectsView";
 
@@ -25,6 +26,9 @@ export const metadata: Metadata = {
  * Also allows the user to search and filter the projects.
  * These projects are displayed into categories.
  *
+ * A list of all projects along with their descriptions are added to the page for SEO purposes.
+ * This is not visible to the user.
+ *
  * @returns Page with all projects
  * @requires {@link ProjectsView} component to display the projects and filter/search them
  */
@@ -33,6 +37,14 @@ const ProjectsPage = () => {
     <section id="projects" className="flex flex-col items-start md:items-end">
       <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
         <HeadingOne title={PROJECTS_PAGE.label} />
+
+        {/* Invisible divs for SEO */}
+        {Object.values(projectDatabaseMap).map((project) => (
+          <div key={project.name} className="sr-only">
+            {project.name}: {project.description}
+          </div>
+        ))}
+
         <PageDescription description={PROJECTS_PAGE.description} />
         <ProjectsView />
       </div>
