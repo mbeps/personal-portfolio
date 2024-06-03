@@ -1139,59 +1139,7 @@ const projectMap: Database<ProjectInterface> = {
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.AngryCats),
   },
 
-  //^ Other Projects
-  [ProjectDatabaseKeys.SearchingAndSortingAlgorithms]: {
-    name: `Searching & Sorting Algorithms`,
-    description: `
-      Jupyter Notebook containing various searching and sorting algorithms.
-      Each algorithms is explained. 
-      All the algorithms are also compared to each other. 
-    `,
-    category: ProjectCategoriesEnum.Other,
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.Matplotlib,
-      SkillDatabaseKeys.NumPy,
-      SkillDatabaseKeys.Jupyter,
-      SkillDatabaseKeys.Poetry,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Black,
-
-      SkillDatabaseKeys.DataStructures,
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
-    ],
-    repositoryURL: "https://github.com/mbeps/algorithms",
-    archived: true,
-  },
-  [ProjectDatabaseKeys.AutomatedSetup]: {
-    name: `Automated Setup`,
-    description: `
-      A shell script which automates the setup of a new Linux machine.
-      This is specifically for my Fedora install.
-      `,
-    skills: [
-      SkillDatabaseKeys.ShellScript,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-
-      SkillDatabaseKeys.DataStructures,
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    repositoryURL: `https://github.com/mbeps/AutomatedSetup`,
-    category: ProjectCategoriesEnum.Other,
-    archived: true,
-  },
+  //^ Algorithms and Data Structures
   [ProjectDatabaseKeys.Leetcode]: {
     name: `Leetcode Solutions`,
     description: `
@@ -1215,6 +1163,60 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
     ],
+    category: ProjectCategoriesEnum.Algorithms,
+    archived: true,
+  },
+  [ProjectDatabaseKeys.SearchingAndSortingAlgorithms]: {
+    name: `Searching & Sorting Algorithms`,
+    description: `
+      Jupyter Notebook containing various searching and sorting algorithms.
+      Each algorithms is explained. 
+      All the algorithms are also compared to each other. 
+    `,
+    category: ProjectCategoriesEnum.Algorithms,
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.Matplotlib,
+      SkillDatabaseKeys.NumPy,
+      SkillDatabaseKeys.Jupyter,
+      SkillDatabaseKeys.Poetry,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.GitHub,
+      SkillDatabaseKeys.Black,
+
+      SkillDatabaseKeys.DataStructures,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.Algorithms,
+    ],
+    repositoryURL: "https://github.com/mbeps/algorithms",
+    archived: true,
+  },
+
+  //^ Other Projects
+  [ProjectDatabaseKeys.AutomatedSetup]: {
+    name: `Automated Setup`,
+    description: `
+      A shell script which automates the setup of a new Linux machine.
+      This is specifically for my Fedora install.
+      `,
+    skills: [
+      SkillDatabaseKeys.ShellScript,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.GitHub,
+
+      SkillDatabaseKeys.DataStructures,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    repositoryURL: `https://github.com/mbeps/AutomatedSetup`,
     category: ProjectCategoriesEnum.Other,
     archived: true,
   },
