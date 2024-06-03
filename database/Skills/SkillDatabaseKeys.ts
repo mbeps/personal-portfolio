@@ -3,7 +3,7 @@
  * This enum is used to avoid hardcoding the keys in the code, getting autocompletion support and avoiding typos.
  * These keys are used within MaterialInterface and its children to represents skills associated with the material.
  *
- * @see {@link skillDatabase} at `interfaces/skills.ts`
+ * @see {@link skillDatabaseMap} at `interfaces/skills.ts`
  */
 enum SkillDatabaseKeys {
   //^ Languages
@@ -11,13 +11,14 @@ enum SkillDatabaseKeys {
   JavaScript = "javascript",
   TypeScript = "typescript",
   Java = "java",
-  GameMakerLanguage = "game-maker-language",
   ShellScript = "shell",
   C = "c",
   Haskell = "haskell",
   Scala = "scala",
   RLanguage = "r",
   Groovy = "groovy",
+  Kotlin = "kotlin",
+  GameMakerLanguage = "game-maker-language",
   ObjectOrientedProgramming = "oop",
   FunctionalProgramming = "fp",
 

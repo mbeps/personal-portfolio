@@ -15,6 +15,7 @@ const rolesMap: Database<RoleInterface> = {
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.Kotlin,
       SkillDatabaseKeys.ShellScript,
       SkillDatabaseKeys.Groovy,
       SkillDatabaseKeys.ObjectOrientedProgramming,
