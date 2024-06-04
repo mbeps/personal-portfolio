@@ -89,23 +89,33 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
   );
 
   return (
-    <div className="">
-      <HeadingOne title={skillData.name} />
-      <PageDescription
-        description={`
+    <main>
+      <div className="sr-only">
+        <h1>{skillData.name}</h1>
+        <h2>Skills for certificate:</h2>
+        {skillData.relatedSkills?.map((skill) => (
+          <p key={skill}>{skillDatabaseMap[skill].name}</p>
+        ))}
+      </div>
+
+      <div className="">
+        <HeadingOne title={skillData.name} />
+        <PageDescription
+          description={`
           This is the page displaying all the material related to ${skillData.name}.
           This can include projects, blogs, certificates, university modules and work experience along with sub-skills.
       `}
-      />
+        />
 
-      {/* Material Section */}
-      <div className="pt-8" />
-      <HeadingTwo title="Material" />
-      <MaterialList materialKeys={filteredMaterials} isCollapsible={false} />
+        {/* Material Section */}
+        <div className="pt-8" />
+        <HeadingTwo title="Material" />
+        <MaterialList materialKeys={filteredMaterials} isCollapsible={false} />
 
-      {/* Skills Section */}
-      <RelatedSkillsSection skillKey={skillKey as SkillDatabaseKeys} />
-    </div>
+        {/* Skills Section */}
+        <RelatedSkillsSection skillKey={skillKey as SkillDatabaseKeys} />
+      </div>
+    </main>
   );
 };
 
