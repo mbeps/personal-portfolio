@@ -48,6 +48,7 @@ export async function generateMetadata(
     description: moduleData.learningOutcomes.join(". ") || "",
     category: `${EDUCATION_PAGE.label}`,
     creator: developerName,
+    keywords: moduleData.skills.map((skill) => skillDatabaseMap[skill].name),
   };
 }
 
@@ -146,6 +147,11 @@ const ModulePage: React.FC<ModulePageProps> = ({ params }) => {
             <li key={outcome}>{outcome}</li>
           ))}
         </ul>
+
+        <h3>Skills for module:</h3>
+        {moduleData.skills.map((skill) => (
+          <p key={skill}>{skillDatabaseMap[skill].name}</p>
+        ))}
       </div>
 
       <div>

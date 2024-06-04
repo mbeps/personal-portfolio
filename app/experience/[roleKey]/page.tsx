@@ -53,6 +53,7 @@ export async function generateMetadata(
     description: `${role.type} ${role.name} at ${role?.company}`,
     category: `${EXPERIENCE_PAGE.label}`,
     creator: developerName,
+    keywords: role?.skills.map((skill) => skillDatabaseMap[skill].name),
   };
 }
 
@@ -141,6 +142,11 @@ const RolePage: React.FC<RolePageProps> = ({ params }) => {
         <h1>{`${roleData.name} at ${roleData?.company}`}</h1>
         <h2>Responsibilities:</h2>
         <Reader content={responsibilities} size="lg:prose-lg" />
+
+        <h3>Skills for work experience:</h3>
+        {roleData.skills.map((skill) => (
+          <p key={skill}>{skillDatabaseMap[skill].name}</p>
+        ))}
       </div>
 
       <div>

@@ -43,6 +43,7 @@ export async function generateMetadata(
     description: blog?.subtitle,
     category: `${BLOG_PAGE.label}`,
     creator: developerName,
+    keywords: blog?.skills.map((skill) => skillDatabaseMap[skill].name),
   };
 }
 
@@ -122,32 +123,44 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
   ];
 
   return (
-    <div>
-      <div className="text-center">
-        <HeadingTwo title={blogData?.name} />
+    <main>
+      <div className="sr-only">
+        <h1>{blogData.name}</h1>
+        <h2>{blogData.subtitle}</h2>
 
-        <h3 className="text-neutral-600 dark:text-neutral-400">
-          {blogData?.subtitle}
-        </h3>
+        <h3>Skills for blog:</h3>
+        {blogData.skills.map((skill) => (
+          <p key={skill}>{skillDatabaseMap[skill].name}</p>
+        ))}
       </div>
 
-      <Reader content={blogContent} size="lg:prose-lg" />
+      <div>
+        <div className="text-center">
+          <HeadingTwo title={blogData?.name} />
 
-      <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
+          <h3 className="text-neutral-600 dark:text-neutral-400">
+            {blogData?.subtitle}
+          </h3>
+        </div>
 
-      <div className="mt-4">
-        <SkillTableSection allGroupedSkills={allGroupedSkills} />
+        <Reader content={blogContent} size="lg:prose-lg" />
+
+        <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
+
+        <div className="mt-4">
+          <SkillTableSection allGroupedSkills={allGroupedSkills} />
+        </div>
+
+        {blogData.relatedMaterials && blogData.relatedMaterials.length > 0 && (
+          <>
+            <MaterialList
+              materialKeys={blogData.relatedMaterials}
+              sectionName={blogData.name}
+            />
+          </>
+        )}
       </div>
-
-      {blogData.relatedMaterials && blogData.relatedMaterials.length > 0 && (
-        <>
-          <MaterialList
-            materialKeys={blogData.relatedMaterials}
-            sectionName={blogData.name}
-          />
-        </>
-      )}
-    </div>
+    </main>
   );
 };
 

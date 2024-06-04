@@ -59,6 +59,7 @@ export async function generateMetadata(
     description: `${course.grade} in ${course.name} from ${course?.university}`,
     category: `${EDUCATION_PAGE.label}`,
     creator: developerName,
+    keywords: course?.skills.map((skill) => skillDatabaseMap[skill].name),
   };
 }
 
@@ -168,6 +169,11 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
             <li key={module}>{`${moduleDatabaseMap[module].name}`}</li>
           ))}
         </ul>
+
+        <h3>Skills for course:</h3>
+        {courseData.skills.map((skill) => (
+          <p key={skill}>{skillDatabaseMap[skill].name}</p>
+        ))}
       </div>
 
       <div>
