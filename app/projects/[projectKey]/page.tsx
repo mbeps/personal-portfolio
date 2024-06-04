@@ -196,156 +196,171 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   )?.content;
 
   return (
-    <div className="flex flex-col space-y-1 align-top min-h-[85vh] relative">
-      <HeadingTwo title={projectData?.name} />
-
+    <main>
       <div className="sr-only">
-        <h3>{projectData.description}</h3>
+        <h1>{projectData.name}</h1>
+        <h2>{projectData.description}</h2>
+        <h3>Programming Languages:</h3>
+        <ul>
+          {projectLanguages.map((language) => (
+            <li key={language}>{skillDatabaseMap[language].name}</li>
+          ))}
+        </ul>
+        <h3>Technologies, Libraries & Frameworks:</h3>
+        <ul>
+          {technologies.map((technology) => (
+            <li key={technology}>{skillDatabaseMap[technology].name}</li>
+          ))}
+        </ul>
       </div>
 
-      {/* Gallery Section */}
-      {(images && images.length > 1) || (videos && videos.length > 1) ? (
-        <Gallery images={images} videos={videos} />
-      ) : (
-        hasCoverImage && (
-          <div
-            className="
+      <div className="flex flex-col space-y-1 align-top min-h-[85vh] relative">
+        <HeadingTwo title={projectData?.name} />
+
+        {/* Gallery Section */}
+        {(images && images.length > 1) || (videos && videos.length > 1) ? (
+          <Gallery images={images} videos={videos} />
+        ) : (
+          hasCoverImage && (
+            <div
+              className="
               w-full 
               flex items-center justify-center 
               relative 
               z-0
               animate-fadeIn animation-delay-2
             "
-          >
-            <AspectRatio ratio={8 / 5} className="overflow-hidden relative">
-              <Image
-                src={coverImagePath}
-                alt="Project Image"
-                quality={90}
-                fill={true}
-                priority
-                className="
+            >
+              <AspectRatio ratio={8 / 5} className="overflow-hidden relative">
+                <Image
+                  src={coverImagePath}
+                  alt="Project Image"
+                  quality={90}
+                  fill={true}
+                  priority
+                  className="
                   w-full
                   object-cover rounded-xl 
                   transition-colors duration-700
                 "
-              />
-            </AspectRatio>
-          </div>
-        )
-      )}
-
-      {/* Metadata Section */}
-      <div className="mt-4 pb-10 border-b border-gray-200 dark:border-neutral-600 space-y-3">
-        {/* Description Section */}
-        <div className="text-center md:text-left">
-          <HeadingThree title="Description" />
-          <div className="flex flex-wrap justify-center md:justify-start z-10 mt-2">
-            <p className="text-neutral-800 dark:text-neutral-300">
-              {projectData.description}
-            </p>
-          </div>
-        </div>
-
-        {/* Language Section */}
-        {projectLanguages && Object.keys(projectLanguages).length > 0 && (
-          <div className="text-center md:text-left">
-            <HeadingThree
-              title={
-                Object.keys(projectLanguages).length > 1
-                  ? "Languages"
-                  : "Language"
-              }
-            />
-            <div className="flex flex-wrap justify-center md:justify-start z-10 mt-2">
-              {projectLanguages.map((language, index) => (
-                <SkillTag key={index} skillKey={language} />
-              ))}
+                />
+              </AspectRatio>
             </div>
-          </div>
+          )
         )}
 
-        {/* Skills Section */}
-        <div>
-          <SkillTableSection allGroupedSkills={allGroupedSkills} />
-        </div>
+        {/* Metadata Section */}
+        <div className="mt-4 pb-10 border-b border-gray-200 dark:border-neutral-600 space-y-3">
+          {/* Description Section */}
+          <div className="text-center md:text-left">
+            <HeadingThree title="Description" />
+            <div className="flex flex-wrap justify-center md:justify-start z-10 mt-2">
+              <p className="text-neutral-800 dark:text-neutral-300">
+                {projectData.description}
+              </p>
+            </div>
+          </div>
 
-        {/* Links Section */}
-        <div className="text-center md:text-left">
-          <HeadingThree title="Links" />
-          <div
-            className="
+          {/* Language Section */}
+          {projectLanguages && Object.keys(projectLanguages).length > 0 && (
+            <div className="text-center md:text-left">
+              <HeadingThree
+                title={
+                  Object.keys(projectLanguages).length > 1
+                    ? "Languages"
+                    : "Language"
+                }
+              />
+              <div className="flex flex-wrap justify-center md:justify-start z-10 mt-2">
+                {projectLanguages.map((language, index) => (
+                  <SkillTag key={index} skillKey={language} />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Skills Section */}
+          <div>
+            <SkillTableSection allGroupedSkills={allGroupedSkills} />
+          </div>
+
+          {/* Links Section */}
+          <div className="text-center md:text-left">
+            <HeadingThree title="Links" />
+            <div
+              className="
               mt-6 flex 
               flex-row 
               justify-center md:justify-start items-center 
               w-full md:w-1/3
               gap-2"
-          >
-            {/* GitHub Repo */}
-            {projectData?.repositoryURL && (
-              <Link
-                href={projectData?.repositoryURL}
-                target="_blank"
-                className="w-full"
-              >
-                <Button>
-                  <div
-                    className="
+            >
+              {/* GitHub Repo */}
+              {projectData?.repositoryURL && (
+                <Link
+                  href={projectData?.repositoryURL}
+                  target="_blank"
+                  className="w-full"
+                >
+                  <Button>
+                    <div
+                      className="
                         flex
                         justify-center md:justify-start
                         align-center
                         gap-4
                         w-full
                       "
-                  >
-                    <BsGithub size={26} />
-                    <p>Repository</p>
-                  </div>
-                </Button>
-              </Link>
-            )}
-            {/* Website */}
-            {projectData?.deploymentURL && (
-              <Link
-                href={projectData?.deploymentURL}
-                target="_blank"
-                className="w-full"
-              >
-                <Button>
-                  <div
-                    className="
+                    >
+                      <BsGithub size={26} />
+                      <p>Repository</p>
+                    </div>
+                  </Button>
+                </Link>
+              )}
+              {/* Website */}
+              {projectData?.deploymentURL && (
+                <Link
+                  href={projectData?.deploymentURL}
+                  target="_blank"
+                  className="w-full"
+                >
+                  <Button>
+                    <div
+                      className="
                         flex
                         justify-center md:justify-start
                         align-center
                         gap-4
                         w-full
                       "
-                  >
-                    <BsArrowUpRightCircle size={26} />
-                    <p>Deployment</p>
-                  </div>
-                </Button>
-              </Link>
-            )}
+                    >
+                      <BsArrowUpRightCircle size={26} />
+                      <p>Deployment</p>
+                    </div>
+                  </Button>
+                </Link>
+              )}
+            </div>
           </div>
         </div>
-      </div>
 
-      <div>
-        <TabbedReader content={{ features, blog }} />
-      </div>
+        <div>
+          <TabbedReader content={{ features, blog }} />
+        </div>
 
-      {/* Related Materials Section */}
-      {projectData.relatedMaterials &&
-        projectData.relatedMaterials.length > 0 && (
-          <>
-            <MaterialList
-              materialKeys={projectData.relatedMaterials}
-              sectionName={projectData.name}
-            />
-          </>
-        )}
-    </div>
+        {/* Related Materials Section */}
+        {projectData.relatedMaterials &&
+          projectData.relatedMaterials.length > 0 && (
+            <>
+              <MaterialList
+                materialKeys={projectData.relatedMaterials}
+                sectionName={projectData.name}
+              />
+            </>
+          )}
+      </div>
+    </main>
   );
 };
 

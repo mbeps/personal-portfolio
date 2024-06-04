@@ -35,21 +35,27 @@ export const metadata: Metadata = {
  */
 const CertificatesPage: React.FC = () => {
   return (
-    <section id="projects" className="flex flex-col items-start md:items-end">
-      <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
-        <HeadingOne title={CERTIFICATES_PAGE.label} />
-
-        {/* Invisible divs for SEO */}
-        {Object.values(certificateDatabaseMap).map((certificate) => (
-          <div key={certificate.name} className="sr-only">
-            {certificate.name}: {certificate.description}
-          </div>
-        ))}
-
-        <PageDescription description={CERTIFICATES_PAGE.description} />
-        <CertificatesView />
+    <main>
+      {/* Invisible divs for SEO */}
+      <div className="sr-only">
+        <h1>Certificates & Online Courses:</h1>
+        <ul>
+          {Object.values(certificateDatabaseMap).map((certificate) => (
+            <li key={certificate.name}>
+              {certificate.name}: {certificate.description}
+            </li>
+          ))}
+        </ul>
       </div>
-    </section>
+
+      <section id="projects" className="flex flex-col items-start md:items-end">
+        <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
+          <HeadingOne title={CERTIFICATES_PAGE.label} />
+          <PageDescription description={CERTIFICATES_PAGE.description} />
+          <CertificatesView />
+        </div>
+      </section>
+    </main>
   );
 };
 

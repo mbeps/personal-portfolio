@@ -155,103 +155,113 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
   ];
 
   return (
-    <div>
-      <HeadingTwo title={courseData.name} />
-
+    <main>
       <div className="sr-only">
-        <h3>{`${courseData.grade} in ${courseData.name} from ${courseData?.university}`}</h3>
+        <h1>{courseData.name}</h1>
+        <h2>{`${courseData.grade} in ${courseData.name} from ${courseData?.university}`}</h2>
+        {/* list of modules */}
+        <h3>Modules:</h3>
+        <ul>
+          {courseData.modules.map((module) => (
+            <li key={module}>{`${moduleDatabaseMap[module].name}`}</li>
+          ))}
+        </ul>
       </div>
 
-      <div
-        className="
-					grid grid-cols-1 lg:grid-cols-2 lg:grid-flow-col-reverse 
-					space-x-0 lg:space-x-6"
-      >
-        {/* Left */}
+      <div>
+        <HeadingTwo title={courseData.name} />
+
         <div
           className="
+					grid grid-cols-1 lg:grid-cols-2 lg:grid-flow-col-reverse 
+					space-x-0 lg:space-x-6"
+        >
+          {/* Left */}
+          <div
+            className="
 						rounded-xl
 						transition-all duration-500 ease-in-out
 						p-1 lg:p-3
 						bg-neutral-100 dark:bg-neutral-950  
 			"
-        >
-          <AspectRatio ratio={1 / 1.4} className="overflow-hidden relative">
-            <Image
-              src={courseImage}
-              key={courseImage}
-              alt={`${courseData.name} cover image`}
-              fill={true}
-              loading="lazy"
-              quality={15}
-              className="
+          >
+            <AspectRatio ratio={1 / 1.4} className="overflow-hidden relative">
+              <Image
+                src={courseImage}
+                key={courseImage}
+                alt={`${courseData.name} cover image`}
+                fill={true}
+                loading="lazy"
+                quality={15}
+                className="
                 rounded-xl 
                 object-cover
 					"
-            />
-          </AspectRatio>
-        </div>
+              />
+            </AspectRatio>
+          </div>
 
-        {/* Right */}
-        <div className="py-2">
-          <HeadingThree title={courseData.university} />
+          {/* Right */}
+          <div className="py-2">
+            <HeadingThree title={courseData.university} />
 
-          <p className="text-2xl text-neutral-700 dark:text-neutral-200 -mt-4">
-            {courseData.category}
-          </p>
-          <p>{`${courseData.startYear} - ${courseData.endYear}`}</p>
+            <p className="text-2xl text-neutral-700 dark:text-neutral-200 -mt-4">
+              {courseData.category}
+            </p>
+            <p>{`${courseData.startYear} - ${courseData.endYear}`}</p>
 
-          <div
-            className="
+            <div
+              className="
 							py-4
 							flex space-x-1 w-full
 							text-xl text-neutral-800 dark:text-neutral-300
 					"
-          >
-            <p className="font-bold">Grade:</p>
-            <p>{courseData.grade}</p>
+            >
+              <p className="font-bold">Grade:</p>
+              <p>{courseData.grade}</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="text-center lg:text-left">
-        <HeadingThree title="Modules" />
-      </div>
-
-      {/* Archive Toggle */}
-      <ArchiveToggle
-        showArchived={showArchived}
-        filterProps={[]}
-        basePath={`${basePath}/${courseKey}`}
-      />
-      {/* Modules */}
-      {groupedModules.map((group, index) => (
-        <div key={index} className="mb-4">
-          <HeadingFour title={group.groupName} />
-          <Grid
-            gap={1}
-            items={group.materialsKeys.map((moduleKey, idx) => (
-              <Link href={`${basePath}/${courseKey}/${moduleKey}`} key={idx}>
-                <Tag hasHover>{moduleDatabaseMap[moduleKey].name}</Tag>
-              </Link>
-            ))}
-          />
+        <div className="text-center lg:text-left">
+          <HeadingThree title="Modules" />
         </div>
-      ))}
 
-      {/* Skills */}
-      <SkillTableSection allGroupedSkills={allGroupedSkills} />
-
-      {courseData.relatedMaterials &&
-        courseData.relatedMaterials.length > 0 && (
-          <>
-            <MaterialList
-              materialKeys={courseData.relatedMaterials}
-              sectionName={courseData.name}
+        {/* Archive Toggle */}
+        <ArchiveToggle
+          showArchived={showArchived}
+          filterProps={[]}
+          basePath={`${basePath}/${courseKey}`}
+        />
+        {/* Modules */}
+        {groupedModules.map((group, index) => (
+          <div key={index} className="mb-4">
+            <HeadingFour title={group.groupName} />
+            <Grid
+              gap={1}
+              items={group.materialsKeys.map((moduleKey, idx) => (
+                <Link href={`${basePath}/${courseKey}/${moduleKey}`} key={idx}>
+                  <Tag hasHover>{moduleDatabaseMap[moduleKey].name}</Tag>
+                </Link>
+              ))}
             />
-          </>
-        )}
-    </div>
+          </div>
+        ))}
+
+        {/* Skills */}
+        <SkillTableSection allGroupedSkills={allGroupedSkills} />
+
+        {courseData.relatedMaterials &&
+          courseData.relatedMaterials.length > 0 && (
+            <>
+              <MaterialList
+                materialKeys={courseData.relatedMaterials}
+                sectionName={courseData.name}
+              />
+            </>
+          )}
+      </div>
+    </main>
   );
 };
 

@@ -33,17 +33,19 @@ export const metadata = {
 export default function SkillPage() {
   return (
     <main>
-      <section id="blogs">
+      {/* Invisible divs for SEO */}
+      <div className="sr-only">
+        <h1>Skills:</h1>
+        <ul>
+          {Object.values(skillDatabaseMap).map((skill) => (
+            <li key={skill.name}>{skill.name}</li>
+          ))}
+        </ul>
+      </div>
+
+      <section id="skills">
         <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
           <HeadingOne title="Skills" />
-
-          {/* Invisible divs for SEO */}
-          {Object.values(skillDatabaseMap).map((skill) => (
-            <div key={skill.name} className="sr-only">
-              {skill.name}
-            </div>
-          ))}
-
           <PageDescription description={SKILL_PAGE.description} />
           <SkillList skills={skillDatabaseKeys} />
         </div>
