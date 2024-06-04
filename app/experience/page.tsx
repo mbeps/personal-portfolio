@@ -22,6 +22,7 @@ export const metadata: Metadata = {
   description: EXPERIENCE_PAGE.description,
   category: `${EXPERIENCE_PAGE.label}`,
   creator: developerName,
+  keywords: Object.values(rolesDatabase).map((role) => role.name),
 };
 
 /**

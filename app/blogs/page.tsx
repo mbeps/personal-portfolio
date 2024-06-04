@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   description: BLOG_PAGE.description,
   category: `${BLOG_PAGE.label}`,
   creator: developerName,
+  keywords: Object.values(blogsDatabaseMap).map((blog) => blog.name),
 };
 
 /**

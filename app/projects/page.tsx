@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   description: PROJECTS_PAGE.description,
   category: `${PROJECTS_PAGE.label}`,
   creator: developerName,
+  keywords: Object.values(projectDatabaseMap).map((project) => project.name),
 };
 
 /**

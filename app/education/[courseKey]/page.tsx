@@ -62,6 +62,7 @@ export async function generateMetadata(
     keywords: [
       course.name,
       course.university,
+      ...course?.modules.map((module) => moduleDatabaseMap[module].name),
       ...course?.skills.map((skill) => skillDatabaseMap[skill].name),
     ],
   };

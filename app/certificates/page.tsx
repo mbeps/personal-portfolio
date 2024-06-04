@@ -22,6 +22,9 @@ export const metadata: Metadata = {
   description: CERTIFICATES_PAGE.description,
   category: `${CERTIFICATES_PAGE.label}`,
   creator: developerName,
+  keywords: Object.values(certificateDatabaseMap).map(
+    (certificate) => certificate.name
+  ),
 };
 
 /**

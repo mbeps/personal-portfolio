@@ -22,6 +22,7 @@ export const metadata = {
   description: SKILL_PAGE.description,
   category: `${SKILL_PAGE.label}`,
   creator: developerName,
+  keywords: Object.values(skillDatabaseMap).map((skill) => skill.name),
 };
 
 /**

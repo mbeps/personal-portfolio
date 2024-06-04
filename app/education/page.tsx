@@ -24,6 +24,7 @@ export const metadata: Metadata = {
   description: EDUCATION_PAGE.description,
   category: `${EDUCATION_PAGE.label}`,
   creator: developerName,
+  keywords: Object.values(courseDatabaseMap).map((course) => course.name),
 };
 
 /**
