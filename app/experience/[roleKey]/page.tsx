@@ -51,6 +51,13 @@ export async function generateMetadata(
   return {
     title: `${developerName} - ${EXPERIENCE_PAGE.label}: ${role?.name}`,
     description: `${role.type} ${role.name} at ${role?.company}`,
+    category: `${EXPERIENCE_PAGE.label}`,
+    creator: developerName,
+    keywords: [
+      role.name,
+      role.company,
+      ...role?.skills.map((skill) => skillDatabaseMap[skill].name),
+    ],
   };
 }
 
@@ -134,17 +141,25 @@ const RolePage: React.FC<RolePageProps> = ({ params }) => {
   const hasResponsibilities: boolean = !!responsibilities;
 
   return (
-    <div>
-      <HeadingTwo title={roleData?.name} />
-
+    <main>
       <div className="sr-only">
-        <h3>{`${roleData.name} at ${roleData?.company}`}</h3>
+        <h1>{`${roleData.name} at ${roleData?.company}`}</h1>
+        <h2>Responsibilities:</h2>
+        <Reader content={responsibilities} size="lg:prose-lg" />
+
+        <h3>Skills for work experience:</h3>
+        {roleData.skills.map((skill) => (
+          <p key={skill}>{skillDatabaseMap[skill].name}</p>
+        ))}
       </div>
 
-      {companyData.logo && companyData.website && (
-        <div className="flex items-center justify-center">
-          <div
-            className="
+      <div>
+        <HeadingTwo title={roleData?.name} />
+
+        {companyData.logo && companyData.website && (
+          <div className="flex items-center justify-center">
+            <div
+              className="
               rounded-full 
               shadow-lg 
               p-1.5 bg-neutral-300 dark:bg-neutral-800
@@ -152,100 +167,101 @@ const RolePage: React.FC<RolePageProps> = ({ params }) => {
               w-[90px] h-[90px]
               hover:scale-105 hover:shadow-xl
   "
-          >
-            <Link href={companyData.website} target="_blank">
-              <AspectRatio
-                ratio={1 / 1}
-                className="overflow-hidden relative w-full bg-white rounded-full"
-              >
-                <Image
-                  src={companyData.logo}
-                  alt={`Logo for ${companyData.name}`}
-                  fill={true}
-                  className="
+            >
+              <Link href={companyData.website} target="_blank">
+                <AspectRatio
+                  ratio={1 / 1}
+                  className="overflow-hidden relative w-full bg-white rounded-full"
+                >
+                  <Image
+                    src={companyData.logo}
+                    alt={`Logo for ${companyData.name}`}
+                    fill={true}
+                    className="
                     rounded-full 
                     shadow-lg object-cover
                     transition-all duration-500 ease-in-out
                   "
-                  quality={30}
-                  loading="eager"
-                  priority
-                />
-              </AspectRatio>
-            </Link>
-          </div>
-        </div>
-      )}
-
-      {/* Details */}
-      <div className="text-center lg:text-left">
-        <HeadingThree title="Details" />
-      </div>
-      <DetailsTable
-        details={[
-          { heading: "Company", value: companyData.name },
-          { heading: "Location", value: companyData.location },
-          { heading: "Type", value: roleData.type },
-          { heading: "Category", value: roleData.category },
-          { heading: "Start Date", value: roleData.startDate },
-          {
-            heading: "End Date",
-            value: roleData.endDate,
-          },
-        ]}
-      />
-
-      {/* Learning Outcomes */}
-      <div className="mt-4">
-        {/* Responsibilities ID */}
-        {hasResponsibilities && (
-          <>
-            <div className="text-center lg:text-left">
-              <HeadingThree title="Responsibilities" />
+                    quality={30}
+                    loading="eager"
+                    priority
+                  />
+                </AspectRatio>
+              </Link>
             </div>
-            <Reader content={responsibilities} size="lg:prose-lg" />
-          </>
+          </div>
         )}
-      </div>
 
-      <div className="mt-4">
-        <SkillTableSection allGroupedSkills={allGroupedSkills} />
-      </div>
+        {/* Details */}
+        <div className="text-center lg:text-left">
+          <HeadingThree title="Details" />
+        </div>
+        <DetailsTable
+          details={[
+            { heading: "Company", value: companyData.name },
+            { heading: "Location", value: companyData.location },
+            { heading: "Type", value: roleData.type },
+            { heading: "Category", value: roleData.category },
+            { heading: "Start Date", value: roleData.startDate },
+            {
+              heading: "End Date",
+              value: roleData.endDate,
+            },
+          ]}
+        />
 
-      <div className="mt-4">
-        {companyData.website && (
-          <Link
-            href={companyData.website}
-            target="_blank"
-            className="w-full flex justify-center md:justify-start"
-          >
-            <Button>
-              <div
-                className="
+        {/* Learning Outcomes */}
+        <div className="mt-4">
+          {/* Responsibilities ID */}
+          {hasResponsibilities && (
+            <>
+              <div className="text-center lg:text-left">
+                <HeadingThree title="Responsibilities" />
+              </div>
+              <Reader content={responsibilities} size="lg:prose-lg" />
+            </>
+          )}
+        </div>
+
+        <div className="mt-4">
+          <SkillTableSection allGroupedSkills={allGroupedSkills} />
+        </div>
+
+        <div className="mt-4">
+          {companyData.website && (
+            <Link
+              href={companyData.website}
+              target="_blank"
+              className="w-full flex justify-center md:justify-start"
+            >
+              <Button>
+                <div
+                  className="
                   flex
                   justify-center md:justify-start
                   align-center
                   gap-4
                   w-full
                 "
-              >
-                <BsArrowUpRightCircle size={26} />
-                <p>{`${companyData.name} website`}</p>
-              </div>
-            </Button>
-          </Link>
+                >
+                  <BsArrowUpRightCircle size={26} />
+                  <p>{`${companyData.name} website`}</p>
+                </div>
+              </Button>
+            </Link>
+          )}
+        </div>
+
+        {roleData.relatedMaterials && roleData.relatedMaterials.length > 0 && (
+          <>
+            <MaterialList
+              materialKeys={roleData.relatedMaterials}
+              sectionName={roleData.name}
+            />
+          </>
         )}
       </div>
-
-      {roleData.relatedMaterials && roleData.relatedMaterials.length > 0 && (
-        <>
-          <MaterialList
-            materialKeys={roleData.relatedMaterials}
-            sectionName={roleData.name}
-          />
-        </>
-      )}
-    </div>
+    </main>
   );
 };
 

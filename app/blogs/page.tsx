@@ -19,6 +19,9 @@ import blogsDatabaseMap from "@/database/Blogs/BlogsDatabaseMap";
 export const metadata: Metadata = {
   title: `${developerName} - ${BLOG_PAGE.label}`,
   description: BLOG_PAGE.description,
+  category: `${BLOG_PAGE.label}`,
+  creator: developerName,
+  keywords: Object.values(blogsDatabaseMap).map((blog) => blog.name),
 };
 
 /**
@@ -35,17 +38,21 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   return (
     <main>
+      {/* Invisible divs for SEO */}
+      <div className="sr-only">
+        <h1>Blogs & Articles:</h1>
+        <ul>
+          {Object.values(blogsDatabaseMap).map((blog) => (
+            <li key={blog.name}>
+              {blog.name}: {blog.subtitle}
+            </li>
+          ))}
+        </ul>
+      </div>
+
       <section id="blogs">
         <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
           <HeadingOne title={BLOG_PAGE.label} />
-
-          {/* Invisible divs for SEO */}
-          {Object.values(blogsDatabaseMap).map((blog) => (
-            <div key={blog.name} className="sr-only">
-              {blog.name}: {blog.subtitle}
-            </div>
-          ))}
-
           <PageDescription description={BLOG_PAGE.description} />
           <BlogsView />
         </div>

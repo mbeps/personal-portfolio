@@ -5,6 +5,7 @@ import { EXPERIENCE_PAGE } from "@/constants/pages";
 import rolesDatabase from "@/database/Roles/RoleDatabaseMap";
 import type { Metadata } from "next";
 import ExperienceView from "./components/ExperienceView";
+import companyDatabaseMap from "@/database/Companies/CompanyDatabaseMap";
 
 /**
  * Generates the metadata for the work experience page.
@@ -19,6 +20,9 @@ import ExperienceView from "./components/ExperienceView";
 export const metadata: Metadata = {
   title: `${developerName} - ${EXPERIENCE_PAGE.label}`,
   description: EXPERIENCE_PAGE.description,
+  category: `${EXPERIENCE_PAGE.label}`,
+  creator: developerName,
+  keywords: Object.values(rolesDatabase).map((role) => role.name),
 };
 
 /**
@@ -30,21 +34,26 @@ export const metadata: Metadata = {
  * This is not visible to the user.
  *
  * @returns Page with all work experiences
- * @requires {@link BlogsView} component to display the work experience and filter/search them
+ * @requires {@link ExperienceView} component to display the work experience and filter/search them
  */
 export default function ExperiencePage() {
   return (
     <main>
+      {/* Invisible divs for SEO */}
+      <div className="sr-only">
+        <h1>Work Experience & Volunteering:</h1>
+        <ul>
+          {Object.values(rolesDatabase).map((role) => (
+            <li key={role.name}>
+              {role.name} at {companyDatabaseMap[role.company].name}
+            </li>
+          ))}
+        </ul>
+      </div>
+
       <section id="experience">
         <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
           <HeadingOne title={EXPERIENCE_PAGE.label} />
-
-          {/* Invisible divs for SEO */}
-          {Object.values(rolesDatabase).map((role) => (
-            <div key={role.name} className="sr-only">
-              {role.name}: companyDatabaseMap[role.company]
-            </div>
-          ))}
 
           <PageDescription description={EXPERIENCE_PAGE.description} />
           <ExperienceView />

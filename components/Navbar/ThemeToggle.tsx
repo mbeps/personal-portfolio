@@ -42,6 +42,12 @@ const ThemeToggle: React.FC = () => {
   const darkIconClass = "text-white group-hover:text-black";
   const lightIconClass = "text-black group-hover:text-white";
 
+  function getMenuItemStyles(currentTheme: string): string {
+    return `menu-item-styles ${
+      theme === currentTheme ? "font-bold text-red-800 dark:text-red-200" : ""
+    }`;
+  }
+
   return (
     <ContextMenu>
       <ContextMenuTrigger>
@@ -70,29 +76,27 @@ const ThemeToggle: React.FC = () => {
 
       <ContextMenuContent
         className="
-        menu-content-styles 
-        space-y-1 w-[12rem]
-        transition-all duration-300
+          menu-content-styles 
+          space-y-1 w-[12rem]
+          transition-all duration-300
         "
       >
         <ContextMenuItem
-          className={`menu-item-styles ${theme === "light" ? "font-bold" : ""}`}
+          className={getMenuItemStyles("light")}
           onSelect={() => setTheme("light")}
         >
           <RiSunLine size={20} className="mr-3" />
           Light
         </ContextMenuItem>
         <ContextMenuItem
-          className={`menu-item-styles ${theme === "dark" ? "font-bold" : ""}`}
+          className={getMenuItemStyles("dark")}
           onSelect={() => setTheme("dark")}
         >
           <RiMoonFill size={20} className="mr-3" />
           Dark
         </ContextMenuItem>
         <ContextMenuItem
-          className={`menu-item-styles ${
-            theme === "system" ? "font-bold" : ""
-          }`}
+          className={getMenuItemStyles("system")}
           onSelect={() => setTheme("system")}
         >
           <LuMonitor size={20} className="mr-3" />

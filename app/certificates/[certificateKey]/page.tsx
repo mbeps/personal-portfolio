@@ -47,6 +47,12 @@ export async function generateMetadata(
   return {
     title: `${developerName} - Certificates: ${certificate?.name}`,
     description: certificate?.description,
+    category: `${CERTIFICATES_PAGE.label}`,
+    creator: developerName,
+    keywords: [
+      certificate?.name,
+      ...certificate?.skills.map((skill) => skillDatabaseMap[skill].name),
+    ],
   };
 }
 
@@ -139,18 +145,25 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
   const certificateImage = `${CERTIFICATES_PAGE.path}/${certificateKey}.jpg`;
 
   return (
-    <div className="space-y-6 align-top min-h-[85vh] relative">
-      <HeadingTwo title={certificateData.name} />
-
+    <main>
       <div className="sr-only">
-        <h3>{certificateData.description}</h3>
+        <h1>{certificateData.name}</h1>
+        <h2>{certificateData.description}</h2>
+
+        <h3>Skills for certificate:</h3>
+        {certificateData.skills.map((skill) => (
+          <p key={skill}>{skillDatabaseMap[skill].name}</p>
+        ))}
       </div>
 
-      <div className="space-y-1">
-        {/* Certificate Image */}
-        {certificateImage && (
-          <div
-            className="
+      <div className="space-y-6 align-top min-h-[85vh] relative">
+        <HeadingTwo title={certificateData.name} />
+
+        <div className="space-y-1">
+          {/* Certificate Image */}
+          {certificateImage && (
+            <div
+              className="
               flex
               justify-center
               align-middle
@@ -161,121 +174,122 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
               p-3
               bg-neutral-100 dark:bg-neutral-950  
 					"
-          >
-            <AspectRatio ratio={4 / 3} className="overflow-hidden relative">
-              <Image
-                src={certificateImage}
-                alt={`${certificateData.name} certificate image`}
-                className="rounded-xl object-cover"
-                fill={true}
-                priority={true}
-              />
-            </AspectRatio>
-          </div>
-        )}
+            >
+              <AspectRatio ratio={4 / 3} className="overflow-hidden relative">
+                <Image
+                  src={certificateImage}
+                  alt={`${certificateData.name} certificate image`}
+                  className="rounded-xl object-cover"
+                  fill={true}
+                  priority={true}
+                />
+              </AspectRatio>
+            </div>
+          )}
 
-        {/* Credential ID */}
-        <div className="flex flex-col align-middle w-full">
-          <p
-            className="
+          {/* Credential ID */}
+          <div className="flex flex-col align-middle w-full">
+            <p
+              className="
               text-l text-center leading-7
             text-neutral-400 dark:text-neutral-600 
               overflow-auto break-words"
-          >
-            {certificateKey}
-          </p>
-        </div>
-
-        {/* Certificate Description */}
-        {certificateData.description && (
-          <div className="flex flex-col">
-            <div className="md:text-left text-center">
-              <HeadingThree title="Description" />
-            </div>
-            <p className="text-lg text-neutral-800 dark:text-neutral-300">
-              {certificateData.description}
+            >
+              {certificateKey}
             </p>
           </div>
-        )}
 
-        <div className="mt-4 ">
-          {/* Credentials ID */}
-          {certificateData.learningOutcomes && (
-            <>
-              <div className="text-center lg:text-left">
-                <HeadingThree title="Learning Objectives" />
+          {/* Certificate Description */}
+          {certificateData.description && (
+            <div className="flex flex-col">
+              <div className="md:text-left text-center">
+                <HeadingThree title="Description" />
               </div>
-              <StringList items={certificateData.learningOutcomes} />
-            </>
+              <p className="text-lg text-neutral-800 dark:text-neutral-300">
+                {certificateData.description}
+              </p>
+            </div>
           )}
-        </div>
 
-        <div className="mt-4">
-          <SkillTableSection allGroupedSkills={allGroupedSkills} />
-        </div>
-
-        <div className="md:grid md:grid-cols-2">
-          <div>
-            <div className="md:text-left text-center">
-              <HeadingThree title="Certificate Issuer" />
-            </div>
-            <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-5">
-              <Tag>{certificateData.issuer}</Tag>
-            </div>
+          <div className="mt-4 ">
+            {/* Credentials ID */}
+            {certificateData.learningOutcomes && (
+              <>
+                <div className="text-center lg:text-left">
+                  <HeadingThree title="Learning Objectives" />
+                </div>
+                <StringList items={certificateData.learningOutcomes} />
+              </>
+            )}
           </div>
 
-          <div>
-            <div className="md:text-left text-center">
-              <HeadingThree title="Links" />
+          <div className="mt-4">
+            <SkillTableSection allGroupedSkills={allGroupedSkills} />
+          </div>
+
+          <div className="md:grid md:grid-cols-2">
+            <div>
+              <div className="md:text-left text-center">
+                <HeadingThree title="Certificate Issuer" />
+              </div>
+              <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-5">
+                <Tag>{certificateData.issuer}</Tag>
+              </div>
             </div>
-            {/* Links */}
-            <div
-              className="
+
+            <div>
+              <div className="md:text-left text-center">
+                <HeadingThree title="Links" />
+              </div>
+              {/* Links */}
+              <div
+                className="
                 mt-6 flex 
                 flex-row 
                 justify-center md:justify-start items-center 
                 w-full 
                 gap-2"
-            >
-              {/* Issuer Page */}
-              {certificateData.certificateURL && (
-                <Link
-                  href={certificateData.certificateURL}
-                  target="_blank"
-                  className="w-auto md:w-full"
-                >
-                  <Button variant="default">
-                    <div
-                      className="
+              >
+                {/* Issuer Page */}
+                {certificateData.certificateURL && (
+                  <Link
+                    href={certificateData.certificateURL}
+                    target="_blank"
+                    className="w-auto md:w-full"
+                  >
+                    <Button variant="default">
+                      <div
+                        className="
                         flex
                         justify-center md:justify-start
                         align-center
                         gap-4
                         w-full
                     "
-                    >
-                      <BsArrowUpRightCircle size={26} />
-                      <p>Issuer Page</p>
-                    </div>
-                  </Button>
-                </Link>
-              )}
+                      >
+                        <BsArrowUpRightCircle size={26} />
+                        <p>Issuer Page</p>
+                      </div>
+                    </Button>
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
-        </div>
 
-        {certificateData.relatedMaterials &&
-          certificateData.relatedMaterials.length > 0 && (
-            <div className="mt-8">
-              <MaterialList
-                materialKeys={certificateData.relatedMaterials}
-                defaultTab={MaterialTypeEnum.Certificates}
-                sectionName={certificateData.name}
-              />
-            </div>
-          )}
+          {certificateData.relatedMaterials &&
+            certificateData.relatedMaterials.length > 0 && (
+              <div className="mt-8">
+                <MaterialList
+                  materialKeys={certificateData.relatedMaterials}
+                  defaultTab={MaterialTypeEnum.Certificates}
+                  sectionName={certificateData.name}
+                />
+              </div>
+            )}
+        </div>
       </div>
-    </div>
+    </main>
   );
 };
 export default CertificatesPage;

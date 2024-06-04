@@ -46,6 +46,12 @@ export async function generateMetadata(
   return {
     title: `${developerName} - Courses: ${moduleData?.name}`,
     description: moduleData.learningOutcomes.join(". ") || "",
+    category: `${EDUCATION_PAGE.label}`,
+    creator: developerName,
+    keywords: [
+      moduleData.name,
+      ...moduleData.skills.map((skill) => skillDatabaseMap[skill].name),
+    ],
   };
 }
 
@@ -134,63 +140,80 @@ const ModulePage: React.FC<ModulePageProps> = ({ params }) => {
   ];
 
   return (
-    <div>
-      <HeadingTwo title={moduleData.name} />
+    <main>
+      <div className="sr-only">
+        <h1>{moduleData.name}</h1>
+        {/* list of modules */}
+        <h2>Learning Outcomes:</h2>
+        <ul>
+          {moduleData.learningOutcomes.map((outcome) => (
+            <li key={outcome}>{outcome}</li>
+          ))}
+        </ul>
 
-      <DynamicBreadcrumb breadcrumbs={breadcrumbData} />
-
-      <div className="mt-4 ">
-        {/* Learning Outcomes */}
-        {moduleData.learningOutcomes && (
-          <>
-            <div className="text-center lg:text-left">
-              <HeadingThree title="Learning Outcomes" />
-            </div>
-            <StringList items={moduleData.learningOutcomes} />
-          </>
-        )}
+        <h3>Skills for module:</h3>
+        {moduleData.skills.map((skill) => (
+          <p key={skill}>{skillDatabaseMap[skill].name}</p>
+        ))}
       </div>
 
-      {/* Skills */}
-      <SkillTableSection allGroupedSkills={allGroupedSkills} />
+      <div>
+        <HeadingTwo title={moduleData.name} />
+        <DynamicBreadcrumb breadcrumbs={breadcrumbData} />
 
-      {/* Module Code */}
-      <div
-        className="
+        <div className="mt-4 ">
+          {/* Learning Outcomes */}
+          {moduleData.learningOutcomes && (
+            <>
+              <div className="text-center lg:text-left">
+                <HeadingThree title="Learning Outcomes" />
+              </div>
+              <StringList items={moduleData.learningOutcomes} />
+            </>
+          )}
+        </div>
+
+        {/* Skills */}
+        <SkillTableSection allGroupedSkills={allGroupedSkills} />
+
+        {/* Module Code */}
+        <div
+          className="
           py-4
           flex space-x-1 w-full
           text-xl text-neutral-800 dark:text-neutral-300
           "
-      >
-        <p className="font-bold">Module Code:</p>
-        <p>{moduleKey}</p>
-      </div>
+        >
+          <p className="font-bold">Module Code:</p>
+          <p>{moduleKey}</p>
+        </div>
 
-      {/* Score */}
-      {moduleData.score && (
-        <div
-          className="
+        {/* Score */}
+        {moduleData.score && (
+          <div
+            className="
             py-4
             flex space-x-1 w-full
             text-xl text-neutral-800 dark:text-neutral-300
           "
-        >
-          <p className="font-bold">Score:</p>
-          <p>{`${moduleData.score}%`}</p>
-        </div>
-      )}
-
-      {/* Related Material */}
-      {moduleData.relatedMaterials &&
-        moduleData.relatedMaterials.length > 0 && (
-          <>
-            <MaterialList
-              materialKeys={moduleData.relatedMaterials}
-              sectionName={moduleData.name}
-            />
-          </>
+          >
+            <p className="font-bold">Score:</p>
+            <p>{`${moduleData.score}%`}</p>
+          </div>
         )}
-    </div>
+
+        {/* Related Material */}
+        {moduleData.relatedMaterials &&
+          moduleData.relatedMaterials.length > 0 && (
+            <>
+              <MaterialList
+                materialKeys={moduleData.relatedMaterials}
+                sectionName={moduleData.name}
+              />
+            </>
+          )}
+      </div>
+    </main>
   );
 };
 

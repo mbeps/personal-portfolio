@@ -19,6 +19,9 @@ import ProjectsView from "./components/ProjectsView";
 export const metadata: Metadata = {
   title: `${developerName} - ${PROJECTS_PAGE.label}`,
   description: PROJECTS_PAGE.description,
+  category: `${PROJECTS_PAGE.label}`,
+  creator: developerName,
+  keywords: Object.values(projectDatabaseMap).map((project) => project.name),
 };
 
 /**
@@ -34,21 +37,27 @@ export const metadata: Metadata = {
  */
 const ProjectsPage = () => {
   return (
-    <section id="projects" className="flex flex-col items-start md:items-end">
-      <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
-        <HeadingOne title={PROJECTS_PAGE.label} />
-
-        {/* Invisible divs for SEO */}
-        {Object.values(projectDatabaseMap).map((project) => (
-          <div key={project.name} className="sr-only">
-            {project.name}: {project.description}
-          </div>
-        ))}
-
-        <PageDescription description={PROJECTS_PAGE.description} />
-        <ProjectsView />
+    <main>
+      {/* Invisible divs for SEO */}
+      <div className="sr-only">
+        <h1>Projects:</h1>
+        <ul>
+          {Object.values(projectDatabaseMap).map((project) => (
+            <li key={project.name}>
+              {project.name}: {project.description}
+            </li>
+          ))}
+        </ul>
       </div>
-    </section>
+
+      <section id="projects" className="flex flex-col items-start md:items-end">
+        <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
+          <HeadingOne title={PROJECTS_PAGE.label} />
+          <PageDescription description={PROJECTS_PAGE.description} />
+          <ProjectsView />
+        </div>
+      </section>
+    </main>
   );
 };
 
