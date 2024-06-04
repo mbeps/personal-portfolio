@@ -51,6 +51,8 @@ export async function generateMetadata(
   return {
     title: `${developerName} - ${EXPERIENCE_PAGE.label}: ${role?.name}`,
     description: `${role.type} ${role.name} at ${role?.company}`,
+    category: `${EXPERIENCE_PAGE.label}`,
+    creator: developerName,
   };
 }
 

@@ -20,6 +20,8 @@ import companyDatabaseMap from "@/database/Companies/CompanyDatabaseMap";
 export const metadata: Metadata = {
   title: `${developerName} - ${EXPERIENCE_PAGE.label}`,
   description: EXPERIENCE_PAGE.description,
+  category: `${EXPERIENCE_PAGE.label}`,
+  creator: developerName,
 };
 
 /**

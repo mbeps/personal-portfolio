@@ -19,6 +19,8 @@ import ProjectsView from "./components/ProjectsView";
 export const metadata: Metadata = {
   title: `${developerName} - ${PROJECTS_PAGE.label}`,
   description: PROJECTS_PAGE.description,
+  category: `${PROJECTS_PAGE.label}`,
+  creator: developerName,
 };
 
 /**

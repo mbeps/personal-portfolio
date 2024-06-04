@@ -46,6 +46,8 @@ export async function generateMetadata(
   return {
     title: `${developerName} - Courses: ${moduleData?.name}`,
     description: moduleData.learningOutcomes.join(". ") || "",
+    category: `${EDUCATION_PAGE.label}`,
+    creator: developerName,
   };
 }
 

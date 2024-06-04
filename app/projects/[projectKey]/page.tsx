@@ -55,6 +55,8 @@ export async function generateMetadata(
   return {
     title: `${developerName} - Projects: ${project?.name}`,
     description: project?.description,
+    category: `${PROJECTS_PAGE.label}`,
+    creator: developerName,
   };
 }
 

@@ -20,6 +20,8 @@ import certificateDatabaseMap from "@/database/Certificates/CertificateDatabaseM
 export const metadata: Metadata = {
   title: `${developerName} - ${CERTIFICATES_PAGE.label}`,
   description: CERTIFICATES_PAGE.description,
+  category: `${CERTIFICATES_PAGE.label}`,
+  creator: developerName,
 };
 
 /**

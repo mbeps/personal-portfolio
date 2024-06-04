@@ -16,6 +16,7 @@ import HeadingTwo from "@/components/Text/HeadingTwo";
 import materialDatabaseMap, {
   materialKeys,
 } from "@/database/Materials/MaterialDatabaseMap";
+import { SKILL_PAGE } from "@/constants/pages";
 
 /**
  * Generates the metadata for the skill page.
@@ -42,6 +43,8 @@ export async function generateMetadata(
   return {
     title: `${developerName} - Skills: ${skill?.name}`,
     description: skill.name,
+    category: `${SKILL_PAGE.label}`,
+    creator: developerName,
   };
 }
 

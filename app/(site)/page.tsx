@@ -15,6 +15,8 @@ const aboutContent: string | undefined = getMarkdownFromFileSystem(
 export const metadata: Metadata = {
   title: developerName,
   description: aboutContent || HOME_PAGE.description,
+  category: "Homepage",
+  creator: developerName,
 };
 
 /**

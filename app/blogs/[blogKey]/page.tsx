@@ -41,6 +41,8 @@ export async function generateMetadata(
   return {
     title: `${developerName} - Blogs: ${blog?.name}`,
     description: blog?.subtitle,
+    category: `${BLOG_PAGE.label}`,
+    creator: developerName,
   };
 }
 

@@ -19,6 +19,8 @@ import blogsDatabaseMap from "@/database/Blogs/BlogsDatabaseMap";
 export const metadata: Metadata = {
   title: `${developerName} - ${BLOG_PAGE.label}`,
   description: BLOG_PAGE.description,
+  category: `${BLOG_PAGE.label}`,
+  creator: developerName,
 };
 
 /**

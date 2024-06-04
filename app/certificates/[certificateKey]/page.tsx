@@ -47,6 +47,8 @@ export async function generateMetadata(
   return {
     title: `${developerName} - Certificates: ${certificate?.name}`,
     description: certificate?.description,
+    category: `${CERTIFICATES_PAGE.label}`,
+    creator: developerName,
   };
 }
 

@@ -20,6 +20,8 @@ import { SKILL_PAGE } from "@/constants/pages";
 export const metadata = {
   title: `${developerName} - Skills`,
   description: SKILL_PAGE.description,
+  category: `${SKILL_PAGE.label}`,
+  creator: developerName,
 };
 
 /**

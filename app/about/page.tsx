@@ -14,6 +14,8 @@ const aboutContent: string | undefined =
 export const metadata: Metadata = {
   title: `${developerName} - About Me`,
   description: aboutContent,
+  category: `About ${developerName}`,
+  creator: developerName,
 };
 
 /**

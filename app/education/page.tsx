@@ -22,6 +22,8 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: `${developerName} - ${EDUCATION_PAGE.label}`,
   description: EDUCATION_PAGE.description,
+  category: `${EDUCATION_PAGE.label}`,
+  creator: developerName,
 };
 
 /**

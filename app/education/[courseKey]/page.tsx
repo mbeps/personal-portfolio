@@ -57,6 +57,8 @@ export async function generateMetadata(
   return {
     title: `${developerName} - Courses: ${course?.name}`,
     description: `${course.grade} in ${course.name} from ${course?.university}`,
+    category: `${EDUCATION_PAGE.label}`,
+    creator: developerName,
   };
 }
 
