@@ -4,6 +4,7 @@ import Socials from "@/components/Socials/Socials";
 import HeadingOne from "@/components/Text/HeadingOne";
 import DetailsTable from "@/components/UI/DetailsTable";
 import developerName from "@/constants/developerName";
+import subtitles from "@/constants/subtitles";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
   description: aboutContent,
   category: `About ${developerName}`,
   creator: developerName,
+  keywords: subtitles,
 };
 
 /**

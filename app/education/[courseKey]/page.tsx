@@ -59,7 +59,11 @@ export async function generateMetadata(
     description: `${course.grade} in ${course.name} from ${course?.university}`,
     category: `${EDUCATION_PAGE.label}`,
     creator: developerName,
-    keywords: course?.skills.map((skill) => skillDatabaseMap[skill].name),
+    keywords: [
+      course.name,
+      course.university,
+      ...course?.skills.map((skill) => skillDatabaseMap[skill].name),
+    ],
   };
 }
 

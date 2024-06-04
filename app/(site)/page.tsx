@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   description: aboutContent || HOME_PAGE.description,
   category: "Homepage",
   creator: developerName,
+  keywords: subtitles,
 };
 
 /**

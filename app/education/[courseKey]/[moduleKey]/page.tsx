@@ -48,7 +48,10 @@ export async function generateMetadata(
     description: moduleData.learningOutcomes.join(". ") || "",
     category: `${EDUCATION_PAGE.label}`,
     creator: developerName,
-    keywords: moduleData.skills.map((skill) => skillDatabaseMap[skill].name),
+    keywords: [
+      moduleData.name,
+      ...moduleData.skills.map((skill) => skillDatabaseMap[skill].name),
+    ],
   };
 }
 

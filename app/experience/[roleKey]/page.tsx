@@ -53,7 +53,11 @@ export async function generateMetadata(
     description: `${role.type} ${role.name} at ${role?.company}`,
     category: `${EXPERIENCE_PAGE.label}`,
     creator: developerName,
-    keywords: role?.skills.map((skill) => skillDatabaseMap[skill].name),
+    keywords: [
+      role.name,
+      role.company,
+      ...role?.skills.map((skill) => skillDatabaseMap[skill].name),
+    ],
   };
 }
 
