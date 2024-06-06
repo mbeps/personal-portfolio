@@ -1,10 +1,11 @@
+import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
 import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
 import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
 import MaterialList from "@/components/MaterialLists/MaterialList";
+import Reader from "@/components/Reader/Reader";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import StringList from "@/components/Text/StringList";
 import DetailsTable from "@/components/UI/DetailsTable";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
@@ -13,18 +14,16 @@ import { EXPERIENCE_PAGE } from "@/constants/pages";
 import companyDatabaseMap from "@/database/Companies/CompanyDatabaseMap";
 import CompanyInterface from "@/database/Companies/CompanyInterface";
 import rolesDatabase from "@/database/Roles/RoleDatabaseMap";
-import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import RoleInterface from "@/database/Roles/RoleInterface";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
+import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import type { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BsArrowUpRightCircle } from "react-icons/bs";
-import Reader from "@/components/Reader/Reader";
-import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
 
 type RolePageProps = {
   params: { roleKey: string };
@@ -160,13 +159,13 @@ const RolePage: React.FC<RolePageProps> = ({ params }) => {
           <div className="flex items-center justify-center">
             <div
               className="
-              rounded-full 
-              shadow-lg 
-              p-1.5 bg-neutral-300 dark:bg-neutral-800
-              transition-all duration-500 ease-in-out
-              w-[90px] h-[90px]
-              hover:scale-105 hover:shadow-xl
-  "
+                rounded-full 
+                shadow-lg 
+                p-1.5 bg-neutral-300 dark:bg-neutral-800
+                transition-all duration-500 ease-in-out
+                w-[90px] h-[90px]
+                hover:scale-105 hover:shadow-xl
+              "
             >
               <Link href={companyData.website} target="_blank">
                 <AspectRatio
@@ -193,73 +192,77 @@ const RolePage: React.FC<RolePageProps> = ({ params }) => {
         )}
 
         {/* Details */}
-        <div className="text-center lg:text-left">
-          <HeadingThree title="Details" />
-        </div>
-        <DetailsTable
-          details={[
-            { heading: "Company", value: companyData.name },
-            { heading: "Location", value: companyData.location },
-            { heading: "Type", value: roleData.type },
-            { heading: "Category", value: roleData.category },
-            { heading: "Start Date", value: roleData.startDate },
-            {
-              heading: "End Date",
-              value: roleData.endDate,
-            },
-          ]}
-        />
-
-        {/* Learning Outcomes */}
-        <div className="mt-4">
-          {/* Responsibilities ID */}
-          {hasResponsibilities && (
-            <>
-              <div className="text-center lg:text-left">
-                <HeadingThree title="Responsibilities" />
-              </div>
-              <Reader content={responsibilities} size="lg:prose-lg" />
-            </>
-          )}
-        </div>
-
-        <div className="mt-4">
-          <SkillTableSection allGroupedSkills={allGroupedSkills} />
-        </div>
-
-        <div className="mt-4">
-          {companyData.website && (
-            <Link
-              href={companyData.website}
-              target="_blank"
-              className="w-full flex justify-center md:justify-start"
-            >
-              <Button>
-                <div
-                  className="
-                  flex
-                  justify-center md:justify-start
-                  align-center
-                  gap-4
-                  w-full
-                "
-                >
-                  <BsArrowUpRightCircle size={26} />
-                  <p>{`${companyData.name} website`}</p>
-                </div>
-              </Button>
-            </Link>
-          )}
-        </div>
-
-        {roleData.relatedMaterials && roleData.relatedMaterials.length > 0 && (
-          <>
-            <MaterialList
-              materialKeys={roleData.relatedMaterials}
-              sectionName={roleData.name}
+        <div className="space-y-16">
+          <div className="space-y-4">
+            <HeadingThree title="Details" />
+            <DetailsTable
+              details={[
+                { heading: "Company", value: companyData.name },
+                { heading: "Location", value: companyData.location },
+                { heading: "Type", value: roleData.type },
+                { heading: "Category", value: roleData.category },
+                { heading: "Start Date", value: roleData.startDate },
+                {
+                  heading: "End Date",
+                  value: roleData.endDate,
+                },
+              ]}
             />
-          </>
-        )}
+          </div>
+
+          <div>
+            {/* Responsibilities ID */}
+            {hasResponsibilities && (
+              <>
+                <div className="text-center lg:text-left">
+                  <HeadingThree title="Responsibilities" />
+                </div>
+                <Reader content={responsibilities} size="lg:prose-lg" />
+              </>
+            )}
+          </div>
+
+          {/* Skills section */}
+          <div>
+            <SkillTableSection allGroupedSkills={allGroupedSkills} />
+          </div>
+
+          <div>
+            {companyData.website && (
+              <Link
+                href={companyData.website}
+                target="_blank"
+                className="w-full flex justify-center md:justify-start"
+              >
+                <Button>
+                  <div
+                    className="
+                      flex
+                      justify-center md:justify-start
+                      align-center
+                      gap-4
+                      w-full
+                    "
+                  >
+                    <BsArrowUpRightCircle size={26} />
+                    <p>{`${companyData.name} website`}</p>
+                  </div>
+                </Button>
+              </Link>
+            )}
+
+            {/* More materials */}
+            {roleData.relatedMaterials &&
+              roleData.relatedMaterials.length > 0 && (
+                <>
+                  <MaterialList
+                    materialKeys={roleData.relatedMaterials}
+                    sectionName={roleData.name}
+                  />
+                </>
+              )}
+          </div>
+        </div>
       </div>
     </main>
   );
