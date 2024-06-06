@@ -194,7 +194,9 @@ const RolePage: React.FC<RolePageProps> = ({ params }) => {
         {/* Details */}
         <div className="space-y-16">
           <div className="space-y-4">
-            <HeadingThree title="Details" />
+            <div className="text-center lg:text-left">
+              <HeadingThree title="Details" />
+            </div>
             <DetailsTable
               details={[
                 { heading: "Company", value: companyData.name },
