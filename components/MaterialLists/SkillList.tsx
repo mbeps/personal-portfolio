@@ -285,7 +285,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
       </div>
 
       {/* List of Skills */}
-      <div className="mt-4 text-center md:text-left">
+      <div className="mt-4 text-center md:text-left space-y-14">
         {groupedSkills.length > 0 ? (
           groupedSkills.map((categoryData) => (
             <div key={categoryData.skillCategoryName}>
@@ -299,7 +299,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
                 {Object.entries(categoryData.skills).map(
                   ([skillKey, skill], index) => (
                     <SkillTag
-                      key={skillKey} // Use skillKey as the key for better React key usage
+                      key={skillKey}
                       skillKey={skill}
                       hide={
                         !(
