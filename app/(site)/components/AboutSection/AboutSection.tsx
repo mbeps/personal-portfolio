@@ -36,7 +36,7 @@ const AboutSection = () => {
       <div
         className="
           flex flex-col lg:flex-row
-          space-y-10 md:space-y-5 lg:space-y-0
+          space-y-8 md:space-y-5 lg:space-y-0
           items-stretch justify-center align-top
           lg:space-x-10 lg:p-4
           lg:text-left

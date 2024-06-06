@@ -30,7 +30,7 @@ const ProjectsSection = () => {
     <section id="projects" className="home-section-wrapper">
       <HeadingTwo title="Projects" />
 
-      <div className="flex flex-col space-y-20 mt-14">
+      <div className="flex flex-col space-y-14 md:space-y-20 mt-6 md:mt-14">
         {displayedProjects.map((slug, idx) => (
           <div key={slug}>
             <SlideUp offset="-150px 0px -150px 0px">
