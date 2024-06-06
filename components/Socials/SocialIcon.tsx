@@ -34,7 +34,7 @@ const SocialIcon: React.FC<SocialIconProps> = ({
           className="
               md:hover:-translate-y-1
               cursor-pointer
-              text-neutral-600 dark:text-neutral-200
+              text-neutral-600 dark:text-neutral-300
               transition-all duration-300
             "
           size={iconSize}

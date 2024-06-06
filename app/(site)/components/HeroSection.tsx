@@ -21,6 +21,11 @@ import { HiArrowDown } from "react-icons/hi";
  */
 const HeroSection = () => {
   const isMounted: boolean = useIsMounted();
+  const subtitleStyle: string = `
+    text-2xl md:text-4xl font-semibold
+    p-1 bg-clip-text text-transparent
+    bg-gradient-to-r from-red-600 via-orange-500 to-rose-500 dark:from-red-700 dark:via-orange-600 dark:to-rose-800 tracking-wide
+    `;
 
   return (
     <section id="home" className="home-section-wrapper">
@@ -48,8 +53,8 @@ const HeroSection = () => {
           <Image
             src="/profile.png"
             alt="Profile image of the developer"
-            width={325}
-            height={325}
+            width={335}
+            height={335}
             className="rounded-full shadow-2xl"
             quality={60}
             loading="eager"
@@ -67,20 +72,24 @@ const HeroSection = () => {
         "
         >
           <div className="flex flex-col space-y-4">
-            <h2 className="text-3xl md:text-5xl font-normal">{`Hi, I'm`}</h2>
+            <h2
+              className="
+              text-3xl md:text-5xl 
+              font-normal 
+              text-neutral-600 dark:text-neutral-300"
+            >{`Hi, I'm`}</h2>
             <h1 className="text-5xl md:text-7xl font-bold">{developerName}</h1>
           </div>
 
           {/* Roles */}
-          {isMounted && (
+          {isMounted ? (
             <TextLoop
               loopItems={subtitles}
               implementation="typewriter"
-              className="
-                text-2xl md:text-4xl font-semibold
-                p-1 bg-clip-text text-transparent
-                bg-gradient-to-r from-red-600 via-orange-500 to-rose-500 dark:from-red-700 dark:via-orange-600 dark:to-rose-800 tracking-wide"
+              className={subtitleStyle}
             />
+          ) : (
+            <div className={subtitleStyle}>{subtitles[1]}</div>
           )}
 
           <Socials
@@ -103,7 +112,8 @@ const HeroSection = () => {
                 flex flex-col md:flex-row
                 space-y-4 md:space-x-4 md:space-y-0
                 w-full md:w-3/5
-          "
+                pt-2
+              "
             >
               <Button
                 variant="gradient"
