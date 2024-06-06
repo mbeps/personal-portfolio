@@ -256,7 +256,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
         )}
 
         {/* Metadata Section */}
-        <div className="mt-4 pb-10 border-b border-gray-200 dark:border-neutral-600 space-y-3">
+        <div className="mt-4 pt-8 pb-10 border-b border-gray-200 dark:border-neutral-600 space-y-12">
           {/* Description Section */}
           <div className="text-center md:text-left">
             <HeadingThree title="Description" />
@@ -351,20 +351,22 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
           </div>
         </div>
 
-        <div>
-          <TabbedReader content={{ features, blog }} />
-        </div>
+        <div className="space-y-10">
+          <div>
+            <TabbedReader content={{ features, blog }} />
+          </div>
 
-        {/* Related Materials Section */}
-        {projectData.relatedMaterials &&
-          projectData.relatedMaterials.length > 0 && (
-            <>
-              <MaterialList
-                materialKeys={projectData.relatedMaterials}
-                sectionName={projectData.name}
-              />
-            </>
-          )}
+          {/* Related Materials Section */}
+          {projectData.relatedMaterials &&
+            projectData.relatedMaterials.length > 0 && (
+              <>
+                <MaterialList
+                  materialKeys={projectData.relatedMaterials}
+                  sectionName={projectData.name}
+                />
+              </>
+            )}
+        </div>
       </div>
     </main>
   );
