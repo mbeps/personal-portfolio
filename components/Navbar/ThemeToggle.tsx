@@ -44,7 +44,7 @@ const ThemeToggle: React.FC = () => {
 
   function getMenuItemStyles(currentTheme: string): string {
     return `menu-item-styles ${
-      theme === currentTheme ? "font-bold text-red-800 dark:text-red-200" : ""
+      theme === currentTheme ? "font-bold text-red-800 dark:text-red-300" : ""
     }`;
   }
 

@@ -159,59 +159,60 @@ const ModulePage: React.FC<ModulePageProps> = ({ params }) => {
 
       <div>
         <HeadingTwo title={moduleData.name} />
+        <p
+          className="
+            text-neutral-600 dark:text-neutral-300 
+            text-lg 
+            text-center
+            pb-4
+            "
+        >
+          {moduleKey}
+        </p>
+
         <DynamicBreadcrumb breadcrumbs={breadcrumbData} />
 
-        <div className="mt-4 ">
-          {/* Learning Outcomes */}
-          {moduleData.learningOutcomes && (
-            <>
-              <div className="text-center lg:text-left">
-                <HeadingThree title="Learning Outcomes" />
-              </div>
-              <StringList items={moduleData.learningOutcomes} />
-            </>
-          )}
-        </div>
-
-        {/* Skills */}
-        <SkillTableSection allGroupedSkills={allGroupedSkills} />
-
-        {/* Module Code */}
-        <div
-          className="
-          py-4
-          flex space-x-1 w-full
-          text-xl text-neutral-800 dark:text-neutral-300
-          "
-        >
-          <p className="font-bold">Module Code:</p>
-          <p>{moduleKey}</p>
-        </div>
-
-        {/* Score */}
-        {moduleData.score && (
-          <div
-            className="
-            py-4
-            flex space-x-1 w-full
-            text-xl text-neutral-800 dark:text-neutral-300
-          "
-          >
-            <p className="font-bold">Score:</p>
-            <p>{`${moduleData.score}%`}</p>
+        <div className="space-y-12 pt-6">
+          <div className="mt-4 ">
+            {/* Learning Outcomes */}
+            {moduleData.learningOutcomes && (
+              <>
+                <div className="text-center lg:text-left">
+                  <HeadingThree title="Learning Outcomes" />
+                </div>
+                <StringList items={moduleData.learningOutcomes} />
+              </>
+            )}
           </div>
-        )}
 
-        {/* Related Material */}
-        {moduleData.relatedMaterials &&
-          moduleData.relatedMaterials.length > 0 && (
-            <>
-              <MaterialList
-                materialKeys={moduleData.relatedMaterials}
-                sectionName={moduleData.name}
-              />
-            </>
+          {/* Skills */}
+          <SkillTableSection allGroupedSkills={allGroupedSkills} />
+
+          {/* Score */}
+          {moduleData.score && (
+            <div
+              className="
+                py-4
+                flex space-x-1 w-full
+                text-xl text-neutral-800 dark:text-neutral-300
+              "
+            >
+              <p className="font-bold">Score:</p>
+              <p>{moduleData.score}</p>
+            </div>
           )}
+
+          {/* Related Material */}
+          {moduleData.relatedMaterials &&
+            moduleData.relatedMaterials.length > 0 && (
+              <>
+                <MaterialList
+                  materialKeys={moduleData.relatedMaterials}
+                  sectionName={moduleData.name}
+                />
+              </>
+            )}
+        </div>
       </div>
     </main>
   );

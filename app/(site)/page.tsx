@@ -35,7 +35,7 @@ export default function Home() {
         ))}
         <Reader content={aboutContent} size="lg:prose-lg" />
       </div>
-      <div className="flex flex-col space-y-8 md:space-y-36">
+      <div className="flex flex-col space-y-20 md:space-y-36">
         <HeroSection />
         <AboutSection />
         <ProjectsSection />

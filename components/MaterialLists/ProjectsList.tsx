@@ -28,7 +28,7 @@ const ProjectsList: React.FC<MaterialListProps> = ({
                       <HeadingTwo title={group.groupName} />
                     </>
                   )}
-                  <div className="space-y-20">
+                  <div className="space-y-14 md:space-y-20">
                     {group.materialsKeys.map((projectKey) => (
                       <div
                         key={projectKey}

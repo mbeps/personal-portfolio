@@ -106,11 +106,15 @@ const TabbedReader: React.FC<TabbedReaderProps> = ({ content }) => {
         )}
         {/* Content */}
         <TabsContent value="features">
-          <HeadingTwo title="Features" />
+          {!(hasFeatures && hasBlog) && <HeadingTwo title="Features" />}
           <Reader content={content.features} size="lg:prose-lg" />
         </TabsContent>
         <TabsContent value="reflection">
-          <HeadingTwo title="Reflection" />
+          {!(hasFeatures && hasBlog) && <HeadingTwo title="Reflection" />}
+          <p className="text-center text-neutral-600 dark:text-neutral-300 text-lg">
+            This reflection provides insights into the journey of building this
+            project
+          </p>
           <Reader content={content.blog} size="lg:prose-lg" />
         </TabsContent>
       </Tabs>

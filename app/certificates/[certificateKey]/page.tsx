@@ -199,94 +199,94 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
             </p>
           </div>
 
-          {/* Certificate Description */}
-          {certificateData.description && (
-            <div className="flex flex-col">
-              <div className="md:text-left text-center">
-                <HeadingThree title="Description" />
-              </div>
-              <p className="text-lg text-neutral-800 dark:text-neutral-300">
-                {certificateData.description}
-              </p>
-            </div>
-          )}
-
-          <div className="mt-4 ">
-            {/* Credentials ID */}
-            {certificateData.learningOutcomes && (
-              <>
-                <div className="text-center lg:text-left">
-                  <HeadingThree title="Learning Objectives" />
+          <div className="space-y-14">
+            {/* Certificate Description */}
+            {certificateData.description && (
+              <div className="flex flex-col">
+                <div className="md:text-left text-center">
+                  <HeadingThree title="Description" />
                 </div>
-                <StringList items={certificateData.learningOutcomes} />
-              </>
+                <p className="text-lg text-neutral-800 dark:text-neutral-300">
+                  {certificateData.description}
+                </p>
+              </div>
             )}
-          </div>
 
-          <div className="mt-4">
+            <div>
+              {/* Learning Outcomes */}
+              {certificateData.learningOutcomes && (
+                <>
+                  <div className="text-center lg:text-left">
+                    <HeadingThree title="Learning Objectives" />
+                  </div>
+                  <StringList items={certificateData.learningOutcomes} />
+                </>
+              )}
+            </div>
+
             <SkillTableSection allGroupedSkills={allGroupedSkills} />
-          </div>
 
-          <div className="md:grid md:grid-cols-2">
-            <div>
-              <div className="md:text-left text-center">
-                <HeadingThree title="Certificate Issuer" />
+            <div className="md:grid md:grid-cols-2">
+              <div>
+                <div className="md:text-left text-center">
+                  <HeadingThree title="Certificate Issuer" />
+                </div>
+                <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-5">
+                  <Tag>{certificateData.issuer}</Tag>
+                </div>
               </div>
-              <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-5">
-                <Tag>{certificateData.issuer}</Tag>
+
+              <div>
+                <div className="md:text-left text-center">
+                  <HeadingThree title="Links" />
+                </div>
+                {/* Links */}
+                <div
+                  className="
+                    mt-6 flex 
+                    flex-row 
+                    justify-center md:justify-start items-center 
+                    w-full 
+                    gap-2"
+                >
+                  {/* Issuer Page */}
+                  {certificateData.certificateURL && (
+                    <Link
+                      href={certificateData.certificateURL}
+                      target="_blank"
+                      className="w-auto md:w-full"
+                    >
+                      <Button variant="default">
+                        <div
+                          className="
+                            flex
+                            justify-center md:justify-start
+                            align-center
+                            gap-4
+                            w-full
+                          "
+                        >
+                          <BsArrowUpRightCircle size={26} />
+                          <p>Issuer Page</p>
+                        </div>
+                      </Button>
+                    </Link>
+                  )}
+                </div>
               </div>
             </div>
 
-            <div>
-              <div className="md:text-left text-center">
-                <HeadingThree title="Links" />
-              </div>
-              {/* Links */}
-              <div
-                className="
-                mt-6 flex 
-                flex-row 
-                justify-center md:justify-start items-center 
-                w-full 
-                gap-2"
-              >
-                {/* Issuer Page */}
-                {certificateData.certificateURL && (
-                  <Link
-                    href={certificateData.certificateURL}
-                    target="_blank"
-                    className="w-auto md:w-full"
-                  >
-                    <Button variant="default">
-                      <div
-                        className="
-                        flex
-                        justify-center md:justify-start
-                        align-center
-                        gap-4
-                        w-full
-                    "
-                      >
-                        <BsArrowUpRightCircle size={26} />
-                        <p>Issuer Page</p>
-                      </div>
-                    </Button>
-                  </Link>
-                )}
-              </div>
-            </div>
+            {certificateData.relatedMaterials &&
+              certificateData.relatedMaterials.length > 0 && (
+                <div className="mt-8">
+                  <MaterialList
+                    materialKeys={certificateData.relatedMaterials}
+                    defaultTab={MaterialTypeEnum.Certificates}
+                    sectionName={certificateData.name}
+                  />
+                </div>
+              )}
           </div>
-
-          {certificateData.relatedMaterials &&
-            certificateData.relatedMaterials.length > 0 && (
-              <div className="mt-8">
-                <MaterialList
-                  materialKeys={certificateData.relatedMaterials}
-                  defaultTab={MaterialTypeEnum.Certificates}
-                  sectionName={certificateData.name}
-                />
-              </div>
-            )}
         </div>
       </div>
     </main>
