@@ -44,7 +44,7 @@ export default function Navbar() {
         className={`
           h-${NAVBAR_HEIGHT}
           w-full mx-auto
-          px-2 md:px-6
+          px-4
           fixed 
           top-0 
           z-50 
