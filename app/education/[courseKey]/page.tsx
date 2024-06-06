@@ -236,43 +236,52 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
           </div>
         </div>
 
-        <div className="text-center lg:text-left">
-          <HeadingThree title="Modules" />
-        </div>
+        <div className="space-y-14">
+          <div>
+            <div className="text-center lg:text-left">
+              <HeadingThree title="Modules" />
+            </div>
 
-        {/* Archive Toggle */}
-        <ArchiveToggle
-          showArchived={showArchived}
-          filterProps={[]}
-          basePath={`${basePath}/${courseKey}`}
-        />
-        {/* Modules */}
-        {groupedModules.map((group, index) => (
-          <div key={index} className="mb-4">
-            <HeadingFour title={group.groupName} />
-            <Grid
-              gap={1}
-              items={group.materialsKeys.map((moduleKey, idx) => (
-                <Link href={`${basePath}/${courseKey}/${moduleKey}`} key={idx}>
-                  <Tag hasHover>{moduleDatabaseMap[moduleKey].name}</Tag>
-                </Link>
-              ))}
+            {/* Archive Toggle */}
+            <ArchiveToggle
+              showArchived={showArchived}
+              filterProps={[]}
+              basePath={`${basePath}/${courseKey}`}
             />
+
+            {/* Modules */}
+            {groupedModules.map((group, index) => (
+              <div key={index} className="mb-4">
+                <HeadingFour title={group.groupName} />
+                <Grid
+                  gap={1}
+                  items={group.materialsKeys.map((moduleKey, idx) => (
+                    <Link
+                      href={`${basePath}/${courseKey}/${moduleKey}`}
+                      key={idx}
+                    >
+                      <Tag hasHover>{moduleDatabaseMap[moduleKey].name}</Tag>
+                    </Link>
+                  ))}
+                />
+              </div>
+            ))}
           </div>
-        ))}
 
-        {/* Skills */}
-        <SkillTableSection allGroupedSkills={allGroupedSkills} />
+          {/* Skills */}
+          <SkillTableSection allGroupedSkills={allGroupedSkills} />
 
-        {courseData.relatedMaterials &&
-          courseData.relatedMaterials.length > 0 && (
-            <>
-              <MaterialList
-                materialKeys={courseData.relatedMaterials}
-                sectionName={courseData.name}
-              />
-            </>
-          )}
+          {/* Related Materials */}
+          {courseData.relatedMaterials &&
+            courseData.relatedMaterials.length > 0 && (
+              <>
+                <MaterialList
+                  materialKeys={courseData.relatedMaterials}
+                  sectionName={courseData.name}
+                />
+              </>
+            )}
+        </div>
       </div>
     </main>
   );
