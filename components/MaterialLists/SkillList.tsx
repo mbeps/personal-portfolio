@@ -1,7 +1,6 @@
 "use client";
 
 import generateUrl from "@/actions/generateUrl";
-import countMaterialsAttributedToSkill from "@/actions/material/countMaterialsAttributedToSkill";
 import groupSkills, {
   GroupByOptions,
 } from "@/actions/skills/group/groupSkills";
@@ -44,6 +43,7 @@ import {
 } from "next/navigation";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
+import skillHasMaterial from "@/actions/material/skillHasMaterial";
 
 interface SkillListProps {
   skills: SkillDatabaseKeys[];
@@ -158,7 +158,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
       selected: includeSoftSkills,
     },
     {
-      entryName: "No Material",
+      entryName: "With No Material",
       urlParamName: noMaterialParamName,
       value: includeNoMaterial ? "false" : "true",
       selected: includeNoMaterial,
@@ -285,7 +285,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
       </div>
 
       {/* List of Skills */}
-      <div className="mt-4 text-center md:text-left space-y-14">
+      <div className="mt-4 text-center md:text-left space-y-16">
         {groupedSkills.length > 0 ? (
           groupedSkills.map((categoryData) => (
             <div key={categoryData.skillCategoryName}>
@@ -297,18 +297,13 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
               />
               <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
                 {Object.entries(categoryData.skills).map(
-                  ([skillKey, skill], index) => (
+                  ([count, skillKey], index) => (
                     <SkillTag
-                      key={skillKey}
-                      skillKey={skill}
+                      key={count}
+                      skillKey={skillKey}
                       hide={
-                        !(
-                          countMaterialsAttributedToSkill(
-                            skillKey as SkillDatabaseKeys,
-                            skillDatabaseMap,
-                            materialDatabaseMap
-                          ) >= 5
-                        ) && includeNoMaterial
+                        !skillHasMaterial(skillKey, materialDatabaseMap) &&
+                        includeNoMaterial
                       }
                     />
                   )
