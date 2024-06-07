@@ -1060,20 +1060,20 @@ const skillDatabaseMap: Database<SkillInterface> = {
   //^ APIs and Web Services
   [SkillDatabaseKeys.REST]: {
     name: "REST",
-    category: SkillCategoriesEnum.APIs,
+    category: SkillCategoriesEnum.CommunicationProtocolsLibraries,
     isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [SkillDatabaseKeys.WebDevelopment, SkillDatabaseKeys.APIs],
   },
   [SkillDatabaseKeys.Apollo]: {
     name: "Apollo",
-    category: SkillCategoriesEnum.APIs,
+    category: SkillCategoriesEnum.CommunicationProtocolsLibraries,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [SkillDatabaseKeys.WebDevelopment, SkillDatabaseKeys.APIs],
   },
   [SkillDatabaseKeys.GraphQL]: {
     name: "GraphQL",
-    category: SkillCategoriesEnum.APIs,
+    category: SkillCategoriesEnum.CommunicationProtocolsLibraries,
     isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
@@ -1084,13 +1084,13 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.TRPC]: {
     name: "tRPC",
-    category: SkillCategoriesEnum.APIs,
+    category: SkillCategoriesEnum.CommunicationProtocolsLibraries,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [SkillDatabaseKeys.WebDevelopment, SkillDatabaseKeys.APIs],
   },
   [SkillDatabaseKeys.SocketIO]: {
     name: "Socket.IO",
-    category: SkillCategoriesEnum.WebSockets,
+    category: SkillCategoriesEnum.CommunicationProtocolsLibraries,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.WebDevelopment,
@@ -1099,7 +1099,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.Pusher]: {
     name: "Pusher",
-    category: SkillCategoriesEnum.WebSockets,
+    category: SkillCategoriesEnum.CommunicationProtocolsLibraries,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.WebDevelopment,
@@ -2044,7 +2044,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.APIs]: {
     name: "APIs",
-    category: SkillCategoriesEnum.APIs,
+    category: SkillCategoriesEnum.CommunicationProtocolsLibraries,
     isMainSkill: false,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [
@@ -2077,7 +2077,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.WebSockets]: {
     name: "Web Sockets",
-    category: SkillCategoriesEnum.WebSockets,
+    category: SkillCategoriesEnum.CommunicationProtocolsLibraries,
     isMainSkill: false,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [SkillDatabaseKeys.SocketIO, SkillDatabaseKeys.Pusher],
@@ -2346,7 +2346,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.SDKs]: {
     name: "SDK",
-    category: SkillCategoriesEnum.SDKs,
+    category: SkillCategoriesEnum.CommunicationProtocolsLibraries,
     isMainSkill: true,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [

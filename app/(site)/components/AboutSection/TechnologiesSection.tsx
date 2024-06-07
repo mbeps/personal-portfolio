@@ -43,7 +43,6 @@ const TechnologiesSection: React.FC = () => {
     SkillCategoriesEnum.ProjectManagers,
     SkillCategoriesEnum.ObjectRelationalMappers,
     SkillCategoriesEnum.VersionControl,
-    SkillCategoriesEnum.WebSockets,
     SkillCategoriesEnum.Mathematics,
     SkillCategoriesEnum.CloudComputing,
     SkillCategoriesEnum.Automation,

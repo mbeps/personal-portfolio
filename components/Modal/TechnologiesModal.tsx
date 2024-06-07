@@ -83,7 +83,6 @@ const TechnologiesModal: React.FC = () => {
     SkillCategoriesEnum.ProjectManagers,
     SkillCategoriesEnum.ObjectRelationalMappers,
     SkillCategoriesEnum.VersionControl,
-    SkillCategoriesEnum.WebSockets,
     SkillCategoriesEnum.CloudComputing,
     SkillCategoriesEnum.Automation,
     ...(groupedBy !== "language"
