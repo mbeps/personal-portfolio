@@ -6,10 +6,9 @@
 const subtitles: string[] = [
   "Software Engineering",
   "Full-Stack Development",
-  "Machine Learning",
   "Artificial Intelligence",
-  "Deep Learning",
   "DevOps",
+  "Databases",
   "Mathematics",
 ];
 
