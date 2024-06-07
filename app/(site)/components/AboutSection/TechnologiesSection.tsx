@@ -41,9 +41,8 @@ const TechnologiesSection: React.FC = () => {
   const ignoredCategories: SkillCategoriesEnum[] = [
     SkillCategoriesEnum.ProgrammingLanguages,
     SkillCategoriesEnum.ProjectManagers,
-    SkillCategoriesEnum.ObjectRelationalMappers,
+    SkillCategoriesEnum.DatabaseManagement,
     SkillCategoriesEnum.VersionControl,
-    SkillCategoriesEnum.WebSockets,
     SkillCategoriesEnum.Mathematics,
     SkillCategoriesEnum.CloudComputing,
     SkillCategoriesEnum.Automation,
@@ -108,7 +107,7 @@ const TechnologiesSection: React.FC = () => {
   }
 
   function handleDisplaySkills(): SkillDatabaseKeys[] {
-    return firstNSkills(firstNSkillsPerCategory(skillsToDisplay, 2), 16);
+    return firstNSkills(firstNSkillsPerCategory(skillsToDisplay, 3), 15);
   }
 
   return (
