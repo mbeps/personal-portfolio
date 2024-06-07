@@ -1013,7 +1013,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.Matplotlib]: {
     name: "Matplotlib",
-    category: SkillCategoriesEnum.DataScience,
+    category: SkillCategoriesEnum.ArtificialIntelligence,
     isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
@@ -1024,7 +1024,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.Seaborn]: {
     name: "Seaborn",
-    category: SkillCategoriesEnum.DataScience,
+    category: SkillCategoriesEnum.ArtificialIntelligence,
     isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
@@ -1049,7 +1049,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.Jupyter]: {
     name: "Jupyter Notebooks",
-    category: SkillCategoriesEnum.DataScience,
+    category: SkillCategoriesEnum.ArtificialIntelligence,
     isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [SkillDatabaseKeys.Python, SkillDatabaseKeys.DataScience],
@@ -1954,7 +1954,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.DataScience]: {
     name: "Data Science",
-    category: SkillCategoriesEnum.DataScience,
+    category: SkillCategoriesEnum.ArtificialIntelligence,
     isMainSkill: false,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [
@@ -2006,7 +2006,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.DataVisualisation]: {
     name: "Data Visualisation",
-    category: SkillCategoriesEnum.DataScience,
+    category: SkillCategoriesEnum.ArtificialIntelligence,
     isMainSkill: false,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [
