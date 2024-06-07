@@ -659,7 +659,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   //^ Databases
   [SkillDatabaseKeys.Normalisation]: {
     name: "Normalisation",
-    category: SkillCategoriesEnum.Databases,
+    category: SkillCategoriesEnum.DatabaseManagement,
     isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
@@ -670,7 +670,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.PostgreSQL]: {
     name: "PostgreSQL",
-    category: SkillCategoriesEnum.Databases,
+    category: SkillCategoriesEnum.DatabaseManagement,
     isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
@@ -683,7 +683,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.MySQL]: {
     name: "MySQL",
-    category: SkillCategoriesEnum.Databases,
+    category: SkillCategoriesEnum.DatabaseManagement,
     isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
@@ -696,7 +696,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.SQLite]: {
     name: "SQLite",
-    category: SkillCategoriesEnum.Databases,
+    category: SkillCategoriesEnum.DatabaseManagement,
     isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
@@ -709,7 +709,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.MongoDB]: {
     name: "MongoDB",
-    category: SkillCategoriesEnum.Databases,
+    category: SkillCategoriesEnum.DatabaseManagement,
     isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
@@ -721,7 +721,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.Redis]: {
     name: "Redis",
-    category: SkillCategoriesEnum.Databases,
+    category: SkillCategoriesEnum.DatabaseManagement,
     isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
@@ -733,7 +733,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.Convex]: {
     name: "Convex",
-    category: SkillCategoriesEnum.Databases,
+    category: SkillCategoriesEnum.DatabaseManagement,
     isMainSkill: false,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
@@ -744,11 +744,9 @@ const skillDatabaseMap: Database<SkillInterface> = {
     ],
   },
 
-  //^ Object Relational Mapping
   [SkillDatabaseKeys.Mongoose]: {
     name: "Mongoose",
-    category: SkillCategoriesEnum.ObjectRelationalMappers,
-    isMainSkill: true,
+    category: SkillCategoriesEnum.DatabaseManagement,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.JavaScript,
@@ -763,14 +761,12 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.Prisma]: {
     name: "Prisma",
-    category: SkillCategoriesEnum.ObjectRelationalMappers,
+    category: SkillCategoriesEnum.DatabaseManagement,
     isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.DatabaseManagementSystems,
       SkillDatabaseKeys.Databases,
-      SkillDatabaseKeys.RelationalDatabases,
-      SkillDatabaseKeys.NonRelationalDatabases,
       SkillDatabaseKeys.DatabaseIndexing,
       SkillDatabaseKeys.ObjectOrientedProgramming,
       SkillDatabaseKeys.MongoDB,
@@ -783,8 +779,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.Drizzle]: {
     name: "Drizzle",
-    category: SkillCategoriesEnum.ObjectRelationalMappers,
-    isMainSkill: true,
+    category: SkillCategoriesEnum.DatabaseManagement,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.JavaScript,
@@ -801,7 +796,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.TypeORM]: {
     name: "TypeORM",
-    category: SkillCategoriesEnum.ObjectRelationalMappers,
+    category: SkillCategoriesEnum.DatabaseManagement,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.JavaScript,
@@ -818,7 +813,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.SQLAlchemy]: {
     name: "SQLAlchemy",
-    category: SkillCategoriesEnum.ObjectRelationalMappers,
+    category: SkillCategoriesEnum.DatabaseManagement,
     isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
@@ -835,8 +830,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.Hibernate]: {
     name: "Hibernate",
-    category: SkillCategoriesEnum.ObjectRelationalMappers,
-    isMainSkill: true,
+    category: SkillCategoriesEnum.DatabaseManagement,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.Java,
@@ -2057,7 +2051,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.Databases]: {
     name: "Databases",
-    category: SkillCategoriesEnum.Databases,
+    category: SkillCategoriesEnum.DatabaseManagement,
     isMainSkill: false,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [
@@ -2084,7 +2078,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.RelationalDatabases]: {
     name: "Relational Databases (SQL)",
-    category: SkillCategoriesEnum.Databases,
+    category: SkillCategoriesEnum.DatabaseManagement,
     isMainSkill: false,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [
@@ -2100,7 +2094,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
 
   [SkillDatabaseKeys.NonRelationalDatabases]: {
     name: "Non Relational Databases (NoSQL)",
-    category: SkillCategoriesEnum.Databases,
+    category: SkillCategoriesEnum.DatabaseManagement,
     isMainSkill: false,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [
@@ -2113,7 +2107,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.ObjectRelationalMapping]: {
     name: "Object Relational Mapping",
-    category: SkillCategoriesEnum.Databases,
+    category: SkillCategoriesEnum.DatabaseManagement,
     isMainSkill: false,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [
@@ -2189,7 +2183,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.DatabaseManagementSystems]: {
     name: "Database Management Systems",
-    category: SkillCategoriesEnum.Databases,
+    category: SkillCategoriesEnum.DatabaseManagement,
     isMainSkill: false,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [
@@ -2203,7 +2197,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.DatabaseIndexing]: {
     name: "Indexing",
-    category: SkillCategoriesEnum.Databases,
+    category: SkillCategoriesEnum.DatabaseManagement,
     isMainSkill: false,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [
