@@ -4,7 +4,6 @@
  */
 enum SkillCategoriesEnum {
   ProgrammingLanguages = "Programming Languages",
-  ProgrammingParadigms = "Programming Paradigms",
   FrontEndWebDevelopment = "Front-End Web Development",
   BackEndWebDevelopment = "Back-End Web Development",
   FullStackWebDevelopment = "Full-Stack Web Development",
@@ -21,7 +20,7 @@ enum SkillCategoriesEnum {
   CodeQuality = "Code Quality",
   VersionControl = "Version Control",
   PlatformDevelopment = "Platform Development",
-  CoreComputerScience = "Core Computer Science",
+  ComputerScienceConcepts = "Computer Science Concepts",
   Automation = "Automation",
   SoftSkills = "Soft Skills",
   Security = "Security",

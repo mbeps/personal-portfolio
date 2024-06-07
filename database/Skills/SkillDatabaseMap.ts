@@ -1808,7 +1808,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.ObjectOrientedProgramming]: {
     name: "Object Oriented Programming",
-    category: SkillCategoriesEnum.ProgrammingParadigms,
+    category: SkillCategoriesEnum.ComputerScienceConcepts,
     isMainSkill: false,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [
@@ -1820,7 +1820,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.FunctionalProgramming]: {
     name: "Functional Programming",
-    category: SkillCategoriesEnum.ProgrammingParadigms,
+    category: SkillCategoriesEnum.ComputerScienceConcepts,
     isMainSkill: false,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [
@@ -1832,7 +1832,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.Algorithms]: {
     name: "Algorithms",
-    category: SkillCategoriesEnum.CoreComputerScience,
+    category: SkillCategoriesEnum.ComputerScienceConcepts,
     isMainSkill: false,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [
@@ -1844,7 +1844,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.DataStructures]: {
     name: "Data Structures",
-    category: SkillCategoriesEnum.CoreComputerScience,
+    category: SkillCategoriesEnum.ComputerScienceConcepts,
     isMainSkill: false,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [
