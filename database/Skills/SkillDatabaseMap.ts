@@ -273,34 +273,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.StateManagement,
     ],
   },
-  [SkillDatabaseKeys.TailwindCSS]: {
-    name: "Tailwind CSS",
-    category: SkillCategoriesEnum.FrontEndWebDevelopment,
-    isMainSkill: true,
-    skillType: SkillTypesEnum.Technology,
-    relatedSkills: [
-      SkillDatabaseKeys.WebDevelopment,
-      SkillDatabaseKeys.UserCentricDesign,
-    ],
-  },
-  [SkillDatabaseKeys.HTML]: {
-    name: "HTML",
-    category: SkillCategoriesEnum.FrontEndWebDevelopment,
-    skillType: SkillTypesEnum.Technology,
-    relatedSkills: [
-      SkillDatabaseKeys.WebDevelopment,
-      SkillDatabaseKeys.UserCentricDesign,
-    ],
-  },
-  [SkillDatabaseKeys.CSS]: {
-    name: "CSS",
-    category: SkillCategoriesEnum.FrontEndWebDevelopment,
-    skillType: SkillTypesEnum.Technology,
-    relatedSkills: [
-      SkillDatabaseKeys.WebDevelopment,
-      SkillDatabaseKeys.UserCentricDesign,
-    ],
-  },
   [SkillDatabaseKeys.ReactJS]: {
     name: "React",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
@@ -315,6 +287,38 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.Zustand,
       SkillDatabaseKeys.Jotai,
       SkillDatabaseKeys.Redux,
+    ],
+  },
+  [SkillDatabaseKeys.HTML]: {
+    name: "HTML",
+    isMainSkill: true,
+    category: SkillCategoriesEnum.FrontEndWebDevelopment,
+    skillType: SkillTypesEnum.Technology,
+    relatedSkills: [
+      SkillDatabaseKeys.WebDevelopment,
+      SkillDatabaseKeys.UserCentricDesign,
+    ],
+  },
+  [SkillDatabaseKeys.CSS]: {
+    name: "CSS",
+    isMainSkill: true,
+    category: SkillCategoriesEnum.FrontEndWebDevelopment,
+    skillType: SkillTypesEnum.Technology,
+    relatedSkills: [
+      SkillDatabaseKeys.WebDevelopment,
+      SkillDatabaseKeys.UserCentricDesign,
+      SkillDatabaseKeys.TailwindCSS,
+    ],
+  },
+  [SkillDatabaseKeys.TailwindCSS]: {
+    name: "Tailwind CSS",
+    category: SkillCategoriesEnum.FrontEndWebDevelopment,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Technology,
+    relatedSkills: [
+      SkillDatabaseKeys.CSS,
+      SkillDatabaseKeys.WebDevelopment,
+      SkillDatabaseKeys.UserCentricDesign,
     ],
   },
   [SkillDatabaseKeys.SvelteJS]: {
