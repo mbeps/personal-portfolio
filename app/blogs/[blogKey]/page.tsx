@@ -158,7 +158,6 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
           <>
             <MaterialList
               materialKeys={blogData.relatedMaterials}
-              sectionName={blogData.name}
             />
           </>
         )}

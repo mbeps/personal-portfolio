@@ -13,7 +13,6 @@ export interface MaterialTabsProps {
   materialKeys: string[];
   defaultTab?: MaterialTypeEnum;
   isCollapsible?: boolean;
-  sectionName?: string;
 }
 
 /**
@@ -34,7 +33,6 @@ const MaterialList: React.FC<MaterialTabsProps> = ({
   materialKeys,
   defaultTab,
   isCollapsible = true,
-  sectionName,
 }) => {
   return isCollapsible ? (
     <Accordion type="single" collapsible className="mt-16">
@@ -58,7 +56,7 @@ const MaterialList: React.FC<MaterialTabsProps> = ({
                   font-semibold
                   "
             >
-              {`List of material directly related to ${sectionName}`}
+              Directly Related Material
             </p>
           </div>
         </AccordionTrigger>

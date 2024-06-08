@@ -355,20 +355,14 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
 
           {/* Features Section */}
           <div>
-            <ProjectReader
-              content={{ features, blog }}
-              projectName={projectData.name}
-            />
+            <ProjectReader content={{ features, blog }} />
           </div>
 
           {/* Related Materials Section */}
           {projectData.relatedMaterials &&
             projectData.relatedMaterials.length > 0 && (
               <>
-                <MaterialList
-                  materialKeys={projectData.relatedMaterials}
-                  sectionName={projectData.name}
-                />
+                <MaterialList materialKeys={projectData.relatedMaterials} />
               </>
             )}
         </div>

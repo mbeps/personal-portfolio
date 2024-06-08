@@ -19,7 +19,6 @@ import React, { MutableRefObject, useEffect, useRef, useState } from "react";
 import { IoReaderOutline } from "react-icons/io5";
 
 type TabbedReaderProps = {
-  projectName: string;
   content: {
     features?: string;
     blog?: string;
@@ -37,27 +36,24 @@ type TabbedReaderProps = {
  * @param blog Blog to be rendered
  * @returns Rendered Markdown content in a tabbed view
  */
-const ProjectReader: React.FC<TabbedReaderProps> = ({
-  content,
-  projectName,
-}) => {
+const ProjectReader: React.FC<TabbedReaderProps> = ({ content }) => {
   const hasFeatures: boolean = !!content.features;
   const hasBlog: boolean = !!content.blog;
   const isMounted: boolean = useIsMounted();
   const [view, setView] = useState<"features" | "reflection">("features");
   const message: MutableRefObject<string> = useRef(
-    `Explore features & the journey building ${projectName}`
+    `View Features & Read Reflective Blog`
   );
 
   useEffect(() => {
     if (!hasFeatures && hasBlog) {
       setView("reflection");
-      message.current = `Read about the journey of building ${projectName}`;
+      message.current = `Read Reflective Blog`;
     } else if (!hasBlog && hasFeatures) {
       setView("features");
-      message.current = `Explore the features of ${projectName}`;
+      message.current = `View Features`;
     }
-  }, [hasFeatures, hasBlog, projectName]);
+  }, [hasFeatures, hasBlog]);
 
   if (!isMounted) {
     return null;
@@ -99,8 +95,8 @@ const ProjectReader: React.FC<TabbedReaderProps> = ({
             </p>
           </div>
         </AccordionTrigger>
-        <AccordionContent className="mt-4">
-          <div className="flex flex-col pt-8">
+        <AccordionContent className="px-2">
+          <div className="flex flex-col">
             <Tabs defaultValue={view} className="w-full">
               {/* Options */}
               {hasFeatures && hasBlog && (
@@ -131,7 +127,7 @@ const ProjectReader: React.FC<TabbedReaderProps> = ({
                 {!(hasFeatures && hasBlog) && (
                   <HeadingThree title="Reflection" />
                 )}
-                <p className="text-center text-neutral-600 dark:text-neutral-300 text-lg py-4">
+                <p className="text-neutral-600 dark:text-neutral-300 text-lg py-4">
                   This reflection provides insights into the journey of building
                   this project
                 </p>
