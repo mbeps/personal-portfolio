@@ -51,6 +51,7 @@ export const companyDatabaseKeys = Object.keys(
 /**
  * Database of companies I have worked at.
  * Each of these companies can have one or more roles.
+ * The order of the roles is important as it determines the order in which they are displayed.
  */
 const companyDatabaseMap: Database<CompanyInterface> = companiesMap;
 export default companyDatabaseMap;
