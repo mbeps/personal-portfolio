@@ -257,10 +257,7 @@ const RolePage: React.FC<RolePageProps> = ({ params }) => {
             {roleData.relatedMaterials &&
               roleData.relatedMaterials.length > 0 && (
                 <>
-                  <MaterialList
-                    materialKeys={roleData.relatedMaterials}
-                    sectionName={roleData.name}
-                  />
+                  <MaterialList materialKeys={roleData.relatedMaterials} />
                 </>
               )}
           </div>

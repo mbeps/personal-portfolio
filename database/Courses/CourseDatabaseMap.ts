@@ -17,7 +17,7 @@ const courseMap: Database<CourseInterface> = {
     university: "Royal Holloway, University of London",
     grade: "First Class Honours",
     category: "Bachelor of Science",
-    skills: [],
+    skills: [], // dynamically added from modules
     startYear: 2020,
     endYear: 2023,
     modules: [

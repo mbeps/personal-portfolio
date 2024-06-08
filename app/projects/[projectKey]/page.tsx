@@ -26,7 +26,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
-import TabbedReader from "./components/TabbedReader";
+import ProjectReader from "./components/ProjectReader";
 import projectDatabaseMap from "@/database/Projects/ProjectDatabaseMap";
 import ProjectInterface from "@/database/Projects/ProjectInterface";
 import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
@@ -256,7 +256,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
         )}
 
         {/* Metadata Section */}
-        <div className="mt-4 pt-8 pb-10 border-b border-gray-200 dark:border-neutral-600 space-y-12">
+        <div className="mt-4 space-y-12">
           {/* Description Section */}
           <div className="text-center md:text-left">
             <HeadingThree title="Description" />
@@ -349,21 +349,20 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
               )}
             </div>
           </div>
-        </div>
 
-        <div className="space-y-10">
+          {/* Divider */}
+          <div className="pt-2 pb-3 border-b border-gray-200 dark:border-neutral-600" />
+
+          {/* Features Section */}
           <div>
-            <TabbedReader content={{ features, blog }} />
+            <ProjectReader content={{ features, blog }} />
           </div>
 
           {/* Related Materials Section */}
           {projectData.relatedMaterials &&
             projectData.relatedMaterials.length > 0 && (
               <>
-                <MaterialList
-                  materialKeys={projectData.relatedMaterials}
-                  sectionName={projectData.name}
-                />
+                <MaterialList materialKeys={projectData.relatedMaterials} />
               </>
             )}
         </div>

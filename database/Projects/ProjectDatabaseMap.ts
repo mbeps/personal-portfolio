@@ -195,8 +195,7 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.JokerNotes]: {
     name: "Joker Notes",
     description: `
-      A simple rich-text note-taking app that allows users to create, edit, and delete notes.
-      `,
+      A versatile note-taking app where users can sign up, log in, and reset passwords easily. It supports rich text formatting, image additions, and publishing notes publicly. Users can switch between light and dark mode and organize notes into nested notebooks.      `,
     repositoryURL: `https://github.com/mbeps/joker-notes`,
     skills: [
       SkillDatabaseKeys.TypeScript,

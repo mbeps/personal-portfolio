@@ -206,10 +206,7 @@ const ModulePage: React.FC<ModulePageProps> = ({ params }) => {
           {moduleData.relatedMaterials &&
             moduleData.relatedMaterials.length > 0 && (
               <>
-                <MaterialList
-                  materialKeys={moduleData.relatedMaterials}
-                  sectionName={moduleData.name}
-                />
+                <MaterialList materialKeys={moduleData.relatedMaterials} />
               </>
             )}
         </div>

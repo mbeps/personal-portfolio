@@ -5,6 +5,11 @@ import HeadingOne from "@/components/Text/HeadingOne";
 import DetailsTable from "@/components/UI/DetailsTable";
 import developerName from "@/constants/developerName";
 import subtitles from "@/constants/subtitles";
+import companyDatabaseMap from "@/database/Companies/CompanyDatabaseMap";
+import courseDatabaseMap from "@/database/Courses/CourseDatabaseMap";
+import CourseInterface from "@/database/Courses/CourseInterface";
+import rolesDatabase from "@/database/Roles/RoleDatabaseMap";
+import RoleInterface from "@/database/Roles/RoleInterface";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -28,6 +33,14 @@ export default function About() {
   if (!aboutContent) {
     notFound();
   }
+
+  const latestWorkExperience: RoleInterface = Object.values(rolesDatabase)[0];
+  const latestRole: string = latestWorkExperience.name;
+  const latestCompany: string =
+    companyDatabaseMap[latestWorkExperience.company].name;
+  const latestEducation: CourseInterface = Object.values(courseDatabaseMap)[0];
+  const latestUniversityName: string = latestEducation.university;
+  const latestCourseName: string = latestEducation.name;
 
   return (
     <main>
@@ -91,11 +104,11 @@ export default function About() {
               { heading: "Location", value: "London, UK" },
               {
                 heading: "University",
-                value: "Royal Holloway, University of London",
+                value: latestUniversityName,
               },
-              { heading: "Degree", value: "BSc Computer Science" },
-              { heading: "Currently Working", value: "Commerzbank" },
-              { heading: "Current Role", value: "DevOps Engineer" },
+              { heading: "Degree", value: latestCourseName },
+              { heading: "Currently Working", value: latestCompany },
+              { heading: "Current Role", value: latestRole },
             ]}
             className="grid-cols-2 md:grid-cols-2 lg:grid-cols-1"
           />
