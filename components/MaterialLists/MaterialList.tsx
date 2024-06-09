@@ -60,7 +60,7 @@ const MaterialList: React.FC<MaterialTabsProps> = ({
             </p>
           </div>
         </AccordionTrigger>
-        <AccordionContent className="mt-4">
+        <AccordionContent className="mt-4 px-4">
           <MaterialTab materialKeys={materialKeys} defaultTab={defaultTab} />
         </AccordionContent>
       </AccordionItem>
