@@ -351,12 +351,18 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
           </div>
 
           {/* Divider */}
-          <div className="pt-2 pb-3 border-b border-gray-200 dark:border-neutral-600" />
+          {!(!features || !!blog) ||
+            (projectData.relatedMaterials &&
+              projectData.relatedMaterials.length > 0 && (
+                <div className="pt-2 pb-3 border-b border-gray-200 dark:border-neutral-600" />
+              ))}
 
           {/* Features Section */}
-          <div>
-            <ProjectReader content={{ features, blog }} />
-          </div>
+          {(!!features || !!blog) && (
+            <div>
+              <ProjectReader content={{ features, blog }} />
+            </div>
+          )}
 
           {/* Related Materials Section */}
           {projectData.relatedMaterials &&
