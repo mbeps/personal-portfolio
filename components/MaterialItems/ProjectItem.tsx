@@ -50,7 +50,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ projectKey }) => {
     >
       <div className="flex flex-col lg:flex-row lg:space-x-12">
         {/* Project Cover */}
-        {projectData.thumbnailImage && (
+        {projectData.thumbnailImage ? (
           <div
             className="
               lg:w-1/2
@@ -77,6 +77,17 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ projectKey }) => {
                 />
               </AspectRatio>
             </Link>
+          </div>
+        ) : (
+          <div>
+            <div
+              className="
+                border-l-4 border-red-400 dark:border-red-900
+                transition-all duration-500 ease-in-out
+                h-[110%]
+                rounded-xl
+                "
+            />
           </div>
         )}
 
