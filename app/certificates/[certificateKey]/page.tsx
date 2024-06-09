@@ -283,7 +283,6 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
                   <div className="pt-2 pb-3 border-b border-gray-200 dark:border-neutral-600" />
                   <MaterialList
                     materialKeys={certificateData.relatedMaterials}
-                    defaultTab={MaterialTypeEnum.Certificates}
                   />
                 </>
               )}
