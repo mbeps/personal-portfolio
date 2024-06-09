@@ -647,6 +647,37 @@ const certificateMap: Database<CertificateInterface> = {
       "Understanding bottom-up dynamic programming",
     ],
   },
+  [CertificateDatabaseKeys.UdemyJavaDataStructuresAndAlgorithms]: {
+    name: "Data Structures and Algorithms: Deep Dive Using Java",
+    category: CertificateCategoriesEnum.AlgorithmsDataStructures,
+    issuer: CertificateIssuersEnum.Udemy,
+    certificateURL:
+      "https://www.udemy.com/certificate/UC-f6d6113c-5c28-4d6f-8f3e-cde2323356e1/",
+    learningOutcomes: [
+      "Understanding Arrays",
+      "Understanding the basics and memory management of arrays in Java, and analyzing their performance using Big-O notation.",
+      "Implementing and understanding the theory behind Bubble Sort, Selection Sort, Insertion Sort, Shell Sort, Merge Sort, Quick Sort, Counting Sort, and Radix Sort.",
+      "Solving various sorting algorithm challenges to reinforce understanding.",
+      "Understanding and implementing Array Lists, Singly Linked Lists, and Doubly Linked Lists.",
+      "Learning the theory behind stacks and implementing them using linked lists.",
+      "Learning the theory behind queues and implementing various queue structures including circular queues.",
+      "Understanding and implementing hashtables, including techniques like linear probing and chaining.",
+      "Understanding and implementing linear and binary search algorithms.",
+      "Understanding the theory, insertion, traversal, and deletion in Binary Search Trees, and using trees.",
+      "Learning the theory behind heaps, implementing heap operations, and understanding priority queues and heapsort.",
+      "Understanding and using sets in programming.",
+    ],
+    description: `
+      This course covers the fundamentals of data structures and algorithms in Java. Students will learn about arrays, lists, stacks, queues, hashtables, search algorithms, trees, heaps, and sets. The course includes implementing and understanding various sorting algorithms like Bubble Sort, Quick Sort, and Radix Sort. Students will solve challenges to reinforce their learning, focusing on memory management, performance analysis, and practical applications. By the end, participants will have a strong foundation in using these data structures and algorithms effectively.
+    `,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.DataStructures,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+    ],
+  },
   [CertificateDatabaseKeys.LinkedInProgrammingFoundationsAlgorithms]: {
     name: "Programming Foundations: Algorithms",
     category: CertificateCategoriesEnum.AlgorithmsDataStructures,

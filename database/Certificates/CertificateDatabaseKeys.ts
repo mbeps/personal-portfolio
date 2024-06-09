@@ -28,6 +28,7 @@ enum CertificateDatabaseKeys {
   LinkedInProgrammingFoundationsAlgorithms = "e31b0a7d9243f44e8a528fc2d184cd4a3bfbdc789c899c3a9ee47ee511e51fd7",
   LinkedInProgrammingFoundationsDataStructures = "c5c41ea1aa52982d08705831612aba2e93e69a64e35dd2cce11c28fad12b59f7",
   UdemyJavaScriptDataStructuresAndAlgorithms = "UC-82b6ac18-df7a-40bf-aae4-8a977077beb5",
+  UdemyJavaDataStructuresAndAlgorithms = "UC-f6d6113c-5c28-4d6f-8f3e-cde2323356e1",
 
   //^ Artificial Intelligence
   LinkedInAppliedArtificialIntelligenceAlgorithms = "964c3b1a049a60afa6bcbb55179e326c7e5cea11db0db7b8d3390be8fc5925e1",
