@@ -1,11 +1,13 @@
-import CertificateInterface from "@/database/Certificates/CertificateInterface";
 import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
 import CertificateDatabaseKeys from "@/database/Certificates/CertificateDatabaseKeys";
+import CertificateInterface from "@/database/Certificates/CertificateInterface";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import CertificateCategoriesEnum from "@/enums/Certificate/CertificateCategoriesEnum";
 import CertificateIssuersEnum from "@/enums/Certificate/CertificateIssuersEnum";
 import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
+import ModuleDatabaseKeys from "../Modules/ModuleDatabaseKeys";
+import ProjectDatabaseKeys from "../Projects/ProjectDatabaseKeys";
 import skillDatabaseMap from "../Skills/SkillDatabaseMap";
 
 /**
@@ -40,6 +42,11 @@ const certificateMap: Database<CertificateInterface> = {
       "Distinguish between Python 2 and Python 3",
       "Complete practical coding exercises for skill enhancement",
       "Build foundational skills for advanced Python fields like machine learning and data science",
+    ],
+    relatedMaterials: [
+      CertificateDatabaseKeys.UdemyTheCompleteDataStructuresAndAlgorithmsCourseInPython,
+      ProjectDatabaseKeys.SearchingAndSortingAlgorithms,
+      ModuleDatabaseKeys.RHUL_AlgorithmsAndComplexity,
     ],
   },
   [CertificateDatabaseKeys.LinkedInLearningPythonAdvanced]: {
@@ -158,7 +165,7 @@ const certificateMap: Database<CertificateInterface> = {
       "Obtaining proficiency in Java 17, as well as older versions including Java 11 and Java 8, is a key learning outcome.",
     ],
   },
-  [CertificateDatabaseKeys.JavaObjectOrientedProgramming]: {
+  [CertificateDatabaseKeys.LinkedInJavaObjectOrientedProgramming]: {
     name: "Java Object-Oriented Programming",
 
     category: CertificateCategoriesEnum.ProgrammingLanguages,
@@ -508,6 +515,11 @@ const certificateMap: Database<CertificateInterface> = {
         This comprehensive Python Bootcamp offers a deep dive into Data Structures and Algorithms, covering essential topics and interview preparation for top tech companies. 
         The course progresses from basic to advanced concepts, equipping learners with the skills to excel in professional programming and technical interviews. 
         Tailored for a diverse audience, from self-taught programmers to seasoned developers, it provides lifetime access to extensive learning materials and a supportive community, all designed to boost career prospects in the tech industry.`,
+      relatedMaterials: [
+        ModuleDatabaseKeys.RHUL_AlgorithmsAndComplexity,
+        CertificateDatabaseKeys.UdemyPythonProgrammingMasterclass,
+        ProjectDatabaseKeys.SearchingAndSortingAlgorithms,
+      ],
     },
   [CertificateDatabaseKeys.UdemyJavaScriptDataStructuresAndAlgorithms]: {
     name: "JavaScript Data Structures & Algorithms",
@@ -541,6 +553,7 @@ const certificateMap: Database<CertificateInterface> = {
       "Understanding and implementing basic sorting algorithms (Bubble, Selection, Insertion), and applying sorting techniques like merge sort and quick sort to linked lists.",
       "Solving problems using dynamic programming, understanding overlapping subproblems, optimizing substructure, and implementing techniques like memoization and bottom-up dynamic programming.",
     ],
+    relatedMaterials: [ModuleDatabaseKeys.RHUL_AlgorithmsAndComplexity],
   },
   [CertificateDatabaseKeys.UdemyJavaDataStructuresAndAlgorithms]: {
     name: "Data Structures and Algorithms: Deep Dive Using Java",
@@ -571,6 +584,10 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
+    ],
+    relatedMaterials: [
+      ModuleDatabaseKeys.RHUL_AlgorithmsAndComplexity,
+      CertificateDatabaseKeys.UdemyJavaProgrammingMasterclass,
     ],
   },
   [CertificateDatabaseKeys.LinkedInProgrammingFoundationsAlgorithms]: {
@@ -1939,6 +1956,7 @@ const certificateMap: Database<CertificateInterface> = {
       "Acquire the ability to design ER models for real-world database applications",
       "Gain insights into advanced database concepts for competitive exams and professional certification",
     ],
+    relatedMaterials: [ModuleDatabaseKeys.RHUL_Databases],
   },
   [CertificateDatabaseKeys.NASBADatabaseFoundationsIntroToDatabases]: {
     name: "Database Foundations: Intro to Databases",
@@ -2023,7 +2041,6 @@ const certificateMap: Database<CertificateInterface> = {
   //^ Mathematics
   [CertificateDatabaseKeys.UdemyDiscreteMathematics]: {
     name: "Discrete Mathematics",
-
     category: CertificateCategoriesEnum.Mathematics,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
@@ -2036,7 +2053,7 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
-
+    relatedMaterials: [ModuleDatabaseKeys.RHUL_MathematicalStructures],
     description: `
     This course focuses on Discrete Mathematics, a fundamental area of Mathematics and Computer Science that deals with discrete rather than continuous topics. It aims to build the mathematical foundation for various computer science and mathematics courses. The course covers essential topics such as sets, logic, number theory, proofs, functions, relations, graph theory, statistics, combinatorics, and sequences and series, equipping students with the ability to understand mathematical language.`,
     learningOutcomes: [
@@ -2200,6 +2217,7 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     description: `
       The course described provides an extensive exploration of Linear Algebra through a variety of teaching materials, including video lessons and text explanations. It is segmented into numerous sections that cover fundamental and advanced topics such as operations on matrices, matrix-vector products, transformations, and properties of vectors and spaces. Each topic includes practical applications such as solving linear systems, matrix multiplication, and exploring vector spaces and transformations. Additionally, the course offers quizzes for assessment and workbooks for extra practice to ensure thorough understanding and application of the concepts taught. Special topics include orthogonality, basis changes, and eigenvalues and eigenvectors. This structured approach aims to simplify complex Linear Algebra concepts for better learning and comprehension.`,
+    relatedMaterials: [ModuleDatabaseKeys.RHUL_MultidimensionalDataProcessing],
   },
   [CertificateDatabaseKeys.UdemyALevelMathsPureYear1]: {
     name: "A-Level Maths: Pure (Year 1 / AS)",
