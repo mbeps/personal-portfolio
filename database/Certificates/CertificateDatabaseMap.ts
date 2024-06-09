@@ -140,7 +140,6 @@ const certificateMap: Database<CertificateInterface> = {
   },
   [CertificateDatabaseKeys.UdemyJavaProgrammingMasterclass]: {
     name: "Java Programming Masterclass",
-
     category: CertificateCategoriesEnum.ProgrammingLanguages,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
@@ -155,7 +154,6 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
-
     description: `This course offers a comprehensive and continuously updated curriculum on Java programming, suitable for all levels of expertise. With a focus on core Java skills, industry best practices, and proficiency in various Java versions, it aims to prepare students for Java developer positions and Oracle Java Certificate exams. The course also provides a strong foundation for transitioning to other areas like the Spring Framework and Android development.`,
     learningOutcomes: [
       "Learning the core Java skills needed to apply for Java developer positions is a key aspect of this course.",
@@ -164,6 +162,11 @@ const certificateMap: Database<CertificateInterface> = {
       "Learning industry 'best practices' in Java software development from a professional Java developer is included in this course.",
       "Acquiring essential Java basics for transitioning to the Spring Framework, Java EE, Android development and more is a part of the curriculum.",
       "Obtaining proficiency in Java 17, as well as older versions including Java 11 and Java 8, is a key learning outcome.",
+    ],
+    relatedMaterials: [
+      CertificateDatabaseKeys.UdemyJavaDataStructuresAndAlgorithms,
+      ModuleDatabaseKeys.RHUL_ObjectOrientedProgramming1,
+      ModuleDatabaseKeys.RHUL_ObjectOrientedProgramming2,
     ],
   },
   [CertificateDatabaseKeys.LinkedInJavaObjectOrientedProgramming]: {
