@@ -8,6 +8,7 @@ import ProjectInterface from "@/database/Projects/ProjectInterface";
 import skillDatabaseMap from "../Skills/SkillDatabaseMap";
 import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
 import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
+import CertificateDatabaseKeys from "../Certificates/CertificateDatabaseKeys";
 
 /**
  * Hashmap of projects with keys as {@link SkillDatabaseKeys} and values as {@link ProjectInterface}.
@@ -59,7 +60,10 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.CircusDiscussions),
-    relatedMaterials: [ModuleDatabaseKeys.RHUL_FinalYearProject],
+    relatedMaterials: [
+      ModuleDatabaseKeys.RHUL_FinalYearProject,
+      ProjectDatabaseKeys.FlaskForumBackend,
+    ],
   },
   [ProjectDatabaseKeys.RingmasterMessaging]: {
     name: `Ringmaster Messaging`,
@@ -423,7 +427,10 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    relatedMaterials: [ModuleDatabaseKeys.RHUL_FinalYearProject],
+    relatedMaterials: [
+      ModuleDatabaseKeys.RHUL_FinalYearProject,
+      ProjectDatabaseKeys.CircusDiscussions,
+    ],
   },
   [ProjectDatabaseKeys.FlaskJWTAuthentication]: {
     name: `Flask JWT Authentication`,
@@ -1194,6 +1201,11 @@ const projectMap: Database<ProjectInterface> = {
     ],
     repositoryURL: "https://github.com/mbeps/algorithms",
     archived: true,
+    relatedMaterials: [
+      ModuleDatabaseKeys.RHUL_AlgorithmsAndComplexity,
+      CertificateDatabaseKeys.UdemyTheCompleteDataStructuresAndAlgorithmsCourseInPython,
+      CertificateDatabaseKeys.UdemyPythonProgrammingMasterclass,
+    ],
   },
 
   //^ Other Projects

@@ -13,7 +13,7 @@ enum CertificateDatabaseKeys {
   LinkedInPythonObjectOrientedProgramming = "3df6c589b5151377ce45f231cfacf8ca04a02875fa88996a8831c1c9b70c527a",
   LinkedInLearningPython = "71bbbecbbc9b1489e357c3a2091860ae5b02b3ff0e415ce5748b8746d990b8dd",
   UdemyJavaProgrammingMasterclass = "UC-a14123c1-1def-4710-8836-7c05bfaa2fc7",
-  JavaObjectOrientedProgramming = "77ad2602bbb22e29478a06792cd4bd0a91dda794cca7b2bbe4e333c193770a22",
+  LinkedInJavaObjectOrientedProgramming = "77ad2602bbb22e29478a06792cd4bd0a91dda794cca7b2bbe4e333c193770a22",
   LinkedInLearningTypeScript = "b1761a41ef8dd23125db776561db0b90ae53842518d029015374a2daee08e4e3",
   LinkedInTypeScriptObjectOrientedProgramming = "ed3c16a977b93d46364c0e03d601701094c7f346f08027e0cd3a1d6d52342425",
   LinkedInJavaScriptEssentialTraining = "ade3217d7cef3023f22c8ee034eff28705b7dbfd3981d8377c9b5f61ff39ea51",
@@ -28,6 +28,7 @@ enum CertificateDatabaseKeys {
   LinkedInProgrammingFoundationsAlgorithms = "e31b0a7d9243f44e8a528fc2d184cd4a3bfbdc789c899c3a9ee47ee511e51fd7",
   LinkedInProgrammingFoundationsDataStructures = "c5c41ea1aa52982d08705831612aba2e93e69a64e35dd2cce11c28fad12b59f7",
   UdemyJavaScriptDataStructuresAndAlgorithms = "UC-82b6ac18-df7a-40bf-aae4-8a977077beb5",
+  UdemyJavaDataStructuresAndAlgorithms = "UC-f6d6113c-5c28-4d6f-8f3e-cde2323356e1",
 
   //^ Artificial Intelligence
   LinkedInAppliedArtificialIntelligenceAlgorithms = "964c3b1a049a60afa6bcbb55179e326c7e5cea11db0db7b8d3390be8fc5925e1",

@@ -11,7 +11,6 @@ import { GrAppsRounded } from "react-icons/gr";
 
 export interface MaterialTabsProps {
   materialKeys: string[];
-  defaultTab?: MaterialTypeEnum;
   isCollapsible?: boolean;
 }
 
@@ -31,7 +30,6 @@ export interface MaterialTabsProps {
  */
 const MaterialList: React.FC<MaterialTabsProps> = ({
   materialKeys,
-  defaultTab,
   isCollapsible = true,
 }) => {
   return isCollapsible ? (
@@ -60,13 +58,13 @@ const MaterialList: React.FC<MaterialTabsProps> = ({
             </p>
           </div>
         </AccordionTrigger>
-        <AccordionContent className="mt-4">
-          <MaterialTab materialKeys={materialKeys} defaultTab={defaultTab} />
+        <AccordionContent className="mt-4 px-4">
+          <MaterialTab materialKeys={materialKeys} />
         </AccordionContent>
       </AccordionItem>
     </Accordion>
   ) : (
-    <MaterialTab materialKeys={materialKeys} defaultTab={defaultTab} />
+    <MaterialTab materialKeys={materialKeys} />
   );
 };
 

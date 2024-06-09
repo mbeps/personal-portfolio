@@ -278,12 +278,13 @@ const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
 
             {certificateData.relatedMaterials &&
               certificateData.relatedMaterials.length > 0 && (
-                <div className="mt-8">
+                <>
+                  {/* Divider */}
+                  <div className="pt-2 pb-3 border-b border-gray-200 dark:border-neutral-600" />
                   <MaterialList
                     materialKeys={certificateData.relatedMaterials}
-                    defaultTab={MaterialTypeEnum.Certificates}
                   />
-                </div>
+                </>
               )}
           </div>
         </div>

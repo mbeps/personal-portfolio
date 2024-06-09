@@ -8,6 +8,7 @@ import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import ModuleInterface from "@/database/Modules/ModuleInterface";
 import skillDatabaseMap from "../Skills/SkillDatabaseMap";
 import CourseDatabaseKeys from "@/database/Courses/CourseDatabaseKeys";
+import CertificateDatabaseKeys from "../Certificates/CertificateDatabaseKeys";
 
 /**
  * Hashmap of the modules I have studied at university.
@@ -28,6 +29,7 @@ const modulesMap: Database<ModuleInterface> = {
     relatedMaterials: [
       ProjectDatabaseKeys.TrackAndTraceAssignment,
       ProjectDatabaseKeys.HollomonAssignment,
+      CertificateDatabaseKeys.UdemyJavaProgrammingMasterclass,
     ],
     learningOutcomes: [
       "Introducing basic concepts of computer programming",
@@ -55,7 +57,10 @@ const modulesMap: Database<ModuleInterface> = {
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.TimeManagement,
     ],
-    relatedMaterials: [ProjectDatabaseKeys.BotanicGardenPlannerAssignment],
+    relatedMaterials: [
+      ProjectDatabaseKeys.BotanicGardenPlannerAssignment,
+      CertificateDatabaseKeys.UdemyJavaProgrammingMasterclass,
+    ],
     learningOutcomes: [
       "Exploring enumerated types and recursion in Java",
       "Defining recursive data types and handling exceptions",
@@ -159,6 +164,7 @@ const modulesMap: Database<ModuleInterface> = {
       "Studying geometric distribution",
     ],
     parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
+    relatedMaterials: [CertificateDatabaseKeys.UdemyDiscreteMathematics],
   },
   [ModuleDatabaseKeys.RHUL_MachineFundamentals]: {
     name: "Machine Fundamentals",
@@ -357,7 +363,10 @@ const modulesMap: Database<ModuleInterface> = {
       "Understanding JDBC",
       "Learning normalisation theory",
     ],
-    relatedMaterials: [ProjectDatabaseKeys.DatabasesMiniProject],
+    relatedMaterials: [
+      ProjectDatabaseKeys.DatabasesMiniProject,
+      CertificateDatabaseKeys.UdemyDatabaseManagementSystemAndSQL,
+    ],
     parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
   [ModuleDatabaseKeys.RHUL_AlgorithmsAndComplexity]: {
@@ -386,6 +395,11 @@ const modulesMap: Database<ModuleInterface> = {
       "Investigating graph coloring and its algorithmic implementations",
     ],
     parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
+    relatedMaterials: [
+      ProjectDatabaseKeys.SearchingAndSortingAlgorithms,
+      CertificateDatabaseKeys.UdemyTheCompleteDataStructuresAndAlgorithmsCourseInPython,
+      CertificateDatabaseKeys.UdemyJavaScriptDataStructuresAndAlgorithms,
+    ],
   },
   [ModuleDatabaseKeys.RHUL_MultidimensionalDataProcessing]: {
     name: "Multidimensional Data Processing (Linear Algebra)",
@@ -412,6 +426,7 @@ const modulesMap: Database<ModuleInterface> = {
       "Learning about PCA and SVD, applications",
     ],
     parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
+    relatedMaterials: [CertificateDatabaseKeys.UdemyBecomeALinearAlgebraMaster],
   },
   [ModuleDatabaseKeys.RHUL_ArtificialIntelligence]: {
     name: "Artificial Intelligence",
