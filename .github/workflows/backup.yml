@@ -11,9 +11,11 @@ jobs:
 
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v2  
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: '0'  
 
-    - name: Verify 
+    - name: Verify GitLab Repository
       env:
         GITLAB_ACCESS_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }}
         GITLAB_USERNAME: ${{ secrets.GITLAB_USERNAME }}
@@ -22,21 +24,18 @@ jobs:
         git config --global user.name 'Maruf Bepary'
         git config --global user.email 'bepary71@gmail.com'
 
-        # Attempt to list the remote repository
         git ls-remote https://oauth2:${GITLAB_ACCESS_TOKEN}@gitlab.com/${GITLAB_USERNAME}/${GITLAB_REPOSITORY}.git HEAD
         if [ $? -ne 0 ]; then
           echo "Failed to connect to GitLab repository. Check if repository exists and credentials/token are correct."
           exit 1
         fi
 
-    - name: Mirror Repository 
+    - name: Mirror Repository to GitLab
       env:
         GITLAB_ACCESS_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }}
         GITLAB_USERNAME: ${{ secrets.GITLAB_USERNAME }}
         GITLAB_REPOSITORY: ${{ secrets.GITLAB_REPOSITORY }}
       run: |
-        # Setup if the initial check is successful
-        git remote add gitlab https://oauth2:${GITLAB_ACCESS_TOKEN}@gitlab.com/${GITLAB_USERNAME}/${GITLAB_REPOSITORY}.git
+        git remote add gitlab https://oauth2:${GITLAB_ACCESS_TOKEN}@gitlab.com/${GITLAB_USERNAME}/${GITLAB_REPOSITORY}.git || true
         
-        # Push code to GitLab
-        git push gitlab main
+        git push --force gitlab main
