@@ -1,0 +1,26 @@
+name: Mirror to GitLab
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3 
+
+    - name: Mirror to GitLab
+      env:
+        GITLAB_REPO: ${{ secrets.GITLAB_REPO }}
+        GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
+        USER_EMAIL: ${{ secrets.USER_EMAIL }}
+        USER_NAME: ${{ secrets.USER_NAME }}
+      run: |
+        git config --global user.email "${USER_EMAIL}"
+        git config --global user.name "${USER_NAME}"
+        git remote add gitlab "${GITLAB_REPO}"
+        git push gitlab --force "HEAD:main"
