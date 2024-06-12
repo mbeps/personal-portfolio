@@ -70,6 +70,8 @@ export const BlogsView: React.FC = () => {
   // Define your search options
   const searchOptions: string[] = [
     "name",
+    "company",
+    "type",
     "category",
     "skills.name",
     "skills.category",
