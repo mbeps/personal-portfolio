@@ -46,7 +46,7 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
         "
     >
       {/* Logo */}
-      <div className="py-3 flex items-center justify-center md:justify-start">
+      <div className="py-3 flex items-start justify-center md:justify-start">
         {companyData.logo && (
           <div
             className="
@@ -131,7 +131,19 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
           <span>{companyData.location}</span>
         </div>
 
-        <p className="text-neutral-800 dark:text-neutral-300">{`${roleData.startDate} - ${roleData.endDate}`}</p>
+        <div
+          className="
+            flex flex-col md:flex-row 
+            justify-center md:justify-start 
+            items-center md:items-start 
+            space-y-2 md:space-y-0 md:space-x-4
+          "
+        >
+          <p className="text-neutral-800 dark:text-neutral-300">{`${roleData.startDate} - ${roleData.endDate}`}</p>
+          <p className="text-neutral-700 dark:text-neutral-400">
+            {roleData.type}
+          </p>
+        </div>
 
         <div
           className="
