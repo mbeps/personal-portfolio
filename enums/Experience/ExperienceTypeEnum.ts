@@ -3,7 +3,8 @@
  * This enum is used to avoid hardcoding the types in the code, getting autocompletion support and avoiding typos.
  */
 enum ExperienceTypeEnum {
-  Professional = "Professional",
+  FullTime = "Full-Time",
+  PartTime = "Part-Time",
   Volunteering = "Volunteering",
 }
 
