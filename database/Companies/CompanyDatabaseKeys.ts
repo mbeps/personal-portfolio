@@ -9,6 +9,7 @@
 enum CompanyDatabaseKeys {
   Commerzbank = "commerzbank",
   GoogleRHULDevelopersClub = "google-x-rhul-developers-club",
+  FilesCommunity = "files-community",
   AJTuitionCentre = "aj-tuition-centre",
   Madhus = "madhus",
   LondonStanstedAirport = "london-stansted-airport",

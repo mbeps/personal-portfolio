@@ -39,6 +39,13 @@ const companiesMap: Database<CompanyInterface> = {
     positions: [RoleDatabaseKeys.GnomeFoundationCommunityMember],
     logo: addCompanyThumbnail(CompanyDatabaseKeys.GnomeFoundation),
   },
+  [CompanyDatabaseKeys.FilesCommunity]: {
+    name: "Files Community",
+    location: "Remote",
+    positions: [RoleDatabaseKeys.FilesCommunityMember],
+    website: "https://files.community/",
+    logo: addCompanyThumbnail(CompanyDatabaseKeys.FilesCommunity),
+  },
 };
 
 /**

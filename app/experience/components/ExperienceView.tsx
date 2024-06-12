@@ -146,7 +146,7 @@ export const BlogsView: React.FC = () => {
     rolesDatabase
   ) as RoleDatabaseKeys[];
 
-  const groupedBlogs: MaterialGroupInterface[] = groupMaterialsByCategory(
+  const groupedRoles: MaterialGroupInterface[] = groupMaterialsByCategory(
     filteredWorkKeysArray,
     rolesDatabase
   );
@@ -235,7 +235,7 @@ export const BlogsView: React.FC = () => {
       />
 
       {/* Work List */}
-      <WorkList groupedMaterial={groupedBlogs} />
+      <WorkList groupedMaterial={groupedRoles} />
     </>
   );
 };
