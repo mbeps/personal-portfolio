@@ -11,9 +11,8 @@ enum CompanyDatabaseKeys {
   GoogleRHULDevelopersClub = "google-x-rhul-developers-club",
   AJTuitionCentre = "aj-tuition-centre",
   Madhus = "madhus",
-  LondonStanstedAirport = "london-stansted-airport",
-  GnomeFoundation = "gnome-foundation",
   WGraduates = "w-graduates",
+  OpenSource = "open-source",
 }
 
 export default CompanyDatabaseKeys;

@@ -11,7 +11,7 @@ const rolesMap: Database<RoleInterface> = {
   [RoleDatabaseKeys.CommerzbankDevOpsEngineer]: {
     name: "DevOps Engineer",
     category: ExperienceCategoriesEnum.Software,
-    type: ExperienceTypeEnum.Professional,
+    type: ExperienceTypeEnum.FullTime,
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.Java,
@@ -63,18 +63,21 @@ const rolesMap: Database<RoleInterface> = {
     ],
     company: CompanyDatabaseKeys.Commerzbank,
   },
-  [RoleDatabaseKeys.GnomeFoundationCommunityMember]: {
+  [RoleDatabaseKeys.OpenSourceContributor]: {
     name: "Community Member",
     category: ExperienceCategoriesEnum.Software,
     type: ExperienceTypeEnum.Volunteering,
-    company: CompanyDatabaseKeys.GnomeFoundation,
-    startDate: "October 2022",
+    company: CompanyDatabaseKeys.OpenSource,
+    startDate: "December 2019",
     endDate: "Present",
     skills: [
       SkillDatabaseKeys.UserCentricDesign,
       SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.WindowsDevelopment,
       SkillDatabaseKeys.LinuxDevelopment,
+      SkillDatabaseKeys.GitHub,
       SkillDatabaseKeys.GitLab,
+
       SkillDatabaseKeys.Communication,
       SkillDatabaseKeys.Teamwork,
       SkillDatabaseKeys.ProblemSolving,
@@ -171,7 +174,7 @@ const rolesMap: Database<RoleInterface> = {
   [RoleDatabaseKeys.AJTuitionCentreTutor]: {
     name: "Mathematics Tutor",
     category: ExperienceCategoriesEnum.Other,
-    type: ExperienceTypeEnum.Professional,
+    type: ExperienceTypeEnum.PartTime,
     company: CompanyDatabaseKeys.AJTuitionCentre,
     startDate: "September 2018",
     endDate: "March 2020",
@@ -187,7 +190,7 @@ const rolesMap: Database<RoleInterface> = {
   [RoleDatabaseKeys.MadhusTeamLeader]: {
     name: "Team Leader",
     category: ExperienceCategoriesEnum.Other,
-    type: ExperienceTypeEnum.Professional,
+    type: ExperienceTypeEnum.PartTime,
     company: CompanyDatabaseKeys.Madhus,
     startDate: "June 2018",
     endDate: "December 2019",

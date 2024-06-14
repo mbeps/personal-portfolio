@@ -1,4 +1,4 @@
-#### Technical Skills
+#### Technical Skills:
 
 - **Symphony Bot Development**: Used Java and Python to develop Symphony bots. Improved communication efficiency and automated repetitive tasks, saving time for other work.
 
@@ -14,7 +14,7 @@
 
 - **Codebase Modernization**: Led the transition from an outdated, monolithic Java codebase to a more modular one with newer technologies. This made the code more maintainable. New bots can be created faster, adding business value quicker. Less time is wasted on maintenance.
 
-#### Soft Skills
+#### Soft Skills:
 
 - **Team Collaboration**: Collaborated with Symphony to modernize the codebase. Worked with other departments to implement robust bots across the bank. Coordinated with development and operations teams.
 

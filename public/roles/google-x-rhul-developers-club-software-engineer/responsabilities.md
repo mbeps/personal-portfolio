@@ -1,4 +1,4 @@
-#### Technical Skills
+#### Technical Skills:
 
 - **Full Stack Development**: Led key components of the "Noodle" project using Next.js and React. Achieved seamless integrations and project objectives.
 
@@ -20,7 +20,7 @@
 
 - **GCP Usage**: Used Google Cloud Platform for managing infrastructure. Utilized Container Registry for Docker images, Cloud SQL for databases, and Cloud Storage. Increased productivity by 70% by reducing infrastructure overhead.
 
-#### Soft Skills
+#### Soft Skills:
 
 - **Communication**: Articulated technical concepts to non-technical team members, increasing understanding and collaboration by 40%. Presented project updates and strategies to enhance team alignment.
 

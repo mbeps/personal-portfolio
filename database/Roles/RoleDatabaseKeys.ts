@@ -11,8 +11,7 @@ enum RoleDatabaseKeys {
   GoogleRHULDevelopersClubSoftwareEngineer = "google-x-rhul-developers-club-software-engineer",
   AJTuitionCentreTutor = "aj-tuition-centre-tutor",
   MadhusTeamLeader = "madhus-team-leader",
-  LondonStanstedAirportSecurityOfficer = "london-stansted-airport-security-officer",
-  GnomeFoundationCommunityMember = "gnome-foundation-community-member",
+  OpenSourceContributor = "open-source-contributor",
 }
 
 export default RoleDatabaseKeys;
