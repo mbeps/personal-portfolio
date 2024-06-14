@@ -32,19 +32,11 @@ const companiesMap: Database<CompanyInterface> = {
     positions: [RoleDatabaseKeys.MadhusTeamLeader],
     logo: addCompanyThumbnail(CompanyDatabaseKeys.Madhus),
   },
-  [CompanyDatabaseKeys.GnomeFoundation]: {
-    name: "Gnome Foundation",
+  [CompanyDatabaseKeys.OpenSource]: {
+    name: "Open Source",
     location: "Remote",
-    website: "https://foundation.gnome.org/",
-    positions: [RoleDatabaseKeys.GnomeFoundationCommunityMember],
-    logo: addCompanyThumbnail(CompanyDatabaseKeys.GnomeFoundation),
-  },
-  [CompanyDatabaseKeys.FilesCommunity]: {
-    name: "Files Community",
-    location: "Remote",
-    positions: [RoleDatabaseKeys.FilesCommunityMember],
-    website: "https://files.community/",
-    logo: addCompanyThumbnail(CompanyDatabaseKeys.FilesCommunity),
+    positions: [RoleDatabaseKeys.OpenSourceContributor],
+    logo: addCompanyThumbnail(CompanyDatabaseKeys.OpenSource),
   },
 };
 
