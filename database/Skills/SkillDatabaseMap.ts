@@ -506,7 +506,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.PocketBase]: {
     name: "PocketBase",
     category: SkillCategoriesEnum.BackEndWebDevelopment,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.DatabaseManagementSystems,
@@ -562,7 +561,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.Stripe]: {
     name: "Stripe",
     category: SkillCategoriesEnum.BackEndWebDevelopment,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.SDKs,
