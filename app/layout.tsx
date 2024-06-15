@@ -62,7 +62,6 @@ export default function RootLayoutWithProviders({
                   mx-auto max-w-3xl md:max-w-6xl
                   min-h-[85vh]
                   pt-10 p-4
-                  overflow-x-hidden
                 "
               >
                 {children}
