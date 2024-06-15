@@ -1,8 +1,31 @@
 import Footer from "@/components/Footer/Footer";
 import Navbar from "@/components/Navbar/Navbar";
 import { NAVBAR_HEIGHT } from "@/constants/NAVBAR";
+import developerName from "@/constants/developerName";
+import { HOME_PAGE } from "@/constants/pages";
+import subtitles from "@/constants/subtitles";
 import { Providers } from "@/providers/Providers";
+import type { Metadata } from "next";
 import "./globals.css";
+import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
+
+/**
+ * Markdown detailing the developer's about information.
+ * This is the used for SEO.
+ */
+const aboutContent: string | undefined = getMarkdownFromFileSystem(
+  `public/about/short.md`
+)?.content.replace(/^\*/gm, "");
+
+export const metadata: Metadata = {
+  title: developerName,
+  description: aboutContent || HOME_PAGE.description,
+  manifest: "/manifest/manifest.json",
+  icons: ["/manifest/icon512_maskable.png", "/manifest/icon512_rounded.png"],
+  category: "Homepage",
+  creator: developerName,
+  keywords: subtitles,
+};
 
 /**
  * Layout component which applies to all pages.
