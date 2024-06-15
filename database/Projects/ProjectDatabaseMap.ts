@@ -432,6 +432,34 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.CircusDiscussions,
     ],
   },
+  [ProjectDatabaseKeys.FlaskBackendDemo]: {
+    name: `Flask Backend Demo`,
+    description: `
+      A simple Flask app to learn how to create a RESTful API. 
+      This was a foundational project to learn how to create a back-end using Flask.
+      This was helpful when creating the back-end for the discussion platform.
+      `,
+    repositoryURL: `https://github.com/mbeps/python-flask-demo`,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.Flask,
+      SkillDatabaseKeys.SQLAlchemy,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.Poetry,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.GitHub,
+      SkillDatabaseKeys.SQLite,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+    ],
+    archived: true,
+  },
   [ProjectDatabaseKeys.FlaskJWTAuthentication]: {
     name: `Flask JWT Authentication`,
     description: `
