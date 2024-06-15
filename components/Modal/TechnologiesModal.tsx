@@ -164,16 +164,18 @@ const TechnologiesModal: React.FC = () => {
             </div>
 
             {/* List of Skills */}
-            {groupedSkills.map((categoryData, index) => (
-              <div key={index} className="mt-4 text-center md:text-left">
-                <HeadingThree title={categoryData.skillCategoryName} />
-                <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-                  {categoryData.skills.map((skillSlug) => (
-                    <SkillTag key={skillSlug} skillKey={skillSlug} />
-                  ))}
+            <div className="mt-4 text-center md:text-left space-y-14">
+              {groupedSkills.map((categoryData, index) => (
+                <div key={index}>
+                  <HeadingThree title={categoryData.skillCategoryName} />
+                  <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
+                    {categoryData.skills.map((skillSlug) => (
+                      <SkillTag key={skillSlug} skillKey={skillSlug} />
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
 
             {/* separator */}
             <div className="w-full h-px bg-neutral-200 dark:bg-neutral-700 my-8" />

@@ -22,7 +22,7 @@ export default function RootLayoutWithProviders({
   return (
     <>
       <html lang="en" suppressHydrationWarning>
-        <body>
+        <body style={{ overflowX: "hidden" }}>
           <Providers>
             <Navbar />
             <main
@@ -31,6 +31,7 @@ export default function RootLayoutWithProviders({
                 transition-colors duration-700 ease-in-out
                 min-h-[calc(100vh-4rem)]
                 pt-${NAVBAR_HEIGHT}
+                overflow-x-hidden
               `}
             >
               <div
@@ -38,6 +39,7 @@ export default function RootLayoutWithProviders({
                   mx-auto max-w-3xl md:max-w-6xl
                   min-h-[85vh]
                   pt-10 p-4
+                  overflow-x-hidden
                 "
               >
                 {children}
