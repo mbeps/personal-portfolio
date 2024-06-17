@@ -177,9 +177,6 @@ const TechnologiesModal: React.FC = () => {
               ))}
             </div>
 
-            {/* separator */}
-            <div className="w-full h-px bg-neutral-200 dark:bg-neutral-700 my-8" />
-
             {/* All Material Button */}
             <div
               className="
