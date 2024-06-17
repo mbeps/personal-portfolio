@@ -43,6 +43,10 @@ export async function generateMetadata(
   const certificate: CertificateInterface =
     certificateDatabaseMap[certificateKey];
 
+  if (!certificate) {
+    notFound();
+  }
+
   // Create metadata based on the certificate details
   return {
     title: `${developerName} - Certificates: ${certificate?.name}`,

@@ -1,4 +1,5 @@
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
+import MaterialList from "@/components/MaterialLists/MaterialList";
 import Reader from "@/components/Reader/Reader";
 import Socials from "@/components/Socials/Socials";
 import HeadingOne from "@/components/Text/HeadingOne";
@@ -8,6 +9,8 @@ import subtitles from "@/constants/subtitles";
 import companyDatabaseMap from "@/database/Companies/CompanyDatabaseMap";
 import courseDatabaseMap from "@/database/Courses/CourseDatabaseMap";
 import CourseInterface from "@/database/Courses/CourseInterface";
+import ProjectDatabaseKeys from "@/database/Projects/ProjectDatabaseKeys";
+import RoleDatabaseKeys from "@/database/Roles/RoleDatabaseKeys";
 import rolesDatabase from "@/database/Roles/RoleDatabaseMap";
 import RoleInterface from "@/database/Roles/RoleInterface";
 import type { Metadata } from "next";
@@ -41,6 +44,13 @@ export default function About() {
   const latestEducation: CourseInterface = Object.values(courseDatabaseMap)[0];
   const latestUniversityName: string = latestEducation.university;
   const latestCourseName: string = latestEducation.name;
+  const featuredMaterial: string[] = [
+    RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+    RoleDatabaseKeys.GoogleRHULDevelopersClubSoftwareEngineer,
+    ProjectDatabaseKeys.CircusDiscussions,
+    ProjectDatabaseKeys.HousePricePrediction,
+    ProjectDatabaseKeys.Noodle,
+  ];
 
   return (
     <main>
@@ -64,56 +74,59 @@ export default function About() {
         </div>
       </div>
 
-      <div
-        className="
-          flex flex-col lg:flex-row
-          space-y-10 md:space-y-5 lg:space-y-0
-          items-stretch justify-center align-top
-          lg:space-x-10 lg:p-4
-          lg:text-left
+      <div className="space-y-6">
+        <div
+          className="
+            flex flex-col lg:flex-row
+            space-y-10 md:space-y-5 lg:space-y-0
+            items-stretch justify-center align-top
+            lg:space-x-10 lg:p-4
+            lg:text-left
         "
-      >
-        {/* Left section */}
-        <div className="lg:w-full">
-          <Reader content={aboutContent} size="lg:prose-lg" />
-        </div>
-
-        {/* Right section */}
-        <div className="lg:w-auto space-y-5 lg:space-y-10">
-          {/* Profile Image */}
-          <Image
-            src="/profile.png"
-            alt="Profile image of the developer"
-            width={250}
-            height={250}
-            className="rounded-full shadow-xl hidden lg:block mt-8"
-            quality={60}
-            loading="eager"
-            priority
-          />
-
-          {/* Social Icons */}
-          <div className="flex justify-center">
-            <Socials iconSize={36} />
+        >
+          {/* Left section */}
+          <div className="lg:w-full">
+            <Reader content={aboutContent} size="lg:prose-lg" />
           </div>
 
-          {/* Details */}
-          <DetailsTable
-            details={[
-              { heading: "Name", value: developerName },
-              { heading: "Location", value: "London, UK" },
-              {
-                heading: "University",
-                value: latestUniversityName,
-              },
-              { heading: "Degree", value: latestCourseName },
-              { heading: "Currently Working", value: latestCompany },
-              { heading: "Current Role", value: latestRole },
-            ]}
-            className="grid-cols-2 md:grid-cols-2 lg:grid-cols-1"
-          />
+          {/* Right section */}
+          <div className="lg:w-auto space-y-5 lg:space-y-10">
+            {/* Profile Image */}
+            <Image
+              src="/profile.png"
+              alt="Profile image of the developer"
+              width={250}
+              height={250}
+              className="rounded-full shadow-xl hidden lg:block mt-8"
+              quality={60}
+              loading="eager"
+              priority
+            />
+
+            {/* Social Icons */}
+            <div className="flex justify-center">
+              <Socials iconSize={36} />
+            </div>
+
+            {/* Details */}
+            <DetailsTable
+              details={[
+                { heading: "Name", value: developerName },
+                { heading: "Location", value: "London, UK" },
+                {
+                  heading: "University",
+                  value: latestUniversityName,
+                },
+                { heading: "Degree", value: latestCourseName },
+                { heading: "Currently Working", value: latestCompany },
+                { heading: "Current Role", value: latestRole },
+              ]}
+              className="grid-cols-2 md:grid-cols-2 lg:grid-cols-1"
+            />
+          </div>
         </div>
       </div>
+      <MaterialList materialKeys={featuredMaterial} />
     </main>
   );
 }
