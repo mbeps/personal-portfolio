@@ -129,7 +129,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
             </TooltipContent>
           </Tooltip>
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className="flex flex-col justify-start">
           <div className="w-full pt-6">
             <HeadingTwo title={language.name} />
           </div>
