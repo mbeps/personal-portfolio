@@ -186,9 +186,8 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
               {/* Links */}
               {hasMaterial && (
                 <>
-                  <div className="text-center md:text-left">
-                    <HeadingThree title="Material" />
-                  </div>
+                  <div className="py-12" />
+
                   <div
                     className="
 												flex flex-wrap flex-col
