@@ -38,6 +38,10 @@ export async function generateMetadata(
   const blogKey: string = params.blogKey;
   const blog: BlogInterface = blogsDatabaseMap[blogKey];
 
+  if (!blog) {
+    notFound();
+  }
+
   return {
     title: `${developerName} - Blogs: ${blog?.name}`,
     description: blog?.subtitle,
@@ -156,9 +160,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
 
         {blogData.relatedMaterials && blogData.relatedMaterials.length > 0 && (
           <>
-            <MaterialList
-              materialKeys={blogData.relatedMaterials}
-            />
+            <MaterialList materialKeys={blogData.relatedMaterials} />
           </>
         )}
       </div>

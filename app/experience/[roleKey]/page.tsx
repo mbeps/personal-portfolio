@@ -47,6 +47,12 @@ export async function generateMetadata(
   const roleKey: string = params.roleKey;
   const role: RoleInterface = rolesDatabase[roleKey];
 
+  if (!role) {
+    notFound();
+  }
+
+  const company: CompanyInterface = companyDatabaseMap[role.company];
+
   return {
     title: `${developerName} - ${EXPERIENCE_PAGE.label}: ${role?.name}`,
     description: `${role.type} ${role.name} at ${role?.company}`,
@@ -54,7 +60,7 @@ export async function generateMetadata(
     creator: developerName,
     keywords: [
       role.name,
-      role.company,
+      company.name,
       ...role?.skills.map((skill) => skillDatabaseMap[skill].name),
     ],
   };
@@ -90,11 +96,12 @@ export const generateStaticParams = async () => {
 const RolePage: React.FC<RolePageProps> = ({ params }) => {
   const roleKey: string = params.roleKey;
   const roleData: RoleInterface = rolesDatabase[roleKey];
-  const companyData: CompanyInterface = companyDatabaseMap[roleData.company];
 
   if (!roleData) {
     notFound();
   }
+
+  const companyData: CompanyInterface = companyDatabaseMap[roleData.company];
 
   const technologies: SkillDatabaseKeys[] = filterSkillsByType(
     roleData.skills,

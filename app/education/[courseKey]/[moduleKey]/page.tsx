@@ -42,6 +42,10 @@ export async function generateMetadata(
   const moduleKey: string = params.moduleKey;
   const moduleData: ModuleInterface = moduleDatabaseMap[moduleKey];
 
+  if (!moduleData) {
+    notFound();
+  }
+
   // Create metadata based on the course details
   return {
     title: `${developerName} - Courses: ${moduleData?.name}`,

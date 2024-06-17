@@ -53,6 +53,10 @@ export async function generateMetadata(
   const courseKey: string = params.courseKey;
   const course: CourseInterface = courseDatabaseMap[courseKey];
 
+  if (!course) {
+    notFound();
+  }
+
   // Create metadata based on the course details
   return {
     title: `${developerName} - Courses: ${course?.name}`,

@@ -51,6 +51,10 @@ export async function generateMetadata(
   // Assume getProjectBySlug function fetches project by slug
   const project: ProjectInterface = projectDatabaseMap[projectKey];
 
+  if (!project) {
+    notFound();
+  }
+
   // Create metadata based on the project details
   return {
     title: `${developerName} - Projects: ${project?.name}`,
