@@ -177,12 +177,14 @@ const TechnologiesModal: React.FC = () => {
               ))}
             </div>
 
+            <div className="py-12" />
+
             {/* All Material Button */}
             <div
               className="
                 flex flex-wrap flex-col
                 text-center md:text-left
-                justify-start z-10 -mt-8"
+                justify-start"
             >
               <Link href={`/skills`}>
                 <div className="w-full">
