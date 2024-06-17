@@ -356,44 +356,6 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.Noodle),
   },
-  [ProjectDatabaseKeys.ConvoGPT]: {
-    name: `ConvoGPT`,
-    description: `
-      In my first year of university, my group and I developed a simple game using SimpleGUI for a project. 
-      We manually implemented the game's physics using vector theory and physics concepts. 
-      Since there were no tutorials or guides available, we relied heavily on the library's documentation.
-      `,
-    repositoryURL: `https://github.com/mbeps/convo-gpt`,
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.NextJS,
-      SkillDatabaseKeys.ReactJS,
-      SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.Jotai,
-      SkillDatabaseKeys.Supabase,
-      SkillDatabaseKeys.PostgreSQL,
-      SkillDatabaseKeys.OpenAI,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.HTML,
-      SkillDatabaseKeys.CSS,
-      SkillDatabaseKeys.Yarn,
-      SkillDatabaseKeys.ESLint,
-      SkillDatabaseKeys.Prettier,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.DesignPatterns,
-    ],
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    archived: true,
-    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.ConvoGPT),
-  },
 
   //^ Backend Web Development Projects
   [ProjectDatabaseKeys.FlaskForumBackend]: {

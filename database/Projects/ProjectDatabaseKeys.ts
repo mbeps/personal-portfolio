@@ -15,7 +15,6 @@ enum ProjectDatabaseKeys {
   Quizmify = "quizmify",
   SideshowArticles = "sideshow-articles",
   Noodle = "noodle",
-  ConvoGPT = "convo-gpt",
   FlaskForumBackend = "flask-forum-backend",
   FlaskBackendDemo = "flask-backend-demo",
   FlaskJWTAuthentication = "flask-jwt-authentication",
