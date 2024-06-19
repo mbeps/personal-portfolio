@@ -45,7 +45,11 @@ export default function RootLayoutWithProviders({
 }) {
   return (
     <>
-      <html lang="en" suppressHydrationWarning>
+      <html
+        lang="en"
+        suppressHydrationWarning
+        style={{ scrollBehavior: "smooth" }}
+      >
         <body style={{ overflowX: "hidden" }}>
           <Providers>
             <Navbar />

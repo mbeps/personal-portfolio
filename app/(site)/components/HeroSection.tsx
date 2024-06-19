@@ -1,12 +1,10 @@
-"use client";
-
-import scrollToSection from "@/actions/scrollToSection";
 import Socials from "@/components/Socials/Socials";
 import TextLoop from "@/components/TextLoop/TextLoop";
 import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
 import subtitles from "@/constants/subtitles";
 import Image from "next/image";
+import Link from "next/link";
 import { HiArrowDown } from "react-icons/hi";
 
 /**
@@ -54,7 +52,6 @@ const HeroSection = () => {
             height={335}
             className="rounded-full shadow-2xl"
             quality={60}
-            loading="eager"
             priority
           />
         </div>
@@ -108,24 +105,17 @@ const HeroSection = () => {
                 pt-2
               "
             >
-              <Button
-                variant="gradient"
-                onClick={() => {
-                  scrollToSection("projects");
-                }}
-                className="w-full"
-              >
-                Projects
-              </Button>
-              <Button
-                variant="ghost"
-                onClick={() => {
-                  scrollToSection("about");
-                }}
-                className="w-full"
-              >
-                About
-              </Button>
+              <Link href="#projects" className="w-full">
+                <Button variant="gradient" className="w-full">
+                  Projects
+                </Button>
+              </Link>
+
+              <Link href="#about" className="w-full">
+                <Button variant="ghost" className="w-full">
+                  About
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -137,13 +127,9 @@ const HeroSection = () => {
         my-10 md:my-4
       "
       >
-        <div
-          onClick={() => {
-            scrollToSection("about");
-          }}
-        >
+        <Link href="#about">
           <HiArrowDown size={35} className="animate-bounce slow-bounce" />
-        </div>
+        </Link>
       </div>
     </section>
   );
