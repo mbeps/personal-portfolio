@@ -8,6 +8,7 @@ import { Providers } from "@/providers/Providers";
 import type { Metadata } from "next";
 import "./globals.css";
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
+import { VercelTrackers } from "@/providers/VercelTrackers";
 
 /**
  * Markdown detailing the developer's about information.
@@ -69,6 +70,7 @@ export default function RootLayoutWithProviders({
               </div>
             </main>
           </Providers>
+          <VercelTrackers />
         </body>
       </html>
     </>
