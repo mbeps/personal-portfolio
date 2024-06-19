@@ -35,7 +35,7 @@ const HeroSection = () => {
           text-center lg:text-left
           items-center
           justify-center lg:justify-start
-          animate-fadeIn animation-delay-2
+          animate-fadeIn
           lg:space-x-12
           my-auto w-full
       "
