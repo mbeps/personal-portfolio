@@ -67,7 +67,6 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ projectKey }) => {
                   key={projectData.thumbnailImage}
                   alt={`${projectData.name} cover image`}
                   fill={true}
-                  loading="lazy"
                   quality={15}
                   className="
                     rounded-xl 
