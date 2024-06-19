@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import SimpleTextLoop from "./SimpleTextLoop";
 import TypeWriterTextLoop from "./TypeWriterTextLoop";
+import useIsMounted from "@/hooks/useIsMounted";
 
 type TextLoopProps = {
   loopItems: string[];
@@ -22,20 +25,28 @@ const TextLoop: React.FC<TextLoopProps> = ({
   implementation,
   className,
 }) => {
+  const isMounted: boolean = useIsMounted();
+
   return (
     <>
-      {/* Type Writer Implementation */}
-      {implementation === "typewriter" && (
-        <TypeWriterTextLoop className={className} loopItems={loopItems} />
-      )}
+      {isMounted ? (
+        <>
+          {/* Type Writer Implementation */}
+          {implementation === "typewriter" && (
+            <TypeWriterTextLoop className={className} loopItems={loopItems} />
+          )}
 
-      {/* Simple Loop Implementation */}
-      {implementation === "simple" && (
-        <SimpleTextLoop
-          loopItems={loopItems}
-          delay={3000}
-          className={className}
-        />
+          {/* Simple Loop Implementation */}
+          {implementation === "simple" && (
+            <SimpleTextLoop
+              loopItems={loopItems}
+              delay={3000}
+              className={className}
+            />
+          )}
+        </>
+      ) : (
+        <div className={className}>{loopItems[1]}</div>
       )}
     </>
   );
