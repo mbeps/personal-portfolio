@@ -8,10 +8,6 @@
 
 - **Skill Development**: Refined leadership, conflict resolution, and interpersonal skills. Laid a foundation for career growth in a high-pressure role.
 
-- **Sales Growth**: Achieved a 10% increase in sales through innovative customer engagement and team leadership strategies.
-
-- **Training and Mentorship**: Led training programs for new staff. Ensured high service standards and promoted continuous improvement.
-
 - **Resource Management**: Managed resources efficiently. Optimized operational efficiency and reduced waste.
 
 - **Customer Relationships**: Strengthened customer loyalty and brand reputation through personalized service and attention to detail.
