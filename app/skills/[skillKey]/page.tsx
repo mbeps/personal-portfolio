@@ -57,9 +57,9 @@ export async function generateMetadata(
  * @returns A list of all the keys for the static pages that need to be generated.
  * @see https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration
  */
-export const generateStaticParams = async () => {
-  return skillDatabaseKeys.map((skillKey) => ({ skillKey }));
-};
+// export const generateStaticParams = async () => {
+//   return skillDatabaseKeys.map((skillKey) => ({ skillKey }));
+// };
 
 interface ProjectPageProps {
   params: { skillKey: string };

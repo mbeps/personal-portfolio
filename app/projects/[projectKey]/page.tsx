@@ -15,7 +15,7 @@ import HeadingTwo from "@/components/Text/HeadingTwo";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
-import { PROJECTS_PAGE } from "@/constants/pages";
+import { BLOG_PAGE, PROJECTS_PAGE } from "@/constants/pages";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
@@ -202,7 +202,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
    * This is used to display the features and blog sections.
    */
   const blog: string | undefined = getMarkdownFromFileSystem(
-    `public${basePath}/${projectKey}/report.md`
+    `public${BLOG_PAGE.path}/${projectKey}/blog.md`
   )?.content;
 
   return (
