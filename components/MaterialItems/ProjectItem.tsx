@@ -40,11 +40,11 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ projectKey }) => {
   return (
     <div
       className="
-      bg-neutral-100 dark:bg-neutral-950 
+      bg-neutral-100 dark:bg-neutral-800 
+      sm:bg-transparent sm:dark:bg-transparent
       p-4 sm:p-0
       rounded-xl 
-      sm:bg-white sm:dark:bg-neutral-900 
-      border border-neutral-200 dark:border-neutral-800 lg:border-0
+      border border-neutral-200 dark:border-neutral-700 lg:border-0
       shadow-sm lg:shadow-none
       transition-colors duration-700 "
     >
