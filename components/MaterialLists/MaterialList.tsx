@@ -34,17 +34,7 @@ const MaterialList: React.FC<MaterialTabsProps> = ({
 }) => {
   return isCollapsible ? (
     <Accordion type="single" collapsible className="mt-16">
-      <AccordionItem
-        value="item-1"
-        className="
-          rounded-xl px-3
-          border
-          bg-white dark:bg-neutral-950
-          border-neutral-200 dark:border-neutral-700
-          hover:border-neutral-300 dark:hover:border-neutral-600
-          shadow-sm hover:shadow-md
-          transition-all duration-500 ease-in-out"
-      >
+      <AccordionItem value="item-1">
         <AccordionTrigger>
           <div className="flex items-center space-x-3">
             <GrAppsRounded size={24} className="text-neutral-500" />

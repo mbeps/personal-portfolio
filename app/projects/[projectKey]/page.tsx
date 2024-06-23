@@ -354,32 +354,30 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
 
           {/* Divider */}
           {!!features ||
-            (projectData.relatedMaterials &&
-              projectData.relatedMaterials.length > 0 && (
-                <div className="pt-2 pb-3 border-b border-gray-200 dark:border-neutral-600" />
-              ))}
+          (projectData.relatedMaterials &&
+            projectData.relatedMaterials.length > 0) ? (
+            <div className="pt-2 pb-3 border-b border-gray-200 dark:border-neutral-600" />
+          ) : (
+            <></>
+          )}
 
           {/* Features Section */}
           {!!features && (
             <>
               <Accordion type="single" collapsible>
-                <AccordionItem
-                  value="item-1"
-                  className="
-                    py-1 px-3 mt-3
-                    rounded-xl
-                    border
-                    md:border-neutral-200 md:dark:border-neutral-800
-                    hover:border-neutral-300 dark:hover:border-neutral-700
-                    bg-neutral-50 dark:bg-black
-                    shadow-sm hover:shadow-md
-                    transition-all duration-500 ease-in-out
-                    "
-                >
+                <AccordionItem value="item-1">
                   <AccordionTrigger>
                     <div className="flex items-center space-x-3">
                       <BsPlusCircle size={26} className="text-neutral-500" />
-                      <HeadingThree title={`Features`} className="mb-0 mt-0" />
+                      <p
+                        className="
+                          text-lg 
+                          text-neutral-600 dark:text-neutral-400
+                          font-semibold
+                          "
+                      >
+                        Features
+                      </p>
                     </div>
                   </AccordionTrigger>
                   <AccordionContent className="px-2">
