@@ -169,6 +169,7 @@ const RolePage: React.FC<RolePageProps> = ({ params }) => {
                 rounded-full 
                 shadow-lg 
                 p-1.5 bg-neutral-300 dark:bg-neutral-800
+              dark:hover:bg-red-800
                 transition-all duration-500 ease-in-out
                 w-[90px] h-[90px]
                 hover:scale-105 hover:shadow-xl

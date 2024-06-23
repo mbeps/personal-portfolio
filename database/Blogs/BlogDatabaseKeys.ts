@@ -22,6 +22,14 @@ enum BlogDatabaseKeys {
   SoftwareTesting = "software-testing",
   SQLNOSQL = "sql-vs-nosql-databases",
   SyncAsync = "sync-vs-async",
+
+  // Projects
+  CircusDiscussions = "report-circus-discussions",
+  RingmasterMessaging = "report-ringmaster-messaging",
+  MagicianAI = "report-magician-ai",
+  DrumrollMusic = "report-drumroll-music",
+  Quizmify = "report-quizmify",
+  OsmosGame = "report-osmos-game",
 }
 
 export default BlogDatabaseKeys;

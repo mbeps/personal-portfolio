@@ -9,6 +9,7 @@ enum BlogCategoriesEnum {
   DevOps = "DevOps",
   ArtificialIntelligence = "Artificial Intelligence",
   Mathematics = "Mathematics",
+  Projects = "Projects",
   Other = "Other",
 }
 

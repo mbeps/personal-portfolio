@@ -9,6 +9,7 @@ import skillDatabaseMap from "../Skills/SkillDatabaseMap";
 import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
 import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
 import CertificateDatabaseKeys from "../Certificates/CertificateDatabaseKeys";
+import BlogDatabaseKeys from "../Blogs/BlogDatabaseKeys";
 
 /**
  * Hashmap of projects with keys as {@link SkillDatabaseKeys} and values as {@link ProjectInterface}.
@@ -63,6 +64,7 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [
       ModuleDatabaseKeys.RHUL_FinalYearProject,
       ProjectDatabaseKeys.FlaskForumBackend,
+      BlogDatabaseKeys.CircusDiscussions,
     ],
   },
   [ProjectDatabaseKeys.RingmasterMessaging]: {
@@ -111,6 +113,7 @@ const projectMap: Database<ProjectInterface> = {
     thumbnailImage: addProjectThumbnail(
       ProjectDatabaseKeys.RingmasterMessaging
     ),
+    relatedMaterials: [BlogDatabaseKeys.RingmasterMessaging],
   },
   [ProjectDatabaseKeys.MagicianAI]: {
     name: `Magician AI`,
@@ -156,6 +159,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    relatedMaterials: [BlogDatabaseKeys.MagicianAI],
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.MagicianAI),
   },
   [ProjectDatabaseKeys.DrumrollMusic]: {
@@ -193,6 +197,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.DesignPatterns,
       SkillDatabaseKeys.Algorithms,
     ],
+    relatedMaterials: [BlogDatabaseKeys.DrumrollMusic],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.DrumrollMusic),
   },
@@ -888,7 +893,10 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.GameDevelopment,
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.OsmosGame),
-    relatedMaterials: [ModuleDatabaseKeys.RHUL_ProgrammingLaboratory],
+    relatedMaterials: [
+      ModuleDatabaseKeys.RHUL_ProgrammingLaboratory,
+      BlogDatabaseKeys.OsmosGame,
+    ],
   },
   [ProjectDatabaseKeys.SurfaceFight]: {
     name: "Surface Fight",

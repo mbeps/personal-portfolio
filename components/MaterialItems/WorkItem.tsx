@@ -39,10 +39,10 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
       className="
         flex flex-col md:flex-row 
         p-4 space-x-0 md:space-x-8 space-y-2 md:space-y-0
-        bg-neutral-100 dark:bg-neutral-950 rounded-xl
+        bg-neutral-100 dark:bg-neutral-800 rounded-xl
         transition-all duration-500 ease-in-out
-        border border-neutral-200 dark:border-neutral-800
-        shadow-sm
+        border border-neutral-200 dark:border-neutral-700
+        shadow-md
         "
     >
       {/* Logo */}
@@ -54,6 +54,7 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
               transition-all duration-500 ease-in-out
               w-[85px] h-[85px]
               border-2 border-neutral-200 dark:border-neutral-900
+              dark:hover:border-red-600
               hover:scale-105 hover:shadow-lg
             "
           >
