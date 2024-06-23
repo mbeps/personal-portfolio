@@ -49,7 +49,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
     updateSearchTerm(localSearchTerm);
   }
 
-  const combinedClassName = twMerge(
+  const combinedClassName: string = twMerge(
     `
       w-full h-12
       px-2 pl-12
@@ -97,7 +97,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
       <div
         className="
           absolute right-2 top-1/2 
-          bg-neutral-100 dark:bg-neutral-800
+          bg-inherit
           transform -translate-y-1/2 
           flex flex-row items-end
           space-x-2
@@ -116,7 +116,6 @@ const SearchInput: React.FC<SearchInputProps> = ({
         )}
         <button
           className={`
-
           text-neutral-500 
           ${
             isSearchDisabled
