@@ -8,15 +8,25 @@ import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
 import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
 import Gallery from "@/components/Gallery/Gallery";
 import MaterialList from "@/components/MaterialLists/MaterialList";
+import Reader from "@/components/Reader/Reader";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import SkillTag from "@/components/Tags/SkillTag";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/shadcn/ui/accordion";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
-import { BLOG_PAGE, PROJECTS_PAGE } from "@/constants/pages";
+import { PROJECTS_PAGE } from "@/constants/pages";
+import projectDatabaseMap from "@/database/Projects/ProjectDatabaseMap";
+import ProjectInterface from "@/database/Projects/ProjectInterface";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
@@ -25,11 +35,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
-import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
-import ProjectReader from "./components/ProjectReader";
-import projectDatabaseMap from "@/database/Projects/ProjectDatabaseMap";
-import ProjectInterface from "@/database/Projects/ProjectInterface";
-import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
+import { BsArrowUpRightCircle, BsGithub, BsPlusCircle } from "react-icons/bs";
 
 /**
  * Generates the metadata for the project page.
@@ -197,14 +203,6 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
     `public${basePath}/${projectKey}/features.md`
   )?.content;
 
-  /**
-   * Get the features and blog content from the file system.
-   * This is used to display the features and blog sections.
-   */
-  const blog: string | undefined = getMarkdownFromFileSystem(
-    `public${BLOG_PAGE.path}/${projectKey}/blog.md`
-  )?.content;
-
   return (
     <main>
       <div className="sr-only">
@@ -355,17 +353,41 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
           </div>
 
           {/* Divider */}
-          {!(!features || !!blog) ||
+          {!!features ||
             (projectData.relatedMaterials &&
               projectData.relatedMaterials.length > 0 && (
                 <div className="pt-2 pb-3 border-b border-gray-200 dark:border-neutral-600" />
               ))}
 
           {/* Features Section */}
-          {(!!features || !!blog) && (
-            <div>
-              <ProjectReader content={{ features, blog }} />
-            </div>
+          {!!features && (
+            <>
+              <Accordion type="single" collapsible>
+                <AccordionItem
+                  value="item-1"
+                  className="
+                    py-1 px-3 mt-3
+                    rounded-xl
+                    border
+                    md:border-neutral-200 md:dark:border-neutral-800
+                    hover:border-neutral-300 dark:hover:border-neutral-700
+                    bg-neutral-50 dark:bg-black
+                    shadow-sm hover:shadow-md
+                    transition-all duration-500 ease-in-out
+                    "
+                >
+                  <AccordionTrigger>
+                    <div className="flex items-center space-x-3">
+                      <BsPlusCircle size={26} className="text-neutral-500" />
+                      <HeadingThree title={`Features`} className="mb-0 mt-0" />
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-2">
+                    <Reader content={features} />
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </>
           )}
 
           {/* Related Materials Section */}
