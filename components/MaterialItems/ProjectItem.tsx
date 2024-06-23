@@ -45,7 +45,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ projectKey }) => {
       p-4 sm:p-0
       rounded-xl 
       border border-neutral-200 dark:border-neutral-700 lg:border-0
-      shadow-sm lg:shadow-none
+      shadow-md lg:shadow-none
       transition-colors duration-700 "
     >
       <div className="flex flex-col lg:flex-row lg:space-x-12">

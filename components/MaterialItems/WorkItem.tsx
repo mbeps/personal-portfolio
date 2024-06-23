@@ -42,7 +42,7 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
         bg-neutral-100 dark:bg-neutral-800 rounded-xl
         transition-all duration-500 ease-in-out
         border border-neutral-200 dark:border-neutral-700
-        shadow-sm
+        shadow-md
         "
     >
       {/* Logo */}
