@@ -55,7 +55,7 @@ export default function RootLayoutWithProviders({
             <Navbar />
             <main
               className={`
-                bg-white dark:bg-neutral-900
+                bg-neutral-50 dark:bg-neutral-900
                 transition-colors duration-700 ease-in-out
                 min-h-[calc(100vh-4rem)]
                 pt-${NAVBAR_HEIGHT}
