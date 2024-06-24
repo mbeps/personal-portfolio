@@ -44,7 +44,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ projectKey }) => {
       sm:bg-transparent sm:dark:bg-transparent
       p-4 sm:p-0
       rounded-xl 
-      border border-neutral-200 dark:border-neutral-700 lg:border-0
+      border border-neutral-300 dark:border-neutral-700 lg:border-0
       shadow-md lg:shadow-none
       transition-colors duration-700 "
     >
@@ -72,6 +72,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ projectKey }) => {
                     rounded-xl 
                     cursor-pointer
                     object-cover
+                    border border-neutral-50 dark:border-neutral-900
                   "
                 />
               </AspectRatio>
