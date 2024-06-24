@@ -54,7 +54,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        toggle(); // Assuming toggle() is the method to close the modal
+        toggle();
       }
     };
 
@@ -76,14 +76,14 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
 
   const filterProps: FilterOption[] = filterCategories.map(
     (category): FilterOption => ({
-      entryName: category.urlParam, // Assuming urlParam is a suitable match for entryName
-      slug: category.selectedValue, // Assuming selectedValue is a suitable match for slug
+      entryName: category.urlParam,
+      slug: category.selectedValue,
     })
   );
 
   filterProps.push({
-    entryName: archiveFilter.paramName, // Assuming paramName is a suitable match for entryName
-    slug: archiveFilter.showArchived.toString(), // status converted to string for slug
+    entryName: archiveFilter.paramName,
+    slug: archiveFilter.showArchived.toString(),
   });
 
   return (
@@ -116,14 +116,12 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
           className="
             sticky top-0
             z-10
-            bg-neutral-50 dark:bg-black
             px-4 py-0
             flex justify-between items-center
             transition-all duration-700 ease-in-out
             rounded-t-2xl
           "
         >
-          {/* Replace HeadingThree with your own heading component or HTML tag */}
           <HeadingThree title="Filters" />
           <button onClick={toggle}>
             <span className="sr-only">Close</span>
