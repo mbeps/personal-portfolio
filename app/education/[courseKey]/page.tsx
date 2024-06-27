@@ -67,7 +67,6 @@ export async function generateMetadata(
       course.name,
       course.university,
       ...course?.modules.map((module) => moduleDatabaseMap[module].name),
-      ...course?.skills.map((skill) => skillDatabaseMap[skill].name),
     ],
   };
 }

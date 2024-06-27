@@ -47,10 +47,6 @@ export async function generateMetadata(
     description: blog?.subtitle,
     category: `${BLOG_PAGE.label}`,
     creator: developerName,
-    keywords: [
-      blog.name,
-      ...blog?.skills.map((skill) => skillDatabaseMap[skill].name),
-    ],
   };
 }
 
