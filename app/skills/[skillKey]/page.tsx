@@ -43,8 +43,6 @@ export async function generateMetadata(
   return {
     title: `${developerName} - Skills: ${skill?.name}`,
     description: skill.name,
-    category: `${SKILL_PAGE.label}`,
-    creator: developerName,
   };
 }
 

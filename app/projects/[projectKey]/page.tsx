@@ -50,28 +50,27 @@ import { BsArrowUpRightCircle, BsGithub, BsPlusCircle } from "react-icons/bs";
 export async function generateMetadata(
   { params, searchParams }: ProjectPageProps,
   parent: ResolvingMetadata
-): Promise<Metadata> {
+): Promise<Metadata | undefined> {
   // Read route params
   const projectKey: string = params.projectKey;
 
-  // Assume getProjectBySlug function fetches project by slug
   const project: ProjectInterface = projectDatabaseMap[projectKey];
 
   if (!project) {
     notFound();
   }
 
-  // Create metadata based on the project details
-  return {
-    title: `${developerName} - Projects: ${project?.name}`,
-    description: project?.description,
-    category: `${PROJECTS_PAGE.label}`,
-    creator: developerName,
-    keywords: [
-      project.name,
-      ...project?.skills.map((skill) => skillDatabaseMap[skill].name),
-    ],
-  };
+  if (!project.archived) {
+    return {
+      title: `${developerName} - Projects: ${project?.name}`,
+      description: project?.description,
+      category: `${PROJECTS_PAGE.label}`,
+      creator: developerName,
+      keywords: [project.name],
+    };
+  }
+
+  return undefined;
 }
 
 /**
