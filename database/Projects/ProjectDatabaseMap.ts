@@ -866,6 +866,69 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
   },
 
+  //^ Algorithms and Data Structures
+  [ProjectDatabaseKeys.Leetcode]: {
+    name: `Leetcode Solutions`,
+    description: `
+      A collection of Leetcode solutions in Python. 
+      This is used to practice algorithms and data structures.
+      They are also used to practice unit testing.
+      CI/CD is also used to run the tests when merging to the main branch.
+      `,
+    repositoryURL: `https://github.com/stars/mbeps/lists/leetcode`,
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.PyTest,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.GitHub,
+      SkillDatabaseKeys.GitHubActions,
+
+      SkillDatabaseKeys.DataStructures,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    category: ProjectCategoriesEnum.Algorithms,
+    archived: true,
+  },
+  [ProjectDatabaseKeys.SearchingAndSortingAlgorithms]: {
+    name: `Searching & Sorting Algorithms`,
+    description: `
+      Jupyter Notebook containing various searching and sorting algorithms.
+      Each algorithms is explained. 
+      All the algorithms are also compared to each other. 
+    `,
+    category: ProjectCategoriesEnum.Algorithms,
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.Matplotlib,
+      SkillDatabaseKeys.NumPy,
+      SkillDatabaseKeys.Jupyter,
+      SkillDatabaseKeys.Poetry,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.GitHub,
+      SkillDatabaseKeys.Black,
+
+      SkillDatabaseKeys.DataStructures,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.Algorithms,
+    ],
+    repositoryURL: "https://github.com/mbeps/algorithms",
+    archived: true,
+    relatedMaterials: [
+      ModuleDatabaseKeys.RHUL_AlgorithmsAndComplexity,
+      CertificateDatabaseKeys.UdemyTheCompleteDataStructuresAndAlgorithmsCourseInPython,
+      CertificateDatabaseKeys.UdemyPythonProgrammingMasterclass,
+    ],
+  },
+
   //^ Game Development Projects
   [ProjectDatabaseKeys.OsmosGame]: {
     name: `Osmos Game`,
@@ -1141,69 +1204,6 @@ const projectMap: Database<ProjectInterface> = {
     deploymentURL: "https://bepary-games.itch.io/angry-cats-space",
     archived: true,
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.AngryCats),
-  },
-
-  //^ Algorithms and Data Structures
-  [ProjectDatabaseKeys.Leetcode]: {
-    name: `Leetcode Solutions`,
-    description: `
-      A collection of Leetcode solutions in Python. 
-      This is used to practice algorithms and data structures.
-      They are also used to practice unit testing.
-      CI/CD is also used to run the tests when merging to the main branch.
-      `,
-    repositoryURL: `https://github.com/stars/mbeps/lists/leetcode`,
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.PyTest,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.GitHubActions,
-
-      SkillDatabaseKeys.DataStructures,
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    category: ProjectCategoriesEnum.Algorithms,
-    archived: true,
-  },
-  [ProjectDatabaseKeys.SearchingAndSortingAlgorithms]: {
-    name: `Searching & Sorting Algorithms`,
-    description: `
-      Jupyter Notebook containing various searching and sorting algorithms.
-      Each algorithms is explained. 
-      All the algorithms are also compared to each other. 
-    `,
-    category: ProjectCategoriesEnum.Algorithms,
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.Matplotlib,
-      SkillDatabaseKeys.NumPy,
-      SkillDatabaseKeys.Jupyter,
-      SkillDatabaseKeys.Poetry,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Black,
-
-      SkillDatabaseKeys.DataStructures,
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
-    ],
-    repositoryURL: "https://github.com/mbeps/algorithms",
-    archived: true,
-    relatedMaterials: [
-      ModuleDatabaseKeys.RHUL_AlgorithmsAndComplexity,
-      CertificateDatabaseKeys.UdemyTheCompleteDataStructuresAndAlgorithmsCourseInPython,
-      CertificateDatabaseKeys.UdemyPythonProgrammingMasterclass,
-    ],
   },
 
   //^ Other Projects
