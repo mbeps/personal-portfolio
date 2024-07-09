@@ -233,10 +233,6 @@ enum SkillDatabaseKeys {
   GCP_Logging = "gcp-logging",
   CloudComputing = "cloud-computing",
 
-  //^ Game Development
-  GameMakerStudio = "game-maker-studio",
-  GameDevelopment = "game-development",
-
   //^ Algorithms & Data Structures
   Algorithms = "algorithms",
   DataStructures = "data-structures",
