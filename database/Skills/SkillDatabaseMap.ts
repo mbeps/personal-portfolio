@@ -133,16 +133,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.AndroidDevelopment,
     ],
   },
-  [SkillDatabaseKeys.GameMakerLanguage]: {
-    name: "GameMaker Language",
-    isMainSkill: false,
-    skillType: SkillTypesEnum.Technology,
-    category: SkillCategoriesEnum.ProgrammingLanguages,
-    relatedSkills: [
-      SkillDatabaseKeys.GameDevelopment,
-      SkillDatabaseKeys.GameMakerStudio,
-    ],
-  },
   [SkillDatabaseKeys.ShellScript]: {
     name: "Shell Script",
     isMainSkill: false,
@@ -1660,14 +1650,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
     relatedSkills: [SkillDatabaseKeys.Java, SkillDatabaseKeys.TypeScript],
   },
 
-  //^ Game Development
-  [SkillDatabaseKeys.GameMakerStudio]: {
-    name: "GameMaker Studio 2",
-    category: SkillCategoriesEnum.GameDevelopment,
-    skillType: SkillTypesEnum.Technology,
-    relatedSkills: [SkillDatabaseKeys.GameDevelopment],
-  },
-
   //^ Communication
   [SkillDatabaseKeys.Symphony]: {
     name: "Symphony Solutions",
@@ -2415,16 +2397,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.StoryBooks,
       SkillDatabaseKeys.Axios,
       SkillDatabaseKeys.StateManagement,
-    ],
-  },
-  [SkillDatabaseKeys.GameDevelopment]: {
-    name: "Game Development",
-    category: SkillCategoriesEnum.GameDevelopment,
-    isMainSkill: false,
-    skillType: SkillTypesEnum.Technical,
-    relatedSkills: [
-      SkillDatabaseKeys.GameMakerLanguage,
-      SkillDatabaseKeys.GameMakerLanguage,
     ],
   },
   [SkillDatabaseKeys.Mathematics]: {

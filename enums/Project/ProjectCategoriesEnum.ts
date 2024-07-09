@@ -7,7 +7,6 @@ enum ProjectCategoriesEnum {
   BackEndWebDevelopment = "Back-End Web Development",
   MachineLearning = "Machine Learning",
   JavaAssignments = "Java Assignments",
-  GameDevelopment = "Game Development",
   Algorithms = "Algorithms",
   Other = "Other",
 }
