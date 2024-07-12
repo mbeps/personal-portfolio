@@ -22,7 +22,8 @@ const projectMap: Database<ProjectInterface> = {
     description: `
       For a final year university project, 
       a social media platform was developed enabling users to form communities, 
-      start discussions, and comment on them, connecting with like-minded individuals.
+      start discussions, and comment on them.
+      Tested on CRUD and software engineering principles,
       `,
     repositoryURL: `https://github.com/mbeps/next_discussion_platform`,
     deploymentURL: `https://circus-discussion.vercel.app/`,
@@ -857,6 +858,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.JavaAssignments,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_SoftwareEngineering],
+    archived: true,
   },
   [ProjectDatabaseKeys.BotanicGardenPlannerAssignment]: {
     name: `Botanic-Garden-Planner`,
