@@ -40,6 +40,7 @@ enum ProjectDatabaseKeys {
   TrackAndTraceAssignment = "track-and-trace-assignment",
   HollomonAssignment = "holomon-assignment",
   DatabasesMiniProject = "databases-mini-project",
+  AdvancedMathematicsPractice = "advanced-mathematics-practice",
 }
 
 export default ProjectDatabaseKeys;

@@ -1006,6 +1006,34 @@ const projectMap: Database<ProjectInterface> = {
     ],
   },
 
+  //^ Mathematics
+  [ProjectDatabaseKeys.AdvancedMathematicsPractice]: {
+    name: `Advanced Mathematics Practice`,
+    description: `
+      A collection of questions and answers for various advanced mathematics topics such as Algebra, Calculus, Linear Algebra, etc.
+      `,
+    category: ProjectCategoriesEnum.Mathematics,
+    skills: [
+      SkillDatabaseKeys.Algebra,
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.Calculus,
+      SkillDatabaseKeys.Trigonometry,
+      SkillDatabaseKeys.Geometry,
+      SkillDatabaseKeys.Statistics,
+      SkillDatabaseKeys.Probability,
+      SkillDatabaseKeys.Mathematics,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+    ],
+    archived: true,
+    repositoryURL: "https://github.com/mbeps/advanced-mathematics-practice",
+    relatedMaterials: [
+      CertificateDatabaseKeys.UdemyBecomeAnAlgebraMaster,
+      CertificateDatabaseKeys.UdemyBecomeALinearAlgebraMaster,
+    ],
+  },
+
   //^ Other Projects
   [ProjectDatabaseKeys.OsmosGame]: {
     name: `Osmos Game`,

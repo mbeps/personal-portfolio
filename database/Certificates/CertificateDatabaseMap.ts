@@ -2285,6 +2285,7 @@ const certificateMap: Database<CertificateInterface> = {
     description: `
         This course offers comprehensive training in Algebra through a combination of video lessons, text notes, quizzes, and workbooks. It is structured into multiple sections that cover various algebraic topics, such as operations, equations, polynomials, functions, and more advanced concepts like logarithmic functions. Each section provides videos where problems are solved and explained, notes that summarize key concepts, and quizzes to test comprehension. For further practice, each section also includes workbooks with additional problems to reinforce learning. The course is designed to make complex mathematical topics accessible and understandable.
         `,
+    relatedMaterials: [ProjectDatabaseKeys.AdvancedMathematicsPractice],
   },
   [CertificateDatabaseKeys.UdemyBecomeALinearAlgebraMaster]: {
     name: "Become a Linear Algebra Master",
@@ -2315,7 +2316,10 @@ const certificateMap: Database<CertificateInterface> = {
     ],
     description: `
       The course described provides an extensive exploration of Linear Algebra through a variety of teaching materials, including video lessons and text explanations. It is segmented into numerous sections that cover fundamental and advanced topics such as operations on matrices, matrix-vector products, transformations, and properties of vectors and spaces. Each topic includes practical applications such as solving linear systems, matrix multiplication, and exploring vector spaces and transformations. Additionally, the course offers quizzes for assessment and workbooks for extra practice to ensure thorough understanding and application of the concepts taught. Special topics include orthogonality, basis changes, and eigenvalues and eigenvectors. This structured approach aims to simplify complex Linear Algebra concepts for better learning and comprehension.`,
-    relatedMaterials: [ModuleDatabaseKeys.RHUL_MultidimensionalDataProcessing],
+    relatedMaterials: [
+      ProjectDatabaseKeys.AdvancedMathematicsPractice,
+      ModuleDatabaseKeys.RHUL_MultidimensionalDataProcessing,
+    ],
   },
   [CertificateDatabaseKeys.UdemyALevelMathsPureYear1]: {
     name: "A-Level Maths: Pure (Year 1 / AS)",
