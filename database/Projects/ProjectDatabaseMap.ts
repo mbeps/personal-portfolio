@@ -619,6 +619,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.ObjectOrientedProgramming,
       SkillDatabaseKeys.Algorithms,
     ],
+    relatedMaterials: [CertificateDatabaseKeys.UdemyMachineLearningAtoZ],
   },
   [ProjectDatabaseKeys.MachineLearningAssignment1]: {
     name: `Machine Learning Assignment 1`,
