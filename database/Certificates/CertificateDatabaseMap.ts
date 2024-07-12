@@ -816,6 +816,7 @@ const certificateMap: Database<CertificateInterface> = {
       ],
       description: `
         This course covers the basics of Python and data analysis, including visualization and statistical methods. It teaches machine learning techniques such as regression, clustering, classification, and deep learning with practical applications. You will also learn about using advanced tools like Spark, Transformers, and OpenAI APIs for real-world data processing and model deployment.`,
+      relatedMaterials: [ProjectDatabaseKeys.MachineLearningDataScienceLab],
     },
   [CertificateDatabaseKeys.LinkedInAppliedArtificialIntelligenceAlgorithms]: {
     name: "Applied Artificial Intelligence: Algorithms",

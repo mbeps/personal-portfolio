@@ -793,6 +793,43 @@ const projectMap: Database<ProjectInterface> = {
     ],
     relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
   },
+  [ProjectDatabaseKeys.MachineLearningDataScienceLab]: {
+    name: "Machine Learning & Data Science Lab",
+    category: ProjectCategoriesEnum.MachineLearning,
+    description: `
+      This lab mainly focuses on learning generative models, using third-party models and using advanced techniques. This includes techniques such as transfer learning, LLM Agents, and Generative Models.`,
+    repositoryURL: "https://github.com/mbeps/Data-Science-Machine-Learning-Lab",
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.ScikitLearn,
+      SkillDatabaseKeys.NumPy,
+      SkillDatabaseKeys.Pandas,
+      SkillDatabaseKeys.Matplotlib,
+      SkillDatabaseKeys.Keras,
+      SkillDatabaseKeys.TensorFlow,
+      SkillDatabaseKeys.Jupyter,
+      SkillDatabaseKeys.OpenAI,
+
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.GitHub,
+
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.Probability,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.Algorithms,
+    ],
+    archived: true,
+    relatedMaterials: [
+      CertificateDatabaseKeys.UdemyMachineLearningDataScienceAndGenerativeAIWithPython,
+    ],
+  },
 
   //^ Java Assignments
   [ProjectDatabaseKeys.JavaCalculatorAssignment]: {

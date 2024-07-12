@@ -30,6 +30,7 @@ enum ProjectDatabaseKeys {
   MachineLearningLabQuestions = "machine-learning-lab-questions",
   ComputationalFinanceAssignment = "computational-finance-assignment",
   MachineLearningTheoryPractice = "machine-learning-theory-practice",
+  MachineLearningDataScienceLab = "machine-learning-data-science-lab",
   OsmosGame = "osmos-game",
   SearchingAndSortingAlgorithms = "searching-and-sorting-algorithms",
   AutomatedSetup = "automated-setup",
