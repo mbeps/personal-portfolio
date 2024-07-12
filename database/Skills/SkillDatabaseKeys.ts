@@ -178,6 +178,8 @@ enum SkillDatabaseKeys {
   Keras = "keras",
   TensorFlow = "tensorflow",
   Jupyter = "jupyter",
+  ApacheSpark = "apache-spark",
+  MLLib = "ml-lib",
   MachineLearning = "machine-learning",
   DeepLearning = "deep-learning",
   ArtificialIntelligence = "artificial-intelligence",

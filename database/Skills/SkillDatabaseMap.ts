@@ -1058,6 +1058,28 @@ const skillDatabaseMap: Database<SkillInterface> = {
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [SkillDatabaseKeys.Python, SkillDatabaseKeys.DataScience],
   },
+  [SkillDatabaseKeys.ApacheSpark]: {
+    name: "Apache Spark",
+    category: SkillCategoriesEnum.ArtificialIntelligence,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Technology,
+    relatedSkills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.MLLib,
+    ],
+  },
+  [SkillDatabaseKeys.MLLib]: {
+    name: "MLLib",
+    category: SkillCategoriesEnum.ArtificialIntelligence,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Technology,
+    relatedSkills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.ApacheSpark,
+    ],
+  },
 
   //^ APIs and Web Services
   [SkillDatabaseKeys.REST]: {
