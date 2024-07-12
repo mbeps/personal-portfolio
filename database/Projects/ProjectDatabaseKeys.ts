@@ -21,6 +21,7 @@ enum ProjectDatabaseKeys {
   DjangoAuthentication = "django-authentication",
   ClerkAuthentication = "clerk-authentication",
   Auth0Authentication = "auth0-authentication",
+  MachineLearningAlgorithmsAndTechniquesLab = "machine-learning-algorithms-and-techniques-lab",
   AdultIncomePrediction = "adult-income-prediction",
   HousePricePrediction = "house-price-prediction",
   MachineLearningAssignment1 = "machine-learning-assignment-1",
@@ -29,6 +30,7 @@ enum ProjectDatabaseKeys {
   MachineLearningLabQuestions = "machine-learning-lab-questions",
   ComputationalFinanceAssignment = "computational-finance-assignment",
   MachineLearningTheoryPractice = "machine-learning-theory-practice",
+  MachineLearningDataScienceLab = "machine-learning-data-science-lab",
   OsmosGame = "osmos-game",
   SearchingAndSortingAlgorithms = "searching-and-sorting-algorithms",
   AutomatedSetup = "automated-setup",
@@ -38,6 +40,7 @@ enum ProjectDatabaseKeys {
   TrackAndTraceAssignment = "track-and-trace-assignment",
   HollomonAssignment = "holomon-assignment",
   DatabasesMiniProject = "databases-mini-project",
+  AdvancedMathematicsPractice = "advanced-mathematics-practice",
 }
 
 export default ProjectDatabaseKeys;

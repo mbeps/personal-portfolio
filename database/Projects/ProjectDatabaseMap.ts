@@ -22,7 +22,8 @@ const projectMap: Database<ProjectInterface> = {
     description: `
       For a final year university project, 
       a social media platform was developed enabling users to form communities, 
-      start discussions, and comment on them, connecting with like-minded individuals.
+      start discussions, and comment on them.
+      Tested on CRUD and software engineering principles,
       `,
     repositoryURL: `https://github.com/mbeps/next_discussion_platform`,
     deploymentURL: `https://circus-discussion.vercel.app/`,
@@ -582,6 +583,45 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.MachineLearning,
   },
+  [ProjectDatabaseKeys.MachineLearningAlgorithmsAndTechniquesLab]: {
+    name: "Machine Learning Algorithms & Techniques Lab",
+    description: `
+      Practicing various Machine Learning algorithms and techniques.
+      This includes supervised, unsupervised, and reinforcement learning algorithms, as well as feature engineering, data preprocessing, and hyperparameter tuning.
+      Some additional content in the field of Deep Learning and Neural Networks are also covered.
+    `,
+    category: ProjectCategoriesEnum.MachineLearning,
+    repositoryURL: "https://github.com/mbeps/Machine-Learning-Course-Lab",
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.ScikitLearn,
+      SkillDatabaseKeys.NumPy,
+      SkillDatabaseKeys.Pandas,
+      SkillDatabaseKeys.Matplotlib,
+      SkillDatabaseKeys.Seaborn,
+      SkillDatabaseKeys.Keras,
+      SkillDatabaseKeys.TensorFlow,
+      SkillDatabaseKeys.Jupyter,
+
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.GitHub,
+      SkillDatabaseKeys.Poetry,
+      SkillDatabaseKeys.Black,
+
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.Probability,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.Algorithms,
+    ],
+    relatedMaterials: [CertificateDatabaseKeys.UdemyMachineLearningAtoZ],
+  },
   [ProjectDatabaseKeys.MachineLearningAssignment1]: {
     name: `Machine Learning Assignment 1`,
     description: `
@@ -694,6 +734,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.MachineLearning,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
+    archived: true,
   },
   [ProjectDatabaseKeys.ComputationalFinanceAssignment]: {
     name: "Computational Finance Assignment",
@@ -753,6 +794,43 @@ const projectMap: Database<ProjectInterface> = {
     ],
     relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
   },
+  [ProjectDatabaseKeys.MachineLearningDataScienceLab]: {
+    name: "Machine Learning & Data Science Lab",
+    category: ProjectCategoriesEnum.MachineLearning,
+    description: `
+      This lab mainly focuses on learning generative models, using third-party models and using advanced techniques. This includes techniques such as transfer learning, LLM Agents, and Generative Models.`,
+    repositoryURL: "https://github.com/mbeps/Data-Science-Machine-Learning-Lab",
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.ScikitLearn,
+      SkillDatabaseKeys.NumPy,
+      SkillDatabaseKeys.Pandas,
+      SkillDatabaseKeys.Matplotlib,
+      SkillDatabaseKeys.Keras,
+      SkillDatabaseKeys.TensorFlow,
+      SkillDatabaseKeys.Jupyter,
+      SkillDatabaseKeys.OpenAI,
+
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.GitHub,
+
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.Probability,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.Algorithms,
+    ],
+    archived: true,
+    relatedMaterials: [
+      CertificateDatabaseKeys.UdemyMachineLearningDataScienceAndGenerativeAIWithPython,
+    ],
+  },
 
   //^ Java Assignments
   [ProjectDatabaseKeys.JavaCalculatorAssignment]: {
@@ -780,6 +858,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.JavaAssignments,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_SoftwareEngineering],
+    archived: true,
   },
   [ProjectDatabaseKeys.BotanicGardenPlannerAssignment]: {
     name: `Botanic-Garden-Planner`,
@@ -926,6 +1005,34 @@ const projectMap: Database<ProjectInterface> = {
       ModuleDatabaseKeys.RHUL_AlgorithmsAndComplexity,
       CertificateDatabaseKeys.UdemyTheCompleteDataStructuresAndAlgorithmsCourseInPython,
       CertificateDatabaseKeys.UdemyPythonProgrammingMasterclass,
+    ],
+  },
+
+  //^ Mathematics
+  [ProjectDatabaseKeys.AdvancedMathematicsPractice]: {
+    name: `Advanced Mathematics Practice`,
+    description: `
+      A collection of questions and answers for various advanced mathematics topics such as Algebra, Calculus, Linear Algebra, etc.
+      `,
+    category: ProjectCategoriesEnum.Mathematics,
+    skills: [
+      SkillDatabaseKeys.Algebra,
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.Calculus,
+      SkillDatabaseKeys.Trigonometry,
+      SkillDatabaseKeys.Geometry,
+      SkillDatabaseKeys.Statistics,
+      SkillDatabaseKeys.Probability,
+      SkillDatabaseKeys.Mathematics,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+    ],
+    archived: true,
+    repositoryURL: "https://github.com/mbeps/advanced-mathematics-practice",
+    relatedMaterials: [
+      CertificateDatabaseKeys.UdemyBecomeAnAlgebraMaster,
+      CertificateDatabaseKeys.UdemyBecomeALinearAlgebraMaster,
     ],
   },
 
