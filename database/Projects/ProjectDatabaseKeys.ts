@@ -21,6 +21,7 @@ enum ProjectDatabaseKeys {
   DjangoAuthentication = "django-authentication",
   ClerkAuthentication = "clerk-authentication",
   Auth0Authentication = "auth0-authentication",
+  MachineLearningAlgorithmsAndTechniquesLab = "machine-learning-algorithms-and-techniques-lab",
   AdultIncomePrediction = "adult-income-prediction",
   HousePricePrediction = "house-price-prediction",
   MachineLearningAssignment1 = "machine-learning-assignment-1",

@@ -176,6 +176,7 @@ enum SkillDatabaseKeys {
   Matplotlib = "matplotlib",
   Seaborn = "seaborn",
   Keras = "keras",
+  TensorFlow = "tensorflow",
   Jupyter = "jupyter",
   MachineLearning = "machine-learning",
   DeepLearning = "deep-learning",

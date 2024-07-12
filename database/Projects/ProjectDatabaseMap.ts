@@ -582,6 +582,44 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.MachineLearning,
   },
+  [ProjectDatabaseKeys.MachineLearningAlgorithmsAndTechniquesLab]: {
+    name: "Machine Learning Algorithms & Techniques Lab",
+    description: `
+      Practicing various Machine Learning algorithms and techniques.
+      This includes supervised, unsupervised, and reinforcement learning algorithms, as well as feature engineering, data preprocessing, and hyperparameter tuning.
+      Some additional content in the field of Deep Learning and Neural Networks are also covered.
+    `,
+    category: ProjectCategoriesEnum.MachineLearning,
+    repositoryURL: "https://github.com/mbeps/Machine-Learning-Course-Lab",
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.ScikitLearn,
+      SkillDatabaseKeys.NumPy,
+      SkillDatabaseKeys.Pandas,
+      SkillDatabaseKeys.Matplotlib,
+      SkillDatabaseKeys.Seaborn,
+      SkillDatabaseKeys.Keras,
+      SkillDatabaseKeys.TensorFlow,
+      SkillDatabaseKeys.Jupyter,
+
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.GitHub,
+      SkillDatabaseKeys.Poetry,
+      SkillDatabaseKeys.Black,
+
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.Probability,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.Algorithms,
+    ],
+  },
   [ProjectDatabaseKeys.MachineLearningAssignment1]: {
     name: `Machine Learning Assignment 1`,
     description: `
@@ -694,6 +732,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.MachineLearning,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
+    archived: true,
   },
   [ProjectDatabaseKeys.ComputationalFinanceAssignment]: {
     name: "Computational Finance Assignment",
