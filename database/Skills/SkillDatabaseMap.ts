@@ -604,9 +604,10 @@ const skillDatabaseMap: Database<SkillInterface> = {
     isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
       SkillDatabaseKeys.WebDevelopment,
       SkillDatabaseKeys.APIs,
-      SkillDatabaseKeys.Java,
       SkillDatabaseKeys.Security,
       SkillDatabaseKeys.CyberSecurity,
     ],
@@ -617,9 +618,10 @@ const skillDatabaseMap: Database<SkillInterface> = {
     isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.Spring,
       SkillDatabaseKeys.WebDevelopment,
       SkillDatabaseKeys.APIs,
-      SkillDatabaseKeys.Java,
       SkillDatabaseKeys.Security,
       SkillDatabaseKeys.CyberSecurity,
     ],
