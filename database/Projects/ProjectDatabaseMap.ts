@@ -531,7 +531,9 @@ const projectMap: Database<ProjectInterface> = {
   //^ Artificial Intelligence Projects
   [ProjectDatabaseKeys.AdultIncomePrediction]: {
     name: "Adult Income Prediction",
-    description: `A project leveraging the UCI Adult Income dataset to predict income brackets using a RandomForestClassifier. Emphasis is on feature engineering, data preprocessing with One-Hot Encoding, and model optimization through hyperparameter tuning.`,
+    description: `
+      A project comparing various classification algorithms to predict whether an adult earns more than $50,000 a year.
+      Emphasis is on feature engineering, data preprocessing with One-Hot Encoding, and model optimization through hyperparameter tuning.`,
     repositoryURL: "https://github.com/mbeps/Adults_Income_Prediction",
     skills: [
       SkillDatabaseKeys.Python,
@@ -558,7 +560,9 @@ const projectMap: Database<ProjectInterface> = {
   },
   [ProjectDatabaseKeys.HousePricePrediction]: {
     name: "House Price Prediction",
-    description: `An analytical approach to predicting California housing prices using the RandomForestRegressor and LinearRegressor, with a focus on data preprocessing and feature engineering.`,
+    description: `
+      A project comparing various regression algorithms to predict house prices in relation to the distance from the coast.
+      Emphasis is on feature engineering, data preprocessing with One-Hot Encoding, and model optimization through hyperparameter tuning.`,
     repositoryURL: "https://github.com/mbeps/House_Price_Prediction",
     skills: [
       SkillDatabaseKeys.Python,
