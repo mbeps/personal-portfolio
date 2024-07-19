@@ -723,6 +723,7 @@ const modulesMap: Database<ModuleInterface> = {
       "Understanding the principle of risk-neutral valuation for option pricing",
       "Learning to simulate stock price behavior and Wiener processes using random walks",
       "Manipulating stochastic differential equations using Ito's lemma",
+      "Understanding the role of Brownian motion and Markov processes in financial modeling",
       "Deriving the Black-Scholes differential equation and formulas for European call and put options pricing",
       "Understanding various numerical methods for option pricing, including trees, Monte-Carlo, and PDEs",
       "Estimating stock volatility from market data",
