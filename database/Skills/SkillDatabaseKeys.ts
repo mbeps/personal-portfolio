@@ -177,6 +177,7 @@ enum SkillDatabaseKeys {
   Seaborn = "seaborn",
   Keras = "keras",
   TensorFlow = "tensorflow",
+  PyTorch = "pytorch",
   Jupyter = "jupyter",
   ApacheSpark = "apache-spark",
   MLLib = "ml-lib",

@@ -626,6 +626,41 @@ const projectMap: Database<ProjectInterface> = {
     ],
     relatedMaterials: [CertificateDatabaseKeys.UdemyMachineLearningAtoZ],
   },
+  [ProjectDatabaseKeys.ArtificialIntelligenceReinforcementLearning]: {
+    name: "Reinforcement Learning Lab",
+    description: `
+      Practicing various Reinforcement Learning algorithms and techniques.
+      This includes Q-Learning, Deep Q-Learning, and Asynchronous Advantage Actor-Critic (A3C) algorithms.
+    `,
+    category: ProjectCategoriesEnum.MachineLearning,
+    repositoryURL: "https://github.com/mbeps/Reinforcement-Learning",
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.ScikitLearn,
+      SkillDatabaseKeys.NumPy,
+      SkillDatabaseKeys.Matplotlib,
+      SkillDatabaseKeys.PyTorch,
+      SkillDatabaseKeys.Jupyter,
+
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.GitHub,
+      SkillDatabaseKeys.Poetry,
+      SkillDatabaseKeys.Black,
+
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.Probability,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.Algorithms,
+    ],
+    relatedMaterials: [CertificateDatabaseKeys.UdemyArtificialIntelligenceAtoZ],
+  },
   [ProjectDatabaseKeys.MachineLearningAssignment1]: {
     name: `Machine Learning Assignment 1`,
     description: `
