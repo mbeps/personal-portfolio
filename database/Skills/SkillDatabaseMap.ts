@@ -30,6 +30,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.PyBuilder,
       SkillDatabaseKeys.ScikitLearn,
       SkillDatabaseKeys.TensorFlow,
+      SkillDatabaseKeys.PyTorch,
       SkillDatabaseKeys.Pandas,
       SkillDatabaseKeys.NumPy,
       SkillDatabaseKeys.Matplotlib,
@@ -1051,6 +1052,20 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.NeuralNetworks,
       SkillDatabaseKeys.DeepLearning,
       SkillDatabaseKeys.Keras,
+    ],
+  },
+  [SkillDatabaseKeys.PyTorch]: {
+    name: "PyTorch",
+    category: SkillCategoriesEnum.ArtificialIntelligence,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Technology,
+    relatedSkills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.DeepLearning,
     ],
   },
   [SkillDatabaseKeys.Jupyter]: {
