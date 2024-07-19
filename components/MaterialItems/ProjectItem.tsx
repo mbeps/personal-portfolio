@@ -41,12 +41,12 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ projectKey }) => {
     <div
       className="
       bg-neutral-100 dark:bg-neutral-800 
-      sm:bg-transparent sm:dark:bg-transparent
-      p-4 sm:p-0
-      rounded-xl 
-      border border-neutral-300 dark:border-neutral-700 lg:border-0
-      shadow-md lg:shadow-none
-      transition-colors duration-700 "
+        sm:bg-transparent sm:dark:bg-transparent
+        p-4 sm:p-0
+        rounded-xl 
+        sm:border md:border-0 lg:border-0 lg:border-neutral-300 lg:dark:border-neutral-700
+        sm:shadow-md md:shadow-none lg:shadow-none
+        transition-colors duration-700"
     >
       <div className="flex flex-col lg:flex-row lg:space-x-12">
         {/* Project Cover */}
@@ -55,8 +55,8 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ projectKey }) => {
             className="
               lg:w-1/2
               rounded-xl
-              transform md:hover:scale-105 
-              shadow-xl md:hover:shadow-2xl
+              transform lg:hover:scale-105 
+              shadow-xl lg:hover:shadow-2xl
               transition-all duration-500 ease-in-out
               "
           >
