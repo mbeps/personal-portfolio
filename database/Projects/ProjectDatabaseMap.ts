@@ -896,7 +896,10 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Adaptability,
     ],
     category: ProjectCategoriesEnum.JavaAssignments,
-    relatedMaterials: [ModuleDatabaseKeys.RHUL_SoftwareEngineering],
+    relatedMaterials: [
+      ModuleDatabaseKeys.RHUL_SoftwareEngineering,
+      BlogDatabaseKeys.CalculatorAssignment,
+    ],
     archived: true,
   },
   [ProjectDatabaseKeys.BotanicGardenPlannerAssignment]: {
