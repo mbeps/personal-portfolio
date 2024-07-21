@@ -254,6 +254,15 @@ const blogsMap: Database<BlogInterface> = {
     skills: projectDatabaseMap[ProjectDatabaseKeys.OsmosGame].skills,
     relatedMaterials: [ProjectDatabaseKeys.OsmosGame],
   },
+  [BlogDatabaseKeys.CalculatorAssignment]: {
+    name: "Journey Building Calculator Assignment",
+    subtitle:
+      "This was an assignment where we were tested on Software Engineering principles.",
+    category: BlogCategoriesEnum.Projects,
+    skills:
+      projectDatabaseMap[ProjectDatabaseKeys.JavaCalculatorAssignment].skills,
+    relatedMaterials: [ProjectDatabaseKeys.JavaCalculatorAssignment],
+  },
 };
 
 /**

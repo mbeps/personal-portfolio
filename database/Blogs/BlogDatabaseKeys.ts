@@ -30,6 +30,7 @@ enum BlogDatabaseKeys {
   DrumrollMusic = "report-drumroll-music",
   Quizmify = "report-quizmify",
   OsmosGame = "report-osmos-game",
+  CalculatorAssignment = "report-calculator-assignment",
 }
 
 export default BlogDatabaseKeys;
