@@ -598,7 +598,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.Spring]: {
     name: "Spring",
     category: SkillCategoriesEnum.BackEndWebDevelopment,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.Java,
@@ -840,6 +839,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
     name: "GitHub Actions",
     category: SkillCategoriesEnum.DevOps,
     skillType: SkillTypesEnum.Technology,
+    isMainSkill: true,
     relatedSkills: [
       SkillDatabaseKeys.InfrastructureAsCode,
       SkillDatabaseKeys.ContinuousDelivery,
@@ -868,6 +868,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
     name: "Jenkins",
     category: SkillCategoriesEnum.DevOps,
     skillType: SkillTypesEnum.Technology,
+    isMainSkill: true,
     relatedSkills: [
       SkillDatabaseKeys.InfrastructureAsCode,
       SkillDatabaseKeys.ContinuousDelivery,
@@ -882,6 +883,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
     name: "TeamCity",
     category: SkillCategoriesEnum.DevOps,
     skillType: SkillTypesEnum.Technology,
+    isMainSkill: true,
     relatedSkills: [
       SkillDatabaseKeys.InfrastructureAsCode,
       SkillDatabaseKeys.ContinuousDelivery,
@@ -994,7 +996,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.Matplotlib]: {
     name: "Matplotlib",
     category: SkillCategoriesEnum.ArtificialIntelligence,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.Python,
@@ -1005,7 +1006,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.Seaborn]: {
     name: "Seaborn",
     category: SkillCategoriesEnum.ArtificialIntelligence,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.Python,
@@ -1086,8 +1086,9 @@ const skillDatabaseMap: Database<SkillInterface> = {
 
   //^ APIs and Web Services
   [SkillDatabaseKeys.REST]: {
-    name: "REST",
+    name: "REST APIs",
     category: SkillCategoriesEnum.CommunicationProtocolsLibraries,
+    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [SkillDatabaseKeys.WebDevelopment, SkillDatabaseKeys.APIs],
   },
@@ -1098,7 +1099,8 @@ const skillDatabaseMap: Database<SkillInterface> = {
     relatedSkills: [SkillDatabaseKeys.WebDevelopment, SkillDatabaseKeys.APIs],
   },
   [SkillDatabaseKeys.GraphQL]: {
-    name: "GraphQL",
+    name: "GraphQL APIs",
+    isMainSkill: true,
     category: SkillCategoriesEnum.CommunicationProtocolsLibraries,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
@@ -1108,7 +1110,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
     ],
   },
   [SkillDatabaseKeys.TRPC]: {
-    name: "tRPC",
+    name: "tRPC APIs",
     category: SkillCategoriesEnum.CommunicationProtocolsLibraries,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [SkillDatabaseKeys.WebDevelopment, SkillDatabaseKeys.APIs],
