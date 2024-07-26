@@ -179,7 +179,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
     category: SkillCategoriesEnum.FullStackWebDevelopment,
     isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
-
     relatedSkills: [
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.TypeScript,
@@ -194,7 +193,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
     name: "Angular",
     category: SkillCategoriesEnum.FullStackWebDevelopment,
     skillType: SkillTypesEnum.Technology,
-
     relatedSkills: [
       SkillDatabaseKeys.WebDevelopment,
       SkillDatabaseKeys.UserCentricDesign,
@@ -204,7 +202,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
     name: "Nuxt.js",
     category: SkillCategoriesEnum.FullStackWebDevelopment,
     skillType: SkillTypesEnum.Technology,
-
     relatedSkills: [
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.TypeScript,
@@ -217,7 +214,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
     name: "SvelteKit",
     category: SkillCategoriesEnum.FullStackWebDevelopment,
     skillType: SkillTypesEnum.Technology,
-
     relatedSkills: [
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.TypeScript,
@@ -602,7 +598,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.Spring]: {
     name: "Spring",
     category: SkillCategoriesEnum.BackEndWebDevelopment,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.Java,
@@ -758,7 +753,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.Prisma]: {
     name: "Prisma",
     category: SkillCategoriesEnum.DatabaseManagement,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.DatabaseManagementSystems,
@@ -810,7 +804,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.SQLAlchemy]: {
     name: "SQLAlchemy",
     category: SkillCategoriesEnum.DatabaseManagement,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.Python,
@@ -845,8 +838,8 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.GitHubActions]: {
     name: "GitHub Actions",
     category: SkillCategoriesEnum.DevOps,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
+    isMainSkill: true,
     relatedSkills: [
       SkillDatabaseKeys.InfrastructureAsCode,
       SkillDatabaseKeys.ContinuousDelivery,
@@ -860,7 +853,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.GitLabCI]: {
     name: "GitLab CI",
     category: SkillCategoriesEnum.DevOps,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.InfrastructureAsCode,
@@ -875,8 +867,8 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.Jenkins]: {
     name: "Jenkins",
     category: SkillCategoriesEnum.DevOps,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
+    isMainSkill: true,
     relatedSkills: [
       SkillDatabaseKeys.InfrastructureAsCode,
       SkillDatabaseKeys.ContinuousDelivery,
@@ -890,8 +882,8 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.TeamCity]: {
     name: "TeamCity",
     category: SkillCategoriesEnum.DevOps,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
+    isMainSkill: true,
     relatedSkills: [
       SkillDatabaseKeys.InfrastructureAsCode,
       SkillDatabaseKeys.ContinuousDelivery,
@@ -945,7 +937,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.Terraform]: {
     name: "Terraform",
     category: SkillCategoriesEnum.DevOps,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.InfrastructureAsCode,
@@ -956,7 +947,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.Vagrant]: {
     name: "Vagrant",
     category: SkillCategoriesEnum.DevOps,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.InfrastructureAsCode,
@@ -1006,7 +996,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.Matplotlib]: {
     name: "Matplotlib",
     category: SkillCategoriesEnum.ArtificialIntelligence,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.Python,
@@ -1017,7 +1006,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.Seaborn]: {
     name: "Seaborn",
     category: SkillCategoriesEnum.ArtificialIntelligence,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.Python,
@@ -1078,7 +1066,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.ApacheSpark]: {
     name: "Apache Spark",
     category: SkillCategoriesEnum.ArtificialIntelligence,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.Python,
@@ -1089,7 +1076,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.MLLib]: {
     name: "MLLib",
     category: SkillCategoriesEnum.ArtificialIntelligence,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.Python,
@@ -1100,7 +1086,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
 
   //^ APIs and Web Services
   [SkillDatabaseKeys.REST]: {
-    name: "REST",
+    name: "REST APIs",
     category: SkillCategoriesEnum.CommunicationProtocolsLibraries,
     isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
@@ -1113,9 +1099,9 @@ const skillDatabaseMap: Database<SkillInterface> = {
     relatedSkills: [SkillDatabaseKeys.WebDevelopment, SkillDatabaseKeys.APIs],
   },
   [SkillDatabaseKeys.GraphQL]: {
-    name: "GraphQL",
-    category: SkillCategoriesEnum.CommunicationProtocolsLibraries,
+    name: "GraphQL APIs",
     isMainSkill: true,
+    category: SkillCategoriesEnum.CommunicationProtocolsLibraries,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.WebDevelopment,
@@ -1124,7 +1110,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
     ],
   },
   [SkillDatabaseKeys.TRPC]: {
-    name: "tRPC",
+    name: "tRPC APIs",
     category: SkillCategoriesEnum.CommunicationProtocolsLibraries,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [SkillDatabaseKeys.WebDevelopment, SkillDatabaseKeys.APIs],
@@ -1150,7 +1136,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.OpenAI]: {
     name: "OpenAI",
     category: SkillCategoriesEnum.ArtificialIntelligence,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.APIs,
@@ -1160,7 +1145,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.ReplicateAI]: {
     name: "Replicate AI",
     category: SkillCategoriesEnum.ArtificialIntelligence,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.APIs,
@@ -1640,56 +1624,48 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.NPM]: {
     name: "NPM",
     category: SkillCategoriesEnum.ProjectManagers,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [SkillDatabaseKeys.Java, SkillDatabaseKeys.TypeScript],
   },
   [SkillDatabaseKeys.Yarn]: {
     name: "Yarn",
     category: SkillCategoriesEnum.ProjectManagers,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [SkillDatabaseKeys.Java, SkillDatabaseKeys.TypeScript],
   },
   [SkillDatabaseKeys.PNPM]: {
     name: "PNPM",
     category: SkillCategoriesEnum.ProjectManagers,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [SkillDatabaseKeys.Java, SkillDatabaseKeys.TypeScript],
   },
   [SkillDatabaseKeys.Pip]: {
     name: "Pip",
     category: SkillCategoriesEnum.ProjectManagers,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [SkillDatabaseKeys.Python],
   },
   [SkillDatabaseKeys.Poetry]: {
     name: "Poetry",
     category: SkillCategoriesEnum.ProjectManagers,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [SkillDatabaseKeys.Python],
   },
   [SkillDatabaseKeys.PyBuilder]: {
     name: "PyBuilder",
     category: SkillCategoriesEnum.ProjectManagers,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [SkillDatabaseKeys.Python],
   },
   [SkillDatabaseKeys.Maven]: {
     name: "Maven",
     category: SkillCategoriesEnum.ProjectManagers,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [SkillDatabaseKeys.Java],
   },
   [SkillDatabaseKeys.Gradle]: {
     name: "Gradle",
     category: SkillCategoriesEnum.ProjectManagers,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [SkillDatabaseKeys.Java],
   },
@@ -1923,7 +1899,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.MachineLearning]: {
     name: "Machine Learning",
     category: SkillCategoriesEnum.ArtificialIntelligence,
-    isMainSkill: false,
+    isMainSkill: true,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [
       SkillDatabaseKeys.DeepLearning,
@@ -1946,7 +1922,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.DeepLearning]: {
     name: "Deep Learning",
     category: SkillCategoriesEnum.ArtificialIntelligence,
-    isMainSkill: false,
+    isMainSkill: true,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [
       SkillDatabaseKeys.ArtificialIntelligence,
@@ -1992,7 +1968,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.DataScience]: {
     name: "Data Science",
     category: SkillCategoriesEnum.ArtificialIntelligence,
-    isMainSkill: false,
+    isMainSkill: true,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [
       SkillDatabaseKeys.DataVisualisation,
@@ -2061,7 +2037,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.NeuralNetworks]: {
     name: "Neural Networks",
     category: SkillCategoriesEnum.ArtificialIntelligence,
-    isMainSkill: false,
+    isMainSkill: true,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [
       SkillDatabaseKeys.DeepLearning,
@@ -2093,7 +2069,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.Databases]: {
     name: "Databases",
     category: SkillCategoriesEnum.DatabaseManagement,
-    isMainSkill: false,
+    isMainSkill: true,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [
       SkillDatabaseKeys.RelationalDatabases,
@@ -2120,7 +2096,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.RelationalDatabases]: {
     name: "Relational Databases (SQL)",
     category: SkillCategoriesEnum.DatabaseManagement,
-    isMainSkill: false,
+    isMainSkill: true,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [
       SkillDatabaseKeys.RelationalDatabases,
@@ -2136,7 +2112,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.NonRelationalDatabases]: {
     name: "Non Relational Databases (NoSQL)",
     category: SkillCategoriesEnum.DatabaseManagement,
-    isMainSkill: false,
+    isMainSkill: true,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [
       SkillDatabaseKeys.DatabaseManagementSystems,
@@ -2165,7 +2141,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.Testing]: {
     name: "Testing",
     category: SkillCategoriesEnum.Testing,
-    isMainSkill: false,
+    isMainSkill: true,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [
       SkillDatabaseKeys.Jest,
@@ -2180,7 +2156,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.Containerisation]: {
     name: "Containerization",
     category: SkillCategoriesEnum.DevOps,
-    isMainSkill: false,
+    isMainSkill: true,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [
       SkillDatabaseKeys.Docker,
@@ -2225,7 +2201,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.DatabaseManagementSystems]: {
     name: "Database Management Systems",
     category: SkillCategoriesEnum.DatabaseManagement,
-    isMainSkill: false,
+    isMainSkill: true,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [
       SkillDatabaseKeys.DatabaseIndexing,
@@ -2322,7 +2298,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.WebDevelopment]: {
     name: "Web Development",
     category: SkillCategoriesEnum.PlatformDevelopment,
-    isMainSkill: false,
+    isMainSkill: true,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [
       SkillDatabaseKeys.REST,
@@ -2459,7 +2435,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.Mathematics]: {
     name: "Mathematics",
     category: SkillCategoriesEnum.Mathematics,
-    isMainSkill: false,
+    isMainSkill: true,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [
       SkillDatabaseKeys.Probability,
@@ -2514,43 +2490,43 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.Teamwork]: {
     name: "Teamwork",
-    isMainSkill: false,
+    isMainSkill: true,
     skillType: SkillTypesEnum.Soft,
     category: SkillCategoriesEnum.SoftSkills,
   },
   [SkillDatabaseKeys.Leadership]: {
     name: "Leadership",
-    isMainSkill: false,
+    isMainSkill: true,
     skillType: SkillTypesEnum.Soft,
     category: SkillCategoriesEnum.SoftSkills,
   },
   [SkillDatabaseKeys.ProblemSolving]: {
     name: "Problem Solving",
-    isMainSkill: false,
+    isMainSkill: true,
     skillType: SkillTypesEnum.Soft,
     category: SkillCategoriesEnum.SoftSkills,
   },
   [SkillDatabaseKeys.CriticalThinking]: {
     name: "Critical Thinking",
-    isMainSkill: false,
+    isMainSkill: true,
     skillType: SkillTypesEnum.Soft,
     category: SkillCategoriesEnum.SoftSkills,
   },
   [SkillDatabaseKeys.Creativity]: {
     name: "Creativity",
-    isMainSkill: false,
+    isMainSkill: true,
     skillType: SkillTypesEnum.Soft,
     category: SkillCategoriesEnum.SoftSkills,
   },
   [SkillDatabaseKeys.Adaptability]: {
     name: "Adaptability",
-    isMainSkill: false,
+    isMainSkill: true,
     skillType: SkillTypesEnum.Soft,
     category: SkillCategoriesEnum.SoftSkills,
   },
   [SkillDatabaseKeys.TimeManagement]: {
     name: "Time Management",
-    isMainSkill: false,
+    isMainSkill: true,
     skillType: SkillTypesEnum.Soft,
     category: SkillCategoriesEnum.SoftSkills,
   },
