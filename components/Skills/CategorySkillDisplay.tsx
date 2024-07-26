@@ -4,6 +4,8 @@ import { useState } from "react";
 import ExpandCollapseButton from "../UI/ExpandCollapseButton";
 import SkillTag from "../Tags/SkillTag";
 import HeadingFour from "../Text/HeadingFour";
+import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 
 interface CategorySkillDisplayProps {
   skillCategories: SkillsCategoryInterface[];
@@ -31,29 +33,40 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
   let skillCount: number = 0;
   let groupCount: number = 0;
 
+  function filterSkills(skills: SkillDatabaseKeys[]): SkillDatabaseKeys[] {
+    return skills.filter(function (skillKey: SkillDatabaseKeys) {
+      return skillDatabaseMap[skillKey]?.isMainSkill;
+    });
+  }
+
   const displayedSkills: SkillsCategoryInterface[] = showAll
     ? skillCategories
     : skillCategories.reduce((acc: SkillsCategoryInterface[], categoryData) => {
         if (skillCount < maxSkillCount && groupCount < maxGroupCount) {
-          const availableSlots = Math.min(
-            maxSkillCount - skillCount,
-            categoryData.skills.length
+          const filteredSkills: SkillDatabaseKeys[] = filterSkills(
+            categoryData.skills
           );
-          const limitedSkills = categoryData.skills.slice(0, availableSlots);
+          const availableSlots: number = Math.min(
+            maxSkillCount - skillCount,
+            filteredSkills.length
+          );
+          const limitedSkills = filteredSkills.slice(0, availableSlots);
 
-          acc.push({
-            skillCategoryName: categoryData.skillCategoryName,
-            skills: limitedSkills,
-          });
+          if (limitedSkills.length > 0) {
+            acc.push({
+              skillCategoryName: categoryData.skillCategoryName,
+              skills: limitedSkills,
+            });
 
-          skillCount += availableSlots;
-          groupCount++;
+            skillCount += availableSlots;
+            groupCount++;
+          }
         }
         return acc;
       }, []);
 
   const totalSkillCount: number = skillCategories.reduce(
-    (acc, categoryData) => acc + Object.keys(categoryData.skills).length,
+    (acc, categoryData) => acc + categoryData.skills.length,
     0
   );
 
