@@ -33,24 +33,26 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
   let skillCount: number = 0;
   let groupCount: number = 0;
 
-  function filterSkills(skills: SkillDatabaseKeys[]): SkillDatabaseKeys[] {
-    return skills.filter(function (skillKey: SkillDatabaseKeys) {
-      return skillDatabaseMap[skillKey]?.isMainSkill;
-    });
-  }
+  const filterSkills = (skills: SkillDatabaseKeys[], onlyMain: boolean) => {
+    return skills.filter((skillKey) =>
+      onlyMain ? skillDatabaseMap[skillKey]?.isMainSkill : true
+    );
+  };
 
   const displayedSkills: SkillsCategoryInterface[] = showAll
     ? skillCategories
     : skillCategories.reduce((acc: SkillsCategoryInterface[], categoryData) => {
         if (skillCount < maxSkillCount && groupCount < maxGroupCount) {
-          const filteredSkills: SkillDatabaseKeys[] = filterSkills(
-            categoryData.skills
-          );
-          const availableSlots: number = Math.min(
+          const filteredSkills = filterSkills(categoryData.skills, true);
+          const skillsToDisplay = filteredSkills.length
+            ? filteredSkills
+            : categoryData.skills;
+
+          const availableSlots = Math.min(
             maxSkillCount - skillCount,
-            filteredSkills.length
+            skillsToDisplay.length
           );
-          const limitedSkills = filteredSkills.slice(0, availableSlots);
+          const limitedSkills = skillsToDisplay.slice(0, availableSlots);
 
           if (limitedSkills.length > 0) {
             acc.push({
@@ -70,8 +72,12 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
     0
   );
 
+  const hasNonMainSkills: boolean = skillCategories.some((category) =>
+    category.skills.some((skillKey) => !skillDatabaseMap[skillKey]?.isMainSkill)
+  );
+
   const shouldShowToggleButton: boolean =
-    totalSkillCount > skillCount || showAll;
+    totalSkillCount > skillCount || showAll || hasNonMainSkills;
 
   function toggleShowAll(): void {
     setShowAll(!showAll);
