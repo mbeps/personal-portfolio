@@ -13,7 +13,7 @@ interface CategorySkillDisplayProps {
 
 /**
  * Component displaying skills in categories.
- * Foe example, programming languages, DevOps, Web Development, etc.
+ * For example, programming languages, DevOps, Web Development, etc.
  * These are from the skills database `skillTypes` property as defined in {@link SkillInterface}.
  * If there is only one category, the title of the category is not displayed and the skills are displayed in a single column.
  *
@@ -33,26 +33,44 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
   let skillCount: number = 0;
   let groupCount: number = 0;
 
-  const filterSkills = (skills: SkillDatabaseKeys[], onlyMain: boolean) => {
+  function filterSkills(skills: SkillDatabaseKeys[], onlyMain: boolean) {
     return skills.filter((skillKey) =>
       onlyMain ? skillDatabaseMap[skillKey]?.isMainSkill : true
     );
-  };
+  }
+
+  const totalMainSkillsCount: number = skillCategories.reduce(
+    (acc, categoryData) => {
+      return (
+        acc +
+        categoryData.skills.filter(
+          (skillKey) => skillDatabaseMap[skillKey]?.isMainSkill
+        ).length
+      );
+    },
+    0
+  );
 
   const displayedSkills: SkillsCategoryInterface[] = showAll
     ? skillCategories
     : skillCategories.reduce((acc: SkillsCategoryInterface[], categoryData) => {
         if (skillCount < maxSkillCount && groupCount < maxGroupCount) {
-          const filteredSkills = filterSkills(categoryData.skills, true);
-          const skillsToDisplay = filteredSkills.length
+          const filteredSkills: SkillDatabaseKeys[] = filterSkills(
+            categoryData.skills,
+            true
+          );
+          const skillsToDisplay: SkillDatabaseKeys[] = filteredSkills.length
             ? filteredSkills
             : categoryData.skills;
 
-          const availableSlots = Math.min(
+          const availableSlots: number = Math.min(
             maxSkillCount - skillCount,
             skillsToDisplay.length
           );
-          const limitedSkills = skillsToDisplay.slice(0, availableSlots);
+          const limitedSkills: SkillDatabaseKeys[] = skillsToDisplay.slice(
+            0,
+            availableSlots
+          );
 
           if (limitedSkills.length > 0) {
             acc.push({
@@ -67,17 +85,20 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
         return acc;
       }, []);
 
-  const totalSkillCount: number = skillCategories.reduce(
-    (acc, categoryData) => acc + categoryData.skills.length,
+  const displayedMainSkillsCount: number = displayedSkills.reduce(
+    (acc, categoryData) => {
+      return (
+        acc +
+        categoryData.skills.filter(
+          (skillKey) => skillDatabaseMap[skillKey]?.isMainSkill
+        ).length
+      );
+    },
     0
   );
 
-  const hasNonMainSkills: boolean = skillCategories.some((category) =>
-    category.skills.some((skillKey) => !skillDatabaseMap[skillKey]?.isMainSkill)
-  );
-
   const shouldShowToggleButton: boolean =
-    totalSkillCount > skillCount || showAll || hasNonMainSkills;
+    displayedMainSkillsCount < totalMainSkillsCount;
 
   function toggleShowAll(): void {
     setShowAll(!showAll);
