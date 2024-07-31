@@ -33,7 +33,10 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
   let skillCount: number = 0;
   let groupCount: number = 0;
 
-  function filterSkills(skills: SkillDatabaseKeys[], onlyMain: boolean) {
+  function filterSkills(
+    skills: SkillDatabaseKeys[],
+    onlyMain: boolean
+  ): SkillDatabaseKeys[] {
     return skills.filter((skillKey) =>
       onlyMain ? skillDatabaseMap[skillKey]?.isMainSkill : true
     );
@@ -98,7 +101,7 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
   );
 
   const shouldShowToggleButton: boolean =
-    displayedMainSkillsCount < totalMainSkillsCount;
+    showAll || displayedMainSkillsCount < totalMainSkillsCount;
 
   function toggleShowAll(): void {
     setShowAll(!showAll);
