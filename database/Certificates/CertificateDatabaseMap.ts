@@ -171,7 +171,6 @@ const certificateMap: Database<CertificateInterface> = {
   },
   [CertificateDatabaseKeys.LinkedInJavaObjectOrientedProgramming]: {
     name: "Java Object-Oriented Programming",
-
     category: CertificateCategoriesEnum.ProgrammingLanguages,
     issuer: CertificateIssuersEnum.LinkedIn,
     description: `This course focuses on enhancing your Java programming skills by teaching the basics of object-oriented programming. It aims to help you write secure, scalable, and easily debuggable code. The course emphasizes practical examples over abstract concepts, with a deep dive into the source code and several challenges to apply what you've learned. It not only guides you on how to apply object-oriented principles in your programs but also explains how Java leverages these principles internally.`,
@@ -185,7 +184,6 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
-
     learningOutcomes: [
       "Understanding the basics of object-oriented programming in Java",
       "Writing secure, scalable, and easily debuggable code",
@@ -198,7 +196,6 @@ const certificateMap: Database<CertificateInterface> = {
   },
   [CertificateDatabaseKeys.LinkedInLearningTypeScript]: {
     name: "Learning TypeScript",
-
     category: CertificateCategoriesEnum.ProgrammingLanguages,
     issuer: CertificateIssuersEnum.LinkedIn,
     certificateURL:
@@ -459,6 +456,59 @@ const certificateMap: Database<CertificateInterface> = {
     description:
       "This course provides a comprehensive introduction to Groovy, a powerful and easy-to-use language on the JVM platform. You will learn the basics of working with Groovy, from variables and data types to classes and exception handling. The course also covers more advanced concepts, such as using closures, working with collections, and reading and writing files. After completing this course, you will have the knowledge you need to use Groovy in a variety of contexts, from scripting to full-fledged programming.",
     archived: true,
+  },
+  [CertificateDatabaseKeys.UdemyScalaAndFunctionalProgrammingEssentials]: {
+    name: "Scala and Functional Programming Essentials",
+    category: CertificateCategoriesEnum.ProgrammingLanguages,
+    issuer: CertificateIssuersEnum.Udemy,
+    certificateURL:
+      "https://www.udemy.com/certificate/UC-89a14f96-da7f-466c-ad08-20a8f2ae63a1/",
+    skills: [
+      SkillDatabaseKeys.Scala,
+      SkillDatabaseKeys.FunctionalProgramming,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+    ],
+    learningOutcomes: [
+      "Understanding expressions in programming",
+      "Exploring functions and their uses",
+      "Identifying type inference mechanisms",
+      "Applying recursion techniques",
+      "Differentiating between call-by-name and call-by-value",
+      "Utilizing default and named arguments",
+      "Performing smart operations on strings",
+      "Grasping the basics of object-oriented programming",
+      "Recognizing syntactic sugar in method notations",
+      "Defining Scala objects",
+      "Comprehending inheritance concepts",
+      "Implementing custom collections using inheritance",
+      "Employing generics in programming",
+      "Creating and using anonymous classes",
+      "Expanding collections through object-oriented exercises",
+      "Working with case classes",
+      "Exploring Scala 3 enums",
+      "Managing exceptions",
+      "Handling packaging and imports",
+      "Writing anonymous functions",
+      "Utilizing higher-order functions and curries",
+      "Applying map, flatMap, filter, and for-comprehensions",
+      "Reviewing collections in Scala",
+      "Understanding sequences like List, Array, and Vector",
+      "Working with tuples and maps",
+      "Handling optional values with Options",
+      "Managing errors and failures",
+      "Mastering pattern matching",
+      "Learning various pattern matching techniques",
+      "Recognizing patterns in different contexts",
+      "Exploring Scala 3's braceless syntax",
+    ],
+    description: `
+      This course covers key aspects of Scala programming, including expressions, functions, and type inference. 
+      It explores object-oriented basics, pattern matching, and advanced features like generics and higher-order functions. 
+      Designed for both beginners and experienced programmers, it provides practical exercises and real-world applications.`,
+    archived: true,
+    relatedMaterials: [ModuleDatabaseKeys.RHUL_FunctionalProgramming],
   },
 
   //^ Algorithms and Data Structures

@@ -22,6 +22,7 @@ enum CertificateDatabaseKeys {
   UdemyUnderstandingTypeScript = "UC-2c118eb6-d835-4b2e-8280-fc2ee49f095b",
   LinkedInLearningLinuxShellScripting = "67ef8710bfc2f51163f78c9373df3d7b4674e44b3d2e936318399c6a7fe5bda0",
   LinkedInLearningGroovy = "7c14e4c16f72a10046c3d66838e5dd3589fa40ac6cbf6509b235ea6452f430c8",
+  UdemyScalaAndFunctionalProgrammingEssentials = "UC-89a14f96-da7f-466c-ad08-20a8f2ae63a1",
 
   //^ Algorithms and Data Structures
   UdemyTheCompleteDataStructuresAndAlgorithmsCourseInPython = "UC-74fdc19f-c016-43c5-8b2a-3cb30941205d",
