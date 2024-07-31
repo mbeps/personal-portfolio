@@ -23,7 +23,7 @@ const projectMap: Database<ProjectInterface> = {
       For a final year university project, 
       a social media platform was developed enabling users to form communities, 
       start discussions, and comment on them.
-      Tested on CRUD and software engineering principles,
+      Tested on CRUD and software engineering principles.
       `,
     repositoryURL: `https://github.com/mbeps/next_discussion_platform`,
     deploymentURL: `https://circus-discussion.vercel.app/`,
