@@ -158,6 +158,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
     isMainSkill: false,
     skillType: SkillTypesEnum.Technology,
     category: SkillCategoriesEnum.ProgrammingLanguages,
+    relatedSkills: [SkillDatabaseKeys.ApacheSpark],
   },
   [SkillDatabaseKeys.RLanguage]: {
     name: "R",
@@ -1069,6 +1070,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.Scala,
       SkillDatabaseKeys.DataScience,
       SkillDatabaseKeys.MLLib,
     ],
