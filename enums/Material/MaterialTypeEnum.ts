@@ -16,4 +16,7 @@ enum MaterialTypeEnum {
   Blogs = "Blogs",
 }
 
+export const materialTypeList: MaterialTypeEnum[] =
+  Object.values(MaterialTypeEnum);
+
 export default MaterialTypeEnum;

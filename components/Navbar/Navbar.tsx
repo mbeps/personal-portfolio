@@ -4,16 +4,17 @@ import { NAVBAR_HEIGHT } from "@/constants/NAVBAR";
 import NAV_ITEMS from "@/constants/pages";
 import { useNavbarStore } from "@/hooks/useNavbarStore";
 import { useEffect, useState } from "react";
-import { IoMdClose, IoMdMenu } from "react-icons/io";
+import SearchButton from "../GlobalSearch/SearchButton";
+import DesktopNavbarSection from "./DesktopNavbarSection";
 import HomeButton from "./HomeButton";
-import NavbarItem from "./NavbarItem";
+import MobileNavbarSection from "./MobileNavbarSection";
 import NavbarOverlay from "./NavbarOverlay";
 import ThemeToggle from "./ThemeToggle";
-import NavbarSection from "./NavbarSection";
 
 /**
  * Navbar component shown at the top of the page.
  * It displays the logo, links to other pages, and a dark / light mode toggle.
+ * It allows the user to search for content on the website.
  * It also displays a hamburger menu for mobile devices.
  * When the hamburger menu is clicked, it opens a sidebar with the links to other pages.
  *
@@ -61,34 +62,25 @@ export default function Navbar() {
         `}
         style={{ transitionDuration }}
       >
-        <div className="justify-between md:items-center md:flex mx-auto max-w-[2560px]">
-          <div className="flex items-center justify-between py-3 md:py-5 md:block">
-            <HomeButton />
+        <div
+          className="
+            flex lg:flex-row md:flex
+            items-center justify-between md:items-center 
+            py-3 md:py-1
+            mx-auto 
+            max-w-[2560px]"
+        >
+          <HomeButton />
 
-            {/* Mobile Only */}
-            <div className="md:hidden flex items-center">
-              {/* Dark / Light Mode toggle for mobile */}
-              <ThemeToggle />
-              {/* Hamburger menu */}
-              <button
-                className="
-                  p-2 
-                  text-neutral-800 dark:text-neutral-200 
-                  rounded-xl 
-                  outline-none ml-2"
-                onClick={() => toggleOverlay()}
-              >
-                {isOverlayOpen ? (
-                  <IoMdClose size={30} />
-                ) : (
-                  <IoMdMenu size={30} />
-                )}
-              </button>
-            </div>
+          <div className="flex flex-row items-center space-x-2">
+            <DesktopNavbarSection items={NAV_ITEMS} />
+            <SearchButton />
+            <ThemeToggle />
+            <MobileNavbarSection
+              isOverlayOpen={isOverlayOpen}
+              toggleOverlay={toggleOverlay}
+            />
           </div>
-
-          {/* Desktop Only */}
-          <NavbarSection items={NAV_ITEMS} />
         </div>
       </header>
       <NavbarOverlay

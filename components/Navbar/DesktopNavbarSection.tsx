@@ -1,7 +1,6 @@
+import NavigationItemInterface from "@/interfaces/NavigationItemInterface";
 import React from "react";
 import NavbarItem from "./NavbarItem";
-import NavigationItemInterface from "@/interfaces/NavigationItemInterface";
-import ThemeToggle from "./ThemeToggle";
 
 interface NavbarSectionProps {
   items: Array<NavigationItemInterface>;
@@ -14,7 +13,7 @@ interface NavbarSectionProps {
  * @param items Links and names of pages that can be accessed via the navbar
  * @returns Component displaying the navbar section with the links to the pages
  */
-const NavbarSection: React.FC<NavbarSectionProps> = ({ items }) => {
+const DesktopNavbarSection: React.FC<NavbarSectionProps> = ({ items }) => {
   return (
     <div className="hidden md:block">
       <div
@@ -36,14 +35,9 @@ const NavbarSection: React.FC<NavbarSectionProps> = ({ items }) => {
               </div>
             );
           })}
-
-        {/* Dark / Light Mode toggle for desktop */}
-        <div className="hidden md:block">
-          <ThemeToggle />
-        </div>
       </div>
     </div>
   );
 };
 
-export default NavbarSection;
+export default DesktopNavbarSection;
