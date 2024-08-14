@@ -39,16 +39,22 @@ import rolesDatabase, {
 } from "@/database/Roles/RoleDatabaseMap";
 import MaterialTypeEnum from "@/enums/Material/MaterialTypeEnum";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
-interface MaterialSectionInterface {
-  name: MaterialTypeEnum;
-  materials: string[];
-  materialHashmap: Database<MaterialInterface>;
-  basePath?: string;
+interface ItemInterface {
+  name: string;
+  link: string;
+}
+
+interface SectionInterface {
+  name: string;
+  items: ItemInterface[];
 }
 
 const SearchButton: React.FC = () => {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
 
   const baseButtonClass =
     "group p-2.5 rounded-full transition-colors duration-1000";
@@ -59,42 +65,48 @@ const SearchButton: React.FC = () => {
   const darkIconClass = "dark:text-white dark:group-hover:text-black";
   const lightIconClass = "text-black group-hover:text-white";
 
-  const sections: MaterialSectionInterface[] = [
+  const sections: SectionInterface[] = [
     {
-      // Projects
-      name: MaterialTypeEnum.Projects,
-      materials: projectDatabaseKeys,
-      materialHashmap: projectDatabaseMap,
-      basePath: PROJECTS_PAGE.path,
+      name: "Projects",
+      items: projectDatabaseKeys.map((key) => ({
+        name: projectDatabaseMap[key].name,
+        link: `${PROJECTS_PAGE.path}/${key}`,
+      })),
     },
     {
-      // Work Experiences
-      name: MaterialTypeEnum.WorkExperiences,
-      materials: roleDatabaseKeys,
-      materialHashmap: rolesDatabase,
-      basePath: EXPERIENCE_PAGE.path,
+      name: "Work Experiences",
+      items: roleDatabaseKeys.map((key) => ({
+        name: rolesDatabase[key].name,
+        link: `${EXPERIENCE_PAGE.path}/${key}`,
+      })),
     },
     {
-      // University Modules
-      name: MaterialTypeEnum.UniversityModules,
-      materials: moduleDatabaseKeys,
-      materialHashmap: moduleDatabaseMap,
+      name: "University Modules",
+      items: moduleDatabaseKeys.map((key) => ({
+        name: moduleDatabaseMap[key].name,
+        link: `${key}`, // Assuming the basePath isn't needed here
+      })),
     },
     {
-      // Certificates
-      name: MaterialTypeEnum.Certificates,
-      materials: certificateDatabaseKeys,
-      materialHashmap: certificateDatabaseMap,
-      basePath: CERTIFICATES_PAGE.path,
+      name: "Certificates",
+      items: certificateDatabaseKeys.map((key) => ({
+        name: certificateDatabaseMap[key].name,
+        link: `${CERTIFICATES_PAGE.path}/${key}`,
+      })),
     },
     {
-      // Blogs
-      name: MaterialTypeEnum.Blogs,
-      materials: blogDatabaseKeys,
-      materialHashmap: blogsDatabaseMap,
-      basePath: BLOG_PAGE.path,
+      name: "Blogs",
+      items: blogDatabaseKeys.map((key) => ({
+        name: blogsDatabaseMap[key].name,
+        link: `${BLOG_PAGE.path}/${key}`,
+      })),
     },
   ];
+
+  function onSelect(link: string) {
+    router.push(link);
+    setOpen(false);
+  }
 
   return (
     <>
@@ -116,25 +128,18 @@ const SearchButton: React.FC = () => {
           {/* Dynamically generated material groups */}
           {sections.map((section) => (
             <CommandGroup key={section.name} heading={section.name}>
-              {section.materials.map((materialKey) => {
-                const material = section.materialHashmap[materialKey];
-
-                if (material) {
-                  return (
-                    <CommandItem
-                      key={materialKey}
-                      onSelect={() => {
-                        // You can define a navigation function here if necessary, e.g.,
-                        // window.location.href = `${section.basePath}/${materialKey}`;
-                      }}
-                    >
-                      {material.name}
-                    </CommandItem>
-                  );
-                }
-
-                return null; // If material is not found, return null
-              })}
+              {section.items.map((item) => (
+                <Link href={item.link} key={item.link}>
+                  <CommandItem
+                    key={item.link}
+                    onSelect={() => {
+                      onSelect(item.link);
+                    }}
+                  >
+                    {item.name}
+                  </CommandItem>
+                </Link>
+              ))}
             </CommandGroup>
           ))}
         </CommandList>
