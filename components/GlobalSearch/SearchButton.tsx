@@ -8,7 +8,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/shadcn/ui/command";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RiSearchLine } from "react-icons/ri";
 
 import findCourseKeyForModule from "@/actions/material/course/findCourseKeyForModule";
@@ -53,6 +53,15 @@ interface SectionInterface {
   items: ItemInterface[];
 }
 
+/**
+ * Global search component that allows the user to search for content on the website.
+ * Once the button a clicked, a dialog opens with a search input field.
+ * A list of projects, work experiences, university modules, certificates, blogs, skills, and socials is displayed.
+ * Selecting an item from the list will redirect the user to the corresponding page.
+ * Additionally, the user can use the keyboard shortcut `Cmd/Ctrl + K` to open the search dialog.
+ *
+ * @returns A button that opens a search dialog when clicked.
+ */
 const SearchButton: React.FC = () => {
   const [open, setOpen] = useState(false);
   const router = useRouter();
@@ -66,6 +75,11 @@ const SearchButton: React.FC = () => {
   const darkIconClass = "dark:text-white dark:group-hover:text-black";
   const lightIconClass = "text-black group-hover:text-white";
 
+  /**
+   * List of sections that are displayed in the search dialog.
+   * Each section contains a list of items that can be searched.
+   * The order of the sections is the order in which they are displayed in the search dialog.
+   */
   const sections: SectionInterface[] = [
     {
       // Pages
@@ -139,10 +153,28 @@ const SearchButton: React.FC = () => {
     },
   ];
 
+  /**
+   * Redirects the user to the selected page and closes the search dialog.
+   */
   function onSelect(link: string) {
-    window.open(link, "_blank"); // Opens the link in a new tab
+    router.push(link);
     setOpen(false);
   }
+
+  /**
+   * Function to handle the keyboard shortcut to open the search dialog.
+   * The shortcut is `Cmd/Ctrl + K`.
+   */
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        setOpen((open) => !open);
+      }
+    };
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
+  }, []);
 
   return (
     <>
