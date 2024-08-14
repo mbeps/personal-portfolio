@@ -123,7 +123,7 @@ const SearchButton: React.FC = () => {
       items: moduleDatabaseKeys.map((key) => {
         const courseKey = findCourseKeyForModule(key, CourseDatabaseMap);
         return {
-          name: moduleDatabaseMap[key].name,
+          name: `${moduleDatabaseMap[key].name} Module`,
           link: courseKey
             ? `${EDUCATION_PAGE.path}/${courseKey}/${key}`
             : `/education`,
