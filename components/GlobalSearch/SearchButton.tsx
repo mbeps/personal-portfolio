@@ -105,7 +105,9 @@ const SearchButton: React.FC = () => {
       // Work Experiences
       name: MaterialTypeEnum.WorkExperiences,
       items: roleDatabaseKeys.map((key) => ({
-        name: `${rolesDatabase[key].name} at ${rolesDatabase[key].company}`,
+        name: `${rolesDatabase[key].name} at ${
+          rolesDatabase[rolesDatabase[key].company]
+        }`,
         link: `${EXPERIENCE_PAGE.path}/${key}`,
       })),
     },
