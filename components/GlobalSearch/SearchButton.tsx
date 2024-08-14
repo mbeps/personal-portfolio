@@ -18,6 +18,7 @@ import NAV_ITEMS, {
   EDUCATION_PAGE,
   EXPERIENCE_PAGE,
   PROJECTS_PAGE,
+  SKILL_PAGE,
 } from "@/constants/pages";
 import blogsDatabaseMap, {
   blogDatabaseKeys,
@@ -37,6 +38,9 @@ import rolesDatabase, {
 } from "@/database/Roles/RoleDatabaseMap";
 import MaterialTypeEnum from "@/enums/Material/MaterialTypeEnum";
 import { useRouter } from "next/navigation";
+import skillDatabaseMap, {
+  skillDatabaseKeys,
+} from "@/database/Skills/SkillDatabaseMap";
 
 interface ItemInterface {
   name: string;
@@ -113,6 +117,14 @@ const SearchButton: React.FC = () => {
       items: blogDatabaseKeys.map((key) => ({
         name: blogsDatabaseMap[key].name,
         link: `${BLOG_PAGE.path}/${key}`,
+      })),
+    },
+    {
+      // Skills
+      name: "Skills",
+      items: skillDatabaseKeys.map((key) => ({
+        name: skillDatabaseMap[key].name,
+        link: `${SKILL_PAGE.path}/${key}`,
       })),
     },
   ];
