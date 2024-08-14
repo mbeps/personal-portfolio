@@ -45,6 +45,7 @@ import skillDatabaseMap, {
 } from "@/database/Skills/SkillDatabaseMap";
 import socialLinks from "@/constants/socials";
 import courseDatabaseMap from "@/database/Courses/CourseDatabaseMap";
+import Link from "next/link";
 
 interface ItemInterface {
   name: string;
@@ -208,14 +209,16 @@ const SearchButton: React.FC = () => {
           {sections.map((section) => (
             <CommandGroup key={section.name} heading={section.name}>
               {section.items.map((item) => (
-                <CommandItem
-                  key={item.link}
-                  onSelect={() => {
-                    onSelect(item.link);
-                  }}
-                >
-                  {item.name}
-                </CommandItem>
+                <Link href={item.link} key={item.link}>
+                  <CommandItem
+                    key={item.link}
+                    onSelect={() => {
+                      onSelect(item.link);
+                    }}
+                  >
+                    {item.name}
+                  </CommandItem>
+                </Link>
               ))}
             </CommandGroup>
           ))}
