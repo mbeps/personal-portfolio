@@ -41,6 +41,7 @@ import { useRouter } from "next/navigation";
 import skillDatabaseMap, {
   skillDatabaseKeys,
 } from "@/database/Skills/SkillDatabaseMap";
+import socialLinks from "@/constants/socials";
 
 interface ItemInterface {
   name: string;
@@ -127,10 +128,19 @@ const SearchButton: React.FC = () => {
         link: `${SKILL_PAGE.path}/${key}`,
       })),
     },
+    {
+      // Socials
+      name: "Socials",
+      items: socialLinks.map((social) => ({
+        name: `${social.name} Profile`,
+        link: social.link,
+        IconComponent: social.IconComponent,
+      })),
+    },
   ];
 
   function onSelect(link: string) {
-    router.push(link);
+    window.open(link, "_blank"); // Opens the link in a new tab
     setOpen(false);
   }
 
