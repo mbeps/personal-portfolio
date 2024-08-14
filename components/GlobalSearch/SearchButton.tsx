@@ -71,13 +71,13 @@ const SearchButton: React.FC = () => {
   const router = useRouter();
 
   const baseButtonClass =
-    "group p-2.5 rounded-full transition-colors duration-1000";
-  const darkButtonClass = "dark:bg-black dark:hover:bg-white";
-  const lightButtonClass = "bg-white hover:bg-black";
+    "group p-2.5 rounded-full transition-colors duration-800";
+  const darkButtonClass = "dark:hover:bg-red-100";
+  const lightButtonClass = "hover:bg-red-900";
 
-  const baseIconClass = "transition-colors duration-700";
-  const darkIconClass = "dark:text-white dark:group-hover:text-black";
-  const lightIconClass = "text-black group-hover:text-white";
+  const baseIconClass = "transition-colors duration-400";
+  const darkIconClass = "dark:text-neutral-200 dark:group-hover:text-red-900";
+  const lightIconClass = "text-neutral-800 group-hover:text-red-100";
 
   /**
    * List of sections that are displayed in the search dialog.
