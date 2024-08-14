@@ -2,6 +2,7 @@ import React from "react";
 import NavbarItem from "./NavbarItem";
 import NavigationItemInterface from "@/interfaces/NavigationItemInterface";
 import ThemeToggle from "./ThemeToggle";
+import SearchButton from "../GlobalSearch/SearchButton";
 
 interface NavbarSectionProps {
   items: Array<NavigationItemInterface>;
@@ -36,6 +37,8 @@ const NavbarSection: React.FC<NavbarSectionProps> = ({ items }) => {
               </div>
             );
           })}
+
+        <SearchButton />
 
         {/* Dark / Light Mode toggle for desktop */}
         <div className="hidden md:block">

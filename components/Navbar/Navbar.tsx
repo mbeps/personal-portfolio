@@ -10,6 +10,7 @@ import NavbarItem from "./NavbarItem";
 import NavbarOverlay from "./NavbarOverlay";
 import ThemeToggle from "./ThemeToggle";
 import NavbarSection from "./NavbarSection";
+import SearchButton from "../GlobalSearch/SearchButton";
 
 /**
  * Navbar component shown at the top of the page.
@@ -67,6 +68,8 @@ export default function Navbar() {
 
             {/* Mobile Only */}
             <div className="md:hidden flex items-center">
+              <SearchButton />
+
               {/* Dark / Light Mode toggle for mobile */}
               <ThemeToggle />
               {/* Hamburger menu */}
