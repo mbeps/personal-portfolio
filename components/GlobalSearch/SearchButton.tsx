@@ -8,16 +8,14 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/shadcn/ui/command";
-import materialDatabaseMap, {
-  materialKeys,
-} from "@/database/Materials/MaterialDatabaseMap";
 import React, { useState } from "react";
 import { RiSearchLine } from "react-icons/ri";
 
-import groupMaterialsByMaterialType from "@/actions/material/group/groupMaterialsByMaterialType";
-import {
+import findCourseKeyForModule from "@/actions/material/course/findCourseKeyForModule";
+import NAV_ITEMS, {
   BLOG_PAGE,
   CERTIFICATES_PAGE,
+  EDUCATION_PAGE,
   EXPERIENCE_PAGE,
   PROJECTS_PAGE,
 } from "@/constants/pages";
@@ -27,7 +25,7 @@ import blogsDatabaseMap, {
 import certificateDatabaseMap, {
   certificateDatabaseKeys,
 } from "@/database/Certificates/CertificateDatabaseMap";
-import MaterialInterface from "@/database/Materials/MaterialInterface";
+import CourseDatabaseMap from "@/database/Courses/CourseDatabaseMap";
 import moduleDatabaseMap, {
   moduleDatabaseKeys,
 } from "@/database/Modules/ModuleDatabaseMap";
@@ -38,9 +36,7 @@ import rolesDatabase, {
   roleDatabaseKeys,
 } from "@/database/Roles/RoleDatabaseMap";
 import MaterialTypeEnum from "@/enums/Material/MaterialTypeEnum";
-import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 
 interface ItemInterface {
   name: string;
@@ -67,35 +63,53 @@ const SearchButton: React.FC = () => {
 
   const sections: SectionInterface[] = [
     {
-      name: "Projects",
+      // Pages
+      name: "Pages",
+      items: NAV_ITEMS.map((navItem) => ({
+        name: navItem.label,
+        link: navItem.path,
+      })),
+    },
+    {
+      // Projects
+      name: MaterialTypeEnum.Projects,
       items: projectDatabaseKeys.map((key) => ({
         name: projectDatabaseMap[key].name,
         link: `${PROJECTS_PAGE.path}/${key}`,
       })),
     },
     {
-      name: "Work Experiences",
+      // Work Experiences
+      name: MaterialTypeEnum.WorkExperiences,
       items: roleDatabaseKeys.map((key) => ({
         name: rolesDatabase[key].name,
         link: `${EXPERIENCE_PAGE.path}/${key}`,
       })),
     },
     {
-      name: "University Modules",
-      items: moduleDatabaseKeys.map((key) => ({
-        name: moduleDatabaseMap[key].name,
-        link: `${key}`, // Assuming the basePath isn't needed here
-      })),
+      // University Modules
+      name: MaterialTypeEnum.UniversityModules,
+      items: moduleDatabaseKeys.map((key) => {
+        const courseKey = findCourseKeyForModule(key, CourseDatabaseMap);
+        return {
+          name: moduleDatabaseMap[key].name,
+          link: courseKey
+            ? `${EDUCATION_PAGE.path}/${courseKey}/${key}`
+            : `/education`,
+        };
+      }),
     },
     {
-      name: "Certificates",
+      // Certificates
+      name: MaterialTypeEnum.Certificates,
       items: certificateDatabaseKeys.map((key) => ({
         name: certificateDatabaseMap[key].name,
         link: `${CERTIFICATES_PAGE.path}/${key}`,
       })),
     },
     {
-      name: "Blogs",
+      // Blogs
+      name: MaterialTypeEnum.Blogs,
       items: blogDatabaseKeys.map((key) => ({
         name: blogsDatabaseMap[key].name,
         link: `${BLOG_PAGE.path}/${key}`,
@@ -121,7 +135,7 @@ const SearchButton: React.FC = () => {
       </button>
 
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Type a command or search..." />
+        <CommandInput placeholder="Type to search across site..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
 
@@ -129,16 +143,14 @@ const SearchButton: React.FC = () => {
           {sections.map((section) => (
             <CommandGroup key={section.name} heading={section.name}>
               {section.items.map((item) => (
-                <Link href={item.link} key={item.link}>
-                  <CommandItem
-                    key={item.link}
-                    onSelect={() => {
-                      onSelect(item.link);
-                    }}
-                  >
-                    {item.name}
-                  </CommandItem>
-                </Link>
+                <CommandItem
+                  key={item.link}
+                  onSelect={() => {
+                    onSelect(item.link);
+                  }}
+                >
+                  {item.name}
+                </CommandItem>
               ))}
             </CommandGroup>
           ))}
