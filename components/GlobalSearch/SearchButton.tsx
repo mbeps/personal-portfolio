@@ -46,6 +46,7 @@ import skillDatabaseMap, {
 import socialLinks from "@/constants/socials";
 import courseDatabaseMap from "@/database/Courses/CourseDatabaseMap";
 import Link from "next/link";
+import companyDatabaseMap from "@/database/Companies/CompanyDatabaseMap";
 
 interface ItemInterface {
   name: string;
@@ -106,7 +107,7 @@ const SearchButton: React.FC = () => {
       name: MaterialTypeEnum.WorkExperiences,
       items: roleDatabaseKeys.map((key) => ({
         name: `${rolesDatabase[key].name} at ${
-          rolesDatabase[rolesDatabase[key].company]
+          companyDatabaseMap[rolesDatabase[key].company].name
         }`,
         link: `${EXPERIENCE_PAGE.path}/${key}`,
       })),
