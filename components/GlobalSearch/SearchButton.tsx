@@ -26,7 +26,9 @@ import blogsDatabaseMap, {
 import certificateDatabaseMap, {
   certificateDatabaseKeys,
 } from "@/database/Certificates/CertificateDatabaseMap";
-import CourseDatabaseMap from "@/database/Courses/CourseDatabaseMap";
+import CourseDatabaseMap, {
+  courseDatabaseKeys,
+} from "@/database/Courses/CourseDatabaseMap";
 import moduleDatabaseMap, {
   moduleDatabaseKeys,
 } from "@/database/Modules/ModuleDatabaseMap";
@@ -42,6 +44,7 @@ import skillDatabaseMap, {
   skillDatabaseKeys,
 } from "@/database/Skills/SkillDatabaseMap";
 import socialLinks from "@/constants/socials";
+import courseDatabaseMap from "@/database/Courses/CourseDatabaseMap";
 
 interface ItemInterface {
   name: string;
@@ -85,7 +88,7 @@ const SearchButton: React.FC = () => {
       // Pages
       name: "Pages",
       items: NAV_ITEMS.map((navItem) => ({
-        name: navItem.label,
+        name: `${navItem.label} Page`,
         link: navItem.path,
       })),
     },
@@ -103,6 +106,14 @@ const SearchButton: React.FC = () => {
       items: roleDatabaseKeys.map((key) => ({
         name: rolesDatabase[key].name,
         link: `${EXPERIENCE_PAGE.path}/${key}`,
+      })),
+    },
+    {
+      // Courses
+      name: "Courses",
+      items: courseDatabaseKeys.map((key) => ({
+        name: `${courseDatabaseMap[key].name} at ${courseDatabaseMap[key].university}`,
+        link: `${EDUCATION_PAGE.path}/${key}`,
       })),
     },
     {
