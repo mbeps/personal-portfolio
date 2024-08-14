@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import {
   CommandInput,
@@ -10,9 +12,23 @@ import {
   CommandGroup,
 } from "@/components/shadcn/ui/command";
 import { RiSearchLine } from "react-icons/ri";
+import projectDatabaseMap from "@/database/Projects/ProjectDatabaseMap";
+import groupMaterialsByMaterialType from "@/actions/material/group/groupMaterialsByMaterialType";
+import materialDatabaseMap, {
+  materialKeys,
+} from "@/database/Materials/MaterialDatabaseMap";
+import MaterialTypeEnum from "@/enums/Material/MaterialTypeEnum";
+import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 
 const SearchButton: React.FC = () => {
   const [open, setOpen] = useState(false);
+
+  const groupedProjects: MaterialGroupInterface[] =
+    groupMaterialsByMaterialType(
+      materialKeys,
+      materialDatabaseMap,
+      MaterialTypeEnum.Projects
+    );
 
   const baseButtonClass =
     "group p-2.5 rounded-full transition-colors duration-1000";
@@ -39,11 +55,23 @@ const SearchButton: React.FC = () => {
         <CommandInput placeholder="Type a command or search..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="Suggestions">
-            <CommandItem>Calendar</CommandItem>
-            <CommandItem>Search Emoji</CommandItem>
-            <CommandItem>Calculator</CommandItem>
-          </CommandGroup>
+
+          {/* Dynamically generated project groups */}
+          {groupedProjects.map((group) => (
+            <CommandGroup key={group.groupName} heading={group.groupName}>
+              {group.materialsKeys.map((materialKey) => {
+                const material = materialDatabaseMap[materialKey];
+
+                if (material) {
+                  return (
+                    <CommandItem key={materialKey}>{material.name}</CommandItem>
+                  );
+                }
+
+                return null; // If material is not found, return null
+              })}
+            </CommandGroup>
+          ))}
         </CommandList>
       </CommandDialog>
     </>
