@@ -33,6 +33,13 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
   let skillCount: number = 0;
   let groupCount: number = 0;
 
+  /**
+   * Filters the skills based on whether they are main skills or not.
+   *
+   * @param skills An array of skill keys to be filtered.
+   * @param onlyMain A boolean indicating whether to filter only main skills.
+   * @returns An array of filtered skill keys.
+   */
   function filterSkills(
     skills: SkillDatabaseKeys[],
     onlyMain: boolean
@@ -41,18 +48,6 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
       onlyMain ? skillDatabaseMap[skillKey]?.isMainSkill : true
     );
   }
-
-  const totalMainSkillsCount: number = skillCategories.reduce(
-    (acc, categoryData) => {
-      return (
-        acc +
-        categoryData.skills.filter(
-          (skillKey) => skillDatabaseMap[skillKey]?.isMainSkill
-        ).length
-      );
-    },
-    0
-  );
 
   const displayedSkills: SkillsCategoryInterface[] = showAll
     ? skillCategories
@@ -88,20 +83,24 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
         return acc;
       }, []);
 
-  const displayedMainSkillsCount: number = displayedSkills.reduce(
-    (acc, categoryData) => {
-      return (
-        acc +
-        categoryData.skills.filter(
-          (skillKey) => skillDatabaseMap[skillKey]?.isMainSkill
-        ).length
-      );
-    },
+  /**
+   * Total number of skills including main and non-main skills.
+   */
+  const totalSkillsCount: number = skillCategories.reduce(
+    (acc, categoryData) => acc + categoryData.skills.length,
+    0
+  );
+
+  /**
+   * Number of skills that are currently displayed.
+   */
+  const displayedSkillsCount: number = displayedSkills.reduce(
+    (acc, categoryData) => acc + categoryData.skills.length,
     0
   );
 
   const shouldShowToggleButton: boolean =
-    showAll || displayedMainSkillsCount < totalMainSkillsCount;
+    showAll || displayedSkillsCount < totalSkillsCount;
 
   function toggleShowAll(): void {
     setShowAll(!showAll);
