@@ -32,43 +32,32 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
 
   let skillCount: number = 0;
   let groupCount: number = 0;
+  let totalSkillsCount: number = 0;
+  let displayedSkillsCount: number = 0;
 
-  /**
-   * Filters the skills based on whether they are main skills or not.
-   *
-   * @param skills An array of skill keys to be filtered.
-   * @param onlyMain A boolean indicating whether to filter only main skills.
-   * @returns An array of filtered skill keys.
-   */
-  function filterSkills(
-    skills: SkillDatabaseKeys[],
-    onlyMain: boolean
-  ): SkillDatabaseKeys[] {
-    return skills.filter((skillKey) =>
-      onlyMain ? skillDatabaseMap[skillKey]?.isMainSkill : true
-    );
-  }
-
+  // Calculate displayedSkills, totalSkillsCount, and displayedSkillsCount in one pass
   const displayedSkills: SkillsCategoryInterface[] = showAll
-    ? skillCategories
+    ? skillCategories.map((categoryData) => {
+        totalSkillsCount += categoryData.skills.length;
+        displayedSkillsCount += categoryData.skills.length;
+        return categoryData;
+      })
     : skillCategories.reduce((acc: SkillsCategoryInterface[], categoryData) => {
+        totalSkillsCount += categoryData.skills.length;
+
         if (skillCount < maxSkillCount && groupCount < maxGroupCount) {
-          const filteredSkills: SkillDatabaseKeys[] = filterSkills(
-            categoryData.skills,
-            true
+          const filteredSkills = categoryData.skills.filter(
+            (skillKey) => skillDatabaseMap[skillKey]?.isMainSkill
           );
-          const skillsToDisplay: SkillDatabaseKeys[] = filteredSkills.length
+          const skillsToDisplay = filteredSkills.length
             ? filteredSkills
             : categoryData.skills;
 
-          const availableSlots: number = Math.min(
+          const availableSlots = Math.min(
             maxSkillCount - skillCount,
             skillsToDisplay.length
           );
-          const limitedSkills: SkillDatabaseKeys[] = skillsToDisplay.slice(
-            0,
-            availableSlots
-          );
+          const limitedSkills = skillsToDisplay.slice(0, availableSlots);
 
           if (limitedSkills.length > 0) {
             acc.push({
@@ -78,26 +67,12 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
 
             skillCount += availableSlots;
             groupCount++;
+            displayedSkillsCount += limitedSkills.length;
           }
         }
+
         return acc;
       }, []);
-
-  /**
-   * Total number of skills including main and non-main skills.
-   */
-  const totalSkillsCount: number = skillCategories.reduce(
-    (acc, categoryData) => acc + categoryData.skills.length,
-    0
-  );
-
-  /**
-   * Number of skills that are currently displayed.
-   */
-  const displayedSkillsCount: number = displayedSkills.reduce(
-    (acc, categoryData) => acc + categoryData.skills.length,
-    0
-  );
 
   const shouldShowToggleButton: boolean =
     showAll || displayedSkillsCount < totalSkillsCount;
