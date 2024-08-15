@@ -90,7 +90,7 @@ const SearchButton: React.FC = () => {
       // Pages
       name: "Pages",
       items: NAV_ITEMS.map((navItem) => ({
-        name: `${navItem.label} Page`,
+        name: `Page: ${navItem.label}`,
         link: navItem.path,
       })),
     },
@@ -98,7 +98,7 @@ const SearchButton: React.FC = () => {
       // Projects
       name: MaterialTypeEnum.Projects,
       items: projectDatabaseKeys.map((key) => ({
-        name: projectDatabaseMap[key].name,
+        name: `Project: ${projectDatabaseMap[key].name}`,
         link: `${PROJECTS_PAGE.path}/${key}`,
       })),
     },
@@ -106,7 +106,7 @@ const SearchButton: React.FC = () => {
       // Work Experiences
       name: MaterialTypeEnum.WorkExperiences,
       items: roleDatabaseKeys.map((key) => ({
-        name: `${rolesDatabase[key].name} at ${
+        name: `Work: ${rolesDatabase[key].name} at ${
           companyDatabaseMap[rolesDatabase[key].company].name
         }`,
         link: `${EXPERIENCE_PAGE.path}/${key}`,
@@ -114,9 +114,9 @@ const SearchButton: React.FC = () => {
     },
     {
       // Courses
-      name: "Courses",
+      name: "Education",
       items: courseDatabaseKeys.map((key) => ({
-        name: `${courseDatabaseMap[key].name} at ${courseDatabaseMap[key].university}`,
+        name: `Education: ${courseDatabaseMap[key].name} at ${courseDatabaseMap[key].university}`,
         link: `${EDUCATION_PAGE.path}/${key}`,
       })),
     },
@@ -126,7 +126,7 @@ const SearchButton: React.FC = () => {
       items: moduleDatabaseKeys.map((key) => {
         const courseKey = findCourseKeyForModule(key, CourseDatabaseMap);
         return {
-          name: `${moduleDatabaseMap[key].name} Module`,
+          name: `Module: ${moduleDatabaseMap[key].name}`,
           link: courseKey
             ? `${EDUCATION_PAGE.path}/${courseKey}/${key}`
             : `/education`,
@@ -137,7 +137,7 @@ const SearchButton: React.FC = () => {
       // Certificates
       name: MaterialTypeEnum.Certificates,
       items: certificateDatabaseKeys.map((key) => ({
-        name: certificateDatabaseMap[key].name,
+        name: `Certificate: ${certificateDatabaseMap[key].name}`,
         link: `${CERTIFICATES_PAGE.path}/${key}`,
       })),
     },
@@ -145,7 +145,7 @@ const SearchButton: React.FC = () => {
       // Blogs
       name: MaterialTypeEnum.Blogs,
       items: blogDatabaseKeys.map((key) => ({
-        name: blogsDatabaseMap[key].name,
+        name: `Blog: ${blogsDatabaseMap[key].name}`,
         link: `${BLOG_PAGE.path}/${key}`,
       })),
     },
@@ -153,7 +153,7 @@ const SearchButton: React.FC = () => {
       // Skills
       name: "Skills",
       items: skillDatabaseKeys.map((key) => ({
-        name: skillDatabaseMap[key].name,
+        name: `Skill: ${skillDatabaseMap[key].name}`,
         link: `${SKILL_PAGE.path}/${key}`,
       })),
     },
@@ -161,7 +161,7 @@ const SearchButton: React.FC = () => {
       // Socials
       name: "Socials",
       items: socialLinks.map((social) => ({
-        name: `${social.name} Profile`,
+        name: `Social: ${social.name}`,
         link: social.link,
         IconComponent: social.IconComponent,
       })),
@@ -206,7 +206,7 @@ const SearchButton: React.FC = () => {
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Type to search across site..." />
         <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
+          <CommandEmpty>No results found</CommandEmpty>
 
           {/* Dynamically generated material groups */}
           {sections.map((section) => (
