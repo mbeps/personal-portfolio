@@ -25,6 +25,8 @@ import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface
 import ProjectInterface from "@/database/Projects/ProjectInterface";
 import { usePathname, useSearchParams } from "next/navigation";
 import React from "react";
+import filterProjectsByType from "@/actions/material/filter/filterProjectsByType";
+import generateFilterOptionsByType from "@/actions/material/filterOptions/generateFilterOptionsByType";
 
 /**
  * Displays a list of all projects that I have worked on.
@@ -42,7 +44,8 @@ const ProjectsView: React.FC = () => {
   //^ URL Params Strings
   const technologyParamName = "technology";
   const languageParamName = "language";
-  const sectionParamName = "type";
+  const sectionParamName = "section";
+  const typeParamName = "type";
   const skillCategoryParamName = "category";
   const generalSkillParamName = "general";
   const softSkillParamName = "soft";
@@ -55,6 +58,7 @@ const ProjectsView: React.FC = () => {
     searchParams.get(technologyParamName) || "all";
   const selectedLanguage: string = searchParams.get(languageParamName) || "all";
   const selectedSection: string = searchParams.get(sectionParamName) || "all";
+  const selectedType: string = searchParams.get(typeParamName) || "all";
   const selectedSkillCategory =
     searchParams.get(skillCategoryParamName) || "all";
   const selectedGeneralSkill: string =
@@ -79,6 +83,7 @@ const ProjectsView: React.FC = () => {
     "skills.category",
     "skills.relatedSkills.name",
     "skills.relatedSkills.category",
+    "type",
   ];
 
   let filteredProjectsSlugArray: ProjectDatabaseKeys[] = useFuseSearch(
@@ -149,6 +154,15 @@ const ProjectsView: React.FC = () => {
     filteredProjectsSlugArray,
     projectDatabaseMap
   ) as ProjectDatabaseKeys[];
+
+  // Filter by project type
+  if (stringToSlug(selectedType) !== "all") {
+    filteredProjectsSlugArray = filterProjectsByType<ProjectInterface>(
+      stringToSlug(selectedType),
+      filteredProjectsSlugArray,
+      projectDatabaseMap
+    ) as ProjectDatabaseKeys[];
+  }
 
   /**
    * Projects categorized by type.
@@ -226,6 +240,13 @@ const ProjectsView: React.FC = () => {
         skillDatabaseMap,
         SkillTypesEnum.Soft
       ),
+    },
+    {
+      sectionName: "Type of Project",
+      urlParam: typeParamName,
+      selectedValue: selectedType,
+      options:
+        generateFilterOptionsByType<ProjectInterface>(projectDatabaseMap),
     },
   ];
 
