@@ -1046,6 +1046,113 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
     type: ProjectTypeEnum.Wok,
   },
+  [ProjectDatabaseKeys.SymphonyMessageMLBot]: {
+    name: `Symphony MessageML Bot`,
+    description: `
+      A Symphony bot for sending messages in Symphony using MessageML.
+      This allows the bot to send messages with more formatting and interactivity similar to HTML.
+      `,
+    category: ProjectCategoriesEnum.SymphonyBots,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Symphony,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.BitBucket,
+      SkillDatabaseKeys.Gradle,
+      SkillDatabaseKeys.GCP,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.QualityManagement,
+    ],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+    ],
+    archived: true,
+    type: ProjectTypeEnum.Wok,
+  },
+  [ProjectDatabaseKeys.SymphonyServiceNowBot]: {
+    name: `Symphony ServiceNow Bot`,
+    description: `
+      A Symphony bot for creating tickets in ServiceNow and receiving updates within Symphony.
+      `,
+    category: ProjectCategoriesEnum.SymphonyBots,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Symphony,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.BitBucket,
+      SkillDatabaseKeys.Gradle,
+      SkillDatabaseKeys.GCP,
+      SkillDatabaseKeys.MongoDB,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.QualityManagement,
+    ],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+    ],
+    archived: true,
+    type: ProjectTypeEnum.Wok,
+  },
+  [ProjectDatabaseKeys.SymphonyPollBot]: {
+    name: `Symphony MessageML Bot`,
+    description: `
+      A Symphony bot for creating polls and surveys for gathering feedback.
+      `,
+    category: ProjectCategoriesEnum.SymphonyBots,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Symphony,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.BitBucket,
+      SkillDatabaseKeys.Gradle,
+      SkillDatabaseKeys.GCP,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.QualityManagement,
+    ],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+    ],
+    archived: true,
+    type: ProjectTypeEnum.Wok,
+  },
 
   //^ Java Assignments
   [ProjectDatabaseKeys.JavaCalculatorAssignment]: {
