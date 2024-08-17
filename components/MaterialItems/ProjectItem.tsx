@@ -36,6 +36,8 @@ interface ProjectItemProps {
 const ProjectItem: React.FC<ProjectItemProps> = ({ projectKey }) => {
   const basePath: string = PROJECTS_PAGE.path;
   const projectData: ProjectInterface = projectDatabaseMap[projectKey];
+  const linkStyle: string =
+    "md:hover:-translate-y-1 transition-transform cursor-pointer hover:shadow-lg rounded-full";
 
   return (
     <div
@@ -102,15 +104,27 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ projectKey }) => {
               className="
                   flex flex-col
                   justify-center items-center md:items-start
-                  mb-6
+                  mb-2
                   text-3xl md:text-4xl font-bold text-center md:text-left 
                   md:hover:text-red-500 md:dark:hover:text-red-800
-                  transition-colors duration-700 ease-in-out
+                  transition-colors duration-500 ease-in-out
                 "
             >
               {projectData.name}
             </h1>
           </Link>
+
+          {/* Project Type */}
+          <p
+            className="
+              mb-2 
+              italic font-medium
+              text-red-700 dark:text-red-300
+              text-center lg:text-left
+            "
+          >
+            {projectData.type}
+          </p>
 
           {/* Project Description */}
           <p className="text-xl text-left leading-7 mb-4 text-neutral-600 dark:text-neutral-400">
@@ -126,14 +140,10 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ projectKey }) => {
               space-x-4 mt-8"
           >
             {/* Project Page */}
-
             <Tooltip>
               <TooltipTrigger>
                 <Link href={`${basePath}/${projectKey}`}>
-                  <BsInfoCircle
-                    size={30}
-                    className="md:hover:-translate-y-1 transition-transform cursor-pointer"
-                  />
+                  <BsInfoCircle size={30} className={linkStyle} />
                 </Link>
               </TooltipTrigger>
               <TooltipContent>
@@ -146,10 +156,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ projectKey }) => {
               <Tooltip>
                 <TooltipTrigger>
                   <Link href={projectData.repositoryURL} target="_blank">
-                    <BsGithub
-                      size={30}
-                      className="md:hover:-translate-y-1 transition-transform cursor-pointer"
-                    />
+                    <BsGithub size={30} className={linkStyle} />
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent>
@@ -162,10 +169,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ projectKey }) => {
               <Tooltip>
                 <TooltipTrigger>
                   <Link href={projectData.deploymentURL} target="_blank">
-                    <BsArrowUpRightCircle
-                      size={30}
-                      className="md:hover:-translate-y-1 transition-transform cursor-pointer"
-                    />
+                    <BsArrowUpRightCircle size={30} className={linkStyle} />
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent>

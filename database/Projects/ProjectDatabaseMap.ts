@@ -74,8 +74,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.RingmasterMessaging]: {
     name: `Ringmaster Messaging`,
     description: `
-      A custom back-end learning project involved creating a straightforward messaging app. 
-      Users can chat one-on-one, participate in group chats, send text messages, share images, view active users, and personalize their profiles. 
+      A custom back-end learning project involved creating a straightforward real-time messaging app. 
+      Users can chat one-on-one or in group chats, send text messages and images, view active users, etc.
       `,
     repositoryURL: `https://github.com/mbeps/ringmaster-messaging`,
     deploymentURL: `https://ringmaster-messaging.vercel.app/`,
@@ -123,7 +123,7 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.MagicianAI]: {
     name: `Magician AI`,
     description: `
-      Magician AI is a SaaS platform that leverages AI to enable users to generate various media types and have dynamic conversations. 
+      A SaaS platform that leverages AI to enable users to generate various media types and have conversations. 
       Developing this project allowed me to explore Stripe, Clerk authentication, and unique AI APIs.
   `,
     repositoryURL: `https://github.com/mbeps/magician-ai`,
