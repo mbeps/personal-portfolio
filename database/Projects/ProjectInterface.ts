@@ -1,5 +1,6 @@
 import ProjectCategoriesEnum from "@/enums/Project/ProjectCategoriesEnum";
 import MaterialInterface from "../Materials/MaterialInterface";
+import ProjectTypeEnum from "@/enums/Project/ProjectTypeEnum";
 
 /**
  * Interface representing a project's metadata.
@@ -21,4 +22,5 @@ export default interface ProjectInterface extends MaterialInterface {
   repositoryURL?: string;
   deploymentURL?: string;
   thumbnailImage?: string;
+  type: ProjectTypeEnum | string;
 }

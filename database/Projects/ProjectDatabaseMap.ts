@@ -10,6 +10,8 @@ import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
 import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
 import CertificateDatabaseKeys from "../Certificates/CertificateDatabaseKeys";
 import BlogDatabaseKeys from "../Blogs/BlogDatabaseKeys";
+import RoleDatabaseKeys from "../Roles/RoleDatabaseKeys";
+import ProjectTypeEnum from "@/enums/Project/ProjectTypeEnum";
 
 /**
  * Hashmap of projects with keys as {@link SkillDatabaseKeys} and values as {@link ProjectInterface}.
@@ -67,12 +69,13 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.FlaskForumBackend,
       BlogDatabaseKeys.CircusDiscussions,
     ],
+    type: ProjectTypeEnum.University,
   },
   [ProjectDatabaseKeys.RingmasterMessaging]: {
     name: `Ringmaster Messaging`,
     description: `
-      A custom back-end learning project involved creating a straightforward messaging app. 
-      Users can chat one-on-one, participate in group chats, send text messages, share images, view active users, and personalize their profiles. 
+      A custom back-end learning project involved creating a straightforward real-time messaging app. 
+      Users can chat one-on-one or in group chats, send text messages and images, view active users, etc.
       `,
     repositoryURL: `https://github.com/mbeps/ringmaster-messaging`,
     deploymentURL: `https://ringmaster-messaging.vercel.app/`,
@@ -115,11 +118,12 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.RingmasterMessaging
     ),
     relatedMaterials: [BlogDatabaseKeys.RingmasterMessaging],
+    type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.MagicianAI]: {
     name: `Magician AI`,
     description: `
-      Magician AI is a SaaS platform that leverages AI to enable users to generate various media types and have dynamic conversations. 
+      A SaaS platform that leverages AI to enable users to generate various media types and have conversations. 
       Developing this project allowed me to explore Stripe, Clerk authentication, and unique AI APIs.
   `,
     repositoryURL: `https://github.com/mbeps/magician-ai`,
@@ -162,6 +166,7 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     relatedMaterials: [BlogDatabaseKeys.MagicianAI],
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.MagicianAI),
+    type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.DrumrollMusic]: {
     name: `Drumroll Music`,
@@ -201,6 +206,7 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [BlogDatabaseKeys.DrumrollMusic],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.DrumrollMusic),
+    type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.JokerNotes]: {
     name: "Joker Notes",
@@ -240,6 +246,7 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     deploymentURL: "https://joker-notes.vercel.app/",
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.JokerNotes),
+    type: ProjectTypeEnum.Personal,
   },
 
   //^ Extra Web Development Projects
@@ -283,6 +290,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     repositoryURL: "https://github.com/mbeps/quizmify",
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.Quizmify),
+    type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.SideshowArticles]: {
     name: `Sideshow Articles`,
@@ -316,6 +324,7 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     archived: true,
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.SideshowArticles),
+    type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.Noodle]: {
     name: `Noodle`,
@@ -361,6 +370,7 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     archived: true,
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.Noodle),
+    type: ProjectTypeEnum.University,
   },
 
   //^ Backend Web Development Projects
@@ -399,6 +409,7 @@ const projectMap: Database<ProjectInterface> = {
       ModuleDatabaseKeys.RHUL_FinalYearProject,
       ProjectDatabaseKeys.CircusDiscussions,
     ],
+    type: ProjectTypeEnum.University,
   },
   [ProjectDatabaseKeys.FlaskBackendDemo]: {
     name: `Flask Backend Demo`,
@@ -427,6 +438,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.ObjectOrientedProgramming,
     ],
     archived: true,
+    type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.FlaskJWTAuthentication]: {
     name: `Flask JWT Authentication`,
@@ -451,6 +463,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     archived: true,
+    type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.DjangoAuthentication]: {
     name: `Django Authentication`,
@@ -475,6 +488,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     archived: true,
+    type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.ClerkAuthentication]: {
     name: `Clerk Authentication`,
@@ -500,6 +514,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     archived: true,
+    type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.Auth0Authentication]: {
     name: `Auth0 Authentication`,
@@ -526,6 +541,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     archived: true,
+    type: ProjectTypeEnum.Personal,
   },
 
   //^ Artificial Intelligence Projects
@@ -557,6 +573,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.MachineLearning,
+    type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.HousePricePrediction]: {
     name: "House Price Prediction",
@@ -586,6 +603,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.MachineLearning,
+    type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.MachineLearningAlgorithmsAndTechniquesLab]: {
     name: "Machine Learning Algorithms & Techniques Lab",
@@ -625,6 +643,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Algorithms,
     ],
     relatedMaterials: [CertificateDatabaseKeys.UdemyMachineLearningAtoZ],
+    type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.ArtificialIntelligenceReinforcementLearning]: {
     name: "Reinforcement Learning Lab",
@@ -660,6 +679,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Algorithms,
     ],
     relatedMaterials: [CertificateDatabaseKeys.UdemyArtificialIntelligenceAtoZ],
+    type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.MachineLearningAssignment1]: {
     name: `Machine Learning Assignment 1`,
@@ -688,6 +708,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.MachineLearning,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
+    type: ProjectTypeEnum.University,
   },
   [ProjectDatabaseKeys.MachineLearningAssignment2]: {
     name: `Machine Learning Assignment 2`,
@@ -716,6 +737,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.MachineLearning,
+    type: ProjectTypeEnum.University,
   },
   [ProjectDatabaseKeys.MachineLearningAssignment3]: {
     name: `Machine Learning Assignment 3`,
@@ -745,6 +767,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.MachineLearning,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
+    type: ProjectTypeEnum.University,
   },
   [ProjectDatabaseKeys.MachineLearningLabQuestions]: {
     name: `Machine Learning Lab Questions`,
@@ -774,6 +797,7 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.MachineLearning,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
     archived: true,
+    type: ProjectTypeEnum.University,
   },
   [ProjectDatabaseKeys.ComputationalFinanceAssignment]: {
     name: "Computational Finance Assignment",
@@ -805,6 +829,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.MachineLearning,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_ComputationalFinance],
+    type: ProjectTypeEnum.University,
   },
   [ProjectDatabaseKeys.MachineLearningTheoryPractice]: {
     name: "Machine Learning Theory Practice",
@@ -832,6 +857,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Probability,
     ],
     relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
+    type: ProjectTypeEnum.University,
   },
   [ProjectDatabaseKeys.MachineLearningDataScienceLab]: {
     name: "Machine Learning & Data Science Lab",
@@ -869,6 +895,263 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [
       CertificateDatabaseKeys.UdemyMachineLearningDataScienceAndGenerativeAIWithPython,
     ],
+    type: ProjectTypeEnum.Personal,
+  },
+
+  //^ Symphony Bots
+  [ProjectDatabaseKeys.SymphonyTranslateBot]: {
+    name: `Symphony Translate Bot`,
+    description: `
+      A Symphony bot that translates messages in a Symphony chatroom using Language Weaver API.
+      Replaces the old Translate Bot which was originally built using the outdated SDK.
+      Much faster, more reliable, and easier to maintain and more features compared to the old bot.
+      `,
+    category: ProjectCategoriesEnum.SymphonyBots,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Symphony,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.BitBucket,
+      SkillDatabaseKeys.Gradle,
+      SkillDatabaseKeys.GCP,
+      SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.DataStructures,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.QualityManagement,
+    ],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+    ],
+    type: ProjectTypeEnum.Wok,
+  },
+  [ProjectDatabaseKeys.SymphonyWebhookBot]: {
+    name: `Symphony Webhooks Bot`,
+    description: `
+      A Symphony bot that sends messages to a Symphony chatroom using Webhooks.
+      This bot is used to send messages to a chatroom from an external source.
+      `,
+    category: ProjectCategoriesEnum.SymphonyBots,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Symphony,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.BitBucket,
+      SkillDatabaseKeys.Gradle,
+      SkillDatabaseKeys.GCP,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.QualityManagement,
+    ],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+    ],
+    type: ProjectTypeEnum.Wok,
+  },
+  [ProjectDatabaseKeys.SymphonyInteractiveBot]: {
+    name: `Symphony Interactive Bot Example`,
+    description: `
+      A Symphony bot for learning how to create an interactive bot in Symphony.
+      This bot is used to demonstrate how to create an interactive bot in Symphony.
+      This was used to create documentation and tutorials for other developers.
+      `,
+    category: ProjectCategoriesEnum.SymphonyBots,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Symphony,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.BitBucket,
+      SkillDatabaseKeys.Gradle,
+      SkillDatabaseKeys.GCP,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.QualityManagement,
+    ],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+    ],
+    archived: true,
+    type: ProjectTypeEnum.Wok,
+  },
+  [ProjectDatabaseKeys.SymphonyHeadlessBot]: {
+    name: `Symphony Headless Bot Example`,
+    description: `
+      A Symphony bot for learning how to create a Headless Bot in Symphony.
+      This bot is used to demonstrate how to create a headless bot in Symphony.
+      This was used to create documentation and tutorials for other developers.
+      `,
+    category: ProjectCategoriesEnum.SymphonyBots,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Symphony,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.BitBucket,
+      SkillDatabaseKeys.Gradle,
+      SkillDatabaseKeys.GCP,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.QualityManagement,
+    ],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+    ],
+    archived: true,
+    type: ProjectTypeEnum.Wok,
+  },
+  [ProjectDatabaseKeys.SymphonyMessageMLBot]: {
+    name: `Symphony MessageML Bot`,
+    description: `
+      A Symphony bot for sending messages in Symphony using MessageML.
+      This allows the bot to send messages with more formatting and interactivity similar to HTML.
+      `,
+    category: ProjectCategoriesEnum.SymphonyBots,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Symphony,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.BitBucket,
+      SkillDatabaseKeys.Gradle,
+      SkillDatabaseKeys.GCP,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.QualityManagement,
+    ],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+    ],
+    archived: true,
+    type: ProjectTypeEnum.Wok,
+  },
+  [ProjectDatabaseKeys.SymphonyServiceNowBot]: {
+    name: `Symphony ServiceNow Bot`,
+    description: `
+      A Symphony bot for creating tickets in ServiceNow and receiving updates within Symphony.
+      `,
+    category: ProjectCategoriesEnum.SymphonyBots,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Symphony,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.BitBucket,
+      SkillDatabaseKeys.Gradle,
+      SkillDatabaseKeys.GCP,
+      SkillDatabaseKeys.MongoDB,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.QualityManagement,
+    ],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+    ],
+    archived: true,
+    type: ProjectTypeEnum.Wok,
+  },
+  [ProjectDatabaseKeys.SymphonyPollBot]: {
+    name: `Symphony Poll Bot`,
+    description: `
+      A Symphony bot for creating polls and surveys for gathering feedback.
+      `,
+    category: ProjectCategoriesEnum.SymphonyBots,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Symphony,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.BitBucket,
+      SkillDatabaseKeys.Gradle,
+      SkillDatabaseKeys.GCP,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.QualityManagement,
+    ],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+    ],
+    archived: true,
+    type: ProjectTypeEnum.Wok,
   },
 
   //^ Java Assignments
@@ -901,6 +1184,7 @@ const projectMap: Database<ProjectInterface> = {
       BlogDatabaseKeys.CalculatorAssignment,
     ],
     archived: true,
+    type: ProjectTypeEnum.University,
   },
   [ProjectDatabaseKeys.BotanicGardenPlannerAssignment]: {
     name: `Botanic-Garden-Planner`,
@@ -922,6 +1206,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.JavaAssignments,
     archived: true,
+    type: ProjectTypeEnum.University,
   },
   [ProjectDatabaseKeys.TrackAndTraceAssignment]: {
     name: "Track & Trace",
@@ -943,6 +1228,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     relatedMaterials: [ModuleDatabaseKeys.RHUL_ObjectOrientedProgramming1],
     archived: true,
+    type: ProjectTypeEnum.University,
   },
   [ProjectDatabaseKeys.HollomonAssignment]: {
     name: `Hollomon`,
@@ -962,7 +1248,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Adaptability,
     ],
     relatedMaterials: [ModuleDatabaseKeys.RHUL_ObjectOrientedProgramming2],
-
+    type: ProjectTypeEnum.University,
     archived: true,
   },
   [ProjectDatabaseKeys.DatabasesMiniProject]: {
@@ -983,7 +1269,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.JavaAssignments,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_Databases],
-
+    type: ProjectTypeEnum.University,
     archived: true,
   },
 
@@ -1013,6 +1299,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.Algorithms,
     archived: true,
+    type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.SearchingAndSortingAlgorithms]: {
     name: `Searching & Sorting Algorithms`,
@@ -1048,6 +1335,7 @@ const projectMap: Database<ProjectInterface> = {
       CertificateDatabaseKeys.UdemyTheCompleteDataStructuresAndAlgorithmsCourseInPython,
       CertificateDatabaseKeys.UdemyPythonProgrammingMasterclass,
     ],
+    type: ProjectTypeEnum.University,
   },
 
   //^ Mathematics
@@ -1076,6 +1364,7 @@ const projectMap: Database<ProjectInterface> = {
       CertificateDatabaseKeys.UdemyBecomeAnAlgebraMaster,
       CertificateDatabaseKeys.UdemyBecomeALinearAlgebraMaster,
     ],
+    type: ProjectTypeEnum.Personal,
   },
 
   //^ Other Projects
@@ -1109,6 +1398,7 @@ const projectMap: Database<ProjectInterface> = {
       ModuleDatabaseKeys.RHUL_ProgrammingLaboratory,
       BlogDatabaseKeys.OsmosGame,
     ],
+    type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.AutomatedSetup]: {
     name: `Automated Setup`,
@@ -1131,6 +1421,7 @@ const projectMap: Database<ProjectInterface> = {
     repositoryURL: `https://github.com/mbeps/AutomatedSetup`,
     category: ProjectCategoriesEnum.Other,
     archived: true,
+    type: ProjectTypeEnum.University,
   },
 };
 

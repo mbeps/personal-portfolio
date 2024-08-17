@@ -60,6 +60,14 @@ const rolesMap: Database<RoleInterface> = {
     relatedMaterials: [
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+
+      ProjectDatabaseKeys.SymphonyTranslateBot,
+      ProjectDatabaseKeys.SymphonyWebhookBot,
+      ProjectDatabaseKeys.SymphonyInteractiveBot,
+      ProjectDatabaseKeys.SymphonyHeadlessBot,
+      ProjectDatabaseKeys.SymphonyMessageMLBot,
+      ProjectDatabaseKeys.SymphonyServiceNowBot,
+      ProjectDatabaseKeys.SymphonyPollBot,
     ],
     company: CompanyDatabaseKeys.Commerzbank,
   },

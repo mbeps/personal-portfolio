@@ -3622,7 +3622,16 @@ const certificateMap: Database<CertificateInterface> = {
       "Implementing message templating in BDK for Java",
       "Converting a BDK 2.0 project to Spring Boot and using BDK 2.0 with Spring Boot",
     ],
-    relatedMaterials: [RoleDatabaseKeys.CommerzbankDevOpsEngineer],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      ProjectDatabaseKeys.SymphonyTranslateBot,
+      ProjectDatabaseKeys.SymphonyWebhookBot,
+      ProjectDatabaseKeys.SymphonyInteractiveBot,
+      ProjectDatabaseKeys.SymphonyHeadlessBot,
+      ProjectDatabaseKeys.SymphonyMessageMLBot,
+      ProjectDatabaseKeys.SymphonyServiceNowBot,
+      ProjectDatabaseKeys.SymphonyPollBot,
+    ],
   },
   [CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperPython]: {
     name: "Symphony Certified Bot Developer (Python)",
