@@ -202,6 +202,10 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
     `public${basePath}/${projectKey}/features.md`
   )?.content;
 
+  /**
+   * Whether to show the links section.
+   * If there are no links (repository or deployment), the section is not shown.
+   */
   const showLinks: boolean =
     !!projectData.repositoryURL || !!projectData.deploymentURL;
 
@@ -258,6 +262,17 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
             </div>
           )
         )}
+
+        {/* Project Type */}
+        <p
+          className="
+            py-4
+            text-red-700 dark:text-red-300
+            text-center text-lg
+          "
+        >
+          {`${projectData.type} Project`}
+        </p>
 
         {/* Metadata Section */}
         <div className="mt-4 space-y-12">

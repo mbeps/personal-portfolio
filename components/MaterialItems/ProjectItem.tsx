@@ -123,7 +123,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ projectKey }) => {
               text-center lg:text-left
             "
           >
-            {projectData.type}
+            {`${projectData.type} Project`}
           </p>
 
           {/* Project Description */}
