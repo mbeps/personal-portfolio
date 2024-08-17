@@ -1685,7 +1685,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
 
   //^ Communication
   [SkillDatabaseKeys.Symphony]: {
-    name: "Symphony Solutions",
+    name: "Symphony BDK",
     category: SkillCategoriesEnum.Automation,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
