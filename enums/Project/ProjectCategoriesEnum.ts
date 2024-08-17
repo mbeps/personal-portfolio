@@ -6,6 +6,7 @@ enum ProjectCategoriesEnum {
   FullStackWebDevelopment = "Full-Stack Web Development",
   BackEndWebDevelopment = "Back-End Web Development",
   MachineLearning = "Machine Learning",
+  SymphonyBots = "Symphony Bots",
   JavaAssignments = "Java Assignments",
   Algorithms = "Algorithms",
   Mathematics = "Mathematics",
