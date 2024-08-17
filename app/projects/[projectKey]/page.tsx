@@ -202,6 +202,9 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
     `public${basePath}/${projectKey}/features.md`
   )?.content;
 
+  const showLinks: boolean =
+    !!projectData.repositoryURL || !!projectData.deploymentURL;
+
   return (
     <main>
       <div className="sr-only">
@@ -292,64 +295,66 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
           </div>
 
           {/* Links Section */}
-          <div className="text-center md:text-left">
-            <HeadingThree title="Links" />
-            <div
-              className="
-              mt-6 flex 
-              flex-row 
-              justify-center md:justify-start items-center 
-              w-full md:w-1/3
-              gap-2"
-            >
-              {/* GitHub Repo */}
-              {projectData?.repositoryURL && (
-                <Link
-                  href={projectData?.repositoryURL}
-                  target="_blank"
-                  className="w-full"
-                >
-                  <Button>
-                    <div
-                      className="
-                        flex
-                        justify-center md:justify-start
-                        align-center
-                        gap-4
-                        w-full
-                      "
-                    >
-                      <BsGithub size={26} />
-                      <p>Repository</p>
-                    </div>
-                  </Button>
-                </Link>
-              )}
-              {/* Website */}
-              {projectData?.deploymentURL && (
-                <Link
-                  href={projectData?.deploymentURL}
-                  target="_blank"
-                  className="w-full"
-                >
-                  <Button>
-                    <div
-                      className="
-                        flex
-                        justify-center md:justify-start
-                        align-center
-                        gap-4
-                        w-full
-                      "
-                    >
-                      <BsArrowUpRightCircle size={26} />
-                      <p>Deployment</p>
-                    </div>
-                  </Button>
-                </Link>
-              )}
+          {showLinks && (
+            <div className="text-center md:text-left">
+              <HeadingThree title="Links" />
+              <div
+                className="
+                mt-6 flex 
+                flex-row 
+                justify-center md:justify-start items-center 
+                w-full md:w-1/3
+                gap-2"
+              >
+                {/* GitHub Repo */}
+                {projectData?.repositoryURL && (
+                  <Link
+                    href={projectData?.repositoryURL}
+                    target="_blank"
+                    className="w-full"
+                  >
+                    <Button>
+                      <div
+                        className="
+                          flex
+                          justify-center md:justify-start
+                          align-center
+                          gap-4
+                          w-full
+                        "
+                      >
+                        <BsGithub size={26} />
+                        <p>Repository</p>
+                      </div>
+                    </Button>
+                  </Link>
+                )}
+                {/* Website */}
+                {projectData?.deploymentURL && (
+                  <Link
+                    href={projectData?.deploymentURL}
+                    target="_blank"
+                    className="w-full"
+                  >
+                    <Button>
+                      <div
+                        className="
+                          flex
+                          justify-center md:justify-start
+                          align-center
+                          gap-4
+                          w-full
+                        "
+                      >
+                        <BsArrowUpRightCircle size={26} />
+                        <p>Deployment</p>
+                      </div>
+                    </Button>
+                  </Link>
+                )}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Divider */}
           {!!features ||
