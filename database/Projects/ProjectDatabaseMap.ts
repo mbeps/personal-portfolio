@@ -938,7 +938,7 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Wok,
   },
   [ProjectDatabaseKeys.SymphonyWebhookBot]: {
-    name: `Symphony Webhook Bot`,
+    name: `Symphony Webhooks Bot`,
     description: `
       A Symphony bot that sends messages to a Symphony chatroom using Webhooks.
       This bot is used to send messages to a chatroom from an external source.
@@ -1119,7 +1119,7 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Wok,
   },
   [ProjectDatabaseKeys.SymphonyPollBot]: {
-    name: `Symphony MessageML Bot`,
+    name: `Symphony Poll Bot`,
     description: `
       A Symphony bot for creating polls and surveys for gathering feedback.
       `,
