@@ -251,7 +251,7 @@ const projectMap: Database<ProjectInterface> = {
 
   //^ Extra Web Development Projects
   [ProjectDatabaseKeys.Quizmify]: {
-    name: "Quizmify",
+    name: "Quizmify AI",
     description: `An intuitive platform for dynamic quiz generation. 
       Users can test their knowledge across various topics, choosing between multiple-choice questions or fill-in-the-gap style challenges. 
       With immediate feedback and score tracking, users enhance their understanding.`,
