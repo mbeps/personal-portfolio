@@ -3,7 +3,10 @@ import { useEffect, useState } from "react";
 /**
  * A custom hook that returns a boolean indicating whether the media query matches the current viewport.
  * This is useful for checking the viewport size and applying responsive styles.
- * Foe example, displaying certain elements only on mobile.
+ * For example, displaying certain elements only on mobile.
+ *
+ * @param query The media query to match (screen width)
+ * @returns A boolean indicating whether the media query matches the current viewport
  */
 export function useMediaQuery(query: string): boolean {
   const getMatches = (query: string): boolean => {
@@ -27,18 +30,10 @@ export function useMediaQuery(query: string): boolean {
     handleChange();
 
     // Listen matchMedia
-    if (matchMedia.addEventListener) {
-      matchMedia.addEventListener("change", handleChange);
-    } else {
-      matchMedia.addListener(handleChange);
-    }
+    matchMedia.addEventListener("change", handleChange);
 
     return () => {
-      if (matchMedia.removeEventListener) {
-        matchMedia.removeEventListener("change", handleChange);
-      } else {
-        matchMedia.removeListener(handleChange);
-      }
+      matchMedia.removeEventListener("change", handleChange);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
