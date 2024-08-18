@@ -594,6 +594,10 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Poetry,
       SkillDatabaseKeys.Black,
 
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.Mathematics,
+
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
       SkillDatabaseKeys.CriticalThinking,
@@ -630,6 +634,8 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Poetry,
       SkillDatabaseKeys.Black,
 
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.Mathematics,
       SkillDatabaseKeys.LinearAlgebra,
       SkillDatabaseKeys.Probability,
@@ -666,6 +672,8 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Poetry,
       SkillDatabaseKeys.Black,
 
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.Mathematics,
       SkillDatabaseKeys.LinearAlgebra,
       SkillDatabaseKeys.Probability,
@@ -698,6 +706,10 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.GitHub,
       SkillDatabaseKeys.Black,
 
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.Mathematics,
+
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
       SkillDatabaseKeys.CriticalThinking,
@@ -728,6 +740,10 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.GitHub,
       SkillDatabaseKeys.Black,
 
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.Mathematics,
+
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
       SkillDatabaseKeys.CriticalThinking,
@@ -757,6 +773,10 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.GitHub,
       SkillDatabaseKeys.Black,
 
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.Mathematics,
+
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
       SkillDatabaseKeys.CriticalThinking,
@@ -785,6 +805,11 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Git,
       SkillDatabaseKeys.GitHub,
       SkillDatabaseKeys.Black,
+
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.Mathematics,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -819,7 +844,11 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
       SkillDatabaseKeys.ObjectOrientedProgramming,
+
+      SkillDatabaseKeys.ArtificialIntelligence,
+
       SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.Mathematics,
       SkillDatabaseKeys.Algebra,
       SkillDatabaseKeys.Calculus,
       SkillDatabaseKeys.LinearAlgebra,
@@ -851,7 +880,9 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
+
       SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.Mathematics,
       SkillDatabaseKeys.LinearAlgebra,
       SkillDatabaseKeys.Statistics,
       SkillDatabaseKeys.Probability,
