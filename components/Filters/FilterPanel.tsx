@@ -86,67 +86,69 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
 
   return (
     <SidePanel title="Filters" isOpen={isOpen} toggle={toggle}>
-      <p className="text-neutral-500 dark:text-neutral-400 text-sm md:text-base text-center md:text-left">
-        When applying filters, archived items are displayed automatically.
-      </p>
+      <div className="flex-1 overflow-y-auto px-4 py-4">
+        <p className="text-neutral-500 dark:text-neutral-400 text-sm md:text-base text-center md:text-left">
+          When applying filters, archived items are displayed automatically.
+        </p>
 
-      {/* Filter Options */}
-      <div className="space-y-3 mt-4 flex flex-col justify-center items-center">
-        {filterCategories.map((filterCategory, index) => (
-          <FilterPopover
-            key={index}
-            basePath={basePath}
-            selectedFilterCategory={filterCategory}
-            filterCategories={filterCategories}
-            archiveFilter={archiveFilter}
-            searchFilter={searchFilter}
-          />
-        ))}
-      </div>
+        {/* Filter Options */}
+        <div className="space-y-3 mt-4 flex flex-col justify-center items-center">
+          {filterCategories.map((filterCategory, index) => (
+            <FilterPopover
+              key={index}
+              basePath={basePath}
+              selectedFilterCategory={filterCategory}
+              filterCategories={filterCategories}
+              archiveFilter={archiveFilter}
+              searchFilter={searchFilter}
+            />
+          ))}
+        </div>
 
-      {/* Buttons */}
-      <div
-        className="
+        {/* Buttons */}
+        <div
+          className="
               pt-3 mt-5
               flex flex-row
               space-x-2
               border-t border-neutral-300 dark:border-neutral-700
             "
-      >
-        {/* Clear Button */}
-        <Button
-          variant="default"
-          disabled={!areFiltersApplied}
-          className="
+        >
+          {/* Clear Button */}
+          <Button
+            variant="default"
+            disabled={!areFiltersApplied}
+            className="
                 w-auto
                 px-6
                 flex justify-start 
                 bg-neutral-100 
                 border border-neutral-300 dark:border-neutral-700"
-        >
-          <Link href={basePath} className="w-full" scroll={false}>
-            <div className="flex items-center space-x-2">
-              <AiOutlineClear
-                fontSize={24}
-                className="text-neutral-700 dark:text-neutral-200"
-              />
-              <span>Clear All</span>
-            </div>
-          </Link>
-        </Button>
+          >
+            <Link href={basePath} className="w-full" scroll={false}>
+              <div className="flex items-center space-x-2">
+                <AiOutlineClear
+                  fontSize={24}
+                  className="text-neutral-700 dark:text-neutral-200"
+                />
+                <span>Clear All</span>
+              </div>
+            </Link>
+          </Button>
 
-        {/* Archive Toggle */}
-        {archiveFilter.hasArchivedMaterials && (
-          <div className="w-full">
-            <div className="w-full -mt-1">
-              <ArchiveToggle
-                showArchived={archiveFilter.showArchived}
-                filterProps={filterProps}
-                basePath={basePath}
-              />
+          {/* Archive Toggle */}
+          {archiveFilter.hasArchivedMaterials && (
+            <div className="w-full">
+              <div className="w-full -mt-1">
+                <ArchiveToggle
+                  showArchived={archiveFilter.showArchived}
+                  filterProps={filterProps}
+                  basePath={basePath}
+                />
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </SidePanel>
   );

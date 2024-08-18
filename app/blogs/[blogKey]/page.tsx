@@ -15,6 +15,7 @@ import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
+import ContentsSection from "./components/ContentsSection";
 
 type BlogPageProps = {
   params: { blogKey: string };
@@ -125,6 +126,42 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
     ),
   ];
 
+  /**
+   * Splits a blog into 2 sections: contents and articles.
+   * The contents section is the part of the blog before the first heading.
+   * The article section is the part of the blog after the first heading.
+   *
+   * @param blogContent Markdown blog that needs to be split into contents and article sections
+   * @returns 2 sections: contents list and articles
+   */
+  function splitBlogContent(blogContent: string): {
+    contentsSection: string;
+    articleSection: string;
+  } {
+    // Regular expression to find the first heading (starting with #, ##, etc.)
+    const headingRegex = /^#{1,6} /m;
+
+    // Find the index of the first heading
+    const firstHeadingIndex: number = blogContent.search(headingRegex);
+
+    // If a heading is found, split the content
+    if (firstHeadingIndex !== -1) {
+      const contentsSection: string = blogContent
+        .slice(0, firstHeadingIndex)
+        .trim();
+      const articleSection: string = blogContent
+        .slice(firstHeadingIndex)
+        .trim();
+
+      return { contentsSection, articleSection };
+    }
+
+    // If no heading is found, return the entire content as the articleSection, and leave contentsSection empty
+    return { contentsSection: "", articleSection: blogContent.trim() };
+  }
+
+  const splitBlot = splitBlogContent(blogContent);
+
   return (
     <main>
       <div className="sr-only">
@@ -141,12 +178,13 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
         <div className="text-center">
           <HeadingTwo title={blogData?.name} />
 
-          <h3 className="text-neutral-600 dark:text-neutral-400">
+          <h3 className="text-neutral-600 dark:text-neutral-400 mb-12">
             {blogData?.subtitle}
           </h3>
         </div>
 
-        <Reader content={blogContent} size="lg:prose-lg" />
+        <ContentsSection contentSection={splitBlot.contentsSection} />
+        <Reader content={splitBlot.articleSection} size="lg:prose-lg" />
 
         <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
 
