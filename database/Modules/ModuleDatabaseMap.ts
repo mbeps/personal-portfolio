@@ -666,6 +666,7 @@ const modulesMap: Database<ModuleInterface> = {
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.ScikitLearn,
       SkillDatabaseKeys.NumPy,
       SkillDatabaseKeys.Matplotlib,
