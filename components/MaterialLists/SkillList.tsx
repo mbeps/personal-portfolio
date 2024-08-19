@@ -25,6 +25,12 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/shadcn/ui/popover";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/shadcn/ui/accordion";
 import { SKILL_PAGE } from "@/constants/pages";
 import materialDatabaseMap from "@/database/Materials/MaterialDatabaseMap";
 import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
@@ -44,6 +50,9 @@ import {
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 import skillHasMaterial from "@/actions/material/skillHasMaterial";
+import SearchInput from "../Inputs/SearchInput";
+import useFuseSkillSearch from "@/hooks/useFuseSearch/useFuseSkillSearch";
+import { MdOutlineClear, MdOutlineManageSearch } from "react-icons/md";
 
 interface SkillListProps {
   skills: SkillDatabaseKeys[];
@@ -80,8 +89,31 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
     searchParams.get(softSkillParamName) === "true";
   const includeNoMaterial: boolean =
     searchParams.get(noMaterialParamName) === "true"; // false by default
+  const searchParamName = "search";
 
-  //^ LOGIC FOR DISPLAYING FILTERED SKILLS
+  const searchTerm: string = searchParams.get(searchParamName) || "";
+
+  const searchOptions: string[] = [
+    "name",
+    "category",
+    "skills.name",
+    "skills.category",
+    "skills.relatedSkills.name",
+    "skills.relatedSkills.category",
+  ];
+
+  // Use the search hook to filter skills based on the search term
+  const filteredSkillIds: string[] = useFuseSkillSearch(
+    skillDatabaseMap,
+    searchTerm,
+    searchOptions
+  );
+
+  // Filter the original skills array to include only those skills that match the search results
+  const filteredSkills = skills.filter((skillKey) =>
+    filteredSkillIds.includes(skillKey)
+  );
+
   const options: FilterOption[] = [
     { slug: "category", entryName: "Category" },
     { slug: "skill-type", entryName: "Skill Type" },
@@ -95,10 +127,10 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
   if (includeGeneralSkills) includeSkillTypes.push(SkillTypesEnum.Technical);
   if (includeSoftSkills) includeSkillTypes.push(SkillTypesEnum.Soft);
 
-  // Group skills with the inclusion list
+  // Group skills with the inclusion list, using the filtered skills
   const groupedSkills: SkillsCategoryInterface[] = groupSkills(
     selectedGroup as GroupByOptions,
-    skills,
+    filteredSkills,
     skillDatabaseMap,
     includeSkillTypes
   );
@@ -166,123 +198,204 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
   ];
 
   // currently selected group from the dropdown
-  const currentGroupName =
+  const currentGroupName: string =
     options.find((option) => option.slug === selectedGroup)?.entryName ||
     "Category";
 
+  const isFilterApplied: boolean =
+    includeHardSkills ||
+    includeGeneralSkills ||
+    includeSoftSkills ||
+    includeNoMaterial;
+  const isSearchApplied: boolean = searchTerm !== "";
+  const isCategoryApplied: boolean = selectedGroup !== "category";
+
+  const isAnyFilterApplied: boolean =
+    isFilterApplied || isSearchApplied || isCategoryApplied;
+
   return (
     <div>
-      <div className="flex mt-4 justify-end w-full">
-        <div className="flex flex-col md:flex-row gap-2 w-full md:w-1/2">
-          {/* Group By */}
-          <div className="flex flex-row gap-3 text-right text-neutral-700 dark:text-neutral-300 w-full">
-            <p className="mt-3 w-auto md:w-2/5 whitespace-nowrap">Group by:</p>
-            <DropdownMenu>
-              <DropdownMenuTrigger className="w-full">
-                <Button variant="default" className="w-full">
-                  <div className="flex items-start justify-between space-x-2 w-full">
-                    <span>{currentGroupName}</span>
-                    <BsChevronDown
-                      fontSize={16}
-                      className="text-neutral-700 dark:text-neutral-200 mt-1"
-                    />
-                  </div>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-80 md:w-48 ">
-                {options.map((option, index) => (
-                  <DropdownMenuItem
-                    key={index}
-                    className={`
-                  ${option.slug === selectedGroup ? "font-bold" : ""}`}
-                    onSelect={() => handleSelect(option.slug)}
-                  >
-                    {option.entryName}
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
-
-          {/* Filter */}
-          <Popover open={isOpen} onOpenChange={setOpen}>
-            <PopoverTrigger asChild>
-              <Button
-                variant="default"
-                role="combobox"
-                onClick={() => setOpen(!isOpen)}
+      <Accordion type="single" collapsible className="mb-8">
+        <AccordionItem value="item-1">
+          <AccordionTrigger>
+            <div className="flex items-center space-x-3">
+              <MdOutlineManageSearch
+                size={28}
+                className="text-neutral-600 dark:text-neutral-400"
+              />
+              <p
                 className="
-                  w-full 
-                  justify-between
+                  text-lg 
+                  text-neutral-600 dark:text-neutral-400
+                  font-semibold
                   "
               >
-                <span>Include Skills</span>
-                <BsChevronDown
-                  fontSize={16}
-                  className="text-neutral-700 dark:text-neutral-200 mt-1"
-                />
-              </Button>
-            </PopoverTrigger>
+                {`Search & Filter Skills`}
+              </p>
+            </div>
+          </AccordionTrigger>
+          <AccordionContent>
+            <div className="flex mt-4 justify-end w-full">
+              <div className="flex flex-col md:flex-row w-full md:space-x-4 space-y-3 md:space-y-0">
+                {/* Search Component */}
+                <div className="w-full md:w-2/5">
+                  <SearchInput
+                    searchTerm={searchTerm}
+                    updateSearchTerm={(newTerm) => {
+                      const params = new URLSearchParams(
+                        searchParams.toString()
+                      );
+                      params.set(searchParamName, newTerm);
+                      router.push(`${basePath}?${params.toString()}`);
+                    }}
+                    placeholder={`Search for skills...`}
+                  />
+                </div>
 
-            <PopoverContent className="w-[24rem] md:w-[20rem] p-0">
-              <Command className="w-full border-1 border-neutral-200 dark:border-neutral-950">
-                <CommandInput placeholder="Search Filter..." />
-                <CommandEmpty>No Filter Found.</CommandEmpty>
+                {/* Dropdowns Container */}
+                <div className="flex flex-col md:flex-row gap-3 w-full md:w-3/5 items-center">
+                  {/* Group By */}
+                  <div className="flex flex-row gap-3 text-right text-neutral-700 dark:text-neutral-300 w-full items-center">
+                    <p className="whitespace-nowrap">Group by:</p>
+                    <div className="flex-grow">
+                      <DropdownMenu>
+                        <DropdownMenuTrigger className="w-full">
+                          <Button variant="default" className="w-full">
+                            <div className="flex items-center justify-between w-full">
+                              <span className="text-left">
+                                {currentGroupName}
+                              </span>
+                              <BsChevronDown
+                                fontSize={16}
+                                className="text-neutral-700 dark:text-neutral-200 mt-1"
+                              />
+                            </div>
+                          </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent className="w-80 md:w-48">
+                          {options.map((option, index) => (
+                            <DropdownMenuItem
+                              key={index}
+                              className={`
+                          ${option.slug === selectedGroup ? "font-bold" : ""}`}
+                              onSelect={() => handleSelect(option.slug)}
+                            >
+                              {option.entryName}
+                            </DropdownMenuItem>
+                          ))}
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    </div>
+                  </div>
 
-                <CommandGroup className="w-full">
-                  {filterParams.map((filter, i) => (
-                    <Link
-                      key={i}
-                      href={generateUrl(
-                        [
-                          // Include the current state of all filters
-                          { entryName: groupParamName, slug: selectedGroup },
-                          {
-                            entryName: hardSkillParamName,
-                            slug: includeHardSkills ? "true" : "false",
-                          },
-                          {
-                            entryName: generalSkillParamName,
-                            slug: includeGeneralSkills ? "true" : "false",
-                          },
-                          {
-                            entryName: softSkillParamName,
-                            slug: includeSoftSkills ? "true" : "false",
-                          },
-                          {
-                            entryName: noMaterialParamName,
-                            slug: includeNoMaterial ? "true" : "false",
-                          },
-                          // Toggle current filter
-                          {
-                            entryName: filter.urlParamName,
-                            slug: filter.selected ? "false" : "true",
-                          },
-                        ],
-                        basePath
-                      )}
-                      className="w-full"
-                    >
-                      <CommandItem
-                        key={filter.urlParamName}
-                        value={filter.urlParamName}
-                        className="w-full"
+                  <div className="flex flex-row w-full space-x-3">
+                    {/* Filter */}
+                    <div className="w-full">
+                      <Popover open={isOpen} onOpenChange={setOpen}>
+                        <PopoverTrigger asChild>
+                          <Button
+                            variant="default"
+                            role="combobox"
+                            onClick={() => setOpen(!isOpen)}
+                            className="w-full justify-between"
+                          >
+                            <span>Include Skills</span>
+                            <BsChevronDown
+                              fontSize={16}
+                              className="text-neutral-700 dark:text-neutral-200 mt-1"
+                            />
+                          </Button>
+                        </PopoverTrigger>
+
+                        <PopoverContent className="w-[24rem] md:w-[20rem] p-0">
+                          <Command className="w-full border-1 border-neutral-200 dark:border-neutral-950">
+                            <CommandInput placeholder="Search Filter..." />
+                            <CommandEmpty>No Filter Found.</CommandEmpty>
+
+                            <CommandGroup className="w-full">
+                              {filterParams.map((filter, i) => (
+                                <Link
+                                  key={i}
+                                  href={generateUrl(
+                                    [
+                                      // Include the current state of all filters
+                                      {
+                                        entryName: groupParamName,
+                                        slug: selectedGroup,
+                                      },
+                                      {
+                                        entryName: hardSkillParamName,
+                                        slug: includeHardSkills
+                                          ? "true"
+                                          : "false",
+                                      },
+                                      {
+                                        entryName: generalSkillParamName,
+                                        slug: includeGeneralSkills
+                                          ? "true"
+                                          : "false",
+                                      },
+                                      {
+                                        entryName: softSkillParamName,
+                                        slug: includeSoftSkills
+                                          ? "true"
+                                          : "false",
+                                      },
+                                      {
+                                        entryName: noMaterialParamName,
+                                        slug: includeNoMaterial
+                                          ? "true"
+                                          : "false",
+                                      },
+                                      // Toggle current filter
+                                      {
+                                        entryName: filter.urlParamName,
+                                        slug: filter.selected
+                                          ? "false"
+                                          : "true",
+                                      },
+                                    ],
+                                    basePath
+                                  )}
+                                  className="w-full"
+                                >
+                                  <CommandItem
+                                    key={filter.urlParamName}
+                                    value={filter.urlParamName}
+                                    className="w-full"
+                                  >
+                                    {!filter.selected ? (
+                                      <Check
+                                        className={cn(gap, "text-red-500")}
+                                      />
+                                    ) : (
+                                      <div className={gap}></div>
+                                    )}
+                                    {filter.entryName}
+                                  </CommandItem>
+                                </Link>
+                              ))}
+                            </CommandGroup>
+                          </Command>
+                        </PopoverContent>
+                      </Popover>
+                    </div>
+                    <Button variant="default" disabled={!isAnyFilterApplied}>
+                      <Link
+                        href={SKILL_PAGE.path}
+                        className="w-full flex flex-row"
                       >
-                        {!filter.selected ? (
-                          <Check className={cn(gap, "text-red-500")} />
-                        ) : (
-                          <div className={gap}></div>
-                        )}
-                        {filter.entryName}
-                      </CommandItem>
-                    </Link>
-                  ))}
-                </CommandGroup>
-              </Command>
-            </PopoverContent>
-          </Popover>
-        </div>
-      </div>
+                        <MdOutlineClear size={22} className="mr-2" />
+                        Clear
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
 
       {/* List of Skills */}
       <div className="mt-4 text-center md:text-left space-y-16">

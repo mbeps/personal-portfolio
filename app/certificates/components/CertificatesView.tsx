@@ -20,7 +20,7 @@ import certificateDatabaseMap from "@/database/Certificates/CertificateDatabaseM
 import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
-import useFuseSearch from "@/hooks/useFuseSearch";
+import useFuseMaterialSearch from "@/hooks/useFuseSearch/useFuseMaterialSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import CertificateInterface from "@/database/Certificates/CertificateInterface";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
@@ -87,11 +87,12 @@ const CertificatesView: React.FC = () => {
     "skills.relatedSkills.category",
   ];
 
-  let filteredCertificateSlugArray: CertificateDatabaseKeys[] = useFuseSearch(
-    certificateDatabaseMap,
-    searchTerm,
-    searchOptions
-  ) as CertificateDatabaseKeys[];
+  let filteredCertificateSlugArray: CertificateDatabaseKeys[] =
+    useFuseMaterialSearch(
+      certificateDatabaseMap,
+      searchTerm,
+      searchOptions
+    ) as CertificateDatabaseKeys[];
 
   //^ Filtering Logic
   // Filter by issuer

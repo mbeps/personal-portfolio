@@ -11,7 +11,7 @@ import MaterialInterface from "@/database/Materials/MaterialInterface";
  * @returns A list of keys of the items that match the search term.
  * @see {@link https://fusejs.io/} for more information on Fuse.js.
  */
-function useFuseSearch<T extends MaterialInterface>(
+function useFuseMaterialSearch<T extends MaterialInterface>(
   itemsMap: Database<T>,
   searchTerm: string,
   searchKeys: string[]
@@ -74,4 +74,4 @@ function useFuseSearch<T extends MaterialInterface>(
   return Object.keys(filteredItemsMap);
 }
 
-export default useFuseSearch;
+export default useFuseMaterialSearch;
