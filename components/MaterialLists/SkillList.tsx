@@ -386,7 +386,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
                         className="w-full flex flex-row"
                       >
                         <MdOutlineClear size={22} className="mr-2" />
-                        Clear
+                        <p className="mt-0.5">Clear</p>
                       </Link>
                     </Button>
                   </div>
