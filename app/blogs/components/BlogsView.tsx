@@ -67,7 +67,6 @@ export const BlogsView: React.FC = () => {
   const searchOptions: string[] = [
     "name",
     "category",
-    "issuer",
     "skills.name",
     "skills.category",
     "skills.relatedSkills.name",
