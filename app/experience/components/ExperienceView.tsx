@@ -20,7 +20,7 @@ import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import ExperienceTypeEnum from "@/enums/Experience/ExperienceTypeEnum";
 import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
-import useFuseSearch from "@/hooks/useFuseSearch";
+import useFuseMaterialSearch from "@/hooks/useFuseSearch/useFuseMaterialSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import RoleInterface from "@/database/Roles/RoleInterface";
@@ -80,7 +80,7 @@ export const BlogsView: React.FC = () => {
   ];
 
   // Use the custom hook to perform the search
-  let filteredWorkKeysArray: RoleDatabaseKeys[] = useFuseSearch(
+  let filteredWorkKeysArray: RoleDatabaseKeys[] = useFuseMaterialSearch(
     rolesDatabase,
     searchTerm,
     searchOptions

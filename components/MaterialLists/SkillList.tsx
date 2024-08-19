@@ -215,7 +215,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
 
   return (
     <div>
-      <Accordion type="single" collapsible>
+      <Accordion type="single" collapsible className="mb-8">
         <AccordionItem value="item-1">
           <AccordionTrigger>
             <div className="flex items-center space-x-3">

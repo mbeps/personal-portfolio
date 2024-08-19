@@ -18,7 +18,7 @@ import blogsDatabaseMap from "@/database/Blogs/BlogsDatabaseMap";
 import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
-import useFuseSearch from "@/hooks/useFuseSearch";
+import useFuseMaterialSearch from "@/hooks/useFuseSearch/useFuseMaterialSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import BlogInterface from "@/database/Blogs/BlogInterface";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
@@ -74,7 +74,7 @@ export const BlogsView: React.FC = () => {
   ];
 
   // Use the custom hook to perform the search
-  let filteredBlogsSlugArray: BlogDatabaseKeys[] = useFuseSearch(
+  let filteredBlogsSlugArray: BlogDatabaseKeys[] = useFuseMaterialSearch(
     blogsDatabaseMap,
     searchTerm,
     searchOptions
