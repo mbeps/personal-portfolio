@@ -1402,10 +1402,9 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.OsmosGame]: {
     name: `Osmos Game`,
     description: `
-      This is a simple game created using SimpleGUI for a group project in my first year of university. 
+      A simple game created as a group project in my first year of university. 
       The physics of the game were done manually using vector theory and physics concepts.
-      This required us to rely on the documentation as there was no tutorials or guides on how to use the library.
-      `,
+      This required relying on the documentation due to a lack of tutorials or guides.`,
     repositoryURL: `https://github.com/mbeps/Osmos_Game`,
     skills: [
       SkillDatabaseKeys.Python,
