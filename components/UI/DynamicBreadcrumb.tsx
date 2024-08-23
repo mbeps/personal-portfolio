@@ -7,7 +7,7 @@ import {
 } from "@/components/shadcn/ui/breadcrumb";
 import React from "react";
 
-interface BreadcrumbPair {
+export interface BreadcrumbPair {
   name: string;
   path?: string;
 }

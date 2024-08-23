@@ -48,16 +48,14 @@ const ContentsSection: React.FC<ContentsSectionProps> = ({
       {!isMobile ? (
         <>
           {/* Button to open the side panel on large screens */}
-          <div className="flex justify-end mb-10">
-            <Button
-              variant="default"
-              onClick={handleTogglePanel}
-              className="flex items-center"
-            >
-              <CiCircleList size={24} className="mr-2" />
-              {isPanelOpen ? "Hide Contents" : "View Contents"}
-            </Button>
-          </div>
+          <Button
+            variant="default"
+            onClick={handleTogglePanel}
+            className="flex items-center"
+          >
+            <CiCircleList size={24} className="mr-2" />
+            {isPanelOpen ? "Hide Contents" : "View Contents"}
+          </Button>
 
           {/* Side panel for large screens */}
           <SidePanel

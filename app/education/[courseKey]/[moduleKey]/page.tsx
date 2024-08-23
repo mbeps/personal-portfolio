@@ -5,16 +5,18 @@ import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import StringList from "@/components/Text/StringList";
-import DynamicBreadcrumb from "@/components/UI/DynamicBreadcrumb";
+import DynamicBreadcrumb, {
+  BreadcrumbPair,
+} from "@/components/UI/DynamicBreadcrumb";
 import developerName from "@/constants/developerName";
 import { EDUCATION_PAGE, HOME_PAGE } from "@/constants/pages";
 import courseDatabaseMap from "@/database/Courses/CourseDatabaseMap";
 import CourseInterface from "@/database/Courses/CourseInterface";
 import moduleDatabaseMap from "@/database/Modules/ModuleDatabaseMap";
-import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import ModuleInterface from "@/database/Modules/ModuleInterface";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
+import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
@@ -129,7 +131,7 @@ const ModulePage: React.FC<ModulePageProps> = ({ params }) => {
     ),
   ];
 
-  const breadcrumbData = [
+  const breadcrumbData: BreadcrumbPair[] = [
     { name: HOME_PAGE.label, path: HOME_PAGE.path },
     { name: EDUCATION_PAGE.label, path: EDUCATION_PAGE.path },
     {
