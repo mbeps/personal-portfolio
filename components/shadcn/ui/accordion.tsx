@@ -6,7 +6,27 @@ import { ChevronDown } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-const Accordion = AccordionPrimitive.Root;
+const Accordion = React.forwardRef<
+  React.ElementRef<typeof AccordionPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Root>
+>(({ className, ...props }, ref) => (
+  <AccordionPrimitive.Root
+    ref={ref}
+    className={cn(
+      `
+        border border-neutral-200 dark:border-neutral-800
+        hover:border-neutral-300 dark:hover:border-neutral-700
+        bg-white dark:bg-neutral-950
+        rounded-xl
+        overflow-hidden
+        shadow-sm hover:shadow-md
+        transition-all duration-500 ease-in-out`,
+      className
+    )}
+    {...props}
+  />
+));
+Accordion.displayName = AccordionPrimitive.Root.displayName;
 
 const AccordionItem = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Item>,
@@ -16,13 +36,7 @@ const AccordionItem = React.forwardRef<
     ref={ref}
     className={cn(
       `
-        py-1 px-3 mt-3
-        rounded-xl
-        border
-        bg-white dark:bg-neutral-950
-        border-neutral-200 dark:border-neutral-800
-        hover:border-neutral-300 dark:hover:border-neutral-700
-        shadow-sm hover:shadow-md
+        py-1 px-3 
         transition-all duration-500 ease-in-out`,
       className
     )}

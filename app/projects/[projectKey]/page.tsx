@@ -36,6 +36,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub, BsPlusCircle } from "react-icons/bs";
+import { GrAppsRounded } from "react-icons/gr";
 
 /**
  * Generates the metadata for the project page.
@@ -209,6 +210,12 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const showLinks: boolean =
     !!projectData.repositoryURL || !!projectData.deploymentURL;
 
+  const hasFeatures: boolean = !!features;
+
+  const hasRelatedMaterials: boolean = !!(
+    projectData.relatedMaterials && projectData.relatedMaterials.length > 0
+  );
+
   return (
     <main>
       <div className="sr-only">
@@ -371,20 +378,14 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
             </div>
           )}
 
-          {/* Divider */}
-          {!!features ||
-          (projectData.relatedMaterials &&
-            projectData.relatedMaterials.length > 0) ? (
-            <div className="pt-2 pb-3 border-b border-gray-200 dark:border-neutral-600" />
-          ) : (
-            <></>
-          )}
-
           {/* Features Section */}
-          {!!features && (
-            <>
-              <Accordion type="single" collapsible>
-                <AccordionItem value="item-1">
+          <Accordion type="single" collapsible>
+            {hasFeatures && (
+              <>
+                <AccordionItem
+                  value="item-1"
+                  className="border-none rounded-none"
+                >
                   <AccordionTrigger>
                     <div className="flex items-center space-x-3">
                       <BsPlusCircle size={26} className="text-neutral-500" />
@@ -403,17 +404,45 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
                     <Reader content={features} />
                   </AccordionContent>
                 </AccordionItem>
-              </Accordion>
-            </>
-          )}
-
-          {/* Related Materials Section */}
-          {projectData.relatedMaterials &&
-            projectData.relatedMaterials.length > 0 && (
-              <>
-                <MaterialList materialKeys={projectData.relatedMaterials} />
               </>
             )}
+
+            {/* Separator */}
+            {hasFeatures && hasRelatedMaterials && (
+              <div className="border-b border-gray-200 dark:border-neutral-800" />
+            )}
+
+            {/* Related Materials Section */}
+            {hasRelatedMaterials && (
+              <>
+                <AccordionItem
+                  value="item-2"
+                  className="border-none rounded-none"
+                >
+                  <AccordionTrigger>
+                    <div className="flex items-center space-x-3">
+                      <GrAppsRounded size={24} className="text-neutral-500" />
+                      <p
+                        className="
+                          text-lg 
+                          text-neutral-600 dark:text-neutral-400
+                          font-semibold
+                          "
+                      >
+                        View Materials Related to this Project
+                      </p>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-2">
+                    <MaterialList
+                      materialKeys={projectData.relatedMaterials!}
+                      isCollapsible={false}
+                    />
+                  </AccordionContent>
+                </AccordionItem>
+              </>
+            )}
+          </Accordion>
         </div>
       </div>
     </main>
