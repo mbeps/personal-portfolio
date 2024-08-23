@@ -6,7 +6,7 @@ import Reader from "@/components/Reader/Reader";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import developerName from "@/constants/developerName";
-import { BLOG_PAGE } from "@/constants/pages";
+import { BLOG_PAGE, HOME_PAGE } from "@/constants/pages";
 import BlogInterface from "@/database/Blogs/BlogInterface";
 import blogsDatabaseMap from "@/database/Blogs/BlogsDatabaseMap";
 import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
@@ -16,6 +16,12 @@ import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsI
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import ContentsSection from "./components/ContentsSection";
+import DynamicBreadcrumb, {
+  BreadcrumbPair,
+} from "@/components/UI/DynamicBreadcrumb";
+import { Button } from "@/components/shadcn/ui/button";
+import { MdKeyboardArrowLeft } from "react-icons/md";
+import Link from "next/link";
 
 type BlogPageProps = {
   params: { blogKey: string };
@@ -183,7 +189,15 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
           </h3>
         </div>
 
-        <ContentsSection contentSection={splitBlot.contentsSection} />
+        <div className="flex flex-col lg:flex-row justify-between mb-6 space-y-2">
+          <Button className="pl-3">
+            <Link href={BLOG_PAGE.path} className="w-full flex flex-row ">
+              <MdKeyboardArrowLeft size={24} className="mr-2" />
+              Back to Blogs
+            </Link>
+          </Button>
+          <ContentsSection contentSection={splitBlot.contentsSection} />
+        </div>
         <Reader content={splitBlot.articleSection} size="lg:prose-lg" />
 
         <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
