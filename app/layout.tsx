@@ -9,6 +9,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
 import { VercelTrackers } from "@/providers/VercelTrackers";
+import Scroll from "@/components/UI/Scroll";
 
 /**
  * Markdown detailing the developer's about information.
@@ -52,6 +53,7 @@ export default function RootLayoutWithProviders({
       >
         <body style={{ overflowX: "hidden" }}>
           <Providers>
+            <Scroll />
             <Navbar />
             <main
               className={`

@@ -211,7 +211,9 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.JokerNotes]: {
     name: "Joker Notes",
     description: `
-      A versatile note-taking app where users can sign up, log in, and reset passwords easily. It supports rich text formatting, image additions, and publishing notes publicly. Users can switch between light and dark mode and organize notes into nested notebooks.      `,
+      A note-taking app where users can sign up, log in, and reset passwords easily. 
+      It supports rich text formatting, image additions, and publishing notes publicly. 
+      Users alse organize notes into nested notebooks.`,
     repositoryURL: `https://github.com/mbeps/joker-notes`,
     skills: [
       SkillDatabaseKeys.TypeScript,
@@ -252,8 +254,9 @@ const projectMap: Database<ProjectInterface> = {
   //^ Extra Web Development Projects
   [ProjectDatabaseKeys.Quizmify]: {
     name: "Quizmify AI",
-    description: `An intuitive platform for dynamic quiz generation. 
-      Users can test their knowledge across various topics, choosing between multiple-choice questions or fill-in-the-gap style challenges. 
+    description: `
+      A platform for dynamic quiz generation. 
+      Users can test their knowledge with multiple-choice or fill-in-the-gap questions across various topics.
       With immediate feedback and score tracking, users enhance their understanding.`,
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     skills: [
@@ -295,9 +298,9 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.SideshowArticles]: {
     name: `Sideshow Articles`,
     description: `
-      To familiarize myself with Supabase, I developed a simple website for reading and writing articles. 
+      To learn Supabase, I developed a simple website for reading and writing articles. 
       Users can read, create, and delete articles. 
-      This foundational project paved the way for using Supabase in subsequent projects.
+      This project paved the way for using Supabase in subsequent projects.
       `,
     repositoryURL: `https://github.com/mbeps/sideshow-articles`,
     skills: [
@@ -329,9 +332,9 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.Noodle]: {
     name: `Noodle`,
     description: `
-      During my second year of university, my group and I initiated a project on an open-source learning platform which served as my introduction to full-stack development. 
-      This app aids students in managing tasks, assignments, exams, and storing notes and resources.
-      `,
+          In my second year of university, my group and I started an open-source learning platform project, introducing me to full-stack development. 
+          This app helps students manage tasks, assignments, exams, and store notes and resources.
+          `,
     repositoryURL: `https://github.com/ixahmedxi/noodle`,
     deploymentURL: `https://noodle.run/`,
     skills: [
@@ -1402,9 +1405,9 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.OsmosGame]: {
     name: `Osmos Game`,
     description: `
-      A simple game created as a group project in my first year of university. 
-      The physics of the game were done manually using vector theory and physics concepts.
-      This required relying on the documentation due to a lack of tutorials or guides.`,
+          A simple game built with SimpleGUI for a first-year university project. 
+          We manually implemented physics using vector theory and physics concepts, relying solely on documentation due to the lack of tutorials.
+          `,
     repositoryURL: `https://github.com/mbeps/Osmos_Game`,
     skills: [
       SkillDatabaseKeys.Python,

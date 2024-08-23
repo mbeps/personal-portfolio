@@ -260,12 +260,7 @@ const RolePage: React.FC<RolePageProps> = ({ params }) => {
             {/* More materials */}
             {roleData.relatedMaterials &&
               roleData.relatedMaterials.length > 0 && (
-                <>
-                  {/* Divider */}
-                  <div className="pt-2 pb-3 border-b border-gray-200 dark:border-neutral-600" />
-
-                  <MaterialList materialKeys={roleData.relatedMaterials} />
-                </>
+                <MaterialList materialKeys={roleData.relatedMaterials} />
               )}
           </div>
         </div>
