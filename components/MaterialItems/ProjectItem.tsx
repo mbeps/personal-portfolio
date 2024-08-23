@@ -74,7 +74,6 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ projectKey }) => {
                     rounded-xl 
                     cursor-pointer
                     object-cover
-                    border border-neutral-50 dark:border-neutral-900
                   "
                 />
               </AspectRatio>
