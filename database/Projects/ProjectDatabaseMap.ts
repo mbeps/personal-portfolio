@@ -255,7 +255,7 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.Quizmify]: {
     name: "Quizmify AI",
     description: `
-      An intuitive platform for dynamic quiz generation. 
+      A platform for dynamic quiz generation. 
       Users can test their knowledge with multiple-choice or fill-in-the-gap questions across various topics.
       With immediate feedback and score tracking, users enhance their understanding.`,
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
