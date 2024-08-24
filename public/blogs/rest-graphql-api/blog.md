@@ -19,9 +19,10 @@
 - [**Sources**](#sources)
 
 
-Building APIs for modern applications requires robust and flexible technologies. In the world of API design architectures, GraphQL and REST are two major players. This article provides a detailed comparison of these technologies, diving deep into what they are, their benefits, weaknesses, and how they compare in different scenarios.
 
 # **Introduction to REST and GraphQL**
+
+Building APIs for modern applications requires robust and flexible technologies. In the world of API design architectures, GraphQL and REST are two major players. This article provides a detailed comparison of these technologies, diving deep into what they are, their benefits, weaknesses, and how they compare in different scenarios.
 
 ## **What is REST?**
 
