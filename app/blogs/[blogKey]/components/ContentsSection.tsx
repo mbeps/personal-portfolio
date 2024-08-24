@@ -31,7 +31,8 @@ const ContentsSection: React.FC<ContentsSectionProps> = ({
   contentSection,
 }) => {
   const isMobile: boolean = useMediaQuery("(max-width: 768px)");
-  const isLargeScreen: boolean = useMediaQuery("(min-width: 2170px)");
+  const isLargeScreen: boolean = useMediaQuery("(min-width: 1920px)");
+  const isUltraLargeScreen: boolean = useMediaQuery("(min-width: 2170px)");
   const isMounted: boolean = useIsMounted();
   const [isPanelOpen, setIsFilterModalOpen] = useState(isLargeScreen);
 
@@ -62,10 +63,15 @@ const ContentsSection: React.FC<ContentsSectionProps> = ({
             title="Contents"
             toggle={handleTogglePanel}
             isOpen={isPanelOpen}
-            secondaryClassName="md:w-[32rem]"
+            secondaryClassName={
+              isUltraLargeScreen ? "md:w-[32rem]" : "md:w-[24rem]"
+            }
           >
-            <ScrollArea className="h-full px-4 pb-6">
-              <Reader content={contentSection} size="lg:prose-lg" />
+            <ScrollArea className="h-full px-2 pb-6">
+              <Reader
+                content={contentSection}
+                size={isUltraLargeScreen ? "lg:prose-lg" : "lg:prose-md"}
+              />
             </ScrollArea>
           </SidePanel>
         </>
@@ -78,10 +84,10 @@ const ContentsSection: React.FC<ContentsSectionProps> = ({
                   <CiCircleList size={26} className="text-neutral-500" />
                   <p
                     className="
-									text-lg 
-									text-neutral-600 dark:text-neutral-400
-									font-semibold
-									"
+                      text-lg 
+                      text-neutral-600 dark:text-neutral-400
+                      font-semibold
+                      "
                   >
                     View Contents
                   </p>
