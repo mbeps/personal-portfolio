@@ -54,8 +54,8 @@ export async function generateMetadata(
   const company: CompanyInterface = companyDatabaseMap[role.company];
 
   return {
-    title: `${developerName} - ${EXPERIENCE_PAGE.label}: ${role?.name}`,
-    description: `${role.type} ${role.name} at ${role?.company}`,
+    title: `${developerName} - ${EXPERIENCE_PAGE.label}: ${role?.name} at ${company.name}`,
+    description: `${role.type} ${role.name} at ${company.name}`,
     category: `${EXPERIENCE_PAGE.label}`,
     creator: developerName,
     keywords: [role.name, company.name],

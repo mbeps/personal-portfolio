@@ -59,7 +59,7 @@ export async function generateMetadata(
 
   // Create metadata based on the course details
   return {
-    title: `${developerName} - Courses: ${course?.name}`,
+    title: `${developerName} - Courses: ${course?.name} at ${course?.university}`,
     description: `${course.grade} in ${course.name} from ${course?.university}`,
     category: `${EDUCATION_PAGE.label}`,
     creator: developerName,
