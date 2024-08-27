@@ -370,7 +370,7 @@ const modulesMap: Database<ModuleInterface> = {
     parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
   [ModuleDatabaseKeys.RHUL_AlgorithmsAndComplexity]: {
-    name: "Algorithms and Complexity",
+    name: "Algorithms & Complexity",
     category: ModuleYearGroupsEnum.Year2,
     skills: [
       SkillDatabaseKeys.Algorithms,
@@ -402,7 +402,7 @@ const modulesMap: Database<ModuleInterface> = {
     ],
   },
   [ModuleDatabaseKeys.RHUL_MultidimensionalDataProcessing]: {
-    name: "Multidimensional Data Processing (Linear Algebra)",
+    name: "Multi-Dimensional Data Processing (Linear Algebra)",
     category: ModuleYearGroupsEnum.Year2,
     skills: [
       SkillDatabaseKeys.LinearAlgebra,
