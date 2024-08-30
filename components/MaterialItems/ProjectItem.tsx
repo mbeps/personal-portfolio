@@ -14,6 +14,7 @@ import projectDatabaseMap from "@/database/Projects/ProjectDatabaseMap";
 
 interface ProjectItemProps {
   projectKey: string;
+  showType?: boolean;
 }
 
 /**
@@ -33,7 +34,10 @@ interface ProjectItemProps {
  * @param projectKey Key of the project to be displayed
  * @returns A card which displays a project
  */
-const ProjectItem: React.FC<ProjectItemProps> = ({ projectKey }) => {
+const ProjectItem: React.FC<ProjectItemProps> = ({
+  projectKey,
+  showType = false,
+}) => {
   const basePath: string = PROJECTS_PAGE.path;
   const projectData: ProjectInterface = projectDatabaseMap[projectKey];
   const linkStyle: string =
@@ -114,19 +118,21 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ projectKey }) => {
           </Link>
 
           {/* Project Type */}
-          <p
-            className="
-              mb-2 
-              italic font-medium
-              text-red-700 dark:text-red-300
-              text-center lg:text-left
-            "
-          >
-            {`${projectData.type} Project`}
-          </p>
+          {showType && (
+            <p
+              className="
+                italic font-medium
+                text-red-700 dark:text-red-300
+                text-center lg:text-left
+                -mb-2
+              "
+            >
+              {`${projectData.type} Project`}
+            </p>
+          )}
 
           {/* Project Description */}
-          <p className="text-xl text-left leading-7 mb-4 text-neutral-600 dark:text-neutral-400">
+          <p className="text-xl text-left leading-7 mt-4 mb-4 text-neutral-600 dark:text-neutral-400">
             {projectData.description}
           </p>
 

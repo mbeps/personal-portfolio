@@ -3,6 +3,10 @@ import ProjectItem from "@/components/MaterialItems/ProjectItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import MaterialListProps from "@/interfaces/props/MaterialListProps";
 
+interface ExtendedMaterialListProps extends MaterialListProps {
+  showType?: boolean;
+}
+
 /**
  * List of projects grouped by category to be displayed section by section.
  * Each section contains a title and a list of projects.
@@ -11,8 +15,9 @@ import MaterialListProps from "@/interfaces/props/MaterialListProps";
  * @param groupedProjects List of projects grouped by category to be displayed section by section
  * @returns A list of projects grouped by category
  */
-const ProjectsList: React.FC<MaterialListProps> = ({
+const ProjectsList: React.FC<ExtendedMaterialListProps> = ({
   groupedMaterial: groupedProjects,
+  showType = false,
 }) => {
   return (
     <div className="material-page-wrapper">
@@ -34,7 +39,10 @@ const ProjectsList: React.FC<MaterialListProps> = ({
                         key={projectKey}
                         className="animate-slideUpCubiBezier animation-delay-1"
                       >
-                        <ProjectItem projectKey={projectKey} />
+                        <ProjectItem
+                          projectKey={projectKey}
+                          showType={showType}
+                        />
                       </div>
                     ))}
                   </div>
