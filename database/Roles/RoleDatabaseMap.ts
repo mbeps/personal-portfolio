@@ -64,7 +64,7 @@ const rolesMap: Database<RoleInterface> = {
     endDate: "Present",
     relatedMaterials: [
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperPython,
 
       ProjectDatabaseKeys.SymphonyTranslateBot,
       ProjectDatabaseKeys.SymphonyWebhookBot,
