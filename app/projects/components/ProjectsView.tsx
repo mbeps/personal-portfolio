@@ -269,7 +269,7 @@ const ProjectsView: React.FC = () => {
       />
 
       {/* List of projects */}
-      <ProjectsList groupedMaterial={groupedProjects} />
+      <ProjectsList groupedMaterial={groupedProjects} showType={true} />
     </>
   );
 };
