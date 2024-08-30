@@ -182,30 +182,37 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
 
       <div>
         <div className="text-center">
+          {/* Title */}
           <HeadingTwo title={blogData?.name} />
 
+          {/* Description */}
           <h3 className="text-neutral-600 dark:text-neutral-400 mb-12">
             {blogData?.subtitle}
           </h3>
         </div>
 
+        {/* Buttons */}
         <div className="flex flex-col lg:flex-row justify-between mb-6 space-y-2">
-          <Button className="pl-3">
-            <Link href={BLOG_PAGE.path} className="w-full flex flex-row ">
+          <Link href={BLOG_PAGE.path}>
+            <Button className="pl-3">
               <MdKeyboardArrowLeft size={24} className="mr-2" />
               Back to Blogs
-            </Link>
-          </Button>
+            </Button>
+          </Link>
           <ContentsSection contentSection={splitBlot.contentsSection} />
         </div>
+
+        {/* Article */}
         <Reader content={splitBlot.articleSection} size="lg:prose-lg" />
 
         <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
 
+        {/* Skills */}
         <div className="mt-4">
           <SkillTableSection allGroupedSkills={allGroupedSkills} />
         </div>
 
+        {/* Related Materials */}
         {blogData.relatedMaterials && blogData.relatedMaterials.length > 0 && (
           <>
             <MaterialList materialKeys={blogData.relatedMaterials} />
