@@ -1220,17 +1220,16 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
     type: ProjectTypeEnum.University,
   },
-  [ProjectDatabaseKeys.BotanicGardenPlannerAssignment]: {
-    name: `Botanic-Garden-Planner`,
+  [ProjectDatabaseKeys.JavaFundamentalsAssignments]: {
+    name: `Java Fundamentals Assignments`,
     description: `
-      Simple botanic garden planner app built using Java.
-      This was in first year to learn about Java and object oriented programming.`,
-    repositoryURL: `https://github.com/mbeps/Botanic-Garden-Planner`,
+      First-year Java assignments focused on learning the basics of Java and Object-Oriented Programming (OOP). 
+      These projects covered core concepts like classes, inheritance, and data handling. 
+      They provided a solid foundation in Java programming and practical experience with fundamental OOP principles.
+      `,
+    repositoryURL: `https://github.com/stars/mbeps/lists/java-fundamentals-assignments`,
     skills: [
       SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.JUnit,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -1239,51 +1238,12 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Adaptability,
     ],
     category: ProjectCategoriesEnum.JavaAssignments,
-    archived: true,
     type: ProjectTypeEnum.University,
-  },
-  [ProjectDatabaseKeys.TrackAndTraceAssignment]: {
-    name: "Track & Trace",
-    description: `Simple app to track Covid cases. 
-      This was in first year to learn about Java and object oriented programming.`,
-    repositoryURL: `https://github.com/mbeps/Track_and_Trace`,
-    category: ProjectCategoriesEnum.JavaAssignments,
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.JUnit,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
+    archived: true,
+    relatedMaterials: [
+      ModuleDatabaseKeys.RHUL_ObjectOrientedProgramming1,
+      ModuleDatabaseKeys.RHUL_ObjectOrientedProgramming2,
     ],
-    relatedMaterials: [ModuleDatabaseKeys.RHUL_ObjectOrientedProgramming1],
-    archived: true,
-    type: ProjectTypeEnum.University,
-  },
-  [ProjectDatabaseKeys.HollomonAssignment]: {
-    name: `Hollomon`,
-    description: `This was in first year to learn about Java and object oriented programming.`,
-    repositoryURL: `https://github.com/mbeps/Hollomon`,
-    category: ProjectCategoriesEnum.JavaAssignments,
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.JUnit,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.Git,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    relatedMaterials: [ModuleDatabaseKeys.RHUL_ObjectOrientedProgramming2],
-    type: ProjectTypeEnum.University,
-    archived: true,
   },
   [ProjectDatabaseKeys.DatabasesMiniProject]: {
     name: `Database Mini Project`,

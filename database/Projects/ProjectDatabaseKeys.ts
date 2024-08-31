@@ -44,9 +44,7 @@ enum ProjectDatabaseKeys {
   AutomatedSetup = "automated-setup",
   Leetcode = "leetcode",
   JavaCalculatorAssignment = "java-calculator-assignment",
-  BotanicGardenPlannerAssignment = "botanic-garden-planner-assignment",
-  TrackAndTraceAssignment = "track-and-trace-assignment",
-  HollomonAssignment = "holomon-assignment",
+  JavaFundamentalsAssignments = "java-fundamentals-asignments",
   DatabasesMiniProject = "databases-mini-project",
   AdvancedMathematicsPractice = "advanced-mathematics-practice",
 }

@@ -26,11 +26,7 @@ const modulesMap: Database<ModuleInterface> = {
       SkillDatabaseKeys.ObjectOrientedProgramming,
       SkillDatabaseKeys.DataStructures,
     ],
-    relatedMaterials: [
-      ProjectDatabaseKeys.TrackAndTraceAssignment,
-      ProjectDatabaseKeys.HollomonAssignment,
-      CertificateDatabaseKeys.UdemyJavaProgrammingMasterclass,
-    ],
+    relatedMaterials: [ProjectDatabaseKeys.JavaFundamentalsAssignments],
     learningOutcomes: [
       "Introducing basic concepts of computer programming",
       "Understanding the importance and role of data in programming",
@@ -58,7 +54,7 @@ const modulesMap: Database<ModuleInterface> = {
       SkillDatabaseKeys.TimeManagement,
     ],
     relatedMaterials: [
-      ProjectDatabaseKeys.BotanicGardenPlannerAssignment,
+      ProjectDatabaseKeys.JavaFundamentalsAssignments,
       CertificateDatabaseKeys.UdemyJavaProgrammingMasterclass,
     ],
     learningOutcomes: [
