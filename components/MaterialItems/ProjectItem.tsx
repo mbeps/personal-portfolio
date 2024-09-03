@@ -50,7 +50,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
         sm:bg-transparent sm:dark:bg-transparent
         p-4 sm:p-0
         rounded-xl 
-        sm:border md:border-0 lg:border-0 lg:border-neutral-300 lg:dark:border-neutral-700
+        border border-neutral-300 dark:border-neutral-700 md:border-0
         sm:shadow-md md:shadow-none lg:shadow-none
         transition-colors duration-700"
     >
