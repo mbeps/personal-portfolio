@@ -472,7 +472,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
                           font-semibold
                           "
                       >
-                        Materials Related
+                        Related Materials 
                       </p>
                     </div>
                   </AccordionTrigger>
