@@ -67,7 +67,6 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [
       ModuleDatabaseKeys.RHUL_FinalYearProject,
       ProjectDatabaseKeys.FlaskForumBackend,
-      BlogDatabaseKeys.CircusDiscussions,
     ],
     type: ProjectTypeEnum.University,
   },
@@ -117,7 +116,6 @@ const projectMap: Database<ProjectInterface> = {
     thumbnailImage: addProjectThumbnail(
       ProjectDatabaseKeys.RingmasterMessaging
     ),
-    relatedMaterials: [BlogDatabaseKeys.RingmasterMessaging],
     type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.MagicianAI]: {
@@ -164,7 +162,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    relatedMaterials: [BlogDatabaseKeys.MagicianAI],
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.MagicianAI),
     type: ProjectTypeEnum.Personal,
   },
@@ -203,7 +200,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.DesignPatterns,
       SkillDatabaseKeys.Algorithms,
     ],
-    relatedMaterials: [BlogDatabaseKeys.DrumrollMusic],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.DrumrollMusic),
     type: ProjectTypeEnum.Personal,
@@ -1213,10 +1209,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Adaptability,
     ],
     category: ProjectCategoriesEnum.JavaAssignments,
-    relatedMaterials: [
-      ModuleDatabaseKeys.RHUL_SoftwareEngineering,
-      BlogDatabaseKeys.CalculatorAssignment,
-    ],
+    relatedMaterials: [ModuleDatabaseKeys.RHUL_SoftwareEngineering],
     archived: true,
     type: ProjectTypeEnum.University,
   },
@@ -1387,10 +1380,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.Other,
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.OsmosGame),
-    relatedMaterials: [
-      ModuleDatabaseKeys.RHUL_ProgrammingLaboratory,
-      BlogDatabaseKeys.OsmosGame,
-    ],
+    relatedMaterials: [ModuleDatabaseKeys.RHUL_ProgrammingLaboratory],
     type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.AutomatedSetup]: {
