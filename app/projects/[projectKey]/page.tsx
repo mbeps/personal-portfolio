@@ -37,6 +37,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle, BsGithub, BsPlusCircle } from "react-icons/bs";
 import { GrAppsRounded } from "react-icons/gr";
+import { IoReaderOutline } from "react-icons/io5";
 
 /**
  * Generates the metadata for the project page.
@@ -196,11 +197,19 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
   const videos: string[] = getVideos();
 
   /**
-   * Get the features and blog content from the file system.
+   * Get the features content from the file system.
    * This is used to display the features and blog sections.
    */
   const features: string | undefined = getMarkdownFromFileSystem(
     `public${basePath}/${projectKey}/features.md`
+  )?.content;
+
+  /**
+   * Get the blog content from the file system.
+   * This is used to display the features and blog sections.
+   */
+  const blog: string | undefined = getMarkdownFromFileSystem(
+    `public${basePath}/${projectKey}/blog.md`
   )?.content;
 
   /**
@@ -211,6 +220,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
     !!projectData.repositoryURL || !!projectData.deploymentURL;
 
   const hasFeatures: boolean = !!features;
+  const hasBlog: boolean = !!blog;
 
   const hasRelatedMaterials: boolean = !!(
     projectData.relatedMaterials && projectData.relatedMaterials.length > 0
@@ -412,8 +422,8 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
               <div className="border-b border-gray-200 dark:border-neutral-800" />
             )}
 
-            {/* Related Materials Section */}
-            {hasRelatedMaterials && (
+            {/* Blog Section */}
+            {hasBlog && (
               <>
                 <AccordionItem
                   value="item-2"
@@ -421,7 +431,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
                 >
                   <AccordionTrigger>
                     <div className="flex items-center space-x-3">
-                      <GrAppsRounded size={24} className="text-neutral-500" />
+                      <IoReaderOutline size={26} className="text-neutral-500" />
                       <p
                         className="
                           text-lg 
@@ -429,7 +439,40 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
                           font-semibold
                           "
                       >
-                        View Materials Related to this Project
+                        Reflection / Journey
+                      </p>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-2">
+                    <Reader content={blog} />
+                  </AccordionContent>
+                </AccordionItem>
+              </>
+            )}
+
+            {/* Separator */}
+            {hasFeatures && hasRelatedMaterials && (
+              <div className="border-b border-gray-200 dark:border-neutral-800" />
+            )}
+
+            {/* Related Materials Section */}
+            {hasRelatedMaterials && (
+              <>
+                <AccordionItem
+                  value="item-3"
+                  className="border-none rounded-none"
+                >
+                  <AccordionTrigger>
+                    <div className="flex items-center space-x-3">
+                      <GrAppsRounded size={25} className="text-neutral-500" />
+                      <p
+                        className="
+                          text-lg 
+                          text-neutral-600 dark:text-neutral-400
+                          font-semibold
+                          "
+                      >
+                        Materials Related
                       </p>
                     </div>
                   </AccordionTrigger>

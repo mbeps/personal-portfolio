@@ -204,65 +204,6 @@ const blogsMap: Database<BlogInterface> = {
     category: BlogCategoriesEnum.SoftwareEngineering,
     skills: [SkillDatabaseKeys.WebDevelopment],
   },
-
-  // Projects
-  [BlogDatabaseKeys.CircusDiscussions]: {
-    name: "Journey Building Circus Discussions",
-    subtitle:
-      "Discussing the journey of building Circus Discussions. This is a platform where users can discuss related topics in a forum-like environment. It was my Final Year Project.",
-    category: BlogCategoriesEnum.Projects,
-    skills: projectDatabaseMap[ProjectDatabaseKeys.CircusDiscussions].skills,
-    relatedMaterials: [ProjectDatabaseKeys.CircusDiscussions],
-  },
-  [BlogDatabaseKeys.RingmasterMessaging]: {
-    name: "Journey Building Ringmaster Messaging",
-    subtitle:
-      "Discussing the journey of building Ringmaster Messaging. This is a platform where users can message each other. It was for learning to build custom backends.",
-    category: BlogCategoriesEnum.Projects,
-    skills: projectDatabaseMap[ProjectDatabaseKeys.RingmasterMessaging].skills,
-    relatedMaterials: [ProjectDatabaseKeys.RingmasterMessaging],
-  },
-  [BlogDatabaseKeys.MagicianAI]: {
-    name: "Journey Building Magician AI",
-    subtitle:
-      "Discussing the journey of building Magician AI. This is a platform where users can generate media using AI. It was for learning to use OpenAI and ReplicateAI APIs.",
-    category: BlogCategoriesEnum.Projects,
-    skills: projectDatabaseMap[ProjectDatabaseKeys.MagicianAI].skills,
-    relatedMaterials: [ProjectDatabaseKeys.MagicianAI],
-  },
-  [BlogDatabaseKeys.DrumrollMusic]: {
-    name: "Journey Building Drumroll Music",
-    subtitle:
-      "Discussing the journey of building Drumroll Music. This is a platform where users can listen to music. It was for learning to use Supabase.",
-    category: BlogCategoriesEnum.Projects,
-    skills: projectDatabaseMap[ProjectDatabaseKeys.DrumrollMusic].skills,
-    relatedMaterials: [ProjectDatabaseKeys.DrumrollMusic],
-  },
-  [BlogDatabaseKeys.Quizmify]: {
-    name: "Journey Building Quizmify",
-    subtitle:
-      "Discussing the journey of building Quizmify. This is a platform where users can use AI to test their knowledge in any topic. ",
-    category: BlogCategoriesEnum.Projects,
-    skills: projectDatabaseMap[ProjectDatabaseKeys.Quizmify].skills,
-    relatedMaterials: [ProjectDatabaseKeys.Quizmify],
-  },
-  [BlogDatabaseKeys.OsmosGame]: {
-    name: "Journey Building Osmos Game",
-    subtitle:
-      "Discussing the journey of building Osmos Game. This is a platform where users can play a game. It was a group project in university.",
-    category: BlogCategoriesEnum.Projects,
-    skills: projectDatabaseMap[ProjectDatabaseKeys.OsmosGame].skills,
-    relatedMaterials: [ProjectDatabaseKeys.OsmosGame],
-  },
-  [BlogDatabaseKeys.CalculatorAssignment]: {
-    name: "Journey Building Calculator Assignment",
-    subtitle:
-      "This was an assignment where we were tested on Software Engineering principles.",
-    category: BlogCategoriesEnum.Projects,
-    skills:
-      projectDatabaseMap[ProjectDatabaseKeys.JavaCalculatorAssignment].skills,
-    relatedMaterials: [ProjectDatabaseKeys.JavaCalculatorAssignment],
-  },
 };
 
 /**
