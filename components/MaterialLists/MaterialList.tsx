@@ -45,7 +45,7 @@ const MaterialList: React.FC<MaterialTabsProps> = ({
                 font-semibold
                 "
             >
-              Directly Related Material
+              Related Material
             </p>
           </div>
         </AccordionTrigger>
