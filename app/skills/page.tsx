@@ -47,7 +47,7 @@ export default function SkillPage() {
       </div>
 
       <section id="skills">
-        <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
+        <div className="animate-fadeIn animation-delay-2 w-full">
           <HeadingOne title="Skills" />
           <PageDescription description={SKILL_PAGE.description} />
           <SkillList skills={skillDatabaseKeys} />

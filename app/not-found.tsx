@@ -27,7 +27,7 @@ export default function NotFound() {
         animate-fadeIn animation-delay-2 
         my-10 py-16 sm:py-32 md:py-48 
         text-center 
-        min-h-[85vh]
+        min-h-dvh
         space-y-12
       "
     >

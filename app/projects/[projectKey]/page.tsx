@@ -245,7 +245,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
         </ul>
       </div>
 
-      <div className="flex flex-col space-y-1 align-top min-h-[85vh] relative">
+      <div className="flex flex-col space-y-1 align-top relative">
         <HeadingTwo title={projectData?.name} />
 
         {/* Gallery Section */}

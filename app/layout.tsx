@@ -59,7 +59,6 @@ export default function RootLayoutWithProviders({
               className={`
                 bg-neutral-50 dark:bg-neutral-900
                 transition-colors duration-700 ease-in-out
-                min-h-[calc(100vh-4rem)]
                 pt-${NAVBAR_HEIGHT}
                 overflow-x-hidden
               `}
@@ -67,13 +66,13 @@ export default function RootLayoutWithProviders({
               <div
                 className="
                   mx-auto max-w-3xl md:max-w-6xl
-                  min-h-[85vh]
-                  pt-10 p-4
+                  min-h-[calc(100vh-4rem)]
+                  pt-4 px-4 lg:px-0
                 "
               >
                 {children}
-                <Footer />
               </div>
+              <Footer />
             </main>
           </Providers>
           <VercelTrackers />

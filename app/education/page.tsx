@@ -52,7 +52,7 @@ export default function EducationPage() {
       </div>
 
       <section id="education">
-        <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
+        <div className="animate-fadeIn animation-delay-2 w-full">
           <HeadingOne title={EDUCATION_PAGE.label} />
           <PageDescription description={EDUCATION_PAGE.description} />
           {/* List of courses and qualifications */}

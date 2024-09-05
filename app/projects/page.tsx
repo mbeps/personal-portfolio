@@ -51,7 +51,7 @@ const ProjectsPage = () => {
       </div>
 
       <section id="projects" className="flex flex-col items-start md:items-end">
-        <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
+        <div className="animate-fadeIn animation-delay-2 w-full">
           <HeadingOne title={PROJECTS_PAGE.label} />
           <PageDescription description={PROJECTS_PAGE.description} />
           <ProjectsView />

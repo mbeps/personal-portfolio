@@ -36,7 +36,7 @@ const MorePage: React.FC<MorePageProps> = ({ params, searchParams }) => {
   return (
     <main>
       <section id="pages">
-        <div className="animate-fadeIn animation-delay-2 w-full min-h-[85vh]">
+        <div className="animate-fadeIn animation-delay-2 w-full">
           <Grid
             items={NAV_ITEMS.filter((item) => !ignoredPages.includes(item)).map(
               (item) => (
