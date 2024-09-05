@@ -1157,6 +1157,7 @@ const projectMap: Database<ProjectInterface> = {
     skills: [
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.MongoDB,
       SkillDatabaseKeys.Symphony,
       SkillDatabaseKeys.REST,
       SkillDatabaseKeys.HTML,
