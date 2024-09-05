@@ -4,7 +4,7 @@
 
 @layer components {
   .home-section-wrapper {
-    @apply min-h-[85vh] w-full flex flex-col align-middle justify-center;
+    @apply min-h-[calc(100vh-8rem)] w-full flex flex-col align-middle justify-center;
   }
   .material-page-wrapper {
     @apply flex flex-col space-y-10 mt-8;

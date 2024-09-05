@@ -13,14 +13,18 @@ const Footer = () => {
 
   return (
     <footer>
-      <hr className="w-full h-0.5 mx-auto mt-8 bg-neutral-200 dark:bg-neutral-700 border-0"></hr>
       <div
         className="
           mx-auto 
+          mt-8
           p-4 space-y-4 md:space-y-0
           flex flex-col md:flex-row 
           text-center text-neutral-900 
           md:justify-between
+          max-w-[2560px]
+          border-t border-neutral-200 dark:border-neutral-700
+          bg-white dark:bg-black
+          transition-colors duration-700 ease-in-out
         "
       >
         <div className="flex flex-row items-center justify-center space-x-1 text-neutral-500 dark:text-neutral-100">

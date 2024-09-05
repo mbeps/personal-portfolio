@@ -13,9 +13,8 @@ const LoadingAnimation = () => {
     <div
       className="
 			rounded-lg 
-			w-full h-full 
+			w-full h-[calc(100vh-10rem)]
 			flex items-center justify-center
-			min-h-[85vh]
 			"
     >
       <BounceLoader color="#ff0000" size={40} />

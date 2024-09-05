@@ -96,7 +96,7 @@ const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
         ))}
       </div>
 
-      <div className="">
+      <div>
         <HeadingOne title={skillData.name} />
         <PageDescription
           description={`
