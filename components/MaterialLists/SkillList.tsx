@@ -380,15 +380,18 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
                         </PopoverContent>
                       </Popover>
                     </div>
-                    <Button variant="default" disabled={!isAnyFilterApplied}>
-                      <Link
-                        href={SKILL_PAGE.path}
-                        className="w-full flex flex-row"
+
+                    {/* Clear Button */}
+                    <Link href={SKILL_PAGE.path} className="w-full">
+                      <Button
+                        variant="default"
+                        disabled={!isAnyFilterApplied}
+                        className="w-full flex justify-center"
                       >
                         <MdOutlineClear size={22} className="mr-2" />
                         <p className="mt-0.5">Clear</p>
-                      </Link>
-                    </Button>
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>
