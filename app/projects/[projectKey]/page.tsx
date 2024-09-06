@@ -221,10 +221,8 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
 
   const hasFeatures: boolean = !!features;
   const hasBlog: boolean = !!blog;
-
-  const hasRelatedMaterials: boolean = !!(
-    projectData.relatedMaterials && projectData.relatedMaterials.length > 0
-  );
+  const hasRelatedMaterials: boolean =
+    !!projectData.relatedMaterials && projectData.relatedMaterials.length > 0;
 
   return (
     <main>
@@ -389,103 +387,89 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
           )}
 
           {/* Features Section */}
-          <Accordion type="single" collapsible>
-            {hasFeatures && (
-              <>
-                <AccordionItem
-                  value="item-1"
-                  className="border-none rounded-none"
-                >
-                  <AccordionTrigger>
-                    <div className="flex items-center space-x-3">
-                      <BsPlusCircle size={26} className="text-neutral-500" />
-                      <p
-                        className="
+          {hasFeatures || hasBlog || hasRelatedMaterials ? (
+            <Accordion type="single" collapsible>
+              {hasFeatures && (
+                <>
+                  <AccordionItem value="item-1">
+                    <AccordionTrigger>
+                      <div className="flex items-center space-x-3">
+                        <BsPlusCircle size={26} className="text-neutral-500" />
+                        <p
+                          className="
                           text-lg 
                           text-neutral-600 dark:text-neutral-400
                           font-semibold
                           "
-                      >
-                        Features
-                      </p>
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent className="px-2">
-                    <Reader content={features} />
-                  </AccordionContent>
-                </AccordionItem>
-              </>
-            )}
+                        >
+                          Features
+                        </p>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-2">
+                      <Reader content={features} />
+                    </AccordionContent>
+                  </AccordionItem>
+                </>
+              )}
 
-            {/* Separator */}
-            {hasFeatures && hasRelatedMaterials && (
-              <div className="border-b border-gray-200 dark:border-neutral-800" />
-            )}
-
-            {/* Blog Section */}
-            {hasBlog && (
-              <>
-                <AccordionItem
-                  value="item-2"
-                  className="border-none rounded-none"
-                >
-                  <AccordionTrigger>
-                    <div className="flex items-center space-x-3">
-                      <IoReaderOutline size={26} className="text-neutral-500" />
-                      <p
-                        className="
+              {/* Blog Section */}
+              {hasBlog && (
+                <>
+                  <AccordionItem value="item-2">
+                    <AccordionTrigger>
+                      <div className="flex items-center space-x-3">
+                        <IoReaderOutline
+                          size={26}
+                          className="text-neutral-500"
+                        />
+                        <p
+                          className="
                           text-lg 
                           text-neutral-600 dark:text-neutral-400
                           font-semibold
                           "
-                      >
-                        Reflection / Journey
-                      </p>
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent className="px-2">
-                    <Reader content={blog} />
-                  </AccordionContent>
-                </AccordionItem>
-              </>
-            )}
+                        >
+                          Reflection / Journey
+                        </p>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-2">
+                      <Reader content={blog} />
+                    </AccordionContent>
+                  </AccordionItem>
+                </>
+              )}
 
-            {/* Separator */}
-            {hasFeatures && hasRelatedMaterials && (
-              <div className="border-b border-gray-200 dark:border-neutral-800" />
-            )}
-
-            {/* Related Materials Section */}
-            {hasRelatedMaterials && (
-              <>
-                <AccordionItem
-                  value="item-3"
-                  className="border-none rounded-none"
-                >
-                  <AccordionTrigger>
-                    <div className="flex items-center space-x-3">
-                      <GrAppsRounded size={25} className="text-neutral-500" />
-                      <p
-                        className="
+              {/* Related Materials Section */}
+              {hasRelatedMaterials && (
+                <>
+                  <AccordionItem value="item-3">
+                    <AccordionTrigger>
+                      <div className="flex items-center space-x-3">
+                        <GrAppsRounded size={25} className="text-neutral-500" />
+                        <p
+                          className="
                           text-lg 
                           text-neutral-600 dark:text-neutral-400
                           font-semibold
                           "
-                      >
-                        Related Material
-                      </p>
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent className="px-2">
-                    <MaterialList
-                      materialKeys={projectData.relatedMaterials!}
-                      isCollapsible={false}
-                    />
-                  </AccordionContent>
-                </AccordionItem>
-              </>
-            )}
-          </Accordion>
+                        >
+                          Related Material
+                        </p>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-2">
+                      <MaterialList
+                        materialKeys={projectData.relatedMaterials!}
+                        isCollapsible={false}
+                      />
+                    </AccordionContent>
+                  </AccordionItem>
+                </>
+              )}
+            </Accordion>
+          ) : null}
         </div>
       </div>
     </main>
