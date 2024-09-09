@@ -2,14 +2,15 @@
 
 import { useTheme } from "next-themes";
 import React, { useEffect, useState } from "react";
-import { RiComputerLine, RiMoonFill, RiSunLine } from "react-icons/ri";
 import { LuMonitor } from "react-icons/lu";
+import { RiMoonFill, RiSunLine } from "react-icons/ri";
 import {
   ContextMenu,
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuTrigger,
 } from "../shadcn/ui/context-menu";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../shadcn/ui/tooltip";
 
 /**
  * A button to toggle the theme (dark or light).
@@ -50,29 +51,38 @@ const ThemeToggle: React.FC = () => {
 
   return (
     <ContextMenu>
-      <ContextMenuTrigger>
-        {currentTheme === "dark" ? (
-          <button
-            onClick={handleThemeChange}
-            className={`${baseButtonClass} ${darkButtonClass}`}
-          >
-            <RiSunLine
-              size={27}
-              className={`${baseIconClass} ${darkIconClass}`}
-            />
-          </button>
-        ) : (
-          <button
-            onClick={handleThemeChange}
-            className={`${baseButtonClass} ${lightButtonClass}`}
-          >
-            <RiMoonFill
-              size={27}
-              className={`${baseIconClass} ${lightIconClass}`}
-            />
-          </button>
-        )}
-      </ContextMenuTrigger>
+      <Tooltip>
+        <TooltipTrigger>
+          <ContextMenuTrigger>
+            {currentTheme === "dark" ? (
+              <button
+                onClick={handleThemeChange}
+                className={`${baseButtonClass} ${darkButtonClass}`}
+              >
+                <RiSunLine
+                  size={27}
+                  className={`${baseIconClass} ${darkIconClass}`}
+                />
+              </button>
+            ) : (
+              <button
+                onClick={handleThemeChange}
+                className={`${baseButtonClass} ${lightButtonClass}`}
+              >
+                <RiMoonFill
+                  size={27}
+                  className={`${baseIconClass} ${lightIconClass}`}
+                />
+              </button>
+            )}
+          </ContextMenuTrigger>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>
+            Right Click <br /> for Options
+          </p>
+        </TooltipContent>
+      </Tooltip>
 
       <ContextMenuContent
         className="

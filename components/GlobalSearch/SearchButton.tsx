@@ -47,6 +47,7 @@ import socialLinks from "@/constants/socials";
 import courseDatabaseMap from "@/database/Courses/CourseDatabaseMap";
 import Link from "next/link";
 import companyDatabaseMap from "@/database/Companies/CompanyDatabaseMap";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../shadcn/ui/tooltip";
 
 interface ItemInterface {
   name: string;
@@ -67,7 +68,7 @@ interface SectionInterface {
  *
  * @returns A button that opens a search dialog when clicked.
  */
-const SearchButton: React.FC = () => {
+const GlobalSearch: React.FC = () => {
   const [open, setOpen] = useState(false);
   const router = useRouter();
 
@@ -193,15 +194,26 @@ const SearchButton: React.FC = () => {
 
   return (
     <>
-      <button
-        className={`${baseButtonClass} ${darkButtonClass} ${lightButtonClass}`}
-        onClick={() => setOpen((open) => !open)}
-      >
-        <RiSearchLine
-          size={25}
-          className={`${baseIconClass} ${darkIconClass} ${lightIconClass}`}
-        />
-      </button>
+      <Tooltip>
+        <TooltipTrigger>
+          <button
+            className={`${baseButtonClass} ${darkButtonClass} ${lightButtonClass}`}
+            onClick={() => setOpen((open) => !open)}
+          >
+            <RiSearchLine
+              size={25}
+              className={`${baseIconClass} ${darkIconClass} ${lightIconClass}`}
+            />
+          </button>
+        </TooltipTrigger>
+        <TooltipContent className="flex flex-col items-center text-center">
+          <p>Global Search</p>
+          <p className="text-sm italic text-neutral-600 dark:text-neutral-300">
+            <span className="font-bold">{"Ctrl/Cmd"}</span> +
+            <span className="font-bold">{" K"}</span>
+          </p>
+        </TooltipContent>
+      </Tooltip>
 
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Type to search across site..." />
@@ -231,4 +243,4 @@ const SearchButton: React.FC = () => {
   );
 };
 
-export default SearchButton;
+export default GlobalSearch;
