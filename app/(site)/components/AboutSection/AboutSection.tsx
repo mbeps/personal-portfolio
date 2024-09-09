@@ -2,8 +2,9 @@ import Reader from "@/components/Reader/Reader";
 import LanguageSection from "./LanguageSection";
 import TechnologiesSection from "./TechnologiesSection";
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
-import { Button } from "@/components/shadcn/ui/button";
 import Link from "next/link";
+import { HiArrowDown } from "react-icons/hi"; // Import the arrow icon
+import NextSectionButton from "@/components/UI/NextSectionButton";
 
 /**
  * About section component.
@@ -28,48 +29,51 @@ const AboutSection = () => {
 
   return (
     <section id="about" className="home-section-wrapper">
-      <h1 className="text-center font-bold text-4xl">
-        About Me
-        <hr className="w-6 h-1 mx-auto my-4 bg-red-500 border-0 rounded"></hr>
-      </h1>
+      <div className="my-auto w-full">
+        <h1 className="text-center font-bold text-4xl">
+          About Me
+          <hr className="w-6 h-1 mx-auto my-4 bg-red-500 border-0 rounded"></hr>
+        </h1>
 
-      <div
-        className="
+        <div
+          className="
           flex flex-col lg:flex-row
           space-y-8 md:space-y-5 lg:space-y-0
           items-stretch justify-center align-top
           lg:space-x-6 lg:p-4
           lg:text-left
         "
-      >
-        {/* Left section */}
-        <div className="lg:w-1/2">
-          <h1 className="text-center text-2xl font-bold mb-6 mt-6 md:text-left">
-            Get to know me!
-          </h1>
+        >
+          {/* Left section */}
+          <div className="lg:w-1/2">
+            <h1 className="text-center text-2xl font-bold mb-6 mt-6 md:text-left">
+              Get to know me!
+            </h1>
 
-          <div className="space-y-2">
-            <Reader content={blogContent} />
-            <Link
-              href="/about"
-              className="
+            <div className="space-y-2">
+              <Reader content={blogContent} />
+              <Link
+                href="/about"
+                className="
                 font-bold
                 hover:underline 
                 hover:text-red-500 hover:dark:text-red-700
                 transition-colors duration-300 ease-in-out"
-            >
-              {`Read More About Me!`}
-            </Link>
+              >
+                {`Read More About Me!`}
+              </Link>
+            </div>
+          </div>
+
+          {/* Right section */}
+          <div className="text-center lg:w-1/2 md:text-left ">
+            <LanguageSection />
+            <div className="h-1 mt-2 md:mt-4" />
+            <TechnologiesSection />
           </div>
         </div>
-
-        {/* Right section */}
-        <div className="text-center lg:w-1/2 md:text-left ">
-          <LanguageSection />
-          <div className="h-1 mt-2 md:mt-4" />
-          <TechnologiesSection />
-        </div>
       </div>
+      <NextSectionButton section="projects" />
     </section>
   );
 };

@@ -1,5 +1,6 @@
 import Socials from "@/components/Socials/Socials";
 import TextLoop from "@/components/TextLoop/TextLoop";
+import NextSectionButton from "@/components/UI/NextSectionButton";
 import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
 import subtitles from "@/constants/subtitles";
@@ -120,17 +121,7 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-      <div
-        className="
-        flex flex-row 
-        items-center text-center justify-center 
-        my-10 md:my-4
-      "
-      >
-        <Link href="#about">
-          <HiArrowDown size={35} className="animate-bounce slow-bounce" />
-        </Link>
-      </div>
+      <NextSectionButton section="about" />
     </section>
   );
 };
