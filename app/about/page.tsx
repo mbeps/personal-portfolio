@@ -157,7 +157,7 @@ export default function About() {
                   value: `${numberOfProjects}`,
                 },
               ]}
-              className="grid-cols-1 md:grid-cols-1 lg:grid-cols-1 lg:max-w-[220px]"
+              className="grid-cols-1 md:grid-cols-2 lg:grid-cols-1 lg:max-w-[220px]"
             />
           </div>
         </div>
