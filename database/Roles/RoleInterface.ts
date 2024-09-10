@@ -24,5 +24,6 @@ export default interface RoleInterface extends MaterialInterface {
   type: ExperienceTypeEnum;
   startDate: ShortDate;
   endDate: ShortDate;
+  timeInRole?: string;
   company: CompanyDatabaseKeys;
 }
