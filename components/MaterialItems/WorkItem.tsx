@@ -8,6 +8,7 @@ import Link from "next/link";
 import { BsArrowUpRightCircle, BsInfoCircle } from "react-icons/bs";
 import { AspectRatio } from "../shadcn/ui/aspect-ratio";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../shadcn/ui/tooltip";
+import ShortDate from "@/class/ShortDate";
 
 interface WorkItemProps {
   roleKey: string;
@@ -33,6 +34,15 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
   const companyData: CompanyInterface = companyDatabaseMap[roleData.company];
 
   const rolePage: string = `${basePath}/${roleKey}`;
+
+  const currentDate: ShortDate = new ShortDate(
+    new Date().getFullYear(),
+    new Date().getMonth() + 1
+  );
+  const endDate: string =
+    roleData.endDate.difference(currentDate) === 0
+      ? "Present"
+      : roleData.endDate.toString();
 
   return (
     <div
@@ -140,7 +150,7 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
             space-y-2 md:space-y-0 md:space-x-4
           "
         >
-          <p className="text-neutral-800 dark:text-neutral-300">{`${roleData.startDate} - ${roleData.endDate}`}</p>
+          <p className="text-neutral-800 dark:text-neutral-300">{`${roleData.startDate} - ${endDate}`}</p>
           <p className="text-neutral-700 dark:text-neutral-400">
             {roleData.type}
           </p>
