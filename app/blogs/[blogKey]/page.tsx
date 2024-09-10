@@ -5,23 +5,20 @@ import MaterialList from "@/components/MaterialLists/MaterialList";
 import Reader from "@/components/Reader/Reader";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
+import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
-import { BLOG_PAGE, HOME_PAGE } from "@/constants/pages";
+import { BLOG_PAGE } from "@/constants/pages";
 import BlogInterface from "@/database/Blogs/BlogInterface";
 import blogsDatabaseMap from "@/database/Blogs/BlogsDatabaseMap";
-import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import type { Metadata, ResolvingMetadata } from "next";
-import { notFound } from "next/navigation";
-import ContentsSection from "./components/ContentsSection";
-import DynamicBreadcrumb, {
-  BreadcrumbPair,
-} from "@/components/UI/DynamicBreadcrumb";
-import { Button } from "@/components/shadcn/ui/button";
-import { MdKeyboardArrowLeft } from "react-icons/md";
 import Link from "next/link";
+import { notFound } from "next/navigation";
+import { MdKeyboardArrowLeft } from "react-icons/md";
+import ContentsSection from "./components/ContentsSection";
 
 type BlogPageProps = {
   params: { blogKey: string };
@@ -180,7 +177,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
         ))}
       </div>
 
-      <div>
+      <div className="px-0 lg:px-24">
         <div className="text-center">
           {/* Title */}
           <HeadingTwo title={blogData?.name} />
