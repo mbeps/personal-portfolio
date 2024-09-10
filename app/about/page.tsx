@@ -1,4 +1,5 @@
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
+import ShortDate from "@/class/ShortDate";
 import MaterialList from "@/components/MaterialLists/MaterialList";
 import Reader from "@/components/Reader/Reader";
 import Socials from "@/components/Socials/Socials";
@@ -30,6 +31,7 @@ export const metadata: Metadata = {
 
 /**
  * About page displays information about the developer.
+ *
  * @returns Home page
  */
 export default function About() {
@@ -37,13 +39,37 @@ export default function About() {
     notFound();
   }
 
+  // Work experience
+  const firstProfessionalExperience: RoleInterface =
+    rolesDatabase[RoleDatabaseKeys.CommerzbankDevOpsEngineer];
   const latestWorkExperience: RoleInterface = Object.values(rolesDatabase)[0];
   const latestRole: string = latestWorkExperience.name;
   const latestCompany: string =
     companyDatabaseMap[latestWorkExperience.company].name;
+
+  // Education
   const latestEducation: CourseInterface = Object.values(courseDatabaseMap)[0];
   const latestUniversityName: string = latestEducation.university;
   const latestCourseName: string = latestEducation.name;
+
+  // Projects
+  const numberOfProjects: number = Object.keys(ProjectDatabaseKeys).length;
+
+  // Experience time
+  const currentDate: ShortDate = new ShortDate(
+    new Date().getFullYear(),
+    new Date().getMonth() + 1
+  );
+
+  const experienceTime: number = Math.round(
+    currentDate.difference(firstProfessionalExperience.startDate)
+  );
+
+  const formattedExperienceTime: string = currentDate.formatExperienceTime(
+    firstProfessionalExperience.startDate
+  );
+
+  // Featured material
   const featuredMaterial: string[] = [
     RoleDatabaseKeys.CommerzbankDevOpsEngineer,
     RoleDatabaseKeys.GoogleRHULDevelopersClubSoftwareEngineer,
@@ -114,14 +140,24 @@ export default function About() {
                 { heading: "Name", value: developerName },
                 { heading: "Location", value: "London, UK" },
                 {
-                  heading: "University",
-                  value: latestUniversityName,
+                  heading: "Bachelor's Degree",
+                  value: `${latestCourseName} at ${latestUniversityName}`,
                 },
-                { heading: "Degree", value: latestCourseName },
-                { heading: "Currently Working", value: latestCompany },
-                { heading: "Current Role", value: latestRole },
+                {
+                  heading: "Current Role",
+                  value: `${latestRole} at ${latestCompany}`,
+                },
+                {
+                  heading: "Years of Experience",
+                  value:
+                    1 === experienceTime ? "1 year" : `${experienceTime} years`,
+                },
+                {
+                  heading: "Projects",
+                  value: `${numberOfProjects}`,
+                },
               ]}
-              className="grid-cols-2 md:grid-cols-2 lg:grid-cols-1"
+              className="grid-cols-1 md:grid-cols-1 lg:grid-cols-1 lg:max-w-[220px]"
             />
           </div>
         </div>
