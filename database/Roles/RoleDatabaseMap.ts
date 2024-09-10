@@ -10,7 +10,7 @@ import ShortDate from "@/class/ShortDate";
 
 const rolesMap: Database<RoleInterface> = {
   [RoleDatabaseKeys.CommerzbankDevOpsEngineer]: {
-    name: "DevOps Engineer",
+    name: "Backend Engineer",
     category: ExperienceCategoriesEnum.Software,
     type: ExperienceTypeEnum.FullTime,
     skills: [
