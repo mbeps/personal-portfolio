@@ -18,8 +18,8 @@ const Socials: React.FC<SocialsProps> = ({ className, iconSize }) => {
     flex flex-row 
     items-center 
     justify-center 
-    md:items-center 
-    md:justify-start 
+    lg:items-center 
+    lg:justify-start 
     space-x-6 md:space-x-2
     mb-1
   `;
