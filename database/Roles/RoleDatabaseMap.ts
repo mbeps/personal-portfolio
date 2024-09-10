@@ -6,6 +6,7 @@ import ExperienceCategoriesEnum from "@/enums/Experience/ExperienceCategoriesEnu
 import ExperienceTypeEnum from "@/enums/Experience/ExperienceTypeEnum";
 import RoleInterface from "@/database/Roles/RoleInterface";
 import CompanyDatabaseKeys from "../Companies/CompanyDatabaseKeys";
+import ShortDate from "@/class/ShortDate";
 
 const rolesMap: Database<RoleInterface> = {
   [RoleDatabaseKeys.CommerzbankDevOpsEngineer]: {
@@ -60,8 +61,8 @@ const rolesMap: Database<RoleInterface> = {
       SkillDatabaseKeys.QualityManagement,
       SkillDatabaseKeys.DesignPatterns,
     ],
-    startDate: "November 2023",
-    endDate: "Present",
+    startDate: new ShortDate(2023, 11),
+    endDate: new ShortDate(new Date().getFullYear(), new Date().getMonth() + 1),
     relatedMaterials: [
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperPython,
@@ -81,8 +82,8 @@ const rolesMap: Database<RoleInterface> = {
     category: ExperienceCategoriesEnum.Software,
     type: ExperienceTypeEnum.Volunteering,
     company: CompanyDatabaseKeys.OpenSource,
-    startDate: "December 2019",
-    endDate: "Present",
+    startDate: new ShortDate(2019, 12),
+    endDate: new ShortDate(new Date().getFullYear(), new Date().getMonth() + 1),
     skills: [
       SkillDatabaseKeys.UserCentricDesign,
       SkillDatabaseKeys.Git,
@@ -185,16 +186,16 @@ const rolesMap: Database<RoleInterface> = {
     ],
     company: CompanyDatabaseKeys.GoogleRHULDevelopersClub,
     relatedMaterials: [ProjectDatabaseKeys.Noodle],
-    startDate: "September 2022",
-    endDate: "June 2023",
+    startDate: new ShortDate(2022, 9),
+    endDate: new ShortDate(2023, 6),
   },
   [RoleDatabaseKeys.AJTuitionCentreTutor]: {
     name: "Mathematics Tutor",
     category: ExperienceCategoriesEnum.Other,
     type: ExperienceTypeEnum.PartTime,
     company: CompanyDatabaseKeys.AJTuitionCentre,
-    startDate: "September 2018",
-    endDate: "March 2020",
+    startDate: new ShortDate(2018, 9),
+    endDate: new ShortDate(2020, 3),
     skills: [
       SkillDatabaseKeys.Communication,
       SkillDatabaseKeys.ProblemSolving,
@@ -209,8 +210,8 @@ const rolesMap: Database<RoleInterface> = {
     category: ExperienceCategoriesEnum.Other,
     type: ExperienceTypeEnum.PartTime,
     company: CompanyDatabaseKeys.Madhus,
-    startDate: "June 2018",
-    endDate: "December 2019",
+    startDate: new ShortDate(2018, 6),
+    endDate: new ShortDate(2019, 12),
     skills: [
       SkillDatabaseKeys.Leadership,
       SkillDatabaseKeys.Teamwork,
