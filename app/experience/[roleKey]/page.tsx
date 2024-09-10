@@ -1,6 +1,7 @@
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
 import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
 import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
+import ShortDate from "@/class/ShortDate";
 import MaterialList from "@/components/MaterialLists/MaterialList";
 import Reader from "@/components/Reader/Reader";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
@@ -98,6 +99,15 @@ const RolePage: React.FC<RolePageProps> = ({ params }) => {
   }
 
   const companyData: CompanyInterface = companyDatabaseMap[roleData.company];
+
+  const currentDate: ShortDate = new ShortDate(
+    new Date().getFullYear(),
+    new Date().getMonth() + 1
+  );
+  const endDate: string =
+    roleData.endDate.difference(currentDate) === 0
+      ? "Present"
+      : roleData.endDate.toString();
 
   const technologies: SkillDatabaseKeys[] = filterSkillsByType(
     roleData.skills,
@@ -207,11 +217,8 @@ const RolePage: React.FC<RolePageProps> = ({ params }) => {
                 { heading: "Location", value: companyData.location },
                 { heading: "Type", value: roleData.type },
                 { heading: "Category", value: roleData.category },
-                { heading: "Start Date", value: roleData.startDate },
-                {
-                  heading: "End Date",
-                  value: roleData.endDate,
-                },
+                { heading: "Start Date", value: roleData.startDate.toString() },
+                { heading: "End Date", value: endDate },
               ]}
             />
           </div>
