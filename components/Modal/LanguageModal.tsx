@@ -129,12 +129,12 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
             </TooltipContent>
           </Tooltip>
         </DialogTrigger>
-        <DialogContent className="flex flex-col justify-start">
+        <DialogContent className="flex flex-col justify-start h-full">
           <div className="w-full pt-6">
             <HeadingTwo title={language.name} />
           </div>
 
-          <ScrollArea className="h-full w-full">
+          <ScrollArea className="h-full w-full flex-grow">
             <div className="px-6 pb-4">
               {/* Grouping Dropdown */}
               <div className="flex mt-4">
@@ -182,30 +182,19 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
                   </div>
                 ))}
               </div>
-
-              {/* Links */}
-              {hasMaterial && (
-                <>
-                  <div className="py-12" />
-
-                  <div
-                    className="
-												flex flex-wrap flex-col
-												text-center md:text-left
-												justify-start z-10 space-y-2"
-                  >
-                    <Link href={`/skills/${languageIdentifier as string}`}>
-                      <div className="w-full">
-                        <Button variant="gradient" className="w-full">
-                          {`All ${language.name} Material`}
-                        </Button>
-                      </div>
-                    </Link>
-                  </div>
-                </>
-              )}
             </div>
           </ScrollArea>
+
+          {/* Links */}
+          {hasMaterial && (
+            <div className="w-full mt-auto px-6 pb-4">
+              <Link href={`/skills/${languageIdentifier as string}`}>
+                <Button variant="gradient" className="w-full">
+                  {`All ${language.name} Material`}
+                </Button>
+              </Link>
+            </div>
+          )}
         </DialogContent>
       </Dialog>
     </>
