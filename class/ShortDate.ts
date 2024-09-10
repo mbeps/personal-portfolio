@@ -83,6 +83,27 @@ class ShortDate {
   static subtract(date1: ShortDate, date2: ShortDate): number {
     return date1.difference(date2);
   }
+
+  /**
+   * Formats the experience time between this date and another ShortDate.
+   * @param other - Another ShortDate instance.
+   * @returns The formatted experience time.
+   */
+  formatExperienceTime(other: ShortDate): string {
+    const experienceTime: number = this.difference(other);
+
+    if (experienceTime < 1) {
+      const months: number = Math.round(experienceTime * 12);
+      return `${months} ${months === 1 ? "month" : "months"}`;
+    } else {
+      const years: number = Math.floor(experienceTime);
+      const months: number = Math.round((experienceTime - years) * 12);
+      const yearString = `${years} ${years === 1 ? "year" : "years"}`;
+      const monthString: string =
+        months > 0 ? ` and ${months} ${months === 1 ? "month" : "months"}` : "";
+      return yearString + monthString;
+    }
+  }
 }
 
 export default ShortDate;
