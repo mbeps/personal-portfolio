@@ -177,7 +177,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
         ))}
       </div>
 
-      <div className="px-0 lg:px-24">
+      <div>
         <div className="text-center">
           {/* Title */}
           <HeadingTwo title={blogData?.name} />
@@ -189,7 +189,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
         </div>
 
         {/* Buttons */}
-        <div className="flex flex-col lg:flex-row justify-between mb-6 space-y-2">
+        <div className="flex flex-col lg:flex-row justify-between mb-6 space-y-2 px-0 lg:px-20">
           <Link href={BLOG_PAGE.path}>
             <Button className="pl-3">
               <MdKeyboardArrowLeft size={24} className="mr-2" />
@@ -200,7 +200,9 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
         </div>
 
         {/* Article */}
-        <Reader content={splitBlot.articleSection} size="lg:prose-lg" />
+        <div className="px-0 lg:px-20 w-full">
+          <Reader content={splitBlot.articleSection} size="lg:prose-lg" />
+        </div>
 
         <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
 
