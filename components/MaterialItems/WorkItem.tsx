@@ -8,6 +8,7 @@ import Link from "next/link";
 import { BsArrowUpRightCircle, BsInfoCircle } from "react-icons/bs";
 import { AspectRatio } from "../shadcn/ui/aspect-ratio";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../shadcn/ui/tooltip";
+import ShortDate from "@/class/ShortDate";
 
 interface WorkItemProps {
   roleKey: string;
@@ -34,6 +35,15 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
 
   const rolePage: string = `${basePath}/${roleKey}`;
 
+  const currentDate: ShortDate = new ShortDate(
+    new Date().getFullYear(),
+    new Date().getMonth() + 1
+  );
+  const endDate: string =
+    roleData.endDate.difference(currentDate) === 0
+      ? "Present"
+      : roleData.endDate.toString();
+
   return (
     <div
       className="
@@ -45,41 +55,76 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
         shadow-md
         "
     >
-      {/* Logo */}
-      <div className="py-3 flex items-start justify-center md:justify-start">
-        {companyData.logo && (
-          <div
-            className="
+      <div className="flex items-center justify-center flex-col space-y-4">
+        {/* Logo */}
+        <div className="py-3 flex items-start justify-center md:justify-start">
+          {companyData.logo && (
+            <div
+              className="
               rounded-full 
               transition-all duration-500 ease-in-out
-              w-[85px] h-[85px]
+              w-[85px] h-[85px] lg:w-[100px] lg:h-[100px] 
               border-2 border-neutral-200 dark:border-neutral-900
               dark:hover:border-red-600
               hover:scale-105 hover:shadow-lg
             "
-          >
-            <Link href={rolePage}>
-              <AspectRatio
-                ratio={1 / 1}
-                className="overflow-hidden relative w-full bg-white rounded-full"
-              >
-                <Image
-                  src={companyData.logo}
-                  alt={`Logo for ${companyData.name}`}
-                  fill={true}
-                  className="
+            >
+              <Link href={rolePage}>
+                <AspectRatio
+                  ratio={1 / 1}
+                  className="overflow-hidden relative w-full bg-white rounded-full"
+                >
+                  <Image
+                    src={companyData.logo}
+                    alt={`Logo for ${companyData.name}`}
+                    fill={true}
+                    className="
                     rounded-full 
                     shadow-lg object-cover
                     transition-all duration-500 ease-in-out
             "
-                  quality={30}
-                  loading="eager"
-                  priority
+                    quality={30}
+                    loading="eager"
+                    priority
+                  />
+                </AspectRatio>
+              </Link>
+            </div>
+          )}
+        </div>
+
+        {/* Link to Credential Page */}
+        <div className="hidden md:flex flex-row space-x-3">
+          <Tooltip>
+            <TooltipTrigger>
+              <Link href={rolePage}>
+                <BsInfoCircle
+                  size={30}
+                  className="md:hover:-translate-y-1 transition-transform cursor-pointer"
                 />
-              </AspectRatio>
-            </Link>
-          </div>
-        )}
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>View Role Details </p>
+            </TooltipContent>
+          </Tooltip>
+          {/* Link to Credential */}
+          {companyData.website && (
+            <Tooltip>
+              <TooltipTrigger>
+                <Link href={companyData.website} target="_blank">
+                  <BsArrowUpRightCircle
+                    size={30}
+                    className="md:hover:-translate-y-1 transition-transform cursor-pointer"
+                  />
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Navigate to company website</p>
+              </TooltipContent>
+            </Tooltip>
+          )}
+        </div>
       </div>
 
       {/* Details */}
@@ -87,7 +132,7 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
         className="
           flex flex-col
           items-center md:items-start 
-          space-y-2 sm:p-0
+          space-y-4 md:space-y-3 sm:p-0
           ease-in-out
 					rounded-xl 
 					transition-colors duration-700 
@@ -134,17 +179,21 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
 
         <div
           className="
-            flex flex-col md:flex-row 
+            flex flex-col 
             justify-center md:justify-start 
             items-center md:items-start 
-            space-y-2 md:space-y-0 md:space-x-4
+            space-y-2 md:space-y-0
+            text-neutral-500 dark:text-neutral-400
           "
         >
-          <p className="text-neutral-800 dark:text-neutral-300">{`${roleData.startDate} - ${roleData.endDate}`}</p>
-          <p className="text-neutral-700 dark:text-neutral-400">
-            {roleData.type}
-          </p>
+          <p>{`${roleData.startDate} - ${endDate}`}</p>
+          <p className="italic">{roleData.timeInRole}</p>
         </div>
+
+        {/* Role Type */}
+        <p className="text-neutral-400 dark:text-neutral-500">
+          {roleData.type}
+        </p>
 
         <div
           className="
@@ -152,10 +201,9 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
             align-bottom 
             space-x-4
             pt-3
+            md:hidden
             "
         >
-          {/* Link to Credential Page */}
-
           <Tooltip>
             <TooltipTrigger>
               <Link href={rolePage}>

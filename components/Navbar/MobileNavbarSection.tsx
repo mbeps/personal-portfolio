@@ -19,7 +19,7 @@ const MobileNavbarSection: React.FC<MobileNavbarSectionProps> = ({
   toggleOverlay,
 }) => {
   return (
-    <div className="md:hidden flex items-center">
+    <div className="lg:hidden flex items-center">
       <button
         className="
           p-2 

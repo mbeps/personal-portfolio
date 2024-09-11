@@ -4,7 +4,7 @@ import { NAVBAR_HEIGHT } from "@/constants/NAVBAR";
 import NAV_ITEMS from "@/constants/pages";
 import { useNavbarStore } from "@/hooks/useNavbarStore";
 import { useEffect, useState } from "react";
-import SearchButton from "../GlobalSearch/SearchButton";
+import GlobalSearch from "../GlobalSearch/SearchButton";
 import DesktopNavbarSection from "./DesktopNavbarSection";
 import HomeButton from "./HomeButton";
 import MobileNavbarSection from "./MobileNavbarSection";
@@ -74,7 +74,7 @@ export default function Navbar() {
 
           <div className="flex flex-row items-center space-x-2">
             <DesktopNavbarSection items={NAV_ITEMS} />
-            <SearchButton />
+            <GlobalSearch />
             <ThemeToggle />
             <MobileNavbarSection
               isOverlayOpen={isOverlayOpen}

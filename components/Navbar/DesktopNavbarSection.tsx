@@ -15,7 +15,7 @@ interface NavbarSectionProps {
  */
 const DesktopNavbarSection: React.FC<NavbarSectionProps> = ({ items }) => {
   return (
-    <div className="hidden md:block">
+    <div className="hidden lg:block">
       <div
         className="
 					md:flex

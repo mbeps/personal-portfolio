@@ -2,6 +2,7 @@ import ExperienceCategoriesEnum from "@/enums/Experience/ExperienceCategoriesEnu
 import MaterialInterface from "../Materials/MaterialInterface";
 import ExperienceTypeEnum from "@/enums/Experience/ExperienceTypeEnum";
 import CompanyDatabaseKeys from "@/database/Companies/CompanyDatabaseKeys";
+import ShortDate from "@/class/ShortDate";
 
 /**
  * Interface representing a role related to work experience.
@@ -21,7 +22,8 @@ import CompanyDatabaseKeys from "@/database/Companies/CompanyDatabaseKeys";
 export default interface RoleInterface extends MaterialInterface {
   category: ExperienceCategoriesEnum;
   type: ExperienceTypeEnum;
-  startDate: string;
-  endDate: string | "Present";
+  startDate: ShortDate;
+  endDate: ShortDate;
+  timeInRole?: string;
   company: CompanyDatabaseKeys;
 }

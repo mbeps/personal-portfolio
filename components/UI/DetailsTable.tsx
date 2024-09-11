@@ -27,7 +27,7 @@ const DetailsTable: React.FC<TableProps> = ({ details, className }) => {
   return (
     <div className={overlayStyle}>
       {details.map((detail, index) => (
-        <div key={index}>
+        <div key={index} className="mb-4">
           <HeadingFour title={detail.heading} />
           <p className="mt-2 text-neutral-800 dark:text-neutral-200">
             {detail.value}

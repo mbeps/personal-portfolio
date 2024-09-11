@@ -106,7 +106,7 @@ export const ABOUT_PAGE: NavigationItemInterface = {
   label: "About",
   path: "/about",
   description: `
-    Read a summary about me, my journey, and my aspirations.
+    Read a summary about me, my journey, and my accomplishments.
   `,
 };
 
@@ -134,13 +134,15 @@ export const MORE_PAGE: NavigationItemInterface = {
  */
 const NAV_ITEMS: Array<NavigationItemInterface> = [
   HOME_PAGE,
+
+  ABOUT_PAGE,
+  SKILL_PAGE,
+
   PROJECTS_PAGE,
   EXPERIENCE_PAGE,
   EDUCATION_PAGE,
   CERTIFICATES_PAGE,
-  ABOUT_PAGE,
   BLOG_PAGE,
-  SKILL_PAGE,
   MORE_PAGE,
 ];
 

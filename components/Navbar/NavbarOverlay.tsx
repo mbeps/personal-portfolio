@@ -22,7 +22,7 @@ interface OverlayProps {
  * @returns Overlay component
  */
 const NavbarOverlay: React.FC<OverlayProps> = ({ isOpen, toggle, items }) => {
-  const isMobile = useMediaQuery("(max-width: 768px)");
+  const isMobile: boolean = useMediaQuery("(max-width: 976px)");
 
   if (!isMobile) {
     return null;
@@ -33,8 +33,7 @@ const NavbarOverlay: React.FC<OverlayProps> = ({ isOpen, toggle, items }) => {
       <div
         className="
 					items-center justify-center 
-					space-y-8 md:space-x-6 md:space-y-0
-					md:flex 
+					space-y-8 md:space-y-0
 					pt-20 
 				"
       >

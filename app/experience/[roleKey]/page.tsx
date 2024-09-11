@@ -1,6 +1,7 @@
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
 import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
 import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
+import ShortDate from "@/class/ShortDate";
 import MaterialList from "@/components/MaterialLists/MaterialList";
 import Reader from "@/components/Reader/Reader";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
@@ -99,6 +100,19 @@ const RolePage: React.FC<RolePageProps> = ({ params }) => {
 
   const companyData: CompanyInterface = companyDatabaseMap[roleData.company];
 
+  const currentDate: ShortDate = new ShortDate(
+    new Date().getFullYear(),
+    new Date().getMonth() + 1
+  );
+  const endDate: string =
+    roleData.endDate.difference(currentDate) === 0
+      ? "Present"
+      : roleData.endDate.toString();
+
+  const timeInRole: string = currentDate.formatExperienceTime(
+    roleData.startDate
+  );
+
   const technologies: SkillDatabaseKeys[] = filterSkillsByType(
     roleData.skills,
     skillDatabaseMap,
@@ -158,39 +172,86 @@ const RolePage: React.FC<RolePageProps> = ({ params }) => {
       <div>
         <HeadingTwo title={roleData?.name} />
 
-        {companyData.logo && companyData.website && (
-          <div className="flex items-center justify-center">
-            <div
-              className="
+        {companyData.logo && (
+          <div
+            className="
+              flex items-center justify-center 
+              my-12 
+              flex-col md:flex-row 
+            "
+          >
+            {/* Logo */}
+            {companyData.logo && companyData.website && (
+              <div
+                className="
                 rounded-full 
                 shadow-lg 
                 p-1.5 bg-neutral-300 dark:bg-neutral-800
-              dark:hover:bg-red-800
+                dark:hover:bg-red-800
                 transition-all duration-500 ease-in-out
                 w-[90px] h-[90px]
                 hover:scale-105 hover:shadow-xl
               "
+              >
+                <Link href={companyData.website} target="_blank">
+                  <AspectRatio
+                    ratio={1 / 1}
+                    className="overflow-hidden relative w-full bg-white rounded-full"
+                  >
+                    <Image
+                      src={companyData.logo}
+                      alt={`Logo for ${companyData.name}`}
+                      fill={true}
+                      className="
+                      rounded-full 
+                      shadow-lg object-cover
+                      transition-all duration-500 ease-in-out
+                    "
+                      quality={30}
+                      loading="eager"
+                      priority
+                    />
+                  </AspectRatio>
+                </Link>
+              </div>
+            )}
+
+            {/* Company Name */}
+            <div
+              className="
+                h-full  
+                flex items-center
+              "
             >
-              <Link href={companyData.website} target="_blank">
-                <AspectRatio
-                  ratio={1 / 1}
-                  className="overflow-hidden relative w-full bg-white rounded-full"
-                >
-                  <Image
-                    src={companyData.logo}
-                    alt={`Logo for ${companyData.name}`}
-                    fill={true}
-                    className="
-                    rounded-full 
-                    shadow-lg object-cover
-                    transition-all duration-500 ease-in-out
+              {companyData.website ? (
+                <p
+                  className="
+                  text-left text-2xl font-bold 
+                  mt-4 lg:mt-0 lg:ml-8
+                  text-neutral-600 dark:text-neutral-300
+                  hover:text-red-700 dark:hover:text-red-300 
+                  transition-all duration-300 ease-in-out
                   "
-                    quality={30}
-                    loading="eager"
-                    priority
-                  />
-                </AspectRatio>
-              </Link>
+                >
+                  <Link
+                    href={companyData.website}
+                    target="_blank"
+                    className="h-full"
+                  >
+                    {companyData.name}
+                  </Link>
+                </p>
+              ) : (
+                <p
+                  className="
+                    text-left text-2xl font-bold 
+                    mt-4 lg:mt-0 lg:ml-8
+                    text-neutral-600 dark:text-neutral-300
+                  "
+                >
+                  {companyData.name}
+                </p>
+              )}
             </div>
           </div>
         )}
@@ -203,15 +264,12 @@ const RolePage: React.FC<RolePageProps> = ({ params }) => {
             </div>
             <DetailsTable
               details={[
-                { heading: "Company", value: companyData.name },
                 { heading: "Location", value: companyData.location },
                 { heading: "Type", value: roleData.type },
                 { heading: "Category", value: roleData.category },
-                { heading: "Start Date", value: roleData.startDate },
-                {
-                  heading: "End Date",
-                  value: roleData.endDate,
-                },
+                { heading: "Time in Role", value: timeInRole },
+                { heading: "Start Date", value: roleData.startDate.toString() },
+                { heading: "End Date", value: endDate },
               ]}
             />
           </div>

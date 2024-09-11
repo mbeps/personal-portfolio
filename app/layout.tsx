@@ -67,7 +67,7 @@ export default function RootLayoutWithProviders({
                 className="
                   mx-auto max-w-3xl md:max-w-6xl
                   min-h-[calc(100vh-4rem)]
-                  pt-4 px-4 lg:px-0
+                  pt-4 px-4 md:px-4 lg:px-0
                 "
               >
                 {children}
