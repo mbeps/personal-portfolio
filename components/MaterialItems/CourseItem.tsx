@@ -37,14 +37,14 @@ const CourseItem: React.FC<CourseItemProps> = ({ courseKey }) => {
     >
       {/* Certificate Image */}
       {courseData.logo && (
-        <Link href={`${basePath}/${courseKey}`}>
-          <div
-            className="
-              flex justify-center
-              mb-6
-              w-full
-            "
-          >
+        <div
+          className="
+            flex justify-center
+            mb-6
+            w-full
+          "
+        >
+          <Link href={`${basePath}/${courseKey}`}>
             <Image
               key={courseKey}
               src={courseData.logo}
@@ -61,8 +61,8 @@ const CourseItem: React.FC<CourseItemProps> = ({ courseKey }) => {
                 transition-all duration-500 ease-in-out
               "
             />
-          </div>
-        </Link>
+          </Link>
+        </div>
       )}
 
       <div
