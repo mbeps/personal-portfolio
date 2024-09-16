@@ -11,14 +11,16 @@ interface CourseItemProps {
   courseKey: string;
 }
 
+/**
+ * Card representing a university course.
+ * Displays the course's certificate, name, grade, university, and a link to the course page.
+ *
+ * @param courseKey Key of the course to display
+ * @returns Card displaying the course's certificate, name, grade, university, and a link to the course page
+ */
 const CourseItem: React.FC<CourseItemProps> = ({ courseKey }) => {
   const basePath: string = EDUCATION_PAGE.path;
   let courseData: CourseInterface = courseDatabaseMap[courseKey];
-
-  courseData = {
-    ...courseData,
-    certificate: `${basePath}/${courseKey}.jpg`,
-  };
 
   return (
     <div
@@ -34,35 +36,31 @@ const CourseItem: React.FC<CourseItemProps> = ({ courseKey }) => {
       "
     >
       {/* Certificate Image */}
-      {courseData.certificate && (
-        <Link href={`education/${courseKey}`}>
+      {courseData.logo && (
+        <Link href={`${basePath}/${courseKey}`}>
           <div
             className="
-            flex justify-center
-            rounded-xl
-            transform md:hover:scale-105
-            shadow-sm md:hover:shadow-lg
-            transition-all duration-500 ease-in-out
-            mb-6
-            w-full
-            overflow-hidden
-        "
+              flex justify-center
+              mb-6
+              w-full
+            "
           >
-            <AspectRatio ratio={1 / 1.4} className="overflow-hidden relative">
-              <Image
-                key={courseKey}
-                src={courseData.certificate}
-                alt={`${courseData.name} certificate image`}
-                fill={true}
-                quality={20}
-                loading="lazy"
-                className="
-                  rounded-xl
-                  cursor-pointer
-                  object-cover
+            <Image
+              key={courseKey}
+              src={courseData.logo}
+              alt={`${courseData.name} logo`}
+              width={160}
+              height={160}
+              quality={60}
+              loading="lazy"
+              className="
+                rounded-full
+                cursor-pointer
+                transform md:hover:scale-105
+                shadow-md md:hover:shadow-xl
+                transition-all duration-500 ease-in-out
               "
-              />
-            </AspectRatio>
+            />
           </div>
         </Link>
       )}
@@ -73,7 +71,7 @@ const CourseItem: React.FC<CourseItemProps> = ({ courseKey }) => {
         gap-5 px-4 py-4"
       >
         {/* Certificate Title */}
-        <Link href={`education/${courseKey}`}>
+        <Link href={`${basePath}/${courseKey}`}>
           <h1
             className="
               text-3xl md:text-4xl font-bold text-center 
