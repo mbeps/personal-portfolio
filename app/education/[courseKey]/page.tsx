@@ -29,6 +29,15 @@ import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/shadcn/ui/accordion";
+import { GrAppsRounded } from "react-icons/gr";
+import Reader from "@/components/Reader/Reader";
+import { IoReaderOutline } from "react-icons/io5";
 
 type CoursesPageProps = {
   params: { courseKey: string };
@@ -111,9 +120,9 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
     notFound();
   }
 
-  const courseImage = `${basePath}/${courseKey}.jpg`;
-
   const showArchived: boolean = (searchParams.archived || "false") === "true";
+  const hasRelatedMaterials: boolean =
+    !!courseData.relatedMaterials && courseData.relatedMaterials.length > 0;
 
   let filteredModules: ModuleDatabaseKeys[] = moduleDatabaseKeys;
   filteredModules = filterMaterialByArchivedStatus<ModuleInterface>(
@@ -189,39 +198,66 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
 
         <div
           className="
-					grid grid-cols-1 lg:grid-cols-2 lg:grid-flow-col-reverse 
 					space-x-0 lg:space-x-6"
         >
-          {/* Left */}
-          <div
-            className="
-						rounded-xl
-						transition-all duration-500 ease-in-out
-						p-1 lg:p-3
-						bg-neutral-100 dark:bg-neutral-950  
-			"
-          >
-            <AspectRatio ratio={1 / 1.4} className="overflow-hidden relative">
-              <Image
-                src={courseImage}
-                key={courseImage}
-                alt={`${courseData.name} cover image`}
-                fill={true}
-                loading="lazy"
-                quality={15}
+          <div className="py-5 w-full">
+            {/* Logo and name section */}
+            <div
+              className="
+                flex
+                items-center justify-center 
+                flex-col md:flex-row 
+              "
+            >
+              {/* Logo */}
+              {courseData.logo && (
+                <div
+                  className="
+                    rounded-full 
+                    shadow-lg 
+                    transition-all duration-500 ease-in-out
+                    w-[75px] h-[75px]
+                  "
+                >
+                  <AspectRatio
+                    ratio={1 / 1}
+                    className="overflow-hidden relative w-full bg-white rounded-full"
+                  >
+                    <Image
+                      src={courseData.logo}
+                      alt={`Logo for ${courseData.name}`}
+                      fill={true}
+                      className="
+                        rounded-full 
+                        shadow-lg object-cover
+                        transition-all duration-500 ease-in-out
+                        "
+                      quality={30}
+                      priority
+                    />
+                  </AspectRatio>
+                </div>
+              )}
+
+              {/* University Name */}
+              <div
                 className="
-                rounded-xl 
-                object-cover
-					"
-              />
-            </AspectRatio>
-          </div>
-
-          {/* Right */}
-          <div className="py-2">
-            <HeadingThree title={courseData.university} />
-
-            <p className="text-2xl text-neutral-700 dark:text-neutral-200 -mt-4">
+                h-full  
+                flex items-center
+              "
+              >
+                <p
+                  className="
+                    text-left text-2xl font-bold 
+                    mt-4 lg:mt-0 lg:ml-8
+                    text-neutral-600 dark:text-neutral-300
+                  "
+                >
+                  {courseData.university}
+                </p>
+              </div>
+            </div>
+            <p className="text-2xl text-neutral-700 dark:text-neutral-200 mt-8">
               {courseData.category}
             </p>
             <p>{`${courseData.startYear} - ${courseData.endYear}`}</p>
@@ -274,11 +310,91 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
           {/* Skills */}
           <SkillTableSection allGroupedSkills={allGroupedSkills} />
 
-          {/* Related Materials */}
-          {courseData.relatedMaterials &&
-            courseData.relatedMaterials.length > 0 && (
-              <MaterialList materialKeys={courseData.relatedMaterials} />
-            )}
+          {!!courseData.certificate || hasRelatedMaterials ? (
+            <Accordion type="single" collapsible>
+              {/* Certificate Section */}
+              {!!courseData.certificate && (
+                <>
+                  <AccordionItem value="item-2">
+                    <AccordionTrigger>
+                      <div className="flex items-center space-x-3">
+                        <IoReaderOutline
+                          size={26}
+                          className="text-neutral-500"
+                        />
+                        <p
+                          className="
+                          text-lg 
+                          text-neutral-600 dark:text-neutral-400
+                          font-semibold
+                          "
+                        >
+                          Certificate
+                        </p>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-2 flex items-center justify-center">
+                      <div
+                        className="
+                          rounded-xl
+                          w-full lg:w-1/2
+                          transition-all duration-500 ease-in-out
+                          p-1 lg:p-3
+                          bg-neutral-100 dark:bg-neutral-950  
+                        "
+                      >
+                        <AspectRatio
+                          ratio={1 / 1.4}
+                          className="overflow-hidden relative"
+                        >
+                          <Image
+                            src={courseData.certificate}
+                            key={courseData.certificate}
+                            alt={`${courseData.name} cover image`}
+                            fill={true}
+                            loading="lazy"
+                            quality={15}
+                            className="
+                              rounded-xl 
+                              object-cover
+                            "
+                          />
+                        </AspectRatio>
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                </>
+              )}
+
+              {/* Related Materials Section */}
+              {hasRelatedMaterials && (
+                <>
+                  <AccordionItem value="item-3">
+                    <AccordionTrigger>
+                      <div className="flex items-center space-x-3">
+                        <GrAppsRounded size={25} className="text-neutral-500" />
+                        <p
+                          className="
+                          text-lg 
+                          text-neutral-600 dark:text-neutral-400
+                          font-semibold
+                          "
+                        >
+                          Related Material
+                        </p>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="px-2">
+                      <MaterialList
+                        materialKeys={courseData.relatedMaterials!}
+                        isCollapsible={false}
+                      />
+                    </AccordionContent>
+                  </AccordionItem>
+                </>
+              )}
+            </Accordion>
+          ) : null}
         </div>
       </div>
     </main>

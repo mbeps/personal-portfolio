@@ -24,4 +24,5 @@ export default interface CourseInterface extends MaterialInterface {
   startYear: number;
   endYear: number;
   university: string;
+  logo: string;
 }

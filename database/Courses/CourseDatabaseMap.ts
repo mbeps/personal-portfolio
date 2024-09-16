@@ -5,6 +5,7 @@ import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
 import CourseInterface from "@/database/Courses/CourseInterface";
 import aggregateRelatedMaterialsForCourses from "@/actions/material/course/aggregate/aggregateRelatedMaterialsForCourses";
 import moduleDatabaseMap from "../Modules/ModuleDatabaseMap";
+import { EDUCATION_PAGE } from "@/constants/pages";
 
 /**
  * Hashmap of the courses I have studied at university.
@@ -16,10 +17,12 @@ const courseMap: Database<CourseInterface> = {
     name: "Computer Science",
     university: "Royal Holloway, University of London",
     grade: "First Class Honours",
-    category: "Bachelor of Science",
+    category: "Bachelor of Science (BSc)",
     skills: [], // dynamically added from modules
     startYear: 2020,
     endYear: 2023,
+    certificate: `${EDUCATION_PAGE.path}/${CourseDatabaseKeys.RHUL_ComputerScience}/certificate.jpg`,
+    logo: `${EDUCATION_PAGE.path}/${CourseDatabaseKeys.RHUL_ComputerScience}/logo.png`,
     modules: [
       ModuleDatabaseKeys.RHUL_ObjectOrientedProgramming1,
       ModuleDatabaseKeys.RHUL_ObjectOrientedProgramming2,
