@@ -175,6 +175,9 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
     ),
   ];
 
+  const hasArchivedModules: boolean =
+    filteredModules.length !== courseData.modules.length;
+
   return (
     <main>
       <div className="sr-only">
@@ -283,11 +286,13 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
             </div>
 
             {/* Archive Toggle */}
-            <ArchiveToggle
-              showArchived={showArchived}
-              filterProps={[]}
-              basePath={`${basePath}/${courseKey}`}
-            />
+            {hasArchivedModules && (
+              <ArchiveToggle
+                showArchived={showArchived}
+                filterProps={[]}
+                basePath={`${basePath}/${courseKey}`}
+              />
+            )}
 
             {/* Modules */}
             {groupedModules.map((group, index) => (
