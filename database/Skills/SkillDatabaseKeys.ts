@@ -18,9 +18,9 @@ enum SkillDatabaseKeys {
   RLanguage = "r",
   Groovy = "groovy",
   Kotlin = "kotlin",
-  GameMakerLanguage = "game-maker-language",
   ObjectOrientedProgramming = "oop",
   FunctionalProgramming = "fp",
+  Matlab = "matlab",
 
   //^ APIs
   REST = "rest-api",

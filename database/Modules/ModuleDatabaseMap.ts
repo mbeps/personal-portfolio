@@ -758,6 +758,122 @@ const modulesMap: Database<ModuleInterface> = {
     archived: true,
     parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
+
+  //^ King's College London
+  [ModuleDatabaseKeys.KCL_ArtificialIntelligenceReasoningAndDecisionMaking]: {
+    name: "Artificial Intelligence, Reasoning & Decision Making",
+    category: ModuleYearGroupsEnum.Year1,
+    parentCourse: CourseDatabaseKeys.KCL_ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.TimeManagement,
+    ],
+    learningOutcomes: [""],
+  },
+  [ModuleDatabaseKeys.KCL_AgentsAndMultiAgentSystems]: {
+    name: "Agents & Multi-Agent Systems",
+    category: ModuleYearGroupsEnum.Year1,
+    parentCourse: CourseDatabaseKeys.KCL_ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.Logics,
+      SkillDatabaseKeys.Calculus,
+      SkillDatabaseKeys.Discrete,
+    ],
+    learningOutcomes: [""],
+  },
+  [ModuleDatabaseKeys.KCL_ComputerVision]: {
+    name: "Computer Vision",
+    category: ModuleYearGroupsEnum.Year1,
+    parentCourse: CourseDatabaseKeys.KCL_ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.Matlab,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.Logics,
+      SkillDatabaseKeys.Calculus,
+      SkillDatabaseKeys.Discrete,
+    ],
+    learningOutcomes: [""],
+  },
+  [ModuleDatabaseKeys.KCL_PhilosophyAndEthicsOfArtificialIntelligence]: {
+    name: "Philosophy & Ethics of Artificial Intelligence",
+    category: ModuleYearGroupsEnum.Year1,
+    parentCourse: CourseDatabaseKeys.KCL_ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.MachineLearning,
+    ],
+    learningOutcomes: [""],
+  },
+  [ModuleDatabaseKeys.KCL_DataMining]: {
+    name: "Data Mining",
+    category: ModuleYearGroupsEnum.Year1,
+    parentCourse: CourseDatabaseKeys.KCL_ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.MachineLearning,
+    ],
+    learningOutcomes: [""],
+  },
+  [ModuleDatabaseKeys.KCL_OptimizationMethods]: {
+    name: "Optimization Methods",
+    category: ModuleYearGroupsEnum.Year1,
+    parentCourse: CourseDatabaseKeys.KCL_ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.MachineLearning,
+    ],
+    learningOutcomes: [""],
+  },
+  [ModuleDatabaseKeys.KCL_PatternRecognitionNeuralNetworksDeepLearning]: {
+    name: "Pattern Recognition, Neural Networks & Deep Learning",
+    category: ModuleYearGroupsEnum.Year1,
+    parentCourse: CourseDatabaseKeys.KCL_ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.MachineLearning,
+    ],
+    learningOutcomes: [""],
+  },
+  [ModuleDatabaseKeys.KCL_MachineLearning]: {
+    name: "Machine Learning",
+    category: ModuleYearGroupsEnum.Year1,
+    parentCourse: CourseDatabaseKeys.KCL_ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.MachineLearning,
+    ],
+    learningOutcomes: [""],
+  },
+  [ModuleDatabaseKeys.KCL_IndividualProject]: {
+    name: "Individual Project",
+    category: ModuleYearGroupsEnum.Year1,
+    parentCourse: CourseDatabaseKeys.KCL_ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.MachineLearning,
+    ],
+    learningOutcomes: [""],
+  },
 };
 
 /**

@@ -8,6 +8,7 @@
  */
 enum CourseDatabaseKeys {
   RHUL_ComputerScience = "rhul-computer-science",
+  KCL_ArtificialIntelligence = "kcl-artificial-intelligence",
 }
 
 export default CourseDatabaseKeys;

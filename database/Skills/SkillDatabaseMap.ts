@@ -173,6 +173,12 @@ const skillDatabaseMap: Database<SkillInterface> = {
     category: SkillCategoriesEnum.ProgrammingLanguages,
     relatedSkills: [SkillDatabaseKeys.Gradle, SkillDatabaseKeys.Jenkins],
   },
+  [SkillDatabaseKeys.Matlab]: {
+    name: "Matlab",
+    isMainSkill: false,
+    skillType: SkillTypesEnum.Technology,
+    category: SkillCategoriesEnum.ProgrammingLanguages,
+  },
 
   //^ Full Stack Web Development
   [SkillDatabaseKeys.NextJS]: {

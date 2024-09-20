@@ -7,6 +7,7 @@
  * @see {@link universityModuleMap} at `database/university-modules.ts`
  */
 enum ModuleDatabaseKeys {
+  // Royal Holloway University of London
   RHUL_ObjectOrientedProgramming1 = "CS1811",
   RHUL_ObjectOrientedProgramming2 = "CS1812",
   RHUL_ProgrammingLaboratory = "CS1822",
@@ -29,6 +30,17 @@ enum ModuleDatabaseKeys {
   RHUL_MachineLearning = "CS3920",
   RHUL_ComputationalFinance = "CS3930",
   RHUL_SecurityManagement = "IY3501",
+
+  // King's College London
+  KCL_ArtificialIntelligenceReasoningAndDecisionMaking = "6CCS3AIN",
+  KCL_MachineLearning = "6CCS3ML1",
+  KCL_AgentsAndMultiAgentSystems = "7CCSMAMS",
+  KCL_ComputerVision = "7CCSMCVI",
+  KCL_DataMining = "7CCSMDM1",
+  KCL_PhilosophyAndEthicsOfArtificialIntelligence = "7CCSMEAI",
+  KCL_OptimizationMethods = "7CCSMOME",
+  KCL_PatternRecognitionNeuralNetworksDeepLearning = "7CCSMPNN",
+  KCL_IndividualProject = "7CCSMPRJ",
 }
 
 export default ModuleDatabaseKeys;

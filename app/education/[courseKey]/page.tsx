@@ -75,7 +75,7 @@ export async function generateMetadata(
     keywords: [
       course.name,
       course.university,
-      ...course?.modules.map((module) => moduleDatabaseMap[module].name),
+      // ...course?.modules.map((module) => moduleDatabaseMap[module].name),
     ],
   };
 }
@@ -124,7 +124,8 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
   const hasRelatedMaterials: boolean =
     !!courseData.relatedMaterials && courseData.relatedMaterials.length > 0;
 
-  let filteredModules: ModuleDatabaseKeys[] = moduleDatabaseKeys;
+  let filteredModules: ModuleDatabaseKeys[] =
+    courseDatabaseMap[courseKey].modules;
   filteredModules = filterMaterialByArchivedStatus<ModuleInterface>(
     showArchived,
     filteredModules,
