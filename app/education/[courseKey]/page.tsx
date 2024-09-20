@@ -297,7 +297,9 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
             {/* Modules */}
             {groupedModules.map((group, index) => (
               <div key={index} className="mb-4">
-                <HeadingFour title={group.groupName} />
+                {groupedModules.length > 1 && (
+                  <HeadingFour title={group.groupName} />
+                )}
                 <Grid
                   gap={1}
                   items={group.materialsKeys.map((moduleKey, idx) => (
