@@ -324,52 +324,56 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
               {!!courseData.certificate && (
                 <>
                   <AccordionItem value="item-2">
-                    <AccordionTrigger>
-                      <div className="flex items-center space-x-3">
-                        <IoReaderOutline
-                          size={26}
-                          className="text-neutral-500"
-                        />
-                        <p
-                          className="
-                          text-lg 
-                          text-neutral-600 dark:text-neutral-400
-                          font-semibold
-                          "
-                        >
-                          Certificate
-                        </p>
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="px-2 flex items-center justify-center">
-                      <div
-                        className="
-                          rounded-xl
-                          w-full lg:w-1/2
-                          transition-all duration-500 ease-in-out
-                          p-1 lg:p-3
-                          bg-neutral-100 dark:bg-neutral-950  
-                        "
-                      >
-                        <AspectRatio
-                          ratio={1 / 1.4}
-                          className="overflow-hidden relative"
-                        >
-                          <Image
-                            src={courseData.certificate}
-                            key={courseData.certificate}
-                            alt={`${courseData.name} cover image`}
-                            fill={true}
-                            loading="lazy"
-                            quality={15}
+                    {courseData.certificate && (
+                      <>
+                        <AccordionTrigger>
+                          <div className="flex items-center space-x-3">
+                            <IoReaderOutline
+                              size={26}
+                              className="text-neutral-500"
+                            />
+                            <p
+                              className="
+                              text-lg 
+                              text-neutral-600 dark:text-neutral-400
+                              font-semibold
+                              "
+                            >
+                              Certificate
+                            </p>
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionContent className="px-2 flex items-center justify-center">
+                          <div
                             className="
-                              rounded-xl 
-                              object-cover
+                              rounded-xl
+                              w-full lg:w-1/2
+                              transition-all duration-500 ease-in-out
+                              p-1 lg:p-3
+                              bg-neutral-100 dark:bg-neutral-950  
                             "
-                          />
-                        </AspectRatio>
-                      </div>
-                    </AccordionContent>
+                          >
+                            <AspectRatio
+                              ratio={1 / 1.4}
+                              className="overflow-hidden relative"
+                            >
+                              <Image
+                                src={courseData.certificate}
+                                key={courseData.certificate}
+                                alt={`${courseData.name} cover image`}
+                                fill={true}
+                                loading="lazy"
+                                quality={15}
+                                className="
+                                  rounded-xl 
+                                  object-cover
+                                "
+                              />
+                            </AspectRatio>
+                          </div>
+                        </AccordionContent>
+                      </>
+                    )}
                   </AccordionItem>
                 </>
               )}

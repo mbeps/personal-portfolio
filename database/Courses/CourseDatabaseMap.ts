@@ -70,7 +70,6 @@ const courseMap: Database<CourseInterface> = {
     skills: [], // dynamically added from modules
     startYear: 2024,
     endYear: 2025,
-    certificate: `${EDUCATION_PAGE.path}/${CourseDatabaseKeys.KCL_ArtificialIntelligence}/certificate.jpg`,
     logo: `${EDUCATION_PAGE.path}/${CourseDatabaseKeys.KCL_ArtificialIntelligence}/logo.png`,
     modules: [
       ModuleDatabaseKeys.KCL_ArtificialIntelligenceReasoningAndDecisionMaking,
