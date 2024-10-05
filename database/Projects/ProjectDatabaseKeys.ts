@@ -3,7 +3,7 @@
  * This enum is used to avoid hardcoding the keys in the code, getting autocompletion support and avoiding typos.
  * The strings correspond to location of the markdown files in the blog folder at `public/projects/`.
  * Whenever a new project is added to the database, a new key should be added to this enum.
- *
+ *s
  * @see {@link projectMap} at `database/projects.ts`
  */
 enum ProjectDatabaseKeys {
@@ -32,6 +32,8 @@ enum ProjectDatabaseKeys {
   ComputationalFinanceAssignment = "computational-finance-assignment",
   MachineLearningTheoryPractice = "machine-learning-theory-practice",
   MachineLearningDataScienceLab = "machine-learning-data-science-lab",
+  PacmanGame = "pacman-game",
+  ComputerVisionLabs = "computer-vision-labs",
   SymphonyTranslateBot = "symphony-translate-bot",
   SymphonyWebhookBot = "symphony-webhook-bot",
   SymphonyHeadlessBot = "symphony-headless-bot",

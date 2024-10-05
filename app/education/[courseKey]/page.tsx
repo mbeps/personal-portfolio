@@ -75,7 +75,7 @@ export async function generateMetadata(
     keywords: [
       course.name,
       course.university,
-      ...course?.modules.map((module) => moduleDatabaseMap[module].name),
+      // ...course?.modules.map((module) => moduleDatabaseMap[module].name),
     ],
   };
 }
@@ -124,7 +124,8 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
   const hasRelatedMaterials: boolean =
     !!courseData.relatedMaterials && courseData.relatedMaterials.length > 0;
 
-  let filteredModules: ModuleDatabaseKeys[] = moduleDatabaseKeys;
+  let filteredModules: ModuleDatabaseKeys[] =
+    courseDatabaseMap[courseKey].modules;
   filteredModules = filterMaterialByArchivedStatus<ModuleInterface>(
     showArchived,
     filteredModules,
@@ -173,6 +174,9 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
       "Soft Skills"
     ),
   ];
+
+  const hasArchivedModules: boolean =
+    filteredModules.length !== courseData.modules.length;
 
   return (
     <main>
@@ -262,16 +266,18 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
             </p>
             <p>{`${courseData.startYear} - ${courseData.endYear}`}</p>
 
-            <div
-              className="
-							py-4
-							flex space-x-1 w-full
-							text-xl text-neutral-800 dark:text-neutral-300
-					"
-            >
-              <p className="font-bold">Grade:</p>
-              <p>{courseData.grade}</p>
-            </div>
+            {courseData.grade && (
+              <div
+                className="
+                  py-4
+                  flex space-x-1 w-full
+                  text-xl text-neutral-800 dark:text-neutral-300
+                "
+              >
+                <p className="font-bold">Grade:</p>
+                <p>{courseData.grade}</p>
+              </div>
+            )}
           </div>
         </div>
 
@@ -282,16 +288,20 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
             </div>
 
             {/* Archive Toggle */}
-            <ArchiveToggle
-              showArchived={showArchived}
-              filterProps={[]}
-              basePath={`${basePath}/${courseKey}`}
-            />
+            {hasArchivedModules && (
+              <ArchiveToggle
+                showArchived={showArchived}
+                filterProps={[]}
+                basePath={`${basePath}/${courseKey}`}
+              />
+            )}
 
             {/* Modules */}
             {groupedModules.map((group, index) => (
               <div key={index} className="mb-4">
-                <HeadingFour title={group.groupName} />
+                {groupedModules.length > 1 && (
+                  <HeadingFour title={group.groupName} />
+                )}
                 <Grid
                   gap={1}
                   items={group.materialsKeys.map((moduleKey, idx) => (
@@ -316,52 +326,56 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
               {!!courseData.certificate && (
                 <>
                   <AccordionItem value="item-2">
-                    <AccordionTrigger>
-                      <div className="flex items-center space-x-3">
-                        <IoReaderOutline
-                          size={26}
-                          className="text-neutral-500"
-                        />
-                        <p
-                          className="
-                          text-lg 
-                          text-neutral-600 dark:text-neutral-400
-                          font-semibold
-                          "
-                        >
-                          Certificate
-                        </p>
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="px-2 flex items-center justify-center">
-                      <div
-                        className="
-                          rounded-xl
-                          w-full lg:w-1/2
-                          transition-all duration-500 ease-in-out
-                          p-1 lg:p-3
-                          bg-neutral-100 dark:bg-neutral-950  
-                        "
-                      >
-                        <AspectRatio
-                          ratio={1 / 1.4}
-                          className="overflow-hidden relative"
-                        >
-                          <Image
-                            src={courseData.certificate}
-                            key={courseData.certificate}
-                            alt={`${courseData.name} cover image`}
-                            fill={true}
-                            loading="lazy"
-                            quality={15}
+                    {courseData.certificate && (
+                      <>
+                        <AccordionTrigger>
+                          <div className="flex items-center space-x-3">
+                            <IoReaderOutline
+                              size={26}
+                              className="text-neutral-500"
+                            />
+                            <p
+                              className="
+                              text-lg 
+                              text-neutral-600 dark:text-neutral-400
+                              font-semibold
+                              "
+                            >
+                              Certificate
+                            </p>
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionContent className="px-2 flex items-center justify-center">
+                          <div
                             className="
-                              rounded-xl 
-                              object-cover
+                              rounded-xl
+                              w-full lg:w-1/2
+                              transition-all duration-500 ease-in-out
+                              p-1 lg:p-3
+                              bg-neutral-100 dark:bg-neutral-950  
                             "
-                          />
-                        </AspectRatio>
-                      </div>
-                    </AccordionContent>
+                          >
+                            <AspectRatio
+                              ratio={1 / 1.4}
+                              className="overflow-hidden relative"
+                            >
+                              <Image
+                                src={courseData.certificate}
+                                key={courseData.certificate}
+                                alt={`${courseData.name} cover image`}
+                                fill={true}
+                                loading="lazy"
+                                quality={15}
+                                className="
+                                  rounded-xl 
+                                  object-cover
+                                "
+                              />
+                            </AspectRatio>
+                          </div>
+                        </AccordionContent>
+                      </>
+                    )}
                   </AccordionItem>
                 </>
               )}

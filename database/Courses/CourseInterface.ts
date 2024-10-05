@@ -17,7 +17,7 @@ import MaterialInterface from "../Materials/MaterialInterface";
  * Importantly, because the `UniversityCourseInterface` extends the `MaterialInterface`, it inherits the field `skills` which is an array of `SkillKeysEnum` which is used to represent the skills that are associated to understand the material.
  */
 export default interface CourseInterface extends MaterialInterface {
-  grade: string;
+  grade?: string;
   score?: number;
   modules: ModuleDatabaseKeys[];
   certificate?: string;

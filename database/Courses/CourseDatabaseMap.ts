@@ -62,6 +62,27 @@ const courseMap: Database<CourseInterface> = {
       ProjectDatabaseKeys.DatabasesMiniProject,
     ],
   },
+  [CourseDatabaseKeys.KCL_ArtificialIntelligence]: {
+    name: "Artificial Intelligence",
+    university: "King's College London",
+    category: "Master of Science (MSc)",
+    skills: [], // dynamically added from modules
+    startYear: 2024,
+    endYear: 2025,
+    logo: `${EDUCATION_PAGE.path}/${CourseDatabaseKeys.KCL_ArtificialIntelligence}/logo.png`,
+    modules: [
+      ModuleDatabaseKeys.KCL_ArtificialIntelligenceReasoningAndDecisionMaking,
+      ModuleDatabaseKeys.KCL_MachineLearning,
+      ModuleDatabaseKeys.KCL_AgentsAndMultiAgentSystems,
+      ModuleDatabaseKeys.KCL_ComputerVision,
+      ModuleDatabaseKeys.KCL_DataMining,
+      ModuleDatabaseKeys.KCL_PhilosophyAndEthicsOfArtificialIntelligence,
+      ModuleDatabaseKeys.KCL_OptimizationMethods,
+      ModuleDatabaseKeys.KCL_PatternRecognitionNeuralNetworksDeepLearning,
+      ModuleDatabaseKeys.KCL_IndividualProject,
+    ],
+    relatedMaterials: [],
+  },
 };
 
 /**

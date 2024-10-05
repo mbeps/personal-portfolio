@@ -84,7 +84,7 @@ const CourseItem: React.FC<CourseItemProps> = ({ courseKey }) => {
         </Link>
 
         <p className="text-xl text-center leading-7 text-neutral-600 dark:text-neutral-400">
-          {courseData.grade}
+          {courseData.category}
         </p>
 
         <div className="w-full flex justify-center">
