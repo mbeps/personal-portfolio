@@ -266,16 +266,18 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
             </p>
             <p>{`${courseData.startYear} - ${courseData.endYear}`}</p>
 
-            <div
-              className="
-							py-4
-							flex space-x-1 w-full
-							text-xl text-neutral-800 dark:text-neutral-300
-					"
-            >
-              <p className="font-bold">Grade:</p>
-              <p>{courseData.grade}</p>
-            </div>
+            {courseData.grade && (
+              <div
+                className="
+                  py-4
+                  flex space-x-1 w-full
+                  text-xl text-neutral-800 dark:text-neutral-300
+                "
+              >
+                <p className="font-bold">Grade:</p>
+                <p>{courseData.grade}</p>
+              </div>
+            )}
           </div>
         </div>
 
