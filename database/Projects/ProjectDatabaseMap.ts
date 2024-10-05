@@ -928,6 +928,76 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Personal,
   },
 
+  [ProjectDatabaseKeys.PacmanGame]: {
+    name: "Pacman Game",
+    description: `
+      A Pacman game where various agents are implemented to play the game effectively.
+      `,
+    repositoryURL: "https://github.com/mbeps/Pacman",
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.GitHub,
+
+      SkillDatabaseKeys.IntelligentAgents,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.Probability,
+      SkillDatabaseKeys.LinearAlgebra,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.Algorithms,
+    ],
+    category: ProjectCategoriesEnum.MachineLearning,
+    type: ProjectTypeEnum.University,
+    archived: true,
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_ArtificialIntelligenceReasoningAndDecisionMaking,
+    ],
+  },
+  [ProjectDatabaseKeys.ComputerVisionLabs]: {
+    name: "Computer Vision Labs",
+    description: `
+      Code covering various Computer Vision topics to answer weekly lab questions.
+      `,
+    repositoryURL: "https://github.com/mbeps/computer-vision-matlab-quizzes",
+    skills: [
+      SkillDatabaseKeys.Matlab,
+      SkillDatabaseKeys.ComputerVision,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.DataVisualisation,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.Probability,
+      SkillDatabaseKeys.Statistics,
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.DataStructures,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.Pandas,
+      SkillDatabaseKeys.NumPy,
+      SkillDatabaseKeys.Matplotlib,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.Logics,
+      SkillDatabaseKeys.Calculus,
+      SkillDatabaseKeys.Discrete,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.TimeManagement,
+    ],
+    category: ProjectCategoriesEnum.MachineLearning,
+    type: ProjectTypeEnum.University,
+    archived: true,
+    relatedMaterials: [ModuleDatabaseKeys.KCL_ComputerVision],
+  },
+
   //^ Symphony Bots
   [ProjectDatabaseKeys.SymphonyTranslateBot]: {
     name: `Symphony Translate Bot`,

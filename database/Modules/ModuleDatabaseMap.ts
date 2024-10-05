@@ -797,6 +797,7 @@ const modulesMap: Database<ModuleInterface> = {
       "Implementing search algorithms for problem solving in AI",
       "Understanding knowledge representation techniques in AI systems",
     ],
+    relatedMaterials: [ProjectDatabaseKeys.PacmanGame],
   },
   [ModuleDatabaseKeys.KCL_AgentsAndMultiAgentSystems]: {
     name: "Agents & Multi-Agent Systems",
@@ -878,6 +879,7 @@ const modulesMap: Database<ModuleInterface> = {
       "Interpreting biological vision processes and comparing them to artificial vision systems",
       "Implementing core computer vision algorithms and understanding their limitations",
     ],
+    relatedMaterials: [ProjectDatabaseKeys.ComputerVisionLabs],
   },
   [ModuleDatabaseKeys.KCL_PhilosophyAndEthicsOfArtificialIntelligence]: {
     name: "Philosophy & Ethics of Artificial Intelligence",
