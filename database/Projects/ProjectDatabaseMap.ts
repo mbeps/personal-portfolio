@@ -571,7 +571,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.ObjectOrientedProgramming,
       SkillDatabaseKeys.Algorithms,
     ],
-    category: ProjectCategoriesEnum.MachineLearning,
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.HousePricePrediction]: {
@@ -605,7 +605,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.ObjectOrientedProgramming,
       SkillDatabaseKeys.Algorithms,
     ],
-    category: ProjectCategoriesEnum.MachineLearning,
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.MachineLearningAlgorithmsAndTechniquesLab]: {
@@ -615,7 +615,7 @@ const projectMap: Database<ProjectInterface> = {
       This includes supervised, unsupervised, and reinforcement learning algorithms, as well as feature engineering, data preprocessing, and hyperparameter tuning.
       Some additional content in the field of Deep Learning and Neural Networks are also covered.
     `,
-    category: ProjectCategoriesEnum.MachineLearning,
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
     repositoryURL: "https://github.com/mbeps/Machine-Learning-Course-Lab",
     skills: [
       SkillDatabaseKeys.Python,
@@ -656,7 +656,7 @@ const projectMap: Database<ProjectInterface> = {
       Practicing various Reinforcement Learning algorithms and techniques.
       This includes Q-Learning, Deep Q-Learning, and Asynchronous Advantage Actor-Critic (A3C) algorithms.
     `,
-    category: ProjectCategoriesEnum.MachineLearning,
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
     repositoryURL: "https://github.com/mbeps/Reinforcement-Learning",
     skills: [
       SkillDatabaseKeys.Python,
@@ -717,7 +717,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.ObjectOrientedProgramming,
       SkillDatabaseKeys.Algorithms,
     ],
-    category: ProjectCategoriesEnum.MachineLearning,
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
     type: ProjectTypeEnum.University,
   },
@@ -751,7 +751,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.ObjectOrientedProgramming,
       SkillDatabaseKeys.Algorithms,
     ],
-    category: ProjectCategoriesEnum.MachineLearning,
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.University,
   },
   [ProjectDatabaseKeys.MachineLearningAssignment3]: {
@@ -784,7 +784,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.ObjectOrientedProgramming,
       SkillDatabaseKeys.Algorithms,
     ],
-    category: ProjectCategoriesEnum.MachineLearning,
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
     type: ProjectTypeEnum.University,
   },
@@ -818,7 +818,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.ObjectOrientedProgramming,
       SkillDatabaseKeys.Algorithms,
     ],
-    category: ProjectCategoriesEnum.MachineLearning,
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
     archived: true,
     type: ProjectTypeEnum.University,
@@ -855,7 +855,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.Mechanics,
     ],
-    category: ProjectCategoriesEnum.MachineLearning,
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_ComputationalFinance],
     type: ProjectTypeEnum.University,
   },
@@ -865,7 +865,7 @@ const projectMap: Database<ProjectInterface> = {
       A collection of machine learning theory questions and answers.
       This is used to practice for exams and tests.
       `,
-    category: ProjectCategoriesEnum.MachineLearning,
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
     repositoryURL: `https://github.com/mbeps/Machine-Learning-Theory-Practice`,
     skills: [
       SkillDatabaseKeys.MachineLearning,
@@ -891,7 +891,7 @@ const projectMap: Database<ProjectInterface> = {
   },
   [ProjectDatabaseKeys.MachineLearningDataScienceLab]: {
     name: "Machine Learning & Data Science Lab",
-    category: ProjectCategoriesEnum.MachineLearning,
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
     description: `
       This lab mainly focuses on learning generative models, using third-party models and using advanced techniques. This includes techniques such as transfer learning, LLM Agents, and Generative Models.`,
     repositoryURL: "https://github.com/mbeps/Data-Science-Machine-Learning-Lab",
@@ -954,7 +954,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.ObjectOrientedProgramming,
       SkillDatabaseKeys.Algorithms,
     ],
-    category: ProjectCategoriesEnum.MachineLearning,
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.University,
     archived: true,
     relatedMaterials: [
@@ -992,7 +992,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.TimeManagement,
     ],
-    category: ProjectCategoriesEnum.MachineLearning,
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.University,
     archived: true,
     relatedMaterials: [ModuleDatabaseKeys.KCL_ComputerVision],

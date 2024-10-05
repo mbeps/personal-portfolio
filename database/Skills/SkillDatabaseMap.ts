@@ -1980,7 +1980,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.ArtificialIntelligence]: {
     name: "Artificial Intelligence",
     category: SkillCategoriesEnum.ArtificialIntelligence,
-    isMainSkill: false,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [
       SkillDatabaseKeys.DeepLearning,
