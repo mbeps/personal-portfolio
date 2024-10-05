@@ -184,11 +184,14 @@ enum SkillDatabaseKeys {
   MachineLearning = "machine-learning",
   DeepLearning = "deep-learning",
   ArtificialIntelligence = "artificial-intelligence",
+  ReinforcementLearning = "reinforcement-learning",
+  IntelligentAgents = "intelligent-agents",
   DataScience = "data-science",
   Hyperparameters = "hyperparameters",
   Boosting = "boosting",
   DataVisualisation = "data-visualisation",
   NeuralNetworks = "neural-networks",
+  ComputerVision = "computer-vision",
 
   //^ Mathematics
   Probability = "probability",

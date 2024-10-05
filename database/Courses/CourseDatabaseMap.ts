@@ -65,7 +65,6 @@ const courseMap: Database<CourseInterface> = {
   [CourseDatabaseKeys.KCL_ArtificialIntelligence]: {
     name: "Artificial Intelligence",
     university: "King's College London",
-    grade: "First Class Honours",
     category: "Master of Science (MSc)",
     skills: [], // dynamically added from modules
     startYear: 2024,
@@ -80,7 +79,7 @@ const courseMap: Database<CourseInterface> = {
       ModuleDatabaseKeys.KCL_PhilosophyAndEthicsOfArtificialIntelligence,
       ModuleDatabaseKeys.KCL_OptimizationMethods,
       ModuleDatabaseKeys.KCL_PatternRecognitionNeuralNetworksDeepLearning,
-      // ModuleDatabaseKeys.KCL_IndividualProject,
+      ModuleDatabaseKeys.KCL_IndividualProject,
     ],
     relatedMaterials: [],
   },

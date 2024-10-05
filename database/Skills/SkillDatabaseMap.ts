@@ -1092,6 +1092,32 @@ const skillDatabaseMap: Database<SkillInterface> = {
     ],
   },
 
+  [SkillDatabaseKeys.ReinforcementLearning]: {
+    name: "Reinforcement Learning",
+    category: SkillCategoriesEnum.ArtificialIntelligence,
+    skillType: SkillTypesEnum.Technical,
+    relatedSkills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.IntelligentAgents,
+    ],
+  },
+
+  [SkillDatabaseKeys.IntelligentAgents]: {
+    name: "Intelligent Agents",
+    category: SkillCategoriesEnum.ArtificialIntelligence,
+    skillType: SkillTypesEnum.Technical,
+    relatedSkills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.ReinforcementLearning,
+    ],
+  },
+
   //^ APIs and Web Services
   [SkillDatabaseKeys.REST]: {
     name: "REST APIs",
@@ -1925,6 +1951,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.Seaborn,
       SkillDatabaseKeys.ScikitLearn,
       SkillDatabaseKeys.Jupyter,
+      SkillDatabaseKeys.ComputerVision,
     ],
   },
   [SkillDatabaseKeys.DeepLearning]: {
@@ -1947,6 +1974,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.Seaborn,
       SkillDatabaseKeys.ScikitLearn,
       SkillDatabaseKeys.Jupyter,
+      SkillDatabaseKeys.ComputerVision,
     ],
   },
   [SkillDatabaseKeys.ArtificialIntelligence]: {
@@ -1971,6 +1999,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.Jupyter,
       SkillDatabaseKeys.OpenAI,
       SkillDatabaseKeys.ReplicateAI,
+      SkillDatabaseKeys.ComputerVision,
     ],
   },
   [SkillDatabaseKeys.DataScience]: {
@@ -2046,6 +2075,24 @@ const skillDatabaseMap: Database<SkillInterface> = {
     name: "Neural Networks",
     category: SkillCategoriesEnum.ArtificialIntelligence,
     isMainSkill: true,
+    skillType: SkillTypesEnum.Technical,
+    relatedSkills: [
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.DataVisualisation,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.Keras,
+      SkillDatabaseKeys.Pandas,
+      SkillDatabaseKeys.NumPy,
+      SkillDatabaseKeys.Matplotlib,
+      SkillDatabaseKeys.Seaborn,
+      SkillDatabaseKeys.ScikitLearn,
+    ],
+  },
+  [SkillDatabaseKeys.ComputerVision]: {
+    name: "Computer Vision",
+    category: SkillCategoriesEnum.ArtificialIntelligence,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [
       SkillDatabaseKeys.DeepLearning,
