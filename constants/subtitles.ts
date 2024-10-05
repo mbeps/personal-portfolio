@@ -4,12 +4,10 @@
  * The order they are displayed in is the order they are listed here.
  */
 const subtitles: string[] = [
+  "Artificial Intelligence",
   "Software Engineering",
   "Full-Stack Development",
-  "Artificial Intelligence",
-  "DevOps",
   "Databases",
-  "Mathematics",
 ];
 
 export default subtitles;
