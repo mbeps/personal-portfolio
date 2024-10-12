@@ -6,6 +6,7 @@ import Socials from "@/components/Socials/Socials";
 import HeadingOne from "@/components/Text/HeadingOne";
 import DetailsTable from "@/components/UI/DetailsTable";
 import developerName from "@/constants/developerName";
+import experienceTime from "@/constants/experieece";
 import subtitles from "@/constants/subtitles";
 import companyDatabaseMap from "@/database/Companies/CompanyDatabaseMap";
 import courseDatabaseMap from "@/database/Courses/CourseDatabaseMap";
@@ -30,25 +31,6 @@ export const metadata: Metadata = {
 };
 
 /**
- * Computes the total experience in years from a list of jobs.
- *
- * This function takes an array of job objects, each containing a `startDate` and an `endDate`.
- * It calculates the difference in years between the `startDate` and `endDate` for each job
- * and sums these differences to return the total experience in years.
- *
- * @param {Array<{ startDate: ShortDate; endDate: ShortDate }>} jobs - An array of job objects, each with a `startDate` and an `endDate`.
- * @returns {number} The total experience in years.
- */
-function computeTotalExperience(
-  jobs: { startDate: ShortDate; endDate: ShortDate }[]
-): number {
-  return jobs.reduce((total, job) => {
-    const experienceInYears = job.endDate.difference(job.startDate);
-    return total + experienceInYears;
-  }, 0); // Start with 0 as the initial total
-}
-
-/**
  * About page displays information about the developer.
  *
  * @returns Home page
@@ -59,25 +41,10 @@ export default function About() {
   }
 
   // Work experience
-  const mainWorkExperience: RoleDatabaseKeys[] = [
-    RoleDatabaseKeys.CommerzbankDevOpsEngineer,
-  ];
-
-  const firstProfessionalExperience: RoleInterface =
-    rolesDatabase[RoleDatabaseKeys.CommerzbankDevOpsEngineer];
   const latestWorkExperience: RoleInterface = Object.values(rolesDatabase)[0];
   const latestRole: string = latestWorkExperience.name;
   const latestCompany: string =
     companyDatabaseMap[latestWorkExperience.company].name;
-
-  // Calculate total experience for mainWorkExperience
-  const jobs = mainWorkExperience.map((jobKey) => {
-    const job: RoleInterface = rolesDatabase[jobKey];
-    return { startDate: job.startDate, endDate: job.endDate };
-  });
-
-  // Using the helper function to compute total experience
-  const experienceTime: number = Math.round(computeTotalExperience(jobs));
 
   // Education
   const firstEducation: CourseInterface = Object.values(courseDatabaseMap)[0];
