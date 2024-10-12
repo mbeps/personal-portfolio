@@ -244,15 +244,16 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
               )}
 
               {/* University Name */}
+              {/* University Name */}
               <div
                 className="
-                h-full  
-                flex items-center
-              "
+                  h-full  
+                  flex items-center justify-center lg:justify-start
+                "
               >
                 <p
                   className="
-                    text-left text-2xl font-bold 
+                    text-center lg:text-left text-2xl font-bold 
                     mt-4 lg:mt-0 lg:ml-8
                     text-neutral-600 dark:text-neutral-300
                   "
@@ -261,18 +262,19 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
                 </p>
               </div>
             </div>
-            <p className="text-2xl text-neutral-700 dark:text-neutral-200 mt-8">
+            <p className="text-center lg:text-left text-2xl text-neutral-700 dark:text-neutral-200 mt-8">
               {courseData.category}
             </p>
-            <p>{`${courseData.startYear} - ${courseData.endYear}`}</p>
+            <p className="text-center lg:text-left">{`${courseData.startYear} - ${courseData.endYear}`}</p>
 
             {courseData.grade && (
               <div
                 className="
-                  py-4
-                  flex space-x-1 w-full
-                  text-xl text-neutral-800 dark:text-neutral-300
-                "
+                    py-4
+                    flex space-x-1 w-full
+                    text-xl text-neutral-800 dark:text-neutral-300
+                    justify-center lg:justify-start
+                  "
               >
                 <p className="font-bold">Grade:</p>
                 <p>{courseData.grade}</p>
