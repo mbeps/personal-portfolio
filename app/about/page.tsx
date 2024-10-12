@@ -1,14 +1,14 @@
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
-import ShortDate from "@/class/ShortDate";
 import MaterialList from "@/components/MaterialLists/MaterialList";
 import Reader from "@/components/Reader/Reader";
 import Socials from "@/components/Socials/Socials";
 import HeadingOne from "@/components/Text/HeadingOne";
 import DetailsTable from "@/components/UI/DetailsTable";
 import developerName from "@/constants/developerName";
-import experienceTime from "@/constants/experieece";
+import experienceTime from "@/constants/experience";
 import subtitles from "@/constants/subtitles";
 import companyDatabaseMap from "@/database/Companies/CompanyDatabaseMap";
+import CourseDatabaseKeys from "@/database/Courses/CourseDatabaseKeys";
 import courseDatabaseMap from "@/database/Courses/CourseDatabaseMap";
 import CourseInterface from "@/database/Courses/CourseInterface";
 import ProjectDatabaseKeys from "@/database/Projects/ProjectDatabaseKeys";
@@ -47,9 +47,10 @@ export default function About() {
     companyDatabaseMap[latestWorkExperience.company].name;
 
   // Education
-  const firstEducation: CourseInterface = Object.values(courseDatabaseMap)[0];
-  const firstUniversityName: string = firstEducation.university;
-  const firstCourseName: string = firstEducation.name;
+  const undergraduate: CourseInterface =
+    courseDatabaseMap[CourseDatabaseKeys.RHUL_ComputerScience];
+  const masters: CourseInterface =
+    courseDatabaseMap[CourseDatabaseKeys.KCL_ArtificialIntelligence];
 
   // Projects
   const numberOfProjects: number = Object.keys(ProjectDatabaseKeys).length;
@@ -126,7 +127,11 @@ export default function About() {
                 { heading: "Location", value: "London, UK" },
                 {
                   heading: "Bachelor's Degree",
-                  value: `${firstCourseName} at ${firstUniversityName}`,
+                  value: `${undergraduate.name} at ${undergraduate.university}`,
+                },
+                {
+                  heading: "Master's Degree",
+                  value: `${masters.name} at ${masters.university}`,
                 },
                 {
                   heading: "Current Role",
@@ -136,10 +141,6 @@ export default function About() {
                   heading: "Years of Experience",
                   value:
                     1 === experienceTime ? "1 year" : `${experienceTime} years`,
-                },
-                {
-                  heading: "Projects",
-                  value: `${numberOfProjects}`,
                 },
               ]}
               className="grid-cols-1 md:grid-cols-2 lg:grid-cols-1 lg:max-w-[220px]"
