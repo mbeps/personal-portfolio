@@ -1,13 +1,14 @@
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
-import ShortDate from "@/class/ShortDate";
 import MaterialList from "@/components/MaterialLists/MaterialList";
 import Reader from "@/components/Reader/Reader";
 import Socials from "@/components/Socials/Socials";
 import HeadingOne from "@/components/Text/HeadingOne";
 import DetailsTable from "@/components/UI/DetailsTable";
 import developerName from "@/constants/developerName";
+import experienceTime from "@/constants/experience";
 import subtitles from "@/constants/subtitles";
 import companyDatabaseMap from "@/database/Companies/CompanyDatabaseMap";
+import CourseDatabaseKeys from "@/database/Courses/CourseDatabaseKeys";
 import courseDatabaseMap from "@/database/Courses/CourseDatabaseMap";
 import CourseInterface from "@/database/Courses/CourseInterface";
 import ProjectDatabaseKeys from "@/database/Projects/ProjectDatabaseKeys";
@@ -40,34 +41,19 @@ export default function About() {
   }
 
   // Work experience
-  const firstProfessionalExperience: RoleInterface =
-    rolesDatabase[RoleDatabaseKeys.CommerzbankDevOpsEngineer];
   const latestWorkExperience: RoleInterface = Object.values(rolesDatabase)[0];
   const latestRole: string = latestWorkExperience.name;
   const latestCompany: string =
     companyDatabaseMap[latestWorkExperience.company].name;
 
   // Education
-  const latestEducation: CourseInterface = Object.values(courseDatabaseMap)[0];
-  const latestUniversityName: string = latestEducation.university;
-  const latestCourseName: string = latestEducation.name;
+  const undergraduate: CourseInterface =
+    courseDatabaseMap[CourseDatabaseKeys.RHUL_ComputerScience];
+  const masters: CourseInterface =
+    courseDatabaseMap[CourseDatabaseKeys.KCL_ArtificialIntelligence];
 
   // Projects
   const numberOfProjects: number = Object.keys(ProjectDatabaseKeys).length;
-
-  // Experience time
-  const currentDate: ShortDate = new ShortDate(
-    new Date().getFullYear(),
-    new Date().getMonth() + 1
-  );
-
-  const experienceTime: number = Math.round(
-    currentDate.difference(firstProfessionalExperience.startDate)
-  );
-
-  const formattedExperienceTime: string = currentDate.formatExperienceTime(
-    firstProfessionalExperience.startDate
-  );
 
   // Featured material
   const featuredMaterial: string[] = [
@@ -141,7 +127,11 @@ export default function About() {
                 { heading: "Location", value: "London, UK" },
                 {
                   heading: "Bachelor's Degree",
-                  value: `${latestCourseName} at ${latestUniversityName}`,
+                  value: `${undergraduate.name} at ${undergraduate.university}`,
+                },
+                {
+                  heading: "Master's Degree",
+                  value: `${masters.name} at ${masters.university}`,
                 },
                 {
                   heading: "Current Role",
@@ -151,10 +141,6 @@ export default function About() {
                   heading: "Years of Experience",
                   value:
                     1 === experienceTime ? "1 year" : `${experienceTime} years`,
-                },
-                {
-                  heading: "Projects",
-                  value: `${numberOfProjects}`,
                 },
               ]}
               className="grid-cols-1 md:grid-cols-2 lg:grid-cols-1 lg:max-w-[220px]"

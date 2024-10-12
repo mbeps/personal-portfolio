@@ -134,17 +134,19 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
           items-center md:items-start 
           space-y-4 md:space-y-3 sm:p-0
           ease-in-out
-					rounded-xl 
-					transition-colors duration-700 
-					text-left
-					"
+          rounded-xl 
+          transition-colors duration-700 
+          text-left
+          "
       >
         <Link href={rolePage}>
           <h2
             className="               
               text-3xl md:text-3xl font-bold  
               md:hover:text-red-500 md:dark:hover:text-red-800
-              transition-colors duration-700 ease-in-out"
+              transition-colors duration-700 ease-in-out
+              text-center
+              "
           >
             {roleData.name}
           </h2>

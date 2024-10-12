@@ -1,5 +1,5 @@
-I graduated from Royal Holloway University of London with a **First-Class Honours** degree in Computer Science.
+I completed my undergraduate study at Royal Holloway University of London with First Class Honour in **Computer Science**. I am currently pursuing a Master's in **Artificial Intelligence** at King's College London.
 
-My expertise spans several technical areas such as: Software Engineering, Web Development, Machine Learning, DevOps, and Mathematics. To hone my skills and knowledge, I completed many **projects** and earned multiple **certifications**, demonstrating my expertise and commitment to these areas.
+My technical expertise spans quite a few categories: Software Engineering, Web Development, Machine Learning, DevOps, and Mathematics. This involved the completion of a great number of **projects** and numerous **certifications** to attest to skill and dedication in all these spheres.
 
-Currently, I work as a **Backend Engineer** at Commerzbank, where I build backend services and enhance operational workflows. I also contribute to **open source**, sharing my expertise through various initiatives.
+Currently, I work as a **Backend Software Engineer** at Commerzbank, which includes designing backend services and improving operational workflows. I contribute to open source by sharing expertise through various initiatives.
