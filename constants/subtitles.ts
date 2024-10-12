@@ -7,7 +7,6 @@ const subtitles: string[] = [
   "Artificial Intelligence",
   "Software Engineering",
   "Full-Stack Development",
-  "Databases",
 ];
 
 export default subtitles;
