@@ -11,7 +11,7 @@ import CompanyDatabaseKeys from "../Companies/CompanyDatabaseKeys";
 
 const rolesMap: Database<RoleInterface> = {
   [RoleDatabaseKeys.CommerzbankDevOpsEngineer]: {
-    name: "Backend Engineer",
+    name: "Backend Software Engineer",
     category: ExperienceCategoriesEnum.Software,
     type: ExperienceTypeEnum.FullTime,
     skills: [
