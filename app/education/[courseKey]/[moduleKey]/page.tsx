@@ -21,10 +21,8 @@ import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsI
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 
-type ModulePageProps = {
-  params: { moduleKey: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
+type Params = Promise<{ moduleKey: string }>;
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
 /**
  * Generates the metadata for the module page.
@@ -37,18 +35,17 @@ type ModulePageProps = {
  * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
  */
 export async function generateMetadata(
-  { params, searchParams }: ModulePageProps,
+  props: { params: Params; searchParams: SearchParams },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  // Read route params
-  const moduleKey: string = params.moduleKey;
+  const resolvedParams = await props.params;
+  const moduleKey: string = resolvedParams.moduleKey;
   const moduleData: ModuleInterface = moduleDatabaseMap[moduleKey];
 
   if (!moduleData) {
     notFound();
   }
 
-  // Create metadata based on the course details
   return {
     title: `${developerName} - Courses: ${moduleData?.name}`,
     description: moduleData.learningOutcomes.join(". ") || "",
@@ -60,11 +57,8 @@ export async function generateMetadata(
 /**
  * Generates the static paths for the modules.
  * These are then used to pre-render the module pages.
- * This Incremental Static Regeneration allows the module to be displayed without a server.
- * This improves the performance of the website.
  *
  * @returns A list of all the keys for the static pages that need to be generated.
- * @see https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration
  */
 export const generateStaticParams = async () => {
   return Object.keys(moduleDatabaseMap).map((moduleKey) => ({
@@ -80,11 +74,12 @@ export const generateStaticParams = async () => {
  * - The skills covered in the module
  * - Related materials
  *
- * @param params The data for the module page
+ * @param props The data for the module page
  * @returns A page displaying the module details
  */
-const ModulePage: React.FC<ModulePageProps> = ({ params }) => {
-  const moduleKey: string = params.moduleKey;
+const ModulePage: React.FC<{ params: Params }> = async ({ params }) => {
+  const resolvedParams = await params;
+  const moduleKey: string = resolvedParams.moduleKey;
   const moduleData: ModuleInterface = moduleDatabaseMap[moduleKey];
   const parentCourse: CourseInterface =
     courseDatabaseMap[moduleData.parentCourse];

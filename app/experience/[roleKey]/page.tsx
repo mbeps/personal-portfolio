@@ -26,10 +26,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BsArrowUpRightCircle } from "react-icons/bs";
 
-type RolePageProps = {
-  params: { roleKey: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
+type Params = Promise<{ roleKey: string }>;
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
 /**
  * Generates the metadata for the work experience page.
@@ -42,10 +40,11 @@ type RolePageProps = {
  * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
  */
 export async function generateMetadata(
-  { params, searchParams }: RolePageProps,
+  props: { params: Params; searchParams: SearchParams },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const roleKey: string = params.roleKey;
+  const resolvedParams = await props.params;
+  const roleKey: string = resolvedParams.roleKey;
   const role: RoleInterface = rolesDatabase[roleKey];
 
   if (!role) {
@@ -64,14 +63,10 @@ export async function generateMetadata(
 }
 
 /**
- * Generates the metadata for the work experience page.
- * This includes the title and description of the page.
- * This is used for SEO purposes.
+ * Generates the static params for roles.
+ * These params are used to pre-render the role pages.
  *
- * @param props The props for the work experience page.
- * @param parent The parent metadata that is being resolved.
- * @returns The metadata for the work experience page.
- * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ * @returns A list of all role keys for static page generation.
  */
 export const generateStaticParams = async () => {
   return Object.keys(rolesDatabase).map((roleKey) => ({
@@ -80,18 +75,15 @@ export const generateStaticParams = async () => {
 };
 
 /**
- * Page displaying the details about my work experience.
- * This would show the specific things I have done in the past.
- *
- * The page also displays:
- * - The skills covered in the role
- * - Related materials
+ * Page displaying the details about a work experience role.
+ * Shows specific responsibilities, skills, and related materials.
  *
  * @param props The props for the work experience page.
  * @returns Content of the work experience page.
  */
-const RolePage: React.FC<RolePageProps> = ({ params }) => {
-  const roleKey: string = params.roleKey;
+const RolePage: React.FC<{ params: Params }> = async ({ params }) => {
+  const resolvedParams = await params;
+  const roleKey: string = resolvedParams.roleKey;
   const roleData: RoleInterface = rolesDatabase[roleKey];
 
   if (!roleData) {
@@ -173,26 +165,9 @@ const RolePage: React.FC<RolePageProps> = ({ params }) => {
         <HeadingTwo title={roleData?.name} />
 
         {companyData.logo && (
-          <div
-            className="
-              flex items-center justify-center 
-              my-12 
-              flex-col md:flex-row 
-            "
-          >
-            {/* Logo */}
+          <div className="flex items-center justify-center my-12 flex-col md:flex-row">
             {companyData.logo && companyData.website && (
-              <div
-                className="
-                rounded-full 
-                shadow-lg 
-                p-1.5 bg-neutral-300 dark:bg-neutral-800
-                dark:hover:bg-red-800
-                transition-all duration-500 ease-in-out
-                w-[90px] h-[90px]
-                hover:scale-105 hover:shadow-xl
-              "
-              >
+              <div className="rounded-full shadow-lg p-1.5 bg-neutral-300 dark:bg-neutral-800 dark:hover:bg-red-800 transition-all duration-500 ease-in-out w-[90px] h-[90px] hover:scale-105 hover:shadow-xl">
                 <Link href={companyData.website} target="_blank">
                   <AspectRatio
                     ratio={1 / 1}
@@ -202,11 +177,7 @@ const RolePage: React.FC<RolePageProps> = ({ params }) => {
                       src={companyData.logo}
                       alt={`Logo for ${companyData.name}`}
                       fill={true}
-                      className="
-                      rounded-full 
-                      shadow-lg object-cover
-                      transition-all duration-500 ease-in-out
-                    "
+                      className="rounded-full shadow-lg object-cover transition-all duration-500 ease-in-out"
                       quality={30}
                       loading="eager"
                       priority
@@ -216,23 +187,9 @@ const RolePage: React.FC<RolePageProps> = ({ params }) => {
               </div>
             )}
 
-            {/* Company Name */}
-            <div
-              className="
-                h-full  
-                flex items-center
-              "
-            >
+            <div className="h-full flex items-center">
               {companyData.website ? (
-                <p
-                  className="
-                  text-left text-2xl font-bold 
-                  mt-4 lg:mt-0 lg:ml-8
-                  text-neutral-600 dark:text-neutral-300
-                  hover:text-red-700 dark:hover:text-red-300 
-                  transition-all duration-300 ease-in-out
-                  "
-                >
+                <p className="text-left text-2xl font-bold mt-4 lg:mt-0 lg:ml-8 text-neutral-600 dark:text-neutral-300 hover:text-red-700 dark:hover:text-red-300 transition-all duration-300 ease-in-out">
                   <Link
                     href={companyData.website}
                     target="_blank"
@@ -242,13 +199,7 @@ const RolePage: React.FC<RolePageProps> = ({ params }) => {
                   </Link>
                 </p>
               ) : (
-                <p
-                  className="
-                    text-left text-2xl font-bold 
-                    mt-4 lg:mt-0 lg:ml-8
-                    text-neutral-600 dark:text-neutral-300
-                  "
-                >
+                <p className="text-left text-2xl font-bold mt-4 lg:mt-0 lg:ml-8 text-neutral-600 dark:text-neutral-300">
                   {companyData.name}
                 </p>
               )}
@@ -299,15 +250,7 @@ const RolePage: React.FC<RolePageProps> = ({ params }) => {
                 className="w-full flex justify-center md:justify-start"
               >
                 <Button>
-                  <div
-                    className="
-                      flex
-                      justify-center md:justify-start
-                      align-center
-                      gap-4
-                      w-full
-                    "
-                  >
+                  <div className="flex justify-center md:justify-start align-center gap-4 w-full">
                     <BsArrowUpRightCircle size={26} />
                     <p>{`${companyData.name} website`}</p>
                   </div>

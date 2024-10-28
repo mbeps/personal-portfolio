@@ -39,6 +39,9 @@ import { BsArrowUpRightCircle, BsGithub, BsPlusCircle } from "react-icons/bs";
 import { GrAppsRounded } from "react-icons/gr";
 import { IoReaderOutline } from "react-icons/io5";
 
+type Params = Promise<{ projectKey: string }>;
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
+
 /**
  * Generates the metadata for the project page.
  * This includes the title and description of the page.
@@ -50,12 +53,11 @@ import { IoReaderOutline } from "react-icons/io5";
  * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
  */
 export async function generateMetadata(
-  { params, searchParams }: ProjectPageProps,
+  props: { params: Params; searchParams: SearchParams },
   parent: ResolvingMetadata
 ): Promise<Metadata | undefined> {
-  // Read route params
-  const projectKey: string = params.projectKey;
-
+  const resolvedParams = await props.params;
+  const projectKey: string = resolvedParams.projectKey;
   const project: ProjectInterface = projectDatabaseMap[projectKey];
 
   if (!project) {
@@ -77,23 +79,15 @@ export async function generateMetadata(
 
 /**
  * Generates the static paths for the projects.
- * These are then used to pre-render the projects pages.
- * This Incremental Static Regeneration allows the projects to be displayed without a server.
- * This improves the performance of the website.
+ * These paths are used to pre-render the project pages.
  *
- * @returns A list of all the keys for the static pages that need to be generated.
- * @see https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration
+ * @returns A list of all project keys for static page generation.
  */
 export const generateStaticParams = async () => {
   return Object.keys(projectDatabaseMap).map((projectKey) => ({
     projectKey,
   }));
 };
-
-interface ProjectPageProps {
-  params: { projectKey: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-}
 
 /**
  * Page displaying the project details including:
@@ -107,8 +101,9 @@ interface ProjectPageProps {
  * @param props The identifier of the project from the URL used to fetch the project
  * @returns Page displaying the project and its details
  */
-const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
-  const projectKey: string = params.projectKey;
+const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
+  const resolvedParams = await params;
+  const projectKey: string = resolvedParams.projectKey;
   const basePath: string = PROJECTS_PAGE.path;
   const projectData: ProjectInterface = projectDatabaseMap[projectKey];
 
@@ -189,7 +184,6 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
 
     // add the path to the media items
     videos = videos.map((video) => `${basePath}/${projectKey}/media/${video}`);
-
     return videos;
   }
 

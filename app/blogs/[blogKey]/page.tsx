@@ -20,10 +20,8 @@ import { notFound } from "next/navigation";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import ContentsSection from "./components/ContentsSection";
 
-type BlogPageProps = {
-  params: { blogKey: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
+type Params = Promise<{ blogKey: string }>;
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
 /**
  * Generates the metadata for the blog page.
@@ -36,9 +34,10 @@ type BlogPageProps = {
  * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
  */
 export async function generateMetadata(
-  { params, searchParams }: BlogPageProps,
+  props: { params: Params; searchParams: SearchParams },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
+  const params = await props.params;
   const blogKey: string = params.blogKey;
   const blog: BlogInterface = blogsDatabaseMap[blogKey];
 
@@ -76,11 +75,12 @@ export const generateStaticParams = async () => {
  * - The skills covered in the blog
  * - Related materials
  *
- * @param params The parameters for the blog page
+ * @param props The props for the blog page
  * @returns Content of the blog and the skills used
  */
-const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
-  const blogKey: string = params.blogKey;
+const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
+  const resolvedParams = await params;
+  const blogKey: string = resolvedParams.blogKey;
   const basePath: string = BLOG_PAGE.path;
   const blogData: BlogInterface = blogsDatabaseMap[blogKey];
   const blogContent: string | undefined = getMarkdownFromFileSystem(
@@ -188,7 +188,6 @@ const BlogPage: React.FC<BlogPageProps> = ({ params }) => {
           </h3>
         </div>
 
-        {/* Buttons */}
         <div className="flex flex-col lg:flex-row justify-between mb-6 space-y-2 px-0 lg:px-20">
           <Link href={BLOG_PAGE.path}>
             <Button className="pl-3">

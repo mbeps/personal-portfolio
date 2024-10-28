@@ -8,29 +8,20 @@ import NavigationItemInterface from "@/interfaces/NavigationItemInterface";
  * Generates the metadata for the page to navigate all pages.
  * This includes the title and description of the page.
  * This is used for SEO purposes.
- *
- * @param props The props for the page.
- * @param parent The parent metadata that is being resolved.
- * @returns The metadata for the page.
- * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
  */
 export const metadata = {
   title: `${developerName} - All Pages`,
   description: MORE_PAGE.description,
 };
 
-type MorePageProps = {
-  params: { courseKey: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
-
 /**
- * Page displaying all the all the pages the user can navigate to.
+ * Page displaying all the pages the user can navigate to.
  * Some pages are not shown in the navbar and can only be accessed through this page.
  *
+ * @param props Props for the page.
  * @returns Page to navigate all pages.
  */
-const MorePage: React.FC<MorePageProps> = ({ params, searchParams }) => {
+export default function MorePage() {
   const ignoredPages: Array<NavigationItemInterface> = [HOME_PAGE, MORE_PAGE];
 
   return (
@@ -48,6 +39,4 @@ const MorePage: React.FC<MorePageProps> = ({ params, searchParams }) => {
       </section>
     </main>
   );
-};
-
-export default MorePage;
+}
