@@ -4,8 +4,8 @@
  */
 enum ProjectTypeEnum {
   Personal = "Personal",
-  University = "University",
-  Wok = "Work",
+  Academic = "Academic",
+  Professional = "Professional",
 }
 
 export default ProjectTypeEnum;

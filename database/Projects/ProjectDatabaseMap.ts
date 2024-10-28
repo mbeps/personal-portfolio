@@ -68,7 +68,7 @@ const projectMap: Database<ProjectInterface> = {
       ModuleDatabaseKeys.RHUL_FinalYearProject,
       ProjectDatabaseKeys.FlaskForumBackend,
     ],
-    type: ProjectTypeEnum.University,
+    type: ProjectTypeEnum.Academic,
   },
   [ProjectDatabaseKeys.RingmasterMessaging]: {
     name: `Ringmaster Messaging`,
@@ -369,7 +369,7 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     archived: true,
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.Noodle),
-    type: ProjectTypeEnum.University,
+    type: ProjectTypeEnum.Academic,
   },
 
   //^ Backend Web Development Projects
@@ -408,7 +408,7 @@ const projectMap: Database<ProjectInterface> = {
       ModuleDatabaseKeys.RHUL_FinalYearProject,
       ProjectDatabaseKeys.CircusDiscussions,
     ],
-    type: ProjectTypeEnum.University,
+    type: ProjectTypeEnum.Academic,
   },
   [ProjectDatabaseKeys.FlaskBackendDemo]: {
     name: `Flask Backend Demo`,
@@ -720,7 +720,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
-    type: ProjectTypeEnum.University,
+    type: ProjectTypeEnum.Academic,
   },
   [ProjectDatabaseKeys.MachineLearningAssignment2]: {
     name: `Machine Learning Assignment 2`,
@@ -753,7 +753,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.University,
+    type: ProjectTypeEnum.Academic,
   },
   [ProjectDatabaseKeys.MachineLearningAssignment3]: {
     name: `Machine Learning Assignment 3`,
@@ -787,7 +787,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
-    type: ProjectTypeEnum.University,
+    type: ProjectTypeEnum.Academic,
   },
   [ProjectDatabaseKeys.MachineLearningLabQuestions]: {
     name: `Machine Learning Lab Questions`,
@@ -822,7 +822,7 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
     archived: true,
-    type: ProjectTypeEnum.University,
+    type: ProjectTypeEnum.Academic,
   },
   [ProjectDatabaseKeys.ComputationalFinanceAssignment]: {
     name: "Computational Finance Assignment",
@@ -858,7 +858,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_ComputationalFinance],
-    type: ProjectTypeEnum.University,
+    type: ProjectTypeEnum.Academic,
   },
   [ProjectDatabaseKeys.MachineLearningTheoryPractice]: {
     name: "Machine Learning Theory Practice",
@@ -888,7 +888,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Probability,
     ],
     relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
-    type: ProjectTypeEnum.University,
+    type: ProjectTypeEnum.Academic,
   },
   [ProjectDatabaseKeys.MachineLearningDataScienceLab]: {
     name: "Machine Learning & Data Science Lab",
@@ -956,7 +956,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.University,
+    type: ProjectTypeEnum.Academic,
     archived: true,
     relatedMaterials: [
       ModuleDatabaseKeys.KCL_ArtificialIntelligenceReasoningAndDecisionMaking,
@@ -994,7 +994,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.TimeManagement,
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.University,
+    type: ProjectTypeEnum.Academic,
     archived: true,
     relatedMaterials: [ModuleDatabaseKeys.KCL_ComputerVision],
   },
@@ -1036,7 +1036,7 @@ const projectMap: Database<ProjectInterface> = {
       RoleDatabaseKeys.CommerzbankDevOpsEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
     ],
-    type: ProjectTypeEnum.Wok,
+    type: ProjectTypeEnum.Professional,
   },
   [ProjectDatabaseKeys.SymphonyWebhookBot]: {
     name: `Symphony Webhooks Bot`,
@@ -1071,7 +1071,7 @@ const projectMap: Database<ProjectInterface> = {
       RoleDatabaseKeys.CommerzbankDevOpsEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
     ],
-    type: ProjectTypeEnum.Wok,
+    type: ProjectTypeEnum.Professional,
   },
   [ProjectDatabaseKeys.SymphonyInteractiveBot]: {
     name: `Symphony Interactive Bot Example`,
@@ -1108,7 +1108,7 @@ const projectMap: Database<ProjectInterface> = {
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
     ],
     archived: true,
-    type: ProjectTypeEnum.Wok,
+    type: ProjectTypeEnum.Professional,
   },
   [ProjectDatabaseKeys.SymphonyHeadlessBot]: {
     name: `Symphony Headless Bot Example`,
@@ -1145,7 +1145,7 @@ const projectMap: Database<ProjectInterface> = {
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
     ],
     archived: true,
-    type: ProjectTypeEnum.Wok,
+    type: ProjectTypeEnum.Professional,
   },
   [ProjectDatabaseKeys.SymphonyMessageMLBot]: {
     name: `Symphony MessageML Bot`,
@@ -1181,7 +1181,7 @@ const projectMap: Database<ProjectInterface> = {
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
     ],
     archived: true,
-    type: ProjectTypeEnum.Wok,
+    type: ProjectTypeEnum.Professional,
   },
   [ProjectDatabaseKeys.SymphonyServiceNowBot]: {
     name: `Symphony ServiceNow Bot`,
@@ -1217,7 +1217,7 @@ const projectMap: Database<ProjectInterface> = {
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
     ],
     archived: true,
-    type: ProjectTypeEnum.Wok,
+    type: ProjectTypeEnum.Professional,
   },
   [ProjectDatabaseKeys.SymphonyPollBot]: {
     name: `Symphony Poll Bot`,
@@ -1253,7 +1253,7 @@ const projectMap: Database<ProjectInterface> = {
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
     ],
     archived: true,
-    type: ProjectTypeEnum.Wok,
+    type: ProjectTypeEnum.Professional,
   },
 
   //^ Java Assignments
@@ -1283,7 +1283,7 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.JavaAssignments,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_SoftwareEngineering],
     archived: true,
-    type: ProjectTypeEnum.University,
+    type: ProjectTypeEnum.Academic,
   },
   [ProjectDatabaseKeys.JavaFundamentalsAssignments]: {
     name: `Java Fundamentals Assignments`,
@@ -1303,7 +1303,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Adaptability,
     ],
     category: ProjectCategoriesEnum.JavaAssignments,
-    type: ProjectTypeEnum.University,
+    type: ProjectTypeEnum.Academic,
     archived: true,
     relatedMaterials: [
       ModuleDatabaseKeys.RHUL_ObjectOrientedProgramming1,
@@ -1328,7 +1328,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.JavaAssignments,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_Databases],
-    type: ProjectTypeEnum.University,
+    type: ProjectTypeEnum.Academic,
     archived: true,
   },
 
@@ -1394,7 +1394,7 @@ const projectMap: Database<ProjectInterface> = {
       CertificateDatabaseKeys.UdemyTheCompleteDataStructuresAndAlgorithmsCourseInPython,
       CertificateDatabaseKeys.UdemyPythonProgrammingMasterclass,
     ],
-    type: ProjectTypeEnum.University,
+    type: ProjectTypeEnum.Academic,
   },
 
   //^ Mathematics
@@ -1476,7 +1476,7 @@ const projectMap: Database<ProjectInterface> = {
     repositoryURL: `https://github.com/mbeps/AutomatedSetup`,
     category: ProjectCategoriesEnum.Other,
     archived: true,
-    type: ProjectTypeEnum.University,
+    type: ProjectTypeEnum.Academic,
   },
 };
 
