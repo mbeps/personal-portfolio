@@ -40,6 +40,7 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.Poetry,
       SkillDatabaseKeys.Black,
 
+      SkillDatabaseKeys.ComputerVision,
       SkillDatabaseKeys.Mathematics,
       SkillDatabaseKeys.LinearAlgebra,
       SkillDatabaseKeys.Probability,
@@ -112,6 +113,7 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.Poetry,
       SkillDatabaseKeys.Black,
 
+      SkillDatabaseKeys.ComputerVision,
       SkillDatabaseKeys.Mathematics,
       SkillDatabaseKeys.LinearAlgebra,
       SkillDatabaseKeys.Probability,
@@ -234,6 +236,7 @@ const certificateMap: Database<CertificateInterface> = {
         SkillDatabaseKeys.Poetry,
         SkillDatabaseKeys.Black,
 
+        SkillDatabaseKeys.ComputerVision,
         SkillDatabaseKeys.Mathematics,
         SkillDatabaseKeys.LinearAlgebra,
         SkillDatabaseKeys.Probability,
