@@ -1038,6 +1038,45 @@ const projectMap: Database<ProjectInterface> = {
     ],
     type: ProjectTypeEnum.Professional,
   },
+  [ProjectDatabaseKeys.SymphonyCobaGPTBot]: {
+    name: `Symphony CobaGPT Bot`,
+    description: `
+      A Symphony bot which interfaces with the Azure OpenAI API to generate text based on user input.
+      This bot improves the workflow of users by providing quick responses to common questions and completing simple or repetitive tasks.
+      This bot is a result of Commerzbank's initiative towards automation using AI.
+      `,
+    category: ProjectCategoriesEnum.SymphonyBots,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Symphony,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.BitBucket,
+      SkillDatabaseKeys.Gradle,
+      SkillDatabaseKeys.GCP,
+      SkillDatabaseKeys.OpenAI,
+      SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.DataStructures,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.QualityManagement,
+    ],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+    ],
+    type: ProjectTypeEnum.Professional,
+  },
   [ProjectDatabaseKeys.SymphonyWebhookBot]: {
     name: `Symphony Webhooks Bot`,
     description: `
@@ -1071,80 +1110,6 @@ const projectMap: Database<ProjectInterface> = {
       RoleDatabaseKeys.CommerzbankDevOpsEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
     ],
-    type: ProjectTypeEnum.Professional,
-  },
-  [ProjectDatabaseKeys.SymphonyInteractiveBot]: {
-    name: `Symphony Interactive Bot Example`,
-    description: `
-      A Symphony bot for learning how to create an interactive bot in Symphony.
-      This bot is used to demonstrate how to create an interactive bot in Symphony.
-      This was used to create documentation and tutorials for other developers.
-      `,
-    category: ProjectCategoriesEnum.SymphonyBots,
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.REST,
-      SkillDatabaseKeys.HTML,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.BitBucket,
-      SkillDatabaseKeys.Gradle,
-      SkillDatabaseKeys.GCP,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.Communication,
-      SkillDatabaseKeys.Teamwork,
-      SkillDatabaseKeys.TimeManagement,
-      SkillDatabaseKeys.QualityManagement,
-    ],
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-    ],
-    archived: true,
-    type: ProjectTypeEnum.Professional,
-  },
-  [ProjectDatabaseKeys.SymphonyHeadlessBot]: {
-    name: `Symphony Headless Bot Example`,
-    description: `
-      A Symphony bot for learning how to create a Headless Bot in Symphony.
-      This bot is used to demonstrate how to create a headless bot in Symphony.
-      This was used to create documentation and tutorials for other developers.
-      `,
-    category: ProjectCategoriesEnum.SymphonyBots,
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.REST,
-      SkillDatabaseKeys.HTML,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.BitBucket,
-      SkillDatabaseKeys.Gradle,
-      SkillDatabaseKeys.GCP,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.Communication,
-      SkillDatabaseKeys.Teamwork,
-      SkillDatabaseKeys.TimeManagement,
-      SkillDatabaseKeys.QualityManagement,
-    ],
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-    ],
-    archived: true,
     type: ProjectTypeEnum.Professional,
   },
   [ProjectDatabaseKeys.SymphonyMessageMLBot]: {
@@ -1229,6 +1194,117 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.SpringBoot,
       SkillDatabaseKeys.MongoDB,
+      SkillDatabaseKeys.Symphony,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.BitBucket,
+      SkillDatabaseKeys.Gradle,
+      SkillDatabaseKeys.GCP,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.QualityManagement,
+    ],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+    ],
+    archived: true,
+    type: ProjectTypeEnum.Professional,
+  },
+  [ProjectDatabaseKeys.SymphonyBusinessHighlightsBot]: {
+    name: `Symphony Business Highlights Bot`,
+    description: `
+      A Symphony bot which compiles weekly business reports from various users
+      and generates a summary of the business highlights for the week.
+      Uses Azure Active Directory for managing permissions and access control.
+      `,
+    category: ProjectCategoriesEnum.SymphonyBots,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Symphony,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.BitBucket,
+      SkillDatabaseKeys.Gradle,
+      SkillDatabaseKeys.GCP,
+      SkillDatabaseKeys.PostgreSQL,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.QualityManagement,
+    ],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+    ],
+    type: ProjectTypeEnum.Professional,
+  },
+  [ProjectDatabaseKeys.SymphonyInteractiveBot]: {
+    name: `Symphony Interactive Bot Example`,
+    description: `
+      A Symphony bot for learning how to create an interactive bot in Symphony.
+      This bot is used to demonstrate how to create an interactive bot in Symphony.
+      This was used to create documentation and tutorials for other developers.
+      `,
+    category: ProjectCategoriesEnum.SymphonyBots,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Symphony,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.BitBucket,
+      SkillDatabaseKeys.Gradle,
+      SkillDatabaseKeys.GCP,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.QualityManagement,
+    ],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+    ],
+    archived: true,
+    type: ProjectTypeEnum.Professional,
+  },
+  [ProjectDatabaseKeys.SymphonyHeadlessBot]: {
+    name: `Symphony Headless Bot Example`,
+    description: `
+      A Symphony bot for learning how to create a Headless Bot in Symphony.
+      This bot is used to demonstrate how to create a headless bot in Symphony.
+      This was used to create documentation and tutorials for other developers.
+      `,
+    category: ProjectCategoriesEnum.SymphonyBots,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
       SkillDatabaseKeys.Symphony,
       SkillDatabaseKeys.REST,
       SkillDatabaseKeys.HTML,
