@@ -635,6 +635,7 @@ const projectMap: Database<ProjectInterface> = {
 
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.ComputerVision,
       SkillDatabaseKeys.Mathematics,
       SkillDatabaseKeys.LinearAlgebra,
       SkillDatabaseKeys.Probability,
