@@ -1649,9 +1649,10 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Communication,
     ],
     category: ProjectCategoriesEnum.Other,
-    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.OsmosGame),
     relatedMaterials: [ModuleDatabaseKeys.RHUL_ProgrammingLaboratory],
-    type: ProjectTypeEnum.Personal,
+    archived: true,
+    type: ProjectTypeEnum.Academic,
+    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.OsmosGame),
   },
   [ProjectDatabaseKeys.AutomatedSetup]: {
     name: `Automated Setup`,
