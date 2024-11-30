@@ -1341,7 +1341,7 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [ModuleDatabaseKeys.KCL_ComputerVision],
   },
 
-  //^ Java Assignments
+  //^ Programming Fundamentals
   [ProjectDatabaseKeys.JavaCalculatorAssignment]: {
     name: `Calculator`,
     description: `
@@ -1365,7 +1365,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
     ],
-    category: ProjectCategoriesEnum.JavaAssignments,
+    category: ProjectCategoriesEnum.ProgrammingFundamentals,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_SoftwareEngineering],
     archived: true,
     type: ProjectTypeEnum.Academic,
@@ -1387,7 +1387,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
     ],
-    category: ProjectCategoriesEnum.JavaAssignments,
+    category: ProjectCategoriesEnum.ProgrammingFundamentals,
     type: ProjectTypeEnum.Academic,
     archived: true,
     relatedMaterials: [
@@ -1411,7 +1411,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
     ],
-    category: ProjectCategoriesEnum.JavaAssignments,
+    category: ProjectCategoriesEnum.ProgrammingFundamentals,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_Databases],
     type: ProjectTypeEnum.Academic,
     archived: true,
