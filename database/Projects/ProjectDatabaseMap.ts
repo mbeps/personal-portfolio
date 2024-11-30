@@ -1191,6 +1191,43 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
     type: ProjectTypeEnum.Professional,
   },
+  [ProjectDatabaseKeys.SymphonyApplicationStatusBot]: {
+    name: `Symphony Application Status Bot`,
+    description: `
+      A Symphony bot responsible for keeping track of various Commerzbank applications' statuses.
+      This then notifies the teams responsible for maintaining the applications on Symphony.
+      `,
+    category: ProjectCategoriesEnum.SymphonyBots,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Symphony,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.BitBucket,
+      SkillDatabaseKeys.Gradle,
+      SkillDatabaseKeys.GCP,
+      SkillDatabaseKeys.MongoDB,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.QualityManagement,
+    ],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+    ],
+    type: ProjectTypeEnum.Professional,
+    archived: true,
+  },
   [ProjectDatabaseKeys.SymphonyBusinessHighlightsBot]: {
     name: `Symphony Business Highlights Bot`,
     description: `
@@ -1227,6 +1264,7 @@ const projectMap: Database<ProjectInterface> = {
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
     ],
     type: ProjectTypeEnum.Professional,
+    archived: true,
   },
   [ProjectDatabaseKeys.SymphonyInteractiveBot]: {
     name: `Symphony Interactive Bot Example`,
