@@ -408,6 +408,7 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [
       RoleDatabaseKeys.CommerzbankDevOpsEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+      ProjectDatabaseKeys.BaseRestController,
     ],
     type: ProjectTypeEnum.Professional,
   },
@@ -447,6 +448,8 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [
       RoleDatabaseKeys.CommerzbankDevOpsEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+      ProjectDatabaseKeys.BaseRestController,
+      ProjectDatabaseKeys.MarkdownToMessageMLConverter,
     ],
     type: ProjectTypeEnum.Professional,
   },
@@ -517,6 +520,7 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [
       RoleDatabaseKeys.CommerzbankDevOpsEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+      ProjectDatabaseKeys.MarkdownToMessageMLConverter,
     ],
     archived: true,
     type: ProjectTypeEnum.Professional,
@@ -553,6 +557,7 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [
       RoleDatabaseKeys.CommerzbankDevOpsEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+      ProjectDatabaseKeys.BaseRestController,
     ],
     archived: true,
     type: ProjectTypeEnum.Professional,
@@ -1339,6 +1344,77 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Academic,
     archived: true,
     relatedMaterials: [ModuleDatabaseKeys.KCL_ComputerVision],
+  },
+
+  //^ Libraries
+  [ProjectDatabaseKeys.BaseRestController]: {
+    name: "Base REST Controller",
+    description: `
+      A library for Spring Boot allowing for greater configurability and ease of use when creating REST controllers. 
+      Specifically, allows configuring SSL and proxy settings.
+      `,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.BitBucket,
+      SkillDatabaseKeys.Gradle,
+      SkillDatabaseKeys.GCP,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.QualityManagement,
+    ],
+    category: ProjectCategoriesEnum.Libraries,
+    type: ProjectTypeEnum.Professional,
+    archived: true,
+    relatedMaterials: [
+      ProjectDatabaseKeys.SymphonyTranslateBot,
+      ProjectDatabaseKeys.SymphonyCobaGPTBot,
+      ProjectDatabaseKeys.SymphonyServiceNowBot,
+    ],
+  },
+  [ProjectDatabaseKeys.MarkdownToMessageMLConverter]: {
+    name: "Markdown to MessageML Converter",
+    description: `
+      A library for converting Markdown to Symphony's MessageML format.
+      This was created because there was no existing library that could convert Markdown to MessageML.
+      Especially useful for rendering responses from LLMs as they return messages in Markdown format.
+      `,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.JUnit,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.BitBucket,
+      SkillDatabaseKeys.Gradle,
+      SkillDatabaseKeys.GCP,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.QualityManagement,
+    ],
+    category: ProjectCategoriesEnum.Libraries,
+    type: ProjectTypeEnum.Professional,
+    archived: true,
+    relatedMaterials: [
+      ProjectDatabaseKeys.SymphonyCobaGPTBot,
+      ProjectDatabaseKeys.SymphonyMessageMLBot,
+    ],
   },
 
   //^ Programming Fundamentals

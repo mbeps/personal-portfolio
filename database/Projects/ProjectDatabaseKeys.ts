@@ -50,6 +50,8 @@ enum ProjectDatabaseKeys {
   JavaCalculatorAssignment = "java-calculator-assignment",
   JavaFundamentalsAssignments = "java-fundamentals-asignments",
   DatabasesMiniProject = "databases-mini-project",
+  BaseRestController = "base-rest-controller",
+  MarkdownToMessageMLConverter = "markdown-to-messageml-converter",
 }
 
 export default ProjectDatabaseKeys;
