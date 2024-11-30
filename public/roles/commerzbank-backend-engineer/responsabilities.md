@@ -12,7 +12,7 @@
 
 - **Cloud Migration**: Managed the transition from AWS to GCP to reduce costs for the bank.
 
-- **Codebase Modernization**: Led the transition from an outdated, monolithic Java codebase to a more modular one with newer technologies. This made the code more maintainable. New bots can be created faster, adding business value quicker. Less time is wasted on maintenance.
+- **Codebase Modernization**: Led the transition from an outdated, monolithic Java codebase to a more modular one with newer technologies. This made the code more maintainable. New bots can be created faster, adding business value quicker. Less time is wasted on maintenance. By conducting this modernization in-house instead of outsourcing to Symphony, the company saved €30,000.
 
 #### Soft Skills:
 

@@ -695,7 +695,6 @@ const modulesMap: Database<ModuleInterface> = {
       ProjectDatabaseKeys.MachineLearningAssignment2,
       ProjectDatabaseKeys.MachineLearningAssignment3,
       ProjectDatabaseKeys.MachineLearningLabQuestions,
-      ProjectDatabaseKeys.MachineLearningTheoryPractice,
     ],
   },
   [ModuleDatabaseKeys.RHUL_ComputationalFinance]: {
@@ -765,6 +764,7 @@ const modulesMap: Database<ModuleInterface> = {
     category: ModuleYearGroupsEnum.Year1,
     parentCourse: CourseDatabaseKeys.KCL_ArtificialIntelligence,
     skills: [
+      SkillDatabaseKeys.Python,
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.IntelligentAgents,
@@ -772,7 +772,6 @@ const modulesMap: Database<ModuleInterface> = {
       SkillDatabaseKeys.Statistics,
       SkillDatabaseKeys.Mathematics,
       SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.Logics,
       SkillDatabaseKeys.DataScience,
@@ -811,7 +810,6 @@ const modulesMap: Database<ModuleInterface> = {
       SkillDatabaseKeys.Logics,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.Probability,
       SkillDatabaseKeys.Statistics,
       SkillDatabaseKeys.Python,
@@ -842,7 +840,6 @@ const modulesMap: Database<ModuleInterface> = {
     category: ModuleYearGroupsEnum.Year1,
     parentCourse: CourseDatabaseKeys.KCL_ArtificialIntelligence,
     skills: [
-      SkillDatabaseKeys.Python,
       SkillDatabaseKeys.Matlab,
       SkillDatabaseKeys.ComputerVision,
       SkillDatabaseKeys.MachineLearning,
@@ -879,7 +876,10 @@ const modulesMap: Database<ModuleInterface> = {
       "Interpreting biological vision processes and comparing them to artificial vision systems",
       "Implementing core computer vision algorithms and understanding their limitations",
     ],
-    relatedMaterials: [ProjectDatabaseKeys.ComputerVisionLabs],
+    relatedMaterials: [
+      ProjectDatabaseKeys.ComputerVisionImageSegmentationAssignment,
+      ProjectDatabaseKeys.ComputerVisionQuizzes,
+    ],
   },
   [ModuleDatabaseKeys.KCL_PhilosophyAndEthicsOfArtificialIntelligence]: {
     name: "Philosophy & Ethics of Artificial Intelligence",
