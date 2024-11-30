@@ -860,36 +860,6 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [ModuleDatabaseKeys.RHUL_ComputationalFinance],
     type: ProjectTypeEnum.Academic,
   },
-  [ProjectDatabaseKeys.MachineLearningTheoryPractice]: {
-    name: "Machine Learning Theory Practice",
-    description: `
-      A collection of machine learning theory questions and answers.
-      This is used to practice for exams and tests.
-      `,
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    repositoryURL: `https://github.com/mbeps/Machine-Learning-Theory-Practice`,
-    skills: [
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.DataScience,
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.Hyperparameters,
-      SkillDatabaseKeys.Boosting,
-      SkillDatabaseKeys.NeuralNetworks,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-
-      SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.Mathematics,
-      SkillDatabaseKeys.LinearAlgebra,
-      SkillDatabaseKeys.Statistics,
-      SkillDatabaseKeys.Probability,
-    ],
-    relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
-    type: ProjectTypeEnum.Academic,
-  },
   [ProjectDatabaseKeys.MachineLearningDataScienceLab]: {
     name: "Machine Learning & Data Science Lab",
     category: ProjectCategoriesEnum.ArtificialIntelligence,
@@ -932,9 +902,10 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.PacmanGame]: {
     name: "Pacman Game",
     description: `
-      A Pacman game where various agents are implemented to play the game effectively.
+      An assignment where an Pacman agent plays to win the game.
+      Uses Markov Decision Processes, Value Iteration and other enhancements.
       `,
-    repositoryURL: "https://github.com/mbeps/Pacman",
+    repositoryURL: "https://github.com/mbeps/pacman-assignment",
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.Git,
@@ -1471,35 +1442,6 @@ const projectMap: Database<ProjectInterface> = {
       CertificateDatabaseKeys.UdemyPythonProgrammingMasterclass,
     ],
     type: ProjectTypeEnum.Academic,
-  },
-
-  //^ Mathematics
-  [ProjectDatabaseKeys.AdvancedMathematicsPractice]: {
-    name: `Advanced Mathematics Practice`,
-    description: `
-      A collection of questions and answers for various advanced mathematics topics such as Algebra, Calculus, Linear Algebra, etc.
-      `,
-    category: ProjectCategoriesEnum.Mathematics,
-    skills: [
-      SkillDatabaseKeys.Algebra,
-      SkillDatabaseKeys.LinearAlgebra,
-      SkillDatabaseKeys.Calculus,
-      SkillDatabaseKeys.Trigonometry,
-      SkillDatabaseKeys.Geometry,
-      SkillDatabaseKeys.Statistics,
-      SkillDatabaseKeys.Probability,
-      SkillDatabaseKeys.Mathematics,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.CriticalThinking,
-    ],
-    archived: true,
-    repositoryURL: "https://github.com/mbeps/advanced-mathematics-practice",
-    relatedMaterials: [
-      CertificateDatabaseKeys.UdemyBecomeAnAlgebraMaster,
-      CertificateDatabaseKeys.UdemyBecomeALinearAlgebraMaster,
-    ],
-    type: ProjectTypeEnum.Personal,
   },
 
   //^ Other Projects

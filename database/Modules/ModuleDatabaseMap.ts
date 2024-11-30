@@ -695,7 +695,6 @@ const modulesMap: Database<ModuleInterface> = {
       ProjectDatabaseKeys.MachineLearningAssignment2,
       ProjectDatabaseKeys.MachineLearningAssignment3,
       ProjectDatabaseKeys.MachineLearningLabQuestions,
-      ProjectDatabaseKeys.MachineLearningTheoryPractice,
     ],
   },
   [ModuleDatabaseKeys.RHUL_ComputationalFinance]: {
