@@ -764,6 +764,7 @@ const modulesMap: Database<ModuleInterface> = {
     category: ModuleYearGroupsEnum.Year1,
     parentCourse: CourseDatabaseKeys.KCL_ArtificialIntelligence,
     skills: [
+      SkillDatabaseKeys.Python,
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.IntelligentAgents,
@@ -841,7 +842,6 @@ const modulesMap: Database<ModuleInterface> = {
     category: ModuleYearGroupsEnum.Year1,
     parentCourse: CourseDatabaseKeys.KCL_ArtificialIntelligence,
     skills: [
-      SkillDatabaseKeys.Python,
       SkillDatabaseKeys.Matlab,
       SkillDatabaseKeys.ComputerVision,
       SkillDatabaseKeys.MachineLearning,
