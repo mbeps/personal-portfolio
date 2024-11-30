@@ -49,7 +49,6 @@ enum ProjectDatabaseKeys {
   JavaCalculatorAssignment = "java-calculator-assignment",
   JavaFundamentalsAssignments = "java-fundamentals-asignments",
   DatabasesMiniProject = "databases-mini-project",
-  AdvancedMathematicsPractice = "advanced-mathematics-practice",
 }
 
 export default ProjectDatabaseKeys;
