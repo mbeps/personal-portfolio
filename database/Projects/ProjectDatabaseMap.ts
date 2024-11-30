@@ -949,6 +949,9 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Personal,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.AdultIncomePrediction
+    ),
   },
   [ProjectDatabaseKeys.HousePricePrediction]: {
     name: "House Price Prediction",
@@ -983,13 +986,15 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Personal,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.HousePricePrediction
+    ),
   },
   [ProjectDatabaseKeys.MachineLearningAlgorithmsAndTechniquesLab]: {
     name: "Machine Learning Algorithms & Techniques Lab",
     description: `
-      Practicing various Machine Learning algorithms and techniques.
+      Practicing various algorithms and techniques.
       This includes supervised, unsupervised, and reinforcement learning algorithms, as well as feature engineering, data preprocessing, and hyperparameter tuning.
-      Some additional content in the field of Deep Learning and Neural Networks are also covered.
     `,
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     repositoryURL: "https://github.com/mbeps/Machine-Learning-Course-Lab",
@@ -1026,6 +1031,9 @@ const projectMap: Database<ProjectInterface> = {
     ],
     relatedMaterials: [CertificateDatabaseKeys.UdemyMachineLearningAtoZ],
     type: ProjectTypeEnum.Personal,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.MachineLearningAlgorithmsAndTechniquesLab
+    ),
   },
   [ProjectDatabaseKeys.ArtificialIntelligenceReinforcementLearning]: {
     name: "Reinforcement Learning Lab",
@@ -1064,12 +1072,15 @@ const projectMap: Database<ProjectInterface> = {
     ],
     relatedMaterials: [CertificateDatabaseKeys.UdemyArtificialIntelligenceAtoZ],
     type: ProjectTypeEnum.Personal,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.ArtificialIntelligenceReinforcementLearning
+    ),
   },
   [ProjectDatabaseKeys.MachineLearningAssignment1]: {
     name: `Machine Learning Assignment 1`,
     description: `
-      Be able to implement machine-learning algorithms, using the Nearest Neighbours algorithm as an example. 
-      Have an understanding of ways to apply the ideas and algorithms of machine learning in science and technology.
+      Be able to implement algorithms from scratch such as the Nearest Neighbours algorithm.
+      Requires an understanding of the Mathematics behind the algorithms and the ability to implement them.
       `,
     repositoryURL: `https://github.com/mbeps/Machine-Learning-Assignment-1`,
     skills: [
@@ -1097,13 +1108,15 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
     type: ProjectTypeEnum.Academic,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.MachineLearningAssignment1
+    ),
   },
   [ProjectDatabaseKeys.MachineLearningAssignment2]: {
     name: `Machine Learning Assignment 2`,
     description: `
-      Be able to use and implement machine-learning algorithms, 
+      Be able to use and implement algorithms, 
       with the Lasso and inductive conformal prediction algorithms as examples. 
-      Have an understanding of ways to apply the ideas and algorithms of machine learning in industry and medicine.
     `,
     repositoryURL: `https://github.com/mbeps/Machine-Learning-Assignment-2`,
     skills: [
@@ -1130,13 +1143,15 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Academic,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.MachineLearningAssignment2
+    ),
   },
   [ProjectDatabaseKeys.MachineLearningAssignment3]: {
     name: `Machine Learning Assignment 3`,
     description: `
-      Be able to use and implement machine-learning algorithms, 
+      Be able to use and implement algorithms, 
       with the SVM, neural networks, and cross-conformal prediction algorithms as examples. 
-      Have an understanding of ways to apply the ideas and algorithms of machine learning in industry.
       `,
     repositoryURL: `https://github.com/mbeps/Machine-Learning-Assignment-3`,
     skills: [
@@ -1164,13 +1179,16 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
     type: ProjectTypeEnum.Academic,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.MachineLearningAssignment3
+    ),
   },
   [ProjectDatabaseKeys.MachineLearningLabQuestions]: {
     name: `Machine Learning Lab Questions`,
     description: `
-      Implemented various machine learning algorithms and techniques learned during the course, 
-      such as Nearest Neighbours, conformal prediction, linear regression, Ridge Regression, Lasso, data preprocessing, parameter selection, 
-      kernels, neural networks, support vector machines, scikit-learn pipelines, and cross-conformal predictors.`,
+      Implemented various algorithms and techniques learnt during the course, 
+      such as Nearest Neighbours, Conformal Prediction, Regression algorithms, data preprocessing, 
+      kernels, Neural Networks, SVMs, etc.`,
     repositoryURL: `https://github.com/mbeps/Machine-Learning-Labs-Questions`,
     skills: [
       SkillDatabaseKeys.Python,
@@ -1199,6 +1217,9 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
     archived: true,
     type: ProjectTypeEnum.Academic,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.MachineLearningLabQuestions
+    ),
   },
   [ProjectDatabaseKeys.ComputationalFinanceAssignment]: {
     name: "Computational Finance Assignment",
@@ -1235,12 +1256,16 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_ComputationalFinance],
     type: ProjectTypeEnum.Academic,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.ComputationalFinanceAssignment
+    ),
   },
   [ProjectDatabaseKeys.MachineLearningDataScienceLab]: {
     name: "Machine Learning & Data Science Lab",
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     description: `
-      This lab mainly focuses on learning generative models, using third-party models and using advanced techniques. This includes techniques such as transfer learning, LLM Agents, and Generative Models.`,
+      This lab mainly focuses on learning generative models, using third-party models and using advanced techniques. 
+      This includes techniques such as transfer learning, LLM Agents, and Generative Models.`,
     repositoryURL: "https://github.com/mbeps/Data-Science-Machine-Learning-Lab",
     skills: [
       SkillDatabaseKeys.Python,
@@ -1273,6 +1298,9 @@ const projectMap: Database<ProjectInterface> = {
       CertificateDatabaseKeys.UdemyMachineLearningDataScienceAndGenerativeAIWithPython,
     ],
     type: ProjectTypeEnum.Personal,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.MachineLearningDataScienceLab
+    ),
   },
 
   [ProjectDatabaseKeys.PacmanGame]: {
@@ -1307,6 +1335,7 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [
       ModuleDatabaseKeys.KCL_ArtificialIntelligenceReasoningAndDecisionMaking,
     ],
+    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.PacmanGame),
   },
   [ProjectDatabaseKeys.ComputerVisionImageSegmentationAssignment]: {
     name: "Computer Vision Image Segmentation",
@@ -1339,6 +1368,9 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Academic,
     archived: true,
     relatedMaterials: [ModuleDatabaseKeys.KCL_ComputerVision],
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.ComputerVisionImageSegmentationAssignment
+    ),
   },
   [ProjectDatabaseKeys.ComputerVisionQuizzes]: {
     name: "Computer Vision Quizzes Solutions",
@@ -1371,6 +1403,9 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Academic,
     archived: true,
     relatedMaterials: [ModuleDatabaseKeys.KCL_ComputerVision],
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.ComputerVisionQuizzes
+    ),
   },
 
   //^ Libraries
