@@ -372,6 +372,382 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Academic,
   },
 
+  //^ Symphony Bots
+  [ProjectDatabaseKeys.SymphonyTranslateBot]: {
+    name: `Symphony Translate Bot`,
+    description: `
+      A Symphony bot that translates messages in a Symphony chatroom using Language Weaver API.
+      Replaces the old Translate Bot which was originally built using the outdated SDK.
+      Much faster, more reliable, and easier to maintain and more features compared to the old bot.
+      `,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Symphony,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.BitBucket,
+      SkillDatabaseKeys.Gradle,
+      SkillDatabaseKeys.GCP,
+      SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.DataStructures,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.QualityManagement,
+    ],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+      ProjectDatabaseKeys.BaseRestController,
+    ],
+    type: ProjectTypeEnum.Professional,
+  },
+  [ProjectDatabaseKeys.SymphonyCobaGPTBot]: {
+    name: `Symphony CobaGPT Bot`,
+    description: `
+      A Symphony bot which interfaces with the Azure OpenAI API to generate text based on user input.
+      This bot improves the workflow of users by providing quick responses to common questions and completing simple or repetitive tasks.
+      This bot is a result of Commerzbank's initiative towards automation using AI.
+      `,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Symphony,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.BitBucket,
+      SkillDatabaseKeys.Gradle,
+      SkillDatabaseKeys.GCP,
+      SkillDatabaseKeys.OpenAI,
+      SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.DataStructures,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.QualityManagement,
+    ],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+      ProjectDatabaseKeys.BaseRestController,
+      ProjectDatabaseKeys.MarkdownToMessageMLConverter,
+    ],
+    type: ProjectTypeEnum.Professional,
+  },
+  [ProjectDatabaseKeys.SymphonyWebhookBot]: {
+    name: `Symphony Webhooks Bot`,
+    description: `
+      A Symphony bot that sends messages to a Symphony chatroom using Webhooks.
+      This bot is used to send messages to a chatroom from an external source.
+      `,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Symphony,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.BitBucket,
+      SkillDatabaseKeys.Gradle,
+      SkillDatabaseKeys.GCP,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.QualityManagement,
+    ],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+    ],
+    type: ProjectTypeEnum.Professional,
+  },
+  [ProjectDatabaseKeys.SymphonyMessageMLBot]: {
+    name: `Symphony MessageML Bot`,
+    description: `
+      A Symphony bot for sending messages in Symphony using MessageML.
+      This allows the bot to send messages with more formatting and interactivity similar to HTML.
+      `,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Symphony,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.BitBucket,
+      SkillDatabaseKeys.Gradle,
+      SkillDatabaseKeys.GCP,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.QualityManagement,
+    ],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+      ProjectDatabaseKeys.MarkdownToMessageMLConverter,
+    ],
+    archived: true,
+    type: ProjectTypeEnum.Professional,
+  },
+  [ProjectDatabaseKeys.SymphonyServiceNowBot]: {
+    name: `Symphony ServiceNow Bot`,
+    description: `
+      A Symphony bot for creating tickets in ServiceNow and receiving updates within Symphony.
+      `,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Symphony,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.BitBucket,
+      SkillDatabaseKeys.Gradle,
+      SkillDatabaseKeys.GCP,
+      SkillDatabaseKeys.MongoDB,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.QualityManagement,
+    ],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+      ProjectDatabaseKeys.BaseRestController,
+    ],
+    archived: true,
+    type: ProjectTypeEnum.Professional,
+  },
+  [ProjectDatabaseKeys.SymphonyPollBot]: {
+    name: `Symphony Poll Bot`,
+    description: `
+      A Symphony bot for creating polls and surveys for gathering feedback.
+      `,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.MongoDB,
+      SkillDatabaseKeys.Symphony,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.BitBucket,
+      SkillDatabaseKeys.Gradle,
+      SkillDatabaseKeys.GCP,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.QualityManagement,
+    ],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+    ],
+    archived: true,
+    type: ProjectTypeEnum.Professional,
+  },
+  [ProjectDatabaseKeys.SymphonyApplicationStatusBot]: {
+    name: `Symphony Application Status Bot`,
+    description: `
+      A Symphony bot responsible for keeping track of various Commerzbank applications' statuses.
+      This then notifies the teams responsible for maintaining the applications on Symphony.
+      `,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Symphony,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.BitBucket,
+      SkillDatabaseKeys.Gradle,
+      SkillDatabaseKeys.GCP,
+      SkillDatabaseKeys.MongoDB,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.QualityManagement,
+    ],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+    ],
+    type: ProjectTypeEnum.Professional,
+    archived: true,
+  },
+  [ProjectDatabaseKeys.SymphonyBusinessHighlightsBot]: {
+    name: `Symphony Business Highlights Bot`,
+    description: `
+      A Symphony bot which compiles weekly business reports from various users
+      and generates a summary of the business highlights for the week.
+      Uses Azure Active Directory for managing permissions and access control.
+      `,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Symphony,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.BitBucket,
+      SkillDatabaseKeys.Gradle,
+      SkillDatabaseKeys.GCP,
+      SkillDatabaseKeys.PostgreSQL,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.QualityManagement,
+    ],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+    ],
+    type: ProjectTypeEnum.Professional,
+    archived: true,
+  },
+  [ProjectDatabaseKeys.SymphonyInteractiveBot]: {
+    name: `Symphony Interactive Bot Example`,
+    description: `
+      A Symphony bot for learning how to create an interactive bot in Symphony.
+      This bot is used to demonstrate how to create an interactive bot in Symphony.
+      This was used to create documentation and tutorials for other developers.
+      `,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Symphony,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.BitBucket,
+      SkillDatabaseKeys.Gradle,
+      SkillDatabaseKeys.GCP,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.QualityManagement,
+    ],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+    ],
+    archived: true,
+    type: ProjectTypeEnum.Professional,
+  },
+  [ProjectDatabaseKeys.SymphonyHeadlessBot]: {
+    name: `Symphony Headless Bot Example`,
+    description: `
+      A Symphony bot for learning how to create a Headless Bot in Symphony.
+      This bot is used to demonstrate how to create a headless bot in Symphony.
+      This was used to create documentation and tutorials for other developers.
+      `,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Symphony,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.BitBucket,
+      SkillDatabaseKeys.Gradle,
+      SkillDatabaseKeys.GCP,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.QualityManagement,
+    ],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+    ],
+    archived: true,
+    type: ProjectTypeEnum.Professional,
+  },
+
   //^ Backend Web Development Projects
   [ProjectDatabaseKeys.FlaskForumBackend]: {
     name: `Flask Forum Backend`,
@@ -573,6 +949,9 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Personal,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.AdultIncomePrediction
+    ),
   },
   [ProjectDatabaseKeys.HousePricePrediction]: {
     name: "House Price Prediction",
@@ -607,13 +986,15 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Personal,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.HousePricePrediction
+    ),
   },
   [ProjectDatabaseKeys.MachineLearningAlgorithmsAndTechniquesLab]: {
     name: "Machine Learning Algorithms & Techniques Lab",
     description: `
-      Practicing various Machine Learning algorithms and techniques.
+      Practicing various algorithms and techniques.
       This includes supervised, unsupervised, and reinforcement learning algorithms, as well as feature engineering, data preprocessing, and hyperparameter tuning.
-      Some additional content in the field of Deep Learning and Neural Networks are also covered.
     `,
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     repositoryURL: "https://github.com/mbeps/Machine-Learning-Course-Lab",
@@ -650,6 +1031,9 @@ const projectMap: Database<ProjectInterface> = {
     ],
     relatedMaterials: [CertificateDatabaseKeys.UdemyMachineLearningAtoZ],
     type: ProjectTypeEnum.Personal,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.MachineLearningAlgorithmsAndTechniquesLab
+    ),
   },
   [ProjectDatabaseKeys.ArtificialIntelligenceReinforcementLearning]: {
     name: "Reinforcement Learning Lab",
@@ -688,12 +1072,15 @@ const projectMap: Database<ProjectInterface> = {
     ],
     relatedMaterials: [CertificateDatabaseKeys.UdemyArtificialIntelligenceAtoZ],
     type: ProjectTypeEnum.Personal,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.ArtificialIntelligenceReinforcementLearning
+    ),
   },
   [ProjectDatabaseKeys.MachineLearningAssignment1]: {
     name: `Machine Learning Assignment 1`,
     description: `
-      Be able to implement machine-learning algorithms, using the Nearest Neighbours algorithm as an example. 
-      Have an understanding of ways to apply the ideas and algorithms of machine learning in science and technology.
+      Be able to implement algorithms from scratch such as the Nearest Neighbours algorithm.
+      Requires an understanding of the Mathematics behind the algorithms and the ability to implement them.
       `,
     repositoryURL: `https://github.com/mbeps/Machine-Learning-Assignment-1`,
     skills: [
@@ -721,13 +1108,15 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
     type: ProjectTypeEnum.Academic,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.MachineLearningAssignment1
+    ),
   },
   [ProjectDatabaseKeys.MachineLearningAssignment2]: {
     name: `Machine Learning Assignment 2`,
     description: `
-      Be able to use and implement machine-learning algorithms, 
+      Be able to use and implement algorithms, 
       with the Lasso and inductive conformal prediction algorithms as examples. 
-      Have an understanding of ways to apply the ideas and algorithms of machine learning in industry and medicine.
     `,
     repositoryURL: `https://github.com/mbeps/Machine-Learning-Assignment-2`,
     skills: [
@@ -754,13 +1143,15 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Academic,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.MachineLearningAssignment2
+    ),
   },
   [ProjectDatabaseKeys.MachineLearningAssignment3]: {
     name: `Machine Learning Assignment 3`,
     description: `
-      Be able to use and implement machine-learning algorithms, 
+      Be able to use and implement algorithms, 
       with the SVM, neural networks, and cross-conformal prediction algorithms as examples. 
-      Have an understanding of ways to apply the ideas and algorithms of machine learning in industry.
       `,
     repositoryURL: `https://github.com/mbeps/Machine-Learning-Assignment-3`,
     skills: [
@@ -788,13 +1179,16 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
     type: ProjectTypeEnum.Academic,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.MachineLearningAssignment3
+    ),
   },
   [ProjectDatabaseKeys.MachineLearningLabQuestions]: {
     name: `Machine Learning Lab Questions`,
     description: `
-      Implemented various machine learning algorithms and techniques learned during the course, 
-      such as Nearest Neighbours, conformal prediction, linear regression, Ridge Regression, Lasso, data preprocessing, parameter selection, 
-      kernels, neural networks, support vector machines, scikit-learn pipelines, and cross-conformal predictors.`,
+      Implemented various algorithms and techniques learnt during the course, 
+      such as Nearest Neighbours, Conformal Prediction, Regression algorithms, data preprocessing, 
+      kernels, Neural Networks, SVMs, etc.`,
     repositoryURL: `https://github.com/mbeps/Machine-Learning-Labs-Questions`,
     skills: [
       SkillDatabaseKeys.Python,
@@ -823,6 +1217,9 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
     archived: true,
     type: ProjectTypeEnum.Academic,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.MachineLearningLabQuestions
+    ),
   },
   [ProjectDatabaseKeys.ComputationalFinanceAssignment]: {
     name: "Computational Finance Assignment",
@@ -859,42 +1256,16 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_ComputationalFinance],
     type: ProjectTypeEnum.Academic,
-  },
-  [ProjectDatabaseKeys.MachineLearningTheoryPractice]: {
-    name: "Machine Learning Theory Practice",
-    description: `
-      A collection of machine learning theory questions and answers.
-      This is used to practice for exams and tests.
-      `,
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    repositoryURL: `https://github.com/mbeps/Machine-Learning-Theory-Practice`,
-    skills: [
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.DataScience,
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.Hyperparameters,
-      SkillDatabaseKeys.Boosting,
-      SkillDatabaseKeys.NeuralNetworks,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-
-      SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.Mathematics,
-      SkillDatabaseKeys.LinearAlgebra,
-      SkillDatabaseKeys.Statistics,
-      SkillDatabaseKeys.Probability,
-    ],
-    relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
-    type: ProjectTypeEnum.Academic,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.ComputationalFinanceAssignment
+    ),
   },
   [ProjectDatabaseKeys.MachineLearningDataScienceLab]: {
     name: "Machine Learning & Data Science Lab",
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     description: `
-      This lab mainly focuses on learning generative models, using third-party models and using advanced techniques. This includes techniques such as transfer learning, LLM Agents, and Generative Models.`,
+      This lab mainly focuses on learning generative models, using third-party models and using advanced techniques. 
+      This includes techniques such as transfer learning, LLM Agents, and Generative Models.`,
     repositoryURL: "https://github.com/mbeps/Data-Science-Machine-Learning-Lab",
     skills: [
       SkillDatabaseKeys.Python,
@@ -927,14 +1298,18 @@ const projectMap: Database<ProjectInterface> = {
       CertificateDatabaseKeys.UdemyMachineLearningDataScienceAndGenerativeAIWithPython,
     ],
     type: ProjectTypeEnum.Personal,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.MachineLearningDataScienceLab
+    ),
   },
 
   [ProjectDatabaseKeys.PacmanGame]: {
     name: "Pacman Game",
     description: `
-      A Pacman game where various agents are implemented to play the game effectively.
+      An assignment where an Pacman agent plays to win the game.
+      Uses Markov Decision Processes, Value Iteration and other enhancements.
       `,
-    repositoryURL: "https://github.com/mbeps/Pacman",
+    repositoryURL: "https://github.com/mbeps/pacman-assignment",
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.Git,
@@ -942,7 +1317,6 @@ const projectMap: Database<ProjectInterface> = {
 
       SkillDatabaseKeys.IntelligentAgents,
       SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.Mathematics,
       SkillDatabaseKeys.Probability,
       SkillDatabaseKeys.LinearAlgebra,
@@ -961,211 +1335,95 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [
       ModuleDatabaseKeys.KCL_ArtificialIntelligenceReasoningAndDecisionMaking,
     ],
+    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.PacmanGame),
   },
-  [ProjectDatabaseKeys.ComputerVisionLabs]: {
-    name: "Computer Vision Labs",
+  [ProjectDatabaseKeys.ComputerVisionImageSegmentationAssignment]: {
+    name: "Computer Vision Image Segmentation",
     description: `
-      Code covering various Computer Vision topics to answer weekly lab questions.
+      Computer Vision assignment where the task was to segment images using various techniques.
+      Specifically, used models of biological vision systems such as Simple and Complex cells, and Gabor filters.
       `,
-    repositoryURL: "https://github.com/mbeps/computer-vision-matlab-quizzes",
+    repositoryURL: "https://github.com/mbeps/computer-vision-assignment",
     skills: [
       SkillDatabaseKeys.Matlab,
-      SkillDatabaseKeys.ComputerVision,
-      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.GitHub,
+
+      SkillDatabaseKeys.IntelligentAgents,
       SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.DataScience,
-      SkillDatabaseKeys.DataVisualisation,
-      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.ComputerVision,
+      SkillDatabaseKeys.Mathematics,
       SkillDatabaseKeys.Probability,
-      SkillDatabaseKeys.Statistics,
       SkillDatabaseKeys.LinearAlgebra,
-      SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.DataStructures,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Pandas,
-      SkillDatabaseKeys.NumPy,
-      SkillDatabaseKeys.Matplotlib,
-      SkillDatabaseKeys.DeepLearning,
-      SkillDatabaseKeys.Logics,
-      SkillDatabaseKeys.Calculus,
-      SkillDatabaseKeys.Discrete,
+
       SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
       SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Academic,
     archived: true,
     relatedMaterials: [ModuleDatabaseKeys.KCL_ComputerVision],
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.ComputerVisionImageSegmentationAssignment
+    ),
   },
-
-  //^ Symphony Bots
-  [ProjectDatabaseKeys.SymphonyTranslateBot]: {
-    name: `Symphony Translate Bot`,
+  [ProjectDatabaseKeys.ComputerVisionQuizzes]: {
+    name: "Computer Vision Quizzes Solutions",
     description: `
-      A Symphony bot that translates messages in a Symphony chatroom using Language Weaver API.
-      Replaces the old Translate Bot which was originally built using the outdated SDK.
-      Much faster, more reliable, and easier to maintain and more features compared to the old bot.
+      Solutions to Computer Vision quizzes from the course where various low-level and mid-level vision techniques were covered.
+      These techniques include edge detection, image segmentation, and image filtering.
       `,
-    category: ProjectCategoriesEnum.SymphonyBots,
+    repositoryURL: "https://github.com/mbeps/computer-vision-quiz-assignment",
     skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.REST,
-      SkillDatabaseKeys.HTML,
-      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Matlab,
       SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.BitBucket,
-      SkillDatabaseKeys.Gradle,
-      SkillDatabaseKeys.GCP,
+      SkillDatabaseKeys.GitHub,
+
+      SkillDatabaseKeys.IntelligentAgents,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.ComputerVision,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.Probability,
+      SkillDatabaseKeys.LinearAlgebra,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
       SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.DataStructures,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.Communication,
-      SkillDatabaseKeys.Teamwork,
-      SkillDatabaseKeys.TimeManagement,
-      SkillDatabaseKeys.QualityManagement,
     ],
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-    ],
-    type: ProjectTypeEnum.Professional,
-  },
-  [ProjectDatabaseKeys.SymphonyCobaGPTBot]: {
-    name: `Symphony CobaGPT Bot`,
-    description: `
-      A Symphony bot which interfaces with the Azure OpenAI API to generate text based on user input.
-      This bot improves the workflow of users by providing quick responses to common questions and completing simple or repetitive tasks.
-      This bot is a result of Commerzbank's initiative towards automation using AI.
-      `,
-    category: ProjectCategoriesEnum.SymphonyBots,
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.REST,
-      SkillDatabaseKeys.HTML,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.BitBucket,
-      SkillDatabaseKeys.Gradle,
-      SkillDatabaseKeys.GCP,
-      SkillDatabaseKeys.OpenAI,
-      SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.DataStructures,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.Communication,
-      SkillDatabaseKeys.Teamwork,
-      SkillDatabaseKeys.TimeManagement,
-      SkillDatabaseKeys.QualityManagement,
-    ],
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-    ],
-    type: ProjectTypeEnum.Professional,
-  },
-  [ProjectDatabaseKeys.SymphonyWebhookBot]: {
-    name: `Symphony Webhooks Bot`,
-    description: `
-      A Symphony bot that sends messages to a Symphony chatroom using Webhooks.
-      This bot is used to send messages to a chatroom from an external source.
-      `,
-    category: ProjectCategoriesEnum.SymphonyBots,
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.REST,
-      SkillDatabaseKeys.HTML,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.BitBucket,
-      SkillDatabaseKeys.Gradle,
-      SkillDatabaseKeys.GCP,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.Communication,
-      SkillDatabaseKeys.Teamwork,
-      SkillDatabaseKeys.TimeManagement,
-      SkillDatabaseKeys.QualityManagement,
-    ],
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-    ],
-    type: ProjectTypeEnum.Professional,
-  },
-  [ProjectDatabaseKeys.SymphonyMessageMLBot]: {
-    name: `Symphony MessageML Bot`,
-    description: `
-      A Symphony bot for sending messages in Symphony using MessageML.
-      This allows the bot to send messages with more formatting and interactivity similar to HTML.
-      `,
-    category: ProjectCategoriesEnum.SymphonyBots,
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.REST,
-      SkillDatabaseKeys.HTML,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.BitBucket,
-      SkillDatabaseKeys.Gradle,
-      SkillDatabaseKeys.GCP,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.Communication,
-      SkillDatabaseKeys.Teamwork,
-      SkillDatabaseKeys.TimeManagement,
-      SkillDatabaseKeys.QualityManagement,
-    ],
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-    ],
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    type: ProjectTypeEnum.Academic,
     archived: true,
-    type: ProjectTypeEnum.Professional,
+    relatedMaterials: [ModuleDatabaseKeys.KCL_ComputerVision],
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.ComputerVisionQuizzes
+    ),
   },
-  [ProjectDatabaseKeys.SymphonyServiceNowBot]: {
-    name: `Symphony ServiceNow Bot`,
+
+  //^ Libraries
+  [ProjectDatabaseKeys.BaseRestController]: {
+    name: "Base REST Controller",
     description: `
-      A Symphony bot for creating tickets in ServiceNow and receiving updates within Symphony.
+      A library for Spring Boot allowing for greater configurability and ease of use when creating REST controllers. 
+      Specifically, allows configuring SSL and proxy settings.
       `,
-    category: ProjectCategoriesEnum.SymphonyBots,
     skills: [
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.Symphony,
       SkillDatabaseKeys.REST,
-      SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.TeamCity,
       SkillDatabaseKeys.Git,
       SkillDatabaseKeys.BitBucket,
       SkillDatabaseKeys.Gradle,
       SkillDatabaseKeys.GCP,
-      SkillDatabaseKeys.MongoDB,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -1177,26 +1435,27 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.TimeManagement,
       SkillDatabaseKeys.QualityManagement,
     ],
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-    ],
+    category: ProjectCategoriesEnum.Libraries,
+    type: ProjectTypeEnum.Professional,
     archived: true,
-    type: ProjectTypeEnum.Professional,
+    relatedMaterials: [
+      ProjectDatabaseKeys.SymphonyTranslateBot,
+      ProjectDatabaseKeys.SymphonyCobaGPTBot,
+      ProjectDatabaseKeys.SymphonyServiceNowBot,
+
+      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+    ],
   },
-  [ProjectDatabaseKeys.SymphonyPollBot]: {
-    name: `Symphony Poll Bot`,
+  [ProjectDatabaseKeys.MarkdownToMessageMLConverter]: {
+    name: "Markdown to MessageML Converter",
     description: `
-      A Symphony bot for creating polls and surveys for gathering feedback.
+      A library for converting Markdown to Symphony's MessageML format.
+      This was created because there was no existing library that could convert Markdown to MessageML.
+      Especially useful for rendering responses from LLMs as they return messages in Markdown format.
       `,
-    category: ProjectCategoriesEnum.SymphonyBots,
     skills: [
       SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.MongoDB,
-      SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.REST,
-      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.JUnit,
       SkillDatabaseKeys.TeamCity,
       SkillDatabaseKeys.Git,
       SkillDatabaseKeys.BitBucket,
@@ -1213,126 +1472,18 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.TimeManagement,
       SkillDatabaseKeys.QualityManagement,
     ],
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-    ],
+    category: ProjectCategoriesEnum.Libraries,
+    type: ProjectTypeEnum.Professional,
     archived: true,
-    type: ProjectTypeEnum.Professional,
-  },
-  [ProjectDatabaseKeys.SymphonyBusinessHighlightsBot]: {
-    name: `Symphony Business Highlights Bot`,
-    description: `
-      A Symphony bot which compiles weekly business reports from various users
-      and generates a summary of the business highlights for the week.
-      Uses Azure Active Directory for managing permissions and access control.
-      `,
-    category: ProjectCategoriesEnum.SymphonyBots,
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.REST,
-      SkillDatabaseKeys.HTML,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.BitBucket,
-      SkillDatabaseKeys.Gradle,
-      SkillDatabaseKeys.GCP,
-      SkillDatabaseKeys.PostgreSQL,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.Communication,
-      SkillDatabaseKeys.Teamwork,
-      SkillDatabaseKeys.TimeManagement,
-      SkillDatabaseKeys.QualityManagement,
-    ],
     relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-    ],
-    type: ProjectTypeEnum.Professional,
-  },
-  [ProjectDatabaseKeys.SymphonyInteractiveBot]: {
-    name: `Symphony Interactive Bot Example`,
-    description: `
-      A Symphony bot for learning how to create an interactive bot in Symphony.
-      This bot is used to demonstrate how to create an interactive bot in Symphony.
-      This was used to create documentation and tutorials for other developers.
-      `,
-    category: ProjectCategoriesEnum.SymphonyBots,
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.REST,
-      SkillDatabaseKeys.HTML,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.BitBucket,
-      SkillDatabaseKeys.Gradle,
-      SkillDatabaseKeys.GCP,
+      ProjectDatabaseKeys.SymphonyCobaGPTBot,
+      ProjectDatabaseKeys.SymphonyMessageMLBot,
 
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.Communication,
-      SkillDatabaseKeys.Teamwork,
-      SkillDatabaseKeys.TimeManagement,
-      SkillDatabaseKeys.QualityManagement,
-    ],
-    relatedMaterials: [
       RoleDatabaseKeys.CommerzbankDevOpsEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
     ],
-    archived: true,
-    type: ProjectTypeEnum.Professional,
-  },
-  [ProjectDatabaseKeys.SymphonyHeadlessBot]: {
-    name: `Symphony Headless Bot Example`,
-    description: `
-      A Symphony bot for learning how to create a Headless Bot in Symphony.
-      This bot is used to demonstrate how to create a headless bot in Symphony.
-      This was used to create documentation and tutorials for other developers.
-      `,
-    category: ProjectCategoriesEnum.SymphonyBots,
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.REST,
-      SkillDatabaseKeys.HTML,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.BitBucket,
-      SkillDatabaseKeys.Gradle,
-      SkillDatabaseKeys.GCP,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.Communication,
-      SkillDatabaseKeys.Teamwork,
-      SkillDatabaseKeys.TimeManagement,
-      SkillDatabaseKeys.QualityManagement,
-    ],
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-    ],
-    archived: true,
-    type: ProjectTypeEnum.Professional,
   },
 
-  //^ Java Assignments
+  //^ Programming Fundamentals
   [ProjectDatabaseKeys.JavaCalculatorAssignment]: {
     name: `Calculator`,
     description: `
@@ -1356,7 +1507,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
     ],
-    category: ProjectCategoriesEnum.JavaAssignments,
+    category: ProjectCategoriesEnum.ProgrammingFundamentals,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_SoftwareEngineering],
     archived: true,
     type: ProjectTypeEnum.Academic,
@@ -1378,7 +1529,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
     ],
-    category: ProjectCategoriesEnum.JavaAssignments,
+    category: ProjectCategoriesEnum.ProgrammingFundamentals,
     type: ProjectTypeEnum.Academic,
     archived: true,
     relatedMaterials: [
@@ -1402,7 +1553,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
     ],
-    category: ProjectCategoriesEnum.JavaAssignments,
+    category: ProjectCategoriesEnum.ProgrammingFundamentals,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_Databases],
     type: ProjectTypeEnum.Academic,
     archived: true,
@@ -1471,35 +1622,6 @@ const projectMap: Database<ProjectInterface> = {
       CertificateDatabaseKeys.UdemyPythonProgrammingMasterclass,
     ],
     type: ProjectTypeEnum.Academic,
-  },
-
-  //^ Mathematics
-  [ProjectDatabaseKeys.AdvancedMathematicsPractice]: {
-    name: `Advanced Mathematics Practice`,
-    description: `
-      A collection of questions and answers for various advanced mathematics topics such as Algebra, Calculus, Linear Algebra, etc.
-      `,
-    category: ProjectCategoriesEnum.Mathematics,
-    skills: [
-      SkillDatabaseKeys.Algebra,
-      SkillDatabaseKeys.LinearAlgebra,
-      SkillDatabaseKeys.Calculus,
-      SkillDatabaseKeys.Trigonometry,
-      SkillDatabaseKeys.Geometry,
-      SkillDatabaseKeys.Statistics,
-      SkillDatabaseKeys.Probability,
-      SkillDatabaseKeys.Mathematics,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.CriticalThinking,
-    ],
-    archived: true,
-    repositoryURL: "https://github.com/mbeps/advanced-mathematics-practice",
-    relatedMaterials: [
-      CertificateDatabaseKeys.UdemyBecomeAnAlgebraMaster,
-      CertificateDatabaseKeys.UdemyBecomeALinearAlgebraMaster,
-    ],
-    type: ProjectTypeEnum.Personal,
   },
 
   //^ Other Projects

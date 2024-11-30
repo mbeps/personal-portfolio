@@ -77,6 +77,9 @@ const rolesMap: Database<RoleInterface> = {
       ProjectDatabaseKeys.SymphonyPollBot,
       ProjectDatabaseKeys.SymphonyInteractiveBot,
       ProjectDatabaseKeys.SymphonyHeadlessBot,
+
+      ProjectDatabaseKeys.BaseRestController,
+      ProjectDatabaseKeys.MarkdownToMessageMLConverter,
     ],
     company: CompanyDatabaseKeys.Commerzbank,
   },
