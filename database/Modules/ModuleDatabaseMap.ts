@@ -772,7 +772,6 @@ const modulesMap: Database<ModuleInterface> = {
       SkillDatabaseKeys.Statistics,
       SkillDatabaseKeys.Mathematics,
       SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.Logics,
       SkillDatabaseKeys.DataScience,
@@ -811,7 +810,6 @@ const modulesMap: Database<ModuleInterface> = {
       SkillDatabaseKeys.Logics,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.Probability,
       SkillDatabaseKeys.Statistics,
       SkillDatabaseKeys.Python,
@@ -878,7 +876,10 @@ const modulesMap: Database<ModuleInterface> = {
       "Interpreting biological vision processes and comparing them to artificial vision systems",
       "Implementing core computer vision algorithms and understanding their limitations",
     ],
-    relatedMaterials: [ProjectDatabaseKeys.ComputerVisionLabs],
+    relatedMaterials: [
+      ProjectDatabaseKeys.ComputerVisionImageSegmentationAssignment,
+      ProjectDatabaseKeys.ComputerVisionQuizzes,
+    ],
   },
   [ModuleDatabaseKeys.KCL_PhilosophyAndEthicsOfArtificialIntelligence]: {
     name: "Philosophy & Ethics of Artificial Intelligence",

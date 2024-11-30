@@ -1289,7 +1289,6 @@ const projectMap: Database<ProjectInterface> = {
 
       SkillDatabaseKeys.IntelligentAgents,
       SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.Mathematics,
       SkillDatabaseKeys.Probability,
       SkillDatabaseKeys.LinearAlgebra,
@@ -1309,36 +1308,64 @@ const projectMap: Database<ProjectInterface> = {
       ModuleDatabaseKeys.KCL_ArtificialIntelligenceReasoningAndDecisionMaking,
     ],
   },
-  [ProjectDatabaseKeys.ComputerVisionLabs]: {
-    name: "Computer Vision Labs",
+  [ProjectDatabaseKeys.ComputerVisionImageSegmentationAssignment]: {
+    name: "Computer Vision Image Segmentation",
     description: `
-      Code covering various Computer Vision topics to answer weekly lab questions.
+      Computer Vision assignment where the task was to segment images using various techniques.
+      Specifically, used models of biological vision systems such as Simple and Complex cells, and Gabor filters.
       `,
-    repositoryURL: "https://github.com/mbeps/computer-vision-matlab-quizzes",
+    repositoryURL: "https://github.com/mbeps/computer-vision-assignment",
     skills: [
       SkillDatabaseKeys.Matlab,
-      SkillDatabaseKeys.ComputerVision,
-      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.GitHub,
+
+      SkillDatabaseKeys.IntelligentAgents,
       SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.DataScience,
-      SkillDatabaseKeys.DataVisualisation,
-      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.ComputerVision,
+      SkillDatabaseKeys.Mathematics,
       SkillDatabaseKeys.Probability,
-      SkillDatabaseKeys.Statistics,
       SkillDatabaseKeys.LinearAlgebra,
-      SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.DataStructures,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Pandas,
-      SkillDatabaseKeys.NumPy,
-      SkillDatabaseKeys.Matplotlib,
-      SkillDatabaseKeys.DeepLearning,
-      SkillDatabaseKeys.Logics,
-      SkillDatabaseKeys.Calculus,
-      SkillDatabaseKeys.Discrete,
+
       SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
       SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.Algorithms,
+    ],
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    type: ProjectTypeEnum.Academic,
+    archived: true,
+    relatedMaterials: [ModuleDatabaseKeys.KCL_ComputerVision],
+  },
+  [ProjectDatabaseKeys.ComputerVisionQuizzes]: {
+    name: "Computer Vision Quizzes Solutions",
+    description: `
+      Solutions to Computer Vision quizzes from the course where various low-level and mid-level vision techniques were covered.
+      These techniques include edge detection, image segmentation, and image filtering.
+      `,
+    repositoryURL: "https://github.com/mbeps/computer-vision-quiz-assignment",
+    skills: [
+      SkillDatabaseKeys.Matlab,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.GitHub,
+
+      SkillDatabaseKeys.IntelligentAgents,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.ComputerVision,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.Probability,
+      SkillDatabaseKeys.LinearAlgebra,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Academic,
