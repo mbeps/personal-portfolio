@@ -1380,6 +1380,8 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.SymphonyTranslateBot,
       ProjectDatabaseKeys.SymphonyCobaGPTBot,
       ProjectDatabaseKeys.SymphonyServiceNowBot,
+
+      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
     ],
   },
   [ProjectDatabaseKeys.MarkdownToMessageMLConverter]: {
@@ -1414,6 +1416,8 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [
       ProjectDatabaseKeys.SymphonyCobaGPTBot,
       ProjectDatabaseKeys.SymphonyMessageMLBot,
+
+      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
     ],
   },
 
