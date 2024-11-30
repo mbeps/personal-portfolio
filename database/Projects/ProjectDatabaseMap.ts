@@ -978,7 +978,7 @@ const projectMap: Database<ProjectInterface> = {
       Replaces the old Translate Bot which was originally built using the outdated SDK.
       Much faster, more reliable, and easier to maintain and more features compared to the old bot.
       `,
-    category: ProjectCategoriesEnum.SymphonyBots,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
     skills: [
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.SpringBoot,
@@ -1016,7 +1016,7 @@ const projectMap: Database<ProjectInterface> = {
       This bot improves the workflow of users by providing quick responses to common questions and completing simple or repetitive tasks.
       This bot is a result of Commerzbank's initiative towards automation using AI.
       `,
-    category: ProjectCategoriesEnum.SymphonyBots,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
     skills: [
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.SpringBoot,
@@ -1054,7 +1054,7 @@ const projectMap: Database<ProjectInterface> = {
       A Symphony bot that sends messages to a Symphony chatroom using Webhooks.
       This bot is used to send messages to a chatroom from an external source.
       `,
-    category: ProjectCategoriesEnum.SymphonyBots,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
     skills: [
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.SpringBoot,
@@ -1089,7 +1089,7 @@ const projectMap: Database<ProjectInterface> = {
       A Symphony bot for sending messages in Symphony using MessageML.
       This allows the bot to send messages with more formatting and interactivity similar to HTML.
       `,
-    category: ProjectCategoriesEnum.SymphonyBots,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
     skills: [
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.SpringBoot,
@@ -1124,7 +1124,7 @@ const projectMap: Database<ProjectInterface> = {
     description: `
       A Symphony bot for creating tickets in ServiceNow and receiving updates within Symphony.
       `,
-    category: ProjectCategoriesEnum.SymphonyBots,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
     skills: [
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.SpringBoot,
@@ -1160,7 +1160,7 @@ const projectMap: Database<ProjectInterface> = {
     description: `
       A Symphony bot for creating polls and surveys for gathering feedback.
       `,
-    category: ProjectCategoriesEnum.SymphonyBots,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
     skills: [
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.SpringBoot,
@@ -1197,7 +1197,7 @@ const projectMap: Database<ProjectInterface> = {
       A Symphony bot responsible for keeping track of various Commerzbank applications' statuses.
       This then notifies the teams responsible for maintaining the applications on Symphony.
       `,
-    category: ProjectCategoriesEnum.SymphonyBots,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
     skills: [
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.SpringBoot,
@@ -1235,7 +1235,7 @@ const projectMap: Database<ProjectInterface> = {
       and generates a summary of the business highlights for the week.
       Uses Azure Active Directory for managing permissions and access control.
       `,
-    category: ProjectCategoriesEnum.SymphonyBots,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
     skills: [
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.SpringBoot,
@@ -1273,7 +1273,7 @@ const projectMap: Database<ProjectInterface> = {
       This bot is used to demonstrate how to create an interactive bot in Symphony.
       This was used to create documentation and tutorials for other developers.
       `,
-    category: ProjectCategoriesEnum.SymphonyBots,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
     skills: [
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.SpringBoot,
@@ -1310,7 +1310,7 @@ const projectMap: Database<ProjectInterface> = {
       This bot is used to demonstrate how to create a headless bot in Symphony.
       This was used to create documentation and tutorials for other developers.
       `,
-    category: ProjectCategoriesEnum.SymphonyBots,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
     skills: [
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.SpringBoot,
