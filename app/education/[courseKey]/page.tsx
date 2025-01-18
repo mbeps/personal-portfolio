@@ -10,15 +10,19 @@ import HeadingFour from "@/components/Text/HeadingFour";
 import HeadingThree from "@/components/Text/HeadingThree";
 import HeadingTwo from "@/components/Text/HeadingTwo";
 import Grid from "@/components/UI/Grid";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/shadcn/ui/accordion";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import developerName from "@/constants/developerName";
 import { EDUCATION_PAGE } from "@/constants/pages";
 import courseDatabaseMap from "@/database/Courses/CourseDatabaseMap";
 import CourseInterface from "@/database/Courses/CourseInterface";
 import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
-import moduleDatabaseMap, {
-  moduleDatabaseKeys,
-} from "@/database/Modules/ModuleDatabaseMap";
+import moduleDatabaseMap from "@/database/Modules/ModuleDatabaseMap";
 import ModuleInterface from "@/database/Modules/ModuleInterface";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
@@ -29,14 +33,7 @@ import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/shadcn/ui/accordion";
 import { GrAppsRounded } from "react-icons/gr";
-import Reader from "@/components/Reader/Reader";
 import { IoReaderOutline } from "react-icons/io5";
 
 type CoursesPageProps = {
@@ -175,8 +172,9 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
     ),
   ];
 
-  const hasArchivedModules: boolean =
-    filteredModules.length !== courseData.modules.length;
+  const hasArchivedModules: boolean = courseData.modules.some(
+    (moduleKey) => moduleDatabaseMap[moduleKey].archived
+  );
 
   return (
     <main>
@@ -243,7 +241,6 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
                 </div>
               )}
 
-              {/* University Name */}
               {/* University Name */}
               <div
                 className="
