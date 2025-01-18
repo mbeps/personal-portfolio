@@ -1,4 +1,5 @@
 - Natural language conversations 
+- Multiple topics 
 - Generating emails in various tones from rough notes
 - Summarising large text 
-- Writing code and scripts in various languages 
+- Translating text between various languages

@@ -1410,10 +1410,9 @@ const projectMap: Database<ProjectInterface> = {
 
   //^ Libraries
   [ProjectDatabaseKeys.BaseRestController]: {
-    name: "Base REST Controller",
+    name: "REST Template Config",
     description: `
-      A library for Spring Boot allowing for greater configurability and ease of use when creating REST controllers. 
-      Specifically, allows configuring SSL and proxy settings.
+      A library for Spring Boot allowing for greater configuration of proxies and SSL settings. 
       `,
     skills: [
       SkillDatabaseKeys.Java,
@@ -1649,9 +1648,10 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Communication,
     ],
     category: ProjectCategoriesEnum.Other,
-    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.OsmosGame),
     relatedMaterials: [ModuleDatabaseKeys.RHUL_ProgrammingLaboratory],
-    type: ProjectTypeEnum.Personal,
+    archived: true,
+    type: ProjectTypeEnum.Academic,
+    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.OsmosGame),
   },
   [ProjectDatabaseKeys.AutomatedSetup]: {
     name: `Automated Setup`,
