@@ -109,10 +109,6 @@ const RolePage: React.FC<RolePageProps> = ({ params }) => {
       ? "Present"
       : roleData.endDate.toString();
 
-  const timeInRole: string = currentDate.formatExperienceTime(
-    roleData.startDate
-  );
-
   const technologies: SkillDatabaseKeys[] = filterSkillsByType(
     roleData.skills,
     skillDatabaseMap,
@@ -267,7 +263,7 @@ const RolePage: React.FC<RolePageProps> = ({ params }) => {
                 { heading: "Location", value: companyData.location },
                 { heading: "Type", value: roleData.type },
                 { heading: "Category", value: roleData.category },
-                { heading: "Time in Role", value: timeInRole },
+                { heading: "Time in Role", value: roleData.timeInRole || "" },
                 { heading: "Start Date", value: roleData.startDate.toString() },
                 { heading: "End Date", value: endDate },
               ]}
