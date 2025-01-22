@@ -54,7 +54,7 @@ const courseMap: Database<CourseInterface> = {
       ProjectDatabaseKeys.MachineLearningAssignment1,
       ProjectDatabaseKeys.MachineLearningAssignment2,
       ProjectDatabaseKeys.MachineLearningAssignment3,
-      ProjectDatabaseKeys.MachineLearningLabQuestions,
+      ProjectDatabaseKeys.MachineLearningLabs,
       ProjectDatabaseKeys.ComputationalFinanceAssignment,
       ProjectDatabaseKeys.OsmosGame,
       ProjectDatabaseKeys.JavaCalculatorAssignment,

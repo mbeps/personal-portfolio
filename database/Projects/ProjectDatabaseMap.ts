@@ -926,7 +926,7 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.AdultIncomePrediction]: {
     name: "Adult Income Prediction",
     description: `
-      A project comparing various classification algorithms to predict whether an adult earns more than $50,000 a year.
+      Comparing various classification algorithms to predict whether an adult earns more than $50,000 a year.
       Emphasis is on feature engineering, data preprocessing with One-Hot Encoding, and model optimization through hyperparameter tuning.`,
     repositoryURL: "https://github.com/mbeps/Adults_Income_Prediction",
     skills: [
@@ -959,7 +959,7 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.HousePricePrediction]: {
     name: "House Price Prediction",
     description: `
-      A project comparing various regression algorithms to predict house prices in relation to the distance from the coast.
+      Comparing various regression algorithms to predict house prices in relation to the distance from the coast.
       Emphasis is on feature engineering, data preprocessing with One-Hot Encoding, and model optimization through hyperparameter tuning.`,
     repositoryURL: "https://github.com/mbeps/House_Price_Prediction",
     skills: [
@@ -993,8 +993,8 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.HousePricePrediction
     ),
   },
-  [ProjectDatabaseKeys.MachineLearningAlgorithmsAndTechniquesLab]: {
-    name: "Machine Learning Algorithms & Techniques Lab",
+  [ProjectDatabaseKeys.MachineLearningAlgorithms]: {
+    name: "Machine Learning Algorithms",
     description: `
       Practicing various algorithms and techniques.
       This includes supervised, unsupervised, and reinforcement learning algorithms, as well as feature engineering, data preprocessing, and hyperparameter tuning.
@@ -1035,7 +1035,7 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [CertificateDatabaseKeys.UdemyMachineLearningAtoZ],
     type: ProjectTypeEnum.Personal,
     thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.MachineLearningAlgorithmsAndTechniquesLab
+      ProjectDatabaseKeys.MachineLearningAlgorithms
     ),
   },
   [ProjectDatabaseKeys.ArtificialIntelligenceReinforcementLearning]: {
@@ -1082,7 +1082,7 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.MachineLearningAssignment1]: {
     name: `Machine Learning Assignment 1`,
     description: `
-      Be able to implement algorithms from scratch such as the Nearest Neighbours algorithm.
+      Implementing algorithms from scratch such as the Nearest Neighbours algorithm.
       Requires an understanding of the Mathematics behind the algorithms and the ability to implement them.
       `,
     repositoryURL: `https://github.com/mbeps/Machine-Learning-Assignment-1`,
@@ -1186,8 +1186,8 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.MachineLearningAssignment3
     ),
   },
-  [ProjectDatabaseKeys.MachineLearningLabQuestions]: {
-    name: `Machine Learning Lab Questions`,
+  [ProjectDatabaseKeys.MachineLearningLabs]: {
+    name: `Machine Learning Labs`,
     description: `
       Implemented various algorithms and techniques learnt during the course, 
       such as Nearest Neighbours, Conformal Prediction, Regression algorithms, data preprocessing, 
@@ -1221,13 +1221,13 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
     type: ProjectTypeEnum.Academic,
     thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.MachineLearningLabQuestions
+      ProjectDatabaseKeys.MachineLearningLabs
     ),
   },
   [ProjectDatabaseKeys.ComputationalFinanceAssignment]: {
     name: "Computational Finance Assignment",
     description: `
-      An assignment exploring valuation of options using methods like Black-Scholes, binomial trees, and Monte Carlo. 
+      Exploring valuation of options using methods like Black-Scholes, binomial trees, and Monte Carlo. 
       Also includes theoretical aspects of put-call parity and financial arbitrage opportunities.`,
     repositoryURL: `https://github.com/mbeps/Computation_Finance_Assignment`,
     skills: [
@@ -1267,7 +1267,7 @@ const projectMap: Database<ProjectInterface> = {
     name: "Machine Learning & Data Science Lab",
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     description: `
-      This lab mainly focuses on learning generative models, using third-party models and using advanced techniques. 
+      Focusing on learning generative models, using third-party models and using advanced techniques. 
       This includes techniques such as transfer learning, LLM Agents, and Generative Models.`,
     repositoryURL: "https://github.com/mbeps/Data-Science-Machine-Learning-Lab",
     skills: [
@@ -1309,7 +1309,7 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.PacmanGame]: {
     name: "Pacman Game",
     description: `
-      An assignment where an Pacman agent plays to win the game.
+      Pacman agent plays to win the game while handling stochasticity in the movement of agent and ghosts.
       Uses Markov Decision Processes, Value Iteration and other enhancements.
       `,
     repositoryURL: "https://github.com/mbeps/pacman-assignment",
@@ -1340,10 +1340,10 @@ const projectMap: Database<ProjectInterface> = {
     ],
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.PacmanGame),
   },
-  [ProjectDatabaseKeys.ComputerVisionImageSegmentationAssignment]: {
+  [ProjectDatabaseKeys.ComputerVisionImageSegmentation]: {
     name: "Computer Vision Image Segmentation",
     description: `
-      Computer Vision assignment where the task was to segment images using various techniques.
+      Segmenting images using various techniques.
       Specifically, used models of biological vision systems such as Simple and Complex cells, and Gabor filters.
       `,
     repositoryURL: "https://github.com/mbeps/computer-vision-assignment",
@@ -1372,13 +1372,13 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
     relatedMaterials: [ModuleDatabaseKeys.KCL_ComputerVision],
     thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.ComputerVisionImageSegmentationAssignment
+      ProjectDatabaseKeys.ComputerVisionImageSegmentation
     ),
   },
   [ProjectDatabaseKeys.ComputerVisionQuizzes]: {
-    name: "Computer Vision Quizzes Solutions",
+    name: "Computer Vision Quizzes",
     description: `
-      Solutions to Computer Vision quizzes from the course where various low-level and mid-level vision techniques were covered.
+      Solutions to quizzes where various low-level and mid-level vision techniques were covered.
       These techniques include edge detection, image segmentation, and image filtering.
       `,
     repositoryURL: "https://github.com/mbeps/computer-vision-quiz-assignment",

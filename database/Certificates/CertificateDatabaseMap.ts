@@ -53,9 +53,7 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.ObjectOrientedProgramming,
       SkillDatabaseKeys.Algorithms,
     ],
-    relatedMaterials: [
-      ProjectDatabaseKeys.MachineLearningAlgorithmsAndTechniquesLab,
-    ],
+    relatedMaterials: [ProjectDatabaseKeys.MachineLearningAlgorithms],
     description: `
       Learning and practicing various Machine Learning algorithms and techniques. This includes supervised, unsupervised, and reinforcement learning algorithms, as well as feature engineering, data preprocessing, and hyperparameter tuning. Some additional content in the field of Deep Learning and Neural Networks are also covered. `,
     learningOutcomes: [
