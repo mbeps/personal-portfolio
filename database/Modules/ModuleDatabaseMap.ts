@@ -694,7 +694,7 @@ const modulesMap: Database<ModuleInterface> = {
       ProjectDatabaseKeys.MachineLearningAssignment1,
       ProjectDatabaseKeys.MachineLearningAssignment2,
       ProjectDatabaseKeys.MachineLearningAssignment3,
-      ProjectDatabaseKeys.MachineLearningLabQuestions,
+      ProjectDatabaseKeys.MachineLearningLabs,
     ],
   },
   [ModuleDatabaseKeys.RHUL_ComputationalFinance]: {
@@ -877,7 +877,7 @@ const modulesMap: Database<ModuleInterface> = {
       "Implementing core computer vision algorithms and understanding their limitations",
     ],
     relatedMaterials: [
-      ProjectDatabaseKeys.ComputerVisionImageSegmentationAssignment,
+      ProjectDatabaseKeys.ComputerVisionImageSegmentation,
       ProjectDatabaseKeys.ComputerVisionQuizzes,
     ],
   },
