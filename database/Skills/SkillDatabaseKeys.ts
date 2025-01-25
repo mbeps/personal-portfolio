@@ -108,6 +108,8 @@ enum SkillDatabaseKeys {
   SQLAlchemy = "sqlalchemy",
   TypeORM = "typeorm",
   Hibernate = "hibernate",
+  SpringDataJPA = "spring-data-jpa",
+  SpringDataMongoDB = "spring-data-mongodb",
   ObjectRelationalMapping = "object-relational-mapping",
 
   //^ DevOps
