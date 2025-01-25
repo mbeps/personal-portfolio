@@ -31,7 +31,7 @@
     "autoprefixer": "^10.4.20",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
-    "cmdk": "^1.0.0",
+    "cmdk": "1.0.0",
     "embla-carousel-react": "^8.0.0-rc19",
     "eslint": "9.13.0",
     "eslint-config-next": "^15.0.1",
