@@ -34,7 +34,7 @@ type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 export async function generateMetadata(
   props: { params: Params; searchParams: SearchParams },
   parent: ResolvingMetadata
-): Promise<Metadata> {
+): Promise<Metadata | undefined> {
   const resolvedParams = await props.params;
   const skillKey: string = resolvedParams.skillKey;
   const skill: SkillInterface | undefined =
@@ -44,10 +44,13 @@ export async function generateMetadata(
     notFound();
   }
 
-  return {
-    title: `${developerName} - Skills: ${skill?.name}`,
-    description: skill.name,
-  };
+  if (skill.isMainSkill) {
+    return {
+      title: `${developerName} - Skills: ${skill?.name}`,
+      description: skill.name,
+      keywords: [skill.name],
+    };
+  }
 }
 
 /**

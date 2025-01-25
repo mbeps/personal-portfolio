@@ -19,7 +19,10 @@ import companyDatabaseMap from "@/database/Companies/CompanyDatabaseMap";
  */
 export const metadata: Metadata = {
   title: `${developerName} - ${EXPERIENCE_PAGE.label}`,
-  description: EXPERIENCE_PAGE.description,
+  description: `A list of all work experience and volunteering roles that ${developerName} has completed. 
+  The latest role is as a ${Object.values(rolesDatabase)[0].name} at ${
+    companyDatabaseMap[Object.values(rolesDatabase)[0].company].name
+  }.`,
   category: `${EXPERIENCE_PAGE.label}`,
   creator: developerName,
   keywords: Object.values(rolesDatabase).map((role) => role.name),

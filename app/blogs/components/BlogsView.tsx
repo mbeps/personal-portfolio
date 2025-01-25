@@ -14,13 +14,13 @@ import FilterSection from "@/components/Filters/FilterSection";
 import BlogsList from "@/components/MaterialLists/BlogsList";
 import { BLOG_PAGE } from "@/constants/pages";
 import BlogDatabaseKeys from "@/database/Blogs/BlogDatabaseKeys";
+import BlogInterface from "@/database/Blogs/BlogInterface";
 import blogsDatabaseMap from "@/database/Blogs/BlogsDatabaseMap";
-import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import useFuseMaterialSearch from "@/hooks/useFuseSearch/useFuseMaterialSearch";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
-import BlogInterface from "@/database/Blogs/BlogInterface";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import { usePathname, useSearchParams } from "next/navigation";
 
