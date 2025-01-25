@@ -18,7 +18,8 @@ import ProjectsView from "./components/ProjectsView";
  */
 export const metadata: Metadata = {
   title: `${developerName} - ${PROJECTS_PAGE.label}`,
-  description: PROJECTS_PAGE.description,
+  description: `A list of all projects that ${developerName} has worked on.
+  These include projects in web development, software engineering, Artificial Intelligence, Machine Learning and more.`,
   category: `${PROJECTS_PAGE.label}`,
   creator: developerName,
   keywords: Object.values(projectDatabaseMap).map((project) => project.name),

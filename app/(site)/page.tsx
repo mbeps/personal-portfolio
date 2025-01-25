@@ -14,10 +14,12 @@ const aboutContent: string | undefined = getMarkdownFromFileSystem(
 
 export const metadata: Metadata = {
   title: developerName,
-  description: aboutContent || HOME_PAGE.description,
+  description: `${
+    aboutContent || HOME_PAGE.description
+  }. My main programming languages are Python, Java, JavaScript, and TypeScript.`,
   category: "Homepage",
   creator: developerName,
-  keywords: subtitles,
+  keywords: [...subtitles, "Python", "Java", "JavaScript", "TypeScript"],
 };
 
 /**

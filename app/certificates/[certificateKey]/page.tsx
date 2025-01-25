@@ -14,7 +14,6 @@ import certificateDatabaseMap from "@/database/Certificates/CertificateDatabaseM
 import CertificateInterface from "@/database/Certificates/CertificateInterface";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
-import MaterialTypeEnum from "@/enums/Material/MaterialTypeEnum";
 import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import { Metadata, ResolvingMetadata } from "next";

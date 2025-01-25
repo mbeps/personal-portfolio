@@ -19,7 +19,8 @@ import { SKILL_PAGE } from "@/constants/pages";
  */
 export const metadata = {
   title: `${developerName} - Skills`,
-  description: SKILL_PAGE.description,
+  description: `A list of all skills that ${developerName} has.
+  These skills have been demonstrated in various projects, work experiences, education, certifications/online courses, and blogs.`,
   category: `${SKILL_PAGE.label}`,
   creator: developerName,
   keywords: Object.values(skillDatabaseMap).map((skill) => skill.name),

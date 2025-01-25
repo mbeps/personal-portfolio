@@ -18,7 +18,8 @@ import blogsDatabaseMap from "@/database/Blogs/BlogsDatabaseMap";
  */
 export const metadata: Metadata = {
   title: `${developerName} - ${BLOG_PAGE.label}`,
-  description: BLOG_PAGE.description,
+  description: `A list of all blogs and articles written by ${developerName}. 
+  Topics include web development, software engineering, Artificial Intelligence, Machine Learning and more.`,
   category: `${BLOG_PAGE.label}`,
   creator: developerName,
   keywords: Object.values(blogsDatabaseMap).map((blog) => blog.name),

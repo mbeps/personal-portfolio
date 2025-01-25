@@ -21,7 +21,8 @@ import type { Metadata } from "next";
  */
 export const metadata: Metadata = {
   title: `${developerName} - ${EDUCATION_PAGE.label}`,
-  description: EDUCATION_PAGE.description,
+  description: `Educational background and qualifications of ${developerName}. 
+  These include a Bachelor's degree in Computer Science (from Royal Holloway University) and a Master's degree in Artificial Intelligence (from King's College London).`,
   category: `${EDUCATION_PAGE.label}`,
   creator: developerName,
   keywords: Object.values(courseDatabaseMap).map((course) => course.name),

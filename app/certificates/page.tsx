@@ -19,7 +19,8 @@ import certificateDatabaseMap from "@/database/Certificates/CertificateDatabaseM
  */
 export const metadata: Metadata = {
   title: `${developerName} - ${CERTIFICATES_PAGE.label}`,
-  description: CERTIFICATES_PAGE.description,
+  description: `A list of all certificates and online courses that ${developerName} has completed. 
+  These include certifications in web development, software engineering, and Artificial Intelligence, Machine Learning and more.`,
   category: `${CERTIFICATES_PAGE.label}`,
   creator: developerName,
   keywords: Object.values(certificateDatabaseMap).map(
