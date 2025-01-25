@@ -404,7 +404,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
       </Accordion>
 
       {/* List of Skills */}
-      <div className="mt-4 text-center md:text-left space-y-16">
+      <div className="mt-4 text-center md:text-left space-y-20">
         {groupedSkills.length > 0 ? (
           groupedSkills.map((categoryData) => (
             <div key={categoryData.skillCategoryName}>

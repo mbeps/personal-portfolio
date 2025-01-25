@@ -170,7 +170,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
               </div>
 
               {/* List of skills */}
-              <div className="space-y-1">
+              <div className="space-y-16">
                 {groupedSkills.map((categoryData, index) => (
                   <div key={index} className="text-center md:text-left">
                     <HeadingThree title={categoryData.skillCategoryName} />

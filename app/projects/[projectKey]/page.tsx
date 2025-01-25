@@ -287,7 +287,7 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
         </p>
 
         {/* Metadata Section */}
-        <div className="mt-4 space-y-12">
+        <div className="mt-4 space-y-24">
           {/* Description Section */}
           <div className="text-center md:text-left">
             <HeadingThree title="Description" />

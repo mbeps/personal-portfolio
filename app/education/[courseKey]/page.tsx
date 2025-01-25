@@ -256,7 +256,7 @@ const CoursesPage: React.FC<{
           </div>
         </div>
 
-        <div className="space-y-14">
+        <div className="space-y-24">
           <div>
             <div className="text-center lg:text-left">
               <HeadingThree title="Modules" />
