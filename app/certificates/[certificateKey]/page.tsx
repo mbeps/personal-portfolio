@@ -193,7 +193,7 @@ const CertificatesPage: React.FC<{ params: Params }> = async ({ params }) => {
             </p>
           </div>
 
-          <div className="space-y-14">
+          <div className="space-y-24">
             {/* Certificate Description */}
             {certificateData.description && (
               <div className="flex flex-col">

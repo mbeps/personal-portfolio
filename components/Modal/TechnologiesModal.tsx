@@ -164,7 +164,7 @@ const TechnologiesModal: React.FC = () => {
             </div>
 
             {/* List of Skills */}
-            <div className="mt-4 text-center md:text-left space-y-14">
+            <div className="mt-4 text-center md:text-left space-y-16">
               {groupedSkills.map((categoryData, index) => (
                 <div key={index}>
                   <HeadingThree title={categoryData.skillCategoryName} />

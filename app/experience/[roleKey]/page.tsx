@@ -204,7 +204,7 @@ const RolePage: React.FC<{ params: Params }> = async ({ params }) => {
         )}
 
         {/* Details */}
-        <div className="space-y-16">
+        <div className="space-y-24">
           <div className="space-y-4">
             <div className="text-center lg:text-left">
               <HeadingThree title="Details" />
