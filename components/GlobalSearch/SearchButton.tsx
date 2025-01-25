@@ -127,7 +127,9 @@ const GlobalSearch: React.FC = () => {
       items: moduleDatabaseKeys.map((key) => {
         const courseKey = findCourseKeyForModule(key, CourseDatabaseMap);
         return {
-          name: `Module: ${moduleDatabaseMap[key].name}`,
+          name: `Module: ${moduleDatabaseMap[key].name} (${
+            courseDatabaseMap[moduleDatabaseMap[key].parentCourse].name
+          })`,
           link: courseKey
             ? `${EDUCATION_PAGE.path}/${courseKey}/${key}`
             : `/education`,
