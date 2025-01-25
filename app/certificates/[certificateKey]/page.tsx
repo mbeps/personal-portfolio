@@ -24,6 +24,9 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle } from "react-icons/bs";
 
+type Params = Promise<{ certificateKey: string }>;
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
+
 /**
  * Generates the metadata for the certificates page.
  * This includes the title and description of the page.
@@ -35,11 +38,11 @@ import { BsArrowUpRightCircle } from "react-icons/bs";
  * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
  */
 export async function generateMetadata(
-  { params, searchParams }: CertificatesPageProps,
+  props: { params: Params; searchParams: SearchParams },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  // Read route params
-  const certificateKey: string = params.certificateKey;
+  const resolvedParams = await props.params;
+  const certificateKey: string = resolvedParams.certificateKey;
   const certificate: CertificateInterface =
     certificateDatabaseMap[certificateKey];
 
@@ -57,24 +60,15 @@ export async function generateMetadata(
 }
 
 /**
- * Generates the metadata for the skill page.
- * This includes the title and description of the page.
- * This is used for SEO purposes.
+ * Generates the static params for certificates.
+ * This includes the list of all certificate keys.
  *
- * @param props The props for the skill page.
- * @param parent The parent metadata that is being resolved.
- * @returns The metadata for the skill page.
- * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ * @returns The params for each certificate.
  */
 export const generateStaticParams = async () => {
   return Object.keys(certificateDatabaseMap).map((certificateKey) => ({
     certificateKey,
   }));
-};
-
-type CertificatesPageProps = {
-  params: { certificateKey: string };
-  searchParams: { [key: string]: string | string[] | undefined };
 };
 
 /**
@@ -92,11 +86,12 @@ type CertificatesPageProps = {
  * - The skills covered in the certificate
  * - Related materials
  *
- * @param params Parameters for the certificate page
+ * @param props Parameters for the certificate page
  * @returns Page displaying the certificate and its details
  */
-const CertificatesPage: React.FC<CertificatesPageProps> = ({ params }) => {
-  const certificateKey: string = params.certificateKey;
+const CertificatesPage: React.FC<{ params: Params }> = async ({ params }) => {
+  const resolvedParams = await params;
+  const certificateKey: string = resolvedParams.certificateKey;
   const certificateData: CertificateInterface =
     certificateDatabaseMap[certificateKey];
 

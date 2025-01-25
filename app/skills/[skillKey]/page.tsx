@@ -18,6 +18,9 @@ import materialDatabaseMap, {
 } from "@/database/Materials/MaterialDatabaseMap";
 import { SKILL_PAGE } from "@/constants/pages";
 
+type Params = Promise<{ skillKey: string }>;
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
+
 /**
  * Generates the metadata for the skill page.
  * This includes the title and description of the page.
@@ -29,10 +32,11 @@ import { SKILL_PAGE } from "@/constants/pages";
  * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
  */
 export async function generateMetadata(
-  { params, searchParams }: ProjectPageProps,
+  props: { params: Params; searchParams: SearchParams },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const skillKey: string = params.skillKey;
+  const resolvedParams = await props.params;
+  const skillKey: string = resolvedParams.skillKey;
   const skill: SkillInterface | undefined =
     skillDatabaseMap[skillKey as SkillDatabaseKeys];
 
@@ -48,31 +52,29 @@ export async function generateMetadata(
 
 /**
  * Generates the static paths for the skills.
- * These are then used to pre-render the projects pages.
- * This Incremental Static Regeneration allows the projects to be displayed without a server.
- * This improves the performance of the website.
+ * These are then used to pre-render the skill pages.
  *
- * @returns A list of all the keys for the static pages that need to be generated.
- * @see https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration
+ * @returns A list of all skill keys for static page generation.
  */
 export const generateStaticParams = async () => {
   return skillDatabaseKeys.map((skillKey) => ({ skillKey }));
 };
 
-interface ProjectPageProps {
-  params: { skillKey: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+interface SkillPageProps {
+  params: Params;
+  searchParams: SearchParams;
 }
 
 /**
  * Page displaying all the material related to a given skill and its sub-skills.
  * This includes projects, blogs, and certificates.
  *
- * @param param0 The data for the skill page.
+ * @param props The data for the skill page.
  * @returns Skill page that displays all the material related to a given skill.
  */
-const SkillPage: React.FC<ProjectPageProps> = ({ params }) => {
-  const skillKey: string = params.skillKey;
+const SkillPage: React.FC<{ params: Params }> = async ({ params }) => {
+  const resolvedParams = await params;
+  const skillKey: string = resolvedParams.skillKey;
   const skillData: SkillInterface =
     skillDatabaseMap[skillKey as SkillDatabaseKeys];
 

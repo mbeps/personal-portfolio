@@ -7,6 +7,7 @@ import {
   CommandGroup,
   CommandInput,
   CommandItem,
+  CommandList,
 } from "@/components/shadcn/ui/command";
 import {
   Popover,
@@ -139,18 +140,20 @@ const FilterPopover: React.FC<FilterPopover> = ({
                 )}
                 className="w-full"
               >
-                <CommandItem
-                  key={option.slug}
-                  value={option.slug}
-                  className="pr-4 w-full"
-                >
-                  {selectedFilterCategory.selectedValue === option.slug ? (
-                    <Check className={cn(gap, "text-red-500")} />
-                  ) : (
-                    <div className={gap}></div>
-                  )}
-                  {option.entryName}
-                </CommandItem>
+                <CommandList>
+                  <CommandItem
+                    key={option.slug}
+                    value={option.slug}
+                    className="pr-4 w-full"
+                  >
+                    {selectedFilterCategory.selectedValue === option.slug ? (
+                      <Check className={cn(gap, "text-red-500")} />
+                    ) : (
+                      <div className={gap}></div>
+                    )}
+                    {option.entryName}
+                  </CommandItem>
+                </CommandList>
               </Link>
             ))}
           </CommandGroup>

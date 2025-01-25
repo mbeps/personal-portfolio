@@ -13,6 +13,7 @@ import {
   CommandGroup,
   CommandInput,
   CommandItem,
+  CommandList,
 } from "@/components/shadcn/ui/command";
 import {
   DropdownMenu,
@@ -359,20 +360,22 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
                                   )}
                                   className="w-full"
                                 >
-                                  <CommandItem
-                                    key={filter.urlParamName}
-                                    value={filter.urlParamName}
-                                    className="w-full"
-                                  >
-                                    {!filter.selected ? (
-                                      <Check
-                                        className={cn(gap, "text-red-500")}
-                                      />
-                                    ) : (
-                                      <div className={gap}></div>
-                                    )}
-                                    {filter.entryName}
-                                  </CommandItem>
+                                  <CommandList>
+                                    <CommandItem
+                                      key={filter.urlParamName}
+                                      value={filter.urlParamName}
+                                      className="w-full"
+                                    >
+                                      {!filter.selected ? (
+                                        <Check
+                                          className={cn(gap, "text-red-500")}
+                                        />
+                                      ) : (
+                                        <div className={gap}></div>
+                                      )}
+                                      {filter.entryName}
+                                    </CommandItem>
+                                  </CommandList>
                                 </Link>
                               ))}
                             </CommandGroup>

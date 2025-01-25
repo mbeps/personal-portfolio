@@ -34,12 +34,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { GrAppsRounded } from "react-icons/gr";
+import Reader from "@/components/Reader/Reader";
 import { IoReaderOutline } from "react-icons/io5";
 
-type CoursesPageProps = {
-  params: { courseKey: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
+type Params = Promise<{ courseKey: string }>;
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
 /**
  * Generates the metadata for the course page.
@@ -52,39 +51,31 @@ type CoursesPageProps = {
  * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
  */
 export async function generateMetadata(
-  { params, searchParams }: CoursesPageProps,
+  props: { params: Params; searchParams: SearchParams },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  // Read route params
-  const courseKey: string = params.courseKey;
+  const resolvedParams = await props.params;
+  const courseKey: string = resolvedParams.courseKey;
   const course: CourseInterface = courseDatabaseMap[courseKey];
 
   if (!course) {
     notFound();
   }
 
-  // Create metadata based on the course details
   return {
     title: `${developerName} - Courses: ${course?.name} at ${course?.university}`,
     description: `${course.grade} in ${course.name} from ${course?.university}`,
     category: `${EDUCATION_PAGE.label}`,
     creator: developerName,
-    keywords: [
-      course.name,
-      course.university,
-      // ...course?.modules.map((module) => moduleDatabaseMap[module].name),
-    ],
+    keywords: [course.name, course.university],
   };
 }
 
 /**
  * Generates the static paths for the courses.
  * These are then used to pre-render the courses pages.
- * This Incremental Static Regeneration allows the courses to be displayed without a server.
- * This improves the performance of the website.
  *
  * @returns A list of all the keys for the static pages that need to be generated.
- * @see https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration
  */
 export const generateStaticParams = async () => {
   return Object.keys(courseDatabaseMap).map((courseKey) => ({
@@ -108,8 +99,14 @@ export const generateStaticParams = async () => {
  * @param props Details about the page
  * @returns The course page
  */
-const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
-  const courseKey: string = params.courseKey;
+const CoursesPage: React.FC<{
+  params: Params;
+  searchParams: SearchParams;
+}> = async ({ params, searchParams }) => {
+  const resolvedParams = await params;
+  const resolvedSearchParams = await searchParams;
+
+  const courseKey: string = resolvedParams.courseKey;
   const courseData: CourseInterface = courseDatabaseMap[courseKey];
   const basePath: string = EDUCATION_PAGE.path;
 
@@ -117,7 +114,8 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
     notFound();
   }
 
-  const showArchived: boolean = (searchParams.archived || "false") === "true";
+  const showArchived: boolean =
+    (resolvedSearchParams.archived || "false") === "true";
   const hasRelatedMaterials: boolean =
     !!courseData.relatedMaterials && courseData.relatedMaterials.length > 0;
 
@@ -198,29 +196,11 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
       <div>
         <HeadingTwo title={courseData.name} />
 
-        <div
-          className="
-					space-x-0 lg:space-x-6"
-        >
+        <div className="space-x-0 lg:space-x-6">
           <div className="py-5 w-full">
-            {/* Logo and name section */}
-            <div
-              className="
-                flex
-                items-center justify-center 
-                flex-col md:flex-row 
-              "
-            >
-              {/* Logo */}
+            <div className="flex items-center justify-center flex-col md:flex-row">
               {courseData.logo && (
-                <div
-                  className="
-                    rounded-full 
-                    shadow-lg 
-                    transition-all duration-500 ease-in-out
-                    w-[75px] h-[75px]
-                  "
-                >
+                <div className="rounded-full shadow-lg transition-all duration-500 ease-in-out w-[75px] h-[75px]">
                   <AspectRatio
                     ratio={1 / 1}
                     className="overflow-hidden relative w-full bg-white rounded-full"
@@ -229,11 +209,7 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
                       src={courseData.logo}
                       alt={`Logo for ${courseData.name}`}
                       fill={true}
-                      className="
-                        rounded-full 
-                        shadow-lg object-cover
-                        transition-all duration-500 ease-in-out
-                        "
+                      className="rounded-full shadow-lg object-cover transition-all duration-500 ease-in-out"
                       quality={30}
                       priority
                     />
@@ -333,27 +309,13 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
                               size={26}
                               className="text-neutral-500"
                             />
-                            <p
-                              className="
-                              text-lg 
-                              text-neutral-600 dark:text-neutral-400
-                              font-semibold
-                              "
-                            >
+                            <p className="text-lg text-neutral-600 dark:text-neutral-400 font-semibold">
                               Certificate
                             </p>
                           </div>
                         </AccordionTrigger>
                         <AccordionContent className="px-2 flex items-center justify-center">
-                          <div
-                            className="
-                              rounded-xl
-                              w-full lg:w-1/2
-                              transition-all duration-500 ease-in-out
-                              p-1 lg:p-3
-                              bg-neutral-100 dark:bg-neutral-950  
-                            "
-                          >
+                          <div className="rounded-xl w-full lg:w-1/2 transition-all duration-500 ease-in-out p-1 lg:p-3 bg-neutral-100 dark:bg-neutral-950">
                             <AspectRatio
                               ratio={1 / 1.4}
                               className="overflow-hidden relative"
@@ -365,10 +327,7 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
                                 fill={true}
                                 loading="lazy"
                                 quality={15}
-                                className="
-                                  rounded-xl 
-                                  object-cover
-                                "
+                                className="rounded-xl object-cover"
                               />
                             </AspectRatio>
                           </div>
@@ -386,13 +345,7 @@ const CoursesPage: React.FC<CoursesPageProps> = ({ params, searchParams }) => {
                     <AccordionTrigger>
                       <div className="flex items-center space-x-3">
                         <GrAppsRounded size={25} className="text-neutral-500" />
-                        <p
-                          className="
-                          text-lg 
-                          text-neutral-600 dark:text-neutral-400
-                          font-semibold
-                          "
-                        >
+                        <p className="text-lg text-neutral-600 dark:text-neutral-400 font-semibold">
                           Related Material
                         </p>
                       </div>
