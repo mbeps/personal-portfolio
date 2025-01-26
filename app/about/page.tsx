@@ -118,7 +118,7 @@ export default function About() {
             className="
               lg:w-[25%]
               space-y-5 lg:space-y-10 
-              p-0 lg:p-4 
+              p-4 lg:p-4 
               bg-white dark:bg-neutral-950 
               border border-neutral-200 dark:border-neutral-700
               rounded-lg"
