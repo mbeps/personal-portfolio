@@ -969,7 +969,6 @@ const modulesMap: Database<ModuleInterface> = {
     parentCourse: CourseDatabaseKeys.KCL_ArtificialIntelligence,
     skills: [
       SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.Matlab,
       SkillDatabaseKeys.Algorithms,
       SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.LinearAlgebra,
@@ -1004,7 +1003,6 @@ const modulesMap: Database<ModuleInterface> = {
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.RLanguage,
-      SkillDatabaseKeys.Matlab,
       SkillDatabaseKeys.ObjectOrientedProgramming,
       SkillDatabaseKeys.FunctionalProgramming,
       SkillDatabaseKeys.MachineLearning,
@@ -1060,7 +1058,6 @@ const modulesMap: Database<ModuleInterface> = {
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.RLanguage,
-      SkillDatabaseKeys.Matlab,
       SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.DeepLearning,
       SkillDatabaseKeys.ArtificialIntelligence,

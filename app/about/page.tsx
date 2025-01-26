@@ -7,6 +7,7 @@ import DetailsTable from "@/components/UI/DetailsTable";
 import developerName from "@/constants/developerName";
 import experienceTime from "@/constants/experience";
 import subtitles from "@/constants/subtitles";
+import CertificateDatabaseKeys from "@/database/Certificates/CertificateDatabaseKeys";
 import companyDatabaseMap from "@/database/Companies/CompanyDatabaseMap";
 import CourseDatabaseKeys from "@/database/Courses/CourseDatabaseKeys";
 import courseDatabaseMap from "@/database/Courses/CourseDatabaseMap";
@@ -55,12 +56,23 @@ export default function About() {
   // Projects
   const numberOfProjects: number = Object.keys(ProjectDatabaseKeys).length;
 
+  // Certificates
+  const numberOfCertificates: number = Object.keys(
+    CertificateDatabaseKeys
+  ).length;
+
   // Featured material
   const featuredMaterial: string[] = [
     RoleDatabaseKeys.CommerzbankDevOpsEngineer,
     RoleDatabaseKeys.GoogleRHULDevelopersClubSoftwareEngineer,
     ProjectDatabaseKeys.CircusDiscussions,
+    ProjectDatabaseKeys.RingmasterMessaging,
+    ProjectDatabaseKeys.MagicianAI,
     ProjectDatabaseKeys.HousePricePrediction,
+    ProjectDatabaseKeys.AdultIncomePrediction,
+    ProjectDatabaseKeys.MachineLearningLabs,
+    ProjectDatabaseKeys.MachineLearningDataScienceLab,
+    ProjectDatabaseKeys.ArtificialIntelligenceReinforcementLearning,
     ProjectDatabaseKeys.Noodle,
   ];
 
@@ -97,23 +109,33 @@ export default function About() {
         "
         >
           {/* Left section */}
-          <div className="lg:w-full">
+          <div className="lg:w-[75%]">
             <Reader content={aboutContent} size="lg:prose-lg" />
           </div>
 
           {/* Right section */}
-          <div className="lg:w-auto space-y-5 lg:space-y-10">
+          <div
+            className="
+              lg:w-[25%]
+              space-y-5 lg:space-y-10 
+              p-4 lg:p-4 
+              bg-white dark:bg-neutral-950 
+              border border-neutral-200 dark:border-neutral-700
+              rounded-lg"
+          >
             {/* Profile Image */}
-            <Image
-              src="/profile.png"
-              alt="Profile image of the developer"
-              width={250}
-              height={250}
-              className="rounded-full shadow-xl hidden lg:block mt-8"
-              quality={60}
-              loading="eager"
-              priority
-            />
+            <div className="flex justify-center">
+              <Image
+                src="/profile.png"
+                alt="Profile image of the developer"
+                width={250}
+                height={250}
+                className="rounded-full shadow-xl hidden lg:block mt-8 align-center"
+                quality={60}
+                loading="eager"
+                priority
+              />
+            </div>
 
             {/* Social Icons */}
             <div className="flex justify-center">
@@ -142,8 +164,22 @@ export default function About() {
                   value:
                     1 === experienceTime ? "1 year" : `${experienceTime} years`,
                 },
+                {
+                  heading: "Main Focus",
+                  value:
+                    "Full-Stack Development, Backend Software Engineering & Artificial Intelligence",
+                },
+                { heading: "Number of Projects", value: `${numberOfProjects}` },
+                {
+                  heading: "Number of Certificates",
+                  value: `${numberOfCertificates}`,
+                },
+                {
+                  heading: "Main Programming Languages",
+                  value: `Python, Java, JavaScript, TypeScript`,
+                },
               ]}
-              className="grid-cols-1 md:grid-cols-2 lg:grid-cols-1 lg:max-w-[220px]"
+              className="grid-cols-1 md:grid-cols-2 lg:grid-cols-1 lg:max-w-[220px] gap-12"
             />
           </div>
         </div>
