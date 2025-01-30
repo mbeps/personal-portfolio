@@ -7,7 +7,8 @@ import Reader from "./Reader";
 
 type SpecialReaderProps = {
   content: string;
-  previousPage: string;
+  previousPagePath: string;
+  previousPageName: string;
 };
 
 /**
@@ -21,7 +22,8 @@ type SpecialReaderProps = {
  */
 const SpecialReader: React.FC<SpecialReaderProps> = ({
   content,
-  previousPage,
+  previousPagePath,
+  previousPageName,
 }) => {
   /**
    * Splits a blog into 2 sections: contents and articles.
@@ -61,10 +63,10 @@ const SpecialReader: React.FC<SpecialReaderProps> = ({
   return (
     <>
       <div className="flex flex-col lg:flex-row justify-between mb-6 space-y-2 px-0 lg:px-20">
-        <Link href={previousPage}>
+        <Link href={previousPagePath}>
           <Button className="pl-3">
             <MdKeyboardArrowLeft size={24} className="mr-2" />
-            Back to Blogs
+            {`Back to ${previousPageName}`}
           </Button>
         </Link>
         <ContentsSection contentSection={splitBlot.contentsSection} />

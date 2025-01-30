@@ -153,7 +153,11 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
           </h3>
         </div>
 
-        <SpecialReader content={blogContent} previousPage={BLOG_PAGE.path} />
+        <SpecialReader
+          content={blogContent}
+          previousPagePath={BLOG_PAGE.path}
+          previousPageName={BLOG_PAGE.label}
+        />
 
         <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
 
