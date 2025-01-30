@@ -18,7 +18,8 @@ import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MdKeyboardArrowLeft } from "react-icons/md";
-import ContentsSection from "./components/ContentsSection";
+import ContentsSection from "../../../components/Reader/ContentsSection";
+import SpecialReader from "@/components/Reader/SpecialReader";
 
 type Params = Promise<{ blogKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
@@ -129,42 +130,6 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
     ),
   ];
 
-  /**
-   * Splits a blog into 2 sections: contents and articles.
-   * The contents section is the part of the blog before the first heading.
-   * The article section is the part of the blog after the first heading.
-   *
-   * @param blogContent Markdown blog that needs to be split into contents and article sections
-   * @returns 2 sections: contents list and articles
-   */
-  function splitBlogContent(blogContent: string): {
-    contentsSection: string;
-    articleSection: string;
-  } {
-    // Regular expression to find the first heading (starting with #, ##, etc.)
-    const headingRegex = /^#{1,6} /m;
-
-    // Find the index of the first heading
-    const firstHeadingIndex: number = blogContent.search(headingRegex);
-
-    // If a heading is found, split the content
-    if (firstHeadingIndex !== -1) {
-      const contentsSection: string = blogContent
-        .slice(0, firstHeadingIndex)
-        .trim();
-      const articleSection: string = blogContent
-        .slice(firstHeadingIndex)
-        .trim();
-
-      return { contentsSection, articleSection };
-    }
-
-    // If no heading is found, return the entire content as the articleSection, and leave contentsSection empty
-    return { contentsSection: "", articleSection: blogContent.trim() };
-  }
-
-  const splitBlot = splitBlogContent(blogContent);
-
   return (
     <main>
       <div className="sr-only">
@@ -188,20 +153,11 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
           </h3>
         </div>
 
-        <div className="flex flex-col lg:flex-row justify-between mb-6 space-y-2 px-0 lg:px-20">
-          <Link href={BLOG_PAGE.path}>
-            <Button className="pl-3">
-              <MdKeyboardArrowLeft size={24} className="mr-2" />
-              Back to Blogs
-            </Button>
-          </Link>
-          <ContentsSection contentSection={splitBlot.contentsSection} />
-        </div>
-
-        {/* Article */}
-        <div className="px-0 lg:px-20 w-full">
-          <Reader content={splitBlot.articleSection} size="lg:prose-lg" />
-        </div>
+        <SpecialReader
+          content={blogContent}
+          previousPagePath={BLOG_PAGE.path}
+          previousPageName={BLOG_PAGE.label}
+        />
 
         <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
 
