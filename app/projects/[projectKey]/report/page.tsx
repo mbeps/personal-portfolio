@@ -1,13 +1,10 @@
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
 import SpecialReader from "@/components/Reader/SpecialReader";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import developerName from "@/constants/developerName";
 import { PROJECTS_PAGE } from "@/constants/pages";
 import projectDatabaseMap from "@/database/Projects/ProjectDatabaseMap";
 import ProjectInterface from "@/database/Projects/ProjectInterface";
-import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
-import React from "react";
 
 // Update the type definitions
 type Params = { projectKey: string };
@@ -22,13 +19,14 @@ type PageProps = {
  * @param props Key of the parent project page
  * @returns Page that displays the report for a project
  */
-const ModulePage = async ({ params }: PageProps) => {
+const ProjectReportPage = async ({ params }: PageProps) => {
   const resolvedParams = await params;
   const projectKey: string = resolvedParams.projectKey;
   const projectData: ProjectInterface = projectDatabaseMap[projectKey];
+  const basePath: string = PROJECTS_PAGE.path;
 
   const reportBlog: string | undefined = getMarkdownFromFileSystem(
-    `public${PROJECTS_PAGE.path}/${projectKey}/blog.md`
+    `public${basePath}/${projectKey}/blog.md`
   )?.content;
 
   const hasBlog: boolean = !!reportBlog;
@@ -54,37 +52,23 @@ const ModulePage = async ({ params }: PageProps) => {
 };
 
 /**
- * Generates the metadata for the project report page.
- * This includes the title and description of the page.
- * This is used for SEO purposes.
+ * Generates the static paths for the project reports.
+ * These paths are used to pre-render the report pages.
  *
- * @param props The props for the project report page.
- * @param parent The parent metadata that is being resolved.
- * @returns The metadata for the project page.
- * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ * @returns A list of all project keys that have reports for static page generation.
  */
-export async function generateMetadata(
-  { params }: { params: Promise<Params> },
-  parent: ResolvingMetadata
-): Promise<Metadata | undefined> {
-  const resolvedParams = await params;
-  const projectKey: string = resolvedParams.projectKey;
-  const project: ProjectInterface = projectDatabaseMap[projectKey];
+export const generateStaticParams = async () => {
+  return Object.keys(projectDatabaseMap)
+    .filter((projectKey) => {
+      // Only include projects that have a blog/report file
+      const reportExists = getMarkdownFromFileSystem(
+        `public${PROJECTS_PAGE.path}/${projectKey}/blog.md`
+      )?.content;
+      return !!reportExists;
+    })
+    .map((projectKey) => ({
+      projectKey,
+    }));
+};
 
-  if (!project) {
-    notFound();
-  }
-
-  if (!project.archived) {
-    return {
-      title: `${developerName} - Project Report: ${project?.name}`,
-      description: `Report for the project ${project?.name}`,
-      category: `${PROJECTS_PAGE.label}`,
-      creator: developerName,
-    };
-  }
-
-  return undefined;
-}
-
-export default ModulePage;
+export default ProjectReportPage;
