@@ -104,16 +104,20 @@ My portfolio is designed to be responsive and engaging, inviting you to explore 
 
 # **Requirements**
 These are the requirements needed to run the project:
-- Node 18 LTS
-- Next.JS 13+ (App Router)
+- Node 22 LTS
+- Next.JS 15+
 
 # **Tech Stack**
 
 - [**TypeScript**](https://www.typescriptlang.org/): a statically typed superset of JavaScript, is used to build reliable and maintainable code, providing early error catching and advanced editor support.
 
-- [**Next.js**](https://nextjs.org/): the foundation of the frontend is built using Next.js, a popular React framework that offers tools and conventions for building server-side rendered (SSR) and statically generated web applications, enhancing performance and ease of deployment.
+- [**Next.js**](https://nextjs.org/): the foundation of the frontend is built using Next.js, a popular React framework that offers tools and conventions for building server-side rendered (SSR) and statically generated web applications, enhancing performance and ease of deployment. Built on top of React.js. 
+
+- [**React.js**](https://react.dev/): a front-end library for building reactive user interfaces. 
 
 - [**Tailwind CSS**](https://tailwindcss.com/):  a highly customizable, low-level CSS framework, provides utility classes that help us build out custom designs efficiently and responsively.
+
+- [**Shadcn UI**](https://ui.shadcn.com/): a components library built on top of Radix UI and Tailwind CSS provided styled primitives that can easily be customized. 
 
 
 # **Running Application Locally**
