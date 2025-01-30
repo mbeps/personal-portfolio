@@ -205,7 +205,7 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
    * Get the blog content from the file system.
    * This is used to display the features and blog sections.
    */
-  const blog: string | undefined = getMarkdownFromFileSystem(
+  const hasProjectReport: boolean = !!getMarkdownFromFileSystem(
     `public${basePath}/${projectKey}/blog.md`
   )?.content;
 
@@ -217,7 +217,6 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
     !!projectData.repositoryURL || !!projectData.deploymentURL;
 
   const hasFeatures: boolean = !!features;
-  const hasBlog: boolean = !!blog;
   const hasRelatedMaterials: boolean =
     !!projectData.relatedMaterials && projectData.relatedMaterials.length > 0;
 
@@ -328,39 +327,14 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
               <div
                 className="
                   mt-6 flex 
-                  flex-row 
+                  flex-col md:flex-row 
                   justify-center md:justify-start items-center 
-                  w-full md:w-1/3
+                  w-full md:w-1/2
                   gap-2"
               >
-                {/* GitHub Repo */}
-                {projectData?.repositoryURL && (
-                  <div className="w-1/2">
-                    <Link
-                      href={projectData?.repositoryURL}
-                      target="_blank"
-                      className="w-full"
-                    >
-                      <Button className="w-full">
-                        <div
-                          className="
-                            flex
-                            justify-center md:justify-start
-                            align-center
-                            gap-4
-                            w-full
-                          "
-                        >
-                          <BsGithub size={26} />
-                          <p>Repository</p>
-                        </div>
-                      </Button>
-                    </Link>
-                  </div>
-                )}
                 {/* Website */}
                 {projectData?.deploymentURL && (
-                  <div className="w-1/2">
+                  <div className="w-full md:w-1/3">
                     <Link
                       href={projectData?.deploymentURL}
                       target="_blank"
@@ -383,12 +357,61 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
                     </Link>
                   </div>
                 )}
+                {/* GitHub Repo */}
+                {projectData?.repositoryURL && (
+                  <div className="w-full md:w-1/3">
+                    <Link
+                      href={projectData?.repositoryURL}
+                      target="_blank"
+                      className="w-full"
+                    >
+                      <Button className="w-full">
+                        <div
+                          className="
+                            flex
+                            justify-center md:justify-start
+                            align-center
+                            gap-4
+                            w-full
+                          "
+                        >
+                          <BsGithub size={26} />
+                          <p>Repository</p>
+                        </div>
+                      </Button>
+                    </Link>
+                  </div>
+                )}
+                {/* Project Report */}
+                {hasProjectReport && (
+                  <div className="w-full md:w-1/3">
+                    <Link
+                      href={`${basePath}/${projectKey}/report`}
+                      className="w-full"
+                    >
+                      <Button className="w-full">
+                        <div
+                          className="
+                            flex
+                            justify-center md:justify-start
+                            align-center
+                            gap-4
+                            w-full
+                          "
+                        >
+                          <IoReaderOutline size={26} />
+                          <p>Report</p>
+                        </div>
+                      </Button>
+                    </Link>
+                  </div>
+                )}
               </div>
             </div>
           )}
 
           {/* Features Section */}
-          {hasFeatures || hasBlog || hasRelatedMaterials ? (
+          {hasFeatures || hasRelatedMaterials ? (
             <Accordion type="single" collapsible>
               {hasFeatures && (
                 <>
@@ -409,34 +432,6 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
                     </AccordionTrigger>
                     <AccordionContent className="px-2">
                       <Reader content={features} />
-                    </AccordionContent>
-                  </AccordionItem>
-                </>
-              )}
-
-              {/* Blog Section */}
-              {hasBlog && (
-                <>
-                  <AccordionItem value="item-2">
-                    <AccordionTrigger>
-                      <div className="flex items-center space-x-3">
-                        <IoReaderOutline
-                          size={26}
-                          className="text-neutral-500"
-                        />
-                        <p
-                          className="
-                          text-lg 
-                          text-neutral-600 dark:text-neutral-400
-                          font-semibold
-                          "
-                        >
-                          Reflection / Journey
-                        </p>
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="px-2">
-                      <Reader content={blog} />
                     </AccordionContent>
                   </AccordionItem>
                 </>

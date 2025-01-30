@@ -34,7 +34,6 @@ const ModulePage: React.FC<PageProps> = async ({ params }) => {
 
   if (!projectData || !hasBlog) {
     notFound();
-    return <></>;
   }
 
   return (
