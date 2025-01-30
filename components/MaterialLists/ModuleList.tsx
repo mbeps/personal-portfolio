@@ -15,6 +15,16 @@ interface ModuleListProps {
   headingSize?: "HeadingTwo" | "HeadingFour"; // optional prop to determine the heading size
 }
 
+/**
+ * Lists all the modules according to a certain grouping.
+ * The modules items are clickable and redirect to the module page.
+ * The items display the module name and its parent course name.
+ *
+ * @param groupedMaterial List of grouped modules
+ * @param headingSize Optional prop to determine the heading size
+ * @returns List of grouped modules
+ * @author Maruf Bepary
+ */
 const ModuleList: React.FC<ModuleListProps> = ({
   groupedMaterial: groupedModules,
   headingSize = "HeadingTwo",
@@ -48,7 +58,16 @@ const ModuleList: React.FC<ModuleListProps> = ({
                     href={`${basePath}/${courseKey}/${moduleKey}`}
                     key={idx}
                   >
-                    <Tag hasHover>{moduleDatabaseMap[moduleKey].name}</Tag>
+                    <Tag hasHover>
+                      <div>{moduleDatabaseMap[moduleKey].name}</div>
+                      <div className="text-neutral-400 dark:text-red-200 italic text-sm">
+                        {
+                          courseDatabaseMap[
+                            moduleDatabaseMap[moduleKey].parentCourse
+                          ].name
+                        }
+                      </div>
+                    </Tag>
                   </Link>
                 </div>
               );
