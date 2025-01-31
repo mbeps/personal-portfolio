@@ -211,10 +211,12 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
 
   /**
    * Whether to show the links section.
-   * If there are no links (repository or deployment), the section is not shown.
+   * If there are no links (repository, deployment or project report), the section is not shown.
    */
   const showLinks: boolean =
-    !!projectData.repositoryURL || !!projectData.deploymentURL;
+    !!projectData.repositoryURL ||
+    !!projectData.deploymentURL ||
+    hasProjectReport;
 
   const hasFeatures: boolean = !!features;
   const hasRelatedMaterials: boolean =
