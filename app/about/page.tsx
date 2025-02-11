@@ -147,6 +147,7 @@ export default function About() {
             <DetailsTable
               details={[
                 { heading: "Name", value: developerName },
+                { heading: "Email Address", value: "bepary71@gmail.com" },
                 { heading: "Location", value: "London, UK" },
                 {
                   heading: "Bachelor's Degree",
@@ -167,17 +168,16 @@ export default function About() {
                 },
                 {
                   heading: "Main Focus",
-                  value:
-                    "Full-Stack Development, Backend Software Engineering & Artificial Intelligence",
+                  value: [
+                    "Artificial Intelligence",
+                    "Full-Stack Development",
+                    "Backend Software Engineering",
+                  ],
                 },
                 { heading: "Number of Projects", value: `${numberOfProjects}` },
                 {
                   heading: "Number of Certificates",
                   value: `${numberOfCertificates}`,
-                },
-                {
-                  heading: "Main Programming Languages",
-                  value: `Python, Java, JavaScript, TypeScript`,
                 },
               ]}
               className="grid-cols-1 md:grid-cols-2 lg:grid-cols-1 lg:max-w-[220px] gap-12"
