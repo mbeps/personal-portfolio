@@ -1050,6 +1050,7 @@ const modulesMap: Database<ModuleInterface> = {
       "Implementing generative models like GANs to create synthetic data",
       "Applying transfer learning to leverage pretrained models for new tasks",
     ],
+    relatedMaterials: [ProjectDatabaseKeys.HandWrittenDigitClassifier],
   },
   [ModuleDatabaseKeys.KCL_MachineLearning]: {
     name: "Machine Learning",
@@ -1097,6 +1098,9 @@ const modulesMap: Database<ModuleInterface> = {
       "Analyzing the ethical implications of machine learning applications",
       "Implementing learning from demonstration techniques",
       "Addressing challenges in machine learning such as overfitting and bias",
+    ],
+    relatedMaterials: [
+      ProjectDatabaseKeys.MachineLearningPacmanClassifierCoursework,
     ],
   },
   [ModuleDatabaseKeys.KCL_IndividualProject]: {

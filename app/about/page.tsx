@@ -11,17 +11,18 @@ import CertificateDatabaseKeys from "@/database/Certificates/CertificateDatabase
 import companyDatabaseMap from "@/database/Companies/CompanyDatabaseMap";
 import CourseDatabaseKeys from "@/database/Courses/CourseDatabaseKeys";
 import courseDatabaseMap from "@/database/Courses/CourseDatabaseMap";
-import CourseInterface from "@/database/Courses/CourseInterface";
+import type CourseInterface from "@/database/Courses/CourseInterface";
 import ProjectDatabaseKeys from "@/database/Projects/ProjectDatabaseKeys";
 import RoleDatabaseKeys from "@/database/Roles/RoleDatabaseKeys";
 import rolesDatabase from "@/database/Roles/RoleDatabaseMap";
-import RoleInterface from "@/database/Roles/RoleInterface";
+import type RoleInterface from "@/database/Roles/RoleInterface";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-const aboutContent: string | undefined =
-  getMarkdownFromFileSystem(`public/about/long.md`)?.content;
+const aboutContent: string | undefined = getMarkdownFromFileSystem(
+  "public/about/long.md"
+)?.content;
 
 export const metadata: Metadata = {
   title: `${developerName} - About Me`,

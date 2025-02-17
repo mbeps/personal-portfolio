@@ -32,14 +32,14 @@ enum ModuleDatabaseKeys {
   RHUL_SecurityManagement = "IY3501",
 
   // King's College London
-  KCL_ArtificialIntelligenceReasoningAndDecisionMaking = "6CCS3AIN",
+  KCL_PatternRecognitionNeuralNetworksDeepLearning = "7CCSMPNN",
   KCL_MachineLearning = "6CCS3ML1",
+  KCL_DataMining = "7CCSMDM1",
+  KCL_OptimizationMethods = "7CCSMOME",
+  KCL_ArtificialIntelligenceReasoningAndDecisionMaking = "6CCS3AIN",
   KCL_AgentsAndMultiAgentSystems = "7CCSMAMS",
   KCL_ComputerVision = "7CCSMCVI",
-  KCL_DataMining = "7CCSMDM1",
   KCL_PhilosophyAndEthicsOfArtificialIntelligence = "7CCSMEAI",
-  KCL_OptimizationMethods = "7CCSMOME",
-  KCL_PatternRecognitionNeuralNetworksDeepLearning = "7CCSMPNN",
   KCL_IndividualProject = "7CCSMPRJ",
 }
 
