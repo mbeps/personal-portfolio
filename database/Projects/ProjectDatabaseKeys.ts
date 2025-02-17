@@ -7,6 +7,7 @@
  * @see {@link projectMap} at `database/projects.ts`
  */
 enum ProjectDatabaseKeys {
+  //^ Full Stack Projects
   CircusDiscussions = "circus-discussions",
   RingmasterMessaging = "ringmaster-messaging",
   MagicianAI = "magician-ai",
@@ -15,6 +16,8 @@ enum ProjectDatabaseKeys {
   Quizmify = "quizmify",
   SideshowArticles = "sideshow-articles",
   Noodle = "noodle",
+
+  //^ Backend Projects
   SymphonyTranslateBot = "symphony-translate-bot",
   SymphonyWebhookBot = "symphony-webhook-bot",
   SymphonyCobaGPTBot = "symphony-coba-gpt-bot",
@@ -31,6 +34,10 @@ enum ProjectDatabaseKeys {
   DjangoAuthentication = "django-authentication",
   ClerkAuthentication = "clerk-authentication",
   Auth0Authentication = "auth0-authentication",
+
+  //^ Artificial Intelligence Projects
+  MachineLearningPacmanClassifierCoursework = "machine-learning-pacman-classifier-coursework",
+  HandWrittenDigitClassifier = "hand-written-digit-classifier",
   MachineLearningAlgorithms = "machine-learning-algorithms",
   ArtificialIntelligenceReinforcementLearning = "artificial-intelligence-reinforcement-learning",
   AdultIncomePrediction = "adult-income-prediction",
@@ -45,6 +52,7 @@ enum ProjectDatabaseKeys {
   ComputerVisionImageSegmentation = "computer-vision-image-segmentation-assignment",
   ComputerVisionQuizzes = "computer-vision-quizzes",
   OsmosGame = "osmos-game",
+
   SearchingAndSortingAlgorithms = "searching-and-sorting-algorithms",
   AutomatedSetup = "automated-setup",
   Leetcode = "leetcode",

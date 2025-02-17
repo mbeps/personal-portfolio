@@ -9,7 +9,6 @@ import skillDatabaseMap from "../Skills/SkillDatabaseMap";
 import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
 import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
 import CertificateDatabaseKeys from "../Certificates/CertificateDatabaseKeys";
-import BlogDatabaseKeys from "../Blogs/BlogDatabaseKeys";
 import RoleDatabaseKeys from "../Roles/RoleDatabaseKeys";
 import ProjectTypeEnum from "@/enums/Project/ProjectTypeEnum";
 
@@ -372,7 +371,7 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Academic,
   },
 
-  //^ Symphony Bots
+  //^ Backend Web Development Projects
   [ProjectDatabaseKeys.SymphonyTranslateBot]: {
     name: `Symphony Translate Bot`,
     description: `
@@ -750,8 +749,6 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
     type: ProjectTypeEnum.Professional,
   },
-
-  //^ Backend Web Development Projects
   [ProjectDatabaseKeys.FlaskForumBackend]: {
     name: `Flask Forum Backend`,
     description: `
@@ -923,6 +920,42 @@ const projectMap: Database<ProjectInterface> = {
   },
 
   //^ Artificial Intelligence Projects
+  [ProjectDatabaseKeys.HandWrittenDigitClassifier]: {
+    name: "Handwritten Digit Classifier",
+    description: `
+      A handwritten digit classifier using built using a Convolutional Neural Network (CNN).
+      Used various techniques such as data augmentation, batch normalisation, and dropout to improve the model's performance.
+      `,
+    repositoryURL:
+      "https://github.com/mbeps/pattern-recognition-neural-network-coursework-1",
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    type: ProjectTypeEnum.Academic,
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_PatternRecognitionNeuralNetworksDeepLearning,
+    ],
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.Keras,
+      SkillDatabaseKeys.TensorFlow,
+      SkillDatabaseKeys.Matplotlib,
+      SkillDatabaseKeys.Jupyter,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.GitHub,
+      SkillDatabaseKeys.Poetry,
+      SkillDatabaseKeys.Black,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.Algorithms,
+    ],
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.HandWrittenDigitClassifier
+    ),
+  },
   [ProjectDatabaseKeys.AdultIncomePrediction]: {
     name: "Adult Income Prediction",
     description: `
@@ -991,6 +1024,41 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Personal,
     thumbnailImage: addProjectThumbnail(
       ProjectDatabaseKeys.HousePricePrediction
+    ),
+  },
+  [ProjectDatabaseKeys.MachineLearningPacmanClassifierCoursework]: {
+    name: "Pacman Neural Network Classifier",
+    description: `
+      Built a neural network from scratch to detect Pacman's direction in the game.
+      Used various techniques such as batch normalisation, dropout, momentum, learning rate decay and more to improve the model's performance.
+      `,
+    repositoryURL:
+      "https://github.com/mbeps/machine-learning-pacman-classifier-coursework",
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    type: ProjectTypeEnum.Academic,
+    relatedMaterials: [ModuleDatabaseKeys.KCL_MachineLearning],
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.GitHub,
+      SkillDatabaseKeys.Poetry,
+      SkillDatabaseKeys.Black,
+
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.Probability,
+      SkillDatabaseKeys.Statistics,
+      SkillDatabaseKeys.Calculus,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.Algorithms,
+    ],
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.MachineLearningPacmanClassifierCoursework
     ),
   },
   [ProjectDatabaseKeys.MachineLearningAlgorithms]: {
