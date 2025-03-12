@@ -22,8 +22,8 @@ const ProjectsSection = () => {
    */
   const displayedProjects: string[] = [
     ProjectDatabaseKeys.CircusDiscussions,
-    ProjectDatabaseKeys.RingmasterMessaging,
     ProjectDatabaseKeys.MagicianAI,
+    ProjectDatabaseKeys.HandWrittenDigitClassifier,
   ];
 
   return (
