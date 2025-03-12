@@ -1090,8 +1090,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.CustomNeuralNetworkCoursework]: {
     name: "Custom Neural Network Classifier",
     description: `
-      Built a custom neural network from scratch to detect Pacman's direction in the game.
-      Used various techniques such as batch normalisation, dropout, momentum, learning rate decay and more to improve the model's performance.
+      Built a neural network from scratch to teach a Pacman agent.
+      Used various techniques such as batch normalisation, dropout, momentum, learning rate decay and more to improve performance.
       `,
     repositoryURL:
       "https://github.com/mbeps/machine-learning-pacman-classifier-coursework",
