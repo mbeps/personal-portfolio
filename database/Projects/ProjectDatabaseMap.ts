@@ -918,6 +918,67 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
     type: ProjectTypeEnum.Personal,
   },
+  [ProjectDatabaseKeys.SpringDataJPATemplate]: {
+    name: `Spring Data JPA Template`,
+    description: `
+      A template project for using Spring Data JPA with PostgreSQL. 
+      This was created for documenting how use SQL databases for our Spring Boot projects.
+      `,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
+    type: ProjectTypeEnum.Professional,
+    repositoryURL: "https://github.com/mbeps/springboot-sql-database-template",
+    relatedMaterials: [RoleDatabaseKeys.CommerzbankDevOpsEngineer],
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.SpringDataJPA,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.GitHub,
+      SkillDatabaseKeys.Gradle,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.QualityManagement,
+    ],
+    archived: true,
+  },
+  [ProjectDatabaseKeys.SpringDataMongoTemplate]: {
+    name: `Spring Data MongoDB Template`,
+    description: `
+      A template project for using Spring Data MongoDB.
+      This was created for documenting how use MongoDB databases for our Spring Boot projects.
+      `,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
+    type: ProjectTypeEnum.Professional,
+    repositoryURL:
+      "https://github.com/mbeps/springboot-mongodb-database-template",
+    relatedMaterials: [RoleDatabaseKeys.CommerzbankDevOpsEngineer],
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.SpringDataJPA,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.GitHub,
+      SkillDatabaseKeys.Gradle,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.QualityManagement,
+    ],
+    archived: true,
+  },
 
   //^ Artificial Intelligence Projects
   [ProjectDatabaseKeys.HandWrittenDigitClassifier]: {
@@ -1026,10 +1087,10 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.HousePricePrediction
     ),
   },
-  [ProjectDatabaseKeys.MachineLearningPacmanClassifierCoursework]: {
-    name: "Pacman Neural Network Classifier",
+  [ProjectDatabaseKeys.CustomNeuralNetworkCoursework]: {
+    name: "Custom Neural Network Classifier",
     description: `
-      Built a neural network from scratch to detect Pacman's direction in the game.
+      Built a custom neural network from scratch to detect Pacman's direction in the game.
       Used various techniques such as batch normalisation, dropout, momentum, learning rate decay and more to improve the model's performance.
       `,
     repositoryURL:
@@ -1058,7 +1119,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Algorithms,
     ],
     thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.MachineLearningPacmanClassifierCoursework
+      ProjectDatabaseKeys.CustomNeuralNetworkCoursework
     ),
   },
   [ProjectDatabaseKeys.MachineLearningAlgorithms]: {
@@ -1145,6 +1206,41 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Personal,
     thumbnailImage: addProjectThumbnail(
       ProjectDatabaseKeys.ArtificialIntelligenceReinforcementLearning
+    ),
+  },
+  [ProjectDatabaseKeys.CustomQLearningAgent]: {
+    name: "Custom Q-Learning Agent",
+    description: `
+      A custom Q-Learning agent learns to play Pacman.
+      Required foundational Mathematics knowledge and understanding of the Q-Learning algorithm.
+      `,
+    repositoryURL:
+      "https://github.com/mbeps/machine-learning-coursework-2-pacman",
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    type: ProjectTypeEnum.Academic,
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.GitHub,
+      SkillDatabaseKeys.Poetry,
+      SkillDatabaseKeys.Black,
+
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.Probability,
+      SkillDatabaseKeys.Statistics,
+      SkillDatabaseKeys.Calculus,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.ObjectOrientedProgramming,
+      SkillDatabaseKeys.Algorithms,
+    ],
+    relatedMaterials: [ModuleDatabaseKeys.KCL_MachineLearning],
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.CustomQLearningAgent
     ),
   },
   [ProjectDatabaseKeys.MachineLearningAssignment1]: {
@@ -1374,8 +1470,8 @@ const projectMap: Database<ProjectInterface> = {
     ),
   },
 
-  [ProjectDatabaseKeys.PacmanGame]: {
-    name: "Pacman Game",
+  [ProjectDatabaseKeys.MarkovDecisionAgent]: {
+    name: "Markov Decision Agent",
     description: `
       Pacman agent plays to win the game while handling stochasticity in the movement of agent and ghosts.
       Uses Markov Decision Processes, Value Iteration and other enhancements.
@@ -1406,7 +1502,9 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [
       ModuleDatabaseKeys.KCL_ArtificialIntelligenceReasoningAndDecisionMaking,
     ],
-    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.PacmanGame),
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.MarkovDecisionAgent
+    ),
   },
   [ProjectDatabaseKeys.ComputerVisionImageSegmentation]: {
     name: "Computer Vision Image Segmentation",

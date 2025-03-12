@@ -796,7 +796,7 @@ const modulesMap: Database<ModuleInterface> = {
       "Implementing search algorithms for problem solving in AI",
       "Understanding knowledge representation techniques in AI systems",
     ],
-    relatedMaterials: [ProjectDatabaseKeys.PacmanGame],
+    relatedMaterials: [ProjectDatabaseKeys.MarkovDecisionAgent],
   },
   [ModuleDatabaseKeys.KCL_AgentsAndMultiAgentSystems]: {
     name: "Agents & Multi-Agent Systems",
@@ -1099,9 +1099,7 @@ const modulesMap: Database<ModuleInterface> = {
       "Implementing learning from demonstration techniques",
       "Addressing challenges in machine learning such as overfitting and bias",
     ],
-    relatedMaterials: [
-      ProjectDatabaseKeys.MachineLearningPacmanClassifierCoursework,
-    ],
+    relatedMaterials: [ProjectDatabaseKeys.CustomNeuralNetworkCoursework],
   },
   [ModuleDatabaseKeys.KCL_IndividualProject]: {
     name: "Individual Project",

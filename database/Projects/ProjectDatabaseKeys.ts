@@ -34,9 +34,12 @@ enum ProjectDatabaseKeys {
   DjangoAuthentication = "django-authentication",
   ClerkAuthentication = "clerk-authentication",
   Auth0Authentication = "auth0-authentication",
+  SpringDataJPATemplate = "spring-data-jpa-template",
+  SpringDataMongoTemplate = "spring-data-mongo-template",
 
   //^ Artificial Intelligence Projects
-  MachineLearningPacmanClassifierCoursework = "machine-learning-pacman-classifier-coursework",
+  CustomNeuralNetworkCoursework = "custom-neural-network-classifier-coursework",
+  CustomQLearningAgent = "custom-q-learning-agent",
   HandWrittenDigitClassifier = "hand-written-digit-classifier",
   MachineLearningAlgorithms = "machine-learning-algorithms",
   ArtificialIntelligenceReinforcementLearning = "artificial-intelligence-reinforcement-learning",
@@ -48,7 +51,7 @@ enum ProjectDatabaseKeys {
   MachineLearningLabs = "machine-learning-lab-questions",
   ComputationalFinanceAssignment = "computational-finance-assignment",
   MachineLearningDataScienceLab = "machine-learning-data-science-lab",
-  PacmanGame = "pacman-game",
+  MarkovDecisionAgent = "custom-markov-decision-agent",
   ComputerVisionImageSegmentation = "computer-vision-image-segmentation-assignment",
   ComputerVisionQuizzes = "computer-vision-quizzes",
   OsmosGame = "osmos-game",

@@ -83,6 +83,8 @@ const rolesMap: Database<RoleInterface> = {
       ProjectDatabaseKeys.SymphonyPollBot,
       ProjectDatabaseKeys.SymphonyInteractiveBot,
       ProjectDatabaseKeys.SymphonyHeadlessBot,
+      ProjectDatabaseKeys.SpringDataJPATemplate,
+      ProjectDatabaseKeys.SpringDataMongoTemplate,
 
       ProjectDatabaseKeys.BaseRestController,
       ProjectDatabaseKeys.MarkdownToMessageMLConverter,
