@@ -3626,7 +3626,6 @@ const certificateMap: Database<CertificateInterface> = {
       ProjectDatabaseKeys.SymphonyInteractiveBot,
       ProjectDatabaseKeys.SymphonyHeadlessBot,
       ProjectDatabaseKeys.SymphonyMessageMLBot,
-      ProjectDatabaseKeys.SymphonyServiceNowBot,
       ProjectDatabaseKeys.SymphonyPollBot,
     ],
   },
