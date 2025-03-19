@@ -25,7 +25,6 @@ enum ProjectDatabaseKeys {
   SymphonyHeadlessBot = "symphony-headless-bot",
   SymphonyInteractiveBot = "symphony-interactive-bot",
   SymphonyMessageMLBot = "symphony-messageml-bot",
-  SymphonyServiceNowBot = "symphony-servicenow-bot",
   SymphonyPollBot = "symphony-poll-bot",
   SymphonyBusinessHighlightsBot = "symphony-business-highlights-bot",
   FlaskForumBackend = "flask-forum-backend",

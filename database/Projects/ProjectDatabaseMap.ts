@@ -526,44 +526,6 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
     type: ProjectTypeEnum.Professional,
   },
-  [ProjectDatabaseKeys.SymphonyServiceNowBot]: {
-    name: `Symphony ServiceNow Bot`,
-    description: `
-      A Symphony bot for creating tickets in ServiceNow and receiving updates within Symphony.
-      `,
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.REST,
-      SkillDatabaseKeys.HTML,
-      SkillDatabaseKeys.CSS,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.BitBucket,
-      SkillDatabaseKeys.Gradle,
-      SkillDatabaseKeys.GCP,
-      SkillDatabaseKeys.MongoDB,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.Communication,
-      SkillDatabaseKeys.Teamwork,
-      SkillDatabaseKeys.TimeManagement,
-      SkillDatabaseKeys.QualityManagement,
-    ],
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-      ProjectDatabaseKeys.BaseRestController,
-    ],
-    archived: true,
-    type: ProjectTypeEnum.Professional,
-  },
   [ProjectDatabaseKeys.SymphonyPollBot]: {
     name: `Symphony Poll Bot`,
     description: `
@@ -1005,6 +967,11 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Poetry,
       SkillDatabaseKeys.Black,
 
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.ComputerVision,
+
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
       SkillDatabaseKeys.CriticalThinking,
@@ -1035,6 +1002,10 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.GitHub,
       SkillDatabaseKeys.Poetry,
       SkillDatabaseKeys.Black,
+
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DeepLearning,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -1109,6 +1080,10 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Probability,
       SkillDatabaseKeys.Statistics,
       SkillDatabaseKeys.Calculus,
+
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DeepLearning,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -1229,6 +1204,10 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Probability,
       SkillDatabaseKeys.Statistics,
       SkillDatabaseKeys.Calculus,
+
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DeepLearning,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -1609,7 +1588,6 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [
       ProjectDatabaseKeys.SymphonyTranslateBot,
       ProjectDatabaseKeys.SymphonyCobaGPTBot,
-      ProjectDatabaseKeys.SymphonyServiceNowBot,
 
       RoleDatabaseKeys.CommerzbankDevOpsEngineer,
     ],
