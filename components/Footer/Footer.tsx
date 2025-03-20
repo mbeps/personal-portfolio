@@ -31,7 +31,7 @@ const Footer = () => {
           "
         >
           <div className="flex flex-row items-center justify-center space-x-1 text-neutral-500 dark:text-neutral-100">
-            <Link href="/">
+            <Link href="https://github.com/mbeps/personal-portfolio">
               <p>{`© 2023-${currentYear} ${developerName}`}</p>
             </Link>
           </div>
