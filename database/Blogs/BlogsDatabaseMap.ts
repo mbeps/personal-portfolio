@@ -13,6 +13,36 @@ import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
  * The order of the skills is the order that is used when displaying the skills on the website.
  */
 const blogsMap: Database<BlogInterface> = {
+  [BlogDatabaseKeys.MachineLearningFoundations]: {
+    name: "Exploring the Depths of Machine Learning",
+    subtitle:
+      "A Comprehensive Guide to Machine Learning: Concepts, Challenges, and Real-World Impact",
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+    ],
+  },
+  [BlogDatabaseKeys.IntroductionToNeuralNetworks]: {
+    name: "Introduction to Neural Networks",
+    subtitle:
+      "An theoretical introduction to Neural Networks and architectures.",
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.Algorithms,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+    ],
+  },
   [BlogDatabaseKeys.Backend]: {
     name: "Exploring Backends: Custom vs Managed Solutions",
     subtitle:
@@ -24,20 +54,6 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.PocketBase,
     ],
     category: BlogCategoriesEnum.WebDevelopment,
-  },
-  [BlogDatabaseKeys.MachineLearningFoundations]: {
-    name: "Exploring the Depths of Machine Learning",
-    subtitle:
-      "A Comprehensive Guide to Machine Learning: Concepts, Challenges, and Real-World Impact",
-    category: BlogCategoriesEnum.ArtificialIntelligence,
-    skills: [
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.DataScience,
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.CriticalThinking,
-    ],
   },
   [BlogDatabaseKeys.ORM]: {
     name: "Understanding Object-Relational Mapping (ORM)",
