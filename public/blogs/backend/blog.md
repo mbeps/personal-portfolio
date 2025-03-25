@@ -1,233 +1,939 @@
-- [**The Backend: The Unsung Hero of Web Development and Software Engineering**](#the-backend-the-unsung-hero-of-web-development-and-software-engineering)
-	- [**What is a Backend?**](#what-is-a-backend)
-	- [**The Importance of the Backend**](#the-importance-of-the-backend)
-	- [**Key Components of the Backend**](#key-components-of-the-backend)
-	- [**Where are the Backend Components Stored and Run?**](#where-are-the-backend-components-stored-and-run)
-	- [**The Importance of Backend Security**](#the-importance-of-backend-security)
-- [**Delving Deep into Custom Backends**](#delving-deep-into-custom-backends)
-	- [**What is a Custom Backend?**](#what-is-a-custom-backend)
-	- [**Why are Custom Backends so Commonly Used?**](#why-are-custom-backends-so-commonly-used)
-	- [**Scaling Custom Backends**](#scaling-custom-backends)
-	- [**Cost and Time for Development for Custom Backends**](#cost-and-time-for-development-for-custom-backends)
-	- [**Security of Custom Backends**](#security-of-custom-backends)
-	- [**Backend Tools and Frameworks**](#backend-tools-and-frameworks)
-	- [**Advantages of Custom Backends**](#advantages-of-custom-backends)
-	- [**Disadvantages of Custom Backends**](#disadvantages-of-custom-backends)
-- [**Backend as a Service (BaaS) / Managed Backends: The New Era of Backend Development**](#backend-as-a-service-baas--managed-backends-the-new-era-of-backend-development)
-	- [**What is Backend as a Service (BaaS)?**](#what-is-backend-as-a-service-baas)
-	- [**The Rising Popularity of BaaS**](#the-rising-popularity-of-baas)
-	- [**Scaling BaaS and Vendor Lock-In**](#scaling-baas-and-vendor-lock-in)
-	- [**Cost and Time Considerations for BaaS**](#cost-and-time-considerations-for-baas)
-	- [**Security in BaaS**](#security-in-baas)
-	- [**BaaS Providers**](#baas-providers)
-	- [**Advantages of BaaS**](#advantages-of-baas)
-	- [**Disadvantages of BaaS**](#disadvantages-of-baas)
-- [**Conclusion**](#conclusion)
-- [**Sources**](#sources)
+- [1. Introduction to HMMs](#1-introduction-to-hmms)
+	- [1.1 Markov Assumption](#11-markov-assumption)
+		- [Importance of the Markov Assumption](#importance-of-the-markov-assumption)
+		- [Example: Weather Prediction](#example-weather-prediction)
+	- [1.2 Hidden vs. Observable States](#12-hidden-vs-observable-states)
+		- [Markov Chains vs. Hidden Markov Models](#markov-chains-vs-hidden-markov-models)
+		- [Formal Structure](#formal-structure)
+		- [Key Difference](#key-difference)
+	- [1.3 Applications of HMMs](#13-applications-of-hmms)
+		- [Common Applications](#common-applications)
+		- [Example: The Fraudulent Croupier Scenario](#example-the-fraudulent-croupier-scenario)
+- [2. Structure of HMMs](#2-structure-of-hmms)
+	- [2.1 State Transition Probability Matrix](#21-state-transition-probability-matrix)
+		- [Properties of Transition Probabilities](#properties-of-transition-probabilities)
+		- [Example: Dice HMM](#example-dice-hmm)
+	- [2.2 Emission Probability Matrix](#22-emission-probability-matrix)
+		- [Output Independence Property](#output-independence-property)
+		- [Estimation of Emission Probabilities](#estimation-of-emission-probabilities)
+		- [Example: Dice HMM](#example-dice-hmm-1)
+	- [2.3 Start and End States](#23-start-and-end-states)
+		- [Start State ($s\_0$)](#start-state-s_0)
+		- [End State ($s\_f$)](#end-state-s_f)
+		- [Special Observations](#special-observations)
+		- [Complete HMM Definition](#complete-hmm-definition)
+		- [Visual Representation](#visual-representation)
+- [3. HMM Problems and Algorithms](#3-hmm-problems-and-algorithms)
+	- [3.1 Problem 1: Labelled Learning (Parameter Estimation)](#31-problem-1-labelled-learning-parameter-estimation)
+		- [Input and Output](#input-and-output)
+		- [Parameter Estimation Formulas](#parameter-estimation-formulas)
+		- [Example: Dice HMM Parameter Estimation](#example-dice-hmm-parameter-estimation)
+		- [Smoothing](#smoothing)
+	- [3.2 Problem 2: Unlabelled Learning](#32-problem-2-unlabelled-learning)
+		- [Solution Approach](#solution-approach)
+		- [Challenges](#challenges)
+	- [3.3 Problem 3: Likelihood Calculation](#33-problem-3-likelihood-calculation)
+		- [Forward Algorithm](#forward-algorithm)
+	- [3.4 Problem 4: Decoding (Viterbi Algorithm)](#34-problem-4-decoding-viterbi-algorithm)
+		- [Dynamic Programming Solution](#dynamic-programming-solution)
+		- [The Viterbi Algorithm](#the-viterbi-algorithm)
+			- [Key Variables](#key-variables)
+			- [Algorithm Steps](#algorithm-steps)
+		- [Example: Dice HMM Decoding](#example-dice-hmm-decoding)
+		- [Complexity](#complexity)
+- [4. Evaluation and Testing](#4-evaluation-and-testing)
+	- [4.1 Precision and Recall](#41-precision-and-recall)
+		- [Why Not Just Use Accuracy?](#why-not-just-use-accuracy)
+		- [Precision, Recall and F-measure](#precision-recall-and-f-measure)
+		- [Example: Evaluating Dice HMM](#example-evaluating-dice-hmm)
+	- [4.2 Baseline Algorithms](#42-baseline-algorithms)
+		- [Importance of Baselines](#importance-of-baselines)
+		- [Criteria for Effective Baselines](#criteria-for-effective-baselines)
+		- [Common Baseline Approaches](#common-baseline-approaches)
+		- [Baseline for HMM Decoding](#baseline-for-hmm-decoding)
+	- [4.3 Statistical Significance Testing](#43-statistical-significance-testing)
+		- [Null Hypothesis Testing](#null-hypothesis-testing)
+		- [The Sign Test](#the-sign-test)
+		- [Binomial Distribution](#binomial-distribution)
+		- [One-Tailed vs. Two-Tailed Tests](#one-tailed-vs-two-tailed-tests)
+		- [Example: Sign Test](#example-sign-test)
+		- [Handling Ties](#handling-ties)
+		- [Reporting Significance](#reporting-significance)
+- [5. Practical Applications](#5-practical-applications)
+	- [5.1 Fraudulent Croupier Example](#51-fraudulent-croupier-example)
+		- [Scenario Description](#scenario-description)
+		- [HMM Formulation](#hmm-formulation)
+		- [Variant with Three Dice](#variant-with-three-dice)
+		- [Parameter Estimation Example](#parameter-estimation-example)
+		- [Decoding with Viterbi](#decoding-with-viterbi)
+		- [Variants and Constraints](#variants-and-constraints)
+	- [5.2 Part-of-Speech Tagging](#52-part-of-speech-tagging)
+		- [The Problem of Ambiguity](#the-problem-of-ambiguity)
+		- [HMM Formulation for POS Tagging](#hmm-formulation-for-pos-tagging)
+		- [Example from Lecture Notes](#example-from-lecture-notes)
+		- [Analyzing Two Interpretations](#analyzing-two-interpretations)
+		- [Viterbi for POS Tagging](#viterbi-for-pos-tagging)
+		- [Importance in NLP](#importance-in-nlp)
+
+
+
+# 1. Introduction to HMMs
+
+## 1.1 Markov Assumption
+
+**Hidden Markov Models (HMMs)** are probabilistic models used for representing sequential data where the underlying process that generates the observations is hidden.
+
+The **Markov assumption** (also called Limited Horizon) is fundamental to HMMs and states that the probability of the current state depends only on the previous state, not on the entire history of states.
+
+Mathematically, this is expressed as:
+$$P(X_t | X_1, X_2, \ldots, X_{t-1}) \approx P(X_t | X_{t-1})$$
+
+Where:
+- $X_t$ is the state at time t
+- $X_{t-1}$ is the state at time t-1
+
+The Markov assumption allows us to calculate the joint probability of a sequence of events as:
+$$P(w_1, w_2, \ldots, w_t) = \prod_{t=1}^{n} P(w_t | w_{t-1})$$
+
+### Importance of the Markov Assumption
+
+The Markov assumption is crucial for HMMs because it:
+1. Makes calculations **tractable** by limiting the dependencies
+2. Reduces **data sparseness** when estimating parameters
+3. Allows for efficient algorithms like Viterbi
 
+### Example: Weather Prediction
 
+Consider predicting tomorrow's weather based on historical observations:
+- Without Markov assumption: $P(w_t = Rainy | w_{t-1} = Rainy, w_{t-2} = Cloudy, w_{t-3} = Cloudy, w_{t-4} = Rainy)$
+- With Markov assumption: $P(w_t = Rainy | w_{t-1} = Rainy)$
 
-# **The Backend: The Unsung Hero of Web Development and Software Engineering**
+The simplification makes the model more manageable, requiring far less data to estimate parameters.
 
-## **What is a Backend?**
+## 1.2 Hidden vs. Observable States
 
-In the realm of software engineering and web development, the "backend" is the part of an application that operates behind the scenes, away from the users' sight. If you envision an application as a stage play, then the frontend is the actors and scenery that the audience sees, while the backend is the stagehands, lighting, and orchestra that facilitate the performance, yet remain unseen.
+### Markov Chains vs. Hidden Markov Models
 
-The backend includes servers, applications, and databases that power the functions of the frontend. It is where all the logic of the website or software happens, where data is stored, manipulated, and sent back to the frontend. It's responsible for business logic, calculations, data management, and performance.
+**Markov Chains**:
+- States are **fully observable** (you can directly see what state the system is in)
+- Transitions between states are probabilistic
+- Can be viewed as a probabilistic finite-state automaton
 
-## **The Importance of the Backend**
+![image](https://github.com/user-attachments/assets/ceb3f764-cbaa-4cc6-851f-2708a7c9af9d)
 
-The backend is crucial for numerous reasons. Its pivotal role in handling data and business logic means that, without it, most software and websites would be merely empty shells. 
+> Showing the Markov Chain for weather prediction with two states (rainy and cloudy) and transition probabilities between them
 
-1. **Data Management:** The backend stores, retrieves, and manipulates data. This data can be anything from user profiles, posts, comments, to inventory for an e-commerce site. 
+**Hidden Markov Models**:
+- States are **hidden** (not directly observable)
+- We only observe **emissions** or **observations** that are probabilistically related to the hidden states
+- No one-to-one mapping between observations and hidden states
+- A particular observation can be emitted from multiple different hidden states
 
-2. **Business Logic:** The backend governs the rules and procedures that process the data. For instance, in a banking app, the logic to transfer funds from one account to another is implemented on the backend.
+![image](https://github.com/user-attachments/assets/05718f75-0e64-4480-9fee-5e3087f77936)
 
-3. **Performance and Scalability:** The backend greatly impacts an application's performance and its ability to scale. Efficient backend design can allow a website to handle increased traffic as it grows.
+> Showing the time-elapsed view of HMM with hidden states and observations
 
-## **Key Components of the Backend**
+### Formal Structure
 
-The backend of an application is a complex ecosystem that ensures seamless operation and interaction between users and the system. While it's often seen as a triad composed of a server, a database, and server-side code, the backend comprises multiple interconnected components, each playing a crucial role:
+In an HMM:
+- **Hidden states**: The underlying states of the system that we cannot directly observe
+- **Observations**: The visible outputs that depend probabilistically on the hidden states
+- **Transition probabilities**: The probability of moving from one hidden state to another
+- **Emission probabilities**: The probability of an observation being generated from a particular hidden state
 
-1. **Server:** Acting as the heart of the backend, the server is a robust computer that hosts the backend code. It receives and processes requests from user devices, performing actions and delivering responses as dictated by the server-side code.
+### Key Difference
 
-2. **Database:** Serving as the application's memory, the database is where all data pertinent to the application resides. It is designed to store diverse forms of data, providing an efficient system for retrieving and manipulating data as and when required.
+The key difference is that in Markov Chains, we know exactly which state the system is in at any time, while in HMMs, we need to infer the most likely sequence of hidden states based on the observations.
 
-3. **Server-side Code/Application:** This is the brain of the operation, containing the series of instructions the server adheres to when it receives a request. Written in various languages like Python, Java, PHP, Ruby, or Node.js, it implements the core business logic, interacts with the database, and generates appropriate responses.
+## 1.3 Applications of HMMs
 
-4. **Middleware:** Middleware is the intermediary software that resides between the server-side application and the database. It processes requests, carries out operations on the data, manages sessions, and handles errors, among other tasks.
+HMMs are widely used in scenarios where:
+1. We have sequential data
+2. The underlying process is hidden or not directly observable
+3. We want to infer the hidden process from observable outputs
 
-5. **API (Application Programming Interface):** APIs form the communication protocol that allows different software components to interact. They enable the frontend to communicate with the backend, facilitating data exchange between the server and the client-side of the application.
+### Common Applications
 
-6. **Authentication and Authorization:** These components ensure the security and privacy of user data. Authentication verifies a user's identity, while authorization determines the level of access granted to a user within the application.
+1. **Speech Recognition**
+   - **Observations**: Audio signal (acoustic features)
+   - **Hidden States**: Phonemes or words
+   - **Task**: Determine the most likely sequence of words given the acoustic signal
 
-7. **User Management:** This involves managing user data, preferences, roles, and permissions. It includes features like user registration, profile management, password reset, and role-based access control.
+2. **Part-of-Speech Tagging**
+   - **Observations**: Words in a sentence
+   - **Hidden States**: Part-of-speech tags (noun, verb, adjective, etc.)
+   - **Task**: Assign the correct grammatical category to each word
 
-8. **Session Management:** This involves managing a user's interaction with the application across multiple requests, overcoming the stateless nature of HTTP. Techniques like cookies or tokens are employed to make the application 'remember' the user's state.
+3. **Machine Translation**
+   - **Observations**: Target words (translated text)
+   - **Hidden States**: Source words (original text)
+   - **Task**: Find the most likely translation
 
-## **Where are the Backend Components Stored and Run?**
+4. **Bioinformatics**
+   - **Observations**: DNA/protein sequences
+   - **Hidden States**: Structural or functional elements
+   - **Task**: Identify functional regions in biological sequences
 
-The server and database, both part of the backend, can be hosted either on-premise or in the cloud. 
+### Example: The Fraudulent Croupier Scenario
 
-**On-Premise:** This means that the physical hardware is located within the organization's premises. While this setup can provide greater control over the hardware and data, it also comes with the additional overhead of managing and maintaining the infrastructure.
+A classic example used to explain HMMs involves a dishonest casino croupier:
 
-**Cloud:** This means the servers and databases are hosted on virtual machines in data centers managed by a third-party provider like Amazon Web Services (AWS), Google Cloud Platform (GCP), or Microsoft Azure. Cloud hosting provides scalability and reduces the overhead of infrastructure management.
+- A croupier secretly switches between a fair dice and a loaded dice
+- The fair dice has equal probability (1/6) for each number
+- The loaded dice has a biased probability distribution
+- An observer can only see the sequence of dice rolls (observations)
+- The task is to determine when the croupier was using which dice (hidden states)
 
-The application code is typically stored in a code repository, often under version control systems like Git. It is then deployed to the server where it is run.
+![image](https://github.com/user-attachments/assets/e22cd86e-6c5b-4cc0-82de-d4782a088fc2)
 
-## **The Importance of Backend Security**
+![image](https://github.com/user-attachments/assets/2a3c2b5f-1a84-4a71-ba7d-f25a75ceaaae)
 
-Backend security is paramount to the overall security of an application. The backend is where all sensitive data, including user information, is stored and processed. Inadequate backend security can lead to disastrous consequences such as:
+> Showing the dice HMM with states, observations, and probabilities
 
-1. **Data Breach:** Unauthorized access to the database can lead to the theft of sensitive data, including personal user information. This can result in huge financial losses and damage to the organization's reputation.
+In this example:
+- **Hidden States**: The type of dice being used (fair or loaded)
+- **Observations**: The numbers rolled (1-6)
+- **Transition Probabilities**: How likely the croupier is to switch dice
+- **Emission Probabilities**: The probability of rolling each number with each dice
 
-2. **System Shutdown:** Cyber attackers may flood a system with traffic (Denial of Service attack) or introduce malicious code, causing the system to crash or behave unexpectedly.
+This scenario demonstrates how HMMs can be used to infer hidden processes (which dice is being used) from observable data (the dice rolls).
 
-3. **Data Manipulation:** Without sufficient backend security, unauthorized individuals might alter data or business logic, leading to incorrect results or malicious activities.
+# 2. Structure of HMMs
 
-Securing the backend involves many aspects, such as using secure protocols, data encryption, secure handling and validation of user input, regular updates and patches, and employing strategies like firewalls and intrusion detection systems.
+## 2.1 State Transition Probability Matrix
 
-In conclusion, the backend is the powerhouse of any application, performing critical tasks like data management, business logic processing, and performance handling. While it may remain unseen to users, its importance cannot be understated, particularly when it comes to security.
+The **state transition probability matrix** (or simply **transition matrix**) is a fundamental component of an HMM, represented as matrix **A**. It defines the probability of moving from one state to another.
 
-# **Delving Deep into Custom Backends**
+For a first-order HMM with N emitting states, plus special start and end states, the transition matrix A is of size $(N+2) × (N+2)$:
 
-## **What is a Custom Backend?**
+$$A = \begin{bmatrix}
+- & a_{01} & a_{02} & a_{03} & \cdots & a_{0N} & - \\
+- & a_{11} & a_{12} & a_{13} & \cdots & a_{1N} & a_{1f} \\
+- & a_{21} & a_{22} & a_{23} & \cdots & a_{2N} & a_{2f} \\
+- & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+- & a_{N1} & a_{N2} & a_{N3} & \cdots & a_{NN} & a_{Nf} \\
+- & - & - & - & - & - & - \\
+\end{bmatrix}$$
 
-In the realm of web development, a custom backend refers to a backend that is tailor-made from scratch to cater to the specific needs of an application or service. Unlike Backend as a Service (BaaS) or other ready-made solutions, a custom backend is designed and built to meet the unique requirements and business logic of a specific application. This includes everything from the choice of server and database system, the server-side language and its corresponding framework, to the authentication system, APIs, and more.
+Where:
+- $a_{ij}$ represents the probability of transitioning from state $s_i$ to state $s_j$
+- Formally: $a_{ij} = P(X_t = s_j | X_{t-1} = s_i)$
 
-## **Why are Custom Backends so Commonly Used?**
+### Properties of Transition Probabilities
 
-The reason for the widespread use of custom backends lies in their unparalleled flexibility and adaptability. They provide developers with complete control over every aspect of the backend architecture, allowing them to mold it to their precise needs. This can lead to more efficient and streamlined operations, improved performance, and a better fit for specific business logic or data management needs.
+1. **Row Summation**: For each state $i$, the sum of all outgoing transition probabilities must equal 1:
+   $$\sum_{j=0}^{N+1} a_{ij} = 1$$
 
-## **Scaling Custom Backends**
+2. **Non-negativity**: All transition probabilities must be non-negative:
+   $$a_{ij} \geq 0 \text{ for all } i,j$$
 
-Scalability is a vital consideration for any application, and custom backends provide significant advantages in this area. As the application grows, the backend can be designed to scale along with it. This might involve horizontal scaling (adding more servers) or vertical scaling (adding more power to the existing server). Such scalability decisions can be finely tuned based on the custom backend's design and the specific demands of the application.
+3. **Markov Property**: The probability depends only on the current state, not on how the model arrived at that state.
 
-## **Cost and Time for Development for Custom Backends**
+### Example: Dice HMM
 
-Custom backends often require a larger upfront investment in terms of time, resources, and finances. Building a backend from scratch involves numerous tasks like setting up servers, designing databases, writing server-side code, and more, which can be time-consuming and costly. However, the initial costs and efforts can potentially lead to savings in the long run as the backend is optimally designed for the specific application, reducing maintenance and scaling costs.
+In the fraudulent croupier example with two dice (fair and loaded):
 
-## **Security of Custom Backends**
+- $a_{FF}$ = probability of using the fair dice again after using the fair dice
+- $a_{FL}$ = probability of switching from fair to loaded dice
+- $a_{LF}$ = probability of switching from loaded to fair dice
+- $a_{LL}$ = probability of using the loaded dice again after using the loaded dice
 
-With a custom backend, developers have complete control over the security measures and protocols. While this means they can tailor the security to their precise needs, it also places the responsibility of ensuring robust security squarely on their shoulders. This includes protecting against common threats, securing user data, ensuring safe transactions, and regularly updating and patching the system.
+These probabilities can be estimated from training data:
 
-## **Backend Tools and Frameworks**
+$$a_{ij} \approx \frac{\text{count}_{\text{trans}}(X_t = s_i, X_{t+1} = s_j)}{\text{count}_{\text{trans}}(X_t = s_i)}$$
 
-A host of tools and frameworks are available to aid in the development of a custom backend. 
+## 2.2 Emission Probability Matrix
 
-For **Python**, frameworks such as Flask, Django, and FastAPI are popular choices. Flask is a lightweight framework perfect for small to medium applications, Django provides a high-level framework suitable for larger applications with more complex needs, and FastAPI is a modern, fast (high-performance) web framework for building APIs.
+The **emission probability matrix** (also called **observation likelihood matrix**) is represented as matrix **B**. It defines the probability of observing a particular output given that the model is in a specific hidden state.
 
-For **JavaScript and TypeScript**, Express.js, NestJS, and Koa are commonly used. Express.js is part of the MEAN/MERN stack and is known for its speed and simplicity. NestJS is a framework for building efficient, scalable Node.js server-side applications, and it uses TypeScript by default. Koa is a minimalistic framework developed by the team behind Express.js.
+For an HMM with N emitting states and M possible observations, plus special start and end symbols, the emission matrix B is of size (M+2) × (N+2):
 
-For **Java**, frameworks like Spring Boot and Play are preferred choices. Spring Boot simplifies the setup and development of Spring applications, and Play is a reactive web application framework that emphasizes developer productivity and application scalability.
+$$B = \begin{bmatrix}
+b_0(k_0) & - & - & - & \cdots & - & - \\
+- & b_1(k_1) & b_2(k_1) & b_3(k_1) & \cdots & b_N(k_1) & - \\
+- & b_1(k_2) & b_2(k_2) & b_3(k_2) & \cdots & b_N(k_2) & - \\
+- & \vdots & \vdots & \vdots & \ddots & \vdots & - \\
+- & b_1(k_M) & b_2(k_M) & b_3(k_M) & \cdots & b_N(k_M) & - \\
+- & - & - & - & \cdots & - & b_f(k_f) \\
+\end{bmatrix}$$
 
-## **Advantages of Custom Backends**
+Where:
+- $b_i(k_j)$ represents the probability of emitting observation $k_j$ when in state $s_i$
+- Formally: $b_i(k_j) = P(O_t = k_j | X_t = s_i)$
 
-1. **Flexibility and Control:** A custom backend offers unparalleled control over every aspect of the backend architecture.
+### Output Independence Property
 
-2. **Scalability:** It allows for fine-tuned scaling strategies that match the application's specific growth and performance demands.
+An important property of HMMs is **output independence**, which states that the probability of an output observation depends only on the current state:
 
-3. **Optimized Performance:** The backend can be optimized for the specific needs of the application, leading to improved performance.
+$$P(O_t | X_1...X_t, ..., X_T, O_1, ..., O_t, ..., O_T) \approx P(O_t | X_t)$$
 
-## **Disadvantages of Custom Backends**
+This means that the current observation is conditionally independent of all other states and observations given the current state.
 
-1. **Increased Initial Effort:** Building a custom backend from scratch requires a significant initial investment in time and resources.
+### Estimation of Emission Probabilities
 
-2. **Complexity:** Managing all aspects of the backend, from server setup to database design and security, can be complex and challenging.
+Emission probabilities can be estimated from training data:
 
-3. **Maintenance:** The responsibility of updating, patching, and maintaining the system rests with the developers or the organization.
+$$b_i(k_j) \approx \frac{\text{count}_{\text{emission}}(O_t = k_j, X_t = s_i)}{\text{count}_{\text{emission}}(X_t = s_i)}$$
 
-Building a custom backend can be a challenging endeavor, but it provides unmatched flexibility and control, making it a preferred choice for many applications.
+### Example: Dice HMM
 
-# **Backend as a Service (BaaS) / Managed Backends: The New Era of Backend Development**
+In the fraudulent croupier scenario:
+- For the fair dice (state F):
+  - $b_F(1) = b_F(2) = b_F(3) = b_F(4) = b_F(5) = b_F(6) = \frac{1}{6}$
 
-## **What is Backend as a Service (BaaS)?**
+- For the loaded dice (state L):
+  - The probabilities $b_L(1), b_L(2), \ldots, b_L(6)$ would have a different distribution, reflecting the bias of the loaded dice.
 
-Backend as a Service (BaaS), sometimes referred to as managed backend, is a cloud service model that provides developers with a ready-made backend that they can plug into their applications. These services handle the backend infrastructure, including servers, databases, APIs, authentication, and more, allowing developers to focus solely on the frontend and application logic.
+## 2.3 Start and End States
 
-## **The Rising Popularity of BaaS**
+HMMs typically include **special start state** ($s_0$) and **special end state** ($s_f$) to explicitly model the beginning and end of observation sequences.
 
-The BaaS model is gaining traction because it dramatically reduces the time, effort, and resources required to develop and maintain a backend. The tedious tasks of setting up servers, designing databases, and managing security are handled by the BaaS provider. This allows developers to launch applications faster, making BaaS particularly popular among startups and agile development teams looking for rapid deployment.
+### Start State ($s_0$)
 
-## **Scaling BaaS and Vendor Lock-In**
+- Not associated with "real" observations
+- Transitions from $s_0$ to other states (represented by $a_{0i}$) define the initial state distribution
+- No transitions into the start state are defined (all $a_{i0}$ are undefined)
 
-Most BaaS providers offer seamless scalability, adjusting resources automatically as the application's demands change. However, there is a caveat - the issue of vendor lock-in. Some services, such as Google Firebase or AWS Amplify, are proprietary to their respective cloud platforms, which means moving to a different platform in the future could pose significant challenges.
+### End State ($s_f$)
 
-There are BaaS providers, though, that are platform-agnostic and allow usage across any cloud platform, helping avoid vendor lock-in and offering more flexibility.
+- Not associated with "real" observations
+- Transitions from other states to $s_f$ (represented by $a_{if}$) define the probability of sequence termination
+- No transitions out of the end state are defined (all $a_{fi}$ are undefined)
 
-## **Cost and Time Considerations for BaaS**
+### Special Observations
 
-From a cost and time perspective, BaaS can be quite attractive. The upfront costs are typically lower than building a custom backend, and the time to market can be drastically reduced. However, as the application scales, the costs of using a BaaS can grow. It's important to understand the pricing model of the BaaS provider to avoid unexpected costs as your application grows.
+Similarly, special symbols are defined:
+- $k_0$: special start symbol, emitted only by the start state
+- $k_f$: special end symbol, emitted only by the end state
 
-## **Security in BaaS**
+### Complete HMM Definition
 
-Security in a BaaS setup is managed by the service provider, easing the burden on developers. Providers typically offer robust security measures, including data encryption, secure authentication systems, and compliance with various data privacy regulations. However, the responsibility of using these features correctly still lies with the developers.
+With these components defined, a complete first-order HMM is formally specified by:
 
-## **BaaS Providers**
+1. A set of $N$ emitting states $S_e = \{s_1, s_2, \ldots, s_N\}$
+2. Special start state $s_0$ and end state $s_f$
+3. An output alphabet of $M$ observations $K = \{k_1, k_2, \ldots, k_M\}$
+4. Special start symbol $k_0$ and end symbol $k_f$
+5. State transition probability matrix $A$
+6. Emission probability matrix $B$
 
-There are numerous BaaS providers, each with their unique offerings. Here are a few examples:
+The HMM can be denoted as $\mu = (A, B)$ with these parameters.
 
-- **Firebase (Google):** Firebase offers a suite of backend services, including a NoSQL database, user authentication, cloud storage, and more. It is proprietary to Google Cloud.
+### Visual Representation
 
-- **AWS Amplify:** Amplify is a development platform from Amazon Web Services (AWS) that offers backend services for mobile and frontend web developers. It is proprietary to AWS.
+![image](https://github.com/user-attachments/assets/e22cd86e-6c5b-4cc0-82de-d4782a088fc2)
 
-- **Supabase:** Supabase is an open-source alternative to Firebase, offering similar features but with the added advantage of avoiding vendor lock-in. It can be used with various cloud platforms.
+![image](https://github.com/user-attachments/assets/2a3c2b5f-1a84-4a71-ba7d-f25a75ceaaae)
 
-## **Advantages of BaaS**
+> Showing the dice HMM with start state, end state, and transitions between states
 
-1. **Speeds up Development:** By handling backend infrastructure, BaaS enables developers to focus on frontend development and application logic, speeding up the development process.
+In this diagram, $a_{01}$ and $a_{02}$ represent probabilities of starting with the loaded or fair dice, while $a_{1f}$ and $a_{2f}$ represent probabilities of ending the sequence when in each state.
 
-2. **Reduces Initial Costs:** The upfront cost of using a BaaS is typically lower than that of developing a custom backend.
 
-3. **Eases Maintenance Burden:** Updates, patches, and other maintenance tasks are handled by the BaaS provider.
+# 3. HMM Problems and Algorithms
 
-## **Disadvantages of BaaS**
+## 3.1 Problem 1: Labelled Learning (Parameter Estimation)
 
-1. **Vendor Lock-In:** Using a proprietary BaaS can make it challenging to switch to a different platform in the future.
+**Labelled learning** is the problem of estimating the parameters of an HMM (transition and emission probabilities) when we have access to both observation sequences and their corresponding hidden state sequences.
 
-2. **Limited Customisability:** BaaS offerings are often not as flexible or customizable as a custom backend.
+### Input and Output
 
-3. **Potential Cost Increases at Scale:** While initial costs are lower, the costs of a BaaS can grow as the application scales.
+- **Input**: Parallel sequences of observations and states (dual tape)
+- **Output**: HMM parameters (transition matrix A and emission matrix B)
 
-While the decision between a custom backend and a BaaS will depend on the specific needs of the project, BaaS offers a compelling model for many applications, particularly those aiming for rapid development and deployment.
+This is the simplest of the HMM learning problems because we can directly count transitions and emissions from the labelled data.
 
-# **Conclusion**
+### Parameter Estimation Formulas
 
-In the realm of software engineering and web development, the backend forms the foundational pillar that powers the application. It refers to the server-side operations that aren't visible to the user but are essential for the functionality and performance of the application or service. 
+The **transition probabilities** $a_{ij}$ are estimated using:
 
-The primary components of the backend include the server, the database, the server-side code or application, middleware, APIs, and systems for authentication, user management, and session management. They are usually stored and run on powerful machines or cloud platforms and interact with the frontend of the application via the internet.
+$$a_{ij} = P(X_{t+1} = s_j | X_t = s_i) \approx \frac{\text{count}_{\text{trans}}(X_t = s_i, X_{t+1} = s_j)}{\text{count}_{\text{trans}}(X_t = s_i)}$$
 
-In the context of backend development, we have two prevalent models: Custom Backends and Backend as a Service (BaaS). Custom backends provide a tailor-made solution that caters to the specific needs of an application or service, offering a high degree of flexibility, control, and scalability. However, they require significant upfront investment in terms of time and cost. Popular tools for building custom backends include frameworks like Flask, Django, and FastAPI for Python; Express.js, NestJS for JavaScript and TypeScript; and Spring Boot and Play for Java.
+Where:
+- $\text{count}_{\text{trans}}(X_t = s_i, X_{t+1} = s_j)$ is the number of times state $s_i$ is followed by state $s_j$
+- $\text{count}_{\text{trans}}(X_t = s_i)$ is the total number of times state $s_i$ appears
 
-On the other hand, BaaS or managed backends, such as Google Firebase, AWS Amplify, or Supabase, provide ready-made backend services. They significantly reduce the time, effort, and resources required to develop a backend, allowing developers to focus more on the frontend and application logic. However, they can limit flexibility and potentially increase costs as the application scales.
+The **emission probabilities** $b_i(k_j)$ are estimated using:
 
-The choice between a custom backend and BaaS depends on various factors, including the specific needs of the project, the expertise of the development team, and the anticipated growth of the application. Each has its strengths and potential downsides, which must be carefully weighed in the decision-making process.
+$$b_i(k_j) = P(O_t = k_j | X_t = s_i) \approx \frac{\text{count}_{\text{emission}}(O_t = k_j, X_t = s_i)}{\text{count}_{\text{emission}}(X_t = s_i)}$$
 
-In all cases, backend security is paramount. The potential consequences of inadequate security measures can be devastating, ranging from data breaches to significant financial losses and damage to the company's reputation.
+Where:
+- $\text{count}_{\text{emission}}(O_t = k_j, X_t = s_i)$ is the number of times observation $k_j$ is emitted from state $s_i$
+- $\text{count}_{\text{emission}}(X_t = s_i)$ is the total number of times state $s_i$ appears
 
-In conclusion, the backend forms a critical part of any application or service. Whether you choose to build a custom backend or opt for a BaaS, careful consideration must be given to the architecture, scalability, cost, security, and the specific needs of your application.
+### Example: Dice HMM Parameter Estimation
 
-# **Sources**
+Given the following labelled sequence:
 
-- **What is a Backend in Software Engineering and Web Development**
-    - [MDN Web Docs: Server-side web APIs](https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Web_server_overview)
-    - [IBM Cloud: What is a backend developer?](https://www.ibm.com/cloud/blog/new-builders/what-is-a-backend-developer)
-    
-- **Why are Backends Important**
-    - [Geekflare: Importance of Backend Web Development](https://geekflare.com/importance-of-backend-web-development/)
-    - [Codica: The Role of a Server in Web Development](https://www.codica.com/blog/the-role-of-a-server-in-web-development/)
-    
-- **Key Components of the Backend**
-    - [MDN Web Docs: Express/Node introduction](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Introduction)
-    - [Oracle: Overview of Middleware](https://www.oracle.com/middleware/technologies/what-is-middleware.html)
-    
-- **Custom Backends**
-    - [Toptal: Building a Custom Backend for Your Frontend App](https://www.toptal.com/nodejs/secure-rest-api-in-nodejs)
-    - [Spring Boot Documentation](https://spring.io/projects/spring-boot)
-    - [Django Documentation](https://www.djangoproject.com/)
-    
-- **Backend as a Service (BaaS)**
-    - [Firebase Official Documentation](https://firebase.google.com/)
-    - [AWS Amplify Official Documentation](https://aws.amazon.com/amplify/)
-    - [Supabase: The Open Source Firebase Alternative](https://supabase.io/)
-    - [Medium: Understanding Backend as a Service (BaaS)](https://medium.com/@kentan/understanding-backend-as-a-service-baas-c86971b16c4c) 
+```
+States:   F F F F L L L F F F F L L L L F F F L L
+Observations: 1 3 4 5 6 6 5 1 2 3 1 4 3 5 4 1 2 6 1 2
+```
+
+We can count:
+- Transitions: F→F, F→L, L→L, L→F
+- Emissions: (F,1), (F,2), (F,3), ..., (L,1), (L,2), ...
+
+For example, to calculate $a_{FL}$ (probability of transitioning from fair to loaded dice):
+$$a_{FL} = \frac{\text{count}(F \rightarrow L)}{\text{count}(F)} = \frac{3}{12} = 0.25$$
+
+Similarly, to calculate $b_L(6)$ (probability of rolling a 6 with the loaded dice):
+$$b_L(6) = \frac{\text{count}(6|L)}{\text{count}(L)} = \frac{1}{8} = 0.125$$
+
+### Smoothing
+
+In practice, **add-one smoothing** (or other smoothing techniques) is often applied to handle zero counts and avoid zero probabilities.
+
+## 3.2 Problem 2: Unlabelled Learning
+
+**Unlabelled learning** is the problem of estimating the HMM parameters when we only have access to observation sequences, without the corresponding hidden state sequences.
+
+This is a more challenging problem since we don't know which states generated which observations.
+
+### Solution Approach
+
+The standard algorithm for unlabelled learning is the **Baum-Welch algorithm**, which is a special case of the **Expectation-Maximization (EM)** algorithm:
+
+1. **Expectation step**: Compute the expected counts of transitions and emissions based on current parameter estimates
+2. **Maximization step**: Re-estimate the parameters to maximize the likelihood of the observations
+
+The algorithm iterates between these steps until convergence, typically reaching a local optimum.
+
+### Challenges
+
+- Requires initialization of parameters
+- Converges to local optima, not necessarily global
+- More computationally intensive than labelled learning
+- May require multiple random restarts with different initializations
+
+## 3.3 Problem 3: Likelihood Calculation
+
+**Likelihood calculation** is the problem of determining the probability of an observation sequence given an HMM: $P(O|\mu)$.
+
+This calculation is useful for:
+- Comparing different HMMs
+- Evaluating how well an HMM explains new data
+- Component in the Baum-Welch algorithm
+
+### Forward Algorithm
+
+The standard approach uses the **Forward algorithm**, which efficiently computes the likelihood using dynamic programming:
+
+1. Define forward variables $\alpha_t(i)$ as the probability of observing the partial sequence $O_1, O_2, ..., O_t$ and ending in state $s_i$
+2. Recursively calculate these variables
+3. Sum over all possible final states to get the total likelihood
+
+The algorithm has complexity $O(N^2T)$ where $N$ is the number of states and $T$ is the sequence length.
+
+## 3.4 Problem 4: Decoding (Viterbi Algorithm)
+
+**Decoding** is the problem of finding the most likely sequence of hidden states that could have generated a given observation sequence.
+
+Formally, we want to find:
+
+$$\hat{X} = \arg\max_{X} P(X, O|\mu) = \arg\max_{X} P(O|X, \mu)P(X|\mu)$$
+
+Which expands to:
+
+$$\hat{X} = \arg\max_{X_{1...T}} \prod_{t=1}^{T} P(O_t|X_t)P(X_t|X_{t-1})$$
+
+### Dynamic Programming Solution
+
+The search space of all possible state sequences is $O(N^T)$, making brute force search impractical. Instead, we use the **Viterbi algorithm**, which is a dynamic programming approach.
+
+The Viterbi algorithm works because HMMs satisfy two key properties:
+1. **Optimal substructure**: The best path to a state contains within it optimal sub-paths
+2. **Overlapping subproblems**: Calculations for later states reuse calculations from earlier states
+
+### The Viterbi Algorithm
+
+The algorithm uses a **trellis** data structure to memoize intermediate results. The trellis is a $(N+2) \times (T+2)$ grid where:
+- Rows represent states
+- Columns represent time steps
+
+![image](https://github.com/user-attachments/assets/6f3aa65c-afa7-4482-b8e2-6fc3adcf7b1b)
+
+![image](https://github.com/user-attachments/assets/2a2df515-34c3-469f-835b-4caee0800884)
+
+![image](https://github.com/user-attachments/assets/836cad11-f7aa-401d-bfa5-fc4c9578de3e)
+
+![image](https://github.com/user-attachments/assets/faf76415-978d-40c7-bb13-b5ffc3d36a92)
+
+![image](https://github.com/user-attachments/assets/22bc67f4-6f32-4fd9-b352-d1d551353636)
+
+![image](https://github.com/user-attachments/assets/7d85dc02-0b54-4b7d-ba32-d496fc633b33)
+
+![image](https://github.com/user-attachments/assets/ec9dc820-a2a0-4887-ad34-15a601f20af5)
+
+![image](https://github.com/user-attachments/assets/2bf2dc22-a522-4315-b16c-40aafaa19de6)
+
+![image](https://github.com/user-attachments/assets/959aa5d6-2126-45bc-acd6-f87f44f99db3)
+
+![image](https://github.com/user-attachments/assets/f8970eeb-cc5e-4f25-bc89-bf1d8bb6dd51)
+
+![image](https://github.com/user-attachments/assets/1758b3af-53ae-41c6-94ef-8c0d03ca803a)
+
+![image](https://github.com/user-attachments/assets/1b294e31-2482-4351-8fa5-10aa7329e27f)
+
+![image](https://github.com/user-attachments/assets/24e1d354-76a4-459f-b9c7-c5f520d1693f)
+
+![image](https://github.com/user-attachments/assets/bbbf59f8-9336-4896-af6d-e505ab902082)
+
+![image](https://github.com/user-attachments/assets/02bf76f8-e044-4eb4-929d-1080cae3687a)
+
+![image](https://github.com/user-attachments/assets/4112819e-d81e-4610-95a9-338b4af99eca)
+
+![image](https://github.com/user-attachments/assets/04a56532-af7a-40ba-966c-af957a703a34)
+
+![image](https://github.com/user-attachments/assets/f6f954e9-34aa-4ed9-8fd5-2f2d91ead6bc)
+
+![image](https://github.com/user-attachments/assets/70b2cf72-f8a1-40c7-9e66-fe155108e67e)
+
+![image](https://github.com/user-attachments/assets/a80fe6bb-1dea-4711-b957-6ec0dfbf582a)
+
+![image](https://github.com/user-attachments/assets/333a8b1e-7066-4ba3-88fc-54e331c504fa)
+
+![image](https://github.com/user-attachments/assets/1b4d7cb1-76b5-4db3-91e5-312bf2225479)
+
+![image](https://github.com/user-attachments/assets/adc045ec-b254-4894-9acf-a184abb72916)
+
+![image](https://github.com/user-attachments/assets/0e195bb3-be88-4785-9be1-531241a6ce48)
+
+![image](https://github.com/user-attachments/assets/ee7403e4-50eb-4279-a39c-42368d88db7a)
+
+![image](https://github.com/user-attachments/assets/1b9ce282-a35d-4dc6-9e82-33395db94cea)
+
+![image](https://github.com/user-attachments/assets/d47ea210-cd6b-4424-b65f-c850322f9319)
+
+
+#### Key Variables
+
+1. **Viterbi Probability** $\delta_j(t)$: The probability of the most likely path ending in state $s_j$ at time $t$
+2. **Backpointer** $\psi_j(t)$: The previous state in the most likely path to state $s_j$ at time $t$
+
+#### Algorithm Steps
+
+**1. Initialization (t=0)**:
+- Initialize the Viterbi probability for the start state: $\delta_0(0) = 1$
+- Initialize all other Viterbi probabilities to 0: $\delta_j(0) = 0$ for $j \neq 0$
+
+**2. Recursion (t=1 to T)**:
+- For each state $s_j$ and time $t$, compute:
+  $$\delta_j(t) = \max_{1 \leq i \leq N} [\delta_i(t-1) \cdot a_{ij} \cdot b_j(O_t)]$$
+  $$\psi_j(t) = \arg\max_{1 \leq i \leq N} [\delta_i(t-1) \cdot a_{ij} \cdot b_j(O_t)]$$
+
+**3. Termination**:
+- Compute the probability of the most likely path ending in the final state:
+  $$\delta_f(T+1) = \max_{1 \leq i \leq N} [\delta_i(T) \cdot a_{if}]$$
+  $$\psi_f(T+1) = \arg\max_{1 \leq i \leq N} [\delta_i(T) \cdot a_{if}]$$
+
+**4. Backtracing**:
+- Start at the end state: $x_{T+1} = s_f$
+- For $t = T$ down to 1, find the previous state:
+  $$x_t = s_{\psi_{x_{t+1}}(t+1)}$$
+
+The result is the most likely state sequence $X = (x_1, x_2, ..., x_T)$.
+
+### Example: Dice HMM Decoding
+
+Suppose we observe the sequence [4, 3, 5] and want to determine whether the fair or loaded dice was used at each step.
+
+![image](https://github.com/user-attachments/assets/6f3aa65c-afa7-4482-b8e2-6fc3adcf7b1b)
+
+![image](https://github.com/user-attachments/assets/2a2df515-34c3-469f-835b-4caee0800884)
+
+![image](https://github.com/user-attachments/assets/836cad11-f7aa-401d-bfa5-fc4c9578de3e)
+
+![image](https://github.com/user-attachments/assets/faf76415-978d-40c7-bb13-b5ffc3d36a92)
+
+![image](https://github.com/user-attachments/assets/22bc67f4-6f32-4fd9-b352-d1d551353636)
+
+![image](https://github.com/user-attachments/assets/7d85dc02-0b54-4b7d-ba32-d496fc633b33)
+
+![image](https://github.com/user-attachments/assets/ec9dc820-a2a0-4887-ad34-15a601f20af5)
+
+![image](https://github.com/user-attachments/assets/2bf2dc22-a522-4315-b16c-40aafaa19de6)
+
+![image](https://github.com/user-attachments/assets/959aa5d6-2126-45bc-acd6-f87f44f99db3)
+
+![image](https://github.com/user-attachments/assets/f8970eeb-cc5e-4f25-bc89-bf1d8bb6dd51)
+
+![image](https://github.com/user-attachments/assets/1758b3af-53ae-41c6-94ef-8c0d03ca803a)
+
+![image](https://github.com/user-attachments/assets/1b294e31-2482-4351-8fa5-10aa7329e27f)
+
+![image](https://github.com/user-attachments/assets/24e1d354-76a4-459f-b9c7-c5f520d1693f)
+
+![image](https://github.com/user-attachments/assets/bbbf59f8-9336-4896-af6d-e505ab902082)
+
+![image](https://github.com/user-attachments/assets/02bf76f8-e044-4eb4-929d-1080cae3687a)
+
+![image](https://github.com/user-attachments/assets/4112819e-d81e-4610-95a9-338b4af99eca)
+
+![image](https://github.com/user-attachments/assets/04a56532-af7a-40ba-966c-af957a703a34)
+
+![image](https://github.com/user-attachments/assets/f6f954e9-34aa-4ed9-8fd5-2f2d91ead6bc)
+
+![image](https://github.com/user-attachments/assets/70b2cf72-f8a1-40c7-9e66-fe155108e67e)
+
+![image](https://github.com/user-attachments/assets/a80fe6bb-1dea-4711-b957-6ec0dfbf582a)
+
+![image](https://github.com/user-attachments/assets/333a8b1e-7066-4ba3-88fc-54e331c504fa)
+
+![image](https://github.com/user-attachments/assets/1b4d7cb1-76b5-4db3-91e5-312bf2225479)
+
+![image](https://github.com/user-attachments/assets/adc045ec-b254-4894-9acf-a184abb72916)
+
+![image](https://github.com/user-attachments/assets/0e195bb3-be88-4785-9be1-531241a6ce48)
+
+![image](https://github.com/user-attachments/assets/ee7403e4-50eb-4279-a39c-42368d88db7a)
+
+![image](https://github.com/user-attachments/assets/1b9ce282-a35d-4dc6-9e82-33395db94cea)
+
+![image](https://github.com/user-attachments/assets/d47ea210-cd6b-4424-b65f-c850322f9319)
+The trellis calculation would proceed as follows:
+
+1. **Initialization**: Start at the start state
+2. **For t=1 (observation=4)**:
+   - Calculate $\delta_F(1)$ and $\delta_L(1)$ based on transitions from start state
+3. **For t=2 (observation=3)**:
+   - Calculate $\delta_F(2)$ and $\delta_L(2)$ based on values from t=1
+4. **For t=3 (observation=5)**:
+   - Calculate $\delta_F(3)$ and $\delta_L(3)$ based on values from t=2
+5. **Termination**: Calculate transition to end state
+6. **Backtracing**: Follow the backpointers to determine the most likely sequence
+
+The output would be the most likely sequence of dice used (F or L) that produced the observed numbers.
+
+### Complexity
+
+The time complexity of the Viterbi algorithm is $O(N^2T)$, where:
+- $N$ is the number of states
+- $T$ is the length of the observation sequence
+
+This is much more efficient than the brute force approach of checking all $N^T$ possible state sequences.
+
+# 4. Evaluation and Testing
+
+## 4.1 Precision and Recall
+
+When evaluating HMM performance, we often need more nuanced metrics than overall accuracy, especially when the classes are imbalanced or we're particularly interested in one type of state.
+
+**Precision** and **recall** are evaluation metrics imported from information retrieval that provide a more detailed assessment of performance for specific classes of interest.
+
+### Why Not Just Use Accuracy?
+
+**Accuracy** measures the overall correctness of predictions:
+
+$$\text{Accuracy} = \frac{\text{Number of correct predictions}}{\text{Total number of predictions}} = \frac{a+d}{a+b+c+d}$$
+
+However, accuracy has limitations:
+- It can be misleading when classes are imbalanced
+- It doesn't distinguish between different types of errors
+- It doesn't focus on the class of interest
+
+### Precision, Recall and F-measure
+
+Given a confusion matrix:
+
+|                 | System says: F | System says: L | Total   |
+| --------------- | -------------- | -------------- | ------- |
+| **Truth is: F** | a              | b              | a+b     |
+| **Truth is: L** | c              | d              | c+d     |
+| **Total**       | a+c            | b+d            | a+b+c+d |
+
+The key metrics are:
+
+**Precision of L**: The proportion of instances classified as L that are actually L
+$$P_L = \frac{d}{b+d} = \frac{\text{number of correctly predicted L}}{\text{number of predicted L}}$$
+
+**Recall of L**: The proportion of actual L instances that are correctly classified as L
+$$R_L = \frac{d}{c+d} = \frac{\text{number of correctly predicted L}}{\text{true number of L}}$$
+
+**F-measure of L**: The harmonic mean of precision and recall
+$$F_L = \frac{2P_L R_L}{P_L + R_L}$$
+
+### Example: Evaluating Dice HMM
+
+Consider a test set where our HMM tries to determine whether the fair (F) or loaded (L) dice was used:
+
+|               | Predicted: F | Predicted: L | Total |
+| ------------- | ------------ | ------------ | ----- |
+| **Actual: F** | 45           | 5            | 50    |
+| **Actual: L** | 10           | 40           | 50    |
+| **Total**     | 55           | 45           | 100   |
+
+Calculating metrics for the loaded dice (L):
+- Precision: $P_L = \frac{40}{45} = 0.889$ (88.9% of predictions of L are correct)
+- Recall: $R_L = \frac{40}{50} = 0.8$ (80% of actual L instances are detected)
+- F-measure: $F_L = \frac{2 \times 0.889 \times 0.8}{0.889 + 0.8} = \frac{1.422}{1.689} = 0.842$
+- Accuracy: $\frac{45+40}{100} = 0.85$ (85% overall correct predictions)
+
+## 4.2 Baseline Algorithms
+
+A **baseline algorithm** is a simpler alternative to your proposed solution that serves as a comparison point. Baselines help quantify how much improvement your model provides over simpler approaches.
+
+### Importance of Baselines
+
+Baselines serve several crucial purposes:
+- They establish a minimum performance level that any useful algorithm should exceed
+- They help contextualize how "good" your results actually are
+- They demonstrate the value added by your more complex approach
+
+### Criteria for Effective Baselines
+
+A good baseline should:
+1. Require **considerably less effort** than your proposed solution
+2. Be **easily understandable** to other researchers
+3. Have "fair" access to a reasonable amount of information
+4. Be **strong enough** to be meaningful but not so strong as to be nearly equivalent to your solution
+
+### Common Baseline Approaches
+
+1. **Most Frequent Category (MFC)**: Always predict the most common class in the training data
+2. **Random Prediction**: Randomly assign states based on their observed distribution
+3. **Simple Rules**: Apply straightforward heuristics (e.g., always predict state X after observation Y)
+4. **Existing Implementations**: Use previously published algorithms as comparison points
+
+### Baseline for HMM Decoding
+
+For HMM decoding, a common baseline is **random guessing of hidden states**:
+- Only knows how often the HMM is in each state on average (the observed distribution of states)
+- Does not use information about sequences or observations
+- For each position, randomly selects a state according to the state's overall frequency
+
+This baseline tests how much the sequential modeling in an HMM improves prediction compared to simply knowing state frequencies.
+
+## 4.3 Statistical Significance Testing
+
+When comparing two systems (e.g., your HMM vs. a baseline), observed performance differences might be due to chance rather than actual superiority of one approach. **Statistical significance testing** helps determine whether observed differences are likely to be meaningful.
+
+### Null Hypothesis Testing
+
+The framework is based on testing the **null hypothesis** that two result sets come from the same distribution (i.e., the systems are equally good).
+
+Steps in statistical testing:
+1. Choose a **significance level** (α), typically 0.01 or 0.05
+2. Calculate a test statistic and its corresponding p-value
+3. If p-value < α, reject the null hypothesis with confidence 1-α (95% or 99%)
+
+### The Sign Test
+
+The **sign test** is a non-parametric, paired test that's particularly suitable for comparing classification systems:
+
+1. For each test instance, determine which system performs better:
+   - Positive outcome: System 1 beats System 2
+   - Negative outcome: System 2 beats System 1
+   - Tie: Both systems perform equally
+
+2. Under the null hypothesis (systems are equal), the probability of positive and negative outcomes should be equal (0.5)
+
+3. The counts follow a **binomial distribution** B(N,q) where:
+   - N is the total number of non-tie comparisons
+   - q is the probability of a negative outcome (0.5 under the null hypothesis)
+
+### Binomial Distribution
+
+The probability of observing exactly k negative events out of N is:
+
+$$P_q(X = k|N) = \binom{N}{k} q^k (1-q)^{N-k}$$
+
+The probability of observing at most k negative events:
+
+$$P_q(X \leq k|N) = \sum_{i=0}^{k} \binom{N}{i} q^i (1-q)^{N-i}$$
+
+### One-Tailed vs. Two-Tailed Tests
+
+- **One-tailed test**: Tests if System 1 is better than System 2 (directional)
+- **Two-tailed test**: Tests if the systems are different, regardless of direction (non-directional)
+
+For a two-tailed test, the p-value is 2×P(X ≤ k) for the smaller count.
+
+### Example: Sign Test
+
+Suppose we compare our HMM against a baseline on 100 test instances:
+- HMM better: 65 instances
+- Baseline better: 35 instances
+- Ties: 0 instances
+
+Using the binomial distribution with N=100, k=35, q=0.5:
+- P(X ≤ 35|100) = 0.0018
+
+Since 0.0018 < 0.01 (our chosen significance level), we can reject the null hypothesis and conclude that the HMM is significantly better than the baseline with 99% confidence.
+
+### Handling Ties
+
+Ties (where both systems perform equally) are common in classification tasks. They can be handled by:
+- Excluding ties from the analysis (reducing N)
+- Adding 0.5 to both positive and negative counts for each tie
+
+### Reporting Significance
+
+When reporting results, only claim statistical significance if your test indicates it:
+- "The difference between System 1 and System 2 is statistically significant at α = 0.01"
+- Raw accuracy differences without significance testing may be meaningless
+
+# 5. Practical Applications
+
+## 5.1 Fraudulent Croupier Example
+
+The fraudulent croupier scenario is a classic example used to illustrate HMMs in action. This example demonstrates how HMMs can detect hidden states when only observations are visible.
+
+### Scenario Description
+
+The scenario involves a dishonest casino croupier who secretly switches between dice:
+
+- The croupier has multiple dice: a **fair dice** (F) and one or more **loaded dice** (L)
+- The fair dice has equal probability (1/6) for each number
+- The loaded dice have biased probability distributions
+- When people bet on outcomes, the croupier secretly switches between dice
+- An observer can only see the numbers rolled, not which dice is being used
+- The goal is to detect when the croupier is cheating by using the loaded dice
+
+### HMM Formulation
+
+This scenario can be modeled as an HMM where:
+
+- **Hidden states**: The type of dice being used (F or L)
+- **Observations**: The numbers rolled (1-6)
+- **Transition probabilities**: How likely the croupier is to switch dice or continue using the same one
+- **Emission probabilities**: The probability of rolling each number with each dice
+
+![image](https://github.com/user-attachments/assets/e22cd86e-6c5b-4cc0-82de-d4782a088fc2)
+
+![image](https://github.com/user-attachments/assets/2a3c2b5f-1a84-4a71-ba7d-f25a75ceaaae)
+
+> Showing the dice HMM with states, observations, and transition probabilities
+
+### Variant with Three Dice
+
+In a more complex version (as seen in tutorial 04), the croupier has three dice:
+- A fair dice (F)
+- Two different loaded dice (L1 and L2)
+
+The HMM structure becomes more complex with additional states and transitions.
+
+### Parameter Estimation Example
+
+Given training data with known dice types:
+
+```
+States:      F F F F L L L F F F F L L L L F F F L L
+Observations: 1 3 4 5 6 6 5 1 2 3 1 4 3 5 4 1 2 6 1 2
+```
+
+We can estimate the transition probabilities:
+
+- $a_{FF}$ (staying with fair dice): $\frac{count(F \rightarrow F)}{count(F)} = \frac{9}{12} = 0.75$
+- $a_{FL}$ (switching from fair to loaded): $\frac{count(F \rightarrow L)}{count(F)} = \frac{3}{12} = 0.25$
+- $a_{LL}$ (staying with loaded dice): $\frac{count(L \rightarrow L)}{count(L)} = \frac{6}{8} = 0.75$
+- $a_{LF}$ (switching from loaded to fair): $\frac{count(L \rightarrow F)}{count(L)} = \frac{2}{8} = 0.25$
+
+And the emission probabilities:
+
+- For fair dice: $b_F(1) = \frac{count(1|F)}{count(F)} = \frac{4}{12} = 0.333$
+- For loaded dice: $b_L(1) = \frac{count(1|L)}{count(L)} = \frac{1}{8} = 0.125$
+
+### Decoding with Viterbi
+
+Given only an observation sequence [4, 3, 5], we can use the Viterbi algorithm to determine the most likely sequence of dice used:
+
+1. Construct a trellis with states (F, L) as rows and time steps as columns
+2. Fill in the probability of reaching each state at each time step
+3. Backtrace to find the most likely state sequence
+
+The result might be [F, F, L], indicating the first two rolls were likely from the fair dice and the third from the loaded dice.
+
+### Variants and Constraints
+
+The tutorial materials (tut04.pdf) discuss several interesting variants of the croupier's behavior:
+
+1. **Never switching directly from F to L2**: This constraint can be represented by setting $a_{F,L2} = 0$
+2. **Always ending with fair dice**: This constraint means $a_{1E} = a_{2E} = 0$ (only fair dice can transition to end state)
+3. **Never using loaded dice more than twice in a row**: This requires a second-order HMM to properly model
+4. **Always switching after rolling a 6**: This relates emissions to transitions and cannot be directly modeled in a standard HMM
+
+## 5.2 Part-of-Speech Tagging
+
+**Part-of-Speech (POS) tagging** is the task of assigning grammatical categories (noun, verb, adjective, etc.) to words in a text. This is a classic application of HMMs in natural language processing.
+
+### The Problem of Ambiguity
+
+Many words in English and other languages are ambiguous regarding their part of speech:
+
+- "can" → verb or auxiliary verb or noun
+- "fish" → noun or verb
+- "watch" → noun or verb
+
+For example, the sentence "We can fish" is ambiguous:
+- "We can fish" = "We are able to fish" (auxiliary verb + verb)
+- "We can fish" = "We put fish in cans" (verb + noun)
+
+A human understands the correct interpretation based on context, and an HMM can use probabilistic transitions to model this context.
+
+### HMM Formulation for POS Tagging
+
+In the POS tagging HMM:
+
+- **Hidden states**: The POS tags (noun, verb, pronoun, etc.)
+- **Observations**: The words in the text
+- **Transition probabilities**: The probability of one POS tag following another
+- **Emission probabilities**: The probability of a word being generated by a particular POS tag
+
+### Example from Lecture Notes
+
+The lecture presents an example with the sentence "We can fish." and an HMM with four states:
+- $s_1$ = verb
+- $s_2$ = noun
+- $s_3$ = personal pronoun
+- $s_4$ = auxiliary verb
+
+The transition probability matrix A is:
+
+$$A = \begin{bmatrix}
+a_{01} = 0.01 & a_{02} = 0.10 & a_{03} = 0.60 & a_{04} = 0.29 \\
+a_{11} = 0.02 & a_{12} = 0.63 & a_{13} = 0.07 & a_{14} = 0.13 & a_{1f} = 0.15 \\
+a_{21} = 0.49 & a_{22} = 0.20 & a_{23} = 0.10 & a_{24} = 0.01 & a_{2f} = 0.20 \\
+a_{31} = 0.40 & a_{32} = 0.05 & a_{33} = 0.05 & a_{34} = 0.40 & a_{3f} = 0.10 \\
+a_{41} = 0.73 & a_{42} = 0.01 & a_{43} = 0.15 & a_{44} = 0.01 & a_{4f} = 0.10
+\end{bmatrix}$$
+
+And the emission probability matrix B is:
+
+$$B = \begin{bmatrix}
+b_1(fish) = 0.89 & b_2(fish) = 0.75 & b_3(fish) = 0 & b_4(fish) = 0 \\
+b_1(can) = 0.10 & b_2(can) = 0.24 & b_3(can) = 0 & b_4(can) = 1 \\
+b_1(we) = 0.01 & b_2(we) = 0.01 & b_3(we) = 1 & b_4(we) = 0
+\end{bmatrix}$$
+
+### Analyzing Two Interpretations
+
+The notes examine two possible state sequences:
+1. $X_a = s_0, s_3, s_4, s_1, s_f$ (We = pronoun, can = auxiliary verb, fish = verb)
+2. $X_b = s_0, s_3, s_1, s_2, s_f$ (We = pronoun, can = verb, fish = noun)
+
+Calculating the probabilities:
+- $P(X_a) = a_{03} \times a_{34} \times a_{41} \times a_{1f} = 0.60 \times 0.40 \times 0.73 \times 0.15 = 0.02628$
+- $P(X_a, O) = P(X_a) \times b_3(we) \times b_4(can) \times b_1(fish) = 0.02628 \times 1 \times 1 \times 0.89 = 0.0233892$
+- $P(X_b) = 0.03024$
+- $P(X_b, O) = 0.002268$
+
+Since $P(X_a, O) > P(X_b, O)$, the model predicts the first interpretation: "We (pronoun) can (auxiliary verb) fish (verb)" = "We are able to fish."
+
+### Viterbi for POS Tagging
+
+In practice, we use the Viterbi algorithm to find the most likely sequence of POS tags for a given sentence:
+
+1. For each word and each possible POS tag, compute the probability of the best path ending with that tag
+2. Keep track of the previous tag in the best path
+3. Backtrace from the end to recover the most likely sequence of tags
+
+### Importance in NLP
+
+POS tagging is a fundamental task in natural language processing that serves as:
+- A preprocessing step for parsing and semantic analysis
+- An essential component in information extraction
+- A disambiguation technique for machine translation
+- A foundation for many higher-level NLP tasks
+
+The success of HMMs in POS tagging demonstrates their power in modeling sequential data with hidden structure, even in complex domains like human language.

@@ -6,8 +6,6 @@ import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import BlogInterface from "@/database/Blogs/BlogInterface";
 import skillDatabaseMap from "../Skills/SkillDatabaseMap";
 import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
-import projectDatabaseMap from "../Projects/ProjectDatabaseMap";
-import ProjectDatabaseKeys from "../Projects/ProjectDatabaseKeys";
 
 /**
  * Hashmap of blogs with keys as {@link BlogDatabaseKeys} and values as {@link BlogInterface}.
@@ -27,95 +25,6 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.PocketBase,
     ],
     category: BlogCategoriesEnum.WebDevelopment,
-  },
-  [BlogDatabaseKeys.CICD]: {
-    name: "Embracing the Future of Software Development: A Comprehensive Guide to CI/CD",
-    subtitle:
-      "Mastering Continuous Integration and Continuous Delivery for Enhanced Software Delivery",
-    category: BlogCategoriesEnum.DevOps,
-    skills: [
-      SkillDatabaseKeys.DevOps,
-      SkillDatabaseKeys.ContinuousIntegration,
-      SkillDatabaseKeys.ContinuousDelivery,
-      SkillDatabaseKeys.ContinuousDeployment,
-      SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.Kubernetes,
-      SkillDatabaseKeys.Containerisation,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CloudComputing,
-      SkillDatabaseKeys.InfrastructureAsCode,
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-    ],
-  },
-  [BlogDatabaseKeys.DevOps]: {
-    name: "Embracing DevOps: A Guide to Principles, Practices, and Success Stories",
-    subtitle:
-      "Understanding the Impact of DevOps in Modern Software Development",
-    category: BlogCategoriesEnum.DevOps,
-    skills: [
-      SkillDatabaseKeys.DevOps,
-      SkillDatabaseKeys.IntegrationManagement,
-      SkillDatabaseKeys.ContinuousDelivery,
-      SkillDatabaseKeys.ContinuousDeployment,
-      SkillDatabaseKeys.Containerisation,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CloudComputing,
-      SkillDatabaseKeys.InfrastructureAsCode,
-      SkillDatabaseKeys.Automation,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-    ],
-  },
-  [BlogDatabaseKeys.Docker]: {
-    name: "Docker: Unleashing the Power of Containers",
-    subtitle:
-      "A Comprehensive Guide to Understanding Docker and Containerization Technology",
-    category: BlogCategoriesEnum.DevOps,
-    skills: [
-      SkillDatabaseKeys.DevOps,
-      SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.Containerisation,
-      SkillDatabaseKeys.ProblemSolving,
-    ],
-  },
-  [BlogDatabaseKeys.Frontend]: {
-    name: "Front-End Development and the Essential Role of Libraries and Frameworks",
-    subtitle:
-      "A comprehensive introduction to standard front-end web development using libraries and frameworks",
-    category: BlogCategoriesEnum.WebDevelopment,
-    skills: [
-      SkillDatabaseKeys.WebDevelopment,
-      SkillDatabaseKeys.HTML,
-      SkillDatabaseKeys.CSS,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.ReactJS,
-      SkillDatabaseKeys.NextJS,
-      SkillDatabaseKeys.AngularJS,
-      SkillDatabaseKeys.SvelteJS,
-      SkillDatabaseKeys.VueJS,
-    ],
-  },
-  [BlogDatabaseKeys.JavaScriptVsTypeScript]: {
-    name: "JavaScript vs TypeScript: A Detailed Comparison",
-    subtitle:
-      "Exploring the Advantages and Key Differences between JavaScript and TypeScript",
-    category: BlogCategoriesEnum.SoftwareEngineering,
-    skills: [SkillDatabaseKeys.JavaScript, SkillDatabaseKeys.TypeScript],
-  },
-  [BlogDatabaseKeys.Kubernetes]: {
-    name: "Kubernetes Guide: Mastering Container Orchestration",
-    subtitle: "An Overview of Components, Tools, and Best Practices",
-    category: BlogCategoriesEnum.DevOps,
-    skills: [
-      SkillDatabaseKeys.DevOps,
-      SkillDatabaseKeys.Kubernetes,
-      SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.Containerisation,
-    ],
   },
   [BlogDatabaseKeys.MachineLearningFoundations]: {
     name: "Exploring the Depths of Machine Learning",
@@ -161,28 +70,6 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.GraphQL,
       SkillDatabaseKeys.ProblemSolving,
     ],
-  },
-  [BlogDatabaseKeys.SDKvsAPI]: {
-    name: "SDKs vs APIs: A Comparative Guide",
-    subtitle: "Understanding Their Roles in Software Development",
-    category: BlogCategoriesEnum.SoftwareEngineering,
-    skills: [SkillDatabaseKeys.APIs, SkillDatabaseKeys.SDKs],
-  },
-  [BlogDatabaseKeys.SessionsVsTokens]: {
-    name: "Comparing Session and Token: Navigating Authentication",
-    subtitle: "A Detailed Comparison of Authentication Strategies",
-    category: BlogCategoriesEnum.WebDevelopment,
-    skills: [
-      SkillDatabaseKeys.WebDevelopment,
-      SkillDatabaseKeys.UserAuthentication,
-    ],
-  },
-  [BlogDatabaseKeys.SoftwareTesting]: {
-    name: "Comprehensive Guide to Software Testing",
-    subtitle:
-      "Exploring Functional and Non-Functional Testing Techniques, Tools, and Challenges",
-    category: BlogCategoriesEnum.SoftwareEngineering,
-    skills: [SkillDatabaseKeys.Testing, SkillDatabaseKeys.ProblemSolving],
   },
   [BlogDatabaseKeys.SQLNOSQL]: {
     name: "Exploring Databases: A Comparative Study of Relational and Non-Relational Models",
