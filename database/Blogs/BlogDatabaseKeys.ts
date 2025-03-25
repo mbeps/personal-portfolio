@@ -7,8 +7,9 @@
  * @see {@link blogMap} at `database/blogs.ts`
  */
 enum BlogDatabaseKeys {
-  Backend = "backend",
   MachineLearningFoundations = "machine-learning-foundations",
+  IntroductionToNeuralNetworks = "introduction-to-neural-networks",
+  Backend = "backend",
   ORM = "orm",
   RESTGraphQL = "rest-graphql-api",
   SQLNOSQL = "sql-vs-nosql-databases",
