@@ -15,14 +15,13 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/shadcn/ui/dropdown-menu";
-import skillDatabaseMap, {
-  skillDatabaseKeys,
-} from "@/database/Skills/SkillDatabaseMap";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
+import SkillInterface from "@/database/Skills/SkillInterface";
 import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import useIsMounted from "@/hooks/useIsMounted";
 import FilterOption from "@/interfaces/filters/FilterOption";
-import SkillInterface from "@/database/Skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -33,7 +32,6 @@ import HeadingThree from "../Text/HeadingThree";
 import HeadingTwo from "../Text/HeadingTwo";
 import { Button } from "../shadcn/ui/button";
 import { ScrollArea } from "../shadcn/ui/scroll-area";
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 
 /**
  * Displays a modal for the skills.
@@ -83,6 +81,8 @@ const TechnologiesModal: React.FC = () => {
     SkillCategoriesEnum.ProjectManagers,
     SkillCategoriesEnum.VersionControl,
     SkillCategoriesEnum.CloudComputing,
+    SkillCategoriesEnum.Testing,
+    SkillCategoriesEnum.CommunicationProtocolsLibraries,
     SkillCategoriesEnum.Automation,
     ...(groupedBy !== "language"
       ? [SkillCategoriesEnum.ProgrammingLanguages]
