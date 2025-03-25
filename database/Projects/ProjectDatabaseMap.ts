@@ -44,8 +44,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
       SkillDatabaseKeys.Yarn,
-      SkillDatabaseKeys.ESLint,
-      SkillDatabaseKeys.Prettier,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -58,7 +56,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Communication,
       SkillDatabaseKeys.RiskManagement,
       SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.DesignPatterns,
+
       SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
@@ -99,8 +97,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
       SkillDatabaseKeys.Yarn,
-      SkillDatabaseKeys.ESLint,
-      SkillDatabaseKeys.Prettier,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -108,7 +104,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
       SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.DesignPatterns,
+
       SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
@@ -148,8 +144,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
       SkillDatabaseKeys.Yarn,
-      SkillDatabaseKeys.ESLint,
-      SkillDatabaseKeys.Prettier,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -157,7 +151,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
       SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.DesignPatterns,
+
       SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
@@ -187,8 +181,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
       SkillDatabaseKeys.Yarn,
-      SkillDatabaseKeys.ESLint,
-      SkillDatabaseKeys.Prettier,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -196,7 +188,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
       SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.DesignPatterns,
+
       SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
@@ -219,7 +211,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.RadixUI,
       SkillDatabaseKeys.TailwindCSS,
       SkillDatabaseKeys.Zustand,
-      SkillDatabaseKeys.Zod,
+
       SkillDatabaseKeys.Convex,
       SkillDatabaseKeys.EdgeStore,
       SkillDatabaseKeys.Git,
@@ -228,8 +220,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
       SkillDatabaseKeys.Yarn,
-      SkillDatabaseKeys.ESLint,
-      SkillDatabaseKeys.Prettier,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -237,7 +227,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
       SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.DesignPatterns,
+
       SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
@@ -265,7 +255,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Prisma,
       SkillDatabaseKeys.Axios,
       SkillDatabaseKeys.NextAuth,
-      SkillDatabaseKeys.Zod,
+
       SkillDatabaseKeys.MySQL,
       SkillDatabaseKeys.OpenAI,
       SkillDatabaseKeys.Docker,
@@ -274,8 +264,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
       SkillDatabaseKeys.Yarn,
-      SkillDatabaseKeys.ESLint,
-      SkillDatabaseKeys.Prettier,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -283,7 +271,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
       SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.DesignPatterns,
+
       SkillDatabaseKeys.Algorithms,
     ],
     repositoryURL: "https://github.com/mbeps/quizmify",
@@ -342,8 +330,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.TailwindCSS,
       SkillDatabaseKeys.MySQL,
       SkillDatabaseKeys.Prisma,
-      SkillDatabaseKeys.TRPC,
-      SkillDatabaseKeys.StoryBooks,
       SkillDatabaseKeys.NxJS,
       SkillDatabaseKeys.Jest,
       SkillDatabaseKeys.GitHub,
@@ -352,10 +338,8 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
       SkillDatabaseKeys.PNPM,
-      SkillDatabaseKeys.ESLint,
-      SkillDatabaseKeys.Prettier,
+
       SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.DesignPatterns,
 
       SkillDatabaseKeys.Algorithms,
       SkillDatabaseKeys.ProblemSolving,
@@ -729,7 +713,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.GitLab,
       SkillDatabaseKeys.GitHubActions,
       SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.Black,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -738,7 +721,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
       SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.DesignPatterns,
+
       SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
@@ -965,7 +948,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Git,
       SkillDatabaseKeys.GitHub,
       SkillDatabaseKeys.Poetry,
-      SkillDatabaseKeys.Black,
 
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
@@ -1001,7 +983,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Git,
       SkillDatabaseKeys.GitHub,
       SkillDatabaseKeys.Poetry,
-      SkillDatabaseKeys.Black,
 
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
@@ -1038,7 +1019,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Git,
       SkillDatabaseKeys.GitHub,
       SkillDatabaseKeys.Poetry,
-      SkillDatabaseKeys.Black,
 
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
@@ -1074,7 +1054,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Git,
       SkillDatabaseKeys.GitHub,
       SkillDatabaseKeys.Poetry,
-      SkillDatabaseKeys.Black,
 
       SkillDatabaseKeys.LinearAlgebra,
       SkillDatabaseKeys.Probability,
@@ -1119,7 +1098,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Git,
       SkillDatabaseKeys.GitHub,
       SkillDatabaseKeys.Poetry,
-      SkillDatabaseKeys.Black,
 
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
@@ -1161,7 +1139,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Git,
       SkillDatabaseKeys.GitHub,
       SkillDatabaseKeys.Poetry,
-      SkillDatabaseKeys.Black,
 
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
@@ -1199,7 +1176,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Git,
       SkillDatabaseKeys.GitHub,
       SkillDatabaseKeys.Poetry,
-      SkillDatabaseKeys.Black,
 
       SkillDatabaseKeys.LinearAlgebra,
       SkillDatabaseKeys.Probability,
@@ -1239,7 +1215,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Jupyter,
       SkillDatabaseKeys.Git,
       SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Black,
 
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
@@ -1275,7 +1250,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Jupyter,
       SkillDatabaseKeys.Git,
       SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Black,
 
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
@@ -1310,7 +1284,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Jupyter,
       SkillDatabaseKeys.Git,
       SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Black,
 
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
@@ -1346,7 +1319,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Jupyter,
       SkillDatabaseKeys.Git,
       SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Black,
 
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
@@ -1647,7 +1619,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.JUnit,
       SkillDatabaseKeys.Git,
       SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Checkstyle,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -1751,7 +1722,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Poetry,
       SkillDatabaseKeys.Git,
       SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Black,
 
       SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.ProblemSolving,
@@ -1785,7 +1755,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.SimpleGUI,
       SkillDatabaseKeys.Git,
       SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Black,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,

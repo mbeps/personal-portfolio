@@ -16,13 +16,10 @@ enum SkillCategoriesEnum {
   CommunicationProtocolsLibraries = "Communication Protocols & Libraries",
   Mathematics = "Mathematics",
   GameDevelopment = "Game Development",
-  CodeQuality = "Code Quality",
   VersionControl = "Version Control",
-  PlatformDevelopment = "Platform Development",
   ComputerScienceConcepts = "Computer Science Concepts",
   Automation = "Automation",
   SoftSkills = "Soft Skills",
-  Security = "Security",
 }
 
 export default SkillCategoriesEnum;

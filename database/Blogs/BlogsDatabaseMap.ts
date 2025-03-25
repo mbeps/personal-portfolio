@@ -18,7 +18,6 @@ const blogsMap: Database<BlogInterface> = {
     subtitle:
       "An In-depth Analysis of Backend Development Approaches, Tools, and Security Considerations",
     skills: [
-      SkillDatabaseKeys.WebDevelopment,
       SkillDatabaseKeys.CloudComputing,
       SkillDatabaseKeys.Firebase,
       SkillDatabaseKeys.Supabase,
@@ -64,8 +63,6 @@ const blogsMap: Database<BlogInterface> = {
     subtitle: "Choosing the Right API Design Approach",
     category: BlogCategoriesEnum.WebDevelopment,
     skills: [
-      SkillDatabaseKeys.WebDevelopment,
-      SkillDatabaseKeys.APIs,
       SkillDatabaseKeys.REST,
       SkillDatabaseKeys.GraphQL,
       SkillDatabaseKeys.ProblemSolving,
@@ -89,7 +86,7 @@ const blogsMap: Database<BlogInterface> = {
     subtitle:
       "Understanding and Optimizing Synchronous and Asynchronous Programming",
     category: BlogCategoriesEnum.SoftwareEngineering,
-    skills: [SkillDatabaseKeys.WebDevelopment],
+    skills: [],
   },
 };
 

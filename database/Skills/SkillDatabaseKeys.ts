@@ -2,6 +2,7 @@
  * This enum is used to represent the keys of the skills in the database.
  * This enum is used to avoid hardcoding the keys in the code, getting autocompletion support and avoiding typos.
  * These keys are used within MaterialInterface and its children to represents skills associated with the material.
+ * The order of the skills is the order that is used when displaying the skills on the website.
  *
  * @see {@link skillDatabaseMap} at `interfaces/skills.ts`
  */
@@ -15,24 +16,36 @@ enum SkillDatabaseKeys {
   C = "c",
   Haskell = "haskell",
   Scala = "scala",
-  RLanguage = "r",
   Groovy = "groovy",
   Kotlin = "kotlin",
   ObjectOrientedProgramming = "oop",
   FunctionalProgramming = "fp",
   Matlab = "matlab",
 
-  //^ APIs
-  REST = "rest-api",
-  Apollo = "apollo",
-  GraphQL = "graphql-api",
-  TRPC = "trpc-api",
-  SocketIO = "socket-io",
-  Pusher = "pusher",
-  OpenAI = "open-ai",
-  ReplicateAI = "replicate-ai",
-  APIs = "apis",
-  SDKs = "sdks",
+  //^ Artificial Intelligence, Machine Learning, and Data Science
+  ScikitLearn = "scikit-learn",
+  Pandas = "pandas",
+  NumPy = "numpy",
+  Matplotlib = "matplotlib",
+  Seaborn = "seaborn",
+  Keras = "keras",
+  TensorFlow = "tensorflow",
+  PyTorch = "pytorch",
+  Jupyter = "jupyter",
+  ApacheSpark = "apache-spark",
+  MLLib = "ml-lib",
+  MachineLearning = "machine-learning",
+  DeepLearning = "deep-learning",
+  ArtificialIntelligence = "artificial-intelligence",
+  ReinforcementLearning = "reinforcement-learning",
+  IntelligentAgents = "intelligent-agents",
+  DataScience = "data-science",
+  DataVisualisation = "data-visualisation",
+  NeuralNetworks = "neural-networks",
+  ComputerVision = "computer-vision",
+
+  //^ Full Stack Web Development
+  NextJS = "next-js",
 
   //^ Backend Web Development
   Firebase = "firebase",
@@ -49,21 +62,11 @@ enum SkillDatabaseKeys {
   SpringBoot = "spring-boot",
   Cloudinary = "cloudinary",
   EdgeStore = "edge-store",
-  Gunicorn = "gunicorn",
-  Jinja = "jinja",
   WebSockets = "web-sockets",
   UserAuthentication = "user-authentication",
 
-  //^ Full Stack Web Development
-  NextJS = "next-js",
-  SvelteKit = "svelte-kit",
-  AngularJS = "angular-js",
-  NuxtJS = "nuxt-js",
-
   //^ Frontend Web Development
   ReactJS = "react",
-  SvelteJS = "svelte",
-  VueJS = "vue-js",
   Recoil = "recoil",
   Zustand = "zustand",
   Jotai = "jotai",
@@ -75,13 +78,8 @@ enum SkillDatabaseKeys {
   HeadlessUI = "headless-ui",
   ShadcnUI = "shadcn-ui",
   RadixUI = "radix-ui",
-  ReactQuery = "react-query",
   NextUI = "next-ui",
   Bootstrap = "bootstrap",
-  MaterialUI = "material-ui",
-  SemanticUI = "semantic-ui",
-  AntDesign = "ant-design",
-  StoryBooks = "story-books",
   SimpleGUI = "simple-gui",
   Axios = "axios",
   UserCentricDesign = "user-centric-design",
@@ -132,22 +130,21 @@ enum SkillDatabaseKeys {
   Clusterisation = "clusterisation",
   Automation = "automation",
 
+  //^ APIs
+  REST = "rest-api",
+  Apollo = "apollo",
+  GraphQL = "graphql-api",
+  SocketIO = "socket-io",
+  Pusher = "pusher",
+  OpenAI = "open-ai",
+  ReplicateAI = "replicate-ai",
+
   //^ Version Control Systems
   Git = "git",
   GitHub = "github",
   GitLab = "gitlab",
   BitBucket = "bit-bucket",
   VersionControlSystems = "version-control-systems",
-
-  //^ Code Quality
-  Black = "black",
-  PyLint = "pylint",
-  Zod = "zod",
-  Prettier = "prettier",
-  Checkstyle = "checkstyle",
-  ESLint = "eslint",
-  Linting = "linting",
-  DesignPatterns = "design-patterns",
 
   //^ Testing
   Jest = "jest",
@@ -165,35 +162,9 @@ enum SkillDatabaseKeys {
   PNPM = "pnpm",
   Poetry = "poetry",
   Pip = "pip",
-  PyBuilder = "pybuilder",
   Maven = "maven",
   Gradle = "gradle",
-  Tox = "tox",
   NxJS = "nx-js",
-
-  //^ Artificial Intelligence, Machine Learning, and Data Science
-  ScikitLearn = "scikit-learn",
-  Pandas = "pandas",
-  NumPy = "numpy",
-  Matplotlib = "matplotlib",
-  Seaborn = "seaborn",
-  Keras = "keras",
-  TensorFlow = "tensorflow",
-  PyTorch = "pytorch",
-  Jupyter = "jupyter",
-  ApacheSpark = "apache-spark",
-  MLLib = "ml-lib",
-  MachineLearning = "machine-learning",
-  DeepLearning = "deep-learning",
-  ArtificialIntelligence = "artificial-intelligence",
-  ReinforcementLearning = "reinforcement-learning",
-  IntelligentAgents = "intelligent-agents",
-  DataScience = "data-science",
-  Hyperparameters = "hyperparameters",
-  Boosting = "boosting",
-  DataVisualisation = "data-visualisation",
-  NeuralNetworks = "neural-networks",
-  ComputerVision = "computer-vision",
 
   //^ Mathematics
   Probability = "probability",
@@ -246,22 +217,8 @@ enum SkillDatabaseKeys {
   Algorithms = "algorithms",
   DataStructures = "data-structures",
 
-  //^ Platform Development
-  AndroidDevelopment = "android",
-  iOSDevelopment = "ios",
-  WindowsDevelopment = "windows",
-  MacDevelopment = "mac",
-  LinuxDevelopment = "linux",
-  WebDevelopment = "web",
-
   //^ Others
   Symphony = "symphony",
-  Networking = "networking",
-
-  //^ Security
-  Cryptography = "cryptography",
-  Security = "security",
-  CyberSecurity = "cyber-security",
 
   //^ Soft Skills
   Communication = "communication",
