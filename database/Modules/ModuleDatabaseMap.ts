@@ -226,7 +226,7 @@ const modulesMap: Database<ModuleInterface> = {
       SkillDatabaseKeys.Git,
       SkillDatabaseKeys.Maven,
       SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.DesignPatterns,
+
       SkillDatabaseKeys.VersionControlSystems,
       SkillDatabaseKeys.DevOps,
       SkillDatabaseKeys.ProblemSolving,
@@ -268,7 +268,7 @@ const modulesMap: Database<ModuleInterface> = {
       SkillDatabaseKeys.Apollo,
       SkillDatabaseKeys.Leadership,
       SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.DesignPatterns,
+
       SkillDatabaseKeys.VersionControlSystems,
       SkillDatabaseKeys.DevOps,
       SkillDatabaseKeys.ProblemSolving,
@@ -457,8 +457,6 @@ const modulesMap: Database<ModuleInterface> = {
     name: "Introduction to Information Security",
     category: ModuleYearGroupsEnum.Year2,
     skills: [
-      SkillDatabaseKeys.CyberSecurity,
-      SkillDatabaseKeys.Cryptography,
       SkillDatabaseKeys.Mathematics,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
@@ -610,8 +608,6 @@ const modulesMap: Database<ModuleInterface> = {
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
       SkillDatabaseKeys.Yarn,
-      SkillDatabaseKeys.ESLint,
-      SkillDatabaseKeys.Prettier,
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.SQLAlchemy,
       SkillDatabaseKeys.Flask,
@@ -632,7 +628,7 @@ const modulesMap: Database<ModuleInterface> = {
       SkillDatabaseKeys.Communication,
       SkillDatabaseKeys.RiskManagement,
       SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.DesignPatterns,
+
       SkillDatabaseKeys.Algorithms,
     ],
     learningOutcomes: [
@@ -737,7 +733,6 @@ const modulesMap: Database<ModuleInterface> = {
     name: "Security Management",
     category: ModuleYearGroupsEnum.Year3,
     skills: [
-      SkillDatabaseKeys.CyberSecurity,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.TimeManagement,

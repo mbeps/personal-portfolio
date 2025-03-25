@@ -38,7 +38,6 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.Git,
       SkillDatabaseKeys.GitHub,
       SkillDatabaseKeys.Poetry,
-      SkillDatabaseKeys.Black,
 
       SkillDatabaseKeys.ComputerVision,
       SkillDatabaseKeys.Mathematics,
@@ -109,7 +108,6 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.Git,
       SkillDatabaseKeys.GitHub,
       SkillDatabaseKeys.Poetry,
-      SkillDatabaseKeys.Black,
 
       SkillDatabaseKeys.ComputerVision,
       SkillDatabaseKeys.ArtificialIntelligence,
@@ -236,7 +234,6 @@ const certificateMap: Database<CertificateInterface> = {
         SkillDatabaseKeys.Git,
         SkillDatabaseKeys.GitHub,
         SkillDatabaseKeys.Poetry,
-        SkillDatabaseKeys.Black,
 
         SkillDatabaseKeys.ComputerVision,
         SkillDatabaseKeys.Mathematics,
@@ -264,8 +261,6 @@ const certificateMap: Database<CertificateInterface> = {
     skills: [
       SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.Hyperparameters,
-      SkillDatabaseKeys.Boosting,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
@@ -292,7 +287,6 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.DataVisualisation,
-      SkillDatabaseKeys.Hyperparameters,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
@@ -370,9 +364,8 @@ const certificateMap: Database<CertificateInterface> = {
     skills: [
       SkillDatabaseKeys.DataScience,
       SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.APIs,
+
       SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.RLanguage,
       SkillDatabaseKeys.RelationalDatabases,
       SkillDatabaseKeys.Databases,
       SkillDatabaseKeys.Algebra,
@@ -558,7 +551,7 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.MongoDB,
       SkillDatabaseKeys.Mongoose,
       SkillDatabaseKeys.REST,
-      SkillDatabaseKeys.APIs,
+
       SkillDatabaseKeys.DatabaseManagementSystems,
       SkillDatabaseKeys.Databases,
       SkillDatabaseKeys.REST,
@@ -575,8 +568,7 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.ContinuousDelivery,
       SkillDatabaseKeys.ContinuousDeployment,
       SkillDatabaseKeys.ContinuousDelivery,
-      SkillDatabaseKeys.DesignPatterns,
-      SkillDatabaseKeys.WebDevelopment,
+
       SkillDatabaseKeys.Testing,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
@@ -616,7 +608,6 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.CSS,
       SkillDatabaseKeys.ReactJS,
       SkillDatabaseKeys.UserCentricDesign,
-      SkillDatabaseKeys.WebDevelopment,
     ],
     learningOutcomes: [
       "Understanding the basics of sketching, inspiration, and Figma for web and mobile design",
@@ -647,7 +638,7 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.Flask,
       SkillDatabaseKeys.REST,
-      SkillDatabaseKeys.APIs,
+
       SkillDatabaseKeys.Databases,
       SkillDatabaseKeys.RelationalDatabases,
       SkillDatabaseKeys.ProblemSolving,
@@ -673,7 +664,7 @@ const certificateMap: Database<CertificateInterface> = {
       "https://www.linkedin.com/learning/certificates/d16b210de3459c563295c4868ac19097bdddf84976d2137fa08293ec698f3380",
     skills: [
       SkillDatabaseKeys.REST,
-      SkillDatabaseKeys.APIs,
+
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
@@ -696,7 +687,7 @@ const certificateMap: Database<CertificateInterface> = {
       "https://www.linkedin.com/learning/certificates/a54ec39fe8ae07277cfbfb553a61f1d6a0c95f23969a3f665d5e5c0afbd9fd68",
     skills: [
       SkillDatabaseKeys.REST,
-      SkillDatabaseKeys.APIs,
+
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
@@ -792,9 +783,6 @@ const certificateMap: Database<CertificateInterface> = {
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.Flask,
-      SkillDatabaseKeys.Gunicorn,
-      SkillDatabaseKeys.Jinja,
-      SkillDatabaseKeys.Bootstrap,
       SkillDatabaseKeys.REST,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
@@ -897,8 +885,7 @@ const certificateMap: Database<CertificateInterface> = {
       "https://www.linkedin.com/learning/certificates/ef41e5cf67f7657353febca7c6b206bf7dd8e28497c393790d8a266842c81132",
     skills: [
       SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.WebDevelopment,
-      SkillDatabaseKeys.APIs,
+
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
@@ -926,7 +913,7 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.Testing,
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
-      SkillDatabaseKeys.WebDevelopment,
+
       SkillDatabaseKeys.UserCentricDesign,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
@@ -954,7 +941,7 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
-      SkillDatabaseKeys.WebDevelopment,
+
       SkillDatabaseKeys.UserCentricDesign,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
@@ -1006,7 +993,7 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.SpringBoot,
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.REST,
-      SkillDatabaseKeys.APIs,
+
       SkillDatabaseKeys.Databases,
       SkillDatabaseKeys.RelationalDatabases,
       SkillDatabaseKeys.ProblemSolving,
@@ -1624,7 +1611,7 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.Automation,
       SkillDatabaseKeys.Testing,
-      SkillDatabaseKeys.WebDevelopment,
+
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
@@ -1776,7 +1763,6 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.Algorithms,
       SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.Spring,
-      SkillDatabaseKeys.AndroidDevelopment,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
@@ -1951,7 +1937,7 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.ObjectOrientedProgramming,
       SkillDatabaseKeys.Algorithms,
       SkillDatabaseKeys.DataStructures,
-      SkillDatabaseKeys.WebDevelopment,
+
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
@@ -2021,7 +2007,6 @@ const certificateMap: Database<CertificateInterface> = {
       "https://www.linkedin.com/learning/certificates/67ef8710bfc2f51163f78c9373df3d7b4674e44b3d2e936318399c6a7fe5bda0",
     skills: [
       SkillDatabaseKeys.ShellScript,
-      SkillDatabaseKeys.LinuxDevelopment,
       SkillDatabaseKeys.Automation,
       SkillDatabaseKeys.DevOps,
       SkillDatabaseKeys.ProblemSolving,
@@ -2148,13 +2133,11 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.Poetry,
       SkillDatabaseKeys.PyTest,
-      SkillDatabaseKeys.Tox,
       SkillDatabaseKeys.GitHub,
       SkillDatabaseKeys.GitHubActions,
       SkillDatabaseKeys.ContinuousIntegration,
       SkillDatabaseKeys.ContinuousDeployment,
-      SkillDatabaseKeys.Linting,
-      SkillDatabaseKeys.Black,
+
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.ProjectManagement,
@@ -2322,7 +2305,6 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.linkedin.com/learning/certificates/f14a53c061bc271d233daeb5f46d5441dc2e86f386420c0fbd846291a5cccaf8",
     skills: [
-      SkillDatabaseKeys.DesignPatterns,
       SkillDatabaseKeys.ObjectOrientedProgramming,
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.Java,
@@ -2363,8 +2345,7 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.Algorithms,
       SkillDatabaseKeys.DataStructures,
-      SkillDatabaseKeys.DesignPatterns,
-      SkillDatabaseKeys.APIs,
+
       SkillDatabaseKeys.Testing,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
@@ -2468,7 +2449,7 @@ const certificateMap: Database<CertificateInterface> = {
         "https://www.linkedin.com/learning/certificates/190a56bee558ac47ecc390563ebb20e4eebaccc00a1f1a7180dec108e371985d",
       skills: [
         SkillDatabaseKeys.ObjectOrientedProgramming,
-        SkillDatabaseKeys.DesignPatterns,
+
         SkillDatabaseKeys.Testing,
         SkillDatabaseKeys.ProblemSolving,
         SkillDatabaseKeys.CriticalThinking,
@@ -2648,10 +2629,9 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.linkedin.com/learning/certificates/defb0bb2a25136a0517193e67c9d2a7a3c8a0eaa1720055d1091735e0a039cf0",
     skills: [
-      SkillDatabaseKeys.APIs,
       SkillDatabaseKeys.REST,
       SkillDatabaseKeys.GraphQL,
-      SkillDatabaseKeys.WebDevelopment,
+
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
@@ -3642,7 +3622,6 @@ const certificateMap: Database<CertificateInterface> = {
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.Poetry,
-      SkillDatabaseKeys.Jinja,
       SkillDatabaseKeys.REST,
       SkillDatabaseKeys.Symphony,
       SkillDatabaseKeys.Automation,
