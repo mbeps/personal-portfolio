@@ -42,6 +42,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.DeepLearning,
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.ReinforcementLearning,
       SkillDatabaseKeys.Hyperparameters,
       SkillDatabaseKeys.Boosting,
       SkillDatabaseKeys.DataVisualisation,
@@ -1082,6 +1083,8 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.NeuralNetworks,
       SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.TensorFlow,
+      SkillDatabaseKeys.ReinforcementLearning,
     ],
   },
   [SkillDatabaseKeys.TensorFlow]: {
@@ -1097,6 +1100,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.NeuralNetworks,
       SkillDatabaseKeys.DeepLearning,
       SkillDatabaseKeys.Keras,
+      SkillDatabaseKeys.ReinforcementLearning,
     ],
   },
   [SkillDatabaseKeys.PyTorch]: {
@@ -1111,6 +1115,9 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.NeuralNetworks,
       SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.ReinforcementLearning,
+      SkillDatabaseKeys.IntelligentAgents,
+      SkillDatabaseKeys.DataScience,
     ],
   },
   [SkillDatabaseKeys.Jupyter]: {

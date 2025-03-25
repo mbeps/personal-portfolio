@@ -1,21 +1,76 @@
+"use client";
+
 import Markdown from "markdown-to-jsx";
-import React from "react";
+import React, { useMemo } from "react";
+import InlineMath from "./InlineMath";
+import DisplayMath from "./DisplayMath";
 
 type ReaderProps = {
   content: string | undefined;
-  //! just giving the size without prose does not work
   size?: "lg:prose-sm" | "lg:prose-base" | "lg:prose-md" | "lg:prose-lg";
 };
 
 /**
- * Renders Markdown content into HTML so that it can be displayed on the page.
- * The markdown content is displayed in a reader-friendly format similar to how Markdown readers display content.
- *
- * @param content Markdown content to render
- * @param size Size of the text in the reader
- * @returns Rendered Markdown content
+ * Renders Markdown content with LaTeX support
  */
 const Reader: React.FC<ReaderProps> = ({ content, size = "lg" }) => {
+  // Parse the markdown content and extract LaTeX expressions
+  const parsedContent = useMemo(() => {
+    if (!content) return "";
+
+    // Keep track of LaTeX blocks we extract
+    const mathBlocks: { [key: string]: string } = {};
+    let blockCount = 0;
+
+    // Replace LaTeX blocks with placeholders to protect them from markdown processing
+    let processedContent = content.replace(
+      /(\$\$)([\s\S]*?)(\$\$)/g,
+      (_, open, latex, close) => {
+        const placeholder = `MATHBLOCK_${blockCount++}`;
+        mathBlocks[placeholder] = latex.trim();
+        return `<DisplayMath>${placeholder}</DisplayMath>`;
+      }
+    );
+
+    // Handle inline LaTeX expressions
+    processedContent = processedContent.replace(
+      /(\$)([^\$\n]+?)(\$)/g,
+      (_, open, latex, close) => {
+        const placeholder = `MATHINLINE_${blockCount++}`;
+        mathBlocks[placeholder] = latex.trim();
+        return `<InlineMath>${placeholder}</InlineMath>`;
+      }
+    );
+
+    // Create a custom Markdown component with overrides
+    const customMarkdown = (
+      <Markdown
+        options={{
+          overrides: {
+            DisplayMath: {
+              component: ({ children }: { children: string }) => {
+                const placeholder = String(children);
+                const latex = mathBlocks[placeholder] || placeholder;
+                return <DisplayMath>{latex}</DisplayMath>;
+              },
+            },
+            InlineMath: {
+              component: ({ children }: { children: string }) => {
+                const placeholder = String(children);
+                const latex = mathBlocks[placeholder] || placeholder;
+                return <InlineMath>{latex}</InlineMath>;
+              },
+            },
+          },
+        }}
+      >
+        {processedContent}
+      </Markdown>
+    );
+
+    return customMarkdown;
+  }, [content]);
+
   return (
     <article
       className={`
@@ -26,7 +81,7 @@ const Reader: React.FC<ReaderProps> = ({ content, size = "lg" }) => {
         max-w-none
       `}
     >
-      {content && <Markdown>{content}</Markdown>}
+      {parsedContent}
     </article>
   );
 };

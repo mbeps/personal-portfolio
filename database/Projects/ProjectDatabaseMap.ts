@@ -1165,6 +1165,7 @@ const projectMap: Database<ProjectInterface> = {
 
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.ReinforcementLearning,
       SkillDatabaseKeys.Mathematics,
       SkillDatabaseKeys.LinearAlgebra,
       SkillDatabaseKeys.Probability,
@@ -1207,6 +1208,7 @@ const projectMap: Database<ProjectInterface> = {
 
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.ReinforcementLearning,
       SkillDatabaseKeys.DeepLearning,
 
       SkillDatabaseKeys.ProblemSolving,

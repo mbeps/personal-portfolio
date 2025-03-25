@@ -112,6 +112,10 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.Black,
 
       SkillDatabaseKeys.ComputerVision,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.ReinforcementLearning,
       SkillDatabaseKeys.Mathematics,
       SkillDatabaseKeys.LinearAlgebra,
       SkillDatabaseKeys.Probability,
