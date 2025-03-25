@@ -2,59 +2,12 @@
 
 import Markdown from "markdown-to-jsx";
 import React, { useMemo } from "react";
-import katex from "katex";
-import "katex/dist/katex.min.css";
+import InlineMath from "./InlineMath";
+import DisplayMath from "./DisplayMath";
 
 type ReaderProps = {
   content: string | undefined;
   size?: "lg:prose-sm" | "lg:prose-base" | "lg:prose-md" | "lg:prose-lg";
-};
-
-/**
- * Component to render inline LaTeX expressions
- */
-const InlineMath: React.FC<{ children: string }> = ({ children }) => {
-  const html = useMemo(() => {
-    try {
-      return katex.renderToString(children, {
-        throwOnError: false,
-        displayMode: false,
-        output: "html",
-        trust: true,
-      });
-    } catch (error) {
-      console.error("Error rendering inline LaTeX:", error);
-      return `<span class="text-red-500">Error rendering: $${children}$</span>`;
-    }
-  }, [children]);
-
-  return <span dangerouslySetInnerHTML={{ __html: html }} />;
-};
-
-/**
- * Component to render block/display LaTeX expressions
- */
-const DisplayMath: React.FC<{ children: string }> = ({ children }) => {
-  const html = useMemo(() => {
-    try {
-      return katex.renderToString(children, {
-        throwOnError: false,
-        displayMode: true,
-        output: "html",
-        trust: true,
-        fleqn: false,
-      });
-    } catch (error) {
-      console.error("Error rendering block LaTeX:", error);
-      return `<span class="text-red-500">Error rendering: $$${children}$$</span>`;
-    }
-  }, [children]);
-
-  return (
-    <div className="my-6 overflow-x-auto py-2 flex justify-center">
-      <div dangerouslySetInnerHTML={{ __html: html }} />
-    </div>
-  );
 };
 
 /**

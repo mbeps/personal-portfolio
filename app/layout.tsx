@@ -10,6 +10,7 @@ import "./globals.css";
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
 import { VercelTrackers } from "@/providers/VercelTrackers";
 import Scroll from "@/components/UI/Scroll";
+import "katex/dist/katex.min.css";
 
 /**
  * Markdown detailing the developer's about information.
