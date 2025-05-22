@@ -92,6 +92,12 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
     notFound();
   }
 
+  // Replace base path placeholder with actual path for images
+  const processedBlogContent: string = blogContent.replace(
+    /{BASE}/g,
+    `${basePath}/${blogKey}/img`
+  );
+
   const technologies: SkillDatabaseKeys[] = filterSkillsByType(
     blogData.skills,
     skillDatabaseMap,
@@ -154,7 +160,7 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
         </div>
 
         <SpecialReader
-          content={blogContent}
+          content={processedBlogContent}
           previousPagePath={BLOG_PAGE.path}
           previousPageName={BLOG_PAGE.label}
         />
