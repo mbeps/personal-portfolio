@@ -40,7 +40,7 @@ const TextLoop: React.FC<TextLoopProps> = ({
           {implementation === "simple" && (
             <SimpleTextLoop
               loopItems={loopItems}
-              delay={3000}
+              delay={4000}
               className={className}
             />
           )}

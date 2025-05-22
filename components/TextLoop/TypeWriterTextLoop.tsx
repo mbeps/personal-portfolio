@@ -59,8 +59,10 @@ const TypeWriterTextLoop: React.FC<TypeWriterTextLoopProps> = ({
             strings: loopItems,
             autoStart: true,
             loop: true,
-            cursor: "|", // Use a visible character as cursor
+            cursor: "|",
             cursorClassName: "typewriter-cursor",
+            delay: 40,
+            deleteSpeed: 20,
           }}
         />
       </p>
