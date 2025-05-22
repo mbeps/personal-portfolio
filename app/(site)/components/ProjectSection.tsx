@@ -34,7 +34,7 @@ const ProjectsSection = () => {
         {displayedProjects.map((slug, idx) => (
           <div key={slug}>
             <SlideUp offset="-150px 0px -150px 0px">
-              <ProjectItem projectKey={slug} />
+              <ProjectItem projectKey={slug} subtitle={"category"} />
             </SlideUp>
           </div>
         ))}
