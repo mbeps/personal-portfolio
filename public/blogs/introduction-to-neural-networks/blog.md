@@ -101,7 +101,7 @@ There have been two main directions in neural network research:
 1. Trying to simulate how the human brain works (modeling the process)
 2. Producing machine learning methodologies (modeling the outcome without mimicking the process)
 
-![alt text](/blogs/introduction-to-neural-networks/blogs/img/image.png)
+![alt text]({BASE}/image.png)
 
 > Showing applications of neural networks
 
@@ -134,7 +134,8 @@ The key components and their relationships are:
    - One or more **hidden layers** for processing
    - An **output layer** that produces the final result
 
-   ![alt text](/blogs/introduction-to-neural-networks/img/image-1.png)
+
+![alt text]({BASE}/image-1.png)
 
    > Showing a feedforward network structure
 
@@ -172,7 +173,7 @@ The perceptron takes several binary inputs and produces a single binary output b
 - A **bias** weight ($w_0$) with constant input $x_0 = 1$
 - A **threshold** (th) that determines when the perceptron activates
 
-![alt text](/blogs/introduction-to-neural-networks/img/image-2.png)
+![alt text]({BASE}/image-2.png)
 
 > Showing perceptron structure with inputs, weights, and output
 
@@ -205,7 +206,7 @@ The output is either 1 or -1 depending on the input. This can be used for binary
 - If the total input is positive, the sample is assigned to class 1
 - If the total input is negative, the sample is assigned to class -1
 
-![alt text](/blogs/introduction-to-neural-networks/img/image-6.png)
+![alt text]({BASE}/image-6.png)
 
 *The continuous version of the sign function is the hyperbolid tangent function*
 
@@ -219,7 +220,7 @@ $$g(s) =
 Where:
 - $t$ is a threshold value (often 0).
 
-![alt text](/blogs/introduction-to-neural-networks/img/image-5.png)
+![alt text]({BASE}/image-5.png)
 
 *The continuous version of the sign function is the sigmoid function*
 
@@ -227,7 +228,7 @@ Where:
 ### **Sigmoid Function**
 $$g(s) = \frac{1}{1 + e^{-s}}$$
 
-![alt text](/blogs/introduction-to-neural-networks/img/image-4.png)
+![alt text]({BASE}/image-4.png)
 
 > Sigmoid function
 
@@ -246,7 +247,7 @@ $$g(s) = \tanh(s) = \frac{e^s - e^{-s}}{e^s + e^{-s}} = 2\left(\frac{1}{1 + e^{-
 
 Similar to the sigmoid, but outputs values in the range $[-1, 1]$ instead of $[0, 1]$.
 
-![alt text](/blogs/introduction-to-neural-networks/img/image-3.png)
+![alt text]({BASE}/image-3.png)
 
 > Hyperbolid tangent $\tanh$ function
 
@@ -255,7 +256,7 @@ Similar to the sigmoid, but outputs values in the range $[-1, 1]$ instead of $[0
 
 A **linearly separable function** is one where the input space can be divided by a hyperplane (a line in 2D, a plane in 3D, etc.) such that all inputs on one side of the hyperplane are in one class, and all inputs on the other side are in the other class.
 
-![alt text](/blogs/introduction-to-neural-networks/img/image-7.png)
+![alt text]({BASE}/image-7.png)
 
 A single perceptron can only compute linearly separable functions. This is both a strength (simplicity) and a limitation (can't solve more complex problems).
 
@@ -274,7 +275,7 @@ With weights $w_1 = w_2 = 1.0$ and bias $w_0 = -1.5$:
 | 1     | 0     | $-1.5 + 1 + 0 = -0.5$       | 0                      |
 | 1     | 1     | $-1.5 + 1 + 1 = 0.5$        | 1                      |
 
-![alt text](/blogs/introduction-to-neural-networks/img/image-8.png)
+![alt text]({BASE}/image-8.png)
 
 ### **OR Function**
 With weights $w_1 = w_2 = 1.0$ and bias $w_0 = -0.5$:
@@ -286,7 +287,7 @@ With weights $w_1 = w_2 = 1.0$ and bias $w_0 = -0.5$:
 | 1     | 0     | $-0.5 + 1 + 0 = 0.5$        | 1                      |
 | 1     | 1     | $-0.5 + 1 + 1 = 1.5$        | 1                      |
 
-![alt text](/blogs/introduction-to-neural-networks/img/image-9.png)
+![alt text]({BASE}/image-9.png)
 
 ### **Example**
 If we have the following 2-dimensional examples from two classes:
@@ -534,7 +535,7 @@ The fundamental limitation of single-layer networks is that they can **only solv
 
 No single straight line can separate the points (0,0) and (1,1) from (0,1) and (1,0) in the input space.
 
-![alt text](/blogs/introduction-to-neural-networks/img/image-10.png)
+![alt text]({BASE}/image-10.png)
 
 > Showing XOR problem not being linearly separable
 
@@ -559,7 +560,7 @@ The discovery of effective training algorithms for multi-layer networks (like ba
 
 **Multi-layer networks** (also called multi-layer perceptrons or MLPs) consist of one input layer, one output layer, and one or more hidden layers of processing units. This structure allows them to overcome the limitations of single-layer networks.
 
-![alt text](/blogs/introduction-to-neural-networks/img/image-1.png) 
+![alt text]({BASE}/image-1.png) 
 
 > Showing the layered structure of a feedforward network
 
@@ -626,7 +627,7 @@ A multi-layer network can solve the XOR problem that single-layer perceptrons ca
 - First hidden layer: Compute AND and OR functions
 - Second layer: Combine these to form XOR
   
-![alt text](/blogs/introduction-to-neural-networks/img/image-11.png)
+![alt text]({BASE}/image-11.png)
 This demonstrates how complex functions can be built from simpler ones through layering.
 
 ## **3.3 Non-linearity**
@@ -642,7 +643,7 @@ This demonstrates how complex functions can be built from simpler ones through l
 
 A multi-layer network with non-linear activation functions can create increasingly complex decision boundaries:
 
-![alt text](/blogs/introduction-to-neural-networks/img/image-12.png)
+![alt text]({BASE}/image-12.png)
 
 > Showing ridge and bump patterns created by combining sigmoid functions
 
@@ -704,7 +705,7 @@ Where:
 - $\alpha$ is the learning rate
 - $\frac{\partial E}{\partial w}$ is the partial derivative of the error with respect to the weight
 
-![alt text](/blogs/introduction-to-neural-networks/img/image-13.png)
+![alt text]({BASE}/image-13.png)
 
 The **backpropagation algorithm** efficiently computes these derivatives by applying the chain rule of calculus, working backwards from the output layer to the input layer.
 
@@ -901,7 +902,7 @@ This completes one iteration of backpropagation for one training example. The pr
 
 The **error surface** for multilayer networks may contain many different local minima. Backpropagation is only guaranteed to converge toward some local minimum, not necessarily the global minimum error.
 
-![alt text](/blogs/introduction-to-neural-networks/img/image-14.png)
+![alt text]({BASE}/image-14.png)
 
 > Showing the error surface with multiple minima
 
@@ -919,7 +920,7 @@ Benefits of momentum:
 - Speeds up learning in flat regions of the error surface
 - Dampens oscillations in steep regions
 
-![alt text](/blogs/introduction-to-neural-networks/img/image-15.png)
+![alt text]({BASE}/image-15.png)
 
 > Rolling over local minima by building momentum
 
@@ -927,7 +928,7 @@ Benefits of momentum:
 
 Neural networks excel at function approximation. They can learn to approximate complex, nonlinear relationships between inputs and outputs.
 
-![alt text](/blogs/introduction-to-neural-networks/img/image-16.png)
+![alt text]({BASE}/image-16.png)
 
 The diagram illustrates:
 a. Original learning samples
@@ -997,7 +998,7 @@ There are different approaches to updating weights during training:
 
 **Overfitting** occurs when a neural network performs very well on training data but fails to generalize to new, unseen data. This happens when the network memorizes the training examples rather than learning the underlying patterns.
 
-![alt text](/blogs/introduction-to-neural-networks/img/image-17.png)
+![alt text]({BASE}/image-17.png)
 
 **Generalisation accuracy** measures how well the network performs on data outside the training set. Poor generalisation is one of the most common problems in neural network training.
 
@@ -1331,7 +1332,7 @@ RNNs can be configured in different ways depending on the task:
 - **Sequence input to sequence output** (e.g., machine translation)
 - **Synchronized sequence input and output** (e.g., video classification frame by frame)
 
-![alt text](/blogs/introduction-to-neural-networks/img/image-18.png)
+![alt text]({BASE}/image-18.png)
 
 > Showing different RNN configurations
 

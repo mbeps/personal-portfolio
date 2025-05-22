@@ -11,7 +11,11 @@ type ReaderProps = {
 };
 
 /**
- * Renders Markdown content with LaTeX support
+ * Renders Markdown content with LaTeX support.
+ *
+ * @param {string} content - The Markdown content to render.
+ * @param {string} size - The size of the prose (default: "lg").
+ * @returns {JSX.Element} The rendered Markdown content.
  */
 const Reader: React.FC<ReaderProps> = ({ content, size = "lg" }) => {
   // Parse the markdown content and extract LaTeX expressions
@@ -20,10 +24,10 @@ const Reader: React.FC<ReaderProps> = ({ content, size = "lg" }) => {
 
     // Keep track of LaTeX blocks we extract
     const mathBlocks: { [key: string]: string } = {};
-    let blockCount = 0;
+    let blockCount: number = 0;
 
     // Replace LaTeX blocks with placeholders to protect them from markdown processing
-    let processedContent = content.replace(
+    let processedContent: string = content.replace(
       /(\$\$)([\s\S]*?)(\$\$)/g,
       (_, open, latex, close) => {
         const placeholder = `MATHBLOCK_${blockCount++}`;
