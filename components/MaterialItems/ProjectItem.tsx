@@ -14,7 +14,7 @@ import projectDatabaseMap from "@/database/Projects/ProjectDatabaseMap";
 
 interface ProjectItemProps {
   projectKey: string;
-  showType?: boolean;
+  subtitle?: null | "type" | "category";
 }
 
 /**
@@ -36,7 +36,7 @@ interface ProjectItemProps {
  */
 const ProjectItem: React.FC<ProjectItemProps> = ({
   projectKey,
-  showType = false,
+  subtitle = null,
 }) => {
   const basePath: string = PROJECTS_PAGE.path;
   const projectData: ProjectInterface = projectDatabaseMap[projectKey];
@@ -117,8 +117,8 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
             </h1>
           </Link>
 
-          {/* Project Type */}
-          {showType && (
+          {/* Project Subtitle */}
+          {!!subtitle && (
             <p
               className="
                 italic font-medium
@@ -127,7 +127,8 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
                 -mb-2
               "
             >
-              {`${projectData.type} Project`}
+              {subtitle === "type" && `${projectData.type} Project`}
+              {subtitle === "category" && `${projectData.category}`}
             </p>
           )}
 

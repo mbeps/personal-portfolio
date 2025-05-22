@@ -41,7 +41,7 @@ const ProjectsList: React.FC<ExtendedMaterialListProps> = ({
                       >
                         <ProjectItem
                           projectKey={projectKey}
-                          showType={showType}
+                          subtitle={showType ? "type" : null}
                         />
                       </div>
                     ))}
