@@ -48,14 +48,14 @@ const SimpleTextLoop: React.FC<TextLoopProps> = ({
           opacity: 0,
           y: 10,
           transition: {
-            duration: 1, // Adjust this value to control the speed of the fade out
+            duration: 1,
             ease: "easeInOut",
           },
         }}
         transition={{
           duration: 1,
           ease: "easeInOut",
-          delay: 0.5,
+          delay: 0.2,
         }}
         style={{ transitionProperty: "opacity, transform" }}
         className={className}
