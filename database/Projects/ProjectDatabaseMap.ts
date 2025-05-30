@@ -549,8 +549,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.SymphonyApplicationStatusBot]: {
     name: `Symphony Application Status Bot`,
     description: `
-      A Symphony bot responsible for keeping track of various Commerzbank applications' statuses.
-      This then notifies the teams responsible for maintaining the applications on Symphony.
+      A Symphony bot responsible for keeping track of various Commerzbank applications' statuses via ServiceNow. 
+      This allows users to monitor the status of select applications and subscribe to specific applications they are interested in.
       `,
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     skills: [
