@@ -48,6 +48,7 @@ const TechnologiesSection: React.FC = () => {
     SkillCategoriesEnum.Automation,
     SkillCategoriesEnum.Testing,
     SkillCategoriesEnum.CommunicationProtocolsLibraries,
+    SkillCategoriesEnum.SoftSkills,
   ];
 
   /**
@@ -109,7 +110,7 @@ const TechnologiesSection: React.FC = () => {
   }
 
   function handleDisplaySkills(): SkillDatabaseKeys[] {
-    return firstNSkills(firstNSkillsPerCategory(skillsToDisplay, 4), 18);
+    return firstNSkills(firstNSkillsPerCategory(skillsToDisplay, 5), 20);
   }
 
   return (
