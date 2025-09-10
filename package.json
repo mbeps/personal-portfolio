@@ -23,7 +23,7 @@
     "@radix-ui/react-tabs": "^1.1.2",
     "@radix-ui/react-tooltip": "^1.1.7",
     "@tailwindcss/postcss": "^4.1.13",
-    "@tailwindcss/typography": "^0.5.9",
+    "@tailwindcss/typography": "^0.5.0-alpha.3",
     "@types/katex": "^0.16.7",
     "@types/node": "^22.8.4",
     "@types/react": "18.3.12",
@@ -54,9 +54,7 @@
     "react-spinners": "^0.14.1",
     "sharp": "^0.33.4",
     "tailwind-merge": "^2.2.0",
-    "tailwind-scrollbar-hide": "^1.1.7",
     "tailwindcss": "^4.1.13",
-    "tailwindcss-animate": "^1.0.7",
     "typescript": "5.6.3",
     "typewriter-effect": "^2.21.0",
     "zustand": "^5.0.0"
