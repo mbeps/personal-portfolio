@@ -60,9 +60,9 @@ const SearchInput: React.FC<SearchInputProps> = ({
       border-neutral-300 dark:border-neutral-700 
       focus:border-red-500 dark:focus:border-red-900
       hover:border-red-500 dark:hover:border-red-800
-      focus:outline-none
+      focus:outline-hidden
       rounded-xl
-      shadow-sm hover:shadow-lg focus:shadow-lg
+      shadow-xs hover:shadow-lg focus:shadow-lg
       transition-all ease-out duration-500
     `,
     className
@@ -71,7 +71,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
   const isSearchDisabled: boolean = !localSearchTerm;
 
   return (
-    <div className="relative w-full md:flex-grow md:order-last">
+    <div className="relative w-full md:grow md:order-last">
       <input
         type="text"
         value={localSearchTerm}

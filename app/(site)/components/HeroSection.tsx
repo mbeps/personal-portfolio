@@ -21,7 +21,7 @@ const HeroSection = () => {
   const subtitleStyle: string = `
     text-2xl md:text-4xl font-semibold
     p-1 bg-clip-text text-transparent
-    bg-gradient-to-r from-red-600 via-orange-500 to-rose-500 dark:from-red-700 dark:via-orange-600 dark:to-rose-800 tracking-wide
+    bg-linear-to-r from-red-600 via-orange-500 to-rose-500 dark:from-red-700 dark:via-orange-600 dark:to-rose-800 tracking-wide
     `;
 
   return (

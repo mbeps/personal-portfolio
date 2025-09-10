@@ -55,7 +55,7 @@ const CertificatesPage: React.FC = () => {
       </div>
 
       <section id="projects" className="flex flex-col items-start md:items-end">
-        <div className="animate-fadeIn animation-delay-2 w-full">
+        <div className="animate-fade-in animation-delay-2 w-full">
           <HeadingOne title={CERTIFICATES_PAGE.label} />
           <PageDescription description={CERTIFICATES_PAGE.description} />
           <CertificatesView />

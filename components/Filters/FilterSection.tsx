@@ -165,7 +165,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
                     className="
                     w-full 
                     flex justify-start 
-                    shadow-sm hover:shadow-md
+                    shadow-xs hover:shadow-md
                     border border-neutral-300 dark:border-neutral-700 "
                   >
                     <div className="flex items-center space-x-2">
@@ -185,7 +185,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
                       className="
                       w-full 
                       flex justify-start
-                      shadow-sm hover:shadow-md
+                      shadow-xs hover:shadow-md
                       border border-neutral-300 dark:border-neutral-700
                       "
                     >

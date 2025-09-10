@@ -80,7 +80,7 @@ const FilterPopover: React.FC<FilterPopover> = ({
           onClick={() => setOpen(!isOpen)}
           className="
             border border-neutral-300 dark:border-neutral-700
-            shadow-sm
+            shadow-xs
             w-full
             justify-between 
             bg-neutral-100
@@ -104,7 +104,7 @@ const FilterPopover: React.FC<FilterPopover> = ({
         </Button>
       </PopoverTrigger>
 
-      <PopoverContent className="w-[24rem] md:w-[21rem] p-0">
+      <PopoverContent className="w-[24rem] md:w-84 p-0">
         <Command className="w-full">
           <CommandInput placeholder="Search Filter..." />
           <CommandEmpty>No Filter Found.</CommandEmpty>

@@ -57,7 +57,7 @@ const AboutSection = () => {
                 className="
                 font-bold
                 hover:underline 
-                hover:text-red-500 hover:dark:text-red-700
+                hover:text-red-500 dark:hover:text-red-700
                 transition-colors duration-300 ease-in-out"
               >
                 {`Read More About Me!`}

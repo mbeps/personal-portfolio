@@ -134,11 +134,11 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
             <HeadingTwo title={language.name} />
           </div>
 
-          <ScrollArea className="h-full w-full flex-grow">
+          <ScrollArea className="h-full w-full grow">
             <div className="px-6 pb-4">
               {/* Grouping Dropdown */}
               <div className="flex mt-4">
-                <div className="flex-grow mr-2 mt-2.5 text-right text-neutral-700 dark:text-neutral-300">
+                <div className="grow mr-2 mt-2.5 text-right text-neutral-700 dark:text-neutral-300">
                   Group by:
                 </div>
                 <DropdownMenu>

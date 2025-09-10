@@ -52,7 +52,7 @@ const ModuleList: React.FC<ModuleListProps> = ({
               return (
                 <div
                   key={idx}
-                  className="animate-slideUpCubiBezier animation-delay-1"
+                  className="animate-slide-up-cubi-bezier animation-delay-1"
                 >
                   <Link
                     href={`${basePath}/${courseKey}/${moduleKey}`}

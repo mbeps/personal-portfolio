@@ -37,7 +37,7 @@ const ProjectsList: React.FC<ExtendedMaterialListProps> = ({
                     {group.materialsKeys.map((projectKey) => (
                       <div
                         key={projectKey}
-                        className="animate-slideUpCubiBezier animation-delay-1"
+                        className="animate-slide-up-cubi-bezier animation-delay-1"
                       >
                         <ProjectItem
                           projectKey={projectKey}

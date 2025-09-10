@@ -27,7 +27,7 @@ export default function MorePage() {
   return (
     <main>
       <section id="pages">
-        <div className="animate-fadeIn animation-delay-2 w-full">
+        <div className="animate-fade-in animation-delay-2 w-full">
           <Grid
             items={NAV_ITEMS.filter((item) => !ignoredPages.includes(item)).map(
               (item) => (

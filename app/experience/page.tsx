@@ -55,7 +55,7 @@ export default function ExperiencePage() {
       </div>
 
       <section id="experience">
-        <div className="animate-fadeIn animation-delay-2 w-full">
+        <div className="animate-fade-in animation-delay-2 w-full">
           <HeadingOne title={EXPERIENCE_PAGE.label} />
 
           <PageDescription description={EXPERIENCE_PAGE.description} />

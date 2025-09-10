@@ -128,7 +128,7 @@ const TechnologiesModal: React.FC = () => {
               {/* Drop Down */}
               <div
                 className="
-                  flex-grow mr-2 mt-2.5
+                  grow mr-2 mt-2.5
                   text-right text-neutral-700 dark:text-neutral-300
               "
               >

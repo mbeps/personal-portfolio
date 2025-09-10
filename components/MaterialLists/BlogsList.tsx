@@ -33,7 +33,7 @@ const BlogsList: React.FC<MaterialListProps> = ({
                     items={group.materialsKeys.map((blogKey) => (
                       <div
                         key={blogKey}
-                        className="animate-slideUpCubiBezier animation-delay-1"
+                        className="animate-slide-up-cubi-bezier animation-delay-1"
                       >
                         <BlogItem key={blogKey} blogKey={blogKey} />
                       </div>

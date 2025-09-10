@@ -31,7 +31,7 @@ const CourseItem: React.FC<CourseItemProps> = ({ courseKey }) => {
         p-3 lg:p-6 rounded-xl
         transition-colors duration-700
         flex flex-col
-        animate-slideUpCubiBezier animation-delay-2
+        animate-slide-up-cubi-bezier animation-delay-2
         h-full w-full
       "
     >

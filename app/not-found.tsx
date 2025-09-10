@@ -24,7 +24,7 @@ export default function NotFound() {
       className="
         flex flex-col
         items-center justify-center 
-        animate-fadeIn animation-delay-2 
+        animate-fade-in animation-delay-2 
         my-10 py-16 sm:py-32 md:py-48 
         text-center 
         min-h-dvh

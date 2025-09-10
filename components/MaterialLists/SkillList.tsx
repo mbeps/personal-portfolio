@@ -258,7 +258,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
                   {/* Group By */}
                   <div className="flex flex-row gap-3 text-right text-neutral-700 dark:text-neutral-300 w-full items-center">
                     <p className="whitespace-nowrap">Group by:</p>
-                    <div className="flex-grow">
+                    <div className="grow">
                       <DropdownMenu>
                         <DropdownMenuTrigger className="w-full">
                           <Button variant="default" className="w-full">
@@ -309,7 +309,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
                         </PopoverTrigger>
 
                         <PopoverContent className="w-[24rem] md:w-[20rem] p-0">
-                          <Command className="w-full border-1 border-neutral-200 dark:border-neutral-950">
+                          <Command className="w-full border border-neutral-200 dark:border-neutral-950">
                             <CommandInput placeholder="Search Filter..." />
                             <CommandEmpty>No Filter Found.</CommandEmpty>
 
