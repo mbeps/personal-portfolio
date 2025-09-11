@@ -4,12 +4,16 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ---- Theme tokens ---- */
 :root {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "Segoe UI", Arial, Helvetica, sans-serif;
+
+  /* Next/font will set --font-sans on <html>. Keep only mono here if needed. */
   --font-mono: "Consolas", "Liberation Mono", Menlo, Courier, monospace;
+
   --radius: 0.625rem;
+
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -44,7 +48,9 @@
 }
 
 body {
-  font-family: var(--font-sans);
+  /* Inter via Next/font if available; otherwise system fallbacks */
+  font-family: var(--font-sans, system-ui), -apple-system, "Segoe UI",
+    Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
 }
 
 @theme inline {
@@ -119,25 +125,21 @@ body {
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* Base layer */
 @layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground; }
 }
 
-/* ------------------ Restored project utilities ------------------ */
+/* ---- Project utilities ---- */
 @utility home-section-wrapper {
   @apply min-h-[calc(100vh-8rem)] w-full flex flex-col align-middle justify-center;
 }
-
 @utility material-page-wrapper {
   @apply flex flex-col space-y-10 mt-8;
 }
 
-/* ------------------ Restored animations ------------------ */
+/* ---- Animations ---- */
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
 @keyframes bounce { from { transform: translateY(10px); } to { transform: translateY(0); } }
