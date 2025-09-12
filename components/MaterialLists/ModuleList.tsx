@@ -50,10 +50,7 @@ const ModuleList: React.FC<ModuleListProps> = ({
                 courseDatabaseMap
               );
               return (
-                <div
-                  key={idx}
-                  className="animate-slide-up-cubi-bezier animation-delay-1"
-                >
+                <div key={idx}>
                   <Link
                     href={`${basePath}/${courseKey}/${moduleKey}`}
                     key={idx}

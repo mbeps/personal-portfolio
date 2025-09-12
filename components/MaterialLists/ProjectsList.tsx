@@ -35,10 +35,7 @@ const ProjectsList: React.FC<ExtendedMaterialListProps> = ({
                   )}
                   <div className="space-y-14 md:space-y-20">
                     {group.materialsKeys.map((projectKey) => (
-                      <div
-                        key={projectKey}
-                        className="animate-slide-up-cubi-bezier animation-delay-1"
-                      >
+                      <div key={projectKey}>
                         <ProjectItem
                           projectKey={projectKey}
                           subtitle={showType ? "type" : null}

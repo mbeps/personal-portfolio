@@ -14,7 +14,7 @@
 
   --radius: 0.625rem;
 
-  --background: oklch(1 0 0);
+/* ---- Animations ---- */
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -137,33 +137,4 @@ body {
 }
 @utility material-page-wrapper {
   @apply flex flex-col space-y-10 mt-8;
-}
-
-/* ---- Animations ---- */
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-@keyframes bounce { from { transform: translateY(10px); } to { transform: translateY(0); } }
-@keyframes slideDown { from { transform: translateY(0); } to { transform: translateY(100%); } }
-@keyframes accordion-down { from { height: 0; } to { height: var(--radix-accordion-content-height); } }
-@keyframes accordion-up { from { height: var(--radix-accordion-content-height); } to { height: 0; } }
-@keyframes bounce-horizontal {
-  0%,100% { transform: translateX(-25%); animation-timing-function: cubic-bezier(0.8,0,1,1); }
-  50% { transform: translateX(0); animation-timing-function: cubic-bezier(0,0,0.2,1); }
-}
-
-@layer utilities {
-  .animate-fadeIn { animation: fadeIn 1.5s; }
-  .animate-bounce { animation: bounce 0.5s alternate cubic-bezier(0.95,0.05,0.795,0.035) infinite; }
-  .animate-slideUp { animation: slideUp 0.5s; }
-  .animate-slideUpEaseInOut { animation: slideUp 0.5s ease-in-out; }
-  .animate-slideUpCubiBezier { animation: slideUp 1s cubic-bezier(0.165,0.84,0.44,1); }
-  .animate-accordion-down { animation: accordion-down 0.2s ease-out; }
-  .animate-accordion-up { animation: accordion-up 0.2s ease-out; }
-  .bounce-horizontal { animation: bounce-horizontal 1s cubic-bezier(0.645,0.045,0.355,1) infinite; }
-  .slow-bounce { animation-duration: 1.5s; }
-  .delay-0 { animation-delay: 0s; }
-  .delay-2 { animation-delay: 0.2s; }
-  .delay-4 { animation-delay: 0.4s; }
-  .delay-6 { animation-delay: 0.6s; }
-  .animate-slideDown { animation: slideDown 0.5s; }
 }

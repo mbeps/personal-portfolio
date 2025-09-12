@@ -53,11 +53,11 @@ export default function EducationPage() {
       </div>
 
       <section id="education">
-        <div className="animate-fade-in animation-delay-2 w-full">
+        <div className="w-full">
           <HeadingOne title={EDUCATION_PAGE.label} />
           <PageDescription description={EDUCATION_PAGE.description} />
           {/* List of courses and qualifications */}
-          <div className="py-8 animate-slide-up-cubi-bezier animation-delay-2">
+          <div className="py-8">
             <Grid
               items={courseDatabaseKeys.map((courseKey) => (
                 <CourseItem key={courseKey} courseKey={courseKey} />

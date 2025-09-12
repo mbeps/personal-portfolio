@@ -255,7 +255,7 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
               flex items-center justify-center 
               relative 
               z-0
-              animate-fade-in animation-delay-2
+              
             "
             >
               <AspectRatio ratio={8 / 5} className="overflow-hidden relative">
