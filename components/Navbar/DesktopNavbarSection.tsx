@@ -20,7 +20,7 @@ const DesktopNavbarSection: React.FC<NavbarSectionProps> = ({ items }) => {
         className="
 					md:flex
 					items-center justify-center 
-					space-y-7 md:space-x-5 md:space-y-0"
+					space-y-7 md:space-x-3 md:space-y-0"
       >
         {/* Links  */}
         {items

@@ -74,7 +74,7 @@ export default function Navbar() {
         >
           <HomeButton />
 
-          <div className="flex flex-row items-center space-x-2">
+          <div className="flex flex-row items-center space-x-4">
             <DesktopNavbarSection items={NAV_ITEMS} />
             <GlobalSearch />
             <ThemeToggle />
