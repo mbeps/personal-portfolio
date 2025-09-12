@@ -52,15 +52,17 @@ export default function Navbar() {
           ${
             scrolled && !isOverlayOpen ? "shadow-lg " : ""
           } dark:shadow-neutral-800 
-          bg-neutral-50 dark:bg-neutral-900 
-          transition-all ease-in-out 
           ${
             !isOverlayOpen
-              ? "bg-opacity-60 dark:bg-opacity-60 backdrop-blur-xl"
-              : "bg-opacity-0 dark:bg-opacity-0"
+              ? "bg-neutral-50/60 dark:bg-neutral-900/60 backdrop-blur-xl"
+              : "bg-neutral-50/0 dark:bg-neutral-900/0"
           }
+          transition-all ease-in-out
         `}
-        style={{ transitionDuration }}
+        style={{
+          transitionDuration,
+          backdropFilter: !isOverlayOpen ? "blur(20px)" : undefined,
+        }}
       >
         <div
           className="

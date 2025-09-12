@@ -29,14 +29,12 @@ const NavbarOverlay: React.FC<OverlayProps> = ({ isOpen, toggle, items }) => {
   }
 
   return (
-    <Overlay isOpen={isOpen} toggle={toggle}>
-      <div
-        className="
-					items-center justify-center 
-					space-y-8 md:space-y-0
-					pt-20 
-				"
-      >
+    <Overlay
+      isOpen={isOpen}
+      toggle={toggle}
+      className="bg-neutral-50/60 dark:bg-neutral-900/60 backdrop-blur-xl"
+    >
+      <div className="items-center justify-center space-y-8 md:space-y-0 pt-20">
         {/* Links */}
         {items
           .filter((item) => item.isMain)
