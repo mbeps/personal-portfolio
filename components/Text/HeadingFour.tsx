@@ -15,9 +15,9 @@ interface HeadingFourProps {
  */
 const HeadingFour: React.FC<HeadingFourProps> = ({ title, className }) => {
   const combinedClassName: string = twMerge(
-    `font-bold text-lg 
-				mb-2 
-				text-neutral-700 dark:text-neutral-200`,
+    `font-sans font-bold text-lg 
+     mb-2 
+     text-neutral-700 dark:text-neutral-200`,
     className
   );
 

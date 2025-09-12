@@ -15,7 +15,7 @@ interface HeadingThreeProps {
  */
 const HeadingThree: React.FC<HeadingThreeProps> = ({ title, className }) => {
   const combinedClassName: string = twMerge(
-    `text-2xl font-bold mb-6 mt-6`,
+    `text-2xl font-sans font-bold mb-6 mt-6`,
     className
   );
 

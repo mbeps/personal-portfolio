@@ -13,10 +13,12 @@ import Scroll from "@/components/UI/Scroll";
 import "katex/dist/katex.min.css";
 
 import { Inter } from "next/font/google";
+
+// Inter Variable configuration optimised for modern typography
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-sans",
+  variable: "--font-inter",
 });
 
 /**
@@ -58,8 +60,7 @@ export default function RootLayoutWithProviders({
         lang="en"
         suppressHydrationWarning
         style={{ scrollBehavior: "smooth" }}
-        className={inter.variable} 
-
+        className={inter.variable}
       >
         <body style={{ overflowX: "hidden" }}>
           <Providers>
