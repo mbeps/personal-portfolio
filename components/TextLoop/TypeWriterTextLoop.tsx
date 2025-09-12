@@ -53,7 +53,7 @@ const TypeWriterTextLoop: React.FC<TypeWriterTextLoopProps> = ({
           }
         }
       `}</style>
-      <p className={className}>
+      <div className={className}>
         <TypewriterComponent
           options={{
             strings: loopItems,
@@ -65,7 +65,7 @@ const TypeWriterTextLoop: React.FC<TypeWriterTextLoopProps> = ({
             deleteSpeed: 20,
           }}
         />
-      </p>
+      </div>
     </div>
   );
 };

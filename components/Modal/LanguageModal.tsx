@@ -117,18 +117,18 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
   return (
     <>
       <Dialog>
-        <DialogTrigger>
-          <Tooltip>
-            <TooltipTrigger>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <DialogTrigger asChild>
               <Tag onClick={shouldOpenModal ? handleOpenModal : undefined}>
                 {language.name}
               </Tag>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>{`View technologies related to ${language.name}`}</p>
-            </TooltipContent>
-          </Tooltip>
-        </DialogTrigger>
+            </DialogTrigger>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>{`View technologies related to ${language.name}`}</p>
+          </TooltipContent>
+        </Tooltip>
         <DialogContent className="flex flex-col justify-start h-full">
           <div className="w-full pt-6">
             <HeadingTwo title={language.name} />

@@ -52,8 +52,8 @@ const ThemeToggle: React.FC = () => {
   return (
     <ContextMenu>
       <Tooltip>
-        <TooltipTrigger>
-          <ContextMenuTrigger>
+        <TooltipTrigger asChild>
+          <ContextMenuTrigger asChild>
             {currentTheme === "dark" ? (
               <button
                 onClick={handleThemeChange}

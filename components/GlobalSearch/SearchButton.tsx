@@ -197,7 +197,7 @@ const GlobalSearch: React.FC = () => {
   return (
     <>
       <Tooltip>
-        <TooltipTrigger>
+        <TooltipTrigger asChild>
           <button
             className={`${baseButtonClass} ${darkButtonClass} ${lightButtonClass}`}
             onClick={() => setOpen((open) => !open)}

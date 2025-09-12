@@ -125,14 +125,7 @@ const TechnologiesSection: React.FC = () => {
 
         <div className="relative group">
           {/* Tag that opens skills modal */}
-          <Tooltip>
-            <TooltipTrigger>
-              <TechnologiesModal />
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>View More Technologies</p>
-            </TooltipContent>
-          </Tooltip>
+          <TechnologiesModal />
         </div>
       </div>
     </>

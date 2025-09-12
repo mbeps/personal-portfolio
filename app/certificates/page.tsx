@@ -46,8 +46,8 @@ const CertificatesPage: React.FC = () => {
       <div className="sr-only">
         <h1>Certificates & Online Courses:</h1>
         <ul>
-          {Object.values(certificateDatabaseMap).map((certificate) => (
-            <li key={certificate.name}>
+          {Object.entries(certificateDatabaseMap).map(([key, certificate]) => (
+            <li key={key}>
               {certificate.name}: {certificate.description}
             </li>
           ))}
