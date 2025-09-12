@@ -40,18 +40,6 @@ export const metadata: Metadata = {
 export default function EducationPage() {
   return (
     <main>
-      {/* Invisible divs for SEO */}
-      <div className="sr-only">
-        <h1>Educational Background & Credentials:</h1>
-        <ul>
-          {Object.values(courseDatabaseMap).map((course) => (
-            <li key={course.name}>
-              {course.name} from {course.university} with {course.grade}.
-            </li>
-          ))}
-        </ul>
-      </div>
-
       <section id="education">
         <div className="w-full">
           <HeadingOne title={EDUCATION_PAGE.label} />

@@ -146,17 +146,6 @@ const RolePage: React.FC<{ params: Params }> = async ({ params }) => {
 
   return (
     <main>
-      <div className="sr-only">
-        <h1>{`${roleData.name} at ${roleData?.company}`}</h1>
-        <h2>Responsibilities:</h2>
-        <Reader content={responsibilities} size="lg:prose-lg" />
-
-        <h3>Skills for work experience:</h3>
-        {roleData.skills.map((skill) => (
-          <p key={skill}>{skillDatabaseMap[skill].name}</p>
-        ))}
-      </div>
-
       <div>
         <HeadingTwo title={roleData?.name} />
 

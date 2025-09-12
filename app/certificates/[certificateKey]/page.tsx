@@ -140,16 +140,6 @@ const CertificatesPage: React.FC<{ params: Params }> = async ({ params }) => {
 
   return (
     <main>
-      <div className="sr-only">
-        <h1>{certificateData.name}</h1>
-        <h2>{certificateData.description}</h2>
-
-        <h3>Skills for certificate:</h3>
-        {certificateData.skills.map((skill) => (
-          <p key={skill}>{skillDatabaseMap[skill].name}</p>
-        ))}
-      </div>
-
       <div className="space-y-6 align-top relative">
         <HeadingTwo title={certificateData.name} />
 

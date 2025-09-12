@@ -224,23 +224,6 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
 
   return (
     <main>
-      <div className="sr-only">
-        <h1>{projectData.name}</h1>
-        <h2>{projectData.description}</h2>
-        <h3>Programming Languages:</h3>
-        <ul>
-          {projectLanguages.map((language) => (
-            <li key={language}>{skillDatabaseMap[language].name}</li>
-          ))}
-        </ul>
-        <h3>Technologies, Libraries & Frameworks:</h3>
-        <ul>
-          {technologies.map((technology) => (
-            <li key={technology}>{skillDatabaseMap[technology].name}</li>
-          ))}
-        </ul>
-      </div>
-
       <div className="flex flex-col space-y-1 align-top relative">
         <HeadingTwo title={projectData?.name} />
 

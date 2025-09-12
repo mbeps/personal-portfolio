@@ -1,12 +1,11 @@
+import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
+import developerName from "@/constants/developerName";
+import { HOME_PAGE } from "@/constants/pages";
+import subtitles from "@/constants/subtitles";
 import type { Metadata } from "next";
 import AboutSection from "./components/AboutSection/AboutSection";
 import HeroSection from "./components/HeroSection";
 import ProjectsSection from "./components/ProjectSection";
-import developerName from "@/constants/developerName";
-import { HOME_PAGE } from "@/constants/pages";
-import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
-import Reader from "@/components/Reader/Reader";
-import subtitles from "@/constants/subtitles";
 
 const aboutContent: string | undefined = getMarkdownFromFileSystem(
   `public/about/short.md`
@@ -29,14 +28,6 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main>
-      {/* SEO data */}
-      <div className="lg:w-full sr-only">
-        <p>{`My name is ${developerName} and I am a `}</p>
-        {subtitles.map((subtitle, index) => (
-          <p key={index}>{subtitle}</p>
-        ))}
-        <Reader content={aboutContent} size="lg:prose-lg" />
-      </div>
       <div className="flex flex-col space-y-20 md:space-y-36">
         <HeroSection />
         <AboutSection />
