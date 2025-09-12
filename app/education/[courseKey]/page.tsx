@@ -198,7 +198,7 @@ const CoursesPage: React.FC<{
 
         <div className="space-x-0 lg:space-x-6">
           <div className="py-5 w-full">
-            <div className="flex items-center justify-center flex-col md:flex-row">
+            <div className="flex items-center  flex-col md:flex-row">
               {courseData.logo && (
                 <div className="rounded-full shadow-lg transition-all duration-500 ease-in-out w-[75px] h-[75px]">
                   <AspectRatio
@@ -238,7 +238,7 @@ const CoursesPage: React.FC<{
             <p className="text-center lg:text-left text-2xl text-neutral-700 dark:text-neutral-200 mt-8">
               {courseData.category}
             </p>
-            <p className="text-center lg:text-left">{`${courseData.startYear} - ${courseData.endYear}`}</p>
+            <p className="text-center lg:text-left text-neutral-600 dark:text-neutral-400 italic">{`${courseData.startYear} - ${courseData.endYear}`}</p>
 
             {courseData.grade && (
               <div
