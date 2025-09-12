@@ -2,10 +2,9 @@ import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFile
 import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
 import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
 import MaterialList from "@/components/MaterialLists/MaterialList";
-import Reader from "@/components/Reader/Reader";
+import SpecialReader from "@/components/Reader/SpecialReader";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
 import { BLOG_PAGE } from "@/constants/pages";
 import BlogInterface from "@/database/Blogs/BlogInterface";
@@ -15,11 +14,7 @@ import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import type { Metadata, ResolvingMetadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { MdKeyboardArrowLeft } from "react-icons/md";
-import ContentsSection from "../../../components/Reader/ContentsSection";
-import SpecialReader from "@/components/Reader/SpecialReader";
 
 type Params = Promise<{ blogKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
@@ -138,16 +133,6 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
 
   return (
     <main>
-      <div className="sr-only">
-        <h1>{blogData.name}</h1>
-        <h2>{blogData.subtitle}</h2>
-
-        <h3>Skills for blog:</h3>
-        {blogData.skills.map((skill) => (
-          <p key={skill}>{skillDatabaseMap[skill].name}</p>
-        ))}
-      </div>
-
       <div>
         <div className="text-center">
           {/* Title */}

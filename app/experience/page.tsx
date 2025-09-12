@@ -42,18 +42,6 @@ export const metadata: Metadata = {
 export default function ExperiencePage() {
   return (
     <main>
-      {/* Invisible divs for SEO */}
-      <div className="sr-only">
-        <h1>Work Experience & Volunteering:</h1>
-        <ul>
-          {Object.values(rolesDatabase).map((role) => (
-            <li key={role.name}>
-              {role.name} at {companyDatabaseMap[role.company].name}
-            </li>
-          ))}
-        </ul>
-      </div>
-
       <section id="experience">
         <div className="w-full">
           <HeadingOne title={EXPERIENCE_PAGE.label} />

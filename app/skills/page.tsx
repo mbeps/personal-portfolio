@@ -1,11 +1,11 @@
 import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/UI/PageDescription";
 import developerName from "@/constants/developerName";
+import { SKILL_PAGE } from "@/constants/pages";
 import skillDatabaseMap, {
   skillDatabaseKeys,
 } from "@/database/Skills/SkillDatabaseMap";
 import SkillList from "../../components/MaterialLists/SkillList";
-import { SKILL_PAGE } from "@/constants/pages";
 
 /**
  * Generates the metadata for the skill page.
@@ -37,16 +37,6 @@ export const metadata = {
 export default function SkillPage() {
   return (
     <main>
-      {/* Invisible divs for SEO */}
-      <div className="sr-only">
-        <h1>Skills:</h1>
-        <ul>
-          {Object.values(skillDatabaseMap).map((skill) => (
-            <li key={skill.name}>{skill.name}</li>
-          ))}
-        </ul>
-      </div>
-
       <section id="skills">
         <div className="w-full">
           <HeadingOne title="Skills" />

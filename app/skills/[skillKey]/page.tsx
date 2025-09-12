@@ -1,22 +1,21 @@
 import filterMaterialBySkill from "@/actions/material/filter/filterMaterialBySkill";
+import MaterialList from "@/components/MaterialLists/MaterialList";
 import HeadingOne from "@/components/Text/HeadingOne";
+import HeadingTwo from "@/components/Text/HeadingTwo";
 import PageDescription from "@/components/UI/PageDescription";
 import developerName from "@/constants/developerName";
+import materialDatabaseMap, {
+  materialKeys,
+} from "@/database/Materials/MaterialDatabaseMap";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import skillDatabaseMap, {
   skillDatabaseKeys,
 } from "@/database/Skills/SkillDatabaseMap";
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import SkillInterface from "@/database/Skills/SkillInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import React from "react";
 import RelatedSkillsSection from "./components/RelatedSkillsSection";
-import MaterialList from "@/components/MaterialLists/MaterialList";
-import HeadingTwo from "@/components/Text/HeadingTwo";
-import materialDatabaseMap, {
-  materialKeys,
-} from "@/database/Materials/MaterialDatabaseMap";
-import { SKILL_PAGE } from "@/constants/pages";
 
 type Params = Promise<{ skillKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
@@ -93,14 +92,6 @@ const SkillPage: React.FC<{ params: Params }> = async ({ params }) => {
 
   return (
     <main>
-      <div className="sr-only">
-        <h1>{skillData.name}</h1>
-        <h2>Skills for certificate:</h2>
-        {skillData.relatedSkills?.map((skill) => (
-          <p key={skill}>{skillDatabaseMap[skill].name}</p>
-        ))}
-      </div>
-
       <div>
         <HeadingOne title={skillData.name} />
         <PageDescription

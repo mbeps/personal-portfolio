@@ -39,18 +39,6 @@ export const metadata: Metadata = {
 const ProjectsPage = () => {
   return (
     <main>
-      {/* Invisible divs for SEO */}
-      <div className="sr-only">
-        <h1>Projects:</h1>
-        <ul>
-          {Object.values(projectDatabaseMap).map((project) => (
-            <li key={project.name}>
-              {project.name}: {project.description}
-            </li>
-          ))}
-        </ul>
-      </div>
-
       <section id="projects" className="flex flex-col items-start md:items-end">
         <div className="w-full">
           <HeadingOne title={PROJECTS_PAGE.label} />

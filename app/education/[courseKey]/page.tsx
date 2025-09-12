@@ -34,7 +34,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { GrAppsRounded } from "react-icons/gr";
-import Reader from "@/components/Reader/Reader";
 import { IoReaderOutline } from "react-icons/io5";
 
 type Params = Promise<{ courseKey: string }>;
@@ -176,23 +175,6 @@ const CoursesPage: React.FC<{
 
   return (
     <main>
-      <div className="sr-only">
-        <h1>{courseData.name}</h1>
-        <h2>{`${courseData.grade} in ${courseData.name} from ${courseData?.university}`}</h2>
-        {/* list of modules */}
-        <h3>Modules:</h3>
-        <ul>
-          {courseData.modules.map((module) => (
-            <li key={module}>{`${moduleDatabaseMap[module].name}`}</li>
-          ))}
-        </ul>
-
-        <h3>Skills for course:</h3>
-        {courseData.skills.map((skill) => (
-          <p key={skill}>{skillDatabaseMap[skill].name}</p>
-        ))}
-      </div>
-
       <div>
         <HeadingTwo title={courseData.name} />
 

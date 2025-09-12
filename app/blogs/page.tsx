@@ -39,18 +39,6 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   return (
     <main>
-      {/* Invisible divs for SEO */}
-      <div className="sr-only">
-        <h1>Blogs & Articles:</h1>
-        <ul>
-          {Object.values(blogsDatabaseMap).map((blog) => (
-            <li key={blog.name}>
-              {blog.name}: {blog.subtitle}
-            </li>
-          ))}
-        </ul>
-      </div>
-
       <section id="blogs">
         <div className="w-full">
           <HeadingOne title={BLOG_PAGE.label} />

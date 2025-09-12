@@ -2,10 +2,10 @@ import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/UI/PageDescription";
 import developerName from "@/constants/developerName";
 import { CERTIFICATES_PAGE } from "@/constants/pages";
+import certificateDatabaseMap from "@/database/Certificates/CertificateDatabaseMap";
 import { Metadata } from "next";
 import React from "react";
 import CertificatesView from "./components/CertificatesView";
-import certificateDatabaseMap from "@/database/Certificates/CertificateDatabaseMap";
 
 /**
  * Generates the metadata for the certificates page.
@@ -42,18 +42,6 @@ export const metadata: Metadata = {
 const CertificatesPage: React.FC = () => {
   return (
     <main>
-      {/* Invisible divs for SEO */}
-      <div className="sr-only">
-        <h1>Certificates & Online Courses:</h1>
-        <ul>
-          {Object.entries(certificateDatabaseMap).map(([key, certificate]) => (
-            <li key={key}>
-              {certificate.name}: {certificate.description}
-            </li>
-          ))}
-        </ul>
-      </div>
-
       <section id="projects" className="flex flex-col items-start md:items-end">
         <div className="w-full">
           <HeadingOne title={CERTIFICATES_PAGE.label} />
