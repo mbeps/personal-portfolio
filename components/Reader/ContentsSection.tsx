@@ -64,7 +64,7 @@ const ContentsSection: React.FC<ContentsSectionProps> = ({
             toggle={handleTogglePanel}
             isOpen={isPanelOpen}
             secondaryClassName={
-              isUltraLargeScreen ? "md:w-[32rem]" : "md:w-[24rem]"
+              isUltraLargeScreen ? "md:w-lg" : "md:w-[24rem]"
             }
           >
             <ScrollArea className="h-full px-2 pb-6">

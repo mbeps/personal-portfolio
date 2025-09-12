@@ -12,6 +12,15 @@ import { VercelTrackers } from "@/providers/VercelTrackers";
 import Scroll from "@/components/UI/Scroll";
 import "katex/dist/katex.min.css";
 
+import { Inter } from "next/font/google";
+
+// Inter Variable configuration optimised for modern typography
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
+
 /**
  * Markdown detailing the developer's about information.
  * This is the used for SEO.
@@ -51,6 +60,7 @@ export default function RootLayoutWithProviders({
         lang="en"
         suppressHydrationWarning
         style={{ scrollBehavior: "smooth" }}
+        className={inter.variable}
       >
         <body style={{ overflowX: "hidden" }}>
           <Providers>

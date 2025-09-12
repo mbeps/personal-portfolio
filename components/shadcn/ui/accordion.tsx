@@ -19,7 +19,7 @@ const Accordion = React.forwardRef<
         bg-white dark:bg-neutral-950
         rounded-xl
         overflow-hidden
-        shadow-sm hover:shadow-md
+        shadow-xs hover:shadow-md
         transition-all duration-500 ease-in-out`,
       className
     )}

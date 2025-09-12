@@ -5,13 +5,13 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap text-md font-medium cursor-pointer transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 font-semibold md:hover:bg-red-400 md:hover:dark:bg-red-950",
+  "inline-flex items-center justify-center whitespace-nowrap text-md font-medium cursor-pointer transition-all duration-500 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 font-semibold md:hover:bg-red-400 md:dark:hover:bg-red-950",
   {
     variants: {
       variant: {
         default: `
           text-neutral-700 dark:text-neutral-200 capitalize md:hover:text-neutral-700 dark:md:hover:text-neutral-200
-          shadow-sm md:hover:shadow-lg focus:shadow-lg
+          shadow-xs md:hover:shadow-lg focus:shadow-lg
           bg-neutral-100 dark:bg-neutral-800
           md:hover:bg-neutral-100 dark:md:hover:bg-neutral-800
           border-2 border-transparent dark:border-transparent
@@ -39,7 +39,7 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         gradient: `
           text-neutral-100
-          bg-gradient-to-r
+          bg-linear-to-r
           from-red-600 to-amber-500
           dark:from-red-800 dark:to-amber-700
           transform md:hover:scale-105

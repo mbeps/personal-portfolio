@@ -63,7 +63,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
             flex justify-center
             rounded-xl
             transform md:hover:scale-105
-            shadow-sm md:hover:shadow-lg
+            shadow-xs md:hover:shadow-lg
             border border-neutral-100 dark:border-neutral-800
             transition-all duration-500 ease-in-out
             mb-6

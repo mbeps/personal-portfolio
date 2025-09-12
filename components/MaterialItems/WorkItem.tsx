@@ -55,19 +55,20 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
         shadow-md
         "
     >
-      <div className="flex items-center justify-center flex-col space-y-4">
+      {/* Left Section */}
+      <div className="flex items-center flex-col space-y-2">
         {/* Logo */}
-        <div className="py-3 flex items-start justify-center md:justify-start">
+        <div className="py-1 flex items-start justify-center md:justify-start">
           {companyData.logo && (
             <div
               className="
               rounded-full 
               transition-all duration-500 ease-in-out
-              w-[85px] h-[85px] lg:w-[100px] lg:h-[100px] 
+              w-[80px] h-[80px] 
               border-2 border-neutral-200 dark:border-neutral-900
               dark:hover:border-red-600
               hover:scale-105 hover:shadow-lg
-            "
+              "
             >
               <Link href={rolePage}>
                 <AspectRatio
@@ -82,7 +83,7 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
                     rounded-full 
                     shadow-lg object-cover
                     transition-all duration-500 ease-in-out
-            "
+                    "
                     quality={30}
                     loading="eager"
                     priority
@@ -127,12 +128,12 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
         </div>
       </div>
 
-      {/* Details */}
+      {/* Right Section */}
       <div
         className="
           flex flex-col
           items-center md:items-start 
-          space-y-4 md:space-y-3 sm:p-0
+          space-y-4 md:space-y-2 sm:p-0
           ease-in-out
           rounded-xl 
           transition-colors duration-700 
@@ -168,7 +169,7 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
               className="
                 font-bold
                 hover:underline 
-                hover:text-red-500 hover:dark:text-red-700
+                hover:text-red-500 dark:hover:text-red-700
                 transition-colors duration-300 ease-in-out"
             >
               {companyData.name}
@@ -176,7 +177,7 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
           ) : (
             <span>{companyData.name}</span>
           )}
-          <span>{companyData.location}</span>
+          {/* <span>{companyData.location}</span> */}
         </div>
 
         <div
@@ -191,11 +192,6 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
           <p>{`${roleData.startDate} - ${endDate}`}</p>
           <p className="italic">{roleData.timeInRole}</p>
         </div>
-
-        {/* Role Type */}
-        <p className="text-neutral-400 dark:text-neutral-500">
-          {roleData.type}
-        </p>
 
         <div
           className="
@@ -231,7 +227,7 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
                 </Link>
               </TooltipTrigger>
               <TooltipContent>
-                <p>Navigate to company website</p>
+                <p>View Company Site</p>
               </TooltipContent>
             </Tooltip>
           )}

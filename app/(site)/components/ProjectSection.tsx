@@ -1,6 +1,6 @@
 import ProjectItem from "@/components/MaterialItems/ProjectItem";
 import HeadingTwo from "@/components/Text/HeadingTwo";
-import SlideUp from "@/components/UI/Slideup";
+
 import { Button } from "@/components/shadcn/ui/button";
 import { PROJECTS_PAGE } from "@/constants/pages";
 import ProjectDatabaseKeys from "@/database/Projects/ProjectDatabaseKeys";
@@ -33,9 +33,9 @@ const ProjectsSection = () => {
       <div className="flex flex-col space-y-14 md:space-y-20 mt-6 md:mt-14">
         {displayedProjects.map((slug, idx) => (
           <div key={slug}>
-            <SlideUp offset="-150px 0px -150px 0px">
-              <ProjectItem projectKey={slug} subtitle={"category"} />
-            </SlideUp>
+            {/* SlideUp removed */}
+            <ProjectItem projectKey={slug} subtitle={"category"} />
+            {/* SlideUp removed */}
           </div>
         ))}
       </div>

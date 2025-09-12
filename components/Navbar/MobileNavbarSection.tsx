@@ -25,7 +25,7 @@ const MobileNavbarSection: React.FC<MobileNavbarSectionProps> = ({
           p-2 
           text-neutral-800 dark:text-neutral-200 
           rounded-xl 
-          outline-none ml-2"
+          outline-hidden ml-2"
         onClick={toggleOverlay}
       >
         {isOverlayOpen ? <IoMdClose size={30} /> : <IoMdMenu size={30} />}

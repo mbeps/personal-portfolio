@@ -16,9 +16,9 @@ interface HeadingOneProps {
 const HeadingOne: React.FC<HeadingOneProps> = ({ title, className }) => {
   const combinedClassName: string = twMerge(
     `text-5xl md:text-7xl 
-      font-bold mt-6 
+      font-sans font-bold mt-6 
       md:mt-0 
-      text-center `,
+      text-center`,
     className
   );
 

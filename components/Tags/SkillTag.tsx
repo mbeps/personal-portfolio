@@ -1,11 +1,6 @@
 "use client";
 
 import isSkillAssociatedWithMaterial from "@/actions/material/isSkillAssociatedWithMaterial";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/shadcn/ui/tooltip";
 import materialDatabaseMap from "@/database/Materials/MaterialDatabaseMap";
 import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 import SkillInterface from "@/database/Skills/SkillInterface";
@@ -47,16 +42,9 @@ const SkillTag: React.FC<TagProps> = ({ skillKey, hide }) => {
 
   // Render the skill tag with a link if there's associated material, otherwise just show the tag
   return hasMaterial ? (
-    <Tooltip>
-      <TooltipTrigger>
-        <Link href={skillLink}>
-          <Tag hasHover={true}>{skill.name}</Tag>
-        </Link>
-      </TooltipTrigger>
-      <TooltipContent>
-        <p>{`Navigate to all material related to ${skill.name}`}</p>
-      </TooltipContent>
-    </Tooltip>
+    <Link href={skillLink}>
+      <Tag hasHover={true}>{skill.name}</Tag>
+    </Link>
   ) : (
     <Tag hasHover={false}>{skill.name}</Tag>
   );

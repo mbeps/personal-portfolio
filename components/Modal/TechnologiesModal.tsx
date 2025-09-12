@@ -9,6 +9,7 @@ import {
   DialogContent,
   DialogTrigger,
 } from "@/components/shadcn/ui/dialog";
+// tooltip removed from SkillTag and Technologies modal to avoid nested trigger buttons
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -114,7 +115,7 @@ const TechnologiesModal: React.FC = () => {
 
   return (
     <Dialog>
-      <DialogTrigger>
+      <DialogTrigger asChild>
         <Tag onClick={handleOpenModal}>...</Tag>
       </DialogTrigger>
       <DialogContent>
@@ -128,7 +129,7 @@ const TechnologiesModal: React.FC = () => {
               {/* Drop Down */}
               <div
                 className="
-                  flex-grow mr-2 mt-2.5
+                  grow mr-2 mt-2.5
                   text-right text-neutral-700 dark:text-neutral-300
               "
               >

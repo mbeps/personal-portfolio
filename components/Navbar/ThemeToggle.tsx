@@ -52,8 +52,8 @@ const ThemeToggle: React.FC = () => {
   return (
     <ContextMenu>
       <Tooltip>
-        <TooltipTrigger>
-          <ContextMenuTrigger>
+        <TooltipTrigger asChild>
+          <ContextMenuTrigger asChild>
             {currentTheme === "dark" ? (
               <button
                 onClick={handleThemeChange}
@@ -87,7 +87,7 @@ const ThemeToggle: React.FC = () => {
       <ContextMenuContent
         className="
           menu-content-styles 
-          space-y-1 w-[12rem]
+          space-y-1 w-48
           transition-all duration-300
         "
       >

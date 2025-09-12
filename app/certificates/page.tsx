@@ -46,8 +46,8 @@ const CertificatesPage: React.FC = () => {
       <div className="sr-only">
         <h1>Certificates & Online Courses:</h1>
         <ul>
-          {Object.values(certificateDatabaseMap).map((certificate) => (
-            <li key={certificate.name}>
+          {Object.entries(certificateDatabaseMap).map(([key, certificate]) => (
+            <li key={key}>
               {certificate.name}: {certificate.description}
             </li>
           ))}
@@ -55,7 +55,7 @@ const CertificatesPage: React.FC = () => {
       </div>
 
       <section id="projects" className="flex flex-col items-start md:items-end">
-        <div className="animate-fadeIn animation-delay-2 w-full">
+        <div className="w-full">
           <HeadingOne title={CERTIFICATES_PAGE.label} />
           <PageDescription description={CERTIFICATES_PAGE.description} />
           <CertificatesView />

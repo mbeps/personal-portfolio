@@ -39,7 +39,7 @@ const NavbarItem: React.FC<NavbarItemProps> = ({ href, children }) => {
     ${isActive ? "font-bold" : "font-normal"} 
     text-neutral-900 dark:text-neutral-100 text-center
     md:dark:hover:text-neutral-200 
-    px-4 py-3 m-2 w-full md:w-26
+    px-4 py-3 m-2 w-full md:w-full md:w-auto
     cursor-pointer 
     transition-all 
     duration-300 
@@ -62,7 +62,7 @@ const NavbarItem: React.FC<NavbarItemProps> = ({ href, children }) => {
           bottom-[2px]    
           left-0 inline-block 
           bg-red-500 dark:bg-red-900 
-          -translate-x-[100%] md:group-hover:translate-x-0 transition-transform 
+          -translate-x-full md:group-hover:translate-x-0 transition-transform 
           duration-300"
       />
     </Link>
