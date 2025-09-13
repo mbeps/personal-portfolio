@@ -1118,7 +1118,7 @@
     source-map "0.8.0-beta.0"
     zod "4.1.5"
 
-"@serwist/next@^9.2.1":
+"@serwist/next@^9.0.9":
   version "9.2.1"
   resolved "https://registry.yarnpkg.com/@serwist/next/-/next-9.2.1.tgz#2ba8be7f67b0a6822482004591013e4151f1830d"
   integrity sha512-CCTvZYSWK1hCmANViGLd7LvVc9r9wd4aaVX4Uk0F6fC0/Xn05GY52di7LGZ2NveGr1g+NjQvQSBhfxCQK95NIg==
@@ -4532,7 +4532,7 @@ semver@^7.1.1, semver@^7.3.5, semver@^7.3.7, semver@^7.5.3, semver@^7.6.0, semve
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.7.2.tgz#67d99fdcd35cec21e6f8b87a7fd515a33f982b58"
   integrity sha512-RF0Fw+rO5AMf9MAyaRXI4AV0Ulj5lMHqVxxdSgiVbixSCXoEmmX/jk0CuJw4+3SqroYO9VoUh+HcuJivvtJemA==
 
-serwist@9.2.1, serwist@^9.2.1:
+serwist@9.2.1, serwist@^9.0.9:
   version "9.2.1"
   resolved "https://registry.yarnpkg.com/serwist/-/serwist-9.2.1.tgz#a0c2bf241cdaf9dfa2bb2fb770ad273ebb453b9d"
   integrity sha512-icp1GQB3h9q1OqYeSw+iTTY0OZ3io+fzNG0Ot3p6Xe5DEZlSRn61FmGx9mq76q0CeMtZYBmmuw4tyIS1O76Lbw==
