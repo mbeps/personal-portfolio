@@ -60,6 +60,7 @@ enum SkillDatabaseKeys {
   Django = "django",
   Spring = "spring",
   SpringBoot = "spring-boot",
+  SpringDataLDAP = "spring-data-ldap",
   Cloudinary = "cloudinary",
   EdgeStore = "edge-store",
   WebSockets = "web-sockets",

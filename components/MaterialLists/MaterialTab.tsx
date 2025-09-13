@@ -133,25 +133,10 @@ const MaterialTab: React.FC<MaterialTabsProps> = ({ materialKeys }) => {
       value={selectedTab}
       onValueChange={setSelectedTab}
     >
-      <TabsList
-        className="
-          w-full md:w-auto 
-          bg-transparent 
-          flex-col md:flex-row
-          ml-0 md:-ml-4 
-          "
-      >
+      {/* Tab Options */}
+      <TabsList variant="heading" className="w-full md:w-auto">
         {nonEmptySections.map(({ name }) => (
-          <TabsTrigger
-            key={name}
-            value={name}
-            className="
-              text-2xl md:text-2xl font-bold
-              data-[state=inactive]:text-neutral-400 dark:data-[state=inactive]:text-neutral-600
-              data-[state=active]:shadow-none data-[state=active]:bg-transparent
-              transition-all duration-500
-              "
-          >
+          <TabsTrigger key={name} value={name} variant="heading">
             {name}
           </TabsTrigger>
         ))}

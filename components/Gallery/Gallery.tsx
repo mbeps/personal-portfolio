@@ -81,17 +81,10 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
                     <Image
                       key={index}
                       src={images?.[index] ?? ""}
-                      alt="Currently Active"
-                      quality={90}
-                      width={2000}
-                      height={1125}
-                      priority
-                      className="
-                        w-full h-[60vh] 
-                        object-contain 
-                        rounded-xl 
-                        transition-colors duration-700 
-                        p-2"
+                      alt={`Gallery image ${index + 1}`}
+                      width={800}
+                      height={600}
+                      className="w-full h-[60vh] object-contain rounded-xl bg-neutral-100 dark:bg-neutral-950 transition-colors duration-700 p-2"
                     />
                   </CarouselItem>
                 ))}
@@ -107,12 +100,10 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
               Slide {current} of {count}
             </div>
           </TabsContent>
-          {/* Video Demos */}
-          <TabsContent value="demo">
-            <Carousel
-              setApi={setApi}
-              className="bg-neutral-100 dark:bg-neutral-950 rounded-xl"
-            >
+
+          {/* Videos */}
+          <TabsContent value="demo" className="w-full">
+            <Carousel className="bg-neutral-100 dark:bg-neutral-950 rounded-xl transition-colors duration-700">
               <CarouselContent>
                 {Array.from({ length: videos?.length ?? 0 }).map((_, index) => (
                   <CarouselItem key={index}>
@@ -136,14 +127,17 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
           </TabsContent>
 
           {/* Tabs List */}
-
           {images && images.length > 0 && videos && videos.length > 0 && (
             <div className="flex justify-center items-center">
-              <TabsList className="rounded-full flex flex-row space-x-1 transition-colors duration-700">
+              <TabsList
+                variant="pill"
+                className="rounded-full flex flex-row space-x-1 transition-colors duration-700"
+              >
                 {/* Images */}
                 {images && images.length > 0 && (
                   <TabsTrigger
                     value="images"
+                    variant="pill"
                     className="
                       flex flex-row space-x-2
                       text-neutral-700 dark:text-neutral-200 text-md
@@ -161,6 +155,7 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
                 {videos && videos.length > 0 && (
                   <TabsTrigger
                     value="demo"
+                    variant="pill"
                     className="
                       flex flex-row space-x-2
                       text-neutral-700 dark:text-neutral-200 text-md
