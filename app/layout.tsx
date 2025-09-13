@@ -32,7 +32,6 @@ const aboutContent: string | undefined = getMarkdownFromFileSystem(
 export const metadata: Metadata = {
   title: developerName,
   description: aboutContent || HOME_PAGE.description,
-  manifest: "/manifest/manifest.json",
   icons: ["/manifest/icon512_maskable.png", "/manifest/icon512_rounded.png"],
   category: "Homepage",
   creator: developerName,
