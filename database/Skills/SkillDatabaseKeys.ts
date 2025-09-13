@@ -18,8 +18,6 @@ enum SkillDatabaseKeys {
   Scala = "scala",
   Groovy = "groovy",
   Kotlin = "kotlin",
-  ObjectOrientedProgramming = "oop",
-  FunctionalProgramming = "fp",
   Matlab = "matlab",
 
   //^ Artificial Intelligence, Machine Learning, and Data Science
@@ -56,7 +54,6 @@ enum SkillDatabaseKeys {
   //^ Backend Web Development
   Firebase = "firebase",
   Supabase = "supabase",
-  PocketBase = "pocketbase",
   Auth0 = "auth0",
   ClerkAuth = "clerk-auth",
   AuthJs = "auth-js",
@@ -77,8 +74,6 @@ enum SkillDatabaseKeys {
   ReactJS = "react",
   Recoil = "recoil",
   Zustand = "zustand",
-  Jotai = "jotai",
-  Redux = "redux",
   TailwindCSS = "tailwind-css",
   HTML = "html",
   CSS = "css",
@@ -87,7 +82,6 @@ enum SkillDatabaseKeys {
   ShadcnUI = "shadcn-ui",
   RadixUI = "radix-ui",
   NextUI = "next-ui",
-  Bootstrap = "bootstrap",
   SimpleGUI = "simple-gui",
   Axios = "axios",
   UserCentricDesign = "user-centric-design",
@@ -144,15 +138,6 @@ enum SkillDatabaseKeys {
   GraphQL = "graphql-api",
   SocketIO = "socket-io",
   Pusher = "pusher",
-  OpenAI = "open-ai",
-  ReplicateAI = "replicate-ai",
-
-  //^ Version Control Systems
-  Git = "git",
-  GitHub = "github",
-  GitLab = "gitlab",
-  BitBucket = "bit-bucket",
-  VersionControlSystems = "version-control-systems",
 
   //^ Testing
   Jest = "jest",
@@ -164,16 +149,6 @@ enum SkillDatabaseKeys {
   Cypress = "cypress",
   ReactTestingLibrary = "react-testing-library",
   Testing = "testing",
-
-  //^ Project and Dependency Management
-  NPM = "npm",
-  Yarn = "yarn",
-  PNPM = "pnpm",
-  Poetry = "poetry",
-  Pip = "pip",
-  Maven = "maven",
-  Gradle = "gradle",
-  NxJS = "nx-js",
 
   //^ Mathematics
   Probability = "probability",
@@ -221,10 +196,6 @@ enum SkillDatabaseKeys {
   GCP_CloudScheduler = "gcp-cloud-scheduler",
   GCP_Logging = "gcp-logging",
   CloudComputing = "cloud-computing",
-
-  //^ Algorithms & Data Structures
-  Algorithms = "algorithms",
-  DataStructures = "data-structures",
 
   //^ Others
   Symphony = "symphony",

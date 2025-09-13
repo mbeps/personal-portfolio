@@ -75,7 +75,8 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
   ): SkillDatabaseKeys[] {
     return skillSlugs.filter((slug) => {
       const skill: SkillInterface = skillsHashmap[slug];
-      return skill.isMainSkill && skill.category !== excludedCategory;
+      // return skill.isMainSkill && skill.category !== excludedCategory;
+      return skill.category !== excludedCategory;
     });
   }
 

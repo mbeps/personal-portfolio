@@ -38,12 +38,9 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Recoil,
       SkillDatabaseKeys.Docker,
       SkillDatabaseKeys.GitHubActions,
-      SkillDatabaseKeys.GitHub,
       SkillDatabaseKeys.GCP,
-      SkillDatabaseKeys.Git,
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
-      SkillDatabaseKeys.Yarn,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -55,9 +52,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.StakeholderManagement,
       SkillDatabaseKeys.Communication,
       SkillDatabaseKeys.RiskManagement,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-
-      SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.CircusDiscussions),
@@ -92,20 +86,14 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Zustand,
       SkillDatabaseKeys.Docker,
       SkillDatabaseKeys.GitHubActions,
-      SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Git,
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
-      SkillDatabaseKeys.Yarn,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-
-      SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     thumbnailImage: addProjectThumbnail(
@@ -134,25 +122,19 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Prisma,
       SkillDatabaseKeys.Stripe,
       SkillDatabaseKeys.REST,
-      SkillDatabaseKeys.OpenAI,
-      SkillDatabaseKeys.ReplicateAI,
+
       SkillDatabaseKeys.Zustand,
       SkillDatabaseKeys.Docker,
       SkillDatabaseKeys.GitHubActions,
       SkillDatabaseKeys.GCP,
-      SkillDatabaseKeys.Git,
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
-      SkillDatabaseKeys.Yarn,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-
-      SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.MagicianAI),
@@ -177,19 +159,14 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Zustand,
       SkillDatabaseKeys.GitHubActions,
       SkillDatabaseKeys.GCP,
-      SkillDatabaseKeys.Git,
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
-      SkillDatabaseKeys.Yarn,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-
-      SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.DrumrollMusic),
@@ -214,21 +191,15 @@ const projectMap: Database<ProjectInterface> = {
 
       SkillDatabaseKeys.Convex,
       SkillDatabaseKeys.EdgeStore,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
       SkillDatabaseKeys.GitHubActions,
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
-      SkillDatabaseKeys.Yarn,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-
-      SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     deploymentURL: "https://joker-notes.vercel.app/",
@@ -260,21 +231,15 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.DatabaseManagementSystems,
       SkillDatabaseKeys.Databases,
       SkillDatabaseKeys.RelationalDatabases,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.BitBucket,
       SkillDatabaseKeys.TeamCity,
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
-      SkillDatabaseKeys.Yarn,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-
-      SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.CommerzbankRates),
@@ -303,22 +268,16 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.AuthJs,
 
       SkillDatabaseKeys.MySQL,
-      SkillDatabaseKeys.OpenAI,
+
       SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
-      SkillDatabaseKeys.Yarn,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-
-      SkillDatabaseKeys.Algorithms,
     ],
     repositoryURL: "https://github.com/mbeps/quizmify",
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.Quizmify),
@@ -340,18 +299,14 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Supabase,
       SkillDatabaseKeys.PostgreSQL,
       SkillDatabaseKeys.NextUI,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
-      SkillDatabaseKeys.NPM,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     archived: true,
@@ -376,18 +331,11 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.TailwindCSS,
       SkillDatabaseKeys.MySQL,
       SkillDatabaseKeys.Prisma,
-      SkillDatabaseKeys.NxJS,
       SkillDatabaseKeys.Jest,
-      SkillDatabaseKeys.GitHub,
       SkillDatabaseKeys.GitHubActions,
-      SkillDatabaseKeys.Git,
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
-      SkillDatabaseKeys.PNPM,
 
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-
-      SkillDatabaseKeys.Algorithms,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
       SkillDatabaseKeys.CriticalThinking,
@@ -418,14 +366,9 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
       SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.BitBucket,
       SkillDatabaseKeys.JUnit,
       SkillDatabaseKeys.Mockito,
-      SkillDatabaseKeys.Gradle,
       SkillDatabaseKeys.GCP,
-      SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.DataStructures,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -462,13 +405,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.JUnit,
       SkillDatabaseKeys.Mockito,
       SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.BitBucket,
-      SkillDatabaseKeys.Gradle,
       SkillDatabaseKeys.GCP,
-      SkillDatabaseKeys.OpenAI,
-      SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.DataStructures,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -504,9 +441,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.JUnit,
       SkillDatabaseKeys.Mockito,
       SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.BitBucket,
-      SkillDatabaseKeys.Gradle,
       SkillDatabaseKeys.GCP,
 
       SkillDatabaseKeys.ProblemSolving,
@@ -541,9 +475,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.JUnit,
       SkillDatabaseKeys.Mockito,
       SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.BitBucket,
-      SkillDatabaseKeys.Gradle,
       SkillDatabaseKeys.GCP,
 
       SkillDatabaseKeys.ProblemSolving,
@@ -580,9 +511,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.JUnit,
       SkillDatabaseKeys.Mockito,
       SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.BitBucket,
-      SkillDatabaseKeys.Gradle,
       SkillDatabaseKeys.GCP,
 
       SkillDatabaseKeys.ProblemSolving,
@@ -621,9 +549,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.JUnit,
       SkillDatabaseKeys.Mockito,
       SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.BitBucket,
-      SkillDatabaseKeys.Gradle,
       SkillDatabaseKeys.GCP,
 
       SkillDatabaseKeys.ProblemSolving,
@@ -660,9 +585,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.JUnit,
       SkillDatabaseKeys.Mockito,
       SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.BitBucket,
-      SkillDatabaseKeys.Gradle,
       SkillDatabaseKeys.GCP,
 
       SkillDatabaseKeys.ProblemSolving,
@@ -700,9 +622,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.JUnit,
       SkillDatabaseKeys.Mockito,
       SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.BitBucket,
-      SkillDatabaseKeys.Gradle,
       SkillDatabaseKeys.GCP,
 
       SkillDatabaseKeys.ProblemSolving,
@@ -741,9 +660,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.JUnit,
       SkillDatabaseKeys.Mockito,
       SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.BitBucket,
-      SkillDatabaseKeys.Gradle,
       SkillDatabaseKeys.GCP,
 
       SkillDatabaseKeys.ProblemSolving,
@@ -777,9 +693,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Symphony,
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.BitBucket,
-      SkillDatabaseKeys.Gradle,
       SkillDatabaseKeys.GCP,
 
       SkillDatabaseKeys.ProblemSolving,
@@ -813,9 +726,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Symphony,
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.BitBucket,
-      SkillDatabaseKeys.Gradle,
       SkillDatabaseKeys.GCP,
 
       SkillDatabaseKeys.ProblemSolving,
@@ -848,11 +758,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.MySQL,
       SkillDatabaseKeys.SQLAlchemy,
       SkillDatabaseKeys.REST,
-      SkillDatabaseKeys.Poetry,
-      SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.GitLab,
       SkillDatabaseKeys.GitHubActions,
-      SkillDatabaseKeys.Git,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -860,9 +766,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.TimeManagement,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-
-      SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     relatedMaterials: [
@@ -886,9 +789,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Flask,
       SkillDatabaseKeys.SQLAlchemy,
       SkillDatabaseKeys.REST,
-      SkillDatabaseKeys.Poetry,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
       SkillDatabaseKeys.SQLite,
 
       SkillDatabaseKeys.ProblemSolving,
@@ -896,7 +796,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
     ],
     archived: true,
     type: ProjectTypeEnum.Personal,
@@ -911,16 +810,12 @@ const projectMap: Database<ProjectInterface> = {
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.Flask,
-      SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.Poetry,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
     ],
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     archived: true,
@@ -936,16 +831,12 @@ const projectMap: Database<ProjectInterface> = {
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.Django,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Poetry,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
     ],
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     archived: true,
@@ -962,16 +853,12 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.NextJS,
       SkillDatabaseKeys.ClerkAuth,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Yarn,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.TimeManagement,
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
     ],
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     archived: true,
@@ -989,16 +876,12 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.NextJS,
       SkillDatabaseKeys.Auth0,
-      SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.Yarn,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
     ],
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     archived: true,
@@ -1018,9 +901,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.SpringBoot,
       SkillDatabaseKeys.SpringDataJPA,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Gradle,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -1049,9 +929,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.SpringBoot,
       SkillDatabaseKeys.SpringDataJPA,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Gradle,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -1080,9 +957,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.SpringBoot,
       SkillDatabaseKeys.SpringDataLDAP,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Gradle,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -1109,9 +983,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.HuggingFace,
       SkillDatabaseKeys.LLMs,
       SkillDatabaseKeys.Pandas,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Poetry,
 
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
@@ -1125,9 +996,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Academic,
@@ -1150,9 +1018,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.HuggingFace,
       SkillDatabaseKeys.LLMs,
       SkillDatabaseKeys.Pandas,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Poetry,
 
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
@@ -1166,9 +1031,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Academic,
@@ -1191,9 +1053,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.HuggingFace,
       SkillDatabaseKeys.LLMs,
       SkillDatabaseKeys.Pandas,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Poetry,
 
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
@@ -1208,9 +1067,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Academic,
@@ -1233,9 +1089,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.HuggingFace,
       SkillDatabaseKeys.LLMs,
       SkillDatabaseKeys.Pandas,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Poetry,
 
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
@@ -1249,9 +1102,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Academic,
@@ -1271,9 +1121,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.HuggingFace,
       SkillDatabaseKeys.LLMs,
       SkillDatabaseKeys.Pandas,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Poetry,
 
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
@@ -1287,9 +1134,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Academic,
@@ -1312,9 +1156,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.HuggingFace,
       SkillDatabaseKeys.LLMs,
       SkillDatabaseKeys.Pandas,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Poetry,
 
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
@@ -1328,9 +1169,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Academic,
@@ -1353,9 +1191,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.HuggingFace,
       SkillDatabaseKeys.LLMs,
       SkillDatabaseKeys.Pandas,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Poetry,
 
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
@@ -1370,9 +1205,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Academic,
@@ -1403,10 +1235,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.TensorFlow,
       SkillDatabaseKeys.Matplotlib,
 
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Poetry,
-
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.DeepLearning,
@@ -1417,8 +1245,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
     ],
     thumbnailImage: addProjectThumbnail(
       ProjectDatabaseKeys.HandWrittenDigitClassifier
@@ -1438,10 +1264,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Matplotlib,
       SkillDatabaseKeys.Seaborn,
 
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Poetry,
-
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.DeepLearning,
@@ -1451,8 +1273,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Personal,
@@ -1474,10 +1294,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Matplotlib,
       SkillDatabaseKeys.Seaborn,
 
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Poetry,
-
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.Mathematics,
@@ -1487,8 +1303,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Personal,
@@ -1509,9 +1323,6 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [ModuleDatabaseKeys.KCL_MachineLearning],
     skills: [
       SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Poetry,
 
       SkillDatabaseKeys.LinearAlgebra,
       SkillDatabaseKeys.Probability,
@@ -1527,8 +1338,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
     ],
     thumbnailImage: addProjectThumbnail(
       ProjectDatabaseKeys.CustomNeuralNetworkCoursework
@@ -1552,10 +1361,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Keras,
       SkillDatabaseKeys.TensorFlow,
 
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Poetry,
-
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.ComputerVision,
@@ -1568,8 +1373,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
     ],
     archived: true,
     relatedMaterials: [CertificateDatabaseKeys.UdemyMachineLearningAtoZ],
@@ -1593,10 +1396,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Matplotlib,
       SkillDatabaseKeys.PyTorch,
 
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Poetry,
-
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.ReinforcementLearning,
@@ -1609,8 +1408,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
     ],
     archived: true,
     relatedMaterials: [CertificateDatabaseKeys.UdemyArtificialIntelligenceAtoZ],
@@ -1631,9 +1428,6 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Academic,
     skills: [
       SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Poetry,
 
       SkillDatabaseKeys.LinearAlgebra,
       SkillDatabaseKeys.Probability,
@@ -1650,8 +1444,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
     ],
     relatedMaterials: [ModuleDatabaseKeys.KCL_MachineLearning],
     thumbnailImage: addProjectThumbnail(
@@ -1671,9 +1463,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.NumPy,
       SkillDatabaseKeys.Matplotlib,
 
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.Mathematics,
@@ -1683,8 +1472,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
@@ -1707,9 +1494,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.NumPy,
       SkillDatabaseKeys.Matplotlib,
 
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.Mathematics,
@@ -1719,8 +1503,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Academic,
@@ -1742,9 +1524,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.NumPy,
       SkillDatabaseKeys.Matplotlib,
 
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.Mathematics,
@@ -1754,8 +1533,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
@@ -1778,9 +1555,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.NumPy,
       SkillDatabaseKeys.Matplotlib,
 
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.DeepLearning,
@@ -1791,8 +1565,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
@@ -1813,19 +1585,14 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.NumPy,
       SkillDatabaseKeys.Matplotlib,
 
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-
       SkillDatabaseKeys.Probability,
       SkillDatabaseKeys.ProjectManagement,
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
 
       SkillDatabaseKeys.ArtificialIntelligence,
 
-      SkillDatabaseKeys.Algorithms,
       SkillDatabaseKeys.Mathematics,
       SkillDatabaseKeys.Algebra,
       SkillDatabaseKeys.Calculus,
@@ -1857,11 +1624,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Keras,
       SkillDatabaseKeys.TensorFlow,
 
-      SkillDatabaseKeys.OpenAI,
-
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-
       SkillDatabaseKeys.Mathematics,
       SkillDatabaseKeys.LinearAlgebra,
       SkillDatabaseKeys.Probability,
@@ -1871,8 +1633,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
     ],
     archived: true,
     relatedMaterials: [
@@ -1893,8 +1653,6 @@ const projectMap: Database<ProjectInterface> = {
     repositoryURL: "https://github.com/mbeps/pacman-assignment",
     skills: [
       SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
 
       SkillDatabaseKeys.IntelligentAgents,
       SkillDatabaseKeys.ArtificialIntelligence,
@@ -1907,8 +1665,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Academic,
@@ -1929,8 +1685,6 @@ const projectMap: Database<ProjectInterface> = {
     repositoryURL: "https://github.com/mbeps/computer-vision-assignment",
     skills: [
       SkillDatabaseKeys.Matlab,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
 
       SkillDatabaseKeys.IntelligentAgents,
       SkillDatabaseKeys.ArtificialIntelligence,
@@ -1944,8 +1698,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Academic,
@@ -1964,8 +1716,6 @@ const projectMap: Database<ProjectInterface> = {
     repositoryURL: "https://github.com/mbeps/computer-vision-quiz-assignment",
     skills: [
       SkillDatabaseKeys.Matlab,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
 
       SkillDatabaseKeys.IntelligentAgents,
       SkillDatabaseKeys.ArtificialIntelligence,
@@ -1979,8 +1729,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Academic,
@@ -2002,9 +1750,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.SpringBoot,
       SkillDatabaseKeys.REST,
       SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.BitBucket,
-      SkillDatabaseKeys.Gradle,
       SkillDatabaseKeys.GCP,
 
       SkillDatabaseKeys.ProblemSolving,
@@ -2041,9 +1786,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.JUnit,
       SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.BitBucket,
-      SkillDatabaseKeys.Gradle,
       SkillDatabaseKeys.GCP,
 
       SkillDatabaseKeys.ProblemSolving,
@@ -2076,9 +1818,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.SpringBoot,
       SkillDatabaseKeys.SpringDataLDAP,
       SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.BitBucket,
-      SkillDatabaseKeys.Gradle,
       SkillDatabaseKeys.JUnit,
       SkillDatabaseKeys.Mockito,
 
@@ -2116,10 +1855,8 @@ const projectMap: Database<ProjectInterface> = {
     repositoryURL: `https://github.com/mbeps/Calculator-Assignment`,
     skills: [
       SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.Maven,
+
       SkillDatabaseKeys.JUnit,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -2164,8 +1901,6 @@ const projectMap: Database<ProjectInterface> = {
     skills: [
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.PostgreSQL,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -2192,11 +1927,8 @@ const projectMap: Database<ProjectInterface> = {
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.PyTest,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
       SkillDatabaseKeys.GitHubActions,
 
-      SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
       SkillDatabaseKeys.CriticalThinking,
@@ -2220,18 +1952,11 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Matplotlib,
       SkillDatabaseKeys.NumPy,
 
-      SkillDatabaseKeys.Poetry,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-
-      SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
     ],
     repositoryURL: "https://github.com/mbeps/algorithms",
     archived: true,
@@ -2254,8 +1979,6 @@ const projectMap: Database<ProjectInterface> = {
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.SimpleGUI,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -2280,10 +2003,7 @@ const projectMap: Database<ProjectInterface> = {
       `,
     skills: [
       SkillDatabaseKeys.ShellScript,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
 
-      SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
       SkillDatabaseKeys.CriticalThinking,
@@ -2304,10 +2024,6 @@ const projectMap: Database<ProjectInterface> = {
     skills: [
       SkillDatabaseKeys.Python,
 
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.BitBucket,
-
-      SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
       SkillDatabaseKeys.CriticalThinking,
@@ -2326,10 +2042,7 @@ const projectMap: Database<ProjectInterface> = {
         `,
     skills: [
       SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.BitBucket,
 
-      SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
       SkillDatabaseKeys.CriticalThinking,
@@ -2349,10 +2062,7 @@ const projectMap: Database<ProjectInterface> = {
         `,
     skills: [
       SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.BitBucket,
 
-      SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
       SkillDatabaseKeys.CriticalThinking,

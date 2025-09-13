@@ -34,10 +34,6 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.Keras,
       SkillDatabaseKeys.TensorFlow,
 
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Poetry,
-
       SkillDatabaseKeys.ComputerVision,
       SkillDatabaseKeys.Mathematics,
       SkillDatabaseKeys.LinearAlgebra,
@@ -48,8 +44,6 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
     ],
     relatedMaterials: [ProjectDatabaseKeys.MachineLearningAlgorithms],
     description: `
@@ -103,10 +97,6 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.Matplotlib,
       SkillDatabaseKeys.PyTorch,
 
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
-      SkillDatabaseKeys.Poetry,
-
       SkillDatabaseKeys.ComputerVision,
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
@@ -121,8 +111,6 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.Creativity,
       SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
     ],
     relatedMaterials: [
       ProjectDatabaseKeys.ArtificialIntelligenceReinforcementLearning,
@@ -227,11 +215,6 @@ const certificateMap: Database<CertificateInterface> = {
 
         SkillDatabaseKeys.ApacheSpark,
         SkillDatabaseKeys.MLLib,
-        SkillDatabaseKeys.OpenAI,
-
-        SkillDatabaseKeys.Git,
-        SkillDatabaseKeys.GitHub,
-        SkillDatabaseKeys.Poetry,
 
         SkillDatabaseKeys.ComputerVision,
         SkillDatabaseKeys.Mathematics,
@@ -243,8 +226,6 @@ const certificateMap: Database<CertificateInterface> = {
         SkillDatabaseKeys.CriticalThinking,
         SkillDatabaseKeys.Creativity,
         SkillDatabaseKeys.Adaptability,
-        SkillDatabaseKeys.ObjectOrientedProgramming,
-        SkillDatabaseKeys.Algorithms,
       ],
       description: `
         This course covers the basics of Python and data analysis, including visualization and statistical methods. It teaches machine learning techniques such as regression, clustering, classification, and deep learning with practical applications. You will also learn about using advanced tools like Spark, Transformers, and OpenAI APIs for real-world data processing and model deployment.`,
@@ -258,7 +239,6 @@ const certificateMap: Database<CertificateInterface> = {
       "https://www.linkedin.com/learning/certificates/964c3b1a049a60afa6bcbb55179e326c7e5cea11db0db7b8d3390be8fc5925e1",
     skills: [
       SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.Algorithms,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
@@ -283,7 +263,6 @@ const certificateMap: Database<CertificateInterface> = {
       "https://www.linkedin.com/learning/certificates/50182c40b257c756e5d8aea70a9f69f14566da4d3cae7dab86f236554cc7238e",
     skills: [
       SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.DataVisualisation,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
@@ -463,7 +442,6 @@ const certificateMap: Database<CertificateInterface> = {
         "https://www.linkedin.com/learning/certificates/ec6ac0178fb92ba75dd38a95ae48316efb6f4e0e9abcb6bf5431b48021ff8441",
       skills: [
         SkillDatabaseKeys.LinearAlgebra,
-        SkillDatabaseKeys.Algorithms,
         SkillDatabaseKeys.RelationalDatabases,
         SkillDatabaseKeys.Databases,
         SkillDatabaseKeys.ProblemSolving,
@@ -494,7 +472,6 @@ const certificateMap: Database<CertificateInterface> = {
         "https://www.linkedin.com/learning/certificates/b7334fe5b4d04bef6dab5d2ed69080e9ffc590475eba2057046b6ca4a6cf2fba",
       skills: [
         SkillDatabaseKeys.ProblemSolving,
-        SkillDatabaseKeys.Algorithms,
         SkillDatabaseKeys.ProblemSolving,
         SkillDatabaseKeys.CriticalThinking,
         SkillDatabaseKeys.Mathematics,
@@ -543,7 +520,6 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.udemy.com/certificate/UC-0d6bad64-17f2-4f85-a86b-450e0ce72ffa/",
     skills: [
-      SkillDatabaseKeys.NPM,
       SkillDatabaseKeys.ReactJS,
       SkillDatabaseKeys.ExpressJS,
       SkillDatabaseKeys.MongoDB,
@@ -1151,7 +1127,6 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.Terraform,
       SkillDatabaseKeys.InfrastructureAsCode,
       SkillDatabaseKeys.Automation,
-      SkillDatabaseKeys.VersionControlSystems,
       SkillDatabaseKeys.AWS,
       SkillDatabaseKeys.AWS_CloudWatch,
       SkillDatabaseKeys.AWS_ApplicationLoadBalancer,
@@ -1169,7 +1144,6 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.DevOps,
       SkillDatabaseKeys.ContinuousIntegration,
       SkillDatabaseKeys.ContinuousDeployment,
-      SkillDatabaseKeys.Git,
       SkillDatabaseKeys.ContinuousDelivery,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
@@ -1305,8 +1279,6 @@ const certificateMap: Database<CertificateInterface> = {
       "https://www.linkedin.com/learning/certificates/679b3ba787209cd0d81d1d68e4bfc01e23ae14f9f2bdfa4e85f917025a8e732b",
     skills: [
       SkillDatabaseKeys.DevOps,
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
       SkillDatabaseKeys.GitHubActions,
       SkillDatabaseKeys.ContinuousIntegration,
       SkillDatabaseKeys.ContinuousDeployment,
@@ -1332,7 +1304,6 @@ const certificateMap: Database<CertificateInterface> = {
       certificateURL:
         "https://www.linkedin.com/learning/certificates/a46589fd9baa43c2c77d7de14e3830cf85648f1a6d5d7a489096d4e1b2a4d279",
       skills: [
-        SkillDatabaseKeys.GitHub,
         SkillDatabaseKeys.GitHubActions,
         SkillDatabaseKeys.DevOps,
         SkillDatabaseKeys.ContinuousIntegration,
@@ -1393,7 +1364,6 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.linkedin.com/learning/certificates/0344b0df296833ba35ddabf20563556bc67ee7ed0b83b55e19021443d1b9e496",
     skills: [
-      SkillDatabaseKeys.GitHub,
       SkillDatabaseKeys.GitHubActions,
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.ContinuousIntegration,
@@ -1434,7 +1404,6 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.linkedin.com/learning/certificates/ad4d86c0701098c35103dbac08143317758a73d23a01ff729ac668a6122e2555",
     skills: [
-      SkillDatabaseKeys.GitHub,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.InfrastructureAsCode,
@@ -1469,7 +1438,6 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.linkedin.com/learning/certificates/d8b18aabca615328a553a9e89cae98917a956c87e3498749edbef3cf50e25f0b",
     skills: [
-      SkillDatabaseKeys.GitHub,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.InfrastructureAsCode,
@@ -1501,7 +1469,6 @@ const certificateMap: Database<CertificateInterface> = {
       certificateURL:
         "https://www.linkedin.com/learning/certificates/1d8280be68ca069d4bb66ad5618118079be897473794a7812ae940146672801c",
       skills: [
-        SkillDatabaseKeys.GitLab,
         SkillDatabaseKeys.GitLabCI,
         SkillDatabaseKeys.ContinuousIntegration,
         SkillDatabaseKeys.ContinuousDeployment,
@@ -1637,9 +1604,6 @@ const certificateMap: Database<CertificateInterface> = {
       "https://www.udemy.com/certificate/UC-a3c47af2-7eb8-4f5b-8309-08559c519d5a/",
     skills: [
       SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
@@ -1669,9 +1633,6 @@ const certificateMap: Database<CertificateInterface> = {
       "https://www.linkedin.com/learning/certificates/c235083fcf3a5aadda62a3aac5f1846098135e9058d9c5c72073ef88891b0395",
     skills: [
       SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
@@ -1700,9 +1661,6 @@ const certificateMap: Database<CertificateInterface> = {
       "https://www.linkedin.com/learning/certificates/3df6c589b5151377ce45f231cfacf8ca04a02875fa88996a8831c1c9b70c527a",
     skills: [
       SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
@@ -1730,9 +1688,6 @@ const certificateMap: Database<CertificateInterface> = {
       "https://www.linkedin.com/learning/certificates/71bbbecbbc9b1489e357c3a2091860ae5b02b3ff0e415ce5748b8746d990b8dd",
     skills: [
       SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
@@ -1757,9 +1712,6 @@ const certificateMap: Database<CertificateInterface> = {
       "https://www.udemy.com/certificate/UC-a14123c1-1def-4710-8836-7c05bfaa2fc7/",
     skills: [
       SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.Spring,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
@@ -1788,9 +1740,6 @@ const certificateMap: Database<CertificateInterface> = {
       "https://www.linkedin.com/learning/certificates/77ad2602bbb22e29478a06792cd4bd0a91dda794cca7b2bbe4e333c193770a22",
     skills: [
       SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
@@ -1813,9 +1762,6 @@ const certificateMap: Database<CertificateInterface> = {
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
@@ -1841,9 +1787,6 @@ const certificateMap: Database<CertificateInterface> = {
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
@@ -1877,9 +1820,6 @@ const certificateMap: Database<CertificateInterface> = {
       "https://www.linkedin.com/learning/certificates/ade3217d7cef3023f22c8ee034eff28705b7dbfd3981d8377c9b5f61ff39ea51",
     skills: [
       SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
       SkillDatabaseKeys.ProblemSolving,
@@ -1905,9 +1845,6 @@ const certificateMap: Database<CertificateInterface> = {
         "https://www.linkedin.com/learning/certificates/6f9d825cfa8c3256611a521ec35fe62abd9b7f75636536b59656dcfd57708cf6",
       skills: [
         SkillDatabaseKeys.JavaScript,
-        SkillDatabaseKeys.ObjectOrientedProgramming,
-        SkillDatabaseKeys.Algorithms,
-        SkillDatabaseKeys.DataStructures,
         SkillDatabaseKeys.ProblemSolving,
         SkillDatabaseKeys.CriticalThinking,
       ],
@@ -1932,9 +1869,6 @@ const certificateMap: Database<CertificateInterface> = {
       "https://www.udemy.com/certificate/UC-cf6c70b6-c34c-4400-b8f8-b9a7abc9f18a/",
     skills: [
       SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.DataStructures,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
@@ -1965,9 +1899,6 @@ const certificateMap: Database<CertificateInterface> = {
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
@@ -2041,8 +1972,6 @@ const certificateMap: Database<CertificateInterface> = {
       "https://www.linkedin.com/learning/certificates/7c14e4c16f72a10046c3d66838e5dd3589fa40ac6cbf6509b235ea6452f430c8",
     skills: [
       SkillDatabaseKeys.Groovy,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
-      SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
@@ -2074,8 +2003,6 @@ const certificateMap: Database<CertificateInterface> = {
       "https://www.udemy.com/certificate/UC-89a14f96-da7f-466c-ad08-20a8f2ae63a1/",
     skills: [
       SkillDatabaseKeys.Scala,
-      SkillDatabaseKeys.FunctionalProgramming,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
@@ -2129,9 +2056,7 @@ const certificateMap: Database<CertificateInterface> = {
       "https://www.linkedin.com/learning/certificates/6afc37d98889e1ed209d677fd7928ece257125ca8d538ed6b0fa0ed18e4e30d6",
     skills: [
       SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.Poetry,
       SkillDatabaseKeys.PyTest,
-      SkillDatabaseKeys.GitHub,
       SkillDatabaseKeys.GitHubActions,
       SkillDatabaseKeys.ContinuousIntegration,
       SkillDatabaseKeys.ContinuousDeployment,
@@ -2159,7 +2084,7 @@ const certificateMap: Database<CertificateInterface> = {
       "https://www.linkedin.com/learning/certificates/551778db5ecef81f732b9e48d50db3fe709f877f1ac9c834923b0c96bb636e72",
     skills: [
       SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.Maven,
+
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
       SkillDatabaseKeys.ProjectManagement,
@@ -2183,7 +2108,6 @@ const certificateMap: Database<CertificateInterface> = {
       "https://www.linkedin.com/learning/certificates/1fcbb76a7feb53dc0b8585896de025b31799feeb7819544ba6e6ebf454ef6769",
     skills: [
       SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.Gradle,
       SkillDatabaseKeys.JUnit,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
@@ -2213,8 +2137,7 @@ const certificateMap: Database<CertificateInterface> = {
         "https://www.linkedin.com/learning/certificates/8c9027d06b51638e29fcac4c109275401f5202a046eb80de8f65fcc20c9c733b",
       skills: [
         SkillDatabaseKeys.Java,
-        SkillDatabaseKeys.Gradle,
-        SkillDatabaseKeys.Maven,
+
         SkillDatabaseKeys.ProblemSolving,
         SkillDatabaseKeys.CriticalThinking,
         SkillDatabaseKeys.ProjectManagement,
@@ -2269,8 +2192,6 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.udemy.com/certificate/UC-ba00c0c9-221d-4939-99b4-90244570a81b/",
     skills: [
-      SkillDatabaseKeys.Git,
-      SkillDatabaseKeys.GitHub,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
@@ -2303,7 +2224,6 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.linkedin.com/learning/certificates/f14a53c061bc271d233daeb5f46d5441dc2e86f386420c0fbd846291a5cccaf8",
     skills: [
-      SkillDatabaseKeys.ObjectOrientedProgramming,
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.JavaScript,
@@ -2339,10 +2259,7 @@ const certificateMap: Database<CertificateInterface> = {
     skills: [
       SkillDatabaseKeys.Databases,
       SkillDatabaseKeys.DatabaseManagementSystems,
-      SkillDatabaseKeys.ObjectOrientedProgramming,
       SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.DataStructures,
 
       SkillDatabaseKeys.Testing,
       SkillDatabaseKeys.ProblemSolving,
@@ -2404,9 +2321,6 @@ const certificateMap: Database<CertificateInterface> = {
         "https://www.linkedin.com/learning/certificates/53e2a4e2313cb8c190ba310b04933611ea792de252614d9846c7fd2963ae300b",
       skills: [
         SkillDatabaseKeys.Python,
-        SkillDatabaseKeys.Algorithms,
-        SkillDatabaseKeys.DataStructures,
-        SkillDatabaseKeys.ObjectOrientedProgramming,
         SkillDatabaseKeys.Testing,
         SkillDatabaseKeys.ProblemSolving,
         SkillDatabaseKeys.CriticalThinking,
@@ -2446,8 +2360,6 @@ const certificateMap: Database<CertificateInterface> = {
       certificateURL:
         "https://www.linkedin.com/learning/certificates/190a56bee558ac47ecc390563ebb20e4eebaccc00a1f1a7180dec108e371985d",
       skills: [
-        SkillDatabaseKeys.ObjectOrientedProgramming,
-
         SkillDatabaseKeys.Testing,
         SkillDatabaseKeys.ProblemSolving,
         SkillDatabaseKeys.CriticalThinking,
@@ -2486,8 +2398,6 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.linkedin.com/learning/certificates/664e3f8841cfa46b854e98b98f27b306b26657ae2b05839700edd376fcd65d9b",
     skills: [
-      SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
@@ -2522,8 +2432,6 @@ const certificateMap: Database<CertificateInterface> = {
       "https://www.linkedin.com/learning/certificates/fd7a3bce3b7829c061da04bfa8420b534c91c5b6b35955ec536895721202a457",
     skills: [
       SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.DataStructures,
-      SkillDatabaseKeys.Algorithms,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
@@ -2987,10 +2895,7 @@ const certificateMap: Database<CertificateInterface> = {
       certificateURL:
         "https://www.udemy.com/certificate/UC-74fdc19f-c016-43c5-8b2a-3cb30941205d/",
       skills: [
-        SkillDatabaseKeys.Algorithms,
-        SkillDatabaseKeys.DataStructures,
         SkillDatabaseKeys.Python,
-        SkillDatabaseKeys.ObjectOrientedProgramming,
         SkillDatabaseKeys.Mathematics,
         SkillDatabaseKeys.ProblemSolving,
         SkillDatabaseKeys.CriticalThinking,
@@ -3050,8 +2955,6 @@ const certificateMap: Database<CertificateInterface> = {
     skills: [
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
@@ -3100,8 +3003,6 @@ const certificateMap: Database<CertificateInterface> = {
   `,
     skills: [
       SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
@@ -3117,8 +3018,6 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.linkedin.com/learning/certificates/e31b0a7d9243f44e8a528fc2d184cd4a3bfbdc789c899c3a9ee47ee511e51fd7",
     skills: [
-      SkillDatabaseKeys.Algorithms,
-      SkillDatabaseKeys.DataStructures,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
@@ -3145,8 +3044,6 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.linkedin.com/learning/certificates/c5c41ea1aa52982d08705831612aba2e93e69a64e35dd2cce11c28fad12b59f7",
     skills: [
-      SkillDatabaseKeys.DataStructures,
-      SkillDatabaseKeys.Algorithms,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
@@ -3619,7 +3516,6 @@ const certificateMap: Database<CertificateInterface> = {
       "https://www.credly.com/badges/d87290c2-7db7-45c2-89e2-ebd2c41e8b85",
     skills: [
       SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.Poetry,
       SkillDatabaseKeys.REST,
       SkillDatabaseKeys.Symphony,
       SkillDatabaseKeys.Automation,

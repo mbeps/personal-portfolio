@@ -4,15 +4,10 @@ import filterCategoriesFromSkills from "@/actions/skills/filter/filterCategories
 import TechnologiesModal from "@/components/Modal/TechnologiesModal";
 import SkillTag from "@/components/Tags/SkillTag";
 import HeadingThree from "@/components/Text/HeadingThree";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/shadcn/ui/tooltip";
-import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
-import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 import SkillInterface from "@/database/Skills/SkillInterface";
+import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
 
 /**
  * Displays a list of skills that I have.
@@ -40,14 +35,13 @@ const TechnologiesSection: React.FC = () => {
    */
   const ignoredCategories: SkillCategoriesEnum[] = [
     SkillCategoriesEnum.ProgrammingLanguages,
-    SkillCategoriesEnum.ProjectManagers,
-    SkillCategoriesEnum.DatabaseManagement,
-    SkillCategoriesEnum.VersionControl,
     SkillCategoriesEnum.Mathematics,
     SkillCategoriesEnum.CloudComputing,
     SkillCategoriesEnum.Automation,
     SkillCategoriesEnum.Testing,
     SkillCategoriesEnum.CommunicationProtocolsLibraries,
+    SkillCategoriesEnum.DevOps,
+    SkillCategoriesEnum.GameDevelopment,
     SkillCategoriesEnum.SoftSkills,
   ];
 
@@ -110,18 +104,35 @@ const TechnologiesSection: React.FC = () => {
   }
 
   function handleDisplaySkills(): SkillDatabaseKeys[] {
-    return firstNSkills(firstNSkillsPerCategory(skillsToDisplay, 5), 20);
+    return firstNSkills(firstNSkillsPerCategory(skillsToDisplay, 5), 19);
   }
+
+  const manualSkillsList: SkillDatabaseKeys[] = [
+    SkillDatabaseKeys.PyTorch,
+    SkillDatabaseKeys.TensorFlow,
+    SkillDatabaseKeys.ScikitLearn,
+    SkillDatabaseKeys.NextJS,
+    SkillDatabaseKeys.ReactJS,
+    SkillDatabaseKeys.Flask,
+    SkillDatabaseKeys.Django,
+    SkillDatabaseKeys.SpringBoot,
+    SkillDatabaseKeys.Firebase,
+    SkillDatabaseKeys.Supabase,
+    SkillDatabaseKeys.ClerkAuth,
+    SkillDatabaseKeys.AuthJs,
+    SkillDatabaseKeys.MongoDB,
+    SkillDatabaseKeys.PostgreSQL,
+    SkillDatabaseKeys.MySQL,
+    SkillDatabaseKeys.Docker,
+  ];
 
   return (
     <>
       <HeadingThree title="Technologies" />
       <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start -mt-2">
-        {handleDisplaySkills().map(
-          (skillSlug: SkillDatabaseKeys, idx: number) => (
-            <SkillTag key={idx} skillKey={skillSlug} />
-          )
-        )}
+        {manualSkillsList.map((skillSlug: SkillDatabaseKeys, idx: number) => (
+          <SkillTag key={idx} skillKey={skillSlug} />
+        ))}
 
         <div className="relative group">
           {/* Tag that opens skills modal */}
