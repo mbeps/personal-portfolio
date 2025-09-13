@@ -74,7 +74,7 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
             className="
               text-2xl md:text-2xl font-bold
               data-[state=inactive]:text-neutral-400 dark:data-[state=inactive]:text-neutral-600
-              data-[state=active]:shadow-none data-[state=active]:bg-transparent
+              data-[state=active]:shadow-none data-[state=active]:bg-transparent dark:data-[state=active]:bg-transparent 
               transition-all duration-500
               "
           >
