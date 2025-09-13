@@ -2,11 +2,12 @@
   "name": "personal-portfolio",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
-    "build-start": "next build --turbopack && next start",
+    "build-start": "next build && next start",
     "lint": "next lint",
     "docker:compose": "docker-compose -f docker/docker-compose.yml up --build"
   },

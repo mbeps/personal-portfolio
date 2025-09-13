@@ -34,3 +34,12 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 TODO.txt
+
+# PWA service worker (generated automatically)
+public/sw.js
+public/sw.js.map
+public/workbox-*.js
+public/workbox-*.js.map
+
+# Serwist cache
+.serwist/
