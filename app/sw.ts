@@ -1,5 +1,5 @@
 import type { PrecacheEntry, SerwistGlobalConfig } from "serwist";
-import { Serwist } from "serwist";
+import { Serwist, NetworkFirst, CacheFirst } from "serwist";
 
 // This declares the value of `injectionPoint` to TypeScript.
 declare global {
@@ -17,8 +17,58 @@ const serwist = new Serwist({
   skipWaiting: true,
   // Take control of all open clients immediately
   clientsClaim: true,
-  // Enable navigation preload for faster page loads
-  navigationPreload: true,
+  // Disable navigation preload to avoid issues
+  navigationPreload: false,
+
+  // Add runtime caching for better offline support
+  runtimeCaching: [
+    {
+      // Cache pages with Network First strategy
+      matcher: ({ request }) => request.destination === "document",
+      handler: new NetworkFirst({
+        cacheName: "pages",
+        networkTimeoutSeconds: 3,
+        plugins: [
+          {
+            cacheWillUpdate: async ({ response }) => {
+              return response?.status === 200 ? response : null;
+            },
+          },
+        ],
+      }),
+    },
+    {
+      // Cache static assets
+      matcher: ({ request }) =>
+        request.destination === "script" ||
+        request.destination === "style" ||
+        request.destination === "font",
+      handler: new CacheFirst({
+        cacheName: "static-resources",
+        plugins: [
+          {
+            cacheWillUpdate: async ({ response }) => {
+              return response?.status === 200 ? response : null;
+            },
+          },
+        ],
+      }),
+    },
+    {
+      // Cache images
+      matcher: ({ request }) => request.destination === "image",
+      handler: new CacheFirst({
+        cacheName: "images",
+        plugins: [
+          {
+            cacheWillUpdate: async ({ response }) => {
+              return response?.status === 200 ? response : null;
+            },
+          },
+        ],
+      }),
+    },
+  ],
 });
 
 serwist.addEventListeners();
