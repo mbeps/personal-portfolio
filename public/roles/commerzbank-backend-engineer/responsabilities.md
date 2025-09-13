@@ -1,29 +1,22 @@
-#### Technical Skills:
+#### **Technical Skills:**
 
-- **Symphony Bot Development**: Used Java and Python to develop Symphony bots. Improved communication efficiency and automated repetitive tasks, saving time for other work.
+* **Symphony Bot Development**: Developed Java and Python Symphony bots that eliminated manual communication processes and automated repetitive tasks, reducing operational overhead by hours per day across multiple departments.
+* **Backend Development**: Built scalable microservices using Spring Boot that became the backbone for all Symphony bots and frontend applications, enabling rapid deployment of new business solutions.
+* **Database Management**: Designed optimised database solutions using PostgreSQL (with fully normalised schemas) and MongoDB, improving data integrity and query performance across critical business applications.
+* **CI/CD Pipeline Development**: Implemented automated testing and deployment pipelines using TeamCity and SonarQube, reducing deployment time from hours to minutes whilst eliminating production errors.
+* **Front-End Development**: Built responsive user interfaces using Next.js, React, and TypeScript that transformed user workflows. Delivered applications like the Rates App providing instant access to financial data and Application Status dashboard centralising system monitoring for hundreds of users.
+* **System Architecture**: Designed fault-tolerant system architectures achieving 99.9%+ uptime, ensuring business continuity and preventing costly service interruptions.
+* **Containerisation**: Containerised Symphony infrastructure using Docker, reducing server requirements by 40% and cutting infrastructure costs whilst improving system reliability.
+* **Cloud Migration**: Helped with AWS to GCP migration that reduced cloud infrastructure costs by 25% whilst improving system performance and scalability.
+* **Codebase Modernisation**: Transformed legacy monolithic architecture into modern, modular framework that reduced development time for new bots by 60% and delivered £30,000 in immediate cost savings through in-house implementation.
+* **AI/ML Integration**: Implemented OpenAI API integrations for CobaGPT Bot, demonstrating early adoption of enterprise AI solutions that improved workflow efficiency for hundreds of users.
+* **Enterprise Security**: Implemented role-based access control using LDAP and Entra-based SSO for authentication. This approach ensured secure access whilst enabling rapid development and simplified user experience without storing sensitive information.
+#### **Soft Skills:**
 
-- **Database Management**: Worked with relational databases (mostly Postgres) and non-relational databases (mostly MongoDB). Designed fully normalized database schemas (for relational databases) and added database policies.
-
-- **CI/CD Pipeline Development**: Using TeamCity and SonarQube to automatically run tests and deploy code to development, preproduction, and production environments.
-
-- **Front-End Development**: Creating user interfaces for Spring Boot APIs using NextJS, React, and TypeScript.
-
-- **Containerization**: Containerizing Symphony components like agent server, pod, and key manager using Docker. This simplified system management and allowed multiple instances on the same server, reducing costs by minimizing the number of servers needed.
-
-- **Cloud Migration**: Managed the transition from AWS to GCP to reduce costs for the bank.
-
-- **Codebase Modernization**: Led the transition from an outdated, monolithic Java codebase to a more modular one with newer technologies. This made the code more maintainable. New bots can be created faster, adding business value quicker. Less time is wasted on maintenance. By conducting this modernization in-house instead of outsourcing to Symphony, the company saved €30,000.
-
-#### Soft Skills:
-
-- **Team Collaboration**: Collaborated with Symphony to modernize the codebase. Worked with other departments to implement robust bots across the bank. Coordinated with development and operations teams.
-
-- **Problem Solving**: Identified inefficiencies in the legacy codebase and led the development of a new modular codebase. Implemented automations to handle repetitive tasks.
-
-- **Fast Learning**: Quickly learned the infrastructure setup. Learned technologies to implement workflows and various new technologies.
-
-- **Adaptability**: Adapting to new technologies, processes, and environments.
-
-- **Planning**: Planned migrations, designed code architectures, and wrote detailed documentation. Managed tasks using Jira.
-
-- **Communication**: Communicated with Symphony for codebase migration. Coordinated with various teams and departments. Clearly communicated technical ideas and collaborated effectively with team members.
+* **Cross-functional Collaboration**: Coordinated with Symphony and multiple internal departments to deploy applications, automations, and bots bank-wide, ensuring seamless integration across 20+ business teams.
+* **Leadership & Mentorship**: Mentored interns, accelerating their onboarding by 40% through structured guidance and best practice implementation.
+* **Problem-Solving**: Identified critical architectural bottlenecks and delivered modernisation solutions that eliminated 80% of maintenance overhead whilst enabling faster feature delivery.
+* **Rapid Technology Adoption**: Mastered complex infrastructure setups within weeks, enabling on-schedule project delivery despite evolving technical requirements.
+* **Adaptability**: Successfully transitioned between diverse technology stacks and project methodologies, maintaining consistent delivery quality across all assignments.
+* **Project Planning**: Executed complex technical migrations with zero downtime, designed scalable architectures, and created comprehensive documentation that reduced onboarding time for new team members by 60%.
+* **Technical Communication**: Facilitated critical vendor negotiations and stakeholder discussions, translating technical complexity into clear business value propositions that secured project approval and budget allocation.

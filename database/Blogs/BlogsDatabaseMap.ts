@@ -20,7 +20,6 @@ const blogsMap: Database<BlogInterface> = {
     category: BlogCategoriesEnum.ArtificialIntelligence,
     skills: [
       SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.Algorithms,
       SkillDatabaseKeys.DataScience,
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.NeuralNetworks,
@@ -35,7 +34,6 @@ const blogsMap: Database<BlogInterface> = {
     category: BlogCategoriesEnum.ArtificialIntelligence,
     skills: [
       SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.Algorithms,
       SkillDatabaseKeys.DataScience,
       SkillDatabaseKeys.NeuralNetworks,
       SkillDatabaseKeys.ArtificialIntelligence,
@@ -51,7 +49,6 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.CloudComputing,
       SkillDatabaseKeys.Firebase,
       SkillDatabaseKeys.Supabase,
-      SkillDatabaseKeys.PocketBase,
     ],
     category: BlogCategoriesEnum.WebDevelopment,
   },

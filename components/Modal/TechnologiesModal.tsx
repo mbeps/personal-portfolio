@@ -66,9 +66,9 @@ const TechnologiesModal: React.FC = () => {
   const mainSkillsHashMap: Database<SkillInterface> = {};
 
   Object.entries(skillDatabaseMap).forEach(([key, skill]) => {
-    if (skill.isMainSkill) {
-      mainSkillsHashMap[key] = skill;
-    }
+    // if (skill.isMainSkill) {
+    mainSkillsHashMap[key] = skill;
+    // }
   });
 
   /**
@@ -79,8 +79,6 @@ const TechnologiesModal: React.FC = () => {
    * However, when the skills are grouped by category, the programming languages are displayed which is not needed.
    */
   const ignoredCategories: SkillCategoriesEnum[] = [
-    SkillCategoriesEnum.ProjectManagers,
-    SkillCategoriesEnum.VersionControl,
     SkillCategoriesEnum.CloudComputing,
     SkillCategoriesEnum.Testing,
     SkillCategoriesEnum.CommunicationProtocolsLibraries,

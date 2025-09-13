@@ -18,8 +18,6 @@ enum SkillDatabaseKeys {
   Scala = "scala",
   Groovy = "groovy",
   Kotlin = "kotlin",
-  ObjectOrientedProgramming = "oop",
-  FunctionalProgramming = "fp",
   Matlab = "matlab",
 
   //^ Artificial Intelligence, Machine Learning, and Data Science
@@ -31,7 +29,9 @@ enum SkillDatabaseKeys {
   Keras = "keras",
   TensorFlow = "tensorflow",
   PyTorch = "pytorch",
-  Jupyter = "jupyter",
+  Transformers = "transformers",
+  HuggingFace = "hugging-face",
+  LLMs = "large-language-models",
   ApacheSpark = "apache-spark",
   MLLib = "ml-lib",
   MachineLearning = "machine-learning",
@@ -43,6 +43,10 @@ enum SkillDatabaseKeys {
   DataVisualisation = "data-visualisation",
   NeuralNetworks = "neural-networks",
   ComputerVision = "computer-vision",
+  NaturalLanguageProcessing = "natural-language-processing",
+  FineTuning = "fine-tuning",
+  Benchmarking = "benchmarking",
+  Quantization = "quantization",
 
   //^ Full Stack Web Development
   NextJS = "next-js",
@@ -50,10 +54,9 @@ enum SkillDatabaseKeys {
   //^ Backend Web Development
   Firebase = "firebase",
   Supabase = "supabase",
-  PocketBase = "pocketbase",
   Auth0 = "auth0",
   ClerkAuth = "clerk-auth",
-  NextAuth = "next-auth",
+  AuthJs = "auth-js",
   Stripe = "stripe",
   ExpressJS = "express-js",
   Flask = "flask",
@@ -61,6 +64,7 @@ enum SkillDatabaseKeys {
   Spring = "spring",
   SpringBoot = "spring-boot",
   SpringDataLDAP = "spring-data-ldap",
+  SpringSecurity = "spring-security",
   Cloudinary = "cloudinary",
   EdgeStore = "edge-store",
   WebSockets = "web-sockets",
@@ -70,8 +74,6 @@ enum SkillDatabaseKeys {
   ReactJS = "react",
   Recoil = "recoil",
   Zustand = "zustand",
-  Jotai = "jotai",
-  Redux = "redux",
   TailwindCSS = "tailwind-css",
   HTML = "html",
   CSS = "css",
@@ -80,7 +82,6 @@ enum SkillDatabaseKeys {
   ShadcnUI = "shadcn-ui",
   RadixUI = "radix-ui",
   NextUI = "next-ui",
-  Bootstrap = "bootstrap",
   SimpleGUI = "simple-gui",
   Axios = "axios",
   UserCentricDesign = "user-centric-design",
@@ -137,15 +138,6 @@ enum SkillDatabaseKeys {
   GraphQL = "graphql-api",
   SocketIO = "socket-io",
   Pusher = "pusher",
-  OpenAI = "open-ai",
-  ReplicateAI = "replicate-ai",
-
-  //^ Version Control Systems
-  Git = "git",
-  GitHub = "github",
-  GitLab = "gitlab",
-  BitBucket = "bit-bucket",
-  VersionControlSystems = "version-control-systems",
 
   //^ Testing
   Jest = "jest",
@@ -153,19 +145,10 @@ enum SkillDatabaseKeys {
   PyTest = "pytest",
   UnitTest = "unittest",
   JUnit = "junit",
+  Mockito = "mockito",
   Cypress = "cypress",
   ReactTestingLibrary = "react-testing-library",
   Testing = "testing",
-
-  //^ Project and Dependency Management
-  NPM = "npm",
-  Yarn = "yarn",
-  PNPM = "pnpm",
-  Poetry = "poetry",
-  Pip = "pip",
-  Maven = "maven",
-  Gradle = "gradle",
-  NxJS = "nx-js",
 
   //^ Mathematics
   Probability = "probability",
@@ -213,10 +196,6 @@ enum SkillDatabaseKeys {
   GCP_CloudScheduler = "gcp-cloud-scheduler",
   GCP_Logging = "gcp-logging",
   CloudComputing = "cloud-computing",
-
-  //^ Algorithms & Data Structures
-  Algorithms = "algorithms",
-  DataStructures = "data-structures",
 
   //^ Others
   Symphony = "symphony",
