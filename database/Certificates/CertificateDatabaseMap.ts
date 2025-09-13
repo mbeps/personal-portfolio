@@ -33,7 +33,6 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.Seaborn,
       SkillDatabaseKeys.Keras,
       SkillDatabaseKeys.TensorFlow,
-      SkillDatabaseKeys.Jupyter,
 
       SkillDatabaseKeys.Git,
       SkillDatabaseKeys.GitHub,
@@ -103,7 +102,6 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.NumPy,
       SkillDatabaseKeys.Matplotlib,
       SkillDatabaseKeys.PyTorch,
-      SkillDatabaseKeys.Jupyter,
 
       SkillDatabaseKeys.Git,
       SkillDatabaseKeys.GitHub,
@@ -226,7 +224,7 @@ const certificateMap: Database<CertificateInterface> = {
         SkillDatabaseKeys.Seaborn,
         SkillDatabaseKeys.Keras,
         SkillDatabaseKeys.TensorFlow,
-        SkillDatabaseKeys.Jupyter,
+
         SkillDatabaseKeys.ApacheSpark,
         SkillDatabaseKeys.MLLib,
         SkillDatabaseKeys.OpenAI,

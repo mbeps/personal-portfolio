@@ -31,8 +31,15 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.NumPy,
       SkillDatabaseKeys.Matplotlib,
       SkillDatabaseKeys.Seaborn,
-      SkillDatabaseKeys.Jupyter,
+
       SkillDatabaseKeys.Keras,
+      SkillDatabaseKeys.Transformers,
+      SkillDatabaseKeys.HuggingFace,
+      SkillDatabaseKeys.LLMs,
+      SkillDatabaseKeys.NaturalLanguageProcessing,
+      SkillDatabaseKeys.FineTuning,
+      SkillDatabaseKeys.Benchmarking,
+      SkillDatabaseKeys.Quantization,
       SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.DeepLearning,
       SkillDatabaseKeys.ArtificialIntelligence,
@@ -50,7 +57,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
     category: SkillCategoriesEnum.ProgrammingLanguages,
     relatedSkills: [
       SkillDatabaseKeys.ClerkAuth,
-      SkillDatabaseKeys.NextAuth,
+      SkillDatabaseKeys.AuthJs,
       SkillDatabaseKeys.ExpressJS,
       SkillDatabaseKeys.NextJS,
       SkillDatabaseKeys.ReactJS,
@@ -73,7 +80,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
     category: SkillCategoriesEnum.ProgrammingLanguages,
     relatedSkills: [
       SkillDatabaseKeys.ClerkAuth,
-      SkillDatabaseKeys.NextAuth,
+      SkillDatabaseKeys.AuthJs,
       SkillDatabaseKeys.ExpressJS,
       SkillDatabaseKeys.NextJS,
       SkillDatabaseKeys.ReactJS,
@@ -216,7 +223,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.Keras]: {
     name: "Keras",
     category: SkillCategoriesEnum.ArtificialIntelligence,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.Python,
@@ -252,6 +258,13 @@ const skillDatabaseMap: Database<SkillInterface> = {
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.Transformers,
+      SkillDatabaseKeys.HuggingFace,
+      SkillDatabaseKeys.LLMs,
+      SkillDatabaseKeys.NaturalLanguageProcessing,
+      SkillDatabaseKeys.FineTuning,
+      SkillDatabaseKeys.Benchmarking,
+      SkillDatabaseKeys.Quantization,
       SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.DataScience,
       SkillDatabaseKeys.ArtificialIntelligence,
@@ -262,12 +275,47 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.DataScience,
     ],
   },
-  [SkillDatabaseKeys.Jupyter]: {
-    name: "Jupyter Notebooks",
+  [SkillDatabaseKeys.Transformers]: {
+    name: "Transformers",
     category: SkillCategoriesEnum.ArtificialIntelligence,
-    isMainSkill: true,
+    isMainSkill: false,
     skillType: SkillTypesEnum.Technology,
-    relatedSkills: [SkillDatabaseKeys.Python, SkillDatabaseKeys.DataScience],
+    relatedSkills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.HuggingFace,
+      SkillDatabaseKeys.PyTorch,
+      SkillDatabaseKeys.LLMs,
+      SkillDatabaseKeys.NaturalLanguageProcessing,
+      SkillDatabaseKeys.FineTuning,
+      SkillDatabaseKeys.Quantization,
+      SkillDatabaseKeys.Benchmarking,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.NeuralNetworks,
+    ],
+  },
+  [SkillDatabaseKeys.HuggingFace]: {
+    name: "Hugging Face",
+    category: SkillCategoriesEnum.ArtificialIntelligence,
+    isMainSkill: false,
+    skillType: SkillTypesEnum.Technology,
+    relatedSkills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.Transformers,
+      SkillDatabaseKeys.PyTorch,
+      SkillDatabaseKeys.LLMs,
+      SkillDatabaseKeys.NaturalLanguageProcessing,
+      SkillDatabaseKeys.FineTuning,
+      SkillDatabaseKeys.Quantization,
+      SkillDatabaseKeys.Benchmarking,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.NeuralNetworks,
+    ],
   },
   [SkillDatabaseKeys.ApacheSpark]: {
     name: "Apache Spark",
@@ -316,6 +364,111 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.ReinforcementLearning,
     ],
   },
+  [SkillDatabaseKeys.LLMs]: {
+    name: "Large Language Models (LLMs)",
+    category: SkillCategoriesEnum.ArtificialIntelligence,
+    isMainSkill: false,
+    skillType: SkillTypesEnum.Technical,
+    relatedSkills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.PyTorch,
+      SkillDatabaseKeys.Transformers,
+      SkillDatabaseKeys.HuggingFace,
+      SkillDatabaseKeys.NaturalLanguageProcessing,
+      SkillDatabaseKeys.FineTuning,
+      SkillDatabaseKeys.Quantization,
+      SkillDatabaseKeys.Benchmarking,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.NeuralNetworks,
+    ],
+  },
+  [SkillDatabaseKeys.NaturalLanguageProcessing]: {
+    name: "Natural Language Processing (NLP)",
+    category: SkillCategoriesEnum.ArtificialIntelligence,
+    isMainSkill: false,
+    skillType: SkillTypesEnum.Technical,
+    relatedSkills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.PyTorch,
+      SkillDatabaseKeys.Transformers,
+      SkillDatabaseKeys.HuggingFace,
+      SkillDatabaseKeys.LLMs,
+      SkillDatabaseKeys.FineTuning,
+      SkillDatabaseKeys.Quantization,
+      SkillDatabaseKeys.Benchmarking,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.NeuralNetworks,
+    ],
+  },
+  [SkillDatabaseKeys.FineTuning]: {
+    name: "Fine-Tuning",
+    category: SkillCategoriesEnum.ArtificialIntelligence,
+    isMainSkill: false,
+    skillType: SkillTypesEnum.Technical,
+    relatedSkills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.PyTorch,
+      SkillDatabaseKeys.Transformers,
+      SkillDatabaseKeys.HuggingFace,
+      SkillDatabaseKeys.LLMs,
+      SkillDatabaseKeys.NaturalLanguageProcessing,
+      SkillDatabaseKeys.Quantization,
+      SkillDatabaseKeys.Benchmarking,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.NeuralNetworks,
+    ],
+  },
+  [SkillDatabaseKeys.Benchmarking]: {
+    name: "Benchmarking",
+    category: SkillCategoriesEnum.ArtificialIntelligence,
+    isMainSkill: false,
+    skillType: SkillTypesEnum.Technical,
+    relatedSkills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.PyTorch,
+      SkillDatabaseKeys.Transformers,
+      SkillDatabaseKeys.HuggingFace,
+      SkillDatabaseKeys.LLMs,
+      SkillDatabaseKeys.NaturalLanguageProcessing,
+      SkillDatabaseKeys.FineTuning,
+      SkillDatabaseKeys.Quantization,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.NeuralNetworks,
+    ],
+  },
+  [SkillDatabaseKeys.Quantization]: {
+    name: "Quantization",
+    category: SkillCategoriesEnum.ArtificialIntelligence,
+    isMainSkill: false,
+    skillType: SkillTypesEnum.Technical,
+    relatedSkills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.PyTorch,
+      SkillDatabaseKeys.Transformers,
+      SkillDatabaseKeys.HuggingFace,
+      SkillDatabaseKeys.LLMs,
+      SkillDatabaseKeys.NaturalLanguageProcessing,
+      SkillDatabaseKeys.FineTuning,
+      SkillDatabaseKeys.Benchmarking,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.NeuralNetworks,
+    ],
+  },
 
   //^ Full Stack Web Development
   [SkillDatabaseKeys.NextJS]: {
@@ -329,7 +482,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
 
       SkillDatabaseKeys.UserCentricDesign,
       SkillDatabaseKeys.ReactJS,
-      SkillDatabaseKeys.NextAuth,
+      SkillDatabaseKeys.AuthJs,
     ],
   },
 
@@ -393,14 +546,16 @@ const skillDatabaseMap: Database<SkillInterface> = {
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [SkillDatabaseKeys.UserAuthentication],
   },
-  [SkillDatabaseKeys.NextAuth]: {
-    name: "NextAuth",
+  [SkillDatabaseKeys.AuthJs]: {
+    name: "Auth.JS",
     category: SkillCategoriesEnum.BackEndWebDevelopment,
     isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.NextJS,
+      SkillDatabaseKeys.ExpressJS,
       SkillDatabaseKeys.UserAuthentication,
     ],
   },
@@ -460,6 +615,18 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.SpringDataLDAP]: {
     name: "Spring Data LDAP",
+    category: SkillCategoriesEnum.BackEndWebDevelopment,
+    isMainSkill: false,
+    skillType: SkillTypesEnum.Technology,
+    relatedSkills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.Spring,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Symphony,
+    ],
+  },
+  [SkillDatabaseKeys.SpringSecurity]: {
+    name: "Spring Security",
     category: SkillCategoriesEnum.BackEndWebDevelopment,
     isMainSkill: false,
     skillType: SkillTypesEnum.Technology,
@@ -615,7 +782,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.Normalisation]: {
     name: "Normalisation",
     category: SkillCategoriesEnum.DatabaseManagement,
-    isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.DatabaseManagementSystems,
@@ -701,6 +867,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
 
   [SkillDatabaseKeys.Mongoose]: {
     name: "Mongoose",
+    isMainSkill: false,
     category: SkillCategoriesEnum.DatabaseManagement,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
@@ -716,6 +883,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.Prisma]: {
     name: "Prisma",
+    isMainSkill: false,
     category: SkillCategoriesEnum.DatabaseManagement,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
@@ -733,6 +901,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.Drizzle]: {
     name: "Drizzle",
+    isMainSkill: false,
     category: SkillCategoriesEnum.DatabaseManagement,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
@@ -750,6 +919,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.TypeORM]: {
     name: "TypeORM",
+    isMainSkill: false,
     category: SkillCategoriesEnum.DatabaseManagement,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
@@ -767,6 +937,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.SQLAlchemy]: {
     name: "SQLAlchemy",
+    isMainSkill: false,
     category: SkillCategoriesEnum.DatabaseManagement,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
@@ -783,6 +954,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.Hibernate]: {
     name: "Hibernate",
+    isMainSkill: false,
     category: SkillCategoriesEnum.DatabaseManagement,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
@@ -800,9 +972,9 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.SpringDataJPA]: {
     name: "Spring Data JPA",
+    isMainSkill: false,
     category: SkillCategoriesEnum.DatabaseManagement,
     skillType: SkillTypesEnum.Technology,
-    isMainSkill: true,
     relatedSkills: [
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.DatabaseManagementSystems,
@@ -820,9 +992,9 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.SpringDataMongoDB]: {
     name: "Spring Data MongoDB",
+    isMainSkill: false,
     category: SkillCategoriesEnum.DatabaseManagement,
     skillType: SkillTypesEnum.Technology,
-    isMainSkill: true,
     relatedSkills: [
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.Spring,
@@ -1038,6 +1210,24 @@ const skillDatabaseMap: Database<SkillInterface> = {
     isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [SkillDatabaseKeys.Java],
+  },
+  [SkillDatabaseKeys.Mockito]: {
+    name: "Mockito",
+    category: SkillCategoriesEnum.Testing,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Technology,
+    relatedSkills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.UnitTest,
+      SkillDatabaseKeys.JUnit,
+      SkillDatabaseKeys.PyTest,
+      SkillDatabaseKeys.Jest,
+      SkillDatabaseKeys.Vitest,
+      SkillDatabaseKeys.Cypress,
+      SkillDatabaseKeys.ReactTestingLibrary,
+      SkillDatabaseKeys.Testing,
+    ],
   },
   [SkillDatabaseKeys.Cypress]: {
     name: "Cypress",
@@ -1626,7 +1816,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.Matplotlib,
       SkillDatabaseKeys.Seaborn,
       SkillDatabaseKeys.ScikitLearn,
-      SkillDatabaseKeys.Jupyter,
+
       SkillDatabaseKeys.ComputerVision,
     ],
   },
@@ -1648,7 +1838,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.Matplotlib,
       SkillDatabaseKeys.Seaborn,
       SkillDatabaseKeys.ScikitLearn,
-      SkillDatabaseKeys.Jupyter,
+
       SkillDatabaseKeys.ComputerVision,
     ],
   },
@@ -1669,7 +1859,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.Matplotlib,
       SkillDatabaseKeys.Seaborn,
       SkillDatabaseKeys.ScikitLearn,
-      SkillDatabaseKeys.Jupyter,
+
       SkillDatabaseKeys.OpenAI,
       SkillDatabaseKeys.ReplicateAI,
       SkillDatabaseKeys.ComputerVision,
@@ -1686,7 +1876,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.NumPy,
       SkillDatabaseKeys.Matplotlib,
       SkillDatabaseKeys.Seaborn,
-      SkillDatabaseKeys.Jupyter,
     ],
   },
   [SkillDatabaseKeys.DataVisualisation]: {
@@ -1956,7 +2145,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.Supabase,
       SkillDatabaseKeys.Auth0,
       SkillDatabaseKeys.ClerkAuth,
-      SkillDatabaseKeys.NextAuth,
+      SkillDatabaseKeys.AuthJs,
     ],
   },
   [SkillDatabaseKeys.UserCentricDesign]: {
@@ -1975,7 +2164,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.Supabase,
       SkillDatabaseKeys.Auth0,
       SkillDatabaseKeys.ClerkAuth,
-      SkillDatabaseKeys.NextAuth,
+      SkillDatabaseKeys.AuthJs,
       SkillDatabaseKeys.Stripe,
       SkillDatabaseKeys.ExpressJS,
       SkillDatabaseKeys.Flask,

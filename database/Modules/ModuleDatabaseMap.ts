@@ -9,6 +9,7 @@ import ModuleInterface from "@/database/Modules/ModuleInterface";
 import skillDatabaseMap from "../Skills/SkillDatabaseMap";
 import CourseDatabaseKeys from "@/database/Courses/CourseDatabaseKeys";
 import CertificateDatabaseKeys from "../Certificates/CertificateDatabaseKeys";
+import { projectDatabaseKeys } from "../Projects/ProjectDatabaseMap";
 
 /**
  * Hashmap of the modules I have studied at university.
@@ -261,7 +262,7 @@ const modulesMap: Database<ModuleInterface> = {
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.Prisma,
-      SkillDatabaseKeys.NextAuth,
+      SkillDatabaseKeys.AuthJs,
       SkillDatabaseKeys.NextJS,
       SkillDatabaseKeys.ReactJS,
       SkillDatabaseKeys.GraphQL,
@@ -662,7 +663,7 @@ const modulesMap: Database<ModuleInterface> = {
       SkillDatabaseKeys.ScikitLearn,
       SkillDatabaseKeys.NumPy,
       SkillDatabaseKeys.Matplotlib,
-      SkillDatabaseKeys.Jupyter,
+
       SkillDatabaseKeys.Algorithms,
       SkillDatabaseKeys.Algebra,
       SkillDatabaseKeys.ProblemSolving,
@@ -990,7 +991,7 @@ const modulesMap: Database<ModuleInterface> = {
       SkillDatabaseKeys.Seaborn,
       SkillDatabaseKeys.Keras,
       SkillDatabaseKeys.TensorFlow,
-      SkillDatabaseKeys.Jupyter,
+
       SkillDatabaseKeys.Probability,
       SkillDatabaseKeys.Statistics,
       SkillDatabaseKeys.Calculus,
@@ -1035,7 +1036,7 @@ const modulesMap: Database<ModuleInterface> = {
       SkillDatabaseKeys.Pandas,
       SkillDatabaseKeys.NumPy,
       SkillDatabaseKeys.Matplotlib,
-      SkillDatabaseKeys.Jupyter,
+
       SkillDatabaseKeys.Probability,
       SkillDatabaseKeys.Statistics,
       SkillDatabaseKeys.LinearAlgebra,
@@ -1078,13 +1079,20 @@ const modulesMap: Database<ModuleInterface> = {
       SkillDatabaseKeys.IntelligentAgents,
       SkillDatabaseKeys.DataScience,
       SkillDatabaseKeys.NeuralNetworks,
-      SkillDatabaseKeys.ScikitLearn,
       SkillDatabaseKeys.Pandas,
       SkillDatabaseKeys.NumPy,
       SkillDatabaseKeys.Matplotlib,
-      SkillDatabaseKeys.TensorFlow,
       SkillDatabaseKeys.PyTorch,
-      SkillDatabaseKeys.Jupyter,
+
+      SkillDatabaseKeys.Transformers,
+      SkillDatabaseKeys.HuggingFace,
+      SkillDatabaseKeys.LLMs,
+      SkillDatabaseKeys.Git,
+      SkillDatabaseKeys.GitHub,
+      SkillDatabaseKeys.NaturalLanguageProcessing,
+      SkillDatabaseKeys.FineTuning,
+      SkillDatabaseKeys.Benchmarking,
+      SkillDatabaseKeys.Quantization,
       SkillDatabaseKeys.Probability,
       SkillDatabaseKeys.Statistics,
       SkillDatabaseKeys.LinearAlgebra,
@@ -1110,6 +1118,25 @@ const modulesMap: Database<ModuleInterface> = {
       "Critically assessing the performance and limitations of implemented AI systems",
       "Adapting to challenges and setbacks encountered during the project development process",
       "Collaborating with supervisors and peers to refine project goals and methodologies",
+      "Investigating performance gaps between cultural and linguistic knowledge in AI models.",
+      "Applying a systematic, multi-phase experimental methodology to a research problem.",
+      "Evaluating Large Language Models against a specialized, non-English benchmark.",
+      "Implementing parameter-efficient fine-tuning techniques like QLoRA to adapt models.",
+      "Analyzing the specific impact of reasoning capabilities on model performance.",
+      "Developing a reproducible pipeline for benchmarking and validating AI research.",
+      "Critically reviewing and synthesizing state-of-the-art academic literature on LLMs.",
+      "Managing computational resources effectively through techniques like quantisation.",
+      "Designing targeted training interventions to address identified model weaknesses.",
+      "Communicating complex research findings and technical details in a structured report.",
+    ],
+    relatedMaterials: [
+      ProjectDatabaseKeys.Qwen3BenchmarkingItalic,
+      ProjectDatabaseKeys.Llama3_1BenchmarkingItalic,
+      ProjectDatabaseKeys.MagistralSmallBenchmarkingItalic,
+      ProjectDatabaseKeys.MistralNemoBenchmarkingItalic,
+      ProjectDatabaseKeys.Qwen3FineTuningMultIt,
+      ProjectDatabaseKeys.Llama3_1FineTuningMultIt,
+      ProjectDatabaseKeys.MagistralSmallFineTuningMultIt,
     ],
   },
 };
