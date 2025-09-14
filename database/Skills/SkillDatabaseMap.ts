@@ -969,7 +969,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.ContinuousIntegration,
       SkillDatabaseKeys.ContinuousDeployment,
       SkillDatabaseKeys.DevOps,
-      SkillDatabaseKeys.Automation,
     ],
   },
   [SkillDatabaseKeys.GitLabCI]: {
@@ -982,7 +981,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.ContinuousIntegration,
       SkillDatabaseKeys.ContinuousDeployment,
       SkillDatabaseKeys.DevOps,
-      SkillDatabaseKeys.Automation,
     ],
   },
   [SkillDatabaseKeys.Jenkins]: {
@@ -996,7 +994,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.ContinuousIntegration,
       SkillDatabaseKeys.ContinuousDeployment,
       SkillDatabaseKeys.DevOps,
-      SkillDatabaseKeys.Automation,
       SkillDatabaseKeys.Groovy,
     ],
   },
@@ -1011,7 +1008,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.ContinuousIntegration,
       SkillDatabaseKeys.ContinuousDeployment,
       SkillDatabaseKeys.DevOps,
-      SkillDatabaseKeys.Automation,
     ],
   },
   [SkillDatabaseKeys.Docker]: {
@@ -1052,7 +1048,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
     relatedSkills: [
       SkillDatabaseKeys.InfrastructureAsCode,
       SkillDatabaseKeys.DevOps,
-      SkillDatabaseKeys.Automation,
     ],
   },
   [SkillDatabaseKeys.Terraform]: {
@@ -1062,7 +1057,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
     relatedSkills: [
       SkillDatabaseKeys.InfrastructureAsCode,
       SkillDatabaseKeys.DevOps,
-      SkillDatabaseKeys.Automation,
     ],
   },
   [SkillDatabaseKeys.Vagrant]: {
@@ -1072,7 +1066,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
     relatedSkills: [
       SkillDatabaseKeys.InfrastructureAsCode,
       SkillDatabaseKeys.DevOps,
-      SkillDatabaseKeys.Automation,
     ],
   },
 
@@ -1527,7 +1520,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.Spring,
       SkillDatabaseKeys.SpringBoot,
       SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.Automation,
     ],
   },
 
@@ -1593,7 +1585,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.Containerisation,
       SkillDatabaseKeys.Clusterisation,
       SkillDatabaseKeys.InfrastructureAsCode,
-      SkillDatabaseKeys.Automation,
     ],
   },
 
@@ -1843,17 +1834,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
   [SkillDatabaseKeys.InfrastructureAsCode]: {
     name: "Infrastructure as Code",
     category: SkillCategoriesEnum.DevOps,
-    isMainSkill: false,
-    skillType: SkillTypesEnum.Technical,
-    relatedSkills: [
-      SkillDatabaseKeys.Ansible,
-      SkillDatabaseKeys.Vagrant,
-      SkillDatabaseKeys.Terraform,
-    ],
-  },
-  [SkillDatabaseKeys.Automation]: {
-    name: "Automation",
-    category: SkillCategoriesEnum.Automation,
     isMainSkill: false,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [

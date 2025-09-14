@@ -48,7 +48,6 @@ const rolesMap: Database<RoleInterface> = {
       SkillDatabaseKeys.IntegrationManagement,
       SkillDatabaseKeys.ContinuousDeployment,
       SkillDatabaseKeys.DevOps,
-      SkillDatabaseKeys.Automation,
       SkillDatabaseKeys.PyTest,
       SkillDatabaseKeys.REST,
       SkillDatabaseKeys.ContinuousDelivery,
