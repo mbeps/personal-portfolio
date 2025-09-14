@@ -82,7 +82,6 @@ const TechnologiesModal: React.FC = () => {
     SkillCategoriesEnum.CloudComputing,
     SkillCategoriesEnum.Testing,
     SkillCategoriesEnum.CommunicationProtocolsLibraries,
-    SkillCategoriesEnum.Automation,
     ...(groupedBy !== "language"
       ? [SkillCategoriesEnum.ProgrammingLanguages]
       : []),

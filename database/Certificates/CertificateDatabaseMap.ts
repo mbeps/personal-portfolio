@@ -1126,7 +1126,6 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.Vagrant,
       SkillDatabaseKeys.Terraform,
       SkillDatabaseKeys.InfrastructureAsCode,
-      SkillDatabaseKeys.Automation,
       SkillDatabaseKeys.AWS,
       SkillDatabaseKeys.AWS_CloudWatch,
       SkillDatabaseKeys.AWS_ApplicationLoadBalancer,
@@ -1313,7 +1312,6 @@ const certificateMap: Database<CertificateInterface> = {
         SkillDatabaseKeys.InfrastructureAsCode,
         SkillDatabaseKeys.Containerisation,
         SkillDatabaseKeys.ArtificialIntelligence,
-        SkillDatabaseKeys.Automation,
         SkillDatabaseKeys.ProblemSolving,
         SkillDatabaseKeys.CriticalThinking,
         SkillDatabaseKeys.ProjectManagement,
@@ -1574,7 +1572,6 @@ const certificateMap: Database<CertificateInterface> = {
     skills: [
       SkillDatabaseKeys.DevOps,
       SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.Automation,
       SkillDatabaseKeys.Testing,
 
       SkillDatabaseKeys.HTML,
@@ -1936,7 +1933,6 @@ const certificateMap: Database<CertificateInterface> = {
       "https://www.linkedin.com/learning/certificates/67ef8710bfc2f51163f78c9373df3d7b4674e44b3d2e936318399c6a7fe5bda0",
     skills: [
       SkillDatabaseKeys.ShellScript,
-      SkillDatabaseKeys.Automation,
       SkillDatabaseKeys.DevOps,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
@@ -3479,7 +3475,6 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.SpringBoot,
       SkillDatabaseKeys.REST,
       SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.Automation,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
@@ -3518,7 +3513,6 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.REST,
       SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.Automation,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],

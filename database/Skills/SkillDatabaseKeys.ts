@@ -130,7 +130,6 @@ enum SkillDatabaseKeys {
   Containerisation = "containerisation",
   InfrastructureAsCode = "infrastructure-as-code",
   Clusterisation = "clusterisation",
-  Automation = "automation",
 
   //^ APIs
   REST = "rest-api",
