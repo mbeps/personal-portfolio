@@ -877,7 +877,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
 
   [SkillDatabaseKeys.Mongoose]: {
-    name: "Mongoose",
+    name: "Mongoose ODM",
     isMainSkill: false,
     category: SkillCategoriesEnum.DatabaseManagement,
     skillType: SkillTypesEnum.Technology,
@@ -893,7 +893,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
     ],
   },
   [SkillDatabaseKeys.Prisma]: {
-    name: "Prisma",
+    name: "Prisma ORM",
     isMainSkill: false,
     category: SkillCategoriesEnum.DatabaseManagement,
     skillType: SkillTypesEnum.Technology,
@@ -910,7 +910,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
     ],
   },
   [SkillDatabaseKeys.Drizzle]: {
-    name: "Drizzle",
+    name: "Drizzle ORM",
     isMainSkill: false,
     category: SkillCategoriesEnum.DatabaseManagement,
     skillType: SkillTypesEnum.Technology,
@@ -934,7 +934,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.DatabaseManagementSystems,
       SkillDatabaseKeys.Databases,
       SkillDatabaseKeys.RelationalDatabases,
@@ -1237,7 +1236,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
 
   //^ Cloud Computing
   [SkillDatabaseKeys.AWS]: {
-    name: "Amazon Web Services",
+    name: "Amazon Web Services (AWS)",
     category: SkillCategoriesEnum.CloudComputing,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
@@ -1422,7 +1421,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
 
   [SkillDatabaseKeys.GCP]: {
-    name: "Google Cloud Platform",
+    name: "Google Cloud Platform (GCP)",
     category: SkillCategoriesEnum.CloudComputing,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
