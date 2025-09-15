@@ -36,7 +36,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.ChakraUI,
       SkillDatabaseKeys.Firebase,
       SkillDatabaseKeys.Recoil,
-      SkillDatabaseKeys.Docker,
       SkillDatabaseKeys.GitHubActions,
       SkillDatabaseKeys.GCP,
       SkillDatabaseKeys.HTML,
@@ -188,7 +187,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.RadixUI,
       SkillDatabaseKeys.TailwindCSS,
       SkillDatabaseKeys.Zustand,
-
+      SkillDatabaseKeys.Docker,
       SkillDatabaseKeys.Convex,
       SkillDatabaseKeys.EdgeStore,
       SkillDatabaseKeys.GitHubActions,
@@ -226,7 +225,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.SpringDataLDAP,
       SkillDatabaseKeys.SpringDataJPA,
       SkillDatabaseKeys.SpringSecurity,
-
+      SkillDatabaseKeys.Docker,
       SkillDatabaseKeys.PostgreSQL,
       SkillDatabaseKeys.DatabaseManagementSystems,
       SkillDatabaseKeys.Databases,
@@ -369,6 +368,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.JUnit,
       SkillDatabaseKeys.Mockito,
       SkillDatabaseKeys.GCP,
+      SkillDatabaseKeys.Docker,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -406,6 +406,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Mockito,
       SkillDatabaseKeys.TeamCity,
       SkillDatabaseKeys.GCP,
+      SkillDatabaseKeys.Docker,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -442,6 +443,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Mockito,
       SkillDatabaseKeys.TeamCity,
       SkillDatabaseKeys.GCP,
+      SkillDatabaseKeys.Docker,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -476,6 +478,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Mockito,
       SkillDatabaseKeys.TeamCity,
       SkillDatabaseKeys.GCP,
+      SkillDatabaseKeys.Docker,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -512,6 +515,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Mockito,
       SkillDatabaseKeys.TeamCity,
       SkillDatabaseKeys.GCP,
+      SkillDatabaseKeys.Docker,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -550,6 +554,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Mockito,
       SkillDatabaseKeys.TeamCity,
       SkillDatabaseKeys.GCP,
+      SkillDatabaseKeys.Docker,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -585,6 +590,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.JUnit,
       SkillDatabaseKeys.Mockito,
       SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Docker,
       SkillDatabaseKeys.GCP,
 
       SkillDatabaseKeys.ProblemSolving,
@@ -623,6 +629,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Mockito,
       SkillDatabaseKeys.TeamCity,
       SkillDatabaseKeys.GCP,
+      SkillDatabaseKeys.Docker,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -661,6 +668,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Mockito,
       SkillDatabaseKeys.TeamCity,
       SkillDatabaseKeys.GCP,
+      SkillDatabaseKeys.Docker,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -759,6 +767,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.SQLAlchemy,
       SkillDatabaseKeys.REST,
       SkillDatabaseKeys.GitHubActions,
+      SkillDatabaseKeys.Docker,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
