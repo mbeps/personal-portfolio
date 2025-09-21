@@ -127,7 +127,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.GitHubActions,
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
-
+      SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
       SkillDatabaseKeys.CriticalThinking,
@@ -405,7 +405,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.TeamCity,
       SkillDatabaseKeys.GCP,
       SkillDatabaseKeys.Docker,
-
+      SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
       SkillDatabaseKeys.CriticalThinking,
