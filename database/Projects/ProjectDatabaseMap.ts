@@ -125,7 +125,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Zustand,
       SkillDatabaseKeys.Docker,
       SkillDatabaseKeys.GitHubActions,
-      SkillDatabaseKeys.GCP,
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
 
@@ -157,7 +156,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.RadixUI,
       SkillDatabaseKeys.Zustand,
       SkillDatabaseKeys.GitHubActions,
-      SkillDatabaseKeys.GCP,
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
 
