@@ -82,6 +82,7 @@ const Reader: React.FC<ReaderProps> = ({ content, size = "lg" }) => {
         ${size}
         dark:prose-invert
         prose-img:rounded-lg
+        prose-img:mx-auto
         max-w-none
       `}
     >
