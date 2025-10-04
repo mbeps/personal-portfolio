@@ -34,13 +34,10 @@ enum ProjectDatabaseKeys {
   SpringBootLdapTemplate = "spring-boot-ldap-template",
   FlaskForumBackend = "flask-forum-backend",
   FlaskBackendDemo = "flask-backend-demo",
-  FlaskJWTAuthentication = "flask-jwt-authentication",
-  DjangoAuthentication = "django-authentication",
-  ClerkAuthentication = "clerk-authentication",
-  Auth0Authentication = "auth0-authentication",
   SpringDataJPATemplate = "spring-data-jpa-template",
   SpringDataMongoTemplate = "spring-data-mongo-template",
   BaseRestController = "base-rest-controller",
+  UserAuthentication = "user-authentication",
 
   //^ Artificial Intelligence Projects
   Qwen3BenchmarkingItalic = "qwen3-benchmarking-italic",
