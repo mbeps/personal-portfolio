@@ -807,82 +807,24 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
     type: ProjectTypeEnum.Personal,
   },
-  [ProjectDatabaseKeys.FlaskJWTAuthentication]: {
-    name: `Flask JWT Authentication`,
+  [ProjectDatabaseKeys.UserAuthentication]: {
+    name: `User Authentication`,
     description: `
-      A simple Flask app to learn how to use JWT for authentication.
-      This serves as a foundation to using JWT in other projects using Flask.
+      A list of projects implementing and experimenting with user authentication using various stacks.
       `,
-    repositoryURL: `https://github.com/mbeps/Flask_JWT_Auth`,
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.Flask,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    archived: true,
-    type: ProjectTypeEnum.Personal,
-  },
-  [ProjectDatabaseKeys.DjangoAuthentication]: {
-    name: `Django Authentication`,
-    description: `
-      A simple Django app to learn how to use Django with tokens for authentication.
-      This serves as a foundation to using Django in other projects.
-      `,
-    repositoryURL: `https://github.com/mbeps/Django_Auth_Sys`,
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.Django,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    archived: true,
-    type: ProjectTypeEnum.Personal,
-  },
-  [ProjectDatabaseKeys.ClerkAuthentication]: {
-    name: `Clerk Authentication`,
-    description: `
-      A simple Next.JS app to experiment with the Clerk Authentication SDK. 
-      `,
-    repositoryURL: `https://github.com/mbeps/clerk-demo`,
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.NextJS,
-      SkillDatabaseKeys.ClerkAuth,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.TimeManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    archived: true,
-    type: ProjectTypeEnum.Personal,
-  },
-  [ProjectDatabaseKeys.Auth0Authentication]: {
-    name: `Auth0 Authentication`,
-    description: `
-      A simple Next.JS app to experiment with the Auth0 Authentication SDK. 
-      This does not use the new Next.JS 13 app router as it is not supported as of the time of making this demo. 
-      `,
-    repositoryURL: `https://github.com/mbeps/nextjs-auth0`,
+    repositoryURL: `https://github.com/stars/mbeps/lists/web-authentication`,
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.NextJS,
       SkillDatabaseKeys.Auth0,
+      SkillDatabaseKeys.ClerkAuth,
+      SkillDatabaseKeys.Prisma,
+      SkillDatabaseKeys.PostgreSQL,
+
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.Django,
+      SkillDatabaseKeys.Flask,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
