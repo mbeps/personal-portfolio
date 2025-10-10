@@ -43,6 +43,7 @@ import React from "react";
 import { BsArrowUpRightCircle, BsGithub, BsPlusCircle } from "react-icons/bs";
 import { GrAppsRounded } from "react-icons/gr";
 import { IoReaderOutline } from "react-icons/io5";
+import { ProjectLinks } from "./_components/ProjectLinks";
 
 type Params = Promise<{ projectKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
@@ -315,46 +316,15 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
             <div className="text-center md:text-left">
               <HeadingThree title="Links" />
               <div className="mt-6 flex justify-center md:justify-start w-full md:w-1/2">
-                <ButtonGroup
-                  className="w-full flex-col md:flex-row"
-                  orientation="horizontal"
-                >
-                  {/* Website */}
-                  {projectData?.deploymentURL && (
-                    <Button asChild className="flex-1">
-                      <Link href={projectData.deploymentURL} target="_blank">
-                        <div className="flex justify-center md:justify-start items-center gap-4 w-full">
-                          <BsArrowUpRightCircle size={26} />
-                          <p>Deployment</p>
-                        </div>
-                      </Link>
-                    </Button>
-                  )}
-
-                  {/* GitHub Repo */}
-                  {projectData?.repositoryURL && (
-                    <Button asChild className="flex-1">
-                      <Link href={projectData.repositoryURL} target="_blank">
-                        <div className="flex justify-center md:justify-start items-center gap-4 w-full">
-                          <BsGithub size={26} />
-                          <p>Repository</p>
-                        </div>
-                      </Link>
-                    </Button>
-                  )}
-
-                  {/* Project Report */}
-                  {hasProjectReport && (
-                    <Button asChild className="flex-1">
-                      <Link href={`${basePath}/${projectKey}/report`}>
-                        <div className="flex justify-center md:justify-start items-center gap-4 w-full">
-                          <IoReaderOutline size={26} />
-                          <p>Report</p>
-                        </div>
-                      </Link>
-                    </Button>
-                  )}
-                </ButtonGroup>
+                <ProjectLinks
+                  deploymentURL={projectData.deploymentURL}
+                  repositoryURL={projectData.repositoryURL}
+                  reportURL={
+                    hasProjectReport
+                      ? `${basePath}/${projectKey}/report`
+                      : undefined
+                  }
+                />
               </div>
             </div>
           )}
