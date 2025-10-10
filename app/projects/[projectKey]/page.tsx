@@ -19,6 +19,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/shadcn/ui/accordion";
+import {
+  ButtonGroup,
+  ButtonGroupSeparator,
+  ButtonGroupText,
+} from "@/components/shadcn/ui/button-group";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
@@ -309,88 +314,47 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
           {showLinks && (
             <div className="text-center md:text-left">
               <HeadingThree title="Links" />
-              <div
-                className="
-                  mt-6 flex 
-                  flex-col md:flex-row 
-                  justify-center md:justify-start items-center 
-                  w-full md:w-1/2
-                  gap-2"
-              >
-                {/* Website */}
-                {projectData?.deploymentURL && (
-                  <div className="w-full md:w-1/3">
-                    <Link
-                      href={projectData?.deploymentURL}
-                      target="_blank"
-                      className="w-full"
-                    >
-                      <Button className="w-full">
-                        <div
-                          className="
-                            flex
-                            justify-center md:justify-start
-                            align-center
-                            gap-4
-                            w-full
-                          "
-                        >
+              <div className="mt-6 flex justify-center md:justify-start w-full md:w-1/2">
+                <ButtonGroup
+                  className="w-full flex-col md:flex-row"
+                  orientation="horizontal"
+                >
+                  {/* Website */}
+                  {projectData?.deploymentURL && (
+                    <Button asChild className="flex-1">
+                      <Link href={projectData.deploymentURL} target="_blank">
+                        <div className="flex justify-center md:justify-start items-center gap-4 w-full">
                           <BsArrowUpRightCircle size={26} />
                           <p>Deployment</p>
                         </div>
-                      </Button>
-                    </Link>
-                  </div>
-                )}
-                {/* GitHub Repo */}
-                {projectData?.repositoryURL && (
-                  <div className="w-full md:w-1/3">
-                    <Link
-                      href={projectData?.repositoryURL}
-                      target="_blank"
-                      className="w-full"
-                    >
-                      <Button className="w-full">
-                        <div
-                          className="
-                            flex
-                            justify-center md:justify-start
-                            align-center
-                            gap-4
-                            w-full
-                          "
-                        >
+                      </Link>
+                    </Button>
+                  )}
+
+                  {/* GitHub Repo */}
+                  {projectData?.repositoryURL && (
+                    <Button asChild className="flex-1">
+                      <Link href={projectData.repositoryURL} target="_blank">
+                        <div className="flex justify-center md:justify-start items-center gap-4 w-full">
                           <BsGithub size={26} />
                           <p>Repository</p>
                         </div>
-                      </Button>
-                    </Link>
-                  </div>
-                )}
-                {/* Project Report */}
-                {hasProjectReport && (
-                  <div className="w-full md:w-1/3">
-                    <Link
-                      href={`${basePath}/${projectKey}/report`}
-                      className="w-full"
-                    >
-                      <Button className="w-full">
-                        <div
-                          className="
-                            flex
-                            justify-center md:justify-start
-                            align-center
-                            gap-4
-                            w-full
-                          "
-                        >
+                      </Link>
+                    </Button>
+                  )}
+
+                  {/* Project Report */}
+                  {hasProjectReport && (
+                    <Button asChild className="flex-1">
+                      <Link href={`${basePath}/${projectKey}/report`}>
+                        <div className="flex justify-center md:justify-start items-center gap-4 w-full">
                           <IoReaderOutline size={26} />
                           <p>Report</p>
                         </div>
-                      </Button>
-                    </Link>
-                  </div>
-                )}
+                      </Link>
+                    </Button>
+                  )}
+                </ButtonGroup>
               </div>
             </div>
           )}
