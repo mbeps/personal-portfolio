@@ -14,6 +14,11 @@ import {
   DialogTrigger,
 } from "@/components/shadcn/ui/dialog";
 import {
+  Drawer,
+  DrawerContent,
+  DrawerTrigger,
+} from "@/components/shadcn/ui/drawer";
+import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -33,6 +38,7 @@ import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import SkillInterface from "@/database/Skills/SkillInterface";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 import Link from "next/link";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
@@ -44,21 +50,21 @@ interface LanguageTagWithModalProps {
 
 /**
  * Displays a tag for each language.
+ * Uses Drawer on mobile and Dialog on desktop for responsive behaviour.
  * If the language has skills or repositories, a modal is displayed when the tag is clicked.
  * The modal displays the skills and repositories for the language.
  * If the language does not have any skills or repositories, the modal cannot be opened.
  *
- * @param language Name of the language
- * @param skills List of skills for the language
- * @param repositories List of repositories for the language
- * @returns Language tag with modal (stack of the language
+ * @param languageIdentifier Identifier of the language
+ * @returns Language tag with responsive modal/drawer
  */
 const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
   languageIdentifier,
 }) => {
   const language: SkillInterface = skillDatabaseMap[languageIdentifier];
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [groupedBy, setGroupedBy] = useState("category");
+  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   /**
    * Utility function to filter for main skills excluding a specific category.
@@ -75,7 +81,6 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
   ): SkillDatabaseKeys[] {
     return skillSlugs.filter((slug) => {
       const skill: SkillInterface = skillsHashmap[slug];
-      // return skill.isMainSkill && skill.category !== excludedCategory;
       return skill.category !== excludedCategory;
     });
   }
@@ -86,10 +91,6 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
       skillDatabaseMap,
       SkillCategoriesEnum.ProgrammingLanguages
     );
-
-  function handleOpenModal(): void {
-    setIsModalOpen(true);
-  }
 
   const shouldOpenModal: boolean | undefined =
     language?.relatedSkills && language.relatedSkills.length > 0;
@@ -115,89 +116,122 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
     options.find((option) => option.slug === groupedBy)?.entryName ||
     "Category";
 
-  return (
+  /**
+   * Shared content component used by both Dialog and Drawer
+   */
+  const ModalContent = () => (
     <>
-      <Dialog>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <DialogTrigger asChild>
-              <Tag onClick={shouldOpenModal ? handleOpenModal : undefined}>
-                {language.name}
-              </Tag>
-            </DialogTrigger>
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>{`View technologies related to ${language.name}`}</p>
-          </TooltipContent>
-        </Tooltip>
-        <DialogContent className="flex flex-col justify-start h-full">
-          <div className="w-full pt-6">
-            <HeadingTwo title={language.name} />
+      <div className="w-full pt-6 px-6">
+        <HeadingTwo title={language.name} />
+      </div>
+
+      <ScrollArea className="h-full w-full grow">
+        <div className="px-6 pb-4">
+          {/* Grouping Dropdown */}
+          <div className="flex mt-4">
+            <div className="grow mr-2 mt-2.5 text-right text-neutral-700 dark:text-neutral-300">
+              Group by:
+            </div>
+            <DropdownMenu>
+              <DropdownMenuTrigger className="w-48">
+                <Button variant="default" className="w-full">
+                  <div className="flex items-start justify-between space-x-2 w-full">
+                    <span>{currentGroupedName}</span>
+                    <BsChevronDown
+                      fontSize={16}
+                      className="text-neutral-700 dark:text-neutral-200 mt-1"
+                    />
+                  </div>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-48">
+                {options.map((option, index) => (
+                  <DropdownMenuItem
+                    key={index}
+                    className={`${
+                      option.slug === groupedBy ? "font-bold" : ""
+                    }`}
+                    onSelect={() => setGroupedBy(option.slug)}
+                  >
+                    {option.entryName}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
 
-          <ScrollArea className="h-full w-full grow">
-            <div className="px-6 pb-4">
-              {/* Grouping Dropdown */}
-              <div className="flex mt-4">
-                <div className="grow mr-2 mt-2.5 text-right text-neutral-700 dark:text-neutral-300">
-                  Group by:
+          {/* List of skills */}
+          <div className="space-y-16">
+            {groupedSkills.map((categoryData, index) => (
+              <div key={index} className="text-center md:text-left">
+                <HeadingThree title={categoryData.skillCategoryName} />
+                <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
+                  {categoryData.skills.map((skillKey, index) => (
+                    <SkillTag key={index} skillKey={skillKey} />
+                  ))}
                 </div>
-                <DropdownMenu>
-                  <DropdownMenuTrigger className="w-48">
-                    <Button variant="default" className="w-full">
-                      <div className="flex items-start justify-between space-x-2 w-full">
-                        <span>{currentGroupedName}</span>
-                        <BsChevronDown
-                          fontSize={16}
-                          className="text-neutral-700 dark:text-neutral-200 mt-1"
-                        />
-                      </div>
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent className="w-48">
-                    {options.map((option, index) => (
-                      <DropdownMenuItem
-                        key={index}
-                        className={`${
-                          option.slug === groupedBy ? "font-bold" : ""
-                        }`}
-                        onSelect={() => setGroupedBy(option.slug)}
-                      >
-                        {option.entryName}
-                      </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuContent>
-                </DropdownMenu>
               </div>
+            ))}
+          </div>
+        </div>
+      </ScrollArea>
 
-              {/* List of skills */}
-              <div className="space-y-16">
-                {groupedSkills.map((categoryData, index) => (
-                  <div key={index} className="text-center md:text-left">
-                    <HeadingThree title={categoryData.skillCategoryName} />
-                    <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-                      {categoryData.skills.map((skillKey, index) => (
-                        <SkillTag key={index} skillKey={skillKey} />
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </ScrollArea>
+      {/* Links */}
+      {hasMaterial && (
+        <div className="w-full mt-auto px-6 pb-4">
+          <Link href={`/skills/${languageIdentifier as string}`}>
+            <Button variant="gradient" className="w-full">
+              {`All ${language.name} Material`}
+            </Button>
+          </Link>
+        </div>
+      )}
+    </>
+  );
 
-          {/* Links */}
-          {hasMaterial && (
-            <div className="w-full mt-auto px-6 pb-4">
-              <Link href={`/skills/${languageIdentifier as string}`}>
-                <Button variant="gradient" className="w-full">
-                  {`All ${language.name} Material`}
-                </Button>
-              </Link>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
+  const TriggerButton = () => (
+    <Tag onClick={shouldOpenModal ? () => setIsOpen(true) : undefined}>
+      {language.name}
+    </Tag>
+  );
+
+  return (
+    <>
+      {isDesktop ? (
+        // Desktop Dialog (md and above)
+        <Dialog open={isOpen} onOpenChange={setIsOpen}>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <DialogTrigger asChild>
+                <TriggerButton />
+              </DialogTrigger>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{`View technologies related to ${language.name}`}</p>
+            </TooltipContent>
+          </Tooltip>
+          <DialogContent className="flex flex-col justify-start h-full">
+            <ModalContent />
+          </DialogContent>
+        </Dialog>
+      ) : (
+        // Mobile Drawer (below md)
+        <Drawer open={isOpen} onOpenChange={setIsOpen}>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <DrawerTrigger asChild>
+                <TriggerButton />
+              </DrawerTrigger>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{`View technologies related to ${language.name}`}</p>
+            </TooltipContent>
+          </Tooltip>
+          <DrawerContent className="flex flex-col justify-start h-[75vh]">
+            <ModalContent />
+          </DrawerContent>
+        </Drawer>
+      )}
     </>
   );
 };
