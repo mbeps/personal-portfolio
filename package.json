@@ -60,6 +60,7 @@
     "tw-animate-css": "^1.3.8",
     "typescript": "5.6.3",
     "typewriter-effect": "^2.21.0",
+    "vaul": "^1.1.2",
     "zustand": "^5.0.0"
   },
   "main": "index.js",

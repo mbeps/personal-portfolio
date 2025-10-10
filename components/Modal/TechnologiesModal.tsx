@@ -9,7 +9,11 @@ import {
   DialogContent,
   DialogTrigger,
 } from "@/components/shadcn/ui/dialog";
-// tooltip removed from SkillTag and Technologies modal to avoid nested trigger buttons
+import {
+  Drawer,
+  DrawerContent,
+  DrawerTrigger,
+} from "@/components/shadcn/ui/drawer";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,6 +26,7 @@ import SkillInterface from "@/database/Skills/SkillInterface";
 import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import useIsMounted from "@/hooks/useIsMounted";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import Link from "next/link";
@@ -36,18 +41,17 @@ import { ScrollArea } from "../shadcn/ui/scroll-area";
 
 /**
  * Displays a modal for the skills.
+ * Uses Drawer on mobile and Dialog on desktop for responsive behaviour.
  * The modal displays the skills organised by category or by language.
  * The user can choose how to group the skills.
  *
- * @param languages The languages of the modal
- * @param isOpen Whether the modal is open or not
- * @param onClose Function to close the modal
- * @returns Modal component (stack of the project
+ * @returns Modal component displaying all technologies and skills
  */
 const TechnologiesModal: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const isMounted: boolean = useIsMounted();
   const [groupedBy, setGroupedBy] = useState("category");
+  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   if (!isMounted) {
     return null;
@@ -110,92 +114,107 @@ const TechnologiesModal: React.FC = () => {
     options.find((option) => option.slug === groupedBy)?.entryName ||
     "Category";
 
-  return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Tag onClick={handleOpenModal}>...</Tag>
-      </DialogTrigger>
-      <DialogContent>
-        <div className="h-full w-full pt-6">
-          <HeadingTwo title="Technologies" />
-        </div>
+  /**
+   * Shared content component used by both Dialog and Drawer
+   */
+  const ModalContent = () => (
+    <>
+      <div className="w-full pt-6 px-6">
+        <HeadingTwo title="Technologies" />
+      </div>
 
-        <ScrollArea className="h-full w-full">
-          <div className="px-6 pb-4">
-            <div className="flex mt-4">
-              {/* Drop Down */}
-              <div
-                className="
-                  grow mr-2 mt-2.5
-                  text-right text-neutral-700 dark:text-neutral-300
-              "
-              >
-                Group by:
-              </div>
-
-              <DropdownMenu>
-                <DropdownMenuTrigger className="w-48">
-                  <Button variant="default" className="w-full">
-                    <div className="flex items-start justify-between space-x-2 w-full">
-                      <span>{currentGroupedName}</span>
-                      <BsChevronDown
-                        fontSize={16}
-                        className="text-neutral-700 dark:text-neutral-200 mt-1"
-                      />
-                    </div>
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-48 ">
-                  {options.map((option, index) => (
-                    <DropdownMenuItem
-                      key={index}
-                      className={`${
-                        option.slug === groupedBy ? "font-bold" : ""
-                      }`}
-                      onSelect={() => setGroupedBy(option.slug)}
-                    >
-                      {option.entryName}
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
+      <ScrollArea className="h-full w-full grow">
+        <div className="px-6 pb-4">
+          <div className="flex mt-4">
+            <div className="grow mr-2 mt-2.5 text-right text-neutral-700 dark:text-neutral-300">
+              Group by:
             </div>
 
-            {/* List of Skills */}
-            <div className="mt-4 text-center md:text-left space-y-16">
-              {groupedSkills.map((categoryData, index) => (
-                <div key={index}>
-                  <HeadingThree title={categoryData.skillCategoryName} />
-                  <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-                    {categoryData.skills.map((skillSlug) => (
-                      <SkillTag key={skillSlug} skillKey={skillSlug} />
-                    ))}
+            <DropdownMenu>
+              <DropdownMenuTrigger className="w-48">
+                <Button variant="default" className="w-full">
+                  <div className="flex items-start justify-between space-x-2 w-full">
+                    <span>{currentGroupedName}</span>
+                    <BsChevronDown
+                      fontSize={16}
+                      className="text-neutral-700 dark:text-neutral-200 mt-1"
+                    />
                   </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="py-12" />
-
-            {/* All Material Button */}
-            <div
-              className="
-                flex flex-wrap flex-col
-                text-center md:text-left
-                justify-start"
-            >
-              <Link href={`/skills`}>
-                <div className="w-full">
-                  <Button variant="gradient" className="w-full">
-                    {`All Technologies & Skills`}
-                  </Button>
-                </div>
-              </Link>
-            </div>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-48">
+                {options.map((option, index) => (
+                  <DropdownMenuItem
+                    key={index}
+                    className={`${
+                      option.slug === groupedBy ? "font-bold" : ""
+                    }`}
+                    onSelect={() => setGroupedBy(option.slug)}
+                  >
+                    {option.entryName}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
-        </ScrollArea>
-      </DialogContent>
-    </Dialog>
+
+          {/* List of Skills */}
+          <div className="mt-4 text-center md:text-left space-y-16">
+            {groupedSkills.map((categoryData, index) => (
+              <div key={index}>
+                <HeadingThree title={categoryData.skillCategoryName} />
+                <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
+                  {categoryData.skills.map((skillSlug) => (
+                    <SkillTag key={skillSlug} skillKey={skillSlug} />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="py-12" />
+
+          {/* All Material Button */}
+          <div className="flex flex-wrap flex-col text-center md:text-left justify-start">
+            <Link href={`/skills`}>
+              <div className="w-full">
+                <Button variant="gradient" className="w-full">
+                  {`All Technologies & Skills`}
+                </Button>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </ScrollArea>
+    </>
+  );
+
+  const TriggerButton = () => <Tag onClick={handleOpenModal}>...</Tag>;
+
+  return (
+    <>
+      {isDesktop ? (
+        // Desktop Dialog (md and above)
+        <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+          <DialogTrigger asChild>
+            <TriggerButton />
+          </DialogTrigger>
+          <DialogContent>
+            <ModalContent />
+          </DialogContent>
+        </Dialog>
+      ) : (
+        // Mobile Drawer (below md)
+        <Drawer open={isModalOpen} onOpenChange={setIsModalOpen}>
+          <DrawerTrigger asChild>
+            <TriggerButton />
+          </DrawerTrigger>
+          <DrawerContent className="flex flex-col justify-start h-[90vh]">
+            <ModalContent />
+          </DrawerContent>
+        </Drawer>
+      )}
+    </>
   );
 };
 
