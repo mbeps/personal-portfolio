@@ -227,7 +227,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
               <p>{`View technologies related to ${language.name}`}</p>
             </TooltipContent>
           </Tooltip>
-          <DrawerContent className="flex flex-col justify-start h-[90vh]">
+          <DrawerContent className="flex flex-col justify-start h-[75vh]">
             <ModalContent />
           </DrawerContent>
         </Drawer>

@@ -209,7 +209,7 @@ const TechnologiesModal: React.FC = () => {
           <DrawerTrigger asChild>
             <TriggerButton />
           </DrawerTrigger>
-          <DrawerContent className="flex flex-col justify-start h-[90vh]">
+          <DrawerContent className="flex flex-col justify-start h-[75vh]">
             <ModalContent />
           </DrawerContent>
         </Drawer>
