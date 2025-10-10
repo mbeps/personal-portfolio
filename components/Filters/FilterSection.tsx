@@ -113,6 +113,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
                 {/* Button Group */}
                 <div className="w-full md:flex-1">
                   <ButtonGroup className="w-full">
+                    {/* Filters Panel */}
                     <Button
                       variant="default"
                       onClick={handleToggleFilter}
@@ -126,14 +127,26 @@ const FilterSection: React.FC<FilterSectionProps> = ({
                         <span>Filters</span>
                       </div>
                     </Button>
-
+                    {/* Clear Button */}
                     <Button
                       variant="default"
-                      disabled={!areFiltersApplied}
                       asChild
                       className="flex-1 shadow-xs hover:shadow-md"
                     >
-                      <Link href={basePath} scroll={false}>
+                      <Link
+                        href={basePath}
+                        scroll={false}
+                        onClick={(e) => {
+                          if (!areFiltersApplied) e.preventDefault();
+                        }}
+                        aria-disabled={!areFiltersApplied}
+                        tabIndex={areFiltersApplied ? 0 : -1}
+                        className={`${
+                          !areFiltersApplied
+                            ? "pointer-events-none opacity-50"
+                            : ""
+                        }`}
+                      >
                         <div className="flex items-center space-x-2">
                           <AiOutlineClear
                             fontSize={24}
