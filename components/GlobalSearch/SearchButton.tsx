@@ -211,7 +211,7 @@ const GlobalSearch: React.FC = () => {
         </TooltipTrigger>
         <TooltipContent className="flex flex-col items-center text-center">
           <p>Global Search</p>
-          <div className="text-sm italic text-neutral-600 dark:text-neutral-300 flex flex-row space-x-1">
+          <div className="text-sm text-neutral-600 dark:text-neutral-300 flex flex-row space-x-1">
             <Kbd>Ctrl</Kbd>
             <Kbd>K</Kbd>
             <p>/</p>
