@@ -48,6 +48,7 @@ import courseDatabaseMap from "@/database/Courses/CourseDatabaseMap";
 import Link from "next/link";
 import companyDatabaseMap from "@/database/Companies/CompanyDatabaseMap";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../shadcn/ui/tooltip";
+import { Kbd } from "@/components/shadcn/ui/kbd";
 
 interface ItemInterface {
   name: string;
@@ -210,10 +211,13 @@ const GlobalSearch: React.FC = () => {
         </TooltipTrigger>
         <TooltipContent className="flex flex-col items-center text-center">
           <p>Global Search</p>
-          <p className="text-sm italic text-neutral-600 dark:text-neutral-300">
-            <span className="font-bold">{"Ctrl/Cmd"}</span> +
-            <span className="font-bold">{" K"}</span>
-          </p>
+          <div className="text-sm italic text-neutral-600 dark:text-neutral-300 flex flex-row space-x-1">
+            <Kbd>Ctrl</Kbd>
+            <Kbd>K</Kbd>
+            <p>/</p>
+            <Kbd>⌘</Kbd>
+            <Kbd>K</Kbd>
+          </div>
         </TooltipContent>
       </Tooltip>
 
