@@ -88,7 +88,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1">
           <AccordionTrigger>
-            <div className="flex items-center space-x-3">
+            <div className="flex text-left space-x-3">
               <MdOutlineManageSearch
                 size={28}
                 className="text-neutral-600 dark:text-neutral-400"
@@ -100,7 +100,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
           </AccordionTrigger>
           <AccordionContent>
             <div className="flex flex-col gap-2">
-              <div className="flex flex-col md:flex-row items-center w-full py-2 gap-4">
+              <div className="flex flex-col md:flex-row items-center w-full py-2 gap-2">
                 {/* Search input */}
                 <div className="w-full md:flex-1">
                   <SearchInput
