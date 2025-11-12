@@ -579,6 +579,19 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.UserAuthentication,
     ],
   },
+  [SkillDatabaseKeys.BetterAuth]: {
+    name: "Better Auth",
+    category: SkillCategoriesEnum.BackEndWebDevelopment,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Technology,
+    relatedSkills: [
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.NextJS,
+      SkillDatabaseKeys.ExpressJS,
+      SkillDatabaseKeys.UserAuthentication,
+    ],
+  },
   [SkillDatabaseKeys.Stripe]: {
     name: "Stripe",
     category: SkillCategoriesEnum.BackEndWebDevelopment,
@@ -654,7 +667,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.Spring,
       SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.Symphony,
     ],
   },
   [SkillDatabaseKeys.SpringSecurity]: {
@@ -666,7 +678,17 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.Spring,
       SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.Symphony,
+    ],
+  },
+  [SkillDatabaseKeys.SpringOAuth]: {
+    name: "Spring OAuth",
+    category: SkillCategoriesEnum.BackEndWebDevelopment,
+    isMainSkill: false,
+    skillType: SkillTypesEnum.Technology,
+    relatedSkills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.Spring,
+      SkillDatabaseKeys.SpringBoot,
     ],
   },
   [SkillDatabaseKeys.Cloudinary]: {

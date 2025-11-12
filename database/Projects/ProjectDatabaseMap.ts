@@ -1082,12 +1082,159 @@ const projectMap: Database<ProjectInterface> = {
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.SideshowArticles),
     type: ProjectTypeEnum.Personal,
   },
+  [ProjectDatabaseKeys.GitHubOAuthNextJsSpringBoot]: {
+    name: `GitHub OAuth Next.js & Spring Boot`,
+    description: `
+      A simple project to demonstrate GitHub OAuth authentication using Next.js for the front-end and Spring Boot for the back-end.
+      Uses CORS, JWTs, and secure cookie storage.
+      `,
+    repositoryURL:
+      "https://github.com/stars/mbeps/lists/github-oauth-nextjs-spring-boot",
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.NextJS,
+      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.SpringSecurity,
+      SkillDatabaseKeys.SpringOAuth,
+      SkillDatabaseKeys.MongoDB,
+      SkillDatabaseKeys.SpringDataMongoDB,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.CSS,
+
+      SkillDatabaseKeys.UserAuthentication,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    archived: true,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.GitHubOAuthNextJsSpringBoot
+    ),
+    type: ProjectTypeEnum.Personal,
+  },
+  [ProjectDatabaseKeys.EntraOAuthNextJsSpringBoot]: {
+    name: `Entra OAuth Next.js & Spring Boot`,
+    description: `
+      A simple project to demonstrate Entra OAuth authentication using Next.js for the front-end and Spring Boot for the back-end.
+      Uses CORS, JWTs, and secure cookie storage.
+      `,
+    repositoryURL:
+      "https://github.com/stars/mbeps/lists/entra-oauth-nextjs-spring-boot",
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.NextJS,
+      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.SpringSecurity,
+      SkillDatabaseKeys.SpringOAuth,
+      SkillDatabaseKeys.MongoDB,
+      SkillDatabaseKeys.SpringDataMongoDB,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.CSS,
+
+      SkillDatabaseKeys.UserAuthentication,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    archived: true,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.EntraOAuthNextJsSpringBoot
+    ),
+    type: ProjectTypeEnum.Personal,
+  },
+  [ProjectDatabaseKeys.NextJsAuthJsTemplate]: {
+    name: `Auth.JS Template`,
+    description: `
+      A project demonstrating advanced authentication including email/password, password reset, OAuth providers, and multi-factor authentication.
+      `,
+    repositoryURL: "https://github.com/mbeps/nextjs-authjs",
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJS,
+      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.AuthJs,
+      SkillDatabaseKeys.PostgreSQL,
+      SkillDatabaseKeys.Prisma,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.CSS,
+
+      SkillDatabaseKeys.UserAuthentication,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    archived: true,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.NextJsAuthJsTemplate
+    ),
+    type: ProjectTypeEnum.Personal,
+  },
+
+  [ProjectDatabaseKeys.NextJsBetterAuthTemplate]: {
+    name: `Better Auth Template`,
+    description: `
+      A project demonstrating advanced authentication including email/password, password reset, OAuth providers, and multi-factor authentication, passkey authentication, session management and role management.
+      `,
+    repositoryURL: "https://github.com/mbeps/nextjs-betterauth-authentication",
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJS,
+      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.BetterAuth,
+      SkillDatabaseKeys.PostgreSQL,
+      SkillDatabaseKeys.Drizzle,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.CSS,
+
+      SkillDatabaseKeys.UserAuthentication,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    archived: true,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.NextJsBetterAuthTemplate
+    ),
+    type: ProjectTypeEnum.Personal,
+  },
   [ProjectDatabaseKeys.Noodle]: {
     name: `Noodle`,
     description: `
-          In my second year of university, my group and I started an open-source learning platform project, introducing me to full-stack development. 
-          This app helps students manage tasks, assignments, exams, and store notes and resources.
-          `,
+      In my second year of university, my group and I started an open-source learning platform project, introducing me to full-stack development. 
+      This app helps students manage tasks, assignments, exams, and store notes and resources.
+      `,
     repositoryURL: `https://github.com/ixahmedxi/noodle`,
     deploymentURL: `https://noodle.run/`,
     skills: [
@@ -1922,6 +2069,51 @@ const projectMap: Database<ProjectInterface> = {
   },
 
   //^ Other Projects
+  [ProjectDatabaseKeys.GnomeAllInOneClipboardExtension]: {
+    name: `All-in-One Clipboard Extension`,
+    description: `
+      A Gnome extension that adds advanced clipboard management features to the Gnome desktop environment.
+      Inspired by Windows 11's feature, this extension allows users to manage clipboard history, emojis, kaomojis, GIFs, and symbols.
+          `,
+    repositoryURL: `https://github.com/NiffirgkcaJ/all-in-one-clipboard`,
+    skills: [
+      SkillDatabaseKeys.JavaScript,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Leadership,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.Communication,
+    ],
+    category: ProjectCategoriesEnum.Other,
+    archived: true,
+    type: ProjectTypeEnum.Personal,
+  },
+  [ProjectDatabaseKeys.GnomeQuickSettingsTweakExtension]: {
+    name: `Quick Settings Tweak Extension`,
+    description: `
+      A Gnome extension that allows users to customize the quick settings menu in the Gnome desktop environment.
+      `,
+    repositoryURL: `https://github.com/qwreey/quick-settings-tweaks`,
+    skills: [
+      SkillDatabaseKeys.JavaScript,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Leadership,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.Communication,
+    ],
+    category: ProjectCategoriesEnum.Other,
+    archived: true,
+    type: ProjectTypeEnum.Personal,
+  },
   [ProjectDatabaseKeys.OsmosGame]: {
     name: `Osmos Game`,
     description: `

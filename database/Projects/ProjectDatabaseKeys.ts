@@ -17,6 +17,10 @@ enum ProjectDatabaseKeys {
   SideshowArticles = "sideshow-articles",
   Noodle = "noodle",
   CommerzbankRates = "commerzbank-rates",
+  EntraOAuthNextJsSpringBoot = "entra-oauth-nextjs-spring-boot",
+  GitHubOAuthNextJsSpringBoot = "github-oauth-nextjs-spring-boot",
+  NextJsBetterAuthTemplate = "nextjs-better-auth-template",
+  NextJsAuthJsTemplate = "nextjs-authjs-template",
 
   //^ Backend Projects
   SymphonyTranslateBot = "symphony-translate-bot",
@@ -65,7 +69,8 @@ enum ProjectDatabaseKeys {
   ComputerVisionQuizzes = "computer-vision-quizzes",
 
   OsmosGame = "osmos-game",
-
+  GnomeQuickSettingsTweakExtension = "gnome-quick-settings-tweak-extension",
+  GnomeAllInOneClipboardExtension = "gnome-all-in-one-clipboard-extension",
   SearchingAndSortingAlgorithms = "searching-and-sorting-algorithms",
   AutomatedSetup = "automated-setup",
   Leetcode = "leetcode",
