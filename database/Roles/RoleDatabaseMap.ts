@@ -124,6 +124,10 @@ const rolesMap: Database<RoleInterface> = {
       SkillDatabaseKeys.QualityManagement,
       SkillDatabaseKeys.UserAuthentication,
     ],
+    relatedMaterials: [
+      ProjectDatabaseKeys.GnomeAllInOneClipboardExtension,
+      ProjectDatabaseKeys.GnomeQuickSettingsTweakExtension,
+    ],
   },
   [RoleDatabaseKeys.GoogleRHULDevelopersClubSoftwareEngineer]: {
     name: "Software Engineer Intern",

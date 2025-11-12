@@ -2091,6 +2091,7 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.Other,
     archived: true,
     type: ProjectTypeEnum.Personal,
+    relatedMaterials: [RoleDatabaseKeys.OpenSourceContributor],
   },
   [ProjectDatabaseKeys.GnomeQuickSettingsTweakExtension]: {
     name: `Quick Settings Tweak Extension`,
@@ -2112,6 +2113,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.Other,
     archived: true,
+    relatedMaterials: [RoleDatabaseKeys.OpenSourceContributor],
     type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.OsmosGame]: {
