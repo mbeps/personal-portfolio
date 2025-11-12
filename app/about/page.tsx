@@ -151,12 +151,12 @@ export default function About() {
                 { heading: "Email Address", value: "bepary71@gmail.com" },
                 { heading: "Location", value: "London, UK" },
                 {
-                  heading: "Bachelor's Degree",
-                  value: `${undergraduate.name} at ${undergraduate.university}`,
+                  heading: "Master's Degree",
+                  value: `${masters.grade} in ${masters.name} at ${masters.university}`,
                 },
                 {
-                  heading: "Master's Degree",
-                  value: `${masters.name} at ${masters.university}`,
+                  heading: "Bachelor's Degree",
+                  value: `${undergraduate.grade} in ${undergraduate.name} at ${undergraduate.university}`,
                 },
                 {
                   heading: "Current Role",

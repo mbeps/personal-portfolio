@@ -18,6 +18,778 @@ import ProjectTypeEnum from "@/enums/Project/ProjectTypeEnum";
  * The order skills is the order that is used when displaying the skills on the website.
  */
 const projectMap: Database<ProjectInterface> = {
+  //^ Artificial Intelligence Projects
+  [ProjectDatabaseKeys.Qwen3BenchmarkingItalic]: {
+    name: "Qwen3 Benchmarking (Italic)",
+    description: `Benchmarking Qwen3 reasoning models of various sizes on the ITALIC benchmark to evaluate their cultural alignment in Italian. Various optmisations were used for fast inference.`,
+    repositoryURL: "https://github.com/mbeps/qwen3-italic-benchmark",
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.PyTorch,
+      SkillDatabaseKeys.Transformers,
+      SkillDatabaseKeys.HuggingFace,
+      SkillDatabaseKeys.LLMs,
+      SkillDatabaseKeys.Pandas,
+
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.NaturalLanguageProcessing,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.Benchmarking,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    type: ProjectTypeEnum.Academic,
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_IndividualProject,
+      ProjectDatabaseKeys.Qwen3FineTuningMultIt,
+    ],
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.Qwen3BenchmarkingItalic
+    ),
+  },
+  [ProjectDatabaseKeys.Llama3_1BenchmarkingItalic]: {
+    name: "Llama3.1 Benchmarking (Italic)",
+    description: `Benchmarking Llama3.1 models of various sizes on the ITALIC benchmark to evaluate their cultural alignment in Italian. Various optmisations were used for fast inference.`,
+    repositoryURL: "https://github.com/mbeps/llama_3.1_italic_benchmark",
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.PyTorch,
+      SkillDatabaseKeys.Transformers,
+      SkillDatabaseKeys.HuggingFace,
+      SkillDatabaseKeys.LLMs,
+      SkillDatabaseKeys.Pandas,
+
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.NaturalLanguageProcessing,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.Benchmarking,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    type: ProjectTypeEnum.Academic,
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_IndividualProject,
+      ProjectDatabaseKeys.Llama3_1FineTuningMultIt,
+    ],
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.Llama3_1BenchmarkingItalic
+    ),
+  },
+  [ProjectDatabaseKeys.MagistralSmallBenchmarkingItalic]: {
+    name: "Magistral Benchmarking (Italic)",
+    description: `Benchmarking Magistral-Small reasoning model from Mistral on the ITALIC benchmark to evaluate its cultural alignment in Italian. Quantisation was used due to hardware limitations.`,
+    repositoryURL: "https://github.com/mbeps/magistral_italic_benchmark",
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.PyTorch,
+      SkillDatabaseKeys.Transformers,
+      SkillDatabaseKeys.HuggingFace,
+      SkillDatabaseKeys.LLMs,
+      SkillDatabaseKeys.Pandas,
+
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.NaturalLanguageProcessing,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.Benchmarking,
+      SkillDatabaseKeys.Quantization,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    type: ProjectTypeEnum.Academic,
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_IndividualProject,
+      ProjectDatabaseKeys.MagistralSmallFineTuningMultIt,
+    ],
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.MagistralSmallBenchmarkingItalic
+    ),
+  },
+  [ProjectDatabaseKeys.MistralNemoBenchmarkingItalic]: {
+    name: "Mistral-NeMo Benchmarking (Italic)",
+    description: `Benchmarking Mistral-Nemo model on the ITALIC benchmark to evaluate their cultural alignment in Italian. Various optmisations were used for fast inference.`,
+    repositoryURL: "https://github.com/mbeps/mistral_italic_benchmark",
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.PyTorch,
+      SkillDatabaseKeys.Transformers,
+      SkillDatabaseKeys.HuggingFace,
+      SkillDatabaseKeys.LLMs,
+      SkillDatabaseKeys.Pandas,
+
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.NaturalLanguageProcessing,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.Benchmarking,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    type: ProjectTypeEnum.Academic,
+    relatedMaterials: [ModuleDatabaseKeys.KCL_IndividualProject],
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.MistralNemoBenchmarkingItalic
+    ),
+  },
+  [ProjectDatabaseKeys.Qwen3FineTuningMultIt]: {
+    name: "Qwen3 Fine-Tuning (Mult-It)",
+    description: `Fine-Tuning Qwen3 models using Low-Rank Adaptation (LoRA) on the Mult-It dataset to improve their cultural alignment in Italian. Various optmisations (including novel hybrid-training approach) were used for optimal training.`,
+    repositoryURL: "https://github.com/mbeps/llama3.1_fine-tuning_mult-it",
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.PyTorch,
+      SkillDatabaseKeys.Transformers,
+      SkillDatabaseKeys.HuggingFace,
+      SkillDatabaseKeys.LLMs,
+      SkillDatabaseKeys.Pandas,
+
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.NaturalLanguageProcessing,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.FineTuning,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    type: ProjectTypeEnum.Academic,
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_IndividualProject,
+      ProjectDatabaseKeys.Qwen3BenchmarkingItalic,
+    ],
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.Qwen3FineTuningMultIt
+    ),
+  },
+  [ProjectDatabaseKeys.Llama3_1FineTuningMultIt]: {
+    name: "Llama 3.1 Fine-Tuning (Mult-It)",
+    description: `Fine-Tuning Llama 3.1 models using Low-Rank Adaptation (LoRA) on the Mult-It dataset to improve their cultural alignment in Italian. Various optmisations were used for optimal training.`,
+    repositoryURL: "https://github.com/mbeps/llama3.1_fine-tuning_mult-it",
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.PyTorch,
+      SkillDatabaseKeys.Transformers,
+      SkillDatabaseKeys.HuggingFace,
+      SkillDatabaseKeys.LLMs,
+      SkillDatabaseKeys.Pandas,
+
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.NaturalLanguageProcessing,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.FineTuning,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    type: ProjectTypeEnum.Academic,
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_IndividualProject,
+      ProjectDatabaseKeys.Llama3_1BenchmarkingItalic,
+    ],
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.Llama3_1FineTuningMultIt
+    ),
+  },
+  [ProjectDatabaseKeys.MagistralSmallFineTuningMultIt]: {
+    name: "Magistral Fine-Tuning (Mult-It)",
+    description: `Fine-Tuning Magistral-Small model using Quantised Low-Rank Adaptation (QLoRA) on the Mult-It dataset to improve their cultural alignment in Italian. Various optmisations (including novel hybrid-training approach) were used for optimal training.`,
+    repositoryURL: "https://github.com/mbeps/magistral_mult-it_fine-tuning",
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.PyTorch,
+      SkillDatabaseKeys.Transformers,
+      SkillDatabaseKeys.HuggingFace,
+      SkillDatabaseKeys.LLMs,
+      SkillDatabaseKeys.Pandas,
+
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.NaturalLanguageProcessing,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.FineTuning,
+      SkillDatabaseKeys.Quantization,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    type: ProjectTypeEnum.Academic,
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_IndividualProject,
+      ProjectDatabaseKeys.MagistralSmallBenchmarkingItalic,
+    ],
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.MagistralSmallFineTuningMultIt
+    ),
+  },
+  [ProjectDatabaseKeys.HandWrittenDigitClassifier]: {
+    name: "Handwritten Digit Classifier",
+    description: `
+      A handwritten digit classifier using built using a Convolutional Neural Network (CNN).
+      Used various techniques such as data augmentation, batch normalisation, and dropout to improve the model's performance.
+      `,
+    repositoryURL:
+      "https://github.com/mbeps/pattern-recognition-neural-network-coursework-1",
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    type: ProjectTypeEnum.Academic,
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_PatternRecognitionNeuralNetworksDeepLearning,
+    ],
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.Keras,
+      SkillDatabaseKeys.TensorFlow,
+      SkillDatabaseKeys.Matplotlib,
+
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.ComputerVision,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.HandWrittenDigitClassifier
+    ),
+  },
+  [ProjectDatabaseKeys.AdultIncomePrediction]: {
+    name: "Adult Income Prediction",
+    description: `
+      Comparing various classification algorithms to predict whether an adult earns more than $50,000 a year.
+      Emphasis is on feature engineering, data preprocessing with One-Hot Encoding, and model optimization through hyperparameter tuning.`,
+    repositoryURL: "https://github.com/mbeps/Adults_Income_Prediction",
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.ScikitLearn,
+      SkillDatabaseKeys.NumPy,
+      SkillDatabaseKeys.Pandas,
+      SkillDatabaseKeys.Matplotlib,
+      SkillDatabaseKeys.Seaborn,
+
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DeepLearning,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    type: ProjectTypeEnum.Personal,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.AdultIncomePrediction
+    ),
+    archived: true,
+  },
+  [ProjectDatabaseKeys.HousePricePrediction]: {
+    name: "House Price Prediction",
+    description: `
+      Comparing various regression algorithms to predict house prices in relation to the distance from the coast.
+      Emphasis is on feature engineering, data preprocessing with One-Hot Encoding, and model optimization through hyperparameter tuning.`,
+    repositoryURL: "https://github.com/mbeps/House_Price_Prediction",
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.ScikitLearn,
+      SkillDatabaseKeys.NumPy,
+      SkillDatabaseKeys.Pandas,
+      SkillDatabaseKeys.Matplotlib,
+      SkillDatabaseKeys.Seaborn,
+
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.Mathematics,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    type: ProjectTypeEnum.Personal,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.HousePricePrediction
+    ),
+    archived: true,
+  },
+  [ProjectDatabaseKeys.CustomNeuralNetworkCoursework]: {
+    name: "Custom Neural Network Classifier",
+    description: `
+      Built a neural network from scratch to teach a Pacman agent.
+      Used various techniques such as batch normalisation, dropout, momentum, learning rate decay and more to improve performance.
+      `,
+    repositoryURL:
+      "https://github.com/mbeps/machine-learning-pacman-classifier-coursework",
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    type: ProjectTypeEnum.Academic,
+    relatedMaterials: [ModuleDatabaseKeys.KCL_MachineLearning],
+    skills: [
+      SkillDatabaseKeys.Python,
+
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.Probability,
+      SkillDatabaseKeys.Statistics,
+      SkillDatabaseKeys.Calculus,
+
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DeepLearning,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.CustomNeuralNetworkCoursework
+    ),
+  },
+  [ProjectDatabaseKeys.MachineLearningAlgorithms]: {
+    name: "Machine Learning Algorithms",
+    description: `
+      Practicing various algorithms and techniques.
+      This includes supervised, unsupervised, and reinforcement learning algorithms, as well as feature engineering, data preprocessing, and hyperparameter tuning.
+    `,
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    repositoryURL: "https://github.com/mbeps/Machine-Learning-Course-Lab",
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.ScikitLearn,
+      SkillDatabaseKeys.NumPy,
+      SkillDatabaseKeys.Pandas,
+      SkillDatabaseKeys.Matplotlib,
+      SkillDatabaseKeys.Seaborn,
+      SkillDatabaseKeys.Keras,
+      SkillDatabaseKeys.TensorFlow,
+
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.ComputerVision,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.Probability,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    archived: true,
+    relatedMaterials: [CertificateDatabaseKeys.UdemyMachineLearningAtoZ],
+    type: ProjectTypeEnum.Personal,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.MachineLearningAlgorithms
+    ),
+  },
+  [ProjectDatabaseKeys.ArtificialIntelligenceReinforcementLearning]: {
+    name: "Reinforcement Learning Lab",
+    description: `
+      Practicing various Reinforcement Learning algorithms and techniques.
+      This includes Q-Learning, Deep Q-Learning, and Asynchronous Advantage Actor-Critic (A3C) algorithms.
+    `,
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    repositoryURL: "https://github.com/mbeps/Reinforcement-Learning",
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.ScikitLearn,
+      SkillDatabaseKeys.NumPy,
+      SkillDatabaseKeys.Matplotlib,
+      SkillDatabaseKeys.PyTorch,
+
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.ReinforcementLearning,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.Probability,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    archived: true,
+    relatedMaterials: [CertificateDatabaseKeys.UdemyArtificialIntelligenceAtoZ],
+    type: ProjectTypeEnum.Personal,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.ArtificialIntelligenceReinforcementLearning
+    ),
+  },
+  [ProjectDatabaseKeys.CustomQLearningAgent]: {
+    name: "Custom Q-Learning Agent",
+    description: `
+      A custom Q-Learning agent learns to play Pacman.
+      Required foundational Mathematics knowledge and understanding of the Q-Learning algorithm.
+      `,
+    repositoryURL:
+      "https://github.com/mbeps/machine-learning-coursework-2-pacman",
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    type: ProjectTypeEnum.Academic,
+    skills: [
+      SkillDatabaseKeys.Python,
+
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.Probability,
+      SkillDatabaseKeys.Statistics,
+      SkillDatabaseKeys.Calculus,
+
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.ReinforcementLearning,
+      SkillDatabaseKeys.DeepLearning,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    relatedMaterials: [ModuleDatabaseKeys.KCL_MachineLearning],
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.CustomQLearningAgent
+    ),
+  },
+  [ProjectDatabaseKeys.MachineLearningAssignment1]: {
+    name: `Machine Learning Assignment 1`,
+    description: `
+      Implementing algorithms from scratch such as the Nearest Neighbours algorithm.
+      Requires an understanding of the Mathematics behind the algorithms and the ability to implement them.
+      `,
+    repositoryURL: `https://github.com/mbeps/Machine-Learning-Assignment-1`,
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.ScikitLearn,
+      SkillDatabaseKeys.NumPy,
+      SkillDatabaseKeys.Matplotlib,
+
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.Mathematics,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
+    type: ProjectTypeEnum.Academic,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.MachineLearningAssignment1
+    ),
+    archived: true,
+  },
+  [ProjectDatabaseKeys.MachineLearningAssignment2]: {
+    name: `Machine Learning Assignment 2`,
+    description: `
+      Be able to use and implement algorithms, 
+      with the Lasso and inductive conformal prediction algorithms as examples. 
+    `,
+    repositoryURL: `https://github.com/mbeps/Machine-Learning-Assignment-2`,
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.ScikitLearn,
+      SkillDatabaseKeys.NumPy,
+      SkillDatabaseKeys.Matplotlib,
+
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.Mathematics,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    type: ProjectTypeEnum.Academic,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.MachineLearningAssignment2
+    ),
+    archived: true,
+  },
+  [ProjectDatabaseKeys.MachineLearningAssignment3]: {
+    name: `Machine Learning Assignment 3`,
+    description: `
+      Be able to use and implement algorithms, 
+      with the SVM, neural networks, and cross-conformal prediction algorithms as examples. 
+      `,
+    repositoryURL: `https://github.com/mbeps/Machine-Learning-Assignment-3`,
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.ScikitLearn,
+      SkillDatabaseKeys.NumPy,
+      SkillDatabaseKeys.Matplotlib,
+
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.Mathematics,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
+    type: ProjectTypeEnum.Academic,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.MachineLearningAssignment3
+    ),
+    archived: true,
+  },
+  [ProjectDatabaseKeys.MachineLearningLabs]: {
+    name: `Machine Learning Labs`,
+    description: `
+      Implemented various algorithms and techniques learnt during the course, 
+      such as Nearest Neighbours, Conformal Prediction, Regression algorithms, data preprocessing, 
+      kernels, Neural Networks, SVMs, etc.`,
+    repositoryURL: `https://github.com/mbeps/Machine-Learning-Labs-Questions`,
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.ScikitLearn,
+      SkillDatabaseKeys.NumPy,
+      SkillDatabaseKeys.Matplotlib,
+
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.Mathematics,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
+    archived: true,
+    type: ProjectTypeEnum.Academic,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.MachineLearningLabs
+    ),
+  },
+  [ProjectDatabaseKeys.ComputationalFinanceAssignment]: {
+    name: "Computational Finance Assignment",
+    description: `
+      Exploring valuation of options using methods like Black-Scholes, binomial trees, and Monte Carlo. 
+      Also includes theoretical aspects of put-call parity and financial arbitrage opportunities.`,
+    repositoryURL: `https://github.com/mbeps/Computation_Finance_Assignment`,
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.NumPy,
+      SkillDatabaseKeys.Matplotlib,
+
+      SkillDatabaseKeys.Probability,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+
+      SkillDatabaseKeys.ArtificialIntelligence,
+
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.Algebra,
+      SkillDatabaseKeys.Calculus,
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.Statistics,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.Mechanics,
+    ],
+    archived: true,
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    relatedMaterials: [ModuleDatabaseKeys.RHUL_ComputationalFinance],
+    type: ProjectTypeEnum.Academic,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.ComputationalFinanceAssignment
+    ),
+  },
+  [ProjectDatabaseKeys.MachineLearningDataScienceLab]: {
+    name: "Machine Learning & Data Science Lab",
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    description: `
+      Focusing on learning generative models, using third-party models and using advanced techniques. 
+      This includes techniques such as transfer learning, LLM Agents, and Generative Models.`,
+    repositoryURL: "https://github.com/mbeps/Data-Science-Machine-Learning-Lab",
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.ScikitLearn,
+      SkillDatabaseKeys.NumPy,
+      SkillDatabaseKeys.Pandas,
+      SkillDatabaseKeys.Matplotlib,
+      SkillDatabaseKeys.Keras,
+      SkillDatabaseKeys.TensorFlow,
+
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.Probability,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    archived: true,
+    relatedMaterials: [
+      CertificateDatabaseKeys.UdemyMachineLearningDataScienceAndGenerativeAIWithPython,
+    ],
+    type: ProjectTypeEnum.Personal,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.MachineLearningDataScienceLab
+    ),
+  },
+
+  [ProjectDatabaseKeys.MarkovDecisionAgent]: {
+    name: "Markov Decision Agent",
+    description: `
+      Pacman agent plays to win the game while handling stochasticity in the movement of agent and ghosts.
+      Uses Markov Decision Processes, Value Iteration and other enhancements.
+      `,
+    repositoryURL: "https://github.com/mbeps/pacman-assignment",
+    skills: [
+      SkillDatabaseKeys.Python,
+
+      SkillDatabaseKeys.IntelligentAgents,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.Probability,
+      SkillDatabaseKeys.LinearAlgebra,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    type: ProjectTypeEnum.Academic,
+    archived: true,
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_ArtificialIntelligenceReasoningAndDecisionMaking,
+    ],
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.MarkovDecisionAgent
+    ),
+  },
+  [ProjectDatabaseKeys.ComputerVisionImageSegmentation]: {
+    name: "Computer Vision Image Segmentation",
+    description: `
+      Segmenting images using various techniques.
+      Specifically, used models of biological vision systems such as Simple and Complex cells, and Gabor filters.
+      `,
+    repositoryURL: "https://github.com/mbeps/computer-vision-assignment",
+    skills: [
+      SkillDatabaseKeys.Matlab,
+
+      SkillDatabaseKeys.IntelligentAgents,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.ComputerVision,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.Probability,
+      SkillDatabaseKeys.LinearAlgebra,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    type: ProjectTypeEnum.Academic,
+    archived: true,
+    relatedMaterials: [ModuleDatabaseKeys.KCL_ComputerVision],
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.ComputerVisionImageSegmentation
+    ),
+  },
+  [ProjectDatabaseKeys.ComputerVisionQuizzes]: {
+    name: "Computer Vision Quizzes",
+    description: `
+      Solutions to quizzes where various low-level and mid-level vision techniques were covered.
+      These techniques include edge detection, image segmentation, and image filtering.
+      `,
+    repositoryURL: "https://github.com/mbeps/computer-vision-quiz-assignment",
+    skills: [
+      SkillDatabaseKeys.Matlab,
+
+      SkillDatabaseKeys.IntelligentAgents,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.ComputerVision,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.Probability,
+      SkillDatabaseKeys.LinearAlgebra,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    type: ProjectTypeEnum.Academic,
+    archived: true,
+    relatedMaterials: [ModuleDatabaseKeys.KCL_ComputerVision],
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.ComputerVisionQuizzes
+    ),
+  },
+
+  //^ Full-Stack Projects
   [ProjectDatabaseKeys.CircusDiscussions]: {
     name: `Circus Discussions`,
     description: `
@@ -310,12 +1082,159 @@ const projectMap: Database<ProjectInterface> = {
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.SideshowArticles),
     type: ProjectTypeEnum.Personal,
   },
+  [ProjectDatabaseKeys.GitHubOAuthNextJsSpringBoot]: {
+    name: `GitHub OAuth Next.js & Spring Boot`,
+    description: `
+      A simple project to demonstrate GitHub OAuth authentication using Next.js for the front-end and Spring Boot for the back-end.
+      Uses CORS, JWTs, and secure cookie storage.
+      `,
+    repositoryURL:
+      "https://github.com/stars/mbeps/lists/github-oauth-nextjs-spring-boot",
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.NextJS,
+      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.SpringSecurity,
+      SkillDatabaseKeys.SpringOAuth,
+      SkillDatabaseKeys.MongoDB,
+      SkillDatabaseKeys.SpringDataMongoDB,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.CSS,
+
+      SkillDatabaseKeys.UserAuthentication,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    archived: true,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.GitHubOAuthNextJsSpringBoot
+    ),
+    type: ProjectTypeEnum.Personal,
+  },
+  [ProjectDatabaseKeys.EntraOAuthNextJsSpringBoot]: {
+    name: `Entra OAuth Next.js & Spring Boot`,
+    description: `
+      A simple project to demonstrate Entra OAuth authentication using Next.js for the front-end and Spring Boot for the back-end.
+      Uses CORS, JWTs, and secure cookie storage.
+      `,
+    repositoryURL:
+      "https://github.com/stars/mbeps/lists/entra-oauth-nextjs-spring-boot",
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.NextJS,
+      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.SpringSecurity,
+      SkillDatabaseKeys.SpringOAuth,
+      SkillDatabaseKeys.MongoDB,
+      SkillDatabaseKeys.SpringDataMongoDB,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.CSS,
+
+      SkillDatabaseKeys.UserAuthentication,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    archived: true,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.EntraOAuthNextJsSpringBoot
+    ),
+    type: ProjectTypeEnum.Personal,
+  },
+  [ProjectDatabaseKeys.NextJsAuthJsTemplate]: {
+    name: `Auth.JS Template`,
+    description: `
+      A project demonstrating advanced authentication including email/password, password reset, OAuth providers, and multi-factor authentication.
+      `,
+    repositoryURL: "https://github.com/mbeps/nextjs-authjs",
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJS,
+      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.AuthJs,
+      SkillDatabaseKeys.PostgreSQL,
+      SkillDatabaseKeys.Prisma,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.CSS,
+
+      SkillDatabaseKeys.UserAuthentication,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    archived: true,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.NextJsAuthJsTemplate
+    ),
+    type: ProjectTypeEnum.Personal,
+  },
+
+  [ProjectDatabaseKeys.NextJsBetterAuthTemplate]: {
+    name: `Better Auth Template`,
+    description: `
+      A project demonstrating advanced authentication including email/password, password reset, OAuth providers, and multi-factor authentication, passkey authentication, session management and role management.
+      `,
+    repositoryURL: "https://github.com/mbeps/nextjs-betterauth-authentication",
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJS,
+      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.BetterAuth,
+      SkillDatabaseKeys.PostgreSQL,
+      SkillDatabaseKeys.Drizzle,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.CSS,
+
+      SkillDatabaseKeys.UserAuthentication,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    archived: true,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.NextJsBetterAuthTemplate
+    ),
+    type: ProjectTypeEnum.Personal,
+  },
   [ProjectDatabaseKeys.Noodle]: {
     name: `Noodle`,
     description: `
-          In my second year of university, my group and I started an open-source learning platform project, introducing me to full-stack development. 
-          This app helps students manage tasks, assignments, exams, and store notes and resources.
-          `,
+      In my second year of university, my group and I started an open-source learning platform project, introducing me to full-stack development. 
+      This app helps students manage tasks, assignments, exams, and store notes and resources.
+      `,
     repositoryURL: `https://github.com/ixahmedxi/noodle`,
     deploymentURL: `https://noodle.run/`,
     skills: [
@@ -920,774 +1839,6 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
   },
 
-  //^ Artificial Intelligence Projects
-  [ProjectDatabaseKeys.Qwen3BenchmarkingItalic]: {
-    name: "Qwen3 Benchmarking (Italic)",
-    description: `Benchmarking Qwen3 reasoning models of various sizes on the ITALIC benchmark to evaluate their cultural alignment in Italian. Various optmisations were used for fast inference.`,
-    repositoryURL: "https://github.com/mbeps/qwen3-italic-benchmark",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.PyTorch,
-      SkillDatabaseKeys.Transformers,
-      SkillDatabaseKeys.HuggingFace,
-      SkillDatabaseKeys.LLMs,
-      SkillDatabaseKeys.Pandas,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.DeepLearning,
-      SkillDatabaseKeys.NaturalLanguageProcessing,
-      SkillDatabaseKeys.NeuralNetworks,
-      SkillDatabaseKeys.Benchmarking,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    relatedMaterials: [
-      ModuleDatabaseKeys.KCL_IndividualProject,
-      ProjectDatabaseKeys.Qwen3FineTuningMultIt,
-    ],
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.Qwen3BenchmarkingItalic
-    ),
-  },
-  [ProjectDatabaseKeys.Llama3_1BenchmarkingItalic]: {
-    name: "Llama3.1 Benchmarking (Italic)",
-    description: `Benchmarking Llama3.1 models of various sizes on the ITALIC benchmark to evaluate their cultural alignment in Italian. Various optmisations were used for fast inference.`,
-    repositoryURL: "https://github.com/mbeps/llama_3.1_italic_benchmark",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.PyTorch,
-      SkillDatabaseKeys.Transformers,
-      SkillDatabaseKeys.HuggingFace,
-      SkillDatabaseKeys.LLMs,
-      SkillDatabaseKeys.Pandas,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.DeepLearning,
-      SkillDatabaseKeys.NaturalLanguageProcessing,
-      SkillDatabaseKeys.NeuralNetworks,
-      SkillDatabaseKeys.Benchmarking,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    relatedMaterials: [
-      ModuleDatabaseKeys.KCL_IndividualProject,
-      ProjectDatabaseKeys.Llama3_1FineTuningMultIt,
-    ],
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.Llama3_1BenchmarkingItalic
-    ),
-  },
-  [ProjectDatabaseKeys.MagistralSmallBenchmarkingItalic]: {
-    name: "Magistral Benchmarking (Italic)",
-    description: `Benchmarking Magistral-Small reasoning model from Mistral on the ITALIC benchmark to evaluate its cultural alignment in Italian. Quantisation was used due to hardware limitations.`,
-    repositoryURL: "https://github.com/mbeps/magistral_italic_benchmark",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.PyTorch,
-      SkillDatabaseKeys.Transformers,
-      SkillDatabaseKeys.HuggingFace,
-      SkillDatabaseKeys.LLMs,
-      SkillDatabaseKeys.Pandas,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.DeepLearning,
-      SkillDatabaseKeys.NaturalLanguageProcessing,
-      SkillDatabaseKeys.NeuralNetworks,
-      SkillDatabaseKeys.Benchmarking,
-      SkillDatabaseKeys.Quantization,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    relatedMaterials: [
-      ModuleDatabaseKeys.KCL_IndividualProject,
-      ProjectDatabaseKeys.MagistralSmallFineTuningMultIt,
-    ],
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.MagistralSmallBenchmarkingItalic
-    ),
-  },
-  [ProjectDatabaseKeys.MistralNemoBenchmarkingItalic]: {
-    name: "Mistral-NeMo Benchmarking (Italic)",
-    description: `Benchmarking Mistral-Nemo model on the ITALIC benchmark to evaluate their cultural alignment in Italian. Various optmisations were used for fast inference.`,
-    repositoryURL: "https://github.com/mbeps/mistral_italic_benchmark",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.PyTorch,
-      SkillDatabaseKeys.Transformers,
-      SkillDatabaseKeys.HuggingFace,
-      SkillDatabaseKeys.LLMs,
-      SkillDatabaseKeys.Pandas,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.DeepLearning,
-      SkillDatabaseKeys.NaturalLanguageProcessing,
-      SkillDatabaseKeys.NeuralNetworks,
-      SkillDatabaseKeys.Benchmarking,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    relatedMaterials: [ModuleDatabaseKeys.KCL_IndividualProject],
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.MistralNemoBenchmarkingItalic
-    ),
-  },
-  [ProjectDatabaseKeys.Qwen3FineTuningMultIt]: {
-    name: "Qwen3 Fine-Tuning (Mult-It)",
-    description: `Fine-Tuning Qwen3 models using Low-Rank Adaptation (LoRA) on the Mult-It dataset to improve their cultural alignment in Italian. Various optmisations (including novel hybrid-training approach) were used for optimal training.`,
-    repositoryURL: "https://github.com/mbeps/llama3.1_fine-tuning_mult-it",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.PyTorch,
-      SkillDatabaseKeys.Transformers,
-      SkillDatabaseKeys.HuggingFace,
-      SkillDatabaseKeys.LLMs,
-      SkillDatabaseKeys.Pandas,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.DeepLearning,
-      SkillDatabaseKeys.NaturalLanguageProcessing,
-      SkillDatabaseKeys.NeuralNetworks,
-      SkillDatabaseKeys.FineTuning,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    relatedMaterials: [
-      ModuleDatabaseKeys.KCL_IndividualProject,
-      ProjectDatabaseKeys.Qwen3BenchmarkingItalic,
-    ],
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.Qwen3FineTuningMultIt
-    ),
-  },
-  [ProjectDatabaseKeys.Llama3_1FineTuningMultIt]: {
-    name: "Llama 3.1 Fine-Tuning (Mult-It)",
-    description: `Fine-Tuning Llama 3.1 models using Low-Rank Adaptation (LoRA) on the Mult-It dataset to improve their cultural alignment in Italian. Various optmisations were used for optimal training.`,
-    repositoryURL: "https://github.com/mbeps/llama3.1_fine-tuning_mult-it",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.PyTorch,
-      SkillDatabaseKeys.Transformers,
-      SkillDatabaseKeys.HuggingFace,
-      SkillDatabaseKeys.LLMs,
-      SkillDatabaseKeys.Pandas,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.DeepLearning,
-      SkillDatabaseKeys.NaturalLanguageProcessing,
-      SkillDatabaseKeys.NeuralNetworks,
-      SkillDatabaseKeys.FineTuning,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    relatedMaterials: [
-      ModuleDatabaseKeys.KCL_IndividualProject,
-      ProjectDatabaseKeys.Llama3_1BenchmarkingItalic,
-    ],
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.Llama3_1FineTuningMultIt
-    ),
-  },
-  [ProjectDatabaseKeys.MagistralSmallFineTuningMultIt]: {
-    name: "Magistral Fine-Tuning (Mult-It)",
-    description: `Fine-Tuning Magistral-Small model using Quantised Low-Rank Adaptation (QLoRA) on the Mult-It dataset to improve their cultural alignment in Italian. Various optmisations (including novel hybrid-training approach) were used for optimal training.`,
-    repositoryURL: "https://github.com/mbeps/magistral_mult-it_fine-tuning",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.PyTorch,
-      SkillDatabaseKeys.Transformers,
-      SkillDatabaseKeys.HuggingFace,
-      SkillDatabaseKeys.LLMs,
-      SkillDatabaseKeys.Pandas,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.DeepLearning,
-      SkillDatabaseKeys.NaturalLanguageProcessing,
-      SkillDatabaseKeys.NeuralNetworks,
-      SkillDatabaseKeys.FineTuning,
-      SkillDatabaseKeys.Quantization,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    relatedMaterials: [
-      ModuleDatabaseKeys.KCL_IndividualProject,
-      ProjectDatabaseKeys.MagistralSmallBenchmarkingItalic,
-    ],
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.MagistralSmallFineTuningMultIt
-    ),
-  },
-  [ProjectDatabaseKeys.HandWrittenDigitClassifier]: {
-    name: "Handwritten Digit Classifier",
-    description: `
-      A handwritten digit classifier using built using a Convolutional Neural Network (CNN).
-      Used various techniques such as data augmentation, batch normalisation, and dropout to improve the model's performance.
-      `,
-    repositoryURL:
-      "https://github.com/mbeps/pattern-recognition-neural-network-coursework-1",
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    relatedMaterials: [
-      ModuleDatabaseKeys.KCL_PatternRecognitionNeuralNetworksDeepLearning,
-    ],
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.Keras,
-      SkillDatabaseKeys.TensorFlow,
-      SkillDatabaseKeys.Matplotlib,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.DeepLearning,
-      SkillDatabaseKeys.ComputerVision,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.HandWrittenDigitClassifier
-    ),
-  },
-  [ProjectDatabaseKeys.AdultIncomePrediction]: {
-    name: "Adult Income Prediction",
-    description: `
-      Comparing various classification algorithms to predict whether an adult earns more than $50,000 a year.
-      Emphasis is on feature engineering, data preprocessing with One-Hot Encoding, and model optimization through hyperparameter tuning.`,
-    repositoryURL: "https://github.com/mbeps/Adults_Income_Prediction",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.ScikitLearn,
-      SkillDatabaseKeys.NumPy,
-      SkillDatabaseKeys.Pandas,
-      SkillDatabaseKeys.Matplotlib,
-      SkillDatabaseKeys.Seaborn,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.DeepLearning,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Personal,
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.AdultIncomePrediction
-    ),
-  },
-  [ProjectDatabaseKeys.HousePricePrediction]: {
-    name: "House Price Prediction",
-    description: `
-      Comparing various regression algorithms to predict house prices in relation to the distance from the coast.
-      Emphasis is on feature engineering, data preprocessing with One-Hot Encoding, and model optimization through hyperparameter tuning.`,
-    repositoryURL: "https://github.com/mbeps/House_Price_Prediction",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.ScikitLearn,
-      SkillDatabaseKeys.NumPy,
-      SkillDatabaseKeys.Pandas,
-      SkillDatabaseKeys.Matplotlib,
-      SkillDatabaseKeys.Seaborn,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.Mathematics,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Personal,
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.HousePricePrediction
-    ),
-  },
-  [ProjectDatabaseKeys.CustomNeuralNetworkCoursework]: {
-    name: "Custom Neural Network Classifier",
-    description: `
-      Built a neural network from scratch to teach a Pacman agent.
-      Used various techniques such as batch normalisation, dropout, momentum, learning rate decay and more to improve performance.
-      `,
-    repositoryURL:
-      "https://github.com/mbeps/machine-learning-pacman-classifier-coursework",
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    relatedMaterials: [ModuleDatabaseKeys.KCL_MachineLearning],
-    skills: [
-      SkillDatabaseKeys.Python,
-
-      SkillDatabaseKeys.LinearAlgebra,
-      SkillDatabaseKeys.Probability,
-      SkillDatabaseKeys.Statistics,
-      SkillDatabaseKeys.Calculus,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.DeepLearning,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.CustomNeuralNetworkCoursework
-    ),
-  },
-  [ProjectDatabaseKeys.MachineLearningAlgorithms]: {
-    name: "Machine Learning Algorithms",
-    description: `
-      Practicing various algorithms and techniques.
-      This includes supervised, unsupervised, and reinforcement learning algorithms, as well as feature engineering, data preprocessing, and hyperparameter tuning.
-    `,
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    repositoryURL: "https://github.com/mbeps/Machine-Learning-Course-Lab",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.ScikitLearn,
-      SkillDatabaseKeys.NumPy,
-      SkillDatabaseKeys.Pandas,
-      SkillDatabaseKeys.Matplotlib,
-      SkillDatabaseKeys.Seaborn,
-      SkillDatabaseKeys.Keras,
-      SkillDatabaseKeys.TensorFlow,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.ComputerVision,
-      SkillDatabaseKeys.Mathematics,
-      SkillDatabaseKeys.LinearAlgebra,
-      SkillDatabaseKeys.Probability,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    archived: true,
-    relatedMaterials: [CertificateDatabaseKeys.UdemyMachineLearningAtoZ],
-    type: ProjectTypeEnum.Personal,
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.MachineLearningAlgorithms
-    ),
-  },
-  [ProjectDatabaseKeys.ArtificialIntelligenceReinforcementLearning]: {
-    name: "Reinforcement Learning Lab",
-    description: `
-      Practicing various Reinforcement Learning algorithms and techniques.
-      This includes Q-Learning, Deep Q-Learning, and Asynchronous Advantage Actor-Critic (A3C) algorithms.
-    `,
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    repositoryURL: "https://github.com/mbeps/Reinforcement-Learning",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.ScikitLearn,
-      SkillDatabaseKeys.NumPy,
-      SkillDatabaseKeys.Matplotlib,
-      SkillDatabaseKeys.PyTorch,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.ReinforcementLearning,
-      SkillDatabaseKeys.Mathematics,
-      SkillDatabaseKeys.LinearAlgebra,
-      SkillDatabaseKeys.Probability,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    archived: true,
-    relatedMaterials: [CertificateDatabaseKeys.UdemyArtificialIntelligenceAtoZ],
-    type: ProjectTypeEnum.Personal,
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.ArtificialIntelligenceReinforcementLearning
-    ),
-  },
-  [ProjectDatabaseKeys.CustomQLearningAgent]: {
-    name: "Custom Q-Learning Agent",
-    description: `
-      A custom Q-Learning agent learns to play Pacman.
-      Required foundational Mathematics knowledge and understanding of the Q-Learning algorithm.
-      `,
-    repositoryURL:
-      "https://github.com/mbeps/machine-learning-coursework-2-pacman",
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    skills: [
-      SkillDatabaseKeys.Python,
-
-      SkillDatabaseKeys.LinearAlgebra,
-      SkillDatabaseKeys.Probability,
-      SkillDatabaseKeys.Statistics,
-      SkillDatabaseKeys.Calculus,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.ReinforcementLearning,
-      SkillDatabaseKeys.DeepLearning,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    relatedMaterials: [ModuleDatabaseKeys.KCL_MachineLearning],
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.CustomQLearningAgent
-    ),
-  },
-  [ProjectDatabaseKeys.MachineLearningAssignment1]: {
-    name: `Machine Learning Assignment 1`,
-    description: `
-      Implementing algorithms from scratch such as the Nearest Neighbours algorithm.
-      Requires an understanding of the Mathematics behind the algorithms and the ability to implement them.
-      `,
-    repositoryURL: `https://github.com/mbeps/Machine-Learning-Assignment-1`,
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.ScikitLearn,
-      SkillDatabaseKeys.NumPy,
-      SkillDatabaseKeys.Matplotlib,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.Mathematics,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
-    type: ProjectTypeEnum.Academic,
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.MachineLearningAssignment1
-    ),
-    archived: true,
-  },
-  [ProjectDatabaseKeys.MachineLearningAssignment2]: {
-    name: `Machine Learning Assignment 2`,
-    description: `
-      Be able to use and implement algorithms, 
-      with the Lasso and inductive conformal prediction algorithms as examples. 
-    `,
-    repositoryURL: `https://github.com/mbeps/Machine-Learning-Assignment-2`,
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.ScikitLearn,
-      SkillDatabaseKeys.NumPy,
-      SkillDatabaseKeys.Matplotlib,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.Mathematics,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.MachineLearningAssignment2
-    ),
-    archived: true,
-  },
-  [ProjectDatabaseKeys.MachineLearningAssignment3]: {
-    name: `Machine Learning Assignment 3`,
-    description: `
-      Be able to use and implement algorithms, 
-      with the SVM, neural networks, and cross-conformal prediction algorithms as examples. 
-      `,
-    repositoryURL: `https://github.com/mbeps/Machine-Learning-Assignment-3`,
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.ScikitLearn,
-      SkillDatabaseKeys.NumPy,
-      SkillDatabaseKeys.Matplotlib,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.Mathematics,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
-    type: ProjectTypeEnum.Academic,
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.MachineLearningAssignment3
-    ),
-    archived: true,
-  },
-  [ProjectDatabaseKeys.MachineLearningLabs]: {
-    name: `Machine Learning Labs`,
-    description: `
-      Implemented various algorithms and techniques learnt during the course, 
-      such as Nearest Neighbours, Conformal Prediction, Regression algorithms, data preprocessing, 
-      kernels, Neural Networks, SVMs, etc.`,
-    repositoryURL: `https://github.com/mbeps/Machine-Learning-Labs-Questions`,
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.ScikitLearn,
-      SkillDatabaseKeys.NumPy,
-      SkillDatabaseKeys.Matplotlib,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.DeepLearning,
-      SkillDatabaseKeys.Mathematics,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
-    archived: true,
-    type: ProjectTypeEnum.Academic,
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.MachineLearningLabs
-    ),
-  },
-  [ProjectDatabaseKeys.ComputationalFinanceAssignment]: {
-    name: "Computational Finance Assignment",
-    description: `
-      Exploring valuation of options using methods like Black-Scholes, binomial trees, and Monte Carlo. 
-      Also includes theoretical aspects of put-call parity and financial arbitrage opportunities.`,
-    repositoryURL: `https://github.com/mbeps/Computation_Finance_Assignment`,
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.NumPy,
-      SkillDatabaseKeys.Matplotlib,
-
-      SkillDatabaseKeys.Probability,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-
-      SkillDatabaseKeys.Mathematics,
-      SkillDatabaseKeys.Algebra,
-      SkillDatabaseKeys.Calculus,
-      SkillDatabaseKeys.LinearAlgebra,
-      SkillDatabaseKeys.Statistics,
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.Mechanics,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    relatedMaterials: [ModuleDatabaseKeys.RHUL_ComputationalFinance],
-    type: ProjectTypeEnum.Academic,
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.ComputationalFinanceAssignment
-    ),
-  },
-  [ProjectDatabaseKeys.MachineLearningDataScienceLab]: {
-    name: "Machine Learning & Data Science Lab",
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    description: `
-      Focusing on learning generative models, using third-party models and using advanced techniques. 
-      This includes techniques such as transfer learning, LLM Agents, and Generative Models.`,
-    repositoryURL: "https://github.com/mbeps/Data-Science-Machine-Learning-Lab",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.ScikitLearn,
-      SkillDatabaseKeys.NumPy,
-      SkillDatabaseKeys.Pandas,
-      SkillDatabaseKeys.Matplotlib,
-      SkillDatabaseKeys.Keras,
-      SkillDatabaseKeys.TensorFlow,
-
-      SkillDatabaseKeys.Mathematics,
-      SkillDatabaseKeys.LinearAlgebra,
-      SkillDatabaseKeys.Probability,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    archived: true,
-    relatedMaterials: [
-      CertificateDatabaseKeys.UdemyMachineLearningDataScienceAndGenerativeAIWithPython,
-    ],
-    type: ProjectTypeEnum.Personal,
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.MachineLearningDataScienceLab
-    ),
-  },
-
-  [ProjectDatabaseKeys.MarkovDecisionAgent]: {
-    name: "Markov Decision Agent",
-    description: `
-      Pacman agent plays to win the game while handling stochasticity in the movement of agent and ghosts.
-      Uses Markov Decision Processes, Value Iteration and other enhancements.
-      `,
-    repositoryURL: "https://github.com/mbeps/pacman-assignment",
-    skills: [
-      SkillDatabaseKeys.Python,
-
-      SkillDatabaseKeys.IntelligentAgents,
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.Mathematics,
-      SkillDatabaseKeys.Probability,
-      SkillDatabaseKeys.LinearAlgebra,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    archived: true,
-    relatedMaterials: [
-      ModuleDatabaseKeys.KCL_ArtificialIntelligenceReasoningAndDecisionMaking,
-    ],
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.MarkovDecisionAgent
-    ),
-  },
-  [ProjectDatabaseKeys.ComputerVisionImageSegmentation]: {
-    name: "Computer Vision Image Segmentation",
-    description: `
-      Segmenting images using various techniques.
-      Specifically, used models of biological vision systems such as Simple and Complex cells, and Gabor filters.
-      `,
-    repositoryURL: "https://github.com/mbeps/computer-vision-assignment",
-    skills: [
-      SkillDatabaseKeys.Matlab,
-
-      SkillDatabaseKeys.IntelligentAgents,
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.ComputerVision,
-      SkillDatabaseKeys.Mathematics,
-      SkillDatabaseKeys.Probability,
-      SkillDatabaseKeys.LinearAlgebra,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    archived: true,
-    relatedMaterials: [ModuleDatabaseKeys.KCL_ComputerVision],
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.ComputerVisionImageSegmentation
-    ),
-  },
-  [ProjectDatabaseKeys.ComputerVisionQuizzes]: {
-    name: "Computer Vision Quizzes",
-    description: `
-      Solutions to quizzes where various low-level and mid-level vision techniques were covered.
-      These techniques include edge detection, image segmentation, and image filtering.
-      `,
-    repositoryURL: "https://github.com/mbeps/computer-vision-quiz-assignment",
-    skills: [
-      SkillDatabaseKeys.Matlab,
-
-      SkillDatabaseKeys.IntelligentAgents,
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.ComputerVision,
-      SkillDatabaseKeys.Mathematics,
-      SkillDatabaseKeys.Probability,
-      SkillDatabaseKeys.LinearAlgebra,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    archived: true,
-    relatedMaterials: [ModuleDatabaseKeys.KCL_ComputerVision],
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.ComputerVisionQuizzes
-    ),
-  },
-
   //^ Libraries
   [ProjectDatabaseKeys.BaseRestController]: {
     name: "REST Template Config",
@@ -1918,6 +2069,51 @@ const projectMap: Database<ProjectInterface> = {
   },
 
   //^ Other Projects
+  [ProjectDatabaseKeys.GnomeAllInOneClipboardExtension]: {
+    name: `All-in-One Clipboard Extension`,
+    description: `
+      A Gnome extension that adds advanced clipboard management features to the Gnome desktop environment.
+      Inspired by Windows 11's feature, this extension allows users to manage clipboard history, emojis, kaomojis, GIFs, and symbols.
+          `,
+    repositoryURL: `https://github.com/NiffirgkcaJ/all-in-one-clipboard`,
+    skills: [
+      SkillDatabaseKeys.JavaScript,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Leadership,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.Communication,
+    ],
+    category: ProjectCategoriesEnum.Other,
+    archived: true,
+    type: ProjectTypeEnum.Personal,
+  },
+  [ProjectDatabaseKeys.GnomeQuickSettingsTweakExtension]: {
+    name: `Quick Settings Tweak Extension`,
+    description: `
+      A Gnome extension that allows users to customize the quick settings menu in the Gnome desktop environment.
+      `,
+    repositoryURL: `https://github.com/qwreey/quick-settings-tweaks`,
+    skills: [
+      SkillDatabaseKeys.JavaScript,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.Leadership,
+      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.Communication,
+    ],
+    category: ProjectCategoriesEnum.Other,
+    archived: true,
+    type: ProjectTypeEnum.Personal,
+  },
   [ProjectDatabaseKeys.OsmosGame]: {
     name: `Osmos Game`,
     description: `
