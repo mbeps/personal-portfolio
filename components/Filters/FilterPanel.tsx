@@ -15,7 +15,7 @@ import { Button } from "../shadcn/ui/button";
 import { ArchiveToggle } from "./ArchiveToggle";
 import FilterPopover from "./FilterPopover";
 import HeadingThree from "../Text/HeadingThree";
-import HeadingTwo from "../Text/HeadingTwo";
+import MobileFilterAccordion from "./MobileFilterAccordion";
 
 interface FilterOverlayProps {
   filterCategories: FilterCategory[];
@@ -28,20 +28,16 @@ interface FilterOverlayProps {
 }
 
 /**
- * This displays the filter overlay with the filter options.
- * Uses Drawer on mobile and SidePanel on medium and larger screens for responsive behaviour.
- * The component is outside the screen and slides in when opened.
- * This component takes the necessary filter options and displays them in a list.
- * Once a filter is chosen, the URL is updated with the new filter options.
- * This URL is then listened to from the page calling the filter overlay and the content is updated.
+ * Filter overlay that shows a drawer on mobile and a side panel on desktop.
+ * A filter change updates the query string so pages react automatically.
  *
- * @param filterCategories The title of the filtering options
- * @param basePath The base path for the URL of the current page
- * @param isOpen If the filter overlay is open
- * @param toggle Function to toggle the filter overlay
- * @param archiveFilter The status of the archive filter
- * @param areFiltersApplied If filters are applied
- * @returns Overlay component with filter options
+ * @param filterCategories Filter sections and their options
+ * @param basePath Base path used to build filter URLs
+ * @param isOpen When true the panel is visible
+ * @param toggle Toggles the open state
+ * @param archiveFilter Archive toggle metadata
+ * @param areFiltersApplied Flag used to disable the clear button
+ * @param searchFilter Search metadata used for building URLs
  */
 const FilterOverlay: React.FC<FilterOverlayProps> = ({
   filterCategories,
@@ -100,17 +96,28 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
       </p>
 
       {/* Filter Options */}
-      <div className="space-y-3 mt-4 flex flex-col justify-center items-center">
-        {filterCategories.map((filterCategory, index) => (
-          <FilterPopover
-            key={index}
+      <div className="mt-4 flex w-full flex-col">
+        {isDesktop ? (
+          <div className="space-y-3 flex flex-col w-full">
+            {filterCategories.map((filterCategory, index) => (
+              <FilterPopover
+                key={index}
+                basePath={basePath}
+                selectedFilterCategory={filterCategory}
+                filterCategories={filterCategories}
+                archiveFilter={archiveFilter}
+                searchFilter={searchFilter}
+              />
+            ))}
+          </div>
+        ) : (
+          <MobileFilterAccordion
             basePath={basePath}
-            selectedFilterCategory={filterCategory}
             filterCategories={filterCategories}
             archiveFilter={archiveFilter}
             searchFilter={searchFilter}
           />
-        ))}
+        )}
       </div>
 
       {/* Buttons */}
