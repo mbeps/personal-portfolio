@@ -1,4 +1,3 @@
-import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/UI/PageDescription";
 import developerName from "@/constants/developerName";
 import { SKILL_PAGE } from "@/constants/pages";
@@ -39,7 +38,7 @@ export default function SkillPage() {
     <main>
       <section id="skills">
         <div className="w-full">
-          <HeadingOne title="Skills" />
+          <h1>Skills</h1>
           <PageDescription description={SKILL_PAGE.description} />
           <SkillList skills={skillDatabaseKeys} />
         </div>

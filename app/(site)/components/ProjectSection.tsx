@@ -1,6 +1,4 @@
 import ProjectItem from "@/components/MaterialItems/ProjectItem";
-import HeadingTwo from "@/components/Text/HeadingTwo";
-
 import { Button } from "@/components/shadcn/ui/button";
 import { PROJECTS_PAGE } from "@/constants/pages";
 import ProjectDatabaseKeys from "@/database/Projects/ProjectDatabaseKeys";
@@ -28,7 +26,7 @@ const ProjectsSection = () => {
 
   return (
     <section id="projects" className="home-section-wrapper">
-      <HeadingTwo title="Projects" />
+      <h2>Projects</h2>
 
       <div className="flex flex-col space-y-14 md:space-y-20 mt-6 md:mt-14">
         {displayedProjects.map((slug, idx) => (

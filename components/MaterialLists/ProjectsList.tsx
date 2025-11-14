@@ -1,6 +1,5 @@
 import stringToSlug from "@/actions/stringToSlug";
 import ProjectItem from "@/components/MaterialItems/ProjectItem";
-import HeadingTwo from "@/components/Text/HeadingTwo";
 import MaterialListProps from "@/interfaces/props/MaterialListProps";
 
 interface ExtendedMaterialListProps extends MaterialListProps {
@@ -30,7 +29,7 @@ const ProjectsList: React.FC<ExtendedMaterialListProps> = ({
                   {groupedProjects.length > 1 && (
                     <>
                       <div className="border-b border-gray-200 dark:border-neutral-600 pb-1" />
-                      <HeadingTwo title={group.groupName} />
+                      <h2>{group.groupName}</h2>
                     </>
                   )}
                   <div className="space-y-14 md:space-y-20">

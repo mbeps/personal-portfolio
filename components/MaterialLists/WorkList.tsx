@@ -1,5 +1,4 @@
 import stringToSlug from "@/actions/stringToSlug";
-import HeadingTwo from "@/components/Text/HeadingTwo";
 import MaterialListProps from "@/interfaces/props/MaterialListProps";
 import WorkItem from "../MaterialItems/WorkItem";
 
@@ -17,7 +16,7 @@ const WorkList: React.FC<MaterialListProps> = ({
                   {groupedRoles.length > 1 && (
                     <>
                       <div className="border-b border-gray-200 dark:border-neutral-600 pb-1" />
-                      <HeadingTwo title={group.groupName} />
+                      <h2>{group.groupName}</h2>
                     </>
                   )}
                   <div className="space-y-10">

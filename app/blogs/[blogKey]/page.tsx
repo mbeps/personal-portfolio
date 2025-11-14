@@ -4,7 +4,6 @@ import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupS
 import MaterialList from "@/components/MaterialLists/MaterialList";
 import SpecialReader from "@/components/Reader/SpecialReader";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
-import HeadingTwo from "@/components/Text/HeadingTwo";
 import developerName from "@/constants/developerName";
 import { BLOG_PAGE } from "@/constants/pages";
 import BlogInterface from "@/database/Blogs/BlogInterface";
@@ -136,7 +135,7 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
       <div>
         <div className="text-center">
           {/* Title */}
-          <HeadingTwo title={blogData?.name} />
+          <h2>{blogData?.name}</h2>
 
           {/* Description */}
           <h3 className="text-neutral-600 dark:text-neutral-400 mb-12">

@@ -1,6 +1,5 @@
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
 import SpecialReader from "@/components/Reader/SpecialReader";
-import HeadingTwo from "@/components/Text/HeadingTwo";
 import { PROJECTS_PAGE } from "@/constants/pages";
 import projectDatabaseMap from "@/database/Projects/ProjectDatabaseMap";
 import ProjectInterface from "@/database/Projects/ProjectInterface";
@@ -39,7 +38,7 @@ const ProjectReportPage = async ({ params }: PageProps) => {
     <main>
       <div>
         <div className="text-center">
-          <HeadingTwo title={`Report for ${projectData.name}`} />
+          <h2>{`Report for ${projectData.name}`}</h2>
         </div>
         <SpecialReader
           content={reportBlog || ""}

@@ -2,7 +2,6 @@ import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFile
 import MaterialList from "@/components/MaterialLists/MaterialList";
 import Reader from "@/components/Reader/Reader";
 import Socials from "@/components/Socials/Socials";
-import HeadingOne from "@/components/Text/HeadingOne";
 import DetailsTable from "@/components/UI/DetailsTable";
 import developerName from "@/constants/developerName";
 import experienceTime from "@/constants/experience";
@@ -80,7 +79,7 @@ export default function About() {
   return (
     <main>
       <div className="text-center">
-        <HeadingOne title="About Me" />
+        <h1>About Me</h1>
       </div>
 
       {/* Profile Image */}

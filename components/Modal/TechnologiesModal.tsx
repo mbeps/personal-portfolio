@@ -34,8 +34,6 @@ import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 import SkillTag from "../Tags/SkillTag";
 import Tag from "../Tags/Tag";
-import HeadingThree from "../Text/HeadingThree";
-import HeadingTwo from "../Text/HeadingTwo";
 import { Button } from "../shadcn/ui/button";
 import { ScrollArea } from "../shadcn/ui/scroll-area";
 
@@ -120,7 +118,7 @@ const TechnologiesModal: React.FC = () => {
   const ModalContent = () => (
     <>
       <div className="w-full pt-6 px-6">
-        <HeadingTwo title="Technologies" />
+        <h2>Technologies</h2>
       </div>
 
       <ScrollArea className="h-full w-full grow">
@@ -162,7 +160,7 @@ const TechnologiesModal: React.FC = () => {
           <div className="mt-4 text-center md:text-left space-y-16">
             {groupedSkills.map((categoryData, index) => (
               <div key={index}>
-                <HeadingThree title={categoryData.skillCategoryName} />
+                <h3>{categoryData.skillCategoryName}</h3>
                 <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
                   {categoryData.skills.map((skillSlug) => (
                     <SkillTag key={skillSlug} skillKey={skillSlug} />

@@ -1,7 +1,6 @@
 "use client";
 
 import LanguageModal from "@/components/Modal/LanguageModal";
-import HeadingThree from "@/components/Text/HeadingThree";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import useIsMounted from "@/hooks/useIsMounted";
 import React from "react";
@@ -32,7 +31,7 @@ const LanguageSection: React.FC = () => {
 
   return (
     <>
-      <HeadingThree title="Languages" />
+      <h3>Languages</h3>
       <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start -mt-2">
         {mainLanguages.map((languageData, idx) => (
           <LanguageModal key={idx} languageIdentifier={languageData} />

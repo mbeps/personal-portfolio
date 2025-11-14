@@ -3,8 +3,6 @@ import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupS
 import MaterialList from "@/components/MaterialLists/MaterialList";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import Tag from "@/components/Tags/Tag";
-import HeadingThree from "@/components/Text/HeadingThree";
-import HeadingTwo from "@/components/Text/HeadingTwo";
 import StringList from "@/components/Text/StringList";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
@@ -141,7 +139,7 @@ const CertificatesPage: React.FC<{ params: Params }> = async ({ params }) => {
   return (
     <main>
       <div className="space-y-6 align-top relative">
-        <HeadingTwo title={certificateData.name} />
+        <h2>{certificateData.name}</h2>
 
         <div className="space-y-1">
           {/* Certificate Image */}
@@ -188,7 +186,7 @@ const CertificatesPage: React.FC<{ params: Params }> = async ({ params }) => {
             {certificateData.description && (
               <div className="flex flex-col">
                 <div className="md:text-left text-center">
-                  <HeadingThree title="Description" />
+                  <h3>Description</h3>
                 </div>
                 <p className="text-lg text-neutral-800 dark:text-neutral-300">
                   {certificateData.description}
@@ -201,7 +199,7 @@ const CertificatesPage: React.FC<{ params: Params }> = async ({ params }) => {
               {certificateData.learningOutcomes && (
                 <>
                   <div className="text-center lg:text-left">
-                    <HeadingThree title="Learning Objectives" />
+                    <h3>Learning Objectives</h3>
                   </div>
                   <StringList items={certificateData.learningOutcomes} />
                 </>
@@ -213,7 +211,7 @@ const CertificatesPage: React.FC<{ params: Params }> = async ({ params }) => {
             <div className="md:grid md:grid-cols-2">
               <div>
                 <div className="md:text-left text-center">
-                  <HeadingThree title="Certificate Issuer" />
+                  <h3>Certificate Issuer</h3>
                 </div>
                 <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-5">
                   <Tag>{certificateData.issuer}</Tag>
@@ -222,7 +220,7 @@ const CertificatesPage: React.FC<{ params: Params }> = async ({ params }) => {
 
               <div>
                 <div className="md:text-left text-center">
-                  <HeadingThree title="Links" />
+                  <h3>Links</h3>
                 </div>
                 {/* Links */}
                 <div

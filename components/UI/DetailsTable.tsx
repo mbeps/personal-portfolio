@@ -1,5 +1,4 @@
 import React, { ReactNode } from "react";
-import HeadingFour from "../Text/HeadingFour";
 import { twMerge } from "tailwind-merge";
 
 interface TableDataPair {
@@ -44,7 +43,7 @@ const DetailsTable: React.FC<TableProps> = ({ details, className }) => {
     <div className={overlayStyle}>
       {details.map((detail, index) => (
         <div key={index} className="mb-4">
-          <HeadingFour title={detail.heading} />
+          <h4>{detail.heading}</h4>
           {renderValue(detail.value)}
         </div>
       ))}

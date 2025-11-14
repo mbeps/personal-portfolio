@@ -2,8 +2,6 @@ import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
 import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
 import MaterialList from "@/components/MaterialLists/MaterialList";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
-import HeadingThree from "@/components/Text/HeadingThree";
-import HeadingTwo from "@/components/Text/HeadingTwo";
 import StringList from "@/components/Text/StringList";
 import DynamicBreadcrumb, {
   BreadcrumbPair,
@@ -155,7 +153,7 @@ const ModulePage: React.FC<{ params: Params }> = async ({ params }) => {
       </div>
 
       <div>
-        <HeadingTwo title={moduleData.name} />
+        <h2>{moduleData.name}</h2>
         <p
           className="
             text-neutral-600 dark:text-neutral-300 
@@ -175,7 +173,7 @@ const ModulePage: React.FC<{ params: Params }> = async ({ params }) => {
             {moduleData.learningOutcomes && (
               <>
                 <div className="text-center lg:text-left">
-                  <HeadingThree title="Learning Outcomes" />
+                  <h3>Learning Outcomes</h3>
                 </div>
                 <StringList items={moduleData.learningOutcomes} />
               </>

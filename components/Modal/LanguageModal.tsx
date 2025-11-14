@@ -5,8 +5,6 @@ import groupSkills, {
   GroupByOptions,
 } from "@/actions/skills/group/groupSkills";
 import Tag from "@/components/Tags/Tag";
-import HeadingThree from "@/components/Text/HeadingThree";
-import HeadingTwo from "@/components/Text/HeadingTwo";
 import { Button } from "@/components/shadcn/ui/button";
 import {
   Dialog,
@@ -122,7 +120,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
   const ModalContent = () => (
     <>
       <div className="w-full pt-6 px-6">
-        <HeadingTwo title={language.name} />
+        <h2>{language.name}</h2>
       </div>
 
       <ScrollArea className="h-full w-full grow">
@@ -164,7 +162,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
           <div className="space-y-16">
             {groupedSkills.map((categoryData, index) => (
               <div key={index} className="text-center md:text-left">
-                <HeadingThree title={categoryData.skillCategoryName} />
+                <h3>{categoryData.skillCategoryName}</h3>
                 <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
                   {categoryData.skills.map((skillKey, index) => (
                     <SkillTag key={index} skillKey={skillKey} />

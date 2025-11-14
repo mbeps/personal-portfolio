@@ -1,6 +1,5 @@
 import stringToSlug from "@/actions/stringToSlug";
 import BlogItem from "@/components/MaterialItems/BlogItem";
-import HeadingTwo from "@/components/Text/HeadingTwo";
 import Grid from "@/components/UI/Grid";
 import MaterialListProps from "@/interfaces/props/MaterialListProps";
 
@@ -26,7 +25,7 @@ const BlogsList: React.FC<MaterialListProps> = ({
                   {groupedBlogs.length > 1 && (
                     <>
                       <div className="border-b border-gray-200 dark:border-neutral-600 pb-1" />
-                      <HeadingTwo title={group.groupName} />
+                      <h2>{group.groupName}</h2>
                     </>
                   )}
                   <Grid
