@@ -14,7 +14,6 @@ import { Drawer, DrawerContent } from "@/components/shadcn/ui/drawer";
 import { Button } from "../shadcn/ui/button";
 import { ArchiveToggle } from "./ArchiveToggle";
 import FilterPopover from "./FilterPopover";
-import HeadingThree from "../Text/HeadingThree";
 import MobileFilterAccordion from "./MobileFilterAccordion";
 
 interface FilterOverlayProps {
@@ -167,7 +166,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
         <Drawer open={isOpen} onOpenChange={toggle}>
           <DrawerContent className="flex flex-col justify-start h-[75vh]">
             <div className="w-full pt-6 px-6 text-center">
-              <HeadingThree title="Filters" />
+              <h3>Filters</h3>
             </div>
             <FilterContent />
           </DrawerContent>

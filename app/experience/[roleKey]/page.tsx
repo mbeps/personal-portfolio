@@ -5,8 +5,6 @@ import ShortDate from "@/class/ShortDate";
 import MaterialList from "@/components/MaterialLists/MaterialList";
 import Reader from "@/components/Reader/Reader";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
-import HeadingThree from "@/components/Text/HeadingThree";
-import HeadingTwo from "@/components/Text/HeadingTwo";
 import DetailsTable from "@/components/UI/DetailsTable";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
@@ -147,7 +145,7 @@ const RolePage: React.FC<{ params: Params }> = async ({ params }) => {
   return (
     <main>
       <div>
-        <HeadingTwo title={roleData?.name} />
+        <h2>{roleData?.name}</h2>
 
         {companyData.logo && (
           <div className="flex items-center justify-center my-12 flex-col md:flex-row">
@@ -196,7 +194,7 @@ const RolePage: React.FC<{ params: Params }> = async ({ params }) => {
         <div className="space-y-24">
           <div className="space-y-4">
             <div className="text-center lg:text-left">
-              <HeadingThree title="Details" />
+              <h3>Details</h3>
             </div>
             <DetailsTable
               details={[
@@ -215,7 +213,7 @@ const RolePage: React.FC<{ params: Params }> = async ({ params }) => {
             {hasResponsibilities && (
               <>
                 <div className="text-center lg:text-left">
-                  <HeadingThree title="Responsibilities" />
+                  <h3>Responsibilities</h3>
                 </div>
                 <Reader content={responsibilities} size="lg:prose-lg" />
               </>

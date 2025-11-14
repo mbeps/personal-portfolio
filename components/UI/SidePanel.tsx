@@ -4,7 +4,6 @@ import { NAVBAR_HEIGHT } from "@/constants/NAVBAR";
 import useIsMounted from "@/hooks/useIsMounted";
 import React, { useEffect } from "react";
 import { IoClose } from "react-icons/io5";
-import HeadingThree from "../Text/HeadingThree";
 import { twMerge } from "tailwind-merge";
 
 interface SidePanelProps {
@@ -101,7 +100,7 @@ const SidePanel: React.FC<SidePanelProps> = ({
               rounded-t-2xl
             "
           >
-            <HeadingThree title={title} />
+            <h3>{title}</h3>
             <button onClick={toggle}>
               <span className="sr-only">Close</span>
               <IoClose

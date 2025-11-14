@@ -6,9 +6,6 @@ import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
 import MaterialList from "@/components/MaterialLists/MaterialList";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import Tag from "@/components/Tags/Tag";
-import HeadingFour from "@/components/Text/HeadingFour";
-import HeadingThree from "@/components/Text/HeadingThree";
-import HeadingTwo from "@/components/Text/HeadingTwo";
 import Grid from "@/components/UI/Grid";
 import {
   Accordion,
@@ -176,7 +173,7 @@ const CoursesPage: React.FC<{
   return (
     <main>
       <div>
-        <HeadingTwo title={courseData.name} />
+        <h2>{courseData.name}</h2>
 
         <div className="space-x-0 lg:space-x-6">
           <div className="py-5 w-full">
@@ -241,7 +238,7 @@ const CoursesPage: React.FC<{
         <div className="space-y-24">
           <div>
             <div className="text-center lg:text-left">
-              <HeadingThree title="Modules" />
+              <h3>Modules</h3>
             </div>
 
             {/* Archive Toggle */}
@@ -256,9 +253,7 @@ const CoursesPage: React.FC<{
             {/* Modules */}
             {groupedModules.map((group, index) => (
               <div key={index} className="mb-4">
-                {groupedModules.length > 1 && (
-                  <HeadingFour title={group.groupName} />
-                )}
+                {groupedModules.length > 1 && <h4>{group.groupName}</h4>}
                 <Grid
                   gap={1}
                   items={group.materialsKeys.map((moduleKey, idx) => (

@@ -7,12 +7,10 @@ import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import Link from "next/link";
 import Tag from "../Tags/Tag";
-import HeadingTwo from "../Text/HeadingTwo";
-import HeadingFour from "../Text/HeadingFour";
 
 interface ModuleListProps {
   groupedMaterial: MaterialGroupInterface[];
-  headingSize?: "HeadingTwo" | "HeadingFour"; // optional prop to determine the heading size
+  headingSize?: "h2" | "h4"; // optional prop to determine the heading level
 }
 
 /**
@@ -27,20 +25,19 @@ interface ModuleListProps {
  */
 const ModuleList: React.FC<ModuleListProps> = ({
   groupedMaterial: groupedModules,
-  headingSize = "HeadingTwo",
+  headingSize = "h2",
 }) => {
   const basePath: string = EDUCATION_PAGE.path;
 
-  // Function to dynamically select the heading component
-  const HeadingComponent =
-    headingSize === "HeadingTwo" ? HeadingTwo : HeadingFour;
+  // Function to dynamically select the heading element
+  const HeadingTag = headingSize as keyof JSX.IntrinsicElements;
 
   return (
     <div>
       {groupedModules.map((group, index) => (
         <div key={index} className="mb-4">
           {groupedModules.length > 1 && (
-            <HeadingComponent title={`University ${group.groupName}`} />
+            <HeadingTag>{`University ${group.groupName}`}</HeadingTag>
           )}
           <Grid
             gap={1}

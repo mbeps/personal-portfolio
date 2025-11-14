@@ -3,7 +3,6 @@ import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface
 import { useState } from "react";
 import ExpandCollapseButton from "../UI/ExpandCollapseButton";
 import SkillTag from "../Tags/SkillTag";
-import HeadingFour from "../Text/HeadingFour";
 import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 
@@ -91,9 +90,7 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
       <div className={gridStyle}>
         {displayedSkills.map((categoryData) => (
           <div key={categoryData.skillCategoryName} className="mb-6">
-            {shouldDisplayTitle && (
-              <HeadingFour title={categoryData.skillCategoryName} />
-            )}
+            {shouldDisplayTitle && <h4>{categoryData.skillCategoryName}</h4>}
             <div className="flex flex-wrap justify-center md:justify-start">
               {categoryData.skills.map((skillSlug) => (
                 <SkillTag key={skillSlug} skillKey={skillSlug} />

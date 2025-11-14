@@ -1,4 +1,3 @@
-import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/UI/PageDescription";
 import developerName from "@/constants/developerName";
 import { EXPERIENCE_PAGE } from "@/constants/pages";
@@ -44,7 +43,7 @@ export default function ExperiencePage() {
     <main>
       <section id="experience">
         <div className="w-full">
-          <HeadingOne title={EXPERIENCE_PAGE.label} />
+          <h1>{EXPERIENCE_PAGE.label}</h1>
 
           <PageDescription description={EXPERIENCE_PAGE.description} />
           <ExperienceView />

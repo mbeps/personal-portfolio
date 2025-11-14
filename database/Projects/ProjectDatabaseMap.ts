@@ -11,6 +11,7 @@ import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
 import CertificateDatabaseKeys from "../Certificates/CertificateDatabaseKeys";
 import RoleDatabaseKeys from "../Roles/RoleDatabaseKeys";
 import ProjectTypeEnum from "@/enums/Project/ProjectTypeEnum";
+import Module from "module";
 
 /**
  * Hashmap of projects with keys as {@link SkillDatabaseKeys} and values as {@link ProjectInterface}.
@@ -19,10 +20,14 @@ import ProjectTypeEnum from "@/enums/Project/ProjectTypeEnum";
  */
 const projectMap: Database<ProjectInterface> = {
   //^ Artificial Intelligence Projects
-  [ProjectDatabaseKeys.Qwen3BenchmarkingItalic]: {
-    name: "Qwen3 Benchmarking (Italic)",
-    description: `Benchmarking Qwen3 reasoning models of various sizes on the ITALIC benchmark to evaluate their cultural alignment in Italian. Various optmisations were used for fast inference.`,
-    repositoryURL: "https://github.com/mbeps/qwen3-italic-benchmark",
+  [ProjectDatabaseKeys.AlignmentInLargeLanguageModels]: {
+    name: "Alignment in LLMs",
+    description: `
+    Specifically looked into hybrid-reasoning models and improved them using LoRA and novel hybrid-training techniques.
+    Regular supervised fine-tuning on reasoning models causes them to foget their reasoning capabilities.
+    This is solved using my novel hybrid training technique.`,
+    repositoryURL:
+      "https://github.com/stars/mbeps/lists/cultural-alignment-in-llms",
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.PyTorch,
@@ -36,112 +41,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.DeepLearning,
       SkillDatabaseKeys.NaturalLanguageProcessing,
       SkillDatabaseKeys.NeuralNetworks,
-      SkillDatabaseKeys.Benchmarking,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    relatedMaterials: [
-      ModuleDatabaseKeys.KCL_IndividualProject,
-      ProjectDatabaseKeys.Qwen3FineTuningMultIt,
-    ],
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.Qwen3BenchmarkingItalic
-    ),
-  },
-  [ProjectDatabaseKeys.Llama3_1BenchmarkingItalic]: {
-    name: "Llama3.1 Benchmarking (Italic)",
-    description: `Benchmarking Llama3.1 models of various sizes on the ITALIC benchmark to evaluate their cultural alignment in Italian. Various optmisations were used for fast inference.`,
-    repositoryURL: "https://github.com/mbeps/llama_3.1_italic_benchmark",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.PyTorch,
-      SkillDatabaseKeys.Transformers,
-      SkillDatabaseKeys.HuggingFace,
-      SkillDatabaseKeys.LLMs,
-      SkillDatabaseKeys.Pandas,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.DeepLearning,
-      SkillDatabaseKeys.NaturalLanguageProcessing,
-      SkillDatabaseKeys.NeuralNetworks,
-      SkillDatabaseKeys.Benchmarking,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    relatedMaterials: [
-      ModuleDatabaseKeys.KCL_IndividualProject,
-      ProjectDatabaseKeys.Llama3_1FineTuningMultIt,
-    ],
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.Llama3_1BenchmarkingItalic
-    ),
-  },
-  [ProjectDatabaseKeys.MagistralSmallBenchmarkingItalic]: {
-    name: "Magistral Benchmarking (Italic)",
-    description: `Benchmarking Magistral-Small reasoning model from Mistral on the ITALIC benchmark to evaluate its cultural alignment in Italian. Quantisation was used due to hardware limitations.`,
-    repositoryURL: "https://github.com/mbeps/magistral_italic_benchmark",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.PyTorch,
-      SkillDatabaseKeys.Transformers,
-      SkillDatabaseKeys.HuggingFace,
-      SkillDatabaseKeys.LLMs,
-      SkillDatabaseKeys.Pandas,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.DeepLearning,
-      SkillDatabaseKeys.NaturalLanguageProcessing,
-      SkillDatabaseKeys.NeuralNetworks,
-      SkillDatabaseKeys.Benchmarking,
-      SkillDatabaseKeys.Quantization,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    relatedMaterials: [
-      ModuleDatabaseKeys.KCL_IndividualProject,
-      ProjectDatabaseKeys.MagistralSmallFineTuningMultIt,
-    ],
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.MagistralSmallBenchmarkingItalic
-    ),
-  },
-  [ProjectDatabaseKeys.MistralNemoBenchmarkingItalic]: {
-    name: "Mistral-NeMo Benchmarking (Italic)",
-    description: `Benchmarking Mistral-Nemo model on the ITALIC benchmark to evaluate their cultural alignment in Italian. Various optmisations were used for fast inference.`,
-    repositoryURL: "https://github.com/mbeps/mistral_italic_benchmark",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.PyTorch,
-      SkillDatabaseKeys.Transformers,
-      SkillDatabaseKeys.HuggingFace,
-      SkillDatabaseKeys.LLMs,
-      SkillDatabaseKeys.Pandas,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.DeepLearning,
-      SkillDatabaseKeys.NaturalLanguageProcessing,
-      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.FineTuning,
       SkillDatabaseKeys.Benchmarking,
 
       SkillDatabaseKeys.ProblemSolving,
@@ -154,113 +54,7 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Academic,
     relatedMaterials: [ModuleDatabaseKeys.KCL_IndividualProject],
     thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.MistralNemoBenchmarkingItalic
-    ),
-  },
-  [ProjectDatabaseKeys.Qwen3FineTuningMultIt]: {
-    name: "Qwen3 Fine-Tuning (Mult-It)",
-    description: `Fine-Tuning Qwen3 models using Low-Rank Adaptation (LoRA) on the Mult-It dataset to improve their cultural alignment in Italian. Various optmisations (including novel hybrid-training approach) were used for optimal training.`,
-    repositoryURL: "https://github.com/mbeps/llama3.1_fine-tuning_mult-it",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.PyTorch,
-      SkillDatabaseKeys.Transformers,
-      SkillDatabaseKeys.HuggingFace,
-      SkillDatabaseKeys.LLMs,
-      SkillDatabaseKeys.Pandas,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.DeepLearning,
-      SkillDatabaseKeys.NaturalLanguageProcessing,
-      SkillDatabaseKeys.NeuralNetworks,
-      SkillDatabaseKeys.FineTuning,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    relatedMaterials: [
-      ModuleDatabaseKeys.KCL_IndividualProject,
-      ProjectDatabaseKeys.Qwen3BenchmarkingItalic,
-    ],
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.Qwen3FineTuningMultIt
-    ),
-  },
-  [ProjectDatabaseKeys.Llama3_1FineTuningMultIt]: {
-    name: "Llama 3.1 Fine-Tuning (Mult-It)",
-    description: `Fine-Tuning Llama 3.1 models using Low-Rank Adaptation (LoRA) on the Mult-It dataset to improve their cultural alignment in Italian. Various optmisations were used for optimal training.`,
-    repositoryURL: "https://github.com/mbeps/llama3.1_fine-tuning_mult-it",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.PyTorch,
-      SkillDatabaseKeys.Transformers,
-      SkillDatabaseKeys.HuggingFace,
-      SkillDatabaseKeys.LLMs,
-      SkillDatabaseKeys.Pandas,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.DeepLearning,
-      SkillDatabaseKeys.NaturalLanguageProcessing,
-      SkillDatabaseKeys.NeuralNetworks,
-      SkillDatabaseKeys.FineTuning,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    relatedMaterials: [
-      ModuleDatabaseKeys.KCL_IndividualProject,
-      ProjectDatabaseKeys.Llama3_1BenchmarkingItalic,
-    ],
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.Llama3_1FineTuningMultIt
-    ),
-  },
-  [ProjectDatabaseKeys.MagistralSmallFineTuningMultIt]: {
-    name: "Magistral Fine-Tuning (Mult-It)",
-    description: `Fine-Tuning Magistral-Small model using Quantised Low-Rank Adaptation (QLoRA) on the Mult-It dataset to improve their cultural alignment in Italian. Various optmisations (including novel hybrid-training approach) were used for optimal training.`,
-    repositoryURL: "https://github.com/mbeps/magistral_mult-it_fine-tuning",
-    skills: [
-      SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.PyTorch,
-      SkillDatabaseKeys.Transformers,
-      SkillDatabaseKeys.HuggingFace,
-      SkillDatabaseKeys.LLMs,
-      SkillDatabaseKeys.Pandas,
-
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.DeepLearning,
-      SkillDatabaseKeys.NaturalLanguageProcessing,
-      SkillDatabaseKeys.NeuralNetworks,
-      SkillDatabaseKeys.FineTuning,
-      SkillDatabaseKeys.Quantization,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    category: ProjectCategoriesEnum.ArtificialIntelligence,
-    type: ProjectTypeEnum.Academic,
-    relatedMaterials: [
-      ModuleDatabaseKeys.KCL_IndividualProject,
-      ProjectDatabaseKeys.MagistralSmallBenchmarkingItalic,
-    ],
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.MagistralSmallFineTuningMultIt
+      ProjectDatabaseKeys.AlignmentInLargeLanguageModels
     ),
   },
   [ProjectDatabaseKeys.HandWrittenDigitClassifier]: {

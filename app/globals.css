@@ -132,6 +132,27 @@ body {
 @layer base {
   * { @apply border-border; }
   body { @apply bg-background text-foreground; }
+
+  h1:not([class]) {
+    @apply text-5xl md:text-7xl font-sans font-bold mt-6 md:mt-0 text-center;
+  }
+
+  h2:not([class]) {
+    @apply text-center font-bold text-4xl;
+  }
+
+  h2:not([class])::after {
+    content: "";
+    @apply block w-6 h-1 mx-auto my-4 bg-red-500 rounded;
+  }
+
+  h3:not([class]) {
+    @apply text-2xl font-sans font-bold mb-6 mt-6;
+  }
+
+  h4:not([class]) {
+    @apply font-sans font-bold text-lg mb-2 text-neutral-700 dark:text-neutral-200;
+  }
 }
 
 /* ---- Project utilities ---- */
@@ -139,5 +160,5 @@ body {
   @apply min-h-[calc(100vh-8rem)] w-full flex flex-col align-middle justify-center;
 }
 @utility material-page-wrapper {
-  @apply flex flex-col space-y-10 mt-8;
+  @apply flex flex-col space-y-10 mt-8 mb-16;
 }

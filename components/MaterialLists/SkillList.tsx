@@ -5,7 +5,6 @@ import groupSkills, {
   GroupByOptions,
 } from "@/actions/skills/group/groupSkills";
 import SkillTag from "@/components/Tags/SkillTag";
-import HeadingThree from "@/components/Text/HeadingThree";
 import { Button } from "@/components/shadcn/ui/button";
 import {
   Command,
@@ -408,12 +407,10 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
         {groupedSkills.length > 0 ? (
           groupedSkills.map((categoryData) => (
             <div key={categoryData.skillCategoryName}>
-              <HeadingThree
-                title={
-                  categoryData.skillCategoryName[0].toUpperCase() +
-                  categoryData.skillCategoryName.slice(1)
-                }
-              />
+              <h3>
+                {categoryData.skillCategoryName[0].toUpperCase() +
+                  categoryData.skillCategoryName.slice(1)}
+              </h3>
               <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
                 {Object.entries(categoryData.skills).map(
                   ([count, skillKey], index) => (

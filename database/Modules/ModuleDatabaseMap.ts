@@ -1078,15 +1078,7 @@ const modulesMap: Database<ModuleInterface> = {
       "Designing targeted training interventions to address identified model weaknesses.",
       "Communicating complex research findings and technical details in a structured report.",
     ],
-    relatedMaterials: [
-      ProjectDatabaseKeys.Qwen3BenchmarkingItalic,
-      ProjectDatabaseKeys.Llama3_1BenchmarkingItalic,
-      ProjectDatabaseKeys.MagistralSmallBenchmarkingItalic,
-      ProjectDatabaseKeys.MistralNemoBenchmarkingItalic,
-      ProjectDatabaseKeys.Qwen3FineTuningMultIt,
-      ProjectDatabaseKeys.Llama3_1FineTuningMultIt,
-      ProjectDatabaseKeys.MagistralSmallFineTuningMultIt,
-    ],
+    relatedMaterials: [ProjectDatabaseKeys.AlignmentInLargeLanguageModels],
   },
 };
 

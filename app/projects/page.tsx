@@ -1,4 +1,3 @@
-import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/UI/PageDescription";
 import developerName from "@/constants/developerName";
 import { PROJECTS_PAGE } from "@/constants/pages";
@@ -41,7 +40,7 @@ const ProjectsPage = () => {
     <main>
       <section id="projects" className="flex flex-col items-start md:items-end">
         <div className="w-full">
-          <HeadingOne title={PROJECTS_PAGE.label} />
+          <h1>{PROJECTS_PAGE.label}</h1>
           <PageDescription description={PROJECTS_PAGE.description} />
           <ProjectsView />
         </div>

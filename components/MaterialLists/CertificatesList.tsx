@@ -1,6 +1,5 @@
 import stringToSlug from "@/actions/stringToSlug";
 import CertificateItem from "@/components/MaterialItems/CertificateItem";
-import HeadingTwo from "@/components/Text/HeadingTwo";
 import Grid from "@/components/UI/Grid";
 import MaterialListProps from "@/interfaces/props/MaterialListProps";
 import React from "react";
@@ -27,7 +26,7 @@ const CertificatesList: React.FC<MaterialListProps> = ({
                   {groupedCertificates.length > 1 && (
                     <>
                       <div className="border-b border-gray-200 dark:border-neutral-600 pb-1" />
-                      <HeadingTwo title={group.groupName} />
+                      <h2>{group.groupName}</h2>
                     </>
                   )}
                   <Grid

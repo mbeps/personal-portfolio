@@ -1,4 +1,3 @@
-import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/UI/PageDescription";
 import developerName from "@/constants/developerName";
 import { BLOG_PAGE } from "@/constants/pages";
@@ -41,7 +40,7 @@ export default function BlogPage() {
     <main>
       <section id="blogs">
         <div className="w-full">
-          <HeadingOne title={BLOG_PAGE.label} />
+          <h1>{BLOG_PAGE.label}</h1>
           <PageDescription description={BLOG_PAGE.description} />
           <BlogsView />
         </div>

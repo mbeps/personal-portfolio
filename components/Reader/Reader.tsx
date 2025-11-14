@@ -10,6 +10,38 @@ type ReaderProps = {
   size?: "lg:prose-sm" | "lg:prose-base" | "lg:prose-md" | "lg:prose-lg";
 };
 
+type HeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+
+const createHeadingComponent = (
+  Tag: HeadingTag
+): React.FC<React.HTMLAttributes<HTMLHeadingElement>> => {
+  const HeadingComponent: React.FC<
+    React.HTMLAttributes<HTMLHeadingElement>
+  > = ({ className, ...props }) => {
+    const combinedClassName = [className, "markdown-heading"]
+      .filter(Boolean)
+      .join(" ")
+      .trim();
+
+    return React.createElement(Tag, {
+      ...props,
+      className: combinedClassName,
+    });
+  };
+
+  HeadingComponent.displayName = `Markdown${Tag.toUpperCase()}`;
+  return HeadingComponent;
+};
+
+const headingOverrides = {
+  h1: { component: createHeadingComponent("h1") },
+  h2: { component: createHeadingComponent("h2") },
+  h3: { component: createHeadingComponent("h3") },
+  h4: { component: createHeadingComponent("h4") },
+  h5: { component: createHeadingComponent("h5") },
+  h6: { component: createHeadingComponent("h6") },
+};
+
 /**
  * Renders Markdown content with LaTeX support.
  *
@@ -51,6 +83,7 @@ const Reader: React.FC<ReaderProps> = ({ content, size = "lg" }) => {
       <Markdown
         options={{
           overrides: {
+            ...headingOverrides,
             DisplayMath: {
               component: ({ children }: { children: string }) => {
                 const placeholder = String(children);

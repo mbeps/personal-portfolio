@@ -11,8 +11,6 @@ import MaterialList from "@/components/MaterialLists/MaterialList";
 import Reader from "@/components/Reader/Reader";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import SkillTag from "@/components/Tags/SkillTag";
-import HeadingThree from "@/components/Text/HeadingThree";
-import HeadingTwo from "@/components/Text/HeadingTwo";
 import {
   Accordion,
   AccordionContent,
@@ -231,7 +229,7 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
   return (
     <main>
       <div className="flex flex-col space-y-1 align-top relative">
-        <HeadingTwo title={projectData?.name} />
+        <h2>{projectData?.name}</h2>
 
         {/* Gallery Section */}
         {(images && images.length > 1) || (videos && videos.length > 1) ? (
@@ -280,7 +278,7 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
         <div className="mt-4 space-y-24">
           {/* Description Section */}
           <div className="text-center md:text-left">
-            <HeadingThree title="Description" />
+            <h3>Description</h3>
             <div className="flex flex-wrap justify-center md:justify-start z-10 mt-2">
               <p className="text-neutral-800 dark:text-neutral-300">
                 {projectData.description}
@@ -291,13 +289,11 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
           {/* Language Section */}
           {projectLanguages && Object.keys(projectLanguages).length > 0 && (
             <div className="text-center md:text-left">
-              <HeadingThree
-                title={
-                  Object.keys(projectLanguages).length > 1
-                    ? "Languages"
-                    : "Language"
-                }
-              />
+              <h3>
+                {Object.keys(projectLanguages).length > 1
+                  ? "Languages"
+                  : "Language"}
+              </h3>
               <div className="flex flex-wrap justify-center md:justify-start z-10 mt-2">
                 {projectLanguages.map((language, index) => (
                   <SkillTag key={index} skillKey={language} />
@@ -314,7 +310,7 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
           {/* Links Section */}
           {showLinks && (
             <div className="text-center md:text-left">
-              <HeadingThree title="Links" />
+              <h3>Links</h3>
               <div className="mt-6 flex justify-center md:justify-start w-full md:w-1/2">
                 <ProjectLinks
                   deploymentURL={projectData.deploymentURL}

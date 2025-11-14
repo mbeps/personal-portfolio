@@ -3,7 +3,6 @@
 import filterCategoriesFromSkills from "@/actions/skills/filter/filterCategoriesFromSkills";
 import TechnologiesModal from "@/components/Modal/TechnologiesModal";
 import SkillTag from "@/components/Tags/SkillTag";
-import HeadingThree from "@/components/Text/HeadingThree";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 import SkillInterface from "@/database/Skills/SkillInterface";
@@ -127,7 +126,7 @@ const TechnologiesSection: React.FC = () => {
 
   return (
     <>
-      <HeadingThree title="Technologies" />
+      <h3>Technologies</h3>
       <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start -mt-2">
         {manualSkillsList.map((skillSlug: SkillDatabaseKeys, idx: number) => (
           <SkillTag key={idx} skillKey={skillSlug} />

@@ -1,4 +1,3 @@
-import HeadingOne from "@/components/Text/HeadingOne";
 import PageDescription from "@/components/UI/PageDescription";
 import developerName from "@/constants/developerName";
 import { CERTIFICATES_PAGE } from "@/constants/pages";
@@ -44,7 +43,7 @@ const CertificatesPage: React.FC = () => {
     <main>
       <section id="projects" className="flex flex-col items-start md:items-end">
         <div className="w-full">
-          <HeadingOne title={CERTIFICATES_PAGE.label} />
+          <h1>{CERTIFICATES_PAGE.label}</h1>
           <PageDescription description={CERTIFICATES_PAGE.description} />
           <CertificatesView />
         </div>

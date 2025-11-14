@@ -1,5 +1,4 @@
 import CourseItem from "@/components/MaterialItems/CourseItem";
-import HeadingOne from "@/components/Text/HeadingOne";
 import Grid from "@/components/UI/Grid";
 import PageDescription from "@/components/UI/PageDescription";
 import developerName from "@/constants/developerName";
@@ -42,7 +41,7 @@ export default function EducationPage() {
     <main>
       <section id="education">
         <div className="w-full">
-          <HeadingOne title={EDUCATION_PAGE.label} />
+          <h1>{EDUCATION_PAGE.label}</h1>
           <PageDescription description={EDUCATION_PAGE.description} />
           {/* List of courses and qualifications */}
           <div className="py-8">

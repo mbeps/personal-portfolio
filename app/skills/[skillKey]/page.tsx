@@ -1,7 +1,5 @@
 import filterMaterialBySkill from "@/actions/material/filter/filterMaterialBySkill";
 import MaterialList from "@/components/MaterialLists/MaterialList";
-import HeadingOne from "@/components/Text/HeadingOne";
-import HeadingTwo from "@/components/Text/HeadingTwo";
 import PageDescription from "@/components/UI/PageDescription";
 import developerName from "@/constants/developerName";
 import materialDatabaseMap, {
@@ -93,7 +91,7 @@ const SkillPage: React.FC<{ params: Params }> = async ({ params }) => {
   return (
     <main>
       <div>
-        <HeadingOne title={skillData.name} />
+        <h1>{skillData.name}</h1>
         <PageDescription
           description={`
           This is the page displaying all the material related to ${skillData.name}.
@@ -103,7 +101,7 @@ const SkillPage: React.FC<{ params: Params }> = async ({ params }) => {
 
         {/* Material Section */}
         <div className="pt-8" />
-        <HeadingTwo title="Material" />
+        <h2>Material</h2>
         <MaterialList materialKeys={filteredMaterials} isCollapsible={false} />
 
         {/* Skills Section */}

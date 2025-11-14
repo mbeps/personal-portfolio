@@ -1,7 +1,6 @@
 import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
 import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
-import HeadingTwo from "@/components/Text/HeadingTwo";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
@@ -60,7 +59,7 @@ const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
     <>
       <div className="border-b border-gray-200 dark:border-neutral-600 py-5" />
       <div className="mt-4 text-center md:text-left">
-        <HeadingTwo title="Related Skills" />
+        <h2>Related Skills</h2>
         <SkillTableSection allGroupedSkills={allGroupedSkills} />
       </div>
     </>
