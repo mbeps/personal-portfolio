@@ -48,7 +48,7 @@ const courseMap: Database<CourseInterface> = {
       ModuleDatabaseKeys.RHUL_SecurityManagement,
     ],
     relatedMaterials: [
-      ProjectDatabaseKeys.CircusDiscussions,
+      ProjectDatabaseKeys.ForumDiscussions,
       ProjectDatabaseKeys.Noodle,
       ProjectDatabaseKeys.FlaskForumBackend,
       ProjectDatabaseKeys.MachineLearningAssignment1,
@@ -64,6 +64,7 @@ const courseMap: Database<CourseInterface> = {
   [CourseDatabaseKeys.KCL_ArtificialIntelligence]: {
     name: "Artificial Intelligence",
     university: "King's College London",
+    grade: "Pass with Distinction",
     category: "Master of Science (MSc)",
     skills: [], // dynamically added from modules
     startYear: 2024,

@@ -621,7 +621,7 @@ const modulesMap: Database<ModuleInterface> = {
       "Exploring the use of emerging platforms such as blockchain in web development",
     ],
     relatedMaterials: [
-      ProjectDatabaseKeys.CircusDiscussions,
+      ProjectDatabaseKeys.ForumDiscussions,
       ProjectDatabaseKeys.FlaskForumBackend,
     ],
     parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
