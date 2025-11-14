@@ -66,9 +66,9 @@ export default function About() {
   const featuredMaterial: string[] = [
     RoleDatabaseKeys.CommerzbankDevOpsEngineer,
     RoleDatabaseKeys.GoogleRHULDevelopersClubSoftwareEngineer,
-    ProjectDatabaseKeys.CircusDiscussions,
-    ProjectDatabaseKeys.RingmasterMessaging,
-    ProjectDatabaseKeys.MagicianAI,
+    ProjectDatabaseKeys.ForumDiscussions,
+    ProjectDatabaseKeys.RealTimeMessaging,
+    ProjectDatabaseKeys.AiGenerations,
     ProjectDatabaseKeys.HousePricePrediction,
     ProjectDatabaseKeys.AdultIncomePrediction,
     ProjectDatabaseKeys.MachineLearningLabs,

@@ -790,8 +790,8 @@ const projectMap: Database<ProjectInterface> = {
   },
 
   //^ Full-Stack Projects
-  [ProjectDatabaseKeys.CircusDiscussions]: {
-    name: `Circus Discussions`,
+  [ProjectDatabaseKeys.ForumDiscussions]: {
+    name: `Forum Discussions`,
     description: `
       For a final year university project, 
       a social media platform was developed enabling users to form communities, 
@@ -825,15 +825,15 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.RiskManagement,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.CircusDiscussions),
+    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.ForumDiscussions),
     relatedMaterials: [
       ModuleDatabaseKeys.RHUL_FinalYearProject,
       ProjectDatabaseKeys.FlaskForumBackend,
     ],
     type: ProjectTypeEnum.Academic,
   },
-  [ProjectDatabaseKeys.RingmasterMessaging]: {
-    name: `Ringmaster Messaging`,
+  [ProjectDatabaseKeys.RealTimeMessaging]: {
+    name: `Real-Time Messaging`,
     description: `
       A custom back-end learning project involved creating a straightforward real-time messaging app. 
       Users can chat one-on-one or in group chats, send text messages and images, view active users, etc.
@@ -867,13 +867,11 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Adaptability,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.RingmasterMessaging
-    ),
+    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.RealTimeMessaging),
     type: ProjectTypeEnum.Personal,
   },
-  [ProjectDatabaseKeys.MagicianAI]: {
-    name: `Magician AI`,
+  [ProjectDatabaseKeys.AiGenerations]: {
+    name: `AI Generations`,
     description: `
       A SaaS platform that leverages AI to enable users to generate various media types and have conversations. 
       Developing this project allowed me to explore Stripe, Clerk authentication, and unique AI APIs.
@@ -907,11 +905,11 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Adaptability,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.MagicianAI),
+    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.AiGenerations),
     type: ProjectTypeEnum.Personal,
   },
-  [ProjectDatabaseKeys.DrumrollMusic]: {
-    name: `Drumroll Music`,
+  [ProjectDatabaseKeys.MusicStreaming]: {
+    name: `Music Streaming`,
     description: `
       My first major project using Supabase was a basic music streaming site. 
       Users can upload songs, search and listen to music, as well as like the songs they enjoy.
@@ -938,11 +936,11 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Adaptability,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.DrumrollMusic),
+    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.MusicStreaming),
     type: ProjectTypeEnum.Personal,
   },
-  [ProjectDatabaseKeys.JokerNotes]: {
-    name: "Joker Notes",
+  [ProjectDatabaseKeys.RichTextNotes]: {
+    name: "Rich-Text Notes",
     description: `
       A note-taking app where users can sign up, log in, and reset passwords easily. 
       It supports rich text formatting, image additions, and publishing notes publicly. 
@@ -972,7 +970,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     deploymentURL: "https://joker-notes.vercel.app/",
-    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.JokerNotes),
+    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.RichTextNotes),
     type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.CommerzbankRates]: {
@@ -1017,8 +1015,8 @@ const projectMap: Database<ProjectInterface> = {
   },
 
   //^ Extra Web Development Projects
-  [ProjectDatabaseKeys.Quizmify]: {
-    name: "Quizmify AI",
+  [ProjectDatabaseKeys.AiQuizzes]: {
+    name: "AI Quizzes",
     description: `
       A platform for dynamic quiz generation. 
       Users can test their knowledge with multiple-choice or fill-in-the-gap questions across various topics.
@@ -1049,11 +1047,11 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Adaptability,
     ],
     repositoryURL: "https://github.com/mbeps/quizmify",
-    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.Quizmify),
+    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.AiQuizzes),
     type: ProjectTypeEnum.Personal,
   },
-  [ProjectDatabaseKeys.SideshowArticles]: {
-    name: `Sideshow Articles`,
+  [ProjectDatabaseKeys.OnlineArticles]: {
+    name: `Online Articles`,
     description: `
       To learn Supabase, I developed a simple website for reading and writing articles. 
       Users can read, create, and delete articles. 
@@ -1079,7 +1077,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     archived: true,
-    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.SideshowArticles),
+    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.OnlineArticles),
     type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.GitHubOAuthNextJsSpringBoot]: {
@@ -1696,7 +1694,7 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     relatedMaterials: [
       ModuleDatabaseKeys.RHUL_FinalYearProject,
-      ProjectDatabaseKeys.CircusDiscussions,
+      ProjectDatabaseKeys.ForumDiscussions,
     ],
     type: ProjectTypeEnum.Academic,
     archived: true,

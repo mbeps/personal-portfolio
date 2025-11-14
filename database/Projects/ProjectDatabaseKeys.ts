@@ -8,13 +8,13 @@
  */
 enum ProjectDatabaseKeys {
   //^ Full Stack Projects
-  CircusDiscussions = "circus-discussions",
-  RingmasterMessaging = "ringmaster-messaging",
-  MagicianAI = "magician-ai",
-  DrumrollMusic = "drumroll-music",
-  JokerNotes = "joker-notes",
-  Quizmify = "quizmify",
-  SideshowArticles = "sideshow-articles",
+  ForumDiscussions = "forum-discussions",
+  RealTimeMessaging = "real-time-messaging",
+  AiGenerations = "ai-generations",
+  MusicStreaming = "music-streaming",
+  RichTextNotes = "rich-text-notes",
+  AiQuizzes = "ai-quizzes",
+  OnlineArticles = "online-articles",
   Noodle = "noodle",
   CommerzbankRates = "commerzbank-rates",
   EntraOAuthNextJsSpringBoot = "entra-oauth-nextjs-spring-boot",

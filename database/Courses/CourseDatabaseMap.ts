@@ -48,7 +48,7 @@ const courseMap: Database<CourseInterface> = {
       ModuleDatabaseKeys.RHUL_SecurityManagement,
     ],
     relatedMaterials: [
-      ProjectDatabaseKeys.CircusDiscussions,
+      ProjectDatabaseKeys.ForumDiscussions,
       ProjectDatabaseKeys.Noodle,
       ProjectDatabaseKeys.FlaskForumBackend,
       ProjectDatabaseKeys.MachineLearningAssignment1,

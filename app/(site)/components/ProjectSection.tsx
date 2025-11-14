@@ -21,8 +21,8 @@ const ProjectsSection = () => {
    * In other words, only these projects will be displayed on the home page.
    */
   const displayedProjects: string[] = [
-    ProjectDatabaseKeys.CircusDiscussions,
-    ProjectDatabaseKeys.MagicianAI,
+    ProjectDatabaseKeys.ForumDiscussions,
+    ProjectDatabaseKeys.AiGenerations,
     ProjectDatabaseKeys.Qwen3FineTuningMultIt,
   ];
 
