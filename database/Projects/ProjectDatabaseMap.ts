@@ -22,8 +22,10 @@ const projectMap: Database<ProjectInterface> = {
   //^ Artificial Intelligence Projects
   [ProjectDatabaseKeys.AlignmentInLargeLanguageModels]: {
     name: "Alignment in LLMs",
-    description: `Researching cultural misalignment in LLMs. 
-    Specifically looked in hybrid-reasoning models and improved them using LoRA and novel hybrid-training techniques.`,
+    description: `
+    Specifically looked into hybrid-reasoning models and improved them using LoRA and novel hybrid-training techniques.
+    Regular supervised fine-tuning on reasoning models causes them to foget their reasoning capabilities.
+    This is solved using my novel hybrid training technique.`,
     repositoryURL:
       "https://github.com/stars/mbeps/lists/cultural-alignment-in-llms",
     skills: [
