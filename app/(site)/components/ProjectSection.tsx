@@ -23,7 +23,7 @@ const ProjectsSection = () => {
   const displayedProjects: string[] = [
     ProjectDatabaseKeys.ForumDiscussions,
     ProjectDatabaseKeys.AiGenerations,
-    ProjectDatabaseKeys.Qwen3FineTuningMultIt,
+    ProjectDatabaseKeys.AlignmentInLargeLanguageModels,
   ];
 
   return (

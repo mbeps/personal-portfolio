@@ -44,13 +44,7 @@ enum ProjectDatabaseKeys {
   UserAuthentication = "user-authentication",
 
   //^ Artificial Intelligence Projects
-  Qwen3BenchmarkingItalic = "qwen3-benchmarking-italic",
-  MistralNemoBenchmarkingItalic = "mistral-nemo-benchmarking-italic",
-  MagistralSmallBenchmarkingItalic = "magistral-small-benchmarking-italic",
-  Llama3_1BenchmarkingItalic = "llama3-1b-benchmarking-italic",
-  Qwen3FineTuningMultIt = "qwen3-fine-tuning-multit",
-  Llama3_1FineTuningMultIt = "llama3-1b-fine-tuning-multit",
-  MagistralSmallFineTuningMultIt = "magistral-small-fine-tuning-multit",
+  AlignmentInLargeLanguageModels = "alignment-in-large-language-models",
   CustomNeuralNetworkCoursework = "custom-neural-network-classifier-coursework",
   CustomQLearningAgent = "custom-q-learning-agent",
   HandWrittenDigitClassifier = "hand-written-digit-classifier",
