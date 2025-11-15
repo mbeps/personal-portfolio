@@ -18,7 +18,7 @@ import MobileFilterAccordion from "./MobileFilterAccordion";
 
 interface FilterOverlayProps {
   filterCategories: FilterCategory[];
-  archiveFilter: ArchiveFilter;
+  archiveFilter?: ArchiveFilter;
   searchFilter: SearchFilter;
   basePath: string;
   isOpen: boolean;
@@ -80,10 +80,12 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
     })
   );
 
-  filterProps.push({
-    entryName: archiveFilter.paramName,
-    slug: archiveFilter.showArchived.toString(),
-  });
+  if (archiveFilter) {
+    filterProps.push({
+      entryName: archiveFilter.paramName,
+      slug: archiveFilter.showArchived.toString(),
+    });
+  }
 
   /**
    * Shared content component used by both Drawer and SidePanel
@@ -139,7 +141,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
         </Link>
 
         {/* Archive Toggle */}
-        {archiveFilter.hasArchivedMaterials && (
+        {archiveFilter?.hasArchivedMaterials && (
           <div className="w-full">
             <div className="w-full -mt-1">
               <ArchiveToggle

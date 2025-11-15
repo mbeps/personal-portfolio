@@ -7,6 +7,7 @@ import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import Link from "next/link";
 import Tag from "../Tags/Tag";
+import MaterialGroupSectionList from "./MaterialGroupSectionList";
 
 interface ModuleListProps {
   groupedMaterial: MaterialGroupInterface[];
@@ -24,34 +25,35 @@ interface ModuleListProps {
  * @author Maruf Bepary
  */
 const ModuleList: React.FC<ModuleListProps> = ({
-  groupedMaterial: groupedModules,
+  groupedMaterial,
   headingSize = "h2",
 }) => {
   const basePath: string = EDUCATION_PAGE.path;
-
-  // Function to dynamically select the heading element
   const HeadingTag = headingSize as keyof JSX.IntrinsicElements;
 
   return (
-    <div>
-      {groupedModules.map((group, index) => (
-        <div key={index} className="mb-4">
-          {groupedModules.length > 1 && (
+    <MaterialGroupSectionList
+      groupedMaterial={groupedMaterial}
+      emptyMessage="No Modules Found"
+      wrapperClassName="space-y-4"
+      sectionClassName="mb-4"
+      shouldRenderGroup={() => true}
+      getSectionId={(group) => group.groupName}
+      renderContent={(group, hasMultipleGroups) => (
+        <>
+          {hasMultipleGroups && (
             <HeadingTag>{`University ${group.groupName}`}</HeadingTag>
           )}
           <Grid
             gap={1}
-            items={group.materialsKeys.map((moduleKey, idx) => {
+            items={group.materialsKeys.map((moduleKey) => {
               const courseKey = findCourseKeyForModule(
                 moduleKey as ModuleDatabaseKeys,
                 courseDatabaseMap
               );
               return (
-                <div key={idx}>
-                  <Link
-                    href={`${basePath}/${courseKey}/${moduleKey}`}
-                    key={idx}
-                  >
+                <div key={moduleKey}>
+                  <Link href={`${basePath}/${courseKey}/${moduleKey}`}>
                     <Tag hasHover>
                       <div>{moduleDatabaseMap[moduleKey].name}</div>
                       <div className="text-neutral-400 dark:text-red-200 italic text-sm">
@@ -67,9 +69,9 @@ const ModuleList: React.FC<ModuleListProps> = ({
               );
             })}
           />
-        </div>
-      ))}
-    </div>
+        </>
+      )}
+    />
   );
 };
 

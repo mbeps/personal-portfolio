@@ -1,26 +1,15 @@
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import MaterialInterface from "@/database/Materials/MaterialInterface";
+import { skillUsageMap } from "@/database/Materials/MaterialDatabaseMap";
 
 /**
  * Counts the number of materials that are related to a specific skill.
- * Only the materials that contain the skill will be counted.
+ * Uses precomputed skillUsageMap for O(1) lookup instead of scanning all materials.
  *
- * @param skillKey The specific skill to filter for in the materials
- * @param materialDatabase All the materials in the database so that we can access the material details
+ * @param skillKey The specific skill to count materials for
  * @returns The number of materials that match the skill
  */
-export default function countMaterialsBySkill<T extends MaterialInterface>(
-  skillKey: SkillDatabaseKeys,
-  materialDatabase: Database<T>
+export default function countMaterialsBySkill(
+  skillKey: SkillDatabaseKeys
 ): number {
-  let count: number = 0;
-
-  for (const key in materialDatabase) {
-    const material: T = materialDatabase[key];
-    if (material && material.skills.includes(skillKey)) {
-      count++;
-    }
-  }
-
-  return count;
+  return skillUsageMap.get(skillKey) || 0;
 }

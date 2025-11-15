@@ -28,7 +28,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
-import materialDatabaseMap from "@/database/Materials/MaterialDatabaseMap";
 import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
@@ -100,10 +99,8 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
     [SkillTypesEnum.Technical, SkillTypesEnum.Soft]
   );
 
-  const hasMaterial: boolean = isSkillAssociatedWithMaterial(
-    languageIdentifier,
-    materialDatabaseMap
-  );
+  const hasMaterial: boolean =
+    isSkillAssociatedWithMaterial(languageIdentifier);
 
   const options: FilterOption[] = [
     { slug: "category", entryName: "Category" },

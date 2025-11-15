@@ -1,5 +1,4 @@
-import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
-import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
+import buildSkillTableGroups from "@/actions/skills/group/buildSkillTableGroups";
 import MaterialList from "@/components/MaterialLists/MaterialList";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import Tag from "@/components/Tags/Tag";
@@ -96,43 +95,8 @@ const CertificatesPage: React.FC<{ params: Params }> = async ({ params }) => {
     notFound();
   }
 
-  const technologies: SkillDatabaseKeys[] = filterSkillsByType(
-    certificateData.skills,
-    skillDatabaseMap,
-    SkillTypesEnum.Technology
-  );
-  const generalSkills: SkillDatabaseKeys[] = filterSkillsByType(
-    certificateData.skills,
-    skillDatabaseMap,
-    SkillTypesEnum.Technical
-  );
-  const softSkills: SkillDatabaseKeys[] = filterSkillsByType(
-    certificateData.skills,
-    skillDatabaseMap,
-    SkillTypesEnum.Soft
-  );
-
-  // Simplified grouping of skill types for certificates
-  const allGroupedSkills: GroupedSkillsCategoriesInterface[] = [
-    categoriseAndGroupSkills(
-      technologies,
-      skillDatabaseMap,
-      SkillTypesEnum.Technology,
-      "Technologies"
-    ),
-    categoriseAndGroupSkills(
-      generalSkills,
-      skillDatabaseMap,
-      SkillTypesEnum.Technical,
-      "Technical Skills"
-    ),
-    categoriseAndGroupSkills(
-      softSkills,
-      skillDatabaseMap,
-      SkillTypesEnum.Soft,
-      "Soft Skills"
-    ),
-  ];
+  const allGroupedSkills: GroupedSkillsCategoriesInterface[] =
+    buildSkillTableGroups(certificateData.skills);
 
   const certificateImage = `${CERTIFICATES_PAGE.path}/${certificateKey}.jpg`;
 
