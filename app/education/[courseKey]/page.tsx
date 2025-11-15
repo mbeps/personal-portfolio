@@ -1,7 +1,7 @@
 import filterMaterialByArchivedStatus from "@/actions/material/filter/filterMaterialByArchivedStatus";
 import groupMaterialsByCategory from "@/actions/material/group/groupMaterialsByCategory";
-import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
-import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
+import filterSkillsByCategory from "@/actions/skills/filter/filterSkillsByCategory";
+import buildSkillTableGroups from "@/actions/skills/group/buildSkillTableGroups";
 import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
 import MaterialList from "@/components/MaterialLists/MaterialList";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
@@ -129,42 +129,8 @@ const CoursesPage: React.FC<{
   );
 
   //^ Skills
-  const technologies: SkillDatabaseKeys[] = filterSkillsByType(
-    courseData.skills,
-    skillDatabaseMap,
-    SkillTypesEnum.Technology
-  );
-  const generalSkills: SkillDatabaseKeys[] = filterSkillsByType(
-    courseData.skills,
-    skillDatabaseMap,
-    SkillTypesEnum.Technical
-  );
-  const softSkills: SkillDatabaseKeys[] = filterSkillsByType(
-    courseData.skills,
-    skillDatabaseMap,
-    SkillTypesEnum.Soft
-  );
-
-  const allGroupedSkills: GroupedSkillsCategoriesInterface[] = [
-    categoriseAndGroupSkills(
-      technologies,
-      skillDatabaseMap,
-      SkillTypesEnum.Technology,
-      "Technologies"
-    ),
-    categoriseAndGroupSkills(
-      generalSkills,
-      skillDatabaseMap,
-      SkillTypesEnum.Technical,
-      "Technical Skills"
-    ),
-    categoriseAndGroupSkills(
-      softSkills,
-      skillDatabaseMap,
-      SkillTypesEnum.Soft,
-      "Soft Skills"
-    ),
-  ];
+  const allGroupedSkills: GroupedSkillsCategoriesInterface[] =
+    buildSkillTableGroups(courseData.skills);
 
   const hasArchivedModules: boolean = courseData.modules.some(
     (moduleKey) => moduleDatabaseMap[moduleKey].archived

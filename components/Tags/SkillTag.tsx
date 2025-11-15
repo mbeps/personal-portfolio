@@ -28,10 +28,7 @@ const SkillTag: React.FC<TagProps> = ({ skillKey, hide }) => {
   const currentPath: string = usePathname();
   const skill: SkillInterface = skillDatabaseMap[skillKey];
 
-  const hasMaterial: ConstrainBoolean = isSkillAssociatedWithMaterial(
-    skillKey,
-    materialDatabaseMap
-  );
+  const hasMaterial: ConstrainBoolean = isSkillAssociatedWithMaterial(skillKey);
 
   if (hide || !skill) {
     return <></>;

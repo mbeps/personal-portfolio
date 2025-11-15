@@ -4,8 +4,7 @@ import getVideosFromFileSystem from "@/actions/file-system/getVideosFromFileSyst
 import filterSkillsByCategory, {
   filterSkillSlugsExcludingCategory,
 } from "@/actions/skills/filter/filterSkillsByCategory";
-import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
-import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
+import buildSkillTableGroups from "@/actions/skills/group/buildSkillTableGroups";
 import Gallery from "@/components/Gallery/Gallery";
 import MaterialList from "@/components/MaterialLists/MaterialList";
 import Reader from "@/components/Reader/Reader";
@@ -135,43 +134,8 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
       SkillCategoriesEnum.ProgrammingLanguages
     );
 
-  const technologies: SkillDatabaseKeys[] = filterSkillsByType(
-    projectSkillsWithoutLanguage,
-    skillDatabaseMap,
-    SkillTypesEnum.Technology
-  );
-  const generalSkills: SkillDatabaseKeys[] = filterSkillsByType(
-    projectSkillsWithoutLanguage,
-    skillDatabaseMap,
-    SkillTypesEnum.Technical
-  );
-  const softSkills: SkillDatabaseKeys[] = filterSkillsByType(
-    projectSkillsWithoutLanguage,
-    skillDatabaseMap,
-    SkillTypesEnum.Soft
-  );
-
-  // Using the new function to group all skill types
-  const allGroupedSkills: GroupedSkillsCategoriesInterface[] = [
-    categoriseAndGroupSkills(
-      technologies,
-      skillDatabaseMap,
-      SkillTypesEnum.Technology,
-      "Technologies"
-    ),
-    categoriseAndGroupSkills(
-      generalSkills,
-      skillDatabaseMap,
-      SkillTypesEnum.Technical,
-      "Technical Skills"
-    ),
-    categoriseAndGroupSkills(
-      softSkills,
-      skillDatabaseMap,
-      SkillTypesEnum.Soft,
-      "Soft Skills"
-    ),
-  ];
+  const allGroupedSkills: GroupedSkillsCategoriesInterface[] =
+    buildSkillTableGroups(projectSkillsWithoutLanguage);
 
   function getImages(): string[] {
     let images: string[] = getImagesFromFileSystem(

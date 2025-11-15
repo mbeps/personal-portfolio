@@ -1,5 +1,4 @@
-import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
-import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
+import buildSkillTableGroups from "@/actions/skills/group/buildSkillTableGroups";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
@@ -31,29 +30,9 @@ const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
     return null;
   }
 
-  // Define the skill types and their corresponding group titles
-  const skillTypeGroups = [
-    { type: SkillTypesEnum.Technology, title: "Technologies" },
-    { type: SkillTypesEnum.Technical, title: "Technical Skills" },
-    { type: SkillTypesEnum.Soft, title: "Soft Skills" },
-  ];
-
-  // Use map to iterate over each group, filter, and then group the skills accordingly
+  // Grouped skills by type
   const allGroupedSkills: GroupedSkillsCategoriesInterface[] =
-    skillTypeGroups.map(({ type, title }) => {
-      const filteredSkills: SkillDatabaseKeys[] = filterSkillsByType(
-        associatedSkills,
-        skillDatabaseMap,
-        type
-      );
-
-      return categoriseAndGroupSkills(
-        filteredSkills,
-        skillDatabaseMap,
-        type,
-        title
-      );
-    });
+    buildSkillTableGroups(associatedSkills);
 
   return (
     <>

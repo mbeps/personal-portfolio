@@ -1,6 +1,5 @@
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
-import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
-import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
+import buildSkillTableGroups from "@/actions/skills/group/buildSkillTableGroups";
 import ShortDate from "@/class/ShortDate";
 import MaterialList from "@/components/MaterialLists/MaterialList";
 import Reader from "@/components/Reader/Reader";
@@ -99,42 +98,8 @@ const RolePage: React.FC<{ params: Params }> = async ({ params }) => {
       ? "Present"
       : roleData.endDate.toString();
 
-  const technologies: SkillDatabaseKeys[] = filterSkillsByType(
-    roleData.skills,
-    skillDatabaseMap,
-    SkillTypesEnum.Technology
-  );
-  const generalSkills: SkillDatabaseKeys[] = filterSkillsByType(
-    roleData.skills,
-    skillDatabaseMap,
-    SkillTypesEnum.Technical
-  );
-  const softSkills: SkillDatabaseKeys[] = filterSkillsByType(
-    roleData.skills,
-    skillDatabaseMap,
-    SkillTypesEnum.Soft
-  );
-
-  const allGroupedSkills: GroupedSkillsCategoriesInterface[] = [
-    categoriseAndGroupSkills(
-      technologies,
-      skillDatabaseMap,
-      SkillTypesEnum.Technology,
-      "Technologies"
-    ),
-    categoriseAndGroupSkills(
-      generalSkills,
-      skillDatabaseMap,
-      SkillTypesEnum.Technical,
-      "Technical Skills"
-    ),
-    categoriseAndGroupSkills(
-      softSkills,
-      skillDatabaseMap,
-      SkillTypesEnum.Soft,
-      "Soft Skills"
-    ),
-  ];
+  const allGroupedSkills: GroupedSkillsCategoriesInterface[] =
+    buildSkillTableGroups(roleData.skills);
 
   const responsibilities: string | undefined = getMarkdownFromFileSystem(
     `public/roles/${roleKey}/responsabilities.md`

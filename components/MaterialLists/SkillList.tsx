@@ -4,7 +4,6 @@ import skillHasMaterial from "@/actions/material/skillHasMaterial";
 import FilterSection from "@/components/Filters/FilterSection";
 import SkillTag from "@/components/Tags/SkillTag";
 import { SKILL_PAGE } from "@/constants/pages";
-import materialDatabaseMap from "@/database/Materials/MaterialDatabaseMap";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import useSkillFilterState from "@/hooks/useSkillFilterState";
@@ -61,8 +60,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
                       key={count}
                       skillKey={skillKey}
                       hide={
-                        !skillHasMaterial(skillKey, materialDatabaseMap) &&
-                        hideSkillsWithoutMaterial
+                        !skillHasMaterial(skillKey) && hideSkillsWithoutMaterial
                       }
                     />
                   )

@@ -1,6 +1,5 @@
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
-import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
-import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
+import buildSkillTableGroups from "@/actions/skills/group/buildSkillTableGroups";
 import MaterialList from "@/components/MaterialLists/MaterialList";
 import SpecialReader from "@/components/Reader/SpecialReader";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
@@ -92,43 +91,8 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
     `${basePath}/${blogKey}/img`
   );
 
-  const technologies: SkillDatabaseKeys[] = filterSkillsByType(
-    blogData.skills,
-    skillDatabaseMap,
-    SkillTypesEnum.Technology
-  );
-  const generalSkills: SkillDatabaseKeys[] = filterSkillsByType(
-    blogData.skills,
-    skillDatabaseMap,
-    SkillTypesEnum.Technical
-  );
-  const softSkills: SkillDatabaseKeys[] = filterSkillsByType(
-    blogData.skills,
-    skillDatabaseMap,
-    SkillTypesEnum.Soft
-  );
-
-  // Using the new function to group all skill types
-  const allGroupedSkills: GroupedSkillsCategoriesInterface[] = [
-    categoriseAndGroupSkills(
-      technologies,
-      skillDatabaseMap,
-      SkillTypesEnum.Technology,
-      "Technologies"
-    ),
-    categoriseAndGroupSkills(
-      generalSkills,
-      skillDatabaseMap,
-      SkillTypesEnum.Technical,
-      "Technical Skills"
-    ),
-    categoriseAndGroupSkills(
-      softSkills,
-      skillDatabaseMap,
-      SkillTypesEnum.Soft,
-      "Soft Skills"
-    ),
-  ];
+  const allGroupedSkills: GroupedSkillsCategoriesInterface[] =
+    buildSkillTableGroups(blogData.skills);
 
   return (
     <main>
