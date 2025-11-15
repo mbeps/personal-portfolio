@@ -1,8 +1,9 @@
-import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
-import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
-import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import SkillInterface from "@/database/Skills/SkillInterface";
+import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
+import Database from "@/interfaces/Database";
+import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
+import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 
 /**
  * Categorise and group skills based on the skill type.

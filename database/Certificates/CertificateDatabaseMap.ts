@@ -6,10 +6,11 @@ import CertificateCategoriesEnum from "@/enums/Certificate/CertificateCategories
 import CertificateIssuersEnum from "@/enums/Certificate/CertificateIssuersEnum";
 import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
+import Database from "@/interfaces/Database";
 import ModuleDatabaseKeys from "../Modules/ModuleDatabaseKeys";
 import ProjectDatabaseKeys from "../Projects/ProjectDatabaseKeys";
-import skillDatabaseMap from "../Skills/SkillDatabaseMap";
 import RoleDatabaseKeys from "../Roles/RoleDatabaseKeys";
+import skillDatabaseMap from "../Skills/SkillDatabaseMap";
 
 /**
  * Hashmap of certificates with keys as {@link CertificateDatabaseKeys} and values as {@link CertificateInterface}.

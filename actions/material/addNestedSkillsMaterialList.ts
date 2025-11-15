@@ -1,8 +1,9 @@
 import MaterialInterface from "@/database/Materials/MaterialInterface";
-import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
-import SkillInterface from "@/database/Skills/SkillInterface";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import SkillInterface from "@/database/Skills/SkillInterface";
 import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
+import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
+import Database from "@/interfaces/Database";
 
 /**
  * Adds sub-skills to the materials database based on the related skills which are already present.

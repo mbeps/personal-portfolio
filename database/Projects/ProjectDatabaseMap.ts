@@ -8,6 +8,7 @@ import ProjectCategoriesEnum from "@/enums/Project/ProjectCategoriesEnum";
 import ProjectTypeEnum from "@/enums/Project/ProjectTypeEnum";
 import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
+import Database from "@/interfaces/Database";
 import CertificateDatabaseKeys from "../Certificates/CertificateDatabaseKeys";
 import RoleDatabaseKeys from "../Roles/RoleDatabaseKeys";
 import skillDatabaseMap from "../Skills/SkillDatabaseMap";

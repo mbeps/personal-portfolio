@@ -1,6 +1,7 @@
 import CourseInterface from "@/database/Courses/CourseInterface";
 import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
 import ModuleInterface from "@/database/Modules/ModuleInterface";
+import Database from "@/interfaces/Database";
 
 export default function aggregateRelatedMaterialsForCourses(
   coursesDatabase: Database<CourseInterface>,

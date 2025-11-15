@@ -1,7 +1,8 @@
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
 import CourseInterface from "@/database/Courses/CourseInterface";
+import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
 import ModuleInterface from "@/database/Modules/ModuleInterface";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import Database from "@/interfaces/Database";
 
 /**
  * Adds the skills from a course's modules to the course's skills itself.

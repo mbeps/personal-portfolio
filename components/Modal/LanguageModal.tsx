@@ -28,14 +28,15 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
-import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
-import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
-import FilterOption from "@/interfaces/filters/FilterOption";
+import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 import SkillInterface from "@/database/Skills/SkillInterface";
-import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
+import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
+import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
+import Database from "@/interfaces/Database";
+import FilterOption from "@/interfaces/filters/FilterOption";
+import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import Link from "next/link";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";

@@ -1,6 +1,7 @@
 import stringToSlug from "@/actions/stringToSlug";
-import FilterOption from "@/interfaces/filters/FilterOption";
 import RoleInterface from "@/database/Roles/RoleInterface";
+import Database from "@/interfaces/Database";
+import FilterOption from "@/interfaces/filters/FilterOption";
 
 /**
  * Generates the filter options based on the types of the roles.

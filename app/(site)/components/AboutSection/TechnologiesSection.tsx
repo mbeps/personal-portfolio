@@ -7,6 +7,7 @@ import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 import SkillInterface from "@/database/Skills/SkillInterface";
 import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
+import Database from "@/interfaces/Database";
 
 /**
  * Displays a list of skills that I have.
@@ -17,7 +18,9 @@ import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
 const TechnologiesSection: React.FC = () => {
   const mainSkills: Database<SkillInterface> = {};
 
-  Object.entries(skillDatabaseMap).forEach(([key, skill]) => {
+  (
+    Object.entries(skillDatabaseMap) as [SkillDatabaseKeys, SkillInterface][]
+  ).forEach(([key, skill]) => {
     if (skill.isMainSkill) {
       mainSkills[key] = skill;
     }

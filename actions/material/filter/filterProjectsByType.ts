@@ -1,5 +1,6 @@
 import stringToSlug from "@/actions/stringToSlug";
 import ProjectInterface from "@/database/Projects/ProjectInterface";
+import Database from "@/interfaces/Database";
 
 /**
  * Filters the projects that match a specific type.

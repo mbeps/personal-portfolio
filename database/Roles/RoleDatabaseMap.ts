@@ -7,6 +7,7 @@ import RoleInterface from "@/database/Roles/RoleInterface";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import ExperienceCategoriesEnum from "@/enums/Experience/ExperienceCategoriesEnum";
 import ExperienceTypeEnum from "@/enums/Experience/ExperienceTypeEnum";
+import Database from "@/interfaces/Database";
 import CompanyDatabaseKeys from "../Companies/CompanyDatabaseKeys";
 
 const rolesMap: Database<RoleInterface> = {
