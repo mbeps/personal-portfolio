@@ -1,9 +1,12 @@
 import fs from "fs";
 
 /**
- * Get all images from a directory so that they can be displayed in the UI.
- * @param filePath path to the directory where the images are stored
- * @returns a list of image file names
+ * Retrieves a list of image filenames from a specified directory.
+ * It filters for files with `.jpg` or `.png` extensions.
+ * This function is used to dynamically load image assets from the filesystem.
+ *
+ * @param filePath The absolute or relative path to the directory.
+ * @returns An array of image filenames. Returns an empty array on error.
  */
 export default function getImagesFromFileSystem(filePath: string): string[] {
   try {

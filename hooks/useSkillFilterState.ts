@@ -11,6 +11,9 @@ import useFuseSkillSearch from "@/hooks/useFuseSearch/useFuseSkillSearch";
 import { ReadonlyURLSearchParams, useSearchParams } from "next/navigation";
 import { useMemo } from "react";
 
+/**
+ * Options for grouping skills in the filter UI.
+ */
 const groupOptions: FilterOption[] = [
   { slug: GroupByOptions.Category, entryName: "Category" },
   { slug: GroupByOptions.SkillType, entryName: "Skill Type" },
@@ -18,22 +21,46 @@ const groupOptions: FilterOption[] = [
   { slug: "none", entryName: "None" },
 ];
 
-const booleanOptions = (showLabel: string, hideLabel: string): FilterOption[] => [
+/**
+ * Generates binary filter options (e.g., show/hide).
+ * @param showLabel The label for the "show" option.
+ * @param hideLabel The label for the "hide" option.
+ * @returns An array of two filter options.
+ */
+const booleanOptions = (
+  showLabel: string,
+  hideLabel: string
+): FilterOption[] => [
   { slug: "false", entryName: showLabel },
   { slug: "true", entryName: hideLabel },
 ];
 
+/**
+ * The properties of a skill to be included in the fuzzy search.
+ */
 const searchOptions: string[] = ["name", "category", "relatedSkills"];
 
+/**
+ * The state object returned by the `useSkillFilterState` hook.
+ */
 interface SkillFilterState {
+  /** The current search term from the URL. */
   searchTerm: string;
+  /** The URL parameter name for the search term. */
   searchParamName: string;
+  /** An array of filter category configurations for the UI. */
   filterCategories: FilterCategory[];
+  /** The filtered and grouped skills to be displayed. */
   groupedSkills: SkillsCategoryInterface[];
+  /** A boolean indicating if any filters are currently active. */
   areFiltersApplied: boolean;
+  /** A boolean indicating if skills without associated materials should be hidden. */
   hideSkillsWithoutMaterial: boolean;
 }
 
+/**
+ * Defines the filter configurations for different skill types.
+ */
 const skillTypeFilters = [
   {
     paramName: "hard",
@@ -52,10 +79,21 @@ const skillTypeFilters = [
   },
 ];
 
+/** URL parameter for hiding skills without materials. */
 const noMaterialParamName = "no-material";
+/** URL parameter for the grouping option. */
 const groupParamName = "group";
+/** URL parameter for the search term. */
 const searchParamName = "search";
 
+/**
+ * A hook to manage the state of skill filters.
+ * It reads filter settings from URL search parameters, applies them to a list of skills,
+ * and returns the filtered, grouped, and sorted results.
+ *
+ * @param skills The initial list of skill keys to be filtered.
+ * @returns An object containing the filter state and the resulting skills.
+ */
 export default function useSkillFilterState(
   skills: SkillDatabaseKeys[]
 ): SkillFilterState {
@@ -127,7 +165,9 @@ export default function useSkillFilterState(
 
   const areFiltersApplied =
     hideSkillsWithoutMaterial ||
-    skillTypeCategoryFilters.some((category) => category.selectedValue !== "false") ||
+    skillTypeCategoryFilters.some(
+      (category) => category.selectedValue !== "false"
+    ) ||
     selectedGroup !== GroupByOptions.Category ||
     searchTerm.trim().length > 0;
 

@@ -4,13 +4,15 @@ import Fuse from "fuse.js";
 import { useMemo } from "react";
 
 /**
- * Custom hook for performing a fuzzy search using Fuse.js on a hashmap of skills.
+ * A hook for performing fuzzy search on a database of skills.
+ * It uses Fuse.js to search through specified fields of the skills.
+ * This is optimized with `useMemo` to avoid re-computation on every render.
  *
- * @param skillsMap - A hashmap of skills to search.
- * @param searchTerm - The term to search for.
- * @param searchKeys - The keys to search within the skills.
- * @returns A list of keys of the skills that match the search term.
- * @see {@link https://fusejs.io/} for more information on Fuse.js.
+ * @template T The type of the skill, extending `SkillInterface`.
+ * @param skillsMap A map of skills to search within.
+ * @param searchTerm The string to search for.
+ * @param searchKeys The fields within each skill to search against.
+ * @returns An array of keys for the skills that match the search term.
  */
 function useFuseSkillSearch<T extends SkillInterface>(
   skillsMap: Database<T>,

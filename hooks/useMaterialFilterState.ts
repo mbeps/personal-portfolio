@@ -6,59 +6,117 @@ import FilterCategory from "@/interfaces/filters/FilterCategory";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import { useSearchParams } from "next/navigation";
 
+/**
+ * Configuration for a single filter category.
+ * @template TKey The type of the keys in the database.
+ */
 type FilterCategoryConfig<TKey extends string> = {
+  /** The name of the filter section. */
   sectionName: string;
+  /** The URL parameter used for this filter. */
   urlParam: string;
+  /** The available options for this filter. */
   options: FilterCategory["options"];
+  /** The default value for the filter. */
   defaultValue?: string;
+  /** A function to parse the value from the URL. */
   valueParser?: (value: string) => string;
+  /** A function to determine if the filter should be applied. */
   shouldApply?: (value: string, defaultValue: string) => boolean;
+  /** A function to apply the filter to the list of keys. */
   applyFilter?: (value: string, keys: TKey[]) => TKey[];
 };
 
+/**
+ * Configuration for the archive filter.
+ * @template TKey The type of the keys in the database.
+ */
 type ArchiveFilterConfig<TKey extends string> = {
+  /** The name of the URL parameter for the archive filter. */
   paramName: string;
+  /** Whether there are any archived materials in the database. */
   hasArchivedMaterials: boolean;
+  /** A function to apply the archive filter to the list of keys. */
   applyFilter: (showArchived: boolean, keys: TKey[]) => TKey[];
+  /** The default value for the archive filter. */
   defaultValue?: string;
+  /** The value that indicates that archived materials should be shown. */
   enabledValue?: string;
+  /** A function to parse the value from the URL. */
   valueParser?: (value: string) => string;
 };
 
+/**
+ * Options for the `useMaterialFilterState` hook.
+ * @template TKey The type of the keys in the database.
+ * @template TMaterial The type of the material.
+ */
 type UseMaterialFilterStateOptions<
   TKey extends string,
   TMaterial extends MaterialInterface
 > = {
+  /** The database of materials. */
   databaseMap: Database<TMaterial>;
+  /** The name of the search parameter in the URL. */
   searchParamName: string;
+  /** The keys to use for searching. */
   searchKeys: string[];
+  /** The configuration for the filter categories. */
   filterCategories: FilterCategoryConfig<TKey>[];
+  /** The configuration for the archive filter. */
   archiveFilter?: ArchiveFilterConfig<TKey>;
 };
 
+/**
+ * The state of the archive filter.
+ */
 type ArchiveFilterState = {
+  /** The name of the URL parameter for the archive filter. */
   paramName: string;
+  /** Whether archived materials are currently being shown. */
   showArchived: boolean;
+  /** Whether there are any archived materials in the database. */
   hasArchivedMaterials: boolean;
 };
 
+/**
+ * The state of a filter category.
+ */
 type FilterCategoryState = {
+  /** The filter category configuration and state. */
   category: FilterCategory;
+  /** The default value for the filter. */
   defaultValue: string;
 };
 
+/**
+ * The result of the `useMaterialFilterState` hook.
+ * @template TKey The type of the keys in the database.
+ */
 type UseMaterialFilterStateResult<TKey extends string> = {
+  /** The current search term. */
   searchTerm: string;
+  /** The keys of the materials after all filters have been applied. */
   filteredKeys: TKey[];
+  /** The materials grouped by category after filtering. */
   groupedMaterials: MaterialGroupInterface[];
+  /** The state of the filter categories. */
   filterCategories: FilterCategory[];
+  /** The state of the archive filter. */
   archiveFilter?: ArchiveFilterState;
+  /** Whether any filters are currently applied. */
   areFiltersApplied: boolean;
 };
 
 /**
- * Shared hook used by the material listing pages to build the filter metadata
- * and apply all the filtering logic consistently.
+ * A generic hook to manage filtering and searching of materials.
+ * It reads filter states from URL search parameters, applies them, and returns the filtered data.
+ * This hook is designed to be reusable across different material listing pages.
+ *
+ * @template TKey The type of the keys in the database.
+ * @template TMaterial The type of the material.
+ * @param options The configuration for the hook.
+ * @returns The state of the filters and the filtered materials.
  */
 export default function useMaterialFilterState<
   TKey extends string,
