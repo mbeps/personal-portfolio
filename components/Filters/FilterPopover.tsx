@@ -15,6 +15,7 @@ import {
   PopoverTrigger,
 } from "@/components/shadcn/ui/popover";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
+import FilterOption from "@/interfaces/filters/FilterOption";
 import { cn } from "@/lib/utils";
 import { Check } from "lucide-react";
 import Link from "next/link";
@@ -27,7 +28,7 @@ import SearchFilter from "@/interfaces/filters/SearchFilter";
 interface FilterPopover {
   selectedFilterCategory: FilterCategory;
   filterCategories: FilterCategory[];
-  archiveFilter: ArchiveFilter;
+  archiveFilter?: ArchiveFilter;
   searchFilter: SearchFilter;
   basePath: string;
 }
@@ -110,52 +111,61 @@ const FilterPopover: React.FC<FilterPopover> = ({
           <CommandEmpty>No Filter Found.</CommandEmpty>
 
           <CommandGroup className="w-full max-h-[25vh]">
-            {selectedFilterCategory.options.map((option, i) => (
-              <Link
-                key={i}
-                href={generateUrl(
-                  [
-                    ...filterCategories.map((category) => ({
-                      // Existing filters
-                      entryName: category.urlParam,
-                      slug: category.selectedValue,
-                    })),
+            {selectedFilterCategory.options.map((option, i) => {
+              const baseFilters: FilterOption[] = [
+                ...filterCategories.map((category) => ({
+                  entryName: category.urlParam,
+                  slug: category.selectedValue,
+                })),
+                {
+                  entryName: searchFilter.searchParamName,
+                  slug: searchFilter.searchTerm,
+                },
+              ];
+
+              const nextFilters: FilterOption[] = archiveFilter
+                ? [
+                    ...baseFilters,
                     {
-                      // Include the current search term dynamically
-                      entryName: searchFilter.searchParamName,
-                      slug: searchFilter.searchTerm,
-                    },
-                    {
-                      // Always show archived material when a filter is selected
                       entryName: archiveFilter.paramName,
                       slug: true.toString(),
                     },
                     {
-                      // New filter being applied
                       entryName: selectedFilterCategory.urlParam,
                       slug: option.slug,
                     },
-                  ],
-                  basePath
-                )}
-                className="w-full"
-              >
-                <CommandList>
-                  <CommandItem
-                    key={option.slug}
-                    value={option.slug}
-                    className="pr-4 w-full"
-                  >
-                    {selectedFilterCategory.selectedValue === option.slug ? (
-                      <Check className={cn(gap, "text-red-500")} />
-                    ) : (
-                      <div className={gap}></div>
-                    )}
-                    {option.entryName}
-                  </CommandItem>
-                </CommandList>
-              </Link>
-            ))}
+                  ]
+                : [
+                    ...baseFilters,
+                    {
+                      entryName: selectedFilterCategory.urlParam,
+                      slug: option.slug,
+                    },
+                  ];
+
+              return (
+                <Link
+                  key={i}
+                  href={generateUrl(nextFilters, basePath)}
+                  className="w-full"
+                >
+                  <CommandList>
+                    <CommandItem
+                      key={option.slug}
+                      value={option.slug}
+                      className="pr-4 w-full"
+                    >
+                      {selectedFilterCategory.selectedValue === option.slug ? (
+                        <Check className={cn(gap, "text-red-500")} />
+                      ) : (
+                        <div className={gap}></div>
+                      )}
+                      {option.entryName}
+                    </CommandItem>
+                  </CommandList>
+                </Link>
+              );
+            })}
           </CommandGroup>
         </Command>
       </PopoverContent>

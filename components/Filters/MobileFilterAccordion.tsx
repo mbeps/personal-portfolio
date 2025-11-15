@@ -9,13 +9,14 @@ import {
 } from "@/components/shadcn/ui/accordion";
 import ArchiveFilter from "@/interfaces/filters/ArchiveFilter";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
+import FilterOption from "@/interfaces/filters/FilterOption";
 import SearchFilter from "@/interfaces/filters/SearchFilter";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 interface MobileFilterAccordionProps {
   filterCategories: FilterCategory[];
-  archiveFilter: ArchiveFilter;
+  archiveFilter?: ArchiveFilter;
   searchFilter: SearchFilter;
   basePath: string;
 }
@@ -47,27 +48,38 @@ const MobileFilterAccordion: React.FC<MobileFilterAccordionProps> = ({
     category: FilterCategory,
     optionSlug: string
   ): string {
-    return generateUrl(
-      [
-        ...filterCategories.map((item) => ({
-          entryName: item.urlParam,
-          slug: item.selectedValue,
-        })),
-        {
-          entryName: searchFilter.searchParamName,
-          slug: searchFilter.searchTerm,
-        },
-        {
-          entryName: archiveFilter.paramName,
-          slug: true.toString(),
-        },
-        {
-          entryName: category.urlParam,
-          slug: optionSlug,
-        },
-      ],
-      basePath
-    );
+    const baseFilters: FilterOption[] = [
+      ...filterCategories.map((item) => ({
+        entryName: item.urlParam,
+        slug: item.selectedValue,
+      })),
+      {
+        entryName: searchFilter.searchParamName,
+        slug: searchFilter.searchTerm,
+      },
+    ];
+
+    const filtersWithArchive: FilterOption[] = archiveFilter
+      ? [
+          ...baseFilters,
+          {
+            entryName: archiveFilter.paramName,
+            slug: true.toString(),
+          },
+          {
+            entryName: category.urlParam,
+            slug: optionSlug,
+          },
+        ]
+      : [
+          ...baseFilters,
+          {
+            entryName: category.urlParam,
+            slug: optionSlug,
+          },
+        ];
+
+    return generateUrl(filtersWithArchive, basePath);
   }
 
   return (

@@ -29,7 +29,7 @@ interface FilterSectionProps {
   filterCategories: FilterCategory[];
   areFiltersApplied: boolean;
   searchFilter: SearchFilter;
-  archiveFilter: ArchiveFilter;
+  archiveFilter?: ArchiveFilter;
 }
 
 const FilterSection: React.FC<FilterSectionProps> = ({
@@ -54,17 +54,19 @@ const FilterSection: React.FC<FilterSectionProps> = ({
     slug: searchFilter.searchTerm,
   });
 
-  filterProps.push({
-    entryName: archiveFilter.paramName,
-    slug: archiveFilter.showArchived.toString(),
-  });
+  if (archiveFilter) {
+    filterProps.push({
+      entryName: archiveFilter.paramName,
+      slug: archiveFilter.showArchived.toString(),
+    });
+  }
 
   function updateSearchTerm(newSearchTerm: string) {
     const updatedFilterProps: FilterOption[] = filterProps.map((filterProp) => {
       if (filterProp.entryName === searchFilter.searchParamName) {
         return { ...filterProp, slug: newSearchTerm };
       }
-      if (filterProp.entryName === archiveFilter.paramName) {
+      if (archiveFilter && filterProp.entryName === archiveFilter.paramName) {
         return { ...filterProp, slug: true.toString() };
       }
       return filterProp;
@@ -74,7 +76,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
     router.push(newUrl);
   }
 
-  const message: string = archiveFilter.hasArchivedMaterials
+  const message: string = archiveFilter?.hasArchivedMaterials
     ? `Search, Filter and View Archived ${name}`
     : `Search & Filter ${name}`;
 
@@ -161,7 +163,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
               </div>
 
               {/* Archive Toggle */}
-              {archiveFilter.hasArchivedMaterials && (
+              {archiveFilter?.hasArchivedMaterials && (
                 <ArchiveToggle
                   showArchived={archiveFilter.showArchived}
                   filterProps={filterProps}
@@ -179,11 +181,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
         toggle={handleToggleFilter}
         filterCategories={filterCategories}
         basePath={basePath}
-        archiveFilter={{
-          paramName: archiveFilter.paramName,
-          showArchived: archiveFilter.showArchived,
-          hasArchivedMaterials: archiveFilter.hasArchivedMaterials,
-        }}
+        archiveFilter={archiveFilter}
         areFiltersApplied={areFiltersApplied}
         searchFilter={searchFilter}
       />

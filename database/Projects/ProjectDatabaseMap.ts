@@ -1,17 +1,16 @@
 import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
 import addProjectThumbnail from "@/actions/material/projects/addProjectThumbnail";
-import ProjectDatabaseKeys from "@/database/Projects/ProjectDatabaseKeys";
-import ProjectCategoriesEnum from "@/enums/Project/ProjectCategoriesEnum";
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
-import ProjectInterface from "@/database/Projects/ProjectInterface";
-import skillDatabaseMap from "../Skills/SkillDatabaseMap";
-import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
 import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
+import ProjectDatabaseKeys from "@/database/Projects/ProjectDatabaseKeys";
+import ProjectInterface from "@/database/Projects/ProjectInterface";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import ProjectCategoriesEnum from "@/enums/Project/ProjectCategoriesEnum";
+import ProjectTypeEnum from "@/enums/Project/ProjectTypeEnum";
+import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
+import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import CertificateDatabaseKeys from "../Certificates/CertificateDatabaseKeys";
 import RoleDatabaseKeys from "../Roles/RoleDatabaseKeys";
-import ProjectTypeEnum from "@/enums/Project/ProjectTypeEnum";
-import Module from "module";
+import skillDatabaseMap from "../Skills/SkillDatabaseMap";
 
 /**
  * Hashmap of projects with keys as {@link SkillDatabaseKeys} and values as {@link ProjectInterface}.
