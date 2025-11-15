@@ -1061,8 +1061,8 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.SymphonyTranslateBot]: {
     name: `Symphony Translate Bot`,
     description: `
-      A Symphony bot that translates messages in a Symphony chatroom using Language Weaver API.
-      Replaces the old Translate Bot which was originally built using the outdated SDK.
+      A Symphony bot that translates messages in a Symphony chatroom.
+      Replaces the old bot which was originally built using the outdated SDK.
       Much faster, more reliable, and easier to maintain and more features compared to the old bot.
       `,
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
@@ -1739,11 +1739,9 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.JavaCalculatorAssignment]: {
     name: `Calculator`,
     description: `
-      Simple calculator app built using Java as a Maven project. 
-      This was a second year Java assignment focused on software engineering methodologies. 
-      The project involved creating a calculator application, emphasizing the importance of proper version control procedures, 
-      test-driven development, documentation, and code quality assurance through linting and styling. 
-      The assignment highlighted the significance of following efficient software development processes rather than just focusing on the final implementation.  `,
+      This was a second year assignment focused on software engineering methodologies. 
+      The project emphasized the importance of proper version control procedures, 
+      test-driven development, documentation, and code quality assurance.`,
     repositoryURL: `https://github.com/mbeps/Calculator-Assignment`,
     skills: [
       SkillDatabaseKeys.Java,
