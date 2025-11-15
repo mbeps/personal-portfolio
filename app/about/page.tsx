@@ -3,6 +3,7 @@ import MaterialList from "@/components/MaterialLists/MaterialList";
 import Reader from "@/components/Reader/Reader";
 import Socials from "@/components/Socials/Socials";
 import DetailsTable from "@/components/UI/DetailsTable";
+import { Card, CardContent } from "@/components/shadcn/ui/card";
 import developerName from "@/constants/developerName";
 import experienceTime from "@/constants/experience";
 import subtitles from "@/constants/subtitles";
@@ -82,7 +83,7 @@ export default function About() {
         <h1>About Me</h1>
       </div>
 
-      {/* Profile Image */}
+      {/* Profile Image only shown in mobile*/}
       <div className="block lg:hidden my-5 lg:md-0">
         <div className="flex justify-center">
           <Image
@@ -114,75 +115,73 @@ export default function About() {
           </div>
 
           {/* Right section */}
-          <div
-            className="
-              lg:w-[25%]
-              space-y-5 lg:space-y-10 
-              p-4
-              bg-white dark:bg-neutral-950 
-              border border-neutral-200 dark:border-neutral-700
-              transition-colors duration-700 ease-in-out
-              rounded-lg"
-          >
-            {/* Profile Image */}
-            <div className="flex justify-center">
-              <Image
-                src="/profile.png"
-                alt="Profile image of the developer"
-                width={250}
-                height={250}
-                className="rounded-full shadow-xl hidden lg:block mt-8 align-center"
-                quality={60}
-                loading="eager"
-                priority
+          <Card className="lg:w-[25%] mb-8 md:mb-0">
+            <CardContent className="space-y-5 lg:space-y-10">
+              {/* Profile Image only shown in desktop */}
+              <div className="flex justify-center">
+                <Image
+                  src="/profile.png"
+                  alt="Profile image of the developer"
+                  width={250}
+                  height={250}
+                  className="rounded-full shadow-xl hidden lg:block mt-8 align-center"
+                  quality={60}
+                  loading="eager"
+                  priority
+                />
+              </div>
+
+              {/* Social Icons */}
+              <div className="flex justify-center">
+                <Socials iconSize={36} />
+              </div>
+
+              {/* Details */}
+              <DetailsTable
+                details={[
+                  { heading: "Name", value: developerName },
+                  { heading: "Email Address", value: "bepary71@gmail.com" },
+                  { heading: "Location", value: "London, UK" },
+                  {
+                    heading: "Master's Degree",
+                    value: `${masters.grade} in ${masters.name} at ${masters.university}`,
+                  },
+                  {
+                    heading: "Bachelor's Degree",
+                    value: `${undergraduate.grade} in ${undergraduate.name} at ${undergraduate.university}`,
+                  },
+                  {
+                    heading: "Current Role",
+                    value: `${latestRole} at ${latestCompany}`,
+                  },
+                  {
+                    heading: "Years of Experience",
+                    value:
+                      1 === experienceTime
+                        ? "1 year"
+                        : `${experienceTime} years`,
+                  },
+                  {
+                    heading: "Main Focus",
+                    value: [
+                      "Artificial Intelligence",
+                      "Full-Stack Development",
+                      "Backend Software Engineering",
+                    ],
+                  },
+                  {
+                    heading: "Number of Projects",
+                    value: `${numberOfProjects}`,
+                  },
+                  {
+                    heading: "Number of Certificates",
+                    value: `${numberOfCertificates}`,
+                  },
+                ]}
+                className="grid-cols-1 md:grid-cols-2 lg:grid-cols-1 lg:max-w-[220px] gap-12"
               />
-            </div>
-
-            {/* Social Icons */}
-            <div className="flex justify-center">
-              <Socials iconSize={36} />
-            </div>
-
-            {/* Details */}
-            <DetailsTable
-              details={[
-                { heading: "Name", value: developerName },
-                { heading: "Email Address", value: "bepary71@gmail.com" },
-                { heading: "Location", value: "London, UK" },
-                {
-                  heading: "Master's Degree",
-                  value: `${masters.grade} in ${masters.name} at ${masters.university}`,
-                },
-                {
-                  heading: "Bachelor's Degree",
-                  value: `${undergraduate.grade} in ${undergraduate.name} at ${undergraduate.university}`,
-                },
-                {
-                  heading: "Current Role",
-                  value: `${latestRole} at ${latestCompany}`,
-                },
-                {
-                  heading: "Years of Experience",
-                  value:
-                    1 === experienceTime ? "1 year" : `${experienceTime} years`,
-                },
-                {
-                  heading: "Main Focus",
-                  value: [
-                    "Artificial Intelligence",
-                    "Full-Stack Development",
-                    "Backend Software Engineering",
-                  ],
-                },
-                { heading: "Number of Projects", value: `${numberOfProjects}` },
-                {
-                  heading: "Number of Certificates",
-                  value: `${numberOfCertificates}`,
-                },
-              ]}
-              className="grid-cols-1 md:grid-cols-2 lg:grid-cols-1 lg:max-w-[220px] gap-12"
-            />
-          </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
       <MaterialList materialKeys={featuredMaterial} />

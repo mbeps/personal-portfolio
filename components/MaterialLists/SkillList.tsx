@@ -8,6 +8,14 @@ import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import useSkillFilterState from "@/hooks/useSkillFilterState";
 import React from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "../shadcn/ui/card";
 
 interface SkillListProps {
   skills: SkillDatabaseKeys[];
@@ -45,27 +53,34 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
       />
 
       {/* List of Skills */}
-      <div className="mt-8 text-center md:text-left space-y-20">
+      <div className="material-sections-wrapper pt-14">
         {groupedSkills.length > 0 ? (
           groupedSkills.map((categoryData: SkillsCategoryInterface) => (
             <div key={categoryData.skillCategoryName}>
-              <h3>
-                {categoryData.skillCategoryName[0].toUpperCase() +
-                  categoryData.skillCategoryName.slice(1)}
-              </h3>
-              <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-                {Object.entries(categoryData.skills).map(
-                  ([count, skillKey]) => (
-                    <SkillTag
-                      key={count}
-                      skillKey={skillKey}
-                      hide={
-                        !skillHasMaterial(skillKey) && hideSkillsWithoutMaterial
-                      }
-                    />
-                  )
-                )}
-              </div>
+              <Card>
+                <CardHeader>
+                  <CardTitle>
+                    <h3>
+                      {categoryData.skillCategoryName[0].toUpperCase() +
+                        categoryData.skillCategoryName.slice(1)}
+                    </h3>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="flex flex-wrap flex-row justify-centermd:justify-start">
+                  {Object.entries(categoryData.skills).map(
+                    ([count, skillKey]) => (
+                      <SkillTag
+                        key={count}
+                        skillKey={skillKey}
+                        hide={
+                          !skillHasMaterial(skillKey) &&
+                          hideSkillsWithoutMaterial
+                        }
+                      />
+                    )
+                  )}
+                </CardContent>
+              </Card>
             </div>
           ))
         ) : (

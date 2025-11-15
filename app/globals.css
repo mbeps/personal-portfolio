@@ -147,7 +147,7 @@ body {
   }
 
   h3:not([class]) {
-    @apply text-2xl font-sans font-bold mb-6 mt-6;
+    @apply text-2xl font-sans font-bold mb-4 mt-4;
   }
 
   h4:not([class]) {
@@ -161,4 +161,7 @@ body {
 }
 @utility material-page-wrapper {
   @apply flex flex-col space-y-10 mt-8 mb-16;
+}
+@utility material-sections-wrapper {
+  @apply space-y-8;
 }

@@ -16,13 +16,13 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/shadcn/ui/accordion";
-import {
-  ButtonGroup,
-  ButtonGroupSeparator,
-  ButtonGroupText,
-} from "@/components/shadcn/ui/button-group";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
-import { Button } from "@/components/shadcn/ui/button";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/shadcn/ui/card";
 import developerName from "@/constants/developerName";
 import { PROJECTS_PAGE } from "@/constants/pages";
 import projectDatabaseMap from "@/database/Projects/ProjectDatabaseMap";
@@ -30,16 +30,13 @@ import ProjectInterface from "@/database/Projects/ProjectInterface";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
 import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
-import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
-import { BsArrowUpRightCircle, BsGithub, BsPlusCircle } from "react-icons/bs";
+import { BsPlusCircle } from "react-icons/bs";
 import { GrAppsRounded } from "react-icons/gr";
-import { IoReaderOutline } from "react-icons/io5";
 import { ProjectLinks } from "./_components/ProjectLinks";
 
 type Params = Promise<{ projectKey: string }>;
@@ -239,54 +236,70 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
         </p>
 
         {/* Metadata Section */}
-        <div className="mt-4 space-y-24">
+        <div className="mt-4 material-sections-wrapper">
           {/* Description Section */}
-          <div className="text-center md:text-left">
-            <h3>Description</h3>
-            <div className="flex flex-wrap justify-center md:justify-start z-10 mt-2">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-center md:text-left">
+                <h3>Description</h3>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
               <p className="text-neutral-800 dark:text-neutral-300">
                 {projectData.description}
               </p>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
 
           {/* Language Section */}
           {projectLanguages && Object.keys(projectLanguages).length > 0 && (
-            <div className="text-center md:text-left">
-              <h3>
-                {Object.keys(projectLanguages).length > 1
-                  ? "Languages"
-                  : "Language"}
-              </h3>
-              <div className="flex flex-wrap justify-center md:justify-start z-10 mt-2">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-center md:text-left">
+                  <h3>
+                    {Object.keys(projectLanguages).length > 1
+                      ? "Languages"
+                      : "Language"}
+                  </h3>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="flex flex-wrap justify-center md:justify-start z-10">
                 {projectLanguages.map((language, index) => (
                   <SkillTag key={index} skillKey={language} />
                 ))}
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           )}
 
           {/* Skills Section */}
-          <div>
-            <SkillTableSection allGroupedSkills={allGroupedSkills} />
-          </div>
+          <Card>
+            <CardContent className="py-10">
+              <SkillTableSection allGroupedSkills={allGroupedSkills} />
+            </CardContent>
+          </Card>
 
           {/* Links Section */}
           {showLinks && (
-            <div className="text-center md:text-left">
-              <h3>Links</h3>
-              <div className="mt-6 flex justify-center md:justify-start w-full md:w-1/2">
-                <ProjectLinks
-                  deploymentURL={projectData.deploymentURL}
-                  repositoryURL={projectData.repositoryURL}
-                  reportURL={
-                    hasProjectReport
-                      ? `${basePath}/${projectKey}/report`
-                      : undefined
-                  }
-                />
-              </div>
-            </div>
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-center md:text-left">
+                  <h3>Links</h3>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex justify-center md:justify-start w-full md:w-1/2">
+                  <ProjectLinks
+                    deploymentURL={projectData.deploymentURL}
+                    repositoryURL={projectData.repositoryURL}
+                    reportURL={
+                      hasProjectReport
+                        ? `${basePath}/${projectKey}/report`
+                        : undefined
+                    }
+                  />
+                </div>
+              </CardContent>
+            </Card>
           )}
 
           {/* Features Section */}
