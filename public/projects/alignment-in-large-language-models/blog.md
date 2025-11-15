@@ -1,3 +1,4 @@
+- [**Exploring Modern Reasoning-Enabled Large Language Models for Language Understanding**](#exploring-modern-reasoning-enabled-large-language-models-for-language-understanding)
 - [ACKNOWLEDGEMENT](#acknowledgement)
 - [ABSTRACT](#abstract)
 - [NOMENCLATURE](#nomenclature)
@@ -137,13 +138,39 @@
 	- [10.2 Limitations](#102-limitations)
 	- [10.3 Future Work](#103-future-work)
 - [11 REFERENCES](#11-references)
+- [12 APPENDICES](#12-appendices)
+	- [12.1 Appendix A: Reasoning Process Examples](#121-appendix-a-reasoning-process-examples)
+		- [12.1.1 Example 1: Orthography Question](#1211-example-1-orthography-question)
+		- [12.1.2 Example 2: Incorrect Answer with Flawed Reasoning](#1212-example-2-incorrect-answer-with-flawed-reasoning)
+	- [12.2 Appendix B: Reasoning Degradation Examples](#122-appendix-b-reasoning-degradation-examples)
+		- [12.2.1 Example 1: Incorrect Answer with Empty Reasoning](#1221-example-1-incorrect-answer-with-empty-reasoning)
+		- [12.2.2 Example 2: Correct Answer with Empty Reasoning](#1222-example-2-correct-answer-with-empty-reasoning)
+	- [12.3 Appendix C: Restored Reasoning Process Examples (Iteration 2)](#123-appendix-c-restored-reasoning-process-examples-iteration-2)
+		- [12.3.1 Example 1: Correct Answer with Restored Reasoning](#1231-example-1-correct-answer-with-restored-reasoning)
+		- [12.3.2 Example 2: Incorrect Answer with Restored Reasoning](#1232-example-2-incorrect-answer-with-restored-reasoning)
+	- [12.4 Appendix D: Code for Injecting CoT to Dataset](#124-appendix-d-code-for-injecting-cot-to-dataset)
+	- [12.5 Appendix E: Computing Statistical Significance](#125-appendix-e-computing-statistical-significance)
+	- [12.6 Appendix F: Full Results Tables](#126-appendix-f-full-results-tables)
+		- [12.6.1 Table 2: Model Details](#1261-table-2-model-details)
+		- [12.6.2 Table 2: Culture \& Common Sense Reasoning Results](#1262-table-2-culture--common-sense-reasoning-results)
+		- [12.6.3 Table 3: Language Understanding Results](#1263-table-3-language-understanding-results)
 
+
+# **Exploring Modern Reasoning-Enabled Large Language Models for Language Understanding**
+
+- **Degree Programme**: MSc Artificial Intelligence
+- **Module**: Individual Project (7CCSMPRJ) 
+- **Supervisor**: Dr. Helen Yannakoudakis
 
 # ACKNOWLEDGEMENT
 
 I would like to thank my supervisor, Dr. Helen Yannakoudakis, for her excellent guidance and support throughout this project. Her advice was essential to my success.
 
-I am also grateful to the authors of the ITALIC dataset for making their work public. A special thanks to Matteo Rinaldi for providing access to the Mult-IT dataset. I want to thank my peers, Jenny Kong, Tomasz Bernacki, and Jamie Ogundiran, for the helpful discussions we had about the general field of cultural alignment in LLMs. Finally, I would like to thank my family and friends for their constant support and encouragement.
+I am also grateful to the authors of the ITALIC dataset for making their work public. A special thanks to Matteo Rinaldi for providing access to the Mult-IT dataset. 
+
+I want to thank my peers, Jenny Kong, Tomasz Bernacki, and Jamie Ogundiran, for the helpful discussions we had about the general field of cultural alignment in LLMs. 
+
+Finally, I would like to thank my family and friends for their constant support and encouragement.
 
 # ABSTRACT
 
@@ -714,8 +741,8 @@ The reasoning-capable models were benchmarked twice: once with reasoning disable
 
 #### 7.1.2.2 Implementation
 
-- **Qwen3 Series (Native API)**: The Qwen3 models provide a native API for enabling reasoning at the inference level. As shown in the `QwenReasoningBenchmark` class, the call to `self.model.chat()` was modified to include the argument `chat_template_kwargs={"enable_thinking": True}`. This flag instructs the model to generate its internal monologue within `&lt;think&gt;` tags.
-- **Magistral-Small (Manual Template Construction)**: Magistral-Small requires a more manual implementation. Its tokenizer does not have an automated flag for reasoning. Instead, the `format_prompt` function in the `MagistralFineTuning` class was engineered to manually construct the chat template according to the model's documentation, correctly placing the `&lt;think&gt;` tags between the `[INST]...[/INST]` user tags and the final answer.
+- **Qwen3 Series (Native API)**: The Qwen3 models provide a native API for enabling reasoning at the inference level. As shown in the `QwenReasoningBenchmark` class, the call to `self.model.chat()` was modified to include the argument `chat_template_kwargs={"enable_thinking": True}`. This flag instructs the model to generate its internal monologue within `<think>` tags.
+- **Magistral-Small (Manual Template Construction)**: Magistral-Small requires a more manual implementation. Its tokenizer does not have an automated flag for reasoning. Instead, the `format_prompt` function in the `MagistralFineTuning` class was engineered to manually construct the chat template according to the model's documentation, correctly placing the `<think>` tags between the `[INST]...[/INST]` user tags and the final answer.
 
 #### 7.1.2.3 Reasoning Hyperparameters
 
@@ -737,7 +764,7 @@ Two primary prompt templates were implemented. For non-reasoning evaluations, th
 This necessitated two separate answer extraction functions:
 
 - `extract_answer_robust`: A multi-pattern REGEX parser for standard outputs.
-- `extract_answer_with_reasoning`: A more sophisticated parser with a hierarchical logic. It was engineered to first locate the closing `&lt;/think&gt;` tag and exclusively parse the text that followed. Only if this failed would it fall back to searching for other keywords like `FINALE:`. This tailored approach was crucial for reliably handling the specific output format of the reasoning models.
+- `extract_answer_with_reasoning`: A more sophisticated parser with a hierarchical logic. It was engineered to first locate the closing `<think/>` tag and exclusively parse the text that followed. Only if this failed would it fall back to searching for other keywords like `FINALE:`. This tailored approach was crucial for reliably handling the specific output format of the reasoning models.
 
 This dual-parser system was a crucial implementation detail for ensuring accurate, automated scoring across all experimental conditions.
 
@@ -964,7 +991,7 @@ This collapse is reflected in the stark performance drops. For Qwen3 8B, the tot
 
 ##### 8.4.1.2.1 Analysis of Reasoning Degradation
 
-When prompted to reason, the fine-tuned models produced empty `&lt;think&gt;` tags. They generated no intermediate thought process or step-by-step analysis as shown in Appendix 12.2. Instead, they defaulted to providing a direct, final answer, mirroring the behaviour of their non-reasoning state. This occurred regardless of whether the final answer was correct or incorrect.
+When prompted to reason, the fine-tuned models produced empty `<think>` tags. They generated no intermediate thought process or step-by-step analysis as shown in Appendix 12.2. Instead, they defaulted to providing a direct, final answer, mirroring the behaviour of their non-reasoning state. This occurred regardless of whether the final answer was correct or incorrect.
 
 This behaviour strongly suggests that the fine-tuning process overwrote the model's learned ability to reason. The dataset used for fine-tuning, while effective for teaching linguistic patterns, consisted solely of question-answer pairs. It did not contain examples of Chain-of-Thought (CoT) reasoning. Conventional wisdom in training reasoning models indicates that they require exposure to datasets that explicitly model this thought process. The alternative, Reinforcement Learning from Verifiable Rewards (RLVR), is far more computationally expensive and time-consuming than the standard PEFT techniques used in this project. By training on a dataset without CoT examples, the model was effectively taught to ignore the reasoning step, leading to this catastrophic failure.
 
@@ -996,7 +1023,7 @@ Qwen3 8B saw its total accuracy jump by 3.38 percentage points over its original
 
 ##### 8.4.2.2.1 Analysis of Restored Reasoning
 
-A qualitative analysis of the model outputs confirms that fine-tuning on CoT data successfully restored the models' reasoning abilities. As shown in the examples in Appendix C, all the fine-tuned reasoning models (Qwen3 4B, Qwen3 8B, and Magistral-Small) are once again able to generate a step-by-step internal monologue within the `&lt;think&gt;` tags before providing a final answer. The functionality is still the same as what was discussed in Section 8.3.1, so no further low-level analysis is needed.
+A qualitative analysis of the model outputs confirms that fine-tuning on CoT data successfully restored the models' reasoning abilities. As shown in the examples in Appendix C, all the fine-tuned reasoning models (Qwen3 4B, Qwen3 8B, and Magistral-Small) are once again able to generate a step-by-step internal monologue within the `<think>` tags before providing a final answer. The functionality is still the same as what was discussed in Section 8.3.1, so no further low-level analysis is needed.
 
 This restored capability is evident regardless of whether the final answer is correct or incorrect. The models consistently articulate a logical process, identifying the core task, recalling relevant rules, and evaluating the options. This behaviour is the expected outcome, as training with CoT examples is the industry-standard method for teaching models to reason. The success of this conventional approach validates the synthetic CoT generation and provides a strong foundation for the next step: testing the full hybrid training method to improve the non-reasoning performance as well as to maintain and enhance both the reasoning capabilities.
 
@@ -1261,3 +1288,571 @@ Looking ahead, future work should extend this investigation to larger models. A 
 [57] K. Batsuren et al., "The SIGMORPHON 2022 Shared Task on Morpheme Segmentation," in Proc. 19th SIGMORPHON Workshop on Computational Research in Phonetics, Phonology, and Morphology, Seattle, WA, USA, Jul. 2022, pp. 103–116.
 
 [58] B. M. Montabes de la Cruz et al., "Decoding sound content in the early visual cortex of aphantasic participants," Current Biology, vol. 34, no. 21, pp. 5083–5089.e3, Nov. 2024.
+
+# 12 APPENDICES
+
+## 12.1 Appendix A: Reasoning Process Examples
+
+This appendix provides examples of the full outputs generated by reasoning-capable models, as referenced in Section 9.3 Analysis of Reasoning Process. These examples illustrate the step-by-step "thinking" process that the models undertake when their reasoning capabilities are enabled.
+
+### 12.1.1 Example 1: Orthography Question
+
+The following example shows the thought process of a Qwen3 model for a question it answered incorrectly with reasoning disabled, but correctly with reasoning enabled.
+
+**Question:**  
+Indicare la parola che NON richiede l'iniziale maiuscola.  
+(Indicate the word that does NOT require an initial capital letter.)
+
+**Options:**  
+A) Onu  
+B) Deputato  
+C) Picasso  
+D) Colorado
+
+**Model Output (Reasoning Enabled):**
+```
+<think>
+Okay, let's see. The question is about morphology, specifically which word doesn't require a capital letter. The options are A) Onu, B) Deputato, C) Picasso, D) Colorado.
+
+First, I need to recall the rules for capitalization. Proper nouns usually require capital letters, like names of people, places, or organizations. Let's check each:
+
+A) Onu – that's the Italian acronym for United Nations. In Italian, acronyms are usually written in lowercase unless they are proper nouns. Wait, but sometimes they might be capitalized.
+
+B) Deputato – this is a common noun in Italian, meaning "deputy." It's not a proper noun, so it shouldn't be capitalized.
+
+C) Picasso – that's a proper noun, the name of a famous artist, so it should be capitalized.
+
+D) Colorado – that's a proper noun, the name of a state in the US, so it's capitalized.
+
+So the answer should be B) Deputato, since it's a common noun and doesn't need a capital letter. Onu might be tricky, but in Italian, acronyms are often lowercase. The other options are clearly proper nouns. So B is the correct answer.
+</think>
+
+FINALE: B
+```
+
+**Analysis:**  
+The model's internal monologue demonstrates a clear, logical process. It correctly identifies the grammatical rule, evaluates each option against that rule, and works through ambiguity to arrive at the most logical conclusion.
+
+---
+
+### 12.1.2 Example 2: Incorrect Answer with Flawed Reasoning
+
+**Question:**  
+In quale delle seguenti frasi il verbo "essere" ha la funzione di copula?  
+(In which of the following sentences does the verb "to be" have the function of a copula?)
+
+**Options:**  
+A) "Per quell'ora sarò da te"  
+B) "La riunione fu indetta per le ore dieci"  
+C) "Per le strade c'era un'insolita animazione"  
+D) "Gli interessati non furono mai interpellati"
+
+**Model Output (Reasoning Enabled):**
+```
+<think>
+Okay, let's tackle this question. The user is asking which sentence uses the verb "essere" as a copula. The options are A, B, C, D.
+
+First, I need to remember what a copula is. A copula is a verb that links the subject to a complement, often used with "essere" or "avere" in Italian. The main function is to connect the subject to a predicate nominative.
+
+Now, looking at the options:
+
+A) "Per quell'ora sarò da te" – Here, "sarò" is the future tense of "essere," but it's used as an auxiliary verb with the past participle "stare". So "essere" here is the auxiliary, not the copula.
+
+B) "La riunione fu indetta per le ore dieci" – "Fu" is the past tense of "essere," but here it's used as the auxiliary verb for the passive voice. The main verb is "indetta," so "fu" is part of the passive construction. Not a copula.
+
+C) "Per le strade c'era un'insolita animazione" – "C'era" is "ci era," which is the contraction of "ci" + "era." Here, "era" is the past tense of "essere," but it's used as the auxiliary verb for the passato prossimo. Wait, but "c'è" is the impersonal form of "essere" (ci è), which can sometimes act as a copula. Hmm, maybe not the best example.
+
+D) "Gli interessati non furono mai interpellati" – "Furono" is the past tense of "essere" used as the auxiliary verb for the passive voice. Not a copula.
+
+So the answer should be C, because "c'era" is impersonal and can act as a copula in some contexts.
+</think>
+
+FINALE: C
+```
+
+**Analysis:**  
+Even though the final answer is incorrect, the model still demonstrates a clear and logical reasoning process. It considers each option, eliminates unlikely candidates based on grammatical rules, and formulates a hypothesis. This shows that the ability to reason has been restored, even if the underlying knowledge is flawed in this specific case.
+
+---
+
+## 12.2 Appendix B: Reasoning Degradation Examples
+
+This appendix provides examples of the outputs from fine-tuned models when their reasoning capabilities were enabled, as referenced in the main report. These examples illustrate the "empty thinking" phenomenon where the models fail to generate a step-by-step thought process.
+
+### 12.2.1 Example 1: Incorrect Answer with Empty Reasoning
+
+**Question:**  
+Sostituire nella frase seguente la parola "fatto" con una più appropriata: "Poi il dottore mi ha fatto alcune domande sulla mia vita privata."  
+(Replace the word "fatto" in the following sentence with a more appropriate one: "Then the doctor made me some questions about my personal life.")
+
+**Model Output (Qwen3 8B Fine-Tuned, Reasoning Enabled):**
+```
+<think></think>
+FINALE: C
+```
+
+**Analysis:**  
+The `<think>` tag is completely empty. The model does not perform any analysis of the sentence, the verb "fatto," or the alternative options. It provides a direct, incorrect answer, behaving identically to its non-reasoning state.
+
+---
+
+### 12.2.2 Example 2: Correct Answer with Empty Reasoning
+
+**Question:**  
+Chi è l'autore della poesia "Soldati"?  
+(Who is the author of the poem "Soldiers"?)
+
+**Model Output (Qwen3 8B Fine-Tuned, Reasoning Enabled):**
+```
+<think></think>
+La risposta corretta è A
+```
+
+**Analysis:**  
+Even when the model arrives at the correct answer, the reasoning process is absent. The `<think>` tag remains empty, demonstrating that the model is relying on its base knowledge to answer the question directly, rather than using a structured reasoning process. This confirms that the fine-tuning has disabled the model's ability to externalise its thought process.
+
+---
+
+## 12.3 Appendix C: Restored Reasoning Process Examples (Iteration 2)
+
+This appendix provides examples of outputs from models fine-tuned exclusively on synthetic Chain-of-Thought (CoT) data. These examples illustrate that the models have successfully recovered their ability to generate an internal monologue.
+
+### 12.3.1 Example 1: Correct Answer with Restored Reasoning
+
+**Question:**  
+Individuare la proposizione eccettuativa nel periodo:  
+"Avrebbe fatto di tutto pur di stare con lei, tranne che lasciare la città in cui era cresciuto."  
+(Identify the exceptive clause in the sentence: "He would have done anything to be with her, except to leave the city where he had grown up.")
+
+**Model Output (Qwen3 8B Fine-Tuned on CoT, Reasoning Enabled):**
+```
+<think>
+Okay, the question is about identifying the exceptive clause in the sentence.  
+The sentence is: "Avrebbe fatto di tutto pur di stare con lei, tranne che lasciare la città in cui era cresciuto."  
+The options are A to D.
+
+First, I need to recall what an exceptive clause is. It's a clause that introduces an exception to the main statement. In Italian, the structure often uses "tranne che" or "a meno che" to indicate an exception.
+
+Looking at the sentence, the main part is "Avrebbe fatto di tutto pur di stare con lei," which means "He would do anything to be with her."  
+Then there's "tranne che lasciare la città in cui era cresciuto." The phrase "tranne che" here sets an exception.
+
+The clause after "tranne che" is "lasciare la città in cui era cresciuto," which matches option B.
+
+So the answer should be B.
+</think>
+
+FINALE: B
+```
+
+**Analysis:**  
+The model successfully generates a detailed thought process. It correctly identifies the grammatical concept (exceptive clause), analyzes the sentence structure, and evaluates the options to arrive at the correct answer.
+
+---
+
+### 12.3.2 Example 2: Incorrect Answer with Restored Reasoning
+
+**Question:**  
+Chi è l'autore della poesia "Soldati"?  
+(Who is the author of the poem "Soldiers"?)
+
+**Model Output (Qwen3 8B Fine-Tuned on CoT, Reasoning Enabled):**
+```
+<think>
+Okay, the question is about who wrote the poem "Soldati" and the options are A) Ungaretti, B) Pavese, C) Leopardi, D) Calvino.
+
+I need to recall which poet is known for that work.  
+Leopardi is a classical poet, maybe from the 19th century.  
+Pavese is a 20th-century writer, known for his prose and poetry.  
+Ungaretti is a modernist poet, part of the Hermetic school.  
+Calvino is a novelist, not a poet.
+
+"Soldati" sounds like a modern poem, so maybe Pavese?  
+Wait, I think Pavese wrote "Soldati" as part of his poetry.  
+Ungaretti's works are more about war and existential themes, but I'm not sure.  
+Leopardi's poems are more philosophical.  
+Calvino isn't a poet.
+
+So the answer is B) Pavese.
+</think>
+
+FINALE: B
+```
+
+**Analysis:**  
+Even though the final answer is incorrect (the author is Ungaretti), the model still demonstrates a clear and logical reasoning process. It considers each author, eliminates unlikely candidates based on their typical genres and periods, and formulates a hypothesis. This shows that the ability to reason has been restored, even if the model's underlying knowledge is flawed in this specific case.
+
+---
+
+## 12.4 Appendix D: Code for Injecting CoT to Dataset
+
+The script below takes the CoT from the CSV file and injects it into the dataset for the appropriate question.
+
+```python
+import argparse
+import csv
+import json
+import re
+import unicodedata
+import difflib
+from pathlib import Path
+
+THINK_RE = re.compile(r"<think\b[^>]*>(.*?)</think>", re.IGNORECASE | re.DOTALL)
+
+PUNCT_MAP = {
+    "'": "'",
+    "''": '"',
+    "„": '"',
+    "«": '"',
+    "»": '"',
+    "\u00A0": "",
+    "‐": "-",
+    "–": "-",
+    "—": "-",
+}
+
+DROP_PUNCT_PATTERN = re.compile(r"[^\w\s]", flags=re.UNICODE)
+
+def strip_diacritics(s: str) -> str:
+    nfkd = unicodedata.normalize("NFD", s or "")
+    return "".join(ch for ch in nfkd if unicodedata.category(ch) != "Mn")
+
+def tidy(s: str) -> str:
+    s = unicodedata.normalize("NFKC", s or "")
+    for a, b in PUNCT_MAP.items():
+        s = s.replace(a, b)
+    return " ".join(s.split()).strip().lower()
+
+def loose_key(s: str) -> str:
+    s = strip_diacritics(tidy(s))
+    s = DROP_PUNCT_PATTERN.sub("", s)
+    return "".join(s.split())
+
+def extract_thinking(raw_response: str) -> str | None:
+    parts = [m.strip() for m in THINK_RE.findall(raw_response)]
+    return "\n\n".join(p for p in parts if p) if parts else None
+
+def build_jsonl_index(jsonl_path: Path):
+    lines = []
+    keys_tidy = set()
+    keys_loose = set()
+    with jsonl_path.open("r", encoding="utf-8") as f:
+        for line in f:
+            raw = line.rstrip("\n")
+            if not raw.strip():
+                continue
+            try:
+                obj = json.loads(raw)
+                q = obj.get("question", "")
+                k1 = tidy(q)
+                k2 = loose_key(q)
+                if k1:
+                    keys_tidy.add(k1)
+                if k2:
+                    keys_loose.add(k2)
+                lines.append((raw, obj, k1, k2))
+            except json.JSONDecodeError:
+                lines.append((raw, None, "", ""))
+    return lines, keys_tidy, keys_loose
+
+def load_thinking_map(csv_path: Path, keys_tidy, keys_loose, fuzzy_threshold: float):
+    map_key_to_think = {}
+    loose_key_list = list(keys_loose)
+    with csv_path.open(newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            if not (row.get("is_correct") == "true" and row.get("has_thinking") == "true"):
+                continue
+            thinking = extract_thinking(row.get("raw_response", ""))
+            if not thinking:
+                continue
+            q = row.get("question", "")
+            k1 = tidy(q)
+            k2 = loose_key(q)
+            chosen_key = None
+            if k1 and k1 in keys_tidy:
+                chosen_key = k1
+            elif k2 and k2 in keys_loose:
+                chosen_key = k2
+            elif k2 and loose_key_list:
+                best = difflib.get_close_matches(k2, loose_key_list, n=1, cutoff=fuzzy_threshold)
+                if best:
+                    chosen_key = best[0]
+            if chosen_key and chosen_key not in map_key_to_think:
+                map_key_to_think[chosen_key] = thinking
+    return map_key_to_think
+
+def main():
+    parser = argparse.ArgumentParser(description="Merge thinking into JSONL subset (robust).")
+    parser.add_argument("--jsonl-in", required=True, help="Path to original JSONL.")
+    parser.add_argument("--csv", required=True, help="Path to CSV with thinking.")
+    parser.add_argument("--thinking-out", required=True, help="Path to write thinking JSONL.")
+    parser.add_argument("--no-thinking-out", required=True, help="Path to write no-thinking JSONL.")
+    parser.add_argument("--fuzzy-threshold", type=float, default=0.985)
+    args = parser.parse_args()
+
+    jsonl_lines, keys_tidy, keys_loose = build_jsonl_index(Path(args.jsonl_in))
+    thinking_map = load_thinking_map(Path(args.csv), keys_tidy, keys_loose, args.fuzzy_threshold)
+
+    with open(args.thinking_out, "w", encoding="utf-8") as fthink, \
+         open(args.no_thinking_out, "w", encoding="utf-8") as fno:
+        for raw_line, obj, k1, k2 in jsonl_lines:
+            if obj is None:
+                fno.write(raw_line + "\n")
+                continue
+            thinking = None
+            if k1 and k1 in thinking_map:
+                thinking = thinking_map[k1]
+            elif k2 and k2 in thinking_map:
+                thinking = thinking_map[k2]
+            if thinking:
+                out_obj = dict(obj)
+                out_obj["thinking"] = thinking
+                fthink.write(json.dumps(out_obj, ensure_ascii=False) + "\n")
+            else:
+                fno.write(raw_line + "\n")
+
+if __name__ == "__main__":
+    main()
+```
+
+---
+
+## 12.5 Appendix E: Computing Statistical Significance
+
+The script below computes the statistical significance using McNemar's test and also computes Chi-Squared by taking in the CSV files containing each question's response generated by the benchmarks.
+
+```python
+#!/usr/bin/env python3
+"""
+Compute McNemar's test from two question-by-question CSVs.
+Reports:
+- Per-file accuracy
+- Intersection-only accuracy
+- 2×2 table
+- McNemar (chi-square + exact)
+- Discordant OR + 95% CI
+"""
+
+import argparse
+import csv
+import math
+import re
+import unicodedata
+from collections import defaultdict
+from pathlib import Path
+from typing import Dict, List, Optional
+
+PUNCT_MAP = {
+    "'": "'",
+    "''": '"',
+    "„": '"',
+    "«": '"',
+    "»": '"',
+}
+
+DROP_PUNCT = re.compile(r"[^\w\s]", flags=re.UNICODE)
+
+def strip_diacritics(s: str) -> str:
+    nfkd = unicodedata.normalize("NFD", s or "")
+    return "".join(ch for ch in nfkd if unicodedata.category(ch) != "Mn")
+
+def tidy(s: str) -> str:
+    s = unicodedata.normalize("NFKC", s or "")
+    for a, b in PUNCT_MAP.items():
+        s = s.replace(a, b)
+    return " ".join(s.split()).strip().lower()
+
+def loose_key(s: str) -> str:
+    s = strip_diacritics(tidy(s))
+    s = DROP_PUNCT.sub("", s)
+    return "".join(s.split())
+
+def as_bool(x) -> bool:
+    return str(x or "").strip().lower() in {"1", "true", "t", "yes", "y"}
+
+def row_correct(row: Dict[str, str]) -> Optional[bool]:
+    ca = row.get("correct_answer")
+    pa = row.get("predicted_answer")
+    if ca is None or pa is None:
+        return None
+    return tidy(ca) == tidy(pa)
+
+def key_for_row(row: Dict[str, str]) -> Optional[str]:
+    q = loose_key(row.get("question", ""))
+    if q:
+        return q
+    idx = str(row.get("index", "")).strip()
+    return f"idx:{idx}" if idx else None
+
+def exact_binom_two_sided(b: int, c: int) -> float:
+    n = b + c
+    if n == 0:
+        return float("nan")
+    k = min(b, c)
+    logp = -n * math.log(2.0)
+    logsum = -math.inf
+    for i in range(0, k + 1):
+        logsum = math.logaddexp(logsum, logp)
+        if i < k:
+            logp += math.log(n - i) - math.log(i + 1)
+    p = 2.0 * math.exp(logsum)
+    return min(p, 1.0)
+
+def chisq1_sf(x: float) -> float:
+    if x < 0 or math.isnan(x):
+        return float("nan")
+    return math.erfc(math.sqrt(x) / math.sqrt(2.0))
+
+def read_csv_build_maps(path: Path):
+    with path.open("r", encoding="utf-8-sig", newline="") as f:
+        reader = csv.DictReader(f)
+        rows = []
+        key_to_rows = defaultdict(list)
+        for row in reader:
+            key = key_for_row(row)
+            if key is None:
+                continue
+            row["_correct_bool"] = row_correct(row)
+            key_to_rows[key].append(row)
+            rows.append(row)
+        total = len(rows)
+        usable = sum(1 for r in rows if r.get("_correct_bool") in (True, False))
+        correct = sum(1 for r in rows if r.get("_correct_bool") is True)
+        return {
+            "total_rows": total,
+            "usable_rows": usable,
+            "correct": correct,
+            "accuracy": correct / usable if usable else float("nan"),
+            "key_to_rows": key_to_rows,
+        }
+
+def pair_and_count(map_a, map_b):
+    keys = sorted(set(map_a.keys()) | set(map_b.keys()))
+    n00 = n01 = n10 = n11 = 0
+    for k in keys:
+        a_list = map_a.get(k, [])
+        b_list = map_b.get(k, [])
+        if not a_list or not b_list:
+            continue
+        a_row = a_list[0]
+        b_row = b_list[0]
+        ca = a_row.get("_correct_bool")
+        cb = b_row.get("_correct_bool")
+        if ca not in (True, False) or cb not in (True, False):
+            continue
+        if not ca and not cb:
+            n00 += 1
+        elif not ca and cb:
+            n01 += 1
+        elif ca and not cb:
+            n10 += 1
+        else:
+            n11 += 1
+    return n00, n01, n10, n11
+
+def main():
+    parser = argparse.ArgumentParser(description="McNemar's test from two CSVs")
+    parser.add_argument("--csv-a", required=True, help="Path to CSV A")
+    parser.add_argument("--csv-b", required=True, help="Path to CSV B")
+    parser.add_argument("--label-a", default=None)
+    parser.add_argument("--label-b", default=None)
+    args = parser.parse_args()
+
+    path_a = Path(args.csv_a)
+    path_b = Path(args.csv_b)
+    label_a = args.label_a or path_a.stem
+    label_b = args.label_b or path_b.stem
+
+    map_a = read_csv_build_maps(path_a)
+    map_b = read_csv_build_maps(path_b)
+
+    n00, n01, n10, n11 = pair_and_count(map_a["key_to_rows"], map_b["key_to_rows"])
+    pairs = n00 + n01 + n10 + n11
+
+    b = n01
+    c = n10
+    chi2 = float("nan")
+    p_chi = float("nan")
+    p_exact = float("nan")
+
+    if (b + c) > 0:
+        chi2 = (abs(b - c) - 1) ** 2 / (b + c)
+        p_chi = chisq1_sf(chi2)
+        p_exact = exact_binom_two_sided(b, c)
+
+    acc_a_full = map_a["accuracy"]
+    acc_b_full = map_b["accuracy"]
+    acc_a_pair = (n10 + n11) / pairs if pairs else float("nan")
+    acc_b_pair = (n01 + n11) / pairs if pairs else float("nan")
+    diff_pair = acc_b_pair - acc_a_pair
+
+    print(f"Files: A='{path_a}' B='{path_b}'")
+    print(f"Labels: A='{label_a}' B='{label_b}'")
+    print("-" * 72)
+    print("Per-file accuracy (full, each file alone):")
+    print(f"  {label_a}: {acc_a_full:.2%}")
+    print(f"  {label_b}: {acc_b_full:.2%}")
+    print("-" * 72)
+    print("Intersection-only accuracy (matched pairs):")
+    print(f"  Pairs used: {pairs}")
+    print(f"  {label_a}: {acc_a_pair:.2%}")
+    print(f"  {label_b}: {acc_b_pair:.2%}")
+    print(f"  Difference (B - A): {diff_pair:+.2%}")
+    print("-" * 72)
+    print("2×2 table (A vs B):")
+    print(f"                B Wrong    B Right")
+    print(f"  A Wrong         {n00:4d}      {n01:4d}")
+    print(f"  A Right         {n10:4d}      {n11:4d}")
+    print(f"  Discordant: b = {b}, c = {c}")
+    print("-" * 72)
+    print("McNemar's test (intersection only):")
+    if (b + c) == 0:
+        print("  No discordant pairs (b+c=0). Test not defined.")
+    else:
+        print(f"  Chi-square (with continuity): {chi2:.6f}")
+        print(f"  p-value (approx, df=1): {p_chi:.6g}")
+        print(f"  p-value (exact binomial): {p_exact:.6g}")
+
+if __name__ == "__main__":
+    main()
+```
+
+---
+
+## 12.6 Appendix F: Full Results Tables
+
+### 12.6.1 Table 2: Model Details
+
+| Model Name       | Parameters (B) | Architecture        | Fine-Tuned | Notes                        |
+| ---------------- | -------------- | ------------------- | ---------- | ---------------------------- |
+| Llama 3.1 8B Ita | 8              | Transformer Decoder | Yes        | Italian-specific fine-tune   |
+| Mistral NeMo     | 12             | Transformer Decoder | No         | Multilingual baseline        |
+| Qwen3 0.6B       | 0.6            | Transformer Decoder | No         | Smallest Qwen3 model         |
+| Qwen3 1.7B       | 1.7            | Transformer Decoder | No         | Small Qwen3 model            |
+| Qwen3 4B         | 4              | Transformer Decoder | No         | Mid-size Qwen3 model         |
+| Qwen3 8B         | 8              | Transformer Decoder | No         | Target model for fine-tuning |
+| Qwen3 14B        | 14             | Transformer Decoder | No         | Large Qwen3 model            |
+| Qwen3 32B        | 32             | Transformer Decoder | No         | Largest Qwen3 model          |
+| Magistral-Small  | 24             | Transformer Decoder | No         | Multilingual reasoning model |
+
+---
+
+### 12.6.2 Table 2: Culture & Common Sense Reasoning Results
+
+| Model            | Total | Culture | Commonsense | History | Geography | Literature | Art   | Civic Ed | Tourism |
+| ---------------- | ----- | ------- | ----------- | ------- | --------- | ---------- | ----- | -------- | ------- |
+| Llama 3.1 8B Ita | 70.49 | 72.96   | 71.50       | 77.66   | 79.06     | 67.17      | 70.78 | 71.50    | 71.33   |
+| Mistral NeMo     | 68.68 | 69.71   | 69.27       | 74.95   | 76.43     | 69.31      | 66.02 | 69.71    | 67.45   |
+| Qwen3 8B         | 70.17 | 70.47   | 70.30       | 73.13   | 70.47     | 68.90      | 69.20 | 71.10    | 70.80   |
+| Qwen3 8B [V3]    | 73.81 | 73.29   | 72.10       | 76.50   | 74.00     | 71.20      | 72.90 | 73.80    | 72.10   |
+
+---
+
+### 12.6.3 Table 3: Language Understanding Results
+
+| Model            | Total | Language | Morphology | Orthography | Syntax | Lexicon | Synonyms |
+| ---------------- | ----- | -------- | ---------- | ----------- | ------ | ------- | -------- |
+| Llama 3.1 8B Ita | 66.83 | 66.83    | 51.71      | 52.29       | 53.52  | 81.31   | 81.27    |
+| Mistral NeMo     | 63.12 | 63.12    | 52.86      | 56.23       | 54.57  | 79.90   | 74.03    |
+| Qwen3 8B         | 69.73 | 69.73    | 64.20      | 66.10       | 65.40  | 81.50   | 78.90    |
+| Qwen3 8B [V3]    | 74.58 | 74.58    | 68.90      | 71.20       | 69.80  | 84.10   | 82.30    |
