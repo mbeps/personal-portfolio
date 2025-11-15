@@ -1,6 +1,5 @@
 import filterMaterialByArchivedStatus from "@/actions/material/filter/filterMaterialByArchivedStatus";
 import groupMaterialsByCategory from "@/actions/material/group/groupMaterialsByCategory";
-import filterSkillsByCategory from "@/actions/skills/filter/filterSkillsByCategory";
 import buildSkillTableGroups from "@/actions/skills/group/buildSkillTableGroups";
 import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
 import MaterialList from "@/components/MaterialLists/MaterialList";
@@ -14,6 +13,12 @@ import {
   AccordionTrigger,
 } from "@/components/shadcn/ui/accordion";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/shadcn/ui/card";
 import developerName from "@/constants/developerName";
 import { EDUCATION_PAGE } from "@/constants/pages";
 import courseDatabaseMap from "@/database/Courses/CourseDatabaseMap";
@@ -21,9 +26,6 @@ import CourseInterface from "@/database/Courses/CourseInterface";
 import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
 import moduleDatabaseMap from "@/database/Modules/ModuleDatabaseMap";
 import ModuleInterface from "@/database/Modules/ModuleInterface";
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
-import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import { Metadata, ResolvingMetadata } from "next";
@@ -141,102 +143,91 @@ const CoursesPage: React.FC<{
       <div>
         <h2>{courseData.name}</h2>
 
-        <div className="space-x-0 lg:space-x-6">
-          <div className="py-5 w-full">
-            <div className="flex items-center  flex-col md:flex-row">
-              {courseData.logo && (
-                <div className="rounded-full shadow-lg transition-all duration-500 ease-in-out w-[75px] h-[75px]">
-                  <AspectRatio
-                    ratio={1 / 1}
-                    className="overflow-hidden relative w-full bg-white rounded-full"
-                  >
-                    <Image
-                      src={courseData.logo}
-                      alt={`Logo for ${courseData.name}`}
-                      fill={true}
-                      className="rounded-full shadow-lg object-cover transition-all duration-500 ease-in-out"
-                      quality={30}
-                      priority
-                    />
-                  </AspectRatio>
-                </div>
-              )}
-
-              {/* University Name */}
-              <div
-                className="
-                  h-full  
-                  flex items-center justify-center lg:justify-start
-                "
+        <div className="flex items-center flex-col md:flex-row">
+          {courseData.logo && (
+            <div className="rounded-full shadow-lg transition-all duration-500 ease-in-out w-[75px] h-[75px]">
+              <AspectRatio
+                ratio={1 / 1}
+                className="overflow-hidden relative w-full bg-white rounded-full"
               >
-                <p
-                  className="
-                    text-center lg:text-left text-2xl font-bold 
-                    mt-4 lg:mt-0 lg:ml-8
-                    text-neutral-600 dark:text-neutral-300
-                  "
-                >
-                  {courseData.university}
-                </p>
-              </div>
+                <Image
+                  src={courseData.logo}
+                  alt={`Logo for ${courseData.name}`}
+                  fill={true}
+                  className="rounded-full shadow-lg object-cover transition-all duration-500 ease-in-out"
+                  quality={30}
+                  priority
+                />
+              </AspectRatio>
             </div>
-            <p className="text-center lg:text-left text-2xl text-neutral-700 dark:text-neutral-200 mt-8">
-              {courseData.category}
-            </p>
-            <p className="text-center lg:text-left text-neutral-600 dark:text-neutral-400 italic">{`${courseData.startYear} - ${courseData.endYear}`}</p>
+          )}
 
-            {courseData.grade && (
-              <div
-                className="
-                    py-4
-                    flex space-x-1 w-full
-                    text-xl text-neutral-800 dark:text-neutral-300
-                    justify-center lg:justify-start
-                  "
-              >
-                <p className="font-bold">Grade:</p>
-                <p>{courseData.grade}</p>
-              </div>
-            )}
+          {/* University Name */}
+          <div className="h-full flex items-center justify-center lg:justify-start">
+            <p className="text-center lg:text-left text-2xl font-bold mt-4 lg:mt-0 lg:ml-8 text-neutral-600 dark:text-neutral-300">
+              {courseData.university}
+            </p>
           </div>
         </div>
 
-        <div className="space-y-24">
-          <div>
-            <div className="text-center lg:text-left">
-              <h3>Modules</h3>
-            </div>
+        <div className="mt-10 material-sections-wrapper">
+          <Card>
+            <CardContent className="-mt-4 py-5">
+              <p className="text-center lg:text-left text-2xl text-neutral-700 dark:text-neutral-200 mt-8">
+                {courseData.category}
+              </p>
+              <p className="text-center lg:text-left text-neutral-600 dark:text-neutral-400 italic">{`${courseData.startYear} - ${courseData.endYear}`}</p>
 
-            {/* Archive Toggle */}
-            {hasArchivedModules && (
-              <ArchiveToggle
-                showArchived={showArchived}
-                filterProps={[]}
-                basePath={`${basePath}/${courseKey}`}
-              />
-            )}
-
-            {/* Modules */}
-            {groupedModules.map((group, index) => (
-              <div key={index} className="mb-4">
-                {groupedModules.length > 1 && <h4>{group.groupName}</h4>}
-                <Grid
-                  gap={1}
-                  items={group.materialsKeys.map((moduleKey, idx) => (
-                    <Link
-                      href={`${basePath}/${courseKey}/${moduleKey}`}
-                      key={idx}
-                    >
-                      <Tag hasHover>{moduleDatabaseMap[moduleKey].name}</Tag>
-                    </Link>
-                  ))}
+              {courseData.grade && (
+                <div className="py-4 flex space-x-1 w-full text-xl text-neutral-800 dark:text-neutral-300 justify-center lg:justify-start">
+                  <p className="font-bold">Grade:</p>
+                  <p>{courseData.grade}</p>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-center md:text-left">
+                <h3>Modules</h3>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              {/* Archive Toggle */}
+              {hasArchivedModules && (
+                <ArchiveToggle
+                  showArchived={showArchived}
+                  filterProps={[]}
+                  basePath={`${basePath}/${courseKey}`}
                 />
-              </div>
-            ))}
-          </div>
+              )}
+
+              {/* Modules */}
+              {groupedModules.map((group, index) => (
+                <div key={index}>
+                  {groupedModules.length > 1 && <h4>{group.groupName}</h4>}
+                  <Grid
+                    gap={1}
+                    items={group.materialsKeys.map((moduleKey, idx) => (
+                      <Link
+                        href={`${basePath}/${courseKey}/${moduleKey}`}
+                        key={idx}
+                      >
+                        <Tag hasHover>{moduleDatabaseMap[moduleKey].name}</Tag>
+                      </Link>
+                    ))}
+                  />
+                </div>
+              ))}
+            </CardContent>
+          </Card>
 
           {/* Skills */}
-          <SkillTableSection allGroupedSkills={allGroupedSkills} />
+          <Card>
+            <CardContent className="py-5">
+              <SkillTableSection allGroupedSkills={allGroupedSkills} />
+            </CardContent>
+          </Card>
 
           {!!courseData.certificate || hasRelatedMaterials ? (
             <Accordion type="single" collapsible>

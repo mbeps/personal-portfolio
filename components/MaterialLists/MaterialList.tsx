@@ -33,7 +33,7 @@ const MaterialList: React.FC<MaterialTabsProps> = ({
   isCollapsible = true,
 }) => {
   return isCollapsible ? (
-    <Accordion type="single" collapsible className="mt-16">
+    <Accordion type="single" collapsible>
       <AccordionItem value="item-1">
         <AccordionTrigger>
           <div className="flex items-center space-x-3">

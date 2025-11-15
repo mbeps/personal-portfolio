@@ -5,15 +5,19 @@ import StringList from "@/components/Text/StringList";
 import DynamicBreadcrumb, {
   BreadcrumbPair,
 } from "@/components/UI/DynamicBreadcrumb";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/shadcn/ui/card";
 import developerName from "@/constants/developerName";
 import { EDUCATION_PAGE, HOME_PAGE } from "@/constants/pages";
 import courseDatabaseMap from "@/database/Courses/CourseDatabaseMap";
 import CourseInterface from "@/database/Courses/CourseInterface";
 import moduleDatabaseMap from "@/database/Modules/ModuleDatabaseMap";
 import ModuleInterface from "@/database/Modules/ModuleInterface";
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
-import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
@@ -132,34 +136,38 @@ const ModulePage: React.FC<{ params: Params }> = async ({ params }) => {
 
         <DynamicBreadcrumb breadcrumbs={breadcrumbData} />
 
-        <div className="space-y-12 pt-6">
-          <div className="mt-4 ">
-            {/* Learning Outcomes */}
-            {moduleData.learningOutcomes && (
-              <>
-                <div className="text-center lg:text-left">
+        <div className="material-sections-wrapper pt-6">
+          {/* Learning Outcomes */}
+          {moduleData.learningOutcomes && (
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-center md:text-left">
                   <h3>Learning Outcomes</h3>
-                </div>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
                 <StringList items={moduleData.learningOutcomes} />
-              </>
-            )}
-          </div>
+              </CardContent>
+            </Card>
+          )}
 
           {/* Skills */}
-          <SkillTableSection allGroupedSkills={allGroupedSkills} />
+          <Card>
+            <CardContent className="py-10">
+              <SkillTableSection allGroupedSkills={allGroupedSkills} />
+            </CardContent>
+          </Card>
 
           {/* Score */}
           {moduleData.score && (
-            <div
-              className="
-                py-4
-                flex space-x-1 w-full
-                text-xl text-neutral-800 dark:text-neutral-300
-              "
-            >
-              <p className="font-bold">Score:</p>
-              <p>{moduleData.score}</p>
-            </div>
+            <Card>
+              <CardContent className="py-5">
+                <div className="flex space-x-1 w-full text-xl text-neutral-800 dark:text-neutral-300">
+                  <p className="font-bold">Score:</p>
+                  <p>{moduleData.score}</p>
+                </div>
+              </CardContent>
+            </Card>
           )}
 
           {/* Related Material */}

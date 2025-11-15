@@ -7,15 +7,18 @@ import SkillTableSection from "@/components/Skills/SkillTableSection";
 import DetailsTable from "@/components/UI/DetailsTable";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/shadcn/ui/card";
 import developerName from "@/constants/developerName";
 import { EXPERIENCE_PAGE } from "@/constants/pages";
 import companyDatabaseMap from "@/database/Companies/CompanyDatabaseMap";
 import CompanyInterface from "@/database/Companies/CompanyInterface";
 import rolesDatabase from "@/database/Roles/RoleDatabaseMap";
 import RoleInterface from "@/database/Roles/RoleInterface";
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
-import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import type { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
@@ -156,62 +159,82 @@ const RolePage: React.FC<{ params: Params }> = async ({ params }) => {
         )}
 
         {/* Details */}
-        <div className="space-y-24">
-          <div className="space-y-4">
-            <div className="text-center lg:text-left">
-              <h3>Details</h3>
-            </div>
-            <DetailsTable
-              details={[
-                { heading: "Location", value: companyData.location },
-                { heading: "Type", value: roleData.type },
-                { heading: "Category", value: roleData.category },
-                { heading: "Time in Role", value: roleData.timeInRole || "" },
-                { heading: "Start Date", value: roleData.startDate.toString() },
-                { heading: "End Date", value: endDate },
-              ]}
-            />
-          </div>
+        <div className="material-sections-wrapper">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-center md:text-left">
+                <h3>Details</h3>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <DetailsTable
+                details={[
+                  { heading: "Location", value: companyData.location },
+                  { heading: "Type", value: roleData.type },
+                  { heading: "Category", value: roleData.category },
+                  { heading: "Time in Role", value: roleData.timeInRole || "" },
+                  {
+                    heading: "Start Date",
+                    value: roleData.startDate.toString(),
+                  },
+                  { heading: "End Date", value: endDate },
+                ]}
+              />
+            </CardContent>
+          </Card>
 
-          <div>
-            {/* Responsibilities ID */}
-            {hasResponsibilities && (
-              <>
-                <div className="text-center lg:text-left">
+          {/* Responsibilities */}
+          {hasResponsibilities && (
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-center md:text-left">
                   <h3>Responsibilities</h3>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="-mt-6">
+                  <Reader content={responsibilities} size="lg:prose-lg" />
                 </div>
-                <Reader content={responsibilities} size="lg:prose-lg" />
-              </>
-            )}
-          </div>
+              </CardContent>
+            </Card>
+          )}
 
           {/* Skills section */}
-          <div>
-            <SkillTableSection allGroupedSkills={allGroupedSkills} />
-          </div>
+          <Card>
+            <CardContent className="py-10">
+              <SkillTableSection allGroupedSkills={allGroupedSkills} />
+            </CardContent>
+          </Card>
 
-          <div>
-            {companyData.website && (
-              <Link
-                href={companyData.website}
-                target="_blank"
-                className="w-full flex justify-center md:justify-start"
-              >
-                <Button>
-                  <div className="flex justify-center md:justify-start align-center gap-4 w-full">
-                    <BsArrowUpRightCircle size={26} />
-                    <p>{`${companyData.name} website`}</p>
-                  </div>
-                </Button>
-              </Link>
+          {companyData.website && (
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-center md:text-left">
+                  <h3>Links</h3>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <Link
+                  href={companyData.website}
+                  target="_blank"
+                  className="w-full flex justify-center md:justify-start"
+                >
+                  <Button>
+                    <div className="flex justify-center md:justify-start align-center gap-4 w-full">
+                      <BsArrowUpRightCircle size={26} />
+                      <p>{`${companyData.name} website`}</p>
+                    </div>
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Related Materials */}
+          {roleData.relatedMaterials &&
+            roleData.relatedMaterials.length > 0 && (
+              <MaterialList materialKeys={roleData.relatedMaterials} />
             )}
-
-            {/* More materials */}
-            {roleData.relatedMaterials &&
-              roleData.relatedMaterials.length > 0 && (
-                <MaterialList materialKeys={roleData.relatedMaterials} />
-              )}
-          </div>
         </div>
       </div>
     </main>
