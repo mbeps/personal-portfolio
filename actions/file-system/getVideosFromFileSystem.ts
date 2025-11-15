@@ -1,9 +1,12 @@
 import fs from "fs";
 
 /**
- * Get all videos from a directory so that they can be displayed in the UI.
- * @param filePath Path to the directory where the videos are stored
- * @returns A list of video file names
+ * Retrieves a list of video filenames from a specified directory.
+ * It filters for files with `.mp4` or `.webm` extensions.
+ * This function is used to dynamically load video assets from the filesystem.
+ *
+ * @param filePath The absolute or relative path to the directory.
+ * @returns An array of video filenames. Returns an empty array on error.
  */
 export default function getVideosFromFileSystem(filePath: string): string[] {
   try {

@@ -2,11 +2,12 @@ import matter from "gray-matter";
 import fs from "fs";
 
 /**
- * Reads a markdown file from the file system and parses it using gray-matter.
- * This can then be used to extract the frontmatter and content and display it in the UI.
+ * Reads and parses a Markdown file from the filesystem.
+ * It uses `gray-matter` to separate the frontmatter from the content.
+ * This is useful for content sources like blogs or documentation.
  *
- * @param filePath The path to the markdown file
- * @returns The parsed markdown file or null if an error occurred
+ * @param filePath The path to the Markdown file.
+ * @returns A `GrayMatterFile` object, or `null` if the file cannot be read.
  */
 export default function getMarkdownFromFileSystem(
   filePath: string

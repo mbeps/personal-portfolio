@@ -8,14 +8,13 @@ interface NavbarStore {
 }
 
 /**
- * Manages the state of the navbar.
- * In mobile, the expanded navbar is closed.
- * Clicking the hamburger icon toggles the navbar (open or closed).
- * Clicking a link in the navbar minimises the navbar.
- * - `isOpen`: whether the navbar is open or not
- * - `toggle`: function to toggle the navbar (if open, close it; if closed, open it)
- * - `open`: function to open the navbar
- * - `close`: function to close the navbar
+ * A Zustand store for managing the state of the mobile navigation bar.
+ * This provides a simple way to control the open/closed state from any component.
+ *
+ * @property isOpen - `true` if the navbar is open, `false` otherwise.
+ * @property toggle - A function to toggle the navbar's state.
+ * @property open - A function to explicitly open the navbar.
+ * @property close - A function to explicitly close the navbar.
  */
 export const useNavbarStore = create<NavbarStore>((set) => ({
   isOpen: false, // initial navbar is closed

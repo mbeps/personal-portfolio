@@ -2,11 +2,12 @@ import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 /**
- * This is a utility function that merges classnames using Tailwind CSS's JIT mode.
- * If there are any conflicts, this function will override the previous classnames.
+ * A utility function to merge Tailwind CSS classes.
+ * It uses `clsx` to conditionally join class names and `tailwind-merge` to resolve conflicts.
+ * This is a common pattern in projects using Tailwind CSS.
  *
- * @param inputs:custom classnames to be merged
- * @returns mereged classnames
+ * @param inputs A list of class values to be merged.
+ * @returns A string of combined and de-duplicated class names.
  */
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

@@ -2,10 +2,11 @@ import MaterialInterface from "@/database/Materials/MaterialInterface";
 import Database from "@/interfaces/Database";
 
 /**
- * Checks if there are any archived materials in the database.
+ * Checks if a database of materials contains any archived items.
+ * Iterates through the materials and returns true if at least one is marked as archived.
  *
- * @param database Database of materials to check for archived materials
- * @returns Whether there are any archived materials in the database
+ * @param database The database of materials to check.
+ * @returns `true` if any material is archived, otherwise `false`.
  */
 export default function checkForArchivedMaterials(
   database: Database<MaterialInterface>

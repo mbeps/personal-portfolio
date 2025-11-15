@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 
 /**
- * A custom hook that returns a boolean indicating whether the component is mounted.
- * This is useful for handling asynchronous operations that should only be executed when the component is mounted.
- * It is mostly used to prevent memory leaks and state updates on unmounted components.
- * @returns A boolean indicating whether the component is mounted.
+ * A custom hook to determine if a component is mounted.
+ * This is useful for avoiding state updates on unmounted components,
+ * which can prevent memory leaks and errors in asynchronous operations.
+ *
+ * @returns `true` after the component has mounted, otherwise `false`.
  */
 const useIsMounted = () => {
   const [isMounted, setIsMounted] = useState(false);

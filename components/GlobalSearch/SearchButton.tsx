@@ -50,24 +50,32 @@ import companyDatabaseMap from "@/database/Companies/CompanyDatabaseMap";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../shadcn/ui/tooltip";
 import { Kbd } from "@/components/shadcn/ui/kbd";
 
+/**
+ * Represents a single searchable item in the global search.
+ */
 interface ItemInterface {
+  /** The display name of the item. */
   name: string;
+  /** The URL or link for the item. */
   link: string;
 }
 
+/**
+ * Represents a section of searchable items.
+ */
 interface SectionInterface {
+  /** The name of the section, used as a heading. */
   name: string;
+  /** An array of items within this section. */
   items: ItemInterface[];
 }
 
 /**
- * Global search component that allows the user to search for content on the website.
- * Once the button a clicked, a dialog opens with a search input field.
- * A list of projects, work experiences, university modules, certificates, blogs, skills, and socials is displayed.
- * Selecting an item from the list will redirect the user to the corresponding page.
- * Additionally, the user can use the keyboard shortcut `Cmd/Ctrl + K` to open the search dialog.
+ * A global search component that provides a quick way to navigate the site.
+ * It's triggered by a button or a keyboard shortcut (`Ctrl+K` or `Cmd+K`).
+ * The search dialog includes pages, projects, experiences, and other materials.
  *
- * @returns A button that opens a search dialog when clicked.
+ * @returns A search button and a command dialog for global site search.
  */
 const GlobalSearch: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -83,9 +91,8 @@ const GlobalSearch: React.FC = () => {
   const lightIconClass = "text-neutral-800 group-hover:text-red-100";
 
   /**
-   * List of sections that are displayed in the search dialog.
-   * Each section contains a list of items that can be searched.
-   * The order of the sections is the order in which they are displayed in the search dialog.
+   * A list of all searchable sections and their items.
+   * This structure is used to populate the search dialog.
    */
   const sections: SectionInterface[] = [
     {
@@ -173,7 +180,8 @@ const GlobalSearch: React.FC = () => {
   ];
 
   /**
-   * Redirects the user to the selected page and closes the search dialog.
+   * Navigates to the selected item's link and closes the search dialog.
+   * @param link The URL to navigate to.
    */
   function onSelect(link: string) {
     router.push(link);
@@ -181,8 +189,7 @@ const GlobalSearch: React.FC = () => {
   }
 
   /**
-   * Function to handle the keyboard shortcut to open the search dialog.
-   * The shortcut is `Cmd/Ctrl + K`.
+   * Sets up a keyboard shortcut (`Ctrl+K` or `Cmd+K`) to open/close the search dialog.
    */
   useEffect(() => {
     const down = (e: KeyboardEvent) => {

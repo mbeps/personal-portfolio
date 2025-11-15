@@ -1,5 +1,13 @@
 import type { MetadataRoute } from "next";
 
+/**
+ * Generates the `sitemap.xml` file for the website.
+ * This helps search engines understand the structure and priority of pages.
+ * The base URL is determined by an environment variable, with a fallback.
+ *
+ * @returns A sitemap configuration object for Next.js.
+ */
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl: string =
     process.env.NEXT_PUBLIC_SITE_URL || "https://www.maruf-bepary.com";

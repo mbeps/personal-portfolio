@@ -4,12 +4,11 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 /**
- * This component provides the Vercel specific providers to the whole app.
- * These providers track the performance and usage of the app.
+ * A component that integrates Vercel's analytics and speed insights into the application.
+ * This is intended to be used in the root layout to track performance and user behavior.
+ * It is conditionally rendered only in the production environment.
  *
- * @returns the children wrapped in all the providers
- * @requires SpeedInsights Vercel provider to collecting data about the performance of the app
- * @requires Analytics Vercel provider to collect data about the usage of the app
+ * @returns A fragment containing the `SpeedInsights` and `Analytics` components from Vercel.
  */
 export function VercelTrackers() {
   return (

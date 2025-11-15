@@ -1,14 +1,13 @@
 import FilterOption from "@/interfaces/filters/FilterOption";
 
 /**
- * Generates the URL for the projects page.
- * These are the URL parameters that are used for filtering and searching.
- * Once filters and search are applied, the URL is updated.
- * Replaces URL parameters with the latest values.
+ * Generates a URL with query parameters from a list of filter options.
+ * This function takes a base path and an array of filter options and constructs a URL.
+ * It ensures that each query parameter is unique, using the last provided value for any given parameter.
  *
- * @param params The list of filter options to generate the URL from
- * @param basePath The base path for the URL
- * @returns The generated URL
+ * @param params An array of filter options to be converted into URL query parameters.
+ * @param basePath The base path of the URL, before the query string.
+ * @returns A URL string with the query parameters appended.
  */
 export default function generateUrl(
   params: FilterOption[],

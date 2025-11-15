@@ -1,14 +1,12 @@
 /**
- * Represents a short date with year and month.
+ * Represents a date with only a year and a month.
+ * This class is useful for timelines where the specific day is not important.
+ * It provides methods for formatting and calculating durations.
  */
 class ShortDate {
   year: number;
   month: number;
 
-  /**
-   * Array of month names.
-   * Used to convert month number to name.
-   */
   private static monthNames: string[] = [
     "January",
     "February",
@@ -25,10 +23,9 @@ class ShortDate {
   ];
 
   /**
-   * Creates a ShortDate instance.
-   * @param year - The year.
-   * @param month - The month (1-12).
-   * @throws Will throw an error if the month is not between 1 and 12.
+   * Creates an instance of a ShortDate.
+   * @param year The full year.
+   * @param month The month, from 1 (January) to 12 (December).
    */
   constructor(year: number, month: number) {
     if (month < 1 || month > 12) {
@@ -40,17 +37,18 @@ class ShortDate {
   }
 
   /**
-   * Gets the name of the month.
-   * @returns The full name of the month.
+   * Retrieves the full name of the month.
+   * @returns The month's name (e.g., "January").
    */
   private getMonthName(): string {
     return ShortDate.monthNames[this.month - 1];
   }
 
   /**
-   * Calculates the difference between this date and another ShortDate.
-   * @param other - Another ShortDate instance.
-   * @returns The difference in years, including fractions for months.
+   * Calculates the difference in years between this date and another.
+   * The result is a float, where the decimal part represents months.
+   * @param other The date to compare against.
+   * @returns The difference in years.
    */
   difference(other: ShortDate): number {
     const yearDiff: number = this.year - other.year;
@@ -59,15 +57,16 @@ class ShortDate {
   }
 
   /**
-   * Returns the date as a string in "Month Year" format.
-   * @returns The formatted date.
+   * Formats the date as a "Month Year" string.
+   * @returns The formatted date string (e.g., "June 2023").
    */
   toString(): string {
     return `${this.getMonthName()} ${this.year}`;
   }
 
   /**
-   * Converts the date to a string for JSON serialization.
+   * Converts the date to its string representation for JSON serialization.
+   * This ensures `JSON.stringify()` uses the desired format.
    * @returns The formatted date string.
    */
   toJSON(): string {
@@ -75,19 +74,20 @@ class ShortDate {
   }
 
   /**
-   * Static method to subtract two ShortDate instances.
-   * @param date1 - The first ShortDate.
-   * @param date2 - The second ShortDate.
-   * @returns The difference in years, including fractions for months.
+   * Calculates the difference in years between two ShortDate instances.
+   * @param date1 The later date.
+   * @param date2 The earlier date.
+   * @returns The difference in years.
    */
   static subtract(date1: ShortDate, date2: ShortDate): number {
     return date1.difference(date2);
   }
 
   /**
-   * Formats the experience time between this date and another ShortDate.
-   * @param other - Another ShortDate instance.
-   * @returns The formatted experience time.
+   * Formats the duration between two dates into a human-readable string.
+   * For example, "2 years and 3 months" or "6 months".
+   * @param other The other date to calculate the duration from.
+   * @returns A formatted string representing the time duration.
    */
   formatExperienceTime(other: ShortDate): string {
     const experienceTime: number = this.difference(other);

@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 
 /**
- * A custom hook that returns a boolean indicating whether the media query matches the current viewport.
- * This is useful for checking the viewport size and applying responsive styles.
- * For example, displaying certain elements only on mobile.
+ * A hook to track the state of a CSS media query.
+ * It returns `true` if the query matches the current viewport, and `false` otherwise.
+ * This is useful for creating responsive components that adapt to screen size.
+ * It handles server-side rendering by returning `false` initially.
  *
- * @param query The media query to match (screen width)
- * @returns A boolean indicating whether the media query matches the current viewport
+ * @param query The media query string to evaluate (e.g., "(max-width: 768px)").
+ * @returns A boolean indicating if the media query matches.
  */
 export function useMediaQuery(query: string): boolean {
   const getMatches = (query: string): boolean => {
