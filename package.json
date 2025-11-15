@@ -8,6 +8,9 @@
     "start": "next start",
     "build-start": "next build --turbopack && next start",
     "lint": "next lint",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
     "docker:compose": "docker-compose -f docker/docker-compose.yml up --build"
   },
   "dependencies": {
@@ -66,5 +69,10 @@
   "main": "index.js",
   "repository": "https://github.com/mbeps/personal-portfolio.git",
   "author": "Maruf Bepary <bepary71@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@vitest/coverage-v8": "^4.0.9",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^4.0.9"
+  }
 }
