@@ -27,12 +27,12 @@ export function ProjectLinks({
   repositoryURL,
   reportURL,
 }: ProjectLinksProps) {
-  const isMediumOrLarger = useMediaQuery("(min-width: 768px)");
+  const isMobile = useMediaQuery("(max-width: 767px)");
 
   return (
     <ButtonGroup
       className="w-full flex-col md:flex-row"
-      orientation={isMediumOrLarger ? "horizontal" : "vertical"}
+      orientation={isMobile ? "vertical" : "horizontal"}
     >
       {deploymentURL && (
         <Button asChild className="flex-1">
