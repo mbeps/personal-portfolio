@@ -16,15 +16,13 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/shadcn/ui/accordion";
+import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/shadcn/ui/card";
-import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import developerName from "@/constants/developerName";
 import { PROJECTS_PAGE } from "@/constants/pages";
 import projectDatabaseMap from "@/database/Projects/ProjectDatabaseMap";
