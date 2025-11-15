@@ -10,6 +10,7 @@ import BlogInterface from "@/database/Blogs/BlogInterface";
 import blogsDatabaseMap from "@/database/Blogs/BlogsDatabaseMap";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
+import BlogCategoriesEnum from "@/enums/Blog/BlogCategoriesEnum";
 import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import type { Metadata, ResolvingMetadata } from "next";
@@ -78,18 +79,32 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
   const blogKey: string = resolvedParams.blogKey;
   const basePath: string = BLOG_PAGE.path;
   const blogData: BlogInterface = blogsDatabaseMap[blogKey];
-  const blogContent: string | undefined = getMarkdownFromFileSystem(
-    `public${basePath}/${blogKey}/blog.md`
-  )?.content;
 
-  if (!blogContent || !blogData) {
+  if (!blogData) {
+    notFound();
+  }
+
+  // Determine the path to the blog markdown file
+  // For project blogs, use the projects path, otherwise use the blogs path
+  const isProjectBlog = blogData.category === BlogCategoriesEnum.Projects;
+  const blogPath = isProjectBlog
+    ? `public/projects/${blogKey}/blog.md`
+    : `public${basePath}/${blogKey}/blog.md`;
+
+  const blogContent: string | undefined =
+    getMarkdownFromFileSystem(blogPath)?.content;
+
+  if (!blogContent) {
     notFound();
   }
 
   // Replace base path placeholder with actual path for images
+  const imagePath = isProjectBlog
+    ? `/projects/${blogKey}/img`
+    : `${basePath}/${blogKey}/img`;
   const processedBlogContent: string = processMarkdownImages(
     blogContent,
-    `${basePath}/${blogKey}/img`
+    imagePath
   );
 
   const allGroupedSkills: GroupedSkillsCategoriesInterface[] =
