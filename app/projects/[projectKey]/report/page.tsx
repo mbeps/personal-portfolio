@@ -1,4 +1,5 @@
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
+import processMarkdownImages from "@/actions/processMarkdownImages";
 import SpecialReader from "@/components/Reader/SpecialReader";
 import { PROJECTS_PAGE } from "@/constants/pages";
 import projectDatabaseMap from "@/database/Projects/ProjectDatabaseMap";
@@ -34,6 +35,12 @@ const ProjectReportPage = async ({ params }: PageProps) => {
     notFound();
   }
 
+  // Replace base path placeholder with actual path for images
+  const processedReportContent: string = processMarkdownImages(
+    reportBlog || "",
+    `${basePath}/${projectKey}/img`
+  );
+
   return (
     <main>
       <div>
@@ -41,7 +48,7 @@ const ProjectReportPage = async ({ params }: PageProps) => {
           <h2>{`Report for ${projectData.name}`}</h2>
         </div>
         <SpecialReader
-          content={reportBlog || ""}
+          content={processedReportContent}
           previousPagePath={`${PROJECTS_PAGE.path}/${projectKey}`}
           previousPageName={projectData.name}
         />

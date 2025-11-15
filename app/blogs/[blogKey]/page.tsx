@@ -1,4 +1,5 @@
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
+import processMarkdownImages from "@/actions/processMarkdownImages";
 import buildSkillTableGroups from "@/actions/skills/group/buildSkillTableGroups";
 import MaterialList from "@/components/MaterialLists/MaterialList";
 import SpecialReader from "@/components/Reader/SpecialReader";
@@ -86,8 +87,8 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
   }
 
   // Replace base path placeholder with actual path for images
-  const processedBlogContent: string = blogContent.replace(
-    /{BASE}/g,
+  const processedBlogContent: string = processMarkdownImages(
+    blogContent,
     `${basePath}/${blogKey}/img`
   );
 
