@@ -1,5 +1,6 @@
-import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
 import CourseInterface from "@/database/Courses/CourseInterface";
+import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
+import Database from "@/interfaces/Database";
 
 export default function findCourseKeyForModule(
   moduleKey: ModuleDatabaseKeys,

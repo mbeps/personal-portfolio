@@ -1,6 +1,7 @@
-import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import SkillInterface from "@/database/Skills/SkillInterface";
+import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
+import Database from "@/interfaces/Database";
 
 /**
  * Filters skills which belong to a specific category.

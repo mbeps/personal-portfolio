@@ -1,7 +1,8 @@
-import FilterOption from "@/interfaces/filters/FilterOption";
 import MaterialInterface from "@/database/Materials/MaterialInterface";
-import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
 import SkillInterface from "@/database/Skills/SkillInterface";
+import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
+import Database from "@/interfaces/Database";
+import FilterOption from "@/interfaces/filters/FilterOption";
 
 /**
  * Generates the filter options based on the programming languages of the materials.

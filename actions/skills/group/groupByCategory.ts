@@ -1,7 +1,8 @@
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import SkillInterface from "@/database/Skills/SkillInterface";
-import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
+import Database from "@/interfaces/Database";
+import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 
 /**
  * Groups the skill according to their category.

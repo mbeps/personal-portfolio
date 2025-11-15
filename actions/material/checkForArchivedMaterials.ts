@@ -1,4 +1,5 @@
 import MaterialInterface from "@/database/Materials/MaterialInterface";
+import Database from "@/interfaces/Database";
 
 /**
  * Checks if there are any archived materials in the database.

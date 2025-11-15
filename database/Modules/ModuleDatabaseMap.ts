@@ -1,15 +1,15 @@
 import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
+import CourseDatabaseKeys from "@/database/Courses/CourseDatabaseKeys";
+import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
+import ModuleInterface from "@/database/Modules/ModuleInterface";
 import ProjectDatabaseKeys from "@/database/Projects/ProjectDatabaseKeys";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
 import ModuleYearGroupsEnum from "@/enums/Module/ModuleYearGroupsEnum";
 import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
-import ModuleInterface from "@/database/Modules/ModuleInterface";
-import skillDatabaseMap from "../Skills/SkillDatabaseMap";
-import CourseDatabaseKeys from "@/database/Courses/CourseDatabaseKeys";
+import Database from "@/interfaces/Database";
 import CertificateDatabaseKeys from "../Certificates/CertificateDatabaseKeys";
-import { projectDatabaseKeys } from "../Projects/ProjectDatabaseMap";
+import skillDatabaseMap from "../Skills/SkillDatabaseMap";
 
 /**
  * Hashmap of the modules I have studied at university.

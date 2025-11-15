@@ -1,4 +1,5 @@
 import RoleInterface from "@/database/Roles/RoleInterface";
+import Database from "@/interfaces/Database";
 
 /**
  * Updates the timeInRole field of each role in the rolesMap.

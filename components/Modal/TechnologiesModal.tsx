@@ -27,6 +27,7 @@ import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import useIsMounted from "@/hooks/useIsMounted";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
+import Database from "@/interfaces/Database";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import Link from "next/link";
@@ -67,7 +68,9 @@ const TechnologiesModal: React.FC = () => {
 
   const mainSkillsHashMap: Database<SkillInterface> = {};
 
-  Object.entries(skillDatabaseMap).forEach(([key, skill]) => {
+  (
+    Object.entries(skillDatabaseMap) as [SkillDatabaseKeys, SkillInterface][]
+  ).forEach(([key, skill]) => {
     // if (skill.isMainSkill) {
     mainSkillsHashMap[key] = skill;
     // }

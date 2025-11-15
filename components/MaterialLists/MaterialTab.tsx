@@ -21,6 +21,10 @@ import {
 import blogsDatabaseMap, {
   blogDatabaseKeys,
 } from "@/database/Blogs/BlogsDatabaseMap";
+import certificateDatabaseMap, {
+  certificateDatabaseKeys,
+} from "@/database/Certificates/CertificateDatabaseMap";
+import MaterialInterface from "@/database/Materials/MaterialInterface";
 import moduleDatabaseMap, {
   moduleDatabaseKeys,
 } from "@/database/Modules/ModuleDatabaseMap";
@@ -31,16 +35,13 @@ import rolesDatabase, {
   roleDatabaseKeys,
 } from "@/database/Roles/RoleDatabaseMap";
 import MaterialTypeEnum from "@/enums/Material/MaterialTypeEnum";
+import Database from "@/interfaces/Database";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
-import MaterialInterface from "@/database/Materials/MaterialInterface";
 import MaterialListProps from "@/interfaces/props/MaterialListProps";
 import Link from "next/link";
 import React, { useState } from "react";
 import { MaterialTabsProps } from "./MaterialList";
 import WorkList from "./WorkList";
-import certificateDatabaseMap, {
-  certificateDatabaseKeys,
-} from "@/database/Certificates/CertificateDatabaseMap";
 
 interface MaterialSectionInterface {
   name: MaterialTypeEnum;

@@ -1,5 +1,6 @@
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import MaterialInterface from "@/database/Materials/MaterialInterface";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import Database from "@/interfaces/Database";
 
 /**
  * Filters the materials that match a specific skill.

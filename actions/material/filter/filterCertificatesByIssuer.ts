@@ -1,5 +1,6 @@
 import stringToSlug from "@/actions/stringToSlug";
 import CertificateInterface from "@/database/Certificates/CertificateInterface";
+import Database from "@/interfaces/Database";
 
 /**
  * Filters the certificates that match a specific issuer.

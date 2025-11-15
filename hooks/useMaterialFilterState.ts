@@ -1,9 +1,10 @@
-import { useSearchParams } from "next/navigation";
 import groupMaterialsByCategory from "@/actions/material/group/groupMaterialsByCategory";
-import useFuseMaterialSearch from "@/hooks/useFuseSearch/useFuseMaterialSearch";
 import MaterialInterface from "@/database/Materials/MaterialInterface";
+import useFuseMaterialSearch from "@/hooks/useFuseSearch/useFuseMaterialSearch";
+import Database from "@/interfaces/Database";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
+import { useSearchParams } from "next/navigation";
 
 type FilterCategoryConfig<TKey extends string> = {
   sectionName: string;
@@ -68,7 +69,10 @@ export default function useMaterialFilterState<
   searchKeys,
   filterCategories,
   archiveFilter,
-}: UseMaterialFilterStateOptions<TKey, TMaterial>): UseMaterialFilterStateResult<TKey> {
+}: UseMaterialFilterStateOptions<
+  TKey,
+  TMaterial
+>): UseMaterialFilterStateResult<TKey> {
   const searchParams = useSearchParams();
   const searchTerm = searchParams.get(searchParamName) ?? "";
 
@@ -139,10 +143,7 @@ export default function useMaterialFilterState<
     };
   }
 
-  const groupedMaterials = groupMaterialsByCategory(
-    filteredKeys,
-    databaseMap
-  );
+  const groupedMaterials = groupMaterialsByCategory(filteredKeys, databaseMap);
 
   const areFiltersApplied =
     searchTerm.trim().length > 0 ||

@@ -1,11 +1,12 @@
-import aggregateSkillsForCourses from "@/actions/material/course/aggregate/aggregateSkillsForCourses";
-import ProjectDatabaseKeys from "@/database/Projects/ProjectDatabaseKeys";
-import CourseDatabaseKeys from "@/database/Courses/CourseDatabaseKeys";
-import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
-import CourseInterface from "@/database/Courses/CourseInterface";
 import aggregateRelatedMaterialsForCourses from "@/actions/material/course/aggregate/aggregateRelatedMaterialsForCourses";
-import moduleDatabaseMap from "../Modules/ModuleDatabaseMap";
+import aggregateSkillsForCourses from "@/actions/material/course/aggregate/aggregateSkillsForCourses";
 import { EDUCATION_PAGE } from "@/constants/pages";
+import CourseDatabaseKeys from "@/database/Courses/CourseDatabaseKeys";
+import CourseInterface from "@/database/Courses/CourseInterface";
+import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
+import ProjectDatabaseKeys from "@/database/Projects/ProjectDatabaseKeys";
+import Database from "@/interfaces/Database";
+import moduleDatabaseMap from "../Modules/ModuleDatabaseMap";
 
 /**
  * Hashmap of the courses I have studied at university.

@@ -1,11 +1,12 @@
 import MaterialInterface from "@/database/Materials/MaterialInterface";
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import Database from "@/interfaces/Database";
 import blogsDatabaseMap from "../Blogs/BlogsDatabaseMap";
 import certificateDatabaseMap from "../Certificates/CertificateDatabaseMap";
 import courseDatabaseMap from "../Courses/CourseDatabaseMap";
+import moduleDatabaseMap from "../Modules/ModuleDatabaseMap";
 import projectDatabaseMap from "../Projects/ProjectDatabaseMap";
 import rolesDatabase from "../Roles/RoleDatabaseMap";
-import moduleDatabaseMap from "../Modules/ModuleDatabaseMap";
 
 /**
  * Hashmap of materials with keys as {@link MaterialKeysEnum} and values as {@link MaterialInterface}.

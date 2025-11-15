@@ -1,5 +1,6 @@
 import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import SkillInterface from "@/database/Skills/SkillInterface";
+import Database from "@/interfaces/Database";
 
 /**
  * Gets the skills database from the given skill keys.

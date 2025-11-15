@@ -1,5 +1,6 @@
 import stringToSlug from "@/actions/stringToSlug";
 import ProjectInterface from "@/database/Projects/ProjectInterface";
+import Database from "@/interfaces/Database";
 import FilterOption from "@/interfaces/filters/FilterOption";
 
 /**

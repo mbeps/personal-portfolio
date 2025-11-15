@@ -1,7 +1,8 @@
-import FilterOption from "@/interfaces/filters/FilterOption";
 import MaterialInterface from "@/database/Materials/MaterialInterface";
-import stringToSlug from "../../stringToSlug";
 import SkillInterface from "@/database/Skills/SkillInterface";
+import Database from "@/interfaces/Database";
+import FilterOption from "@/interfaces/filters/FilterOption";
+import stringToSlug from "../../stringToSlug";
 
 /**
  * Generates the filter options based on the categories of the materials.

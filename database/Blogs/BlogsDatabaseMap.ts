@@ -1,11 +1,12 @@
 import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
-import BlogCategoriesEnum from "@/enums/Blog/BlogCategoriesEnum";
 import BlogDatabaseKeys from "@/database/Blogs/BlogDatabaseKeys";
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import BlogInterface from "@/database/Blogs/BlogInterface";
-import skillDatabaseMap from "../Skills/SkillDatabaseMap";
+import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import BlogCategoriesEnum from "@/enums/Blog/BlogCategoriesEnum";
 import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
+import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
+import Database from "@/interfaces/Database";
+import skillDatabaseMap from "../Skills/SkillDatabaseMap";
 
 /**
  * Hashmap of blogs with keys as {@link BlogDatabaseKeys} and values as {@link BlogInterface}.

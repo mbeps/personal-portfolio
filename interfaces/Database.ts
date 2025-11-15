@@ -12,3 +12,5 @@
 interface Database<T> {
   [key: string]: T;
 }
+
+export default Database;

@@ -1,6 +1,7 @@
 import addCompanyThumbnail from "@/actions/material/experience/addCompanyThumbnail";
-import RoleDatabaseKeys from "@/database/Roles/RoleDatabaseKeys";
 import CompanyInterface from "@/database/Companies/CompanyInterface";
+import RoleDatabaseKeys from "@/database/Roles/RoleDatabaseKeys";
+import Database from "@/interfaces/Database";
 import CompanyDatabaseKeys from "./CompanyDatabaseKeys";
 
 const companiesMap: Database<CompanyInterface> = {
