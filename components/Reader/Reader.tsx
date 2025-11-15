@@ -58,20 +58,20 @@ const Reader: React.FC<ReaderProps> = ({ content, size = "lg" }) => {
     const mathBlocks: { [key: string]: string } = {};
     let blockCount: number = 0;
 
-    // Replace LaTeX blocks with placeholders to protect them from markdown processing
+    // First, replace display math blocks ($$...$$) with placeholders
     let processedContent: string = content.replace(
-      /(\$\$)([\s\S]*?)(\$\$)/g,
-      (_, open, latex, close) => {
+      /\$\$([\s\S]*?)\$\$/g,
+      (match, latex) => {
         const placeholder = `MATHBLOCK_${blockCount++}`;
         mathBlocks[placeholder] = latex.trim();
         return `<DisplayMath>${placeholder}</DisplayMath>`;
       }
     );
 
-    // Handle inline LaTeX expressions
+    // Then, replace inline math ($...$) with placeholders
     processedContent = processedContent.replace(
-      /(\$)([^\$\n]+?)(\$)/g,
-      (_, open, latex, close) => {
+      /\$([^\$]+?)\$/g,
+      (match, latex) => {
         const placeholder = `MATHINLINE_${blockCount++}`;
         mathBlocks[placeholder] = latex.trim();
         return `<InlineMath>${placeholder}</InlineMath>`;

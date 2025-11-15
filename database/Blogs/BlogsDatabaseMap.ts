@@ -7,6 +7,8 @@ import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import Database from "@/interfaces/Database";
 import skillDatabaseMap from "../Skills/SkillDatabaseMap";
+import { addProjectBlogsToMap } from "./addProjectBlogsToMap";
+import projectDatabaseMap from "../Projects/ProjectDatabaseMap";
 
 /**
  * Hashmap of blogs with keys as {@link BlogDatabaseKeys} and values as {@link BlogInterface}.
@@ -102,6 +104,8 @@ const blogsMap: Database<BlogInterface> = {
     category: BlogCategoriesEnum.SoftwareEngineering,
     skills: [],
   },
+  // Add project blogs
+  ...addProjectBlogsToMap(projectDatabaseMap),
 };
 
 /**
