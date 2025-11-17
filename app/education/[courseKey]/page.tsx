@@ -224,7 +224,7 @@ const CoursesPage: React.FC<{
 
           {/* Skills */}
           <Card>
-            <CardContent className="py-5">
+            <CardContent className="py-10">
               <SkillTableSection allGroupedSkills={allGroupedSkills} />
             </CardContent>
           </Card>

@@ -36,7 +36,7 @@ const AccordionItem = React.forwardRef<
     ref={ref}
     className={cn(
       `
-        py-1 px-3 
+        py-1.5 px-6
         border-b border-neutral-100 dark:border-neutral-900
         transition-all duration-500 ease-in-out`,
       className
