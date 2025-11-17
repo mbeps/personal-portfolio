@@ -111,6 +111,8 @@ const rolesMap: Database<RoleInterface> = {
     startDate: new ShortDate(2019, 12),
     endDate: new ShortDate(new Date().getFullYear(), new Date().getMonth() + 1),
     skills: [
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.CSS,
       SkillDatabaseKeys.UserCentricDesign,
 
       SkillDatabaseKeys.Communication,
