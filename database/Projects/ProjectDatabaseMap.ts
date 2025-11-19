@@ -23,7 +23,7 @@ const projectMap: Database<ProjectInterface> = {
   [ProjectDatabaseKeys.AlignmentInLargeLanguageModels]: {
     name: "Alignment in LLMs",
     description: `
-    Specifically looked into hybrid-reasoning models and improved them using LoRA and novel hybrid-training techniques.
+    Specifically looked into and improved hybrid-reasoning models using LoRA and novel hybrid-training technique.
     Regular supervised fine-tuning on reasoning models causes them to forget their reasoning capabilities.
     This is solved using my novel hybrid training technique.`,
     repositoryURL:
