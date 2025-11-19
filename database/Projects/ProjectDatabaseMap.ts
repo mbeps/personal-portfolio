@@ -24,7 +24,7 @@ const projectMap: Database<ProjectInterface> = {
     name: "Alignment in LLMs",
     description: `
     Specifically looked into hybrid-reasoning models and improved them using LoRA and novel hybrid-training techniques.
-    Regular supervised fine-tuning on reasoning models causes them to foget their reasoning capabilities.
+    Regular supervised fine-tuning on reasoning models causes them to forget their reasoning capabilities.
     This is solved using my novel hybrid training technique.`,
     repositoryURL:
       "https://github.com/stars/mbeps/lists/cultural-alignment-in-llms",
