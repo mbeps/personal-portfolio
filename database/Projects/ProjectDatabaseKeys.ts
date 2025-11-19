@@ -17,8 +17,7 @@ enum ProjectDatabaseKeys {
   OnlineArticles = "online-articles",
   Noodle = "noodle",
   CommerzbankRates = "commerzbank-rates",
-  EntraOAuthNextJsSpringBoot = "entra-oauth-nextjs-spring-boot",
-  GitHubOAuthNextJsSpringBoot = "github-oauth-nextjs-spring-boot",
+  OAuthNextJsSpringBoot = "oauth-nextjs-spring-boot",
   NextJsBetterAuthTemplate = "nextjs-better-auth-template",
   NextJsAuthJsTemplate = "nextjs-authjs-template",
 
