@@ -626,6 +626,44 @@ const projectMap: Database<ProjectInterface> = {
     ],
     type: ProjectTypeEnum.Academic,
   },
+  [ProjectDatabaseKeys.CarDealership]: {
+    name: `Car Dealership`,
+    description: `
+      Car dealership website where users can browse, search, and filter cars.
+      Admins can manage inventory, add new cars, and update existing listings, view reports, manage dealership settings, etc.
+      `,
+    repositoryURL: `https://github.com/mbeps/car-dealership`,
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJS,
+      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.ShadcnUI,
+      SkillDatabaseKeys.RadixUI,
+      SkillDatabaseKeys.Supabase,
+      SkillDatabaseKeys.PostgreSQL,
+      SkillDatabaseKeys.TypeORM,
+      SkillDatabaseKeys.GitHubActions,
+      SkillDatabaseKeys.GCP,
+      SkillDatabaseKeys.HTML,
+      SkillDatabaseKeys.CSS,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+      SkillDatabaseKeys.TimeManagement,
+      SkillDatabaseKeys.ScopeManagement,
+      SkillDatabaseKeys.StakeholderManagement,
+      SkillDatabaseKeys.Communication,
+      SkillDatabaseKeys.RiskManagement,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.CarDealership),
+    type: ProjectTypeEnum.Personal,
+  },
   [ProjectDatabaseKeys.RealTimeMessaging]: {
     name: `Real-Time Messaging`,
     description: `

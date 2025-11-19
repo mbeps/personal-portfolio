@@ -9,6 +9,7 @@
 enum ProjectDatabaseKeys {
   //^ Full Stack Projects
   ForumDiscussions = "forum-discussions",
+  CarDealership = "car-dealership",
   RealTimeMessaging = "real-time-messaging",
   AiGenerations = "ai-generations",
   MusicStreaming = "music-streaming",
