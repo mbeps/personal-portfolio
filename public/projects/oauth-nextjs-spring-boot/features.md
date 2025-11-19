@@ -5,6 +5,12 @@ The application provides complete OAuth authentication functionality:
 - Secure callback handling and token exchange
 - Error handling for failed authentication attempts
 
+## Simple Email/Password Authentication
+- Register using email and password
+- Sign in using Email and password
+- Checks correct credentials 
+- No ability to reset password or send verification email
+
 ## JWT Token Management
 Token generation and validation:
 - Dual-token system with access tokens (15 minutes by default) and refresh tokens (7 days by default)

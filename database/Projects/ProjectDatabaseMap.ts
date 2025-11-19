@@ -874,14 +874,14 @@ const projectMap: Database<ProjectInterface> = {
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.OnlineArticles),
     type: ProjectTypeEnum.Personal,
   },
-  [ProjectDatabaseKeys.GitHubOAuthNextJsSpringBoot]: {
-    name: `GitHub OAuth Next.js & Spring Boot`,
+  [ProjectDatabaseKeys.OAuthNextJsSpringBoot]: {
+    name: `OAuth Next.js & Spring Boot`,
     description: `
-      A simple project to demonstrate GitHub OAuth authentication using Next.js for the front-end and Spring Boot for the back-end.
+      A simple project to demonstrate OAuth (GitHub & Entra ID) authentication using Next.js for the front-end and Spring Boot for the back-end.
       Uses CORS, JWTs, and secure cookie storage.
       `,
     repositoryURL:
-      "https://github.com/stars/mbeps/lists/github-oauth-nextjs-spring-boot",
+      "https://github.com/stars/mbeps/lists/oauth-nextjs-spring-boot",
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
@@ -909,46 +909,7 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     archived: true,
     thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.GitHubOAuthNextJsSpringBoot
-    ),
-    type: ProjectTypeEnum.Personal,
-  },
-  [ProjectDatabaseKeys.EntraOAuthNextJsSpringBoot]: {
-    name: `Entra OAuth Next.js & Spring Boot`,
-    description: `
-      A simple project to demonstrate Entra OAuth authentication using Next.js for the front-end and Spring Boot for the back-end.
-      Uses CORS, JWTs, and secure cookie storage.
-      `,
-    repositoryURL:
-      "https://github.com/stars/mbeps/lists/entra-oauth-nextjs-spring-boot",
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.NextJS,
-      SkillDatabaseKeys.ReactJS,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.SpringSecurity,
-      SkillDatabaseKeys.SpringOAuth,
-      SkillDatabaseKeys.MongoDB,
-      SkillDatabaseKeys.SpringDataMongoDB,
-      SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.REST,
-      SkillDatabaseKeys.HTML,
-      SkillDatabaseKeys.CSS,
-
-      SkillDatabaseKeys.UserAuthentication,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-    ],
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    archived: true,
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.EntraOAuthNextJsSpringBoot
+      ProjectDatabaseKeys.OAuthNextJsSpringBoot
     ),
     type: ProjectTypeEnum.Personal,
   },
