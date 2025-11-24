@@ -6,6 +6,7 @@ import moduleDatabaseMap from "@/database/Modules/ModuleDatabaseMap";
 import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import Link from "next/link";
+import React from "react";
 import Tag from "../Tags/Tag";
 import MaterialGroupSectionList from "./MaterialGroupSectionList";
 
@@ -29,7 +30,7 @@ const ModuleList: React.FC<ModuleListProps> = ({
   headingSize = "h2",
 }) => {
   const basePath: string = EDUCATION_PAGE.path;
-  const HeadingTag = headingSize as keyof JSX.IntrinsicElements;
+  const HeadingTag = headingSize as keyof React.JSX.IntrinsicElements;
 
   return (
     <MaterialGroupSectionList
