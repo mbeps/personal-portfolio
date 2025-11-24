@@ -55,6 +55,21 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.CriticalThinking,
     ],
   },
+  [BlogDatabaseKeys.OverviewOfTransformerArchitecture]: {
+    name: "Overview of Transformer Architecture",
+    subtitle:
+      "An theoretical introduction to to the Transformer architecture and its components. This architecture is the basis of large language models (LLMs).",
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.Transformers,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+    ],
+  },
   [BlogDatabaseKeys.Backend]: {
     name: "Exploring Backends: Custom vs Managed Solutions",
     subtitle:
