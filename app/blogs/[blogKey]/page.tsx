@@ -8,10 +8,8 @@ import developerName from "@/constants/developerName";
 import { BLOG_PAGE } from "@/constants/pages";
 import BlogInterface from "@/database/Blogs/BlogInterface";
 import blogsDatabaseMap from "@/database/Blogs/BlogsDatabaseMap";
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
+import ProjectDatabaseKeys from "@/database/Projects/ProjectDatabaseKeys";
 import BlogCategoriesEnum from "@/enums/Blog/BlogCategoriesEnum";
-import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
@@ -86,7 +84,9 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
 
   // Determine the path to the blog markdown file
   // For project blogs, use the projects path, otherwise use the blogs path
-  const isProjectBlog = blogData.category === BlogCategoriesEnum.Projects;
+  const isProjectBlog =
+    blogData.category === BlogCategoriesEnum.FullStackWebProjects ||
+    Object.values(ProjectDatabaseKeys).includes(blogKey as ProjectDatabaseKeys);
   const blogPath = isProjectBlog
     ? `public/projects/${blogKey}/blog.md`
     : `public${basePath}/${blogKey}/blog.md`;

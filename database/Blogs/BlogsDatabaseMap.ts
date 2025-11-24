@@ -6,9 +6,9 @@ import BlogCategoriesEnum from "@/enums/Blog/BlogCategoriesEnum";
 import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import Database from "@/interfaces/Database";
-import skillDatabaseMap from "../Skills/SkillDatabaseMap";
-import { addProjectBlogsToMap } from "./addProjectBlogsToMap";
+import ProjectDatabaseKeys from "../Projects/ProjectDatabaseKeys";
 import projectDatabaseMap from "../Projects/ProjectDatabaseMap";
+import skillDatabaseMap from "../Skills/SkillDatabaseMap";
 
 /**
  * Hashmap of blogs with keys as {@link BlogDatabaseKeys} and values as {@link BlogInterface}.
@@ -16,6 +16,17 @@ import projectDatabaseMap from "../Projects/ProjectDatabaseMap";
  * The order of the skills is the order that is used when displaying the skills on the website.
  */
 const blogsMap: Database<BlogInterface> = {
+  [ProjectDatabaseKeys.AlignmentInLargeLanguageModels]: {
+    name: projectDatabaseMap[ProjectDatabaseKeys.AlignmentInLargeLanguageModels]
+      .name,
+    subtitle:
+      projectDatabaseMap[ProjectDatabaseKeys.AlignmentInLargeLanguageModels]
+        .description,
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+    skills:
+      projectDatabaseMap[ProjectDatabaseKeys.AlignmentInLargeLanguageModels]
+        .skills,
+  },
   [BlogDatabaseKeys.MachineLearningFoundations]: {
     name: "Exploring the Depths of Machine Learning",
     subtitle:
@@ -40,6 +51,21 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.DataScience,
       SkillDatabaseKeys.NeuralNetworks,
       SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+    ],
+  },
+  [BlogDatabaseKeys.OverviewOfTransformerArchitecture]: {
+    name: "Overview of Transformer Architecture",
+    subtitle:
+      "An theoretical introduction to to the Transformer architecture and its components. This architecture is the basis of large language models (LLMs).",
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.Transformers,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
@@ -104,8 +130,71 @@ const blogsMap: Database<BlogInterface> = {
     category: BlogCategoriesEnum.SoftwareEngineering,
     skills: [],
   },
-  // Add project blogs
-  ...addProjectBlogsToMap(projectDatabaseMap),
+
+  [ProjectDatabaseKeys.ForumDiscussions]: {
+    name: projectDatabaseMap[ProjectDatabaseKeys.ForumDiscussions].name,
+    subtitle:
+      projectDatabaseMap[ProjectDatabaseKeys.ForumDiscussions].description,
+    category: BlogCategoriesEnum.FullStackWebProjects,
+    skills: projectDatabaseMap[ProjectDatabaseKeys.ForumDiscussions].skills,
+  },
+  [ProjectDatabaseKeys.RealTimeMessaging]: {
+    name: projectDatabaseMap[ProjectDatabaseKeys.RealTimeMessaging].name,
+    subtitle:
+      projectDatabaseMap[ProjectDatabaseKeys.RealTimeMessaging].description,
+    category: BlogCategoriesEnum.FullStackWebProjects,
+    skills: projectDatabaseMap[ProjectDatabaseKeys.RealTimeMessaging].skills,
+  },
+  [ProjectDatabaseKeys.AiGenerations]: {
+    name: projectDatabaseMap[ProjectDatabaseKeys.AiGenerations].name,
+    subtitle: projectDatabaseMap[ProjectDatabaseKeys.AiGenerations].description,
+    category: BlogCategoriesEnum.FullStackWebProjects,
+    skills: projectDatabaseMap[ProjectDatabaseKeys.AiGenerations].skills,
+  },
+  [ProjectDatabaseKeys.MusicStreaming]: {
+    name: projectDatabaseMap[ProjectDatabaseKeys.MusicStreaming].name,
+    subtitle:
+      projectDatabaseMap[ProjectDatabaseKeys.MusicStreaming].description,
+    category: BlogCategoriesEnum.FullStackWebProjects,
+    skills: projectDatabaseMap[ProjectDatabaseKeys.MusicStreaming].skills,
+  },
+  [ProjectDatabaseKeys.AiQuizzes]: {
+    name: projectDatabaseMap[ProjectDatabaseKeys.AiQuizzes].name,
+    subtitle: projectDatabaseMap[ProjectDatabaseKeys.AiQuizzes].description,
+    category: BlogCategoriesEnum.FullStackWebProjects,
+    skills: projectDatabaseMap[ProjectDatabaseKeys.AiQuizzes].skills,
+  },
+
+  [ProjectDatabaseKeys.SymphonyTranslateBot]: {
+    name: projectDatabaseMap[ProjectDatabaseKeys.SymphonyTranslateBot].name,
+    subtitle:
+      projectDatabaseMap[ProjectDatabaseKeys.SymphonyTranslateBot].description,
+    category: BlogCategoriesEnum.BackendProjects,
+    skills: projectDatabaseMap[ProjectDatabaseKeys.SymphonyTranslateBot].skills,
+  },
+  [ProjectDatabaseKeys.SymphonyWebhookBot]: {
+    name: projectDatabaseMap[ProjectDatabaseKeys.SymphonyWebhookBot].name,
+    subtitle:
+      projectDatabaseMap[ProjectDatabaseKeys.SymphonyWebhookBot].description,
+    category: BlogCategoriesEnum.BackendProjects,
+    skills: projectDatabaseMap[ProjectDatabaseKeys.SymphonyWebhookBot].skills,
+  },
+
+  [ProjectDatabaseKeys.OsmosGame]: {
+    name: projectDatabaseMap[ProjectDatabaseKeys.OsmosGame].name,
+    subtitle: projectDatabaseMap[ProjectDatabaseKeys.OsmosGame].description,
+    category: BlogCategoriesEnum.Other,
+    skills: projectDatabaseMap[ProjectDatabaseKeys.OsmosGame].skills,
+  },
+  [ProjectDatabaseKeys.JavaCalculatorAssignment]: {
+    name: projectDatabaseMap[ProjectDatabaseKeys.JavaCalculatorAssignment].name,
+    subtitle:
+      projectDatabaseMap[ProjectDatabaseKeys.JavaCalculatorAssignment]
+        .description,
+    category: BlogCategoriesEnum.Other,
+    skills:
+      projectDatabaseMap[ProjectDatabaseKeys.JavaCalculatorAssignment].skills,
+  },
 };
 
 /**
