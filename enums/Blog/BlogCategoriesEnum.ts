@@ -8,7 +8,8 @@ enum BlogCategoriesEnum {
   Databases = "Databases",
   ArtificialIntelligence = "Artificial Intelligence",
   Mathematics = "Mathematics",
-  Projects = "Projects",
+  FullStackWebProjects = "Full-Stack Projects",
+  BackendProjects = "Backend Projects",
   Other = "Other",
 }
 
