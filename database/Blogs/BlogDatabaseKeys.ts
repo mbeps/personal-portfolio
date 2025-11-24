@@ -10,6 +10,7 @@ enum BlogDatabaseKeys {
   MachineLearningFoundations = "machine-learning-foundations",
   IntroductionToNeuralNetworks = "introduction-to-neural-networks",
   OverviewOfTransformerArchitecture = "overview-of-transformer-architecture",
+  OverviewOfQuantisation = "overview-of-quantisation",
   Backend = "backend",
   ORM = "orm",
   RESTGraphQL = "rest-graphql-api",

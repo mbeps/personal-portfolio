@@ -58,7 +58,22 @@ const blogsMap: Database<BlogInterface> = {
   [BlogDatabaseKeys.OverviewOfTransformerArchitecture]: {
     name: "Overview of Transformer Architecture",
     subtitle:
-      "An theoretical introduction to to the Transformer architecture and its components. This architecture is the basis of large language models (LLMs).",
+      "An theoretical introduction to the Transformer architecture and its components. This architecture is the basis of large language models (LLMs).",
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.Transformers,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+    ],
+  },
+  [BlogDatabaseKeys.OverviewOfQuantisation]: {
+    name: "Quantisation as a Model Compression Technique",
+    subtitle:
+      "An theoretical introduction to quantisation, a model compression technique used to reduce the size of large language models (LLMs) and make them more efficient for deployment.",
     category: BlogCategoriesEnum.ArtificialIntelligence,
     skills: [
       SkillDatabaseKeys.MachineLearning,
