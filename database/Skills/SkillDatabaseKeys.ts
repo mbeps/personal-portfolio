@@ -74,7 +74,7 @@ enum SkillDatabaseKeys {
 
   //^ Frontend Web Development
   ReactJS = "react",
-  Recoil = "recoil",
+  Jotai = "jotai",
   Zustand = "zustand",
   TailwindCSS = "tailwind-css",
   HTML = "html",

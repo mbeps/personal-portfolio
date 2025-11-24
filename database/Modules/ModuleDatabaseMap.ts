@@ -581,7 +581,7 @@ const modulesMap: Database<ModuleInterface> = {
       SkillDatabaseKeys.ReactJS,
       SkillDatabaseKeys.ChakraUI,
       SkillDatabaseKeys.Firebase,
-      SkillDatabaseKeys.Recoil,
+      SkillDatabaseKeys.Jotai,
       SkillDatabaseKeys.Docker,
       SkillDatabaseKeys.GitHubActions,
       SkillDatabaseKeys.GCP,
