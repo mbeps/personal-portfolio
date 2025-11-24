@@ -3,6 +3,7 @@ import processMarkdownImages from "@/actions/processMarkdownImages";
 import buildSkillTableGroups from "@/actions/skills/group/buildSkillTableGroups";
 import MaterialList from "@/components/MaterialLists/MaterialList";
 import SpecialReader from "@/components/Reader/SpecialReader";
+import { Card, CardContent } from "@/components/shadcn/ui/card";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import developerName from "@/constants/developerName";
 import { BLOG_PAGE } from "@/constants/pages";
@@ -129,12 +130,12 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
           previousPageName={BLOG_PAGE.label}
         />
 
-        <div className="border-b border-gray-200 dark:border-neutral-600 pb-2" />
-
         {/* Skills */}
-        <div className="mt-4">
-          <SkillTableSection allGroupedSkills={allGroupedSkills} />
-        </div>
+        <Card className="mt-10">
+          <CardContent className="py-10">
+            <SkillTableSection allGroupedSkills={allGroupedSkills} />
+          </CardContent>
+        </Card>
 
         {/* Related Materials */}
         {blogData.relatedMaterials && blogData.relatedMaterials.length > 0 && (
