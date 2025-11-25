@@ -111,6 +111,21 @@ const blogsMap: Database<BlogInterface> = {
     ],
     relatedMaterials: [ProjectDatabaseKeys.AlignmentInLargeLanguageModels],
   },
+  [BlogDatabaseKeys.ModelContextProtocol]: {
+    name: "Model Context Protocol (MCP) for Efficient LLM Interaction",
+    subtitle:
+      "A Comprehensive Technical Analysis of Interoperable AI Architectures and Building Agents.",
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.Transformers,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+    ],
+  },
   [BlogDatabaseKeys.Backend]: {
     name: "Exploring Backends: Custom vs Managed Solutions",
     subtitle:

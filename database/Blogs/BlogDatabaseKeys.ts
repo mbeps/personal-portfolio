@@ -12,6 +12,7 @@ enum BlogDatabaseKeys {
   Transformer = "transformer-architecture",
   Lora = "lora",
   Quantisation = "quantisation",
+  ModelContextProtocol = "model-context-protocol",
   Backend = "backend",
   ORM = "orm",
   RESTGraphQL = "rest-graphql-api",
