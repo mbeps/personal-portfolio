@@ -128,19 +128,22 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
           previousPageName={BLOG_PAGE.label}
         />
 
-        {/* Skills */}
-        <Card className="mt-10">
-          <CardContent className="py-10">
-            <SkillTableSection allGroupedSkills={allGroupedSkills} />
-          </CardContent>
-        </Card>
+        <div className="mt-10 material-sections-wrapper">
+          {/* Skills */}
+          <Card>
+            <CardContent className="py-10">
+              <SkillTableSection allGroupedSkills={allGroupedSkills} />
+            </CardContent>
+          </Card>
 
-        {/* Related Materials */}
-        {blogData.relatedMaterials && blogData.relatedMaterials.length > 0 && (
-          <>
-            <MaterialList materialKeys={blogData.relatedMaterials} />
-          </>
-        )}
+          {/* Related Materials */}
+          {blogData.relatedMaterials &&
+            blogData.relatedMaterials.length > 0 && (
+              <>
+                <MaterialList materialKeys={blogData.relatedMaterials} />
+              </>
+            )}
+        </div>
       </div>
     </main>
   );
