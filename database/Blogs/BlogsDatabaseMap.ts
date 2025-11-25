@@ -55,7 +55,7 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.CriticalThinking,
     ],
   },
-  [BlogDatabaseKeys.OverviewOfTransformerArchitecture]: {
+  [BlogDatabaseKeys.Transformer]: {
     name: "Overview of Transformer Architecture",
     subtitle:
       "An theoretical introduction to the Transformer architecture and its components. This architecture is the basis of large language models (LLMs).",

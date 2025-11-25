@@ -9,7 +9,7 @@
 enum BlogDatabaseKeys {
   MachineLearningFoundations = "machine-learning-foundations",
   IntroductionToNeuralNetworks = "introduction-to-neural-networks",
-  OverviewOfTransformerArchitecture = "overview-of-transformer-architecture",
+  Transformer = "transformer-architecture",
   Lora = "lora",
   Quantisation = "quantisation",
   Backend = "backend",
