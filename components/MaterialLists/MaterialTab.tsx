@@ -52,15 +52,11 @@ interface MaterialSectionInterface {
 }
 
 /**
- * Component displaying a list of all materials.
- * This includes:
- * - Projects
- * - Certificates
- * - Blogs
- * - Modules
+ * Core renderer for MaterialList tabs that buckets related slugs into type-specific lists (projects, roles, modules, etc.).
+ * Pulls directly from the static database maps so detail pages stay in sync with list styling.
  *
- * @param materialKeys The keys of the material to display.
- * @returns Section displaying all the material for a given skill.
+ * @param materialKeys Material slugs sourced from detail pages or skill listings.
+ * @returns Tabs element with one child per populated material type.
  */
 const MaterialTab: React.FC<MaterialTabsProps> = ({ materialKeys }) => {
   const [selectedTab, setSelectedTab] = useState("");

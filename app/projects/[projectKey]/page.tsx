@@ -93,16 +93,11 @@ export const generateStaticParams = async () => {
 };
 
 /**
- * Page displaying the project details including:
- * - Gallery of images and videos if available
- * - Description of the projects
- * - Programming languages used
- * - Table showing technologies used, and general and soft skills associated
- * - Links to the project repository and deployment
- * - Features and blog content
+ * Project detail experience that joins galleries, markdown, skill tables, and related material into one story.
+ * Handles case studies with optional reports, features, and cross-linking to keep the material ecosystem interconnected.
  *
- * @param props The identifier of the project from the URL used to fetch the project
- * @returns Page displaying the project and its details
+ * @param params Dynamic slug for the project entry.
+ * @returns Project overview with media, skills, and related work.
  */
 const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
   const resolvedParams = await params;

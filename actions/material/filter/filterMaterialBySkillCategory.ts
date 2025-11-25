@@ -4,14 +4,14 @@ import SkillInterface from "@/database/Skills/SkillInterface";
 import Database from "@/interfaces/Database";
 
 /**
- * Filters the materials that match a specific skill category.
- * The skill category is within the skill object listed in the material.
+ * Implements the “skill category” dropdown shared by Projects, Experience, and Certificates.
+ * Works on already filtered key arrays so more granular filters can chain together without dropping order.
  *
- * @param materialKeys Material keys to filter by skill category
- * @param materialsDatabase All the materials in the database so that we can access the material details
- * @param skillCategory The specific skill category to filter for in the materials
- * @param skillsDatabase All the skills in the database so that we can access the skill details
- * @returns The keys of the materials that match the skill category
+ * @param materialKeys Keys currently visible prior to applying the category filter.
+ * @param materialsDatabase Database map where metadata lives.
+ * @param skillCategory UI label for the requested category.
+ * @param skillsDatabase Skill dictionary used to resolve categories.
+ * @returns Keys of materials that contain at least one skill within the category.
  */
 export default function filterMaterialBySkillCategory<
   T extends MaterialInterface

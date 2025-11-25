@@ -65,13 +65,11 @@ export const generateStaticParams = async () => {
 };
 
 /**
- * Page displaying the rendered markdown which can be read by the user.
- * The page also displays:
- * - The skills covered in the blog
- * - Related materials
+ * Renders a single blog post via the shared markdown pipeline, pairing the Reader with skill tables and related materials.
+ * Handles both standalone blogs and project write-ups by rewriting `{BASE}` image placeholders to the correct public path.
  *
- * @param props The props for the blog page
- * @returns Content of the blog and the skills used
+ * @param params Dynamic route param carrying the blog slug.
+ * @returns Blog article view with skills and related material tabs.
  */
 const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
   const resolvedParams = await params;

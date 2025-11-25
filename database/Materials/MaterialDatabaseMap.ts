@@ -9,8 +9,8 @@ import projectDatabaseMap from "../Projects/ProjectDatabaseMap";
 import rolesDatabase from "../Roles/RoleDatabaseMap";
 
 /**
- * Hashmap of materials with keys as {@link MaterialKeysEnum} and values as {@link MaterialInterface}.
- * The order of the materials is the order that is used when displaying the materials on the website.
+ * Source of truth that unifies every material dictionary so shared helpers can treat the portfolio as a single data lake.
+ * Load order matters because section lists render in the order defined here, which matches the hand-curated storytelling.
  */
 const materialDatabaseMap: Database<MaterialInterface> = {
   ...projectDatabaseMap,
@@ -21,12 +21,14 @@ const materialDatabaseMap: Database<MaterialInterface> = {
   ...blogsDatabaseMap,
 };
 
+/**
+ * Pre-resolved list of material keys so static routes and command palette builders do not recompute `Object.keys` repeatedly.
+ */
 export const materialKeys: string[] = Object.keys(materialDatabaseMap);
 
 /**
- * Precomputed map of skill usage counts for O(1) lookups.
- * This eliminates the need to loop through all materials every time we check skill associations.
- * Used by: isSkillAssociatedWithMaterial, skillHasMaterial, countMaterialsBySkill
+ * Tracks how often each skill appears across all materials to keep counts stable between server and client environments.
+ * Enables `skillHasMaterial`, `isSkillAssociatedWithMaterial`, and `countMaterialsBySkill` to stay synchronous with the UI filters.
  */
 export const skillUsageMap = new Map<SkillDatabaseKeys, number>();
 

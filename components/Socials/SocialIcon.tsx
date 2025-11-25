@@ -12,14 +12,13 @@ interface SocialIconProps extends SocialLinkInterface {
 }
 
 /**
- * Social media icon component.
- * Displays the icon which links to the social media account.
+ * Tooltip-wrapped icon link used by the hero, footer, and overlays to keep social CTAs consistent.
  *
- * @param title Title shown as tooltip when hovering
- * @param link Link to the social media account
- * @param IconComponent Icon component to be displayed
- * @param isEmail Whether the link is an email or not
- * @returns Social media icon
+ * @param name Label shown in the tooltip.
+ * @param link External URL or mailto string.
+ * @param IconComponent Icon to render.
+ * @param iconSize Optional override for icon size.
+ * @returns Tooltip + link combo for a social destination.
  */
 const SocialIcon: React.FC<SocialIconProps> = ({
   name,

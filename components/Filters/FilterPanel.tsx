@@ -27,16 +27,16 @@ interface FilterOverlayProps {
 }
 
 /**
- * Filter overlay that shows a drawer on mobile and a side panel on desktop.
- * A filter change updates the query string so pages react automatically.
+ * Responsive filter drawer that powers the “Filters” button on every listing, using a side panel on desktop and Drawer on mobile.
+ * Keeps URL state in sync so fuse search and grouped lists update as soon as the user interacts with the panel.
  *
- * @param filterCategories Filter sections and their options
- * @param basePath Base path used to build filter URLs
- * @param isOpen When true the panel is visible
- * @param toggle Toggles the open state
- * @param archiveFilter Archive toggle metadata
- * @param areFiltersApplied Flag used to disable the clear button
- * @param searchFilter Search metadata used for building URLs
+ * @param filterCategories Configured filter definitions from the listing page.
+ * @param basePath Route base used when building URLs.
+ * @param isOpen Whether the overlay is visible.
+ * @param toggle Handler that toggles visibility.
+ * @param archiveFilter Optional archive toggle metadata.
+ * @param areFiltersApplied Drives the clear button state.
+ * @param searchFilter Search metadata so the drawer can keep query params intact.
  */
 const FilterOverlay: React.FC<FilterOverlayProps> = ({
   filterCategories,

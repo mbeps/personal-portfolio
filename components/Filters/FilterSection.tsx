@@ -190,3 +190,15 @@ const FilterSection: React.FC<FilterSectionProps> = ({
 };
 
 export default FilterSection;
+/**
+ * High-level search + filter accordion used by every material listing, coordinating URL updates, modals, and archive toggle.
+ * Couples the shared `FilterPanel`, `SearchInput`, and `ArchiveToggle` so each page only needs to configure filter metadata.
+ *
+ * @param name Human-readable resource name for copy.
+ * @param basePath Route base used for URL building.
+ * @param searchFilter Current search term + param name.
+ * @param filterCategories Filter configs produced by the listing page.
+ * @param areFiltersApplied Flag for enabling the clear button state.
+ * @param archiveFilter Optional archive toggle metadata.
+ * @returns Accordion containing search, drawer button, clear button, and archive toggle.
+ */

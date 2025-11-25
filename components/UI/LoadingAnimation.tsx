@@ -3,10 +3,9 @@
 import { BounceLoader } from "react-spinners";
 
 /**
- * Loading animation component which displays a loading animation.
- * This is used on loading pages while content is being fetched.
+ * Centered BounceLoader used by the App Router `loading.tsx` fallback so every route shows the same spinner.
  *
- * @returns Loading animation
+ * @returns Full-height flex container with animated spinner.
  */
 const LoadingAnimation = () => {
   return (

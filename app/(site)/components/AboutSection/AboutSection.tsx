@@ -7,16 +7,10 @@ import { HiArrowDown } from "react-icons/hi"; // Import the arrow icon
 import NextSectionButton from "@/components/UI/NextSectionButton";
 
 /**
- * About section component.
- * Split into two sections: left and right.
- * Left section contains a short description of myself.
- * Right section contains a list of skills, languages and technologies.
- * On mobile, the sections are stacked on top of each other.
+ * Markdown-backed about preview that pairs the Reader with the interactive language/technology sub sections.
+ * Acts as the first touchpoint to the `/about` longform page while keeping the skill taxonomy consistent with the Skills view.
  *
- * The skills, languages and technologies are displayed as tags.
- * Some of these tags can be clicked which will open a modal.
- * There is also a view more button that opens a modal to show more skills, languages or technologies.
- * @returns About section
+ * @returns About block with CTA to the detailed page.
  */
 const AboutSection = () => {
   /**

@@ -16,9 +16,8 @@ interface MaterialGroupSectionListProps {
 }
 
 /**
- * Shared scaffold used by material list pages to render grouped content.
- * Handles the repeated logic for skipping the catch-all group, creating
- * anchorable sections, and displaying the empty state.
+ * Base renderer for grouped material lists, responsible for hiding “All” buckets, wiring anchor IDs, and surfacing empty states.
+ * Keeps the structural markup identical regardless of whether the caller renders projects, roles, certificates, or modules.
  */
 const MaterialGroupSectionList: React.FC<MaterialGroupSectionListProps> = ({
   groupedMaterial,

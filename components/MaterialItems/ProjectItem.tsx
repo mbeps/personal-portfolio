@@ -18,21 +18,12 @@ interface ProjectItemProps {
 }
 
 /**
- * Card which displays a projects.
- * Contains:
- * - Name of the project
- * - Description of the project
- * - Optional image of the project
- * - Link to the GitHub repository of the project
- * - Button to open the modal listing the language and technologies used in the project
- * - Optional link to the live site of the project
- * - Optional link to the article of the project
+ * Shared project card used on the homepage, projects archive, and related material tabs so every surface highlights projects the same way.
+ * Pulls details straight from the static DB and wires buttons to internal/external destinations depending on what metadata exists.
  *
- * Some projects have an image that is displayed on the left side of the card.
- * This image is clickable and redirects to the project page.
- *
- * @param projectKey Key of the project to be displayed
- * @returns A card which displays a project
+ * @param projectKey Project slug from `ProjectDatabaseKeys`.
+ * @param subtitle Optional variant that shows either the project type or category beneath the title.
+ * @returns Responsive card with cover media, description, and action buttons.
  */
 const ProjectItem: React.FC<ProjectItemProps> = ({
   projectKey,

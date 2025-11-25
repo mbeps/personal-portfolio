@@ -65,19 +65,14 @@ export enum GroupByOptions {
 }
 
 /**
- * Groups the skills based on the specified criteria such as language, category, or skill type.
- * If the criteria is not recognized, it groups the skills under a default category.
- * It also filters out skills based on the excluded skill types.
+ * Backbone helper for `SkillList`, Language/Technologies modals, and the detail page skill tables.
+ * Handles grouping by language, category, or skill type while respecting exclusions (e.g., hide soft skills).
  *
- * @param groupedBy How to group the skills
- * @param skillKeys The keys of the skills to be grouped
- * @param skillsDatabase The database of all skills to access the skill data
- * @param excludedSkillTypes The skill types to exclude from the grouping
- * @returns The skills grouped by the specified criteria
- * @requires {@link groupByLanguage}
- * @requires {@link groupByCategory}
- * @requires {@link groupBySkillType}
- * @requires {@link recursiveFilter}
+ * @param groupedBy Dimension to group by.
+ * @param skillKeys Skills to organize.
+ * @param skillsDatabase Full skills map to resolve metadata.
+ * @param excludedSkillTypes Optional list of skill types to skip.
+ * @returns Array of grouped skill categories ready for display.
  */
 export default function groupSkills(
   groupedBy: GroupByOptions,

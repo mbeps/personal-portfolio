@@ -7,13 +7,11 @@ type TypeWriterTextLoopProps = {
 };
 
 /**
- * Loops through an array of strings and displays them one by one.
- * Uses a type writer effect to loop through the text.
- * Includes custom styling to ensure cursor visibility across browsers.
+ * Typewriter variant of the hero subtitle loop, wrapping `typewriter-effect` with custom cursor styling for consistent theming.
  *
- * @param className Class name to apply to the span element
- * @param loopItems Array of strings to loop through
- * @returns A span element that loops through the given array of strings
+ * @param className Tailwind classes applied to the wrapper.
+ * @param loopItems Strings to cycle through.
+ * @returns Container rendering the looping typewriter animation.
  */
 const TypeWriterTextLoop: React.FC<TypeWriterTextLoopProps> = ({
   className,

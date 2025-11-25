@@ -5,13 +5,11 @@ import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import Database from "@/interfaces/Database";
 
 /**
- * Adds the skills from a course's modules to the course's skills itself.
- * This works multiple courses at once.
- * All the skills that are related to a module are also related to the course.
+ * Batch version of the course skill aggregation so the education pages can hydrate the full database once at import time.
  *
- * @param coursesDatabase Courses to which the skills are to be added.
- * @param modulesDatabase All the modules to access the data related to the modules.
- * @returns The courses with the aggregated skills.
+ * @param coursesDatabase Map of every course entry.
+ * @param modulesDatabase Map of module entries referenced by the courses.
+ * @returns New course database whose entries include all module skill references.
  */
 export default function aggregateSkillsForCourses(
   coursesDatabase: Database<CourseInterface>,

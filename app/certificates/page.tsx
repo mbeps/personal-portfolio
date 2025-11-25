@@ -28,15 +28,9 @@ export const metadata: Metadata = {
 };
 
 /**
- * Displays a list of all certificates that I have.
- * Also allows the user to search and filter the certificates.
- * These certificates are displayed into categories.
+ * Certificates archive entry point that frames the shared `CertificatesView` filters with the page copy and metadata.
  *
- * A list of all certificates along with their descriptions are added to the page for SEO purposes.
- * This is not visible to the user.
- *
- * @returns Page with all certificates
- * @requires {@link CertificatesView} component to display the certificates and filter/search them
+ * @returns Section containing the filterable certificates grid.
  */
 const CertificatesPage: React.FC = () => {
   return (

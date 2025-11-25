@@ -25,15 +25,9 @@ export const metadata: Metadata = {
 };
 
 /**
- * Displays a list of all projects that I have worked on.
- * Also allows the user to search and filter the projects.
- * These projects are displayed into categories.
+ * Projects archive shell that injects shared hero copy, metadata keywords, and the `ProjectsView` filter experience.
  *
- * A list of all projects along with their descriptions are added to the page for SEO purposes.
- * This is not visible to the user.
- *
- * @returns Page with all projects
- * @requires {@link ProjectsView} component to display the projects and filter/search them
+ * @returns Section with heading/description plus the reusable projects view.
  */
 const ProjectsPage = () => {
   return (

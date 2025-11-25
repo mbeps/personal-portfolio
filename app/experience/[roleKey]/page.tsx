@@ -75,11 +75,11 @@ export const generateStaticParams = async () => {
 };
 
 /**
- * Page displaying the details about a work experience role.
- * Shows specific responsibilities, skills, and related materials.
+ * Role detail page that combines company metadata, markdown responsibilities, skill tables, and related work pulled from the static DB.
+ * Gives recruiters and readers a deep dive into each engagement while keeping layout parity with course and certificate pages.
  *
- * @param props The props for the work experience page.
- * @returns Content of the work experience page.
+ * @param params Role slug selected from the experience list.
+ * @returns Experience detail view with responsibilities and related materials.
  */
 const RolePage: React.FC<{ params: Params }> = async ({ params }) => {
   const resolvedParams = await params;

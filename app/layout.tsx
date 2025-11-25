@@ -39,14 +39,11 @@ export const metadata: Metadata = {
 };
 
 /**
- * Layout component which applies to all pages.
- * Contains:
- * - Navbar
- * - Footer
- * - Children (page content)
- * It also applies the theme to the page.
- * @param children Page content
- * @returns Layout component
+ * App Router shell that wires Providers, navigation chrome, smooth scrolling, and analytics around every page.
+ * Ensures MD-powered metadata, theme context, and the sticky navbar/footer remain consistent across the site.
+ *
+ * @param children Page content rendered by each route segment.
+ * @returns HTML + body tree with shared providers and layout furniture.
  */
 export default function RootLayoutWithProviders({
   children,

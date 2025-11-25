@@ -13,9 +13,10 @@ import {
 import { Tooltip, TooltipContent, TooltipTrigger } from "../shadcn/ui/tooltip";
 
 /**
- * A button to toggle the theme (dark or light).
+ * Context menu driven theme switcher so users can quickly flip between light, dark, and system modes right from the navbar.
+ * Primary click toggles dark/light, right click opens the full menu.
  *
- * @returns A button to toggle the theme (dark or light)
+ * @returns Theme toggle button with tooltip and context menu actions.
  */
 const ThemeToggle: React.FC = () => {
   type ThemeType = "dark" | "light" | "system" | undefined;

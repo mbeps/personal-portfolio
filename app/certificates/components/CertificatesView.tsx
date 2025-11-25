@@ -25,12 +25,10 @@ import React from "react";
 import useMaterialFilterState from "@/hooks/useMaterialFilterState";
 
 /**
- * Displays a list of all certificates that I have.
- * Also allows the user to search and filter the certificates.
- * These certificates are displayed into categories.
- * Because this uses hooks, it is a client-side only component.
+ * Client-side controller for the certificates archive that plugs the shared filter hook into the `CertificatesList`.
+ * Coordinates issuer, category, and skill filters with search + archive state so copies of this list render identical behavior.
  *
- * @returns Components with all the grouped certificates and controls to filter them.
+ * @returns Filter UI plus grouped certificate cards.
  */
 const CertificatesView: React.FC = () => {
   const basePath: string = usePathname();

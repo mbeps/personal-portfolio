@@ -20,12 +20,11 @@ interface ContentsSectionProps {
 }
 
 /**
- * Section responsible for displaying the contents of the blog.
- * On large screen sizes, it will give users the options to open a side panel to view the contents.
- * On smaller screen sizes, the contents will be displayed at the top of the blog as a collapsible section.
+ * Responsive table-of-contents block used by blog posts and project reports.
+ * Presents a sticky side panel on desktop and a collapsible accordion on mobile so long-form pieces stay navigable.
  *
- * @param contentSection Contents list of the blog in markdown format
- * @returns Section displaying the contents of the blog
+ * @param contentSection Markdown snippet containing the TOC entries.
+ * @returns Button + panel UI for large screens or an accordion on mobile.
  */
 const ContentsSection: React.FC<ContentsSectionProps> = ({
   contentSection,

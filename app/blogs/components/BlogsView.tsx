@@ -22,12 +22,10 @@ import { usePathname } from "next/navigation";
 import useMaterialFilterState from "@/hooks/useMaterialFilterState";
 
 /**
- * Displays a list of all blogs that can be opened.
- * Also allows the user to filter and search the blogs.
- * These blogs are displayed into categories.
- * Because this uses hooks, it is a client-side only component.
+ * Client view that wires Fuse search, category filters, and archive toggles to the shared `BlogsList`.
+ * This is the canonical config for blog filtering, so URL params, drawer options, and grouped output stay in sync across tabs.
  *
- * @returns Component showing all blogs, search bar and filters
+ * @returns Filter shell plus grouped blog cards.
  */
 export const BlogsView: React.FC = () => {
   const basePath: string = usePathname();

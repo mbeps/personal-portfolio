@@ -3,12 +3,12 @@ import Database from "@/interfaces/Database";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 
 /**
- * Groups the materials by their category.
- * This creates a group with the category name and the keys of the materials that belong to that category.
+ * Builds the structures consumed by `MaterialGroupSectionList`, letting each page reuse the same grouping markup.
+ * Only keys are stored, so the consuming component can fetch material metadata lazily.
  *
- * @param materialsKeys The keys of the materials to group
- * @param materialsDatabase The database of all materials to access the material details
- * @returns The materials grouped by their category
+ * @param materialsKeys Ordered keys the page decided to show.
+ * @param materialsDatabase Database map used to read metadata.
+ * @returns Array of group objects keyed by the material category.
  */
 export default function groupMaterialsByCategory<T extends MaterialInterface>(
   materialsKeys: string[],

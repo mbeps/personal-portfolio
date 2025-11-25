@@ -5,12 +5,10 @@ import React from "react";
 import MaterialGroupSectionList from "./MaterialGroupSectionList";
 
 /**
- * List of certificates grouped by category to be displayed section by section.
- * Each section contains a title and a list of certificates.
- * If there are no certificates to display, a message is shown.
+ * Renders grouped certificates using `CertificateItem` tiles so the certificates page and related material tabs look identical.
  *
- * @param groupedCertificates List of certificates grouped by category to be displayed section by section
- * @returns A list of certificates grouped by category
+ * @param groupedMaterial Material grouping generated upstream.
+ * @returns Sectioned certificate grid or the shared empty state copy.
  */
 const CertificatesList: React.FC<MaterialListProps> = ({ groupedMaterial }) => (
   <MaterialGroupSectionList

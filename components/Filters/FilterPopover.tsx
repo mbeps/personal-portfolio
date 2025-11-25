@@ -34,16 +34,15 @@ interface FilterPopover {
 }
 
 /**
- * Popover component displaying the filtering options for the user.
- * This is similar to a dropdown menu but with a search bar to find the desired filter.
- * Once the filter is selected, the URL is updated with the new filter options.
+ * Desktop filter selector used inside the drawer, combining a searchable command palette style list with the shared URL builder.
+ * Ensures selecting any option also forces archived items to surface so historical work is discoverable.
  *
- * @param selectedFilterCategory The current filter category
- * @param filterCategories All the filter categories
- * @param archiveFilter The status of the archive filter
- * @param searchFilter The currently applied search term
- * @param basePath The base path for the current page
- * @returns Popover component with filter options
+ * @param selectedFilterCategory Filter group currently rendered.
+ * @param filterCategories All filter configs so we can keep the rest in sync.
+ * @param archiveFilter Optional archive metadata.
+ * @param searchFilter Search metadata to preserve the query string.
+ * @param basePath Base route for the listing page.
+ * @returns Popover trigger and list of filter options.
  */
 const FilterPopover: React.FC<FilterPopover> = ({
   selectedFilterCategory,

@@ -8,13 +8,12 @@ interface ExpandCollapseButtonProps {
 }
 
 /**
- * Button that allows the user to expand or collapse content.
- * This is used to show more or less information.
+ * Simple disclosure trigger reused where sections need “Show more / Show less” affordances without bringing in a full accordion.
  *
- * @param isExpanded If the content is expanded or not
- * @param onToggle Function to toggle the content
- * @param className Additional classes for the button
- * @returns Button to expand or collapse content
+ * @param isExpanded Whether the content is currently expanded.
+ * @param onToggle Click handler to flip the state.
+ * @param className Optional button styles.
+ * @returns Text button with directional arrow icon.
  */
 const ExpandCollapseButton: React.FC<ExpandCollapseButtonProps> = ({
   isExpanded,

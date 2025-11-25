@@ -47,14 +47,11 @@ interface LanguageTagWithModalProps {
 }
 
 /**
- * Displays a tag for each language.
- * Uses Drawer on mobile and Dialog on desktop for responsive behaviour.
- * If the language has skills or repositories, a modal is displayed when the tag is clicked.
- * The modal displays the skills and repositories for the language.
- * If the language does not have any skills or repositories, the modal cannot be opened.
+ * Interactive language tag used on the homepage to surface related skills via a responsive modal/drawer.
+ * Pulls grouped skills from the static DB and offers shortcuts into the `/skills/[slug]` page when material exists.
  *
- * @param languageIdentifier Identifier of the language
- * @returns Language tag with responsive modal/drawer
+ * @param languageIdentifier Skill slug representing the language.
+ * @returns Tag + modal/drawer experience showing grouped skills and material link.
  */
 const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
   languageIdentifier,

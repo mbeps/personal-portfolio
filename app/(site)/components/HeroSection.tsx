@@ -9,13 +9,8 @@ import Link from "next/link";
 import { HiArrowDown } from "react-icons/hi";
 
 /**
- * Hero section component shown at the top of the page.
- * Contains:
- * - Profile image of myself
- * - My full name
- * - My roles which loop through a list
- * - Social media links such as GitHub, LinkedIn, and email
- * - Buttons to navigate to the projects and about sections
+ * Front page hero that pairs the looping subtitle narrative with socials, CTA buttons, and the profile image.
+ * Sets the tone for the portfolio by linking into the shared subtitles array and the Scroll-aware section IDs.
  */
 const HeroSection = () => {
   const subtitleStyle: string = `

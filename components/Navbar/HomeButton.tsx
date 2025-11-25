@@ -2,10 +2,9 @@ import developerName from "@/constants/developerName";
 import Link from "next/link";
 
 /**
- * Home button component.
- * It displays the logo and links to the home page.
+ * Brand mark button that anchors the navbar to the root route while reusing the global `developerName`.
  *
- * @returns Home button component
+ * @returns Link styled as the site logo.
  */
 const HomeButton: React.FC = () => {
   return (

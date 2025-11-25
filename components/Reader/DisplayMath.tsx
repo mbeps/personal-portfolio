@@ -8,11 +8,10 @@ interface DisplayMathProps {
 }
 
 /**
- * Component to render block/display LaTeX expressions with $$ ... $$
+ * Block-level KaTeX renderer that keeps equations centered and scrollable inside the markdown reader.
  *
- * @param children LaTeX expression to render
- * @returns Rendered LaTeX expression
- * @author Maruf Bepary
+ * @param children LaTeX expression extracted from the markdown placeholder.
+ * @returns Centered block containing the rendered math.
  */
 const DisplayMath: React.FC<DisplayMathProps> = ({ children }) => {
   const html: string = useMemo(() => {

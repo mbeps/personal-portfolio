@@ -22,15 +22,12 @@ interface GalleryProps {
 }
 
 /**
- * Gallery Component which allows users to view a list of images and videos.
- * At the top, there is a preview of the currently selected image or video.
- * Bellow are the thumbnails of the available images and videos.
- * Clicking on a thumbnail will change the preview to that image.
- * There are also buttons on the left and right of the preview to change the image.
+ * Media gallery used on project pages to showcase screenshots and demo clips without introducing layout shift on mobile.
+ * Combines shadcn's carousel + tabs so images/videos share the same navigation controls.
  *
- * @param images List of image URLs to display
- * @param videos List of video URLs to display
- * @returns Gallery component with images and videos
+ * @param images Optional list of project image paths.
+ * @param videos Optional list of mp4 demo paths.
+ * @returns Carousel + tab UI that swaps between image and video sets.
  * @see Carousel https://ui.shadcn.com/docs/components/carousel
  * @see Tabs https://ui.shadcn.com/docs/components/tabs
  */

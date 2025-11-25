@@ -11,12 +11,12 @@ interface TextLoopProps {
 }
 
 /**
- * Loops through an array of strings and displays them one by one.
+ * Framer Motion powered subtitle loop used when the hero needs a subtle fade animation instead of the typewriter.
  *
- * @param loopItems Array of strings to loop through
- * @param delay Delay between each loop in milliseconds
- * @param className Class name to apply to the span element
- * @returns A span element that loops through the given array of strings
+ * @param loopItems Strings to cycle through.
+ * @param delay Interval between swaps.
+ * @param className Tailwind classes applied to the animated span.
+ * @returns Animated span cycling through the provided strings.
  */
 const SimpleTextLoop: React.FC<TextLoopProps> = ({
   loopItems,

@@ -22,8 +22,10 @@ export const metadata: Metadata = {
 };
 
 /**
- * Home page which contains the Hero, About and Projects sections.
- * @returns Home page
+ * Landing experience that stitches together the hero, about snapshot, and curated projects for quick scanning.
+ * Pulls markdown powered about copy and passes hero metadata to downstream sections.
+ *
+ * @returns Composed homepage content.
  */
 export default function Home() {
   return (

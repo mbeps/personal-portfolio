@@ -25,15 +25,9 @@ export const metadata: Metadata = {
 };
 
 /**
- * Displays a list of all blogs that can be opened.
- * Also allows the user to search and filter the blogs.
- * These blogs are displayed into categories.
+ * Blog archive shell that hands control to `BlogsView`, keeping the shared hero copy and SEO keywords scoped to this route.
  *
- * A list of all blogs along with their subtitles are added to the page for SEO purposes.
- * This is not visible to the user.
- *
- * @returns Page with all blogs
- * @requires {@link BlogsView} component to display the blogs and filter/search them
+ * @returns Page content framing the reusable filter/search view.
  */
 export default function BlogPage() {
   return (

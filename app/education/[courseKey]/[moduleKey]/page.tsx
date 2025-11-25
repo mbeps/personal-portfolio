@@ -68,15 +68,11 @@ export const generateStaticParams = async () => {
 };
 
 /**
- * Page displaying details about a module in a course.
- * This includes the learning outcomes, skills, and related material.
+ * Module detail route that focuses on learning outcomes, grouped skills, and how the module connects to other materials.
+ * Breadcrumbs connect back to the parent course while the shared MaterialList cross-links into related projects or certificates.
  *
- * The page also displays:
- * - The skills covered in the module
- * - Related materials
- *
- * @param props The data for the module page
- * @returns A page displaying the module details
+ * @param params Module slug to render.
+ * @returns Module overview with skills, outcomes, and related material.
  */
 const ModulePage: React.FC<{ params: Params }> = async ({ params }) => {
   const resolvedParams = await params;

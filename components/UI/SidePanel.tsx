@@ -16,16 +16,16 @@ interface SidePanelProps {
 }
 
 /**
- * This displays a side panel that slides in from the right.
- * The component is outside the screen and slides in when opened.
+ * Generic sliding panel used by the desktop filter UI and any future inspector-style experiences.
+ * Handles Escape key closing and aligns with the navbar height so it never overlaps the sticky header.
  *
- * @param title The title of the side panel
- * @param contents The contents of the side panel
- * @param isOpen If the side panel is open
- * @param toggle Function to toggle the side panel
- * @param className Additional classes for the side panel
- * @param secondaryClassName Additional classes for the side panel
- * @returns Side panel component with the title and contents
+ * @param title Panel heading text.
+ * @param children Panel content.
+ * @param isOpen Whether the panel is visible.
+ * @param toggle Handler that toggles the panel.
+ * @param className Optional inner container overrides.
+ * @param secondaryClassName Optional wrapper overrides.
+ * @returns Fixed positioned side panel.
  */
 const SidePanel: React.FC<SidePanelProps> = ({
   isOpen,

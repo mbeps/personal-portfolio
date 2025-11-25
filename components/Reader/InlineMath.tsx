@@ -8,11 +8,10 @@ interface InlineMathProps {
 }
 
 /**
- * Component to render inline LaTeX expressions with $ ... $
+ * Helper used by the Reader to render inline KaTeX snippets without breaking the prose flow.
  *
- * @param children LaTeX expression to render
- * @returns Rendered LaTeX expression
- * @author Maruf Bepary
+ * @param children Raw LaTeX expression extracted from markdown.
+ * @returns `<span>` with KaTeX markup.
  */
 const InlineMath: React.FC<InlineMathProps> = ({ children }) => {
   const html: string = useMemo(() => {

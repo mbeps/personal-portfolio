@@ -4,15 +4,14 @@ import Fuse from "fuse.js";
 import { useMemo } from "react";
 
 /**
- * A hook for performing fuzzy search on a database of materials.
- * It uses Fuse.js to search through specified fields of the materials.
- * This is optimized with `useMemo` to avoid re-computation on every render.
+ * Shared Fuse.js wrapper for material datasets so every listing behaves consistently when searching names, summaries, or nested skills.
+ * Used inside `useMaterialFilterState`, which expects the return value to remain stable even as datasets grow.
  *
  * @template T The type of the material, extending `MaterialInterface`.
- * @param itemsMap A map of materials to search within.
- * @param searchTerm The string to search for.
- * @param searchKeys The fields within each material to search against.
- * @returns An array of keys for the materials that match the search term.
+ * @param itemsMap Hashmap of materials, usually one of the database maps.
+ * @param searchTerm Query read from the URL or command palette.
+ * @param searchKeys Fields inspected by Fuse, including derived ones such as `skills`.
+ * @returns Array of material keys ranked by Fuse, falling back to all keys when the query is empty.
  */
 function useFuseMaterialSearch<T extends MaterialInterface>(
   itemsMap: Database<T>,

@@ -39,12 +39,10 @@ import { Button } from "../shadcn/ui/button";
 import { ScrollArea } from "../shadcn/ui/scroll-area";
 
 /**
- * Displays a modal for the skills.
- * Uses Drawer on mobile and Dialog on desktop for responsive behaviour.
- * The modal displays the skills organised by category or by language.
- * The user can choose how to group the skills.
+ * Expands the homepage “Technologies” tag list into a full modal/drawer so visitors can browse grouped skills without leaving the page.
+ * Shares grouping logic with the skills directory and offers a CTA into `/skills`.
  *
- * @returns Modal component displaying all technologies and skills
+ * @returns Responsive modal that lists technologies grouped by the chosen strategy.
  */
 const TechnologiesModal: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

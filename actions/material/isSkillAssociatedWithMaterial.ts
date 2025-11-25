@@ -2,12 +2,11 @@ import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import { skillUsageMap } from "@/database/Materials/MaterialDatabaseMap";
 
 /**
- * Checks if a skill is associated with any material in the database.
- * It uses a pre-computed map for performance.
- * This avoids iterating over all materials.
+ * Answers whether a skill key appears anywhere in the aggregated portfolio so `SkillTag` can decide if it should become a link.
+ * Powered by the prebuilt `skillUsageMap`, keeping the navbar language modal and skills table in sync.
  *
- * @param skillKey The skill to check.
- * @returns `true` if the skill is used by at least one material, otherwise `false`.
+ * @param skillKey Skill slug pulled from `SkillDatabaseKeys`.
+ * @returns `true` if the map contains a usage count greater than zero.
  */
 export default function isSkillAssociatedWithMaterial(
   skillKey: SkillDatabaseKeys

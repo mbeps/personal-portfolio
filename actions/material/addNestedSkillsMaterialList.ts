@@ -6,18 +6,15 @@ import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import Database from "@/interfaces/Database";
 
 /**
- * Augments a material list by adding nested or related skills.
- * Iterates through each material's existing skills.
- * If a skill has related skills, those are added to the material's skill set.
- * This is useful for automatically associating technologies.
- * For example, a project using a library also uses the underlying language.
+ * Propagates skill relationships so filters, search, and the homepage counts reflect the same taxonomy.
+ * Called when bootstrapping the static databases, so every downstream consumer works with already enriched skill arrays.
  *
- * @param materialsDatabase The collection of materials to process.
- * @param skillsDatabase The master database of all skills.
- * @param ignoredCategories Skill categories to exclude from this process.
- * @param skillTypeToAdd The type of related skill to add (e.g., a framework).
- * @param skillTypeToCheck The type of the primary skill to check for relations (e.g., a language).
- * @returns The updated materials database with nested skills.
+ * @param materialsDatabase Material records that will be mutated in place.
+ * @param skillsDatabase Source of canonical skill metadata that defines the relationships.
+ * @param ignoredCategories Categories that should never bleed into a material via propagation.
+ * @param skillTypeToAdd Optional constraint that limits which related skill types get duplicated.
+ * @param skillTypeToCheck Optional constraint that defines the trigger skill types from which propagation starts.
+ * @returns The same database reference, now updated so derived relations exist before any UI reads them.
  */
 export default function addNestedSkillsMaterialList<
   T extends MaterialInterface

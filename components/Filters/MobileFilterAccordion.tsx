@@ -29,6 +29,7 @@ interface MobileFilterAccordionProps {
  * @param archiveFilter Current archive toggle metadata
  * @param searchFilter Current search filter metadata
  * @param basePath Current page path used for URL updates
+ * @returns Accordion stack of filter categories optimized for small screens.
  */
 const MobileFilterAccordion: React.FC<MobileFilterAccordionProps> = ({
   filterCategories,

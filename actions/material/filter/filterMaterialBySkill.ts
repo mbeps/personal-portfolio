@@ -3,13 +3,13 @@ import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import Database from "@/interfaces/Database";
 
 /**
- * Filters the materials that match a specific skill.
- * Only the materials that contain the skill will be included.
+ * Core filter used by every listing page when a user picks a skill from the drawer.
+ * Works on arrays of keys so Fuse results, grouped lists, and archive toggles can compose without re-reading the DB.
  *
- * @param skillKey The specific skill to filter for in the materials
- * @param materialKeys The keys of the materials to filter
- * @param materialDatabase All the materials in the database so that we can access the material details
- * @returns The keys of the materials that match the skill
+ * @param skillKey Skill slug chosen by the visitor.
+ * @param materialKeys Ordered list of keys to test against.
+ * @param materialDatabase Lookup map containing the metadata.
+ * @returns Keys that reference materials containing the chosen skill.
  */
 export default function filterMaterialBySkill<T extends MaterialInterface>(
   skillKey: SkillDatabaseKeys,

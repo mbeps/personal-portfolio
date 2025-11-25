@@ -109,14 +109,13 @@ type UseMaterialFilterStateResult<TKey extends string> = {
 };
 
 /**
- * A generic hook to manage filtering and searching of materials.
- * It reads filter states from URL search parameters, applies them, and returns the filtered data.
- * This hook is designed to be reusable across different material listing pages.
+ * Consolidates the filtering experience that powers every listing route (projects, roles, certificates, blogs).
+ * The hook reconstructs state from the URL, feeds Fuse search, groups categories, and synchronizes the archive toggle so deep links and the drawer stay aligned.
  *
  * @template TKey The type of the keys in the database.
  * @template TMaterial The type of the material.
- * @param options The configuration for the hook.
- * @returns The state of the filters and the filtered materials.
+ * @param options Arguments that describe the page specific filters, searchable fields, and material map.
+ * @returns Derived filter UI state plus the filtered key set that drives MaterialList.
  */
 export default function useMaterialFilterState<
   TKey extends string,

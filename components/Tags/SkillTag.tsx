@@ -16,13 +16,12 @@ interface TagProps {
 }
 
 /**
- * Tag component for displaying a skill.
- * This component can be clicked to navigate to the skill's material if the skill has associated material.
- * Associated material are projects, blogs, certifications, etc.
+ * Skill-specific tag that links to `/skills/[skillKey]` only when the aggregated material map shows at least one usage.
+ * Used across the homepage, skill directory, and detail views so CTA behavior stays consistent.
  *
- * @param skillKey The key of the skill to be displayed
- * @param hide Whether to hide the tag or not
- * @returns A tag with the name of the skill
+ * @param skillKey Skill slug from the database.
+ * @param hide When true the tag renders nothing (used for filtering).
+ * @returns Clickable tag when the skill has material, otherwise a static label.
  */
 const SkillTag: React.FC<TagProps> = ({ skillKey, hide }) => {
   const currentPath: string = usePathname();

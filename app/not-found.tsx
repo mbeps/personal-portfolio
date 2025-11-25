@@ -13,10 +13,9 @@ export const metadata: Metadata = {
 export const revalidate = 0; // page will not be cached
 
 /**
- * Rendered when the user navigates to a page that does not exist.
- * Displays a 404 error message saying that the page does not exist.
+ * App Router 404 boundary that funnels users back to the homepage or More index while keeping brand styling intact.
  *
- * @returns PageMessage component with a 404 error message
+ * @returns Full height stack with failure copy and navigation CTAs.
  */
 export default function NotFound() {
   return (

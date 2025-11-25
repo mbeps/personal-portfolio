@@ -71,22 +71,11 @@ export const generateStaticParams = async () => {
 };
 
 /**
- * Displays the page for a single certificate.
- * Contains:
- * - Name of the certificate
- * - The image of the certificate
- * - The unique slug of the certificate
- * - The issuer of the certificate
- * - The description of the certificate
- * - The learning outcomes of the certificate
- * - The skills of the certificate
- * - The issuer page of the certificate
- * The page also displays:
- * - The skills covered in the certificate
- * - Related materials
+ * Certificate detail view that pairs the static metadata with learning outcomes, skills, issuer tags, and related materials.
+ * Reuses shared components like `MaterialList`, `SkillTableSection`, `StringList`, and image handling for consistency with other detail pages.
  *
- * @param props Parameters for the certificate page
- * @returns Page displaying the certificate and its details
+ * @param params Dynamic slug for the certificate.
+ * @returns Page displaying certificate info, credentials, and adjacent work.
  */
 const CertificatesPage: React.FC<{ params: Params }> = async ({ params }) => {
   const resolvedParams = await params;

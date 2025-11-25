@@ -4,12 +4,10 @@ import MaterialListProps from "@/interfaces/props/MaterialListProps";
 import MaterialGroupSectionList from "./MaterialGroupSectionList";
 
 /**
- * List of blogs grouped by category to be displayed section by section.
- * Each section contains a title and a list of blogs.
- * If there are no blogs to display, a message is shown.
+ * Group renderer for blog cards, plumbing MaterialGroupSectionList into the shared `BlogItem` tile component.
  *
- * @param groupedBlogs List of blogs grouped by category to be displayed section by section
- * @returns A list of blogs grouped by category
+ * @param groupedMaterial Blog keys grouped by category/section.
+ * @returns Sectioned grid of blog summaries.
  */
 const BlogsList: React.FC<MaterialListProps> = ({ groupedMaterial }) => (
   <MaterialGroupSectionList

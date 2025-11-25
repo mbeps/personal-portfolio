@@ -2,11 +2,11 @@ import MaterialInterface from "@/database/Materials/MaterialInterface";
 import Database from "@/interfaces/Database";
 
 /**
- * Checks if a database of materials contains any archived items.
- * Iterates through the materials and returns true if at least one is marked as archived.
+ * Determines whether the archive toggle should even be shown for a dataset.
+ * Saves each listing from rendering an unnecessary toggle when everything is already active.
  *
- * @param database The database of materials to check.
- * @returns `true` if any material is archived, otherwise `false`.
+ * @param database Material dictionary to inspect.
+ * @returns `true` if at least one entry has `archived` set to `true`.
  */
 export default function checkForArchivedMaterials(
   database: Database<MaterialInterface>

@@ -9,11 +9,10 @@ interface BlogItemProps {
 }
 
 /**
- * Displays a card which allows the user to open a blog.
- * This card contains the name and subtitle of the blog.
+ * Blog tile used in the blogs archive and related material tabs to surface title + subtitle links into the markdown reader.
  *
- * @param blogKey Blog metadata used in the card
- * @returns Card with blog metadata
+ * @param blogKey Blog slug from the static database.
+ * @returns Clickable card with blog summary copy.
  */
 const BlogItem: React.FC<BlogItemProps> = ({ blogKey }) => {
   const basePath: string = BLOG_PAGE.path;

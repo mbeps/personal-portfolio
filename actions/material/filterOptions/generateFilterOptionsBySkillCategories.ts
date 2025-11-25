@@ -5,13 +5,11 @@ import FilterOption from "@/interfaces/filters/FilterOption";
 import stringToSlug from "../../stringToSlug";
 
 /**
- * Generates the filter options based on the categories of the materials.
- * For all the materials, it will generate a filter option for each unique category within the skills.
- * These are then used as options the user can select to filter the materials.
+ * Surfaces skill categories (general, soft, tooling, etc.) from whatever data is currently rendered so the UI never lists empty buckets.
  *
- * @param materialsDatabase The database of all materials from which to generate the filter options
- * @param skillDatabase The database of all skills from which to generate the filter options
- * @returns The filter options generated from the categories of the materials
+ * @param materialsDatabase Material dictionary for the view.
+ * @param skillDatabase Skill metadata used to resolve category names.
+ * @returns Unique category options sorted alphabetically for readability.
  */
 export function generateFilterOptionsBySkillCategories<
   T extends MaterialInterface

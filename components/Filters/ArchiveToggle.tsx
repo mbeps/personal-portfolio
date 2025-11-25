@@ -10,13 +10,13 @@ interface ArchiveToggleProps {
 }
 
 /**
- * Toggle component used for toggling between showing archived material and not showing archived material.
+ * Shared toggle that flips the `archived` query parameter so archived items can be surfaced alongside active work.
+ * Wrapped in a Link so Next routing handles the update without custom handlers.
  *
- * @param generateUrl Function to generate the URL with the new filter options
- * @param showArchived If the archived material should be shown
- * @param filterProps The current filter options
- * @param basePath The base path for the URL
- * @returns Toggle component to show archived material
+ * @param showArchived Whether archived material is currently shown.
+ * @param filterProps Existing filter params to preserve when toggling.
+ * @param basePath Route base used for the generated URL.
+ * @returns Switch + label that links to the next archive state.
  * @see Switch https://ui.shadcn.com/docs/components/switch
  */
 export const ArchiveToggle: React.FC<ArchiveToggleProps> = ({

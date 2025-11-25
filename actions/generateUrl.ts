@@ -1,13 +1,12 @@
 import FilterOption from "@/interfaces/filters/FilterOption";
 
 /**
- * Generates a URL with query parameters from a list of filter options.
- * This function takes a base path and an array of filter options and constructs a URL.
- * It ensures that each query parameter is unique, using the last provided value for any given parameter.
+ * Builds canonical URLs for filter drawers so navigation items, list pages, and the command palette share identical links.
+ * Later, `useMaterialFilterState` reads these params to reconstruct the selection state, so we only encode the final value per key.
  *
- * @param params An array of filter options to be converted into URL query parameters.
- * @param basePath The base path of the URL, before the query string.
- * @returns A URL string with the query parameters appended.
+ * @param params Filter selections coming from `FilterSection`.
+ * @param basePath Path without any query portion.
+ * @returns Stable URL string that can be pushed to `next/navigation`.
  */
 export default function generateUrl(
   params: FilterOption[],

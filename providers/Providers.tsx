@@ -4,11 +4,10 @@ import { TooltipProvider } from "@/components/shadcn/ui/tooltip";
 import { ThemeProvider } from "./ThemeProvider";
 
 /**
- * A root component that wraps the entire application with necessary context providers.
- * This is the central place to add new providers that should be available globally.
+ * Central provider stack invoked by `app/layout.tsx`, wiring theme persistence and shadcn tooltips around the App Router tree.
  *
- * @param children The child components of the application.
- * @returns The application wrapped with `ThemeProvider` and `TooltipProvider`.
+ * @param children Route content.
+ * @returns Children wrapped in Theme + Tooltip providers.
  */
 export function Providers({ children }: { children: React.ReactNode }) {
   return (

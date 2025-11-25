@@ -1,12 +1,9 @@
 /**
- * Add company thumbnail to a company object.
- * The thumbnail is stored in the `public/companies` directory.
- * Each company has its unique directory with the company key as the directory name.
- * This removed the need to type the path of the logo for each company.
- * It also means that if the location of the logos are changed, only this function needs to be updated.
+ * Centralizes how role and experience views resolve company logos so the page, cards, and command palette stay in sync.
+ * Only this helper needs an update if the directory schema moves, keeping the database entries clean.
  *
- * @param key The key of the company to get the thumbnail for
- * @returns The path to the company thumbnail
+ * @param key Company slug that mirrors the folder name in `public/companies`.
+ * @returns Path string consumed by Next image components and markdown renderers.
  */
 export default function addCompanyThumbnail(key: string): string {
   return `/companies/${key}/logo.png`;

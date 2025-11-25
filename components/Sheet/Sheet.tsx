@@ -8,13 +8,14 @@ interface OverlayProps {
   className?: string;
 }
 /**
- * Overlay component that pops up from the right side of the screen.
- * It displays the children passed to it.
+ * Minimal sheet implementation used by the mobile navbar overlay and any other right-side drawers.
+ * Animates in/out with Tailwind transitions and preserves scroll backdrop blur.
  *
- * @param isOpen Whether the overlay is open or not
- * @param toggle Function to toggle the overlay
- * @param children Children to render inside the overlay
- * @returns Overlay component
+ * @param isOpen Whether the sheet is visible.
+ * @param toggle Currently unused handler (kept for API parity).
+ * @param children Sheet contents.
+ * @param className Optional overrides.
+ * @returns Fixed positioned overlay container.
  */
 
 const Overlay: React.FC<OverlayProps> = ({

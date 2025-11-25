@@ -5,11 +5,10 @@ import ProjectDatabaseKeys from "@/database/Projects/ProjectDatabaseKeys";
 import Link from "next/link";
 
 /**
- * Project section listing the projects I have worked on.
- * Each card shows the name, description and a link to the GitHub repository.
- * Some cards also show a link to the live site.
- * There is also an image of the projects.
- * @returns Projects section
+ * Homepage showcase that spotlights a curated subset of the project database to tease the work archive.
+ * Uses `ProjectItem` for consistency with the Projects page while keeping the hero CTA aligned with `/projects`.
+ *
+ * @returns Section element with featured project cards and navigation link.
  */
 const ProjectsSection = () => {
   const basePath: string = PROJECTS_PAGE.path;

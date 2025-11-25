@@ -4,12 +4,10 @@ import Database from "@/interfaces/Database";
 import FilterOption from "@/interfaces/filters/FilterOption";
 
 /**
- * Generates the filter options based on the issuers of the certificates.
- * For all the certificates, it will generate a filter option for each unique issuer.
- * These are then used as options the user can select to filter the certificates.
+ * Keeps the certificates issuer dropdown aligned with the content currently loaded so the UI never exposes issuers without entries.
  *
- * @param certificatesDatabase The database of all certificates from which to generate the filter options
- * @returns The filter options generated from the issuers of the certificates
+ * @param certificatesDatabase Certificate dictionary for the archive view.
+ * @returns Filter options deduped by slug and sorted alphabetically.
  */
 export default function generateIssuerFilterOptions(
   certificatesDatabase: Database<CertificateInterface>
