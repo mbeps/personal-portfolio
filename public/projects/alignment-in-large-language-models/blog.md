@@ -4,156 +4,156 @@
 - [NOMENCLATURE](#nomenclature)
 - [LIST OF TABLES](#list-of-tables)
 - [List of Figures](#list-of-figures)
-- [1 INTRODUCTION](#1-introduction)
-	- [1.1 Background \& Motivation](#11-background--motivation)
-	- [1.2 Research Problem](#12-research-problem)
-	- [1.3 Aims \& Hypotheses](#13-aims--hypotheses)
-- [2 LITERATURE SURVEY](#2-literature-survey)
-	- [2.1 Cultural Alignment in Large Language Models (LLMs)](#21-cultural-alignment-in-large-language-models-llms)
-	- [2.2 Italian Language Model Research \& Benchmarking](#22-italian-language-model-research--benchmarking)
-	- [2.3 Performance Characteristics of Smaller LLMs](#23-performance-characteristics-of-smaller-llms)
-	- [2.4 Comparing Multilingual \& Monolingual Model Performance](#24-comparing-multilingual--monolingual-model-performance)
-	- [2.5 Identified Gaps](#25-identified-gaps)
-		- [2.5.1 Discrepancy Between Cultural \& Linguistics in Smaller Models](#251-discrepancy-between-cultural--linguistics-in-smaller-models)
-		- [2.5.2 Limited Analysis of Reasoning Model Benefits](#252-limited-analysis-of-reasoning-model-benefits)
-		- [2.5.3 Weaknesses in Linguistic Capabilities](#253-weaknesses-in-linguistic-capabilities)
-- [3 BACKGROUND THEORIES](#3-background-theories)
-	- [3.1 Transformer Architecture](#31-transformer-architecture)
-		- [3.1.1 Architectural Evolution \& Specialisation](#311-architectural-evolution--specialisation)
-		- [3.1.2 Comparison with Pre-Transformer Neural Architectures](#312-comparison-with-pre-transformer-neural-architectures)
-		- [3.1.3 Recent Progress in Large Language Models](#313-recent-progress-in-large-language-models)
-	- [3.2 Reasoning Models](#32-reasoning-models)
-		- [3.2.1 Foundational Techniques for Eliciting Reasoning](#321-foundational-techniques-for-eliciting-reasoning)
-		- [3.2.2 Advanced Reasoning Frameworks \& Strategies](#322-advanced-reasoning-frameworks--strategies)
-		- [3.2.3 Mitigating Inference Time \& Cost](#323-mitigating-inference-time--cost)
-		- [3.2.4 Training \& Architectures](#324-training--architectures)
-		- [3.2.5 Multilingual Reasoning Capabilities](#325-multilingual-reasoning-capabilities)
-		- [3.2.6 Reasoning vs. Non-Reasoning Models](#326-reasoning-vs-non-reasoning-models)
-	- [3.3 Low Rank Adaptation (LoRA)](#33-low-rank-adaptation-lora)
-		- [3.3.1 PEFT](#331-peft)
-		- [3.3.2 LoRA](#332-lora)
-		- [3.3.3 LoRA Mechanism](#333-lora-mechanism)
-		- [3.3.4 Advantages of LoRA](#334-advantages-of-lora)
-		- [3.3.4.1 Choice for This Project](#3341-choice-for-this-project)
-		- [3.3.5 Disadvantages of LoRA](#335-disadvantages-of-lora)
-	- [3.4 Quantisation](#34-quantisation)
-- [4 OBJECTIVES](#4-objectives)
-	- [4.1 Principal Objectives](#41-principal-objectives)
-	- [4.2 Secondary Objectives](#42-secondary-objectives)
-		- [4.2.1 Objective 1: Establish Validated Baseline](#421-objective-1-establish-validated-baseline)
-		- [4.2.2 Objective 2: Evaluate Reasoning-Capable Models (Reasoning Disabled)](#422-objective-2-evaluate-reasoning-capable-models-reasoning-disabled)
-		- [4.2.3 Objective 3: Evaluate Reasoning-Capable Models (Reasoning Enabled)](#423-objective-3-evaluate-reasoning-capable-models-reasoning-enabled)
-		- [4.2.4 Objective 4: Implement Supervised Fine-Tuning](#424-objective-4-implement-supervised-fine-tuning)
-		- [4.2.5 Objective 5: Evaluate Fine-Tuned Models](#425-objective-5-evaluate-fine-tuned-models)
-- [5 SPECIFICATIONS](#5-specifications)
-	- [5.1 General Project Specifications](#51-general-project-specifications)
-	- [5.2 Phase 1: Baseline Replication Specifications](#52-phase-1-baseline-replication-specifications)
-	- [5.3 Phase 2: Reasoning Capability Analysis Specifications](#53-phase-2-reasoning-capability-analysis-specifications)
-	- [5.4 Phase 3: Fine-Tuning Intervention Specifications](#54-phase-3-fine-tuning-intervention-specifications)
-- [6 DESIGN](#6-design)
-	- [6.1 Benchmarking Design](#61-benchmarking-design)
-		- [6.1.1 Experimental Framework Architecture](#611-experimental-framework-architecture)
-		- [6.1.2 Model Selection Rationale](#612-model-selection-rationale)
-			- [6.1.2.1 Baseline Models](#6121-baseline-models)
-			- [6.1.2.2 Reasoning-Capable Models](#6122-reasoning-capable-models)
-		- [6.1.3 Comparative Analysis Design](#613-comparative-analysis-design)
-	- [6.2 Iterative Fine-Tuning Design](#62-iterative-fine-tuning-design)
-		- [6.2.1 Core Fine-Tuning Technology Rationale](#621-core-fine-tuning-technology-rationale)
-			- [6.2.1.1 Parameter-Efficient Fine-Tuning (PEFT)](#6211-parameter-efficient-fine-tuning-peft)
-			- [6.2.1.2 Low-Rank Adaptation (LoRA)](#6212-low-rank-adaptation-lora)
-			- [6.2.1.3 Dataset Selection](#6213-dataset-selection)
-		- [6.2.2 Iterative Approach to Hybrid Model Training](#622-iterative-approach-to-hybrid-model-training)
-		- [6.2.3 Final Hybrid Design (Novel Technique)](#623-final-hybrid-design-novel-technique)
-			- [6.2.3.1 Synthetic Data Generation](#6231-synthetic-data-generation)
-			- [6.2.3.2 Implementation](#6232-implementation)
-			- [6.2.3.3 Fine-Tuning as Regularisation](#6233-fine-tuning-as-regularisation)
-			- [6.2.3.4 Alternative Design: Sequential Fine-Tuning](#6234-alternative-design-sequential-fine-tuning)
-- [7 METHODOLOGY \& IMPLEMENTATION](#7-methodology--implementation)
-	- [7.1 Phase 1: Analytical Framework for Benchmarking](#71-phase-1-analytical-framework-for-benchmarking)
-		- [7.1.1 Benchmarking for Standard Non-Reasoning](#711-benchmarking-for-standard-non-reasoning)
-			- [7.1.1.1 Methodology](#7111-methodology)
-			- [7.1.1.2 Implementation](#7112-implementation)
-			- [7.1.1.3 Benchmarking Hyperparameters](#7113-benchmarking-hyperparameters)
-		- [7.1.2 Benchmarking for Reasoning](#712-benchmarking-for-reasoning)
-			- [7.1.2.1 Methodology](#7121-methodology)
-			- [7.1.2.2 Implementation](#7122-implementation)
-			- [7.1.2.3 Reasoning Hyperparameters](#7123-reasoning-hyperparameters)
-		- [7.1.3 Prompting \& Answer Parsing](#713-prompting--answer-parsing)
-			- [7.1.3.1 Methodology](#7131-methodology)
-			- [7.1.3.2 Implementation](#7132-implementation)
-		- [7.1.4 Framework Validation \& Reliability](#714-framework-validation--reliability)
-			- [7.1.4.1 Methodology](#7141-methodology)
-			- [7.1.4.2 Outcome](#7142-outcome)
-	- [7.2 Phase 2: Fine-Tuning Intervention \& Artefact Creation](#72-phase-2-fine-tuning-intervention--artefact-creation)
-		- [7.2.1 LoRA Fine-Tuning](#721-lora-fine-tuning)
-			- [7.2.1.1 Methodology](#7211-methodology)
-			- [7.2.1.2 Implementation](#7212-implementation)
-			- [7.2.1.3 LoRA Hyperparameters](#7213-lora-hyperparameters)
-		- [7.2.2 Iterative Experimental Process \& Novel Hybrid Technique](#722-iterative-experimental-process--novel-hybrid-technique)
-			- [7.2.2.1 Regular SFT](#7221-regular-sft)
-			- [7.2.2.2 CoT-Only Training](#7222-cot-only-training)
-			- [7.2.2.3 Hybrid Training Method](#7223-hybrid-training-method)
-				- [7.2.2.3.1 Methodology](#72231-methodology)
-				- [7.2.2.3.2 Implementation](#72232-implementation)
-- [8 RESULTS, ANALYSIS \& EVALUATION](#8-results-analysis--evaluation)
-	- [8.1 Baseline Validation](#81-baseline-validation)
-		- [8.1.1 Llama 3.1 8B Ita](#811-llama-31-8b-ita)
-		- [8.1.2 Mistral NeMo](#812-mistral-nemo)
-	- [8.2 Reasoning Models (Reasoning Disabled)](#82-reasoning-models-reasoning-disabled)
-	- [8.3 Reasoning Models (Reasoning Enabled)](#83-reasoning-models-reasoning-enabled)
-		- [8.3.1 Analysis of Scaling Effects](#831-analysis-of-scaling-effects)
-		- [8.3.2 Analysis of Reasoning Process](#832-analysis-of-reasoning-process)
-	- [8.4 Fine-Tuning Interventions](#84-fine-tuning-interventions)
-		- [8.4.1 Fine-Tuning Intervention (Iteration 1)](#841-fine-tuning-intervention-iteration-1)
-			- [8.4.1.1 Evaluation of Fine-Tuned Models (Reasoning Disabled)](#8411-evaluation-of-fine-tuned-models-reasoning-disabled)
-			- [8.4.1.2 Evaluation of Fine-Tuned Models (Reasoning Enabled)](#8412-evaluation-of-fine-tuned-models-reasoning-enabled)
-				- [8.4.1.2.1 Analysis of Reasoning Degradation](#84121-analysis-of-reasoning-degradation)
-		- [8.4.2 Fine-Tuning Intervention (Iteration 2)](#842-fine-tuning-intervention-iteration-2)
-			- [8.4.2.1 Evaluation of Fine-Tuned Models (Reasoning Disabled)](#8421-evaluation-of-fine-tuned-models-reasoning-disabled)
-			- [8.4.2.2 Evaluation of Fine-Tuned Models (Reasoning Enabled)](#8422-evaluation-of-fine-tuned-models-reasoning-enabled)
-				- [8.4.2.2.1 Analysis of Restored Reasoning](#84221-analysis-of-restored-reasoning)
-		- [8.4.3 Fine-Tuning Intervention (Iteration 3 – Hybrid Approach)](#843-fine-tuning-intervention-iteration-3--hybrid-approach)
-			- [8.4.3.1 Evaluation of Fine-Tuned Models (Reasoning Disabled)](#8431-evaluation-of-fine-tuned-models-reasoning-disabled)
-			- [8.4.3.2 Evaluation of Fine-Tuned Models (Reasoning Enabled)](#8432-evaluation-of-fine-tuned-models-reasoning-enabled)
-				- [8.4.3.2.1 Analysis of Hybrid Reasoning](#84321-analysis-of-hybrid-reasoning)
-	- [8.5 Weaknesses of Evaluation](#85-weaknesses-of-evaluation)
-	- [8.6 Conclusion of Findings](#86-conclusion-of-findings)
-- [9 LEGAL, SOCIAL, ETHICAL \& PROFESSIONAL ISSUES](#9-legal-social-ethical--professional-issues)
-	- [9.1 Professional Standards, Data Privacy, \& Licensing](#91-professional-standards-data-privacy--licensing)
-		- [9.1.1 Data \& Privacy](#911-data--privacy)
-		- [9.1.2 Open-Source Components \& Dataset Licenses](#912-open-source-components--dataset-licenses)
-			- [9.1.2.1 Datasets](#9121-datasets)
-			- [9.1.2.2 Models \& Libraries](#9122-models--libraries)
-	- [9.2 Social \& Ethical Implications](#92-social--ethical-implications)
-		- [9.2.1 Bias \& Cultural Alignment](#921-bias--cultural-alignment)
-		- [9.2.2 Misinformation](#922-misinformation)
-		- [9.2.3 Accessibility](#923-accessibility)
-	- [9.3 Environmental \& Sustainability Issues](#93-environmental--sustainability-issues)
-	- [9.4 Explainability, Trust, \& Human Factors](#94-explainability-trust--human-factors)
-		- [9.4.1 Risk of Misinterpretation \& Over-Reliance](#941-risk-of-misinterpretation--over-reliance)
-		- [9.4.2 Communicating Uncertainty \& Human-in-the-Loop Use](#942-communicating-uncertainty--human-in-the-loop-use)
-	- [9.5 Economic \& Commercial Factors](#95-economic--commercial-factors)
-- [10 CONCLUSION](#10-conclusion)
-	- [10.1 Summary of Work](#101-summary-of-work)
-	- [10.2 Limitations](#102-limitations)
-	- [10.3 Future Work](#103-future-work)
-- [11 REFERENCES](#11-references)
-- [12 APPENDICES](#12-appendices)
-	- [12.1 Appendix A: Reasoning Process Examples](#121-appendix-a-reasoning-process-examples)
-		- [12.1.1 Example 1: Orthography Question](#1211-example-1-orthography-question)
-		- [12.1.2 Example 2: Incorrect Answer with Flawed Reasoning](#1212-example-2-incorrect-answer-with-flawed-reasoning)
-	- [12.2 Appendix B: Reasoning Degradation Examples](#122-appendix-b-reasoning-degradation-examples)
-		- [12.2.1 Example 1: Incorrect Answer with Empty Reasoning](#1221-example-1-incorrect-answer-with-empty-reasoning)
-		- [12.2.2 Example 2: Correct Answer with Empty Reasoning](#1222-example-2-correct-answer-with-empty-reasoning)
-	- [12.3 Appendix C: Restored Reasoning Process Examples (Iteration 2)](#123-appendix-c-restored-reasoning-process-examples-iteration-2)
-		- [12.3.1 Example 1: Correct Answer with Restored Reasoning](#1231-example-1-correct-answer-with-restored-reasoning)
-		- [12.3.2 Example 2: Incorrect Answer with Restored Reasoning](#1232-example-2-incorrect-answer-with-restored-reasoning)
-	- [12.4 Appendix D: Code for Injecting CoT to Dataset](#124-appendix-d-code-for-injecting-cot-to-dataset)
-	- [12.5 Appendix E: Computing Statistical Significance](#125-appendix-e-computing-statistical-significance)
-	- [12.6 Appendix F: Full Results Tables](#126-appendix-f-full-results-tables)
-		- [12.6.1 Table 2: Model Details](#1261-table-2-model-details)
-		- [12.6.2 Table 2: Culture \& Common Sense Reasoning Results](#1262-table-2-culture--common-sense-reasoning-results)
-		- [12.6.3 Table 3: Language Understanding Results](#1263-table-3-language-understanding-results)
+- [1 - Introduction](#1---introduction)
+  - [1.1 - Background \& Motivation](#11---background--motivation)
+  - [1.2 - Research Problem](#12---research-problem)
+  - [1.3 - Aims \& Hypotheses](#13---aims--hypotheses)
+- [2 - Literature Survey](#2---literature-survey)
+  - [2.1 - Cultural Alignment in Large Language Models (LLMs)](#21---cultural-alignment-in-large-language-models-llms)
+  - [2.2 - Italian Language Model Research \& Benchmarking](#22---italian-language-model-research--benchmarking)
+  - [2.3 - Performance Characteristics of Smaller LLMs](#23---performance-characteristics-of-smaller-llms)
+  - [2.4 - Comparing Multilingual \& Monolingual Model Performance](#24---comparing-multilingual--monolingual-model-performance)
+  - [2.5 - Identified Gaps](#25---identified-gaps)
+    - [2.5.1 - Discrepancy Between Cultural \& Linguistics in Smaller Models](#251---discrepancy-between-cultural--linguistics-in-smaller-models)
+    - [2.5.2 - Limited Analysis of Reasoning Model Benefits](#252---limited-analysis-of-reasoning-model-benefits)
+    - [2.5.3 - Weaknesses in Linguistic Capabilities](#253---weaknesses-in-linguistic-capabilities)
+- [3 - Background Theories](#3---background-theories)
+  - [3.1 - Transformer Architecture](#31---transformer-architecture)
+    - [3.1.1 - Architectural Evolution \& Specialisation](#311---architectural-evolution--specialisation)
+    - [3.1.2 - Comparison with Pre-Transformer Neural Architectures](#312---comparison-with-pre-transformer-neural-architectures)
+    - [3.1.3 - Recent Progress in Large Language Models](#313---recent-progress-in-large-language-models)
+  - [3.2 - Reasoning Models](#32---reasoning-models)
+    - [3.2.1 - Foundational Techniques for Eliciting Reasoning](#321---foundational-techniques-for-eliciting-reasoning)
+    - [3.2.2 - Advanced Reasoning Frameworks \& Strategies](#322---advanced-reasoning-frameworks--strategies)
+    - [3.2.3 - Mitigating Inference Time \& Cost](#323---mitigating-inference-time--cost)
+    - [3.2.4 - Training \& Architectures](#324---training--architectures)
+    - [3.2.5 - Multilingual Reasoning Capabilities](#325---multilingual-reasoning-capabilities)
+    - [3.2.6 - Reasoning vs. Non-Reasoning Models](#326---reasoning-vs-non-reasoning-models)
+  - [3.3 - Low Rank Adaptation (LoRA)](#33---low-rank-adaptation-lora)
+    - [3.3.1 - PEFT](#331---peft)
+    - [3.3.2 - LoRA](#332---lora)
+    - [3.3.3 - LoRA Mechanism](#333---lora-mechanism)
+    - [3.3.4 - Advantages of LoRA](#334---advantages-of-lora)
+    - [3.3.4.1 - Choice for This Project](#3341---choice-for-this-project)
+    - [3.3.5 - Disadvantages of LoRA](#335---disadvantages-of-lora)
+  - [3.4 - Quantisation](#34---quantisation)
+- [4 - Objectives](#4---objectives)
+  - [4.1 - Principal Objectives](#41---principal-objectives)
+  - [4.2 - Secondary Objectives](#42---secondary-objectives)
+    - [4.2.1 - Objective 1: Establish Validated Baseline](#421---objective-1-establish-validated-baseline)
+    - [4.2.2 - Objective 2: Evaluate Reasoning-Capable Models (Reasoning Disabled)](#422---objective-2-evaluate-reasoning-capable-models-reasoning-disabled)
+    - [4.2.3 - Objective 3: Evaluate Reasoning-Capable Models (Reasoning Enabled)](#423---objective-3-evaluate-reasoning-capable-models-reasoning-enabled)
+    - [4.2.4 - Objective 4: Implement Supervised Fine-Tuning](#424---objective-4-implement-supervised-fine-tuning)
+    - [4.2.5 - Objective 5: Evaluate Fine-Tuned Models](#425---objective-5-evaluate-fine-tuned-models)
+- [5 - Specifications](#5---specifications)
+  - [5.1 - General Project Specifications](#51---general-project-specifications)
+  - [5.2 - Phase 1: Baseline Replication Specifications](#52---phase-1-baseline-replication-specifications)
+  - [5.3 - Phase 2: Reasoning Capability Analysis Specifications](#53---phase-2-reasoning-capability-analysis-specifications)
+  - [5.4 - Phase 3: Fine-Tuning Intervention Specifications](#54---phase-3-fine-tuning-intervention-specifications)
+- [6 - Design](#6---design)
+  - [6.1 - Benchmarking Design](#61---benchmarking-design)
+    - [6.1.1 - Experimental Framework Architecture](#611---experimental-framework-architecture)
+    - [6.1.2 - Model Selection Rationale](#612---model-selection-rationale)
+      - [6.1.2.1 - Baseline Models](#6121---baseline-models)
+      - [6.1.2.2 - Reasoning-Capable Models](#6122---reasoning-capable-models)
+    - [6.1.3 - Comparative Analysis Design](#613---comparative-analysis-design)
+  - [6.2 - Iterative Fine-Tuning Design](#62---iterative-fine-tuning-design)
+    - [6.2.1 - Core Fine-Tuning Technology Rationale](#621---core-fine-tuning-technology-rationale)
+      - [6.2.1.1 - Parameter-Efficient Fine-Tuning (PEFT)](#6211---parameter-efficient-fine-tuning-peft)
+      - [6.2.1.2 - Low-Rank Adaptation (LoRA)](#6212---low-rank-adaptation-lora)
+      - [6.2.1.3 - Dataset Selection](#6213---dataset-selection)
+    - [6.2.2 - Iterative Approach to Hybrid Model Training](#622---iterative-approach-to-hybrid-model-training)
+    - [6.2.3 - Final Hybrid Design (Novel Technique)](#623---final-hybrid-design-novel-technique)
+      - [6.2.3.1 - Synthetic Data Generation](#6231---synthetic-data-generation)
+      - [6.2.3.2 - Implementation](#6232---implementation)
+      - [6.2.3.3 - Fine-Tuning as Regularisation](#6233---fine-tuning-as-regularisation)
+      - [6.2.3.4 - Alternative Design: Sequential Fine-Tuning](#6234---alternative-design-sequential-fine-tuning)
+- [7 - Methodology \& Implementation](#7---methodology--implementation)
+  - [7.1 - Phase 1: Analytical Framework for Benchmarking](#71---phase-1-analytical-framework-for-benchmarking)
+    - [7.1.1 - Benchmarking for Standard Non-Reasoning](#711---benchmarking-for-standard-non-reasoning)
+      - [7.1.1.1 - Methodology](#7111---methodology)
+      - [7.1.1.2 - Implementation](#7112---implementation)
+      - [7.1.1.3 - Benchmarking Hyperparameters](#7113---benchmarking-hyperparameters)
+    - [7.1.2 - Benchmarking for Reasoning](#712---benchmarking-for-reasoning)
+      - [7.1.2.1 - Methodology](#7121---methodology)
+      - [7.1.2.2 - Implementation](#7122---implementation)
+      - [7.1.2.3 - Reasoning Hyperparameters](#7123---reasoning-hyperparameters)
+    - [7.1.3 - Prompting \& Answer Parsing](#713---prompting--answer-parsing)
+      - [7.1.3.1 - Methodology](#7131---methodology)
+      - [7.1.3.2 - Implementation](#7132---implementation)
+    - [7.1.4 - Framework Validation \& Reliability](#714---framework-validation--reliability)
+      - [7.1.4.1 - Methodology](#7141---methodology)
+      - [7.1.4.2 - Outcome](#7142---outcome)
+  - [7.2 - Phase 2: Fine-Tuning Intervention \& Artefact Creation](#72---phase-2-fine-tuning-intervention--artefact-creation)
+    - [7.2.1 - LoRA Fine-Tuning](#721---lora-fine-tuning)
+      - [7.2.1.1 - Methodology](#7211---methodology)
+      - [7.2.1.2 - Implementation](#7212---implementation)
+      - [7.2.1.3 - LoRA Hyperparameters](#7213---lora-hyperparameters)
+    - [7.2.2 - Iterative Experimental Process \& Novel Hybrid Technique](#722---iterative-experimental-process--novel-hybrid-technique)
+      - [7.2.2.1 - Regular SFT](#7221---regular-sft)
+      - [7.2.2.2 - CoT-Only Training](#7222---cot-only-training)
+      - [7.2.2.3 - Hybrid Training Method](#7223---hybrid-training-method)
+        - [7.2.2.3.1 - Methodology](#72231---methodology)
+        - [7.2.2.3.2 - Implementation](#72232---implementation)
+- [8 - Results, Analysis \& Evaluation](#8---results-analysis--evaluation)
+  - [8.1 - Baseline Validation](#81---baseline-validation)
+    - [8.1.1 - Llama 3.1 8B Ita](#811---llama-31-8b-ita)
+    - [8.1.2 - Mistral NeMo](#812---mistral-nemo)
+  - [8.2 - Reasoning Models (Reasoning Disabled)](#82---reasoning-models-reasoning-disabled)
+  - [8.3 - Reasoning Models (Reasoning Enabled)](#83---reasoning-models-reasoning-enabled)
+    - [8.3.1 - Analysis of Scaling Effects](#831---analysis-of-scaling-effects)
+    - [8.3.2 - Analysis of Reasoning Process](#832---analysis-of-reasoning-process)
+  - [8.4 - Fine-Tuning Interventions](#84---fine-tuning-interventions)
+    - [8.4.1 - Fine-Tuning Intervention (Iteration 1)](#841---fine-tuning-intervention-iteration-1)
+      - [8.4.1.1 - Evaluation of Fine-Tuned Models (Reasoning Disabled)](#8411---evaluation-of-fine-tuned-models-reasoning-disabled)
+      - [8.4.1.2 - Evaluation of Fine-Tuned Models (Reasoning Enabled)](#8412---evaluation-of-fine-tuned-models-reasoning-enabled)
+        - [8.4.1.2.1 - Analysis of Reasoning Degradation](#84121---analysis-of-reasoning-degradation)
+    - [8.4.2 - Fine-Tuning Intervention (Iteration 2)](#842---fine-tuning-intervention-iteration-2)
+      - [8.4.2.1 - Evaluation of Fine-Tuned Models (Reasoning Disabled)](#8421---evaluation-of-fine-tuned-models-reasoning-disabled)
+      - [8.4.2.2 - Evaluation of Fine-Tuned Models (Reasoning Enabled)](#8422---evaluation-of-fine-tuned-models-reasoning-enabled)
+        - [8.4.2.2.1 - Analysis of Restored Reasoning](#84221---analysis-of-restored-reasoning)
+    - [8.4.3 - Fine-Tuning Intervention (Iteration 3 – Hybrid Approach)](#843---fine-tuning-intervention-iteration-3--hybrid-approach)
+      - [8.4.3.1 - Evaluation of Fine-Tuned Models (Reasoning Disabled)](#8431---evaluation-of-fine-tuned-models-reasoning-disabled)
+      - [8.4.3.2 - Evaluation of Fine-Tuned Models (Reasoning Enabled)](#8432---evaluation-of-fine-tuned-models-reasoning-enabled)
+        - [8.4.3.2.1 - Analysis of Hybrid Reasoning](#84321---analysis-of-hybrid-reasoning)
+  - [8.5 - Weaknesses of Evaluation](#85---weaknesses-of-evaluation)
+  - [8.6 - Conclusion of Findings](#86---conclusion-of-findings)
+- [9 - Legal, Social, Ethical \& Professional Issues](#9---legal-social-ethical--professional-issues)
+  - [9.1 - Professional Standards, Data Privacy, \& Licensing](#91---professional-standards-data-privacy--licensing)
+    - [9.1.1 - Data \& Privacy](#911---data--privacy)
+    - [9.1.2 - Open-Source Components \& Dataset Licenses](#912---open-source-components--dataset-licenses)
+      - [9.1.2.1 - Datasets](#9121---datasets)
+      - [9.1.2.2 - Models \& Libraries](#9122---models--libraries)
+  - [9.2 - Social \& Ethical Implications](#92---social--ethical-implications)
+    - [9.2.1 - Bias \& Cultural Alignment](#921---bias--cultural-alignment)
+    - [9.2.2 - Misinformation](#922---misinformation)
+    - [9.2.3 - Accessibility](#923---accessibility)
+  - [9.3 - Environmental \& Sustainability Issues](#93---environmental--sustainability-issues)
+  - [9.4 - Explainability, Trust, \& Human Factors](#94---explainability-trust--human-factors)
+    - [9.4.1 - Risk of Misinterpretation \& Over-Reliance](#941---risk-of-misinterpretation--over-reliance)
+    - [9.4.2 - Communicating Uncertainty \& Human-in-the-Loop Use](#942---communicating-uncertainty--human-in-the-loop-use)
+  - [9.5 - Economic \& Commercial Factors](#95---economic--commercial-factors)
+- [10 - Conclusion](#10---conclusion)
+  - [10.1 - Summary of Work](#101---summary-of-work)
+  - [10.2 - Limitations](#102---limitations)
+  - [10.3 - Future Work](#103---future-work)
+- [11 - References](#11---references)
+- [12 - Appendices](#12---appendices)
+  - [12.1 - Appendix A: Reasoning Process Examples](#121---appendix-a-reasoning-process-examples)
+    - [12.1.1 - Example 1: Orthography Question](#1211---example-1-orthography-question)
+    - [12.1.2 - Example 2: Incorrect Answer with Flawed Reasoning](#1212---example-2-incorrect-answer-with-flawed-reasoning)
+  - [12.2 - Appendix B: Reasoning Degradation Examples](#122---appendix-b-reasoning-degradation-examples)
+    - [12.2.1 - Example 1: Incorrect Answer with Empty Reasoning](#1221---example-1-incorrect-answer-with-empty-reasoning)
+    - [12.2.2 - Example 2: Correct Answer with Empty Reasoning](#1222---example-2-correct-answer-with-empty-reasoning)
+  - [12.3 - Appendix C: Restored Reasoning Process Examples (Iteration 2)](#123---appendix-c-restored-reasoning-process-examples-iteration-2)
+    - [12.3.1 - Example 1: Correct Answer with Restored Reasoning](#1231---example-1-correct-answer-with-restored-reasoning)
+    - [12.3.2 - Example 2: Incorrect Answer with Restored Reasoning](#1232---example-2-incorrect-answer-with-restored-reasoning)
+  - [12.4 - Appendix D: Code for Injecting CoT to Dataset](#124---appendix-d-code-for-injecting-cot-to-dataset)
+  - [12.5 - Appendix E: Computing Statistical Significance](#125---appendix-e-computing-statistical-significance)
+  - [12.6 - Appendix F: Full Results Tables](#126---appendix-f-full-results-tables)
+    - [12.6.1 - Table 2: Model Details](#1261---table-2-model-details)
+    - [12.6.2 - Table 2: Culture \& Common Sense Reasoning Results](#1262---table-2-culture--common-sense-reasoning-results)
+    - [12.6.3 - Table 3: Language Understanding Results](#1263---table-3-language-understanding-results)
 
 
 # **Exploring Modern Reasoning-Enabled Large Language Models for Language Understanding**
@@ -306,27 +306,27 @@ This hybrid approach was highly successful. It enhanced linguistic performance i
 ![alt text]({BASE}/fig-9-4.png)
 
 
-# 1 INTRODUCTION
+# 1 - Introduction
 
-## 1.1 Background & Motivation
+## 1.1 - Background & Motivation
 
 Recent advancements in Large Language Models (LLMs) have led to their widespread integration into global digital services, from powering conversational search engines to automating customer support. For these models to be fair and effective, they must be culturally aware. However, current research shows a strong bias towards English and Western cultures, slowing adoption in other regions due to significant linguistic and cultural barriers [Seveso et al., 2025]. This has led to the development of native-language benchmarks, such as ITALIC for Italian, which provides a more authentic assessment of a model's capabilities.
 
 This project focuses specifically on smaller LLMs, as their efficiency makes them critical for real-world deployment. Unlike their larger counterparts, which require substantial computational resources, smaller models are affordable for most companies to train and deploy in applications like customer service agents. For these tools to be effective, they must be linguistically aligned to sound natural. Similarly, for home users running assistants locally for everyday tasks, cultural and linguistic alignment is essential for the technology to feel genuinely helpful.
 
-## 1.2 Research Problem
+## 1.2 - Research Problem
 
 However, analysis using the ITALIC benchmark has revealed a critical and consistent discrepancy in these smaller models: they perform significantly better on tasks requiring general cultural knowledge than on those demanding a deep understanding of language-specific rules. The benchmark shows an average model accuracy of 75.03% on cultural tasks, which drops to just 63.12% on linguistic tasks. This performance gap is particularly wide in smaller, more efficient models, with foundational language skills like morphology and orthography being the weakest areas. This highlights a fundamental challenge: cultural knowledge does not guarantee linguistic competence. Crucially, existing research has focused on standard LLMs, leaving the potential for newer, reasoning-capable models to address this linguistic gap largely unexplored.
 
-## 1.3 Aims & Hypotheses
+## 1.3 - Aims & Hypotheses
 
 This project directly addresses this performance gap in smaller LLMs for the Italian language, guided by two central hypotheses. The first is that modern LLMs with reasoning capabilities may be better equipped to handle complex linguistic problems. This study makes a novel contribution by applying these reasoning methods to linguistics. Such models are typically used for tasks like mathematics and programming; their potential for language has been largely unexplored. However, activating these reasoning processes is computationally expensive and introduces delay, which is often impractical for real-time applications. Users interacting with customer service agents, for example, cannot wait for a lengthy thought process just for a grammatically correct response. This would also be expensive for businesses as more compute is being used.
 
 This leads to the second hypothesis. While reasoning is effective, it is also slow and computationally expensive. The project therefore explored fine-tuning to improve the models' faster, non-reasoning mode. However, this revealed a critical trade-off: regular fine-tuning successfully improved linguistic skills but destroyed the models' ability to reason. The second hypothesis is that a novel hybrid training approach can solve this problem. This method uses LoRA and mixes a standard dataset with synthetically generated Chain-of-Thought (CoT) examples from the target model itself. The goal is to boost linguistic performance in the efficient non-reasoning mode, while also preserving the model's core reasoning abilities. This report will detail the investigation into these hypotheses, from a review of the relevant literature to the final analysis of the results and a discussion of their implications.
 
-# 2 LITERATURE SURVEY
+# 2 - Literature Survey
 
-## 2.1 Cultural Alignment in Large Language Models (LLMs)
+## 2.1 - Cultural Alignment in Large Language Models (LLMs)
 
 Recent research highlights significant challenges in achieving cultural alignment in LLMs. Studies consistently show that current LLMs exhibit strong Anglocentric and Western-centric biases. They perform substantially better on English-language tasks while struggling with culturally-specific knowledge in underrepresented languages [Pawar et al., 2024; Rao et al., 2024]. This cultural misalignment stems primarily from training data composition. English and Western sources dominate these datasets, creating a risk of "cultural homogenisation" where anglocentric models become the default [Seveso et al., 2025].
 
@@ -334,7 +334,7 @@ The problem extends beyond simple translation. Even perfectly translated benchma
 
 This has led to a key finding: a fundamental discrepancy exists between cultural knowledge and linguistic understanding in LLMs. While LLMs may possess broad cultural knowledge, this often fails to translate into a deep comprehension of language-specific rules, particularly in morphologically rich languages like Italian [Rao et al., 2024]. This gap becomes especially pronounced in smaller models, where linguistic tasks such as morphology and orthography present greater challenges than general cultural knowledge.
 
-## 2.2 Italian Language Model Research & Benchmarking
+## 2.2 - Italian Language Model Research & Benchmarking
 
 The Italian NLP community has historically lacked comprehensive evaluation benchmarks compared to English. Early Italian benchmarks focused primarily on classification-based tasks such as sentiment analysis and hate speech detection, failing to assess higher-level capabilities like commonsense reasoning [Basile et al., 2023; Lai et al., 2023]. This limitation has hindered the systematic evaluation of LLM performance in Italian cultural and linguistic contexts. In response, a new generation of more comprehensive, native Italian benchmarks has been developed. These include collaborative efforts like CALAMITA and evaluation suites such as ItaEval, which cover a wide range of tasks from hate speech to gender-neutral rephrasing [Attanasio et al., 2024a; Attanasio et al., 2024b]. However, many of these initiatives either combine multiple smaller datasets, which can complicate standardised testing, or rely on machine-translated content from English sources [Moroni et al., 2024].
 
@@ -342,7 +342,7 @@ The introduction of ITALIC [Seveso et al., 2025] represents a significant advanc
 
 ITALIC's comprehensive evaluation of 17 models revealed systematic performance gaps [Seveso et al., 2025]. Models consistently performed better on Culture and Commonsense tasks (average 75.03%) compared to Language Capability tasks (average 63.12%). Morphology emerged as the most challenging domain (55.99% average accuracy), followed by orthography (62.09% average accuracy). This pattern held across both proprietary and open-weights models, indicating fundamental limitations in linguistic understanding rather than model-specific issues. Additionally, open-weights models tend to perform worse compared to their proprietary counterparts, with GPT-4o-Mini scoring 82.22% whereas Llama 3.1 8B Ita (fine-tuned on Italian) scores 70.49% and the standard Llama 3.1 8B scores 66.38%.
 
-## 2.3 Performance Characteristics of Smaller LLMs
+## 2.3 - Performance Characteristics of Smaller LLMs
 
 Smaller-scale LLMs (5-35B parameters) face particular challenges in cultural and linguistic alignment. The ITALIC benchmark demonstrates clear scaling effects, with larger models generally outperforming smaller counterparts with Llama 3.1 405B scoring 88.89% whereas the smaller Llama 3.1 8B only scores 66.38% [Seveso et al., 2025]. However, the performance gap varies significantly across domains, with linguistic tasks showing steeper scaling curves than cultural knowledge tasks; this is proven by the difference between Culture and Common sense and Language Understanding, where the discrepancy between Llama 3.1 405B is 4.98% but the discrepancy for Llama 3.1 8B is 9.72%.
 
@@ -352,7 +352,7 @@ More specifically, Llama 3.1 8B Ita achieved 72.96% in Culture and Commonsense b
 
 Morphology represents the most challenging domain across both Llama 3.1 8B variants, with the base model scoring only 40.00% and the Italian fine-tuned version achieving 52.14% [Seveso et al., 2025]. Orthography was the second weakest area, with the base model scoring 49.33% and increasing to 53.04% after fine-tuning. In comparison, syntax scores were slightly higher, starting at 50.46% for the base model and rising to 53.65% for the fine-tuned model. Collectively, these are the lowest scores across all ITALIC domains, emphasising the particular difficulty of foundational linguistic understanding in Italian.
 
-## 2.4 Comparing Multilingual & Monolingual Model Performance
+## 2.4 - Comparing Multilingual & Monolingual Model Performance
 
 Recent research has established clear performance hierarchies between different model types. According to both ITALIC findings [Seveso et al., 2025] and complementary studies [Fan et al., 2025, Polignano et al., 2023], multilingual models consistently outperform monolingual Italian models, particularly when the monolingual models are trained from scratch rather than fine-tuned from existing multilingual foundations.
 
@@ -360,23 +360,23 @@ This pattern is evident in ITALIC results, where ground-up Italian models like M
 
 The exception to this pattern involves models fine-tuned from multilingual foundations rather than trained from scratch. Llama 3.1 8B Ita demonstrates this advantage, outperforming most ground-up Italian models whilst maintaining access to multilingual knowledge representations [Seveso et al., 2025]. This clearly highlights that the optimal approach to achieving cultural alignment is by building upon the foundations of multi-lingual models rather than building mono-lingual models from scratch.
 
-## 2.5 Identified Gaps
+## 2.5 - Identified Gaps
 
-### 2.5.1 Discrepancy Between Cultural & Linguistics in Smaller Models
+### 2.5.1 - Discrepancy Between Cultural & Linguistics in Smaller Models
 
 A significant finding from the ITALIC benchmark is the performance gap between tasks requiring cultural knowledge and those requiring linguistic understanding. This discrepancy is particularly pronounced in smaller-scale, open-weight models [Seveso et al., 2025]. While large-scale proprietary models like Claude 3.5 Sonnet exhibit a minimal gap (1.39 percentage points between Culture and Language scores), this difference becomes substantially larger in smaller and/or open models. For example, Llama 3.1 405B has a discrepancy of 4.98%, which widens to a significant 9.72% in Llama 3.1 8B. This trend demonstrates that as model size decreases, the relative weakness in handling the structural and grammatical rules of a language becomes more acute compared to performance on cultural knowledge. This highlights a key research gap: understanding why smaller models struggle disproportionately with linguistic tasks and developing targeted interventions to close this specific performance gap.
 
-### 2.5.2 Limited Analysis of Reasoning Model Benefits
+### 2.5.2 - Limited Analysis of Reasoning Model Benefits
 
 The current literature, including the foundational ITALIC benchmark study, has not yet evaluated the performance of modern reasoning-capable models on Italian cultural and linguistic tasks. The models assessed in the paper are primarily standard LLMs, and there is no analysis of newer architectures that are explicitly designed to "think step by step" before generating an answer. These include proprietary models (like GPT-4o, Claude 4 and GPT-o3) and open-weight alternatives (like DeepSeek R1, Magistral, and Qwen3). Chain-of-Thought (CoT) encourage a model to break down a question into intermediate steps, a process that could be beneficial for navigating the complexities of Italian linguistics and to use the existing knowledge more effectively. It is plausible that activating a model's reasoning capabilities could, on its own, improve performance on difficult linguistic tasks by allowing for more deliberate processing, thereby narrowing the performance gap between cultural and linguistic understanding without the need for extensive fine-tuning. This project aims to directly investigate this hypothesis by systematically benchmarking such models and of various sizes, an area currently unexplored in the context of Italian cultural alignment.
 
-### 2.5.3 Weaknesses in Linguistic Capabilities
+### 2.5.3 - Weaknesses in Linguistic Capabilities
 
 The ITALIC benchmark reveals that morphology, orthography, and syntax are consistently the weakest areas for LLMs in Italian [Seveso et al., 2025]. These findings are consistent with broader research, which shows LLMs struggle with morphologically complex languages and can suffer a drop in language understanding when working in Italian, even if their core reasoning skills remain [Ismayilzada et al., 2025; Puccetti et al., 2025]. Morphology consistently emerges as the most difficult domain for the models. The average accuracy across all tested models in morphology is only 55.99%. For smaller models like the base Llama 3.1 8B, the performance is even lower at just 40.00%. Orthography is the second most challenging domain, with an average accuracy of 62.09% across all models in the ITALIC benchmark. Again, smaller models struggle significantly in this area. Syntax is the third area of notable weakness. While the average accuracy is slightly higher at 64.37%, it still lags behind performance on tasks requiring cultural knowledge. The lack of effective, targeted methods to improve these specific linguistic abilities in Italian LLMs highlights a clear and important research gap.
 
-# 3 BACKGROUND THEORIES
+# 3 - Background Theories
 
-## 3.1 Transformer Architecture
+## 3.1 - Transformer Architecture
 
 The Transformer architecture [Vaswani et al., 2017] forms the foundational backbone for virtually all modern LLMs, including those used in this project. It revolutionised the field by replacing the sequential processing of older models like Recurrent Neural Networks (RNNs). RNNs struggled with slow, token-by-token computation and had difficulty capturing long-range context in text. The Transformer overcame these limitations by abandoning recurrence in favour of a fully parallelisable mechanism known as self-attention [Vaswani et al., 2017].
 
@@ -394,7 +394,7 @@ To maintain sequential information, the Transformer injects positional encoding 
 
 The architecture also includes Feed-Forward Networks for additional non-linearity. To enable deep training, the architecture uses residual connections and layer normalisation, which stabilises the learning process and prevents gradients from vanishing [Vaswani et al., 2017].
 
-### 3.1.1 Architectural Evolution & Specialisation
+### 3.1.1 - Architectural Evolution & Specialisation
 
 While the original Transformer was designed with an encoder-decoder structure for machine translation, its modularity spurred an architectural evolution. This led to specialised variants that underpin most modern LLMs:
 
@@ -402,35 +402,35 @@ While the original Transformer was designed with an encoder-decoder structure fo
 
 - **Decoder-only models**, such as the GPT series, use the Transformer's decoder stack. These models are autoregressive, generating text one token at a time based on previously generated tokens. This makes them highly effective for Natural Language Generation (NLG) tasks [Radford et al., 2018]. The models evaluated in this project (including Llama, Mistral/Magistral, and Qwen) are all descendants of this decoder-only lineage.
 
-### 3.1.2 Comparison with Pre-Transformer Neural Architectures
+### 3.1.2 - Comparison with Pre-Transformer Neural Architectures
 
 Before the Transformer, NLP was dominated by architectures with significant limitations. RNNs, including more advanced variants like LSTMs and GRUs, processed text sequentially, which created a computational bottleneck that hindered parallelism and made it difficult to capture long-range dependencies [Hochreiter & Schmidhuber, 1997; Chung et al., 2014]. CNNs offered parallelism but could only capture context within a limited local window, struggling with variable-length relationships in text [Kim, 2014]. The Transformer superseded these models because its self-attention mechanism processes all tokens in parallel, allowing information to flow globally across the entire sequence in a single step. This solved both the sequential bottleneck of RNNs and the limited receptive field of CNNs, enabling the massive scale and emergent capabilities of modern LLMs.
 
-### 3.1.3 Recent Progress in Large Language Models
+### 3.1.3 - Recent Progress in Large Language Models
 
 The last five years have seen LLMs scale dramatically, with increased size and innovations like instruction-tuning and Reinforcement Learning from Human Feedback (RLHF) unlocking new capabilities [Brown et al., 2020]. However, the frontier of LLM development has shifted from pure scale to enhancing specific cognitive capabilities.
 
 This has led to a new generation of models explicitly architected for advanced reasoning, such as GPT-4o, Claude 4, and Gemini 2.5 Pro [Bubeck et al., 2023]. A key innovation in this space is the development of hybrid reasoning models, which can operate in a fast, standard mode for simple queries or switch to a more computationally intensive "thinking" mode for complex problems. Investigating whether these advanced reasoning techniques can be leveraged to improve performance on complex linguistic tasks is the central question of this project's first hypothesis. The following section delves into the specific techniques that enable this advanced reasoning.
 
-## 3.2 Reasoning Models
+## 3.2 - Reasoning Models
 
 Standard LLMs built on the Transformer architecture are trained to predict the next word in a sequence. While this makes them proficient at language tasks, it is insufficient for problems requiring logical deduction. A deep understanding of these techniques is fundamental to this project's first hypothesis: that the latent reasoning capabilities of modern LLMs can be leveraged to close the performance gap between cultural and linguistic understanding. For tasks in mathematics or commonsense reasoning, simply predicting the most statistically likely word often fails to produce a correct solution. This limitation is shown by "flat scaling curves," where simply increasing a model's size does not significantly improve performance on complex reasoning without a fundamental shift in methodology [Wei et al., 2022].
 
 The ability for complex reasoning is not an automatic result of scale; it must be deliberately prompted or engineered. In this context, "reasoning" is the ability to break down a problem into a series of intermediate steps that logically lead to a conclusion. The introduction of CoT prompting was a foundational shift, demonstrating that the latent reasoning abilities of large models could be unlocked by guiding them to externalise their problem-solving process [Wei et al., 2022]. This success has led to the development of specialised reasoning models that are explicitly trained and architected for complex reasoning.
 
-### 3.2.1 Foundational Techniques for Eliciting Reasoning
+### 3.2.1 - Foundational Techniques for Eliciting Reasoning
 
 CoT prompting works by encouraging a model to generate a sequence of intermediate steps before the final answer. This reframes the task from a single, difficult inference to a series of simpler, incremental predictions. Instead of a large cognitive leap, the model performs a sequence of more manageable next-token predictions, effectively allocating more computation to the problem by generating a longer thought process. This is typically implemented via few-shot CoT, where the model is given examples of solved problems, or zero-shot CoT, where a simple instruction like "Think step by step" is used.
 
 A critical finding is that CoT is an emergent property of model scale; its benefits only appear in models with around 100 billion parameters or more and can degrade the performance of smaller models [Wei et al., 2022]. However, a single reasoning chain is brittle, as one early error can corrupt the entire output. To address this, self-consistency was introduced as a decoding strategy [Wang et al., 2022]. It generates multiple, diverse reasoning paths for the same problem and determines the final answer by a majority vote. This ensemble-like approach significantly improves robustness, yielding gains of +17.9% on the GSM8K benchmark, but at the cost of increased computation.
 
-### 3.2.2 Advanced Reasoning Frameworks & Strategies
+### 3.2.2 - Advanced Reasoning Frameworks & Strategies
 
 The linear, step-by-step nature of CoT is ineffective for tasks that require planning or exploration. Tree of Thoughts (ToT) provides a more powerful framework by modelling problem-solving as a search through a tree of possibilities, which is closer to human cognition [Yao et al., 2023]. In the ToT framework, an LLM is used to generate multiple potential next steps ("thoughts"), a checker module evaluates their validity and promise, and a controller manages the search process using algorithms like breadth-first or depth-first search.
 
 The most significant feature of ToT is its ability to backtrack. If a path of reasoning is found to be unpromising, the controller can discard that branch and explore an alternative from a previous state. This capacity for systematic exploration and error correction allows ToT to solve complex planning problems, such as the Game of 24, that are often intractable for linear CoT methods [Yao et al., 2023]. This represents a move from simple generation to a more structured and robust problem-solving paradigm.
 
-### 3.2.3 Mitigating Inference Time & Cost
+### 3.2.3 - Mitigating Inference Time & Cost
 
 While early reasoning techniques focused on accuracy, their high latency and token consumption are barriers to practical use. This has driven innovation toward more efficient reasoning.
 
@@ -438,7 +438,7 @@ One key technique is Chain of Draft (CoD), which challenges the assumption that 
 
 Another strategy, Confidence-Informed Self-Consistency (CISC), targets the high cost of standard self-consistency. After generating each reasoning path, the model is prompted to evaluate its confidence in that path's correctness. The final answer is then determined by a weighted majority vote, giving more influence to high-confidence paths. This allows the system to converge on the correct answer with over 40% fewer reasoning paths, making the technique more practical and scalable [Taubenfeld et al., 2025].
 
-### 3.2.4 Training & Architectures
+### 3.2.4 - Training & Architectures
 
 The latest reasoning models are explicitly trained for this capability, moving beyond prompting alone. While Supervised Fine-Tuning (SFT) on reasoning examples is effective, it is limited by the quality of static datasets. Reinforcement Learning (RL) offers a more scalable paradigm where the model learns through trial-and-error, receiving feedback on its generated reasoning. A key innovation is Reinforcement Learning from Verifiable Rewards (RLVR), which uses a reward signal from a deterministic, objective verifier, such as checking a maths answer for correctness or running code against unit tests. This provides a clear, ground-truth-aligned signal that allows the model to autonomously discover correct reasoning paths [Guo et al., 2025].
 
@@ -446,31 +446,31 @@ To implement this efficiently, models like DeepSeek and Magistral use algorithms
 
 Alongside training innovations, new architectures allow models to dynamically allocate computation at inference time. Google's Gemini 2.5 Pro has an integrated "thinking process" that can perform tens of thousands of extra forward passes to explore a problem, with the amount of thinking calibrated to the task's complexity [Google AI, 2025]. Anthropic's Claude 4 features distinct operational modes: a standard mode for fast responses and an "extended thinking mode" for deep reasoning, which can also integrate external tools like a code interpreter [Anthropic, 2025]. These architectures enable a more intelligent allocation of resources, balancing performance with efficiency.
 
-### 3.2.5 Multilingual Reasoning Capabilities
+### 3.2.5 - Multilingual Reasoning Capabilities
 
 As LLMs are deployed globally, their ability to reason across multiple languages is critical. Models like the Qwen2 series and Mistral's Magistral have been explicitly trained for this [Qwen Team, 2024a]. Magistral incorporated translated mathematics and coding problems into its RL training data and used a language consistency reward to ensure it could reason natively in languages like French, Spanish, and German [Mistral-AI, Rastogi, et al., 2025].
 
 Despite these efforts, a performance gap persists between English and other languages. The Magistral Medium model, for instance, sees its performance on translated versions of the AIME benchmark drop by 4.3% to 9.9% compared to English [Mistral-AI, Rastogi, et al., 2025]. This suggests that reasoning is not a purely abstract, language-agnostic skill in current LLMs. Instead, it appears deeply connected to the specific linguistic patterns in the training data, and the learned associations between phrasing and logical operations in one language do not always transfer perfectly to others [Ahuja et al., 2025].
 
-### 3.2.6 Reasoning vs. Non-Reasoning Models
+### 3.2.6 - Reasoning vs. Non-Reasoning Models
 
 Reasoning models offer clear advantages for complex problems. They are more accurate and reliable than standard models. Their step-by-step output also provides a window into their process. This makes it easier for users to check the logic, spot errors, and build trust in the final answer. In contrast, normal models provide direct answers which is faster but offers no justification [AiSDR, 2025].
 
 However, these benefits come with significant trade-offs. Reasoning models are slower and more expensive to run because generating long thought processes uses more computation. The "interpretability" they offer must also be viewed carefully. The reasoning path a model shows might be a convincing story created after the answer is found, not a true reflection of how it solved the problem [Turpin et al., 2024]. The pursuit of truly verifiable and causally-grounded reasoning (ensuring the logic is sound and factually correct) remains a key challenge. A deeper issue is the trade-off between specialisation and generalisation. Training a model to excel at reasoning can make it worse at other tasks, like following conversational instructions [Seveso et al., 2025]. This suggests that AI "intelligence" is not a single quality but a collection of skills that can compete with each other. This is why hybrid models like Claude, Qwen and Magistral (which can switch between a fast, general mode and a slow, reasoning mode) are being developed. They aim to provide the best of both worlds.
 
-## 3.3 Low Rank Adaptation (LoRA)
+## 3.3 - Low Rank Adaptation (LoRA)
 
-### 3.3.1 PEFT
+### 3.3.1 - PEFT
 
 Traditional method, Full Fine-Tuning (FFT), involves updating all of a model's parameters on a new, task-specific dataset. While effective, this approach has become increasingly impractical for modern LLMs, which can have billions of parameters (or even hundreds of billions). The computational cost, memory requirements, and storage demands of FFT are prohibitive for most researchers and organisations, as each fine-tuned model is a complete, multi-gigabyte copy of the original [Hu et al., 2022]. Furthermore, FFT carries a significant risk of "catastrophic forgetting," where the model loses valuable general-purpose knowledge acquired during pre-training as it learns the new task [Kirkpatrick et al., 2017].
 
 (PEFT). The core principle of PEFT is to freeze the vast majority (often over 99%) of the pre-trained model's parameters and only train a small number of new or existing parameters. This dramatically reduces computational and storage costs, making LLM customisation more accessible while often achieving performance comparable to FFT [Hu et al., 2022]. This technique is central to the project's second phase, providing the parameter-efficient methodology required to test the hypothesis that linguistic improvements can be achieved without catastrophic forgetting.
 
-### 3.3.2 LoRA
+### 3.3.2 - LoRA
 
 LoRA is a particularly elegant and effective PEFT technique [Hu et al., 2022]. It is based on the hypothesis that the change in a model's weights during adaptation to a new task has a low "intrinsic rank" [Hu et al., 2022]. This means the adjustments required to specialise a model are not complex and diffuse but are concentrated and can be represented efficiently in a lower-dimensional subspace.
 
-### 3.3.3 LoRA Mechanism
+### 3.3.3 - LoRA Mechanism
 
 LoRA injects trainable rank decomposition matrices into each layer of the Transformer architecture, creating a parallel module. This module represents the change in weights (ΔW) as the product of two much smaller, "low-rank" matrices: A and B. During training, the original weight matrix $W_0$ remains frozen and does not have its gradients updated. Only the parameters of the newly introduced matrices A and B are trained [Hu et al., 2022].
 
@@ -482,29 +482,29 @@ $$
 
 This approach is highly parameter-efficient. For example, adapting a 1000×1000 weight matrix (1 million parameters) using LoRA with a rank of $r = 4$ would only require training $4 \times (1000 + 1000) = 8000$ parameters, a reduction of over 99% [Hu et al., 2022].
 
-### 3.3.4 Advantages of LoRA
+### 3.3.4 - Advantages of LoRA
 
 Once training is complete, the learned matrices can be mathematically merged with the original weights by calculating $W_{tuned} = W_0 + B A$. The resulting model has the exact same architecture and parameter count as the original, making it highly efficient for deployment [Hu et al., 2022].
 
 This ability to merge adapters is a crucial factor for this project [Hu et al., 2022]. This allows for the creation of many small, task-specific "adapters" (often just a few megabytes in size) that can be swapped out to modify the model's behaviour without altering the base model. This is orders of magnitude more efficient in terms of computational cost, memory usage, and storage [Hu et al., 2022]. By freezing the base model, it also serves as a strong regulariser that mitigates catastrophic forgetting [Hu et al., 2022], while often matching or exceeding FFT's performance on a wide range of tasks [Long et al., 2024]. LoRA avoids the inference latency added by methods like Adapter Tuning [Houlsby et al., 2019] and circumvents the optimization and context-window consumption issues associated with Prefix-Tuning [Li and Liang, 2021; Hu et al., 2022; Vgontzas et al., 2023]. Therefore, LoRA was the most suitable fine-tuning strategy, as its efficiency, zero-latency characteristic, and ability to preserve general knowledge were crucial for achieving the project's objectives.
 
-### 3.3.4.1 Choice for This Project
+### 3.3.4.1 - Choice for This Project
 
 Its efficiency makes it feasible to conduct targeted experiments on smaller models to address specific linguistic weaknesses, such as Italian morphology. Its zero-latency characteristic and ability to preserve general knowledge are crucial for achieving the objective of improving linguistic performance without destroying the model's existing capabilities.
 
-### 3.3.5 Disadvantages of LoRA
+### 3.3.5 - Disadvantages of LoRA
 
 LoRA is not without limitations. Its performance can lag behind full fine-tuning because the low-rank assumption is not always valid, which can cause an accuracy gap on complex domains like code and maths compared to full fine-tuning [Biderman et al., 2024]. Performance is also highly sensitive to hyperparameters, requiring careful tuning to approach the results of a full finetune [Biderman et al., 2024]. From a practical standpoint, LoRA presents memory challenges; serving thousands of small adapters can exhaust GPU memory, making it "infeasible" at scale [Brüel-Gabrielsson et al., 2025]. Furthermore, standard LoRA training can still demand substantial RAM for very large models, which necessitated the development of more memory-efficient variants like QLoRA [Dettmers et al., 2023].
 
-## 3.4 Quantisation
+## 3.4 - Quantisation
 
 Quantisation is a model compression technique that addresses this issue. It reduces the numerical precision of a model's parameters, for instance, from 32-bit floating-point numbers to more efficient 4-bit integers. This process results in a much smaller memory footprint and can speed up computation. However, this process is inherently lossy and can introduce minor errors, potentially degrading a model's predictive performance.
 
 For this project, quantisation is a crucial enabling technology. It makes it feasible to run experiments on larger models, such as the 24-billion-parameter Magistral-Small, on hardware with limited VRAM. While this introduces a risk of slight performance misalignment for the Magistral-Small model, it is an acceptable trade-off as it serves as a control, and this was a necessary compromise to ensure the experiment was computationally feasible. Specifically, this project utilises QLoRA, a method that combines quantisation with the parameter-efficient fine-tuning approach discussed in the next section. QLoRA allows for backpropagation through a frozen, 4-bit quantised model into a small set of trainable adapters, drastically reducing memory requirements during training with minimal impact on performance [Dettmers et al., 2023].
 
-# 4 OBJECTIVES
+# 4 - Objectives
 
-## 4.1 Principal Objectives
+## 4.1 - Principal Objectives
 
 The primary objective is to determine if the advanced reasoning capabilities found in newer LLMs can improve performance on complex Italian linguistic tasks. This research will test the hypothesis that these same reasoning skills, typically used for logical problems like mathematics, can also be applied to navigate the grammatical rules of the Italian language.
 
@@ -512,9 +512,9 @@ The second objective addresses a practical challenge. The reasoning process is s
 
 However, this fine-tuning creates a critical risk. Specialised training can cause a model to lose its general abilities, including its core reasoning skills. The final and most important objective is therefore to solve this trade-off. The project aims to develop and validate a novel fine-tuning methodology that improves non-reasoning linguistic performance while also preserving and enhancing the model's advanced reasoning capabilities.
 
-## 4.2 Secondary Objectives
+## 4.2 - Secondary Objectives
 
-### 4.2.1 Objective 1: Establish Validated Baseline
+### 4.2.1 - Objective 1: Establish Validated Baseline
 
 To support the primary objectives, the first task is to establish a validated baseline. This involves replicating the published results from the ITALIC benchmark for two key models. The first model is Llama 3.1 8B Ita, a variant of Llama 3.1 8B fine-tuned on Italian data and the best-performing small-scale model in the original study. The second is Mistral NeMo (12B parameters) which is a multilingual model that will serve as a control.
 
@@ -522,23 +522,23 @@ The goal is to consistently reproduce their benchmark scores, for both the final
 
 This validation is critical because the proven methodology can then be confidently applied to benchmark subsequent models, such as the reasoning-capable models, ensuring that any observed performance differences are due to the models themselves and not variations in the experimental setup.
 
-### 4.2.2 Objective 2: Evaluate Reasoning-Capable Models (Reasoning Disabled)
+### 4.2.2 - Objective 2: Evaluate Reasoning-Capable Models (Reasoning Disabled)
 
 The next step is to evaluate modern hybrid reasoning models with their reasoning capabilities disabled. This will involve benchmarking the Qwen3 series of models, which are available in various sizes allowing for an analysis of scaling effects. To ensure the findings are not specific to one model family, Magistral-Small (available only as 24B parameters) model will also be evaluated.
 
 This step is important because it establishes a baseline performance for the general architecture of these models. It makes it possible to understand how much of any performance gain is from the reasoning process itself, rather than from the model's underlying design. The results from this evaluation will be directly compared against the performance of the same models when their reasoning is enabled.
 
-### 4.2.3 Objective 3: Evaluate Reasoning-Capable Models (Reasoning Enabled)
+### 4.2.3 - Objective 3: Evaluate Reasoning-Capable Models (Reasoning Enabled)
 
 Following the baseline evaluation, the same reasoning-capable models (Qwen3 series and Magistral-Small) will be benchmarked again, but this time with their reasoning capabilities enabled. The primary goal is to measure the performance difference between the reasoning-enabled and reasoning-disabled states. This will show how much the reasoning process contributes to the models' performance.
 
 A key part of this analysis will be to check if the performance gap between cultural knowledge and language understanding closes. If reasoning does lead to significant improvements, a qualitative analysis will be performed. This involves comparing questions that were answered incorrectly when reasoning was disabled to those that are now correct to understand how the reasoning process helps solve complex linguistic problems. Completing this evaluation will fulfil the first primary objective of the research.
 
-### 4.2.4 Objective 4: Implement Supervised Fine-Tuning
+### 4.2.4 - Objective 4: Implement Supervised Fine-Tuning
 
 The next step is to fine-tune the models. This will be done using the regular LoRA technique. The reasoning models (Qwen3 and Magistral-Small) will be fine-tuned on the Mult-It dataset, a broad Italian question-answer dataset that is well-aligned with the ITALIC benchmark format. This dataset covers many of the known linguistic weaknesses of the models. For comparison, a non-reasoning model, Llama 3.1 8B Ita, will also be fine-tuned as a control. The specific aim of this fine-tuning is to improve performance in the three weakest linguistic areas: morphology, orthography, and syntax.
 
-### 4.2.5 Objective 5: Evaluate Fine-Tuned Models
+### 4.2.5 - Objective 5: Evaluate Fine-Tuned Models
 
 The final task is to benchmark the models after fine-tuning. The fine-tuned reasoning models will be evaluated twice using the same established pipelines: once with reasoning disabled and once with reasoning enabled. The fine-tuned Llama 3.1 8B Ita control model will also be benchmarked.
 
@@ -546,9 +546,9 @@ First, the evaluation will measure the performance improvement with reasoning di
 
 If the gap is closed, the analysis will then focus on the impact to the reasoning process itself. It will explore whether the fine-tuned models can combine the new linguistic knowledge with their reasoning, whether there is no effect, or if reasoning performance has worsened. A detailed analysis will be conducted to understand the reasons behind these outcomes.
 
-# 5 SPECIFICATIONS
+# 5 - Specifications
 
-## 5.1 General Project Specifications
+## 5.1 - General Project Specifications
 
 These requirements apply across all phases of the project.
 
@@ -562,7 +562,7 @@ These requirements apply across all phases of the project.
 	- The software stack must use standard open-source libraries like PyTorch and Hugging Face transformers, peft, and trl.
 - **Answer Extraction**: An automated, REGEX-based parser is required to extract and score answers from model outputs with high accuracy.
 
-## 5.2 Phase 1: Baseline Replication Specifications
+## 5.2 - Phase 1: Baseline Replication Specifications
 
 This initial phase is designed to validate the experimental framework.
 
@@ -574,7 +574,7 @@ This initial phase is designed to validate the experimental framework.
 	- The replicated average accuracy scores must be within a ±1.5% margin of the results published in the ITALIC paper.
 	- The results must show a low standard deviation across the three runs, ensuring the findings are reproducible and statistically sound.
 
-## 5.3 Phase 2: Reasoning Capability Analysis Specifications
+## 5.3 - Phase 2: Reasoning Capability Analysis Specifications
 
 This phase is analytical and aims to determine if reasoning capabilities affect performance on linguistic tasks.
 
@@ -586,7 +586,7 @@ This phase is analytical and aims to determine if reasoning capabilities affect 
 	- The analysis must provide a clear, data-driven and statistically significant conclusion on whether reasoning improves, degrades, or has no effect on linguistic tasks.
 	- The analysis must also provide a qualitative explanation for why these changes occur, based on the models' outputs.
 
-## 5.4 Phase 3: Fine-Tuning Intervention Specifications
+## 5.4 - Phase 3: Fine-Tuning Intervention Specifications
 
 This phase is contingent on Phase 2 demonstrating that reasoning provides a performance benefit. The goal is to create a more efficient model by enhancing its non-reasoning capabilities while still making reasoning accessible for more complex tasks.
 
@@ -597,15 +597,15 @@ This phase is contingent on Phase 2 demonstrating that reasoning provides a perf
 	2. **Reasoning Preservation**: The model's core reasoning capability must remain intact and functional. A loss of this ability constitutes a failure.
 	3. **Knowledge Preservation**: The model must not exhibit catastrophic forgetting. Performance in cultural knowledge categories must not degrade significantly.
 
-# 6 DESIGN
+# 6 - Design
 
 This chapter presents the architectural blueprint of the project. The entire experimental design is hypothesis-driven, structured in two main phases to systematically test the project's core claims. The first phase, **Benchmarking**, was designed to test the initial hypothesis that modern reasoning capabilities can improve performance on complex linguistic tasks. The second phase, **Iterative Fine-Tuning**, was designed as an experimental process to find the most effective way to enhance the model's efficient, non-reasoning performance while preserving its advanced reasoning capabilities.
 
-## 6.1 Benchmarking Design
+## 6.1 - Benchmarking Design
 
 The initial phase of the project was designed to systematically evaluate and compare the performance of various models on the ITALIC benchmark [Seveso et al., 2025]. This required a reliable experimental framework and a clear analytical strategy to test the first hypothesis. The process began by benchmarking the two models from the original ITALIC study to validate the pipeline. Following this validation, the reasoning-capable models were benchmarked with and without their reasoning modes enabled.
 
-### 6.1.1 Experimental Framework Architecture
+### 6.1.1 - Experimental Framework Architecture
 
 The experimental framework was designed as a modular pipeline to ensure a standardised and repeatable process for benchmarking each LLM. This design allows for consistent data handling, prompting, inference, and evaluation. The same core pipeline was used for all non-reasoning evaluations to ensure consistency. The reasoning benchmark was a direct extension of this pipeline, also applied uniformly across all relevant models. This consistency was critical for making valid comparisons. A high-level overview of this pipeline is shown in Figure 6.1.
 
@@ -620,32 +620,32 @@ The experimental framework was designed as a modular pipeline to ensure a standa
 - **Scoring Module**: Compares the extracted answer with the ground-truth answer.
 - **Results Aggregation & Analysis**: Collates scores to calculate overall and category-specific accuracies.
 
-### 6.1.2 Model Selection Rationale
+### 6.1.2 - Model Selection Rationale
 
 The selection of models was a core part of the experimental design, chosen to establish a valid baseline and to systematically test the project's hypotheses.
 
-#### 6.1.2.1 Baseline Models
+#### 6.1.2.1 - Baseline Models
 
 To ensure the validity of the experimental framework, two models from the original ITALIC study were selected to replicate the published results:
 
 - **Llama 3.1 8B Ita**: Chosen as the primary baseline for a small-scale, language-adapted model.
 - **Mistral NeMo**: Chosen as a control to validate accuracy of the framework.
 
-#### 6.1.2.2 Reasoning-Capable Models
+#### 6.1.2.2 - Reasoning-Capable Models
 
 To investigate the project's central hypotheses, modern hybrid reasoning models were selected. This was a critical design choice, as these models allow reasoning to be toggled ON and OFF. This feature makes it possible to isolate the performance impact of the reasoning process itself from general architectural improvements. Purely reasoning-focused models like DeepSeek R1 were unsuitable because they do not offer this switchable functionality.
 
 - **Qwen3 Series (0.6B to 32B)**: This model family was chosen specifically to design an experiment for analysing scaling effects.
 - **Magistral-Small**: This model was selected as a crucial control. As it belongs to a different architectural family, its inclusion was designed to ensure the project's findings were not architecture-specific. To maintain experimental consistency, this model was benchmarked with 4-bit quantization from the start, ensuring a fair comparison with its post-QLoRA fine-tuned version (which requires quantization).
 
-### 6.1.3 Comparative Analysis Design
+### 6.1.3 - Comparative Analysis Design
 
 The initial benchmarking was designed around two key comparisons:
 
 - **Baseline vs. Reasoning-Enabled Analysis**: This analysis was designed to directly test the first project hypothesis. To isolate the impact of the reasoning process, the same models were tested in two distinct modes. This direct comparison allows for a quantitative measurement of the performance gain attributable solely to step-by-step thinking.
 - **Pre- vs. Post-Fine-Tuning Analysis**: This comparison was conducted after each fine-tuning iteration to measure the effectiveness of the intervention. To facilitate this iterative cycle, the benchmarking framework was designed to load a locally stored LoRA adapter, merge it with the base model, and then run the full evaluation.
 
-## 6.2 Iterative Fine-Tuning Design
+## 6.2 - Iterative Fine-Tuning Design
 
 Following the initial benchmarking, a multi-stage fine-tuning process was designed to address the linguistic weaknesses identified in the reasoning models. This process was designed to test the second hypothesis: that a targeted intervention could enhance the efficient non-reasoning mode while preserving advanced reasoning capabilities. This was approached as an iterative experimental cycle. The initial experiment established a baseline, but its results revealed an unexpected and critical challenge, which required subsequent experiments to diagnose and solve.
 
@@ -655,26 +655,26 @@ To conduct these experiments, several models were selected for specific reasons.
 
 ![alt text]({BASE}/fig-6-2.png)
 
-### 6.2.1 Core Fine-Tuning Technology Rationale
+### 6.2.1 - Core Fine-Tuning Technology Rationale
 
 The foundational choices for the fine-tuning methodology were as follows:
 
-#### 6.2.1.1 Parameter-Efficient Fine-Tuning (PEFT)
+#### 6.2.1.1 - Parameter-Efficient Fine-Tuning (PEFT)
 
 PEFT was chosen over Full Fine-Tuning (FFT) as it is less computationally expensive and, crucially, carries a lower risk of catastrophic forgetting as discussed in Section 3.3.
 
-#### 6.2.1.2 Low-Rank Adaptation (LoRA)
+#### 6.2.1.2 - Low-Rank Adaptation (LoRA)
 
 As established in the Background Theories Section 3.4, LoRA was selected as the specific PEFT method because it offers the best balance of parameter efficiency, high performance, and zero additional inference latency. For the Qwen3 models, standard LoRA was used. However, for the largest model, Magistral-Small (24B), the design was adapted to use QLoRA. This was a necessary choice dictated by the memory constraints as defined in the project specification, making fine-tuning feasible on the available hardware.
 
-#### 6.2.1.3 Dataset Selection
+#### 6.2.1.3 - Dataset Selection
 
 The Mult-IT dataset was chosen for its direct alignment with the ITALIC benchmark's format and content [Rinaldi et al., 2024]. Alternative datasets were rejected after initial tests showed they were ineffective:
 
 - **MorphyNet**: This dataset's format of inflection tables was fundamentally different from the multiple-choice task [Batsuren et al., 2022]. Training on it did not improve morphology performance and caused performance in other areas to degrade.
 - **BLM-CausI & BLM-Odl**: These synthetic datasets used a narrow, rule-based prediction task [de la Cruz et al., 2024]. This format did not align with the broader knowledge required by ITALIC and failed to produce improvements, while also degrading performance.
 
-### 6.2.2 Iterative Approach to Hybrid Model Training
+### 6.2.2 - Iterative Approach to Hybrid Model Training
 
 The project's central challenge (improving linguistic performance without destroying reasoning ability) was solved through an iterative experimental process:
 
@@ -683,42 +683,42 @@ The project's central challenge (improving linguistic performance without destro
 
 These preliminary experiments established that neither data format alone was sufficient. This led to the design of the final, novel hybrid approach.
 
-### 6.2.3 Final Hybrid Design (Novel Technique)
+### 6.2.3 - Final Hybrid Design (Novel Technique)
 
 ![alt text]({BASE}/fig-6-3-5.png)
 
 
-#### 6.2.3.1 Synthetic Data Generation
+#### 6.2.3.1 - Synthetic Data Generation
 
 The hybrid dataset was created by augmenting the Mult-IT training data. The reasoning-enabled benchmarking pipeline was repurposed to run on the Mult-IT training set, generating CoT for approximately 18,000 correctly answered questions. This process was run independently for each model to create model-specific training data, respecting their unique internal monologues (e.g., Qwen3 thinking in English vs. Magistral in Italian). These 18,000 questions were used in experiment 2 without the standard Q&A samples first before this novel hybrid approach was finalised.
 
-#### 6.2.3.2 Implementation
+#### 6.2.3.2 - Implementation
 
 The hybrid training was implemented using the SFTTrainer from the trl library. A custom formatting function was designed to dynamically construct training examples using the model's chat template, inserting the synthetic thinking content for the augmented samples.
 
-#### 6.2.3.3 Fine-Tuning as Regularisation
+#### 6.2.3.3 - Fine-Tuning as Regularisation
 
 The final design mixes the ~18,000 synthetic CoT samples with the standard question-answer samples at a ratio of approximately 1:5. This treats the data as a form of bidirectional regularisation. The CoT samples periodically "remind" the model how to reason, while the more numerous standard samples prevent it from overfitting on the synthetic CoT. The final benchmark confirmed this design was highly successful.
 
-#### 6.2.3.4 Alternative Design: Sequential Fine-Tuning
+#### 6.2.3.4 - Alternative Design: Sequential Fine-Tuning
 
 An alternative, sequential fine-tuning approach was also considered. This method involved two distinct steps. First, the model would undergo LoRA fine-tuning on the Mult-IT dataset to improve linguistic performance, just as in the first experiment. Afterwards, a second round of fine-tuning would be performed exclusively on the synthetic CoT data to restore the lost reasoning, similar to the second iteration.
 
 However, this design was rejected because it is fundamentally suboptimal. The first training phase causes the model to suffer catastrophic forgetting of its original reasoning ability. The second phase would therefore not be preserving an existing skill but attempting to re-teach it from scratch using a limited dataset. The model's original reasoning was developed by its creators using sophisticated techniques like RLVR. Any re-taught ability would likely be a pale imitation of this powerful, pre-existing function. The final hybrid design is superior because it mixes both data types, allowing the model to learn new linguistic patterns while simultaneously being "reminded" how to reason, thus preserving its core capabilities.
 
-# 7 METHODOLOGY & IMPLEMENTATION
+# 7 - Methodology & Implementation
 
 This chapter details the strategic methods and concrete technical implementations used in the project. It is structured in two phases. The first phase describes the design and validation of the analytical framework, a novel analytical contribution used to test the project's primary hypotheses on model performance. The second phase will detail the fine-tuning intervention that produced the final model artefacts using a novel hybrid training method.
 
-## 7.1 Phase 1: Analytical Framework for Benchmarking
+## 7.1 - Phase 1: Analytical Framework for Benchmarking
 
-### 7.1.1 Benchmarking for Standard Non-Reasoning
+### 7.1.1 - Benchmarking for Standard Non-Reasoning
 
-#### 7.1.1.1 Methodology
+#### 7.1.1.1 - Methodology
 
 The core method involved a standardised, zero-shot evaluation on the ITALIC benchmark [Seveso et al., 2025]. This approach was applied consistently across all models to ensure fair and reliable comparisons. The initial pipeline was carefully implemented based on the descriptions in the original ITALIC paper.
 
-#### 7.1.1.2 Implementation
+#### 7.1.1.2 - Implementation
 
 For the Llama, Mistral, and Qwen model families, the pipeline was implemented using the vLLM library. This choice was crucial for efficiently processing the 10,000-sample dataset on a single GPU. The codebase was built with a modular, class-based architecture (e.g., `QwenBenchmark`, `Llama31Benchmark`). This design simplified the workflow, making it easy to benchmark different model sizes and configurations without code repetition. Configuration for each experiment was managed through dedicated classes like `QwenBenchmarkConfig`, which allowed for precise control over parameters such as `model_name`, `batch_size`, and `max_new_tokens`.
 
@@ -726,38 +726,38 @@ A key difference in implementation was required for Magistral-Small. At the time
 
 The `QwenBenchmark`, `Llama31Benchmark`, and `MagistralBenchmark` classes include a `_merge_lora_adapters` method, which uses the peft library to load a trained LoRA adapter, merge its weights with the base model, and then load the resulting merged model into vLLM for high-speed inference. This integrated workflow was essential for efficiently evaluating the artefacts produced in the second phase of the project.
 
-#### 7.1.1.3 Benchmarking Hyperparameters
+#### 7.1.1.3 - Benchmarking Hyperparameters
 
 Most hyperparameters, such as `batch_size`, depend on the available GPU memory and do not affect the model's accuracy. For all non-reasoning evaluations, greedy decoding was used to ensure deterministic and consistent outputs as outlined in the ITALIC paper.
 
 - For the Llama 3.1 8B Ita and Mistral NeMo models, the parameters were set to `max_new_tokens=350` for both models and `max_length=8192` for NeMo.
 - For the Qwen3 series and Magistral-Small, the parameters were set to `max_length=8192` and `max_new_tokens=150`.
 
-### 7.1.2 Benchmarking for Reasoning
+### 7.1.2 - Benchmarking for Reasoning
 
-#### 7.1.2.1 Methodology
+#### 7.1.2.1 - Methodology
 
 The reasoning-capable models were benchmarked twice: once with reasoning disabled to set a baseline, and once with reasoning enabled to measure the performance change. This comparative method forms the basis of the project's novel analytical contribution.
 
-#### 7.1.2.2 Implementation
+#### 7.1.2.2 - Implementation
 
 - **Qwen3 Series (Native API)**: The Qwen3 models provide a native API for enabling reasoning at the inference level. As shown in the `QwenReasoningBenchmark` class, the call to `self.model.chat()` was modified to include the argument `chat_template_kwargs={"enable_thinking": True}`. This flag instructs the model to generate its internal monologue within `<think>` tags.
 - **Magistral-Small (Manual Template Construction)**: Magistral-Small requires a more manual implementation. Its tokenizer does not have an automated flag for reasoning. Instead, the `format_prompt` function in the `MagistralFineTuning` class was engineered to manually construct the chat template according to the model's documentation, correctly placing the `<think>` tags between the `[INST]...[/INST]` user tags and the final answer.
 
-#### 7.1.2.3 Reasoning Hyperparameters
+#### 7.1.2.3 - Reasoning Hyperparameters
 
 For the reasoning-enabled benchmarks, a non-deterministic sampling strategy was required, as greedy decoding can cause performance degradation and endless repetitions in the models' thought processes [Qwen Team, 2024b].
 
 - For the Qwen3 series, the models were configured with a Temperature of 0.6, TopP of 0.95, and TopK of 20, as recommended by the model's documentation [Qwen Team, 2024b].
 - For Magistral-Small, the configuration used a temperature of 0.7 and top_p of 0.95 [Mistral AI, 2025].
 
-### 7.1.3 Prompting & Answer Parsing
+### 7.1.3 - Prompting & Answer Parsing
 
-#### 7.1.3.1 Methodology
+#### 7.1.3.1 - Methodology
 
 A data handling protocol was essential for the integrity of the results. This involved using specific prompt templates for each evaluation mode and implementing parsers capable of accurately extracting answers from varied model outputs.
 
-#### 7.1.3.2 Implementation
+#### 7.1.3.2 - Implementation
 
 Two primary prompt templates were implemented. For non-reasoning evaluations, the prompt was identical to the one used in the original ITALIC paper. For reasoning-enabled evaluations, this was extended with an instruction for the model to "think briefly" and conclude with a `FINALE: X` tag, as detailed in the Specifications (Section 5.2).
 
@@ -768,31 +768,31 @@ This necessitated two separate answer extraction functions:
 
 This dual-parser system was a crucial implementation detail for ensuring accurate, automated scoring across all experimental conditions.
 
-### 7.1.4 Framework Validation & Reliability
+### 7.1.4 - Framework Validation & Reliability
 
-#### 7.1.4.1 Methodology
+#### 7.1.4.1 - Methodology
 
 The entire analytical framework was validated by replicating the published results for Llama 3.1 8B Ita and Mistral NeMo from the original ITALIC paper.
 
-#### 7.1.4.2 Outcome
+#### 7.1.4.2 - Outcome
 
 The framework successfully met the strict validation criteria. The replicated scores were highly accurate (e.g., within 0.17 percentage points for Llama 3.1 8B Ita). This successful validation provides definitive proof of the framework's reliability and confirms that the implementation is correct, serving as "adequate and effective testing". This trusted pipeline was then used for all subsequent evaluations.
 
-## 7.2 Phase 2: Fine-Tuning Intervention & Artefact Creation
+## 7.2 - Phase 2: Fine-Tuning Intervention & Artefact Creation
 
 This phase addressed the second hypothesis: that a targeted intervention could improve non-reasoning performance while preserving the model's core reasoning ability. The initial fine-tuning experiments revealed an unexpected and critical challenge (catastrophic forgetting of the model's reasoning abilities) which required the development of a novel hybrid training technique.
 
-### 7.2.1 LoRA Fine-Tuning
+### 7.2.1 - LoRA Fine-Tuning
 
-#### 7.2.1.1 Methodology
+#### 7.2.1.1 - Methodology
 
 LoRA was chosen for its parameter efficiency and to mitigate the risk of catastrophic forgetting as detailed in Section 3.3. As detailed in Section 3.4, QLoRA was selected for the larger Magistral-Small model as it enables fine-tuning on quantised models, making the process feasible on the available hardware. The primary training data was the Mult-IT dataset [Seveso et al., 2025]. This choice was the result of a systematic investigation; preliminary experiments with more specialised datasets like MorphyNet proved ineffective as specified in section 6.2.1.3.
 
-#### 7.2.1.2 Implementation
+#### 7.2.1.2 - Implementation
 
 For Magistral-Small, the `MagistralFineTuning` class implemented QLoRA by first configuring a `BitsAndBytesConfig` for 4-bit nf4 quantisation, and then calling `prepare_model_for_kbit_training` to correctly prepare the quantized model for training. Training was managed by the `SFTTrainer`, which was configured to use an 8-bit AdamW optimizer to further manage memory usage. For all models, training efficiency was maximised by enabling `sequence packing=True` in the `SFTConfig`, which combines multiple short examples into a single sequence to improve throughput.
 
-#### 7.2.1.3 LoRA Hyperparameters
+#### 7.2.1.3 - LoRA Hyperparameters
 
 To ensure the fine-tuning process can be reproduced, a consistent set of hyperparameters was used for the LoRA configuration, based on established best practices.
 
@@ -801,39 +801,39 @@ To ensure the fine-tuning process can be reproduced, a consistent set of hyperpa
 - **Dropout = 0.1**: A standard dropout rate was applied to the LoRA layers for regularisation, which helps prevent overfitting [Wang et al., 2024].
 - **Target Modules**: LoRA was applied to all linear layers within the model's attention blocks (`q_proj`, `k_proj`, `v_proj`, `o_proj`) and the feed-forward networks (`gate_proj`, `up_proj`, `down_proj`).
 
-### 7.2.2 Iterative Experimental Process & Novel Hybrid Technique
+### 7.2.2 - Iterative Experimental Process & Novel Hybrid Technique
 
 The initial fine-tuning attempt revealed a critical flaw, necessitating an iterative experimental process that culminated in a novel hybrid training technique.
 
-#### 7.2.2.1 Regular SFT
+#### 7.2.2.1 - Regular SFT
 
 The first iteration used standard Supervised Fine-Tuning (SFT) on the Mult-IT dataset. While this successfully improved non-reasoning performance, it led to a catastrophic degradation of the reasoning function, as analysed in Section 9.4.1.2.
 
-#### 7.2.2.2 CoT-Only Training
+#### 7.2.2.2 - CoT-Only Training
 
 To diagnose and solve this issue, a second experiment was designed. This involved fine-tuning the model exclusively on a dataset of synthetic CoT examples. The benchmarking pipeline was adjusted to do so by simply passing the training dataset instead of the benchmarking dataset. A diagnostic training run on this synthetic data confirmed it successfully restored the model's reasoning ability (Section 9.4.2).
 
-#### 7.2.2.3 Hybrid Training Method
+#### 7.2.2.3 - Hybrid Training Method
 
 These preliminary experiments established that neither data format alone was sufficient. This led to the design of the final, novel hybrid training method which is a novel technical contribution.
 
-##### 7.2.2.3.1 Methodology
+##### 7.2.2.3.1 - Methodology
 
 The hybrid dataset was created by augmenting the Mult-IT training data with synthetic CoT examples at a ratio of approximately 1:5, treating the CoT data as a form of regularisation, as discussed in the Design chapter.
 
-##### 7.2.2.3.2 Implementation
+##### 7.2.2.3.2 - Implementation
 
 The hybrid training was implemented using a sophisticated, adaptive training system. A `ThinkingMode` enum was used to control the training type. The configuration classes (e.g., `QwenFineTuningConfig`) were implemented to automatically adjust hyperparameters based on this mode; for example, when a thinking mode was enabled, `max_length` was increased and `batch_size` was reduced to accommodate the longer context windows. The `format_prompt` function then used this configuration to dynamically check each data sample for a 'thinking' key and apply the correct chat template for the respective model. This sophisticated, adaptive implementation was the key to successfully training a model that excelled in both non-reasoning and reasoning modes, as demonstrated in the final results (Section 9.4.3).
 
-# 8 RESULTS, ANALYSIS & EVALUATION
+# 8 - Results, Analysis & Evaluation
 
 This chapter measures the performance of the selected models against the stated objectives. The primary focus will be on the Qwen3 8B model, with other models serving as controls to validate the results. Statistical significance is shown using McNemar's Test with a significance threshold of p &lt; 0.01. The code used for this computation is available in Appendix E.
 
-## 8.1 Baseline Validation
+## 8.1 - Baseline Validation
 
 The project began by replicating the published ITALIC benchmark results for key models (Llama 3.1 8B Ita and Mistral NeMo). This section presents the findings for Llama 3.1 8B Ita, the best-performing small-scale model from the original study [Seveso et al., 2025].
 
-### 8.1.1 Llama 3.1 8B Ita
+### 8.1.1 - Llama 3.1 8B Ita
 
 The replicated scores are presented in Table 9.1. The results demonstrate a very close alignment with the reference scores published in the ITALIC paper [Seveso et al., 2025].
 
@@ -857,7 +857,7 @@ The results were highly consistent across all three runs. The standard deviation
 
 The successful replication of the baseline results validates the pipeline. This ensures that subsequent evaluations of other models are reliable and that any observed performance differences are attributable to the models themselves, not variations in the testing procedure.
 
-### 8.1.2 Mistral NeMo
+### 8.1.2 - Mistral NeMo
 
 To further validate the pipeline, the multilingual model Mistral NeMo was also evaluated. This model serves as a control. The results are shown in Table 9.2.
 
@@ -881,7 +881,7 @@ The replicated results for Mistral NeMo also align closely with the ITALIC paper
 
 Similar to the previous validation, the results were stable across three runs. The standard deviation remained low at 1.84. This confirms that the experimental framework is robust and can reliably benchmark different models.
 
-## 8.2 Reasoning Models (Reasoning Disabled)
+## 8.2 - Reasoning Models (Reasoning Disabled)
 
 Following the baseline validation, modern reasoning-capable models were evaluated. Their reasoning capabilities were disabled for this initial test. This step establishes a performance baseline for their underlying architecture(s). The results are shown in Table 9.3, alongside key reference models for comparison.
 
@@ -901,7 +901,7 @@ When comparing 8B parameter models, the performance gap between the two main cat
 
 Furthermore, older models trained only on Italian data show a much higher average difference of 5.11. This suggests that newer open models are effectively closing the gap with proprietary models in terms of balanced multilingual cultural alignment.
 
-## 8.3 Reasoning Models (Reasoning Enabled)
+## 8.3 - Reasoning Models (Reasoning Enabled)
 
 To test the project's primary hypothesis, the same reasoning-capable models were evaluated again with their reasoning capabilities enabled. This analysis measures the direct impact of the reasoning process on performance over the previously established baseline with reasoning disabled. The improvements achieved by reasoning remain consistent with expectations.
 
@@ -929,7 +929,7 @@ It is important to note that performance did not improve in every single case. T
 
 ![alt text]({BASE}/fig-9-2.png)
 
-### 8.3.1 Analysis of Scaling Effects
+### 8.3.1 - Analysis of Scaling Effects
 
 A key aspect of this investigation is understanding how the benefits of reasoning change as models increase in size. The data from the Qwen3 series provides a clear view of these scaling effects. As illustrated in Figure 9.3, both reasoning and non-reasoning modes show improved performance with increased model size. However, the performance uplift gained by enabling reasoning is most significant in the smaller models and gradually diminishes as the models become larger.
 
@@ -943,7 +943,7 @@ It is worth noting that the Magistral-Small (24B) model presents a slight anomal
 
 A weakness of this analysis is the focus on small to medium-sized models. Without evaluating very large-scale models, it is difficult to determine if this trend of diminishing returns continues or plateaus. Furthermore, the findings are based on a limited number of model architectures, and averaging the results across a wider variety of architectures would provide a more generalised conclusion on scaling effects.
 
-### 8.3.2 Analysis of Reasoning Process
+### 8.3.2 - Analysis of Reasoning Process
 
 To understand why reasoning improves performance, a qualitative analysis of the models' thought processes was conducted. This analysis supports the theory from Section 3.2 that the performance gain is due to the model breaking down the problem using more output tokens instead of an artifact of more training data. The thinking process was consistent across different model sizes and families, including Magistral-Small. The reasoning process also allowed the model to combine different concepts, such as grammar rules and word types, which it may not be capable of doing when forced to produce an immediate answer. The full outputs for these examples are detailed in Appendix A: Reasoning Process Examples.
 
@@ -953,17 +953,17 @@ With reasoning enabled, the model adopted a systematic and "transparent" approac
 
 However, the reasoning process is not infallible. There are instances where the model articulates a logical thought process but still arrives at an incorrect conclusion as shown in Appendix 12.1.2. This often occurs when the model's underlying knowledge base is flawed or incomplete for a specific, nuanced question. For example, when asked to identify the correct function of a verb in a sentence, the model correctly identified the grammatical concept (the function of "essere" as a copula) but then proceeded to misinterpret the role of the verb in each of the provided options. It correctly identified the task but its analysis of each sentence was flawed, leading it to the wrong answer. This demonstrates a crucial distinction: the ability to reason is separate from the accuracy of the knowledge the model is reasoning about. The model can follow a logical structure but still fail if its initial premises or linguistic knowledge are incorrect.
 
-## 8.4 Fine-Tuning Interventions
+## 8.4 - Fine-Tuning Interventions
 
 Following the successful validation of the initial hypothesis (that reasoning capabilities can significantly improve linguistic performance), the project moved to its second primary objective. This phase investigates whether targeted fine-tuning can embed these linguistic improvements directly into the model, making them accessible in the faster, more efficient non-reasoning state. The goal is to achieve better performance with lower computational cost and latency while still keeping and possibly improving the reasoning capabilities.
 
-### 8.4.1 Fine-Tuning Intervention (Iteration 1)
+### 8.4.1 - Fine-Tuning Intervention (Iteration 1)
 
 The first iteration of this fine-tuning process yielded mixed results. On one hand, the intervention was highly successful for the models in their non-reasoning configuration. As hypothesised from the gaps in Section 2.5.3, performance in the weaker linguistic domains saw substantial gains across all tested models, effectively closing the gap with cultural knowledge and, in some cases, even surpassing it. Crucially, these improvements were achieved without any significant degradation in other categories, demonstrating a successful transfer of knowledge without catastrophic forgetting.
 
 However, this success came at a cost. A preliminary analysis revealed that this specialised linguistic training had a severe and detrimental impact on the models' core reasoning capabilities.
 
-#### 8.4.1.1 Evaluation of Fine-Tuned Models (Reasoning Disabled)
+#### 8.4.1.1 - Evaluation of Fine-Tuned Models (Reasoning Disabled)
 
 To quantify the impact of the fine-tuning, the models were evaluated using the already established benchmarking pipeline with their reasoning capabilities disabled. The results, presented in Table 9.5, show a consistent pattern of improvement across the board, validating the effectiveness of the LoRA-based approach for enhancing linguistic skills.
 
@@ -979,7 +979,7 @@ Magistral-Small was evaluated as a reasoning control. Despite being trained with
 
 In summary, the first iteration achieved its primary goal for the non-reasoning state. The intervention systematically and significantly improved performance on the targeted linguistic weaknesses across all models, narrowing or even inverting the original performance gap without causing degradation in areas of existing strength. This improvement was confirmed to be statistically significant, with a McNemar's test yielding a p-value of approximately 1.94e-14. This establishes a new, stronger baseline for the models in their efficient, non-reasoning mode.
 
-#### 8.4.1.2 Evaluation of Fine-Tuned Models (Reasoning Enabled)
+#### 8.4.1.2 - Evaluation of Fine-Tuned Models (Reasoning Enabled)
 
 When the same fine-tuned models were evaluated with their reasoning capabilities enabled, the results were severely negative. The evaluation revealed a catastrophic degradation in the models' ability to "think". All fine-tuned reasoning models (Qwen3 4B, Qwen3 8B, and Magistral-Small) effectively forgot how to perform step-by-step reasoning.
 
@@ -989,19 +989,19 @@ When the same fine-tuned models were evaluated with their reasoning capabilities
 
 This collapse is reflected in the stark performance drops. For Qwen3 8B, the total accuracy plummeted by 15.16 percentage points, from a baseline of 74.49% down to 59.33%. This collapse was confirmed to be statistically significant by a McNemar's test, which yielded a p-value of approximately 9.09e-24. This degradation was uniform across both major categories: "Culture and Commonsense" fell by 15.88 points (from 73.13% to 57.25%), and "Language Understanding" dropped by 14.07 points (from 76.49% to 62.42%). Similar catastrophic degradations were observed for Qwen3 4B (a 14.28 point drop) and Magistral-Small (a 14.3 point drop), confirming this is a systemic issue.
 
-##### 8.4.1.2.1 Analysis of Reasoning Degradation
+##### 8.4.1.2.1 - Analysis of Reasoning Degradation
 
 When prompted to reason, the fine-tuned models produced empty `<think>` tags. They generated no intermediate thought process or step-by-step analysis as shown in Appendix 12.2. Instead, they defaulted to providing a direct, final answer, mirroring the behaviour of their non-reasoning state. This occurred regardless of whether the final answer was correct or incorrect.
 
 This behaviour strongly suggests that the fine-tuning process overwrote the model's learned ability to reason. The dataset used for fine-tuning, while effective for teaching linguistic patterns, consisted solely of question-answer pairs. It did not contain examples of Chain-of-Thought (CoT) reasoning. Conventional wisdom in training reasoning models indicates that they require exposure to datasets that explicitly model this thought process. The alternative, Reinforcement Learning from Verifiable Rewards (RLVR), is far more computationally expensive and time-consuming than the standard PEFT techniques used in this project. By training on a dataset without CoT examples, the model was effectively taught to ignore the reasoning step, leading to this catastrophic failure.
 
-### 8.4.2 Fine-Tuning Intervention (Iteration 2)
+### 8.4.2 - Fine-Tuning Intervention (Iteration 2)
 
 To address the catastrophic forgetting of reasoning abilities, a third fine-tuning iteration was conducted using a novel technique. This approach uses a hybrid mechanism where the model to be fine-tuned first generates its own "thinking" tokens for a subset of the training data. These synthetic CoT examples are then injected back into the training dataset.
 
 For this initial test, a conventional approach was taken as a preliminary step. A subset of 18,000 samples was created, consisting exclusively of questions where the model had generated correct answers and their corresponding synthetic CoT reasoning. The original non-thinking samples were removed for this experiment. This allowed for a focused evaluation of whether training on CoT data could restore and improve reasoning performance. The accuracy of this data is not important for the purposes of this diagnostic test.
 
-#### 8.4.2.1 Evaluation of Fine-Tuned Models (Reasoning Disabled)
+#### 8.4.2.1 - Evaluation of Fine-Tuned Models (Reasoning Disabled)
 
 This training approach had almost no effect on the models' non-reasoning performance. Qwen3 8B saw a negligible overall improvement of just 0.2 points. Its "Culture & Commonsense" score dipped slightly (-0.21 points) while its "Language Understanding" score saw a minor increase (+0.55 points). The other models, Qwen3 4B (+0.1 points) and Magistral-Small (+0.17 points), also remained static. However, a McNemar's test on the full dataset comparison showed that the overall improvement of 2.05% was statistically significant, with a p-value of approximately 4.2e-06.
 
@@ -1011,7 +1011,7 @@ This training approach had almost no effect on the models' non-reasoning perform
 
 This outcome demonstrates a clear trade-off. While training exclusively on CoT data successfully restores and boosts reasoning, it fails to deliver the linguistic improvements in the non-reasoning state that were achieved in the first iteration. This leaves a gap in the analysis, as it is unclear whether fine-tuning on a much larger dataset composed exclusively of CoT examples would cause a similar degradation in non-reasoning performance to what was observed in the reverse scenario.
 
-#### 8.4.2.2 Evaluation of Fine-Tuned Models (Reasoning Enabled)
+#### 8.4.2.2 - Evaluation of Fine-Tuned Models (Reasoning Enabled)
 
 When reasoning was enabled, all models not only retained their lost abilities but surpassed their original baseline performance. 
 
@@ -1021,17 +1021,17 @@ When reasoning was enabled, all models not only retained their lost abilities bu
 
 Qwen3 8B saw its total accuracy jump by 3.38 percentage points over its original reasoning baseline, reaching 77.87%. A McNemar's test confirmed this improvement was statistically significant, with a p-value of approximately 6.89e-12. This improvement was balanced, with "Culture & Commonsense" increasing by 3.44 points and "Language Understanding" by 3.3 points. Similar strong gains were observed for Qwen3 4B (+3.83 points overall) and Magistral-Small (+2.99 points overall). This confirms that training on synthetic CoT data is a highly effective method for enhancing a model's reasoning capabilities. This sets the stage for a true hybrid approach, which will combine both standard and CoT samples in the training data to pursue simultaneous improvements in both reasoning and non-reasoning modes.
 
-##### 8.4.2.2.1 Analysis of Restored Reasoning
+##### 8.4.2.2.1 - Analysis of Restored Reasoning
 
 A qualitative analysis of the model outputs confirms that fine-tuning on CoT data successfully restored the models' reasoning abilities. As shown in the examples in Appendix C, all the fine-tuned reasoning models (Qwen3 4B, Qwen3 8B, and Magistral-Small) are once again able to generate a step-by-step internal monologue within the `<think>` tags before providing a final answer. The functionality is still the same as what was discussed in Section 8.3.1, so no further low-level analysis is needed.
 
 This restored capability is evident regardless of whether the final answer is correct or incorrect. The models consistently articulate a logical process, identifying the core task, recalling relevant rules, and evaluating the options. This behaviour is the expected outcome, as training with CoT examples is the industry-standard method for teaching models to reason. The success of this conventional approach validates the synthetic CoT generation and provides a strong foundation for the next step: testing the full hybrid training method to improve the non-reasoning performance as well as to maintain and enhance both the reasoning capabilities.
 
-### 8.4.3 Fine-Tuning Intervention (Iteration 3 – Hybrid Approach)
+### 8.4.3 - Fine-Tuning Intervention (Iteration 3 – Hybrid Approach)
 
 The final iteration of fine-tuning tested the second hypothesis of this phase: that a hybrid training dataset, combining both standard question-answer pairs and synthetic Chain-of-Thought (CoT) examples, could simultaneously improve both non-reasoning and reasoning performance. This approach is specifically designed for hybrid reasoning models like Qwen3 and Magistral-Small, which can switch between operational modes.
 
-#### 8.4.3.1 Evaluation of Fine-Tuned Models (Reasoning Disabled)
+#### 8.4.3.1 - Evaluation of Fine-Tuned Models (Reasoning Disabled)
 
 The results for the non-reasoning state were highly successful and closely mirrored the outcomes of the first iteration. 
 
@@ -1045,7 +1045,7 @@ Qwen3 4B achieved an overall improvement of 3.84 points, with culture improving 
 
 In terms of absolute performance, the analysis comparing these models to their proprietary counterparts of a similar size still applies. As detailed in section 9.4.1.1, while the fine-tuned open-weight models show significant improvement and better balance between cultural and linguistic tasks, they still do not match the overall performance of models like GPT-4o Mini or Gemini 1.5 Flash. However, the intervention has successfully brought their capabilities closer, validating the effectiveness of the fine-tuning strategy. The next crucial step is to determine if this hybrid method successfully preserved the models' ability to think.
 
-#### 8.4.3.2 Evaluation of Fine-Tuned Models (Reasoning Enabled)
+#### 8.4.3.2 - Evaluation of Fine-Tuned Models (Reasoning Enabled)
 
 The hybrid training approach proved to be a resounding success for the reasoning-enabled state. Not only was the catastrophic forgetting of the thinking capability from the first iteration completely avoided, but the models also demonstrated improved reasoning performance over their original baseline.
 
@@ -1057,13 +1057,13 @@ For Qwen3 8B, the overall accuracy increased by 3.08 points over its original re
 
 The other models showed similarly positive outcomes. Qwen3 4B achieved an overall improvement of 2.81 points, with increases in both culture and language areas and no significant dips in any category. Likewise, Magistral-Small saw a 2.59 point increase, showing similar positive outcomes to Qwen3 8B across the board. These results strongly suggest that injecting a relatively small amount of CoT data into a larger dataset is sufficient for a model to retain and even enhance its ability to reason.
 
-##### 8.4.3.2.1 Analysis of Hybrid Reasoning
+##### 8.4.3.2.1 - Analysis of Hybrid Reasoning
 
 A qualitative analysis of the outputs confirms that the hybrid training was successful. As shown in the examples in Appendix D, the models are once again able to produce a step-by-step internal monologue similar to what was analysed in Section 8.3.1. For a question about syllabic division, the model correctly breaks down the word, considers the options, and applies its knowledge to find the correct answer, a task its non-reasoning counterpart failed. This behaviour, which was lost after the first fine-tuning iteration, has been fully restored and was observed across all tested models, including Qwen3 4B and Magistral-Small.
 
 Even when the model arrives at an incorrect answer, the underlying reasoning process is still sound. For instance, when asked for the plural of "film," the model correctly identifies the linguistic ambiguity between "filmi" and "filmati" and attempts to reason through the nuances, even though its final choice is wrong. This demonstrates that the ability to reason has been fundamentally restored, separating the logical process from the factual accuracy of the knowledge base.
 
-## 8.5 Weaknesses of Evaluation
+## 8.5 - Weaknesses of Evaluation
 
 This evaluation has several limitations. These weaknesses are primarily due to resource constraints and the novelty of the models studied. They offer clear directions for future work.
 
@@ -1075,7 +1075,7 @@ Third, the evaluation did not include very large-scale models. This was due to t
 
 Finally, fine-tuning was only performed on smaller models. It is unclear if the successful hybrid-tuning approach would be equally effective at a larger scale. The computational cost of fine-tuning models with more than 30 billion parameters was prohibitive. Future work should test if these fine-tuning effects are consistent across different model scales.
 
-## 8.6 Conclusion of Findings
+## 8.6 - Conclusion of Findings
 
 The results from this comprehensive evaluation confirm the success of all the project's hypotheses. The investigation has demonstrated a clear and effective pathway to improving the linguistic performance of smaller, open-weight language models for the Italian language.
 
@@ -1089,73 +1089,73 @@ Second, the project successfully analysed and overcame the challenges of fine-tu
 
 Crucially, these improvements did not come at the cost of the models' existing strengths. The fine-tuning process avoided catastrophic forgetting, as performance in "Culture & Commonsense" categories was maintained or slightly improved. The final models are now better aligned linguistically, making them more practical for everyday usage like customer service bots, where the speed of the non-reasoning mode is essential. For more difficult situations that require deeper analysis, the improved reasoning capability remains fully functional, providing a versatile and powerful tool.
 
-# 9 LEGAL, SOCIAL, ETHICAL & PROFESSIONAL ISSUES
+# 9 - Legal, Social, Ethical & Professional Issues
 
 Developing and deploying LLMs involves significant responsibilities that extend beyond technical implementation. This chapter provides a thoughtful discussion of the legal, social, ethical, and professional issues relevant to this project. It outlines the professional standards that guided the work, the ethical implications of enhancing Italian LLMs, and the project's approach to software trustworthiness, sustainability, and its potential economic impact. This discussion demonstrates a commitment to responsible research and development in AI.
 
-## 9.1 Professional Standards, Data Privacy, & Licensing
+## 9.1 - Professional Standards, Data Privacy, & Licensing
 
 This project was conducted with careful consideration for the professional standards outlined by the British Computer Society (BCS). These guidelines set out a code of ethics and standards of best practice that govern decisions and behaviours in AI research and development. In line with these principles, the project maintained a commitment to public interest, professional competence, and integrity. Key to this was the diligent management of intellectual property and data privacy, ensuring all resources were used responsibly.
 
-### 9.1.1 Data & Privacy
+### 9.1.1 - Data & Privacy
 
 While the datasets used in this project are derived from public examination materials, the principles of data privacy, as guided by UK GDPR, were respected throughout. The research adhered to the principle of data minimisation, ensuring that only the information necessary for benchmarking and fine-tuning was processed. This approach ensures the ethical handling of the source material.
 
-### 9.1.2 Open-Source Components & Dataset Licenses
+### 9.1.2 - Open-Source Components & Dataset Licenses
 
 The research relied on several open-source and research-licensed resources. Full credit is given to the creators of these tools and datasets, which were essential for this work.
 
-#### 9.1.2.1 Datasets
+#### 9.1.2.1 - Datasets
 
 The primary benchmark, ITALIC, is available under an open-source MIT license. The fine-tuning dataset, Mult-IT, was used with explicit permission from its authors under a research-only license. All other experimental datasets, including MorphyNet, were also used in accordance with their open-source licenses.
 
-#### 9.1.2.2 Models & Libraries
+#### 9.1.2.2 - Models & Libraries
 
 The project utilised open-weight models, including Meta's Llama 3.1, Mistral AI's Mistral NeMo and Magistral-Small, and Alibaba's Qwen3. These were used in compliance with their respective community and open-source licenses (e.g., Apache 2.0). The entire implementation was built upon foundational open-source libraries such as Hugging Face transformers, peft, trl, and vLLM.
 
-## 9.2 Social & Ethical Implications
+## 9.2 - Social & Ethical Implications
 
 The core motivation of this project, as detailed in Section 1.1, is to address a significant ethical issue in modern AI: the strong Anglocentric and Western-centric bias in LLMs. By focusing on improving Italian language capabilities, this work aims to make AI more equitable and inclusive.
 
-### 9.2.1 Bias & Cultural Alignment
+### 9.2.1 - Bias & Cultural Alignment
 
 The performance gap between cultural and linguistic tasks identified in the literature (Section 2.1) represents a form of bias. Models that cannot grasp the fundamental rules of a language can perpetuate stereotypes, misunderstand user intent, and create frustrating experiences. This project directly confronts this by developing techniques to improve linguistic alignment, aiming to create models that are fairer and more effective for Italian users.
 
-### 9.2.2 Misinformation
+### 9.2.2 - Misinformation
 
 A significant ethical risk is that a more linguistically proficient Italian LLM could be used to generate convincing misinformation or propaganda. While this project's goal is positive, it is crucial to acknowledge that any advancement in language generation technology carries this dual-use risk. The open-weight nature of the models used means that responsible use is reliant on the ethics of the end-user.
 
-### 9.2.3 Accessibility
+### 9.2.3 - Accessibility
 
 On the positive side, this research contributes to the globalisation and accessibility of AI. By enhancing smaller, efficient models, this work helps ensure that advanced AI is not limited to those with massive computational resources or those who speak English. This promotes a more inclusive digital ecosystem where technology serves a wider range of cultures and languages.
 
-## 9.3 Environmental & Sustainability Issues
+## 9.3 - Environmental & Sustainability Issues
 
 The computational cost of training and running LLMs has a significant environmental impact due to high energy consumption. This project was designed with sustainability as a core principle.
 
 The decision to focus exclusively on smaller LLMs (under 35B parameters) was a deliberate choice to minimise the environmental footprint. Furthermore, the use of PEFT techniques, specifically LoRA and QLoRA, was central to this sustainable approach. As explained in the methodology (Section 7.2), these techniques allow for significant model specialisation while only training a tiny fraction of the parameters. This drastically reduces the energy and computational resources required compared to full fine-tuning, making the process more sustainable and accessible for the wider research community.
 
-## 9.4 Explainability, Trust, & Human Factors
+## 9.4 - Explainability, Trust, & Human Factors
 
 For AI systems to be adopted safely, users must be able to trust them. A key barrier to trust is the "black box" nature of many models, where the reasoning behind an answer is unclear. This project engages directly with this challenge through its focus on reasoning-capable models.
 
-### 9.4.1 Risk of Misinterpretation & Over-Reliance
+### 9.4.1 - Risk of Misinterpretation & Over-Reliance
 
 The CoT process explored in Section 3.2 is a powerful tool for explainability. By generating a step-by-step monologue, the model provides a transparent look into its analytical process. However, as the analysis in Section 8.3 showed, an explanation is not a guarantee of correctness. The project found instances where a model produced a coherent reasoning chain but still arrived at the wrong answer due to a flawed knowledge base. This is a critical finding that highlights the ongoing challenge of hallucination and the risk of over-reliance on AI-generated explanations.
 
-### 9.4.2 Communicating Uncertainty & Human-in-the-Loop Use
+### 9.4.2 - Communicating Uncertainty & Human-in-the-Loop Use
 
 This project's findings underscore the importance of positioning these models as decision support agents, not autonomous decision-makers. The reasoning outputs are designed to augment human intelligence, providing a logical framework that a user can review, critique, and ultimately verify. A human-in-the-loop approach is essential for the responsible deployment of this technology. The user must remain the final authority, using the model's explanation as a guide rather than an infallible proof. This critical awareness is essential for mitigating risks and building genuine, well-placed trust in AI systems.
 
-## 9.5 Economic & Commercial Factors
+## 9.5 - Economic & Commercial Factors
 
 The approach taken in this project has direct and positive economic implications. By focusing on improving smaller, efficient, open-weight models, this research helps to lower the barrier to AI adoption for Italian and European businesses.
 
 Commercially, the high cost of proprietary LLM APIs can be prohibitive, particularly for Small and Medium-sized Enterprises (SMEs). The fine-tuned models produced in this project offer a viable, cost-effective alternative. Businesses can deploy these linguistically competent models for applications such as customer service automation, content creation, and internal data analysis without being locked into expensive, closed-source ecosystems. This democratises access to advanced AI, fostering innovation and allowing a wider range of companies to compete. Furthermore, this work contributes to a more diverse and competitive open-source AI landscape, reducing economic dependency on a small number of large technology corporations.
 
-# 10 CONCLUSION
+# 10 - Conclusion
 
-## 10.1 Summary of Work
+## 10.1 - Summary of Work
 
 This project investigated the performance gap between cultural knowledge and linguistic understanding in smaller LLMs for the Italian language. It aimed to test two core hypotheses: first, that modern reasoning capabilities could improve linguistic performance, and second, that a targeted fine-tuning intervention could make these improvements available in a more efficient, non-reasoning mode while keeping reasoning intact. The investigation was a success, validating both hypotheses and producing novel contributions in the process.
 
@@ -1163,15 +1163,17 @@ The project's novel analytical contribution was the exploration of reasoning (a 
 
 Solving this required the project's novel technical contribution: a hybrid training method that mixes standard question-answer pairs with synthetically generated CoT examples. This was necessary because traditional methods for training reasoning models, such as RLVR, are computationally intensive, and datasets with pre-existing CoT examples are rare. This hybrid approach successfully met the goals of the second hypothesis by improving the models' performance in both their efficient non-reasoning and advanced reasoning modes. On average, the fine-tuning increased non-reasoning performance by 3.6 percentage points and reasoning performance by 2.93 percentage points, all while completely avoiding the degradation of the reasoning function.
 
-## 10.2 Limitations
+## 10.2 - Limitations
 
 This research has several limitations, as detailed in Section 8.5. The study focused exclusively on a limited range of smaller, open-weight models due to resource constraints and the novelty of hybrid reasoning architectures. Consequently, the effect of the hybrid fine-tuning technique at a much larger scale remains unexplored. It is possible that reasoning abilities in LLMs exhibit different emergent properties at very large parameter counts, similar to other capabilities. Furthermore, the analysis did not investigate whether fine-tuning on a large corpus of reasoning data would negatively impact non-reasoning performance.
 
-## 10.3 Future Work
+## 10.3 - Future Work
 
 Looking ahead, future work should extend this investigation to larger models. A key next step would be applying the hybrid training method to larger open-weight models to analyse how the benefits of reasoning scale. Furthermore, with the recent release of very large proprietary hybrid models like Anthropic's Claude 4 series, Google's Gemini 2.5, and OpenAI's GPT-5, an important avenue for future research would be to test if similar fine-tuning strategies can be applied to these state-of-the-art systems to further enhance their multilingual linguistic alignment.
 
-# 11 REFERENCES
+---
+
+# 11 - References
 
 [1] A. Ahuja, D. Datta, C. Agarwal, et al., "A Survey of Multilingual Reasoning in Language Models," arXiv preprint arXiv:2502.09457, 2025.
 
@@ -1289,13 +1291,15 @@ Looking ahead, future work should extend this investigation to larger models. A 
 
 [58] B. M. Montabes de la Cruz et al., "Decoding sound content in the early visual cortex of aphantasic participants," Current Biology, vol. 34, no. 21, pp. 5083–5089.e3, Nov. 2024.
 
-# 12 APPENDICES
+---
 
-## 12.1 Appendix A: Reasoning Process Examples
+# 12 - Appendices
+
+## 12.1 - Appendix A: Reasoning Process Examples
 
 This appendix provides examples of the full outputs generated by reasoning-capable models, as referenced in Section 9.3 Analysis of Reasoning Process. These examples illustrate the step-by-step "thinking" process that the models undertake when their reasoning capabilities are enabled.
 
-### 12.1.1 Example 1: Orthography Question
+### 12.1.1 - Example 1: Orthography Question
 
 The following example shows the thought process of a Qwen3 model for a question it answered incorrectly with reasoning disabled, but correctly with reasoning enabled.
 
@@ -1335,7 +1339,7 @@ The model's internal monologue demonstrates a clear, logical process. It correct
 
 ---
 
-### 12.1.2 Example 2: Incorrect Answer with Flawed Reasoning
+### 12.1.2 - Example 2: Incorrect Answer with Flawed Reasoning
 
 **Question:**  
 In quale delle seguenti frasi il verbo "essere" ha la funzione di copula?  
@@ -1375,11 +1379,11 @@ Even though the final answer is incorrect, the model still demonstrates a clear 
 
 ---
 
-## 12.2 Appendix B: Reasoning Degradation Examples
+## 12.2 - Appendix B: Reasoning Degradation Examples
 
 This appendix provides examples of the outputs from fine-tuned models when their reasoning capabilities were enabled, as referenced in the main report. These examples illustrate the "empty thinking" phenomenon where the models fail to generate a step-by-step thought process.
 
-### 12.2.1 Example 1: Incorrect Answer with Empty Reasoning
+### 12.2.1 - Example 1: Incorrect Answer with Empty Reasoning
 
 **Question:**  
 Sostituire nella frase seguente la parola "fatto" con una più appropriata: "Poi il dottore mi ha fatto alcune domande sulla mia vita privata."  
@@ -1396,7 +1400,7 @@ The `<think>` tag is completely empty. The model does not perform any analysis o
 
 ---
 
-### 12.2.2 Example 2: Correct Answer with Empty Reasoning
+### 12.2.2 - Example 2: Correct Answer with Empty Reasoning
 
 **Question:**  
 Chi è l'autore della poesia "Soldati"?  
@@ -1413,11 +1417,11 @@ Even when the model arrives at the correct answer, the reasoning process is abse
 
 ---
 
-## 12.3 Appendix C: Restored Reasoning Process Examples (Iteration 2)
+## 12.3 - Appendix C: Restored Reasoning Process Examples (Iteration 2)
 
 This appendix provides examples of outputs from models fine-tuned exclusively on synthetic Chain-of-Thought (CoT) data. These examples illustrate that the models have successfully recovered their ability to generate an internal monologue.
 
-### 12.3.1 Example 1: Correct Answer with Restored Reasoning
+### 12.3.1 - Example 1: Correct Answer with Restored Reasoning
 
 **Question:**  
 Individuare la proposizione eccettuativa nel periodo:  
@@ -1449,7 +1453,7 @@ The model successfully generates a detailed thought process. It correctly identi
 
 ---
 
-### 12.3.2 Example 2: Incorrect Answer with Restored Reasoning
+### 12.3.2 - Example 2: Incorrect Answer with Restored Reasoning
 
 **Question:**  
 Chi è l'autore della poesia "Soldati"?  
@@ -1483,7 +1487,7 @@ Even though the final answer is incorrect (the author is Ungaretti), the model s
 
 ---
 
-## 12.4 Appendix D: Code for Injecting CoT to Dataset
+## 12.4 - Appendix D: Code for Injecting CoT to Dataset
 
 The script below takes the CoT from the CSV file and injects it into the dataset for the appropriate question.
 
@@ -1617,7 +1621,7 @@ if __name__ == "__main__":
 
 ---
 
-## 12.5 Appendix E: Computing Statistical Significance
+## 12.5 - Appendix E: Computing Statistical Significance
 
 The script below computes the statistical significance using McNemar's test and also computes Chi-Squared by taking in the CSV files containing each question's response generated by the benchmarks.
 
@@ -1819,9 +1823,9 @@ if __name__ == "__main__":
 
 ---
 
-## 12.6 Appendix F: Full Results Tables
+## 12.6 - Appendix F: Full Results Tables
 
-### 12.6.1 Table 2: Model Details
+### 12.6.1 - Table 2: Model Details
 
 | Model Name       | Parameters (B) | Architecture        | Fine-Tuned | Notes                        |
 | ---------------- | -------------- | ------------------- | ---------- | ---------------------------- |
@@ -1837,7 +1841,7 @@ if __name__ == "__main__":
 
 ---
 
-### 12.6.2 Table 2: Culture & Common Sense Reasoning Results
+### 12.6.2 - Table 2: Culture & Common Sense Reasoning Results
 
 | Model            | Total | Culture | Commonsense | History | Geography | Literature | Art   | Civic Ed | Tourism |
 | ---------------- | ----- | ------- | ----------- | ------- | --------- | ---------- | ----- | -------- | ------- |
@@ -1848,7 +1852,7 @@ if __name__ == "__main__":
 
 ---
 
-### 12.6.3 Table 3: Language Understanding Results
+### 12.6.3 - Table 3: Language Understanding Results
 
 | Model            | Total | Language | Morphology | Orthography | Syntax | Lexicon | Synonyms |
 | ---------------- | ----- | -------- | ---------- | ----------- | ------ | ------- | -------- |
