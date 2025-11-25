@@ -6,8 +6,7 @@ enum BlogCategoriesEnum {
   SoftwareEngineering = "Software Engineering",
   ArtificialIntelligence = "Artificial Intelligence",
   Mathematics = "Mathematics",
-  FullStackWebProjects = "Full-Stack Projects",
-  BackendProjects = "Backend Projects",
+  Projects = "Projects",
   Other = "Other",
 }
 

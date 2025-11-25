@@ -206,55 +206,28 @@ const blogsMap: Database<BlogInterface> = {
     name: projectDatabaseMap[ProjectDatabaseKeys.ForumDiscussions].name,
     subtitle:
       projectDatabaseMap[ProjectDatabaseKeys.ForumDiscussions].description,
-    category: BlogCategoriesEnum.FullStackWebProjects,
+    category: BlogCategoriesEnum.Projects,
     skills: projectDatabaseMap[ProjectDatabaseKeys.ForumDiscussions].skills,
   },
-  [ProjectDatabaseKeys.RealTimeMessaging]: {
-    name: projectDatabaseMap[ProjectDatabaseKeys.RealTimeMessaging].name,
-    subtitle:
-      projectDatabaseMap[ProjectDatabaseKeys.RealTimeMessaging].description,
-    category: BlogCategoriesEnum.FullStackWebProjects,
-    skills: projectDatabaseMap[ProjectDatabaseKeys.RealTimeMessaging].skills,
-  },
-  [ProjectDatabaseKeys.AiGenerations]: {
-    name: projectDatabaseMap[ProjectDatabaseKeys.AiGenerations].name,
-    subtitle: projectDatabaseMap[ProjectDatabaseKeys.AiGenerations].description,
-    category: BlogCategoriesEnum.FullStackWebProjects,
-    skills: projectDatabaseMap[ProjectDatabaseKeys.AiGenerations].skills,
-  },
-  [ProjectDatabaseKeys.MusicStreaming]: {
-    name: projectDatabaseMap[ProjectDatabaseKeys.MusicStreaming].name,
-    subtitle:
-      projectDatabaseMap[ProjectDatabaseKeys.MusicStreaming].description,
-    category: BlogCategoriesEnum.FullStackWebProjects,
-    skills: projectDatabaseMap[ProjectDatabaseKeys.MusicStreaming].skills,
-  },
-  [ProjectDatabaseKeys.AiQuizzes]: {
-    name: projectDatabaseMap[ProjectDatabaseKeys.AiQuizzes].name,
-    subtitle: projectDatabaseMap[ProjectDatabaseKeys.AiQuizzes].description,
-    category: BlogCategoriesEnum.FullStackWebProjects,
-    skills: projectDatabaseMap[ProjectDatabaseKeys.AiQuizzes].skills,
-  },
-
   [ProjectDatabaseKeys.SymphonyTranslateBot]: {
     name: projectDatabaseMap[ProjectDatabaseKeys.SymphonyTranslateBot].name,
     subtitle:
       projectDatabaseMap[ProjectDatabaseKeys.SymphonyTranslateBot].description,
-    category: BlogCategoriesEnum.BackendProjects,
+    category: BlogCategoriesEnum.Projects,
     skills: projectDatabaseMap[ProjectDatabaseKeys.SymphonyTranslateBot].skills,
   },
   [ProjectDatabaseKeys.SymphonyWebhookBot]: {
     name: projectDatabaseMap[ProjectDatabaseKeys.SymphonyWebhookBot].name,
     subtitle:
       projectDatabaseMap[ProjectDatabaseKeys.SymphonyWebhookBot].description,
-    category: BlogCategoriesEnum.BackendProjects,
+    category: BlogCategoriesEnum.Projects,
     skills: projectDatabaseMap[ProjectDatabaseKeys.SymphonyWebhookBot].skills,
   },
 
   [ProjectDatabaseKeys.OsmosGame]: {
     name: projectDatabaseMap[ProjectDatabaseKeys.OsmosGame].name,
     subtitle: projectDatabaseMap[ProjectDatabaseKeys.OsmosGame].description,
-    category: BlogCategoriesEnum.Other,
+    category: BlogCategoriesEnum.Projects,
     skills: projectDatabaseMap[ProjectDatabaseKeys.OsmosGame].skills,
   },
   [ProjectDatabaseKeys.JavaCalculatorAssignment]: {
@@ -262,7 +235,7 @@ const blogsMap: Database<BlogInterface> = {
     subtitle:
       projectDatabaseMap[ProjectDatabaseKeys.JavaCalculatorAssignment]
         .description,
-    category: BlogCategoriesEnum.Other,
+    category: BlogCategoriesEnum.Projects,
     skills:
       projectDatabaseMap[ProjectDatabaseKeys.JavaCalculatorAssignment].skills,
   },

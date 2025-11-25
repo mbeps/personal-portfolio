@@ -84,7 +84,7 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
   // Determine the path to the blog markdown file
   // For project blogs, use the projects path, otherwise use the blogs path
   const isProjectBlog =
-    blogData.category === BlogCategoriesEnum.FullStackWebProjects ||
+    blogData.category === BlogCategoriesEnum.Projects ||
     Object.values(ProjectDatabaseKeys).includes(blogKey as ProjectDatabaseKeys);
   const blogPath = isProjectBlog
     ? `public/projects/${blogKey}/blog.md`
