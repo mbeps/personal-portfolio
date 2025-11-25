@@ -11,6 +11,7 @@ enum BlogDatabaseKeys {
   IntroductionToNeuralNetworks = "introduction-to-neural-networks",
   OverviewOfTransformerArchitecture = "overview-of-transformer-architecture",
   OverviewOfQuantisation = "overview-of-quantisation",
+  Lora = "lora",
   Backend = "backend",
   ORM = "orm",
   RESTGraphQL = "rest-graphql-api",

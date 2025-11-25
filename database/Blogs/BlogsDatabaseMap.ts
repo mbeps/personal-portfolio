@@ -85,6 +85,21 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.CriticalThinking,
     ],
   },
+  [BlogDatabaseKeys.Lora]: {
+    name: "Theory and Mathematics of Low-Rank Adaptation (LoRA)",
+    subtitle:
+      "Theoretical and Mathematical Analysis of Low-Rank Adaptation (LoRA) and its Derivatives in Fine-Tuning Large Language Models",
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.Transformers,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+    ],
+  },
   [BlogDatabaseKeys.Backend]: {
     name: "Exploring Backends: Custom vs Managed Solutions",
     subtitle:
