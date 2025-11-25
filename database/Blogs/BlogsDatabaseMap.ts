@@ -150,13 +150,13 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.Firebase,
       SkillDatabaseKeys.Supabase,
     ],
-    category: BlogCategoriesEnum.WebDevelopment,
+    category: BlogCategoriesEnum.SoftwareEngineering,
   },
   [BlogDatabaseKeys.ORM]: {
     name: "Understanding Object-Relational Mapping (ORM)",
     subtitle:
       "A Comprehensive Overview of ORM, Its Advantages, Disadvantages, and Role in Modern Web Application Development",
-    category: BlogCategoriesEnum.Databases,
+    category: BlogCategoriesEnum.SoftwareEngineering,
     skills: [
       SkillDatabaseKeys.DatabaseManagementSystems,
       SkillDatabaseKeys.Databases,
@@ -174,7 +174,7 @@ const blogsMap: Database<BlogInterface> = {
   [BlogDatabaseKeys.RESTGraphQL]: {
     name: "Comparing GraphQL and REST: A Detailed Overview",
     subtitle: "Choosing the Right API Design Approach",
-    category: BlogCategoriesEnum.WebDevelopment,
+    category: BlogCategoriesEnum.SoftwareEngineering,
     skills: [
       SkillDatabaseKeys.REST,
       SkillDatabaseKeys.GraphQL,
@@ -185,7 +185,7 @@ const blogsMap: Database<BlogInterface> = {
     name: "Exploring Databases: A Comparative Study of Relational and Non-Relational Models",
     subtitle:
       "An In-depth Analysis of Database Systems and their Role in Software Engineering and Web Development",
-    category: BlogCategoriesEnum.Databases,
+    category: BlogCategoriesEnum.SoftwareEngineering,
     skills: [
       SkillDatabaseKeys.DatabaseManagementSystems,
       SkillDatabaseKeys.Databases,
