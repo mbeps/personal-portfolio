@@ -13,6 +13,7 @@ enum BlogDatabaseKeys {
   Lora = "lora",
   Quantisation = "quantisation",
   ModelContextProtocol = "model-context-protocol",
+  RitrievalAugmentedGeneration = "retrieval-augmented-generation",
   Backend = "backend",
   ORM = "orm",
   RESTGraphQL = "rest-graphql-api",

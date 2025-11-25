@@ -126,6 +126,21 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.CriticalThinking,
     ],
   },
+  [BlogDatabaseKeys.RitrievalAugmentedGeneration]: {
+    name: "Advanced Architectures in Retrieval Augmented Generation (RAG)",
+    subtitle:
+      "A Technical Analysis of LLM Memory Augmentation using RAG and custom knowledge bases.",
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.Transformers,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+    ],
+  },
   [BlogDatabaseKeys.Backend]: {
     name: "Exploring Backends: Custom vs Managed Solutions",
     subtitle:
