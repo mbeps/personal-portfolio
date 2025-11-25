@@ -1078,7 +1078,10 @@ const modulesMap: Database<ModuleInterface> = {
       "Designing targeted training interventions to address identified model weaknesses.",
       "Communicating complex research findings and technical details in a structured report.",
     ],
-    relatedMaterials: [ProjectDatabaseKeys.AlignmentInLargeLanguageModels],
+    relatedMaterials: [
+      ProjectDatabaseKeys.AlignmentInLargeLanguageModels,
+      ProjectDatabaseKeys.AlignmentInLargeLanguageModels,
+    ],
   },
 };
 

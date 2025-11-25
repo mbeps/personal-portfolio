@@ -9,6 +9,7 @@ import Database from "@/interfaces/Database";
 import ProjectDatabaseKeys from "../Projects/ProjectDatabaseKeys";
 import projectDatabaseMap from "../Projects/ProjectDatabaseMap";
 import skillDatabaseMap from "../Skills/SkillDatabaseMap";
+import ModuleDatabaseKeys from "../Modules/ModuleDatabaseKeys";
 
 /**
  * Hashmap of blogs with keys as {@link BlogDatabaseKeys} and values as {@link BlogInterface}.
@@ -26,6 +27,13 @@ const blogsMap: Database<BlogInterface> = {
     skills:
       projectDatabaseMap[ProjectDatabaseKeys.AlignmentInLargeLanguageModels]
         .skills,
+    relatedMaterials: [
+      ProjectDatabaseKeys.AlignmentInLargeLanguageModels,
+      BlogDatabaseKeys.Quantisation,
+      BlogDatabaseKeys.Lora,
+      BlogDatabaseKeys.Transformer,
+      ModuleDatabaseKeys.KCL_IndividualProject,
+    ],
   },
   [BlogDatabaseKeys.MachineLearningFoundations]: {
     name: "Exploring the Depths of Machine Learning",
@@ -69,21 +77,7 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
-  },
-  [BlogDatabaseKeys.Quantisation]: {
-    name: "Quantisation as a Model Compression Technique",
-    subtitle:
-      "An theoretical introduction to quantisation, a model compression technique used to reduce the size of large language models (LLMs) and make them more efficient for deployment.",
-    category: BlogCategoriesEnum.ArtificialIntelligence,
-    skills: [
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.DataScience,
-      SkillDatabaseKeys.NeuralNetworks,
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.Transformers,
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.CriticalThinking,
-    ],
+    relatedMaterials: [ProjectDatabaseKeys.AlignmentInLargeLanguageModels],
   },
   [BlogDatabaseKeys.Lora]: {
     name: "Theory and Mathematics of Low-Rank Adaptation (LoRA)",
@@ -99,6 +93,23 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
+    relatedMaterials: [ProjectDatabaseKeys.AlignmentInLargeLanguageModels],
+  },
+  [BlogDatabaseKeys.Quantisation]: {
+    name: "Quantisation as a Model Compression Technique",
+    subtitle:
+      "An theoretical introduction to quantisation, a model compression technique used to reduce the size of large language models (LLMs) and make them more efficient for deployment.",
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.Transformers,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+    ],
+    relatedMaterials: [ProjectDatabaseKeys.AlignmentInLargeLanguageModels],
   },
   [BlogDatabaseKeys.Backend]: {
     name: "Exploring Backends: Custom vs Managed Solutions",
