@@ -70,7 +70,7 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.CriticalThinking,
     ],
   },
-  [BlogDatabaseKeys.OverviewOfQuantisation]: {
+  [BlogDatabaseKeys.Quantisation]: {
     name: "Quantisation as a Model Compression Technique",
     subtitle:
       "An theoretical introduction to quantisation, a model compression technique used to reduce the size of large language models (LLMs) and make them more efficient for deployment.",
