@@ -28,13 +28,10 @@ export const metadata: Metadata = {
 };
 
 /**
- * Displays a list of all education history and qualifications.
- * User can open an entry and view more details about the qualification such as the modules studied.
+ * Education landing page that renders every course card through the shared `CourseItem` component.
+ * Gives visitors a quick overview before diving into course detail routes.
  *
- * A list of all courses along with their universities and grades are added to the page for SEO purposes.
- * This is not visible to the user.
- *
- * @returns Page with education history and qualifications
+ * @returns Grid of course cards plus the page description copy.
  */
 export default function EducationPage() {
   return (

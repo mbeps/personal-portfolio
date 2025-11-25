@@ -24,14 +24,12 @@ import { usePathname } from "next/navigation";
 import useMaterialFilterState from "@/hooks/useMaterialFilterState";
 
 /**
- * Displays a list of all blogs that can be opened.
- * Also allows the user to filter and search the blogs.
- * These blogs are displayed into categories.
- * Because this uses hooks, it is a client-side only component.
+ * Client view for the experience archive that coordinates Fuse search, skill-based filtering, and the archive toggle.
+ * Ensures role listings behave just like other material lists by reusing the shared hook and FilterSection component.
  *
- * @returns Component showing all blogs, search bar and filters
+ * @returns Filter UI plus grouped role cards.
  */
-export const BlogsView: React.FC = () => {
+export const ExperienceView: React.FC = () => {
   const basePath: string = usePathname();
 
   const categoryParamName = "category";
@@ -185,4 +183,4 @@ export const BlogsView: React.FC = () => {
   );
 };
 
-export default BlogsView;
+export default ExperienceView;

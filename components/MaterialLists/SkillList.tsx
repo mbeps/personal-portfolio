@@ -22,11 +22,11 @@ interface SkillListProps {
 }
 
 /**
- * Component displaying all the skills that I have learned and worked with.
- * These skills can be grouped into categories and certain type skills can be ignored.
- * Skills can also be filtered by the number of materials attributed to them.
+ * Full skill directory combining the shared filter experience with grouped skill tags that respect the “hide without material” toggle.
+ * Works in tandem with `useSkillFilterState` and `SkillTag` so every skill page shares the same filtering logic.
  *
- * @returns List of skills grouped by category and controls to filter them
+ * @param skills Array of all skill slugs from the database.
+ * @returns Filter UI plus grouped skill cards.
  */
 const SkillList: React.FC<SkillListProps> = ({ skills }) => {
   const basePath: string = SKILL_PAGE.path;

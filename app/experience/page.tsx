@@ -28,15 +28,9 @@ export const metadata: Metadata = {
 };
 
 /**
- * Displays a list of all work experience that can be opened.
- * Also allows the user to search and filter the work experience.
- * These blogs are displayed into categories.
+ * Experience hub that introduces the reusable `ExperienceView` list with consistent hero copy and SEO data.
  *
- * A list of all work experience along with their company names are added to the page for SEO purposes.
- * This is not visible to the user.
- *
- * @returns Page with all work experiences
- * @requires {@link ExperienceView} component to display the work experience and filter/search them
+ * @returns Section containing the filterable timeline of roles.
  */
 export default function ExperiencePage() {
   return (

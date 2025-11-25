@@ -8,13 +8,12 @@ interface TagProps {
 }
 
 /**
- * Tag component which can execute an action when clicked.
- * Has hover effect and little arrow when clickable.
- * If it is not clickable, it will not have the hover effect.
- * If the tag is a "..." it will have a little animation.
- * @param childrenThe content of the tag
- * @param onClick The action to be performed when the tag is clicked
- * @returns (JSX.Element): a tag
+ * Generic tag component used for module listings, issuers, and filter badges, with optional click affordances.
+ *
+ * @param children Tag label contents.
+ * @param onClick Optional click handler (enables hover state + arrow).
+ * @param hasHover Forces hover styling even without an onClick.
+ * @returns Styled tag element with optional arrow indicator.
  */
 const Tag: React.FC<TagProps> = ({ children, onClick, hasHover }) => {
   const baseClassName: string = `

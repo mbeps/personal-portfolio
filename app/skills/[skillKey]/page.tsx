@@ -66,11 +66,11 @@ interface SkillPageProps {
 }
 
 /**
- * Page displaying all the material related to a given skill and its sub-skills.
- * This includes projects, blogs, and certificates.
+ * Skill drill-down that aggregates every material referencing the skill and surfaces related skills for further exploration.
+ * Keeps the narrative consistent with MaterialList sections so visitors can jump between work, courses, and blogs tied to the skill.
  *
- * @param props The data for the skill page.
- * @returns Skill page that displays all the material related to a given skill.
+ * @param params Skill slug to render.
+ * @returns Skill overview with material list and related skills section.
  */
 const SkillPage: React.FC<{ params: Params }> = async ({ params }) => {
   const resolvedParams = await params;

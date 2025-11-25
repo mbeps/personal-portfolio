@@ -6,10 +6,10 @@ interface StringListProps {
 }
 
 /**
- * Renders a list of strings with bullet points.
+ * Bullet list renderer used for learning outcomes, responsibilities, and other markdown-adjacent lists where we need more control than raw markdown.
  *
- * @param items - An array of strings to render.
- * @returns A list of strings with bullet points.
+ * @param items Array of strings to display with custom bullets.
+ * @returns Stylized list element.
  */
 const StringList: React.FC<StringListProps> = ({ items }) => {
   return (

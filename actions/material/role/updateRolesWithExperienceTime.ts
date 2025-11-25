@@ -2,9 +2,10 @@ import RoleInterface from "@/database/Roles/RoleInterface";
 import Database from "@/interfaces/Database";
 
 /**
- * Updates the timeInRole field of each role in the rolesMap.
- * @param rolesMap - A map of RoleInterface objects.
- * @returns A new Database<RoleInterface> with updated timeInRole fields.
+ * Normalizes the `timeInRole` string for every role so cards, timelines, and metadata tags display the same duration math.
+ *
+ * @param rolesMap Role dictionary pulled from the static database.
+ * @returns New map with the computed `timeInRole` baked into each role entry.
  */
 function updateRolesWithExperienceTime(
   rolesMap: Database<RoleInterface>

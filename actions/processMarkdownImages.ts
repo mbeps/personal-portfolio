@@ -1,10 +1,10 @@
 /**
- * Processes markdown content by replacing the {BASE} placeholder with the actual base path.
- * This allows markdown files to use relative image paths that work correctly when rendered.
+ * Keeps blog and project report markdown portable by rewriting `{BASE}` placeholders to the runtime image directory.
+ * Lets CMS-less content reuse the same markdown locally and in production without fragile absolute paths.
  *
- * @param content The markdown content to process
- * @param basePath The base path to replace {BASE} with (e.g., "/blogs/my-blog/img")
- * @returns The processed markdown content with replaced paths
+ * @param content Markdown string pulled from the filesystem.
+ * @param basePath Runtime base path for image assets (e.g., `/projects/my-case-study/img`).
+ * @returns Markdown with placeholders swapped for the real asset path.
  */
 export default function processMarkdownImages(
   content: string,

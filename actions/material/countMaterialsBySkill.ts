@@ -2,12 +2,10 @@ import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import { skillUsageMap } from "@/database/Materials/MaterialDatabaseMap";
 
 /**
- * Counts the number of materials associated with a specific skill.
- * This function relies on a pre-computed map for efficient lookups.
- * Design decision: Using a map avoids iterating through all materials for each count.
+ * Reads the aggregated skill usage counts so we can surface totals on skill pages without recalculating on the fly.
  *
- * @param skillKey The key of the skill to count materials for.
- * @returns The number of materials related to the skill. Returns 0 if not found.
+ * @param skillKey Key from `SkillDatabaseKeys`.
+ * @returns Usage number pulled straight from `skillUsageMap`, or `0` when the skill never appears.
  */
 export default function countMaterialsBySkill(
   skillKey: SkillDatabaseKeys

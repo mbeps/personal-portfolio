@@ -12,12 +12,12 @@ type SpecialReaderProps = {
 };
 
 /**
- * Component that renders a special reader with a contents section and a back button.
- * This is an extension of the Reader component.
+ * Enhanced markdown view used for blog posts and project reports, adding a contents summary slice plus a back button.
  *
- * @param content The markdown content to render
- * @param previousPage The URL of the previous page to link back to
- * @returns Rendered Markdown content with a contents section and a back button
+ * @param content Markdown with optional introductory copy before the first heading.
+ * @param previousPagePath Path to navigate back to (e.g., `/projects/[slug]` or `/blogs`).
+ * @param previousPageName Label for the CTA.
+ * @returns Layout combining the contents list and the main Reader output.
  * @see Reader
  */
 const SpecialReader: React.FC<SpecialReaderProps> = ({

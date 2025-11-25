@@ -15,18 +15,11 @@ interface WorkItemProps {
 }
 
 /**
- * Card which displays a role/work entry with quick information.
- * Contains:
- * - Name of the role
- * - Company name (with link to company website)
- * - Location of the company
- * - Date range of the role
- * - Logo of the company
- * - Link to the role page
- * - Link to the company website
+ * Standard role card used across the experience list and related material tabs, tying in company metadata and CTA links.
+ * Helps keep the timeline view and detail pages visually aligned while surfacing quick facts like dates and time in role.
  *
- * @param roleKey Key of the role to be displayed
- * @returns A card which displays a role
+ * @param roleKey Role slug from the static roles database.
+ * @returns Responsive card with company logo, dates, and quick links.
  */
 const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
   const basePath: string = EXPERIENCE_PAGE.path;

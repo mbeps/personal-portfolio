@@ -71,11 +71,10 @@ interface SectionInterface {
 }
 
 /**
- * A global search component that provides a quick way to navigate the site.
- * It's triggered by a button or a keyboard shortcut (`Ctrl+K` or `Cmd+K`).
- * The search dialog includes pages, projects, experiences, and other materials.
+ * Unified command palette for the site that indexes every material, page, and social profile so navigation mirrors the curated data layer.
+ * Listens for Cmd/Ctrl+K, exposes a tooltip for discoverability, and routes via `useRouter` to keep focus transitions smooth.
  *
- * @returns A search button and a command dialog for global site search.
+ * @returns Search icon button plus Command dialog populated from the static databases.
  */
 const GlobalSearch: React.FC = () => {
   const [open, setOpen] = useState(false);

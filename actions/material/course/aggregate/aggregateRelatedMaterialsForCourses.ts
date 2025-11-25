@@ -3,6 +3,13 @@ import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
 import ModuleInterface from "@/database/Modules/ModuleInterface";
 import Database from "@/interfaces/Database";
 
+/**
+ * Copies related material links from modules up to their parent course so MaterialList tabs can highlight the correct supporting work.
+ *
+ * @param coursesDatabase Course dictionary.
+ * @param modulesDatabase Module dictionary.
+ * @returns New course database with enriched `relatedMaterials` arrays.
+ */
 export default function aggregateRelatedMaterialsForCourses(
   coursesDatabase: Database<CourseInterface>,
   modulesDatabase: Database<ModuleInterface>

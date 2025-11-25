@@ -4,9 +4,7 @@ import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 /**
- * When clicking a link, the user will not scroll to the top of the page if the header is sticky.
- * Their current scroll position will persist to the next page.
- * This useEffect is a workaround to 'fix' that behavior.
+ * Forces a scroll reset whenever the pathname changes so sticky header offsets do not leave users mid-page across route transitions.
  */
 export default function Scroll() {
   const pathname: string = usePathname();

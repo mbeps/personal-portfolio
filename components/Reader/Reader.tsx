@@ -43,11 +43,11 @@ const headingOverrides = {
 };
 
 /**
- * Renders Markdown content with LaTeX support.
+ * Base markdown renderer used by the about page, project features, and other short-form sections, complete with inline and block LaTeX support.
  *
- * @param {string} content - The Markdown content to render.
- * @param {string} size - The size of the prose (default: "lg").
- * @returns {JSX.Element} The rendered Markdown content.
+ * @param content Markdown string from the filesystem helpers.
+ * @param size Tailwind prose size modifier.
+ * @returns Prose article element with math-aware rendering.
  */
 const Reader: React.FC<ReaderProps> = ({ content, size = "lg" }) => {
   // Parse the markdown content and extract LaTeX expressions

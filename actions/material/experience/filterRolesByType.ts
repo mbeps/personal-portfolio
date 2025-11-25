@@ -4,12 +4,12 @@ import ExperienceTypeEnum from "@/enums/Experience/ExperienceTypeEnum";
 import Database from "@/interfaces/Database";
 
 /**
- * Filters the roles by the type of experience, for example "work" or "volunteer".
+ * Lets the experience page toggle between work, leadership, and volunteer roles without rebuilding the dataset.
  *
- * @param targetType The type of experience to filter by
- * @param roleKeys The keys of the roles to filter
- * @param rolesDatabase The database of all roles for access to the role details
- * @returns The keys of the roles that match the experience type
+ * @param targetType Experience type requested by the user.
+ * @param roleKeys Ordered role keys already narrowed by search or archive settings.
+ * @param rolesDatabase Database map for metadata lookups.
+ * @returns Keys that belong to the requested experience type.
  */
 export default function filterRolesByType<T extends RoleInterface>(
   targetType: ExperienceTypeEnum,

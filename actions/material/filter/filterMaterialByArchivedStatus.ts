@@ -2,14 +2,12 @@ import MaterialInterface from "@/database/Materials/MaterialInterface";
 import Database from "@/interfaces/Database";
 
 /**
- * Filters the materials that match a specific archived status.
- * If the archived status is true, the archived materials will be included.
- * If the archived status is false, the archived materials will be excluded.
+ * Backs the “Show archived” toggle so we can expose historical work without polluting the primary view.
  *
- * @param isArchived Whether the archived materials should be included
- * @param materialKeys The keys of the materials to filter
- * @param materialDatabase All the materials in the database
- * @returns The keys of the materials that match the archived status
+ * @param isArchived `true` when archived content should be shown.
+ * @param materialKeys Keys currently under consideration.
+ * @param materialDatabase Lookup map with metadata, including the `archived` flag.
+ * @returns Keys filtered by the archive selection.
  */
 export default function filterMaterialByArchivedStatus<
   T extends MaterialInterface

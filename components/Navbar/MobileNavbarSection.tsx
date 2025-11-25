@@ -7,12 +7,11 @@ interface MobileNavbarSectionProps {
 }
 
 /**
- * Section of the navbar that displays the hamburger menu for mobile devices.
- * This is specifically for mobile devices and is hidden on desktop devices.
+ * Mobile-only trigger that toggles the fullscreen navigation overlay so large nav lists remain accessible on phones.
  *
- * @param isOverlayOpen Whether the overlay is open or not
- * @param toggleOverlay Function to toggle the overlay
- * @returns Section of the navbar that displays the hamburger menu for mobile devices
+ * @param isOverlayOpen Current overlay state.
+ * @param toggleOverlay Callback from the navbar store that flips the overlay state.
+ * @returns Button that swaps between hamburger and close icons.
  */
 const MobileNavbarSection: React.FC<MobileNavbarSectionProps> = ({
   isOverlayOpen,

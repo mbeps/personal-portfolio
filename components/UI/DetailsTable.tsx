@@ -12,13 +12,11 @@ interface TableProps {
 }
 
 /**
- * Component to render a grid of details.
- * Each detail consists of a heading and a corresponding value.
- * Values can be strings, arrays (rendered as bullet points), or React nodes.
+ * Grid-based key/value renderer used on the about page and role detail pages for quick facts.
  *
- * @param details The details to render as a list of titles and value pairs.
- * @param className Custom class name to apply to the outer div.
- * @returns The rendered grid of details.
+ * @param details Array of heading/value pairs.
+ * @param className Optional grid overrides.
+ * @returns Grid of labeled values with support for nested lists.
  */
 const DetailsTable: React.FC<TableProps> = ({ details, className }) => {
   const baseStyle: string = `grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4`;

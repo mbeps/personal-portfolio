@@ -12,11 +12,10 @@ interface CourseItemProps {
 }
 
 /**
- * Card representing a university course.
- * Displays the course's certificate, name, grade, university, and a link to the course page.
+ * Course overview tile shown on the education landing page and related sections, exposing quick access to the course detail route.
  *
- * @param courseKey Key of the course to display
- * @returns Card displaying the course's certificate, name, grade, university, and a link to the course page
+ * @param courseKey Course slug from the static database.
+ * @returns Card with logo, name, category, and university tag.
  */
 const CourseItem: React.FC<CourseItemProps> = ({ courseKey }) => {
   const basePath: string = EDUCATION_PAGE.path;

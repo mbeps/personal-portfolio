@@ -2,6 +2,13 @@ import CourseInterface from "@/database/Courses/CourseInterface";
 import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
 import Database from "@/interfaces/Database";
 
+/**
+ * Resolves the parent course for a given module slug so module detail pages can link back to the owning course.
+ *
+ * @param moduleKey Module slug the view is rendering.
+ * @param coursesDatabase Course dictionary to inspect.
+ * @returns Matching course key or `null` when no parent references the module.
+ */
 export default function findCourseKeyForModule(
   moduleKey: ModuleDatabaseKeys,
   coursesDatabase: Database<CourseInterface>

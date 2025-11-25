@@ -33,9 +33,10 @@ export const metadata: Metadata = {
 };
 
 /**
- * About page displays information about the developer.
+ * Long-form about page that merges markdown storytelling, career snapshot stats, and curated material cross-links.
+ * Reuses shared UI such as `Reader`, `DetailsTable`, `Socials`, and `MaterialList` so styling matches other sections.
  *
- * @returns Home page
+ * @returns Rich about layout with featured materials.
  */
 export default function About() {
   if (!aboutContent) {

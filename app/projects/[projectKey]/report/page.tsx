@@ -14,10 +14,10 @@ type PageProps = {
 };
 
 /**
- * Page that displays the report for a project if it exists.
+ * Dedicated route for long-form project reports so SpecialReader can render table-of-contents friendly markdown outside the main project page.
  *
- * @param props Key of the parent project page
- * @returns Page that displays the report for a project
+ * @param params Project slug whose `/blog.md` acts as the report source.
+ * @returns Report view with backlink to the parent project.
  */
 const ProjectReportPage = async ({ params }: PageProps) => {
   const resolvedParams = await params;

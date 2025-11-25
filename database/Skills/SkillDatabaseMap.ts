@@ -85,7 +85,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.TypeORM,
       SkillDatabaseKeys.Mongoose,
       SkillDatabaseKeys.Zustand,
-      SkillDatabaseKeys.Recoil,
+      SkillDatabaseKeys.Jotai,
       SkillDatabaseKeys.Prisma,
       SkillDatabaseKeys.Jest,
       SkillDatabaseKeys.Vitest,
@@ -490,7 +490,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.TypeORM,
       SkillDatabaseKeys.Mongoose,
       SkillDatabaseKeys.Zustand,
-      SkillDatabaseKeys.Recoil,
+      SkillDatabaseKeys.Jotai,
       SkillDatabaseKeys.Prisma,
       SkillDatabaseKeys.Jest,
       SkillDatabaseKeys.Vitest,
@@ -706,7 +706,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
 
   //^ Frontend Web Development
-  [SkillDatabaseKeys.Recoil]: {
+  [SkillDatabaseKeys.Jotai]: {
     name: "Recoil",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
     skillType: SkillTypesEnum.Technology,
@@ -728,7 +728,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.TypeScript,
 
       SkillDatabaseKeys.UserCentricDesign,
-      SkillDatabaseKeys.Recoil,
+      SkillDatabaseKeys.Jotai,
       SkillDatabaseKeys.Zustand,
     ],
   },
@@ -2036,7 +2036,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.UserAuthentication,
       SkillDatabaseKeys.NextJS,
       SkillDatabaseKeys.ReactJS,
-      SkillDatabaseKeys.Recoil,
+      SkillDatabaseKeys.Jotai,
       SkillDatabaseKeys.Zustand,
       SkillDatabaseKeys.TailwindCSS,
       SkillDatabaseKeys.HTML,
@@ -2075,7 +2075,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
     isMainSkill: false,
     skillType: SkillTypesEnum.Technical,
-    relatedSkills: [SkillDatabaseKeys.Recoil, SkillDatabaseKeys.Zustand],
+    relatedSkills: [SkillDatabaseKeys.Jotai, SkillDatabaseKeys.Zustand],
   },
 
   //^ Soft Skills

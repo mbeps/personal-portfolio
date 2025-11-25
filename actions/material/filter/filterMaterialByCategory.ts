@@ -3,12 +3,13 @@ import MaterialInterface from "@/database/Materials/MaterialInterface";
 import Database from "@/interfaces/Database";
 
 /**
- * Filters the materials that match a specific category.
+ * Handles category filtering for views that expose editorial groupings (e.g., “Research”, “Talks”, etc.).
+ * Maintains whatever ordering the list already had by only filtering the incoming keys.
  *
- * @param category The specific category to filter
- * @param materialKeys The keys of the materials to filter
- * @param materialsDatabase All the materials in the database so that we can access the material details
- * @returns The keys of the materials that match the category
+ * @param category Category label selected via the drawer.
+ * @param materialKeys Keys currently visible before the category filter is applied.
+ * @param materialsDatabase Database map for metadata access.
+ * @returns Keys limited to the chosen category.
  */
 export default function filterMaterialByCategory<T extends MaterialInterface>(
   category: string,

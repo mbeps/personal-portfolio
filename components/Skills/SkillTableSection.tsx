@@ -19,14 +19,12 @@ interface SkillTableSectionProps {
 }
 
 /**
- * Component displaying skills.
- * These skills are grouped; for example, technologies, technical skills, soft skills, etc.
- * Each of the skills in these groups are also cateogorised by their types;
- * for example, languages, frameworks, etc.
+ * Tabbed skill table that surfaces grouped skills for blog posts, project pages, and certificate detail pages.
+ * Expects pre-grouped data from `buildSkillTableGroups` so it can focus on presentation only.
  *
- * @param allGroupedSkills Skills to be displayed in the table as groups
- * @returns A section containing a table of skills grouped by categories
- * @requires CategorySkillDisplay Component for displaying the categorised skills within the groups
+ * @param allGroupedSkills Array of grouped skill metadata.
+ * @param maxSkillsPerCategory Reserved prop for future truncation (defaults to 5).
+ * @returns Tabs element showing grouped skill categories.
  */
 const SkillTableSection: React.FC<SkillTableSectionProps> = ({
   allGroupedSkills,

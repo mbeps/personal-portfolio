@@ -3,12 +3,12 @@ import CertificateInterface from "@/database/Certificates/CertificateInterface";
 import Database from "@/interfaces/Database";
 
 /**
- * Filters the certificates that match a specific issuer.
+ * Supports the issuer dropdown on the certificates archive so visitors can isolate coursework by school or platform.
  *
- * @param issuer The specific user who issued the certificate
- * @param materialKeys The keys of the certificates to filter
- * @param certificatesMap All the certificates in the database
- * @returns The keys of the certificates that match the issuer
+ * @param issuer Name selected from the drawer.
+ * @param materialKeys Keys currently visible.
+ * @param certificatesMap Database that maps certificate keys to metadata.
+ * @returns Keys belonging to the requested issuer.
  */
 export default function filterCertificatesByIssuer(
   issuer: string,

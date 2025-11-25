@@ -9,9 +9,11 @@ type SocialsProps = {
 };
 
 /**
- * Socials component that displays social links.
+ * Shared renderer for the curated socialLinks array, keeping the hero, footer, and overlays aligned.
  *
- * @returns Socials component
+ * @param className Optional container overrides.
+ * @param iconSize Override for the icon size passed to `SocialIcon`.
+ * @returns Flex row of social icons.
  */
 const Socials: React.FC<SocialsProps> = ({ className, iconSize }) => {
   const baseStyles = `

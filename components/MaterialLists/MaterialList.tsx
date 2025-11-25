@@ -15,18 +15,12 @@ export interface MaterialTabsProps {
 }
 
 /**
- * A component displaying all the materials in a tabbed list.
- * Each tab contains a list of materials of a specific type, for example, 'projects', certificates', etc.
- * This allows the user to quickly view the materials of a specific type without having to scroll through a long list.
+ * Primary wrapper for rendering related material tabs anywhere across the site (projects, courses, roles, etc.).
+ * Keeps layout consistent by deferring to `MaterialTab` and optionally wrapping it in a collapsible accordion for dense pages.
  *
- * When `isCollapsible` is true, the list is displayed in an accordion format which is collapsed by default.
- * When `isCollapsible` is false, the list is displayed directly without the accordion and it cannot be collapsed.
- *
- * @param materialKeys List of keys for the materials that need to be displayed
- * @param defaultTab The default tab to be displayed when the list is rendered
- * @param isCollapsible Whether the list should be collapsible or not
- * @param sectionName The name of the section that the materials are related to which is displayed in the accordion trigger
- * @returns A tabbed list of materials
+ * @param materialKeys Material slugs resolved upstream via the static DB.
+ * @param isCollapsible Whether to hide the list behind an accordion trigger (useful on detail pages).
+ * @returns Accordion containing `MaterialTab`, or the tab set directly when not collapsible.
  */
 const MaterialList: React.FC<MaterialTabsProps> = ({
   materialKeys,

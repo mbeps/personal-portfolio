@@ -26,12 +26,9 @@ export const metadata = {
 };
 
 /**
- * Page displaying all the skills that I have learned and worked with.
- * These skills can be grouped into categories and certain type skills can be ignored.
+ * Skill index that hands the static key list to `SkillList`, keeping the description copy and metadata tied to this route.
  *
- * A list of all skills is added to the page for SEO purposes.
- * This is not visible to the user.
- * @returns Page with all skills
+ * @returns Section containing the grouped skill directory.
  */
 export default function SkillPage() {
   return (

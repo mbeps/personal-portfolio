@@ -4,12 +4,10 @@ import Database from "@/interfaces/Database";
 import FilterOption from "@/interfaces/filters/FilterOption";
 
 /**
- * Generates the filter options based on the types of the roles.
- * For all the roles, it will generate a filter option for each unique type.
- * These are then used as options the user can select to filter the roles.
+ * Builds the role “type” filter (contract, full-time, volunteer, etc.) based on the entries actually present in the timeline.
  *
- * @param roleDatabase The database of all roles from which to generate the filter options
- * @returns The filter options generated from the types of the roles
+ * @param roleDatabase Role dictionary that populates the experience view.
+ * @returns Deduplicated filter options keyed by slug, sorted alphabetically.
  */
 export function generateFilterOptionsByRoleType<T extends RoleInterface>(
   roleDatabase: Database<T>

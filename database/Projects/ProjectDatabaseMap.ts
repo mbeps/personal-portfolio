@@ -601,7 +601,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.ReactJS,
       SkillDatabaseKeys.ChakraUI,
       SkillDatabaseKeys.Firebase,
-      SkillDatabaseKeys.Recoil,
+      SkillDatabaseKeys.Jotai,
       SkillDatabaseKeys.GitHubActions,
       SkillDatabaseKeys.GCP,
       SkillDatabaseKeys.HTML,

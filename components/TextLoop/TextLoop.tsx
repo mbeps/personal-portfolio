@@ -12,13 +12,11 @@ type TextLoopProps = {
 };
 
 /**
- * Displays a component for looping over an array of strings.
- * Can loop over the text in a variety of styles:
- * - Simple: loops through the text in a subtle animation
- * - Type Writer: loops through the text in as a type writer
+ * Client-only wrapper that swaps between the marquee and typewriter subtitle animations on the hero section.
  *
- * @param loopItems Array of strings to loop through
- * @param implementation The implementation to use for looping through the text
+ * @param loopItems Subtitle strings sourced from `constants/subtitles`.
+ * @param implementation Animation style to render.
+ * @param className Tailwind classes forwarded to the inner component.
  */
 const TextLoop: React.FC<TextLoopProps> = ({
   loopItems,

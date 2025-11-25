@@ -11,13 +11,10 @@ interface CategorySkillDisplayProps {
 }
 
 /**
- * Component displaying skills in categories.
- * For example, programming languages, DevOps, Web Development, etc.
- * These are from the skills database `skillTypes` property as defined in {@link SkillInterface}.
- * If there is only one category, the title of the category is not displayed and the skills are displayed in a single column.
+ * Columnar display for grouped skills, used inside `SkillTableSection` and anywhere else we need category headings with SkillTags.
  *
- * @param skillCategories Skills to be displayed in the table in categories
- * @returns A section containing a table of skills grouped by categories
+ * @param skillCategories Groups produced by `buildSkillTableGroups`.
+ * @returns Grid of `SkillTag` clusters plus an optional expand/collapse button.
  */
 const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
   skillCategories,

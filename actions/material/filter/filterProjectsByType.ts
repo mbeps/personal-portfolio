@@ -3,12 +3,13 @@ import ProjectInterface from "@/database/Projects/ProjectInterface";
 import Database from "@/interfaces/Database";
 
 /**
- * Filters the projects that match a specific type.
+ * Applies the “project type” dropdown after Fuse search has already trimmed the key list.
+ * Keeps personal curation such as “Product”, “Tooling”, or “Research” consistent across views.
  *
- * @param type The specific type to filter
- * @param projectKeys The keys of the projects to filter
- * @param projectsDatabase All the projects in the database so that we can access the project details
- * @returns The keys of the projects that match the type
+ * @param type UI label representing the requested project type.
+ * @param projectKeys Keys currently visible.
+ * @param projectsDatabase Database map to read type metadata.
+ * @returns Keys limited to the chosen type.
  */
 export default function filterProjectsByType<T extends ProjectInterface>(
   type: string,

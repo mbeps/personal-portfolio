@@ -10,10 +10,10 @@ import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
 import Database from "@/interfaces/Database";
 
 /**
- * Displays a list of skills that I have.
- * They can be clicked which would redirect to a page showing all the materials (projects, certifications, etc.) related to the skill.
- * There is also a button that opens a modal where all the skills are displayed.
- * @returns Skill section (list of skills)
+ * Curated skill tag wall that highlights flagship technologies while handing off deeper exploration to the shared modal.
+ * Uses the skill database to stay in sync with the Skills page but constrains to main skills for the homepage footprint.
+ *
+ * @returns Technologies block with clickable tags and modal trigger.
  */
 const TechnologiesSection: React.FC = () => {
   const mainSkills: Database<SkillInterface> = {};

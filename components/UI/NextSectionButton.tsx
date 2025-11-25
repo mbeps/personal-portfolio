@@ -7,11 +7,10 @@ interface NextSectionButton {
 }
 
 /**
- * This component renders a button that links to the next section of the page.
- * It is an arrow icon that bounces.
+ * Animated anchor used on the homepage sections to encourage scrolling to the next section.
  *
- * @param section - The section to link to
- * @returns NextSectionButton component
+ * @param section Target section ID.
+ * @returns Bouncing arrow linking to the hash anchor.
  */
 const NextSectionButton: React.FC<NextSectionButton> = ({ section }) => {
   return (

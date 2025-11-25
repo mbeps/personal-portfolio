@@ -11,12 +11,11 @@ interface NavbarItemProps {
 }
 
 /**
- * Navbar button that navigates to a different page when clicked.
- * It also highlights the button when the user is on the page it links to.
- * The button is also highlighted when the user hovers over it.
- * @param to The path to navigate to when the navbar item is clicked
- * @param children The content to display inside the navbar item
- * @returns A navbar item component
+ * Shared navigation link that syncs active state with the current pathname and closes the mobile overlay on click.
+ *
+ * @param href Destination path.
+ * @param children Label contents.
+ * @returns Styled link with overlay-aware click handler.
  */
 const NavbarItem: React.FC<NavbarItemProps> = ({ href, children }) => {
   const pathname: string = usePathname();

@@ -15,14 +15,12 @@ interface ModuleListProps {
 }
 
 /**
- * Lists all the modules according to a certain grouping.
- * The modules items are clickable and redirect to the module page.
- * The items display the module name and its parent course name.
+ * Renders grouped university modules with a pill-based UI so the education page and related material tabs share styling.
+ * Each tag links to the module detail page while surfacing the parent course name for context.
  *
- * @param groupedMaterial List of grouped modules
- * @param headingSize Optional prop to determine the heading size
- * @returns List of grouped modules
- * @author Maruf Bepary
+ * @param groupedMaterial Modules grouped by category or course.
+ * @param headingSize Optional heading level to match the surrounding layout.
+ * @returns Grid of module tags grouped by the provided metadata.
  */
 const ModuleList: React.FC<ModuleListProps> = ({
   groupedMaterial,

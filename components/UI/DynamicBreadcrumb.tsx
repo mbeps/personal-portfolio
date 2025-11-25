@@ -17,13 +17,10 @@ interface DynamicBreadcrumbProps {
 }
 
 /**
- * Creates a dynamic breadcrumb component.
- * This component takes in an array of breadcrumbs and generates the breadcrumb component.
- * The last item in the array is the current page and is not a link.
- * The rest of the items are links to the respective pages.
+ * Utility breadcrumb renderer used on the education routes so deeply nested module pages expose their hierarchy.
  *
- * @param breadcrumbs name and paths for the breadcrumbs
- * @returns Component with the breadcrumbs
+ * @param breadcrumbs Ordered array of breadcrumb names/paths; final entry is rendered as plain text.
+ * @returns Breadcrumb component wired to shadcn primitives.
  */
 const DynamicBreadcrumb: React.FC<DynamicBreadcrumbProps> = ({
   breadcrumbs,

@@ -13,14 +13,13 @@ interface SearchInputProps {
 }
 
 /**
- * Component for a search input element.
- * Allows the user to search for a specific term by inputting text.
+ * Controlled search field used by every listing filter; keeps a local buffer so typing is instant before pushing to the URL.
  *
- * @param searchTerm The current search term inputted by the user.
- * @param setSearchTerm A function that sets the search term.
- * @param props The props of the input element.
- * @param className The custom classes to be applied to the input element.
- * @returns A search input element.
+ * @param searchTerm Value synced with the router query string.
+ * @param updateSearchTerm Callback that triggers Fuse search when the user commits.
+ * @param placeholder Optional hint text.
+ * @param className Extra Tailwind classes.
+ * @returns Search input with clear and submit affordances.
  */
 const SearchInput: React.FC<SearchInputProps> = ({
   searchTerm,

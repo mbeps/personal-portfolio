@@ -26,12 +26,10 @@ import generateFilterOptionsByType from "@/actions/material/filterOptions/genera
 import useMaterialFilterState from "@/hooks/useMaterialFilterState";
 
 /**
- * Displays a list of all projects that I have worked on.
- * Also allows the user to search and filter the projects.
- * These projects are displayed into categories.
- * Because this uses hooks, it is a client-side only component.
+ * Client-side projects list that orchestrates language, technology, category, and archive filters via the shared hook.
+ * This is the canonical configuration for project filtering, ensuring URL state, Fuse search, and MaterialList stay aligned.
  *
- * @returns Component showing all the projects, search bar and filters.
+ * @returns Filter shell plus grouped project cards.
  */
 const ProjectsView: React.FC = () => {
   const basePath: string = usePathname();

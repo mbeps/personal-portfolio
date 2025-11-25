@@ -7,11 +7,10 @@ interface PageNavigationItemProps {
 }
 
 /**
- * Displays a navigation item for the page which allows the user to navigate to the page.
- * This is used in the more page to display all the pages the user can navigate to.
+ * Card representation of a `NAV_ITEMS` entry used on the `/more` index to surface hidden routes.
  *
- * @param item The navigation item to display.
- * @returns The navigation item for the page.
+ * @param item Navigation metadata describing path + copy.
+ * @returns Clickable card styled like other listing tiles.
  */
 const PageNavigationItem: React.FC<PageNavigationItemProps> = ({ item }) => {
   return (

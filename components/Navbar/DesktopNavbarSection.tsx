@@ -7,11 +7,10 @@ interface NavbarSectionProps {
 }
 
 /**
- * Section of the navbar that displays the links to the pages and the dark / light mode toggle.
- * This is used for desktop devices and it is hidden on mobile devices.
+ * Renders the main navigation links for large screens while letting the mobile drawer own navigation below the lg breakpoint.
  *
- * @param items Links and names of pages that can be accessed via the navbar
- * @returns Component displaying the navbar section with the links to the pages
+ * @param items NAV_ITEMS array filtered for primary destinations.
+ * @returns Horizontal stack of navigation buttons.
  */
 const DesktopNavbarSection: React.FC<NavbarSectionProps> = ({ items }) => {
   return (

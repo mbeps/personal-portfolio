@@ -28,3 +28,9 @@ const WorkList: React.FC<MaterialListProps> = ({ groupedMaterial }) => (
 );
 
 export default WorkList;
+/**
+ * Displays grouped experience records using `WorkItem`, mirroring the formatting used on the dedicated experience page.
+ *
+ * @param groupedMaterial Output from the grouping helpers (usually by category or type).
+ * @returns Sectioned work history list with optional headings.
+ */

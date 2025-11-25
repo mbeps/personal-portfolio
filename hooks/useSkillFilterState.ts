@@ -87,12 +87,11 @@ const groupParamName = "group";
 const searchParamName = "search";
 
 /**
- * A hook to manage the state of skill filters.
- * It reads filter settings from URL search parameters, applies them to a list of skills,
- * and returns the filtered, grouped, and sorted results.
+ * Filter + search controller for the `/skills` page, mirroring `useMaterialFilterState` but optimized for the skill taxonomy.
+ * Coordinates grouping, skill-type toggles, and the “hide skills without material” switch so SkillList stays declarative.
  *
- * @param skills The initial list of skill keys to be filtered.
- * @returns An object containing the filter state and the resulting skills.
+ * @param skills Full list of skill slugs from the static DB.
+ * @returns Filter state consumed by `SkillList`.
  */
 export default function useSkillFilterState(
   skills: SkillDatabaseKeys[]

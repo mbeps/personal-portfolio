@@ -4,13 +4,13 @@ import Database from "@/interfaces/Database";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 
 /**
- * Groups the materials based on the material type as defined in {@link MaterialTypeEnum}.
- * A name for the group is provided.
+ * Wraps a list of slugs into one logical group so tabs like “Projects”, “Roles”, or “Blogs” can render via the shared MaterialList.
+ * Used heavily when building curated sections where grouping by type is already implied.
  *
- * @param materialsKeys The keys of the materials to group
- * @param materialsDatabase The database of all materials to access the material details
- * @param groupName The name of the group to create
- * @returns The materials grouped by their category
+ * @param materialsKeys Slugs to include.
+ * @param materialsDatabase Database map; only used to filter out stale keys.
+ * @param groupName Label for the UI tab, normally a value from `MaterialTypeEnum`.
+ * @returns Single-element array that satisfies the `MaterialGroupInterface` contract.
  */
 export default function groupMaterialsByMaterialType<
   T extends MaterialInterface

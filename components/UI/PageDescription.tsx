@@ -5,10 +5,10 @@ type PageDescriptionProps = {
 };
 
 /**
- * Component used for displaying a description of the page.
+ * Lightweight helper that renders the descriptive copy defined in `constants/pages`, keeping headings clean across sections.
  *
- * @param description Description of the page
- * @returns Description of the page
+ * @param description Text to display under the page title.
+ * @returns Paragraph styled as the standard page subtitle.
  */
 const PageDescription: React.FC<PageDescriptionProps> = ({ description }) => {
   return (

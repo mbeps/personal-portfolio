@@ -4,12 +4,11 @@ import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import Database from "@/interfaces/Database";
 
 /**
- * Adds the skills a course's modules to the course's skills itself.
- * All the skills that are related to a module are also related to the course.
+ * Ensures parent courses advertise every skill covered across their modules, which keeps skill filters accurate on the education pages.
  *
- * @param coursesDatabase Courses to which the skills are to be added.
- * @param modulesDatabase All the modules to access the data related to the modules.
- * @returns The courses with the aggregated skills.
+ * @param course Course entry that references module keys.
+ * @param modulesDatabase Map of modules, used to pull their skill arrays.
+ * @returns Course copy with duplicate-free skill list that now includes child module skills.
  */
 export default function aggregateSkillsForCourse(
   course: CourseInterface,

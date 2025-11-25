@@ -2,12 +2,11 @@ import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
 import countMaterialsBySkill from "./countMaterialsBySkill";
 
 /**
- * Determines if a skill is associated with a significant number of materials.
- * A skill is considered to have "material" presence if it's used in at least two items.
- * This helps in deciding whether to prominently feature a skill.
+ * Guard used by the “hide skills without material” toggle so we only highlight skills that show up multiple times in the portfolio.
+ * Threshold stays at two usages to avoid surfacing technologies that were only touched once.
  *
- * @param skillKey The skill to check.
- * @returns `true` if the skill is used in two or more materials, otherwise `false`.
+ * @param skillKey Skill slug we are checking.
+ * @returns `true` when the usage count meets or exceeds the visibility threshold.
  */
 export default function skillHasMaterial(skillKey: SkillDatabaseKeys): boolean {
   return countMaterialsBySkill(skillKey) >= 2;

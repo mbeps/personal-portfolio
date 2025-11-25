@@ -3,12 +3,12 @@ import MaterialListProps from "@/interfaces/props/MaterialListProps";
 import MaterialGroupSectionList from "./MaterialGroupSectionList";
 
 /**
- * List of projects grouped by category to be displayed section by section.
- * Each section contains a title and a list of projects.
- * If there are no projects to display, a message is shown.
+ * MaterialGroupSectionList wrapper that renders grouped project slugs using the shared `ProjectItem` card.
+ * Used by the Projects page and related material tabs to keep layout rules identical.
  *
- * @param groupedProjects List of projects grouped by category to be displayed section by section
- * @returns A list of projects grouped by category
+ * @param groupedMaterial Output from `groupMaterialsByCategory`.
+ * @param showType When true, `ProjectItem` displays the type string instead of category.
+ * @returns Section list of projects with optional headings.
  */
 interface ProjectsListProps extends MaterialListProps {
   showType?: boolean;

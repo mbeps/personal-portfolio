@@ -15,11 +15,10 @@ export const metadata = {
 };
 
 /**
- * Page displaying all the pages the user can navigate to.
- * Some pages are not shown in the navbar and can only be accessed through this page.
+ * Directory of every public route so anything omitted from the navbar can still be discovered through a visual grid.
+ * Pulls from the shared `NAV_ITEMS` constant to stay in sync with command palette destinations.
  *
- * @param props Props for the page.
- * @returns Page to navigate all pages.
+ * @returns Grid of navigation cards excluding the current page and home.
  */
 export default function MorePage() {
   const ignoredPages: Array<NavigationItemInterface> = [HOME_PAGE, MORE_PAGE];

@@ -82,20 +82,11 @@ export const generateStaticParams = async () => {
 };
 
 /**
- * Page for displaying a specific course including:
- * - Certificate
- * - University
- * - Classification
- * - Modules
- * - Skills
- * - Related Materials
+ * Course detail page that merges curriculum metadata, module listings, skill tables, and related portfolio work.
+ * Handles archived modules via the shared toggle so users can surface historical coursework on demand.
  *
- * The page also displays:
- * - The skills covered in the course
- * - Related materials
- *
- * @param props Details about the page
- * @returns The course page
+ * @param params Dynamic course slug plus optional search params for archive state.
+ * @returns Course overview with grouped modules and material cross-links.
  */
 const CoursesPage: React.FC<{
   params: Params;

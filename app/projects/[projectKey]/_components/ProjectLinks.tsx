@@ -14,13 +14,13 @@ interface ProjectLinksProps {
 }
 
 /**
- * Links section displaying buttons to navigate to relevant pages for this project.
- * This section is not directly in the page because the page is a server component but this section is a client component.
+ * Client-only button group that surfaces deployment, repository, and report links so the server-rendered project page can stay static.
+ * Responsive orientation changes based on viewport with help from `useMediaQuery`.
  *
- * @param deploymentURL URL of the project to allow user to try it
- * @param repositoryURL URL of the GitHub repository for the codebase
- * @param reportURL Link to navigating to the report for this project
- * @returns Links section component with buttons
+ * @param deploymentURL Optional hosted demo link.
+ * @param repositoryURL Optional source link.
+ * @param reportURL Optional internal report route.
+ * @returns Button group linking out to the relevant surfaces.
  */
 export function ProjectLinks({
   deploymentURL,

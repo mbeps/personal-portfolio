@@ -3,10 +3,9 @@ import Socials from "../Socials/Socials";
 import developerName from "@/constants/developerName";
 
 /**
- * Footer to be displayed at the bottom of the page.
- * Contains links to social media accounts and the developer's name.
+ * Global footer that mirrors the hero social bar and links back to the source repo so every page ends with consistent branding.
  *
- * @returns Footer component
+ * @returns Footer element with copyright and socials.
  */
 const Footer = () => {
   const currentYear: number = new Date().getFullYear() || 2024;

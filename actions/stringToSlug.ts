@@ -1,10 +1,8 @@
 /**
- * Converts a string into a URL-friendly slug.
- * This is done by converting the string to lowercase and replacing spaces with hyphens.
- * Slugs are useful for creating clean and readable URLs.
+ * Minimal slug helper used throughout filters and enums so URL params stay predictable without importing a large dependency.
  *
- * @param input The string to convert.
- * @returns The slugified string.
+ * @param input String to normalize.
+ * @returns Lowercase, hyphen-delimited slug.
  */
 export default function stringToSlug(input: string): string {
   return input.toLowerCase().replace(/\s+/g, "-");

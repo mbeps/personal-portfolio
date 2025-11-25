@@ -7,11 +7,12 @@ interface VideoPlayerProps {
 }
 
 /**
- * Video Player Component which allows users to view a video.
- * @param src The URL of the video to be played
- * @param type The type of the video file
- * @param className Additional classes for styling
- * @returns Video player component with the video *
+ * Lightweight wrapper around the native `<video>` element to keep styling consistent inside the Gallery carousel.
+ *
+ * @param src Video source path relative to `/public`.
+ * @param type MIME type, defaults to mp4.
+ * @param className Optional Tailwind overrides.
+ * @returns Styled video element with controls enabled.
  */
 const VideoPlayer: React.FC<VideoPlayerProps> = ({
   src,

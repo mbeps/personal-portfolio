@@ -6,13 +6,12 @@ interface GridProps {
 }
 
 /**
- * Grid component which displays items in a 2-column grid layout.
- * If the total number of items is odd, the last item will be centered.
- * The gap between items can be customized.
+ * Responsive two-column grid wrapper used by course, certificate, and blog lists to keep card spacing consistent.
+ * Centers orphan cards when the item count is odd to avoid ragged layouts.
  *
- * @param items Items to be displayed in a grid
- * @param gap The gap between grid items, default is 5
- * @returns All the items in a grid layout
+ * @param items Array of already rendered cards.
+ * @param gap Custom gap between grid cells (defaults to 20px).
+ * @returns Grid container with auto-centering last cell when needed.
  */
 const Grid: React.FC<GridProps> = ({ items, gap = 20 }) => {
   const isOddTotal: boolean = items.length % 2 !== 0;

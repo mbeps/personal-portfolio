@@ -18,15 +18,11 @@ interface CertificateItemProps {
 }
 
 /**
- * Card which displays each certificate.
- * Contains:
- * - Name of the certificate
- * - Unique slug of the certificate
- * - Issuer of the certificate
- * - Button to open details about the certificate or issuer website
+ * Certificate grid card used across archive and related sections, pairing issuer tags with CTA buttons and cover imagery.
+ * Mirrors the detail page metadata so visitors can jump straight to issuer sites or the internal certificate screen.
  *
- * @param certificateKey Unique key of the certificate
- * @returns Card with certificate metadata
+ * @param certificateKey Certificate slug from the static database.
+ * @returns Card with image, issuer tag, and quick links.
  */
 const CertificateItem: React.FC<CertificateItemProps> = ({
   certificateKey,

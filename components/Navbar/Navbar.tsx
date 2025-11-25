@@ -12,13 +12,10 @@ import NavbarOverlay from "./NavbarOverlay";
 import ThemeToggle from "./ThemeToggle";
 
 /**
- * Navbar component shown at the top of the page.
- * It displays the logo, links to other pages, and a dark / light mode toggle.
- * It allows the user to search for content on the website.
- * It also displays a hamburger menu for mobile devices.
- * When the hamburger menu is clicked, it opens a sidebar with the links to other pages.
+ * Sticky navigation bar that coordinates the home button, command palette trigger, theme toggle, and mobile drawer overlay.
+ * Uses the Zustand navbar store so the overlay state can be shared with other components (scroll lock, body blur, etc.).
  *
- * @returns Navbar component
+ * @returns Header containing desktop links and mobile toggle with overlay.
  */
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);

@@ -4,12 +4,11 @@ import FilterOption from "@/interfaces/filters/FilterOption";
 import stringToSlug from "../../stringToSlug";
 
 /**
- * Generates the filter options based on the categories of the materials.
- * For all the materials, it will generate a filter option for each unique category.
- * These are then used as options the user can select to filter the materials.
+ * Converts whatever editorial categories exist in the current dataset into drawer options so section lists and filters stay aligned.
+ * Uses the category labels already present on each material, which lets curated sections introduce bespoke groupings.
  *
- * @param materialsDatabase The database of all materials from which to generate the filter options
- * @returns The filter options generated from the categories of the materials
+ * @param materialsDatabase Material map scoped to the active page.
+ * @returns Unique filter options sorted by first appearance to preserve editorial ordering.
  */
 export default function generateFilterOptionsByCategory<
   T extends MaterialInterface

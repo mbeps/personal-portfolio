@@ -12,12 +12,11 @@ interface RelatedSkillsSectionProps {
 }
 
 /**
- * Displays all the sub-skills for a given skill.
- * These skills are grouped by their skill type (Hard, General, Soft) and displayed in a table format.
- * Each group of skills is also categorised by their skill category.\
+ * Companion block to the skill page that visualizes related skills using the same grouped tables as the Skills directory.
+ * Builds the grouping on the fly so edits to `relatedSkills` propagate without manual maintenance.
  *
- * @param skillKey The key of the skill to display the related skills for.
- * @returns A React component that displays all the related skills for a given skill.
+ * @param skillKey Base skill whose relations should be rendered.
+ * @returns Table of related skills grouped by type/category, or null when no relations exist.
  */
 const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
   skillKey,
