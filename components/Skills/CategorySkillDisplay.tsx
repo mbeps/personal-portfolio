@@ -78,8 +78,11 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
   }
 
   // Determine grid style based on the number of categories
+  const isTwoColumns: boolean = displayedSkills.length === 2;
   const gridStyle: string = shouldDisplayTitle
-    ? `gap-4 grid md:grid-cols-2 lg:grid-cols-3` // for multiple categories
+    ? `gap-4 grid md:grid-cols-2 ${
+        isTwoColumns ? "lg:grid-cols-2" : "lg:grid-cols-3"
+      }` // for multiple categories
     : "gap-4 grid grid-cols-1"; // for single category
 
   return (

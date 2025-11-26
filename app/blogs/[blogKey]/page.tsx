@@ -6,7 +6,7 @@ import SpecialReader from "@/components/Reader/SpecialReader";
 import { Card, CardContent } from "@/components/shadcn/ui/card";
 import SkillTableSection from "@/components/Skills/SkillTableSection";
 import developerName from "@/constants/developerName";
-import { BLOG_PAGE } from "@/constants/pages";
+import { BLOG_PAGE, PROJECTS_PAGE } from "@/constants/pages";
 import BlogInterface from "@/database/Blogs/BlogInterface";
 import blogsDatabaseMap from "@/database/Blogs/BlogsDatabaseMap";
 import ProjectDatabaseKeys from "@/database/Projects/ProjectDatabaseKeys";
@@ -99,7 +99,7 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
 
   // Replace base path placeholder with actual path for images
   const imagePath = isProjectBlog
-    ? `/projects/${blogKey}/img`
+    ? `${PROJECTS_PAGE.path}/${blogKey}/img`
     : `${basePath}/${blogKey}/img`;
   const processedBlogContent: string = processMarkdownImages(
     blogContent,
