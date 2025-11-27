@@ -141,16 +141,16 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.CriticalThinking,
     ],
   },
-  [BlogDatabaseKeys.Backend]: {
-    name: "Exploring Backends: Custom vs Managed Solutions",
+  [BlogDatabaseKeys.HiddenMarkovModelsInAI]: {
+    name: "How Hidden Markov Models (HMMs) are used in AI",
     subtitle:
-      "An In-depth Analysis of Backend Development Approaches, Tools, and Security Considerations",
+      "An theoretical introduction to Hidden Markov Models (HMMs) and their applications in Artificial Intelligence. Covering Markov processes, the Viterbi algorithm, and practical use cases.",
     skills: [
       SkillDatabaseKeys.CloudComputing,
       SkillDatabaseKeys.Firebase,
       SkillDatabaseKeys.Supabase,
     ],
-    category: BlogCategoriesEnum.SoftwareEngineering,
+    category: BlogCategoriesEnum.ArtificialIntelligence,
   },
   [BlogDatabaseKeys.ORM]: {
     name: "Understanding Object-Relational Mapping (ORM)",
