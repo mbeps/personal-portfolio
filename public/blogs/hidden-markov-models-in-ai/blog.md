@@ -1,57 +1,57 @@
-- [1. Introduction to HMMs](#1-introduction-to-hmms)
-	- [1.1 Markov Assumption](#11-markov-assumption)
+- [1 - Introduction to HMMs](#1---introduction-to-hmms)
+	- [1.1 - Markov Assumption](#11---markov-assumption)
 		- [Importance of the Markov Assumption](#importance-of-the-markov-assumption)
 		- [Example: Weather Prediction](#example-weather-prediction)
-	- [1.2 Hidden vs. Observable States](#12-hidden-vs-observable-states)
+	- [1.2 - Hidden vs. Observable States](#12---hidden-vs-observable-states)
 		- [Markov Chains vs. Hidden Markov Models](#markov-chains-vs-hidden-markov-models)
 		- [Formal Structure](#formal-structure)
 		- [Key Difference](#key-difference)
-	- [1.3 Applications of HMMs](#13-applications-of-hmms)
+	- [1.3 - Applications of HMMs](#13---applications-of-hmms)
 		- [Common Applications](#common-applications)
 		- [Example: The Fraudulent Croupier Scenario](#example-the-fraudulent-croupier-scenario)
-- [2. Structure of HMMs](#2-structure-of-hmms)
-	- [2.1 State Transition Probability Matrix](#21-state-transition-probability-matrix)
+- [2 - Structure of HMMs](#2---structure-of-hmms)
+	- [2.1 - State Transition Probability Matrix](#21---state-transition-probability-matrix)
 		- [Properties of Transition Probabilities](#properties-of-transition-probabilities)
 		- [Example: Dice HMM](#example-dice-hmm)
-	- [2.2 Emission Probability Matrix](#22-emission-probability-matrix)
+	- [2.2 - Emission Probability Matrix](#22---emission-probability-matrix)
 		- [Output Independence Property](#output-independence-property)
 		- [Estimation of Emission Probabilities](#estimation-of-emission-probabilities)
 		- [Example: Dice HMM](#example-dice-hmm-1)
-	- [2.3 Start and End States](#23-start-and-end-states)
+	- [2.3 - Start and End States](#23---start-and-end-states)
 		- [Start State ($s\_0$)](#start-state-s_0)
 		- [End State ($s\_f$)](#end-state-s_f)
 		- [Special Observations](#special-observations)
 		- [Complete HMM Definition](#complete-hmm-definition)
 		- [Visual Representation](#visual-representation)
-- [3. HMM Problems and Algorithms](#3-hmm-problems-and-algorithms)
-	- [3.1 Problem 1: Labelled Learning (Parameter Estimation)](#31-problem-1-labelled-learning-parameter-estimation)
+- [3 - HMM Problems and Algorithms](#3---hmm-problems-and-algorithms)
+	- [3.1 - Problem 1: Labelled Learning (Parameter Estimation)](#31---problem-1-labelled-learning-parameter-estimation)
 		- [Input and Output](#input-and-output)
 		- [Parameter Estimation Formulas](#parameter-estimation-formulas)
 		- [Example: Dice HMM Parameter Estimation](#example-dice-hmm-parameter-estimation)
 		- [Smoothing](#smoothing)
-	- [3.2 Problem 2: Unlabelled Learning](#32-problem-2-unlabelled-learning)
+	- [3.2 - Problem 2: Unlabelled Learning](#32---problem-2-unlabelled-learning)
 		- [Solution Approach](#solution-approach)
 		- [Challenges](#challenges)
-	- [3.3 Problem 3: Likelihood Calculation](#33-problem-3-likelihood-calculation)
+	- [3.3 - Problem 3: Likelihood Calculation](#33---problem-3-likelihood-calculation)
 		- [Forward Algorithm](#forward-algorithm)
-	- [3.4 Problem 4: Decoding (Viterbi Algorithm)](#34-problem-4-decoding-viterbi-algorithm)
+	- [3.4 - Problem 4: Decoding (Viterbi Algorithm)](#34---problem-4-decoding-viterbi-algorithm)
 		- [Dynamic Programming Solution](#dynamic-programming-solution)
 		- [The Viterbi Algorithm](#the-viterbi-algorithm)
 			- [Key Variables](#key-variables)
 			- [Algorithm Steps](#algorithm-steps)
 		- [Example: Dice HMM Decoding](#example-dice-hmm-decoding)
 		- [Complexity](#complexity)
-- [4. Evaluation and Testing](#4-evaluation-and-testing)
-	- [4.1 Precision and Recall](#41-precision-and-recall)
+- [4 - Evaluation and Testing](#4---evaluation-and-testing)
+	- [4.1 - Precision and Recall](#41---precision-and-recall)
 		- [Why Not Just Use Accuracy?](#why-not-just-use-accuracy)
 		- [Precision, Recall and F-measure](#precision-recall-and-f-measure)
 		- [Example: Evaluating Dice HMM](#example-evaluating-dice-hmm)
-	- [4.2 Baseline Algorithms](#42-baseline-algorithms)
+	- [4.2 - Baseline Algorithms](#42---baseline-algorithms)
 		- [Importance of Baselines](#importance-of-baselines)
 		- [Criteria for Effective Baselines](#criteria-for-effective-baselines)
 		- [Common Baseline Approaches](#common-baseline-approaches)
 		- [Baseline for HMM Decoding](#baseline-for-hmm-decoding)
-	- [4.3 Statistical Significance Testing](#43-statistical-significance-testing)
+	- [4.3 - Statistical Significance Testing](#43---statistical-significance-testing)
 		- [Null Hypothesis Testing](#null-hypothesis-testing)
 		- [The Sign Test](#the-sign-test)
 		- [Binomial Distribution](#binomial-distribution)
@@ -59,15 +59,15 @@
 		- [Example: Sign Test](#example-sign-test)
 		- [Handling Ties](#handling-ties)
 		- [Reporting Significance](#reporting-significance)
-- [5. Practical Applications](#5-practical-applications)
-	- [5.1 Fraudulent Croupier Example](#51-fraudulent-croupier-example)
+- [5 - Practical Applications](#5---practical-applications)
+	- [5.1 - Fraudulent Croupier Example](#51---fraudulent-croupier-example)
 		- [Scenario Description](#scenario-description)
 		- [HMM Formulation](#hmm-formulation)
 		- [Variant with Three Dice](#variant-with-three-dice)
 		- [Parameter Estimation Example](#parameter-estimation-example)
 		- [Decoding with Viterbi](#decoding-with-viterbi)
 		- [Variants and Constraints](#variants-and-constraints)
-	- [5.2 Part-of-Speech Tagging](#52-part-of-speech-tagging)
+	- [5.2 - Part-of-Speech Tagging](#52---part-of-speech-tagging)
 		- [The Problem of Ambiguity](#the-problem-of-ambiguity)
 		- [HMM Formulation for POS Tagging](#hmm-formulation-for-pos-tagging)
 		- [Example from Lecture Notes](#example-from-lecture-notes)
@@ -77,9 +77,9 @@
 
 
 
-# 1. Introduction to HMMs
+# 1 - Introduction to HMMs
 
-## 1.1 Markov Assumption
+## 1.1 - Markov Assumption
 
 **Hidden Markov Models (HMMs)** are probabilistic models used for representing sequential data where the underlying process that generates the observations is hidden.
 
@@ -110,7 +110,7 @@ Consider predicting tomorrow's weather based on historical observations:
 
 The simplification makes the model more manageable, requiring far less data to estimate parameters.
 
-## 1.2 Hidden vs. Observable States
+## 1.2 - Hidden vs. Observable States
 
 ### Markov Chains vs. Hidden Markov Models
 
@@ -145,7 +145,7 @@ In an HMM:
 
 The key difference is that in Markov Chains, we know exactly which state the system is in at any time, while in HMMs, we need to infer the most likely sequence of hidden states based on the observations.
 
-## 1.3 Applications of HMMs
+## 1.3 - Applications of HMMs
 
 HMMs are widely used in scenarios where:
 1. We have sequential data
@@ -198,9 +198,9 @@ In this example:
 
 This scenario demonstrates how HMMs can be used to infer hidden processes (which dice is being used) from observable data (the dice rolls).
 
-# 2. Structure of HMMs
+# 2 - Structure of HMMs
 
-## 2.1 State Transition Probability Matrix
+## 2.1 - State Transition Probability Matrix
 
 The **state transition probability matrix** (or simply **transition matrix**) is a fundamental component of an HMM, represented as matrix **A**. It defines the probability of moving from one state to another.
 
@@ -242,7 +242,7 @@ These probabilities can be estimated from training data:
 
 $$a_{ij} \approx \frac{\text{count}_{\text{trans}}(X_t = s_i, X_{t+1} = s_j)}{\text{count}_{\text{trans}}(X_t = s_i)}$$
 
-## 2.2 Emission Probability Matrix
+## 2.2 - Emission Probability Matrix
 
 The **emission probability matrix** (also called **observation likelihood matrix**) is represented as matrix **B**. It defines the probability of observing a particular output given that the model is in a specific hidden state.
 
@@ -284,7 +284,7 @@ In the fraudulent croupier scenario:
 - For the loaded dice (state L):
   - The probabilities $b_L(1), b_L(2), \ldots, b_L(6)$ would have a different distribution, reflecting the bias of the loaded dice.
 
-## 2.3 Start and End States
+## 2.3 - Start and End States
 
 HMMs typically include **special start state** ($s_0$) and **special end state** ($s_f$) to explicitly model the beginning and end of observation sequences.
 
@@ -330,9 +330,9 @@ The HMM can be denoted as $\mu = (A, B)$ with these parameters.
 In this diagram, $a_{01}$ and $a_{02}$ represent probabilities of starting with the loaded or fair dice, while $a_{1f}$ and $a_{2f}$ represent probabilities of ending the sequence when in each state.
 
 
-# 3. HMM Problems and Algorithms
+# 3 - HMM Problems and Algorithms
 
-## 3.1 Problem 1: Labelled Learning (Parameter Estimation)
+## 3.1 - Problem 1: Labelled Learning (Parameter Estimation)
 
 **Labelled learning** is the problem of estimating the parameters of an HMM (transition and emission probabilities) when we have access to both observation sequences and their corresponding hidden state sequences.
 
@@ -384,7 +384,7 @@ $$b_L(6) = \frac{\text{count}(6|L)}{\text{count}(L)} = \frac{1}{8} = 0.125$$
 
 In practice, **add-one smoothing** (or other smoothing techniques) is often applied to handle zero counts and avoid zero probabilities.
 
-## 3.2 Problem 2: Unlabelled Learning
+## 3.2 - Problem 2: Unlabelled Learning
 
 **Unlabelled learning** is the problem of estimating the HMM parameters when we only have access to observation sequences, without the corresponding hidden state sequences.
 
@@ -406,7 +406,7 @@ The algorithm iterates between these steps until convergence, typically reaching
 - More computationally intensive than labelled learning
 - May require multiple random restarts with different initializations
 
-## 3.3 Problem 3: Likelihood Calculation
+## 3.3 - Problem 3: Likelihood Calculation
 
 **Likelihood calculation** is the problem of determining the probability of an observation sequence given an HMM: $P(O|\mu)$.
 
@@ -425,7 +425,7 @@ The standard approach uses the **Forward algorithm**, which efficiently computes
 
 The algorithm has complexity $O(N^2T)$ where $N$ is the number of states and $T$ is the sequence length.
 
-## 3.4 Problem 4: Decoding (Viterbi Algorithm)
+## 3.4 - Problem 4: Decoding (Viterbi Algorithm)
 
 **Decoding** is the problem of finding the most likely sequence of hidden states that could have generated a given observation sequence.
 
@@ -613,9 +613,9 @@ The time complexity of the Viterbi algorithm is $O(N^2T)$, where:
 
 This is much more efficient than the brute force approach of checking all $N^T$ possible state sequences.
 
-# 4. Evaluation and Testing
+# 4 - Evaluation and Testing
 
-## 4.1 Precision and Recall
+## 4.1 - Precision and Recall
 
 When evaluating HMM performance, we often need more nuanced metrics than overall accuracy, especially when the classes are imbalanced or we're particularly interested in one type of state.
 
@@ -669,7 +669,7 @@ Calculating metrics for the loaded dice (L):
 - F-measure: $F_L = \frac{2 \times 0.889 \times 0.8}{0.889 + 0.8} = \frac{1.422}{1.689} = 0.842$
 - Accuracy: $\frac{45+40}{100} = 0.85$ (85% overall correct predictions)
 
-## 4.2 Baseline Algorithms
+## 4.2 - Baseline Algorithms
 
 A **baseline algorithm** is a simpler alternative to your proposed solution that serves as a comparison point. Baselines help quantify how much improvement your model provides over simpler approaches.
 
@@ -704,7 +704,7 @@ For HMM decoding, a common baseline is **random guessing of hidden states**:
 
 This baseline tests how much the sequential modeling in an HMM improves prediction compared to simply knowing state frequencies.
 
-## 4.3 Statistical Significance Testing
+## 4.3 - Statistical Significance Testing
 
 When comparing two systems (e.g., your HMM vs. a baseline), observed performance differences might be due to chance rather than actual superiority of one approach. **Statistical significance testing** helps determine whether observed differences are likely to be meaningful.
 
@@ -773,9 +773,9 @@ When reporting results, only claim statistical significance if your test indicat
 - "The difference between System 1 and System 2 is statistically significant at α = 0.01"
 - Raw accuracy differences without significance testing may be meaningless
 
-# 5. Practical Applications
+# 5 - Practical Applications
 
-## 5.1 Fraudulent Croupier Example
+## 5.1 - Fraudulent Croupier Example
 
 The fraudulent croupier scenario is a classic example used to illustrate HMMs in action. This example demonstrates how HMMs can detect hidden states when only observations are visible.
 
@@ -853,7 +853,7 @@ The tutorial materials (tut04.pdf) discuss several interesting variants of the c
 3. **Never using loaded dice more than twice in a row**: This requires a second-order HMM to properly model
 4. **Always switching after rolling a 6**: This relates emissions to transitions and cannot be directly modeled in a standard HMM
 
-## 5.2 Part-of-Speech Tagging
+## 5.2 - Part-of-Speech Tagging
 
 **Part-of-Speech (POS) tagging** is the task of assigning grammatical categories (noun, verb, adjective, etc.) to words in a text. This is a classic application of HMMs in natural language processing.
 
