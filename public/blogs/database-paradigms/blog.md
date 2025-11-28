@@ -636,7 +636,6 @@ Here, $\mathbf{x}_j$ is the $j$-th sub-vector of the query. $q_j(\mathbf{y}_j)$ 
 Crucially, the distances between the query sub-vectors and all $K$ centroids can be pre-computed into a Lookup Table.
 The distance calculation for each candidate becomes a summation of $M$ table lookups. This reduces the complexity from floating-point arithmetic to simple integer addition.
 
------
 
 # 8 - Theoretical Comparison and Synthesis
 

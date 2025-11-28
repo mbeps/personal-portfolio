@@ -227,6 +227,18 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.Normalisation,
     ],
   },
+  [BlogDatabaseKeys.DatabaseNormalisation]: {
+    name: "Database Normalisation",
+    subtitle:
+      "A theoretical overview of database normalisation, its forms, benefits, and practical applications in database design. ",
+    category: BlogCategoriesEnum.SoftwareEngineering,
+    skills: [
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.RelationalDatabases,
+      SkillDatabaseKeys.Normalisation,
+    ],
+  },
   [BlogDatabaseKeys.SyncAsync]: {
     name: "Sync vs Async: Deep Dive into Programming Models",
     subtitle:
