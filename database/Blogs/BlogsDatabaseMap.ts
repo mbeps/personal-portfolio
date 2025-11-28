@@ -172,6 +172,13 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.ProblemSolving,
     ],
   },
+  [BlogDatabaseKeys.Backend]: {
+    name: "Backend Design and Development Principles",
+    subtitle:
+      "A comprehensive overview of backend development, covering architecture patterns, best practices, and technologies used in building robust server-side applications.",
+    category: BlogCategoriesEnum.SoftwareEngineering,
+    skills: [SkillDatabaseKeys.REST, SkillDatabaseKeys.ProblemSolving],
+  },
   [BlogDatabaseKeys.CrossOriginResourceSharing]: {
     name: "Cross-Origin Resource Sharing (CORS) in Web Development",
     subtitle:
