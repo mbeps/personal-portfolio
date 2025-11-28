@@ -9,8 +9,16 @@ import { useTheme } from "next-themes";
 import SyntaxHighlighter from "./PrismHighlighter";
 
 type CodeBlockProps = {
-  children: string;
+  children: string | React.ReactNode;
   className?: string;
+};
+
+const getCodeText = (content: CodeBlockProps["children"]): string => {
+  if (typeof content === "string") return content;
+
+  return React.Children.toArray(content)
+    .map((child) => (typeof child === "string" ? child : ""))
+    .join("");
 };
 
 /**
@@ -30,12 +38,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
     setIsMounted(true);
   }, []);
 
-  const codeText =
-    typeof children === "string"
-      ? children
-      : React.Children.toArray(children)
-          .map((child) => (typeof child === "string" ? child : ""))
-          .join("");
+  const codeText = getCodeText(children);
 
   // Treat as block if a language is provided or the snippet spans multiple lines
   const isBlock = Boolean(className) || codeText.includes("\n");
