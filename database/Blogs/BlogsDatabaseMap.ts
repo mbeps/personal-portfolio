@@ -154,6 +154,13 @@ const blogsMap: Database<BlogInterface> = {
     category: BlogCategoriesEnum.ArtificialIntelligence,
   },
   //^ Software Engineering Blogs
+  [BlogDatabaseKeys.DesignPatterns]: {
+    name: "Software Design Patterns",
+    subtitle:
+      "An in-depth exploration of common software design patterns, their use cases, advantages, and implementation strategies in modern software development.",
+    category: BlogCategoriesEnum.SoftwareEngineering,
+    skills: [SkillDatabaseKeys.ProblemSolving],
+  },
   [BlogDatabaseKeys.ApiComparison]: {
     name: "Comparing Different API Design Approaches",
     subtitle:
