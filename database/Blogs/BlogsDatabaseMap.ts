@@ -52,7 +52,7 @@ const blogsMap: Database<BlogInterface> = {
   [BlogDatabaseKeys.IntroductionToNeuralNetworks]: {
     name: "Introduction to Neural Networks",
     subtitle:
-      "An theoretical introduction to Neural Networks and architectures.",
+      "An theoretical introduction to Neural Networks, architectures, core algorithms (like backpropagation), and more.",
     category: BlogCategoriesEnum.ArtificialIntelligence,
     skills: [
       SkillDatabaseKeys.MachineLearning,
@@ -165,6 +165,10 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.ObjectRelationalMapping,
       SkillDatabaseKeys.Prisma,
       SkillDatabaseKeys.Drizzle,
+      SkillDatabaseKeys.TypeORM,
+      SkillDatabaseKeys.SpringDataJPA,
+      SkillDatabaseKeys.SpringDataMongoDB,
+      SkillDatabaseKeys.Django,
       SkillDatabaseKeys.Mongoose,
       SkillDatabaseKeys.SQLAlchemy,
       SkillDatabaseKeys.Hibernate,

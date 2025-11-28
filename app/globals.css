@@ -165,3 +165,99 @@ body {
 @utility material-sections-wrapper {
   @apply space-y-8;
 }
+
+/* ---- Mermaid diagram styles ---- */
+.mermaid-container {
+  @apply my-6 rounded-lg border border-border bg-card p-4 overflow-x-auto;
+}
+
+.mermaid-container svg {
+  @apply max-w-full h-auto;
+}
+
+.mermaid-error {
+  @apply p-4 bg-destructive/10 border border-destructive rounded-lg;
+}
+
+.mermaid-error p {
+  @apply text-destructive font-semibold mb-2;
+}
+
+.mermaid-error pre {
+  @apply text-sm text-muted-foreground overflow-x-auto;
+}
+
+/* ---- Code block styles ---- */
+/* Remove default prose pre styling to avoid conflicts */
+.prose pre {
+  @apply p-0 my-0 bg-transparent border-0;
+}
+
+/* Inline code styling */
+.prose code.inline-code {
+  @apply bg-muted px-1.5 py-0.5 rounded text-foreground font-mono text-sm;
+  @apply before:content-none after:content-none;
+}
+
+/* Loading state for code blocks */
+.code-block-loading {
+  @apply p-4 rounded-lg overflow-x-auto my-6 border;
+  background-color: #f5f5f7;
+  border-color: rgba(15, 23, 42, 0.08);
+}
+
+.dark .code-block-loading {
+  background-color: #1f2430;
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.code-block-loading code {
+  @apply font-mono text-[0.95rem] leading-7 block;
+}
+
+/* ---- Markdown table styling ---- */
+.prose table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background-color: #ffffff;
+}
+
+.dark .prose table {
+  border-color: rgba(255, 255, 255, 0.08);
+  background-color: #111827;
+}
+
+.prose table thead {
+  background-color: rgba(15, 23, 42, 0.08);
+}
+
+.dark .prose table thead {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.prose table th,
+.prose table td {
+  @apply px-4 py-3 text-left align-top text-sm;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.dark .prose table th,
+.dark .prose table td {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.prose table th {
+  @apply font-semibold text-base text-slate-700;
+}
+
+.dark .prose table th {
+  @apply text-slate-300;
+}
+
+.prose table tbody tr:last-child td {
+  border-bottom: none;
+}
