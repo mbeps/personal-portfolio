@@ -214,10 +214,10 @@ const blogsMap: Database<BlogInterface> = {
     category: BlogCategoriesEnum.SoftwareEngineering,
     skills: [SkillDatabaseKeys.Testing],
   },
-  [BlogDatabaseKeys.SQLNOSQL]: {
-    name: "Exploring Databases: A Comparative Study of Relational and Non-Relational Models",
+  [BlogDatabaseKeys.DatabaseParadigms]: {
+    name: "Exploring Different Database Paradigms",
     subtitle:
-      "An In-depth Analysis of Database Systems and their Role in Software Engineering and Web Development",
+      "A theoretical overview of various database paradigms including relational, non-relational, graph, and time-series databases.",
     category: BlogCategoriesEnum.SoftwareEngineering,
     skills: [
       SkillDatabaseKeys.DatabaseManagementSystems,

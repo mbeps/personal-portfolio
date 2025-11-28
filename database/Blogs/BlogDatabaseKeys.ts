@@ -20,7 +20,7 @@ enum BlogDatabaseKeys {
   CrossOriginResourceSharing = "cross-origin-resource-sharing",
   TypesOfSoftwareTesting = "types-of-software-testing",
   AuthenticationSessionManagement = "authentication-session-management",
-  SQLNOSQL = "sql-vs-nosql-databases",
+  DatabaseParadigms = "database-paradigms",
   SyncAsync = "sync-vs-async",
   ApiComparison = "api-comparison",
 }
