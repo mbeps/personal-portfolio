@@ -186,3 +186,24 @@ body {
 .mermaid-error pre {
   @apply text-sm text-muted-foreground overflow-x-auto;
 }
+
+/* ---- Code block styles ---- */
+/* Remove default prose pre styling to avoid conflicts */
+.prose pre {
+  @apply p-0 my-0 bg-transparent border-0;
+}
+
+/* Inline code styling */
+.prose code.inline-code {
+  @apply bg-muted px-1.5 py-0.5 rounded text-foreground font-mono text-sm;
+  @apply before:content-none after:content-none;
+}
+
+/* Loading state for code blocks */
+.code-block-loading {
+  @apply bg-gray-100 dark:bg-gray-900 p-4 rounded-lg overflow-x-auto my-6;
+}
+
+.code-block-loading code {
+  @apply font-mono text-[0.95rem] leading-7 block;
+}

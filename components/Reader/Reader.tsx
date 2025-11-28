@@ -5,6 +5,7 @@ import React, { useMemo } from "react";
 import InlineMath from "./InlineMath";
 import DisplayMath from "./DisplayMath";
 import Mermaid from "./Mermaid";
+import CodeBlock from "./CodeBlock";
 
 type ReaderProps = {
   content: string | undefined;
@@ -96,6 +97,9 @@ const Reader: React.FC<ReaderProps> = ({ content, size = "lg" }) => {
         options={{
           overrides: {
             ...headingOverrides,
+            code: {
+              component: CodeBlock,
+            },
             Mermaid: {
               component: ({ children }: { children: string }) => {
                 const placeholder = String(children);
