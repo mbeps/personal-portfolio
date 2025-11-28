@@ -65,7 +65,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
     );
   }
 
-  const backgroundColor = isDark ? "#1f2430" : "#f5f5f7";
+  const backgroundColor = isDark ? "#1a1a1a" : "#f5f5f7";
   const borderColor = isDark
     ? "rgba(255, 255, 255, 0.06)"
     : "rgba(15, 23, 42, 0.08)";
