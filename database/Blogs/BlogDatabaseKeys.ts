@@ -24,6 +24,7 @@ enum BlogDatabaseKeys {
   DatabaseNormalisation = "database-normalisation",
   SyncAsync = "sync-vs-async",
   ApiComparison = "api-comparison",
+  DesignPatterns = "design-patterns",
 }
 
 export default BlogDatabaseKeys;
