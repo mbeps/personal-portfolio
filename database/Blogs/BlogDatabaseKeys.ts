@@ -19,6 +19,7 @@ enum BlogDatabaseKeys {
   ORM = "orm",
   CrossOriginResourceSharing = "cross-origin-resource-sharing",
   TypesOfSoftwareTesting = "types-of-software-testing",
+  AuthenticationSessionManagement = "authentication-session-management",
   SQLNOSQL = "sql-vs-nosql-databases",
   SyncAsync = "sync-vs-async",
   ApiComparison = "api-comparison",

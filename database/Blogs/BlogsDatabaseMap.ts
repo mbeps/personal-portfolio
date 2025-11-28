@@ -207,6 +207,13 @@ const blogsMap: Database<BlogInterface> = {
     category: BlogCategoriesEnum.SoftwareEngineering,
     skills: [SkillDatabaseKeys.Testing],
   },
+  [BlogDatabaseKeys.AuthenticationSessionManagement]: {
+    name: "Comparing Authentication and Session Management Techniques",
+    subtitle:
+      "An in-depth analysis of authentication and session management methods, including token-based authentication, session-based authentication, and OAuth.",
+    category: BlogCategoriesEnum.SoftwareEngineering,
+    skills: [SkillDatabaseKeys.Testing],
+  },
   [BlogDatabaseKeys.SQLNOSQL]: {
     name: "Exploring Databases: A Comparative Study of Relational and Non-Relational Models",
     subtitle:
