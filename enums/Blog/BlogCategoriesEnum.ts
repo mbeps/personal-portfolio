@@ -3,8 +3,9 @@
  * This enum is used to avoid hardcoding the categories in the code, getting autocompletion support and avoiding typos.
  */
 enum BlogCategoriesEnum {
-  SoftwareEngineering = "Software Engineering",
   ArtificialIntelligence = "Artificial Intelligence",
+  SoftwareEngineering = "Software Engineering",
+  Databases = "Databases",
   Mathematics = "Mathematics",
   Projects = "Projects",
   Other = "Other",

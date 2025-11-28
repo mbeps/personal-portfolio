@@ -17,6 +17,7 @@ import ModuleDatabaseKeys from "../Modules/ModuleDatabaseKeys";
  * The order of the skills is the order that is used when displaying the skills on the website.
  */
 const blogsMap: Database<BlogInterface> = {
+  //^ Artificial Intelligence Blogs
   [ProjectDatabaseKeys.AlignmentInLargeLanguageModels]: {
     name: projectDatabaseMap[ProjectDatabaseKeys.AlignmentInLargeLanguageModels]
       .name,
@@ -152,11 +153,85 @@ const blogsMap: Database<BlogInterface> = {
     ],
     category: BlogCategoriesEnum.ArtificialIntelligence,
   },
+  //^ Software Engineering Blogs
+  [BlogDatabaseKeys.ApiComparison]: {
+    name: "Comparing Different API Design Approaches",
+    subtitle:
+      "Deep and theoretical comparison between different API design approaches including REST, GraphQL, and SOAP.",
+    category: BlogCategoriesEnum.SoftwareEngineering,
+    skills: [
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.GraphQL,
+      SkillDatabaseKeys.ProblemSolving,
+    ],
+  },
+  [BlogDatabaseKeys.CrossOriginResourceSharing]: {
+    name: "Cross-Origin Resource Sharing (CORS) in Web Development",
+    subtitle:
+      "A technical overview of CORS, theory, architecture, and use cases.",
+    category: BlogCategoriesEnum.SoftwareEngineering,
+    skills: [
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.ExpressJS,
+      SkillDatabaseKeys.UserAuthentication,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.GraphQL,
+    ],
+    relatedMaterials: [ProjectDatabaseKeys.OAuthNextJsSpringBoot],
+  },
+  [BlogDatabaseKeys.TypesOfSoftwareTesting]: {
+    name: "Study of Various Software Testing Methodologies",
+    subtitle:
+      "A comprehensive analysis of software testing types and strategies, methodlogies, philosophies, and best practices.",
+    category: BlogCategoriesEnum.SoftwareEngineering,
+    skills: [SkillDatabaseKeys.Testing],
+  },
+  [BlogDatabaseKeys.AuthenticationSessionManagement]: {
+    name: "Comparing Authentication and Session Management Techniques",
+    subtitle:
+      "An in-depth analysis of authentication and session management methods, including token-based authentication, session-based authentication, and OAuth.",
+    category: BlogCategoriesEnum.SoftwareEngineering,
+    skills: [SkillDatabaseKeys.Testing],
+  },
+  [BlogDatabaseKeys.SyncAsync]: {
+    name: "Sync vs Async: Deep Dive into Programming Models",
+    subtitle:
+      "Understanding and Optimizing Synchronous and Asynchronous Programming",
+    category: BlogCategoriesEnum.SoftwareEngineering,
+    skills: [],
+  },
+
+  //^ Database Blogs
+  [BlogDatabaseKeys.DatabaseParadigms]: {
+    name: "Exploring Different Database Paradigms",
+    subtitle:
+      "A theoretical overview of various database paradigms including relational, non-relational, graph, and time-series databases.",
+    category: BlogCategoriesEnum.Databases,
+    skills: [
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.RelationalDatabases,
+      SkillDatabaseKeys.NonRelationalDatabases,
+      SkillDatabaseKeys.Normalisation,
+    ],
+  },
+  [BlogDatabaseKeys.DatabaseNormalisation]: {
+    name: "Database Normalisation",
+    subtitle:
+      "A theoretical overview of database normalisation, its forms, benefits, and practical applications in database design. ",
+    category: BlogCategoriesEnum.Databases,
+    skills: [
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.RelationalDatabases,
+      SkillDatabaseKeys.Normalisation,
+    ],
+  },
   [BlogDatabaseKeys.ORM]: {
     name: "Understanding Object-Relational Mapping (ORM)",
     subtitle:
       "A Comprehensive Overview of ORM, Its Advantages, Disadvantages, and Role in Modern Web Application Development",
-    category: BlogCategoriesEnum.SoftwareEngineering,
+    category: BlogCategoriesEnum.Databases,
     skills: [
       SkillDatabaseKeys.DatabaseManagementSystems,
       SkillDatabaseKeys.Databases,
@@ -175,37 +250,8 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.Probability,
     ],
   },
-  [BlogDatabaseKeys.RESTGraphQL]: {
-    name: "Comparing GraphQL and REST: A Detailed Overview",
-    subtitle: "Choosing the Right API Design Approach",
-    category: BlogCategoriesEnum.SoftwareEngineering,
-    skills: [
-      SkillDatabaseKeys.REST,
-      SkillDatabaseKeys.GraphQL,
-      SkillDatabaseKeys.ProblemSolving,
-    ],
-  },
-  [BlogDatabaseKeys.SQLNOSQL]: {
-    name: "Exploring Databases: A Comparative Study of Relational and Non-Relational Models",
-    subtitle:
-      "An In-depth Analysis of Database Systems and their Role in Software Engineering and Web Development",
-    category: BlogCategoriesEnum.SoftwareEngineering,
-    skills: [
-      SkillDatabaseKeys.DatabaseManagementSystems,
-      SkillDatabaseKeys.Databases,
-      SkillDatabaseKeys.RelationalDatabases,
-      SkillDatabaseKeys.NonRelationalDatabases,
-      SkillDatabaseKeys.Normalisation,
-    ],
-  },
-  [BlogDatabaseKeys.SyncAsync]: {
-    name: "Sync vs Async: Deep Dive into Programming Models",
-    subtitle:
-      "Understanding and Optimizing Synchronous and Asynchronous Programming",
-    category: BlogCategoriesEnum.SoftwareEngineering,
-    skills: [],
-  },
 
+  //^ Projects Blogs
   [ProjectDatabaseKeys.ForumDiscussions]: {
     name: projectDatabaseMap[ProjectDatabaseKeys.ForumDiscussions].name,
     subtitle:
