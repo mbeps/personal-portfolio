@@ -27,23 +27,20 @@ const Mermaid: React.FC<MermaidProps> = ({ chart }) => {
   useEffect(() => {
     if (!isMounted || !containerRef.current) return;
 
-    const currentTheme = theme === "system" ? systemTheme : theme;
-    const isDark = currentTheme === "dark";
-
-    // Initialize mermaid with theme settings
+    // Always use light theme for better contrast
     mermaid.initialize({
       startOnLoad: false,
-      theme: isDark ? "dark" : "default",
+      theme: "default",
       themeVariables: {
-        primaryColor: isDark ? "#3b82f6" : "#2563eb",
-        primaryTextColor: isDark ? "#e5e7eb" : "#1f2937",
-        primaryBorderColor: isDark ? "#4b5563" : "#d1d5db",
-        lineColor: isDark ? "#6b7280" : "#9ca3af",
-        secondaryColor: isDark ? "#1f2937" : "#f3f4f6",
-        tertiaryColor: isDark ? "#374151" : "#f9fafb",
-        background: isDark ? "#111827" : "#ffffff",
-        mainBkg: isDark ? "#1f2937" : "#ffffff",
-        textColor: isDark ? "#e5e7eb" : "#1f2937",
+        primaryColor: "#2563eb",
+        primaryTextColor: "#1f2937",
+        primaryBorderColor: "#d1d5db",
+        lineColor: "#9ca3af",
+        secondaryColor: "#f3f4f6",
+        tertiaryColor: "#f9fafb",
+        background: "#ffffff",
+        mainBkg: "#ffffff",
+        textColor: "#1f2937",
         fontSize: "16px",
       },
       fontFamily:
@@ -81,7 +78,7 @@ const Mermaid: React.FC<MermaidProps> = ({ chart }) => {
     };
 
     renderDiagram();
-  }, [chart, theme, systemTheme, isMounted]);
+  }, [chart, isMounted]);
 
   // Prevent hydration mismatch
   if (!isMounted) {

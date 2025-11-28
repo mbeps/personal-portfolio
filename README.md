@@ -2,105 +2,63 @@ This portfolio website is designed to showcase a comprehensive journey through m
 
 # **What the Website Showcases**
 
-## **Skills Showcase**
+## **Navigation & Discovery**
 
-- **View All Skills Grouped into Categories**: Easily browse a comprehensive list of all skills, organized into intuitive categories such as programming languages, web development, and more.
+- Global command palette (Cmd/Ctrl + K) indexes every page, material, module, and social profile for instant navigation.
+- Fuse-powered search with shared filter drawers (skills, categories, languages, issuers/types) and archive toggles across projects, roles, certificates, and blogs; URL params persist filter state for deep links.
+- Material tabs surface related projects, roles, modules, certificates, and blogs on every detail page, and the More index keeps all routes discoverable even when they are not in the navbar.
 
-- **Group by**: Users can view skills grouped by categories such as skill types or programming languages, which further shows subskills like libraries and frameworks associated with each main skill.
+## **Content & Media**
 
-- **Filter By**: Implement filters to display skills based on criteria like technology type, general or soft skills, or whether there are related materials (such as projects or certificates) associated with them.
+- Markdown pipeline supports Mermaid diagrams, inline/block LaTeX (KaTeX), and theme-aware Prism code highlighting; the same renderer powers project features, role responsibilities, blogs, and about content.
+- SpecialReader splits intros from the first heading to build an on-page contents block with back navigation, while `{BASE}` placeholders auto-rewrite to public asset paths for blogs/reports.
+- Galleries combine image/video carousels with tabbed toggles, desktop arrows, and responsive media containment.
 
-- **View Material Related to Skill**: Access all materials related to a particular skill, organized by type, such as projects, certificates, or work experiences that demonstrate your proficiency.
+## **Skills**
 
-- **View Related Skills**: Explore related skills and technologies; for example, selecting Python might display related subskills like Flask or NumPy, showcasing how interconnected skills enhance your capabilities.
+- Browse all skills grouped by category and type, with tags that only link to detail pages when the skill is backed by material.
+- Drill into a skill to see the materials that use it plus related skills, grouped by category for quick exploration.
+
 ## **Project Portfolio**
 
-- **Browse Projects in Different Categories**: Easily explore projects sorted into distinct categories like web development, data analysis, and more to find topics that interest you.
-
-- **Filtering & Searching Projects**: Utilise dynamic filters and a search bar to quickly locate projects by keywords, technologies used, skills, and other metadata.
-
-- **Archived Projects**: Access a special section that houses all past projects, allowing you to review older or completed works at your leisure.
-
-- **View Gallery & Demo Videos**: Discover more about each project through a visual gallery and demo videos showcasing the functionality and design of the projects.
-
-- **View Technologies, Technical & Soft Skills for the Project**: Learn about the technologies used in the projects, along with the technical and soft skills demonstrated in each project's execution.
-
-- **Navigate to Repository & Deployed Project**: Direct links are provided to both the GitHub repository for code insights and the deployed project to see the live application.
-
-- **View List of Features**: Detailed listings of all features implemented in each project, highlighting the scope and functionality of the work.
-
-- **View Reflective Report**: Read reflective reports that provide insights into the learning experiences and challenges faced during the project development.
-
-- **View Other Related Materials**: Access additional materials related to each project, such as research papers, presentations, and related documentation.
-
+- Filter and search projects by category, type, languages, and skills, with archive toggles to revisit older work.
+- Detail pages pair media galleries (images and video demos) or cover art with descriptions, language tags, grouped skill tables, and quick links to repositories, deployments, and long-form reports.
+- Feature lists and reports render markdown with table of contents, KaTeX/Mermaid, and theme-aware code highlighting; `{BASE}` image placeholders are rewritten to the correct public paths automatically.
+- Related material tabs connect projects to courses, roles, certificates, and blogs.
 
 ## **Work Experience & Volunteering**
 
-- **Browse Roles in Different Categories**: Explore entries categorized under professional work or volunteering to find experiences that match your interests or field of work.
+- Filterable archive of roles by category, employment type, and skills with Fuse search and archive toggles.
+- Role pages surface company metadata, responsibilities from markdown, grouped skills, outbound company links, and related material tabs.
 
-- **Filtering & Searching Roles**: Use search tools and filters to quickly find roles by keywords, industry, technologies, skills, etc.
+## **Education (Courses & Modules)**
 
-- **Archived Roles**: Access a comprehensive archive of past roles, providing a historical view of your professional growth and volunteer contributions.
-
-- **Viewing Details About the Role**: Detailed view of each role including the company name, location, industry (e.g., software engineering), and the start and end dates of the employment or volunteering period.
-
-- **Responsibilities**: Discover the specific responsibilities and tasks associated with each role, outlining the scope and impact of your involvement.
-
-- **View Technologies, Technical & Soft Skills for the Role**: Learn about the technologies you worked with, along with the technical and soft skills developed during each role.
-
-- **View Other Related Materials**: Access additional documents and materials related to each role, such as letters of recommendation, certificates of achievement, and project summaries.
-
-
-## **University Education History**
-
-- **Browse University Courses**: Explore a comprehensive list of all courses undertaken during your university education.
-
-- **View Course Details**: See detailed information about each course, including the name of the university, type of degree obtained, classification, and the academic years during which the course was taken.
-
-- **View Course Modules**: Browse through course modules organized by year. Each module can be clicked to reveal more details such as learning outcomes, technologies used, and skills developed.
-
-- **View Technologies, Technical & Soft Skills for the Course**: Get insights into the technologies and skills, both technical and soft, that were emphasized and developed in each course.
-
-- **View Other Related Materials**: Access a variety of related materials for each course, including project reports, case studies, and research papers that complement the educational experience.
-
+- Course cards highlight university, grade, duration, and category; detail pages show grouped modules with an archive toggle, certificate previews, skill tables, and related materials.
+- Module pages outline learning outcomes, scores, grouped skills, and breadcrumbs back to their parent course.
 
 ## **Certificates & Online Courses**
 
-- **Browse Certificates in Different Categories**: Explore certificates organized by categories such as technology, management, or creative arts to easily find those that match your interests or professional needs.
+- Listing view filters by issuer, category, and skills with Fuse search plus archive support.
+- Certificate pages show credential images, issuer tags/links, learning objectives, grouped skills, and related materials.
 
-- **Filtering & Searching Certificates**: Use powerful search and filtering tools to sort through certificates by name, skills, technologies, or the issuing organization.
+## **Blogs & Reports**
 
-- **Archived Certificates**: Access a special section containing archived certificates, allowing you to review certifications that may no longer be current but still showcase your lifelong learning journey.
+- Blog articles (including project write-ups) render via SpecialReader with an intro/contents split, back links, `{BASE}` image rewriting, Mermaid diagrams, inline/block LaTeX via KaTeX, and theme-aware syntax highlighting.
+- Each post lists its skills and links into related material tabs for deeper exploration.
 
-- **View Certificate**: Directly view each certificate, displaying the official document or badge awarded upon completion.
+## **About & Home**
 
-- **Read Information**: Learn more about each certificate, including a detailed description and the specific learning objectives it covered.
-
-- **View Technologies, Technical & Soft Skills for the Role**: Discover the technologies, technical, and soft skills associated with each course, highlighting what you have learned and how it applies to your professional capabilities.
-
-- **View Other Related Materials**: Access additional materials linked to each certificate, such as related certificates, projects completed during the course, and supplementary learning resources.
-
-
-## **Blog Space**
-
-- **Browse Blogs in Different Categories**: Explore a variety of blog posts categorized by topics such as technology, career advice, personal development, and more, tailored to engage a diverse audience.
-
-- **Filtering & Searching Blogs**: Utilize intuitive search tools and filters to find blog posts based on keywords, publication date, or popularity.
-
-- **Read Blog**: Access each blog post directly, allowing you to read the content in full, including multimedia elements like images and videos embedded within.
-
-- **View Technologies, Technical & Soft Skills for the Role**: Gain insights into the technologies discussed, as well as the technical and soft skills that are highlighted in each blog post.
-
-- **View Other Related Materials**: Discover additional materials related to each blog post, such as downloadable resources, external articles, and related blog entries that expand on the topic discussed.
+- Hero section with looping subtitles, social links, and CTAs to projects/about; homepage about preview is markdown-powered with language and technology highlights.
+- Full About page aggregates degrees, experience, featured materials, and social links via shared MaterialList components.
 
 
 # **Other Features**
 
 ## **Light and Dark Mode**
-Switch between light and dark modes to suit your browsing preferences, ensuring a comfortable and personalized experience.
+Switch themes from the navbar toggle (supports light, dark, and system via a context menu) to suit your browsing preferences.
 
 ## **Responsive Interface**
-My portfolio is designed to be responsive and engaging, inviting you to explore my journey in the world of development with ease and interest.
+Sticky navbar, mobile drawer navigation, and fluid layouts keep the portfolio engaging across devices.
 
 # **Requirements**
 These are the requirements needed to run the project:
