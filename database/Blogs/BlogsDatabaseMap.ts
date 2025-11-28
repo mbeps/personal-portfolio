@@ -17,6 +17,7 @@ import ModuleDatabaseKeys from "../Modules/ModuleDatabaseKeys";
  * The order of the skills is the order that is used when displaying the skills on the website.
  */
 const blogsMap: Database<BlogInterface> = {
+  //^ Artificial Intelligence Blogs
   [ProjectDatabaseKeys.AlignmentInLargeLanguageModels]: {
     name: projectDatabaseMap[ProjectDatabaseKeys.AlignmentInLargeLanguageModels]
       .name,
@@ -152,29 +153,7 @@ const blogsMap: Database<BlogInterface> = {
     ],
     category: BlogCategoriesEnum.ArtificialIntelligence,
   },
-  [BlogDatabaseKeys.ORM]: {
-    name: "Understanding Object-Relational Mapping (ORM)",
-    subtitle:
-      "A Comprehensive Overview of ORM, Its Advantages, Disadvantages, and Role in Modern Web Application Development",
-    category: BlogCategoriesEnum.SoftwareEngineering,
-    skills: [
-      SkillDatabaseKeys.DatabaseManagementSystems,
-      SkillDatabaseKeys.Databases,
-      SkillDatabaseKeys.RelationalDatabases,
-      SkillDatabaseKeys.NonRelationalDatabases,
-      SkillDatabaseKeys.ObjectRelationalMapping,
-      SkillDatabaseKeys.Prisma,
-      SkillDatabaseKeys.Drizzle,
-      SkillDatabaseKeys.TypeORM,
-      SkillDatabaseKeys.SpringDataJPA,
-      SkillDatabaseKeys.SpringDataMongoDB,
-      SkillDatabaseKeys.Django,
-      SkillDatabaseKeys.Mongoose,
-      SkillDatabaseKeys.SQLAlchemy,
-      SkillDatabaseKeys.Hibernate,
-      SkillDatabaseKeys.Probability,
-    ],
-  },
+  //^ Software Engineering Blogs
   [BlogDatabaseKeys.ApiComparison]: {
     name: "Comparing Different API Design Approaches",
     subtitle:
@@ -214,11 +193,20 @@ const blogsMap: Database<BlogInterface> = {
     category: BlogCategoriesEnum.SoftwareEngineering,
     skills: [SkillDatabaseKeys.Testing],
   },
+  [BlogDatabaseKeys.SyncAsync]: {
+    name: "Sync vs Async: Deep Dive into Programming Models",
+    subtitle:
+      "Understanding and Optimizing Synchronous and Asynchronous Programming",
+    category: BlogCategoriesEnum.SoftwareEngineering,
+    skills: [],
+  },
+
+  //^ Database Blogs
   [BlogDatabaseKeys.DatabaseParadigms]: {
     name: "Exploring Different Database Paradigms",
     subtitle:
       "A theoretical overview of various database paradigms including relational, non-relational, graph, and time-series databases.",
-    category: BlogCategoriesEnum.SoftwareEngineering,
+    category: BlogCategoriesEnum.Databases,
     skills: [
       SkillDatabaseKeys.DatabaseManagementSystems,
       SkillDatabaseKeys.Databases,
@@ -231,7 +219,7 @@ const blogsMap: Database<BlogInterface> = {
     name: "Database Normalisation",
     subtitle:
       "A theoretical overview of database normalisation, its forms, benefits, and practical applications in database design. ",
-    category: BlogCategoriesEnum.SoftwareEngineering,
+    category: BlogCategoriesEnum.Databases,
     skills: [
       SkillDatabaseKeys.DatabaseManagementSystems,
       SkillDatabaseKeys.Databases,
@@ -239,14 +227,31 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.Normalisation,
     ],
   },
-  [BlogDatabaseKeys.SyncAsync]: {
-    name: "Sync vs Async: Deep Dive into Programming Models",
+  [BlogDatabaseKeys.ORM]: {
+    name: "Understanding Object-Relational Mapping (ORM)",
     subtitle:
-      "Understanding and Optimizing Synchronous and Asynchronous Programming",
-    category: BlogCategoriesEnum.SoftwareEngineering,
-    skills: [],
+      "A Comprehensive Overview of ORM, Its Advantages, Disadvantages, and Role in Modern Web Application Development",
+    category: BlogCategoriesEnum.Databases,
+    skills: [
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.RelationalDatabases,
+      SkillDatabaseKeys.NonRelationalDatabases,
+      SkillDatabaseKeys.ObjectRelationalMapping,
+      SkillDatabaseKeys.Prisma,
+      SkillDatabaseKeys.Drizzle,
+      SkillDatabaseKeys.TypeORM,
+      SkillDatabaseKeys.SpringDataJPA,
+      SkillDatabaseKeys.SpringDataMongoDB,
+      SkillDatabaseKeys.Django,
+      SkillDatabaseKeys.Mongoose,
+      SkillDatabaseKeys.SQLAlchemy,
+      SkillDatabaseKeys.Hibernate,
+      SkillDatabaseKeys.Probability,
+    ],
   },
 
+  //^ Projects Blogs
   [ProjectDatabaseKeys.ForumDiscussions]: {
     name: projectDatabaseMap[ProjectDatabaseKeys.ForumDiscussions].name,
     subtitle:
