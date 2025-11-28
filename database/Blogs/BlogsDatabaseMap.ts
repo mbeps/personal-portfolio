@@ -200,6 +200,13 @@ const blogsMap: Database<BlogInterface> = {
     ],
     relatedMaterials: [ProjectDatabaseKeys.OAuthNextJsSpringBoot],
   },
+  [BlogDatabaseKeys.TypesOfSoftwareTesting]: {
+    name: "Study of Various Software Testing Methodologies",
+    subtitle:
+      "A comprehensive analysis of software testing types and strategies, methodlogies, philosophies, and best practices.",
+    category: BlogCategoriesEnum.SoftwareEngineering,
+    skills: [SkillDatabaseKeys.Testing],
+  },
   [BlogDatabaseKeys.SQLNOSQL]: {
     name: "Exploring Databases: A Comparative Study of Relational and Non-Relational Models",
     subtitle:
