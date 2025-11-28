@@ -214,3 +214,50 @@ body {
 .code-block-loading code {
   @apply font-mono text-[0.95rem] leading-7 block;
 }
+
+/* ---- Markdown table styling ---- */
+.prose table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background-color: #ffffff;
+}
+
+.dark .prose table {
+  border-color: rgba(255, 255, 255, 0.08);
+  background-color: #111827;
+}
+
+.prose table thead {
+  background-color: rgba(15, 23, 42, 0.08);
+}
+
+.dark .prose table thead {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.prose table th,
+.prose table td {
+  @apply px-4 py-3 text-left align-top text-sm;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.dark .prose table th,
+.dark .prose table td {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.prose table th {
+  @apply font-semibold text-base text-slate-700;
+}
+
+.dark .prose table th {
+  @apply text-slate-300;
+}
+
+.prose table tbody tr:last-child td {
+  border-bottom: none;
+}
