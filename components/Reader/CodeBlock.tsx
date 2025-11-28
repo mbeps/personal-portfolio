@@ -30,16 +30,23 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
     setIsMounted(true);
   }, []);
 
-  // Check if this is inline code (no className means inline code)
-  const isInline = !className;
+  const codeText =
+    typeof children === "string"
+      ? children
+      : React.Children.toArray(children)
+          .map((child) => (typeof child === "string" ? child : ""))
+          .join("");
 
-  // If it's inline code, just render it as a simple code element
-  if (isInline) {
-    return <code className="inline-code">{children}</code>;
+  // Treat as block if a language is provided or the snippet spans multiple lines
+  const isBlock = Boolean(className) || codeText.includes("\n");
+
+  // Inline code path remains simple
+  if (!isBlock) {
+    return <code className="inline-code">{codeText}</code>;
   }
 
   // Extract language from className (supports language-xyz and lang-xyz formats)
-  const languageMatch = className.match(/language-(\w+)|lang-(\w+)/);
+  const languageMatch = className?.match(/language-(\w+)|lang-(\w+)/);
   const language = languageMatch?.[1] || languageMatch?.[2] || "text";
 
   // Determine current theme
@@ -50,10 +57,15 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
   if (!isMounted) {
     return (
       <pre className="code-block-loading">
-        <code className={className}>{children}</code>
+        <code className={className}>{codeText}</code>
       </pre>
     );
   }
+
+  const backgroundColor = isDark ? "#1f2430" : "#f5f5f7";
+  const borderColor = isDark
+    ? "rgba(255, 255, 255, 0.06)"
+    : "rgba(15, 23, 42, 0.08)";
 
   return (
     // @ts-ignore - SyntaxHighlighter has type issues with React 18
@@ -66,12 +78,20 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
         fontSize: "0.95rem",
         lineHeight: "1.6",
         padding: "1rem",
+        backgroundColor,
+        border: `1px solid ${borderColor}`,
+      }}
+      codeTagProps={{
+        style: {
+          backgroundColor: "transparent",
+          display: "block",
+        },
       }}
       showLineNumbers={false}
       wrapLongLines={true}
       PreTag="div"
     >
-      {children}
+      {codeText}
     </SyntaxHighlighter>
   );
 };
