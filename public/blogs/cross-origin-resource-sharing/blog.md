@@ -103,7 +103,7 @@ The SOP mitigates this specific risk by preventing the malicious script from rea
 
 ## 2.3 - The Nuance of "Embeds" vs. "Reads"
 
-A common source of confusion for junior engineers is the apparent inconsistency in how the SOP applies to different types of resources. The policy is not a blanket ban on all cross-origin interaction; rather, it is highly specific to scripts and data access.
+A common source of confusion is the apparent inconsistency in how the SOP applies to different types of resources. The policy is not a blanket ban on all cross-origin interaction; rather, it is highly specific to scripts and data access.
 
 The web has always been inherently cross-origin regarding media. A webpage on `example.com` has always been allowed to embed an image from `google.com` using the `<img>` tag. Similarly, it can embed stylesheets via `<link>` and scripts via `<script>`. These are classified as **Cross-Origin Embeds**.
 
@@ -469,7 +469,7 @@ In microservice architectures, an API Gateway (like AWS API Gateway, Kong, or NG
 
 # 11 - Server-Side Implementation Strategies
 
-For Junior Engineers, the most practical challenge is implementing CORS correctly in their backend code. Below are strategies for three major frameworks.
+The most practical challenge is implementing CORS correctly in their backend code. Below are strategies for three major frameworks.
 
 ## 11.1 - Spring Boot (Java)
 
@@ -565,7 +565,7 @@ To solidify understanding, we can compare CORS with other strategies for cross-o
 
 Cross-Origin Resource Sharing is not merely a configuration hurdle to be overcome; it is a vital component of the web's security infrastructure. It represents the evolution of the web from a collection of isolated documents to a connected ecosystem of applications. By replacing insecure workarounds like JSONP with a robust, header-based negotiation protocol, CORS allows browsers and servers to collaborate on security decisions.
 
-For Junior Software Engineers, mastering CORS involves understanding that the browser is a trusted intermediary protecting the user. It requires recognising the distinction between simple and preflighted requests, and the specific roles of headers like `Access-Control-Allow-Origin` and `Access-Control-Allow-Credentials`. Crucially, it demands vigilance against common misconfigurations (such as origin reflection and cache poisoning) that can negate the protocol's protections.
+Mstering CORS involves understanding that the browser is a trusted intermediary protecting the user. It requires recognising the distinction between simple and preflighted requests, and the specific roles of headers like `Access-Control-Allow-Origin` and `Access-Control-Allow-Credentials`. Crucially, it demands vigilance against common misconfigurations (such as origin reflection and cache poisoning) that can negate the protocol's protections.
 
 As the web continues to evolve with stricter privacy controls and new specifications like Private Network Access, the importance of correctly implemented CORS policies will only grow. By adhering to the principle of least privilege (explicitly defining allowed origins, methods, and headers) developers can build applications that are both functional and secure, ensuring the integrity of the interconnected web.
 
