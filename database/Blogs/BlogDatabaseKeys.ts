@@ -17,9 +17,9 @@ enum BlogDatabaseKeys {
   HiddenMarkovModelsInAI = "hidden-markov-models-in-ai",
   Backend = "backend",
   ORM = "orm",
-  RESTGraphQL = "rest-graphql-api",
   SQLNOSQL = "sql-vs-nosql-databases",
   SyncAsync = "sync-vs-async",
+  ApiComparison = "api-comparison",
 }
 
 export default BlogDatabaseKeys;

@@ -175,9 +175,10 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.Probability,
     ],
   },
-  [BlogDatabaseKeys.RESTGraphQL]: {
-    name: "Comparing GraphQL and REST: A Detailed Overview",
-    subtitle: "Choosing the Right API Design Approach",
+  [BlogDatabaseKeys.ApiComparison]: {
+    name: "Comparing Different API Design Approaches",
+    subtitle:
+      "Deep and theoretical comparison between different API design approaches including REST, GraphQL, and SOAP.",
     category: BlogCategoriesEnum.SoftwareEngineering,
     skills: [
       SkillDatabaseKeys.REST,
