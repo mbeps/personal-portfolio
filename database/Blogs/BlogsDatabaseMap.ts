@@ -186,6 +186,20 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.ProblemSolving,
     ],
   },
+  [BlogDatabaseKeys.CrossOriginResourceSharing]: {
+    name: "Cross-Origin Resource Sharing (CORS) in Web Development",
+    subtitle:
+      "A technical overview of CORS, theory, architecture, and use cases.",
+    category: BlogCategoriesEnum.SoftwareEngineering,
+    skills: [
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.ExpressJS,
+      SkillDatabaseKeys.UserAuthentication,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.GraphQL,
+    ],
+    relatedMaterials: [ProjectDatabaseKeys.OAuthNextJsSpringBoot],
+  },
   [BlogDatabaseKeys.SQLNOSQL]: {
     name: "Exploring Databases: A Comparative Study of Relational and Non-Relational Models",
     subtitle:

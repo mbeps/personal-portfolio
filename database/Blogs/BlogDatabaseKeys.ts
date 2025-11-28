@@ -17,6 +17,7 @@ enum BlogDatabaseKeys {
   HiddenMarkovModelsInAI = "hidden-markov-models-in-ai",
   Backend = "backend",
   ORM = "orm",
+  CrossOriginResourceSharing = "cross-origin-resource-sharing",
   SQLNOSQL = "sql-vs-nosql-databases",
   SyncAsync = "sync-vs-async",
   ApiComparison = "api-comparison",
