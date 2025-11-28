@@ -4,6 +4,7 @@ import Markdown from "markdown-to-jsx";
 import React, { useMemo } from "react";
 import InlineMath from "./InlineMath";
 import DisplayMath from "./DisplayMath";
+import Mermaid from "./Mermaid";
 
 type ReaderProps = {
   content: string | undefined;
@@ -50,16 +51,27 @@ const headingOverrides = {
  * @returns Prose article element with math-aware rendering.
  */
 const Reader: React.FC<ReaderProps> = ({ content, size = "lg" }) => {
-  // Parse the markdown content and extract LaTeX expressions
+  // Parse the markdown content and extract LaTeX expressions and Mermaid diagrams
   const parsedContent = useMemo(() => {
     if (!content) return "";
 
-    // Keep track of LaTeX blocks we extract
+    // Keep track of LaTeX blocks and Mermaid diagrams we extract
     const mathBlocks: { [key: string]: string } = {};
+    const mermaidBlocks: { [key: string]: string } = {};
     let blockCount: number = 0;
 
-    // First, replace display math blocks ($$...$$) with placeholders
+    // First, extract Mermaid code blocks (```mermaid...```)
     let processedContent: string = content.replace(
+      /```mermaid\n([\s\S]*?)```/g,
+      (match, mermaidCode) => {
+        const placeholder = `MERMAIDBLOCK_${blockCount++}`;
+        mermaidBlocks[placeholder] = mermaidCode.trim();
+        return `<Mermaid>${placeholder}</Mermaid>`;
+      }
+    );
+
+    // Then, replace display math blocks ($$...$$) with placeholders
+    processedContent = processedContent.replace(
       /\$\$([\s\S]*?)\$\$/g,
       (match, latex) => {
         const placeholder = `MATHBLOCK_${blockCount++}`;
@@ -84,6 +96,13 @@ const Reader: React.FC<ReaderProps> = ({ content, size = "lg" }) => {
         options={{
           overrides: {
             ...headingOverrides,
+            Mermaid: {
+              component: ({ children }: { children: string }) => {
+                const placeholder = String(children);
+                const mermaidCode = mermaidBlocks[placeholder] || placeholder;
+                return <Mermaid chart={mermaidCode} />;
+              },
+            },
             DisplayMath: {
               component: ({ children }: { children: string }) => {
                 const placeholder = String(children);

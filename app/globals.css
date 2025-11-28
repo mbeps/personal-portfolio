@@ -165,3 +165,24 @@ body {
 @utility material-sections-wrapper {
   @apply space-y-8;
 }
+
+/* ---- Mermaid diagram styles ---- */
+.mermaid-container {
+  @apply my-6 rounded-lg border border-border bg-card p-4 overflow-x-auto;
+}
+
+.mermaid-container svg {
+  @apply max-w-full h-auto;
+}
+
+.mermaid-error {
+  @apply p-4 bg-destructive/10 border border-destructive rounded-lg;
+}
+
+.mermaid-error p {
+  @apply text-destructive font-semibold mb-2;
+}
+
+.mermaid-error pre {
+  @apply text-sm text-muted-foreground overflow-x-auto;
+}
