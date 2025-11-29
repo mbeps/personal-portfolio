@@ -704,6 +704,45 @@ const skillDatabaseMap: Database<SkillInterface> = {
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [],
   },
+  [SkillDatabaseKeys.REST]: {
+    name: "REST APIs",
+    category: SkillCategoriesEnum.BackEndWebDevelopment,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Technology,
+    relatedSkills: [],
+  },
+  [SkillDatabaseKeys.Apollo]: {
+    name: "Apollo",
+    category: SkillCategoriesEnum.BackEndWebDevelopment,
+    skillType: SkillTypesEnum.Technology,
+    relatedSkills: [],
+  },
+  [SkillDatabaseKeys.GraphQL]: {
+    name: "GraphQL APIs",
+    isMainSkill: true,
+    category: SkillCategoriesEnum.BackEndWebDevelopment,
+    skillType: SkillTypesEnum.Technology,
+    relatedSkills: [SkillDatabaseKeys.Apollo],
+  },
+  [SkillDatabaseKeys.SocketIO]: {
+    name: "Socket.IO",
+    category: SkillCategoriesEnum.BackEndWebDevelopment,
+    skillType: SkillTypesEnum.Technology,
+    relatedSkills: [SkillDatabaseKeys.WebSockets],
+  },
+  [SkillDatabaseKeys.Pusher]: {
+    name: "Pusher",
+    category: SkillCategoriesEnum.BackEndWebDevelopment,
+    skillType: SkillTypesEnum.Technology,
+    relatedSkills: [SkillDatabaseKeys.WebSockets],
+  },
+  [SkillDatabaseKeys.WebSockets]: {
+    name: "Web Sockets",
+    category: SkillCategoriesEnum.BackEndWebDevelopment,
+    isMainSkill: false,
+    skillType: SkillTypesEnum.Technical,
+    relatedSkills: [SkillDatabaseKeys.SocketIO, SkillDatabaseKeys.Pusher],
+  },
 
   //^ Frontend Web Development
   [SkillDatabaseKeys.Jotai]: {
@@ -1150,40 +1189,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.InfrastructureAsCode,
       SkillDatabaseKeys.DevOps,
     ],
-  },
-
-  //^ APIs and Web Services
-  [SkillDatabaseKeys.REST]: {
-    name: "REST APIs",
-    category: SkillCategoriesEnum.CommunicationProtocolsLibraries,
-    isMainSkill: true,
-    skillType: SkillTypesEnum.Technology,
-    relatedSkills: [],
-  },
-  [SkillDatabaseKeys.Apollo]: {
-    name: "Apollo",
-    category: SkillCategoriesEnum.CommunicationProtocolsLibraries,
-    skillType: SkillTypesEnum.Technology,
-    relatedSkills: [],
-  },
-  [SkillDatabaseKeys.GraphQL]: {
-    name: "GraphQL APIs",
-    isMainSkill: true,
-    category: SkillCategoriesEnum.CommunicationProtocolsLibraries,
-    skillType: SkillTypesEnum.Technology,
-    relatedSkills: [SkillDatabaseKeys.Apollo],
-  },
-  [SkillDatabaseKeys.SocketIO]: {
-    name: "Socket.IO",
-    category: SkillCategoriesEnum.CommunicationProtocolsLibraries,
-    skillType: SkillTypesEnum.Technology,
-    relatedSkills: [SkillDatabaseKeys.WebSockets],
-  },
-  [SkillDatabaseKeys.Pusher]: {
-    name: "Pusher",
-    category: SkillCategoriesEnum.CommunicationProtocolsLibraries,
-    skillType: SkillTypesEnum.Technology,
-    relatedSkills: [SkillDatabaseKeys.WebSockets],
   },
 
   //^ Testing
@@ -1824,13 +1829,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.Redis,
       SkillDatabaseKeys.Convex,
     ],
-  },
-  [SkillDatabaseKeys.WebSockets]: {
-    name: "Web Sockets",
-    category: SkillCategoriesEnum.CommunicationProtocolsLibraries,
-    isMainSkill: false,
-    skillType: SkillTypesEnum.Technical,
-    relatedSkills: [SkillDatabaseKeys.SocketIO, SkillDatabaseKeys.Pusher],
   },
   [SkillDatabaseKeys.RelationalDatabases]: {
     name: "Relational Databases (SQL)",
