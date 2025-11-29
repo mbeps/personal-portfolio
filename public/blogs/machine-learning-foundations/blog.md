@@ -1,63 +1,64 @@
-- [**Introducing Machine Learning**](#introducing-machine-learning)
-	- [**What is Machine Learning (ML)?**](#what-is-machine-learning-ml)
-		- [**Different Types of Machine Learning**](#different-types-of-machine-learning)
-		- [**Applications of Machine Learning Across Various Industries**](#applications-of-machine-learning-across-various-industries)
-- [**Basics of Machine Learning**](#basics-of-machine-learning)
-	- [**Machine Learning vs Deep Learning vs Artificial Intelligence**](#machine-learning-vs-deep-learning-vs-artificial-intelligence)
-		- [**Machine Learning (ML)**](#machine-learning-ml)
+- [**1 - Introducing Machine Learning**](#1---introducing-machine-learning)
+	- [**1.1 - What is Machine Learning (ML)?**](#11---what-is-machine-learning-ml)
+		- [**1.1.1 - Different Types of Machine Learning**](#111---different-types-of-machine-learning)
+		- [**1.1.2 - Applications of Machine Learning Across Various Industries**](#112---applications-of-machine-learning-across-various-industries)
+- [**2 - Basics of Machine Learning**](#2---basics-of-machine-learning)
+	- [**2.1 - Machine Learning vs Deep Learning vs Artificial Intelligence**](#21---machine-learning-vs-deep-learning-vs-artificial-intelligence)
+		- [**2.1.1 - Machine Learning (ML)**](#211---machine-learning-ml)
 			- [**Deep Learning in ML and AI**](#deep-learning-in-ml-and-ai)
 			- [**Broader Scope of AI**](#broader-scope-of-ai)
-- [**Data Preparation and Cleaning**](#data-preparation-and-cleaning)
-		- [1. **Missing Data**](#1-missing-data)
-		- [2. **Outliers**](#2-outliers)
-		- [3. Data Imbalance](#3-data-imbalance)
-	- [**Plotting Continuous Features**](#plotting-continuous-features)
-		- [**Importance of Data Visualization**](#importance-of-data-visualization)
-		- [**How to Plot Continuous Features**](#how-to-plot-continuous-features)
-		- [**Interpreting Patterns and Trends**](#interpreting-patterns-and-trends)
-	- [**Cleaning Continuous and Categorical Data**](#cleaning-continuous-and-categorical-data)
-		- [**Distinguishing Continuous and Categorical Data**](#distinguishing-continuous-and-categorical-data)
-		- [**Cleaning Methods for Continuous Data**](#cleaning-methods-for-continuous-data)
-- [**Model Building and Evaluation**](#model-building-and-evaluation)
-	- [**Measuring Success**](#measuring-success)
-		- [**Various Performance Metrics**](#various-performance-metrics)
+- [**3 - Data Preparation and Cleaning**](#3---data-preparation-and-cleaning)
+		- [1 - **Missing Data**](#1---missing-data)
+		- [2 - **Outliers**](#2---outliers)
+		- [3 - Data Imbalance](#3---data-imbalance)
+	- [**3.1 - Plotting Continuous Features**](#31---plotting-continuous-features)
+		- [**3.1.1 - Importance of Data Visualization**](#311---importance-of-data-visualization)
+		- [**3.1.2 - How to Plot Continuous Features**](#312---how-to-plot-continuous-features)
+		- [**3.1.3 - Interpreting Patterns and Trends**](#313---interpreting-patterns-and-trends)
+	- [**3.2 - Cleaning Continuous and Categorical Data**](#32---cleaning-continuous-and-categorical-data)
+		- [**3.2.1 - Distinguishing Continuous and Categorical Data**](#321---distinguishing-continuous-and-categorical-data)
+		- [**3.2.2 - Cleaning Methods for Continuous Data**](#322---cleaning-methods-for-continuous-data)
+- [**4 - Model Building and Evaluation**](#4---model-building-and-evaluation)
+	- [**4.1 - Measuring Success**](#41---measuring-success)
+		- [**4.1.1 - Various Performance Metrics**](#411---various-performance-metrics)
 			- [**Appropriate Metrics for Different Machine Learning Tasks**](#appropriate-metrics-for-different-machine-learning-tasks)
-	- [**Overfitting and Underfitting**](#overfitting-and-underfitting)
-		- [**Overfitting**](#overfitting)
-		- [**Underfitting**](#underfitting)
-	- [**Hyperparameters Tuning**](#hyperparameters-tuning)
-		- [**Machine Learning Model: Role of Hyperparameters in Machine Learning Models**](#machine-learning-model-role-of-hyperparameters-in-machine-learning-models)
-		- [**Methods for Tuning Hyperparameters**](#methods-for-tuning-hyperparameters)
-		- [**Validation in Hyperparameter Tuning: Why?**](#validation-in-hyperparameter-tuning-why)
-	- [**Evaluating a Model**](#evaluating-a-model)
-		- [**Evaluating a Machine Learning Model**](#evaluating-a-machine-learning-model)
-		- [**Cross-Validation and Holdout Sets**](#cross-validation-and-holdout-sets)
-		- [**Understanding Bias and the Bias-Variance Tradeoff**](#understanding-bias-and-the-bias-variance-tradeoff)
-- [**Real-World Applications and Ethical Considerations**](#real-world-applications-and-ethical-considerations)
-	- [**Real-World Applications of Machine Learning**](#real-world-applications-of-machine-learning)
-		- [**Image Recognition and Computer Vision**](#image-recognition-and-computer-vision)
-		- [**Natural Language Processing (NLP)**](#natural-language-processing-nlp)
-		- [Recommender Systems](#recommender-systems)
-		- [Fraud Detection and Risk Management](#fraud-detection-and-risk-management)
-		- [**Healthcare and Medical Diagnosis**](#healthcare-and-medical-diagnosis)
-	- [**Ethical Considerations in Machine Learning**](#ethical-considerations-in-machine-learning)
-		- [**Bias and Fairness**](#bias-and-fairness)
-		- [**Privacy**](#privacy)
-		- [**Responsible AI**](#responsible-ai)
-		- [**Transparency and Explainability**](#transparency-and-explainability)
+	- [**4.2 - Overfitting and Underfitting**](#42---overfitting-and-underfitting)
+		- [**4.2.1 - Overfitting**](#421---overfitting)
+		- [**4.2.2 - Underfitting**](#422---underfitting)
+	- [**4.3 - Hyperparameters Tuning**](#43---hyperparameters-tuning)
+		- [**4.3.1 - Machine Learning Model: Role of Hyperparameters in Machine Learning Models**](#431---machine-learning-model-role-of-hyperparameters-in-machine-learning-models)
+		- [**4.3.2 - Methods for Tuning Hyperparameters**](#432---methods-for-tuning-hyperparameters)
+		- [**4.3.3 - Validation in Hyperparameter Tuning: Why?**](#433---validation-in-hyperparameter-tuning-why)
+	- [**4.4 - Evaluating a Model**](#44---evaluating-a-model)
+		- [**4.4.1 - Evaluating a Machine Learning Model**](#441---evaluating-a-machine-learning-model)
+		- [**4.4.2 - Cross-Validation and Holdout Sets**](#442---cross-validation-and-holdout-sets)
+		- [**4.4.3 - Understanding Bias and the Bias-Variance Tradeoff**](#443---understanding-bias-and-the-bias-variance-tradeoff)
+- [**5 - Real-World Applications and Ethical Considerations**](#5---real-world-applications-and-ethical-considerations)
+	- [**5.1 - Real-World Applications of Machine Learning**](#51---real-world-applications-of-machine-learning)
+		- [**5.1.1 - Image Recognition and Computer Vision**](#511---image-recognition-and-computer-vision)
+		- [**5.1.2 - Natural Language Processing (NLP)**](#512---natural-language-processing-nlp)
+		- [**5.1.3 - Recommender Systems**](#513---recommender-systems)
+		- [**5.1.4 - Fraud Detection and Risk Management**](#514---fraud-detection-and-risk-management)
+		- [**5.1.5 - Healthcare and Medical Diagnosis**](#515---healthcare-and-medical-diagnosis)
+	- [**5.2 - Ethical Considerations in Machine Learning**](#52---ethical-considerations-in-machine-learning)
+		- [**5.2.1 - Bias and Fairness**](#521---bias-and-fairness)
+		- [**5.2.2 - Privacy**](#522---privacy)
+		- [**5.2.3 - Responsible AI**](#523---responsible-ai)
+		- [**5.2.4 - Transparency and Explainability**](#524---transparency-and-explainability)
 - [**Conclusion**](#conclusion)
 - [**Sources**](#sources)
 
 
-# **Introducing Machine Learning**
 
-## **What is Machine Learning (ML)?**
+# **1 - Introducing Machine Learning**
+
+## **1.1 - What is Machine Learning (ML)?**
 
 Machine learning is a subfield of artificial intelligence that involves the construction of applications that learn from experience in an incremental fashion, and are then able to improve in their ability to make decisions over time without being explicitly programmed for the task. It involves algorithms that enable computers to "learn"—progressively improve performance on a specific task from data, without being explicitly programmed.
 
 Machine learning has been the word of modern times. Many technologies and services that make our lives more convenient at their core, from web search machines and email filters to personal assistant devices, are also becoming quite indispensable for such advanced applications as self-driving vehicles or speech recognition, not to mention the personalized recommendations one gets on Netflix or Amazon.
 
-### **Different Types of Machine Learning**
+### **1.1.1 - Different Types of Machine Learning**
 
 1. **Supervised Learning**: This is the most common kind of machine learning. In supervised learning, the algorithm will be trained using a pre-labelled dataset. That is, each example from the training set is associated with the correct output. The objective of the supervised learning process is to learn how inputs are mapped to outputs so it will be able to predict an output when given new input data.
 
@@ -65,7 +66,7 @@ Machine learning has been the word of modern times. Many technologies and servic
 
 3. **Reinforcement Learning**: In reinforcement learning, an agent learns to behave under an environment by performing actions and witnessing the results of these actions. This is different from supervised learning in the sense that correct input–output pairs are never presented, nor suboptimal actions explicitly corrected.
 
-### **Applications of Machine Learning Across Various Industries**
+### **1.1.2 - Applications of Machine Learning Across Various Industries**
 
 Machine learning has a wide range of applications across various industries:
 
@@ -81,13 +82,13 @@ Machine learning has a wide range of applications across various industries:
 
 - **Entertainment**: The entertainment industry deploys ML in content recommendation, personalization, and audience analysis.
 
-# **Basics of Machine Learning**
+# **2 - Basics of Machine Learning**
 
-## **Machine Learning vs Deep Learning vs Artificial Intelligence**
+## **2.1 - Machine Learning vs Deep Learning vs Artificial Intelligence**
 
 The central understanding of the relationship of ML with deep learning and AI would be one that shall be really imperative to understand the basis of these transformational technologies.
 
-### **Machine Learning (ML)**
+### **2.1.1 - Machine Learning (ML)**
 
 Machine Learning is a part of Artificial Intelligence concerned with the technique of developing algorithms that are capable of learning tasks and making predictions or decisions based on that learning. ML research  is motivated by the possibility that a machine should, with little prior knowledge, be able to acquire a set of data and thereafter learn for itself, altering algorithms as it learns more about the information being processed. This tends to make them more adaptable and more humanlike than traditional machines.
 
@@ -105,11 +106,11 @@ Deep learning is important because it increased tremendously the potentials of m
 
 AI describes an umbrella of technologies and systems beyond ML. These run from rule-based expert systems to robotics, natural language processing, and others. The ultimate goal of AI is to replicate human cognitive actions. While ML and deep learning are important towards this pursuit, they happen to be no more than a subset of the overall AI spectrum. AI, therefore, involves all sorts of hardware and software that make computers intelligent by providing them with abilities such as comprehension, analysis, manipulation, and even interaction with the environment.
 
-# **Data Preparation and Cleaning**
+# **3 - Data Preparation and Cleaning**
 
 Data preparation and cleaning are the two most important steps in a machine learning pipeline, as both have a direct influence on the quality of the prediction a model makes. Here are a few common challenges in conducting an ML project and the solutions for them:
 
-### 1. **Missing Data**
+### 1 - **Missing Data**
 
 Any missing data can distort statistical properties of a dataset and may cause biased estimates and less efficient analyses.
 
@@ -117,7 +118,7 @@ Any missing data can distort statistical properties of a dataset and may cause b
 • **Data Imputation**: It means that the values imputed will replace those which are missing. This can be anything as simple as replacing missing values with the mean, median, or mode or more complex imputations like using k-nearest neighbors or regression models.
 - **Dropping**: If the dataset is large and the missing data is at a minimal percentage, then it will not be a bad idea to remove rows or columns on missing values.
 
-### 2. **Outliers**
+### 2 - **Outliers**
 
 The outliers in data can influence the model heavily, especially the linear models, as they can end up identifying spurious trends and produce misleading conclusions.
 
@@ -125,7 +126,7 @@ The outliers in data can influence the model heavily, especially the linear mode
 - **Outlier Detection and Removal**: This can be carried out by the use of statistical techniques like Z-scores or IQR. One may identify outliers using visualization techniques such as scatter plots and box plots.
     - **Robust Techniques**: One then can use algorithms or models robust to outliers. For example, generally, tree-based models are not affected by the outliers.
 
-### 3. Data Imbalance
+### 3 - Data Imbalance
 
 Data imbalance occurs when some target classes are underrepresented relative to others in a data set. In this case, the models will end up being biased toward a majority class.
 
@@ -136,18 +137,18 @@ Data imbalance occurs when some target classes are underrepresented relative to 
 
 These methods are indispensable in the data preparation stage of any machine learning project and are rated among the highest in influencing the accuracy and dependability of the model in its entirety. Proper handling of such challenges ensures the model is well trained on quality data, which is vital for accurate predictions.
 
-## **Plotting Continuous Features**
+## **3.1 - Plotting Continuous Features**
 
 Data visualization plays an important role in understanding and preparing data before machine learning. One can draw out a lot of information about the underlying patterns and trends present in a continuous feature, which includes some quantitative variables with an infinite number of possibilities. Below is how data visualization is critical and the ways to plot continuous features.
 
-### **Importance of Data Visualization**
+### **3.1.1 - Importance of Data Visualization**
 
 • **Reveals Underlying Patterns**: Visualization can help in discovering the patterns of data that are otherwise hidden in a raw dataset.
  • **Identifies Outliers and Anomalies**: One can identify from graphical representations of data; the rest are nothing but outliers and anomalies, which have to be treated.
  • **Aids in Feature Selection and Engineering**: With visualization of the data, one will get a better sense of what features to include in the model and how to transform the same.
 - **Better Interpretation of Data Distribution**: One requires visualization to understand the distribution of data that may inform the choice of the machine learning model and preprocessing steps.
 
-### **How to Plot Continuous Features**
+### **3.1.2 - How to Plot Continuous Features**
 
 1. **Histograms**: 
    - Histograms are plots of the distribution of a continuous variable by breaking the data into bins, counting the number of observations in each bin.
@@ -157,7 +158,7 @@ Such a plot helps understand the distribution (normal, skewed) and maybe a guide
     - These are graphs with values of two continuous variables, one each at the horizontal and the vertical axis, to indicate the relationship between them.
     - They help one in pointing out trends, possible correlations, and even clusters.
 
-### **Interpreting Patterns and Trends**
+### **3.1.3 - Interpreting Patterns and Trends**
 
 **From Histograms, one can read:**
 - If histogram is symmetric and bell-shaped, then it suggests the normal distribution. Skewed histograms show that the distribution is very far from normality, hence probably serves as a basis of possibly needing transformations.
@@ -169,17 +170,17 @@ Clusters may indicate that the data points belong to different groups or behave 
 
 Views of the continuous features through histograms, scatter plots, and other such methods will provide us with an understanding of the structure and distribution of data, and how the variables are related to each other. Such an understanding is very critical for the successful preparation and cleaning of data, as an important step in building machine learning models that are robust.
 
-## **Cleaning Continuous and Categorical Data**
+## **3.2 - Cleaning Continuous and Categorical Data**
 
 One of the essential steps to deal with while cleaning and preparing data is recognizing the types of continuous and categorical data. Each will require specific cleaning in order to have a tight and relevant dataset that would be useful for the machine learning model.
 
-### **Distinguishing Continuous and Categorical Data**
+### **3.2.1 - Distinguishing Continuous and Categorical Data**
 
 Continuous data refers to data expressing measurement and hence any value within a range. Examples include height, weight, temperature, and age. Continuous data can be strongly best presented using histograms and scatter plots.
 
 - **Categorical Data**: It is the data that can be thought to comprise a class or category. It is also referred to as nominal if there is no order among them, such as color or brand names; otherwise, they are ordinal, and there is an inherent order. An example of this is ratings from poor to excellent. The most straightforward and direct method of representing categorical data is through a bar chart or pie chart.
 
-### **Cleaning Methods for Continuous Data**
+### **3.2.2 - Cleaning Methods for Continuous Data**
 
 1. **Scaling**: Most of the continuous data require scaling in such a way that all the features read the same scale and do not favor one feature over the other during the model computation. It can be accomplished using:
 • **Min-Max Scaling**: This will scale the data in the range given, commonly from 0 to 1.
@@ -200,13 +201,13 @@ Cleaning Methods for Categorical Variables
 Two primary steps of the machine learning pipeline include proper cleaning and preprocessing of continuous and categorical data. These processes are very essential as one comes up with high-quality data for the model, hence accuracy and reliability of the machine-learning algorithms.
 
 
-# **Model Building and Evaluation**
+# **4 - Model Building and Evaluation**
 
-## **Measuring Success**
+## **4.1 - Measuring Success**
 
 The process to model building and evaluation is initiated by measuring the performance of the machine learning model. Performance metrics exist, to estimate the performance of various kinds of machine learning models. Understanding such varied kinds of performance metrics such as accuracy, precision, recall, F1-score, and ROC AUC, when and where to apply each of such kinds is necessary in an accurate way to measure model success effectively.
 
-### **Various Performance Metrics**
+### **4.1.1 - Various Performance Metrics**
 
 1. **Accuracy**: The most intuitive measure for performance, accuracy is defined as a ratio of correct predictions to total observations. It's best when classes are nearly balanced in the dataset.
 
@@ -231,11 +232,11 @@ Commonly used measures for binary classification include:* Precision* Recall* F1
 
 An understanding of these metrics and how to apply them appropriately holds a lot of importance in the evaluation of machine learning models. It really helps in selecting the best model and further fine-tuning the same with the highest performance with regard to the specific task.
 
-## **Overfitting and Underfitting**
+## **4.2 - Overfitting and Underfitting**
 
 Two very common problems in machine learning are overfitting and underfitting, both of which make the model less likely to generalize well from the training data to unseen data.
 
-### **Overfitting**
+### **4.2.1 - Overfitting**
 
 - **Concept**: Overfitting is the part of machine learning where a model learns from details and noise in the training data to an extent that it has a detrimental effect on the performance of the model with new data. The model is thus too complex relative to the number of observations, with too many parameters in it.
 
@@ -251,7 +252,7 @@ Methods like k-fold cross-validation allow measurement of how the model might ge
 - **Prune the decision tree/reduce model complexity**: Simplifying the model implies ensuring that it is not too-complex in order to eliminate chances of overfitting.
   - **Early Stopping**: For instance, early stopping in training an iterative model, neural networks to alleviate overfitting
 
-### **Underfitting**
+### **4.2.2 - Underfitting**
 
 What is Underfitting?
 Underfitting of a model means that the model developed is too simple to effectively address the underlying structure of the data, both in the training set of data and new examples.
@@ -268,18 +269,18 @@ The model developed is too simple to capture the underlying structure of the dat
 Things like overfitting and underfitting are really key in machine learning. With the proper strategies in place for prevention or even curing, it markedly improves the performance of the model and its capability for generalization from the data it was trained on to new data.
 
 
-## **Hyperparameters Tuning**
+## **4.3 - Hyperparameters Tuning**
 
 This is perhaps the most important step in the machine-learning process. It involves tinkering with the parameters of the model, which are not learnt from the data, so that the model gets better're working on.
 
-### **Machine Learning Model: Role of Hyperparameters in Machine Learning Models**
+### **4.3.1 - Machine Learning Model: Role of Hyperparameters in Machine Learning Models**
 
 - **Definition**: Hyperparameter is by definition a configuration of structure inputs that are again pre-decided and therefore cannot be derived from the data.
    For instance, learning rate, number of hidden layers in a neural network, or number of trees in a random forest.
 
 - **Impact on Model**: The impact due to hyperparameters is something that can affect a machine learning model in a massive way. The hyperparameters define the structure's complexity, rate of learning, and inherent structure within the model that defines how it will learn and generalize.
 
-### **Methods for Tuning Hyperparameters**
+### **4.3.2 - Methods for Tuning Hyperparameters**
 
 5. Manual Adjustment: A data scientist will manually make a modification to the hyperparameters based on experience and intuition. This method can take time, but the bright side is that it gives in-depth learning in regard to how every hyperparameter influences changes in the model.
 
@@ -287,7 +288,7 @@ This is perhaps the most important step in the machine-learning process. It invo
 
 3. **Random Search**: Under random search, one sets up a grid of hyperparameter values, then picks randomly from them to train the model. This is not exhaustive, but it is typically much faster and more efficient compared to grid search, especially when the number of hyperparameters is very large.
 
-### **Validation in Hyperparameter Tuning: Why?**
+### **4.3.3 - Validation in Hyperparameter Tuning: Why?**
 
 - **Avoiding Overfitting**: It is very important to validate properly in the tuning of hyperparameters so that the increment done in the model is not because of the overfitting to the training data. Cross-validation techniques are often used in this procedure.
 
@@ -296,11 +297,11 @@ This is perhaps the most important step in the machine-learning process. It invo
 - ** Iterative Process **: Generally, hyperparameter tuning will be an iterative approach, and every tuning takes place depending upon the feedback coming from the validation results. Such an iterative process helps in fine-tuning and finding the best collection of hyperparameters for the model.
 
 
-## **Evaluating a Model**
+## **4.4 - Evaluating a Model**
 
 Evaluation of model performance is one of the most critical stages of the technological innovation. This is done by approximation of the ability of the model to ensure that it generalizes on new data by use of a set of evaluation metrics.
 
-### **Evaluating a Machine Learning Model**
+### **4.4.1 - Evaluating a Machine Learning Model**
 
 • **Selection of Performance Metrics:** The machine learning task might be of various types, such as classification and regression. The selected performance metrics would include the following: accuracy, precision, recall, f1-score, ROC AUC in classification, and MSE, RMSE, and MAE in regression, to mention just a few.
 
@@ -310,13 +311,13 @@ Evaluation of model performance is one of the most critical stages of the techno
 
 4. **Iterative Evaluation**: More often than not, models are iteratively evaluated and the iterations are usually done to make changes in the modes or data based on an outcome of the preliminary evaluation.
 
-### **Cross-Validation and Holdout Sets**
+### **4.4.2 - Cross-Validation and Holdout Sets**
 
 - **Cross-Validation**: This technique splits the data into various subsets, over which the model trains itself repeatedly—each time using a different subset as a test set and the remaining data as a training set. This is more like the better way in which we could calculate model performance, just that this would be in a very robust fashion.
 
 - **Holdout Sets**: To hold out some data so that it isn't used as part of the training process. We can then take a look at that holdout set, often referred to as a test set, to see how well our model might perform.
 
-### **Understanding Bias and the Bias-Variance Tradeoff**
+### **4.4.3 - Understanding Bias and the Bias-Variance Tradeoff**
 
 - **Bias**: Bias refers to errors due to overly simplistic assumptions in the learning algorithm. High bias can result in the model missing relevant relations between features and target outputs, which leads to underfitting.
 
@@ -324,33 +325,33 @@ Evaluation of model performance is one of the most critical stages of the techno
 
 • **Bias-Variance Tradeoff**: The bias-variance tradeoff comes into the default, satisfactory average point where we ideally just add enough complexity to the model, after which we can say that we have reached the minimum of total error—a combination of bias, variance, and irreducible error. A good model would balance bias and variance such that both are low enough to give accurate and consistent predictions on new data.
 
-# **Real-World Applications and Ethical Considerations**
+# **5 - Real-World Applications and Ethical Considerations**
 
-## **Real-World Applications of Machine Learning**
+## **5.1 - Real-World Applications of Machine Learning**
 
 Machine learning finds applications across a wide range of domains, making a huge impact on society and industries. Some of the major areas where ML has made its significant presence are indicated below.
 
-### **Image Recognition and Computer Vision**
+### **5.1.1 - Image Recognition and Computer Vision**
 
 - **Application**: Machine learning models have taken over the area of image recognition, mainly models based on deep learning techniques. Such models are good at identification and classification of objects from images.
 - **Uses**: This technology is then applied in Facial recognition systems, Self-driving cars, Security surveillance, and in retail, too, by identifying products.
 
-### **Natural Language Processing (NLP)**
+### **5.1.2 - Natural Language Processing (NLP)**
 
 - **Application**: NLP applies machine learning to understand, interpret, and manipulate human language.
 It's heavily used in chatbots, translation services, sentiment analysis, and voice assistants like Siri and Alexa.
 
-### Recommender Systems
+### **5.1.3 - Recommender Systems**
 
 Applications ML algorithms within the recommender system analyze user activities and trends to recommend products or content.
 Uses Such systems are especially typical on shopping websites, for example, Amazon, and streaming websites like Netflix that provide users with tailored and relevant recommendations for movies or shows.
 
-### Fraud Detection and Risk Management
+### **5.1.4 - Fraud Detection and Risk Management**
 
 - **Application**: Training machine learning models to recognize patterns predictive of fraud.
 - **Uses**: These models are of paramount importance in the financial sector, more so in credit card fraud detection and insurance fraud, and in cybersecurity, where such models are applied in identifying unusual patterns that could be indicative of security breaches.
 
-### **Healthcare and Medical Diagnosis**
+### **5.1.5 - Healthcare and Medical Diagnosis**
 
 -
  **Application**: Machine Learning is being used to enhance a lot of aspects connected to healthcare, more so in diagnosing diseases.
@@ -358,26 +359,26 @@ Uses Such systems are especially typical on shopping websites, for example, Amaz
 
 Applications of machine learning in real life are huge and highly diverse, evidencing that they will bring tremendous changes into our lives and industries in the very near future. Medicine, from improving diagnosis accuracy to user experience through targeted recommendations, the impact of ML is quite broad and growing fast.
 
-## **Ethical Considerations in Machine Learning**
+## **5.2 - Ethical Considerations in Machine Learning**
 
 The rapidly advancing pace and increasing integration of ML in society raise a number of important questions about the ethics involved. This will be done in ensuring that ML technologies are responsibly developed and deployed.
 
-### **Bias and Fairness**
+### **5.2.1 - Bias and Fairness**
 
 - **Concern**: ML models sometimes capture and amplify biases inherent in their training data. This results in unfair outcomes more in sensitive applications such as hiring, law enforcement, and lending.
 - **Solution**: Methods for detecting and reducing bias should include diverse and representative data sets in the process and techniques. Bias is likely; developers and data scientists must anticipate it and work to avoid it explicitly.
 
-### **Privacy**
+### **5.2.2 - Privacy**
 
 - **Concern**: ML models usually require a large amount of data, usually containing sensitive personal information. There's a risk that this data can be misused, leading to privacy violations.
 - **Preserve Privacy**: Impose data privacy techniques, including anonymization, differential privacy, and secure federated learning methods on the model for protecting the privacy of individuals.
 
-### **Responsible AI**
+### **5.2.3 - Responsible AI**
 
 - **Need**: It refers to the design and fielding of AI systems that are transparent, ethical, and aligned to human values.
 - **Ethical Guidelines**: Adherence to ethical guidelines in the development of machine learning models will make sure that they benefit society, and not harm it unintentionally.
 
-### **Transparency and Explainability**
+### **5.2.4 - Transparency and Explainability**
 
 - **Need for Transparency**: In most of the applications, especially in those affecting the lives of people directly, it is necessary for ML models to show transparency in their operation and decisions.
 - **Explainability**: To a large extent, ML models are viewed as black boxes; this is particularly the case for complex models such as deep neural networks. One of the most important ways in which to establish trust in these models, therefore, lies in the development of methods by which they explain how they arrive at their decisions—in critical applications like healthcare and criminal justice.

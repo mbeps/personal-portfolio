@@ -185,7 +185,38 @@ $V \in \mathbb{R}^{L \times d_v}$ (Value Matrix)
 $L$ is the sequence length.
 $d_k$ is the dimension of the key/query vectors.
 
-![alt text]({BASE}/image-3.png)
+```mermaid
+graph TD
+    %% Input nodes
+    Q[Q]
+    K[K]
+    V[V]
+
+    %% Processing steps in the main path
+    %% Added quotes around labels containing parentheses to fix the parse error
+    MatMul["MatMul ()"]:::process
+    Scale["Scale ()"]:::process
+    Mask["Mask (Optional)"]:::process
+    Softmax[Softmax]:::process
+
+    %% Operator and Output
+    Mult(("×")):::operator
+    Output[Output]
+
+    %% Connections
+    Q --> MatMul
+    K --> MatMul
+    MatMul --> Scale
+    Scale --> Mask
+    Mask --> Softmax
+    Softmax --> Mult
+    
+    %% Connection from V to the multiplication operator
+    V --> Mult
+    
+    %% Final output connection
+    Mult --> Output
+```
 
 > The Scaled Dot-Product Attention flow.
 

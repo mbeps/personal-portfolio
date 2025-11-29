@@ -37,6 +37,7 @@ The discipline of software engineering is fundamentally a struggle against compl
 
 Application Programming Interfaces (APIs) act as the binding agents in this chaotic environment. They are not merely pipes for data; they are architectural decisions that impose specific constraints on how systems communicate, how state is managed, and how failures are handled. The evolution of API paradigms (from the rigid procedural calls of the 1980s to the hypermedia-driven web and the graph-based query languages of today) reflects a continuous oscillation between competing engineering priorities: strictness versus flexibility, efficiency versus discoverability, and tight versus loose coupling.
 
+**Evolution of Paradigms**
 ```mermaid
 graph LR
     subgraph "Evolution of Paradigms"

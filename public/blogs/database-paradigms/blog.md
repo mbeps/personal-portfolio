@@ -489,16 +489,21 @@ An array of size $|V|$, where each entry points to a list of neighbours.
 
 ## 6.3 - Index-Free Adjacency
 
+**RDBMS**
 ```mermaid
 graph LR
-    subgraph RDBMS
-    A((Node A)) -- 1. Index Lookup --> Idx[B-Tree Index]
-    Idx -- 2. Pointer --> B((Node B))
-    end
-    
-    subgraph GraphDB
-    GA((Node A)) -- Direct Pointer --> GB((Node B))
-    end
+  subgraph RDBMS
+  A((Node A)) -- 1. Index Lookup --> Idx[B-Tree Index]
+  Idx -- 2. Pointer --> B((Node B))
+  end
+```
+
+**GraphDB**
+```mermaid
+graph LR
+  subgraph GraphDB
+  GA((Node A)) -- Direct Pointer --> GB((Node B))
+  end
 ```
 
 The defining performance characteristic of native graph databases is Index-Free Adjacency.

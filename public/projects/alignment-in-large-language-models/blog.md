@@ -281,13 +281,152 @@ This hybrid approach was highly successful. It enhanced linguistic performance i
 
 **Figure 6.1: Experimental Pipeline Architecture**
 
-![alt text]({BASE}/fig-6-1.png)
+```mermaid
+graph LR
+  %% Define styles for colored boxes
+  classDef green fill:#d5e8d4,stroke:#82b366,stroke-width:2px;
+  classDef red fill:#f8cecc,stroke:#b85450,stroke-width:2px;
+  classDef blue fill:#dae8fc,stroke:#6c8ebf,stroke-width:2px;
+
+  %% Define nodes and connections
+  A["Dataset"]:::green --> B["Prompt Templating\n(Standard & Reasoning)"]
+  B --> C["High-Throughput Inference\n(vLLM)"]:::red
+  C --> D["Regex-based Answer Parsing"]
+  D --> E["Answer Scoring"]
+  E --> F["Results Aggregation &\nCategory Analysis"]:::blue
+```
 
 **Figure 6.2: Fine-Tuning and Evaluation Cycle**
 
-![alt text]({BASE}/fig-6-2.png)
+```mermaid
+graph TD
+    %% Define custom styles for specific colors
+    classDef green fill:#d5e8d4,stroke:#82b366,stroke-width:2px;
+    classDef red fill:#f8cecc,stroke:#b85450,stroke-width:2px;
+    classDef blue fill:#dae8fc,stroke:#6c8ebf,stroke-width:2px;
 
-![alt text]({BASE}/fig-6-3-5.png)
+    subgraph "Fine-Tuning Cycle"
+        A[Multi-IT Dataset]:::green --> B{Synthetic Data Generation}
+        B --> C[Hybrid Dataset]:::green
+        %% Added quotes to fix the parse error
+        C --> D["PEFT Training<br>(LoRA / QLoRA)"]
+        D --> E[Fine-Tuned Adapter]:::red
+    end
+
+    subgraph "Evaluation Cycle"
+        F[Base Model] --> G{Merge Adapter}
+        E --> G
+        G --> H[Merged Model]:::red
+        H --> I(Benchmarking Pipeline)
+        I --> J[Performance Results]:::blue
+    end
+```
+
+**Figure 6.3: Standard Pipeline**
+
+```mermaid
+graph TD
+    %% Define Styles
+    classDef green fill:#d5e8d4,stroke:#82b366,stroke-width:2px;
+    classDef blue fill:#dae8fc,stroke:#6c8ebf,stroke-width:2px;
+    classDef red fill:#f8cecc,stroke:#b85450,stroke-width:2px;
+    classDef default fill:#fff,stroke:#333,stroke-width:1px;
+
+    %% Subgraphs to mimic the grouping in the image
+    subgraph Start ["Start: Input Data"]
+        D1["Standard Training Dataset<br>(Mult-IT)<br><i>Contains only question-<br>answer pairs</i>"]:::green
+    end
+
+    subgraph Process ["Fine-Tuning Process"]
+        P1["Standard PEFT Training<br>(LoRA / QLoRA)<br><i>No synthetic reasoning<br>data is used</i>"]:::blue
+    end
+
+    subgraph End ["End: Output Artefact"]
+        R1["Fine-Tuned Model<br>(Iteration 1)<br><b>Result:</b> Improved non-<br>reasoning linguistic skill<br><b>Side Effect:</b> Catastrophic<br>loss of reasoning ability"]:::red
+    end
+
+    %% Connections
+    D1 -->|Is used for| P1
+    P1 -->|Which produces the| R1
+```
+
+**Figure 6.4: Synthetic Only Test Pipeline**
+
+```mermaid
+graph TD
+    %% Define Styles
+    classDef green fill:#d5e8d4,stroke:#82b366,stroke-width:2px;
+    classDef blue fill:#dae8fc,stroke:#6c8ebf,stroke-width:2px;
+    classDef default fill:#fff,stroke:#333,stroke-width:1px;
+
+    %% Groups
+    subgraph Start ["Start: Input Data for"]
+        D1["Standard Training Dataset<br>(Mult-IT)"]:::green
+    end
+
+    subgraph Step1 ["Step 1: Data Generation"]
+        M1["Reasoning-Enabled Model"]:::blue
+        D2["Synthetic CoT-Only Dataset<br>(~18k samples of correct<br>answers + reasoning)<br><i>Standard Q&A pairs are<br>discarded</i>"]:::green
+        
+        M1 -->|To generate the| D2
+    end
+
+    subgraph Step2 ["Step 2: CoT-Only Fine-Tuning"]
+        P1["PEFT Training on CoT Data<br>Only<br>(LoRA / QLoRA)"]:::blue
+    end
+
+    subgraph End ["End: Output Artefact"]
+        %% Purple box in original, kept default here per instructions
+        R1["Fine-Tuned Model<br>(Iteration 2)<br><b>Result:</b> Reasoning ability is<br>restored and enhanced<br><b>Side Effect:</b> No<br>improvement in non-<br>reasoning linguistic skill"]
+    end
+
+    %% Connections
+    D1 -->|Is processed by the| M1
+    D2 -->|Which is the sole input for| P1
+    P1 -->|Which produces the| R1
+```
+
+**Figure 6.5: Hybrid Training Pipeline**
+
+```mermaid
+graph TD
+    %% Define Styles
+    classDef green fill:#d5e8d4,stroke:#82b366,stroke-width:2px;
+    classDef blue fill:#dae8fc,stroke:#6c8ebf,stroke-width:2px;
+    classDef default fill:#fff,stroke:#333,stroke-width:1px;
+
+    %% Groups
+    subgraph Start ["Start: Input Data"]
+        D1["Standard Training Dataset<br>(Mult-IT)"]:::green
+    end
+
+    subgraph Step1 ["Step 1: Generation"]
+        M1["Reasoning-Enabled Model<br>(e.g., Qwen3, Magistral)"]:::blue
+        D2["Synthetic Chain-of-Thought<br>(CoT) Data<br>(~18,000 samples are<br>generated)"]:::green
+        D3["Hybrid Dataset<br>(Original data is mixed with<br>CoT data at a ~1:5 ratio)"]:::green
+        
+        M1 -->|To generate| D2
+    end
+
+    subgraph Step2 ["Step 2: Hybrid Fine-Tuning"]
+        P1["PEFT Training via<br>LoRA/QLoRA<br>(The base model is trained<br>on the hybrid dataset)"]:::blue
+    end
+
+    subgraph End ["End: Output Artefact"]
+        %% Orange box in original, kept default here per instructions
+        R1["Final Fine-Tuned Model<br>(Improved linguistic skill<br>AND preserved reasoning<br>ability)"]
+    end
+
+    %% Connections
+    D1 -->|Is processed by the| M1
+    
+    %% The Split Path
+    D1 -->|Is then combined with| D3
+    D2 --> D3
+    
+    D3 -->|To conduct| P1
+    P1 -->|Which produces the| R1
+````
 
 **Figure 9.1: Performance Difference Between Reasoning and No-Reasoning States**
 
@@ -611,7 +750,22 @@ The experimental framework was designed as a modular pipeline to ensure a standa
 
 **Figure 6.1: Experimental Pipeline Architecture**
 
-![alt text]({BASE}/fig-6-1.png)
+**Figure 6.1: Experimental Pipeline Architecture**
+
+```mermaid
+graph LR
+  %% Define styles for colored boxes
+  classDef green fill:#d5e8d4,stroke:#82b366,stroke-width:2px;
+  classDef red fill:#f8cecc,stroke:#b85450,stroke-width:2px;
+  classDef blue fill:#dae8fc,stroke:#6c8ebf,stroke-width:2px;
+
+  %% Define nodes and connections
+  A["Dataset"]:::green --> B["Prompt Templating\n(Standard & Reasoning)"]
+  B --> C["High-Throughput Inference\n(vLLM)"]:::red
+  C --> D["Regex-based Answer Parsing"]
+  D --> E["Answer Scoring"]
+  E --> F["Results Aggregation &\nCategory Analysis"]:::blue
+```
 
 - **ITALIC Dataset**: The main benchmark for evaluating the models' alignment [Seveso et al., 2025].
 - **Prompt Templating Engine**: Formats each question into a consistent zero-shot prompt. For standard evaluations, the prompt was identical to the one used in the original ITALIC paper to prevent the prompt from influencing the results. For reasoning evaluations, this prompt was extended with an aggressive instruction for the model to "think briefly". This was designed to elicit a thought process while preventing the excessively long and slow outputs that can occur with unconstrained reasoning.
@@ -653,7 +807,29 @@ To conduct these experiments, several models were selected for specific reasons.
 
 **Figure 6.2: Fine-Tuning and Evaluation Cycle**
 
-![alt text]({BASE}/fig-6-2.png)
+```mermaid
+graph TD
+    %% Define custom styles for specific colors
+    classDef green fill:#d5e8d4,stroke:#82b366,stroke-width:2px;
+    classDef red fill:#f8cecc,stroke:#b85450,stroke-width:2px;
+    classDef blue fill:#dae8fc,stroke:#6c8ebf,stroke-width:2px;
+
+    subgraph "Fine-Tuning Cycle"
+        A[Multi-IT Dataset]:::green --> B{Synthetic Data Generation}
+        B --> C[Hybrid Dataset]:::green
+        %% Added quotes to fix the parse error
+        C --> D["PEFT Training<br>(LoRA / QLoRA)"]
+        D --> E[Fine-Tuned Adapter]:::red
+    end
+
+    subgraph "Evaluation Cycle"
+        F[Base Model] --> G{Merge Adapter}
+        E --> G
+        G --> H[Merged Model]:::red
+        H --> I(Benchmarking Pipeline)
+        I --> J[Performance Results]:::blue
+    end
+```
 
 ### 6.2.1 - Core Fine-Tuning Technology Rationale
 
@@ -685,8 +861,109 @@ These preliminary experiments established that neither data format alone was suf
 
 ### 6.2.3 - Final Hybrid Design (Novel Technique)
 
-![alt text]({BASE}/fig-6-3-5.png)
+```mermaid
+graph TD
+    %% Define Styles
+    classDef green fill:#d5e8d4,stroke:#82b366,stroke-width:2px;
+    classDef blue fill:#dae8fc,stroke:#6c8ebf,stroke-width:2px;
+    classDef red fill:#f8cecc,stroke:#b85450,stroke-width:2px;
+    classDef default fill:#fff,stroke:#333,stroke-width:1px;
 
+    %% Subgraphs to mimic the grouping in the image
+    subgraph Start ["Start: Input Data"]
+        D1["Standard Training Dataset<br>(Mult-IT)<br><i>Contains only question-<br>answer pairs</i>"]:::green
+    end
+
+    subgraph Process ["Fine-Tuning Process"]
+        P1["Standard PEFT Training<br>(LoRA / QLoRA)<br><i>No synthetic reasoning<br>data is used</i>"]:::blue
+    end
+
+    subgraph End ["End: Output Artefact"]
+        R1["Fine-Tuned Model<br>(Iteration 1)<br><b>Result:</b> Improved non-<br>reasoning linguistic skill<br><b>Side Effect:</b> Catastrophic<br>loss of reasoning ability"]:::red
+    end
+
+    %% Connections
+    D1 -->|Is used for| P1
+    P1 -->|Which produces the| R1
+```
+
+**Figure 6.4: Synthetic Only Test Pipeline**
+
+```mermaid
+graph TD
+    %% Define Styles
+    classDef green fill:#d5e8d4,stroke:#82b366,stroke-width:2px;
+    classDef blue fill:#dae8fc,stroke:#6c8ebf,stroke-width:2px;
+    classDef default fill:#fff,stroke:#333,stroke-width:1px;
+
+    %% Groups
+    subgraph Start ["Start: Input Data for"]
+        D1["Standard Training Dataset<br>(Mult-IT)"]:::green
+    end
+
+    subgraph Step1 ["Step 1: Data Generation"]
+        M1["Reasoning-Enabled Model"]:::blue
+        D2["Synthetic CoT-Only Dataset<br>(~18k samples of correct<br>answers + reasoning)<br><i>Standard Q&A pairs are<br>discarded</i>"]:::green
+        
+        M1 -->|To generate the| D2
+    end
+
+    subgraph Step2 ["Step 2: CoT-Only Fine-Tuning"]
+        P1["PEFT Training on CoT Data<br>Only<br>(LoRA / QLoRA)"]:::blue
+    end
+
+    subgraph End ["End: Output Artefact"]
+        %% Purple box in original, kept default here per instructions
+        R1["Fine-Tuned Model<br>(Iteration 2)<br><b>Result:</b> Reasoning ability is<br>restored and enhanced<br><b>Side Effect:</b> No<br>improvement in non-<br>reasoning linguistic skill"]
+    end
+
+    %% Connections
+    D1 -->|Is processed by the| M1
+    D2 -->|Which is the sole input for| P1
+    P1 -->|Which produces the| R1
+```
+
+**Figure 6.5: Hybrid Training Pipeline**
+
+```mermaid
+graph TD
+    %% Define Styles
+    classDef green fill:#d5e8d4,stroke:#82b366,stroke-width:2px;
+    classDef blue fill:#dae8fc,stroke:#6c8ebf,stroke-width:2px;
+    classDef default fill:#fff,stroke:#333,stroke-width:1px;
+
+    %% Groups
+    subgraph Start ["Start: Input Data"]
+        D1["Standard Training Dataset<br>(Mult-IT)"]:::green
+    end
+
+    subgraph Step1 ["Step 1: Generation"]
+        M1["Reasoning-Enabled Model<br>(e.g., Qwen3, Magistral)"]:::blue
+        D2["Synthetic Chain-of-Thought<br>(CoT) Data<br>(~18,000 samples are<br>generated)"]:::green
+        D3["Hybrid Dataset<br>(Original data is mixed with<br>CoT data at a ~1:5 ratio)"]:::green
+        
+        M1 -->|To generate| D2
+    end
+
+    subgraph Step2 ["Step 2: Hybrid Fine-Tuning"]
+        P1["PEFT Training via<br>LoRA/QLoRA<br>(The base model is trained<br>on the hybrid dataset)"]:::blue
+    end
+
+    subgraph End ["End: Output Artefact"]
+        %% Orange box in original, kept default here per instructions
+        R1["Final Fine-Tuned Model<br>(Improved linguistic skill<br>AND preserved reasoning<br>ability)"]
+    end
+
+    %% Connections
+    D1 -->|Is processed by the| M1
+    
+    %% The Split Path
+    D1 -->|Is then combined with| D3
+    D2 --> D3
+    
+    D3 -->|To conduct| P1
+    P1 -->|Which produces the| R1
+```
 
 #### 6.2.3.1 - Synthetic Data Generation
 
@@ -1337,7 +1614,6 @@ FINALE: B
 **Analysis:**  
 The model's internal monologue demonstrates a clear, logical process. It correctly identifies the grammatical rule, evaluates each option against that rule, and works through ambiguity to arrive at the most logical conclusion.
 
----
 
 ### 12.1.2 - Example 2: Incorrect Answer with Flawed Reasoning
 
@@ -1377,7 +1653,6 @@ FINALE: C
 **Analysis:**  
 Even though the final answer is incorrect, the model still demonstrates a clear and logical reasoning process. It considers each option, eliminates unlikely candidates based on grammatical rules, and formulates a hypothesis. This shows that the ability to reason has been restored, even if the underlying knowledge is flawed in this specific case.
 
----
 
 ## 12.2 - Appendix B: Reasoning Degradation Examples
 
@@ -1398,7 +1673,6 @@ FINALE: C
 **Analysis:**  
 The `<think>` tag is completely empty. The model does not perform any analysis of the sentence, the verb "fatto," or the alternative options. It provides a direct, incorrect answer, behaving identically to its non-reasoning state.
 
----
 
 ### 12.2.2 - Example 2: Correct Answer with Empty Reasoning
 
@@ -1415,7 +1689,6 @@ La risposta corretta è A
 **Analysis:**  
 Even when the model arrives at the correct answer, the reasoning process is absent. The `<think>` tag remains empty, demonstrating that the model is relying on its base knowledge to answer the question directly, rather than using a structured reasoning process. This confirms that the fine-tuning has disabled the model's ability to externalise its thought process.
 
----
 
 ## 12.3 - Appendix C: Restored Reasoning Process Examples (Iteration 2)
 
@@ -1451,7 +1724,6 @@ FINALE: B
 **Analysis:**  
 The model successfully generates a detailed thought process. It correctly identifies the grammatical concept (exceptive clause), analyzes the sentence structure, and evaluates the options to arrive at the correct answer.
 
----
 
 ### 12.3.2 - Example 2: Incorrect Answer with Restored Reasoning
 
@@ -1485,7 +1757,6 @@ FINALE: B
 **Analysis:**  
 Even though the final answer is incorrect (the author is Ungaretti), the model still demonstrates a clear and logical reasoning process. It considers each author, eliminates unlikely candidates based on their typical genres and periods, and formulates a hypothesis. This shows that the ability to reason has been restored, even if the model's underlying knowledge is flawed in this specific case.
 
----
 
 ## 12.4 - Appendix D: Code for Injecting CoT to Dataset
 
@@ -1619,7 +1890,6 @@ if __name__ == "__main__":
     main()
 ```
 
----
 
 ## 12.5 - Appendix E: Computing Statistical Significance
 
@@ -1821,7 +2091,6 @@ if __name__ == "__main__":
     main()
 ```
 
----
 
 ## 12.6 - Appendix F: Full Results Tables
 
@@ -1839,7 +2108,6 @@ if __name__ == "__main__":
 | Qwen3 32B        | 32             | Transformer Decoder | No         | Largest Qwen3 model          |
 | Magistral-Small  | 24             | Transformer Decoder | No         | Multilingual reasoning model |
 
----
 
 ### 12.6.2 - Table 2: Culture & Common Sense Reasoning Results
 
@@ -1850,7 +2118,6 @@ if __name__ == "__main__":
 | Qwen3 8B         | 70.17 | 70.47   | 70.30       | 73.13   | 70.47     | 68.90      | 69.20 | 71.10    | 70.80   |
 | Qwen3 8B [V3]    | 73.81 | 73.29   | 72.10       | 76.50   | 74.00     | 71.20      | 72.90 | 73.80    | 72.10   |
 
----
 
 ### 12.6.3 - Table 3: Language Understanding Results
 
