@@ -10,6 +10,7 @@ import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
 import Database from "@/interfaces/Database";
 import CertificateDatabaseKeys from "../Certificates/CertificateDatabaseKeys";
 import skillDatabaseMap from "../Skills/SkillDatabaseMap";
+import BlogDatabaseKeys from "../Blogs/BlogDatabaseKeys";
 
 /**
  * Hashmap of the modules I have studied at university.
@@ -240,7 +241,11 @@ const modulesMap: Database<ModuleInterface> = {
       "Comparing and contrasting Agile and Waterfall methodologies to determine their applicability in different software development scenarios",
       "Practicing SCRUM and other Agile techniques to enhance team collaboration and project management in software development",
     ],
-    relatedMaterials: [ProjectDatabaseKeys.JavaCalculatorAssignment],
+    relatedMaterials: [
+      ProjectDatabaseKeys.JavaCalculatorAssignment,
+      BlogDatabaseKeys.DesignPatterns,
+      BlogDatabaseKeys.TypesOfSoftwareTesting,
+    ],
     parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
   [ModuleDatabaseKeys.RHUL_TeamProject]: {
@@ -347,6 +352,9 @@ const modulesMap: Database<ModuleInterface> = {
     relatedMaterials: [
       ProjectDatabaseKeys.DatabasesMiniProject,
       CertificateDatabaseKeys.UdemyDatabaseManagementSystemAndSQL,
+      BlogDatabaseKeys.RelationalDatabases,
+      BlogDatabaseKeys.DatabaseNormalisation,
+      BlogDatabaseKeys.DocumentDatabases,
     ],
     parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
@@ -761,7 +769,10 @@ const modulesMap: Database<ModuleInterface> = {
       "Implementing search algorithms for problem solving in AI",
       "Understanding knowledge representation techniques in AI systems",
     ],
-    relatedMaterials: [ProjectDatabaseKeys.MarkovDecisionAgent],
+    relatedMaterials: [
+      ProjectDatabaseKeys.MarkovDecisionAgent,
+      BlogDatabaseKeys.HiddenMarkovModelsInAI,
+    ],
   },
   [ModuleDatabaseKeys.KCL_AgentsAndMultiAgentSystems]: {
     name: "Agents & Multi-Agent Systems",
@@ -901,6 +912,12 @@ const modulesMap: Database<ModuleInterface> = {
       "Applying text mining and information retrieval techniques",
       "Assessing ethical implications and limitations of data mining",
     ],
+    relatedMaterials: [
+      BlogDatabaseKeys.TimeSeriesDatabases,
+      BlogDatabaseKeys.DocumentDatabases,
+      BlogDatabaseKeys.VectorDatabases,
+      BlogDatabaseKeys.GraphDatabases,
+    ],
   },
   [ModuleDatabaseKeys.KCL_OptimizationMethods]: {
     name: "Optimization Methods",
@@ -974,7 +991,10 @@ const modulesMap: Database<ModuleInterface> = {
       "Implementing generative models like GANs to create synthetic data",
       "Applying transfer learning to leverage pretrained models for new tasks",
     ],
-    relatedMaterials: [ProjectDatabaseKeys.HandWrittenDigitClassifier],
+    relatedMaterials: [
+      ProjectDatabaseKeys.HandWrittenDigitClassifier,
+      BlogDatabaseKeys.IntroductionToNeuralNetworks,
+    ],
   },
   [ModuleDatabaseKeys.KCL_MachineLearning]: {
     name: "Machine Learning",
@@ -1018,6 +1038,7 @@ const modulesMap: Database<ModuleInterface> = {
     relatedMaterials: [
       ProjectDatabaseKeys.CustomNeuralNetworkCoursework,
       ProjectDatabaseKeys.CustomQLearningAgent,
+      BlogDatabaseKeys.HiddenMarkovModelsInAI,
     ],
   },
   [ModuleDatabaseKeys.KCL_IndividualProject]: {
@@ -1080,7 +1101,9 @@ const modulesMap: Database<ModuleInterface> = {
     ],
     relatedMaterials: [
       ProjectDatabaseKeys.AlignmentInLargeLanguageModels,
-      ProjectDatabaseKeys.AlignmentInLargeLanguageModels,
+      BlogDatabaseKeys.Transformer,
+      BlogDatabaseKeys.Lora,
+      BlogDatabaseKeys.Quantisation,
     ],
   },
 };

@@ -10,6 +10,7 @@ import ProjectDatabaseKeys from "../Projects/ProjectDatabaseKeys";
 import projectDatabaseMap from "../Projects/ProjectDatabaseMap";
 import skillDatabaseMap from "../Skills/SkillDatabaseMap";
 import ModuleDatabaseKeys from "../Modules/ModuleDatabaseKeys";
+import CertificateDatabaseKeys from "../Certificates/CertificateDatabaseKeys";
 
 /**
  * Hashmap of blogs with keys as {@link BlogDatabaseKeys} and values as {@link BlogInterface}.
@@ -63,6 +64,11 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_MachineLearning,
+      ModuleDatabaseKeys.KCL_PatternRecognitionNeuralNetworksDeepLearning,
+      ModuleDatabaseKeys.KCL_DataMining,
+    ],
   },
   [BlogDatabaseKeys.Transformer]: {
     name: "Transformer Architecture",
@@ -78,7 +84,10 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
-    relatedMaterials: [ProjectDatabaseKeys.AlignmentInLargeLanguageModels],
+    relatedMaterials: [
+      ProjectDatabaseKeys.AlignmentInLargeLanguageModels,
+      ModuleDatabaseKeys.KCL_IndividualProject,
+    ],
   },
   [BlogDatabaseKeys.Lora]: {
     name: "Low-Rank Adaptation (LoRA)",
@@ -94,7 +103,10 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
-    relatedMaterials: [ProjectDatabaseKeys.AlignmentInLargeLanguageModels],
+    relatedMaterials: [
+      ProjectDatabaseKeys.AlignmentInLargeLanguageModels,
+      ModuleDatabaseKeys.KCL_IndividualProject,
+    ],
   },
   [BlogDatabaseKeys.Quantisation]: {
     name: "Quantisation for Model Compression",
@@ -110,7 +122,12 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
-    relatedMaterials: [ProjectDatabaseKeys.AlignmentInLargeLanguageModels],
+    relatedMaterials: [
+      ProjectDatabaseKeys.AlignmentInLargeLanguageModels,
+      ModuleDatabaseKeys.KCL_IndividualProject,
+      BlogDatabaseKeys.Lora,
+      BlogDatabaseKeys.Transformer,
+    ],
   },
   [BlogDatabaseKeys.ModelContextProtocol]: {
     name: "Model Context Protocol (MCP)",
@@ -126,6 +143,7 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
+    relatedMaterials: [BlogDatabaseKeys.Transformer],
   },
   [BlogDatabaseKeys.RitrievalAugmentedGeneration]: {
     name: "Retrieval Augmented Generation (RAG)",
@@ -141,6 +159,7 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
+    relatedMaterials: [BlogDatabaseKeys.Transformer],
   },
   [BlogDatabaseKeys.HiddenMarkovModelsInAI]: {
     name: "Hidden Markov Models (HMMs) in AI",
@@ -152,6 +171,10 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.Supabase,
     ],
     category: BlogCategoriesEnum.ArtificialIntelligence,
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_MachineLearning,
+      ProjectDatabaseKeys.MarkovDecisionAgent,
+    ],
   },
   //^ Software Engineering Blogs
   [BlogDatabaseKeys.DesignPatterns]: {
@@ -237,6 +260,14 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.NonRelationalDatabases,
       SkillDatabaseKeys.Normalisation,
     ],
+    relatedMaterials: [
+      BlogDatabaseKeys.RelationalDatabases,
+      BlogDatabaseKeys.DatabaseNormalisation,
+      BlogDatabaseKeys.VectorDatabases,
+      BlogDatabaseKeys.GraphDatabases,
+      BlogDatabaseKeys.TimeSeriesDatabases,
+      BlogDatabaseKeys.DocumentDatabases,
+    ],
   },
   [BlogDatabaseKeys.RelationalDatabases]: {
     name: "Relational Databases",
@@ -248,7 +279,13 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.Databases,
       SkillDatabaseKeys.RelationalDatabases,
     ],
-    relatedMaterials: [BlogDatabaseKeys.DatabaseNormalisation],
+    relatedMaterials: [
+      BlogDatabaseKeys.DatabaseNormalisation,
+      ModuleDatabaseKeys.RHUL_Databases,
+      BlogDatabaseKeys.DatabaseParadigms,
+      CertificateDatabaseKeys.UdemyDatabaseManagementSystemAndSQL,
+      CertificateDatabaseKeys.NASBADatabaseFoundationsIntroToDatabases,
+    ],
   },
   [BlogDatabaseKeys.DatabaseNormalisation]: {
     name: "Relational Database Normalisation",
@@ -261,6 +298,11 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.RelationalDatabases,
       SkillDatabaseKeys.Normalisation,
     ],
+    relatedMaterials: [
+      BlogDatabaseKeys.RelationalDatabases,
+      CertificateDatabaseKeys.UdemyDatabaseManagementSystemAndSQL,
+      CertificateDatabaseKeys.NASBADatabaseFoundationsIntroToDatabases,
+    ],
   },
   [BlogDatabaseKeys.VectorDatabases]: {
     name: "Vector Databases",
@@ -272,6 +314,10 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.Databases,
       SkillDatabaseKeys.ArtificialIntelligence,
     ],
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_DataMining,
+      BlogDatabaseKeys.DatabaseParadigms,
+    ],
   },
   [BlogDatabaseKeys.GraphDatabases]: {
     name: "Graph Databases",
@@ -282,6 +328,10 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.DatabaseManagementSystems,
       SkillDatabaseKeys.Databases,
       SkillDatabaseKeys.ArtificialIntelligence,
+    ],
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_DataMining,
+      BlogDatabaseKeys.DatabaseParadigms,
     ],
   },
   [BlogDatabaseKeys.DocumentDatabases]: {
@@ -296,9 +346,15 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.Firebase,
       SkillDatabaseKeys.Redis,
     ],
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_DataMining,
+      BlogDatabaseKeys.DatabaseParadigms,
+      CertificateDatabaseKeys.LinkedInIntroductionToMongoDB,
+      CertificateDatabaseKeys.LinkedInRedisEssentialTraining,
+    ],
   },
   [BlogDatabaseKeys.TimeSeriesDatabases]: {
-    name: "Time Series Databases Theory and Applications",
+    name: "Time Series Databases",
     subtitle:
       "A technical analysis of TSDB internals, detailing TSM storage engines, mathematical compression primitives, and SIMD query processing for high-frequency temporal data.",
     category: BlogCategoriesEnum.Databases,
@@ -306,6 +362,10 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.DatabaseManagementSystems,
       SkillDatabaseKeys.Databases,
       SkillDatabaseKeys.ArtificialIntelligence,
+    ],
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_DataMining,
+      BlogDatabaseKeys.DatabaseParadigms,
     ],
   },
   [BlogDatabaseKeys.ORM]: {
