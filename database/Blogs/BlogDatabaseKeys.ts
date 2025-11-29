@@ -22,6 +22,7 @@ enum BlogDatabaseKeys {
   AuthenticationSessionManagement = "authentication-session-management",
   DatabaseParadigms = "database-paradigms",
   DatabaseNormalisation = "database-normalisation",
+  VectorDatabases = "vector-databases",
   SyncAsync = "sync-vs-async",
   ApiComparison = "api-comparison",
   DesignPatterns = "design-patterns",

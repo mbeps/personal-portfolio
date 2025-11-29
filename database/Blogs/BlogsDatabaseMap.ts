@@ -241,6 +241,17 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.Normalisation,
     ],
   },
+  [BlogDatabaseKeys.VectorDatabases]: {
+    name: "Vector Dabases Theory and Applications",
+    subtitle:
+      "A theoretical overview of vector databases, their architecture, and use cases in modern applications such as AI and machine learning.",
+    category: BlogCategoriesEnum.Databases,
+    skills: [
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.ArtificialIntelligence,
+    ],
+  },
   [BlogDatabaseKeys.ORM]: {
     name: "Understanding Object-Relational Mapping (ORM)",
     subtitle:
