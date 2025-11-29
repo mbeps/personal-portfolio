@@ -252,6 +252,17 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.ArtificialIntelligence,
     ],
   },
+  [BlogDatabaseKeys.GraphDatabases]: {
+    name: "Graph Dabases Theory and Applications",
+    subtitle:
+      "A theoretical overview of graph databases, their architecture, and use cases in modern applications such as social networks and recommendation systems.",
+    category: BlogCategoriesEnum.Databases,
+    skills: [
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.ArtificialIntelligence,
+    ],
+  },
   [BlogDatabaseKeys.ORM]: {
     name: "Understanding Object-Relational Mapping (ORM)",
     subtitle:

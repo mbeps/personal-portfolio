@@ -23,6 +23,7 @@ enum BlogDatabaseKeys {
   DatabaseParadigms = "database-paradigms",
   DatabaseNormalisation = "database-normalisation",
   VectorDatabases = "vector-databases",
+  GraphDatabases = "graph-databases",
   SyncAsync = "sync-vs-async",
   ApiComparison = "api-comparison",
   DesignPatterns = "design-patterns",
