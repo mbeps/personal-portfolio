@@ -29,7 +29,6 @@ enum ProjectDatabaseKeys {
   SymphonyApplicationStatusBot = "symphony-application-status-bot",
   SymphonyHeadlessBot = "symphony-headless-bot",
   SymphonyInteractiveBot = "symphony-interactive-bot",
-  SymphonyMessageMLBot = "symphony-messageml-bot",
   SymphonyPollBot = "symphony-poll-bot",
   SymphonyRssBot = "symphony-rss-bot",
   SymphonyBlogBot = "symphony-blog-bot",
