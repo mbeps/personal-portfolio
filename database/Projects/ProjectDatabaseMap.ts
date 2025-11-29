@@ -12,6 +12,7 @@ import Database from "@/interfaces/Database";
 import CertificateDatabaseKeys from "../Certificates/CertificateDatabaseKeys";
 import RoleDatabaseKeys from "../Roles/RoleDatabaseKeys";
 import skillDatabaseMap from "../Skills/SkillDatabaseMap";
+import BlogDatabaseKeys from "../Blogs/BlogDatabaseKeys";
 
 /**
  * Hashmap of projects with keys as {@link SkillDatabaseKeys} and values as {@link ProjectInterface}.
@@ -163,7 +164,10 @@ const projectMap: Database<ProjectInterface> = {
       "https://github.com/mbeps/machine-learning-pacman-classifier-coursework",
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Academic,
-    relatedMaterials: [ModuleDatabaseKeys.KCL_MachineLearning],
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_MachineLearning,
+      BlogDatabaseKeys.IntroductionToNeuralNetworks,
+    ],
     skills: [
       SkillDatabaseKeys.Python,
 
@@ -950,6 +954,11 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.OAuthNextJsSpringBoot
     ),
     type: ProjectTypeEnum.Personal,
+    relatedMaterials: [
+      BlogDatabaseKeys.AuthenticationSessionManagement,
+      BlogDatabaseKeys.CrossOriginResourceSharing,
+      BlogDatabaseKeys.Backend,
+    ],
   },
   [ProjectDatabaseKeys.NextJsAuthJsTemplate]: {
     name: `Auth.JS Template`,
@@ -984,6 +993,11 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.NextJsAuthJsTemplate
     ),
     type: ProjectTypeEnum.Personal,
+    relatedMaterials: [
+      BlogDatabaseKeys.AuthenticationSessionManagement,
+      BlogDatabaseKeys.CrossOriginResourceSharing,
+      BlogDatabaseKeys.Backend,
+    ],
   },
 
   [ProjectDatabaseKeys.NextJsBetterAuthTemplate]: {
@@ -1019,6 +1033,11 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.NextJsBetterAuthTemplate
     ),
     type: ProjectTypeEnum.Personal,
+    relatedMaterials: [
+      BlogDatabaseKeys.AuthenticationSessionManagement,
+      BlogDatabaseKeys.CrossOriginResourceSharing,
+      BlogDatabaseKeys.Backend,
+    ],
   },
   [ProjectDatabaseKeys.Noodle]: {
     name: `Noodle`,

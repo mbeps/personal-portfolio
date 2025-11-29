@@ -11,6 +11,7 @@ import ModuleDatabaseKeys from "../Modules/ModuleDatabaseKeys";
 import ProjectDatabaseKeys from "../Projects/ProjectDatabaseKeys";
 import RoleDatabaseKeys from "../Roles/RoleDatabaseKeys";
 import skillDatabaseMap from "../Skills/SkillDatabaseMap";
+import BlogDatabaseKeys from "../Blogs/BlogDatabaseKeys";
 
 /**
  * Hashmap of certificates with keys as {@link CertificateDatabaseKeys} and values as {@link CertificateInterface}.
@@ -1028,7 +1029,11 @@ const certificateMap: Database<CertificateInterface> = {
       "Acquire the ability to design ER models for real-world database applications",
       "Gain insights into advanced database concepts for competitive exams and professional certification",
     ],
-    relatedMaterials: [ModuleDatabaseKeys.RHUL_Databases],
+    relatedMaterials: [
+      ModuleDatabaseKeys.RHUL_Databases,
+      BlogDatabaseKeys.RelationalDatabases,
+      BlogDatabaseKeys.DatabaseNormalisation,
+    ],
   },
   [CertificateDatabaseKeys.NASBADatabaseFoundationsIntroToDatabases]: {
     name: "Database Foundations: Intro to Databases",
@@ -1052,6 +1057,11 @@ const certificateMap: Database<CertificateInterface> = {
       "Adding data to database tables.",
       "Exploring core SQL commands for data retrieval.",
       "Using SQL to manipulate retrieved database data.",
+    ],
+    relatedMaterials: [
+      ModuleDatabaseKeys.RHUL_Databases,
+      BlogDatabaseKeys.RelationalDatabases,
+      BlogDatabaseKeys.DatabaseNormalisation,
     ],
   },
   [CertificateDatabaseKeys.LinkedInIntroductionToMongoDB]: {
@@ -1082,6 +1092,7 @@ const certificateMap: Database<CertificateInterface> = {
       "Introduction to MongoDB Data Modeling.",
       "Using MongoDB Transactions.",
     ],
+    relatedMaterials: [BlogDatabaseKeys.DocumentDatabases],
     archived: true,
   },
   [CertificateDatabaseKeys.LinkedInRedisEssentialTraining]: {
@@ -1108,6 +1119,7 @@ const certificateMap: Database<CertificateInterface> = {
       "Comparing Redis to relational databases and using key naming strategies.",
     ],
     archived: true,
+    relatedMaterials: [BlogDatabaseKeys.DocumentDatabases],
   },
 
   //^ DevOps

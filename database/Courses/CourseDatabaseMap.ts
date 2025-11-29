@@ -14,6 +14,28 @@ import moduleDatabaseMap from "../Modules/ModuleDatabaseMap";
  * The order of the courses is the order that will be used to display them.
  */
 const courseMap: Database<CourseInterface> = {
+  [CourseDatabaseKeys.KCL_ArtificialIntelligence]: {
+    name: "Artificial Intelligence",
+    university: "King's College London",
+    grade: "Pass with Distinction",
+    category: "Master of Science (MSc)",
+    skills: [], // dynamically added from modules
+    startYear: 2024,
+    endYear: 2025,
+    logo: `${EDUCATION_PAGE.path}/${CourseDatabaseKeys.KCL_ArtificialIntelligence}/logo.png`,
+    modules: [
+      ModuleDatabaseKeys.KCL_ArtificialIntelligenceReasoningAndDecisionMaking,
+      ModuleDatabaseKeys.KCL_MachineLearning,
+      ModuleDatabaseKeys.KCL_AgentsAndMultiAgentSystems,
+      ModuleDatabaseKeys.KCL_ComputerVision,
+      ModuleDatabaseKeys.KCL_DataMining,
+      ModuleDatabaseKeys.KCL_PhilosophyAndEthicsOfArtificialIntelligence,
+      ModuleDatabaseKeys.KCL_OptimizationMethods,
+      ModuleDatabaseKeys.KCL_PatternRecognitionNeuralNetworksDeepLearning,
+      ModuleDatabaseKeys.KCL_IndividualProject,
+    ],
+    relatedMaterials: [],
+  },
   [CourseDatabaseKeys.RHUL_ComputerScience]: {
     name: "Computer Science",
     university: "Royal Holloway, University of London",
@@ -61,28 +83,6 @@ const courseMap: Database<CourseInterface> = {
       ProjectDatabaseKeys.JavaCalculatorAssignment,
       ProjectDatabaseKeys.DatabasesMiniProject,
     ],
-  },
-  [CourseDatabaseKeys.KCL_ArtificialIntelligence]: {
-    name: "Artificial Intelligence",
-    university: "King's College London",
-    grade: "Pass with Distinction",
-    category: "Master of Science (MSc)",
-    skills: [], // dynamically added from modules
-    startYear: 2024,
-    endYear: 2025,
-    logo: `${EDUCATION_PAGE.path}/${CourseDatabaseKeys.KCL_ArtificialIntelligence}/logo.png`,
-    modules: [
-      ModuleDatabaseKeys.KCL_ArtificialIntelligenceReasoningAndDecisionMaking,
-      ModuleDatabaseKeys.KCL_MachineLearning,
-      ModuleDatabaseKeys.KCL_AgentsAndMultiAgentSystems,
-      ModuleDatabaseKeys.KCL_ComputerVision,
-      ModuleDatabaseKeys.KCL_DataMining,
-      ModuleDatabaseKeys.KCL_PhilosophyAndEthicsOfArtificialIntelligence,
-      ModuleDatabaseKeys.KCL_OptimizationMethods,
-      ModuleDatabaseKeys.KCL_PatternRecognitionNeuralNetworksDeepLearning,
-      ModuleDatabaseKeys.KCL_IndividualProject,
-    ],
-    relatedMaterials: [],
   },
 };
 
