@@ -229,6 +229,18 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.Normalisation,
     ],
   },
+  [BlogDatabaseKeys.RelationalDatabases]: {
+    name: "Relational Dabases Theory and Applications",
+    subtitle:
+      "A theoretical overview of relational databases, their architecture, and use cases in modern applications.",
+    category: BlogCategoriesEnum.Databases,
+    skills: [
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.RelationalDatabases,
+    ],
+    relatedMaterials: [BlogDatabaseKeys.DatabaseNormalisation],
+  },
   [BlogDatabaseKeys.DatabaseNormalisation]: {
     name: "Database Normalisation",
     subtitle:

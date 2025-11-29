@@ -21,6 +21,7 @@ enum BlogDatabaseKeys {
   TypesOfSoftwareTesting = "types-of-software-testing",
   AuthenticationSessionManagement = "authentication-session-management",
   DatabaseParadigms = "database-paradigms",
+  RelationalDatabases = "relational-databases",
   DatabaseNormalisation = "database-normalisation",
   VectorDatabases = "vector-databases",
   GraphDatabases = "graph-databases",
