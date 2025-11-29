@@ -1,27 +1,27 @@
 - [1 - Introduction and Historical Context](#1---introduction-and-historical-context)
 - [2 - Mathematical Preliminaries: Set Theory and Relations](#2---mathematical-preliminaries-set-theory-and-relations)
-	- [2.1 - Sets, Domains, and Cartesian Products](#21---sets-domains-and-cartesian-products)
-	- [2.2 - The Relation and its Schema](#22---the-relation-and-its-schema)
+  - [2.1 - Sets, Domains, and Cartesian Products](#21---sets-domains-and-cartesian-products)
+  - [2.2 - The Relation and its Schema](#22---the-relation-and-its-schema)
 - [3 - The Core Theory: Functional Dependencies](#3---the-core-theory-functional-dependencies)
-	- [3.1 - Formal Definition](#31---formal-definition)
-	- [3.2 - Trivial vs. Non-Trivial Dependencies](#32---trivial-vs-non-trivial-dependencies)
-	- [3.3 - Armstrong's Axioms](#33---armstrongs-axioms)
-	- [3.4 - The Closure of Functional Dependencies ($F^+$)](#34---the-closure-of-functional-dependencies-f)
+  - [3.1 - Formal Definition](#31---formal-definition)
+  - [3.2 - Trivial vs. Non-Trivial Dependencies](#32---trivial-vs-non-trivial-dependencies)
+  - [3.3 - Armstrong's Axioms](#33---armstrongs-axioms)
+  - [3.4 - The Closure of Functional Dependencies ($F^+$)](#34---the-closure-of-functional-dependencies-f)
 - [4 - Algorithms for Structural Analysis](#4---algorithms-for-structural-analysis)
-	- [4.1 - Attribute Closure Algorithm ($X^+$)](#41---attribute-closure-algorithm-x)
-	- [4.2 - Candidate Keys and Prime Attributes](#42---candidate-keys-and-prime-attributes)
+  - [4.1 - Attribute Closure Algorithm ($X^+$)](#41---attribute-closure-algorithm-x)
+  - [4.2 - Candidate Keys and Prime Attributes](#42---candidate-keys-and-prime-attributes)
 - [5 - The Hierarchy of Normal Forms](#5---the-hierarchy-of-normal-forms)
-	- [5.1 - First Normal Form (1NF): Atomicity](#51---first-normal-form-1nf-atomicity)
-	- [5.2 - Second Normal Form (2NF): Full Functional Dependency](#52---second-normal-form-2nf-full-functional-dependency)
-	- [5.3 - Third Normal Form (3NF): Transitive Dependency](#53---third-normal-form-3nf-transitive-dependency)
-	- [5.4 - Boyce-Codd Normal Form (BCNF)](#54---boyce-codd-normal-form-bcnf)
+  - [5.1 - First Normal Form (1NF): Atomicity](#51---first-normal-form-1nf-atomicity)
+  - [5.2 - Second Normal Form (2NF): Full Functional Dependency](#52---second-normal-form-2nf-full-functional-dependency)
+  - [5.3 - Third Normal Form (3NF): Transitive Dependency](#53---third-normal-form-3nf-transitive-dependency)
+  - [5.4 - Boyce-Codd Normal Form (BCNF)](#54---boyce-codd-normal-form-bcnf)
 - [6 - Decomposition Algorithms](#6---decomposition-algorithms)
-	- [6.1 - The Chase Algorithm (Lossless Join Test)](#61---the-chase-algorithm-lossless-join-test)
-	- [6.2 - 3NF Synthesis (Bernstein's Algorithm)](#62---3nf-synthesis-bernsteins-algorithm)
-	- [6.3 - BCNF Decomposition Algorithm](#63---bcnf-decomposition-algorithm)
+  - [6.1 - The Chase Algorithm (Lossless Join Test)](#61---the-chase-algorithm-lossless-join-test)
+  - [6.2 - 3NF Synthesis (Bernstein's Algorithm)](#62---3nf-synthesis-bernsteins-algorithm)
+  - [6.3 - BCNF Decomposition Algorithm](#63---bcnf-decomposition-algorithm)
 - [7 - Comparative Analysis: Alternative Models](#7---comparative-analysis-alternative-models)
-	- [7.1 - Pre-Relational: Hierarchical and Network Models](#71---pre-relational-hierarchical-and-network-models)
-	- [7.2 - Post-Relational: NoSQL and Columnar Stores](#72---post-relational-nosql-and-columnar-stores)
+  - [7.1 - Pre-Relational: Hierarchical and Network Models](#71---pre-relational-hierarchical-and-network-models)
+  - [7.2 - Post-Relational: NoSQL and Columnar Stores](#72---post-relational-nosql-and-columnar-stores)
 - [8 - Conclusion](#8---conclusion)
 - [References](#references)
 
@@ -535,10 +535,27 @@ While the modern landscape of distributed systems and columnar analytics often n
 
 # References
 
-* Codd, E. F. (1970). "A Relational Model of Data for Large Shared Data Banks". Communications of the ACM.
-* Codd, E. F. (1972). "Further Normalization of the Data Base Relational Model". IBM Research Report.
-* Armstrong, W. W. (1974). "Dependency Structures of Data Base Relationships". IFIP Congress.
-* Bernstein, P. A. (1976). "Synthesizing Third Normal Form Relations from Functional Dependencies". ACM Transactions on Database Systems.
-* Elmasri, R., & Navathe, S. Fundamentals of Database Systems.
-* Abadi, D. et al. (2008). "Column-Stores vs. Row-Stores: How Different Are They Really?". SIGMOD.
-* Cockroach Labs. "CockroachDB vs. Google Spanner".
+* Codd, E. F. (1970). *A Relational Model of Data for Large Shared Data Banks*. Communications of the ACM, 13(6), 377–387. [https://doi.org/10.1145/362384.362685](https://doi.org/10.1145/362384.362685) ([SCIRP][1])
+
+* Codd, E. F. (1971). *Further Normalization of the Data Base Relational Model*. IBM Research Report RJ909. Reprinted in R. Rustin (Ed.), *Data Base Systems* (Courant Computer Science Symposia Series, Vol. 6). [PDF](https://forum.thethirdmanifesto.com/wp-content/uploads/asgarosforum/987737/00-efc-further-normalization.pdf) ([TTM Forum][2])
+
+* Armstrong, W. W. (1974). *Dependency Structures of Data Base Relationships*. In *Proceedings of IFIP Congress 1974* (pp. 580–583). North-Holland. [Link via Semantic Scholar](https://www.semanticscholar.org/paper/Dependency-Structures-of-Data-Base-Relationships-Armstrong/0d21a989f1ae615553fc79c4eea199852452b80f) ([Semantic Scholar][3])
+
+* Bernstein, P. A. (1976). *Synthesizing Third Normal Form Relations from Functional Dependencies*. ACM Transactions on Database Systems, 1(4), 277–298. [https://doi.org/10.1145/320493.320489](https://doi.org/10.1145/320493.320489) ([ACM Digital Library][4])
+
+* Helfgott LeDoux, C., & Parker, D. S., Jr. (1982). *Reflections on Boyce-Codd Normal Form*. In *Proceedings of the Eighth International Conference on Very Large Data Bases (VLDB)* (pp. 131–141). [PDF](https://www.vldb.org/conf/1982/P131.PDF) ([VLDB][5])
+
+* Abadi, D. J., Madden, S. R., & Hachem, N. (2008). *Column-Stores vs. Row-Stores: How Different Are They Really?* In *Proceedings of the ACM SIGMOD International Conference on Management of Data* (pp. 967–980). [https://doi.org/10.1145/1376616.1376712](https://doi.org/10.1145/1376616.1376712) ([ACM Digital Library][6])
+
+* Brewer, E. A. (2000). *Towards Robust Distributed Systems*. Keynote address, 19th Annual ACM Symposium on Principles of Distributed Computing (PODC). [https://doi.org/10.1145/343477.343502](https://doi.org/10.1145/343477.343502) ([ResearchGate][7])
+
+* Gilbert, S., & Lynch, N. (2002). *Brewer’s Conjecture and the Feasibility of Consistent, Available, Partition-Tolerant Web Services*. ACM SIGACT News, 33(2), 51–59. [https://doi.org/10.1145/564585.564601](https://doi.org/10.1145/564585.564601) ([ACM Digital Library][8])
+
+[1]: https://www.scirp.org/reference/referencespapers?referenceid=1951876&utm_source=chatgpt.com "Codd, E.F. (1970) A Relational Model of Data for Large ..."
+[2]: https://forum.thethirdmanifesto.com/wp-content/uploads/asgarosforum/987737/00-efc-further-normalization.pdf?utm_source=chatgpt.com "Further Normalization of the Data Base Relational Model"
+[3]: https://www.semanticscholar.org/paper/Dependency-Structures-of-Data-Base-Relationships-Armstrong/0d21a989f1ae615553fc79c4eea199852452b80f?utm_source=chatgpt.com "Dependency Structures of Data Base Relationships"
+[4]: https://dl.acm.org/doi/10.1145/320493.320489?utm_source=chatgpt.com "Synthesizing third normal form relations from functional ..."
+[5]: https://www.vldb.org/conf/1982/P131.PDF?utm_source=chatgpt.com "Reflections on Boyce-Codd Normal Form"
+[6]: https://dl.acm.org/doi/10.1145/1376616.1376712?utm_source=chatgpt.com "Column-stores vs. row-stores: how different are they really?"
+[7]: https://www.researchgate.net/publication/221343719_Towards_robust_distributed_systems?utm_source=chatgpt.com "(PDF) Towards robust distributed systems"
+[8]: https://dl.acm.org/doi/10.1145/564585.564601?utm_source=chatgpt.com "Brewer's conjecture and the feasibility of consistent, ..."

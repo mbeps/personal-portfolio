@@ -1,43 +1,43 @@
 - [1 - The Theoretical Framework of Digital Identity](#1---the-theoretical-framework-of-digital-identity)
-	- [1.1 - The Core Theory of Authentication State](#11---the-core-theory-of-authentication-state)
+  - [1.1 - The Core Theory of Authentication State](#11---the-core-theory-of-authentication-state)
 - [2 - Server-Side Session Management: The Reference Token Model](#2---server-side-session-management-the-reference-token-model)
-	- [2.1 - The Mechanism of HTTP Cookies](#21---the-mechanism-of-http-cookies)
-		- [2.1.1 - Critical Security Attributes](#211---critical-security-attributes)
-	- [2.2 - Storage Architectures for Stateful Sessions](#22---storage-architectures-for-stateful-sessions)
-		- [2.2.1 - In-Memory and Sticky Sessions](#221---in-memory-and-sticky-sessions)
-		- [2.2.2 - Distributed Caching (Redis)](#222---distributed-caching-redis)
-	- [2.3 - Advantages and Disadvantages of Reference Tokens](#23---advantages-and-disadvantages-of-reference-tokens)
+  - [2.1 - The Mechanism of HTTP Cookies](#21---the-mechanism-of-http-cookies)
+    - [2.1.1 - Critical Security Attributes](#211---critical-security-attributes)
+  - [2.2 - Storage Architectures for Stateful Sessions](#22---storage-architectures-for-stateful-sessions)
+    - [2.2.1 - In-Memory and Sticky Sessions](#221---in-memory-and-sticky-sessions)
+    - [2.2.2 - Distributed Caching (Redis)](#222---distributed-caching-redis)
+  - [2.3 - Advantages and Disadvantages of Reference Tokens](#23---advantages-and-disadvantages-of-reference-tokens)
 - [3 - The Stateless Revolution: Value Tokens and RFC 7519 (JWT)](#3---the-stateless-revolution-value-tokens-and-rfc-7519-jwt)
-	- [3.1 - The Concept of Self-Contained Identity](#31---the-concept-of-self-contained-identity)
-	- [3.2 - Anatomy of a JWT](#32---anatomy-of-a-jwt)
-		- [3.2.1 - The Header](#321---the-header)
-		- [3.2.2 - The Payload (Claims)](#322---the-payload-claims)
-		- [3.2.3 - The Signature](#323---the-signature)
-	- [3.3 - Cryptographic Algorithms: Symmetric vs. Asymmetric](#33---cryptographic-algorithms-symmetric-vs-asymmetric)
-		- [3.3.1 - Symmetric Signing (HS256)](#331---symmetric-signing-hs256)
-		- [3.3.2 - Asymmetric Signing (RS256 / ES256)](#332---asymmetric-signing-rs256--es256)
-	- [3.4 - The Revocation Problem](#34---the-revocation-problem)
+  - [3.1 - The Concept of Self-Contained Identity](#31---the-concept-of-self-contained-identity)
+  - [3.2 - Anatomy of a JWT](#32---anatomy-of-a-jwt)
+    - [3.2.1 - The Header](#321---the-header)
+    - [3.2.2 - The Payload (Claims)](#322---the-payload-claims)
+    - [3.2.3 - The Signature](#323---the-signature)
+  - [3.3 - Cryptographic Algorithms: Symmetric vs. Asymmetric](#33---cryptographic-algorithms-symmetric-vs-asymmetric)
+    - [3.3.1 - Symmetric Signing (HS256)](#331---symmetric-signing-hs256)
+    - [3.3.2 - Asymmetric Signing (RS256 / ES256)](#332---asymmetric-signing-rs256--es256)
+  - [3.4 - The Revocation Problem](#34---the-revocation-problem)
 - [4 - Architectural Paradigms: Monoliths, SPAs, and Microservices](#4---architectural-paradigms-monoliths-spas-and-microservices)
-	- [4.1 - The Single Page Application (SPA) Dilemma](#41---the-single-page-application-spa-dilemma)
-		- [4.1.1 - LocalStorage vs. HttpOnly Cookies](#411---localstorage-vs-httponly-cookies)
-	- [4.2 - The Backend-For-Frontend (BFF) Pattern](#42---the-backend-for-frontend-bff-pattern)
+  - [4.1 - The Single Page Application (SPA) Dilemma](#41---the-single-page-application-spa-dilemma)
+    - [4.1.1 - LocalStorage vs. HttpOnly Cookies](#411---localstorage-vs-httponly-cookies)
+  - [4.2 - The Backend-For-Frontend (BFF) Pattern](#42---the-backend-for-frontend-bff-pattern)
 - [5 - Advanced Authorisation Protocols: OAuth 2.0 and OIDC](#5---advanced-authorisation-protocols-oauth-20-and-oidc)
-	- [5.1 - The Actors in OAuth 2.0](#51---the-actors-in-oauth-20)
-	- [5.2 - Critical Grant Types](#52---critical-grant-types)
-	- [5.3 - Token Introspection (RFC 7662)](#53---token-introspection-rfc-7662)
+  - [5.1 - The Actors in OAuth 2.0](#51---the-actors-in-oauth-20)
+  - [5.2 - Critical Grant Types](#52---critical-grant-types)
+  - [5.3 - Token Introspection (RFC 7662)](#53---token-introspection-rfc-7662)
 - [6 - Emerging Standards and Cryptographic Agility](#6---emerging-standards-and-cryptographic-agility)
-	- [6.1 - PASETO (Platform-Agnostic Security Tokens)](#61---paseto-platform-agnostic-security-tokens)
-	- [6.2 - Macaroons and Contextual Caveats](#62---macaroons-and-contextual-caveats)
-	- [6.3 - Sender-Constrained Tokens (DPoP)](#63---sender-constrained-tokens-dpop)
+  - [6.1 - PASETO (Platform-Agnostic Security Tokens)](#61---paseto-platform-agnostic-security-tokens)
+  - [6.2 - Macaroons and Contextual Caveats](#62---macaroons-and-contextual-caveats)
+  - [6.3 - Sender-Constrained Tokens (DPoP)](#63---sender-constrained-tokens-dpop)
 - [7 - Security Vectors and Mitigation Strategies](#7---security-vectors-and-mitigation-strategies)
-	- [7.1 - OWASP Top 10 Context](#71---owasp-top-10-context)
-		- [7.1.1 - Cross-Site Scripting (XSS)](#711---cross-site-scripting-xss)
-		- [7.1.2 - Cross-Site Request Forgery (CSRF)](#712---cross-site-request-forgery-csrf)
-	- [7.2 - Session Fixation](#72---session-fixation)
+  - [7.1 - OWASP Top 10 Context](#71---owasp-top-10-context)
+    - [7.1.1 - Cross-Site Scripting (XSS)](#711---cross-site-scripting-xss)
+    - [7.1.2 - Cross-Site Request Forgery (CSRF)](#712---cross-site-request-forgery-csrf)
+  - [7.2 - Session Fixation](#72---session-fixation)
 - [8 - Operationalising Authentication: Decision Frameworks](#8---operationalising-authentication-decision-frameworks)
-	- [8.1 - Comparison Matrix](#81---comparison-matrix)
-	- [8.2 - Architectural Recommendations](#82---architectural-recommendations)
-	- [8.3 - The Future: WebAuthn and Passkeys](#83---the-future-webauthn-and-passkeys)
+  - [8.1 - Comparison Matrix](#81---comparison-matrix)
+  - [8.2 - Architectural Recommendations](#82---architectural-recommendations)
+  - [8.3 - The Future: WebAuthn and Passkeys](#83---the-future-webauthn-and-passkeys)
 - [References](#references)
 
 
@@ -71,21 +71,24 @@ There are two primary schools of thought in managing this session state:
   * **Reference Tokens (Stateful):** The token held by the client is merely a random string (e.g., `sess_id=123`). It has no inherent meaning. The server holds the data associated with that ID in its memory or database. The token is a 'reference' to the state stored on the server.
   * **Value Tokens (Stateless):** The token held by the client contains the data itself (e.g., `{"user_id": 1, "role": "admin"}`). The server does not need to store this data; it only needs to verify that the token was issued by a trusted authority, usually via a cryptographic signature. The token is the 'value' of the state.
 
-<!-- end list -->
-
+**Reference Token Model**
 ```mermaid
 flowchart LR
-    subgraph Reference Token Model
-    C1[Client] -- "sess_id=123" --> S1[Server]
-    S1 -- "Lookup 123" --> DB[(Database/Memory)]
-    DB -- "{user: Alice}" --> S1
-    end
+  subgraph Reference Token Model
+  C1[Client] -- "sess_id=123" --> S1[Server]
+  S1 -- "Lookup 123" --> DB[(Database/Memory)]
+  DB -- "{user: Alice}" --> S1
+  end
+```
 
-    subgraph Value Token Model
-    C2[Client] -- "Token: {user: Bob, sig: xyz}" --> S2[Server]
-    S2 -- "Crypto Verify Sig" --> CPU[CPU Check]
-    CPU -- "Valid" --> S2
-    end
+**Value Token Model**
+```mermaid
+flowchart LR
+  subgraph Value Token Model
+  C2[Client] -- "Token: {user: Bob, sig: xyz}" --> S2[Server]
+  S2 -- "Crypto Verify Sig" --> CPU[CPU Check]
+  CPU -- "Valid" --> S2
+  end
 ```
 
 This distinction is the fulcrum upon which all modern authentication architectures balance. The choice determines how the application scales, how it handles mobile devices, and how it secures user data against attack vectors like Cross-Site Scripting (XSS) and Cross-Site Request Forgery (CSRF).

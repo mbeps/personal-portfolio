@@ -1,56 +1,56 @@
 - [1 - Introduction and Historical Genesis](#1---introduction-and-historical-genesis)
-	- [1.1 - The Alexandrian Lineage](#11---the-alexandrian-lineage)
-	- [1.2 - The Group of Four and Standardisation](#12---the-group-of-four-and-standardisation)
-	- [1.3 - The Evolution of Pattern Theory](#13---the-evolution-of-pattern-theory)
+  - [1.1 - The Alexandrian Lineage](#11---the-alexandrian-lineage)
+  - [1.2 - The Group of Four and Standardisation](#12---the-group-of-four-and-standardisation)
+  - [1.3 - The Evolution of Pattern Theory](#13---the-evolution-of-pattern-theory)
 - [2 - Theoretical Foundations and Design Principles](#2---theoretical-foundations-and-design-principles)
-	- [2.1 - The SOLID Principles](#21---the-solid-principles)
-		- [2.1.1 - Single Responsibility Principle (SRP)](#211---single-responsibility-principle-srp)
-		- [2.1.2 - Open/Closed Principle (OCP)](#212---openclosed-principle-ocp)
-		- [2.1.3 - Liskov Substitution Principle (LSP)](#213---liskov-substitution-principle-lsp)
-		- [2.1.4 - Interface Segregation Principle (ISP)](#214---interface-segregation-principle-isp)
-		- [2.1.5 - Dependency Inversion Principle (DIP)](#215---dependency-inversion-principle-dip)
-	- [2.2 - Coupling and Cohesion](#22---coupling-and-cohesion)
-	- [2.3 - The Taxonomy of Patterns](#23---the-taxonomy-of-patterns)
+  - [2.1 - The SOLID Principles](#21---the-solid-principles)
+    - [2.1.1 - Single Responsibility Principle (SRP)](#211---single-responsibility-principle-srp)
+    - [2.1.2 - Open/Closed Principle (OCP)](#212---openclosed-principle-ocp)
+    - [2.1.3 - Liskov Substitution Principle (LSP)](#213---liskov-substitution-principle-lsp)
+    - [2.1.4 - Interface Segregation Principle (ISP)](#214---interface-segregation-principle-isp)
+    - [2.1.5 - Dependency Inversion Principle (DIP)](#215---dependency-inversion-principle-dip)
+  - [2.2 - Coupling and Cohesion](#22---coupling-and-cohesion)
+  - [2.3 - The Taxonomy of Patterns](#23---the-taxonomy-of-patterns)
 - [3 - Creational Patterns: Mechanics and Memory](#3---creational-patterns-mechanics-and-memory)
-	- [3.1 - The Singleton Pattern](#31---the-singleton-pattern)
-		- [3.1.1 - Architectural Intent](#311---architectural-intent)
-		- [3.1.2 - TypeScript Implementation](#312---typescript-implementation)
-		- [3.1.3 - The "Anti-Pattern" Debate](#313---the-anti-pattern-debate)
-	- [3.2 - The Factory Method Pattern](#32---the-factory-method-pattern)
-		- [3.2.1 - Architectural Intent](#321---architectural-intent)
-		- [3.2.2 - TypeScript Implementation](#322---typescript-implementation)
-		- [3.2.3 - V8 Performance Implications](#323---v8-performance-implications)
+  - [3.1 - The Singleton Pattern](#31---the-singleton-pattern)
+    - [3.1.1 - Architectural Intent](#311---architectural-intent)
+    - [3.1.2 - TypeScript Implementation](#312---typescript-implementation)
+    - [3.1.3 - The "Anti-Pattern" Debate](#313---the-anti-pattern-debate)
+  - [3.2 - The Factory Method Pattern](#32---the-factory-method-pattern)
+    - [3.2.1 - Architectural Intent](#321---architectural-intent)
+    - [3.2.2 - TypeScript Implementation](#322---typescript-implementation)
+    - [3.2.3 - V8 Performance Implications](#323---v8-performance-implications)
 - [4 - Structural Patterns: Composition and Compatibility](#4---structural-patterns-composition-and-compatibility)
-	- [4.1 - The Adapter Pattern](#41---the-adapter-pattern)
-		- [4.1.1 - Architectural Mechanics](#411---architectural-mechanics)
-		- [4.1.2 - TypeScript Implementation](#412---typescript-implementation)
-	- [4.2 - The Decorator Pattern](#42---the-decorator-pattern)
-		- [4.2.1 - Architectural Mechanics](#421---architectural-mechanics)
-		- [4.2.2 - Functional and Metadata Decorators](#422---functional-and-metadata-decorators)
-		- [4.2.3 - Performance Costs](#423---performance-costs)
+  - [4.1 - The Adapter Pattern](#41---the-adapter-pattern)
+    - [4.1.1 - Architectural Mechanics](#411---architectural-mechanics)
+    - [4.1.2 - TypeScript Implementation](#412---typescript-implementation)
+  - [4.2 - The Decorator Pattern](#42---the-decorator-pattern)
+    - [4.2.1 - Architectural Mechanics](#421---architectural-mechanics)
+    - [4.2.2 - Functional and Metadata Decorators](#422---functional-and-metadata-decorators)
+    - [4.2.3 - Performance Costs](#423---performance-costs)
 - [5 - Behavioural Patterns: Communication and State](#5---behavioural-patterns-communication-and-state)
-	- [5.1 - The Observer Pattern](#51---the-observer-pattern)
-		- [5.1.1 - Architectural Mechanics](#511---architectural-mechanics)
-		- [5.1.2 - TypeScript Implementation](#512---typescript-implementation)
-		- [5.1.3 - Modern Context: React Hooks](#513---modern-context-react-hooks)
-		- [5.1.4 - Memory Leaks](#514---memory-leaks)
-	- [5.2 - The Strategy Pattern](#52---the-strategy-pattern)
-		- [5.2.1 - Architectural Mechanics](#521---architectural-mechanics)
-		- [5.2.2 - TypeScript Implementation](#522---typescript-implementation)
-		- [5.2.3 - Functional Equivalent](#523---functional-equivalent)
+  - [5.1 - The Observer Pattern](#51---the-observer-pattern)
+    - [5.1.1 - Architectural Mechanics](#511---architectural-mechanics)
+    - [5.1.2 - TypeScript Implementation](#512---typescript-implementation)
+    - [5.1.3 - Modern Context: React Hooks](#513---modern-context-react-hooks)
+    - [5.1.4 - Memory Leaks](#514---memory-leaks)
+  - [5.2 - The Strategy Pattern](#52---the-strategy-pattern)
+    - [5.2.1 - Architectural Mechanics](#521---architectural-mechanics)
+    - [5.2.2 - TypeScript Implementation](#522---typescript-implementation)
+    - [5.2.3 - Functional Equivalent](#523---functional-equivalent)
 - [6 - The Runtime Reality: V8 and Performance](#6---the-runtime-reality-v8-and-performance)
-	- [6.1 - Hidden Classes and Object Shapes](#61---hidden-classes-and-object-shapes)
-	- [6.2 - Garbage Collection and Object Lifecycles](#62---garbage-collection-and-object-lifecycles)
+  - [6.1 - Hidden Classes and Object Shapes](#61---hidden-classes-and-object-shapes)
+  - [6.2 - Garbage Collection and Object Lifecycles](#62---garbage-collection-and-object-lifecycles)
 - [7 - Paradigms in Conflict: OOP vs. Functional Programming](#7---paradigms-in-conflict-oop-vs-functional-programming)
-	- [7.1 - The "Missing Feature" Hypothesis](#71---the-missing-feature-hypothesis)
-	- [7.2 - Translation of Patterns](#72---translation-of-patterns)
-	- [7.3 - Immutability vs. State](#73---immutability-vs-state)
+  - [7.1 - The "Missing Feature" Hypothesis](#71---the-missing-feature-hypothesis)
+  - [7.2 - Translation of Patterns](#72---translation-of-patterns)
+  - [7.3 - Immutability vs. State](#73---immutability-vs-state)
 - [8 - Modern Framework Architectures](#8---modern-framework-architectures)
-	- [8.1 - NestJS: The Pattern Container](#81---nestjs-the-pattern-container)
-	- [8.2 - React: The Declarative Shift](#82---react-the-declarative-shift)
+  - [8.1 - NestJS: The Pattern Container](#81---nestjs-the-pattern-container)
+  - [8.2 - React: The Declarative Shift](#82---react-the-declarative-shift)
 - [9 - Academic Impact and Empirical Evidence](#9---academic-impact-and-empirical-evidence)
-	- [9.1 - Impact on Quality Metrics](#91---impact-on-quality-metrics)
-	- [9.2 - The Trade-off](#92---the-trade-off)
+  - [9.1 - Impact on Quality Metrics](#91---impact-on-quality-metrics)
+  - [9.2 - The Trade-off](#92---the-trade-off)
 - [10 - Conclusion](#10---conclusion)
 - [References](#references)
 
@@ -637,11 +637,21 @@ Ultimately, the successful application of design patterns requires a nuanced und
 
 # References
 
-* Alexander, C., Ishikawa, S., & Silverstein, M. (1977). *A Pattern Language: Towns, Buildings, Construction*. Oxford University Press. (Foundational text on pattern theory).
-* Gamma, E., Helm, R., Johnson, R., & Vlissides, J. (1994). *Design Patterns: Elements of Reusable Object-Oriented Software*. Addison-Wesley. (The "Group of Four" definitive catalog).
-* Martin, R. C. (2000). *Design Principles and Design Patterns*. (Seminal paper defining the SOLID principles).
-* Wedyan, F., & Abufakher, S. (2020). "Impact of design patterns on software quality: a systematic literature review". *IET Software*. (Empirical analysis of pattern efficacy).
-* Norvig, P. (1996). *Design Patterns in Dynamic Languages*. (Critical analysis of patterns in functional/dynamic contexts).
-* Gong, J., et al. (2015). *Performance issues and optimizations in JavaScript: an empirical study*. (Research on V8 engine performance and optimization patterns).
-* Clifford, D. (2012). *Breaking the JavaScript Speed Limit with V8*. Google I/O. (Technical breakdown of hidden classes).
-* Beck, K., & Cunningham, W. (1987). *Using Pattern Languages for Object-Oriented Programs*. OOPSLA '87. (First adaptation of Alexander's work to software).
+Beck, K., & Cunningham, W. (1987). [Using pattern languages for object-oriented programs](http://c2.com/doc/oopsla87.html). *OOPSLA ’87 Workshop on Specification and Design for Object-Oriented Programming*. ([c2.com][1])
+
+Martin, R. C. (2000). [Design principles and design patterns](https://staff.cs.utu.fi/~jounsmed/doos_06/material/DesignPrinciplesAndPatterns.pdf). Technical report, Object Mentor. ([staff.cs.utu.fi][2])
+
+Wedyan, F., & Abufakher, S. (2020). [Impact of design patterns on software quality: a systematic literature review](https://digital-library.theiet.org/content/journals/10.1049/iet-sen.2018.5446). *IET Software, 14*(1), 1–17. [https://doi.org/10.1049/iet-sen.2018.5446](https://doi.org/10.1049/iet-sen.2018.5446) ([IET Research Journals][3])
+
+Norvig, P. (1998). [Design patterns in dynamic languages](https://www.norvig.com/design-patterns/design-patterns.pdf). Tutorial paper, Object World Conference. ([norvig.com][4])
+
+Selakovic, M., & Pradel, M. (2016). [Performance issues and optimizations in JavaScript: An empirical study](https://dl.acm.org/doi/10.1145/2884781.2884829). In *Proceedings of the 38th International Conference on Software Engineering (ICSE ’16)* (pp. 61–72). ACM. [https://doi.org/10.1145/2884781.2884829](https://doi.org/10.1145/2884781.2884829) ([software-lab.org][5])
+
+Schuler, D., & Zimmermann, T. (2008). [Mining usage expertise from version archives](https://www.researchgate.net/publication/221355251_Mining_usage_expertise_from_version_archives). In *Proceedings of the 5th International Working Conference on Mining Software Repositories (MSR ’08)* (pp. 121–124). IEEE. ([ResearchGate][6])
+
+[1]: https://c2.com/doc/oopsla87.html?utm_source=chatgpt.com "Using Pattern Languages for Object-Oriented Programs"
+[2]: https://staff.cs.utu.fi/~jounsmed/doos_06/material/DesignPrinciplesAndPatterns.pdf?utm_source=chatgpt.com "Design Principles and Design Patterns"
+[3]: https://ietresearch.onlinelibrary.wiley.com/doi/10.1049/iet-sen.2018.5446?utm_source=chatgpt.com "Impact of design patterns on software quality: a systematic ..."
+[4]: https://www.norvig.com/design-patterns/design-patterns.pdf?utm_source=chatgpt.com "Design Patterns in Dynamic Programming"
+[5]: https://software-lab.org/publications/icse2016-perf.pdf?utm_source=chatgpt.com "Performance Issues and Optimizations in JavaScript"
+[6]: https://www.researchgate.net/publication/284812530_What_Recommendation_Systems_for_Software_Engineering_Recommend_A_Systematic_Literature_Review?utm_source=chatgpt.com "What Recommendation Systems for Software Engineering ..."

@@ -120,7 +120,42 @@ The LoRA architecture is implemented by injecting the trainable matrices $A$ and
 
 **The LoRA Block Architecture**
 
-![alt text]({BASE}/image-3.png)
+```mermaid
+graph TD
+    %% Define Styles
+    classDef default fill:#fff,stroke:#2d3436,stroke-width:2px,color:#000;
+    classDef frozen fill:#f1f3f4,stroke:#636e72,stroke-width:2px,stroke-dasharray: 6 6;
+    classDef red fill:#fce8e6,stroke:#c0392b,stroke-width:2px;
+    classDef blue fill:#e8f0fe,stroke:#2980b9,stroke-width:2px;
+    classDef circle fill:#fff,stroke:#2d3436,stroke-width:2px;
+
+    %% Nodes
+    Input[Input x]
+    
+    %% Left Branch (Frozen)
+    W0["Pre-trained<br><b>W₀</b><br>(Frozen)"]:::frozen
+    
+    %% Right Branch (Trainable LoRA)
+    A["<b>A (r × k)</b>"]:::red
+    B["<b>B (d × r)</b>"]:::blue
+    Scale["Scale (α/r)"]
+
+    %% Operation
+    Sum(("<b>+</b>")):::circle
+    Output[Output h]
+
+    %% Connections
+    Input --> W0
+    Input --> A
+    
+    A --> B
+    B --> Scale
+    
+    W0 --> Sum
+    Scale --> Sum
+    
+    Sum --> Output
+```
 
 > The LoRA Block Architecture. The input flows through both the frozen weights and the low-rank adaptation path before being summed.
 
@@ -186,7 +221,63 @@ $$h \leftarrow h + f(h W_{down}) W_{up}$$
 
 Prefix Tuning (Li & Liang, 2021) takes a different approach inspired by prompting. Instead of modifying weights, it optimises a sequence of continuous task-specific vectors (virtual tokens).
 
-![alt text]({BASE}/image-4.png)
+**Adapter Layers**
+```mermaid
+graph TD
+    %% Define Styles
+    classDef default fill:#fff,stroke:#2d3436,stroke-width:2px;
+    classDef adapter fill:#fce8e6,stroke:#a61c00,stroke-width:2px,color:#5a1000,font-weight:bold;
+    classDef plainText fill:none,stroke:none,color:#636e72,font-size:14px;
+
+    %% Nodes
+    T[Transformer Layer]
+    A[Adapter Block]:::adapter
+    F[Feed Forward]
+    
+    %% The text is the final node
+    Output[Output delayed by extra steps]:::plainText
+
+    %% Connections
+    T --> A
+    A --> F
+    F --> Output
+```
+
+**Prefix Tuning**
+```mermaid
+graph TD
+    %% Define Styles
+    classDef prefix fill:#e8f0fe,stroke:#1967d2,stroke-width:2px,color:#0d47a1,font-weight:bold;
+    classDef default fill:#fff,stroke:#2d3436,stroke-width:2px;
+    classDef attention fill:#f1f3f4,stroke-width:2px;
+    classDef plainText fill:none,stroke:none,color:#636e72,font-size:14px;
+
+    %% Top Section with Visible Labels
+    subgraph S1 [Trainable]
+        direction TB
+        P[Prefix]:::prefix
+    end
+
+    subgraph S2 [Fixed]
+        direction TB
+        O[Original Input Tokens]
+    end
+
+    %% Bottom Section
+    TA[Transformer Attention]:::attention
+    Note[Prefix occupies useful <br>context window]:::plainText
+
+    %% Connections
+    P --> TA
+    O --> TA
+    
+    %% invisible link to position the note below
+    TA ~~~ Note
+
+    %% Style the subgraphs to show the text but hide the box border
+    style S1 fill:none,stroke:none,color:#636e72
+    style S2 fill:none,stroke:none,color:#636e72
+```
 
 > Structural Comparison of Alternative PEFT Methods. (Left) Adapter layers insert sequential computational steps, increasing latency. (Right) Prefix tuning prepends trainable vectors, reducing the available context window for user input.
 
