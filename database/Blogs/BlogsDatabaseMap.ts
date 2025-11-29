@@ -263,6 +263,19 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.ArtificialIntelligence,
     ],
   },
+  [BlogDatabaseKeys.DocumentDatabases]: {
+    name: "Document Dabases Theory and Applications",
+    subtitle:
+      "A theoretical overview of document databases, their architecture, and use cases in modern applications such as content management systems and web applications.",
+    category: BlogCategoriesEnum.Databases,
+    skills: [
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.MongoDB,
+      SkillDatabaseKeys.Firebase,
+      SkillDatabaseKeys.Redis,
+    ],
+  },
   [BlogDatabaseKeys.ORM]: {
     name: "Understanding Object-Relational Mapping (ORM)",
     subtitle:

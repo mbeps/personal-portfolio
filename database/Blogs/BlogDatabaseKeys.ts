@@ -24,6 +24,8 @@ enum BlogDatabaseKeys {
   DatabaseNormalisation = "database-normalisation",
   VectorDatabases = "vector-databases",
   GraphDatabases = "graph-databases",
+  DocumentDatabases = "document-databases",
+  TimeSeriesDatabases = "time-series-databases",
   SyncAsync = "sync-vs-async",
   ApiComparison = "api-comparison",
   DesignPatterns = "design-patterns",
