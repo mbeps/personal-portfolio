@@ -1,32 +1,35 @@
-### Education
+I am a Software Engineer with a passion for building robust applications and exploring intelligent systems. I am currently based in London. My career blends active professional software development with advanced academic research. I am currently working as a Software Engineer at Commerzbank. I also hold a Master of Science in Artificial Intelligence from King's College London and an Undergraduate degree in Computer Science from Royal Holloway University of London. 
 
-I completed my Bachelor's degree in Computer Science at Royal Holloway University of London, graduating with First Class Honours. Following that, I earned a Master's in Artificial Intelligence from King's College London, graduating with Distinction. Both universities are well respected.
+### Professional Experience
 
-### Technical Knowledge
+At Commerzbank, I operate within the engineering sector, specialising in building microservices, automations, and full-stack applications. I developed scalable microservices using Spring Boot that serve as the backbone for various Symphony bots and frontend applications. My work includes delivering responsive user interfaces using Next.js, React, and TypeScript. Notably, I built the Application Status dashboard, which has been highly successful and is widely used across the bank to monitor application health, solving a critical problem where no easy monitoring solution previously existed. Additionally, I developed the Rates App, which enables front-office users to instantly access interest rate data sourced from Bloomberg and Refinitiv.
 
-I am proficient in Python, Java, JavaScript, and TypeScript, with exposure to various other languages and programming paradigms.
+My role extends significantly into infrastructure and DevOps. I successfully containerised the Symphony infrastructure using Docker, which made it far easier to maintain on-premise components and significantly enhanced monitoring capabilities. To ensure reliability, I designed fault-tolerant system architectures that maintain high uptime. I further optimised development workflows by implementing automated CI/CD pipelines using TeamCity and SonarQube, drastically reducing deployment times.
 
-My technical skills cover both theoretical foundations and practical development. I have a strong Maths background, including calculus, algebra, linear algebra, logic, statistics, and mechanics - all crucial for Artificial Intelligence and Machine Learning work.
+On the security front, I implemented robust role-based access control using LDAP and Entra-based SSO to ensure secure authentication without compromising user experience. Beyond technical deliverables, I actively mentor interns, accelerating their onboarding process through structured guidance.
 
-I apply software engineering best practices like testing, design patterns, and DevOps principles in my work. I am experienced with both SQL and NoSQL databases, including database normalisation and working with different ORMs. For backend development, I mainly use Spring Boot and Flask, though I've also worked with Django, FastAPI, and Express.js. I've built projects using managed solutions like Firebase and Supabase too. On the full-stack side, I work extensively with Next.js for building modern web applications.
+A defining achievement in my professional career has been the strategic migration of legacy systems. I successfully re-engineered a suite of automations, including the Symphony Translate Bot, Blog Bot, and RSS Bot. I transitioned these tools from an outdated codebase laden with technical debt to a modern, modular architecture. This transformation significantly reduced development time for new bots and delivered immediate cost savings through in-house implementation. By leveraging current Java and Spring Boot standards, I eliminated security vulnerabilities and drastically improved code readability, resulting in solutions that are faster, more reliable, and significantly easier to maintain.
 
-### Projects
+### Academic Foundation
 
-My project experience spans full-stack development, AI, and backend software engineering. These include personal projects, academic assignments and professional projects.
+My academic journey began at Royal Holloway, University of London where I graduated with First Class Honours in Computer Science. This undergraduate programme provided me with a comprehensive understanding of software design, algorithms, and system architecture. I worked on varied modules ranging from Object Oriented Programming to Information Security. My final year project focused on full-stack web development, where I built a social media platform.
 
-#### Full-Stack Web Apps
-I've built several web applications using modern technologies like TypeScript, Next.js, and React.js. Circus Discussions, my undergraduate final project, is a social media platform built with Firebase that enables community-driven discussions, user communities, and commenting features. Magician AI is a SaaS platform I developed that combines various AI APIs, authentication and payment processing for subscriptions, enabling users to generate various media types and have conversations.
+I deepened my expertise through my MSc at King's College London, where I achieved a Distinction. My studies focused on advanced concepts such as Deep Learning, Reinforcement Learning, and Agent-Based Systems. My individual research project investigated "Alignment in Large Language Models". I specifically looked into hybrid-reasoning models and novel training techniques to solve forgetting issues in supervised fine-tuning.
 
-#### Artificial Intelligence & Machine Learning
-In the AI and ML space, I've worked on several projects using Scikit-learn, TensorFlow, and PyTorch. I developed classification models for Adult Income Prediction and regression models for House Price Prediction based on coastal distance. Both projects emphasised feature engineering, data preprocessing, and model optimisation. My Reinforcement Learning Lab explores various algorithms including Q-Learning, Deep Q-Learning, and A3C. The Machine Learning & Data Science Lab focuses on generative models, third-party models, and advanced techniques like transfer learning, LLM Agents, and Generative Models. 
+### Machine Learning & Artificial Intelligence
 
-My Master's dissertation investigated alignment and misalignment in Large Language Models (LLMs), focusing on hybrid-reasoning models. I developed a novel fine-tuning technique built on Parameter Efficient Fine-Tuning (LoRA). This approach successfully trained the models while preserving their core reasoning abilities, a capability that my research showed was lost when using standard supervised fine-tuning methods.
+Beyond standard software engineering, I have a deep technical specialisation in Artificial Intelligence and Data Science, underscored by my Master's degree with Distinction in AI. My expertise spans the entire machine learning lifecycle, from theoretical research to practical implementation. I have developed sophisticated models using Python frameworks like PyTorch, TensorFlow, and Scikit-Learn, tackling complex problems such as handwritten digit classification with CNNs and creating custom Q-Learning agents.
 
-#### Backend Services
-Professionally, I've contributed to enterprise-level software development, creating proprietary projects using Java and Spring Boot to build microservices. These projects involved working with different databases like MongoDB and PostgreSQL.
+My research on Large Language Models (LLMs) has led to the development of novel hybrid training techniques that address catastrophic forgetting in reasoning models. I actively document my findings in detailed technical blogs, dissecting advanced topics like Quantisation, Transformer architecture, Low-Rank Adaptation (LoRA), and Retrieval Augmented Generation (RAG). Furthermore, I hold multiple certifications in machine learning and deep learning, validating my ability to apply state-of-the-art algorithms (from neural networks to reinforcement learning) to solve real-world challenges.
 
-### Experience
+### Full-Stack Development
 
-I currently work as a backend software engineer at Commerzbank, primarily developing with Spring Boot and Java to build micro-services and Symphony bots. My role involves database management, where I choose between MongoDB and PostgreSQL based on project requirements. When working with PostgreSQL, I ensure proper database normalisation. I collaborate closely with the operations team on infrastructure and deployments, maintain CICD pipelines using TeamCity, and containerise our micro-services using Docker.
+I possess a strong background in web development. I am proficient in modern languages including TypeScript, JavaScript, Python and Java. My preferred tech stack often involves Next.js and React for creating responsive user interfaces. For back-end services, I rely on robust frameworks like Spring Boot and Flask. I have applied these skills to build critical internal tools for the bank, as well as in personal projects like a car dealership platform and real-time messaging applications.
 
-During my time at RHUL x Google Developers Club, I worked on various team projects including Noodle. We used project management tools like Trello and implemented CICD pipelines to track and organize our work effectively. I'm also active in the open-source community, contributing to projects like the GNOME shell.
+### Community & Open Source
+
+I actively contribute to the wider developer community. I have developed open-source extensions for the Gnome desktop environment to improve user productivity. Previously, I served as a Software Engineer for the Google Developer Student Club at Royal Holloway. In this role, I collaborated with peers to build an open-source learning platform. These experiences have refined my ability to work effectively in collaborative team environments.
+
+### Continuous Growth
+
+I am committed to continuous professional development. I hold certifications in Symphony Bot Development and various machine learning specialisations. My portfolio includes a diverse range of projects. I constantly seek to expand my knowledge base and apply my skills to solve challenging real-world problems.
