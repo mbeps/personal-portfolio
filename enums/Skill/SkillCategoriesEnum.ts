@@ -12,7 +12,6 @@ enum SkillCategoriesEnum {
   Testing = "Testing",
   ProgrammingLanguages = "Programming Languages",
   CloudComputing = "Cloud Computing",
-  CommunicationProtocolsLibraries = "Communication Protocols & Libraries",
   GameDevelopment = "Game Development",
   Mathematics = "Mathematics",
   SoftSkills = "Soft Skills",

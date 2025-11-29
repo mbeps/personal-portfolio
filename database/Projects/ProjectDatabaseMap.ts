@@ -1188,43 +1188,6 @@ const projectMap: Database<ProjectInterface> = {
     ],
     type: ProjectTypeEnum.Professional,
   },
-  [ProjectDatabaseKeys.SymphonyMessageMLBot]: {
-    name: `Symphony MessageML Bot`,
-    description: `
-      A Symphony bot for sending messages in Symphony using MessageML.
-      This allows the bot to send messages with more formatting and interactivity similar to HTML.
-      `,
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.HTML,
-      SkillDatabaseKeys.CSS,
-      SkillDatabaseKeys.JUnit,
-      SkillDatabaseKeys.Mockito,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.GCP,
-      SkillDatabaseKeys.Docker,
-
-      SkillDatabaseKeys.ProblemSolving,
-      SkillDatabaseKeys.ProjectManagement,
-      SkillDatabaseKeys.CriticalThinking,
-      SkillDatabaseKeys.Creativity,
-      SkillDatabaseKeys.Adaptability,
-      SkillDatabaseKeys.Communication,
-      SkillDatabaseKeys.Teamwork,
-      SkillDatabaseKeys.TimeManagement,
-      SkillDatabaseKeys.QualityManagement,
-    ],
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-      ProjectDatabaseKeys.MarkdownToMessageMLConverter,
-    ],
-    archived: true,
-    type: ProjectTypeEnum.Professional,
-  },
   [ProjectDatabaseKeys.SymphonyPollBot]: {
     name: `Symphony Poll Bot`,
     description: `
@@ -1713,8 +1676,6 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
     relatedMaterials: [
       ProjectDatabaseKeys.SymphonyCobaGPTBot,
-      ProjectDatabaseKeys.SymphonyMessageMLBot,
-
       RoleDatabaseKeys.CommerzbankDevOpsEngineer,
     ],
   },

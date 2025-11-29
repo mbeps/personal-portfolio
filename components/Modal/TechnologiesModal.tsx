@@ -84,7 +84,6 @@ const TechnologiesModal: React.FC = () => {
   const ignoredCategories: SkillCategoriesEnum[] = [
     SkillCategoriesEnum.CloudComputing,
     SkillCategoriesEnum.Testing,
-    SkillCategoriesEnum.CommunicationProtocolsLibraries,
     ...(groupedBy !== "language"
       ? [SkillCategoriesEnum.ProgrammingLanguages]
       : []),
