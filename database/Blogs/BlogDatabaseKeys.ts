@@ -14,6 +14,7 @@ enum BlogDatabaseKeys {
   Quantisation = "quantisation",
   ModelContextProtocol = "model-context-protocol",
   RitrievalAugmentedGeneration = "retrieval-augmented-generation",
+  ReasoningModels = "reasoning-models",
   HiddenMarkovModelsInAI = "hidden-markov-models-in-ai",
   Backend = "backend",
   ORM = "orm",
