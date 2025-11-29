@@ -161,6 +161,22 @@ const blogsMap: Database<BlogInterface> = {
     ],
     relatedMaterials: [BlogDatabaseKeys.Transformer],
   },
+  [BlogDatabaseKeys.ReasoningModels]: {
+    name: "Reasoning Large Language Models (LLMs)",
+    subtitle:
+      "An overview of LLM reasoning evolution, covering Chain-of-Thought prompting, reinforcement learning paradigms, and dedicated inference architectures like DeepSeek and Gemini.",
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.Transformers,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+    ],
+    relatedMaterials: [BlogDatabaseKeys.Transformer],
+  },
   [BlogDatabaseKeys.HiddenMarkovModelsInAI]: {
     name: "Hidden Markov Models (HMMs) in AI",
     subtitle:
