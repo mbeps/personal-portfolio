@@ -288,6 +288,17 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.Redis,
     ],
   },
+  [BlogDatabaseKeys.TimeSeriesDatabases]: {
+    name: "Time Series Dabases Theory and Applications",
+    subtitle:
+      "A theoretical overview of time series databases, their architecture, and use cases in modern applications such as IoT and financial data analysis.",
+    category: BlogCategoriesEnum.Databases,
+    skills: [
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.ArtificialIntelligence,
+    ],
+  },
   [BlogDatabaseKeys.ORM]: {
     name: "Understanding Object-Relational Mapping (ORM)",
     subtitle:
