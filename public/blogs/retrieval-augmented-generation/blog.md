@@ -1,40 +1,40 @@
 - [1 - Introduction: The Parametric Memory Bottleneck and the Rise of Non-Parametric Intelligence](#1---introduction-the-parametric-memory-bottleneck-and-the-rise-of-non-parametric-intelligence)
 - [2 - Theoretical Framework and Mathematical Formulation](#2---theoretical-framework-and-mathematical-formulation)
-	- [2.1 - The Generative Probability Model](#21---the-generative-probability-model)
-	- [2.2 - Dense Passage Retrieval (DPR) and Bi-Encoder Mathematics](#22---dense-passage-retrieval-dpr-and-bi-encoder-mathematics)
-		- [2.2.1 - Training Objective: Contrastive Loss with In-Batch Negatives](#221---training-objective-contrastive-loss-with-in-batch-negatives)
-	- [2.3 - Cross-Encoder Theory and Re-ranking](#23---cross-encoder-theory-and-re-ranking)
-	- [2.4 - Probability Density and RAG](#24---probability-density-and-rag)
+  - [2.1 - The Generative Probability Model](#21---the-generative-probability-model)
+  - [2.2 - Dense Passage Retrieval (DPR) and Bi-Encoder Mathematics](#22---dense-passage-retrieval-dpr-and-bi-encoder-mathematics)
+    - [2.2.1 - Training Objective: Contrastive Loss with In-Batch Negatives](#221---training-objective-contrastive-loss-with-in-batch-negatives)
+  - [2.3 - Cross-Encoder Theory and Re-ranking](#23---cross-encoder-theory-and-re-ranking)
+  - [2.4 - Probability Density and RAG](#24---probability-density-and-rag)
 - [3 - The Retrieval Subsystem: Vector Databases and Indexing Mechanics](#3---the-retrieval-subsystem-vector-databases-and-indexing-mechanics)
-	- [3.1 - The Curse of Dimensionality and Approximate Nearest Neighbors](#31---the-curse-of-dimensionality-and-approximate-nearest-neighbors)
-	- [3.2 - Hierarchical Navigable Small World (HNSW)](#32---hierarchical-navigable-small-world-hnsw)
-		- [3.2.1 - Graph Structure and Traversal](#321---graph-structure-and-traversal)
-		- [3.2.2 - Algorithmic Parameters and Complexity](#322---algorithmic-parameters-and-complexity)
-	- [3.3 - Semantic Chunking Algorithms](#33---semantic-chunking-algorithms)
-	- [3.4 - The Embedding Model Mismatch Risk](#34---the-embedding-model-mismatch-risk)
+  - [3.1 - The Curse of Dimensionality and Approximate Nearest Neighbors](#31---the-curse-of-dimensionality-and-approximate-nearest-neighbors)
+  - [3.2 - Hierarchical Navigable Small World (HNSW)](#32---hierarchical-navigable-small-world-hnsw)
+    - [3.2.1 - Graph Structure and Traversal](#321---graph-structure-and-traversal)
+    - [3.2.2 - Algorithmic Parameters and Complexity](#322---algorithmic-parameters-and-complexity)
+  - [3.3 - Semantic Chunking Algorithms](#33---semantic-chunking-algorithms)
+  - [3.4 - The Embedding Model Mismatch Risk](#34---the-embedding-model-mismatch-risk)
 - [4 - Architectural Paradigms: From Naive to Modular RAG](#4---architectural-paradigms-from-naive-to-modular-rag)
-	- [4.1 - Naive RAG](#41---naive-rag)
-	- [4.2 - Advanced RAG](#42---advanced-rag)
-		- [4.2.1 - Pre-Retrieval: Query Transformation](#421---pre-retrieval-query-transformation)
-		- [4.2.2 - Post-Retrieval: Fusion and Re-ranking](#422---post-retrieval-fusion-and-re-ranking)
-	- [4.3 - Modular RAG](#43---modular-rag)
+  - [4.1 - Naive RAG](#41---naive-rag)
+  - [4.2 - Advanced RAG](#42---advanced-rag)
+    - [4.2.1 - Pre-Retrieval: Query Transformation](#421---pre-retrieval-query-transformation)
+    - [4.2.2 - Post-Retrieval: Fusion and Re-ranking](#422---post-retrieval-fusion-and-re-ranking)
+  - [4.3 - Modular RAG](#43---modular-rag)
 - [5 - Agentic Workflows and Self-Correcting RAG](#5---agentic-workflows-and-self-correcting-rag)
-	- [5.1 - The ReAct Agent Paradigm](#51---the-react-agent-paradigm)
-	- [5.2 - Self-RAG: Learning to Critique](#52---self-rag-learning-to-critique)
-	- [5.3 - Corrective RAG (CRAG)](#53---corrective-rag-crag)
+  - [5.1 - The ReAct Agent Paradigm](#51---the-react-agent-paradigm)
+  - [5.2 - Self-RAG: Learning to Critique](#52---self-rag-learning-to-critique)
+  - [5.3 - Corrective RAG (CRAG)](#53---corrective-rag-crag)
 - [6 - Structured Knowledge: The GraphRAG Revolution](#6---structured-knowledge-the-graphrag-revolution)
-	- [6.1 - Graph Construction and Community Detection](#61---graph-construction-and-community-detection)
-	- [6.2 - Query Processing: Global vs. Local Search](#62---query-processing-global-vs-local-search)
-	- [6.3 - Comparison: Vector RAG vs. GraphRAG](#63---comparison-vector-rag-vs-graphrag)
+  - [6.1 - Graph Construction and Community Detection](#61---graph-construction-and-community-detection)
+  - [6.2 - Query Processing: Global vs. Local Search](#62---query-processing-global-vs-local-search)
+  - [6.3 - Comparison: Vector RAG vs. GraphRAG](#63---comparison-vector-rag-vs-graphrag)
 - [7 - System Interoperability: The Model Context Protocol (MCP)](#7---system-interoperability-the-model-context-protocol-mcp)
-	- [7.1 - Architecture and Relationship to RAG](#71---architecture-and-relationship-to-rag)
-	- [7.2 - Advantages of MCP Standardisation](#72---advantages-of-mcp-standardisation)
+  - [7.1 - Architecture and Relationship to RAG](#71---architecture-and-relationship-to-rag)
+  - [7.2 - Advantages of MCP Standardisation](#72---advantages-of-mcp-standardisation)
 - [8 - Strategic Trade-offs: RAG vs. Fine-Tuning vs. Long Context](#8---strategic-trade-offs-rag-vs-fine-tuning-vs-long-context)
-	- [8.1 - Fine-Tuning](#81---fine-tuning)
-	- [8.2 - Long Context Windows](#82---long-context-windows)
-	- [8.3 - The Hybrid Future](#83---the-hybrid-future)
+  - [8.1 - Fine-Tuning](#81---fine-tuning)
+  - [8.2 - Long Context Windows](#82---long-context-windows)
+  - [8.3 - The Hybrid Future](#83---the-hybrid-future)
 - [9 - Conclusion](#9---conclusion)
-	- [References](#references)
+  - [References](#references)
 
 
 # 1 - Introduction: The Parametric Memory Bottleneck and the Rise of Non-Parametric Intelligence
@@ -48,7 +48,26 @@ Parametric memory refers to the knowledge stored within the synaptic weights (pa
 
 Retrieval Augmented Generation (RAG) represents a paradigm shift designed to transcend these limitations by decoupling the reasoning engine (the LLM) from the knowledge base. Rather than forcing the model to memorise the entire corpus within its weights, RAG introduces a non-parametric memory component (typically a dense vector index) that the model can query dynamically at inference time. This hybrid architecture enables the generative model to access vast, up-to-date, and proprietary datasets without the prohibitive cost of continuous pre-training.
 
-![alt text]({BASE}/image-1.png)
+```mermaid
+graph LR
+    %% Nodes
+    UQ[User Query]
+    VDB[(Vector Database)]
+    Ret(Retriever)
+    LLM{LLM Generator}
+    Resp[Grounded Response]
+
+    %% Connections
+    UQ --> Ret
+    UQ --> VDB
+    VDB --> Ret
+    Ret -- Relevant Context --> LLM
+    UQ --> LLM
+    LLM --> Resp
+
+    %% Styling for the dashed border of the database
+    style VDB stroke-dasharray: 5 5
+```
 
 > High-level architectural decoupling in RAG systems.
 
@@ -119,7 +138,50 @@ This sequence allows the Transformer's self-attention mechanism to attend to eve
 
 $$s(q, d) = \sigma(W \cdot \text{Transformer}(\text{concat}(q, d)))$$
 
-![alt text]({BASE}/image-2.png)
+**Cross-Encoder (Re-Ranking)**
+```mermaid
+graph TD
+    subgraph "Cross-Encoder"
+        Input["Query + Doc"]
+        BERT[BERT]
+        CLS["CLS Token"]
+        Linear["Linear Layer"]
+        Score[Score]
+
+        Input --> BERT
+        BERT --> CLS
+        CLS --> Linear
+        Linear --> Score
+    end
+```
+
+**Bi-Encoder (Retrieval)**
+```mermaid
+graph TD
+    subgraph "Bi-Encoder"
+        %% Left Branch
+        Q[Query]
+        BERT_Q[BERT]
+        Vec_Q[Vector]
+
+        %% Right Branch
+        Doc[Doc]
+        BERT_D[BERT]
+        Vec_D[Vector]
+
+        %% Merge
+        DotProd((Dot Product))
+        FinalScore[Score]
+
+        %% Connections
+        Q --> BERT_Q --> Vec_Q
+        Doc --> BERT_D --> Vec_D
+
+        Vec_Q --> DotProd
+        Vec_D --> DotProd
+        DotProd --> FinalScore
+    end
+```
 
 > Architectural difference between Bi-Encoders ($O(1)$ inference) and Cross-Encoders $(O(N^{2	})$ attention).
 
@@ -242,7 +304,25 @@ The integration of RAG with Agentic AI represents the frontier of current resear
 
 The ReAct (Reason + Act) framework is the foundational pattern for agentic RAG. Instead of a single inference pass, the model operates in a continuous loop: Thought $\rightarrow$ Action $\rightarrow$ Observation.
 
-![alt text]({BASE}/image-3.png)
+```mermaid
+stateDiagram-v2
+    direction LR
+
+    %% Define States
+    state "Thought" as T
+    state "Action (Tool Call)" as A
+    state "Observation (Result)" as O
+
+    %% Transitions
+    [*] --> T
+    
+    T --> A
+    A --> O : Execute Tool
+    
+    O --> T : Loop if needed
+    
+    T --> [*] : Final Answer
+```
 
 > The ReAct Loop allows the model to "think" before fetching data.
 
@@ -336,7 +416,22 @@ MCP defines a standardised "Client-Host-Server" architecture:
   * **MCP Client:** The connector within the Host that speaks the protocol.
   * **MCP Server:** The provider of context or capabilities.
 
-![alt text]({BASE}/image-4.png)
+```mermaid
+graph LR
+    %% Nodes
+    %% Added quotes around the label to fix the parsing error
+    Host["AI App (Host)"]
+    Client{MCP Client}
+    Vector[Vector DB Server]
+    SQL[SQL Server]
+    Tool[Tool Server]
+
+    %% Connections
+    Host <--> Client
+    Client <--> Vector
+    Client <--> SQL
+    Client <--> Tool
+```
 
 > MCP Topology allowing standardized connections to RAG Knowledge Servers.
 

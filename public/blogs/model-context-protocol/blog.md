@@ -1,31 +1,31 @@
 - [1 - Introduction: The Fragmentation of Intelligent Systems](#1---introduction-the-fragmentation-of-intelligent-systems)
-	- [1.1 - The Theoretical Imperative: Complexity Reduction](#11---the-theoretical-imperative-complexity-reduction)
-	- [1.2 - The Topology of the Context Ecosystem](#12---the-topology-of-the-context-ecosystem)
+  - [1.1 - The Theoretical Imperative: Complexity Reduction](#11---the-theoretical-imperative-complexity-reduction)
+  - [1.2 - The Topology of the Context Ecosystem](#12---the-topology-of-the-context-ecosystem)
 - [2 - Architectural Foundations and Transport Layers](#2---architectural-foundations-and-transport-layers)
-	- [2.1 - JSON-RPC 2.0 Message Structure](#21---json-rpc-20-message-structure)
-	- [2.2 - Transport Mechanisms: Stdio vs. SSE](#22---transport-mechanisms-stdio-vs-sse)
-		- [2.2.1 - Stdio Transport (Local Process Communication)](#221---stdio-transport-local-process-communication)
-		- [2.2.2 - Server-Sent Events (SSE) / Streamable HTTP (Remote Communication)](#222---server-sent-events-sse--streamable-http-remote-communication)
-	- [2.3 - The Connection Lifecycle and State Machine](#23---the-connection-lifecycle-and-state-machine)
+  - [2.1 - JSON-RPC 2.0 Message Structure](#21---json-rpc-20-message-structure)
+  - [2.2 - Transport Mechanisms: Stdio vs. SSE](#22---transport-mechanisms-stdio-vs-sse)
+    - [2.2.1 - Stdio Transport (Local Process Communication)](#221---stdio-transport-local-process-communication)
+    - [2.2.2 - Server-Sent Events (SSE) / Streamable HTTP (Remote Communication)](#222---server-sent-events-sse--streamable-http-remote-communication)
+  - [2.3 - The Connection Lifecycle and State Machine](#23---the-connection-lifecycle-and-state-machine)
 - [3 - Core Primitives](#3---core-primitives)
-	- [3.1 - Resources](#31---resources)
-	- [3.2 - Prompts](#32---prompts)
-	- [3.3 - Tools](#33---tools)
+  - [3.1 - Resources](#31---resources)
+  - [3.2 - Prompts](#32---prompts)
+  - [3.3 - Tools](#33---tools)
 - [4 - Advanced Capabilities: Sampling and Agentic Recursion](#4---advanced-capabilities-sampling-and-agentic-recursion)
-	- [4.1 - Sampling Mechanism](#41---sampling-mechanism)
-	- [4.2 - Stop Reasons and Control Flow](#42---stop-reasons-and-control-flow)
+  - [4.1 - Sampling Mechanism](#41---sampling-mechanism)
+  - [4.2 - Stop Reasons and Control Flow](#42---stop-reasons-and-control-flow)
 - [5 - Technical Implementation: Building an MCP Server](#5---technical-implementation-building-an-mcp-server)
-	- [5.1 - SDK Landscape](#51---sdk-landscape)
-	- [5.2 - Implementation Logic (Conceptual Python)](#52---implementation-logic-conceptual-python)
-	- [5.3 - Advanced Features: Pagination and Progress](#53---advanced-features-pagination-and-progress)
-	- [5.4 - Logging and Observability](#54---logging-and-observability)
+  - [5.1 - SDK Landscape](#51---sdk-landscape)
+  - [5.2 - Implementation Logic (Conceptual Python)](#52---implementation-logic-conceptual-python)
+  - [5.3 - Advanced Features: Pagination and Progress](#53---advanced-features-pagination-and-progress)
+  - [5.4 - Logging and Observability](#54---logging-and-observability)
 - [6 - Security Architecture and Trust Boundaries](#6---security-architecture-and-trust-boundaries)
-	- [6.1 - Threat Modeling and Boundaries](#61---threat-modeling-and-boundaries)
-	- [6.2 - Vulnerability Classes and Mitigations](#62---vulnerability-classes-and-mitigations)
+  - [6.1 - Threat Modeling and Boundaries](#61---threat-modeling-and-boundaries)
+  - [6.2 - Vulnerability Classes and Mitigations](#62---vulnerability-classes-and-mitigations)
 - [7 - Ecosystem Adoption and Comparative Analysis](#7---ecosystem-adoption-and-comparative-analysis)
-	- [7.1 - Industry Adoption](#71---industry-adoption)
-	- [7.2 - Comparison with Alternatives](#72---comparison-with-alternatives)
-	- [7.3 - Comparison: MCP Resources vs. Retrieval Augmented Generation (RAG)](#73---comparison-mcp-resources-vs-retrieval-augmented-generation-rag)
+  - [7.1 - Industry Adoption](#71---industry-adoption)
+  - [7.2 - Comparison with Alternatives](#72---comparison-with-alternatives)
+  - [7.3 - Comparison: MCP Resources vs. Retrieval Augmented Generation (RAG)](#73---comparison-mcp-resources-vs-retrieval-augmented-generation-rag)
 - [8 - Conclusion and Future Outlook](#8---conclusion-and-future-outlook)
 - [References](#references)
 
@@ -35,7 +35,80 @@ The rapid ascent of Large Language Models (LLMs) has fundamentally altered the l
 
 Historically, bridging this gap has been an exercise in bespoke engineering. Developers integrating a model with a data source (connecting an LLM to a PostgreSQL database) have been forced to write custom integration logic. This logic must handle authentication, data serialisation, schema mapping, and error handling specific to that unique pair of endpoints. As the number of available models ($M$) grows, and the number of necessary tools and data sources ($N$) expands, the ecosystem faces a combinatorial explosion. This is often referred to as the $M \times N$ integration problem.
 
-![alt text]({BASE}/image-1.png)
+**Pre-MCP: M x N Complexity**
+```mermaid
+graph LR
+    %% Define Styles
+    linkStyle default stroke:#888,stroke-width:2px,fill:none;
+
+    %% Container subgraph
+    subgraph PreMCP [Pre-MCP: M x N Complexity]
+        direction LR
+        %% Left Nodes
+        GPT:::default
+        Claude:::default
+        Gemini:::default
+
+        %% Right Nodes
+        Postgres:::default
+        GitHub:::default
+        Slack:::default
+
+        %% Connections (Many-to-Many)
+        GPT ~~~ Postgres
+        GPT ~~~ GitHub
+        GPT ~~~ Slack
+        
+        Claude ~~~ Postgres
+        Claude ~~~ GitHub
+        Claude ~~~ Slack
+        
+        Gemini ~~~ Postgres
+        Gemini ~~~ GitHub
+        Gemini ~~~ Slack
+    end
+
+    %% Apply container style
+    class PreMCP container
+```
+
+**With MCP: M + N Simplicity**
+```mermaid
+graph LR
+    %% Define Styles
+    %% Dark node style for MCP Protocol
+    classDef mcp fill:#2c3e50,stroke:#2c3e50,stroke-width:2px,color:#fff;
+    linkStyle default stroke:#888,stroke-width:2px,fill:none;
+
+    %% Container subgraph
+    subgraph WithMCP [With MCP: M + N Simplicity]
+        direction LR
+        
+        %% Left Nodes
+        GPT:::default
+        Claude:::default
+        Gemini:::default
+
+        %% Central Node
+        Protocol[MCP Protocol]:::mcp
+
+        %% Right Nodes
+        Postgres:::default
+        GitHub:::default
+        Slack:::default
+
+        %% Connections (Star Topology)
+        GPT ~~~ Protocol
+        Claude ~~~ Protocol
+        Gemini ~~~ Protocol
+        Protocol ~~~ Postgres
+        Protocol ~~~ GitHub
+        Protocol ~~~ Slack
+    end
+
+    %% Apply container style
+    class WithMCP container
+```
 
 > Comparison of Bespoke Integration (Left) vs. Protocol-based Integration (Right)
 
@@ -59,7 +132,35 @@ To understand the mechanics of MCP, one must first clearly define the topologica
   * **The MCP Client:** This is a technical component inside the Host. It manages the 1:1 connection with a specific MCP Server. A Host may instantiate multiple Clients to connect to multiple Servers simultaneously, aggregating their capabilities into a single context window for the model.
   * **The MCP Server:** This is the data provider. It is a lightweight process or web service that exposes three primary primitives: Resources, Prompts, and Tools. Crucially, the Server is often "dumb" in terms of AI capabilities; its role is to expose structured interfaces to its underlying data. However, through the "Sampling" capability, a Server can request intelligence from the Host, creating a bidirectional flow of reasoning.
 
-![alt text]({BASE}/image-2.png)
+```mermaid
+graph TD
+    %% Top Container: MCP Host
+    subgraph MCP_Host ["MCP Host (Orchestrator)"]
+        direction TB
+        Agent["Agent Runtime / UI<br>(Context Window)"]
+        Client["MCP Client<br>(Connector)"]
+    end
+
+    subgraph MCP_Server ["MCP Server (Provider)"]
+        direction LR
+        Tools["Tools"]
+        Resources["Resources"]
+        Prompts["Prompts"]
+    end
+
+    %% Bottom Node: Data Source
+    %% using database shape notation [("...")]
+    DataSource[("Data Source")]
+
+    %% Connections
+    Agent --> Client
+    Client -->|"JSON-RPC"| MCP_Server
+    MCP_Server --> DataSource
+
+    %% Apply Container Styles
+    class MCP_Host blueContainer
+    class MCP_Server pinkContainer
+```
 
 > The MCP Topological Relationship
 
@@ -90,7 +191,30 @@ The protocol enforces UTF-8 encoding for all messages. This ensures compatibilit
 
 MCP defines two standard transport layers. Implementers must select the appropriate transport based on their security model and deployment architecture.
 
-![alt text]({BASE}/image-3.png)
+**SSE (Remote)**
+```mermaid
+graph TD
+    subgraph "2. SSE (Remote)"
+        HostClient["Host / Client"]
+        RemoteServer["Remote Server"]
+
+        HostClient -- "GET /sse" --> RemoteServer
+        HostClient -- "POST /message" --> RemoteServer
+        RemoteServer -. "Events Stream" .-> HostClient
+    end
+```
+
+**Stdio (Local)**
+```mermaid
+graph TD
+    subgraph "1. Stdio (Local)"
+        HostProcess["Host Process"]
+        ServerProcess["Server Process"]
+
+        HostProcess -- stdin --> ServerProcess
+        ServerProcess -- stdout --> HostProcess
+    end
+```
 
 > Comparison of Transport Layers
 

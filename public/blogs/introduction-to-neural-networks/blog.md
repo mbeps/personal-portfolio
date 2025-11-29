@@ -1,60 +1,60 @@
-- [**1. Neural Network Fundamentals**](#1-neural-network-fundamentals)
-  - [**1.1 Introduction to Artificial Neural Networks**](#11-introduction-to-artificial-neural-networks)
-  - [**1.2 Biological Inspiration**](#12-biological-inspiration)
-  - [**1.3 Basic Components and Structure**](#13-basic-components-and-structure)
+- [**1 - Neural Network Fundamentals**](#1---neural-network-fundamentals)
+  - [**1.1 - Introduction to Artificial Neural Networks**](#11---introduction-to-artificial-neural-networks)
+  - [**1.2 - Biological Inspiration**](#12---biological-inspiration)
+  - [**1.3 - Basic Components and Structure**](#13---basic-components-and-structure)
       - [**Example of basic computation in a neuron:**](#example-of-basic-computation-in-a-neuron)
-- [**2. Perceptrons and Single-Layer Networks**](#2-perceptrons-and-single-layer-networks)
-  - [**2.1 Perceptron Structure**](#21-perceptron-structure)
-  - [**2.2 Transfer/Threshold Functions**](#22-transferthreshold-functions)
+- [**2 - Perceptrons and Single-Layer Networks**](#2---perceptrons-and-single-layer-networks)
+  - [**2.1 - Perceptron Structure**](#21---perceptron-structure)
+  - [**2.2 - Transfer/Threshold Functions**](#22---transferthreshold-functions)
     - [**Sign Function**](#sign-function)
     - [**Step Function**](#step-function)
     - [**Sigmoid Function**](#sigmoid-function)
     - [**Hyperbolic Tangent ($\\tanh$) Function**](#hyperbolic-tangent-tanh-function)
-  - [**2.3 Linearly Separable Functions**](#23-linearly-separable-functions)
+  - [**2.3 - Linearly Separable Functions**](#23---linearly-separable-functions)
     - [**AND Function**](#and-function)
     - [**OR Function**](#or-function)
     - [**Example**](#example)
-  - [**2.4 Training Methods**](#24-training-methods)
-    - [**2.4.1 Error Correction Method / Perceptron Learning Rule**](#241-error-correction-method--perceptron-learning-rule)
+  - [**2.4 - Training Methods**](#24---training-methods)
+    - [**2.4.1 - Error Correction Method / Perceptron Learning Rule**](#241---error-correction-method--perceptron-learning-rule)
       - [**Example:**](#example-1)
-    - [**2.4.2 Delta Rule / Widrow-Hoff Learning Rule / Least Mean Square Rule**](#242-delta-rule--widrow-hoff-learning-rule--least-mean-square-rule)
+    - [**2.4.2 - Delta Rule / Widrow-Hoff Learning Rule / Least Mean Square Rule**](#242---delta-rule--widrow-hoff-learning-rule--least-mean-square-rule)
       - [**Example:**](#example-2)
-    - [**2.4.3 Generalised Delta Rule**](#243-generalised-delta-rule)
+    - [**2.4.3 - Generalised Delta Rule**](#243---generalised-delta-rule)
       - [**Example with sigmoid transfer function:**](#example-with-sigmoid-transfer-function)
-  - [**2.5 Limitations of Single-Layer Networks**](#25-limitations-of-single-layer-networks)
-- [**3. Multi-Layer Networks**](#3-multi-layer-networks)
-  - [**3.1 Structure and Function**](#31-structure-and-function)
-  - [**3.2 Representational Power**](#32-representational-power)
-  - [**3.3 Non-linearity**](#33-non-linearity)
-- [**4. Backpropagation**](#4-backpropagation)
-  - [**4.1 Gradient Descent in Neural Networks**](#41-gradient-descent-in-neural-networks)
-  - [**4.2 Weight Updates**](#42-weight-updates)
-    - [**4.2.1 Hidden to Output Layer**](#421-hidden-to-output-layer)
+  - [**2.5 - Limitations of Single-Layer Networks**](#25---limitations-of-single-layer-networks)
+- [**3 - Multi-Layer Networks**](#3---multi-layer-networks)
+  - [**3.1 - Structure and Function**](#31---structure-and-function)
+  - [**3.2 - Representational Power**](#32---representational-power)
+  - [**3.3 - Non-linearity**](#33---non-linearity)
+- [**4 - Backpropagation**](#4---backpropagation)
+  - [**4.1 - Gradient Descent in Neural Networks**](#41---gradient-descent-in-neural-networks)
+  - [**4.2 - Weight Updates**](#42---weight-updates)
+    - [**4.2.1 - Hidden to Output Layer**](#421---hidden-to-output-layer)
       - [**Example calculation**:](#example-calculation)
-    - [**4.2.2 Input to Hidden Layer**](#422-input-to-hidden-layer)
+    - [**4.2.2 - Input to Hidden Layer**](#422---input-to-hidden-layer)
       - [**Example calculation**:](#example-calculation-1)
-  - [**4.3 Backpropagation Example**](#43-backpropagation-example)
+  - [**4.3 - Backpropagation Example**](#43---backpropagation-example)
     - [**Forward Pass Calculation:**](#forward-pass-calculation)
     - [**Backward Pass Calculation:**](#backward-pass-calculation)
-  - [**4.4 Training Considerations**](#44-training-considerations)
+  - [**4.4 - Training Considerations**](#44---training-considerations)
     - [**Local vs Global Minima**](#local-vs-global-minima)
     - [**Function Approximation**](#function-approximation)
     - [**Practical Implementation Considerations**](#practical-implementation-considerations)
-  - [**4.5 Epochs, Batches, and Iterations**](#45-epochs-batches-and-iterations)
+  - [**4.5 - Epochs, Batches, and Iterations**](#45---epochs-batches-and-iterations)
     - [**Training Approaches**](#training-approaches)
-- [**5. Preventing Overfitting**](#5-preventing-overfitting)
-  - [**5.1 Generalisation Techniques**](#51-generalisation-techniques)
+- [**5 - Preventing Overfitting**](#5---preventing-overfitting)
+  - [**5.1 - Generalisation Techniques**](#51---generalisation-techniques)
     - [**Validation Set Approach**](#validation-set-approach)
     - [**Weight Decay**](#weight-decay)
-  - [**5.2 Early Stopping**](#52-early-stopping)
-  - [**5.3 Network Structure Modifications**](#53-network-structure-modifications)
+  - [**5.2 - Early Stopping**](#52---early-stopping)
+  - [**5.3 - Network Structure Modifications**](#53---network-structure-modifications)
     - [**Limiting Network Complexity**](#limiting-network-complexity)
     - [**Dynamic Structure Modification**](#dynamic-structure-modification)
     - [**Ensemble Methods**](#ensemble-methods)
     - [**Training Tips for Better Generalisation**](#training-tips-for-better-generalisation)
-- [**6. Advanced Neural Networks**](#6-advanced-neural-networks)
-  - [**6.1 Deep Neural Networks**](#61-deep-neural-networks)
-  - [**6.2 Vanishing Gradient Problem**](#62-vanishing-gradient-problem)
+- [**6 - Advanced Neural Networks**](#6---advanced-neural-networks)
+  - [**6.1 - Deep Neural Networks**](#61---deep-neural-networks)
+  - [**6.2 - Vanishing Gradient Problem**](#62---vanishing-gradient-problem)
     - [**Cause of Vanishing Gradients**](#cause-of-vanishing-gradients)
     - [**Solutions to the Vanishing Gradient Problem**](#solutions-to-the-vanishing-gradient-problem)
   - [**6.3 Convolutional Neural Networks (CNN)**](#63-convolutional-neural-networks-cnn)
@@ -69,9 +69,9 @@
     - [**Transformer Architecture**](#transformer-architecture)
 
 
-# **1. Neural Network Fundamentals**
+# **1 - Neural Network Fundamentals**
 
-## **1.1 Introduction to Artificial Neural Networks**
+## **1.1 - Introduction to Artificial Neural Networks**
 
 **Artificial Neural Networks (ANNs)** are mathematical functions that can produce approximations of real values, discrete values (integer or categorical), or vectors of values. They're built out of a densely interconnected set of units where each unit takes real-valued inputs (possibly the outputs of other units) and produces a single real-valued output (which may become the input to other units).
 
@@ -84,7 +84,7 @@ ANNs are particularly useful for:
 - Control systems
 
 
-## **1.2 Biological Inspiration**
+## **1.2 - Biological Inspiration**
 
 ANNs were inspired by biological neurons and their connectionist nature in the human brain:
 
@@ -105,7 +105,7 @@ There have been two main directions in neural network research:
 
 > Showing applications of neural networks
 
-## **1.3 Basic Components and Structure**
+## **1.3 - Basic Components and Structure**
 
 The fundamental building block of an ANN is a **neuron** (also called a node or unit). Neural network nodes have:
 
@@ -137,9 +137,9 @@ The key components and their relationships are:
 
 ![alt text]({BASE}/image-1.png)
 
-   > Showing a feedforward network structure
+> Showing a feedforward network structure
 
-5. **Bias**: Most neurons include a bias term that allows shifting the activation function:
+1. **Bias**: Most neurons include a bias term that allows shifting the activation function:
    $$s_j = w_{0,j} + \sum_{i=1}^{N} (w_{i,j} \times x_i)$$
    Where:
    - $w_{0,j}$ is the bias term (often implemented by setting $x_0 = 1$)
@@ -160,9 +160,9 @@ $$g(s) = \frac{1}{1+e^{-s}}$$
 the output would be:
 $$g(1.35) = \frac{1}{1+e^{-1.35}} \approx 0.794$$
 
-# **2. Perceptrons and Single-Layer Networks**
+# **2 - Perceptrons and Single-Layer Networks**
 
-## **2.1 Perceptron Structure**
+## **2.1 - Perceptron Structure**
 
 A **perceptron** is the simplest type of artificial neural network, consisting of a single neuron. It was one of the earliest models of neural networks developed in the 1950s.
 
@@ -191,7 +191,7 @@ This sum is then passed through a threshold function to produce the output:
 
 $$\text{output} = g(s)$$
 
-## **2.2 Transfer/Threshold Functions**
+## **2.2 - Transfer/Threshold Functions**
 
 The **transfer function** (also called **threshold** or **activation function**) determines the output of the perceptron based on the weighted sum of inputs. Common transfer functions include:
 
@@ -252,7 +252,7 @@ Similar to the sigmoid, but outputs values in the range $[-1, 1]$ instead of $[0
 > Hyperbolid tangent $\tanh$ function
 
 
-## **2.3 Linearly Separable Functions**
+## **2.3 - Linearly Separable Functions**
 
 A **linearly separable function** is one where the input space can be divided by a hyperplane (a line in 2D, a plane in 3D, etc.) such that all inputs on one side of the hyperplane are in one class, and all inputs on the other side are in the other class.
 
@@ -299,14 +299,14 @@ We can use a perceptron to distinguish between them because the data is linearly
 However, for data that isn't linearly separable (like the XOR function), a single perceptron cannot correctly classify all points.
 
 
-## **2.4 Training Methods**
+## **2.4 - Training Methods**
 
 The weights of a perceptron must be adjusted to solve a particular problem. There are three primary methods for training single-layer networks:
 1. [Error Correction Method / Perceptron Learning Rule](#241-error-correction-method)
 2. [Delta Rule](#242-delta-rule)
 3. [Generalised Delta Rule](#243-generalised-delta-rule)
 
-### **2.4.1 Error Correction Method / Perceptron Learning Rule**
+### **2.4.1 - Error Correction Method / Perceptron Learning Rule**
 
 The **error correction method/perceptron learning rule** adjusts weights based on the error between the desired output and the actual output.
 
@@ -378,7 +378,7 @@ $w_2 \leftarrow -0.5 - 1.5 = -2.0$
 
 Updated weights: $w_0 = 0$, $w_1 = 0.5$, $w_2 = -2.0$
 
-### **2.4.2 Delta Rule / Widrow-Hoff Learning Rule / Least Mean Square Rule**
+### **2.4.2 - Delta Rule / Widrow-Hoff Learning Rule / Least Mean Square Rule**
 
 The **delta rule/Widrow-Hoff learning rule/least mean square rule** is based on gradient descent and minimizes the squared error between the target output and the actual output.
 
@@ -462,7 +462,7 @@ $$w_2 \leftarrow -1.0 + 0.5 = -0.5$$
 
 Updated weights: $w_0 = 0.5$, $w_1 = 0.5$, $w_2 = -0.5$
 
-### **2.4.3 Generalised Delta Rule**
+### **2.4.3 - Generalised Delta Rule**
 
 The **generalised delta rule** extends the delta rule by incorporating the transfer function into the error calculation.
 
@@ -520,7 +520,7 @@ $$w_2 \leftarrow -0.5 + 0.5(1 - 0.881)0.105 \cdot 1 \approx -0.494$$
 
 Updated weights: $w_0 \approx 0.506$, $w_1 \approx 1.012$, $w_2 \approx -0.494$
 
-## **2.5 Limitations of Single-Layer Networks**
+## **2.5 - Limitations of Single-Layer Networks**
 
 The fundamental limitation of single-layer networks is that they can **only solve linearly separable problems**. This was proven mathematically by Minsky and Papert in their 1969 book "Perceptrons."
 
@@ -554,9 +554,9 @@ This suggests a solution: **multi-layer networks** where each layer can compute 
 
 The discovery of effective training algorithms for multi-layer networks (like backpropagation) was a major breakthrough that revitalized the field of neural networks after the initial discouragement from the perceptron's limitations.
 
-# **3. Multi-Layer Networks**
+# **3 - Multi-Layer Networks**
 
-## **3.1 Structure and Function**
+## **3.1 - Structure and Function**
 
 **Multi-layer networks** (also called multi-layer perceptrons or MLPs) consist of one input layer, one output layer, and one or more hidden layers of processing units. This structure allows them to overcome the limitations of single-layer networks.
 
@@ -603,7 +603,7 @@ The mathematical representation of how data passes through a multi-layer network
 - **Weights** are applied at each layer and adjusted during learning
 - **Output layer** produces the final result, often using a non-linear threshold function
 
-## **3.2 Representational Power**
+## **3.2 - Representational Power**
 
 The power of multi-layer networks comes from their ability to represent complex functions that single-layer networks cannot.
 
@@ -628,9 +628,10 @@ A multi-layer network can solve the XOR problem that single-layer perceptrons ca
 - Second layer: Combine these to form XOR
   
 ![alt text]({BASE}/image-11.png)
-This demonstrates how complex functions can be built from simpler ones through layering.
 
-## **3.3 Non-linearity**
+> This demonstrates how complex functions can be built from simpler ones through layering.
+
+## **3.3 - Non-linearity**
 
 **Non-linearity** is crucial in neural networks because without it, a multi-layer network would be mathematically equivalent to a single-layer network.
 
@@ -675,9 +676,9 @@ With non-linearity:
 
 This non-linear capability is what makes neural networks so powerful for complex pattern recognition tasks that linear models cannot handle.
 
-# **4. Backpropagation**
+# **4 - Backpropagation**
 
-## **4.1 Gradient Descent in Neural Networks**
+## **4.1 - Gradient Descent in Neural Networks**
 
 **Backpropagation** is the classic algorithm used to train multi-layer neural networks. It works by propagating the error backwards through the network to adjust weights using gradient descent.
 
@@ -709,9 +710,9 @@ Where:
 
 The **backpropagation algorithm** efficiently computes these derivatives by applying the chain rule of calculus, working backwards from the output layer to the input layer.
 
-## **4.2 Weight Updates**
+## **4.2 - Weight Updates**
 
-### **4.2.1 Hidden to Output Layer**
+### **4.2.1 - Hidden to Output Layer**
 
 To update weights between the hidden and output layers, we need to determine how much each weight contributes to the error.
 
@@ -760,7 +761,7 @@ $$\delta_1 = (1 - 0.81) \cdot 0.81 \cdot (1 - 0.81) = 0.19 \cdot 0.81 \cdot 0.19
 The weight update would be:
 $$w_7 \leftarrow 0.7 + 0.1 \cdot 0.029 \cdot 0.9 \approx 0.7 + 0.0026 = 0.7026$$
 
-### **4.2.2 Input to Hidden Layer**
+### **4.2.2 - Input to Hidden Layer**
 
 For weights between the input and hidden layers, the calculation is more complex because each hidden unit contributes to multiple output units.
 
@@ -814,7 +815,7 @@ $$w_1 \leftarrow 0.1 + 0.1 \cdot 0.0018 \cdot 1 = 0.1 + 0.00018 = 0.10018$$
 This process of updating weights continues iteratively until the network's performance reaches a satisfactory level, with error propagating backward from outputs to inputs.
 
 
-## **4.3 Backpropagation Example**
+## **4.3 - Backpropagation Example**
 
 Let's work through a complete example of backpropagation on a simple neural network with:
 - 3 input units
@@ -896,7 +897,7 @@ With our first training instance: $x=[1, 2, 3]$ and target $y=[1, 0]$
 
 This completes one iteration of backpropagation for one training example. The process would continue with additional examples until the network converges to a solution.
 
-## **4.4 Training Considerations**
+## **4.4 - Training Considerations**
 
 ### **Local vs Global Minima**
 
@@ -963,7 +964,7 @@ When implementing a neural network, several design decisions must be made:
    - Small random values (typically between -0.5 and 0.5)
    - More sophisticated methods for deep networks
 
-## **4.5 Epochs, Batches, and Iterations**
+## **4.5 - Epochs, Batches, and Iterations**
 
 Neural network training involves several key concepts related to how data is processed during training:
 
@@ -992,9 +993,9 @@ There are different approaches to updating weights during training:
 - Advantages: More stable than SGD, more efficient than batch gradient descent
 - Disadvantages: Requires tuning of the batch size
 
-# **5. Preventing Overfitting**
+# **5 - Preventing Overfitting**
 
-## **5.1 Generalisation Techniques**
+## **5.1 - Generalisation Techniques**
 
 **Overfitting** occurs when a neural network performs very well on training data but fails to generalize to new, unseen data. This happens when the network memorizes the training examples rather than learning the underlying patterns.
 
@@ -1043,7 +1044,7 @@ If a weight is 0.5 and $\lambda = 0.001$ with a learning rate of 0.1:
 
 The weight decay term subtracts a small fraction of the weight in each update, preventing weights from growing too large.
 
-## **5.2 Early Stopping**
+## **5.2 - Early Stopping**
 
 **Early stopping** is a simple yet effective technique to prevent overfitting in neural networks.
 
@@ -1079,7 +1080,7 @@ If training a neural network and tracking validation error by epoch:
 
 With a patience of 3 epochs, training would stop after epoch 16, and the weights from epoch 12 would be used since they produced the lowest validation error.
 
-## **5.3 Network Structure Modifications**
+## **5.3 - Network Structure Modifications**
 
 The structure of a neural network significantly impacts its tendency to overfit. Several approaches can be used to modify network structure to reduce overfitting:
 
@@ -1139,9 +1140,9 @@ Ensembles tend to generalize better than individual networks because different n
 
 By carefully considering these aspects of network design and training, you can significantly improve the generalisation ability of your neural networks and reduce the risk of overfitting.
 
-# **6. Advanced Neural Networks**
+# **6 - Advanced Neural Networks**
 
-## **6.1 Deep Neural Networks**
+## **6.1 - Deep Neural Networks**
 
 **Deep neural networks** (or **deep learning**) refers to neural networks with many layers. These networks have gained tremendous popularity in recent years due to their exceptional performance on complex tasks.
 
@@ -1177,7 +1178,7 @@ These networks excel at problems where:
 
 The true power of deep learning comes from its ability to learn hierarchical representations: early layers learn simple features, while deeper layers combine these into increasingly complex and abstract concepts.
 
-## **6.2 Vanishing Gradient Problem**
+## **6.2 - Vanishing Gradient Problem**
 
 The **vanishing gradient problem** is one of the primary challenges in training deep neural networks, particularly those using sigmoid or tanh activation functions.
 
