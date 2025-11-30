@@ -182,8 +182,11 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
             text-neutral-500 dark:text-neutral-400
           "
         >
-          <p>{`${roleData.startDate} - ${endDate}`}</p>
-          <p className="italic">{roleData.timeInRole}</p>
+          {/* Dates depend on the visitor's current time; suppress hydration warnings to avoid noise when the client re-computes the range. */}
+          <p suppressHydrationWarning>{`${roleData.startDate} - ${endDate}`}</p>
+          <p className="italic" suppressHydrationWarning>
+            {roleData.timeInRole}
+          </p>
         </div>
 
         <div

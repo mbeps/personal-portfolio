@@ -9,6 +9,7 @@ import { Button } from "@/components/shadcn/ui/button";
 import {
   Dialog,
   DialogContent,
+  DialogTitle,
   DialogTrigger,
 } from "@/components/shadcn/ui/dialog";
 import {
@@ -126,8 +127,8 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
               Group by:
             </div>
             <DropdownMenu>
-              <DropdownMenuTrigger className="w-48">
-                <Button variant="default" className="w-full">
+              <DropdownMenuTrigger asChild>
+                <Button variant="default" className="w-48">
                   <div className="flex items-start justify-between space-x-2 w-full">
                     <span>{currentGroupedName}</span>
                     <BsChevronDown
@@ -138,9 +139,9 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-48">
-                {options.map((option, index) => (
+                {options.map((option) => (
                   <DropdownMenuItem
-                    key={index}
+                    key={option.slug}
                     className={`${
                       option.slug === groupedBy ? "font-bold" : ""
                     }`}
@@ -159,8 +160,8 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
               <div key={index} className="text-center md:text-left">
                 <h3>{categoryData.skillCategoryName}</h3>
                 <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
-                  {categoryData.skills.map((skillKey, index) => (
-                    <SkillTag key={index} skillKey={skillKey} />
+                  {categoryData.skills.map((skillKey) => (
+                    <SkillTag key={skillKey} skillKey={skillKey} />
                   ))}
                 </div>
               </div>
@@ -204,6 +205,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
             </TooltipContent>
           </Tooltip>
           <DialogContent className="flex flex-col justify-start h-full">
+            <DialogTitle className="sr-only">{language.name}</DialogTitle>
             <ModalContent />
           </DialogContent>
         </Dialog>

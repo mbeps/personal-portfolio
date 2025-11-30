@@ -90,15 +90,15 @@ const FilterSection: React.FC<FilterSectionProps> = ({
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1">
           <AccordionTrigger>
-            <div className="flex text-left space-x-3">
+            <span className="flex items-center space-x-3 text-left">
               <MdOutlineManageSearch
                 size={28}
                 className="text-neutral-600 dark:text-neutral-400"
               />
-              <p className="text-lg text-neutral-600 dark:text-neutral-400 font-semibold">
+              <span className="text-lg font-semibold text-neutral-600 dark:text-neutral-400">
                 {message}
-              </p>
-            </div>
+              </span>
+            </span>
           </AccordionTrigger>
           <AccordionContent>
             <div className="flex flex-col gap-2">
