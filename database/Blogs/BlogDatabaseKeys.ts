@@ -9,6 +9,7 @@
 enum BlogDatabaseKeys {
   MachineLearningFoundations = "machine-learning-foundations",
   IntroductionToNeuralNetworks = "introduction-to-neural-networks",
+  NeuralNetworkLearningAndGradientDescent = "neural-network-learning-and-gradient-descent",
   Transformer = "transformer-architecture",
   Lora = "lora",
   Quantisation = "quantisation",
