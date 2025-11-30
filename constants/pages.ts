@@ -7,12 +7,7 @@ import NavigationItemInterface from "@/interfaces/NavigationItemInterface";
 export const HOME_PAGE: NavigationItemInterface = {
   label: "Home",
   path: "/",
-  description: `
-    The homepage for my personal website. 
-    It contains information about me, my projects and my contact information.
-    I am a software developer and a computer science student graduate from Royal Holloway, University of London.
-    Graduate | Computer Science | Software Developer | Full Stack Developer | Software Engineer
-  `,
+  description: `Profressional Software Engineer with Master's degree In Artificial Intelligence with wide range of projects.`,
 };
 
 /**
@@ -23,8 +18,7 @@ export const PROJECTS_PAGE: NavigationItemInterface = {
   label: "Projects",
   path: "/projects",
   description: `
-    Discover my portfolio of projects, both current and archived. 
-    Use filters to narrow down projects by category, programming language, and technologies. 
+    Wide catalogue of projects showcasing my skills and expertise in different technologies and domains.
   `,
   isMain: true,
 };
@@ -37,8 +31,7 @@ export const CERTIFICATES_PAGE: NavigationItemInterface = {
   label: "Certificates",
   path: "/certificates",
   description: `
-    Explore my collection of certificates and qualifications. 
-    Use filters to refine your search by issuer and category. 
+    Set of certificates demostrating my skills and knowledge in various domains.
   `,
   isMain: true,
 };
@@ -51,8 +44,7 @@ export const BLOG_PAGE: NavigationItemInterface = {
   label: "Blog",
   path: "/blogs",
   description: `
-    Explore my collection of blogs on various topics. 
-    Use the search bar to find specific blogs or filter them by category.
+    Collection of technical blogs covering various topics highlighting my expertise and insights in theoretical and practical aspects.
   `,
 };
 
@@ -65,7 +57,7 @@ export const EDUCATION_PAGE: NavigationItemInterface = {
   label: "Education",
   path: "/education",
   description: `
-    Explore my education history and qualifications and view the modules I have studied.
+    Selection of my academic qualifications, detailing institutions attended, degrees earned, modules studied and completed projects.
   `,
   isMain: true,
 };
@@ -79,8 +71,7 @@ export const EXPERIENCE_PAGE: NavigationItemInterface = {
   label: "Experience",
   path: "/experience",
   description: `
-    Dive into my professional journey. 
-    Discover the roles I've embraced, projects I've spearheaded, and the impact I've made.
+    Overview of my professional experience, highlighting roles, responsibilities, and achievements across different organisations.
   `,
   isMain: true,
 };
@@ -93,8 +84,7 @@ export const SKILL_PAGE: NavigationItemInterface = {
   label: "Skills",
   path: "/skills",
   description: `
-    Explore my collection of skills on various topics. 
-    You will be able to navigate to projects, certificates and blogs directly from here.
+    Multitude of all of my technical and soft skills that I have acquired across projects, experience, and education.
   `,
 };
 
@@ -106,7 +96,7 @@ export const ABOUT_PAGE: NavigationItemInterface = {
   label: "About",
   path: "/about",
   description: `
-    Read a summary about me, my journey, and my accomplishments.
+    Comprehensive summary about me, my journey, and key traits. 
   `,
 };
 
