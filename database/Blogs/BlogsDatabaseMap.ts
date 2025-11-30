@@ -70,6 +70,44 @@ const blogsMap: Database<BlogInterface> = {
       ModuleDatabaseKeys.KCL_DataMining,
     ],
   },
+  [BlogDatabaseKeys.NeuralNetworkLearningAndGradientDescent]: {
+    name: "Neural Network Learning and Gradient Descent",
+    subtitle:
+      "Explores gradient descent optimisation, momentum, overfitting, regularisation techniques, and the optimisation algorithms for training multi-layer neural networks.",
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+    ],
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_MachineLearning,
+      ModuleDatabaseKeys.KCL_PatternRecognitionNeuralNetworksDeepLearning,
+      ModuleDatabaseKeys.KCL_DataMining,
+    ],
+  },
+  [BlogDatabaseKeys.BackPropagation]: {
+    name: "Multi-Layer Perceptrons & Back-Propagation",
+    subtitle:
+      "Explores multi-layer perceptron architecture, forward pass mechanics, representational power, and provides a detailed mathematical derivation of the back-propagation algorithm for training.",
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+    ],
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_MachineLearning,
+      ModuleDatabaseKeys.KCL_PatternRecognitionNeuralNetworksDeepLearning,
+      ModuleDatabaseKeys.KCL_DataMining,
+    ],
+  },
   [BlogDatabaseKeys.Transformer]: {
     name: "Transformer Architecture",
     subtitle:
