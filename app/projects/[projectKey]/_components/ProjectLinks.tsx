@@ -35,7 +35,7 @@ export function ProjectLinks({
       orientation={isMobile ? "vertical" : "horizontal"}
     >
       {deploymentURL && (
-        <Button asChild className="flex-1">
+        <Button asChild className="flex-1 md:max-w-xs">
           <Link href={deploymentURL} target="_blank">
             <div className="flex justify-center md:justify-start items-center gap-4 w-full">
               <BsArrowUpRightCircle size={26} />
@@ -46,7 +46,7 @@ export function ProjectLinks({
       )}
 
       {repositoryURL && (
-        <Button asChild className="flex-1">
+        <Button asChild className="flex-1 md:max-w-xs">
           <Link href={repositoryURL} target="_blank">
             <div className="flex justify-center md:justify-start items-center gap-4 w-full">
               <BsGithub size={26} />
@@ -57,7 +57,7 @@ export function ProjectLinks({
       )}
 
       {reportURL && (
-        <Button asChild className="flex-1">
+        <Button asChild className="flex-1 md:max-w-xs">
           <Link href={reportURL}>
             <div className="flex justify-center md:justify-start items-center gap-4 w-full">
               <IoReaderOutline size={26} />
