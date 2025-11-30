@@ -19,7 +19,7 @@ const PageNavigationItem: React.FC<PageNavigationItemProps> = ({ item }) => {
         <div
           className="
 						flex flex-col
-						min-h-[180px] h-full max-h-[280px]
+						min-h-[140px] h-full max-h-[280px]
 						cursor-pointer
 						bg-neutral-100 dark:bg-neutral-800
 						md:hover:bg-neutral-200 md:dark:hover:bg-red-950
