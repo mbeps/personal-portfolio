@@ -11,7 +11,7 @@ const buttonVariants = cva(
       variant: {
         default: `
           text-neutral-700 dark:text-neutral-200 capitalize md:hover:text-neutral-700 dark:md:hover:text-neutral-200
-          shadow-xs md:hover:shadow-lg focus:shadow-lg
+          shadow-xs md:hover:shadow-md
           bg-neutral-100 dark:bg-neutral-800
           md:hover:bg-neutral-100 dark:md:hover:bg-neutral-800
           border-2 border-transparent dark:border-transparent
@@ -21,7 +21,7 @@ const buttonVariants = cva(
           `,
         filled: `
           text-neutral-100
-          shadow-xl md:hover:shadow-lg
+          shadow-sm md:hover:shadow-md
           bg-red-500 dark:bg-red-800`,
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
@@ -43,7 +43,7 @@ const buttonVariants = cva(
           from-red-600 to-amber-500
           dark:from-red-800 dark:to-amber-700
           transform md:hover:scale-105
-          shadow-xl md:hover:shadow-3xl`,
+          shadow-md md:hover:shadow-xl`,
         icon: `
           text-neutral-800 dark:text-neutral-100
           border-neutral-200 dark:border-neutral-800 border-2
