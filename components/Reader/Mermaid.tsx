@@ -16,7 +16,7 @@ type MermaidProps = {
  * @returns SVG diagram rendered from the Mermaid syntax
  */
 const Mermaid: React.FC<MermaidProps> = ({ chart }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLSpanElement>(null);
   const { theme, systemTheme } = useTheme();
   const [isMounted, setIsMounted] = React.useState(false);
 
@@ -83,19 +83,19 @@ const Mermaid: React.FC<MermaidProps> = ({ chart }) => {
   // Prevent hydration mismatch
   if (!isMounted) {
     return (
-      <div className="mermaid-container">
-        <div className="animate-pulse bg-gray-200 dark:bg-gray-800 h-64 rounded-lg" />
-      </div>
+      <span className="mermaid-container block my-6">
+        <span className="animate-pulse bg-gray-200 dark:bg-gray-800 h-64 rounded-lg block" />
+      </span>
     );
   }
 
   return (
-    <div className="mermaid-container my-6">
-      <div
+    <span className="mermaid-container my-6 block">
+      <span
         ref={containerRef}
         className="flex justify-center items-center overflow-x-auto"
       />
-    </div>
+    </span>
   );
 };
 

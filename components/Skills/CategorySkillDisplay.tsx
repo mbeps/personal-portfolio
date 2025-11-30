@@ -20,7 +20,12 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
   skillCategories,
 }) => {
   const [showAll, setShowAll] = useState(false);
-  const shouldDisplayTitle: boolean = skillCategories.length > 1;
+  const normalizedCategories: SkillsCategoryInterface[] =
+    skillCategories.map((category) => ({
+      ...category,
+      skills: Array.from(new Set(category.skills)),
+    }));
+  const shouldDisplayTitle: boolean = normalizedCategories.length > 1;
   const isTablet: boolean = useMediaQuery("(max-width: 976px)");
 
   const maxSkillCount: number = 18;
@@ -33,17 +38,18 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
 
   // Calculate displayedSkills, totalSkillsCount, and displayedSkillsCount in one pass
   const displayedSkills: SkillsCategoryInterface[] = showAll
-    ? skillCategories.map((categoryData) => {
+    ? normalizedCategories.map((categoryData) => {
         totalSkillsCount += categoryData.skills.length;
         displayedSkillsCount += categoryData.skills.length;
         return categoryData;
       })
-    : skillCategories.reduce((acc: SkillsCategoryInterface[], categoryData) => {
-        totalSkillsCount += categoryData.skills.length;
+    : normalizedCategories.reduce(
+        (acc: SkillsCategoryInterface[], categoryData) => {
+          totalSkillsCount += categoryData.skills.length;
 
-        if (skillCount < maxSkillCount && groupCount < maxGroupCount) {
-          const filteredSkills = categoryData.skills.filter(
-            (skillKey) => skillDatabaseMap[skillKey]?.isMainSkill
+          if (skillCount < maxSkillCount && groupCount < maxGroupCount) {
+            const filteredSkills = categoryData.skills.filter(
+              (skillKey) => skillDatabaseMap[skillKey]?.isMainSkill
           );
           const skillsToDisplay = filteredSkills.length
             ? filteredSkills
@@ -65,10 +71,12 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
             groupCount++;
             displayedSkillsCount += limitedSkills.length;
           }
-        }
+          }
 
-        return acc;
-      }, []);
+          return acc;
+        },
+        []
+      );
 
   const shouldShowToggleButton: boolean =
     showAll || displayedSkillsCount < totalSkillsCount;

@@ -88,14 +88,14 @@ const MobileFilterAccordion: React.FC<MobileFilterAccordionProps> = ({
       {filterCategories.map((category) => (
         <AccordionItem key={category.urlParam} value={category.urlParam}>
           <AccordionTrigger className="px-2 text-left hover:no-underline">
-            <div className="flex flex-col text-left">
+            <span className="flex flex-col text-left">
               <span className="text-lg font-semibold text-neutral-700 dark:text-neutral-200">
                 {category.sectionName}
               </span>
               <span className="text-sm text-neutral-500 dark:text-neutral-400">
                 {getOptionLabel(category)}
               </span>
-            </div>
+            </span>
           </AccordionTrigger>
           <AccordionContent className="px-2 pb-4 pt-0">
             <div className="flex flex-col gap-2">

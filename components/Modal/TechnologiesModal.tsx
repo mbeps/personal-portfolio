@@ -7,6 +7,7 @@ import groupSkills, {
 import {
   Dialog,
   DialogContent,
+  DialogTitle,
   DialogTrigger,
 } from "@/components/shadcn/ui/dialog";
 import {
@@ -129,8 +130,8 @@ const TechnologiesModal: React.FC = () => {
             </div>
 
             <DropdownMenu>
-              <DropdownMenuTrigger className="w-48">
-                <Button variant="default" className="w-full">
+              <DropdownMenuTrigger asChild>
+                <Button variant="default" className="w-48">
                   <div className="flex items-start justify-between space-x-2 w-full">
                     <span>{currentGroupedName}</span>
                     <BsChevronDown
@@ -141,9 +142,9 @@ const TechnologiesModal: React.FC = () => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-48">
-                {options.map((option, index) => (
+                {options.map((option) => (
                   <DropdownMenuItem
-                    key={index}
+                    key={option.slug}
                     className={`${
                       option.slug === groupedBy ? "font-bold" : ""
                     }`}
@@ -198,6 +199,7 @@ const TechnologiesModal: React.FC = () => {
             <TriggerButton />
           </DialogTrigger>
           <DialogContent>
+            <DialogTitle className="sr-only">Technologies</DialogTitle>
             <ModalContent />
           </DialogContent>
         </Dialog>

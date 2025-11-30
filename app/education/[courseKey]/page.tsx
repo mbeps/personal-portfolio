@@ -177,7 +177,9 @@ const CoursesPage: React.FC<{
               )}
             </CardContent>
           </Card>
-          <Card>
+
+          {/* Module Section */}
+          <Card className="pb-4">
             <CardHeader>
               <CardTitle className="text-center md:text-left">
                 <h3>Modules</h3>
@@ -195,7 +197,7 @@ const CoursesPage: React.FC<{
 
               {/* Modules */}
               {groupedModules.map((group, index) => (
-                <div key={index}>
+                <div key={index} className={index > 0 ? "mt-8" : ""}>
                   {groupedModules.length > 1 && <h4>{group.groupName}</h4>}
                   <Grid
                     gap={1}

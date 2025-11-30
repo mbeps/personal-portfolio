@@ -30,9 +30,9 @@ const DisplayMath: React.FC<DisplayMathProps> = ({ children }) => {
   }, [children]);
 
   return (
-    <div className="my-6 overflow-x-auto py-2 flex justify-center">
-      <div dangerouslySetInnerHTML={{ __html: html }} />
-    </div>
+    <span className="my-6 flex justify-center overflow-x-auto py-2">
+      <span dangerouslySetInnerHTML={{ __html: html }} />
+    </span>
   );
 };
 
