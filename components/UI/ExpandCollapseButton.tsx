@@ -22,7 +22,7 @@ const ExpandCollapseButton: React.FC<ExpandCollapseButtonProps> = ({
 }) => {
   return (
     <button
-      className={`${className} mt-2 text-red-600 hover:text-red-800 flex items-center`}
+      className={`${className} mt-2 text-red-700 hover:text-red-500 flex items-center`}
       onClick={onToggle}
     >
       {isExpanded ? "Show Less" : "Show More"}

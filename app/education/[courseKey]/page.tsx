@@ -136,7 +136,7 @@ const CoursesPage: React.FC<{
 
         <div className="flex items-center flex-col md:flex-row">
           {courseData.logo && (
-            <div className="rounded-full shadow-lg transition-all duration-500 ease-in-out w-[75px] h-[75px]">
+            <div className="rounded-full shadow-md transition-all duration-500 ease-in-out w-[75px] h-[75px]">
               <AspectRatio
                 ratio={1 / 1}
                 className="overflow-hidden relative w-full bg-white rounded-full"
@@ -145,7 +145,7 @@ const CoursesPage: React.FC<{
                   src={courseData.logo}
                   alt={`Logo for ${courseData.name}`}
                   fill={true}
-                  className="rounded-full shadow-lg object-cover transition-all duration-500 ease-in-out"
+                  className="rounded-full shadow-sm object-cover transition-all duration-500 ease-in-out"
                   quality={30}
                   priority
                 />
@@ -164,11 +164,13 @@ const CoursesPage: React.FC<{
         <div className="mt-10 material-sections-wrapper">
           <Card>
             <CardContent className="-mt-4 py-5">
+              {/* Category  */}
               <p className="text-center lg:text-left text-2xl text-neutral-700 dark:text-neutral-200 mt-8">
                 {courseData.category}
               </p>
-              <p className="text-center lg:text-left text-neutral-600 dark:text-neutral-400 italic">{`${courseData.startYear} - ${courseData.endYear}`}</p>
-
+              {/* Dates */}
+              <p className="text-center lg:text-left text-neutral-500 dark:text-neutral-400 italic">{`${courseData.startYear} - ${courseData.endYear}`}</p>
+              {/* Grade */}
               {courseData.grade && (
                 <div className="py-4 flex space-x-1 w-full text-xl text-neutral-800 dark:text-neutral-300 justify-center lg:justify-start">
                   <p className="font-bold">Grade:</p>
