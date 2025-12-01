@@ -37,11 +37,11 @@ const Tag: React.FC<TagProps> = ({ children, onClick, hasHover }) => {
 
   return (
     <div className={className} onClick={onClick}>
-      <div className="flex items-center justify-between space-x-2">
-        <div>{children}</div>
+      <div className="flex items-center space-x-2">
+        <div className="text-left flex-1">{children}</div>
         {(onClick || hasHover) && (
           <IoIosArrowForward
-            className={`md:group-hover:text-red-400 transition-colors duration-200 ${
+            className={`md:group-hover:text-red-400 transition-colors duration-200 flex-shrink-0 ${
               children === "..." ? "bounce-horizontal" : ""
             }`}
           />
