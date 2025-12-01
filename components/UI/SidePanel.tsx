@@ -77,7 +77,7 @@ const SidePanel: React.FC<SidePanelProps> = ({
         flex flex-col 
         top-0 right-0 
         h-full 
-        pt-${NAVBAR_HEIGHT} md:px-2 md:pb-3
+        pt-24 md:px-2 md:pb-3
         w-full md:w-[24rem]
         z-20 
         transform ${
