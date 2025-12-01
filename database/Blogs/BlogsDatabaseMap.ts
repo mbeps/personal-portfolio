@@ -71,7 +71,7 @@ const blogsMap: Database<BlogInterface> = {
     ],
   },
   [BlogDatabaseKeys.NeuralNetworkLearningAndGradientDescent]: {
-    name: "Neural Network Learning and Gradient Descent",
+    name: "Neural Network Learning & Gradient Descent",
     subtitle:
       "Explores gradient descent optimisation, momentum, overfitting, regularisation techniques, and the optimisation algorithms for training multi-layer neural networks.",
     category: BlogCategoriesEnum.ArtificialIntelligence,
@@ -106,6 +106,23 @@ const blogsMap: Database<BlogInterface> = {
       ModuleDatabaseKeys.KCL_MachineLearning,
       ModuleDatabaseKeys.KCL_PatternRecognitionNeuralNetworksDeepLearning,
       ModuleDatabaseKeys.KCL_DataMining,
+    ],
+  },
+  [BlogDatabaseKeys.DeepNeuralNetworks]: {
+    name: "Deep Neural Networks",
+    subtitle:
+      "Covers deep learning challenges, advanced architectures, implementation strategies, and environmental considerations.",
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+    ],
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_PatternRecognitionNeuralNetworksDeepLearning,
     ],
   },
   [BlogDatabaseKeys.Transformer]: {

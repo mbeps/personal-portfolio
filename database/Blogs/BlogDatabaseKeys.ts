@@ -11,6 +11,7 @@ enum BlogDatabaseKeys {
   IntroductionToNeuralNetworks = "introduction-to-neural-networks",
   NeuralNetworkLearningAndGradientDescent = "neural-network-learning-and-gradient-descent",
   BackPropagation = "back-propagation",
+  DeepNeuralNetworks = "deep-neural-networks",
   Transformer = "transformer-architecture",
   Lora = "lora",
   Quantisation = "quantisation",
