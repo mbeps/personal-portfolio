@@ -111,7 +111,24 @@ const blogsMap: Database<BlogInterface> = {
   [BlogDatabaseKeys.DeepNeuralNetworks]: {
     name: "Deep Neural Networks",
     subtitle:
-      "Covers deep learning challenges, advanced architectures, implementation strategies, and environmental considerations.",
+      "Explores deep architecture necessity, gradient stability challenges, algorithmic solutions, optimisation dynamics, and regularisation strategies for robust model performance.",
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+    ],
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_PatternRecognitionNeuralNetworksDeepLearning,
+    ],
+  },
+  [BlogDatabaseKeys.ConvolutionalNeuralNetworks]: {
+    name: "Convolutional Neural Networks (CNNs)",
+    subtitle:
+      "Explains core CNN components, hyperparameters, and pooling. Includes step-by-step mathematical derivations for convolution operations, output dimensions, and feature vector flattening.",
     category: BlogCategoriesEnum.ArtificialIntelligence,
     skills: [
       SkillDatabaseKeys.MachineLearning,

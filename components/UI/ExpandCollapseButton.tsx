@@ -22,15 +22,17 @@ const ExpandCollapseButton: React.FC<ExpandCollapseButtonProps> = ({
 }) => {
   return (
     <button
-      className={`${className} mt-2 text-red-700 hover:text-red-500 flex items-center`}
+      type="button"
+      className={`${className} mt-2 text-red-700 hover:text-red-500 flex items-center [&[data-state=open]>svg]:rotate-180`}
       onClick={onToggle}
+      data-state={isExpanded ? "open" : "closed"}
+      aria-expanded={isExpanded}
     >
       {isExpanded ? "Show Less" : "Show More"}
-      {isExpanded ? (
-        <MdKeyboardArrowUp size={25} />
-      ) : (
-        <MdKeyboardArrowDown size={25} />
-      )}
+      <MdKeyboardArrowDown
+        size={25}
+        className="ml-1 transition-transform duration-200"
+      />
     </button>
   );
 };
