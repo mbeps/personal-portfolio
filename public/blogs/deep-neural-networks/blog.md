@@ -1,666 +1,613 @@
-- [1 - The Challenge of Depth in Neural Networks](#1---the-challenge-of-depth-in-neural-networks)
-  - [1.1 - Defining Deep Neural Networks](#11---defining-deep-neural-networks)
-  - [1.2 - The Vanishing Gradient Problem](#12---the-vanishing-gradient-problem)
-    - [1.2.1 - Mechanics of Backward Propagation in Deep Layers](#121---mechanics-of-backward-propagation-in-deep-layers)
-    - [1.2.2 - Mathematical Analysis of the Sigmoid Derivative](#122---mathematical-analysis-of-the-sigmoid-derivative)
-    - [1.2.3 - Impact of Chain Rule Multiplication on Weight Updates](#123---impact-of-chain-rule-multiplication-on-weight-updates)
-  - [1.3 - The Rectified Linear Unit (ReLU) Solution](#13---the-rectified-linear-unit-relu-solution)
-    - [1.3.1 - Definition and Properties of ReLU](#131---definition-and-properties-of-relu)
-    - [1.3.2 - Mitigating Vanishing Gradients](#132---mitigating-vanishing-gradients)
-    - [1.3.3 - Illustrative Computation: ReLU vs. Sigmoid Gradient Flow](#133---illustrative-computation-relu-vs-sigmoid-gradient-flow)
-- [2 - Advanced Activation and Selection Mechanisms](#2---advanced-activation-and-selection-mechanisms)
-  - [2.1 - Competitive Learning Principles](#21---competitive-learning-principles)
-  - [2.2 - Winner-Takes-All (WTA) and k-WTA Activations](#22---winner-takes-all-wta-and-k-wta-activations)
-  - [2.3 - Softmax Activation Function](#23---softmax-activation-function)
-    - [2.3.1 - Probabilistic Interpretation of Outputs](#231---probabilistic-interpretation-of-outputs)
-    - [2.3.2 - Calculation of Softmax Activations](#232---calculation-of-softmax-activations)
-- [3 - Negative Feedback and Iterative Activation](#3---negative-feedback-and-iterative-activation)
-  - [3.1 - Architecture of Negative Feedback Networks](#31---architecture-of-negative-feedback-networks)
-  - [3.2 - Iterative Updates for Input Reconstruction](#32---iterative-updates-for-input-reconstruction)
-  - [3.3 - Regulatory Feedback (Divisive Input Modulation)](#33---regulatory-feedback-divisive-input-modulation)
-  - [3.4 - Computational Examples of Feedback Iterations](#34---computational-examples-of-feedback-iterations)
-- [4 - Autoencoders and Representation Learning](#4---autoencoders-and-representation-learning)
-  - [4.1 - Architecture and the Information Bottleneck](#41---architecture-and-the-information-bottleneck)
-  - [4.2 - Encoding and Decoding Weight Symmetry](#42---encoding-and-decoding-weight-symmetry)
-  - [4.3 - Training via Reconstruction Error Minimization](#43---training-via-reconstruction-error-minimization)
-  - [4.4 - De-noising Autoencoders](#44---de-noising-autoencoders)
-  - [4.5 - Deep Belief Networks and Stacked Autoencoders](#45---deep-belief-networks-and-stacked-autoencoders)
-- [5 - Practical Implementation and Design Strategies](#5---practical-implementation-and-design-strategies)
-  - [5.1 - Data Pre-processing](#51---data-pre-processing)
-    - [5.1.1 - Input and Output Encoding](#511---input-and-output-encoding)
-    - [5.1.2 - Rescaling and Normalization Techniques](#512---rescaling-and-normalization-techniques)
-  - [5.2 - Network Initialization and Structure](#52---network-initialization-and-structure)
-    - [5.2.1 - Weight Initialization Strategies](#521---weight-initialization-strategies)
-    - [5.2.2 - Dynamic Modification of Network Structure](#522---dynamic-modification-of-network-structure)
-  - [5.3 - Advanced Regularization Techniques](#53---advanced-regularization-techniques)
-    - [5.3.1 - Weight Decay](#531---weight-decay)
-    - [5.3.2 - Limiting Hidden Nodes and Connections](#532---limiting-hidden-nodes-and-connections)
-    - [5.3.3 - Training with Noise (De-noising)](#533---training-with-noise-de-noising)
-- [6 - Current Issues and Environmental Considerations](#6---current-issues-and-environmental-considerations)
-  - [6.1 - Computational Costs (CPUs/GPUs and Heat)](#61---computational-costs-cpusgpus-and-heat)
-  - [6.2 - Data Requirements and Explainability](#62---data-requirements-and-explainability)
-  - [6.3 - The Problem of Overfitting in Deep Architectures](#63---the-problem-of-overfitting-in-deep-architectures)
+- [1 - Motivation and Definitions](#1---motivation-and-definitions)
+  - [1.1 - The Need for Deep Architectures](#11---the-need-for-deep-architectures)
+    - [Universal Function Approximation](#universal-function-approximation)
+    - [Hierarchical Representation](#hierarchical-representation)
+    - [Parameter Efficiency](#parameter-efficiency)
+- [2 - Stability Challenges in Training](#2---stability-challenges-in-training)
+  - [2.1 - The Vanishing Gradient Problem](#21---the-vanishing-gradient-problem)
+    - [Mechanism](#mechanism)
+    - [Consequence](#consequence)
+    - [Visualisation](#visualisation)
+    - [Example Calculation: The Generalised Delta Rule](#example-calculation-the-generalised-delta-rule)
+  - [2.2 - The Exploding Gradient Problem](#22---the-exploding-gradient-problem)
+    - [Mechanism](#mechanism-1)
+    - [Consequence](#consequence-1)
+    - [Instability](#instability)
+    - [Example Calculation: Instability in Gradient Descent](#example-calculation-instability-in-gradient-descent)
+- [3 - Architectural \& Algorithmic Solutions](#3---architectural--algorithmic-solutions)
+  - [3.1 - Advanced Activation Functions](#31---advanced-activation-functions)
+    - [Rectified Linear Unit (ReLU)](#rectified-linear-unit-relu)
+    - [Leaky ReLU (LReLU)](#leaky-relu-lrelu)
+    - [Parametric ReLU (PReLU)](#parametric-relu-prelu)
+    - [Softplus](#softplus)
+    - [Example Calculation: Computing Activation Outputs](#example-calculation-computing-activation-outputs)
+  - [3.2 - Weight Initialisation Strategies](#32---weight-initialisation-strategies)
+    - [The Goal](#the-goal)
+    - [Xavier (Glorot) Initialisation](#xavier-glorot-initialisation)
+    - [He (Kaiming) Initialisation](#he-kaiming-initialisation)
+  - [3.3 - Batch Normalisation](#33---batch-normalisation)
+    - [Covariate Shift](#covariate-shift)
+    - [The Algorithm](#the-algorithm)
+    - [Computational Example: Batch Normalisation](#computational-example-batch-normalisation)
+  - [3.4 - Skip Connections (Residual Learning)](#34---skip-connections-residual-learning)
+    - [Concept](#concept)
+    - [Function](#function)
+- [4 - Optimisation and Training Dynamics](#4---optimisation-and-training-dynamics)
+  - [4.1 - Limitations of Standard Gradient Descent](#41---limitations-of-standard-gradient-descent)
+    - [Error Surface Topology](#error-surface-topology)
+    - [Oscillation](#oscillation)
+  - [4.2 - Adaptive Optimisation Algorithms](#42---adaptive-optimisation-algorithms)
+    - [Momentum](#momentum)
+    - [Adaptive Learning Rates](#adaptive-learning-rates)
+- [5 - Generalisation and Regularisation](#5---generalisation-and-regularisation)
+  - [5.1 - Explicit Regularisation Techniques](#51---explicit-regularisation-techniques)
+    - [Dropout](#dropout)
+    - [Weight Decay](#weight-decay)
+    - [Early Stopping](#early-stopping)
+  - [5.2 - Data-Driven Regularisation](#52---data-driven-regularisation)
+    - [Data Augmentation](#data-augmentation)
+    - [Transfer Learning](#transfer-learning)
+    - [Example Scenario: Choosing Augmentation Strategies](#example-scenario-choosing-augmentation-strategies)
+  - [5.3 - Adversarial Robustness](#53---adversarial-robustness)
+    - [Adversarial Examples](#adversarial-examples)
+    - [Implication](#implication)
 
 
-# 1 - The Challenge of Depth in Neural Networks
+# 1 - Motivation and Definitions
 
-## 1.1 - Defining Deep Neural Networks
+## 1.1 - The Need for Deep Architectures
 
-Deep learning is synonymous with deep neural networks; these are simply neural networks comprised of many layers. While standard networks typically rely on backpropagation to update weights by finding gradients, increasing the depth of the network introduces specific mathematical complications.
+### Universal Function Approximation
 
-## 1.2 - The Vanishing Gradient Problem
+A shallow network is typically defined as a neural network with three or fewer layers; in contrast, a deep network contains more than three layers. A neural network with a single hidden layer is theoretically capable of approximating any continuous non-linear function. This concept is known as the Universal Function Approximation property.
 
-A primary issue in deep learning is that gradients can vanish or explode as they propagate backward through the network. This phenomenon significantly hinders the training process in networks with many layers.
+However, there is a practical limitation. To approximate complex functions arbitrarily well, a shallow network must be extremely "wide"; it requires a vast number of neurons in that single hidden layer. This results in a massive increase in the number of parameters. Such wide networks tend to memorise the training data rather than learning the underlying rules; consequently, they often fail to generalise to new, unseen data.
 
-### 1.2.1 - Mechanics of Backward Propagation in Deep Layers
-
-This issue stems from the fundamental mechanics of backpropagation. To calculate the derivatives for the initial layers (the layers closest to the input), we must multiply the derivatives of each subsequent layer. The calculation moves backward from the final output layer to the initial layer. Consequently, as the number of layers increases, the number of products required to update the weights also increases.
+[Image of neural network width vs depth]
 
 ![alt text]({BASE}/image-1.png)
-
-### 1.2.2 - Mathematical Analysis of the Sigmoid Derivative
-
-To understand why multiplying derivatives causes values to vanish, we must analyze the activation function used in the network. Consider the sigmoid transfer function, which is commonly used in these architectures.
-
-The sigmoid function is defined as:
-$$g(s)=\frac{1}{1+e^{-s}}$$
-
-Its derivative is calculated as:
-$$\frac{\partial g(s)}{\partial s} = g(s)(1-g(s))$$
-
-The maximum value of this derivative is only 0.25. This maximum occurs when $g(s)$ is 0.5 (when the input $s$ is 0); for any other input value, the derivative is even smaller.
-
-**Example Computation: The Sigmoid Derivative**
-
-The following example from your tutorial illustrates how the sigmoid derivative affects weight updates.
-
-**Scenario:**
-We have a perceptron using the sigmoid transfer function.
-
-  * Learning rate ($\alpha$): 0.5
-  * Initial weights: $w_{0}=1, w_{1}=1, w_{2}=2$
-  * Input ($x$): $x_{0}=1$ (bias), $x_{1}=1, x_{2}=2$
-  * Target ($t$): 1
-
-**Step 1: Calculate the weighted sum ($s$)**
-We calculate the sum of inputs multiplied by their weights.
-$$s = \sum w_{i}x_{i}$$
-$$s = (1 \times 1) + (1 \times 1) + (2 \times 2)$$
-$$s = 6$$
-
-**Step 2: Calculate the transfer function output ($g(s)$)**
-We pass $s$ through the sigmoid function.
-$$g(6) = \frac{1}{1+e^{-6}} \approx 0.998$$
-
-**Step 3: Calculate the weight update**
-The update rule using the generalized delta rule (which includes the derivative) is:
-$$w_{i} \leftarrow w_{i} + \alpha(t-g(s))g(s)(1-g(s))x_{i}$$
-
-Substituting our values:
-$$w_{0} \leftarrow 1 + 0.5 \times (1 - 0.998) \times 0.998 \times (1 - 0.998) \times 1$$
-$$w_{0} \leftarrow 1 + 0.5 \times (0.002) \times 0.998 \times (0.002) \times 1$$
-$$w_{0} \approx 1.000002$$
-
-**Observation:**
-Even though there is a small error ($t=1$ vs $g(s)=0.998$), the derivative term $g(s)(1-g(s))$ is extremely small (approx $0.002$). This results in a negligible weight change.
-
-### 1.2.3 - Impact of Chain Rule Multiplication on Weight Updates
-
-In a deep network, this effect is compounded. Because the derivative values are small (always less than 0.25 for sigmoid), multiplying many of them together via the chain rule results in a tiny number. If the gradients become very small, the updates to the weights become negligible. This effectively stops the initial layers of the network from learning features from the input data.
-
-The following diagram visualizes how the gradient diminishes as it passes through layers:
-
-
-```mermaid
-graph RL
-    Output[Output Layer] -- "Derivative < 0.25" --> L3[Layer 3]
-    L3 -- "Derivative * Derivative < 0.0625" --> L2[Layer 2]
-    L2 -- "Derivative * Derivative * Derivative < 0.015" --> L1[Layer 1]
-    style L1 fill:#ffcccc,stroke:#333,stroke-width:2px
-    style Output fill:#ccffcc,stroke:#333,stroke-width:2px
-```
-
-Note: The values in the diagram assume the maximum possible derivative of the sigmoid function (0.25). In practice, values are usually much smaller.
-
-## 1.3 - The Rectified Linear Unit (ReLU) Solution
-
-### 1.3.1 - Definition and Properties of ReLU
-
-To address the issues found in deep networks, a specific transfer function called the Rectifier transfer function is often used. The unit employing this function is known as a Rectified Linear Unit, or ReLU.
-
-The mathematical definition of this function is simple:
-$$ReLU(x) = max(0, x)$$
-
-This function outputs the input directly if it is positive; otherwise, it outputs zero. Despite its linear appearance for positive values, it is a non-linear function.
 
 ![alt text]({BASE}/image-2.png)
 
-### 1.3.2 - Mitigating Vanishing Gradients
 
-The primary advantage of using ReLU in deep neural networks is that it helps prevent the vanishing gradient problem.
+### Hierarchical Representation
 
-As discussed in the previous section, the derivative of the sigmoid function is always less than or equal to 0.25. When these small derivatives are multiplied through many layers via the chain rule, the gradient effectively disappears.
-In contrast, the derivative of the ReLU function is 1 for all positive inputs. When gradients are propagated back through active ReLU units (where $x > 0$), they are multiplied by 1. This preserves the magnitude of the gradient, allowing weights in the initial layers of deep networks to be updated effectively.
+Deep neural networks are designed to model the hierarchical structure found in natural data. Deep learning allows the computer to learn complicated concepts by building them out of simpler ones. The network learns feature hierarchies where features at higher levels are composed of low-level features.
 
-### 1.3.3 - Illustrative Computation: ReLU vs. Sigmoid Gradient Flow
+[slides05\_deep\_discriminative\_NNs\_repaired\_compressed.pdf: 2: Visual examples of hierarchical features in image recognition, moving from raw pixels to animal faces]
 
-To visualize the impact, we can apply the same variables from the previous Sigmoid example to a ReLU unit.
+This abstraction process mimics various cognitive tasks:
 
-**Scenario:**
+  * **Image Recognition:** Pixels $\rightarrow$ Edges $\rightarrow$ Contours $\rightarrow$ Parts $\rightarrow$ Objects.
+  * **Text Recognition:** Characters $\rightarrow$ Words $\rightarrow$ Clauses $\rightarrow$ Sentences $\rightarrow$ Stories.
+  * **Speech Recognition:** Sounds $\rightarrow$ Phones $\rightarrow$ Phonemes $\rightarrow$ Words.
 
-  * Weighted sum ($s$): 6 (Same as the previous example)
-  * Target ($t$): 1 (Note: ReLU outputs are not bounded to [0,1], so targets would typically be scaled differently, but we keep this for direct comparison of the derivative term).
+We can visualise this flow of abstraction using the following diagram:
 
-**Step 1: Calculate the activation output**
-$$g(s) = max(0, 6) = 6$$
+```mermaid
+graph TD
+    A[Raw Input / Pixels] --> B[Low-Level Features / Edges];
+    B --> C[Mid-Level Features / Shapes];
+    C --> D[High-Level Features / Objects];
+    D --> E[Output / Classification];
+```
 
-**Step 2: Calculate the derivative**
-For the ReLU function $g(s)$, the derivative $g'(s)$ is:
+### Parameter Efficiency
 
-  * $1$ if $s > 0$
-  * $0$ if $s \le 0$
+Deep networks achieve parameter efficiency by stacking layers. They can perform complex mappings with significantly fewer parameters than a wide network would require to achieve the same level of performance.
 
-Since our input $s = 6$ (which is $> 0$):
-$$g'(6) = 1$$
-
-**Step 3: Compare the Gradient Signal (Chain Rule Component)**
-The weight update relies on the "error signal" term, which includes the derivative of the activation function.
-
-  * Sigmoid Derivative term: $\approx 0.002$ (Vanished)
-  * ReLU Derivative term: $1.0$ (Preserved)
-
-**Conclusion:**
-In a deep network with multiple layers, if we chain these derivatives together:
-
-  * Sigmoid layer: $Error \times 0.25 \times 0.25 \times \dots$ (rapidly approaches zero).
-  * ReLU layer: $Error \times 1 \times 1 \times \dots$ (error signal remains strong).
-
-This computation demonstrates how ReLU units allow the error signal to travel back through the network without diminishing, enabling effective learning in deep architectures.
-
-
-# 2 - Advanced Activation and Selection Mechanisms
-
-## 2.1 - Competitive Learning Principles
-
-In competitive learning networks, output units compete for the right to respond to the input. This competition implies that the activity of some neurons is suppressed by other neurons.
-
-There are two primary ways to implement this competition:
-
-  * **Inhibitory Lateral Weights:** Connections between output neurons inhibit each other; this often requires determining outputs iteratively.
-  * **Selection Process:** A direct mechanism selects the "winning" neuron(s); this approach is generally simpler and more stable.
+This efficiency occurs because deep networks capture the natural hierarchy of the task. They avoid the redundancy found in wide networks. Furthermore, deep architectures are necessary for processing sequential data. Recurrent Neural Networks (RNNs) process temporal information; when trained, they are "unfolded" over time. This unfolding process results in a structure equivalent to a very deep network with one layer for each time step.
 
 ![alt text]({BASE}/image-3.png)
 
-## 2.2 - Winner-Takes-All (WTA) and k-WTA Activations
 
-The selection process can be implemented using specific activation functions that enforce competition.
+# 2 - Stability Challenges in Training
 
-  * **Winner-Takes-All (WTA):** The neuron with the largest response is the winner and remains active; all other neurons have their response set to zero. This is useful for clustering tasks.
-  * **k-Winners-Take-All (kWTA):** A generalization where the $k$ neurons with the largest responses remain active, while the rest are set to zero.
+## 2.1 - The Vanishing Gradient Problem
+
+### Mechanism
+
+In deep networks, the gradient is calculated using the chain rule, which involves multiplying the derivatives of the activation functions from the output layer back to the input layer. If we consider a simple network where each neuron passes its input through an activation function $\varphi$ and a weight $w$, the gradient for an early layer weight involves a product of terms like $\varphi'(net) \cdot w$.
+If the activation function is a sigmoid or tanh, its derivative $\varphi'$ is often less than 1. If weights are also initialised to be small ($<1$), this product decays exponentially as it propagates backward through the layers (e.g., $0.5 \times 0.5 \times 0.5 \dots$).
 
 ![alt text]({BASE}/image-4.png)
 
-**Example Computation: Selection Processes**
-The following example demonstrates how raw neuron outputs are transformed by these selection mechanisms.
+### Consequence
 
-**Scenario:**
-We have a layer of 3 neurons. Based on the current input and weights, they produce the following pre-selection response values:
+The result of this decay is that the gradients for weights in the earlier layers become vanishingly small. Consequently, these early layers learn extremely slowly or stop learning altogether. The earlier layers, which are responsible for extracting low-level features, remain stuck at their random initialisation values. The network effectively behaves like a shallow network, as only the later layers are being trained effectively.
 
-  * Neuron A: $0.34$
-  * Neuron B: $0.73$
-  * Neuron C: $-0.61$
+### Visualisation
 
-**Case 1: Winner-Takes-All (WTA)**
-We identify the maximum value and suppress the others.
-Identify Max: $max(0.34, 0.73, -0.61) = 0.73$ (Neuron B).
+This issue is closely tied to the properties of saturation in activation functions. For the sigmoid function, the derivative is $\sigma(x)(1-\sigma(x))$, which has a maximum value of 0.25 (at $x=0$). For any input far from zero, the derivative is close to 0. This "saturation" ensures that the gradient signal is attenuated at every layer.
 
-Apply Selection:
+![alt text]({BASE}/image-5.png)
 
-  * Neuron A ($0.34 < 0.73$): Output becomes $0$.
-  * Neuron B ($0.73 = 0.73$): Output remains $0.73$.
-  * Neuron C ($-0.61 < 0.73$): Output becomes $0$.
+### Example Calculation: The Generalised Delta Rule
 
-Final Output: $[0, 0.73, 0]$
+The following exercise demonstrates how the gradient (and thus the weight update) depends on the derivative of the activation function. Even in a single layer, if the neuron saturates, the update becomes tiny.
 
-**Case 2: k-Winners-Take-All (with k=2)**
-We identify the top 2 values and suppress the rest.
+**Question:**
+Consider the following set of training data:
 
-Rank Values:
+| $x_2$ | $x_1$ | desired output |
+| :---- | :---- | :------------- |
+| 1     | 2     | 1              |
+| 3     | 1     | 0              |
+| 1     | 1     | 1              |
+| 0     | 2     | 0              |
 
-1.  Neuron B ($0.73$)
-2.  Neuron A ($0.34$)
-3.  Neuron C ($-0.61$)
+Train the perceptron for one epoch using the generalised delta rule and stochastic gradient descent. Your perceptron should have initial weights $w_1 = 1$ and $w_2 = 2$ bias 1. For this you will need to use the sigmoid transfer function:
+$g(s) = \frac{1}{1 + e^{-s}}$
+Set the learning rate to 0.5. (Note: Only the first example calculation is shown below to demonstrate the mechanism).
 
-Apply Selection:
+**Solution Walkthrough:**
 
-  * Neuron B (Rank 1): Output remains $0.73$.
-  * Neuron A (Rank 2): Output remains $0.34$.
-  * Neuron C (Rank 3): Output becomes $0$.
+1.  **Identify Parameters**
 
-Final Output: $[0.34, 0.73, 0]$
+      * Initial weights: $w_0 = 1$ (bias), $w_1 = 1$, $w_2 = 2$.
+      * Learning rate: $\alpha = 0.5$.
+      * First training example: $x_0 = 1$ (bias input), $x_1 = 1$, $x_2 = 2$. Target $t = 1$.
+      * Update Rule (Generalised Delta Rule): $w_i \leftarrow w_i + \alpha (t - g(s)) g'(s) x_i$ where $g'(s) = g(s)(1 - g(s))$.
 
-## 2.3 - Softmax Activation Function
+2.  **Calculate Weighted Sum ($s$)**
+    Compute the linear combination of inputs and weights:
+    $$s = \sum w_i x_i = (w_0 \cdot x_0) + (w_1 \cdot x_1) + (w_2 \cdot x_2)$$
+    $$s = (1 \cdot 1) + (1 \cdot 1) + (2 \cdot 2) = 1 + 1 + 4 = 6$$
 
-### 2.3.1 - Probabilistic Interpretation of Outputs
+3.  **Calculate Activation ($g(s)$)**
+    Apply the sigmoid function:
+    $$g(6) = \frac{1}{1 + e^{-6}} \approx 0.998$$
 
-Softmax is an alternative selection process used in competitive networks. Unlike Winner-Takes-All, which selects a single winner, Softmax assigns an activation value to every neuron. A defining characteristic of this function is that the outputs of all neurons in the layer sum to exactly 1. This property allows the output vector to be interpreted as a probability distribution. Consequently, Softmax is widely used as the activation function for the final layer in classification networks to predict class probabilities.
+4.  **Calculate the Gradient Term**
+    The term responsible for the "vanishing" effect is the derivative $g'(s) = g(s)(1 - g(s))$.
+    $$g'(6) = 0.998 \times (1 - 0.998) = 0.998 \times 0.002 \approx 0.002$$
+    Notice how small this value is\! Because the neuron is "saturated" (output is close to 1), the derivative is tiny.
 
-![alt text]({BASE}/image-1.png)
+5.  **Update Weights**
+    Calculate the update for the bias weight $w_0$:
+    $$w_0 \leftarrow w_0 + \alpha (t - g(s)) g'(s) x_0$$
+    Given Target $t=1$:
+    $$w_0 \leftarrow 1 + 0.5 \times (1 - 0.998) \times 0.002 \times 1$$
+    $$w_0 \leftarrow 1 + 0.5 \times (0.002) \times 0.002$$
+    $$w_0 \leftarrow 1 + 0.000002$$
+    $$w_0 = 1.000002$$
 
-### 2.3.2 - Calculation of Softmax Activations
+    **Observation:** Despite the error being small ($1 - 0.998 = 0.002$), the weight update is infinitesimal ($2 \times 10^{-6}$). In a deep network, multiplying this small derivative ($0.002$) by other small derivatives from deeper layers would result in a gradient effectively equal to zero. This demonstrates the vanishing gradient mechanism.
 
-The activation for each neuron is calculated by taking the exponential of its value and normalizing it against the sum of exponentials for all neurons in the layer. A hyperparameter, $\beta$, can be used to scale the inputs before the exponential function is applied.
+## 2.2 - The Exploding Gradient Problem
 
-The formula for the activation $y_j$ is:
-$$y_{j} \leftarrow \frac{e^{\beta y_{j}}}{\sum_{k}e^{\beta y_{k}}}$$
+### Mechanism
 
-**Example Computation: Softmax Activation**
-This example demonstrates how to convert raw neuron outputs into Softmax probabilities using the values provided in the lecture slides.
+In deep networks, if weights are initialised to be large ($w > 1$) and the derivatives of the activation function are also greater than 1, the product of these terms in the chain rule grows exponentially as it propagates backwards. This is the inverse of the vanishing gradient problem. The error signal accumulates and amplifies at each step.
 
-**Scenario:**
-We have a layer of 3 neurons with the following pre-activation values ($y$). We assume $\beta = 1$ for this calculation.
+### Consequence
 
-  * Neuron 1: $0.34$
-  * Neuron 2: $0.73$
-  * Neuron 3: $-0.61$
-
-**Step 1: Calculate the exponential for each neuron (Numerator)**
-We calculate $e^{y}$ for each input value.
-
-  * Neuron 1: $e^{0.34} \approx 1.4049$
-  * Neuron 2: $e^{0.73} \approx 2.0751$
-  * Neuron 3: $e^{-0.61} \approx 0.5434$
-
-**Step 2: Calculate the sum of exponentials (Denominator)**
-We sum the values calculated in Step 1 to find the normalization factor.
-$$Sum = 1.4049 + 2.0751 + 0.5434 = 4.0234$$
-
-**Step 3: Normalize to find final activations**
-Divide the individual exponential value of each neuron by the total sum.
-
-  * Output 1: $1.4049 / 4.0234 \approx 0.35$
-  * Output 2: $2.0751 / 4.0234 \approx 0.52$
-  * Output 3: $0.5434 / 4.0234 \approx 0.14$
-
-**Result:**
-The final output vector is $[0.35, 0.52, 0.14]$. These values sum to roughly 1 (allowing for rounding errors), providing a probabilistic view of which neuron is most active.
-
-
-# 3 - Negative Feedback and Iterative Activation
-
-## 3.1 - Architecture of Negative Feedback Networks
-
-Negative feedback networks utilize a specific form of competition where output neurons compete to receive inputs rather than competing to produce an output. This is achieved through inhibitory feedback connections that link output neurons back to the input neurons. In this architecture, the outputs must be determined iteratively rather than in a single pass.
+The gradients in the early layers become excessively large. When these massive gradients are applied during the weight update step, they cause the weights to change drastically and randomly. This can destroy any useful features the network has already learned. The network becomes unstable, and the weights may grow so large that they cause numerical overflow (NaN values).
 
 ![alt text]({BASE}/image-6.png)
 
-## 3.2 - Iterative Updates for Input Reconstruction
+### Instability
 
-The activation process in these networks aims to find output values ($y$) that accurately reconstruct the input ($x$). The system defines an error signal ($e$), which represents the difference between the actual input and the current reconstruction.
-
-The iterative update process typically follows these steps:
-
-1.  **Initialize:** Set outputs $y$ to zero.
-2.  **Update Error ($e$):** Calculate the difference between the input and the weighted sum of outputs (the reconstruction).
-    $$e = x - W^{T}y$$
-3.  **Update Output ($y$):** Adjust the outputs based on the error, scaled by a learning rate $\alpha$ and the forward weights.
-    $$y \leftarrow y + \alpha W e$$
-
-This cycle repeats for a set number of iterations.
-
-## 3.3 - Regulatory Feedback (Divisive Input Modulation)
-
-The standard additive update rules can sometimes lead to instability or oscillatory responses if the parameter $\alpha$ is too large. A more stable method for calculating activations is known as Regulatory Feedback or Divisive Input Modulation.
-
-This method uses element-wise division and multiplication instead of subtraction and addition. The update rules are:
-
-**Calculate Error Ratio:**
-$$e = x \oslash [W^{T}y]_{\epsilon_{2}}$$
-(Note: $\oslash$ denotes element-wise division)
-
-**Update Output:**
-$$y \leftarrow [y]_{\epsilon_{1}} \odot \bar{W} e$$
-(Note: $\odot$ denotes element-wise multiplication)
-
-In these equations:
-
-  * $\bar{W}$ represents the weight matrix $W$ with each row normalized to sum to one.
-  * The function $[v]_{\epsilon} = \max(\epsilon, v)$ ensures values do not fall below a small threshold $\epsilon$ to prevent division by zero or zero outputs.
-
-## 3.4 - Computational Examples of Feedback Iterations
-
-To understand the dynamics of these networks, we will walk through two examples: one using the standard additive update rule and one using the regulatory feedback method.
-
-**Example 1: Standard Negative Feedback**
-
-**Problem Setup:**
-Consider a negative feedback network with three inputs and two output neurons.
-
-  * Weights ($W$): $\begin{pmatrix} 1 & 1 & 0 \\ 1 & 1 & 1 \end{pmatrix}$
-  * Input ($x$): $(1, 1, 0)^T$
-  * Learning Rate ($\alpha$): 0.25
-  * Initialization: Output activations ($y$) are initialized to zero.
-
-**Update Equations:**
-
-  * Error Calculation: $e = x - W^T y$
-  * Output Update: $y \leftarrow y + \alpha W e$
-
-**Step-by-Step Calculation:**
-
-**Iteration 1:**
-Calculate Reconstruction ($W^T y$):
-With initial $y = (0, 0)^T$, the reconstruction is $(0, 0, 0)^T$.
-
-Calculate Error ($e$):
-$$e = \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix} - \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} = \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}$$
-
-Calculate Forward Drive ($W e$):
-$$W e = \begin{pmatrix} 1 & 1 & 0 \\ 1 & 1 & 1 \end{pmatrix} \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix} = \begin{pmatrix} 2 \\ 2 \end{pmatrix}$$
-
-Update Output ($y$):
-$$y \leftarrow \begin{pmatrix} 0 \\ 0 \end{pmatrix} + 0.25 \begin{pmatrix} 2 \\ 2 \end{pmatrix} = \begin{pmatrix} 0.5 \\ 0.5 \end{pmatrix}$$
-
-**Iteration 2:**
-Calculate Reconstruction ($W^T y$):
-$$W^T y = \begin{pmatrix} 1 & 1 \\ 1 & 1 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} 0.5 \\ 0.5 \end{pmatrix} = \begin{pmatrix} 1 \\ 1 \\ 0.5 \end{pmatrix}$$
-
-Calculate Error ($e$):
-$$e = \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix} - \begin{pmatrix} 1 \\ 1 \\ 0.5 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ -0.5 \end{pmatrix}$$
-
-Calculate Forward Drive ($W e$):
-$$W e = \begin{pmatrix} 1 & 1 & 0 \\ 1 & 1 & 1 \end{pmatrix} \begin{pmatrix} 0 \\ 0 \\ -0.5 \end{pmatrix} = \begin{pmatrix} 0 \\ -0.5 \end{pmatrix}$$
-
-Update Output ($y$):
-$$y \leftarrow \begin{pmatrix} 0.5 \\ 0.5 \end{pmatrix} + 0.25 \begin{pmatrix} 0 \\ -0.5 \end{pmatrix} = \begin{pmatrix} 0.5 \\ 0.375 \end{pmatrix}$$
-
-**Final Results (5 Iterations):**
-The following table shows the convergence over 5 iterations. Notice how the second neuron's output is suppressed while the first increases, illustrating competition.
-
-| iteration | eT                             | (We)T               | yT                 | (WTy)T                      |
-| :-------- | :----------------------------- | :------------------ | :----------------- | :-------------------------- |
-| 1         | (1, 1, 0)                      | (2, 2)              | (0.5, 0.5)         | (1, 1, 0.5)                 |
-| 2         | (0, 0, -0.5)                   | (0, -0.5)           | (0.5, 0.375)       | (0.875, 0.875, 0.375)       |
-| 3         | (0.125, 0.125, -0.375)         | (0.25, -0.125)      | (0.5625, 0.34375)  | (0.90625, 0.90625, 0.34375) |
-| 4         | (0.09375, 0.09375, -0.34375)   | (0.1875, -0.15625)  | (0.60938, 0.30469) | (0.91406, 0.91406, 0.30469) |
-| 5         | (0.085938, 0.085938, -0.30469) | (0.17188, -0.13281) | (0.65234, 0.27148) | (0.92383, 0.92383, 0.27148) |
-
-**Example 2: Regulatory Feedback (Divisive Input Modulation)**
-
-**Problem Setup:**
-Using the same inputs and weights ($x$, $W$) as above, we apply the regulatory feedback rules.
-
-  * Parameters: $\epsilon_1 = \epsilon_2 = 0.01$.
-  * Normalized Weights ($\bar{W}$): Each row of $W$ is normalized to sum to one.
-    Row 1 sum: $1+1+0=2$. Row 2 sum: $1+1+1=3$.
-    $$\bar{W} = \begin{pmatrix} 0.5 & 0.5 & 0 \\ 0.333 & 0.333 & 0.333 \end{pmatrix}$$
-
-**Update Equations:**
-
-  * Error Ratio: $e = x \oslash [W^T y]_{\epsilon_2}$
-  * Output Update: $y \leftarrow [y]_{\epsilon_1} \odot \bar{W} e$
-    (Note: $[v]_\epsilon = \max(\epsilon, v)$)
-
-**Step-by-Step Calculation (Iteration 1):**
-
-Calculate Reconstruction ($W^T y$):
-Initial $y=(0,0)^T$. $W^T y = (0, 0, 0)^T$.
-Apply threshold: $[W^T y]_{\epsilon_2} = (0.01, 0.01, 0.01)^T$.
-
-Calculate Error Ratio ($e$):
-$$e = \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix} \oslash \begin{pmatrix} 0.01 \\ 0.01 \\ 0.01 \end{pmatrix} = \begin{pmatrix} 100 \\ 100 \\ 0 \end{pmatrix}$$
-
-Calculate Weighted Error ($\bar{W} e$):
-$$\bar{W} e = \begin{pmatrix} 0.5 & 0.5 & 0 \\ 0.333 & 0.333 & 0.333 \end{pmatrix} \begin{pmatrix} 100 \\ 100 \\ 0 \end{pmatrix} = \begin{pmatrix} 100 \\ 66.67 \end{pmatrix}$$
-
-Update Output ($y$):
-Apply threshold to current $y$: $[y]_{\epsilon_1} = (0.01, 0.01)^T$.
-$$y \leftarrow \begin{pmatrix} 0.01 \\ 0.01 \end{pmatrix} \odot \begin{pmatrix} 100 \\ 66.67 \end{pmatrix} = \begin{pmatrix} 1 \\ 0.667 \end{pmatrix}$$
-
-**Final Results (5 Iterations):**
-The table below shows the progression using regulatory feedback.
-
-| iteration | eT                  | (We)T             | yT                 | (WTy)T                      |
-| :-------- | :------------------ | :---------------- | :----------------- | :-------------------------- |
-| 1         | (100, 100, 0)       | (100, 66.66667)   | (1, 0.66667)       | (1.6667, 1.6667, 0.66667)   |
-| 2         | (0.6, 0.6, 0)       | (0.6, 0.4)        | (0.6, 0.26667)     | (0.86667, 0.86667, 0.26667) |
-| 3         | (1.1538, 1.1538, 0) | (1.1538, 0.76923) | (0.69231, 0.20513) | (0.89744, 0.89744, 0.20513) |
-| 4         | (1.1143, 1.1143, 0) | (1.1143, 0.74286) | (0.77143, 0.15238) | (0.92381, 0.92381, 0.15238) |
-| 5         | (1.0825, 1.0825, 0) | (1.0825, 0.72165) | (0.83505, 0.10997) | (0.94502, 0.94502, 0.10997) |
-
-Like the standard method, the vector $W^T y$ converges towards a reconstruction of the input. This multiplicative method avoids negative values and can be more stable than additive updates.
-
-
-# 4 - Autoencoders and Representation Learning
-
-## 4.1 - Architecture and the Information Bottleneck
-
-An autoencoder is a specific type of neural network designed to reproduce its input at the output layer. The architecture typically consists of three layers: an input layer ($x$), a hidden layer ($y$), and a reconstruction layer ($r$). The primary goal is for the reconstruction $r$ to match the input $x$ as closely as possible.
-
-To prevent the network from simply copying the data without learning anything useful, the architecture imposes an "information bottleneck". This bottleneck restricts the flow of information through the hidden layer, forcing the network to learn a compressed and efficient representation of the data. This restriction is achieved in two main ways:
-
-  * **Limiting Hidden Nodes:** The number of units in the hidden layer is kept small relative to the input.
-  * **Sparsity Constraints:** The network limits the number of hidden nodes that can be active simultaneously.
+The most immediate symptom of exploding gradients is instability in the training process. The cost function does not decrease smoothly; instead, it oscillates wildly or diverges completely. The large steps taken in the weight space mean the optimiser overshoots the minima, bouncing back and forth across the error surface.
 
 ![alt text]({BASE}/image-7.png)
 
-## 4.2 - Encoding and Decoding Weight Symmetry
+### Example Calculation: Instability in Gradient Descent
 
-The operation of an autoencoder is divided into two phases: encoding and decoding. The encoding phase maps the input $x$ to the hidden representation $y$, while the decoding phase maps $y$ to the reconstruction $r$.
+The following exercise demonstrates how large error signals (similar to those caused by exploding gradients) can cause weights to oscillate and grow uncontrollably, leading to instability.
 
-A common constraint applied to these networks is weight symmetry. The weights used for decoding are often set to be the transpose of the encoding weights. If the encoding weight matrix is $W$, the decoding weight matrix is defined as $W^T$.
+**Question:**
+Train the perceptron for one epoch using the delta rule and stochastic gradient descent.
+The perceptron should have initial weights $w_1=1$ and $w_2=2$ and bias 1 (so $w_0=1$).
+Use a learning rate of 0.5.
+The set of training data is:
 
-The mathematical process is as follows:
+| $x_2$ | $x_1$ | desired output |
+| :---- | :---- | :------------- |
+| 1     | 2     | 1              |
+| 3     | 1     | 0              |
+| 1     | 1     | 1              |
+| 0     | 2     | 0              |
 
-**Encoding:** The input is transformed using weights $W$ and a function $f$:
-$$y = f(Wx)$$
+(Note: For the calculation, we treat the first column as $x_1$ and the second as $x_2$ to align with the standard provided solution).
 
-**Decoding:** The representation is transformed back using the transposed weights $W^T$:
-$$r = f(W^T y)$$
+**Solution Walkthrough:**
 
-**Full Reconstruction:** Combining these steps gives the full equation:
-$$r = f(W^T f(Wx))$$
+The update rule for the Delta rule is:
+$w_i \leftarrow w_i + \alpha (t - s) x_i$
+where $s$ is the weighted sum $s = \sum w_i x_i$. Note that unlike the error-correction rule, we compare the target $t$ directly with the weighted sum $s$, not the thresholded output. This can lead to large updates if $s$ is far from $t$.
 
-![alt text]({BASE}/image-19.png)
+**1. First Example**
+Input: $x_0=1, x_1=1, x_2=2$. Target $t=1$.
+Calculate weighted sum $s$:
+$$s = (1 \times 1) + (1 \times 1) + (2 \times 2) = 1 + 1 + 4 = 6$$
+Update weights:
+$$w_0 \leftarrow 1 + 0.5(1 - 6) \times 1 = 1 + (-2.5) = -1.5$$
+$$w_1 \leftarrow 1 + 0.5(1 - 6) \times 1 = 1 + (-2.5) = -1.5$$
+$$w_2 \leftarrow 2 + 0.5(1 - 6) \times 2 = 2 + (-5) = -3$$
+*Current weights:* $w_0 = -1.5, w_1 = -1.5, w_2 = -3$
 
-## 4.3 - Training via Reconstruction Error Minimization
+**2. Second Example**
+Input: $x_0=1, x_1=3, x_2=1$. Target $t=0$.
+Calculate weighted sum $s$:
+$$s = (-1.5 \times 1) + (-1.5 \times 3) + (-3 \times 1) = -1.5 - 4.5 - 3 = -9$$
+Update weights:
+$$w_0 \leftarrow -1.5 + 0.5(0 - (-9)) \times 1 = -1.5 + 4.5 = 3$$
+$$w_1 \leftarrow -1.5 + 0.5(0 - (-9)) \times 3 = -1.5 + 13.5 = 12$$
+$$w_2 \leftarrow -3 + 0.5(0 - (-9)) \times 1 = -3 + 4.5 = 1.5$$
+*Current weights:* $w_0 = 3, w_1 = 12, w_2 = 1.5$
+*Observation:* Notice the massive swing in $w_1$ from -1.5 to 12. This instability is characteristic of large gradients.
 
-The goal of training an autoencoder is to minimize the reconstruction error. This error represents the difference between the original input $x$ and the reconstructed output $r$. Various metrics can measure this error; a common choice is the Euclidean distance:
-$$e=||x-r||_{2}$$
-The network weights are adjusted to minimize this error. This process typically uses the Backpropagation algorithm, which calculates the gradients needed to update the weights.
+**3. Third Example**
+Input: $x_0=1, x_1=1, x_2=1$. Target $t=1$.
+Calculate weighted sum $s$:
+$$s = (3 \times 1) + (12 \times 1) + (1.5 \times 1) = 3 + 12 + 1.5 = 16.5$$
+Update weights:
+$$w_0 \leftarrow 3 + 0.5(1 - 16.5) \times 1 = 3 - 7.75 = -4.75$$
+$$w_1 \leftarrow 12 + 0.5(1 - 16.5) \times 1 = 12 - 7.75 = 4.25$$
+$$w_2 \leftarrow 1.5 + 0.5(1 - 16.5) \times 1 = 1.5 - 7.75 = -6.25$$
+*Current weights:* $w_0 = -4.75, w_1 = 4.25, w_2 = -6.25$
 
-## 4.4 - De-noising Autoencoders
+**4. Fourth Example**
+Input: $x_0=1, x_1=2, x_2=0$. Target $t=0$.
+Calculate weighted sum $s$:
+$$s = (-4.75 \times 1) + (4.25 \times 2) + (-6.25 \times 0) = -4.75 + 8.5 = 3.75$$
+Update weights:
+$$w_0 \leftarrow -4.75 + 0.5(0 - 3.75) \times 1 = -4.75 - 1.875 = -6.625$$
+$$w_1 \leftarrow 4.25 + 0.5(0 - 3.75) \times 2 = 4.25 - 3.75 = 0.5$$
+$$w_2 \leftarrow -6.25 + 0.5(0 - 3.75) \times 0 = -6.25$$
+*Final weights:* $w_0 = -6.625, w_1 = 0.5, w_2 = -6.25$
 
-Standard autoencoders can sometimes overfit the training data. This means they might simply memorize the inputs without learning robust features. To prevent this, we use de-noising autoencoders.
+**Conclusion:** The weights oscillated wildly (e.g., $w_1$: $1 \rightarrow -1.5 \rightarrow 12 \rightarrow 4.25 \rightarrow 0.5$) because the error term $(t-s)$ was large. In deep networks, exploding gradients cause similar behaviour but on a much larger scale, preventing convergence.
 
-In this approach, noise is added to the inputs before they are fed into the network. The encoding step uses this corrupted input. However, the decoding step calculates the error by comparing the output against the original, uncorrupted input. This forces the network to learn how to remove the noise and recover the underlying structure of the data.
+
+# 3 - Architectural & Algorithmic Solutions
+
+## 3.1 - Advanced Activation Functions
+
+### Rectified Linear Unit (ReLU)
+
+The ReLU function is defined as $\varphi(x) = \max(0, x)$. It outputs the input directly if it is positive, and outputs zero otherwise. This simple function solves the vanishing gradient problem effectively. For positive inputs, the derivative is always 1. This means gradients do not decay as they propagate back through layers, unlike the sigmoid function where derivatives are always less than 0.25.
 
 ![alt text]({BASE}/image-8.png)
 
-![alt text]({BASE}/image-10.png)
+### Leaky ReLU (LReLU)
 
-**Example:**
+A potential issue with standard ReLU is the "dying ReLU" problem. If a neuron enters a state where its input is always negative, its output and gradient will be zero. The weights will never update, and the neuron effectively dies.
+Leaky ReLU fixes this by allowing a small, non-zero gradient when the input is negative.
+The function is defined as:
+$$\varphi(x) = \begin{cases} x & \text{if } x \ge 0 \\ \alpha x & \text{if } x < 0 \end{cases}$$
+Here, $\alpha$ is a small constant (e.g., 0.01 or 0.1) that is fixed for all neurons.
 
-De-noising Autoencoder Structure**
-The following exercise from your tutorial illustrates the structure and training logic of a de-noising autoencoder.
+### Parametric ReLU (PReLU)
 
-The figure below shows an autoencoder neural network.
+PReLU extends Leaky ReLU by making the slope of the negative part a learnable parameter rather than a fixed constant.
+$$\varphi(x) = \begin{cases} x & \text{if } x \ge 0 \\ a_j x & \text{if } x < 0 \end{cases}$$
+The parameter $a_j$ is learnt via backpropagation along with the network weights. This allows the network to adapt the activation shape to the data.
 
-![alt text]({BASE}/image-8.png)
+![alt text]({BASE}/image-9.png)
 
-Draw a diagram of a de-noising autoencoder and briefly explain how a de-noising autoencoder is trained.
+### Softplus
 
-**Answer:**
-To transform a standard autoencoder into a de-noising one, we introduce a corruption step.
+Softplus is a smooth approximation of the ReLU function. It is defined as $\varphi(x) = \ln(1 + e^x)$. While ReLU has a sharp corner at zero, Softplus is differentiable everywhere.
 
-**1. Diagram**
-The input $x$ is first corrupted to create $\tilde{x}$. This corrupted version is fed into the encoding layer. The output (hidden representation) is then decoded to produce the reconstruction. Finally, the error $e$ is calculated between the reconstruction and the original $x$.
+### Example Calculation: Computing Activation Outputs
 
-![alt text]({BASE}/image-10.png)
+The following exercise walks through applying these different functions to a feature map (a matrix of neuron outputs).
 
-**2. Training Explanation**
-The network is trained so that the output, $r$, reconstructs the input, $x$. However, before encoding is performed the input is corrupted with noise. This mitigates overfitting.
+**Question:**
+The following array shows the output produced by a mask in a convolutional layer of a convolutional neural network (CNN)
+$$net_{j} = \begin{bmatrix} 1 & 0.5 & 0.2 \\ -1 & -0.5 & -0.2 \\ 0.1 & -0.1 & 0 \end{bmatrix}$$
+Calculate the values produced by the application of the following activation functions
+i) ReLU,
+ii) LReLU when $a=0.1$,
+iii) tanh,
+iv) heaviside function with threshold 0.1 for each neuron (define $H(0)=0.5$).
 
-## 4.5 - Deep Belief Networks and Stacked Autoencoders
+**Solution Walkthrough:**
 
-Stacked autoencoders serve as the foundation for certain deep learning architectures. When multiple autoencoders are stacked on top of each other, they create a deep network capable of learning complex features.
+We apply each function element-wise to the matrix $net_j$.
 
-A specific and notable type of this architecture is the Deep Belief Network (DBN). A DBN is constructed by stacking Restricted Boltzmann Machines (RBMs), which are a specific variation of autoencoders. In this structure, the hidden layer of one autoencoder becomes the input for the next. This layering allows the network to learn progressively more abstract representations of the data.
+**i) ReLU**
+Formula: $\max(0, x)$.
+
+  * **Positive elements** ($1, 0.5, 0.2, 0.1$) remain unchanged.
+  * **Negative elements** ($-1, -0.5, -0.2, -0.1$) become $0$.
+  * **Zero** remains $0$.
+
+$$\text{ReLU output} = \begin{bmatrix} 1 & 0.5 & 0.2 \\ 0 & 0 & 0 \\ 0.1 & 0 & 0 \end{bmatrix}$$
+
+**ii) LReLU (with $a=0.1$)**
+Formula: $x$ if $x \ge 0$, else $0.1x$.
+
+  * **Positive elements** remain unchanged (same as ReLU).
+  * **Negative elements** are multiplied by 0.1.
+      * $-1 \rightarrow -0.1$
+      * $-0.5 \rightarrow -0.05$
+      * $-0.2 \rightarrow -0.02$
+      * $-0.1 \rightarrow -0.01$
+
+$$\text{LReLU output} = \begin{bmatrix} 1 & 0.5 & 0.2 \\ -0.1 & -0.05 & -0.02 \\ 0.1 & -0.01 & 0 \end{bmatrix}$$
+
+**iii) Tanh**
+Formula: $\tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$. This squashes values between -1 and 1.
+
+  * $\tanh(1) \approx 0.7616$
+  * $\tanh(0.5) \approx 0.4621$
+  * $\tanh(-1) = -\tanh(1) \approx -0.7616$
+  * $\tanh(0) = 0$
+
+$$\text{Tanh output} \approx \begin{bmatrix} 0.7616 & 0.4621 & 0.1974 \\ -0.7616 & -0.4621 & -0.1974 \\ 0.0997 & -0.0997 & 0 \end{bmatrix}$$
+
+**iv) Heaviside Function**
+The question specifies a threshold of 0.1.
+Condition: If input $\ge 0.1$, output 1. If input $< 0.1$, output 0.
+(Technically we evaluate $H(x - \text{threshold})$. Since $H(0)=0.5$, if $x=0.1$, output is 0.5).
+
+* **Values \> 0.1:**
+    * $1, 0.5, 0.2$ become **1**.
+* **Values \< 0.1:**
+    * $-1, -0.5, -0.2, 0, -0.1$ become **0**.
+* **Values = 0.1:**
+    * The element $0.1$ satisfies the threshold exactly. $H(0.1 - 0.1) = H(0) = 0.5$.
+
+$$\text{Heaviside output} = \begin{bmatrix} 1 & 1 & 1 \\ 0 & 0 & 0 \\ 0.5 & 0 & 0 \end{bmatrix}$$
+
+## 3.2 - Weight Initialisation Strategies
+
+### The Goal
+
+The primary objective of weight initialisation is to maintain a stable signal variance as data propagates through the network layers. This helps prevent the vanishing or exploding gradient problems during training.
+
+### Xavier (Glorot) Initialisation
+
+This method is optimised for layers using **Sigmoid** or **Tanh** activation functions.
+
+  * **Normal Distribution:** Weights are sampled from $N(0, \sigma)$, where the standard deviation is $\sqrt{\frac{2}{m+n}}$ ($m$ inputs, $n$ outputs).
+  * **Uniform Distribution:** Weights are sampled from the range $(-\sqrt{\frac{6}{m+n}}, \sqrt{\frac{6}{m+n}})$.
+
+### He (Kaiming) Initialisation
+
+This strategy is specifically designed for networks using **ReLU**, **LReLU**, or **PReLU** activation functions.
+
+  * **Normal Distribution:** Weights are sampled from $N(0, \sigma)$, where the standard deviation is $\sqrt{\frac{2}{m}}$.
+  * **Uniform Distribution:** Weights are sampled from the range $(-\sqrt{\frac{6}{m}}, \sqrt{\frac{6}{m}})$.
 
 ![alt text]({BASE}/image-11.png)
 
-These deep architectures effectively utilize multilayer neural networks to achieve state-of-the-art performance on many pattern recognition tasks.
+## 3.3 - Batch Normalisation
 
+### Covariate Shift
 
-# 5 - Practical Implementation and Design Strategies
+Training a neural network changes the weights of the earlier layers. This inevitably alters the statistical distribution of the inputs received by the subsequent layers. The later layers must constantly adapt to these shifting input distributions, a phenomenon known as "Internal Covariate Shift". This continuous adaptation slows down the training process significantly.
+[slides05\_deep\_discriminative\_NNs\_repaired\_compressed.pdf: 16: Illustration showing how weight updates change the distribution of outputs for the next layer]
 
-## 5.1 - Data Pre-processing
+### The Algorithm
 
-### 5.1.1 - Input and Output Encoding
+Batch Normalisation (BN) addresses this problem by explicitly re-centring and re-scaling layer inputs. For a specific neuron, the algorithm normalises its output $x$ across a mini-batch to have a mean of 0 and a variance of 1. It then applies a learnable scale ($\gamma$) and shift ($\beta$) to allow the network to restore the representation power if necessary.
+The formula is:
+$$BN(x) = \beta + \gamma \frac{x - E(x)}{\sqrt{Var(x) + \epsilon}}$$
+Here, $E(x)$ is the mean of the batch, $Var(x)$ is the variance of the batch, and $\epsilon$ is a small constant added for numerical stability to prevent division by zero.
+[slides05\_deep\_discriminative\_NNs\_repaired\_compressed.pdf: 17: Diagrams showing distribution of neuron activations before and after normalization]
 
-When implementing a neural network, one must carefully consider how to represent data.
+### Computational Example: Batch Normalisation
 
-  * **Input Encoding:** High-dimensional discrete or real-valued inputs must be formatted for the network.
-  * **Output Encoding:** For classification tasks, the output layer typically uses a "1-hot" encoding scheme. This means the output vector has one element for each class; the correct class is set to 1, and all others are set to 0.
+**Question:**
+The following arrays show the output produced by a convolutional layer to all 4 samples in a batch:
+$$X_{1}=\begin{bmatrix}1&0.5&0.2\\ -1&-0.5&-0.2\\ 0.1&-0.1&0\end{bmatrix} \quad X_{2}=\begin{bmatrix}1&-1&0.1\\ 0.5&-0.5&-0.1\\ 0.2&-0.2&0\end{bmatrix}$$
+$$X_{3}=\begin{bmatrix}0.5&-0.5&-0.1\\ 0&-0.4&0\\ 0.5&0.5&0.2\end{bmatrix} \quad X_{4}=\begin{bmatrix}0.2&1&-0.2\\ -1&-0.6&-0.1\\ 0.1&0&0.1\end{bmatrix}$$
+
+Calculate the corresponding outputs produced after the application of batch normalisation, assuming the following parameter values $\beta=0$, $\gamma=1$, and $\epsilon=0.1$ which are the same for all neurons.
+
+**Solution Walkthrough:**
+
+Batch normalisation is applied independently to each neuron position across the entire batch. We will demonstrate the calculation for the **top-left neuron** (position 1,1).
+
+**Step 1: Collect values for the neuron across the batch**
+Extract the value at position (1,1) from each sample matrix ($X_1$ to $X_4$):
+
+  * $x^{(1)} = 1$ (from $X_1$)
+  * $x^{(2)} = 1$ (from $X_2$)
+  * $x^{(3)} = 0.5$ (from $X_3$)
+  * $x^{(4)} = 0.2$ (from $X_4$)
+
+**Step 2: Calculate the Batch Mean ($E(x)$)**
+Sum the values and divide by the batch size ($N=4$).
+$$E(x) = \frac{1 + 1 + 0.5 + 0.2}{4} = \frac{2.7}{4} = 0.675$$
+
+**Step 3: Calculate the Batch Variance ($Var(x)$)**
+Calculate the average of the squared differences from the mean.
+$$Var(x) = \frac{1}{4} \sum (x^{(i)} - 0.675)^2$$
+
+  * $(1 - 0.675)^2 = 0.325^2 \approx 0.1056$
+  * $(1 - 0.675)^2 = 0.325^2 \approx 0.1056$
+  * $(0.5 - 0.675)^2 = (-0.175)^2 \approx 0.0306$
+  * $(0.2 - 0.675)^2 = (-0.475)^2 \approx 0.2256$
+
+Summing these gives $\approx 0.4674$.
+$$Var(x) = \frac{0.4674}{4} \approx 0.1169$$
+
+**Step 4: Apply the Normalisation Formula**
+Use the formula $BN(x) = \beta + \gamma \frac{x - E(x)}{\sqrt{Var(x) + \epsilon}}$.
+We are given $\beta = 0, \gamma = 1, \epsilon = 0.1$:
+$$BN(x) = \frac{x - 0.675}{\sqrt{0.1169 + 0.1}} = \frac{x - 0.675}{\sqrt{0.2169}} \approx \frac{x - 0.675}{0.4657}$$
+
+Now, calculate the normalised output for each sample at this position:
+
+  * **Samples 1 & 2 ($x=1$):**
+    $$BN(1) = \frac{1 - 0.675}{0.4657} = \frac{0.325}{0.4657} \approx 0.6979$$
+  * **Sample 3 ($x=0.5$):**
+    $$BN(0.5) = \frac{0.5 - 0.675}{0.4657} = \frac{-0.175}{0.4657} \approx -0.3758$$
+  * **Sample 4 ($x=0.2$):**
+    $$BN(0.2) = \frac{0.2 - 0.675}{0.4657} = \frac{-0.475}{0.4657} \approx -1.0200$$
+
+These values represent the new top-left elements for the four output matrices. The same process is repeated for every other position in the grid.
+
+**Final Result (for $X_1$):**
+Using similar calculations for all other positions, the batch-normalised matrix for the first sample is:
+$$BN(X_{1}) \approx \begin{bmatrix}0.6979&0.5872&0.5657\\ -0.8652&0&-0.3086\\ -0.3509&-0.3612&-0.2294\end{bmatrix}$$
+
+## 3.4 - Skip Connections (Residual Learning)
+
+### Concept
+
+Skip connections are connections that bypass one or more layers of the network. They allow gradients to flow through the network unchanged, effectively creating a "highway" for gradients. This lets the gradient bypass parts of the network where it might otherwise vanish. This mechanism stabilises learning and helps training in very deep networks.
 
 ![alt text]({BASE}/image-11.png)
 
-**Example: 1-Hot Encoding**
-If we are classifying an image into three categories (Cat, Dog, Bird), we encode the labels as vectors.
+### Function
 
-| Class | Label Index | 1-Hot Vector |
-| :---- | :---------- | :----------- |
-| Cat   | 0           | [1, 0, 0]    |
-| Dog   | 1           | [0, 1, 0]    |
-| Bird  | 2           | [0, 0, 1]    |
-
-### 5.1.2 - Rescaling and Normalization Techniques
-
-Neural networks generally perform better when the input data is on a consistent scale. It is standard practice to rescale inputs and outputs to fall within a specific range, typically 0 to 1 or -1 to 1. This helps prevent weights from becoming too large or too small during training.
-
-**Example Computation: Min-Max Normalization**
-This process rescales a feature value $x$ to a new value $x'$ within the range $[0, 1]$.
-
-Formula:
-$$x' = \frac{x - x_{min}}{x_{max} - x_{min}}$$
-
-**Scenario:**
-We have a dataset of pixel values ranging from 0 to 255. We want to normalize a pixel value of 128.
-
-  * $x = 128$
-  * $x_{min} = 0$
-  * $x_{max} = 255$
-
-**Step 1: Calculate the numerator**
-$$128 - 0 = 128$$
-
-**Step 2: Calculate the denominator (range)**
-$$255 - 0 = 255$$
-
-**Step 3: Divide**
-$$x' = 128 / 255 \approx 0.502$$
-
-The normalized input value passed to the network is approximately 0.502.
-
-## 5.2 - Network Initialization and Structure
-
-### 5.2.1 - Weight Initialization Strategies
-
-When initializing a neural network, you cannot simply set all weights to zero. Instead, it is critical to initialize weights to very small random values. This randomness breaks the symmetry between neurons, ensuring that they do not learn the exact same features during training.
-
-**Example Computation: Random Weight Initialization**
-This example demonstrates generating initial weights for a connection between an input node and a hidden node.
-
-**Scenario:**
-We want to initialize a weight $w$ within a small range, typically $[-0.05, 0.05]$.
-
-**Step 1: Generate a random number**
-We generate a random number $r$ between 0 and 1.
-Let $r = 0.73$.
-
-**Step 2: Scale to the target range**
-The total range width is $0.05 - (-0.05) = 0.1$.
-We scale $r$ by this width:
-$$0.73 \times 0.1 = 0.073$$
-
-**Step 3: Shift to center the range**
-We shift the result by the minimum value ($-0.05$).
-$$w = 0.073 + (-0.05) = 0.023$$
-
-**Result:**
-The initial weight is set to 0.023, a small distinct value.
-
-### 5.2.2 - Dynamic Modification of Network Structure
-
-While we often consider networks with a fixed graph structure, this is not a strict requirement. The structure of the network can change dynamically over time.
-
-A practical approach involves growing the network:
-
-  * **Start Minimal:** Begin the process with a network containing 0 hidden nodes.
-  * **Grow Gradually:** As the network trains, gradually add nodes to the hidden layer.
-
-This strategy allows the complexity of the model to match the difficulty of the problem.
+This structure is often referred to as a residual module. Instead of learning a direct mapping, the layers learn a residual function $F(x)$. The final output is the sum of this residual and the original input: $y = F(x) + x$. Effectively, the network becomes shallower during the early phases of training, which simplifies the optimisation process.
 
 ```mermaid
 graph LR
-    subgraph Phase 1: Zero Hidden Nodes
-    I1((Input)) --> O1((Output))
-    end
-    subgraph Phase 2: Add Hidden Node
-    I2((Input)) --> H1((Hidden))
-    H1 --> O2((Output))
-    end
+    x[Input x] --> F[Weight Layer F]
+    F --> A[Activation]
+    A --> F2[Weight Layer F]
+    x -->|Identity/Skip Connection| Plus((+))
+    F2 --> Plus
+    Plus --> y[Output y]
 ```
 
-## 5.3 - Advanced Regularization Techniques
 
-To prevent overfitting, where the network learns the training data too well at the expense of generalizability, several regularization techniques are employed.
+# 4 - Optimisation and Training Dynamics
 
-### 5.3.1 - Weight Decay
+## 4.1 - Limitations of Standard Gradient Descent
 
-Weight decay is a method where each weight is decreased by a small factor during each iteration of the training process. This penalizes large weights and encourages the network to find simpler solutions, which often generalize better.
+### Error Surface Topology
 
-**Example Computation: Weight Decay Update**
-This example demonstrates how a weight is updated with a decay factor.
+Standard backpropagation performs gradient descent to minimise a cost function $J(w)$. However, the "surface" of this error function is complex and presents several obstacles.
 
-**Scenario:**
+  * **Plateaus:** These are flat regions where the gradient is very close to zero ($\frac{\partial J}{\partial w} \approx 0$). The algorithm makes extremely slow progress here because the weight updates are proportional to the gradient.
+  * **Saddle Points:** These are points where the gradient is zero. However, the point is a minimum in one direction but a maximum in another. The algorithm can get stuck here as if it were a solution.
+  * **Local Minima:** The algorithm may descend into a valley that is not the lowest possible point (global minimum). Because the gradient is zero at the bottom of this local valley, the algorithm stops updating and fails to find the best solution.
 
-  * Current weight ($w$): $0.5$
-  * Decay factor ($\lambda$): $0.01$
-  * Standard update from gradient ($\Delta w$): $0.02$
+[slides05\_deep\_discriminative\_NNs\_repaired\_compressed.pdf: 15: Illustration of gradient descent struggling with plateaus, saddle points, and local minima]
 
-**Step 1: Apply decay to the weight**
-$$w_{decayed} = w - (\lambda \times w)$$
-$$w_{decayed} = 0.5 - (0.01 \times 0.5) = 0.5 - 0.005 = 0.495$$
+### Oscillation
 
-**Step 2: Apply the standard update**
-$$w_{new} = w_{decayed} + \Delta w$$
-$$w_{new} = 0.495 + 0.02 = 0.515$$
+This issue often stems from using a fixed learning rate that is too large.
 
-The weight is slightly smaller than it would have been without decay ($0.52$), preventing it from growing unchecked.
+  * In steep regions of the error surface, the gradient is large.
+  * If the step size is proportional to this gradient, the algorithm takes a massive step.
+  * This causes the update to overshoot the minimum and land on the opposite side of the valley.
+  * The algorithm effectively bounces back and forth (oscillates) rather than converging smoothly to the bottom.
 
-### 5.3.2 - Limiting Hidden Nodes and Connections
+![alt text]({BASE}/image-12.png)
 
-Another effective strategy to prevent overfitting is to restrict the capacity of the network. This can be done by limiting the number of hidden nodes or the number of connections between them. By forcing the network to work with fewer resources, it is compelled to learn the most salient features of the data rather than memorizing noise.
+## 4.2 - Adaptive Optimisation Algorithms
 
-### 5.3.3 - Training with Noise (De-noising)
+### Momentum
 
-Training with noise involves deliberately corrupting the input data before feeding it into the network. The network is then trained to reconstruct the original, uncorrupted input. This forces the model to capture the robust, underlying structure of the distribution rather than specific details of the individual inputs.
-This technique is central to de-noising autoencoders, where the encoding is performed on the corrupted input, but the decoding error is calculated against the original input.
+Standard gradient descent can struggle with local minima and plateaus. Momentum addresses this by keeping track of the weight updates from the previous iteration. It adds a moving average of the previous gradient to the current gradient.
 
-![alt text]({BASE}/image-10.png)
+  * **Mechanism:** The update rule becomes $\Delta w_{j}(n)=\alpha h_{j}\Delta+\mu\Delta_{w_{j}}(n-1)$, where $\mu$ is the momentum term.
+  * **Benefit:** This accumulates a "velocity" vector. It increases the step size when weight changes are consistently in the same direction, helping the algorithm move quickly across plateaus. Crucially, it helps the optimisation process "roll over" small local minima rather than getting stuck. It also dampens the oscillations caused by steep gradients.
+
+![alt text]({BASE}/image-13.png)
+
+![alt text]({BASE}/image-14.png)
+
+### Adaptive Learning Rates
+
+Selecting a single fixed learning rate is difficult; a rate that is too low leads to slow convergence, while a rate that is too high causes oscillation and failure to find the optimum. Adaptive algorithms vary the learning rate for individual parameters during training.
+
+  * **AdaGrad & RMSprop:** These algorithms automatically adjust the learning rate based on historical gradients. They effectively increase the rate if the cost is decreasing smoothly and decrease it if the cost is increasing or oscillating.
+  * **Adam (Adaptive Moment Estimation):** This is a popular algorithm that combines the benefits of both approaches. It uses adaptive learning rates (like RMSprop) and momentum.
 
 
-# 6 - Current Issues and Environmental Considerations
+# 5 - Generalisation and Regularisation
 
-## 6.1 - Computational Costs (CPUs/GPUs and Heat)
+## 5.1 - Explicit Regularisation Techniques
 
-Training deep neural networks is computationally intensive, often requiring large numbers of CPUs and GPUs. The training process can take tens to hundreds of thousands of epochs to converge. This extensive processing consumes significant amounts of power and generates substantial heat. These factors contribute to a large carbon footprint, making such models less ideal in the context of the climate emergency. For instance, models like GPT-3 have been trained on parameters numbering in the billions (175 billion), illustrating the scale of resources required.
+### Dropout
 
-## 6.2 - Data Requirements and Explainability
+Dropout is a highly effective method for regularisation. During the training phase, the algorithm randomly selects a fraction of neurons at each iteration and sets their activation to zero. This process forces random "sub-networks" to learn how to classify samples correctly. Consequently, the network cannot rely on individual neurons to recognise specific features; this forces redundancy and improves generalisation. During the usage or testing phase, all neurons behave normally.
 
-Deep learning models have massive data requirements to learn effectively. Beyond data volume, a critical challenge is "explainability". As networks become deeper and more complex, understanding exactly how they arrive at a specific decision becomes increasingly difficult, often rendering them as "black boxes".
+![alt text]({BASE}/image-15.png)
 
-## 6.3 - The Problem of Overfitting in Deep Architectures
+### Weight Decay
 
-Overfitting remains a significant problem in deep neural networks. Because these models have such high capacity, they can easily memorize training data rather than generalizing patterns. Potential solutions being explored to address these issues include Generative Adversarial Networks (GANs) and the combination of neural networks with symbolic methods.
+Weight decay prevents overfitting by penalising the model complexity. This method involves decreasing each weight by a small factor during every training iteration. This keeps the weights small and prevents them from growing too large to fit noise in the training data.
+
+### Early Stopping
+
+This technique uses a validation data set in addition to the training and test sets. The network trains on the training data; however, the algorithm monitors the error on the validation data after each epoch. Training stops when the performance on the validation model has not improved for a set number of epochs. The system returns the set of weights that achieved the best performance on the validation set rather than the final weights from the training set.
+
+![alt text]({BASE}/image-16.png)
+
+## 5.2 - Data-Driven Regularisation
+
+### Data Augmentation
+
+Deep neural networks require large volumes of data to learn effectively and avoid overfitting. Data augmentation is a technique used to artificially expand the training dataset by creating new samples from existing ones. This is achieved by applying "class-preserving" transformations—changes that alter the appearance of the image without changing its underlying label. Common transformations include rescaling, horizontal flips, random rotations, and cropping.
+
+![alt text]({BASE}/image-17.png)
+
+### Transfer Learning
+
+Transfer learning is a strategy used when the target dataset is small or when computational resources are limited. Instead of training a network from scratch with random weights, a model pre-trained on a very large dataset (such as ImageNet) is used as a starting point. The pre-trained weights act as robust feature extractors, allowing the network to be fine-tuned for a new, specific task with fewer training epochs.
+
+### Example Scenario: Choosing Augmentation Strategies
+
+The following exercise evaluates the appropriateness of different augmentation techniques for specific datasets (Handwritten digits vs. Clothing items).
+
+**Question:**
+The following images show exemplars from two datasets.
+
+![alt text]({BASE}/image-18.png)
+
+Figure 1: MNIST (left) and FashionMNIST (right).
+
+Each dataset is to be expanded using data augmentation. Which of the following transformations are appropriate:
+i) rescaling
+ii) horizontal flip
+iii) rotation
+iv) cropping.
+
+**Solution Walkthrough:**
+
+To determine if a transformation is appropriate, we must check if it is "class-preserving". Does the transformation change the label of the image?
+
+**i) Rescaling**
+
+  * **MNIST (Digits):** Making a digit larger or smaller does not change its identity (a small '7' is still a '7'). **Yes.**
+  * **FashionMNIST (Clothing):** A resized image of a shoe remains a shoe. **Yes.**
+
+**ii) Horizontal Flip**
+
+  * **MNIST (Digits):** Digits are not horizontally symmetric. Flipping a '5' creates a non-existent character; flipping a '2' creates a backwards '2'. This destroys the class information. **No.**
+  * **FashionMNIST (Clothing):** Clothing items often have horizontal symmetry, or at least remain recognisable. A left-facing shoe flipped becomes a right-facing shoe; it is still a shoe. **Yes.**
+
+**iii) Rotation**
+
+  * **MNIST (Digits):** Large rotations can be dangerous (e.g., rotating a '6' 180 degrees creates a '9'). However, small random rotations are acceptable to simulate handwriting variance. **Small rotations are OK.**
+  * **FashionMNIST (Clothing):** If the goal is to recognise clothing in any orientation (e.g., laundry), rotation is valid. **Yes.**
+
+**iv) Cropping**
+
+  * **MNIST (Digits):** Removing border pixels is standard. As long as the core shape of the digit remains, the class is preserved. **Yes.**
+  * **FashionMNIST (Clothing):** Cropping is a standard technique to force the network to focus on specific features rather than the whole outline. **Yes.**
+
+**Summary Table:**
+
+| Transformation          | MNIST                       | FashionMNIST                                                      |
+| :---------------------- | :-------------------------- | :---------------------------------------------------------------- |
+| **i) Rescaling**        | Yes                         | Yes                                                               |
+| **ii) Horizontal Flip** | No                          | Yes                                                               |
+| **iii) Rotation**       | Small rotations would be ok | Yes (if we want the classifier to recognise up-side-down clothes) |
+| **iv) Cropping**        | Yes                         | Yes (assuming objects remain recognisable after crop)             |
+
+## 5.3 - Adversarial Robustness
+
+### Adversarial Examples
+
+Deep neural networks can produce excellent results on test data but still fail to generalise in specific ways. An adversarial example is an input that has been manipulated—often by adding small, imperceptible changes to the pixel values—so that it is wrongly classified with high confidence. For example, adding a specific pattern of noise to an image of a Giant Panda can cause the network to classify it as a Goldfish or Gibbon, even though the image looks unchanged to a human eye.
+
+![alt text]({BASE}/image-19.png)
+
+### Implication
+
+These examples show that deep networks learn to recognise objects differently from human vision. They may rely on textures or specific pixel configurations rather than the shape or concept of the object. This poses significant security risks in real-world applications. For instance, modifying a physical Stop sign with stickers can trick an autonomous driving system into classifying it as a speed limit sign.
+
+![alt text]({BASE}/image-20.png)
