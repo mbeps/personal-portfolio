@@ -201,7 +201,7 @@ const RolePage: React.FC<{ params: Params }> = async ({ params }) => {
 
           {/* Skills section */}
           <Card>
-            <CardContent className="py-10">
+            <CardContent className="py-7">
               <SkillTableSection allGroupedSkills={allGroupedSkills} />
             </CardContent>
           </Card>
