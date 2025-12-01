@@ -131,7 +131,7 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
         <div className="mt-10 material-sections-wrapper">
           {/* Skills */}
           <Card>
-            <CardContent className="py-10">
+            <CardContent className="py-7">
               <SkillTableSection allGroupedSkills={allGroupedSkills} />
             </CardContent>
           </Card>
