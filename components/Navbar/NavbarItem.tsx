@@ -44,7 +44,8 @@ const NavbarItem: React.FC<NavbarItemProps> = ({ href, children }) => {
     duration-300 
     relative group
     overflow-hidden
-    md:text-base text-xl
+    md:text-base text-2xl 
+    font-semibold md:font-normal
   `;
 
   return (
@@ -56,9 +57,8 @@ const NavbarItem: React.FC<NavbarItemProps> = ({ href, children }) => {
         className="
           w-full h-[3px]   
           rounded-full
-          
           absolute 
-          bottom-[2px]    
+          bottom-0.5
           left-0 inline-block 
           bg-red-500 dark:bg-red-900 
           -translate-x-full md:group-hover:translate-x-0 transition-transform 
