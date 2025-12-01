@@ -1,36 +1,35 @@
 - [1 - Foundations of Neural Elements](#1---foundations-of-neural-elements)
-	- [1.1 - The Biological Inspiration and Artificial Model](#11---the-biological-inspiration-and-artificial-model)
-	- [1.2 - Mathematical Definition of a Neuron](#12---mathematical-definition-of-a-neuron)
-	- [1.3 - Activation and Transfer Functions](#13---activation-and-transfer-functions)
+  - [1.1 - The Biological Inspiration and Artificial Model](#11---the-biological-inspiration-and-artificial-model)
+  - [1.2 - Mathematical Definition of a Neuron](#12---mathematical-definition-of-a-neuron)
+  - [1.3 - Activation and Transfer Functions](#13---activation-and-transfer-functions)
 - [2 - Linear Discriminant Functions and Decision Boundaries](#2---linear-discriminant-functions-and-decision-boundaries)
-	- [2.1 - Defining the Discriminant Function](#21---defining-the-discriminant-function)
-	- [2.2 - Geometry of Decision Boundaries (Hyperplanes)](#22---geometry-of-decision-boundaries-hyperplanes)
-	- [2.3 - Augmented Vector Notation](#23---augmented-vector-notation)
-	- [2.4 - Linearly Separable vs. Non-Linearly Separable Data (The XOR Problem)](#24---linearly-separable-vs-non-linearly-separable-data-the-xor-problem)
+  - [2.1 - Defining the Discriminant Function](#21---defining-the-discriminant-function)
+  - [2.2 - Geometry of Decision Boundaries (Hyperplanes)](#22---geometry-of-decision-boundaries-hyperplanes)
+  - [2.3 - Augmented Vector Notation](#23---augmented-vector-notation)
+  - [2.4 - Linearly Separable vs. Non-Linearly Separable Data (The XOR Problem)](#24---linearly-separable-vs-non-linearly-separable-data-the-xor-problem)
 - [3 - The Perceptron Learning Algorithm](#3---the-perceptron-learning-algorithm)
-	- [3.1 - The Error Correction Method (Intuition)](#31---the-error-correction-method-intuition)
-	- [3.2 - Perceptron Criterion Function](#32---perceptron-criterion-function)
-	- [3.3 - Batch Perceptron Learning](#33---batch-perceptron-learning)
-	- [3.4 - Sequential (Online) Perceptron Learning](#34---sequential-online-perceptron-learning)
-	- [3.5 - Computational Examples of Perceptron Updates](#35---computational-examples-of-perceptron-updates)
+  - [3.1 - The Error Correction Method (Intuition)](#31---the-error-correction-method-intuition)
+  - [3.2 - Perceptron Criterion Function](#32---perceptron-criterion-function)
+  - [3.3 - Batch Perceptron Learning](#33---batch-perceptron-learning)
+  - [3.4 - Sequential (Online) Perceptron Learning](#34---sequential-online-perceptron-learning)
+  - [3.5 - Computational Examples of Perceptron Updates](#35---computational-examples-of-perceptron-updates)
 - [4 - Gradient Descent and the Delta Rule](#4---gradient-descent-and-the-delta-rule)
-	- [4.1 - The Cost Function (Squared Error)](#41---the-cost-function-squared-error)
-	- [4.2 - The Concept of the Error Surface and Gradient Descent](#42---the-concept-of-the-error-surface-and-gradient-descent)
-	- [4.3 - Derivation of the Standard Delta Rule (LMS for Linear Units)](#43---derivation-of-the-standard-delta-rule-lms-for-linear-units)
-	- [4.4 - The Generalised Delta Rule (For Non-Linear or Sigmoidal Units)](#44---the-generalised-delta-rule-for-non-linear-or-sigmoidal-units)
-	- [4.5 - Batch Gradient Descent vs. Stochastic Gradient Descent (SGD)](#45---batch-gradient-descent-vs-stochastic-gradient-descent-sgd)
-	- [4.6 - Computational Examples of Delta Rule Updates](#46---computational-examples-of-delta-rule-updates)
+  - [4.1 - The Cost Function (Squared Error)](#41---the-cost-function-squared-error)
+  - [4.2 - The Concept of the Error Surface and Gradient Descent](#42---the-concept-of-the-error-surface-and-gradient-descent)
+  - [4.3 - Derivation of the Standard Delta Rule (LMS for Linear Units)](#43---derivation-of-the-standard-delta-rule-lms-for-linear-units)
+  - [4.4 - The Generalised Delta Rule (For Non-Linear or Sigmoidal Units)](#44---the-generalised-delta-rule-for-non-linear-or-sigmoidal-units)
+  - [4.5 - Batch Gradient Descent vs. Stochastic Gradient Descent (SGD)](#45---batch-gradient-descent-vs-stochastic-gradient-descent-sgd)
+  - [4.6 - Computational Examples of Delta Rule Updates](#46---computational-examples-of-delta-rule-updates)
 - [5 - Minimum Squared Error (MSE) Procedures](#5---minimum-squared-error-mse-procedures)
-	- [5.1 - Solving Linear Equations vs. Linear Inequalities](#51---solving-linear-equations-vs-linear-inequalities)
-	- [5.2 - The Pseudo-Inverse Solution (Closed Form)](#52---the-pseudo-inverse-solution-closed-form)
-	- [5.3 - The Widrow-Hoff (LMS) Algorithm](#53---the-widrow-hoff-lms-algorithm)
+  - [5.1 - Solving Linear Equations vs. Linear Inequalities](#51---solving-linear-equations-vs-linear-inequalities)
+  - [5.2 - The Pseudo-Inverse Solution (Closed Form)](#52---the-pseudo-inverse-solution-closed-form)
+  - [5.3 - The Widrow-Hoff (LMS) Algorithm](#53---the-widrow-hoff-lms-algorithm)
 - [6 - Optimisation and Generalisation in Learning](#6---optimisation-and-generalisation-in-learning)
-	- [6.1 - The Problem of Local Minima](#61---the-problem-of-local-minima)
-	- [6.2 - Momentum](#62---momentum)
-	- [6.3 - Generalisation, Overfitting, and Underfitting](#63---generalisation-overfitting-and-underfitting)
-	- [6.4 - Regularisation Techniques (Validation Sets, Early Stopping)](#64---regularisation-techniques-validation-sets-early-stopping)
-	- [6.5 - Introduction to Multi-Layer Networks and Backpropagation (Brief Overview)](#65---introduction-to-multi-layer-networks-and-backpropagation-brief-overview)
-
+  - [6.1 - The Problem of Local Minima](#61---the-problem-of-local-minima)
+  - [6.2 - Momentum](#62---momentum)
+  - [6.3 - Generalisation, Overfitting, and Underfitting](#63---generalisation-overfitting-and-underfitting)
+  - [6.4 - Regularisation Techniques (Validation Sets, Early Stopping)](#64---regularisation-techniques-validation-sets-early-stopping)
+  - [6.5 - Introduction to Multi-Layer Networks and Backpropagation (Brief Overview)](#65---introduction-to-multi-layer-networks-and-backpropagation-brief-overview)
 
 
 # 1 - Foundations of Neural Elements
@@ -48,7 +47,7 @@ A biological neuron is defined as an information processing unit. It typically c
   * **Axon:** This is a long fibre that acts as the transmission line; it carries the signal away from the cell body to other neurons.
   * **Synapses:** These are the connections between two neurons (specifically between the axon of one neuron and the dendrites of another).
 
-<!-- end list -->
+![alt text]({BASE}/image-2.png)
 
 ```mermaid
 graph LR
@@ -98,36 +97,37 @@ An Artificial Neural Network is a simplified model of this biological system. We
   * **Synapse $\rightarrow$ Weight ($w$):** Represents the strength of the connection. A positive weight represents an excitatory connection; a negative weight represents an inhibitory connection.
   * **Firing Rate $\rightarrow$ Activation Output ($y$):** The numeric result produced by the node.
 
-<!-- end list -->
-
 **Biological Metaphor**
+
 ```mermaid
 graph LR
-	subgraph Biological_Metaphor
-	D[Dendrites/Synapses] --> CellBody((Soma))
-	CellBody --> Axon[Axon/Firing Rate]
-	end
+    subgraph Biological_Metaphor
+    D[Dendrites/Synapses] --> CellBody((Soma))
+    CellBody --> Axon[Axon/Firing Rate]
+    end
 
-	style Biological_Metaphor fill:#e1f5fe,stroke:#01579b
+    style Biological_Metaphor fill:#e1f5fe,stroke:#01579b
 ```
 
 **Mathematical Model**
+
 ```mermaid
 graph LR
-	subgraph Mathematical_Model
-	Input1(x1) -- w1 --> Sum((Summation))
-	Input2(x2) -- w2 --> Sum
-	Input3(x3) -- w3 --> Sum
-	Bias(1) -- w0 --> Sum
-	Sum --> Transfer[Transfer Function]
-	Transfer --> Output(y)
-	end
+    subgraph Mathematical_Model
+    Input1(x1) -- w1 --> Sum((Summation))
+    Input2(x2) -- w2 --> Sum
+    Input3(x3) -- w3 --> Sum
+    Bias(1) -- w0 --> Sum
+    Sum --> Transfer[Transfer Function]
+    Transfer --> Output(y)
+    end
 
-	style Mathematical_Model fill:#fff3e0,stroke:#e65100
+    style Mathematical_Model fill:#fff3e0,stroke:#e65100
 ```
 
 In the artificial model, the processing unit computes a weighted sum of its inputs (simulating the soma's spatial and temporal integration) and passes this sum through a transfer function to produce an output.
 
+![alt text]({BASE}/image-1.png)
 
 ## 1.2 - Mathematical Definition of a Neuron
 
@@ -202,7 +202,6 @@ $x_1 = [0.1, -0.5, 0.4]^T$
 **Result:**
 The net input (linear weighted sum) for this neuron is 0.42. This value would subsequently be passed to an activation function (like a Heaviside step function or Sigmoid) to determine the final output $y$.
 
-
 ## 1.3 - Activation and Transfer Functions
 
 In the artificial neuron model, the processing of information is often conceptually split into two stages:
@@ -225,6 +224,8 @@ The simplest activation function is the linear function (or identity function).
 **Threshold Functions**
 
 Threshold functions are used to produce binary outputs, acting as classifiers. They "fire" only when the input exceeds a certain limit.
+
+![alt text]({BASE}/image-3.png)
 
 **Heaviside (Step) Function**
 
@@ -253,8 +254,8 @@ This function produces a binary output of -1 or 1.
 **Equation:**
 
 $$g(s) = \begin{cases}
-1 & \text{if } s > 0 \\
--1 & \text{if } s < 0
+1 & \text{if } s \ge 0 \\
+0 & \text{if } s < 0
 \end{cases}$$
 
 ```mermaid
@@ -267,6 +268,8 @@ graph TD
 **Differentiable Non-Linear Functions**
 
 For modern learning algorithms (like Backpropagation) that rely on gradient descent, the activation function must be differentiable (unlike the step function).
+
+![alt text]({BASE}/image-4.png)
 
 **Sigmoid (Logistic) Function**
 
@@ -282,9 +285,8 @@ Similar to the sigmoid but centred at zero.
   * **Equation:** $g(s) = \tanh(s) = \frac{e^s - e^{-s}}{e^s + e^{-s}}$
   * **Output Range:** $(-1, 1)$
 
-<!-- end list -->
-
 **S-Shaped Differentiable Functions**
+
 ```mermaid
 graph LR
     Input[Input s]
@@ -355,6 +357,7 @@ Calculate the output for both inputs.
 
   * Output for $x_1$ is 1.
   * Output for $x_2$ is 0.
+
 
 # 2 - Linear Discriminant Functions and Decision Boundaries
 
@@ -433,7 +436,6 @@ Determine the class for the input vector $x = [2, 1]^T$.
 **Result:**
 The input vector $[2, 1]^T$ belongs to Class 1.
 
-
 ## 2.2 - Geometry of Decision Boundaries (Hyperplanes)
 
 A linear discriminant function divides the feature space into two regions. The boundary between these regions is called the **decision boundary** or **decision surface**. This is defined by the equation:
@@ -451,7 +453,8 @@ The geometric shape of this boundary depends on the dimensionality of the input 
 
 A hyperplane is a "flat" surface with dimensionality $d-1$ in a $d$-dimensional space.
 
-**Geometric_Interpretation**
+**Geometric\_Interpretation**
+
 ```mermaid
 graph TD
     subgraph Geometric_Interpretation
@@ -499,6 +502,8 @@ Where $||w||$ is the magnitude (Euclidean length) of the weight vector.
   * If $r$ is positive, the point is on the positive side ($R_1$).
   * If $r$ is negative, the point is on the negative side ($R_2$).
 
+![alt text]({BASE}/image-9.png)
+
 **Computational Example: Calculating Distance to the Boundary**
 
 Let's calculate the distance of a specific point from the decision boundary.
@@ -538,7 +543,6 @@ Calculate the algebraic distance $r$ from the point $x = [4, 2]^T$ to the decisi
 
 **Result:**
 The algebraic distance is 2. Since it is positive, the point lies 2 units away from the boundary on the side of Class 1.
-
 
 ## 2.3 - Augmented Vector Notation
 
@@ -586,8 +590,8 @@ This is mathematically equivalent to the original equation $g(x) = w^T x + w_0$.
 
 **Benefits**
 
-  * **Simplification:** We no longer need to track the bias separately.
-  * **Geometry:** In the augmented space (which has one higher dimension), the decision hyperplane always passes through the origin. This makes deriving learning algorithms simpler.
+* **Simplification:** We no longer need to track the bias separately.
+* **Geometry:** In the augmented space (which has one higher dimension), the decision hyperplane always passes through the origin. This makes deriving learning algorithms simpler.
 
 **Computational Example: Augmented Calculation**
 
@@ -616,7 +620,6 @@ Given weights $w = [3, -2]^T$, bias $w_0 = 4$, and input $x = [2, 5]^T$, calcula
 **Result:**
 The value of the discriminant function is 0. This means the point lies exactly on the decision boundary.
 
-
 ## 2.4 - Linearly Separable vs. Non-Linearly Separable Data (The XOR Problem)
 
 A **Linearly Separable** problem is one where a single straight line (or hyperplane) can separate the classes without any error.
@@ -626,6 +629,8 @@ Single-layer neural networks (Perceptrons) can only solve linearly separable pro
 **Logical Examples**
 
 The standard logical operators **AND** and **OR** are linearly separable. We can plot their inputs (0 and 1) on a graph and draw a straight line to separate the "True" outcomes from the "False" outcomes.
+
+![alt text]({BASE}/image-5.png)
 
 ```mermaid
 flowchart TD
@@ -684,6 +689,7 @@ This limitation was famously highlighted by Minsky and Papert in 1969. It stalle
 
 1.  **Non-linear Activation Functions:** (Like Sigmoid or ReLU).
 2.  **Multi-Layer Networks:** Combining multiple neurons in layers (Multi-Layer Perceptrons) to create complex decision boundaries.
+
 
 # 3 - The Perceptron Learning Algorithm
 
@@ -789,6 +795,7 @@ $$s = 0.5 - 0.5 + 1.5 = 1.5$$
 
 Apply step function. Since $1.5 \ge 0$, output $y = 1$.
 Comparing to target: $t = 1$ and $y = 1$. The prediction is correct.
+
 **Update:** No change.
 
   * Current weights: $w = [0.5, -0.5, 1.5]$.
@@ -809,7 +816,6 @@ Update rule: $w_i \leftarrow w_i + 0.5(0 - 1)x_i$
   * $w_2 \leftarrow 1.5 - 0.5(2) = 0.5$
 
 **Final Weights after one epoch:** $w = [0, -0.5, 0.5]$.
-
 
 ## 3.2 - Perceptron Criterion Function
 
@@ -870,7 +876,6 @@ Because $J_p$ is linear with respect to the weights for the misclassified sample
 $$\nabla J_p(a) = \sum_{y \in \mathcal{Y}} (-y)$$
 
 This gradient vector points in the direction that increases the error. To reduce the error (gradient descent), we move in the opposite direction, which essentially adds the misclassified sample vectors to the weight vector.
-
 
 ## 3.3 - Batch Perceptron Learning
 
@@ -1121,7 +1126,6 @@ graph LR
     style End fill:#f9f,stroke:#333
 ```
 
-
 **Example 2: Sequential (Online) Perceptron Learning**
 
 **Problem Statement**
@@ -1174,6 +1178,7 @@ We will now use the **Sequential Perceptron Learning Algorithm** on a different 
 
 **Result:**
 At the end of the first epoch, the weight vector has evolved from $(1, 0, 0)$ to $(0, 3, -1)$. The algorithm would continue to loop through the data until a full epoch passes with no updates.
+
 
 # 4 - Gradient Descent and the Delta Rule
 
@@ -1234,7 +1239,6 @@ Calculate the squared error contribution for the first two samples of the follow
 **Result:**
 The total error for these two samples is $E_{total} = 0.5 + 0.5 = 1.0$. The training algorithm would aim to adjust the weights to reduce this value to 0.
 
-
 ## 4.2 - The Concept of the Error Surface and Gradient Descent
 
 To visualize the learning process, we can plot the cost function $E(w)$ against the possible values of the weights. This creates a geometric representation known as the **error surface**.
@@ -1274,6 +1278,8 @@ The update rule for gradient descent is generally defined as:
 $$w_{new} = w_{old} - \eta \nabla E(w)$$
 
 Where $\eta$ is the learning rate. It determines the size of the step we take down the hill.
+
+![alt text]({BASE}/image-10.png)
 
 **Computational Example: Calculating the Gradient**
 
@@ -1315,7 +1321,6 @@ Calculate the gradient of the squared error with respect to the weights for this
 
 **Interpretation:**
 The descent direction $[1, 0, 2]^T$ tells us to **increase** the first weight (bias) and the third weight. This makes sense because our output ($1$) was lower than the target ($2$). Increasing these weights will increase the net input; this brings the output closer to the target.
-
 
 ## 4.3 - Derivation of the Standard Delta Rule (LMS for Linear Units)
 
@@ -1414,7 +1419,6 @@ Train a perceptron for one epoch using the delta rule.
 The new weight vector is $w = [-1.5, -1.5, -3]^T$.
 Notice that even though a thresholded perceptron (checking if $s \ge 0$) would have correctly classified this sample (output 1), the Delta Rule heavily penalized the weights because the linear sum (6) was far from the target (1).
 
-
 ## 4.4 - The Generalised Delta Rule (For Non-Linear or Sigmoidal Units)
 
 The standard Delta rule works for linear units, but neural networks derive their power from non-linearity. To train a neuron with a differentiable non-linear activation function (like the sigmoid), we must extend the Delta rule. This is known as the **Generalised Delta Rule**.
@@ -1502,6 +1506,14 @@ Train a perceptron for one epoch using the generalised delta rule and stochastic
 The updated weight vector is approximately $[1.000002, 1.000002, 2.000004]^T$.
 *Observation:* Even though the target was 1 and the output was slightly less (0.998), the weight change was extremely small. This is because the derivative of the sigmoid function near 1 is very close to zero, a phenomenon known as the **vanishing gradient**.
 
+```mermaid
+graph TD
+    Saturated[Neuron Saturated Output near 0 or 1] --> Derivative[Derivative approx 0]
+    Derivative --> SmallDelta[Weight Update approx 0]
+    SmallDelta --> Vanish[Learning Stalls Vanishing Gradient]
+    
+    style Vanish fill:#f99,stroke:#333
+```
 
 ## 4.5 - Batch Gradient Descent vs. Stochastic Gradient Descent (SGD)
 
@@ -1583,7 +1595,6 @@ To visualize the difference, consider a dataset with 3 samples ($x_1, x_2, x_3$)
     6.  **Update:** $w_{new} = w_{temp2} + \Delta w_3$
 
 In SGD, the weights used to calculate the error for $x_2$ and $x_3$ have already been modified by previous samples, whereas in Batch, all errors are calculated using the original $w_{old}$.
-
 
 ## 4.6 - Computational Examples of Delta Rule Updates
 
@@ -1671,15 +1682,6 @@ We now continue the non-linear example from Section 4.4. We use the sigmoid tran
 The new weights are $[0.999, 0.997, 1.999]^T$.
 **Observation:**
 In the Standard Delta Rule example (linear), the weights jumped massively (from -1.5 to 3). In the Generalised Delta Rule example (sigmoid), the weights barely moved (from 1.0 to 0.999). This demonstrates the **vanishing gradient problem**; when the neuron is "saturated" (output is close to 0 or 1), the derivative is near zero, causing learning to slow down significantly.
-
-```mermaid
-graph TD
-    Saturated[Neuron Saturated Output near 0 or 1] --> Derivative[Derivative approx 0]
-    Derivative --> SmallDelta[Weight Update approx 0]
-    SmallDelta --> Vanish[Learning Stalls Vanishing Gradient]
-    
-    style Vanish fill:#f99,stroke:#333
-```
 
 
 # 5 - Minimum Squared Error (MSE) Procedures
@@ -1810,7 +1812,6 @@ $$Ya = b$$
 **Result:**
 The Perceptron searches for *any* $a$ that keeps the output positive; MSE searches for a *specific* $a$ that maps the inputs to the exact values in $b$.
 
-
 ## 5.2 - The Pseudo-Inverse Solution (Closed Form)
 
 The Minimum Squared Error (MSE) approach formulates the training problem as a system of linear equations:
@@ -1857,23 +1858,23 @@ Consider the linearly separable data set below. Use the pseudo-inverse to calcul
 | $(-2, -1)$             | -1               |
 | $(-3, -2)$             | -1               |
 
-
 **Step-by-Step Calculation**
 
 **1. Construct the Matrix $Y$**
 
 We convert the feature vectors into augmented, normalised vectors.
 
-* **Augment:** Add $1$ as the first element.
-* **Normalise:** Negate the vectors belonging to Class $-1$.
+  * **Augment:** Add $1$ as the first element.
+  * **Normalise:** Negate the vectors belonging to Class $-1$.
 
 **Class 1:**
 $(1, 0, 2), (1, 1, 2), (1, 2, 1)$
 
 **Class -1 (Negated):**
-* $(1, -3, 1) \rightarrow (-1, 3, -1)$
-* $(1, -2, -1) \rightarrow (-1, 2, 1)$
-* $(1, -3, -2) \rightarrow (-1, 3, 2)$
+
+  * $(1, -3, 1) \rightarrow (-1, 3, -1)$
+  * $(1, -2, -1) \rightarrow (-1, 2, 1)$
+  * $(1, -3, -2) \rightarrow (-1, 3, 2)$
 
 This gives us the matrix $Y$:
 
@@ -1888,7 +1889,6 @@ Y = \begin{pmatrix}
 \end{pmatrix}
 $$
 
----
 
 **2. Calculate the Pseudo-Inverse ($Y^\dagger$)**
 
@@ -1902,7 +1902,6 @@ Y^{\dagger} \approx \begin{pmatrix}
 \end{pmatrix}
 $$
 
----
 
 **3. Solve for $a$**
 
@@ -1924,18 +1923,15 @@ a = \begin{pmatrix}
 \end{pmatrix}
 $$
 
----
 
 **4. Verify the Solution**
 
 We check if the resulting discriminant function correctly classifies the data. We compute $g(x) = a^T y$ for all samples.
 
-* **Sample 1:** $0.227(1) + 0.386(0) + 0.189(2) \approx 0.606$
-* **Sample 4:** $0.227(-1) + 0.386(3) + 0.189(-1) \approx 0.742$
+  * **Sample 1:** $0.227(1) + 0.386(0) + 0.189(2) \approx 0.606$
+  * **Sample 4:** $0.227(-1) + 0.386(3) + 0.189(-1) \approx 0.742$
 
 Since $g(x) > 0$ for all samples, the solution separates the data correctly.
-
-<!-- end list -->
 
 ```mermaid
 graph TD
@@ -1944,7 +1940,6 @@ graph TD
     Calc --> Solve[a = Y_dagger * b]
     Solve --> Result[Optimal Weights a]
 ```
-
 
 ## 5.3 - The Widrow-Hoff (LMS) Algorithm
 
@@ -2077,6 +2072,7 @@ graph LR
     Iter5 --> Iter6[Converging...]
 ```
 
+
 # 6 - Optimisation and Generalisation in Learning
 
 ## 6.1 - The Problem of Local Minima
@@ -2175,6 +2171,8 @@ graph TD
     end
 ```
 
+![alt text]({BASE}/image-6.png)
+
 ## 6.3 - Generalisation, Overfitting, and Underfitting
 
 The ultimate goal of training a neural network is not just to memorize the training examples, but to perform accurately on new, unseen data. This capability is known as **generalization**. We measure this by looking at the generalisation accuracy on data sets outside of the training set.
@@ -2190,7 +2188,7 @@ Overfitting happens when the network learns the training data too well. It captu
   * **Consequence:** The network predicts the training data with very high accuracy but fails significantly when tested on new data.
   * **Visual Characteristic:** In classification, this results in overly complex, "wiggly" decision boundaries that loop around individual data points rather than smooth boundaries that separate classes.
 
-<!-- end list -->
+![alt text]({BASE}/image-7.png)
 
 ```mermaid
 graph TD
@@ -2268,6 +2266,8 @@ In addition to early stopping, there are other ways to prevent overfitting:
 ## 6.5 - Introduction to Multi-Layer Networks and Backpropagation (Brief Overview)
 
 Single-layer networks (perceptrons) have a significant limitation; they cannot solve problems that are not linearly separable, such as the XOR problem. To overcome this, we use multi-layer networks, often called Artificial Neural Networks. These networks consist of an input layer, an output layer, and one or more hidden layers of processing units.
+
+![alt text]({BASE}/image-8.png)
 
 ```mermaid
 graph LR
