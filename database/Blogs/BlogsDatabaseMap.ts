@@ -334,6 +334,58 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.Django,
     ],
   },
+  [BlogDatabaseKeys.DevOps]: {
+    name: "DevOps Principles & Practices",
+    subtitle:
+      "Comprehensive overview of DevOps history, theory, architecture, operational models, metrics and sociological challenges, linking queuing theory, Lean, SRE, DevSecOps and platform engineering to modern software delivery.",
+    category: BlogCategoriesEnum.SoftwareEngineering,
+    skills: [
+      SkillDatabaseKeys.DevOps,
+      SkillDatabaseKeys.Containerisation,
+      SkillDatabaseKeys.ContinuousDelivery,
+      SkillDatabaseKeys.ContinuousDeployment,
+      SkillDatabaseKeys.ContinuousIntegration,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.Podman,
+      SkillDatabaseKeys.Kubernetes,
+      SkillDatabaseKeys.Jenkins,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.GitHubActions,
+      SkillDatabaseKeys.Terraform,
+      SkillDatabaseKeys.Ansible,
+      SkillDatabaseKeys.Clusterisation,
+      SkillDatabaseKeys.InfrastructureAsCode,
+    ],
+  },
+  [BlogDatabaseKeys.CiCd]: {
+    name: "Continuous Integration & Continuous Deployment (CI/CD)",
+    subtitle:
+      "A comprehensive technical analysis covering the history, theory, architecture, security, and performance metrics of modern CI/CD pipelines.",
+    category: BlogCategoriesEnum.SoftwareEngineering,
+    skills: [
+      SkillDatabaseKeys.DevOps,
+      SkillDatabaseKeys.ContinuousDelivery,
+      SkillDatabaseKeys.ContinuousDeployment,
+      SkillDatabaseKeys.ContinuousIntegration,
+      SkillDatabaseKeys.Jenkins,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.GitHubActions,
+    ],
+  },
+  [BlogDatabaseKeys.Containerization]: {
+    name: "Containersation & Orchestration",
+    subtitle:
+      "An exhaustive technical analysis of Linux kernel primitives, runtime standards, security paradigms, and architectural principles defining modern containerisation.",
+    category: BlogCategoriesEnum.SoftwareEngineering,
+    skills: [
+      SkillDatabaseKeys.DevOps,
+      SkillDatabaseKeys.Containerisation,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.Podman,
+      SkillDatabaseKeys.Kubernetes,
+      SkillDatabaseKeys.Clusterisation,
+    ],
+  },
 
   //^ Database Blogs
   [BlogDatabaseKeys.DatabaseParadigms]: {

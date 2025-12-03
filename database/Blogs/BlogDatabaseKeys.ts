@@ -22,11 +22,19 @@ enum BlogDatabaseKeys {
   RitrievalAugmentedGeneration = "retrieval-augmented-generation",
   ReasoningModels = "reasoning-models",
   HiddenMarkovModelsInAI = "hidden-markov-models-in-ai",
+
   Backend = "backend",
   ORM = "orm",
   CrossOriginResourceSharing = "cross-origin-resource-sharing",
   TypesOfSoftwareTesting = "types-of-software-testing",
   AuthenticationSessionManagement = "authentication-session-management",
+  SyncAsync = "sync-vs-async",
+  ApiComparison = "api-comparison",
+  DesignPatterns = "design-patterns",
+  DevOps = "devops",
+  CiCd = "ci-cd",
+  Containerization = "containerization",
+
   DatabaseParadigms = "database-paradigms",
   RelationalDatabases = "relational-databases",
   DatabaseNormalisation = "database-normalisation",
@@ -34,9 +42,6 @@ enum BlogDatabaseKeys {
   GraphDatabases = "graph-databases",
   DocumentDatabases = "document-databases",
   TimeSeriesDatabases = "time-series-databases",
-  SyncAsync = "sync-vs-async",
-  ApiComparison = "api-comparison",
-  DesignPatterns = "design-patterns",
 }
 
 export default BlogDatabaseKeys;
