@@ -357,6 +357,21 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.InfrastructureAsCode,
     ],
   },
+  [BlogDatabaseKeys.CiCd]: {
+    name: "Continuous Integration & Continuous Deployment (CI/CD)",
+    subtitle:
+      "A comprehensive technical analysis covering the history, theory, architecture, security, and performance metrics of modern CI/CD pipelines.",
+    category: BlogCategoriesEnum.SoftwareEngineering,
+    skills: [
+      SkillDatabaseKeys.DevOps,
+      SkillDatabaseKeys.ContinuousDelivery,
+      SkillDatabaseKeys.ContinuousDeployment,
+      SkillDatabaseKeys.ContinuousIntegration,
+      SkillDatabaseKeys.Jenkins,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.GitHubActions,
+    ],
+  },
 
   //^ Database Blogs
   [BlogDatabaseKeys.DatabaseParadigms]: {

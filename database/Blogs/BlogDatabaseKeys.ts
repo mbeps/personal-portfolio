@@ -32,6 +32,7 @@ enum BlogDatabaseKeys {
   ApiComparison = "api-comparison",
   DesignPatterns = "design-patterns",
   DevOps = "devops",
+  CiCd = "ci-cd",
 
   DatabaseParadigms = "database-paradigms",
   RelationalDatabases = "relational-databases",
