@@ -33,6 +33,7 @@ enum BlogDatabaseKeys {
   DesignPatterns = "design-patterns",
   DevOps = "devops",
   CiCd = "ci-cd",
+  Containerization = "containerization",
 
   DatabaseParadigms = "database-paradigms",
   RelationalDatabases = "relational-databases",

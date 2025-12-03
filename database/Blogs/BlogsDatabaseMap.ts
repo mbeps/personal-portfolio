@@ -372,6 +372,20 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.GitHubActions,
     ],
   },
+  [BlogDatabaseKeys.Containerization]: {
+    name: "Containersation & Orchestration",
+    subtitle:
+      "An exhaustive technical analysis of Linux kernel primitives, runtime standards, security paradigms, and architectural principles defining modern containerisation.",
+    category: BlogCategoriesEnum.SoftwareEngineering,
+    skills: [
+      SkillDatabaseKeys.DevOps,
+      SkillDatabaseKeys.Containerisation,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.Podman,
+      SkillDatabaseKeys.Kubernetes,
+      SkillDatabaseKeys.Clusterisation,
+    ],
+  },
 
   //^ Database Blogs
   [BlogDatabaseKeys.DatabaseParadigms]: {
