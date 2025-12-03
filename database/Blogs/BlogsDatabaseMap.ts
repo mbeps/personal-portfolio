@@ -334,6 +334,29 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.Django,
     ],
   },
+  [BlogDatabaseKeys.DevOps]: {
+    name: "DevOps Principles & Practices",
+    subtitle:
+      "Comprehensive overview of DevOps history, theory, architecture, operational models, metrics and sociological challenges, linking queuing theory, Lean, SRE, DevSecOps and platform engineering to modern software delivery.",
+    category: BlogCategoriesEnum.SoftwareEngineering,
+    skills: [
+      SkillDatabaseKeys.DevOps,
+      SkillDatabaseKeys.Containerisation,
+      SkillDatabaseKeys.ContinuousDelivery,
+      SkillDatabaseKeys.ContinuousDeployment,
+      SkillDatabaseKeys.ContinuousIntegration,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.Podman,
+      SkillDatabaseKeys.Kubernetes,
+      SkillDatabaseKeys.Jenkins,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.GitHubActions,
+      SkillDatabaseKeys.Terraform,
+      SkillDatabaseKeys.Ansible,
+      SkillDatabaseKeys.Clusterisation,
+      SkillDatabaseKeys.InfrastructureAsCode,
+    ],
+  },
 
   //^ Database Blogs
   [BlogDatabaseKeys.DatabaseParadigms]: {
