@@ -249,6 +249,21 @@ const blogsMap: Database<BlogInterface> = {
     ],
     relatedMaterials: [BlogDatabaseKeys.Transformer],
   },
+  [BlogDatabaseKeys.FeatureEngineeringAndDimensionalityReduction]: {
+    name: "Feature Engineering & Dimensionality Reduction",
+    subtitle:
+      "A technical guide to data representation algorithms including PCA, LDA, ICA, and sparse coding, featuring mathematical derivations and neural network implementations.",
+    skills: [
+      SkillDatabaseKeys.CloudComputing,
+      SkillDatabaseKeys.Firebase,
+      SkillDatabaseKeys.Supabase,
+    ],
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_ArtificialIntelligenceReasoningAndDecisionMaking,
+      ModuleDatabaseKeys.KCL_PatternRecognitionNeuralNetworksDeepLearning,
+    ],
+  },
   [BlogDatabaseKeys.HiddenMarkovModelsInAI]: {
     name: "Hidden Markov Models (HMMs) in AI",
     subtitle:

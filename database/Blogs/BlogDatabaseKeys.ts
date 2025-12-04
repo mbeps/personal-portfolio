@@ -22,6 +22,7 @@ enum BlogDatabaseKeys {
   RitrievalAugmentedGeneration = "retrieval-augmented-generation",
   ReasoningModels = "reasoning-models",
   HiddenMarkovModelsInAI = "hidden-markov-models-in-ai",
+  FeatureEngineeringAndDimensionalityReduction = "feature-engineering-and-dimensionality-reduction",
 
   Backend = "backend",
   ORM = "orm",
