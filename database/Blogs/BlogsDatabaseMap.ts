@@ -343,6 +343,23 @@ const blogsMap: Database<BlogInterface> = {
     ],
     category: BlogCategoriesEnum.ArtificialIntelligence,
   },
+  [BlogDatabaseKeys.ReinforcementLearningThroughVerifiableRewards]: {
+    name: "Reinforcement Learning through Verifiable Rewards",
+    subtitle:
+      "A technical analysis of RLVR and GRPO algorithms for training reasoning models, replacing human feedback with deterministic verification to achieve self-correction.",
+    skills: [
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.ReinforcementLearning,
+      SkillDatabaseKeys.Algebra,
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.Probability,
+    ],
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+  },
   //^ Software Engineering Blogs
   [BlogDatabaseKeys.DesignPatterns]: {
     name: "Software Design Patterns",

@@ -25,6 +25,7 @@ enum BlogDatabaseKeys {
   FeatureEngineeringAndDimensionalityReduction = "feature-engineering-and-dimensionality-reduction",
   ReinforcementLearning = "reinforcement-learning",
   ReinforcementLearningThroughHumanFeedback = "reinforcement-learning-through-human-feedback",
+  ReinforcementLearningThroughVerifiableRewards = "reinforcement-learning-through-varifiable-rewards",
   TransferLearning = "transfer-learning",
 
   Backend = "backend",
