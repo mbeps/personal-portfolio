@@ -286,6 +286,25 @@ const blogsMap: Database<BlogInterface> = {
       ModuleDatabaseKeys.KCL_PatternRecognitionNeuralNetworksDeepLearning,
     ],
   },
+  [BlogDatabaseKeys.GenerativeAdversarialNetworks]: {
+    name: "Generative Adversarial Networks (GANs)",
+    subtitle:
+      "An analysis of GAN mechanics, covering minimax games, Wasserstein geometry, architectural evolutions like StyleGAN, and comparisons with VAEs and diffusion models.",
+    skills: [
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.Algebra,
+      SkillDatabaseKeys.Probability,
+    ],
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_PatternRecognitionNeuralNetworksDeepLearning,
+    ],
+  },
   [BlogDatabaseKeys.HiddenMarkovModelsInAI]: {
     name: "Hidden Markov Models (HMMs) in AI",
     subtitle:
