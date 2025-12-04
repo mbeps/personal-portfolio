@@ -326,6 +326,23 @@ const blogsMap: Database<BlogInterface> = {
       ProjectDatabaseKeys.MarkovDecisionAgent,
     ],
   },
+  [BlogDatabaseKeys.ReinforcementLearningThroughHumanFeedback]: {
+    name: "Reinforcement Learning through Human Feedback",
+    subtitle:
+      "An analysis of RLHF mechanisms, covering preference modelling, PPO and DPO algorithms, entropy constraints, and theoretical scaling laws.",
+    skills: [
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.ReinforcementLearning,
+      SkillDatabaseKeys.Algebra,
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.Probability,
+    ],
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+  },
   //^ Software Engineering Blogs
   [BlogDatabaseKeys.DesignPatterns]: {
     name: "Software Design Patterns",
