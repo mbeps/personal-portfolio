@@ -161,6 +161,22 @@ const blogsMap: Database<BlogInterface> = {
       ModuleDatabaseKeys.KCL_IndividualProject,
     ],
   },
+  [BlogDatabaseKeys.TransferLearning]: {
+    name: "Transfer Learning",
+    subtitle: "",
+    skills: [
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.ReinforcementLearning,
+      SkillDatabaseKeys.Algebra,
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.Probability,
+    ],
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+  },
   [BlogDatabaseKeys.Lora]: {
     name: "Low-Rank Adaptation (LoRA)",
     subtitle:

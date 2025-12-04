@@ -24,6 +24,7 @@ enum BlogDatabaseKeys {
   HiddenMarkovModelsInAI = "hidden-markov-models-in-ai",
   FeatureEngineeringAndDimensionalityReduction = "feature-engineering-and-dimensionality-reduction",
   ReinforcementLearning = "reinforcement-learning",
+  TransferLearning = "transfer-learning",
 
   Backend = "backend",
   ORM = "orm",
