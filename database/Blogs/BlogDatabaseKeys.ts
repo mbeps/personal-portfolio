@@ -27,6 +27,7 @@ enum BlogDatabaseKeys {
   ReinforcementLearningThroughHumanFeedback = "reinforcement-learning-through-human-feedback",
   ReinforcementLearningThroughVerifiableRewards = "reinforcement-learning-through-varifiable-rewards",
   TransferLearning = "transfer-learning",
+  EvolutionaryAlgorithms = "evolutionary-algorithms",
 
   Backend = "backend",
   ORM = "orm",

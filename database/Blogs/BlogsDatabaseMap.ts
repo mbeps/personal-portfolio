@@ -360,6 +360,24 @@ const blogsMap: Database<BlogInterface> = {
     ],
     category: BlogCategoriesEnum.ArtificialIntelligence,
   },
+  [BlogDatabaseKeys.EvolutionaryAlgorithms]: {
+    name: "Introduction to Evolutionary Algorithms",
+    subtitle:
+      "A comprehensive mathematical analysis of evolutionary algorithms, covering genetic algorithms, CMA-ES, and neuroevolution, with a focus on convergence proofs, schema theory, and stochastic optimisation.",
+    skills: [
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.ReinforcementLearning,
+      SkillDatabaseKeys.Algebra,
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.Probability,
+    ],
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+    relatedMaterials: [ModuleDatabaseKeys.KCL_MachineLearning],
+  },
   //^ Software Engineering Blogs
   [BlogDatabaseKeys.DesignPatterns]: {
     name: "Software Design Patterns",
