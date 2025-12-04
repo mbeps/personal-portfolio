@@ -23,6 +23,7 @@ enum BlogDatabaseKeys {
   ReasoningModels = "reasoning-models",
   HiddenMarkovModelsInAI = "hidden-markov-models-in-ai",
   FeatureEngineeringAndDimensionalityReduction = "feature-engineering-and-dimensionality-reduction",
+  ReinforcementLearning = "reinforcement-learning",
 
   Backend = "backend",
   ORM = "orm",

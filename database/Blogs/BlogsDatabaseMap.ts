@@ -288,6 +288,26 @@ const blogsMap: Database<BlogInterface> = {
       ProjectDatabaseKeys.MarkovDecisionAgent,
     ],
   },
+  [BlogDatabaseKeys.ReinforcementLearning]: {
+    name: "Reinforcement Learning",
+    subtitle: "",
+    skills: [
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.ReinforcementLearning,
+      SkillDatabaseKeys.Algebra,
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.Probability,
+    ],
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_MachineLearning,
+      ProjectDatabaseKeys.MarkovDecisionAgent,
+    ],
+  },
   //^ Software Engineering Blogs
   [BlogDatabaseKeys.DesignPatterns]: {
     name: "Software Design Patterns",
