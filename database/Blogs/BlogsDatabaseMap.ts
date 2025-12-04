@@ -163,7 +163,8 @@ const blogsMap: Database<BlogInterface> = {
   },
   [BlogDatabaseKeys.TransferLearning]: {
     name: "Transfer Learning",
-    subtitle: "",
+    subtitle:
+      "A technical analysis of transfer learning, covering mathematical definitions, distribution alignment, adversarial networks, and modern parameter-efficient fine-tuning methods like LoRA.",
     skills: [
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
