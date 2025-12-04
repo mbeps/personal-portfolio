@@ -254,9 +254,14 @@ const blogsMap: Database<BlogInterface> = {
     subtitle:
       "A technical guide to data representation algorithms including PCA, LDA, ICA, and sparse coding, featuring mathematical derivations and neural network implementations.",
     skills: [
-      SkillDatabaseKeys.CloudComputing,
-      SkillDatabaseKeys.Firebase,
-      SkillDatabaseKeys.Supabase,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.Algebra,
+      SkillDatabaseKeys.Probability,
     ],
     category: BlogCategoriesEnum.ArtificialIntelligence,
     relatedMaterials: [
@@ -269,9 +274,13 @@ const blogsMap: Database<BlogInterface> = {
     subtitle:
       "Covers HMM architecture, Markov assumptions, and core algorithms like Viterbi, alongside evaluation metrics and practical applications in fraud detection and Part-of-Speech tagging.",
     skills: [
-      SkillDatabaseKeys.CloudComputing,
-      SkillDatabaseKeys.Firebase,
-      SkillDatabaseKeys.Supabase,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.Algebra,
+      SkillDatabaseKeys.Probability,
     ],
     category: BlogCategoriesEnum.ArtificialIntelligence,
     relatedMaterials: [
