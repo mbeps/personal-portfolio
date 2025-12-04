@@ -15,6 +15,7 @@ enum BlogDatabaseKeys {
   ConvolutionalNeuralNetworks = "convolutional-neural-networks",
   RecurrentNeuralNetworks = "recurrent-neural-networks",
   GenerativeAdversarialNetworks = "generative-adversarial-networks",
+  BoltzmannMachines = "boltzmann-machines",
   Transformer = "transformer-architecture",
   Lora = "lora",
   Quantisation = "quantisation",

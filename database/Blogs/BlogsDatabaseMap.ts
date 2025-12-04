@@ -142,6 +142,44 @@ const blogsMap: Database<BlogInterface> = {
       ModuleDatabaseKeys.KCL_PatternRecognitionNeuralNetworksDeepLearning,
     ],
   },
+  [BlogDatabaseKeys.GenerativeAdversarialNetworks]: {
+    name: "Generative Adversarial Networks (GANs)",
+    subtitle:
+      "An analysis of GAN mechanics, covering minimax games, Wasserstein geometry, architectural evolutions like StyleGAN, and comparisons with VAEs and diffusion models.",
+    skills: [
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.Algebra,
+      SkillDatabaseKeys.Probability,
+    ],
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_PatternRecognitionNeuralNetworksDeepLearning,
+    ],
+  },
+  [BlogDatabaseKeys.BoltzmannMachines]: {
+    name: "Boltzmann Machines",
+    subtitle:
+      "A technical analysis of Boltzmann machines, deriving learning algorithms from thermodynamic principles and tracing their evolution from Ising models to quantum computing and Transformers.",
+    skills: [
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.LinearAlgebra,
+      SkillDatabaseKeys.Algebra,
+      SkillDatabaseKeys.Probability,
+    ],
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_PatternRecognitionNeuralNetworksDeepLearning,
+    ],
+  },
   [BlogDatabaseKeys.Transformer]: {
     name: "Transformer Architecture",
     subtitle:
@@ -283,25 +321,6 @@ const blogsMap: Database<BlogInterface> = {
     category: BlogCategoriesEnum.ArtificialIntelligence,
     relatedMaterials: [
       ModuleDatabaseKeys.KCL_ArtificialIntelligenceReasoningAndDecisionMaking,
-      ModuleDatabaseKeys.KCL_PatternRecognitionNeuralNetworksDeepLearning,
-    ],
-  },
-  [BlogDatabaseKeys.GenerativeAdversarialNetworks]: {
-    name: "Generative Adversarial Networks (GANs)",
-    subtitle:
-      "An analysis of GAN mechanics, covering minimax games, Wasserstein geometry, architectural evolutions like StyleGAN, and comparisons with VAEs and diffusion models.",
-    skills: [
-      SkillDatabaseKeys.ArtificialIntelligence,
-      SkillDatabaseKeys.MachineLearning,
-      SkillDatabaseKeys.DataScience,
-      SkillDatabaseKeys.NeuralNetworks,
-      SkillDatabaseKeys.Mathematics,
-      SkillDatabaseKeys.LinearAlgebra,
-      SkillDatabaseKeys.Algebra,
-      SkillDatabaseKeys.Probability,
-    ],
-    category: BlogCategoriesEnum.ArtificialIntelligence,
-    relatedMaterials: [
       ModuleDatabaseKeys.KCL_PatternRecognitionNeuralNetworksDeepLearning,
     ],
   },
