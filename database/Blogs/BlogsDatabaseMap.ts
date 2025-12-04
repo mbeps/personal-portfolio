@@ -290,7 +290,8 @@ const blogsMap: Database<BlogInterface> = {
   },
   [BlogDatabaseKeys.ReinforcementLearning]: {
     name: "Reinforcement Learning",
-    subtitle: "",
+    subtitle:
+      "Covers RL basics, MDPs, value iteration, exploration vs exploitation, Q-learning, SARSA, and function approximation for scalable learning.",
     skills: [
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,

@@ -58,9 +58,9 @@
 	- [6.3 - Applications](#63---applications)
 
 
-## 1 - Foundations of Reinforcement Learning
+# 1 - Foundations of Reinforcement Learning
 
-### 1.1 - Core Concepts
+## 1.1 - Core Concepts
 
 Reinforcement Learning (RL) is a computational approach to learning whereby an agent learns how to behave in an environment by performing actions and seeing the results. The goal is to learn a mapping from situations (states) to actions so that the agent maximises a numerical reward signal.
 
@@ -97,7 +97,7 @@ Reinforcement learning relies on evaluative feedback. The agent must deduce the 
 **The Reward Hypothesis**
 The central premise of RL is the Reward Hypothesis. It suggests that all goals can be described by the maximisation of expected cumulative reward. For example, in chess, the reward is received only at the end of the game (win/loss); in table tennis, each point scored acts as a reward.
 
-### 1.2 - Key Characteristics
+## 1.2 - Key Characteristics
 
 Reinforcement learning is defined by several specific challenges that distinguish it from other learning methods.
 
@@ -117,9 +117,9 @@ The dilemma is that the agent cannot do both simultaneously. Exclusive exploitat
 
 -----
 
-## 2 - The N-Armed Bandit Problem
+# 2 - The N-Armed Bandit Problem
 
-### 2.1 - Problem Definition
+## 2.1 - Problem Definition
 
 The n-armed bandit problem is a classic example used to demonstrate the fundamentals of reinforcement learning. Imagine you are faced with a set of $n$ slot machines (also known as "one-armed bandits"). Your goal is to maximise the total reward you receive over a series of time steps.
 
@@ -138,7 +138,7 @@ $$Q^*(a) = E[r_t | a_t = a]$$
 
 Since we do not know the true values, we maintain an estimated value $Q_t(a)$ for each action $a$ at time step $t$. The agent's task is to make these estimates as accurate as possible through trial and error.
 
-### 2.2 - Action-Value Methods
+## 2.2 - Action-Value Methods
 
 We need a practical way to estimate $Q^*(a)$. A natural approach is to use the average of the rewards actually received.
 
@@ -160,7 +160,7 @@ $$Q_{k+1} = Q_k + \frac{1}{k+1}(r_{k+1} - Q_k)$$
 
 Here, the step size is $\frac{1}{k+1}$, which decreases as we collect more data, ensuring the estimate stabilizes.
 
-### Example Problem
+## Example Problem
 
 An agent has a series of choices between taking action $a_1$ and action $a_2$. Its choices, and the resulting payoffs, are as follows:
 
@@ -173,7 +173,7 @@ An agent has a series of choices between taking action $a_1$ and action $a_2$. I
 
 **Task:** What is the action-value estimate for each of $a_1$ and $a_2$ at each point in time?
 
-### Step-by-Step Solution
+## Step-by-Step Solution
 
 We will use the incremental update formula: $Q_{k+1}(a) = Q_k(a) + \frac{1}{k+1}(r - Q_k(a))$, where $k$ is the number of times action $a$ has been chosen **before** the current step.
 
@@ -260,7 +260,7 @@ We will use the incremental update formula: $Q_{k+1}(a) = Q_k(a) + \frac{1}{k+1}
 | 6    | $a_2$        | 4      | 6.0               | **5.25**          |
 | 7    | $a_2$        | 5      | 6.0               | **5.20**          |
 
-### 2.3 - Action Selection Strategies
+## 2.3 - Action Selection Strategies
 
 A crucial aspect of Reinforcement Learning is how the agent chooses an action $a$ given its current action-value estimates $Q_t(a)$.
 
@@ -288,7 +288,7 @@ A crucial aspect of Reinforcement Learning is how the agent chooses an action $a
       * **High $\tau$:** Actions are nearly equiprobable (random).
       * **Low $\tau$:** The probability of the greedy action approaches 1.
 
-### Example Problem
+## Example Problem
 
 Consider an agent that is choosing between 3 actions, $a_{1}$, $a_{2}$ and $a_{3}$, with the following average rewards: $Q(a_{1})=5$, $Q(a_{2})=7$ and $Q(a_{3})=4$.
 
@@ -296,7 +296,7 @@ Consider an agent that is choosing between 3 actions, $a_{1}$, $a_{2}$ and $a_{3
 
 (b) If the agent uses softmax action selection, using the Gibbs distribution with $\tau=0.1$, what is the probability that each action will be selected?
 
-### Step-by-Step Solution
+## Step-by-Step Solution
 
 **Part (a): $\epsilon$-greedy Selection**
 
@@ -352,9 +352,9 @@ $P(a_1) \approx 0.033$, $P(a_2) \approx 0.933$, $P(a_3) \approx 0.033$.
 **Answer:**
 $P(a_2) \approx 1.0$, while $P(a_1)$ and $P(a_3)$ are effectively $0$. The low temperature ($\tau=0.1$) makes the selection extremely greedy.
 
-## 2.4 - Computational Examples
+# 2.4 - Computational Examples
 
-### Calculating Action-Value Updates (Derivation)
+## Calculating Action-Value Updates (Derivation)
 
 The incremental update rule is a computationally efficient way to calculate the average of a sequence of rewards. Instead of storing all past rewards and summing them every time, we can derive a formula that updates the current average using only the new reward.
 
@@ -385,7 +385,7 @@ $$NewEstimate \leftarrow OldEstimate + StepSize \times (Target - OldEstimate)$$
 
 Where the **Target** is the $n+1$-th reward, and the **Error** is $(r_{n+1} - Q_n)$.
 
-### Calculating Selection Probabilities
+## Calculating Selection Probabilities
 
 When implementing Softmax selection, the computation involves exponentials which can grow very large.
 
@@ -398,9 +398,9 @@ When implementing Softmax selection, the computation involves exponentials which
     $$P(a) = \frac{e^{Q(a)/\tau}}{\text{Sum}}$$
     The sum of probabilities for all actions must equal 1.
 
-## 3 - Markov Decision Processes (MDPs)
+# 3 - Markov Decision Processes (MDPs)
 
-### 3.1 - Formal Definition
+## 3.1 - Formal Definition
 
 To solve Reinforcement Learning problems mathematically, we formalise the environment as a **Markov Decision Process (MDP)**. An MDP is defined by a tuple $(S, A, P, R, \gamma)$.
 
@@ -431,7 +431,7 @@ To solve Reinforcement Learning problems mathematically, we formalise the enviro
     $$P(S_{t+1} | S_t, A_t, S_{t-1}, A_{t-1}, \dots) = P(S_{t+1} | S_t, A_t)$$
     *If the state captures all relevant information (e.g. position, velocity), the history is irrelevant.*
 
-### Visualizing the Interaction
+## Visualizing the Interaction
 
 The agent and environment interact in a continuous loop. The agent observes the state, acts, and the environment responds with a new state and reward.
 
@@ -455,7 +455,7 @@ Environment -->|Next Step| R
 
 -----
 
-### Example Problem: Defining an MDP
+## Example Problem: Defining an MDP
 
 **Question:**
 Consider a robot navigating a **Grid World** environment to understand how an MDP is structured.
@@ -473,7 +473,7 @@ Consider a robot navigating a **Grid World** environment to understand how an MD
 
 Define the State Space ($S$), Action Space ($A$), Transition Model for a specific action, and the Reward Function.
 
-### Solution
+## Solution
 
 **1. State Space ($S$):**
 The states correspond to the grid coordinates $(x, y)$.
@@ -504,7 +504,7 @@ The reward depends on the state the agent enters (or currently inhabits).
   * **All other states:** $R(s) = -0.04$
   * The small negative reward encourages the agent to find the goal quickly (minimising steps).
 
-## 3.2 - Policies and Utility
+# 3.2 - Policies and Utility
 
 **Definition of a Policy ($\pi$)**
 A policy, denoted by $\pi$, is a complete mapping from states to actions. It tells the agent exactly what to do in any given situation.
@@ -536,14 +536,14 @@ This is called the **Maximum Expected Utility (MEU)** principle. The agent looks
 
 -----
 
-### Example Problem: Writing the Bellman Equation
+## Example Problem: Writing the Bellman Equation
 
 **Question:**
 Consider a robot in a Grid World environment (as described in Section 3.1). The agent is in state $(1,1)$. The available actions are $Up$, $Down$, $Left$, and $Right$. The transition model includes noise: intended moves succeed with probability 0.8, while slipping left or right relative to the direction of motion happens with probability 0.1 each.
 
 Write down the specific Bellman equation for state $(1, 1)$.
 
-### Solution
+## Solution
 
 The general Bellman equation is:
 $$U(s) = R(s) + \gamma \max_{a} \sum_{s'} P(s'|s,a)U(s')$$
@@ -598,9 +598,9 @@ U((1,1)) = R((1,1)) + \gamma \max \begin{cases}
 0.8 U(1,1) + 0.1 U(1,2) + 0.1 U(1,1) & (\text{Left})
 \end{cases}$$
 
-## 3.3 - Planning with Value Iteration
+# 3.3 - Planning with Value Iteration
 
-### The Value Iteration Algorithm
+## The Value Iteration Algorithm
 
 Value Iteration is an algorithm used to calculate the optimal utility function $U^*(s)$ for all states. It works by iteratively improving the estimated utility of every state until the values stabilise (converge).
 
@@ -614,7 +614,7 @@ Instead of solving the system of simultaneous linear equations (which can be slo
     $$U_{k+1}(s) \leftarrow R(s) + \gamma \max_{a \in A(s)} \sum_{s'} P(s'|s,a) U_k(s')$$
 4.  **Repeat:** Continue looping through all states until the change in utility values between iterations is very small (below a small threshold $\epsilon$).
 
-### Discount Factor ($\gamma$)
+## Discount Factor ($\gamma$)
 
 The discount factor $\gamma$ is a number between 0 and 1 that determines the importance of future rewards.
 
@@ -622,14 +622,14 @@ The discount factor $\gamma$ is a number between 0 and 1 that determines the imp
   * **$\gamma$ close to 1:** The agent is "far-sighted." It values long-term rewards almost as much as immediate ones.
   * **Mathematical necessity:** Discounting ensures that the sum of rewards is finite, which guarantees the algorithm will converge.
 
-### Convergence Properties
+## Convergence Properties
 
 Value Iteration is guaranteed to converge to the unique optimal values $U^*(s)$.
 
   * **Contraction:** The update rule is a "contraction mapping." This means that with every step, the estimated utility values get closer to the true solution.
   * The error reduces by a factor of at least $\gamma$ in each iteration.
 
-### Algorithm Flowchart
+## Algorithm Flowchart
 
 ```mermaid
 graph TD
@@ -645,7 +645,7 @@ F -- Yes --> H[End: Converged]
 
 -----
 
-### Example Problem: Performing Value Iteration
+## Example Problem: Performing Value Iteration
 
 **Question:**
 Consider the Grid World again with the following parameters:
@@ -667,7 +667,7 @@ We want to calculate the utility $U_1$ for state **$(3,3)$** after **one iterati
 
 Calculate $U_1(3,3)$ by applying the Bellman Update.
 
-### Solution
+## Solution
 
 To find $U_1(3,3)$, we apply the Bellman update rule:
 $$U_{1}(s) = R(s) + \gamma \max_{a} \sum_{s'} P(s'|s,a) U_0(s')$$
@@ -728,9 +728,9 @@ $$U_1(3,3) = 0.68$$
 
 After one iteration, the utility of state $(3,3)$ updates from 0 to **0.68**.
 
-## 3.4 - Computational Examples
+# 3.4 - Computational Examples
 
-### Performing Manual Value Iteration Updates
+## Performing Manual Value Iteration Updates
 
 Value iteration involves repeatedly updating the utility of a state $U(s)$ by looking at the maximum expected utility of its neighbours. This calculation is also used to extract the optimal policy $\pi^*(s)$ once the values have converged; the optimal action is simply the one that maximises the expected future utility.
 
@@ -788,9 +788,9 @@ We calculate $\sum P(s'|s,a)U(s')$ for each action:
   * The maximum expected utility is **0.6511** (Action: Left).
   * **Policy:** The agent should move **Left**.
 
-## 4 - Passive Reinforcement Learning (Prediction)
+# 4 - Passive Reinforcement Learning (Prediction)
 
-### 4.1 - Definition
+## 4.1 - Definition
 
 In **Passive Reinforcement Learning**, the agent's policy $\pi$ is fixed. The agent does not choose actions; it simply follows the instructions given by $\pi$ and observes the results.
 
@@ -800,7 +800,7 @@ The goal is to learn the **utility function** $U^{\pi}(s)$ associated with that 
   * **Observations:** Sequences of state transitions and rewards (e.g. $(s_1, r_1), (s_2, r_2), \dots, (s_{terminal}, r_{terminal})$).
   * **Output:** The estimated utility $U^{\pi}(s)$ for each state.
 
-### 4.2 - Direct Utility Estimation (DUE)
+## 4.2 - Direct Utility Estimation (DUE)
 
 **Method Overview**
 Direct Utility Estimation is the simplest method for passive learning. It treats the estimation of each state's utility as a separate supervised learning problem.
@@ -815,7 +815,7 @@ While simple, DUE ignores a crucial piece of information: the relationship betwe
   * **State Independence:** DUE calculates $U(s)$ independently of $U(s')$, even if $s$ leads directly to $s'$.
   * **Violation of Bellman Constraints:** Because the estimates are independent, they may not obey the Bellman equation (where the utility of a state should be the immediate reward plus the utility of the next state). This makes the learning slower (requires more samples) compared to methods that exploit these dependencies.
 
-### Example Problem: Direct Utility Estimation
+## Example Problem: Direct Utility Estimation
 
 **Question:**
 For the Grid World environment (Standard setup: Reward -0.04 per step, +1/-1 at terminals), the agent follows a specific policy. We observe two specific runs (episodes) of the agent moving through the environment.
@@ -830,7 +830,7 @@ $(1,1)_{-0.04} \rightarrow (1,2)_{-0.04} \rightarrow (1,3)_{-0.04} \rightarrow (
 
 **Task:** Use Direct Utility Estimation to estimate the utility of each state based on the data from **Run 1**.
 
-### Step-by-Step Solution
+## Step-by-Step Solution
 
 To perform Direct Utility Estimation, we calculate the "observed utility" (cumulative reward from that point to the end) for every visit to every state.
 
@@ -891,9 +891,9 @@ We average the observed utilities for each state. Most states were visited once,
   * **$U(3,3)$**: Sample $\{0.96\}$. **Estimate: 0.96**
   * **$U(4,3)$**: Sample $\{1.0\}$. **Estimate: 1.0**
 
-## 4.3 - Adaptive Dynamic Programming (ADP)
+# 4.3 - Adaptive Dynamic Programming (ADP)
 
-### Learning the Model
+## Learning the Model
 
 Adaptive Dynamic Programming (ADP) is a model-based approach to passive reinforcement learning. Unlike Direct Utility Estimation, which treats states independently, ADP exploits the structure of the Markov Decision Process. It works by:
 
@@ -905,7 +905,7 @@ The agent keeps track of how many times it took action $a$ in state $s$ ($N(s,a)
 
 $$P(s'|s,a) \approx \frac{N(s,a,s')}{N(s,a)}$$
 
-### Example Problem: Learning Probabilities
+## Example Problem: Learning Probabilities
 
 **Question:**
 Consider an agent performing a run in the Grid World.
@@ -936,9 +936,9 @@ Calculate the sample estimate of $P(s'|s, \pi(s))$ for the state $(1,3)$ and act
 
 -----
 
-## 4.4 - Temporal Difference (TD) Learning
+# 4.4 - Temporal Difference (TD) Learning
 
-### Model-Free Learning
+## Model-Free Learning
 
 Temporal Difference (TD) learning is a **model-free** method. Unlike ADP, it does not try to learn the transition probabilities $P$ or rewards $R$. Instead, it updates the utility estimates directly based on the difference between what was expected and what actually happened.
 
@@ -952,7 +952,7 @@ $$U^{\pi}(s) \leftarrow U^{\pi}(s) + \alpha \left( \underbrace{R(s) + \gamma U^{
       * Low $\alpha$: Slow convergence, stable values.
   * **The Term $(R + \gamma U(s') - U(s))$:** This is the **TD Error**. It represents the surprise or discrepancy between the current estimate and the newly observed sample.
 
-### Comparison with ADP
+## Comparison with ADP
 
 | Feature             | Adaptive Dynamic Programming (ADP)              | Temporal Difference (TD)         |
 | :------------------ | :---------------------------------------------- | :------------------------------- |
@@ -961,7 +961,7 @@ $$U^{\pi}(s) \leftarrow U^{\pi}(s) + \alpha \left( \underbrace{R(s) + \gamma U^{
 | **Data Efficiency** | High (Uses data fully)                          | Lower (Requires more samples)    |
 | **Convergence**     | Fast (in terms of episodes)                     | Slower (in terms of episodes)    |
 
-### Example Problem: TD Update
+## Example Problem: TD Update
 
 **Question:**
 Using the same **Run 1** from the previous section, perform a Temporal Difference update for the state $(2,3)$ upon the transition to $(3,3)$.
@@ -990,9 +990,9 @@ Using the same **Run 1** from the previous section, perform a Temporal Differenc
 
     The utility of $(2,3)$ decreases slightly, reflecting the negative living reward.
 
-## 4.5 - Computational Examples
+# 4.5 - Computational Examples
 
-### Estimating Transition Probabilities and Direct Utility Estimation
+## Estimating Transition Probabilities and Direct Utility Estimation
 
 This example demonstrates how to estimate the model (transition probabilities) and utilities (using DUE) from observed episodes. This corresponds to the initial steps of model-based (ADP) and passive learning.
 
@@ -1012,7 +1012,7 @@ $$(1,1) \xrightarrow{Up} (1,2) \xrightarrow{Up} (1,3) \xrightarrow{Right} (2,3) 
 1.  **Direct Utility Estimation (DUE):** Estimate $U(s)$ based on Run 1.
 2.  **Model Learning:** Estimate the transition probability $P(s' | s, \text{Right})$ for state $(1,3)$ after both runs.
 
-### Step-by-Step Solution
+## Step-by-Step Solution
 
 **1. Direct Utility Estimation (Run 1)**
 We calculate the "reward-to-go" for each state visit. The total reward at the end of the path is $+1$. We subtract the living penalty (-0.04) for each step backwards.
@@ -1049,9 +1049,9 @@ We want to estimate $P(s' | (1,3), \text{Right})$. We look at every time the age
 $$P((1,3) | (1,3), \text{Right}) \approx \frac{1}{3} \approx 0.33$$
 $$P((2,3) | (1,3), \text{Right}) \approx \frac{2}{3} \approx 0.67$$
 
-## 5 - Active Reinforcement Learning (Control)
+# 5 - Active Reinforcement Learning (Control)
 
-### 5.1 - The Control Problem
+## 5.1 - The Control Problem
 
 **Learning Utilities While Optimising Policy**
 In Passive Reinforcement Learning, the agent simply evaluates how good a fixed policy is. In **Active Reinforcement Learning**, the agent must decide what to do. The goal is to maximise the reward, which means the agent must simultaneously:
@@ -1071,7 +1071,7 @@ This approach often fails because the agent's initial model is incomplete or wro
   * **The Trap:** It will never try other actions that might lead to a much larger reward because it has not explored them yet (or had one bad experience with them due to noise).
   * **Example:** In a grid world, if going 'Up' once resulted in a penalty (due to stochastic slipping), a greedy agent might never try 'Up' again, even if 'Up' is actually the best move 90% of the time.
 
-### 5.2 - Exploration Strategies
+## 5.2 - Exploration Strategies
 
 To avoid the greedy trap, the agent must balance **Exploitation** (using what it knows) with **Exploration** (trying new things).
 
@@ -1100,7 +1100,7 @@ $$f(u, n) = \begin{cases} R^+ & \text{if } n < N_e \\ u & \text{otherwise} \end{
 
 This guarantees that the agent explores every state-action pair at least $N_e$ times before settling on a policy.
 
-## 5.3 - Q-Learning (Off-Policy)
+# 5.3 - Q-Learning (Off-Policy)
 
 **Learning Q(s,a) Values**
 Q-Learning is a **model-free** method. The agent does not need to learn the transition model $T(s, a, s')$ or the reward function $R(s)$. Instead, it learns $Q$-values, also known as action-utility values.
@@ -1125,7 +1125,7 @@ Q-learning is **Off-Policy**. This means it learns the value of the *optimal* po
 
   * The update uses $\max_{a'} Q(s', a')$. It assumes that in the next step, we will take the *best* possible action, regardless of what the agent actually plans to do next.
 
-## 5.4 - SARSA (On-Policy)
+# 5.4 - SARSA (On-Policy)
 
 **State-Action-Reward-State-Action**
 SARSA is very similar to Q-Learning but with one critical difference in how it views the future. The name comes from the tuple of events used in the update: $(s, a, r, s', a')$.
@@ -1145,7 +1145,7 @@ SARSA is **On-Policy**. It learns the value of the policy being followed (includ
 
 -----
 
-### Step-by-Step Solution: Q-Learning Update
+## Step-by-Step Solution: Q-Learning Update
 
 **Question:**
 Consider the following grid world with states S (Start), A, and G (Goal). The agent can move Left or Right.
@@ -1204,7 +1204,7 @@ $$Q(A, \text{Right}) = \mathbf{5.0}$$
   * $Q(A, \text{Right}) = 5.0$
   * All other Q-values remain 0.
 
-## 5.5 - Computational Examples
+# 5.5 - Computational Examples
 
 **Deriving Q-values from Traces**
 A trace is a history of an agent's experience: a sequence of state-action-reward tuples. To manually update Q-values, we step through this sequence chronologically.
@@ -1221,7 +1221,7 @@ The key difference lies in the "look-ahead" part of the equation:
 
 This distinction means Q-learning is optimistic (assumes optimal play), while SARSA is realistic (accounts for the agent's actual, potentially random, behaviour).
 
-### Example Problem: Q-Learning vs SARSA
+## Example Problem: Q-Learning vs SARSA
 
 **Question:**
 Consider a simple environment with three states: **Start**, **A**, and **End** (Terminal).
@@ -1299,9 +1299,9 @@ $$Q(\text{Start}, \text{Right}) = \mathbf{0.25}$$
 
 *Result: The value decreased drastically. SARSA "saw" that moving Right led to a risky mistake, so it penalized the previous action.*
 
-## 6 - Generalisation and Scaling
+# 6 - Generalisation and Scaling
 
-### 6.1 - The State Space Problem
+## 6.1 - The State Space Problem
 
 So far, we have assumed that utilities and Q-values are stored in a lookup table. This means we have a specific number for every single state $s$ or state-action pair $(s,a)$.
 
@@ -1311,7 +1311,7 @@ So far, we have assumed that utilities and Q-values are stored in a lookup table
   * **Time (The Curse of Dimensionality):** Even if we could store it, visiting every state enough times to learn its value accurately would take forever.
   * **Lack of Generalisation:** In a lookup table, learning about one state tells us nothing about similar states. If we learn that a specific board configuration is bad, we should be able to infer that a nearly identical configuration (perhaps with one pawn moved slightly) is also bad. Lookup tables treat them as completely separate.
 
-### 6.2 - Function Approximation
+## 6.2 - Function Approximation
 
 To solve the scaling problem, we use **Function Approximation**. Instead of storing values for every state, we approximate the utility function $U(s)$ (or $Q(s,a)$) using a smaller set of parameters $\theta$.
 
@@ -1338,7 +1338,7 @@ $$\theta_i \leftarrow \theta_i + \alpha \left[ U(s) - \hat{U}_\theta(s) \right] 
   * If the estimate is too low, we increase them.
   * **Generalisation:** Because we update the weights, this change immediately affects the utility estimate for *all* other states that share these features.
 
-### 6.3 - Applications
+## 6.3 - Applications
 
 Reinforcement learning with function approximation has led to significant successes in AI.
 
