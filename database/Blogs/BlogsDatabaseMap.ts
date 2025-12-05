@@ -109,7 +109,27 @@ const blogsMap: Database<BlogInterface> = {
   },
   [BlogDatabaseKeys.KernelTrick]: {
     name: "Kernel Trick",
-    subtitle: "",
+    subtitle:
+      "Introduction to kernel trick, its RKHS foundation, applications like SVMs, and modern approximations for large-scale machine learning.",
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+    ],
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_MachineLearning,
+      ModuleDatabaseKeys.KCL_PatternRecognitionNeuralNetworksDeepLearning,
+      ModuleDatabaseKeys.RHUL_MachineLearning,
+    ],
+  },
+  [BlogDatabaseKeys.SupportVectorMachines]: {
+    name: "Support Vector Machines",
+    subtitle:
+      "An analysis of SVM theory, optimisation dynamics, and modern kernel methods derived from Statistical Learning Theory.",
     category: BlogCategoriesEnum.ArtificialIntelligence,
     skills: [
       SkillDatabaseKeys.MachineLearning,
