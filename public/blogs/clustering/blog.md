@@ -1,37 +1,37 @@
 - [1 - Introduction to Unsupervised Learning and Clustering Theory](#1---introduction-to-unsupervised-learning-and-clustering-theory)
-	- [1.1 - Historical Context and Evolution](#11---historical-context-and-evolution)
-	- [1.2 - Mathematical Preliminaries: Vector Spaces and Dissimilarity](#12---mathematical-preliminaries-vector-spaces-and-dissimilarity)
+  - [1.1 - Historical Context and Evolution](#11---historical-context-and-evolution)
+  - [1.2 - Mathematical Preliminaries: Vector Spaces and Dissimilarity](#12---mathematical-preliminaries-vector-spaces-and-dissimilarity)
 - [2 - Partitional Clustering: K-Means Architecture](#2---partitional-clustering-k-means-architecture)
-	- [2.1 - The Objective Function: Inertia Minimisation](#21---the-objective-function-inertia-minimisation)
-	- [2.2 - Lloyd's Algorithm: High-Level Mechanics](#22---lloyds-algorithm-high-level-mechanics)
-	- [2.3 - Initialisation Strategy: K-Means++](#23---initialisation-strategy-k-means)
-	- [2.4 - Scalability: Mini-Batch K-Means](#24---scalability-mini-batch-k-means)
-	- [2.5 - Advantages and Disadvantages](#25---advantages-and-disadvantages)
+  - [2.1 - The Objective Function: Inertia Minimisation](#21---the-objective-function-inertia-minimisation)
+  - [2.2 - Lloyd's Algorithm: High-Level Mechanics](#22---lloyds-algorithm-high-level-mechanics)
+  - [2.3 - Initialisation Strategy: K-Means++](#23---initialisation-strategy-k-means)
+  - [2.4 - Scalability: Mini-Batch K-Means](#24---scalability-mini-batch-k-means)
+  - [2.5 - Advantages and Disadvantages](#25---advantages-and-disadvantages)
 - [3 - Hierarchical Clustering: Agglomerative Architectures](#3---hierarchical-clustering-agglomerative-architectures)
-	- [3.1 - Algorithmic Mechanics](#31---algorithmic-mechanics)
-	- [3.2 - Linkage Criteria](#32---linkage-criteria)
-	- [3.3 - Ward's Minimum Variance Method](#33---wards-minimum-variance-method)
-	- [3.4 - The Lance-Williams Algorithm](#34---the-lance-williams-algorithm)
-	- [3.5 - Advantages and Disadvantages](#35---advantages-and-disadvantages)
+  - [3.1 - Algorithmic Mechanics](#31---algorithmic-mechanics)
+  - [3.2 - Linkage Criteria](#32---linkage-criteria)
+  - [3.3 - Ward's Minimum Variance Method](#33---wards-minimum-variance-method)
+  - [3.4 - The Lance-Williams Algorithm](#34---the-lance-williams-algorithm)
+  - [3.5 - Advantages and Disadvantages](#35---advantages-and-disadvantages)
 - [4 - Density-Based Clustering: DBSCAN Mechanics](#4---density-based-clustering-dbscan-mechanics)
-	- [4.1 - Density, Core Points, and Neighbourhoods](#41---density-core-points-and-neighbourhoods)
-	- [4.2 - Reachability and Connectivity](#42---reachability-and-connectivity)
-	- [4.3 - The Algorithm](#43---the-algorithm)
-	- [4.4 - Parameter Estimation and Complexity](#44---parameter-estimation-and-complexity)
-	- [4.5 - Advantages and Disadvantages](#45---advantages-and-disadvantages)
+  - [4.1 - Density, Core Points, and Neighbourhoods](#41---density-core-points-and-neighbourhoods)
+  - [4.2 - Reachability and Connectivity](#42---reachability-and-connectivity)
+  - [4.3 - The Algorithm](#43---the-algorithm)
+  - [4.4 - Parameter Estimation and Complexity](#44---parameter-estimation-and-complexity)
+  - [4.5 - Advantages and Disadvantages](#45---advantages-and-disadvantages)
 - [5 - Probabilistic Clustering: Gaussian Mixture Models (GMM)](#5---probabilistic-clustering-gaussian-mixture-models-gmm)
-	- [5.1 - The Generative Model](#51---the-generative-model)
-	- [5.2 - The Expectation-Maximisation (EM) Algorithm](#52---the-expectation-maximisation-em-algorithm)
-	- [5.3 - Convergence and Jensen's Inequality](#53---convergence-and-jensens-inequality)
-	- [5.4 - Advantages and Disadvantages](#54---advantages-and-disadvantages)
+  - [5.1 - The Generative Model](#51---the-generative-model)
+  - [5.2 - The Expectation-Maximisation (EM) Algorithm](#52---the-expectation-maximisation-em-algorithm)
+  - [5.3 - Convergence and Jensen's Inequality](#53---convergence-and-jensens-inequality)
+  - [5.4 - Advantages and Disadvantages](#54---advantages-and-disadvantages)
 - [6 - Evaluation Metrics](#6---evaluation-metrics)
-	- [6.1 - Silhouette Coefficient](#61---silhouette-coefficient)
-	- [6.2 - Davies-Bouldin Index (DBI)](#62---davies-bouldin-index-dbi)
-	- [6.3 - Dunn Index](#63---dunn-index)
+  - [6.1 - Silhouette Coefficient](#61---silhouette-coefficient)
+  - [6.2 - Davies-Bouldin Index (DBI)](#62---davies-bouldin-index-dbi)
+  - [6.3 - Dunn Index](#63---dunn-index)
 - [7 - Mathematical Step-by-Step Mock Calculations](#7---mathematical-step-by-step-mock-calculations)
-	- [7.1 - K-Means: Manual Calculation (2 Iterations)](#71---k-means-manual-calculation-2-iterations)
-	- [7.2 - Hierarchical Clustering: Lance-Williams Update](#72---hierarchical-clustering-lance-williams-update)
-	- [7.3 - DBSCAN: Neighbourhood Check](#73---dbscan-neighbourhood-check)
+  - [7.1 - K-Means: Manual Calculation (2 Iterations)](#71---k-means-manual-calculation-2-iterations)
+  - [7.2 - Hierarchical Clustering: Lance-Williams Update](#72---hierarchical-clustering-lance-williams-update)
+  - [7.3 - DBSCAN: Neighbourhood Check](#73---dbscan-neighbourhood-check)
 - [8 - Seminal Literature Analysis](#8---seminal-literature-analysis)
 - [References](#references)
 
@@ -42,6 +42,8 @@
 In the domain of machine learning and artificial intelligence, the categorisation of data without predefined labels (unsupervised learning) remains one of the most mathematically complex and computationally significant challenges. Clustering, the process of grouping a set of objects in such a way that objects in the same group (called a cluster) are more similar to each other than to those in other groups, serves as the foundational pillar of unsupervised analysis. Unlike supervised learning, where the algorithm optimises a mapping function $y = f(x)$ based on ground-truth targets, clustering algorithms must infer the intrinsic structure of the data space $\mathcal{X}$ solely based on the geometric or probabilistic distribution of the input vectors.
 
 The utility of clustering spans distinct domains, from image segmentation and anomaly detection to genomic sequence analysis and market segmentation. However, the definition of a "cluster" is not universal. Depending on the algorithmic approach, a cluster may be defined as a region of high data density, a collection of points with small pairwise distances, or a statistical distribution governing the generation of observed data. This report provides an exhaustive technical examination of the four dominant clustering paradigms: Partitional (K-Means), Hierarchical (Agglomerative), Density-Based (DBSCAN), and Probabilistic (Gaussian Mixture Models).
+
+![alt text]({BASE}/image-1.png)
 
 ## 1.1 - Historical Context and Evolution
 
@@ -106,6 +108,8 @@ graph TD
     check -- Yes --> finish[End: Clusters Defined]
 ```
 
+![alt text]({BASE}/image-2.png)
+
 **Step 0: Initialisation**
 The algorithm begins by selecting $k$ initial centroids, $\{\mu_1, \dots, \mu_k\}$. The method of selection is critical to performance (discussed in Section 2.3).
 
@@ -166,11 +170,15 @@ While Mini-Batch K-Means is essentially a stochastic gradient descent approach t
   * **Fixed $k$:** The user must specify the number of clusters in advance.
   * **Sensitivity to Outliers:** As the algorithm minimises squared deviations, outliers can pull centroids significantly away from the dense core of a cluster.
 
+![alt text]({BASE}/image-3.png)
+
 -----
 
 # 3 - Hierarchical Clustering: Agglomerative Architectures
 
 Hierarchical clustering constructs a multi-level hierarchy of clusters, represented as a tree structure called a dendrogram. Unlike K-Means, it does not require a pre-specified number of clusters and produces a deterministic result. The two primary approaches are Agglomerative (bottom-up) and Divisive (top-down). This section focuses on Agglomerative Hierarchical Clustering (AHC), the more common variant.
+
+![alt text]({BASE}/image-4.png)
 
 ## 3.1 - Algorithmic Mechanics
 
@@ -198,6 +206,8 @@ graph TD
 ## 3.2 - Linkage Criteria
 
 The definition of "distance between clusters" ($d(U, V)$) is the distinguishing factor between different hierarchical methods. This is known as the linkage criterion.
+
+![alt text]({BASE}/image-5.png)
 
 **Single Linkage (Nearest Neighbour):**
 Defines distance as the minimum distance between any single point in cluster $U$ and any single point in cluster $V$.
@@ -266,6 +276,8 @@ The coefficients ($\alpha, \beta, \gamma$) vary depending on the linkage method 
 
 While K-Means and Ward's method rely on distances and centroids, DBSCAN (Density-Based Spatial Clustering of Applications with Noise) operates on the intuition that clusters are contiguous regions of high point density, separated by regions of low density. This allows it to discover clusters of arbitrary shape and effectively isolate noise.
 
+![alt text]({BASE}/image-6.png)
+
 ## 4.1 - Density, Core Points, and Neighbourhoods
 
 DBSCAN requires two hyperparameters:
@@ -324,6 +336,8 @@ The complexity of DBSCAN depends on the spatial indexing used. Without indexing,
 
 ## 4.5 - Advantages and Disadvantages
 
+![alt text]({BASE}/image-7.png)
+
 **Advantages:**
 
   * **Arbitrary Shapes:** Can identify clusters of complex geometries (e.g., spirals, concentric rings) that centroid methods fail to detect.
@@ -340,6 +354,8 @@ The complexity of DBSCAN depends on the spatial indexing used. Without indexing,
 # 5 - Probabilistic Clustering: Gaussian Mixture Models (GMM)
 
 Gaussian Mixture Models (GMMs) represent a probabilistic approach to clustering. Unlike the "hard" assignment of K-Means, GMMs perform "soft" clustering, assigning each data point a probability of belonging to each cluster. This method assumes that the data is generated from a mixture of a finite number of Gaussian distributions with unknown parameters.
+
+![alt text]({BASE}/image-8.png)
 
 ## 5.1 - The Generative Model
 
@@ -372,6 +388,8 @@ graph TD
     D -- No --> B
     D -- Yes --> E[End: Model Fitted]
 ```
+
+![alt text]({BASE}/image-9.png)
 
 The EM algorithm introduces latent variables $Z$, where $Z_i = k$ indicates that data point $x_i$ was generated by component $k$. It iterates between two steps:
 
@@ -432,6 +450,8 @@ $$s(i) = \frac{b(i) - a(i)}{\max(a(i), b(i))}$$
 
   * **Range:** $-1$ to $1$.
   * **Interpretation:** Values near $+1$ indicate high cohesion and separation. Values near $0$ indicate overlapping clusters. Negative values indicate misclassification.
+
+![alt text]({BASE}/image-10.png)
 
 ## 6.2 - Davies-Bouldin Index (DBI)
 
