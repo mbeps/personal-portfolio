@@ -721,6 +721,7 @@ const blogsMap: Database<BlogInterface> = {
       "A comprehensive analysis of testing methodologies, architectural strategies, and automation. Explores the core principles of verification and validation, test doubles, and modern engineering standards.",
     category: BlogCategoriesEnum.SoftwareEngineering,
     skills: [SkillDatabaseKeys.Testing],
+    archived: true
   },
   [BlogDatabaseKeys.AuthenticationSessionManagement]: {
     name: "Web Authentication Architecture",
@@ -825,6 +826,7 @@ const blogsMap: Database<BlogInterface> = {
       "A comprehensive guide covering secret management theory, dynamic mechanisms, and Zero Trust architectures (Vault, SPIFFE, Kubernetes).",
     category: BlogCategoriesEnum.SoftwareEngineering,
     skills: [SkillDatabaseKeys.DevOps],
+    archived: true
   },
 
   //^ Database Blogs
