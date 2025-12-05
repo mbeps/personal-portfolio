@@ -1,32 +1,32 @@
 - [1 - Introduction: The Probabilistic Paradigm in Machine Intelligence](#1---introduction-the-probabilistic-paradigm-in-machine-intelligence)
-	- [1.1 - Mathematical Foundations and Notation](#11---mathematical-foundations-and-notation)
+  - [1.1 - Mathematical Foundations and Notation](#11---mathematical-foundations-and-notation)
 - [2 - The Naive Bayes Classifier](#2---the-naive-bayes-classifier)
-	- [2.1 - Core Theory: The Independence Assumption](#21---core-theory-the-independence-assumption)
-	- [2.2 - Architectures and Distribution Types](#22---architectures-and-distribution-types)
-		- [2.2.1 - Gaussian Naive Bayes (Continuous Features)](#221---gaussian-naive-bayes-continuous-features)
-		- [2.2.2 - Multinomial Naive Bayes (Discrete Counts)](#222---multinomial-naive-bayes-discrete-counts)
-		- [2.2.3 - Bernoulli Naive Bayes (Binary Features)](#223---bernoulli-naive-bayes-binary-features)
-	- [2.3 - Comprehensive Manual Calculation: Gaussian Naive Bayes](#23---comprehensive-manual-calculation-gaussian-naive-bayes)
-	- [2.4 - Advantages and Limitations](#24---advantages-and-limitations)
+  - [2.1 - Core Theory: The Independence Assumption](#21---core-theory-the-independence-assumption)
+  - [2.2 - Architectures and Distribution Types](#22---architectures-and-distribution-types)
+    - [2.2.1 - Gaussian Naive Bayes (Continuous Features)](#221---gaussian-naive-bayes-continuous-features)
+    - [2.2.2 - Multinomial Naive Bayes (Discrete Counts)](#222---multinomial-naive-bayes-discrete-counts)
+    - [2.2.3 - Bernoulli Naive Bayes (Binary Features)](#223---bernoulli-naive-bayes-binary-features)
+  - [2.3 - Comprehensive Manual Calculation: Gaussian Naive Bayes](#23---comprehensive-manual-calculation-gaussian-naive-bayes)
+  - [2.4 - Advantages and Limitations](#24---advantages-and-limitations)
 - [3 - Gaussian Mixture Models (GMM)](#3---gaussian-mixture-models-gmm)
-	- [3.1 - Historical Context: Pearson's Crabs](#31---historical-context-pearsons-crabs)
-	- [3.2 - Mathematical Formulation](#32---mathematical-formulation)
-	- [3.3 - GMM vs. K-Means](#33---gmm-vs-k-means)
+  - [3.1 - Historical Context: Pearson's Crabs](#31---historical-context-pearsons-crabs)
+  - [3.2 - Mathematical Formulation](#32---mathematical-formulation)
+  - [3.3 - GMM vs. K-Means](#33---gmm-vs-k-means)
 - [4 - The Expectation-Maximisation (EM) Algorithm](#4---the-expectation-maximisation-em-algorithm)
-	- [4.1 - Theoretical Derivation: Jensen's Inequality and Lower Bounds](#41---theoretical-derivation-jensens-inequality-and-lower-bounds)
-	- [4.2 - Monotonicity and Convergence](#42---monotonicity-and-convergence)
+  - [4.1 - Theoretical Derivation: Jensen's Inequality and Lower Bounds](#41---theoretical-derivation-jensens-inequality-and-lower-bounds)
+  - [4.2 - Monotonicity and Convergence](#42---monotonicity-and-convergence)
 - [5 - Applying EM to Gaussian Mixture Models](#5---applying-em-to-gaussian-mixture-models)
-	- [5.1 - The Algorithm Steps](#51---the-algorithm-steps)
-	- [5.2 - Detailed Manual Calculation Example (1D GMM)](#52---detailed-manual-calculation-example-1d-gmm)
+  - [5.1 - The Algorithm Steps](#51---the-algorithm-steps)
+  - [5.2 - Detailed Manual Calculation Example (1D GMM)](#52---detailed-manual-calculation-example-1d-gmm)
 - [6 - Hidden Markov Models (HMM)](#6---hidden-markov-models-hmm)
-	- [6.1 - The Markov Property](#61---the-markov-property)
-	- [6.2 - Architecture and Parameters](#62---architecture-and-parameters)
-	- [6.3 - The Three Canonical Problems](#63---the-three-canonical-problems)
-	- [6.4 - GMM-HMM Hybrids](#64---gmm-hmm-hybrids)
+  - [6.1 - The Markov Property](#61---the-markov-property)
+  - [6.2 - Architecture and Parameters](#62---architecture-and-parameters)
+  - [6.3 - The Three Canonical Problems](#63---the-three-canonical-problems)
+  - [6.4 - GMM-HMM Hybrids](#64---gmm-hmm-hybrids)
 - [7 - Latent Dirichlet Allocation (LDA)](#7---latent-dirichlet-allocation-lda)
-	- [7.1 - Mixed Membership vs. Simple Clustering](#71---mixed-membership-vs-simple-clustering)
-	- [7.2 - The Generative Process](#72---the-generative-process)
-	- [7.3 - Inference](#73---inference)
+  - [7.1 - Mixed Membership vs. Simple Clustering](#71---mixed-membership-vs-simple-clustering)
+  - [7.2 - The Generative Process](#72---the-generative-process)
+  - [7.3 - Inference](#73---inference)
 - [8 - Model Selection and Complexity](#8---model-selection-and-complexity)
 - [9 - Conclusion](#9---conclusion)
 
@@ -63,6 +63,8 @@ flowchart LR
 ```
 
 This report provides a comprehensive, expert-level analysis of the foundational probabilistic generative models: the Naive Bayes Classifier, Gaussian Mixture Models (GMM), Hidden Markov Models (HMM), and Latent Dirichlet Allocation (LDA). It explores the mathematical theory underpinning these architectures, specifically focusing on the Expectation-Maximisation (EM) algorithm, providing rigorous derivations and manual implementation examples to facilitate deep technical understanding.
+
+![alt text]({BASE}/image-1.png)
 
 ## 1.1 - Mathematical Foundations and Notation
 
@@ -235,6 +237,8 @@ Comparing the scores: Apple ($1.87 \times 10^{-3}$) $\gg$ Banana ($4.28 \times 1
 
 While Naive Bayes assumes a single distribution (unimodal) generates the data for each class, real-world data often exhibits multimodal structures. A "single" class like "Users" might actually be composed of distinct subgroups (power users, casual users) with different behaviours. A single Gaussian mean would land in the empty space between these groups, failing to represent either.
 
+![alt text]({BASE}/image-2.png)
+
 Gaussian Mixture Models (GMMs) address this by modelling the overall distribution as a weighted sum of $K$ distinct Gaussian components. GMMs are primarily used for unsupervised learning (clustering) and density estimation.
 
 ```mermaid
@@ -297,6 +301,8 @@ graph TD
     Check -- No --> EStep
     Check -- Yes --> Stop([Stop])
 ```
+
+![alt text]({BASE}/image-5.png)
 
 ## 4.1 - Theoretical Derivation: Jensen's Inequality and Lower Bounds
 
@@ -428,6 +434,8 @@ While GMMs model static snapshots of data, many AI applications (speech recognit
 
 In an HMM, the "cluster assignment" (latent variable) at time $t$ is not independent of $t-1$. Instead, the system transitions between states according to a probability structure.
 
+![alt text]({BASE}/image-3.png)
+
 ## 6.1 - The Markov Property
 
 An HMM is a doubly stochastic process:
@@ -496,6 +504,8 @@ In state-of-the-art speech recognition (pre-Deep Learning), HMMs and GMMs are co
 
 While GMMs cluster continuous vectors, Latent Dirichlet Allocation (LDA), introduced by Blei, Ng, and Jordan (2003), is a generative probabilistic model designed for discrete data, specifically text corpora. It is a Topic Model that discovers abstract themes in documents.
 
+![alt text]({BASE}/image-4.png)
+
 ## 7.1 - Mixed Membership vs. Simple Clustering
 
 In a GMM or Naive Bayes classifier, a data point belongs to one cluster. A document is either "Sports" or "Finance". However, real documents are often mixtures: an article about the economics of the Olympics involves both "Sports" and "Finance".
@@ -555,5 +565,7 @@ In modern Bayesian non-parametrics, models like the Dirichlet Process GMM (Infin
 # 9 - Conclusion
 
 Probabilistic generative models represent a sophisticated intersection of statistical theory and algorithmic efficiency. From the "naive" but powerful assumptions of Naive Bayes to the complex latent structures of GMMs, HMMs, and LDA, these models share a unifying philosophy: that intelligence arises from the ability to model the uncertain processes that generate our world.
+
+![alt text]({BASE}/image-6.png)
 
 Mastering these models provides more than just a set of tools; it provides a rigorous framework for reasoning about uncertainty. The ability to derive the EM algorithm, to understand the implications of conjugate priors, and to implement these algorithms from first principles is what defines a true architect of artificial intelligence. As AI continues to evolve towards unsupervised and semi-supervised learning, the principles of generative modelling (discovering hidden structure from unlabelled data) will only become more central to the field.
