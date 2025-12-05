@@ -1,34 +1,34 @@
 - [1 - Introduction: The Dimensionality Paradox](#1---introduction-the-dimensionality-paradox)
 - [2 - Historical Genesis and Theoretical Origins](#2---historical-genesis-and-theoretical-origins)
-	- [2.1 - The Soviet School: Potential Functions](#21---the-soviet-school-potential-functions)
-	- [2.2 - The Generalised Portrait and Vapnik-Chervonenkis Theory](#22---the-generalised-portrait-and-vapnik-chervonenkis-theory)
+  - [2.1 - The Soviet School: Potential Functions](#21---the-soviet-school-potential-functions)
+  - [2.2 - The Generalised Portrait and Vapnik-Chervonenkis Theory](#22---the-generalised-portrait-and-vapnik-chervonenkis-theory)
 - [3 - Mathematical Foundations](#3---mathematical-foundations)
-	- [3.1 - Vector Spaces and Inner Products](#31---vector-spaces-and-inner-products)
-	- [3.2 - Hilbert Spaces](#32---hilbert-spaces)
-	- [3.3 - Separability and Convergence](#33---separability-and-convergence)
+  - [3.1 - Vector Spaces and Inner Products](#31---vector-spaces-and-inner-products)
+  - [3.2 - Hilbert Spaces](#32---hilbert-spaces)
+  - [3.3 - Separability and Convergence](#33---separability-and-convergence)
 - [4 - Core Theory: Reproducing Kernel Hilbert Spaces (RKHS)](#4---core-theory-reproducing-kernel-hilbert-spaces-rkhs)
-	- [4.1 - The Evaluation Functional](#41---the-evaluation-functional)
-	- [4.2 - The Riesz Representation Theorem](#42---the-riesz-representation-theorem)
-	- [4.3 - The Reproducing Property](#43---the-reproducing-property)
-	- [4.4 - Mercer's Theorem](#44---mercers-theorem)
+  - [4.1 - The Evaluation Functional](#41---the-evaluation-functional)
+  - [4.2 - The Riesz Representation Theorem](#42---the-riesz-representation-theorem)
+  - [4.3 - The Reproducing Property](#43---the-reproducing-property)
+  - [4.4 - Mercer's Theorem](#44---mercers-theorem)
 - [5 - The Kernel Trick: Mechanism and Implementation](#5---the-kernel-trick-mechanism-and-implementation)
-	- [5.1 - The Dual Formulation](#51---the-dual-formulation)
-	- [5.2 - The Gram Matrix](#52---the-gram-matrix)
+  - [5.1 - The Dual Formulation](#51---the-dual-formulation)
+  - [5.2 - The Gram Matrix](#52---the-gram-matrix)
 - [6 - Taxonomy of Kernels: Derivations and Engineering](#6---taxonomy-of-kernels-derivations-and-engineering)
-	- [6.1 - The Linear Kernel](#61---the-linear-kernel)
-	- [6.2 - The Polynomial Kernel](#62---the-polynomial-kernel)
-	- [6.3 - The Radial Basis Function (RBF) Kernel](#63---the-radial-basis-function-rbf-kernel)
-	- [6.4 - Other Kernels](#64---other-kernels)
+  - [6.1 - The Linear Kernel](#61---the-linear-kernel)
+  - [6.2 - The Polynomial Kernel](#62---the-polynomial-kernel)
+  - [6.3 - The Radial Basis Function (RBF) Kernel](#63---the-radial-basis-function-rbf-kernel)
+  - [6.4 - Other Kernels](#64---other-kernels)
 - [7 - A Computational Walkthrough: The XOR Example](#7---a-computational-walkthrough-the-xor-example)
 - [8 - Modern Kernel Implementations and Approximations](#8---modern-kernel-implementations-and-approximations)
-	- [8.1 - The Nyström Method](#81---the-nyström-method)
-	- [8.2 - Random Fourier Features (RFF)](#82---random-fourier-features-rff)
+  - [8.1 - The Nyström Method](#81---the-nyström-method)
+  - [8.2 - Random Fourier Features (RFF)](#82---random-fourier-features-rff)
 - [9 - Kernels in the Age of Deep Learning](#9---kernels-in-the-age-of-deep-learning)
-	- [9.1 - Representation Learning vs. Fixed Features](#91---representation-learning-vs-fixed-features)
-	- [9.2 - The Neural Tangent Kernel (NTK)](#92---the-neural-tangent-kernel-ntk)
+  - [9.1 - Representation Learning vs. Fixed Features](#91---representation-learning-vs-fixed-features)
+  - [9.2 - The Neural Tangent Kernel (NTK)](#92---the-neural-tangent-kernel-ntk)
 - [10 - Advantages and Disadvantages Summary](#10---advantages-and-disadvantages-summary)
-	- [10.1 - Advantages](#101---advantages)
-	- [10.2 - Disadvantages](#102---disadvantages)
+  - [10.1 - Advantages](#101---advantages)
+  - [10.2 - Disadvantages](#102---disadvantages)
 - [11 - Conclusion](#11---conclusion)
 - [References](#references)
 
@@ -39,6 +39,8 @@
 The pursuit of artificial intelligence has long been grappled with a fundamental geometric paradox: the curse of dimensionality versus the necessity of high-dimensional representation. In the foundational era of machine learning, linear models such as the **Perceptron** offered computational elegance and rigorous theoretical guarantees. However, they were fundamentally limited by their inability to model complex, non-linear relationships (a limitation famously crystallised by Minsky and Papert’s critique of the Perceptron’s inability to solve the XOR problem).
 
 To overcome this, researchers understood that data inseparable in a low-dimensional input space could often be separated if mapped into a sufficiently high-dimensional feature space. Yet, this solution introduced a computational intractability: explicitly transforming data vectors into these high-dimensional spaces incurred exponential costs in storage and processing power.
+
+![alt text]({BASE}/image-2.png)
 
 The resolution to this paradox is the "**kernel trick**" (a mathematical method that allows algorithms to operate in high-dimensional, even infinite-dimensional, feature spaces without ever explicitly computing the coordinates of the data in that space). By replacing the explicit inner product of transformed vectors with a kernel function computed in the original input space, the kernel trick decouples the complexity of the learning task from the dimensionality of the hypothesis space.
 
@@ -120,6 +122,8 @@ A **Hilbert Space** $\mathcal{H}$ is an inner product space that is complete.
 
 Completeness is a property regarding limits. A space is complete if every "Cauchy sequence" (a sequence of vectors where the elements get arbitrarily close to each other) converges to a limit that exists within the space.
 
+![alt text]({BASE}/image-3.png)
+
 Formally, a sequence $\{f_n\}$ is Cauchy if $\lim_{n,m \to \infty} \|f_n - f_m\| = 0$. The space is complete if for every such sequence, there exists an $f \in \mathcal{H}$ such that $\lim_{n \to \infty} \|f_n - f\| = 0$.
 
 For kernel methods, the Hilbert space $\mathcal{H}$ serves as the feature space. Even though this space may be infinite-dimensional (e.g., a space of functions), the property of completeness ensures that the geometric operations we perform (like projecting data onto a hyperplane) are mathematically valid and stable.
@@ -197,6 +201,8 @@ graph TD
 How do we know if a given function $K(x, y)$ corresponds to an inner product in some Hilbert space? We rely on **Mercer's Theorem**, formulated by James Mercer in 1909.
 
 **Mercer's Condition:** A symmetric, continuous function $K: \mathcal{X} \times \mathcal{X} \to \mathbb{R}$ is a valid kernel if and only if it is **Positive Semi-Definite (PSD)**.
+
+![alt text]({BASE}/image-4.png)
 
 Mathematical definition of PSD for kernels:
 For any finite set of points $\{x_1, \dots, x_n\}$ and any real coefficients $\{c_1, \dots, c_n\}$:
@@ -322,8 +328,13 @@ This maps $\mathbb{R}^2 \to \mathbb{R}^6$. As $d$ grows, the feature dimension g
 
 ## 6.3 - The Radial Basis Function (RBF) Kernel
 Also known as the Gaussian kernel, this is the most widely used kernel due to its universal approximation properties.
+
+![alt text]({BASE}/image-5.png)
+
 $$K(x, z) = \exp(-\gamma \|x - z\|^2)$$
 $\gamma$: The bandwidth parameter. $\gamma = \frac{1}{2\sigma^2}$. It controls the "width" of the similarity. Large $\gamma$ means the kernel falls off quickly (overfitting risk); small $\gamma$ means a broader influence (underfitting risk).
+
+![alt text]({BASE}/image-6.png)
 
 **Infinite Dimensions Derivation:**
 We use the property $\exp(a+b) = \exp(a)\exp(b)$ and the Taylor expansion $e^u = \sum_{k=0}^\infty \frac{u^k}{k!}$.
@@ -351,6 +362,8 @@ Consequently, the feature map $\phi(x)$ for the RBF kernel lives in an infinite-
 # 7 - A Computational Walkthrough: The XOR Example
 
 To make the abstract concrete, let us solve a simplified XOR-like problem using a quadratic kernel.
+
+![alt text]({BASE}/image-1.png)
 
 **Data:**
 *   Class A (Positive): $x_1 = (1, 1)$, $x_2 = (-1, -1)$
@@ -402,6 +415,8 @@ This allows the solver to operate with complexity $O(m^2 N)$, making kernel meth
 ## 8.2 - Random Fourier Features (RFF)
 Proposed by Rahimi and Recht (2007), RFF is a dominant technique in modern large-scale learning. It relies on Bochner's Theorem from harmonic analysis.
 
+![alt text]({BASE}/image-8.png)
+
 **Bochner's Theorem:** A continuous, shift-invariant kernel $K(x - y)$ is positive definite if and only if it is the Fourier transform of a non-negative measure (probability distribution) $p(\omega)$.
 $$K(x - y) = \int p(\omega) e^{j\omega^T (x - y)} d\omega$$
 
@@ -437,6 +452,8 @@ In a remarkable theoretical twist, recent work has shown that Deep Learning and 
 **The Infinite Width Limit:**
 Consider a neural network with random initialisation. As the width of the hidden layers approaches infinity ($m \to \infty$), the network behaves like a Gaussian Process at initialisation.
 Crucially, if trained by Gradient Descent with a very small learning rate, the weights of the network move only infinitesimally from their initial values. The network can be effectively linearised around its initialisation.
+
+![alt text]({BASE}/image-7.png)
 
 The training dynamics of this infinite-width network are governed by a fixed kernel, the NTK:
 $$\Theta(x, x') = \sum_{p} \nabla_{\theta} f(x) \cdot \nabla_{\theta} f(x')$$
