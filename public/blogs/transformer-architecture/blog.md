@@ -72,6 +72,8 @@ This efficiency gain was dramatic. The original Transformer achieved state-of-th
 
 The Transformer views an input sequence not as a stream of time steps, but as a set of vectors processed simultaneously. This "set processing" capability necessitates a robust method for representing discrete tokens as continuous vectors and, crucially, for injecting information about their order.
 
+![alt text]({BASE}/image-5.png)
+
 ## 2.1 - Tokenisation and Sub-word Architectures
 
 Before vectorisation, raw text is segmented into discrete units called tokens. Early NLP models used word-level tokenisation, which resulted in massive vocabularies (often exceeding 1 million unique words) and an inability to handle "out-of-vocabulary" (OOV) terms.
@@ -99,6 +101,8 @@ $$PE_{(pos, 2i)} = \sin\left(\frac{pos}{10000^{\frac{2i}{d_{model}}}}\right)$$
 
 $$PE_{(pos, 2i+1)} = \cos\left(\frac{pos}{10000^{\frac{2i}{d_{model}}}}\right)$$
 
+![alt text]({BASE}/image-6.png)
+
 Mathematical Justification:
 The choice of sinusoids is not arbitrary. It facilitates the model's ability to attend to relative positions. Intuitively, these waves act like a fingerprint. High-frequency waves (short wavelengths) distinguish nearby tokens. Low-frequency waves (long wavelengths) track distant positions.
 
@@ -113,7 +117,7 @@ This can be expressed as a matrix multiplication:
 
 $$\begin{pmatrix} \sin(\omega(pos+k)) \\ \cos(\omega(pos+k)) \end{pmatrix} = \begin{pmatrix} \cos(\omega k) & \sin(\omega k) \\ -\sin(\omega k) & \cos(\omega k) \end{pmatrix} \begin{pmatrix} \sin(\omega pos) \\ \cos(\omega pos) \end{pmatrix}$$
 
-The matrix depends only on $k$, not on $pos$. This property theoretically allows the model to learn to attend to "the token 5 positions back" regardless of absolute position.6 However, in practice, absolute sinusoidal encodings struggle to generalise to sequence lengths longer than those seen during training.5
+The matrix depends only on $k$, not on $pos$. This property theoretically allows the model to learn to attend to "the token 5 positions back" regardless of absolute position.6 However, in practice, absolute sinusoidal encodings struggle to generalise to sequence lengths longer than those seen during training.
 
 ## 2.4 - Rotary Positional Embedding (RoPE): The Modern Standard
 
@@ -166,7 +170,7 @@ Here, $B_{i,j}$ is a learnable bias derived from a "bucket" function of the dist
 
 $$B_{i,j} = \text{Embed}(\text{Bucket}(i-j))$$
 
-The bucketing function is logarithmic for larger distances. This means the model distinguishes precise relative positions for nearby tokens (e.g., -1 vs -2) but groups distant tokens into broader categories (e.g., "approx. 50-60 tokens away"). This logarithmic scaling aligns with the intuition that precise position matters less as distance increases.14
+The bucketing function is logarithmic for larger distances. This means the model distinguishes precise relative positions for nearby tokens (e.g., -1 vs -2) but groups distant tokens into broader categories (e.g., "approx. 50-60 tokens away"). This logarithmic scaling aligns with the intuition that precise position matters less as distance increases.
 
 # 3 - The Attention Mechanism: The Mathematical Engine
 
@@ -184,6 +188,8 @@ $K \in \mathbb{R}^{L \times d_k}$ (Key Matrix)
 $V \in \mathbb{R}^{L \times d_v}$ (Value Matrix)
 $L$ is the sequence length.
 $d_k$ is the dimension of the key/query vectors.
+
+![alt text]({BASE}/image-7.png)
 
 ```mermaid
 graph TD
@@ -259,7 +265,9 @@ The outputs of these heads are concatenated and projected back to the model dime
 $$\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \dots, \text{head}_h)W^O$$
 
 Subspace Theory:
-Mathematically, this allows the model to attend to information from different "representation subspaces".1 One head might track subject-verb agreement, another might track pronoun antecedents, and a third might track sentiment consistency. If $d_{model}=512$ and $h=8$, each head operates on a 64-dimensional vector ($d_k = d_{model}/h$). This factorisation maintains the computational cost similar to single-head attention with full dimension, while increasing expressivity.1
+Mathematically, this allows the model to attend to information from different "representation subspaces".1 One head might track subject-verb agreement, another might track pronoun antecedents, and a third might track sentiment consistency. If $d_{model}=512$ and $h=8$, each head operates on a 64-dimensional vector ($d_k = d_{model}/h$). This factorisation maintains the computational cost similar to single-head attention with full dimension, while increasing expressivity.
+
+![alt text]({BASE}/image-8.png)
 
 ## 3.3 - Attention Masking: Controlling Information Flow
 
@@ -302,11 +310,13 @@ The standard attention mechanism requires computing the similarity between every
 In contrast, Recurrent Neural Networks (RNNs) have a complexity of $O(n \cdot d_{model}^2)$. For typical tasks where the dimension $d_{model}$ (e.g., 512) is larger than the sequence length $n$ (e.g., 30 words), attention is actually faster per layer. However, for very long sequences, the $O(n^2)$ term dominates.
 
 **FlashAttention (Modern Optimization):**
-While mathematically identical to standard attention, FlashAttention is an IO-aware algorithm that restructures the computation to minimise memory accesses (HBM reads/writes) on GPUs. By tiling the matrix multiplication and computing softmax statistics on the fly, it speeds up training and reduces memory footprint, making longer context windows feasible without approximation.4
+While mathematically identical to standard attention, FlashAttention is an IO-aware algorithm that restructures the computation to minimise memory accesses (HBM reads/writes) on GPUs. By tiling the matrix multiplication and computing softmax statistics on the fly, it speeds up training and reduces memory footprint, making longer context windows feasible without approximation.
 
 # 4 - The Feed-Forward Network (FFN) and Nonlinearity
 
 Following the attention mechanism, each token vector passes through a Feed-Forward Network. Crucially, this network is applied position-wise—the same weights are applied to every token independently. This can be thought of as a 1x1 convolution kernel applied across the sequence.
+
+![alt text]({BASE}/image-9.png)
 
 ## 4.1 - Standard Architecture (ReLU)
 
@@ -362,16 +372,18 @@ In this setup, the gradients must pass through the LayerNorm at every step. Rese
 - **Pre-Norm (Modern):** $x_{out} = x + \text{Sublayer}(\text{LayerNorm}(x))$.
 Here, the residual connection bypasses the normalization. This creates a direct "superhighway" for gradients to flow from the loss function to the input embeddings unchanged. This setup is significantly more stable and allows for training deeper models without a warm-up phase, although it may slightly limit the ultimate representation capacity.26 Most modern LLMs use Pre-Norm.
 
+![alt text]({BASE}/image-10.png)
+
 ## 5.3 - Root Mean Square Normalisation (RMSNorm)
 
-LLaMA and other efficiency-focused architectures utilise RMSNorm.25
+LLaMA and other efficiency-focused architectures utilise RMSNorm.
 RMSNorm simplifies LayerNorm by observing that the re-centring (subtracting mean $\mu$) is not strictly necessary for stabilisation; only the scaling matters.
 
 $$\text{RMSNorm}(x) = \frac{x}{\text{RMS}(x)} \cdot \gamma$$
 
 $$\text{RMS}(x) = \sqrt{\frac{1}{d} \sum_{i=1}^d x_i^2}$$
 
-By removing the calculation of the mean and the subtraction operation, RMSNorm reduces computational overhead while maintaining the benefits of invariance to weight scaling. It enforces re-scaling invariance (the output is the same if inputs are scaled by a constant $c$) but not shift invariance.25
+By removing the calculation of the mean and the subtraction operation, RMSNorm reduces computational overhead while maintaining the benefits of invariance to weight scaling. It enforces re-scaling invariance (the output is the same if inputs are scaled by a constant $c$) but not shift invariance.
 
 # 6 - Architectural Paradigms: BERT, GPT, and T5
 
@@ -387,7 +399,9 @@ Researchers have also expanded the architecture to other domains. For example, V
 
 $$L_{MLM} = -\sum \log P(x_m | x_{\setminus m})$$
 
-- **Application:** Understanding tasks. Sentiment analysis, classification, named entity recognition. It excels at "reading" but cannot generate coherent text because it wasn't trained to predict the next word.20
+- **Application:** Understanding tasks. Sentiment analysis, classification, named entity recognition. It excels at "reading" but cannot generate coherent text because it wasn't trained to predict the next word.
+
+![alt text]({BASE}/image-12.png)
 
 ## 6.2 - Decoder-Only (The GPT Family)
 
@@ -398,7 +412,9 @@ $$L_{MLM} = -\sum \log P(x_m | x_{\setminus m})$$
 
 $$L_{CLM} = -\sum_t \log P(x_t | x_{<t})$$
 
-- **Application:** Generation. This architecture corresponds to the standard autoregressive formulation of language. It is the foundation of GPT-3, GPT-4, and LLaMA. It is remarkably scalable and demonstrates "zero-shot" reasoning capabilities.30
+- **Application:** Generation. This architecture corresponds to the standard autoregressive formulation of language. It is the foundation of GPT-3, GPT-4, and LLaMA. It is remarkably scalable and demonstrates "zero-shot" reasoning capabilities.
+
+![alt text]({BASE}/image-13.png)
 
 ## 6.3 - Encoder-Decoder (The T5 Family)
 
@@ -406,6 +422,8 @@ $$L_{CLM} = -\sum_t \log P(x_t | x_{<t})$$
 - **Mechanism:** Encoder uses bidirectional attention. Decoder uses causal attention plus cross-attention to the encoder output.
 - **Training Objective:** Span Corruption (T5) or Denoising (BART). The model is trained to reconstruct missing spans of text.
 - **Application:** Sequence-to-Sequence tasks. Translation, summarisation. T5 unifies all NLP tasks into a "text-to-text" format (e.g., "translate English to German:..." outputs the translation; "summarize:..." outputs the summary).32
+
+![alt text]({BASE}/image-14.png)
 
 **Table 1: Comparative Architecture Analysis**
 
@@ -417,8 +435,8 @@ $$L_{CLM} = -\sum_t \log P(x_t | x_{<t})$$
 | **Context Visibility**     | Past & future (simultaneous) | Past only                       | Past & future (input), past (output)    |
 | **Inference Speed**        | Fast (parallel)              | Slow (autoregressive)           | Slow (autoregressive)                   |
 | **Ideal Use Case**         | Classification, NLU, search  | Creative generation, chat, code | Translation, summarisation              |
-| **Key References**         | 30                           | 20                              | 32                                      |
 
+![alt text]({BASE}/image-11.png)
 
 # 7 - Training Dynamics and Optimization
 
@@ -427,7 +445,7 @@ The success of the Transformer is not just in its architecture but in its traini
 ## 7.1 - Optimisation Algorithms
 
 The original Transformer used the Adam optimizer with specific hyperparameters: $\beta_1=0.9$, $\beta_2=0.98$, and $\epsilon=10^{-9}$.1
-Modern LLMs often use AdamW, which decouples weight decay from the gradient update. This ensures that regularisation is applied correctly to the weights directly, rather than being muddled with the adaptive learning rate momentum.26
+Modern LLMs often use AdamW, which decouples weight decay from the gradient update. This ensures that regularisation is applied correctly to the weights directly, rather than being muddled with the adaptive learning rate momentum.
 
 ## 7.2 - Learning Rate Schedules
 
@@ -435,7 +453,9 @@ Transformers are highly sensitive to learning rates. A constant learning rate of
 
 $$lr = d_{model}^{-0.5} \cdot \min(step\_num^{-0.5}, step\_num \cdot warmup\_steps^{-1.5})$$
 
-This increases the learning rate linearly for the first warmup_steps (typically 4000) and then decays it proportional to the inverse square root of the step number. The warmup allows the gradients to stabilise in the early phase of training, particularly for the variance estimates in Adam.1
+This increases the learning rate linearly for the first warmup_steps (typically 4000) and then decays it proportional to the inverse square root of the step number. The warmup allows the gradients to stabilise in the early phase of training, particularly for the variance estimates in Adam.
+
+![alt text]({BASE}/image-15.png)
 
 ## 7.3 - Regularisation Techniques
 
