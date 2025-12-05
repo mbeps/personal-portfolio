@@ -12,6 +12,7 @@ enum BlogDatabaseKeys {
   IntroductionToNeuralNetworks = "introduction-to-neural-networks",
   ValidationAndRegularization = "validation-and-regularization",
   ConformalPrediction = "conformal-prediction",
+  KernelTrick = "kernel-trick",
   NeuralNetworkLearningAndGradientDescent = "neural-network-learning-and-gradient-descent",
   BackPropagation = "back-propagation",
   DeepNeuralNetworks = "deep-neural-networks",

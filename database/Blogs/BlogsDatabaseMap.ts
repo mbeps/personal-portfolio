@@ -90,7 +90,7 @@ const blogsMap: Database<BlogInterface> = {
     ],
   },
   [BlogDatabaseKeys.HyperparameterTuning]: {
-    name: "Hyperparameter Tuning in Machine Learning",
+    name: "Hyperparameter Tuning",
     subtitle:
       "A mathematical analysis of meta-learning strategies, including Bayesian Optimisation, Hyperband, Population Based Training, and gradient-based methods.",
     category: BlogCategoriesEnum.ArtificialIntelligence,
@@ -104,6 +104,24 @@ const blogsMap: Database<BlogInterface> = {
     ],
     relatedMaterials: [
       ModuleDatabaseKeys.KCL_MachineLearning,
+      ModuleDatabaseKeys.RHUL_MachineLearning,
+    ],
+  },
+  [BlogDatabaseKeys.KernelTrick]: {
+    name: "Kernel Trick",
+    subtitle: "",
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+    ],
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_MachineLearning,
+      ModuleDatabaseKeys.KCL_PatternRecognitionNeuralNetworksDeepLearning,
       ModuleDatabaseKeys.RHUL_MachineLearning,
     ],
   },
