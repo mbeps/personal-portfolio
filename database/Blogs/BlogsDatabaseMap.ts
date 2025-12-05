@@ -51,6 +51,25 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.CriticalThinking,
     ],
   },
+  [BlogDatabaseKeys.MachineLearningAlgorithms]: {
+    name: "Machine Learning Algorithms",
+    subtitle:
+      "Deconstructs core supervised algorithms, focusing on mathematical foundations, optimisation, and architectural complexity.",
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+    ],
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_MachineLearning,
+      ModuleDatabaseKeys.RHUL_MachineLearning,
+      ModuleDatabaseKeys.KCL_PatternRecognitionNeuralNetworksDeepLearning,
+    ],
+  },
   [BlogDatabaseKeys.Clustering]: {
     name: "Clustering Algorithms",
     subtitle:

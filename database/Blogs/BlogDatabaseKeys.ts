@@ -8,6 +8,7 @@
  */
 enum BlogDatabaseKeys {
   MachineLearningFoundations = "machine-learning-foundations",
+  MachineLearningAlgorithms = "machine-learning-algorithms",
   Clustering = "clustering",
   IntroductionToNeuralNetworks = "introduction-to-neural-networks",
   ValidationAndRegularization = "validation-and-regularization",
@@ -48,6 +49,8 @@ enum BlogDatabaseKeys {
   DevOps = "devops",
   CiCd = "ci-cd",
   Containerization = "containerization",
+  MicroservicesArchitecture = "microservices-architecture",
+  SecretManagement = "secret-management",
 
   DatabaseParadigms = "database-paradigms",
   RelationalDatabases = "relational-databases",
