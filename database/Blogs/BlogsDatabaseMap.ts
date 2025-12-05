@@ -61,8 +61,33 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.DataScience,
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.Probability,
+      SkillDatabaseKeys.Algebra,
+      SkillDatabaseKeys.LinearAlgebra,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
+    ],
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_MachineLearning,
+      ModuleDatabaseKeys.RHUL_MachineLearning,
+      ModuleDatabaseKeys.KCL_PatternRecognitionNeuralNetworksDeepLearning,
+    ],
+  },
+  [BlogDatabaseKeys.ProbabilisticModels]: {
+    name: "Probabilistic Models",
+    subtitle:
+      "Core theory and architecture analysis of Naive Bayes, GMM, HMM, and LDA, focusing on the Expectation-Maximisation (EM) algorithm.",
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Mathematics,
+      SkillDatabaseKeys.Probability,
     ],
     relatedMaterials: [
       ModuleDatabaseKeys.KCL_MachineLearning,

@@ -9,6 +9,7 @@
 enum BlogDatabaseKeys {
   MachineLearningFoundations = "machine-learning-foundations",
   MachineLearningAlgorithms = "ml-algorithms",
+  ProbabilisticModels = "probabilistic-models",
   Clustering = "clustering",
   IntroductionToNeuralNetworks = "introduction-to-neural-networks",
   ValidationAndRegularization = "validation-and-regularization",
