@@ -1,33 +1,33 @@
 - [1 - Introduction: The Epistemology of Generalisation in Statistical Learning](#1---introduction-the-epistemology-of-generalisation-in-statistical-learning)
-	- [1.1 - The Statistical Learning Framework](#11---the-statistical-learning-framework)
-	- [1.2 - True Risk vs. Empirical Risk](#12---true-risk-vs-empirical-risk)
+  - [1.1 - The Statistical Learning Framework](#11---the-statistical-learning-framework)
+  - [1.2 - True Risk vs. Empirical Risk](#12---true-risk-vs-empirical-risk)
 - [2 - Theoretical Decomposition of Error](#2---theoretical-decomposition-of-error)
-	- [2.1 - The Bias-Variance Decomposition](#21---the-bias-variance-decomposition)
-	- [2.2 - Bias and Variance of the Validation Estimator](#22---bias-and-variance-of-the-validation-estimator)
+  - [2.1 - The Bias-Variance Decomposition](#21---the-bias-variance-decomposition)
+  - [2.2 - Bias and Variance of the Validation Estimator](#22---bias-and-variance-of-the-validation-estimator)
 - [3 - Standard Cross-Validation Architectures](#3---standard-cross-validation-architectures)
-	- [3.1 - The Hold-Out Method (Simple Split)](#31---the-hold-out-method-simple-split)
-	- [3.2 - K-Fold Cross-Validation](#32---k-fold-cross-validation)
-	- [3.3 - Leave-One-Out Cross-Validation (LOOCV)](#33---leave-one-out-cross-validation-loocv)
-		- [3.3.1 - The Computational Shortcut for Linear Models](#331---the-computational-shortcut-for-linear-models)
-	- [3.4 - Repeated K-Fold Cross-Validation](#34---repeated-k-fold-cross-validation)
+  - [3.1 - The Hold-Out Method (Simple Split)](#31---the-hold-out-method-simple-split)
+  - [3.2 - K-Fold Cross-Validation](#32---k-fold-cross-validation)
+  - [3.3 - Leave-One-Out Cross-Validation (LOOCV)](#33---leave-one-out-cross-validation-loocv)
+    - [3.3.1 - The Computational Shortcut for Linear Models](#331---the-computational-shortcut-for-linear-models)
+  - [3.4 - Repeated K-Fold Cross-Validation](#34---repeated-k-fold-cross-validation)
 - [4 - Stratified Sampling in Validation](#4---stratified-sampling-in-validation)
-	- [4.1 - The Mathematics of Stratification](#41---the-mathematics-of-stratification)
-	- [4.2 - Stratified K-Fold Algorithm](#42---stratified-k-fold-algorithm)
+  - [4.1 - The Mathematics of Stratification](#41---the-mathematics-of-stratification)
+  - [4.2 - Stratified K-Fold Algorithm](#42---stratified-k-fold-algorithm)
 - [5 - Validation in Dependent Domains: Time and Space](#5---validation-in-dependent-domains-time-and-space)
-	- [5.1 - Time Series Validation (Temporal Dependence)](#51---time-series-validation-temporal-dependence)
-		- [5.1.1 - Rolling Origin (Forward Chaining)](#511---rolling-origin-forward-chaining)
-		- [5.1.2 - h-Block Cross-Validation](#512---h-block-cross-validation)
-	- [5.2 - Spatial Cross-Validation (Spatial Autocorrelation)](#52---spatial-cross-validation-spatial-autocorrelation)
-		- [5.2.1 - Spatial Block Cross-Validation](#521---spatial-block-cross-validation)
+  - [5.1 - Time Series Validation (Temporal Dependence)](#51---time-series-validation-temporal-dependence)
+    - [5.1.1 - Rolling Origin (Forward Chaining)](#511---rolling-origin-forward-chaining)
+    - [5.1.2 - h-Block Cross-Validation](#512---h-block-cross-validation)
+  - [5.2 - Spatial Cross-Validation (Spatial Autocorrelation)](#52---spatial-cross-validation-spatial-autocorrelation)
+    - [5.2.1 - Spatial Block Cross-Validation](#521---spatial-block-cross-validation)
 - [6 - Model Selection and Nested Cross-Validation](#6---model-selection-and-nested-cross-validation)
-	- [6.1 - The Selection Bias Problem](#61---the-selection-bias-problem)
-	- [6.2 - Nested Cross-Validation Architecture](#62---nested-cross-validation-architecture)
+  - [6.1 - The Selection Bias Problem](#61---the-selection-bias-problem)
+  - [6.2 - Nested Cross-Validation Architecture](#62---nested-cross-validation-architecture)
 - [7 - Information Theoretic Approaches: AIC and BIC](#7---information-theoretic-approaches-aic-and-bic)
-	- [7.1 - Akaike Information Criterion (AIC)](#71---akaike-information-criterion-aic)
-	- [7.2 - Bayesian Information Criterion (BIC)](#72---bayesian-information-criterion-bic)
+  - [7.1 - Akaike Information Criterion (AIC)](#71---akaike-information-criterion-aic)
+  - [7.2 - Bayesian Information Criterion (BIC)](#72---bayesian-information-criterion-bic)
 - [8 - Statistical Inference on Performance](#8---statistical-inference-on-performance)
-	- [8.1 - The Problem of Independence](#81---the-problem-of-independence)
-	- [8.2 - The Nadeau-Bengio Correction](#82---the-nadeau-bengio-correction)
+  - [8.1 - The Problem of Independence](#81---the-problem-of-independence)
+  - [8.2 - The Nadeau-Bengio Correction](#82---the-nadeau-bengio-correction)
 - [9 - Conclusion](#9---conclusion)
 - [References](#references)
 
@@ -72,6 +72,8 @@ $$\mathbb{E}[R_{emp}(\hat{h})] < \mathbb{E}[R(\hat{h})]$$
 
 The difference between these two quantities is the **Generalisation Gap**. Validation techniques are, essentially, methods for estimating $R(\hat{h})$ using only the available data $S_n$, correcting for the optimism of the empirical risk.
 
+![alt text]({BASE}/image-1.png)
+
 -----
 
 # 2 - Theoretical Decomposition of Error
@@ -79,6 +81,8 @@ The difference between these two quantities is the **Generalisation Gap**. Valid
 To understand the trade-offs between different validation methods (e.g. why choose 10-fold over Leave-One-Out?), we must analyse the sources of error in predictive modelling. This is formalised in the **Bias-Variance Decomposition**.
 
 ## 2.1 - The Bias-Variance Decomposition
+
+![alt text]({BASE}/image-2.png)
 
 Consider a regression setting where the target variable $Y$ is related to $X$ by a deterministic function $f$ plus random noise $\epsilon$:
 
@@ -163,6 +167,8 @@ We now detail the algorithms and mathematical formulations of the standard valid
 
 This is the most elementary form of validation. The dataset $S$ is partitioned into two disjoint sets: $S_{train}$ and $S_{test}$.
 
+![alt text]({BASE}/image-3.png)
+
 $$S_{train} \cup S_{test} = S, \quad S_{train} \cap S_{test} = \emptyset$$
 
 Typically, $|S_{train}| \approx 0.7n$ to $0.8n$.
@@ -182,6 +188,8 @@ $$\hat{R}_{HO} = \frac{1}{|S_{test}|} \sum_{(x_i, y_i) \in S_{test}} L(y_i, \hat
 ## 3.2 - K-Fold Cross-Validation
 
 K-Fold CV mitigates the wastefulness and variance of the hold-out method by repeating the process $K$ times on different partitions.
+
+![alt text]({BASE}/image-4.png)
 
 **Algorithm:**
 
@@ -265,6 +273,8 @@ The Estimator:
 $$CV_{LOO} = \frac{1}{n} \sum_{i=1}^n L(y_i, \hat{f}_{-i}(x_i))$$
 where $\hat{f}_{-i}$ is the model trained on all data except sample $i$.
 
+![alt text]({BASE}/image-5.png)
+
 ### 3.3.1 - The Computational Shortcut for Linear Models
 
 A common misconception is that LOOCV is always computationally prohibitive because it requires training $n$ models. For linear regression and many kernel methods, LOOCV can be computed analytically from a single model fit. This result is mathematically elegant and practically useful.
@@ -315,6 +325,8 @@ This is highly recommended for small datasets where the specific partition of da
 
 The standard K-Fold algorithm assumes that a random split of data will produce training and test sets that are representative of the underlying distribution. However, when the target variable $Y$ is categorical and classes are imbalanced (e.g. 90% Class A, 10% Class B), simple random sampling can fail.
 
+![alt text]({BASE}/image-6.png)
+
 A random split might produce a fold with zero examples of Class B. This leads to two failures:
 
 1.  **Training Failure:** If Class B is missing from the training set, the model cannot learn it.
@@ -359,6 +371,8 @@ In time series, observations are ordered: $(x_t, y_t)$ depends on $(x_{t-1}, y_{
 **The Problem with Random Splits:**
 If we randomly assign $t=100$ to the training set and $t=99$ to the test set, the model can use information from the future ($t=100$) to predict the past ($t=99$). In reality, we never have future data when making predictions. This leads to wildly optimistic error estimates.
 
+![alt text]({BASE}/image-7.png)
+
 ### 5.1.1 - Rolling Origin (Forward Chaining)
 
 The correct approach is to respect the temporal arrow. We evaluate the model's ability to predict $t+1$ given data up to $t$.
@@ -370,6 +384,9 @@ For $i = 0$ to $T - S_{min} - 1$:
 1.  **Train Set:** Observations $\{1, \dots, S_{min} + i\}$.
 2.  **Test Set:** Observation $\{S_{min} + i + 1\}$ (or a block of future observations).
 3.  Train model, predict, record error.
+  
+![alt text]({BASE}/image-8.png)
+
 
 <!-- end list -->
 
@@ -427,6 +444,8 @@ Spatial data follows Tobler's First Law of Geography: "Everything is related to 
 
 If we use random K-Fold CV on geospatial data (e.g. predicting crop yields from satellite pixels), adjacent pixels will likely fall into different folds. Since adjacent pixels are almost identical, the model in Fold 1 "memorises" the pixel in Fold 2. This is **Spatial Leakage**.
 
+![alt text]({BASE}/image-9.png)
+
 ### 5.2.1 - Spatial Block Cross-Validation
 
 To fix this, we must force spatial separation between training and test sets.
@@ -439,11 +458,15 @@ To fix this, we must force spatial separation between training and test sets.
   * Fold 2: All white squares.
   * When testing on a white square, all training data comes from black squares, ensuring a physical distance between train and test points.
 
+![alt text]({BASE}/image-10.png)
+
 **Cluster-Based Blocking:**
 
   * Apply K-Means clustering to the spatial coordinates $(u, v)$ of the data points.
   * Assign all points within a cluster to the same fold.
   * This simulates the scenario of predicting for a completely new region (e.g. training on Germany, testing on France).
+
+![alt text]({BASE}/image-11.png)
 
 -----
 
@@ -465,6 +488,8 @@ This is invalid. The value 95% is the maximum of several random variables. The e
 ## 6.2 - Nested Cross-Validation Architecture
 
 To solve this, we must separate the **Selection** mechanism (tuning) from the **Assessment** mechanism (evaluation). This requires two nested loops.
+
+![alt text]({BASE}/image-12.png)
 
 **Algorithm:**
 
