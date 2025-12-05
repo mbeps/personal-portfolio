@@ -1,32 +1,32 @@
 - [1 - Introduction: The Meta-Learning Problem](#1---introduction-the-meta-learning-problem)
-	- [1.1 - Mathematical Problem Formulation](#11---mathematical-problem-formulation)
-	- [1.2 - The Black-Box Constraint and Search Space](#12---the-black-box-constraint-and-search-space)
+  - [1.1 - Mathematical Problem Formulation](#11---mathematical-problem-formulation)
+  - [1.2 - The Black-Box Constraint and Search Space](#12---the-black-box-constraint-and-search-space)
 - [2 - Fundamental Search Strategies: Determinism vs. Stochastics](#2---fundamental-search-strategies-determinism-vs-stochastics)
-	- [2.1 - Grid Search: The Curse of Dimensionality](#21---grid-search-the-curse-of-dimensionality)
-	- [2.2 - Random Search and Effective Dimensionality](#22---random-search-and-effective-dimensionality)
-		- [2.2.1 - The Concept of Low Effective Dimensionality](#221---the-concept-of-low-effective-dimensionality)
-		- [2.2.2 - Asymptotic Probability of Success](#222---asymptotic-probability-of-success)
+  - [2.1 - Grid Search: The Curse of Dimensionality](#21---grid-search-the-curse-of-dimensionality)
+  - [2.2 - Random Search and Effective Dimensionality](#22---random-search-and-effective-dimensionality)
+    - [2.2.1 - The Concept of Low Effective Dimensionality](#221---the-concept-of-low-effective-dimensionality)
+    - [2.2.2 - Asymptotic Probability of Success](#222---asymptotic-probability-of-success)
 - [3 - Bayesian Optimisation: A Model-Based Approach](#3---bayesian-optimisation-a-model-based-approach)
-	- [3.1 - The Surrogate Model: Gaussian Processes](#31---the-surrogate-model-gaussian-processes)
-		- [3.1.1 - Kernel Selection](#311---kernel-selection)
-	- [3.2 - The Posterior Update](#32---the-posterior-update)
-		- [3.2.1 - Computational Example: Single Update](#321---computational-example-single-update)
-	- [3.3 - Acquisition Functions](#33---acquisition-functions)
-		- [3.3.1 - Expected Improvement (EI)](#331---expected-improvement-ei)
-		- [3.3.2 - Upper Confidence Bound (UCB)](#332---upper-confidence-bound-ucb)
-	- [3.4 - Limitations of Gaussian Processes](#34---limitations-of-gaussian-processes)
+  - [3.1 - The Surrogate Model: Gaussian Processes](#31---the-surrogate-model-gaussian-processes)
+    - [3.1.1 - Kernel Selection](#311---kernel-selection)
+  - [3.2 - The Posterior Update](#32---the-posterior-update)
+    - [3.2.1 - Computational Example: Single Update](#321---computational-example-single-update)
+  - [3.3 - Acquisition Functions](#33---acquisition-functions)
+    - [3.3.1 - Expected Improvement (EI)](#331---expected-improvement-ei)
+    - [3.3.2 - Upper Confidence Bound (UCB)](#332---upper-confidence-bound-ucb)
+  - [3.4 - Limitations of Gaussian Processes](#34---limitations-of-gaussian-processes)
 - [4 - Multi-Fidelity Optimisation: Hyperband](#4---multi-fidelity-optimisation-hyperband)
-	- [4.1 - The Successive Halving Algorithm (SHA)](#41---the-successive-halving-algorithm-sha)
-	- [4.2 - Hyperband: Hedging the Budget](#42---hyperband-hedging-the-budget)
-		- [4.2.1 - Detailed Calculation Example](#421---detailed-calculation-example)
+  - [4.1 - The Successive Halving Algorithm (SHA)](#41---the-successive-halving-algorithm-sha)
+  - [4.2 - Hyperband: Hedging the Budget](#42---hyperband-hedging-the-budget)
+    - [4.2.1 - Detailed Calculation Example](#421---detailed-calculation-example)
 - [5 - Population Based Training (PBT): Dynamic Adaptation](#5---population-based-training-pbt-dynamic-adaptation)
-	- [5.1 - The PBT Algorithm](#51---the-pbt-algorithm)
-	- [5.2 - Theoretical Implications](#52---theoretical-implications)
+  - [5.1 - The PBT Algorithm](#51---the-pbt-algorithm)
+  - [5.2 - Theoretical Implications](#52---theoretical-implications)
 - [6 - Gradient-Based Hyperparameter Optimisation](#6---gradient-based-hyperparameter-optimisation)
-	- [6.1 - Implicit Differentiation](#61---implicit-differentiation)
-	- [6.2 - Computational Challenges and Approximations](#62---computational-challenges-and-approximations)
+  - [6.1 - Implicit Differentiation](#61---implicit-differentiation)
+  - [6.2 - Computational Challenges and Approximations](#62---computational-challenges-and-approximations)
 - [7 - Comparison of Methods and Conclusion](#7---comparison-of-methods-and-conclusion)
-	- [7.1 - Conclusion](#71---conclusion)
+  - [7.1 - Conclusion](#71---conclusion)
 - [References](#references)
 
 
@@ -98,11 +98,15 @@ Before analysing advanced model-based methods, it is necessary to establish the 
 
 Grid Search is an exhaustive search algorithm that discretises the search space $\Lambda$. For each hyperparameter $j \in \{1, \dots, k\}$, a finite set of values $L_j$ is specified. The algorithm evaluates the objective function $\Psi(\lambda)$ at every point in the Cartesian product $\Lambda_{grid} = L_1 \times L_2 \times \dots \times L_k$.
 
+![alt text]({BASE}/image-1.png)
+
 If the user selects $m$ distinct values for each of the $k$ hyperparameters, the computational complexity is defined as:
 
 $$ N_{evals} = m^k $$
 
 This exponential growth is known as the **curse of dimensionality**. For a modern deep learning architecture with potentially 20 hyperparameters, a grid search with merely 3 values per parameter would require $3^{20} \approx 3.48 \times 10^9$ evaluations. Assuming one hour per training run, this is computationally infeasible. Grid Search is, therefore, only viable for low-dimensional spaces ($k \leq 4$).
+
+![alt text]({BASE}/image-2.png)
 
 ## 2.2 - Random Search and Effective Dimensionality
 
@@ -113,6 +117,8 @@ Bergstra and Bengio (2012) provided a seminal mathematical justification for the
 ### 2.2.1 - The Concept of Low Effective Dimensionality
 
 The core hypothesis is that for any specific dataset $D$, the function $\Psi(\lambda)$ is sensitive to changes in only a small subset of the dimensions of $\Lambda$. In a $k$-dimensional space, perhaps only $d < k$ parameters significantly affect the validation loss.
+
+![alt text]({BASE}/image-4.png)
 
 Consider a 2-dimensional search space with parameters $\lambda_1$ (important) and $\lambda_2$ (unimportant).
 
@@ -151,6 +157,8 @@ This result is profound: roughly 60 trials are sufficient to identify a near-opt
 
 While Random Search is statistically robust, it is inefficient in the sense that it does not learn from history. It treats the 60th trial with the same blindness as the first. **Bayesian Optimisation (BO)** addresses this by treating the finding of $\lambda^*$ as an optimisation problem in itself. It constructs a probabilistic surrogate model of the objective function $\Psi(\lambda)$ based on observed evaluations and uses this model to intelligently select the next point to evaluate.
 
+![alt text]({BASE}/image-5.png)
+
 ```mermaid
 sequenceDiagram
     participant SM as Surrogate Model (GP)
@@ -181,6 +189,8 @@ Mathematically, a GP is fully specified by a mean function $m(\lambda)$ and a co
 $$ f(\lambda) \sim \mathcal{GP}(m(\lambda), k(\lambda, \lambda')) $$
 
 We typically assume a prior mean of zero, $m(\lambda) = 0$, after normalising the observed target values. The kernel function $k(\lambda, \lambda')$ encodes our assumptions about the function's smoothness and similarity. If $\lambda$ and $\lambda'$ are close in the search space, the kernel should return a high covariance, implying that $f(\lambda)$ and $f(\lambda')$ are likely to be similar.
+
+![alt text]({BASE}/image-6.png)
 
 ### 3.1.1 - Kernel Selection
 
@@ -254,6 +264,8 @@ Having a posterior distribution is insufficient; we need a decision rule to sele
 
 The acquisition function must balance **Exploitation** (sampling where the mean $\mu_t$ is low, assuming minimisation) and **Exploration** (sampling where the variance $\sigma_t^2$ is high).
 
+![alt text]({BASE}/image-7.png)
+
 ### 3.3.1 - Expected Improvement (EI)
 
 EI is the most widely used criterion. It calculates the expected magnitude of the improvement over the current best observed value $f_{best} = \min(y)$.
@@ -314,6 +326,8 @@ The precursor to Hyperband is Successive Halving. The problem is framed as ident
 **Mathematical Assumption:**
 SHA assumes **rank stability**: if configuration $\lambda_A$ is better than $\lambda_B$ at full convergence, it is likely better (or at least comparable) at partial training. While usually true, this can fail for configurations that converge slowly but to a lower final loss (e.g., small learning rates).
 
+![alt text]({BASE}/image-8.png)
+
 ## 4.2 - Hyperband: Hedging the Budget
 
 Hyperband addresses the " $n$ vs. $B/n$ " trade-off inherent in Successive Halving. Should we try many configurations with little training (broad search) or few configurations with extensive training (deep search)? Hyperband does both by running multiple "brackets" of Successive Halving.
@@ -322,6 +336,8 @@ Hyperband addresses the " $n$ vs. $B/n$ " trade-off inherent in Successive Halvi
 
   * $R$: Maximum resource per configuration (e.g., 81 epochs).
   * $\eta$: The downsampling factor (typically 3).
+
+![alt text]({BASE}/image-9.png)
 
 **Algorithm Structure:**
 Hyperband iterates through a loop of brackets, indexed by $s$, ranging from $s_{max} = \lfloor \log_\eta(R) \rfloor$ down to 0.
@@ -380,6 +396,8 @@ This "hedging" strategy ensures that if the rank correlation is weak (requiring 
 
 Both Bayesian Optimisation and Hyperband view a hyperparameter configuration $\lambda$ as a static constant set before training begins. However, the optimal hyperparameters often change during training. For instance, it is standard practice to decay the learning rate over time.
 
+![alt text]({BASE}/image-10.png)
+
 **Population Based Training (PBT)** bridges HPO and evolutionary algorithms to adapt $\lambda$ dynamically. It is particularly effective in Reinforcement Learning (RL).
 
 ```mermaid
@@ -425,6 +443,8 @@ Crucially, PBT incurs no extra wall-clock time compared to training $P$ models i
 # 6 - Gradient-Based Hyperparameter Optimisation
 
 For continuous hyperparameters, one might ask: can we differentiate the validation loss with respect to the hyperparameters and use Gradient Descent? This leads to **Gradient-based HPO**, often formulated via **Implicit Differentiation**.
+
+![alt text]({BASE}/image-11.png)
 
 ## 6.1 - Implicit Differentiation
 
