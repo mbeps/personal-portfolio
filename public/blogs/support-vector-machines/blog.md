@@ -1,38 +1,37 @@
 - [1 - Introduction](#1---introduction)
-	- [1.1 - The Fundamental Problem of Learning](#11---the-fundamental-problem-of-learning)
-	- [1.2 - Scope and Structure](#12---scope-and-structure)
+  - [1.1 - The Fundamental Problem of Learning](#11---the-fundamental-problem-of-learning)
 - [2 - Mathematical Preliminaries](#2---mathematical-preliminaries)
-	- [2.1 - Hyperplanes and Geometry](#21---hyperplanes-and-geometry)
-	- [2.2 - Convex Optimisation](#22---convex-optimisation)
-	- [2.3 - Lagrange Multipliers and Duality](#23---lagrange-multipliers-and-duality)
+  - [2.1 - Hyperplanes and Geometry](#21---hyperplanes-and-geometry)
+  - [2.2 - Convex Optimisation](#22---convex-optimisation)
+  - [2.3 - Lagrange Multipliers and Duality](#23---lagrange-multipliers-and-duality)
 - [3 - Statistical Learning Theory: The Why](#3---statistical-learning-theory-the-why)
-	- [3.1 - Empirical vs. Expected Risk](#31---empirical-vs-expected-risk)
-	- [3.2 - VC Dimension and Generalisation Bounds](#32---vc-dimension-and-generalisation-bounds)
+  - [3.1 - Empirical vs. Expected Risk](#31---empirical-vs-expected-risk)
+  - [3.2 - VC Dimension and Generalisation Bounds](#32---vc-dimension-and-generalisation-bounds)
 - [4 - The Linear Support Vector Machine](#4---the-linear-support-vector-machine)
-	- [4.1 - The Primal Formulation](#41---the-primal-formulation)
-	- [4.2 - Deriving the Dual Formulation](#42---deriving-the-dual-formulation)
-	- [4.3 - A Mechanical Analogy](#43---a-mechanical-analogy)
+  - [4.1 - The Primal Formulation](#41---the-primal-formulation)
+  - [4.2 - Deriving the Dual Formulation](#42---deriving-the-dual-formulation)
+  - [4.3 - A Mechanical Analogy](#43---a-mechanical-analogy)
 - [5 - Soft Margin Classification](#5---soft-margin-classification)
-	- [5.1 - Slack Variables](#51---slack-variables)
-	- [5.2 - The C-SVM Formulation](#52---the-c-svm-formulation)
-	- [5.3 - The Dual Soft Margin](#53---the-dual-soft-margin)
-	- [5.4 - $\\nu$-SVM Formulation](#54---nu-svm-formulation)
+  - [5.1 - Slack Variables](#51---slack-variables)
+  - [5.2 - The C-SVM Formulation](#52---the-c-svm-formulation)
+  - [5.3 - The Dual Soft Margin](#53---the-dual-soft-margin)
+  - [5.4 - $\\nu$-SVM Formulation](#54---nu-svm-formulation)
 - [6 - The Kernel Trick: Conquering Non-Linearity](#6---the-kernel-trick-conquering-non-linearity)
-	- [6.1 - Feature Mapping](#61---feature-mapping)
-	- [6.2 - Mercer's Theorem](#62---mercers-theorem)
-	- [6.3 - Common Kernels](#63---common-kernels)
+  - [6.1 - Feature Mapping](#61---feature-mapping)
+  - [6.2 - Mercer's Theorem](#62---mercers-theorem)
+  - [6.3 - Common Kernels](#63---common-kernels)
 - [7 - Optimisation Algorithms: Solving the Dual](#7---optimisation-algorithms-solving-the-dual)
-	- [7.1 - Sequential Minimal Optimisation (SMO)](#71---sequential-minimal-optimisation-smo)
-	- [7.2 - The KKT Conditions for SVM](#72---the-kkt-conditions-for-svm)
+  - [7.1 - Sequential Minimal Optimisation (SMO)](#71---sequential-minimal-optimisation-smo)
+  - [7.2 - The KKT Conditions for SVM](#72---the-kkt-conditions-for-svm)
 - [8 - Concrete Examples and Manual Calculations](#8---concrete-examples-and-manual-calculations)
-	- [8.1 - 1D Hard Margin Example](#81---1d-hard-margin-example)
-	- [8.2 - The XOR Problem (Non-Linear)](#82---the-xor-problem-non-linear)
+  - [8.1 - 1D Hard Margin Example](#81---1d-hard-margin-example)
+  - [8.2 - The XOR Problem (Non-Linear)](#82---the-xor-problem-non-linear)
 - [9 - Modern Connections: Neural Tangent Kernel (NTK)](#9---modern-connections-neural-tangent-kernel-ntk)
-	- [9.1 - The Infinite Width Limit](#91---the-infinite-width-limit)
-	- [9.2 - Deep Networks as Kernel Machines](#92---deep-networks-as-kernel-machines)
+  - [9.1 - The Infinite Width Limit](#91---the-infinite-width-limit)
+  - [9.2 - Deep Networks as Kernel Machines](#92---deep-networks-as-kernel-machines)
 - [10 - Practical Implementations and Comparison](#10---practical-implementations-and-comparison)
-	- [10.1 - Software Ecosystem: LibSVM vs. LibLinear](#101---software-ecosystem-libsvm-vs-liblinear)
-	- [10.2 - GPU Acceleration: ThunderSVM \& cuML](#102---gpu-acceleration-thundersvm--cuml)
+  - [10.1 - Software Ecosystem: LibSVM vs. LibLinear](#101---software-ecosystem-libsvm-vs-liblinear)
+  - [10.2 - GPU Acceleration: ThunderSVM \& cuML](#102---gpu-acceleration-thundersvm--cuml)
 - [11 - Conclusion](#11---conclusion)
 - [References](#references)
 
@@ -60,20 +59,6 @@ At its core, supervised learning is an ill-posed inverse problem. We are given a
 Vladimir Vapnik and Alexey Chervonenkis, working in the Soviet Union in the 1960s and later in the United States, formalised this problem. They argued that traditional methods, which focused on minimising the error on the training set (**Empirical Risk Minimisation** or **ERM**), were insufficient. If the class of functions (the model) is too complex, ERM leads to overfitting (the "botanist with a photographic memory" who cannot recognise a new tree because it differs slightly from the specific trees seen before). Conversely, if the model is too simple, it fails to capture the underlying physics of the data (underfitting).
 
 The solution they proposed was **Structural Risk Minimisation (SRM)**. SRM suggests that learning involves a trade-off between the quality of the fit on the training data and the complexity (capacity) of the function used to model it. The Support Vector Machine is the algorithmic realisation of this principle. By maximising the "margin" (the distance between the decision boundary and the nearest data points) the SVM explicitly controls the capacity of the classifier, thereby minimising the upper bound on the generalisation error.
-
-## 1.2 - Scope and Structure
-
-This document is structured to build understanding from first principles:
-
-  * **Mathematical Preliminaries:** We establish the necessary linear algebra and optimisation theory.
-  * **Statistical Learning Theory:** We explore the VC Dimension and the theoretical bounds on risk.
-  * **The Linear SVM:** We derive the Hard Margin formulation in Primal and Dual forms.
-  * **Soft Margin Classification:** We extend the theory to non-separable data using slack variables.
-  * **The Kernel Trick:** We unlock non-linear classification via Mercer's Theorem.
-  * **Optimisation Algorithms:** We detail the Sequential Minimal Optimisation (SMO) algorithm.
-  * **Numerical Examples:** We provide step-by-step manual calculations for concrete understanding.
-  * **Deep Learning Connections:** We discuss the Neural Tangent Kernel and the infinite-width limit.
-  * **Modern Implementation:** We review current software (LibSVM, ThunderSVM) and hardware acceleration.
 
 -----
 
@@ -135,6 +120,8 @@ For convex problems (like SVMs) where Slater's condition holds (strictly feasibl
 # 3 - Statistical Learning Theory: The Why
 
 Before deriving the SVM equations, we must understand the theoretical imperative for maximising the margin.
+
+![alt text]({BASE}/image-1.png)
 
 ## 3.1 - Empirical vs. Expected Risk
 
@@ -260,6 +247,8 @@ This analogy highlights why only the support vectors matter: they are the only p
 
 In real-world scenarios, data is rarely perfectly linearly separable due to noise or overlapping distributions. Enforcing a hard margin would result in no solution (the feasible set is empty). To address this, Cortes and Vapnik (1995) introduced the Soft Margin SVM.
 
+![alt text]({BASE}/image-2.png)
+
 ## 5.1 - Slack Variables
 
 We relax the strict inequality constraints by introducing slack variables $\xi_i \geq 0$.
@@ -347,6 +336,8 @@ Different kernels induce different feature spaces and decision boundaries.
 | **Polynomial**     | $(\gamma \mathbf{x} \cdot \mathbf{x}' + r)^d$    | Maps to space of monomials up to degree $d$. Useful for image processing and OCR.                |
 | **RBF (Gaussian)** | $\exp(-\gamma                                    |                                                                                                  | \mathbf{x} - \mathbf{x}' |  | ^2)$ | Maps to infinite-dimensional Hilbert space. Powerful general-purpose kernel. |
 | **Sigmoid**        | $\tanh(\gamma \mathbf{x} \cdot \mathbf{x}' + r)$ | Acts like a Neural Network (Multi-Layer Perceptron). Not always positive semi-definite.          |
+
+![alt text]({BASE}/image-3.png)
 
 **Deep Dive: The RBF Kernel Parameter $\gamma$**
 The Radial Basis Function (RBF) kernel is defined by $\gamma = \frac{1}{2\sigma^2}$.
