@@ -51,6 +51,26 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.CriticalThinking,
     ],
   },
+  [BlogDatabaseKeys.Clustering]: {
+    name: "Clustering Algorithms",
+    subtitle:
+      "An analysis of K-Means, DBSCAN, and GMM, detailing their mechanics and evaluation metrics.",
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+    ],
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_MachineLearning,
+      ModuleDatabaseKeys.RHUL_MachineLearning,
+      ModuleDatabaseKeys.KCL_PatternRecognitionNeuralNetworksDeepLearning,
+      ModuleDatabaseKeys.KCL_ArtificialIntelligenceReasoningAndDecisionMaking,
+    ],
+  },
   [BlogDatabaseKeys.ValidationAndRegularization]: {
     name: "Validation & Regularisation",
     subtitle:
