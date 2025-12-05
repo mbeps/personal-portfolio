@@ -713,6 +713,13 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.GraphQL,
     ],
   },
+  [BlogDatabaseKeys.SecretManagement]: {
+    name: "Secret Management",
+    subtitle:
+      "A comprehensive guide covering secret management theory, dynamic mechanisms, and Zero Trust architectures (Vault, SPIFFE, Kubernetes).",
+    category: BlogCategoriesEnum.SoftwareEngineering,
+    skills: [SkillDatabaseKeys.DevOps],
+  },
 
   //^ Database Blogs
   [BlogDatabaseKeys.DatabaseParadigms]: {
