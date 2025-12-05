@@ -691,6 +691,28 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.Clusterisation,
     ],
   },
+  [BlogDatabaseKeys.MicroservicesArchitecture]: {
+    name: "Microservices Architecture",
+    subtitle:
+      "An analysis of microservice architecture, covering foundations, complexity, core patterns, and the pragmatic trade-offs involved in adoption.",
+    category: BlogCategoriesEnum.SoftwareEngineering,
+    skills: [
+      SkillDatabaseKeys.DevOps,
+      SkillDatabaseKeys.Containerisation,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.Podman,
+      SkillDatabaseKeys.Kubernetes,
+      SkillDatabaseKeys.Clusterisation,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Django,
+      SkillDatabaseKeys.Flask,
+      SkillDatabaseKeys.AWS,
+      SkillDatabaseKeys.GCP,
+      SkillDatabaseKeys.Azure,
+      SkillDatabaseKeys.REST,
+      SkillDatabaseKeys.GraphQL,
+    ],
+  },
 
   //^ Database Blogs
   [BlogDatabaseKeys.DatabaseParadigms]: {
