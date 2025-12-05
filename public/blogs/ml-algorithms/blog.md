@@ -1,31 +1,31 @@
 - [1 - Introduction](#1---introduction)
 - [2 - Mathematical Preliminaries and Notation](#2---mathematical-preliminaries-and-notation)
-	- [2.1 - Geometric Fundamentals](#21---geometric-fundamentals)
-	- [2.2 - Optimisation Theory](#22---optimisation-theory)
-	- [2.3 - Statistical Learning Theory](#23---statistical-learning-theory)
+  - [2.1 - Geometric Fundamentals](#21---geometric-fundamentals)
+  - [2.2 - Optimisation Theory](#22---optimisation-theory)
+  - [2.3 - Statistical Learning Theory](#23---statistical-learning-theory)
 - [3 - Linear Regression: The Analytic Baseline](#3---linear-regression-the-analytic-baseline)
-	- [3.1 - The Model and Ordinary Least Squares (OLS)](#31---the-model-and-ordinary-least-squares-ols)
-	- [3.2 - Mathematical Derivation of the OLS Estimator](#32---mathematical-derivation-of-the-ols-estimator)
-	- [3.3 - Example Calculation](#33---example-calculation)
+  - [3.1 - The Model and Ordinary Least Squares (OLS)](#31---the-model-and-ordinary-least-squares-ols)
+  - [3.2 - Mathematical Derivation of the OLS Estimator](#32---mathematical-derivation-of-the-ols-estimator)
+  - [3.3 - Example Calculation](#33---example-calculation)
 - [4 - Logistic Regression: Probabilistic Classification](#4---logistic-regression-probabilistic-classification)
-	- [4.1 - The Sigmoid and Log-Odds](#41---the-sigmoid-and-log-odds)
-	- [4.2 - Maximum Likelihood Estimation (MLE)](#42---maximum-likelihood-estimation-mle)
-	- [4.3 - Gradient Ascent Derivation](#43---gradient-ascent-derivation)
-	- [4.4 - Example: Single Step of Gradient Ascent](#44---example-single-step-of-gradient-ascent)
+  - [4.1 - The Sigmoid and Log-Odds](#41---the-sigmoid-and-log-odds)
+  - [4.2 - Maximum Likelihood Estimation (MLE)](#42---maximum-likelihood-estimation-mle)
+  - [4.3 - Gradient Ascent Derivation](#43---gradient-ascent-derivation)
+  - [4.4 - Example: Single Step of Gradient Ascent](#44---example-single-step-of-gradient-ascent)
 - [5 - Support Vector Machines (SVM): Geometric Optimisation](#5---support-vector-machines-svm-geometric-optimisation)
-	- [5.1 - The Primal Optimisation Problem](#51---the-primal-optimisation-problem)
-	- [5.2 - Derivation of the Dual Formulation](#52---derivation-of-the-dual-formulation)
-	- [5.3 - The Kernel Trick and KKT Conditions](#53---the-kernel-trick-and-kkt-conditions)
-	- [5.4 - Manual Hard Margin Calculation (3 Points)](#54---manual-hard-margin-calculation-3-points)
-	- [5.5 - Soft Margin and Subgradient Descent](#55---soft-margin-and-subgradient-descent)
+  - [5.1 - The Primal Optimisation Problem](#51---the-primal-optimisation-problem)
+  - [5.2 - Derivation of the Dual Formulation](#52---derivation-of-the-dual-formulation)
+  - [5.3 - The Kernel Trick and KKT Conditions](#53---the-kernel-trick-and-kkt-conditions)
+  - [5.4 - Manual Hard Margin Calculation (3 Points)](#54---manual-hard-margin-calculation-3-points)
+  - [5.5 - Soft Margin and Subgradient Descent](#55---soft-margin-and-subgradient-descent)
 - [6 - Non-Parametric Methods: K-Nearest Neighbours (KNN)](#6---non-parametric-methods-k-nearest-neighbours-knn)
-	- [6.1 - Algorithm and Distance Metrics](#61---algorithm-and-distance-metrics)
-	- [6.2 - Theoretical Convergence: Cover and Hart](#62---theoretical-convergence-cover-and-hart)
-	- [6.3 - The Curse of Dimensionality: A Mathematical View](#63---the-curse-of-dimensionality-a-mathematical-view)
+  - [6.1 - Algorithm and Distance Metrics](#61---algorithm-and-distance-metrics)
+  - [6.2 - Theoretical Convergence: Cover and Hart](#62---theoretical-convergence-cover-and-hart)
+  - [6.3 - The Curse of Dimensionality: A Mathematical View](#63---the-curse-of-dimensionality-a-mathematical-view)
 - [7 - Decision Trees and Random Forests](#7---decision-trees-and-random-forests)
-	- [7.1 - Decision Trees: Information Theory and Splitting](#71---decision-trees-information-theory-and-splitting)
-	- [7.2 - Manual Calculation: Entropy Split](#72---manual-calculation-entropy-split)
-	- [7.3 - Random Forest: Variance Reduction Derivation](#73---random-forest-variance-reduction-derivation)
+  - [7.1 - Decision Trees: Information Theory and Splitting](#71---decision-trees-information-theory-and-splitting)
+  - [7.2 - Manual Calculation: Entropy Split](#72---manual-calculation-entropy-split)
+  - [7.3 - Random Forest: Variance Reduction Derivation](#73---random-forest-variance-reduction-derivation)
 - [8 - Computational Complexity Comparison](#8---computational-complexity-comparison)
 - [9 - Conclusion](#9---conclusion)
 
@@ -104,6 +104,8 @@ This decomposition explains the behaviour of ensemble methods like Random Forest
 
 Linear regression serves as the foundational model for supervised learning. It assumes the target variable $y$ is a linear combination of the input features $x$, plus random error. While simple, its closed-form solution provides deep insights into the geometry of orthogonal projections.
 
+![alt text]({BASE}/image-2.png)
+
 ## 3.1 - The Model and Ordinary Least Squares (OLS)
 
 We posit the model:
@@ -115,6 +117,8 @@ where $\epsilon \sim \mathcal{N}(0, \sigma^2)$ is Gaussian noise. In matrix nota
 The Ordinary Least Squares (OLS) estimator seeks to minimise the Residual Sum of Squares (RSS), which corresponds to the squared Euclidean norm of the error vector:
 
 $$ J(\beta) = \|Y - X\beta\|_2^2 = (Y - X\beta)^\top (Y - X\beta) $$
+
+![alt text]({BASE}/image-1.png)
 
 ## 3.2 - Mathematical Derivation of the OLS Estimator
 
@@ -179,6 +183,8 @@ The fitted line is $y = 0.667 + 0.5x$.
 # 4 - Logistic Regression: Probabilistic Classification
 
 Logistic regression generalises linear models to binary classification. Instead of predicting the value of $y$ directly, it models the probability that a sample belongs to a specific class.
+
+![alt text]({BASE}/image-3.png)
 
 ## 4.1 - The Sigmoid and Log-Odds
 
@@ -263,6 +269,8 @@ This step moves the weights in a direction that increases the probability of the
 
 The Support Vector Machine is a robust classification algorithm rooted in statistical learning theory. It explicitly maximises the margin between classes, effectively minimising the bound on the generalisation error rather than just the training error.
 
+![alt text]({BASE}/image-4.png)
+
 ## 5.1 - The Primal Optimisation Problem
 
 We assume a linearly separable dataset. We seek a hyperplane defined by $(w, b)$ such that:
@@ -313,6 +321,8 @@ flowchart TD
 ## 5.3 - The Kernel Trick and KKT Conditions
 
 The dual formulation depends on the data only through the dot product $\langle x_i, x_j \rangle$. If we map data to a high-dimensional space $\phi(x)$, we only need to compute $K(x_i, x_j) = \langle \phi(x_i), \phi(x_j) \rangle$. This allows SVMs to learn non-linear boundaries without explicitly computing the transformation $\phi$.
+
+![alt text]({BASE}/image-5.png)
 
 According to the KKT Complementarity Condition:
 
@@ -375,6 +385,8 @@ This allows the SVM to tolerate misclassifications while striving for a large ma
 
 KNN is an instance-based learning algorithm that eschews explicit model training for stored data representation. It relies on the local smoothness of the target function.
 
+![alt text]({BASE}/image-6.png)
+
 ## 6.1 - Algorithm and Distance Metrics
 
 Given a query point $x_q$, KNN retrieves the set $\mathcal{N}_k(x_q)$ of the $k$ closest training points. The prediction is $\hat{y} = \text{mode}(\{y_i : x_i \in \mathcal{N}_k(x_q)\})$ for classification or the mean for regression.
@@ -416,13 +428,18 @@ $$ \lim_{d \to \infty} \frac{D_{\max} - D_{\min}}{D_{\min}} \to 0 $$
 
 This necessitates dimensionality reduction techniques like PCA before applying KNN in high-dimensional spaces.
 
+![alt text]({BASE}/image-.png)
+
 -----
 
 # 7 - Decision Trees and Random Forests
 
 Decision trees recursively partition the feature space into hyper-rectangles. While highly interpretable, individual trees suffer from high variance. Random Forests resolve this by constructing an ensemble of decorrelated trees.
 
+
 ## 7.1 - Decision Trees: Information Theory and Splitting
+
+![alt text]({BASE}/image-8.png)
 
 Trees are built greedily. At each node, we select the split that maximises Information Gain.
 Entropy $H(S)$ measures the impurity of a set $S$. For binary classification with positive probability $p_+$:
@@ -462,6 +479,8 @@ graph TD
 ```
 
 ## 7.3 - Random Forest: Variance Reduction Derivation
+
+![alt text]({BASE}/image-9.png)
 
 A Random Forest aggregates $B$ trees $\{T_b\}$. The prediction is $\hat{f}_{rf}(x) = \frac{1}{B} \sum_{b=1}^B T_b(x)$.
 The variance of the average of $B$ identically distributed random variables with variance $\sigma^2$ and pairwise correlation $\rho$ is:
