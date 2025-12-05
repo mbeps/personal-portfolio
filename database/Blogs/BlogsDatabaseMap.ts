@@ -52,7 +52,7 @@ const blogsMap: Database<BlogInterface> = {
     ],
   },
   [BlogDatabaseKeys.ValidationAndRegularization]: {
-    name: "Validation & Regularisation in Machine Learning",
+    name: "Validation & Regularisation",
     subtitle:
       "An analysis of validation architectures, bias-variance decomposition, temporal and spatial dependence, and statistical significance testing for model selection.",
     category: BlogCategoriesEnum.ArtificialIntelligence,
@@ -86,6 +86,21 @@ const blogsMap: Database<BlogInterface> = {
       ModuleDatabaseKeys.KCL_MachineLearning,
       ModuleDatabaseKeys.RHUL_MachineLearning,
     ],
+  },
+  [BlogDatabaseKeys.ConformalPrediction]: {
+    name: "Conformal Prediction",
+    subtitle:
+      "An analysis of distribution-free uncertainty quantification, covering mathematical foundations, inductive versus transductive architectures, and advanced algorithms for robust machine learning.",
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+    ],
+    relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
   },
   [BlogDatabaseKeys.IntroductionToNeuralNetworks]: {
     name: "Introduction to Neural Networks",
