@@ -51,6 +51,24 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.CriticalThinking,
     ],
   },
+  [BlogDatabaseKeys.ValidationAndRegularization]: {
+    name: "Validation & Regularisation in Machine Learning",
+    subtitle:
+      "An analysis of validation architectures, bias-variance decomposition, temporal and spatial dependence, and statistical significance testing for model selection.",
+    category: BlogCategoriesEnum.ArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.CriticalThinking,
+    ],
+    relatedMaterials: [
+      ModuleDatabaseKeys.KCL_MachineLearning,
+      ModuleDatabaseKeys.RHUL_MachineLearning,
+    ],
+  },
   [BlogDatabaseKeys.IntroductionToNeuralNetworks]: {
     name: "Introduction to Neural Networks",
     subtitle:

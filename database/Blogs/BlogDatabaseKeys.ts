@@ -9,6 +9,7 @@
 enum BlogDatabaseKeys {
   MachineLearningFoundations = "machine-learning-foundations",
   IntroductionToNeuralNetworks = "introduction-to-neural-networks",
+  ValidationAndRegularization = "validation-and-regularization",
   NeuralNetworkLearningAndGradientDescent = "neural-network-learning-and-gradient-descent",
   BackPropagation = "back-propagation",
   DeepNeuralNetworks = "deep-neural-networks",
