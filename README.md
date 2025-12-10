@@ -63,7 +63,6 @@ Sticky navbar, mobile drawer navigation, and fluid layouts keep the portfolio en
 # **Requirements**
 These are the requirements needed to run the project:
 - Node 22 LTS
-- Next.JS 15+
 
 # **Tech Stack**
 
