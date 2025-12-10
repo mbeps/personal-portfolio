@@ -23,6 +23,7 @@ const courseMap: Database<CourseInterface> = {
     startYear: 2024,
     endYear: 2025,
     logo: `${EDUCATION_PAGE.path}/${CourseDatabaseKeys.KCL_ArtificialIntelligence}/logo.png`,
+    certificate: `${EDUCATION_PAGE.path}/${CourseDatabaseKeys.KCL_ArtificialIntelligence}/certificate.jpg`,
     modules: [
       ModuleDatabaseKeys.KCL_ArtificialIntelligenceReasoningAndDecisionMaking,
       ModuleDatabaseKeys.KCL_MachineLearning,
