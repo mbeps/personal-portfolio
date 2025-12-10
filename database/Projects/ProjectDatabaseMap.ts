@@ -1949,7 +1949,7 @@ const projectMap: Database<ProjectInterface> = {
     repositoryURL: `https://github.com/mbeps/AutomatedSetup`,
     category: ProjectCategoriesEnum.Other,
     archived: true,
-    type: ProjectTypeEnum.Personal,
+    type: ProjectTypeEnum.Professional,
   },
   [ProjectDatabaseKeys.AutomatedManifestPush]: {
     name: `Automated Manifest Push`,
@@ -1968,7 +1968,7 @@ const projectMap: Database<ProjectInterface> = {
     repositoryURL: `https://github.com/mbeps/AutomatedSetup`,
     category: ProjectCategoriesEnum.Other,
     archived: true,
-    type: ProjectTypeEnum.Personal,
+    type: ProjectTypeEnum.Professional,
   },
   [ProjectDatabaseKeys.JwtHelper]: {
     name: `JWT Helper`,
@@ -1988,7 +1988,7 @@ const projectMap: Database<ProjectInterface> = {
     repositoryURL: `https://github.com/mbeps/AutomatedSetup`,
     category: ProjectCategoriesEnum.Other,
     archived: true,
-    type: ProjectTypeEnum.Personal,
+    type: ProjectTypeEnum.Professional,
   },
 };
 
