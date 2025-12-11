@@ -1,4 +1,4 @@
-import findCourseKeyForModule from "@/actions/material/course/findCourseKeyForModule";
+import findCourseKeyForModule from "@/lib/actions/material/course/findCourseKeyForModule";
 import Grid from "@/components/ui/Grid";
 import { EDUCATION_PAGE } from "@/constants/pages";
 import courseDatabaseMap from "@/database/courses/CourseDatabaseMap";

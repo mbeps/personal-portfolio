@@ -1,10 +1,10 @@
 /// <reference types="vitest/globals" />
-import skillHasMaterial from "@/actions/material/skillHasMaterial";
-import countMaterialsBySkill from "@/actions/material/countMaterialsBySkill";
+import skillHasMaterial from "@/lib/actions/material/skillHasMaterial";
+import countMaterialsBySkill from "@/lib/actions/material/countMaterialsBySkill";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import { describe, expect, test, vi } from "vitest";
 
-vi.mock("@/actions/material/countMaterialsBySkill");
+vi.mock("@/lib/actions/material/countMaterialsBySkill");
 
 describe("skillHasMaterial", () => {
   test("should return true if the skill has 2 or more materials", () => {

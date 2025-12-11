@@ -1,4 +1,4 @@
-import stringToSlug from "@/actions/stringToSlug";
+import stringToSlug from "@/lib/actions/stringToSlug";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import React from "react";
 

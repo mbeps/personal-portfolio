@@ -1,5 +1,5 @@
-import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
-import addProjectThumbnail from "@/actions/material/projects/addProjectThumbnail";
+import addNestedSkillsMaterialList from "@/lib/actions/material/addNestedSkillsMaterialList";
+import addProjectThumbnail from "@/lib/actions/material/projects/addProjectThumbnail";
 import ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
 import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
 import ProjectInterface from "@/database/projects/ProjectInterface";

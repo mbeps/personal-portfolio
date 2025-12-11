@@ -1,6 +1,6 @@
 "use client";
 
-import filterCategoriesFromSkills from "@/actions/skills/filter/filterCategoriesFromSkills";
+import filterCategoriesFromSkills from "@/lib/actions/skills/filter/filterCategoriesFromSkills";
 import TechnologiesModal from "@/components/modal/TechnologiesModal";
 import SkillTag from "@/components/tags/SkillTag";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";

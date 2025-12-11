@@ -1,16 +1,16 @@
 "use client";
 
-import checkForArchivedMaterials from "@/actions/material/checkForArchivedMaterials";
-import filterRolesByType from "@/actions/material/experience/filterRolesByType";
-import filterMaterialByArchivedStatus from "@/actions/material/filter/filterMaterialByArchivedStatus";
-import filterMaterialByCategory from "@/actions/material/filter/filterMaterialByCategory";
-import filterMaterialBySkill from "@/actions/material/filter/filterMaterialBySkill";
-import filterMaterialBySkillCategory from "@/actions/material/filter/filterMaterialBySkillCategory";
-import generateFilterOptionsByCategory from "@/actions/material/filter-options/generateFilterOptionsByCategory";
-import { generateFilterOptionsByRoleType } from "@/actions/material/filter-options/generateFilterOptionsByRoleType";
-import { generateFilterOptionsBySkillCategories } from "@/actions/material/filter-options/generateFilterOptionsBySkillCategories";
-import generateFilterOptionsBySkillType from "@/actions/material/filter-options/generateFilterOptionsBySkillType";
-import stringToSlug from "@/actions/stringToSlug";
+import checkForArchivedMaterials from "@/lib/actions/material/checkForArchivedMaterials";
+import filterRolesByType from "@/lib/actions/material/experience/filterRolesByType";
+import filterMaterialByArchivedStatus from "@/lib/actions/material/filter/filterMaterialByArchivedStatus";
+import filterMaterialByCategory from "@/lib/actions/material/filter/filterMaterialByCategory";
+import filterMaterialBySkill from "@/lib/actions/material/filter/filterMaterialBySkill";
+import filterMaterialBySkillCategory from "@/lib/actions/material/filter/filterMaterialBySkillCategory";
+import generateFilterOptionsByCategory from "@/lib/actions/material/filter-options/generateFilterOptionsByCategory";
+import { generateFilterOptionsByRoleType } from "@/lib/actions/material/filter-options/generateFilterOptionsByRoleType";
+import { generateFilterOptionsBySkillCategories } from "@/lib/actions/material/filter-options/generateFilterOptionsBySkillCategories";
+import generateFilterOptionsBySkillType from "@/lib/actions/material/filter-options/generateFilterOptionsBySkillType";
+import stringToSlug from "@/lib/actions/stringToSlug";
 import FilterSection from "@/components/filters/FilterSection";
 import WorkList from "@/components/material-lists/WorkList";
 import RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";

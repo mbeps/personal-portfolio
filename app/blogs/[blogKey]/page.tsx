@@ -1,6 +1,6 @@
-import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
-import processMarkdownImages from "@/actions/processMarkdownImages";
-import buildSkillTableGroups from "@/actions/skills/group/buildSkillTableGroups";
+import getMarkdownFromFileSystem from "@/lib/actions/file-system/getMarkdownFromFileSystem";
+import processMarkdownImages from "@/lib/actions/processMarkdownImages";
+import buildSkillTableGroups from "@/lib/actions/skills/group/buildSkillTableGroups";
 import MaterialList from "@/components/material-lists/MaterialList";
 import SpecialReader from "@/components/reader/SpecialReader";
 import { Card, CardContent } from "@/components/shadcn/ui/card";

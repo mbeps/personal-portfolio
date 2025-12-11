@@ -1,4 +1,4 @@
-import stringToSlug from "@/actions/stringToSlug";
+import stringToSlug from "@/lib/actions/stringToSlug";
 import MaterialInterface from "@/database/materials/MaterialInterface";
 import SkillInterface from "@/database/skills/SkillInterface";
 import Database from "@/interfaces/Database";

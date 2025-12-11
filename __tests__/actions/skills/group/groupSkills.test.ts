@@ -1,7 +1,7 @@
 /// <reference types="vitest/globals" />
 import groupSkills, {
   GroupByOptions,
-} from "@/actions/skills/group/groupSkills";
+} from "@/lib/actions/skills/group/groupSkills";
 import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
 import type SkillInterface from "@/database/skills/SkillInterface";

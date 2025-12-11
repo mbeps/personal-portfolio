@@ -1,5 +1,5 @@
-import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
-import buildSkillTableGroups from "@/actions/skills/group/buildSkillTableGroups";
+import getMarkdownFromFileSystem from "@/lib/actions/file-system/getMarkdownFromFileSystem";
+import buildSkillTableGroups from "@/lib/actions/skills/group/buildSkillTableGroups";
 import ShortDate from "@/class/ShortDate";
 import MaterialList from "@/components/material-lists/MaterialList";
 import Reader from "@/components/reader/Reader";

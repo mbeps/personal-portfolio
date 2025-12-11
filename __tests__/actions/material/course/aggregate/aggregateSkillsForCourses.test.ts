@@ -1,5 +1,5 @@
 /// <reference types="vitest/globals" />
-import aggregateSkillsForCourses from "@/actions/material/course/aggregate/aggregateSkillsForCourses";
+import aggregateSkillsForCourses from "@/lib/actions/material/course/aggregate/aggregateSkillsForCourses";
 import CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
 import type CourseInterface from "@/database/courses/CourseInterface";
 import ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";

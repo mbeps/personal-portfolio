@@ -1,5 +1,5 @@
-import aggregateRelatedMaterialsForCourses from "@/actions/material/course/aggregate/aggregateRelatedMaterialsForCourses";
-import aggregateSkillsForCourses from "@/actions/material/course/aggregate/aggregateSkillsForCourses";
+import aggregateRelatedMaterialsForCourses from "@/lib/actions/material/course/aggregate/aggregateRelatedMaterialsForCourses";
+import aggregateSkillsForCourses from "@/lib/actions/material/course/aggregate/aggregateSkillsForCourses";
 import { EDUCATION_PAGE } from "@/constants/pages";
 import CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
 import CourseInterface from "@/database/courses/CourseInterface";

@@ -1,4 +1,4 @@
-import stringToSlug from "@/actions/stringToSlug";
+import stringToSlug from "@/lib/actions/stringToSlug";
 import CertificateInterface from "@/database/certificates/CertificateInterface";
 import Database from "@/interfaces/Database";
 

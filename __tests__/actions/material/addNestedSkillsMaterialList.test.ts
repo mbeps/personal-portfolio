@@ -1,5 +1,5 @@
 /// <reference types="vitest/globals" />
-import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
+import addNestedSkillsMaterialList from "@/lib/actions/material/addNestedSkillsMaterialList";
 import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
 import type MaterialInterface from "@/database/materials/MaterialInterface";

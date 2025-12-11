@@ -1,4 +1,4 @@
-import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
+import addNestedSkillsMaterialList from "@/lib/actions/material/addNestedSkillsMaterialList";
 import BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
 import BlogInterface from "@/database/blogs/BlogInterface";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";

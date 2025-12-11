@@ -1,15 +1,15 @@
 "use client";
 
-import checkForArchivedMaterials from "@/actions/material/checkForArchivedMaterials";
-import filterMaterialByArchivedStatus from "@/actions/material/filter/filterMaterialByArchivedStatus";
-import filterMaterialByCategory from "@/actions/material/filter/filterMaterialByCategory";
-import filterMaterialBySkill from "@/actions/material/filter/filterMaterialBySkill";
-import filterMaterialBySkillCategory from "@/actions/material/filter/filterMaterialBySkillCategory";
-import generateFilterOptionsByCategory from "@/actions/material/filter-options/generateFilterOptionsByCategory";
-import { generateFilterOptionsBySkillCategories } from "@/actions/material/filter-options/generateFilterOptionsBySkillCategories";
-import generateFilterOptionsBySkillType from "@/actions/material/filter-options/generateFilterOptionsBySkillType";
-import generateFilterOptionsForProgrammingLanguages from "@/actions/material/filter-options/generateFilterOptionsForProgrammingLanguages";
-import stringToSlug from "@/actions/stringToSlug";
+import checkForArchivedMaterials from "@/lib/actions/material/checkForArchivedMaterials";
+import filterMaterialByArchivedStatus from "@/lib/actions/material/filter/filterMaterialByArchivedStatus";
+import filterMaterialByCategory from "@/lib/actions/material/filter/filterMaterialByCategory";
+import filterMaterialBySkill from "@/lib/actions/material/filter/filterMaterialBySkill";
+import filterMaterialBySkillCategory from "@/lib/actions/material/filter/filterMaterialBySkillCategory";
+import generateFilterOptionsByCategory from "@/lib/actions/material/filter-options/generateFilterOptionsByCategory";
+import { generateFilterOptionsBySkillCategories } from "@/lib/actions/material/filter-options/generateFilterOptionsBySkillCategories";
+import generateFilterOptionsBySkillType from "@/lib/actions/material/filter-options/generateFilterOptionsBySkillType";
+import generateFilterOptionsForProgrammingLanguages from "@/lib/actions/material/filter-options/generateFilterOptionsForProgrammingLanguages";
+import stringToSlug from "@/lib/actions/stringToSlug";
 import FilterSection from "@/components/filters/FilterSection";
 import ProjectsList from "@/components/material-lists/ProjectsList";
 import { PROJECTS_PAGE } from "@/constants/pages";
@@ -21,8 +21,8 @@ import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
 import ProjectInterface from "@/database/projects/ProjectInterface";
 import React from "react";
 import { usePathname } from "next/navigation";
-import filterProjectsByType from "@/actions/material/filter/filterProjectsByType";
-import generateFilterOptionsByType from "@/actions/material/filter-options/generateFilterOptionsByType";
+import filterProjectsByType from "@/lib/actions/material/filter/filterProjectsByType";
+import generateFilterOptionsByType from "@/lib/actions/material/filter-options/generateFilterOptionsByType";
 import useMaterialFilterState from "@/hooks/useMaterialFilterState";
 
 /**

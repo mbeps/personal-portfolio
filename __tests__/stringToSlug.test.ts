@@ -1,4 +1,4 @@
-import stringToSlug from "@/actions/stringToSlug";
+import stringToSlug from "@/lib/actions/stringToSlug";
 import { describe, expect, test } from "vitest";
 
 describe("stringToSlug", () => {

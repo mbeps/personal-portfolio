@@ -1,6 +1,6 @@
-import filterMaterialByArchivedStatus from "@/actions/material/filter/filterMaterialByArchivedStatus";
-import groupMaterialsByCategory from "@/actions/material/group/groupMaterialsByCategory";
-import buildSkillTableGroups from "@/actions/skills/group/buildSkillTableGroups";
+import filterMaterialByArchivedStatus from "@/lib/actions/material/filter/filterMaterialByArchivedStatus";
+import groupMaterialsByCategory from "@/lib/actions/material/group/groupMaterialsByCategory";
+import buildSkillTableGroups from "@/lib/actions/skills/group/buildSkillTableGroups";
 import { ArchiveToggle } from "@/components/filters/ArchiveToggle";
 import MaterialList from "@/components/material-lists/MaterialList";
 import SkillTableSection from "@/components/skills/SkillTableSection";

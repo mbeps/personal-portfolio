@@ -1,9 +1,9 @@
 "use client";
 
-import isSkillAssociatedWithMaterial from "@/actions/material/isSkillAssociatedWithMaterial";
+import isSkillAssociatedWithMaterial from "@/lib/actions/material/isSkillAssociatedWithMaterial";
 import groupSkills, {
   GroupByOptions,
-} from "@/actions/skills/group/groupSkills";
+} from "@/lib/actions/skills/group/groupSkills";
 import Tag from "@/components/tags/Tag";
 import { Button } from "@/components/shadcn/ui/button";
 import {

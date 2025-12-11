@@ -1,4 +1,4 @@
-import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
+import getMarkdownFromFileSystem from "@/lib/actions/file-system/getMarkdownFromFileSystem";
 import developerName from "@/constants/developerName";
 import { HOME_PAGE } from "@/constants/pages";
 import subtitles from "@/constants/subtitles";

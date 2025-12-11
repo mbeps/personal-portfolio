@@ -1,4 +1,4 @@
-import stringToSlug from "@/actions/stringToSlug";
+import stringToSlug from "@/lib/actions/stringToSlug";
 import RoleInterface from "@/database/roles/RoleInterface";
 import Database from "@/interfaces/Database";
 import FilterOption from "@/interfaces/filters/FilterOption";

@@ -1,5 +1,5 @@
 /// <reference types="vitest/globals" />
-import updateRolesWithExperienceTime from "@/actions/material/role/updateRolesWithExperienceTime";
+import updateRolesWithExperienceTime from "@/lib/actions/material/role/updateRolesWithExperienceTime";
 import CompanyDatabaseKeys from "@/database/companies/CompanyDatabaseKeys";
 import type RoleInterface from "@/database/roles/RoleInterface";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";

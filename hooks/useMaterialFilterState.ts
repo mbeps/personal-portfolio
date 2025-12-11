@@ -1,4 +1,4 @@
-import groupMaterialsByCategory from "@/actions/material/group/groupMaterialsByCategory";
+import groupMaterialsByCategory from "@/lib/actions/material/group/groupMaterialsByCategory";
 import MaterialInterface from "@/database/materials/MaterialInterface";
 import useFuseMaterialSearch from "@/hooks/use-fuse-search/useFuseMaterialSearch";
 import Database from "@/interfaces/Database";

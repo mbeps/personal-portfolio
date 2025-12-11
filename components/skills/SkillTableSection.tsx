@@ -1,6 +1,6 @@
 "use client";
 
-import stringToSlug from "@/actions/stringToSlug";
+import stringToSlug from "@/lib/actions/stringToSlug";
 import {
   Tabs,
   TabsContent,
@@ -11,7 +11,7 @@ import useIsMounted from "@/hooks/useIsMounted";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import React, { useState } from "react";
 import CategorySkillDisplay from "./CategorySkillDisplay";
-import filterNonEmptySkillCategories from "@/actions/skills/filter/filterNonEmptySkillCategories";
+import filterNonEmptySkillCategories from "@/lib/actions/skills/filter/filterNonEmptySkillCategories";
 
 interface SkillTableSectionProps {
   allGroupedSkills: GroupedSkillsCategoriesInterface[];

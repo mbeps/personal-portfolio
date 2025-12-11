@@ -1,4 +1,4 @@
-import addNestedSkillsMaterialList from "@/actions/material/addNestedSkillsMaterialList";
+import addNestedSkillsMaterialList from "@/lib/actions/material/addNestedSkillsMaterialList";
 import CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
 import CertificateInterface from "@/database/certificates/CertificateInterface";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";

@@ -1,16 +1,16 @@
 "use client";
 
-import checkForArchivedMaterials from "@/actions/material/checkForArchivedMaterials";
-import filterCertificatesByIssuer from "@/actions/material/filter/filterCertificatesByIssuer";
-import filterMaterialByArchivedStatus from "@/actions/material/filter/filterMaterialByArchivedStatus";
-import filterMaterialByCategory from "@/actions/material/filter/filterMaterialByCategory";
-import filterMaterialBySkill from "@/actions/material/filter/filterMaterialBySkill";
-import filterMaterialBySkillCategory from "@/actions/material/filter/filterMaterialBySkillCategory";
-import generateFilterOptionsByCategory from "@/actions/material/filter-options/generateFilterOptionsByCategory";
-import { generateFilterOptionsBySkillCategories } from "@/actions/material/filter-options/generateFilterOptionsBySkillCategories";
-import generateFilterOptionsBySkillType from "@/actions/material/filter-options/generateFilterOptionsBySkillType";
-import generateIssuerFilterOptions from "@/actions/material/filter-options/generateIssuerFilterOptions";
-import stringToSlug from "@/actions/stringToSlug";
+import checkForArchivedMaterials from "@/lib/actions/material/checkForArchivedMaterials";
+import filterCertificatesByIssuer from "@/lib/actions/material/filter/filterCertificatesByIssuer";
+import filterMaterialByArchivedStatus from "@/lib/actions/material/filter/filterMaterialByArchivedStatus";
+import filterMaterialByCategory from "@/lib/actions/material/filter/filterMaterialByCategory";
+import filterMaterialBySkill from "@/lib/actions/material/filter/filterMaterialBySkill";
+import filterMaterialBySkillCategory from "@/lib/actions/material/filter/filterMaterialBySkillCategory";
+import generateFilterOptionsByCategory from "@/lib/actions/material/filter-options/generateFilterOptionsByCategory";
+import { generateFilterOptionsBySkillCategories } from "@/lib/actions/material/filter-options/generateFilterOptionsBySkillCategories";
+import generateFilterOptionsBySkillType from "@/lib/actions/material/filter-options/generateFilterOptionsBySkillType";
+import generateIssuerFilterOptions from "@/lib/actions/material/filter-options/generateIssuerFilterOptions";
+import stringToSlug from "@/lib/actions/stringToSlug";
 import FilterSection from "@/components/filters/FilterSection";
 import CertificatesList from "@/components/material-lists/CertificatesList";
 import { CERTIFICATES_PAGE } from "@/constants/pages";

@@ -8,7 +8,7 @@ export default defineConfig({
     globals: true,
     include: [
       "__tests__/**/*.test.{ts,tsx}",
-      "actions/**/*.test.{ts,tsx}",
+      "lib/actions/**/*.test.{ts,tsx}",
       "tests/**/*.test.{ts,tsx}",
     ],
     coverage: {
