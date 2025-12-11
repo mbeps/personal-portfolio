@@ -11,7 +11,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { RiSearchLine } from "react-icons/ri";
 
-import findCourseKeyForModule from "@/lib/actions/material/course/findCourseKeyForModule";
+import findCourseKeyForModule from "@/lib/material/course/findCourseKeyForModule";
 import NAV_ITEMS, {
   BLOG_PAGE,
   CERTIFICATES_PAGE,

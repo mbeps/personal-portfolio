@@ -1,4 +1,4 @@
-import addNestedSkillsMaterialList from "@/lib/actions/material/addNestedSkillsMaterialList";
+import addNestedSkillsMaterialList from "@/lib/material/addNestedSkillsMaterialList";
 import CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
 import ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
 import ModuleInterface from "@/database/modules/ModuleInterface";

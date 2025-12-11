@@ -1,5 +1,5 @@
 /// <reference types="vitest/globals" />
-import updateRolesWithExperienceTime from "@/lib/actions/material/role/updateRolesWithExperienceTime";
+import updateRolesWithExperienceTime from "@/lib/material/role/updateRolesWithExperienceTime";
 import CompanyDatabaseKeys from "@/database/companies/CompanyDatabaseKeys";
 import type RoleInterface from "@/database/roles/RoleInterface";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
@@ -48,9 +48,7 @@ describe("updateRolesWithExperienceTime", () => {
     const updatedRoles = updateRolesWithExperienceTime(rolesMap);
 
     expect(updatedRoles.softwareEngineer.timeInRole).toBe("1 year");
-    expect(updatedRoles.seniorEngineer.timeInRole).toBe(
-      "2 years and 2 months"
-    );
+    expect(updatedRoles.seniorEngineer.timeInRole).toBe("2 years and 2 months");
     expect(updatedRoles).not.toHaveProperty("inherited");
   });
 });

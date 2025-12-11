@@ -19,7 +19,7 @@ import {
 } from "@/components/shadcn/ui/accordion";
 import SearchFilter from "@/interfaces/filters/SearchFilter";
 import ArchiveFilter from "@/interfaces/filters/ArchiveFilter";
-import generateUrl from "@/lib/actions/generateUrl";
+import generateUrl from "@/lib/generateUrl";
 import { useRouter } from "next/navigation";
 import { MdOutlineManageSearch } from "react-icons/md";
 

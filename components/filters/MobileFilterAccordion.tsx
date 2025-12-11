@@ -1,6 +1,6 @@
 "use client";
 
-import generateUrl from "@/lib/actions/generateUrl";
+import generateUrl from "@/lib/generateUrl";
 import {
   Accordion,
   AccordionContent,

@@ -1,4 +1,4 @@
-import generateUrl from "@/lib/actions/generateUrl";
+import generateUrl from "@/lib/generateUrl";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import { describe, expect, test } from "vitest";
 

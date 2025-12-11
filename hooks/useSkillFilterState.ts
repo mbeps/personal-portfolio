@@ -1,6 +1,4 @@
-import groupSkills, {
-  GroupByOptions,
-} from "@/lib/actions/skills/group/groupSkills";
+import groupSkills, { GroupByOptions } from "@/lib/skills/group/groupSkills";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";

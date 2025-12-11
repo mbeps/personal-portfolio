@@ -1,7 +1,7 @@
 import Reader from "@/components/reader/Reader";
 import LanguageSection from "./LanguageSection";
 import TechnologiesSection from "./TechnologiesSection";
-import getMarkdownFromFileSystem from "@/lib/actions/file-system/getMarkdownFromFileSystem";
+import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
 import Link from "next/link";
 import { HiArrowDown } from "react-icons/hi"; // Import the arrow icon
 import NextSectionButton from "@/components/ui/NextSectionButton";

@@ -1,4 +1,4 @@
-import buildSkillTableGroups from "@/lib/actions/skills/group/buildSkillTableGroups";
+import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
 import SkillTableSection from "@/components/skills/SkillTableSection";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";

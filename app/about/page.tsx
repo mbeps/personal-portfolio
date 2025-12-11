@@ -1,4 +1,4 @@
-import getMarkdownFromFileSystem from "@/lib/actions/file-system/getMarkdownFromFileSystem";
+import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
 import MaterialList from "@/components/material-lists/MaterialList";
 import Reader from "@/components/reader/Reader";
 import Socials from "@/components/socials/Socials";

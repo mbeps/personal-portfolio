@@ -1,5 +1,5 @@
 /// <reference types="vitest/globals" />
-import isSkillAssociatedWithMaterial from "@/lib/actions/material/isSkillAssociatedWithMaterial";
+import isSkillAssociatedWithMaterial from "@/lib/material/isSkillAssociatedWithMaterial";
 import { skillUsageMap } from "@/database/materials/MaterialDatabaseMap";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import { describe, expect, test, vi } from "vitest";

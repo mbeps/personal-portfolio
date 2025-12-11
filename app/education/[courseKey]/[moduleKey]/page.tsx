@@ -1,4 +1,4 @@
-import buildSkillTableGroups from "@/lib/actions/skills/group/buildSkillTableGroups";
+import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
 import MaterialList from "@/components/material-lists/MaterialList";
 import SkillTableSection from "@/components/skills/SkillTableSection";
 import StringList from "@/components/text/StringList";

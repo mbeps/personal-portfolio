@@ -1,5 +1,5 @@
 /// <reference types="vitest/globals" />
-import groupByCategory from "@/lib/actions/skills/group/groupByCategory";
+import groupByCategory from "@/lib/skills/group/groupByCategory";
 import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
 import type SkillInterface from "@/database/skills/SkillInterface";

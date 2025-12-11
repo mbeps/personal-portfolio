@@ -1,6 +1,6 @@
 "use client";
 
-import skillHasMaterial from "@/lib/actions/material/skillHasMaterial";
+import skillHasMaterial from "@/lib/material/skillHasMaterial";
 import FilterSection from "@/components/filters/FilterSection";
 import SkillTag from "@/components/tags/SkillTag";
 import { SKILL_PAGE } from "@/constants/pages";

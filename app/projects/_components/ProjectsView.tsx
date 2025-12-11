@@ -1,15 +1,15 @@
 "use client";
 
-import checkForArchivedMaterials from "@/lib/actions/material/checkForArchivedMaterials";
-import filterMaterialByArchivedStatus from "@/lib/actions/material/filter/filterMaterialByArchivedStatus";
-import filterMaterialByCategory from "@/lib/actions/material/filter/filterMaterialByCategory";
-import filterMaterialBySkill from "@/lib/actions/material/filter/filterMaterialBySkill";
-import filterMaterialBySkillCategory from "@/lib/actions/material/filter/filterMaterialBySkillCategory";
-import generateFilterOptionsByCategory from "@/lib/actions/material/filter-options/generateFilterOptionsByCategory";
-import { generateFilterOptionsBySkillCategories } from "@/lib/actions/material/filter-options/generateFilterOptionsBySkillCategories";
-import generateFilterOptionsBySkillType from "@/lib/actions/material/filter-options/generateFilterOptionsBySkillType";
-import generateFilterOptionsForProgrammingLanguages from "@/lib/actions/material/filter-options/generateFilterOptionsForProgrammingLanguages";
-import stringToSlug from "@/lib/actions/stringToSlug";
+import checkForArchivedMaterials from "@/lib/material/checkForArchivedMaterials";
+import filterMaterialByArchivedStatus from "@/lib/material/filter/filterMaterialByArchivedStatus";
+import filterMaterialByCategory from "@/lib/material/filter/filterMaterialByCategory";
+import filterMaterialBySkill from "@/lib/material/filter/filterMaterialBySkill";
+import filterMaterialBySkillCategory from "@/lib/material/filter/filterMaterialBySkillCategory";
+import generateFilterOptionsByCategory from "@/lib/material/filter-options/generateFilterOptionsByCategory";
+import { generateFilterOptionsBySkillCategories } from "@/lib/material/filter-options/generateFilterOptionsBySkillCategories";
+import generateFilterOptionsBySkillType from "@/lib/material/filter-options/generateFilterOptionsBySkillType";
+import generateFilterOptionsForProgrammingLanguages from "@/lib/material/filter-options/generateFilterOptionsForProgrammingLanguages";
+import stringToSlug from "@/lib/stringToSlug";
 import FilterSection from "@/components/filters/FilterSection";
 import ProjectsList from "@/components/material-lists/ProjectsList";
 import { PROJECTS_PAGE } from "@/constants/pages";
@@ -21,8 +21,8 @@ import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
 import ProjectInterface from "@/database/projects/ProjectInterface";
 import React from "react";
 import { usePathname } from "next/navigation";
-import filterProjectsByType from "@/lib/actions/material/filter/filterProjectsByType";
-import generateFilterOptionsByType from "@/lib/actions/material/filter-options/generateFilterOptionsByType";
+import filterProjectsByType from "@/lib/material/filter/filterProjectsByType";
+import generateFilterOptionsByType from "@/lib/material/filter-options/generateFilterOptionsByType";
 import useMaterialFilterState from "@/hooks/useMaterialFilterState";
 
 /**
@@ -82,11 +82,10 @@ const ProjectsView: React.FC = () => {
       {
         sectionName: "Programming Language",
         urlParam: languageParamName,
-        options:
-          generateFilterOptionsForProgrammingLanguages<ProjectInterface>(
-            projectDatabaseMap,
-            skillDatabaseMap
-          ),
+        options: generateFilterOptionsForProgrammingLanguages<ProjectInterface>(
+          projectDatabaseMap,
+          skillDatabaseMap
+        ),
         applyFilter: (value, keys) =>
           filterMaterialBySkill<ProjectInterface>(
             value as SkillDatabaseKeys,

@@ -1,5 +1,5 @@
 /// <reference types="vitest/globals" />
-import aggregateSkillsForCourses from "@/lib/actions/material/course/aggregate/aggregateSkillsForCourses";
+import aggregateSkillsForCourses from "@/lib/material/course/aggregate/aggregateSkillsForCourses";
 import CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
 import type CourseInterface from "@/database/courses/CourseInterface";
 import ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
@@ -45,8 +45,7 @@ describe("aggregateSkillsForCourses", () => {
     };
 
     const result = aggregateSkillsForCourses(coursesDatabase, modulesDatabase);
-    const aggregatedCourse =
-      result[CourseDatabaseKeys.RHUL_ComputerScience];
+    const aggregatedCourse = result[CourseDatabaseKeys.RHUL_ComputerScience];
 
     expect(aggregatedCourse.skills).toEqual([
       SkillDatabaseKeys.Python,

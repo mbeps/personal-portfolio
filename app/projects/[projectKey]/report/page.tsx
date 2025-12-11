@@ -1,5 +1,5 @@
-import getMarkdownFromFileSystem from "@/lib/actions/file-system/getMarkdownFromFileSystem";
-import processMarkdownImages from "@/lib/actions/processMarkdownImages";
+import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
+import processMarkdownImages from "@/lib/processMarkdownImages";
 import SpecialReader from "@/components/reader/SpecialReader";
 import { PROJECTS_PAGE } from "@/constants/pages";
 import projectDatabaseMap from "@/database/projects/ProjectDatabaseMap";

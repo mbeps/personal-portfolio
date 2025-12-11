@@ -1,5 +1,5 @@
 /// <reference types="vitest/globals" />
-import checkForArchivedMaterials from "@/lib/actions/material/checkForArchivedMaterials";
+import checkForArchivedMaterials from "@/lib/material/checkForArchivedMaterials";
 import type MaterialInterface from "@/database/materials/MaterialInterface";
 import type Database from "@/interfaces/Database";
 import { describe, expect, test } from "vitest";

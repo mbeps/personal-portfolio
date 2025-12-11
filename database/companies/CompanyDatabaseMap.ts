@@ -1,4 +1,4 @@
-import addCompanyThumbnail from "@/lib/actions/material/experience/addCompanyThumbnail";
+import addCompanyThumbnail from "@/lib/material/experience/addCompanyThumbnail";
 import CompanyInterface from "@/database/companies/CompanyInterface";
 import RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
 import Database from "@/interfaces/Database";

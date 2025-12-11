@@ -1,6 +1,6 @@
 /// <reference types="vitest/globals" />
-import skillHasMaterial from "@/lib/actions/material/skillHasMaterial";
-import countMaterialsBySkill from "@/lib/actions/material/countMaterialsBySkill";
+import skillHasMaterial from "@/lib/material/skillHasMaterial";
+import countMaterialsBySkill from "@/lib/material/countMaterialsBySkill";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import { describe, expect, test, vi } from "vitest";
 

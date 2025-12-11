@@ -1,4 +1,4 @@
-import stringToSlug from "@/lib/actions/stringToSlug";
+import stringToSlug from "@/lib/stringToSlug";
 import RoleInterface from "@/database/roles/RoleInterface";
 import ExperienceTypeEnum from "@/enums/experience/ExperienceTypeEnum";
 import Database from "@/interfaces/Database";

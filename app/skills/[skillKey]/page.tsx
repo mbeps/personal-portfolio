@@ -1,4 +1,4 @@
-import filterMaterialBySkill from "@/lib/actions/material/filter/filterMaterialBySkill";
+import filterMaterialBySkill from "@/lib/material/filter/filterMaterialBySkill";
 import MaterialList from "@/components/material-lists/MaterialList";
 import PageDescription from "@/components/ui/PageDescription";
 import developerName from "@/constants/developerName";

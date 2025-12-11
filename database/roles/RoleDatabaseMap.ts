@@ -1,4 +1,4 @@
-import updateRolesWithExperienceTime from "@/lib/actions/material/role/updateRolesWithExperienceTime";
+import updateRolesWithExperienceTime from "@/lib/material/role/updateRolesWithExperienceTime";
 import ShortDate from "@/class/ShortDate";
 import CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
 import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";

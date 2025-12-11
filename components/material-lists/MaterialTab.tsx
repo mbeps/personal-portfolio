@@ -1,6 +1,6 @@
 "use client";
 
-import groupMaterialsByMaterialType from "@/lib/actions/material/group/groupMaterialsByMaterialType";
+import groupMaterialsByMaterialType from "@/lib/material/group/groupMaterialsByMaterialType";
 import BlogsList from "@/components/material-lists/BlogsList";
 import CertificatesList from "@/components/material-lists/CertificatesList";
 import ModuleList from "@/components/material-lists/ModuleList";
