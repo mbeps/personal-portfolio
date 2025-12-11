@@ -1,4 +1,4 @@
-import MaterialInterface from "@/database/Materials/MaterialInterface";
+import MaterialInterface from "@/database/materials/MaterialInterface";
 import Database from "@/interfaces/Database";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 

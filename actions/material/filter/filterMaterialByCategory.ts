@@ -1,5 +1,5 @@
 import stringToSlug from "@/actions/stringToSlug";
-import MaterialInterface from "@/database/Materials/MaterialInterface";
+import MaterialInterface from "@/database/materials/MaterialInterface";
 import Database from "@/interfaces/Database";
 
 /**

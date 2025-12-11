@@ -1,10 +1,10 @@
-import PageDescription from "@/components/UI/PageDescription";
+import PageDescription from "@/components/ui/PageDescription";
 import developerName from "@/constants/developerName";
 import { CERTIFICATES_PAGE } from "@/constants/pages";
-import certificateDatabaseMap from "@/database/Certificates/CertificateDatabaseMap";
+import certificateDatabaseMap from "@/database/certificates/CertificateDatabaseMap";
 import { Metadata } from "next";
 import React from "react";
-import CertificatesView from "./components/CertificatesView";
+import CertificatesView from "./_components/CertificatesView";
 
 /**
  * Generates the metadata for the certificates page.

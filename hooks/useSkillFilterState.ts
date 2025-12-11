@@ -1,13 +1,13 @@
 import groupSkills, {
   GroupByOptions,
 } from "@/actions/skills/group/groupSkills";
-import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
+import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
+import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
-import useFuseSkillSearch from "@/hooks/useFuseSearch/useFuseSkillSearch";
+import useFuseSkillSearch from "@/hooks/use-fuse-search/useFuseSkillSearch";
 import { ReadonlyURLSearchParams, useSearchParams } from "next/navigation";
 import { useMemo } from "react";
 

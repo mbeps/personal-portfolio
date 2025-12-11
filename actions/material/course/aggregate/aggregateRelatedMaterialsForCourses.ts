@@ -1,6 +1,6 @@
-import CourseInterface from "@/database/Courses/CourseInterface";
-import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
-import ModuleInterface from "@/database/Modules/ModuleInterface";
+import CourseInterface from "@/database/courses/CourseInterface";
+import ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
+import ModuleInterface from "@/database/modules/ModuleInterface";
 import Database from "@/interfaces/Database";
 
 /**

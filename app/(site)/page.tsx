@@ -3,9 +3,9 @@ import developerName from "@/constants/developerName";
 import { HOME_PAGE } from "@/constants/pages";
 import subtitles from "@/constants/subtitles";
 import type { Metadata } from "next";
-import AboutSection from "./components/AboutSection/AboutSection";
-import HeroSection from "./components/HeroSection";
-import ProjectsSection from "./components/ProjectSection";
+import AboutSection from "./_components/AboutSection/AboutSection";
+import HeroSection from "./_components/HeroSection";
+import ProjectsSection from "./_components/ProjectSection";
 
 const aboutContent: string | undefined = getMarkdownFromFileSystem(
   `public/about/short.md`

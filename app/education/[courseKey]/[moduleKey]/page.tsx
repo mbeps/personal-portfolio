@@ -1,10 +1,10 @@
 import buildSkillTableGroups from "@/actions/skills/group/buildSkillTableGroups";
-import MaterialList from "@/components/MaterialLists/MaterialList";
-import SkillTableSection from "@/components/Skills/SkillTableSection";
-import StringList from "@/components/Text/StringList";
+import MaterialList from "@/components/material-lists/MaterialList";
+import SkillTableSection from "@/components/skills/SkillTableSection";
+import StringList from "@/components/text/StringList";
 import DynamicBreadcrumb, {
   BreadcrumbPair,
-} from "@/components/UI/DynamicBreadcrumb";
+} from "@/components/ui/DynamicBreadcrumb";
 import {
   Card,
   CardContent,
@@ -13,11 +13,11 @@ import {
 } from "@/components/shadcn/ui/card";
 import developerName from "@/constants/developerName";
 import { EDUCATION_PAGE, HOME_PAGE } from "@/constants/pages";
-import courseDatabaseMap from "@/database/Courses/CourseDatabaseMap";
-import CourseInterface from "@/database/Courses/CourseInterface";
-import moduleDatabaseMap from "@/database/Modules/ModuleDatabaseMap";
-import ModuleInterface from "@/database/Modules/ModuleInterface";
-import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
+import courseDatabaseMap from "@/database/courses/CourseDatabaseMap";
+import CourseInterface from "@/database/courses/CourseInterface";
+import moduleDatabaseMap from "@/database/modules/ModuleDatabaseMap";
+import ModuleInterface from "@/database/modules/ModuleInterface";
+import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";

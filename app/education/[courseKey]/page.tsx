@@ -1,11 +1,11 @@
 import filterMaterialByArchivedStatus from "@/actions/material/filter/filterMaterialByArchivedStatus";
 import groupMaterialsByCategory from "@/actions/material/group/groupMaterialsByCategory";
 import buildSkillTableGroups from "@/actions/skills/group/buildSkillTableGroups";
-import { ArchiveToggle } from "@/components/Filters/ArchiveToggle";
-import MaterialList from "@/components/MaterialLists/MaterialList";
-import SkillTableSection from "@/components/Skills/SkillTableSection";
-import Tag from "@/components/Tags/Tag";
-import Grid from "@/components/UI/Grid";
+import { ArchiveToggle } from "@/components/filters/ArchiveToggle";
+import MaterialList from "@/components/material-lists/MaterialList";
+import SkillTableSection from "@/components/skills/SkillTableSection";
+import Tag from "@/components/tags/Tag";
+import Grid from "@/components/ui/Grid";
 import {
   Accordion,
   AccordionContent,
@@ -21,11 +21,11 @@ import {
 } from "@/components/shadcn/ui/card";
 import developerName from "@/constants/developerName";
 import { EDUCATION_PAGE } from "@/constants/pages";
-import courseDatabaseMap from "@/database/Courses/CourseDatabaseMap";
-import CourseInterface from "@/database/Courses/CourseInterface";
-import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
-import moduleDatabaseMap from "@/database/Modules/ModuleDatabaseMap";
-import ModuleInterface from "@/database/Modules/ModuleInterface";
+import courseDatabaseMap from "@/database/courses/CourseDatabaseMap";
+import CourseInterface from "@/database/courses/CourseInterface";
+import ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
+import moduleDatabaseMap from "@/database/modules/ModuleDatabaseMap";
+import ModuleInterface from "@/database/modules/ModuleInterface";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import { Metadata, ResolvingMetadata } from "next";

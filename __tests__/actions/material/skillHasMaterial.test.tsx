@@ -1,7 +1,7 @@
 /// <reference types="vitest/globals" />
 import skillHasMaterial from "@/actions/material/skillHasMaterial";
 import countMaterialsBySkill from "@/actions/material/countMaterialsBySkill";
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import { describe, expect, test, vi } from "vitest";
 
 vi.mock("@/actions/material/countMaterialsBySkill");

@@ -1,5 +1,5 @@
-import Grid from "@/components/UI/Grid";
-import PageNavigationItem from "@/components/UI/PageNavigationItem";
+import Grid from "@/components/ui/Grid";
+import PageNavigationItem from "@/components/ui/PageNavigationItem";
 import developerName from "@/constants/developerName";
 import NAV_ITEMS, { HOME_PAGE, MORE_PAGE } from "@/constants/pages";
 import NavigationItemInterface from "@/interfaces/NavigationItemInterface";

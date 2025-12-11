@@ -1,19 +1,19 @@
 import filterMaterialBySkill from "@/actions/material/filter/filterMaterialBySkill";
-import MaterialList from "@/components/MaterialLists/MaterialList";
-import PageDescription from "@/components/UI/PageDescription";
+import MaterialList from "@/components/material-lists/MaterialList";
+import PageDescription from "@/components/ui/PageDescription";
 import developerName from "@/constants/developerName";
 import materialDatabaseMap, {
   materialKeys,
-} from "@/database/Materials/MaterialDatabaseMap";
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+} from "@/database/materials/MaterialDatabaseMap";
+import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import skillDatabaseMap, {
   skillDatabaseKeys,
-} from "@/database/Skills/SkillDatabaseMap";
-import SkillInterface from "@/database/Skills/SkillInterface";
+} from "@/database/skills/SkillDatabaseMap";
+import SkillInterface from "@/database/skills/SkillInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import React from "react";
-import RelatedSkillsSection from "./components/RelatedSkillsSection";
+import RelatedSkillsSection from "./_components/RelatedSkillsSection";
 
 type Params = Promise<{ skillKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;

@@ -1,9 +1,9 @@
-import PageDescription from "@/components/UI/PageDescription";
+import PageDescription from "@/components/ui/PageDescription";
 import developerName from "@/constants/developerName";
 import { BLOG_PAGE } from "@/constants/pages";
 import type { Metadata } from "next";
-import { BlogsView } from "./components/BlogsView";
-import blogsDatabaseMap from "@/database/Blogs/BlogsDatabaseMap";
+import { BlogsView } from "./_components/BlogsView";
+import blogsDatabaseMap from "@/database/blogs/BlogsDatabaseMap";
 
 /**
  * Generates the metadata for the blog page.

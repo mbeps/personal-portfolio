@@ -1,6 +1,6 @@
 import stringToSlug from "@/actions/stringToSlug";
-import RoleInterface from "@/database/Roles/RoleInterface";
-import ExperienceTypeEnum from "@/enums/Experience/ExperienceTypeEnum";
+import RoleInterface from "@/database/roles/RoleInterface";
+import ExperienceTypeEnum from "@/enums/experience/ExperienceTypeEnum";
 import Database from "@/interfaces/Database";
 
 /**

@@ -1,8 +1,8 @@
-import MaterialInterface from "@/database/Materials/MaterialInterface";
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import SkillInterface from "@/database/Skills/SkillInterface";
-import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
-import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
+import MaterialInterface from "@/database/materials/MaterialInterface";
+import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import SkillInterface from "@/database/skills/SkillInterface";
+import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
+import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
 import Database from "@/interfaces/Database";
 
 /**

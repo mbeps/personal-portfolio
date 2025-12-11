@@ -1,5 +1,5 @@
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import { skillUsageMap } from "@/database/Materials/MaterialDatabaseMap";
+import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import { skillUsageMap } from "@/database/materials/MaterialDatabaseMap";
 
 /**
  * Answers whether a skill key appears anywhere in the aggregated portfolio so `SkillTag` can decide if it should become a link.

@@ -1,5 +1,5 @@
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import { skillUsageMap } from "@/database/Materials/MaterialDatabaseMap";
+import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import { skillUsageMap } from "@/database/materials/MaterialDatabaseMap";
 
 /**
  * Reads the aggregated skill usage counts so we can surface totals on skill pages without recalculating on the fly.

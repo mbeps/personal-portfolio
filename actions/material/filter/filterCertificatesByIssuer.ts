@@ -1,5 +1,5 @@
 import stringToSlug from "@/actions/stringToSlug";
-import CertificateInterface from "@/database/Certificates/CertificateInterface";
+import CertificateInterface from "@/database/certificates/CertificateInterface";
 import Database from "@/interfaces/Database";
 
 /**

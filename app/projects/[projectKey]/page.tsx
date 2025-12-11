@@ -5,11 +5,11 @@ import filterSkillsByCategory, {
   filterSkillSlugsExcludingCategory,
 } from "@/actions/skills/filter/filterSkillsByCategory";
 import buildSkillTableGroups from "@/actions/skills/group/buildSkillTableGroups";
-import Gallery from "@/components/Gallery/Gallery";
-import MaterialList from "@/components/MaterialLists/MaterialList";
-import Reader from "@/components/Reader/Reader";
-import SkillTableSection from "@/components/Skills/SkillTableSection";
-import SkillTag from "@/components/Tags/SkillTag";
+import Gallery from "@/components/gallery/Gallery";
+import MaterialList from "@/components/material-lists/MaterialList";
+import Reader from "@/components/reader/Reader";
+import SkillTableSection from "@/components/skills/SkillTableSection";
+import SkillTag from "@/components/tags/SkillTag";
 import {
   Accordion,
   AccordionContent,
@@ -25,11 +25,11 @@ import {
 } from "@/components/shadcn/ui/card";
 import developerName from "@/constants/developerName";
 import { PROJECTS_PAGE } from "@/constants/pages";
-import projectDatabaseMap from "@/database/Projects/ProjectDatabaseMap";
-import ProjectInterface from "@/database/Projects/ProjectInterface";
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
-import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
+import projectDatabaseMap from "@/database/projects/ProjectDatabaseMap";
+import ProjectInterface from "@/database/projects/ProjectInterface";
+import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
+import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";

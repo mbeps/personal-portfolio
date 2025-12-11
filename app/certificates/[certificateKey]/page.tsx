@@ -1,8 +1,8 @@
 import buildSkillTableGroups from "@/actions/skills/group/buildSkillTableGroups";
-import MaterialList from "@/components/MaterialLists/MaterialList";
-import SkillTableSection from "@/components/Skills/SkillTableSection";
-import Tag from "@/components/Tags/Tag";
-import StringList from "@/components/Text/StringList";
+import MaterialList from "@/components/material-lists/MaterialList";
+import SkillTableSection from "@/components/skills/SkillTableSection";
+import Tag from "@/components/tags/Tag";
+import StringList from "@/components/text/StringList";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
 import {
@@ -13,8 +13,8 @@ import {
 } from "@/components/shadcn/ui/card";
 import developerName from "@/constants/developerName";
 import { CERTIFICATES_PAGE } from "@/constants/pages";
-import certificateDatabaseMap from "@/database/Certificates/CertificateDatabaseMap";
-import CertificateInterface from "@/database/Certificates/CertificateInterface";
+import certificateDatabaseMap from "@/database/certificates/CertificateDatabaseMap";
+import CertificateInterface from "@/database/certificates/CertificateInterface";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";

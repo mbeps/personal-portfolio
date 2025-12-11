@@ -1,9 +1,9 @@
-import PageDescription from "@/components/UI/PageDescription";
+import PageDescription from "@/components/ui/PageDescription";
 import developerName from "@/constants/developerName";
 import { PROJECTS_PAGE } from "@/constants/pages";
-import projectDatabaseMap from "@/database/Projects/ProjectDatabaseMap";
+import projectDatabaseMap from "@/database/projects/ProjectDatabaseMap";
 import type { Metadata } from "next";
-import ProjectsView from "./components/ProjectsView";
+import ProjectsView from "./_components/ProjectsView";
 
 /**
  * Generates the metadata for the project page.

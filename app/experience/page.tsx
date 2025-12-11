@@ -1,10 +1,10 @@
-import PageDescription from "@/components/UI/PageDescription";
+import PageDescription from "@/components/ui/PageDescription";
 import developerName from "@/constants/developerName";
 import { EXPERIENCE_PAGE } from "@/constants/pages";
-import rolesDatabase from "@/database/Roles/RoleDatabaseMap";
+import rolesDatabase from "@/database/roles/RoleDatabaseMap";
 import type { Metadata } from "next";
-import ExperienceView from "./components/ExperienceView";
-import companyDatabaseMap from "@/database/Companies/CompanyDatabaseMap";
+import ExperienceView from "./_components/ExperienceView";
+import companyDatabaseMap from "@/database/companies/CompanyDatabaseMap";
 
 /**
  * Generates the metadata for the work experience page.

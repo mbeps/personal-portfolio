@@ -1,9 +1,9 @@
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
 import processMarkdownImages from "@/actions/processMarkdownImages";
-import SpecialReader from "@/components/Reader/SpecialReader";
+import SpecialReader from "@/components/reader/SpecialReader";
 import { PROJECTS_PAGE } from "@/constants/pages";
-import projectDatabaseMap from "@/database/Projects/ProjectDatabaseMap";
-import ProjectInterface from "@/database/Projects/ProjectInterface";
+import projectDatabaseMap from "@/database/projects/ProjectDatabaseMap";
+import ProjectInterface from "@/database/projects/ProjectInterface";
 import { notFound } from "next/navigation";
 
 // Update the type definitions

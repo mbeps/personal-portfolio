@@ -1,7 +1,7 @@
 import ShortDate from "@/class/ShortDate";
-import RoleDatabaseKeys from "@/database/Roles/RoleDatabaseKeys";
-import rolesDatabase from "@/database/Roles/RoleDatabaseMap";
-import RoleInterface from "@/database/Roles/RoleInterface";
+import RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
+import rolesDatabase from "@/database/roles/RoleDatabaseMap";
+import RoleInterface from "@/database/roles/RoleInterface";
 
 /**
  * Computes the total experience in years from a list of jobs.

@@ -1,10 +1,10 @@
 import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
 import buildSkillTableGroups from "@/actions/skills/group/buildSkillTableGroups";
 import ShortDate from "@/class/ShortDate";
-import MaterialList from "@/components/MaterialLists/MaterialList";
-import Reader from "@/components/Reader/Reader";
-import SkillTableSection from "@/components/Skills/SkillTableSection";
-import DetailsTable from "@/components/UI/DetailsTable";
+import MaterialList from "@/components/material-lists/MaterialList";
+import Reader from "@/components/reader/Reader";
+import SkillTableSection from "@/components/skills/SkillTableSection";
+import DetailsTable from "@/components/ui/DetailsTable";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
 import {
@@ -15,10 +15,10 @@ import {
 } from "@/components/shadcn/ui/card";
 import developerName from "@/constants/developerName";
 import { EXPERIENCE_PAGE } from "@/constants/pages";
-import companyDatabaseMap from "@/database/Companies/CompanyDatabaseMap";
-import CompanyInterface from "@/database/Companies/CompanyInterface";
-import rolesDatabase from "@/database/Roles/RoleDatabaseMap";
-import RoleInterface from "@/database/Roles/RoleInterface";
+import companyDatabaseMap from "@/database/companies/CompanyDatabaseMap";
+import CompanyInterface from "@/database/companies/CompanyInterface";
+import rolesDatabase from "@/database/roles/RoleDatabaseMap";
+import RoleInterface from "@/database/roles/RoleInterface";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import type { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";

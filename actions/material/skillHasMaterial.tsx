@@ -1,4 +1,4 @@
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import countMaterialsBySkill from "./countMaterialsBySkill";
 
 /**

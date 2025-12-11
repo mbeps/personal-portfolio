@@ -1,5 +1,5 @@
-import MaterialInterface from "@/database/Materials/MaterialInterface";
-import MaterialTypeEnum from "@/enums/Material/MaterialTypeEnum";
+import MaterialInterface from "@/database/materials/MaterialInterface";
+import MaterialTypeEnum from "@/enums/material/MaterialTypeEnum";
 import Database from "@/interfaces/Database";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 

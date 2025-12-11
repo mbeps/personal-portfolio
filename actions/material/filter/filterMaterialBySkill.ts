@@ -1,5 +1,5 @@
-import MaterialInterface from "@/database/Materials/MaterialInterface";
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import MaterialInterface from "@/database/materials/MaterialInterface";
+import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import Database from "@/interfaces/Database";
 
 /**

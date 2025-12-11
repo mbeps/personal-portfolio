@@ -1,10 +1,10 @@
-import PageDescription from "@/components/UI/PageDescription";
+import PageDescription from "@/components/ui/PageDescription";
 import developerName from "@/constants/developerName";
 import { SKILL_PAGE } from "@/constants/pages";
 import skillDatabaseMap, {
   skillDatabaseKeys,
-} from "@/database/Skills/SkillDatabaseMap";
-import SkillList from "../../components/MaterialLists/SkillList";
+} from "@/database/skills/SkillDatabaseMap";
+import SkillList from "../../components/material-lists/SkillList";
 
 /**
  * Generates the metadata for the skill page.

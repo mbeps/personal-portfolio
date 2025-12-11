@@ -1,11 +1,11 @@
-import CourseItem from "@/components/MaterialItems/CourseItem";
-import Grid from "@/components/UI/Grid";
-import PageDescription from "@/components/UI/PageDescription";
+import CourseItem from "@/components/material-items/CourseItem";
+import Grid from "@/components/ui/Grid";
+import PageDescription from "@/components/ui/PageDescription";
 import developerName from "@/constants/developerName";
 import { EDUCATION_PAGE } from "@/constants/pages";
 import courseDatabaseMap, {
   courseDatabaseKeys,
-} from "@/database/Courses/CourseDatabaseMap";
+} from "@/database/courses/CourseDatabaseMap";
 import type { Metadata } from "next";
 
 /**

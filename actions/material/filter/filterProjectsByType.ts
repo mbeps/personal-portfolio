@@ -1,5 +1,5 @@
 import stringToSlug from "@/actions/stringToSlug";
-import ProjectInterface from "@/database/Projects/ProjectInterface";
+import ProjectInterface from "@/database/projects/ProjectInterface";
 import Database from "@/interfaces/Database";
 
 /**

@@ -1,5 +1,5 @@
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import SkillInterface from "@/database/Skills/SkillInterface";
+import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import SkillInterface from "@/database/skills/SkillInterface";
 import Database from "@/interfaces/Database";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 

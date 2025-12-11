@@ -1,4 +1,4 @@
-import RoleInterface from "@/database/Roles/RoleInterface";
+import RoleInterface from "@/database/roles/RoleInterface";
 import Database from "@/interfaces/Database";
 
 /**

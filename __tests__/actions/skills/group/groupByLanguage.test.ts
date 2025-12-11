@@ -1,11 +1,11 @@
 /// <reference types="vitest/globals" />
 import groupByLanguage from "@/actions/skills/group/groupByLanguage";
-import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
-import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
-import type SkillInterface from "@/database/Skills/SkillInterface";
+import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
+import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
+import type SkillInterface from "@/database/skills/SkillInterface";
 import type Database from "@/interfaces/Database";
 import { describe, expect, test, vi } from "vitest";
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 
 describe("groupByLanguage", () => {
   const skillsDatabase: Database<SkillInterface> = {

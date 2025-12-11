@@ -1,8 +1,8 @@
 import filterSkillsByType from "@/actions/skills/filter/filterSkillsByType";
 import categoriseAndGroupSkills from "@/actions/skills/group/categoriseAndGroupSkills";
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
-import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
+import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
+import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 
 /**
