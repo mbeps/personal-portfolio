@@ -1,6 +1,6 @@
 "use client";
 
-import { NAVBAR_HEIGHT } from "@/constants/NAVBAR";
+import { NAVBAR_HEIGHT } from "@/constants/navbarHeight";
 import useIsMounted from "@/hooks/useIsMounted";
 import React, { useEffect } from "react";
 import { IoClose } from "react-icons/io5";

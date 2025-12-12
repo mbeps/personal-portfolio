@@ -1,6 +1,6 @@
 "use client";
 
-import { NAVBAR_HEIGHT } from "@/constants/NAVBAR";
+import { NAVBAR_HEIGHT } from "@/constants/navbarHeight";
 import NAV_ITEMS from "@/constants/pages";
 import { useNavbarStore } from "@/hooks/useNavbarStore";
 import { useEffect, useState } from "react";

@@ -1,6 +1,6 @@
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
-import { NAVBAR_HEIGHT } from "@/constants/NAVBAR";
+import { NAVBAR_HEIGHT } from "@/constants/navbarHeight";
 import developerName from "@/constants/developerName";
 import { HOME_PAGE } from "@/constants/pages";
 import subtitles from "@/constants/subtitles";
