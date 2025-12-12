@@ -1,3 +1,5 @@
+import { PROJECTS_PAGE } from "@/constants/pages";
+
 /**
  * Single source for how project thumbnails are resolved so MaterialList, featured sections, and project detail pages share the same asset path.
  *
@@ -5,5 +7,5 @@
  * @returns Cover image path consumed by Next Image components.
  */
 export default function addProjectThumbnail(key: string): string {
-  return `/projects/${key}/cover.png`;
+  return `${PROJECTS_PAGE.path}/${key}/cover.png`;
 }
