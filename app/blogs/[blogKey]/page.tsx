@@ -19,14 +19,12 @@ type Params = Promise<{ blogKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
 /**
- * Generates the metadata for the blog page.
- * This includes the title and description of the page.
- * This is used for SEO purposes.
+ * Builds metadata for a blog detail route so the slug, subtitle, and category surface in the head tags.
+ * Blog keys map to folders under `public/blogs/{blogKey}` or `public/projects/{blogKey}` when the article is a project write-up.
  *
- * @param props The props for the skill page.
- * @param parent The parent metadata that is being resolved.
- * @returns The metadata for the blog page.
- * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ * @param props Params promise provided by Next.
+ * @param parent Parent metadata from the layout chain.
+ * @returns Metadata derived from the blog entry.
  */
 export async function generateMetadata(
   props: { params: Params; searchParams: SearchParams },
@@ -49,14 +47,9 @@ export async function generateMetadata(
 }
 
 /**
- * Generates the metadata for the blogs page.
- * This includes the title and description of the page.
- * This is used for SEO purposes.
+ * Provides every blog key for static generation so markdown files under `public/blogs/{key}` or project folders become routable articles.
  *
- * @param props The props for the skill page.
- * @param parent The parent metadata that is being resolved.
- * @returns The metadata for the blogs page.
- * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ * @returns Params for each blog detail route.
  */
 export const generateStaticParams = async () => {
   return Object.keys(blogsDatabaseMap).map((blogKey) => ({

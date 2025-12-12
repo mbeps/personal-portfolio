@@ -1,8 +1,8 @@
 import fs from "fs";
 
 /**
- * Enumerates static image assets used by galleries so project pages can build media strips without hardcoding filenames.
- * Mirrors the markdown loader strategy, letting empty folders fail silently during local writing sessions.
+ * Enumerates static image assets from folders that mirror route slugs under `public`, letting project and blog pages build galleries from disk.
+ * Mirrors the markdown loader strategy so empty folders fail silently while drafting new posts.
  *
  * @param filePath Directory that may contain project or blog imagery.
  * @returns Collection of image filenames filtered to `.jpg` and `.png`.

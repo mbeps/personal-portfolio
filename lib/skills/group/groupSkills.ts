@@ -9,14 +9,13 @@ import groupByLanguage from "./groupByLanguage";
 import groupBySkillType from "./groupBySkillType";
 
 /**
- * Recursively filters out skills from a list based on certain excluded types and includes related skills by recursively applying the same filtering criteria.
- * It ensures skills already processed are not repeated, to avoid infinite loops.
+ * Recursively filters out skills that sit inside excluded types while preserving related skills, making sure each slug is only processed once to avoid loops.
  *
- * @param skillKeys The keys of the skills to filter
- * @param skillsDatabase The database of all skills to access the skill data
- * @param excludedSkillTypes The skill types to exclude
- * @param processedSkills The set of processed skills to avoid infinite recursion
- * @returns Filtered skill keys which belong to the specified skill type
+ * @param skillKeys Slugs to evaluate.
+ * @param skillsDatabase Skill lookup map.
+ * @param excludedSkillTypes Skill types that should be skipped entirely.
+ * @param processedSkills Tracker used to prevent cycles when a skill links back to previously visited ones.
+ * @returns Filtered skill keys that survive the exclusion rules.
  */
 function recursiveFilter(
   skillKeys: SkillDatabaseKeys[],
@@ -68,11 +67,11 @@ export enum GroupByOptions {
  * Backbone helper for `SkillList`, Language/Technologies modals, and the detail page skill tables.
  * Handles grouping by language, category, or skill type while respecting exclusions (e.g., hide soft skills).
  *
- * @param groupedBy Dimension to group by.
- * @param skillKeys Skills to organize.
- * @param skillsDatabase Full skills map to resolve metadata.
- * @param excludedSkillTypes Optional list of skill types to skip.
- * @returns Array of grouped skill categories ready for display.
+ * @param groupedBy Dimension to group by (language, category, or skill type).
+ * @param skillKeys Skills to organize, usually pre-filtered by search.
+ * @param skillsDatabase Full skills map to resolve metadata and related skills.
+ * @param excludedSkillTypes Optional list of skill types to skip when building groups.
+ * @returns Grouped categories ready for display in tables and modals.
  */
 export default function groupSkills(
   groupedBy: GroupByOptions,

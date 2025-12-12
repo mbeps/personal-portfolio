@@ -1,12 +1,11 @@
 import fs from "fs";
 
 /**
- * Retrieves a list of video filenames from a specified directory.
- * It filters for files with `.mp4` or `.webm` extensions.
- * This function is used to dynamically load video assets from the filesystem.
+ * Pulls video filenames from a directory whose name mirrors the route slug (e.g., `/public/projects/my-app/media`).
+ * Keeps galleries in sync with whatever assets live next to the markdown without hardcoding file lists.
  *
- * @param filePath The absolute or relative path to the directory.
- * @returns An array of video filenames. Returns an empty array on error.
+ * @param filePath Path to the media folder under `public`.
+ * @returns Video filenames limited to `.mp4` and `.webm`, or an empty list when nothing is found.
  */
 export default function getVideosFromFileSystem(filePath: string): string[] {
   try {

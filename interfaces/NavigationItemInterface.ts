@@ -1,17 +1,14 @@
 /**
- * Interface representing a link in the navigation bar.
- * These store the data requires to display and navigate to the main pages in the website.
- * These pages are displayed on the navigation bar.
- *
- * The fields are:
- * - `label`: the label of the navigation item
- * - `path`: the URL path of the navigation item the user will be redirected to
- * - `description`: the description of the page the user will be redirected to for SEO purposes
- * - `isMain`: whether the page is a main page in the website
+ * Describes a navigation entry shown in the shared header so links, SEO metadata, and breadcrumbs stay in sync.
+ * Paths mirror the folder names under `app`, which keeps navigation tied to the underlying route structure.
  */
 export default interface NavigationItemInterface {
+  /** Human readable label shown in the navbar and command palette. */
   label: string;
+  /** Route path that matches the folder under `app`. */
   path: string;
+  /** Short description for metadata and tooltips. */
   description: string;
+  /** Marks top-level destinations that should appear in both desktop and mobile menus. */
   isMain?: boolean;
 }

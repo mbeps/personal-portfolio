@@ -3,21 +3,17 @@ import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
 
 /**
- * Interface for representing a skill.
- * This interface contains the following fields:
- * - `name` which is the name of the skill.
- * - `category` which is the category of the skill.
- * - `relatedSkills` which is a list of related skills or sub-skills.
- * - `isMainSkill` which is a boolean flag to indicate if the skill is a main skill.
- * - `skillType` which is the type of the skill.
- *
- * Because of all this metadata about a skill, materials and other skills can be grouped, sorted and filtered by these fields.
- * For example, it is possible to find all materials related to a specific skill or to find all skills related to a specific category.
+ * Describes a skill used across the portfolio taxonomy so filters, related skill grouping, and public asset folders stay consistent.
  */
 export default interface SkillInterface {
+  /** Display name for the skill. */
   name: string;
+  /** Category that drives grouping and URL slugs. */
   category: SkillCategoriesEnum;
+  /** Optional list of related skill keys for linking technologies to their parent language. */
   relatedSkills?: SkillDatabaseKeys[];
+  /** Marks headline skills that should be surfaced more prominently. */
   isMainSkill?: boolean;
+  /** Type used to distinguish technologies, general technical skills, and soft skills. */
   skillType: SkillTypesEnum;
 }

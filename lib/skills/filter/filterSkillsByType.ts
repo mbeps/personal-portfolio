@@ -4,13 +4,13 @@ import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
 import Database from "@/interfaces/Database";
 
 /**
- * Filters skills which belong to a specific skill type.
- * For example, technologies, technical or soft skills.
+ * Filters skill slugs by type so grouped tables only receive the skills relevant to a specific bucket.
+ * Used before grouping by category to keep titles like “Technologies” aligned with the enum values.
  *
- * @param skillKeys The keys of the skills to filter
- * @param skillsDatabase The database of all skills to access the skill data
- * @param skillType The type of the skill to filter for
- * @returns Filtered skill keys which belong to the specified skill type
+ * @param skillKeys Skill slugs to evaluate.
+ * @param skillsDatabase Map of skills keyed by slug.
+ * @param skillType Type to keep in the result.
+ * @returns Skill keys that match the requested type.
  */
 export default function filterSkillsByType(
   skillKeys: SkillDatabaseKeys[],

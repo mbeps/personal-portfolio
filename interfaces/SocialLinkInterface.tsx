@@ -1,16 +1,13 @@
 import { IconType } from "react-icons";
 
 /**
- * Interface representing social links for example GitHub, LinkedIn, and Email.
- * These store the data required to display and navigate to the social media profiles of the user.
- *
- * The fields are:
- * - `name`: the name of the social media platform
- * - `link`: the URL of the social media profile
- * - `IconComponent`: the icon component of the social media platform to be used in the site
+ * Represents a social link used in the footer and hero sections so contact routes stay consistent across the site.
  */
 export default interface SocialLinkInterface {
+  /** Platform name displayed beside the icon. */
   name: string;
+  /** Destination URL, often matching the icon folder under `public/socials`. */
   link: string;
+  /** Icon renderer from `react-icons` paired with the platform. */
   IconComponent: IconType;
 }

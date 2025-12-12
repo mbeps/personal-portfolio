@@ -3,20 +3,15 @@ import MaterialInterface from "../materials/MaterialInterface";
 import CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
 
 /**
- * Interface representing a university module's metadata.
- * These modules are displayed on the website and show the modules that are part of a course.
- *
- * The fields are:
- * - `learningOutcomes`: the learning outcomes of the module
- * - `score`: the score achieved in the module
- * - `category`: the year group of the module which is one of the categories defined in {@link ModuleYearGroupsEnum}
- * - `parentCourse`: the course to which the module belongs
- *
- * Importantly, because the `UniversityModuleInterface` extends the `MaterialInterface`, it inherits the field `skills` which is an array of `SkillKeysEnum` which is used to represent the skills that are associated to understand the material.
+ * Extends the base material contract for university modules, linking skills and outcomes to the parent course and assets under `public/education/{courseKey}/{moduleKey}`.
  */
 export default interface ModuleInterface extends MaterialInterface {
+  /** Bullet points summarising what the module covered. */
   learningOutcomes: string[];
+  /** Numeric score if available. */
   score?: number;
+  /** Year grouping for the module. */
   category: ModuleYearGroupsEnum;
+  /** Course key used to build routes and locate markdown. */
   parentCourse: CourseDatabaseKeys;
 }

@@ -4,11 +4,11 @@ import Database from "@/interfaces/Database";
 import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
 
 /**
- * Groups the skill according to their skill type.
+ * Groups skills by their type (technology, technical, soft) to support the grouped tables shown on skills and material detail pages.
  *
- * @param skillKeys The keys of the skills to group
- * @param skillsDatabase The database of all skills to access the skill data
- * @returns The skills grouped by their skill type
+ * @param skillKeys Slugs to organise.
+ * @param skillsDatabase Skill lookup map.
+ * @returns Skill groups keyed by skill type.
  */
 export default function groupBySkillType(
   skillKeys: SkillDatabaseKeys[],

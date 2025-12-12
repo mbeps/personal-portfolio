@@ -3,11 +3,11 @@ import SkillInterface from "@/database/skills/SkillInterface";
 import Database from "@/interfaces/Database";
 
 /**
- * Gets the skills database from the given skill keys.
+ * Extracts a lightweight skills map containing only the requested slugs so downstream grouping logic can work with a smaller dataset.
  *
- * @param skillKeys The skill keys to get the skills database from
- * @param skillsDatabase The skills database to get the skills from
- * @returns The skills database from the given skill keys
+ * @param skillKeys Slugs to extract.
+ * @param skillsDatabase Full skills map.
+ * @returns New map scoped to the provided keys.
  */
 export default function getSkillsDatabaseFromKeys(
   skillKeys: SkillDatabaseKeys[],

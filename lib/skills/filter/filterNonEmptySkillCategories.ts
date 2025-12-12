@@ -1,10 +1,10 @@
 import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
 
 /**
- * Filter out empty skill categories from a given list of grouped skill categories.
+ * Drops category buckets that ended up empty so tables avoid rendering blank sections after filtering.
  *
- * @param groupedSkills The grouped skill categories to filter
- * @returns The filtered grouped skill categories without empty categories
+ * @param groupedSkills Grouped categories generated for display.
+ * @returns Grouped categories containing only non-empty buckets.
  */
 export default function filterNonEmptySkillCategories(
   groupedSkills: ListOfCategorisedSkillsByTypeInterface[]

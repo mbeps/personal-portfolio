@@ -42,14 +42,12 @@ type Params = Promise<{ projectKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
 /**
- * Generates the metadata for the project page.
- * This includes the title and description of the page.
- * This is used for SEO purposes.
+ * Builds metadata for a project detail route so the slug, skills, and title flow into the head tags.
+ * Each project’s media folder lives at `public/projects/{projectKey}`, so the slug also drives the images used by the gallery.
  *
- * @param props The props for the project page.
- * @param parent The parent metadata that is being resolved.
- * @returns The metadata for the project page.
- * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ * @param props Params and search params promises supplied by Next.
+ * @param parent Parent metadata from higher layouts.
+ * @returns Metadata derived from the project entry or triggers a 404 when missing.
  */
 export async function generateMetadata(
   props: { params: Params; searchParams: SearchParams },
@@ -80,10 +78,9 @@ export async function generateMetadata(
 }
 
 /**
- * Generates the static paths for the projects.
- * These paths are used to pre-render the project pages.
+ * Supplies every project key to Next for static generation so the folders under `public/projects/{key}` become routable pages.
  *
- * @returns A list of all project keys for static page generation.
+ * @returns All project route params for pre-rendering.
  */
 export const generateStaticParams = async () => {
   return Object.keys(projectDatabaseMap).map((projectKey) => ({
@@ -92,8 +89,8 @@ export const generateStaticParams = async () => {
 };
 
 /**
- * Project detail experience that joins galleries, markdown, skill tables, and related material into one story.
- * Handles case studies with optional reports, features, and cross-linking to keep the material ecosystem interconnected.
+ * Project detail experience that ties the slug to media, markdown, and thumbnails stored under `public/projects/{key}`.
+ * Combines galleries, reports, skill tables, and related material so every route stays connected to the broader portfolio.
  *
  * @param params Dynamic slug for the project entry.
  * @returns Project overview with media, skills, and related work.

@@ -26,14 +26,12 @@ type Params = Promise<{ moduleKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
 /**
- * Generates the metadata for the module page.
- * This includes the title and description of the page.
- * This is used for SEO purposes.
+ * Builds metadata for a module detail page so the slug, course, and learning outcomes flow into the head tags.
+ * Module keys map to folders under `public/education/{courseKey}/{moduleKey}` where markdown and assets live.
  *
- * @param props The props for the module page.
- * @param parent The parent metadata that is being resolved.
- * @returns The metadata for the module page.
- * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ * @param props Params promise resolved by Next.
+ * @param parent Parent metadata from the layout chain.
+ * @returns Metadata derived from the module entry.
  */
 export async function generateMetadata(
   props: { params: Params; searchParams: SearchParams },
@@ -56,10 +54,9 @@ export async function generateMetadata(
 }
 
 /**
- * Generates the static paths for the modules.
- * These are then used to pre-render the module pages.
+ * Provides every module key for static generation so module folders under `public/education` become routable.
  *
- * @returns A list of all the keys for the static pages that need to be generated.
+ * @returns Params for each module detail page.
  */
 export const generateStaticParams = async () => {
   return Object.keys(moduleDatabaseMap).map((moduleKey) => ({

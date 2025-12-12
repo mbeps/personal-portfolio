@@ -2,27 +2,23 @@ import ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
 import MaterialInterface from "../materials/MaterialInterface";
 
 /**
- * Interface representing a university course's metadata.
- * These courses are displayed on the website and show the courses that are part of a university degree.
- *
- * The fields are:
- * - `grade`: the grade achieved in the course
- * - `score`: the score achieved in the course
- * - `modules`: the modules that are part of the course
- * - `certificate`: the certificate achieved in the course
- * - `startYear`: the year the course started
- * - `endYear`: the year the course ended
- * - `university`: the university where the course was studied
- *
- * Importantly, because the `UniversityCourseInterface` extends the `MaterialInterface`, it inherits the field `skills` which is an array of `SkillKeysEnum` which is used to represent the skills that are associated to understand the material.
+ * Extends the base material contract for university courses so modules, skills, and scores can be rolled up and displayed together.
  */
 export default interface CourseInterface extends MaterialInterface {
+  /** Overall grade for the course. */
   grade?: string;
+  /** Numeric score if provided by the institution. */
   score?: number;
+  /** Module keys that live under `public/education/{courseKey}/{moduleKey}` for assets and markdown. */
   modules: ModuleDatabaseKeys[];
+  /** External certificate identifier when issued. */
   certificate?: string;
+  /** Year the course started. */
   startYear: number;
+  /** Year the course ended. */
   endYear: number;
+  /** Name of the university delivering the course. */
   university: string;
+  /** Path to the university logo stored alongside education assets. */
   logo: string;
 }

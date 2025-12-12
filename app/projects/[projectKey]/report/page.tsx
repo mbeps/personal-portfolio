@@ -15,6 +15,7 @@ type PageProps = {
 
 /**
  * Dedicated route for long-form project reports so SpecialReader can render table-of-contents friendly markdown outside the main project page.
+ * The slug maps directly to `/public/projects/{projectKey}/blog.md` where the markdown and related images live.
  *
  * @param params Project slug whose `/blog.md` acts as the report source.
  * @returns Report view with backlink to the parent project.
@@ -58,10 +59,9 @@ const ProjectReportPage = async ({ params }: PageProps) => {
 };
 
 /**
- * Generates the static paths for the project reports.
- * These paths are used to pre-render the report pages.
+ * Supplies Next with only the project keys that have a `blog.md` under their `public/projects/{key}` folder so report routes are pre-rendered correctly.
  *
- * @returns A list of all project keys that have reports for static page generation.
+ * @returns All report params for static generation.
  */
 export const generateStaticParams = async () => {
   return Object.keys(projectDatabaseMap)

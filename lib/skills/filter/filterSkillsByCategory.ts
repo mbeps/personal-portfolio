@@ -4,13 +4,12 @@ import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
 import Database from "@/interfaces/Database";
 
 /**
- * Filters skills which belong to a specific category.
- * Any skill that belongs to the specific category will be included in the filtered list.
+ * Filters skills by a specific category so pages can isolate programming languages, DevOps tools, or other curated groups.
  *
- * @param skillKeys The keys of the skills to filter
- * @param skillsDatabase The database of all skills to access the skill data
- * @param specificCategory The category to filter
- * @returns The filtered skill keys which belong to the specific category
+ * @param skillKeys Skills to check.
+ * @param skillsDatabase Skill map providing category metadata.
+ * @param specificCategory Category to keep.
+ * @returns Skill keys that belong to the requested category.
  */
 export default function filterSkillsByCategory(
   skillKeys: SkillDatabaseKeys[],

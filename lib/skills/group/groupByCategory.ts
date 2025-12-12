@@ -5,12 +5,12 @@ import Database from "@/interfaces/Database";
 import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
 
 /**
- * Groups the skill according to their category.
- * The order of categories follows the order defined in SkillCategoriesEnum.
+ * Groups skills by category using the enum order so tables stay consistent with the taxonomy shown on the skills landing page.
+ * Keeps empty categories out of the result to avoid blank rows in the modal and skill detail tables.
  *
- * @param skillKeys The keys of the skills to group
- * @param skillsDatabase The database of all skills to access the skill data
- * @returns The skills grouped by their category, in the order defined by SkillCategoriesEnum
+ * @param skillKeys Keys to group, typically already filtered by search.
+ * @param skillsDatabase Map of skills keyed by slug.
+ * @returns Categories with associated skill slugs in enum order.
  */
 export default function groupByCategory(
   skillKeys: SkillDatabaseKeys[],

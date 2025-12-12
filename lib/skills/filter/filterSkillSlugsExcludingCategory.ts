@@ -4,13 +4,12 @@ import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
 import Database from "@/interfaces/Database";
 
 /**
- * Filters out skills which belong to a specific category.
- * Any skill that belongs to the specific category will be excluded from the filtered list.
+ * Removes skills belonging to a given category, handy when a page wants to show stacks without repeating their parent language.
  *
- * @param skillKeys The keys of the skills to filter
- * @param skillsDatabase  The database of all skills to access the skill data
- * @param excludedCategory The category to exclude
- * @returns The filtered skill keys which do not belong to the excluded category
+ * @param skillKeys Slugs to check.
+ * @param skillsDatabase Skill lookup map.
+ * @param excludedCategory Category that should be removed.
+ * @returns Skill keys that are not part of the excluded category.
  */
 export function filterSkillSlugsExcludingCategory(
   skillKeys: SkillDatabaseKeys[],

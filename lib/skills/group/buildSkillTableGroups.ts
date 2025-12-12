@@ -6,14 +6,11 @@ import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
 import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
 
 /**
- * Builds skill table groups for display in SkillTableSection.
- * This centralizes the repeated pattern of filtering skills by type
- * (Technology/Technical/Soft) and categorizing them.
+ * Centralizes how skills are split into Technology, Technical, and Soft buckets before being rendered by `SkillTableSection`.
+ * Shared by project, role, blog, certificate, course, module, and skill detail pages so each route shows matching tables.
  *
- * Used across detail pages: projects, roles, blogs, certificates, courses, modules, skills.
- *
- * @param skillKeys Array of skill keys to group
- * @returns Array of grouped skill categories ready for SkillTableSection
+ * @param skillKeys Skill slugs pulled from the parent entity.
+ * @returns Grouped skill collections ready for the table component.
  */
 export default function buildSkillTableGroups(
   skillKeys: SkillDatabaseKeys[]

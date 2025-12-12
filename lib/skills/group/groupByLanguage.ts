@@ -4,6 +4,14 @@ import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
 import Database from "@/interfaces/Database";
 import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
 
+/**
+ * Groups skills under the programming language they belong to so the language modal and SkillList can show stacks in one cluster.
+ * Falls back to a “No Languages” bucket when a skill has no direct or related programming language, preserving visibility for standalone tools.
+ *
+ * @param skillKeys Slugs selected by search or filtering.
+ * @param skillsDatabase Map of skills keyed by slug.
+ * @returns Skill groups keyed by language name, with a trailing “No Languages” entry when needed.
+ */
 export default function groupByLanguage(
   skillKeys: SkillDatabaseKeys[],
   skillsDatabase: Database<SkillInterface>

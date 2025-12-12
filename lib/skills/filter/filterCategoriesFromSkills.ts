@@ -4,11 +4,11 @@ import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
 import Database from "@/interfaces/Database";
 
 /**
- * Filter out skills that belong to the specified categories.
+ * Filters out skills that fall into ignored categories, useful when building language-first groupings that should hide soft skills.
  *
- * @param skillsDatabase The database of all skills that need to be filtered
- * @param ignoredCategories The categories to ignore
- * @returns The filtered skill keys
+ * @param skillsDatabase Skill map covering the full taxonomy.
+ * @param ignoredCategories Categories that should be excluded entirely.
+ * @returns Skill keys that are not part of the ignored categories.
  */
 export default function filterCategoriesFromSkills(
   skillsDatabase: Database<SkillInterface>,

@@ -9,14 +9,7 @@ import courseDatabaseMap, {
 import type { Metadata } from "next";
 
 /**
- * Generates the metadata for the education page.
- * This includes the title and description of the page.
- * This is used for SEO purposes.
- *
- * @param props The props for the skill page.
- * @param parent The parent metadata that is being resolved.
- * @returns The metadata for the blog page.
- * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ * Static metadata for the education index, sourcing keywords directly from the courses database to match the visible grid.
  */
 export const metadata: Metadata = {
   title: `${developerName} - ${EDUCATION_PAGE.label}`,

@@ -6,16 +6,14 @@ import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCa
 import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
 
 /**
- * Categorise and group skills based on the skill type.
- * It filters the skills, for example technologies, technical skills and soft skills.
- * Then it categorises the filtered skills based on the category and groups them.
- * Finally, it groups the categories and returns the grouped categories.
+ * Filters skills by type and then groups them by category, producing the nested structure consumed by `SkillTableSection`.
+ * Helps every detail page reuse the same grouping logic while keeping titles like “Technologies” or “Soft Skills” aligned with the enum taxonomy.
  *
- * @param skillKeys The keys of the skills to filter and group
- * @param skillsDatabase  The database of all skills to access the skill data
- * @param skillType The type of skill to filter
- * @param title The title of the grouped categories
- * @returns The grouped categories of the filtered skills
+ * @param skillKeys Slugs to filter and group.
+ * @param skillsDatabase Skill lookup map containing categories and type metadata.
+ * @param skillType Type to keep when building the groups.
+ * @param title Display title for the resulting group list.
+ * @returns Group with title plus the category buckets underneath it.
  */
 export default function categoriseAndGroupSkills(
   skillKeys: SkillDatabaseKeys[],

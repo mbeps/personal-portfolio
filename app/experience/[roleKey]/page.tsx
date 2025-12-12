@@ -30,14 +30,12 @@ type Params = Promise<{ roleKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
 /**
- * Generates the metadata for the work experience page.
- * This includes the title and description of the page.
- * This is used for SEO purposes.
+ * Builds metadata for a role detail route so the company, title, and type are exposed in head tags.
+ * Role keys map to folders under `public/roles/{roleKey}` where markdown responsibilities and assets live.
  *
- * @param props The props for the skill page.
- * @param parent The parent metadata that is being resolved.
- * @returns The metadata for the blog page.
- * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ * @param props Params promise supplied by Next.
+ * @param parent Parent metadata from the layout.
+ * @returns Metadata populated from the role entry.
  */
 export async function generateMetadata(
   props: { params: Params; searchParams: SearchParams },
@@ -63,10 +61,9 @@ export async function generateMetadata(
 }
 
 /**
- * Generates the static params for roles.
- * These params are used to pre-render the role pages.
+ * Exposes every role key for static generation so `public/roles/{key}` folders become routable experience pages.
  *
- * @returns A list of all role keys for static page generation.
+ * @returns Params for each role detail route.
  */
 export const generateStaticParams = async () => {
   return Object.keys(rolesDatabase).map((roleKey) => ({

@@ -2,8 +2,8 @@ import matter from "gray-matter";
 import fs from "fs";
 
 /**
- * Shared loader for blog, project report, and about pages so every markdown consumer passes through the same gray-matter parsing.
- * Keeps metadata parsing consistent with `Reader` / `SpecialReader`, and gracefully tolerates missing drafts.
+ * Shared loader for blog posts, project reports, and other markdown files stored under `public` folders named after route segments.
+ * Keeps metadata parsing consistent with `Reader` / `SpecialReader` and tolerates missing drafts during local authoring.
  *
  * @param filePath Absolute path to the markdown asset.
  * @returns Parsed gray-matter payload, or `null` if the asset is missing.

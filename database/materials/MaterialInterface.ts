@@ -1,26 +1,18 @@
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 
 /**
- * Interface representing general material.
- * Other interfaces such as `ProjectInterface` inherit from this interface.
- * This interface is used to represent the data of the material that is displayed on the website.
- *
- * The fields are:
- * - `name`: the name of the material
- * - `skills`: the skills associated with the material
- * - `category`: the category of the material
- * - `archived`: whether the material is archived
- * - `relatedMaterials`: the related materials associated with the material
- *
- * Importantly, the `skills` field is an array of `SkillKeysEnum` which is used to represent the skills that are associated to understand the material.
- * Because there are different types of skills, they can be categorised dynamically by the codebase; for example, technologies, technical knowledge, and soft skills.
- *
- * @requires {@link SkillDatabaseKeys} to represent the skills associated with the material
+ * Base shape for any material shown on the site (projects, roles, blogs, certificates, courses, modules).
+ * Shared fields power the filters, skill tables, and related material lists so each section remains consistent.
  */
 export default interface MaterialInterface {
+  /** Display name shown in cards and headings. */
   name: string;
+  /** Skills referenced by slug, used to build the grouped skill tables. */
   skills: SkillDatabaseKeys[];
+  /** Editorial category used for grouping within lists and folder names under `public`. */
   category: string;
+  /** Marks items hidden by default but discoverable via the archive toggle. */
   archived?: boolean;
+  /** Keys linking to other materials for cross-navigation. */
   relatedMaterials?: string[];
 }

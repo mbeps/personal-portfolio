@@ -1,24 +1,11 @@
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 
 /**
- * Interface representing a category of skills.
- * This interface contains the following fields:
- * - `skillCategoryName` which is the name of the category of skills.
- * - `skills` which is a list of skills (skill keys) that belong to this category.
- *
- * The keys are stored which are then used to reference the skills in the database.
- * For example, the skills can be grouped into programming languages, DevOps, Web Development, etc.
- *
- * @requires {@link SkillDatabaseKeys} to represent the list of skills (identifiers) that are grouped together.
+ * Represents a bucket of skills under a shared category, used by grouped tables across project, role, and skill pages.
  */
 export default interface CategorisedSkillsInterface {
-  /**
-   * Name of the category of skills.
-   * For example: "Programming Languages", "DevOps", "Web Development", etc.
-   */
+  /** Category label such as "Programming Languages" or "DevOps". */
   skillCategoryName: string;
-  /**
-   * List of skills  (by their keys) that belong to this category.
-   */
+  /** Skill keys belonging to this category, matching the database map and public asset folders. */
   skills: SkillDatabaseKeys[];
 }

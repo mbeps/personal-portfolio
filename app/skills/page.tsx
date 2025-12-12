@@ -7,14 +7,7 @@ import skillDatabaseMap, {
 import SkillList from "../../components/material-lists/SkillList";
 
 /**
- * Generates the metadata for the skill page.
- * This includes the title and description of the page.
- * This is used for SEO purposes.
- *
- * @param props The props for the skill page.
- * @param parent The parent metadata that is being resolved.
- * @returns The metadata for the skill page.
- * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ * Static metadata for the skills hub, built from the skill database so keywords mirror the visible directory.
  */
 export const metadata = {
   title: `${developerName} - Skills`,
