@@ -30,9 +30,7 @@ const ProjectsSection = () => {
       <div className="flex flex-col space-y-14 md:space-y-20 mt-6 md:mt-14">
         {displayedProjects.map((slug, idx) => (
           <div key={slug}>
-            {/* SlideUp removed */}
             <ProjectItem projectKey={slug} subtitle={"category"} />
-            {/* SlideUp removed */}
           </div>
         ))}
       </div>

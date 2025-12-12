@@ -1,8 +1,5 @@
 "use client";
 
-import isSkillAssociatedWithMaterial from "@/lib/material/isSkillAssociatedWithMaterial";
-import groupSkills, { GroupByOptions } from "@/lib/skills/group/groupSkills";
-import Tag from "@/components/tags/Tag";
 import { Button } from "@/components/shadcn/ui/button";
 import {
   Dialog,
@@ -27,6 +24,8 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
+import SkillTag from "@/components/tags/SkillTag";
+import Tag from "@/components/tags/Tag";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
 import SkillInterface from "@/database/skills/SkillInterface";
@@ -36,10 +35,11 @@ import { useMediaQuery } from "@/hooks/useMediaQuery";
 import Database from "@/interfaces/Database";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
+import isSkillAssociatedWithMaterial from "@/lib/material/isSkillAssociatedWithMaterial";
+import groupSkills, { GroupByOptions } from "@/lib/skills/group/groupSkills";
 import Link from "next/link";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
-import SkillTag from "@/components/tags/SkillTag";
 
 interface LanguageTagWithModalProps {
   languageIdentifier: SkillDatabaseKeys;

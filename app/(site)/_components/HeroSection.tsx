@@ -1,12 +1,11 @@
+import { Button } from "@/components/shadcn/ui/button";
 import Socials from "@/components/socials/Socials";
 import TextLoop from "@/components/text-loop/TextLoop";
 import NextSectionButton from "@/components/ui/NextSectionButton";
-import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
 import subtitles from "@/constants/subtitles";
 import Image from "next/image";
 import Link from "next/link";
-import { HiArrowDown } from "react-icons/hi";
 
 /**
  * Front page hero that pairs the looping subtitle narrative with socials, CTA buttons, and the profile image.
