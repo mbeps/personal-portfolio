@@ -1,9 +1,7 @@
 import getImagesFromFileSystem from "@/lib/file-system/getImagesFromFileSystem";
 import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
 import getVideosFromFileSystem from "@/lib/file-system/getVideosFromFileSystem";
-import filterSkillsByCategory, {
-  filterSkillSlugsExcludingCategory,
-} from "@/lib/skills/filter/filterSkillsByCategory";
+import filterSkillsByCategory from "@/lib/skills/filter/filterSkillsByCategory";
 import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
 import Gallery from "@/components/gallery/Gallery";
 import MaterialList from "@/components/material-lists/MaterialList";
@@ -30,7 +28,6 @@ import ProjectInterface from "@/database/projects/ProjectInterface";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
 import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
-import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -38,6 +35,8 @@ import React from "react";
 import { BsPlusCircle } from "react-icons/bs";
 import { GrAppsRounded } from "react-icons/gr";
 import { ProjectLinks } from "./_components/ProjectLinks";
+import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
+import { filterSkillSlugsExcludingCategory } from "@/lib/skills/filter/filterSkillSlugsExcludingCategory";
 
 type Params = Promise<{ projectKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
