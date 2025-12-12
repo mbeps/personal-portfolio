@@ -11,7 +11,7 @@ import BlogInterface from "@/database/blogs/BlogInterface";
 import blogsDatabaseMap from "@/database/blogs/BlogsDatabaseMap";
 import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
 import BlogCategoriesEnum from "@/enums/blog/BlogCategoriesEnum";
-import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
+import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -106,7 +106,7 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
     imagePath
   );
 
-  const allGroupedSkills: GroupedSkillsCategoriesInterface[] =
+  const allGroupedSkills: ListOfCategorisedSkillsByTypeInterface[] =
     buildSkillTableGroups(blogData.skills);
 
   return (

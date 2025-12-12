@@ -8,13 +8,13 @@ import {
   TabsTrigger,
 } from "@/components/shadcn/ui/tabs";
 import useIsMounted from "@/hooks/useIsMounted";
-import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
+import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
 import React, { useState } from "react";
 import SkillTable from "./CategorySkillDisplay";
 import filterNonEmptySkillCategories from "@/lib/skills/filter/filterNonEmptySkillCategories";
 
 interface SkillTableSectionProps {
-  allGroupedSkills: GroupedSkillsCategoriesInterface[];
+  allGroupedSkills: ListOfCategorisedSkillsByTypeInterface[];
   maxSkillsPerCategory?: number;
 }
 
@@ -46,7 +46,7 @@ const SkillTableCell: React.FC<SkillTableSectionProps> = ({
   }
 
   // Use the function to get non-empty skill categories
-  const nonEmptySkillCategories: GroupedSkillsCategoriesInterface[] =
+  const nonEmptySkillCategories: ListOfCategorisedSkillsByTypeInterface[] =
     filterNonEmptySkillCategories(allGroupedSkills);
 
   return (

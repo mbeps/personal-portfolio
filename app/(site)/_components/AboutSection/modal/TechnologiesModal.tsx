@@ -28,7 +28,7 @@ import useIsMounted from "@/hooks/useIsMounted";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import Database from "@/interfaces/Database";
 import FilterOption from "@/interfaces/filters/FilterOption";
-import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
+import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
 import Link from "next/link";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
@@ -100,7 +100,7 @@ const TechnologiesModal: React.FC = () => {
   /**
    * Skill groups which are then displayed.
    */
-  const groupedSkills: SkillsCategoryInterface[] = groupSkills(
+  const groupedSkills: CategorisedSkillsInterface[] = groupSkills(
     groupedBy as GroupByOptions,
     skillsToDisplay,
     skillDatabaseMap,

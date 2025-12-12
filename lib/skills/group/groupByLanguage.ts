@@ -2,12 +2,12 @@ import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import SkillInterface from "@/database/skills/SkillInterface";
 import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
 import Database from "@/interfaces/Database";
-import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
+import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
 
 export default function groupByLanguage(
   skillKeys: SkillDatabaseKeys[],
   skillsDatabase: Database<SkillInterface>
-): SkillsCategoryInterface[] {
+): CategorisedSkillsInterface[] {
   const groupedSkills: { [skillCategoryName: string]: SkillDatabaseKeys[] } =
     {};
   const noLanguageSkills: SkillDatabaseKeys[] = []; // Temporarily hold skills not related to any language

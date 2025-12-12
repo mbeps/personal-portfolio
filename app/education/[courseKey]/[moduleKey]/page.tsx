@@ -18,7 +18,7 @@ import CourseInterface from "@/database/courses/CourseInterface";
 import moduleDatabaseMap from "@/database/modules/ModuleDatabaseMap";
 import ModuleInterface from "@/database/modules/ModuleInterface";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
-import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
+import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -86,7 +86,7 @@ const ModulePage: React.FC<{ params: Params }> = async ({ params }) => {
   }
 
   // Grouped skills by type
-  const allGroupedSkills: GroupedSkillsCategoriesInterface[] =
+  const allGroupedSkills: ListOfCategorisedSkillsByTypeInterface[] =
     buildSkillTableGroups(moduleData.skills);
 
   const breadcrumbData: BreadcrumbPair[] = [

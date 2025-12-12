@@ -1,4 +1,4 @@
-import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
+import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
 
 /**
  * Filter out empty skill categories from a given list of grouped skill categories.
@@ -7,8 +7,8 @@ import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsI
  * @returns The filtered grouped skill categories without empty categories
  */
 export default function filterNonEmptySkillCategories(
-  groupedSkills: GroupedSkillsCategoriesInterface[]
-): GroupedSkillsCategoriesInterface[] {
+  groupedSkills: ListOfCategorisedSkillsByTypeInterface[]
+): ListOfCategorisedSkillsByTypeInterface[] {
   return groupedSkills.filter(
     ({ skillCategories }) => skillCategories.length > 0
   );

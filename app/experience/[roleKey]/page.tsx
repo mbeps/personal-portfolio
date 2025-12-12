@@ -19,7 +19,7 @@ import companyDatabaseMap from "@/database/companies/CompanyDatabaseMap";
 import CompanyInterface from "@/database/companies/CompanyInterface";
 import rolesDatabase from "@/database/roles/RoleDatabaseMap";
 import RoleInterface from "@/database/roles/RoleInterface";
-import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
+import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
 import type { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -101,7 +101,7 @@ const RolePage: React.FC<{ params: Params }> = async ({ params }) => {
       ? "Present"
       : roleData.endDate.toString();
 
-  const allGroupedSkills: GroupedSkillsCategoriesInterface[] =
+  const allGroupedSkills: ListOfCategorisedSkillsByTypeInterface[] =
     buildSkillTableGroups(roleData.skills);
 
   const responsibilities: string | undefined = getMarkdownFromFileSystem(

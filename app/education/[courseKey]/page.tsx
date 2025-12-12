@@ -27,7 +27,7 @@ import ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
 import moduleDatabaseMap from "@/database/modules/ModuleDatabaseMap";
 import ModuleInterface from "@/database/modules/ModuleInterface";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
-import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
+import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -122,7 +122,7 @@ const CoursesPage: React.FC<{
   );
 
   //^ Skills
-  const allGroupedSkills: GroupedSkillsCategoriesInterface[] =
+  const allGroupedSkills: ListOfCategorisedSkillsByTypeInterface[] =
     buildSkillTableGroups(courseData.skills);
 
   const hasArchivedModules: boolean = courseData.modules.some(

@@ -35,7 +35,7 @@ import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import Database from "@/interfaces/Database";
 import FilterOption from "@/interfaces/filters/FilterOption";
-import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
+import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
 import Link from "next/link";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
@@ -89,7 +89,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
   const shouldOpenModal: boolean | undefined =
     language?.relatedSkills && language.relatedSkills.length > 0;
 
-  const groupedSkills: SkillsCategoryInterface[] = groupSkills(
+  const groupedSkills: CategorisedSkillsInterface[] = groupSkills(
     groupedBy as GroupByOptions,
     languageSkillsSlug,
     skillDatabaseMap,

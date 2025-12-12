@@ -15,7 +15,7 @@ import developerName from "@/constants/developerName";
 import { CERTIFICATES_PAGE } from "@/constants/pages";
 import certificateDatabaseMap from "@/database/certificates/CertificateDatabaseMap";
 import CertificateInterface from "@/database/certificates/CertificateInterface";
-import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
+import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -87,7 +87,7 @@ const CertificatesPage: React.FC<{ params: Params }> = async ({ params }) => {
     notFound();
   }
 
-  const allGroupedSkills: GroupedSkillsCategoriesInterface[] =
+  const allGroupedSkills: ListOfCategorisedSkillsByTypeInterface[] =
     buildSkillTableGroups(certificateData.skills);
 
   const certificateImage = `${CERTIFICATES_PAGE.path}/${certificateKey}.jpg`;

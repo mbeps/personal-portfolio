@@ -2,8 +2,8 @@ import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import SkillInterface from "@/database/skills/SkillInterface";
 import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
 import Database from "@/interfaces/Database";
-import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
-import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
+import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
+import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
 
 /**
  * Categorise and group skills based on the skill type.
@@ -22,9 +22,9 @@ export default function categoriseAndGroupSkills(
   skillsDatabase: Database<SkillInterface>,
   skillType: SkillTypesEnum,
   title: string
-): GroupedSkillsCategoriesInterface {
+): ListOfCategorisedSkillsByTypeInterface {
   // Initialize an empty array for grouped categories
-  const skillCategories: SkillsCategoryInterface[] = [];
+  const skillCategories: CategorisedSkillsInterface[] = [];
 
   skillKeys.forEach((skillSlug) => {
     const skill: SkillInterface = skillsDatabase[skillSlug];

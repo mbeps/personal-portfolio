@@ -1,12 +1,12 @@
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
+import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
 import { useState } from "react";
 import SkillTag from "../tags/SkillTag";
 import ExpandCollapseButton from "../ui/ExpandCollapseButton";
 
 interface CategorySkillDisplayProps {
-  skillCategories: SkillsCategoryInterface[];
+  skillCategories: CategorisedSkillsInterface[];
 }
 
 /**
@@ -19,12 +19,11 @@ const SkillTable: React.FC<CategorySkillDisplayProps> = ({
   skillCategories,
 }) => {
   const [showAll, setShowAll] = useState(false);
-  const normalizedCategories: SkillsCategoryInterface[] = skillCategories.map(
-    (category) => ({
+  const normalizedCategories: CategorisedSkillsInterface[] =
+    skillCategories.map((category) => ({
       ...category,
       skills: Array.from(new Set(category.skills)),
-    })
-  );
+    }));
   const shouldDisplayTitle: boolean = normalizedCategories.length > 1;
   const isTablet: boolean = useMediaQuery("(max-width: 976px)");
 
@@ -38,14 +37,14 @@ const SkillTable: React.FC<CategorySkillDisplayProps> = ({
 
   // TODO: Centralise this into hook or utility function
   // Calculate displayedSkills, totalSkillsCount, and displayedSkillsCount in one pass
-  const displayedSkills: SkillsCategoryInterface[] = showAll
+  const displayedSkills: CategorisedSkillsInterface[] = showAll
     ? normalizedCategories.map((categoryData) => {
         totalSkillsCount += categoryData.skills.length;
         displayedSkillsCount += categoryData.skills.length;
         return categoryData;
       })
     : normalizedCategories.reduce(
-        (acc: SkillsCategoryInterface[], categoryData) => {
+        (acc: CategorisedSkillsInterface[], categoryData) => {
           totalSkillsCount += categoryData.skills.length;
 
           if (skillCount < maxSkillCount && groupCount < maxGroupCount) {

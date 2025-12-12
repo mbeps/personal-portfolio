@@ -1,7 +1,7 @@
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import SkillInterface from "@/database/skills/SkillInterface";
 import Database from "@/interfaces/Database";
-import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
+import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
 
 /**
  * Groups the skill according to their skill type.
@@ -13,7 +13,7 @@ import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface
 export default function groupBySkillType(
   skillKeys: SkillDatabaseKeys[],
   skillsDatabase: Database<SkillInterface>
-): SkillsCategoryInterface[] {
+): CategorisedSkillsInterface[] {
   // Object to hold the grouping by skillType
   const skillTypes: Database<SkillDatabaseKeys[]> = {};
 
@@ -31,7 +31,7 @@ export default function groupBySkillType(
   });
 
   // Convert the skillTypes object to an array of SkillsCategoryInterface
-  const result: SkillsCategoryInterface[] = Object.keys(skillTypes).map(
+  const result: CategorisedSkillsInterface[] = Object.keys(skillTypes).map(
     (key) => ({
       skillCategoryName: key,
       skills: skillTypes[key],

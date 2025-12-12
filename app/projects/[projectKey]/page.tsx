@@ -30,7 +30,7 @@ import ProjectInterface from "@/database/projects/ProjectInterface";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
 import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
-import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
+import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -126,7 +126,7 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
       SkillCategoriesEnum.ProgrammingLanguages
     );
 
-  const allGroupedSkills: GroupedSkillsCategoriesInterface[] =
+  const allGroupedSkills: ListOfCategorisedSkillsByTypeInterface[] =
     buildSkillTableGroups(projectSkillsWithoutLanguage);
 
   function getImages(): string[] {

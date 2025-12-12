@@ -3,7 +3,7 @@ import SkillTableCell from "@/components/skills/SkillTableSection";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
 import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
-import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
+import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
 import SkillInterface from "@/database/skills/SkillInterface";
 import React from "react";
 
@@ -30,7 +30,7 @@ const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
   }
 
   // Grouped skills by type
-  const allGroupedSkills: GroupedSkillsCategoriesInterface[] =
+  const allGroupedSkills: ListOfCategorisedSkillsByTypeInterface[] =
     buildSkillTableGroups(associatedSkills);
 
   return (

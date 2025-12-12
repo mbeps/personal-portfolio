@@ -11,7 +11,14 @@ import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
  *
  * @requires {@link SkillDatabaseKeys} to represent the list of skills (identifiers) that are grouped together.
  */
-export default interface SkillsCategoryInterface {
+export default interface CategorisedSkillsInterface {
+  /**
+   * Name of the category of skills.
+   * For example: "Programming Languages", "DevOps", "Web Development", etc.
+   */
   skillCategoryName: string;
+  /**
+   * List of skills  (by their keys) that belong to this category.
+   */
   skills: SkillDatabaseKeys[];
 }

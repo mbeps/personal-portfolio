@@ -3,7 +3,7 @@ import categoriseAndGroupSkills from "@/lib/skills/group/categoriseAndGroupSkill
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
 import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
-import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
+import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
 
 /**
  * Builds skill table groups for display in SkillTableSection.
@@ -17,7 +17,7 @@ import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsI
  */
 export default function buildSkillTableGroups(
   skillKeys: SkillDatabaseKeys[]
-): GroupedSkillsCategoriesInterface[] {
+): ListOfCategorisedSkillsByTypeInterface[] {
   const skillTypeGroups = [
     { type: SkillTypesEnum.Technology, title: "Technologies" },
     { type: SkillTypesEnum.Technical, title: "Technical Skills" },

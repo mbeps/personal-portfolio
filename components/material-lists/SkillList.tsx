@@ -5,7 +5,7 @@ import FilterSection from "@/components/filters/FilterSection";
 import SkillTag from "@/components/tags/SkillTag";
 import { SKILL_PAGE } from "@/constants/pages";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
+import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
 import useSkillFilterState from "@/hooks/useSkillFilterState";
 import React from "react";
 import {
@@ -55,7 +55,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
       {/* List of Skills */}
       <div className="material-sections-wrapper pt-14">
         {groupedSkills.length > 0 ? (
-          groupedSkills.map((categoryData: SkillsCategoryInterface) => (
+          groupedSkills.map((categoryData: CategorisedSkillsInterface) => (
             <div key={categoryData.skillCategoryName}>
               <Card>
                 <CardHeader>
