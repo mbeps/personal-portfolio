@@ -1,5 +1,5 @@
 import ProjectItem from "@/components/material-items/ProjectItem";
-import MaterialListProps from "@/interfaces/props/MaterialListProps";
+import MaterialGroupListInterface from "@/interfaces/material/MaterialGroupListInterface";
 import MaterialGroupSectionList from "./MaterialGroupSectionList";
 
 /**
@@ -10,7 +10,7 @@ import MaterialGroupSectionList from "./MaterialGroupSectionList";
  * @param showType When true, `ProjectItem` displays the type string instead of category.
  * @returns Section list of projects with optional headings.
  */
-interface ProjectsListProps extends MaterialListProps {
+interface ProjectsListProps extends MaterialGroupListInterface {
   showType?: boolean;
 }
 

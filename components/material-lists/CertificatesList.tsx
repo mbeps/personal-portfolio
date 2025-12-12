@@ -1,6 +1,6 @@
 import CertificateItem from "@/components/material-items/CertificateItem";
 import Grid from "@/components/ui/Grid";
-import MaterialListProps from "@/interfaces/props/MaterialListProps";
+import MaterialGroupListInterface from "@/interfaces/material/MaterialGroupListInterface";
 import React from "react";
 import MaterialGroupSectionList from "./MaterialGroupSectionList";
 
@@ -10,7 +10,9 @@ import MaterialGroupSectionList from "./MaterialGroupSectionList";
  * @param groupedMaterial Material grouping generated upstream.
  * @returns Sectioned certificate grid or the shared empty state copy.
  */
-const CertificatesList: React.FC<MaterialListProps> = ({ groupedMaterial }) => (
+const CertificatesList: React.FC<MaterialGroupListInterface> = ({
+  groupedMaterial,
+}) => (
   <MaterialGroupSectionList
     groupedMaterial={groupedMaterial}
     emptyMessage="No Matching Certificates"

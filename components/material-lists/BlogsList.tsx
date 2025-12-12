@@ -1,6 +1,6 @@
 import BlogItem from "@/components/material-items/BlogItem";
 import Grid from "@/components/ui/Grid";
-import MaterialListProps from "@/interfaces/props/MaterialListProps";
+import MaterialGroupListInterface from "@/interfaces/material/MaterialGroupListInterface";
 import MaterialGroupSectionList from "./MaterialGroupSectionList";
 
 /**
@@ -9,7 +9,9 @@ import MaterialGroupSectionList from "./MaterialGroupSectionList";
  * @param groupedMaterial Blog keys grouped by category/section.
  * @returns Sectioned grid of blog summaries.
  */
-const BlogsList: React.FC<MaterialListProps> = ({ groupedMaterial }) => (
+const BlogsList: React.FC<MaterialGroupListInterface> = ({
+  groupedMaterial,
+}) => (
   <MaterialGroupSectionList
     groupedMaterial={groupedMaterial}
     emptyMessage="No Matching Blogs"

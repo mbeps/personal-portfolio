@@ -1,8 +1,10 @@
-import MaterialListProps from "@/interfaces/props/MaterialListProps";
+import MaterialGroupListInterface from "@/interfaces/material/MaterialGroupListInterface";
 import WorkItem from "../material-items/WorkItem";
 import MaterialGroupSectionList from "./MaterialGroupSectionList";
 
-const WorkList: React.FC<MaterialListProps> = ({ groupedMaterial }) => (
+const WorkList: React.FC<MaterialGroupListInterface> = ({
+  groupedMaterial,
+}) => (
   <MaterialGroupSectionList
     groupedMaterial={groupedMaterial}
     emptyMessage="No Matching Jobs"

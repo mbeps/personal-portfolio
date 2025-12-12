@@ -37,7 +37,7 @@ import rolesDatabase, {
 import MaterialTypeEnum from "@/enums/material/MaterialTypeEnum";
 import Database from "@/interfaces/Database";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
-import MaterialListProps from "@/interfaces/props/MaterialListProps";
+import MaterialGroupListInterface from "@/interfaces/material/MaterialGroupListInterface";
 import Link from "next/link";
 import React, { useState } from "react";
 import { MaterialTabsProps } from "./MaterialList";
@@ -48,7 +48,7 @@ interface MaterialSectionInterface {
   materials: string[];
   materialHashmap: Database<MaterialInterface>;
   basePath?: string;
-  ListComponent: React.ComponentType<MaterialListProps>;
+  ListComponent: React.ComponentType<MaterialGroupListInterface>;
 }
 
 /**

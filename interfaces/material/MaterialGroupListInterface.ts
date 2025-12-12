@@ -1,4 +1,4 @@
-import MaterialGroupInterface from "../material/MaterialGroupInterface";
+import MaterialGroupInterface from "./MaterialGroupInterface";
 
 /**
  * Interface representing the props of the MaterialList components.
@@ -13,6 +13,6 @@ import MaterialGroupInterface from "../material/MaterialGroupInterface";
  *
  * @requires {@link MaterialGroupInterface} to represent the list of materials that are grouped together.
  */
-export default interface MaterialListProps {
+export default interface MaterialGroupListInterface {
   groupedMaterial: MaterialGroupInterface[];
 }
