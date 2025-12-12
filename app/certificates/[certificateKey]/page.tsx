@@ -51,7 +51,7 @@ export async function generateMetadata(
 
   // Create metadata based on the certificate details
   return {
-    title: `${developerName} - Certificates: ${certificate?.name}`,
+    title: `${developerName} - ${CERTIFICATES_PAGE.label}: ${certificate?.name}`,
     description: certificate?.description,
     category: `${CERTIFICATES_PAGE.label}`,
     creator: developerName,
