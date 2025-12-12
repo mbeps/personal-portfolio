@@ -14,7 +14,7 @@ import SearchFilter from "@/interfaces/filters/SearchFilter";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
-interface MobileFilterAccordionProps {
+interface FilterOptionItemAccordionProps {
   filterCategories: FilterCategory[];
   archiveFilter?: ArchiveFilter;
   searchFilter: SearchFilter;
@@ -31,7 +31,7 @@ interface MobileFilterAccordionProps {
  * @param basePath Current page path used for URL updates
  * @returns Accordion stack of filter categories optimized for small screens.
  */
-const MobileFilterAccordion: React.FC<MobileFilterAccordionProps> = ({
+const FilterOptionItemAccordion: React.FC<FilterOptionItemAccordionProps> = ({
   filterCategories,
   archiveFilter,
   searchFilter,
@@ -131,4 +131,4 @@ const MobileFilterAccordion: React.FC<MobileFilterAccordionProps> = ({
   );
 };
 
-export default MobileFilterAccordion;
+export default FilterOptionItemAccordion;

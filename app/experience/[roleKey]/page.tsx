@@ -3,7 +3,7 @@ import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
 import ShortDate from "@/class/ShortDate";
 import MaterialList from "@/components/material-lists/MaterialList";
 import Reader from "@/components/reader/Reader";
-import SkillTableSection from "@/components/skills/SkillTableSection";
+import SkillTableCell from "@/components/skills/SkillTableSection";
 import DetailsTable from "@/components/ui/DetailsTable";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
@@ -202,7 +202,7 @@ const RolePage: React.FC<{ params: Params }> = async ({ params }) => {
           {/* Skills section */}
           <Card>
             <CardContent className="py-7">
-              <SkillTableSection allGroupedSkills={allGroupedSkills} />
+              <SkillTableCell allGroupedSkills={allGroupedSkills} />
             </CardContent>
           </Card>
 

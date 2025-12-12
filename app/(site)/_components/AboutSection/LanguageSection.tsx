@@ -1,6 +1,6 @@
 "use client";
 
-import LanguageModal from "@/components/modal/LanguageModal";
+import LanguageModal from "@/app/(site)/_components/AboutSection/modal/LanguageModal";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import useIsMounted from "@/hooks/useIsMounted";
 import React from "react";

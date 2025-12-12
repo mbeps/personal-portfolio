@@ -1,7 +1,7 @@
 "use client";
 
 import filterCategoriesFromSkills from "@/lib/skills/filter/filterCategoriesFromSkills";
-import TechnologiesModal from "@/components/modal/TechnologiesModal";
+import TechnologiesModal from "@/app/(site)/_components/AboutSection/modal/TechnologiesModal";
 import SkillTag from "@/components/tags/SkillTag";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";

@@ -32,10 +32,10 @@ import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface
 import Link from "next/link";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
-import SkillTag from "../tags/SkillTag";
-import Tag from "../tags/Tag";
-import { Button } from "../shadcn/ui/button";
-import { ScrollArea } from "../shadcn/ui/scroll-area";
+import Tag from "@/components/tags/Tag";
+import { Button } from "@/components/shadcn/ui/button";
+import { ScrollArea } from "@/components/shadcn/ui/scroll-area";
+import SkillTag from "@/components/tags/SkillTag";
 
 /**
  * Expands the homepage “Technologies” tag list into a full modal/drawer so visitors can browse grouped skills without leaving the page.

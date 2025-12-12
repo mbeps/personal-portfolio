@@ -4,7 +4,7 @@ import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
 import MaterialList from "@/components/material-lists/MaterialList";
 import SpecialReader from "@/components/reader/SpecialReader";
 import { Card, CardContent } from "@/components/shadcn/ui/card";
-import SkillTableSection from "@/components/skills/SkillTableSection";
+import SkillTableCell from "@/components/skills/SkillTableSection";
 import developerName from "@/constants/developerName";
 import { BLOG_PAGE, PROJECTS_PAGE } from "@/constants/pages";
 import BlogInterface from "@/database/blogs/BlogInterface";
@@ -132,7 +132,7 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
           {/* Skills */}
           <Card>
             <CardContent className="py-7">
-              <SkillTableSection allGroupedSkills={allGroupedSkills} />
+              <SkillTableCell allGroupedSkills={allGroupedSkills} />
             </CardContent>
           </Card>
 

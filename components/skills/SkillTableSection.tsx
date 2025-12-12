@@ -10,7 +10,7 @@ import {
 import useIsMounted from "@/hooks/useIsMounted";
 import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
 import React, { useState } from "react";
-import CategorySkillDisplay from "./CategorySkillDisplay";
+import SkillTable from "./CategorySkillDisplay";
 import filterNonEmptySkillCategories from "@/lib/skills/filter/filterNonEmptySkillCategories";
 
 interface SkillTableSectionProps {
@@ -26,7 +26,7 @@ interface SkillTableSectionProps {
  * @param maxSkillsPerCategory Reserved prop for future truncation (defaults to 5).
  * @returns Tabs element showing grouped skill categories.
  */
-const SkillTableSection: React.FC<SkillTableSectionProps> = ({
+const SkillTableCell: React.FC<SkillTableSectionProps> = ({
   allGroupedSkills,
   maxSkillsPerCategory = 5,
 }) => {
@@ -73,7 +73,7 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
       {nonEmptySkillCategories.map(({ title, skillCategories }) => (
         <TabsContent key={stringToSlug(title)} value={stringToSlug(title)}>
           <div className="mt-4 text-center md:text-left">
-            <CategorySkillDisplay skillCategories={skillCategories} />
+            <SkillTable skillCategories={skillCategories} />
           </div>
         </TabsContent>
       ))}
@@ -81,4 +81,4 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
   );
 };
 
-export default SkillTableSection;
+export default SkillTableCell;

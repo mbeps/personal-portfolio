@@ -1,6 +1,6 @@
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import NavigationItemInterface from "@/interfaces/NavigationItemInterface";
-import Overlay from "../sheet/Sheet";
+import MobileOverlay from "../ui/MobileOverlay";
 import Socials from "../socials/Socials";
 import NavbarItem from "./NavbarItem";
 
@@ -27,7 +27,7 @@ const NavbarOverlay: React.FC<OverlayProps> = ({ isOpen, toggle, items }) => {
   }
 
   return (
-    <Overlay
+    <MobileOverlay
       isOpen={isOpen}
       toggle={toggle}
       className="bg-neutral-50/60 dark:bg-neutral-900/60 backdrop-blur-xl"
@@ -48,7 +48,7 @@ const NavbarOverlay: React.FC<OverlayProps> = ({ isOpen, toggle, items }) => {
       <div className="w-full pb-20">
         <Socials iconSize={40} />
       </div>
-    </Overlay>
+    </MobileOverlay>
   );
 };
 

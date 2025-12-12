@@ -3,7 +3,7 @@ import groupMaterialsByCategory from "@/lib/material/group/groupMaterialsByCateg
 import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
 import { ArchiveToggle } from "@/components/filters/ArchiveToggle";
 import MaterialList from "@/components/material-lists/MaterialList";
-import SkillTableSection from "@/components/skills/SkillTableSection";
+import SkillTableCell from "@/components/skills/SkillTableSection";
 import Tag from "@/components/tags/Tag";
 import Grid from "@/components/ui/Grid";
 import {
@@ -220,7 +220,7 @@ const CoursesPage: React.FC<{
           {/* Skills */}
           <Card>
             <CardContent className="py-7">
-              <SkillTableSection allGroupedSkills={allGroupedSkills} />
+              <SkillTableCell allGroupedSkills={allGroupedSkills} />
             </CardContent>
           </Card>
 

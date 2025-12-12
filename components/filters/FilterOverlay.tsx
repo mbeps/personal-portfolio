@@ -13,8 +13,8 @@ import SidePanel from "../ui/SidePanel";
 import { Drawer, DrawerContent } from "@/components/shadcn/ui/drawer";
 import { Button } from "../shadcn/ui/button";
 import { ArchiveToggle } from "./ArchiveToggle";
-import FilterPopover from "./FilterPopover";
-import MobileFilterAccordion from "./MobileFilterAccordion";
+import FilterOptionItemCombobox from "./FilterOptionItemCombobox";
+import FilterOptionItemAccordion from "./FilterOptionItemAccordion";
 
 interface FilterOverlayProps {
   filterCategories: FilterCategory[];
@@ -101,7 +101,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
         {isDesktop ? (
           <div className="space-y-3 flex flex-col w-full">
             {filterCategories.map((filterCategory, index) => (
-              <FilterPopover
+              <FilterOptionItemCombobox
                 key={index}
                 basePath={basePath}
                 selectedFilterCategory={filterCategory}
@@ -112,7 +112,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
             ))}
           </div>
         ) : (
-          <MobileFilterAccordion
+          <FilterOptionItemAccordion
             basePath={basePath}
             filterCategories={filterCategories}
             archiveFilter={archiveFilter}

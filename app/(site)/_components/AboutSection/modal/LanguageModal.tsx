@@ -39,7 +39,7 @@ import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface
 import Link from "next/link";
 import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
-import SkillTag from "../tags/SkillTag";
+import SkillTag from "@/components/tags/SkillTag";
 
 interface LanguageTagWithModalProps {
   languageIdentifier: SkillDatabaseKeys;

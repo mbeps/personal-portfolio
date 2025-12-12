@@ -25,7 +25,7 @@ import { Button } from "../shadcn/ui/button";
 import ArchiveFilter from "@/interfaces/filters/ArchiveFilter";
 import SearchFilter from "@/interfaces/filters/SearchFilter";
 
-interface FilterPopover {
+interface FilterOptionItemComboboxProps {
   selectedFilterCategory: FilterCategory;
   filterCategories: FilterCategory[];
   archiveFilter?: ArchiveFilter;
@@ -44,13 +44,13 @@ interface FilterPopover {
  * @param basePath Base route for the listing page.
  * @returns Popover trigger and list of filter options.
  */
-const FilterPopover: React.FC<FilterPopover> = ({
+const FilterOptionItemCombobox: React.FC<FilterOptionItemComboboxProps> = ({
   selectedFilterCategory,
   filterCategories,
   archiveFilter,
   basePath,
   searchFilter,
-}: FilterPopover) => {
+}: FilterOptionItemComboboxProps) => {
   const [isOpen, setOpen] = useState(false);
   const gap = "w-4 h-4 mr-2";
 
@@ -172,4 +172,4 @@ const FilterPopover: React.FC<FilterPopover> = ({
   );
 };
 
-export default FilterPopover;
+export default FilterOptionItemCombobox;

@@ -1,7 +1,7 @@
 "use client";
 
 import { ArchiveToggle } from "@/components/filters/ArchiveToggle";
-import FilterPanel from "@/components/filters/FilterPanel";
+import FilterPanel from "@/components/filters/FilterOverlay";
 import SearchInput from "@/components/inputs/SearchInput";
 import { Button } from "@/components/shadcn/ui/button";
 import { ButtonGroup } from "@/components/shadcn/ui/button-group";
@@ -190,15 +190,3 @@ const FilterSection: React.FC<FilterSectionProps> = ({
 };
 
 export default FilterSection;
-/**
- * High-level search + filter accordion used by every material listing, coordinating URL updates, modals, and archive toggle.
- * Couples the shared `FilterPanel`, `SearchInput`, and `ArchiveToggle` so each page only needs to configure filter metadata.
- *
- * @param name Human-readable resource name for copy.
- * @param basePath Route base used for URL building.
- * @param searchFilter Current search term + param name.
- * @param filterCategories Filter configs produced by the listing page.
- * @param areFiltersApplied Flag for enabling the clear button state.
- * @param archiveFilter Optional archive toggle metadata.
- * @returns Accordion containing search, drawer button, clear button, and archive toggle.
- */

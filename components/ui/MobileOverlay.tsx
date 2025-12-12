@@ -18,7 +18,7 @@ interface OverlayProps {
  * @returns Fixed positioned overlay container.
  */
 
-const Overlay: React.FC<OverlayProps> = ({
+const MobileOverlay: React.FC<OverlayProps> = ({
   isOpen,
   toggle,
   children,
@@ -37,4 +37,4 @@ const Overlay: React.FC<OverlayProps> = ({
   return <div className={overlayStyle}>{children}</div>;
 };
 
-export default Overlay;
+export default MobileOverlay;

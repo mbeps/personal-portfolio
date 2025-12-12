@@ -1,7 +1,7 @@
 import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
 import MaterialList from "@/components/material-lists/MaterialList";
-import SkillTableSection from "@/components/skills/SkillTableSection";
-import StringList from "@/components/text/StringList";
+import SkillTableCell from "@/components/skills/SkillTableSection";
+import StringList from "@/components/ui/StringList";
 import DynamicBreadcrumb, {
   BreadcrumbPair,
 } from "@/components/ui/DynamicBreadcrumb";
@@ -150,7 +150,7 @@ const ModulePage: React.FC<{ params: Params }> = async ({ params }) => {
           {/* Skills */}
           <Card>
             <CardContent className="py-7">
-              <SkillTableSection allGroupedSkills={allGroupedSkills} />
+              <SkillTableCell allGroupedSkills={allGroupedSkills} />
             </CardContent>
           </Card>
 

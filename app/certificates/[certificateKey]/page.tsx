@@ -1,8 +1,8 @@
 import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
 import MaterialList from "@/components/material-lists/MaterialList";
-import SkillTableSection from "@/components/skills/SkillTableSection";
+import SkillTableCell from "@/components/skills/SkillTableSection";
 import Tag from "@/components/tags/Tag";
-import StringList from "@/components/text/StringList";
+import StringList from "@/components/ui/StringList";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
 import {
@@ -155,7 +155,7 @@ const CertificatesPage: React.FC<{ params: Params }> = async ({ params }) => {
 
             <Card>
               <CardContent className="py-7">
-                <SkillTableSection allGroupedSkills={allGroupedSkills} />
+                <SkillTableCell allGroupedSkills={allGroupedSkills} />
               </CardContent>
             </Card>
 

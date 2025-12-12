@@ -1,10 +1,9 @@
+import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
 import { useState } from "react";
-import ExpandCollapseButton from "../ui/ExpandCollapseButton";
 import SkillTag from "../tags/SkillTag";
-import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import ExpandCollapseButton from "../ui/ExpandCollapseButton";
 
 interface CategorySkillDisplayProps {
   skillCategories: SkillsCategoryInterface[];
@@ -16,15 +15,16 @@ interface CategorySkillDisplayProps {
  * @param skillCategories Groups produced by `buildSkillTableGroups`.
  * @returns Grid of `SkillTag` clusters plus an optional expand/collapse button.
  */
-const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
+const SkillTable: React.FC<CategorySkillDisplayProps> = ({
   skillCategories,
 }) => {
   const [showAll, setShowAll] = useState(false);
-  const normalizedCategories: SkillsCategoryInterface[] =
-    skillCategories.map((category) => ({
+  const normalizedCategories: SkillsCategoryInterface[] = skillCategories.map(
+    (category) => ({
       ...category,
       skills: Array.from(new Set(category.skills)),
-    }));
+    })
+  );
   const shouldDisplayTitle: boolean = normalizedCategories.length > 1;
   const isTablet: boolean = useMediaQuery("(max-width: 976px)");
 
@@ -36,6 +36,7 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
   let totalSkillsCount: number = 0;
   let displayedSkillsCount: number = 0;
 
+  // TODO: Centralise this into hook or utility function
   // Calculate displayedSkills, totalSkillsCount, and displayedSkillsCount in one pass
   const displayedSkills: SkillsCategoryInterface[] = showAll
     ? normalizedCategories.map((categoryData) => {
@@ -50,27 +51,27 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
           if (skillCount < maxSkillCount && groupCount < maxGroupCount) {
             const filteredSkills = categoryData.skills.filter(
               (skillKey) => skillDatabaseMap[skillKey]?.isMainSkill
-          );
-          const skillsToDisplay = filteredSkills.length
-            ? filteredSkills
-            : categoryData.skills;
+            );
+            const skillsToDisplay = filteredSkills.length
+              ? filteredSkills
+              : categoryData.skills;
 
-          const availableSlots = Math.min(
-            maxSkillCount - skillCount,
-            skillsToDisplay.length
-          );
-          const limitedSkills = skillsToDisplay.slice(0, availableSlots);
+            const availableSlots = Math.min(
+              maxSkillCount - skillCount,
+              skillsToDisplay.length
+            );
+            const limitedSkills = skillsToDisplay.slice(0, availableSlots);
 
-          if (limitedSkills.length > 0) {
-            acc.push({
-              skillCategoryName: categoryData.skillCategoryName,
-              skills: limitedSkills,
-            });
+            if (limitedSkills.length > 0) {
+              acc.push({
+                skillCategoryName: categoryData.skillCategoryName,
+                skills: limitedSkills,
+              });
 
-            skillCount += availableSlots;
-            groupCount++;
-            displayedSkillsCount += limitedSkills.length;
-          }
+              skillCount += availableSlots;
+              groupCount++;
+              displayedSkillsCount += limitedSkills.length;
+            }
           }
 
           return acc;
@@ -117,4 +118,4 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
   );
 };
 
-export default CategorySkillDisplay;
+export default SkillTable;

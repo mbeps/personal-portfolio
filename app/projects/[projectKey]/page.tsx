@@ -8,7 +8,7 @@ import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
 import Gallery from "@/components/gallery/Gallery";
 import MaterialList from "@/components/material-lists/MaterialList";
 import Reader from "@/components/reader/Reader";
-import SkillTableSection from "@/components/skills/SkillTableSection";
+import SkillTableCell from "@/components/skills/SkillTableSection";
 import SkillTag from "@/components/tags/SkillTag";
 import {
   Accordion,
@@ -269,7 +269,7 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
           {/* Skills Section */}
           <Card>
             <CardContent className="py-7">
-              <SkillTableSection allGroupedSkills={allGroupedSkills} />
+              <SkillTableCell allGroupedSkills={allGroupedSkills} />
             </CardContent>
           </Card>
 
