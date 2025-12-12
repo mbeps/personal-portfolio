@@ -87,7 +87,7 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
     blogData.category === BlogCategoriesEnum.Projects ||
     Object.values(ProjectDatabaseKeys).includes(blogKey as ProjectDatabaseKeys);
   const blogPath = isProjectBlog
-    ? `public/projects/${blogKey}/blog.md`
+    ? `public${PROJECTS_PAGE.path}/${blogKey}/blog.md`
     : `public${basePath}/${blogKey}/blog.md`;
 
   const blogContent: string | undefined =
