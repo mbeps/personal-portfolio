@@ -4,7 +4,9 @@ import countMaterialsBySkill from "@/lib/material/countMaterialsBySkill";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import { describe, expect, test, vi } from "vitest";
 
-vi.mock("@/lib/actions/material/countMaterialsBySkill");
+vi.mock("@/lib/material/countMaterialsBySkill", () => ({
+  default: vi.fn(),
+}));
 
 describe("skillHasMaterial", () => {
   test("should return true if the skill has 2 or more materials", () => {
