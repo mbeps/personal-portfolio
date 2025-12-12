@@ -1,10 +1,10 @@
 /// <reference types="vitest/globals" />
-import updateRolesWithExperienceTime from "@/actions/material/role/updateRolesWithExperienceTime";
-import CompanyDatabaseKeys from "@/database/Companies/CompanyDatabaseKeys";
-import type RoleInterface from "@/database/Roles/RoleInterface";
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import ExperienceCategoriesEnum from "@/enums/Experience/ExperienceCategoriesEnum";
-import ExperienceTypeEnum from "@/enums/Experience/ExperienceTypeEnum";
+import updateRolesWithExperienceTime from "@/lib/material/role/updateRolesWithExperienceTime";
+import CompanyDatabaseKeys from "@/database/companies/CompanyDatabaseKeys";
+import type RoleInterface from "@/database/roles/RoleInterface";
+import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import ExperienceCategoriesEnum from "@/enums/experience/ExperienceCategoriesEnum";
+import ExperienceTypeEnum from "@/enums/experience/ExperienceTypeEnum";
 import ShortDate from "@/class/ShortDate";
 import type Database from "@/interfaces/Database";
 import { describe, expect, test } from "vitest";
@@ -48,9 +48,7 @@ describe("updateRolesWithExperienceTime", () => {
     const updatedRoles = updateRolesWithExperienceTime(rolesMap);
 
     expect(updatedRoles.softwareEngineer.timeInRole).toBe("1 year");
-    expect(updatedRoles.seniorEngineer.timeInRole).toBe(
-      "2 years and 2 months"
-    );
+    expect(updatedRoles.seniorEngineer.timeInRole).toBe("2 years and 2 months");
     expect(updatedRoles).not.toHaveProperty("inherited");
   });
 });

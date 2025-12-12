@@ -1,4 +1,4 @@
-import processMarkdownImages from "@/actions/processMarkdownImages";
+import processMarkdownImages from "@/lib/processMarkdownImages";
 import { describe, expect, it } from "vitest";
 
 describe("processMarkdownImages", () => {

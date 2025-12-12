@@ -1,22 +1,15 @@
-import CourseItem from "@/components/MaterialItems/CourseItem";
-import Grid from "@/components/UI/Grid";
-import PageDescription from "@/components/UI/PageDescription";
+import CourseItem from "@/components/material-items/CourseItem";
+import Grid from "@/components/ui/Grid";
+import PageDescription from "@/components/ui/PageDescription";
 import developerName from "@/constants/developerName";
 import { EDUCATION_PAGE } from "@/constants/pages";
 import courseDatabaseMap, {
   courseDatabaseKeys,
-} from "@/database/Courses/CourseDatabaseMap";
+} from "@/database/courses/CourseDatabaseMap";
 import type { Metadata } from "next";
 
 /**
- * Generates the metadata for the education page.
- * This includes the title and description of the page.
- * This is used for SEO purposes.
- *
- * @param props The props for the skill page.
- * @param parent The parent metadata that is being resolved.
- * @returns The metadata for the blog page.
- * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ * Static metadata for the education index, sourcing keywords directly from the courses database to match the visible grid.
  */
 export const metadata: Metadata = {
   title: `${developerName} - ${EDUCATION_PAGE.label}`,

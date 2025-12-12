@@ -1,13 +1,11 @@
 /// <reference types="vitest/globals" />
-import groupSkills, {
-  GroupByOptions,
-} from "@/actions/skills/group/groupSkills";
-import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
-import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
-import type SkillInterface from "@/database/Skills/SkillInterface";
+import groupSkills, { GroupByOptions } from "@/lib/skills/group/groupSkills";
+import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
+import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
+import type SkillInterface from "@/database/skills/SkillInterface";
 import type Database from "@/interfaces/Database";
 import { describe, expect, test } from "vitest";
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 
 describe("groupSkills", () => {
   const skillsDatabase: Database<SkillInterface> = {
@@ -120,20 +118,17 @@ describe("groupSkills", () => {
     );
 
     const allSkills = result.flatMap((category) => category.skills);
-    
+
     // Leadership (soft skill) should be excluded
     expect(allSkills).not.toContain(SkillDatabaseKeys.Leadership);
-    
+
     // JavaScript (technology) should be included even though it's related to Leadership
     // because JavaScript itself is not a soft skill
     expect(allSkills).toContain(SkillDatabaseKeys.JavaScript);
   });
 
   test("should group skills by language", () => {
-    const skillKeys = [
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.Python,
-    ];
+    const skillKeys = [SkillDatabaseKeys.JavaScript, SkillDatabaseKeys.Python];
     const result = groupSkills(
       GroupByOptions.Language,
       skillKeys,
@@ -174,10 +169,7 @@ describe("groupSkills", () => {
   test("should include related skills when filtering", () => {
     // Test that when we have excluded skill types, it processes related skills correctly
     // if they are also provided in the skillKeys array
-    const skillKeys = [
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.ReactJS,
-    ];
+    const skillKeys = [SkillDatabaseKeys.JavaScript, SkillDatabaseKeys.ReactJS];
     const result = groupSkills(
       GroupByOptions.Category,
       skillKeys,
@@ -186,7 +178,7 @@ describe("groupSkills", () => {
     );
 
     const allSkills = result.flatMap((category) => category.skills);
-    
+
     // Both JavaScript and ReactJS should be included as they're both Technology skills
     expect(allSkills).toContain(SkillDatabaseKeys.JavaScript);
     expect(allSkills).toContain(SkillDatabaseKeys.ReactJS);
@@ -204,7 +196,7 @@ describe("groupSkills", () => {
     );
 
     const allSkills = result.flatMap((category) => category.skills);
-    
+
     // No skills should be included
     expect(allSkills).toHaveLength(0);
   });
@@ -221,7 +213,7 @@ describe("groupSkills", () => {
     );
 
     const allSkills = result.flatMap((category) => category.skills);
-    
+
     // Only JavaScript should be in the result (no recursive processing of related skills)
     expect(allSkills).toEqual([SkillDatabaseKeys.JavaScript]);
   });
@@ -239,15 +231,12 @@ describe("groupSkills", () => {
     };
 
     const skillKeys = [SkillDatabaseKeys.TypeScript];
-    const result = groupSkills(
-      GroupByOptions.Category,
-      skillKeys,
-      extendedDb,
-      [SkillTypesEnum.Soft]
-    );
+    const result = groupSkills(GroupByOptions.Category, skillKeys, extendedDb, [
+      SkillTypesEnum.Soft,
+    ]);
 
     const allSkills = result.flatMap((category) => category.skills);
-    
+
     // TypeScript should be included (it's not a soft skill)
     expect(allSkills).toContain(SkillDatabaseKeys.TypeScript);
     expect(allSkills).toHaveLength(1);

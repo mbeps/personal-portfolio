@@ -1,8 +1,8 @@
-import buildSkillTableGroups from "@/actions/skills/group/buildSkillTableGroups";
-import MaterialList from "@/components/MaterialLists/MaterialList";
-import SkillTableSection from "@/components/Skills/SkillTableSection";
-import Tag from "@/components/Tags/Tag";
-import StringList from "@/components/Text/StringList";
+import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
+import MaterialList from "@/components/material-lists/MaterialList";
+import SkillTableCell from "@/components/skills/SkillTableSection";
+import Tag from "@/components/tags/Tag";
+import StringList from "@/components/ui/StringList";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
 import {
@@ -13,9 +13,9 @@ import {
 } from "@/components/shadcn/ui/card";
 import developerName from "@/constants/developerName";
 import { CERTIFICATES_PAGE } from "@/constants/pages";
-import certificateDatabaseMap from "@/database/Certificates/CertificateDatabaseMap";
-import CertificateInterface from "@/database/Certificates/CertificateInterface";
-import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
+import certificateDatabaseMap from "@/database/certificates/CertificateDatabaseMap";
+import CertificateInterface from "@/database/certificates/CertificateInterface";
+import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -27,14 +27,12 @@ type Params = Promise<{ certificateKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
 /**
- * Generates the metadata for the certificates page.
- * This includes the title and description of the page.
- * This is used for SEO purposes.
+ * Builds SEO metadata for a certificate detail page so the route slug, issuer, and skills feed into the head tags.
+ * Certificates live under `public/certificates/{certificateKey}.jpg`, so the slug directly maps to the asset used here.
  *
- * @param props The props for the skill page.
- * @param parent The parent metadata that is being resolved.
- * @returns The metadata for the certificates page.
- * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ * @param props Params promise resolved by Next.
+ * @param parent Parent metadata from the layout pipeline.
+ * @returns Metadata populated from the certificate entry.
  */
 export async function generateMetadata(
   props: { params: Params; searchParams: SearchParams },
@@ -51,7 +49,7 @@ export async function generateMetadata(
 
   // Create metadata based on the certificate details
   return {
-    title: `${developerName} - Certificates: ${certificate?.name}`,
+    title: `${developerName} - ${CERTIFICATES_PAGE.label}: ${certificate?.name}`,
     description: certificate?.description,
     category: `${CERTIFICATES_PAGE.label}`,
     creator: developerName,
@@ -59,10 +57,9 @@ export async function generateMetadata(
 }
 
 /**
- * Generates the static params for certificates.
- * This includes the list of all certificate keys.
+ * Exposes every certificate key to Next for static generation so the assets under `public/certificates/{key}` are discoverable at build time.
  *
- * @returns The params for each certificate.
+ * @returns Params for each certificate route.
  */
 export const generateStaticParams = async () => {
   return Object.keys(certificateDatabaseMap).map((certificateKey) => ({
@@ -71,8 +68,8 @@ export const generateStaticParams = async () => {
 };
 
 /**
- * Certificate detail view that pairs the static metadata with learning outcomes, skills, issuer tags, and related materials.
- * Reuses shared components like `MaterialList`, `SkillTableSection`, `StringList`, and image handling for consistency with other detail pages.
+ * Certificate detail view that ties the route slug to images stored under `public/certificates/{key}.jpg` and shared skills tables.
+ * Reuses the same MaterialList and Tag components as other material routes so filters and related items feel consistent.
  *
  * @param params Dynamic slug for the certificate.
  * @returns Page displaying certificate info, credentials, and adjacent work.
@@ -87,7 +84,7 @@ const CertificatesPage: React.FC<{ params: Params }> = async ({ params }) => {
     notFound();
   }
 
-  const allGroupedSkills: GroupedSkillsCategoriesInterface[] =
+  const allGroupedSkills: ListOfCategorisedSkillsByTypeInterface[] =
     buildSkillTableGroups(certificateData.skills);
 
   const certificateImage = `${CERTIFICATES_PAGE.path}/${certificateKey}.jpg`;
@@ -155,7 +152,7 @@ const CertificatesPage: React.FC<{ params: Params }> = async ({ params }) => {
 
             <Card>
               <CardContent className="py-7">
-                <SkillTableSection allGroupedSkills={allGroupedSkills} />
+                <SkillTableCell allGroupedSkills={allGroupedSkills} />
               </CardContent>
             </Card>
 

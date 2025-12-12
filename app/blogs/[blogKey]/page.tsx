@@ -1,17 +1,17 @@
-import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
-import processMarkdownImages from "@/actions/processMarkdownImages";
-import buildSkillTableGroups from "@/actions/skills/group/buildSkillTableGroups";
-import MaterialList from "@/components/MaterialLists/MaterialList";
-import SpecialReader from "@/components/Reader/SpecialReader";
+import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
+import processMarkdownImages from "@/lib/processMarkdownImages";
+import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
+import MaterialList from "@/components/material-lists/MaterialList";
+import SpecialReader from "@/components/reader/SpecialReader";
 import { Card, CardContent } from "@/components/shadcn/ui/card";
-import SkillTableSection from "@/components/Skills/SkillTableSection";
+import SkillTableCell from "@/components/skills/SkillTableSection";
 import developerName from "@/constants/developerName";
 import { BLOG_PAGE, PROJECTS_PAGE } from "@/constants/pages";
-import BlogInterface from "@/database/Blogs/BlogInterface";
-import blogsDatabaseMap from "@/database/Blogs/BlogsDatabaseMap";
-import ProjectDatabaseKeys from "@/database/Projects/ProjectDatabaseKeys";
-import BlogCategoriesEnum from "@/enums/Blog/BlogCategoriesEnum";
-import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
+import BlogInterface from "@/database/blogs/BlogInterface";
+import blogsDatabaseMap from "@/database/blogs/BlogsDatabaseMap";
+import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
+import BlogCategoriesEnum from "@/enums/blog/BlogCategoriesEnum";
+import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -19,14 +19,12 @@ type Params = Promise<{ blogKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
 /**
- * Generates the metadata for the blog page.
- * This includes the title and description of the page.
- * This is used for SEO purposes.
+ * Builds metadata for a blog detail route so the slug, subtitle, and category surface in the head tags.
+ * Blog keys map to folders under `public/blogs/{blogKey}` or `public/projects/{blogKey}` when the article is a project write-up.
  *
- * @param props The props for the skill page.
- * @param parent The parent metadata that is being resolved.
- * @returns The metadata for the blog page.
- * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ * @param props Params promise provided by Next.
+ * @param parent Parent metadata from the layout chain.
+ * @returns Metadata derived from the blog entry.
  */
 export async function generateMetadata(
   props: { params: Params; searchParams: SearchParams },
@@ -49,14 +47,9 @@ export async function generateMetadata(
 }
 
 /**
- * Generates the metadata for the blogs page.
- * This includes the title and description of the page.
- * This is used for SEO purposes.
+ * Provides every blog key for static generation so markdown files under `public/blogs/{key}` or project folders become routable articles.
  *
- * @param props The props for the skill page.
- * @param parent The parent metadata that is being resolved.
- * @returns The metadata for the blogs page.
- * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ * @returns Params for each blog detail route.
  */
 export const generateStaticParams = async () => {
   return Object.keys(blogsDatabaseMap).map((blogKey) => ({
@@ -87,7 +80,7 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
     blogData.category === BlogCategoriesEnum.Projects ||
     Object.values(ProjectDatabaseKeys).includes(blogKey as ProjectDatabaseKeys);
   const blogPath = isProjectBlog
-    ? `public/projects/${blogKey}/blog.md`
+    ? `public${PROJECTS_PAGE.path}/${blogKey}/blog.md`
     : `public${basePath}/${blogKey}/blog.md`;
 
   const blogContent: string | undefined =
@@ -106,7 +99,7 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
     imagePath
   );
 
-  const allGroupedSkills: GroupedSkillsCategoriesInterface[] =
+  const allGroupedSkills: ListOfCategorisedSkillsByTypeInterface[] =
     buildSkillTableGroups(blogData.skills);
 
   return (
@@ -132,7 +125,7 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
           {/* Skills */}
           <Card>
             <CardContent className="py-7">
-              <SkillTableSection allGroupedSkills={allGroupedSkills} />
+              <SkillTableCell allGroupedSkills={allGroupedSkills} />
             </CardContent>
           </Card>
 

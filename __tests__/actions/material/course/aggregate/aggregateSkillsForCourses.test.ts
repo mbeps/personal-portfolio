@@ -1,12 +1,12 @@
 /// <reference types="vitest/globals" />
-import aggregateSkillsForCourses from "@/actions/material/course/aggregate/aggregateSkillsForCourses";
-import CourseDatabaseKeys from "@/database/Courses/CourseDatabaseKeys";
-import type CourseInterface from "@/database/Courses/CourseInterface";
-import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
-import type ModuleInterface from "@/database/Modules/ModuleInterface";
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import aggregateSkillsForCourses from "@/lib/material/course/aggregate/aggregateSkillsForCourses";
+import CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
+import type CourseInterface from "@/database/courses/CourseInterface";
+import ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
+import type ModuleInterface from "@/database/modules/ModuleInterface";
+import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import type Database from "@/interfaces/Database";
-import ModuleYearGroupsEnum from "@/enums/Module/ModuleYearGroupsEnum";
+import ModuleYearGroupsEnum from "@/enums/module/ModuleYearGroupsEnum";
 import { describe, expect, test } from "vitest";
 
 describe("aggregateSkillsForCourses", () => {
@@ -45,8 +45,7 @@ describe("aggregateSkillsForCourses", () => {
     };
 
     const result = aggregateSkillsForCourses(coursesDatabase, modulesDatabase);
-    const aggregatedCourse =
-      result[CourseDatabaseKeys.RHUL_ComputerScience];
+    const aggregatedCourse = result[CourseDatabaseKeys.RHUL_ComputerScience];
 
     expect(aggregatedCourse.skills).toEqual([
       SkillDatabaseKeys.Python,

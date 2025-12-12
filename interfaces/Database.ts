@@ -1,15 +1,9 @@
 /**
- * Database interface that represents a database.
- * This makes it easier to represent hashmaps.
- *
- * The fields are:
- * - `key`: the key of the database
- * - `value`: the value of the database which can be any type
- *
- * This is used to represent a database where the key is a string and the value can be any type.
- * For example, there could be a database where the key is mapped to a specific skill.
+ * Generic hashmap used across the static datasets so hooks and utilities can accept any of the material or skill maps.
+ * Keys map to slugs that mirror folder names under `public`, keeping assets and metadata aligned.
  */
 interface Database<T> {
+  /** Entry keyed by slug or identifier for the dataset. */
   [key: string]: T;
 }
 

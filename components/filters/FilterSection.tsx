@@ -1,0 +1,192 @@
+"use client";
+
+import { ArchiveToggle } from "@/components/filters/ArchiveToggle";
+import FilterPanel from "@/components/filters/FilterOverlay";
+import SearchInput from "@/components/inputs/SearchInput";
+import { Button } from "@/components/shadcn/ui/button";
+import { ButtonGroup } from "@/components/shadcn/ui/button-group";
+import FilterCategory from "@/interfaces/filters/FilterCategory";
+import FilterOption from "@/interfaces/filters/FilterOption";
+import Link from "next/link";
+import React, { useState } from "react";
+import { AiOutlineClear } from "react-icons/ai";
+import { BsFilterLeft } from "react-icons/bs";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/shadcn/ui/accordion";
+import SearchFilter from "@/interfaces/filters/SearchFilter";
+import ArchiveFilter from "@/interfaces/filters/ArchiveFilter";
+import generateUrl from "@/lib/generateUrl";
+import { useRouter } from "next/navigation";
+import { MdOutlineManageSearch } from "react-icons/md";
+
+interface FilterSectionProps {
+  name: string;
+  basePath: string;
+  filterCategories: FilterCategory[];
+  areFiltersApplied: boolean;
+  searchFilter: SearchFilter;
+  archiveFilter?: ArchiveFilter;
+}
+
+const FilterSection: React.FC<FilterSectionProps> = ({
+  name,
+  basePath,
+  searchFilter,
+  filterCategories,
+  areFiltersApplied,
+  archiveFilter,
+}) => {
+  const router = useRouter();
+
+  const filterProps: FilterOption[] = filterCategories.map(
+    (category): FilterOption => ({
+      entryName: category.urlParam,
+      slug: category.selectedValue,
+    })
+  );
+
+  filterProps.push({
+    entryName: searchFilter.searchParamName,
+    slug: searchFilter.searchTerm,
+  });
+
+  if (archiveFilter) {
+    filterProps.push({
+      entryName: archiveFilter.paramName,
+      slug: archiveFilter.showArchived.toString(),
+    });
+  }
+
+  function updateSearchTerm(newSearchTerm: string) {
+    const updatedFilterProps: FilterOption[] = filterProps.map((filterProp) => {
+      if (filterProp.entryName === searchFilter.searchParamName) {
+        return { ...filterProp, slug: newSearchTerm };
+      }
+      if (archiveFilter && filterProp.entryName === archiveFilter.paramName) {
+        return { ...filterProp, slug: true.toString() };
+      }
+      return filterProp;
+    });
+
+    const newUrl: string = generateUrl(updatedFilterProps, basePath);
+    router.push(newUrl);
+  }
+
+  const message: string = archiveFilter?.hasArchivedMaterials
+    ? `Search, Filter and View Archived ${name}`
+    : `Search & Filter ${name}`;
+
+  const [isFilterOpen, setIsFilterModalOpen] = useState(false);
+  function handleToggleFilter() {
+    setIsFilterModalOpen(!isFilterOpen);
+  }
+
+  return (
+    <>
+      <Accordion type="single" collapsible>
+        <AccordionItem value="item-1">
+          <AccordionTrigger>
+            <span className="flex items-center space-x-3 text-left">
+              <MdOutlineManageSearch
+                size={28}
+                className="text-neutral-600 dark:text-neutral-400"
+              />
+              <span className="text-lg font-semibold text-neutral-600 dark:text-neutral-400">
+                {message}
+              </span>
+            </span>
+          </AccordionTrigger>
+          <AccordionContent>
+            <div className="flex flex-col gap-2">
+              <div className="flex flex-col md:flex-row items-center w-full py-2 gap-2">
+                {/* Search input */}
+                <div className="w-full md:flex-1">
+                  <SearchInput
+                    searchTerm={searchFilter.searchTerm}
+                    updateSearchTerm={updateSearchTerm}
+                    placeholder={`Search for ${name} name or metadata`}
+                  />
+                </div>
+
+                {/* Button Group */}
+                <div className="w-full md:flex-1">
+                  <ButtonGroup className="w-full">
+                    {/* Filters Panel */}
+                    <Button
+                      variant="default"
+                      onClick={handleToggleFilter}
+                      className="flex-1 shadow-xs hover:shadow-md"
+                    >
+                      <div className="flex items-center space-x-2">
+                        <BsFilterLeft
+                          fontSize={24}
+                          className="text-neutral-700 dark:text-neutral-200"
+                        />
+                        <span>Filters</span>
+                      </div>
+                    </Button>
+                    {/* Clear Button */}
+                    <Button
+                      variant="default"
+                      asChild
+                      className="flex-1 shadow-xs hover:shadow-md"
+                    >
+                      <Link
+                        href={basePath}
+                        scroll={false}
+                        onClick={(e) => {
+                          if (!areFiltersApplied) e.preventDefault();
+                        }}
+                        aria-disabled={!areFiltersApplied}
+                        tabIndex={areFiltersApplied ? 0 : -1}
+                        className={`${
+                          !areFiltersApplied
+                            ? "pointer-events-none opacity-50"
+                            : ""
+                        }`}
+                      >
+                        <div className="flex items-center space-x-2">
+                          <AiOutlineClear
+                            fontSize={24}
+                            className="text-neutral-700 dark:text-neutral-200"
+                          />
+                          <span>Clear All</span>
+                        </div>
+                      </Link>
+                    </Button>
+                  </ButtonGroup>
+                </div>
+              </div>
+
+              {/* Archive Toggle */}
+              {archiveFilter?.hasArchivedMaterials && (
+                <ArchiveToggle
+                  showArchived={archiveFilter.showArchived}
+                  filterProps={filterProps}
+                  basePath={basePath}
+                />
+              )}
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+
+      {/* Filter Modal */}
+      <FilterPanel
+        isOpen={isFilterOpen}
+        toggle={handleToggleFilter}
+        filterCategories={filterCategories}
+        basePath={basePath}
+        archiveFilter={archiveFilter}
+        areFiltersApplied={areFiltersApplied}
+        searchFilter={searchFilter}
+      />
+    </>
+  );
+};
+
+export default FilterSection;

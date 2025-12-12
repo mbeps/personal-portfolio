@@ -1,5 +1,5 @@
 /// <reference types="vitest/globals" />
-import getImagesFromFileSystem from "@/actions/file-system/getImagesFromFileSystem";
+import getImagesFromFileSystem from "@/lib/file-system/getImagesFromFileSystem";
 import { describe, expect, test, vi } from "vitest";
 import fs from "fs";
 

@@ -1,10 +1,10 @@
-import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
-import buildSkillTableGroups from "@/actions/skills/group/buildSkillTableGroups";
+import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
+import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
 import ShortDate from "@/class/ShortDate";
-import MaterialList from "@/components/MaterialLists/MaterialList";
-import Reader from "@/components/Reader/Reader";
-import SkillTableSection from "@/components/Skills/SkillTableSection";
-import DetailsTable from "@/components/UI/DetailsTable";
+import MaterialList from "@/components/material-lists/MaterialList";
+import Reader from "@/components/reader/Reader";
+import SkillTableCell from "@/components/skills/SkillTableSection";
+import DetailsTable from "@/components/ui/DetailsTable";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
 import {
@@ -15,11 +15,11 @@ import {
 } from "@/components/shadcn/ui/card";
 import developerName from "@/constants/developerName";
 import { EXPERIENCE_PAGE } from "@/constants/pages";
-import companyDatabaseMap from "@/database/Companies/CompanyDatabaseMap";
-import CompanyInterface from "@/database/Companies/CompanyInterface";
-import rolesDatabase from "@/database/Roles/RoleDatabaseMap";
-import RoleInterface from "@/database/Roles/RoleInterface";
-import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
+import companyDatabaseMap from "@/database/companies/CompanyDatabaseMap";
+import CompanyInterface from "@/database/companies/CompanyInterface";
+import rolesDatabase from "@/database/roles/RoleDatabaseMap";
+import RoleInterface from "@/database/roles/RoleInterface";
+import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
 import type { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -30,14 +30,12 @@ type Params = Promise<{ roleKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
 /**
- * Generates the metadata for the work experience page.
- * This includes the title and description of the page.
- * This is used for SEO purposes.
+ * Builds metadata for a role detail route so the company, title, and type are exposed in head tags.
+ * Role keys map to folders under `public/roles/{roleKey}` where markdown responsibilities and assets live.
  *
- * @param props The props for the skill page.
- * @param parent The parent metadata that is being resolved.
- * @returns The metadata for the blog page.
- * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ * @param props Params promise supplied by Next.
+ * @param parent Parent metadata from the layout.
+ * @returns Metadata populated from the role entry.
  */
 export async function generateMetadata(
   props: { params: Params; searchParams: SearchParams },
@@ -63,10 +61,9 @@ export async function generateMetadata(
 }
 
 /**
- * Generates the static params for roles.
- * These params are used to pre-render the role pages.
+ * Exposes every role key for static generation so `public/roles/{key}` folders become routable experience pages.
  *
- * @returns A list of all role keys for static page generation.
+ * @returns Params for each role detail route.
  */
 export const generateStaticParams = async () => {
   return Object.keys(rolesDatabase).map((roleKey) => ({
@@ -101,7 +98,7 @@ const RolePage: React.FC<{ params: Params }> = async ({ params }) => {
       ? "Present"
       : roleData.endDate.toString();
 
-  const allGroupedSkills: GroupedSkillsCategoriesInterface[] =
+  const allGroupedSkills: ListOfCategorisedSkillsByTypeInterface[] =
     buildSkillTableGroups(roleData.skills);
 
   const responsibilities: string | undefined = getMarkdownFromFileSystem(
@@ -202,7 +199,7 @@ const RolePage: React.FC<{ params: Params }> = async ({ params }) => {
           {/* Skills section */}
           <Card>
             <CardContent className="py-7">
-              <SkillTableSection allGroupedSkills={allGroupedSkills} />
+              <SkillTableCell allGroupedSkills={allGroupedSkills} />
             </CardContent>
           </Card>
 

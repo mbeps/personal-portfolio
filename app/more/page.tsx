@@ -1,13 +1,11 @@
-import Grid from "@/components/UI/Grid";
-import PageNavigationItem from "@/components/UI/PageNavigationItem";
+import Grid from "@/components/ui/Grid";
+import PageNavigationItem from "@/app/more/_components/PageNavigationItem";
 import developerName from "@/constants/developerName";
 import NAV_ITEMS, { HOME_PAGE, MORE_PAGE } from "@/constants/pages";
 import NavigationItemInterface from "@/interfaces/NavigationItemInterface";
 
 /**
- * Generates the metadata for the page to navigate all pages.
- * This includes the title and description of the page.
- * This is used for SEO purposes.
+ * Static metadata for the all-pages directory so the discovery grid matches the route’s head tags.
  */
 export const metadata = {
   title: `${developerName} - All Pages`,

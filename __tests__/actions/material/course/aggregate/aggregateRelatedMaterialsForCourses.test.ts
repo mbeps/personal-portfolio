@@ -1,12 +1,12 @@
 /// <reference types="vitest/globals" />
-import aggregateRelatedMaterialsForCourses from "@/actions/material/course/aggregate/aggregateRelatedMaterialsForCourses";
-import CourseDatabaseKeys from "@/database/Courses/CourseDatabaseKeys";
-import type CourseInterface from "@/database/Courses/CourseInterface";
-import ModuleDatabaseKeys from "@/database/Modules/ModuleDatabaseKeys";
-import type ModuleInterface from "@/database/Modules/ModuleInterface";
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
+import aggregateRelatedMaterialsForCourses from "@/lib/material/course/aggregate/aggregateRelatedMaterialsForCourses";
+import CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
+import type CourseInterface from "@/database/courses/CourseInterface";
+import ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
+import type ModuleInterface from "@/database/modules/ModuleInterface";
+import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import type Database from "@/interfaces/Database";
-import ModuleYearGroupsEnum from "@/enums/Module/ModuleYearGroupsEnum";
+import ModuleYearGroupsEnum from "@/enums/module/ModuleYearGroupsEnum";
 import { describe, expect, test } from "vitest";
 
 describe("aggregateRelatedMaterialsForCourses", () => {

@@ -1,15 +1,13 @@
-import getImagesFromFileSystem from "@/actions/file-system/getImagesFromFileSystem";
-import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
-import getVideosFromFileSystem from "@/actions/file-system/getVideosFromFileSystem";
-import filterSkillsByCategory, {
-  filterSkillSlugsExcludingCategory,
-} from "@/actions/skills/filter/filterSkillsByCategory";
-import buildSkillTableGroups from "@/actions/skills/group/buildSkillTableGroups";
-import Gallery from "@/components/Gallery/Gallery";
-import MaterialList from "@/components/MaterialLists/MaterialList";
-import Reader from "@/components/Reader/Reader";
-import SkillTableSection from "@/components/Skills/SkillTableSection";
-import SkillTag from "@/components/Tags/SkillTag";
+import getImagesFromFileSystem from "@/lib/file-system/getImagesFromFileSystem";
+import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
+import getVideosFromFileSystem from "@/lib/file-system/getVideosFromFileSystem";
+import filterSkillsByCategory from "@/lib/skills/filter/filterSkillsByCategory";
+import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
+import Gallery from "@/components/gallery/Gallery";
+import MaterialList from "@/components/material-lists/MaterialList";
+import Reader from "@/components/reader/Reader";
+import SkillTableCell from "@/components/skills/SkillTableSection";
+import SkillTag from "@/components/tags/SkillTag";
 import {
   Accordion,
   AccordionContent,
@@ -25,12 +23,11 @@ import {
 } from "@/components/shadcn/ui/card";
 import developerName from "@/constants/developerName";
 import { PROJECTS_PAGE } from "@/constants/pages";
-import projectDatabaseMap from "@/database/Projects/ProjectDatabaseMap";
-import ProjectInterface from "@/database/Projects/ProjectInterface";
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
-import SkillCategoriesEnum from "@/enums/Skill/SkillCategoriesEnum";
-import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
+import projectDatabaseMap from "@/database/projects/ProjectDatabaseMap";
+import ProjectInterface from "@/database/projects/ProjectInterface";
+import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
+import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -38,19 +35,19 @@ import React from "react";
 import { BsPlusCircle } from "react-icons/bs";
 import { GrAppsRounded } from "react-icons/gr";
 import { ProjectLinks } from "./_components/ProjectLinks";
+import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
+import { filterSkillSlugsExcludingCategory } from "@/lib/skills/filter/filterSkillSlugsExcludingCategory";
 
 type Params = Promise<{ projectKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
 /**
- * Generates the metadata for the project page.
- * This includes the title and description of the page.
- * This is used for SEO purposes.
+ * Builds metadata for a project detail route so the slug, skills, and title flow into the head tags.
+ * Each project’s media folder lives at `public/projects/{projectKey}`, so the slug also drives the images used by the gallery.
  *
- * @param props The props for the project page.
- * @param parent The parent metadata that is being resolved.
- * @returns The metadata for the project page.
- * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ * @param props Params and search params promises supplied by Next.
+ * @param parent Parent metadata from higher layouts.
+ * @returns Metadata derived from the project entry or triggers a 404 when missing.
  */
 export async function generateMetadata(
   props: { params: Params; searchParams: SearchParams },
@@ -81,10 +78,9 @@ export async function generateMetadata(
 }
 
 /**
- * Generates the static paths for the projects.
- * These paths are used to pre-render the project pages.
+ * Supplies every project key to Next for static generation so the folders under `public/projects/{key}` become routable pages.
  *
- * @returns A list of all project keys for static page generation.
+ * @returns All project route params for pre-rendering.
  */
 export const generateStaticParams = async () => {
   return Object.keys(projectDatabaseMap).map((projectKey) => ({
@@ -93,8 +89,8 @@ export const generateStaticParams = async () => {
 };
 
 /**
- * Project detail experience that joins galleries, markdown, skill tables, and related material into one story.
- * Handles case studies with optional reports, features, and cross-linking to keep the material ecosystem interconnected.
+ * Project detail experience that ties the slug to media, markdown, and thumbnails stored under `public/projects/{key}`.
+ * Combines galleries, reports, skill tables, and related material so every route stays connected to the broader portfolio.
  *
  * @param params Dynamic slug for the project entry.
  * @returns Project overview with media, skills, and related work.
@@ -126,7 +122,7 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
       SkillCategoriesEnum.ProgrammingLanguages
     );
 
-  const allGroupedSkills: GroupedSkillsCategoriesInterface[] =
+  const allGroupedSkills: ListOfCategorisedSkillsByTypeInterface[] =
     buildSkillTableGroups(projectSkillsWithoutLanguage);
 
   function getImages(): string[] {
@@ -269,7 +265,7 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
           {/* Skills Section */}
           <Card>
             <CardContent className="py-7">
-              <SkillTableSection allGroupedSkills={allGroupedSkills} />
+              <SkillTableCell allGroupedSkills={allGroupedSkills} />
             </CardContent>
           </Card>
 

@@ -1,18 +1,10 @@
 /**
- * Interface representing a group of materials.
- *
- * The fields are:
- * - `groupName`: the name of the group
- * - `materialsKeys`: the keys of the materials in the group
- *
- * The `materialsKeys` field is an array of of keys that are used to reference the materials in the database.
- * Because different enums are used to represent different types of materials, the keys are stored as strings and not as enums.
- * This does not matter as these keys are never added by the user but rather dynamically by the codebase.
- *
- * These groups are used to group together a set of materials that are related to each other.
- * For example, Projects can be grouped together by the programming language used.
+ * Represents a group of material keys used by `MaterialGroupSectionList` so lists can be rendered by category or type without duplicating markup.
+ * Keys align with folders under `public` that mirror route paths, keeping thumbnails and markdown discoverable from the group context.
  */
 export default interface MaterialGroupInterface {
+  /** Name of the grouping shown as a section title. */
   groupName: string;
+  /** Keys that belong to this group, resolved lazily by the consuming component. */
   materialsKeys: string[];
 }

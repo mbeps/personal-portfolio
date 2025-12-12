@@ -1,9 +1,9 @@
-import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
-import processMarkdownImages from "@/actions/processMarkdownImages";
-import SpecialReader from "@/components/Reader/SpecialReader";
+import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
+import processMarkdownImages from "@/lib/processMarkdownImages";
+import SpecialReader from "@/components/reader/SpecialReader";
 import { PROJECTS_PAGE } from "@/constants/pages";
-import projectDatabaseMap from "@/database/Projects/ProjectDatabaseMap";
-import ProjectInterface from "@/database/Projects/ProjectInterface";
+import projectDatabaseMap from "@/database/projects/ProjectDatabaseMap";
+import ProjectInterface from "@/database/projects/ProjectInterface";
 import { notFound } from "next/navigation";
 
 // Update the type definitions
@@ -15,6 +15,7 @@ type PageProps = {
 
 /**
  * Dedicated route for long-form project reports so SpecialReader can render table-of-contents friendly markdown outside the main project page.
+ * The slug maps directly to `/public/projects/{projectKey}/blog.md` where the markdown and related images live.
  *
  * @param params Project slug whose `/blog.md` acts as the report source.
  * @returns Report view with backlink to the parent project.
@@ -58,10 +59,9 @@ const ProjectReportPage = async ({ params }: PageProps) => {
 };
 
 /**
- * Generates the static paths for the project reports.
- * These paths are used to pre-render the report pages.
+ * Supplies Next with only the project keys that have a `blog.md` under their `public/projects/{key}` folder so report routes are pre-rendered correctly.
  *
- * @returns A list of all project keys that have reports for static page generation.
+ * @returns All report params for static generation.
  */
 export const generateStaticParams = async () => {
   return Object.keys(projectDatabaseMap)

@@ -1,20 +1,13 @@
-import PageDescription from "@/components/UI/PageDescription";
+import PageDescription from "@/components/ui/PageDescription";
 import developerName from "@/constants/developerName";
 import { EXPERIENCE_PAGE } from "@/constants/pages";
-import rolesDatabase from "@/database/Roles/RoleDatabaseMap";
+import rolesDatabase from "@/database/roles/RoleDatabaseMap";
 import type { Metadata } from "next";
-import ExperienceView from "./components/ExperienceView";
-import companyDatabaseMap from "@/database/Companies/CompanyDatabaseMap";
+import ExperienceView from "./_components/ExperienceView";
+import companyDatabaseMap from "@/database/companies/CompanyDatabaseMap";
 
 /**
- * Generates the metadata for the work experience page.
- * This includes the title and description of the page.
- * This is used for SEO purposes.
- *
- * @param props The props for the work experience page.
- * @param parent The parent metadata that is being resolved.
- * @returns The metadata for the blog page.
- * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ * Static metadata for the experience hub, populated from the roles database so keywords stay synced with the latest timeline entries.
  */
 export const metadata: Metadata = {
   title: `${developerName} - ${EXPERIENCE_PAGE.label}`,

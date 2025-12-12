@@ -1,5 +1,5 @@
 /// <reference types="vitest/globals" />
-import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
+import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
 import { describe, expect, test, vi } from "vitest";
 import fs from "fs";
 import matter from "gray-matter";

@@ -1,19 +1,12 @@
-import PageDescription from "@/components/UI/PageDescription";
+import PageDescription from "@/components/ui/PageDescription";
 import developerName from "@/constants/developerName";
 import { PROJECTS_PAGE } from "@/constants/pages";
-import projectDatabaseMap from "@/database/Projects/ProjectDatabaseMap";
+import projectDatabaseMap from "@/database/projects/ProjectDatabaseMap";
 import type { Metadata } from "next";
-import ProjectsView from "./components/ProjectsView";
+import ProjectsView from "./_components/ProjectsView";
 
 /**
- * Generates the metadata for the project page.
- * This includes the title and description of the page.
- * This is used for SEO purposes.
- *
- * @param props The props for the skill page.
- * @param parent The parent metadata that is being resolved.
- * @returns The metadata for the project page.
- * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ * Static metadata for the projects archive, driven by the database so keywords stay in sync with the visible list.
  */
 export const metadata: Metadata = {
   title: `${developerName} - ${PROJECTS_PAGE.label}`,

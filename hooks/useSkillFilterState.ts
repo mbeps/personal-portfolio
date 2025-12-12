@@ -1,13 +1,11 @@
-import groupSkills, {
-  GroupByOptions,
-} from "@/actions/skills/group/groupSkills";
-import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
-import SkillDatabaseKeys from "@/database/Skills/SkillDatabaseKeys";
-import SkillTypesEnum from "@/enums/Skill/SkillTypesEnum";
+import groupSkills, { GroupByOptions } from "@/lib/skills/group/groupSkills";
+import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
+import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
-import SkillsCategoryInterface from "@/interfaces/skills/SkillsCategoryInterface";
-import useFuseSkillSearch from "@/hooks/useFuseSearch/useFuseSkillSearch";
+import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
+import useFuseSkillSearch from "@/hooks/use-fuse-search/useFuseSkillSearch";
 import { ReadonlyURLSearchParams, useSearchParams } from "next/navigation";
 import { useMemo } from "react";
 
@@ -51,7 +49,7 @@ interface SkillFilterState {
   /** An array of filter category configurations for the UI. */
   filterCategories: FilterCategory[];
   /** The filtered and grouped skills to be displayed. */
-  groupedSkills: SkillsCategoryInterface[];
+  groupedSkills: CategorisedSkillsInterface[];
   /** A boolean indicating if any filters are currently active. */
   areFiltersApplied: boolean;
   /** A boolean indicating if skills without associated materials should be hidden. */

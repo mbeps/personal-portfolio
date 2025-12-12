@@ -1,15 +1,15 @@
-import Footer from "@/components/Footer/Footer";
-import Navbar from "@/components/Navbar/Navbar";
-import { NAVBAR_HEIGHT } from "@/constants/NAVBAR";
+import Footer from "@/components/footer/Footer";
+import Navbar from "@/components/navbar/Navbar";
+import { NAVBAR_HEIGHT } from "@/constants/navbarHeight";
 import developerName from "@/constants/developerName";
 import { HOME_PAGE } from "@/constants/pages";
 import subtitles from "@/constants/subtitles";
 import { Providers } from "@/providers/Providers";
 import type { Metadata } from "next";
 import "./globals.css";
-import getMarkdownFromFileSystem from "@/actions/file-system/getMarkdownFromFileSystem";
+import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
 import { VercelTrackers } from "@/providers/VercelTrackers";
-import Scroll from "@/components/UI/Scroll";
+import Scroll from "@/components/ui/Scroll";
 import "katex/dist/katex.min.css";
 
 import { Inter } from "next/font/google";

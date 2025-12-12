@@ -1,20 +1,13 @@
-import PageDescription from "@/components/UI/PageDescription";
+import PageDescription from "@/components/ui/PageDescription";
 import developerName from "@/constants/developerName";
 import { CERTIFICATES_PAGE } from "@/constants/pages";
-import certificateDatabaseMap from "@/database/Certificates/CertificateDatabaseMap";
+import certificateDatabaseMap from "@/database/certificates/CertificateDatabaseMap";
 import { Metadata } from "next";
 import React from "react";
-import CertificatesView from "./components/CertificatesView";
+import CertificatesView from "./_components/CertificatesView";
 
 /**
- * Generates the metadata for the certificates page.
- * This includes the title and description of the page.
- * This is used for SEO purposes.
- *
- * @param props The props for the skill page.
- * @param parent The parent metadata that is being resolved.
- * @returns The metadata for the certificates page.
- * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ * Static metadata for the certificates archive, using the dataset itself to populate keywords so the list and SEO stay aligned.
  */
 export const metadata: Metadata = {
   title: `${developerName} - ${CERTIFICATES_PAGE.label}`,

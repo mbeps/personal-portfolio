@@ -1,19 +1,12 @@
-import PageDescription from "@/components/UI/PageDescription";
+import PageDescription from "@/components/ui/PageDescription";
 import developerName from "@/constants/developerName";
 import { BLOG_PAGE } from "@/constants/pages";
 import type { Metadata } from "next";
-import { BlogsView } from "./components/BlogsView";
-import blogsDatabaseMap from "@/database/Blogs/BlogsDatabaseMap";
+import { BlogsView } from "./_components/BlogsView";
+import blogsDatabaseMap from "@/database/blogs/BlogsDatabaseMap";
 
 /**
- * Generates the metadata for the blog page.
- * This includes the title and description of the page.
- * This is used for SEO purposes.
- *
- * @param props The props for the skill page.
- * @param parent The parent metadata that is being resolved.
- * @returns The metadata for the blog page.
- * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ * Static metadata for the blogs archive, using the blog database to keep keywords aligned with the current articles.
  */
 export const metadata: Metadata = {
   title: `${developerName} - ${BLOG_PAGE.label}`,

@@ -1,10 +1,10 @@
-import buildSkillTableGroups from "@/actions/skills/group/buildSkillTableGroups";
-import MaterialList from "@/components/MaterialLists/MaterialList";
-import SkillTableSection from "@/components/Skills/SkillTableSection";
-import StringList from "@/components/Text/StringList";
+import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
+import MaterialList from "@/components/material-lists/MaterialList";
+import SkillTableCell from "@/components/skills/SkillTableSection";
+import StringList from "@/components/ui/StringList";
 import DynamicBreadcrumb, {
   BreadcrumbPair,
-} from "@/components/UI/DynamicBreadcrumb";
+} from "@/components/ui/DynamicBreadcrumb";
 import {
   Card,
   CardContent,
@@ -13,12 +13,12 @@ import {
 } from "@/components/shadcn/ui/card";
 import developerName from "@/constants/developerName";
 import { EDUCATION_PAGE, HOME_PAGE } from "@/constants/pages";
-import courseDatabaseMap from "@/database/Courses/CourseDatabaseMap";
-import CourseInterface from "@/database/Courses/CourseInterface";
-import moduleDatabaseMap from "@/database/Modules/ModuleDatabaseMap";
-import ModuleInterface from "@/database/Modules/ModuleInterface";
-import skillDatabaseMap from "@/database/Skills/SkillDatabaseMap";
-import GroupedSkillsCategoriesInterface from "@/interfaces/skills/GroupedSkillsInterface";
+import courseDatabaseMap from "@/database/courses/CourseDatabaseMap";
+import CourseInterface from "@/database/courses/CourseInterface";
+import moduleDatabaseMap from "@/database/modules/ModuleDatabaseMap";
+import ModuleInterface from "@/database/modules/ModuleInterface";
+import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
+import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -26,14 +26,12 @@ type Params = Promise<{ moduleKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
 /**
- * Generates the metadata for the module page.
- * This includes the title and description of the page.
- * This is used for SEO purposes.
+ * Builds metadata for a module detail page so the slug, course, and learning outcomes flow into the head tags.
+ * Module keys map to folders under `public/education/{courseKey}/{moduleKey}` where markdown and assets live.
  *
- * @param props The props for the module page.
- * @param parent The parent metadata that is being resolved.
- * @returns The metadata for the module page.
- * @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata
+ * @param props Params promise resolved by Next.
+ * @param parent Parent metadata from the layout chain.
+ * @returns Metadata derived from the module entry.
  */
 export async function generateMetadata(
   props: { params: Params; searchParams: SearchParams },
@@ -56,10 +54,9 @@ export async function generateMetadata(
 }
 
 /**
- * Generates the static paths for the modules.
- * These are then used to pre-render the module pages.
+ * Provides every module key for static generation so module folders under `public/education` become routable.
  *
- * @returns A list of all the keys for the static pages that need to be generated.
+ * @returns Params for each module detail page.
  */
 export const generateStaticParams = async () => {
   return Object.keys(moduleDatabaseMap).map((moduleKey) => ({
@@ -86,7 +83,7 @@ const ModulePage: React.FC<{ params: Params }> = async ({ params }) => {
   }
 
   // Grouped skills by type
-  const allGroupedSkills: GroupedSkillsCategoriesInterface[] =
+  const allGroupedSkills: ListOfCategorisedSkillsByTypeInterface[] =
     buildSkillTableGroups(moduleData.skills);
 
   const breadcrumbData: BreadcrumbPair[] = [
@@ -150,7 +147,7 @@ const ModulePage: React.FC<{ params: Params }> = async ({ params }) => {
           {/* Skills */}
           <Card>
             <CardContent className="py-7">
-              <SkillTableSection allGroupedSkills={allGroupedSkills} />
+              <SkillTableCell allGroupedSkills={allGroupedSkills} />
             </CardContent>
           </Card>
 

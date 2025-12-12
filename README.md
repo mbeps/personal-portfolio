@@ -1,11 +1,11 @@
-This portfolio website is designed to showcase a comprehensive journey through my educational background, professional experiences, and personal achievements. It features detailed sections on skills, project portfolios, work experiences, university courses, and certificates, all organized to highlight the depth and diversity of my expertise. Interactive functionalities like browsing, filtering, and viewing related materials enhance user engagement, providing a thorough insight into my capabilities and achievements. The site is tailored to be user-friendly with features like light and dark mode and a responsive interface, making it accessible and appealing for all visitors.
+This portfolio website is designed to showcase a comprehensive journey through my educational background, professional experiences, and personal achievements. It features detailed sections on skills, project portfolios, work experiences, university courses, and certificates, all organized to highlight the depth and diversity of my expertise. Interactive functionalities like browsing, filtering, and viewing related materials enhance user engagement, providing a thorough insight into my capabilities and achievements. The site is tailored to be user-friendly with features like light and dark mode and a responsive interface, making it accessible and appealing for all visitors. The codebase now carries full JSDoc context so routes, filters, and static assets are clearly mapped to their public folder structure.
 
 # **What the Website Showcases**
 
 ## **Navigation & Discovery**
 
 - Global command palette (Cmd/Ctrl + K) indexes every page, material, module, and social profile for instant navigation.
-- Fuse-powered search with shared filter drawers (skills, categories, languages, issuers/types) and archive toggles across projects, roles, certificates, and blogs; URL params persist filter state for deep links.
+- Fuse-powered search with shared filter drawers (skills, categories, languages, issuers/types) and archive toggles across projects, roles, certificates, and blogs; URL params persist filter state for deep links and static params map slugs directly to matching public asset folders.
 - Material tabs surface related projects, roles, modules, certificates, and blogs on every detail page, and the More index keeps all routes discoverable even when they are not in the navbar.
 
 ## **Content & Media**
@@ -29,12 +29,12 @@ This portfolio website is designed to showcase a comprehensive journey through m
 ## **Work Experience & Volunteering**
 
 - Filterable archive of roles by category, employment type, and skills with Fuse search and archive toggles.
-- Role pages surface company metadata, responsibilities from markdown, grouped skills, outbound company links, and related material tabs.
+- Role pages surface company metadata, responsibilities from markdown, grouped skills, outbound company links, and related material tabs; slugs drive assets stored under `public/roles/{key}` for predictable image/markdown loading.
 
 ## **Education (Courses & Modules)**
 
 - Course cards highlight university, grade, duration, and category; detail pages show grouped modules with an archive toggle, certificate previews, skill tables, and related materials.
-- Module pages outline learning outcomes, scores, grouped skills, and breadcrumbs back to their parent course.
+- Module pages outline learning outcomes, scores, grouped skills, and breadcrumbs back to their parent course; course and module slugs align with folders under `public/education` for media and markdown.
 
 ## **Certificates & Online Courses**
 
@@ -59,6 +59,8 @@ Switch themes from the navbar toggle (supports light, dark, and system via a con
 
 ## **Responsive Interface**
 Sticky navbar, mobile drawer navigation, and fluid layouts keep the portfolio engaging across devices.
+
+Extensive JSDoc now annotates core hooks, filters, and data interfaces so contributors can quickly see how routes, query params, and public assets connect.
 
 # **Requirements**
 These are the requirements needed to run the project:

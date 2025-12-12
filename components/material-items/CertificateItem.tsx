@@ -1,0 +1,154 @@
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/shadcn/ui/tooltip";
+import { CERTIFICATES_PAGE } from "@/constants/pages";
+import certificateDatabaseMap from "@/database/certificates/CertificateDatabaseMap";
+import CertificateInterface from "@/database/certificates/CertificateInterface";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+import { BsArrowUpRightCircle, BsInfoCircle } from "react-icons/bs";
+import Tag from "../tags/Tag";
+import { AspectRatio } from "../shadcn/ui/aspect-ratio";
+
+interface CertificateItemProps {
+  certificateKey: string;
+}
+
+/**
+ * Certificate grid card used across archive and related sections, pairing issuer tags with CTA buttons and cover imagery.
+ * Mirrors the detail page metadata so visitors can jump straight to issuer sites or the internal certificate screen.
+ *
+ * @param certificateKey Certificate slug from the static database.
+ * @returns Card with image, issuer tag, and quick links.
+ */
+const CertificateItem: React.FC<CertificateItemProps> = ({
+  certificateKey,
+}) => {
+  const basePath: string = CERTIFICATES_PAGE.path;
+  let certificateData: CertificateInterface =
+    certificateDatabaseMap[certificateKey];
+
+  const customCertificatePage: string = `${basePath}/${certificateKey}`;
+  const issuerCertificatePage: string = certificateData.certificateURL;
+
+  certificateData = {
+    ...certificateData,
+    certificateImage: `${basePath}/${certificateKey}.jpg`,
+  };
+
+  return (
+    <div
+      className="
+        bg-neutral-100 dark:bg-neutral-800
+        border border-neutral-300 dark:border-neutral-700
+        p-3 lg:p-6 rounded-xl
+        transition-colors duration-700
+        flex flex-col
+        h-full w-full
+        shadow-md
+      "
+    >
+      {/* Certificate Image */}
+      {certificateData.certificateImage && (
+        <Link href={customCertificatePage}>
+          <div
+            className="
+            flex justify-center
+            rounded-xl
+            transform md:hover:scale-105
+            shadow-xs md:hover:shadow-lg
+            border border-neutral-100 dark:border-neutral-800
+            transition-all duration-500 ease-in-out
+            mb-6
+            w-full
+            overflow-hidden
+        "
+          >
+            <AspectRatio ratio={4 / 3} className="overflow-hidden relative">
+              <Image
+                key={certificateKey}
+                src={certificateData.certificateImage}
+                alt={`${certificateData.name} certificate image`}
+                fill={true}
+                quality={20}
+                loading="lazy"
+                className="
+                  rounded-xl
+                  cursor-pointer
+                  object-cover
+              "
+              />
+            </AspectRatio>
+          </div>
+        </Link>
+      )}
+
+      <div
+        className="
+        flex flex-col 
+        gap-8 px-4 py-4"
+      >
+        {/* Certificate Title */}
+        <Link href={customCertificatePage}>
+          <h1
+            className="
+              text-3xl md:text-4xl font-bold text-center 
+              md:hover:text-red-500 md:dark:hover:text-red-800
+              transition-colors duration-700 ease-in-out
+              "
+          >
+            {certificateData.name}
+          </h1>
+        </Link>
+
+        <div className="w-full flex justify-center">
+          <Tag>{certificateData.issuer}</Tag>
+        </div>
+        <div
+          className="
+            flex flex-row 
+            justify-center 
+            align-bottom 
+            space-x-4"
+        >
+          {/* Link to Credential Page */}
+
+          <Tooltip>
+            <TooltipTrigger>
+              <Link href={customCertificatePage}>
+                <BsInfoCircle
+                  size={30}
+                  className="md:hover:-translate-y-1 transition-transform cursor-pointer"
+                />
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>View Certificate Details </p>
+            </TooltipContent>
+          </Tooltip>
+          {/* Link to Credential */}
+          {certificateData.certificateURL && (
+            <Tooltip>
+              <TooltipTrigger>
+                <Link href={issuerCertificatePage} target="_blank">
+                  <BsArrowUpRightCircle
+                    size={30}
+                    className="md:hover:-translate-y-1 transition-transform cursor-pointer"
+                  />
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>View in Certificate Providers Site</p>
+              </TooltipContent>
+            </Tooltip>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default CertificateItem;
