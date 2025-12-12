@@ -75,7 +75,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.Keras,
       SkillDatabaseKeys.TensorFlow,
-      SkillDatabaseKeys.Matplotlib,
 
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.MachineLearning,
@@ -791,8 +790,9 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.RadixUI,
       SkillDatabaseKeys.TailwindCSS,
       SkillDatabaseKeys.Zustand,
-      SkillDatabaseKeys.Docker,
       SkillDatabaseKeys.Convex,
+      SkillDatabaseKeys.ClerkAuth,
+      SkillDatabaseKeys.Docker,
       SkillDatabaseKeys.EdgeStore,
       SkillDatabaseKeys.GitHubActions,
       SkillDatabaseKeys.HTML,

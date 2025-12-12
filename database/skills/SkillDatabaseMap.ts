@@ -692,6 +692,18 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.SpringBoot,
     ],
   },
+  [SkillDatabaseKeys.Convex]: {
+    name: "Convex",
+    category: SkillCategoriesEnum.BackEndWebDevelopment,
+    isMainSkill: false,
+    skillType: SkillTypesEnum.Technology,
+    relatedSkills: [
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.NonRelationalDatabases,
+      SkillDatabaseKeys.DatabaseIndexing,
+    ],
+  },
   [SkillDatabaseKeys.Cloudinary]: {
     name: "Cloudinary",
     category: SkillCategoriesEnum.BackEndWebDevelopment,
@@ -746,7 +758,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
 
   //^ Frontend Web Development
   [SkillDatabaseKeys.Jotai]: {
-    name: "Recoil",
+    name: "Jotai",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [SkillDatabaseKeys.StateManagement],
@@ -917,18 +929,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
     name: "Redis",
     category: SkillCategoriesEnum.DatabaseManagement,
     isMainSkill: true,
-    skillType: SkillTypesEnum.Technology,
-    relatedSkills: [
-      SkillDatabaseKeys.DatabaseManagementSystems,
-      SkillDatabaseKeys.Databases,
-      SkillDatabaseKeys.NonRelationalDatabases,
-      SkillDatabaseKeys.DatabaseIndexing,
-    ],
-  },
-  [SkillDatabaseKeys.Convex]: {
-    name: "Convex",
-    category: SkillCategoriesEnum.DatabaseManagement,
-    isMainSkill: false,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
       SkillDatabaseKeys.DatabaseManagementSystems,
