@@ -88,7 +88,7 @@ const certificateMap: Database<CertificateInterface> = {
     ],
   },
   [CertificateDatabaseKeys.UdemyArtificialIntelligenceAtoZ]: {
-    name: "Artificial Intelligece A-Z",
+    name: "Artificial Intelligence A-Z",
     category: CertificateCategoriesEnum.ArtificialIntelligence,
     issuer: CertificateIssuersEnum.Udemy,
     certificateURL:
