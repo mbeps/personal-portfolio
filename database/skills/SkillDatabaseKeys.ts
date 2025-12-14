@@ -47,6 +47,7 @@ enum SkillDatabaseKeys {
   FineTuning = "fine-tuning",
   Benchmarking = "benchmarking",
   Quantization = "quantization",
+  ModelContextProtocol = "model-context-protocol",
 
   //^ Full Stack Web Development
   NextJS = "next-js",

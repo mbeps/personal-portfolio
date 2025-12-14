@@ -184,7 +184,7 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
         <h2>{projectData?.name}</h2>
 
         {/* Gallery Section */}
-        {(images && images.length > 1) || (videos && videos.length > 1) ? (
+        {(images && images.length > 0) || (videos && videos.length > 0) ? (
           <Gallery images={images} videos={videos} />
         ) : (
           hasCoverImage && (
