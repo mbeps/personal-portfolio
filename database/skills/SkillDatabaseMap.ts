@@ -34,6 +34,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.Transformers,
       SkillDatabaseKeys.HuggingFace,
       SkillDatabaseKeys.LLMs,
+      SkillDatabaseKeys.ModelContextProtocol,
       SkillDatabaseKeys.NaturalLanguageProcessing,
       SkillDatabaseKeys.FineTuning,
       SkillDatabaseKeys.Benchmarking,
@@ -90,6 +91,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.Jest,
       SkillDatabaseKeys.Vitest,
       SkillDatabaseKeys.Auth0,
+      SkillDatabaseKeys.ModelContextProtocol,
     ],
   },
   [SkillDatabaseKeys.Java]: {
@@ -108,6 +110,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.Symphony,
       SkillDatabaseKeys.JUnit,
       SkillDatabaseKeys.Auth0,
+      SkillDatabaseKeys.ModelContextProtocol,
     ],
   },
   [SkillDatabaseKeys.Kotlin]: {
@@ -126,6 +129,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.JUnit,
       SkillDatabaseKeys.TeamCity,
       SkillDatabaseKeys.Auth0,
+      SkillDatabaseKeys.ModelContextProtocol,
     ],
   },
   [SkillDatabaseKeys.ShellScript]: {
@@ -341,7 +345,17 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.ApacheSpark,
     ],
   },
-
+  [SkillDatabaseKeys.ModelContextProtocol]: {
+    name: "Model Context Protocol (MCP)",
+    category: SkillCategoriesEnum.ArtificialIntelligence,
+    skillType: SkillTypesEnum.Technology,
+    relatedSkills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.Kotlin,
+    ],
+  },
   [SkillDatabaseKeys.ReinforcementLearning]: {
     name: "Reinforcement Learning",
     category: SkillCategoriesEnum.ArtificialIntelligence,

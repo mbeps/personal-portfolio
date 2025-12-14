@@ -58,6 +58,29 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.AlignmentInLargeLanguageModels
     ),
   },
+  [ProjectDatabaseKeys.LinuxGnomeMcp]: {
+    name: "Linux GNOME MCP Server",
+    description: `
+      An MCP server which allows AI agents to connect and interact with the GNOME desktop environment on Linux.
+      This allows the AI agents to perform various tasks such as opening applications, changing themes, and more.
+      `,
+    repositoryURL: "https://github.com/mbeps/linux-gnome-mcp",
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    type: ProjectTypeEnum.Personal,
+    relatedMaterials: [BlogDatabaseKeys.ModelContextProtocol],
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.ModelContextProtocol,
+      SkillDatabaseKeys.ArtificialIntelligence,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.LinuxGnomeMcp),
+  },
   [ProjectDatabaseKeys.HandWrittenDigitClassifier]: {
     name: "Handwritten Digit Classifier",
     description: `

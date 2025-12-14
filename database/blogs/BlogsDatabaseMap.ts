@@ -509,6 +509,7 @@ const blogsMap: Database<BlogInterface> = {
       SkillDatabaseKeys.NeuralNetworks,
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.Transformers,
+      SkillDatabaseKeys.ModelContextProtocol,
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.CriticalThinking,
     ],
