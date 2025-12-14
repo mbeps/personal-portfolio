@@ -72,6 +72,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.ModelContextProtocol,
       SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.PyTest,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -632,6 +633,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.GCP,
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
+      SkillDatabaseKeys.Vitest,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -674,6 +676,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.GCP,
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
+      SkillDatabaseKeys.Vitest,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -717,6 +720,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.GitHubActions,
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
+      SkillDatabaseKeys.Vitest,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -786,6 +790,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.GitHubActions,
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
+      SkillDatabaseKeys.Vitest,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -820,6 +825,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.GitHubActions,
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
+      SkillDatabaseKeys.Vitest,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -860,6 +866,8 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.TeamCity,
       SkillDatabaseKeys.HTML,
       SkillDatabaseKeys.CSS,
+      SkillDatabaseKeys.Vitest,
+      SkillDatabaseKeys.JUnit,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
@@ -945,8 +953,7 @@ const projectMap: Database<ProjectInterface> = {
       A simple project to demonstrate OAuth (GitHub & Entra ID) authentication using Next.js for the front-end and Spring Boot for the back-end.
       Uses CORS, JWTs, and secure cookie storage.
       `,
-    repositoryURL:
-      "https://github.com/stars/mbeps/lists/oauth-nextjs-spring-boot",
+    repositoryURL: "https://github.com/mbeps/oauth-springboot-nextjs",
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
