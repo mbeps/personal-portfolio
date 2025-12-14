@@ -1,0 +1,29 @@
+- Appearance: color scheme, wallpaper, wallpaper mode
+- Themes: GTK theme and icon theme
+- Fonts & scaling: font-name, monospace, text-scaling
+- Night Light: enable, temperature, schedule
+- Applications: discover `.desktop` files, list apps
+- Launch apps: `gtk-launch`, `dex`, `gio open`
+- Favorites: read/add/set favorites (dock)
+- System control: shutdown, reboot, logout, lock screen
+- Power/network: set power profile, airplane mode, enable/disable networking
+- Wi‑Fi & Bluetooth toggles
+- Volume & mute: set volume, increment/decrement, toggle mute
+- Media control: play/pause/next/previous via MPRIS (`playerctl`)
+- Brightness: step up/down via Settings Daemon
+- Clipboard: copy and paste (wl-clipboard support)
+- Notifications: send notifications with urgency/actions
+- File ops: open with default, move to trash, empty trash (GIO/GVFS)
+- Mounting: mount/unmount volumes with `gio`
+- Screenshots: Wayland tools (`grim`, `slurp`)
+- Input settings: touchpad tap-to-click, natural scroll, pointer speed
+- Keyboard sources: list/set input sources
+- GSettings/dconf management: read, set, list keys and schemas
+- D-Bus integration: use `gdbus`/`dbus-send` for session actions
+- Audio backend: `pactl` (PulseAudio/PipeWire) management
+- Wayland-aware: avoids X11-only tools; supports GNOME extensions for window ops
+- Health/resource tooling: `analyze_metrics` with typed `SystemMetrics`
+- Type-safe API: Pydantic models and FastMCP tool schemas
+- Transport & runtime: Stdio MCP server, `uv` package manager, `uv run`
+- Logging & safety: logs to stderr; stdout reserved for MCP protocol
+- Non-root design: uses user-session APIs and environment awareness (DBUS session)
