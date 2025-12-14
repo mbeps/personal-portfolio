@@ -65,7 +65,7 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
     <div className="flex flex-col items-center relative">
       {/* Media Preview */}
       <div className="w-full">
-        <Tabs defaultValue="images" className="w-full">
+        <Tabs defaultValue={images && images.length > 0 ? "images" : "demo"} className="w-full">
           {/* Images */}
           <TabsContent value="images" className="w-full">
             <Carousel
