@@ -1955,6 +1955,7 @@ const projectMap: Database<ProjectInterface> = {
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.SimpleGUI,
+      SkillDatabaseKeys.PyTest,
 
       SkillDatabaseKeys.ProblemSolving,
       SkillDatabaseKeys.ProjectManagement,
