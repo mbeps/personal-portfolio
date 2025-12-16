@@ -61,6 +61,7 @@ enum ProjectDatabaseKeys {
   MarkovDecisionAgent = "custom-markov-decision-agent",
   ComputerVisionImageSegmentation = "computer-vision-image-segmentation-assignment",
   ComputerVisionQuizzes = "computer-vision-quizzes",
+  VisionTransformerFromScratch = "vision-transformer-from-scratch",
 
   OsmosGame = "osmos-game",
   GnomeQuickSettingsTweakExtension = "gnome-quick-settings-tweak-extension",

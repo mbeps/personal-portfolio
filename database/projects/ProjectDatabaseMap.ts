@@ -115,6 +115,36 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.HandWrittenDigitClassifier
     ),
   },
+  [ProjectDatabaseKeys.VisionTransformerFromScratch]: {
+    name: "Vision Transformer",
+    description: `
+      A compact implementation of a Vision Transformer (ViT). The code is written for learning and experiments.
+      `,
+    repositoryURL: "https://github.com/mbeps/vision-transformer",
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    type: ProjectTypeEnum.Personal,
+    relatedMaterials: [BlogDatabaseKeys.Transformer],
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.PyTorch,
+      SkillDatabaseKeys.Matplotlib,
+
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DeepLearning,
+      SkillDatabaseKeys.ComputerVision,
+
+      SkillDatabaseKeys.ProblemSolving,
+      SkillDatabaseKeys.ProjectManagement,
+      SkillDatabaseKeys.CriticalThinking,
+      SkillDatabaseKeys.Creativity,
+      SkillDatabaseKeys.Adaptability,
+    ],
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.VisionTransformerFromScratch
+    ),
+    archived: true,
+  },
   [ProjectDatabaseKeys.AdultIncomePrediction]: {
     name: "Adult Income Prediction",
     description: `

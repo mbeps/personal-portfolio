@@ -264,7 +264,7 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
 
           {/* Skills Section */}
           <Card>
-            <CardContent className="py-7">
+            <CardContent className="pt-7">
               <SkillTableCell allGroupedSkills={allGroupedSkills} />
             </CardContent>
           </Card>
