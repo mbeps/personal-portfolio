@@ -4,7 +4,7 @@ import Database from "@/interfaces/Database";
 import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
 
 /**
- * Groups skills by their type (technology, technical, soft) to support the grouped tables shown on skills and material detail pages.
+ * Groups skills by their type (technology or technical) to support the grouped tables shown on skills and material detail pages.
  *
  * @param skillKeys Slugs to organise.
  * @param skillsDatabase Skill lookup map.

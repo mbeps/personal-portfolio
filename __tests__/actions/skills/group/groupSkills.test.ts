@@ -26,10 +26,16 @@ describe("groupSkills", () => {
       category: SkillCategoriesEnum.ProgrammingLanguages,
       skillType: SkillTypesEnum.Technology,
     },
-    [SkillDatabaseKeys.Teamwork]: {
-      name: "Teamwork",
-      category: SkillCategoriesEnum.SoftSkills,
-      skillType: SkillTypesEnum.Soft,
+    [SkillDatabaseKeys.Mathematics]: {
+      name: "Mathematics",
+      category: SkillCategoriesEnum.Mathematics,
+      skillType: SkillTypesEnum.Technical,
+    },
+    [SkillDatabaseKeys.StateManagement]: {
+      name: "State Management",
+      category: SkillCategoriesEnum.FrontEndWebDevelopment,
+      skillType: SkillTypesEnum.Technical,
+      relatedSkills: [SkillDatabaseKeys.JavaScript],
     },
   };
 
@@ -61,20 +67,20 @@ describe("groupSkills", () => {
     const skillKeys = [
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.ReactJS,
-      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.Mathematics,
     ];
     const result = groupSkills(
       GroupByOptions.Category,
       skillKeys,
       skillsDatabase,
-      [SkillTypesEnum.Soft]
+      [SkillTypesEnum.Technical]
     );
     expect(result).toHaveLength(2);
-    // Check that no soft skills are included
+    // Check that no technical skills are included
     result.forEach((category) => {
       category.skills.forEach((skillKey) => {
         expect(skillsDatabase[skillKey].skillType).not.toBe(
-          SkillTypesEnum.Soft
+          SkillTypesEnum.Technical
         );
       });
     });
@@ -93,37 +99,35 @@ describe("groupSkills", () => {
   });
 
   test("should handle recursive filtering of related skills", () => {
-    // Create a soft skill with related technology skills
+    // Create a technical skill with related technology skills
     const extendedSkillsDb: Database<SkillInterface> = {
       ...skillsDatabase,
-      [SkillDatabaseKeys.Leadership]: {
-        name: "Leadership",
-        category: SkillCategoriesEnum.SoftSkills,
-        skillType: SkillTypesEnum.Soft,
+      [SkillDatabaseKeys.StateManagement]: {
+        name: "State Management",
+        category: SkillCategoriesEnum.FrontEndWebDevelopment,
+        skillType: SkillTypesEnum.Technical,
         relatedSkills: [SkillDatabaseKeys.JavaScript],
       },
     };
 
-    // When filtering with excludedSkillTypes, it should exclude soft skills
-    // and their related skills should also be filtered recursively
     const skillKeys = [
-      SkillDatabaseKeys.Leadership,
+      SkillDatabaseKeys.StateManagement,
       SkillDatabaseKeys.JavaScript,
     ];
     const result = groupSkills(
       GroupByOptions.Category,
       skillKeys,
       extendedSkillsDb,
-      [SkillTypesEnum.Soft]
+      [SkillTypesEnum.Technical]
     );
 
     const allSkills = result.flatMap((category) => category.skills);
 
-    // Leadership (soft skill) should be excluded
-    expect(allSkills).not.toContain(SkillDatabaseKeys.Leadership);
+    // State management (technical skill) should be excluded
+    expect(allSkills).not.toContain(SkillDatabaseKeys.StateManagement);
 
-    // JavaScript (technology) should be included even though it's related to Leadership
-    // because JavaScript itself is not a soft skill
+    // JavaScript (technology) should be included even though it's related to a filtered skill
+    // because JavaScript itself is not a technical skill
     expect(allSkills).toContain(SkillDatabaseKeys.JavaScript);
   });
 
@@ -148,7 +152,7 @@ describe("groupSkills", () => {
   test("should group skills by skill type", () => {
     const skillKeys = [
       SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.Mathematics,
     ];
     const result = groupSkills(
       GroupByOptions.SkillType,
@@ -161,20 +165,18 @@ describe("groupSkills", () => {
     expect(allSkills).toEqual(
       expect.arrayContaining([
         SkillDatabaseKeys.JavaScript,
-        SkillDatabaseKeys.Teamwork,
+        SkillDatabaseKeys.Mathematics,
       ])
     );
   });
 
   test("should include related skills when filtering", () => {
-    // Test that when we have excluded skill types, it processes related skills correctly
-    // if they are also provided in the skillKeys array
     const skillKeys = [SkillDatabaseKeys.JavaScript, SkillDatabaseKeys.ReactJS];
     const result = groupSkills(
       GroupByOptions.Category,
       skillKeys,
       skillsDatabase,
-      [SkillTypesEnum.Soft] // Exclude soft skills
+      [SkillTypesEnum.Technical]
     );
 
     const allSkills = result.flatMap((category) => category.skills);
@@ -187,12 +189,12 @@ describe("groupSkills", () => {
 
   test("should handle case where no skills pass the filter", () => {
     // Test edge case where all skills are excluded
-    const skillKeys = [SkillDatabaseKeys.Teamwork];
+    const skillKeys = [SkillDatabaseKeys.Mathematics];
     const result = groupSkills(
       GroupByOptions.Category,
       skillKeys,
       skillsDatabase,
-      [SkillTypesEnum.Soft] // Exclude soft skills, and Teamwork is a soft skill
+      [SkillTypesEnum.Technical]
     );
 
     const allSkills = result.flatMap((category) => category.skills);
@@ -232,12 +234,12 @@ describe("groupSkills", () => {
 
     const skillKeys = [SkillDatabaseKeys.TypeScript];
     const result = groupSkills(GroupByOptions.Category, skillKeys, extendedDb, [
-      SkillTypesEnum.Soft,
+      SkillTypesEnum.Technical,
     ]);
 
     const allSkills = result.flatMap((category) => category.skills);
 
-    // TypeScript should be included (it's not a soft skill)
+    // TypeScript should be included (it's not a technical skill)
     expect(allSkills).toContain(SkillDatabaseKeys.TypeScript);
     expect(allSkills).toHaveLength(1);
   });

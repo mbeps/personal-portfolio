@@ -38,7 +38,6 @@ const CertificatesView: React.FC = () => {
   const skillCategoryParamName = "category";
   const technicalSkillParamName = "technical";
   const generalSkillParamName = "general";
-  const softSkillParamName = "soft";
   const archivedParamName = "archived";
   const searchParamName = "search";
 
@@ -127,21 +126,6 @@ const CertificatesView: React.FC = () => {
           certificateDatabaseMap,
           skillDatabaseMap,
           SkillTypesEnum.Technical
-        ),
-        applyFilter: (value, keys) =>
-          filterMaterialBySkill<CertificateInterface>(
-            value as SkillDatabaseKeys,
-            keys,
-            certificateDatabaseMap
-          ) as CertificateDatabaseKeys[],
-      },
-      {
-        sectionName: "Soft Skill",
-        urlParam: softSkillParamName,
-        options: generateFilterOptionsBySkillType<CertificateInterface>(
-          certificateDatabaseMap,
-          skillDatabaseMap,
-          SkillTypesEnum.Soft
         ),
         applyFilter: (value, keys) =>
           filterMaterialBySkill<CertificateInterface>(

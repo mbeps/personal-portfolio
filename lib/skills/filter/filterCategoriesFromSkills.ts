@@ -4,7 +4,7 @@ import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
 import Database from "@/interfaces/Database";
 
 /**
- * Filters out skills that fall into ignored categories, useful when building language-first groupings that should hide soft skills.
+ * Filters out skills that fall into ignored categories, useful when building language-first groupings that should hide unrelated categories.
  *
  * @param skillsDatabase Skill map covering the full taxonomy.
  * @param ignoredCategories Categories that should be excluded entirely.

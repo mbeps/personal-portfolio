@@ -19,6 +19,7 @@ import moduleDatabaseMap from "@/database/modules/ModuleDatabaseMap";
 import ModuleInterface from "@/database/modules/ModuleInterface";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
 import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
+import hasAnySkills from "@/lib/skills/hasAnySkills";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -85,6 +86,7 @@ const ModulePage: React.FC<{ params: Params }> = async ({ params }) => {
   // Grouped skills by type
   const allGroupedSkills: ListOfCategorisedSkillsByTypeInterface[] =
     buildSkillTableGroups(moduleData.skills);
+  const hasSkills = hasAnySkills(allGroupedSkills);
 
   const breadcrumbData: BreadcrumbPair[] = [
     { name: HOME_PAGE.label, path: HOME_PAGE.path },
@@ -145,11 +147,13 @@ const ModulePage: React.FC<{ params: Params }> = async ({ params }) => {
           )}
 
           {/* Skills */}
-          <Card>
-            <CardContent className="py-7">
-              <SkillTableCell allGroupedSkills={allGroupedSkills} />
-            </CardContent>
-          </Card>
+          {hasSkills && (
+            <Card>
+              <CardContent className="py-7">
+                <SkillTableCell allGroupedSkills={allGroupedSkills} />
+              </CardContent>
+            </Card>
+          )}
 
           {/* Score */}
           {moduleData.score && (

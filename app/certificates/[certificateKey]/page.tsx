@@ -16,6 +16,7 @@ import { CERTIFICATES_PAGE } from "@/constants/pages";
 import certificateDatabaseMap from "@/database/certificates/CertificateDatabaseMap";
 import CertificateInterface from "@/database/certificates/CertificateInterface";
 import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
+import hasAnySkills from "@/lib/skills/hasAnySkills";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -86,6 +87,7 @@ const CertificatesPage: React.FC<{ params: Params }> = async ({ params }) => {
 
   const allGroupedSkills: ListOfCategorisedSkillsByTypeInterface[] =
     buildSkillTableGroups(certificateData.skills);
+  const hasSkills = hasAnySkills(allGroupedSkills);
 
   const certificateImage = `${CERTIFICATES_PAGE.path}/${certificateKey}.jpg`;
 
@@ -150,11 +152,13 @@ const CertificatesPage: React.FC<{ params: Params }> = async ({ params }) => {
               </Card>
             )}
 
-            <Card>
-              <CardContent className="py-7">
-                <SkillTableCell allGroupedSkills={allGroupedSkills} />
-              </CardContent>
-            </Card>
+            {hasSkills && (
+              <Card>
+                <CardContent className="py-7">
+                  <SkillTableCell allGroupedSkills={allGroupedSkills} />
+                </CardContent>
+              </Card>
+            )}
 
             <Card>
               <CardContent className="py-5">

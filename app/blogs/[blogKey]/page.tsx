@@ -12,6 +12,7 @@ import blogsDatabaseMap from "@/database/blogs/BlogsDatabaseMap";
 import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
 import BlogCategoriesEnum from "@/enums/blog/BlogCategoriesEnum";
 import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
+import hasAnySkills from "@/lib/skills/hasAnySkills";
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -101,6 +102,7 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
 
   const allGroupedSkills: ListOfCategorisedSkillsByTypeInterface[] =
     buildSkillTableGroups(blogData.skills);
+  const hasSkills = hasAnySkills(allGroupedSkills);
 
   return (
     <main>
@@ -123,11 +125,13 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
 
         <div className="mt-10 material-sections-wrapper">
           {/* Skills */}
-          <Card>
-            <CardContent className="py-7">
-              <SkillTableCell allGroupedSkills={allGroupedSkills} />
-            </CardContent>
-          </Card>
+          {hasSkills && (
+            <Card>
+              <CardContent className="py-7">
+                <SkillTableCell allGroupedSkills={allGroupedSkills} />
+              </CardContent>
+            </Card>
+          )}
 
           {/* Related Materials */}
           {blogData.relatedMaterials &&

@@ -40,7 +40,6 @@ const ProjectsView: React.FC = () => {
   const typeParamName = "type";
   const skillCategoryParamName = "category";
   const generalSkillParamName = "general";
-  const softSkillParamName = "soft";
 
   const archivedParamName = "archived";
   const searchParamName = "search";
@@ -131,21 +130,6 @@ const ProjectsView: React.FC = () => {
           projectDatabaseMap,
           skillDatabaseMap,
           SkillTypesEnum.Technical
-        ),
-        applyFilter: (value, keys) =>
-          filterMaterialBySkill<ProjectInterface>(
-            value as SkillDatabaseKeys,
-            keys,
-            projectDatabaseMap
-          ) as ProjectDatabaseKeys[],
-      },
-      {
-        sectionName: "Soft Skill",
-        urlParam: softSkillParamName,
-        options: generateFilterOptionsBySkillType<ProjectInterface>(
-          projectDatabaseMap,
-          skillDatabaseMap,
-          SkillTypesEnum.Soft
         ),
         applyFilter: (value, keys) =>
           filterMaterialBySkill<ProjectInterface>(

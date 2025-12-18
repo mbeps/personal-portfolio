@@ -5,7 +5,7 @@ import { useMemo } from "react";
 
 /**
  * Fuzzy search helper dedicated to the skills dictionary so the skill directory and language modal mirror the same ranking logic.
- * Mirrors the material variant but understands nested `relatedSkills`, keeping Fuse aware of soft/general groupings.
+ * Mirrors the material variant but understands nested `relatedSkills`, keeping Fuse aware of grouped skills.
  *
  * @template T The type of the skill, extending `SkillInterface`.
  * @param skillsMap Hashmap of skills loaded from the static database.

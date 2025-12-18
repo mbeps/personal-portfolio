@@ -104,7 +104,7 @@ const TechnologiesModal: React.FC = () => {
     groupedBy as GroupByOptions,
     skillsToDisplay,
     skillDatabaseMap,
-    [SkillTypesEnum.Technical, SkillTypesEnum.Soft]
+    [SkillTypesEnum.Technical]
   );
 
   const currentGroupedName: string =

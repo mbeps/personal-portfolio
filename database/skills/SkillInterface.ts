@@ -14,6 +14,6 @@ export default interface SkillInterface {
   relatedSkills?: SkillDatabaseKeys[];
   /** Marks headline skills that should be surfaced more prominently. */
   isMainSkill?: boolean;
-  /** Type used to distinguish technologies, general technical skills, and soft skills. */
+  /** Type used to distinguish technologies and general technical skills. */
   skillType: SkillTypesEnum;
 }

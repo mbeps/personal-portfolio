@@ -65,7 +65,7 @@ export enum GroupByOptions {
 
 /**
  * Backbone helper for `SkillList`, Language/Technologies modals, and the detail page skill tables.
- * Handles grouping by language, category, or skill type while respecting exclusions (e.g., hide soft skills).
+ * Handles grouping by language, category, or skill type while respecting exclusions (e.g., hide technical skills when showing technologies only).
  *
  * @param groupedBy Dimension to group by (language, category, or skill type).
  * @param skillKeys Skills to organize, usually pre-filtered by search.

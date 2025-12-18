@@ -20,6 +20,7 @@ import CompanyInterface from "@/database/companies/CompanyInterface";
 import rolesDatabase from "@/database/roles/RoleDatabaseMap";
 import RoleInterface from "@/database/roles/RoleInterface";
 import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
+import hasAnySkills from "@/lib/skills/hasAnySkills";
 import type { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -100,6 +101,7 @@ const RolePage: React.FC<{ params: Params }> = async ({ params }) => {
 
   const allGroupedSkills: ListOfCategorisedSkillsByTypeInterface[] =
     buildSkillTableGroups(roleData.skills);
+  const hasSkills = hasAnySkills(allGroupedSkills);
 
   const responsibilities: string | undefined = getMarkdownFromFileSystem(
     `public/roles/${roleKey}/responsabilities.md`
@@ -197,11 +199,13 @@ const RolePage: React.FC<{ params: Params }> = async ({ params }) => {
           )}
 
           {/* Skills section */}
-          <Card>
-            <CardContent className="py-7">
-              <SkillTableCell allGroupedSkills={allGroupedSkills} />
-            </CardContent>
-          </Card>
+          {hasSkills && (
+            <Card>
+              <CardContent className="py-7">
+                <SkillTableCell allGroupedSkills={allGroupedSkills} />
+              </CardContent>
+            </Card>
+          )}
 
           {companyData.website && (
             <Card>

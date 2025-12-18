@@ -28,6 +28,7 @@ import ProjectInterface from "@/database/projects/ProjectInterface";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
 import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
+import hasAnySkills from "@/lib/skills/hasAnySkills";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -124,6 +125,7 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
 
   const allGroupedSkills: ListOfCategorisedSkillsByTypeInterface[] =
     buildSkillTableGroups(projectSkillsWithoutLanguage);
+  const hasSkills = hasAnySkills(allGroupedSkills);
 
   function getImages(): string[] {
     let images: string[] = getImagesFromFileSystem(
@@ -263,11 +265,13 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
           )}
 
           {/* Skills Section */}
-          <Card>
-            <CardContent className="pt-7">
-              <SkillTableCell allGroupedSkills={allGroupedSkills} />
-            </CardContent>
-          </Card>
+          {hasSkills && (
+            <Card>
+              <CardContent className="pt-7">
+                <SkillTableCell allGroupedSkills={allGroupedSkills} />
+              </CardContent>
+            </Card>
+          )}
 
           {/* Links Section */}
           {showLinks && (

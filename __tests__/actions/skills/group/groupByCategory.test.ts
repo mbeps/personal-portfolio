@@ -44,15 +44,15 @@ describe("groupByCategory", () => {
       category: SkillCategoriesEnum.DevOps,
       skillType: SkillTypesEnum.Technology,
     },
-    [SkillDatabaseKeys.Teamwork]: {
-      name: "Teamwork",
-      category: SkillCategoriesEnum.SoftSkills,
-      skillType: SkillTypesEnum.Soft,
+    [SkillDatabaseKeys.MachineLearning]: {
+      name: "Machine Learning",
+      category: SkillCategoriesEnum.ArtificialIntelligence,
+      skillType: SkillTypesEnum.Technical,
     },
-    [SkillDatabaseKeys.Leadership]: {
-      name: "Leadership",
-      category: SkillCategoriesEnum.SoftSkills,
-      skillType: SkillTypesEnum.Soft,
+    [SkillDatabaseKeys.DataScience]: {
+      name: "Data Science",
+      category: SkillCategoriesEnum.ArtificialIntelligence,
+      skillType: SkillTypesEnum.Technical,
     },
   };
 
@@ -60,7 +60,7 @@ describe("groupByCategory", () => {
     const skillKeys = [
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.ReactJS,
-      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.MachineLearning,
     ];
     const result = groupByCategory(skillKeys, skillsDatabase);
 
@@ -76,8 +76,8 @@ describe("groupByCategory", () => {
           skills: [SkillDatabaseKeys.ReactJS],
         }),
         expect.objectContaining({
-          skillCategoryName: SkillCategoriesEnum.SoftSkills,
-          skills: [SkillDatabaseKeys.Teamwork],
+          skillCategoryName: SkillCategoriesEnum.ArtificialIntelligence,
+          skills: [SkillDatabaseKeys.MachineLearning],
         }),
       ])
     );
@@ -148,9 +148,9 @@ describe("groupByCategory", () => {
   test("should maintain the order defined by SkillCategoriesEnum", () => {
     // Add skills in a different order than enum
     const skillKeys = [
-      SkillDatabaseKeys.Teamwork, // SoftSkills comes later in enum
-      SkillDatabaseKeys.JavaScript, // ProgrammingLanguages comes earlier
-      SkillDatabaseKeys.ReactJS, // FrontEndWebDevelopment comes in between
+      SkillDatabaseKeys.Docker, // DevOps appears after front-end in the enum
+      SkillDatabaseKeys.JavaScript, // ProgrammingLanguages comes later
+      SkillDatabaseKeys.ReactJS, // FrontEndWebDevelopment comes earlier
     ];
     const result = groupByCategory(skillKeys, skillsDatabase);
 
@@ -180,17 +180,17 @@ describe("groupByCategory", () => {
 
   test("should handle all skills from the same category", () => {
     const skillKeys = [
-      SkillDatabaseKeys.Teamwork,
-      SkillDatabaseKeys.Leadership,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
     ];
     const result = groupByCategory(skillKeys, skillsDatabase);
 
     expect(result).toHaveLength(1);
     expect(result[0]).toEqual({
-      skillCategoryName: SkillCategoriesEnum.SoftSkills,
+      skillCategoryName: SkillCategoriesEnum.ArtificialIntelligence,
       skills: expect.arrayContaining([
-        SkillDatabaseKeys.Teamwork,
-        SkillDatabaseKeys.Leadership,
+        SkillDatabaseKeys.MachineLearning,
+        SkillDatabaseKeys.DataScience,
       ]),
     });
     expect(result[0].skills).toHaveLength(2);
@@ -220,13 +220,13 @@ describe("groupByCategory", () => {
       SkillDatabaseKeys.Flask,
       SkillDatabaseKeys.PostgreSQL,
       SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.Teamwork,
-      SkillDatabaseKeys.Leadership,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.DataScience,
     ];
     const result = groupByCategory(skillKeys, skillsDatabase);
 
-    // We should have 6 unique categories
-    expect(result.length).toBeGreaterThanOrEqual(6);
+    // We should have at least 7 unique categories
+    expect(result.length).toBeGreaterThanOrEqual(7);
 
     // Verify total number of skills is preserved
     const totalSkills = result.reduce(
