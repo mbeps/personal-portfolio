@@ -24,16 +24,6 @@ describe("groupBySkillType", () => {
       category: SkillCategoriesEnum.FrontEndWebDevelopment,
       skillType: SkillTypesEnum.Technology,
     },
-    [SkillDatabaseKeys.Teamwork]: {
-      name: "Teamwork",
-      category: SkillCategoriesEnum.SoftSkills,
-      skillType: SkillTypesEnum.Soft,
-    },
-    [SkillDatabaseKeys.Leadership]: {
-      name: "Leadership",
-      category: SkillCategoriesEnum.SoftSkills,
-      skillType: SkillTypesEnum.Soft,
-    },
     [SkillDatabaseKeys.MachineLearning]: {
       name: "Machine Learning",
       category: SkillCategoriesEnum.ArtificialIntelligence,
@@ -49,21 +39,16 @@ describe("groupBySkillType", () => {
   test("should group skills by their skill type", () => {
     const skillKeys = [
       SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.Teamwork,
       SkillDatabaseKeys.MachineLearning,
     ];
     const result = groupBySkillType(skillKeys, skillsDatabase);
 
-    expect(result).toHaveLength(3);
+    expect(result).toHaveLength(2);
     expect(result).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
           skillCategoryName: SkillTypesEnum.Technology,
           skills: [SkillDatabaseKeys.JavaScript],
-        }),
-        expect.objectContaining({
-          skillCategoryName: SkillTypesEnum.Soft,
-          skills: [SkillDatabaseKeys.Teamwork],
         }),
         expect.objectContaining({
           skillCategoryName: SkillTypesEnum.Technical,
@@ -96,16 +81,14 @@ describe("groupBySkillType", () => {
   test("should handle skills from all skill types", () => {
     const skillKeys = [
       SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.Teamwork,
       SkillDatabaseKeys.MachineLearning,
     ];
     const result = groupBySkillType(skillKeys, skillsDatabase);
 
-    expect(result).toHaveLength(3);
+    expect(result).toHaveLength(2);
 
     const skillTypeNames = result.map((group) => group.skillCategoryName);
     expect(skillTypeNames).toContain(SkillTypesEnum.Technology);
-    expect(skillTypeNames).toContain(SkillTypesEnum.Soft);
     expect(skillTypeNames).toContain(SkillTypesEnum.Technical);
   });
 
@@ -148,25 +131,13 @@ describe("groupBySkillType", () => {
 
   test("should handle mixed skill types", () => {
     const skillKeys = [
-      SkillDatabaseKeys.Teamwork,
-      SkillDatabaseKeys.Leadership,
+      SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.Python,
     ];
     const result = groupBySkillType(skillKeys, skillsDatabase);
 
     expect(result).toHaveLength(2);
-
-    const softSkillsGroup = result.find(
-      (group) => group.skillCategoryName === SkillTypesEnum.Soft
-    );
-    expect(softSkillsGroup).toBeDefined();
-    expect(softSkillsGroup?.skills).toEqual(
-      expect.arrayContaining([
-        SkillDatabaseKeys.Teamwork,
-        SkillDatabaseKeys.Leadership,
-      ])
-    );
 
     const techSkillsGroup = result.find(
       (group) => group.skillCategoryName === SkillTypesEnum.Technology
@@ -177,6 +148,14 @@ describe("groupBySkillType", () => {
         SkillDatabaseKeys.JavaScript,
         SkillDatabaseKeys.Python,
       ])
+    );
+
+    const technicalSkillsGroup = result.find(
+      (group) => group.skillCategoryName === SkillTypesEnum.Technical
+    );
+    expect(technicalSkillsGroup).toBeDefined();
+    expect(technicalSkillsGroup?.skills).toEqual(
+      expect.arrayContaining([SkillDatabaseKeys.MachineLearning])
     );
   });
 
@@ -202,15 +181,12 @@ describe("groupBySkillType", () => {
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.ReactJS,
-      SkillDatabaseKeys.Teamwork,
-      SkillDatabaseKeys.Leadership,
       SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.DataScience,
     ];
     const result = groupBySkillType(skillKeys, skillsDatabase);
 
-    // Should have 3 skill types: Technology, Soft, Concept
-    expect(result).toHaveLength(3);
+    expect(result).toHaveLength(2);
 
     // Verify total number of skills is preserved
     const totalSkills = result.reduce(
@@ -241,17 +217,15 @@ describe("groupBySkillType", () => {
     // Testing the initialization branch for multiple types
     const skillKeys = [
       SkillDatabaseKeys.JavaScript, // First Technology skill
-      SkillDatabaseKeys.Teamwork, // First Soft skill
-      SkillDatabaseKeys.MachineLearning, // First Concept skill
+      SkillDatabaseKeys.MachineLearning, // First Technical skill
     ];
     const result = groupBySkillType(skillKeys, skillsDatabase);
 
-    expect(result).toHaveLength(3);
+    expect(result).toHaveLength(2);
 
-    // All three types should be initialized and have their respective skills
+    // Both types should be initialized and have their respective skills
     const typeNames = result.map((group) => group.skillCategoryName);
     expect(typeNames).toContain(SkillTypesEnum.Technology);
-    expect(typeNames).toContain(SkillTypesEnum.Soft);
     expect(typeNames).toContain(SkillTypesEnum.Technical);
   });
 

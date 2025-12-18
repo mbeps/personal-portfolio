@@ -7,7 +7,7 @@ import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInt
 
 /**
  * Filters skills by type and then groups them by category, producing the nested structure consumed by `SkillTableSection`.
- * Helps every detail page reuse the same grouping logic while keeping titles like “Technologies” or “Soft Skills” aligned with the enum taxonomy.
+ * Helps every detail page reuse the same grouping logic while keeping titles like “Technologies” or “Technical Skills” aligned with the enum taxonomy.
  *
  * @param skillKeys Slugs to filter and group.
  * @param skillsDatabase Skill lookup map containing categories and type metadata.

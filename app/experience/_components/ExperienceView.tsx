@@ -37,7 +37,6 @@ export const ExperienceView: React.FC = () => {
   const skillCategoryParamName = "skill";
   const technicalSkillParamName = "technical";
   const generalSkillParamName = "general";
-  const softSkillParamName = "soft";
 
   const searchParamName = "search";
   const archivedParamName = "archived";
@@ -126,21 +125,6 @@ export const ExperienceView: React.FC = () => {
           rolesDatabase,
           skillDatabaseMap,
           SkillTypesEnum.Technical
-        ),
-        applyFilter: (value, keys) =>
-          filterMaterialBySkill<RoleInterface>(
-            value as SkillDatabaseKeys,
-            keys,
-            rolesDatabase
-          ) as RoleDatabaseKeys[],
-      },
-      {
-        sectionName: "Soft Skill",
-        urlParam: softSkillParamName,
-        options: generateFilterOptionsBySkillType<RoleInterface>(
-          rolesDatabase,
-          skillDatabaseMap,
-          SkillTypesEnum.Soft
         ),
         applyFilter: (value, keys) =>
           filterMaterialBySkill<RoleInterface>(

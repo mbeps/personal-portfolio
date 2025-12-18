@@ -70,11 +70,6 @@ const skillTypeFilters = [
     label: "General Skills",
     type: SkillTypesEnum.Technical,
   },
-  {
-    paramName: "soft",
-    label: "Soft Skills",
-    type: SkillTypesEnum.Soft,
-  },
 ];
 
 /** URL parameter for hiding skills without materials. */

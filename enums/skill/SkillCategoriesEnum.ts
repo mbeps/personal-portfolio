@@ -14,7 +14,6 @@ enum SkillCategoriesEnum {
   CloudComputing = "Cloud Computing",
   GameDevelopment = "Game Development",
   Mathematics = "Mathematics",
-  SoftSkills = "Soft Skills",
 }
 
 export default SkillCategoriesEnum;

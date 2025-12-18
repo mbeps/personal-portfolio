@@ -201,25 +201,6 @@ enum SkillDatabaseKeys {
 
   //^ Others
   Symphony = "symphony",
-
-  //^ Soft Skills
-  Communication = "communication",
-  ProjectManagement = "project-management",
-  Teamwork = "teamwork",
-  Leadership = "leadership",
-  ProblemSolving = "problem-solving",
-  CriticalThinking = "critical-thinking",
-  Creativity = "creativity",
-  Adaptability = "adaptability",
-  TimeManagement = "time-management",
-  RiskManagement = "risk-management",
-  StakeholderManagement = "stakeholder-management",
-  ScopeManagement = "scope-management",
-  CostManagement = "cost-management",
-  QualityManagement = "quality-management",
-  ProcurementManagement = "procurement-management",
-  IntegrationManagement = "integration-management",
-  HumanResourceManagement = "human-resource-management",
 }
 
 export default SkillDatabaseKeys;

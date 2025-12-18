@@ -39,10 +39,10 @@ describe("groupByLanguage", () => {
       skillType: SkillTypesEnum.Technology,
       relatedSkills: [SkillDatabaseKeys.Python],
     },
-    [SkillDatabaseKeys.Teamwork]: {
-      name: "Teamwork",
-      category: SkillCategoriesEnum.SoftSkills,
-      skillType: SkillTypesEnum.Soft,
+    [SkillDatabaseKeys.MachineLearning]: {
+      name: "Machine Learning",
+      category: SkillCategoriesEnum.ArtificialIntelligence,
+      skillType: SkillTypesEnum.Technical,
       relatedSkills: [],
     },
     [SkillDatabaseKeys.Docker]: {
@@ -111,7 +111,7 @@ describe("groupByLanguage", () => {
 
   test("should group skills with no programming language relation under 'No Languages'", () => {
     const skillKeys = [
-      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.Docker,
       "git" as SkillDatabaseKeys,
     ];
@@ -121,7 +121,7 @@ describe("groupByLanguage", () => {
     expect(result[0]).toEqual({
       skillCategoryName: "No Languages",
       skills: expect.arrayContaining([
-        SkillDatabaseKeys.Teamwork,
+        SkillDatabaseKeys.MachineLearning,
         SkillDatabaseKeys.Docker,
         "git" as SkillDatabaseKeys,
       ]),
@@ -166,7 +166,7 @@ describe("groupByLanguage", () => {
     const skillKeys = [
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.ReactJS,
-      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.Docker,
     ];
     const result = groupByLanguage(skillKeys, skillsDatabase);
@@ -185,7 +185,7 @@ describe("groupByLanguage", () => {
     expect(noLanguageGroup).toBeDefined();
     expect(noLanguageGroup?.skills).toEqual(
       expect.arrayContaining([
-        SkillDatabaseKeys.Teamwork,
+        SkillDatabaseKeys.MachineLearning,
         SkillDatabaseKeys.Docker,
       ])
     );

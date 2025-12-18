@@ -84,7 +84,7 @@ export const SKILL_PAGE: NavigationItemInterface = {
   label: "Skills",
   path: "/skills",
   description: `
-    Multitude of all of my technical and soft skills that I have acquired across projects, experience, and education.
+    Multitude of my technical skills acquired across projects, experience, and education.
   `,
 };
 

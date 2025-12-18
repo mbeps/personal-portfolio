@@ -28,6 +28,7 @@ import moduleDatabaseMap from "@/database/modules/ModuleDatabaseMap";
 import ModuleInterface from "@/database/modules/ModuleInterface";
 import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
+import hasAnySkills from "@/lib/skills/hasAnySkills";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -121,6 +122,7 @@ const CoursesPage: React.FC<{
   //^ Skills
   const allGroupedSkills: ListOfCategorisedSkillsByTypeInterface[] =
     buildSkillTableGroups(courseData.skills);
+  const hasSkills = hasAnySkills(allGroupedSkills);
 
   const hasArchivedModules: boolean = courseData.modules.some(
     (moduleKey) => moduleDatabaseMap[moduleKey].archived
@@ -215,11 +217,13 @@ const CoursesPage: React.FC<{
           </Card>
 
           {/* Skills */}
-          <Card>
-            <CardContent className="py-7">
-              <SkillTableCell allGroupedSkills={allGroupedSkills} />
-            </CardContent>
-          </Card>
+          {hasSkills && (
+            <Card>
+              <CardContent className="py-7">
+                <SkillTableCell allGroupedSkills={allGroupedSkills} />
+              </CardContent>
+            </Card>
+          )}
 
           {!!courseData.certificate || hasRelatedMaterials ? (
             <Accordion type="single" collapsible>

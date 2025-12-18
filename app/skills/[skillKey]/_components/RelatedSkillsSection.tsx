@@ -2,9 +2,9 @@ import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
 import SkillTableCell from "@/components/skills/SkillTableSection";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
-import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
 import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
 import SkillInterface from "@/database/skills/SkillInterface";
+import hasAnySkills from "@/lib/skills/hasAnySkills";
 import React from "react";
 
 interface RelatedSkillsSectionProps {
@@ -32,6 +32,11 @@ const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
   // Grouped skills by type
   const allGroupedSkills: ListOfCategorisedSkillsByTypeInterface[] =
     buildSkillTableGroups(associatedSkills);
+  const hasSkills = hasAnySkills(allGroupedSkills);
+
+  if (!hasSkills) {
+    return null;
+  }
 
   return (
     <>

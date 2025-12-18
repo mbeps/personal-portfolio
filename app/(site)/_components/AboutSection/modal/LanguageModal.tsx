@@ -93,7 +93,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
     groupedBy as GroupByOptions,
     languageSkillsSlug,
     skillDatabaseMap,
-    [SkillTypesEnum.Technical, SkillTypesEnum.Soft]
+    [SkillTypesEnum.Technical]
   );
 
   const hasMaterial: boolean =

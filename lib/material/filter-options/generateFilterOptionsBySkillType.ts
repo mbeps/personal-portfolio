@@ -6,13 +6,13 @@ import Database from "@/interfaces/Database";
 import FilterOption from "@/interfaces/filters/FilterOption";
 
 /**
- * Builds dynamic filter options for a given skill type (language, framework, soft skill, etc.).
+ * Builds dynamic filter options for a given skill type (language, framework, etc.).
  * Lets each listing surface whatever skills actually appear in its dataset instead of curating manual dropdowns.
  *
  * @param materialsDatabase Material dictionary that defines the scope.
  * @param skillsDatabase Skill metadata repository.
  * @param skillType Skill type to surface (drives which related skills show in the drawer).
- * @param excludeCategory Optional guard to hide overlapping categories, e.g., when mixing general vs. soft skills.
+ * @param excludeCategory Optional guard to hide overlapping categories.
  * @returns Sorted, deduplicated filter options keyed by the skill slug.
  */
 export default function generateFilterOptionsBySkillType<

@@ -37,6 +37,11 @@ describe("addNestedSkillsMaterialList", () => {
       category: SkillCategoriesEnum.FrontEndWebDevelopment,
       skillType: SkillTypesEnum.Technology,
     },
+    [SkillDatabaseKeys.MachineLearning]: {
+      name: "Machine Learning",
+      category: SkillCategoriesEnum.ArtificialIntelligence,
+      skillType: SkillTypesEnum.Technical,
+    },
   };
 
   test("should add related skills to a material", () => {
@@ -112,7 +117,7 @@ describe("addNestedSkillsMaterialList", () => {
       materialsDatabase,
       skillsDatabase,
       [],
-      SkillTypesEnum.Soft
+      SkillTypesEnum.Technical
     );
     expect(result2.project1.skills).toEqual([SkillDatabaseKeys.JavaScript]);
   });

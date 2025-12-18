@@ -9,7 +9,8 @@ import {
 } from "@/components/shadcn/ui/tabs";
 import useIsMounted from "@/hooks/useIsMounted";
 import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
-import React, { useState } from "react";
+import hasAnySkills from "@/lib/skills/hasAnySkills";
+import React, { useMemo, useState } from "react";
 import SkillTable from "./CategorySkillDisplay";
 import filterNonEmptySkillCategories from "@/lib/skills/filter/filterNonEmptySkillCategories";
 
@@ -28,26 +29,26 @@ interface SkillTableSectionProps {
  */
 const SkillTableCell: React.FC<SkillTableSectionProps> = ({
   allGroupedSkills,
-  maxSkillsPerCategory = 5,
+  maxSkillsPerCategory: _maxSkillsPerCategory = 5,
 }) => {
+  const nonEmptySkillCategories: ListOfCategorisedSkillsByTypeInterface[] =
+    useMemo(
+      () => filterNonEmptySkillCategories(allGroupedSkills),
+      [allGroupedSkills]
+    );
+
   const [selectedTab, setSelectedTab] = useState(() => {
-    // Find the first group with non-empty skill categories
-    const nonEmptyGroup =
-      Array.isArray(allGroupedSkills) &&
-      allGroupedSkills.find((group) => group.skillCategories.length > 0);
-    return nonEmptyGroup ? stringToSlug(nonEmptyGroup.title) : "";
+    const firstGroup = nonEmptySkillCategories[0];
+    return firstGroup ? stringToSlug(firstGroup.title) : "";
   });
 
+  const hasSkills = hasAnySkills(allGroupedSkills);
   const isMounted: boolean = useIsMounted();
 
   // Do not render if not mounted or if there are no tabs with content
-  if (!isMounted || !selectedTab) {
+  if (!isMounted || !hasSkills) {
     return null;
   }
-
-  // Use the function to get non-empty skill categories
-  const nonEmptySkillCategories: ListOfCategorisedSkillsByTypeInterface[] =
-    filterNonEmptySkillCategories(allGroupedSkills);
 
   return (
     <Tabs

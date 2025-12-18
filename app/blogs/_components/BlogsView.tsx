@@ -34,7 +34,6 @@ export const BlogsView: React.FC = () => {
   const skillCategoryParamName = "skill";
   const technicalSkillParamName = "technical";
   const generalSkillParamName = "general";
-  const softSkillParamName = "soft";
 
   const searchParamName = "search";
   const archivedParamName = "archived";
@@ -110,21 +109,6 @@ export const BlogsView: React.FC = () => {
           blogsDatabaseMap,
           skillDatabaseMap,
           SkillTypesEnum.Technical
-        ),
-        applyFilter: (value, keys) =>
-          filterMaterialBySkill<BlogInterface>(
-            value as SkillDatabaseKeys,
-            keys,
-            blogsDatabaseMap
-          ) as BlogDatabaseKeys[],
-      },
-      {
-        sectionName: "Soft Skill",
-        urlParam: softSkillParamName,
-        options: generateFilterOptionsBySkillType<BlogInterface>(
-          blogsDatabaseMap,
-          skillDatabaseMap,
-          SkillTypesEnum.Soft
         ),
         applyFilter: (value, keys) =>
           filterMaterialBySkill<BlogInterface>(

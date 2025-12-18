@@ -24,10 +24,10 @@ describe("categoriseAndGroupSkills", () => {
       category: SkillCategoriesEnum.ProgrammingLanguages,
       skillType: SkillTypesEnum.Technology,
     },
-    [SkillDatabaseKeys.Teamwork]: {
-      name: "Teamwork",
-      category: SkillCategoriesEnum.SoftSkills,
-      skillType: SkillTypesEnum.Soft,
+    [SkillDatabaseKeys.MachineLearning]: {
+      name: "Machine Learning",
+      category: SkillCategoriesEnum.ArtificialIntelligence,
+      skillType: SkillTypesEnum.Technical,
     },
   };
 
@@ -36,7 +36,7 @@ describe("categoriseAndGroupSkills", () => {
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.ReactJS,
       SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.Teamwork,
+      SkillDatabaseKeys.MachineLearning,
     ];
     const result = categoriseAndGroupSkills(
       skillKeys,
@@ -62,7 +62,7 @@ describe("categoriseAndGroupSkills", () => {
   });
 
   test("should return an empty array if no skills match the type", () => {
-    const skillKeys = [SkillDatabaseKeys.Teamwork];
+    const skillKeys = [SkillDatabaseKeys.MachineLearning];
     const result = categoriseAndGroupSkills(
       skillKeys,
       skillsDatabase,
