@@ -27,7 +27,7 @@ const ModuleList: React.FC<ModuleListProps> = ({
   headingSize = "h2",
 }) => {
   const basePath: string = EDUCATION_PAGE.path;
-  const HeadingTag = headingSize as keyof JSX.IntrinsicElements;
+  const HeadingTag = headingSize as keyof React.JSX.IntrinsicElements;
 
   return (
     <MaterialGroupSectionList
