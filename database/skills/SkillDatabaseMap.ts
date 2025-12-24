@@ -60,6 +60,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.ExpressJS,
       SkillDatabaseKeys.NextJS,
       SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.Zod,
       SkillDatabaseKeys.Mongoose,
       SkillDatabaseKeys.Jest,
       SkillDatabaseKeys.Vitest,
@@ -78,6 +79,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.ExpressJS,
       SkillDatabaseKeys.NextJS,
       SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.Zod,
       SkillDatabaseKeys.ChakraUI,
       SkillDatabaseKeys.ShadcnUI,
       SkillDatabaseKeys.RadixUI,
@@ -496,6 +498,8 @@ const skillDatabaseMap: Database<SkillInterface> = {
     relatedSkills: [
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.Zod,
       SkillDatabaseKeys.ChakraUI,
       SkillDatabaseKeys.ShadcnUI,
       SkillDatabaseKeys.RadixUI,
@@ -509,7 +513,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.Jest,
       SkillDatabaseKeys.Vitest,
       SkillDatabaseKeys.UserCentricDesign,
-      SkillDatabaseKeys.ReactJS,
       SkillDatabaseKeys.AuthJs,
       SkillDatabaseKeys.Auth0,
     ],
@@ -771,6 +774,17 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
 
   //^ Frontend Web Development
+  [SkillDatabaseKeys.Zod]: {
+    name: "Zod",
+    category: SkillCategoriesEnum.FrontEndWebDevelopment,
+    skillType: SkillTypesEnum.Technology,
+    relatedSkills: [
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.NextJS,
+    ],
+  },
   [SkillDatabaseKeys.Jotai]: {
     name: "Jotai",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
@@ -791,10 +805,10 @@ const skillDatabaseMap: Database<SkillInterface> = {
     relatedSkills: [
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.TypeScript,
-
-      SkillDatabaseKeys.UserCentricDesign,
+      SkillDatabaseKeys.Zod,
       SkillDatabaseKeys.Jotai,
       SkillDatabaseKeys.Zustand,
+      SkillDatabaseKeys.UserCentricDesign,
     ],
   },
   [SkillDatabaseKeys.HTML]: {

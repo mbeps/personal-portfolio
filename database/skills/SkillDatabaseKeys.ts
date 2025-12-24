@@ -77,6 +77,7 @@ enum SkillDatabaseKeys {
   ReactJS = "react",
   Jotai = "jotai",
   Zustand = "zustand",
+  Zod = "zod",
   TailwindCSS = "tailwind-css",
   HTML = "html",
   CSS = "css",
