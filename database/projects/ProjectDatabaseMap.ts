@@ -546,6 +546,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.ChakraUi,
       SkillDatabaseKeys.Zod,
       SkillDatabaseKeys.Firebase,
+      SkillDatabaseKeys.Firestore,
       SkillDatabaseKeys.Jotai,
       SkillDatabaseKeys.GitHubActions,
       SkillDatabaseKeys.Gcp,

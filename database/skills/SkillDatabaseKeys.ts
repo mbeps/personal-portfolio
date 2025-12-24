@@ -54,6 +54,7 @@ enum SkillDatabaseKeys {
 
   //^ Backend Web Development
   Firebase = "firebase",
+  Firestore = "firestore",
   Supabase = "supabase",
   Auth0 = "auth0",
   ClerkAuth = "clerk-auth",

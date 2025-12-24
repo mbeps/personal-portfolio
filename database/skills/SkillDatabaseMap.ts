@@ -525,6 +525,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
     isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
+      SkillDatabaseKeys.Firestore,
       SkillDatabaseKeys.DatabaseManagementSystems,
       SkillDatabaseKeys.NonRelationalDatabases,
       SkillDatabaseKeys.Databases,
@@ -898,6 +899,19 @@ const skillDatabaseMap: Database<SkillInterface> = {
     isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.NonRelationalDatabases,
+      SkillDatabaseKeys.DatabaseIndexing,
+    ],
+  },
+  [SkillDatabaseKeys.Firestore]: {
+    name: "Firestore",
+    category: SkillCategoriesEnum.DatabaseManagement,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Technology,
+    relatedSkills: [
+      SkillDatabaseKeys.Firebase,
       SkillDatabaseKeys.DatabaseManagementSystems,
       SkillDatabaseKeys.Databases,
       SkillDatabaseKeys.NonRelationalDatabases,
