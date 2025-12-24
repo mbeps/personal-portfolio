@@ -21,17 +21,17 @@ describe("groupByLanguage", () => {
       skillType: SkillTypesEnum.Technology,
       relatedSkills: [],
     },
-    [SkillDatabaseKeys.ReactJS]: {
+    [SkillDatabaseKeys.ReactJs]: {
       name: "React",
       category: SkillCategoriesEnum.FrontEndWebDevelopment,
       skillType: SkillTypesEnum.Technology,
       relatedSkills: [SkillDatabaseKeys.JavaScript],
     },
-    [SkillDatabaseKeys.NextJS]: {
+    [SkillDatabaseKeys.NextJs]: {
       name: "Next.js",
       category: SkillCategoriesEnum.FullStackWebDevelopment,
       skillType: SkillTypesEnum.Technology,
-      relatedSkills: [SkillDatabaseKeys.JavaScript, SkillDatabaseKeys.ReactJS],
+      relatedSkills: [SkillDatabaseKeys.JavaScript, SkillDatabaseKeys.ReactJs],
     },
     [SkillDatabaseKeys.Flask]: {
       name: "Flask",
@@ -79,7 +79,7 @@ describe("groupByLanguage", () => {
   });
 
   test("should group skills by their related programming languages", () => {
-    const skillKeys = [SkillDatabaseKeys.ReactJS, SkillDatabaseKeys.Flask];
+    const skillKeys = [SkillDatabaseKeys.ReactJs, SkillDatabaseKeys.Flask];
     const result = groupByLanguage(skillKeys, skillsDatabase);
 
     expect(result).toHaveLength(2);
@@ -87,7 +87,7 @@ describe("groupByLanguage", () => {
       expect.arrayContaining([
         expect.objectContaining({
           skillCategoryName: "JavaScript",
-          skills: [SkillDatabaseKeys.ReactJS],
+          skills: [SkillDatabaseKeys.ReactJs],
         }),
         expect.objectContaining({
           skillCategoryName: "Python",
@@ -98,7 +98,7 @@ describe("groupByLanguage", () => {
   });
 
   test("should group skills with multiple related programming languages under each language", () => {
-    const skillKeys = [SkillDatabaseKeys.NextJS];
+    const skillKeys = [SkillDatabaseKeys.NextJs];
     const result = groupByLanguage(skillKeys, skillsDatabase);
 
     // Next.js should be grouped under JavaScript (its first related programming language)
@@ -106,7 +106,7 @@ describe("groupByLanguage", () => {
       (group) => group.skillCategoryName === "JavaScript"
     );
     expect(jsGroup).toBeDefined();
-    expect(jsGroup?.skills).toContain(SkillDatabaseKeys.NextJS);
+    expect(jsGroup?.skills).toContain(SkillDatabaseKeys.NextJs);
   });
 
   test("should group skills with no programming language relation under 'No Languages'", () => {
@@ -131,7 +131,7 @@ describe("groupByLanguage", () => {
   test("should combine programming language skills with their related framework skills", () => {
     const skillKeys = [
       SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.ReactJs,
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.Flask,
     ];
@@ -146,7 +146,7 @@ describe("groupByLanguage", () => {
     expect(jsGroup?.skills).toEqual(
       expect.arrayContaining([
         SkillDatabaseKeys.JavaScript,
-        SkillDatabaseKeys.ReactJS,
+        SkillDatabaseKeys.ReactJs,
       ])
     );
 
@@ -165,7 +165,7 @@ describe("groupByLanguage", () => {
   test("should mix all categories: languages, related skills, and no-language skills", () => {
     const skillKeys = [
       SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.ReactJs,
       SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.Docker,
     ];
@@ -246,7 +246,7 @@ describe("groupByLanguage", () => {
         name: "Tailwind CSS",
         category: SkillCategoriesEnum.FrontEndWebDevelopment,
         skillType: SkillTypesEnum.Technology,
-        relatedSkills: [SkillDatabaseKeys.ReactJS], // ReactJS is not a programming language
+        relatedSkills: [SkillDatabaseKeys.ReactJs], // ReactJS is not a programming language
       },
     };
 
@@ -264,7 +264,7 @@ describe("groupByLanguage", () => {
     // Create a skill with a related skill that doesn't exist
     const extendedDb: Database<SkillInterface> = {
       ...skillsDatabase,
-      [SkillDatabaseKeys.ExpressJS]: {
+      [SkillDatabaseKeys.ExpressJs]: {
         name: "Express.js",
         category: SkillCategoriesEnum.BackEndWebDevelopment,
         skillType: SkillTypesEnum.Technology,
@@ -272,13 +272,13 @@ describe("groupByLanguage", () => {
       },
     };
 
-    const skillKeys = [SkillDatabaseKeys.ExpressJS];
+    const skillKeys = [SkillDatabaseKeys.ExpressJs];
     const result = groupByLanguage(skillKeys, extendedDb);
 
     expect(result).toHaveLength(1);
     expect(result[0]).toEqual({
       skillCategoryName: "No Languages",
-      skills: [SkillDatabaseKeys.ExpressJS],
+      skills: [SkillDatabaseKeys.ExpressJs],
     });
   });
 
@@ -293,7 +293,7 @@ describe("groupByLanguage", () => {
     const skillKeys = [
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.ReactJs,
       SkillDatabaseKeys.Flask,
     ];
     const result = groupByLanguage(skillKeys, skillsDatabase);
@@ -316,8 +316,8 @@ describe("groupByLanguage", () => {
     };
 
     const skillKeys = [
-      SkillDatabaseKeys.ReactJS,
-      SkillDatabaseKeys.NextJS,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.NextJs,
       SkillDatabaseKeys.TypeScript,
     ];
     const result = groupByLanguage(skillKeys, extendedDb);

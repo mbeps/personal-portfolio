@@ -14,9 +14,9 @@ describe("addNestedSkillsMaterialList", () => {
       name: "JavaScript",
       category: SkillCategoriesEnum.ProgrammingLanguages,
       skillType: SkillTypesEnum.Technology,
-      relatedSkills: [SkillDatabaseKeys.ReactJS],
+      relatedSkills: [SkillDatabaseKeys.ReactJs],
     },
-    [SkillDatabaseKeys.ReactJS]: {
+    [SkillDatabaseKeys.ReactJs]: {
       name: "React",
       category: SkillCategoriesEnum.FrontEndWebDevelopment,
       skillType: SkillTypesEnum.Technology,
@@ -32,7 +32,7 @@ describe("addNestedSkillsMaterialList", () => {
       category: SkillCategoriesEnum.BackEndWebDevelopment,
       skillType: SkillTypesEnum.Technology,
     },
-    [SkillDatabaseKeys.CSS]: {
+    [SkillDatabaseKeys.Css]: {
       name: "CSS",
       category: SkillCategoriesEnum.FrontEndWebDevelopment,
       skillType: SkillTypesEnum.Technology,
@@ -61,7 +61,7 @@ describe("addNestedSkillsMaterialList", () => {
     expect(result.project1.skills).toEqual(
       expect.arrayContaining([
         SkillDatabaseKeys.JavaScript,
-        SkillDatabaseKeys.ReactJS,
+        SkillDatabaseKeys.ReactJs,
       ])
     );
   });
@@ -101,7 +101,7 @@ describe("addNestedSkillsMaterialList", () => {
     expect(result.project1.skills).toEqual(
       expect.arrayContaining([
         SkillDatabaseKeys.JavaScript,
-        SkillDatabaseKeys.ReactJS,
+        SkillDatabaseKeys.ReactJs,
       ])
     );
 
@@ -126,7 +126,7 @@ describe("addNestedSkillsMaterialList", () => {
     const materialsDatabase: Database<MaterialInterface> = {
       project1: {
         name: "Project 1",
-        skills: [SkillDatabaseKeys.JavaScript, SkillDatabaseKeys.CSS],
+        skills: [SkillDatabaseKeys.JavaScript, SkillDatabaseKeys.Css],
         category: "project",
       },
     };
@@ -141,8 +141,8 @@ describe("addNestedSkillsMaterialList", () => {
     expect(result.project1.skills).toEqual(
       expect.arrayContaining([
         SkillDatabaseKeys.JavaScript,
-        SkillDatabaseKeys.ReactJS,
-        SkillDatabaseKeys.CSS,
+        SkillDatabaseKeys.ReactJs,
+        SkillDatabaseKeys.Css,
       ])
     );
   });
@@ -151,7 +151,7 @@ describe("addNestedSkillsMaterialList", () => {
     const materialsDatabase: Database<MaterialInterface> = {
       project1: {
         name: "Project 1",
-        skills: [SkillDatabaseKeys.JavaScript, SkillDatabaseKeys.ReactJS],
+        skills: [SkillDatabaseKeys.JavaScript, SkillDatabaseKeys.ReactJs],
         category: "project",
       },
     };
@@ -165,7 +165,7 @@ describe("addNestedSkillsMaterialList", () => {
     expect(result.project1.skills).toEqual(
       expect.arrayContaining([
         SkillDatabaseKeys.JavaScript,
-        SkillDatabaseKeys.ReactJS,
+        SkillDatabaseKeys.ReactJs,
       ])
     );
   });
@@ -187,7 +187,7 @@ describe("addNestedSkillsMaterialList", () => {
     const materialsDatabase: Database<MaterialInterface> = {
       project1: {
         name: "Project 1",
-        skills: [SkillDatabaseKeys.ReactJS],
+        skills: [SkillDatabaseKeys.ReactJs],
         category: "project",
       },
     };
@@ -197,7 +197,7 @@ describe("addNestedSkillsMaterialList", () => {
       skillsDatabase,
       []
     );
-    expect(result.project1.skills).toEqual([SkillDatabaseKeys.ReactJS]);
+    expect(result.project1.skills).toEqual([SkillDatabaseKeys.ReactJs]);
   });
 
   test("should handle an empty materials database", () => {

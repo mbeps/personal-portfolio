@@ -110,8 +110,8 @@ const TechnologiesSection: React.FC = () => {
     SkillDatabaseKeys.PyTorch,
     SkillDatabaseKeys.TensorFlow,
     SkillDatabaseKeys.ScikitLearn,
-    SkillDatabaseKeys.NextJS,
-    SkillDatabaseKeys.ReactJS,
+    SkillDatabaseKeys.NextJs,
+    SkillDatabaseKeys.ReactJs,
     SkillDatabaseKeys.Flask,
     SkillDatabaseKeys.Django,
     SkillDatabaseKeys.SpringBoot,
@@ -119,9 +119,9 @@ const TechnologiesSection: React.FC = () => {
     SkillDatabaseKeys.Supabase,
     SkillDatabaseKeys.ClerkAuth,
     SkillDatabaseKeys.AuthJs,
-    SkillDatabaseKeys.MongoDB,
-    SkillDatabaseKeys.PostgreSQL,
-    SkillDatabaseKeys.MySQL,
+    SkillDatabaseKeys.MongoDb,
+    SkillDatabaseKeys.PostgreSql,
+    SkillDatabaseKeys.MySql,
     SkillDatabaseKeys.Docker,
   ];
 

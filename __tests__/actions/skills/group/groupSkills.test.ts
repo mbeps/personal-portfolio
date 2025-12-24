@@ -13,9 +13,9 @@ describe("groupSkills", () => {
       name: "JavaScript",
       category: SkillCategoriesEnum.ProgrammingLanguages,
       skillType: SkillTypesEnum.Technology,
-      relatedSkills: [SkillDatabaseKeys.ReactJS],
+      relatedSkills: [SkillDatabaseKeys.ReactJs],
     },
-    [SkillDatabaseKeys.ReactJS]: {
+    [SkillDatabaseKeys.ReactJs]: {
       name: "React",
       category: SkillCategoriesEnum.FrontEndWebDevelopment,
       skillType: SkillTypesEnum.Technology,
@@ -42,7 +42,7 @@ describe("groupSkills", () => {
   test("should group skills by category", () => {
     const skillKeys = [
       SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.ReactJs,
       SkillDatabaseKeys.Python,
     ];
     const result = groupSkills(
@@ -66,7 +66,7 @@ describe("groupSkills", () => {
   test("should exclude skills by type", () => {
     const skillKeys = [
       SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.ReactJs,
       SkillDatabaseKeys.Mathematics,
     ];
     const result = groupSkills(
@@ -171,7 +171,7 @@ describe("groupSkills", () => {
   });
 
   test("should include related skills when filtering", () => {
-    const skillKeys = [SkillDatabaseKeys.JavaScript, SkillDatabaseKeys.ReactJS];
+    const skillKeys = [SkillDatabaseKeys.JavaScript, SkillDatabaseKeys.ReactJs];
     const result = groupSkills(
       GroupByOptions.Category,
       skillKeys,
@@ -183,7 +183,7 @@ describe("groupSkills", () => {
 
     // Both JavaScript and ReactJS should be included as they're both Technology skills
     expect(allSkills).toContain(SkillDatabaseKeys.JavaScript);
-    expect(allSkills).toContain(SkillDatabaseKeys.ReactJS);
+    expect(allSkills).toContain(SkillDatabaseKeys.ReactJs);
     expect(allSkills).toHaveLength(2);
   });
 
