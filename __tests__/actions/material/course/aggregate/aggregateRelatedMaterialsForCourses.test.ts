@@ -39,7 +39,7 @@ describe("aggregateRelatedMaterialsForCourses", () => {
       },
       [ModuleDatabaseKeys.RHUL_TeamProject]: {
         name: "Team Project",
-        skills: [SkillDatabaseKeys.ReactJS],
+        skills: [SkillDatabaseKeys.ReactJs],
         category: ModuleYearGroupsEnum.Year2,
         learningOutcomes: [],
         parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,

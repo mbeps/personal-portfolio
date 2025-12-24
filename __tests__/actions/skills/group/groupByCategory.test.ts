@@ -19,12 +19,12 @@ describe("groupByCategory", () => {
       category: SkillCategoriesEnum.ProgrammingLanguages,
       skillType: SkillTypesEnum.Technology,
     },
-    [SkillDatabaseKeys.ReactJS]: {
+    [SkillDatabaseKeys.ReactJs]: {
       name: "React",
       category: SkillCategoriesEnum.FrontEndWebDevelopment,
       skillType: SkillTypesEnum.Technology,
     },
-    [SkillDatabaseKeys.NextJS]: {
+    [SkillDatabaseKeys.NextJs]: {
       name: "Next.js",
       category: SkillCategoriesEnum.FullStackWebDevelopment,
       skillType: SkillTypesEnum.Technology,
@@ -34,7 +34,7 @@ describe("groupByCategory", () => {
       category: SkillCategoriesEnum.BackEndWebDevelopment,
       skillType: SkillTypesEnum.Technology,
     },
-    [SkillDatabaseKeys.PostgreSQL]: {
+    [SkillDatabaseKeys.PostgreSql]: {
       name: "PostgreSQL",
       category: SkillCategoriesEnum.DatabaseManagement,
       skillType: SkillTypesEnum.Technology,
@@ -59,7 +59,7 @@ describe("groupByCategory", () => {
   test("should group skills by their category", () => {
     const skillKeys = [
       SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.ReactJs,
       SkillDatabaseKeys.MachineLearning,
     ];
     const result = groupByCategory(skillKeys, skillsDatabase);
@@ -73,7 +73,7 @@ describe("groupByCategory", () => {
         }),
         expect.objectContaining({
           skillCategoryName: SkillCategoriesEnum.FrontEndWebDevelopment,
-          skills: [SkillDatabaseKeys.ReactJS],
+          skills: [SkillDatabaseKeys.ReactJs],
         }),
         expect.objectContaining({
           skillCategoryName: SkillCategoriesEnum.ArtificialIntelligence,
@@ -101,10 +101,10 @@ describe("groupByCategory", () => {
   test("should handle skills from multiple different categories", () => {
     const skillKeys = [
       SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.ReactJS,
-      SkillDatabaseKeys.NextJS,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.NextJs,
       SkillDatabaseKeys.Flask,
-      SkillDatabaseKeys.PostgreSQL,
+      SkillDatabaseKeys.PostgreSql,
       SkillDatabaseKeys.Docker,
     ];
     const result = groupByCategory(skillKeys, skillsDatabase);
@@ -150,7 +150,7 @@ describe("groupByCategory", () => {
     const skillKeys = [
       SkillDatabaseKeys.Docker, // DevOps appears after front-end in the enum
       SkillDatabaseKeys.JavaScript, // ProgrammingLanguages comes later
-      SkillDatabaseKeys.ReactJS, // FrontEndWebDevelopment comes earlier
+      SkillDatabaseKeys.ReactJs, // FrontEndWebDevelopment comes earlier
     ];
     const result = groupByCategory(skillKeys, skillsDatabase);
 
@@ -215,10 +215,10 @@ describe("groupByCategory", () => {
     const skillKeys = [
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.ReactJS,
-      SkillDatabaseKeys.NextJS,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.NextJs,
       SkillDatabaseKeys.Flask,
-      SkillDatabaseKeys.PostgreSQL,
+      SkillDatabaseKeys.PostgreSql,
       SkillDatabaseKeys.Docker,
       SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.DataScience,

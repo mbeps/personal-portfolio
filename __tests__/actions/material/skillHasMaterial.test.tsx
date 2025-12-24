@@ -21,7 +21,7 @@ describe("skillHasMaterial", () => {
 
   test("should return false if the skill has exactly 1 material", () => {
     (countMaterialsBySkill as vi.Mock).mockReturnValue(1);
-    expect(skillHasMaterial(SkillDatabaseKeys.CSS)).toBe(false);
+    expect(skillHasMaterial(SkillDatabaseKeys.Css)).toBe(false);
   });
 
   test("should return true if the skill has exactly 2 materials", () => {

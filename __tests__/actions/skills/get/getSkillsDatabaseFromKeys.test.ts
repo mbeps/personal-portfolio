@@ -19,7 +19,7 @@ describe("getSkillsDatabaseFromKeys", () => {
       category: SkillCategoriesEnum.ProgrammingLanguages,
       skillType: SkillTypesEnum.Technology,
     },
-    [SkillDatabaseKeys.ReactJS]: {
+    [SkillDatabaseKeys.ReactJs]: {
       name: "React",
       category: SkillCategoriesEnum.FrontEndWebDevelopment,
       skillType: SkillTypesEnum.Technology,
@@ -89,7 +89,7 @@ describe("getSkillsDatabaseFromKeys", () => {
     const skillKeys = [
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.ReactJs,
     ];
     const result = getSkillsDatabaseFromKeys(skillKeys, skillsDatabase);
 
@@ -101,14 +101,14 @@ describe("getSkillsDatabaseFromKeys", () => {
     const skillKeys = [
       SkillDatabaseKeys.JavaScript,
       "fake-skill-1" as SkillDatabaseKeys,
-      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.ReactJs,
       "fake-skill-2" as SkillDatabaseKeys,
     ];
     const result = getSkillsDatabaseFromKeys(skillKeys, skillsDatabase);
 
     expect(Object.keys(result)).toHaveLength(2);
     expect(result[SkillDatabaseKeys.JavaScript]).toBeDefined();
-    expect(result[SkillDatabaseKeys.ReactJS]).toBeDefined();
+    expect(result[SkillDatabaseKeys.ReactJs]).toBeDefined();
     expect(result["fake-skill-1" as SkillDatabaseKeys]).toBeUndefined();
     expect(result["fake-skill-2" as SkillDatabaseKeys]).toBeUndefined();
   });
@@ -162,12 +162,12 @@ describe("getSkillsDatabaseFromKeys", () => {
   });
 
   test("should preserve skill data integrity", () => {
-    const skillKeys = [SkillDatabaseKeys.ReactJS];
+    const skillKeys = [SkillDatabaseKeys.ReactJs];
     const result = getSkillsDatabaseFromKeys(skillKeys, skillsDatabase);
 
     // The returned skill should be the exact same reference
-    expect(result[SkillDatabaseKeys.ReactJS]).toBe(
-      skillsDatabase[SkillDatabaseKeys.ReactJS]
+    expect(result[SkillDatabaseKeys.ReactJs]).toBe(
+      skillsDatabase[SkillDatabaseKeys.ReactJs]
     );
   });
 });

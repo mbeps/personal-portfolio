@@ -14,7 +14,7 @@ describe("categoriseAndGroupSkills", () => {
       category: SkillCategoriesEnum.ProgrammingLanguages,
       skillType: SkillTypesEnum.Technology,
     },
-    [SkillDatabaseKeys.ReactJS]: {
+    [SkillDatabaseKeys.ReactJs]: {
       name: "React",
       category: SkillCategoriesEnum.FrontEndWebDevelopment,
       skillType: SkillTypesEnum.Technology,
@@ -34,7 +34,7 @@ describe("categoriseAndGroupSkills", () => {
   test("should categorise and group skills of a specific type", () => {
     const skillKeys = [
       SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.ReactJs,
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.MachineLearning,
     ];
@@ -55,7 +55,7 @@ describe("categoriseAndGroupSkills", () => {
         },
         {
           skillCategoryName: SkillCategoriesEnum.FrontEndWebDevelopment,
-          skills: [SkillDatabaseKeys.ReactJS],
+          skills: [SkillDatabaseKeys.ReactJs],
         },
       ])
     );

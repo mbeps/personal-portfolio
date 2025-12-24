@@ -19,7 +19,7 @@ describe("groupBySkillType", () => {
       category: SkillCategoriesEnum.ProgrammingLanguages,
       skillType: SkillTypesEnum.Technology,
     },
-    [SkillDatabaseKeys.ReactJS]: {
+    [SkillDatabaseKeys.ReactJs]: {
       name: "React",
       category: SkillCategoriesEnum.FrontEndWebDevelopment,
       skillType: SkillTypesEnum.Technology,
@@ -62,7 +62,7 @@ describe("groupBySkillType", () => {
     const skillKeys = [
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.ReactJs,
     ];
     const result = groupBySkillType(skillKeys, skillsDatabase);
 
@@ -72,7 +72,7 @@ describe("groupBySkillType", () => {
       skills: expect.arrayContaining([
         SkillDatabaseKeys.JavaScript,
         SkillDatabaseKeys.Python,
-        SkillDatabaseKeys.ReactJS,
+        SkillDatabaseKeys.ReactJs,
       ]),
     });
     expect(result[0].skills).toHaveLength(3);
@@ -115,7 +115,7 @@ describe("groupBySkillType", () => {
 
   test("should preserve skill order within each type", () => {
     const skillKeys = [
-      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.ReactJs,
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.Python,
     ];
@@ -123,7 +123,7 @@ describe("groupBySkillType", () => {
 
     expect(result).toHaveLength(1);
     expect(result[0].skills).toEqual([
-      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.ReactJs,
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.Python,
     ]);
@@ -180,7 +180,7 @@ describe("groupBySkillType", () => {
     const skillKeys = [
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.Python,
-      SkillDatabaseKeys.ReactJS,
+      SkillDatabaseKeys.ReactJs,
       SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.DataScience,
     ];

@@ -37,7 +37,7 @@ describe("updateRolesWithExperienceTime", () => {
 
     rolesMap.seniorEngineer = {
       name: "Senior Engineer",
-      skills: [SkillDatabaseKeys.ReactJS],
+      skills: [SkillDatabaseKeys.ReactJs],
       category: ExperienceCategoriesEnum.Software,
       type: ExperienceTypeEnum.FullTime,
       startDate: new ShortDate(2019, 5),
