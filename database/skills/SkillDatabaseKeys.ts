@@ -73,6 +73,7 @@ enum SkillDatabaseKeys {
   EdgeStore = "edge-store",
   WebSockets = "web-sockets",
   UserAuthentication = "user-authentication",
+  CrossOriginResourceSharing = "cross-origin-resource-sharing",
 
   //^ Frontend Web Development
   ReactJs = "react",
