@@ -74,15 +74,30 @@ export default function About() {
   const featuredMaterial: string[] = [
     RoleDatabaseKeys.CommerzbankDevOpsEngineer,
     RoleDatabaseKeys.GoogleRHULDevelopersClubSoftwareEngineer,
+    RoleDatabaseKeys.OpenSourceContributor,
+    RoleDatabaseKeys.AJTuitionCentreTutor,
+    RoleDatabaseKeys.MadhusTeamLeader,
+
     ProjectDatabaseKeys.ForumDiscussions,
     ProjectDatabaseKeys.RealTimeMessaging,
     ProjectDatabaseKeys.AiGenerations,
-    ProjectDatabaseKeys.HousePricePrediction,
-    ProjectDatabaseKeys.AdultIncomePrediction,
-    ProjectDatabaseKeys.MachineLearningLabs,
-    ProjectDatabaseKeys.MachineLearningDataScienceLab,
-    ProjectDatabaseKeys.ArtificialIntelligenceReinforcementLearning,
-    ProjectDatabaseKeys.Noodle,
+    ProjectDatabaseKeys.RichTextNotes,
+    ProjectDatabaseKeys.CarDealership,
+    ProjectDatabaseKeys.CommerzbankRates,
+
+    ProjectDatabaseKeys.AlignmentInLargeLanguageModels,
+    ProjectDatabaseKeys.CustomNeuralNetworkCoursework,
+    ProjectDatabaseKeys.HandWrittenDigitClassifier,
+    ProjectDatabaseKeys.LinuxGnomeMcp,
+
+    ProjectDatabaseKeys.SymphonyTranslateBot,
+    ProjectDatabaseKeys.SymphonyPollBot,
+    ProjectDatabaseKeys.SymphonyBlogBot,
+    ProjectDatabaseKeys.SymphonyRssBot,
+    ProjectDatabaseKeys.SymphonyApplicationStatusBot,
+    ProjectDatabaseKeys.SymphonyWebhookBot,
+    ProjectDatabaseKeys.SymphonyBusinessHighlightsBot,
+    ProjectDatabaseKeys.SymphonyCobaGPTBot,
   ];
 
   return (
