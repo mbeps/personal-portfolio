@@ -24,7 +24,7 @@ const BlogItem: React.FC<BlogItemProps> = ({ blogKey }) => {
         <div
           className="
             flex flex-col
-            min-h-[180px] h-full max-h-[280px]
+            min-h-45 h-full max-h-70
             cursor-pointer
             bg-neutral-100 dark:bg-neutral-800
             md:hover:bg-neutral-200 md:dark:hover:bg-red-950
@@ -33,7 +33,7 @@ const BlogItem: React.FC<BlogItemProps> = ({ blogKey }) => {
             hover:border-neutral-400 dark:hover:border-red-500
             rounded-xl
             shadow-md md:hover:shadow-lg
-            transform md:hover:scale-105
+            transform md:hover:scale-103
             transition-all duration-500 ease-in-out"
         >
           <h2 className=" text-xl font-bold  mb-4 text-neutral-900 dark:text-neutral-100">
