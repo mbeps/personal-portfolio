@@ -1,3 +1,4 @@
+## Introduction
 I am a Software Engineer at Commerzbank in London with over 2 years of professional experience. I hold a Master's degree in Artificial Intelligence and a Bachelor's degree in Computer Science. I specialise in backend development, full-stack development, and AI/ML. I completed over 50 projects across AI, web development, and software engineering, applying DevOps practices throughout. My work focuses on building scalable systems, automating workflows, and integrating intelligent solutions into production environments.
 
 ## Education
