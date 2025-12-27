@@ -3,7 +3,13 @@ import MaterialList from "@/components/material-lists/MaterialList";
 import Reader from "@/components/reader/Reader";
 import Socials from "@/components/socials/Socials";
 import DetailsTable from "@/components/ui/DetailsTable";
-import { Card, CardContent } from "@/components/shadcn/ui/card";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/shadcn/ui/accordion";
+import { Info } from "lucide-react";
 import developerName from "@/constants/developerName";
 import experienceTime from "@/constants/experience";
 import subtitles from "@/constants/subtitles";
@@ -19,6 +25,7 @@ import type RoleInterface from "@/database/roles/RoleInterface";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { GrAppsRounded } from "react-icons/gr";
 
 const aboutContent: string | undefined = getMarkdownFromFileSystem(
   "public/about/long.md"
@@ -84,108 +91,108 @@ export default function About() {
         <h1>About Me</h1>
       </div>
 
-      {/* Profile Image only shown in mobile*/}
-      <div className="block lg:hidden my-5 lg:md-0">
-        <div className="flex justify-center">
-          <Image
-            src="/profile.png"
-            alt="Profile image of the developer"
-            width={150}
-            height={150}
-            className="rounded-full shadow-2xl"
-            quality={60}
-            loading="eager"
-            priority
-          />
+      {/* Top-centered profile image and socials (outside the card) */}
+      <div className="flex flex-col items-center my-6">
+        <Image
+          src="/profile.png"
+          alt="Profile image of the developer"
+          width={160}
+          height={160}
+          className="rounded-full shadow-2xl"
+          quality={60}
+          loading="eager"
+          priority
+        />
+        <div className="mt-4">
+          <Socials iconSize={36} />
         </div>
       </div>
 
-      <div className="space-y-6">
-        <div
-          className="
-            flex flex-col lg:flex-row
-            space-y-10 md:space-y-5 lg:space-y-0
-            items-stretch justify-center align-top
-            lg:space-x-10 lg:p-4
-            lg:text-left
-        "
-        >
-          {/* Left section */}
-          <div className="lg:w-[75%]">
-            <Reader content={aboutContent} size="lg:prose-lg" />
-          </div>
-
-          {/* Right section */}
-          <Card className="lg:w-[25%] mb-8 md:mb-0">
-            <CardContent className="space-y-5 lg:space-y-10">
-              {/* Profile Image only shown in desktop */}
-              <div className="flex justify-center">
-                <Image
-                  src="/profile.png"
-                  alt="Profile image of the developer"
-                  width={250}
-                  height={250}
-                  className="rounded-full shadow-xl hidden lg:block mt-8 align-center"
-                  quality={60}
-                  loading="eager"
-                  priority
-                />
-              </div>
-
-              {/* Social Icons */}
-              <div className="flex justify-center">
-                <Socials iconSize={36} />
-              </div>
-
-              {/* Details */}
-              <DetailsTable
-                details={[
-                  { heading: "Name", value: developerName },
-                  { heading: "Email Address", value: "bepary71@gmail.com" },
-                  { heading: "Location", value: "London, UK" },
-                  {
-                    heading: "Master's Degree",
-                    value: `${masters.grade} in ${masters.name} at ${masters.university}`,
-                  },
-                  {
-                    heading: "Bachelor's Degree",
-                    value: `${undergraduate.grade} in ${undergraduate.name} at ${undergraduate.university}`,
-                  },
-                  {
-                    heading: "Current Role",
-                    value: `${latestRole} at ${latestCompany}`,
-                  },
-                  {
-                    heading: "Years of Experience",
-                    value:
-                      1 === experienceTime
-                        ? "1 year"
-                        : `${experienceTime} years`,
-                  },
-                  {
-                    heading: "Main Focus",
-                    value: [
-                      "Artificial Intelligence",
-                      "Full-Stack Development",
-                      "Backend Software Engineering",
-                    ],
-                  },
-                  {
-                    heading: "Number of Projects",
-                    value: `${numberOfProjects}`,
-                  },
-                  {
-                    heading: "Number of Certificates",
-                    value: `${numberOfCertificates}`,
-                  },
-                ]}
-                className="grid-cols-1 md:grid-cols-2 lg:grid-cols-1 lg:max-w-[220px] gap-12"
-              />
-            </CardContent>
-          </Card>
-        </div>
+      <div className="mb-10">
+        <Reader content={aboutContent} size="lg:prose-lg" />
       </div>
-      <MaterialList materialKeys={featuredMaterial} />
+
+      <Accordion type="single" collapsible>
+        <AccordionItem value="item-1">
+          <AccordionTrigger>
+            <div className="flex items-center space-x-3">
+              <Info size={26} className="text-neutral-500" />
+              <p
+                className="
+                  text-lg 
+                  text-neutral-600 dark:text-neutral-400
+                  font-semibold
+                  "
+              >
+                Summary
+              </p>
+            </div>
+          </AccordionTrigger>
+          <AccordionContent>
+            <DetailsTable
+              details={[
+                { heading: "Location", value: "London, UK" },
+                {
+                  heading: "Main Focus",
+                  value: [
+                    "Artificial Intelligence",
+                    "Full-Stack Development",
+                    "Backend Software Engineering",
+                  ],
+                },
+                {
+                  heading: "Master's Degree",
+                  value: `${masters.grade} in ${masters.name} at ${masters.university}`,
+                },
+                {
+                  heading: "Bachelor's Degree",
+                  value: `${undergraduate.grade} in ${undergraduate.name} at ${undergraduate.university}`,
+                },
+                {
+                  heading: "Current Role",
+                  value: `${latestRole} at ${latestCompany}`,
+                },
+                {
+                  heading: "Years of Experience",
+                  value:
+                    1 === experienceTime ? "1 year" : `${experienceTime} years`,
+                },
+                {
+                  heading: "Number of Projects",
+                  value: `${numberOfProjects}`,
+                },
+                {
+                  heading: "Number of Certificates",
+                  value: `${numberOfCertificates}`,
+                },
+              ]}
+              className="grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mx-auto"
+            />
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-2">
+          <AccordionTrigger>
+            <div className="flex items-center space-x-3">
+              <GrAppsRounded size={25} className="text-neutral-500" />
+              <p
+                className="
+                  text-lg 
+                  text-neutral-600 dark:text-neutral-400
+                  font-semibold
+                  "
+              >
+                Related Material
+              </p>
+            </div>
+          </AccordionTrigger>
+          <AccordionContent className="px-2">
+            <MaterialList
+              materialKeys={featuredMaterial}
+              isCollapsible={false}
+            />
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </main>
   );
 }
