@@ -108,7 +108,8 @@ export const CV_PAGE: NavigationItemInterface = {
   label: "CV",
   path: "/cv",
   description: `
-    My Curriculum Vitae (CV) detailing my professional experience, education, skills, and projects.
+    My CV detailing my professional experience, education, skills, and projects. 
+    This is generated dynamically from all the information available on this website.
   `,
 };
 
