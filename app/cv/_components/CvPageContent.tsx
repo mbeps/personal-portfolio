@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import CourseInterface from "@/database/courses/CourseInterface";
 import ProjectInterface from "@/database/projects/ProjectInterface";
 import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
@@ -15,6 +15,7 @@ import CvSkillGroup from "./CvSkillGroup";
 import Reader from "@/components/reader/Reader";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
 import { SerializedRoleInterface } from "../page";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 
 interface CvPageContentProps {
   aboutContent?: string;
@@ -43,7 +44,19 @@ const CvPageContent: React.FC<CvPageContentProps> = ({
   certificateCount,
   blogCount,
 }) => {
-  const [showArchived, setShowArchived] = useState(false);
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  // Read archive state from URL, default to false
+  const showArchived = (searchParams.get("archived") ?? "false") === "true";
+
+  // Function to toggle archived state in URL
+  const handleArchiveToggle = (checked: boolean) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("archived", checked.toString());
+    router.push(`${pathname}?${params.toString()}`);
+  };
 
   const filterArchived = <T extends { archived?: boolean }>(items: T[]) => {
     return showArchived ? items : items.filter((item) => !item.archived);
@@ -76,7 +89,7 @@ const CvPageContent: React.FC<CvPageContentProps> = ({
           <Switch
             id="archive-mode"
             checked={showArchived}
-            onCheckedChange={setShowArchived}
+            onCheckedChange={handleArchiveToggle}
           />
           <label
             htmlFor="archive-mode"
