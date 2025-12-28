@@ -101,6 +101,19 @@ export const ABOUT_PAGE: NavigationItemInterface = {
 };
 
 /**
+ * Navigation item for the CV page.
+ * This is where the user can view my CV.
+ */
+export const CV_PAGE: NavigationItemInterface = {
+  label: "CV",
+  path: "/cv",
+  description: `
+    My CV detailing my professional experience, education, skills, and projects. 
+    This is generated dynamically from all the information available on this website.
+  `,
+};
+
+/**
  * Navigation item for the more page.
  * This is where the user can navigate to all the pages on the website.
  */
@@ -133,6 +146,7 @@ const NAV_ITEMS: Array<NavigationItemInterface> = [
   EDUCATION_PAGE,
   CERTIFICATES_PAGE,
   BLOG_PAGE,
+  CV_PAGE,
   MORE_PAGE,
 ];
 

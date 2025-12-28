@@ -45,7 +45,7 @@ const AboutSection = () => {
             </h1>
 
             <div className="space-y-2">
-              <Reader content={blogContent} />
+              <Reader content={blogContent} size="lg:prose-lg" />
               <Link
                 href="/about"
                 className="

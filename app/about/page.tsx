@@ -26,6 +26,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { GrAppsRounded } from "react-icons/gr";
+import location from "@/constants/location";
 
 const aboutContent: string | undefined = getMarkdownFromFileSystem(
   "public/about/long.md"
@@ -146,7 +147,7 @@ export default function About() {
           <AccordionContent>
             <DetailsTable
               details={[
-                { heading: "Location", value: "London, UK" },
+                { heading: "Location", value: location },
                 {
                   heading: "Main Focus",
                   value: [

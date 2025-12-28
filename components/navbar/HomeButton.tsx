@@ -10,13 +10,7 @@ const HomeButton: React.FC = () => {
   return (
     <div className="cursor-pointer">
       <Link href="/">
-        <h2
-          className="
-            text-2xl font-bold
-            md:hover:text-red-500 md:dark:hover:text-red-800
-            transition-colors duration-700 ease-in-out
-          "
-        >
+        <h2 className="text-2xl font-bold md:hover:text-red-500 md:dark:hover:text-red-800 transition-colors duration-700 ease-in-out">
           {developerName}
         </h2>
       </Link>

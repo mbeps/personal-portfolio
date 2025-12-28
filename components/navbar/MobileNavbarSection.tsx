@@ -20,11 +20,7 @@ const MobileNavbarSection: React.FC<MobileNavbarSectionProps> = ({
   return (
     <div className="lg:hidden flex items-center">
       <button
-        className="
-          p-2 
-          text-neutral-800 dark:text-neutral-200 
-          rounded-xl 
-          outline-hidden ml-2"
+        className="p-2 text-neutral-800 dark:text-neutral-200 rounded-xl outline-hidden ml-2"
         onClick={toggleOverlay}
       >
         {isOverlayOpen ? <IoMdClose size={30} /> : <IoMdMenu size={30} />}

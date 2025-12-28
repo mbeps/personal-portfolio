@@ -28,7 +28,7 @@ const PageNavigationItem: React.FC<PageNavigationItemProps> = ({ item }) => {
             hover:border-neutral-400 dark:hover:border-red-500
 						rounded-xl
 						shadow-md md:hover:shadow-lg
-						transform md:hover:scale-105
+						transform md:hover:scale-103
 						transition-all duration-500 ease-in-out"
         >
           <h2 className=" text-3xl font-bold  mb-4 text-neutral-900 dark:text-neutral-100">

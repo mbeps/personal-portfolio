@@ -1,5 +1,3 @@
-I completed my undergraduate study at Royal Holloway University of London with First Class Honour in **Computer Science**. Following that, I completed a Master's in **Artificial Intelligence** at King's College London, graduating with Distinction.
+I am a **software engineer** based in London with over 2 years of professional experience. I hold a Master's degree in **Artificial Intelligence** and a Bachelor's degree in **Computer Science**.
 
-My technical expertise spans quite a few categories: Software Engineering, Web Development, Machine Learning, DevOps, and Mathematics. This involved the completion of a great number of **projects** and numerous **certifications** to attest to skill and dedication in all these spheres.
-
-Currently, I work as a **Backend Software Engineer** at Commerzbank, which includes designing backend services and improving operational workflows. I contribute to open source by sharing expertise through various initiatives.
+Currently, I work at Commerzbank, where I specialise in backend services, full-stack applications, and DevOps. My technical expertise spans software engineering, web development, machine learning, and DevOps. I have completed over 50 **projects** and actively contribute to **open-source** initiatives.
