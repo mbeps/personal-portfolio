@@ -15,12 +15,7 @@ interface NavbarSectionProps {
 const DesktopNavbarSection: React.FC<NavbarSectionProps> = ({ items }) => {
   return (
     <div className="hidden lg:block">
-      <div
-        className="
-					md:flex
-					items-center justify-center 
-					space-y-7 md:space-x-4 md:space-y-0"
-      >
+      <div className="md:flex items-center justify-center space-y-7 md:space-x-4 md:space-y-0">
         {/* Links  */}
         {items
           .filter((item) => item.isMain)

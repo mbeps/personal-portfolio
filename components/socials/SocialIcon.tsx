@@ -30,12 +30,7 @@ const SocialIcon: React.FC<SocialIconProps> = ({
     <TooltipTrigger>
       <Link href={link} target="_blank">
         <IconComponent
-          className="
-              md:hover:-translate-y-1
-              cursor-pointer
-              text-neutral-600 dark:text-neutral-300
-              transition-all duration-300
-            "
+          className="md:hover:-translate-y-1 cursor-pointer text-neutral-600 dark:text-neutral-300 transition-all duration-300"
           size={iconSize}
         />
       </Link>

@@ -1,11 +1,11 @@
 import React from "react";
-import RoleInterface from "@/database/roles/RoleInterface";
 import companyDatabaseMap from "@/database/companies/CompanyDatabaseMap";
 import Reader from "@/components/reader/Reader";
 import CvItemSkills from "./CvItemSkills";
+import { SerializedRoleInterface } from "../page";
 
 interface CvExperienceItemProps {
-  role: RoleInterface;
+  role: SerializedRoleInterface;
   responsibilities?: string;
   showArchived?: boolean;
 }
@@ -16,8 +16,6 @@ const CvExperienceItem: React.FC<CvExperienceItemProps> = ({
   showArchived = false,
 }) => {
   const company = companyDatabaseMap[role.company];
-  const startDate = role.startDate.toString();
-  const endDate = role.endDate ? role.endDate.toString() : "Present";
 
   return (
     <div className="mb-6 break-inside-avoid">
@@ -29,7 +27,7 @@ const CvExperienceItem: React.FC<CvExperienceItemProps> = ({
           </p>
         </div>
         <div className="text-lg text-neutral-500 dark:text-neutral-400 font-mono">
-          {startDate} - {endDate}
+          {role.startDate} - {role.endDate}
         </div>
       </div>
 

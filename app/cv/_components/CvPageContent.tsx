@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import RoleInterface from "@/database/roles/RoleInterface";
 import CourseInterface from "@/database/courses/CourseInterface";
 import ProjectInterface from "@/database/projects/ProjectInterface";
 import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
@@ -15,12 +14,19 @@ import CvProjectItem from "./CvProjectItem";
 import CvSkillGroup from "./CvSkillGroup";
 import Reader from "@/components/reader/Reader";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
+import { SerializedRoleInterface } from "../page";
 
 interface CvPageContentProps {
   aboutContent?: string;
   skillGroups: CategorisedSkillsInterface[];
-  workExperience: { role: RoleInterface; responsibilities?: string }[];
-  volunteeringExperience: { role: RoleInterface; responsibilities?: string }[];
+  workExperience: {
+    role: SerializedRoleInterface;
+    responsibilities?: string;
+  }[];
+  volunteeringExperience: {
+    role: SerializedRoleInterface;
+    responsibilities?: string;
+  }[];
   education: CourseInterface[];
   projects: ProjectInterface[];
   certificateCount: number;

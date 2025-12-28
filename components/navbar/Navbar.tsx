@@ -61,14 +61,7 @@ export default function Navbar() {
           backdropFilter: !isOverlayOpen ? "blur(20px)" : undefined,
         }}
       >
-        <div
-          className="
-            flex lg:flex-row md:flex
-            items-center justify-between md:items-center 
-            py-3 md:py-1
-            mx-auto 
-            max-w-[2560px]"
-        >
+        <div className="flex lg:flex-row md:flex items-center justify-between md:items-center py-3 md:py-1 mx-auto max-w-[2560px]">
           <HomeButton />
 
           <div className="flex flex-row items-center space-x-2">

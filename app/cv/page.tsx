@@ -17,6 +17,8 @@ import ExperienceTypeEnum from "@/enums/experience/ExperienceTypeEnum";
 import CvPageContent from "./_components/CvPageContent";
 import CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
 import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
+import ShortDate from "@/class/ShortDate";
+import RoleInterface from "@/database/roles/RoleInterface";
 
 export const metadata: Metadata = {
   title: `${developerName} - CV`,
@@ -24,6 +26,17 @@ export const metadata: Metadata = {
   category: "CV",
   creator: developerName,
   keywords: ["CV", "Resume", "Curriculum Vitae", developerName],
+};
+
+/**
+ * Serialized version of RoleInterface with formatted date strings for client components.
+ */
+export type SerializedRoleInterface = Omit<
+  RoleInterface,
+  "startDate" | "endDate"
+> & {
+  startDate: string;
+  endDate: string;
 };
 
 export default function CvPage() {
@@ -49,7 +62,14 @@ export default function CvPage() {
       `public/roles/${key}/responsabilities.md`
     )?.content;
 
-    const item = { role, responsibilities };
+    // Serialize role with formatted date strings for client component
+    const serializedRole: SerializedRoleInterface = {
+      ...role,
+      startDate: role.startDate.toString(),
+      endDate: role.endDate.toString(),
+    };
+
+    const item = { role: serializedRole, responsibilities };
 
     if (role.type === ExperienceTypeEnum.Volunteering) {
       volunteeringExperience.push(item);

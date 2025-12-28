@@ -53,17 +53,7 @@ const NavbarItem: React.FC<NavbarItemProps> = ({ href, children }) => {
       {children}
 
       {/* Hover Underline */}
-      <span
-        className="
-          w-full h-[3px]   
-          rounded-full
-          absolute 
-          bottom-0.5
-          left-0 inline-block 
-          bg-red-500 dark:bg-red-900 
-          -translate-x-full md:group-hover:translate-x-0 transition-transform 
-          duration-300"
-      />
+      <span className="w-full h-[3px] rounded-full absolute bottom-0.5 left-0 inline-block bg-red-500 dark:bg-red-900 -translate-x-full md:group-hover:translate-x-0 transition-transform duration-300" />
     </Link>
   );
 };
