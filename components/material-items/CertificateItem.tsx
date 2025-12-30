@@ -48,7 +48,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
         transition-colors duration-700
         flex flex-col
         h-full w-full
-        shadow-md
+        shadow-sm
       "
     >
       {/* Certificate Image */}
