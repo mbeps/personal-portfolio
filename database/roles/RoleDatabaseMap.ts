@@ -11,7 +11,7 @@ import Database from "@/interfaces/Database";
 import CompanyDatabaseKeys from "../companies/CompanyDatabaseKeys";
 
 const rolesMap: Database<RoleInterface> = {
-  [RoleDatabaseKeys.CommerzbankDevOpsEngineer]: {
+  [RoleDatabaseKeys.CommerzbankBackendEngineer]: {
     name: "Software Engineer",
     category: ExperienceCategoriesEnum.Software,
     type: ExperienceTypeEnum.FullTime,
@@ -126,7 +126,7 @@ const rolesMap: Database<RoleInterface> = {
       ProjectDatabaseKeys.GnomeQuickSettingsTweakExtension,
     ],
   },
-  [RoleDatabaseKeys.GoogleRHULDevelopersClubSoftwareEngineer]: {
+  [RoleDatabaseKeys.GoogleRhulDevelopersClubSoftwareEngineer]: {
     name: "Software Engineer Intern",
     category: ExperienceCategoriesEnum.Software,
     type: ExperienceTypeEnum.Volunteering,
@@ -187,7 +187,7 @@ const rolesMap: Database<RoleInterface> = {
     startDate: new ShortDate(2022, 9),
     endDate: new ShortDate(2023, 6),
   },
-  [RoleDatabaseKeys.AJTuitionCentreTutor]: {
+  [RoleDatabaseKeys.AjTuitionCentreTutor]: {
     name: "Mathematics Tutor",
     category: ExperienceCategoriesEnum.Other,
     type: ExperienceTypeEnum.PartTime,

@@ -754,7 +754,7 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.CommerzbankRates),
     type: ProjectTypeEnum.Professional,
-    relatedMaterials: [RoleDatabaseKeys.CommerzbankDevOpsEngineer],
+    relatedMaterials: [RoleDatabaseKeys.CommerzbankBackendEngineer],
   },
 
   //^ Extra Web Development Projects
@@ -967,7 +967,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Docker,
     ],
     relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      RoleDatabaseKeys.CommerzbankBackendEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
       ProjectDatabaseKeys.BaseRestController,
     ],
@@ -996,7 +996,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.ArtificialIntelligence,
     ],
     relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      RoleDatabaseKeys.CommerzbankBackendEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
       ProjectDatabaseKeys.BaseRestController,
       ProjectDatabaseKeys.MarkdownToMessageMLConverter,
@@ -1023,7 +1023,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Docker,
     ],
     relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      RoleDatabaseKeys.CommerzbankBackendEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
     ],
     type: ProjectTypeEnum.Professional,
@@ -1048,7 +1048,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Docker,
     ],
     relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      RoleDatabaseKeys.CommerzbankBackendEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
     ],
     type: ProjectTypeEnum.Professional,
@@ -1077,7 +1077,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Docker,
     ],
     relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      RoleDatabaseKeys.CommerzbankBackendEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
     ],
     type: ProjectTypeEnum.Professional,
@@ -1104,7 +1104,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Gcp,
     ],
     relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      RoleDatabaseKeys.CommerzbankBackendEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
     ],
     type: ProjectTypeEnum.Professional,
@@ -1132,7 +1132,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Docker,
     ],
     relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      RoleDatabaseKeys.CommerzbankBackendEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
     ],
     type: ProjectTypeEnum.Professional,
@@ -1161,7 +1161,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Docker,
     ],
     relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      RoleDatabaseKeys.CommerzbankBackendEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
     ],
     type: ProjectTypeEnum.Professional,
@@ -1184,7 +1184,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Gcp,
     ],
     relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      RoleDatabaseKeys.CommerzbankBackendEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
     ],
     archived: true,
@@ -1207,7 +1207,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Gcp,
     ],
     relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      RoleDatabaseKeys.CommerzbankBackendEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
     ],
     archived: true,
@@ -1288,7 +1288,7 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     type: ProjectTypeEnum.Professional,
     repositoryURL: "https://github.com/mbeps/springboot-sql-database-template",
-    relatedMaterials: [RoleDatabaseKeys.CommerzbankDevOpsEngineer],
+    relatedMaterials: [RoleDatabaseKeys.CommerzbankBackendEngineer],
     skills: [
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.SpringBoot,
@@ -1306,7 +1306,7 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Professional,
     repositoryURL:
       "https://github.com/mbeps/springboot-mongodb-database-template",
-    relatedMaterials: [RoleDatabaseKeys.CommerzbankDevOpsEngineer],
+    relatedMaterials: [RoleDatabaseKeys.CommerzbankBackendEngineer],
     skills: [
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.SpringBoot,
@@ -1324,7 +1324,7 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Professional,
     repositoryURL:
       "https://github.com/mbeps/springboot-mongodb-database-template",
-    relatedMaterials: [RoleDatabaseKeys.CommerzbankDevOpsEngineer],
+    relatedMaterials: [RoleDatabaseKeys.CommerzbankBackendEngineer],
     skills: [
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.SpringBoot,
@@ -1356,7 +1356,7 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.SymphonyRssBot,
       ProjectDatabaseKeys.CommerzbankRates,
 
-      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      RoleDatabaseKeys.CommerzbankBackendEngineer,
     ],
   },
   [ProjectDatabaseKeys.MarkdownToMessageMLConverter]: {
@@ -1377,7 +1377,7 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
     relatedMaterials: [
       ProjectDatabaseKeys.SymphonyCobaGPTBot,
-      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      RoleDatabaseKeys.CommerzbankBackendEngineer,
     ],
   },
   [ProjectDatabaseKeys.SpringBootLdapRoleBasedAccessControlLibrary]: {
@@ -1401,7 +1401,7 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.CommerzbankRates,
       ProjectDatabaseKeys.SymphonyRssBot,
 
-      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      RoleDatabaseKeys.CommerzbankBackendEngineer,
     ],
   },
 
