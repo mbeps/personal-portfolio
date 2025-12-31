@@ -69,6 +69,10 @@ const rolesMap: Database<RoleInterface> = {
 
       ProjectDatabaseKeys.CommerzbankRates,
 
+      ProjectDatabaseKeys.AuthenticationMicroService,
+      ProjectDatabaseKeys.EmailMicroService,
+      ProjectDatabaseKeys.LdapPermissionsMicroService,
+
       ProjectDatabaseKeys.SymphonyTranslateBot,
       ProjectDatabaseKeys.SymphonyWebhookBot,
       ProjectDatabaseKeys.SymphonyCobaGPTBot,

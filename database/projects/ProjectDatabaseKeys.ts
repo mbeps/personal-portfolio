@@ -23,6 +23,9 @@ enum ProjectDatabaseKeys {
   NextJsAuthJsTemplate = "nextjs-authjs-template",
 
   //^ Backend Projects
+  AuthenticationMicroService = "authentication-microservice",
+  EmailMicroService = "email-microservice",
+  LdapPermissionsMicroService = "ldap-permissions-microservice",
   SymphonyTranslateBot = "symphony-translate-bot",
   SymphonyWebhookBot = "symphony-webhook-bot",
   SymphonyCobaGPTBot = "symphony-coba-gpt-bot",

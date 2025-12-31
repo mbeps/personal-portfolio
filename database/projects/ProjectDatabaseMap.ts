@@ -846,6 +846,7 @@ const projectMap: Database<ProjectInterface> = {
       BlogDatabaseKeys.AuthenticationSessionManagement,
       BlogDatabaseKeys.CrossOriginResourceSharing,
       BlogDatabaseKeys.Backend,
+      ProjectDatabaseKeys.AuthenticationMicroService,
     ],
   },
   [ProjectDatabaseKeys.NextJsAuthJsTemplate]: {
@@ -945,6 +946,34 @@ const projectMap: Database<ProjectInterface> = {
   },
 
   //^ Backend Web Development Projects
+  [ProjectDatabaseKeys.AuthenticationMicroService]: {
+    name: `Authentication Microservice`,
+    description: `
+      A microservice providing authentication (such as email/password and OAuth) to various applications.
+      Minimises on duplications allowing for faster development and simpler infrastructure.
+      `,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.SpringDataLdap,
+      SkillDatabaseKeys.SpringDataJpa,
+      SkillDatabaseKeys.SpringSecurity,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.PostgreSql,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.RelationalDatabases,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.JUnit,
+    ],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankBackendEngineer,
+      ProjectDatabaseKeys.OAuthNextJsSpringBoot,
+      BlogDatabaseKeys.MicroservicesArchitecture,
+    ],
+    type: ProjectTypeEnum.Professional,
+  },
   [ProjectDatabaseKeys.SymphonyTranslateBot]: {
     name: `Symphony Translate Bot`,
     description: `
