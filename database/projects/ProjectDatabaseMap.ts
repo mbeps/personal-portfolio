@@ -758,6 +758,7 @@ const projectMap: Database<ProjectInterface> = {
       RoleDatabaseKeys.CommerzbankBackendEngineer,
       ProjectDatabaseKeys.AuthenticationMicroService,
       ProjectDatabaseKeys.EmailMicroService,
+      ProjectDatabaseKeys.LdapPermissionsMicroService,
     ],
   },
 
@@ -995,6 +996,29 @@ const projectMap: Database<ProjectInterface> = {
     ],
     relatedMaterials: [
       ProjectDatabaseKeys.CommerzbankRates,
+      RoleDatabaseKeys.CommerzbankBackendEngineer,
+      BlogDatabaseKeys.MicroservicesArchitecture,
+    ],
+    type: ProjectTypeEnum.Professional,
+  },
+  [ProjectDatabaseKeys.LdapPermissionsMicroService]: {
+    name: `LDAP Permissions Microservice`,
+    description: `
+      A microservice providing functionality of view permissions for users based on on-prem LDAP roles. 
+      Minimises on duplications allowing for faster development and simpler infrastructure.
+      `,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.JUnit,
+    ],
+    relatedMaterials: [
+      ProjectDatabaseKeys.CommerzbankRates,
+      ProjectDatabaseKeys.SpringBootLdapRoleBasedAccessControlLibrary,
+      ProjectDatabaseKeys.SpringBootLdapTemplate,
       RoleDatabaseKeys.CommerzbankBackendEngineer,
       BlogDatabaseKeys.MicroservicesArchitecture,
     ],
@@ -1377,9 +1401,12 @@ const projectMap: Database<ProjectInterface> = {
       `,
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     type: ProjectTypeEnum.Professional,
-    repositoryURL:
-      "https://github.com/mbeps/springboot-mongodb-database-template",
-    relatedMaterials: [RoleDatabaseKeys.CommerzbankBackendEngineer],
+    repositoryURL: "https://github.com/mbeps/springboot-ad-ldap-template",
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankBackendEngineer,
+      ProjectDatabaseKeys.SpringBootLdapRoleBasedAccessControlLibrary,
+      ProjectDatabaseKeys.LdapPermissionsMicroService,
+    ],
     skills: [
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.SpringBoot,
@@ -1453,8 +1480,11 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
     relatedMaterials: [
       ProjectDatabaseKeys.SymphonyApplicationStatusBot,
+      ProjectDatabaseKeys.SymphonyBusinessHighlightsBot,
       ProjectDatabaseKeys.CommerzbankRates,
       ProjectDatabaseKeys.SymphonyRssBot,
+      ProjectDatabaseKeys.LdapPermissionsMicroService,
+      ProjectDatabaseKeys.SpringBootLdapTemplate,
 
       RoleDatabaseKeys.CommerzbankBackendEngineer,
     ],
