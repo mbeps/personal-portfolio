@@ -754,7 +754,10 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.CommerzbankRates),
     type: ProjectTypeEnum.Professional,
-    relatedMaterials: [RoleDatabaseKeys.CommerzbankBackendEngineer],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankBackendEngineer,
+      ProjectDatabaseKeys.EmailMicroService,
+    ],
   },
 
   //^ Extra Web Development Projects
@@ -970,6 +973,27 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [
       RoleDatabaseKeys.CommerzbankBackendEngineer,
       ProjectDatabaseKeys.OAuthNextJsSpringBoot,
+      BlogDatabaseKeys.MicroservicesArchitecture,
+    ],
+    type: ProjectTypeEnum.Professional,
+  },
+  [ProjectDatabaseKeys.EmailMicroService]: {
+    name: `Email Microservice`,
+    description: `
+      A microservice providing functionality to send emails for various applications and services. 
+      Minimises on duplications allowing for faster development and simpler infrastructure.
+      `,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.JUnit,
+    ],
+    relatedMaterials: [
+      ProjectDatabaseKeys.CommerzbankRates,
+      RoleDatabaseKeys.CommerzbankBackendEngineer,
       BlogDatabaseKeys.MicroservicesArchitecture,
     ],
     type: ProjectTypeEnum.Professional,
