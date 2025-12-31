@@ -23,12 +23,11 @@ const Tag: React.FC<TagProps> = ({ children, onClick, hasHover }) => {
     text-gray-500 dark:text-gray-300 font-semibold
     transition-all duration-700 ease-in-out
     border-2 border-gray-200 dark:border-red-950
-    shadow-xs
   `;
 
   const hoverClassName: string = `
     md:hover:border-gray-400 md:dark:hover:border-red-900
-    hover:shadow-md
+    hover:shadow-sm
     cursor-pointer
   `;
 

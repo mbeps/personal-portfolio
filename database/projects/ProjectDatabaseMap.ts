@@ -754,7 +754,11 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.CommerzbankRates),
     type: ProjectTypeEnum.Professional,
-    relatedMaterials: [RoleDatabaseKeys.CommerzbankBackendEngineer],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankBackendEngineer,
+      ProjectDatabaseKeys.AuthenticationMicroService,
+      ProjectDatabaseKeys.EmailMicroService,
+    ],
   },
 
   //^ Extra Web Development Projects
@@ -846,6 +850,7 @@ const projectMap: Database<ProjectInterface> = {
       BlogDatabaseKeys.AuthenticationSessionManagement,
       BlogDatabaseKeys.CrossOriginResourceSharing,
       BlogDatabaseKeys.Backend,
+      ProjectDatabaseKeys.AuthenticationMicroService,
     ],
   },
   [ProjectDatabaseKeys.NextJsAuthJsTemplate]: {
@@ -945,6 +950,56 @@ const projectMap: Database<ProjectInterface> = {
   },
 
   //^ Backend Web Development Projects
+  [ProjectDatabaseKeys.AuthenticationMicroService]: {
+    name: `Authentication Microservice`,
+    description: `
+      A microservice providing authentication (such as email/password and OAuth) to various applications.
+      Minimises on duplications allowing for faster development and simpler infrastructure.
+      `,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.SpringDataLdap,
+      SkillDatabaseKeys.SpringDataJpa,
+      SkillDatabaseKeys.SpringSecurity,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.PostgreSql,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.RelationalDatabases,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.JUnit,
+    ],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankBackendEngineer,
+      ProjectDatabaseKeys.OAuthNextJsSpringBoot,
+      ProjectDatabaseKeys.CommerzbankRates,
+      BlogDatabaseKeys.MicroservicesArchitecture,
+    ],
+    type: ProjectTypeEnum.Professional,
+  },
+  [ProjectDatabaseKeys.EmailMicroService]: {
+    name: `Email Microservice`,
+    description: `
+      A microservice providing functionality to send emails for various applications and services. 
+      Minimises on duplications allowing for faster development and simpler infrastructure.
+      `,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.JUnit,
+    ],
+    relatedMaterials: [
+      ProjectDatabaseKeys.CommerzbankRates,
+      RoleDatabaseKeys.CommerzbankBackendEngineer,
+      BlogDatabaseKeys.MicroservicesArchitecture,
+    ],
+    type: ProjectTypeEnum.Professional,
+  },
   [ProjectDatabaseKeys.SymphonyTranslateBot]: {
     name: `Symphony Translate Bot`,
     description: `

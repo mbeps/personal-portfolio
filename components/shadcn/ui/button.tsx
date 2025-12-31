@@ -43,7 +43,7 @@ const buttonVariants = cva(
           from-red-600 to-amber-500
           dark:from-red-800 dark:to-amber-700
           transform md:hover:scale-105
-          shadow-md md:hover:shadow-xl`,
+          shadow-sm md:hover:shadow-xl`,
         icon: `
           text-neutral-800 dark:text-neutral-100
           border-neutral-200 dark:border-neutral-800 border-2

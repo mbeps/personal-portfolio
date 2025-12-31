@@ -42,7 +42,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
         p-4 sm:p-0
         rounded-xl 
         border border-neutral-300 dark:border-neutral-700 md:border-0
-        sm:shadow-md md:shadow-none lg:shadow-none
+        shadow-sm md:shadow-none lg:shadow-none
         transition-colors duration-700"
     >
       <div className="flex flex-col lg:flex-row lg:space-x-12">
@@ -52,8 +52,8 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
             className="
               lg:w-1/2
               rounded-xl
-              transform lg:hover:scale-105 
-              shadow-xl lg:hover:shadow-2xl
+              transform lg:hover:scale-104
+              shadow-md lg:hover:shadow-2xl
               transition-all duration-500 ease-in-out
               "
           >

@@ -26,11 +26,10 @@ const CourseItem: React.FC<CourseItemProps> = ({ courseKey }) => {
       className="
         bg-neutral-100 dark:bg-neutral-800
         border border-neutral-300 dark:border-neutral-700
-        shadow-md
+        shadow-sm
         p-3 lg:p-6 rounded-xl
         transition-colors duration-700
         flex flex-col
-        
         h-full w-full
       "
     >
