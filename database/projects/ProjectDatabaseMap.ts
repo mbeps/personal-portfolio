@@ -756,6 +756,7 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Professional,
     relatedMaterials: [
       RoleDatabaseKeys.CommerzbankBackendEngineer,
+      ProjectDatabaseKeys.AuthenticationMicroService,
       ProjectDatabaseKeys.EmailMicroService,
     ],
   },
@@ -973,6 +974,7 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [
       RoleDatabaseKeys.CommerzbankBackendEngineer,
       ProjectDatabaseKeys.OAuthNextJsSpringBoot,
+      ProjectDatabaseKeys.CommerzbankRates,
       BlogDatabaseKeys.MicroservicesArchitecture,
     ],
     type: ProjectTypeEnum.Professional,
