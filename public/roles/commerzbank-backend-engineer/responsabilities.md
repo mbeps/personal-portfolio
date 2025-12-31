@@ -12,7 +12,7 @@
 
 - **Containerisation**: Containerised infrastructure using Docker, including Symphony components, databases, and other services. Reduced server requirements by 40%, cut infrastructure costs and improved operational efficiency whilst improving system reliability.
 
-- **Codebase Modernisation**: Refactored legacy application with significant technical debt into modern, modular framework. Reduced development time for new bots by half and delivered £30,000 in immediate cost savings through in-house re-implementation.
+- **Codebase Modernisation**: Redesigned legacy application with significant technical debt into modern, modular framework. Reduced development time for new bots by half and delivered £30,000 in immediate cost savings through in-house re-implementation.
 
 - **AI/ML Integration**: Implemented OpenAI API integrations for CobaGPT Bot. Built MCP servers for agentic AI to interact with ServiceNow and HR API, enabling users to carry out actions and retrieve data using natural language. Improved workflow efficiency for hundreds of users through early enterprise AI adoption.
 
