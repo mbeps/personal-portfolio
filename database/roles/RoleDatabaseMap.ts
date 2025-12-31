@@ -90,6 +90,23 @@ const rolesMap: Database<RoleInterface> = {
     ],
     company: CompanyDatabaseKeys.Commerzbank,
   },
+  [RoleDatabaseKeys.CommerzbankAiConsultant]: {
+    name: "AI Consultant",
+    category: ExperienceCategoriesEnum.Software,
+    type: ExperienceTypeEnum.FullTime,
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.ModelContextProtocol,
+      SkillDatabaseKeys.FineTuning,
+      SkillDatabaseKeys.Benchmarking,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.ArtificialIntelligence,
+    ],
+    startDate: new ShortDate(2025, 9),
+    endDate: new ShortDate(new Date().getFullYear(), new Date().getMonth() + 1),
+    relatedMaterials: [],
+    company: CompanyDatabaseKeys.Commerzbank,
+  },
   [RoleDatabaseKeys.OpenSourceContributor]: {
     name: "Community Member",
     category: ExperienceCategoriesEnum.Software,
