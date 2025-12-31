@@ -4,7 +4,7 @@ import RoleInterface from "@/database/roles/RoleInterface";
 import computeTotalExperience from "@/lib/computeTotalExperience";
 
 const mainWorkExperience: RoleDatabaseKeys[] = [
-  RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+  RoleDatabaseKeys.CommerzbankBackendEngineer,
 ];
 
 // Calculate total experience for mainWorkExperience

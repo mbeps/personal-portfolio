@@ -73,10 +73,10 @@ export default function About() {
 
   // Featured material
   const featuredMaterial: string[] = [
-    RoleDatabaseKeys.CommerzbankDevOpsEngineer,
-    RoleDatabaseKeys.GoogleRHULDevelopersClubSoftwareEngineer,
+    RoleDatabaseKeys.CommerzbankBackendEngineer,
+    RoleDatabaseKeys.GoogleRhulDevelopersClubSoftwareEngineer,
     RoleDatabaseKeys.OpenSourceContributor,
-    RoleDatabaseKeys.AJTuitionCentreTutor,
+    RoleDatabaseKeys.AjTuitionCentreTutor,
     RoleDatabaseKeys.MadhusTeamLeader,
 
     ProjectDatabaseKeys.ForumDiscussions,

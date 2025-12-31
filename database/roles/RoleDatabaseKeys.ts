@@ -7,9 +7,10 @@
  * @see {@link roleMap} at `database/roles.ts`
  */
 enum RoleDatabaseKeys {
-  CommerzbankDevOpsEngineer = "commerzbank-backend-engineer",
-  GoogleRHULDevelopersClubSoftwareEngineer = "google-x-rhul-developers-club-software-engineer",
-  AJTuitionCentreTutor = "aj-tuition-centre-tutor",
+  CommerzbankBackendEngineer = "commerzbank-backend-engineer",
+  CommerzbankAiConsultant = "commerzbank-ai-consultant",
+  GoogleRhulDevelopersClubSoftwareEngineer = "google-x-rhul-developers-club-software-engineer",
+  AjTuitionCentreTutor = "aj-tuition-centre-tutor",
   MadhusTeamLeader = "madhus-team-leader",
   OpenSourceContributor = "open-source-contributor",
 }

@@ -11,7 +11,7 @@ import Database from "@/interfaces/Database";
 import CompanyDatabaseKeys from "../companies/CompanyDatabaseKeys";
 
 const rolesMap: Database<RoleInterface> = {
-  [RoleDatabaseKeys.CommerzbankDevOpsEngineer]: {
+  [RoleDatabaseKeys.CommerzbankBackendEngineer]: {
     name: "Software Engineer",
     category: ExperienceCategoriesEnum.Software,
     type: ExperienceTypeEnum.FullTime,
@@ -90,6 +90,23 @@ const rolesMap: Database<RoleInterface> = {
     ],
     company: CompanyDatabaseKeys.Commerzbank,
   },
+  [RoleDatabaseKeys.CommerzbankAiConsultant]: {
+    name: "AI Consultant",
+    category: ExperienceCategoriesEnum.Software,
+    type: ExperienceTypeEnum.FullTime,
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.ModelContextProtocol,
+      SkillDatabaseKeys.FineTuning,
+      SkillDatabaseKeys.Benchmarking,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.ArtificialIntelligence,
+    ],
+    startDate: new ShortDate(2025, 9),
+    endDate: new ShortDate(new Date().getFullYear(), new Date().getMonth() + 1),
+    relatedMaterials: [],
+    company: CompanyDatabaseKeys.Commerzbank,
+  },
   [RoleDatabaseKeys.OpenSourceContributor]: {
     name: "Community Member",
     category: ExperienceCategoriesEnum.Software,
@@ -109,7 +126,7 @@ const rolesMap: Database<RoleInterface> = {
       ProjectDatabaseKeys.GnomeQuickSettingsTweakExtension,
     ],
   },
-  [RoleDatabaseKeys.GoogleRHULDevelopersClubSoftwareEngineer]: {
+  [RoleDatabaseKeys.GoogleRhulDevelopersClubSoftwareEngineer]: {
     name: "Software Engineer Intern",
     category: ExperienceCategoriesEnum.Software,
     type: ExperienceTypeEnum.Volunteering,
@@ -170,7 +187,7 @@ const rolesMap: Database<RoleInterface> = {
     startDate: new ShortDate(2022, 9),
     endDate: new ShortDate(2023, 6),
   },
-  [RoleDatabaseKeys.AJTuitionCentreTutor]: {
+  [RoleDatabaseKeys.AjTuitionCentreTutor]: {
     name: "Mathematics Tutor",
     category: ExperienceCategoriesEnum.Other,
     type: ExperienceTypeEnum.PartTime,

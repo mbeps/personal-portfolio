@@ -3150,7 +3150,7 @@ const certificateMap: Database<CertificateInterface> = {
       "Converting a BDK 2.0 project to Spring Boot and using BDK 2.0 with Spring Boot",
     ],
     relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankDevOpsEngineer,
+      RoleDatabaseKeys.CommerzbankBackendEngineer,
       ProjectDatabaseKeys.SymphonyTranslateBot,
       ProjectDatabaseKeys.SymphonyWebhookBot,
       ProjectDatabaseKeys.SymphonyInteractiveBot,
@@ -3184,7 +3184,7 @@ const certificateMap: Database<CertificateInterface> = {
       "Implementing message templating in BDK for Python",
       "Understanding high availability and Datafeed 2.0 in BDK for Python",
     ],
-    relatedMaterials: [RoleDatabaseKeys.CommerzbankDevOpsEngineer],
+    relatedMaterials: [RoleDatabaseKeys.CommerzbankBackendEngineer],
   },
 };
 
