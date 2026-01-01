@@ -105,11 +105,10 @@ export const ABOUT_PAGE: NavigationItemInterface = {
  * This is where the user can view my CV.
  */
 export const CV_PAGE: NavigationItemInterface = {
-  label: "CV",
+  label: "General CV",
   path: "/cv",
   description: `
-    My CV detailing my professional experience, education, skills, and projects. 
-    This is generated dynamically from all the information available on this website.
+    A general CV generated dynamically from all the information available on this website.
   `,
 };
 
