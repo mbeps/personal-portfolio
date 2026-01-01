@@ -902,6 +902,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.BetterAuth,
       SkillDatabaseKeys.PostgreSql,
       SkillDatabaseKeys.Drizzle,
+      SkillDatabaseKeys.Prisma,
       SkillDatabaseKeys.TailwindCSS,
       SkillDatabaseKeys.Rest,
       SkillDatabaseKeys.Html,
