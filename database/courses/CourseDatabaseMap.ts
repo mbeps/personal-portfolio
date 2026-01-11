@@ -6,6 +6,7 @@ import CourseInterface from "@/database/courses/CourseInterface";
 import ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
 import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
 import Database from "@/interfaces/Database";
+import validateDatabaseKeys from "@/lib/database/validateDatabaseKeys";
 import moduleDatabaseMap from "../modules/ModuleDatabaseMap";
 
 /**
@@ -93,6 +94,9 @@ const courseMap: Database<CourseInterface> = {
 export const courseDatabaseKeys: CourseDatabaseKeys[] = Object.keys(
   courseMap
 ) as CourseDatabaseKeys[];
+
+// Validate that all course keys only contain alphanumeric characters and dashes
+validateDatabaseKeys(courseDatabaseKeys);
 
 // adds skills from modules to the courses
 /**

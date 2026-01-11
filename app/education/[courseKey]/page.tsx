@@ -168,7 +168,7 @@ const CoursesPage: React.FC<{
                 {courseData.category}
               </p>
               {/* Dates */}
-              <p className="text-center lg:text-left text-neutral-500 dark:text-neutral-400 italic">{`${courseData.startYear} - ${courseData.endYear}`}</p>
+              {/* <p className="text-center lg:text-left text-neutral-500 dark:text-neutral-400 italic">{`${courseData.startYear} - ${courseData.endYear}`}</p> */}
               {/* Grade */}
               {courseData.grade && (
                 <div className="py-4 flex space-x-1 w-full text-xl text-neutral-800 dark:text-neutral-300 justify-center lg:justify-start">

@@ -2,6 +2,7 @@ import addCompanyThumbnail from "@/lib/material/experience/addCompanyThumbnail";
 import CompanyInterface from "@/database/companies/CompanyInterface";
 import RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
 import Database from "@/interfaces/Database";
+import validateDatabaseKeys from "@/lib/database/validateDatabaseKeys";
 import CompanyDatabaseKeys from "./CompanyDatabaseKeys";
 
 const companiesMap: Database<CompanyInterface> = {
@@ -47,6 +48,9 @@ const companiesMap: Database<CompanyInterface> = {
 export const companyDatabaseKeys = Object.keys(
   companiesMap
 ) as CompanyDatabaseKeys[];
+
+// Validate that all company keys only contain alphanumeric characters and dashes
+validateDatabaseKeys(companyDatabaseKeys);
 
 /**
  * Database of companies I have worked at.

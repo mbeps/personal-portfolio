@@ -8,6 +8,7 @@ import ModuleYearGroupsEnum from "@/enums/module/ModuleYearGroupsEnum";
 import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
 import Database from "@/interfaces/Database";
+import validateDatabaseKeys from "@/lib/database/validateDatabaseKeys";
 import CertificateDatabaseKeys from "../certificates/CertificateDatabaseKeys";
 import skillDatabaseMap from "../skills/SkillDatabaseMap";
 import BlogDatabaseKeys from "../blogs/BlogDatabaseKeys";
@@ -997,6 +998,9 @@ const modulesMap: Database<ModuleInterface> = {
 export const moduleDatabaseKeys: ModuleDatabaseKeys[] = Object.keys(
   modulesMap
 ) as ModuleDatabaseKeys[];
+
+// Validate that all module keys only contain alphanumeric characters and dashes
+validateDatabaseKeys(moduleDatabaseKeys);
 
 /**
  * Hashmap of the modules I have studied at university.

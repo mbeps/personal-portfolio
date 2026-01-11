@@ -8,6 +8,7 @@ import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import ExperienceCategoriesEnum from "@/enums/experience/ExperienceCategoriesEnum";
 import ExperienceTypeEnum from "@/enums/experience/ExperienceTypeEnum";
 import Database from "@/interfaces/Database";
+import validateDatabaseKeys from "@/lib/database/validateDatabaseKeys";
 import CompanyDatabaseKeys from "../companies/CompanyDatabaseKeys";
 
 const rolesMap: Database<RoleInterface> = {
@@ -216,6 +217,9 @@ const rolesMap: Database<RoleInterface> = {
 export const roleDatabaseKeys: RoleDatabaseKeys[] = Object.keys(
   rolesMap
 ) as RoleDatabaseKeys[];
+
+// Validate that all role keys only contain alphanumeric characters and dashes
+validateDatabaseKeys(roleDatabaseKeys);
 
 const rolesDatabase: Database<RoleInterface> =
   updateRolesWithExperienceTime(rolesMap);

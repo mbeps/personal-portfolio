@@ -9,6 +9,7 @@ import ProjectTypeEnum from "@/enums/project/ProjectTypeEnum";
 import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
 import Database from "@/interfaces/Database";
+import validateDatabaseKeys from "@/lib/database/validateDatabaseKeys";
 import CertificateDatabaseKeys from "../certificates/CertificateDatabaseKeys";
 import RoleDatabaseKeys from "../roles/RoleDatabaseKeys";
 import skillDatabaseMap from "../skills/SkillDatabaseMap";
@@ -1674,6 +1675,9 @@ const projectMap: Database<ProjectInterface> = {
 export const projectDatabaseKeys: ProjectDatabaseKeys[] = Object.keys(
   projectMap
 ) as ProjectDatabaseKeys[];
+
+// Validate that all project keys only contain alphanumeric characters and dashes
+validateDatabaseKeys(projectDatabaseKeys);
 
 /**
  * Hashmap of projects with keys as {@link SkillDatabaseKeys} and values as {@link ProjectInterface}.

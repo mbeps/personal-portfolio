@@ -7,6 +7,7 @@ import CertificateIssuersEnum from "@/enums/certificate/CertificateIssuersEnum";
 import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
 import Database from "@/interfaces/Database";
+import validateDatabaseKeys from "@/lib/database/validateDatabaseKeys";
 import ModuleDatabaseKeys from "../modules/ModuleDatabaseKeys";
 import ProjectDatabaseKeys from "../projects/ProjectDatabaseKeys";
 import RoleDatabaseKeys from "../roles/RoleDatabaseKeys";
@@ -3194,6 +3195,9 @@ const certificateMap: Database<CertificateInterface> = {
 export const certificateDatabaseKeys: CertificateDatabaseKeys[] = Object.keys(
   certificateMap
 ) as CertificateDatabaseKeys[];
+
+// Validate that all certificate keys only contain alphanumeric characters and dashes
+validateDatabaseKeys(certificateDatabaseKeys);
 
 /**
  * Hashmap of certificates with keys as {@link CertificateDatabaseKeys} and values as {@link CertificateInterface}.

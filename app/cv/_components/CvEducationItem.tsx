@@ -15,9 +15,9 @@ const CvEducationItem: React.FC<CvEducationItemProps> = ({ course }) => {
             {course.university}
           </p>
         </div>
-        <div className="text-lg text-neutral-500 dark:text-neutral-400 font-mono">
+        {/* <div className="text-lg text-neutral-500 dark:text-neutral-400 font-mono">
           {course.startYear} - {course.endYear}
-        </div>
+        </div> */}
       </div>
       {course.grade && (
         <p className="text-lg text-neutral-700 dark:text-neutral-300">
