@@ -3,6 +3,7 @@ import SkillInterface from "@/database/skills/SkillInterface";
 import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
 import Database from "@/interfaces/Database";
+import validateDatabaseKeys from "@/lib/database/validateDatabaseKeys";
 
 /**
  * Hashmap of skills with keys as {@link SkillDatabaseKeys} and values as {@link SkillInterface}.
@@ -2181,3 +2182,6 @@ export default skillDatabaseMap;
 export const skillDatabaseKeys: SkillDatabaseKeys[] = Object.keys(
   skillDatabaseMap
 ) as SkillDatabaseKeys[];
+
+// Validate that all skill keys only contain alphanumeric characters and dashes
+validateDatabaseKeys(skillDatabaseKeys);

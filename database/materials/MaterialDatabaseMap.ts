@@ -1,6 +1,7 @@
 import MaterialInterface from "@/database/materials/MaterialInterface";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import Database from "@/interfaces/Database";
+import validateDatabaseKeys from "@/lib/database/validateDatabaseKeys";
 import blogsDatabaseMap from "../blogs/BlogsDatabaseMap";
 import certificateDatabaseMap from "../certificates/CertificateDatabaseMap";
 import courseDatabaseMap from "../courses/CourseDatabaseMap";
@@ -25,6 +26,9 @@ const materialDatabaseMap: Database<MaterialInterface> = {
  * Pre-resolved list of material keys so static routes and command palette builders do not recompute `Object.keys` repeatedly.
  */
 export const materialKeys: string[] = Object.keys(materialDatabaseMap);
+
+// Validate that all material keys only contain alphanumeric characters and dashes
+validateDatabaseKeys(materialKeys);
 
 /**
  * Tracks how often each skill appears across all materials to keep counts stable between server and client environments.

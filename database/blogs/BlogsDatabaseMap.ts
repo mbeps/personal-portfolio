@@ -6,6 +6,7 @@ import BlogCategoriesEnum from "@/enums/blog/BlogCategoriesEnum";
 import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
 import Database from "@/interfaces/Database";
+import validateDatabaseKeys from "@/lib/database/validateDatabaseKeys";
 import ProjectDatabaseKeys from "../projects/ProjectDatabaseKeys";
 import projectDatabaseMap from "../projects/ProjectDatabaseMap";
 import skillDatabaseMap from "../skills/SkillDatabaseMap";
@@ -977,6 +978,9 @@ const blogsMap: Database<BlogInterface> = {
 export const blogDatabaseKeys: BlogDatabaseKeys[] = Object.keys(
   blogsMap
 ) as BlogDatabaseKeys[];
+
+// Validate that all blog keys only contain alphanumeric characters and dashes
+validateDatabaseKeys(blogDatabaseKeys);
 
 /**
  * Hashmap of blogs with keys as {@link BlogDatabaseKeys} and values as {@link BlogInterface}.
