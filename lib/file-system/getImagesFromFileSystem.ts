@@ -10,9 +10,9 @@ import fs from "fs";
 export default function getImagesFromFileSystem(filePath: string): string[] {
   try {
     const files: string[] = fs.readdirSync(filePath);
-    return files.filter(
-      (file) => file.endsWith(".jpg") || file.endsWith(".png")
-    );
+    return files
+      .filter((file) => file.endsWith(".jpg") || file.endsWith(".png"))
+      .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
   } catch (error) {
     // console.log(`Error reading directory ${filePath}:`, error);
     return [];

@@ -51,4 +51,12 @@ describe("getVideosFromFileSystem", () => {
     const result = getVideosFromFileSystem("/fake/path");
     expect(result).toEqual(["video1.mp4", "video2.webm"]);
   });
+
+  test("should return files in alphanumerical order", () => {
+    const files = ["video10.mp4", "video2.webm", "video1.mp4"];
+    (fs.readdirSync as any).mockReturnValue(files);
+
+    const result = getVideosFromFileSystem("/fake/path");
+    expect(result).toEqual(["video1.mp4", "video2.webm", "video10.mp4"]);
+  });
 });
