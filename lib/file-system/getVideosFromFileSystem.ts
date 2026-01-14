@@ -10,9 +10,9 @@ import fs from "fs";
 export default function getVideosFromFileSystem(filePath: string): string[] {
   try {
     const files = fs.readdirSync(filePath);
-    return files.filter(
-      (file) => file.endsWith(".mp4") || file.endsWith(".webm")
-    );
+    return files
+      .filter((file) => file.endsWith(".mp4") || file.endsWith(".webm"))
+      .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
   } catch (error) {
     // console.log(`Error reading directory ${filePath}:`, error);
     return [];

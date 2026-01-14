@@ -51,4 +51,12 @@ describe("getImagesFromFileSystem", () => {
     const result = getImagesFromFileSystem("/fake/path");
     expect(result).toEqual(["image1.jpg", "image2.png"]);
   });
+
+  test("should return files in alphanumerical order", () => {
+    const files = ["image10.jpg", "image2.png", "image1.jpg"];
+    (fs.readdirSync as any).mockReturnValue(files);
+
+    const result = getImagesFromFileSystem("/fake/path");
+    expect(result).toEqual(["image1.jpg", "image2.png", "image10.jpg"]);
+  });
 });
