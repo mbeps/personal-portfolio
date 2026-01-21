@@ -84,6 +84,7 @@ export default function About() {
     ProjectDatabaseKeys.AiGenerations,
     ProjectDatabaseKeys.RichTextNotes,
     ProjectDatabaseKeys.CarDealership,
+    ProjectDatabaseKeys.CommerzbankAppStatus,
     ProjectDatabaseKeys.CommerzbankRates,
 
     ProjectDatabaseKeys.AlignmentInLargeLanguageModels,
