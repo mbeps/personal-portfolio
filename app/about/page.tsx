@@ -29,7 +29,7 @@ import { GrAppsRounded } from "react-icons/gr";
 import location from "@/constants/location";
 
 const aboutContent: string | undefined = getMarkdownFromFileSystem(
-  "public/about/long.md"
+  "public/about/long.md",
 )?.content;
 
 export const metadata: Metadata = {
@@ -68,7 +68,7 @@ export default function About() {
 
   // Certificates
   const numberOfCertificates: number = Object.keys(
-    CertificateDatabaseKeys
+    CertificateDatabaseKeys,
   ).length;
 
   // Featured material
@@ -95,7 +95,6 @@ export default function About() {
     ProjectDatabaseKeys.SymphonyPollBot,
     ProjectDatabaseKeys.SymphonyBlogBot,
     ProjectDatabaseKeys.SymphonyRssBot,
-    ProjectDatabaseKeys.SymphonyApplicationStatusBot,
     ProjectDatabaseKeys.SymphonyWebhookBot,
     ProjectDatabaseKeys.SymphonyBusinessHighlightsBot,
     ProjectDatabaseKeys.SymphonyCobaGPTBot,

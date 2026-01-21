@@ -1170,35 +1170,6 @@ const projectMap: Database<ProjectInterface> = {
     ],
     type: ProjectTypeEnum.Professional,
   },
-  [ProjectDatabaseKeys.SymphonyApplicationStatusBot]: {
-    name: `Symphony Application Status Bot`,
-    description: `
-      A Symphony bot responsible for keeping track of various Commerzbank applications' statuses via ServiceNow. 
-      Users can subscribe to specific applications and receive real-time updates in Symphony chatrooms.
-      Role-based access control using LDAP is implemented for administrative actions.
-      `,
-    category: ProjectCategoriesEnum.BackEndWebDevelopment,
-    skills: [
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.SpringDataLdap,
-      SkillDatabaseKeys.Symphony,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.MongoDb,
-      SkillDatabaseKeys.SpringDataMongoDb,
-      SkillDatabaseKeys.JUnit,
-      SkillDatabaseKeys.Mockito,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Gcp,
-      SkillDatabaseKeys.Docker,
-    ],
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankBackendEngineer,
-      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
-    ],
-    type: ProjectTypeEnum.Professional,
-  },
   [ProjectDatabaseKeys.SymphonyRssBot]: {
     name: `Symphony RSS Bot`,
     description: `
@@ -1472,7 +1443,6 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [
       ProjectDatabaseKeys.SymphonyTranslateBot,
       ProjectDatabaseKeys.SymphonyCobaGPTBot,
-      ProjectDatabaseKeys.SymphonyApplicationStatusBot,
       ProjectDatabaseKeys.SymphonyRssBot,
       ProjectDatabaseKeys.CommerzbankRates,
 
@@ -1517,7 +1487,6 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Professional,
     archived: true,
     relatedMaterials: [
-      ProjectDatabaseKeys.SymphonyApplicationStatusBot,
       ProjectDatabaseKeys.SymphonyBusinessHighlightsBot,
       ProjectDatabaseKeys.CommerzbankRates,
       ProjectDatabaseKeys.SymphonyRssBot,

@@ -79,7 +79,6 @@ const rolesMap: Database<RoleInterface> = {
       ProjectDatabaseKeys.SymphonyWebhookBot,
       ProjectDatabaseKeys.SymphonyCobaGPTBot,
       ProjectDatabaseKeys.SymphonyBusinessHighlightsBot,
-      ProjectDatabaseKeys.SymphonyApplicationStatusBot,
       ProjectDatabaseKeys.SymphonyPollBot,
       ProjectDatabaseKeys.SymphonyRssBot,
       ProjectDatabaseKeys.SymphonyBlogBot,
