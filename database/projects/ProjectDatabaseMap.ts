@@ -10,10 +10,10 @@ import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
 import Database from "@/interfaces/Database";
 import validateDatabaseKeys from "@/lib/database/validateDatabaseKeys";
-import CertificateDatabaseKeys from "../certificates/CertificateDatabaseKeys";
-import RoleDatabaseKeys from "../roles/RoleDatabaseKeys";
-import skillDatabaseMap from "../skills/SkillDatabaseMap";
-import BlogDatabaseKeys from "../blogs/BlogDatabaseKeys";
+import CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
+import RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
+import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
+import BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
 
 /**
  * Hashmap of projects with keys as {@link SkillDatabaseKeys} and values as {@link ProjectInterface}.
@@ -50,7 +50,7 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Academic,
     relatedMaterials: [ModuleDatabaseKeys.KCL_IndividualProject],
     thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.AlignmentInLargeLanguageModels
+      ProjectDatabaseKeys.AlignmentInLargeLanguageModels,
     ),
   },
   [ProjectDatabaseKeys.LinuxGnomeMcp]: {
@@ -95,7 +95,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.ComputerVision,
     ],
     thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.HandWrittenDigitClassifier
+      ProjectDatabaseKeys.HandWrittenDigitClassifier,
     ),
   },
   [ProjectDatabaseKeys.VisionTransformerFromScratch]: {
@@ -118,7 +118,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.ComputerVision,
     ],
     thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.VisionTransformerFromScratch
+      ProjectDatabaseKeys.VisionTransformerFromScratch,
     ),
     archived: true,
   },
@@ -143,7 +143,7 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Personal,
     thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.AdultIncomePrediction
+      ProjectDatabaseKeys.AdultIncomePrediction,
     ),
     archived: true,
   },
@@ -168,7 +168,7 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Personal,
     thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.HousePricePrediction
+      ProjectDatabaseKeys.HousePricePrediction,
     ),
     archived: true,
   },
@@ -199,7 +199,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.DeepLearning,
     ],
     thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.CustomNeuralNetworkCoursework
+      ProjectDatabaseKeys.CustomNeuralNetworkCoursework,
     ),
   },
   [ProjectDatabaseKeys.MachineLearningAlgorithms]: {
@@ -231,7 +231,7 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [CertificateDatabaseKeys.UdemyMachineLearningAtoZ],
     type: ProjectTypeEnum.Personal,
     thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.MachineLearningAlgorithms
+      ProjectDatabaseKeys.MachineLearningAlgorithms,
     ),
   },
   [ProjectDatabaseKeys.ArtificialIntelligenceReinforcementLearning]: {
@@ -260,7 +260,7 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [CertificateDatabaseKeys.UdemyArtificialIntelligenceAtoZ],
     type: ProjectTypeEnum.Personal,
     thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.ArtificialIntelligenceReinforcementLearning
+      ProjectDatabaseKeys.ArtificialIntelligenceReinforcementLearning,
     ),
   },
   [ProjectDatabaseKeys.CustomQLearningAgent]: {
@@ -288,7 +288,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     relatedMaterials: [ModuleDatabaseKeys.KCL_MachineLearning],
     thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.CustomQLearningAgent
+      ProjectDatabaseKeys.CustomQLearningAgent,
     ),
   },
   [ProjectDatabaseKeys.MachineLearningAssignment1]: {
@@ -312,7 +312,7 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
     type: ProjectTypeEnum.Academic,
     thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.MachineLearningAssignment1
+      ProjectDatabaseKeys.MachineLearningAssignment1,
     ),
     archived: true,
   },
@@ -336,7 +336,7 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Academic,
     thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.MachineLearningAssignment2
+      ProjectDatabaseKeys.MachineLearningAssignment2,
     ),
     archived: true,
   },
@@ -361,7 +361,7 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
     type: ProjectTypeEnum.Academic,
     thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.MachineLearningAssignment3
+      ProjectDatabaseKeys.MachineLearningAssignment3,
     ),
     archived: true,
   },
@@ -388,7 +388,7 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
     type: ProjectTypeEnum.Academic,
     thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.MachineLearningLabs
+      ProjectDatabaseKeys.MachineLearningLabs,
     ),
   },
   [ProjectDatabaseKeys.ComputationalFinanceAssignment]: {
@@ -418,7 +418,7 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [ModuleDatabaseKeys.RHUL_ComputationalFinance],
     type: ProjectTypeEnum.Academic,
     thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.ComputationalFinanceAssignment
+      ProjectDatabaseKeys.ComputationalFinanceAssignment,
     ),
   },
   [ProjectDatabaseKeys.MachineLearningDataScienceLab]: {
@@ -447,7 +447,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     type: ProjectTypeEnum.Personal,
     thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.MachineLearningDataScienceLab
+      ProjectDatabaseKeys.MachineLearningDataScienceLab,
     ),
   },
 
@@ -474,7 +474,7 @@ const projectMap: Database<ProjectInterface> = {
       ModuleDatabaseKeys.KCL_ArtificialIntelligenceReasoningAndDecisionMaking,
     ],
     thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.MarkovDecisionAgent
+      ProjectDatabaseKeys.MarkovDecisionAgent,
     ),
   },
   [ProjectDatabaseKeys.ComputerVisionImageSegmentation]: {
@@ -499,7 +499,7 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
     relatedMaterials: [ModuleDatabaseKeys.KCL_ComputerVision],
     thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.ComputerVisionImageSegmentation
+      ProjectDatabaseKeys.ComputerVisionImageSegmentation,
     ),
   },
   [ProjectDatabaseKeys.ComputerVisionQuizzes]: {
@@ -524,7 +524,7 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
     relatedMaterials: [ModuleDatabaseKeys.KCL_ComputerVision],
     thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.ComputerVisionQuizzes
+      ProjectDatabaseKeys.ComputerVisionQuizzes,
     ),
   },
 
@@ -720,6 +720,42 @@ const projectMap: Database<ProjectInterface> = {
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.RichTextNotes),
     type: ProjectTypeEnum.Personal,
   },
+  [ProjectDatabaseKeys.CommerzbankAppStatus]: {
+    name: "Commerzbank App Status",
+    description: `
+      A web application that monitors and displays the status of various internal applications used by Commerzbank employees.
+      Users are able to create personal subscriptions groups with other members. 
+    `,
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.ShadcnUi,
+      SkillDatabaseKeys.RadixUi,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.Zod,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.MongoDb,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Html,
+      SkillDatabaseKeys.Css,
+      SkillDatabaseKeys.Vitest,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.CommerzbankAppStatus,
+    ),
+    type: ProjectTypeEnum.Professional,
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankBackendEngineer,
+      ProjectDatabaseKeys.AuthenticationMicroService,
+      ProjectDatabaseKeys.EmailMicroService,
+      ProjectDatabaseKeys.LdapPermissionsMicroService,
+    ],
+  },
   [ProjectDatabaseKeys.CommerzbankRates]: {
     name: "Commerzbank Rates",
     description: `
@@ -742,10 +778,9 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.SpringDataJpa,
       SkillDatabaseKeys.SpringSecurity,
       SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.PostgreSql,
+      SkillDatabaseKeys.MongoDb,
       SkillDatabaseKeys.DatabaseManagementSystems,
       SkillDatabaseKeys.Databases,
-      SkillDatabaseKeys.RelationalDatabases,
       SkillDatabaseKeys.TeamCity,
       SkillDatabaseKeys.Html,
       SkillDatabaseKeys.Css,
@@ -845,7 +880,7 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     archived: true,
     thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.OAuthNextJsSpringBoot
+      ProjectDatabaseKeys.OAuthNextJsSpringBoot,
     ),
     type: ProjectTypeEnum.Personal,
     relatedMaterials: [
@@ -879,7 +914,7 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     archived: true,
     thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.NextJsAuthJsTemplate
+      ProjectDatabaseKeys.NextJsAuthJsTemplate,
     ),
     type: ProjectTypeEnum.Personal,
     relatedMaterials: [
@@ -914,7 +949,7 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     archived: true,
     thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.NextJsBetterAuthTemplate
+      ProjectDatabaseKeys.NextJsBetterAuthTemplate,
     ),
     type: ProjectTypeEnum.Personal,
     relatedMaterials: [
@@ -977,6 +1012,7 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [
       RoleDatabaseKeys.CommerzbankBackendEngineer,
       ProjectDatabaseKeys.OAuthNextJsSpringBoot,
+      ProjectDatabaseKeys.CommerzbankAppStatus,
       ProjectDatabaseKeys.CommerzbankRates,
       BlogDatabaseKeys.MicroservicesArchitecture,
     ],
@@ -1673,7 +1709,7 @@ const projectMap: Database<ProjectInterface> = {
  * List of keys for the projects that can be used to uniquely identify the project.
  */
 export const projectDatabaseKeys: ProjectDatabaseKeys[] = Object.keys(
-  projectMap
+  projectMap,
 ) as ProjectDatabaseKeys[];
 
 // Validate that all project keys only contain alphanumeric characters and dashes
@@ -1695,7 +1731,7 @@ const projectDatabaseMap: Database<ProjectInterface> =
     skillDatabaseMap,
     [SkillCategoriesEnum.ProgrammingLanguages],
     SkillTypesEnum.Technical,
-    SkillTypesEnum.Technology
+    SkillTypesEnum.Technology,
   );
 
 export default projectDatabaseMap;
