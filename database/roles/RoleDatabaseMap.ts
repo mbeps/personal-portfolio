@@ -68,6 +68,7 @@ const rolesMap: Database<RoleInterface> = {
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperPython,
 
+      ProjectDatabaseKeys.CommerzbankAppStatus,
       ProjectDatabaseKeys.CommerzbankRates,
 
       ProjectDatabaseKeys.AuthenticationMicroService,
@@ -215,7 +216,7 @@ const rolesMap: Database<RoleInterface> = {
 };
 
 export const roleDatabaseKeys: RoleDatabaseKeys[] = Object.keys(
-  rolesMap
+  rolesMap,
 ) as RoleDatabaseKeys[];
 
 // Validate that all role keys only contain alphanumeric characters and dashes

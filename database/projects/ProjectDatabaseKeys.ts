@@ -17,6 +17,7 @@ enum ProjectDatabaseKeys {
   AiQuizzes = "ai-quizzes",
   OnlineArticles = "online-articles",
   Noodle = "noodle",
+  CommerzbankAppStatus = "commerzbank-app-status",
   CommerzbankRates = "commerzbank-rates",
   OAuthNextJsSpringBoot = "oauth-nextjs-spring-boot",
   NextJsBetterAuthTemplate = "nextjs-better-auth-template",
