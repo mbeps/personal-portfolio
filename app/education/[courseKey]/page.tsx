@@ -193,6 +193,7 @@ const CoursesPage: React.FC<{
                   showArchived={showArchived}
                   filterProps={[]}
                   basePath={`${basePath}/${courseKey}`}
+                  archiveParamName="archived"
                 />
               )}
 

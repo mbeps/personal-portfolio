@@ -15,6 +15,7 @@ import { Button } from "../shadcn/ui/button";
 import { ArchiveToggle } from "./ArchiveToggle";
 import FilterOptionItemCombobox from "./FilterOptionItemCombobox";
 import FilterOptionItemAccordion from "./FilterOptionItemAccordion";
+import { buildCurrentFilterOptions } from "@/lib/material/filter-url-state/buildMaterialFilterUrlState";
 
 interface FilterOverlayProps {
   filterCategories: FilterCategory[];
@@ -73,19 +74,11 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
     return null;
   }
 
-  const filterProps: FilterOption[] = filterCategories.map(
-    (category): FilterOption => ({
-      entryName: category.urlParam,
-      slug: category.selectedValue,
-    })
+  const filterProps: FilterOption[] = buildCurrentFilterOptions(
+    filterCategories,
+    undefined,
+    archiveFilter,
   );
-
-  if (archiveFilter) {
-    filterProps.push({
-      entryName: archiveFilter.paramName,
-      slug: archiveFilter.showArchived.toString(),
-    });
-  }
 
   /**
    * Shared content component used by both Drawer and SidePanel
@@ -148,6 +141,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
                 showArchived={archiveFilter.showArchived}
                 filterProps={filterProps}
                 basePath={basePath}
+                archiveParamName={archiveFilter.paramName}
               />
             </div>
           </div>

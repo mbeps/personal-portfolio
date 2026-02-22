@@ -2,6 +2,7 @@ import stringToSlug from "@/lib/stringToSlug";
 import RoleInterface from "@/database/roles/RoleInterface";
 import ExperienceTypeEnum from "@/enums/experience/ExperienceTypeEnum";
 import Database from "@/interfaces/Database";
+import filterMaterialKeysByPredicate from "@/lib/material/filter/filterMaterialKeysByPredicate";
 
 /**
  * Lets the experience page toggle between work, leadership, and volunteer roles without rebuilding the dataset.
@@ -14,16 +15,9 @@ import Database from "@/interfaces/Database";
 export default function filterRolesByType<T extends RoleInterface>(
   targetType: ExperienceTypeEnum,
   roleKeys: string[],
-  rolesDatabase: Database<T>
+  rolesDatabase: Database<T>,
 ): string[] {
-  const filteredRoleSlugs: string[] = [];
-
-  roleKeys.forEach((key) => {
-    const role: T = rolesDatabase[key];
-    if (role && stringToSlug(role.type) === stringToSlug(targetType)) {
-      filteredRoleSlugs.push(key);
-    }
-  });
-
-  return filteredRoleSlugs;
+  return filterMaterialKeysByPredicate(roleKeys, rolesDatabase, (role) =>
+    Boolean(role && stringToSlug(role.type) === stringToSlug(targetType)),
+  );
 }

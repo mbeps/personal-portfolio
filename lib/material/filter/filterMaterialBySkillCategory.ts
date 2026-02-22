@@ -2,6 +2,7 @@ import stringToSlug from "@/lib/stringToSlug";
 import MaterialInterface from "@/database/materials/MaterialInterface";
 import SkillInterface from "@/database/skills/SkillInterface";
 import Database from "@/interfaces/Database";
+import filterMaterialKeysByPredicate from "@/lib/material/filter/filterMaterialKeysByPredicate";
 
 /**
  * Implements the “skill category” dropdown shared by Projects, Experience, and Certificates.
@@ -14,26 +15,27 @@ import Database from "@/interfaces/Database";
  * @returns Keys of materials that contain at least one skill within the category.
  */
 export default function filterMaterialBySkillCategory<
-  T extends MaterialInterface
+  T extends MaterialInterface,
 >(
   materialKeys: string[],
   materialsDatabase: Database<T>,
   skillCategory: string,
-  skillsDatabase: Database<SkillInterface>
+  skillsDatabase: Database<SkillInterface>,
 ): string[] {
-  const filteredMaterialSlugs: string[] = [];
   const targetCategorySlug = stringToSlug(skillCategory);
 
-  for (const materialKey of materialKeys) {
-    const material: T = materialsDatabase[materialKey];
-    for (const skillSlug of material.skills) {
-      const skill: SkillInterface = skillsDatabase[skillSlug];
-      if (skill && stringToSlug(skill.category) === targetCategorySlug) {
-        filteredMaterialSlugs.push(materialKey);
-        break; // Assuming a material only needs one matching skill category to be included
-      }
-    }
-  }
-
-  return filteredMaterialSlugs;
+  return filterMaterialKeysByPredicate(
+    materialKeys,
+    materialsDatabase,
+    (material) =>
+      Boolean(
+        material &&
+          material.skills.some((skillSlug) => {
+            const skill: SkillInterface = skillsDatabase[skillSlug];
+            return Boolean(
+              skill && stringToSlug(skill.category) === targetCategorySlug,
+            );
+          }),
+      ),
+  );
 }

@@ -2,11 +2,13 @@ import FilterOption from "@/interfaces/filters/FilterOption";
 import Link from "next/link";
 import { Switch } from "../shadcn/ui/switch";
 import generateUrl from "@/lib/generateUrl";
+import { withToggledArchive } from "@/lib/material/filter-url-state/buildMaterialFilterUrlState";
 
 interface ArchiveToggleProps {
   filterProps: FilterOption[];
   showArchived: boolean;
   basePath: string;
+  archiveParamName: string;
 }
 
 /**
@@ -23,12 +25,14 @@ export const ArchiveToggle: React.FC<ArchiveToggleProps> = ({
   showArchived,
   filterProps,
   basePath,
+  archiveParamName,
 }) => {
   // Filters with the addition of the "archived" toggle status
-  const filtersWithArchive: FilterOption[] = [
-    ...filterProps, // Assuming filterProps is already an array of FilterOption
-    { entryName: "archived", slug: (!showArchived).toString() }, // Correctly constructing a FilterOption object
-  ];
+  const filtersWithArchive: FilterOption[] = withToggledArchive(
+    filterProps,
+    archiveParamName,
+    showArchived,
+  );
 
   return (
     <div className="flex justify-end items-center mt-4">
