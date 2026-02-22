@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
+import { ScrollArea as ScrollAreaPrimitive } from "@base-ui/react/scroll-area";
 
 import { cn } from "@/lib/utils";
 
@@ -15,7 +15,9 @@ const ScrollArea = ({
     {...props}
   >
     <ScrollAreaPrimitive.Viewport className="h-full w-full rounded-[inherit]">
-      {children}
+      <ScrollAreaPrimitive.Content>
+        {children}
+      </ScrollAreaPrimitive.Content>
     </ScrollAreaPrimitive.Viewport>
     <ScrollBar />
     <ScrollAreaPrimitive.Corner />
@@ -26,8 +28,8 @@ const ScrollBar = ({
   className,
   orientation = "vertical",
   ...props
-}: React.ComponentProps<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>) => (
-  <ScrollAreaPrimitive.ScrollAreaScrollbar
+}: React.ComponentProps<typeof ScrollAreaPrimitive.Scrollbar>) => (
+  <ScrollAreaPrimitive.Scrollbar
     orientation={orientation}
     className={cn(
       "flex touch-none select-none transition-colors",
@@ -39,8 +41,8 @@ const ScrollBar = ({
     )}
     {...props}
   >
-    <ScrollAreaPrimitive.ScrollAreaThumb className="relative flex-1 rounded-full bg-border" />
-  </ScrollAreaPrimitive.ScrollAreaScrollbar>
+    <ScrollAreaPrimitive.Thumb className="relative flex-1 rounded-full bg-border" />
+  </ScrollAreaPrimitive.Scrollbar>
 );
 
 export { ScrollArea, ScrollBar };

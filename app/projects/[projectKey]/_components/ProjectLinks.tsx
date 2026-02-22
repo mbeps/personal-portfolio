@@ -35,35 +35,29 @@ export function ProjectLinks({
       orientation={isMobile ? "vertical" : "horizontal"}
     >
       {deploymentURL && (
-        <Button asChild className="flex-1 md:max-w-xs">
-          <Link href={deploymentURL} target="_blank">
-            <div className="flex justify-center md:justify-start items-center gap-4 w-full">
-              <BsArrowUpRightCircle size={26} />
-              <p>Deployment</p>
-            </div>
-          </Link>
+        <Button render={<Link href={deploymentURL} target="_blank" />} className="flex-1 md:max-w-xs">
+          <div className="flex justify-center md:justify-start items-center gap-4 w-full">
+            <BsArrowUpRightCircle size={26} />
+            <p>Deployment</p>
+          </div>
         </Button>
       )}
 
       {repositoryURL && (
-        <Button asChild className="flex-1 md:max-w-xs">
-          <Link href={repositoryURL} target="_blank">
-            <div className="flex justify-center md:justify-start items-center gap-4 w-full">
-              <BsGithub size={26} />
-              <p>Repository</p>
-            </div>
-          </Link>
+        <Button render={<Link href={repositoryURL} target="_blank" />} className="flex-1 md:max-w-xs">
+          <div className="flex justify-center md:justify-start items-center gap-4 w-full">
+            <BsGithub size={26} />
+            <p>Repository</p>
+          </div>
         </Button>
       )}
 
       {reportURL && (
-        <Button asChild className="flex-1 md:max-w-xs">
-          <Link href={reportURL}>
-            <div className="flex justify-center md:justify-start items-center gap-4 w-full">
-              <IoReaderOutline size={26} />
-              <p>Report</p>
-            </div>
-          </Link>
+        <Button render={<Link href={reportURL} />} className="flex-1 md:max-w-xs">
+          <div className="flex justify-center md:justify-start items-center gap-4 w-full">
+            <IoReaderOutline size={26} />
+            <p>Report</p>
+          </div>
         </Button>
       )}
     </ButtonGroup>

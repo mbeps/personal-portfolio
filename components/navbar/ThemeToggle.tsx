@@ -53,9 +53,9 @@ const ThemeToggle: React.FC = () => {
   return (
     <ContextMenu>
       <Tooltip>
-        <TooltipTrigger asChild>
-          <ContextMenuTrigger asChild>
-            {currentTheme === "dark" ? (
+        <TooltipTrigger render={
+          <ContextMenuTrigger render={
+            currentTheme === "dark" ? (
               <button
                 onClick={handleThemeChange}
                 className={`${baseButtonClass} ${darkButtonClass}`}
@@ -75,9 +75,9 @@ const ThemeToggle: React.FC = () => {
                   className={`${baseIconClass} ${lightIconClass}`}
                 />
               </button>
-            )}
-          </ContextMenuTrigger>
-        </TooltipTrigger>
+            )
+          } />
+        } />
         <TooltipContent>
           <p>
             Right Click <br /> for Options

@@ -73,7 +73,7 @@ const FilterOptionItemCombobox: React.FC<FilterOptionItemComboboxProps> = ({
       open={isOpen}
       onOpenChange={setOpen}
     >
-      <PopoverTrigger asChild>
+      <PopoverTrigger render={
         <Button
           variant="default"
           role="combobox"
@@ -102,7 +102,7 @@ const FilterOptionItemCombobox: React.FC<FilterOptionItemComboboxProps> = ({
             className="text-neutral-700 dark:text-neutral-200 mt-1"
           />
         </Button>
-      </PopoverTrigger>
+      } />
 
       <PopoverContent className="w-[24rem] md:w-84 p-0">
         <Command className="w-full">

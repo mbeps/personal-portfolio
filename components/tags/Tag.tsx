@@ -1,7 +1,7 @@
 import React from "react";
 import { IoIosArrowForward } from "react-icons/io";
 
-interface TagProps {
+interface TagProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   onClick?: () => void;
   hasHover?: boolean;
@@ -15,7 +15,8 @@ interface TagProps {
  * @param hasHover Forces hover styling even without an onClick.
  * @returns Styled tag element with optional arrow indicator.
  */
-const Tag: React.FC<TagProps> = ({ children, onClick, hasHover }) => {
+const Tag = React.forwardRef<HTMLDivElement, TagProps>(
+  ({ children, onClick, hasHover, ...props }, ref) => {
   const baseClassName: string = `
     group
     bg-gray-200 dark:bg-red-950
@@ -35,7 +36,7 @@ const Tag: React.FC<TagProps> = ({ children, onClick, hasHover }) => {
     onClick || hasHover ? `${baseClassName} ${hoverClassName}` : baseClassName;
 
   return (
-    <div className={className} onClick={onClick}>
+    <div className={className} onClick={onClick} ref={ref} {...props}>
       <div className="flex items-center space-x-2">
         <div className="text-left flex-1">{children}</div>
         {(onClick || hasHover) && (
@@ -48,6 +49,8 @@ const Tag: React.FC<TagProps> = ({ children, onClick, hasHover }) => {
       </div>
     </div>
   );
-};
+});
+
+Tag.displayName = "Tag";
 
 export default Tag;

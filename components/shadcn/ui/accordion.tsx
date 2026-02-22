@@ -1,16 +1,14 @@
 "use client";
 
 import * as React from "react";
-import * as AccordionPrimitive from "@radix-ui/react-accordion";
+import { Accordion as AccordionPrimitive } from "@base-ui/react/accordion";
 import { ChevronDown } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-const Accordion = ({
-  className,
-  ...props
-}: React.ComponentProps<typeof AccordionPrimitive.Root>) => (
+const Accordion = React.forwardRef<any, React.ComponentProps<typeof AccordionPrimitive.Root> & { type?: "single" | "multiple", collapsible?: boolean }>(({ type, collapsible, className, ...props }, ref) => (
   <AccordionPrimitive.Root
+    multiple={type === "multiple"}
     className={cn(
       `
         border border-neutral-200 dark:border-neutral-800
@@ -22,9 +20,11 @@ const Accordion = ({
         transition-all duration-500 ease-in-out`,
       className
     )}
+    ref={ref}
     {...props}
   />
-);
+));
+Accordion.displayName = "Accordion";
 
 const AccordionItem = ({
   className,
@@ -50,7 +50,7 @@ const AccordionTrigger = ({
   <AccordionPrimitive.Header className="flex">
     <AccordionPrimitive.Trigger
       className={cn(
-        "flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-180",
+        "flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&[data-panel-open]>svg]:rotate-180 [&[data-open]>svg]:rotate-180",
         className
       )}
       {...props}
@@ -65,13 +65,15 @@ const AccordionContent = ({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof AccordionPrimitive.Content>) => (
-  <AccordionPrimitive.Content
-    className="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+}: React.ComponentProps<typeof AccordionPrimitive.Panel>) => (
+  <AccordionPrimitive.Panel
+    className="grid overflow-hidden text-sm grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-in-out data-[ending-style]:grid-rows-[0fr] data-[starting-style]:grid-rows-[0fr]"
     {...props}
   >
-    <div className={cn("pb-4 pt-0", className)}>{children}</div>
-  </AccordionPrimitive.Content>
+    <div className="min-h-0">
+      <div className={cn("pb-4 pt-0", className)}>{children}</div>
+    </div>
+  </AccordionPrimitive.Panel>
 );
 
 export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };

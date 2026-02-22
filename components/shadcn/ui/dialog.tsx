@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { Dialog as DialogPrimitive } from "@base-ui/react/dialog";
 import { X } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -17,10 +17,10 @@ const DialogClose = DialogPrimitive.Close;
 const DialogOverlay = ({
   className,
   ...props
-}: React.ComponentProps<typeof DialogPrimitive.Overlay>) => (
-  <DialogPrimitive.Overlay
+}: React.ComponentProps<typeof DialogPrimitive.Backdrop>) => (
+  <DialogPrimitive.Backdrop
     className={cn(
-      "fixed inset-0 z-50 bg-black/80 dark:bg-white/20 backdrop-blur-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:duration-300 data-[state=open]:duration-500",
+      "fixed inset-0 z-50 bg-black/80 dark:bg-white/20 backdrop-blur-md data-[open]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[open]:fade-in-0 data-[closed]:duration-300 data-[open]:duration-500",
       className
     )}
     {...props}
@@ -31,25 +31,27 @@ const DialogContent = ({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof DialogPrimitive.Content>) => (
+}: React.ComponentProps<typeof DialogPrimitive.Popup>) => (
   <DialogPortal>
     <DialogOverlay />
-    <DialogPrimitive.Content
-      className={cn(
-        "md:h-[70vh] h-[80vh] fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-white dark:bg-black shadow-lg data-[state=closed]:duration-300 data-[state=open]:duration-500 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom sm:rounded-xl",
-        className
-      )}
-      {...props}
-    >
-      {children}
-      <DialogPrimitive.Close
-        className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-all hover:text-red-500 hover:font-bold hover:opacity-100 focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground 
-      "
+    <DialogPrimitive.Viewport>
+      <DialogPrimitive.Popup
+        className={cn(
+          "md:h-[70vh] h-[80vh] fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-white dark:bg-black shadow-lg data-[closed]:duration-300 data-[open]:duration-500 data-[open]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[open]:fade-in-0 data-[closed]:zoom-out-95 data-[open]:zoom-in-95 data-[closed]:slide-out-to-bottom data-[open]:slide-in-from-bottom sm:rounded-xl",
+          className
+        )}
+        {...props}
       >
-        <X className="h-6 w-6" />
-        <span className="sr-only">Close</span>
-      </DialogPrimitive.Close>
-    </DialogPrimitive.Content>
+        {children}
+        <DialogPrimitive.Close
+          className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-all hover:text-red-500 hover:font-bold hover:opacity-100 focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[open]:bg-accent data-[open]:text-muted-foreground 
+        "
+        >
+          <X className="h-6 w-6" />
+          <span className="sr-only">Close</span>
+        </DialogPrimitive.Close>
+      </DialogPrimitive.Popup>
+    </DialogPrimitive.Viewport>
   </DialogPortal>
 );
 

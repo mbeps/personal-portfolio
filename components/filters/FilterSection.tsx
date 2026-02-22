@@ -132,31 +132,31 @@ const FilterSection: React.FC<FilterSectionProps> = ({
                     {/* Clear Button */}
                     <Button
                       variant="default"
-                      asChild
+                      render={
+                        <Link
+                          href={basePath}
+                          scroll={false}
+                          onClick={(e) => {
+                            if (!areFiltersApplied) e.preventDefault();
+                          }}
+                          aria-disabled={!areFiltersApplied}
+                          tabIndex={areFiltersApplied ? 0 : -1}
+                          className={`${
+                            !areFiltersApplied
+                              ? "pointer-events-none opacity-50"
+                              : ""
+                          }`}
+                        />
+                      }
                       className="flex-1 shadow-xs hover:shadow-md"
                     >
-                      <Link
-                        href={basePath}
-                        scroll={false}
-                        onClick={(e) => {
-                          if (!areFiltersApplied) e.preventDefault();
-                        }}
-                        aria-disabled={!areFiltersApplied}
-                        tabIndex={areFiltersApplied ? 0 : -1}
-                        className={`${
-                          !areFiltersApplied
-                            ? "pointer-events-none opacity-50"
-                            : ""
-                        }`}
-                      >
-                        <div className="flex items-center space-x-2">
-                          <AiOutlineClear
-                            fontSize={24}
-                            className="text-neutral-700 dark:text-neutral-200"
-                          />
-                          <span>Clear All</span>
-                        </div>
-                      </Link>
+                      <div className="flex items-center space-x-2">
+                        <AiOutlineClear
+                          fontSize={24}
+                          className="text-neutral-700 dark:text-neutral-200"
+                        />
+                        <span>Clear All</span>
+                      </div>
                     </Button>
                   </ButtonGroup>
                 </div>
