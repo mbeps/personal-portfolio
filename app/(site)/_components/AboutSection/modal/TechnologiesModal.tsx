@@ -128,7 +128,7 @@ const TechnologiesModal: React.FC = () => {
             </div>
 
             <DropdownMenu>
-              <DropdownMenuTrigger asChild>
+              <DropdownMenuTrigger render={
                 <Button variant="default" className="w-48">
                   <div className="flex items-start justify-between space-x-2 w-full">
                     <span>{currentGroupedName}</span>
@@ -138,7 +138,7 @@ const TechnologiesModal: React.FC = () => {
                     />
                   </div>
                 </Button>
-              </DropdownMenuTrigger>
+              } />
               <DropdownMenuContent className="w-48">
                 {options.map((option) => (
                   <DropdownMenuItem
@@ -186,16 +186,12 @@ const TechnologiesModal: React.FC = () => {
     </>
   );
 
-  const TriggerButton = () => <Tag onClick={handleOpenModal}>...</Tag>;
-
   return (
     <>
       {isDesktop ? (
         // Desktop Dialog (md and above)
         <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-          <DialogTrigger asChild>
-            <TriggerButton />
-          </DialogTrigger>
+          <DialogTrigger render={<Tag onClick={handleOpenModal}>...</Tag>} />
           <DialogContent>
             <DialogTitle className="sr-only">Technologies</DialogTitle>
             <ModalContent />
@@ -205,7 +201,7 @@ const TechnologiesModal: React.FC = () => {
         // Mobile Drawer (below md)
         <Drawer open={isModalOpen} onOpenChange={setIsModalOpen}>
           <DrawerTrigger asChild>
-            <TriggerButton />
+            <Tag onClick={handleOpenModal}>...</Tag>
           </DrawerTrigger>
           <DrawerContent className="flex flex-col justify-start h-[75vh]">
             <ModalContent />

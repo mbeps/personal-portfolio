@@ -125,7 +125,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
               Group by:
             </div>
             <DropdownMenu>
-              <DropdownMenuTrigger asChild>
+              <DropdownMenuTrigger render={
                 <Button variant="default" className="w-48">
                   <div className="flex items-start justify-between space-x-2 w-full">
                     <span>{currentGroupedName}</span>
@@ -135,7 +135,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
                     />
                   </div>
                 </Button>
-              </DropdownMenuTrigger>
+              } />
               <DropdownMenuContent className="w-48">
                 {options.map((option) => (
                   <DropdownMenuItem
@@ -181,23 +181,19 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
     </>
   );
 
-  const TriggerButton = () => (
-    <Tag onClick={shouldOpenModal ? () => setIsOpen(true) : undefined}>
-      {language.name}
-    </Tag>
-  );
-
   return (
     <>
       {isDesktop ? (
         // Desktop Dialog (md and above)
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
           <Tooltip>
-            <TooltipTrigger asChild>
-              <DialogTrigger asChild>
-                <TriggerButton />
-              </DialogTrigger>
-            </TooltipTrigger>
+            <TooltipTrigger render={
+              <DialogTrigger render={
+                <Tag onClick={shouldOpenModal ? () => setIsOpen(true) : undefined}>
+                  {language.name}
+                </Tag>
+              } />
+            } />
             <TooltipContent>
               <p>{`View technologies related to ${language.name}`}</p>
             </TooltipContent>
@@ -211,11 +207,13 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
         // Mobile Drawer (below md)
         <Drawer open={isOpen} onOpenChange={setIsOpen}>
           <Tooltip>
-            <TooltipTrigger asChild>
+            <TooltipTrigger render={
               <DrawerTrigger asChild>
-                <TriggerButton />
+                <Tag onClick={shouldOpenModal ? () => setIsOpen(true) : undefined}>
+                  {language.name}
+                </Tag>
               </DrawerTrigger>
-            </TooltipTrigger>
+            } />
             <TooltipContent>
               <p>{`View technologies related to ${language.name}`}</p>
             </TooltipContent>
