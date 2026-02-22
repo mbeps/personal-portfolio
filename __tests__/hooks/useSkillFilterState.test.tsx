@@ -6,7 +6,9 @@ import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 
-const mockUseSearchParams = vi.fn();
+const { mockUseSearchParams } = vi.hoisted(() => ({
+  mockUseSearchParams: vi.fn(),
+}));
 
 vi.mock("next/navigation", () => ({
   useSearchParams: mockUseSearchParams,
