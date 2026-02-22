@@ -56,13 +56,13 @@ describe("addNestedSkillsMaterialList", () => {
     const result = addNestedSkillsMaterialList(
       materialsDatabase,
       skillsDatabase,
-      []
+      [],
     );
     expect(result.project1.skills).toEqual(
       expect.arrayContaining([
         SkillDatabaseKeys.JavaScript,
         SkillDatabaseKeys.ReactJs,
-      ])
+      ]),
     );
   });
 
@@ -78,7 +78,7 @@ describe("addNestedSkillsMaterialList", () => {
     const result = addNestedSkillsMaterialList(
       materialsDatabase,
       skillsDatabase,
-      [SkillCategoriesEnum.FrontEndWebDevelopment]
+      [SkillCategoriesEnum.FrontEndWebDevelopment],
     );
     expect(result.project1.skills).toEqual([SkillDatabaseKeys.JavaScript]);
   });
@@ -96,13 +96,13 @@ describe("addNestedSkillsMaterialList", () => {
       materialsDatabase,
       skillsDatabase,
       [],
-      SkillTypesEnum.Technology
+      SkillTypesEnum.Technology,
     );
     expect(result.project1.skills).toEqual(
       expect.arrayContaining([
         SkillDatabaseKeys.JavaScript,
         SkillDatabaseKeys.ReactJs,
-      ])
+      ]),
     );
 
     materialsDatabase = {
@@ -117,7 +117,7 @@ describe("addNestedSkillsMaterialList", () => {
       materialsDatabase,
       skillsDatabase,
       [],
-      SkillTypesEnum.Technical
+      SkillTypesEnum.Technical,
     );
     expect(result2.project1.skills).toEqual([SkillDatabaseKeys.JavaScript]);
   });
@@ -136,14 +136,14 @@ describe("addNestedSkillsMaterialList", () => {
       skillsDatabase,
       [],
       undefined,
-      SkillTypesEnum.Technology
+      SkillTypesEnum.Technology,
     );
     expect(result.project1.skills).toEqual(
       expect.arrayContaining([
         SkillDatabaseKeys.JavaScript,
         SkillDatabaseKeys.ReactJs,
         SkillDatabaseKeys.Css,
-      ])
+      ]),
     );
   });
 
@@ -159,14 +159,14 @@ describe("addNestedSkillsMaterialList", () => {
     const result = addNestedSkillsMaterialList(
       materialsDatabase,
       skillsDatabase,
-      []
+      [],
     );
     expect(result.project1.skills).toHaveLength(2);
     expect(result.project1.skills).toEqual(
       expect.arrayContaining([
         SkillDatabaseKeys.JavaScript,
         SkillDatabaseKeys.ReactJs,
-      ])
+      ]),
     );
   });
 
@@ -178,7 +178,7 @@ describe("addNestedSkillsMaterialList", () => {
     const result = addNestedSkillsMaterialList(
       materialsDatabase,
       skillsDatabase,
-      []
+      [],
     );
     expect(result.project1.skills).toEqual([]);
   });
@@ -195,7 +195,7 @@ describe("addNestedSkillsMaterialList", () => {
     const result = addNestedSkillsMaterialList(
       materialsDatabase,
       skillsDatabase,
-      []
+      [],
     );
     expect(result.project1.skills).toEqual([SkillDatabaseKeys.ReactJs]);
   });
@@ -205,8 +205,131 @@ describe("addNestedSkillsMaterialList", () => {
     const result = addNestedSkillsMaterialList(
       materialsDatabase,
       skillsDatabase,
-      []
+      [],
     );
     expect(result).toEqual({});
+  });
+
+  test("should add only related skills matching skillTypeToAdd constraint", () => {
+    // Create a skill database where a parent skill has multiple related skills of different types
+    const extendedSkillsDatabase: Database<SkillInterface> = {
+      ...skillsDatabase,
+      [SkillDatabaseKeys.JavaScript]: {
+        name: "JavaScript",
+        category: SkillCategoriesEnum.ProgrammingLanguages,
+        skillType: SkillTypesEnum.Technology,
+        // Multiple related skills with different types
+        relatedSkills: [
+          SkillDatabaseKeys.ReactJs, // Technology
+          SkillDatabaseKeys.MachineLearning, // Technical
+        ],
+      },
+    };
+
+    const materialsDatabase: Database<MaterialInterface> = {
+      project1: {
+        name: "Project 1",
+        skills: [SkillDatabaseKeys.JavaScript],
+        category: "project",
+      },
+    };
+
+    const result = addNestedSkillsMaterialList(
+      materialsDatabase,
+      extendedSkillsDatabase,
+      [],
+      SkillTypesEnum.Technology, // Should only add Technology type
+    );
+
+    // Should include JS (original) + React (Technology), but NOT MachineLearning (Technical)
+    expect(result.project1.skills).toEqual(
+      expect.arrayContaining([
+        SkillDatabaseKeys.JavaScript,
+        SkillDatabaseKeys.ReactJs,
+      ]),
+    );
+    expect(result.project1.skills).not.toContain(
+      SkillDatabaseKeys.MachineLearning,
+    );
+    expect(result.project1.skills).toHaveLength(2);
+  });
+
+  test("skips adding related skills when skill does not match skillTypeToCheck", () => {
+    const extendedSkillsDatabase: Database<SkillInterface> = {
+      ...skillsDatabase,
+      [SkillDatabaseKeys.MachineLearning]: {
+        name: "Machine Learning",
+        category: SkillCategoriesEnum.ArtificialIntelligence,
+        skillType: SkillTypesEnum.Technical, // Different type
+        // Has related skills that should NOT be added
+        relatedSkills: [SkillDatabaseKeys.Python],
+      },
+    };
+
+    const materialsDatabase: Database<MaterialInterface> = {
+      project1: {
+        name: "Project 1",
+        // Mix of Technology and Technical skills
+        skills: [
+          SkillDatabaseKeys.JavaScript, // Technology (matches)
+          SkillDatabaseKeys.MachineLearning, // Technical (does NOT match)
+        ],
+        category: "project",
+      },
+    };
+
+    const result = addNestedSkillsMaterialList(
+      materialsDatabase,
+      extendedSkillsDatabase,
+      [],
+      undefined, // No constraint on type to add
+      SkillTypesEnum.Technology, // Only check Technology skills
+    );
+
+    // Should include:
+    // - JavaScript (original, matches Technology)
+    // - ReactJs (related to JavaScript)
+    // - MachineLearning (original, but doesn't match so no related skills added)
+    // Should NOT include Python (related to MachineLearning which doesn't match)
+    expect(result.project1.skills).toEqual(
+      expect.arrayContaining([
+        SkillDatabaseKeys.JavaScript,
+        SkillDatabaseKeys.ReactJs,
+        SkillDatabaseKeys.MachineLearning,
+      ]),
+    );
+    expect(result.project1.skills).not.toContain(SkillDatabaseKeys.Python);
+    expect(result.project1.skills).toHaveLength(3);
+  });
+
+  test("skips skills whose category is in the ignored list", () => {
+    const materialsDatabase: Database<MaterialInterface> = {
+      project1: {
+        name: "Project 1",
+        // Material has a skill whose category will be ignored
+        skills: [
+          SkillDatabaseKeys.JavaScript, // ProgrammingLanguages category
+          SkillDatabaseKeys.ReactJs, // FrontEndWebDevelopment category
+        ],
+        category: "project",
+      },
+    };
+
+    const result = addNestedSkillsMaterialList(
+      materialsDatabase,
+      skillsDatabase,
+      [SkillCategoriesEnum.ProgrammingLanguages], // Ignore ProgrammingLanguages
+    );
+
+    // JavaScript category is ignored, so its related skills won't be added
+    // ReactJs category is NOT ignored, but it has no related skills
+    // Both original skills remain
+    expect(result.project1.skills).toEqual(
+      expect.arrayContaining([
+        SkillDatabaseKeys.JavaScript,
+        SkillDatabaseKeys.ReactJs,
+      ]),
+    );
+    expect(result.project1.skills).toHaveLength(2);
   });
 });

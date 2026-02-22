@@ -13,6 +13,10 @@ import FilterOption from "@/interfaces/filters/FilterOption";
 import SearchFilter from "@/interfaces/filters/SearchFilter";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import {
+  buildCurrentFilterOptions,
+  withForcedArchiveTrue,
+} from "@/lib/material/filter-url-state/buildMaterialFilterUrlState";
 
 interface FilterOptionItemAccordionProps {
   filterCategories: FilterCategory[];
@@ -39,7 +43,7 @@ const FilterOptionItemAccordion: React.FC<FilterOptionItemAccordionProps> = ({
 }) => {
   function getOptionLabel(category: FilterCategory): string {
     const activeOption = category.options.find(
-      (option) => option.slug === category.selectedValue
+      (option) => option.slug === category.selectedValue,
     );
 
     return activeOption?.entryName ?? "All";
@@ -47,38 +51,23 @@ const FilterOptionItemAccordion: React.FC<FilterOptionItemAccordionProps> = ({
 
   function buildFilterUrl(
     category: FilterCategory,
-    optionSlug: string
+    optionSlug: string,
   ): string {
-    const baseFilters: FilterOption[] = [
-      ...filterCategories.map((item) => ({
-        entryName: item.urlParam,
-        slug: item.selectedValue,
-      })),
-      {
-        entryName: searchFilter.searchParamName,
-        slug: searchFilter.searchTerm,
-      },
-    ];
+    const baseFilters: FilterOption[] = buildCurrentFilterOptions(
+      filterCategories,
+      searchFilter,
+    );
 
-    const filtersWithArchive: FilterOption[] = archiveFilter
-      ? [
-          ...baseFilters,
-          {
-            entryName: archiveFilter.paramName,
-            slug: true.toString(),
-          },
-          {
-            entryName: category.urlParam,
-            slug: optionSlug,
-          },
-        ]
-      : [
-          ...baseFilters,
-          {
-            entryName: category.urlParam,
-            slug: optionSlug,
-          },
-        ];
+    const filtersWithArchive: FilterOption[] = withForcedArchiveTrue(
+      [
+        ...baseFilters,
+        {
+          entryName: category.urlParam,
+          slug: optionSlug,
+        },
+      ],
+      archiveFilter,
+    );
 
     return generateUrl(filtersWithArchive, basePath);
   }
@@ -115,7 +104,7 @@ const FilterOptionItemAccordion: React.FC<FilterOptionItemAccordionProps> = ({
                         px-3 py-3 text-left text-md font-semibold transition-colors`,
                         isSelected
                           ? "bg-neutral-900 text-neutral-50 dark:bg-neutral-100 dark:text-neutral-900"
-                          : "bg-white text-neutral-700 dark:bg-neutral-900 dark:text-neutral-50"
+                          : "bg-white text-neutral-700 dark:bg-neutral-900 dark:text-neutral-50",
                       )}
                     >
                       {option.entryName}

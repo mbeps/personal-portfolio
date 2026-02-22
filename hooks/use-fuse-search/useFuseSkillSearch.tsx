@@ -16,65 +16,58 @@ import { useMemo } from "react";
 function useFuseSkillSearch<T extends SkillInterface>(
   skillsMap: Database<T>,
   searchTerm: string,
-  searchKeys: string[]
+  searchKeys: string[],
 ): string[] {
+  const entries = useMemo(
+    () => Object.entries(skillsMap) as [string, T][],
+    [skillsMap],
+  );
+
   // Enhanced search options to handle nested arrays
   const searchOptions = useMemo(
     () => ({
       keys: searchKeys.map((key) => {
         // Adding custom path logic for nested arrays like 'relatedSkills'
-        if (key.includes("relatedSkills")) {
+        if (key === "relatedSkills") {
           return {
             name: key,
-            getFn: (item: T) =>
-              item.relatedSkills?.map((skill) => skill.toString()) || [], // Assuming relatedSkills is an array of keys
+            getFn: (entry: [string, T]) =>
+              entry[1].relatedSkills?.map((skill) => skill.toString()) ?? [],
           };
         }
-        return key;
+
+        return {
+          name: key,
+          getFn: (entry: [string, T]) => {
+            const value = (entry[1] as Record<string, unknown>)[key];
+
+            if (Array.isArray(value)) {
+              return value.map((item) => item?.toString() ?? "");
+            }
+
+            return value?.toString() ?? "";
+          },
+        };
       }),
       threshold: 0.3, // Fixed threshold for fuzzy matching
       includeScore: true, // Optional: include scoring to debug or refine searches
     }),
-    [searchKeys]
+    [searchKeys],
   );
-
-  // Convert the hashmap into an array for Fuse.js
-  const skillsArray: T[] = useMemo(() => Object.values(skillsMap), [skillsMap]);
 
   // Initialize Fuse with the skills array and search options
   const fuse = useMemo(
-    () => new Fuse(skillsArray, searchOptions),
-    [skillsArray, searchOptions]
+    () => new Fuse(entries, searchOptions),
+    [entries, searchOptions],
   );
 
-  // Perform the search
-  const searchedSkills = useMemo(() => {
-    return searchTerm
-      ? fuse.search(searchTerm).map((result) => result.item)
-      : skillsArray;
-  }, [fuse, skillsArray, searchTerm]);
+  return useMemo(() => {
+    if (!searchTerm) {
+      return entries.map(([key]) => key);
+    }
 
-  // Create a reverse lookup map for skill names to keys
-  const nameToKeyMap = useMemo(() => {
-    return Object.keys(skillsMap).reduce((acc, key) => {
-      const skill = skillsMap[key];
-      acc[skill.name] = key;
-      return acc;
-    }, {} as { [name: string]: string });
-  }, [skillsMap]);
-
-  // Convert the searched skills back into a hashmap using the reverse lookup
-  const filteredSkillsMap = useMemo(() => {
-    return searchedSkills.reduce((acc, skill) => {
-      const key = nameToKeyMap[skill.name];
-      if (key) {
-        acc[key] = skill;
-      }
-      return acc;
-    }, {} as Database<T>);
-  }, [searchedSkills, nameToKeyMap]);
-
-  return Object.keys(filteredSkillsMap);
+    return fuse.search(searchTerm).map((result) => result.item[0]);
+  }, [entries, fuse, searchTerm]);
 }
 
 export default useFuseSkillSearch;

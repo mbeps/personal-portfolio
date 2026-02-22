@@ -22,6 +22,11 @@ import ArchiveFilter from "@/interfaces/filters/ArchiveFilter";
 import generateUrl from "@/lib/generateUrl";
 import { useRouter } from "next/navigation";
 import { MdOutlineManageSearch } from "react-icons/md";
+import {
+  buildCurrentFilterOptions,
+  upsertFilterOption,
+  withForcedArchiveTrue,
+} from "@/lib/material/filter-url-state/buildMaterialFilterUrlState";
 
 interface FilterSectionProps {
   name: string;
@@ -42,35 +47,23 @@ const FilterSection: React.FC<FilterSectionProps> = ({
 }) => {
   const router = useRouter();
 
-  const filterProps: FilterOption[] = filterCategories.map(
-    (category): FilterOption => ({
-      entryName: category.urlParam,
-      slug: category.selectedValue,
-    })
+  const filterProps: FilterOption[] = buildCurrentFilterOptions(
+    filterCategories,
+    searchFilter,
+    archiveFilter,
   );
 
-  filterProps.push({
-    entryName: searchFilter.searchParamName,
-    slug: searchFilter.searchTerm,
-  });
-
-  if (archiveFilter) {
-    filterProps.push({
-      entryName: archiveFilter.paramName,
-      slug: archiveFilter.showArchived.toString(),
-    });
-  }
-
   function updateSearchTerm(newSearchTerm: string) {
-    const updatedFilterProps: FilterOption[] = filterProps.map((filterProp) => {
-      if (filterProp.entryName === searchFilter.searchParamName) {
-        return { ...filterProp, slug: newSearchTerm };
-      }
-      if (archiveFilter && filterProp.entryName === archiveFilter.paramName) {
-        return { ...filterProp, slug: true.toString() };
-      }
-      return filterProp;
-    });
+    const searchUpdatedProps = upsertFilterOption(
+      filterProps,
+      searchFilter.searchParamName,
+      newSearchTerm,
+    );
+
+    const updatedFilterProps: FilterOption[] = withForcedArchiveTrue(
+      searchUpdatedProps,
+      archiveFilter,
+    );
 
     const newUrl: string = generateUrl(updatedFilterProps, basePath);
     router.push(newUrl);
@@ -168,6 +161,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
                   showArchived={archiveFilter.showArchived}
                   filterProps={filterProps}
                   basePath={basePath}
+                  archiveParamName={archiveFilter.paramName}
                 />
               )}
             </div>

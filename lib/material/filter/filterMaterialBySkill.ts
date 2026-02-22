@@ -1,6 +1,7 @@
 import MaterialInterface from "@/database/materials/MaterialInterface";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import Database from "@/interfaces/Database";
+import filterMaterialKeysByPredicate from "@/lib/material/filter/filterMaterialKeysByPredicate";
 
 /**
  * Core filter used by every listing page when a user picks a skill from the drawer.
@@ -14,16 +15,11 @@ import Database from "@/interfaces/Database";
 export default function filterMaterialBySkill<T extends MaterialInterface>(
   skillKey: SkillDatabaseKeys,
   materialKeys: string[],
-  materialDatabase: Database<T>
+  materialDatabase: Database<T>,
 ): string[] {
-  const filteredMaterialSlugs: string[] = [];
-
-  materialKeys.forEach((key) => {
-    const material: T = materialDatabase[key];
-    if (material && material.skills.includes(skillKey)) {
-      filteredMaterialSlugs.push(key);
-    }
-  });
-
-  return filteredMaterialSlugs;
+  return filterMaterialKeysByPredicate(
+    materialKeys,
+    materialDatabase,
+    (material) => Boolean(material && material.skills.includes(skillKey)),
+  );
 }

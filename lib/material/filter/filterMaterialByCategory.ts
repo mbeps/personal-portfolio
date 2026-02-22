@@ -1,6 +1,7 @@
 import stringToSlug from "@/lib/stringToSlug";
 import MaterialInterface from "@/database/materials/MaterialInterface";
 import Database from "@/interfaces/Database";
+import filterMaterialKeysByPredicate from "@/lib/material/filter/filterMaterialKeysByPredicate";
 
 /**
  * Handles category filtering for views that expose editorial groupings (e.g., “Research”, “Talks”, etc.).
@@ -14,18 +15,14 @@ import Database from "@/interfaces/Database";
 export default function filterMaterialByCategory<T extends MaterialInterface>(
   category: string,
   materialKeys: string[],
-  materialsDatabase: Database<T> // Keep materialsMap for accessing material details
+  materialsDatabase: Database<T>, // Keep materialsMap for accessing material details
 ): string[] {
-  const filteredMaterialSlugs = materialKeys.reduce((acc: string[], key) => {
-    const material = materialsDatabase[key];
-    if (
-      material &&
-      stringToSlug(material.category) === stringToSlug(category)
-    ) {
-      acc.push(key);
-    }
-    return acc;
-  }, []); // Initialize the accumulator as an empty array of strings
-
-  return filteredMaterialSlugs;
+  return filterMaterialKeysByPredicate(
+    materialKeys,
+    materialsDatabase,
+    (material) =>
+      Boolean(
+        material && stringToSlug(material.category) === stringToSlug(category),
+      ),
+  );
 }

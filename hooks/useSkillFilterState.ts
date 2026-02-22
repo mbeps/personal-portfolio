@@ -27,7 +27,7 @@ const groupOptions: FilterOption[] = [
  */
 const booleanOptions = (
   showLabel: string,
-  hideLabel: string
+  hideLabel: string,
 ): FilterOption[] => [
   { slug: "false", entryName: showLabel },
   { slug: "true", entryName: hideLabel },
@@ -87,7 +87,7 @@ const searchParamName = "search";
  * @returns Filter state consumed by `SkillList`.
  */
 export default function useSkillFilterState(
-  skills: SkillDatabaseKeys[]
+  skills: SkillDatabaseKeys[],
 ): SkillFilterState {
   const searchParams: ReadonlyURLSearchParams = useSearchParams();
   const searchTerm: string = searchParams.get(searchParamName) ?? "";
@@ -99,12 +99,17 @@ export default function useSkillFilterState(
   const filteredSkillIds: string[] = useFuseSkillSearch(
     skillDatabaseMap,
     searchTerm,
-    searchOptions
+    searchOptions,
+  );
+
+  const filteredSkillIdSet = useMemo(
+    () => new Set(filteredSkillIds),
+    [filteredSkillIds],
   );
 
   const filteredSkills: SkillDatabaseKeys[] = useMemo(() => {
-    return skills.filter((skillKey) => filteredSkillIds.includes(skillKey));
-  }, [skills, filteredSkillIds]);
+    return skills.filter((skillKey) => filteredSkillIdSet.has(skillKey));
+  }, [skills, filteredSkillIdSet]);
 
   const excludedSkillTypes: SkillTypesEnum[] = [];
 
@@ -123,7 +128,7 @@ export default function useSkillFilterState(
         selectedValue: isExcluded ? "true" : "false",
         options: booleanOptions(`Show ${label}`, `Hide ${label}`),
       };
-    }
+    },
   );
 
   const hideSkillsWithoutMaterial =
@@ -133,7 +138,7 @@ export default function useSkillFilterState(
     selectedGroup as GroupByOptions,
     filteredSkills,
     skillDatabaseMap,
-    excludedSkillTypes.length ? excludedSkillTypes : undefined
+    excludedSkillTypes.length ? excludedSkillTypes : undefined,
   );
 
   const filterCategories: FilterCategory[] = [
@@ -150,7 +155,7 @@ export default function useSkillFilterState(
       selectedValue: hideSkillsWithoutMaterial ? "true" : "false",
       options: booleanOptions(
         "Show skills without material",
-        "Hide skills without material"
+        "Hide skills without material",
       ),
     },
   ];
@@ -158,7 +163,7 @@ export default function useSkillFilterState(
   const areFiltersApplied =
     hideSkillsWithoutMaterial ||
     skillTypeCategoryFilters.some(
-      (category) => category.selectedValue !== "false"
+      (category) => category.selectedValue !== "false",
     ) ||
     selectedGroup !== GroupByOptions.Category ||
     searchTerm.trim().length > 0;

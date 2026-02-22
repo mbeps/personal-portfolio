@@ -1,6 +1,7 @@
 import stringToSlug from "@/lib/stringToSlug";
 import ProjectInterface from "@/database/projects/ProjectInterface";
 import Database from "@/interfaces/Database";
+import filterMaterialKeysByPredicate from "@/lib/material/filter/filterMaterialKeysByPredicate";
 
 /**
  * Applies the “project type” dropdown after Fuse search has already trimmed the key list.
@@ -14,15 +15,12 @@ import Database from "@/interfaces/Database";
 export default function filterProjectsByType<T extends ProjectInterface>(
   type: string,
   projectKeys: string[],
-  projectsDatabase: Database<T>
+  projectsDatabase: Database<T>,
 ): string[] {
-  const filteredProjectSlugs = projectKeys.reduce((acc: string[], key) => {
-    const project = projectsDatabase[key];
-    if (project && stringToSlug(project.type) === stringToSlug(type)) {
-      acc.push(key);
-    }
-    return acc;
-  }, []); // Initialize the accumulator as an empty array of strings
-
-  return filteredProjectSlugs;
+  return filterMaterialKeysByPredicate(
+    projectKeys,
+    projectsDatabase,
+    (project) =>
+      Boolean(project && stringToSlug(project.type) === stringToSlug(type)),
+  );
 }

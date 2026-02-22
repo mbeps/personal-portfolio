@@ -24,6 +24,10 @@ import { BsChevronDown } from "react-icons/bs";
 import { Button } from "../shadcn/ui/button";
 import ArchiveFilter from "@/interfaces/filters/ArchiveFilter";
 import SearchFilter from "@/interfaces/filters/SearchFilter";
+import {
+  buildCurrentFilterOptions,
+  withForcedArchiveTrue,
+} from "@/lib/material/filter-url-state/buildMaterialFilterUrlState";
 
 interface FilterOptionItemComboboxProps {
   selectedFilterCategory: FilterCategory;
@@ -55,17 +59,17 @@ const FilterOptionItemCombobox: React.FC<FilterOptionItemComboboxProps> = ({
   const gap = "w-4 h-4 mr-2";
 
   function getSelectedOptionName(
-    selectedFilterCategory: FilterCategory
+    selectedFilterCategory: FilterCategory,
   ): string | undefined {
     const selectedOption = selectedFilterCategory.options.find(
-      (option) => option.slug === selectedFilterCategory.selectedValue
+      (option) => option.slug === selectedFilterCategory.selectedValue,
     );
 
     return selectedOption ? selectedOption.entryName : undefined;
   }
 
   const currentFilterOptionName: string | undefined = getSelectedOptionName(
-    selectedFilterCategory
+    selectedFilterCategory,
   );
   return (
     <Popover
@@ -73,36 +77,38 @@ const FilterOptionItemCombobox: React.FC<FilterOptionItemComboboxProps> = ({
       open={isOpen}
       onOpenChange={setOpen}
     >
-      <PopoverTrigger render={
-        <Button
-          variant="default"
-          role="combobox"
-          onClick={() => setOpen(!isOpen)}
-          className="
+      <PopoverTrigger
+        render={
+          <Button
+            variant="default"
+            role="combobox"
+            onClick={() => setOpen(!isOpen)}
+            className="
             border border-neutral-300 dark:border-neutral-700
             shadow-xs
             w-full
             justify-between 
             bg-neutral-100
             py-2 h-full"
-        >
-          <div className="flex flex-col space-y-1 items-start">
-            <span>{selectedFilterCategory.sectionName}</span>
-            <span
-              className="
+          >
+            <div className="flex flex-col space-y-1 items-start">
+              <span>{selectedFilterCategory.sectionName}</span>
+              <span
+                className="
               text-sm
               text-neutral-500 dark:text-neutral-400"
-            >
-              {currentFilterOptionName}
-            </span>
-          </div>
+              >
+                {currentFilterOptionName}
+              </span>
+            </div>
 
-          <BsChevronDown
-            fontSize={16}
-            className="text-neutral-700 dark:text-neutral-200 mt-1"
-          />
-        </Button>
-      } />
+            <BsChevronDown
+              fontSize={16}
+              className="text-neutral-700 dark:text-neutral-200 mt-1"
+            />
+          </Button>
+        }
+      />
 
       <PopoverContent className="w-[24rem] md:w-84 p-0">
         <Command className="w-full">
@@ -111,36 +117,21 @@ const FilterOptionItemCombobox: React.FC<FilterOptionItemComboboxProps> = ({
 
           <CommandGroup className="w-full max-h-[25vh]">
             {selectedFilterCategory.options.map((option, i) => {
-              const baseFilters: FilterOption[] = [
-                ...filterCategories.map((category) => ({
-                  entryName: category.urlParam,
-                  slug: category.selectedValue,
-                })),
-                {
-                  entryName: searchFilter.searchParamName,
-                  slug: searchFilter.searchTerm,
-                },
-              ];
+              const baseFilters: FilterOption[] = buildCurrentFilterOptions(
+                filterCategories,
+                searchFilter,
+              );
 
-              const nextFilters: FilterOption[] = archiveFilter
-                ? [
-                    ...baseFilters,
-                    {
-                      entryName: archiveFilter.paramName,
-                      slug: true.toString(),
-                    },
-                    {
-                      entryName: selectedFilterCategory.urlParam,
-                      slug: option.slug,
-                    },
-                  ]
-                : [
-                    ...baseFilters,
-                    {
-                      entryName: selectedFilterCategory.urlParam,
-                      slug: option.slug,
-                    },
-                  ];
+              const nextFilters: FilterOption[] = withForcedArchiveTrue(
+                [
+                  ...baseFilters,
+                  {
+                    entryName: selectedFilterCategory.urlParam,
+                    slug: option.slug,
+                  },
+                ],
+                archiveFilter,
+              );
 
               return (
                 <Link

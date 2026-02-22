@@ -1,6 +1,7 @@
 import stringToSlug from "@/lib/stringToSlug";
 import CertificateInterface from "@/database/certificates/CertificateInterface";
 import Database from "@/interfaces/Database";
+import filterMaterialKeysByPredicate from "@/lib/material/filter/filterMaterialKeysByPredicate";
 
 /**
  * Supports the issuer dropdown on the certificates archive so visitors can isolate coursework by school or platform.
@@ -13,16 +14,15 @@ import Database from "@/interfaces/Database";
 export default function filterCertificatesByIssuer(
   issuer: string,
   materialKeys: string[],
-  certificatesMap: Database<CertificateInterface>
+  certificatesMap: Database<CertificateInterface>,
 ): string[] {
-  return materialKeys.reduce<string[]>((acc, key) => {
-    const certificate: CertificateInterface = certificatesMap[key];
-    if (
-      certificate &&
-      stringToSlug(certificate.issuer) === stringToSlug(issuer)
-    ) {
-      acc.push(key); // Adding the key to the accumulator if the certificate matches the issuer
-    }
-    return acc;
-  }, []);
+  return filterMaterialKeysByPredicate(
+    materialKeys,
+    certificatesMap,
+    (certificate) =>
+      Boolean(
+        certificate &&
+        stringToSlug(certificate.issuer) === stringToSlug(issuer),
+      ),
+  );
 }
