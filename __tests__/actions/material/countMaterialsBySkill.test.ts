@@ -24,9 +24,9 @@ describe("countMaterialsBySkill", () => {
   });
 
   test("should handle different skills and counts", () => {
-    skillUsageMap.set(SkillDatabaseKeys.React, 10);
+    skillUsageMap.set(SkillDatabaseKeys.ReactJs, 10);
     skillUsageMap.set(SkillDatabaseKeys.Css, 3);
-    expect(countMaterialsBySkill(SkillDatabaseKeys.React)).toBe(10);
+    expect(countMaterialsBySkill(SkillDatabaseKeys.ReactJs)).toBe(10);
     expect(countMaterialsBySkill(SkillDatabaseKeys.Css)).toBe(3);
     expect(countMaterialsBySkill(SkillDatabaseKeys.Django)).toBe(0);
   });
