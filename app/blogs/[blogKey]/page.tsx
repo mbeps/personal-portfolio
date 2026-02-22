@@ -4,7 +4,7 @@ import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
 import MaterialList from "@/components/material-lists/MaterialList";
 import SpecialReader from "@/components/reader/SpecialReader";
 import { Card, CardContent } from "@/components/shadcn/ui/card";
-import SkillTableCell from "@/components/skills/SkillTableSection";
+import SkillTableSection from "@/components/skills/SkillTableSection";
 import developerName from "@/constants/developerName";
 import { BLOG_PAGE, PROJECTS_PAGE } from "@/constants/pages";
 import BlogInterface from "@/database/blogs/BlogInterface";
@@ -29,7 +29,7 @@ type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
  */
 export async function generateMetadata(
   props: { params: Params; searchParams: SearchParams },
-  parent: ResolvingMetadata
+  parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const params = await props.params;
   const blogKey: string = params.blogKey;
@@ -97,7 +97,7 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
     : `${basePath}/${blogKey}/img`;
   const processedBlogContent: string = processMarkdownImages(
     blogContent,
-    imagePath
+    imagePath,
   );
 
   const allGroupedSkills: ListOfCategorisedSkillsByTypeInterface[] =
@@ -128,7 +128,7 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
           {hasSkills && (
             <Card>
               <CardContent className="py-7">
-                <SkillTableCell allGroupedSkills={allGroupedSkills} />
+                <SkillTableSection allGroupedSkills={allGroupedSkills} />
               </CardContent>
             </Card>
           )}

@@ -3,7 +3,7 @@ import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
 import ShortDate from "@/class/ShortDate";
 import MaterialList from "@/components/material-lists/MaterialList";
 import Reader from "@/components/reader/Reader";
-import SkillTableCell from "@/components/skills/SkillTableSection";
+import SkillTableSection from "@/components/skills/SkillTableSection";
 import DetailsTable from "@/components/ui/DetailsTable";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
@@ -40,7 +40,7 @@ type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
  */
 export async function generateMetadata(
   props: { params: Params; searchParams: SearchParams },
-  parent: ResolvingMetadata
+  parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const resolvedParams = await props.params;
   const roleKey: string = resolvedParams.roleKey;
@@ -92,7 +92,7 @@ const RolePage: React.FC<{ params: Params }> = async ({ params }) => {
 
   const currentDate: ShortDate = new ShortDate(
     new Date().getFullYear(),
-    new Date().getMonth() + 1
+    new Date().getMonth() + 1,
   );
   const endDate: string =
     roleData.endDate.difference(currentDate) === 0
@@ -104,7 +104,7 @@ const RolePage: React.FC<{ params: Params }> = async ({ params }) => {
   const hasSkills = hasAnySkills(allGroupedSkills);
 
   const responsibilities: string | undefined = getMarkdownFromFileSystem(
-    `public/roles/${roleKey}/responsabilities.md`
+    `public/roles/${roleKey}/responsabilities.md`,
   )?.content;
 
   const hasResponsibilities: boolean = !!responsibilities;
@@ -202,7 +202,7 @@ const RolePage: React.FC<{ params: Params }> = async ({ params }) => {
           {hasSkills && (
             <Card>
               <CardContent className="py-7">
-                <SkillTableCell allGroupedSkills={allGroupedSkills} />
+                <SkillTableSection allGroupedSkills={allGroupedSkills} />
               </CardContent>
             </Card>
           )}

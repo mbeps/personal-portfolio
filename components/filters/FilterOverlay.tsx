@@ -7,7 +7,7 @@ import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import SearchFilter from "@/interfaces/filters/SearchFilter";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React from "react";
 import { AiOutlineClear } from "react-icons/ai";
 import SidePanel from "../ui/SidePanel";
 import { Drawer, DrawerContent } from "@/components/shadcn/ui/drawer";
@@ -50,25 +50,6 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
 }) => {
   const isMounted: boolean = useIsMounted();
   const isDesktop = useMediaQuery("(min-width: 768px)");
-
-  useEffect(() => {
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        toggle();
-      }
-    };
-
-    if (isMounted) {
-      window.addEventListener("keydown", handleEscape);
-    }
-
-    // Cleanup the event listener
-    return () => {
-      if (isMounted) {
-        window.removeEventListener("keydown", handleEscape);
-      }
-    };
-  }, [isMounted, toggle]);
 
   if (!isMounted) {
     return null;

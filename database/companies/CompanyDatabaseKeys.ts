@@ -11,7 +11,6 @@ enum CompanyDatabaseKeys {
   GoogleRHULDevelopersClub = "google-x-rhul-developers-club",
   AJTuitionCentre = "aj-tuition-centre",
   Madhus = "madhus",
-  WGraduates = "w-graduates",
   OpenSource = "open-source",
 }
 

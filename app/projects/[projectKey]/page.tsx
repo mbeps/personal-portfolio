@@ -6,7 +6,7 @@ import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
 import Gallery from "@/components/gallery/Gallery";
 import MaterialList from "@/components/material-lists/MaterialList";
 import Reader from "@/components/reader/Reader";
-import SkillTableCell from "@/components/skills/SkillTableSection";
+import SkillTableSection from "@/components/skills/SkillTableSection";
 import SkillTag from "@/components/tags/SkillTag";
 import {
   Accordion,
@@ -52,7 +52,7 @@ type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
  */
 export async function generateMetadata(
   props: { params: Params; searchParams: SearchParams },
-  parent: ResolvingMetadata
+  parent: ResolvingMetadata,
 ): Promise<Metadata | undefined> {
   const resolvedParams = await props.params;
   const projectKey: string = resolvedParams.projectKey;
@@ -113,14 +113,14 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
   const projectLanguages: SkillDatabaseKeys[] = filterSkillsByCategory(
     projectData.skills,
     skillDatabaseMap,
-    SkillCategoriesEnum.ProgrammingLanguages
+    SkillCategoriesEnum.ProgrammingLanguages,
   );
 
   const projectSkillsWithoutLanguage: SkillDatabaseKeys[] =
     filterSkillSlugsExcludingCategory(
       projectData.skills,
       skillDatabaseMap,
-      SkillCategoriesEnum.ProgrammingLanguages
+      SkillCategoriesEnum.ProgrammingLanguages,
     );
 
   const allGroupedSkills: ListOfCategorisedSkillsByTypeInterface[] =
@@ -129,7 +129,7 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
 
   function getImages(): string[] {
     let images: string[] = getImagesFromFileSystem(
-      `public${basePath}/${projectKey}/media`
+      `public${basePath}/${projectKey}/media`,
     );
 
     // add the path to the media items
@@ -140,7 +140,7 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
 
   function getVideos(): string[] {
     let videos: string[] = getVideosFromFileSystem(
-      `public${basePath}/${projectKey}/media`
+      `public${basePath}/${projectKey}/media`,
     );
 
     // add the path to the media items
@@ -156,7 +156,7 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
    * This is used to display the features and blog sections.
    */
   const features: string | undefined = getMarkdownFromFileSystem(
-    `public${basePath}/${projectKey}/features.md`
+    `public${basePath}/${projectKey}/features.md`,
   )?.content;
 
   /**
@@ -164,7 +164,7 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
    * This is used to display the features and blog sections.
    */
   const hasProjectReport: boolean = !!getMarkdownFromFileSystem(
-    `public${basePath}/${projectKey}/blog.md`
+    `public${basePath}/${projectKey}/blog.md`,
   )?.content;
 
   /**
@@ -268,7 +268,7 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
           {hasSkills && (
             <Card>
               <CardContent className="pt-7">
-                <SkillTableCell allGroupedSkills={allGroupedSkills} />
+                <SkillTableSection allGroupedSkills={allGroupedSkills} />
               </CardContent>
             </Card>
           )}
