@@ -28,9 +28,9 @@ describe("isSkillAssociatedWithMaterial", () => {
   });
 
   test("should handle different skills", () => {
-    skillUsageMap.set(SkillDatabaseKeys.React, 10);
+    skillUsageMap.set(SkillDatabaseKeys.ReactJs, 10);
     skillUsageMap.set(SkillDatabaseKeys.Css, 3);
-    expect(isSkillAssociatedWithMaterial(SkillDatabaseKeys.React)).toBe(true);
+    expect(isSkillAssociatedWithMaterial(SkillDatabaseKeys.ReactJs)).toBe(true);
     expect(isSkillAssociatedWithMaterial(SkillDatabaseKeys.Css)).toBe(true);
     expect(isSkillAssociatedWithMaterial(SkillDatabaseKeys.Django)).toBe(false);
   });
