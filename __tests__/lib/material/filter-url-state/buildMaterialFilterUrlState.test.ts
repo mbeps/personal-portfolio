@@ -94,4 +94,43 @@ describe("buildMaterialFilterUrlState", () => {
       { entryName: "archived", slug: "false" },
     ]);
   });
+
+  test("withForcedArchiveTrue returns options unchanged when archiveFilter is undefined", () => {
+    const options: FilterOption[] = [
+      { entryName: "category", slug: "all" },
+      { entryName: "search", slug: "query" },
+    ];
+
+    expect(withForcedArchiveTrue(options, undefined)).toEqual([
+      { entryName: "category", slug: "all" },
+      { entryName: "search", slug: "query" },
+    ]);
+  });
+
+  test("buildCurrentFilterOptions omits search entry when searchFilter is undefined", () => {
+    expect(
+      buildCurrentFilterOptions(filterCategories, undefined, archiveFilter),
+    ).toEqual([
+      { entryName: "category", slug: "all" },
+      { entryName: "skill", slug: "react" },
+      { entryName: "archived", slug: "false" },
+    ]);
+  });
+
+  test("buildCurrentFilterOptions omits archive entry when archiveFilter is undefined", () => {
+    expect(
+      buildCurrentFilterOptions(filterCategories, searchFilter, undefined),
+    ).toEqual([
+      { entryName: "category", slug: "all" },
+      { entryName: "skill", slug: "react" },
+      { entryName: "search", slug: "portfolio" },
+    ]);
+  });
+
+  test("buildCurrentFilterOptions works with only filterCategories", () => {
+    expect(buildCurrentFilterOptions(filterCategories)).toEqual([
+      { entryName: "category", slug: "all" },
+      { entryName: "skill", slug: "react" },
+    ]);
+  });
 });

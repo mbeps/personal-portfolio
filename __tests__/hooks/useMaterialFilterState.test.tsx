@@ -210,4 +210,282 @@ describe("useMaterialFilterState", () => {
     expect(result.areFiltersApplied).toBe(false);
     expect(result.filteredKeys).toEqual(["alpha", "beta"]);
   });
+
+  test("applies custom shouldApply predicate when provided", () => {
+    mockUseSearchParams.mockReturnValue(
+      new URLSearchParams("category=special"),
+    );
+
+    const itemsMap: Database<TestMaterial> = {
+      alpha: material("Alpha", "Special", [SkillDatabaseKeys.ReactJs]),
+      beta: material("Beta", "Web", [SkillDatabaseKeys.TypeScript]),
+    };
+
+    let captured: HookResult | undefined;
+
+    function CustomShouldApplyHarness() {
+      const result = useMaterialFilterState({
+        databaseMap: itemsMap,
+        searchParamName: "search",
+        searchKeys: ["name"],
+        filterCategories: [
+          {
+            sectionName: "Category",
+            urlParam: "category",
+            options: [
+              { slug: "all", entryName: "All" },
+              { slug: "special", entryName: "Special" },
+            ],
+            defaultValue: "all",
+            // Custom logic: only filter when value is exactly "special"
+            shouldApply: (value, defaultValue) => value === "special",
+            applyFilter: (value, keys) =>
+              filterMaterialByCategory(value, keys, itemsMap),
+          },
+        ],
+      });
+
+      captured = result;
+      return <div>{result.filteredKeys.join(",")}</div>;
+    }
+
+    renderToStaticMarkup(<CustomShouldApplyHarness />);
+
+    expect(captured?.filteredKeys).toEqual(["alpha"]);
+    expect(captured?.areFiltersApplied).toBe(true);
+  });
+
+  test("applies default archive value when valueParser exists but defaultValue is not provided", () => {
+    mockUseSearchParams.mockReturnValue(new URLSearchParams(""));
+
+    const itemsMap: Database<TestMaterial> = {
+      alpha: material("Alpha", "Web", [SkillDatabaseKeys.ReactJs]),
+      beta: material("Beta", "Web", [SkillDatabaseKeys.TypeScript], true),
+    };
+
+    let captured: HookResult | undefined;
+
+    function ArchiveWithParserNoDefaultHarness() {
+      const result = useMaterialFilterState({
+        databaseMap: itemsMap,
+        searchParamName: "search",
+        searchKeys: ["name"],
+        filterCategories: [],
+        archiveFilter: {
+          paramName: "archived",
+          hasArchivedMaterials: true,
+          // No defaultValue provided, should fall back to "false"
+          valueParser: (value) => value.toLowerCase(),
+          applyFilter: (showArchived, keys) =>
+            filterMaterialByArchivedStatus(showArchived, keys, itemsMap),
+        },
+      });
+
+      captured = result;
+      return <div>{result.filteredKeys.join(",")}</div>;
+    }
+
+    renderToStaticMarkup(<ArchiveWithParserNoDefaultHarness />);
+
+    expect(captured?.archiveFilter?.showArchived).toBe(false);
+    expect(captured?.filteredKeys).toEqual(["alpha"]);
+  });
+
+  test("uses 'all' as default when defaultValue is not provided", () => {
+    mockUseSearchParams.mockReturnValue(new URLSearchParams(""));
+
+    const itemsMap: Database<TestMaterial> = {
+      alpha: material("Alpha", "Web", [SkillDatabaseKeys.ReactJs]),
+    };
+
+    let captured: HookResult | undefined;
+
+    function NoDefaultValueHarness() {
+      const result = useMaterialFilterState({
+        databaseMap: itemsMap,
+        searchParamName: "search",
+        searchKeys: ["name"],
+        filterCategories: [
+          {
+            sectionName: "Category",
+            urlParam: "category",
+            options: [
+              { slug: "all", entryName: "All" },
+              { slug: "web", entryName: "Web" },
+            ],
+            // defaultValue is NOT provided - should fall back to "all"
+            applyFilter: (value, keys) =>
+              filterMaterialByCategory(value, keys, itemsMap),
+          },
+        ],
+      });
+
+      captured = result;
+      return <div>{result.filteredKeys.join(",")}</div>;
+    }
+
+    renderToStaticMarkup(<NoDefaultValueHarness />);
+
+    expect(captured?.filterCategories[0].selectedValue).toBe("all");
+  });
+
+  test("uses raw default value when no valueParser is provided", () => {
+    mockUseSearchParams.mockReturnValue(new URLSearchParams(""));
+
+    const itemsMap: Database<TestMaterial> = {
+      alpha: material("Alpha", "Web", [SkillDatabaseKeys.ReactJs]),
+    };
+
+    let captured: HookResult | undefined;
+
+    function NoValueParserHarness() {
+      const result = useMaterialFilterState({
+        databaseMap: itemsMap,
+        searchParamName: "search",
+        searchKeys: ["name"],
+        filterCategories: [
+          {
+            sectionName: "Category",
+            urlParam: "category",
+            options: [
+              { slug: "all", entryName: "All" },
+              { slug: "web", entryName: "Web" },
+            ],
+            defaultValue: "all",
+            // No valueParser provided
+            applyFilter: (value, keys) =>
+              filterMaterialByCategory(value, keys, itemsMap),
+          },
+        ],
+      });
+
+      captured = result;
+      return <div>{result.filteredKeys.join(",")}</div>;
+    }
+
+    renderToStaticMarkup(<NoValueParserHarness />);
+
+    expect(captured?.filterCategories[0].selectedValue).toBe("all");
+  });
+
+  test("uses raw selected value from URL when no valueParser is provided", () => {
+    mockUseSearchParams.mockReturnValue(new URLSearchParams("category=web"));
+
+    const itemsMap: Database<TestMaterial> = {
+      alpha: material("Alpha", "Web", [SkillDatabaseKeys.ReactJs]),
+      beta: material("Beta", "AI", [SkillDatabaseKeys.Python]),
+    };
+
+    let captured: HookResult | undefined;
+
+    function NoValueParserWithUrlParamHarness() {
+      const result = useMaterialFilterState({
+        databaseMap: itemsMap,
+        searchParamName: "search",
+        searchKeys: ["name"],
+        filterCategories: [
+          {
+            sectionName: "Category",
+            urlParam: "category",
+            options: [
+              { slug: "all", entryName: "All" },
+              { slug: "web", entryName: "Web" },
+            ],
+            defaultValue: "all",
+            // No valueParser provided
+            applyFilter: (value, keys) =>
+              filterMaterialByCategory(value, keys, itemsMap),
+          },
+        ],
+      });
+
+      captured = result;
+      return <div>{result.filteredKeys.join(",")}</div>;
+    }
+
+    renderToStaticMarkup(<NoValueParserWithUrlParamHarness />);
+
+    expect(captured?.filterCategories[0].selectedValue).toBe("web");
+    expect(captured?.filteredKeys).toEqual(["alpha"]);
+  });
+
+  test("parses default value with valueParser when provided", () => {
+    mockUseSearchParams.mockReturnValue(new URLSearchParams(""));
+
+    const itemsMap: Database<TestMaterial> = {
+      alpha: material("Alpha", "Web", [SkillDatabaseKeys.ReactJs]),
+    };
+
+    let captured: HookResult | undefined;
+
+    function ValueParserForDefaultHarness() {
+      const result = useMaterialFilterState({
+        databaseMap: itemsMap,
+        searchParamName: "search",
+        searchKeys: ["name"],
+        filterCategories: [
+          {
+            sectionName: "Category",
+            urlParam: "category",
+            options: [
+              { slug: "all", entryName: "All" },
+              { slug: "web", entryName: "Web" },
+            ],
+            defaultValue: "ALL", // Uppercase default
+            valueParser: (value) => value.toLowerCase(), // Parser converts to lowercase
+            applyFilter: (value, keys) =>
+              filterMaterialByCategory(value, keys, itemsMap),
+          },
+        ],
+      });
+
+      captured = result;
+      return <div>{result.filteredKeys.join(",")}</div>;
+    }
+
+    renderToStaticMarkup(<ValueParserForDefaultHarness />);
+
+    expect(captured?.filterCategories[0].selectedValue).toBe("all"); // Should be lowercase
+  });
+
+  test("parses selected value from URL with valueParser when provided", () => {
+    mockUseSearchParams.mockReturnValue(new URLSearchParams("category=WEB"));
+
+    const itemsMap: Database<TestMaterial> = {
+      alpha: material("Alpha", "Web", [SkillDatabaseKeys.ReactJs]),
+      beta: material("Beta", "AI", [SkillDatabaseKeys.Python]),
+    };
+
+    let captured: HookResult | undefined;
+
+    function ValueParserForSelectedHarness() {
+      const result = useMaterialFilterState({
+        databaseMap: itemsMap,
+        searchParamName: "search",
+        searchKeys: ["name"],
+        filterCategories: [
+          {
+            sectionName: "Category",
+            urlParam: "category",
+            options: [
+              { slug: "all", entryName: "All" },
+              { slug: "web", entryName: "Web" },
+            ],
+            defaultValue: "all",
+            valueParser: (value) => value.toLowerCase(), // Parser converts to lowercase
+            applyFilter: (value, keys) =>
+              filterMaterialByCategory(value, keys, itemsMap),
+          },
+        ],
+      });
+
+      captured = result;
+      return <div>{result.filteredKeys.join(",")}</div>;
+    }
+
+    renderToStaticMarkup(<ValueParserForSelectedHarness />);
+
+    expect(captured?.filterCategories[0].selectedValue).toBe("web"); // Should be lowercase
+    expect(captured?.filteredKeys).toEqual(["alpha"]);
+  });
 });
