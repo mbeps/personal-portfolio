@@ -21,7 +21,7 @@ function recursiveFilter(
   skillKeys: SkillDatabaseKeys[],
   skillsDatabase: Database<SkillInterface>,
   excludedSkillTypes: SkillTypesEnum[] = [],
-  processedSkills: Set<SkillDatabaseKeys> = new Set<SkillDatabaseKeys>()
+  processedSkills: Set<SkillDatabaseKeys> = new Set<SkillDatabaseKeys>(),
 ): SkillDatabaseKeys[] {
   // Filtered skills to return
   let filteredSkills: SkillDatabaseKeys[] = [];
@@ -45,7 +45,7 @@ function recursiveFilter(
             skill.relatedSkills,
             skillsDatabase,
             excludedSkillTypes,
-            processedSkills
+            processedSkills,
           );
           // Combine the current filtered skills with those from related skills
           filteredSkills = filteredSkills.concat(relatedFilteredSkills);
@@ -57,9 +57,18 @@ function recursiveFilter(
   return filteredSkills;
 }
 
+/**
+ * Grouping dimensions accepted by `groupSkills` and consumed by `useSkillFilterState`.
+ * Each member corresponds to a URL-safe slug value stored in the filter URL params.
+ * Downstream components use this enum to request a specific visual organisation of the skills list.
+ * @author Maruf Bepary
+ */
 export enum GroupByOptions {
+  /** Group skills by their parent programming language, nesting technologies under each language. */
   Language = "language",
+  /** Group skills by their editorial category (e.g. Frontend, Backend, DevOps). */
   Category = "category",
+  /** Group skills by their `SkillTypesEnum` classification (e.g. Technology, Technical, Soft). */
   SkillType = "skill-type",
 }
 
@@ -77,7 +86,7 @@ export default function groupSkills(
   groupedBy: GroupByOptions,
   skillKeys: SkillDatabaseKeys[],
   skillsDatabase: Database<SkillInterface>,
-  excludedSkillTypes?: SkillTypesEnum[]
+  excludedSkillTypes?: SkillTypesEnum[],
 ): CategorisedSkillsInterface[] {
   let organizedSkills: CategorisedSkillsInterface[] = [];
 
@@ -91,7 +100,7 @@ export default function groupSkills(
 
   // Validate filteredSkillSlugs to ensure they exist in allSkills
   const validatedSkillSlugs: SkillDatabaseKeys[] = filteredSkillSlugs.filter(
-    (slug) => skillsRelatedToKeys.hasOwnProperty(slug)
+    (slug) => skillsRelatedToKeys.hasOwnProperty(slug),
   );
 
   // Then use validatedSkillSlugs in your switch-case logic
@@ -99,19 +108,19 @@ export default function groupSkills(
     case "language":
       organizedSkills = groupByLanguage(
         validatedSkillSlugs,
-        skillsRelatedToKeys
+        skillsRelatedToKeys,
       );
       break;
     case "category":
       organizedSkills = groupByCategory(
         validatedSkillSlugs,
-        skillsRelatedToKeys
+        skillsRelatedToKeys,
       );
       break;
     case "skill-type":
       organizedSkills = groupBySkillType(
         validatedSkillSlugs,
-        skillsRelatedToKeys
+        skillsRelatedToKeys,
       );
       break;
     default:
