@@ -38,14 +38,7 @@ export const BlogsView: React.FC = () => {
   const searchParamName = "search";
   const archivedParamName = "archived";
 
-  const searchOptions: string[] = [
-    "name",
-    "category",
-    "skills.name",
-    "skills.category",
-    "skills.relatedSkills.name",
-    "skills.relatedSkills.category",
-  ];
+  const searchOptions: string[] = ["name", "category", "skills"];
 
   const {
     searchTerm,
@@ -68,7 +61,7 @@ export const BlogsView: React.FC = () => {
           filterMaterialByCategory<BlogInterface>(
             value,
             keys,
-            blogsDatabaseMap
+            blogsDatabaseMap,
           ) as BlogDatabaseKeys[],
       },
       {
@@ -77,14 +70,14 @@ export const BlogsView: React.FC = () => {
         valueParser: stringToSlug,
         options: generateFilterOptionsBySkillCategories<BlogInterface>(
           blogsDatabaseMap,
-          skillDatabaseMap
+          skillDatabaseMap,
         ),
         applyFilter: (value, keys) =>
           filterMaterialBySkillCategory<BlogInterface>(
             keys,
             blogsDatabaseMap,
             value,
-            skillDatabaseMap
+            skillDatabaseMap,
           ) as BlogDatabaseKeys[],
       },
       {
@@ -93,13 +86,13 @@ export const BlogsView: React.FC = () => {
         options: generateFilterOptionsBySkillType<BlogInterface>(
           blogsDatabaseMap,
           skillDatabaseMap,
-          SkillTypesEnum.Technology
+          SkillTypesEnum.Technology,
         ),
         applyFilter: (value, keys) =>
           filterMaterialBySkill<BlogInterface>(
             value as SkillDatabaseKeys,
             keys,
-            blogsDatabaseMap
+            blogsDatabaseMap,
           ) as BlogDatabaseKeys[],
       },
       {
@@ -108,13 +101,13 @@ export const BlogsView: React.FC = () => {
         options: generateFilterOptionsBySkillType<BlogInterface>(
           blogsDatabaseMap,
           skillDatabaseMap,
-          SkillTypesEnum.Technical
+          SkillTypesEnum.Technical,
         ),
         applyFilter: (value, keys) =>
           filterMaterialBySkill<BlogInterface>(
             value as SkillDatabaseKeys,
             keys,
-            blogsDatabaseMap
+            blogsDatabaseMap,
           ) as BlogDatabaseKeys[],
       },
     ],
@@ -126,7 +119,7 @@ export const BlogsView: React.FC = () => {
         filterMaterialByArchivedStatus<BlogInterface>(
           showArchived,
           keys,
-          blogsDatabaseMap
+          blogsDatabaseMap,
         ) as BlogDatabaseKeys[],
     },
   });

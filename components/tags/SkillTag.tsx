@@ -1,6 +1,6 @@
 "use client";
 
-import isSkillAssociatedWithMaterial from "@/lib/material/isSkillAssociatedWithMaterial";
+import { isSkillAssociatedWithMaterial } from "@/lib/material/skillUsageHelpers";
 import materialDatabaseMap from "@/database/materials/MaterialDatabaseMap";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
 import SkillInterface from "@/database/skills/SkillInterface";

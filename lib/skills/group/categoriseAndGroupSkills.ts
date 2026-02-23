@@ -19,7 +19,7 @@ export default function categoriseAndGroupSkills(
   skillKeys: SkillDatabaseKeys[],
   skillsDatabase: Database<SkillInterface>,
   skillType: SkillTypesEnum,
-  title: string
+  title: string,
 ): ListOfCategorisedSkillsByTypeInterface {
   // Initialize an empty array for grouped categories
   const skillCategories: CategorisedSkillsInterface[] = [];
@@ -30,7 +30,7 @@ export default function categoriseAndGroupSkills(
     if (skill && skill.skillType === skillType) {
       // Find or create category group
       let categoryGroup = skillCategories.find(
-        (category) => category.skillCategoryName === skill.category
+        (category) => category.skillCategoryName === skill.category,
       );
       if (!categoryGroup) {
         categoryGroup = { skillCategoryName: skill.category, skills: [] };

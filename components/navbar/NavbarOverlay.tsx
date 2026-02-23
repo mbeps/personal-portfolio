@@ -1,6 +1,6 @@
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import NavigationItemInterface from "@/interfaces/NavigationItemInterface";
-import MobileOverlay from "../ui/MobileOverlay";
+import { twMerge } from "tailwind-merge";
 import Socials from "../socials/Socials";
 import NavbarItem from "./NavbarItem";
 
@@ -26,12 +26,19 @@ const NavbarOverlay: React.FC<OverlayProps> = ({ isOpen, toggle, items }) => {
     return null;
   }
 
+  const overlayStyle = twMerge(
+    `fixed top-0 right-0 h-screen w-full z-40 
+    transform ${isOpen ? "translate-x-0" : "translate-x-full"}
+    transition-all duration-700 ease-in-out
+    bg-white dark:bg-neutral-900 overflow-y-auto
+    backdrop-blur-xl 
+    bg-opacity-60 dark:bg-opacity-60
+    flex flex-col justify-between`,
+    "bg-neutral-50/60 dark:bg-neutral-900/60 backdrop-blur-xl",
+  );
+
   return (
-    <MobileOverlay
-      isOpen={isOpen}
-      toggle={toggle}
-      className="bg-neutral-50/60 dark:bg-neutral-900/60 backdrop-blur-xl"
-    >
+    <div className={overlayStyle}>
       <div className="items-center justify-center space-y-8 md:space-y-0 pt-20">
         {/* Links */}
         {items
@@ -48,7 +55,7 @@ const NavbarOverlay: React.FC<OverlayProps> = ({ isOpen, toggle, items }) => {
       <div className="w-full pb-20">
         <Socials iconSize={40} />
       </div>
-    </MobileOverlay>
+    </div>
   );
 };
 

@@ -44,15 +44,7 @@ const ProjectsView: React.FC = () => {
   const archivedParamName = "archived";
   const searchParamName = "search";
 
-  const searchOptions: string[] = [
-    "name",
-    "category",
-    "skills.name",
-    "skills.category",
-    "skills.relatedSkills.name",
-    "skills.relatedSkills.category",
-    "type",
-  ];
+  const searchOptions: string[] = ["name", "category", "skills", "type"];
 
   const {
     searchTerm,
@@ -75,7 +67,7 @@ const ProjectsView: React.FC = () => {
           filterMaterialByCategory<ProjectInterface>(
             value,
             keys,
-            projectDatabaseMap
+            projectDatabaseMap,
           ) as ProjectDatabaseKeys[],
       },
       {
@@ -83,13 +75,13 @@ const ProjectsView: React.FC = () => {
         urlParam: languageParamName,
         options: generateFilterOptionsForProgrammingLanguages<ProjectInterface>(
           projectDatabaseMap,
-          skillDatabaseMap
+          skillDatabaseMap,
         ),
         applyFilter: (value, keys) =>
           filterMaterialBySkill<ProjectInterface>(
             value as SkillDatabaseKeys,
             keys,
-            projectDatabaseMap
+            projectDatabaseMap,
           ) as ProjectDatabaseKeys[],
       },
       {
@@ -98,13 +90,13 @@ const ProjectsView: React.FC = () => {
         options: generateFilterOptionsBySkillType<ProjectInterface>(
           projectDatabaseMap,
           skillDatabaseMap,
-          SkillTypesEnum.Technology
+          SkillTypesEnum.Technology,
         ),
         applyFilter: (value, keys) =>
           filterMaterialBySkill<ProjectInterface>(
             value as SkillDatabaseKeys,
             keys,
-            projectDatabaseMap
+            projectDatabaseMap,
           ) as ProjectDatabaseKeys[],
       },
       {
@@ -113,14 +105,14 @@ const ProjectsView: React.FC = () => {
         valueParser: stringToSlug,
         options: generateFilterOptionsBySkillCategories<ProjectInterface>(
           projectDatabaseMap,
-          skillDatabaseMap
+          skillDatabaseMap,
         ),
         applyFilter: (value, keys) =>
           filterMaterialBySkillCategory<ProjectInterface>(
             keys,
             projectDatabaseMap,
             value,
-            skillDatabaseMap
+            skillDatabaseMap,
           ) as ProjectDatabaseKeys[],
       },
       {
@@ -129,13 +121,13 @@ const ProjectsView: React.FC = () => {
         options: generateFilterOptionsBySkillType<ProjectInterface>(
           projectDatabaseMap,
           skillDatabaseMap,
-          SkillTypesEnum.Technical
+          SkillTypesEnum.Technical,
         ),
         applyFilter: (value, keys) =>
           filterMaterialBySkill<ProjectInterface>(
             value as SkillDatabaseKeys,
             keys,
-            projectDatabaseMap
+            projectDatabaseMap,
           ) as ProjectDatabaseKeys[],
       },
       {
@@ -148,7 +140,7 @@ const ProjectsView: React.FC = () => {
           filterProjectsByType<ProjectInterface>(
             value,
             keys,
-            projectDatabaseMap
+            projectDatabaseMap,
           ) as ProjectDatabaseKeys[],
       },
     ],
@@ -159,7 +151,7 @@ const ProjectsView: React.FC = () => {
         filterMaterialByArchivedStatus<ProjectInterface>(
           showArchived,
           keys,
-          projectDatabaseMap
+          projectDatabaseMap,
         ) as ProjectDatabaseKeys[],
     },
   });
