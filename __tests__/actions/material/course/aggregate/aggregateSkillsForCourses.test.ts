@@ -53,7 +53,7 @@ describe("aggregateSkillsForCourses", () => {
       SkillDatabaseKeys.Pandas,
     ]);
     expect(aggregatedCourse).not.toBe(
-      coursesDatabase[CourseDatabaseKeys.RHUL_ComputerScience]
+      coursesDatabase[CourseDatabaseKeys.RHUL_ComputerScience],
     );
   });
 
@@ -76,7 +76,39 @@ describe("aggregateSkillsForCourses", () => {
     const result = aggregateSkillsForCourses(coursesDatabase, modulesDatabase);
 
     expect(
-      result[CourseDatabaseKeys.KCL_ArtificialIntelligence].skills
+      result[CourseDatabaseKeys.KCL_ArtificialIntelligence].skills,
     ).toEqual([SkillDatabaseKeys.MachineLearning]);
+  });
+
+  test("handles module with undefined skills using nullish coalescing", () => {
+    const coursesDatabase: Database<CourseInterface> = {
+      [CourseDatabaseKeys.RHUL_ComputerScience]: {
+        name: "Computer Science",
+        skills: [SkillDatabaseKeys.Python],
+        category: "course",
+        modules: [ModuleDatabaseKeys.RHUL_ObjectOrientedProgramming1],
+        startYear: 2020,
+        endYear: 2023,
+        university: "Royal Holloway",
+        logo: "/logos/rhul.png",
+      },
+    };
+
+    // Create a module with undefined skills to test the ?? [] nullish coalescing
+    const modulesDatabase: Database<ModuleInterface> = {
+      [ModuleDatabaseKeys.RHUL_ObjectOrientedProgramming1]: {
+        name: "OOP 1",
+        skills: undefined as any, // Intentionally bypass type checking to test defensive coding
+        category: ModuleYearGroupsEnum.Year1,
+        learningOutcomes: [],
+        parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
+      },
+    };
+
+    const result = aggregateSkillsForCourses(coursesDatabase, modulesDatabase);
+    const aggregatedCourse = result[CourseDatabaseKeys.RHUL_ComputerScience];
+
+    // Skills should only contain the course's original skill since the module has undefined skills
+    expect(aggregatedCourse.skills).toEqual([SkillDatabaseKeys.Python]);
   });
 });
