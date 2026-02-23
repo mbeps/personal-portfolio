@@ -1862,7 +1862,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.DeepLearning,
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.DataScience,
-      SkillDatabaseKeys.DataVisualisation,
       SkillDatabaseKeys.NeuralNetworks,
       SkillDatabaseKeys.Pandas,
       SkillDatabaseKeys.NumPy,
@@ -1880,7 +1879,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.DataScience,
       SkillDatabaseKeys.DataVisualisation,
-      SkillDatabaseKeys.NeuralNetworks,
       SkillDatabaseKeys.Keras,
       SkillDatabaseKeys.Pandas,
       SkillDatabaseKeys.NumPy,
@@ -1933,7 +1931,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
     isMainSkill: true,
     skillType: SkillTypesEnum.Technical,
     relatedSkills: [
-      SkillDatabaseKeys.RelationalDatabases,
       SkillDatabaseKeys.ObjectRelationalMapping,
       SkillDatabaseKeys.DatabaseIndexing,
       SkillDatabaseKeys.Normalisation,
@@ -2064,7 +2061,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.Aws,
       SkillDatabaseKeys.Azure,
       SkillDatabaseKeys.Gcp,
-      SkillDatabaseKeys.CloudComputing,
       SkillDatabaseKeys.AwsK3s,
       SkillDatabaseKeys.AwsEc2,
       SkillDatabaseKeys.AwsS3,
@@ -2073,7 +2069,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.AwsCloudFormation,
       SkillDatabaseKeys.AwsCloudFront,
       SkillDatabaseKeys.AwsElasticBeanstalk,
-      SkillDatabaseKeys.CloudComputing,
       SkillDatabaseKeys.Azure_AppService,
       SkillDatabaseKeys.Azure_BlobStorage,
       SkillDatabaseKeys.Azure_DurableFunctions,
@@ -2081,7 +2076,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.Azure_Functions,
       SkillDatabaseKeys.Azure_ResourceManager,
       SkillDatabaseKeys.Azure_ContainerRegistry,
-      SkillDatabaseKeys.CloudComputing,
       SkillDatabaseKeys.GcpAppEngine,
       SkillDatabaseKeys.GcpCloudSQL,
       SkillDatabaseKeys.GcpCloudStorage,
@@ -2180,7 +2174,7 @@ export default skillDatabaseMap;
  * List of keys for the skills that can be used to uniquely identify the skills.
  */
 export const skillDatabaseKeys: SkillDatabaseKeys[] = Object.keys(
-  skillDatabaseMap
+  skillDatabaseMap,
 ) as SkillDatabaseKeys[];
 
 // Validate that all skill keys only contain alphanumeric characters and dashes

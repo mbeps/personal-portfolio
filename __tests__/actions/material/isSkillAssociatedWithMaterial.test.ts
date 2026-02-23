@@ -1,5 +1,5 @@
 /// <reference types="vitest/globals" />
-import isSkillAssociatedWithMaterial from "@/lib/material/isSkillAssociatedWithMaterial";
+import { isSkillAssociatedWithMaterial } from "@/lib/material/skillUsageHelpers";
 import { skillUsageMap } from "@/database/materials/MaterialDatabaseMap";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import { describe, expect, test, vi } from "vitest";
@@ -12,7 +12,7 @@ describe("isSkillAssociatedWithMaterial", () => {
   test("should return true for a skill that is used in materials", () => {
     skillUsageMap.set(SkillDatabaseKeys.JavaScript, 5);
     expect(isSkillAssociatedWithMaterial(SkillDatabaseKeys.JavaScript)).toBe(
-      true
+      true,
     );
   });
 
@@ -23,7 +23,7 @@ describe("isSkillAssociatedWithMaterial", () => {
   test("should return false if the skillUsageMap is empty", () => {
     skillUsageMap.clear();
     expect(isSkillAssociatedWithMaterial(SkillDatabaseKeys.JavaScript)).toBe(
-      false
+      false,
     );
   });
 
@@ -38,7 +38,7 @@ describe("isSkillAssociatedWithMaterial", () => {
   test("should return false for a skill with a count of 0", () => {
     skillUsageMap.set(SkillDatabaseKeys.JavaScript, 0);
     expect(isSkillAssociatedWithMaterial(SkillDatabaseKeys.JavaScript)).toBe(
-      false
+      false,
     );
   });
 });

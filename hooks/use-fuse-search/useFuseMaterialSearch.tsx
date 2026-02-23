@@ -1,7 +1,14 @@
 import MaterialInterface from "@/database/materials/MaterialInterface";
 import Database from "@/interfaces/Database";
-import Fuse from "fuse.js";
-import { useMemo } from "react";
+import useFuseSearch from "./useFuseSearch";
+
+// Stable module-level reference keeps the Fuse options memo from firing on every render.
+const MATERIAL_ARRAY_FIELDS: Record<
+  string,
+  (item: MaterialInterface) => string[]
+> = {
+  skills: (item) => item.skills.map((skill) => skill.toString()),
+};
 
 /**
  * Shared Fuse.js wrapper for material datasets so every listing behaves consistently when searching names, summaries, or nested skills.
@@ -18,55 +25,12 @@ function useFuseMaterialSearch<T extends MaterialInterface>(
   searchTerm: string,
   searchKeys: string[],
 ): string[] {
-  const entries = useMemo(
-    () => Object.entries(itemsMap) as [string, T][],
-    [itemsMap],
+  return useFuseSearch<T>(
+    itemsMap as Record<string, T>,
+    searchTerm,
+    searchKeys,
+    MATERIAL_ARRAY_FIELDS as Partial<Record<string, (item: T) => string[]>>,
   );
-
-  // Enhanced search options to handle nested arrays
-  const searchOptions = useMemo(
-    () => ({
-      keys: searchKeys.map((key) => {
-        // Adding custom path logic for nested arrays like 'skills'
-        if (key === "skills") {
-          return {
-            name: key,
-            getFn: (entry: [string, T]) =>
-              entry[1].skills.map((skill) => skill.toString()), // Assuming enum values are converted to string for comparison
-          };
-        }
-        return {
-          name: key,
-          getFn: (entry: [string, T]) => {
-            const value = (entry[1] as Record<string, unknown>)[key];
-
-            if (Array.isArray(value)) {
-              return value.map((item) => item?.toString() ?? "");
-            }
-
-            return value?.toString() ?? "";
-          },
-        };
-      }),
-      threshold: 0.3, // Fixed threshold
-      includeScore: true, // Optional: include scoring to debug or refine searches
-    }),
-    [searchKeys],
-  );
-
-  // Initialize Fuse with the items array and search options
-  const fuse = useMemo(
-    () => new Fuse(entries, searchOptions),
-    [entries, searchOptions],
-  );
-
-  return useMemo(() => {
-    if (!searchTerm) {
-      return entries.map(([key]) => key);
-    }
-
-    return fuse.search(searchTerm).map((result) => result.item[0]);
-  }, [entries, fuse, searchTerm]);
 }
 
 export default useFuseMaterialSearch;

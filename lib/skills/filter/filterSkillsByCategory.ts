@@ -14,20 +14,9 @@ import Database from "@/interfaces/Database";
 export default function filterSkillsByCategory(
   skillKeys: SkillDatabaseKeys[],
   skillsDatabase: Database<SkillInterface>,
-  specificCategory: SkillCategoriesEnum
+  specificCategory: SkillCategoriesEnum,
 ): SkillDatabaseKeys[] {
-  // Initialize an empty array for the filtered skill slugs
-  const filteredSkillSlugs: SkillDatabaseKeys[] = [];
-
-  // Iterate over the skill slugs array
-  skillKeys.forEach((skillKey) => {
-    const skill: SkillInterface = skillsDatabase[skillKey];
-    // Check if the skill's category matches the specificCategory
-    if (skill.category === specificCategory) {
-      // If it matches, add the slug to the filteredSkillSlugs array
-      filteredSkillSlugs.push(skillKey);
-    }
-  });
-
-  return filteredSkillSlugs;
+  return skillKeys.filter(
+    (skillKey) => skillsDatabase[skillKey].category === specificCategory,
+  );
 }

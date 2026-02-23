@@ -2,7 +2,6 @@
 
 import React, { useEffect, useRef } from "react";
 import mermaid from "mermaid";
-import { useTheme } from "next-themes";
 
 type MermaidProps = {
   chart: string;
@@ -17,7 +16,6 @@ type MermaidProps = {
  */
 const Mermaid: React.FC<MermaidProps> = ({ chart }) => {
   const containerRef = useRef<HTMLSpanElement>(null);
-  const { theme, systemTheme } = useTheme();
   const [isMounted, setIsMounted] = React.useState(false);
 
   useEffect(() => {

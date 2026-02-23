@@ -1,6 +1,6 @@
 "use client";
 
-import skillHasMaterial from "@/lib/material/skillHasMaterial";
+import { skillHasMaterial } from "@/lib/material/skillUsageHelpers";
 import FilterSection from "@/components/filters/FilterSection";
 import SkillTag from "@/components/tags/SkillTag";
 import { SKILL_PAGE } from "@/constants/pages";
@@ -77,7 +77,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
                           hideSkillsWithoutMaterial
                         }
                       />
-                    )
+                    ),
                   )}
                 </CardContent>
               </Card>

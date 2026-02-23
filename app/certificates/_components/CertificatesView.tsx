@@ -41,15 +41,7 @@ const CertificatesView: React.FC = () => {
   const archivedParamName = "archived";
   const searchParamName = "search";
 
-  const searchOptions: string[] = [
-    "name",
-    "category",
-    "issuer",
-    "skills.name",
-    "skills.category",
-    "skills.relatedSkills.name",
-    "skills.relatedSkills.category",
-  ];
+  const searchOptions: string[] = ["name", "category", "issuer", "skills"];
 
   const {
     searchTerm,
@@ -71,7 +63,7 @@ const CertificatesView: React.FC = () => {
           filterCertificatesByIssuer(
             value,
             keys,
-            certificateDatabaseMap
+            certificateDatabaseMap,
           ) as CertificateDatabaseKeys[],
       },
       {
@@ -79,13 +71,13 @@ const CertificatesView: React.FC = () => {
         urlParam: certificateSectionParamName,
         valueParser: stringToSlug,
         options: generateFilterOptionsByCategory<CertificateInterface>(
-          certificateDatabaseMap
+          certificateDatabaseMap,
         ),
         applyFilter: (value, keys) =>
           filterMaterialByCategory<CertificateInterface>(
             value,
             keys,
-            certificateDatabaseMap
+            certificateDatabaseMap,
           ) as CertificateDatabaseKeys[],
       },
       {
@@ -94,14 +86,14 @@ const CertificatesView: React.FC = () => {
         valueParser: stringToSlug,
         options: generateFilterOptionsBySkillCategories<CertificateInterface>(
           certificateDatabaseMap,
-          skillDatabaseMap
+          skillDatabaseMap,
         ),
         applyFilter: (value, keys) =>
           filterMaterialBySkillCategory<CertificateInterface>(
             keys,
             certificateDatabaseMap,
             value,
-            skillDatabaseMap
+            skillDatabaseMap,
           ) as CertificateDatabaseKeys[],
       },
       {
@@ -110,13 +102,13 @@ const CertificatesView: React.FC = () => {
         options: generateFilterOptionsBySkillType<CertificateInterface>(
           certificateDatabaseMap,
           skillDatabaseMap,
-          SkillTypesEnum.Technology
+          SkillTypesEnum.Technology,
         ),
         applyFilter: (value, keys) =>
           filterMaterialBySkill<CertificateInterface>(
             value as SkillDatabaseKeys,
             keys,
-            certificateDatabaseMap
+            certificateDatabaseMap,
           ) as CertificateDatabaseKeys[],
       },
       {
@@ -125,13 +117,13 @@ const CertificatesView: React.FC = () => {
         options: generateFilterOptionsBySkillType<CertificateInterface>(
           certificateDatabaseMap,
           skillDatabaseMap,
-          SkillTypesEnum.Technical
+          SkillTypesEnum.Technical,
         ),
         applyFilter: (value, keys) =>
           filterMaterialBySkill<CertificateInterface>(
             value as SkillDatabaseKeys,
             keys,
-            certificateDatabaseMap
+            certificateDatabaseMap,
           ) as CertificateDatabaseKeys[],
       },
     ],
@@ -142,7 +134,7 @@ const CertificatesView: React.FC = () => {
         filterMaterialByArchivedStatus<CertificateInterface>(
           showArchived,
           keys,
-          certificateDatabaseMap
+          certificateDatabaseMap,
         ) as CertificateDatabaseKeys[],
     },
   });

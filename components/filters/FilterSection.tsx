@@ -28,15 +28,36 @@ import {
   withForcedArchiveTrue,
 } from "@/lib/material/filter-url-state/buildMaterialFilterUrlState";
 
+/**
+ * Props for the `FilterSection` top-level filter bar component.
+ * Receives all state from the listing page's filter hook and drives URL navigation on interaction.
+ * @author Maruf Bepary
+ */
 interface FilterSectionProps {
+  /** Page or section name shown in search placeholder text and the accordion trigger label. */
   name: string;
+  /** Route base path used to construct generated filter URLs (e.g. `"/projects"`). */
   basePath: string;
+  /** Filter category definitions surfaced by the listing hook; drives the `FilterOverlay` options. */
   filterCategories: FilterCategory[];
+  /** Whether any non-default filter, search, or archive value is currently active; controls the "Clear All" button. */
   areFiltersApplied: boolean;
+  /** Search state read from the listing hook; provides the current search term and its URL param name. */
   searchFilter: SearchFilter;
+  /** Optional archive metadata; when present an `ArchiveToggle` is rendered inside the filter bar. */
   archiveFilter?: ArchiveFilter;
 }
 
+/**
+ * Top-level filter bar rendered on every listing page (projects, experience, blogs, certificates, education, skills).
+ * Combines a collapsible accordion that houses a search input, a "Filters" button opening `FilterOverlay`,
+ * and a "Clear All" link back to `basePath`. Renders an `ArchiveToggle` inside the accordion when `archiveFilter` is provided.
+ * All URL transitions are assembled via `buildCurrentFilterOptions`, `upsertFilterOption`, and `withForcedArchiveTrue`.
+ *
+ * @param props - See `FilterSectionProps`.
+ * @returns Accordion-wrapped filter bar with search, filter panel trigger, clear button, and optional archive toggle.
+ * @author Maruf Bepary
+ */
 const FilterSection: React.FC<FilterSectionProps> = ({
   name,
   basePath,

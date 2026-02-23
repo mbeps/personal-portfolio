@@ -2,6 +2,16 @@ import MaterialGroupListInterface from "@/interfaces/material/MaterialGroupListI
 import WorkItem from "../material-items/WorkItem";
 import MaterialGroupSectionList from "./MaterialGroupSectionList";
 
+/**
+ * Thin list renderer for Work Experience / Role material groups.
+ * Delegates layout and empty-state handling to `MaterialGroupSectionList` with `WorkItem` as the card renderer.
+ * When multiple groups are present it prepends a horizontal divider and a group heading; single-group lists
+ * render as a plain vertical stack of `WorkItem` cards with no additional chrome.
+ *
+ * @param props - Grouped role material data conforming to `MaterialGroupListInterface`.
+ * @returns A sectioned or plain list of `WorkItem` cards.
+ * @author Maruf Bepary
+ */
 const WorkList: React.FC<MaterialGroupListInterface> = ({
   groupedMaterial,
 }) => (

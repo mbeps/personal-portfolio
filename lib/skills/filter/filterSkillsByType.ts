@@ -15,20 +15,12 @@ import Database from "@/interfaces/Database";
 export default function filterSkillsByType(
   skillKeys: SkillDatabaseKeys[],
   skillsDatabase: Database<SkillInterface>,
-  skillType: SkillTypesEnum
+  skillType: SkillTypesEnum,
 ): SkillDatabaseKeys[] {
-  // Initialize an empty array for the filtered skill slugs
-  const filteredSkillSlugs: SkillDatabaseKeys[] = [];
-
-  // Iterate over the skill slugs array
-  skillKeys.forEach((skillSlug) => {
-    const skill: SkillInterface = skillsDatabase[skillSlug];
-    // Check if the skill's type matches the specified skillType
-    if (skill && skill.skillType === skillType) {
-      // If it matches, add the slug to the filteredSkillSlugs array
-      filteredSkillSlugs.push(skillSlug);
-    }
-  });
-
-  return filteredSkillSlugs;
+  return skillKeys.filter((skillSlug) =>
+    Boolean(
+      skillsDatabase[skillSlug] &&
+      skillsDatabase[skillSlug].skillType === skillType,
+    ),
+  );
 }

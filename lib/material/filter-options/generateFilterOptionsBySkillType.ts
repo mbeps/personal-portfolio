@@ -4,6 +4,7 @@ import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
 import Database from "@/interfaces/Database";
 import FilterOption from "@/interfaces/filters/FilterOption";
+import generateFilterOptions from "./generateFilterOptions";
 
 /**
  * Builds dynamic filter options for a given skill type (language, framework, etc.).
@@ -16,39 +17,27 @@ import FilterOption from "@/interfaces/filters/FilterOption";
  * @returns Sorted, deduplicated filter options keyed by the skill slug.
  */
 export default function generateFilterOptionsBySkillType<
-  T extends MaterialInterface
+  T extends MaterialInterface,
 >(
   materialsDatabase: Database<T>,
   skillsDatabase: Database<SkillInterface>,
   skillType: SkillTypesEnum,
-  excludeCategory?: SkillCategoriesEnum
+  excludeCategory?: SkillCategoriesEnum,
 ): FilterOption[] {
-  return [
-    { slug: "all", entryName: "All" },
-    ...Object.values(materialsDatabase)
-      .flatMap((material) =>
-        material.skills
-          .map((skillKey) => ({
-            skill: skillsDatabase[skillKey],
-            slug: skillKey, // Use skillSlug for unique identification
-          }))
-          .filter(
-            ({ skill, slug }) =>
-              skill && // Ensure the skill exists
-              skill.skillType === skillType &&
-              (!excludeCategory || skill.category !== excludeCategory)
-          )
-      )
-      .map(({ skill, slug: skillKey }) => ({
-        slug: skillKey, // Use the skill key as the slug
-        entryName: skill.name,
-      }))
-      .reduce((unique, item) => {
-        if (!unique.some((o) => o.slug === item.slug)) {
-          unique.push(item);
+  return generateFilterOptions(
+    materialsDatabase,
+    (material) =>
+      material.skills.flatMap((skillKey) => {
+        const skill = skillsDatabase[skillKey];
+        if (
+          !skill ||
+          skill.skillType !== skillType ||
+          (excludeCategory && skill.category === excludeCategory)
+        ) {
+          return [];
         }
-        return unique;
-      }, [] as FilterOption[])
-      .sort((a, b) => a.entryName.localeCompare(b.entryName)),
-  ];
+        return [{ slug: skillKey, entryName: skill.name }];
+      }),
+    true,
+  );
 }

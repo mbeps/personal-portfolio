@@ -15,7 +15,7 @@ interface CategorySkillDisplayProps {
  * @param skillCategories Groups produced by `buildSkillTableGroups`.
  * @returns Grid of `SkillTag` clusters plus an optional expand/collapse button.
  */
-const SkillTable: React.FC<CategorySkillDisplayProps> = ({
+const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
   skillCategories,
 }) => {
   const [showAll, setShowAll] = useState(false);
@@ -49,7 +49,7 @@ const SkillTable: React.FC<CategorySkillDisplayProps> = ({
 
           if (skillCount < maxSkillCount && groupCount < maxGroupCount) {
             const filteredSkills = categoryData.skills.filter(
-              (skillKey) => skillDatabaseMap[skillKey]?.isMainSkill
+              (skillKey) => skillDatabaseMap[skillKey]?.isMainSkill,
             );
             const skillsToDisplay = filteredSkills.length
               ? filteredSkills
@@ -57,7 +57,7 @@ const SkillTable: React.FC<CategorySkillDisplayProps> = ({
 
             const availableSlots = Math.min(
               maxSkillCount - skillCount,
-              skillsToDisplay.length
+              skillsToDisplay.length,
             );
             const limitedSkills = skillsToDisplay.slice(0, availableSlots);
 
@@ -75,7 +75,7 @@ const SkillTable: React.FC<CategorySkillDisplayProps> = ({
 
           return acc;
         },
-        []
+        [],
       );
 
   const shouldShowToggleButton: boolean =
@@ -117,4 +117,4 @@ const SkillTable: React.FC<CategorySkillDisplayProps> = ({
   );
 };
 
-export default SkillTable;
+export default CategorySkillDisplay;

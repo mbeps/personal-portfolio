@@ -35,7 +35,7 @@ import { useMediaQuery } from "@/hooks/useMediaQuery";
 import Database from "@/interfaces/Database";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
-import isSkillAssociatedWithMaterial from "@/lib/material/isSkillAssociatedWithMaterial";
+import { isSkillAssociatedWithMaterial } from "@/lib/material/skillUsageHelpers";
 import groupSkills, { GroupByOptions } from "@/lib/skills/group/groupSkills";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -71,7 +71,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
   function filterMainSkillsExcludingCategory(
     skillSlugs: SkillDatabaseKeys[],
     skillsHashmap: Database<SkillInterface>,
-    excludedCategory: SkillCategoriesEnum
+    excludedCategory: SkillCategoriesEnum,
   ): SkillDatabaseKeys[] {
     return skillSlugs.filter((slug) => {
       const skill: SkillInterface = skillsHashmap[slug];
@@ -83,7 +83,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
     filterMainSkillsExcludingCategory(
       language.relatedSkills || [],
       skillDatabaseMap,
-      SkillCategoriesEnum.ProgrammingLanguages
+      SkillCategoriesEnum.ProgrammingLanguages,
     );
 
   const shouldOpenModal: boolean | undefined =
@@ -93,7 +93,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
     groupedBy as GroupByOptions,
     languageSkillsSlug,
     skillDatabaseMap,
-    [SkillTypesEnum.Technical]
+    [SkillTypesEnum.Technical],
   );
 
   const hasMaterial: boolean =
@@ -125,17 +125,19 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
               Group by:
             </div>
             <DropdownMenu>
-              <DropdownMenuTrigger render={
-                <Button variant="default" className="w-48">
-                  <div className="flex items-start justify-between space-x-2 w-full">
-                    <span>{currentGroupedName}</span>
-                    <BsChevronDown
-                      fontSize={16}
-                      className="text-neutral-700 dark:text-neutral-200 mt-1"
-                    />
-                  </div>
-                </Button>
-              } />
+              <DropdownMenuTrigger
+                render={
+                  <Button variant="default" className="w-48">
+                    <div className="flex items-start justify-between space-x-2 w-full">
+                      <span>{currentGroupedName}</span>
+                      <BsChevronDown
+                        fontSize={16}
+                        className="text-neutral-700 dark:text-neutral-200 mt-1"
+                      />
+                    </div>
+                  </Button>
+                }
+              />
               <DropdownMenuContent className="w-48">
                 {options.map((option) => (
                   <DropdownMenuItem
@@ -187,13 +189,21 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
         // Desktop Dialog (md and above)
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
           <Tooltip>
-            <TooltipTrigger render={
-              <DialogTrigger render={
-                <Tag onClick={shouldOpenModal ? () => setIsOpen(true) : undefined}>
-                  {language.name}
-                </Tag>
-              } />
-            } />
+            <TooltipTrigger
+              render={
+                <DialogTrigger
+                  render={
+                    <Tag
+                      onClick={
+                        shouldOpenModal ? () => setIsOpen(true) : undefined
+                      }
+                    >
+                      {language.name}
+                    </Tag>
+                  }
+                />
+              }
+            />
             <TooltipContent>
               <p>{`View technologies related to ${language.name}`}</p>
             </TooltipContent>
@@ -207,13 +217,19 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
         // Mobile Drawer (below md)
         <Drawer open={isOpen} onOpenChange={setIsOpen}>
           <Tooltip>
-            <TooltipTrigger render={
-              <DrawerTrigger asChild>
-                <Tag onClick={shouldOpenModal ? () => setIsOpen(true) : undefined}>
-                  {language.name}
-                </Tag>
-              </DrawerTrigger>
-            } />
+            <TooltipTrigger
+              render={
+                <DrawerTrigger asChild>
+                  <Tag
+                    onClick={
+                      shouldOpenModal ? () => setIsOpen(true) : undefined
+                    }
+                  >
+                    {language.name}
+                  </Tag>
+                </DrawerTrigger>
+              }
+            />
             <TooltipContent>
               <p>{`View technologies related to ${language.name}`}</p>
             </TooltipContent>

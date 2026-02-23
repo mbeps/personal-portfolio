@@ -1,5 +1,5 @@
 import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
-import SkillTableCell from "@/components/skills/SkillTableSection";
+import SkillTableSection from "@/components/skills/SkillTableSection";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
 import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
@@ -43,7 +43,7 @@ const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
       <div className="border-b border-gray-200 dark:border-neutral-600 py-5" />
       <div className="mt-4 text-center md:text-left">
         <h2>Related Skills</h2>
-        <SkillTableCell allGroupedSkills={allGroupedSkills} />
+        <SkillTableSection allGroupedSkills={allGroupedSkills} />
       </div>
     </>
   );

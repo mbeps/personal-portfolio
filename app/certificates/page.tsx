@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   category: `${CERTIFICATES_PAGE.label}`,
   creator: developerName,
   keywords: Object.values(certificateDatabaseMap).map(
-    (certificate) => certificate.name
+    (certificate) => certificate.name,
   ),
 };
 
@@ -28,7 +28,10 @@ export const metadata: Metadata = {
 const CertificatesPage: React.FC = () => {
   return (
     <main>
-      <section id="projects" className="flex flex-col items-start md:items-end">
+      <section
+        id="certificates"
+        className="flex flex-col items-start md:items-end"
+      >
         <div className="w-full">
           <h1>{CERTIFICATES_PAGE.label}</h1>
           <PageDescription description={CERTIFICATES_PAGE.description} />

@@ -1,6 +1,6 @@
 import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
 import MaterialList from "@/components/material-lists/MaterialList";
-import SkillTableCell from "@/components/skills/SkillTableSection";
+import SkillTableSection from "@/components/skills/SkillTableSection";
 import Tag from "@/components/tags/Tag";
 import StringList from "@/components/ui/StringList";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
@@ -37,7 +37,7 @@ type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
  */
 export async function generateMetadata(
   props: { params: Params; searchParams: SearchParams },
-  parent: ResolvingMetadata
+  parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const resolvedParams = await props.params;
   const certificateKey: string = resolvedParams.certificateKey;
@@ -155,7 +155,7 @@ const CertificatesPage: React.FC<{ params: Params }> = async ({ params }) => {
             {hasSkills && (
               <Card>
                 <CardContent className="py-7">
-                  <SkillTableCell allGroupedSkills={allGroupedSkills} />
+                  <SkillTableSection allGroupedSkills={allGroupedSkills} />
                 </CardContent>
               </Card>
             )}

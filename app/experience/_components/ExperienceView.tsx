@@ -46,10 +46,7 @@ export const ExperienceView: React.FC = () => {
     "company",
     "type",
     "category",
-    "skills.name",
-    "skills.category",
-    "skills.relatedSkills.name",
-    "skills.relatedSkills.category",
+    "skills",
   ];
 
   const {
@@ -72,7 +69,7 @@ export const ExperienceView: React.FC = () => {
           filterMaterialByCategory<RoleInterface>(
             value,
             keys,
-            rolesDatabase
+            rolesDatabase,
           ) as RoleDatabaseKeys[],
       },
       {
@@ -84,7 +81,7 @@ export const ExperienceView: React.FC = () => {
           filterRolesByType<RoleInterface>(
             value as ExperienceTypeEnum,
             keys,
-            rolesDatabase
+            rolesDatabase,
           ) as RoleDatabaseKeys[],
       },
       {
@@ -93,14 +90,14 @@ export const ExperienceView: React.FC = () => {
         valueParser: stringToSlug,
         options: generateFilterOptionsBySkillCategories<RoleInterface>(
           rolesDatabase,
-          skillDatabaseMap
+          skillDatabaseMap,
         ),
         applyFilter: (value, keys) =>
           filterMaterialBySkillCategory<RoleInterface>(
             keys,
             rolesDatabase,
             value,
-            skillDatabaseMap
+            skillDatabaseMap,
           ) as RoleDatabaseKeys[],
       },
       {
@@ -109,13 +106,13 @@ export const ExperienceView: React.FC = () => {
         options: generateFilterOptionsBySkillType<RoleInterface>(
           rolesDatabase,
           skillDatabaseMap,
-          SkillTypesEnum.Technology
+          SkillTypesEnum.Technology,
         ),
         applyFilter: (value, keys) =>
           filterMaterialBySkill<RoleInterface>(
             value as SkillDatabaseKeys,
             keys,
-            rolesDatabase
+            rolesDatabase,
           ) as RoleDatabaseKeys[],
       },
       {
@@ -124,13 +121,13 @@ export const ExperienceView: React.FC = () => {
         options: generateFilterOptionsBySkillType<RoleInterface>(
           rolesDatabase,
           skillDatabaseMap,
-          SkillTypesEnum.Technical
+          SkillTypesEnum.Technical,
         ),
         applyFilter: (value, keys) =>
           filterMaterialBySkill<RoleInterface>(
             value as SkillDatabaseKeys,
             keys,
-            rolesDatabase
+            rolesDatabase,
           ) as RoleDatabaseKeys[],
       },
     ],
@@ -142,7 +139,7 @@ export const ExperienceView: React.FC = () => {
         filterMaterialByArchivedStatus<RoleInterface>(
           showArchived,
           keys,
-          rolesDatabase
+          rolesDatabase,
         ) as RoleDatabaseKeys[],
     },
   });

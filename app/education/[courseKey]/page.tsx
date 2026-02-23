@@ -3,7 +3,7 @@ import groupMaterialsByCategory from "@/lib/material/group/groupMaterialsByCateg
 import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
 import { ArchiveToggle } from "@/components/filters/ArchiveToggle";
 import MaterialList from "@/components/material-lists/MaterialList";
-import SkillTableCell from "@/components/skills/SkillTableSection";
+import SkillTableSection from "@/components/skills/SkillTableSection";
 import Tag from "@/components/tags/Tag";
 import Grid from "@/components/ui/Grid";
 import {
@@ -49,7 +49,7 @@ type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
  */
 export async function generateMetadata(
   props: { params: Params; searchParams: SearchParams },
-  parent: ResolvingMetadata
+  parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const resolvedParams = await props.params;
   const courseKey: string = resolvedParams.courseKey;
@@ -111,12 +111,12 @@ const CoursesPage: React.FC<{
   filteredModules = filterMaterialByArchivedStatus<ModuleInterface>(
     showArchived,
     filteredModules,
-    moduleDatabaseMap
+    moduleDatabaseMap,
   ) as ModuleDatabaseKeys[];
 
   const groupedModules: MaterialGroupInterface[] = groupMaterialsByCategory(
     filteredModules,
-    moduleDatabaseMap
+    moduleDatabaseMap,
   );
 
   //^ Skills
@@ -125,7 +125,7 @@ const CoursesPage: React.FC<{
   const hasSkills = hasAnySkills(allGroupedSkills);
 
   const hasArchivedModules: boolean = courseData.modules.some(
-    (moduleKey) => moduleDatabaseMap[moduleKey].archived
+    (moduleKey) => moduleDatabaseMap[moduleKey].archived,
   );
 
   return (
@@ -221,7 +221,7 @@ const CoursesPage: React.FC<{
           {hasSkills && (
             <Card>
               <CardContent className="py-7">
-                <SkillTableCell allGroupedSkills={allGroupedSkills} />
+                <SkillTableSection allGroupedSkills={allGroupedSkills} />
               </CardContent>
             </Card>
           )}
