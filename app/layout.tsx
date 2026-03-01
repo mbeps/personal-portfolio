@@ -5,12 +5,13 @@ import developerName from "@/constants/developerName";
 import { HOME_PAGE } from "@/constants/pages";
 import subtitles from "@/constants/subtitles";
 import { Providers } from "@/providers/Providers";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
 import { VercelTrackers } from "@/providers/VercelTrackers";
 import Scroll from "@/components/ui/Scroll";
 import "katex/dist/katex.min.css";
+import { SerwistProvider } from "./serwist-provider";
 
 import { Inter } from "next/font/google";
 
@@ -33,9 +34,22 @@ export const metadata: Metadata = {
   title: developerName,
   description: aboutContent || HOME_PAGE.description,
   icons: ["/manifest/icon512_maskable.png", "/manifest/icon512_rounded.png"],
+  manifest: "/manifest/manifest.json",
   category: "Homepage",
   creator: developerName,
   keywords: subtitles,
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: developerName,
+  },
+  formatDetection: {
+    telephone: false,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#e01b24",
 };
 
 /**
@@ -59,6 +73,7 @@ export default function RootLayoutWithProviders({
         className={inter.variable}
       >
         <body style={{ overflowX: "hidden" }}>
+          <SerwistProvider swUrl="/serwist/sw.js">
           <Providers>
             <Scroll />
             <Navbar />
@@ -83,6 +98,7 @@ export default function RootLayoutWithProviders({
             </main>
           </Providers>
           <VercelTrackers />
+          </SerwistProvider>
         </body>
       </html>
     </>

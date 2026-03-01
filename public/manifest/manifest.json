@@ -1,26 +1,40 @@
 {
+	"id": "/",
+	"name": "Maruf Bepary",
+	"short_name": "Maruf",
+	"description": "Personal portfolio showcasing projects, experience, skills, and certificates.",
 	"theme_color": "#e01b24",
 	"background_color": "#ffffff",
 	"icons": [
 		{
-			"purpose": "maskable",
-			"sizes": "512x512",
-			"src": "icon512_maskable.png",
-			"type": "image/png"
+			"src": "/manifest/icon192_maskable.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "maskable"
 		},
 		{
-			"purpose": "any",
+			"src": "/manifest/icon192_rounded.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "/manifest/icon512_maskable.png",
 			"sizes": "512x512",
-			"src": "icon512_rounded.png",
-			"type": "image/png"
+			"type": "image/png",
+			"purpose": "maskable"
+		},
+		{
+			"src": "/manifest/icon512_rounded.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "any"
 		}
 	],
 	"orientation": "any",
 	"display": "standalone",
 	"dir": "auto",
 	"lang": "en-GB",
-	"name": "Maruf Bepary",
-	"short_name": "Maruf",
 	"start_url": "/",
 	"scope": "/"
 }

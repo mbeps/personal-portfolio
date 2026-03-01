@@ -33,5 +33,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Serwist (compiled service worker)
+public/sw*
+public/swe-worker*
 TODO.txt
 .github/copilot-instructions.md
