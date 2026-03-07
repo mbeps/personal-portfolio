@@ -15,7 +15,7 @@ type ReaderProps = {
 type HeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
 const createHeadingComponent = (
-  Tag: HeadingTag
+  Tag: HeadingTag,
 ): React.FC<React.HTMLAttributes<HTMLHeadingElement>> => {
   const HeadingComponent: React.FC<
     React.HTMLAttributes<HTMLHeadingElement>
@@ -68,7 +68,7 @@ const Reader: React.FC<ReaderProps> = ({ content, size = "lg" }) => {
         const placeholder = `MERMAIDBLOCK_${blockCount++}`;
         mermaidBlocks[placeholder] = mermaidCode.trim();
         return `<Mermaid>${placeholder}</Mermaid>`;
-      }
+      },
     );
 
     // Then, replace display math blocks ($$...$$) with placeholders
@@ -78,7 +78,7 @@ const Reader: React.FC<ReaderProps> = ({ content, size = "lg" }) => {
         const placeholder = `MATHBLOCK_${blockCount++}`;
         mathBlocks[placeholder] = latex.trim();
         return `<DisplayMath>${placeholder}</DisplayMath>`;
-      }
+      },
     );
 
     // Then, replace inline math ($...$) with placeholders
@@ -88,7 +88,7 @@ const Reader: React.FC<ReaderProps> = ({ content, size = "lg" }) => {
         const placeholder = `MATHINLINE_${blockCount++}`;
         mathBlocks[placeholder] = latex.trim();
         return `<InlineMath>${placeholder}</InlineMath>`;
-      }
+      },
     );
 
     // Create a custom Markdown component with overrides
@@ -120,6 +120,16 @@ const Reader: React.FC<ReaderProps> = ({ content, size = "lg" }) => {
                 const latex = mathBlocks[placeholder] || placeholder;
                 return <InlineMath>{latex}</InlineMath>;
               },
+            },
+            table: {
+              component: ({
+                children,
+                ...props
+              }: React.HTMLAttributes<HTMLTableElement>) => (
+                <div className="overflow-x-auto">
+                  <table {...props}>{children}</table>
+                </div>
+              ),
             },
           },
         }}
