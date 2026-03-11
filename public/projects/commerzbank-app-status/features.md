@@ -24,6 +24,10 @@
 - Users able to subscribe and unsubscribe from monitoring apps for personal list
 - Users are able to view list of applications the group is subscribed to
 
+## Incidents
+- Users can view issues directly from the app including impact, importance, ticket numbers, etc
+- Users can raise incidents directly from the app for the associated application being monitored
+
 ## Admin Controls
 ### App Management
 - Admins are able to add apps based on unique identifier (fetched from ServiceNow)

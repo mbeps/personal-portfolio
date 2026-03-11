@@ -86,6 +86,7 @@ enum SkillDatabaseKeys {
   ChakraUi = "chakra-ui",
   HeadlessUi = "headless-ui",
   ShadcnUi = "shadcn-ui",
+  BaseUi = "base-ui",
   RadixUi = "radix-ui",
   NextUi = "next-ui",
   SimpleGui = "simple-gui",

@@ -34,3 +34,4 @@ The system provides a comprehensive admin interface for dealership management:
 - Admins can configure dealership information and contact details
 - Admins can set working hours for each day of the week
 - Admins can manage admin user accounts
+- Admins can configure FAQs shown in the home screen
