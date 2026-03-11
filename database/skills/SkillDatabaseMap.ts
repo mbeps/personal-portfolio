@@ -925,6 +925,15 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.ReactJs,
     ],
   },
+  [SkillDatabaseKeys.BaseUi]: {
+    name: "Base UI",
+    category: SkillCategoriesEnum.FrontEndWebDevelopment,
+    skillType: SkillTypesEnum.Technology,
+    relatedSkills: [
+      SkillDatabaseKeys.UserCentricDesign,
+      SkillDatabaseKeys.ReactJs,
+    ],
+  },
   [SkillDatabaseKeys.NextUi]: {
     name: "Next UI",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
