@@ -65,6 +65,7 @@ enum ProjectDatabaseKeys {
   ComputerVisionImageSegmentation = "computer-vision-image-segmentation-assignment",
   ComputerVisionQuizzes = "computer-vision-quizzes",
   VisionTransformerFromScratch = "vision-transformer-from-scratch",
+  SimpleAIResearchAgent = "simple-ai-research-agent",
 
   OsmosGame = "osmos-game",
   GnomeQuickSettingsTweakExtension = "gnome-quick-settings-tweak-extension",
