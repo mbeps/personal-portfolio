@@ -527,6 +527,23 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.ComputerVisionQuizzes,
     ),
   },
+  [ProjectDatabaseKeys.SimpleAIResearchAgent]: {
+    name: "Simple AI Research Agent",
+    description: `
+      A simple AI research agent for experimenting tools, APIs and techniques.
+      Agent can research using web, Wikipedia and save to a file.
+      `,
+    repositoryURL: "https://github.com/mbeps/simple-python-ai-research-agent",
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.LangChain,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+    ],
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    type: ProjectTypeEnum.Personal,
+    archived: true,
+  },
 
   //^ Full-Stack Projects
   [ProjectDatabaseKeys.ForumDiscussions]: {

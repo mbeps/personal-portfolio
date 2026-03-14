@@ -34,6 +34,7 @@ enum SkillDatabaseKeys {
   LargeLanguageModels = "large-language-models",
   ApacheSpark = "apache-spark",
   MlLib = "ml-lib",
+  LangChain = "langchain",
   MachineLearning = "machine-learning",
   DeepLearning = "deep-learning",
   ArtificialIntelligence = "artificial-intelligence",

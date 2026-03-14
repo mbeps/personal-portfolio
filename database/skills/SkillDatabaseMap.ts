@@ -348,6 +348,16 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.ApacheSpark,
     ],
   },
+  [SkillDatabaseKeys.LangChain]: {
+    name: "LangChain",
+    category: SkillCategoriesEnum.ArtificialIntelligence,
+    skillType: SkillTypesEnum.Technology,
+    relatedSkills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.LargeLanguageModels,
+      SkillDatabaseKeys.NaturalLanguageProcessing,
+    ],
+  },
   [SkillDatabaseKeys.ModelContextProtocol]: {
     name: "Model Context Protocol (MCP)",
     category: SkillCategoriesEnum.ArtificialIntelligence,
