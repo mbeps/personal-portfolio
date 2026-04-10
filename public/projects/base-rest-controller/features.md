@@ -2,4 +2,4 @@
 - Using username and password 
 - Defining proxy server host and port
 - Enabling and disabling SSL connections 
-- Setting custom certificates instead of default JVM certificate
+- Setting custom certificates instead of the default JVM certificate
