@@ -53,6 +53,26 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.AlignmentInLargeLanguageModels,
     ),
   },
+  [ProjectDatabaseKeys.ExcelSpreadsheetMCP]: {
+    name: "Excel Spreadsheet MCP Server",
+    description: `
+      An MCP server which allows AI agents to connect and interact with Excel spreadsheets.
+      This allows the AI agents to perform various tasks such as reading and writing data, performing calculations, and more.
+      `,
+    repositoryURL: "https://github.com/mbeps/excel-mcp",
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    type: ProjectTypeEnum.Personal,
+    relatedMaterials: [BlogDatabaseKeys.ModelContextProtocol],
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.ModelContextProtocol,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.PyTest,
+    ],
+    thumbnailImage: addProjectThumbnail(
+      ProjectDatabaseKeys.ExcelSpreadsheetMCP,
+    ),
+  },
   [ProjectDatabaseKeys.LinuxGnomeMcp]: {
     name: "Linux GNOME MCP Server",
     description: `
