@@ -47,6 +47,7 @@ enum ProjectDatabaseKeys {
 
   //^ Artificial Intelligence Projects
   AlignmentInLargeLanguageModels = "alignment-in-large-language-models",
+  ExcelSpreadsheetMCP = "excel-spreadsheet-mcp",
   LinuxGnomeMcp = "linux-gnome-mcp",
   CustomNeuralNetworkCoursework = "custom-neural-network-classifier-coursework",
   CustomQLearningAgent = "custom-q-learning-agent",
