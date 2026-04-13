@@ -282,7 +282,7 @@ Consider a 128-dimensional vector of 32-bit floats.
 To search the compressed database, we need to calculate the distance between an uncompressed query $\mathbf{q}$ and a compressed database vector $\mathbf{x}'$. This is called Asymmetric Distance Computation (ADC).
 The squared Euclidean distance is approximated as the sum of squared distances in each subspace:
 $$d(\mathbf{q}, \mathbf{x}')^2 \approx \sum_{j=1}^{m} \|\mathbf{q}_j - C_j[id_j]\|^2$$
-**Optimization:**
+**Optimisation:**
 Before iterating through the database, the system pre-computes a lookup table. It calculates the distance between the query sub-vectors $\mathbf{q}_j$ and every possible centroid in every codebook $C_j$. Since there are only $m \times k^*$ centroids (e.g., $8 \times 256 = 2048$), this is negligible.
 During the scan of the database, the distance calculation for each vector becomes a simple series of $m$ table lookups and additions, avoiding expensive floating-point arithmetic entirely.
 
@@ -292,7 +292,7 @@ Locality Sensitive Hashing (LSH) is an older technique that differs fundamentall
 
 ### 5.4.1 - p-Stable Distributions
 
-LSH for Euclidean distance utilizes p-stable distributions. A distribution $D$ is called p-stable if for any vectors $\mathbf{v}_1, \dots, \mathbf{v}_n$ and random variables $X_1, \dots, X_n \sim D$, the linear combination $\sum v_i X_i$ has the same distribution as $(\sum |v_i|^p)^{1/p} X$, where $X \sim D$.
+LSH for Euclidean distance utilises p-stable distributions. A distribution $D$ is called p-stable if for any vectors $\mathbf{v}_1, \dots, \mathbf{v}_n$ and random variables $X_1, \dots, X_n \sim D$, the linear combination $\sum v_i X_i$ has the same distribution as $(\sum |v_i|^p)^{1/p} X$, where $X \sim D$.
 For Euclidean distance ($L_2$ norm, where $p=2$), the Gaussian (Normal) distribution is 2-stable.
 
 ### 5.4.2 - The Hash Function
@@ -366,7 +366,7 @@ Modern vector databases (e.g., Milvus, Weaviate, Pinecone, Qdrant) typically ado
 When a vector is inserted into the database, it must be securely stored before it can be indexed.
 
   * **Write-Ahead Log (WAL):** To ensure durability in the event of a crash, incoming data is first appended to a Write-Ahead Log. This is a sequential file that records every operation. Only after the WAL is flushed to persistent storage is the write acknowledged to the client.
-  * **LSM Trees:** Many systems (like Weaviate and implementations based on RocksDB) utilize Log-Structured Merge (LSM) trees for storage. New data is written to a mutable in-memory buffer called a "MemTable." When the MemTable reaches a certain size, it is flushed to disk as an immutable "SSTable" (Sorted String Table). This structure optimises for write throughput by converting random writes into sequential writes.
+  * **LSM Trees:** Many systems (like Weaviate and implementations based on RocksDB) utilise Log-Structured Merge (LSM) trees for storage. New data is written to a mutable in-memory buffer called a "MemTable." When the MemTable reaches a certain size, it is flushed to disk as an immutable "SSTable" (Sorted String Table). This structure optimises for write throughput by converting random writes into sequential writes.
   * **Index Construction:** Unlike standard B-trees, vector indices like HNSW are computationally expensive to update. Inserting a node one by one into a large on-disk graph causes massive "write amplification" (random I/O). To mitigate this, databases often use a tiered approach:
       * **Mutable Buffer:** Recent data is kept in a small, dynamic in-memory index.
       * **Immutable Segments:** Older data is sealed into large, static on-disk indices.
@@ -520,7 +520,7 @@ Deploying vector databases in production introduces challenges that go beyond th
 The primary cost driver in vector search is Random Access Memory (RAM). Storing 1 billion vectors of 768 dimensions (float32) requires roughly 3 TB of RAM. This is prohibitively expensive for many organisations.
 
   * **Solution 1: Quantization.** Using PQ or Binary Quantization (BQ) can reduce this by 32x-64x, bringing the requirement down to \< 100 GB.
-  * **Solution 2: Disk-Based Indexing.** Algorithms like DiskANN (Vamana graph) store the graph structure on fast NVMe SSDs and cache only the compressed vectors in RAM. They utilize the high random read throughput of modern SSDs to achieve performance close to in-memory systems at a fraction of the cost.
+  * **Solution 2: Disk-Based Indexing.** Algorithms like DiskANN (Vamana graph) store the graph structure on fast NVMe SSDs and cache only the compressed vectors in RAM. They utilise the high random read throughput of modern SSDs to achieve performance close to in-memory systems at a fraction of the cost.
 
 ## 9.2 - Hardware Acceleration
 

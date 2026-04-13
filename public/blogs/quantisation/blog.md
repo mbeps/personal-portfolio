@@ -30,7 +30,7 @@
 	- [7.6 Summary of Algorithm Characteristics](#76-summary-of-algorithm-characteristics)
 - [8 - Empirical Performance Analysis](#8---empirical-performance-analysis)
 	- [8.1 The 4-bit "Sweet Spot" and Performance Cliffs](#81-the-4-bit-sweet-spot-and-performance-cliffs)
-	- [8.2 Quantisation as Regularization](#82-quantisation-as-regularization)
+	- [8.2 Quantisation as Regularisation](#82-quantisation-as-regularisation)
 	- [8.3 Performance Comparison Table](#83-performance-comparison-table)
 - [9 - Comparative Analysis against Other Compression Approaches](#9---comparative-analysis-against-other-compression-approaches)
 	- [9.1 Quantisation vs. Pruning](#91-quantisation-vs-pruning)
@@ -137,9 +137,9 @@ The zero-point $Z$ is derived by setting the dequantised value of $Z$ to be $0$:
 
 $$0 = S(Z - Z_{real}) \implies Z = \text{Round}\left( - \frac{x_{min}}{S} + q_{min} \right)$$
 
-This approach allows the quantised range to be fully utilised regardless of the distribution's center. However, the non-zero $Z$ introduces computational overhead in matrix multiplication (cross-terms involving $Z$).
+This approach allows the quantised range to be fully utilised regardless of the distribution's centre. However, the non-zero $Z$ introduces computational overhead in matrix multiplication (cross-terms involving $Z$).
 
-**Symmetric Quantisation:** Symmetric quantisation restricts the zero-point $Z$ to be 0 (or specifically centered). This forces the floating-point range to be symmetric around zero, i.e., $[-\alpha, \alpha]$, where $\alpha = \max(|x_{min}|, |x_{max}|)$.
+**Symmetric Quantisation:** Symmetric quantisation restricts the zero-point $Z$ to be 0 (or specifically centred). This forces the floating-point range to be symmetric around zero, i.e., $[-\alpha, \alpha]$, where $\alpha = \max(|x_{min}|, |x_{max}|)$.
 
 $$S = \frac{\alpha}{2^{n-1} - 1}$$
 $$Z = 0$$
@@ -264,7 +264,7 @@ $$Y = \text{MatMul}_{FP16}(X_{out}, W_{out}) + \text{MatMul}_{INT8}(Q(X_{int}), 
 
 ![alt text]({BASE}/image-4.png)
 
-> LLM.int8() Matrix Decomposition. The input matrix is analyzed for outliers (shown in red). Columns containing outliers are separated into a sparse FP16 matrix. The remaining regular values (blue) are quantised to INT8. The matrix multiplications happen separately and are summed.
+> LLM.int8() Matrix Decomposition. The input matrix is analysed for outliers (shown in red). Columns containing outliers are separated into a sparse FP16 matrix. The remaining regular values (blue) are quantised to INT8. The matrix multiplications happen separately and are summed.
 
 
 **Key Insight:** The number of outlier channels is extremely small (< 0.1%). Thus, 99.9% of the computation is done in INT8, yielding speed and memory benefits, while the 0.1% crucial for accuracy remains in FP16. This was the first method to enable 175B model inference on consumer hardware without performance degradation. The computational cost of separating the matrices is non-trivial, which can sometimes make inference slower than pure FP16 on very fast GPUs, despite the memory savings.
@@ -364,8 +364,8 @@ Quantifying the trade-off between efficiency and accuracy is central to deployme
 ## 8.1 The 4-bit "Sweet Spot" and Performance Cliffs
 Research consistently indicates that 4-bit quantisation represents an optimal balance point for modern LLMs. Sophisticated algorithms (like GPTQ and AWQ) allow 4-bit models to retain performance highly comparable to 16-bit baselines. However, a "performance cliff" is often observed below 4 bits, where moving to 3-bit or 2-bit precision causes sharp accuracy degradation.
 
-## 8.2 Quantisation as Regularization
-Counter-intuitively, quantisation can sometimes improve performance over the full-precision baseline. The lossy nature of quantisation introduces noise that acts as a form of regularization, preventing overfitting and potentially helping the optimization process escape poor local minima.
+## 8.2 Quantisation as Regularisation
+Counter-intuitively, quantisation can sometimes improve performance over the full-precision baseline. The lossy nature of quantisation introduces noise that acts as a form of regularisation, preventing overfitting and potentially helping the optimisation process escape poor local minima.
 
 ## 8.3 Performance Comparison Table
 The following data synthesizes performance across various models and methods:
@@ -428,7 +428,7 @@ Quantisation from FP16 (16-bit) to INT4 (4-bit) reduces the data size by $4\time
 
 # 11 - Conclusion
 
-Quantisation has evolved from a simple signal processing technique into the linchpin of modern Large Language Model deployment. The transition from naive rounding to sophisticated, optimization-based methods like GPTQ, AWQ, and QLoRA reflects a deeper understanding of the distinct statistical properties of Transformer models—specifically, the challenge of activation outliers and the resilience of weights to noise.
+Quantisation has evolved from a simple signal processing technique into the linchpin of modern Large Language Model deployment. The transition from naive rounding to sophisticated, optimisation-based methods like GPTQ, AWQ, and QLoRA reflects a deeper understanding of the distinct statistical properties of Transformer models—specifically, the challenge of activation outliers and the resilience of weights to noise.
 The mathematical theory underpinning these advancements relies on affine transformations, Hessian-based error minimisation, and information-theoretic optimal data types. For the Master's level practitioner, the key takeaway is that quantisation is not merely "lossy compression"; it is a transformation of the compute paradigm from memory-bound floating-point operations to bandwidth-efficient integer arithmetic.
 Future research points toward 1-bit LLMs (e.g., BitNet ) and the co-design of quantization-aware hardware accelerators. Additionally, understanding the impact of quantisation on Alignment and Safety remains a critical frontier.
 

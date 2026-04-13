@@ -446,7 +446,7 @@ Crucially, RAG acts as an MCP Server in this topology. Instead of hard-coding ve
 
 # 8 - Strategic Trade-offs: RAG vs. Fine-Tuning vs. Long Context
 
-A persistent debate in AI engineering centers on the optimal strategy for injecting knowledge: RAG, Fine-tuning, or Long Context Windows. Each approach entails specific trade-offs regarding cost, latency, and performance.
+A persistent debate in AI engineering centres on the optimal strategy for injecting knowledge: RAG, Fine-tuning, or Long Context Windows. Each approach entails specific trade-offs regarding cost, latency, and performance.
 
 ## 8.1 - Fine-Tuning
 

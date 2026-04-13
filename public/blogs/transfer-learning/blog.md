@@ -346,7 +346,7 @@ Only parameters in $W_{down}$ and $W_{up}$ are updated. If $d=1024$ and $r=64$, 
 
 **Why it was created:** Adapters introduce inference latency (extra layers). LoRA avoids this by reparameterising the weight updates themselves.
 
-**Core Theory (Intrinsic Rank):** The hypothesis is that the weight update matrix $\Delta W$ for a specific downstream task has a low "intrinsic rank." We do not need to optimise the full rank matrix. The difference between standard fine-tuning and LoRA is visualized below:
+**Core Theory (Intrinsic Rank):** The hypothesis is that the weight update matrix $\Delta W$ for a specific downstream task has a low "intrinsic rank." We do not need to optimise the full rank matrix. The difference between standard fine-tuning and LoRA is visualised below:
 
 ```mermaid
 graph LR
@@ -473,7 +473,7 @@ Transfer Learning is often confused with Multi-Task Learning. While both leverag
 | **Objective**     | Optimise performance on Target Task ($\mathcal{T}_T$). Source performance is irrelevant.            | Optimise performance on All Tasks simultaneously.                          |
 | **Data Flow**     | Sequential: Source $\to$ Target.                                                                    | Parallel: Task A $\leftrightarrow$ Task B.                                 |
 | **Loss Function** | $\theta^* = \text{argmin}_\theta \mathcal{L}_{Target}(\theta)$ (Initialised with $\theta_{Source}$) | $\theta^* = \text{argmin}_\theta \sum_{i=1}^T w_i \mathcal{L}_{i}(\theta)$ |
-| **Optimization**  | Gradient Descent on Target Loss.                                                                    | Pareto Optimization (finding a trade-off front).                           |
+| **Optimisation**  | Gradient Descent on Target Loss.                                                                    | Pareto Optimisation (finding a trade-off front).                           |
 | **Primary Risk**  | Catastrophic Forgetting of Source.                                                                  | Negative Transfer (Task interference).                                     |
 
 In MTL, the "Pareto Optimal" solution is sought where improving one task does not degrade another. In TL, we explicitly accept the degradation of the source task (Catastrophic Forgetting) to maximise target performance.

@@ -98,8 +98,8 @@ While inspired by biological neurons, ANNs have many simplifications and inconsi
 - ANNs use simplified mathematical models rather than detailed biochemical processes
 
 There have been two main directions in neural network research:
-1. Trying to simulate how the human brain works (modeling the process)
-2. Producing machine learning methodologies (modeling the outcome without mimicking the process)
+1. Trying to simulate how the human brain works (modelling the process)
+2. Producing machine learning methodologies (modelling the outcome without mimicking the process)
 
 ![alt text]({BASE}/image.png)
 
@@ -943,7 +943,7 @@ When implementing a neural network, several design decisions must be made:
 
 1. **Input and output encoding**:
    - How to represent categorical variables
-   - Whether to normalize or standardize numeric inputs
+   - Whether to normalise or standardise numeric inputs
    - How to encode desired outputs
 
 2. **Network structure**:
@@ -1024,7 +1024,7 @@ The validation approach works because a network that has started to overfit will
 
 ### **Weight Decay**
 
-**Weight decay** is a regularization technique that helps prevent overfitting by penalizing large weights:
+**Weight decay** is a regularisation technique that helps prevent overfitting by penalizing large weights:
 
 $$w_i \leftarrow w_i - \alpha \frac{\partial E}{\partial w_i} - \lambda w_i$$
 
@@ -1066,7 +1066,7 @@ The weight decay term subtracts a small fraction of the weight in each update, p
 - Simplicity: Easy to implement and understand
 - Effectiveness: Works well in practice for many different network architectures
 - Efficiency: Saves computation time by avoiding unnecessary training
-- Preserves generalization: Prevents the network from overfitting by stopping training at an optimal point
+- Preserves generalisation: Prevents the network from overfitting by stopping training at an optimal point
 
 **Example:**
 If training a neural network and tracking validation error by epoch:
@@ -1128,7 +1128,7 @@ Ensembles tend to generalize better than individual networks because different n
 1. **Rescale inputs and outputs** to be in the range 0 to 1 or -1 to 1
 2. **Initialize weights to very small random values**
 3. **Use appropriate learning rates** (smaller learning rates often generalize better)
-4. **Apply regularization techniques** such as weight decay
+4. **Apply regularisation techniques** such as weight decay
 5. **Consider the noise level** in your training data (neural networks are quite robust to noise)
 
 **When to consider neural networks**:
@@ -1149,7 +1149,7 @@ By carefully considering these aspects of network design and training, you can s
 Deep learning differs from traditional neural networks primarily in scale and complexity:
 - Many more layers (often dozens or hundreds)
 - More neurons per layer
-- More complex architectures optimized for specific tasks
+- More complex architectures optimised for specific tasks
 
 The rise of deep learning has been enabled by:
 - Increased computational power (especially GPUs)

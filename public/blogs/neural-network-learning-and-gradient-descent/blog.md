@@ -823,7 +823,7 @@ To train a classifier mathematically, we need a way to measure how "bad" a set o
 
 **The Problem with Counting Errors**
 
-The most obvious measure of error is simply counting the number of misclassified samples. However, this approach creates a problem for optimization.
+The most obvious measure of error is simply counting the number of misclassified samples. However, this approach creates a problem for optimisation.
 
 If we plot the "number of errors" against the weights, the resulting surface is piecewise constant. This means the surface looks like a series of flat steps. If you are standing on a flat step, you don't know which direction is "down" because the gradient is zero almost everywhere; consequently, gradient descent algorithms cannot find a path to the minimum.
 
@@ -1080,7 +1080,7 @@ To solidify the understanding of these algorithms, we will walk through manual c
 **Example 1: Batch Perceptron Learning**
 
 **Problem Statement**
-Consider a dataset used to train a linear discriminant function $g(x) = w^T x + w_0$. We define the classification rule: Assign to Class 1 if $g(x) > 0$, and Class 2 otherwise. We will use the **Batch Perceptron Learning Algorithm** with **augmented notation** and **sample normalization**.
+Consider a dataset used to train a linear discriminant function $g(x) = w^T x + w_0$. We define the classification rule: Assign to Class 1 if $g(x) > 0$, and Class 2 otherwise. We will use the **Batch Perceptron Learning Algorithm** with **augmented notation** and **sample normalisation**.
 
   * **Initial Weights:** $a = (-25, 6, 3)^T$ (where $a$ includes the bias weight $w_0$).
   * **Learning Rate:** $\eta = 1$.
@@ -1095,8 +1095,8 @@ Consider a dataset used to train a linear discriminant function $g(x) = w^T x + 
 
 **Step-by-Step Calculation (Epoch 1)**
 
-1.  **Augmentation and Normalization:**
-    We convert the feature vectors into augmented vectors $y$ (adding 1 as the first element). Since we are using sample normalization, we negate the vectors belonging to Class 2. This allows us to use the single condition $a^T y > 0$ for correct classification.
+1.  **Augmentation and Normalisation:**
+    We convert the feature vectors into augmented vectors $y$ (adding 1 as the first element). Since we are using sample normalisation, we negate the vectors belonging to Class 2. This allows us to use the single condition $a^T y > 0$ for correct classification.
 
       * **Sample 1:** Class 2. Augment: $(1, 1, 5)$. Negate: $y_1 = (-1, -1, -5)$.
       * **Sample 2:** Class 1. Augment: $(1, 2, 5)$. Keep: $y_2 = (1, 2, 5)$.
@@ -1241,7 +1241,7 @@ The total error for these two samples is $E_{total} = 0.5 + 0.5 = 1.0$. The trai
 
 ## 4.2 - The Concept of the Error Surface and Gradient Descent
 
-To visualize the learning process, we can plot the cost function $E(w)$ against the possible values of the weights. This creates a geometric representation known as the **error surface**.
+To visualise the learning process, we can plot the cost function $E(w)$ against the possible values of the weights. This creates a geometric representation known as the **error surface**.
 
 **The Geometry of Error**
 
@@ -1574,7 +1574,7 @@ In Stochastic (also called Sequential or Online) learning, the weights are updat
 
 **Computational Example: Procedural Difference**
 
-To visualize the difference, consider a dataset with 3 samples ($x_1, x_2, x_3$) and their corresponding target errors ($e_1, e_2, e_3$).
+To visualise the difference, consider a dataset with 3 samples ($x_1, x_2, x_3$) and their corresponding target errors ($e_1, e_2, e_3$).
 
 **Scenario:** We want to perform one epoch of training.
 
@@ -1598,7 +1598,7 @@ In SGD, the weights used to calculate the error for $x_2$ and $x_3$ have already
 
 ## 4.6 - Computational Examples of Delta Rule Updates
 
-To visualize how learning progresses over time, we will perform a sequence of weight updates. We will look at two scenarios; the first uses the Standard Delta Rule for linear units, and the second uses the Generalised Delta Rule for sigmoidal units.
+To visualise how learning progresses over time, we will perform a sequence of weight updates. We will look at two scenarios; the first uses the Standard Delta Rule for linear units, and the second uses the Generalised Delta Rule for sigmoidal units.
 
 **Example 1: Standard Delta Rule (Linear Units)**
 
@@ -1748,7 +1748,7 @@ Formulate the problem as:
 
 **Step-by-Step Formulation:**
 
-**1. Augmentation and Normalization**
+**1. Augmentation and Normalisation**
 First, we must convert the raw feature vectors into normalized augmented vectors ($y$).
 
   * **Augment:** Add $1$ as the first element ($x_0$) to every vector.
@@ -2152,7 +2152,7 @@ The final weight update is then applied:
 
 $$w_{j} \leftarrow w_{j} + \Delta w_{j}(n)$$
 
-**Visualizing the Effect**
+**Visualising the Effect**
 
 Momentum dramatically changes the behavior of the descent on the error surface:
 
@@ -2175,7 +2175,7 @@ graph TD
 
 ## 6.3 - Generalisation, Overfitting, and Underfitting
 
-The ultimate goal of training a neural network is not just to memorize the training examples, but to perform accurately on new, unseen data. This capability is known as **generalization**. We measure this by looking at the generalisation accuracy on data sets outside of the training set.
+The ultimate goal of training a neural network is not just to memorize the training examples, but to perform accurately on new, unseen data. This capability is known as **generalisation**. We measure this by looking at the generalisation accuracy on data sets outside of the training set.
 
 **Underfitting**
 
@@ -2225,7 +2225,7 @@ graph LR
 
 ## 6.4 - Regularisation Techniques (Validation Sets, Early Stopping)
 
-To prevent overfitting and ensure the network generalises well to new data, we employ regularization techniques. These methods constrain the learning process to avoid complex, "wiggly" boundaries that model noise instead of the underlying pattern.
+To prevent overfitting and ensure the network generalises well to new data, we employ regularisation techniques. These methods constrain the learning process to avoid complex, "wiggly" boundaries that model noise instead of the underlying pattern.
 
 **Validation Sets**
 

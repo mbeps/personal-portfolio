@@ -128,7 +128,7 @@ classDiagram
 Because a relation is defined as a mathematical set (specifically, a set of tuples), it adheres to strict set-theoretic properties:
 
   * **Uniqueness:** A set cannot contain duplicate elements. Therefore, in a strict relational model, no two tuples in a relation can be identical. (It is noted that practical SQL implementations often relax this to allow multisets or bags for performance reasons, requiring the DISTINCT keyword to enforce set behaviour).
-  * **Unordered:** Sets are unordered collections. There is no intrinsic ordering to the tuples in a relation; any perceived order is an artifact of the physical storage or retrieval method unless an ordering is explicitly imposed by a query operation.
+  * **Unordered:** Sets are unordered collections. There is no intrinsic ordering to the tuples in a relation; any perceived order is an artefact of the physical storage or retrieval method unless an ordering is explicitly imposed by a query operation.
   * **Atomicity:** The values within a tuple must be atomic; they cannot be sets or relations themselves. This requirement is formalized as the First Normal Form (1NF).
 
 ## 2.2 - First-Order Predicate Logic

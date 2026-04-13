@@ -193,7 +193,7 @@ The mathematical insight here involves the B-Tree index. As discussed, B-Trees d
 
 ## 3.4 - In-Memory Structures (Gorilla/Beringei)
 
-For scenarios demanding ultra-low latency, disk-based storage is insufficient. Facebook's Gorilla (and its open-source counterpart, Beringei) utilizes an in-memory storage engine. This system functions essentially as a write-through cache. Data is stored in a highly compressed format (using the Gorilla codec) within C++ `std::vector` structures or custom allocators. This approach eliminates disk I/O from the read path entirely, serving queries from RAM. Durability is achieved by logging writes to a disk-based WAL, which is only read during crash recovery.
+For scenarios demanding ultra-low latency, disk-based storage is insufficient. Facebook's Gorilla (and its open-source counterpart, Beringei) utilises an in-memory storage engine. This system functions essentially as a write-through cache. Data is stored in a highly compressed format (using the Gorilla codec) within C++ `std::vector` structures or custom allocators. This approach eliminates disk I/O from the read path entirely, serving queries from RAM. Durability is achieved by logging writes to a disk-based WAL, which is only read during crash recovery.
 
 
 # 4 - Mathematical Primitives of Time Series Compression

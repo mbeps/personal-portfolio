@@ -10,11 +10,11 @@
   - [1.4 - The Three Ways](#14---the-three-ways)
 - [2 - Mathematical and Process Theory in DevOps](#2---mathematical-and-process-theory-in-devops)
   - [2.1 - Little's Law and Work In Progress (WIP)](#21---littles-law-and-work-in-progress-wip)
-  - [2.2 - Queuing Theory and Resource Utilization](#22---queuing-theory-and-resource-utilization)
+  - [2.2 - Queuing Theory and Resource Utilisation](#22---queuing-theory-and-resource-utilisation)
   - [2.3 - The Theory of Constraints](#23---the-theory-of-constraints)
 - [3 - Architectural Frameworks and Components](#3---architectural-frameworks-and-components)
   - [3.1 - The CI/CD Pipeline Architecture](#31---the-cicd-pipeline-architecture)
-  - [3.2 - The Role of Artifact Repositories](#32---the-role-of-artifact-repositories)
+  - [3.2 - The Role of Artefact Repositories](#32---the-role-of-artefact-repositories)
   - [3.3 - Infrastructure as Code (IaC)](#33---infrastructure-as-code-iac)
   - [3.4 - Immutable Infrastructure and Containerization](#34---immutable-infrastructure-and-containerization)
 - [4 - Advanced Operational Models and Extensions](#4---advanced-operational-models-and-extensions)
@@ -158,9 +158,9 @@ flowchart LR
     SecondWay ~~~ ThirdWay
 ```
 
-  * **The First Way (Systems Thinking)** emphasises the performance of the entire system, from business requirements to customer delivery, rather than a specific silo of work or department. It cautions against local optimisation (such as a development team optimizing for code output) if it causes global degradation, such as overwhelming the QA or Ops teams. The goal is to increase the flow of work from left (Dev) to right (Ops) by removing bottlenecks and ensuring that known defects are never passed downstream.
+  * **The First Way (Systems Thinking)** emphasises the performance of the entire system, from business requirements to customer delivery, rather than a specific silo of work or department. It cautions against local optimisation (such as a development team optimising for code output) if it causes global degradation, such as overwhelming the QA or Ops teams. The goal is to increase the flow of work from left (Dev) to right (Ops) by removing bottlenecks and ensuring that known defects are never passed downstream.
   * **The Second Way (Amplify Feedback Loops)** focuses on creating shortened, amplified feedback loops from right (Operations/Customer) to left (Development). This ensures that developers understand the operational impact of their code immediately. Techniques include automated testing, monitoring in production, and rotating developers into on-call positions. Faster feedback loops prevent "drift" between the design and the actual user requirement or operational reality.
-  * **The Third Way (Continuous Experimentation and Learning)** fosters a culture of experimentation, risk-taking, and learning from failure. It posits that mastery requires repetition and practice. High-performing organisations reserve time for the improvement of daily work, recognizing that if they are too busy to improve, their technical debt will eventually overwhelm them. This way also encourages the injection of faults into the system (Chaos Engineering) to test resilience.
+  * **The Third Way (Continuous Experimentation and Learning)** fosters a culture of experimentation, risk-taking, and learning from failure. It posits that mastery requires repetition and practice. High-performing organisations reserve time for the improvement of daily work, recognising that if they are too busy to improve, their technical debt will eventually overwhelm them. This way also encourages the injection of faults into the system (Chaos Engineering) to test resilience.
 
 # 2 - Mathematical and Process Theory in DevOps
 
@@ -180,13 +180,13 @@ Where:
 
 In a DevOps context, the primary objective is often to reduce Lead Time ($W$) (the time from code commit to production deployment) to deliver value faster. Little's Law dictates that to reduce Lead Time, an organisation must either increase Throughput ($\lambda$) or reduce WIP ($L$). While increasing throughput (e.g., adding more developers) is often difficult and expensive, reducing WIP is a highly effective lever. If a team works on too many features simultaneously (high WIP), the average Lead Time for any single feature increases proportionately. By limiting WIP (a core tenet of Kanban and Lean) teams can mathematically guarantee shorter Lead Times.
 
-## 2.2 - Queuing Theory and Resource Utilization
+## 2.2 - Queuing Theory and Resource Utilisation
 
 Queuing Theory further elaborates on system behaviour under load, particularly the relationship between resource utilisation and wait times. Kingman's formula approximates the wait time in a queue ($E$) for a single server as:
 
 $$E \approx \left( \frac{\rho}{1-\rho} \right) \left( \frac{c_a^2 + c_s^2}{2} \right) \tau$$
 
-Where $\rho$ is utilization, $c_a$ and $c_s$ are coefficients of variation for arrival and service times, and $\tau$ is the mean service time.
+Where $\rho$ is utilisation, $c_a$ and $c_s$ are coefficients of variation for arrival and service times, and $\tau$ is the mean service time.
 
 The critical insight for DevOps is the term $\frac{\rho}{1-\rho}$. As utilisation ($\rho$) approaches 100% (or 1), the wait time approaches infinity. This challenges the traditional management view that "resources" (developers or servers) should be 100% utilised to be efficient. In reality, a fully utilised system has no buffer to handle variability, causing queues to explode and flow to halt.
 
@@ -202,7 +202,7 @@ DevOps also draws from the **Theory of Constraints (TOC)**, popularized by Eliya
 
 # 3 - Architectural Frameworks and Components
 
-The architectural realisation of DevOps principles is achieved through the **DevOps Lifecycle**, a continuous loop comprising distinct phases: Plan, Code, Build, Test, Release, Deploy, Operate, and Monitor. The technological backbone enabling this lifecycle is the CI/CD Pipeline, supported by Infrastructure as Code (IaC) and Artifact Repositories.
+The architectural realisation of DevOps principles is achieved through the **DevOps Lifecycle**, a continuous loop comprising distinct phases: Plan, Code, Build, Test, Release, Deploy, Operate, and Monitor. The technological backbone enabling this lifecycle is the CI/CD Pipeline, supported by Infrastructure as Code (IaC) and Artefact Repositories.
 
 ## 3.1 - The CI/CD Pipeline Architecture
 
@@ -217,7 +217,7 @@ flowchart LR
         UnitT --> IntegT[Integration Tests]
     end
     CI --> CI_Process
-    CI_Process -->|Artifacts| ArtRepo[Artifact Repository]
+    CI_Process -->|Artefacts| ArtRepo[Artefact Repository]
     ArtRepo --> CD[CD Server]
     subgraph CD_Process [Continuous Delivery]
         Staging[Deploy to Staging] --> Acceptance[Acceptance Tests]
@@ -229,7 +229,7 @@ flowchart LR
 **Continuous Integration (CI)** focuses on the early stages: Code, Build, and Test. Developers merge their changes to a shared repository (Main/Trunk) frequently, ideally multiple times per day. Each merge triggers an automated build and a suite of tests.
 
   * **Source Phase:** The process begins with version control (e.g., Git). Branches are used to isolate work, but long-lived branches are discouraged to prevent "merge hell".
-  * **Build Phase:** The CI server (e.g., Jenkins, GitHub Actions) compiles the code and resolves dependencies. This phase transforms source code into binary artifacts.
+  * **Build Phase:** The CI server (e.g., Jenkins, GitHub Actions) compiles the code and resolves dependencies. This phase transforms source code into binary artefacts.
   * **Test Phase:** A hierarchy of automated tests is executed. Unit tests run first (fast, granular), followed by integration tests. The goal is "fail fast" (detecting defects immediately when they are cheapest to fix).
 
 **Continuous Delivery (CD)** extends CI by ensuring the software is always in a deployable state. It automatically deploys the build to staging environments (e.g., QA, UAT) for further verification.
@@ -237,13 +237,13 @@ flowchart LR
   * **Staging:** This environment mimics production as closely as possible to verify performance and integration.
   * **Deployment:** In Continuous Delivery, the deployment to production requires a manual approval gate. In Continuous Deployment, this step is automated; if the tests pass, the code goes live.
 
-## 3.2 - The Role of Artifact Repositories
+## 3.2 - The Role of Artefact Repositories
 
-A critical but often overlooked component of the DevOps architecture is the **Artifact Repository** (or Binary Repository Manager). While SCM manages source code, artifact repositories manage the outcome of the build process (the binaries, packages (npm, Maven, NuGet), and container images (Docker)).
+A critical but often overlooked component of the DevOps architecture is the **Artefact Repository** (or Binary Repository Manager). While SCM manages source code, artefact repositories manage the outcome of the build process (the binaries, packages (npm, Maven, NuGet), and container images (Docker)).
 
-The Artifact Repository serves as the "single source of truth" for binaries, ensuring consistency across environments. It prevents the "works on my machine" syndrome by ensuring that the exact same binary tested in staging is the one deployed to production.
+The Artefact Repository serves as the "single source of truth" for binaries, ensuring consistency across environments. It prevents the "works on my machine" syndrome by ensuring that the exact same binary tested in staging is the one deployed to production.
 
-  * **Proxying Remote Repositories:** Modern builds depend heavily on public libraries (e.g., from npm or Maven Central). An artifact repository acts as a proxy, caching these dependencies locally. This insulates the organisation from external outages (e.g., "left-pad" incident) and improves build speeds by reducing network latency.
+  * **Proxying Remote Repositories:** Modern builds depend heavily on public libraries (e.g., from npm or Maven Central). An artefact repository acts as a proxy, caching these dependencies locally. This insulates the organisation from external outages (e.g., "left-pad" incident) and improves build speeds by reducing network latency.
   * **Types of Repositories:**
       * **Local:** For storing internal builds.
       * **Remote:** For proxying public registries.
@@ -296,7 +296,7 @@ graph TD
 **The DevSecOps Architecture:**
 To implement DevSecOps without slowing down velocity, automated security controls are embedded in the CI/CD pipeline:
 
-  * **SAST (Static Application Security Testing):** Analyzes source code for vulnerabilities (e.g., SQL injection, buffer overflows) during the coding or build phase. Since it looks at code at rest, it can provide immediate feedback to developers.
+  * **SAST (Static Application Security Testing):** Analyses source code for vulnerabilities (e.g., SQL injection, buffer overflows) during the coding or build phase. Since it looks at code at rest, it can provide immediate feedback to developers.
   * **SCA (Software Composition Analysis):** Scans the open-source libraries and dependencies used in the project against databases of known vulnerabilities (CVEs). This is critical as modern applications are often 80-90% open-source code.
   * **DAST (Dynamic Application Security Testing):** Tests the running application from the outside, simulating an attack (black-box testing). This occurs during the Test/Staging phase.
   * **IAST (Interactive Application Security Testing):** Combines SAST and DAST by monitoring the application from within during execution, providing real-time analysis.
@@ -397,7 +397,7 @@ While DevOps offers significant advantages, it is not without critical challenge
 
 ## 6.1 - Digital Taylorism and Surveillance
 
-A growing body of academic critique views the metric-heavy nature of DevOps (continuous monitoring, DORA metrics, commit tracking) as a modern form of **Digital Taylorism**. Frederick Taylor's Scientific Management sought to optimize manual labour by decomposing tasks and measuring them precisely. Critics argue that DevOps applies this same logic to knowledge work (coding), reducing complex creative processes to data points.
+A growing body of academic critique views the metric-heavy nature of DevOps (continuous monitoring, DORA metrics, commit tracking) as a modern form of **Digital Taylorism**. Frederick Taylor's Scientific Management sought to optimise manual labour by decomposing tasks and measuring them precisely. Critics argue that DevOps applies this same logic to knowledge work (coding), reducing complex creative processes to data points.
 
 The integration of "Continuous Monitoring" tools raises ethical concerns about the "panoptic" gaze of management. Observability tools designed to track system health can easily be repurposed to surveil employee activity. This "quantified self" at work can lead to a loss of autonomy, increased stress, and a culture of performative busyness rather than genuine productivity. The risk is that the "human" element of CAMS is subordinated to "Measurement," creating a data-driven sweatshop where developers are managed by algorithm rather than empathy.
 

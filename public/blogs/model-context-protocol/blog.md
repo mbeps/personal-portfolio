@@ -20,7 +20,7 @@
   - [5.3 - Advanced Features: Pagination and Progress](#53---advanced-features-pagination-and-progress)
   - [5.4 - Logging and Observability](#54---logging-and-observability)
 - [6 - Security Architecture and Trust Boundaries](#6---security-architecture-and-trust-boundaries)
-  - [6.1 - Threat Modeling and Boundaries](#61---threat-modeling-and-boundaries)
+  - [6.1 - Threat Modelling and Boundaries](#61---threat-modelling-and-boundaries)
   - [6.2 - Vulnerability Classes and Mitigations](#62---vulnerability-classes-and-mitigations)
 - [7 - Ecosystem Adoption and Comparative Analysis](#7---ecosystem-adoption-and-comparative-analysis)
   - [7.1 - Industry Adoption](#71---industry-adoption)
@@ -442,7 +442,7 @@ Debugging decentralised agent systems is notoriously difficult. MCP standardises
 
 Allowing an AI model (which is non-deterministic and susceptible to prompt injection) to execute code and read files introduces significant security risks. MCP employs a "Zero Trust" architecture designed to contain these risks through strict boundary enforcement.
 
-## 6.1 - Threat Modeling and Boundaries
+## 6.1 - Threat Modelling and Boundaries
 
 The architecture defines three distinct trust boundaries. Security controls must be implemented at each boundary.
 
@@ -483,7 +483,7 @@ The success of a protocol is measured by its adoption. MCP has garnered signific
 | Feature           | Model Context Protocol (MCP)                                                     | OpenAI Agents SDK                                                                           | LangChain Tools                                                                           |
 | :---------------- | :------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------- |
 | **Philosophy**    | Protocol-first. A standardised wire format for connecting any model to any tool. | Framework-first. A Python SDK for building agents specifically within the OpenAI ecosystem. | Library-first. A comprehensive toolkit for orchestration and chaining in Python/JS.       |
-| **Model Support** | Universal. Works with Claude, GPT, Llama, etc. The Server is model-agnostic.     | Vendor-Locked. Optimized for OpenAI models and API structures.                              | Multi-Model. Supports many models, but integration logic resides in the application code. |
+| **Model Support** | Universal. Works with Claude, GPT, Llama, etc. The Server is model-agnostic.     | Vendor-Locked. Optimised for OpenAI models and API structures.                              | Multi-Model. Supports many models, but integration logic resides in the application code. |
 | **Deployment**    | Decoupled. Server runs as a separate process (local or remote).                  | Integrated. Tool logic typically runs within the agent application process.                 | Integrated. Tools are Python functions inside the LangChain runtime.                      |
 | **Security**      | Zero Trust. Strict process isolation and permission boundaries.                  | Application Trust. Relies on the security of the hosting application script.                | Application Trust. Tools have full access to the runtime environment.                     |
 | **Complexity**    | High Initial Setup. Requires implementing a server and client logic.             | Low. Quick to start ("pip install").                                                        | Medium. Flexible but can become "spaghetti code" in complex chains.                       |

@@ -71,7 +71,7 @@ In contrast, alignment often requires the model to produce the single best answe
 
 # 3 - Mathematical Foundations of Preference Modelling
 
-Since we cannot define a procedural reward function for "good conversation" (unlike the clear win/loss condition in Chess or Go), we rely on preference modelling. The assumption is that while humans cannot write a reward function $R(x, y)$, they can reliably recognize when $y_1 \succ y_2$ given prompt $x$.
+Since we cannot define a procedural reward function for "good conversation" (unlike the clear win/loss condition in Chess or Go), we rely on preference modelling. The assumption is that while humans cannot write a reward function $R(x, y)$, they can reliably recognise when $y_1 \succ y_2$ given prompt $x$.
 
 ## 3.1 The Bradley-Terry-Luce (BTL) Model
 
@@ -416,7 +416,7 @@ This provides a dense reward signal at every step $t$, rather than a sparse sign
 
 Reinforcement Learning from Human Feedback represents a sophisticated synthesis of statistical learning theory, control theory, and natural language processing. By formalising the nebulous concept of "human preference" into a differentiable Bradley-Terry objective and solving it via KL-constrained optimisation (PPO or DPO), we convert the alignment problem into a tractable mathematical task.
 
-The transition from PPO to DPO marks a significant maturation of the field, demonstrating that the Reward Model need not be an explicit artifact but can be implicitly defined by the optimal policy itself. However, the framework remains bound by the limitations of the underlying preference models (transitivity assumptions) and the inherent instabilities of optimising against imperfect proxies (Goodhart's Law).
+The transition from PPO to DPO marks a significant maturation of the field, demonstrating that the Reward Model need not be an explicit artefact but can be implicitly defined by the optimal policy itself. However, the framework remains bound by the limitations of the underlying preference models (transitivity assumptions) and the inherent instabilities of optimising against imperfect proxies (Goodhart's Law).
 
 Future research must address the "Alignment Tax" imposed by mode-seeking objectives and explore methods that preserve the diversity of human intent while ensuring safety. As models scale, reliance on RLAIF and Constitutional methods will likely transition from an efficiency hack to a necessity, effectively using AI to align AI in a recursive improvement loop.
 

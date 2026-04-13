@@ -625,7 +625,7 @@ This approach is highly parameter-efficient. For example, adapting a 1000×1000 
 
 Once training is complete, the learned matrices can be mathematically merged with the original weights by calculating $W_{tuned} = W_0 + B A$. The resulting model has the exact same architecture and parameter count as the original, making it highly efficient for deployment [Hu et al., 2022].
 
-This ability to merge adapters is a crucial factor for this project [Hu et al., 2022]. This allows for the creation of many small, task-specific "adapters" (often just a few megabytes in size) that can be swapped out to modify the model's behaviour without altering the base model. This is orders of magnitude more efficient in terms of computational cost, memory usage, and storage [Hu et al., 2022]. By freezing the base model, it also serves as a strong regulariser that mitigates catastrophic forgetting [Hu et al., 2022], while often matching or exceeding FFT's performance on a wide range of tasks [Long et al., 2024]. LoRA avoids the inference latency added by methods like Adapter Tuning [Houlsby et al., 2019] and circumvents the optimization and context-window consumption issues associated with Prefix-Tuning [Li and Liang, 2021; Hu et al., 2022; Vgontzas et al., 2023]. Therefore, LoRA was the most suitable fine-tuning strategy, as its efficiency, zero-latency characteristic, and ability to preserve general knowledge were crucial for achieving the project's objectives.
+This ability to merge adapters is a crucial factor for this project [Hu et al., 2022]. This allows for the creation of many small, task-specific "adapters" (often just a few megabytes in size) that can be swapped out to modify the model's behaviour without altering the base model. This is orders of magnitude more efficient in terms of computational cost, memory usage, and storage [Hu et al., 2022]. By freezing the base model, it also serves as a strong regulariser that mitigates catastrophic forgetting [Hu et al., 2022], while often matching or exceeding FFT's performance on a wide range of tasks [Long et al., 2024]. LoRA avoids the inference latency added by methods like Adapter Tuning [Houlsby et al., 2019] and circumvents the optimisation and context-window consumption issues associated with Prefix-Tuning [Li and Liang, 2021; Hu et al., 2022; Vgontzas et al., 2023]. Therefore, LoRA was the most suitable fine-tuning strategy, as its efficiency, zero-latency characteristic, and ability to preserve general knowledge were crucial for achieving the project's objectives.
 
 ### 3.3.4.1 - Choice for This Project
 
@@ -1067,7 +1067,7 @@ LoRA was chosen for its parameter efficiency and to mitigate the risk of catastr
 
 #### 7.2.1.2 - Implementation
 
-For Magistral-Small, the `MagistralFineTuning` class implemented QLoRA by first configuring a `BitsAndBytesConfig` for 4-bit nf4 quantisation, and then calling `prepare_model_for_kbit_training` to correctly prepare the quantized model for training. Training was managed by the `SFTTrainer`, which was configured to use an 8-bit AdamW optimizer to further manage memory usage. For all models, training efficiency was maximised by enabling `sequence packing=True` in the `SFTConfig`, which combines multiple short examples into a single sequence to improve throughput.
+For Magistral-Small, the `MagistralFineTuning` class implemented QLoRA by first configuring a `BitsAndBytesConfig` for 4-bit nf4 quantisation, and then calling `prepare_model_for_kbit_training` to correctly prepare the quantized model for training. Training was managed by the `SFTTrainer`, which was configured to use an 8-bit AdamW optimiser to further manage memory usage. For all models, training efficiency was maximised by enabling `sequence packing=True` in the `SFTConfig`, which combines multiple short examples into a single sequence to improve throughput.
 
 #### 7.2.1.3 - LoRA Hyperparameters
 
@@ -1222,7 +1222,7 @@ A weakness of this analysis is the focus on small to medium-sized models. Withou
 
 ### 8.3.2 - Analysis of Reasoning Process
 
-To understand why reasoning improves performance, a qualitative analysis of the models' thought processes was conducted. This analysis supports the theory from Section 3.2 that the performance gain is due to the model breaking down the problem using more output tokens instead of an artifact of more training data. The thinking process was consistent across different model sizes and families, including Magistral-Small. The reasoning process also allowed the model to combine different concepts, such as grammar rules and word types, which it may not be capable of doing when forced to produce an immediate answer. The full outputs for these examples are detailed in Appendix A: Reasoning Process Examples.
+To understand why reasoning improves performance, a qualitative analysis of the models' thought processes was conducted. This analysis supports the theory from Section 3.2 that the performance gain is due to the model breaking down the problem using more output tokens instead of an artefact of more training data. The thinking process was consistent across different model sizes and families, including Magistral-Small. The reasoning process also allowed the model to combine different concepts, such as grammar rules and word types, which it may not be capable of doing when forced to produce an immediate answer. The full outputs for these examples are detailed in Appendix A: Reasoning Process Examples.
 
 A clear pattern emerged in cases where reasoning corrected an initial wrong answer. When reasoning was disabled, the model made a direct, and often incorrect, prediction. For example, when asked to identify which word from a list does not require a capital letter, the non-reasoning model incorrectly chose "Colorado".
 
@@ -1722,7 +1722,7 @@ FINALE: B
 ```
 
 **Analysis:**  
-The model successfully generates a detailed thought process. It correctly identifies the grammatical concept (exceptive clause), analyzes the sentence structure, and evaluates the options to arrive at the correct answer.
+The model successfully generates a detailed thought process. It correctly identifies the grammatical concept (exceptive clause), analyses the sentence structure, and evaluates the options to arrive at the correct answer.
 
 
 ### 12.3.2 - Example 2: Incorrect Answer with Restored Reasoning

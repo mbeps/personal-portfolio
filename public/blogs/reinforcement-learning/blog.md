@@ -14,7 +14,7 @@
 	- [Calculating Selection Probabilities](#calculating-selection-probabilities)
 - [3 - Markov Decision Processes (MDPs)](#3---markov-decision-processes-mdps)
 	- [3.1 - Formal Definition](#31---formal-definition)
-	- [Visualizing the Interaction](#visualizing-the-interaction)
+  - [Visualising the Interaction](#visualising-the-interaction)
 	- [Example Problem: Defining an MDP](#example-problem-defining-an-mdp)
 	- [Solution](#solution)
 - [3.2 - Policies and Utility](#32---policies-and-utility)
@@ -113,7 +113,7 @@ This is a fundamental trade-off in RL. The agent must balance two competing obje
   * **Exploitation:** The agent uses its current knowledge to select actions that are known to yield high rewards; this maximises immediate returns.
   * **Exploration:** The agent tries actions it has not selected before (or selects rarely) to discover if they yield higher rewards; this gathers more information about the environment.
 
-The dilemma is that the agent cannot do both simultaneously. Exclusive exploitation prevents the agent from finding optimal strategies if its current knowledge is incomplete. Exclusive exploration results in poor performance because the agent never utilizes what it has learned. Effective RL requires a strategy to balance these two behaviours.
+The dilemma is that the agent cannot do both simultaneously. Exclusive exploitation prevents the agent from finding optimal strategies if its current knowledge is incomplete. Exclusive exploration results in poor performance because the agent never utilises what it has learned. Effective RL requires a strategy to balance these two behaviours.
 
 -----
 
@@ -394,7 +394,7 @@ When implementing Softmax selection, the computation involves exponentials which
 1.  **Calculate Exponentials:** For each action $a$, calculate $e^{Q(a)/\tau}$. The temperature $\tau$ scales the values. A lower $\tau$ increases the gap between high and low values (making the selection more greedy), while a higher $\tau$ smooths the differences (making selection more uniform).
 2.  **Calculate the Partition Function (Denominator):** Sum the exponential values of all possible actions.
     $$\text{Sum} = \sum_{b=1}^{n} e^{Q(b)/\tau}$$
-3.  **Normalize:** Divide the exponential of the specific action by the sum to get the probability.
+3.  **Normalise:** Divide the exponential of the specific action by the sum to get the probability.
     $$P(a) = \frac{e^{Q(a)/\tau}}{\text{Sum}}$$
     The sum of probabilities for all actions must equal 1.
 
@@ -431,7 +431,7 @@ To solve Reinforcement Learning problems mathematically, we formalise the enviro
     $$P(S_{t+1} | S_t, A_t, S_{t-1}, A_{t-1}, \dots) = P(S_{t+1} | S_t, A_t)$$
     *If the state captures all relevant information (e.g. position, velocity), the history is irrelevant.*
 
-## Visualizing the Interaction
+## Visualising the Interaction
 
 The agent and environment interact in a continuous loop. The agent observes the state, acts, and the environment responds with a new state and reward.
 

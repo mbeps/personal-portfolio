@@ -305,7 +305,7 @@ Go (Golang) utilises a concurrency model based on **Communicating Sequential Pro
   * **Goroutines:** These are "green threads" managed by the Go runtime, not the OS. They start with a tiny stack (2KB) that grows dynamically.
   * **M:N Scheduling:** The Go runtime multiplexes $M$ Goroutines onto $N$ OS threads. If a Goroutine blocks on I/O, the runtime simply parks it and schedules another Goroutine on the same OS thread.
 
-**Advantage:** This allows developers to write synchronous-looking code (blocking style) while achieving asynchronous-level scalability and utilizing all CPU cores automatically.
+**Advantage:** This allows developers to write synchronous-looking code (blocking style) while achieving asynchronous-level scalability and utilising all CPU cores automatically.
 
 ## 7.2 - Rust: Zero-Cost Futures
 

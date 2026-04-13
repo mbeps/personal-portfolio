@@ -71,7 +71,7 @@
 		- [The Problem of Ambiguity](#the-problem-of-ambiguity)
 		- [HMM Formulation for POS Tagging](#hmm-formulation-for-pos-tagging)
 		- [Example from Lecture Notes](#example-from-lecture-notes)
-		- [Analyzing Two Interpretations](#analyzing-two-interpretations)
+		- [Analysing Two Interpretations](#analysing-two-interpretations)
 		- [Viterbi for POS Tagging](#viterbi-for-pos-tagging)
 		- [Importance in NLP](#importance-in-nlp)
 
@@ -702,7 +702,7 @@ For HMM decoding, a common baseline is **random guessing of hidden states**:
 - Does not use information about sequences or observations
 - For each position, randomly selects a state according to the state's overall frequency
 
-This baseline tests how much the sequential modeling in an HMM improves prediction compared to simply knowing state frequencies.
+This baseline tests how much the sequential modelling in an HMM improves prediction compared to simply knowing state frequencies.
 
 ## 4.3 - Statistical Significance Testing
 
@@ -846,7 +846,7 @@ The result might be [F, F, L], indicating the first two rolls were likely from t
 
 ### Variants and Constraints
 
-The tutorial materials (tut04.pdf) discuss several interesting variants of the croupier's behavior:
+The tutorial materials (tut04.pdf) discuss several interesting variants of the croupier's behaviour:
 
 1. **Never switching directly from F to L2**: This constraint can be represented by setting $a_{F,L2} = 0$
 2. **Always ending with fair dice**: This constraint means $a_{1E} = a_{2E} = 0$ (only fair dice can transition to end state)
@@ -906,7 +906,7 @@ b_1(can) = 0.10 & b_2(can) = 0.24 & b_3(can) = 0 & b_4(can) = 1 \\
 b_1(we) = 0.01 & b_2(we) = 0.01 & b_3(we) = 1 & b_4(we) = 0
 \end{bmatrix}$$
 
-### Analyzing Two Interpretations
+### Analysing Two Interpretations
 
 The notes examine two possible state sequences:
 1. $X_a = s_0, s_3, s_4, s_1, s_f$ (We = pronoun, can = auxiliary verb, fish = verb)
@@ -936,4 +936,4 @@ POS tagging is a fundamental task in natural language processing that serves as:
 - A disambiguation technique for machine translation
 - A foundation for many higher-level NLP tasks
 
-The success of HMMs in POS tagging demonstrates their power in modeling sequential data with hidden structure, even in complex domains like human language.
+The success of HMMs in POS tagging demonstrates their power in modelling sequential data with hidden structure, even in complex domains like human language.

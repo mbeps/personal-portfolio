@@ -472,7 +472,7 @@ To fix this, we must force spatial separation between training and test sets.
 
 # 6 - Model Selection and Nested Cross-Validation
 
-A subtle but pervasive error in AI research is calculating performance metrics on the same data used to select hyperparameters. This is known as **Optimization Bias** or **Data Peeking**.
+A subtle but pervasive error in AI research is calculating performance metrics on the same data used to select hyperparameters. This is known as **Optimisation Bias** or **Data Peeking**.
 
 ## 6.1 - The Selection Bias Problem
 
