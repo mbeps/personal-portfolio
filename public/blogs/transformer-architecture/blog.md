@@ -31,18 +31,19 @@
 	- [6.1 - Encoder-Only (The BERT Family)](#61---encoder-only-the-bert-family)
 	- [6.2 - Decoder-Only (The GPT Family)](#62---decoder-only-the-gpt-family)
 	- [6.3 - Encoder-Decoder (The T5 Family)](#63---encoder-decoder-the-t5-family)
-- [7 - Training Dynamics and Optimization](#7---training-dynamics-and-optimization)
+- [7 - Training Dynamics and Optimisation](#7---training-dynamics-and-optimisation)
 	- [7.1 - Optimisation Algorithms](#71---optimisation-algorithms)
 	- [7.2 - Learning Rate Schedules](#72---learning-rate-schedules)
 	- [7.3 - Regularisation Techniques](#73---regularisation-techniques)
-- [8 - Conclusion](#8---conclusion)
+- [8 - Summary](#8---summary)
+- [9 - Conclusion](#9---conclusion)
 - [References](#references)
 
 
 
 # 1 - Introduction
 
-The history of Natural Language Processing (NLP) and sequence transduction is bifurcated by a single moment in 2017: the publication of "Attention Is All You Need" by Vaswani et al..1 Prior to this watershed moment, the domain was hegemonically controlled by Recurrent Neural Networks (RNNs), specifically Long Short-Term Memory (LSTM) and Gated Recurrent Unit (GRU) architectures.3 While these models represented a significant leap over standard feed-forward networks and statistical n-gram models, they suffered from fundamental structural limitations inherent to their sequential design.
+The history of Natural Language Processing (NLP) and sequence transduction is bifurcated by a single moment in 2017: the publication of "Attention Is All You Need" by Vaswani et al.[1] Prior to this watershed moment, the domain was hegemonically controlled by Recurrent Neural Networks (RNNs), specifically Long Short-Term Memory (LSTM) and Gated Recurrent Unit (GRU) architectures.[2][3] While these models represented a significant leap over standard feed-forward networks and statistical n-gram models, they suffered from fundamental structural limitations inherent to their sequential design.[2][3][4][5]
 
 ## 1.1 - The Computational Bottlenecks of Recurrence
 
@@ -50,17 +51,17 @@ Recurrent models process information sequentially. For a sequence of input vecto
 
 $$h_t = f(h_{t-1}, x_t)$$
 
-This recursive formulation enforces a strict temporal order. The computation for time step $t$ cannot commence until the computation for $t-1$ is complete.1 This sequential dependency precludes parallelisation within training examples. In an era where Graphics Processing Unit (GPU) and Tensor Processing Unit (TPU) architectures were evolving to handle massive parallel workloads, the sequentiality of RNNs became a severe bottleneck. Training on large datasets was prohibitively slow because the hardware could not be fully saturated.
+This recursive formulation enforces a strict temporal order. The computation for time step $t$ cannot commence until the computation for $t-1$ is complete. This sequential dependency precludes parallelisation within training examples. In an era where Graphics Processing Unit (GPU) and Tensor Processing Unit (TPU) architectures were evolving to handle massive parallel workloads, the sequentiality of RNNs became a severe bottleneck. Training on large datasets was prohibitively slow because the hardware could not be fully saturated.[1]
 
 ## 1.2 - The Vanishing Gradient and Information Transport
 
-Beyond computational inefficiency, RNNs faced theoretical limitations in information transport. The problem of "long-term dependencies" refers to the difficulty of a model to retain information about an input $x_1$ when processing $x_{1000}$. In an RNN, the gradient signal from the output at step $t$ must propagate backwards through time (Backpropagation Through Time - BPTT) to update weights affecting step 1.
+Beyond computational inefficiency, RNNs faced theoretical limitations in information transport. The problem of "long-term dependencies" refers to the difficulty of a model to retain information about an input $x_1$ when processing $x_{1000}$. In an RNN, the gradient signal from the output at step $t$ must propagate backwards through time (Backpropagation Through Time - BPTT) to update weights affecting step 1.[4][5]
 
-If the recurrent weight matrix $W$ has a spectral radius (largest eigenvalue) less than 1, gradients vanish exponentially as they travel back through the sequence. If the spectral radius is greater than 1, they explode. While LSTMs mitigated this via gating mechanisms (forget gates), the fundamental path length for a signal to travel between position $t_1$ and $t_2$ remained $|t_1 - t_2|$ operations.1 As sequence lengths grew, the ability of the network to model interactions between distant tokens degraded.
+If the recurrent weight matrix $W$ has a spectral radius (largest eigenvalue) less than 1, gradients vanish exponentially as they travel back through the sequence. If the spectral radius is greater than 1, they explode.[4][5] While LSTMs mitigated this via gating mechanisms (forget gates), the fundamental path length for a signal to travel between position $t_1$ and $t_2$ remained $|t_1 - t_2|$ operations.[2][1] As sequence lengths grew, the ability of the network to model interactions between distant tokens degraded.
 
 ## 1.3 - The Transformer Solution: $O(1)$ Path Length
 
-The Transformer architecture proposed a radical solution: dispense with recurrence and convolution entirely. By relying solely on the attention mechanism, the Transformer connects every token to every other token in a single layer operation. The path length between any two positions in the sequence is reduced to $O(1)$ constant time.1 This architecture allows the model to learn relationships between words regardless of their distance in the text, facilitating the capture of complex syntactic structures and long-range semantic dependencies that eluded LSTMs.
+The Transformer architecture proposed a radical solution: dispense with recurrence and convolution entirely. By relying solely on the attention mechanism, the Transformer connects every token to every other token in a single layer operation. The path length between any two positions in the sequence is reduced to $O(1)$ constant time.[1] This architecture allows the model to learn relationships between words regardless of their distance in the text, facilitating the capture of complex syntactic structures and long-range semantic dependencies that eluded LSTMs.[1][2]
 
 ![alt text]({BASE}/image-1.png)
 
@@ -70,32 +71,32 @@ This efficiency gain was dramatic. The original Transformer achieved state-of-th
 
 # 2 - Input Representation and the Geometry of Embedding Spaces
 
-The Transformer views an input sequence not as a stream of time steps, but as a set of vectors processed simultaneously. This "set processing" capability necessitates a robust method for representing discrete tokens as continuous vectors and, crucially, for injecting information about their order.
+The Transformer views an input sequence not as a stream of time steps, but as a set of vectors processed simultaneously. This "set processing" capability necessitates a robust method for representing discrete tokens as continuous vectors and, crucially, for injecting information about their order.[1][11]
 
 ![alt text]({BASE}/image-5.png)
 
 ## 2.1 - Tokenisation and Sub-word Architectures
 
-Before vectorisation, raw text is segmented into discrete units called tokens. Early NLP models used word-level tokenisation, which resulted in massive vocabularies (often exceeding 1 million unique words) and an inability to handle "out-of-vocabulary" (OOV) terms.
+Before vectorisation, raw text is segmented into discrete units called tokens. Early NLP models used word-level tokenisation, which resulted in massive vocabularies (often exceeding 1 million unique words) and an inability to handle "out-of-vocabulary" (OOV) terms.[6][7]
 
-Modern Transformers utilise sub-word tokenisation algorithms, primarily Byte-Pair Encoding (BPE) or WordPiece.4
+Modern Transformers utilise sub-word tokenisation algorithms, primarily Byte-Pair Encoding (BPE) or WordPiece.[6][7]
 
-- **Byte-Pair Encoding (BPE):** This algorithm iteratively merges the most frequent pair of adjacent characters (or bytes) in the corpus. It begins with a vocabulary of individual characters and builds up common sub-words (e.g., "ing", "tion", "est"). This ensures that any word can be constructed from the sub-word vocabulary, eliminating OOV tokens while keeping the vocabulary size manageable (typically 30,000 to 100,000 tokens).
-- **Embedding Lookup:** Each token ID $i$ corresponds to a row in a learnable embedding matrix $E \in \mathbb{R}^{V \times d_{model}}$, where $V$ is the vocabulary size and $d_{model}$ is the dimensionality of the latent space (e.g., 512, 1024, 4096).
+- **Byte-Pair Encoding (BPE):** This algorithm iteratively merges the most frequent pair of adjacent characters (or bytes) in the corpus. It begins with a vocabulary of individual characters and builds up common sub-words (e.g., "ing", "tion", "est"). This ensures that any word can be constructed from the sub-word vocabulary, eliminating OOV tokens while keeping the vocabulary size manageable (typically 30,000 to 100,000 tokens).[6]
+- **Embedding Lookup:** Each token ID $i$ corresponds to a row in a learnable embedding matrix $E \in \mathbb{R}^{V \times d_{model}}$, where $V$ is the vocabulary size and $d_{model}$ is the dimensionality of the latent space (e.g., 512, 1024, 4096).[1]
 
-The mathematical implication is that semantic meaning is encoded geometrically. Words with similar meanings (e.g., "king" and "monarch") are mapped to vectors with a high cosine similarity in $\mathbb{R}^{d_{model}}$.
+The mathematical implication is that semantic meaning is encoded geometrically. Words with similar meanings (e.g., "king" and "monarch") are mapped to vectors with a high cosine similarity in $\mathbb{R}^{d_{model}}$.[11]
 
 ## 2.2 - The Necessity of Positional Encodings
 
-Because the Transformer processes all tokens in parallel via matrix multiplications, the operation is inherently permutation invariant. If one were to shuffle the words in a sentence, the self-attention output (in the absence of positional information) would be identical, merely shuffled in the same way.
+Because the Transformer processes all tokens in parallel via matrix multiplications, the operation is inherently permutation invariant. If one were to shuffle the words in a sentence, the self-attention output (in the absence of positional information) would be identical, merely shuffled in the same way.[1][11]
 
 $$\text{Attention}(\text{shuffle}(X)) = \text{shuffle}(\text{Attention}(X))$$
 
-To preserve the sequential nature of language (where "dog bites man" differs from "man bites dog"), positional information must be injected explicitly into the embeddings.1
+To preserve the sequential nature of language (where "dog bites man" differs from "man bites dog"), positional information must be injected explicitly into the embeddings.[1][11]
 
 ## 2.3 - Absolute Sinusoidal Positional Encoding (Original Formulation)
 
-Vaswani et al. (2017) introduced a functional, non-learnable positional encoding. For a position $pos$ in the sequence and a dimension index $i$ in the embedding vector, the encoding $PE$ is defined as 1:
+Vaswani et al. (2017) introduced a functional, non-learnable positional encoding. For a position $pos$ in the sequence and a dimension index $i$ in the embedding vector, the encoding $PE$ is defined as:
 
 $$PE_{(pos, 2i)} = \sin\left(\frac{pos}{10000^{\frac{2i}{d_{model}}}}\right)$$
 
@@ -117,11 +118,11 @@ This can be expressed as a matrix multiplication:
 
 $$\begin{pmatrix} \sin(\omega(pos+k)) \\ \cos(\omega(pos+k)) \end{pmatrix} = \begin{pmatrix} \cos(\omega k) & \sin(\omega k) \\ -\sin(\omega k) & \cos(\omega k) \end{pmatrix} \begin{pmatrix} \sin(\omega pos) \\ \cos(\omega pos) \end{pmatrix}$$
 
-The matrix depends only on $k$, not on $pos$. This property theoretically allows the model to learn to attend to "the token 5 positions back" regardless of absolute position.6 However, in practice, absolute sinusoidal encodings struggle to generalise to sequence lengths longer than those seen during training.
+The matrix depends only on $k$, not on $pos$. This property theoretically allows the model to learn to attend to "the token 5 positions back" regardless of absolute position.[1] However, in practice, absolute sinusoidal encodings struggle to generalise to sequence lengths longer than those seen during training.[9]
 
 ## 2.4 - Rotary Positional Embedding (RoPE): The Modern Standard
 
-State-of-the-art models, including LLaMA and PaLM, have largely abandoned additive absolute embeddings in favour of Rotary Positional Embeddings (RoPE).7 RoPE encodes position not by adding a vector, but by rotating the affine-transformed query and key vectors.
+State-of-the-art models, including LLaMA and PaLM, have largely abandoned additive absolute embeddings in favour of Rotary Positional Embeddings (RoPE). RoPE [8] encodes position not by adding a vector, but by rotating the affine-transformed query and key vectors.
 
 ![alt text]({BASE}/image-2.png)
 
@@ -137,7 +138,7 @@ In linear algebra terms, this is a rotation. For a vector $x \in \mathbb{R}^d$, 
 
 $$\begin{pmatrix} x'_{2i} \\ x'_{2i+1} \end{pmatrix} = \begin{pmatrix} \cos(m\theta_i) & -\sin(m\theta_i) \\ \sin(m\theta_i) & \cos(m\theta_i) \end{pmatrix} \begin{pmatrix} x_{2i} \\ x_{2i+1} \end{pmatrix}$$
 
-The frequencies $\theta_i$ are usually defined as $\theta_i = 10000^{-2i/d}$.
+The frequencies $\theta_i$ are usually defined as $\theta_i = 10000^{-2i/d}$.[8]
 
 The Key Property (Relative Attention):
 The core innovation of RoPE lies in the dot product between a query at position $m$ and a key at position $n$.
@@ -148,21 +149,21 @@ Since $R$ is an orthogonal rotation matrix, $R_m^T = R_{-m}$. Furthermore, rotat
 
 $$\langle R_m q, R_n k \rangle = q^T R_{n-m} k$$
 
-The attention score now depends only on the relative distance $(n-m)$, not on the absolute positions $m$ or $n$. This provides the relative position invariance that absolute additive encodings lacked, while maintaining the computational efficiency of absolute indexing.8
+The attention score now depends only on the relative distance $(n-m)$, not on the absolute positions $m$ or $n$.[8] This provides the relative position invariance that absolute additive encodings lacked, while maintaining the computational efficiency of absolute indexing.
 
 ## 2.5 - ALiBi: Attention with Linear Biases
 
-An alternative approach, designed specifically for extreme length extrapolation, is ALiBi.11 Unlike RoPE or Sinusoidal encodings, ALiBi adds no positional information to the embedding layer. Instead, it modifies the attention calculation itself.
+An alternative approach, designed specifically for extreme length extrapolation, is ALiBi. Unlike RoPE or Sinusoidal encodings, ALiBi adds no positional information to the embedding layer. Instead, it modifies the attention calculation itself.[9]
 
 A static, non-learned bias is subtracted from the attention score of query $q_i$ and key $k_j$, proportional to their distance:
 
 $$\text{Score}(q_i, k_j) = q_i \cdot k_j - m \cdot |i - j|$$
 
-The scalar $m$ is a slope parameter specific to each attention head. These slopes form a geometric sequence (e.g., $\frac{1}{2^1}, \frac{1}{2^2}, \dots$). This bias imposes a "locality inductive bias," penalising attention to distant tokens. Empirical results show that ALiBi models trained on short sequences (e.g., 1024 tokens) can extrapolate effectively to much longer sequences (e.g., 16k+) during inference, a capability where sinusoidal and even RoPE models often degrade.11
+The scalar $m$ is a slope parameter specific to each attention head. These slopes form a geometric sequence (e.g., $\frac{1}{2^1}, \frac{1}{2^2}, \dots$). This bias imposes a "locality inductive bias," penalising attention to distant tokens. Empirical results show that ALiBi models trained on short sequences (e.g., 1024 tokens) can extrapolate effectively to much longer sequences (e.g., 16k+) during inference, a capability where sinusoidal and even RoPE models often degrade.[9]
 
 ## 2.6 - Relative Positional Encoding (T5 Variant)
 
-The T5 architecture employs a different form of relative encoding. Instead of rotating vectors or adding linear biases, T5 adds a learnable scalar to the attention logit based on the relative distance between query and key.13
+The T5 architecture employs a different form of relative encoding. Instead of rotating vectors or adding linear biases, T5 adds a learnable scalar to the attention logit based on the relative distance between query and key.
 
 $$\text{Attention}(Q, K) = \text{softmax}\left( \frac{QK^T}{\sqrt{d_k}} + B \right)$$
 
@@ -170,11 +171,11 @@ Here, $B_{i,j}$ is a learnable bias derived from a "bucket" function of the dist
 
 $$B_{i,j} = \text{Embed}(\text{Bucket}(i-j))$$
 
-The bucketing function is logarithmic for larger distances. This means the model distinguishes precise relative positions for nearby tokens (e.g., -1 vs -2) but groups distant tokens into broader categories (e.g., "approx. 50-60 tokens away"). This logarithmic scaling aligns with the intuition that precise position matters less as distance increases.
+The bucketing function is logarithmic for larger distances. This means the model distinguishes precise relative positions for nearby tokens (e.g., -1 vs -2) but groups distant tokens into broader categories (e.g., "approx. 50-60 tokens away"). This logarithmic scaling aligns with the intuition that precise position matters less as distance increases.[11]
 
 # 3 - The Attention Mechanism: The Mathematical Engine
 
-The defining component of the Transformer is the Attention Mechanism. In simple terms, it is a differentiable dictionary lookup. The input consists of queries ($Q$), keys ($K$), and values ($V$). The mechanism retrieves values based on the similarity between queries and keys.
+The defining component of the Transformer is the Attention Mechanism. In simple terms, it is a differentiable dictionary lookup. The input consists of queries ($Q$), keys ($K$), and values ($V$). The mechanism retrieves values based on the similarity between queries and keys.[1]
 
 ## 3.1 - Scaled Dot-Product Attention
 
@@ -187,7 +188,7 @@ $Q \in \mathbb{R}^{L \times d_k}$ (Query Matrix)
 $K \in \mathbb{R}^{L \times d_k}$ (Key Matrix)
 $V \in \mathbb{R}^{L \times d_v}$ (Value Matrix)
 $L$ is the sequence length.
-$d_k$ is the dimension of the key/query vectors.
+$d_k$ is the dimension of the key/query vectors.[1]
 
 ![alt text]({BASE}/image-7.png)
 
@@ -229,7 +230,7 @@ graph TD
 
 ### The Dot Product as Similarity
 
-The term $QK^T$ computes the dot product between every query vector and every key vector. Geometrically, the dot product $a \cdot b = |a||b|\cos(\theta)$ measures alignment. A large positive dot product implies the vectors point in the same direction (high similarity).
+The term $QK^T$ computes the dot product between every query vector and every key vector. Geometrically, the dot product $a \cdot b = |a||b|\cos(\theta)$ measures alignment. A large positive dot product implies the vectors point in the same direction (high similarity).[1]
 
 ### The Necessity of Scaling ($\sqrt{d_k}$)
 
@@ -238,12 +239,12 @@ Assume the elements of $q$ and $k$ are independent random variables with mean 0 
 The dot product is $q \cdot k = \sum_{i=1}^{d_k} q_i k_i$.
 The mean of the product $q_i k_i$ is 0.
 The variance of $q_i k_i$ is 1.
-Therefore, the variance of the sum (the dot product) is $d_k$.1
+Therefore, the variance of the sum (the dot product) is $d_k$.
 As $d_k$ increases (e.g., from 64 to 128), the variance of the dot products grows, leading to larger magnitude values. Large inputs to the softmax function push the function into regions where the gradients are extremely small (the "saturation" zones of the sigmoid/softmax curve).
 
 $$\frac{\partial \text{softmax}(x)}{\partial x} \approx 0 \quad \text{for large } |x|$$
 
-Scaling by $\frac{1}{\sqrt{d_k}}$ rescales the dot product to have unit variance, ensuring gradients flow effectively through the softmax operation.1
+Scaling by $\frac{1}{\sqrt{d_k}}$ rescales the dot product to have unit variance, ensuring gradients flow effectively through the softmax operation.[1]
 
 ### The Softmax Kernel
 
@@ -251,11 +252,11 @@ The softmax function converts the raw similarity scores (logits) into a probabil
 
 $$\text{softmax}(x_i) = \frac{e^{x_i}}{\sum_j e^{x_j}}$$
 
-This ensures the weights for the values sum to 1. It acts as a "soft" switch, allowing the model to focus focus primarily on specific tokens while maintaining differentiability (unlike a "hard" argmax).
+This ensures the weights for the values sum to 1. It acts as a "soft" switch, allowing the model to focus focus primarily on specific tokens while maintaining differentiability (unlike a "hard" argmax).[1]
 
 ## 3.2 - Multi-Head Attention (MHA)
 
-A single attention application is limited. It can only focus on one specific aspect of the context (e.g., syntactic agreement). To capture multiple types of relationships simultaneously, Transformers use Multi-Head Attention.
+A single attention application is limited. It can only focus on one specific aspect of the context (e.g., syntactic agreement). To capture multiple types of relationships simultaneously, Transformers use Multi-Head Attention.[1]
 The model maintains $h$ independent sets of projection matrices $W_i^Q, W_i^K, W_i^V$.
 
 $$\text{head}_i = \text{Attention}(XW_i^Q, XW_i^K, XW_i^V)$$
@@ -265,7 +266,7 @@ The outputs of these heads are concatenated and projected back to the model dime
 $$\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \dots, \text{head}_h)W^O$$
 
 Subspace Theory:
-Mathematically, this allows the model to attend to information from different "representation subspaces".1 One head might track subject-verb agreement, another might track pronoun antecedents, and a third might track sentiment consistency. If $d_{model}=512$ and $h=8$, each head operates on a 64-dimensional vector ($d_k = d_{model}/h$). This factorisation maintains the computational cost similar to single-head attention with full dimension, while increasing expressivity.
+Mathematically, this allows the model to attend to information from different "representation subspaces". One head might track subject-verb agreement, another might track pronoun antecedents, and a third might track sentiment consistency. If $d_{model}=512$ and $h=8$, each head operates on a 64-dimensional vector ($d_k = d_{model}/h$). This factorisation maintains the computational cost similar to single-head attention with full dimension, while increasing expressivity.[1]
 
 ![alt text]({BASE}/image-8.png)
 
@@ -281,7 +282,7 @@ In batch processing, sequences are padded to the length of the longest sequence.
 
 $$M_{ij} = \begin{cases} 0 & \text{if token } j \text{ is valid} \\ -\infty & \text{if token } j \text{ is padding} \end{cases}$$
 
-Since $e^{-\infty} \approx 0$, the attention weight for padding tokens becomes zero.18
+Since $e^{-\infty} \approx 0$, the attention weight for padding tokens becomes zero.
 
 ### Causal (Look-Ahead) Mask
 
@@ -290,7 +291,7 @@ This is enforced via a lower-triangular mask matrix.
 
 $$M_{ij} = \begin{cases} 0 & \text{if } i \ge j \\ -\infty & \text{if } i < j \end{cases}$$
 
-The upper triangle (representing future tokens) is masked out. This preserves the autoregressive property: $P(x) = \prod_t P(x_t | x_{<t})$.19
+The upper triangle (representing future tokens) is masked out. This preserves the autoregressive property: $P(x) = \prod_t P(x_t | x_{<t})$.[1][11]
 
 ## 3.4 - Cross-Attention
 
@@ -300,21 +301,21 @@ The keys $K$ and values $V$ come from the encoder (the processed input sequence)
 
 $$\text{CrossAttention}(X_{dec}, Y_{enc}) = \text{softmax}\left(\frac{(X_{dec}W^Q)(Y_{enc}W^K)^T}{\sqrt{d_k}}\right)(Y_{enc}W^V)$$
 
-This mechanism allows the generation process to extract relevant information from the source text at every step.1
+This mechanism allows the generation process to extract relevant information from the source text at every step.[1][11]
 
 ## 3.5 - Computational Complexity and FlashAttention
 
-The standard attention mechanism requires computing the similarity between every pair of tokens. This results in a complexity of $O(L^2)$ in both time and memory for a sequence of length $L$. This quadratic cost is the primary bottleneck scaling to long contexts (e.g., 100k tokens).
+The standard attention mechanism requires computing the similarity between every pair of tokens. This results in a complexity of $O(L^2)$ in both time and memory for a sequence of length $L$. This quadratic cost is the primary bottleneck scaling to long contexts (e.g., 100k tokens).[1]
 
 **RNN Comparison:**
-In contrast, Recurrent Neural Networks (RNNs) have a complexity of $O(n \cdot d_{model}^2)$. For typical tasks where the dimension $d_{model}$ (e.g., 512) is larger than the sequence length $n$ (e.g., 30 words), attention is actually faster per layer. However, for very long sequences, the $O(n^2)$ term dominates.
+In contrast, Recurrent Neural Networks (RNNs) have a complexity of $O(n \cdot d_{model}^2)$. For typical tasks where the dimension $d_{model}$ (e.g., 512) is larger than the sequence length $n$ (e.g., 30 words), attention is actually faster per layer. However, for very long sequences, the $O(n^2)$ term dominates.[1]
 
-**FlashAttention (Modern Optimization):**
-While mathematically identical to standard attention, FlashAttention is an IO-aware algorithm that restructures the computation to minimise memory accesses (HBM reads/writes) on GPUs. By tiling the matrix multiplication and computing softmax statistics on the fly, it speeds up training and reduces memory footprint, making longer context windows feasible without approximation.
+**FlashAttention (Modern Optimisation):**
+While mathematically identical to standard attention, FlashAttention is an IO-aware algorithm that restructures the computation to minimise memory accesses (HBM reads/writes) on GPUs. By tiling the matrix multiplication and computing softmax statistics on the fly, it speeds up training and reduces memory footprint, making longer context windows feasible without approximation.[17]
 
 # 4 - The Feed-Forward Network (FFN) and Nonlinearity
 
-Following the attention mechanism, each token vector passes through a Feed-Forward Network. Crucially, this network is applied position-wise—the same weights are applied to every token independently. This can be thought of as a 1x1 convolution kernel applied across the sequence.
+Following the attention mechanism, each token vector passes through a Feed-Forward Network. Crucially, this network is applied position-wise—the same weights are applied to every token independently. This can be thought of as a 1x1 convolution kernel applied across the sequence.[1]
 
 ![alt text]({BASE}/image-9.png)
 
@@ -324,19 +325,19 @@ The original Transformer FFN consists of two linear transformations separated by
 
 $$\text{FFN}(x) = \max(0, xW_1 + b_1)W_2 + b_2$$
 
-The hidden dimension $d_{ff}$ is typically $4 \times d_{model}$ (e.g., 2048). For a $d_{model}=512$, the FFN projects the vector to 2048 dimensions before projecting it back.
+The hidden dimension $d_{ff}$ is typically $4 \times d_{model}$ (e.g., 2048). For a $d_{model}=512$, the FFN projects the vector to 2048 dimensions before projecting it back.[1]
 
 **Theoretical Interpretation:** Recent research suggests that FFN layers act as Key-Value memories. The first layer ($W_1$) detects patterns (keys) in the input, and the second layer ($W_2$) retrieves the corresponding distribution over the output vocabulary (values). While attention aggregates context, FFNs store static knowledge learned from the training corpus.
 
 ## 4.2 - Modern Variant: SwiGLU
 
-Most contemporary LLMs (including LLaMA, PaLM, and Mistral) have replaced ReLU with the Swish-Gated Linear Unit (SwiGLU).22
+Most contemporary LLMs (including LLaMA, PaLM, and Mistral) have replaced ReLU with the Swish-Gated Linear Unit (SwiGLU).
 
-The Swish Function:
+The Swish Function:[16]
 
 $$\text{Swish}_\beta(x) = x \cdot \sigma(\beta x) = \frac{x}{1 + e^{-\beta x}}$$
 
-Unlike ReLU, Swish is non-monotonic and smooth. It permits a small amount of negative information to flow through (for negative inputs), which improves gradient flow during deep network training.
+Unlike ReLU, Swish is non-monotonic and smooth. It permits a small amount of negative information to flow through (for negative inputs), which improves gradient flow during deep network training.[16]
 
 ![alt text]({BASE}/image-4.png)
 
@@ -346,68 +347,68 @@ The SwiGLU formulation is:
 $$\text{SwiGLU}(x) = (\text{Swish}(xW_{gate}) \odot (xW_{in}))W_{out}$$
 
 Where $\odot$ represents element-wise multiplication.
-This creates a multiplicative interaction between the token features. The gate $W_{gate}$ controls which information from $W_{in}$ is preserved. This multiplicative mechanism increases the capacity of the layer to model complex interactions compared to the purely additive nature of ReLU networks.23 To maintain parameter count parity with standard FFNs, the hidden dimension is usually reduced to $\frac{2}{3} 4d_{model}$ or $\frac{8}{3}d_{model}$.
+This creates a multiplicative interaction between the token features. The gate $W_{gate}$ controls which information from $W_{in}$ is preserved. This multiplicative mechanism increases the capacity of the layer to model complex interactions compared to the purely additive nature of ReLU networks. To maintain parameter count parity with standard FFNs, the hidden dimension is usually reduced to $\frac{2}{3} 4d_{model}$ or $\frac{8}{3}d_{model}$.[16]
 
 # 5 - Normalisation: Stabilising Deep Networks
 
-Training very deep neural networks is notoriously difficult due to internal covariate shift—the distribution of layer inputs changes as the parameters of previous layers update. Normalisation is the antidote.
+Training very deep neural networks is notoriously difficult due to internal covariate shift—the distribution of layer inputs changes as the parameters of previous layers update. Normalisation is the antidote.[14]
 
 ## 5.1 - Layer Normalisation (LayerNorm)
 
-The original Transformer uses LayerNorm.1 Unlike Batch Normalisation (which normalises across the batch dimension), LayerNorm normalises across the feature dimension for a single sample. This makes it independent of batch size and suitable for RNNs/Transformers.
+The original Transformer uses LayerNorm. Unlike Batch Normalisation (which normalises across the batch dimension), LayerNorm normalises across the feature dimension for a single sample. This makes it independent of batch size and suitable for RNNs/Transformers.[1][14]
 For a vector $x \in \mathbb{R}^d$:
 
 $$\mu = \frac{1}{d}\sum_{i=1}^d x_i, \quad \sigma^2 = \frac{1}{d}\sum_{i=1}^d (x_i - \mu)^2$$
 
 $$\text{LayerNorm}(x) = \frac{x - \mu}{\sqrt{\sigma^2 + \epsilon}} \cdot \gamma + \beta$$
 
-$\gamma$ and $\beta$ are learnable parameters that allow the model to restore the representation power if necessary.25
+$\gamma$ and $\beta$ are learnable parameters that allow the model to restore the representation power if necessary.[14]
 
 ## 5.2 - Pre-Norm vs. Post-Norm Placement
 
 The placement of the normalisation layer has profound effects on training stability.
 
-- **Post-Norm (Original):** $x_{out} = \text{LayerNorm}(x + \text{Sublayer}(x))$.
-In this setup, the gradients must pass through the LayerNorm at every step. Research 26 showed that gradients near the output layer are much larger than those at the input, requiring a "warm-up" stage where the learning rate starts at zero and linearly increases to prevent divergence.
+- **Post-Norm (Original):** $x_{out} = \text{LayerNorm}(x + \text{Sublayer}(x))$.[1]
+In this setup, the gradients must pass through the LayerNorm at every step. Research showed that gradients near the output layer are much larger than those at the input, requiring a "warm-up" stage where the learning rate starts at zero and linearly increases to prevent divergence.
 - **Pre-Norm (Modern):** $x_{out} = x + \text{Sublayer}(\text{LayerNorm}(x))$.
-Here, the residual connection bypasses the normalization. This creates a direct "superhighway" for gradients to flow from the loss function to the input embeddings unchanged. This setup is significantly more stable and allows for training deeper models without a warm-up phase, although it may slightly limit the ultimate representation capacity.26 Most modern LLMs use Pre-Norm.
+Here, the residual connection bypasses the normalisation. This creates a direct "superhighway" for gradients to flow from the loss function to the input embeddings unchanged. This setup is significantly more stable and allows for training deeper models without a warm-up phase, although it may slightly limit the ultimate representation capacity. Most modern LLMs use Pre-Norm.[11][24]
 
 ![alt text]({BASE}/image-10.png)
 
 ## 5.3 - Root Mean Square Normalisation (RMSNorm)
 
-LLaMA and other efficiency-focused architectures utilise RMSNorm.
-RMSNorm simplifies LayerNorm by observing that the re-centring (subtracting mean $\mu$) is not strictly necessary for stabilisation; only the scaling matters.
+LLaMA and other efficiency-focused architectures utilise RMSNorm.[15][24]
+RMSNorm simplifies LayerNorm by observing that the re-centring (subtracting mean $\mu$) is not strictly necessary for stabilisation; only the scaling matters.[15]
 
 $$\text{RMSNorm}(x) = \frac{x}{\text{RMS}(x)} \cdot \gamma$$
 
 $$\text{RMS}(x) = \sqrt{\frac{1}{d} \sum_{i=1}^d x_i^2}$$
 
-By removing the calculation of the mean and the subtraction operation, RMSNorm reduces computational overhead while maintaining the benefits of invariance to weight scaling. It enforces re-scaling invariance (the output is the same if inputs are scaled by a constant $c$) but not shift invariance.
+By removing the calculation of the mean and the subtraction operation, RMSNorm reduces computational overhead while maintaining the benefits of invariance to weight scaling. It enforces re-scaling invariance (the output is the same if inputs are scaled by a constant $c$) but not shift invariance.[15]
 
 # 6 - Architectural Paradigms: BERT, GPT, and T5
 
 While the Transformer components are universal, their arrangement defines the model's capabilities.
-Researchers have also expanded the architecture to other domains. For example, Vision Transformers (ViT) treat images as sequences of "patches". This proves the model's versatility beyond just text.
+Researchers have also expanded the architecture to other domains. For example, Vision Transformers (ViT) treat images as sequences of "patches". This proves the model's versatility beyond just text.[21]
 
 ## 6.1 - Encoder-Only (The BERT Family)
 
-- **Structure:** Stack of Encoder blocks (Bidirectional Attention).
-- **Mechanism:** The attention mask is fully open (except for padding). Token $i$ can attend to token $i-1$ and token $i+1$ simultaneously.
-- **Training Objective:** Masked Language Modelling (MLM). A percentage of input tokens (e.g., 15%) are replaced with a [MASK] token. The model attempts to predict the original token based on the surrounding context.
+- **Structure:** Stack of Encoder blocks (Bidirectional Attention).[18]
+- **Mechanism:** The attention mask is fully open (except for padding). Token $i$ can attend to token $i-1$ and token $i+1$ simultaneously.[18]
+- **Training Objective:** Masked Language Modelling (MLM). A percentage of input tokens (e.g., 15%) are replaced with a [MASK] token. The model attempts to predict the original token based on the surrounding context.[18]
 
 
 $$L_{MLM} = -\sum \log P(x_m | x_{\setminus m})$$
 
-- **Application:** Understanding tasks. Sentiment analysis, classification, named entity recognition. It excels at "reading" but cannot generate coherent text because it wasn't trained to predict the next word.
+- **Application:** Understanding tasks. Sentiment analysis, classification, named entity recognition. It excels at "reading" but cannot generate coherent text because it wasn't trained to predict the next word.[18]
 
 ![alt text]({BASE}/image-12.png)
 
 ## 6.2 - Decoder-Only (The GPT Family)
 
-- **Structure:** Stack of Decoder blocks (Causal Attention).
-- **Mechanism:** The causal mask forces token $i$ to attend only to tokens $0 \dots i$.
-- **Training Objective:** Causal Language Modelling (CLM). Predict token $x_{t+1}$ given context $x_{1:t}$.
+- **Structure:** Stack of Decoder blocks (Causal Attention).[19]
+- **Mechanism:** The causal mask forces token $i$ to attend only to tokens $0 \dots i$.[19]
+- **Training Objective:** Causal Language Modelling (CLM). Predict token $x_{t+1}$ given context $x_{1:t}$.[19]
 
 
 $$L_{CLM} = -\sum_t \log P(x_t | x_{<t})$$
@@ -418,10 +419,10 @@ $$L_{CLM} = -\sum_t \log P(x_t | x_{<t})$$
 
 ## 6.3 - Encoder-Decoder (The T5 Family)
 
-- **Structure:** Full Transformer. An Encoder processes the input, and a Decoder generates the output.
-- **Mechanism:** Encoder uses bidirectional attention. Decoder uses causal attention plus cross-attention to the encoder output.
-- **Training Objective:** Span Corruption (T5) or Denoising (BART). The model is trained to reconstruct missing spans of text.
-- **Application:** Sequence-to-Sequence tasks. Translation, summarisation. T5 unifies all NLP tasks into a "text-to-text" format (e.g., "translate English to German:..." outputs the translation; "summarize:..." outputs the summary).32
+- **Structure:** Full Transformer. An Encoder processes the input, and a Decoder generates the output.[1][11]
+- **Mechanism:** Encoder uses bidirectional attention. Decoder uses causal attention plus cross-attention to the encoder output.[1][11]
+- **Training Objective:** Span Corruption (T5) or Denoising (BART). The model is trained to reconstruct missing spans of text.[11][20]
+- **Application:** Sequence-to-Sequence tasks. Translation, summarisation. T5 unifies all NLP tasks into a "text-to-text" format (e.g., "translate English to German:..." outputs the translation; "summarize:..." outputs the summary).[11]
 
 ![alt text]({BASE}/image-14.png)
 
@@ -436,39 +437,48 @@ $$L_{CLM} = -\sum_t \log P(x_t | x_{<t})$$
 | **Inference Speed**        | Fast (parallel)              | Slow (autoregressive)           | Slow (autoregressive)                   |
 | **Ideal Use Case**         | Classification, NLU, search  | Creative generation, chat, code | Translation, summarisation              |
 
+[18][19][11][20]
+
 ![alt text]({BASE}/image-11.png)
 
-# 7 - Training Dynamics and Optimization
+# 7 - Training Dynamics and Optimisation
 
-The success of the Transformer is not just in its architecture but in its training recipe.
+The success of the Transformer is not just in its architecture but in its training recipe.[1]
 
 ## 7.1 - Optimisation Algorithms
 
-The original Transformer used the Adam optimizer with specific hyperparameters: $\beta_1=0.9$, $\beta_2=0.98$, and $\epsilon=10^{-9}$.1
-Modern LLMs often use AdamW, which decouples weight decay from the gradient update. This ensures that regularisation is applied correctly to the weights directly, rather than being muddled with the adaptive learning rate momentum.
+The original Transformer used the Adam optimiser with specific hyperparameters: $\beta_1=0.9$, $\beta_2=0.98$, and $\epsilon=10^{-9}$.[1][22]
+Modern LLMs often use AdamW, which decouples weight decay from the gradient update.[23] This ensures that regularisation is applied correctly to the weights directly, rather than being muddled with the adaptive learning rate momentum.[23]
 
 ## 7.2 - Learning Rate Schedules
 
-Transformers are highly sensitive to learning rates. A constant learning rate often leads to divergence. The standard approach is the "Noam" schedule (inverse square root decay):
+Transformers are highly sensitive to learning rates. A constant learning rate often leads to divergence. The standard approach is the "Noam" schedule (inverse square root decay):[1]
 
 $$lr = d_{model}^{-0.5} \cdot \min(step\_num^{-0.5}, step\_num \cdot warmup\_steps^{-1.5})$$
 
-This increases the learning rate linearly for the first warmup_steps (typically 4000) and then decays it proportional to the inverse square root of the step number. The warmup allows the gradients to stabilise in the early phase of training, particularly for the variance estimates in Adam.
+This increases the learning rate linearly for the first warmup_steps (typically 4000) and then decays it proportional to the inverse square root of the step number.[1] The warmup allows the gradients to stabilise in the early phase of training, particularly for the variance estimates in Adam.
 
 ![alt text]({BASE}/image-15.png)
 
 ## 7.3 - Regularisation Techniques
 
-- **Residual Dropout:** Applied to the output of each sub-layer before addition to the residual. Typically $P_{drop}=0.1$.1
+- **Residual Dropout:** Applied to the output of each sub-layer before addition to the residual. Typically $P_{drop}=0.1$.[1]
 - **Label Smoothing:** Instead of training with hard one-hot targets (1.0 for the correct word, 0.0 for others), the target distribution is smoothed (e.g., 0.9 for correct, 0.1 spread across vocabulary). This prevents the model from becoming over-confident and improves perplexity.
 
-# 8 - Conclusion
+# 8 - Summary
 
-The Transformer architecture stands as the cornerstone of modern Artificial Intelligence. Its transition from the sequential processing of RNNs to the parallel, set-based processing of attention mechanisms resolved the fundamental bottleneck of information transport in sequence modelling.
+This technical schematic illustrates the detailed, parallel structure of the entire Transformer architecture.[1] Data enters the system as both input and output embeddings, uniquely combined with specific positional encodings to ensure the model understands the word order of the sequences.[1] On the left, the Encoder stack consists of repeated blocks that process the input simultaneously using multi-head self-attention and position-wise feed-forward networks.[1] On the right, the Decoder stack generates the output; it first uses a masked version of self-attention to prevent the model from looking ahead at future words, followed by a specific multi-head cross-attention layer that directly references the final representation created by the Encoder.[1] All these crucial attention and feed-forward sub-layers are wrapped in mandatory residual connections and layer normalisation for efficient training.[1][14] Finally, the system produces its word predictions by passing the final Decoder output through a linear layer and a softmax function, calculating the probability for each possible word in the vocabulary.[1]
 
-While the original "Attention Is All You Need" paper 1 provided the blueprint, the architecture has undergone significant refinement. The shift from absolute to relative/rotary positional encodings 8 resolved length generalisation. The evolution from ReLU to SwiGLU 23 enhanced the plasticity of the feed-forward layers. The migration from Post-Norm to Pre-RMSNorm 28 solved the deep-network trainability crisis.
+![alt text]({BASE}/image-16.png)
 
-For the technical practitioner, the Transformer is not a static artifact but a modular framework. Understanding the mathematical nuances—the variance scaling in attention, the rotation in RoPE, and the gradient flow in Pre-Norm—is essential for engineering the next generation of Large Language Models. The architecture has proven that, indeed, attention was all we needed to unlock the current era of generative intelligence.
+
+# 9 - Conclusion
+
+The Transformer architecture stands as the cornerstone of modern Artificial Intelligence.[1][18][19][21][24][25] Its transition from the sequential processing of RNNs to the parallel, set-based processing of attention mechanisms resolved the fundamental bottleneck of information transport in sequence modelling.[1][2][4][5]
+
+While the original "Attention Is All You Need" paper provided the blueprint, the architecture has undergone significant refinement. The shift from absolute to relative/rotary positional encodings resolved length generalisation. The evolution from ReLU to SwiGLU enhanced the plasticity of the feed-forward layers. The migration from Post-Norm to Pre-RMSNorm solved the deep-network trainability crisis.
+
+For the technical practitioner, the Transformer is not a static artefact but a modular framework.[1][24][25] Understanding the mathematical nuances—the variance scaling in attention, the rotation in RoPE, and the gradient flow in Pre-Norm—is essential for engineering the next generation of Large Language Models. The architecture has proven that, indeed, attention was all we needed to unlock the current era of generative intelligence.[1][19][24][25]
 
 
 # References

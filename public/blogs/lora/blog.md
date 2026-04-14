@@ -32,19 +32,19 @@
 
 # 1 - Introduction: The Scalability Crisis in Transfer Learning
 
-The paradigm of Natural Language Processing (NLP) has shifted decisively toward the utilisation of large-scale pre-trained models. Architectures such as GPT, Gemini, Claude, etc. have demonstrated emergent capabilities that were previously unattainable. The standard methodology for adapting these general-purpose models to specific downstream tasks (such as summarisation, question answering, or code generation) has historically been **Full Fine-Tuning (FFT)**. In this regime, the model is initialised with pre-trained weights $\Phi_0$, and all parameters are updated via gradient descent to maximise the likelihood of the conditional generation task.
+The paradigm of Natural Language Processing (NLP) has shifted decisively toward the utilisation of large-scale pre-trained models. Architectures such as GPT, Gemini, Claude, etc. have demonstrated emergent capabilities that were previously unattainable [1][4]. The standard methodology for adapting these general-purpose models to specific downstream tasks (such as summarisation, question answering, or code generation) has historically been **Full Fine-Tuning (FFT)**. In this regime, the model is initialised with pre-trained weights $\Phi_0$, and all parameters are updated via gradient descent to maximise the likelihood of the conditional generation task.
 
-However, as model scales have expanded exponentially, the computational feasibility of FFT has collapsed. Fine-tuning a model of the magnitude of GPT-3 imposes a debilitating memory overhead. For a model with parameters $\Phi$, the training process necessitates storing not only the weights but also the gradient $\nabla_\Phi \mathcal{L}$ and the optimiser states. For widely used optimisers like Adam, which maintain the first and second moments of the gradients, the memory requirement is approximately $12\Phi$ to $16\Phi$ bytes, depending on precision settings. For GPT-3, this translates to over 1.2 terabytes of VRAM solely for optimisation states, rendering the process exclusive to industrial clusters and inaccessible to the broader research community.
+However, as model scales have expanded exponentially, the computational feasibility of FFT has collapsed. Fine-tuning a model of the magnitude of GPT-3 imposes a debilitating memory overhead. For a model with parameters $\Phi$, the training process necessitates storing not only the weights but also the gradient $\nabla_\Phi \mathcal{L}$ and the optimiser states. For widely used optimisers like Adam, which maintain the first and second moments of the gradients, the memory requirement is approximately $12\Phi$ to $16\Phi$ bytes, depending on precision settings. For GPT-3, this translates to over 1.2 terabytes of VRAM solely for optimisation states, rendering the process exclusive to industrial clusters and inaccessible to the broader research community [8].
 
 Furthermore, FFT creates a deployment bottleneck. If a practitioner wishes to adapt a base model to $N$ different tasks, FFT necessitates the storage of $N$ distinct copies of the full model parameters. This lack of modularity inhibits the development of multi-task systems where rapid switching between capabilities is required.
 
 In response to these constraints, **Parameter-Efficient Fine-Tuning (PEFT)** has emerged as a critical subfield. The objective of PEFT is to modify the behaviour of a pre-trained model by updating only a minute fraction of its parameters (often less than 1%) while freezing the vast majority of the pre-trained weights. PEFT methods can generally be classified into three families:
 
-  * **Additive Methods:** Inserting new trainable modules or parameters (e.g., Adapter Layers, Prefix Tuning).
-  * **Selective Methods:** Fine-tuning only a subset of existing parameters (e.g., BitFit).
-  * **Reparameterisation-based Methods:** Constructing a low-rank representation of the weight updates.
+  * **Additive Methods:** Inserting new trainable modules or parameters (e.g., Adapter Layers, Prefix Tuning). [10][11]
+  * **Selective Methods:** Fine-tuning only a subset of existing parameters (e.g., BitFit). [12]
+  * **Reparameterisation-based Methods:** Constructing a low-rank representation of the weight updates. [8]
 
-Among these, **Low-Rank Adaptation (LoRA)**, a reparameterisation method proposed by Hu et al. (2021), has established itself as the preeminent technique due to its unique balance of parameter efficiency, training stability, and zero inference latency.
+Among these, **Low-Rank Adaptation (LoRA)**, a reparameterisation method proposed by Hu et al. (2021), has established itself as the preeminent technique due to its unique balance of parameter efficiency, training stability, and zero inference latency [8].
 
 This report provides an exhaustive technical analysis of LoRA. We will dissect the theoretical hypothesis of intrinsic dimensionality that underpins the method, derive the mathematical formulations of its update rules and gradient flow, and analyse its advanced descendants: QLoRA (Quantised LoRA), AdaLoRA (Adaptive LoRA), DoRA (Weight-Decomposed LoRA), and LoRA+.
 
@@ -87,7 +87,7 @@ The modified forward pass becomes:
 
 $$h = (W_0 + \Delta W)x = W_0 x + B A x$$
 
-This formulation reduces the number of trainable parameters from $d \times k$ to $(d+k) \times r$. Given that $r$ is typically chosen to be very small (e.g., $r=4$ or $r=8$) relative to the model dimension (e.g., $d=12,288$ for GPT-3), the reduction in parameter count is dramatic, often by a factor of 10,000.
+This formulation reduces the number of trainable parameters from $d \times k$ to $(d+k) \times r$. Given that $r$ is typically chosen to be very small (e.g., $r=4$ or $r=8$) relative to the model dimension (e.g., $d=12,288$ for GPT-3), the reduction in parameter count is dramatic, often by a factor of 10,000 [8].
 
 ## 2.3 - Complexity Analysis
 
@@ -108,7 +108,7 @@ $$N_{LoRA} = 2 \times 8 \times 12,288 \approx 196,608 \text{ parameters}$$
 **Reduction Factor:**
 $$\frac{N_{LoRA}}{N_{FFT}} = \frac{2dr}{d^2} = \frac{2r}{d} \approx \frac{16}{12,288} \approx 0.0013$$
 
-This represents a parameter reduction of roughly 99.87% for that specific layer. When aggregated across the entire model, this allows a 175-billion parameter model to be fine-tuned by optimising only a few million parameters, reducing the GPU memory requirement for gradients and optimiser states from terabytes to gigabytes.
+This represents a parameter reduction of roughly 99.87% for that specific layer. When aggregated across the entire model, this allows a 175-billion parameter model to be fine-tuned by optimising only a few million parameters, reducing the GPU memory requirement for gradients and optimiser states from terabytes to gigabytes [8].
 
 -----
 
@@ -116,7 +116,7 @@ This represents a parameter reduction of roughly 99.87% for that specific layer.
 
 ## 3.1 - Structural Implementation
 
-The LoRA architecture is implemented by injecting the trainable matrices $A$ and $B$ in parallel to the frozen pre-trained weights. Crucially, the linearity of the operation is preserved. Unlike adapter layers which insert non-linearities, LoRA relies on simple matrix multiplication and addition.
+The LoRA architecture is implemented by injecting the trainable matrices $A$ and $B$ in parallel to the frozen pre-trained weights. Crucially, the linearity of the operation is preserved. Unlike adapter layers which insert non-linearities, LoRA relies on simple matrix multiplication and addition [8].
 
 **The LoRA Block Architecture**
 
@@ -178,7 +178,7 @@ Consequently, at the beginning of training ($t=0$):
 $$\Delta W_{init} = B_{init} A_{init} = 0 \cdot A_{init} = \mathbf{0}$$
 $$W_{t=0} = W_0 + \mathbf{0} = W_0$$
 
-This guarantees that the fine-tuning process begins exactly at the pre-trained solution. The optimisation trajectory then smoothly departs from $W_0$ as the gradients update $B$ away from zero. This contrasts with other methods that might require a "warm-up" period to recover the base performance.
+This guarantees that the fine-tuning process begins exactly at the pre-trained solution. The optimisation trajectory then smoothly departs from $W_0$ as the gradients update $B$ away from zero. This contrasts with other methods that might require a "warm-up" period to recover the base performance [8].
 
 ## 3.3 - The Scaling Factor ($\alpha$) and Hyperparameter Tuning
 
@@ -186,7 +186,7 @@ LoRA introduces a scaling hyperparameters $\alpha$. The complete update rule is:
 
 $$h = W_0 x + \frac{\alpha}{r} (BA) x$$
 
-The term $\frac{\alpha}{r}$ serves a critical regulatory function. It decouples the choice of rank $r$ from the magnitude of the gradient updates. As one increases the rank $r$, the number of summation terms in the matrix product $BA$ increases. Without normalisation, a change in $r$ would necessitate a retuning of the learning rate to prevent exploding gradients or activations. By dividing by $r$, the method ensures that the scalar magnitude of the update remains roughly constant regardless of the rank choice.
+The term $\frac{\alpha}{r}$ serves a critical regulatory function. It decouples the choice of rank $r$ from the magnitude of the gradient updates. As one increases the rank $r$, the number of summation terms in the matrix product $BA$ increases. Without normalisation, a change in $r$ would necessitate a retuning of the learning rate to prevent exploding gradients or activations. By dividing by $r$, the method ensures that the scalar magnitude of the update remains roughly constant regardless of the rank choice [8].
 
 ## 3.4 - Inference Latency and Weight Merging
 
@@ -196,7 +196,7 @@ LoRA, due to its linear structural definition, allows for **Weight Merging**. Be
 
 $$W_{merged} = W_0 + \frac{\alpha}{r} B A$$
 
-Once this addition is performed, the matrices $A$ and $B$ can be discarded. The resulting model is architecturally identical to the base model, meaning the inference latency is exactly zero compared to the original pre-trained model. This property is crucial for production environments where latency budgets are strict. Furthermore, one can maintain a single base model $W_0$ in memory and dynamically swap different task-specific $\Delta W$ matrices for different incoming user requests, a technique known as Multi-LoRA serving.
+Once this addition is performed, the matrices $A$ and $B$ can be discarded. The resulting model is architecturally identical to the base model, meaning the inference latency is exactly zero compared to the original pre-trained model. This property is crucial for production environments where latency budgets are strict [8]. Furthermore, one can maintain a single base model $W_0$ in memory and dynamically swap different task-specific $\Delta W$ matrices for different incoming user requests, a technique known as Multi-LoRA serving [21].
 
 
 # 4 - Comparative Analysis: LoRA vs. The Predecessors
@@ -205,7 +205,7 @@ To fully appreciate LoRA's design decisions, we must contrast it with the method
 
 ## 4.1 - Adapter Layers
 
-The "Adapter" architecture, proposed by Houlsby et al. (2019), introduces bottleneck modules between the existing layers of the Transformer. A typical Adapter module consists of a down-projection $W_{down} \in \mathbb{R}^{d \times r}$, a non-linearity $f(\cdot)$ (such as ReLU or GELU), and an up-projection $W_{up} \in \mathbb{R}^{r \times d}$.
+The "Adapter" architecture, proposed by Houlsby et al. (2019), introduces bottleneck modules between the existing layers of the Transformer [10]. A typical Adapter module consists of a down-projection $W_{down} \in \mathbb{R}^{d \times r}$, a non-linearity $f(\cdot)$ (such as ReLU or GELU), and an up-projection $W_{up} \in \mathbb{R}^{r \times d}$.
 
 The equation for a layer output $h$ becomes:
 
@@ -215,11 +215,11 @@ $$h \leftarrow h + f(h W_{down}) W_{up}$$
 
   * **Non-Linearity:** The presence of $f(\cdot)$ makes the transformation non-linear. Consequently, the adapter weights cannot be merged into the original weights $W_0$. The computation must occur sequentially: $W_0$ projection $\to$ Adapter Down $\to$ Non-linearity $\to$ Adapter Up. This introduces inference latency.
   * **Sequential vs. Parallel:** Adapters are typically inserted sequentially after the Feed-Forward Network (FFN) or Attention blocks. LoRA is applied in parallel to the weight matrices.
-  * **Performance:** While Adapters achieve high parameter efficiency (adding \~3% parameters), the latency cost can be significant for deep models with many layers.
+  * **Performance:** While Adapters achieve high parameter efficiency (adding \~3% parameters), the latency cost can be significant for deep models with many layers [10].
 
 ## 4.2 - Prefix Tuning and Prompt Tuning
 
-Prefix Tuning (Li & Liang, 2021) takes a different approach inspired by prompting. Instead of modifying weights, it optimises a sequence of continuous task-specific vectors (virtual tokens).
+Prefix Tuning (Li & Liang, 2021) takes a different approach inspired by prompting [11]. Instead of modifying weights, it optimises a sequence of continuous task-specific vectors (virtual tokens).
 
 **Adapter Layers**
 ```mermaid
@@ -290,9 +290,9 @@ where $P_k$ and $P_v$ are the prefix parameters for keys and values.
 **Critical Distinctions:**
 
   * **Context Consumption:** The prefix length $l$ essentially "steals" space from the model's context window. If the model supports 2048 tokens and $l=50$, the user can only use 1998 tokens for input. LoRA does not reduce the context window.
-  * **Optimisation Landscape:** Optimising continuous prompts is notoriously unstable. The optimisation surface can be jagged, and performance is highly sensitive to initialisation. To mitigate this, Prefix Tuning often requires a reparameterisation trick using a large MLP during training, which is discarded afterwards.
+  * **Optimisation Landscape:** Optimising continuous prompts is notoriously unstable. The optimisation surface can be jagged, and performance is highly sensitive to initialisation. To mitigate this, Prefix Tuning often requires a reparameterisation trick using a large MLP during training, which is discarded afterwards [11].
   * **Expressivity:** Prefix tuning modifies the activations, effectively biasing the attention mechanism. LoRA modifies the weights, which arguably provides a more direct mechanism for altering the model's fundamental logic.
-  * **Representation Space Preservation:** Prefix Tuning, by leaving internal weights untouched, excels at preserving the pre-trained representation space. In contrast, LoRA and Adapters can cause a "collapse" of this space, potentially distorting features not relevant to the target task.
+  * **Representation Space Preservation:** Prefix Tuning, by leaving internal weights untouched, excels at preserving the pre-trained representation space [14]. In contrast, LoRA and Adapters can cause a "collapse" of this space, potentially distorting features not relevant to the target task [15].
 
 ## 4.3 - LoRA vs. Full Fine-Tuning: The Illusion of Equivalence?
 
@@ -316,25 +316,25 @@ While LoRA is often touted as matching FFT performance, nuanced differences exis
 
 While LoRA solves the training parameter problem, it does not solve the base model loading problem. To fine-tune a 65B parameter model, one must strictly load the 65B parameters into VRAM to compute the forward pass. At 16-bit precision (FP16 or BF16), 65 billion parameters require approximately 130 GB of VRAM, which exceeds the capacity of a single NVIDIA A100 (80GB).
 
-**QLoRA (Quantised LoRA)**, proposed by Dettmers et al. (2023), addresses this by drastically compressing the base model while maintaining high-fidelity gradient flow to the LoRA adapters.
+**QLoRA (Quantised LoRA)**, proposed by Dettmers et al. (2023), addresses this by drastically compressing the base model while maintaining high-fidelity gradient flow to the LoRA adapters [9].
 
 ## 5.1 - 4-bit NormalFloat (NF4)
 
 Standard 4-bit quantisation (Int4) results in significant degradation of model performance because the weights of neural networks are not uniformly distributed. They typically follow a normal (Gaussian) distribution. Uniform quantisation bins waste precision on the tails of the distribution where few weights exist.
 
-QLoRA introduces the **NormalFloat4 (NF4)** data type, which is information-theoretically optimal for normally distributed data. The quantisation bins are spaced according to the quantiles of the $\mathcal{N}(0, 1)$ distribution, ensuring that each bin contains an equal probability mass of weights. This maximises the information density of the 4-bit representation.
+QLoRA introduces the **NormalFloat4 (NF4)** data type, which is information-theoretically optimal for normally distributed data [9]. The quantisation bins are spaced according to the quantiles of the $\mathcal{N}(0, 1)$ distribution, ensuring that each bin contains an equal probability mass of weights. This maximises the information density of the 4-bit representation.
 
 ## 5.2 - Double Quantisation (DQ)
 
 In block-wise quantisation, scale factors (constants) are stored for each block of weights to recover the original magnitude. For large models, even these 32-bit constants add up to significant memory usage.
 
-**Double Quantisation** applies quantisation to the quantisation constants themselves. It quantises the 32-bit constants into 8-bit floats (FP8). This second layer of compression saves approximately 0.37 bits per parameter. For a 65B model, this seemingly small saving aggregates to \~3 GB of VRAM, often the difference between fitting on a GPU or crashing.^18
+**Double Quantisation** applies quantisation to the quantisation constants themselves. It quantises the 32-bit constants into 8-bit floats (FP8) [9]. This second layer of compression saves approximately 0.37 bits per parameter. For a 65B model, this seemingly small saving aggregates to \~3 GB of VRAM, often the difference between fitting on a GPU or crashing.^18
 
 ## 5.3 - Paged Optimisers and NVIDIA Unified Memory
 
 A common failure mode in fine-tuning is the **Gradient Checkpointing Memory Spike**. Even if the weights fit in memory, the activation maps generated during the forward pass of a long sequence can cause sudden Out-Of-Memory (OOM) errors.
 
-QLoRA implements **Paged Optimisers**. This technique leverages NVIDIA's Unified Memory feature to automatically page the optimiser states (which are only accessed during the update step, not the forward/backward pass) between the GPU VRAM and the CPU RAM. This functions analogously to virtual memory in operating systems. When the GPU memory pressure peaks, the optimiser states are evicted to CPU RAM; when the update step occurs, they are prefetched back to the GPU. This allows for the fine-tuning of 33B and 65B models on hardware with as little as 24GB or 48GB of VRAM.
+QLoRA implements **Paged Optimisers** [9]. This technique leverages NVIDIA's Unified Memory feature to automatically page the optimiser states (which are only accessed during the update step, not the forward/backward pass) between the GPU VRAM and the CPU RAM. This functions analogously to virtual memory in operating systems. When the GPU memory pressure peaks, the optimiser states are evicted to CPU RAM; when the update step occurs, they are prefetched back to the GPU. This allows for the fine-tuning of 33B and 65B models on hardware with as little as 24GB or 48GB of VRAM [9].
 
 ## 5.4 - Mathematical Formulation of QLoRA
 
@@ -348,9 +348,9 @@ Where:
   * $c_1, c_2$ are the double-quantisation constants.
   * $L_1, L_2$ are the LoRA adapter matrices (kept in BF16).
 
-Gradients are backpropagated only through $L_1$ and $L_2$.
+Gradients are backpropagated only through $L_1$ and $L_2$ [9].
 
-This architecture represents the current state-of-the-art for accessible LLM fine-tuning, democratising access to models that were previously the exclusive domain of major AI labs.
+This architecture represents the current state-of-the-art for accessible LLM fine-tuning, democratising access to models that were previously the exclusive domain of major AI labs [9].
 
 
 # 6 - Structural Variations: AdaLoRA, DoRA, and LoRA+
@@ -365,7 +365,7 @@ AdaLoRA (Adaptive LoRA) addresses this via SVD-based importance pruning. It para
 
 ## 6.2 - DoRA: Weight-Decomposed Low-Rank Adaptation
 
-DoRA (Liu et al., 2024) emerges from a critical analysis of the differences between Full Fine-Tuning (FFT) and LoRA. Analysis shows that FFT updates both the magnitude and direction of weight vectors independently, while LoRA couples them.
+DoRA (Liu et al., 2024) emerges from a critical analysis of the differences between Full Fine-Tuning (FFT) and LoRA [16]. Analysis shows that FFT updates both the magnitude and direction of weight vectors independently, while LoRA couples them.
 
 DoRA explicitly decouples these components by decomposing the pre-trained weight $W_0$ into a magnitude vector $m \in \mathbb{R}^{d}$ and a directional matrix $V \in \mathbb{R}^{d \times k}$.
 
@@ -375,15 +375,15 @@ The update rule applies LoRA only to the directional component $V$ while trainin
 
 $$W' = m \frac{W_0 + BA}{||W_0 + BA||_c}$$
 
-This allows DoRA to achieve learning capacities closer to FFT without significant parameter overhead.
+This allows DoRA to achieve learning capacities closer to FFT without significant parameter overhead [16].
 
 ## 6.3 - LoRA+: Optimising Learning Rates
 
-LoRA+ introduces a simple but effective optimisation: using different learning rates for the adapter matrices $A$ and $B$. Theoretical analysis suggests that the standard practice of using the same learning rate is suboptimal. LoRA+ typically assigns a much higher learning rate to matrix $B$ (the zero-initialised matrix) than to matrix $A$. This differential update speed accelerates convergence and can improve final performance, sometimes offering up to a 2⨉ speedup.
+LoRA+ introduces a simple but effective optimisation: using different learning rates for the adapter matrices $A$ and $B$ [17]. Theoretical analysis suggests that the standard practice of using the same learning rate is suboptimal. LoRA+ typically assigns a much higher learning rate to matrix $B$ (the zero-initialised matrix) than to matrix $A$. This differential update speed accelerates convergence and can improve final performance, sometimes offering up to a 2⨉ speedup [17].
 
 ## 6.4 - rsLoRA: Rank-Stabilised LoRA
 
-rsLoRA (Rank-Stabilised LoRA) addresses stability issues that arise when scaling to very high ranks. It modifies the scaling factor mechanism to ensure that the learning dynamics remain consistent regardless of the chosen rank $r$, allowing users to experiment with larger capacities without destabilising the training process.
+rsLoRA (Rank-Stabilised LoRA) addresses stability issues that arise when scaling to very high ranks [18]. It modifies the scaling factor mechanism to ensure that the learning dynamics remain consistent regardless of the chosen rank $r$, allowing users to experiment with larger capacities without destabilising the training process.
 
 -----
 
@@ -409,7 +409,7 @@ Successfully applying LoRA requires careful tuning of hyperparameters. Below is 
 
 # 8 - Mathematical Deep Dive: Gradient Flow Analysis
 
-To provide a rigorous understanding of the optimisation dynamics, we derive the gradient flow for the LoRA update.
+To provide a rigorous understanding of the optimisation dynamics, we derive the gradient flow for the LoRA update [8].
 
 Let $\mathcal{L}$ be the objective function. We wish to update $A$ and $B$.
 The forward pass for the adapter branch is $h_{adapter} = \frac{\alpha}{r} B A x$.

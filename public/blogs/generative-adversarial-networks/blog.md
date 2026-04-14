@@ -34,7 +34,7 @@
 
 The field of machine learning has traditionally been bifurcated into discriminative and generative modelling. Discriminative models, such as Support Vector Machines or standard Convolutional Neural Networks (CNNs), approximate a conditional probability distribution $P(Y|X)$, mapping high-dimensional inputs $X$ to label spaces $Y$. In contrast, generative models undertake the more arduous task of learning the underlying joint probability distribution $P(X, Y)$ or simply $P(X)$ in unsupervised settings. The objective is to capture the statistical laws governing the data generation process, enabling the synthesis of novel samples that are indistinguishable from the true data distribution $p_{data}$.
 
-Generative Adversarial Networks (GANs), introduced by Goodfellow et al. in 2014, represent a seminal advancement in this domain. Unlike explicit density estimation methods (e.g., PixelRNN) that define a tractable density function and maximise likelihood, or Variational Autoencoders (VAEs) that optimise a lower bound on the log-likelihood, GANs employ an implicit density estimation strategy. They do not explicitly define a probability density function $p_{model}(x)$; rather, they learn to sample from it through a stochastic mechanism involving a game-theoretic contest between two neural networks.
+Generative Adversarial Networks (GANs), introduced by Goodfellow et al. in 2014, represent a seminal advancement in this domain [1]. Unlike explicit density estimation methods (e.g., PixelRNN) that define a tractable density function and maximise likelihood, or Variational Autoencoders (VAEs) that optimise a lower bound on the log-likelihood, GANs employ an implicit density estimation strategy [1][5][6]. They do not explicitly define a probability density function $p_{model}(x)$; rather, they learn to sample from it through a stochastic mechanism involving a game-theoretic contest between two neural networks.
 
 **Generative Adversarial Network Framework**
 ```mermaid
@@ -73,11 +73,11 @@ $$\min_{G} \max_{D} V(D, G) = \mathbb{E}_{x \sim p_{data}(x)} + \mathbb{E}_{z \s
 
 In this equation:
 The discriminator $D$ attempts to maximise the likelihood of correctly classifying real data as real ($D(x) \to 1$) and generated data as fake ($D(G(z)) \to 0$).
-The generator $G$ attempts to minimise the second term $\log(1 - D(G(z)))$, which is equivalent to maximising the likelihood of the discriminator being fooled.
+The generator $G$ attempts to minimise the second term $\log(1 - D(G(z)))$, which is equivalent to maximising the likelihood of the discriminator being fooled [1].
 
 ## 2.2 - Theoretical Analysis of the Optimal Discriminator
 
-A pivotal contribution of the original GAN theory is the proof that for any fixed generator $G$, there exists a unique optimal discriminator $D^*$. Understanding this derivation is crucial for linking GANs to divergence minimisation.
+A pivotal contribution of the original GAN theory is the proof that for any fixed generator $G$, there exists a unique optimal discriminator $D^*$ [1]. Understanding this derivation is crucial for linking GANs to divergence minimisation.
 
 We express the value function $V(G, D)$ as an integral over the data space $\mathcal{X}$. We can change the variable of integration for the second term from $z$ to $x$ using the induced density $p_g(x)$:
 
@@ -95,7 +95,7 @@ Thus, the optimal discriminator is the ratio of the true data density to the mix
 
 $$D^*_G(x) = \frac{p_{data}(x)}{p_{data}(x) + p_{g}(x)}$$
 
-This result indicates that the optimal discriminator estimates the conditional probability $P(Y=real | x)$. If $p_{data}(x) \gg p_g(x)$, $D^*(x) \approx 1$; if $p_g(x) \gg p_{data}(x)$, $D^*(x) \approx 0$; and at the point of Nash Equilibrium where $p_{data}(x) = p_g(x)$, $D^*(x) = 0.5$, representing maximum uncertainty (a "random guess" state).
+This result indicates that the optimal discriminator estimates the conditional probability $P(Y=real | x)$ [1]. If $p_{data}(x) \gg p_g(x)$, $D^*(x) \approx 1$; if $p_g(x) \gg p_{data}(x)$, $D^*(x) \approx 0$; and at the point of Nash Equilibrium where $p_{data}(x) = p_g(x)$, $D^*(x) = 0.5$, representing maximum uncertainty (a "random guess" state).
 
 ## 2.3 - The Jensen-Shannon Divergence Link
 
@@ -113,7 +113,7 @@ Recognising the definition of the Jensen-Shannon (JS) Divergence, $D_{JS}(P \| Q
 
 $$C(G) = -\log 4 + 2 \cdot D_{JS}(p_{data} \| p_{g})$$
 
-This derivation proves that training the generator in a GAN is mathematically equivalent to minimising the Jensen-Shannon divergence between the data distribution and the generated distribution. Since $D_{JS} \ge 0$ and $D_{JS} = 0 \iff p_{data} = p_g$, the global minimum of the objective function is $-\log 4$, achieved precisely when the generator recovers the true data distribution.
+This derivation proves that training the generator in a GAN is mathematically equivalent to minimising the Jensen-Shannon divergence between the data distribution and the generated distribution [1]. Since $D_{JS} \ge 0$ and $D_{JS} = 0 \iff p_{data} = p_g$, the global minimum of the objective function is $-\log 4$, achieved precisely when the generator recovers the true data distribution [1].
 
 ## 2.4 - The Vanishing Gradient Problem
 
@@ -128,17 +128,17 @@ $$
 
 When $D$ is perfect ($D \approx 1$ for real, $D \approx 0$ for fake), the gradient magnitude depends on the discriminator's slope. In high-dimensional spaces, the data manifold and the generated manifold are likely disjoint. In this scenario, a perfect discriminator can separate the manifolds completely, resulting in flat regions in the loss landscape where $\nabla_x D(x) \approx 0$. This halts learning, a phenomenon known as the vanishing gradient problem.
 
-To mitigate this, the original paper suggested a "non-saturating" heuristic: instead of minimising $\log(1 - D(G(z)))$, the generator maximises $\log(D(G(z)))$. While this provides stronger gradients early in training, it no longer minimises the JS divergence and can lead to unstable updates.
+To mitigate this, the original paper suggested a "non-saturating" heuristic: instead of minimising $\log(1 - D(G(z)))$, the generator maximises $\log(D(G(z)))$ [1]. While this provides stronger gradients early in training, it no longer minimises the JS divergence and can lead to unstable updates.
 
 -----
 
 # 3 - Deep Convolutional GANs (DCGAN) and Architectural Stability
 
-The transition from theoretical MLPs to practical image synthesis required specific architectural constraints. Radford et al. (2015) formalised these in the Deep Convolutional GAN (DCGAN) architecture, which became the bedrock for modern GAN design.
+The transition from theoretical MLPs to practical image synthesis required specific architectural constraints. Radford et al. (2015) formalised these in the Deep Convolutional GAN (DCGAN) architecture, which became the bedrock for modern GAN design [2].
 
 ## 3.1 - Key Architectural Guidelines
 
-The DCGAN paper empirically identified a family of architectures that resulted in stable training:
+The DCGAN paper empirically identified a family of architectures that resulted in stable training [2]:
 
   * **Replacement of Pooling Layers:** Standard CNNs use max-pooling for downsampling. DCGANs replace this with strided convolutions in the discriminator (allowing the network to learn its own downsampling) and fractional-strided convolutions (often termed transposed convolutions or deconvolution) in the generator for upsampling.
   * **Batch Normalisation (BatchNorm):** BatchNorm standardises the input to a layer to have zero mean and unit variance. This is critical in GANs for preventing mode collapse (where the generator outputs a single mode) and ensuring gradients flow effectively. It is applied to all layers except the generator output and discriminator input.
@@ -161,40 +161,40 @@ graph TD
 
 ## 3.2 - Vector Arithmetic in Latent Space
 
-A remarkable emergent property of DCGANs is the structure of the learned latent space $\mathcal{Z}$. The mapping from $z$ to $x$ is not arbitrary; it preserves semantic relationships. Simple arithmetic operations on latent vectors correspond to meaningful semantic transformations in the image space.
+A remarkable emergent property of DCGANs is the structure of the learned latent space $\mathcal{Z}$ [2]. The mapping from $z$ to $x$ is not arbitrary; it preserves semantic relationships. Simple arithmetic operations on latent vectors correspond to meaningful semantic transformations in the image space.
 
 For example, performing the vector operation:
 
 $$z_{vector} = z_{\text{man with glasses}} - z_{\text{man without glasses}} + z_{\text{woman without glasses}}$$
 
-Feeding the resulting $z_{vector}$ into the generator ($x = G(z_{vector})$) produces an image of a woman with glasses. This suggests that the generator learns a disentangled representation of semantic attributes (gender, eyewear) in an unsupervised manner.
+Feeding the resulting $z_{vector}$ into the generator ($x = G(z_{vector})$) produces an image of a woman with glasses. This suggests that the generator learns a disentangled representation of semantic attributes (gender, eyewear) in an unsupervised manner [2].
 
 -----
 
 # 4 - The Wasserstein GAN (WGAN): A Geometrical Solution
 
-Despite DCGAN's success, training remained unstable. The core issue, as identified by Arjovsky et al. (2017), was the metric used to measure the distance between distributions. The JS divergence fails to provide a meaningful gradient when distributions are disjoint.
+Despite DCGAN's success, training remained unstable. The core issue, as identified by Arjovsky et al. (2017), was the metric used to measure the distance between distributions [3]. The JS divergence fails to provide a meaningful gradient when distributions are disjoint.
 
 ## 4.1 - Limitations of JS and KL Divergences
 
 Let $P_r$ be the real distribution and $P_g$ be the generated distribution. In high-dimensional spaces (like images), these distributions are supported on low-dimensional manifolds. If these manifolds do not perfectly overlap (which they almost never do during early training), the intersection of their supports has measure zero.
 
   * **KL Divergence:** $D_{KL}(P_r \| P_g)$ is infinite if there is any point where $P_g(x) = 0$ but $P_r(x) > 0$.
-  * **JS Divergence:** If supports are disjoint, $D_{JS}(P_r \| P_g) = \log 2$ (a constant). The gradient of a constant is zero. Thus, the generator receives no information on how to move its distribution towards $P_r$.
+  * **JS Divergence:** If supports are disjoint, $D_{JS}(P_r \| P_g) = \log 2$ (a constant). The gradient of a constant is zero. Thus, the generator receives no information on how to move its distribution towards $P_r$ [3].
 
 ## 4.2 - The Earth Mover's (Wasserstein) Distance
 
-To solve this, WGAN proposes the Wasserstein-1 distance (also known as Earth Mover's Distance, EMD). Intuitively, if probability distributions are viewed as piles of earth, the Wasserstein distance is the minimum cost (mass $\times$ distance) to transport the pile $P_g$ to the configuration $P_r$.
+To solve this, WGAN proposes the Wasserstein-1 distance (also known as Earth Mover's Distance, EMD) [3]. Intuitively, if probability distributions are viewed as piles of earth, the Wasserstein distance is the minimum cost (mass $\times$ distance) to transport the pile $P_g$ to the configuration $P_r$.
 
 Mathematically:
 
 $$W(P_r, P_g) = \inf_{\gamma \in \Pi(P_r, P_g)} \mathbb{E}_{(x, y) \sim \gamma} [\| x - y \|]$$
 
-Here, $\Pi(P_r, P_g)$ is the set of all joint distributions (transport plans) $\gamma(x, y)$ whose marginals are $P_r$ and $P_g$. Unlike JS divergence, the Wasserstein distance is continuous and differentiable almost everywhere, providing meaningful gradients even when supports are disjoint.
+Here, $\Pi(P_r, P_g)$ is the set of all joint distributions (transport plans) $\gamma(x, y)$ whose marginals are $P_r$ and $P_g$. Unlike JS divergence, the Wasserstein distance is continuous and differentiable almost everywhere, providing meaningful gradients even when supports are disjoint [3].
 
 ## 4.3 - Kantorovich-Rubinstein Duality
 
-Computing the infimum over all joint distributions is intractable. However, the Kantorovich-Rubinstein duality allows us to reformulate this as a maximisation problem over 1-Lipschitz functions:
+Computing the infimum over all joint distributions is intractable. However, the Kantorovich-Rubinstein duality allows us to reformulate this as a maximisation problem over 1-Lipschitz functions [3]:
 
 $$W(P_r, P_g) = \sup_{\|f\|_L \le 1} \mathbb{E}_{x \sim P_r}[f(x)] - \mathbb{E}_{x \sim P_g}[f(x)]$$
 
@@ -208,9 +208,9 @@ The critic tries to assign high scores to real data and low scores to fake data,
 
 ## 4.4 - Enforcing Lipschitz Continuity: WGAN-GP
 
-The original WGAN enforced the Lipschitz constraint via Weight Clipping: clamping the weights of the critic to a range $[-c, c]$. This is a crude method that often leads to vanishing or exploding gradients or forces the critic to learn overly simple functions.
+The original WGAN enforced the Lipschitz constraint via Weight Clipping: clamping the weights of the critic to a range $[-c, c]$ [3]. This is a crude method that often leads to vanishing or exploding gradients or forces the critic to learn overly simple functions.
 
-Gulrajani et al. (2017) introduced WGAN with Gradient Penalty (WGAN-GP). They observed that the optimal critic $f^*$ has gradients with norm 1 almost everywhere. Instead of clipping weights, they enforce the constraint by penalising the gradient norm directly in the loss function:
+Gulrajani et al. (2017) introduced WGAN with Gradient Penalty (WGAN-GP) [4]. They observed that the optimal critic $f^*$ has gradients with norm 1 almost everywhere. Instead of clipping weights, they enforce the constraint by penalising the gradient norm directly in the loss function:
 
 $$
 L = \underbrace{\mathbb{E}_{\tilde{x} \sim P_g} - \mathbb{E}_{x \sim P_r}}_{\text{Wasserstein Estimate}}
@@ -223,15 +223,15 @@ The penalty is calculated at random interpolation points $\hat{x}$ between real 
 
 # 5 - StyleGAN: Disentanglement and Control
 
-While WGAN solved stability, StyleGAN (Karras et al., 2019) revolutionised the quality and controllability of GANs. It addresses the issue of entanglement, where a single latent variable in $z$ controls multiple semantic features (e.g., hair length and gender simultaneously) due to the generator forcing the input distribution (Gaussian) to match the data distribution.
+While WGAN solved stability, StyleGAN (Karras et al., 2019) revolutionised the quality and controllability of GANs [7]. It addresses the issue of entanglement, where a single latent variable in $z$ controls multiple semantic features (e.g., hair length and gender simultaneously) due to the generator forcing the input distribution (Gaussian) to match the data distribution.
 
 ## 5.1 - The Mapping Network and $W$ Space
 
-StyleGAN introduces a Mapping Network ($f$), an 8-layer MLP, that transforms the input latent code $z \in \mathcal{Z}$ into an intermediate latent code $w \in \mathcal{W}$.
+StyleGAN introduces a Mapping Network ($f$), an 8-layer MLP, that transforms the input latent code $z \in \mathcal{Z}$ into an intermediate latent code $w \in \mathcal{W}$ [7].
 
 $$w = f(z)$$
 
-The generator then uses $w$ to control the synthesis. Because $f$ is non-linear, the space $\mathcal{W}$ can be "unwrapped" to match the density of the real data features, reducing entanglement. For instance, if "long hair" and "masculinity" are negatively correlated in the training data, the mapping network can warp the spherical $\mathcal{Z}$ space into a shape in $\mathcal{W}$ that respects this correlation, allowing independent control.
+The generator then uses $w$ to control the synthesis. Because $f$ is non-linear, the space $\mathcal{W}$ can be "unwrapped" to match the density of the real data features, reducing entanglement [7]. For instance, if "long hair" and "masculinity" are negatively correlated in the training data, the mapping network can warp the spherical $\mathcal{Z}$ space into a shape in $\mathcal{W}$ that respects this correlation, allowing independent control.
 
 ## 5.2 - Adaptive Instance Normalisation (AdaIN)
 
@@ -239,7 +239,7 @@ Instead of feeding $z$ into the input layer, StyleGAN starts with a learned cons
 
 $$\text{AdaIN}(x_i, y) = y_{s, i} \frac{x_i - \mu(x_i)}{\sigma(x_i)} + y_{b, i}$$
 
-Here, $x_i$ is a feature map. It is normalised to zero mean and unit variance. Then, it is scaled by $y_s$ and biased by $y_b$, which are learned affine transformations of $w$. This mechanism allows the style vector to control "global" statistics (texture, shape) at that specific scale.
+Here, $x_i$ is a feature map. It is normalised to zero mean and unit variance. Then, it is scaled by $y_s$ and biased by $y_b$, which are learned affine transformations of $w$. This mechanism allows the style vector to control "global" statistics (texture, shape) at that specific scale [7].
 
 **StyleGAN Generator Architecture**
 ```mermaid
@@ -256,14 +256,14 @@ graph LR
 
 ## 5.3 - StyleGAN2 Improvements
 
-StyleGAN1 generated artifacts (droplets) because AdaIN destroyed information in feature magnitudes. StyleGAN2 replaced AdaIN with Weight Demodulation. Instead of normalising the features, it modulates the convolution weights $w_{ijk}$ directly:
+StyleGAN1 generated artifacts (droplets) because AdaIN destroyed information in feature magnitudes [7]. StyleGAN2 replaced AdaIN with Weight Demodulation [8]. Instead of normalising the features, it modulates the convolution weights $w_{ijk}$ directly:
 **Modulation:** $w'_{ijk} = s_i \cdot w_{ijk}$ (Scale weights by style).
 **Demodulation:** $w''_{ijk} = w'_{ijk} / \sqrt{\sum_{i,k} {w'_{ijk}}^2 + \epsilon}$ (Normalise weights to preserve unit variance).
-This removed droplet artifacts and improved fidelity.
+This removed droplet artifacts and improved fidelity [8].
 
 ## 5.4 - Path Length Regularisation
 
-To ensure a smooth, invertible mapping from latent to image space, StyleGAN2 employs Path Length Regularisation. It penalises the generator if a fixed-size step in $\mathcal{W}$ results in a variable-size change in the image.
+To ensure a smooth, invertible mapping from latent to image space, StyleGAN2 employs Path Length Regularisation [8]. It penalises the generator if a fixed-size step in $\mathcal{W}$ results in a variable-size change in the image.
 
 $$\mathcal{L}_{pl} = \mathbb{E}_{w, y \sim \mathcal{N}(0, I)} (\| J_w^T y \|_2 - a)^2$$
 
@@ -271,20 +271,20 @@ where $J_w$ is the Jacobian of the generator. This forces the latent space to be
 
 ## 5.5 - Mixing Regularisation and Truncation
 
-**Mixing Regularisation:** During training, two latent codes $z_1, z_2$ are generated. The generator switches from $w_1$ to $w_2$ at a random layer. This forces the network to assume that styles at different scales (coarse, medium, fine) are independent.
-**Truncation Trick:** To trade diversity for quality, $w$ is truncated towards the mean latent vector $\bar{w}$: $w' = \bar{w} + \psi(w - \bar{w})$. Lower $\psi$ reduces variety but avoids the "weird" samples found in the tails of the distribution.
+**Mixing Regularisation:** During training, two latent codes $z_1, z_2$ are generated. The generator switches from $w_1$ to $w_2$ at a random layer. This forces the network to assume that styles at different scales (coarse, medium, fine) are independent [7].
+**Truncation Trick:** To trade diversity for quality, $w$ is truncated towards the mean latent vector $\bar{w}$: $w' = \bar{w} + \psi(w - \bar{w})$. Lower $\psi$ reduces variety but avoids the "weird" samples found in the tails of the distribution [7].
 
 -----
 
 # 6 - Unpaired Translation: CycleGAN
 
-CycleGAN enables image-to-image translation (e.g., Horse $\leftrightarrow$ Zebra) without paired examples. It relies on the assumption of Cycle Consistency: translating an image to the target domain and back should yield the original image ($F(G(x)) \approx x$).
+CycleGAN enables image-to-image translation (e.g., Horse $\leftrightarrow$ Zebra) without paired examples [10]. It relies on the assumption of Cycle Consistency: translating an image to the target domain and back should yield the original image ($F(G(x)) \approx x$).
 
 The objective combines adversarial loss with cycle consistency loss:
 
 $$\mathcal{L}_{total} = \mathcal{L}_{GAN}(G, D_Y) + \mathcal{L}_{GAN}(F, D_X) + \lambda \mathcal{L}_{cyc}(G, F)$$
 
-where $\mathcal{L}_{cyc} = \mathbb{E}_x[\|F(G(x)) - x\|_1] + \mathbb{E}_y[\|G(F(y)) - y\|_1]$. This constraint prevents mode collapse (mapping all inputs to one output) by forcing the mapping to be a bijection.
+where $\mathcal{L}_{cyc} = \mathbb{E}_x[\|F(G(x)) - x\|_1] + \mathbb{E}_y[\|G(F(y)) - y\|_1]$. This constraint prevents mode collapse (mapping all inputs to one output) by forcing the mapping to be a bijection [10].
 
 **Cycle Consistency Loss**
 ```mermaid
@@ -304,16 +304,16 @@ graph LR
 
 The fundamental difference between these models lies in the divergence they minimise:
 
-**VAEs (Forward KL - Mass Covering):** VAEs maximise the Evidence Lower Bound (ELBO), which implicitly minimises the Forward KL Divergence $D_{KL}(P_{data} \| P_{model})$.
+**VAEs (Forward KL - Mass Covering):** VAEs maximise the Evidence Lower Bound (ELBO), which implicitly minimises the Forward KL Divergence $D_{KL}(P_{data} \| P_{model})$ [5].
 
   * **Behaviour:** The Forward KL is "zero-avoiding". If $P_{data}(x) > 0$, the model $P_{model}(x)$ must also be $>0$ to avoid infinite cost. Consequently, the model "stretches" to cover all modes of the data. In ambiguous regions between modes, it assigns non-zero probability, leading to blurriness in generated images.
-  * **Equation:** $\mathcal{L}_{ELBO} = \mathbb{E}_{q}[\log p(x|z)] - D_{KL}(q(z|x) \| p(z))$.
+  * **Equation:** $\mathcal{L}_{ELBO} = \mathbb{E}_{q}[\log p(x|z)] - D_{KL}(q(z|x) \| p(z))$ [5].
 
 **GANs (Reverse KL/JS - Mode Seeking):** GANs (approximating JS or Reverse KL) minimise $D_{KL}(P_{model} \| P_{data})$.
 
   * **Behaviour:** The Reverse KL is "zero-forcing". If $P_{data}(x) = 0$, the model $P_{model}(x)$ must be $0$ to avoid infinite cost. The model is penalised heavily for generating samples in low-density regions. Thus, GANs tend to converge to a single mode (or subset of modes), producing sharp, realistic images but potentially ignoring parts of the data distribution (Mode Collapse).
 
-**Diffusion Models:** These models minimise a reweighted variational lower bound (VLB) related to Forward KL but decompose the problem into small iterative denoising steps. This allows them to achieve both the mode coverage of VAEs and the high fidelity of GANs, avoiding mode collapse while generating sharp samples, albeit at the cost of slow iterative inference.
+**Diffusion Models:** These models minimise a reweighted variational lower bound (VLB) related to Forward KL but decompose the problem into small iterative denoising steps [11]. This allows them to achieve both the mode coverage of VAEs and the high fidelity of GANs, avoiding mode collapse while generating sharp samples, albeit at the cost of slow iterative inference [11].
 
 | Feature        | GAN                             | VAE                                      | Diffusion Model                      |
 | :------------- | :------------------------------ | :--------------------------------------- | :----------------------------------- |
@@ -383,8 +383,8 @@ The negative gradient indicates we should increase $w_g$ to reduce loss (which e
 
 # 9 - Challenges and Future Outlook
 
-While GANs have achieved photorealistic synthesis, challenges remain. Mode Collapse persists as a fundamental issue, where the generator covers only a subset of the data support. Evaluation is difficult; metrics like Fréchet Inception Distance (FID) and Perceptual Path Length (PPL) are standard but imperfect proxies for human perception.
-Future directions involve Hybrid Models (combining the stability of Diffusion with the speed of GANs), Inversion techniques (mapping real images back to $\mathcal{W}$ space for editing), and Equivariant GANs (StyleGAN3) that strictly respect signal processing laws to prevent aliasing.
+While GANs have achieved photorealistic synthesis, challenges remain. Mode Collapse persists as a fundamental issue, where the generator covers only a subset of the data support. Evaluation is difficult; metrics like Fréchet Inception Distance (FID) and Perceptual Path Length (PPL) are standard but imperfect proxies for human perception [12][7].
+Future directions involve Hybrid Models (combining the stability of Diffusion with the speed of GANs), Inversion techniques (mapping real images back to $\mathcal{W}$ space for editing), and Equivariant GANs (StyleGAN3) that strictly respect signal processing laws to prevent aliasing [9].
 
 # 10 - Conclusion
 

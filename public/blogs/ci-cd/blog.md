@@ -7,14 +7,14 @@
 	- [2.3 - The Agile Revolution and the Rise of DevOps](#23---the-agile-revolution-and-the-rise-of-devops)
 - [3 - Core Theory and First Principles](#3---core-theory-and-first-principles)
 	- [3.1 - Idempotency and Determinism](#31---idempotency-and-determinism)
-	- [3.2 - Immutability and Artifact Management](#32---immutability-and-artifact-management)
+  - [3.2 - Immutability and Artefact Management](#32---immutability-and-artefact-management)
 	- [3.3 - The "Pipeline" Metaphor and Lean Theory](#33---the-pipeline-metaphor-and-lean-theory)
 	- [3.4 - Shift-Left Testing](#34---shift-left-testing)
 - [4 - Architectural Components of a CI/CD Ecosystem](#4---architectural-components-of-a-cicd-ecosystem)
 	- [4.1 - Version Control Systems (VCS): The Source of Truth](#41---version-control-systems-vcs-the-source-of-truth)
 	- [4.2 - Triggers: The Mechanics of Webhooks vs. Polling](#42---triggers-the-mechanics-of-webhooks-vs-polling)
 	- [4.3 - The Execution Environment: Runners, Agents, and Nodes](#43---the-execution-environment-runners-agents-and-nodes)
-	- [4.4 - Artifact Repositories](#44---artifact-repositories)
+  - [4.4 - Artefact Repositories](#44---artefact-repositories)
 	- [4.5 - Orchestration Engines](#45---orchestration-engines)
 - [5 - Detailed Pipeline Workflows](#5---detailed-pipeline-workflows)
 	- [5.1 - The Standard Pipeline Stages](#51---the-standard-pipeline-stages)
@@ -27,7 +27,7 @@
 - [7 - Security and Supply Chain Integrity (DevSecOps)](#7---security-and-supply-chain-integrity-devsecops)
 	- [7.1 - The SLSA Framework](#71---the-slsa-framework)
 	- [7.2 - Software Bill of Materials (SBOM)](#72---software-bill-of-materials-sbom)
-	- [7.3 - Artifact Signing with Cosign](#73---artifact-signing-with-cosign)
+  - [7.3 - Artefact Signing with Cosign](#73---artefact-signing-with-cosign)
 - [8 - Metrics and Performance: The DORA benchmarks](#8---metrics-and-performance-the-dora-benchmarks)
 	- [8.1 - The Four Key Metrics](#81---the-four-key-metrics)
 	- [8.2 - Insights from the 2024 State of DevOps Report](#82---insights-from-the-2024-state-of-devops-report)
@@ -56,8 +56,8 @@ This report provides an exhaustive analysis of the CI/CD paradigm. It explores t
 
 While the acronym "CI/CD" is often used as a singular noun, it encompasses three distinct phases of the software lifecycle, each with unique objectives and feedback loops.
 
-  * **Continuous Integration (CI)** is the practice of merging developer working copies to a shared mainline frequently (typically several times a day). The primary objective of CI is risk reduction. In the absence of CI, developers working in isolation for weeks create a "divergence" between their local state and the shared reality of the codebase. When they eventually attempt to merge, they encounter "integration hell," a state where conflict resolution takes longer than the original development time. CI solves this by forcing frequent reconciliation. As defined in seminal literature by Martin Fowler and the IEEE, CI acts as a mechanism for "fast feedback," validating through automated builds and tests that the software remains in a coherent state.
-  * **Continuous Delivery (CDE)** extends the principles of CI into the release process. It ensures that the software is in a deployable state at all times. A Continuous Delivery pipeline automates the entire journey from commit to a staging environment, including the generation of production-ready artifacts. Crucially, the final deployment to production remains a manual business decision. This allows organisations to separate the technical capability to release from the business decision to release.
+  * **Continuous Integration (CI)** is the practice of merging developer working copies to a shared mainline frequently (typically several times a day). The primary objective of CI is risk reduction. In the absence of CI, developers working in isolation for weeks create a "divergence" between their local state and the shared reality of the codebase. When they eventually attempt to merge, they encounter "integration hell," a state where conflict resolution takes longer than the original development time. CI solves this by forcing frequent reconciliation. As defined in seminal literature by Martin Fowler and the IEEE, CI acts as a mechanism for "fast feedback," validating through automated builds and tests that the software remains in a coherent state [1].
+  * **Continuous Delivery (CDE)** extends the principles of CI into the release process. It ensures that the software is in a deployable state at all times. A Continuous Delivery pipeline automates the entire journey from commit to a staging environment, including the generation of production-ready artefacts. Crucially, the final deployment to production remains a manual business decision. This allows organisations to separate the technical capability to release from the business decision to release.
   * **Continuous Deployment (CD)** represents the apex of automation. In this model, any change that passes the automated quality gates is immediately and automatically deployed to production users. There is no human intervention. This requires an extremely high level of confidence in the automated testing suite, as the "safety net" of manual approval is removed. Elite performing organisations, as categorised by the DevOps Research and Assessment (DORA) team, utilise this model to achieve lead times of less than one hour.
 
 <!-- end list -->
@@ -136,19 +136,19 @@ Modern CI/CD is built upon several theoretical concepts that ensure reliability 
 
 A critical property of any pipeline operation is idempotency. In mathematics and computer science, an idempotent operation is one that can be applied multiple times without changing the result beyond the initial application. In the context of CI/CD, this means that running a deployment script twice should not result in two database instances or a corrupted configuration; it should result in the system being in the desired state.
 
-Closely related is determinism. A pipeline must be deterministic: given the same input (source code commit), it must produce the exact same output (binary artifact) every time. Flaky tests (tests that pass or fail intermittently without code changes) are the enemy of determinism. They erode trust in the pipeline, leading developers to ignore failure signals. Theoretical models of CI emphasise that a slow, deterministic pipeline is preferable to a fast, non-deterministic one, as the latter fails to provide valid feedback.
+Closely related is determinism. A pipeline must be deterministic: given the same input (source code commit), it must produce the exact same output (binary artefact) every time. Flaky tests (tests that pass or fail intermittently without code changes) are the enemy of determinism. They erode trust in the pipeline, leading developers to ignore failure signals. Theoretical models of CI emphasise that a slow, deterministic pipeline is preferable to a fast, non-deterministic one, as the latter fails to provide valid feedback [1].
 
-## 3.2 - Immutability and Artifact Management
+## 3.2 - Immutability and Artefact Management
 
 Traditional software deployment often involved "patching" servers: logging into a running server and updating libraries or copying new files. This led to "snowflake servers" (unique, fragile systems whose state could not be reproduced).
 
-Modern CI/CD relies on immutability. Once a build artifact (such as a Docker image or a JAR file) is generated in the build stage, it is never modified. The exact same binary that is tested in the QA environment is promoted to Staging and then to Production. Configuration is injected from the outside (via environment variables), but the binary itself is immutable. This guarantees that if the software worked in testing, it will work in production, eliminating the class of errors known as "it works on my machine".
+Modern CI/CD relies on immutability. Once a build artefact (such as a Docker image or a JAR file) is generated in the build stage, it is never modified. The exact same binary that is tested in the QA environment is promoted to Staging and then to Production. Configuration is injected from the outside (via environment variables), but the binary itself is immutable. This guarantees that if the software worked in testing, it will work in production, eliminating the class of errors known as "it works on my machine" [1].
 
 ## 3.3 - The "Pipeline" Metaphor and Lean Theory
 
 The concept of the "pipeline" is derived from Lean Manufacturing and the Theory of Constraints. The software delivery process is visualised as a value stream. The goal is to maximise the flow of value (features) while minimising waste (waiting time, rework).
 
-The pipeline acts as a series of quality gates. Each stage (Build, Unit Test, Integration Test, Security Scan) attempts to "reject" the artifact. Only artifacts that survive all gates are allowed into production. This "fail-fast" architecture ensures that resources are not wasted on defective code. If a unit test fails, the expensive integration tests are never triggered.
+The pipeline acts as a series of quality gates. Each stage (Build, Unit Test, Integration Test, Security Scan) attempts to "reject" the artefact. Only artefacts that survive all gates are allowed into production. This "fail-fast" architecture ensures that resources are not wasted on defective code. If a unit test fails, the expensive integration tests are never triggered.
 
 ## 3.4 - Shift-Left Testing
 
@@ -226,12 +226,12 @@ Docker has revolutionised the execution environment. Instead of maintaining a VM
 
   * **Docker-in-Docker (DinD):** A common pattern where the CI runner itself is a container that spawns sibling containers to run tests. This allows a pipeline to spin up a Redis container and a Postgres container alongside the application container for integration testing, all defined in the pipeline YAML.
 
-## 4.4 - Artifact Repositories
+## 4.4 - Artefact Repositories
 
-It is an architectural anti-pattern to store build binaries in the VCS. Git is designed for text, not large binaries. Instead, Artifact Repositories (e.g., JFrog Artifactory, Sonatype Nexus) are used.
+It is an architectural anti-pattern to store build binaries in the VCS. Git is designed for text, not large binaries. Instead, Artefact Repositories (e.g., JFrog Artifactory, Sonatype Nexus) are used.
 
-  * **Role:** They act as a secure vault for the immutable artifacts generated by the CI process. They provide versioning, metadata (who built this?), and access control.
-  * **Workflow:** The CI build pushes the Docker image or JAR to the repository. The CD deploy stage pulls that exact artifact from the repository. This separation ensures that the production environment downloads a verified, virus-scanned, and signed binary.
+  * **Role:** They act as a secure vault for the immutable artefacts generated by the CI process. They provide versioning, metadata (who built this?), and access control.
+  * **Workflow:** The CI build pushes the Docker image or JAR to the repository. The CD deploy stage pulls that exact artefact from the repository. This separation ensures that the production environment downloads a verified, virus-scanned, and signed binary.
 
 ## 4.5 - Orchestration Engines
 
@@ -252,11 +252,11 @@ A pipeline is a scripted definition of the software delivery process. While ever
 3.  **Unit Testing:**
     Automated tests that verify individual functions in isolation are executed. These tests mock external dependencies (databases, APIs). DORA metrics suggest that elite performers maintain comprehensive unit test suites that run in minutes.
 4.  **Static Application Security Testing (SAST):**
-    Security scanners analyse the source code for known vulnerability patterns (e.g., SQL injection risks, hardcoded credentials). This is a key component of DevSecOps, catching vulnerabilities before the artifact is even created.
-5.  **Artifact Packaging & Signing:**
-    If all tests pass, the application is packaged into its distributable format (e.g., building a Docker image). Crucially, this artifact is signed using cryptographic tools like Cosign. This digital signature serves as a "seal of quality," proving that the artifact was generated by a trusted CI pipeline and has not been tampered with.
+    Security scanners analyse the source code for known vulnerability patterns (e.g., SQL injection risks, hardcoded credentials). This is a key component of DevSecOps, catching vulnerabilities before the artefact is even created.
+5.  **Artefact Packaging & Signing:**
+    If all tests pass, the application is packaged into its distributable format (e.g., building a Docker image). Crucially, this artefact is signed using cryptographic tools like Cosign. This digital signature serves as a "seal of quality," proving that the artefact was generated by a trusted CI pipeline and has not been tampered with.
 6.  **Integration/Staging Deployment:**
-    The artifact is deployed to a "Staging" environment that mirrors production. This allows for integration testing (verifying that the application interacts correctly with real databases and services).
+    The artefact is deployed to a "Staging" environment that mirrors production. This allows for integration testing (verifying that the application interacts correctly with real databases and services).
 7.  **End-to-End (E2E) Testing:**
     Tools like Selenium or Cypress run user simulation scripts against the staging environment. These tests verify the "happy path" of user journeys (e.g., "User can login and add item to cart").
 8.  **Production Deployment:**
@@ -271,8 +271,8 @@ flowchart TD
     Build[Build and compile]
     Unit[Unit tests]
     SAST[Security scan SAST]
-    Package[Package artifact Docker or Jar]
-    Sign[Sign artifact Cosign]
+    Package[Package artefact Docker or Jar]
+    Sign[Sign artefact Cosign]
     DeployStage[Deploy to staging]
     E2E[End to end tests]
     Gate{Approval gate}
@@ -420,11 +420,11 @@ To combat supply chain attacks, the industry has adopted the Supply-chain Levels
 An SBOM is a formal inventory of all ingredients (libraries, modules, snippets) that make up a software component.
 
   * **Necessity:** Modern software is 80-90% open-source components. When a vulnerability like Log4j is discovered, organisations need to know instantly which of their applications contain that library.
-  * **Automation:** CI pipelines now include steps to generate SBOMs (using tools like Syft or Trivy) in standard formats like SPDX or CycloneDX. These SBOMs are stored alongside the artifacts.
+  * **Automation:** CI pipelines now include steps to generate SBOMs (using tools like Syft or Trivy) in standard formats like SPDX or CycloneDX. These SBOMs are stored alongside the artefacts.
 
-## 7.3 - Artifact Signing with Cosign
+## 7.3 - Artefact Signing with Cosign
 
-To ensure that the container running in production is the exact one built and scanned by the CI pipeline, artifacts must be cryptographically signed.
+To ensure that the container running in production is the exact one built and scanned by the CI pipeline, artefacts must be cryptographically signed.
 
   * **Cosign:** Part of the Sigstore project, Cosign simplifies signing. It supports "keyless" signing using OpenID Connect (OIDC). The CI system (e.g., GitHub Actions) authenticates with a certificate authority (Fulcio) to prove its identity (e.g., "I am the workflow run X of repo Y"). It receives a short-lived certificate to sign the image.
   * **Enforcement:** In the Kubernetes cluster, a policy engine (like OPA or Kyverno) checks the signature. If the image lacks a valid signature from the trusted CI pipeline, the cluster refuses to run it.
@@ -467,17 +467,17 @@ The frontier of CI/CD innovation lies in the integration of Artificial Intellige
 
 Diagnosing pipeline failures is labor-intensive. A developer might spend hours parsing thousands of lines of logs to find a missing semicolon.
 
-  * **LogSage:** Recent research (2025) introduces frameworks like LogSage, which utilise Large Language Models (LLMs) for Root Cause Analysis (RCA).
-  * **Mechanism:** LogSage employs a Retrieval-Augmented Generation (RAG) approach. It pre-processes the raw logs to filter noise, retrieves historical solutions from an internal knowledge base, and uses an LLM to generate a natural language explanation of the failure (e.g., "The build failed because of a version conflict in package-lock.json"). It can even invoke tools to attempt automated remediation.
-  * **Impact:** This drastically reduces the Mean Time to Recovery (MTTR) for build failures, freeing up developer time.
+  * **LogSage:** Recent research (2025) introduces frameworks like LogSage, which utilise Large Language Models (LLMs) for Root Cause Analysis (RCA) [3].
+  * **Mechanism:** LogSage employs a Retrieval-Augmented Generation (RAG) approach. It pre-processes the raw logs to filter noise, retrieves historical solutions from an internal knowledge base, and uses an LLM to generate a natural language explanation of the failure (e.g., "The build failed because of a version conflict in package-lock.json"). It can even invoke tools to attempt automated remediation [3].
+  * **Impact:** This drastically reduces the Mean Time to Recovery (MTTR) for build failures, freeing up developer time [3].
 
 ## 9.2 - Green CI/CD: Environmental Impact
 
-The energy consumption of CI/CD is becoming a concern. A 2025 study investigated the Carbon and Water Footprints (CWF) of GitHub Actions.
+The energy consumption of CI/CD is becoming a concern. A 2025 study investigated the Carbon and Water Footprints (CWF) of GitHub Actions [2].
 
-  * **Findings:** The GitHub Actions ecosystem alone is estimated to produce between 150 and 994 Metric Tonnes of $CO_2$ equivalent ($MTCO_2e$) annually.
-  * **Efficiency:** Interestingly, the study found that SaaS runners (GitHub Actions) are often more energy-efficient (approx. 13 Joules/job) than self-hosted or less optimised runners (GitLab CI approx. 21 Joules/job) for comparable tasks, likely due to the massive scale and optimisation of the Azure data centres backing GitHub.
-  * **Strategies:** "Green CI" practices include caching artifacts to avoid recompilation, optimizing container sizes, and scheduling non-urgent builds (like nightly regressions) during times when the regional energy grid is powered by renewables.
+  * **Findings:** The GitHub Actions ecosystem alone is estimated to produce between 150 and 994 Metric Tonnes of $CO_2$ equivalent ($MTCO_2e$) annually [2].
+  * **Efficiency:** Interestingly, the study found that SaaS runners (GitHub Actions) are often more energy-efficient (approx. 13 Joules/job) than self-hosted or less optimised runners (GitLab CI approx. 21 Joules/job) for comparable tasks, likely due to the massive scale and optimisation of the Azure data centres backing GitHub [2].
+  * **Strategies:** "Green CI" practices include caching artefacts to avoid recompilation, optimising container sizes, and scheduling non-urgent builds (like nightly regressions) during times when the regional energy grid is powered by renewables.
 
 -----
 

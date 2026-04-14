@@ -38,11 +38,11 @@
 
 # 1 - Introduction: The Paradigm Shift in Data Management
 
-The landscape of data management has undergone a fundamental transformation driven by the increasing interconnectivity of modern datasets. For decades, the Relational Database Management System (RDBMS), founded on E.F. Codd’s relational algebra, served as the bedrock of software engineering. This model organises data into tuples (rows) grouped into relations (tables), prioritising the efficient storage of discrete entities. However, as applications evolved from simple record-keeping to complex network analysis (such as social graphs, fraud detection rings, and supply chain dependencies) the limitations of the relational model became apparent.
+The landscape of data management has undergone a fundamental transformation driven by the increasing interconnectivity of modern datasets. For decades, the Relational Database Management System (RDBMS), founded on E.F. Codd’s relational algebra, served as the bedrock of software engineering. This model organises data into tuples (rows) grouped into relations (tables), prioritising the efficient storage of discrete entities [1]. However, as applications evolved from simple record-keeping to complex network analysis (such as social graphs, fraud detection rings, and supply chain dependencies) the limitations of the relational model became apparent.
 
 This limitation is technically referred to as the "impedance mismatch". In object-oriented software development, data is often modelled as a graph of objects referencing one another. When persisting this data to an RDBMS, the rich web of references must be dismantled and flattened into tabular structures, only to be painstakingly reassembled during retrieval via Object-Relational Mapping (ORM) tools. More critically, the computational cost of reassembling these relationships grows exponentially with the depth of the inquiry. In a relational system, traversing a relationship requires a JOIN operation, which typically involves an index lookup ($O(\log N)$) followed by a scan. As queries require deeper traversals (e.g., friends of friends of friends), the number of joins increases, leading to a performance bottleneck known colloquially as the "join bomb".
 
-Graph databases emerged to resolve this fundamental inefficiency. Unlike relational systems that model relationships as metadata (foreign keys) requiring computation to resolve, graph databases treat relationships as first-class data entities. They employ a storage architecture based on "index-free adjacency", where connected nodes physically point to one another in memory or on disk. This architectural decision decouples the cost of traversing a relationship from the total size of the dataset, theoretically allowing for $O(1)$ traversal complexity per hop.
+Graph databases emerged to resolve this fundamental inefficiency. Unlike relational systems that model relationships as metadata (foreign keys) requiring computation to resolve, graph databases treat relationships as first-class data entities. They employ a storage architecture based on "index-free adjacency", where connected nodes physically point to one another in memory or on disk. This architectural decision decouples the cost of traversing a relationship from the total size of the dataset, theoretically allowing for $O(1)$ traversal complexity per hop [4].
 
 **Graph Model (Index-Free Adjacency)**
 ```mermaid
@@ -102,10 +102,10 @@ $$
 
 For a weighted graph, where edges carry a value (weight) $w$, the entry $A_{ij}$ contains the weight $w_{ij}$ instead of a binary 1.
 
-Spectral Graph Theory analyses the eigenvalues and eigenvectors of the adjacency matrix (or the related Laplacian matrix $L = D - A$, where $D$ is the degree matrix). These spectral properties reveal critical information about the graph's structure:
+Spectral Graph Theory analyses the eigenvalues and eigenvectors of the adjacency matrix (or the related Laplacian matrix $L = D - A$, where $D$ is the degree matrix). These spectral properties reveal critical information about the graph's structure [2]:
 
   * The **Eigenvalues** of $A$ provide bounds on graph properties such as the chromatic number and the maximum cut.
-  * The **Eigenvector** corresponding to the largest eigenvalue is central to ranking algorithms like PageRank, which interprets the eigenvector entries as a measure of vertex centrality.
+  * The **Eigenvector** corresponding to the largest eigenvalue is central to ranking algorithms like PageRank, which interprets the eigenvector entries as a measure of vertex centrality [3].
 
 ### 2.1.3 - Hypergraphs
 
@@ -130,7 +130,7 @@ For example, to determine if two nodes are connected by a path of length 2 (e.g.
 
 $$(A^2)_{ij} = \sum_{k=1}^{n} A_{ik} \cdot A_{kj}$$
 
-This algebraic formulation allows graph databases, particularly those with Massively Parallel Processing (MPP) architectures like TigerGraph, to utilise vectorised instructions and GPU acceleration to perform deep-link analytics across billions of nodes.
+This algebraic formulation allows graph databases, particularly those with Massively Parallel Processing (MPP) architectures like TigerGraph, to utilise vectorised instructions and GPU acceleration to perform deep-link analytics across billions of nodes [14].
 
 
 # 3 - Data Models: Labelled Property Graph vs. RDF
@@ -139,7 +139,7 @@ Two dominant data models govern the implementation of graph databases: the Label
 
 ## 3.1 - The Labelled Property Graph (LPG)
 
-The LPG model is the de facto standard for industrial graph applications (e.g., Neo4j, Amazon Neptune's LPG mode). It prioritises storage efficiency and traversal speed.
+The LPG model is the de facto standard for industrial graph applications (e.g., Neo4j, Amazon Neptune's LPG mode). It prioritises storage efficiency and traversal speed [4].
 
 **Key Components:**
 
@@ -163,7 +163,7 @@ The ability to store properties directly on edges allows for compact modelling. 
 
 ## 3.2 - Resource Description Framework (RDF)
 
-RDF is a standard maintained by the W3C, originally designed for the Semantic Web and data interchange.
+RDF is a standard maintained by the W3C, originally designed for the Semantic Web and data interchange [4].
 
 **Key Components:**
 
@@ -174,7 +174,7 @@ RDF is a standard maintained by the W3C, originally designed for the Semantic We
   * **Graph:** A collection of triples.
 
 **Structural Differences and Reification:**
-Unlike LPGs, standard RDF does not support properties on edges. To model the score: 5 property on a RATED relationship, RDF requires reification, where the relationship is converted into a node.
+Unlike LPGs, standard RDF does not support properties on edges. To model the score: 5 property on a RATED relationship, RDF requires reification, where the relationship is converted into a node [4].
 
   * Original: Alice -\> Rated -\> Matrix
   * Reified:
@@ -210,7 +210,7 @@ graph TD
 ```
 
 **Semantic Rigour:**
-RDF excels in interoperability and inference. Through ontologies (OWL, RDFS), RDF stores support logical reasoning. For example, if an ontology defines Manager as a subclass of Employee, a query for Employee will automatically retrieve all Manager nodes, a capability not natively present in most LPG systems without explicit rule coding.
+RDF excels in interoperability and inference. Through ontologies (OWL, RDFS), RDF stores support logical reasoning. For example, if an ontology defines Manager as a subclass of Employee, a query for Employee will automatically retrieve all Manager nodes, a capability not natively present in most LPG systems without explicit rule coding [4][5].
 
 ## 3.3 - Comparative Summary
 
@@ -230,7 +230,7 @@ The performance characteristics of a graph database are determined by how the ma
 
 ## 4.1 - Native Graph Storage: Index-Free Adjacency
 
-The defining architectural feature of native graph databases (e.g., Neo4j) is index-free adjacency. In this model, every node record physically contains the memory addresses (pointers) of its incident relationships. Consequently, traversing from a node to its neighbour involves a direct pointer dereference—a constant-time operation $O(1)$ (rather than an index lookup).
+The defining architectural feature of native graph databases (e.g., Neo4j) is index-free adjacency [4]. In this model, every node record physically contains the memory addresses (pointers) of its incident relationships. Consequently, traversing from a node to its neighbour involves a direct pointer dereference—a constant-time operation $O(1)$ (rather than an index lookup).
 
 ### 4.1.1 - Neo4j Storage Layout
 
@@ -346,13 +346,13 @@ The interface between the user and the mathematical graph structure is the query
 
 ## 5.1 - Cypher and the Declarative Pattern
 
-Cypher, originally developed for Neo4j, is a declarative language that uses ASCII-art to visually represent graph patterns.
+Cypher, originally developed for Neo4j, is a declarative language that uses ASCII-art to visually represent graph patterns [7].
 
   * **Syntax:** (n:Person)--\>(m:Person) intuitively describes a path.
   * **Declarative Nature:** The user specifies what to find (the pattern), not how to find it. The database query planner determines the optimal traversal strategy (e.g., which node to start with, which index to use).
 
 **Formal Semantics:**
-Cypher's semantics have been formalised in academic literature to ensure correctness. The core operation is Pattern Matching.
+Cypher's semantics have been formalised in academic literature to ensure correctness [7]. The core operation is Pattern Matching.
 Let $G$ be a graph and $\pi$ be a pattern. The semantics define a relation $(p, G, u) \models \pi$, meaning path $p$ in graph $G$ satisfies pattern $\pi$ under variable assignment $u$.
 The evaluation of a Cypher query is defined as a function mapping an input table (of previous bindings) to an output table.
 
@@ -362,10 +362,10 @@ This function finds all paths matching $\pi$ for each row in table $T$ and exten
 
 ## 5.2 - SPARQL and Algebra
 
-SPARQL is the standard query language for RDF. It is based on graph pattern matching over triples.
+SPARQL is the standard query language for RDF. It is based on graph pattern matching over triples [6].
 
   * **Algebra:** SPARQL queries are translated into an algebra of operators: BGP (Basic Graph Pattern), Join, Filter, Union, LeftJoin (OPTIONAL).
-  * **Complexity:** The evaluation of SPARQL patterns is generally polynomial, but adding features like OPTIONAL can make complexity PSPACE-complete.
+  * **Complexity:** The evaluation of SPARQL patterns is generally polynomial, but adding features like OPTIONAL can make complexity PSPACE-complete [6].
   * **Interoperability:** Tools exist to translate SPARQL to Cypher, allowing RDF data to be queried by property graph engines, although impedance mismatches in semantics (e.g., bag vs. set semantics) pose challenges.
 
 ## 5.3 - GQL: The ISO Standard (ISO/IEC 39075)
@@ -379,11 +379,11 @@ In April 2024, the ISO published GQL (Graph Query Language), the first new datab
 
 ## 5.4 - Graph Algebra and MATLANG
 
-For high-performance analytics, graph operations are often mapped to linear algebra. MATLANG is a formal matrix language designed for this purpose.
+For high-performance analytics, graph operations are often mapped to linear algebra. MATLANG is a formal matrix language designed for this purpose [5].
 
   * **Matrix-Vector Multiplication:** Used for Breadth-First Search (BFS) traversal.
   * **Matrix-Matrix Multiplication:** Used for finding paths of specific lengths (as discussed in Section 2.2).
-  * **Expressiveness:** MATLANG can express all graph queries definable in first-order logic with three variables, bridging the gap between database theory and linear algebra implementations on hardware accelerators like GPUs.
+  * **Expressiveness:** MATLANG can express all graph queries definable in first-order logic with three variables, bridging the gap between database theory and linear algebra implementations on hardware accelerators like GPUs [5].
 
 
 # 6 - Distributed Graph Systems and Scalability
@@ -436,16 +436,16 @@ Vertices are assigned to specific machines. Edges connecting vertices on differe
 Edges are assigned to machines to balance the load. Vertices that connect these edges are replicated (cut) across the machines.
 
   * **Advantage:** This effectively handles Power-Law Graphs (scale-free networks) where a few "Supernodes" (e.g., a Twitter celebrity) have millions of connections. In an edge-cut, the machine holding the celebrity node would be overwhelmed. In vertex-cut, the celebrity's edges are distributed across the cluster.
-  * **Usage:** Systems like TigerGraph and academic systems like PowerGraph utilise this to achieve massive parallel throughput.
+  * **Usage:** Systems like TigerGraph and academic systems like PowerGraph utilise this to achieve massive parallel throughput [9].
 
 ## 6.2 - CAP Theorem and Consistency Models
 
-Distributed graph databases must adhere to the CAP Theorem, which states that a system can only guarantee two of three properties: Consistency, Availability, and Partition Tolerance.
+Distributed graph databases must adhere to the CAP Theorem, which states that a system can only guarantee two of three properties: Consistency, Availability, and Partition Tolerance [12].
 
 **CP (Consistency-Prioritised):**
 
   * **Example:** Neo4j Causal Clustering.
-  * **Mechanism:** Uses the Raft consensus algorithm. Writes are committed only when a quorum of nodes acknowledges them.
+  * **Mechanism:** Uses the Raft consensus algorithm. Writes are committed only when a quorum of nodes acknowledges them [13].
   * **Trade-off:** If a network partition occurs, the minority partition effectively stops accepting writes to preserve data consistency (ACID). This ensures that graph traversals never encounter "dangling pointers" or broken relationships.
 
 **AP (Availability-Prioritised):**
@@ -477,7 +477,7 @@ In a sparse graph (where $E \ll V^2$), the Adjacency Matrix is wasteful of space
 
 ## 7.2 - Parallel Graph Algorithms (Pregel/BSP)
 
-For global analytics like PageRank or Community Detection, the traversal model (one walker stepping node-to-node) is inefficient. Instead, systems use the Bulk Synchronous Parallel (BSP) model, popularised by Google's Pregel.
+For global analytics like PageRank or Community Detection, the traversal model (one walker stepping node-to-node) is inefficient. Instead, systems use the Bulk Synchronous Parallel (BSP) model, popularised by Google's Pregel [8].
 
 **Mechanism:**
 
@@ -488,13 +488,13 @@ For global analytics like PageRank or Community Detection, the traversal model (
   * **Output:** Send messages to neighbours for Superstep $S+1$.
   * **Global Barrier:** All vertices must complete Superstep $S$ before $S+1$ begins.
 
-This model allows systems like TigerGraph and Neo4j Graph Data Science to parallelise computations across thousands of cores.
+This model allows systems like TigerGraph and Neo4j Graph Data Science to parallelise computations across thousands of cores [8].
 
 ## 7.3 - External Memory Algorithms
 
-When the graph exceeds available RAM, algorithms must manage disk I/O efficiently. Standard BFS causes random disk access, leading to poor performance. External Memory (EM) Graph Algorithms optimise this by structuring traversals to maximise sequential I/O.
+When the graph exceeds available RAM, algorithms must manage disk I/O efficiently. Standard BFS causes random disk access, leading to poor performance. External Memory (EM) Graph Algorithms optimise this by structuring traversals to maximise sequential I/O [10].
 
-**Buffered Repository Trees (BRT):** A data structure used to batch updates and reads, reducing the I/O complexity of BFS from $O(V)$ random seeks to $O(\text{sort}(V+E))$, where $\text{sort}(N)$ is the I/O cost of sorting $N$ items.
+**Buffered Repository Trees (BRT):** A data structure used to batch updates and reads, reducing the I/O complexity of BFS from $O(V)$ random seeks to $O(\text{sort}(V+E))$, where $\text{sort}(N)$ is the I/O cost of sorting $N$ items [10][11].
 
 
 # 8 - Emerging Trends: Graph RAG and AI Integration
@@ -503,7 +503,7 @@ The frontier of graph database research lies in the integration with Artificial 
 
 ## 8.1 - Retrieval Augmented Generation (Graph RAG)
 
-Standard RAG systems retrieve documents based on vector similarity. However, they struggle with "multi-hop" reasoning (connecting disparate facts that are not semantically similar but are structurally related). Graph RAG addresses this.
+Standard RAG systems retrieve documents based on vector similarity [15]. However, they struggle with "multi-hop" reasoning (connecting disparate facts that are not semantically similar but are structurally related). Graph RAG addresses this [16].
 
 **Mechanism:**
 
@@ -513,13 +513,13 @@ Standard RAG systems retrieve documents based on vector similarity. However, the
   * **Generation:** This structured subgraph is linearised (converted to text) and fed into the LLM as a prompt context.
 
 **Mathematical Advantage:**
-Graph RAG introduces structural grounding. The LLM's response is constrained by the explicit paths found in the graph, significantly reducing hallucinations compared to vector-only methods.
+Graph RAG introduces structural grounding. The LLM's response is constrained by the explicit paths found in the graph, significantly reducing hallucinations compared to vector-only methods [16].
 
 ## 8.2 - Graph Neural Networks (GNNs)
 
-GNNs are deep learning models designed to operate directly on graph structures. They generate node embeddings (vector representations that capture not just the node's properties, but its topological position in the network).
+GNNs are deep learning models designed to operate directly on graph structures. They generate node embeddings (vector representations that capture not just the node's properties, but its topological position in the network) [17][18].
 
-Graph databases are evolving to store these embeddings natively, allowing for hybrid queries that combine symbolic graph traversal (e.g., "Find friends") with neural vector search (e.g., "Find semantically similar users"). This convergence leads to "Vector-Graph" databases capable of complex semantic reasoning.
+Graph databases are evolving to store these embeddings natively, allowing for hybrid queries that combine symbolic graph traversal (e.g., "Find friends") with neural vector search (e.g., "Find semantically similar users"). This convergence leads to "Vector-Graph" databases capable of complex semantic reasoning [17].
 
 
 # 9 - Conclusion

@@ -113,7 +113,7 @@
 	- [4.2 Database](#42-database)
 		- [4.2.1 Relational Database (SQL)](#421-relational-database-sql)
 			- [Explanation of the Database](#explanation-of-the-database)
-			- [Normalization](#normalization)
+			- [Normalisation](#normalisation)
 			- [Functional Dependencies](#functional-dependencies)
 			- [Closures](#closures)
 			- [Second Normal Form (2NF)](#second-normal-form-2nf)
@@ -458,7 +458,7 @@ Supabase offers a range of services and tools (similar to Firebase) that are des
 
 Supabase offers a number of services that are not available on Firebase, making it a more comprehensive backend as a service solution [25][26]. One of the key features is the advanced SQL interface, which allows developers to query and manipulate data stored in its PostgreSQL databases using SQL [25][26]. This is a major difference from Firebase, which only provides a NoSQL interface. Supabase also offers built-in user authentication, allowing users to log in with email and password or social logins like Google and GitHub [25][26]. This is more extensive than the authentication provided by Firebase [25][26]. Additionally, Supabase provides a way to dynamically create APIs using SQL, making it easier for developers to expose data stored in their databases to other systems [25][26]. This is not available on Firebase. Supabase also allows developers to use custom domains for their APIs, making it easier to use their APIs in production. This feature is not offered by Firebase [25][26]. Lastly, Supabase provides a collaborative SQL editor that allows multiple users to work on the same query at the same time, making it easier to work with team members [25][26]. This feature is not available on Firebase
 
-Firebase offers a number of services that are not available on Supabase, providing a wider range of tools for developers. Some of these services include Remote Config, which allows developers to change the behavior and appearance of their app without having to release a new version, Dynamic Links, which create deep links that work across multiple platforms, and App Indexing, which makes it easier for users to find and launch an app from Google Search results [25][26]. Additionally, Firebase provides Cloud Messaging, a free service that allows developers to send notifications and messages to their users, and In-App Messaging, which allows developers to send targeted messages to users while they are actively using the app [25][26]. Finally, Firebase also provides a built-in integration with Google Analytics, providing valuable insights into user interactions with the app
+Firebase offers a number of services that are not available on Supabase, providing a wider range of tools for developers. Some of these services include Remote Config, which allows developers to change the behaviour and appearance of their app without having to release a new version, Dynamic Links, which create deep links that work across multiple platforms, and App Indexing, which makes it easier for users to find and launch an app from Google Search results [25][26]. Additionally, Firebase provides Cloud Messaging, a free service that allows developers to send notifications and messages to their users, and In-App Messaging, which allows developers to send targeted messages to users while they are actively using the app [25][26]. Finally, Firebase also provides a built-in integration with Google Analytics, providing valuable insights into user interactions with the app
 
 #### How it Could be Used in this Project
 
@@ -472,13 +472,13 @@ The front end of a website is the part that users can see and interact with on t
 
 ### 2.2.1 React Library
 
-React is a popular JavaScript library for building user interfaces and has been widely adopted by developers for building web and mobile applications [28]. React allows developers to create reusable UI components and manage the state of their applications, making it easier to build complex and dynamic user interfaces [29]. React uses a virtual DOM (Document Object Model) to efficiently update the UI and optimize performance [29]. This makes React a fast and reliable option for building high-performance applications
+React is a popular JavaScript library for building user interfaces and has been widely adopted by developers for building web and mobile applications [28]. React allows developers to create reusable UI components and manage the state of their applications, making it easier to build complex and dynamic user interfaces [29]. React uses a virtual DOM (Document Object Model) to efficiently update the UI and optimise performance [29]. This makes React a fast and reliable option for building high-performance applications
 
 For this project, both the first prototype and the current system use React. Both also use React component libraries for faster and more agile
 
 ### 2.2.2 Component Libraries for Both Systems
 
-React component libraries are pre-built and pre-styled UI components that can be easily imported and used in React projects [30]. These libraries provide a set of components with consistent design, behavior, and functionality, making it easier for developers to build user interfaces and ensure consistency across their applications [30]. React component libraries are a great way to speed up development and reduce the amount of time spent on creating and styling individual components. They also help to maintain a consistent design and user experience, making it easier for users to navigate and understand the application
+React component libraries are pre-built and pre-styled UI components that can be easily imported and used in React projects [30]. These libraries provide a set of components with consistent design, behaviour, and functionality, making it easier for developers to build user interfaces and ensure consistency across their applications [30]. React component libraries are a great way to speed up development and reduce the amount of time spent on creating and styling individual components. They also help to maintain a consistent design and user experience, making it easier for users to navigate and understand the application
 
 As mentioned before, both the current system and the first prototype use React and components libraries for faster development and well-tested styling that adheres to accessibility guidelines [30]. This means that high-level components do not have to be created from scratch and custom CSS does not have to be developed and thoroughly tested [31]. However, the use of component libraries makes it less flexible, making it harder to implement more complex UI designs that were not added to the library
 
@@ -492,13 +492,13 @@ Material UI, on the other hand, has a larger library of components but this has 
 
 #### Alternative Component Libraries
 
-The developer considered several other less popular or less flexible component libraries for React, including Ulkit and Blueprint [33]. Ulkit was found to be very simple and fast, but it only had 30 components, making it less viable for complex applications like this project [33]. Blueprint, on the other hand, was mainly used in data visualization, which was not the main focus of this application
+The developer considered several other less popular or less flexible component libraries for React, including Ulkit and Blueprint [33]. Ulkit was found to be very simple and fast, but it only had 30 components, making it less viable for complex applications like this project [33]. Blueprint, on the other hand, was mainly used in data visualisation, which was not the main focus of this application
 
 ### 2.2.3 Next.JS Compared to Regular React
 
-React has many weaknesses which make it unsuitable for large complex projects such as this one. One of the main weaknesses of React is its lack of structure, as it allows developers to write code in any way they want, which can lead to a cluttered codebase and make it harder to maintain and scale the project in the future [34]. React is also not a full-fledged framework and requires additional libraries and tools to handle tasks such as routing, state management, and server-side rendering [34]. These additional tools can lead to a steep learning curve for new developers and can make the development process more complex [34]. Furthermore, React does not have a built-in solution for SEO optimization, which can make it difficult for search engines to crawl and index the content of a React-based website. This makes using React very difficult for the first prototype
+React has many weaknesses which make it unsuitable for large complex projects such as this one. One of the main weaknesses of React is its lack of structure, as it allows developers to write code in any way they want, which can lead to a cluttered codebase and make it harder to maintain and scale the project in the future [34]. React is also not a full-fledged framework and requires additional libraries and tools to handle tasks such as routing, state management, and server-side rendering [34]. These additional tools can lead to a steep learning curve for new developers and can make the development process more complex [34]. Furthermore, React does not have a built-in solution for SEO optimisation, which can make it difficult for search engines to crawl and index the content of a React-based website. This makes using React very difficult for the first prototype
 
-Next.JS on the other hand, eliminates all the issues and adds missing functionalities to React [34]. It is a popular and widely used JavaScript framework for building server-side rendered (SSR) and static web applications [34]. It is built on top of React and provides a seamless and simple way to build and deploy fast, reliable and scalable web applications [34]. Next.JS provides a set of built-in features such as automatic code splitting, optimized performance, and easy-to-use APIs for server-side rendering and data fetching, making it a popular choice for web developers [34]. Additionally, Next.JS also supports static exporting, allowing developers to generate static HTML files that can be served directly from a CDN, resulting in faster page load times and improved performance
+Next.JS on the other hand, eliminates all the issues and adds missing functionalities to React [34]. It is a popular and widely used JavaScript framework for building server-side rendered (SSR) and static web applications [34]. It is built on top of React and provides a seamless and simple way to build and deploy fast, reliable and scalable web applications [34]. Next.JS provides a set of built-in features such as automatic code splitting, optimised performance, and easy-to-use APIs for server-side rendering and data fetching, making it a popular choice for web developers [34]. Additionally, Next.JS also supports static exporting, allowing developers to generate static HTML files that can be served directly from a CDN, resulting in faster page load times and improved performance
 
 For these reasons, Next.JS was chosen to be used for the final system after running into roadblocks using regular React for the first project. It has provided a set standard forcing consistency which would allow developers to collaborate and contribute to this project in the future [34]. On the first prototype, the use of regular React was a hindrance and slowed down development as a lot of time was taken up by configurations and adding missing functionalities to the library by adding other libraries [34]. The lack of a standard in the project structure would also make it more difficult for developers to contribute to the project in the future
 
@@ -520,7 +520,7 @@ React has a built-in tool for managing the state called React Context API [36]. 
 
 #### State Management Tools
 
-A state manager is a tool or library that helps with state management in a React application [37]. A state manager provides features such as global state, actions, reducers, selectors, middleware, etc. that simplify and optimize state management [37]. For example, Redux is a popular state manager for React that implements the Flux architecture [37]. The main reason to use a state manager is to handle complex and large-scale applications that have many components that share and manipulate state data [37]. A state manager can help with performance optimization by avoiding unnecessary re-rendering of components [37]. A state manager can also help with code readability and maintainability by enforcing best practices and patterns for state management
+A state manager is a tool or library that helps with state management in a React application [37]. A state manager provides features such as global state, actions, reducers, selectors, middleware, etc. that simplify and optimise state management [37]. For example, Redux is a popular state manager for React that implements the Flux architecture [37]. The main reason to use a state manager is to handle complex and large-scale applications that have many components that share and manipulate state data [37]. A state manager can help with performance optimisation by avoiding unnecessary re-rendering of components [37]. A state manager can also help with code readability and maintainability by enforcing best practices and patterns for state management
 
 #### Comparing Recoil to the Built-In React Context API
 
@@ -578,7 +578,7 @@ As mentioned before, the first prototype of the project used a relational databa
 
 ### 2.3.2 Non-Relational Database using on Final System
 
-A non-relational database is a database that does not use the tabular schema of rows and columns found in most traditional database systems [51]. Instead, non-relational databases use a storage model that is optimized for the specific requirements of the type of data being stored [51]. Non-relational databases are sometimes referred to as "NoSQL" [51]. Non-relational databases are often used when large quantities of complex and diverse data need to be organized, or when data is frequently changed or updated [51]. The data is normally stored in a structure similar to a file system
+A non-relational database is a database that does not use the tabular schema of rows and columns found in most traditional database systems [51]. Instead, non-relational databases use a storage model that is optimised for the specific requirements of the type of data being stored [51]. Non-relational databases are sometimes referred to as "NoSQL" [51]. Non-relational databases are often used when large quantities of complex and diverse data need to be organized, or when data is frequently changed or updated [51]. The data is normally stored in a structure similar to a file system
 
 #### Advantages
 
@@ -626,7 +626,7 @@ Mockups were used to evaluate what the site would look like as a simple prototyp
 
 The Agile approach also allowed for ample experimentation, by allowing the developer to try different technologies at a small scale and evaluate what worked without deciding on a technology too early on. The initial prototype of the system used Flask for the back-end and React (Material UI) for the front
 
-The use of a non-relational database also facilitated this Agile workflow, as its flexibility allowed the system to be changed quickly if there were changes in requirements, while the requirements were still being discovered and during the experimentation phase. On the other hand, the use of a relational database, as used in the first prototype of the project, was a hindrance to the development as each time there was a change, the database required restructuring and redoing the calculations necessary to normalize the database, which is something that would have to be done often as the requirements were not
+The use of a non-relational database also facilitated this Agile workflow, as its flexibility allowed the system to be changed quickly if there were changes in requirements, while the requirements were still being discovered and during the experimentation phase. On the other hand, the use of a relational database, as used in the first prototype of the project, was a hindrance to the development as each time there was a change, the database required restructuring and redoing the calculations necessary to normalise the database, which is something that would have to be done often as the requirements were not
 
 The use of React component libraries also contributed to this project's Agile development. This is because using component libraries made development faster as components did not have to be created from scratch and less testing was required as Chakra UI and Material UI already carried out their own testing to verify that the components meet accessibility standards
 
@@ -680,7 +680,7 @@ In conclusion, Vitest has been chosen as it provides benefits that are more appr
 
 ### 3.2.2 User Testing
 
-User testing refers to the process of evaluating a product, application or website by having real users interact with it [62]. The aim is to collect feedback from users about the product's usability, functionality, and overall satisfaction [62]. User testing is an important step in the development process as it allows developers to identify any problems or pain points in the product that may affect the user experience [62]. This information can then be used to make improvements and optimize the product for the end-user [62]. By conducting user testing, developers can ensure that the product meets the needs and expectations of the target audience and provides a positive user experience [62]. This helps to increase user satisfaction, loyalty, and the overall success of the product. In addition, user testing can also help to identify any potential security or privacy issues that may need to be addressed
+User testing refers to the process of evaluating a product, application or website by having real users interact with it [62]. The aim is to collect feedback from users about the product's usability, functionality, and overall satisfaction [62]. User testing is an important step in the development process as it allows developers to identify any problems or pain points in the product that may affect the user experience [62]. This information can then be used to make improvements and optimise the product for the end-user [62]. By conducting user testing, developers can ensure that the product meets the needs and expectations of the target audience and provides a positive user experience [62]. This helps to increase user satisfaction, loyalty, and the overall success of the product. In addition, user testing can also help to identify any potential security or privacy issues that may need to be addressed
 
 For this project, user testing was a crucial aspect of the development process. The goal was to gather feedback from real users to understand their experience with the system and identify areas for improvement. To gather this feedback, participants were asked to fill in a questionnaire on Google Forms. The questionnaire was designed to gather information about the participant's experience with the system, their satisfaction with its features, and any suggestions for
 
@@ -881,7 +881,7 @@ Code refactoring is the process of restructuring existing code without changing 
 These are some reasons why code refactoring is important and leads to better code quality:
 
 - Improved code structure: Code refactoring involves breaking down large and complex code structures into smaller, more manageable units. By doing so, code becomes more modular and easier to maintain, understand, and extend. This results in a cleaner codebase that is easier to work with and reduces the likelihood of bugs and errors [74].
-- Better performance: Refactoring can also improve the performance of the codebase by optimizing algorithms and improving data structures. By identifying and addressing performance bottlenecks, developers can create a more responsive and efficient application
+- Better performance: Refactoring can also improve the performance of the codebase by optimising algorithms and improving data structures. By identifying and addressing performance bottlenecks, developers can create a more responsive and efficient application
   [74].
 - Code reuse: Refactoring also makes it easier to reuse code across the application. By creating more modular and reusable code, developers can save time and effort by not having to re-write code that has already been written [74].
 - Increased maintainability: Code refactoring makes it easier to maintain the codebase over time. By improving the code structure, it becomes easier to identify and fix bugs, add new features, and modify existing functionality [74].
@@ -1205,7 +1205,7 @@ The posts entity in the database represents the content created by users in the 
 
 The comments entity in the database allows users to respond to the posts. Each comment belongs to both the user who created it and the post it is commenting on. Additionally, each comment can be replied to by another comment, creating a hierarchy of comments. This means that a comment can only belong to a post and optionally to one other comment. The functional dependencies described capture the use cases of the site, including the relationship between the comments, users, and
 
-#### Normalization
+#### Normalisation
 
 Normalisation is a process of organising the data in a database to avoid redundancy, inconsistency and anomalies [85]. Normalisation involves dividing the data into smaller and simpler tables that are linked by relationships. The benefits of normalisation are:
 
@@ -1214,13 +1214,13 @@ Normalisation is a process of organising the data in a database to avoid redunda
 - It ensures the integrity and consistency of the data by avoiding duplication and conflicts [85].
 - It facilitates the design and maintenance of the database schema by following a set of rules and principles
 
-below is the Mathematical calculations used to normalize the database design to achieve ACID complacency. First Normal Form (1NF) is achieved simply by splitting cells in the database and does not require any mathematical
+below is the Mathematical calculations used to normalise the database design to achieve ACID complacency. First Normal Form (1NF) is achieved simply by splitting cells in the database and does not require any mathematical
 
 #### Functional Dependencies
 
 Functional dependencies are a way of expressing constraints or rules that apply to the data in a database. A functional dependency means that the value of one attribute (or a set of attributes) determines the value of another attribute (or a set of attributes) [86]. For example, if we have a table with student names and IDs, we can say that the student ID functionally determines the student name, because each ID is associated with exactly one name. Functional dependencies are useful for designing and normalizing databases, as they help to avoid data redundancy and
 
-These are the functional dependencies for modelling the data in the database. This will be normalized using various normalization techniques such as Second Normal Form (2NF), and Third Normal Form
+These are the functional dependencies for modelling the data in the database. This will be normalised using various normalisation techniques such as Second Normal Form (2NF), and Third Normal Form
 
 ```
 R(user_id, username, user_name, community_id, community_name, community_description, post_id, post_content, post_edit_status, post_creation, comment_id, comment_content, tag_id, tag_name)
@@ -1358,7 +1358,7 @@ Filter_Tags_Posts(post_id, tag_id)
 
 ### 4.2.2 Non-Relational Database (NoSQL)
 
-As mentioned before, the final system uses a non-relational database provided by Firebase called Firestore. The rationale for using Firestore was discussed in Non-Relational Database using on Final System. Firestore is a document database, meaning that it is structured similar to a file system [51]. A collection in Firestore is similar to a folder and can store many related documents, for example, a collection of "users" can store many user objects [51]. These objects, collected into collections, are called "documents" [51]. Documents can also contain sub-collections, which were used in this project to capture certain types of relations when metadata was involved [51]. Since Firestore is a non-relational database, there was no normalization involved in the design
+As mentioned before, the final system uses a non-relational database provided by Firebase called Firestore. The rationale for using Firestore was discussed in Non-Relational Database using on Final System. Firestore is a document database, meaning that it is structured similar to a file system [51]. A collection in Firestore is similar to a folder and can store many related documents, for example, a collection of "users" can store many user objects [51]. These objects, collected into collections, are called "documents" [51]. Documents can also contain sub-collections, which were used in this project to capture certain types of relations when metadata was involved [51]. Since Firestore is a non-relational database, there was no normalisation involved in the design
 
 #### User object in the `users` collection
 
@@ -1643,7 +1643,7 @@ Typography is also a technique that was used for making the system more accessib
 
 - Bold headings: By using bold headings, the designer is emphasizing the most important information on the page and making it easy for users to quickly identify the main sections of content. This can help to create a visual hierarchy and make the interface more readable and accessible [95].
 - Gray for less important information: The use of gray for less important information helps to de-emphasize this content and create a clear distinction between what is most important and what is secondary. This can make it easier for users to quickly understand the structure of the page and find the information they are looking for
-- Bold links with red accents: By making links bold and using a red accent color, the designer is making them stand out and easy to find. This can help to improve the discoverability of links and encourage users to interact with them. The use of red also helps to reinforce the color theme of the application and create a consistent visual style
+- Bold links with red accents: By making links bold and using a red accent colour, the designer is making them stand out and easy to find. This can help to improve the discoverability of links and encourage users to interact with them. The use of red also helps to reinforce the colour theme of the application and create a consistent visual style
 
 ![alt text]({BASE}/48.png)
 
@@ -1821,7 +1821,7 @@ missing input field styling. I also implemented the functionality for the admin 
 
 In March, several improvements and bug fixes were made to the website. The UI was refined by adjusting shadows to make the site more legible and improve its overall look. The shadows were used to provide user feedback on focused elements and highlight the importance of certain actions. Implementing these changes was straightforward, as the app was already following accessibility guidelines. Modifications were also made to ensure that the theming of the app was consistent. For instance, the post link and text form for post creation were adjusted to better align with the app's overall
 
-Other enhancements included centering the 'view more communities' button for added symmetry, displaying the user's profile picture in the navbar, and adding a profile modal for users to view details such as their profile picture, email, and username. These features were relatively easy to implement, as they mainly involved fetching data already available in the database. The post creation time display was also updated to show how long ago a post was created rather than the exact time, making it more
+Other enhancements included centring the 'view more communities' button for added symmetry, displaying the user's profile picture in the navbar, and adding a profile modal for users to view details such as their profile picture, email, and username. These features were relatively easy to implement, as they mainly involved fetching data already available in the database. The post creation time display was also updated to show how long ago a post was created rather than the exact time, making it more
 
 The option for users to edit the current community they are visiting was added if they are the admin. While updating the privacy type of the community was easy to implement, updating the community image proved more challenging. This required finding all instances of the current community in the user's subscribed communities and changing the image. Another improvement that could be made is verifying if the current user is subscribed to the community before allowing them to navigate to a private
 
@@ -1837,7 +1837,7 @@ The purpose of this self evaluation is to reflect on what has been improved sinc
 
 ### What can be improved:
 
-- The developer could try to optimize the code more. Even after refactoring the code, it is mentioned that some components were 300 lines, which could make it difficult to understand and modify the code.
+- The developer could try to optimise the code more. Even after refactoring the code, it is mentioned that some components were 300 lines, which could make it difficult to understand and modify the code.
 - The developer could also try to find more efficient ways to implement features. For example, the voting functionality was extremely difficult to implement despite seeming easy.
 - The developer may consider Supabase as an alternative to Firebase as it is more appropriate for this project
 - The developer could implement better DI/CD pipelines to make the development process more efficient
@@ -1892,7 +1892,7 @@ However, it is still important to implement additional security measures to furt
 
 In case of disasters such as natural calamities, power outages, or other events that can impact the infrastructure, the current project has several mitigations in place. Firstly, the codebase is stored on Github and Gitlab, which provide robust version control and disaster recovery capabilities. In case of data loss or system failure, the codebase can be recovered from these platforms.
 
-Moreover, the backend of the system is handled by Google and its Firebase platform, which has a proven track record of providing reliable and secure infrastructure. Google has multiple data centers across the world and employs advanced technologies such as load balancing and automatic failover to ensure that the system remains available even in case of disasters.
+Moreover, the backend of the system is handled by Google and its Firebase platform, which has a proven track record of providing reliable and secure infrastructure. Google has multiple data centres across the world and employs advanced technologies such as load balancing and automatic failover to ensure that the system remains available even in case of disasters.
 
 Finally, the front-end of the system is handled by Vercel, which is a well-established platform for hosting web applications. Vercel has a robust infrastructure that can handle large amounts of traffic and provides automatic scaling to handle any unexpected spikes in traffic. This means that even in case of disasters, the system is likely to remain available and accessible to users.
 

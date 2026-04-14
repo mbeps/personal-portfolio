@@ -38,9 +38,9 @@
 
 # 1 - Introduction
 
-The evolution of artificial intelligence has been marked by distinct epochs, each defined by a dominant theoretical paradigm. Before the current renaissance of deep neural networks, the field was dominated by a mathematically elegant and theoretically robust framework known as the **Support Vector Machine (SVM)**. Far from being merely a historical artefact, the SVM remains a cornerstone of machine learning, offering unparalleled performance on small-to-medium datasets and serving as a bridge to understanding the fundamental limits of learning from data. Unlike the heuristic origins of early neural networks, SVMs were born from the rigorous soil of **Statistical Learning Theory (SLT)**, specifically derived to solve the problem of generalisation in the face of limited information.
+The evolution of artificial intelligence has been marked by distinct epochs, each defined by a dominant theoretical paradigm. Before the current renaissance of deep neural networks, the field was dominated by a mathematically elegant and theoretically robust framework known as the **Support Vector Machine (SVM)**. Far from being merely a historical artefact, the SVM remains a cornerstone of machine learning, offering unparalleled performance on small-to-medium datasets and serving as a bridge to understanding the fundamental limits of learning from data. Unlike the heuristic origins of early neural networks, SVMs were born from the rigorous soil of **Statistical Learning Theory (SLT)**, specifically derived to solve the problem of generalisation in the face of limited information.[5][6]
 
-This report provides an exhaustive technical analysis of Support Vector Machines. We will traverse the landscape from the foundational definitions of hyperplanes and margins to the complex dual-space optimisations that allow for infinite-dimensional feature mapping. We will dissect the algorithmic machinery of **Sequential Minimal Optimisation (SMO)** that makes training feasible, and we will conclude by linking these classical methods to modern deep learning through the revolutionary theory of the **Neural Tangent Kernel (NTK)**.
+This report provides an exhaustive technical analysis of Support Vector Machines. We will traverse the landscape from the foundational definitions of hyperplanes and margins to the complex dual-space optimisations that allow for infinite-dimensional feature mapping. We will dissect the algorithmic machinery of **Sequential Minimal Optimisation (SMO)** that makes training feasible[11], and we will conclude by linking these classical methods to modern deep learning through the revolutionary theory of the **Neural Tangent Kernel (NTK)**[18].
 
 ```mermaid
 graph LR
@@ -56,9 +56,9 @@ graph LR
 
 At its core, supervised learning is an ill-posed inverse problem. We are given a finite set of observations (training data) and asked to infer a general function that maps inputs to outputs for unseen data. The central challenge is not merely to fit the training data; a lookup table can achieve zero error on the training set. The challenge is **generalisation**: predicting the behaviour of the system on data not yet observed.
 
-Vladimir Vapnik and Alexey Chervonenkis, working in the Soviet Union in the 1960s and later in the United States, formalised this problem. They argued that traditional methods, which focused on minimising the error on the training set (**Empirical Risk Minimisation** or **ERM**), were insufficient. If the class of functions (the model) is too complex, ERM leads to overfitting (the "botanist with a photographic memory" who cannot recognise a new tree because it differs slightly from the specific trees seen before). Conversely, if the model is too simple, it fails to capture the underlying physics of the data (underfitting).
+Vladimir Vapnik and Alexey Chervonenkis, working in the Soviet Union in the 1960s and later in the United States, formalised this problem.[2] They argued that traditional methods, which focused on minimising the error on the training set (**Empirical Risk Minimisation** or **ERM**), were insufficient. If the class of functions (the model) is too complex, ERM leads to overfitting (the "botanist with a photographic memory" who cannot recognise a new tree because it differs slightly from the specific trees seen before). Conversely, if the model is too simple, it fails to capture the underlying physics of the data (underfitting).
 
-The solution they proposed was **Structural Risk Minimisation (SRM)**. SRM suggests that learning involves a trade-off between the quality of the fit on the training data and the complexity (capacity) of the function used to model it. The Support Vector Machine is the algorithmic realisation of this principle. By maximising the "margin" (the distance between the decision boundary and the nearest data points) the SVM explicitly controls the capacity of the classifier, thereby minimising the upper bound on the generalisation error.
+The solution they proposed was **Structural Risk Minimisation (SRM)**.[1][6] SRM suggests that learning involves a trade-off between the quality of the fit on the training data and the complexity (capacity) of the function used to model it. The Support Vector Machine is the algorithmic realisation of this principle.[4][5] By maximising the "margin" (the distance between the decision boundary and the nearest data points) the SVM explicitly controls the capacity of the classifier, thereby minimising the upper bound on the generalisation error.
 
 -----
 
@@ -133,17 +133,17 @@ $$ R(\alpha) = \int \frac{1}{2} |y - f(\mathbf{x}, \alpha)| \, dP(\mathbf{x}, y)
 **Empirical Risk ($R_{emp}(\alpha)$):** The error rate on the finite training set of size $l$. We can measure this directly.
 $$ R_{emp}(\alpha) = \frac{1}{2l} \sum_{i=1}^l |y_i - f(\mathbf{x}_i, \alpha)| $$
 
-The law of large numbers suggests $R_{emp}$ converges to $R$ as $l \to \infty$. However, for finite samples, simply minimising $R_{emp}$ (ERM) is insufficient because it does not account for the model's capacity to memorise noise.
+The law of large numbers suggests $R_{emp}$ converges to $R$ as $l \to \infty$. However, for finite samples, simply minimising $R_{emp}$ (ERM) is insufficient because it does not account for the model's capacity to memorise noise.[1][6]
 
 ## 3.2 - VC Dimension and Generalisation Bounds
 
-The Vapnik-Chervonenkis (VC) dimension, denoted $h$, is a scalar value that quantifies the capacity of a learning machine. It is defined as the maximum number of points that can be shattered by the function class.
+The Vapnik-Chervonenkis (VC) dimension, denoted $h$, is a scalar value that quantifies the capacity of a learning machine. It is defined as the maximum number of points that can be shattered by the function class.[2]
 
 **Shattering:** A set of points is shattered if the function class can implement all $2^N$ possible binary labellings of those points.
 
 **VC Dimension of Hyperplanes:** In $\mathbb{R}^n$, the set of separating hyperplanes has a VC dimension of $n+1$. For example, in 2D (a plane), a line can shatter 3 points (except if collinear), but no set of 4 points can be shattered (the XOR problem is the counterexample).
 
-Vapnik derived the following probabilistic bound on the Expected Risk:
+Vapnik derived the following probabilistic bound on the Expected Risk[1][6]:
 With probability $1 - \eta$,
 
 $$ R(\alpha) \leq R_{emp}(\alpha) + \sqrt{\frac{h (\log(2l/h) + 1) - \log(\eta/4)}{l}} $$
@@ -155,13 +155,13 @@ This inequality is the cornerstone of Structural Risk Minimisation.
 
 **The Insight:** To minimise the true error $R(\alpha)$, we must minimise the sum of the training error and the complexity term.
 
-Vapnik proved that for the class of hyperplanes, the VC dimension $h$ is bounded by:
+Vapnik proved that for the class of hyperplanes, the VC dimension $h$ is bounded by[1][6]:
 
 $$ h \leq \min \left( \left[ \frac{R^2}{\Delta^2} \right], n \right) + 1 $$
 
 where $R$ is the radius of the smallest sphere enclosing the data, and $\Delta$ is the margin.
 
-Crucially, this shows that maximising the margin ($\Delta$) minimises the VC dimension ($h$). Therefore, the SVM's geometric objective of finding the "widest street" is directly justified by SLT as the optimal strategy for generalisation.
+Crucially, this shows that maximising the margin ($\Delta$) minimises the VC dimension ($h$). Therefore, the SVM's geometric objective of finding the "widest street" is directly justified by SLT as the optimal strategy for generalisation.[1][6]
 
 -----
 
@@ -187,7 +187,7 @@ Since $\mathbf{w} \cdot \mathbf{x}_+ = 1 - b$ and $\mathbf{w} \cdot \mathbf{x}_-
 
 $$ \text{Margin} = \frac{(1 - b) - (-1 - b)}{||\mathbf{w}||} = \frac{2}{||\mathbf{w}||} $$
 
-To maximise the margin $\frac{2}{||\mathbf{w}||}$, we must minimise $||\mathbf{w}||$. For mathematical convenience (to make the objective function convex and differentiable), we minimise $\frac{1}{2}||\mathbf{w}||^2$.
+To maximise the margin $\frac{2}{||\mathbf{w}||}$, we must minimise $||\mathbf{w}||$. For mathematical convenience (to make the objective function convex and differentiable), we minimise $\frac{1}{2}||\mathbf{w}||^2$.[4][5]
 
 **The Primal Optimisation Problem:**
 $$ \min_{\mathbf{w}, b} \Phi(\mathbf{w}) = \frac{1}{2} ||\mathbf{w}||^2 $$
@@ -208,7 +208,7 @@ Take the gradients and set to zero:
 $$ \nabla_{\mathbf{w}} \mathcal{L} = \mathbf{w} - \sum_{i=1}^n \alpha_i y_i \mathbf{x}_i = 0 \implies \mathbf{w} = \sum_{i=1}^n \alpha_i y_i \mathbf{x}_i $$
 $$ \frac{\partial \mathcal{L}}{\partial b} = - \sum_{i=1}^n \alpha_i y_i = 0 \implies \sum_{i=1}^n \alpha_i y_i = 0 $$
 
-**Insight:** The optimal weight vector $\mathbf{w}$ is a linear combination of the training data vectors. Only those vectors with non-zero $\alpha_i$ contribute. These are the **Support Vectors**.
+**Insight:** The optimal weight vector $\mathbf{w}$ is a linear combination of the training data vectors. Only those vectors with non-zero $\alpha_i$ contribute. These are the **Support Vectors**.[5][9]
 
 **Step 2:** Substitute back into $\mathcal{L}$.
 Substitute $\mathbf{w} = \sum_{i,j} \alpha_i y_i \mathbf{x}_i$:
@@ -227,11 +227,11 @@ $$ \max_{\alpha} W(\alpha) = \sum_{i=1}^n \alpha_i - \frac{1}{2} \sum_{i=1}^n \s
 $$ \alpha_i \geq 0, \quad \forall i $$
 $$ \sum_{i=1}^n \alpha_i y_i = 0 $$
 
-This formulation depends only on the dot products between data points $(\mathbf{x}_i \cdot \mathbf{x}_j)$. This observation is the key to the Kernel Trick.
+This formulation depends only on the dot products between data points $(\mathbf{x}_i \cdot \mathbf{x}_j)$. This observation is the key to the Kernel Trick.[4][9]
 
 ## 4.3 - A Mechanical Analogy
 
-Christopher Burges provides a compelling physical analogy for the SVM solution.
+Christopher Burges provides a compelling physical analogy for the SVM solution.[9]
 Imagine the hyperplane as a rigid sheet that can move and rotate. Each support vector $\mathbf{x}_i$ exerts a force on this sheet.
 
   * The direction of the force is determined by the label $y_i$.
@@ -245,7 +245,7 @@ This analogy highlights why only the support vectors matter: they are the only p
 
 # 5 - Soft Margin Classification
 
-In real-world scenarios, data is rarely perfectly linearly separable due to noise or overlapping distributions. Enforcing a hard margin would result in no solution (the feasible set is empty). To address this, Cortes and Vapnik (1995) introduced the Soft Margin SVM.
+In real-world scenarios, data is rarely perfectly linearly separable due to noise or overlapping distributions. Enforcing a hard margin would result in no solution (the feasible set is empty). To address this, Cortes and Vapnik (1995) introduced the Soft Margin SVM.[5]
 
 ![alt text]({BASE}/image-2.png)
 
@@ -286,9 +286,9 @@ This is often called the **Box Constraint**. It limits the influence of any sing
 
 ## 5.4 - $\nu$-SVM Formulation
 
-An alternative formulation, known as $\nu$-SVM (Nu-SVM), was proposed by Schölkopf et al. Instead of $C$, it uses a parameter $\nu \in (0, 1]$.
+An alternative formulation, known as $\nu$-SVM (Nu-SVM), was proposed by Schölkopf et al.[10] Instead of $C$, it uses a parameter $\nu \in (0, 1]$.
 $$ \min_{\mathbf{w}, b, \xi, \rho} \frac{1}{2}||\mathbf{w}||^2 - \nu \rho + \frac{1}{n} \sum_{i=1}^n \xi_i $$
-Here, $\nu$ has a more intuitive interpretation: it is a lower bound on the fraction of support vectors and an upper bound on the fraction of margin errors. While mathematically equivalent to C-SVM, $\nu$-SVM is often easier to tune because $\nu$ is bounded between 0 and 1, whereas $C$ can range from $10^{-5}$ to $10^5$.
+Here, $\nu$ has a more intuitive interpretation: it is a lower bound on the fraction of support vectors and an upper bound on the fraction of margin errors. While mathematically equivalent to C-SVM, $\nu$-SVM is often easier to tune because $\nu$ is bounded between 0 and 1, whereas $C$ can range from $10^{-5}$ to $10^5$.[10][14]
 
 -----
 
@@ -311,7 +311,7 @@ graph LR
 ## 6.1 - Feature Mapping
 
 The core idea is to map the input data from the input space $\mathcal{X}$ (low dimension) into a feature space $\mathcal{F}$ (high or infinite dimension) using a mapping function $\Phi: \mathcal{X} \to \mathcal{F}$.
-If the mapping is chosen cleverly, data that is non-separable in $\mathcal{X}$ becomes linearly separable in $\mathcal{F}$.
+If the mapping is chosen cleverly, data that is non-separable in $\mathcal{X}$ becomes linearly separable in $\mathcal{F}$.[4][7]
 
 **Example:** Mapping 1D data $x$ to 2D space $\Phi(x) = (x, x^2)$.
 Data points: $x = -1$ (Class -), $x = 0$ (Class +), $x = 1$ (Class -).
@@ -322,9 +322,9 @@ In 2D feature space: $(-1, 1)$, $(0, 0)$, $(1, 1)$. A line $x_2 = 0.5$ perfectly
 
 Recall that the Dual formulation depends only on dot products $\mathbf{x}_i \cdot \mathbf{x}_j$. In the feature space, this becomes $\Phi(\mathbf{x}_i) \cdot \Phi(\mathbf{x}_j)$.
 Calculating $\Phi(\mathbf{x})$ explicitly can be computationally expensive or impossible (if $\mathcal{F}$ is infinite).
-Mercer's Theorem states that if a function $K(\mathbf{x}_i, \mathbf{x}_j)$ satisfies certain conditions (it must be a symmetric, positive semi-definite function), then there exists a mapping $\Phi$ such that:
+Mercer's Theorem states that if a function $K(\mathbf{x}_i, \mathbf{x}_j)$ satisfies certain conditions (it must be a symmetric, positive semi-definite function), then there exists a mapping $\Phi$ such that[8]:
 $$ K(\mathbf{x}_i, \mathbf{x}_j) = \Phi(\mathbf{x}_i) \cdot \Phi(\mathbf{x}_j) $$
-This is the **Kernel Trick**: We replace the dot product in the Dual SVM with the kernel function $K$. We never explicitly compute $\Phi(\mathbf{x})$. We implicitly operate in the high-dimensional space $\mathcal{F}$ while performing calculations in the low-dimensional space $\mathcal{X}$.
+This is the **Kernel Trick**: We replace the dot product in the Dual SVM with the kernel function $K$. We never explicitly compute $\Phi(\mathbf{x})$. We implicitly operate in the high-dimensional space $\mathcal{F}$ while performing calculations in the low-dimensional space $\mathcal{X}$.[4][9]
 
 ## 6.3 - Common Kernels
 
@@ -353,11 +353,11 @@ We have defined the objective function (Dual) and the constraints. How do we act
 For $N$ data points, the kernel matrix (Gram matrix) has size $N \times N$.
 For $N = 50,000$, the matrix requires approx 20GB of RAM (assuming float32).
 Standard QP solvers generally scale as $O(N^3)$.
-This makes standard QP solvers infeasible for large datasets.
+This makes standard QP solvers infeasible for large datasets.[13]
 
 ## 7.1 - Sequential Minimal Optimisation (SMO)
 
-Invented by John Platt in 1998 at Microsoft Research, SMO is the standard algorithm used in libraries like LibSVM. It breaks the large QP problem into the smallest possible sub-problems.
+Invented by John Platt in 1998 at Microsoft Research, SMO is the standard algorithm used in libraries like LibSVM.[11][15] It breaks the large QP problem into the smallest possible sub-problems.
 
 ```mermaid
 flowchart TD
@@ -383,14 +383,14 @@ Therefore, the minimal set of variables we can update is two. We pick $\alpha_1$
 
   * **Heuristic Selection:** Choose two multipliers to optimise, $\alpha_i$ and $\alpha_j$.
   * **First Heuristic (Outer Loop):** Iterate over the dataset. Select an $\alpha_i$ that violates the KKT conditions (see below). Prioritise non-bound examples ($0 < \alpha_i < C$).
-  * **Second Heuristic (Inner Loop):** Given $\alpha_i$, select $\alpha_j$ to maximise the step size of the update (often approximated by $|E_i - E_j|$, where $E$ is the prediction error).
+  * **Second Heuristic (Inner Loop):** Given $\alpha_i$, select $\alpha_j$ to maximise the step size of the update (often approximated by $|E_i - E_j|$, where $E$ is the prediction error).[11][12]
   * **Analytical Solution:** With all other variables fixed, the constraints on $\alpha_i$ and $\alpha_j$ reduce to a line segment. The objective function becomes a simple quadratic equation along this line. We can solve for the optimal new $\alpha_j^{new}$ analytically (finding the peak of the parabola).
   * **Clipping:** The new value must respect the box constraint $0 \leq \alpha \leq C$. If the analytical maximum lies outside the box, we clip the value to the nearest boundary ($L$ or $H$).
     $$ \alpha_j^{clipped} = \min(H, \max(L, \alpha_j^{new})) $$
   * **Update:** Update $\alpha_i$ based on the change in $\alpha_j$ to maintain the equality constraint.
   * **Repeat:** Continue until convergence (KKT conditions satisfied for all points).
 
-SMO avoids matrix storage entirely, scaling somewhere between $O(N)$ and $O(N^{2.3})$ depending on the data, making SVMs practical for hundreds of thousands of samples.
+SMO avoids matrix storage entirely, scaling somewhere between $O(N)$ and $O(N^{2.3})$ depending on the data, making SVMs practical for hundreds of thousands of samples.[11]
 
 ## 7.2 - The KKT Conditions for SVM
 
@@ -469,13 +469,13 @@ This perfectly solves XOR.
 
 # 9 - Modern Connections: Neural Tangent Kernel (NTK)
 
-While SVMs were the dominant paradigm of the 1990s and 2000s, deep learning now rules. However, a surprising theoretical breakthrough in 2018 by Jacot et al. revealed that SVMs and Deep Neural Networks (DNNs) are cousins.
+While SVMs were the dominant paradigm of the 1990s and 2000s, deep learning now rules. However, a surprising theoretical breakthrough in 2018 by Jacot et al. revealed that SVMs and Deep Neural Networks (DNNs) are cousins.[18]
 
 ## 9.1 - The Infinite Width Limit
 
 Consider a neural network with random initialisation. As the width of the layers goes to infinity, the Central Limit Theorem implies that the pre-activations of the neurons become Gaussian distributed.
 Jacot proved that if you train such an infinite-width network using Gradient Descent with an infinitesimally small learning rate, the network weights barely move from their initial values (the "Lazy Training" regime).
-However, the network function evolves linearly. This evolution is governed by a kernel called the Neural Tangent Kernel (NTK).
+However, the network function evolves linearly. This evolution is governed by a kernel called the Neural Tangent Kernel (NTK).[18]
 
 ```mermaid
 graph TD
@@ -493,8 +493,8 @@ graph TD
 
 Mathematically, the dynamics of the network output $f_t(x)$ follow:
 $$ \frac{d f_t(x)}{dt} = - \sum_{x_{train}} \Theta(x, x_{train}) (f_t(x_{train}) - y_{train}) $$
-Here, $\Theta(x, x')$ is the NTK. This equation is identical to the gradient descent dynamics of a Kernel Regression or Kernel SVM problem using $\Theta$ as the kernel.
-**Implication:** An infinitely wide Deep Neural Network is mathematically equivalent to a Kernel Machine (specifically a Kernel Ridge Regression or SVM depending on loss).
+Here, $\Theta(x, x')$ is the NTK. This equation is identical to the gradient descent dynamics of a Kernel Regression or Kernel SVM problem using $\Theta$ as the kernel.[18]
+**Implication:** An infinitely wide Deep Neural Network is mathematically equivalent to a Kernel Machine (specifically a Kernel Ridge Regression or SVM depending on loss).[18][19][20]
 This provides a powerful theoretical framework to explain why massive over-parameterised networks do not overfit: they are approximating a kernel method, which (as we saw in Section 3) has strong capacity control mechanisms (regularisation).
 
 -----
@@ -503,18 +503,18 @@ This provides a powerful theoretical framework to explain why massive over-param
 
 ## 10.1 - Software Ecosystem: LibSVM vs. LibLinear
 
-The standard implementation of SVMs for decades has been LibSVM (Chang & Lin).
+The standard implementation of SVMs for decades has been LibSVM (Chang & Lin).[15]
 
-  * **LibSVM:** Solves the Dual problem using SMO. Supports Kernels. Complexity is roughly $O(N^2)$. Recommended for standard datasets ($N < 100,000$).
-  * **LibLinear:** Also by Chang & Lin. Solves the Primal problem using Coordinate Descent. Supports only Linear Kernels. Complexity is $O(N)$. Capable of training on millions of text documents (sparse data) in seconds.
+  * **LibSVM:** Solves the Dual problem using SMO. Supports Kernels. Complexity is roughly $O(N^2)$. Recommended for standard datasets ($N < 100,000$).[15]
+  * **LibLinear:** Also by Chang & Lin. Solves the Primal problem using Coordinate Descent. Supports only Linear Kernels. Complexity is $O(N)$. Capable of training on millions of text documents (sparse data) in seconds.[16]
 
 **Key Takeaway:** If you need kernels (RBF), use LibSVM (or sklearn.svm.SVC). If you have massive sparse data (text/web), use LibLinear (or sklearn.svm.LinearSVC).
 
 ## 10.2 - GPU Acceleration: ThunderSVM & cuML
 
-Standard SMO is sequential (CPU bound). However, recent libraries like ThunderSVM and NVIDIA cuML have successfully parallelised SVM training.
+Standard SMO is sequential (CPU bound). However, recent libraries like ThunderSVM and NVIDIA cuML have successfully parallelised SVM training.[17]
 They achieve this by exploiting the fact that while the SMO update is sequential, the computation of the kernel matrix rows (needed to select the next $\alpha_i$) is highly parallelisable.
-**Performance:** ThunderSVM can be 10x-100x faster than LibSVM, training on MNIST (60k samples) in seconds rather than minutes.
+**Performance:** ThunderSVM can be 10x-100x faster than LibSVM, training on MNIST (60k samples) in seconds rather than minutes.[17]
 
 # 11 - Conclusion
 

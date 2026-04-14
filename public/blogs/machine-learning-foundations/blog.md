@@ -12,7 +12,7 @@
 		- [2 - **Outliers**](#2---outliers)
 		- [3 - Data Imbalance](#3---data-imbalance)
 	- [**3.1 - Plotting Continuous Features**](#31---plotting-continuous-features)
-		- [**3.1.1 - Importance of Data Visualization**](#311---importance-of-data-visualization)
+		- [**3.1.1 - Importance of Data Visualisation**](#311---importance-of-data-visualisation)
 		- [**3.1.2 - How to Plot Continuous Features**](#312---how-to-plot-continuous-features)
 		- [**3.1.3 - Interpreting Patterns and Trends**](#313---interpreting-patterns-and-trends)
 	- [**3.2 - Cleaning Continuous and Categorical Data**](#32---cleaning-continuous-and-categorical-data)
@@ -74,9 +74,9 @@ Machine learning has a wide range of applications across various industries:
 
 - **Finance**: ML algorithms are used for credit scoring, algorithmic trading, fraud detection, etc.
 
-- **Retail**: Retailers use machine learning to provide personalized product recommendations, work out inventory optimization, and provide customer service.
+- **Retail**: Retailers use machine learning to provide personalized product recommendations, work out inventory optimisation, and provide customer service.
 
-- **Manufacturing**: Predictive maintenance, supply chain optimization, quality control are amongst the very popular applications in manufacturing.
+- **Manufacturing**: Predictive maintenance, supply chain optimisation, quality control are amongst the very popular applications in manufacturing.
 
 - **Transportation**: In the sector of transportation, ML enables vehicle autonomy, route planning, and logistics.
 
@@ -123,7 +123,7 @@ Any missing data can distort statistical properties of a dataset and may cause b
 The outliers in data can influence the model heavily, especially the linear models, as they can end up identifying spurious trends and produce misleading conclusions.
 
 - **Strategies**:
-- **Outlier Detection and Removal**: This can be carried out by the use of statistical techniques like Z-scores or IQR. One may identify outliers using visualization techniques such as scatter plots and box plots.
+- **Outlier Detection and Removal**: This can be carried out by the use of statistical techniques like Z-scores or IQR. One may identify outliers using visualisation techniques such as scatter plots and box plots.
     - **Robust Techniques**: One then can use algorithms or models robust to outliers. For example, generally, tree-based models are not affected by the outliers.
 
 ### 3 - Data Imbalance
@@ -139,14 +139,14 @@ These methods are indispensable in the data preparation stage of any machine lea
 
 ## **3.1 - Plotting Continuous Features**
 
-Data visualization plays an important role in understanding and preparing data before machine learning. One can draw out a lot of information about the underlying patterns and trends present in a continuous feature, which includes some quantitative variables with an infinite number of possibilities. Below is how data visualization is critical and the ways to plot continuous features.
+Data visualisation plays an important role in understanding and preparing data before machine learning. One can draw out a lot of information about the underlying patterns and trends present in a continuous feature, which includes some quantitative variables with an infinite number of possibilities. Below is how data visualisation is critical and the ways to plot continuous features.
 
-### **3.1.1 - Importance of Data Visualization**
+### **3.1.1 - Importance of Data Visualisation**
 
-• **Reveals Underlying Patterns**: Visualization can help in discovering the patterns of data that are otherwise hidden in a raw dataset.
+• **Reveals Underlying Patterns**: Visualisation can help in discovering the patterns of data that are otherwise hidden in a raw dataset.
  • **Identifies Outliers and Anomalies**: One can identify from graphical representations of data; the rest are nothing but outliers and anomalies, which have to be treated.
- • **Aids in Feature Selection and Engineering**: With visualization of the data, one will get a better sense of what features to include in the model and how to transform the same.
-- **Better Interpretation of Data Distribution**: One requires visualization to understand the distribution of data that may inform the choice of the machine learning model and preprocessing steps.
+ • **Aids in Feature Selection and Engineering**: With visualisation of the data, one will get a better sense of what features to include in the model and how to transform the same.
+- **Better Interpretation of Data Distribution**: One requires visualisation to understand the distribution of data that may inform the choice of the machine learning model and preprocessing steps.
 
 ### **3.1.2 - How to Plot Continuous Features**
 
@@ -172,21 +172,21 @@ Views of the continuous features through histograms, scatter plots, and other su
 
 ## **3.2 - Cleaning Continuous and Categorical Data**
 
-One of the essential steps to deal with while cleaning and preparing data is recognizing the types of continuous and categorical data. Each will require specific cleaning in order to have a tight and relevant dataset that would be useful for the machine learning model.
+One of the essential steps to deal with while cleaning and preparing data is recognising the types of continuous and categorical data. Each will require specific cleaning in order to have a tight and relevant dataset that would be useful for the machine learning model.
 
 ### **3.2.1 - Distinguishing Continuous and Categorical Data**
 
 Continuous data refers to data expressing measurement and hence any value within a range. Examples include height, weight, temperature, and age. Continuous data can be strongly best presented using histograms and scatter plots.
 
-- **Categorical Data**: It is the data that can be thought to comprise a class or category. It is also referred to as nominal if there is no order among them, such as color or brand names; otherwise, they are ordinal, and there is an inherent order. An example of this is ratings from poor to excellent. The most straightforward and direct method of representing categorical data is through a bar chart or pie chart.
+- **Categorical Data**: It is the data that can be thought to comprise a class or category. It is also referred to as nominal if there is no order among them, such as colour or brand names; otherwise, they are ordinal, and there is an inherent order. An example of this is ratings from poor to excellent. The most straightforward and direct method of representing categorical data is through a bar chart or pie chart.
 
 ### **3.2.2 - Cleaning Methods for Continuous Data**
 
 1. **Scaling**: Most of the continuous data require scaling in such a way that all the features read the same scale and do not favor one feature over the other during the model computation. It can be accomplished using:
 • **Min-Max Scaling**: This will scale the data in the range given, commonly from 0 to 1.
-• **Standardization (Z-score Normalization)**: This transformation will give a data mean of zero and a standard deviation of one.
+• **Standardization (Z-score Normalisation)**: This transformation will give a data mean of zero and a standard deviation of one.
 
-2. **Normalization**: This is the process of rescaling value ranges of features to meet a common scale, all without having any effect on the differences that exist among the values' ranges.
+2. **Normalisation**: This is the process of rescaling value ranges of features to meet a common scale, all without having any effect on the differences that exist among the values' ranges.
 
 Cleaning Methods for Categorical Variables
 
@@ -196,7 +196,7 @@ Cleaning Methods for Categorical Variables
 
 2. **Imputation**: This is for continuous data, as one can perform the steps of dealing with missing values on categorical data in the same way. A few techniques are:
    - **Most Frequent Category Imputation**: Replace missing values with the most frequent category.
-   - **Predictive Imputation**: Guess missing values out of other data in the dataset through modeling techniques—e.g., decision trees or logistic regression.
+	- **Predictive Imputation**: Guess missing values out of other data in the dataset through modelling techniques—e.g., decision trees or logistic regression.
 
 Two primary steps of the machine learning pipeline include proper cleaning and preprocessing of continuous and categorical data. These processes are very essential as one comes up with high-quality data for the model, hence accuracy and reliability of the machine-learning algorithms.
 
@@ -245,8 +245,8 @@ Two very common problems in machine learning are overfitting and underfitting, b
 Overfitting model: The model is too complex, with too many features or decision trees that have much too complex structures.
 
 Avoidance techniques:
-Regularization:
-It consists of L1 and L2 regularization to smash the model complexity.
+Regularisation:
+It consists of L1 and L2 regularisation to smash the model complexity.
 Cross-validation:
 Methods like k-fold cross-validation allow measurement of how the model might generalize well to an independent data set.
 - **Prune the decision tree/reduce model complexity**: Simplifying the model implies ensuring that it is not too-complex in order to eliminate chances of overfitting.
@@ -266,7 +266,7 @@ The model developed is too simple to capture the underlying structure of the dat
   - **Increasing Model Complexity**: Sometimes by using better and more complex models, you will be able to capture the patterns in the data.
   - **Feature Engineering**: Development of new or transformation of initial features could give the model more information to learn from.
 
-Things like overfitting and underfitting are really key in machine learning. With the proper strategies in place for prevention or even curing, it markedly improves the performance of the model and its capability for generalization from the data it was trained on to new data.
+Things like overfitting and underfitting are really key in machine learning. With the proper strategies in place for prevention or even curing, it markedly improves the performance of the model and its capability for generalisation from the data it was trained on to new data.
 
 
 ## **4.3 - Hyperparameters Tuning**
@@ -292,7 +292,7 @@ This is perhaps the most important step in the machine-learning process. It invo
 
 - **Avoiding Overfitting**: It is very important to validate properly in the tuning of hyperparameters so that the increment done in the model is not because of the overfitting to the training data. Cross-validation techniques are often used in this procedure.
 
-- **Generalization Ability**: When tuning hyperparameters, the objectives are not that we perform better on the training set only, but that we generalize better on new, unseen data.
+- **Generalisation Ability**: When tuning hyperparameters, the objectives are not that we perform better on the training set only, but that we generalise better on new, unseen data.
 
 - ** Iterative Process **: Generally, hyperparameter tuning will be an iterative approach, and every tuning takes place depending upon the feedback coming from the validation results. Such an iterative process helps in fine-tuning and finding the best collection of hyperparameters for the model.
 
@@ -343,7 +343,7 @@ It's heavily used in chatbots, translation services, sentiment analysis, and voi
 
 ### **5.1.3 - Recommender Systems**
 
-Applications ML algorithms within the recommender system analyze user activities and trends to recommend products or content.
+Applications ML algorithms within the recommender system analyse user activities and trends to recommend products or content.
 Uses Such systems are especially typical on shopping websites, for example, Amazon, and streaming websites like Netflix that provide users with tailored and relevant recommendations for movies or shows.
 
 ### **5.1.4 - Fraud Detection and Risk Management**
@@ -389,7 +389,7 @@ Since the very beginning of this blog post, machine learning has been identified
 
 We covered how machine learning, deep learning, and AI differ. Although these terms are used interchangeably in conversation, they mean very different things and play different roles in their application. Deep learning, being a subset of ML, has a critical role in making AI systems more capable; the latter is a covering term for a great many intelligent systems beyond just ML.
 
-The journey through the phases of data preparation and cleaning put forth the significance of addressing common challenges: missing data, outliers, and class balance. We have also underlined the importance of data visualization, in particular plotting continuous features, to convey an idea about the trends of the data patterns, which is a very important stage in any ML project.
+The journey through the phases of data preparation and cleaning put forth the significance of addressing common challenges: missing data, outliers, and class balance. We have also underlined the importance of data visualisation, in particular plotting continuous features, to convey an idea about the trends of the data patterns, which is a very important stage in any ML project.
 
 We also covered the key components of model building and evaluation: how to know whether we are successful with different performance metrics, and how to avoid common pitfalls from overfitting and underfitting to subtleties in hyperparameter tuning. Another area presented was how a machine learning model could be evaluated, focusing particularly on cross-validation, hold-out sets, and understanding bias-variance tradeoff. The detailed intricacies involved in developing a robust, efficient model were elaborated.
 

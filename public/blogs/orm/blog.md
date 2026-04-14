@@ -51,9 +51,9 @@ This report provides a rigorous analysis of the ORM landscape. It examines the t
 
 # 2 - Core Theory: The Object-Relational Impedance Mismatch
 
-The foundational problem that all ORMs attempt to solve is formally known as the **Object-Relational Impedance Mismatch**. This term, borrowed from electrical engineering, describes the inherent inefficiency and complexity arising when two systems with different operating characteristics are connected. In the context of software, it refers to the conceptual and technical difficulties encountered when a Relational Database Management System (RDBMS) is served by an object-oriented programming language.
+The foundational problem that all ORMs attempt to solve is formally known as the **Object-Relational Impedance Mismatch**. This term, borrowed from electrical engineering, describes the inherent inefficiency and complexity arising when two systems with different operating characteristics are connected. In the context of software, it refers to the conceptual and technical difficulties encountered when a Relational Database Management System (RDBMS) is served by an object-oriented programming language. [1]
 
-The mismatch is not a single problem but a collection of four distinct sub-problems: Granularity, Subtype (Inheritance), Identity, and Association.
+The mismatch is not a single problem but a collection of four distinct sub-problems: Granularity, Subtype (Inheritance), Identity, and Association. [1]
 
 ## 2.1 - The Mismatch of Granularity
 
@@ -367,7 +367,7 @@ An application needs to display a list of 100 authors and the title of their lat
 3.  **Query N:** The ORM detects the book is not loaded and issues `SELECT * FROM books WHERE author_id = ?`. This happens 100 times.
 
 **Result:**
-The database receives 101 queries ($1 + N$) instead of 1. This creates massive network latency ("chattiness").
+The database receives 101 queries ($1 + N$) instead of 1. This creates massive network latency ("chattiness"). [2]
 
 **Solutions:**
 
@@ -385,7 +385,7 @@ If an application eagerly fetches a User, their Posts, and the Comments on those
   * Each Post has 10 Comments.
   * **Result:** $1 \times 10 \times 10 = 100$ rows returned from the database for a single user.
 
-The ORM must deduplicate this data in memory to reconstruct the object graph. This consumes significant application memory and bandwidth.
+The ORM must deduplicate this data in memory to reconstruct the object graph. This consumes significant application memory and bandwidth. [2]
 
 
 # 7 - Modern Implementations Case Studies
@@ -545,7 +545,7 @@ await db.transaction(async (tx) => {
 
 ## 9.2 - The Arguments Against ORM
 
-  * **Performance Opacity:** The "Black Box" nature often hides inefficient queries. A simple LINQ or JPQL statement might generate a 5-table join or a subquery scan that kills performance.
+  * **Performance Opacity:** The "Black Box" nature often hides inefficient queries. A simple LINQ or JPQL statement might generate a 5-table join or a subquery scan that kills performance. [2][3]
   * **The Learning Cliff:** Learning the idiosyncrasies of Hibernate or Entity Framework (cache levels, flush modes, proxy behaviour) can take as long as learning SQL itself.
   * **Lowest Common Denominator:** To support multiple databases, ORMs often avoid using powerful, vendor-specific features (e.g., Postgres specific JSONB operators or Window Functions), forcing developers to drop to raw SQL anyway.
 

@@ -30,7 +30,7 @@
 	- [7.6 Summary of Algorithm Characteristics](#76-summary-of-algorithm-characteristics)
 - [8 - Empirical Performance Analysis](#8---empirical-performance-analysis)
 	- [8.1 The 4-bit "Sweet Spot" and Performance Cliffs](#81-the-4-bit-sweet-spot-and-performance-cliffs)
-	- [8.2 Quantisation as Regularization](#82-quantisation-as-regularization)
+	- [8.2 Quantisation as Regularisation](#82-quantisation-as-regularisation)
 	- [8.3 Performance Comparison Table](#83-performance-comparison-table)
 - [9 - Comparative Analysis against Other Compression Approaches](#9---comparative-analysis-against-other-compression-approaches)
 	- [9.1 Quantisation vs. Pruning](#91-quantisation-vs-pruning)
@@ -45,7 +45,7 @@
 
 The ascendancy of Large Language Models (LLMs), epitomised by architectures such as the Transformer, has fundamentally altered the landscape of Artificial Intelligence. Models ranging from billions to trillions of parameaters (such as GPT-5, Gemini 3 Pro, Claude Sonnet 4.5, etc) demonstrate emergent capabilities in reasoning, coding, and creative generation. However, this capabilities curve is inextricably linked to a resource curve that has become increasingly unsustainable. The memory footprint and computational requirements for serving these models have grown exponentially, hitting the "Memory Wall"; a critical hardware bottleneck where data movement, rather than arithmetic throughput, dictates system performance.
 
-The deployment of these models is a resource-intensive endeavor with significant economic and environmental costs. An LLM with $P$ parameters stored in half-precision (FP16, 16-bit) requires $2P$ bytes of memory merely to load the weights. A 65-billion parameter model, for instance, requires over 780 GB of GPU memory for fine-tuning in standard 16-bit precision, necessitating a cluster of high-end GPUs (e.g., NVIDIA A100s). Similarly, a 175-billion parameter model demands approximately 350 GB of VRAM solely for inference, ignoring the additional overhead of the Key-Value (KV) cache. This immense requirement renders deployment on edge devices, consumer workstations, or even standard cloud instances largely infeasible, creating a barrier to the democratization of advanced AI.
+The deployment of these models is a resource-intensive endeavor with significant economic and environmental costs. An LLM with $P$ parameters stored in half-precision (FP16, 16-bit) requires $2P$ bytes of memory merely to load the weights. A 65-billion parameter model, for instance, requires over 780 GB of GPU memory for fine-tuning in standard 16-bit precision, necessitating a cluster of high-end GPUs (e.g., NVIDIA A100s).[6] Similarly, a 175-billion parameter model demands approximately 350 GB of VRAM solely for inference, ignoring the additional overhead of the Key-Value (KV) cache.[1] This immense requirement renders deployment on edge devices, consumer workstations, or even standard cloud instances largely infeasible, creating a barrier to the democratization of advanced AI.
 
 Quantisation has emerged as the premier solution to this scalability crisis. Unlike pruning (which removes connections) or distillation (which trains smaller student models), quantisation reduces the precision of the numerical representation of weights and activations. By mapping continuous floating-point values to discrete low-bit integers (e.g., INT8, INT4), quantisation reduces memory usage, increases data transfer speeds, and enables the use of high-throughput integer arithmetic units.
 
@@ -85,7 +85,7 @@ The choice of bit-width ($n$) fundamentally dictates the trade-off between model
 
 * **INT8 (8-bit):** Provides 256 levels. This is often considered "safe" for post-training quantisation of activations and weights in moderate-sized models.
 * **INT4 (4-bit):** Provides only 16 levels. This is the current standard for weight-only quantisation in large LLMs (e.g., Llama 2, Falcon). The gap between 256 levels and 16 levels is immense, requiring sophisticated calibration to place those 16 levels optimally.
-* **INT2 (2-bit) / Ternary:** Provides 4 or 3 levels. Research into 1-bit (binary) or 1.58-bit (ternary) models suggests that with specialised architectures (like BitNet), LLMs can function in this regime, though standard post-training quantisation often fails catastrophically here.
+* **INT2 (2-bit) / Ternary:** Provides 4 or 3 levels. Research into 1-bit (binary) or 1.58-bit (ternary) models suggests that with specialised architectures (like BitNet), LLMs can function in this regime, though standard post-training quantisation often fails catastrophically here.[11]
 
 ## 2.4 Extended Quantisation Targets
 While model weights are the most common target, quantisation can be applied to several numerical components, each presenting unique challenges:
@@ -137,9 +137,9 @@ The zero-point $Z$ is derived by setting the dequantised value of $Z$ to be $0$:
 
 $$0 = S(Z - Z_{real}) \implies Z = \text{Round}\left( - \frac{x_{min}}{S} + q_{min} \right)$$
 
-This approach allows the quantised range to be fully utilised regardless of the distribution's center. However, the non-zero $Z$ introduces computational overhead in matrix multiplication (cross-terms involving $Z$).
+This approach allows the quantised range to be fully utilised regardless of the distribution's centre. However, the non-zero $Z$ introduces computational overhead in matrix multiplication (cross-terms involving $Z$).
 
-**Symmetric Quantisation:** Symmetric quantisation restricts the zero-point $Z$ to be 0 (or specifically centered). This forces the floating-point range to be symmetric around zero, i.e., $[-\alpha, \alpha]$, where $\alpha = \max(|x_{min}|, |x_{max}|)$.
+**Symmetric Quantisation:** Symmetric quantisation restricts the zero-point $Z$ to be 0 (or specifically centred). This forces the floating-point range to be symmetric around zero, i.e., $[-\alpha, \alpha]$, where $\alpha = \max(|x_{min}|, |x_{max}|)$.
 
 $$S = \frac{\alpha}{2^{n-1} - 1}$$
 $$Z = 0$$
@@ -214,7 +214,7 @@ Mathematically, for a quantisation function $Q(x)$:
 $$\frac{\partial L}{\partial x} \approx \frac{\partial L}{\partial Q(x)}$$
 
 The STE essentially passes the gradient through the quantisation block unchanged (or clipped), ignoring the fact that the derivative of Round is zero. This approximation works surprisingly well in practice.
-For LLMs, full QAT is rare due to cost. However, techniques like QLoRA can be seen as a hybrid, where adapters are trained while the base model is quantised. Furthermore, recent research into "1-bit LLMs" like BitNet necessitates QAT because the perturbation from FP16 to 1-bit is too large for PTQ to handle.
+For LLMs, full QAT is rare due to cost. However, techniques like QLoRA can be seen as a hybrid, where adapters are trained while the base model is quantised. Furthermore, recent research into "1-bit LLMs" like BitNet necessitates QAT because the perturbation from FP16 to 1-bit is too large for PTQ to handle.[11]
 
 ## 5.3 Comparative Summary
 The following table summarizes the trade-offs between these two paradigms:
@@ -233,12 +233,12 @@ The following table summarizes the trade-offs between these two paradigms:
 A nuanced understanding of LLM quantisation requires addressing the "Outlier Problem". Research  has shown that Transformer-based LLMs exhibit heavy-tailed distributions in their activations.
 
 ## 6.1 Emergent Features
-As models scale (specifically beyond 6.7B parameters), extreme outliers emerge in the feature dimensions (activations). These outliers are not random; they are systematic and persist in specific channels across tokens. Magnitudes can be $100\times$ larger than the median value. These features are often associated with attention heads performing specific syntactic functions (e.g., identifying separators).
+As models scale (specifically beyond 6.7B parameters), extreme outliers emerge in the feature dimensions (activations).[1] These outliers are not random; they are systematic and persist in specific channels across tokens. Magnitudes can be $100\times$ larger than the median value.[1] These features are often associated with attention heads performing specific syntactic functions (e.g., identifying separators).[1]
 
 ## 6.2 The Impact on Quantisation
 Recall the scale formula: $S = \frac{x_{max} - x_{min}}{2^n - 1}$.
 If $x_{max}$ is driven by a single outlier (e.g., 100) while the majority of data is in $[-1, 1]$, the scale $S$ becomes very large. This collapses the small, informative values (the signal) into just one or two quantisation bins (e.g., 0 and 1). This loss of resolution destroys the model's performance (perplexity explosion).
-Standard uniform quantisation fails for LLMs because of these activation outliers. The following sections detail modern algorithms designed specifically to solve this.
+Standard uniform quantisation fails for LLMs because of these activation outliers.[1] The following sections detail modern algorithms designed specifically to solve this.
 
 
 # 7 - Deep Dive: Modern Quantisation Algorithms
@@ -264,10 +264,10 @@ $$Y = \text{MatMul}_{FP16}(X_{out}, W_{out}) + \text{MatMul}_{INT8}(Q(X_{int}), 
 
 ![alt text]({BASE}/image-4.png)
 
-> LLM.int8() Matrix Decomposition. The input matrix is analyzed for outliers (shown in red). Columns containing outliers are separated into a sparse FP16 matrix. The remaining regular values (blue) are quantised to INT8. The matrix multiplications happen separately and are summed.
+> LLM.int8() Matrix Decomposition. The input matrix is analysed for outliers (shown in red). Columns containing outliers are separated into a sparse FP16 matrix. The remaining regular values (blue) are quantised to INT8. The matrix multiplications happen separately and are summed.
 
 
-**Key Insight:** The number of outlier channels is extremely small (< 0.1%). Thus, 99.9% of the computation is done in INT8, yielding speed and memory benefits, while the 0.1% crucial for accuracy remains in FP16. This was the first method to enable 175B model inference on consumer hardware without performance degradation. The computational cost of separating the matrices is non-trivial, which can sometimes make inference slower than pure FP16 on very fast GPUs, despite the memory savings.
+**Key Insight:** The number of outlier channels is extremely small (< 0.1%).[1] Thus, 99.9% of the computation is done in INT8, yielding speed and memory benefits, while the 0.1% crucial for accuracy remains in FP16. This was the first method to enable 175B model inference on consumer hardware without performance degradation.[1] The computational cost of separating the matrices is non-trivial, which can sometimes make inference slower than pure FP16 on very fast GPUs, despite the memory savings.
 
 ## 7.2 GPTQ: Optimal Brain Quantisation (OBQ)
 **Problem:** Round-to-nearest (RTN) is not the optimal way to quantise weights. Quantising one weight introduces an error that could be compensated for by adjusting neighbouring unquantised weights.
@@ -276,7 +276,7 @@ GPTQ  is based on the Taylor expansion of the loss function with respect to the 
 
 $$E = \| WX - \hat{W}X \|_2^2$$
 
-The Hessian matrix $H = 2XX^T$ represents the curvature of this error surface. The optimal adjustment to a weight $w_q$ involves the inverse Hessian $H^{-1}$.
+The Hessian matrix $H = 2XX^T$ represents the curvature of this error surface.[4][13] The optimal adjustment to a weight $w_q$ involves the inverse Hessian $H^{-1}$.
 **Algorithm:**
 GPTQ quantises weights column-by-column. When a weight $w_i$ is quantised to $q(w_i)$, the error is $\delta = q(w_i) - w_i$. To minimise the total error, GPTQ updates the remaining unquantised weights $W_F$ using the inverse Hessian:
 
@@ -289,11 +289,11 @@ Calculating $H^{-1}$ and updating it iteratively is $O(d^3)$. For a 175B model, 
 1.  **Lazy Batch Updates:** Instead of updating the whole matrix after every weight, update a block of columns (e.g., 128) at a time.
 2.  **Cholesky Decomposition:** Utilises Cholesky decomposition for numerically stable and efficient inverse Hessian information.
 
-**Result:** GPTQ enables high-accuracy 3-bit and 4-bit weight quantisation, compressing a 175B model to fit on 2x A100s or even fewer, with perplexity nearly identical to FP16. It requires calibration data to estimate the Hessian (usually just 128 samples).
+**Result:** GPTQ enables high-accuracy 3-bit and 4-bit weight quantisation, compressing a 175B model to fit on 2x A100s or even fewer, with perplexity nearly identical to FP16.[4] It requires calibration data to estimate the Hessian (usually just 128 samples).
 
 ## 7.3 AWQ: Activation-aware Weight Quantisation
 **Problem:** GPTQ relies on the Hessian (requiring second-order information and inverse calculation) and can optimise weights based on calibration data, but it treats all weights as theoretically updateable. Some weights are simply more important ("salient") than others.
-**Key Insight:** Weights are not equally important. The importance of a weight $w$ is not defined by its own magnitude, but by the magnitude of the activation $x$ it multiplies. A weight multiplying a large activation contributes significantly to the output error.
+**Key Insight:** Weights are not equally important. The importance of a weight $w$ is not defined by its own magnitude, but by the magnitude of the activation $x$ it multiplies. A weight multiplying a large activation contributes significantly to the output error.[5]
 **Mechanism:**
 AWQ does not quantise the salient weights (top 1%) directly. However, keeping mixed precision (FP16 for 1% weights, INT4 for rest) is hardware inefficient (requires splitting kernels like LLM.int8()).
 Instead, AWQ uses Activation-aware Scaling.
@@ -307,13 +307,13 @@ Why does this help? When $W$ is scaled down ($W' = W/s$), and then quantised, th
 
 $$s^* = \operatorname*{argmin}_s \| Q(W \cdot s^{-1}) \cdot (X \cdot s) - WX \|_2^2$$
 
-AWQ is widely used because it preserves the hardware-friendly uniform quantisation format (no mixed INT8/FP16 kernels needed during inference) while achieving high accuracy.
+AWQ is widely used because it preserves the hardware-friendly uniform quantisation format (no mixed INT8/FP16 kernels needed during inference) while achieving high accuracy.[5]
 
 ## 7.4 SmoothQuant: Smoothing Activation Outliers
 **Problem:** Activations are hard to quantise due to outliers (range $[-100, 100]$). Weights are easy to quantise (range $[-1, 1]$).
 **Solution:** Migrate the difficulty from activations to weights.
 **Mechanism:**
-SmoothQuant performs a mathematically equivalent transformation offline.
+SmoothQuant performs a mathematically equivalent transformation offline.[2]
 
 $$Y = XW = (X \text{diag}(s)^{-1}) \cdot (\text{diag}(s) W) = \hat{X} \hat{W}$$
 
@@ -325,7 +325,7 @@ $$s_j = \max(|X_j|)^\alpha / \max(|W_j|)^{1-\alpha}$$
 
 If $\alpha = 0.5$, the "difficulty" (magnitude) is shared equally.
 This squashes the activation outliers, making $X$ easy to quantise to INT8. The weights $W$ become "spikier", but since weights are quantised offline with high precision or per-channel granularity, they can handle it.
-This enables W8A8 (8-bit Weight, 8-bit Activation) quantisation, which is the holy grail for speed, as it allows fully integer GEMM operations (unlike weight-only quantisation which still requires FP16 math for the accumulation).
+This enables W8A8 (8-bit Weight, 8-bit Activation) quantisation, which is the holy grail for speed, as it allows fully integer GEMM operations (unlike weight-only quantisation which still requires FP16 math for the accumulation).[2]
 
 ## 7.5 QLoRA: 4-bit NormalFloat and Double Quantisation
 **Problem:** Fine-tuning large models requires loading the full FP16 weights into memory (e.g., 65B model -> 130GB), plus gradient states.
@@ -342,7 +342,7 @@ This enables W8A8 (8-bit Weight, 8-bit Activation) quantisation, which is the ho
 * **Paged Optimizers:** Using NVIDIA Unified Memory to offload optimizer states to CPU RAM when VRAM spikes.
 
 **Empirical Validation and Limitations**
-QLoRA allows fine-tuning a 65B parameter model on a single 48GB GPU. Empirical evaluations demonstrate its effectiveness: the Guanaco family of models, fine-tuned using QLoRA, achieved 99.3% of ChatGPT's performance on the Vicuna benchmark with a 65B model, using far fewer resources than full fine-tuning.
+QLoRA allows fine-tuning a 65B parameter model on a single 48GB GPU.[6] Empirical evaluations demonstrate its effectiveness: the Guanaco family of models, fine-tuned using QLoRA, achieved 99.3% of ChatGPT's performance on the Vicuna benchmark with a 65B model, using far fewer resources than full fine-tuning.[6]
 However, QLoRA has limitations. It is unsuitable for tasks requiring substantial new knowledge injection, such as Continual Pre-training (CPT), as low-rank adapters cannot capture the large parameter shifts needed for learning vast amounts of new factual information. Additionally, the on-the-fly dequantization adds computational overhead, potentially slowing down training compared to full-precision methods.
 
 ## 7.6 Summary of Algorithm Characteristics
@@ -362,10 +362,10 @@ The following table summarises the key attributes of these modern quantisation a
 Quantifying the trade-off between efficiency and accuracy is central to deployment decisions. Empirical analysis reveals distinct trends in how quantisation impacts model performance.
 
 ## 8.1 The 4-bit "Sweet Spot" and Performance Cliffs
-Research consistently indicates that 4-bit quantisation represents an optimal balance point for modern LLMs. Sophisticated algorithms (like GPTQ and AWQ) allow 4-bit models to retain performance highly comparable to 16-bit baselines. However, a "performance cliff" is often observed below 4 bits, where moving to 3-bit or 2-bit precision causes sharp accuracy degradation.
+Research consistently indicates that 4-bit quantisation represents an optimal balance point for modern LLMs.[4][5][6] Sophisticated algorithms (like GPTQ and AWQ) allow 4-bit models to retain performance highly comparable to 16-bit baselines. However, a "performance cliff" is often observed below 4 bits, where moving to 3-bit or 2-bit precision causes sharp accuracy degradation.
 
-## 8.2 Quantisation as Regularization
-Counter-intuitively, quantisation can sometimes improve performance over the full-precision baseline. The lossy nature of quantisation introduces noise that acts as a form of regularization, preventing overfitting and potentially helping the optimization process escape poor local minima.
+## 8.2 Quantisation as Regularisation
+Counter-intuitively, quantisation can sometimes improve performance over the full-precision baseline. The lossy nature of quantisation introduces noise that acts as a form of regularisation, preventing overfitting and potentially helping the optimisation process escape poor local minima.
 
 ## 8.3 Performance Comparison Table
 The following data synthesizes performance across various models and methods:
@@ -428,9 +428,9 @@ Quantisation from FP16 (16-bit) to INT4 (4-bit) reduces the data size by $4\time
 
 # 11 - Conclusion
 
-Quantisation has evolved from a simple signal processing technique into the linchpin of modern Large Language Model deployment. The transition from naive rounding to sophisticated, optimization-based methods like GPTQ, AWQ, and QLoRA reflects a deeper understanding of the distinct statistical properties of Transformer models—specifically, the challenge of activation outliers and the resilience of weights to noise.
+Quantisation has evolved from a simple signal processing technique into the linchpin of modern Large Language Model deployment. The transition from naive rounding to sophisticated, optimisation-based methods like GPTQ, AWQ, and QLoRA reflects a deeper understanding of the distinct statistical properties of Transformer models—specifically, the challenge of activation outliers and the resilience of weights to noise.
 The mathematical theory underpinning these advancements relies on affine transformations, Hessian-based error minimisation, and information-theoretic optimal data types. For the Master's level practitioner, the key takeaway is that quantisation is not merely "lossy compression"; it is a transformation of the compute paradigm from memory-bound floating-point operations to bandwidth-efficient integer arithmetic.
-Future research points toward 1-bit LLMs (e.g., BitNet ) and the co-design of quantization-aware hardware accelerators. Additionally, understanding the impact of quantisation on Alignment and Safety remains a critical frontier.
+Future research points toward 1-bit LLMs (e.g., BitNet )[11] and the co-design of quantization-aware hardware accelerators. Additionally, understanding the impact of quantisation on Alignment and Safety remains a critical frontier.
 
 # References
 

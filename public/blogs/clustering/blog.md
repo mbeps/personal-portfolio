@@ -47,13 +47,13 @@ The utility of clustering spans distinct domains, from image segmentation and an
 
 ## 1.1 - Historical Context and Evolution
 
-The mathematical formalisation of clustering has evolved in parallel with advancements in computing power. The early foundations were laid in the mid-20th century. The K-Means algorithm, arguably the most widely used clustering method, has a disjointed history. The core concept was proposed by Hugo Steinhaus in 1956, but the standard iterative algorithm used today was developed by Stuart Lloyd in 1957 at Bell Labs for pulse-code modulation (PCM) in signal processing. It was not until 1967 that James MacQueen coined the term "K-Means" in his seminal paper on multivariate observations, establishing the method as a statistical tool for data analysis.
+The mathematical formalisation of clustering has evolved in parallel with advancements in computing power. The early foundations were laid in the mid-20th century. The K-Means algorithm, arguably the most widely used clustering method, has a disjointed history. The core concept was proposed by Hugo Steinhaus in 1956, but the standard iterative algorithm used today was developed by Stuart Lloyd in 1957 at Bell Labs for pulse-code modulation (PCM) in signal processing. [1][3] It was not until 1967 that James MacQueen coined the term "K-Means" in his seminal paper on multivariate observations, establishing the method as a statistical tool for data analysis. [4]
 
-Simultaneously, hierarchical approaches were being refined. In 1963, Joe H. Ward Jr. introduced a method for hierarchical grouping that optimised an objective function; specifically, the minimisation of within-group variance. This shifted clustering from simple linkage heuristics to a rigorous variance-minimisation problem.
+Simultaneously, hierarchical approaches were being refined. In 1963, Joe H. Ward Jr. introduced a method for hierarchical grouping that optimised an objective function; specifically, the minimisation of within-group variance. [5] This shifted clustering from simple linkage heuristics to a rigorous variance-minimisation problem.
 
-As data complexity grew, the limitations of centroid-based and hierarchical models (primarily their inability to handle noise and arbitrary shapes) became apparent. This led to the development of density-based methods. In 1996, Martin Ester, Hans-Peter Kriegel, Jörg Sander, and Xiaowei Xu introduced DBSCAN (Density-Based Spatial Clustering of Applications with Noise), which redefined clusters as regions of high density separated by regions of low density, fundamentally altering the landscape of spatial data mining.
+As data complexity grew, the limitations of centroid-based and hierarchical models (primarily their inability to handle noise and arbitrary shapes) became apparent. This led to the development of density-based methods. In 1996, Martin Ester, Hans-Peter Kriegel, Jörg Sander, and Xiaowei Xu introduced DBSCAN (Density-Based Spatial Clustering of Applications with Noise), which redefined clusters as regions of high density separated by regions of low density, fundamentally altering the landscape of spatial data mining. [7]
 
-Parallel to these geometric approaches, probabilistic frameworks emerged. The Expectation-Maximisation (EM) algorithm, formalised by Dempster, Laird, and Rubin in 1977, provided the iterative optimisation framework necessary for fitting Gaussian Mixture Models (GMMs). This allowed for "soft clustering," where data points are assigned probabilities of membership rather than binary classifications.
+Parallel to these geometric approaches, probabilistic frameworks emerged. The Expectation-Maximisation (EM) algorithm, formalised by Dempster, Laird, and Rubin in 1977, provided the iterative optimisation framework necessary for fitting Gaussian Mixture Models (GMMs). [8] This allowed for "soft clustering," where data points are assigned probabilities of membership rather than binary classifications.
 
 ## 1.2 - Mathematical Preliminaries: Vector Spaces and Dissimilarity
 
@@ -78,7 +78,7 @@ This metric is crucial for understanding Gaussian Mixture Models. It accounts fo
 
 $$d_M(x, \mu) = \sqrt{(x - \mu)^T \Sigma^{-1} (x - \mu)}$$
 
-When the covariance matrix is the identity matrix ($\Sigma = I$), the Mahalanobis distance reduces to the Euclidean distance. This metric allows for the detection of ellipsoidal clusters.
+When the covariance matrix is the identity matrix ($\Sigma = I$), the Mahalanobis distance reduces to the Euclidean distance. This metric allows for the detection of ellipsoidal clusters. [2]
 
 -----
 
@@ -96,7 +96,7 @@ Where $\mu_i$ is the centroid (mean) of the points in cluster $S_i$. The term $\
 
 ## 2.2 - Lloyd's Algorithm: High-Level Mechanics
 
-Lloyd's algorithm approximates the solution by alternating between two steps: the Assignment Step (Expectation) and the Update Step (Maximisation).
+Lloyd's algorithm approximates the solution by alternating between two steps: the Assignment Step (Expectation) and the Update Step (Maximisation). [3]
 
 ```mermaid
 graph TD
@@ -128,11 +128,11 @@ $$\mu_i^{(t+1)} = \frac{1}{|S_i^{(t)}|} \sum_{x_j \in S_i^{(t)}} x_j$$
 This step guarantees a reduction (or maintenance) of the objective function WCSS, as the mean is the unique estimator that minimises the sum of squared errors.
 
 **Step 3: Convergence**
-The algorithm iterates until the assignments no longer change ($\mu_i^{(t+1)} = \mu_i^{(t)}$) or a predefined tolerance is met. Because the number of possible partitions is finite and the WCSS decreases monotonically, the algorithm is guaranteed to converge, though often to a local minimum rather than the global optimum.
+The algorithm iterates until the assignments no longer change ($\mu_i^{(t+1)} = \mu_i^{(t)}$) or a predefined tolerance is met. Because the number of possible partitions is finite and the WCSS decreases monotonically, the algorithm is guaranteed to converge, though often to a local minimum rather than the global optimum. [3]
 
 ## 2.3 - Initialisation Strategy: K-Means++
 
-The standard Lloyd's algorithm is highly sensitive to the initial placement of centroids. If two centroids are initialised in the same dense cluster, the algorithm may get stuck in a suboptimal solution. To mitigate this, Arthur and Vassilvitskii (2007) proposed K-Means++, a probabilistic initialisation scheme.
+The standard Lloyd's algorithm is highly sensitive to the initial placement of centroids. If two centroids are initialised in the same dense cluster, the algorithm may get stuck in a suboptimal solution. To mitigate this, Arthur and Vassilvitskii (2007) proposed K-Means++, a probabilistic initialisation scheme. [9]
 
 **The K-Means++ Algorithm:**
 
@@ -143,11 +143,11 @@ The standard Lloyd's algorithm is highly sensitive to the initial placement of c
 4.  Repeat steps 2 and 3 until $k$ centroids are chosen.
 5.  Proceed with standard Lloyd's algorithm.
 
-By weighting the selection probability by the squared distance, K-Means++ ensures that initial centroids are well-separated, which drastically improves the probability of converging to a global minimum and often accelerates convergence speed.
+By weighting the selection probability by the squared distance, K-Means++ ensures that initial centroids are well-separated, which drastically improves the probability of converging to a global minimum and often accelerates convergence speed. [9]
 
 ## 2.4 - Scalability: Mini-Batch K-Means
 
-For extremely large datasets, calculating the distance between every point and every centroid in each iteration (which requires $O(n \cdot k \cdot d)$ operations) is computationally prohibitive. Mini-Batch K-Means addresses this by using small, random subsets of the data (batches) to update centroids.
+For extremely large datasets, calculating the distance between every point and every centroid in each iteration (which requires $O(n \cdot k \cdot d)$ operations) is computationally prohibitive. Mini-Batch K-Means addresses this by using small, random subsets of the data (batches) to update centroids. [10]
 
 In each iteration:
 
@@ -155,7 +155,7 @@ In each iteration:
 2.  Assign points in $B$ to the nearest centroids.
 3.  Update centroids using a convex combination of the old centroid and the batch mean, often controlled by a learning rate or a count of samples seen so far.
 
-While Mini-Batch K-Means is essentially a stochastic gradient descent approach to clustering and is significantly faster, the resulting WCSS is typically slightly higher (worse) than the standard algorithm.
+While Mini-Batch K-Means is essentially a stochastic gradient descent approach to clustering and is significantly faster, the resulting WCSS is typically slightly higher (worse) than the standard algorithm. [10]
 
 ## 2.5 - Advantages and Disadvantages
 
@@ -226,7 +226,7 @@ $$d_{avg}(U, V) = \frac{1}{|U| \cdot |V|} \sum_{u \in U} \sum_{v \in V} \|u - v\
 
 ## 3.3 - Ward's Minimum Variance Method
 
-Ward's method is unique in that it does not optimise a distance metric directly but rather an objective function, similar to K-Means. It seeks to merge the pair of clusters that leads to the minimum increase in the total within-cluster variance (or Error Sum of Squares, ESS).
+Ward's method is unique in that it does not optimise a distance metric directly but rather an objective function, similar to K-Means. It seeks to merge the pair of clusters that leads to the minimum increase in the total within-cluster variance (or Error Sum of Squares, ESS). [5]
 
 The ESS for a cluster $C$ is:
 $$\text{ESS}_C = \sum_{x \in C} \|x - \mu_C\|^2$$
@@ -237,11 +237,11 @@ $$\Delta(A, B) = \text{ESS}_{A \cup B} - (\text{ESS}_A + \text{ESS}_B)$$
 Using the Huygens theorem, this can be efficiently calculated as a weighted squared distance between centroids:
 $$d_{Ward}(A, B) = \frac{|A| \cdot |B|}{|A| + |B|} \|\mu_A - \mu_B\|^2$$
 
-Ward's method tends to produce compact, equal-sized clusters. It is crucial to note that Ward's method is strictly defined for squared Euclidean distances.
+Ward's method tends to produce compact, equal-sized clusters. It is crucial to note that Ward's method is strictly defined for squared Euclidean distances. [5]
 
 ## 3.4 - The Lance-Williams Algorithm
 
-A naive implementation of agglomerative clustering would require recalculating distances between all points at every step, leading to high computational costs. The Lance-Williams formula provides a unified recursive method to update the distance between a newly merged cluster $W$ (formed by $U$ and $V$) and any existing cluster $Q$, based solely on the known distances $d(U, Q)$, $d(V, Q)$, and $d(U, V)$.
+A naive implementation of agglomerative clustering would require recalculating distances between all points at every step, leading to high computational costs. The Lance-Williams formula provides a unified recursive method to update the distance between a newly merged cluster $W$ (formed by $U$ and $V$) and any existing cluster $Q$, based solely on the known distances $d(U, Q)$, $d(V, Q)$, and $d(U, V)$. [6]
 
 **The General Formula:**
 $$d(W, Q) = \alpha_U d(U, Q) + \alpha_V d(V, Q) + \beta d(U, V) + \gamma |d(U, Q) - d(V, Q)|$$
@@ -291,7 +291,7 @@ Based on these parameters, the algorithm categorises every point $p$ in the data
     $$|N_\epsilon(p)| \ge \text{MinPts}$$
     $$N_\epsilon(p) = \{ q \in X \mid \text{dist}(p, q) \le \epsilon \}$$
 2.  **Border Point:** A point $p$ is a border point if it is not a core point ($|N_\epsilon(p)| < \text{MinPts}$), but it belongs to the neighbourhood of a core point.
-3.  **Noise Point (Outlier):** A point that is neither a core point nor a border point.
+3.  **Noise Point (Outlier):** A point that is neither a core point nor a border point. [7]
 
 ## 4.2 - Reachability and Connectivity
 
@@ -299,7 +299,7 @@ DBSCAN constructs clusters using the concept of density-reachability rather than
 
 1.  **Directly Density-Reachable:** A point $q$ is directly reachable from $p$ if $p$ is a core point and $q \in N_\epsilon(p)$.
 2.  **Density-Reachable:** A point $q$ is reachable from $p$ if there is a chain of points $p_1, p_2, \dots, p_n$ such that $p_1 = p$, $p_n = q$, and each $p_{i+1}$ is directly reachable from $p_i$. (Note: This property is asymmetric; a border point is reachable from a core point, but the reverse is not true).
-3.  **Density-Connected:** Two points $p$ and $q$ are density-connected if there is a third point $o$ such that both $p$ and $q$ are density-reachable from $o$. This symmetric property defines the cluster: a cluster is the set of all points that are density-connected to a particular core point.
+3.  **Density-Connected:** Two points $p$ and $q$ are density-connected if there is a third point $o$ such that both $p$ and $q$ are density-reachable from $o$. This symmetric property defines the cluster: a cluster is the set of all points that are density-connected to a particular core point. [7]
 
 ## 4.3 - The Algorithm
 
@@ -330,7 +330,7 @@ graph TD
 
 ## 4.4 - Parameter Estimation and Complexity
 
-Choosing $\epsilon$ and MinPts is critical. A common heuristic is the k-distance graph. For a given $k$ (usually set to MinPts), one plots the distance to the $k$-th nearest neighbour for all points, sorted in descending order. The "elbow" or "knee" of this graph indicates the optimal $\epsilon$ (the point where density drops sharply).
+Choosing $\epsilon$ and MinPts is critical. A common heuristic is the k-distance graph. For a given $k$ (usually set to MinPts), one plots the distance to the $k$-th nearest neighbour for all points, sorted in descending order. The "elbow" or "knee" of this graph indicates the optimal $\epsilon$ (the point where density drops sharply). [7]
 
 The complexity of DBSCAN depends on the spatial indexing used. Without indexing, the region query is $O(n)$, leading to an overall complexity of $O(n^2)$. With spatial indexing structures like R-trees\* or k-d trees, the region query can be reduced to $O(\log n)$, leading to an overall complexity of $O(n \log n)$.
 
@@ -378,7 +378,7 @@ The objective is to find the parameters $\theta$ that maximise the likelihood of
 
 $$ \mathcal{L}(\theta) = \sum_{i=1}^{n} \ln \left( \sum_{k=1}^{K} \pi_k \mathcal{N}(x_i \mid \mu_k, \Sigma_k) \right) $$
 
-Direct maximization of this log-likelihood is analytically intractable due to the summation inside the logarithm. To solve this, the Expectation-Maximisation (EM) algorithm is employed.
+Direct maximization of this log-likelihood is analytically intractable due to the summation inside the logarithm. To solve this, the Expectation-Maximisation (EM) algorithm is employed. [8]
 
 ```mermaid
 graph TD
@@ -413,7 +413,7 @@ Update the parameters to maximise the expected log-likelihood, weighted by the r
 
 ## 5.3 - Convergence and Jensen's Inequality
 
-The EM algorithm is guaranteed to monotonically increase the likelihood function (or typically the Evidence Lower Bound, ELBO) at each iteration, converging to a local maximum. This is grounded in Jensen's Inequality, which states that for a concave function $f$ (like $\ln$), $f(E[X]) \ge E[f(X)]$.
+The EM algorithm is guaranteed to monotonically increase the likelihood function (or typically the Evidence Lower Bound, ELBO) at each iteration, converging to a local maximum. [8] This is grounded in Jensen's Inequality, which states that for a concave function $f$ (like $\ln$), $f(E[X]) \ge E[f(X)]$.
 
 $$ \ln \sum_Z q(Z) \frac{p(X, Z \mid \theta)}{q(Z)} \ge \sum_Z q(Z) \ln \frac{p(X, Z \mid \theta)}{q(Z)} $$
 
@@ -449,7 +449,7 @@ The silhouette value $s(i)$ is:
 $$s(i) = \frac{b(i) - a(i)}{\max(a(i), b(i))}$$
 
   * **Range:** $-1$ to $1$.
-  * **Interpretation:** Values near $+1$ indicate high cohesion and separation. Values near $0$ indicate overlapping clusters. Negative values indicate misclassification.
+  * **Interpretation:** Values near $+1$ indicate high cohesion and separation. Values near $0$ indicate overlapping clusters. Negative values indicate misclassification. [13]
 
 ![alt text]({BASE}/image-10.png)
 
@@ -459,7 +459,7 @@ The DBI measures the average similarity between each cluster and its most simila
 
 $$ DB = \frac{1}{k} \sum_{i=1}^{k} \max_{j \ne i} \left( \frac{\sigma_i + \sigma_j}{d(c_i, c_j)} \right) $$
 
-Where $\sigma_i$ is the average distance of points in cluster $i$ to centroid $c_i$, and $d(c_i, c_j)$ is the distance between centroids. Lower DBI values indicate better clustering.
+Where $\sigma_i$ is the average distance of points in cluster $i$ to centroid $c_i$, and $d(c_i, c_j)$ is the distance between centroids. Lower DBI values indicate better clustering. [12]
 
 ## 6.3 - Dunn Index
 
@@ -467,7 +467,7 @@ The Dunn Index identifies sets of clusters that are compact and well-separated. 
 
 $$DI = \frac{\min_{1 \le i < j \le k} d(C_i, C_j)}{\max_{1 \le k \le K} \text{diam}(C_k)}$$
 
-Higher Dunn Index values indicate better clustering. It is computationally expensive to calculate and sensitive to noise, as the diameter term depends on the farthest points in a cluster.
+Higher Dunn Index values indicate better clustering. [11] It is computationally expensive to calculate and sensitive to noise, as the diameter term depends on the farthest points in a cluster.
 
 -----
 

@@ -39,7 +39,7 @@
 
 The rapid proliferation of artificial intelligence (AI) and machine learning (ML) across critical sectors (ranging from autonomous transportation and precision medicine to algorithmic trading and judicial sentencing) has precipitated a fundamental crisis of trust. While modern deep neural networks and ensemble methods demonstrate unprecedented predictive accuracy on varied benchmarks, they characteristically suffer from a lack of reliable self-awareness. A deep learning classifier may predict a medical diagnosis with 99% softmax probability while being entirely incorrect, a phenomenon known as overconfidence or poor calibration. In high-stakes decision-making, a point prediction (a single scalar output minimising a loss function) is insufficient. Decision-makers require a rigorous quantification of uncertainty: a guarantee that the true outcome lies within a specific range with a high probability.
 
-Conformal Prediction (CP), a theoretical framework pioneered by Vladimir Vovk (my professor), Alexander Gammerman, and Glenn Shafer in the late 1990s, addresses this limitation by shifting the paradigm from point prediction to set-valued prediction. Unlike Bayesian methods, which rely on priors that may be difficult to specify, or bootstrapping techniques that depend on asymptotic convergence, CP provides finite-sample, distribution-free statistical guarantees. If a Conformal Predictor is calibrated to a 95% confidence level, it is mathematically guaranteed to contain the true outcome 95% of the time, provided the data satisfies the assumption of exchangeability.
+Conformal Prediction (CP), a theoretical framework pioneered by Vladimir Vovk (my professor), Alexander Gammerman, and Glenn Shafer in the late 1990s, addresses this limitation by shifting the paradigm from point prediction to set-valued prediction.[1] Unlike Bayesian methods, which rely on priors that may be difficult to specify, or bootstrapping techniques that depend on asymptotic convergence, CP provides finite-sample, distribution-free statistical guarantees.[1][2] If a Conformal Predictor is calibrated to a 95% confidence level, it is mathematically guaranteed to contain the true outcome 95% of the time, provided the data satisfies the assumption of exchangeability.[1][2]
 
 This report provides an exhaustive technical examination of Conformal Prediction. It elucidates the mathematical foundations, contrasts the architectural variants of transductive and inductive inference, and explores advanced methodologies such as Conformalised Quantile Regression (CQR) and Adaptive Conformal Inference (ACI) for non-exchangeable time series. The objective is to equip the reader with a nuanced, robust understanding of how to implement statistically valid uncertainty wrappers for arbitrary black-box models.
 
@@ -51,14 +51,14 @@ The rigour of Conformal Prediction stems from its reliance on minimal assumption
 
 ## 2.1 - The Assumption of Exchangeability
 
-The fundamental theorem underlying all conformal validity is exchangeability. This is a weaker condition than the Independent and Identically Distributed (i.i.d.) assumption typically invoked in statistical learning theory, yet it is sufficient to establish the validity of conformal predictors.
+The fundamental theorem underlying all conformal validity is exchangeability. This is a weaker condition than the Independent and Identically Distributed (i.i.d.) assumption typically invoked in statistical learning theory, yet it is sufficient to establish the validity of conformal predictors.[1][2]
 
 **Definition:**
-A sequence of random variables $Z_1, Z_2, \dots, Z_n$ is considered exchangeable if their joint probability distribution is invariant under any permutation of the indices. Formally, for any permutation $\pi$ of the indices $\{1, \dots, n\}$:
+A sequence of random variables $Z_1, Z_2, \dots, Z_n$ is considered exchangeable if their joint probability distribution is invariant under any permutation of the indices.[1] Formally, for any permutation $\pi$ of the indices $\{1, \dots, n\}$:
 
 $$P(Z_1, Z_2, \dots, Z_n) = P(Z_{\pi(1)}, Z_{\pi(2)}, \dots, Z_{\pi(n)})$$
 
-While i.i.d. data is always exchangeable, exchangeable data need not be independent. A classic example is sampling without replacement from a finite urn; the outcome of the second draw depends on the first, yet the sequence is exchangeable because the joint probability of drawing any specific sequence of items is independent of the order in which they are drawn. In the context of Conformal Prediction, we assume that the proper training data, the calibration data, and the test point are exchangeable. This symmetry implies that the test point is statistically indistinguishable from the training points up until the moment its label is revealed. Consequently, the "strangeness" or error score of the test point is equally likely to rank anywhere among the scores of the calibration points.
+While i.i.d. data is always exchangeable, exchangeable data need not be independent. A classic example is sampling without replacement from a finite urn; the outcome of the second draw depends on the first, yet the sequence is exchangeable because the joint probability of drawing any specific sequence of items is independent of the order in which they are drawn. In the context of Conformal Prediction, we assume that the proper training data, the calibration data, and the test point are exchangeable. This symmetry implies that the test point is statistically indistinguishable from the training points up until the moment its label is revealed. Consequently, the "strangeness" or error score of the test point is equally likely to rank anywhere among the scores of the calibration points.[1][2]
 
 ## 2.2 - Empirical Quantiles and Finite-Sample Correction
 
@@ -70,7 +70,7 @@ $$\hat{F}_n(t) = \frac{1}{n} \sum_{i=1}^n \mathbb{I}(s_i \leq t)$$
 
 where $\mathbb{I}(\cdot)$ is the indicator function.
 
-To guarantee a coverage of at least $1-\alpha$ (e.g., 0.95), we cannot simply take the $(1-\alpha)$-th quantile of the observed scores. Due to the discrete nature of the finite sample, we must apply a finite-sample correction. The critical value $\hat{q}$ is typically chosen as the $\lceil (n+1)(1-\alpha) \rceil$-th smallest value in the calibration set. The term $(n+1)$ accounts for the inclusion of the test point itself in the exchangeable sequence. This precise calculation ensures that the probability of the test score exceeding the threshold is strictly bounded by $\alpha$.
+To guarantee a coverage of at least $1-\alpha$ (e.g., 0.95), we cannot simply take the $(1-\alpha)$-th quantile of the observed scores. Due to the discrete nature of the finite sample, we must apply a finite-sample correction. The critical value $\hat{q}$ is typically chosen as the $\lceil (n+1)(1-\alpha) \rceil$-th smallest value in the calibration set. The term $(n+1)$ accounts for the inclusion of the test point itself in the exchangeable sequence. This precise calculation ensures that the probability of the test score exceeding the threshold is strictly bounded by $\alpha$.[1][2]
 
 -----
 
@@ -85,7 +85,7 @@ The engine of a Conformal Predictor is the Non-Conformity Measure (NCM), a real-
   * **Low Score:** The example $z$ conforms well to the patterns in $D$.
   * **High Score:** The example $z$ is an outlier or poorly predicted by the model trained on $D$.
 
-The choice of NCM determines the efficiency (size) of the prediction sets but not their validity (coverage). Validity is guaranteed by the framework; efficiency depends on the quality of the underlying model and the suitability of the NCM.
+The choice of NCM determines the efficiency (size) of the prediction sets but not their validity (coverage). Validity is guaranteed by the framework; efficiency depends on the quality of the underlying model and the suitability of the NCM.[1][2]
 
 Common NCMs include:
 
@@ -98,7 +98,7 @@ The theoretical guarantee of CP can be stated as follows: For any exchangeable d
 
 $$P(Y_{n+1} \in \mathcal{C}(X_{n+1})) \geq 1 - \alpha$$
 
-This probability is marginal, meaning it is taken over the randomness of the calibration and test data. It is important to note that this is a conservative bound; for continuous scoring functions, the coverage is bounded tightly between $1-\alpha$ and $1-\alpha + \frac{1}{n+1}$, demonstrating that the method is not only valid but also efficient in the limit.
+This probability is marginal, meaning it is taken over the randomness of the calibration and test data. It is important to note that this is a conservative bound; for continuous scoring functions, the coverage is bounded tightly between $1-\alpha$ and $1-\alpha + \frac{1}{n+1}$, demonstrating that the method is not only valid but also efficient in the limit.[1][2]
 
 -----
 
@@ -108,7 +108,7 @@ While the theoretical core remains consistent, the implementation of CP varies s
 
 ## 4.1 - Transductive (Full) Conformal Prediction (TCP)
 
-TCP represents the "purest" form of the theory, offering the highest statistical efficiency (smallest prediction sets for a given coverage) at the cost of extreme computational expense.
+TCP represents the "purest" form of the theory, offering the highest statistical efficiency (smallest prediction sets for a given coverage) at the cost of extreme computational expense.[1][3]
 
 **The Algorithm:**
 
@@ -142,11 +142,11 @@ graph TD
 ```
 
 **Limitations:**
-In a regression setting where $\mathcal{Y} = \mathbb{R}$, this would require infinite retrainings. Even in classification with $K$ classes, retraining complex models (like deep neural networks) $K$ times for every single test inference is computationally prohibitive. TCP is thus restricted to simple models (like Nearest Neighbours or Ridge Regression) where the "retraining" step can be performed via efficient algebraic updates.
+In a regression setting where $\mathcal{Y} = \mathbb{R}$, this would require infinite retrainings. Even in classification with $K$ classes, retraining complex models (like deep neural networks) $K$ times for every single test inference is computationally prohibitive. TCP is thus restricted to simple models (like Nearest Neighbours or Ridge Regression) where the "retraining" step can be performed via efficient algebraic updates.[1][3]
 
 ## 4.2 - Inductive (Split) Conformal Prediction (ICP)
 
-To render CP practical for modern machine learning, Inductive Conformal Prediction (ICP) was developed. ICP sacrifices a small amount of statistical efficiency (resulting in slightly wider intervals) for massive computational gains.
+To render CP practical for modern machine learning, Inductive Conformal Prediction (ICP) was developed. ICP sacrifices a small amount of statistical efficiency (resulting in slightly wider intervals) for massive computational gains.[3]
 
 **The Algorithm:**
 
@@ -180,7 +180,7 @@ graph LR
 ```
 
 **Advantages:**
-ICP is model-agnostic and requires training the model only once. The calibration step is computationally negligible, involving only forward passes and sorting a list of scalars. This makes ICP the standard choice for deep learning applications.
+ICP is model-agnostic and requires training the model only once. The calibration step is computationally negligible, involving only forward passes and sorting a list of scalars. This makes ICP the standard choice for deep learning applications.[1][2]
 
 ## 4.3 - Table: Comparative Analysis of TCP and ICP
 
@@ -278,7 +278,7 @@ $$s_i = 1 - \hat{P}(y_i | x_i)$$
 We find a threshold $\hat{q}$ such that for $1-\alpha$ of the calibration examples, the true class probability is at least $1-\hat{q}$.
 For a test point, we include all classes $k$ where $\hat{P}(k | x_{test}) \ge 1-\hat{q}$.
 
-**Disadvantage:** This method is not adaptive. If the model is uniformly uncertain (e.g., flat softmax distribution $0.1, 0.1, \dots$), the threshold might exclude all classes (producing an empty set) or include all classes, depending on the calibration distribution. It does not account for the local difficulty of the specific image or text input.
+**Disadvantage:** This method is not adaptive. If the model is uniformly uncertain (e.g., flat softmax distribution $0.1, 0.1, \dots$), the threshold might exclude all classes (producing an empty set) or include all classes, depending on the calibration distribution. It does not account for the local difficulty of the specific image or text input.[2]
 
 ## 6.2 - Adaptive Prediction Sets (APS)
 
@@ -297,9 +297,9 @@ This ensures that for "easy" inputs (where probability is concentrated on one cl
 
 # 7 - Advanced Regression: Conformalised Quantile Regression (CQR)
 
-While standard ICP guarantees validity, applying it with a simple absolute residual score ($|y - \hat{y}|$) results in intervals of constant width ($2\hat{q}$) across the entire input space. This is often suboptimal because real-world data is frequently heteroscedastic: the uncertainty varies depending on the input $x$. For instance, predicting the price of a luxury mansion involves higher absolute variance than predicting the price of a studio apartment. Standard ICP would produce an interval too wide for the apartment (inefficient) and potentially too narrow for the mansion (locally invalid, though globally valid).
+While standard ICP guarantees validity, applying it with a simple absolute residual score ($|y - \hat{y}|$) results in intervals of constant width ($2\hat{q}$) across the entire input space. This is often suboptimal because real-world data is frequently heteroscedastic: the uncertainty varies depending on the input $x$. For instance, predicting the price of a luxury mansion involves higher absolute variance than predicting the price of a studio apartment. Standard ICP would produce an interval too wide for the apartment (inefficient) and potentially too narrow for the mansion (locally invalid, though globally valid).[4]
 
-Conformalised Quantile Regression (CQR), proposed by Romano, Patterson, and Candès (2019), combines the adaptivity of quantile regression with the rigorous guarantees of conformal prediction.
+Conformalised Quantile Regression (CQR), proposed by Romano, Patterson, and Candès (2019), combines the adaptivity of quantile regression with the rigorous guarantees of conformal prediction.[4]
 
 ## 7.1 - Quantile Regression and Pinball Loss
 
@@ -310,7 +310,7 @@ For a 90% interval, we train one output head with $\tau=0.05$ and another with $
 
 ## 7.2 - The CQR Algorithm
 
-Raw quantile regression estimates are asymptotically valid but typically fail to guarantee coverage in finite samples. CQR uses CP to "conformalise" these estimates.
+Raw quantile regression estimates are asymptotically valid but typically fail to guarantee coverage in finite samples. CQR uses CP to "conformalise" these estimates.[4]
 
 **The NCM:**
 The non-conformity score measures the signed distance of the true value $y_i$ from the predicted interval boundaries.
@@ -324,7 +324,7 @@ We compute the quantile $\hat{q}$ of these scores on the calibration set. The fi
 $$\mathcal{C}(x) = [\hat{t}_{lo}(x) - \hat{q}, \quad \hat{t}_{hi}(x) + \hat{q}]$$
 If the base model is under-confident (intervals too wide), $\hat{q}$ will be negative, shrinking the intervals.
 If the base model is over-confident (intervals too narrow), $\hat{q}$ will be positive, widening them.
-This results in intervals that vary locally in width (inherited from the quantile regressor) but are globally calibrated to exactly $1-\alpha$ coverage.
+This results in intervals that vary locally in width (inherited from the quantile regressor) but are globally calibrated to exactly $1-\alpha$ coverage.[4]
 
 -----
 
@@ -348,16 +348,16 @@ The "Achilles' heel" of classical CP is the exchangeability assumption. In many 
 
 **Scenario:** The conditional distribution $P(Y|X)$ remains constant (the physics of the problem hasn't changed), but the marginal distribution $P(X)$ changes. For example, a medical model trained on younger patients is tested on an older demographic.
 
-**Solution:** Weighted Conformal Prediction (Tibshirani et al., 2019) modifies the calibration step. If we can estimate the likelihood ratio $w(x) = dP_{test}(x) / dP_{train}(x)$, we can assign weights to the calibration points.
+**Solution:** Weighted Conformal Prediction (Tibshirani et al., 2019)[5] modifies the calibration step. If we can estimate the likelihood ratio $w(x) = dP_{test}(x) / dP_{train}(x)$, we can assign weights to the calibration points.
 Instead of treating all calibration scores as having equal probability mass ($1/n$), we assign mass proportional to their weights $w(x_i)$.
 $$p_i = \frac{w(x_i)}{\sum w(x_j) + w(x_{test})}$$
-We then compute the weighted quantile of the scores. Points in the calibration set that are "similar" to the current test point (high $w(x)$) exert more influence on the threshold, effectively adapting the interval to the local density of the test distribution.
+We then compute the weighted quantile of the scores. Points in the calibration set that are "similar" to the current test point (high $w(x)$) exert more influence on the threshold, effectively adapting the interval to the local density of the test distribution.[5]
 
 ## 9.2 - Time Series: Adaptive Conformal Inference (ACI)
 
 **Scenario:** In time series, data is not exchangeable due to temporal dependence and concept drift (distribution drift). $P(Y|X)$ changes over time. Standard CP often fails here, producing intervals that alternate between under-covering (during high volatility) and over-covering (during stability).
 
-**Solution:** Adaptive Conformal Inference (ACI) (Gibbs & Candès, 2021) treats the coverage level $\alpha$ as a variable to be controlled, rather than a fixed parameter. It views the CP process through the lens of Control Theory.
+**Solution:** Adaptive Conformal Inference (ACI) (Gibbs & Candès, 2021)[6] treats the coverage level $\alpha$ as a variable to be controlled, rather than a fixed parameter. It views the CP process through the lens of Control Theory.
 
 **The ACI Algorithm:**
 We maintain a time-varying parameter $\alpha_t$.
@@ -370,7 +370,7 @@ At each time step $t$:
 
 If we failed to cover ($\mathbb{I}=1$), the error was 1, which is likely $>\alpha_{target}$. The term becomes negative, so we decrease $\alpha_t$. A smaller $\alpha$ implies a higher confidence level ($1-\alpha$), resulting in a wider interval for the next step.
 If we covered successfully ($\mathbb{I}=0$), we increase $\alpha_t$, slightly narrowing the interval to reduce conservativeness.
-This mechanism ensures that the long-run coverage frequency converges to $1-\alpha_{target}$, even if the underlying distribution is shifting arbitrarily. This provides asymptotic validity for non-exchangeable data.
+This mechanism ensures that the long-run coverage frequency converges to $1-\alpha_{target}$, even if the underlying distribution is shifting arbitrarily. This provides asymptotic validity for non-exchangeable data.[6]
 
 -----
 
@@ -434,7 +434,7 @@ This modularity means CP can be "plugged in" to existing MLOps pipelines with mi
 
 ## 12.1 - Natural Language Processing (NLP)
 
-Large Language Models (LLMs) are notorious for "hallucinations." CP is being adapted to quantify uncertainty in generation. For example, rather than outputting a single token, a conformal LLM outputs a set of plausible tokens for the next position. This can be used for "Conformal Risk Control" in retrieval-augmented generation (RAG) to ensure that the retrieved answer contains the correct document with high probability.
+Large Language Models (LLMs) are notorious for "hallucinations." CP is being adapted to quantify uncertainty in generation. For example, rather than outputting a single token, a conformal LLM outputs a set of plausible tokens for the next position. This can be used for "Conformal Risk Control" in retrieval-augmented generation (RAG) to ensure that the retrieved answer contains the correct document with high probability.[7]
 
 ## 12.2 - Computer Vision
 
@@ -442,7 +442,7 @@ In medical imaging (e.g., tumour segmentation), point predictions are dangerous.
 
 ## 12.3 - Time Series Forecasting
 
-In supply chain and energy grid management, CP (specifically ACI and EnbPI) is used to predict demand intervals. Unlike standard quantile regression, these intervals dynamically adjust to sudden shocks (e.g., a heatwave spiking energy use), preventing grid failures due to underestimation of load.
+In supply chain and energy grid management, CP (specifically ACI and EnbPI) is used to predict demand intervals. Unlike standard quantile regression, these intervals dynamically adjust to sudden shocks (e.g., a heatwave spiking energy use), preventing grid failures due to underestimation of load.[6][8]
 
 -----
 
