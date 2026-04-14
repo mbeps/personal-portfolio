@@ -52,7 +52,7 @@ To comprehend the operation of a Boltzmann machine, one must first appreciate th
 
 ## 2.1 - The Ising Model and Magnetic Dipoles
 
-The intellectual lineage begins with the Ising model, a mathematical model of ferromagnetism in statistical mechanics. The model consists of discrete variables (spins) representing magnetic dipole moments of atomic spins that can be in one of two states ($+1$ or $-1$). The spins are arranged in a graph (typically a lattice), allowing each spin to interact with its neighbours. The energy of a configuration $\sigma$ is given by the Hamiltonian:
+The intellectual lineage begins with the Ising model, a mathematical model of ferromagnetism in statistical mechanics. [9] The model consists of discrete variables (spins) representing magnetic dipole moments of atomic spins that can be in one of two states ($+1$ or $-1$). The spins are arranged in a graph (typically a lattice), allowing each spin to interact with its neighbours. The energy of a configuration $\sigma$ is given by the Hamiltonian:
 
 $$H(\sigma) = - \sum_{\langle i, j \rangle} J_{ij} \sigma_i \sigma_j - \mu \sum_j h_j \sigma_j$$
 
@@ -66,13 +66,13 @@ Here, $k_B$ is the Boltzmann constant, and $Z$ is the partition function, a norm
 
 ## 2.2 - The Hopfield Network Precursor
 
-In 1982, John Hopfield bridged physics and computation by proposing a network of binary neurons with symmetric connections, demonstrating that such a system could serve as a content-addressable memory. In a Hopfield network, the state of a neuron $s_i$ is determined deterministically by the sign of the weighted sum of its inputs.
+In 1982, John Hopfield bridged physics and computation by proposing a network of binary neurons with symmetric connections, demonstrating that such a system could serve as a content-addressable memory. [8] In a Hopfield network, the state of a neuron $s_i$ is determined deterministically by the sign of the weighted sum of its inputs.
 
 The energy function of a Hopfield network is defined as:
 
 $$E = - \frac{1}{2} \sum_{i \neq j} w_{ij} s_i s_j - \sum_{i} \theta_i s_i$$
 
-where $w_{ij}$ is the symmetric weight between units $i$ and $j$, $s_i \in \{-1, +1\}$ is the state of unit $i$, and $\theta_i$ is the threshold. The system evolves by iteratively updating units to lower this energy. Because the energy is bounded from below and the update rule is monotonic, the system is guaranteed to converge to a local minimum.
+where $w_{ij}$ is the symmetric weight between units $i$ and $j$, $s_i \in \{-1, +1\}$ is the state of unit $i$, and $\theta_i$ is the threshold. The system evolves by iteratively updating units to lower this energy. Because the energy is bounded from below and the update rule is monotonic, the system is guaranteed to converge to a local minimum. [8]
 
 **Table 1: The Transition from Physics to Computation**
 
@@ -90,9 +90,9 @@ While revolutionary, the Hopfield network suffered from severe limitations. It w
 
 ## 2.3 - The Boltzmann Transition: Introducing Stochasticity
 
-The Boltzmann machine, introduced by Ackley, Hinton, and Sejnowski in 1985, addressed the limitations of the Hopfield network by introducing thermodynamic stochasticity. By replacing the deterministic threshold function with a probabilistic decision rule, the system gained the ability to escape local energy minima.
+The Boltzmann machine, introduced by Ackley, Hinton, and Sejnowski in 1985, addressed the limitations of the Hopfield network by introducing thermodynamic stochasticity. [1] By replacing the deterministic threshold function with a probabilistic decision rule, the system gained the ability to escape local energy minima.
 
-This process is analogous to simulated annealing, a technique derived from metallurgy where a material is heated (high stochasticity) and then slowly cooled to allow atoms to arrange themselves into a crystal lattice with minimal defects (global energy minimum). In the Boltzmann machine, the "temperature" parameter $T$ controls the level of noise. At high $T$, units switch states almost randomly, allowing the system to explore the state space broadly. As $T$ approaches zero, the system behaves like a deterministic Hopfield network, settling into the nearest energy minimum.
+This process is analogous to simulated annealing, a technique derived from metallurgy where a material is heated (high stochasticity) and then slowly cooled to allow atoms to arrange themselves into a crystal lattice with minimal defects (global energy minimum). [10] In the Boltzmann machine, the "temperature" parameter $T$ controls the level of noise. At high $T$, units switch states almost randomly, allowing the system to explore the state space broadly. As $T$ approaches zero, the system behaves like a deterministic Hopfield network, settling into the nearest energy minimum.
 
 -----
 
@@ -107,7 +107,7 @@ The separation of units into visible and hidden sets allows the Boltzmann machin
   * **Visible Units ($V$):** These provide the interface with the environment. During training, input data (and potentially output labels) are "clamped" to these units, forcing them into specific states.
   * **Hidden Units ($H$):** These units have no direct connection to the external world. Their role is to capture higher-order correlations and statistical dependencies between the visible units that cannot be modelled by direct pairwise interactions.
 
-This architecture enables the machine to model complex distributions. While a network without hidden units is limited to modelling only second-order correlations (pairwise relationships) between input variables, the addition of hidden units allows the network to approximate any discrete probability distribution to arbitrary precision, provided enough hidden units are available.
+This architecture enables the machine to model complex distributions. While a network without hidden units is limited to modelling only second-order correlations (pairwise relationships) between input variables, the addition of hidden units allows the network to approximate any discrete probability distribution to arbitrary precision, provided enough hidden units are available. [1]
 
 ## 3.2 - The Energy Function
 
@@ -197,7 +197,7 @@ The weight update rule is thus:
 $$\Delta w_{ij} = \eta ( \langle s_i s_j \rangle_{clamped} - \langle s_i s_j \rangle_{free} )$$
 
 where $\eta$ is the learning rate.
-This rule is a form of differential Hebbian learning.
+This rule is a form of differential Hebbian learning. [1]
 
 ```mermaid
 flowchart TD
@@ -226,7 +226,7 @@ Historically, researchers attempted to approximate this using Markov Chain Monte
 
 ## 5.1 - Structural Constraint: The RBM
 
-The breakthrough that propelled Boltzmann machines back into the spotlight was the introduction of structural restrictions. The Restricted Boltzmann Machine (RBM), initially proposed by Smolensky in 1986 under the name "Harmonium", imposes a bipartite graph structure.
+The breakthrough that propelled Boltzmann machines back into the spotlight was the introduction of structural restrictions. The Restricted Boltzmann Machine (RBM), initially proposed by Smolensky in 1986 under the name "Harmonium", imposes a bipartite graph structure. [15]
 
 In an RBM:
 
@@ -290,7 +290,7 @@ This factorisation removes the need for lengthy settling times during the positi
 
 # 6 - Training RBMs: Contrastive Divergence
 
-To train RBMs efficiently, Geoffrey Hinton (2002) introduced Contrastive Divergence (CD), an approximation algorithm that circumvents the need to reach perfect thermal equilibrium in the negative phase.
+To train RBMs efficiently, Geoffrey Hinton (2002) introduced Contrastive Divergence (CD), an approximation algorithm that circumvents the need to reach perfect thermal equilibrium in the negative phase. [5]
 
 ## 6.1 - The CD-k Algorithm
 
@@ -312,21 +312,21 @@ The weight update becomes:
 $$ \Delta w_{ij} \approx \eta ( \langle v_i h_j \rangle_{data} - \langle v_i h_j \rangle_{reconstruction} ) $$
 $$ \Delta w_{ij} \approx \eta ( v_i^{(0)} P(h_j=1|\mathbf{v}^{(0)}) - v_i^{(k)} P(h_j=1|\mathbf{v}^{(k)}) ) $$
 
-This approximation introduces a bias (it effectively minimises the difference between the data distribution and the distribution after $k$ steps of Gibbs sampling, rather than the true equilibrium distribution). However, in practice, the bias is small enough that the learning converges to a region of parameter space very close to the maximum likelihood solution.
+This approximation introduces a bias (it effectively minimises the difference between the data distribution and the distribution after $k$ steps of Gibbs sampling, rather than the true equilibrium distribution). However, in practice, the bias is small enough that the learning converges to a region of parameter space very close to the maximum likelihood solution. [5]
 
 ## 6.2 - Persistent Contrastive Divergence (PCD)
 
-A refinement known as Persistent CD (PCD), proposed by Tieleman, maintains the state of the Markov chain between weight updates rather than resetting it to the training data each time. This allows the chain to explore the model's distribution more thoroughly ("pseudo-equilibrium") without the computational cost of a long burn-in period at every step. PCD typically results in better approximations of the log-likelihood gradient than CD-1, especially when the learning rate is small.
+A refinement known as Persistent CD (PCD), proposed by Tieleman, maintains the state of the Markov chain between weight updates rather than resetting it to the training data each time. This allows the chain to explore the model's distribution more thoroughly ("pseudo-equilibrium") without the computational cost of a long burn-in period at every step. PCD typically results in better approximations of the log-likelihood gradient than CD-1, especially when the learning rate is small. [17]
 
 -----
 
 # 7 - Deep Architectures and the Generative Era
 
-The RBM served as the fundamental building block for the first wave of "Deep Learning" in the mid-2000s, specifically through Deep Belief Networks (DBNs) and Deep Boltzmann Machines (DBMs).
+The RBM served as the fundamental building block for the first wave of "Deep Learning" in the mid-2000s, specifically through Deep Belief Networks (DBNs) and Deep Boltzmann Machines (DBMs). [6][13]
 
 ## 7.1 - Greedy Layer-wise Pre-training
 
-Before 2006, training deep neural networks was notoriously difficult due to the vanishing gradient problem and poor initialisation. Hinton and Salakhutdinov demonstrated that RBMs could be stacked to pre-train deep networks.
+Before 2006, training deep neural networks was notoriously difficult due to the vanishing gradient problem and poor initialisation. Hinton and Salakhutdinov demonstrated that RBMs could be stacked to pre-train deep networks. [6][7]
 
 The procedure is greedy and layer-wise:
 
@@ -335,7 +335,7 @@ The procedure is greedy and layer-wise:
 3.  Repeat for as many layers as desired.
 4.  **Fine-tuning:** Unroll the stack into a deep autoencoder or a feedforward classifier and fine-tune the entire network using backpropagation.
 
-This approach initialises the weights in a region of the parameter space that is favourable for optimisation, effectively solving the training difficulty of deep networks before the advent of modern techniques like Batch Normalisation and ReLU.
+This approach initialises the weights in a region of the parameter space that is favourable for optimisation, effectively solving the training difficulty of deep networks before the advent of modern techniques like Batch Normalisation and ReLU. [6][7]
 
 ## 7.2 - Deep Belief Networks vs. Deep Boltzmann Machines
 
@@ -358,8 +358,8 @@ graph TD
     end
 ```
 
-  * **Deep Belief Networks (DBNs):** A hybrid graphical model. The top two layers form an undirected bipartite graph (an associative memory RBM), while the lower layers form a directed generative model (sigmoid belief network) pointing downwards. This architecture allows for efficient generation of data samples by sampling the top RBM and then propagating stochastically down the directed layers.
-  * **Deep Boltzmann Machines (DBMs):** The network remains fully undirected throughout the hierarchy. This allows information to flow both bottom-up and top-down during inference. For example, in image recognition, knowing an object is a "car" (high-level) can send top-down signals to resolve a noisy patch of pixels as a "wheel" (low-level). However, training DBMs is significantly more difficult than DBNs due to the complex interaction between layers during the estimation of the partition function.
+  * **Deep Belief Networks (DBNs):** A hybrid graphical model. The top two layers form an undirected bipartite graph (an associative memory RBM), while the lower layers form a directed generative model (sigmoid belief network) pointing downwards. This architecture allows for efficient generation of data samples by sampling the top RBM and then propagating stochastically down the directed layers. [6]
+  * **Deep Boltzmann Machines (DBMs):** The network remains fully undirected throughout the hierarchy. This allows information to flow both bottom-up and top-down during inference. For example, in image recognition, knowing an object is a "car" (high-level) can send top-down signals to resolve a noisy patch of pixels as a "wheel" (low-level). However, training DBMs is significantly more difficult than DBNs due to the complex interaction between layers during the estimation of the partition function. [13][14]
 
 -----
 
@@ -369,9 +369,9 @@ Following the dominance of feedforward networks (CNNs, ResNets) in the 2010s, th
 
 ## 8.1 - Modern Hopfield Networks: "Hopfield Networks is All You Need"
 
-A landmark paper by Ramsauer et al. (2020) established a mathematical equivalence between the update rule of a continuous-state "Modern Hopfield Network" (or Dense Associative Memory) and the self-attention mechanism of the Transformer architecture.
+A landmark paper by Ramsauer et al. (2020) established a mathematical equivalence between the update rule of a continuous-state "Modern Hopfield Network" (or Dense Associative Memory) and the self-attention mechanism of the Transformer architecture. [12]
 
-In classical Hopfield nets, the energy function is quadratic ($x^2$), leading to a linear storage capacity. Modern Hopfield networks use a steeper, exponential energy function (e.g., Lagrangian functions involving $e^x$). The update rule that minimises this exponential energy function involves a softmax operation.
+In classical Hopfield nets, the energy function is quadratic ($x^2$), leading to a linear storage capacity. [11] Modern Hopfield networks use a steeper, exponential energy function (e.g., Lagrangian functions involving $e^x$). The update rule that minimises this exponential energy function involves a softmax operation. [12]
 
 Ramsauer et al. showed that the update rule for a state $\xi$ in a modern Hopfield network is:
 
@@ -383,15 +383,15 @@ $$\mathbf{Attn}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$
 
 where the stored patterns $\mathbf{X}$ act as the Keys ($K$) and Values ($V$), and the state $\xi$ acts as the Query ($Q$).
 
-This revelation suggests that Transformers can be interpreted as large associative memory machines that retrieve "memories" based on "cues" via energy minimisation. This energy-based perspective provides a unifying theory for why Transformers are so effective: they are performing a massive, parallelised energy descent step in a high-dimensional associative memory space.
+This revelation suggests that Transformers can be interpreted as large associative memory machines that retrieve "memories" based on "cues" via energy minimisation. [12] This energy-based perspective provides a unifying theory for why Transformers are so effective: they are performing a massive, parallelised energy descent step in a high-dimensional associative memory space.
 
 ## 8.2 - Energy Transformers
 
-Building on this, the Energy Transformer (2023) architecture replaces the sequence of feedforward layers in a standard Transformer with a single recurrent block that explicitly minimises a global energy function.
+Building on this, the Energy Transformer (2023) architecture replaces the sequence of feedforward layers in a standard Transformer with a single recurrent block that explicitly minimises a global energy function. [19]
 
 $$E_{total} = E_{attn} + E_{ffn}$$
 
-Instead of simply stacking layers, the Energy Transformer iterates the token representations to settle into a fixed point attractor. This design unifies the powerful representation capabilities of Transformers with the stability and theoretical guarantees of Boltzmann-like energy models. It addresses a key limitation of standard Transformers: they are not guaranteed to converge to a stable representation, whereas an Energy Transformer is mathematically bound to settle into an energy minimum.
+Instead of simply stacking layers, the Energy Transformer iterates the token representations to settle into a fixed point attractor. This design unifies the powerful representation capabilities of Transformers with the stability and theoretical guarantees of Boltzmann-like energy models. It addresses a key limitation of standard Transformers: they are not guaranteed to converge to a stable representation, whereas an Energy Transformer is mathematically bound to settle into an energy minimum. [19]
 
 -----
 
@@ -401,7 +401,7 @@ Perhaps the most futuristic extension of the Boltzmann architecture lies in the 
 
 ## 9.1 - The Quantum Hamiltonian
 
-In a classical BM, the Hamiltonian (Energy function) is diagonal in the standard basis; it consists only of commuting terms (products of $s_i s_j$). A Quantum Boltzmann Machine (QBM) introduces non-commuting terms, specifically a transverse field.
+In a classical BM, the Hamiltonian (Energy function) is diagonal in the standard basis; it consists only of commuting terms (products of $s_i s_j$). A Quantum Boltzmann Machine (QBM) introduces non-commuting terms, specifically a transverse field. [2]
 
 The Hamiltonian of a QBM typically takes the form:
 
@@ -413,13 +413,13 @@ where:
   * $\sigma^x$ are the Pauli-X matrices (introducing quantum superposition).
   * $\Gamma_i$ is the strength of the transverse field.
 
-The presence of the non-commuting transverse field term $\sigma^x$ induces quantum fluctuations. Unlike thermal fluctuations which flip spins based on thermal energy, the transverse field allows the system to exist in superpositions of states.
+The presence of the non-commuting transverse field term $\sigma^x$ induces quantum fluctuations. Unlike thermal fluctuations which flip spins based on thermal energy, the transverse field allows the system to exist in superpositions of states. [2]
 
 ## 9.2 - Tunnelling vs. Thermal Hopping: The Sampling Advantage
 
 The primary bottleneck of classical BMs is the calculation of the partition function $Z$ (or sampling from the negative phase). Classical MCMC methods (Gibbs sampling) often get stuck in deep energy valleys (modes) because they must "climb" over energy barriers to explore other modes. This is the problem of slow mixing.
 
-Quantum systems can utilise quantum tunnelling to pass through energy barriers rather than climbing over them. This allows a Quantum Boltzmann Machine to sample from the target distribution significantly faster and more diversely than classical Gibbs sampling, particularly for distributions with many separated modes (rugged energy landscapes).
+Quantum systems can utilise quantum tunnelling to pass through energy barriers rather than climbing over them. This allows a Quantum Boltzmann Machine to sample from the target distribution significantly faster and more diversely than classical Gibbs sampling, particularly for distributions with many separated modes (rugged energy landscapes). [2]
 
 **Table 2: Classical vs. Quantum Boltzmann Sampling**
 
@@ -433,9 +433,9 @@ Quantum systems can utilise quantum tunnelling to pass through energy barriers r
 
 ## 9.3 - Semi-Quantum RBMs (sqRBM)
 
-Recent work has proposed Semi-Quantum Restricted Boltzmann Machines (sqRBMs) to bridge the gap between classical data and quantum hardware. In an sqRBM, the visible units (representing classical data) are treated classically, while the hidden layer consists of quantum spins (qubits) interacting via a transverse field.
+Recent work has proposed Semi-Quantum Restricted Boltzmann Machines (sqRBMs) to bridge the gap between classical data and quantum hardware. [3] In an sqRBM, the visible units (representing classical data) are treated classically, while the hidden layer consists of quantum spins (qubits) interacting via a transverse field.
 
-This hybrid approach allows the model to capture quantum correlations in the latent space while interfacing with classical datasets. Theoretical analysis predicts that to learn a given probability distribution, a classical RBM might require three times as many hidden units as an sqRBM, suggesting a "quantum advantage" in expressivity and parameter efficiency.
+This hybrid approach allows the model to capture quantum correlations in the latent space while interfacing with classical datasets. Theoretical analysis predicts that to learn a given probability distribution, a classical RBM might require three times as many hidden units as an sqRBM, suggesting a "quantum advantage" in expressivity and parameter efficiency. [3]
 
 -----
 
@@ -457,7 +457,7 @@ An RBM trained on this dataset typically allocates specific hidden units to dete
 During generation, if the RBM chooses "vertical", the hidden units corresponding to columns become active, suppressing row-based units via the competition inherent in the energy landscape (mediated by the biases and the visible layer consistency).
 
 **Quantum Annealing Results:**
-Recent studies using D-Wave quantum annealers on this problem demonstrated that quantum sampling could generate valid Bars/Stripes patterns with lower Kullback-Leibler divergence than classical CD-1. The quantum annealer successfully tunnelled out of "mixed" states (spurious local minima containing partial bars and partial stripes) that trapped the classical Gibbs sampler.
+Recent studies using D-Wave quantum annealers on this problem demonstrated that quantum sampling could generate valid Bars/Stripes patterns with lower Kullback-Leibler divergence than classical CD-1. [4] The quantum annealer successfully tunnelled out of "mixed" states (spurious local minima containing partial bars and partial stripes) that trapped the classical Gibbs sampler. [4]
 
 -----
 

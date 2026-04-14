@@ -36,7 +36,7 @@
 
 The fundamental challenge of artificial intelligence and statistical learning is the problem of generalisation. In the classical deductive sciences, conclusions follow logically from premises. In inductive learning, however, the algorithm must infer general rules from specific, finite observations. This inference carries an inherent risk: the model may identify patterns that are specific only to the observed data (noise or sampling artefacts) rather than the underlying data-generating process. This phenomenon, known as overfitting, represents a failure of induction.
 
-Validation methodologies provide the mathematical framework to estimate and mitigate this risk. They are not merely procedural steps in a software pipeline but are grounded in deep statistical theory, specifically Empirical Risk Minimisation (ERM), the Bias-Variance Decomposition, and Asymptotic Consistency. A rigorous understanding of these concepts is essential, as the naive application of validation strategies (such as random splitting on time-series data) can lead to catastrophically biased performance estimates.
+Validation methodologies provide the mathematical framework to estimate and mitigate this risk. They are not merely procedural steps in a software pipeline but are grounded in deep statistical theory, specifically Empirical Risk Minimisation (ERM), the Bias-Variance Decomposition, and Asymptotic Consistency. A rigorous understanding of these concepts is essential, as the naive application of validation strategies (such as random splitting on time-series data) can lead to catastrophically biased performance estimates. [2]
 
 This report provides an exhaustive analysis of validation architectures. We will traverse from the axiomatic definitions of Risk and Loss to the mechanics of K-Fold and Leave-One-Out estimators, examine the necessary modifications for dependent data (temporal and spatial), and conclude with the advanced statistical testing required to compare models rigorously.
 
@@ -152,10 +152,10 @@ Consequently, $\widehat{\text{Err}}_{CV}$ tends to overestimate the true error. 
 **Variance of the CV Estimator:**
 This refers to how much the CV estimate would vary if we drew a completely new dataset $S'$ of size $n$ and repeated the CV procedure.
 
-  * **LOOCV:** The training sets in each fold are highly overlapping (they share $n-2$ samples). This leads to highly positively correlated error estimates across folds. Statistical theory shows that the variance of the mean of highly correlated variables is higher than the mean of independent variables. Thus, LOOCV often has high variance.
+  * **LOOCV:** The training sets in each fold are highly overlapping (they share $n-2$ samples). This leads to highly positively correlated error estimates across folds. Statistical theory shows that the variance of the mean of highly correlated variables is higher than the mean of independent variables. Thus, LOOCV often has high variance. [3]
   * **K-Fold (e.g. K=10):** The training sets overlap less (sharing roughly $80-90\%$ of data). The error estimates are less correlated, often resulting in a lower variance estimator than LOOCV.
 
-**Conclusion:** For model selection, we generally prefer K-Fold (with $K=5$ or $10$) over LOOCV because the lower variance often leads to more stable model selection, despite the slightly higher bias.
+**Conclusion:** For model selection, we generally prefer K-Fold (with $K=5$ or $10$) over LOOCV because the lower variance often leads to more stable model selection, despite the slightly higher bias. [2][5]
 
 -----
 
@@ -165,7 +165,7 @@ We now detail the algorithms and mathematical formulations of the standard valid
 
 ## 3.1 - The Hold-Out Method (Simple Split)
 
-This is the most elementary form of validation. The dataset $S$ is partitioned into two disjoint sets: $S_{train}$ and $S_{test}$.
+This is the most elementary form of validation. The dataset $S$ is partitioned into two disjoint sets: $S_{train}$ and $S_{test}$. [5]
 
 ![alt text]({BASE}/image-3.png)
 
@@ -187,7 +187,7 @@ $$\hat{R}_{HO} = \frac{1}{|S_{test}|} \sum_{(x_i, y_i) \in S_{test}} L(y_i, \hat
 
 ## 3.2 - K-Fold Cross-Validation
 
-K-Fold CV mitigates the wastefulness and variance of the hold-out method by repeating the process $K$ times on different partitions.
+K-Fold CV mitigates the wastefulness and variance of the hold-out method by repeating the process $K$ times on different partitions. [5][2]
 
 ![alt text]({BASE}/image-4.png)
 
@@ -267,7 +267,7 @@ This value (5.50) is our estimate of the MSE on unseen data.
 
 ## 3.3 - Leave-One-Out Cross-Validation (LOOCV)
 
-LOOCV is the special case where $K=n$.
+LOOCV is the special case where $K=n$. [8][5]
 
 The Estimator:
 $$CV_{LOO} = \frac{1}{n} \sum_{i=1}^n L(y_i, \hat{f}_{-i}(x_i))$$
@@ -283,7 +283,7 @@ A common misconception is that LOOCV is always computationally prohibitive becau
 
 $$CV_{LOO} = \frac{1}{n} \sum_{i=1}^n \left( \frac{y_i - \hat{y}_i}{1 - h_{ii}} \right)^2$$
 
-where $\hat{y}_i$ is the prediction from the full model and $h_{ii}$ is the $i$-th diagonal element of $\mathbf{H}$.
+where $\hat{y}_i$ is the prediction from the full model and $h_{ii}$ is the $i$-th diagonal element of $\mathbf{H}$. [8]
 
 **Proof Derivation:**
 Consider the standard Ordinary Least Squares (OLS) solution: $\hat{\boldsymbol{\beta}} = (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y}$.
@@ -323,7 +323,7 @@ This is highly recommended for small datasets where the specific partition of da
 
 # 4 - Stratified Sampling in Validation
 
-The standard K-Fold algorithm assumes that a random split of data will produce training and test sets that are representative of the underlying distribution. However, when the target variable $Y$ is categorical and classes are imbalanced (e.g. 90% Class A, 10% Class B), simple random sampling can fail.
+The standard K-Fold algorithm assumes that a random split of data will produce training and test sets that are representative of the underlying distribution. However, when the target variable $Y$ is categorical and classes are imbalanced (e.g. 90% Class A, 10% Class B), simple random sampling can fail. [5]
 
 ![alt text]({BASE}/image-6.png)
 
@@ -369,7 +369,7 @@ The standard cross-validation methods described above rely on the assumption tha
 In time series, observations are ordered: $(x_t, y_t)$ depends on $(x_{t-1}, y_{t-1})$. Using standard K-Fold CV destroys this structure and introduces **Lookahead Bias** (or Data Leakage).
 
 **The Problem with Random Splits:**
-If we randomly assign $t=100$ to the training set and $t=99$ to the test set, the model can use information from the future ($t=100$) to predict the past ($t=99$). In reality, we never have future data when making predictions. This leads to wildly optimistic error estimates.
+If we randomly assign $t=100$ to the training set and $t=99$ to the test set, the model can use information from the future ($t=100$) to predict the past ($t=99$). In reality, we never have future data when making predictions. This leads to wildly optimistic error estimates. [7]
 
 ![alt text]({BASE}/image-7.png)
 
@@ -426,7 +426,7 @@ where $\hat{f}_{1:t}$ is the model trained on data from time 1 to $t$.
 
 ### 5.1.2 - h-Block Cross-Validation
 
-In some cases (e.g. stationary time series analysis or interpolation tasks), we might want to use future data to predict the past, but still need to handle correlation. Burman, Chow, and Nolan (1994) introduced h-block Cross-Validation.
+In some cases (e.g. stationary time series analysis or interpolation tasks), we might want to use future data to predict the past, but still need to handle correlation. Burman, Chow, and Nolan (1994) introduced h-block Cross-Validation. [4]
 
 The idea is to enforce a buffer zone of size $h$ around the test observation $i$.
 
@@ -436,19 +436,19 @@ The idea is to enforce a buffer zone of size $h$ around the test observation $i$
 
 This ensures that the training data is asymptotically independent of the test point, provided $h$ is large enough relative to the autocorrelation decay of the series.
 
-Burman derived a correction term for this estimator because removing $2h+1$ samples systematically reduces the training size, inducing a pessimistic bias. The corrected estimator adds a term dependent on the marginal distribution of the data, though in practice, choosing $h$ based on the variogram range is often sufficient.
+Burman derived a correction term for this estimator because removing $2h+1$ samples systematically reduces the training size, inducing a pessimistic bias. The corrected estimator adds a term dependent on the marginal distribution of the data, though in practice, choosing $h$ based on the variogram range is often sufficient. [4]
 
 ## 5.2 - Spatial Cross-Validation (Spatial Autocorrelation)
 
 Spatial data follows Tobler's First Law of Geography: "Everything is related to everything else, but near things are more related than distant things."
 
-If we use random K-Fold CV on geospatial data (e.g. predicting crop yields from satellite pixels), adjacent pixels will likely fall into different folds. Since adjacent pixels are almost identical, the model in Fold 1 "memorises" the pixel in Fold 2. This is **Spatial Leakage**.
+If we use random K-Fold CV on geospatial data (e.g. predicting crop yields from satellite pixels), adjacent pixels will likely fall into different folds. Since adjacent pixels are almost identical, the model in Fold 1 "memorises" the pixel in Fold 2. This is **Spatial Leakage**. [7]
 
 ![alt text]({BASE}/image-9.png)
 
 ### 5.2.1 - Spatial Block Cross-Validation
 
-To fix this, we must force spatial separation between training and test sets.
+To fix this, we must force spatial separation between training and test sets. [7]
 
 **Checkerboard Blocking:**
 
@@ -483,7 +483,7 @@ Suppose we wish to select the regularisation parameter $\lambda$ for a Support V
 3.  We pick $\lambda^*$ with the highest score (e.g. 95%).
 4.  We report 95% as the model's accuracy.
 
-This is invalid. The value 95% is the maximum of several random variables. The expectation of the maximum is strictly greater than the maximum of the expectations. We have selected $\lambda^*$ specifically because it performed well on those specific folds. The true performance on fresh data will be lower.
+This is invalid. The value 95% is the maximum of several random variables. The expectation of the maximum is strictly greater than the maximum of the expectations. We have selected $\lambda^*$ specifically because it performed well on those specific folds. The true performance on fresh data will be lower. [9]
 
 ## 6.2 - Nested Cross-Validation Architecture
 
@@ -541,7 +541,7 @@ graph TD
 
 **Interpretation:**
 Note that in Nested CV, we do not get a single "final model" with a single $\lambda$. We might find $\lambda=0.1$ in Fold 1 and $\lambda=1.0$ in Fold 2.
-Nested CV estimates the performance of the *algorithm-with-tuning-strategy*, not a specific set of parameters. It answers the question: "If I apply this grid-search method to a new dataset, how well will the resulting model perform?".
+Nested CV estimates the performance of the *algorithm-with-tuning-strategy*, not a specific set of parameters. It answers the question: "If I apply this grid-search method to a new dataset, how well will the resulting model perform?". [9]
 
 **Computational Cost:**
 The cost is multiplicative: $C \approx K_{out} \times K_{in} \times |\Lambda| \times \text{TrainCost}$. This can be extremely expensive, necessitating parallel computing.
@@ -554,11 +554,11 @@ While Cross-Validation is a computational method to estimate risk, Information T
 
 ## 7.1 - Akaike Information Criterion (AIC)
 
-$$AIC = 2k - 2\ln(\hat{L})$$
+$$AIC = 2k - 2\ln(\hat{L})$$ [1]
 
 where $k$ is the number of parameters and $\hat{L}$ is the maximum likelihood of the model.
 
-**Stone's Theorem (1977):** An elegant result in statistical theory states that for linear models, AIC is asymptotically equivalent to Leave-One-Out Cross-Validation.
+**Stone's Theorem (1977):** An elegant result in statistical theory states that for linear models, AIC is asymptotically equivalent to Leave-One-Out Cross-Validation. [8]
 
 $$AIC \approx CV_{LOO} \quad \text{as } n \to \infty$$
 
@@ -589,11 +589,11 @@ Once we have CV scores for Model A and Model B, how do we determine if the diffe
 
 ## 8.1 - The Problem of Independence
 
-A standard Paired T-Test assumes that the differences in errors $d_i = err_A(i) - err_B(i)$ are independent. In K-Fold CV, they are not. The test errors come from models trained on overlapping data. This correlation implies that the standard variance estimator $\hat{\sigma}^2 / K$ underestimates the true variance, leading to high Type I errors (detecting differences where none exist).
+A standard Paired T-Test assumes that the differences in errors $d_i = err_A(i) - err_B(i)$ are independent. In K-Fold CV, they are not. The test errors come from models trained on overlapping data. This correlation implies that the standard variance estimator $\hat{\sigma}^2 / K$ underestimates the true variance, leading to high Type I errors (detecting differences where none exist). [3]
 
 ## 8.2 - The Nadeau-Bengio Correction
 
-Nadeau and Bengio (2003) derived a corrected variance estimator that accounts for the correlation $\rho$ between folds.
+Nadeau and Bengio (2003) derived a corrected variance estimator that accounts for the correlation $\rho$ between folds. [6]
 
 The standard t-statistic is:
 $$t = \frac{\bar{d}}{\hat{\sigma}_d / \sqrt{K}}$$
@@ -605,7 +605,7 @@ $$t_{corrected} = \frac{\bar{d}}{\sqrt{\hat{\sigma}_d^2 \left(\frac{1}{K} + \fra
 The correction factor is $\left(\frac{1}{K} + \frac{n_{test}}{n_{train}}\right)$.
 For 10-Fold CV, $n_{test}/n_{train} = 1/9 \approx 0.11$.
 The term $1/K = 0.1$.
-So the variance is essentially doubled, and the t-statistic is reduced by a factor of $\sqrt{2}$. This correction makes the test more conservative and valid.
+So the variance is essentially doubled, and the t-statistic is reduced by a factor of $\sqrt{2}$. This correction makes the test more conservative and valid. [6]
 
 -----
 

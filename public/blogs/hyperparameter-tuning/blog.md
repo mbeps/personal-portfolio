@@ -112,7 +112,7 @@ This exponential growth is known as the **curse of dimensionality**. For a moder
 
 Random Search replaces the fixed lattice of Grid Search with a stochastic sampling process. For each hyperparameter, a prior distribution (e.g., Uniform, Log-Uniform) is defined, and configurations are sampled independently and identically distributed (i.i.d.) from the joint distribution.
 
-Bergstra and Bengio (2012) provided a seminal mathematical justification for the efficiency of Random Search over Grid Search, centred on the concept of **Effective Dimensionality**.
+Bergstra and Bengio (2012) provided a seminal mathematical justification for the efficiency of Random Search over Grid Search, centred on the concept of **Effective Dimensionality** [1].
 
 ### 2.2.1 - The Concept of Low Effective Dimensionality
 
@@ -149,13 +149,13 @@ Suppose we wish to find a configuration in the top 5% of the search space ($p = 
 
 $$ n \geq \frac{\ln(0.05)}{\ln(0.95)} \approx \frac{-2.996}{-0.051} \approx 58.7 $$
 
-This result is profound: roughly 60 trials are sufficient to identify a near-optimal model with high probability, independent of the dimensionality $k$ of the search space, provided the effective dimensionality remains manageable. This starkly contrasts with Grid Search, where the number of trials depends exponentially on $k$.
+This result is profound: roughly 60 trials are sufficient to identify a near-optimal model with high probability, independent of the dimensionality $k$ of the search space, provided the effective dimensionality remains manageable. This starkly contrasts with Grid Search, where the number of trials depends exponentially on $k$ [1].
 
 -----
 
 # 3 - Bayesian Optimisation: A Model-Based Approach
 
-While Random Search is statistically robust, it is inefficient in the sense that it does not learn from history. It treats the 60th trial with the same blindness as the first. **Bayesian Optimisation (BO)** addresses this by treating the finding of $\lambda^*$ as an optimisation problem in itself. It constructs a probabilistic surrogate model of the objective function $\Psi(\lambda)$ based on observed evaluations and uses this model to intelligently select the next point to evaluate.
+While Random Search is statistically robust, it is inefficient in the sense that it does not learn from history. It treats the 60th trial with the same blindness as the first. **Bayesian Optimisation (BO)** addresses this by treating the finding of $\lambda^*$ as an optimisation problem in itself. It constructs a probabilistic surrogate model of the objective function $\Psi(\lambda)$ based on observed evaluations and uses this model to intelligently select the next point to evaluate [6].
 
 ![alt text]({BASE}/image-5.png)
 
@@ -188,7 +188,7 @@ Mathematically, a GP is fully specified by a mean function $m(\lambda)$ and a co
 
 $$ f(\lambda) \sim \mathcal{GP}(m(\lambda), k(\lambda, \lambda')) $$
 
-We typically assume a prior mean of zero, $m(\lambda) = 0$, after normalising the observed target values. The kernel function $k(\lambda, \lambda')$ encodes our assumptions about the function's smoothness and similarity. If $\lambda$ and $\lambda'$ are close in the search space, the kernel should return a high covariance, implying that $f(\lambda)$ and $f(\lambda')$ are likely to be similar.
+We typically assume a prior mean of zero, $m(\lambda) = 0$, after normalising the observed target values. The kernel function $k(\lambda, \lambda')$ encodes our assumptions about the function's smoothness and similarity. If $\lambda$ and $\lambda'$ are close in the search space, the kernel should return a high covariance, implying that $f(\lambda)$ and $f(\lambda')$ are likely to be similar [6].
 
 ![alt text]({BASE}/image-6.png)
 
@@ -284,7 +284,7 @@ where $Z = \frac{f_{best} - \mu_t(\lambda) - \xi}{\sigma_t(\lambda)}$.
   * $\phi(\cdot)$ is the standard normal PDF.
   * $\xi$ is a small jitter parameter used to encourage exploration.
 
-The first term $(f_{best} - \mu_t(\lambda))$ drives exploitation, while the second term $\sigma_t(\lambda)$ drives exploration. When uncertainty is zero ($\sigma_t \to 0$), EI becomes zero, preventing the algorithm from re-sampling known points.
+The first term $(f_{best} - \mu_t(\lambda))$ drives exploitation, while the second term $\sigma_t(\lambda)$ drives exploration. When uncertainty is zero ($\sigma_t \to 0$), EI becomes zero, preventing the algorithm from re-sampling known points [6].
 
 ### 3.3.2 - Upper Confidence Bound (UCB)
 
@@ -292,7 +292,7 @@ UCB (or Lower Confidence Bound for minimisation) constructs a pessimistic bound 
 
 $$ \alpha_{LCB}(\lambda) = \mu_t(\lambda) - \kappa \sigma_t(\lambda) $$
 
-Here, $\kappa$ is a tunable parameter (often set to 2.0 or scheduled to increase over time). We seek to minimise this LCB. A point with high uncertainty (large $\sigma_t$) will have a very low LCB score (since we subtract $\kappa \sigma_t$), making it attractive for selection.
+Here, $\kappa$ is a tunable parameter (often set to 2.0 or scheduled to increase over time). We seek to minimise this LCB. A point with high uncertainty (large $\sigma_t$) will have a very low LCB score (since we subtract $\kappa \sigma_t$), making it attractive for selection [6].
 
 ## 3.4 - Limitations of Gaussian Processes
 
@@ -301,7 +301,7 @@ While theoretically elegant, standard GP-based BO suffers from scaling issues:
   * **Cubic Complexity:** Inverting the matrix $(K + \sigma_n^2 I)$ requires $\mathcal{O}(t^3)$ operations, where $t$ is the number of observations. As $t$ exceeds 1000, the overhead of the HPO algorithm itself becomes significant.
   * **Continuous Space:** GPs are naturally defined on continuous spaces. Handling categorical variables requires specific kernels (e.g., Hamming distance kernels) or encoding schemes, which can be suboptimal.
 
-For these reasons, alternative surrogate models like **Tree-structured Parzen Estimators (TPE)** or **Random Forests (SMAC)** are often used for higher-dimensional or mixed-type problems. TPE, for instance, models the likelihoods $p(\lambda | y < y^*)$ and $p(\lambda | y \geq y^*)$ rather than the posterior $p(y|\lambda)$ directly, avoiding the cubic cost.
+For these reasons, alternative surrogate models like **Tree-structured Parzen Estimators (TPE)** or **Random Forests (SMAC)** are often used for higher-dimensional or mixed-type problems. TPE, for instance, models the likelihoods $p(\lambda | y < y^*)$ and $p(\lambda | y \geq y^*)$ rather than the posterior $p(y|\lambda)$ directly, avoiding the cubic cost [6].
 
 -----
 
@@ -324,13 +324,13 @@ The precursor to Hyperband is Successive Halving. The problem is framed as ident
 7.  Repeat until one configuration remains.
 
 **Mathematical Assumption:**
-SHA assumes **rank stability**: if configuration $\lambda_A$ is better than $\lambda_B$ at full convergence, it is likely better (or at least comparable) at partial training. While usually true, this can fail for configurations that converge slowly but to a lower final loss (e.g., small learning rates).
+SHA assumes **rank stability**: if configuration $\lambda_A$ is better than $\lambda_B$ at full convergence, it is likely better (or at least comparable) at partial training. While usually true, this can fail for configurations that converge slowly but to a lower final loss (e.g., small learning rates) [4].
 
 ![alt text]({BASE}/image-8.png)
 
 ## 4.2 - Hyperband: Hedging the Budget
 
-Hyperband addresses the " $n$ vs. $B/n$ " trade-off inherent in Successive Halving. Should we try many configurations with little training (broad search) or few configurations with extensive training (deep search)? Hyperband does both by running multiple "brackets" of Successive Halving.
+Hyperband addresses the " $n$ vs. $B/n$ " trade-off inherent in Successive Halving. Should we try many configurations with little training (broad search) or few configurations with extensive training (deep search)? Hyperband does both by running multiple "brackets" of Successive Halving [4].
 
 **Parameters:**
 
@@ -388,7 +388,7 @@ We train a few models for the full 81 epochs immediately. This is equivalent to 
 | 1           | 3         | 27                 | 1                 | High Exploitation  |
 | 0           | 1         | 81                 | 0                 | Pure Random Search |
 
-This "hedging" strategy ensures that if the rank correlation is weak (requiring full training to see the best models), Bracket 0 will find them. If rank correlation is strong, Bracket 4 will find the best model much faster by filtering out the junk early. This robustness makes Hyperband a standard in modern deep learning frameworks.
+This "hedging" strategy ensures that if the rank correlation is weak (requiring full training to see the best models), Bracket 0 will find them. If rank correlation is strong, Bracket 4 will find the best model much faster by filtering out the junk early. This robustness makes Hyperband a standard in modern deep learning frameworks [4].
 
 -----
 
@@ -398,7 +398,7 @@ Both Bayesian Optimisation and Hyperband view a hyperparameter configuration $\l
 
 ![alt text]({BASE}/image-10.png)
 
-**Population Based Training (PBT)** bridges HPO and evolutionary algorithms to adapt $\lambda$ dynamically. It is particularly effective in Reinforcement Learning (RL).
+**Population Based Training (PBT)** bridges HPO and evolutionary algorithms to adapt $\lambda$ dynamically. It is particularly effective in Reinforcement Learning (RL) [3].
 
 ```mermaid
 stateDiagram-v2
@@ -430,19 +430,19 @@ PBT maintains a population of $P$ agents (models), each with its own weights $\t
     $$ \lambda_{loser} \leftarrow \lambda_{winner} $$
 4.  **Explore (Mutation):** The hyperparameters of the copied models are perturbed to explore the vicinity of the successful configuration.
     $$ \lambda_{new} \sim \text{Perturb}(\lambda_{old}) $$
-    Common perturbations include multiplying by factors of 0.8 or 1.2.
+    Common perturbations include multiplying by factors of 0.8 or 1.2 [3].
 
 ## 5.2 - Theoretical Implications
 
 PBT enables **Hyperparameter Schedules**. By mutating $\lambda$ at every step, the population naturally discovers trajectories through the hyperparameter space. For example, if a high learning rate is good early but bad late, the population will evolve from high to low learning rates automatically, without the user explicitly coding a decay scheduler.
 
-Crucially, PBT incurs no extra wall-clock time compared to training $P$ models independently (Random Search). However, because the computational resources are constantly refocused on the best-performing lineages, the final result is often significantly superior.
+Crucially, PBT incurs no extra wall-clock time compared to training $P$ models independently (Random Search). However, because the computational resources are constantly refocused on the best-performing lineages, the final result is often significantly superior [3].
 
 -----
 
 # 6 - Gradient-Based Hyperparameter Optimisation
 
-For continuous hyperparameters, one might ask: can we differentiate the validation loss with respect to the hyperparameters and use Gradient Descent? This leads to **Gradient-based HPO**, often formulated via **Implicit Differentiation**.
+For continuous hyperparameters, one might ask: can we differentiate the validation loss with respect to the hyperparameters and use Gradient Descent? This leads to **Gradient-based HPO**, often formulated via **Implicit Differentiation** [5].
 
 ![alt text]({BASE}/image-11.png)
 
@@ -475,10 +475,10 @@ The term $H^{-1}$ is the inverse of a Hessian matrix with millions of rows and c
 
 Researchers use approximations to compute the vector-Hessian product $v^T H^{-1}$:
 
-  * **Neumann Series:** $H^{-1} \approx \sum_{i=0}^k (I - H)^i$. This allows computing the product using only Hessian-vector products (HvP), which are efficiently supported by automatic differentiation libraries (Autograd, JAX).
+  * **Neumann Series:** $H^{-1} \approx \sum_{i=0}^k (I - H)^i$. This allows computing the product using only Hessian-vector products (HvP), which are efficiently supported by automatic differentiation libraries (Autograd, JAX) [5].
   * **Conjugate Gradient:** Iteratively solving the linear system $Hx = v$ for $x$.
 
-These methods allow for tuning millions of hyperparameters (e.g., a separate regularisation weight for every parameter in the network) in a single training run, a feat impossible with Bayesian Optimisation.
+These methods allow for tuning millions of hyperparameters (e.g., a separate regularisation weight for every parameter in the network) in a single training run, a feat impossible with Bayesian Optimisation [5].
 
 -----
 

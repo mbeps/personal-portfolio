@@ -30,9 +30,9 @@
 
 The management of data within large-scale computational systems stands as one of the foundational challenges of computer science. Before the advent of the relational model in 1970, data management was dominated by the hierarchical and network models. These early paradigms, while functional, suffered from severe rigidity; they required the physical structure of the data (how it was stored on disk) to be intimately known by the application programmer. This coupling meant that a minor change in the storage format necessitated a complete rewrite of the application software, a problem known as the lack of data independence.
 
-In his seminal 1970 paper, "A Relational Model of Data for Large Shared Data Banks," Edgar F. Codd proposed a radical shift. He argued that users should interact with data via a logical model based on mathematical relations, decoupling the user's view from the internal machine representation. This proposal was not merely an engineering improvement but a shift towards a rigorous mathematical foundation rooted in set theory and first-order predicate logic.
+In his seminal 1970 paper, "A Relational Model of Data for Large Shared Data Banks," Edgar F. Codd proposed a radical shift. He argued that users should interact with data via a logical model based on mathematical relations, decoupling the user's view from the internal machine representation. This proposal was not merely an engineering improvement but a shift towards a rigorous mathematical foundation rooted in set theory and first-order predicate logic. [1]
 
-The process of normalisation emerged from this theoretical framework as a systematic method to evaluate and restructure logical schemas. Its primary objective is to minimise data redundancy (the unnecessary duplication of information) and to eliminate update anomalies, which threaten the integrity of the database during transactional operations. While redundancy might appear benign, in a shared data bank it leads to inconsistency; if a fact is stored in two places, the system must ensure both are updated simultaneously, a complex task in concurrent environments.
+The process of normalisation emerged from this theoretical framework as a systematic method to evaluate and restructure logical schemas. Its primary objective is to minimise data redundancy (the unnecessary duplication of information) and to eliminate update anomalies, which threaten the integrity of the database during transactional operations. [2] While redundancy might appear benign, in a shared data bank it leads to inconsistency; if a fact is stored in two places, the system must ensure both are updated simultaneously, a complex task in concurrent environments.
 
 This report provides an exhaustive analysis of normalisation theory up to the Boyce-Codd Normal Form (BCNF). We will traverse the discrete mathematics of relations, the axiomatic systems of functional dependencies, and the algorithms used to decompose relations without information loss. Furthermore, we will critically assess these 1970s theories against the realities of 2024, including distributed NewSQL architectures and columnar storage engines, where the trade-offs of normalisation are re-evaluated.
 
@@ -104,7 +104,7 @@ Here, $t[\alpha]$ denotes the projection of tuple $t$ onto the attributes in $\a
 
 ## 3.3 - Armstrong's Axioms
 
-To reason about dependencies (to determine if a specific design is valid or if a set of attributes forms a key) we require a system of inference. In 1974, William W. Armstrong proved that a specific set of three axioms is both sound (generates only correct FDs) and complete (generates all correct FDs).
+To reason about dependencies (to determine if a specific design is valid or if a set of attributes forms a key) we require a system of inference. In 1974, William W. Armstrong proved that a specific set of three axioms is both sound (generates only correct FDs) and complete (generates all correct FDs). [3]
 
 Let $X, Y, Z$ be sets of attributes within $R$.
 
@@ -333,7 +333,7 @@ Let $R = \{ \text{EmpID}, \text{Name}, \text{ZipCode}, \text{City} \}$.
 
 ## 5.4 - Boyce-Codd Normal Form (BCNF)
 
-BCNF was introduced by Codd and Raymond F. Boyce to address anomalies that 3NF allows. 3NF is permissible if the dependent attribute is prime. BCNF removes this allowance.
+BCNF was introduced by Codd and Raymond F. Boyce to address anomalies that 3NF allows. [5] 3NF is permissible if the dependent attribute is prime. BCNF removes this allowance.
 
 **Definition:** A relation $R$ is in BCNF if for every non-trivial FD $\alpha \rightarrow \beta$ in $F^+$, $\alpha$ is a superkey.
 
@@ -404,7 +404,7 @@ Essentially, the intersection (common attributes) must be a superkey for at leas
 
 ## 6.2 - 3NF Synthesis (Bernstein's Algorithm)
 
-Rather than decomposing a large relation, we can synthesise a 3NF schema directly from the functional dependencies. This algorithm, proposed by Philip Bernstein (1976), guarantees a Lossless Join and Dependency Preservation.
+Rather than decomposing a large relation, we can synthesise a 3NF schema directly from the functional dependencies. This algorithm, proposed by Philip Bernstein (1976), guarantees a Lossless Join and Dependency Preservation. [4]
 
 ```mermaid
 flowchart TD
@@ -489,10 +489,10 @@ The rise of "Big Data" in the 2000s challenged the supremacy of BCNF.
 
   * These systems physically store data by column rather than row.
   * **Impact on Normalisation:** In a row store, we normalise to avoid storing the string "London" 1,000,000 times (saving space). In a columnar store, "London" is stored once in a dictionary and referenced by integer tokens, or compressed via Run-Length Encoding (RLE).
-  * **Denormalisation:** Because compression is so efficient, the space penalty of redundancy is negligible. Consequently, designers often prefer denormalised wide tables (Star Schemas) to avoid the CPU cost of joining tables. Here, performance trumps the anomaly protection of BCNF.
+  * **Denormalisation:** Because compression is so efficient, the space penalty of redundancy is negligible. Consequently, designers often prefer denormalised wide tables (Star Schemas) to avoid the CPU cost of joining tables. Here, performance trumps the anomaly protection of BCNF. [6]
 
 **NoSQL and CAP Theorem:**
-The CAP Theorem states a distributed system can only provide two of Consistency, Availability, and Partition Tolerance.
+The CAP Theorem states a distributed system can only provide two of Consistency, Availability, and Partition Tolerance. [7][8]
 
 ```mermaid
 graph TD

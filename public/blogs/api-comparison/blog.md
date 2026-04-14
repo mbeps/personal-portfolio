@@ -54,9 +54,9 @@ This report provides an exhaustive, expert-level analysis of the four dominant a
 
 ## 2.1 - Historical Genesis and Dissertation
 
-REST is frequently misunderstood as a simple protocol for transmitting JSON over HTTP. In reality, it is a sophisticated architectural style defined by Dr. Roy Thomas Fielding in his 2000 doctoral dissertation, "Architectural Styles and the Design of Network-based Software Architecture". Fielding, a principal author of the HTTP/1.1 specification, did not design REST to facilitate generic API calls for mobile apps; rather, he derived it to describe the architectural properties that made the World Wide Web successful and to guide its future evolution.
+REST is frequently misunderstood as a simple protocol for transmitting JSON over HTTP. In reality, it is a sophisticated architectural style defined by Dr. Roy Thomas Fielding in his 2000 doctoral dissertation, "Architectural Styles and the Design of Network-based Software Architecture". Fielding, a principal author of the HTTP/1.1 specification, did not design REST to facilitate generic API calls for mobile apps; rather, he derived it to describe the architectural properties that made the World Wide Web successful and to guide its future evolution. [1]
 
-The primary motivation behind REST was to create a system capable of "anarchic scalability". Unlike previous distributed object protocols like CORBA (Common Object Request Broker Architecture), which required tight coupling and shared object definitions between client and server, the Web needed to function across organisational boundaries, tolerate partial failures, and allow independent evolution of components. Fielding achieved this by imposing a set of strict constraints that induce desirable properties such as visibility, reliability, and scalability.
+The primary motivation behind REST was to create a system capable of "anarchic scalability". Unlike previous distributed object protocols like CORBA (Common Object Request Broker Architecture), which required tight coupling and shared object definitions between client and server, the Web needed to function across organisational boundaries, tolerate partial failures, and allow independent evolution of components. Fielding achieved this by imposing a set of strict constraints that induce desirable properties such as visibility, reliability, and scalability. [1]
 
 ## 2.2 - Theoretical Foundations: Resources and State Machines
 
@@ -74,7 +74,7 @@ Where:
   * $E$ is the set of all possible entity representations (documents, images, data streams).
   * $\mathcal{P}(E)$ denotes the power set of $E$, implying that at any instant $t$, the resource maps to a set of values (representations).
 
-This definition is crucial for understanding the concept of "Identifier Stability." The resource identifier (URI) identifies the mapping function, not the value at a specific time. For example, the URI `/software/latest-release` is a resource. At time $t_1$, $M_R(t_1)$ might map to the set containing the binary for "Version 1.0". At time $t_2$, $M_R(t_2)$ might map to "Version 2.0". The identifier remains constant, while the representation returned changes. This abstraction allows the implementation (the server-side logic) to be completely decoupled from the interface (the URI), enabling independent evolution.
+This definition is crucial for understanding the concept of "Identifier Stability." The resource identifier (URI) identifies the mapping function, not the value at a specific time. For example, the URI `/software/latest-release` is a resource. At time $t_1$, $M_R(t_1)$ might map to the set containing the binary for "Version 1.0". At time $t_2$, $M_R(t_2)$ might map to "Version 2.0". The identifier remains constant, while the representation returned changes. This abstraction allows the implementation (the server-side logic) to be completely decoupled from the interface (the URI), enabling independent evolution. [1]
 
 ### 2.2.2 - The Hypermedia Automaton
 
@@ -91,7 +91,7 @@ When a client requests a resource, the server transfers a representation that pl
 
 $$q_{next} \in \delta(q_{current}, \text{action})$$
 
-This mechanism is formalised as **HATEOAS** (Hypermedia As The Engine Of Application State). It implies that the client requires no prior knowledge of the API's topology. The valid next states are discovered dynamically, just as a user navigates a website. This distinguishes REST from RPC, where the client must possess a static map (stub) of the available procedures.
+This mechanism is formalised as **HATEOAS** (Hypermedia As The Engine Of Application State). It implies that the client requires no prior knowledge of the API's topology. The valid next states are discovered dynamically, just as a user navigates a website. This distinguishes REST from RPC, where the client must possess a static map (stub) of the available procedures. [1]
 
 ```mermaid
 stateDiagram-v2
@@ -112,7 +112,7 @@ stateDiagram-v2
 
 ## 2.3 - Architectural Constraints
 
-Fielding defined REST through the application of six constraints. A system is only RESTful if it adheres to these principles, which are designed to induce specific architectural properties.
+Fielding defined REST through the application of six constraints. [1] A system is only RESTful if it adheres to these principles, which are designed to induce specific architectural properties.
 
   * **Client-Server:** This constraint enforces a separation of concerns. The client handles the user interface and application state, while the server handles data storage and business logic. This separation allows the components to evolve independently; for instance, the server code can be rewritten in a different language without affecting the client, provided the interface remains uniform.
   * **Stateless:** This is perhaps the most critical constraint for scalability. It dictates that communication must be stateless in nature: each request from client to server must contain all of the information necessary to understand the request, and cannot take advantage of any stored context on the server.
@@ -165,7 +165,7 @@ While REST is protocol-agnostic, it is almost universally implemented over HTTP.
 
 As the mobile web matured in the early 2010s, the limitations of REST became apparent, particularly for applications with complex, interconnected data models like Facebook. The rigid resource structure of REST forced mobile clients (operating on high-latency, limited-bandwidth networks) to make multiple round-trips to fetch a single screen's worth of data. This inefficiency drove the creation of GraphQL in 2012 (released publicly in 2015).
 
-GraphQL rejects the "resource" abstraction in favour of a Graph Theory model. It views the entire application domain as a single, connected Directed Graph $G = (V, E)$.
+GraphQL rejects the "resource" abstraction in favour of a Graph Theory model. It views the entire application domain as a single, connected Directed Graph $G = (V, E)$. [2]
 
   * **Vertices ($V$):** The entities in the system (e.g., Users, Posts, Comments).
   * **Edges ($E$):** The relationships between them (e.g., a User authored a Post).
@@ -261,7 +261,7 @@ query {
 }
 ```
 
-If the average branching factor (number of friends) is $B$, and the depth is $D$, the number of nodes the server attempts to resolve is $O(B^D)$. This is exponential complexity. A branching factor of 5 and a depth of 10 results in $5^{10} \approx 9.7$ million resolvers firing, potentially crashing the server.
+If the average branching factor (number of friends) is $B$, and the depth is $D$, the number of nodes the server attempts to resolve is $O(B^D)$. This is exponential complexity. A branching factor of 5 and a depth of 10 results in $5^{10} \approx 9.7$ million resolvers firing, potentially crashing the server. [2]
 
 **Mathematical Defence: Complexity Scoring**
 To secure a GraphQL API, one must implement Static Query Analysis before execution. A complexity score $S$ is calculated for the query tree:
@@ -416,7 +416,7 @@ An XML Schema defines a "Regular Tree Grammar." Validating a document against th
 SOAP supports a suite of extensions known as **WS-**\* specifications. The most significant for distributed theory is **WS-AtomicTransaction**. It enables ACID (Atomicity, Consistency, Isolation, Durability) properties across distributed services using a Two-Phase Commit (2PC) protocol.
 
   * In REST, if a client POSTs to Service A and then POSTs to Service B, and Service B fails, the system is in an inconsistent state.
-  * In SOAP with WS-AtomicTransaction, the transaction coordinator ensures that either both succeed or both roll back. This mathematical guarantee of consistency is essential for banking operations.
+  * In SOAP with WS-AtomicTransaction, the transaction coordinator ensures that either both succeed or both roll back. This mathematical guarantee of consistency is essential for banking operations. [4]
 
 <!-- end list -->
 

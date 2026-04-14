@@ -39,9 +39,9 @@
 
 The paradigm of **Reinforcement Learning with Verifiable Rewards (RLVR)** has emerged as the definitive methodology for advancing the reasoning capabilities of Large Language Models (LLMs). While **Reinforcement Learning from Human Feedback (RLHF)** proved instrumental in aligning models for general instruction following and safety, it has encountered a fundamental ceiling in domains requiring rigorous logic (such as mathematics, coding, and scientific reasoning). Human annotators are inherently poor scalers of verification; they are prone to fatigue, struggle with subtle logical fallacies in long-chain reasoning, and are costly to employ at the scale required for frontier model training.
 
-RLVR fundamentally shifts the alignment target from subjective preference to objective correctness. By integrating deterministic verification environments (such as code compilers, symbolic math solvers, or formal theorem provers) into the training loop, researchers can generate infinite synthetic training signals without human intervention. This report provides an exhaustive technical examination of RLVR, with a specific focus on the **Group Relative Policy Optimisation (GRPO)** algorithm, which has enabled the training of reasoning models like DeepSeek-R1 by eliminating the computational overhead of the Value Function critic.
+RLVR fundamentally shifts the alignment target from subjective preference to objective correctness. By integrating deterministic verification environments (such as code compilers, symbolic math solvers, or formal theorem provers) into the training loop, researchers can generate infinite synthetic training signals without human intervention. This report provides an exhaustive technical examination of RLVR, with a specific focus on the **Group Relative Policy Optimisation (GRPO)** algorithm, which has enabled the training of reasoning models like DeepSeek-R1 by eliminating the computational overhead of the Value Function critic.[1][2]
 
-We analyse the dichotomy between **Outcome Supervision (ORM)** and **Process Supervision (PRM)**, demonstrating why dense, step-by-step verification incurs a "negative alignment tax", improving both model safety and performance. Furthermore, we critically evaluate the theoretical debate regarding whether RLVR induces novel reasoning capabilities or merely acts as an efficient sampler of pre-existing latent knowledge. This document is structured for a technical audience, assuming fluency in probability theory and neural network architectures, and aims to provide the theoretical scaffolding necessary to implement RLVR systems.
+We analyse the dichotomy between **Outcome Supervision (ORM)** and **Process Supervision (PRM)**, demonstrating why dense, step-by-step verification incurs a "negative alignment tax", improving both model safety and performance.[4] Furthermore, we critically evaluate the theoretical debate regarding whether RLVR induces novel reasoning capabilities or merely acts as an efficient sampler of pre-existing latent knowledge. This document is structured for a technical audience, assuming fluency in probability theory and neural network architectures, and aims to provide the theoretical scaffolding necessary to implement RLVR systems.
 
 -----
 
@@ -73,7 +73,7 @@ In this paradigm, the environment provides the ground truth.
 * **In Coding:** The output is compiled and run against a suite of unit tests.
 * **In Formal Logic:** The output is a proof script (e.g., in Lean or Coq) validated by a theorem prover.
 
-This shift has profound implications. It allows for self-play and iterative improvement. Since the reward signal is automated, the model can generate millions of trajectories, receive feedback on all of them, and update its policy to favour the reasoning paths that lead to verifiable success. This effectively allows the model to "discover" logic through trial and error, a phenomenon observed in the emergent reasoning behaviours of DeepSeek-R1-Zero.
+This shift has profound implications. It allows for self-play and iterative improvement. Since the reward signal is automated, the model can generate millions of trajectories, receive feedback on all of them, and update its policy to favour the reasoning paths that lead to verifiable success. This effectively allows the model to "discover" logic through trial and error, a phenomenon observed in the emergent reasoning behaviours of DeepSeek-R1-Zero.[1]
 
 -----
 
@@ -113,7 +113,7 @@ The Advantage function is critical because it reduces the variance of the gradie
 
 The implementation of standard PPO for LLMs is computationally exorbitant. PPO requires four models to be loaded into memory: the Policy (Actor), the Reference Model (for KL divergence), the Reward Model, and the Critic (Value Function). For a 70B parameter model, this memory footprint is often prohibitive, requiring massive clusters just to store the weights and optimiser states.
 
-**Group Relative Policy Optimisation (GRPO)**, introduced in the DeepSeekMath paper and popularised by DeepSeek-R1, is an architectural innovation designed specifically to eliminate the Critic model and the Reward Model (when using programmatic verification), thereby enabling the scaling of RLVR.
+**Group Relative Policy Optimisation (GRPO)**, introduced in the DeepSeekMath paper and popularised by DeepSeek-R1, is an architectural innovation designed specifically to eliminate the Critic model and the Reward Model (when using programmatic verification), thereby enabling the scaling of RLVR.[1][2]
 
 **Standard PPO**
 ```mermaid
@@ -171,7 +171,7 @@ $$ \mathcal{J}_{GRPO}(\theta) = \mathbb{E}_{q \sim P(Q),\, \{o_i\}_{i=1}^G \sim 
 
   * $\rho_{i,t}$ (Probability Ratio): $\frac{\pi_\theta(o_{i,t} | q, o_{i,<t})}{\pi_{\theta_{old}}(o_{i,t} | q, o_{i,<t})}$. This term measures how much the updated policy diverges from the sampling policy.
   * **Clipping:** The clip function restricts $\rho_{i,t}$ to the range $[1-\epsilon, 1+\epsilon]$ (typically $\epsilon=0.2$). This prevents "destructive updates" where the policy changes too drastically based on a single batch, ensuring training stability (the Trust Region).
-  * **KL Divergence ($\mathbb{D}_{KL}$):** This term ensures the model stays close to the reference model (usually the SFT checkpoint). This is crucial to prevent reward hacking (where the model outputs gibberish that satisfies the verifier) and catastrophic forgetting of linguistic capabilities.
+  * **KL Divergence ($\mathbb{D}_{KL}$):** This term ensures the model stays close to the reference model (usually the SFT checkpoint). This is crucial to prevent reward hacking (where the model outputs gibberish that satisfies the verifier) and catastrophic forgetting of linguistic capabilities.[1][2]
   * **Token Averaging:** The loss is averaged over all tokens $t$ in the sequence length $|o_i|$.
 
 ## 4.3 - Computational Efficiency Comparison
@@ -186,7 +186,7 @@ The following table illustrates the resource reduction achieved by GRPO compared
 | **Critic (Value)**   | Trainable ($M$)                | Removed               | Replaced by Group Mean          |
 | **Optimiser States** | $2 \times M$ (Policy + Critic) | $1 \times M$ (Policy) | No Critic Parameters            |
 
-**Implication:** GRPO essentially halves the memory requirement for trainable parameters and removes the inference overhead of the Reward Model, freeing up VRAM to increase the context window; a critical requirement for training reasoning models that generate long Chains of Thought.
+**Implication:** GRPO essentially halves the memory requirement for trainable parameters and removes the inference overhead of the Reward Model, freeing up VRAM to increase the context window; a critical requirement for training reasoning models that generate long Chains of Thought.[1][2]
 
 ## 4.4 - Mathematical Example: The GRPO Update
 
@@ -261,7 +261,7 @@ Outcome supervision rewards the model only at the end of the generation.
 
 ## 5.2 - Process Supervision (PRM)
 
-Process supervision provides a reward signal at each step of the reasoning chain.
+Process supervision provides a reward signal at each step of the reasoning chain.[4]
 
 $$ J(\theta) = \sum_{t} \mathbb{E} [r_t] $$
 
@@ -270,9 +270,9 @@ $$ J(\theta) = \sum_{t} \mathbb{E} [r_t] $$
 
 ## 5.3 - The "Let's Verify Step by Step" Findings
 
-OpenAI's seminal research on Process Reward Models (PRMs) demonstrated that PRMs significantly outperform ORMs on the MATH dataset. Specifically, they found that PRMs allow for more effective **Best-of-N search**. By scoring intermediate steps, the PRM can prune bad branches of the reasoning tree early, rather than waiting for the final answer.
+OpenAI's seminal research on Process Reward Models (PRMs) demonstrated that PRMs significantly outperform ORMs on the MATH dataset.[4] Specifically, they found that PRMs allow for more effective **Best-of-N search**. By scoring intermediate steps, the PRM can prune bad branches of the reasoning tree early, rather than waiting for the final answer.[4]
 
-Crucially, they observed a **Negative Alignment Tax**. Typically, aligning a model incurs a performance penalty. However, enforcing step-by-step verifiable reasoning actually improved the model's performance on hard math problems relative to an unaligned model. This suggests that for reasoning, alignment and capability are convergent goals.
+Crucially, they observed a **Negative Alignment Tax**. Typically, aligning a model incurs a performance penalty. However, enforcing step-by-step verifiable reasoning actually improved the model's performance on hard math problems relative to an unaligned model.[4] This suggests that for reasoning, alignment and capability are convergent goals.
 
 ## 5.4 - Automated Process Supervision
 
@@ -286,7 +286,7 @@ To verify an intermediate step $s_t$:
 3.  Calculate the success rate of these rollouts.
 4.  Assign the value $V(s_t) \approx \frac{\text{Successes}}{K}$.
 
-This allows the system to auto-label the "correctness" of intermediate steps based on their probability of leading to a correct solution, converting a sparse outcome reward into a dense process signal.
+This allows the system to auto-label the "correctness" of intermediate steps based on their probability of leading to a correct solution, converting a sparse outcome reward into a dense process signal.[4]
 
 -----
 
@@ -314,7 +314,7 @@ flowchart LR
 ```
 
 **Phase 1: The Cold Start Problem & R1-Zero**
-The researchers initially attempted to apply RL (GRPO) directly to the base model (DeepSeek-V3-Base) without any supervised fine-tuning. This model, **DeepSeek-R1-Zero**, successfully learned to solve math problems and naturally evolved a "self-verification" behaviour—it would generate a solution, double-check it, and correct itself if wrong.
+The researchers initially attempted to apply RL (GRPO) directly to the base model (DeepSeek-V3-Base) without any supervised fine-tuning. This model, **DeepSeek-R1-Zero**, successfully learned to solve math problems and naturally evolved a "self-verification" behaviour—it would generate a solution, double-check it, and correct itself if wrong.[1]
 
   * **The Failure Mode:** While capable, R1-Zero suffered from severe instability. It exhibited "language mixing" (switching between languages mid-sentence) and poor readability. The RL optimisation found that these messy outputs were not penalised, so it exploited them.
   * **The Solution:** A "Cold Start" phase. They curated a small dataset (thousands of samples) of high-quality, readable Chain-of-Thought (CoT) examples. Fine-tuning on this data before RL initialized the policy in a region of the parameter space that favoured readable, structured reasoning.
@@ -327,7 +327,7 @@ $$ R_{total} = \alpha \cdot R_{accuracy} + \beta \cdot R_{format} $$
   * $R_{accuracy}$: 1 if the final answer matches ground truth, 0 otherwise.
   * $R_{format}$: A shaped reward to enforce the structure `<think>... </think> <answer>... </answer>`.
 
-This stage drove the primary gains in reasoning capability, pushing performance on the AIME benchmark from \~50% to over 70%.
+This stage drove the primary gains in reasoning capability, pushing performance on the AIME benchmark from \~50% to over 70%.[1]
 
 **Phase 3: Rejection Sampling and Distillation**
 To scale these capabilities to smaller models, DeepSeek employed Rejection Sampling.
@@ -336,7 +336,7 @@ To scale these capabilities to smaller models, DeepSeek employed Rejection Sampl
 2.  Filter the outputs to find those that are both correct and readable.
 3.  Use this synthetic dataset to SFT smaller models (e.g., Llama-70B, Qwen-32B).
 
-**Result:** The distilled models achieved state-of-the-art performance for their size classes, proving that the "reasoning patterns" discovered by RL can be transferred via standard supervision.
+**Result:** The distilled models achieved state-of-the-art performance for their size classes, proving that the "reasoning patterns" discovered by RL can be transferred via standard supervision.[1]
 
 ## 6.2 - OpenAI o1: Deliberative Alignment
 
@@ -349,7 +349,7 @@ This allows the model to "think" about safety rules in context, rather than rely
 
 ## 6.3 - AlphaCode 2 and Code Reasoning
 
-For coding agents like AlphaCode 2, RLVR is implemented via **Execution-Based Verification**.
+For coding agents like AlphaCode 2, RLVR is implemented via **Execution-Based Verification**.[5]
 
 **The Clustering Strategy:**
 
@@ -358,7 +358,7 @@ For coding agents like AlphaCode 2, RLVR is implemented via **Execution-Based Ve
 3.  Cluster the remaining 50,000 candidates based on their output behaviour on hidden inputs.
 4.  Select one candidate from each cluster to submit.
 
-This effectively uses verification to navigate the search space, prioritising diversity of logic over mere probability.
+This effectively uses verification to navigate the search space, prioritising diversity of logic over mere probability.[5]
 
 -----
 
@@ -368,17 +368,17 @@ A contentious debate in the field concerns the nature of the improvements driven
 
 ## 7.1 - The Tsinghua Hypothesis
 
-A recent study by Tsinghua University researchers analysed RLVR using the **Pass@k** metric.
+A recent study by Tsinghua University researchers analysed RLVR using the **Pass@k** metric.[9]
 
   * **Pass@1:** Probability that the first answer is correct.
   * **Pass@k:** Probability that at least one correct answer exists in $k$ samples.
 
 **The Finding:** RLVR dramatically improves Pass@1 (e.g., from 20% to 60%). However, it often shows no improvement or even degradation in Pass@k (for large $k$, e.g., $k=100$).
-**The Implication:** The base model already contained the correct reasoning path in its latent space; it was just low probability (in the tail of the distribution). RLVR sharpens the distribution, shifting probability mass from incorrect paths to the correct path. It does not, however, expand the "capability boundary"; it does not teach the model to solve problems that the base model could never solve, even with infinite sampling.
+**The Implication:** The base model already contained the correct reasoning path in its latent space; it was just low probability (in the tail of the distribution). RLVR sharpens the distribution, shifting probability mass from incorrect paths to the correct path. It does not, however, expand the "capability boundary"; it does not teach the model to solve problems that the base model could never solve, even with infinite sampling.[9]
 
 ## 7.2 - The Counter-Argument: Efficiency is Capability
 
-Proponents of RLVR argue that in practical terms, efficiency is capability. A model that requires 10,000 samples to find a correct answer is useless. By compressing the search space, RLVR makes the reasoning accessible. Furthermore, DeepSeek's results show that for very hard benchmarks (AIME), the RLVR model does exceed the base model's Pass@k in specific regimes, suggesting that the self-correction mechanism (backtracking) allows it to navigate complex solution trees that simple sampling cannot traverse.
+Proponents of RLVR argue that in practical terms, efficiency is capability. A model that requires 10,000 samples to find a correct answer is useless. By compressing the search space, RLVR makes the reasoning accessible. Furthermore, DeepSeek's results show that for very hard benchmarks (AIME), the RLVR model does exceed the base model's Pass@k in specific regimes, suggesting that the self-correction mechanism (backtracking) allows it to navigate complex solution trees that simple sampling cannot traverse.[1][10]
 
 -----
 
@@ -388,11 +388,11 @@ The field is rapidly evolving beyond basic binary rewards.
 
 ## 8.1 - Token Hidden Reward (THR)
 
-Recent research has proposed analysing the **Token Hidden Reward**. This metric quantifies the contribution of each individual token to the final success of the generation. By identifying tokens with high THR, researchers can identify the specific "pivotal steps" in a reasoning chain (the "Aha\!" moments). Optimising specifically for these tokens can accelerate convergence.
+Recent research has proposed analysing the **Token Hidden Reward**. This metric quantifies the contribution of each individual token to the final success of the generation.[11] By identifying tokens with high THR, researchers can identify the specific "pivotal steps" in a reasoning chain (the "Aha\!" moments). Optimising specifically for these tokens can accelerate convergence.[11]
 
 ## 8.2 - Difficulty-Adaptive Rollout Sampling (DARS)
 
-Standard RLVR samples uniformly from the prompt dataset. However, the model quickly masters easy problems (leading to zero gradient) while failing hard problems (leading to zero gradient). **DARS** dynamically adjusts the sampling budget. It allocates more rollouts to problems where the model's current pass rate is intermediate (e.g., 20-50%), as these are the "Zone of Proximal Development" where the model stands to learn the most.
+Standard RLVR samples uniformly from the prompt dataset. However, the model quickly masters easy problems (leading to zero gradient) while failing hard problems (leading to zero gradient). **DARS** dynamically adjusts the sampling budget. It allocates more rollouts to problems where the model's current pass rate is intermediate (e.g., 20-50%), as these are the "Zone of Proximal Development" where the model stands to learn the most.[12]
 
 ## 8.3 - Curriculum RL (RLAAR)
 
@@ -402,9 +402,9 @@ This incentivises the model to be calibrated. It prevents "hallucinated reasonin
 
 ## 8.4 - Formal Verification (Lean/Coq)
 
-The ultimate frontier is **Autoformalisation**. Instead of outputting Python or text, the model outputs code in a formal language like Lean. The Lean compiler provides a 100% rigorous verification. If the proof compiles, it is correct.
+The ultimate frontier is **Autoformalisation**. Instead of outputting Python or text, the model outputs code in a formal language like Lean. The Lean compiler provides a 100% rigorous verification. If the proof compiles, it is correct.[6][7][8]
 **The Challenge:** Data scarcity. There are few Lean proofs available for training.
-**The Hybrid Approach:** Models are trained to translate informal math into Lean, verify it, and then use the successful Lean proofs as training data (**Self-Correction loop**). This bridges the gap between the abundance of natural language math and the rigour of formal systems.
+**The Hybrid Approach:** Models are trained to translate informal math into Lean, verify it, and then use the successful Lean proofs as training data (**Self-Correction loop**). This bridges the gap between the abundance of natural language math and the rigour of formal systems.[6][7]
 
 -----
 
@@ -441,9 +441,9 @@ Models are adept at gaming verifiers.
 
 Reinforcement Learning with Verifiable Rewards marks the transition of Large Language Models from probabilistic pattern matchers to verifiable reasoning engines. By grounding the model's objective function in the hard reality of deterministic verification (rather than the soft proxy of human preference) we enable a new mode of learning: self-correction and discovery.
 
-The architectural innovation of Group Relative Policy Optimisation (GRPO) has democratised this capability, removing the need for massive value function models and enabling efficient training on long-context reasoning chains. While theoretical debates persist regarding the nature of the intelligence emerging from these systems (whether it is true generalisation or efficient search) the empirical results are undeniable. Models like DeepSeek-R1 and OpenAI o1 have redefined the state-of-the-art in mathematics and coding.
+The architectural innovation of Group Relative Policy Optimisation (GRPO) has democratised this capability, removing the need for massive value function models and enabling efficient training on long-context reasoning chains. While theoretical debates persist regarding the nature of the intelligence emerging from these systems (whether it is true generalisation or efficient search) the empirical results are undeniable. Models like DeepSeek-R1 and OpenAI o1 have redefined the state-of-the-art in mathematics and coding.[1]
 
-For the technical researcher, the path forward lies in the design of better verifiers (formal methods), better exploration strategies (DARS, THR), and the integration of process supervision to provide dense, meaningful signals to the learning agent. As we refine these feedback loops, we move closer to AI systems that can not only generate plausible text but can verify, correct, and guarantee the truth of their own reasoning.
+For the technical researcher, the path forward lies in the design of better verifiers (formal methods), better exploration strategies (DARS, THR), and the integration of process supervision to provide dense, meaningful signals to the learning agent.[4][11][12] As we refine these feedback loops, we move closer to AI systems that can not only generate plausible text but can verify, correct, and guarantee the truth of their own reasoning.
 
 # References
 

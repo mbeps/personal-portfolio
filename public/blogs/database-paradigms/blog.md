@@ -59,9 +59,9 @@ This blog is written for a technical audience. It assumes a strong background in
 
 The history of database technology is a history of mathematical abstraction. Early data systems in the 1960s, such as the Hierarchical and Network models, lacked a formal theoretical foundation. They relied on navigational pointers. This meant the logical view of the data was tightly coupled to its physical layout on magnetic tapes or disks. This coupling created a significant maintenance burden. If the physical structure changed, every application accessing that data required modification.
 
-The pivotal moment occurred in 1970. Edgar F. Codd, a mathematician at IBM, published "A Relational Model of Data for Large Shared Data Banks". Codd proposed a radical shift. He argued that data should be represented in its "natural structure only". He utilised set theory to define data as tuples grouped into relations. This severed the link between the logical representation and the machine representation. It allowed users to query data using declarative logic rather than navigational procedures.
+The pivotal moment occurred in 1970. Edgar F. Codd, a mathematician at IBM, published "A Relational Model of Data for Large Shared Data Banks". Codd proposed a radical shift. He argued that data should be represented in its "natural structure only". He utilised set theory to define data as tuples grouped into relations. This severed the link between the logical representation and the machine representation. It allowed users to query data using declarative logic rather than navigational procedures.[1]
 
-This dominance lasted for thirty years. However, the rise of the internet introduced new variables. The volume of data grew exponentially. The velocity of data ingestion exceeded the write capabilities of single machines. The variety of data expanded beyond structured tables. These pressures exposed the limitations of the Relational Model, particularly its adherence to ACID (Atomicity, Consistency, Isolation, Durability) properties in a distributed context. Theoretical constraints, codified in the CAP Theorem, necessitated new paradigms. These new systems, collectively termed NoSQL, traded strict consistency for availability and partition tolerance.
+This dominance lasted for thirty years. However, the rise of the internet introduced new variables. The volume of data grew exponentially. The velocity of data ingestion exceeded the write capabilities of single machines. The variety of data expanded beyond structured tables. These pressures exposed the limitations of the Relational Model, particularly its adherence to ACID (Atomicity, Consistency, Isolation, Durability) properties in a distributed context. Theoretical constraints, codified in the CAP Theorem, necessitated new paradigms.[2] These new systems, collectively termed NoSQL, traded strict consistency for availability and partition tolerance.
 
 Most recently, the field of Artificial Intelligence has driven the emergence of Vector databases. These systems do not rely on exact matches. They rely on semantic similarity in high-dimensional vector spaces. This requires a shift from deterministic algebra to probabilistic geometry.
 
@@ -84,7 +84,7 @@ This definition implies several properties:
 
   * **Unordered Set:** A relation is a set, not a list. The order of tuples is undefined and irrelevant to the logical model.
   * **Uniqueness:** As a set, a relation cannot contain duplicate tuples.
-  * **Atomicity:** Values in the domains are atomic. They are not sets or relations themselves (First Normal Form).
+  * **Atomicity:** Values in the domains are atomic. They are not sets or relations themselves (First Normal Form).[1]
 
 ## 3.2 - Relational Algebra
 
@@ -101,7 +101,7 @@ graph LR
     Proj --> Res[Result Relation]
 ```
 
-Relational Algebra provides the theoretical procedural method for manipulating relations. It is a closed algebraic system. The operators take one or more relations as input and produce a relation as output. This closure property allows for the composition of complex queries.
+Relational Algebra provides the theoretical procedural method for manipulating relations. It is a closed algebraic system. The operators take one or more relations as input and produce a relation as output. This closure property allows for the composition of complex queries.[1]
 
 ### 3.2.1 - Primitive Operators
 
@@ -195,7 +195,7 @@ In practice, $\forall$ is often rewritten using $\neg \exists \neg$ due to the d
 
 ### 3.3.2 - Codd's Theorem and Safety
 
-E.F. Codd proved that Relational Algebra and Relational Calculus are equivalent in expressive power. Any query that can be expressed in the safe Relational Calculus can also be expressed in Relational Algebra.
+E.F. Codd proved that Relational Algebra and Relational Calculus are equivalent in expressive power. Any query that can be expressed in the safe Relational Calculus can also be expressed in Relational Algebra.[1]
 
 Safety is a critical concept. A calculus formula such as $\{ t \mid \neg(t \in R) \}$ describes an infinite set of tuples not in the database. To be computationally feasible, TRC expressions must be domain-independent. The results must be drawn from the finite domain of values present in the database or the query constants.
 
@@ -261,7 +261,7 @@ graph TD
     P --- AP
 ```
 
-Proposed by Eric Brewer and formally proven by Seth Gilbert and Nancy Lynch, the CAP theorem establishes a theoretical limit for distributed data stores. It states that a distributed system can provide at most two of the following three guarantees:
+Proposed by Eric Brewer and formally proven by Seth Gilbert and Nancy Lynch, the CAP theorem establishes a theoretical limit for distributed data stores.[2] It states that a distributed system can provide at most two of the following three guarantees:
 
   * **Consistency (C):** This refers to atomic consistency or linearizability. Every read receives the most recent write or an error. In a consistent system, there is a total ordering of operations that is consistent with the real-time ordering.
   * **Availability (A):** Every request received by a non-failing node in the system must result in a response. The response does not guarantee that the data is the most recent, but the system must not timeout or error due to inability to reach a consensus.
@@ -280,7 +280,7 @@ Gilbert and Lynch's proof uses a contradiction argument.
 7.  If the system is Available, $G_2$ must return a value.
 8.  Since $G_2$ is unaware of $v_1$, it returns the old value $v_0$.
 9.  This violates Consistency (the read did not return the most recent write).
-10. Therefore, in the presence of a Partition, one must choose between Consistency and Availability.
+10. Therefore, in the presence of a Partition, one must choose between Consistency and Availability.[2]
 
 ## 4.2 - The PACELC Theorem
 
@@ -322,7 +322,7 @@ In distributed Key-Value stores, data must be partitioned across multiple nodes.
 Consistent Hashing addresses this. It maps both nodes and keys to the same identifier space, typically a ring (e.g., integers modulo $2^{160}$).
 
   * A key is assigned to the first node encountered moving clockwise on the ring.
-  * When a node is added, it only takes ownership of the segment of the ring immediately preceding it. Only the keys in that segment move. The theoretical movement of keys is $K/N$, where $K$ is total keys and $N$ is number of nodes.
+  * When a node is added, it only takes ownership of the segment of the ring immediately preceding it. Only the keys in that segment move. The theoretical movement of keys is $K/N$, where $K$ is total keys and $N$ is number of nodes.[3]
 
 ### 4.3.1 - Virtual Nodes and Variance
 
@@ -375,7 +375,7 @@ Merged & Compacted"]
     L1 -.->|"Compaction"| L2
 ```
 
-While B-Trees optimise for reads, LSM Trees optimise for writes. They are the standard storage engine for write-heavy NoSQL systems like Bigtable, Cassandra, and RocksDB.
+While B-Trees optimise for reads, LSM Trees optimise for writes. They are the standard storage engine for write-heavy NoSQL systems like Bigtable, Cassandra, and RocksDB.[3]
 
 ### 5.2.1 - High-Level Mechanism
 
@@ -591,11 +591,11 @@ graph TD
     L1_N3 -.-> L0_N3
 ```
 
-To solve the Nearest Neighbour problem efficiently, Vector Databases use Approximate Nearest Neighbour (ANN) algorithms. HNSW is the current state-of-the-art graph-based index.
+To solve the Nearest Neighbour problem efficiently, Vector Databases use Approximate Nearest Neighbour (ANN) algorithms. HNSW is the current state-of-the-art graph-based index.[4]
 
 ### 7.3.1 - Small World Theory
 
-HNSW relies on the Small World Phenomenon (Six Degrees of Separation). A small-world graph is defined by having a path length $L$ between any two nodes that grows logarithmically with the number of nodes ($L \propto \log N$), while maintaining a high clustering coefficient.
+HNSW relies on the Small World Phenomenon (Six Degrees of Separation). A small-world graph is defined by having a path length $L$ between any two nodes that grows logarithmically with the number of nodes ($L \propto \log N$), while maintaining a high clustering coefficient.[4]
 
 ### 7.3.2 - The Algorithm
 
@@ -618,7 +618,7 @@ This ensures an exponential decay in the number of nodes at higher layers. The p
 3.  When a local minimum is reached in the current layer, descend to the next layer.
 4.  Refine the search in the denser graph.
 
-This hierarchical approach allows the algorithm to zoom in on the target neighbourhood in $O(\log N)$ steps.
+This hierarchical approach allows the algorithm to zoom in on the target neighbourhood in $O(\log N)$ steps.[4]
 
 ## 7.4 - Product Quantisation (PQ)
 
@@ -628,7 +628,7 @@ HNSW is fast but memory-hungry because it stores the full graph structure. Produ
 
 1.  **Decomposition:** The high-dimensional vector space $\mathbb{R}^D$ is split into $M$ subspaces of dimension $D/M$.
 2.  **Clustering:** A k-means clustering algorithm is run on each subspace to find $K$ centroids (typically $K=256$ so each centroid ID fits in 1 byte).
-3.  **Encoding:** Each vector is replaced by a tuple of $M$ centroid IDs.
+3.  **Encoding:** Each vector is replaced by a tuple of $M$ centroid IDs.[5]
 
 ### 7.4.2 - Asymmetric Distance Computation (ADC)
 
@@ -639,7 +639,7 @@ $$d(\mathbf{x}, \mathbf{y})^2 \approx \sum_{j=1}^M d(\mathbf{x}_j, q_j(\mathbf{y
 
 Here, $\mathbf{x}_j$ is the $j$-th sub-vector of the query. $q_j(\mathbf{y}_j)$ is the centroid of the $j$-th sub-vector of the stored vector.
 Crucially, the distances between the query sub-vectors and all $K$ centroids can be pre-computed into a Lookup Table.
-The distance calculation for each candidate becomes a summation of $M$ table lookups. This reduces the complexity from floating-point arithmetic to simple integer addition.
+The distance calculation for each candidate becomes a summation of $M$ table lookups. This reduces the complexity from floating-point arithmetic to simple integer addition.[5]
 
 
 # 8 - Theoretical Comparison and Synthesis

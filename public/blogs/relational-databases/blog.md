@@ -54,7 +54,7 @@
 
 # 1 - Introduction to the Relational Paradigm
 
-The management of data stands as one of the central pillars of computer science (alongside computation and communication); it dictates how information is persisted, retrieved, and maintained with integrity over time. The Relational Model, introduced by Edgar F. Codd in his seminal 1970 paper "A Relational Model of Data for Large Shared Data Banks", represents a fundamental shift in the theoretical underpinning of data management systems. Prior to this innovation, the landscape was dominated by the Hierarchical and Network models (such as IBM's IMS and the CODASYL standard), which were characterised by a rigid coupling between the logical structure of data and its physical representation.
+The management of data stands as one of the central pillars of computer science (alongside computation and communication); it dictates how information is persisted, retrieved, and maintained with integrity over time. The Relational Model, introduced by Edgar F. Codd in his seminal 1970 paper "A Relational Model of Data for Large Shared Data Banks", represents a fundamental shift in the theoretical underpinning of data management systems [1]. Prior to this innovation, the landscape was dominated by the Hierarchical and Network models (such as IBM's IMS and the CODASYL standard), which were characterised by a rigid coupling between the logical structure of data and its physical representation.
 
 **Pre-Relational Models (Rigid & Navigational)**
 ```mermaid
@@ -85,7 +85,7 @@ This report provides a comprehensive technical analysis of the sequel (SQL) data
 
 ## 1.1 - The Definition of Data Independence
 
-The primary motivation behind the relational model was to achieve data independence, which Codd identified as the ability of applications to remain invariant to changes in storage structure and access strategy.
+The primary motivation behind the relational model was to achieve data independence, which Codd identified as the ability of applications to remain invariant to changes in storage structure and access strategy [1].
 
 There are two distinct levels of independence:
 
@@ -105,7 +105,7 @@ Formally, a relation $R$ is defined as a subset of the Cartesian product of a li
 
 $$R \subseteq D_1 \times D_2 \times... \times D_n$$
 
-An element $t \in R$ is called a tuple (conceptually a row), and each domain corresponds to an attribute (conceptually a column).
+An element $t \in R$ is called a tuple (conceptually a row), and each domain corresponds to an attribute (conceptually a column) [1].
 
 ```mermaid
 classDiagram
@@ -141,7 +141,7 @@ In this context:
   * **Terms** map to constants (data values) or variables.
   * **Quantifiers** ($\exists$, $\forall$) allow the expression of complex conditions across the dataset.
 
-Codd defined two formal languages to manipulate these relations: **Relational Algebra** (a procedural language describing operations) and **Relational Calculus** (a declarative language describing results). A fundamental theorem of database theory, Codd's Theorem, states that these two languages are effectively equivalent in expressive power; a property known as Relational Completeness.
+Codd defined two formal languages to manipulate these relations: **Relational Algebra** (a procedural language describing operations) and **Relational Calculus** (a declarative language describing results) [1]. A fundamental theorem of database theory, Codd's Theorem, states that these two languages are effectively equivalent in expressive power; a property known as Relational Completeness [2].
 
 
 # 3 - Relational Algebra: The Procedural Language
@@ -161,7 +161,7 @@ flowchart LR
 
 ## 3.1 - Fundamental Operators
 
-There are six primitive operators from which all other relational operations can be derived.
+There are six primitive operators from which all other relational operations can be derived [1].
 
 ### 3.1.1 - Selection ($\sigma$)
 
@@ -343,7 +343,7 @@ Selecting which page to evict is critical for performance (Temporal Control).
 
   * **LRU (Least Recently Used):** Evicts the page unused for the longest time. While simple, it is vulnerable to "sequential flooding" (a large table scan washes out the entire cache).
   * **Clock Sweep:** An approximation of LRU. Frames are organised in a circle. Each has a reference bit. The "clock hand" sweeps; if the bit is 1, it sets it to 0 and advances. If 0, it evicts. This avoids the overhead of maintaining a sorted LRU list.
-  * **LRU-K:** A more advanced algorithm that tracks the history of the last $K$ references to distinguish between frequently accessed pages and those accessed only once during a scan.
+  * **LRU-K:** A more advanced algorithm that tracks the history of the last $K$ references to distinguish between frequently accessed pages and those accessed only once during a scan [5].
 
 ## 5.4 - Heap Files and MVCC Storage
 
@@ -358,7 +358,7 @@ To retrieve data efficiently without scanning the entire heap (a Sequential Scan
 
 ## 6.1 - B+ Trees
 
-The B+ Tree is the ubiquitous indexing structure in relational databases, optimised for block-based storage. It differs from a standard binary search tree in that it is an $m$-ary tree (where $m$, the order, is typically large, e.g., 100 or 200).
+The B+ Tree is the ubiquitous indexing structure in relational databases, optimised for block-based storage [4]. It differs from a standard binary search tree in that it is an $m$-ary tree (where $m$, the order, is typically large, e.g., 100 or 200).
 
 ```mermaid
 graph TD
@@ -410,7 +410,7 @@ Hash indexes use a hashing function to map keys to buckets.
 
 # 7 - Query Execution and Join Algorithms
 
-The Query Executor processes the plan generated by the optimiser. The most computationally intensive operations are typically Joins. Understanding the algorithmic complexity of joins is essential for both database tuning and understanding the optimiser's choices.
+The Query Executor processes the plan generated by the optimiser. The most computationally intensive operations are typically Joins. Understanding the algorithmic complexity of joins is essential for both database tuning and understanding the optimiser's choices [6].
 
 Let $R$ be the outer relation with $M$ pages and $m$ tuples.
 Let $S$ be the inner relation with $N$ pages and $n$ tuples.
@@ -493,13 +493,13 @@ The Query Optimiser is the brain of the RDBMS. Its task is to translate the user
 
 ## 8.1 - The System R (Selinger) Optimiser
 
-The foundational approach to cost-based optimisation was established by the IBM System R project in 1979 (Selinger et al.). The algorithm uses Dynamic Programming to construct the plan bottom-up.
+The foundational approach to cost-based optimisation was established by the IBM System R project in 1979 (Selinger et al.). The algorithm uses Dynamic Programming to construct the plan bottom-up [3].
 
 **Search Space Pruning:**
 A query with $N$ tables has $N!$ possible join orders. To make the search feasible, System R introduced heuristics:
 
-  * **Left-Deep Trees:** The optimiser primarily considers plans where the right-hand operand of a join is always a base table (not an intermediate result). This enables pipelining.
-  * **Interesting Orders:** The optimiser tracks if an intermediate result is sorted. A more expensive Sort-Merge join might be chosen over a Hash join if the sorted output avoids a subsequent Sort operation for an ORDER BY clause.
+  * **Left-Deep Trees:** The optimiser primarily considers plans where the right-hand operand of a join is always a base table (not an intermediate result). This enables pipelining [3].
+  * **Interesting Orders:** The optimiser tracks if an intermediate result is sorted. A more expensive Sort-Merge join might be chosen over a Hash join if the sorted output avoids a subsequent Sort operation for an ORDER BY clause [3].
 
 ## 8.2 - Cost Estimation Formulas
 
@@ -523,7 +523,7 @@ To estimate $N_{tuples}$, the system relies on statistics stored in the system c
   * Range ($val_1 < A < val_2$): $S = \frac{val_2 - val_1}{Max(A) - Min(A)}$ (for numeric ranges).
 
 **Histograms:**
-The assumption of uniform distribution is often incorrect (data is usually skewed). Modern systems use Histograms (Equi-width or Equi-depth) to model the data distribution more accurately. An Equi-depth histogram divides the data into buckets such that each bucket has the same number of tuples, providing high resolution for dense data regions.
+The assumption of uniform distribution is often incorrect (data is usually skewed). Modern systems use Histograms (Equi-width or Equi-depth) to model the data distribution more accurately. An Equi-depth histogram divides the data into buckets such that each bucket has the same number of tuples, providing high resolution for dense data regions [7].
 
 
 # 9 - Transaction Management and Concurrency Control
@@ -537,18 +537,18 @@ In a multi-user environment, ensuring data integrity is paramount. This is gover
 
 ## 9.1 - Serializability and Two-Phase Locking (2PL)
 
-Serializability is the gold standard for Isolation. It ensures that the outcome of concurrent transactions is equivalent to some serial execution of them. The classic mechanism to enforce this is Two-Phase Locking (2PL).
+Serializability is the gold standard for Isolation. It ensures that the outcome of concurrent transactions is equivalent to some serial execution of them. The classic mechanism to enforce this is Two-Phase Locking (2PL) [8][9].
 
   * **Growing Phase:** The transaction acquires locks (Shared 'S' for reads, Exclusive 'X' for writes). It cannot release any lock.
   * **Shrinking Phase:** Once the transaction releases a lock, it enters the shrinking phase and cannot acquire new locks.
 
-**Strict 2PL:** To avoid cascading aborts (where one failure forces other transactions to rollback), Strict 2PL holds all Exclusive locks until the transaction commits.
+**Strict 2PL:** To avoid cascading aborts (where one failure forces other transactions to rollback), Strict 2PL holds all Exclusive locks until the transaction commits [9].
 
-**Deadlocks:** 2PL can lead to deadlocks (Transaction A holds Resource X and waits for Y; Transaction B holds Y and waits for X). The system must employ Deadlock Detection (Wait-for graphs) or Prevention (Wait-Die or Wound-Wait schemes) to resolve this.
+**Deadlocks:** 2PL can lead to deadlocks (Transaction A holds Resource X and waits for Y; Transaction B holds Y and waits for X). The system must employ Deadlock Detection (Wait-for graphs) or Prevention (Wait-Die or Wound-Wait schemes) to resolve this [9].
 
 ## 9.2 - Multi-Version Concurrency Control (MVCC)
 
-2PL suffers from a major performance bottleneck: "Readers block Writers, and Writers block Readers." To overcome this, most modern systems (PostgreSQL, Oracle, MySQL InnoDB) use MVCC.
+2PL suffers from a major performance bottleneck: "Readers block Writers, and Writers block Readers." To overcome this, most modern systems (PostgreSQL, Oracle, MySQL InnoDB) use MVCC [10].
 
 **MVCC Snapshot Isolation Example**
 ```mermaid
@@ -571,8 +571,8 @@ gantt
 **Theory of Operation:**
 
   * Updates do not overwrite the data in place. Instead, they create a new version of the tuple.
-  * Each version is tagged with the Transaction ID that created it (xmin) and the one that deleted/updated it (xmax).
-  * **Snapshot Isolation:** When a transaction starts, it takes a logical "snapshot." It only sees tuple versions that were committed before it started.
+  * Each version is tagged with the Transaction ID that created it (xmin) and the one that deleted/updated it (xmax) [10].
+  * **Snapshot Isolation:** When a transaction starts, it takes a logical "snapshot." It only sees tuple versions that were committed before it started [11].
 
 **Advantages:**
 
@@ -581,7 +581,7 @@ gantt
 
 **Disadvantages:**
 
-  * **Write Skew:** A specific anomaly in Snapshot Isolation where two transactions read overlapping data but update disjoint sets, violating constraints (requires Serializable Snapshot Isolation (SSI) to fix).
+  * **Write Skew:** A specific anomaly in Snapshot Isolation where two transactions read overlapping data but update disjoint sets, violating constraints (requires Serializable Snapshot Isolation (SSI) to fix) [11][12].
   * **Garbage Collection:** The system accumulates "dead tuples." A background process (like PostgreSQL's VACUUM) is required to clean up old versions, which consumes resources.
 
 
@@ -595,11 +595,11 @@ The fundamental rule of WAL is:
 
 > **"Log records describing a change must be written to stable storage (disk) before the modified data page is written to disk"**.
 
-This protocol ensures that if the system crashes (RAM is lost), the log on the disk contains a history of all changes, allowing the database to be reconstructed.
+This protocol ensures that if the system crashes (RAM is lost), the log on the disk contains a history of all changes, allowing the database to be reconstructed [13].
 
 ## 10.2 - The ARIES Recovery Algorithm
 
-ARIES (Algorithm for Recovery and Isolation Exploiting Semantics) is the industry standard for recovery. It relies on Log Sequence Numbers (LSN), which are monotonically increasing identifiers for log records. Every data page stores the pageLSN of the last operation that modified it.
+ARIES (Algorithm for Recovery and Isolation Exploiting Semantics) is the industry standard for recovery. It relies on Log Sequence Numbers (LSN), which are monotonically increasing identifiers for log records. Every data page stores the pageLSN of the last operation that modified it [13].
 
 ```mermaid
 stateDiagram-v2
@@ -636,13 +636,13 @@ While the relational model is dominant, the requirement for massive web-scale di
 
 ## 11.1 - The CAP Theorem and NoSQL
 
-The CAP Theorem (Brewer) states that a distributed system can only provide two of the three: Consistency, Availability, and Partition Tolerance.
+The CAP Theorem (Brewer) states that a distributed system can only provide two of the three: Consistency, Availability, and Partition Tolerance [14].
 
-NoSQL databases (e.g., Cassandra, MongoDB) typically sacrifice Strong Consistency (ACID) for High Availability and Partition Tolerance (BASE properties: Basically Available, Soft state, Eventual consistency). They often abandon joins and strict schemas to achieve horizontal sharding.
+NoSQL databases (e.g., Cassandra, MongoDB) typically sacrifice Strong Consistency (ACID) for High Availability and Partition Tolerance (BASE properties: Basically Available, Soft state, Eventual consistency) [15][17]. They often abandon joins and strict schemas to achieve horizontal sharding.
 
 ## 11.2 - NewSQL
 
-NewSQL represents the modern convergence. These systems (e.g., Google Spanner, CockroachDB) aim to provide the horizontal scalability of NoSQL while retaining the ACID guarantees of the relational model. They achieve this through advanced consensus algorithms (like Paxos or Raft) and precise time synchronisation (Atomic Clocks), proving that the Relational Model is not obsolete but rather adaptable to distributed architectures.
+NewSQL represents the modern convergence. These systems (e.g., Google Spanner, CockroachDB) aim to provide the horizontal scalability of NoSQL while retaining the ACID guarantees of the relational model [18][19]. They achieve this through advanced consensus algorithms (like Paxos or Raft) and precise time synchronisation (Atomic Clocks) [18], proving that the Relational Model is not obsolete but rather adaptable to distributed architectures.
 
 
 # 12 - Conclusion

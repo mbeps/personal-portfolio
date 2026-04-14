@@ -35,7 +35,7 @@
 
 # 1 - Introduction: The Relational Limit and the Document Paradigm
 
-The evolution of data management systems has been inextricably linked to the changing nature of the computational workloads they support. For nearly four decades, the Relational Database Management System (RDBMS), grounded in E. F. Codd’s tuple calculus and set theory, served as the bedrock of enterprise software. The relational model provides robust guarantees regarding data integrity through normalisation and the strict enforcement of ACID (Atomicity, Consistency, Isolation, Durability) properties. However, the emergence of web-scale applications in the early 21st century exposed inherent limitations in this monolithic architecture. The exponential increase in data volume, the velocity of ingestion, and the heterogeneity of data structures (often categorised as the "Three Vs" of Big Data) necessitated a departure from rigid schemas and vertical scaling.
+The evolution of data management systems has been inextricably linked to the changing nature of the computational workloads they support. For nearly four decades, the Relational Database Management System (RDBMS), grounded in E. F. Codd’s tuple calculus and set theory, served as the bedrock of enterprise software. The relational model provides robust guarantees regarding data integrity through normalisation and the strict enforcement of ACID (Atomicity, Consistency, Isolation, Durability) properties [4]. However, the emergence of web-scale applications in the early 21st century exposed inherent limitations in this monolithic architecture. The exponential increase in data volume, the velocity of ingestion, and the heterogeneity of data structures (often categorised as the "Three Vs" of Big Data) necessitated a departure from rigid schemas and vertical scaling.
 
 Document-oriented databases emerged as a primary category within the NoSQL (Not Only SQL) ecosystem to address these challenges. Unlike the relational model, which decomposes entities into rows across multiple normalised tables to minimise redundancy, document databases store semi-structured data in self-describing formats such as JSON (JavaScript Object Notation) or BSON (Binary JSON). This approach aligns the logical data model with the object-oriented structures used in application code, a synergy often described as overcoming the "impedance mismatch". More importantly, the document model facilitates horizontal scalability (sharding) and flexible schema evolution, properties that are mathematically and operationally difficult to achieve in distributed relational systems.
 
@@ -48,7 +48,7 @@ To design or select a document database, one must first master the theoretical c
 
 ## 2.1 - The CAP Theorem
 
-Formulated by Eric Brewer, the CAP theorem posits that a distributed data store can simultaneously provide only two of the following three guarantees:
+Formulated by Eric Brewer, the CAP theorem posits that a distributed data store can simultaneously provide only two of the following three guarantees [1]:
 
   * **Consistency (C):** In this context, consistency refers to linearizability. It guarantees that every read receives the most recent write or an error. Mathematically, this implies a total ordering of operations such that the system behaves as a single logical copy of the data.
   * **Availability (A):** Every request receives a non-error response, without the guarantee that it contains the most recent write.
@@ -81,19 +81,19 @@ In the domain of distributed document databases, Partition Tolerance is not an o
 
 ## 2.2 - The PACELC Theorem
 
-While the CAP theorem describes system behaviour during a failure (partition), it does not address the system's operational characteristics during normal functioning. The PACELC theorem refines this by stating: If there is a Partition (P), one must choose between Availability (A) and Consistency (C); **Else (E)**, when the system is running normally, one must choose between Latency (L) and Consistency (C).
+While the CAP theorem describes system behaviour during a failure (partition), it does not address the system's operational characteristics during normal functioning. The PACELC theorem refines this by stating: If there is a Partition (P), one must choose between Availability (A) and Consistency (C); **Else (E)**, when the system is running normally, one must choose between Latency (L) and Consistency (C) [2].
 
 This extension is critical for high-performance applications. Even in the absence of failures, a system that guarantees strong consistency (C) must incur the latency (L) cost of synchronous replication. The commit protocol must wait for acknowledgment from a quorum of replicas before confirming a write to the client. Conversely, a system that prioritises low latency (L) may choose asynchronous replication, thereby weakening consistency (C) even when the network is healthy. Document databases like MongoDB offer configurable distinct settings (Write Concerns) that allow the developer to navigate this trade-off per operation, moving the cursor between L and C based on the criticality of the data.
 
 ## 2.3 - BASE Architecture
 
-In contrast to the strict ACID model of RDBMS, many distributed document stores adopt the BASE consistency model:
+In contrast to the strict ACID model of RDBMS, many distributed document stores adopt the BASE consistency model [3][5]:
 
   * **Basically Available:** The system guarantees availability, potentially by returning stale data or a partial response.
   * **Soft State:** The state of the system may change over time, even without input, due to background convergence processes.
   * **Eventual Consistency:** If no new updates are made to a given data item, eventually all accesses to that item will return the last updated value.
 
-However, modern document databases have increasingly blurred the lines between ACID and BASE. For instance, MongoDB (since version 4.0) supports multi-document ACID transactions, providing strong consistency guarantees within a sharded cluster, effectively offering ACID semantics on top of a distributed architecture. Google’s Spanner goes further, utilising atomic clocks to provide "external consistency," which is stronger than standard serializability, effectively behaving as a CP system with such high availability that it appears to the user as CA.
+However, modern document databases have increasingly blurred the lines between ACID and BASE. For instance, MongoDB (since version 4.0) supports multi-document ACID transactions, providing strong consistency guarantees within a sharded cluster, effectively offering ACID semantics on top of a distributed architecture [15]. Google’s Spanner goes further, utilising atomic clocks to provide "external consistency," which is stronger than standard serializability, effectively behaving as a CP system with such high availability that it appears to the user as CA [13].
 
 
 # 3 - Logical Data Representation: Set Theory and Algebra
@@ -108,7 +108,7 @@ The structural advantage of this model is the ability to denormalise data. In an
 
 ## 3.2 - Algebras for JSON (JAL)
 
-Recent academic work has proposed formal algebras for JSON to enable the kind of query optimisation found in relational systems. A JSON Algebra (JAL) defines operations on the domain of JSON values $J$, which is defined recursively as the union of atomic types (strings, numbers, booleans, null) and complex types (objects, arrays) constructed from values in $J$.
+Recent academic work has proposed formal algebras for JSON to enable the kind of query optimisation found in relational systems [21]. A JSON Algebra (JAL) defines operations on the domain of JSON values $J$, which is defined recursively as the union of atomic types (strings, numbers, booleans, null) and complex types (objects, arrays) constructed from values in $J$.
 
 Key operators in JAL include:
 
@@ -116,7 +116,7 @@ Key operators in JAL include:
   * **Selection ($\sigma$):** Filtering the set of trees based on predicates applied to nodes within the trees.
   * **Unnesting ($\mu$):** Transforming a document containing an array of $n$ elements into $n$ distinct documents. This operator is crucial for aggregation pipelines, as it transforms the cardinality of the dataset.
 
-Mathematically, the unnest operator flattens the hierarchical structure. Let $d$ be a document with an array field $A = [v_1, v_2, \dots, v_n]$. The unnest operation maps $d$ to a set of documents $\{d_1, d_2, \dots, d_n\}$ where each $d_i$ is a copy of $d$ with $A$ replaced by $v_i$. This transformation is essential for performing set-based operations (like grouping and counting) on embedded arrays.
+Mathematically, the unnest operator flattens the hierarchical structure. Let $d$ be a document with an array field $A = [v_1, v_2, \dots, v_n]$. The unnest operation maps $d$ to a set of documents $\{d_1, d_2, \dots, d_n\}$ where each $d_i$ is a copy of $d$ with $A$ replaced by $v_i$. This transformation is essential for performing set-based operations (like grouping and counting) on embedded arrays [21].
 
 ## 3.3 - BSON: Binary Serialisation and Performance
 
@@ -136,7 +136,7 @@ The performance profile of a database (specifically the trade-off between write 
 
 ## 4.1 - B-Tree and B+ Tree Architecture
 
-The B-Tree is a generalisation of a binary search tree in which a node can have more than two children. It is the default storage engine for MongoDB (via the WiredTiger engine) and acts as the industry standard for read-optimised workloads.
+The B-Tree is a generalisation of a binary search tree in which a node can have more than two children [16]. It is the default storage engine for MongoDB (via the WiredTiger engine) and acts as the industry standard for read-optimised workloads.
 
 ```mermaid
 graph TD
@@ -175,7 +175,7 @@ WiredTiger employs a B+ Tree, a variant where internal nodes store only keys (fo
 
 ## 4.2 - Log-Structured Merge (LSM) Trees
 
-LSM Trees, used by systems like Cassandra, RocksDB, and supported by WiredTiger, are designed to optimise write throughput. They are particularly effective for write-intensive workloads where the random I/O of B-Tree updates becomes a bottleneck.
+LSM Trees, used by systems like Cassandra, RocksDB, and supported by WiredTiger, are designed to optimise write throughput [17]. They are particularly effective for write-intensive workloads where the random I/O of B-Tree updates becomes a bottleneck.
 
 **LSM Tree Write & Compaction**
 ```mermaid
@@ -213,7 +213,7 @@ For an LSM tree, writes are sequential (append-only), which is highly efficient 
 
 The theoretical write amplification for a Leveled LSM tree is approximately:
 $$WA_{LSM} \approx \Theta \left( k \cdot \log_k \frac{N}{B} \right)$$
-Where $k$ is the size ratio between levels (typically 10) and $B$ is the block size. While LSM trees may have higher theoretical total WA due to compaction, the sequential nature of the I/O allows them to sustain significantly higher write throughput than B-Trees, which are limited by disk seek times (IOPS).
+Where $k$ is the size ratio between levels (typically 10) and $B$ is the block size. While LSM trees may have higher theoretical total WA due to compaction, the sequential nature of the I/O allows them to sustain significantly higher write throughput than B-Trees, which are limited by disk seek times (IOPS) [17].
 
 ## 4.3 - Comparative Trade-off Analysis
 
@@ -236,16 +236,16 @@ In a distributed document database, ensuring that all replicas agree on the stat
 
 ## 5.1 - Paxos and Google Spanner
 
-Google Cloud Spanner, which underpins Firestore, utilises the Paxos algorithm to manage replication. Paxos is a family of protocols that solve consensus in a network of unreliable processors. The basic algorithm involves three roles (Proposer, Acceptor, Learner) and guarantees safety: non-triviality (only proposed values are chosen), integrity (only one value is chosen), and validity.
+Google Cloud Spanner, which underpins Firestore, utilises the Paxos algorithm to manage replication. Paxos is a family of protocols that solve consensus in a network of unreliable processors. The basic algorithm involves three roles (Proposer, Acceptor, Learner) and guarantees safety: non-triviality (only proposed values are chosen), integrity (only one value is chosen), and validity [10][11].
 
 **The Innovation of TrueTime:**
-Standard distributed algorithms operate under the assumption of asynchronous clocks, where no assumptions can be made about the relative speed of processes or clock drift. Spanner simplifies this by relying on TrueTime, an API that exposes clock uncertainty. TrueTime returns a time interval $TT.now() = [earliest, latest]$ such that the absolute time $t_{abs}$ is guaranteed to be within the interval with high probability.
+Standard distributed algorithms operate under the assumption of asynchronous clocks, where no assumptions can be made about the relative speed of processes or clock drift. Spanner simplifies this by relying on TrueTime, an API that exposes clock uncertainty [13]. TrueTime returns a time interval $TT.now() = [earliest, latest]$ such that the absolute time $t_{abs}$ is guaranteed to be within the interval with high probability.
 
-Spanner uses this to enforce External Consistency (linearizability). If a transaction $T_1$ commits before transaction $T_2$ starts, then $T_1$'s timestamp must be less than $T_2$'s timestamp. Spanner enforces this by making the commit protocol wait. A transaction attempting to commit at timestamp $t$ must wait until $TT.now().earliest > t$. The wait time is $2\epsilon$ (where $\epsilon$ is the clock uncertainty), ensuring that the timestamp lies in the past for all observers. This mathematical bound allows Spanner to support consistent snapshots across the entire global database without locks.
+Spanner uses this to enforce External Consistency (linearizability). If a transaction $T_1$ commits before transaction $T_2$ starts, then $T_1$'s timestamp must be less than $T_2$'s timestamp. Spanner enforces this by making the commit protocol wait. A transaction attempting to commit at timestamp $t$ must wait until $TT.now().earliest > t$. The wait time is $2\epsilon$ (where $\epsilon$ is the clock uncertainty), ensuring that the timestamp lies in the past for all observers. This mathematical bound allows Spanner to support consistent snapshots across the entire global database without locks [13].
 
 ## 5.2 - Raft and MongoDB
 
-MongoDB utilises a consensus protocol based on Raft for its replica sets (since version 3.2). Raft is designed to be understandable and decomposes the consensus problem into three sub-problems: leader election, log replication, and safety.
+MongoDB utilises a consensus protocol based on Raft for its replica sets (since version 3.2). Raft is designed to be understandable and decomposes the consensus problem into three sub-problems: leader election, log replication, and safety [12].
 
 **Leader Election:**
 Time is divided into arbitrary length terms. If a follower does not receive a heartbeat from the leader within a randomised timeout window (typically 150–300ms), it promotes itself to a candidate and requests votes. This randomisation is crucial as it mathematically minimises the probability of a "split vote" where no candidate receives a majority, preventing infinite election loops.
@@ -276,9 +276,9 @@ sequenceDiagram
 ```
 
 **Log Replication and Safety:**
-Raft guarantees the State Machine Safety Property: if a server has applied a log entry at a given index to its state machine, no other server will ever apply a different log entry for the same index. This is proven via the Leader Completeness Property, which states that if a log entry is committed in a given term, then that entry will be present in the logs of the leaders for all higher-numbered terms.
+Raft guarantees the State Machine Safety Property: if a server has applied a log entry at a given index to its state machine, no other server will ever apply a different log entry for the same index. This is proven via the Leader Completeness Property, which states that if a log entry is committed in a given term, then that entry will be present in the logs of the leaders for all higher-numbered terms [12].
 
-MongoDB extends vanilla Raft with a "pull-based" replication mechanism. Unlike Raft, where the leader pushes log entries to followers, MongoDB secondaries pull oplog entries from the primary (or other secondaries). This allows for "chaining," where a secondary replicates from another secondary, reducing the network load on the primary node.
+MongoDB extends vanilla Raft with a "pull-based" replication mechanism. Unlike Raft, where the leader pushes log entries to followers, MongoDB secondaries pull oplog entries from the primary (or other secondaries). This allows for "chaining," where a secondary replicates from another secondary, reducing the network load on the primary node [14].
 
 
 # 6 - Partitioning and Sharding: Probability Theory in Data Distribution
@@ -287,7 +287,7 @@ When a dataset exceeds the storage or throughput capacity of a single node, the 
 
 ## 6.1 - Consistent Hashing
 
-Traditional modulo hashing ($H(k) \pmod n$) is brittle in distributed systems. If a node is added or removed, $n$ changes, causing nearly all keys to be remapped to different nodes. This results in massive data movement. Consistent Hashing solves this by mapping both data keys and nodes onto a unit circle (ring) or a line $[0, 1)$.
+Traditional modulo hashing ($H(k) \pmod n$) is brittle in distributed systems. If a node is added or removed, $n$ changes, causing nearly all keys to be remapped to different nodes. This results in massive data movement. Consistent Hashing solves this by mapping both data keys and nodes onto a unit circle (ring) or a line $[0, 1)$ [22].
 
 **Algorithm:**
 
@@ -295,13 +295,13 @@ Traditional modulo hashing ($H(k) \pmod n$) is brittle in distributed systems. I
 2.  Hash each document key $K$ to an integer on the ring.
 3.  Assign the document to the first node encountered when traversing the ring clockwise from the key's hash.
 
-When a node is added, it only takes the keys from its successor on the ring, minimising data movement to $K/n$ keys on average.
+When a node is added, it only takes the keys from its successor on the ring, minimising data movement to $K/n$ keys on average [22].
 
 **Virtual Nodes and Load Variance:**
 A major challenge with basic consistent hashing is non-uniform data distribution. With a small number of physical nodes, the random placement on the ring leads to a high variance in the arc length assigned to each node. To mitigate this, each physical node is mapped to multiple virtual nodes (replicas) on the ring.
-Statistical analysis demonstrates that the standard deviation of the load, $\sigma$, is inversely proportional to the square root of the number of virtual nodes, $V$:
+Statistical analysis demonstrates that the standard deviation of the load, $\sigma$, is inversely proportional to the square root of the number of virtual nodes, $V$ [22][23]:
 $$\sigma \propto \frac{1}{\sqrt{V}}$$
-Experimental data suggests that with $V=200$ virtual nodes per physical server, the standard deviation of the load drops to approximately 5-10% of the mean, ensuring a balanced cluster without manual intervention.
+Experimental data suggests that with $V=200$ virtual nodes per physical server, the standard deviation of the load drops to approximately 5-10% of the mean, ensuring a balanced cluster without manual intervention [23].
 
 ## 6.2 - Shard Key Selection: Cardinality and Monotonicity
 
@@ -315,11 +315,11 @@ Selecting the correct shard key is a mathematical optimisation problem involving
 
 # 7 - Concurrency Control and Causality: Vector Clocks
 
-In AP systems (like older versions of CouchDB, Riak, or Dynamo-style databases), the system allows concurrent writes to the same document on different nodes during a partition. The system must then detect causality to understand which version is the descendant of the other or if a conflict exists.
+In AP systems (like older versions of CouchDB, Riak, or Dynamo-style databases), the system allows concurrent writes to the same document on different nodes during a partition [23]. The system must then detect causality to understand which version is the descendant of the other or if a conflict exists.
 
 ## 7.1 - Vector Clocks and Partial Ordering
 
-Simple timestamps are insufficient for ordering events in distributed systems due to clock skew. Instead, Vector Clocks are used. A vector clock $V$ for a system with $N$ nodes is an array of $N$ integers.
+Simple timestamps are insufficient for ordering events in distributed systems due to clock skew [7]. Instead, Vector Clocks are used [8][9]. A vector clock $V$ for a system with $N$ nodes is an array of $N$ integers.
 
 **The Algorithm:**
 
@@ -329,12 +329,12 @@ Simple timestamps are insufficient for ordering events in distributed systems du
 4.  When sending a message, $P_i$ includes its vector $V_i$.
 5.  When receiving a message with vector $W$, $P_i$ updates its clock:
     $$\forall k: V_i[k] = \max(V_i[k], W[k])$$
-    Then, it increments $V_i[i]$.
+    Then, it increments $V_i[i]$ [8][9].
 
 **Causality and Concurrency:**
 We define a partial ordering relation "happened-before" ($\to$). Event $A$ with vector $V_A$ happened before event $B$ with vector $V_B$ ($A \to B$) if and only if:
 $$(\forall i, V_A[i] \le V_B[i]) \land (\exists j, V_A[j] < V_B[j])$$
-If neither $A \to B$ nor $B \to A$, the events are concurrent. This mathematical definition allows the database to identify conflicts precisely. If two updates are concurrent, the database cannot automatically merge them without risking data loss. Instead, it presents both versions (siblings) to the application for semantic resolution.
+If neither $A \to B$ nor $B \to A$, the events are concurrent [7][8][9]. This mathematical definition allows the database to identify conflicts precisely. If two updates are concurrent, the database cannot automatically merge them without risking data loss. Instead, it presents both versions (siblings) to the application for semantic resolution.
 
 **Pruning and State Explosion:**
 One disadvantage of vector clocks is that the vector size grows linearly with the number of clients or nodes ($N$). In dynamic systems where clients (actors) are transient, this can lead to state explosion. To mitigate this, Pruning Algorithms are employed. Systems may prune entries based on a timestamp threshold or a maximum vector size, removing the oldest entries. While this trades some accuracy in conflict detection for storage efficiency, it is a necessary compromise in large-scale distributed systems.
@@ -370,8 +370,8 @@ Common stages and their complexities include:
 
 For location-based queries, document databases employ specialised spatial indexes.
 
-  * **Geohashing:** This technique interleaves the bits of the latitude and longitude coordinates to produce a single integer (or string) hash. This maps 2D space onto a 1D line (Z-order curve). The property of the Z-curve is that points close in 2D space are likely to be close in 1D space. A query for "points within radius $R$" is transformed into a set of range queries on the integer hashes.
-  * **Quadtrees:** Alternatively, the 2D space is recursively divided into four quadrants. This forms a tree structure where each node represents a spatial region. Searching for points in a polygon involves traversing the tree to find leaf nodes that intersect the polygon. The complexity of searching a balanced Quadtree is $O(\log N)$.
+  * **Geohashing:** This technique interleaves the bits of the latitude and longitude coordinates to produce a single integer (or string) hash. This maps 2D space onto a 1D line (Z-order curve). The property of the Z-curve is that points close in 2D space are likely to be close in 1D space. A query for "points within radius $R$" is transformed into a set of range queries on the integer hashes [19].
+  * **Quadtrees:** Alternatively, the 2D space is recursively divided into four quadrants. This forms a tree structure where each node represents a spatial region. Searching for points in a polygon involves traversing the tree to find leaf nodes that intersect the polygon. The complexity of searching a balanced Quadtree is $O(\log N)$ [18].
 
 
 # 9 - Comparative Architecture Analysis
@@ -400,7 +400,7 @@ WiredTiger’s durability mechanism relies on consistent checkpoints.
 2.  **Reconciliation:** The engine walks the B-Tree. Dirty pages in the cache are written to disk. WiredTiger supports block compression (Snappy, Zlib), significantly reducing I/O.
 3.  **Root Update:** The address of the new root page is written to the metadata file.
 
-Crucially, WiredTiger uses a Write Ahead Log (WAL). Modifications are written to the journal file before being applied to the in-memory cache. In the event of a crash, the database recovers by restoring the last checkpoint and replaying the journal entries. This ensures the Durability (D) property of ACID.
+Crucially, WiredTiger uses a Write Ahead Log (WAL). Modifications are written to the journal file before being applied to the in-memory cache. In the event of a crash, the database recovers by restoring the last checkpoint and replaying the journal entries. This ensures the Durability (D) property of ACID [4].
 
 
 # 10 - Conclusion

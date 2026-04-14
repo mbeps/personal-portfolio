@@ -160,7 +160,7 @@ The key performance metrics for evaluating ANN algorithms are:
   * **Queries Per Second (QPS):** The throughput of the system.
   * **Latency:** The time taken to process a single query (p95 or p99).
   * **Memory Footprint:** The RAM required to hold the index.
-  * **Index Build Time:** The time required to construct the index from raw data.
+  * **Index Build Time:** The time required to construct the index from raw data.[6]
 
 
 # 5 - Indexing Algorithms: The Mathematical Engines
@@ -208,7 +208,7 @@ If $N$ is the dataset size and $K$ is the number of clusters, the average cluste
 
 ## 5.2 - Hierarchical Navigable Small Worlds (HNSW)
 
-HNSW is currently considered the state-of-the-art algorithm for in-memory vector search. It balances high recall with logarithmic complexity and is robust against the curse of dimensionality. It combines the data structures of Probability Skip Lists with Navigable Small World (NSW) graphs.
+HNSW is currently considered the state-of-the-art algorithm for in-memory vector search. It balances high recall with logarithmic complexity and is robust against the curse of dimensionality. It combines the data structures of Probability Skip Lists with Navigable Small World (NSW) graphs.[1]
 
 ```mermaid
 graph TD
@@ -226,7 +226,7 @@ graph TD
 
 ### 5.2.1 - Graph Structure and Skip Lists
 
-An NSW graph creates a network where vertices are vectors and edges connect vectors to their nearest neighbours. The "Small World" property, observed in social networks (the "six degrees of separation" theory), implies that the average path length between any two nodes is small (typically logarithmic relative to the network size).
+An NSW graph creates a network where vertices are vectors and edges connect vectors to their nearest neighbours. The "Small World" property, observed in social networks (the "six degrees of separation" theory), implies that the average path length between any two nodes is small (typically logarithmic relative to the network size).[1]
 HNSW introduces a hierarchical structure consisting of multiple layers, denoted as $L_0, L_1, \dots, L_{max}$.
 
   * **Layer 0 (Bottom):** This layer contains all data points in the database. It is a high-resolution graph with many short-range connections.
@@ -234,7 +234,7 @@ HNSW introduces a hierarchical structure consisting of multiple layers, denoted 
 
 The distribution of nodes across layers mimics a Probability Skip List. A node inserted into the database is assigned a maximum layer $l$ based on an exponentially decaying probability distribution:
 $$P(l) \propto e^{-l}$$
-This ensures that while all nodes exist at Layer 0, exponentially fewer nodes exist at higher layers, forming a pyramid-like structure.
+This ensures that while all nodes exist at Layer 0, exponentially fewer nodes exist at higher layers, forming a pyramid-like structure.[1]
 
 ### 5.2.2 - Greedy Search Traversal (Mathematical Working)
 
@@ -251,11 +251,11 @@ The search for a query vector $\mathbf{q}$ begins at the top layer and proceeds 
 
 ### 5.2.3 - Complexity Analysis
 
-The search complexity is $O(\log N)$. The layered structure allows the algorithm to skip vast portions of the graph, similar to how a binary search tree or a skip list allows skipping elements. By "zooming in" from the coarse global view at the top layer to the fine local view at the bottom layer, HNSW achieves extremely low latency.
+The search complexity is $O(\log N)$. The layered structure allows the algorithm to skip vast portions of the graph, similar to how a binary search tree or a skip list allows skipping elements. By "zooming in" from the coarse global view at the top layer to the fine local view at the bottom layer, HNSW achieves extremely low latency.[1]
 
 ## 5.3 - Product Quantization (PQ)
 
-While HNSW offers superior speed, it consumes significant memory because it typically requires storing the full float32 vectors in RAM for distance calculations. Product Quantization (PQ) is a lossy compression technique that addresses this memory bottleneck by decomposing the high-dimensional space into a Cartesian product of lower-dimensional subspaces.
+While HNSW offers superior speed, it consumes significant memory because it typically requires storing the full float32 vectors in RAM for distance calculations. Product Quantization (PQ) is a lossy compression technique that addresses this memory bottleneck by decomposing the high-dimensional space into a Cartesian product of lower-dimensional subspaces.[2]
 
 ### 5.3.1 - Subspace Decomposition
 
@@ -265,7 +265,7 @@ The dimension of each sub-vector is $d^* = d/m$.
 
 ### 5.3.2 - Quantization and Codebooks
 
-For each subspace $j$, a separate K-means clustering is performed on the training data to create a codebook $C_j$. This codebook contains $k^*$ centroids (typically $k^* = 256$). The choice of 256 is strategic as it allows the index of a centroid to be represented by exactly 1 byte (8 bits).
+For each subspace $j$, a separate K-means clustering is performed on the training data to create a codebook $C_j$. This codebook contains $k^*$ centroids (typically $k^* = 256$). The choice of 256 is strategic as it allows the index of a centroid to be represented by exactly 1 byte (8 bits).[2]
 Each sub-vector $\mathbf{u}_j$ of the original vector is replaced by the ID (index) of its nearest centroid in the codebook $C_j$.
 $$\mathbf{x} \rightarrow [id_1, id_2, \dots, id_m]$$
 If $k^*=256$, the total size of the compressed vector is $m$ bytes.
@@ -275,7 +275,7 @@ Consider a 128-dimensional vector of 32-bit floats.
 
   * Original size: $128 \times 4 \text{ bytes} = 512 \text{ bytes}$.
   * PQ Compressed size ($m=8$): $8 \text{ bytes}$.
-    This yields a massive 64x reduction in memory usage.
+    This yields a massive 64x reduction in memory usage.[2]
 
 ### 5.3.3 - Asymmetric Distance Computation (ADC)
 
@@ -284,16 +284,16 @@ The squared Euclidean distance is approximated as the sum of squared distances i
 $$d(\mathbf{q}, \mathbf{x}')^2 \approx \sum_{j=1}^{m} \|\mathbf{q}_j - C_j[id_j]\|^2$$
 **Optimisation:**
 Before iterating through the database, the system pre-computes a lookup table. It calculates the distance between the query sub-vectors $\mathbf{q}_j$ and every possible centroid in every codebook $C_j$. Since there are only $m \times k^*$ centroids (e.g., $8 \times 256 = 2048$), this is negligible.
-During the scan of the database, the distance calculation for each vector becomes a simple series of $m$ table lookups and additions, avoiding expensive floating-point arithmetic entirely.
+During the scan of the database, the distance calculation for each vector becomes a simple series of $m$ table lookups and additions, avoiding expensive floating-point arithmetic entirely.[2]
 
 ## 5.4 - Locality Sensitive Hashing (LSH)
 
-Locality Sensitive Hashing (LSH) is an older technique that differs fundamentally from graph or clustering methods. It relies on probabilistic hashing families that preserve similarity. The goal is to hash similar items to the same "bucket" with high probability, and dissimilar items to different buckets.
+Locality Sensitive Hashing (LSH) is an older technique that differs fundamentally from graph or clustering methods. It relies on probabilistic hashing families that preserve similarity. The goal is to hash similar items to the same "bucket" with high probability, and dissimilar items to different buckets.[3]
 
 ### 5.4.1 - p-Stable Distributions
 
 LSH for Euclidean distance utilises p-stable distributions. A distribution $D$ is called p-stable if for any vectors $\mathbf{v}_1, \dots, \mathbf{v}_n$ and random variables $X_1, \dots, X_n \sim D$, the linear combination $\sum v_i X_i$ has the same distribution as $(\sum |v_i|^p)^{1/p} X$, where $X \sim D$.
-For Euclidean distance ($L_2$ norm, where $p=2$), the Gaussian (Normal) distribution is 2-stable.
+For Euclidean distance ($L_2$ norm, where $p=2$), the Gaussian (Normal) distribution is 2-stable.[3]
 
 ### 5.4.2 - The Hash Function
 
@@ -305,11 +305,11 @@ Where:
   * $b$ is a random scalar drawn uniformly from $[0, r]$.
   * $r$ is a user-defined parameter representing the bucket width.
 
-Geometrically, this projects the vector $\mathbf{v}$ onto a random line defined by $\mathbf{a}$, shifts it by $b$, and quantizes it into segments of length $r$. Vectors that are close to each other in the original space ($\|\mathbf{v}_1 - \mathbf{v}_2\|$ is small) are highly likely to fall into the same integer segment (bucket).
+Geometrically, this projects the vector $\mathbf{v}$ onto a random line defined by $\mathbf{a}$, shifts it by $b$, and quantizes it into segments of length $r$. Vectors that are close to each other in the original space ($\|\mathbf{v}_1 - \mathbf{v}_2\|$ is small) are highly likely to fall into the same integer segment (bucket).[3]
 
 ### 5.4.3 - Multi-Probe LSH
 
-A single hash function is insufficient because the probability of collision for similar items is not 100% (false negatives). To improve recall, LSH constructs multiple hash tables ($L$ tables) using different random $\mathbf{a}$ and $b$ values. During search, vectors that collide with the query $\mathbf{q}$ in any of the $L$ tables are collected as candidates. While LSH provides theoretical guarantees, in practice, it often requires more memory and tuning than HNSW or PQ to achieve comparable performance.
+A single hash function is insufficient because the probability of collision for similar items is not 100% (false negatives). To improve recall, LSH constructs multiple hash tables ($L$ tables) using different random $\mathbf{a}$ and $b$ values. During search, vectors that collide with the query $\mathbf{q}$ in any of the $L$ tables are collected as candidates. While LSH provides theoretical guarantees, in practice, it often requires more memory and tuning than HNSW or PQ to achieve comparable performance.[6]
 
 
 # 6 - Core Architecture of Vector Databases
@@ -520,7 +520,7 @@ Deploying vector databases in production introduces challenges that go beyond th
 The primary cost driver in vector search is Random Access Memory (RAM). Storing 1 billion vectors of 768 dimensions (float32) requires roughly 3 TB of RAM. This is prohibitively expensive for many organisations.
 
   * **Solution 1: Quantization.** Using PQ or Binary Quantization (BQ) can reduce this by 32x-64x, bringing the requirement down to \< 100 GB.
-  * **Solution 2: Disk-Based Indexing.** Algorithms like DiskANN (Vamana graph) store the graph structure on fast NVMe SSDs and cache only the compressed vectors in RAM. They utilise the high random read throughput of modern SSDs to achieve performance close to in-memory systems at a fraction of the cost.
+  * **Solution 2: Disk-Based Indexing.** Algorithms like DiskANN (Vamana graph) store the graph structure on fast NVMe SSDs and cache only the compressed vectors in RAM. They utilise the high random read throughput of modern SSDs to achieve performance close to in-memory systems at a fraction of the cost.[5]
 
 ## 9.2 - Hardware Acceleration
 

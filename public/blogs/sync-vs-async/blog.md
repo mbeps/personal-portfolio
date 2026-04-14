@@ -117,14 +117,14 @@ In the late 1990s, the dominant server architecture (exemplified by early versio
 
 While conceptually simple, this architecture faced severe physical limitations:
 
-  * **Memory Overhead:** Each thread requires its own stack, typically ranging from 1MB to several MBs. Spawning 10,000 threads could require tens of gigabytes of RAM, exceeding the capacity of hardware at the time.
-  * **Context Switching:** The OS scheduler must slice CPU time among all active threads. As the number of threads rises, the overhead of saving and restoring register states (context switching) increases. Eventually, the CPU spends more time switching between threads than executing application code, a condition known as "thrashing".
+  * **Memory Overhead:** Each thread requires its own stack, typically ranging from 1MB to several MBs. Spawning 10,000 threads could require tens of gigabytes of RAM, exceeding the capacity of hardware at the time.[4][5]
+  * **Context Switching:** The OS scheduler must slice CPU time among all active threads. As the number of threads rises, the overhead of saving and restoring register states (context switching) increases. Eventually, the CPU spends more time switching between threads than executing application code, a condition known as "thrashing".[4][5][6]
 
 ## 3.2 - The Shift to Event-Driven Architecture
 
 To overcome the C10K barrier, developers adopted **Event-Driven Architecture (EDA)**. Instead of a thread for every client, EDA utilises a single thread (or a small pool of threads matching the number of CPU cores) running a continuous loop (the **Event Loop**).
 
-In this model, the server accepts a connection and immediately returns to listening for more connections, registering a lightweight data structure (an event handler) to process the client's data when it eventually arrives. The program state is managed explicitly in heap-allocated objects rather than implicitly on thread stacks. This dramatically reduces the memory footprint per connection. By leveraging `epoll`, an event-driven server like Nginx or Node.js can handle tens or hundreds of thousands of concurrent connections on modest hardware, effectively solving the C10K problem and paving the way for the "C10M" (ten million connections) challenge.
+In this model, the server accepts a connection and immediately returns to listening for more connections, registering a lightweight data structure (an event handler) to process the client's data when it eventually arrives. The program state is managed explicitly in heap-allocated objects rather than implicitly on thread stacks. This dramatically reduces the memory footprint per connection.[2][3] By leveraging `epoll`, an event-driven server like Nginx or Node.js can handle tens or hundreds of thousands of concurrent connections on modest hardware, effectively solving the C10K problem and paving the way for the "C10M" (ten million connections) challenge.[1][2]
 
 
 # 4 - Architectural Components of Asynchrony
@@ -221,7 +221,7 @@ The original mechanism for asynchronous handling was the callback: passing a fun
 
 **Mechanism:** `fs.readFile('path', function(err, data) {... }).`
 
-**Disadvantages:** This led to the "Pyramid of Doom" or "Callback Hell," where deeply nested callbacks made code difficult to read and maintain. Furthermore, it suffered from "Inversion of Control," where the developer implicitly trusted the third-party library to call the callback exactly once.
+**Disadvantages:** This led to the "Pyramid of Doom" or "Callback Hell," where deeply nested callbacks made code difficult to read and maintain.[3] Furthermore, it suffered from "Inversion of Control," where the developer implicitly trusted the third-party library to call the callback exactly once.[3]
 
 ## 5.2 - Promises
 
@@ -232,11 +232,11 @@ Promises were introduced to provide a standardised interface for asynchronous re
 
 ## 5.3 - Async/Await and the State Machine
 
-Introduced in ES2017, `async`/`await` offers the syntactic appearance of synchronous code while maintaining non-blocking behaviour. However, it is crucial to understand that `async`/`await` is a compile-time transformation, often referred to as "syntactic sugar" over Promises and Generators.
+Introduced in ES2017, `async`/`await` offers the syntactic appearance of synchronous code while maintaining non-blocking behaviour. However, it is crucial to understand that `async`/`await` is a compile-time transformation, often referred to as "syntactic sugar" over Promises and Generators.[3]
 
 ### 5.3.1 - Architectural Transpilation
 
-When a compiler like TypeScript or Babel processes an async function targeting an older environment (like ES5), it converts the function into a State Machine.
+When a compiler like TypeScript or Babel processes an async function targeting an older environment (like ES5), it converts the function into a State Machine.[3]
 
 Consider a simple async function:
 
@@ -279,11 +279,11 @@ Architectural decisions require trade-offs. The choice between synchronous (thre
 | Feature          | Synchronous (Thread-Per-Request)                                                                 | Asynchronous (Event-Driven)                                                                                    |
 | :--------------- | :----------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------- |
 | **Concurrency**  | Limited by memory (stack size) and OS thread limits. Scaling beyond a few thousand is difficult. | Extremely high scalability. Handles tens of thousands of connections with minimal memory overhead.             |
-| **Memory Usage** | High. Each thread allocates a stack (e.g., 1MB). 10k threads = \~10GB RAM.                       | Low. Only allocates small heap objects for closures and state. 10k connections may use only a few hundred MBs. |
+| **Memory Usage** | High. Each thread allocates a stack (e.g., 1MB). 10k threads = \~10GB RAM.[4][5]                 | Low. Only allocates small heap objects for closures and state. 10k connections may use only a few hundred MBs. |
 | **CPU Overhead** | High context switching costs (**Context Switch Storm**) when many threads are active.            | Low. Context switching is minimised as there is typically only one thread per core.                            |
 | **Throughput**   | Lower for I/O-bound tasks due to blocking.                                                       | Higher for I/O-bound tasks due to non-blocking overlap.                                                        |
 
-**Benchmarks:** Synthetic benchmarks consistently show that for high-concurrency, I/O-heavy workloads (such as a proxy server or chat application), event-driven models (Node.js, Nginx) vastly outperform threaded models (Apache Prefork) in terms of connections per second and memory efficiency.
+**Benchmarks:** Synthetic benchmarks consistently show that for high-concurrency, I/O-heavy workloads (such as a proxy server or chat application), event-driven models (Node.js, Nginx) vastly outperform threaded models (Apache Prefork) in terms of connections per second and memory efficiency.[2][6]
 
 ## 6.2 - The "Blocking the Loop" Vulnerability
 
@@ -291,7 +291,7 @@ The Achilles' heel of the asynchronous model is **CPU-bound work**. Because ther
 
 In a synchronous threaded model, a heavy calculation only blocks the single thread assigned to that request; other threads continue serving other clients. In an asynchronous model, a heavy calculation blocks the loop, causing all connected clients to experience a freeze. This phenomenon is known as "starving the event loop" and can lead to a Denial of Service (DoS) where the server becomes unresponsive to health checks.
 
-**Mitigation:** CPU-intensive tasks in Node.js must be offloaded to **Worker Threads** (which execute in parallel OS threads) or separate processes to ensure the main event loop remains free to handle I/O.
+**Mitigation:** CPU-intensive tasks in Node.js must be offloaded to **Worker Threads** (which execute in parallel OS threads) or separate processes to ensure the main event loop remains free to handle I/O.[1][7]
 
 
 # 7 - Alternative Concurrency Models
@@ -300,7 +300,7 @@ While "Sync vs. Async" is the primary dichotomy, modern languages have introduce
 
 ## 7.1 - Go: Goroutines and CSP
 
-Go (Golang) utilises a concurrency model based on **Communicating Sequential Processes (CSP)**.
+Go (Golang) utilises a concurrency model based on **Communicating Sequential Processes (CSP)**.[9][10]
 
   * **Goroutines:** These are "green threads" managed by the Go runtime, not the OS. They start with a tiny stack (2KB) that grows dynamically.
   * **M:N Scheduling:** The Go runtime multiplexes $M$ Goroutines onto $N$ OS threads. If a Goroutine blocks on I/O, the runtime simply parks it and schedules another Goroutine on the same OS thread.
@@ -316,10 +316,10 @@ Rust employs a **Poll-based** asynchronous model, distinct from the **Push-based
 
 ## 7.3 - The Actor Model (Erlang/Elixir, Akka)
 
-The Actor model avoids shared state entirely. "Actors" are independent entities that communicate exclusively via immutable messages.
+The Actor model avoids shared state entirely. "Actors" are independent entities that communicate exclusively via immutable messages.[8]
 
-  * **Isolation:** If an Actor crashes, it does not corrupt the state of others. Supervisors can restart failed Actors.
-  * **Distribution:** Actors can transparently communicate across network boundaries, making this model ideal for distributed systems.
+  * **Isolation:** If an Actor crashes, it does not corrupt the state of others. Supervisors can restart failed Actors.[8]
+  * **Distribution:** Actors can transparently communicate across network boundaries, making this model ideal for distributed systems.[8]
 
 
 # 8 - Web Development Paradigms: Frontend vs. Backend

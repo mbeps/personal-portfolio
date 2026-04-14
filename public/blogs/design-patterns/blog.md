@@ -66,7 +66,7 @@ The intellectual roots of software design patterns lie outside computer science.
 
 Alexander defined a pattern as a solution to a problem that occurs repeatedly in a context. He observed that inhabitants (rather than distant architects) were best suited to design their environments using these patterns. His work catalogued 253 patterns, ranging from the macro-scale of "Agricultural Valleys" to the micro-scale of "Light on Two Sides of Every Room".
 
-The transition to software occurred in 1987. Kent Beck and Ward Cunningham, working with Smalltalk, presented the first software patterns at the OOPSLA conference. They recognised that Alexander’s structuralism applied perfectly to object-oriented programming. Just as a room requires windows for light, a software object requires distinct interfaces for communication. The "quality without a name" translated to software "liveness" and maintainability.
+The transition to software occurred in 1987. Kent Beck and Ward Cunningham, working with Smalltalk, presented the first software patterns at the OOPSLA conference.[1] They recognised that Alexander's structuralism applied perfectly to object-oriented programming. Just as a room requires windows for light, a software object requires distinct interfaces for communication. The "quality without a name" translated to software "liveness" and maintainability.
 
 ## 1.2 - The Group of Four and Standardisation
 
@@ -84,7 +84,7 @@ The book categorised patterns into three distinct domains:
 
 The landscape has shifted since 1994. The original GoF patterns were heavily influenced by C++ and Smalltalk. Modern languages like TypeScript offer features (such as first-class functions and distinct module systems) that alter how these patterns are implemented.
 
-Furthermore, the rise of functional programming (FP) has challenged the object-oriented orthodoxy. Critics like Peter Norvig have argued that many design patterns are simply workarounds for missing language features. Despite this, the core principles remain relevant. Modern frameworks like NestJS and React incorporate these patterns directly into their architecture, proving their enduring utility.
+Furthermore, the rise of functional programming (FP) has challenged the object-oriented orthodoxy. Critics like Peter Norvig have argued that many design patterns are simply workarounds for missing language features.[4] Despite this, the core principles remain relevant. Modern frameworks like NestJS and React incorporate these patterns directly into their architecture, proving their enduring utility.
 
 
 # 2 - Theoretical Foundations and Design Principles
@@ -93,7 +93,7 @@ Design patterns do not exist in isolation. They are practical manifestations of 
 
 ## 2.1 - The SOLID Principles
 
-Robert C. Martin introduced the SOLID principles to combat "software rot". Each letter represents a directive that patterns often help to enforce.
+Robert C. Martin introduced the SOLID principles to combat "software rot".[2] Each letter represents a directive that patterns often help to enforce.
 
 ### 2.1.1 - Single Responsibility Principle (SRP)
 
@@ -303,7 +303,7 @@ clientCode(new ConsoleLogger());
 
 When implementing Factories in JavaScript/TypeScript, one must consider the V8 engine's "Hidden Classes" (or Shapes). V8 optimises object access by assuming objects created by the same constructor have the same structure.
 
-If a Factory creates objects that are structurally identical (same properties in the same order), V8 assigns them the same hidden class. This allows for extremely fast property access using inline caching. However, if the Factory produces objects with different property orders or optional fields, it forces V8 into a generic, slower lookup mode (dictionary mode). Therefore, consistent object initialisation within Factories is critical for high performance.
+If a Factory creates objects that are structurally identical (same properties in the same order), V8 assigns them the same hidden class. This allows for extremely fast property access using inline caching. However, if the Factory produces objects with different property orders or optional fields, it forces V8 into a generic, slower lookup mode (dictionary mode). Therefore, consistent object initialisation within Factories is critical for high performance.[5]
 
 
 # 4 - Structural Patterns: Composition and Compatibility
@@ -568,7 +568,7 @@ The modern software landscape is defined by the convergence of Object-Oriented P
 
 ## 7.1 - The "Missing Feature" Hypothesis
 
-A significant critique of OOP design patterns is that they are workarounds for missing language features. Peter Norvig, in his analysis of dynamic languages, argued that many GoF patterns become invisible or trivial in languages with first-class functions.
+A significant critique of OOP design patterns is that they are workarounds for missing language features. Peter Norvig, in his analysis of dynamic languages, argued that many GoF patterns become invisible or trivial in languages with first-class functions.[4]
 
 For example, the Command pattern encapsulates an action as an object. In a functional language, a function (or closure) is an encapsulated action. Therefore, the explicit "Command" class structure is redundant.
 
@@ -617,13 +617,13 @@ The utility of design patterns is not just a matter of opinion; it is a subject 
 
 Research indicates a complex relationship between patterns and quality.
 
-  * **Maintainability:** A study by Wedyan and Abufakher (2020) found that while patterns generally improve documentation and maintainability, they can negatively impact "understandability" for novice developers due to the increased abstraction.
-  * **Defect Density:** Research by Schuler and Zimmermann (2008) suggests that heavily patterned code often has higher defect density initially due to complexity, but lower long-term maintenance costs.
-  * **Pattern Grime:** Over time, pattern implementations often degrade. "Pattern Grime" refers to the accumulation of code that violates the strict definition of the pattern, leading to modularity decay.
+  * **Maintainability:** A study by Wedyan and Abufakher (2020) found that while patterns generally improve documentation and maintainability, they can negatively impact "understandability" for novice developers due to the increased abstraction.[3]
+  * **Defect Density:** Research by Schuler and Zimmermann (2008) suggests that heavily patterned code often has higher defect density initially due to complexity, but lower long-term maintenance costs.[6]
+  * **Pattern Grime:** Over time, pattern implementations often degrade. "Pattern Grime" refers to the accumulation of code that violates the strict definition of the pattern, leading to modularity decay.[3]
 
 ## 9.2 - The Trade-off
 
-The academic consensus suggests a trade-off: Patterns increase architectural suitability and reusability but at the cost of initial complexity and learning curve. They are recommended for large-scale systems where long-term evolution is expected, but may be counter-productive (over-engineering) for small, short-lived projects.
+The academic consensus suggests a trade-off: Patterns increase architectural suitability and reusability but at the cost of initial complexity and learning curve.[3] They are recommended for large-scale systems where long-term evolution is expected, but may be counter-productive (over-engineering) for small, short-lived projects.
 
 
 # 10 - Conclusion
