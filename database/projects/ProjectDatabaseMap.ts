@@ -1156,7 +1156,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     relatedMaterials: [
       RoleDatabaseKeys.CommerzbankBackendEngineer,
-      RoleDatabaseKeys.CommerzbankAiConsultant,
+      RoleDatabaseKeys.CommerzbankAiAmbassador,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
       ProjectDatabaseKeys.BaseRestController,
       ProjectDatabaseKeys.MarkdownToMessageMLConverter,

@@ -10,7 +10,7 @@
 
 #### **Soft Skills**
 
--  **User Feedback**: Running surveys and gathering feedback from users to understand their needs and pain points, and using this feedback to inform the development of AI tools and solutions.
+- **User Feedback**: Running surveys and gathering feedback from users to understand their needs and pain points, and using this feedback to inform the development of AI tools and solutions.
 - **Automation Workflows**: Advised teams on implementing automation workflows, including generating structured presentations from non-structured reports across different departments.
 -  **RAG Implementation**: Provided technical advice to engineers on implementing RAG for specific applications. Recommended appropriate RAG architectures based on use cases and performance requirements.
 -  **AI Tool Selection**: Advised on selecting appropriate AI tools for specific problems. Guided teams on when to use RAG versus MCP and other AI approaches based on requirements.

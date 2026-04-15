@@ -125,10 +125,10 @@ const rolesMap: Database<RoleInterface> = {
     ],
     company: CompanyDatabaseKeys.Commerzbank,
   },
-  [RoleDatabaseKeys.CommerzbankAiConsultant]: {
-    name: "AI Consultant",
+  [RoleDatabaseKeys.CommerzbankAiAmbassador]: {
+    name: "Cluster Ambassador for AI",
     category: ExperienceCategoriesEnum.Software,
-    type: ExperienceTypeEnum.FullTime,
+    type: ExperienceTypeEnum.Volunteering,
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.ModelContextProtocol,
