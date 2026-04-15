@@ -1680,9 +1680,20 @@ const projectMap: Database<ProjectInterface> = {
     description: `
       A script which compiles and processes business information from various sources into a single spreadsheet.
       This is then sent to HR for allocating cost centers to employees.
+      This cut down time from a 4 hours of work to 1 minute.
         `,
     skills: [SkillDatabaseKeys.Python],
-    repositoryURL: `https://github.com/mbeps/AutomatedSetup`,
+    category: ProjectCategoriesEnum.Other,
+    archived: true,
+    type: ProjectTypeEnum.Professional,
+  },
+  [ProjectDatabaseKeys.FinanceAutomations]: {
+    name: `Finance Automations`,
+    description: `
+      A script which compiles and processes information about various businesses from Companies House and FCA. 
+      This cut down time from a full day to less than 5 minutes.
+        `,
+    skills: [SkillDatabaseKeys.Python],
     category: ProjectCategoriesEnum.Other,
     archived: true,
     type: ProjectTypeEnum.Professional,
