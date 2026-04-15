@@ -1,0 +1,9 @@
+- **Automation Workflows**: Advised teams on implementing automation workflows, including generating structured presentations from non-structured reports across different departments.
+- **RAG Implementation**: Provided technical advice to engineers on implementing RAG for specific applications. Recommended appropriate RAG architectures based on use cases and performance requirements.
+- **AI Tool Selection**: Advised on selecting appropriate AI tools for specific problems. Guided teams on when to use RAG versus MCP and other AI approaches based on requirements.
+- **Automation Strategies**: Advised on automation strategies in general. Helped teams determine when AI is needed versus when regular deterministic logic is more appropriate.
+- **On-Prem LLMs**: Advised on implementing on-prem LLMs for cost savings and data privacy requirements.
+- **Custom LLM Training**: Advised on training smaller-scale LLMs for custom workflows instead of using large general-purpose LLMs for better performance and cost savings.
+- **MCP Implementation**: Led initiative to implement MCP servers to internal systems, enabling agentic AI workflows across the organisation to lower operational costs and improve efficiency.
+- **AI Communication**: Gave news, advice and presentations on AI tools, techniques, and best practices to various teams across the organisation. Helped drive AI adoption and upskilling across the company.
+- **AI Workshops**: Ran workshops and training sessions on AI concepts, tools, and implementation strategies for engineers and non-technical staff to improve AI literacy across the organisation.

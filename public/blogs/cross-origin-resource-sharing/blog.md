@@ -1,36 +1,36 @@
 - [1 - Introduction: The Evolution of Web Security and Isolation](#1---introduction-the-evolution-of-web-security-and-isolation)
 - [2 - The Foundation: The Same-Origin Policy (SOP)](#2---the-foundation-the-same-origin-policy-sop)
-	- [2.1 - Defining the Origin](#21---defining-the-origin)
-	- [2.2 - The Threat Model: Why SOP Exists](#22---the-threat-model-why-sop-exists)
-	- [2.3 - The Nuance of "Embeds" vs. "Reads"](#23---the-nuance-of-embeds-vs-reads)
+  - [2.1 - Defining the Origin](#21---defining-the-origin)
+  - [2.2 - The Threat Model: Why SOP Exists](#22---the-threat-model-why-sop-exists)
+  - [2.3 - The Nuance of "Embeds" vs. "Reads"](#23---the-nuance-of-embeds-vs-reads)
 - [3 - The Pre-CORS Era: Historical Workarounds](#3---the-pre-cors-era-historical-workarounds)
-	- [3.1 - JSONP (JSON with Padding)](#31---jsonp-json-with-padding)
-	- [3.2 - Other Legacy Hacks](#32---other-legacy-hacks)
+  - [3.1 - JSONP (JSON with Padding)](#31---jsonp-json-with-padding)
+  - [3.2 - Other Legacy Hacks](#32---other-legacy-hacks)
 - [4 - The CORS Protocol: A Technical Deep Dive](#4---the-cors-protocol-a-technical-deep-dive)
-	- [4.1 - The Mechanism of Negotiation](#41---the-mechanism-of-negotiation)
-	- [4.2 - The Fetch Standard](#42---the-fetch-standard)
+  - [4.1 - The Mechanism of Negotiation](#41---the-mechanism-of-negotiation)
+  - [4.2 - The Fetch Standard](#42---the-fetch-standard)
 - [5 - The Anatomy of a Request: Simple vs. Preflight](#5---the-anatomy-of-a-request-simple-vs-preflight)
-	- [5.1 - Simple Requests](#51---simple-requests)
-	- [5.2 - Preflighted Requests](#52---preflighted-requests)
+  - [5.1 - Simple Requests](#51---simple-requests)
+  - [5.2 - Preflighted Requests](#52---preflighted-requests)
 - [6 - The Header Ecosystem](#6---the-header-ecosystem)
-	- [6.1 - Request Headers (Client to Server)](#61---request-headers-client-to-server)
-	- [6.2 - Response Headers (Server to Client)](#62---response-headers-server-to-client)
+  - [6.1 - Request Headers (Client to Server)](#61---request-headers-client-to-server)
+  - [6.2 - Response Headers (Server to Client)](#62---response-headers-server-to-client)
 - [7 - Authentication and Credential Management](#7---authentication-and-credential-management)
-	- [7.1 - Enabling Credentials](#71---enabling-credentials)
-	- [7.2 - The Wildcard Restriction](#72---the-wildcard-restriction)
-	- [7.3 - Interaction with SameSite Cookies](#73---interaction-with-samesite-cookies)
+  - [7.1 - Enabling Credentials](#71---enabling-credentials)
+  - [7.2 - The Wildcard Restriction](#72---the-wildcard-restriction)
+  - [7.3 - Interaction with SameSite Cookies](#73---interaction-with-samesite-cookies)
 - [8 - Advanced Security Analysis and Vulnerabilities](#8---advanced-security-analysis-and-vulnerabilities)
-	- [8.1 - The "Reflected Origin" Exploit](#81---the-reflected-origin-exploit)
-	- [8.2 - The "Null" Origin Risk](#82---the-null-origin-risk)
-	- [8.3 - Cache Poisoning](#83---cache-poisoning)
+  - [8.1 - The "Reflected Origin" Exploit](#81---the-reflected-origin-exploit)
+  - [8.2 - The "Null" Origin Risk](#82---the-null-origin-risk)
+  - [8.3 - Cache Poisoning](#83---cache-poisoning)
 - [9 - Private Network Access (PNA)](#9---private-network-access-pna)
 - [10 - Architectural Patterns](#10---architectural-patterns)
-	- [10.1 - Single Page Applications (SPAs)](#101---single-page-applications-spas)
-	- [10.2 - The Backend for Frontend (BFF) Pattern](#102---the-backend-for-frontend-bff-pattern)
-	- [10.3 - API Gateways](#103---api-gateways)
+  - [10.1 - Single Page Applications (SPAs)](#101---single-page-applications-spas)
+  - [10.2 - The Backend for Frontend (BFF) Pattern](#102---the-backend-for-frontend-bff-pattern)
+  - [10.3 - API Gateways](#103---api-gateways)
 - [11 - Server-Side Implementation Strategies](#11---server-side-implementation-strategies)
-	- [11.1 - Spring Boot (Java)](#111---spring-boot-java)
-	- [11.2 - Express.js (Node.js)](#112---expressjs-nodejs)
+  - [11.1 - Spring Boot (Java)](#111---spring-boot-java)
+  - [11.2 - Express.js (Node.js)](#112---expressjs-nodejs)
 - [12 - Comparison: CORS vs. Alternatives](#12---comparison-cors-vs-alternatives)
 - [13 - Conclusion](#13---conclusion)
 - [References](#references)
@@ -120,7 +120,7 @@ Before CORS was standardised and widely adopted, developers faced significant ch
 
 ## 3.1 - JSONP (JSON with Padding)
 
-The most dominant technique in the "Web 2.0" era was JSONP (JSON with Padding). Proposed around 2005, JSONP exploited the loophole in the SOP that allowed `<script>` tags to be loaded from any origin.[7][8] Since a browser allows a page to execute a script from `api.example.com`, developers realised they could transmit data by treating it as executable code.
+The most dominant technique in the "Web 2.0" era was JSONP (JSON with Padding). Proposed around 2005, JSONP exploited the loophole in the SOP that allowed `<script>` tags to be loaded from any origin.[7];[8] Since a browser allows a page to execute a script from `api.example.com`, developers realised they could transmit data by treating it as executable code.
 
 ```mermaid
 sequenceDiagram
@@ -190,7 +190,7 @@ Cross-Origin Resource Sharing (CORS) is the W3C (now WHATWG) standard that super
 
 CORS operates entirely through HTTP Headers. It does not change the content of the request body or the response data; rather, it adds metadata to the HTTP exchange that the browser uses to enforce security policies.
 
-It is crucial to emphasize that the User Agent (Browser) is the enforcer of CORS. The server acts as the policy authority, but the browser acts as the police officer.[1][5]
+It is crucial to emphasize that the User Agent (Browser) is the enforcer of CORS. The server acts as the policy authority, but the browser acts as the police officer.[1];[5]
 
 1.  The browser identifies a request as cross-origin.
 2.  The browser adds specific headers (e.g., `Origin`) to the request.
@@ -348,7 +348,7 @@ Access-Control-Allow-Origin: *
 Access-Control-Allow-Credentials: true
 ```
 
-The browser will treat this as a configuration error and block the request. This design decision forces developers to be explicit. If an API needs to support credentials from multiple origins, the server logic must dynamically inspect the incoming `Origin` header and echo it back in the `Access-Control-Allow-Origin` header (provided it is in a trusted allowlist).[1][2]
+The browser will treat this as a configuration error and block the request. This design decision forces developers to be explicit. If an API needs to support credentials from multiple origins, the server logic must dynamically inspect the incoming `Origin` header and echo it back in the `Access-Control-Allow-Origin` header (provided it is in a trusted allowlist).[1];[2]
 
 ## 7.3 - Interaction with SameSite Cookies
 
@@ -395,15 +395,15 @@ response.setHeader("Access-Control-Allow-Credentials", "true");
 ```
 
 **The Attack:**
-An attacker hosting `evil.com` can create a webpage with a script that makes a credentialed request to the victim's API. When the victim (who is logged in) visits `evil.com`, the browser sends the request with `Origin: https://evil.com`. The naive server reflects this back: `Access-Control-Allow-Origin: https://evil.com`. The browser sees a match and allows the attacker's script to read the victim's private data.[1][10]
+An attacker hosting `evil.com` can create a webpage with a script that makes a credentialed request to the victim's API. When the victim (who is logged in) visits `evil.com`, the browser sends the request with `Origin: https://evil.com`. The naive server reflects this back: `Access-Control-Allow-Origin: https://evil.com`. The browser sees a match and allows the attacker's script to read the victim's private data.[1];[10]
 
-**Mitigation:** Servers must strictly validate the incoming Origin against a predefined allowlist of trusted domains (e.g., strict string matching or regex) before echoing it back.[1][2]
+**Mitigation:** Servers must strictly validate the incoming Origin against a predefined allowlist of trusted domains (e.g., strict string matching or regex) before echoing it back.[1];[2]
 
 ## 8.2 - The "Null" Origin Risk
 
 The origin `null` is a special value used by browsers for privacy-sensitive contexts, such as local files (`file://`) or, critically, sandboxed iframes (`<iframe sandbox>`). Some developers, seeing `null` in their logs during local development, add it to their CORS allowlist.
 
-However, any attacker can use a sandboxed iframe to generate a request with the origin `null`. If a server trusts `null`, it effectively bypasses the origin check for any attacker who wraps their attack code in a sandbox.[1][10] The value `null` should essentially never be whitelisted in production.[1]
+However, any attacker can use a sandboxed iframe to generate a request with the origin `null`. If a server trusts `null`, it effectively bypasses the origin check for any attacker who wraps their attack code in a sandbox.[1];[10] The value `null` should essentially never be whitelisted in production.[1]
 
 ## 8.3 - Cache Poisoning
 
@@ -413,7 +413,7 @@ CORS interacts dangerously with caching layers (CDNs or browser caches). If a se
 - **Cache:** The server (or an intermediate proxy) responds with `Access-Control-Allow-Origin: malicious.com` and caches this response for all users.
 - **Victim:** A legitimate user visits the site. Their browser requests the same resource.
 - **Poison:** The cache serves the stored response: `Access-Control-Allow-Origin: malicious.com`.
-- **Denial of Service:** The legitimate user's browser sees a mismatch (expecting `legit-site.com` but seeing `malicious.com`) and blocks the data. The application breaks for all real users.[1][2]
+- **Denial of Service:** The legitimate user's browser sees a mismatch (expecting `legit-site.com` but seeing `malicious.com`) and blocks the data. The application breaks for all real users.[1];[2]
 
 **Mitigation:** Servers must always include the `Vary: Origin` HTTP header in their responses. This instructs caches (CDNs and browsers) to store separate copies of the response for each distinct Origin value.[1]
 
@@ -563,7 +563,7 @@ To solidify understanding, we can compare CORS with other strategies for cross-o
 
 # 13 - Conclusion
 
-Cross-Origin Resource Sharing is not merely a configuration hurdle to be overcome; it is a vital component of the web's security infrastructure. It represents the evolution of the web from a collection of isolated documents to a connected ecosystem of applications. By replacing insecure workarounds like JSONP with a robust, header-based negotiation protocol,[7][8] CORS allows browsers and servers to collaborate on security decisions.
+Cross-Origin Resource Sharing is not merely a configuration hurdle to be overcome; it is a vital component of the web's security infrastructure. It represents the evolution of the web from a collection of isolated documents to a connected ecosystem of applications. By replacing insecure workarounds like JSONP with a robust, header-based negotiation protocol,[7];[8] CORS allows browsers and servers to collaborate on security decisions.
 
 Mstering CORS involves understanding that the browser is a trusted intermediary protecting the user. It requires recognising the distinction between simple and preflighted requests, and the specific roles of headers like `Access-Control-Allow-Origin` and `Access-Control-Allow-Credentials`. Crucially, it demands vigilance against common misconfigurations (such as origin reflection and cache poisoning) that can negate the protocol's protections.
 

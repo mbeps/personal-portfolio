@@ -12,6 +12,36 @@ import validateDatabaseKeys from "@/lib/database/validateDatabaseKeys";
 import CompanyDatabaseKeys from "../companies/CompanyDatabaseKeys";
 
 const rolesMap: Database<RoleInterface> = {
+  [RoleDatabaseKeys.CommerzbankAiEngineer]: {
+    name: "AI Engineer",
+    category: ExperienceCategoriesEnum.Software,
+    type: ExperienceTypeEnum.FullTime,
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.ModelContextProtocol,
+      SkillDatabaseKeys.FineTuning,
+      SkillDatabaseKeys.Benchmarking,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.LargeLanguageModels,
+      SkillDatabaseKeys.Quantization,
+      SkillDatabaseKeys.PyTest,
+
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.ShadcnUi,
+    ],
+    startDate: new ShortDate(2026, 3),
+    endDate: new ShortDate(new Date().getFullYear(), new Date().getMonth() + 1),
+    relatedMaterials: [
+      ProjectDatabaseKeys.ExcelSpreadsheetMCP,
+      ProjectDatabaseKeys.SymphonyTranslateBot,
+      ProjectDatabaseKeys.SymphonyCobaGPTBot,
+    ],
+    company: CompanyDatabaseKeys.Commerzbank,
+  },
   [RoleDatabaseKeys.CommerzbankBackendEngineer]: {
     name: "Software Engineer",
     category: ExperienceCategoriesEnum.Software,
@@ -63,7 +93,7 @@ const rolesMap: Database<RoleInterface> = {
       SkillDatabaseKeys.ArtificialIntelligence,
     ],
     startDate: new ShortDate(2023, 11),
-    endDate: new ShortDate(new Date().getFullYear(), new Date().getMonth() + 1),
+    endDate: new ShortDate(2026, 3),
     relatedMaterials: [
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperPython,
@@ -95,10 +125,10 @@ const rolesMap: Database<RoleInterface> = {
     ],
     company: CompanyDatabaseKeys.Commerzbank,
   },
-  [RoleDatabaseKeys.CommerzbankAiConsultant]: {
-    name: "AI Consultant",
+  [RoleDatabaseKeys.CommerzbankAiAmbassador]: {
+    name: "Cluster Ambassador for AI",
     category: ExperienceCategoriesEnum.Software,
-    type: ExperienceTypeEnum.FullTime,
+    type: ExperienceTypeEnum.Volunteering,
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.ModelContextProtocol,

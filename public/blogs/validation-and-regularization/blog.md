@@ -155,7 +155,7 @@ This refers to how much the CV estimate would vary if we drew a completely new d
   * **LOOCV:** The training sets in each fold are highly overlapping (they share $n-2$ samples). This leads to highly positively correlated error estimates across folds. Statistical theory shows that the variance of the mean of highly correlated variables is higher than the mean of independent variables. Thus, LOOCV often has high variance. [3]
   * **K-Fold (e.g. K=10):** The training sets overlap less (sharing roughly $80-90\%$ of data). The error estimates are less correlated, often resulting in a lower variance estimator than LOOCV.
 
-**Conclusion:** For model selection, we generally prefer K-Fold (with $K=5$ or $10$) over LOOCV because the lower variance often leads to more stable model selection, despite the slightly higher bias. [2][5]
+**Conclusion:** For model selection, we generally prefer K-Fold (with $K=5$ or $10$) over LOOCV because the lower variance often leads to more stable model selection, despite the slightly higher bias. [2];[5]
 
 -----
 
@@ -187,7 +187,7 @@ $$\hat{R}_{HO} = \frac{1}{|S_{test}|} \sum_{(x_i, y_i) \in S_{test}} L(y_i, \hat
 
 ## 3.2 - K-Fold Cross-Validation
 
-K-Fold CV mitigates the wastefulness and variance of the hold-out method by repeating the process $K$ times on different partitions. [5][2]
+K-Fold CV mitigates the wastefulness and variance of the hold-out method by repeating the process $K$ times on different partitions. [5];[2]
 
 ![alt text]({BASE}/image-4.png)
 
@@ -267,7 +267,7 @@ This value (5.50) is our estimate of the MSE on unseen data.
 
 ## 3.3 - Leave-One-Out Cross-Validation (LOOCV)
 
-LOOCV is the special case where $K=n$. [8][5]
+LOOCV is the special case where $K=n$. [8];[5]
 
 The Estimator:
 $$CV_{LOO} = \frac{1}{n} \sum_{i=1}^n L(y_i, \hat{f}_{-i}(x_i))$$

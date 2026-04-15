@@ -1,44 +1,44 @@
 - [1 - Introduction](#1---introduction)
 - [2 - Historical Context and Evolution](#2---historical-context-and-evolution)
-	- [2.1 - The Birth: Chroot and Early Isolation (1979-2000)](#21---the-birth-chroot-and-early-isolation-1979-2000)
-	- [2.2 - The Era of Jails and Zones (2000-2005)](#22---the-era-of-jails-and-zones-2000-2005)
-	- [2.3 - The Convergence: Cgroups and LXC (2006-2008)](#23---the-convergence-cgroups-and-lxc-2006-2008)
-	- [2.4 - The Docker Revolution (2013-Present)](#24---the-docker-revolution-2013-present)
+  - [2.1 - The Birth: Chroot and Early Isolation (1979-2000)](#21---the-birth-chroot-and-early-isolation-1979-2000)
+  - [2.2 - The Era of Jails and Zones (2000-2005)](#22---the-era-of-jails-and-zones-2000-2005)
+  - [2.3 - The Convergence: Cgroups and LXC (2006-2008)](#23---the-convergence-cgroups-and-lxc-2006-2008)
+  - [2.4 - The Docker Revolution (2013-Present)](#24---the-docker-revolution-2013-present)
 - [3 - Core Theory and Kernel Mechanics](#3---core-theory-and-kernel-mechanics)
-	- [3.1 - Linux Namespaces: The Layer of Isolation](#31---linux-namespaces-the-layer-of-isolation)
-		- [3.1.1 - The PID Namespace](#311---the-pid-namespace)
-		- [3.1.2 - The Network Namespace](#312---the-network-namespace)
-		- [3.1.3 - The User Namespace](#313---the-user-namespace)
-	- [3.2 - Control Groups (cgroups): Resource Governance](#32---control-groups-cgroups-resource-governance)
-	- [3.3 - Union Filesystems: Storage Efficiency](#33---union-filesystems-storage-efficiency)
-		- [3.3.1 - Architecture of OverlayFS](#331---architecture-of-overlayfs)
-		- [3.3.2 - The Copy-on-Write (CoW) Mechanism](#332---the-copy-on-write-cow-mechanism)
+  - [3.1 - Linux Namespaces: The Layer of Isolation](#31---linux-namespaces-the-layer-of-isolation)
+    - [3.1.1 - The PID Namespace](#311---the-pid-namespace)
+    - [3.1.2 - The Network Namespace](#312---the-network-namespace)
+    - [3.1.3 - The User Namespace](#313---the-user-namespace)
+  - [3.2 - Control Groups (cgroups): Resource Governance](#32---control-groups-cgroups-resource-governance)
+  - [3.3 - Union Filesystems: Storage Efficiency](#33---union-filesystems-storage-efficiency)
+    - [3.3.1 - Architecture of OverlayFS](#331---architecture-of-overlayfs)
+    - [3.3.2 - The Copy-on-Write (CoW) Mechanism](#332---the-copy-on-write-cow-mechanism)
 - [4 - Container Runtimes and Standards](#4---container-runtimes-and-standards)
-	- [4.1 - The OCI Specifications](#41---the-oci-specifications)
-	- [4.2 - The Runtime Hierarchy](#42---the-runtime-hierarchy)
-		- [4.2.1 - High-Level Runtimes (Container Managers)](#421---high-level-runtimes-container-managers)
-		- [4.2.2 - Low-Level Runtimes (OCI Runtimes)](#422---low-level-runtimes-oci-runtimes)
-		- [4.2.3 - The Shim Architecture](#423---the-shim-architecture)
+  - [4.1 - The OCI Specifications](#41---the-oci-specifications)
+  - [4.2 - The Runtime Hierarchy](#42---the-runtime-hierarchy)
+    - [4.2.1 - High-Level Runtimes (Container Managers)](#421---high-level-runtimes-container-managers)
+    - [4.2.2 - Low-Level Runtimes (OCI Runtimes)](#422---low-level-runtimes-oci-runtimes)
+    - [4.2.3 - The Shim Architecture](#423---the-shim-architecture)
 - [5 - Architectural Paradigms: Docker vs Podman](#5---architectural-paradigms-docker-vs-podman)
-	- [5.1 - Docker: The Monolithic Daemon](#51---docker-the-monolithic-daemon)
-	- [5.2 - Podman: The Fork-Exec Model](#52---podman-the-fork-exec-model)
+  - [5.1 - Docker: The Monolithic Daemon](#51---docker-the-monolithic-daemon)
+  - [5.2 - Podman: The Fork-Exec Model](#52---podman-the-fork-exec-model)
 - [6 - Orchestration: Managing Complexity at Scale](#6---orchestration-managing-complexity-at-scale)
-	- [6.1 - Kubernetes: The Industry Standard](#61---kubernetes-the-industry-standard)
-	- [6.2 - Docker Swarm](#62---docker-swarm)
-	- [6.3 - Interface Standards](#63---interface-standards)
+  - [6.1 - Kubernetes: The Industry Standard](#61---kubernetes-the-industry-standard)
+  - [6.2 - Docker Swarm](#62---docker-swarm)
+  - [6.3 - Interface Standards](#63---interface-standards)
 - [7 - Performance Analysis: Virtual Machines vs Containers](#7---performance-analysis-virtual-machines-vs-containers)
-	- [7.1 - Virtual Machines (Hypervisors)](#71---virtual-machines-hypervisors)
-	- [7.2 - Containers](#72---containers)
+  - [7.1 - Virtual Machines (Hypervisors)](#71---virtual-machines-hypervisors)
+  - [7.2 - Containers](#72---containers)
 - [8 - Security Landscape](#8---security-landscape)
-	- [8.1 - Attack Vectors](#81---attack-vectors)
-	- [8.2 - Hardening Strategies and NIST Guidelines](#82---hardening-strategies-and-nist-guidelines)
-		- [8.2.1 - Rootless Containers](#821---rootless-containers)
-		- [8.2.2 - Seccomp (Secure Computing Mode)](#822---seccomp-secure-computing-mode)
-		- [8.2.3 - Mandatory Access Control (AppArmor/SELinux)](#823---mandatory-access-control-apparmorselinux)
-		- [8.2.4 - Capabilities Dropping](#824---capabilities-dropping)
+  - [8.1 - Attack Vectors](#81---attack-vectors)
+  - [8.2 - Hardening Strategies and NIST Guidelines](#82---hardening-strategies-and-nist-guidelines)
+    - [8.2.1 - Rootless Containers](#821---rootless-containers)
+    - [8.2.2 - Seccomp (Secure Computing Mode)](#822---seccomp-secure-computing-mode)
+    - [8.2.3 - Mandatory Access Control (AppArmor/SELinux)](#823---mandatory-access-control-apparmorselinux)
+    - [8.2.4 - Capabilities Dropping](#824---capabilities-dropping)
 - [9 - Application Design and Lifecycle](#9---application-design-and-lifecycle)
-	- [9.1 - The 12-Factor App Methodology](#91---the-12-factor-app-methodology)
-	- [9.2 - Container Design Patterns](#92---container-design-patterns)
+  - [9.1 - The 12-Factor App Methodology](#91---the-12-factor-app-methodology)
+  - [9.2 - Container Design Patterns](#92---container-design-patterns)
 - [10 - Future Directions: WASM and Unikernels](#10---future-directions-wasm-and-unikernels)
 - [References](#references)
 
@@ -152,7 +152,7 @@ The Network namespace allows each container to possess a completely isolated net
 
 ### 3.1.3 - The User Namespace
 
-User Namespaces act as a critical security feature by allowing a process to hold root privileges (UID 0) inside the container while simultaneously mapping to a non-privileged user (e.g., UID 1000) on the host. This mapping significantly mitigates the risk of privilege escalation attacks. [3][12] Even if an attacker successfully breaks out of the container runtime, they find themselves with limited permissions on the host system, unable to modify system files or insert kernel modules.
+User Namespaces act as a critical security feature by allowing a process to hold root privileges (UID 0) inside the container while simultaneously mapping to a non-privileged user (e.g., UID 1000) on the host. This mapping significantly mitigates the risk of privilege escalation attacks. [3];[12] Even if an attacker successfully breaks out of the container runtime, they find themselves with limited permissions on the host system, unable to modify system files or insert kernel modules.
 
 ## 3.2 - Control Groups (cgroups): Resource Governance
 
@@ -306,7 +306,7 @@ flowchart TD
 
 Docker operates on a client-server architecture. The Docker Command Line Interface (CLI) communicates via a REST API with the dockerd daemon, a persistent background process.
 
-  * **Daemon-Centric:** The daemon is responsible for all container operations. By default, it runs with root privileges. This simplifies management but introduces a significant security risk; if the daemon is compromised, the attacker gains root access to the host. [12][3]
+  * **Daemon-Centric:** The daemon is responsible for all container operations. By default, it runs with root privileges. This simplifies management but introduces a significant security risk; if the daemon is compromised, the attacker gains root access to the host. [12];[3]
   * **Process Tree:** All container processes are child processes of the daemon. In a standard configuration, if the daemon crashes, all running containers are terminated (though "live-restore" functionality can mitigate this).
   * **Pros:** A mature ecosystem, extensive tooling (e.g., Docker Desktop), and widespread adoption.
   * **Cons:** Single point of failure (the daemon), security vulnerabilities associated with the root-privileged daemon, and complexity in managing firewall rules.
@@ -316,7 +316,7 @@ Docker operates on a client-server architecture. The Docker Command Line Interfa
 Podman (Pod Manager), developed by Red Hat, implements a fork-exec architecture similar to traditional Linux processes.
 
   * **Daemonless:** There is no persistent background process. When a user executes `podman run`, the container process is started directly as a child of the user's process. If the Podman CLI exits, the container continues to run, monitored by a lightweight conmon process.
-  * **Rootless by Design:** Podman focuses heavily on unprivileged execution. It leverages User Namespaces to map the user's UID on the host to root inside the container by default. This dramatically reduces the attack surface. [12][13]
+  * **Rootless by Design:** Podman focuses heavily on unprivileged execution. It leverages User Namespaces to map the user's UID on the host to root inside the container by default. This dramatically reduces the attack surface. [12];[13]
   * **Systemd Integration:** Podman is designed to interoperate seamlessly with systemd. Containers can be managed as standard system services, allowing for dependency management and automatic restarts on boot.
   * **Pods:** Unlike Docker, Podman natively supports the concept of "Pods" (groups of containers sharing namespaces), mirroring the Kubernetes model. This facilitates a smoother transition from local development to Kubernetes production.
 
@@ -390,7 +390,7 @@ Kubernetes decoupling relies on three major interfaces:
 
 # 7 - Performance Analysis: Virtual Machines vs Containers
 
-Academic research and industry benchmarks consistently highlight the performance advantages of containers over virtual machines (VMs). [4][5][6][7][8]
+Academic research and industry benchmarks consistently highlight the performance advantages of containers over virtual machines (VMs). [4];[5];[6];[7];[8]
 
 ## 7.1 - Virtual Machines (Hypervisors)
 
@@ -403,11 +403,11 @@ VMs rely on a Hypervisor (Type 1 like ESXi or Type 2 like VirtualBox) to emulate
 
 Containers reside in the user space of the Host OS, sharing the host kernel.
 
-  * **Overhead:** Negligible. Containers incur minimal CPU overhead (typically \<1-2% compared to bare metal) as there is no instruction emulation. Memory usage is limited to the application processes and shared libraries. [5][7]
+  * **Overhead:** Negligible. Containers incur minimal CPU overhead (typically \<1-2% compared to bare metal) as there is no instruction emulation. Memory usage is limited to the application processes and shared libraries. [5];[7]
   * **Boot Time:** Instant. Starting a container is effectively starting a process, taking milliseconds. [5]
-  * **Density:** Due to the low overhead, a single physical server can host hundreds of containers, whereas it might only support a dozen VMs. [5][6]
+  * **Density:** Due to the low overhead, a single physical server can host hundreds of containers, whereas it might only support a dozen VMs. [5];[6]
 
-**Table 3: Performance and Architecture Comparison** [4][5][6][7]
+**Table 3: Performance and Architecture Comparison** [4];[5];[6];[7]
 
 | Feature               | Virtual Machines (VMs)                | Containers                 |
 | :-------------------- | :------------------------------------ | :------------------------- |
@@ -427,9 +427,9 @@ Security is the primary concern when adopting containerisation, given the shared
 
 ## 8.1 - Attack Vectors
 
-  * **Kernel Exploits:** Because all containers share the host kernel, a vulnerability in a system call (e.g., Dirty COW) can allow an attacker to "escape" the container and compromise the host. [9][12]
-  * **Container Breakouts:** Misconfigurations, such as mounting the host's sensitive directories (like `/proc` or `/sys`) as read-write, or running with the `--privileged` flag, bypass namespace isolation entirely. [9][12][13]
-  * **Supply Chain Attacks:** Using untrusted base images from public registries can introduce malware or outdated packages with known vulnerabilities into the infrastructure. [10][11]
+  * **Kernel Exploits:** Because all containers share the host kernel, a vulnerability in a system call (e.g., Dirty COW) can allow an attacker to "escape" the container and compromise the host. [9];[12]
+  * **Container Breakouts:** Misconfigurations, such as mounting the host's sensitive directories (like `/proc` or `/sys`) as read-write, or running with the `--privileged` flag, bypass namespace isolation entirely. [9];[12];[13]
+  * **Supply Chain Attacks:** Using untrusted base images from public registries can introduce malware or outdated packages with known vulnerabilities into the infrastructure. [10];[11]
 
 ## 8.2 - Hardening Strategies and NIST Guidelines
 
@@ -437,20 +437,20 @@ NIST Special Publication 800-190 "Application Container Security Guide" outlines
 
 ### 8.2.1 - Rootless Containers
 
-Running containers as a non-root user is the most effective defence. If a rootless container is compromised, the attacker possesses only the privileges of a standard user on the host, preventing system-wide damage. [12][13]
+Running containers as a non-root user is the most effective defence. If a rootless container is compromised, the attacker possesses only the privileges of a standard user on the host, preventing system-wide damage. [12];[13]
 
 ### 8.2.2 - Seccomp (Secure Computing Mode)
 
-Seccomp acts as a firewall for system calls. It allows administrators to define a whitelist of syscalls a container is permitted to make. Docker's default seccomp profile blocks approximately 44 out of 300+ syscalls (including dangerous ones like reboot, syslog, and mount) significantly reducing the attack surface. [9][12]
+Seccomp acts as a firewall for system calls. It allows administrators to define a whitelist of syscalls a container is permitted to make. Docker's default seccomp profile blocks approximately 44 out of 300+ syscalls (including dangerous ones like reboot, syslog, and mount) significantly reducing the attack surface. [9];[12]
 
 ### 8.2.3 - Mandatory Access Control (AppArmor/SELinux)
 
   * **AppArmor:** Uses profiles to restrict file access and capabilities. For instance, a profile might deny writing to `/etc/` or executing specific binaries. Docker applies a default docker-default profile to containers. [12]
-  * **SELinux:** Provides label-based security. It ensures that processes (subjects) can only access files (objects) if the security labels match. This prevents a compromised container process from accessing host files, even if standard file permissions (chmod) would otherwise allow it. [9][12]
+  * **SELinux:** Provides label-based security. It ensures that processes (subjects) can only access files (objects) if the security labels match. This prevents a compromised container process from accessing host files, even if standard file permissions (chmod) would otherwise allow it. [9];[12]
 
 ### 8.2.4 - Capabilities Dropping
 
-The Linux kernel divides the privileges of the root user into distinct units called Capabilities. A standard container does not need full root power. Runtimes drop dangerous capabilities like `CAP_SYS_ADMIN` (which allows mounting filesystems) by default, retaining only those necessary for network binding and file ownership changes. [9][12]
+The Linux kernel divides the privileges of the root user into distinct units called Capabilities. A standard container does not need full root power. Runtimes drop dangerous capabilities like `CAP_SYS_ADMIN` (which allows mounting filesystems) by default, retaining only those necessary for network binding and file ownership changes. [9];[12]
 
 -----
 

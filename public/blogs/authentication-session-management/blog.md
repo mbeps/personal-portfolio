@@ -96,7 +96,7 @@ This distinction is the fulcrum upon which all modern authentication architectur
 
 # 2 - Server-Side Session Management: The Reference Token Model
 
-For decades, the standard for web authentication was the server-side session. This approach leverages the HTTP State Management Mechanism, colloquially known as cookies, defined in RFC 6265.[1][2]
+For decades, the standard for web authentication was the server-side session. This approach leverages the HTTP State Management Mechanism, colloquially known as cookies, defined in RFC 6265.[1];[2]
 
 ## 2.1 - The Mechanism of HTTP Cookies
 
@@ -110,13 +110,13 @@ The process begins when the server responds to a successful login request with a
 Set-Cookie: session_id=xyz123; Path=/; Secure; HttpOnly; SameSite=Strict
 ```
 
-This header instructs the browser to store the value `session_id=xyz123`. Crucially, RFC 6265 dictates that the browser must automatically include this cookie in the header of every subsequent request to the domain specified.[2][5]
+This header instructs the browser to store the value `session_id=xyz123`. Crucially, RFC 6265 dictates that the browser must automatically include this cookie in the header of every subsequent request to the domain specified.[2];[5]
 
 ### 2.1.1 - Critical Security Attributes
 
 It is essential to understand that a cookie without specific security flags is vulnerable.
 
-  * **HttpOnly:** This flag is the primary defence against token theft via XSS. It forbids the browser's JavaScript engine (`document.cookie`) from accessing the cookie. Even if an attacker injects a malicious script into the page, the script cannot read the session ID.[1][2]
+  * **HttpOnly:** This flag is the primary defence against token theft via XSS. It forbids the browser's JavaScript engine (`document.cookie`) from accessing the cookie. Even if an attacker injects a malicious script into the page, the script cannot read the session ID.[1];[2]
   * **Secure:** This attribute ensures the cookie is only transmitted over encrypted (HTTPS) connections. It prevents the session ID from being intercepted in plain text over an insecure network.
   * **SameSite:** This attribute controls when cookies are sent with cross-site requests, providing defence against CSRF.
       * **Strict:** The cookie is only sent if the request originates from the same site.
@@ -160,7 +160,7 @@ flowchart TD
 
 The primary advantage of this model is **Control**. Because the server retains the state, an administrator can instantly revoke a session. If a user's account is compromised, the admin can delete the session from Redis, and the attacker's access is immediately terminated.
 
-The disadvantage is **Coupling**. The client (browser) and the server are tightly coupled. This model struggles in scenarios involving mobile applications (which do not manage cookies natively like browsers) or when the backend is split into hundreds of microservices, each of which would need to query the central Redis store, creating a potential bottleneck.[1][2]
+The disadvantage is **Coupling**. The client (browser) and the server are tightly coupled. This model struggles in scenarios involving mobile applications (which do not manage cookies natively like browsers) or when the backend is split into hundreds of microservices, each of which would need to query the central Redis store, creating a potential bottleneck.[1];[2]
 
 
 # 3 - The Stateless Revolution: Value Tokens and RFC 7519 (JWT)
@@ -204,7 +204,7 @@ The payload contains the claims. Claims are statements about an entity (typicall
       * `aud` (Audience): The recipient for which the JWT is intended.
   * **Public/Private Claims:** Developers can define custom claims, such as `"role": "admin"` or `"email": "user@example.com"`.
 
-**Important Note on Encoding:** The payload is Base64Url encoded, not encrypted. Any observer can decode and read the contents of a JWT. Therefore, sensitive information like passwords or social security numbers must never be stored in a standard JWT payload.[6][7]
+**Important Note on Encoding:** The payload is Base64Url encoded, not encrypted. Any observer can decode and read the contents of a JWT. Therefore, sensitive information like passwords or social security numbers must never be stored in a standard JWT payload.[6];[7]
 
 ### 3.2.3 - The Signature
 
@@ -232,7 +232,7 @@ This mode uses a Public/Private key pair. The Identity Provider signs the token 
 
 ## 3.4 - The Revocation Problem
 
-The most significant disadvantage of JWTs is the difficulty of revocation. Since the server does not store the token state, it cannot simply 'delete' a token to log a user out. A stolen JWT remains valid until its expiration time (`exp`) is reached.[6][7]
+The most significant disadvantage of JWTs is the difficulty of revocation. Since the server does not store the token state, it cannot simply 'delete' a token to log a user out. A stolen JWT remains valid until its expiration time (`exp`) is reached.[6];[7]
 
 To mitigate this, systems typically use a dual-token architecture:[6]
 
@@ -280,7 +280,7 @@ This is a defining debate in frontend security.
 | **CSRF Vulnerability** | **None.** Tokens are not sent automatically; code must attach them.         | **High.** Browser sends cookie automatically. Requires anti-CSRF measures. |
 | **Size Limit**         | \~5MB per domain.                                                           | \~4KB per cookie.                                                          |
 
-**Recommendation:** The consensus in the security community (OWASP) is that **HttpOnly Cookies** are safer for storing sensitive credentials because preventing token exfiltration (via XSS) is prioritised. While CSRF is a risk with cookies, it can be effectively mitigated using `SameSite` attributes and anti-CSRF tokens, whereas XSS is notoriously difficult to completely eliminate in modern complex JavaScript applications.[1][2]
+**Recommendation:** The consensus in the security community (OWASP) is that **HttpOnly Cookies** are safer for storing sensitive credentials because preventing token exfiltration (via XSS) is prioritised. While CSRF is a risk with cookies, it can be effectively mitigated using `SameSite` attributes and anti-CSRF tokens, whereas XSS is notoriously difficult to completely eliminate in modern complex JavaScript applications.[1];[2]
 
 ## 4.2 - The Backend-For-Frontend (BFF) Pattern
 
@@ -323,7 +323,7 @@ The Workflow:
 
 # 5 - Advanced Authorisation Protocols: OAuth 2.0 and OIDC
 
-While JWT defines the format of a credential, OAuth 2.0 (RFC 6749) defines the protocol for obtaining it.[11][12] OpenID Connect (OIDC) is an identity layer built on top of OAuth 2.0.[14][15]
+While JWT defines the format of a credential, OAuth 2.0 (RFC 6749) defines the protocol for obtaining it.[11];[12] OpenID Connect (OIDC) is an identity layer built on top of OAuth 2.0.[14];[15]
 
 ## 5.1 - The Actors in OAuth 2.0
 
@@ -338,7 +338,7 @@ Understanding the terminology is essential for navigating the documentation.
 
 OAuth 2.0 defines several 'flows' or grant types for different scenarios.
 
-  * **Authorisation Code Flow:** The gold standard for web applications. The user is redirected to the AS to log in. The AS redirects back to the Client with a temporary 'code'. The Client exchanges this code for a token via a backend channel. This ensures tokens are never exposed in the URL.[11][12]
+  * **Authorisation Code Flow:** The gold standard for web applications. The user is redirected to the AS to log in. The AS redirects back to the Client with a temporary 'code'. The Client exchanges this code for a token via a backend channel. This ensures tokens are never exposed in the URL.[11];[12]
   * **PKCE (Proof Key for Code Exchange):** An extension that secures the Authorisation Code Flow for public clients (like mobile apps) by cryptographically binding the code request to the exchange request, preventing code interception attacks.[11]
   * **Client Credentials Flow:** Used for machine-to-machine communication where no user is present. The application authenticates itself using a Client ID and Secret to obtain a token for its own use.[11]
 
@@ -366,7 +366,7 @@ sequenceDiagram
 In some high-security architectures, passing self-contained JWTs is considered risky because they cannot be revoked. The alternative is Token Introspection.
 
   * **Mechanism:** The Client sends an opaque Reference Token to the API. The API cannot validate this token locally. Instead, it makes a POST request to the Authorisation Server's Introspection Endpoint (`/introspect`). The AS checks its database and returns the token's status (active/inactive) and metadata.
-  * **Trade-off:** This provides the revocability of server-side sessions with the standard interface of OAuth 2.0, but introduces network latency for every API request.[11][12]
+  * **Trade-off:** This provides the revocability of server-side sessions with the standard interface of OAuth 2.0, but introduces network latency for every API request.[11];[12]
 
 
 # 6 - Emerging Standards and Cryptographic Agility
@@ -402,9 +402,9 @@ Broken Authentication and Session Management has consistently ranked in the OWAS
 
 ### 7.1.1 - Cross-Site Scripting (XSS)
 
-XSS allows attackers to execute scripts in the victim's browser. If tokens are stored in `localStorage`, a single XSS vulnerability compromises the user's entire account.[1][7]
+XSS allows attackers to execute scripts in the victim's browser. If tokens are stored in `localStorage`, a single XSS vulnerability compromises the user's entire account.[1];[7]
 
-  * **Mitigation:** The primary defence is moving storage to **HttpOnly Cookies**. Secondary defences include implementing a strict Content Security Policy (CSP) to restrict the sources of executable scripts.[1][2]
+  * **Mitigation:** The primary defence is moving storage to **HttpOnly Cookies**. Secondary defences include implementing a strict Content Security Policy (CSP) to restrict the sources of executable scripts.[1];[2]
 
 ### 7.1.2 - Cross-Site Request Forgery (CSRF)
 
@@ -412,13 +412,13 @@ CSRF exploits the browser's trust in cookies.
 
   * **Mitigation:**
       * **SameSite Cookies:** Setting `SameSite=Strict` or `Lax` prevents the browser from sending cookies on cross-site requests.[16]
-      * **Anti-CSRF Tokens:** The server requires a random token in the request body (which the browser does not automatically send) to validate the request origin.[16][13]
+      * **Anti-CSRF Tokens:** The server requires a random token in the request body (which the browser does not automatically send) to validate the request origin.[16];[13]
 
 ## 7.2 - Session Fixation
 
 In this attack, the attacker tricks the user into authenticating with a session ID known to the attacker.
 
-  * **Mitigation:** The application must always generate a new session ID immediately after successful authentication. This invalidates any pre-existing session ID the attacker might have injected.[1][2]
+  * **Mitigation:** The application must always generate a new session ID immediately after successful authentication. This invalidates any pre-existing session ID the attacker might have injected.[1];[2]
 
 
 # 8 - Operationalising Authentication: Decision Frameworks
@@ -444,7 +444,7 @@ The landscape of options can be overwhelming. The following framework simplifies
 
 ## 8.3 - The Future: WebAuthn and Passkeys
 
-The industry is moving towards a passwordless future via WebAuthn.[18][20] While this changes how a user proves their identity (biometrics instead of passwords), it does not fundamentally change session management—a session is still established after the proof. However, extensions like PRF (Pseudo-Random Function) allow sessions to be cryptographically bound to the user's hardware authenticator, potentially eliminating session hijacking entirely by deriving encryption keys directly from the hardware security module.[19]
+The industry is moving towards a passwordless future via WebAuthn.[18];[20] While this changes how a user proves their identity (biometrics instead of passwords), it does not fundamentally change session management—a session is still established after the proof. However, extensions like PRF (Pseudo-Random Function) allow sessions to be cryptographically bound to the user's hardware authenticator, potentially eliminating session hijacking entirely by deriving encryption keys directly from the hardware security module.[19]
 
 # References
 

@@ -43,7 +43,7 @@
 
 # 1 - Introduction
 
-The history of Natural Language Processing (NLP) and sequence transduction is bifurcated by a single moment in 2017: the publication of "Attention Is All You Need" by Vaswani et al.[1] Prior to this watershed moment, the domain was hegemonically controlled by Recurrent Neural Networks (RNNs), specifically Long Short-Term Memory (LSTM) and Gated Recurrent Unit (GRU) architectures.[2][3] While these models represented a significant leap over standard feed-forward networks and statistical n-gram models, they suffered from fundamental structural limitations inherent to their sequential design.[2][3][4][5]
+The history of Natural Language Processing (NLP) and sequence transduction is bifurcated by a single moment in 2017: the publication of "Attention Is All You Need" by Vaswani et al.[1] Prior to this watershed moment, the domain was hegemonically controlled by Recurrent Neural Networks (RNNs), specifically Long Short-Term Memory (LSTM) and Gated Recurrent Unit (GRU) architectures.[2];[3] While these models represented a significant leap over standard feed-forward networks and statistical n-gram models, they suffered from fundamental structural limitations inherent to their sequential design.[2];[3];[4];[5]
 
 ## 1.1 - The Computational Bottlenecks of Recurrence
 
@@ -55,13 +55,13 @@ This recursive formulation enforces a strict temporal order. The computation for
 
 ## 1.2 - The Vanishing Gradient and Information Transport
 
-Beyond computational inefficiency, RNNs faced theoretical limitations in information transport. The problem of "long-term dependencies" refers to the difficulty of a model to retain information about an input $x_1$ when processing $x_{1000}$. In an RNN, the gradient signal from the output at step $t$ must propagate backwards through time (Backpropagation Through Time - BPTT) to update weights affecting step 1.[4][5]
+Beyond computational inefficiency, RNNs faced theoretical limitations in information transport. The problem of "long-term dependencies" refers to the difficulty of a model to retain information about an input $x_1$ when processing $x_{1000}$. In an RNN, the gradient signal from the output at step $t$ must propagate backwards through time (Backpropagation Through Time - BPTT) to update weights affecting step 1.[4];[5]
 
-If the recurrent weight matrix $W$ has a spectral radius (largest eigenvalue) less than 1, gradients vanish exponentially as they travel back through the sequence. If the spectral radius is greater than 1, they explode.[4][5] While LSTMs mitigated this via gating mechanisms (forget gates), the fundamental path length for a signal to travel between position $t_1$ and $t_2$ remained $|t_1 - t_2|$ operations.[2][1] As sequence lengths grew, the ability of the network to model interactions between distant tokens degraded.
+If the recurrent weight matrix $W$ has a spectral radius (largest eigenvalue) less than 1, gradients vanish exponentially as they travel back through the sequence. If the spectral radius is greater than 1, they explode.[4];[5] While LSTMs mitigated this via gating mechanisms (forget gates), the fundamental path length for a signal to travel between position $t_1$ and $t_2$ remained $|t_1 - t_2|$ operations.[2];[1] As sequence lengths grew, the ability of the network to model interactions between distant tokens degraded.
 
 ## 1.3 - The Transformer Solution: $O(1)$ Path Length
 
-The Transformer architecture proposed a radical solution: dispense with recurrence and convolution entirely. By relying solely on the attention mechanism, the Transformer connects every token to every other token in a single layer operation. The path length between any two positions in the sequence is reduced to $O(1)$ constant time.[1] This architecture allows the model to learn relationships between words regardless of their distance in the text, facilitating the capture of complex syntactic structures and long-range semantic dependencies that eluded LSTMs.[1][2]
+The Transformer architecture proposed a radical solution: dispense with recurrence and convolution entirely. By relying solely on the attention mechanism, the Transformer connects every token to every other token in a single layer operation. The path length between any two positions in the sequence is reduced to $O(1)$ constant time.[1] This architecture allows the model to learn relationships between words regardless of their distance in the text, facilitating the capture of complex syntactic structures and long-range semantic dependencies that eluded LSTMs.[1];[2]
 
 ![alt text]({BASE}/image-1.png)
 
@@ -71,15 +71,15 @@ This efficiency gain was dramatic. The original Transformer achieved state-of-th
 
 # 2 - Input Representation and the Geometry of Embedding Spaces
 
-The Transformer views an input sequence not as a stream of time steps, but as a set of vectors processed simultaneously. This "set processing" capability necessitates a robust method for representing discrete tokens as continuous vectors and, crucially, for injecting information about their order.[1][11]
+The Transformer views an input sequence not as a stream of time steps, but as a set of vectors processed simultaneously. This "set processing" capability necessitates a robust method for representing discrete tokens as continuous vectors and, crucially, for injecting information about their order.[1];[11]
 
 ![alt text]({BASE}/image-5.png)
 
 ## 2.1 - Tokenisation and Sub-word Architectures
 
-Before vectorisation, raw text is segmented into discrete units called tokens. Early NLP models used word-level tokenisation, which resulted in massive vocabularies (often exceeding 1 million unique words) and an inability to handle "out-of-vocabulary" (OOV) terms.[6][7]
+Before vectorisation, raw text is segmented into discrete units called tokens. Early NLP models used word-level tokenisation, which resulted in massive vocabularies (often exceeding 1 million unique words) and an inability to handle "out-of-vocabulary" (OOV) terms.[6];[7]
 
-Modern Transformers utilise sub-word tokenisation algorithms, primarily Byte-Pair Encoding (BPE) or WordPiece.[6][7]
+Modern Transformers utilise sub-word tokenisation algorithms, primarily Byte-Pair Encoding (BPE) or WordPiece.[6];[7]
 
 - **Byte-Pair Encoding (BPE):** This algorithm iteratively merges the most frequent pair of adjacent characters (or bytes) in the corpus. It begins with a vocabulary of individual characters and builds up common sub-words (e.g., "ing", "tion", "est"). This ensures that any word can be constructed from the sub-word vocabulary, eliminating OOV tokens while keeping the vocabulary size manageable (typically 30,000 to 100,000 tokens).[6]
 - **Embedding Lookup:** Each token ID $i$ corresponds to a row in a learnable embedding matrix $E \in \mathbb{R}^{V \times d_{model}}$, where $V$ is the vocabulary size and $d_{model}$ is the dimensionality of the latent space (e.g., 512, 1024, 4096).[1]
@@ -88,11 +88,11 @@ The mathematical implication is that semantic meaning is encoded geometrically. 
 
 ## 2.2 - The Necessity of Positional Encodings
 
-Because the Transformer processes all tokens in parallel via matrix multiplications, the operation is inherently permutation invariant. If one were to shuffle the words in a sentence, the self-attention output (in the absence of positional information) would be identical, merely shuffled in the same way.[1][11]
+Because the Transformer processes all tokens in parallel via matrix multiplications, the operation is inherently permutation invariant. If one were to shuffle the words in a sentence, the self-attention output (in the absence of positional information) would be identical, merely shuffled in the same way.[1];[11]
 
 $$\text{Attention}(\text{shuffle}(X)) = \text{shuffle}(\text{Attention}(X))$$
 
-To preserve the sequential nature of language (where "dog bites man" differs from "man bites dog"), positional information must be injected explicitly into the embeddings.[1][11]
+To preserve the sequential nature of language (where "dog bites man" differs from "man bites dog"), positional information must be injected explicitly into the embeddings.[1];[11]
 
 ## 2.3 - Absolute Sinusoidal Positional Encoding (Original Formulation)
 
@@ -291,7 +291,7 @@ This is enforced via a lower-triangular mask matrix.
 
 $$M_{ij} = \begin{cases} 0 & \text{if } i \ge j \\ -\infty & \text{if } i < j \end{cases}$$
 
-The upper triangle (representing future tokens) is masked out. This preserves the autoregressive property: $P(x) = \prod_t P(x_t | x_{<t})$.[1][11]
+The upper triangle (representing future tokens) is masked out. This preserves the autoregressive property: $P(x) = \prod_t P(x_t | x_{<t})$.[1];[11]
 
 ## 3.4 - Cross-Attention
 
@@ -301,7 +301,7 @@ The keys $K$ and values $V$ come from the encoder (the processed input sequence)
 
 $$\text{CrossAttention}(X_{dec}, Y_{enc}) = \text{softmax}\left(\frac{(X_{dec}W^Q)(Y_{enc}W^K)^T}{\sqrt{d_k}}\right)(Y_{enc}W^V)$$
 
-This mechanism allows the generation process to extract relevant information from the source text at every step.[1][11]
+This mechanism allows the generation process to extract relevant information from the source text at every step.[1];[11]
 
 ## 3.5 - Computational Complexity and FlashAttention
 
@@ -355,7 +355,7 @@ Training very deep neural networks is notoriously difficult due to internal cova
 
 ## 5.1 - Layer Normalisation (LayerNorm)
 
-The original Transformer uses LayerNorm. Unlike Batch Normalisation (which normalises across the batch dimension), LayerNorm normalises across the feature dimension for a single sample. This makes it independent of batch size and suitable for RNNs/Transformers.[1][14]
+The original Transformer uses LayerNorm. Unlike Batch Normalisation (which normalises across the batch dimension), LayerNorm normalises across the feature dimension for a single sample. This makes it independent of batch size and suitable for RNNs/Transformers.[1];[14]
 For a vector $x \in \mathbb{R}^d$:
 
 $$\mu = \frac{1}{d}\sum_{i=1}^d x_i, \quad \sigma^2 = \frac{1}{d}\sum_{i=1}^d (x_i - \mu)^2$$
@@ -371,13 +371,13 @@ The placement of the normalisation layer has profound effects on training stabil
 - **Post-Norm (Original):** $x_{out} = \text{LayerNorm}(x + \text{Sublayer}(x))$.[1]
 In this setup, the gradients must pass through the LayerNorm at every step. Research showed that gradients near the output layer are much larger than those at the input, requiring a "warm-up" stage where the learning rate starts at zero and linearly increases to prevent divergence.
 - **Pre-Norm (Modern):** $x_{out} = x + \text{Sublayer}(\text{LayerNorm}(x))$.
-Here, the residual connection bypasses the normalisation. This creates a direct "superhighway" for gradients to flow from the loss function to the input embeddings unchanged. This setup is significantly more stable and allows for training deeper models without a warm-up phase, although it may slightly limit the ultimate representation capacity. Most modern LLMs use Pre-Norm.[11][24]
+Here, the residual connection bypasses the normalisation. This creates a direct "superhighway" for gradients to flow from the loss function to the input embeddings unchanged. This setup is significantly more stable and allows for training deeper models without a warm-up phase, although it may slightly limit the ultimate representation capacity. Most modern LLMs use Pre-Norm.[11];[24]
 
 ![alt text]({BASE}/image-10.png)
 
 ## 5.3 - Root Mean Square Normalisation (RMSNorm)
 
-LLaMA and other efficiency-focused architectures utilise RMSNorm.[15][24]
+LLaMA and other efficiency-focused architectures utilise RMSNorm.[15];[24]
 RMSNorm simplifies LayerNorm by observing that the re-centring (subtracting mean $\mu$) is not strictly necessary for stabilisation; only the scaling matters.[15]
 
 $$\text{RMSNorm}(x) = \frac{x}{\text{RMS}(x)} \cdot \gamma$$
@@ -419,9 +419,9 @@ $$L_{CLM} = -\sum_t \log P(x_t | x_{<t})$$
 
 ## 6.3 - Encoder-Decoder (The T5 Family)
 
-- **Structure:** Full Transformer. An Encoder processes the input, and a Decoder generates the output.[1][11]
-- **Mechanism:** Encoder uses bidirectional attention. Decoder uses causal attention plus cross-attention to the encoder output.[1][11]
-- **Training Objective:** Span Corruption (T5) or Denoising (BART). The model is trained to reconstruct missing spans of text.[11][20]
+- **Structure:** Full Transformer. An Encoder processes the input, and a Decoder generates the output.[1];[11]
+- **Mechanism:** Encoder uses bidirectional attention. Decoder uses causal attention plus cross-attention to the encoder output.[1];[11]
+- **Training Objective:** Span Corruption (T5) or Denoising (BART). The model is trained to reconstruct missing spans of text.[11];[20]
 - **Application:** Sequence-to-Sequence tasks. Translation, summarisation. T5 unifies all NLP tasks into a "text-to-text" format (e.g., "translate English to German:..." outputs the translation; "summarize:..." outputs the summary).[11]
 
 ![alt text]({BASE}/image-14.png)
@@ -437,7 +437,7 @@ $$L_{CLM} = -\sum_t \log P(x_t | x_{<t})$$
 | **Inference Speed**        | Fast (parallel)              | Slow (autoregressive)           | Slow (autoregressive)                   |
 | **Ideal Use Case**         | Classification, NLU, search  | Creative generation, chat, code | Translation, summarisation              |
 
-[18][19][11][20]
+[18];[19];[11];[20]
 
 ![alt text]({BASE}/image-11.png)
 
@@ -447,7 +447,7 @@ The success of the Transformer is not just in its architecture but in its traini
 
 ## 7.1 - Optimisation Algorithms
 
-The original Transformer used the Adam optimiser with specific hyperparameters: $\beta_1=0.9$, $\beta_2=0.98$, and $\epsilon=10^{-9}$.[1][22]
+The original Transformer used the Adam optimiser with specific hyperparameters: $\beta_1=0.9$, $\beta_2=0.98$, and $\epsilon=10^{-9}$.[1];[22]
 Modern LLMs often use AdamW, which decouples weight decay from the gradient update.[23] This ensures that regularisation is applied correctly to the weights directly, rather than being muddled with the adaptive learning rate momentum.[23]
 
 ## 7.2 - Learning Rate Schedules
@@ -467,18 +467,18 @@ This increases the learning rate linearly for the first warmup_steps (typically 
 
 # 8 - Summary
 
-This technical schematic illustrates the detailed, parallel structure of the entire Transformer architecture.[1] Data enters the system as both input and output embeddings, uniquely combined with specific positional encodings to ensure the model understands the word order of the sequences.[1] On the left, the Encoder stack consists of repeated blocks that process the input simultaneously using multi-head self-attention and position-wise feed-forward networks.[1] On the right, the Decoder stack generates the output; it first uses a masked version of self-attention to prevent the model from looking ahead at future words, followed by a specific multi-head cross-attention layer that directly references the final representation created by the Encoder.[1] All these crucial attention and feed-forward sub-layers are wrapped in mandatory residual connections and layer normalisation for efficient training.[1][14] Finally, the system produces its word predictions by passing the final Decoder output through a linear layer and a softmax function, calculating the probability for each possible word in the vocabulary.[1]
+This technical schematic illustrates the detailed, parallel structure of the entire Transformer architecture.[1] Data enters the system as both input and output embeddings, uniquely combined with specific positional encodings to ensure the model understands the word order of the sequences.[1] On the left, the Encoder stack consists of repeated blocks that process the input simultaneously using multi-head self-attention and position-wise feed-forward networks.[1] On the right, the Decoder stack generates the output; it first uses a masked version of self-attention to prevent the model from looking ahead at future words, followed by a specific multi-head cross-attention layer that directly references the final representation created by the Encoder.[1] All these crucial attention and feed-forward sub-layers are wrapped in mandatory residual connections and layer normalisation for efficient training.[1];[14] Finally, the system produces its word predictions by passing the final Decoder output through a linear layer and a softmax function, calculating the probability for each possible word in the vocabulary.[1]
 
 ![alt text]({BASE}/image-16.png)
 
 
 # 9 - Conclusion
 
-The Transformer architecture stands as the cornerstone of modern Artificial Intelligence.[1][18][19][21][24][25] Its transition from the sequential processing of RNNs to the parallel, set-based processing of attention mechanisms resolved the fundamental bottleneck of information transport in sequence modelling.[1][2][4][5]
+The Transformer architecture stands as the cornerstone of modern Artificial Intelligence.[1];[18];[19];[21];[24];[25] Its transition from the sequential processing of RNNs to the parallel, set-based processing of attention mechanisms resolved the fundamental bottleneck of information transport in sequence modelling.[1];[2];[4];[5]
 
 While the original "Attention Is All You Need" paper provided the blueprint, the architecture has undergone significant refinement. The shift from absolute to relative/rotary positional encodings resolved length generalisation. The evolution from ReLU to SwiGLU enhanced the plasticity of the feed-forward layers. The migration from Post-Norm to Pre-RMSNorm solved the deep-network trainability crisis.
 
-For the technical practitioner, the Transformer is not a static artefact but a modular framework.[1][24][25] Understanding the mathematical nuances—the variance scaling in attention, the rotation in RoPE, and the gradient flow in Pre-Norm—is essential for engineering the next generation of Large Language Models. The architecture has proven that, indeed, attention was all we needed to unlock the current era of generative intelligence.[1][19][24][25]
+For the technical practitioner, the Transformer is not a static artefact but a modular framework.[1];[24];[25] Understanding the mathematical nuances—the variance scaling in attention, the rotation in RoPE, and the gradient flow in Pre-Norm—is essential for engineering the next generation of Large Language Models. The architecture has proven that, indeed, attention was all we needed to unlock the current era of generative intelligence.[1];[19];[24];[25]
 
 
 # References

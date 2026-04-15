@@ -80,6 +80,7 @@ enum ProjectDatabaseKeys {
   JwtHelper = "jwt-helper",
   AutomatedManifestPush = "automated-manifest-push",
   MdmAutomations = "mdm-automations",
+  FinanceAutomations = "finance-automations",
   MarkdownToMessageMLConverter = "markdown-to-messageml-converter",
 }
 

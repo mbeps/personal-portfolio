@@ -1,40 +1,40 @@
 - [1 - The Evolution and Philosophy of Software Quality](#1---the-evolution-and-philosophy-of-software-quality)
-	- [1.1 - From Debugging to Prevention](#11---from-debugging-to-prevention)
-	- [1.2 - The Two Pillars: Verification and Validation](#12---the-two-pillars-verification-and-validation)
-	- [1.3 - The Role of International Standards](#13---the-role-of-international-standards)
-	- [1.4 - Static versus Dynamic Testing](#14---static-versus-dynamic-testing)
+  - [1.1 - From Debugging to Prevention](#11---from-debugging-to-prevention)
+  - [1.2 - The Two Pillars: Verification and Validation](#12---the-two-pillars-verification-and-validation)
+  - [1.3 - The Role of International Standards](#13---the-role-of-international-standards)
+  - [1.4 - Static versus Dynamic Testing](#14---static-versus-dynamic-testing)
 - [2 - The Core Taxonomy: Black Box and White Box Testing](#2---the-core-taxonomy-black-box-and-white-box-testing)
-	- [2.1 - Black Box Testing](#21---black-box-testing)
-	- [2.2 - White Box Testing](#22---white-box-testing)
-	- [2.3 - Comparing the Approaches](#23---comparing-the-approaches)
+  - [2.1 - Black Box Testing](#21---black-box-testing)
+  - [2.2 - White Box Testing](#22---white-box-testing)
+  - [2.3 - Comparing the Approaches](#23---comparing-the-approaches)
 - [3 - The Hierarchy of Testing Levels](#3---the-hierarchy-of-testing-levels)
-	- [3.1 - Unit Testing](#31---unit-testing)
-	- [3.2 - Integration Testing](#32---integration-testing)
-	- [3.3 - System Testing](#33---system-testing)
-	- [3.4 - Acceptance Testing](#34---acceptance-testing)
+  - [3.1 - Unit Testing](#31---unit-testing)
+  - [3.2 - Integration Testing](#32---integration-testing)
+  - [3.3 - System Testing](#33---system-testing)
+  - [3.4 - Acceptance Testing](#34---acceptance-testing)
 - [4 - Architectural Strategies and Models](#4---architectural-strategies-and-models)
-	- [4.1 - The Test Pyramid](#41---the-test-pyramid)
-	- [4.2 - The Testing Trophy](#42---the-testing-trophy)
-	- [4.3 - The Testing Honeycomb](#43---the-testing-honeycomb)
-	- [4.4 - Choosing a Strategy](#44---choosing-a-strategy)
+  - [4.1 - The Test Pyramid](#41---the-test-pyramid)
+  - [4.2 - The Testing Trophy](#42---the-testing-trophy)
+  - [4.3 - The Testing Honeycomb](#43---the-testing-honeycomb)
+  - [4.4 - Choosing a Strategy](#44---choosing-a-strategy)
 - [5 - Isolation and Test Doubles](#5---isolation-and-test-doubles)
-	- [5.1 - The Five Types of Test Doubles](#51---the-five-types-of-test-doubles)
-	- [5.2 - Mocks vs Stubs: The Schools of TDD](#52---mocks-vs-stubs-the-schools-of-tdd)
-	- [5.3 - The Anti-Pattern: Mocking What You Don't Own](#53---the-anti-pattern-mocking-what-you-dont-own)
+  - [5.1 - The Five Types of Test Doubles](#51---the-five-types-of-test-doubles)
+  - [5.2 - Mocks vs Stubs: The Schools of TDD](#52---mocks-vs-stubs-the-schools-of-tdd)
+  - [5.3 - The Anti-Pattern: Mocking What You Don't Own](#53---the-anti-pattern-mocking-what-you-dont-own)
 - [6 - Development Methodologies](#6---development-methodologies)
-	- [6.1 - Test-Driven Development (TDD)](#61---test-driven-development-tdd)
-	- [6.2 - Behaviour-Driven Development (BDD)](#62---behaviour-driven-development-bdd)
-	- [6.3 - Acceptance Test-Driven Development (ATDD)](#63---acceptance-test-driven-development-atdd)
+  - [6.1 - Test-Driven Development (TDD)](#61---test-driven-development-tdd)
+  - [6.2 - Behaviour-Driven Development (BDD)](#62---behaviour-driven-development-bdd)
+  - [6.3 - Acceptance Test-Driven Development (ATDD)](#63---acceptance-test-driven-development-atdd)
 - [7 - Automation, CI/CD, and Modern Architectures](#7---automation-cicd-and-modern-architectures)
-	- [7.1 - The CI/CD Pipeline](#71---the-cicd-pipeline)
-	- [7.2 - Containerisation and Testing](#72---containerisation-and-testing)
-	- [7.3 - Microservices and Contract Testing](#73---microservices-and-contract-testing)
+  - [7.1 - The CI/CD Pipeline](#71---the-cicd-pipeline)
+  - [7.2 - Containerisation and Testing](#72---containerisation-and-testing)
+  - [7.3 - Microservices and Contract Testing](#73---microservices-and-contract-testing)
 - [8 - Anti-Patterns and Pitfalls](#8---anti-patterns-and-pitfalls)
-	- [8.1 - The Ice Cream Cone](#81---the-ice-cream-cone)
-	- [8.2 - The God Class](#82---the-god-class)
-	- [8.3 - Flaky Tests](#83---flaky-tests)
-	- [8.4 - Testing Internal Implementation](#84---testing-internal-implementation)
-	- [8.5 - Testing as a Religion](#85---testing-as-a-religion)
+  - [8.1 - The Ice Cream Cone](#81---the-ice-cream-cone)
+  - [8.2 - The God Class](#82---the-god-class)
+  - [8.3 - Flaky Tests](#83---flaky-tests)
+  - [8.4 - Testing Internal Implementation](#84---testing-internal-implementation)
+  - [8.5 - Testing as a Religion](#85---testing-as-a-religion)
 - [9 - Conclusion](#9---conclusion)
 - [References](#references)
 
@@ -56,8 +56,8 @@ Today, modern software engineering views testing as prevention. The highest valu
 
 The philosophy of software quality rests on two fundamental concepts: **Verification** and **Validation** (V&V). These terms are often confused. In casual conversation, they may seem interchangeable. However, in professional engineering, they represent distinct mechanisms with different goals.
 
-* **Verification** is a process-oriented activity. It answers the question: "Are we building the product right?". It focuses on the adherence to specifications, standards, and design documents. When a developer runs a static analysis tool, they are performing verification. They are checking if the code conforms to syntax rules and coding standards. When a team conducts a code review, they are verifying that the logic implements the design correctly. Verification ensures that the software is being developed correctly according to the rules defined at the start of the task. It relies heavily on static testing techniques, such as inspections and walkthroughs, where the code is examined but not executed.[1][2]
-* **Validation** is a product-oriented activity. It answers the question: "Are we building the right product?". It focuses on the user's needs and the real-world environment. A piece of software can be verified perfectly against a specification but still fail validation if the specification does not meet the user's requirements. Validation ensures that the software fulfils its intended use and satisfies the stakeholder's goals. It relies on dynamic testing techniques, where the software is executed to observe its actual behaviour.[1][2]
+* **Verification** is a process-oriented activity. It answers the question: "Are we building the product right?". It focuses on the adherence to specifications, standards, and design documents. When a developer runs a static analysis tool, they are performing verification. They are checking if the code conforms to syntax rules and coding standards. When a team conducts a code review, they are verifying that the logic implements the design correctly. Verification ensures that the software is being developed correctly according to the rules defined at the start of the task. It relies heavily on static testing techniques, such as inspections and walkthroughs, where the code is examined but not executed.[1];[2]
+* **Validation** is a product-oriented activity. It answers the question: "Are we building the right product?". It focuses on the user's needs and the real-world environment. A piece of software can be verified perfectly against a specification but still fail validation if the specification does not meet the user's requirements. Validation ensures that the software fulfils its intended use and satisfies the stakeholder's goals. It relies on dynamic testing techniques, where the software is executed to observe its actual behaviour.[1];[2]
 
 The interplay between these two is critical. The Waterfall model traditionally emphasised formal verification in the early stages, with validation occurring only at the very end. This often led to "verified failures" (software that met the spec but was useless to the customer). Modern Agile methodologies emphasise continuous validation. They require frequent feedback loops with stakeholders to ensure the product remains aligned with user needs throughout development.
 
@@ -161,7 +161,7 @@ The choice between Black Box and White Box testing is not binary; they are compl
 | **Efficiency**       | Less time-consuming to design.            | Most time-consuming; requires code analysis. |
 | **Techniques**       | Equivalence Partitioning, Boundary Value. | Statement, Branch, Path Coverage.            |
 
-Research comparing these techniques has found that while they may detect a similar number of faults, they detect different types of faults. Black Box approaches are better at identifying missing logic or requirement gaps. White Box approaches are better at identifying hidden coding errors or redundant logic.[8] Interestingly, recent studies on regression test prioritisation found that Black Box techniques (like Combinatorial Interaction Testing) can perform almost as well as White Box techniques, which is positive news for testers who may not have access to source code.[6][8][9]
+Research comparing these techniques has found that while they may detect a similar number of faults, they detect different types of faults. Black Box approaches are better at identifying missing logic or requirement gaps. White Box approaches are better at identifying hidden coding errors or redundant logic.[8] Interestingly, recent studies on regression test prioritisation found that Black Box techniques (like Combinatorial Interaction Testing) can perform almost as well as White Box techniques, which is positive news for testers who may not have access to source code.[6];[8];[9]
 
 
 # 3 - The Hierarchy of Testing Levels
@@ -361,13 +361,13 @@ stateDiagram-v2
 
 TDD is primarily a design technique. By writing the test first, you are forced to design the API of your code from the consumer's perspective. This leads to loosely coupled, highly cohesive code. It also produces a comprehensive suite of regression tests as a side effect.[14]
 
-However, TDD has a learning curve. It can feel slow initially. "TDD is dead" was a famous controversy sparked by David Heinemeier Hansson, arguing that TDD leads to "test-induced design damage" (over-abstraction). The consensus today is that TDD is a powerful tool, but not a religion. It is most useful for complex logic and less useful for simple boilerplate.[14][15]
+However, TDD has a learning curve. It can feel slow initially. "TDD is dead" was a famous controversy sparked by David Heinemeier Hansson, arguing that TDD leads to "test-induced design damage" (over-abstraction). The consensus today is that TDD is a powerful tool, but not a religion. It is most useful for complex logic and less useful for simple boilerplate.[14];[15]
 
 ## 6.2 - Behaviour-Driven Development (BDD)
 
 Behaviour-Driven Development (BDD) evolved to bridge the communication gap between technical and non-technical stakeholders. While TDD focuses on the implementation, BDD focuses on the behaviour.
 
-BDD uses a ubiquitous language, typically the Gherkin syntax (Given-When-Then), to describe test scenarios.[17][18]
+BDD uses a ubiquitous language, typically the Gherkin syntax (Given-When-Then), to describe test scenarios.[17];[18]
 
 * **Given:** The initial context ("Given the user is on the login page").
 * **When:** The action ("When the user enters valid credentials").
