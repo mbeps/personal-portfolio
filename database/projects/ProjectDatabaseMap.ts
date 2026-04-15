@@ -62,7 +62,10 @@ const projectMap: Database<ProjectInterface> = {
     repositoryURL: "https://github.com/mbeps/excel-mcp",
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Personal,
-    relatedMaterials: [BlogDatabaseKeys.ModelContextProtocol],
+    relatedMaterials: [
+      BlogDatabaseKeys.ModelContextProtocol,
+      RoleDatabaseKeys.CommerzbankAiEngineer,
+    ],
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.ModelContextProtocol,
@@ -1123,6 +1126,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     relatedMaterials: [
       RoleDatabaseKeys.CommerzbankBackendEngineer,
+      RoleDatabaseKeys.CommerzbankAiEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
       ProjectDatabaseKeys.BaseRestController,
     ],
@@ -1152,6 +1156,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     relatedMaterials: [
       RoleDatabaseKeys.CommerzbankBackendEngineer,
+      RoleDatabaseKeys.CommerzbankAiConsultant,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
       ProjectDatabaseKeys.BaseRestController,
       ProjectDatabaseKeys.MarkdownToMessageMLConverter,
