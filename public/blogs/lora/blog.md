@@ -32,7 +32,7 @@
 
 # 1 - Introduction: The Scalability Crisis in Transfer Learning
 
-The paradigm of Natural Language Processing (NLP) has shifted decisively toward the utilisation of large-scale pre-trained models. Architectures such as GPT, Gemini, Claude, etc. have demonstrated emergent capabilities that were previously unattainable [1][4]. The standard methodology for adapting these general-purpose models to specific downstream tasks (such as summarisation, question answering, or code generation) has historically been **Full Fine-Tuning (FFT)**. In this regime, the model is initialised with pre-trained weights $\Phi_0$, and all parameters are updated via gradient descent to maximise the likelihood of the conditional generation task.
+The paradigm of Natural Language Processing (NLP) has shifted decisively toward the utilisation of large-scale pre-trained models. Architectures such as GPT, Gemini, Claude, etc. have demonstrated emergent capabilities that were previously unattainable [1];[4]. The standard methodology for adapting these general-purpose models to specific downstream tasks (such as summarisation, question answering, or code generation) has historically been **Full Fine-Tuning (FFT)**. In this regime, the model is initialised with pre-trained weights $\Phi_0$, and all parameters are updated via gradient descent to maximise the likelihood of the conditional generation task.
 
 However, as model scales have expanded exponentially, the computational feasibility of FFT has collapsed. Fine-tuning a model of the magnitude of GPT-3 imposes a debilitating memory overhead. For a model with parameters $\Phi$, the training process necessitates storing not only the weights but also the gradient $\nabla_\Phi \mathcal{L}$ and the optimiser states. For widely used optimisers like Adam, which maintain the first and second moments of the gradients, the memory requirement is approximately $12\Phi$ to $16\Phi$ bytes, depending on precision settings. For GPT-3, this translates to over 1.2 terabytes of VRAM solely for optimisation states, rendering the process exclusive to industrial clusters and inaccessible to the broader research community [8].
 
@@ -40,7 +40,7 @@ Furthermore, FFT creates a deployment bottleneck. If a practitioner wishes to ad
 
 In response to these constraints, **Parameter-Efficient Fine-Tuning (PEFT)** has emerged as a critical subfield. The objective of PEFT is to modify the behaviour of a pre-trained model by updating only a minute fraction of its parameters (often less than 1%) while freezing the vast majority of the pre-trained weights. PEFT methods can generally be classified into three families:
 
-  * **Additive Methods:** Inserting new trainable modules or parameters (e.g., Adapter Layers, Prefix Tuning). [10][11]
+  * **Additive Methods:** Inserting new trainable modules or parameters (e.g., Adapter Layers, Prefix Tuning). [10];[11]
   * **Selective Methods:** Fine-tuning only a subset of existing parameters (e.g., BitFit). [12]
   * **Reparameterisation-based Methods:** Constructing a low-rank representation of the weight updates. [8]
 

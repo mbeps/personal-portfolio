@@ -545,7 +545,7 @@ await db.transaction(async (tx) => {
 
 ## 9.2 - The Arguments Against ORM
 
-  * **Performance Opacity:** The "Black Box" nature often hides inefficient queries. A simple LINQ or JPQL statement might generate a 5-table join or a subquery scan that kills performance. [2][3]
+  * **Performance Opacity:** The "Black Box" nature often hides inefficient queries. A simple LINQ or JPQL statement might generate a 5-table join or a subquery scan that kills performance. [2];[3]
   * **The Learning Cliff:** Learning the idiosyncrasies of Hibernate or Entity Framework (cache levels, flush modes, proxy behaviour) can take as long as learning SQL itself.
   * **Lowest Common Denominator:** To support multiple databases, ORMs often avoid using powerful, vendor-specific features (e.g., Postgres specific JSONB operators or Window Functions), forcing developers to drop to raw SQL anyway.
 

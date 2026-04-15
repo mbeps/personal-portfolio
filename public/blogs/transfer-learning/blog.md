@@ -1,33 +1,33 @@
 - [1 - Introduction: The Divergence from Traditional Statistical Learning](#1---introduction-the-divergence-from-traditional-statistical-learning)
 - [2 - Mathematical Formalism and Core Theory](#2---mathematical-formalism-and-core-theory)
-	- [2.1 - The Definition of a Domain](#21---the-definition-of-a-domain)
-	- [2.2 - The Definition of a Task](#22---the-definition-of-a-task)
-	- [2.3 - The Unified Definition of Transfer Learning](#23---the-unified-definition-of-transfer-learning)
-	- [2.4 - Systems Theory Perspective](#24---systems-theory-perspective)
+  - [2.1 - The Definition of a Domain](#21---the-definition-of-a-domain)
+  - [2.2 - The Definition of a Task](#22---the-definition-of-a-task)
+  - [2.3 - The Unified Definition of Transfer Learning](#23---the-unified-definition-of-transfer-learning)
+  - [2.4 - Systems Theory Perspective](#24---systems-theory-perspective)
 - [3 - Taxonomy and Categorisation of Approaches](#3---taxonomy-and-categorisation-of-approaches)
-	- [3.1 - Inductive Transfer Learning](#31---inductive-transfer-learning)
-	- [3.2 - Transductive Transfer Learning](#32---transductive-transfer-learning)
-	- [3.3 - Unsupervised Transfer Learning](#33---unsupervised-transfer-learning)
+  - [3.1 - Inductive Transfer Learning](#31---inductive-transfer-learning)
+  - [3.2 - Transductive Transfer Learning](#32---transductive-transfer-learning)
+  - [3.3 - Unsupervised Transfer Learning](#33---unsupervised-transfer-learning)
 - [4 - Theoretical Mechanisms of Distribution Alignment](#4---theoretical-mechanisms-of-distribution-alignment)
-	- [4.1 - Maximum Mean Discrepancy (MMD)](#41---maximum-mean-discrepancy-mmd)
-	- [4.2 - $\\mathcal{H}$-Divergence and Generalisation Bounds](#42---mathcalh-divergence-and-generalisation-bounds)
+  - [4.1 - Maximum Mean Discrepancy (MMD)](#41---maximum-mean-discrepancy-mmd)
+  - [4.2 - $\\mathcal{H}$-Divergence and Generalisation Bounds](#42---mathcalh-divergence-and-generalisation-bounds)
 - [5 - Algorithmic Approaches: From Instance Reweighting to Deep Representations](#5---algorithmic-approaches-from-instance-reweighting-to-deep-representations)
-	- [5.1 - Instance-Based Transfer: TrAdaBoost](#51---instance-based-transfer-tradaboost)
-	- [5.2 - Feature-Based Transfer: Correlation Alignment (CORAL)](#52---feature-based-transfer-correlation-alignment-coral)
-	- [5.3 - Adversarial Transfer Learning: Domain Adversarial Neural Networks (DANN)](#53---adversarial-transfer-learning-domain-adversarial-neural-networks-dann)
+  - [5.1 - Instance-Based Transfer: TrAdaBoost](#51---instance-based-transfer-tradaboost)
+  - [5.2 - Feature-Based Transfer: Correlation Alignment (CORAL)](#52---feature-based-transfer-correlation-alignment-coral)
+  - [5.3 - Adversarial Transfer Learning: Domain Adversarial Neural Networks (DANN)](#53---adversarial-transfer-learning-domain-adversarial-neural-networks-dann)
 - [6 - Modern Parameter-Based Transfer: The PEFT Revolution](#6---modern-parameter-based-transfer-the-peft-revolution)
-	- [6.1 - Adapters](#61---adapters)
-	- [6.2 - Low-Rank Adaptation (LoRA)](#62---low-rank-adaptation-lora)
-	- [6.3 - Prompt Tuning (Soft Prompts)](#63---prompt-tuning-soft-prompts)
-	- [6.4 - BitFit](#64---bitfit)
+  - [6.1 - Adapters](#61---adapters)
+  - [6.2 - Low-Rank Adaptation (LoRA)](#62---low-rank-adaptation-lora)
+  - [6.3 - Prompt Tuning (Soft Prompts)](#63---prompt-tuning-soft-prompts)
+  - [6.4 - BitFit](#64---bitfit)
 - [7 - Transferability Estimation: Predicting Success Before Training](#7---transferability-estimation-predicting-success-before-training)
-	- [7.1 - Log Expected Empirical Prediction (LEEP)](#71---log-expected-empirical-prediction-leep)
-	- [7.2 - H-Score](#72---h-score)
-	- [7.3 - Negative Conditional Entropy (NCE)](#73---negative-conditional-entropy-nce)
+  - [7.1 - Log Expected Empirical Prediction (LEEP)](#71---log-expected-empirical-prediction-leep)
+  - [7.2 - H-Score](#72---h-score)
+  - [7.3 - Negative Conditional Entropy (NCE)](#73---negative-conditional-entropy-nce)
 - [8 - Comparison with Related Paradigms: Multi-Task Learning (MTL)](#8---comparison-with-related-paradigms-multi-task-learning-mtl)
 - [9 - Failure Modes and Challenges](#9---failure-modes-and-challenges)
-	- [9.1 - Negative Transfer](#91---negative-transfer)
-	- [9.2 - Catastrophic Forgetting](#92---catastrophic-forgetting)
+  - [9.1 - Negative Transfer](#91---negative-transfer)
+  - [9.2 - Catastrophic Forgetting](#92---catastrophic-forgetting)
 - [10 - Example Calculation: Backpropagation in Transfer Learning](#10---example-calculation-backpropagation-in-transfer-learning)
 - [11 - Conclusion](#11---conclusion)
 - [References](#references)
@@ -35,7 +35,7 @@
 
 # 1 - Introduction: The Divergence from Traditional Statistical Learning
 
-The advancement of machine learning, particularly in the domain of deep neural networks, has traditionally relied upon a foundational statistical axiom: the assumption that training data and future testing data are independent and identically distributed (i.i.d.) [1][2]. This premise implies that the underlying probability distribution governing the generation of labelled training examples is identical to that of the unseen examples the model will encounter during deployment. Mathematically, if we denote the training distribution as $P_{train}(X, Y)$ and the testing distribution as $P_{test}(X, Y)$, classical supervision assumes $P_{train} = P_{test}$.
+The advancement of machine learning, particularly in the domain of deep neural networks, has traditionally relied upon a foundational statistical axiom: the assumption that training data and future testing data are independent and identically distributed (i.i.d.) [1];[2]. This premise implies that the underlying probability distribution governing the generation of labelled training examples is identical to that of the unseen examples the model will encounter during deployment. Mathematically, if we denote the training distribution as $P_{train}(X, Y)$ and the testing distribution as $P_{test}(X, Y)$, classical supervision assumes $P_{train} = P_{test}$.
 
 However, this assumption frequently disintegrates in practical applications. The collection of large-scale, annotated datasets for every conceivable domain is often computationally prohibitive or financially completely unfeasible. We frequently encounter scenarios where labelled data is abundant in a specific domain (the source) but scarce in a related, yet distinct, domain of interest (the target). For example, in biomedical imaging, annotating thousands of MRI scans for a specific rare pathology is often impossible, whereas millions of natural images or common medical scans are readily available.
 
@@ -171,7 +171,7 @@ The central mathematical challenge in transfer learning, particularly in transdu
 
 ## 4.1 - Maximum Mean Discrepancy (MMD)
 
-Maximum Mean Discrepancy (MMD) is a non-parametric metric used to measure the distance between two probability distributions $P$ and $Q$ by mapping them into a Reproducing Kernel Hilbert Space (RKHS), denoted as $\mathcal{H}$ [5][6].
+Maximum Mean Discrepancy (MMD) is a non-parametric metric used to measure the distance between two probability distributions $P$ and $Q$ by mapping them into a Reproducing Kernel Hilbert Space (RKHS), denoted as $\mathcal{H}$ [5];[6].
 
 The core intuition is that two distributions are identical if and only if all their statistical moments are identical. By mapping data to an infinite-dimensional RKHS using a characteristic kernel (like the Gaussian RBF), we can compare all moments simultaneously by comparing the "mean embeddings" of the distributions.
 
@@ -192,7 +192,7 @@ $$\text{MMD}^2(P, Q) = \mathbb{E}_{X,X' \sim P}[k(X,X')] - 2\mathbb{E}_{X \sim P
 
 $$\widehat{\text{MMD}}^2(X_S, X_T) = \frac{1}{n^2}\sum_{i=1}^n\sum_{j=1}^n k(x_{si}, x_{sj}) - \frac{2}{nm}\sum_{i=1}^n\sum_{j=1}^m k(x_{si}, x_{tj}) + \frac{1}{m^2}\sum_{i=1}^m\sum_{j=1}^m k(x_{ti}, x_{tj})$$
 
-**Significance:** Minimising the MMD constitutes a fundamental strategy in transfer learning algorithms (e.g., Kernel Mean Matching or Deep Domain Adaptation networks). By forcing the network to output features where $\text{MMD}(P(Z_S), P(Z_T)) \approx 0$, we essentially force the source and target data to look statistically indistinguishable in the latent feature space, thereby enabling a classifier trained on source data to generalise to target data [5][6].
+**Significance:** Minimising the MMD constitutes a fundamental strategy in transfer learning algorithms (e.g., Kernel Mean Matching or Deep Domain Adaptation networks). By forcing the network to output features where $\text{MMD}(P(Z_S), P(Z_T)) \approx 0$, we essentially force the source and target data to look statistically indistinguishable in the latent feature space, thereby enabling a classifier trained on source data to generalise to target data [5];[6].
 
 ## 4.2 - $\mathcal{H}$-Divergence and Generalisation Bounds
 

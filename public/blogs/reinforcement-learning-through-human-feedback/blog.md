@@ -37,9 +37,9 @@
 
 # 1 - Executive Summary
 
-The alignment of large language models (LLMs) with human intent constitutes the primary theoretical and engineering challenge in contemporary artificial intelligence. While self-supervised pre-training on massive text corpora allows models to minimise the negative log-likelihood of next-token prediction (thereby acquiring syntax, semantics, and world knowledge) this objective function is orthogonal to the normative quality of the generated output. A model trained solely to predict the internet's distribution of text is as likely to complete a toxic prompt with toxicity as it is to refuse it, governed principally by the conditional probability $P(x_{t+1}|x_{1:t})$ inherent in the training data. Reinforcement Learning from Human Feedback (RLHF) has emerged as the standard methodological framework to steer these probabilistic generators towards behaviours defined as helpful, honest, and harmless [1][2].
+The alignment of large language models (LLMs) with human intent constitutes the primary theoretical and engineering challenge in contemporary artificial intelligence. While self-supervised pre-training on massive text corpora allows models to minimise the negative log-likelihood of next-token prediction (thereby acquiring syntax, semantics, and world knowledge) this objective function is orthogonal to the normative quality of the generated output. A model trained solely to predict the internet's distribution of text is as likely to complete a toxic prompt with toxicity as it is to refuse it, governed principally by the conditional probability $P(x_{t+1}|x_{1:t})$ inherent in the training data. Reinforcement Learning from Human Feedback (RLHF) has emerged as the standard methodological framework to steer these probabilistic generators towards behaviours defined as helpful, honest, and harmless [1];[2].
 
-This report presents a rigorous technical examination of the mathematics, algorithms, and theoretical constraints underpinning RLHF. We move beyond high-level abstractions to analyse the precise mechanisms of reward modelling, proximal policy optimisation (PPO), and the emergent paradigm of Direct Preference Optimisation (DPO) [9]. The analysis is grounded in the mathematical formulations of preference learning, specifically the Bradley-Terry-Luce (BTL) models, and explores the control-theoretic implications of using Kullback-Leibler (KL) divergence as a regularisation constraint [6]. Furthermore, we dissect the phenomenon of reward over-optimisation (Goodhart's Law) through the lens of recent scaling laws, and evaluate the efficacy of Constitutional AI and Reinforcement Learning from AI Feedback (RLAIF) in overcoming the scalability bottlenecks of human annotation [7][8][12].
+This report presents a rigorous technical examination of the mathematics, algorithms, and theoretical constraints underpinning RLHF. We move beyond high-level abstractions to analyse the precise mechanisms of reward modelling, proximal policy optimisation (PPO), and the emergent paradigm of Direct Preference Optimisation (DPO) [9]. The analysis is grounded in the mathematical formulations of preference learning, specifically the Bradley-Terry-Luce (BTL) models, and explores the control-theoretic implications of using Kullback-Leibler (KL) divergence as a regularisation constraint [6]. Furthermore, we dissect the phenomenon of reward over-optimisation (Goodhart's Law) through the lens of recent scaling laws, and evaluate the efficacy of Constitutional AI and Reinforcement Learning from AI Feedback (RLAIF) in overcoming the scalability bottlenecks of human annotation [7];[8];[12].
 
 The report is structured to guide through the mathematical derivation of the alignment objective, the iterative optimisation algorithms used to solve it, and the instabilities that arise in high-dimensional parameter spaces. Mock calculations are provided to illustrate gradient dynamics, and implementation details are discussed to bridge the gap between theory and practice.
 
@@ -89,7 +89,7 @@ When annotators rank $K$ responses $\{y_1, \dots, y_K\}$ rather than just pairs,
 
 $$ P(\text{ranking } \tau) = \prod_{i=1}^K \frac{\exp(r^*(x, y_{\tau(i)}))}{\sum_{j=i}^K \exp(r^*(x, y_{\tau(j)}))} $$
 
-This models the ranking process as sequential selection without replacement: we select the best item from the set, then the best from the remaining $K-1$, and so on. In practice, most RLHF pipelines decompose rankings into $\binom{K}{2}$ pairwise comparisons and train using the BTL loss, as pairwise data is more robust to noise [1][2].
+This models the ranking process as sequential selection without replacement: we select the best item from the set, then the best from the remaining $K-1$, and so on. In practice, most RLHF pipelines decompose rankings into $\binom{K}{2}$ pairwise comparisons and train using the BTL loss, as pairwise data is more robust to noise [1];[2].
 
 ## 3.3 Loss Function and Optimisation
 
@@ -131,7 +131,7 @@ flowchart LR
 
 ## 4.1 Phase I: Supervised Fine-Tuning (SFT)
 
-Before RL can be applied, the model must be conditioned to the "instruction-following" format. A dataset of prompts and high-quality human-written responses is used to fine-tune the pre-trained model [1][3].
+Before RL can be applied, the model must be conditioned to the "instruction-following" format. A dataset of prompts and high-quality human-written responses is used to fine-tune the pre-trained model [1];[3].
 
 **Mathematical Role:** The SFT model, denoted $\pi_{SFT}$ (or $\pi_{ref}$), serves two purposes:
 
@@ -334,7 +334,7 @@ While DPO is the leading alternative, others exist:
 
 # 6 - Advanced Methods: RLAIF and Constitutional AI
 
-Scaling RLHF is bottlenecked by the cost and speed of human annotation. Reinforcement Learning from AI Feedback (RLAIF) and Constitutional AI (CAI) address this by substituting the human labeller with a strong AI model [7][8].
+Scaling RLHF is bottlenecked by the cost and speed of human annotation. Reinforcement Learning from AI Feedback (RLAIF) and Constitutional AI (CAI) address this by substituting the human labeller with a strong AI model [7];[8].
 
 ## 6.1 The "Constitution" and Mechanism
 
@@ -358,7 +358,7 @@ Proposed by Anthropic, Constitutional AI operates in two phases, utilising a "Co
 Research indicates that RLAIF can achieve performance comparable to human feedback [8].
 
   * **Agreement:** AI labellers often show higher inter-annotator agreement than human crowds (who may disagree 25-40% of the time) [8].
-  * **Bias:** While humans introduce noise, AI labellers introduce systematic bias (e.g., "verbosity bias"; preferring longer answers, or "self-preference bias"; preferring outputs similar to their own training data) [7][8].
+  * **Bias:** While humans introduce noise, AI labellers introduce systematic bias (e.g., "verbosity bias"; preferring longer answers, or "self-preference bias"; preferring outputs similar to their own training data) [7];[8].
 
 -----
 

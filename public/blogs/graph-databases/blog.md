@@ -1,36 +1,36 @@
 - [1 - Introduction: The Paradigm Shift in Data Management](#1---introduction-the-paradigm-shift-in-data-management)
 - [2 - Mathematical Foundations](#2---mathematical-foundations)
-	- [2.1 - Graph Theory Fundamentals](#21---graph-theory-fundamentals)
-		- [2.1.1 - Vertex and Edge Definitions](#211---vertex-and-edge-definitions)
-		- [2.1.2 - Algebraic Connectivity and Matrices](#212---algebraic-connectivity-and-matrices)
-		- [2.1.3 - Hypergraphs](#213---hypergraphs)
-	- [2.2 - Algebraic Path Analysis](#22---algebraic-path-analysis)
+  - [2.1 - Graph Theory Fundamentals](#21---graph-theory-fundamentals)
+    - [2.1.1 - Vertex and Edge Definitions](#211---vertex-and-edge-definitions)
+    - [2.1.2 - Algebraic Connectivity and Matrices](#212---algebraic-connectivity-and-matrices)
+    - [2.1.3 - Hypergraphs](#213---hypergraphs)
+  - [2.2 - Algebraic Path Analysis](#22---algebraic-path-analysis)
 - [3 - Data Models: Labelled Property Graph vs. RDF](#3---data-models-labelled-property-graph-vs-rdf)
-	- [3.1 - The Labelled Property Graph (LPG)](#31---the-labelled-property-graph-lpg)
-	- [3.2 - Resource Description Framework (RDF)](#32---resource-description-framework-rdf)
-	- [3.3 - Comparative Summary](#33---comparative-summary)
+  - [3.1 - The Labelled Property Graph (LPG)](#31---the-labelled-property-graph-lpg)
+  - [3.2 - Resource Description Framework (RDF)](#32---resource-description-framework-rdf)
+  - [3.3 - Comparative Summary](#33---comparative-summary)
 - [4 - Internal Storage Architecture](#4---internal-storage-architecture)
-	- [4.1 - Native Graph Storage: Index-Free Adjacency](#41---native-graph-storage-index-free-adjacency)
-		- [4.1.1 - Neo4j Storage Layout](#411---neo4j-storage-layout)
-	- [4.2 - Non-Native and Multi-Model Architectures](#42---non-native-and-multi-model-architectures)
-		- [4.2.1 - JanusGraph (Wide-Column Store Backend)](#421---janusgraph-wide-column-store-backend)
-		- [4.2.2 - Amazon Neptune (Quad Store)](#422---amazon-neptune-quad-store)
-		- [4.2.3 - ArangoDB (RocksDB Backend)](#423---arangodb-rocksdb-backend)
+  - [4.1 - Native Graph Storage: Index-Free Adjacency](#41---native-graph-storage-index-free-adjacency)
+    - [4.1.1 - Neo4j Storage Layout](#411---neo4j-storage-layout)
+  - [4.2 - Non-Native and Multi-Model Architectures](#42---non-native-and-multi-model-architectures)
+    - [4.2.1 - JanusGraph (Wide-Column Store Backend)](#421---janusgraph-wide-column-store-backend)
+    - [4.2.2 - Amazon Neptune (Quad Store)](#422---amazon-neptune-quad-store)
+    - [4.2.3 - ArangoDB (RocksDB Backend)](#423---arangodb-rocksdb-backend)
 - [5 - Query Languages and Semantics](#5---query-languages-and-semantics)
-	- [5.1 - Cypher and the Declarative Pattern](#51---cypher-and-the-declarative-pattern)
-	- [5.2 - SPARQL and Algebra](#52---sparql-and-algebra)
-	- [5.3 - GQL: The ISO Standard (ISO/IEC 39075)](#53---gql-the-iso-standard-isoiec-39075)
-	- [5.4 - Graph Algebra and MATLANG](#54---graph-algebra-and-matlang)
+  - [5.1 - Cypher and the Declarative Pattern](#51---cypher-and-the-declarative-pattern)
+  - [5.2 - SPARQL and Algebra](#52---sparql-and-algebra)
+  - [5.3 - GQL: The ISO Standard (ISO/IEC 39075)](#53---gql-the-iso-standard-isoiec-39075)
+  - [5.4 - Graph Algebra and MATLANG](#54---graph-algebra-and-matlang)
 - [6 - Distributed Graph Systems and Scalability](#6---distributed-graph-systems-and-scalability)
-	- [6.1 - The Graph Partitioning Problem](#61---the-graph-partitioning-problem)
-	- [6.2 - CAP Theorem and Consistency Models](#62---cap-theorem-and-consistency-models)
+  - [6.1 - The Graph Partitioning Problem](#61---the-graph-partitioning-problem)
+  - [6.2 - CAP Theorem and Consistency Models](#62---cap-theorem-and-consistency-models)
 - [7 - Algorithmic Processing and Analytics](#7---algorithmic-processing-and-analytics)
-	- [7.1 - Traversal Complexity: Big O Analysis](#71---traversal-complexity-big-o-analysis)
-	- [7.2 - Parallel Graph Algorithms (Pregel/BSP)](#72---parallel-graph-algorithms-pregelbsp)
-	- [7.3 - External Memory Algorithms](#73---external-memory-algorithms)
+  - [7.1 - Traversal Complexity: Big O Analysis](#71---traversal-complexity-big-o-analysis)
+  - [7.2 - Parallel Graph Algorithms (Pregel/BSP)](#72---parallel-graph-algorithms-pregelbsp)
+  - [7.3 - External Memory Algorithms](#73---external-memory-algorithms)
 - [8 - Emerging Trends: Graph RAG and AI Integration](#8---emerging-trends-graph-rag-and-ai-integration)
-	- [8.1 - Retrieval Augmented Generation (Graph RAG)](#81---retrieval-augmented-generation-graph-rag)
-	- [8.2 - Graph Neural Networks (GNNs)](#82---graph-neural-networks-gnns)
+  - [8.1 - Retrieval Augmented Generation (Graph RAG)](#81---retrieval-augmented-generation-graph-rag)
+  - [8.2 - Graph Neural Networks (GNNs)](#82---graph-neural-networks-gnns)
 - [9 - Conclusion](#9---conclusion)
 - [References](#references)
 
@@ -210,7 +210,7 @@ graph TD
 ```
 
 **Semantic Rigour:**
-RDF excels in interoperability and inference. Through ontologies (OWL, RDFS), RDF stores support logical reasoning. For example, if an ontology defines Manager as a subclass of Employee, a query for Employee will automatically retrieve all Manager nodes, a capability not natively present in most LPG systems without explicit rule coding [4][5].
+RDF excels in interoperability and inference. Through ontologies (OWL, RDFS), RDF stores support logical reasoning. For example, if an ontology defines Manager as a subclass of Employee, a query for Employee will automatically retrieve all Manager nodes, a capability not natively present in most LPG systems without explicit rule coding [4];[5].
 
 ## 3.3 - Comparative Summary
 
@@ -494,7 +494,7 @@ This model allows systems like TigerGraph and Neo4j Graph Data Science to parall
 
 When the graph exceeds available RAM, algorithms must manage disk I/O efficiently. Standard BFS causes random disk access, leading to poor performance. External Memory (EM) Graph Algorithms optimise this by structuring traversals to maximise sequential I/O [10].
 
-**Buffered Repository Trees (BRT):** A data structure used to batch updates and reads, reducing the I/O complexity of BFS from $O(V)$ random seeks to $O(\text{sort}(V+E))$, where $\text{sort}(N)$ is the I/O cost of sorting $N$ items [10][11].
+**Buffered Repository Trees (BRT):** A data structure used to batch updates and reads, reducing the I/O complexity of BFS from $O(V)$ random seeks to $O(\text{sort}(V+E))$, where $\text{sort}(N)$ is the I/O cost of sorting $N$ items [10];[11].
 
 
 # 8 - Emerging Trends: Graph RAG and AI Integration
@@ -517,7 +517,7 @@ Graph RAG introduces structural grounding. The LLM's response is constrained by 
 
 ## 8.2 - Graph Neural Networks (GNNs)
 
-GNNs are deep learning models designed to operate directly on graph structures. They generate node embeddings (vector representations that capture not just the node's properties, but its topological position in the network) [17][18].
+GNNs are deep learning models designed to operate directly on graph structures. They generate node embeddings (vector representations that capture not just the node's properties, but its topological position in the network) [17];[18].
 
 Graph databases are evolving to store these embeddings natively, allowing for hybrid queries that combine symbolic graph traversal (e.g., "Find friends") with neural vector search (e.g., "Find semantically similar users"). This convergence leads to "Vector-Graph" databases capable of complex semantic reasoning [17].
 

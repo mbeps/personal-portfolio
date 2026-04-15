@@ -1,34 +1,34 @@
 - [1 - Introduction: The Relational Limit and the Document Paradigm](#1---introduction-the-relational-limit-and-the-document-paradigm)
 - [2 - Distributed Systems Theory: CAP, PACELC, and Consistency Models](#2---distributed-systems-theory-cap-pacelc-and-consistency-models)
-	- [2.1 - The CAP Theorem](#21---the-cap-theorem)
-	- [2.2 - The PACELC Theorem](#22---the-pacelc-theorem)
-	- [2.3 - BASE Architecture](#23---base-architecture)
+  - [2.1 - The CAP Theorem](#21---the-cap-theorem)
+  - [2.2 - The PACELC Theorem](#22---the-pacelc-theorem)
+  - [2.3 - BASE Architecture](#23---base-architecture)
 - [3 - Logical Data Representation: Set Theory and Algebra](#3---logical-data-representation-set-theory-and-algebra)
-	- [3.1 - Semi-Structured Data and Polymorphism](#31---semi-structured-data-and-polymorphism)
-	- [3.2 - Algebras for JSON (JAL)](#32---algebras-for-json-jal)
-	- [3.3 - BSON: Binary Serialisation and Performance](#33---bson-binary-serialisation-and-performance)
+  - [3.1 - Semi-Structured Data and Polymorphism](#31---semi-structured-data-and-polymorphism)
+  - [3.2 - Algebras for JSON (JAL)](#32---algebras-for-json-jal)
+  - [3.3 - BSON: Binary Serialisation and Performance](#33---bson-binary-serialisation-and-performance)
 - [4 - Storage Engine Architecture: B-Trees vs. LSM Trees](#4---storage-engine-architecture-b-trees-vs-lsm-trees)
-	- [4.1 - B-Tree and B+ Tree Architecture](#41---b-tree-and-b-tree-architecture)
-	- [4.2 - Log-Structured Merge (LSM) Trees](#42---log-structured-merge-lsm-trees)
-	- [4.3 - Comparative Trade-off Analysis](#43---comparative-trade-off-analysis)
+  - [4.1 - B-Tree and B+ Tree Architecture](#41---b-tree-and-b-tree-architecture)
+  - [4.2 - Log-Structured Merge (LSM) Trees](#42---log-structured-merge-lsm-trees)
+  - [4.3 - Comparative Trade-off Analysis](#43---comparative-trade-off-analysis)
 - [5 - Distributed Consensus Protocols: Mathematical Safety and Replication](#5---distributed-consensus-protocols-mathematical-safety-and-replication)
-	- [5.1 - Paxos and Google Spanner](#51---paxos-and-google-spanner)
-	- [5.2 - Raft and MongoDB](#52---raft-and-mongodb)
+  - [5.1 - Paxos and Google Spanner](#51---paxos-and-google-spanner)
+  - [5.2 - Raft and MongoDB](#52---raft-and-mongodb)
 - [6 - Partitioning and Sharding: Probability Theory in Data Distribution](#6---partitioning-and-sharding-probability-theory-in-data-distribution)
-	- [6.1 - Consistent Hashing](#61---consistent-hashing)
-	- [6.2 - Shard Key Selection: Cardinality and Monotonicity](#62---shard-key-selection-cardinality-and-monotonicity)
+  - [6.1 - Consistent Hashing](#61---consistent-hashing)
+  - [6.2 - Shard Key Selection: Cardinality and Monotonicity](#62---shard-key-selection-cardinality-and-monotonicity)
 - [7 - Concurrency Control and Causality: Vector Clocks](#7---concurrency-control-and-causality-vector-clocks)
-	- [7.1 - Vector Clocks and Partial Ordering](#71---vector-clocks-and-partial-ordering)
+  - [7.1 - Vector Clocks and Partial Ordering](#71---vector-clocks-and-partial-ordering)
 - [8 - Query Processing and Optimisation](#8---query-processing-and-optimisation)
-	- [8.1 - Complexity of Aggregation Pipelines](#81---complexity-of-aggregation-pipelines)
-	- [8.2 - Geospatial Indexing Mathematics](#82---geospatial-indexing-mathematics)
+  - [8.1 - Complexity of Aggregation Pipelines](#81---complexity-of-aggregation-pipelines)
+  - [8.2 - Geospatial Indexing Mathematics](#82---geospatial-indexing-mathematics)
 - [9 - Comparative Architecture Analysis](#9---comparative-architecture-analysis)
-	- [9.1 - Case Study: CouchDB Revision Trees](#91---case-study-couchdb-revision-trees)
-	- [9.2 - Case Study: MongoDB Checkpointing](#92---case-study-mongodb-checkpointing)
+  - [9.1 - Case Study: CouchDB Revision Trees](#91---case-study-couchdb-revision-trees)
+  - [9.2 - Case Study: MongoDB Checkpointing](#92---case-study-mongodb-checkpointing)
 - [10 - Conclusion](#10---conclusion)
 - [Appendix: Mathematical Examples and Computations](#appendix-mathematical-examples-and-computations)
-	- [A.1 - Write Amplification in LSM Trees](#a1---write-amplification-in-lsm-trees)
-	- [A.2 - Spanner Commit Wait](#a2---spanner-commit-wait)
+  - [A.1 - Write Amplification in LSM Trees](#a1---write-amplification-in-lsm-trees)
+  - [A.2 - Spanner Commit Wait](#a2---spanner-commit-wait)
 - [References](#references)
 
 
@@ -87,7 +87,7 @@ This extension is critical for high-performance applications. Even in the absenc
 
 ## 2.3 - BASE Architecture
 
-In contrast to the strict ACID model of RDBMS, many distributed document stores adopt the BASE consistency model [3][5]:
+In contrast to the strict ACID model of RDBMS, many distributed document stores adopt the BASE consistency model [3];[5]:
 
   * **Basically Available:** The system guarantees availability, potentially by returning stale data or a partial response.
   * **Soft State:** The state of the system may change over time, even without input, due to background convergence processes.
@@ -236,7 +236,7 @@ In a distributed document database, ensuring that all replicas agree on the stat
 
 ## 5.1 - Paxos and Google Spanner
 
-Google Cloud Spanner, which underpins Firestore, utilises the Paxos algorithm to manage replication. Paxos is a family of protocols that solve consensus in a network of unreliable processors. The basic algorithm involves three roles (Proposer, Acceptor, Learner) and guarantees safety: non-triviality (only proposed values are chosen), integrity (only one value is chosen), and validity [10][11].
+Google Cloud Spanner, which underpins Firestore, utilises the Paxos algorithm to manage replication. Paxos is a family of protocols that solve consensus in a network of unreliable processors. The basic algorithm involves three roles (Proposer, Acceptor, Learner) and guarantees safety: non-triviality (only proposed values are chosen), integrity (only one value is chosen), and validity [10];[11].
 
 **The Innovation of TrueTime:**
 Standard distributed algorithms operate under the assumption of asynchronous clocks, where no assumptions can be made about the relative speed of processes or clock drift. Spanner simplifies this by relying on TrueTime, an API that exposes clock uncertainty [13]. TrueTime returns a time interval $TT.now() = [earliest, latest]$ such that the absolute time $t_{abs}$ is guaranteed to be within the interval with high probability.
@@ -299,7 +299,7 @@ When a node is added, it only takes the keys from its successor on the ring, min
 
 **Virtual Nodes and Load Variance:**
 A major challenge with basic consistent hashing is non-uniform data distribution. With a small number of physical nodes, the random placement on the ring leads to a high variance in the arc length assigned to each node. To mitigate this, each physical node is mapped to multiple virtual nodes (replicas) on the ring.
-Statistical analysis demonstrates that the standard deviation of the load, $\sigma$, is inversely proportional to the square root of the number of virtual nodes, $V$ [22][23]:
+Statistical analysis demonstrates that the standard deviation of the load, $\sigma$, is inversely proportional to the square root of the number of virtual nodes, $V$ [22];[23]:
 $$\sigma \propto \frac{1}{\sqrt{V}}$$
 Experimental data suggests that with $V=200$ virtual nodes per physical server, the standard deviation of the load drops to approximately 5-10% of the mean, ensuring a balanced cluster without manual intervention [23].
 
@@ -319,7 +319,7 @@ In AP systems (like older versions of CouchDB, Riak, or Dynamo-style databases),
 
 ## 7.1 - Vector Clocks and Partial Ordering
 
-Simple timestamps are insufficient for ordering events in distributed systems due to clock skew [7]. Instead, Vector Clocks are used [8][9]. A vector clock $V$ for a system with $N$ nodes is an array of $N$ integers.
+Simple timestamps are insufficient for ordering events in distributed systems due to clock skew [7]. Instead, Vector Clocks are used [8];[9]. A vector clock $V$ for a system with $N$ nodes is an array of $N$ integers.
 
 **The Algorithm:**
 
@@ -329,12 +329,12 @@ Simple timestamps are insufficient for ordering events in distributed systems du
 4.  When sending a message, $P_i$ includes its vector $V_i$.
 5.  When receiving a message with vector $W$, $P_i$ updates its clock:
     $$\forall k: V_i[k] = \max(V_i[k], W[k])$$
-    Then, it increments $V_i[i]$ [8][9].
+    Then, it increments $V_i[i]$ [8];[9].
 
 **Causality and Concurrency:**
 We define a partial ordering relation "happened-before" ($\to$). Event $A$ with vector $V_A$ happened before event $B$ with vector $V_B$ ($A \to B$) if and only if:
 $$(\forall i, V_A[i] \le V_B[i]) \land (\exists j, V_A[j] < V_B[j])$$
-If neither $A \to B$ nor $B \to A$, the events are concurrent [7][8][9]. This mathematical definition allows the database to identify conflicts precisely. If two updates are concurrent, the database cannot automatically merge them without risking data loss. Instead, it presents both versions (siblings) to the application for semantic resolution.
+If neither $A \to B$ nor $B \to A$, the events are concurrent [7];[8];[9]. This mathematical definition allows the database to identify conflicts precisely. If two updates are concurrent, the database cannot automatically merge them without risking data loss. Instead, it presents both versions (siblings) to the application for semantic resolution.
 
 **Pruning and State Explosion:**
 One disadvantage of vector clocks is that the vector size grows linearly with the number of clients or nodes ($N$). In dynamic systems where clients (actors) are transient, this can lead to state explosion. To mitigate this, Pruning Algorithms are employed. Systems may prune entries based on a timestamp threshold or a maximum vector size, removing the oldest entries. While this trades some accuracy in conflict detection for storage efficiency, it is a necessary compromise in large-scale distributed systems.

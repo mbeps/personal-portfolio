@@ -492,7 +492,7 @@ The rise of "Big Data" in the 2000s challenged the supremacy of BCNF.
   * **Denormalisation:** Because compression is so efficient, the space penalty of redundancy is negligible. Consequently, designers often prefer denormalised wide tables (Star Schemas) to avoid the CPU cost of joining tables. Here, performance trumps the anomaly protection of BCNF. [6]
 
 **NoSQL and CAP Theorem:**
-The CAP Theorem states a distributed system can only provide two of Consistency, Availability, and Partition Tolerance. [7][8]
+The CAP Theorem states a distributed system can only provide two of Consistency, Availability, and Partition Tolerance. [7];[8]
 
 ```mermaid
 graph TD

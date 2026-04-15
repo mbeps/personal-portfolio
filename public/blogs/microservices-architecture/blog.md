@@ -1,37 +1,37 @@
 - [1 - Introduction and Architectural Paradigm Shift](#1---introduction-and-architectural-paradigm-shift)
 - [2 - Theoretical Foundations and Architectural Evolution](#2---theoretical-foundations-and-architectural-evolution)
-	- [2.1 - The Monolithic Predecessor: Utility and Limitations](#21---the-monolithic-predecessor-utility-and-limitations)
-	- [2.2 - Service-Oriented Architecture (SOA) vs. Microservices](#22---service-oriented-architecture-soa-vs-microservices)
-	- [2.3 - The Core Principle: Shared-Nothing Architecture](#23---the-core-principle-shared-nothing-architecture)
-	- [2.4 - Domain-Driven Design (DDD) and Bounded Contexts](#24---domain-driven-design-ddd-and-bounded-contexts)
+  - [2.1 - The Monolithic Predecessor: Utility and Limitations](#21---the-monolithic-predecessor-utility-and-limitations)
+  - [2.2 - Service-Oriented Architecture (SOA) vs. Microservices](#22---service-oriented-architecture-soa-vs-microservices)
+  - [2.3 - The Core Principle: Shared-Nothing Architecture](#23---the-core-principle-shared-nothing-architecture)
+  - [2.4 - Domain-Driven Design (DDD) and Bounded Contexts](#24---domain-driven-design-ddd-and-bounded-contexts)
 - [3 - Core Architectural Components](#3---core-architectural-components)
-	- [3.1 - API Gateways and the Backend for Frontend (BFF) Pattern](#31---api-gateways-and-the-backend-for-frontend-bff-pattern)
-	- [3.2 - Service Discovery](#32---service-discovery)
-	- [3.3 - The Service Mesh](#33---the-service-mesh)
-	- [3.4 - Containerisation and Orchestration](#34---containerisation-and-orchestration)
+  - [3.1 - API Gateways and the Backend for Frontend (BFF) Pattern](#31---api-gateways-and-the-backend-for-frontend-bff-pattern)
+  - [3.2 - Service Discovery](#32---service-discovery)
+  - [3.3 - The Service Mesh](#33---the-service-mesh)
+  - [3.4 - Containerisation and Orchestration](#34---containerisation-and-orchestration)
 - [4 - Communication Protocols and Patterns](#4---communication-protocols-and-patterns)
-	- [4.1 - Synchronous Communication](#41---synchronous-communication)
-	- [4.2 - Asynchronous Communication](#42---asynchronous-communication)
-	- [4.3 - Protocol Performance Comparison](#43---protocol-performance-comparison)
+  - [4.1 - Synchronous Communication](#41---synchronous-communication)
+  - [4.2 - Asynchronous Communication](#42---asynchronous-communication)
+  - [4.3 - Protocol Performance Comparison](#43---protocol-performance-comparison)
 - [5 - Distributed Data Management](#5---distributed-data-management)
-	- [5.1 - The CAP Theorem](#51---the-cap-theorem)
-	- [5.2 - The Saga Pattern](#52---the-saga-pattern)
-	- [5.3 - CQRS (Command Query Responsibility Segregation)](#53---cqrs-command-query-responsibility-segregation)
+  - [5.1 - The CAP Theorem](#51---the-cap-theorem)
+  - [5.2 - The Saga Pattern](#52---the-saga-pattern)
+  - [5.3 - CQRS (Command Query Responsibility Segregation)](#53---cqrs-command-query-responsibility-segregation)
 - [6 - Resiliency and Reliability Patterns](#6---resiliency-and-reliability-patterns)
-	- [6.1 - Circuit Breaker Pattern](#61---circuit-breaker-pattern)
-	- [6.2 - Bulkhead Pattern](#62---bulkhead-pattern)
-	- [6.3 - Retries with Exponential Backoff](#63---retries-with-exponential-backoff)
+  - [6.1 - Circuit Breaker Pattern](#61---circuit-breaker-pattern)
+  - [6.2 - Bulkhead Pattern](#62---bulkhead-pattern)
+  - [6.3 - Retries with Exponential Backoff](#63---retries-with-exponential-backoff)
 - [7 - Observability: The Three Pillars](#7---observability-the-three-pillars)
-	- [7.1 - Distributed Tracing](#71---distributed-tracing)
-	- [7.2 - Metrics and Logs](#72---metrics-and-logs)
+  - [7.1 - Distributed Tracing](#71---distributed-tracing)
+  - [7.2 - Metrics and Logs](#72---metrics-and-logs)
 - [8 - Development and Deployment Strategies](#8---development-and-deployment-strategies)
-	- [8.1 - Deployment Strategies](#81---deployment-strategies)
-	- [8.2 - Testing Strategies](#82---testing-strategies)
+  - [8.1 - Deployment Strategies](#81---deployment-strategies)
+  - [8.2 - Testing Strategies](#82---testing-strategies)
 - [9 - Critical Analysis: The "Microservice Premium" and Reality Check](#9---critical-analysis-the-microservice-premium-and-reality-check)
-	- [9.1 - Advantages](#91---advantages)
-	- [9.2 - Disadvantages](#92---disadvantages)
-	- [9.3 - The "Monolith First" Strategy](#93---the-monolith-first-strategy)
-	- [9.4 - The "Return to Monolith" Trend](#94---the-return-to-monolith-trend)
+  - [9.1 - Advantages](#91---advantages)
+  - [9.2 - Disadvantages](#92---disadvantages)
+  - [9.3 - The "Monolith First" Strategy](#93---the-monolith-first-strategy)
+  - [9.4 - The "Return to Monolith" Trend](#94---the-return-to-monolith-trend)
 - [10 - Conclusion and Recommendations](#10---conclusion-and-recommendations)
 - [References](#references)
 
@@ -39,9 +39,9 @@
 
 # 1 - Introduction and Architectural Paradigm Shift
 
-The contemporary landscape of software engineering has witnessed a profound transformation in how large-scale applications are conceptualised, designed, and deployed. At the forefront of this evolution is the **Microservice Architecture**, a design style that structures an application as a collection of loosely coupled, independently deployable services. This architectural paradigm emerged as a direct response to the limitations inherent in traditional monolithic designs, particularly when applied to complex, cloud-native environments requiring rapid iteration and high scalability [1][2].
+The contemporary landscape of software engineering has witnessed a profound transformation in how large-scale applications are conceptualised, designed, and deployed. At the forefront of this evolution is the **Microservice Architecture**, a design style that structures an application as a collection of loosely coupled, independently deployable services. This architectural paradigm emerged as a direct response to the limitations inherent in traditional monolithic designs, particularly when applied to complex, cloud-native environments requiring rapid iteration and high scalability [1];[2].
 
-The transition from monolithic to microservice architecture is not merely a technical reorganisation; it represents a fundamental shift in organisational structure, development processes, and operational philosophy. The core premise involves decomposing a single, unified application into a suite of small services, each running in its own process and communicating with lightweight mechanisms, typically an HTTP resource API or asynchronous messaging. These services are built around business capabilities and are independently deployable by fully automated deployment machinery. Ideally, there is a bare minimum of centralised management of these services, which may be written in different programming languages and use different data storage technologies [1][6].
+The transition from monolithic to microservice architecture is not merely a technical reorganisation; it represents a fundamental shift in organisational structure, development processes, and operational philosophy. The core premise involves decomposing a single, unified application into a suite of small services, each running in its own process and communicating with lightweight mechanisms, typically an HTTP resource API or asynchronous messaging. These services are built around business capabilities and are independently deployable by fully automated deployment machinery. Ideally, there is a bare minimum of centralised management of these services, which may be written in different programming languages and use different data storage technologies [1];[6].
 
 However, this architectural style is not a panacea. It introduces a significant "Microservice Premium" (the cost of complexity involved in managing distributed systems, eventual consistency, and operational overhead) [7]. While proponents highlight agility and scalability, detractors and recent industry case studies caution against premature adoption, citing the immense complexity of debugging, monitoring, and managing data consistency across distributed nodes. This report provides an exhaustive technical analysis of the microservice architecture, exploring its theoretical underpinnings, component technologies, operational patterns, and the critical trade-offs that engineering teams must navigate.
 
@@ -97,19 +97,19 @@ However, as a monolith grows, it encounters a "scaling ceiling." The codebase be
 Microservices are frequently misidentified as a rebranding of Service-Oriented Architecture (SOA), a dominant paradigm in the 2000s. While both advocate for decomposing systems into services, their philosophies diverge significantly regarding scope, coupling, and communication.
 
 **The Enterprise Service Bus (ESB) vs. Dumb Pipes**
-SOA implementations typically rely on an Enterprise Service Bus (ESB) to manage communication. The ESB is a "smart pipe" that contains complex logic for message routing, transformation, and business rules orchestration. This centralisation creates a bottleneck and a single point of failure. It encourages "Share-as-much-as-possible", where services are tightly coupled to the ESB's schema and logic [1][4].
+SOA implementations typically rely on an Enterprise Service Bus (ESB) to manage communication. The ESB is a "smart pipe" that contains complex logic for message routing, transformation, and business rules orchestration. This centralisation creates a bottleneck and a single point of failure. It encourages "Share-as-much-as-possible", where services are tightly coupled to the ESB's schema and logic [1];[4].
 
-In contrast, microservices advocate for **"Smart Endpoints and Dumb Pipes"**. The logic resides entirely within the services themselves. The communication infrastructure (the pipe) simply transports messages without understanding the business domain. Common protocols include HTTP/REST and lightweight messaging queues like RabbitMQ or ZeroMQ. This decoupling allows services to evolve independently without coordinating changes with a central integration team [1][2].
+In contrast, microservices advocate for **"Smart Endpoints and Dumb Pipes"**. The logic resides entirely within the services themselves. The communication infrastructure (the pipe) simply transports messages without understanding the business domain. Common protocols include HTTP/REST and lightweight messaging queues like RabbitMQ or ZeroMQ. This decoupling allows services to evolve independently without coordinating changes with a central integration team [1];[2].
 
 ## 2.3 - The Core Principle: Shared-Nothing Architecture
 
 A foundational theoretical underpinning of microservices is the **Shared-Nothing Architecture (SN)**. In an SN system, each node (service) is independent and self-sufficient, sharing no memory or disk storage with other nodes. This intent is to eliminate contention among nodes, which is the primary limiter of scalability in shared-memory or shared-disk systems.
 
-In microservices, this principle manifests as the **Database-per-Service** pattern. Unlike a monolith where a single database is shared across all modules, microservices mandate that each service manages its own database schema [2][4].
+In microservices, this principle manifests as the **Database-per-Service** pattern. Unlike a monolith where a single database is shared across all modules, microservices mandate that each service manages its own database schema [2];[4].
 
   * **Independence:** A team working on the Order Service can change their schema without coordinating with the Customer Service team.
   * **Fault Isolation:** If the database for the Inventory Service becomes corrupted or overloaded, the Order Service remains operational (provided it has a fallback mechanism).
-  * **Polyglot Persistence:** Different services can use different data storage technologies. Ideally, a service requiring complex relationships might use a Graph DB, while a catalogue service might use a Document Store [2][5].
+  * **Polyglot Persistence:** Different services can use different data storage technologies. Ideally, a service requiring complex relationships might use a Graph DB, while a catalogue service might use a Document Store [2];[5].
 
 ## 2.4 - Domain-Driven Design (DDD) and Bounded Contexts
 
@@ -174,7 +174,7 @@ The client makes a request to a central Load Balancer (e.g., AWS ELB, NGINX). Th
 
 ## 3.3 - The Service Mesh
 
-As the number of services grows, managing inter-service communication (mTLS, retries, observability) in the application code becomes burdensome. A **Service Mesh** (e.g., Istio, Linkerd) is a dedicated infrastructure layer that handles this communication [20][21].
+As the number of services grows, managing inter-service communication (mTLS, retries, observability) in the application code becomes burdensome. A **Service Mesh** (e.g., Istio, Linkerd) is a dedicated infrastructure layer that handles this communication [20];[21].
 
 The Service Mesh typically uses a **Sidecar Pattern**, where a lightweight proxy (like Envoy) is deployed alongside each service instance in the same Pod. The application code talks to the local sidecar, which then manages the network communication to the destination sidecar.
 
@@ -184,7 +184,7 @@ The Service Mesh typically uses a **Sidecar Pattern**, where a lightweight proxy
 
 **Comparison of Mesh Options:**
 
-  * **Istio:** The most feature-rich and widely used mesh. It offers complex traffic management and robust security policies but is notorious for its complexity and high resource consumption (CPU/Memory overhead for sidecars) [20][21].
+  * **Istio:** The most feature-rich and widely used mesh. It offers complex traffic management and robust security policies but is notorious for its complexity and high resource consumption (CPU/Memory overhead for sidecars) [20];[21].
   * **Linkerd:** A lighter, simpler alternative built in Rust. It focuses on simplicity and performance, consuming significantly fewer resources than Istio, though with fewer advanced features [21].
 
 ## 3.4 - Containerisation and Orchestration
@@ -216,7 +216,7 @@ In synchronous communication, the client sends a request and waits for a respons
 To decouple services, asynchronous messaging is often preferred. The producer sends a message and continues processing, not waiting for a response.
 
   * **Message Brokers (RabbitMQ, ActiveMQ):** Used for standard queuing scenarios where messages are processed and then deleted. They support complex routing patterns.
-  * **Event Streaming (Apache Kafka):** Used for high-throughput event logs. Messages are stored for a retention period and can be replayed. This enables patterns like Event Sourcing [2][4].
+  * **Event Streaming (Apache Kafka):** Used for high-throughput event logs. Messages are stored for a retention period and can be replayed. This enables patterns like Event Sourcing [2];[4].
 
 In this model, a service publishes an event (e.g., `OrderPlaced`) without knowing who will consume it. Other services (Inventory, Shipping) subscribe to this event. This "Smart Endpoints, Dumb Pipes" approach ensures that the failure of a consumer does not block the producer.
 
@@ -277,7 +277,7 @@ Microservices generally favour Availability (AP), relying on Eventual Consistenc
 
 Because distributed transactions (2PC) are blocking and not scalable, the **Saga Pattern** is used to manage long-running business processes that span multiple services. A Saga is a sequence of local transactions [12]. Each local transaction updates the database and publishes an event to trigger the next local transaction.
 
-If a local transaction fails, the Saga executes **Compensating Transactions** to undo the changes made by the preceding steps [12][13]. For example, in a travel booking saga:
+If a local transaction fails, the Saga executes **Compensating Transactions** to undo the changes made by the preceding steps [12];[13]. For example, in a travel booking saga:
 
 1.  **Car Rental Service:** Reserve Car (Success).
 2.  **Hotel Service:** Reserve Room (Success).
@@ -338,7 +338,7 @@ The Circuit Breaker pattern wraps a protected function call in a monitor object.
 
   * **Closed State:** Requests flow normally. The circuit counts failures.
   * **Open State:** If the failure rate exceeds a threshold (e.g., 50% errors), the circuit "trips" (opens). Further calls fail immediately without attempting to reach the remote service. This gives the failing service time to recover and prevents resource exhaustion.
-  * **Half-Open State:** After a timeout, the circuit allows a limited number of test requests to pass. If they succeed, the circuit resets to Closed. If they fail, it returns to Open [16][17].
+  * **Half-Open State:** After a timeout, the circuit allows a limited number of test requests to pass. If they succeed, the circuit resets to Closed. If they fail, it returns to Open [16];[17].
 
 <!-- end list -->
 
@@ -365,7 +365,7 @@ stateDiagram-v2
 
 ## 6.2 - Bulkhead Pattern
 
-Inspired by ship design, the **Bulkhead Pattern** isolates elements of an application into pools so that if one fails, the others continue to function [16][17]. For example, using separate thread pools for different downstream services ensures that a slow response from the Inventory Service does not consume all threads, leaving the User Service responsive.
+Inspired by ship design, the **Bulkhead Pattern** isolates elements of an application into pools so that if one fails, the others continue to function [16];[17]. For example, using separate thread pools for different downstream services ensures that a slow response from the Inventory Service does not consume all threads, leaving the User Service responsive.
 
 ## 6.3 - Retries with Exponential Backoff
 
@@ -379,7 +379,7 @@ Debugging a request that spans ten different services is exponentially harder th
 
 ## 7.1 - Distributed Tracing
 
-**Distributed Tracing** is the most critical tool for microservices [18][19]. It tracks a single request as it flows through the distributed system.
+**Distributed Tracing** is the most critical tool for microservices [18];[19]. It tracks a single request as it flows through the distributed system.
 
   * **Trace ID:** A unique identifier assigned to the request at the entry point (API Gateway).
   * **Span:** A unit of work (e.g., a database query, an HTTP call).
@@ -390,7 +390,7 @@ Tools like Jaeger or Zipkin visualise the trace as a timeline (Gantt chart), hig
 ## 7.2 - Metrics and Logs
 
   * **Metrics (The "What"):** Aggregated numerical data tracked over time (e.g., Requests Per Second, P99 Latency, Error Rate). Stored in time-series databases like Prometheus [23]. They are used for alerting and trend analysis.
-  * **Logs (The "Why"):** Detailed textual records of discrete events. In microservices, logs from all containers must be aggregated into a central system (e.g., ELK Stack - Elasticsearch, Logstash, Kibana) to be searchable [22][23]. Structured Logging (JSON format) and Correlation IDs (Trace IDs) are essential to link logs from different services to the same user request [18].
+  * **Logs (The "Why"):** Detailed textual records of discrete events. In microservices, logs from all containers must be aggregated into a central system (e.g., ELK Stack - Elasticsearch, Logstash, Kibana) to be searchable [22];[23]. Structured Logging (JSON format) and Correlation IDs (Trace IDs) are essential to link logs from different services to the same user request [18].
 
 -----
 
@@ -401,7 +401,7 @@ Microservices enable independent deployment, allowing for zero-downtime release 
 ## 8.1 - Deployment Strategies
 
   * **Blue/Green Deployment:** Two identical production environments (Blue and Green) are maintained. The "Blue" version is currently live. The new "Green" version is deployed and tested in the idle environment. Once verified, the load balancer switches all traffic from Blue to Green instantly. This allows for immediate rollback if issues arise, but requires double the infrastructure resources [3].
-  * **Canary Release:** The new version is deployed to a small subset of instances (the "Canary"). A small percentage of traffic (e.g., 5%) is routed to the new version. The system is monitored for errors (higher error rates, latency spikes). If stable, the traffic percentage is gradually increased to 100%. This limits the "blast radius" of a faulty release to a small fraction of users [3][22].
+  * **Canary Release:** The new version is deployed to a small subset of instances (the "Canary"). A small percentage of traffic (e.g., 5%) is routed to the new version. The system is monitored for errors (higher error rates, latency spikes). If stable, the traffic percentage is gradually increased to 100%. This limits the "blast radius" of a faulty release to a small fraction of users [3];[22].
 
 ## 8.2 - Testing Strategies
 
@@ -419,10 +419,10 @@ While microservices offer distinct advantages in scalability and velocity, they 
 
 ## 9.1 - Advantages
 
-  * **Independent Deployability:** A team can deploy a fix to the Shipping Service without coordinating with the Billing team or redeploying the whole system [1][2][6].
+  * **Independent Deployability:** A team can deploy a fix to the Shipping Service without coordinating with the Billing team or redeploying the whole system [1];[2];[6].
   * **Technological Freedom:** Services can be written in the language best suited for the task (e.g., Python for AI, Go for high concurrency, Node.js for I/O).
   * **Fault Isolation:** A memory leak in the Image Processing Service crashes only that container, not the entire application.
-  * **Organisational Scalability:** Microservices align with Conway’s Law, allowing organisations to scale by assigning small, autonomous teams to own entire business capabilities [1][6].
+  * **Organisational Scalability:** Microservices align with Conway’s Law, allowing organisations to scale by assigning small, autonomous teams to own entire business capabilities [1];[6].
 
 ## 9.2 - Disadvantages
 

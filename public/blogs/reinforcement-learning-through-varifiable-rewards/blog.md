@@ -39,7 +39,7 @@
 
 The paradigm of **Reinforcement Learning with Verifiable Rewards (RLVR)** has emerged as the definitive methodology for advancing the reasoning capabilities of Large Language Models (LLMs). While **Reinforcement Learning from Human Feedback (RLHF)** proved instrumental in aligning models for general instruction following and safety, it has encountered a fundamental ceiling in domains requiring rigorous logic (such as mathematics, coding, and scientific reasoning). Human annotators are inherently poor scalers of verification; they are prone to fatigue, struggle with subtle logical fallacies in long-chain reasoning, and are costly to employ at the scale required for frontier model training.
 
-RLVR fundamentally shifts the alignment target from subjective preference to objective correctness. By integrating deterministic verification environments (such as code compilers, symbolic math solvers, or formal theorem provers) into the training loop, researchers can generate infinite synthetic training signals without human intervention. This report provides an exhaustive technical examination of RLVR, with a specific focus on the **Group Relative Policy Optimisation (GRPO)** algorithm, which has enabled the training of reasoning models like DeepSeek-R1 by eliminating the computational overhead of the Value Function critic.[1][2]
+RLVR fundamentally shifts the alignment target from subjective preference to objective correctness. By integrating deterministic verification environments (such as code compilers, symbolic math solvers, or formal theorem provers) into the training loop, researchers can generate infinite synthetic training signals without human intervention. This report provides an exhaustive technical examination of RLVR, with a specific focus on the **Group Relative Policy Optimisation (GRPO)** algorithm, which has enabled the training of reasoning models like DeepSeek-R1 by eliminating the computational overhead of the Value Function critic.[1];[2]
 
 We analyse the dichotomy between **Outcome Supervision (ORM)** and **Process Supervision (PRM)**, demonstrating why dense, step-by-step verification incurs a "negative alignment tax", improving both model safety and performance.[4] Furthermore, we critically evaluate the theoretical debate regarding whether RLVR induces novel reasoning capabilities or merely acts as an efficient sampler of pre-existing latent knowledge. This document is structured for a technical audience, assuming fluency in probability theory and neural network architectures, and aims to provide the theoretical scaffolding necessary to implement RLVR systems.
 
@@ -113,7 +113,7 @@ The Advantage function is critical because it reduces the variance of the gradie
 
 The implementation of standard PPO for LLMs is computationally exorbitant. PPO requires four models to be loaded into memory: the Policy (Actor), the Reference Model (for KL divergence), the Reward Model, and the Critic (Value Function). For a 70B parameter model, this memory footprint is often prohibitive, requiring massive clusters just to store the weights and optimiser states.
 
-**Group Relative Policy Optimisation (GRPO)**, introduced in the DeepSeekMath paper and popularised by DeepSeek-R1, is an architectural innovation designed specifically to eliminate the Critic model and the Reward Model (when using programmatic verification), thereby enabling the scaling of RLVR.[1][2]
+**Group Relative Policy Optimisation (GRPO)**, introduced in the DeepSeekMath paper and popularised by DeepSeek-R1, is an architectural innovation designed specifically to eliminate the Critic model and the Reward Model (when using programmatic verification), thereby enabling the scaling of RLVR.[1];[2]
 
 **Standard PPO**
 ```mermaid
@@ -171,7 +171,7 @@ $$ \mathcal{J}_{GRPO}(\theta) = \mathbb{E}_{q \sim P(Q),\, \{o_i\}_{i=1}^G \sim 
 
   * $\rho_{i,t}$ (Probability Ratio): $\frac{\pi_\theta(o_{i,t} | q, o_{i,<t})}{\pi_{\theta_{old}}(o_{i,t} | q, o_{i,<t})}$. This term measures how much the updated policy diverges from the sampling policy.
   * **Clipping:** The clip function restricts $\rho_{i,t}$ to the range $[1-\epsilon, 1+\epsilon]$ (typically $\epsilon=0.2$). This prevents "destructive updates" where the policy changes too drastically based on a single batch, ensuring training stability (the Trust Region).
-  * **KL Divergence ($\mathbb{D}_{KL}$):** This term ensures the model stays close to the reference model (usually the SFT checkpoint). This is crucial to prevent reward hacking (where the model outputs gibberish that satisfies the verifier) and catastrophic forgetting of linguistic capabilities.[1][2]
+  * **KL Divergence ($\mathbb{D}_{KL}$):** This term ensures the model stays close to the reference model (usually the SFT checkpoint). This is crucial to prevent reward hacking (where the model outputs gibberish that satisfies the verifier) and catastrophic forgetting of linguistic capabilities.[1];[2]
   * **Token Averaging:** The loss is averaged over all tokens $t$ in the sequence length $|o_i|$.
 
 ## 4.3 - Computational Efficiency Comparison
@@ -186,7 +186,7 @@ The following table illustrates the resource reduction achieved by GRPO compared
 | **Critic (Value)**   | Trainable ($M$)                | Removed               | Replaced by Group Mean          |
 | **Optimiser States** | $2 \times M$ (Policy + Critic) | $1 \times M$ (Policy) | No Critic Parameters            |
 
-**Implication:** GRPO essentially halves the memory requirement for trainable parameters and removes the inference overhead of the Reward Model, freeing up VRAM to increase the context window; a critical requirement for training reasoning models that generate long Chains of Thought.[1][2]
+**Implication:** GRPO essentially halves the memory requirement for trainable parameters and removes the inference overhead of the Reward Model, freeing up VRAM to increase the context window; a critical requirement for training reasoning models that generate long Chains of Thought.[1];[2]
 
 ## 4.4 - Mathematical Example: The GRPO Update
 
@@ -378,7 +378,7 @@ A recent study by Tsinghua University researchers analysed RLVR using the **Pass
 
 ## 7.2 - The Counter-Argument: Efficiency is Capability
 
-Proponents of RLVR argue that in practical terms, efficiency is capability. A model that requires 10,000 samples to find a correct answer is useless. By compressing the search space, RLVR makes the reasoning accessible. Furthermore, DeepSeek's results show that for very hard benchmarks (AIME), the RLVR model does exceed the base model's Pass@k in specific regimes, suggesting that the self-correction mechanism (backtracking) allows it to navigate complex solution trees that simple sampling cannot traverse.[1][10]
+Proponents of RLVR argue that in practical terms, efficiency is capability. A model that requires 10,000 samples to find a correct answer is useless. By compressing the search space, RLVR makes the reasoning accessible. Furthermore, DeepSeek's results show that for very hard benchmarks (AIME), the RLVR model does exceed the base model's Pass@k in specific regimes, suggesting that the self-correction mechanism (backtracking) allows it to navigate complex solution trees that simple sampling cannot traverse.[1];[10]
 
 -----
 
@@ -402,9 +402,9 @@ This incentivises the model to be calibrated. It prevents "hallucinated reasonin
 
 ## 8.4 - Formal Verification (Lean/Coq)
 
-The ultimate frontier is **Autoformalisation**. Instead of outputting Python or text, the model outputs code in a formal language like Lean. The Lean compiler provides a 100% rigorous verification. If the proof compiles, it is correct.[6][7][8]
+The ultimate frontier is **Autoformalisation**. Instead of outputting Python or text, the model outputs code in a formal language like Lean. The Lean compiler provides a 100% rigorous verification. If the proof compiles, it is correct.[6];[7];[8]
 **The Challenge:** Data scarcity. There are few Lean proofs available for training.
-**The Hybrid Approach:** Models are trained to translate informal math into Lean, verify it, and then use the successful Lean proofs as training data (**Self-Correction loop**). This bridges the gap between the abundance of natural language math and the rigour of formal systems.[6][7]
+**The Hybrid Approach:** Models are trained to translate informal math into Lean, verify it, and then use the successful Lean proofs as training data (**Self-Correction loop**). This bridges the gap between the abundance of natural language math and the rigour of formal systems.[6];[7]
 
 -----
 
@@ -443,7 +443,7 @@ Reinforcement Learning with Verifiable Rewards marks the transition of Large Lan
 
 The architectural innovation of Group Relative Policy Optimisation (GRPO) has democratised this capability, removing the need for massive value function models and enabling efficient training on long-context reasoning chains. While theoretical debates persist regarding the nature of the intelligence emerging from these systems (whether it is true generalisation or efficient search) the empirical results are undeniable. Models like DeepSeek-R1 and OpenAI o1 have redefined the state-of-the-art in mathematics and coding.[1]
 
-For the technical researcher, the path forward lies in the design of better verifiers (formal methods), better exploration strategies (DARS, THR), and the integration of process supervision to provide dense, meaningful signals to the learning agent.[4][11][12] As we refine these feedback loops, we move closer to AI systems that can not only generate plausible text but can verify, correct, and guarantee the truth of their own reasoning.
+For the technical researcher, the path forward lies in the design of better verifiers (formal methods), better exploration strategies (DARS, THR), and the integration of process supervision to provide dense, meaningful signals to the learning agent.[4];[11];[12] As we refine these feedback loops, we move closer to AI systems that can not only generate plausible text but can verify, correct, and guarantee the truth of their own reasoning.
 
 # References
 

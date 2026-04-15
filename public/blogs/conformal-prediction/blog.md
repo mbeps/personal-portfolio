@@ -1,36 +1,36 @@
 - [1 - Introduction: The Imperative of Uncertainty Quantification](#1---introduction-the-imperative-of-uncertainty-quantification)
 - [2 - Mathematical Foundations and Prerequisites](#2---mathematical-foundations-and-prerequisites)
-	- [2.1 - The Assumption of Exchangeability](#21---the-assumption-of-exchangeability)
-	- [2.2 - Empirical Quantiles and Finite-Sample Correction](#22---empirical-quantiles-and-finite-sample-correction)
+  - [2.1 - The Assumption of Exchangeability](#21---the-assumption-of-exchangeability)
+  - [2.2 - Empirical Quantiles and Finite-Sample Correction](#22---empirical-quantiles-and-finite-sample-correction)
 - [3 - Core Theory: The Generalised Conformal Framework](#3---core-theory-the-generalised-conformal-framework)
-	- [3.1 - The Non-Conformity Measure (NCM)](#31---the-non-conformity-measure-ncm)
-	- [3.2 - The Validity Theorem](#32---the-validity-theorem)
+  - [3.1 - The Non-Conformity Measure (NCM)](#31---the-non-conformity-measure-ncm)
+  - [3.2 - The Validity Theorem](#32---the-validity-theorem)
 - [4 - Architectural Variants: Transductive vs. Inductive](#4---architectural-variants-transductive-vs-inductive)
-	- [4.1 - Transductive (Full) Conformal Prediction (TCP)](#41---transductive-full-conformal-prediction-tcp)
-	- [4.2 - Inductive (Split) Conformal Prediction (ICP)](#42---inductive-split-conformal-prediction-icp)
-	- [4.3 - Table: Comparative Analysis of TCP and ICP](#43---table-comparative-analysis-of-tcp-and-icp)
+  - [4.1 - Transductive (Full) Conformal Prediction (TCP)](#41---transductive-full-conformal-prediction-tcp)
+  - [4.2 - Inductive (Split) Conformal Prediction (ICP)](#42---inductive-split-conformal-prediction-icp)
+  - [4.3 - Table: Comparative Analysis of TCP and ICP](#43---table-comparative-analysis-of-tcp-and-icp)
 - [5 - Inductive Conformal Prediction: Step-by-Step Implementation](#5---inductive-conformal-prediction-step-by-step-implementation)
-	- [5.1 - Algorithm Specification (Regression)](#51---algorithm-specification-regression)
-	- [5.2 - Mock Numerical Example](#52---mock-numerical-example)
+  - [5.1 - Algorithm Specification (Regression)](#51---algorithm-specification-regression)
+  - [5.2 - Mock Numerical Example](#52---mock-numerical-example)
 - [6 - Classification Methodologies](#6---classification-methodologies)
-	- [6.1 - Threshold Prediction Sets (TPS)](#61---threshold-prediction-sets-tps)
-	- [6.2 - Adaptive Prediction Sets (APS)](#62---adaptive-prediction-sets-aps)
+  - [6.1 - Threshold Prediction Sets (TPS)](#61---threshold-prediction-sets-tps)
+  - [6.2 - Adaptive Prediction Sets (APS)](#62---adaptive-prediction-sets-aps)
 - [7 - Advanced Regression: Conformalised Quantile Regression (CQR)](#7---advanced-regression-conformalised-quantile-regression-cqr)
-	- [7.1 - Quantile Regression and Pinball Loss](#71---quantile-regression-and-pinball-loss)
-	- [7.2 - The CQR Algorithm](#72---the-cqr-algorithm)
+  - [7.1 - Quantile Regression and Pinball Loss](#71---quantile-regression-and-pinball-loss)
+  - [7.2 - The CQR Algorithm](#72---the-cqr-algorithm)
 - [8 - Addressing Data Efficiency: CV+ and Jackknife+](#8---addressing-data-efficiency-cv-and-jackknife)
 - [9 - Beyond Exchangeability: Dealing with Distribution Shifts](#9---beyond-exchangeability-dealing-with-distribution-shifts)
-	- [9.1 - Covariate Shift and Weighted Conformal Prediction](#91---covariate-shift-and-weighted-conformal-prediction)
-	- [9.2 - Time Series: Adaptive Conformal Inference (ACI)](#92---time-series-adaptive-conformal-inference-aci)
+  - [9.1 - Covariate Shift and Weighted Conformal Prediction](#91---covariate-shift-and-weighted-conformal-prediction)
+  - [9.2 - Time Series: Adaptive Conformal Inference (ACI)](#92---time-series-adaptive-conformal-inference-aci)
 - [10 - Implementation Architecture: The "Plug-in" Wrapper](#10---implementation-architecture-the-plug-in-wrapper)
-	- [10.1 - System Diagram](#101---system-diagram)
+  - [10.1 - System Diagram](#101---system-diagram)
 - [11 - Advantages and Disadvantages](#11---advantages-and-disadvantages)
-	- [11.1 - Advantages](#111---advantages)
-	- [11.2 - Disadvantages](#112---disadvantages)
+  - [11.1 - Advantages](#111---advantages)
+  - [11.2 - Disadvantages](#112---disadvantages)
 - [12 - Applications in Modern AI](#12---applications-in-modern-ai)
-	- [12.1 - Natural Language Processing (NLP)](#121---natural-language-processing-nlp)
-	- [12.2 - Computer Vision](#122---computer-vision)
-	- [12.3 - Time Series Forecasting](#123---time-series-forecasting)
+  - [12.1 - Natural Language Processing (NLP)](#121---natural-language-processing-nlp)
+  - [12.2 - Computer Vision](#122---computer-vision)
+  - [12.3 - Time Series Forecasting](#123---time-series-forecasting)
 - [13 - Conclusion](#13---conclusion)
 - [References](#references)
 
@@ -39,7 +39,7 @@
 
 The rapid proliferation of artificial intelligence (AI) and machine learning (ML) across critical sectors (ranging from autonomous transportation and precision medicine to algorithmic trading and judicial sentencing) has precipitated a fundamental crisis of trust. While modern deep neural networks and ensemble methods demonstrate unprecedented predictive accuracy on varied benchmarks, they characteristically suffer from a lack of reliable self-awareness. A deep learning classifier may predict a medical diagnosis with 99% softmax probability while being entirely incorrect, a phenomenon known as overconfidence or poor calibration. In high-stakes decision-making, a point prediction (a single scalar output minimising a loss function) is insufficient. Decision-makers require a rigorous quantification of uncertainty: a guarantee that the true outcome lies within a specific range with a high probability.
 
-Conformal Prediction (CP), a theoretical framework pioneered by Vladimir Vovk (my professor), Alexander Gammerman, and Glenn Shafer in the late 1990s, addresses this limitation by shifting the paradigm from point prediction to set-valued prediction.[1] Unlike Bayesian methods, which rely on priors that may be difficult to specify, or bootstrapping techniques that depend on asymptotic convergence, CP provides finite-sample, distribution-free statistical guarantees.[1][2] If a Conformal Predictor is calibrated to a 95% confidence level, it is mathematically guaranteed to contain the true outcome 95% of the time, provided the data satisfies the assumption of exchangeability.[1][2]
+Conformal Prediction (CP), a theoretical framework pioneered by Vladimir Vovk (my professor), Alexander Gammerman, and Glenn Shafer in the late 1990s, addresses this limitation by shifting the paradigm from point prediction to set-valued prediction.[1] Unlike Bayesian methods, which rely on priors that may be difficult to specify, or bootstrapping techniques that depend on asymptotic convergence, CP provides finite-sample, distribution-free statistical guarantees.[1];[2] If a Conformal Predictor is calibrated to a 95% confidence level, it is mathematically guaranteed to contain the true outcome 95% of the time, provided the data satisfies the assumption of exchangeability.[1];[2]
 
 This report provides an exhaustive technical examination of Conformal Prediction. It elucidates the mathematical foundations, contrasts the architectural variants of transductive and inductive inference, and explores advanced methodologies such as Conformalised Quantile Regression (CQR) and Adaptive Conformal Inference (ACI) for non-exchangeable time series. The objective is to equip the reader with a nuanced, robust understanding of how to implement statistically valid uncertainty wrappers for arbitrary black-box models.
 
@@ -51,14 +51,14 @@ The rigour of Conformal Prediction stems from its reliance on minimal assumption
 
 ## 2.1 - The Assumption of Exchangeability
 
-The fundamental theorem underlying all conformal validity is exchangeability. This is a weaker condition than the Independent and Identically Distributed (i.i.d.) assumption typically invoked in statistical learning theory, yet it is sufficient to establish the validity of conformal predictors.[1][2]
+The fundamental theorem underlying all conformal validity is exchangeability. This is a weaker condition than the Independent and Identically Distributed (i.i.d.) assumption typically invoked in statistical learning theory, yet it is sufficient to establish the validity of conformal predictors.[1];[2]
 
 **Definition:**
 A sequence of random variables $Z_1, Z_2, \dots, Z_n$ is considered exchangeable if their joint probability distribution is invariant under any permutation of the indices.[1] Formally, for any permutation $\pi$ of the indices $\{1, \dots, n\}$:
 
 $$P(Z_1, Z_2, \dots, Z_n) = P(Z_{\pi(1)}, Z_{\pi(2)}, \dots, Z_{\pi(n)})$$
 
-While i.i.d. data is always exchangeable, exchangeable data need not be independent. A classic example is sampling without replacement from a finite urn; the outcome of the second draw depends on the first, yet the sequence is exchangeable because the joint probability of drawing any specific sequence of items is independent of the order in which they are drawn. In the context of Conformal Prediction, we assume that the proper training data, the calibration data, and the test point are exchangeable. This symmetry implies that the test point is statistically indistinguishable from the training points up until the moment its label is revealed. Consequently, the "strangeness" or error score of the test point is equally likely to rank anywhere among the scores of the calibration points.[1][2]
+While i.i.d. data is always exchangeable, exchangeable data need not be independent. A classic example is sampling without replacement from a finite urn; the outcome of the second draw depends on the first, yet the sequence is exchangeable because the joint probability of drawing any specific sequence of items is independent of the order in which they are drawn. In the context of Conformal Prediction, we assume that the proper training data, the calibration data, and the test point are exchangeable. This symmetry implies that the test point is statistically indistinguishable from the training points up until the moment its label is revealed. Consequently, the "strangeness" or error score of the test point is equally likely to rank anywhere among the scores of the calibration points.[1];[2]
 
 ## 2.2 - Empirical Quantiles and Finite-Sample Correction
 
@@ -70,7 +70,7 @@ $$\hat{F}_n(t) = \frac{1}{n} \sum_{i=1}^n \mathbb{I}(s_i \leq t)$$
 
 where $\mathbb{I}(\cdot)$ is the indicator function.
 
-To guarantee a coverage of at least $1-\alpha$ (e.g., 0.95), we cannot simply take the $(1-\alpha)$-th quantile of the observed scores. Due to the discrete nature of the finite sample, we must apply a finite-sample correction. The critical value $\hat{q}$ is typically chosen as the $\lceil (n+1)(1-\alpha) \rceil$-th smallest value in the calibration set. The term $(n+1)$ accounts for the inclusion of the test point itself in the exchangeable sequence. This precise calculation ensures that the probability of the test score exceeding the threshold is strictly bounded by $\alpha$.[1][2]
+To guarantee a coverage of at least $1-\alpha$ (e.g., 0.95), we cannot simply take the $(1-\alpha)$-th quantile of the observed scores. Due to the discrete nature of the finite sample, we must apply a finite-sample correction. The critical value $\hat{q}$ is typically chosen as the $\lceil (n+1)(1-\alpha) \rceil$-th smallest value in the calibration set. The term $(n+1)$ accounts for the inclusion of the test point itself in the exchangeable sequence. This precise calculation ensures that the probability of the test score exceeding the threshold is strictly bounded by $\alpha$.[1];[2]
 
 -----
 
@@ -85,7 +85,7 @@ The engine of a Conformal Predictor is the Non-Conformity Measure (NCM), a real-
   * **Low Score:** The example $z$ conforms well to the patterns in $D$.
   * **High Score:** The example $z$ is an outlier or poorly predicted by the model trained on $D$.
 
-The choice of NCM determines the efficiency (size) of the prediction sets but not their validity (coverage). Validity is guaranteed by the framework; efficiency depends on the quality of the underlying model and the suitability of the NCM.[1][2]
+The choice of NCM determines the efficiency (size) of the prediction sets but not their validity (coverage). Validity is guaranteed by the framework; efficiency depends on the quality of the underlying model and the suitability of the NCM.[1];[2]
 
 Common NCMs include:
 
@@ -98,7 +98,7 @@ The theoretical guarantee of CP can be stated as follows: For any exchangeable d
 
 $$P(Y_{n+1} \in \mathcal{C}(X_{n+1})) \geq 1 - \alpha$$
 
-This probability is marginal, meaning it is taken over the randomness of the calibration and test data. It is important to note that this is a conservative bound; for continuous scoring functions, the coverage is bounded tightly between $1-\alpha$ and $1-\alpha + \frac{1}{n+1}$, demonstrating that the method is not only valid but also efficient in the limit.[1][2]
+This probability is marginal, meaning it is taken over the randomness of the calibration and test data. It is important to note that this is a conservative bound; for continuous scoring functions, the coverage is bounded tightly between $1-\alpha$ and $1-\alpha + \frac{1}{n+1}$, demonstrating that the method is not only valid but also efficient in the limit.[1];[2]
 
 -----
 
@@ -108,7 +108,7 @@ While the theoretical core remains consistent, the implementation of CP varies s
 
 ## 4.1 - Transductive (Full) Conformal Prediction (TCP)
 
-TCP represents the "purest" form of the theory, offering the highest statistical efficiency (smallest prediction sets for a given coverage) at the cost of extreme computational expense.[1][3]
+TCP represents the "purest" form of the theory, offering the highest statistical efficiency (smallest prediction sets for a given coverage) at the cost of extreme computational expense.[1];[3]
 
 **The Algorithm:**
 
@@ -142,7 +142,7 @@ graph TD
 ```
 
 **Limitations:**
-In a regression setting where $\mathcal{Y} = \mathbb{R}$, this would require infinite retrainings. Even in classification with $K$ classes, retraining complex models (like deep neural networks) $K$ times for every single test inference is computationally prohibitive. TCP is thus restricted to simple models (like Nearest Neighbours or Ridge Regression) where the "retraining" step can be performed via efficient algebraic updates.[1][3]
+In a regression setting where $\mathcal{Y} = \mathbb{R}$, this would require infinite retrainings. Even in classification with $K$ classes, retraining complex models (like deep neural networks) $K$ times for every single test inference is computationally prohibitive. TCP is thus restricted to simple models (like Nearest Neighbours or Ridge Regression) where the "retraining" step can be performed via efficient algebraic updates.[1];[3]
 
 ## 4.2 - Inductive (Split) Conformal Prediction (ICP)
 
@@ -180,7 +180,7 @@ graph LR
 ```
 
 **Advantages:**
-ICP is model-agnostic and requires training the model only once. The calibration step is computationally negligible, involving only forward passes and sorting a list of scalars. This makes ICP the standard choice for deep learning applications.[1][2]
+ICP is model-agnostic and requires training the model only once. The calibration step is computationally negligible, involving only forward passes and sorting a list of scalars. This makes ICP the standard choice for deep learning applications.[1];[2]
 
 ## 4.3 - Table: Comparative Analysis of TCP and ICP
 
@@ -442,7 +442,7 @@ In medical imaging (e.g., tumour segmentation), point predictions are dangerous.
 
 ## 12.3 - Time Series Forecasting
 
-In supply chain and energy grid management, CP (specifically ACI and EnbPI) is used to predict demand intervals. Unlike standard quantile regression, these intervals dynamically adjust to sudden shocks (e.g., a heatwave spiking energy use), preventing grid failures due to underestimation of load.[6][8]
+In supply chain and energy grid management, CP (specifically ACI and EnbPI) is used to predict demand intervals. Unlike standard quantile regression, these intervals dynamically adjust to sudden shocks (e.g., a heatwave spiking energy use), preventing grid failures due to underestimation of load.[6];[8]
 
 -----
 

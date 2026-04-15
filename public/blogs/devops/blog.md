@@ -275,7 +275,7 @@ As DevOps has matured, it has evolved into specialised sub-disciplines to addres
 
 ## 4.1 - DevSecOps: Shifting Security Left
 
-Traditional security models operated as a "gatekeeper" at the end of the SDLC, often delaying releases or forcing last-minute rework. **DevSecOps** integrates security practices into the DevOps pipeline, shifting security "left" to the earliest stages of development. The philosophy is that security is a shared responsibility, integrated into the daily work of developers rather than audited at the end. [16][17][18]
+Traditional security models operated as a "gatekeeper" at the end of the SDLC, often delaying releases or forcing last-minute rework. **DevSecOps** integrates security practices into the DevOps pipeline, shifting security "left" to the earliest stages of development. The philosophy is that security is a shared responsibility, integrated into the daily work of developers rather than audited at the end. [16];[17];[18]
 
 ```mermaid
 graph TD
@@ -302,11 +302,11 @@ To implement DevSecOps without slowing down velocity, automated security control
   * **IAST (Interactive Application Security Testing):** Combines SAST and DAST by monitoring the application from within during execution, providing real-time analysis.
   * **Secret Management:** Ensuring that credentials (API keys, passwords) are not hardcoded in the repository but injected securely at runtime using tools like HashiCorp Vault.
 
-The IEEE and other academic bodies emphasize that DevSecOps is essential for mitigating risks in modern, distributed architectures, particularly "Supply Chain Attacks" where the pipeline itself is targeted. [16][17][18]
+The IEEE and other academic bodies emphasize that DevSecOps is essential for mitigating risks in modern, distributed architectures, particularly "Supply Chain Attacks" where the pipeline itself is targeted. [16];[17];[18]
 
 ## 4.2 - GitOps: The Operational Paradigm Shift
 
-**GitOps** is a modern operational framework that applies DevOps best practices (version control, collaboration, compliance, and CI/CD) to infrastructure automation. In GitOps, the Git repository is the single source of truth for the entire system state, including infrastructure and application configurations. [19][20]
+**GitOps** is a modern operational framework that applies DevOps best practices (version control, collaboration, compliance, and CI/CD) to infrastructure automation. In GitOps, the Git repository is the single source of truth for the entire system state, including infrastructure and application configurations. [19];[20]
 
 ```mermaid
 sequenceDiagram
@@ -362,7 +362,7 @@ As DevOps adoption has scaled, a significant challenge has emerged: the overwhel
 
 In many DevOps environments, the extraneous load has become unmanageable, leading to burnout and reduced velocity.
 
-**Platform Engineering** has emerged as the solution to this "cognitive crisis." It involves building an **Internal Developer Platform (IDP)** that acts as a product for the development teams. [22][23]
+**Platform Engineering** has emerged as the solution to this "cognitive crisis." It involves building an **Internal Developer Platform (IDP)** that acts as a product for the development teams. [22];[23]
 
 ```mermaid
 graph TD
@@ -397,24 +397,24 @@ While DevOps offers significant advantages, it is not without critical challenge
 
 ## 6.1 - Digital Taylorism and Surveillance
 
-A growing body of academic critique views the metric-heavy nature of DevOps (continuous monitoring, DORA metrics, commit tracking) as a modern form of **Digital Taylorism**. Frederick Taylor's Scientific Management sought to optimise manual labour by decomposing tasks and measuring them precisely. Critics argue that DevOps applies this same logic to knowledge work (coding), reducing complex creative processes to data points. [24][25]
+A growing body of academic critique views the metric-heavy nature of DevOps (continuous monitoring, DORA metrics, commit tracking) as a modern form of **Digital Taylorism**. Frederick Taylor's Scientific Management sought to optimise manual labour by decomposing tasks and measuring them precisely. Critics argue that DevOps applies this same logic to knowledge work (coding), reducing complex creative processes to data points. [24];[25]
 
-The integration of "Continuous Monitoring" tools raises ethical concerns about the "panoptic" gaze of management. Observability tools designed to track system health can easily be repurposed to surveil employee activity. This "quantified self" at work can lead to a loss of autonomy, increased stress, and a culture of performative busyness rather than genuine productivity. The risk is that the "human" element of CAMS is subordinated to "Measurement," creating a data-driven sweatshop where developers are managed by algorithm rather than empathy. [24][28]
+The integration of "Continuous Monitoring" tools raises ethical concerns about the "panoptic" gaze of management. Observability tools designed to track system health can easily be repurposed to surveil employee activity. This "quantified self" at work can lead to a loss of autonomy, increased stress, and a culture of performative busyness rather than genuine productivity. The risk is that the "human" element of CAMS is subordinated to "Measurement," creating a data-driven sweatshop where developers are managed by algorithm rather than empathy. [24];[28]
 
 ## 6.2 - Implementation Failure and Barriers
 
-Despite its popularity, empirical studies suggest a high failure rate for DevOps initiatives. [8][30] Gartner has predicted that 90% of DevOps initiatives could fail to meet expectations due to leadership and cultural issues.
+Despite its popularity, empirical studies suggest a high failure rate for DevOps initiatives. [8];[30] Gartner has predicted that 90% of DevOps initiatives could fail to meet expectations due to leadership and cultural issues.
 
-  * **Cultural Inertia:** The "immune system" of large, bureaucratic organisations often rejects the collaborative, high-trust model of DevOps. Middle management may resist the loss of control, and siloed teams may resist the transparency required. [10][11][29]
+  * **Cultural Inertia:** The "immune system" of large, bureaucratic organisations often rejects the collaborative, high-trust model of DevOps. Middle management may resist the loss of control, and siloed teams may resist the transparency required. [10];[11];[29]
   * **Lack of Leadership:** Without strong executive sponsorship, DevOps efforts often remain grassroots experiments that fail to scale.
-  * **Tool Sprawl vs. Process Change:** A common anti-pattern is adopting the tools of DevOps (Jenkins, Docker) without changing the process or culture. This leads to "Automated Silos" where the same dysfunction exists, just faster. [30][31]
-  * **The "DevOps Team" Silo:** Ironically, many organisations attempt to implement DevOps by creating a separate "DevOps Team." This creates a new silo between Dev and Ops, exacerbating the very problem DevOps was meant to solve. [8][11]
+  * **Tool Sprawl vs. Process Change:** A common anti-pattern is adopting the tools of DevOps (Jenkins, Docker) without changing the process or culture. This leads to "Automated Silos" where the same dysfunction exists, just faster. [30];[31]
+  * **The "DevOps Team" Silo:** Ironically, many organisations attempt to implement DevOps by creating a separate "DevOps Team." This creates a new silo between Dev and Ops, exacerbating the very problem DevOps was meant to solve. [8];[11]
 
 # 7 - Metrics and Measurement: The DORA Framework
 
 To navigate these challenges and validate success, effective measurement is crucial. The industry has coalesced around the research conducted by the **DevOps Research and Assessment (DORA)** group, now part of Google. [7] Their rigorous statistical analysis has identified four key metrics that predict organisational performance.
 
-**Table 3: The Four Key DORA Metrics** [7][12][13]
+**Table 3: The Four Key DORA Metrics** [7];[12];[13]
 
 | Metric Type           | Metric Name             | Definition                                                     | Goal                        |
 | :-------------------- | :---------------------- | :------------------------------------------------------------- | :-------------------------- |

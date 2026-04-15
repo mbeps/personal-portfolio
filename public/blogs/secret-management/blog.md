@@ -1,36 +1,36 @@
 - [1 - Introduction: The Imperative of Secret Management](#1---introduction-the-imperative-of-secret-management)
 - [2 - Theoretical Foundations and Core Definitions](#2---theoretical-foundations-and-core-definitions)
-	- [2.1 - Taxonomy of Secrets](#21---taxonomy-of-secrets)
-	- [2.2 - The Secret Lifecycle](#22---the-secret-lifecycle)
-	- [2.3 - The "Secret Zero" Paradox](#23---the-secret-zero-paradox)
+  - [2.1 - Taxonomy of Secrets](#21---taxonomy-of-secrets)
+  - [2.2 - The Secret Lifecycle](#22---the-secret-lifecycle)
+  - [2.3 - The "Secret Zero" Paradox](#23---the-secret-zero-paradox)
 - [3 - Historical Evolution: From Files to Frameworks](#3---historical-evolution-from-files-to-frameworks)
-	- [3.1 - The Era of Hardcoding and Configuration Files](#31---the-era-of-hardcoding-and-configuration-files)
-	- [3.2 - The Rise of Environment Variables and CI/CD](#32---the-rise-of-environment-variables-and-cicd)
-	- [3.3 - The Cloud-Native Explosion and Secret Sprawl](#33---the-cloud-native-explosion-and-secret-sprawl)
+  - [3.1 - The Era of Hardcoding and Configuration Files](#31---the-era-of-hardcoding-and-configuration-files)
+  - [3.2 - The Rise of Environment Variables and CI/CD](#32---the-rise-of-environment-variables-and-cicd)
+  - [3.3 - The Cloud-Native Explosion and Secret Sprawl](#33---the-cloud-native-explosion-and-secret-sprawl)
 - [4 - Architecture of Modern Secret Management Systems](#4---architecture-of-modern-secret-management-systems)
-	- [4.1 - The Barrier Architecture and Seal Mechanism](#41---the-barrier-architecture-and-seal-mechanism)
-	- [4.2 - Envelope Encryption](#42---envelope-encryption)
-	- [4.3 - Pluggable Secrets Engines](#43---pluggable-secrets-engines)
-	- [4.4 - Access Control Policies](#44---access-control-policies)
+  - [4.1 - The Barrier Architecture and Seal Mechanism](#41---the-barrier-architecture-and-seal-mechanism)
+  - [4.2 - Envelope Encryption](#42---envelope-encryption)
+  - [4.3 - Pluggable Secrets Engines](#43---pluggable-secrets-engines)
+  - [4.4 - Access Control Policies](#44---access-control-policies)
 - [5 - Dynamic Secrets: The Paradigm Shift](#5---dynamic-secrets-the-paradigm-shift)
-	- [5.1 - The Mechanic of Dynamism](#51---the-mechanic-of-dynamism)
-	- [5.2 - Advantages of Dynamic Secrets](#52---advantages-of-dynamic-secrets)
-	- [5.3 - Operational Challenges: Lease Explosion](#53---operational-challenges-lease-explosion)
+  - [5.1 - The Mechanic of Dynamism](#51---the-mechanic-of-dynamism)
+  - [5.2 - Advantages of Dynamic Secrets](#52---advantages-of-dynamic-secrets)
+  - [5.3 - Operational Challenges: Lease Explosion](#53---operational-challenges-lease-explosion)
 - [6 - Secret Management in Kubernetes Environments](#6---secret-management-in-kubernetes-environments)
-	- [6.1 - Native Kubernetes Secrets vs. External Stores](#61---native-kubernetes-secrets-vs-external-stores)
-	- [6.2 - The Sidecar Injection Pattern (Vault Agent)](#62---the-sidecar-injection-pattern-vault-agent)
-	- [6.3 - The Secrets Store CSI Driver Pattern](#63---the-secrets-store-csi-driver-pattern)
-	- [6.4 - The External Secrets Operator (ESO)](#64---the-external-secrets-operator-eso)
+  - [6.1 - Native Kubernetes Secrets vs. External Stores](#61---native-kubernetes-secrets-vs-external-stores)
+  - [6.2 - The Sidecar Injection Pattern (Vault Agent)](#62---the-sidecar-injection-pattern-vault-agent)
+  - [6.3 - The Secrets Store CSI Driver Pattern](#63---the-secrets-store-csi-driver-pattern)
+  - [6.4 - The External Secrets Operator (ESO)](#64---the-external-secrets-operator-eso)
 - [7 - The GitOps Dilemma: Encryption at Rest](#7---the-gitops-dilemma-encryption-at-rest)
-	- [7.1 - Sealed Secrets](#71---sealed-secrets)
-	- [7.2 - Mozilla SOPS (Secrets OPerationS)](#72---mozilla-sops-secrets-operations)
+  - [7.1 - Sealed Secrets](#71---sealed-secrets)
+  - [7.2 - Mozilla SOPS (Secrets OPerationS)](#72---mozilla-sops-secrets-operations)
 - [8 - Operational Governance, Compliance, and Auditing](#8---operational-governance-compliance-and-auditing)
-	- [8.1 - Comprehensive Audit Logging](#81---comprehensive-audit-logging)
-	- [8.2 - Operational Resilience and High Availability](#82---operational-resilience-and-high-availability)
-	- [8.3 - Lease Quotas and Denial of Service](#83---lease-quotas-and-denial-of-service)
+  - [8.1 - Comprehensive Audit Logging](#81---comprehensive-audit-logging)
+  - [8.2 - Operational Resilience and High Availability](#82---operational-resilience-and-high-availability)
+  - [8.3 - Lease Quotas and Denial of Service](#83---lease-quotas-and-denial-of-service)
 - [9 - Identity-Based Security and Zero Trust](#9---identity-based-security-and-zero-trust)
-	- [9.1 - SPIFFE and SPIRE: The End of Secrets?](#91---spiffe-and-spire-the-end-of-secrets)
-	- [9.2 - The Future: Non-Human Identity (NHI) Management](#92---the-future-non-human-identity-nhi-management)
+  - [9.1 - SPIFFE and SPIRE: The End of Secrets?](#91---spiffe-and-spire-the-end-of-secrets)
+  - [9.2 - The Future: Non-Human Identity (NHI) Management](#92---the-future-non-human-identity-nhi-management)
 - [10 - Conclusion and Strategic Roadmap](#10---conclusion-and-strategic-roadmap)
 - [References](#references)
 
@@ -40,7 +40,7 @@
 
 In the intricate fabric of modern software engineering, the integrity of a system is defined not merely by the robustness of its code but by the security of the credentials that grant access to its data. These credentials (collectively termed "secrets") form the bedrock of authentication and authorisation in digital ecosystems. A secret, in the context of information security, is defined by the National Institute of Standards and Technology (NIST) as a private piece of information that acts as a key to unlock protected resources or sensitive information. This encompasses a broad spectrum of digital artefacts, including passwords, Application Programming Interface (API) keys, encryption keys, Secure Shell (SSH) keys, tokens, and certificates. Unlike human identities (which are relatively static and tied to biological entities), machine identities and their associated secrets are ephemeral, high-volume, and widely distributed, creating a complex management challenge that traditional security paradigms fail to address.
 
-The necessity for rigorous secret management arises from the fundamental shift in infrastructure architecture. The transition from monolithic, on-premises applications to distributed, cloud-native microservices has dissolved the traditional network perimeter. In this "Zero Trust" era, identity is the new perimeter, and secrets are the proofs of that identity [15][16]. Consequently, the mismanagement of secrets (often manifested as "Secret Sprawl") has become a primary vector for cyberattacks. The IBM Cost of a Data Breach Report highlights that compromised credentials are frequently the root cause of significant breaches, necessitating a shift from ad-hoc secret handling to centralised, automated governance. This report provides an exhaustive analysis of the theoretical underpinnings, architectural mechanisms, and operational realities of secret management systems.
+The necessity for rigorous secret management arises from the fundamental shift in infrastructure architecture. The transition from monolithic, on-premises applications to distributed, cloud-native microservices has dissolved the traditional network perimeter. In this "Zero Trust" era, identity is the new perimeter, and secrets are the proofs of that identity [15];[16]. Consequently, the mismanagement of secrets (often manifested as "Secret Sprawl") has become a primary vector for cyberattacks. The IBM Cost of a Data Breach Report highlights that compromised credentials are frequently the root cause of significant breaches, necessitating a shift from ad-hoc secret handling to centralised, automated governance. This report provides an exhaustive analysis of the theoretical underpinnings, architectural mechanisms, and operational realities of secret management systems.
 
 # 2 - Theoretical Foundations and Core Definitions
 
@@ -102,7 +102,7 @@ In the early epochs of software development, characterised by monolithic applica
 
 This approach, while operationally simple, suffers from catastrophic security flaws known as CWE-798 (Use of Hard-coded Credentials) [3].
 
-  * **Insecurity:** Secrets committed to version control systems (like Git) become permanently embedded in the repository history. Even if removed from the HEAD commit, the secret remains accessible in the .git folder unless the entire history is rewritten [2][3].
+  * **Insecurity:** Secrets committed to version control systems (like Git) become permanently embedded in the repository history. Even if removed from the HEAD commit, the secret remains accessible in the .git folder unless the entire history is rewritten [2];[3].
   * **Operational Rigidity:** Changing a password requires recompiling and redeploying the application. This friction discourages rotation, leading to credentials that remain valid for years, increasing the likelihood of brute-force attacks or leakage.
   * **Lack of Audit:** It is impossible to track who accessed the secret when it is distributed as part of the codebase.
 
@@ -114,9 +114,9 @@ However, environment variables present their own risks. They are often visible i
 
 ## 3.3 - The Cloud-Native Explosion and Secret Sprawl
 
-The shift to microservices and containerisation (Kubernetes) introduced "Secret Sprawl" [6][7]. A single application might be decomposed into fifty microservices, each requiring unique database credentials, API keys, and TLS certificates. The volume of secrets exploded, rendering manual management impossible.
+The shift to microservices and containerisation (Kubernetes) introduced "Secret Sprawl" [6];[7]. A single application might be decomposed into fifty microservices, each requiring unique database credentials, API keys, and TLS certificates. The volume of secrets exploded, rendering manual management impossible.
 
-The dynamic nature of cloud infrastructure (where servers are spun up and down automatically) meant that static IP-based allow-listing was no longer viable. This necessitated the creation of centralised, API-driven Secret Management Systems (SMS) capable of automating the lifecycle of secrets at scale. Systems like HashiCorp Vault emerged to provide a "single source of truth," moving secrets out of the application environment and into a fortified, centralised repository [8][9].
+The dynamic nature of cloud infrastructure (where servers are spun up and down automatically) meant that static IP-based allow-listing was no longer viable. This necessitated the creation of centralised, API-driven Secret Management Systems (SMS) capable of automating the lifecycle of secrets at scale. Systems like HashiCorp Vault emerged to provide a "single source of truth," moving secrets out of the application environment and into a fortified, centralised repository [8];[9].
 
 # 4 - Architecture of Modern Secret Management Systems
 
@@ -215,7 +215,7 @@ Kubernetes has become the de facto operating system for the cloud, and integrati
 
 ## 6.1 - Native Kubernetes Secrets vs. External Stores
 
-Kubernetes provides a native Secret resource. However, by default, these secrets are stored in the cluster's etcd database encoded merely in Base64 (not encrypted) [6][7]. While encryption-at-rest can be enabled for etcd, native secrets are static. They do not rotate automatically and are often scoped only to the cluster, making it difficult to share secrets across a multi-cluster enterprise environment.
+Kubernetes provides a native Secret resource. However, by default, these secrets are stored in the cluster's etcd database encoded merely in Base64 (not encrypted) [6];[7]. While encryption-at-rest can be enabled for etcd, native secrets are static. They do not rotate automatically and are often scoped only to the cluster, making it difficult to share secrets across a multi-cluster enterprise environment.
 
 To address this, organisations integrate external SMSs (like Vault or Azure Key Vault) into Kubernetes using one of three primary patterns: the Sidecar, the CSI Driver, or the Operator.
 
@@ -341,16 +341,16 @@ The dynamic nature of secrets introduces the risk of "Lease Explosion." If a bug
 
 # 9 - Identity-Based Security and Zero Trust
 
-The evolution of secret management is converging towards Zero Trust Architecture (ZTA), where the focus shifts from protecting secrets to validating identities [17][18].
+The evolution of secret management is converging towards Zero Trust Architecture (ZTA), where the focus shifts from protecting secrets to validating identities [17];[18].
 
 ## 9.1 - SPIFFE and SPIRE: The End of Secrets?
 
-The Secure Production Identity Framework For Everyone (SPIFFE) and its runtime environment (SPIRE) aim to solve the "Secret Zero" problem by eliminating shared secrets entirely for service-to-service communication [19][20][21].
+The Secure Production Identity Framework For Everyone (SPIFFE) and its runtime environment (SPIRE) aim to solve the "Secret Zero" problem by eliminating shared secrets entirely for service-to-service communication [19];[20];[21].
 
   * **Concept:** Instead of an application presenting a password to a database, it presents a cryptographically signed document (the SVID, SPIFFE Verifiable Identity Document), typically an X.509 certificate.
-  * **Attestation:** SPIRE works by "attesting" the workload. A SPIRE Agent running on the node interrogates the kernel to verify the process's attributes (User ID, Group ID, Cgroups, Container Image Hash). If the attributes match a registered policy, the Agent issues an SVID to the workload [19][21].
+  * **Attestation:** SPIRE works by "attesting" the workload. A SPIRE Agent running on the node interrogates the kernel to verify the process's attributes (User ID, Group ID, Cgroups, Container Image Hash). If the attributes match a registered policy, the Agent issues an SVID to the workload [19];[21].
   * **No Secret Zero:** The workload does not need a password to get its SVID; it just needs to exist and match the policy. The trust is rooted in the platform/kernel.
-  * **mTLS:** Services use these SVIDs to establish mutual TLS connections. The "secret" (the private key of the certificate) is ephemeral, rotated automatically and frequently (e.g. every hour), and never leaves the process memory [19][20][21].
+  * **mTLS:** Services use these SVIDs to establish mutual TLS connections. The "secret" (the private key of the certificate) is ephemeral, rotated automatically and frequently (e.g. every hour), and never leaves the process memory [19];[20];[21].
 
 ## 9.2 - The Future: Non-Human Identity (NHI) Management
 

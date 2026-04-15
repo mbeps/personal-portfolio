@@ -1,29 +1,29 @@
 - [1 - Introduction to Generative Modelling and Adversarial Learning](#1---introduction-to-generative-modelling-and-adversarial-learning)
 - [2 - Mathematical Foundations of the Adversarial Framework](#2---mathematical-foundations-of-the-adversarial-framework)
-	- [2.1 - The Minimax Objective Function](#21---the-minimax-objective-function)
-	- [2.2 - Theoretical Analysis of the Optimal Discriminator](#22---theoretical-analysis-of-the-optimal-discriminator)
-	- [2.3 - The Jensen-Shannon Divergence Link](#23---the-jensen-shannon-divergence-link)
-	- [2.4 - The Vanishing Gradient Problem](#24---the-vanishing-gradient-problem)
+  - [2.1 - The Minimax Objective Function](#21---the-minimax-objective-function)
+  - [2.2 - Theoretical Analysis of the Optimal Discriminator](#22---theoretical-analysis-of-the-optimal-discriminator)
+  - [2.3 - The Jensen-Shannon Divergence Link](#23---the-jensen-shannon-divergence-link)
+  - [2.4 - The Vanishing Gradient Problem](#24---the-vanishing-gradient-problem)
 - [3 - Deep Convolutional GANs (DCGAN) and Architectural Stability](#3---deep-convolutional-gans-dcgan-and-architectural-stability)
-	- [3.1 - Key Architectural Guidelines](#31---key-architectural-guidelines)
-	- [3.2 - Vector Arithmetic in Latent Space](#32---vector-arithmetic-in-latent-space)
+  - [3.1 - Key Architectural Guidelines](#31---key-architectural-guidelines)
+  - [3.2 - Vector Arithmetic in Latent Space](#32---vector-arithmetic-in-latent-space)
 - [4 - The Wasserstein GAN (WGAN): A Geometrical Solution](#4---the-wasserstein-gan-wgan-a-geometrical-solution)
-	- [4.1 - Limitations of JS and KL Divergences](#41---limitations-of-js-and-kl-divergences)
-	- [4.2 - The Earth Mover's (Wasserstein) Distance](#42---the-earth-movers-wasserstein-distance)
-	- [4.3 - Kantorovich-Rubinstein Duality](#43---kantorovich-rubinstein-duality)
-	- [4.4 - Enforcing Lipschitz Continuity: WGAN-GP](#44---enforcing-lipschitz-continuity-wgan-gp)
+  - [4.1 - Limitations of JS and KL Divergences](#41---limitations-of-js-and-kl-divergences)
+  - [4.2 - The Earth Mover's (Wasserstein) Distance](#42---the-earth-movers-wasserstein-distance)
+  - [4.3 - Kantorovich-Rubinstein Duality](#43---kantorovich-rubinstein-duality)
+  - [4.4 - Enforcing Lipschitz Continuity: WGAN-GP](#44---enforcing-lipschitz-continuity-wgan-gp)
 - [5 - StyleGAN: Disentanglement and Control](#5---stylegan-disentanglement-and-control)
-	- [5.1 - The Mapping Network and $W$ Space](#51---the-mapping-network-and-w-space)
-	- [5.2 - Adaptive Instance Normalisation (AdaIN)](#52---adaptive-instance-normalisation-adain)
-	- [5.3 - StyleGAN2 Improvements](#53---stylegan2-improvements)
-	- [5.4 - Path Length Regularisation](#54---path-length-regularisation)
-	- [5.5 - Mixing Regularisation and Truncation](#55---mixing-regularisation-and-truncation)
+  - [5.1 - The Mapping Network and $W$ Space](#51---the-mapping-network-and-w-space)
+  - [5.2 - Adaptive Instance Normalisation (AdaIN)](#52---adaptive-instance-normalisation-adain)
+  - [5.3 - StyleGAN2 Improvements](#53---stylegan2-improvements)
+  - [5.4 - Path Length Regularisation](#54---path-length-regularisation)
+  - [5.5 - Mixing Regularisation and Truncation](#55---mixing-regularisation-and-truncation)
 - [6 - Unpaired Translation: CycleGAN](#6---unpaired-translation-cyclegan)
 - [7 - Comparative Analysis: GANs vs. VAEs vs. Diffusion](#7---comparative-analysis-gans-vs-vaes-vs-diffusion)
-	- [7.1 - Divergence Minimisation Characteristics](#71---divergence-minimisation-characteristics)
+  - [7.1 - Divergence Minimisation Characteristics](#71---divergence-minimisation-characteristics)
 - [8 - Detailed Numerical Examples](#8---detailed-numerical-examples)
-	- [8.1 - 1D GAN Training Step](#81---1d-gan-training-step)
-	- [8.2 - Backpropagation Calculation (Manual)](#82---backpropagation-calculation-manual)
+  - [8.1 - 1D GAN Training Step](#81---1d-gan-training-step)
+  - [8.2 - Backpropagation Calculation (Manual)](#82---backpropagation-calculation-manual)
 - [9 - Challenges and Future Outlook](#9---challenges-and-future-outlook)
 - [10 - Conclusion](#10---conclusion)
 - [References](#references)
@@ -34,7 +34,7 @@
 
 The field of machine learning has traditionally been bifurcated into discriminative and generative modelling. Discriminative models, such as Support Vector Machines or standard Convolutional Neural Networks (CNNs), approximate a conditional probability distribution $P(Y|X)$, mapping high-dimensional inputs $X$ to label spaces $Y$. In contrast, generative models undertake the more arduous task of learning the underlying joint probability distribution $P(X, Y)$ or simply $P(X)$ in unsupervised settings. The objective is to capture the statistical laws governing the data generation process, enabling the synthesis of novel samples that are indistinguishable from the true data distribution $p_{data}$.
 
-Generative Adversarial Networks (GANs), introduced by Goodfellow et al. in 2014, represent a seminal advancement in this domain [1]. Unlike explicit density estimation methods (e.g., PixelRNN) that define a tractable density function and maximise likelihood, or Variational Autoencoders (VAEs) that optimise a lower bound on the log-likelihood, GANs employ an implicit density estimation strategy [1][5][6]. They do not explicitly define a probability density function $p_{model}(x)$; rather, they learn to sample from it through a stochastic mechanism involving a game-theoretic contest between two neural networks.
+Generative Adversarial Networks (GANs), introduced by Goodfellow et al. in 2014, represent a seminal advancement in this domain [1]. Unlike explicit density estimation methods (e.g., PixelRNN) that define a tractable density function and maximise likelihood, or Variational Autoencoders (VAEs) that optimise a lower bound on the log-likelihood, GANs employ an implicit density estimation strategy [1];[5];[6]. They do not explicitly define a probability density function $p_{model}(x)$; rather, they learn to sample from it through a stochastic mechanism involving a game-theoretic contest between two neural networks.
 
 **Generative Adversarial Network Framework**
 ```mermaid
@@ -383,7 +383,7 @@ The negative gradient indicates we should increase $w_g$ to reduce loss (which e
 
 # 9 - Challenges and Future Outlook
 
-While GANs have achieved photorealistic synthesis, challenges remain. Mode Collapse persists as a fundamental issue, where the generator covers only a subset of the data support. Evaluation is difficult; metrics like Fréchet Inception Distance (FID) and Perceptual Path Length (PPL) are standard but imperfect proxies for human perception [12][7].
+While GANs have achieved photorealistic synthesis, challenges remain. Mode Collapse persists as a fundamental issue, where the generator covers only a subset of the data support. Evaluation is difficult; metrics like Fréchet Inception Distance (FID) and Perceptual Path Length (PPL) are standard but imperfect proxies for human perception [12];[7].
 Future directions involve Hybrid Models (combining the stability of Diffusion with the speed of GANs), Inversion techniques (mapping real images back to $\mathcal{W}$ space for editing), and Equivariant GANs (StyleGAN3) that strictly respect signal processing laws to prevent aliasing [9].
 
 # 10 - Conclusion

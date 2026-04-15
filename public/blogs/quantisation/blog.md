@@ -276,7 +276,7 @@ GPTQ  is based on the Taylor expansion of the loss function with respect to the 
 
 $$E = \| WX - \hat{W}X \|_2^2$$
 
-The Hessian matrix $H = 2XX^T$ represents the curvature of this error surface.[4][13] The optimal adjustment to a weight $w_q$ involves the inverse Hessian $H^{-1}$.
+The Hessian matrix $H = 2XX^T$ represents the curvature of this error surface.[4];[13] The optimal adjustment to a weight $w_q$ involves the inverse Hessian $H^{-1}$.
 **Algorithm:**
 GPTQ quantises weights column-by-column. When a weight $w_i$ is quantised to $q(w_i)$, the error is $\delta = q(w_i) - w_i$. To minimise the total error, GPTQ updates the remaining unquantised weights $W_F$ using the inverse Hessian:
 
@@ -362,7 +362,7 @@ The following table summarises the key attributes of these modern quantisation a
 Quantifying the trade-off between efficiency and accuracy is central to deployment decisions. Empirical analysis reveals distinct trends in how quantisation impacts model performance.
 
 ## 8.1 The 4-bit "Sweet Spot" and Performance Cliffs
-Research consistently indicates that 4-bit quantisation represents an optimal balance point for modern LLMs.[4][5][6] Sophisticated algorithms (like GPTQ and AWQ) allow 4-bit models to retain performance highly comparable to 16-bit baselines. However, a "performance cliff" is often observed below 4 bits, where moving to 3-bit or 2-bit precision causes sharp accuracy degradation.
+Research consistently indicates that 4-bit quantisation represents an optimal balance point for modern LLMs.[4];[5];[6] Sophisticated algorithms (like GPTQ and AWQ) allow 4-bit models to retain performance highly comparable to 16-bit baselines. However, a "performance cliff" is often observed below 4 bits, where moving to 3-bit or 2-bit precision causes sharp accuracy degradation.
 
 ## 8.2 Quantisation as Regularisation
 Counter-intuitively, quantisation can sometimes improve performance over the full-precision baseline. The lossy nature of quantisation introduces noise that acts as a form of regularisation, preventing overfitting and potentially helping the optimisation process escape poor local minima.

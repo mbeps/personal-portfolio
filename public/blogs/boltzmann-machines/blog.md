@@ -322,11 +322,11 @@ A refinement known as Persistent CD (PCD), proposed by Tieleman, maintains the s
 
 # 7 - Deep Architectures and the Generative Era
 
-The RBM served as the fundamental building block for the first wave of "Deep Learning" in the mid-2000s, specifically through Deep Belief Networks (DBNs) and Deep Boltzmann Machines (DBMs). [6][13]
+The RBM served as the fundamental building block for the first wave of "Deep Learning" in the mid-2000s, specifically through Deep Belief Networks (DBNs) and Deep Boltzmann Machines (DBMs). [6];[13]
 
 ## 7.1 - Greedy Layer-wise Pre-training
 
-Before 2006, training deep neural networks was notoriously difficult due to the vanishing gradient problem and poor initialisation. Hinton and Salakhutdinov demonstrated that RBMs could be stacked to pre-train deep networks. [6][7]
+Before 2006, training deep neural networks was notoriously difficult due to the vanishing gradient problem and poor initialisation. Hinton and Salakhutdinov demonstrated that RBMs could be stacked to pre-train deep networks. [6];[7]
 
 The procedure is greedy and layer-wise:
 
@@ -335,7 +335,7 @@ The procedure is greedy and layer-wise:
 3.  Repeat for as many layers as desired.
 4.  **Fine-tuning:** Unroll the stack into a deep autoencoder or a feedforward classifier and fine-tune the entire network using backpropagation.
 
-This approach initialises the weights in a region of the parameter space that is favourable for optimisation, effectively solving the training difficulty of deep networks before the advent of modern techniques like Batch Normalisation and ReLU. [6][7]
+This approach initialises the weights in a region of the parameter space that is favourable for optimisation, effectively solving the training difficulty of deep networks before the advent of modern techniques like Batch Normalisation and ReLU. [6];[7]
 
 ## 7.2 - Deep Belief Networks vs. Deep Boltzmann Machines
 
@@ -359,7 +359,7 @@ graph TD
 ```
 
   * **Deep Belief Networks (DBNs):** A hybrid graphical model. The top two layers form an undirected bipartite graph (an associative memory RBM), while the lower layers form a directed generative model (sigmoid belief network) pointing downwards. This architecture allows for efficient generation of data samples by sampling the top RBM and then propagating stochastically down the directed layers. [6]
-  * **Deep Boltzmann Machines (DBMs):** The network remains fully undirected throughout the hierarchy. This allows information to flow both bottom-up and top-down during inference. For example, in image recognition, knowing an object is a "car" (high-level) can send top-down signals to resolve a noisy patch of pixels as a "wheel" (low-level). However, training DBMs is significantly more difficult than DBNs due to the complex interaction between layers during the estimation of the partition function. [13][14]
+  * **Deep Boltzmann Machines (DBMs):** The network remains fully undirected throughout the hierarchy. This allows information to flow both bottom-up and top-down during inference. For example, in image recognition, knowing an object is a "car" (high-level) can send top-down signals to resolve a noisy patch of pixels as a "wheel" (low-level). However, training DBMs is significantly more difficult than DBNs due to the complex interaction between layers during the estimation of the partition function. [13];[14]
 
 -----
 

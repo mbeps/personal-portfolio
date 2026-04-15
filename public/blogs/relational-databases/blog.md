@@ -1,52 +1,52 @@
 - [1 - Introduction to the Relational Paradigm](#1---introduction-to-the-relational-paradigm)
-	- [1.1 - The Definition of Data Independence](#11---the-definition-of-data-independence)
+  - [1.1 - The Definition of Data Independence](#11---the-definition-of-data-independence)
 - [2 - Mathematical Foundations: Set Theory and Logic](#2---mathematical-foundations-set-theory-and-logic)
-	- [2.1 - The Structure of Relations](#21---the-structure-of-relations)
-	- [2.2 - First-Order Predicate Logic](#22---first-order-predicate-logic)
+  - [2.1 - The Structure of Relations](#21---the-structure-of-relations)
+  - [2.2 - First-Order Predicate Logic](#22---first-order-predicate-logic)
 - [3 - Relational Algebra: The Procedural Language](#3---relational-algebra-the-procedural-language)
-	- [3.1 - Fundamental Operators](#31---fundamental-operators)
-		- [3.1.1 - Selection ($\\sigma$)](#311---selection-sigma)
-		- [3.1.2 - Projection ($\\pi$)](#312---projection-pi)
-		- [3.1.3 - Rename ($\\rho$)](#313---rename-rho)
-		- [3.1.4 - Cartesian Product ($\\times$)](#314---cartesian-product-times)
-		- [3.1.5 - Set Union ($\\cup$)](#315---set-union-cup)
-		- [3.1.6 - Set Difference ($-$)](#316---set-difference--)
-	- [3.2 - Derived Operators](#32---derived-operators)
-		- [3.2.1 - The Join ($\\bowtie$)](#321---the-join-bowtie)
-		- [3.2.2 - Intersection ($\\cap$)](#322---intersection-cap)
-		- [3.2.3 - Division ($\\div$)](#323---division-div)
-	- [3.3 - Algebraic Equivalence and Optimisation](#33---algebraic-equivalence-and-optimisation)
+  - [3.1 - Fundamental Operators](#31---fundamental-operators)
+    - [3.1.1 - Selection ($\\sigma$)](#311---selection-sigma)
+    - [3.1.2 - Projection ($\\pi$)](#312---projection-pi)
+    - [3.1.3 - Rename ($\\rho$)](#313---rename-rho)
+    - [3.1.4 - Cartesian Product ($\\times$)](#314---cartesian-product-times)
+    - [3.1.5 - Set Union ($\\cup$)](#315---set-union-cup)
+    - [3.1.6 - Set Difference ($-$)](#316---set-difference--)
+  - [3.2 - Derived Operators](#32---derived-operators)
+    - [3.2.1 - The Join ($\\bowtie$)](#321---the-join-bowtie)
+    - [3.2.2 - Intersection ($\\cap$)](#322---intersection-cap)
+    - [3.2.3 - Division ($\\div$)](#323---division-div)
+  - [3.3 - Algebraic Equivalence and Optimisation](#33---algebraic-equivalence-and-optimisation)
 - [4 - Relational Calculus: The Declarative Standard](#4---relational-calculus-the-declarative-standard)
-	- [4.1 - Tuple Relational Calculus (TRC)](#41---tuple-relational-calculus-trc)
-	- [4.2 - Domain Relational Calculus (DRC)](#42---domain-relational-calculus-drc)
-	- [4.3 - Safety and Domain Independence](#43---safety-and-domain-independence)
+  - [4.1 - Tuple Relational Calculus (TRC)](#41---tuple-relational-calculus-trc)
+  - [4.2 - Domain Relational Calculus (DRC)](#42---domain-relational-calculus-drc)
+  - [4.3 - Safety and Domain Independence](#43---safety-and-domain-independence)
 - [5 - Storage Architecture and Buffer Management](#5---storage-architecture-and-buffer-management)
-	- [5.1 - The Hierarchy of Data Organisation](#51---the-hierarchy-of-data-organisation)
-	- [5.2 - Page Layout: The Slotted Page](#52---page-layout-the-slotted-page)
-	- [5.3 - Buffer Management](#53---buffer-management)
-	- [5.4 - Heap Files and MVCC Storage](#54---heap-files-and-mvcc-storage)
+  - [5.1 - The Hierarchy of Data Organisation](#51---the-hierarchy-of-data-organisation)
+  - [5.2 - Page Layout: The Slotted Page](#52---page-layout-the-slotted-page)
+  - [5.3 - Buffer Management](#53---buffer-management)
+  - [5.4 - Heap Files and MVCC Storage](#54---heap-files-and-mvcc-storage)
 - [6 - Access Methods and Indexing Structures](#6---access-methods-and-indexing-structures)
-	- [6.1 - B+ Trees](#61---b-trees)
-	- [6.2 - B-Tree vs B+ Tree](#62---b-tree-vs-b-tree)
-	- [6.3 - Hash Indexes](#63---hash-indexes)
+  - [6.1 - B+ Trees](#61---b-trees)
+  - [6.2 - B-Tree vs B+ Tree](#62---b-tree-vs-b-tree)
+  - [6.3 - Hash Indexes](#63---hash-indexes)
 - [7 - Query Execution and Join Algorithms](#7---query-execution-and-join-algorithms)
-	- [7.1 - Nested Loop Join (NLJ)](#71---nested-loop-join-nlj)
-	- [7.2 - Sort-Merge Join (SMJ)](#72---sort-merge-join-smj)
-	- [7.3 - Hash Join (HJ)](#73---hash-join-hj)
-	- [Table 1: Comparison of Join Algorithms (Approximate Costs)](#table-1-comparison-of-join-algorithms-approximate-costs)
+  - [7.1 - Nested Loop Join (NLJ)](#71---nested-loop-join-nlj)
+  - [7.2 - Sort-Merge Join (SMJ)](#72---sort-merge-join-smj)
+  - [7.3 - Hash Join (HJ)](#73---hash-join-hj)
+  - [Table 1: Comparison of Join Algorithms (Approximate Costs)](#table-1-comparison-of-join-algorithms-approximate-costs)
 - [8 - Query Optimisation and Cost Estimation](#8---query-optimisation-and-cost-estimation)
-	- [8.1 - The System R (Selinger) Optimiser](#81---the-system-r-selinger-optimiser)
-	- [8.2 - Cost Estimation Formulas](#82---cost-estimation-formulas)
-	- [8.3 - Statistics and Selectivity](#83---statistics-and-selectivity)
+  - [8.1 - The System R (Selinger) Optimiser](#81---the-system-r-selinger-optimiser)
+  - [8.2 - Cost Estimation Formulas](#82---cost-estimation-formulas)
+  - [8.3 - Statistics and Selectivity](#83---statistics-and-selectivity)
 - [9 - Transaction Management and Concurrency Control](#9---transaction-management-and-concurrency-control)
-	- [9.1 - Serializability and Two-Phase Locking (2PL)](#91---serializability-and-two-phase-locking-2pl)
-	- [9.2 - Multi-Version Concurrency Control (MVCC)](#92---multi-version-concurrency-control-mvcc)
+  - [9.1 - Serializability and Two-Phase Locking (2PL)](#91---serializability-and-two-phase-locking-2pl)
+  - [9.2 - Multi-Version Concurrency Control (MVCC)](#92---multi-version-concurrency-control-mvcc)
 - [10 - Durability and Recovery Architectures](#10---durability-and-recovery-architectures)
-	- [10.1 - Write-Ahead Logging (WAL)](#101---write-ahead-logging-wal)
-	- [10.2 - The ARIES Recovery Algorithm](#102---the-aries-recovery-algorithm)
+  - [10.1 - Write-Ahead Logging (WAL)](#101---write-ahead-logging-wal)
+  - [10.2 - The ARIES Recovery Algorithm](#102---the-aries-recovery-algorithm)
 - [11 - Evolution: NoSQL and NewSQL](#11---evolution-nosql-and-newsql)
-	- [11.1 - The CAP Theorem and NoSQL](#111---the-cap-theorem-and-nosql)
-	- [11.2 - NewSQL](#112---newsql)
+  - [11.1 - The CAP Theorem and NoSQL](#111---the-cap-theorem-and-nosql)
+  - [11.2 - NewSQL](#112---newsql)
 - [12 - Conclusion](#12---conclusion)
 - [References](#references)
 
@@ -537,7 +537,7 @@ In a multi-user environment, ensuring data integrity is paramount. This is gover
 
 ## 9.1 - Serializability and Two-Phase Locking (2PL)
 
-Serializability is the gold standard for Isolation. It ensures that the outcome of concurrent transactions is equivalent to some serial execution of them. The classic mechanism to enforce this is Two-Phase Locking (2PL) [8][9].
+Serializability is the gold standard for Isolation. It ensures that the outcome of concurrent transactions is equivalent to some serial execution of them. The classic mechanism to enforce this is Two-Phase Locking (2PL) [8];[9].
 
   * **Growing Phase:** The transaction acquires locks (Shared 'S' for reads, Exclusive 'X' for writes). It cannot release any lock.
   * **Shrinking Phase:** Once the transaction releases a lock, it enters the shrinking phase and cannot acquire new locks.
@@ -581,7 +581,7 @@ gantt
 
 **Disadvantages:**
 
-  * **Write Skew:** A specific anomaly in Snapshot Isolation where two transactions read overlapping data but update disjoint sets, violating constraints (requires Serializable Snapshot Isolation (SSI) to fix) [11][12].
+  * **Write Skew:** A specific anomaly in Snapshot Isolation where two transactions read overlapping data but update disjoint sets, violating constraints (requires Serializable Snapshot Isolation (SSI) to fix) [11];[12].
   * **Garbage Collection:** The system accumulates "dead tuples." A background process (like PostgreSQL's VACUUM) is required to clean up old versions, which consumes resources.
 
 
@@ -638,11 +638,11 @@ While the relational model is dominant, the requirement for massive web-scale di
 
 The CAP Theorem (Brewer) states that a distributed system can only provide two of the three: Consistency, Availability, and Partition Tolerance [14].
 
-NoSQL databases (e.g., Cassandra, MongoDB) typically sacrifice Strong Consistency (ACID) for High Availability and Partition Tolerance (BASE properties: Basically Available, Soft state, Eventual consistency) [15][17]. They often abandon joins and strict schemas to achieve horizontal sharding.
+NoSQL databases (e.g., Cassandra, MongoDB) typically sacrifice Strong Consistency (ACID) for High Availability and Partition Tolerance (BASE properties: Basically Available, Soft state, Eventual consistency) [15];[17]. They often abandon joins and strict schemas to achieve horizontal sharding.
 
 ## 11.2 - NewSQL
 
-NewSQL represents the modern convergence. These systems (e.g., Google Spanner, CockroachDB) aim to provide the horizontal scalability of NoSQL while retaining the ACID guarantees of the relational model [18][19]. They achieve this through advanced consensus algorithms (like Paxos or Raft) and precise time synchronisation (Atomic Clocks) [18], proving that the Relational Model is not obsolete but rather adaptable to distributed architectures.
+NewSQL represents the modern convergence. These systems (e.g., Google Spanner, CockroachDB) aim to provide the horizontal scalability of NoSQL while retaining the ACID guarantees of the relational model [18];[19]. They achieve this through advanced consensus algorithms (like Paxos or Raft) and precise time synchronisation (Atomic Clocks) [18], proving that the Relational Model is not obsolete but rather adaptable to distributed architectures.
 
 
 # 12 - Conclusion
