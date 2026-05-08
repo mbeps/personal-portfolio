@@ -612,7 +612,7 @@ const projectMap: Database<ProjectInterface> = {
       Tested on CRUD and software engineering principles.
       `,
     repositoryURL: `https://github.com/mbeps/next_discussion_platform`,
-    deploymentURL: `https://circus-discussion.vercel.app/`,
+    deploymentURL: `https://forum-discussions.maruf-bepary.com/`,
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
@@ -675,7 +675,7 @@ const projectMap: Database<ProjectInterface> = {
       Users can chat one-on-one or in group chats, send text messages and images, view active users, etc.
       `,
     repositoryURL: `https://github.com/mbeps/ringmaster-messaging`,
-    deploymentURL: `https://ringmaster-messaging.vercel.app/`,
+    deploymentURL: `https://messaging.maruf-bepary.com/`,
 
     skills: [
       SkillDatabaseKeys.TypeScript,
@@ -737,6 +737,7 @@ const projectMap: Database<ProjectInterface> = {
       It supports rich text formatting, image additions, and publishing notes publicly. 
       Users alse organize notes into nested notebooks.`,
     repositoryURL: `https://github.com/mbeps/joker-notes`,
+    deploymentURL: "https://notes.maruf-bepary.com/",
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
@@ -757,7 +758,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Vitest,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    deploymentURL: "https://joker-notes.vercel.app/",
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.RichTextNotes),
     type: ProjectTypeEnum.Personal,
   },
