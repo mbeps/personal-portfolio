@@ -568,6 +568,40 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
   },
 
+  [ProjectDatabaseKeys.AiGenerations]: {
+    name: `AI Generations`,
+    description: `
+      A SaaS platform that leverages AI to enable users to generate various media types and have conversations. 
+      Developing this project allowed me to explore Stripe, Clerk authentication, and unique AI APIs.
+    `,
+    repositoryURL: `https://github.com/mbeps/magician-ai`,
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.ShadcnUi,
+      SkillDatabaseKeys.RadixUi,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.Zod,
+      SkillDatabaseKeys.MySql,
+      SkillDatabaseKeys.ClerkAuth,
+      SkillDatabaseKeys.Prisma,
+      SkillDatabaseKeys.Stripe,
+      SkillDatabaseKeys.Rest,
+
+      SkillDatabaseKeys.Zustand,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.GitHubActions,
+      SkillDatabaseKeys.Html,
+      SkillDatabaseKeys.Css,
+      SkillDatabaseKeys.ArtificialIntelligence,
+    ],
+    category: ProjectCategoriesEnum.FullStackAndArtificialIntelligence,
+    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.AiGenerations),
+    type: ProjectTypeEnum.Personal,
+  },
+
   //^ Full-Stack Projects
   [ProjectDatabaseKeys.ForumDiscussions]: {
     name: `Forum Discussions`,
@@ -666,40 +700,6 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.RealTimeMessaging),
-    type: ProjectTypeEnum.Personal,
-  },
-  [ProjectDatabaseKeys.AiGenerations]: {
-    name: `AI Generations`,
-    description: `
-      A SaaS platform that leverages AI to enable users to generate various media types and have conversations. 
-      Developing this project allowed me to explore Stripe, Clerk authentication, and unique AI APIs.
-  `,
-    repositoryURL: `https://github.com/mbeps/magician-ai`,
-    // deploymentURL: "https://magician-ai.vercel.app/",
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.ShadcnUi,
-      SkillDatabaseKeys.RadixUi,
-      SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.Zod,
-      SkillDatabaseKeys.MySql,
-      SkillDatabaseKeys.ClerkAuth,
-      SkillDatabaseKeys.Prisma,
-      SkillDatabaseKeys.Stripe,
-      SkillDatabaseKeys.Rest,
-
-      SkillDatabaseKeys.Zustand,
-      SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.GitHubActions,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.ArtificialIntelligence,
-    ],
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.AiGenerations),
     type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.MusicStreaming]: {
@@ -847,7 +847,7 @@ const projectMap: Database<ProjectInterface> = {
       A platform for dynamic quiz generation. 
       Users can test their knowledge with multiple-choice or fill-in-the-gap questions across various topics.
       With immediate feedback and score tracking, users enhance their understanding.`,
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    category: ProjectCategoriesEnum.FullStackAndArtificialIntelligence,
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
