@@ -571,31 +571,33 @@ As the web continues to evolve with stricter privacy controls and new specificat
 
 # References
 
-1. Chen, J., Jiang, J., Duan, H., Wan, T., Chen, S., Paxson, V., & Yang, M. (2018). *We Still Don’t Have Secure Cross-Domain Requests: An Empirical Study of CORS*. 27th USENIX Security Symposium (USENIX Security ’18). [PDF](https://www.usenix.org/system/files/conference/usenixsecurity18/sec18-chen.pdf) 
+1. Chen, J., Jiang, J., *et al.* (2018). [We Still Don't Have Secure Cross-Domain Requests: An Empirical Study of CORS](https://www.usenix.org/system/files/conference/usenixsecurity18/sec18-chen.pdf). ([USENIX Security][1])
 
-2. Golinelli, M., Arshad, E., Kashchuk, D., & Crispo, B. (2023). *Mind the CORS*. 2023 IEEE International Conference on Trust, Privacy and Security in Intelligent Systems and Applications (TPS-ISA). [DOI](https://doi.org/10.1109/TPS-ISA58951.2023.00035) ([iris.unitn.it][1])
+2. Golinelli, M., Arshad, E., *et al.* (2023). [Mind the CORS](https://doi.org/10.1109/TPS-ISA58951.2023.00035). ([IEEE][2])
 
-3. Arai, K., Norikoshi, K., & Oda, M. (2024). *Method Resource Sharing in On-Premises Environment Based on Cross-Origin Resource Sharing and its Application for Safety-First Constructions*. International Journal of Advanced Computer Science and Applications, 15(5). [PDF](https://thesai.org/Downloads/Volume15No5/Paper_67-Method_Resource_Sharing_in_On_Premises_Environment.pdf) ([thesai.org][2])
+3. Arai, K., Norikoshi, K., *et al.* (2024). [Method Resource Sharing in On-Premises Environment Based on Cross-Origin Resource Sharing and its Application for Safety-First Constructions](https://thesai.org/Downloads/Volume15No5/Paper_67-Method_Resource_Sharing_in_On_Premises_Environment.pdf). ([IJACSA][3])
 
-4. Kakitaeva, M., & Gaso, M. S. (2025). *Cross-Origin Resource Sharing (CORS) Policy Enforcement in Spring Boot: Security Implications and Best Practices*. Preprints.org. [DOI](https://doi.org/10.20944/preprints202505.1312.v1) 
+4. Kakitaeva, M., & Gaso, M. S. (2025). [Cross-Origin Resource Sharing (CORS) Policy Enforcement in Spring Boot: Security Implications and Best Practices](https://doi.org/10.20944/preprints202505.1312.v1). ([Preprints.org][4])
 
-5. Cohen, A. (2025). *Browser Security Posture Analysis: A Client-Side Security Assessment Framework*. arXiv:2505.08050 [cs.CR]. [arXiv page](https://arxiv.org/abs/2505.08050) ([arXiv][3])
+5. Cohen, A. (2025). [Browser Security Posture Analysis: A Client-Side Security Assessment Framework](https://arxiv.org/abs/2505.08050). ([arXiv][5])
 
-6. Meiser, G., Laperdrix, P., & Stock, B. (2021). *Careful Who You Trust: Studying the Pitfalls of Cross-Origin Communication*. ACM Asia Conference on Computer and Communications Security (ASIA CCS ’21). [DOI](https://doi.org/10.1145/3433210.3437510) ([swag.cispa.saarland][4])
+6. Meiser, G., Laperdrix, P., *et al.* (2021). [Careful Who You Trust: Studying the Pitfalls of Cross-Origin Communication](https://doi.org/10.1145/3433210.3437510). ([ACM][6])
 
-7. Stock, B., Lekies, S., Müller, T., Steffens, M., & Johns, M. (2017). *Uncovering the History of Client-Side Web (In)Security*. 26th USENIX Security Symposium (USENIX Security ’17). [PDF](https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-stock.pdf) ([USENIX][5])
+7. Stock, B., Lekies, S., *et al.* (2017). [Uncovering the History of Client-Side Web (In)Security](https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-stock.pdf). ([USENIX Security][7])
 
-8. Lekies, S., Engels, D., & Mitkov, M. (2021). *JSONPS: Secure an Inherently Insecure Practice with This One Weird Trick!*. In Proceedings of the 30th USENIX Security Symposium (Work-in-progress / workshop paper). [PDF](https://secweb.work/papers/lekies2021jsonps.pdf) ([secweb.work][6])
+8. Lekies, S., Engels, D., *et al.* (2021). [JSONPS: Secure an Inherently Insecure Practice with This One Weird Trick!](https://secweb.work/papers/lekies2021jsonps.pdf). ([secweb.work][8])
 
-9. Huang, L.-S., Weinberg, Z., Evans, C., & Jackson, C. (2010). *Protecting Browsers from Cross-Origin CSS Attacks*. Proceedings of the 17th ACM Conference on Computer and Communications Security (CCS ’10), pp. 619–629. [PDF](https://www.linshunghuang.com/papers/css.pdf) ([ACM Digital Library][7])
+9. Huang, L.-S., Weinberg, Z., *et al.* (2010). [Protecting Browsers from Cross-Origin CSS Attacks](https://dl.acm.org/doi/10.1145/1866307.1866376). ([ACM Digital Library][9])
 
-10. Arshad, E. (2022). *Analysis of OAuth and CORS Vulnerabilities in the Wild*. Doctoral thesis, Università degli Studi di Trento. [Repository entry](https://hdl.handle.net/11572/361123) ([tesidottorato.depositolegale.it][8])
+10. Arshad, E. (2022). [Analysis of OAuth and CORS Vulnerabilities in the Wild](https://hdl.handle.net/11572/361123). ([Institutional Repository][10])
 
-[1]: https://iris.unitn.it/retrieve/handle/11572/399025/726435/Mind-the-CORS.pdf?utm_source=chatgpt.com "Mind the CORS"
-[2]: https://thesai.org/Downloads/Volume15No5/Paper_67-Method_Resource_Sharing_in_On_Premises_Environment.pdf "Method Resource Sharing in On-Premises Environment Based on Cross-Origin Resource Sharing and its Application for Safety-First Constructions"
-[3]: https://arxiv.org/abs/2505.08050v1/ "[2505.08050v1] Browser Security Posture Analysis: A Client-Side Security Assessment Framework"
-[4]: https://swag.cispa.saarland/papers/meiser2021cwyt.pdf?utm_source=chatgpt.com "Careful Who You Trust:Studying the Pitfalls of Cross-Origin ..."
-[5]: https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-stock.pdf?utm_source=chatgpt.com "Uncovering the History of Client-Side Web (In)Security"
-[6]: https://secweb.work/papers/lekies2021jsonps.pdf?utm_source=chatgpt.com "JSONPS: Secure an inherently insecure practice with this ..."
-[7]: https://dl.acm.org/doi/10.1145/1866307.1866376?utm_source=chatgpt.com "Protecting browsers from cross-origin CSS attacks"
-[8]: https://tesidottorato.depositolegale.it/handle/20.500.14242/94448?utm_source=chatgpt.com "Analysis of Oauth and CORS vulnerabilities in the wild"
+[1]: https://www.usenix.org/system/files/conference/usenixsecurity18/sec18-chen.pdf "We Still Don't Have Secure Cross-Domain Requests: An Empirical Study of CORS"
+[2]: https://doi.org/10.1109/TPS-ISA58951.2023.00035 "Mind the CORS"
+[3]: https://thesai.org/Downloads/Volume15No5/Paper_67-Method_Resource_Sharing_in_On_Premises_Environment.pdf "Method Resource Sharing in On-Premises Environment Based on Cross-Origin Resource Sharing"
+[4]: https://doi.org/10.20944/preprints202505.1312.v1 "CORS Policy Enforcement in Spring Boot"
+[5]: https://arxiv.org/abs/2505.08050 "Browser Security Posture Analysis: A Client-Side Security Assessment Framework"
+[6]: https://doi.org/10.1145/3433210.3437510 "Careful Who You Trust: Studying the Pitfalls of Cross-Origin Communication"
+[7]: https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-stock.pdf "Uncovering the History of Client-Side Web (In)Security"
+[8]: https://secweb.work/papers/lekies2021jsonps.pdf "JSONPS: Secure an Inherently Insecure Practice with This One Weird Trick!"
+[9]: https://dl.acm.org/doi/10.1145/1866307.1866376 "Protecting Browsers from Cross-Origin CSS Attacks"
+[10]: https://hdl.handle.net/11572/361123 "Analysis of OAuth and CORS Vulnerabilities in the Wild"

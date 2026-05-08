@@ -637,21 +637,21 @@ Ultimately, the successful application of design patterns requires a nuanced und
 
 # References
 
-Beck, K., & Cunningham, W. (1987). [Using pattern languages for object-oriented programs](http://c2.com/doc/oopsla87.html). *OOPSLA ’87 Workshop on Specification and Design for Object-Oriented Programming*. ([c2.com][1])
+1. Beck, K., & Cunningham, W. (1987). [Using Pattern Languages for Object-Oriented Programs](http://c2.com/doc/oopsla87.html). ([c2.com][1])
 
-Martin, R. C. (2000). [Design principles and design patterns](https://staff.cs.utu.fi/~jounsmed/doos_06/material/DesignPrinciplesAndPatterns.pdf). Technical report, Object Mentor. ([staff.cs.utu.fi][2])
+2. Martin, R. C. (2000). [Design Principles and Design Patterns](https://staff.cs.utu.fi/~jounsmed/doos_06/material/DesignPrinciplesAndPatterns.pdf). ([Object Mentor][2])
 
-Wedyan, F., & Abufakher, S. (2020). [Impact of design patterns on software quality: a systematic literature review](https://digital-library.theiet.org/content/journals/10.1049/iet-sen.2018.5446). *IET Software, 14*(1), 1–17. [https://doi.org/10.1049/iet-sen.2018.5446](https://doi.org/10.1049/iet-sen.2018.5446) ([IET Research Journals][3])
+3. Wedyan, F., & Abufakher, S. (2020). [Impact of Design Patterns on Software Quality: A Systematic Literature Review](https://doi.org/10.1049/iet-sen.2018.5446). ([IET Research Journals][3])
 
-Norvig, P. (1998). [Design patterns in dynamic languages](https://www.norvig.com/design-patterns/design-patterns.pdf). Tutorial paper, Object World Conference. ([norvig.com][4])
+4. Norvig, P. (1998). [Design Patterns in Dynamic Languages](https://www.norvig.com/design-patterns/design-patterns.pdf). ([norvig.com][4])
 
-Selakovic, M., & Pradel, M. (2016). [Performance issues and optimizations in JavaScript: An empirical study](https://dl.acm.org/doi/10.1145/2884781.2884829). In *Proceedings of the 38th International Conference on Software Engineering (ICSE ’16)* (pp. 61–72). ACM. [https://doi.org/10.1145/2884781.2884829](https://doi.org/10.1145/2884781.2884829) ([software-lab.org][5])
+5. Selakovic, M., & Pradel, M. (2016). [Performance Issues and Optimizations in JavaScript: An Empirical Study](https://doi.org/10.1145/2884781.2884829). ([ACM Digital Library][5])
 
-Schuler, D., & Zimmermann, T. (2008). [Mining usage expertise from version archives](https://www.researchgate.net/publication/221355251_Mining_usage_expertise_from_version_archives). In *Proceedings of the 5th International Working Conference on Mining Software Repositories (MSR ’08)* (pp. 121–124). IEEE. ([ResearchGate][6])
+6. Schuler, D., & Zimmermann, T. (2008). [Mining Usage Expertise from Version Archives](https://www.researchgate.net/publication/221355251_Mining_usage_expertise_from_version_archives). ([ResearchGate][6])
 
-[1]: https://c2.com/doc/oopsla87.html?utm_source=chatgpt.com "Using Pattern Languages for Object-Oriented Programs"
-[2]: https://staff.cs.utu.fi/~jounsmed/doos_06/material/DesignPrinciplesAndPatterns.pdf?utm_source=chatgpt.com "Design Principles and Design Patterns"
-[3]: https://ietresearch.onlinelibrary.wiley.com/doi/10.1049/iet-sen.2018.5446?utm_source=chatgpt.com "Impact of design patterns on software quality: a systematic ..."
-[4]: https://www.norvig.com/design-patterns/design-patterns.pdf?utm_source=chatgpt.com "Design Patterns in Dynamic Programming"
-[5]: https://software-lab.org/publications/icse2016-perf.pdf?utm_source=chatgpt.com "Performance Issues and Optimizations in JavaScript"
-[6]: https://www.researchgate.net/publication/284812530_What_Recommendation_Systems_for_Software_Engineering_Recommend_A_Systematic_Literature_Review?utm_source=chatgpt.com "What Recommendation Systems for Software Engineering ..."
+[1]: http://c2.com/doc/oopsla87.html "Using Pattern Languages for Object-Oriented Programs"
+[2]: https://staff.cs.utu.fi/~jounsmed/doos_06/material/DesignPrinciplesAndPatterns.pdf "Design Principles and Design Patterns"
+[3]: https://ietresearch.onlinelibrary.wiley.com/doi/10.1049/iet-sen.2018.5446 "Impact of Design Patterns on Software Quality: A Systematic Literature Review"
+[4]: https://www.norvig.com/design-patterns/design-patterns.pdf "Design Patterns in Dynamic Languages"
+[5]: https://doi.org/10.1145/2884781.2884829 "Performance Issues and Optimizations in JavaScript: An Empirical Study"
+[6]: https://www.researchgate.net/publication/221355251_Mining_usage_expertise_from_version_archives "Mining Usage Expertise from Version Archives"

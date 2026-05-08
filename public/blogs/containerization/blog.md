@@ -104,19 +104,19 @@ The conceptual ancestor of the container is the chroot (change root) system call
 
 ## 2.2 - The Era of Jails and Zones (2000-2005)
 
-In 2000, FreeBSD introduced Jails, a significant advancement that extended chroot by partitioning the system into independent "mini-systems". A Jail provided not only file system isolation but also distinct IP addresses and system configurations, allowing hosting providers to securely isolate customers on shared hardware. [1]
+In 2000, FreeBSD introduced Jails, a significant advancement that extended chroot by partitioning the system into independent "mini-systems". A Jail provided not only file system isolation but also distinct IP addresses and system configurations, allowing hosting providers to securely isolate customers on shared hardware.[1]
 
-Parallel to this, Sun Microsystems released Solaris Containers (Zones) in 2004. This implementation combined system resource controls with boundary separation, leveraging the ZFS filesystem's snapshot capabilities to create lightweight, cloneable environments. In the Linux world, OpenVZ (2005) emerged as a popular operating system-level virtualisation technology. It utilised a patched Linux kernel to provide "Virtual Private Servers" (VPS), offering near-native performance. However, its reliance on a custom, non-standard kernel hindered its integration into the mainline Linux ecosystem. [1]
+Parallel to this, Sun Microsystems released Solaris Containers (Zones) in 2004. This implementation combined system resource controls with boundary separation, leveraging the ZFS filesystem's snapshot capabilities to create lightweight, cloneable environments. In the Linux world, OpenVZ (2005) emerged as a popular operating system-level virtualisation technology. It utilised a patched Linux kernel to provide "Virtual Private Servers" (VPS), offering near-native performance. However, its reliance on a custom, non-standard kernel hindered its integration into the mainline Linux ecosystem.[1]
 
 ## 2.3 - The Convergence: Cgroups and LXC (2006-2008)
 
-The pivotal moment for modern Linux containers occurred in 2006 when Google engineers introduced Process Containers, designed to limit and account for the resource usage (CPU, memory, disk I/O) of process collections. This functionality was renamed Control Groups (cgroups) and merged into the Linux kernel 2.6.24 in 2007. [1]
+The pivotal moment for modern Linux containers occurred in 2006 when Google engineers introduced Process Containers, designed to limit and account for the resource usage (CPU, memory, disk I/O) of process collections. This functionality was renamed Control Groups (cgroups) and merged into the Linux kernel 2.6.24 in 2007.[1]
 
-In 2008, LXC (LinuX Containers) combined these new cgroups with Linux Namespaces (which provide isolation) to create the first complete, upstream implementation of a Linux container manager that did not require kernel patches. LXC allowed users to run multiple isolated Linux systems (containers) on a single control host, effectively democratising OS-level virtualisation. [1]
+In 2008, LXC (LinuX Containers) combined these new cgroups with Linux Namespaces (which provide isolation) to create the first complete, upstream implementation of a Linux container manager that did not require kernel patches. LXC allowed users to run multiple isolated Linux systems (containers) on a single control host, effectively democratising OS-level virtualisation.[1]
 
 ## 2.4 - The Docker Revolution (2013-Present)
 
-While LXC provided the necessary technical capabilities, it lacked usability and a standardised distribution model. In 2013, Docker emerged (initially using LXC as its execution driver) and revolutionised the industry by introducing a complete ecosystem. Docker provided a portable image format, a centralised registry for distribution (Docker Hub), and a layered filesystem that enabled efficient storage. Docker eventually replaced LXC with its own library, libcontainer (now runc), to interact directly with kernel primitives. This shift standardised the container lifecycle and established the immutable infrastructure model that dominates cloud computing today. [1]
+While LXC provided the necessary technical capabilities, it lacked usability and a standardised distribution model. In 2013, Docker emerged (initially using LXC as its execution driver) and revolutionised the industry by introducing a complete ecosystem. Docker provided a portable image format, a centralised registry for distribution (Docker Hub), and a layered filesystem that enabled efficient storage. Docker eventually replaced LXC with its own library, libcontainer (now runc), to interact directly with kernel primitives. This shift standardised the container lifecycle and established the immutable infrastructure model that dominates cloud computing today.[1]
 
 -----
 
@@ -152,7 +152,7 @@ The Network namespace allows each container to possess a completely isolated net
 
 ### 3.1.3 - The User Namespace
 
-User Namespaces act as a critical security feature by allowing a process to hold root privileges (UID 0) inside the container while simultaneously mapping to a non-privileged user (e.g., UID 1000) on the host. This mapping significantly mitigates the risk of privilege escalation attacks. [3];[12] Even if an attacker successfully breaks out of the container runtime, they find themselves with limited permissions on the host system, unable to modify system files or insert kernel modules.
+User Namespaces act as a critical security feature by allowing a process to hold root privileges (UID 0) inside the container while simultaneously mapping to a non-privileged user (e.g., UID 1000) on the host. This mapping significantly mitigates the risk of privilege escalation attacks.[3];[12] Even if an attacker successfully breaks out of the container runtime, they find themselves with limited permissions on the host system, unable to modify system files or insert kernel modules.
 
 ## 3.2 - Control Groups (cgroups): Resource Governance
 
@@ -213,7 +213,7 @@ This mechanism ensures that the base image remains immutable and can be shared a
 
 # 4 - Container Runtimes and Standards
 
-As the container ecosystem matured, reliance on a single vendor (Docker) became a concern. This necessitated standardisation, leading to the formation of the Open Container Initiative (OCI) in 2015. [1]
+As the container ecosystem matured, reliance on a single vendor (Docker) became a concern. This necessitated standardisation, leading to the formation of the Open Container Initiative (OCI) in 2015.[1]
 
 ```mermaid
 flowchart TD
@@ -306,7 +306,7 @@ flowchart TD
 
 Docker operates on a client-server architecture. The Docker Command Line Interface (CLI) communicates via a REST API with the dockerd daemon, a persistent background process.
 
-  * **Daemon-Centric:** The daemon is responsible for all container operations. By default, it runs with root privileges. This simplifies management but introduces a significant security risk; if the daemon is compromised, the attacker gains root access to the host. [12];[3]
+  * **Daemon-Centric:** The daemon is responsible for all container operations. By default, it runs with root privileges. This simplifies management but introduces a significant security risk; if the daemon is compromised, the attacker gains root access to the host.[12];[3]
   * **Process Tree:** All container processes are child processes of the daemon. In a standard configuration, if the daemon crashes, all running containers are terminated (though "live-restore" functionality can mitigate this).
   * **Pros:** A mature ecosystem, extensive tooling (e.g., Docker Desktop), and widespread adoption.
   * **Cons:** Single point of failure (the daemon), security vulnerabilities associated with the root-privileged daemon, and complexity in managing firewall rules.
@@ -316,7 +316,7 @@ Docker operates on a client-server architecture. The Docker Command Line Interfa
 Podman (Pod Manager), developed by Red Hat, implements a fork-exec architecture similar to traditional Linux processes.
 
   * **Daemonless:** There is no persistent background process. When a user executes `podman run`, the container process is started directly as a child of the user's process. If the Podman CLI exits, the container continues to run, monitored by a lightweight conmon process.
-  * **Rootless by Design:** Podman focuses heavily on unprivileged execution. It leverages User Namespaces to map the user's UID on the host to root inside the container by default. This dramatically reduces the attack surface. [12];[13]
+  * **Rootless by Design:** Podman focuses heavily on unprivileged execution. It leverages User Namespaces to map the user's UID on the host to root inside the container by default. This dramatically reduces the attack surface.[12];[13]
   * **Systemd Integration:** Podman is designed to interoperate seamlessly with systemd. Containers can be managed as standard system services, allowing for dependency management and automatic restarts on boot.
   * **Pods:** Unlike Docker, Podman natively supports the concept of "Pods" (groups of containers sharing namespaces), mirroring the Kubernetes model. This facilitates a smoother transition from local development to Kubernetes production.
 
@@ -365,11 +365,11 @@ graph TD
 
 ## 6.1 - Kubernetes: The Industry Standard
 
-Kubernetes (K8s) is the de facto standard for container orchestration. It automates deployment, scaling, and management of containerised applications. [2]
+Kubernetes (K8s) is the de facto standard for container orchestration. It automates deployment, scaling, and management of containerised applications.[2]
 
-  * **Role:** Kubernetes does not strictly run containers; it schedules them. It maintains the desired state of the system (e.g., "three replicas of the web server") and instructs the node-level runtime (via the CRI) to execute the containers. [2]
-  * **Architecture:** It comprises a Control Plane (API Server, Scheduler, Controller Manager) and Worker Nodes (Kubelet, Kube-Proxy, Container Runtime). [2]
-  * **Abstractions:** Kubernetes introduces higher-level abstractions such as Pods (the atomic unit of scheduling), Deployments (declarative updates), and Services (stable networking endpoints). [2]
+  * **Role:** Kubernetes does not strictly run containers; it schedules them. It maintains the desired state of the system (e.g., "three replicas of the web server") and instructs the node-level runtime (via the CRI) to execute the containers.[2]
+  * **Architecture:** It comprises a Control Plane (API Server, Scheduler, Controller Manager) and Worker Nodes (Kubelet, Kube-Proxy, Container Runtime).[2]
+  * **Abstractions:** Kubernetes introduces higher-level abstractions such as Pods (the atomic unit of scheduling), Deployments (declarative updates), and Services (stable networking endpoints).[2]
 
 ## 6.2 - Docker Swarm
 
@@ -390,22 +390,22 @@ Kubernetes decoupling relies on three major interfaces:
 
 # 7 - Performance Analysis: Virtual Machines vs Containers
 
-Academic research and industry benchmarks consistently highlight the performance advantages of containers over virtual machines (VMs). [4];[5];[6];[7];[8]
+Academic research and industry benchmarks consistently highlight the performance advantages of containers over virtual machines (VMs).[4];[5];[6];[7];[8]
 
 ## 7.1 - Virtual Machines (Hypervisors)
 
 VMs rely on a Hypervisor (Type 1 like ESXi or Type 2 like VirtualBox) to emulate physical hardware.
 
-  * **Overhead:** High. Each VM requires a full guest operating system load, consuming gigabytes of RAM and significant CPU cycles for hardware instruction translation. [5]
-  * **Boot Time:** Slow. A VM must undergo a full boot sequence (BIOS/UEFI, Kernel load, Init system), often taking minutes. [5]
+  * **Overhead:** High. Each VM requires a full guest operating system load, consuming gigabytes of RAM and significant CPU cycles for hardware instruction translation.[5]
+  * **Boot Time:** Slow. A VM must undergo a full boot sequence (BIOS/UEFI, Kernel load, Init system), often taking minutes.[5]
 
 ## 7.2 - Containers
 
 Containers reside in the user space of the Host OS, sharing the host kernel.
 
-  * **Overhead:** Negligible. Containers incur minimal CPU overhead (typically \<1-2% compared to bare metal) as there is no instruction emulation. Memory usage is limited to the application processes and shared libraries. [5];[7]
-  * **Boot Time:** Instant. Starting a container is effectively starting a process, taking milliseconds. [5]
-  * **Density:** Due to the low overhead, a single physical server can host hundreds of containers, whereas it might only support a dozen VMs. [5];[6]
+  * **Overhead:** Negligible. Containers incur minimal CPU overhead (typically \<1-2% compared to bare metal) as there is no instruction emulation. Memory usage is limited to the application processes and shared libraries.[5];[7]
+  * **Boot Time:** Instant. Starting a container is effectively starting a process, taking milliseconds.[5]
+  * **Density:** Due to the low overhead, a single physical server can host hundreds of containers, whereas it might only support a dozen VMs.[5];[6]
 
 **Table 3: Performance and Architecture Comparison** [4];[5];[6];[7]
 
@@ -427,9 +427,9 @@ Security is the primary concern when adopting containerisation, given the shared
 
 ## 8.1 - Attack Vectors
 
-  * **Kernel Exploits:** Because all containers share the host kernel, a vulnerability in a system call (e.g., Dirty COW) can allow an attacker to "escape" the container and compromise the host. [9];[12]
-  * **Container Breakouts:** Misconfigurations, such as mounting the host's sensitive directories (like `/proc` or `/sys`) as read-write, or running with the `--privileged` flag, bypass namespace isolation entirely. [9];[12];[13]
-  * **Supply Chain Attacks:** Using untrusted base images from public registries can introduce malware or outdated packages with known vulnerabilities into the infrastructure. [10];[11]
+  * **Kernel Exploits:** Because all containers share the host kernel, a vulnerability in a system call (e.g., Dirty COW) can allow an attacker to "escape" the container and compromise the host.[9];[12]
+  * **Container Breakouts:** Misconfigurations, such as mounting the host's sensitive directories (like `/proc` or `/sys`) as read-write, or running with the `--privileged` flag, bypass namespace isolation entirely.[9];[12];[13]
+  * **Supply Chain Attacks:** Using untrusted base images from public registries can introduce malware or outdated packages with known vulnerabilities into the infrastructure.[10];[11]
 
 ## 8.2 - Hardening Strategies and NIST Guidelines
 
@@ -437,20 +437,20 @@ NIST Special Publication 800-190 "Application Container Security Guide" outlines
 
 ### 8.2.1 - Rootless Containers
 
-Running containers as a non-root user is the most effective defence. If a rootless container is compromised, the attacker possesses only the privileges of a standard user on the host, preventing system-wide damage. [12];[13]
+Running containers as a non-root user is the most effective defence. If a rootless container is compromised, the attacker possesses only the privileges of a standard user on the host, preventing system-wide damage.[12];[13]
 
 ### 8.2.2 - Seccomp (Secure Computing Mode)
 
-Seccomp acts as a firewall for system calls. It allows administrators to define a whitelist of syscalls a container is permitted to make. Docker's default seccomp profile blocks approximately 44 out of 300+ syscalls (including dangerous ones like reboot, syslog, and mount) significantly reducing the attack surface. [9];[12]
+Seccomp acts as a firewall for system calls. It allows administrators to define a whitelist of syscalls a container is permitted to make. Docker's default seccomp profile blocks approximately 44 out of 300+ syscalls (including dangerous ones like reboot, syslog, and mount) significantly reducing the attack surface.[9];[12]
 
 ### 8.2.3 - Mandatory Access Control (AppArmor/SELinux)
 
-  * **AppArmor:** Uses profiles to restrict file access and capabilities. For instance, a profile might deny writing to `/etc/` or executing specific binaries. Docker applies a default docker-default profile to containers. [12]
-  * **SELinux:** Provides label-based security. It ensures that processes (subjects) can only access files (objects) if the security labels match. This prevents a compromised container process from accessing host files, even if standard file permissions (chmod) would otherwise allow it. [9];[12]
+  * **AppArmor:** Uses profiles to restrict file access and capabilities. For instance, a profile might deny writing to `/etc/` or executing specific binaries. Docker applies a default docker-default profile to containers.[12]
+  * **SELinux:** Provides label-based security. It ensures that processes (subjects) can only access files (objects) if the security labels match. This prevents a compromised container process from accessing host files, even if standard file permissions (chmod) would otherwise allow it.[9];[12]
 
 ### 8.2.4 - Capabilities Dropping
 
-The Linux kernel divides the privileges of the root user into distinct units called Capabilities. A standard container does not need full root power. Runtimes drop dangerous capabilities like `CAP_SYS_ADMIN` (which allows mounting filesystems) by default, retaining only those necessary for network binding and file ownership changes. [9];[12]
+The Linux kernel divides the privileges of the root user into distinct units called Capabilities. A standard container does not need full root power. Runtimes drop dangerous capabilities like `CAP_SYS_ADMIN` (which allows mounting filesystems) by default, retaining only those necessary for network binding and file ownership changes.[9];[12]
 
 -----
 
@@ -490,54 +490,54 @@ graph LR
 
 # 10 - Future Directions: WASM and Unikernels
 
-The container landscape continues to evolve. WebAssembly (WASM) is emerging as a potential successor or companion to OCI containers. Originally designed for browsers, WASM offers a lightweight, secure sandbox that is platform-independent and starts in microseconds. This makes it potentially superior for serverless workloads where startup latency is critical. [15] Additionally, Unikernels (which compile the OS kernel into the application binary) offer extreme performance and security by removing the general-purpose OS entirely. However, they currently lack the tooling maturity of the container ecosystem. [14]
+The container landscape continues to evolve. WebAssembly (WASM) is emerging as a potential successor or companion to OCI containers. Originally designed for browsers, WASM offers a lightweight, secure sandbox that is platform-independent and starts in microseconds. This makes it potentially superior for serverless workloads where startup latency is critical.[15] Additionally, Unikernels (which compile the OS kernel into the application binary) offer extreme performance and security by removing the general-purpose OS entirely. However, they currently lack the tooling maturity of the container ecosystem.[14]
 
 -----
 
 # References
 
-1. Bernstein, D. (2014). *Containers and Cloud: From LXC to Docker to Kubernetes*. IEEE Cloud Computing, 1(3), 81–84. [Link](https://doi.org/10.1109/MCC.2014.51) ([S-Logix][1])
+1. Bernstein, D. (2014). [Containers and Cloud: From LXC to Docker to Kubernetes](https://doi.org/10.1109/MCC.2014.51). ([IEEE][1])
 
-2. Burns, B., Grant, B., Oppenheimer, D., Brewer, E., & Wilkes, J. (2016). *Borg, Omega, and Kubernetes*. Communications of the ACM, 59(5), 50–57. [Link](https://doi.org/10.1145/2890784) ([ACM Digital Library][2])
+2. Burns, B., Grant, B., *et al.* (2016). [Borg, Omega, and Kubernetes](https://doi.org/10.1145/2890784). ([ACM Digital Library][2])
 
-3. Reshetova, E., Karhunen, J., Nyman, T., & Asokan, N. (2014). *Security of OS-Level Virtualization Technologies*. In **NordSec 2014** (pp. 77–93). [Link](https://doi.org/10.1007/978-3-319-11599-3_5) ([ACM Digital Library][3])
+3. Reshetova, E., Karhunen, J., *et al.* (2014). [Security of OS-Level Virtualization Technologies](https://doi.org/10.1007/978-3-319-11599-3_5). ([Springer][3])
 
-4. Xavier, M. G., Neves, M. V., Rossi, F. D., Ferreto, T. C., Lange, T., & De Rose, C. A. F. (2013). *Performance Evaluation of Container-Based Virtualization for High Performance Computing Environments*. In **PDP 2013**. [Link](https://doi.org/10.1109/PDP.2013.41) ([PUCRS Faculdade de Informática][4])
+4. Xavier, M. G., Neves, M. V., *et al.* (2013). [Performance Evaluation of Container-Based Virtualization for High Performance Computing Environments](https://doi.org/10.1109/PDP.2013.41). ([IEEE][4])
 
-5. Felter, W., Ferreira, A., Rajamony, R., & Rubio, J. (2015). *An Updated Performance Comparison of Virtual Machines and Linux Containers*. In **IEEE ISPASS 2015** (pp. 171–172). [Link](https://doi.org/10.1109/ISPASS.2015.7095802) ([ResearchGate][5])
+5. Felter, W., Ferreira, A., *et al.* (2015). [An Updated Performance Comparison of Virtual Machines and Linux Containers](https://doi.org/10.1109/ISPASS.2015.7095802). ([IEEE][5])
 
-6. Sharma, P., Chaufournier, L., Shenoy, P., & Tay, Y. C. (2016). *Containers and Virtual Machines at Scale: A Comparative Study*. In **Middleware 2016**. [Link](https://doi.org/10.1145/2988336.2988337) ([LASS][6])
+6. Sharma, P., Chaufournier, L., *et al.* (2016). [Containers and Virtual Machines at Scale: A Comparative Study](https://doi.org/10.1145/2988336.2988337). ([ACM Digital Library][6])
 
-7. Chae, M. S., Lee, H., & Lee, K. (2019). *A Performance Comparison of Linux Containers and Virtual Machines Using Docker and KVM*. Cluster Computing, 22(Suppl 1), 1765–1775. [Link](https://doi.org/10.1007/s10586-017-1511-2) ([ACM Digital Library][7])
+7. Chae, M. S., Lee, H., *et al.* (2019). [A Performance Comparison of Linux Containers and Virtual Machines Using Docker and KVM](https://doi.org/10.1007/s10586-017-1511-2). ([Springer][7])
 
-8. Arango, C., Dernat, R., & Sanabria, J. (2017). *Performance Evaluation of Container-Based Virtualization for High Performance Computing Environments*. Revista UIS Ingenierías, 18(4), 31–42. (Also available as arXiv:1709.10140.) [Link](https://arxiv.org/abs/1709.10140) ([arXiv][8])
+8. Arango, C., Dernat, R., *et al.* (2017). [Performance Evaluation of Container-based Virtualization for High Performance Computing Environments](https://arxiv.org/abs/1709.10140). ([arXiv][8])
 
-9. Lin, X., Lei, L., Wang, Y., Jing, J., Sun, K., & Zhou, Q. (2018). *A Measurement Study on Linux Container Security: Attacks and Countermeasures*. In **ACSAC 2018** (pp. 418–429). [Link](https://doi.org/10.1145/3274694.3274720) ([sunlab-gmu.github.io][9])
+9. Lin, X., Lei, L., *et al.* (2018). [A Measurement Study on Linux Container Security: Attacks and Countermeasures](https://doi.org/10.1145/3274694.3274720). ([ACM Digital Library][9])
 
-10. Shu, R., Gu, X., & Enck, W. (2017). *A Study of Security Vulnerabilities on Docker Hub*. In **CODASPY 2017** (pp. 269–280). [Link](https://doi.org/10.1145/3029806.3029832) ([ACM Digital Library][10])
+10. Shu, R., Gu, X., *et al.* (2017). [A Study of Security Vulnerabilities on Docker Hub](https://doi.org/10.1145/3029806.3029832). ([ACM Digital Library][10])
 
-11. Kaur, B., Atif, J., & Gunter, D. (2021). *An Analysis of Security Vulnerabilities in Container Images for Scientific Data Analysis*. GigaScience, 10(6), giab025. [Link](https://doi.org/10.1093/gigascience/giab025) ([OUP Academic][11])
+11. Kaur, B., Atif, J., *et al.* (2021). [An Analysis of Security Vulnerabilities in Container Images for Scientific Data Analysis](https://doi.org/10.1093/gigascience/giab025). ([OUP Academic][11])
 
-12. Sultan, S., Ahmad, I., & Dimitriou, T. (2019). *Container Security: Issues, Challenges, and the Road Ahead*. IEEE Access, 7, 52976–52996. [Link](https://doi.org/10.1109/ACCESS.2019.2911732) ([SciSpace][12])
+12. Sultan, S., Ahmad, I., *et al.* (2019). [Container Security: Issues, Challenges, and the Road Ahead](https://doi.org/10.1109/ACCESS.2019.2911732). ([IEEE Access][12])
 
-13. Jarkas, O., Ko, R., Dong, N., & Mahmud, M. R. (2025). *A Container Security Survey: Exploits, Attacks, and Defenses*. ACM Computing Surveys, 57(7). [Link](https://doi.org/10.1145/3715001) ([ACM Digital Library][13])
+13. Jarkas, O., Ko, R., *et al.* (2025). [A Container Security Survey: Exploits, Attacks, and Defenses](https://doi.org/10.1145/3715001). ([ACM Digital Library][13])
 
-14. Madhavapeddy, A., Mortier, R., Rotsos, C., Scott, D., Singh, B., Gazagnaire, T., Smith, S., Hand, S., & Crowcroft, J. (2013). *Unikernels: Library Operating Systems for the Cloud*. In **ASPLOS 2013** (pp. 461–472). [Link](https://doi.org/10.1145/2499368.2451167) ([sites.cs.ucsb.edu][14])
+14. Madhavapeddy, A., Mortier, R., *et al.* (2013). [Unikernels: Library Operating Systems for the Cloud](https://doi.org/10.1145/2499368.2451167). ([ACM Digital Library][14])
 
-15. Haas, A., Rossberg, A., Schuff, D. L., Titzer, B. L., Holman, M., Gohman, D., Wagner, L., Zakai, A., & Bastien, J. (2017). *Bringing the Web Up to Speed with WebAssembly*. ACM SIGPLAN Notices, 52(6), 185–200 (PLDI 2017). [Link](https://doi.org/10.1145/3140587.3062363) ([ACM Digital Library][15])
+15. Haas, A., Rossberg, A., *et al.* (2017). [Bringing the Web Up to Speed with WebAssembly](https://doi.org/10.1145/3062341.3062363). ([ACM Digital Library][15])
 
-[1]: https://slogix.in/cloud-computing/containers-and-cloud-from-lxc-to-docker-to-kubernetes/?utm_source=chatgpt.com "Containers and Cloud: From LXC to Docker to Kubernetes"
-[2]: https://dl.acm.org/doi/10.1145/2890784?utm_source=chatgpt.com "Borg, Omega, and Kubernetes | Communications of the ACM"
-[3]: https://dl.acm.org/doi/10.1007/978-3-319-11599-3_5?utm_source=chatgpt.com "Security of OS-Level Virtualization Technologies"
-[4]: https://www.inf.pucrs.br/ferreto/pubs/2013pdp_xavier.pdf?utm_source=chatgpt.com "Performance Evaluation of Container-based Virtualization ..."
-[5]: https://www.researchgate.net/publication/295899644_An_updated_performance_comparison_of_virtual_machines_and_Linux_containers?utm_source=chatgpt.com "An updated performance comparison of virtual machines ..."
-[6]: https://lass.cs.umass.edu/papers/pdf/middleware16-CVM.pdf?utm_source=chatgpt.com "Containers and Virtual Machines at Scale: A Comparative ..."
-[7]: https://dl.acm.org/doi/10.1007/s10586-017-1511-2?utm_source=chatgpt.com "A performance comparison of linux containers and virtual ..."
-[8]: https://arxiv.org/abs/1709.10140?utm_source=chatgpt.com "Performance Evaluation of Container-based Virtualization for High Performance Computing Environments"
-[9]: https://sunlab-gmu.github.io/research/container_security.html?utm_source=chatgpt.com "Container Security - Sun Security Lab"
-[10]: https://dl.acm.org/doi/10.1145/3029806.3029832?utm_source=chatgpt.com "A Study of Security Vulnerabilities on Docker Hub"
-[11]: https://academic.oup.com/gigascience/article/10/6/giab025/6291571?utm_source=chatgpt.com "An analysis of security vulnerabilities in container images for ..."
-[12]: https://scispace.com/pdf/container-security-issues-challenges-and-the-road-ahead-j1fmexapca.pdf?utm_source=chatgpt.com "Container Security: Issues, Challenges, and the Road Ahead"
-[13]: https://dl.acm.org/doi/10.1145/3715001?utm_source=chatgpt.com "A Container Security Survey: Exploits, Attacks, and Defenses"
-[14]: https://sites.cs.ucsb.edu/~rich/class/cs270/papers/unikernel.pdf?utm_source=chatgpt.com "Unikernels: library operating systems for the cloud"
-[15]: https://dl.acm.org/doi/10.1145/3062341.3062363?utm_source=chatgpt.com "Bringing the web up to speed with WebAssembly"
+[1]: https://doi.org/10.1109/MCC.2014.51 "Containers and Cloud: From LXC to Docker to Kubernetes"
+[2]: https://doi.org/10.1145/2890784 "Borg, Omega, and Kubernetes"
+[3]: https://doi.org/10.1007/978-3-319-11599-3_5 "Security of OS-Level Virtualization Technologies"
+[4]: https://doi.org/10.1109/PDP.2013.41 "Performance Evaluation of Container-Based Virtualization for High Performance Computing Environments"
+[5]: https://doi.org/10.1109/ISPASS.2015.7095802 "An Updated Performance Comparison of Virtual Machines and Linux Containers"
+[6]: https://doi.org/10.1145/2988336.2988337 "Containers and Virtual Machines at Scale: A Comparative Study"
+[7]: https://doi.org/10.1007/s10586-017-1511-2 "A Performance Comparison of Linux Containers and Virtual Machines Using Docker and KVM"
+[8]: https://arxiv.org/abs/1709.10140 "Performance Evaluation of Container-based Virtualization for High Performance Computing Environments"
+[9]: https://doi.org/10.1145/3274694.3274720 "A Measurement Study on Linux Container Security: Attacks and Countermeasures"
+[10]: https://doi.org/10.1145/3029806.3029832 "A Study of Security Vulnerabilities on Docker Hub"
+[11]: https://doi.org/10.1093/gigascience/giab025 "An Analysis of Security Vulnerabilities in Container Images for Scientific Data Analysis"
+[12]: https://doi.org/10.1109/ACCESS.2019.2911732 "Container Security: Issues, Challenges, and the Road Ahead"
+[13]: https://doi.org/10.1145/3715001 "A Container Security Survey: Exploits, Attacks, and Defenses"
+[14]: https://doi.org/10.1145/2499368.2451167 "Unikernels: Library Operating Systems for the Cloud"
+[15]: https://doi.org/10.1145/3062341.3062363 "Bringing the Web Up to Speed with WebAssembly"

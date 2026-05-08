@@ -46,7 +46,7 @@
 		- [**5.2.3 - Responsible AI**](#523---responsible-ai)
 		- [**5.2.4 - Transparency and Explainability**](#524---transparency-and-explainability)
 - [**Conclusion**](#conclusion)
-- [**Sources**](#sources)
+- [References](#references)
 
 
 
@@ -54,21 +54,21 @@
 
 ## **1.1 - What is Machine Learning (ML)?**
 
-Machine learning is a subfield of artificial intelligence that involves the construction of applications that learn from experience in an incremental fashion, and are then able to improve in their ability to make decisions over time without being explicitly programmed for the task. It involves algorithms that enable computers to "learn"—progressively improve performance on a specific task from data, without being explicitly programmed.
+Machine learning is a subfield of artificial intelligence that involves the construction of applications that learn from experience in an incremental fashion, and are then able to improve in their ability to make decisions over time without being explicitly programmed for the task. It involves algorithms that enable computers to "learn"—progressively improve performance on a specific task from data, without being explicitly programmed.[1];[2]
 
 Machine learning has been the word of modern times. Many technologies and services that make our lives more convenient at their core, from web search machines and email filters to personal assistant devices, are also becoming quite indispensable for such advanced applications as self-driving vehicles or speech recognition, not to mention the personalized recommendations one gets on Netflix or Amazon.
 
 ### **1.1.1 - Different Types of Machine Learning**
 
-1. **Supervised Learning**: This is the most common kind of machine learning. In supervised learning, the algorithm will be trained using a pre-labelled dataset. That is, each example from the training set is associated with the correct output. The objective of the supervised learning process is to learn how inputs are mapped to outputs so it will be able to predict an output when given new input data.
+1. **Supervised Learning**: This is the most common kind of machine learning. In supervised learning, the algorithm will be trained using a pre-labelled dataset. That is, each example from the training set is associated with the correct output. The objective of the supervised learning process is to learn how inputs are mapped to outputs so it will be able to predict an output when given new input data.[4];[11]
 
-2. **Unsupervised Learning**: In unsupervised learning, the case where only the input data are available to train the algorithm and, hence there is no correct answer to which the system should point out. The objective is to look into the structure of the data in an attempt to infer meaningful insights from it. Typical uses include, among other things, clustering, association, and dimensionality reduction.
+2. **Unsupervised Learning**: In unsupervised learning, the case where only the input data are available to train the algorithm and, hence there is no correct answer to which the system should point out. The objective is to look into the structure of the data in an attempt to infer meaningful insights from it. Typical uses include, among other things, clustering, association, and dimensionality reduction.[4];[11]
 
-3. **Reinforcement Learning**: In reinforcement learning, an agent learns to behave under an environment by performing actions and witnessing the results of these actions. This is different from supervised learning in the sense that correct input–output pairs are never presented, nor suboptimal actions explicitly corrected.
+3. **Reinforcement Learning**: In reinforcement learning, an agent learns to behave under an environment by performing actions and witnessing the results of these actions. This is different from supervised learning in the sense that correct input–output pairs are never presented, nor suboptimal actions explicitly corrected.[4];[5]
 
 ### **1.1.2 - Applications of Machine Learning Across Various Industries**
 
-Machine learning has a wide range of applications across various industries:
+Machine learning has a wide range of applications across various industries.[13];[14]
 
 - **Healthcare**: Machine learning once again gives healthcare a facelift towards more personalized treatment and diagnosis.
 
@@ -86,13 +86,13 @@ Machine learning has a wide range of applications across various industries:
 
 ## **2.1 - Machine Learning vs Deep Learning vs Artificial Intelligence**
 
-The central understanding of the relationship of ML with deep learning and AI would be one that shall be really imperative to understand the basis of these transformational technologies.
+The central understanding of the relationship of ML with deep learning and AI would be one that shall be really imperative to understand the basis of these transformational technologies.[7];[8]
 
 ### **2.1.1 - Machine Learning (ML)**
 
 Machine Learning is a part of Artificial Intelligence concerned with the technique of developing algorithms that are capable of learning tasks and making predictions or decisions based on that learning. ML research  is motivated by the possibility that a machine should, with little prior knowledge, be able to acquire a set of data and thereafter learn for itself, altering algorithms as it learns more about the information being processed. This tends to make them more adaptable and more humanlike than traditional machines.
 
-Deep Learning is a subset of ML with neural networks in layers. These neural networks are designed after the process of humans' way of thinking and learning. Where traditional machine learning models get better at whatever their function is, they eventually stop improving once they are fed enough data; deep learning models continue to lift their performance as more data is received. That is especially helpful for fields like image and speech recognition.
+Deep Learning is a subset of ML with neural networks in layers. These neural networks are designed after the process of humans' way of thinking and learning. Where traditional machine learning models get better at whatever their function is, they eventually stop improving once they are fed enough data; deep learning models continue to lift their performance as more data is received. That is especially helpful for fields like image and speech recognition.[9];[7]
 
 Artificial Intelligence (AI)
 
@@ -108,7 +108,7 @@ AI describes an umbrella of technologies and systems beyond ML. These run from r
 
 # **3 - Data Preparation and Cleaning**
 
-Data preparation and cleaning are the two most important steps in a machine learning pipeline, as both have a direct influence on the quality of the prediction a model makes. Here are a few common challenges in conducting an ML project and the solutions for them:
+Data preparation and cleaning are the two most important steps in a machine learning pipeline, as both have a direct influence on the quality of the prediction a model makes.[19];[20] Here are a few common challenges in conducting an ML project and the solutions for them:
 
 ### 1 - **Missing Data**
 
@@ -139,7 +139,7 @@ These methods are indispensable in the data preparation stage of any machine lea
 
 ## **3.1 - Plotting Continuous Features**
 
-Data visualisation plays an important role in understanding and preparing data before machine learning. One can draw out a lot of information about the underlying patterns and trends present in a continuous feature, which includes some quantitative variables with an infinite number of possibilities. Below is how data visualisation is critical and the ways to plot continuous features.
+Data visualisation plays an important role in understanding and preparing data before machine learning. One can draw out a lot of information about the underlying patterns and trends present in a continuous feature, which includes some quantitative variables with an infinite number of possibilities.[17] Below is how data visualisation is critical and the ways to plot continuous features.
 
 ### **3.1.1 - Importance of Data Visualisation**
 
@@ -205,7 +205,7 @@ Two primary steps of the machine learning pipeline include proper cleaning and p
 
 ## **4.1 - Measuring Success**
 
-The process to model building and evaluation is initiated by measuring the performance of the machine learning model. Performance metrics exist, to estimate the performance of various kinds of machine learning models. Understanding such varied kinds of performance metrics such as accuracy, precision, recall, F1-score, and ROC AUC, when and where to apply each of such kinds is necessary in an accurate way to measure model success effectively.
+The process to model building and evaluation is initiated by measuring the performance of the machine learning model. Performance metrics exist, to estimate the performance of various kinds of machine learning models. Understanding such varied kinds of performance metrics such as accuracy, precision, recall, F1-score, and ROC AUC, when and where to apply each of such kinds is necessary in an accurate way to measure model success effectively.[21];[22];[23];[24]
 
 ### **4.1.1 - Various Performance Metrics**
 
@@ -234,11 +234,11 @@ An understanding of these metrics and how to apply them appropriately holds a lo
 
 ## **4.2 - Overfitting and Underfitting**
 
-Two very common problems in machine learning are overfitting and underfitting, both of which make the model less likely to generalize well from the training data to unseen data.
+Two very common problems in machine learning are overfitting and underfitting, both of which make the model less likely to generalize well from the training data to unseen data.[25];[26]
 
 ### **4.2.1 - Overfitting**
 
-- **Concept**: Overfitting is the part of machine learning where a model learns from details and noise in the training data to an extent that it has a detrimental effect on the performance of the model with new data. The model is thus too complex relative to the number of observations, with too many parameters in it.
+- **Concept**: Overfitting is the part of machine learning where a model learns from details and noise in the training data to an extent that it has a detrimental effect on the performance of the model with new data. The model is thus too complex relative to the number of observations, with too many parameters in it.[26];[27];[28]
 
 - **Symptoms**:
   - High accuracy on training data but poorer performance on test/unseen data.
@@ -264,7 +264,7 @@ The model developed is too simple to capture the underlying structure of the dat
  Strategies to Address :
 - **Adding More Features**: Do this to prevent underfitting if it's because of a lack of features required to establish in the data.
   - **Increasing Model Complexity**: Sometimes by using better and more complex models, you will be able to capture the patterns in the data.
-  - **Feature Engineering**: Development of new or transformation of initial features could give the model more information to learn from.
+  - **Feature Engineering**: Development of new or transformation of initial features could give the model more information to learn from.[18]
 
 Things like overfitting and underfitting are really key in machine learning. With the proper strategies in place for prevention or even curing, it markedly improves the performance of the model and its capability for generalisation from the data it was trained on to new data.
 
@@ -284,9 +284,9 @@ This is perhaps the most important step in the machine-learning process. It invo
 
 5. Manual Adjustment: A data scientist will manually make a modification to the hyperparameters based on experience and intuition. This method can take time, but the bright side is that it gives in-depth learning in regard to how every hyperparameter influences changes in the model.
 
-2. **Grid Search**: Grid search means we define a grid of hyperparameter values and we search all possible combinations. The objective is to identify the best possible performance; it is exhaustive but can be computationally expensive.
+2. **Grid Search**: Grid search means we define a grid of hyperparameter values and we search all possible combinations. The objective is to identify the best possible performance; it is exhaustive but can be computationally expensive.[32];[33]
 
-3. **Random Search**: Under random search, one sets up a grid of hyperparameter values, then picks randomly from them to train the model. This is not exhaustive, but it is typically much faster and more efficient compared to grid search, especially when the number of hyperparameters is very large.
+3. **Random Search**: Under random search, one sets up a grid of hyperparameter values, then picks randomly from them to train the model. This is not exhaustive, but it is typically much faster and more efficient compared to grid search, especially when the number of hyperparameters is very large.[33];[34]
 
 ### **4.3.3 - Validation in Hyperparameter Tuning: Why?**
 
@@ -299,7 +299,7 @@ This is perhaps the most important step in the machine-learning process. It invo
 
 ## **4.4 - Evaluating a Model**
 
-Evaluation of model performance is one of the most critical stages of the technological innovation. This is done by approximation of the ability of the model to ensure that it generalizes on new data by use of a set of evaluation metrics.
+Evaluation of model performance is one of the most critical stages of the technological innovation. This is done by approximation of the ability of the model to ensure that it generalizes on new data by use of a set of evaluation metrics.[35];[36]
 
 ### **4.4.1 - Evaluating a Machine Learning Model**
 
@@ -333,22 +333,22 @@ Machine learning finds applications across a wide range of domains, making a hug
 
 ### **5.1.1 - Image Recognition and Computer Vision**
 
-- **Application**: Machine learning models have taken over the area of image recognition, mainly models based on deep learning techniques. Such models are good at identification and classification of objects from images.
+- **Application**: Machine learning models have taken over the area of image recognition, mainly models based on deep learning techniques. Such models are good at identification and classification of objects from images.[37];[38]
 - **Uses**: This technology is then applied in Facial recognition systems, Self-driving cars, Security surveillance, and in retail, too, by identifying products.
 
 ### **5.1.2 - Natural Language Processing (NLP)**
 
 - **Application**: NLP applies machine learning to understand, interpret, and manipulate human language.
-It's heavily used in chatbots, translation services, sentiment analysis, and voice assistants like Siri and Alexa.
+It's heavily used in chatbots, translation services, sentiment analysis, and voice assistants like Siri and Alexa.[39]
 
 ### **5.1.3 - Recommender Systems**
 
-Applications ML algorithms within the recommender system analyse user activities and trends to recommend products or content.
+Applications ML algorithms within the recommender system analyse user activities and trends to recommend products or content.[40];[41]
 Uses Such systems are especially typical on shopping websites, for example, Amazon, and streaming websites like Netflix that provide users with tailored and relevant recommendations for movies or shows.
 
 ### **5.1.4 - Fraud Detection and Risk Management**
 
-- **Application**: Training machine learning models to recognize patterns predictive of fraud.
+- **Application**: Training machine learning models to recognize patterns predictive of fraud.[42];[45]
 - **Uses**: These models are of paramount importance in the financial sector, more so in credit card fraud detection and insurance fraud, and in cybersecurity, where such models are applied in identifying unusual patterns that could be indicative of security breaches.
 
 ### **5.1.5 - Healthcare and Medical Diagnosis**
@@ -365,7 +365,7 @@ The rapidly advancing pace and increasing integration of ML in society raise a n
 
 ### **5.2.1 - Bias and Fairness**
 
-- **Concern**: ML models sometimes capture and amplify biases inherent in their training data. This results in unfair outcomes more in sensitive applications such as hiring, law enforcement, and lending.
+- **Concern**: ML models sometimes capture and amplify biases inherent in their training data. This results in unfair outcomes more in sensitive applications such as hiring, law enforcement, and lending.[43]
 - **Solution**: Methods for detecting and reducing bias should include diverse and representative data sets in the process and techniques. Bias is likely; developers and data scientists must anticipate it and work to avoid it explicitly.
 
 ### **5.2.2 - Privacy**
@@ -381,7 +381,7 @@ The rapidly advancing pace and increasing integration of ML in society raise a n
 ### **5.2.4 - Transparency and Explainability**
 
 - **Need for Transparency**: In most of the applications, especially in those affecting the lives of people directly, it is necessary for ML models to show transparency in their operation and decisions.
-- **Explainability**: To a large extent, ML models are viewed as black boxes; this is particularly the case for complex models such as deep neural networks. One of the most important ways in which to establish trust in these models, therefore, lies in the development of methods by which they explain how they arrive at their decisions—in critical applications like healthcare and criminal justice.
+- **Explainability**: To a large extent, ML models are viewed as black boxes; this is particularly the case for complex models such as deep neural networks. One of the most important ways in which to establish trust in these models, therefore, lies in the development of methods by which they explain how they arrive at their decisions—in critical applications like healthcare and criminal justice.[43]
 
 # **Conclusion**
 
@@ -399,51 +399,143 @@ With great power comes great responsibility. Bias, fairness, privacy, and respon
 
 In a nutshell, machine learning is such a dynamic and fast-moving field that it opens avenues for limitless innovation and improvement in all walks of life. In doing so, and as we move on in the field, we need to balance our perspective by embracing its development for possible benefits against ethical implications while designing ML. With responsible development and mindful application, machine learning will go on being that force driving technological advancement and betterment in society.
 
-# **Sources**
-- [Machine learning](https://en.wikipedia.org/wiki/Machine_learning)
-- [What is machine learning?](https://www.ibm.com/topics/machine-learning)
-- [What Is Machine Learning? Definition, Types, and Examples](https://www.coursera.org/articles/what-is-machine-learning)
-- [Introduction to Supervised, Semi-supervised, Unsupervised and Reinforcement Learning](https://www.baeldung.com/cs/machine-learning-intro)
-- [Supervised Learning vs Unsupervised Learning vs Reinforcement Learning](https://intellipaat.com/blog/supervised-learning-vs-unsupervised-learning-vs-reinforcement-learning/)
-- [Major Scope in Artificial Intelligence and Machine Learning](https://studynotesexpert.com/scope-in-artificial-intelligence-and-machine-learning/)
-- [AI vs. Machine Learning vs. Deep Learning vs. Neural Networks: What’s the difference?](https://www.ibm.com/blog/ai-vs-machine-learning-vs-deep-learning-vs-neural-networks/)
-- [Artificial Intelligence (AI) vs Machine Learning (ML): A Comparative Guide](https://www.datacamp.com/blog/the-difference-between-ai-and-machine-learning)
-- [What Is Deep Learning? Definition, Examples, and Careers](https://www.coursera.org/articles/what-is-deep-learning)
-- [What Is the Relationship Between Machine Learning and Artificial Intelligence](https://talentedge.com/articles/relationship-machine-learning-artificial-intelligence/)
-- [Supervised vs. Unsupervised Learning: What’s the Difference?](https://www.ibm.com/blog/supervised-vs-unsupervised-learning/)
-- [Types of Machine Learning: A Brief Introduction to Supervised, Unsupervised, Semi-Supervised, and Reinforcement Learning](https://rhythmblogs.hashnode.dev/types-of-machine-learning-a-brief-introduction-to-supervised-unsupervised-semi-supervised-and-reinforcement-learning)
-- [Applications of Machine Learning](https://www.geeksforgeeks.org/machine-learning-introduction/)
-- [Machine Learning’s Impact: Top Applications Across Industries](https://www.pixelcrayons.com/blog/industries/machine-learnings-impact-top-applications-across-industries/)
-- [7 Major Challenges Faced By Machine Learning Professionals](https://www.geeksforgeeks.org/7-major-challenges-faced-by-machine-learning-professionals/)
-- [Challenges of Machine Learning](https://www.javatpoint.com/challenges-of-machine-learning)
-- [Visualizing distributions of data](https://seaborn.pydata.org/tutorial/distributions.html)
-- [Machine Learning Tutorial – Feature Engineering and Feature Selection For Beginners](https://www.freecodecamp.org/news/feature-engineering-and-feature-selection-for-beginners/)
-- [Data Cleaning Process: How Should It Look Like?](https://neptune.ai/blog/data-cleaning-process)
-- [Data Cleaning: Detecting, Diagnosing, and Editing Data Abnormalities](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.0020267)
-- [What is precision, Recall, Accuracy and F1-score?](https://www.nomidl.com/machine-learning/what-is-precision-recall-accuracy-and-f1-score/)
-- [Beyond Accuracy: Recall, Precision, F1-Score, ROC-AUC](https://medium.com/@priyankads/beyond-accuracy-recall-precision-f1-score-roc-auc-6ef2ce097966)
-- [Different metrics to evaluate the performance of a Machine Learning model](https://medium.com/analytics-vidhya/different-metrics-to-evaluate-the-performance-of-a-machine-learning-model-90acec9e8726)
-- [Metrics To Evaluate Machine Learning Algorithms in Python](https://machinelearningmastery.com/metrics-evaluate-machine-learning-algorithms-python/)
-- [Underfitting and Overfitting in Machine Learning](https://www.baeldung.com/cs/ml-underfitting-overfitting)
-- [Overfitting](https://en.wikipedia.org/wiki/Overfitting)
-- [Overfitting and Underfitting – Common Causes & Solutions](https://www.analyticsfordecisions.com/overfitting-and-underfitting/)
-- [ML | Underfitting and Overfitting](https://www.geeksforgeeks.org/underfitting-and-overfitting-in-machine-learning/)
-- [Hyperparameters: Understanding Their Role in Machine Learning](https://brainalyst.in/hyperparameters-in-machine-learning/)
-- [Hyperparameter Machine Learning](https://www.educba.com/hyperparameter-machine-learning/)
-- [Understanding Hyperparameters in Machine Learning](https://medium.com/@ilyurek/understanding-hyperparameters-in-machine-learning-6ae699fcbdd1)
-- [What Is Hyperparameter Tuning](https://www.run.ai/guides/hyperparameter-tuning)
-- [A Comprehensive Guide on Hyperparameter Tuning and its Techniques](https://www.analyticsvidhya.com/blog/2022/02/a-comprehensive-guide-on-hyperparameter-tuning-and-its-techniques/)
-- [Hyperparameter tuning for machine learning models.](https://www.jeremyjordan.me/hyperparameter-tuning/)
-- [Why is Model Evaluation Important in Machine Learning?](https://www.comet.com/site/blog/why-is-model-evaluation-important-in-machine-learning/)
-- [The Ultimate Guide to Evaluation and Selection of Models in Machine Learning](https://neptune.ai/blog/ml-model-evaluation-and-selection)
-- [Computer Vision and Recognition Systems Using Machine and Deep Learning Approaches: Fundamentals, technologies and applications](https://digital-library.theiet.org/content/books/pc/pbpc042e)
-- [9 Applications of Deep Learning for Computer Vision](https://machinelearningmastery.com/applications-of-deep-learning-for-computer-vision/)
-- [The role of natural language processing in AI](https://online.york.ac.uk/the-role-of-natural-language-processing-in-ai/)
-- [Recommender Systems in Machine Learning: Examples](https://vitalflux.com/recommender-systems-in-machine-learning-examples/)
-- [What are recommender systems? Use cases, types, and techniques](https://www.aporia.com/learn/recommender-systems/what-are-recommender-systems-use-cases-types-and-techniques/)
-- [Utilizing Machine Learning for Fraud Detection: Best Practices and Strategies](https://soloway.tech/blog/utilizing-machine-learning-for-fraud-detection/)
-- [Ethical Considerations in AI and Machine Learning: Building Responsible Algorithms](https://krishnapullak.medium.com/ethical-considerations-in-ai-and-machine-learning-building-responsible-algorithms-35359d59b14f)
-- [Top 10 Real-World Machine Learning Applications](https://hackr.io/blog/real-world-machine-learning-applications)
-- [Using Machine Learning for Risk & Fraud Detection](https://www.tecton.ai/blog/detecting-and-preventing-fraud-with-machine-learning/)
-- [Applied Machine Learning: Foundations](https://www.linkedin.com/learning/applied-machine-learning-foundations/leveraging-machine-learning)
-- [Artificial Intelligence Foundations: Machine Learning](https://www.linkedin.com/learning/artificial-intelligence-foundations-machine-learning-22345868/introduction-to-ai-foundations-machine-learning-course)
+# References
+
+1. [Machine learning](https://en.wikipedia.org/wiki/Machine_learning). ([Wikipedia][1])
+
+2. [What is machine learning?](https://www.ibm.com/topics/machine-learning). ([IBM][2])
+
+3. [What Is Machine Learning? Definition, Types, and Examples](https://www.coursera.org/articles/what-is-machine-learning). ([Coursera][3])
+
+4. [Introduction to Supervised, Semi-supervised, Unsupervised and Reinforcement Learning](https://www.baeldung.com/cs/machine-learning-intro). ([Baeldung][4])
+
+5. [Supervised Learning vs Unsupervised Learning vs Reinforcement Learning](https://intellipaat.com/blog/supervised-learning-vs-unsupervised-learning-vs-reinforcement-learning/). ([Intellipaat][5])
+
+6. [Major Scope in Artificial Intelligence and Machine Learning](https://studynotesexpert.com/scope-in-artificial-intelligence-and-machine-learning/). ([studynotesexpert.com][6])
+
+7. [AI vs. Machine Learning vs. Deep Learning vs. Neural Networks: What's the difference?](https://www.ibm.com/blog/ai-vs-machine-learning-vs-deep-learning-vs-neural-networks/). ([IBM][7])
+
+8. [Artificial Intelligence (AI) vs Machine Learning (ML): A Comparative Guide](https://www.datacamp.com/blog/the-difference-between-ai-and-machine-learning). ([DataCamp][8])
+
+9. [What Is Deep Learning? Definition, Examples, and Careers](https://www.coursera.org/articles/what-is-deep-learning). ([Coursera][9])
+
+10. [What Is the Relationship Between Machine Learning and Artificial Intelligence](https://talentedge.com/articles/relationship-machine-learning-artificial-intelligence/). ([TalentEdge][10])
+
+11. [Supervised vs. Unsupervised Learning: What's the Difference?](https://www.ibm.com/blog/supervised-vs-unsupervised-learning/). ([IBM][11])
+
+12. [Types of Machine Learning: A Brief Introduction to Supervised, Unsupervised, Semi-Supervised, and Reinforcement Learning](https://rhythmblogs.hashnode.dev/types-of-machine-learning-a-brief-introduction-to-supervised-unsupervised-semi-supervised-and-reinforcement-learning). ([Hashnode][12])
+
+13. [Applications of Machine Learning](https://www.geeksforgeeks.org/machine-learning-introduction/). ([GeeksforGeeks][13])
+
+14. [Machine Learning's Impact: Top Applications Across Industries](https://www.pixelcrayons.com/blog/industries/machine-learnings-impact-top-applications-across-industries/). ([PixelCrayons][14])
+
+15. [7 Major Challenges Faced By Machine Learning Professionals](https://www.geeksforgeeks.org/7-major-challenges-faced-by-machine-learning-professionals/). ([GeeksforGeeks][15])
+
+16. [Challenges of Machine Learning](https://www.javatpoint.com/challenges-of-machine-learning). ([javatpoint][16])
+
+17. [Visualizing distributions of data](https://seaborn.pydata.org/tutorial/distributions.html). ([Seaborn][17])
+
+18. [Machine Learning Tutorial – Feature Engineering and Feature Selection For Beginners](https://www.freecodecamp.org/news/feature-engineering-and-feature-selection-for-beginners/). ([freeCodeCamp][18])
+
+19. [Data Cleaning Process: How Should It Look Like?](https://neptune.ai/blog/data-cleaning-process). ([neptune.ai][19])
+
+20. [Data Cleaning: Detecting, Diagnosing, and Editing Data Abnormalities](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.0020267). ([PLOS Medicine][20])
+
+21. [What is precision, Recall, Accuracy and F1-score?](https://www.nomidl.com/machine-learning/what-is-precision-recall-accuracy-and-f1-score/). ([nomidl.com][21])
+
+22. [Beyond Accuracy: Recall, Precision, F1-Score, ROC-AUC](https://medium.com/@priyankads/beyond-accuracy-recall-precision-f1-score-roc-auc-6ef2ce097966). ([Medium][22])
+
+23. [Different metrics to evaluate the performance of a Machine Learning model](https://medium.com/analytics-vidhya/different-metrics-to-evaluate-the-performance-of-a-machine-learning-model-90acec9e8726). ([Medium][23])
+
+24. [Metrics To Evaluate Machine Learning Algorithms in Python](https://machinelearningmastery.com/metrics-evaluate-machine-learning-algorithms-python/). ([Machine Learning Mastery][24])
+
+25. [Underfitting and Overfitting in Machine Learning](https://www.baeldung.com/cs/ml-underfitting-overfitting). ([Baeldung][25])
+
+26. [Overfitting](https://en.wikipedia.org/wiki/Overfitting). ([Wikipedia][26])
+
+27. [Overfitting and Underfitting – Common Causes & Solutions](https://www.analyticsfordecisions.com/overfitting-and-underfitting/). ([Analytics for Decisions][27])
+
+28. [ML | Underfitting and Overfitting](https://www.geeksforgeeks.org/underfitting-and-overfitting-in-machine-learning/). ([GeeksforGeeks][28])
+
+29. [Hyperparameters: Understanding Their Role in Machine Learning](https://brainalyst.in/hyperparameters-in-machine-learning/). ([brainalyst.in][29])
+
+30. [Hyperparameter Machine Learning](https://www.educba.com/hyperparameter-machine-learning/). ([EDUCBA][30])
+
+31. [Understanding Hyperparameters in Machine Learning](https://medium.com/@ilyurek/understanding-hyperparameters-in-machine-learning-6ae699fcbdd1). ([Medium][31])
+
+32. [What Is Hyperparameter Tuning](https://www.run.ai/guides/hyperparameter-tuning). ([run.ai][32])
+
+33. [A Comprehensive Guide on Hyperparameter Tuning and its Techniques](https://www.analyticsvidhya.com/blog/2022/02/a-comprehensive-guide-on-hyperparameter-tuning-and-its-techniques/). ([Analytics Vidhya][33])
+
+34. [Hyperparameter tuning for machine learning models](https://www.jeremyjordan.me/hyperparameter-tuning/). ([jeremyjordan.me][34])
+
+35. [Why is Model Evaluation Important in Machine Learning?](https://www.comet.com/site/blog/why-is-model-evaluation-important-in-machine-learning/). ([Comet][35])
+
+36. [The Ultimate Guide to Evaluation and Selection of Models in Machine Learning](https://neptune.ai/blog/ml-model-evaluation-and-selection). ([neptune.ai][36])
+
+37. [Computer Vision and Recognition Systems Using Machine and Deep Learning Approaches: Fundamentals, technologies and applications](https://digital-library.theiet.org/content/books/pc/pbpc042e). ([IET Digital Library][37])
+
+38. [9 Applications of Deep Learning for Computer Vision](https://machinelearningmastery.com/applications-of-deep-learning-for-computer-vision/). ([Machine Learning Mastery][38])
+
+39. [The role of natural language processing in AI](https://online.york.ac.uk/the-role-of-natural-language-processing-in-ai/). ([University of York][39])
+
+40. [Recommender Systems in Machine Learning: Examples](https://vitalflux.com/recommender-systems-in-machine-learning-examples/). ([vitalflux.com][40])
+
+41. [What are recommender systems? Use cases, types, and techniques](https://www.aporia.com/learn/recommender-systems/what-are-recommender-systems-use-cases-types-and-techniques/). ([Aporia][41])
+
+42. [Utilizing Machine Learning for Fraud Detection: Best Practices and Strategies](https://soloway.tech/blog/utilizing-machine-learning-for-fraud-detection/). ([soloway.tech][42])
+
+43. [Ethical Considerations in AI and Machine Learning: Building Responsible Algorithms](https://krishnapullak.medium.com/ethical-considerations-in-ai-and-machine-learning-building-responsible-algorithms-35359d59b14f). ([Medium][43])
+
+44. [Top 10 Real-World Machine Learning Applications](https://hackr.io/blog/real-world-machine-learning-applications). ([hackr.io][44])
+
+45. [Using Machine Learning for Risk & Fraud Detection](https://www.tecton.ai/blog/detecting-and-preventing-fraud-with-machine-learning/). ([Tecton][45])
+
+46. [Applied Machine Learning: Foundations](https://www.linkedin.com/learning/applied-machine-learning-foundations/leveraging-machine-learning). ([LinkedIn Learning][46])
+
+[1]: https://en.wikipedia.org/wiki/Machine_learning "Machine learning"
+[2]: https://www.ibm.com/topics/machine-learning "What is machine learning?"
+[3]: https://www.coursera.org/articles/what-is-machine-learning "What Is Machine Learning? Definition, Types, and Examples"
+[4]: https://www.baeldung.com/cs/machine-learning-intro "Introduction to Supervised, Semi-supervised, Unsupervised and Reinforcement Learning"
+[5]: https://intellipaat.com/blog/supervised-learning-vs-unsupervised-learning-vs-reinforcement-learning/ "Supervised Learning vs Unsupervised Learning vs Reinforcement Learning"
+[6]: https://studynotesexpert.com/scope-in-artificial-intelligence-and-machine-learning/ "Major Scope in Artificial Intelligence and Machine Learning"
+[7]: https://www.ibm.com/blog/ai-vs-machine-learning-vs-deep-learning-vs-neural-networks/ "AI vs. Machine Learning vs. Deep Learning vs. Neural Networks: What's the difference?"
+[8]: https://www.datacamp.com/blog/the-difference-between-ai-and-machine-learning "Artificial Intelligence (AI) vs Machine Learning (ML): A Comparative Guide"
+[9]: https://www.coursera.org/articles/what-is-deep-learning "What Is Deep Learning? Definition, Examples, and Careers"
+[10]: https://talentedge.com/articles/relationship-machine-learning-artificial-intelligence/ "What Is the Relationship Between Machine Learning and Artificial Intelligence"
+[11]: https://www.ibm.com/blog/supervised-vs-unsupervised-learning/ "Supervised vs. Unsupervised Learning: What's the Difference?"
+[12]: https://rhythmblogs.hashnode.dev/types-of-machine-learning-a-brief-introduction-to-supervised-unsupervised-semi-supervised-and-reinforcement-learning "Types of Machine Learning"
+[13]: https://www.geeksforgeeks.org/machine-learning-introduction/ "Applications of Machine Learning"
+[14]: https://www.pixelcrayons.com/blog/industries/machine-learnings-impact-top-applications-across-industries/ "Machine Learning's Impact: Top Applications Across Industries"
+[15]: https://www.geeksforgeeks.org/7-major-challenges-faced-by-machine-learning-professionals/ "7 Major Challenges Faced By Machine Learning Professionals"
+[16]: https://www.javatpoint.com/challenges-of-machine-learning "Challenges of Machine Learning"
+[17]: https://seaborn.pydata.org/tutorial/distributions.html "Visualizing distributions of data"
+[18]: https://www.freecodecamp.org/news/feature-engineering-and-feature-selection-for-beginners/ "Machine Learning Tutorial – Feature Engineering and Feature Selection For Beginners"
+[19]: https://neptune.ai/blog/data-cleaning-process "Data Cleaning Process: How Should It Look Like?"
+[20]: https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.0020267 "Data Cleaning: Detecting, Diagnosing, and Editing Data Abnormalities"
+[21]: https://www.nomidl.com/machine-learning/what-is-precision-recall-accuracy-and-f1-score/ "What is precision, Recall, Accuracy and F1-score?"
+[22]: https://medium.com/@priyankads/beyond-accuracy-recall-precision-f1-score-roc-auc-6ef2ce097966 "Beyond Accuracy: Recall, Precision, F1-Score, ROC-AUC"
+[23]: https://medium.com/analytics-vidhya/different-metrics-to-evaluate-the-performance-of-a-machine-learning-model-90acec9e8726 "Different metrics to evaluate the performance of a Machine Learning model"
+[24]: https://machinelearningmastery.com/metrics-evaluate-machine-learning-algorithms-python/ "Metrics To Evaluate Machine Learning Algorithms in Python"
+[25]: https://www.baeldung.com/cs/ml-underfitting-overfitting "Underfitting and Overfitting in Machine Learning"
+[26]: https://en.wikipedia.org/wiki/Overfitting "Overfitting"
+[27]: https://www.analyticsfordecisions.com/overfitting-and-underfitting/ "Overfitting and Underfitting – Common Causes & Solutions"
+[28]: https://www.geeksforgeeks.org/underfitting-and-overfitting-in-machine-learning/ "ML | Underfitting and Overfitting"
+[29]: https://brainalyst.in/hyperparameters-in-machine-learning/ "Hyperparameters: Understanding Their Role in Machine Learning"
+[30]: https://www.educba.com/hyperparameter-machine-learning/ "Hyperparameter Machine Learning"
+[31]: https://medium.com/@ilyurek/understanding-hyperparameters-in-machine-learning-6ae699fcbdd1 "Understanding Hyperparameters in Machine Learning"
+[32]: https://www.run.ai/guides/hyperparameter-tuning "What Is Hyperparameter Tuning"
+[33]: https://www.analyticsvidhya.com/blog/2022/02/a-comprehensive-guide-on-hyperparameter-tuning-and-its-techniques/ "A Comprehensive Guide on Hyperparameter Tuning and its Techniques"
+[34]: https://www.jeremyjordan.me/hyperparameter-tuning/ "Hyperparameter tuning for machine learning models"
+[35]: https://www.comet.com/site/blog/why-is-model-evaluation-important-in-machine-learning/ "Why is Model Evaluation Important in Machine Learning?"
+[36]: https://neptune.ai/blog/ml-model-evaluation-and-selection "The Ultimate Guide to Evaluation and Selection of Models in Machine Learning"
+[37]: https://digital-library.theiet.org/content/books/pc/pbpc042e "Computer Vision and Recognition Systems Using Machine and Deep Learning Approaches"
+[38]: https://machinelearningmastery.com/applications-of-deep-learning-for-computer-vision/ "9 Applications of Deep Learning for Computer Vision"
+[39]: https://online.york.ac.uk/the-role-of-natural-language-processing-in-ai/ "The role of natural language processing in AI"
+[40]: https://vitalflux.com/recommender-systems-in-machine-learning-examples/ "Recommender Systems in Machine Learning: Examples"
+[41]: https://www.aporia.com/learn/recommender-systems/what-are-recommender-systems-use-cases-types-and-techniques/ "What are recommender systems? Use cases, types, and techniques"
+[42]: https://soloway.tech/blog/utilizing-machine-learning-for-fraud-detection/ "Utilizing Machine Learning for Fraud Detection: Best Practices and Strategies"
+[43]: https://krishnapullak.medium.com/ethical-considerations-in-ai-and-machine-learning-building-responsible-algorithms-35359d59b14f "Ethical Considerations in AI and Machine Learning: Building Responsible Algorithms"
+[44]: https://hackr.io/blog/real-world-machine-learning-applications "Top 10 Real-World Machine Learning Applications"
+[45]: https://www.tecton.ai/blog/detecting-and-preventing-fraud-with-machine-learning/ "Using Machine Learning for Risk & Fraud Detection"
+[46]: https://www.linkedin.com/learning/applied-machine-learning-foundations/leveraging-machine-learning "Applied Machine Learning: Foundations"

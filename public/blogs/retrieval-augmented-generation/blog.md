@@ -34,19 +34,19 @@
   - [8.2 - Long Context Windows](#82---long-context-windows)
   - [8.3 - The Hybrid Future](#83---the-hybrid-future)
 - [9 - Conclusion](#9---conclusion)
-  - [References](#references)
+- [References](#references)
 
 
 # 1 - Introduction: The Parametric Memory Bottleneck and the Rise of Non-Parametric Intelligence
 
-The trajectory of Natural Language Processing (NLP) over the past decade has been characterised by the aggressive scaling of model parameters This is a trend exemplified by the evolution from early Recurrent Neural Networks (RNNs) to the Transformer architecture that underpins contemporary Large Language Models (LLMs) [1]. Models such as GPT-5, Claude 4.5, and Gemini 3 and others have demonstrated remarkable proficiency in linguistic reasoning, code synthesis, and creative generation. However, despite their impressive capabilities, these models remain constrained by a fundamental architectural limitation: the reliance on parametric memory.
+The trajectory of Natural Language Processing (NLP) over the past decade has been characterised by the aggressive scaling of model parameters This is a trend exemplified by the evolution from early Recurrent Neural Networks (RNNs) to the Transformer architecture that underpins contemporary Large Language Models (LLMs).[1] Models such as GPT-5, Claude 4.5, and Gemini 3 and others have demonstrated remarkable proficiency in linguistic reasoning, code synthesis, and creative generation. However, despite their impressive capabilities, these models remain constrained by a fundamental architectural limitation: the reliance on parametric memory.
 
 Parametric memory refers to the knowledge stored within the synaptic weights (parameters) of the neural network, acquired during the computationally intensive pre-training phase. This form of memory is static, immutable without retraining, and inherently opaque. It leads to two primary failure modes in deployment:
 
 * **Knowledge Obsolescence:** The model's world knowledge is frozen at the moment the pre-training corpus is finalised. For instance, a model trained in 2021 cannot natively reason about geopolitical events or scientific breakthroughs occurring in 2023.
 * **Hallucination:** When parametric memory is insufficient or imperfectly recalled, the probabilistic nature of the autoregressive decoder forces the model to fill gaps with statistically plausible but factually incorrect tokens, a phenomenon driven by the model's objective to minimise perplexity rather than ensure factual accuracy.
 
-Retrieval Augmented Generation (RAG) represents a paradigm shift designed to transcend these limitations by decoupling the reasoning engine (the LLM) from the knowledge base. Rather than forcing the model to memorise the entire corpus within its weights, RAG introduces a non-parametric memory component (typically a dense vector index) that the model can query dynamically at inference time. This hybrid architecture enables the generative model to access vast, up-to-date, and proprietary datasets without the prohibitive cost of continuous pre-training. [3]
+Retrieval Augmented Generation (RAG) represents a paradigm shift designed to transcend these limitations by decoupling the reasoning engine (the LLM) from the knowledge base. Rather than forcing the model to memorise the entire corpus within its weights, RAG introduces a non-parametric memory component (typically a dense vector index) that the model can query dynamically at inference time. This hybrid architecture enables the generative model to access vast, up-to-date, and proprietary datasets without the prohibitive cost of continuous pre-training.[3]
 
 ```mermaid
 graph LR
@@ -95,11 +95,11 @@ This equation highlights the two distinct components of the RAG architecture:
   * **The Retriever Model ($P(z|x)$):** This component calculates the probability of a document $z$ being relevant to the query $x$. In modern implementations, this is typically a dense retriever that outputs a similarity score.
   * **The Generator Model ($P(y|x, z)$):** This component (the LLM) generates the output text conditioned on both the original query $x$ and the retrieved document $z$.
 
-This formulation is significant because it explicitly introduces uncertainty from the retrieval step into the generation process. If the retrieval probability mass $P(z|x)$ is distributed over irrelevant documents, the generator's condition $P(y|x,z)$ becomes noisy, leading to poor output. Conversely, if $P(z|x)$ is highly peaked around the ground-truth document, the generator acts as a reading comprehension model. [3]
+This formulation is significant because it explicitly introduces uncertainty from the retrieval step into the generation process. If the retrieval probability mass $P(z|x)$ is distributed over irrelevant documents, the generator's condition $P(y|x,z)$ becomes noisy, leading to poor output. Conversely, if $P(z|x)$ is highly peaked around the ground-truth document, the generator acts as a reading comprehension model.[3]
 
 ## 2.2 - Dense Passage Retrieval (DPR) and Bi-Encoder Mathematics
 
-While early retrieval systems utilised sparse lexical methods like BM25 (which relies on term frequency-inverse document frequency) [6], state-of-the-art RAG implementations predominantly utilise Dense Passage Retrieval (DPR) [4]. DPR maps both queries and documents into a shared, continuous, high-dimensional vector space (embedding space) where semantic similarity corresponds to geometric proximity.
+While early retrieval systems utilised sparse lexical methods like BM25 (which relies on term frequency-inverse document frequency), state-of-the-art RAG implementations predominantly utilise Dense Passage Retrieval (DPR).[4];[6] DPR maps both queries and documents into a shared, continuous, high-dimensional vector space (embedding space) where semantic similarity corresponds to geometric proximity.
 
 The standard architecture for DPR is the Bi-Encoder. This architecture employs two independent BERT-based neural networks (or similar Transformer encoders):
 
@@ -122,13 +122,13 @@ The loss function for a single query $q_i$ is derived as:
 
 $$L(q_i, p_i^+) = -\log \frac{e^{\text{sim}(q_i, p_i^+) }}{e^{\text{sim}(q_i, p_i^+)} + \sum_{j=1, j \neq i}^{B} e^{\text{sim}(q_i, p_j^+)}}$$
 
-This equation represents a softmax classification loss where the model attempts to classify the correct passage $p_i^+$ from the set of $B$ passages in the batch. By minimising this loss, the model learns to maximise the inner product $\text{sim}(q_i, p_i^+)$ relative to the inner products of unrelated pairs. [4]
+This equation represents a softmax classification loss where the model attempts to classify the correct passage $p_i^+$ from the set of $B$ passages in the batch. By minimising this loss, the model learns to maximise the inner product $\text{sim}(q_i, p_i^+)$ relative to the inner products of unrelated pairs.[4]
 
 ## 2.3 - Cross-Encoder Theory and Re-ranking
 
 While Bi-Encoders are highly efficient for the initial retrieval step (allowing pre-computation of document embeddings), they suffer from a "representation bottleneck." Because the query and document are encoded independently, the mechanism cannot capture deep, token-level interactions or non-linear dependencies between specific query terms and document terms.
 
-To address this, high-performance RAG pipelines often employ a Cross-Encoder for a re-ranking stage. A Cross-Encoder processes the query and document simultaneously within a single Transformer pass. [9]
+To address this, high-performance RAG pipelines often employ a Cross-Encoder for a re-ranking stage. A Cross-Encoder processes the query and document simultaneously within a single Transformer pass.[9]
 
 The input to the Cross-Encoder is the concatenation of the query and the candidate document:
 
@@ -207,7 +207,7 @@ Searching for the exact nearest neighbour in high-dimensional space (e.g., 768 d
 
 ## 3.2 - Hierarchical Navigable Small World (HNSW)
 
-The industry standard for vector indexing in RAG is the Hierarchical Navigable Small World (HNSW) algorithm. HNSW is a graph-based index that combines the properties of Small World Networks with Probabilistic Skip Lists. [7]
+The industry standard for vector indexing in RAG is the Hierarchical Navigable Small World (HNSW) algorithm. HNSW is a graph-based index that combines the properties of Small World Networks with Probabilistic Skip Lists.[7]
 
 ### 3.2.1 - Graph Structure and Traversal
 
@@ -220,7 +220,7 @@ The search process begins at the highest layer. The algorithm performs a greedy 
 
 ### 3.2.2 - Algorithmic Parameters and Complexity
 
-The search complexity of HNSW is $O(\log N)$, a massive improvement over linear scanning. [7] Two key parameters control the trade-off between recall (accuracy) and latency:
+The search complexity of HNSW is $O(\log N)$, a massive improvement over linear scanning.[7] Two key parameters control the trade-off between recall (accuracy) and latency:
 
   * **efConstruction:** Defines the size of the dynamic candidate list during index construction. A higher value leads to a higher quality graph (better connectivity) but increases indexing time.
   * **efSearch:** Defines the size of the candidate queue during the search phase. A higher value examines more neighbours, increasing recall at the cost of higher query latency.
@@ -257,7 +257,7 @@ The "Naive" or "Baseline" RAG implementation follows a strictly linear "Retrieve
 **Failure Modes:** Naive RAG is susceptible to several issues:
 
   * **Precision/Recall Trade-off:** Dense retrieval may return irrelevant chunks that share high semantic similarity but lack the specific answer.
-  * **"Lost in the Middle":** LLMs exhibit a U-shaped attention curve, where they effectively utilise information at the start and end of the context window but often overlook information buried in the middle [15]. Concatenating too many chunks can degrade performance.
+  * **"Lost in the Middle":** LLMs exhibit a U-shaped attention curve, where they effectively utilise information at the start and end of the context window but often overlook information buried in the middle.[15] Concatenating too many chunks can degrade performance.
 
 ## 4.2 - Advanced RAG
 
@@ -268,7 +268,7 @@ Advanced RAG introduces sophisticated processing steps before and after the retr
 User queries are often short, ambiguous, or poorly formulated for semantic search. Pre-retrieval strategies use the LLM to rewrite the query to optimise retrieval.
 
   * **Query Expansion:** The LLM generates multiple variations of the query or decomposes a complex query into simpler sub-questions.
-  * **HyDE (Hypothetical Document Embeddings):** The LLM generates a hypothetical answer to the query. This hallucinated answer is then vectorised and used for retrieval. The theoretical insight here is that the hypothetical answer shares much closer vector similarity to the actual answer documents than the raw question does. [5]
+  * **HyDE (Hypothetical Document Embeddings):** The LLM generates a hypothetical answer to the query. This hallucinated answer is then vectorised and used for retrieval. The theoretical insight here is that the hypothetical answer shares much closer vector similarity to the actual answer documents than the raw question does.[5]
 
 ### 4.2.2 - Post-Retrieval: Fusion and Re-ranking
 
@@ -285,7 +285,7 @@ Where:
 
   * $R$ is the set of rankers (e.g., Dense + Sparse).
   * $\text{rank}_r(d)$ is the rank position of document $d$ in the list produced by ranker $r$.
-  * $k$ is a smoothing constant (typically 60) that prevents high-ranking documents in a single list from dominating documents that are consistently ranked moderately high across all lists. [8]
+  * $k$ is a smoothing constant (typically 60) that prevents high-ranking documents in a single list from dominating documents that are consistently ranked moderately high across all lists.[8]
 
 ## 4.3 - Modular RAG
 
@@ -302,7 +302,7 @@ The integration of RAG with Agentic AI represents the frontier of current resear
 
 ## 5.1 - The ReAct Agent Paradigm
 
-The ReAct (Reason + Act) framework is the foundational pattern for agentic RAG. [10] Instead of a single inference pass, the model operates in a continuous loop: Thought $\rightarrow$ Action $\rightarrow$ Observation.
+The ReAct (Reason + Act) framework is the foundational pattern for agentic RAG.[10] Instead of a single inference pass, the model operates in a continuous loop: Thought $\rightarrow$ Action $\rightarrow$ Observation.
 
 ```mermaid
 stateDiagram-v2
@@ -359,7 +359,7 @@ The framework introduces four types of reflection tokens:
 
 ## 5.3 - Corrective RAG (CRAG)
 
-Corrective RAG (CRAG) specifically addresses the issue of poor retrieval quality ("garbage in, garbage out"). It introduces a lightweight Retrieval Evaluator that assesses the overall quality of the retrieved documents for a query. [12]
+Corrective RAG (CRAG) specifically addresses the issue of poor retrieval quality ("garbage in, garbage out"). It introduces a lightweight Retrieval Evaluator that assesses the overall quality of the retrieved documents for a query.[12]
 
 Based on the confidence score of the evaluator, the system triggers one of three discrete actions:
 
@@ -367,21 +367,21 @@ Based on the confidence score of the evaluator, the system triggers one of three
   * **Incorrect:** If the confidence is low (the documents are irrelevant), the system discards the retrieved results and may trigger a fallback mechanism, such as a web search or generating a refusal.
   * **Ambiguous:** If the confidence is mixed, the system combines the vector search results with a web search to broaden the context and resolve the ambiguity.
 
-CRAG also employs a "decompose-then-recompose" algorithm to refine the retrieved documents, filtering out irrelevant sections within valid documents to maximise the signal-to-noise ratio for the generator. [12]
+CRAG also employs a "decompose-then-recompose" algorithm to refine the retrieved documents, filtering out irrelevant sections within valid documents to maximise the signal-to-noise ratio for the generator.[12]
 
 
 # 6 - Structured Knowledge: The GraphRAG Revolution
 
 Traditional RAG relies heavily on vector similarity search. While effective for finding local context (chunks that explicitly mention query keywords), vector search struggles with "Global Questions"—queries that require aggregating information across the entire corpus to identify themes, trends, or complex relationships.38
 
-For example, asking "What are the evolving relationships between the major factions in this history book?" requires a holistic understanding that no single text chunk contains. Microsoft's GraphRAG addresses this by combining the unstructured retrieval of LLMs with the structured reasoning of Knowledge Graphs. [14]
+For example, asking "What are the evolving relationships between the major factions in this history book?" requires a holistic understanding that no single text chunk contains. Microsoft's GraphRAG addresses this by combining the unstructured retrieval of LLMs with the structured reasoning of Knowledge Graphs.[14]
 
 ## 6.1 - Graph Construction and Community Detection
 
 GraphRAG involves a multi-stage indexing process:
 
 1.  **Entity & Relationship Extraction:** An LLM processes the raw text chunks to identify entities (nodes) and their relationships (edges), outputting a structured list of tuples (e.g., (Entity A, "supports", Entity B)).
-2.  **Community Detection:** The system applies the Leiden algorithm (a hierarchical clustering algorithm superior to Louvain for graph connectivity) [13] to the knowledge graph. This partitions the graph into communities of closely related entities.
+2.  **Community Detection:** The system applies the Leiden algorithm (a hierarchical clustering algorithm superior to Louvain for graph connectivity) to the knowledge graph.[13] This partitions the graph into communities of closely related entities.
 3.  **Summarization:** The system generates natural language summaries for each community at varying levels of the hierarchy (e.g., root-level summaries vs. leaf-level summaries).
 
 ## 6.2 - Query Processing: Global vs. Local Search
@@ -391,7 +391,7 @@ GraphRAG introduces two distinct query modes:
   * **Global Search:** To answer high-level questions, the system does not retrieve raw text chunks. Instead, it iterates over the Community Summaries. This allows the system to perform a "map-reduce" style operation: generating partial answers from each relevant community summary and then aggregating them into a final holistic response. This enables the model to answer questions about the "whole" dataset.
   * **Local Search and DRIFT:** For queries about specific entities, GraphRAG utilises DRIFT (Dynamic Reasoning and Inference with Flexible Traversal). DRIFT combines:
       * **Vector Search:** To find the initial entry points (entities) in the graph.
-      * **Graph Traversal:** The system traverses the edges of the graph to find related entities that may not be semantically similar in vector space (e.g., second-order connections) but are crucial for the answer. This creates a "long context" derived from relationships rather than just keyword proximity. [14]
+      * **Graph Traversal:** The system traverses the edges of the graph to find related entities that may not be semantically similar in vector space (e.g., second-order connections) but are crucial for the answer. This creates a "long context" derived from relationships rather than just keyword proximity.[14]
 
 ## 6.3 - Comparison: Vector RAG vs. GraphRAG
 
@@ -464,7 +464,7 @@ Modern models (e.g., Gemini 3 Pro) boast context windows exceeding 1 million tok
   * **Weaknesses:**
       * **Economic Inefficiency:** The cost of processing 1M tokens for every query is prohibitive compared to retrieving a few relevant chunks.
       * **Latency:** Processing massive contexts introduces significant latency (tens of seconds).
-      * **"Lost in the Middle":** Despite the capacity, retrieval accuracy within the context window degrades as length increases. [15]
+      * **"Lost in the Middle":** Despite the capacity, retrieval accuracy within the context window degrades as length increases.[15]
 
 ## 8.3 - The Hybrid Future
 
@@ -477,50 +477,50 @@ Retrieval Augmented Generation has matured from a simple prompt engineering hack
 
 The evolution from Naive RAG to Modular and GraphRAG reflects a growing need for systems that do not just retrieve data but structure and reason about it. As we move forward, the integration of RAG with Agentic workflows (ReAct, CRAG) and standardised protocols (MCP) heralds a future of autonomous, interoperable knowledge systems. In this landscape, RAG provides the crucial bridge between the static, parametric memory of the neural network and the dynamic, ever-changing nature of human knowledge.
 
-## References
+# References
 
-1. Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., & Polosukhin, I. (2017). [Attention Is All You Need](https://arxiv.org/abs/1706.03762). *Advances in Neural Information Processing Systems (NeurIPS 2017).* ([arXiv][1])
+1. Vaswani, A., Shazeer, N., Parmar, N., *et al.* (2017). [Attention Is All You Need](https://arxiv.org/abs/1706.03762). ([arXiv][1])
 
-2. Devlin, J., Chang, M.-W., Lee, K., & Toutanova, K. (2019). [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805). *NAACL-HLT 2019.* ([arXiv][2])
+2. Devlin, J., Chang, M.-W., Lee, K., & Toutanova, K. (2019). [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805). ([arXiv][2])
 
-3. Lewis, P., Perez, E., Piktus, A., Petroni, F., Karpukhin, V., Goyal, N., … Kiela, D. (2020). [Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](https://arxiv.org/abs/2005.11401). *NeurIPS 2020.* ([arXiv][3])
+3. Lewis, P., Perez, E., Piktus, A., *et al.* (2020). [Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](https://arxiv.org/abs/2005.11401). ([arXiv][3])
 
-4. Karpukhin, V., Oğuz, B., Min, S., Lewis, P., Wu, L., Edunov, S., Chen, D., & Yih, W.-t. (2020). [Dense Passage Retrieval for Open-Domain Question Answering](https://arxiv.org/abs/2004.04906). *EMNLP 2020.* ([arXiv][4])
+4. Karpukhin, V., Oğuz, B., Min, S., *et al.* (2020). [Dense Passage Retrieval for Open-Domain Question Answering](https://arxiv.org/abs/2004.04906). ([arXiv][4])
 
-5. Gao, L., Ma, X., Lin, J., & Callan, J. (2023). [Precise Zero-Shot Dense Retrieval without Relevance Labels](https://arxiv.org/abs/2212.10496). *ACL 2023.* (Introduces HyDE: Hypothetical Document Embeddings.) ([arXiv][5])
+5. Gao, L., Ma, X., Lin, J., & Callan, J. (2023). [Precise Zero-Shot Dense Retrieval without Relevance Labels](https://arxiv.org/abs/2212.10496). ([arXiv][5])
 
-6. Robertson, S., & Zaragoza, H. (2009). [The Probabilistic Relevance Framework: BM25 and Beyond](https://doi.org/10.1561/1500000019). *Foundations and Trends in Information Retrieval, 3(4), 333–389.* ([ResearchGate][6])
+6. Robertson, S., & Zaragoza, H. (2009). [The Probabilistic Relevance Framework: BM25 and Beyond](https://doi.org/10.1561/1500000019). ([ResearchGate][6])
 
-7. Malkov, Y. A., & Yashunin, D. A. (2020). [Efficient and Robust Approximate Nearest Neighbor Search Using Hierarchical Navigable Small World Graphs](https://arxiv.org/abs/1603.09320). *IEEE Transactions on Pattern Analysis and Machine Intelligence, 42(4), 824–836.* ([arXiv][7])
+7. Malkov, Y. A., & Yashunin, D. A. (2020). [Efficient and Robust Approximate Nearest Neighbor Search Using Hierarchical Navigable Small World Graphs](https://arxiv.org/abs/1603.09320). ([arXiv][7])
 
-8. Cormack, G. V., Clarke, C. L. A., & Büttcher, S. (2009). [Reciprocal Rank Fusion outperforms Condorcet and individual Rank Learning methods](https://cormack.uwaterloo.ca/cormacksigir09-rrf.pdf). *SIGIR 2009.* ([ACM Digital Library][8])
+8. Cormack, G. V., Clarke, C. L. A., & Büttcher, S. (2009). [Reciprocal Rank Fusion outperforms Condorcet and individual Rank Learning methods](https://cormack.uwaterloo.ca/cormacksigir09-rrf.pdf). ([ACM Digital Library][8])
 
-9. Nogueira, R., & Cho, K. (2019). [Passage Re-ranking with BERT](https://arxiv.org/abs/1901.04085). *arXiv preprint arXiv:1901.04085.* ([arXiv][9])
+9. Nogueira, R., & Cho, K. (2019). [Passage Re-ranking with BERT](https://arxiv.org/abs/1901.04085). ([arXiv][9])
 
-10. Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., & Cao, Y. (2023). [ReAct: Synergizing Reasoning and Acting in Language Models](https://arxiv.org/abs/2210.03629). *ICLR 2023.* ([arXiv][10])
+10. Yao, S., Zhao, J., Yu, D., *et al.* (2023). [ReAct: Synergizing Reasoning and Acting in Language Models](https://arxiv.org/abs/2210.03629). ([arXiv][10])
 
-11. Asai, A., Wu, Z., Wang, Y., Sil, A., & Hajishirzi, H. (2024). [Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection](https://arxiv.org/abs/2310.11511). *ICLR 2024 (Oral).* ([arXiv][11])
+11. Asai, A., Wu, Z., Wang, Y., Sil, A., & Hajishirzi, H. (2024). [Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection](https://arxiv.org/abs/2310.11511). ([arXiv][11])
 
-12. Yan, S.-Q., Gu, J.-C., Zhu, Y., & Ling, Z.-H. (2024). [Corrective Retrieval Augmented Generation](https://arxiv.org/abs/2401.15884). *CoRR, arXiv:2401.15884.* ([arXiv][12])
+12. Yan, S.-Q., Gu, J.-C., Zhu, Y., & Ling, Z.-H. (2024). [Corrective Retrieval Augmented Generation](https://arxiv.org/abs/2401.15884). ([arXiv][12])
 
-13. Traag, V. A., Waltman, L., & van Eck, N. J. (2019). [From Louvain to Leiden: guaranteeing well-connected communities](https://www.nature.com/articles/s41598-019-41695-z). *Scientific Reports, 9, 5233.* ([Nature][13])
+13. Traag, V. A., Waltman, L., & van Eck, N. J. (2019). [From Louvain to Leiden: guaranteeing well-connected communities](https://www.nature.com/articles/s41598-019-41695-z). ([Nature][13])
 
-14. Han, H., Wang, Y., Shomer, H., Guo, K., Ding, J., Lei, Y., … Tang, J. (2025). [Retrieval-Augmented Generation with Graphs (GraphRAG)](https://arxiv.org/abs/2501.00309). *arXiv preprint arXiv:2501.00309.* ([arXiv][14])
+14. Han, H., Wang, Y., Shomer, H., *et al.* (2025). [Retrieval-Augmented Generation with Graphs (GraphRAG)](https://arxiv.org/abs/2501.00309). ([arXiv][14])
 
-15. Liu, N. F., Lin, K., Hewitt, J., Paranjape, A., Bevilacqua, M., Petroni, F., & Liang, P. (2024). [Lost in the Middle: How Language Models Use Long Contexts](https://aclanthology.org/2024.tacl-1.9/). *Transactions of the Association for Computational Linguistics, 12, 157–173.* ([arXiv][15])
+15. Liu, N. F., Lin, K., Hewitt, J., *et al.* (2024). [Lost in the Middle: How Language Models Use Long Contexts](https://aclanthology.org/2024.tacl-1.9/). ([arXiv][15])
 
-[1]: https://arxiv.org/abs/1706.03762?utm_source=chatgpt.com "[1706.03762] Attention Is All You Need"
-[2]: https://arxiv.org/abs/1810.04805?utm_source=chatgpt.com "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding"
-[3]: https://arxiv.org/abs/2005.11401?utm_source=chatgpt.com "Retrieval-Augmented Generation for Knowledge-Intensive ..."
-[4]: https://arxiv.org/abs/2004.04906?utm_source=chatgpt.com "[2004.04906] Dense Passage Retrieval for Open-Domain ..."
-[5]: https://arxiv.org/abs/2212.10496?utm_source=chatgpt.com "Precise Zero-Shot Dense Retrieval without Relevance Labels"
-[6]: https://www.researchgate.net/publication/220613776_The_Probabilistic_Relevance_Framework_BM25_and_Beyond?utm_source=chatgpt.com "The Probabilistic Relevance Framework: BM25 and Beyond"
-[7]: https://arxiv.org/abs/1603.09320?utm_source=chatgpt.com "Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs"
-[8]: https://dl.acm.org/doi/10.1145/1571941.1572114?utm_source=chatgpt.com "Reciprocal rank fusion outperforms condorcet and ..."
-[9]: https://arxiv.org/abs/1901.04085?utm_source=chatgpt.com "Passage Re-ranking with BERT"
-[10]: https://arxiv.org/abs/2210.03629?utm_source=chatgpt.com "ReAct: Synergizing Reasoning and Acting in Language Models"
-[11]: https://arxiv.org/abs/2310.11511?utm_source=chatgpt.com "Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection"
-[12]: https://arxiv.org/abs/2401.15884?utm_source=chatgpt.com "[2401.15884] Corrective Retrieval Augmented Generation"
-[13]: https://www.nature.com/articles/s41598-019-41695-z?utm_source=chatgpt.com "From Louvain to Leiden: guaranteeing well-connected ..."
-[14]: https://arxiv.org/abs/2501.00309?utm_source=chatgpt.com "Retrieval-Augmented Generation with Graphs (GraphRAG)"
-[15]: https://arxiv.org/abs/2307.03172?utm_source=chatgpt.com "Lost in the Middle: How Language Models Use Long Contexts"
+[1]: https://arxiv.org/abs/1706.03762 "[1706.03762] Attention Is All You Need"
+[2]: https://arxiv.org/abs/1810.04805 "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding"
+[3]: https://arxiv.org/abs/2005.11401 "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks"
+[4]: https://arxiv.org/abs/2004.04906 "Dense Passage Retrieval for Open-Domain Question Answering"
+[5]: https://arxiv.org/abs/2212.10496 "Precise Zero-Shot Dense Retrieval without Relevance Labels"
+[6]: https://www.researchgate.net/publication/220613776_The_Probabilistic_Relevance_Framework_BM25_and_Beyond "The Probabilistic Relevance Framework: BM25 and Beyond"
+[7]: https://arxiv.org/abs/1603.09320 "Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs"
+[8]: https://dl.acm.org/doi/10.1145/1571941.1572114 "Reciprocal rank fusion outperforms condorcet and individual rank learning methods"
+[9]: https://arxiv.org/abs/1901.04085 "Passage Re-ranking with BERT"
+[10]: https://arxiv.org/abs/2210.03629 "ReAct: Synergizing Reasoning and Acting in Language Models"
+[11]: https://arxiv.org/abs/2310.11511 "Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection"
+[12]: https://arxiv.org/abs/2401.15884 "Corrective Retrieval Augmented Generation"
+[13]: https://www.nature.com/articles/s41598-019-41695-z "From Louvain to Leiden: guaranteeing well-connected communities"
+[14]: https://arxiv.org/abs/2501.00309 "Retrieval-Augmented Generation with Graphs (GraphRAG)"
+[15]: https://arxiv.org/abs/2307.03172 "Lost in the Middle: How Language Models Use Long Contexts"

@@ -568,6 +568,40 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
   },
 
+  [ProjectDatabaseKeys.AiGenerations]: {
+    name: `AI Generations`,
+    description: `
+      A SaaS platform that leverages AI to enable users to generate various media types and have conversations. 
+      Developing this project allowed me to explore Stripe, Clerk authentication, and unique AI APIs.
+    `,
+    repositoryURL: `https://github.com/mbeps/magician-ai`,
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.ShadcnUi,
+      SkillDatabaseKeys.RadixUi,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.Zod,
+      SkillDatabaseKeys.MySql,
+      SkillDatabaseKeys.ClerkAuth,
+      SkillDatabaseKeys.Prisma,
+      SkillDatabaseKeys.Stripe,
+      SkillDatabaseKeys.Rest,
+
+      SkillDatabaseKeys.Zustand,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.GitHubActions,
+      SkillDatabaseKeys.Html,
+      SkillDatabaseKeys.Css,
+      SkillDatabaseKeys.ArtificialIntelligence,
+    ],
+    category: ProjectCategoriesEnum.FullStackAndArtificialIntelligence,
+    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.AiGenerations),
+    type: ProjectTypeEnum.Personal,
+  },
+
   //^ Full-Stack Projects
   [ProjectDatabaseKeys.ForumDiscussions]: {
     name: `Forum Discussions`,
@@ -578,7 +612,7 @@ const projectMap: Database<ProjectInterface> = {
       Tested on CRUD and software engineering principles.
       `,
     repositoryURL: `https://github.com/mbeps/next_discussion_platform`,
-    deploymentURL: `https://circus-discussion.vercel.app/`,
+    deploymentURL: `https://forum-discussions.maruf-bepary.com/`,
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
@@ -641,7 +675,7 @@ const projectMap: Database<ProjectInterface> = {
       Users can chat one-on-one or in group chats, send text messages and images, view active users, etc.
       `,
     repositoryURL: `https://github.com/mbeps/ringmaster-messaging`,
-    deploymentURL: `https://ringmaster-messaging.vercel.app/`,
+    deploymentURL: `https://messaging.maruf-bepary.com/`,
 
     skills: [
       SkillDatabaseKeys.TypeScript,
@@ -666,40 +700,6 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.RealTimeMessaging),
-    type: ProjectTypeEnum.Personal,
-  },
-  [ProjectDatabaseKeys.AiGenerations]: {
-    name: `AI Generations`,
-    description: `
-      A SaaS platform that leverages AI to enable users to generate various media types and have conversations. 
-      Developing this project allowed me to explore Stripe, Clerk authentication, and unique AI APIs.
-  `,
-    repositoryURL: `https://github.com/mbeps/magician-ai`,
-    // deploymentURL: "https://magician-ai.vercel.app/",
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.ShadcnUi,
-      SkillDatabaseKeys.RadixUi,
-      SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.Zod,
-      SkillDatabaseKeys.MySql,
-      SkillDatabaseKeys.ClerkAuth,
-      SkillDatabaseKeys.Prisma,
-      SkillDatabaseKeys.Stripe,
-      SkillDatabaseKeys.Rest,
-
-      SkillDatabaseKeys.Zustand,
-      SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.GitHubActions,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.ArtificialIntelligence,
-    ],
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.AiGenerations),
     type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.MusicStreaming]: {
@@ -737,6 +737,7 @@ const projectMap: Database<ProjectInterface> = {
       It supports rich text formatting, image additions, and publishing notes publicly. 
       Users alse organize notes into nested notebooks.`,
     repositoryURL: `https://github.com/mbeps/joker-notes`,
+    deploymentURL: "https://notes.maruf-bepary.com/",
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
@@ -757,7 +758,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Vitest,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    deploymentURL: "https://joker-notes.vercel.app/",
     thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.RichTextNotes),
     type: ProjectTypeEnum.Personal,
   },
@@ -775,9 +775,10 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.ShadcnUi,
       SkillDatabaseKeys.BaseUi,
       SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.MongoDb,
+      SkillDatabaseKeys.TypeOrm,
       SkillDatabaseKeys.Zod,
       SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.MongoDb,
       SkillDatabaseKeys.DatabaseManagementSystems,
       SkillDatabaseKeys.Databases,
       SkillDatabaseKeys.TeamCity,
@@ -846,7 +847,7 @@ const projectMap: Database<ProjectInterface> = {
       A platform for dynamic quiz generation. 
       Users can test their knowledge with multiple-choice or fill-in-the-gap questions across various topics.
       With immediate feedback and score tracking, users enhance their understanding.`,
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    category: ProjectCategoriesEnum.FullStackAndArtificialIntelligence,
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,

@@ -1,4 +1,4 @@
-- [1 - Executive Summary](#1---executive-summary)
+- [1 - Introduction](#1---introduction)
 - [2 - Theoretical Motivation: The Alignment Problem](#2---theoretical-motivation-the-alignment-problem)
 	- [2.1 The Pre-training Objective](#21-the-pre-training-objective)
 	- [2.2 Entropy and The Diversity-Quality Trade-off](#22-entropy-and-the-diversity-quality-trade-off)
@@ -35,11 +35,11 @@
 
 
 
-# 1 - Executive Summary
+# 1 - Introduction
 
-The alignment of large language models (LLMs) with human intent constitutes the primary theoretical and engineering challenge in contemporary artificial intelligence. While self-supervised pre-training on massive text corpora allows models to minimise the negative log-likelihood of next-token prediction (thereby acquiring syntax, semantics, and world knowledge) this objective function is orthogonal to the normative quality of the generated output. A model trained solely to predict the internet's distribution of text is as likely to complete a toxic prompt with toxicity as it is to refuse it, governed principally by the conditional probability $P(x_{t+1}|x_{1:t})$ inherent in the training data. Reinforcement Learning from Human Feedback (RLHF) has emerged as the standard methodological framework to steer these probabilistic generators towards behaviours defined as helpful, honest, and harmless [1];[2].
+The alignment of large language models (LLMs) with human intent constitutes the primary theoretical and engineering challenge in contemporary artificial intelligence. While self-supervised pre-training on massive text corpora allows models to minimise the negative log-likelihood of next-token prediction (thereby acquiring syntax, semantics, and world knowledge) this objective function is orthogonal to the normative quality of the generated output. A model trained solely to predict the internet's distribution of text is as likely to complete a toxic prompt with toxicity as it is to refuse it, governed principally by the conditional probability $P(x_{t+1}|x_{1:t})$ inherent in the training data. Reinforcement Learning from Human Feedback (RLHF) has emerged as the standard methodological framework to steer these probabilistic generators towards behaviours defined as helpful, honest, and harmless.[1];[2].
 
-This report presents a rigorous technical examination of the mathematics, algorithms, and theoretical constraints underpinning RLHF. We move beyond high-level abstractions to analyse the precise mechanisms of reward modelling, proximal policy optimisation (PPO), and the emergent paradigm of Direct Preference Optimisation (DPO) [9]. The analysis is grounded in the mathematical formulations of preference learning, specifically the Bradley-Terry-Luce (BTL) models, and explores the control-theoretic implications of using Kullback-Leibler (KL) divergence as a regularisation constraint [6]. Furthermore, we dissect the phenomenon of reward over-optimisation (Goodhart's Law) through the lens of recent scaling laws, and evaluate the efficacy of Constitutional AI and Reinforcement Learning from AI Feedback (RLAIF) in overcoming the scalability bottlenecks of human annotation [7];[8];[12].
+This report presents a rigorous technical examination of the mathematics, algorithms, and theoretical constraints underpinning RLHF. We move beyond high-level abstractions to analyse the precise mechanisms of reward modelling, proximal policy optimisation (PPO), and the emergent paradigm of Direct Preference Optimisation (DPO).[9] The analysis is grounded in the mathematical formulations of preference learning, specifically the Bradley-Terry-Luce (BTL) models, and explores the control-theoretic implications of using Kullback-Leibler (KL) divergence as a regularisation constraint.[6] Furthermore, we dissect the phenomenon of reward over-optimisation (Goodhart's Law) through the lens of recent scaling laws, and evaluate the efficacy of Constitutional AI and Reinforcement Learning from AI Feedback (RLAIF) in overcoming the scalability bottlenecks of human annotation.[7];[8];[12].
 
 The report is structured to guide through the mathematical derivation of the alignment objective, the iterative optimisation algorithms used to solve it, and the instabilities that arise in high-dimensional parameter spaces. Mock calculations are provided to illustrate gradient dynamics, and implementation details are discussed to bridge the gap between theory and practice.
 
@@ -75,7 +75,7 @@ Since we cannot define a procedural reward function for "good conversation" (unl
 
 ## 3.1 The Bradley-Terry-Luce (BTL) Model
 
-The standard framework for modelling pairwise preferences is the Bradley-Terry model [6]. We postulate the existence of a latent scalar reward function $r^*(x, y)$. The probability that a response $y_w$ (winner) is preferred over $y_l$ (loser) is modelled as a sigmoid of their reward difference:
+The standard framework for modelling pairwise preferences is the Bradley-Terry model.[6] We postulate the existence of a latent scalar reward function $r^*(x, y)$. The probability that a response $y_w$ (winner) is preferred over $y_l$ (loser) is modelled as a sigmoid of their reward difference:
 
 $$ P(y_w \succ y_l | x) = \sigma(r^*(x, y_w) - r^*(x, y_l)) = \frac{1}{1 + \exp(-(r^*(x, y_w) - r^*(x, y_l)))} $$
 
@@ -89,7 +89,7 @@ When annotators rank $K$ responses $\{y_1, \dots, y_K\}$ rather than just pairs,
 
 $$ P(\text{ranking } \tau) = \prod_{i=1}^K \frac{\exp(r^*(x, y_{\tau(i)}))}{\sum_{j=i}^K \exp(r^*(x, y_{\tau(j)}))} $$
 
-This models the ranking process as sequential selection without replacement: we select the best item from the set, then the best from the remaining $K-1$, and so on. In practice, most RLHF pipelines decompose rankings into $\binom{K}{2}$ pairwise comparisons and train using the BTL loss, as pairwise data is more robust to noise [1];[2].
+This models the ranking process as sequential selection without replacement: we select the best item from the set, then the best from the remaining $K-1$, and so on. In practice, most RLHF pipelines decompose rankings into $\binom{K}{2}$ pairwise comparisons and train using the BTL loss, as pairwise data is more robust to noise.[1];[2].
 
 ## 3.3 Loss Function and Optimisation
 
@@ -110,7 +110,7 @@ The BTL model assumes transitivity: if $A \succ B$ and $B \succ C$, then $A \suc
 
 # 4 - The RLHF Pipeline: Mechanisms and Implementation
 
-The canonical RLHF pipeline operates in three phases [1]. We assume the existence of a pre-trained Large Language Model (LLM).
+The canonical RLHF pipeline operates in three phases.[1] We assume the existence of a pre-trained Large Language Model (LLM).
 
 ```mermaid
 flowchart LR
@@ -131,7 +131,7 @@ flowchart LR
 
 ## 4.1 Phase I: Supervised Fine-Tuning (SFT)
 
-Before RL can be applied, the model must be conditioned to the "instruction-following" format. A dataset of prompts and high-quality human-written responses is used to fine-tune the pre-trained model [1];[3].
+Before RL can be applied, the model must be conditioned to the "instruction-following" format. A dataset of prompts and high-quality human-written responses is used to fine-tune the pre-trained model.[1];[3].
 
 **Mathematical Role:** The SFT model, denoted $\pi_{SFT}$ (or $\pi_{ref}$), serves two purposes:
 
@@ -142,7 +142,7 @@ Before RL can be applied, the model must be conditioned to the "instruction-foll
 
 We generate $K$ responses per prompt using $\pi_{SFT}$ and have humans rank them. The reward model (RM) is initialised from $\pi_{SFT}$ (with the final unembedding layer replaced by a scalar head) and trained using the pairwise ranking loss derived in Section 3.3.
 
-**Initialisation:** Initialising the RM from the SFT model is crucial. It ensures the RM has the same latent representation of language as the policy, making learning the reward function (which often relies on subtle semantic distinctions) significantly more sample-efficient [1].
+**Initialisation:** Initialising the RM from the SFT model is crucial. It ensures the RM has the same latent representation of language as the policy, making learning the reward function (which often relies on subtle semantic distinctions) significantly more sample-efficient.[1].
 
 ## 4.3 Phase III: Reinforcement Learning (PPO)
 
@@ -167,7 +167,7 @@ Here, $\beta$ is the KL coefficient, a hyperparameter controlling the strength o
 
 ### 4.3.2 Proximal Policy Optimisation (PPO) Mechanics
 
-Standard policy gradient methods (like REINFORCE) are unstable for this task due to the high variance of gradients in language generation. PPO addresses this by restricting the size of the policy update step [4].
+Standard policy gradient methods (like REINFORCE) are unstable for this task due to the high variance of gradients in language generation. PPO addresses this by restricting the size of the policy update step.[4].
 
 The PPO algorithm maintains two networks during the RL phase:
 
@@ -179,11 +179,11 @@ PPO maximises a clipped surrogate objective. Let $ratio_t(\theta) = \frac{\pi_\t
 
 $$ L^{CLIP}(\theta) = \mathbb{E}_t \left[ \min \left( ratio_t \hat{A}_t, \text{clip}(ratio_t, 1-\epsilon, 1+\epsilon) \hat{A}_t \right) \right] $$
 
-where $\epsilon$ is typically 0.2, and $\hat{A}_t$ is the Advantage estimate [4].
+where $\epsilon$ is typically 0.2, and $\hat{A}_t$ is the Advantage estimate.[4].
 
 ### 4.3.3 Generalized Advantage Estimation (GAE)
 
-The advantage $\hat{A}_t$ measures how much better an action was than expected. RLHF uses GAE($\lambda$) to reduce variance [5].
+The advantage $\hat{A}_t$ measures how much better an action was than expected. RLHF uses GAE($\lambda$) to reduce variance.[5].
 
 Define the temporal difference (TD) error $\delta_t$:
 
@@ -234,7 +234,7 @@ This calculation shows how the terminal reward $2.0$ propagates back to token $y
 
 # 5 - Direct Preference Optimisation (DPO): Mechanisms and Derivation
 
-PPO is computationally expensive (requiring 4 models loaded in memory: Policy, Reference, Reward, Critic) and unstable. Direct Preference Optimisation (DPO) provides a closed-form solution that optimises the alignment objective without an explicit reward model or sampling loop [9].
+PPO is computationally expensive (requiring 4 models loaded in memory: Policy, Reference, Reward, Critic) and unstable. Direct Preference Optimisation (DPO) provides a closed-form solution that optimises the alignment objective without an explicit reward model or sampling loop.[9].
 
 **Traditional RLHF**
 ```mermaid
@@ -272,7 +272,7 @@ The optimal policy $\pi^*$ for a fixed reward function $r$ is known to be the Bo
 
 $$ \pi^*(y|x) = \frac{1}{Z(x)} \pi_{ref}(y|x) \exp\left( \frac{r(x, y)}{\beta} \right) $$
 
-where $Z(x) = \sum_y \pi_{ref}(y|x) \exp(r(x, y)/\beta)$ is the partition function [9].
+where $Z(x) = \sum_y \pi_{ref}(y|x) \exp(r(x, y)/\beta)$ is the partition function.[9].
 
 DPO inverts this relationship. We can solve for the reward $r(x, y)$ in terms of the optimal policy:
 
@@ -293,7 +293,7 @@ We now treat our parameterised policy $\pi_\theta$ as the "optimal" policy $\pi^
 
 $$ \mathcal{L}_{DPO}(\theta) = - \mathbb{E}_{(x, y_w, y_l) \sim \mathcal{D}} \left[ \log \sigma \left( \beta \log \frac{\pi_\theta(y_w|x)}{\pi_{ref}(y_w|x)} - \beta \log \frac{\pi_\theta(y_l|x)}{\pi_{ref}(y_l|x)} \right) \right] $$
 
-This is a simple classification loss. It requires no reward model training, no critic, and no sampling (offline optimisation). It directly increases the likelihood of the preferred response relative to the reference, weighted by how much the model currently "prefers" the winner [9].
+This is a simple classification loss. It requires no reward model training, no critic, and no sampling (offline optimisation). It directly increases the likelihood of the preferred response relative to the reference, weighted by how much the model currently "prefers" the winner.[9].
 
 ## 5.3 Mock Calculation: DPO Gradient Analysis
 
@@ -320,8 +320,8 @@ The update will forcefully push to increase $\pi_\theta(y_w)$ and decrease $\pi_
 
 While DPO is the leading alternative, others exist:
 
-  * **Identity Preference Optimisation (IPO):** Addresses DPO's tendency to overfit by using a Mean Squared Error loss on the log-ratios instead of sigmoid, avoiding the driving of probabilities to 0 or 1 [10].
-  * **Kahneman-Tversky Optimisation (KTO):** Uses a prospect-theory inspired loss that does not require paired data (just "good"/"bad" labels), making data collection easier [11].
+  * **Identity Preference Optimisation (IPO):** Addresses DPO's tendency to overfit by using a Mean Squared Error loss on the log-ratios instead of sigmoid, avoiding the driving of probabilities to 0 or 1.[10].
+  * **Kahneman-Tversky Optimisation (KTO):** Uses a prospect-theory inspired loss that does not require paired data (just "good"/"bad" labels), making data collection easier.[11].
 
 | Feature              | RLHF (PPO)                                 | DPO                              |
 | :------------------- | :----------------------------------------- | :------------------------------- |
@@ -334,11 +334,11 @@ While DPO is the leading alternative, others exist:
 
 # 6 - Advanced Methods: RLAIF and Constitutional AI
 
-Scaling RLHF is bottlenecked by the cost and speed of human annotation. Reinforcement Learning from AI Feedback (RLAIF) and Constitutional AI (CAI) address this by substituting the human labeller with a strong AI model [7];[8].
+Scaling RLHF is bottlenecked by the cost and speed of human annotation. Reinforcement Learning from AI Feedback (RLAIF) and Constitutional AI (CAI) address this by substituting the human labeller with a strong AI model.[7];[8].
 
 ## 6.1 The "Constitution" and Mechanism
 
-Proposed by Anthropic, Constitutional AI operates in two phases, utilising a "Constitution" (a set of normative principles, e.g., "Please choose the response that is most helpful, honest, and harmless") [7].
+Proposed by Anthropic, Constitutional AI operates in two phases, utilising a "Constitution" (a set of normative principles, e.g., "Please choose the response that is most helpful, honest, and harmless").[7]
 
 **Phase 1: Supervised Learning from AI Feedback (SLAIF)**
 
@@ -355,10 +355,10 @@ Proposed by Anthropic, Constitutional AI operates in two phases, utilising a "Co
 
 ## 6.2 Comparison of Human vs. AI Feedback
 
-Research indicates that RLAIF can achieve performance comparable to human feedback [8].
+Research indicates that RLAIF can achieve performance comparable to human feedback.[8].
 
-  * **Agreement:** AI labellers often show higher inter-annotator agreement than human crowds (who may disagree 25-40% of the time) [8].
-  * **Bias:** While humans introduce noise, AI labellers introduce systematic bias (e.g., "verbosity bias"; preferring longer answers, or "self-preference bias"; preferring outputs similar to their own training data) [7];[8].
+  * **Agreement:** AI labellers often show higher inter-annotator agreement than human crowds (who may disagree 25-40% of the time).[8].
+  * **Bias:** While humans introduce noise, AI labellers introduce systematic bias (e.g., "verbosity bias"; preferring longer answers, or "self-preference bias"; preferring outputs similar to their own training data).[7];[8].
 
 -----
 
@@ -371,7 +371,7 @@ The application of RL to Language Models is not strictly a standard RL problem; 
 Goodhart’s Law states that "When a measure becomes a target, it ceases to be a good measure." In RLHF, $r_\phi$ is the measure.
 The policy $\pi_\theta$ is optimised to maximise $r_\phi(x, y)$. However, $r_\phi$ is only accurate on the distribution of data it was trained on (the SFT distribution). As $\pi_\theta$ shifts away from $\pi_{SFT}$ during RL, it enters out-of-distribution (OOD) regions where the RM may have "holes" (assigning high rewards to adversarial examples or gibberish).
 
-Scaling laws derived by Gao et al. (2023) quantify this [12]. Let $d = D_{KL}(\pi \parallel \pi_{ref})$. The "Gold" reward (true human preference) $R_{gold}$ relates to the proxy reward $R_{proxy}$ as a concave function:
+Scaling laws derived by Gao et al. (2023) quantify this.[12] Let $d = D_{KL}(\pi \parallel \pi_{ref})$. The "Gold" reward (true human preference) $R_{gold}$ relates to the proxy reward $R_{proxy}$ as a concave function:
 
 $$ R_{gold}(d) \approx R_{proxy}(d) - \alpha d^\beta $$
 
@@ -422,45 +422,45 @@ Future research must address the "Alignment Tax" imposed by mode-seeking objecti
 
 # References
 
-1. Ouyang, L., Wu, J., Jiang, X., et al. (2022). [Training language models to follow instructions with human feedback](https://arxiv.org/abs/2203.02155). *NeurIPS 2022*. ([Portkey][1])
+1. Ouyang, L., Wu, J., *et al.* (2022). [Training language models to follow instructions with human feedback](https://arxiv.org/abs/2203.02155). ([arXiv][1])
 
-2. Christiano, P. F., Leike, J., Brown, T. B., et al. (2017). [Deep reinforcement learning from human preferences](https://papers.neurips.cc/paper/2017/hash/d5e2c0adad503c91f91df240d0cd4e49-Abstract.html). *NeurIPS 2017*. ([NeurIPS Proceedings][2])
+2. Christiano, P. F., Leike, J., *et al.* (2017). [Deep reinforcement learning from human preferences](https://papers.neurips.cc/paper/2017/hash/d5e2c0adad503c91f91df240d0cd4e49-Abstract.html). ([NeurIPS Proceedings][2])
 
-3. Stiennon, N., Ouyang, L., Wu, J., et al. (2020). [Learning to summarize with human feedback](https://proceedings.neurips.cc/paper/2020/hash/1f89885d556929e98d3ef9b86448f951-Abstract.html). *NeurIPS 2020*. ([NeurIPS Proceedings][3])
+3. Stiennon, N., Ouyang, L., *et al.* (2020). [Learning to summarize with human feedback](https://proceedings.neurips.cc/paper/2020/hash/1f89885d556929e98d3ef9b86448f951-Abstract.html). ([NeurIPS Proceedings][3])
 
-4. Schulman, J., Wolski, F., Dhariwal, P., Radford, A., Klimov, O. (2017). [Proximal Policy Optimization Algorithms](https://arxiv.org/abs/1707.06347). arXiv:1707.06347. ([arXiv][4])
+4. Schulman, J., Wolski, F., *et al.* (2017). [Proximal Policy Optimization Algorithms](https://arxiv.org/abs/1707.06347). ([arXiv][4])
 
-5. Schulman, J., Moritz, P., Levine, S., Jordan, M. I., Abbeel, P. (2016). [High-Dimensional Continuous Control Using Generalized Advantage Estimation](https://arxiv.org/abs/1506.02438). *ICLR 2016*. ([arXiv][5])
+5. Schulman, J., Moritz, P., *et al.* (2016). [High-Dimensional Continuous Control Using Generalized Advantage Estimation](https://arxiv.org/abs/1506.02438). ([arXiv][5])
 
-6. Bradley, R. A., & Terry, M. E. (1952). [Rank analysis of incomplete block designs: I. The method of paired comparisons](https://doi.org/10.1093/biomet/39.3-4.324). *Biometrika, 39*(3–4), 324–345. ([OUP Academic][6])
+6. Bradley, R. A., & Terry, M. E. (1952). [Rank analysis of incomplete block designs: I. The method of paired comparisons](https://doi.org/10.1093/biomet/39.3-4.324). ([OUP Academic][6])
 
-7. Bai, Y., Kadavath, S., Kundu, S., et al. (2022). [Constitutional AI: Harmlessness from AI Feedback](https://arxiv.org/abs/2212.08073). arXiv:2212.08073. ([arXiv][7])
+7. Bai, Y., Kadavath, S., *et al.* (2022). [Constitutional AI: Harmlessness from AI Feedback](https://arxiv.org/abs/2212.08073). ([arXiv][7])
 
-8. Lee, H., Phatale, S., Mansoor, H., et al. (2023). [RLAIF: Scaling Reinforcement Learning from Human Feedback with AI Feedback](https://arxiv.org/abs/2309.00267). *ICLR 2024*. ([arXiv][8])
+8. Lee, H., Phatale, S., *et al.* (2023). [RLAIF: Scaling Reinforcement Learning from Human Feedback with AI Feedback](https://arxiv.org/abs/2309.00267). ([arXiv][8])
 
-9. Rafailov, R., Sharma, A., Mitchell, E., Ermon, S., Manning, C. D., Finn, C. (2023). [Direct Preference Optimization: Your Language Model is Secretly a Reward Model](https://arxiv.org/abs/2305.18290). *NeurIPS 2023*. ([arXiv][9])
+9. Rafailov, R., Sharma, A., *et al.* (2023). [Direct Preference Optimization: Your Language Model is Secretly a Reward Model](https://arxiv.org/abs/2305.18290). ([arXiv][9])
 
-10. Gheshlaghi Azar, M., Rowland, M., Piot, B., et al. (2024). [A General Theoretical Paradigm to Understand Learning from Human Preferences](https://arxiv.org/abs/2310.12036). *ICML 2024*. ([arXiv][10])
+10. Gheshlaghi Azar, M., Rowland, M., *et al.* (2024). [A General Theoretical Paradigm to Understand Learning from Human Preferences](https://arxiv.org/abs/2310.12036). ([arXiv][10])
 
-11. Ethayarajh, K., Xu, W., Muennighoff, N., Jurafsky, D., Kiela, D. (2024). [KTO: Model Alignment as Prospect Theoretic Optimization](https://arxiv.org/abs/2402.01306). *ICML 2024*. ([arXiv][11])
+11. Ethayarajh, K., Xu, W., *et al.* (2024). [KTO: Model Alignment as Prospect Theoretic Optimization](https://arxiv.org/abs/2402.01306). ([arXiv][11])
 
-12. Gao, L., Schulman, J., Hilton, J. (2023). [Scaling Laws for Reward Model Overoptimization](https://arxiv.org/abs/2210.10760). *ICML 2023*. ([arXiv][12])
+12. Gao, L., Schulman, J., *et al.* (2023). [Scaling Laws for Reward Model Overoptimization](https://arxiv.org/abs/2210.10760). ([arXiv][12])
 
-13. Rafailov, R., Chittepu, Y., Park, R., et al. (2024). [Scaling Laws for Reward Model Overoptimization in Direct Alignment Algorithms](https://arxiv.org/abs/2406.02900). *NeurIPS 2024*. ([arXiv][13])
+13. Rafailov, R., Chittepu, Y., *et al.* (2024). [Scaling Laws for Reward Model Overoptimization in Direct Alignment Algorithms](https://arxiv.org/abs/2406.02900). ([arXiv][13])
 
-14. Huang, J., Wan, Y., Wan, Z., et al. (2024). [The N+ Implementation Details of RLHF with PPO: A Case Study on TL;DR Summarization](https://arxiv.org/abs/2403.17031). *COLM 2024*. ([arXiv][14])
+14. Huang, J., Wan, Y., *et al.* (2024). [The N+ Implementation Details of RLHF with PPO: A Case Study on TL;DR Summarization](https://arxiv.org/abs/2403.17031). ([arXiv][14])
 
-[1]: https://portkey.ai/blog/training-language-models-to-follow-instructions-with-human-feedback-summary/?utm_source=chatgpt.com "Training language models to follow instructions with ..."
-[2]: https://papers.neurips.cc/paper/7017-deep-reinforcement-learning-from-human-preferences.pdf?utm_source=chatgpt.com "Deep Reinforcement Learning from Human Preferences"
-[3]: https://proceedings.neurips.cc/paper/2020/hash/1f89885d556929e98d3ef9b86448f951-Abstract.html?utm_source=chatgpt.com "Learning to summarize with human feedback"
-[4]: https://arxiv.org/abs/1707.06347?utm_source=chatgpt.com "Proximal Policy Optimization Algorithms"
-[5]: https://arxiv.org/abs/1506.02438?utm_source=chatgpt.com "High-Dimensional Continuous Control Using Generalized Advantage Estimation"
-[6]: https://academic.oup.com/biomet/article-abstract/39/3-4/324/326091?utm_source=chatgpt.com "RANK ANALYSIS OF INCOMPLETE BLOCK DESIGNS"
-[7]: https://arxiv.org/abs/2212.08073?utm_source=chatgpt.com "Constitutional AI: Harmlessness from AI Feedback"
-[8]: https://arxiv.org/html/2309.00267v2?utm_source=chatgpt.com "RLAIF: Scaling Reinforcement Learning from Human ..."
-[9]: https://arxiv.org/abs/2305.18290?utm_source=chatgpt.com "Direct Preference Optimization: Your Language Model is Secretly a Reward Model"
-[10]: https://arxiv.org/abs/2310.12036?utm_source=chatgpt.com "A General Theoretical Paradigm to Understand Learning from Human Preferences"
-[11]: https://arxiv.org/pdf/2402.01306?utm_source=chatgpt.com "KTO: Model Alignment as Prospect Theoretic Optimization"
-[12]: https://arxiv.org/abs/2210.10760?utm_source=chatgpt.com "Scaling Laws for Reward Model Overoptimization"
-[13]: https://arxiv.org/abs/2406.02900?utm_source=chatgpt.com "Scaling Laws for Reward Model Overoptimization in Direct Alignment Algorithms"
-[14]: https://arxiv.org/abs/2403.17031?utm_source=chatgpt.com "The N+ Implementation Details of RLHF with PPO: A Case Study on TL;DR Summarization"
+[1]: https://arxiv.org/abs/2203.02155 "Training language models to follow instructions with human feedback"
+[2]: https://papers.neurips.cc/paper/2017/hash/d5e2c0adad503c91f91df240d0cd4e49-Abstract.html "Deep reinforcement learning from human preferences"
+[3]: https://proceedings.neurips.cc/paper/2020/hash/1f89885d556929e98d3ef9b86448f951-Abstract.html "Learning to summarize with human feedback"
+[4]: https://arxiv.org/abs/1707.06347 "Proximal Policy Optimization Algorithms"
+[5]: https://arxiv.org/abs/1506.02438 "High-Dimensional Continuous Control Using Generalized Advantage Estimation"
+[6]: https://academic.oup.com/biomet/article-abstract/39/3-4/324/326091 "Rank analysis of incomplete block designs"
+[7]: https://arxiv.org/abs/2212.08073 "Constitutional AI: Harmlessness from AI Feedback"
+[8]: https://arxiv.org/abs/2309.00267 "RLAIF: Scaling Reinforcement Learning from Human Feedback with AI Feedback"
+[9]: https://arxiv.org/abs/2305.18290 "Direct Preference Optimization: Your Language Model is Secretly a Reward Model"
+[10]: https://arxiv.org/abs/2310.12036 "A General Theoretical Paradigm to Understand Learning from Human Preferences"
+[11]: https://arxiv.org/abs/2402.01306 "KTO: Model Alignment as Prospect Theoretic Optimization"
+[12]: https://arxiv.org/abs/2210.10760 "Scaling Laws for Reward Model Overoptimization"
+[13]: https://arxiv.org/abs/2406.02900 "Scaling Laws for Reward Model Overoptimization in Direct Alignment Algorithms"
+[14]: https://arxiv.org/abs/2403.17031 "The N+ Implementation Details of RLHF with PPO: A Case Study on TL;DR Summarization"

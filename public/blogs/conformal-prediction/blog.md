@@ -472,11 +472,11 @@ Mastering CP offers a toolkit to build "safe" AI systems. Whether addressing the
 
 8. Stocker, M., Małgorzewicz, W., Fontana, M., & Ben Taieb, S. (2025). *[A Gentle Introduction to Conformal Time Series Forecasting](https://arxiv.org/abs/2511.13608)*. **arXiv:2511.13608**. ([arXiv][8])
 
-[1]: https://jmlr.org/papers/v9/shafer08a.html?utm_source=chatgpt.com "A Tutorial on Conformal Prediction"
-[2]: https://arxiv.org/abs/2107.07511?utm_source=chatgpt.com "A Gentle Introduction to Conformal Prediction and Distribution-Free Uncertainty Quantification"
-[3]: https://link.springer.com/chapter/10.1007/978-3-662-44722-2_28?utm_source=chatgpt.com "Efficiency Comparison of Unstable Transductive and ..."
-[4]: https://arxiv.org/abs/1905.03222?utm_source=chatgpt.com "Conformalized Quantile Regression"
-[5]: https://arxiv.org/abs/1904.06019?utm_source=chatgpt.com "Conformal Prediction Under Covariate Shift"
-[6]: https://proceedings.neurips.cc/paper/2021/hash/0d441de75945e5acbc865406fc9a2559-Abstract.html?utm_source=chatgpt.com "Adaptive Conformal Inference Under Distribution Shift"
-[7]: https://arxiv.org/abs/2405.01976?utm_source=chatgpt.com "Conformal Prediction for Natural Language Processing: A Survey"
-[8]: https://www.arxiv.org/abs/2511.13608?utm_source=chatgpt.com "A Gentle Introduction to Conformal Time Series Forecasting"
+[1]: https://jmlr.org/papers/v9/shafer08a.html "A Tutorial on Conformal Prediction"
+[2]: https://arxiv.org/abs/2107.07511 "A Gentle Introduction to Conformal Prediction and Distribution-Free Uncertainty Quantification"
+[3]: https://link.springer.com/chapter/10.1007/978-3-662-44722-2_28 "Efficiency Comparison of Unstable Transductive and Inductive Conformal Classifiers"
+[4]: https://arxiv.org/abs/1905.03222 "Conformalized Quantile Regression"
+[5]: https://arxiv.org/abs/1904.06019 "Conformal Prediction Under Covariate Shift"
+[6]: https://proceedings.neurips.cc/paper/2021/hash/0d441de75945e5acbc865406fc9a2559-Abstract.html "Adaptive Conformal Inference Under Distribution Shift"
+[7]: https://arxiv.org/abs/2405.01976 "Conformal Prediction for Natural Language Processing: A Survey"
+[8]: https://arxiv.org/abs/2511.13608 "A Gentle Introduction to Conformal Time Series Forecasting"

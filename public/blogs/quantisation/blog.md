@@ -85,7 +85,7 @@ The choice of bit-width ($n$) fundamentally dictates the trade-off between model
 
 * **INT8 (8-bit):** Provides 256 levels. This is often considered "safe" for post-training quantisation of activations and weights in moderate-sized models.
 * **INT4 (4-bit):** Provides only 16 levels. This is the current standard for weight-only quantisation in large LLMs (e.g., Llama 2, Falcon). The gap between 256 levels and 16 levels is immense, requiring sophisticated calibration to place those 16 levels optimally.
-* **INT2 (2-bit) / Ternary:** Provides 4 or 3 levels. Research into 1-bit (binary) or 1.58-bit (ternary) models suggests that with specialised architectures (like BitNet), LLMs can function in this regime, though standard post-training quantisation often fails catastrophically here.[11]
+* **INT2 (2-bit) / Ternary:** Provides 4 or 3 levels. Research into 1-bit (binary) or 1.58-bit (ternary) models suggests that with specialised architectures (like BitNet), LLMs can function in this regime, though standard post-training quantisation often fails catastrophically here.[7];[11]
 
 ## 2.4 Extended Quantisation Targets
 While model weights are the most common target, quantisation can be applied to several numerical components, each presenting unique challenges:
@@ -276,7 +276,7 @@ GPTQ  is based on the Taylor expansion of the loss function with respect to the 
 
 $$E = \| WX - \hat{W}X \|_2^2$$
 
-The Hessian matrix $H = 2XX^T$ represents the curvature of this error surface.[4];[13] The optimal adjustment to a weight $w_q$ involves the inverse Hessian $H^{-1}$.
+The Hessian matrix $H = 2XX^T$ represents the curvature of this error surface.[4];[12] The optimal adjustment to a weight $w_q$ involves the inverse Hessian $H^{-1}$.
 **Algorithm:**
 GPTQ quantises weights column-by-column. When a weight $w_i$ is quantised to $q(w_i)$, the error is $\delta = q(w_i) - w_i$. To minimise the total error, GPTQ updates the remaining unquantised weights $W_F$ using the inverse Hessian:
 
@@ -434,42 +434,40 @@ Future research points toward 1-bit LLMs (e.g., BitNet )[11] and the co-design o
 
 # References
 
-1. Dettmers, T., Lewis, M., Belkada, Y., & Zettlemoyer, L. (2022).
-   [**LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale**](https://arxiv.org/abs/2208.07339). ([arXiv][8])
+1. Dettmers, T., Lewis, M., Belkada, Y., & Zettlemoyer, L. (2022). [LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale](https://arxiv.org/abs/2208.07339). ([arXiv][1])
 
-2. Xiao, G., Zhang, X., Han, S., & others (2023).
-   [**SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models**](https://arxiv.org/abs/2211.10438). ([arXiv][9])
+2. Xiao, G., Zhang, X., Han, S., *et al.* (2023). [SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models](https://arxiv.org/abs/2211.10438). ([arXiv][2])
 
-3.  Yuan, Z., Niu, L., Liu, J., Liu, W., Wang, X., Shang, Y., … Wu, B. (2023).
-    [**RPTQ: Reorder-based Post-training Quantization for Large Language Models**](https://arxiv.org/abs/2304.01089). ([arXiv][10])
+3. Yuan, Z., Niu, L., Liu, J., *et al.* (2023). [RPTQ: Reorder-based Post-training Quantization for Large Language Models](https://arxiv.org/abs/2304.01089). ([arXiv][3])
 
-4.  Frantar, E., Ashkboos, S., Hoefler, T., & Alistarh, D. (2022).
-    [**GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers**](https://arxiv.org/abs/2210.17323). ([arXiv][11])
+4. Frantar, E., Ashkboos, S., Hoefler, T., & Alistarh, D. (2022). [GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers](https://arxiv.org/abs/2210.17323). ([arXiv][4])
 
-5.  Lin, J., Tang, T., Yang, Y., Guo, Y., Wu, X., & others (2023).
-    [**AWQ: Activation-aware Weight Quantization for LLMs**](https://arxiv.org/abs/2306.00978). ([ResearchGate][12])
+5. Lin, J., Tang, T., Yang, Y., *et al.* (2023). [AWQ: Activation-aware Weight Quantization for LLMs](https://arxiv.org/abs/2306.00978). ([arXiv][5])
 
-6.  Dettmers, T., Pagnoni, A., Holtzman, A., & Zettlemoyer, L. (2023).
-    [**QLoRA: Efficient Finetuning of Quantized LLMs**](https://arxiv.org/abs/2305.14314). ([arXiv][13])
+6. Dettmers, T., Pagnoni, A., Holtzman, A., & Zettlemoyer, L. (2023). [QLoRA: Efficient Finetuning of Quantized LLMs](https://arxiv.org/abs/2305.14314). ([arXiv][6])
 
-7.  Chee, J., Dao, T., Frantar, E., & Alistarh, D. (2023).
-    [**QuIP: 2-Bit Quantization of Large Language Models with Guarantees**](https://arxiv.org/abs/2307.13380). ([arXiv][14])
+7. Chee, J., Dao, T., Frantar, E., & Alistarh, D. (2023). [QuIP: 2-Bit Quantization of Large Language Models with Guarantees](https://arxiv.org/abs/2307.13380). ([arXiv][7])
 
-8.  Dettmers, T., Svirschevski, R. A., Egiazarian, V., Kuznedelev, D., Frantar, E., Ashkboos, S., … Alistarh, D. (2024).
-    [**SpQR: A Sparse-Quantized Representation for Near-Lossless LLM Weight Compression**](https://arxiv.org/abs/2306.03078). ([arXiv][15])
+8. Dettmers, T., Svirschevski, R. A., Egiazarian, V., *et al.* (2024). [SpQR: A Sparse-Quantized Representation for Near-Lossless LLM Weight Compression](https://arxiv.org/abs/2306.03078). ([arXiv][8])
 
-9.  Li, Z., Sun, M., Zhang, X., & Han, S. (2023).
-    [**Outlier Suppression+: Accurate Quantization of Large Language Models by Equivalent and Optimal Transformation**](https://arxiv.org/abs/2309.15531). ([GitHub][16])
+9. Li, Z., Sun, M., Zhang, X., & Han, S. (2023). [Outlier Suppression+: Accurate Quantization of Large Language Models by Equivalent and Optimal Transformation](https://arxiv.org/abs/2309.15531). ([arXiv][9])
 
-10. Liu, Z., Li, Z., Lee, Y., You, Y., Denil, M., & Han, S. (2024).
-    [**Rotated Runtime Smooth: Training-free Activation Smoothing for Accurate INT4 LLM Inference**](https://arxiv.org/abs/2409.20361). ([ResearchGate][17])
+10. Liu, Z., Li, Z., Lee, Y., *et al.* (2024). [Rotated Runtime Smooth: Training-free Activation Smoothing for Accurate INT4 LLM Inference](https://arxiv.org/abs/2409.20361). ([arXiv][10])
 
-11. Wang, S., Xiao, G., Li, C., Liang, Y., & Han, S. (2024).
-    [**BitNet: Scaling 1-bit Transformers for Large Language Models**](https://arxiv.org/abs/2402.17764). ([arXiv][18])
+11. Wang, S., Xiao, G., Li, C., *et al.* (2024). [BitNet: Scaling 1-bit Transformers for Large Language Models](https://arxiv.org/abs/2402.17764). ([arXiv][11])
 
-12. Chee, J., Dao, T., Frantar, E., & Alistarh, D. (2023).
-    [**QuIP: 2-Bit Quantization of Large Language Models with Guarantees**](https://arxiv.org/abs/2307.13380). ([arXiv][14])
+12. Frantar, E., Singh, S. P., & Alistarh, D. (2022). [Optimal Brain Compression: A Framework for Accurate Post-Training Quantization and Pruning](https://arxiv.org/abs/2208.11580). ([arXiv][12])
 
-13. Frantar, E., Singh, S. P., & Alistarh, D. (2022).
-    [**Optimal Brain Compression: A Framework for Accurate Post-Training Quantization and Pruning**](https://arxiv.org/abs/2208.11580). ([ar5iv][19])
+[1]: https://arxiv.org/abs/2208.07339 "LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale"
+[2]: https://arxiv.org/abs/2211.10438 "SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models"
+[3]: https://arxiv.org/abs/2304.01089 "RPTQ: Reorder-based Post-training Quantization for Large Language Models"
+[4]: https://arxiv.org/abs/2210.17323 "GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers"
+[5]: https://arxiv.org/abs/2306.00978 "AWQ: Activation-aware Weight Quantization for LLMs"
+[6]: https://arxiv.org/abs/2305.14314 "QLoRA: Efficient Finetuning of Quantized LLMs"
+[7]: https://arxiv.org/abs/2307.13380 "QuIP: 2-Bit Quantization of Large Language Models with Guarantees"
+[8]: https://arxiv.org/abs/2306.03078 "SpQR: A Sparse-Quantized Representation for Near-Lossless LLM Weight Compression"
+[9]: https://arxiv.org/abs/2309.15531 "Outlier Suppression+: Accurate Quantization of Large Language Models"
+[10]: https://arxiv.org/abs/2409.20361 "Rotated Runtime Smooth: Training-free Activation Smoothing for Accurate INT4 LLM Inference"
+[11]: https://arxiv.org/abs/2402.17764 "BitNet: Scaling 1-bit Transformers for Large Language Models"
+[12]: https://arxiv.org/abs/2208.11580 "Optimal Brain Compression: A Framework for Accurate Post-Training Quantization and Pruning"
 

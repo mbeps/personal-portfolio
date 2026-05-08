@@ -39,7 +39,7 @@
 - [9 - Infrastructure and Virtualisation](#9---infrastructure-and-virtualisation)
   - [9.1 - Evolution of Compute Abstractions](#91---evolution-of-compute-abstractions)
 - [10 - Conclusion](#10---conclusion)
-- [Reference](#reference)
+- [References](#references)
 
 
 # 1 - Epistemology and Scope of Backend Systems
@@ -61,13 +61,13 @@ The modern backend did not emerge in a vacuum. It is the product of decades of a
 
 ## 2.1 - The Principle of Separation of Concerns
 
-The intellectual bedrock of software engineering is the principle of Separation of Concerns (SoC). This concept was formally introduced by Edsger W. Dijkstra in his seminal 1974 paper, "On the Role of Scientific Thought". Dijkstra argued that the complexity of software systems often exceeds the cognitive capacity of the human mind. To manage this, engineers must decompose a system into distinct parts, or "concerns," which can be studied, developed, and maintained in relative isolation.
+The intellectual bedrock of software engineering is the principle of Separation of Concerns (SoC). This concept was formally introduced by Edsger W. Dijkstra in his seminal 1974 paper, "On the Role of Scientific Thought". Dijkstra argued that the complexity of software systems often exceeds the cognitive capacity of the human mind. To manage this, engineers must decompose a system into distinct parts, or "concerns," which can be studied, developed, and maintained in relative isolation.[1]
 
 Dijkstra's insight was that correctness and efficiency are separate concerns. He posited that one should first ensure a program is logically correct before attempting to optimise its performance. This philosophy underpins the modern layered architecture, where business logic is separated from data access optimisation.
 
 ### 2.1.1 - Modular Decomposition
 
-Building on Dijkstra’s work, David Parnas published "On the Criteria To Be Used in Decomposing Systems into Modules" in 1972. Parnas challenged the prevailing notion that systems should be decomposed based on flowcharts or execution steps. Instead, he proposed "information hiding" as the primary criterion for modularity.
+Building on Dijkstra’s work, David Parnas published "On the Criteria To Be Used in Decomposing Systems into Modules" in 1972.[2] Parnas challenged the prevailing notion that systems should be decomposed based on flowcharts or execution steps. Instead, he proposed "information hiding" as the primary criterion for modularity.
 
 Parnas argued that a module should encapsulate a specific design decision or "secret," exposing only a stable interface to other modules. This prevents changes in one part of the system from rippling through to others (a concept known today as loose coupling). In modern backend terms, a microservice is effectively a Parnas module bounded by a network interface rather than a memory address space. The service hides its internal database schema and logic, exposing only an API. This direct lineage highlights that microservices are not a new invention but an application of 1970s modularity theory to distributed infrastructure.
 
@@ -90,7 +90,7 @@ As backends scaled beyond single servers to clusters of machines, they entered t
 
 ## 3.1 - The CAP Theorem
 
-The most cited theoretical constraint in distributed systems is the CAP Theorem. First conjectured by Eric Brewer at the PODC conference in 2000 and later proven by Seth Gilbert and Nancy Lynch in 2002, the theorem describes the trade-offs inherent in a distributed data store.
+The most cited theoretical constraint in distributed systems is the CAP Theorem. First conjectured by Eric Brewer at the PODC conference in 2000 and later proven by Seth Gilbert and Nancy Lynch in 2002, the theorem describes the trade-offs inherent in a distributed data store.[3]
 
 **The CAP Theorem Trade-offs**
 ```mermaid
@@ -137,7 +137,7 @@ In a single-machine backend, the operating system clock provides a total orderin
 
 ### 3.3.1 - Lamport Clocks
 
-Leslie Lamport addressed this in his 1978 paper, "Time, Clocks, and the Ordering of Events in a Distributed System". Lamport proved that we cannot rely on physical time to determine the order of events across different machines. Instead, we must rely on "logical clocks" based on causality.
+Leslie Lamport addressed this in his 1978 paper, "Time, Clocks, and the Ordering of Events in a Distributed System".[4] Lamport proved that we cannot rely on physical time to determine the order of events across different machines. Instead, we must rely on "logical clocks" based on causality.
 
 The "Happens-Before" relationship ($\rightarrow$) is defined as:
 
@@ -247,7 +247,7 @@ Unlike SOA, microservices avoid the ESB. They communicate via lightweight protoc
 
   * **Scalability:** Services can be scaled independently. A CPU-intensive video encoder service can run on high-CPU instances, while a memory-intensive cache service runs on high-RAM instances.
   * **Resilience:** Failures are isolated. If the recommendation engine fails, the core checkout process can still function.
-  * **Complexity:** The complexity is not removed; it is shifted from the code structure to the infrastructure. The backend engineer must now manage service discovery, distributed tracing, circuit breakers, and network latency.
+  * **Complexity:** The complexity is not removed; it is shifted from the code structure to the infrastructure. The backend engineer must now manage service discovery, distributed tracing, circuit breakers, and network latency.[5]
 
 ## 4.5 - Serverless and FaaS
 
@@ -270,7 +270,7 @@ $L_{cold}$ includes:
   * Initialising the language runtime (e.g., JVM startup).
   * Running initialisation code.
 
-Optimisation techniques include "Pre-warming" (keeping instances alive via pinging) and using languages with low startup overhead (Go/Rust vs. Java/Spring). The use of MicroVMs like AWS Firecracker has revolutionised this space by reducing VM startup times to milliseconds.
+Optimisation techniques include "Pre-warming" (keeping instances alive via pinging) and using languages with low startup overhead (Go/Rust vs. Java/Spring). The use of MicroVMs like AWS Firecracker has revolutionised this space by reducing VM startup times to milliseconds.[6]
 
 
 # 5 - Persistence and Storage Engineering
@@ -279,7 +279,7 @@ The backend is the custodian of data. The choice of storage engine dictates the 
 
 ## 5.1 - Storage Data Structures: B-Trees vs. LSM Trees
 
-At the deepest level, databases are defined by their underlying data structures. Two dominant structures exist: B-Trees and Log-Structured Merge (LSM) Trees.
+At the deepest level, databases are defined by their underlying data structures. Two dominant structures exist: B-Trees and Log-Structured Merge (LSM) Trees.[12]
 
 ### 5.1.1 - B-Trees (Read-Optimised)
 
@@ -352,7 +352,7 @@ Microservices must communicate over a network. The choice of protocol affects la
 
 As clients diversified (Mobile, Web, IoT), the "One Size Fits All" API became problematic. Mobile devices might need fewer fields than the web desktop view to save battery and bandwidth.
 
-The BFF pattern proposes creating a specific backend service for each frontend client.
+The BFF pattern proposes creating a specific backend service for each frontend client.[10]
 
 ```mermaid
 flowchart LR
@@ -432,7 +432,7 @@ Traditional databases store the current state of an entity. Event Sourcing store
 To get the current balance of a bank account, the system reads all events (AccountOpened, Deposited, Withdrawn) and replays them.
 
   * **Auditability:** The log is an immutable audit trail. One can travel back in time to see the state at any point.
-  * **Snapshots:** Replaying 10,000 events is slow. Systems periodically create a "Snapshot" of the state. The replay then starts from the latest snapshot plus subsequent events.
+  * **Snapshots:** Replaying 10,000 events is slow. Systems periodically create a "Snapshot" of the state. The replay then starts from the latest snapshot plus subsequent events.[11]
   * **Schema Evolution:** When the event structure changes (e.g., adding a currency field), the system uses "Upcasting." The Upcaster is a function that transforms the old event structure into the new one on-the-fly during replay, avoiding the need to migrate the immutable data on disk.
 
 ## 7.3 - Sagas: Distributed Transactions
@@ -474,7 +474,7 @@ Security in modern backends has shifted from "Perimeter Defence" to "Zero Trust.
 
 ## 8.1 - Zero Trust Architecture
 
-The traditional security model resembled a castle: hard outer walls (Firewalls) and a soft interior. Once an attacker breached the perimeter, they had trusted access to internal services. Zero Trust (NIST SP 800-207) assumes that the network is always hostile.
+The traditional security model resembled a castle: hard outer walls (Firewalls) and a soft interior. Once an attacker breached the perimeter, they had trusted access to internal services. Zero Trust (NIST SP 800-207) assumes that the network is always hostile.[9]
 
 **Tenets:**
 
@@ -484,8 +484,8 @@ The traditional security model resembled a castle: hard outer walls (Firewalls) 
 
 ## 8.2 - Authentication and Authorisation
 
-  * **OAuth 2.0:** The industry standard for delegation. The Authorisation Code Flow is preferred for backends. It ensures the Access Token is delivered directly to the backend server, never passing through the insecure browser.
-  * **JWT (JSON Web Token):** A compact, URL-safe token format (RFC 7519).
+  * **OAuth 2.0:** The industry standard for delegation.[8] The Authorisation Code Flow is preferred for backends. It ensures the Access Token is delivered directly to the backend server, never passing through the insecure browser.
+  * **JWT (JSON Web Token):** A compact, URL-safe token format (RFC 7519).[7]
       * **Structure:** Header (Algorithm), Payload (Claims like UserID, Expiry), Signature.
       * **Statelessness:** The backend can verify the token by checking the signature (using a secret key or public key) without querying the database for every request. This massively improves read scalability.
   * **Sender-Constrained Tokens:** To prevent token theft (replay attacks), advanced backends use Mutual TLS (mTLS). The Access Token is cryptographically bound to the client's mTLS certificate. If an attacker steals the token but does not possess the client's private certificate key, the token is useless.
@@ -511,17 +511,41 @@ The discipline of backend engineering is a continuous exercise in managing compl
 
 The modern backend engineer must look beyond the syntax of programming languages and understand these fundamental theoretical constraints. Whether implementing a Saga to manage distributed consistency, choosing an LSM-tree database for a write-heavy workload, or adopting Zero Trust security to protect against internal threats, the successful architect is one who understands not just how to implement a pattern, but why it is necessary and what compromise it entails. As we move towards edge computing and increasingly granular serverless functions, these foundational principles—Separation of Concerns, CAP, and Consensus(remain the immutable compass guiding the design of robust, high-quality software systems).
 
-# Reference
+# References
 
-* **Dijkstra's Separation of Concerns:** [https://en.wikipedia.org/wiki/Separation\_of\_concerns](https://en.wikipedia.org/wiki/Separation_of_concerns)
-* **Parnas Modules:** [https://www.researchgate.net/publication/200085877\_On\_the\_Criteria\_To\_Be\_Used\_in\_Decomposing\_Systems\_into\_Modules](https://www.researchgate.net/publication/200085877_On_the_Criteria_To_Be_Used_in_Decomposing_Systems_into_Modules)
-* **CAP Theorem (Brewer):** [https://dspace.mit.edu/handle/1721.1/79112](https://dspace.mit.edu/handle/1721.1/79112)
-* **Lamport Clocks:** [https://www.microsoft.com/en-us/research/publication/time-clocks-ordering-events-distributed-system/](https://www.microsoft.com/en-us/research/publication/time-clocks-ordering-events-distributed-system/)
-* **Microservices Trade-offs:** [https://tradeoffs.dev/article/The\_Tradeoffs\_of\_Microservices\_vs\_Monolithic\_Architecture.html](https://tradeoffs.dev/article/The_Tradeoffs_of_Microservices_vs_Monolithic_Architecture.html)
-* **Firecracker MicroVM:** [https://www.usenix.org/system/files/nsdi20-paper-agache.pdf](https://www.usenix.org/system/files/nsdi20-paper-agache.pdf)
-* **JWT Standard (RFC 7519):** [https://datatracker.ietf.org/doc/html/rfc7519](https://datatracker.ietf.org/doc/html/rfc7519)
-* **OAuth 2.0 Standard (RFC 6749):** [https://datatracker.ietf.org/doc/html/rfc6749](https://datatracker.ietf.org/doc/html/rfc6749)
-* **Zero Trust Architecture (NIST):** [https://nvlpubs.nist.gov/nistpubs/specialpublications/NIST.SP.800-207.pdf](https://nvlpubs.nist.gov/nistpubs/specialpublications/NIST.SP.800-207.pdf)
-* **BFF Pattern:** [https://samnewman.io/patterns/architectural/bff/](https://samnewman.io/patterns/architectural/bff/)
-* **Event Sourcing Snapshots:** [https://docs.eventsourcingdb.io/fundamentals/snapshots/](https://docs.eventsourcingdb.io/fundamentals/snapshots/)
-* **LSM vs B-Tree:** [https://tikv.org/deep-dive/key-value-engine/b-tree-vs-lsm/](https://tikv.org/deep-dive/key-value-engine/b-tree-vs-lsm/)
+1. [Separation of Concerns](https://en.wikipedia.org/wiki/Separation_of_concerns). ([Wikipedia][1])
+
+2. Parnas, D. L. (1972). [On the Criteria To Be Used in Decomposing Systems into Modules](https://www.researchgate.net/publication/200085877_On_the_Criteria_To_Be_Used_in_Decomposing_Systems_into_Modules). ([ResearchGate][2])
+
+3. Gilbert, S., & Lynch, N. (2002). [Brewer's Conjecture and the Feasibility of Consistent, Available, Partition-Tolerant Web Services](https://dspace.mit.edu/handle/1721.1/79112). ([MIT DSpace][3])
+
+4. Lamport, L. (1978). [Time, Clocks, and the Ordering of Events in a Distributed System](https://www.microsoft.com/en-us/research/publication/time-clocks-ordering-events-distributed-system/). ([Microsoft Research][4])
+
+5. [The Tradeoffs of Microservices vs Monolithic Architecture](https://tradeoffs.dev/article/The_Tradeoffs_of_Microservices_vs_Monolithic_Architecture.html). ([tradeoffs.dev][5])
+
+6. Agache, A., Brooker, M., *et al.* (2020). [Firecracker: Lightweight Virtualization for Serverless Applications](https://www.usenix.org/system/files/nsdi20-paper-agache.pdf). ([USENIX][6])
+
+7. Jones, M., Bradley, J., *et al.* (2015). [JSON Web Token (JWT) – RFC 7519](https://datatracker.ietf.org/doc/html/rfc7519). ([IETF][7])
+
+8. Hardt, D. (2012). [The OAuth 2.0 Authorization Framework – RFC 6749](https://datatracker.ietf.org/doc/html/rfc6749). ([IETF][8])
+
+9. Rose, S., Borchert, O., *et al.* (2020). [Zero Trust Architecture – NIST SP 800-207](https://nvlpubs.nist.gov/nistpubs/specialpublications/NIST.SP.800-207.pdf). ([NIST][9])
+
+10. Newman, S. [The Backends For Frontends Pattern](https://samnewman.io/patterns/architectural/bff/). ([samnewman.io][10])
+
+11. [Snapshots](https://docs.eventsourcingdb.io/fundamentals/snapshots/). ([EventSourcingDB][11])
+
+12. [B-Tree vs LSM-Tree](https://tikv.org/deep-dive/key-value-engine/b-tree-vs-lsm/). ([TiKV][12])
+
+[1]: https://en.wikipedia.org/wiki/Separation_of_concerns "Separation of Concerns - Wikipedia"
+[2]: https://www.researchgate.net/publication/200085877_On_the_Criteria_To_Be_Used_in_Decomposing_Systems_into_Modules "On the Criteria To Be Used in Decomposing Systems into Modules"
+[3]: https://dspace.mit.edu/handle/1721.1/79112 "Brewer's Conjecture and the Feasibility of Consistent, Available, Partition-Tolerant Web Services"
+[4]: https://www.microsoft.com/en-us/research/publication/time-clocks-ordering-events-distributed-system/ "Time, Clocks, and the Ordering of Events in a Distributed System"
+[5]: https://tradeoffs.dev/article/The_Tradeoffs_of_Microservices_vs_Monolithic_Architecture.html "The Tradeoffs of Microservices vs Monolithic Architecture"
+[6]: https://www.usenix.org/system/files/nsdi20-paper-agache.pdf "Firecracker: Lightweight Virtualization for Serverless Applications"
+[7]: https://datatracker.ietf.org/doc/html/rfc7519 "JSON Web Token (JWT) – RFC 7519"
+[8]: https://datatracker.ietf.org/doc/html/rfc6749 "The OAuth 2.0 Authorization Framework – RFC 6749"
+[9]: https://nvlpubs.nist.gov/nistpubs/specialpublications/NIST.SP.800-207.pdf "Zero Trust Architecture – NIST SP 800-207"
+[10]: https://samnewman.io/patterns/architectural/bff/ "The Backends For Frontends Pattern"
+[11]: https://docs.eventsourcingdb.io/fundamentals/snapshots/ "Snapshots – EventSourcingDB"
+[12]: https://tikv.org/deep-dive/key-value-engine/b-tree-vs-lsm/ "B-Tree vs LSM-Tree | TiKV"

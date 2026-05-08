@@ -450,61 +450,61 @@ The industry is moving towards a passwordless future via WebAuthn.[18];[20] Whil
 
 1. Visaggio, C. A., & Blasio, L. C. (2010). [Session Management Vulnerabilities in Today’s Web](https://doi.org/10.1109/MSP.2010.114). *IEEE Security & Privacy, 8*(5), 48–56. ([ACM Digital Library][1])
 
-2. Calzavara, S., Focardi, R., Squarcina, M., & Tempesta, M. (2017). [Surviving the Web: A Journey into Web Session Security](https://doi.org/10.1145/3038923). *ACM Computing Surveys, 50*(1), 13:1–13:34. ([ResearchGate][2])
+2. Calzavara, S., Focardi, R., *et al.* (2017). [Surviving the Web: A Journey into Web Session Security](https://doi.org/10.1145/3038923). *ACM Computing Surveys, 50*(1), 13:1–13:34. ([ResearchGate][2])
 
-3. Bugliesi, M., Calzavara, S., Focardi, R., Khan, W., & Tempesta, M. (2014). [Provably Sound Browser-Based Enforcement of Web Session Integrity](https://doi.org/10.1109/CSF.2014.33). *2014 IEEE 27th Computer Security Foundations Symposium (CSF)*, 366–380. ([ResearchGate][3])
+3. Bugliesi, M., Calzavara, S., *et al.* (2014). [Provably Sound Browser-Based Enforcement of Web Session Integrity](https://doi.org/10.1109/CSF.2014.33). *2014 IEEE 27th Computer Security Foundations Symposium (CSF)*, 366–380. ([ResearchGate][3])
 
-4. Calzavara, S., Focardi, R., Grimm, N., Maffei, M., & Tempesta, M. (2020). [Language-Based Web Session Integrity](https://doi.org/10.1109/CSF49147.2020.00016). *2020 IEEE 33rd Computer Security Foundations Symposium (CSF)*, 107–122. ([repositum.tuwien.at][4])
+4. Calzavara, S., Focardi, R., *et al.* (2020). [Language-Based Web Session Integrity](https://doi.org/10.1109/CSF49147.2020.00016). *2020 IEEE 33rd Computer Security Foundations Symposium (CSF)*, 107–122. ([repositum.tuwien.at][4])
 
-5. Squarcina, M., Khodayari, S., Pellegrino, G., & Calzavara, S. (2023). [Cookie Crumbles: Breaking and Fixing Web Session Integrity](https://www.usenix.org/conference/usenixsecurity23/presentation/squarcina-cookie) (USENIX Security 2023). ([ACM Digital Library][5])
+5. Squarcina, M., Khodayari, S., *et al.* (2023). [Cookie Crumbles: Breaking and Fixing Web Session Integrity](https://www.usenix.org/conference/usenixsecurity23/presentation/squarcina-cookie) (USENIX Security 2023). ([ACM Digital Library][5])
 
 6. Mahindrakar, A. P., & Pujeri, R. V. (2020). [Insights of JSON Web Token](https://doi.org/10.35940/ijrte.F7689.038620). *International Journal of Recent Technology and Engineering, 8*(6), 2345–2350. ([IJRTE][6])
 
 7. Mahindrakar, A. P., & Pujeri, R. V. (2020). [Security Implications for JSON Web Token Used in MERN Stack for Developing E-Commerce Web Application](https://doi.org/10.35940/ijeat.A1663.1010120). *International Journal of Engineering and Advanced Technology, 9*(1), 6359–6365. ([ijeat.org][7])
 
-8. Rahmatulloh, A., Gunawan, R., & Nursuwars, F. M. S. (2019). [Performance Comparison of Signed Algorithms on JSON Web Token](https://doi.org/10.1088/1757-899X/550/1/012023). *IOP Conference Series: Materials Science and Engineering, 550*, 012023. ([ResearchGate][8])
+8. Rahmatulloh, A., Gunawan, R., *et al.* (2019). [Performance Comparison of Signed Algorithms on JSON Web Token](https://doi.org/10.1088/1757-899X/550/1/012023). *IOP Conference Series: Materials Science and Engineering, 550*, 012023. ([ResearchGate][8])
 
-9. Nugraha, A. F., Kabetta, H., Setia Buana, I. K., & Budiarto, R. (2023). [Performance and Security Comparison of Json Web Tokens (JWT) and Platform Agnostic Security Tokens (PASETO) on RESTful APIs](https://doi.org/10.1109/ICoCICs58778.2023.10277377). *2023 IEEE International Conference on Cryptography, Informatics, and Cybersecurity (ICoCICs)*. ([ResearchGate][9])
+9. Nugraha, A. F., Kabetta, H., *et al.* (2023). [Performance and Security Comparison of Json Web Tokens (JWT) and Platform Agnostic Security Tokens (PASETO) on RESTful APIs](https://doi.org/10.1109/ICoCICs58778.2023.10277377). *2023 IEEE International Conference on Cryptography, Informatics, and Cybersecurity (ICoCICs)*. ([ResearchGate][9])
 
-10. Birgisson, A., Politz, J. G., Erlingsson, Ú., Taly, A., Vrable, M., & Lentczner, M. (2014). [Macaroons: Cookies with Contextual Caveats for Decentralized Authorization in the Cloud](https://doi.org/10.14722/ndss.2014.23212). *Network and Distributed System Security Symposium (NDSS 2014)*. ([theory.stanford.edu][10])
+10. Birgisson, A., Politz, J. G., *et al.* (2014). [Macaroons: Cookies with Contextual Caveats for Decentralized Authorization in the Cloud](https://doi.org/10.14722/ndss.2014.23212). *Network and Distributed System Security Symposium (NDSS 2014)*. ([theory.stanford.edu][10])
 
-11. Fett, D., Küsters, R., & Schmitz, G. (2016). [A Comprehensive Formal Security Analysis of OAuth 2.0](https://doi.org/10.1145/2976749.2978385). *Proceedings of the 2016 ACM SIGSAC Conference on Computer and Communications Security (CCS)*, 1204–1215. ([ACM Digital Library][11])
+11. Fett, D., Küsters, R., *et al.* (2016). [A Comprehensive Formal Security Analysis of OAuth 2.0](https://doi.org/10.1145/2976749.2978385). *Proceedings of the 2016 ACM SIGSAC Conference on Computer and Communications Security (CCS)*, 1204–1215. ([ACM Digital Library][11])
 
 12. Ferry, N., O’Raw, C., & Curran, K. (2015). [Security Evaluation of the OAuth 2.0 Framework](https://doi.org/10.1108/ICS-12-2013-0089). *Information and Computer Security, 23*(1), 20–41. ([ResearchGate][12])
 
-13. Shernan, E., Carter, H., Tian, D., Traynor, P., & Butler, K. R. B. (2015). [More Guidelines Than Rules: CSRF Vulnerabilities from Noncompliant OAuth 2.0 Implementations](https://doi.org/10.1007/978-3-319-20550-2_13). *Detection of Intrusions and Malware, and Vulnerability Assessment (DIMVA 2015)*, LNCS 9148, 239–260. ([ACM Digital Library][13])
+13. Shernan, E., Carter, H., *et al.* (2015). [More Guidelines Than Rules: CSRF Vulnerabilities from Noncompliant OAuth 2.0 Implementations](https://doi.org/10.1007/978-3-319-20550-2_13). *Detection of Intrusions and Malware, and Vulnerability Assessment (DIMVA 2015)*, LNCS 9148, 239–260. ([ACM Digital Library][13])
 
-14. Mladenov, V., Mainka, C., & Schwenk, J. (2015). [On the Security of Modern Single Sign-On Protocols: Second-Order Vulnerabilities in OpenID Connect](https://arxiv.org/abs/1508.04324). *CoRR, abs/1508.04324*. ([arXiv][14])
+14. Mladenov, V., Mainka, C., *et al.* (2015). [On the Security of Modern Single Sign-On Protocols: Second-Order Vulnerabilities in OpenID Connect](https://arxiv.org/abs/1508.04324). *CoRR, abs/1508.04324*. ([arXiv][14])
 
 15. Li, W., & Mitchell, C. J. (2016). [Analysing the Security of Google’s Implementation of OpenID Connect](https://doi.org/10.1007/978-3-319-40667-1_18). In *Detection of Intrusions and Malware, and Vulnerability Assessment (DIMVA 2016)*, LNCS 9721, 357–376. ([SciSpace][15])
 
-16. Czeskis, A., Moshchuk, A., Kohno, T., & Wang, H. J. (2013). [Lightweight Server Support for Browser-Based CSRF Protection](https://doi.org/10.1145/2488388.2488413). *Proceedings of the 22nd International World Wide Web Conference (WWW ’13)*, 273–284. ([ACM Digital Library][16])
+16. Czeskis, A., Moshchuk, A., *et al.* (2013). [Lightweight Server Support for Browser-Based CSRF Protection](https://doi.org/10.1145/2488388.2488413). *Proceedings of the 22nd International World Wide Web Conference (WWW ’13)*, 273–284. ([ACM Digital Library][16])
 
-17. Calzavara, S., Focardi, R., Squarcina, M., & Tempesta, M. (2018). [Surviving the Web: A Journey into Web Session Security](https://doi.org/10.1145/3184558.3186232). *Companion Proceedings of the Web Conference 2018 (WWW ’18 Companion)*, 123–132. ([ACM Digital Library][17])
+17. Calzavara, S., Focardi, R., *et al.* (2018). [Surviving the Web: A Journey into Web Session Security](https://doi.org/10.1145/3184558.3186232). *Companion Proceedings of the Web Conference 2018 (WWW ’18 Companion)*, 123–132. ([ACM Digital Library][17])
 
-18. Barbosa, M., Boldyreva, A., Chen, S., & Warinschi, B. (2021). [Provable Security Analysis of FIDO2](https://doi.org/10.1007/978-3-030-84252-9_5). In *Advances in Cryptology – CRYPTO 2021*, LNCS 12827, 125–156. ([ResearchGate][18])
+18. Barbosa, M., Boldyreva, A., *et al.* (2021). [Provable Security Analysis of FIDO2](https://doi.org/10.1007/978-3-030-84252-9_5). In *Advances in Cryptology – CRYPTO 2021*, LNCS 12827, 125–156. ([ResearchGate][18])
 
-19. Barbosa, M., Boldyreva, A., Chen, S., Cheng, K., & Esquível, L. (2025). [Privacy and Security of FIDO2 Revisited](https://doi.org/10.56553/popets-2025-0100). *Proceedings on Privacy Enhancing Technologies, 2025*(3), 304–332. ([crysp.petsymposium.org][19])
+19. Barbosa, M., Boldyreva, A., *et al.* (2025). [Privacy and Security of FIDO2 Revisited](https://doi.org/10.56553/popets-2025-0100). *Proceedings on Privacy Enhancing Technologies, 2025*(3), 304–332. ([crysp.petsymposium.org][19])
 
-20. Casey, T., Featherstone, P., Brocklesby, K., & Kholosha, A. (2020). [An Interoperable Architecture for Usable Password-Less Web Authentication Using WebAuthn](https://doi.org/10.1007/978-3-030-64455-0_2). In *Human Aspects of Information Security and Assurance (HAISA 2020)*, CCIS 1242, 15–32. ([ACM Digital Library][20])
+20. Casey, T., Featherstone, P., *et al.* (2020). [An Interoperable Architecture for Usable Password-Less Web Authentication Using WebAuthn](https://doi.org/10.1007/978-3-030-64455-0_2). In *Human Aspects of Information Security and Assurance (HAISA 2020)*, CCIS 1242, 15–32. ([ACM Digital Library][20])
 
-[1]: https://dl.acm.org/doi/10.1109/MSP.2010.114?utm_source=chatgpt.com "Session Management Vulnerabilities in Today's Web"
-[2]: https://www.researchgate.net/publication/314289445_Surviving_the_Web_A_Journey_into_Web_Session_Security?utm_source=chatgpt.com "Surviving the Web: A Journey into Web Session Security"
-[3]: https://www.researchgate.net/publication/286593938_Provably_Sound_Browser-Based_Enforcement_of_Web_Session_Integrity?utm_source=chatgpt.com "Provably Sound Browser-Based Enforcement of Web ..."
-[4]: https://repositum.tuwien.at/handle/20.500.12708/58182?mode=full&utm_source=chatgpt.com "Language-Based Web Session Integrity - reposiTUm"
-[5]: https://dl.acm.org/doi/10.5555/3620237.3620547?utm_source=chatgpt.com "Cookie crumbles: breaking and fixing web session integrity"
-[6]: https://www.ijrte.org/portfolio-item/f7689038620/?utm_source=chatgpt.com "F7689038620"
-[7]: https://www.ijeat.org/wp-content/uploads/papers/v10i1/A16631010120.pdf?utm_source=chatgpt.com "Security Implications for Json web Token Used in MERN ..."
-[8]: https://www.researchgate.net/publication/335367877_Performance_comparison_of_signed_algorithms_on_JSON_Web_Token?utm_source=chatgpt.com "Performance comparison of signed algorithms on JSON ..."
-[9]: https://www.researchgate.net/publication/374789395_Performance_and_Security_Comparison_of_Json_Web_Tokens_JWT_and_Platform_Agnostic_Security_Tokens_PASETO_on_RESTful_APIs?utm_source=chatgpt.com "(PDF) Performance and Security Comparison of Json Web ..."
-[10]: https://theory.stanford.edu/~ataly/Papers/macaroons.pdf?utm_source=chatgpt.com "Macaroons: Cookies with Contextual Caveats for ..."
-[11]: https://dl.acm.org/doi/10.1145/2976749.2978385?utm_source=chatgpt.com "A Comprehensive Formal Security Analysis of OAuth 2.0"
-[12]: https://www.researchgate.net/publication/276397514_Security_evaluation_of_the_OAuth_20_framework?utm_source=chatgpt.com "(PDF) Security evaluation of the OAuth 2.0 framework"
-[13]: https://dl.acm.org/doi/10.1007/978-3-319-20550-2_13?utm_source=chatgpt.com "More Guidelines Than Rules: CSRF Vulnerabilities ..."
-[14]: https://arxiv.org/abs/1508.04324?utm_source=chatgpt.com "On the security of modern Single Sign-On Protocols: Second-Order Vulnerabilities in OpenID Connect"
-[15]: https://scispace.com/papers/on-the-security-of-modern-single-sign-on-protocols-openid-6pkih91o7q?utm_source=chatgpt.com "On the security of modern Single Sign-On Protocols: OpenID ..."
-[16]: https://dl.acm.org/doi/10.1145/2488388.2488413?utm_source=chatgpt.com "Lightweight server support for browser-based CSRF ..."
-[17]: https://dl.acm.org/doi/fullHtml/10.1145/3184558.3186232?utm_source=chatgpt.com "Surviving the Web: A Journey into Web Session Security"
-[18]: https://www.researchgate.net/publication/353811238_Provable_Security_Analysis_of_FIDO2?utm_source=chatgpt.com "Provable Security Analysis of FIDO2 | Request PDF"
-[19]: https://crysp.petsymposium.org/popets/2025/popets-2025-0100.pdf?utm_source=chatgpt.com "Privacy and Security of FIDO2 Revisited"
-[20]: https://dl.acm.org/doi/10.1007/978-3-030-64455-0_2?utm_source=chatgpt.com "An Interoperable Architecture for Usable Password-Less ..."
+[1]: https://dl.acm.org/doi/10.1109/MSP.2010.114 "Session Management Vulnerabilities in Today's Web"
+[2]: https://www.researchgate.net/publication/314289445_Surviving_the_Web_A_Journey_into_Web_Session_Security "Surviving the Web: A Journey into Web Session Security"
+[3]: https://www.researchgate.net/publication/286593938_Provably_Sound_Browser-Based_Enforcement_of_Web_Session_Integrity "Provably Sound Browser-Based Enforcement of Web ..."
+[4]: https://repositum.tuwien.at/handle/20.500.12708/58182?mode=full "Language-Based Web Session Integrity - reposiTUm"
+[5]: https://dl.acm.org/doi/10.5555/3620237.3620547 "Cookie crumbles: breaking and fixing web session integrity"
+[6]: https://www.ijrte.org/portfolio-item/f7689038620/ "F7689038620"
+[7]: https://www.ijeat.org/wp-content/uploads/papers/v10i1/A16631010120.pdf "Security Implications for Json web Token Used in MERN ..."
+[8]: https://www.researchgate.net/publication/335367877_Performance_comparison_of_signed_algorithms_on_JSON_Web_Token "Performance comparison of signed algorithms on JSON ..."
+[9]: https://www.researchgate.net/publication/374789395_Performance_and_Security_Comparison_of_Json_Web_Tokens_JWT_and_Platform_Agnostic_Security_Tokens_PASETO_on_RESTful_APIs "(PDF) Performance and Security Comparison of Json Web ..."
+[10]: https://theory.stanford.edu/~ataly/Papers/macaroons.pdf "Macaroons: Cookies with Contextual Caveats for ..."
+[11]: https://dl.acm.org/doi/10.1145/2976749.2978385 "A Comprehensive Formal Security Analysis of OAuth 2.0"
+[12]: https://www.researchgate.net/publication/276397514_Security_evaluation_of_the_OAuth_20_framework "(PDF) Security evaluation of the OAuth 2.0 framework"
+[13]: https://dl.acm.org/doi/10.1007/978-3-319-20550-2_13 "More Guidelines Than Rules: CSRF Vulnerabilities ..."
+[14]: https://arxiv.org/abs/1508.04324 "On the security of modern Single Sign-On Protocols: Second-Order Vulnerabilities in OpenID Connect"
+[15]: https://scispace.com/papers/on-the-security-of-modern-single-sign-on-protocols-openid-6pkih91o7q "On the security of modern Single Sign-On Protocols: OpenID ..."
+[16]: https://dl.acm.org/doi/10.1145/2488388.2488413 "Lightweight server support for browser-based CSRF ..."
+[17]: https://dl.acm.org/doi/fullHtml/10.1145/3184558.3186232 "Surviving the Web: A Journey into Web Session Security"
+[18]: https://www.researchgate.net/publication/353811238_Provable_Security_Analysis_of_FIDO2 "Provable Security Analysis of FIDO2 | Request PDF"
+[19]: https://crysp.petsymposium.org/popets/2025/popets-2025-0100.pdf "Privacy and Security of FIDO2 Revisited"
+[20]: https://dl.acm.org/doi/10.1007/978-3-030-64455-0_2 "An Interoperable Architecture for Usable Password-Less ..."

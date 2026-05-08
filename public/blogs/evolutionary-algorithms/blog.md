@@ -1,37 +1,37 @@
 - [1 - Introduction to Stochastic Optimisation](#1---introduction-to-stochastic-optimisation)
 - [2 - Historical Paradigms and Taxonomy](#2---historical-paradigms-and-taxonomy)
-	- [2.1 - Genetic Algorithms (GA)](#21---genetic-algorithms-ga)
-	- [2.2 - Evolution Strategies (ES)](#22---evolution-strategies-es)
-	- [2.3 - Evolutionary Programming (EP)](#23---evolutionary-programming-ep)
+  - [2.1 - Genetic Algorithms (GA)](#21---genetic-algorithms-ga)
+  - [2.2 - Evolution Strategies (ES)](#22---evolution-strategies-es)
+  - [2.3 - Evolutionary Programming (EP)](#23---evolutionary-programming-ep)
 - [3 - The Mathematical Framework of the Canonical Evolutionary Cycle](#3---the-mathematical-framework-of-the-canonical-evolutionary-cycle)
-	- [3.1 - The Algorithmic Cycle](#31---the-algorithmic-cycle)
-	- [3.2 - Representation: Genotype vs. Phenotype](#32---representation-genotype-vs-phenotype)
+  - [3.1 - The Algorithmic Cycle](#31---the-algorithmic-cycle)
+  - [3.2 - Representation: Genotype vs. Phenotype](#32---representation-genotype-vs-phenotype)
 - [4 - Genetic Algorithms: Discrete Optimisation and Schema Theory](#4---genetic-algorithms-discrete-optimisation-and-schema-theory)
-	- [4.1 - Operators and Mechanics](#41---operators-and-mechanics)
-		- [4.1.1 - Selection Mechanics](#411---selection-mechanics)
-		- [4.1.2 - Recombination (Crossover)](#412---recombination-crossover)
-	- [4.2 - Mathematical Theory: The Schema Theorem](#42---mathematical-theory-the-schema-theorem)
-	- [4.3 - Manual Calculation Example: Maximising $f(x) = x^2$](#43---manual-calculation-example-maximising-fx--x2)
+  - [4.1 - Operators and Mechanics](#41---operators-and-mechanics)
+    - [4.1.1 - Selection Mechanics](#411---selection-mechanics)
+    - [4.1.2 - Recombination (Crossover)](#412---recombination-crossover)
+  - [4.2 - Mathematical Theory: The Schema Theorem](#42---mathematical-theory-the-schema-theorem)
+  - [4.3 - Manual Calculation Example: Maximising $f(x) = x^2$](#43---manual-calculation-example-maximising-fx--x2)
 - [5 - Theoretical Runtime Analysis and Complexity](#5---theoretical-runtime-analysis-and-complexity)
-	- [5.1 - The (1+1)-EA on OneMax](#51---the-11-ea-on-onemax)
-	- [5.2 - Drift Analysis](#52---drift-analysis)
+  - [5.1 - The (1+1)-EA on OneMax](#51---the-11-ea-on-onemax)
+  - [5.2 - Drift Analysis](#52---drift-analysis)
 - [6 - Evolution Strategies (ES) and Continuous Optimisation](#6---evolution-strategies-es-and-continuous-optimisation)
-	- [6.1 - Mutation and Step Size](#61---mutation-and-step-size)
-	- [6.2 - Rechenberg's 1/5th Success Rule](#62---rechenbergs-15th-success-rule)
+  - [6.1 - Mutation and Step Size](#61---mutation-and-step-size)
+  - [6.2 - Rechenberg's 1/5th Success Rule](#62---rechenbergs-15th-success-rule)
 - [7 - Covariance Matrix Adaptation Evolution Strategy (CMA-ES)](#7---covariance-matrix-adaptation-evolution-strategy-cma-es)
-	- [7.1 - Mathematical Geometry of CMA-ES](#71---mathematical-geometry-of-cma-es)
-	- [7.2 - The Update Equations](#72---the-update-equations)
+  - [7.1 - Mathematical Geometry of CMA-ES](#71---mathematical-geometry-of-cma-es)
+  - [7.2 - The Update Equations](#72---the-update-equations)
 - [8 - Differential Evolution (DE)](#8---differential-evolution-de)
-	- [8.1 - Vector Difference Mutation](#81---vector-difference-mutation)
-	- [8.2 - Variants and Crossover](#82---variants-and-crossover)
+  - [8.1 - Vector Difference Mutation](#81---vector-difference-mutation)
+  - [8.2 - Variants and Crossover](#82---variants-and-crossover)
 - [9 - Neuroevolution: Evolving Structures (NEAT)](#9---neuroevolution-evolving-structures-neat)
-	- [9.1 - The Competing Conventions Problem](#91---the-competing-conventions-problem)
-	- [9.2 - NEAT (NeuroEvolution of Augmenting Topologies)](#92---neat-neuroevolution-of-augmenting-topologies)
+  - [9.1 - The Competing Conventions Problem](#91---the-competing-conventions-problem)
+  - [9.2 - NEAT (NeuroEvolution of Augmenting Topologies)](#92---neat-neuroevolution-of-augmenting-topologies)
 - [10 - Quality Diversity and MAP-Elites](#10---quality-diversity-and-map-elites)
-	- [10.1 - The MAP-Elites Algorithm](#101---the-map-elites-algorithm)
+  - [10.1 - The MAP-Elites Algorithm](#101---the-map-elites-algorithm)
 - [11 - Comparative Analysis: EAs vs. Classical Methods](#11---comparative-analysis-eas-vs-classical-methods)
-	- [11.1 - EAs vs. Gradient Descent (GD)](#111---eas-vs-gradient-descent-gd)
-	- [11.2 - EAs vs. Simulated Annealing (SA)](#112---eas-vs-simulated-annealing-sa)
+  - [11.1 - EAs vs. Gradient Descent (GD)](#111---eas-vs-gradient-descent-gd)
+  - [11.2 - EAs vs. Simulated Annealing (SA)](#112---eas-vs-simulated-annealing-sa)
 - [12 - Conclusion](#12---conclusion)
 - [References](#references)
 
@@ -56,11 +56,11 @@ While the field is now unified under the umbrella of Evolutionary Computation (E
 
 ## 2.1 - Genetic Algorithms (GA)
 
-Developed by John Holland at the University of Michigan in the 1960s and 1970s, Genetic Algorithms were originally conceived not just as function optimisers but as adaptive systems for studying the mechanisms of natural systems. Holland’s seminal work, *Adaptation in Natural and Artificial Systems* (1975), introduced the theoretical framework of schemata. The primary innovation of the GA was the use of a discrete, genotypic representation (typically binary strings) that was distinct from the phenotype (the actual solution values). This allowed for the application of genetic operators like crossover (recombination) to manipulate the structure of the solution at a fundamental level [1].
+Developed by John Holland at the University of Michigan in the 1960s and 1970s, Genetic Algorithms were originally conceived not just as function optimisers but as adaptive systems for studying the mechanisms of natural systems. Holland’s seminal work, *Adaptation in Natural and Artificial Systems* (1975), introduced the theoretical framework of schemata. The primary innovation of the GA was the use of a discrete, genotypic representation (typically binary strings) that was distinct from the phenotype (the actual solution values). This allowed for the application of genetic operators like crossover (recombination) to manipulate the structure of the solution at a fundamental level.[1]
 
 ## 2.2 - Evolution Strategies (ES)
 
-Simultaneously, in Germany, Ingo Rechenberg and Hans-Paul Schwefel were grappling with hydrodynamic optimisation problems, such as minimising the drag of an airfoil. They developed Evolution Strategies (ES) to optimise continuous real-valued parameters. Unlike GAs, which emphasised recombination, early ES focused heavily on mutation and selection. Rechenberg formulated the first theoretical convergence rates for EAs, deriving the "1/5th Success Rule" for step-size adaptation, a concept that remains central to continuous optimisation today [14].
+Simultaneously, in Germany, Ingo Rechenberg and Hans-Paul Schwefel were grappling with hydrodynamic optimisation problems, such as minimising the drag of an airfoil. They developed Evolution Strategies (ES) to optimise continuous real-valued parameters. Unlike GAs, which emphasised recombination, early ES focused heavily on mutation and selection. Rechenberg formulated the first theoretical convergence rates for EAs, deriving the "1/5th Success Rule" for step-size adaptation, a concept that remains central to continuous optimisation today.[13];[14]
 
 ## 2.3 - Evolutionary Programming (EP)
 
@@ -132,7 +132,7 @@ While intuitive, this method suffers from scaling issues. If a "super-individual
 
 ### 4.1.2 - Recombination (Crossover)
 
-Crossover is the primary exploration operator in GAs, predicated on the idea that combining two partial solutions may yield a better complete solution [2].
+Crossover is the primary exploration operator in GAs, predicated on the idea that combining two partial solutions may yield a better complete solution.[2]
 
 **One-Point Crossover:** Given two strings of length $L$, a cut point $k \sim \mathcal{U}(1, L-1)$ is chosen.
 
@@ -144,7 +144,7 @@ Crossover is the primary exploration operator in GAs, predicated on the idea tha
 
 ## 4.2 - Mathematical Theory: The Schema Theorem
 
-The fundamental question "Why do GAs work?" is addressed by Holland's Schema Theorem. It formalises the notion that GAs search by sampling "schemata" (similarity templates representing hyperplanes in the search space) [1].
+The fundamental question "Why do GAs work?" is addressed by Holland's Schema Theorem. It formalises the notion that GAs search by sampling "schemata" (similarity templates representing hyperplanes in the search space).[1]
 
 **Definitions:**
 
@@ -174,9 +174,9 @@ Combining these effects yields the lower bound on schema propagation:
 $$ E[m(H, t+1)] \geq m(H, t) \frac{\bar{f}(H)}{\bar{f}} \left[ 1 - p_c \frac{\delta(H)}{L-1} - o(H)p_m \right] $$
 
 **The Building Block Hypothesis:**
-The theorem implies that short, low-order, above-average fitness schemata (termed "Building Blocks") are sampled at exponentially increasing rates. The hypothesis suggests that GAs solve problems by hierarchically combining these small building blocks into larger, highly fit schemata [3].
+The theorem implies that short, low-order, above-average fitness schemata (termed "Building Blocks") are sampled at exponentially increasing rates. The hypothesis suggests that GAs solve problems by hierarchically combining these small building blocks into larger, highly fit schemata.[3]
 
-**Critique:** The theorem is a lower bound. It does not account for the creation of new schema instances via crossover, nor does it guarantee convergence in the case of deceptive fitness landscapes where low-order building blocks lead away from the global optimum [3].
+**Critique:** The theorem is a lower bound. It does not account for the creation of new schema instances via crossover, nor does it guarantee convergence in the case of deceptive fitness landscapes where low-order building blocks lead away from the global optimum.[3]
 
 ## 4.3 - Manual Calculation Example: Maximising $f(x) = x^2$
 
@@ -272,16 +272,16 @@ $$ E = \sum_{i=1}^{n} E \approx \sum_{i=1}^{n} \frac{en}{i} = en \sum_{i=1}^{n} 
 
 Since the harmonic series $\sum \frac{1}{i} \approx \ln n$, the total complexity is:
 $$ E \in \Theta(n \log n) $$
-This result proves that a simple EA is efficient (polynomial time) on unimodal functions like OneMax [7].
+This result proves that a simple EA is efficient (polynomial time) on unimodal functions like OneMax.[7]
 
 ## 5.2 - Drift Analysis
 
 For more complex problems, researchers use Drift Analysis. If $X_t$ is the distance to the optimum, the "drift" is $\Delta_t = E[X_t - X_{t+1} | X_t]$.
 
-  * **Additive Drift Theorem:** If the drift is bounded below by a constant $\delta > 0$, then the expected time is at most $X_0 / \delta$ [8].
+  * **Additive Drift Theorem:** If the drift is bounded below by a constant $\delta > 0$, then the expected time is at most $X_0 / \delta$.[8];[9]
   * **Variable Drift:** If drift depends on the distance, more complex bounds are derived.
 
-Recent work has established tight bounds for the (1+1)-EA on linear functions and investigated the impact of noise on these bounds, showing that even slight noise can degrade performance from polynomial to exponential time if not handled correctly [10].
+Recent work has established tight bounds for the (1+1)-EA on linear functions and investigated the impact of noise on these bounds, showing that even slight noise can degrade performance from polynomial to exponential time if not handled correctly.[10]
 
 -----
 
@@ -302,7 +302,7 @@ The performance of ES is entirely dependent on $\sigma$:
 
 ## 6.2 - Rechenberg's 1/5th Success Rule
 
-Ingo Rechenberg derived the optimal adaptation of $\sigma$ by analysing two model functions: the Sphere model ($f(\mathbf{x}) = \|\mathbf{x}\|^2$) and the Corridor model. He found that the optimal rate of convergence occurs when the ratio of successful mutations (mutations that improve fitness) to total mutations is approximately 0.2 (or 1/5) [14].
+Ingo Rechenberg derived the optimal adaptation of $\sigma$ by analysing two model functions: the Sphere model ($f(\mathbf{x}) = \|\mathbf{x}\|^2$) and the Corridor model. He found that the optimal rate of convergence occurs when the ratio of successful mutations (mutations that improve fitness) to total mutations is approximately 0.2 (or 1/5).[13];[14]
 
 **The Adaptive Heuristic:**
 Let $p_s$ be the measured success rate over the last $k$ generations.
@@ -317,7 +317,7 @@ where $c$ is a constant (e.g., $0.817$). This rudimentary self-adaptation allows
 
 The 1/5th rule works well for isotropic (spherical) landscapes. However, real-world continuous problems are often ill-conditioned: the function curves steeply in some directions and is flat in others (valley-like structures). An isotropic mutation distribution ($\sigma \mathbf{I}$) is inefficient here, as it must be very small to avoid jumping out of the narrow valley, halting progress along the long axis.
 
-CMA-ES solves this by learning the full covariance matrix $\mathbf{C}$ of the mutation distribution, effectively learning the "shape" of the search landscape. It is widely considered the state-of-the-art for continuous black-box optimisation [12].
+CMA-ES solves this by learning the full covariance matrix $\mathbf{C}$ of the mutation distribution, effectively learning the "shape" of the search landscape. It is widely considered the state-of-the-art for continuous black-box optimisation.[12]
 
 ## 7.1 - Mathematical Geometry of CMA-ES
 
@@ -360,13 +360,13 @@ The length of this path $\|\mathbf{p}_\sigma\|$ is compared to the expected leng
   * If $\|\mathbf{p}_\sigma\| > \text{Expected}$: The steps are correlated (moving straight). Increase $\sigma$.
   * If $\|\mathbf{p}_\sigma\| < \text{Expected}$: The steps are anti-correlated (cancelling out/zig-zagging). Decrease $\sigma$.
 
-This rigorous mathematical structure allows CMA-ES to act as a second-order optimiser without ever explicitly computing gradients or Hessians [12].
+This rigorous mathematical structure allows CMA-ES to act as a second-order optimiser without ever explicitly computing gradients or Hessians.[12]
 
 -----
 
 # 8 - Differential Evolution (DE)
 
-While CMA-ES explicitly models the search distribution, Differential Evolution (DE) implicitly adapts the search topology using vector arithmetic on the population itself. It is celebrated for its simplicity and efficacy in global optimisation [15].
+While CMA-ES explicitly models the search distribution, Differential Evolution (DE) implicitly adapts the search topology using vector arithmetic on the population itself. It is celebrated for its simplicity and efficacy in global optimisation.[15]
 
 ## 8.1 - Vector Difference Mutation
 
@@ -381,7 +381,7 @@ The difference vector $(\mathbf{x}_{r2} - \mathbf{x}_{r3})$ automatically scales
 
   * **Early search:** Population is spread out (Differences are large; Large global exploration).
   * **Late search:** Population converges (Differences are small; Fine-grained local exploitation).
-    This property allows DE to self-adapt its step size naturally without complex update rules [15].
+    This property allows DE to self-adapt its step size naturally without complex update rules.[15]
 
 ## 8.2 - Variants and Crossover
 
@@ -391,7 +391,7 @@ $$ u_{j,i} = \begin{cases} v_{j,i} & \text{if } rand_j < CR \text{ or } j = j_{r
 
 **DE/best/1/bin Variant:**
 $$ \mathbf{v}_i = \mathbf{x}_{best} + F \cdot (\mathbf{x}_{r1} - \mathbf{x}_{r2}) $$
-This strategy centres the search around the best-so-far solution. It converges faster than DE/rand/1 but has a higher risk of stagnation in local optima due to loss of diversity [15].
+This strategy centres the search around the best-so-far solution. It converges faster than DE/rand/1 but has a higher risk of stagnation in local optima due to loss of diversity.[15]
 
 -----
 
@@ -410,7 +410,7 @@ Consider two networks that compute the same function but have their hidden nodes
 
 ## 9.2 - NEAT (NeuroEvolution of Augmenting Topologies)
 
-Kenneth Stanley's NEAT algorithm solves this using Historical Markings (Innovation Numbers) [16].
+Kenneth Stanley's NEAT algorithm solves this using Historical Markings (Innovation Numbers).[16]
 
   * **Innovation Numbers:** Every time a structural mutation adds a new connection gene, it is assigned a global innovation number.
   * **Gene Alignment:** During crossover, genes from two parents are aligned by their innovation numbers.
@@ -429,7 +429,7 @@ $$ \delta = \frac{c_1 E}{N} + \frac{c_2 D}{N} + c_3 \bar{W} $$
   * $\bar{W}$: Average weight difference of matching genes.
   * $N$: Number of genes in the larger genome (normaliser).
 
-If $\delta$ is below a threshold $\delta_t$, the networks belong to the same species [16].
+If $\delta$ is below a threshold $\delta_t$, the networks belong to the same species.[16]
 
 -----
 
@@ -439,7 +439,7 @@ Traditional optimisation seeks a single global optimum $\mathbf{x}^*$. However, 
 
 ## 10.1 - The MAP-Elites Algorithm
 
-MAP-Elites (Multi-dimensional Archive of Phenotypic Elites) produces a map of solutions [17].
+MAP-Elites (Multi-dimensional Archive of Phenotypic Elites) produces a map of solutions.[17]
 
   * **Behaviour Space:** Define $k$ dimensions of phenotypic interest (e.g., for a hexapod robot: Height $\times$ Speed).
   * **Discretisation:** The space is tessellated into a grid of cells.
@@ -454,7 +454,7 @@ MAP-Elites (Multi-dimensional Archive of Phenotypic Elites) produces a map of so
 5.  **Update Rule:** If cell $C$ is empty, or if $f(\mathbf{x}') > f(\text{current occupant of } C)$:
     $$ \text{Archive}[C] \leftarrow \mathbf{x}' $$
 
-This simple mechanism illuminates the search space, revealing the performance limits across the entire spectrum of behaviours. It has been successfully used for damage recovery in robots, where the agent can switch to a different "walking gait" from the map if a leg is broken [17].
+This simple mechanism illuminates the search space, revealing the performance limits across the entire spectrum of behaviours. It has been successfully used for damage recovery in robots, where the agent can switch to a different "walking gait" from the map if a leg is broken.[17]
 
 ```mermaid
 flowchart TD
@@ -495,7 +495,7 @@ It is vital to understand when to use EAs versus classical counterparts.
 **Comparison:**
 
   * SA is generally faster than EAs for simpler combinatorial problems due to lower overhead (evaluating 1 solution vs. $N$).
-  * EAs (specifically GAs) excel when the problem has "building block" structure. The crossover operator in EAs provides a mixing capability that SA lacks. Theoretical studies suggest EAs can solve certain classes of problems (like "Royal Road" functions) in polynomial time where SA takes exponential time [3].
+  * EAs (specifically GAs) excel when the problem has "building block" structure. The crossover operator in EAs provides a mixing capability that SA lacks. Theoretical studies suggest EAs can solve certain classes of problems (like "Royal Road" functions) in polynomial time where SA takes exponential time.[3]
 
 -----
 
@@ -525,57 +525,57 @@ Understanding the mathematical update rules (like the Rank-1 update in CMA-ES or
 
 # References
 
-1. Holland, J. H. (1973). *Genetic Algorithms and the Optimal Allocation of Trials*. **SIAM Journal on Computing, 2**(2), 88–105. [https://doi.org/10.1137/0202009](https://doi.org/10.1137/0202009) ([epubs.siam.org][1])
+1. Holland, J. H. (1973). [Genetic Algorithms and the Optimal Allocation of Trials](https://doi.org/10.1137/0202009). ([SIAM][1])
 
-2. Bridges, C. L., & Goldberg, D. E. (1987). *An Analysis of Reproduction and Crossover in a Binary-Coded Genetic Algorithm*. In **Proceedings of the Second International Conference on Genetic Algorithms and Their Applications (ICGA’87)**, pp. 9–13. [https://dl.acm.org/doi/10.5555/42512.42514](https://dl.acm.org/doi/10.5555/42512.42514) ([ACM Digital Library][2])
+2. Bridges, C. L., & Goldberg, D. E. (1987). [An Analysis of Reproduction and Crossover in a Binary-Coded Genetic Algorithm](https://dl.acm.org/doi/10.5555/42512.42514). ([ACM Digital Library][2])
 
-3. Mitchell, M., Forrest, S., & Holland, J. H. (1992). *The Royal Road for Genetic Algorithms: Fitness Landscapes and GA Performance*. In **Proceedings of the First European Conference on Artificial Life (ECAL’92)**, pp. 245–254. [http://melaniemitchell.me/Papers/ecal92.pdf](http://melaniemitchell.me/Papers/ecal92.pdf) ([melaniemitchell.me][3])
+3. Mitchell, M., Forrest, S., & Holland, J. H. (1992). [The Royal Road for Genetic Algorithms: Fitness Landscapes and GA Performance](http://melaniemitchell.me/Papers/ecal92.pdf). ([ECAL][3])
 
-4. Rudolph, G. (1994). *Convergence Analysis of Canonical Genetic Algorithms*. **IEEE Transactions on Neural Networks, 5**(1), 96–101. [https://ls11-www.cs.tu-dortmund.de/people/rudolph/publications/papers/TNN5.1.pdf](https://ls11-www.cs.tu-dortmund.de/people/rudolph/publications/papers/TNN5.1.pdf) ([ls11-www.cs.tu-dortmund.de][4])
+4. Rudolph, G. (1994). [Convergence Analysis of Canonical Genetic Algorithms](https://ls11-www.cs.tu-dortmund.de/people/rudolph/publications/papers/TNN5.1.pdf). ([IEEE Transactions on Neural Networks][4])
 
-5. Rudolph, G. (1996). *Convergence of Evolutionary Algorithms in General Search Spaces*. In **Proceedings of the IEEE International Conference on Evolutionary Computation (ICEC’96)**, pp. 50–54. [https://www.semanticscholar.org/paper/Convergence-of-evolutionary-algorithms-in-general-Rudolph/cd51b0ce9571cddbb23f09c630ea008a6f5fc09b](https://www.semanticscholar.org/paper/Convergence-of-evolutionary-algorithms-in-general-Rudolph/cd51b0ce9571cddbb23f09c630ea008a6f5fc09b) ([Semantic Scholar][5])
+5. Rudolph, G. (1996). [Convergence of Evolutionary Algorithms in General Search Spaces](https://www.semanticscholar.org/paper/Convergence-of-evolutionary-algorithms-in-general-Rudolph/cd51b0ce9571cddbb23f09c630ea008a6f5fc09b). ([Semantic Scholar][5])
 
-6. Rudolph, G. (1998). *Finite Markov Chain Results in Evolutionary Computation: A Tour d’Horizon*. **Fundamenta Informaticae, 35**(1–4), 67–89. [https://doi.org/10.3233/FI-1998-35123406](https://doi.org/10.3233/FI-1998-35123406) ([SpringerLink][6])
+6. Rudolph, G. (1998). [Finite Markov Chain Results in Evolutionary Computation: A Tour d'Horizon](https://doi.org/10.3233/FI-1998-35123406). ([IOS Press][6])
 
-7. Droste, S., Jansen, T., & Wegener, I. (2002). *On the Analysis of the (1+1) Evolutionary Algorithm*. **Theoretical Computer Science, 276**(1–2), 51–81. [https://doi.org/10.1016/S0304-3975(01)00182-7](https://doi.org/10.1016/S0304-3975%2801%2900182-7) ([ScienceDirect][7])
+7. Droste, S., Jansen, T., & Wegener, I. (2002). [On the Analysis of the (1+1) Evolutionary Algorithm](https://doi.org/10.1016/S0304-3975(01)00182-7). ([ScienceDirect][7])
 
-8. He, J., & Yao, X. (2001). *Drift Analysis and Average Time Complexity of Evolutionary Algorithms*. **Artificial Intelligence, 127**(1), 57–85. [https://doi.org/10.1016/S0004-3702(01)00058-3](https://doi.org/10.1016/S0004-3702%2801%2900058-3) ([ScienceDirect][8])
+8. He, J., & Yao, X. (2001). [Drift Analysis and Average Time Complexity of Evolutionary Algorithms](https://doi.org/10.1016/S0004-3702(01)00058-3). ([ScienceDirect][8])
 
-9. He, J., & Yao, X. (2002). *From an Individual to a Population: An Analysis of the First Hitting Time of Population-Based Evolutionary Algorithms*. **IEEE Transactions on Evolutionary Computation, 6**(5), 495–511. [https://doi.org/10.1109/TEVC.2002.804323](https://doi.org/10.1109/TEVC.2002.804323) ([ResearchGate][9])
+9. He, J., & Yao, X. (2002). [From an Individual to a Population: An Analysis of the First Hitting Time of Population-Based Evolutionary Algorithms](https://doi.org/10.1109/TEVC.2002.804323). ([IEEE][9])
 
-10. Lengler, J. (2018). *Drift Analysis and Evolutionary Algorithms Revisited*. **Combinatorics, Probability and Computing, 27**(4), 643–666. [https://doi.org/10.1017/S0963548318000118](https://doi.org/10.1017/S0963548318000118) ([Cambridge University Press & Assessment][10])
+10. Lengler, J. (2018). [Drift Analysis and Evolutionary Algorithms Revisited](https://doi.org/10.1017/S0963548318000118). ([Cambridge University Press][10])
 
-11. Rudolph, G., & Agapie, A. (2000). *Convergence Properties of Some Multi-Objective Evolutionary Algorithms*. In **Proceedings of the 2000 Congress on Evolutionary Computation (CEC 2000)**, Vol. 2, pp. 1010–1016. [https://doi.org/10.1109/CEC.2000.870756](https://doi.org/10.1109/CEC.2000.870756) ([ResearchGate][11])
+11. Rudolph, G., & Agapie, A. (2000). [Convergence Properties of Some Multi-Objective Evolutionary Algorithms](https://doi.org/10.1109/CEC.2000.870756). ([IEEE][11])
 
-12. Hansen, N., & Ostermeier, A. (2001). *Completely Derandomized Self-Adaptation in Evolution Strategies*. **Evolutionary Computation, 9**(2), 159–195. [https://doi.org/10.1162/106365601750190398](https://doi.org/10.1162/106365601750190398) ([Cmap Tools][12])
+12. Hansen, N., & Ostermeier, A. (2001). [Completely Derandomized Self-Adaptation in Evolution Strategies](https://doi.org/10.1162/106365601750190398). ([MIT Press][12])
 
-13. Glasmachers, T. (2020). *Global Convergence of the (1+1) Evolution Strategy*. **Evolutionary Computation, 28**(1), 27–52. Preprint: [https://arxiv.org/abs/1706.02887](https://arxiv.org/abs/1706.02887) ([arXiv][13])
+13. Glasmachers, T. (2020). [Global Convergence of the (1+1) Evolution Strategy](https://arxiv.org/abs/1706.02887). ([arXiv][13])
 
-14. Agapie, A. (2023). *Evolution Strategies under the 1/5 Success Rule*. **Mathematics, 11**(1), 201. [https://doi.org/10.3390/math11010201](https://doi.org/10.3390/math11010201) ([MDPI][14])
+14. Agapie, A. (2023). [Evolution Strategies under the 1/5 Success Rule](https://doi.org/10.3390/math11010201). ([MDPI][14])
 
-15. Storn, R., & Price, K. (1997). *Differential Evolution – A Simple and Efficient Heuristic for Global Optimization over Continuous Spaces*. **Journal of Global Optimization, 11**, 341–359. [https://doi.org/10.1023/A:1008202821328](https://doi.org/10.1023/A:1008202821328) ([SpringerLink][15])
+15. Storn, R., & Price, K. (1997). [Differential Evolution – A Simple and Efficient Heuristic for Global Optimization over Continuous Spaces](https://doi.org/10.1023/A:1008202821328). ([SpringerLink][15])
 
-16. Stanley, K. O., & Miikkulainen, R. (2002). *Evolving Neural Networks through Augmenting Topologies*. **Evolutionary Computation, 10**(2), 99–127. [https://doi.org/10.1162/106365602320169811](https://doi.org/10.1162/106365602320169811) ([nn.cs.utexas.edu][16])
+16. Stanley, K. O., & Miikkulainen, R. (2002). [Evolving Neural Networks through Augmenting Topologies](https://doi.org/10.1162/106365602320169811). ([MIT Press][16])
 
-17. Mouret, J.-B., & Clune, J. (2015). *Illuminating Search Spaces by Mapping Elites*. **CoRR**, arXiv:1504.04909. [https://arxiv.org/abs/1504.04909](https://arxiv.org/abs/1504.04909) ([arXiv][17])
+17. Mouret, J.-B., & Clune, J. (2015). [Illuminating Search Spaces by Mapping Elites](https://arxiv.org/abs/1504.04909). ([arXiv][17])
 
-18. Goldberg, D. E., & Richardson, J. (1987). *Genetic Algorithms with Sharing for Multimodal Function Optimization*. In **Proceedings of the Second International Conference on Genetic Algorithms and Their Applications (ICGA’87)**, pp. 41–49. [https://dl.acm.org/doi/10.5555/42512.42519](https://dl.acm.org/doi/10.5555/42512.42519) ([ACM Digital Library][18])
+18. Goldberg, D. E., & Richardson, J. (1987). [Genetic Algorithms with Sharing for Multimodal Function Optimization](https://dl.acm.org/doi/10.5555/42512.42519). ([ACM Digital Library][18])
 
-[1]: https://epubs.siam.org/doi/10.1137/0202009?utm_source=chatgpt.com "Genetic Algorithms and the Optimal Allocation of Trials"
-[2]: https://dl.acm.org/doi/10.5555/42512.42514?utm_source=chatgpt.com "An analysis of reproduction and crossover in a binary- ..."
-[3]: https://melaniemitchell.me/PapersContent/ecal92.pdf?utm_source=chatgpt.com "The Royal Road for Genetic Algorithms: Fitness Landscapes ..."
-[4]: https://ls11-www.cs.tu-dortmund.de/people/rudolph/publications/papers/TNN5.1.pdf?utm_source=chatgpt.com "Convergence Analysis of Canonical Genetic Algorithms"
-[5]: https://www.semanticscholar.org/paper/Convergence-of-evolutionary-algorithms-in-general-Rudolph/cd51b0ce9571cddbb23f09c630ea008a6f5fc09b?utm_source=chatgpt.com "Convergence of evolutionary algorithms in general search ..."
-[6]: https://link.springer.com/chapter/10.1007/978-1-4615-1539-5_1?utm_source=chatgpt.com "An Introduction to Evolutionary Algorithms"
-[7]: https://www.sciencedirect.com/science/article/pii/S0304397501001827/pdf?md5=5fac4d22eb6bbf0e3e1f4a00434e670e&pid=1-s2.0-S0304397501001827-main.pdf&utm_source=chatgpt.com "On the analysis of the (1 + 1) evolutionary algorithm"
-[8]: https://www.sciencedirect.com/science/article/pii/S0004370201000583?utm_source=chatgpt.com "Drift analysis and average time complexity of evolutionary ..."
-[9]: https://www.researchgate.net/publication/220132997_A_study_of_drift_analysis_for_estimating_computation_time_of_evolutionary_algorithms?utm_source=chatgpt.com "A study of drift analysis for estimating computation time ..."
-[10]: https://www.cambridge.org/core/journals/combinatorics-probability-and-computing/article/drift-analysis-and-evolutionary-algorithms-revisited/264EEBAC1C92951B2E7B5BE1B4A1D6DE?utm_source=chatgpt.com "Drift Analysis and Evolutionary Algorithms Revisited"
-[11]: https://www.researchgate.net/publication/3865293_Convergence_Properties_of_Some_Multi-Objective_Evolutionary_Algorithms?utm_source=chatgpt.com "(PDF) Convergence Properties of Some Multi-Objective ..."
-[12]: https://www.cmap.polytechnique.fr/~nikolaus.hansen/cmaartic.pdf?utm_source=chatgpt.com "Completely Derandomized Self-Adaptation in Evolution ..."
-[13]: https://arxiv.org/pdf/1706.02887?utm_source=chatgpt.com "Global Convergence of the (1+1) Evolution Strategy"
-[14]: https://www.mdpi.com/2227-7390/11/1/201?utm_source=chatgpt.com "Evolution Strategies under the 1/5 Success Rule"
-[15]: https://link.springer.com/article/10.1023/A%3A1008202821328?utm_source=chatgpt.com "Differential Evolution - Journal of Global Optimization"
-[16]: https://nn.cs.utexas.edu/?stanley%3Aec02=&utm_source=chatgpt.com "Evolving Neural Networks Through Augmenting Topologies"
-[17]: https://arxiv.org/abs/1504.04909?utm_source=chatgpt.com "Illuminating search spaces by mapping elites"
-[18]: https://dl.acm.org/doi/10.5555/42512.42519?utm_source=chatgpt.com "Genetic algorithms with sharing for multimodal function ..."
+[1]: https://doi.org/10.1137/0202009 "Genetic Algorithms and the Optimal Allocation of Trials"
+[2]: https://dl.acm.org/doi/10.5555/42512.42514 "An Analysis of Reproduction and Crossover in a Binary-Coded Genetic Algorithm"
+[3]: http://melaniemitchell.me/Papers/ecal92.pdf "The Royal Road for Genetic Algorithms: Fitness Landscapes and GA Performance"
+[4]: https://ls11-www.cs.tu-dortmund.de/people/rudolph/publications/papers/TNN5.1.pdf "Convergence Analysis of Canonical Genetic Algorithms"
+[5]: https://www.semanticscholar.org/paper/Convergence-of-evolutionary-algorithms-in-general-Rudolph/cd51b0ce9571cddbb23f09c630ea008a6f5fc09b "Convergence of Evolutionary Algorithms in General Search Spaces"
+[6]: https://doi.org/10.3233/FI-1998-35123406 "Finite Markov Chain Results in Evolutionary Computation"
+[7]: https://doi.org/10.1016/S0304-3975(01)00182-7 "On the Analysis of the (1+1) Evolutionary Algorithm"
+[8]: https://doi.org/10.1016/S0004-3702(01)00058-3 "Drift Analysis and Average Time Complexity of Evolutionary Algorithms"
+[9]: https://doi.org/10.1109/TEVC.2002.804323 "From an Individual to a Population: An Analysis of the First Hitting Time"
+[10]: https://doi.org/10.1017/S0963548318000118 "Drift Analysis and Evolutionary Algorithms Revisited"
+[11]: https://doi.org/10.1109/CEC.2000.870756 "Convergence Properties of Some Multi-Objective Evolutionary Algorithms"
+[12]: https://doi.org/10.1162/106365601750190398 "Completely Derandomized Self-Adaptation in Evolution Strategies"
+[13]: https://arxiv.org/abs/1706.02887 "Global Convergence of the (1+1) Evolution Strategy"
+[14]: https://doi.org/10.3390/math11010201 "Evolution Strategies under the 1/5 Success Rule"
+[15]: https://doi.org/10.1023/A:1008202821328 "Differential Evolution – A Simple and Efficient Heuristic for Global Optimization"
+[16]: https://doi.org/10.1162/106365602320169811 "Evolving Neural Networks through Augmenting Topologies"
+[17]: https://arxiv.org/abs/1504.04909 "Illuminating Search Spaces by Mapping Elites"
+[18]: https://dl.acm.org/doi/10.5555/42512.42519 "Genetic Algorithms with Sharing for Multimodal Function Optimization"

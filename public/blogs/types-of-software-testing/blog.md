@@ -481,48 +481,66 @@ Ultimately, the goal of testing is confidence. Confidence to refactor, confidenc
 
 # References
 
-> Only peer-reviewed research papers are listed. Each title links to the publisher or DOI page.
+1. Wallace, D. R., & Fujii, R. U. (1989). [Software Verification and Validation: An Overview](https://doi.org/10.1109/52.28119). *IEEE Software*, 6(3), 10–17. ([IEEE][1])
 
-1. Wallace, D. R., & Fujii, R. U. (1989). *Software Verification and Validation: An Overview*. IEEE Software, 6(3), 10–17. [https://doi.org/10.1109/52.28119](https://doi.org/10.1109/52.28119)
+2. Andersson, C., & Runeson, P. (2002). [Verification and Validation in Industry – A Qualitative Survey on the State of Practice](https://lup.lub.lu.se/search/files/5236431/950402.pdf). *Proceedings of the 1st International Symposium on Empirical Software Engineering*, 37–47.
 
-2. Andersson, C., & Runeson, P. (2002). *Verification and Validation in Industry – A Qualitative Survey on the State of Practice*. Proceedings of the 1st International Symposium on Empirical Software Engineering, 37–47. (Open PDF via thesis collection) [https://lup.lub.lu.se/search/files/5236431/950402.pdf](https://lup.lub.lu.se/search/files/5236431/950402.pdf)
+3. Andersson, C., Thelin, T., Runeson, P., & Dzamashvili, N. (2003). [An Experimental Evaluation of Inspection and Testing for Detection of Design Faults](https://lup.lub.lu.se/search/files/5236431/950402.pdf). *Proceedings of the 2nd International Symposium on Empirical Software Engineering*, 174–184.
 
-3. Andersson, C., Thelin, T., Runeson, P., & Dzamashvili, N. (2003). *An Experimental Evaluation of Inspection and Testing for Detection of Design Faults*. Proceedings of the 2nd International Symposium on Empirical Software Engineering, 174–184. (Open PDF via thesis collection) [https://lup.lub.lu.se/search/files/5236431/950402.pdf](https://lup.lub.lu.se/search/files/5236431/950402.pdf)
+4. Kaur, M., & Singh, R. (2014). [A Review of Software Testing Techniques](https://doi.org/10.12720/ijeee.2.3.207-212). *International Journal of Electronics and Electrical Engineering*, 2(3), 207–212. ([IJEEE][4])
 
-4. Kaur, M., & Singh, R. (2014). *A Review of Software Testing Techniques*. International Journal of Electronics and Electrical Engineering, 2(3), 207–212. [https://doi.org/10.12720/ijeee.2.3.207-212](https://doi.org/10.12720/ijeee.2.3.207-212)
+5. Andersson, C. (2003). [Exploring the Software Verification and Validation Process with Focus on Efficient Fault Detection](https://lup.lub.lu.se/search/files/5236431/950402.pdf). PhD thesis, Lund University.
 
-5. Andersson, C. (2003). *Exploring the Software Verification and Validation Process with Focus on Efficient Fault Detection* (PhD thesis, includes several peer-reviewed papers on static vs dynamic techniques and V&V practice). Lund University. [https://lup.lub.lu.se/search/files/5236431/950402.pdf](https://lup.lub.lu.se/search/files/5236431/950402.pdf)
+6. Qu, X., Cohen, M. B., & Woolf, K. M. (2007). [Combinatorial Interaction Regression Testing: A Study of Test Case Generation and Prioritization](https://doi.org/10.1109/ICSM.2007.4362638). *Proceedings of the IEEE International Conference on Software Maintenance (ICSM)*, 255–264. ([IEEE][6])
 
-6. Qu, X., Cohen, M. B., & Woolf, K. M. (2007). *Combinatorial Interaction Regression Testing: A Study of Test Case Generation and Prioritization*. Proceedings of the IEEE International Conference on Software Maintenance (ICSM), 255–264. [https://doi.org/10.1109/ICSM.2007.4362638](https://doi.org/10.1109/ICSM.2007.4362638)
+7. Nie, C., & Leung, H. (2011). [A Survey of Combinatorial Testing](https://doi.org/10.1145/1883612.1883618). *ACM Computing Surveys*, 43(2), 11:1–11:29. ([ACM Digital Library][7])
 
-7. Nie, C., & Leung, H. (2011). *A Survey of Combinatorial Testing*. ACM Computing Surveys, 43(2), 11:1–11:29. [https://doi.org/10.1145/1883612.1883618](https://doi.org/10.1145/1883612.1883618)
+8. Henard, C., Papadakis, M., Harman, M., Jia, Y., & Le Traon, Y. (2016). [Comparing White-Box and Black-Box Test Prioritization](https://doi.org/10.1145/2884781.2884791). *Proceedings of the 38th International Conference on Software Engineering (ICSE)*, 523–534. ([ACM Digital Library][8])
 
-8. Henard, C., Papadakis, M., Harman, M., Jia, Y., & Le Traon, Y. (2016). *Comparing White-Box and Black-Box Test Prioritization*. Proceedings of the 38th International Conference on Software Engineering (ICSE), 523–534. [https://doi.org/10.1145/2884781.2884791](https://doi.org/10.1145/2884781.2884791)
+9. Lou, Y., Hao, D., & Zhang, L. (2019). [A Survey on Regression Test-Case Prioritization](https://doi.org/10.1016/bs.adcom.2018.03.004). *Advances in Computers*, 113, 1–46. ([ScienceDirect][9])
 
-9. Lou, Y., Hao, D., & Zhang, L. (2019). *A Survey on Regression Test-Case Prioritization*. Advances in Computers, 113, 1–46. [https://doi.org/10.1016/bs.adcom.2018.03.004](https://doi.org/10.1016/bs.adcom.2018.03.004)
+10. Kasurinen, J., Taipale, O., & Smolander, K. (2010). [Software Test Automation in Practice: Empirical Observations](https://doi.org/10.1155/2010/620836). *International Journal of Software Engineering and Its Applications*, 4(4), 35–44. ([Hindawi][10])
 
-10. Kasurinen, J., Taipale, O., & Smolander, K. (2010). *Software Test Automation in Practice: Empirical Observations*. International Journal of Software Engineering and Its Applications, 4(4), 35–44. [https://doi.org/10.1155/2010/620836](https://doi.org/10.1155/2010/620836)
+11. Kasurinen, J., Taipale, O., & Smolander, K. (2011). [How Test Organizations Adopt New Testing Practices and Methods?](https://doi.org/10.1109/ICSTW.2011.63) *2011 IEEE Fourth International Conference on Software Testing, Verification and Validation Workshops (ICSTW)*, 426–433. ([IEEE][11])
 
-11. Kasurinen, J., Taipale, O., & Smolander, K. (2011). *How Test Organizations Adopt New Testing Practices and Methods?* 2011 IEEE Fourth International Conference on Software Testing, Verification and Validation Workshops (ICSTW), 426–433. [https://doi.org/10.1109/ICSTW.2011.63](https://doi.org/10.1109/ICSTW.2011.63)
+12. Zarour, M., Desharnais, J.-M., & Abran, A. (2017). [The Software Engineering Body of Knowledge: A Benchmarking Tool for Organizational Process Assessment and Improvement](https://doi.org/10.17485/ijst/2017/v10i43/120417). *Indian Journal of Science and Technology*, 10(43), 1–19. ([IJST][12])
 
-12. Zarour, M., Desharnais, J.-M., & Abran, A. (2017). *The Software Engineering Body of Knowledge: A Benchmarking Tool for Organizational Process Assessment and Improvement – Case Study*. Indian Journal of Science and Technology, 10(43), 1–19. [https://doi.org/10.17485/ijst/2017/v10i43/120417](https://doi.org/10.17485/ijst/2017/v10i43/120417)
+13. Faria, P. M., Dantas, V. L., Marinho, M., & de Almeida, E. S. (2021). [A Study on Software Testing Standard Using ISO/IEC/IEEE 29119-2:2013](https://doi.org/10.1007/978-981-33-4850-1_8). In *Trends and Innovations in Information Systems and Technologies*, Lecture Notes in Networks and Systems, 206, 77–87. ([SpringerLink][13])
 
-13. Faria, P. M., Dantas, V. L., Marinho, M., & de Almeida, E. S. (2021). *A Study on Software Testing Standard Using ISO/IEC/IEEE 29119-2:2013*. In A. Rocha et al. (Eds.), Trends and Innovations in Information Systems and Technologies (pp. 77–87). Lecture Notes in Networks and Systems, 206. [https://doi.org/10.1007/978-981-33-4850-1_8](https://doi.org/10.1007/978-981-33-4850-1_8)
+14. Rafique, Y., & Misic, V. B. (2013). [The Effects of Test-Driven Development on External Quality and Productivity: A Meta-Analysis](https://doi.org/10.1109/TSE.2012.28). *IEEE Transactions on Software Engineering*, 39(6), 835–856. ([IEEE][14])
 
-14. Rafique, Y., & Misic, V. B. (2013). *The Effects of Test-Driven Development on External Quality and Productivity: A Meta-Analysis*. IEEE Transactions on Software Engineering, 39(6), 835–856. [https://doi.org/10.1109/TSE.2012.28](https://doi.org/10.1109/TSE.2012.28)
+15. Fucci, D., Turhan, B., Juristo, N., Dieste, O., Tosun-Misirli, A., & Oivo, M. (2015). [Towards an Operationalization of Test-Driven Development Skills: An Industrial Empirical Study](https://doi.org/10.1016/j.infsof.2015.08.004). *Information and Software Technology*, 68, 82–97. ([ScienceDirect][15])
 
-15. Fucci, D., Turhan, B., Juristo, N., Dieste, O., Tosun-Misirli, A., & Oivo, M. (2015). *Towards an Operationalization of Test-Driven Development Skills: An Industrial Empirical Study*. Information and Software Technology, 68, 82–97. [https://doi.org/10.1016/j.infsof.2015.08.004](https://doi.org/10.1016/j.infsof.2015.08.004)
+16. Tosun, A., Dieste, O., Fucci, D., Vegas, S., Turhan, B., Erdogmus, H., & Juristo, N. (2018). [On the Effectiveness of Unit Tests in Test-Driven Development](https://doi.org/10.1145/3202710.3203153). *Proceedings of the International Conference on Software and System Processes (ICSSP)*, 113–122. ([ACM Digital Library][16])
 
-16. Tosun, A., Dieste, O., Fucci, D., Vegas, S., Turhan, B., Erdogmus, H., … Juristo, N. (2018). *On the Effectiveness of Unit Tests in Test-Driven Development*. Proceedings of the International Conference on Software and System Processes (ICSSP), 113–122. [https://doi.org/10.1145/3202710.3203153](https://doi.org/10.1145/3202710.3203153)
+17. Binamungu, L. P., & Maro, S. (2023). [Behaviour Driven Development: A Systematic Mapping Study](https://doi.org/10.1016/j.jss.2023.111749). *Journal of Systems and Software*, 203, 111749. ([ScienceDirect][17])
 
-17. Binamungu, L. P., & Maro, S. (2023). *Behaviour Driven Development: A Systematic Mapping Study*. Journal of Systems and Software, 203, 111749. [https://doi.org/10.1016/j.jss.2023.111749](https://doi.org/10.1016/j.jss.2023.111749)
+18. Solis, C., & Wang, X. (2011). [A Study of the Characteristics of Behaviour Driven Development](https://doi.org/10.1109/SEAA.2011.76). *2011 37th EUROMICRO Conference on Software Engineering and Advanced Applications (SEAA)*, 383–387. ([IEEE][18])
 
-18. Solis, C., & Wang, X. (2011). *A Study of the Characteristics of Behaviour Driven Development*. 2011 37th EUROMICRO Conference on Software Engineering and Advanced Applications (SEAA), 383–387. [https://doi.org/10.1109/SEAA.2011.76](https://doi.org/10.1109/SEAA.2011.76)
+19. Minani, J. B., Insfran, E., & Monperrus, M. (2025). [IoT Systems Testing: Taxonomy, Empirical Findings, and Future Directions](https://www.sciencedirect.com/science/article/pii/S0164121225000767). *Journal of Systems and Software*. ([ScienceDirect][19])
 
-19. Minani, J. B., Insfran, E., & Monperrus, M. (2025). *IoT Systems Testing: Taxonomy, Empirical Findings, and Future Directions*. Journal of Systems and Software. (In press; includes taxonomy of test levels and techniques). [https://www.sciencedirect.com/science/article/pii/S0164121225000767](https://www.sciencedirect.com/science/article/pii/S0164121225000767)
+20. Ma, S.-P., Tsai, W.-T., Li, X., & Wu, J. (2019). [Graph-Based and Scenario-Driven Microservice Analysis, Retrieval, and Testing](https://doi.org/10.1016/j.future.2018.07.053). *Future Generation Computer Systems*, 90, 335–348. ([ScienceDirect][20])
 
-20. Ma, S.-P., Tsai, W.-T., Li, X., & Wu, J. (2019). *Graph-Based and Scenario-Driven Microservice Analysis, Retrieval, and Testing*. Future Generation Computer Systems, 90, 335–348. [https://doi.org/10.1016/j.future.2018.07.053](https://doi.org/10.1016/j.future.2018.07.053)
+21. Ali, S., Briand, L. C., Hemmati, H., & Panesar-Walawege, R. K. (2010). [A Systematic Review of the Application and Empirical Investigation of Search-Based Test Case Generation](https://doi.org/10.1109/TSE.2009.52). *IEEE Transactions on Software Engineering*, 36(6), 742–762. ([IEEE][21])
 
-21. Ali, S., Briand, L. C., Hemmati, H., & Panesar-Walawege, R. K. (2010). *A Systematic Review of the Application and Empirical Investigation of Search-Based Test Case Generation*. IEEE Transactions on Software Engineering, 36(6), 742–762. (Summarises unit, integration, system, and acceptance test levels in empirical work.) [https://doi.org/10.1109/TSE.2009.52](https://doi.org/10.1109/TSE.2009.52)
+22. Fazzini, M., *et al.* (2022). [Use of Test Doubles in Android Testing: An In-Depth Investigation](https://doi.org/10.1007/s10664-021-10054-7). *Empirical Software Engineering*, 27, 1–35. ([SpringerLink][22])
 
-22. Fazzini, M., et al. (2022). *Use of Test Doubles in Android Testing: An In-Depth Investigation*. Empirical Software Engineering, 27, 1–35. (Empirical study of dummies, stubs, mocks and related doubles in practice). [https://doi.org/10.1007/s10664-021-10054-7](https://doi.org/10.1007/s10664-021-10054-7)
+[1]: https://doi.org/10.1109/52.28119 "Software Verification and Validation: An Overview"
+[4]: https://doi.org/10.12720/ijeee.2.3.207-212 "A Review of Software Testing Techniques"
+[6]: https://doi.org/10.1109/ICSM.2007.4362638 "Combinatorial Interaction Regression Testing"
+[7]: https://doi.org/10.1145/1883612.1883618 "A Survey of Combinatorial Testing"
+[8]: https://doi.org/10.1145/2884781.2884791 "Comparing White-Box and Black-Box Test Prioritization"
+[9]: https://doi.org/10.1016/bs.adcom.2018.03.004 "A Survey on Regression Test-Case Prioritization"
+[10]: https://doi.org/10.1155/2010/620836 "Software Test Automation in Practice: Empirical Observations"
+[11]: https://doi.org/10.1109/ICSTW.2011.63 "How Test Organizations Adopt New Testing Practices and Methods"
+[12]: https://doi.org/10.17485/ijst/2017/v10i43/120417 "The Software Engineering Body of Knowledge"
+[13]: https://doi.org/10.1007/978-981-33-4850-1_8 "A Study on Software Testing Standard Using ISO/IEC/IEEE 29119-2:2013"
+[14]: https://doi.org/10.1109/TSE.2012.28 "The Effects of Test-Driven Development on External Quality and Productivity"
+[15]: https://doi.org/10.1016/j.infsof.2015.08.004 "Towards an Operationalization of Test-Driven Development Skills"
+[16]: https://doi.org/10.1145/3202710.3203153 "On the Effectiveness of Unit Tests in Test-Driven Development"
+[17]: https://doi.org/10.1016/j.jss.2023.111749 "Behaviour Driven Development: A Systematic Mapping Study"
+[18]: https://doi.org/10.1109/SEAA.2011.76 "A Study of the Characteristics of Behaviour Driven Development"
+[19]: https://www.sciencedirect.com/science/article/pii/S0164121225000767 "IoT Systems Testing: Taxonomy, Empirical Findings, and Future Directions"
+[20]: https://doi.org/10.1016/j.future.2018.07.053 "Graph-Based and Scenario-Driven Microservice Analysis, Retrieval, and Testing"
+[21]: https://doi.org/10.1109/TSE.2009.52 "A Systematic Review of Search-Based Test Case Generation"
+[22]: https://doi.org/10.1007/s10664-021-10054-7 "Use of Test Doubles in Android Testing: An In-Depth Investigation"

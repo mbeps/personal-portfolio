@@ -30,9 +30,9 @@
 
 The management of data within large-scale computational systems stands as one of the foundational challenges of computer science. Before the advent of the relational model in 1970, data management was dominated by the hierarchical and network models. These early paradigms, while functional, suffered from severe rigidity; they required the physical structure of the data (how it was stored on disk) to be intimately known by the application programmer. This coupling meant that a minor change in the storage format necessitated a complete rewrite of the application software, a problem known as the lack of data independence.
 
-In his seminal 1970 paper, "A Relational Model of Data for Large Shared Data Banks," Edgar F. Codd proposed a radical shift. He argued that users should interact with data via a logical model based on mathematical relations, decoupling the user's view from the internal machine representation. This proposal was not merely an engineering improvement but a shift towards a rigorous mathematical foundation rooted in set theory and first-order predicate logic. [1]
+In his seminal 1970 paper, "A Relational Model of Data for Large Shared Data Banks," Edgar F. Codd proposed a radical shift. He argued that users should interact with data via a logical model based on mathematical relations, decoupling the user's view from the internal machine representation. This proposal was not merely an engineering improvement but a shift towards a rigorous mathematical foundation rooted in set theory and first-order predicate logic.[1]
 
-The process of normalisation emerged from this theoretical framework as a systematic method to evaluate and restructure logical schemas. Its primary objective is to minimise data redundancy (the unnecessary duplication of information) and to eliminate update anomalies, which threaten the integrity of the database during transactional operations. [2] While redundancy might appear benign, in a shared data bank it leads to inconsistency; if a fact is stored in two places, the system must ensure both are updated simultaneously, a complex task in concurrent environments.
+The process of normalisation emerged from this theoretical framework as a systematic method to evaluate and restructure logical schemas. Its primary objective is to minimise data redundancy (the unnecessary duplication of information) and to eliminate update anomalies, which threaten the integrity of the database during transactional operations.[2] While redundancy might appear benign, in a shared data bank it leads to inconsistency; if a fact is stored in two places, the system must ensure both are updated simultaneously, a complex task in concurrent environments.
 
 This report provides an exhaustive analysis of normalisation theory up to the Boyce-Codd Normal Form (BCNF). We will traverse the discrete mathematics of relations, the axiomatic systems of functional dependencies, and the algorithms used to decompose relations without information loss. Furthermore, we will critically assess these 1970s theories against the realities of 2024, including distributed NewSQL architectures and columnar storage engines, where the trade-offs of normalisation are re-evaluated.
 
@@ -104,7 +104,7 @@ Here, $t[\alpha]$ denotes the projection of tuple $t$ onto the attributes in $\a
 
 ## 3.3 - Armstrong's Axioms
 
-To reason about dependencies (to determine if a specific design is valid or if a set of attributes forms a key) we require a system of inference. In 1974, William W. Armstrong proved that a specific set of three axioms is both sound (generates only correct FDs) and complete (generates all correct FDs). [3]
+To reason about dependencies (to determine if a specific design is valid or if a set of attributes forms a key) we require a system of inference. In 1974, William W. Armstrong proved that a specific set of three axioms is both sound (generates only correct FDs) and complete (generates all correct FDs).[3]
 
 Let $X, Y, Z$ be sets of attributes within $R$.
 
@@ -333,7 +333,7 @@ Let $R = \{ \text{EmpID}, \text{Name}, \text{ZipCode}, \text{City} \}$.
 
 ## 5.4 - Boyce-Codd Normal Form (BCNF)
 
-BCNF was introduced by Codd and Raymond F. Boyce to address anomalies that 3NF allows. [5] 3NF is permissible if the dependent attribute is prime. BCNF removes this allowance.
+BCNF was introduced by Codd and Raymond F. Boyce to address anomalies that 3NF allows.[5] 3NF is permissible if the dependent attribute is prime. BCNF removes this allowance.
 
 **Definition:** A relation $R$ is in BCNF if for every non-trivial FD $\alpha \rightarrow \beta$ in $F^+$, $\alpha$ is a superkey.
 
@@ -404,7 +404,7 @@ Essentially, the intersection (common attributes) must be a superkey for at leas
 
 ## 6.2 - 3NF Synthesis (Bernstein's Algorithm)
 
-Rather than decomposing a large relation, we can synthesise a 3NF schema directly from the functional dependencies. This algorithm, proposed by Philip Bernstein (1976), guarantees a Lossless Join and Dependency Preservation. [4]
+Rather than decomposing a large relation, we can synthesise a 3NF schema directly from the functional dependencies. This algorithm, proposed by Philip Bernstein (1976), guarantees a Lossless Join and Dependency Preservation.[4]
 
 ```mermaid
 flowchart TD
@@ -489,10 +489,10 @@ The rise of "Big Data" in the 2000s challenged the supremacy of BCNF.
 
   * These systems physically store data by column rather than row.
   * **Impact on Normalisation:** In a row store, we normalise to avoid storing the string "London" 1,000,000 times (saving space). In a columnar store, "London" is stored once in a dictionary and referenced by integer tokens, or compressed via Run-Length Encoding (RLE).
-  * **Denormalisation:** Because compression is so efficient, the space penalty of redundancy is negligible. Consequently, designers often prefer denormalised wide tables (Star Schemas) to avoid the CPU cost of joining tables. Here, performance trumps the anomaly protection of BCNF. [6]
+  * **Denormalisation:** Because compression is so efficient, the space penalty of redundancy is negligible. Consequently, designers often prefer denormalised wide tables (Star Schemas) to avoid the CPU cost of joining tables. Here, performance trumps the anomaly protection of BCNF.[6]
 
 **NoSQL and CAP Theorem:**
-The CAP Theorem states a distributed system can only provide two of Consistency, Availability, and Partition Tolerance. [7];[8]
+The CAP Theorem states a distributed system can only provide two of Consistency, Availability, and Partition Tolerance.[7];[8]
 
 ```mermaid
 graph TD
@@ -535,27 +535,27 @@ While the modern landscape of distributed systems and columnar analytics often n
 
 # References
 
-* Codd, E. F. (1970). *A Relational Model of Data for Large Shared Data Banks*. Communications of the ACM, 13(6), 377–387. [https://doi.org/10.1145/362384.362685](https://doi.org/10.1145/362384.362685) ([SCIRP][1])
+1. Codd, E. F. (1970). [A Relational Model of Data for Large Shared Data Banks](https://doi.org/10.1145/362384.362685). ([ACM Digital Library][1])
 
-* Codd, E. F. (1971). *Further Normalization of the Data Base Relational Model*. IBM Research Report RJ909. Reprinted in R. Rustin (Ed.), *Data Base Systems* (Courant Computer Science Symposia Series, Vol. 6). [PDF](https://forum.thethirdmanifesto.com/wp-content/uploads/asgarosforum/987737/00-efc-further-normalization.pdf) ([TTM Forum][2])
+2. Codd, E. F. (1971). [Further Normalization of the Data Base Relational Model](https://forum.thethirdmanifesto.com/wp-content/uploads/asgarosforum/987737/00-efc-further-normalization.pdf). ([TTM Forum][2])
 
-* Armstrong, W. W. (1974). *Dependency Structures of Data Base Relationships*. In *Proceedings of IFIP Congress 1974* (pp. 580–583). North-Holland. [Link via Semantic Scholar](https://www.semanticscholar.org/paper/Dependency-Structures-of-Data-Base-Relationships-Armstrong/0d21a989f1ae615553fc79c4eea199852452b80f) ([Semantic Scholar][3])
+3. Armstrong, W. W. (1974). [Dependency Structures of Data Base Relationships](https://www.semanticscholar.org/paper/Dependency-Structures-of-Data-Base-Relationships-Armstrong/0d21a989f1ae615553fc79c4eea199852452b80f). ([Semantic Scholar][3])
 
-* Bernstein, P. A. (1976). *Synthesizing Third Normal Form Relations from Functional Dependencies*. ACM Transactions on Database Systems, 1(4), 277–298. [https://doi.org/10.1145/320493.320489](https://doi.org/10.1145/320493.320489) ([ACM Digital Library][4])
+4. Bernstein, P. A. (1976). [Synthesizing Third Normal Form Relations from Functional Dependencies](https://doi.org/10.1145/320493.320489). ([ACM Digital Library][4])
 
-* Helfgott LeDoux, C., & Parker, D. S., Jr. (1982). *Reflections on Boyce-Codd Normal Form*. In *Proceedings of the Eighth International Conference on Very Large Data Bases (VLDB)* (pp. 131–141). [PDF](https://www.vldb.org/conf/1982/P131.PDF) ([VLDB][5])
+5. Helfgott LeDoux, C., & Parker, D. S. (1982). [Reflections on Boyce-Codd Normal Form](https://www.vldb.org/conf/1982/P131.PDF). ([VLDB][5])
 
-* Abadi, D. J., Madden, S. R., & Hachem, N. (2008). *Column-Stores vs. Row-Stores: How Different Are They Really?* In *Proceedings of the ACM SIGMOD International Conference on Management of Data* (pp. 967–980). [https://doi.org/10.1145/1376616.1376712](https://doi.org/10.1145/1376616.1376712) ([ACM Digital Library][6])
+6. Abadi, D. J., Madden, S. R., *et al.* (2008). [Column-Stores vs. Row-Stores: How Different Are They Really?](https://doi.org/10.1145/1376616.1376712). ([ACM Digital Library][6])
 
-* Brewer, E. A. (2000). *Towards Robust Distributed Systems*. Keynote address, 19th Annual ACM Symposium on Principles of Distributed Computing (PODC). [https://doi.org/10.1145/343477.343502](https://doi.org/10.1145/343477.343502) ([ResearchGate][7])
+7. Brewer, E. A. (2000). [Towards Robust Distributed Systems](https://doi.org/10.1145/343477.343502). ([ACM Digital Library][7])
 
-* Gilbert, S., & Lynch, N. (2002). *Brewer’s Conjecture and the Feasibility of Consistent, Available, Partition-Tolerant Web Services*. ACM SIGACT News, 33(2), 51–59. [https://doi.org/10.1145/564585.564601](https://doi.org/10.1145/564585.564601) ([ACM Digital Library][8])
+8. Gilbert, S., & Lynch, N. (2002). [Brewer's Conjecture and the Feasibility of Consistent, Available, Partition-Tolerant Web Services](https://doi.org/10.1145/564585.564601). ([ACM Digital Library][8])
 
-[1]: https://www.scirp.org/reference/referencespapers?referenceid=1951876&utm_source=chatgpt.com "Codd, E.F. (1970) A Relational Model of Data for Large ..."
-[2]: https://forum.thethirdmanifesto.com/wp-content/uploads/asgarosforum/987737/00-efc-further-normalization.pdf?utm_source=chatgpt.com "Further Normalization of the Data Base Relational Model"
-[3]: https://www.semanticscholar.org/paper/Dependency-Structures-of-Data-Base-Relationships-Armstrong/0d21a989f1ae615553fc79c4eea199852452b80f?utm_source=chatgpt.com "Dependency Structures of Data Base Relationships"
-[4]: https://dl.acm.org/doi/10.1145/320493.320489?utm_source=chatgpt.com "Synthesizing third normal form relations from functional ..."
-[5]: https://www.vldb.org/conf/1982/P131.PDF?utm_source=chatgpt.com "Reflections on Boyce-Codd Normal Form"
-[6]: https://dl.acm.org/doi/10.1145/1376616.1376712?utm_source=chatgpt.com "Column-stores vs. row-stores: how different are they really?"
-[7]: https://www.researchgate.net/publication/221343719_Towards_robust_distributed_systems?utm_source=chatgpt.com "(PDF) Towards robust distributed systems"
-[8]: https://dl.acm.org/doi/10.1145/564585.564601?utm_source=chatgpt.com "Brewer's conjecture and the feasibility of consistent, ..."
+[1]: https://doi.org/10.1145/362384.362685 "A Relational Model of Data for Large Shared Data Banks"
+[2]: https://forum.thethirdmanifesto.com/wp-content/uploads/asgarosforum/987737/00-efc-further-normalization.pdf "Further Normalization of the Data Base Relational Model"
+[3]: https://www.semanticscholar.org/paper/Dependency-Structures-of-Data-Base-Relationships-Armstrong/0d21a989f1ae615553fc79c4eea199852452b80f "Dependency Structures of Data Base Relationships"
+[4]: https://doi.org/10.1145/320493.320489 "Synthesizing Third Normal Form Relations from Functional Dependencies"
+[5]: https://www.vldb.org/conf/1982/P131.PDF "Reflections on Boyce-Codd Normal Form"
+[6]: https://doi.org/10.1145/1376616.1376712 "Column-Stores vs. Row-Stores: How Different Are They Really?"
+[7]: https://doi.org/10.1145/343477.343502 "Towards Robust Distributed Systems"
+[8]: https://doi.org/10.1145/564585.564601 "Brewer's Conjecture and the Feasibility of Consistent, Available, Partition-Tolerant Web Services"
