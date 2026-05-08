@@ -447,44 +447,45 @@ For the technical researcher, the path forward lies in the design of better veri
 
 # References
 
-* DeepSeek-AI. (2025).
-  [**DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning**](https://arxiv.org/abs/2501.12948). arXiv:2501.12948.
+1. DeepSeek-AI. (2025). [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](https://arxiv.org/abs/2501.12948). ([arXiv][1])
 
-* Shao, Z., Zhang, Z., Liu, Y., *et al.* (2024).
-  [**DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models**](https://arxiv.org/abs/2402.03300). arXiv:2402.03300.
+2. Shao, Z., Zhang, Z., Liu, Y., *et al.* (2024). [DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models](https://arxiv.org/abs/2402.03300). ([arXiv][2])
 
-* Mroueh, Y. (2025).
-  [**Reinforcement Learning with Verifiable Rewards: GRPO’s Effective Loss, Dynamics, and Success Amplification**](https://arxiv.org/abs/2503.06639). arXiv:2503.06639.
+3. Mroueh, Y. (2025). [Reinforcement Learning with Verifiable Rewards: GRPO's Effective Loss, Dynamics, and Success Amplification](https://arxiv.org/abs/2503.06639). ([arXiv][3])
 
-* Lightman, H., Radhakrishnan, A., Christiano, P., *et al.* (2023).
-  [**Let’s Verify Step by Step**](https://arxiv.org/abs/2305.20050). arXiv:2305.20050.
+4. Lightman, H., Radhakrishnan, A., Christiano, P., *et al.* (2023). [Let's Verify Step by Step](https://arxiv.org/abs/2305.20050). ([arXiv][4])
 
-* AlphaCode Team, Google DeepMind. (2023).
-  [**AlphaCode 2 Technical Report**](https://storage.googleapis.com/deepmind-media/AlphaCode2/AlphaCode2_Tech_Report.pdf). Technical report.
+5. AlphaCode Team, Google DeepMind. (2023). [AlphaCode 2 Technical Report](https://storage.googleapis.com/deepmind-media/AlphaCode2/AlphaCode2_Tech_Report.pdf). ([Google DeepMind][5])
 
-* Gloeckle, F., Gu, A., Synnaeve, G., & Hayat, A. (2025).
-  [**Reinforcement Learning for Hierarchical Proof Generation in Lean 4**](https://openreview.net/pdf?id=XzH1yRfhVW). NeurIPS 2025 MATH-AI Workshop / ICLR 2026 submission.
+6. Gloeckle, F., Gu, A., *et al.* (2025). [Reinforcement Learning for Hierarchical Proof Generation in Lean 4](https://openreview.net/forum?id=XzH1yRfhVW). ([OpenReview][6])
 
-* Zhang, J., Wang, Q., Ji, X., *et al.* (2025).
-  [**Leanabell-Prover: Posttraining Scaling in Formal Reasoning**](https://arxiv.org/abs/2504.06122). arXiv:2504.06122.
+7. Zhang, J., Wang, Q., Ji, X., *et al.* (2025). [Leanabell-Prover: Posttraining Scaling in Formal Reasoning](https://arxiv.org/abs/2504.06122). ([arXiv][7])
 
-* Chen, L., Gu, J., Huang, L., *et al.* (2025).
-  [**Seed-Prover: Deep and Broad Reasoning for Automated Theorem Proving**](https://arxiv.org/abs/2507.23726). arXiv:2507.23726.
+8. Chen, L., Gu, J., Huang, L., *et al.* (2025). [Seed-Prover: Deep and Broad Reasoning for Automated Theorem Proving](https://arxiv.org/abs/2507.23726). ([arXiv][8])
 
-* Yue, Y., Li, X., Zhang, Y., *et al.* (2025).
-  [**Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?**](https://arxiv.org/abs/2504.13837). arXiv:2504.13837.
+9. Yue, Y., Li, X., Zhang, Y., *et al.* (2025). [Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?](https://arxiv.org/abs/2504.13837). ([arXiv][9])
 
-* Wen, X., Liu, Z., Zheng, S., *et al.* (2025).
-  [**Reinforcement Learning with Verifiable Rewards Implicitly Incentivizes Correct Reasoning in Base LLMs**](https://arxiv.org/abs/2506.14245). arXiv:2506.14245.
+10. Wen, X., Liu, Z., Zheng, S., *et al.* (2025). [Reinforcement Learning with Verifiable Rewards Implicitly Incentivizes Correct Reasoning in Base LLMs](https://arxiv.org/abs/2506.14245). ([arXiv][10])
 
-* Deng, W., Li, Y., Zhang, H., *et al.* (2025).
-  [**Token Hidden Reward: Steering Exploration–Exploitation in Group Relative Deep Reinforcement Learning**](https://arxiv.org/abs/2510.03669). arXiv:2510.03669.
+11. Deng, W., Li, Y., Zhang, H., *et al.* (2025). [Token Hidden Reward: Steering Exploration–Exploitation in Group Relative Deep Reinforcement Learning](https://arxiv.org/abs/2510.03669). ([arXiv][11])
 
-* Yang, F., Zhou, J., Liu, Q., *et al.* (2025).
-  [**Depth–Breadth Synergy in RLVR: Unlocking LLM Reasoning Gains with Adaptive Exploration**](https://arxiv.org/abs/2508.13755). arXiv:2508.13755.
+12. Yang, F., Zhou, J., Liu, Q., *et al.* (2025). [Depth–Breadth Synergy in RLVR: Unlocking LLM Reasoning Gains with Adaptive Exploration](https://arxiv.org/abs/2508.13755). ([arXiv][12])
 
-* Liu, X., Liang, T., He, Z., *et al.* (2025).
-  [**Trust, But Verify: A Self-Verification Approach to Reinforcement Learning with Verifiable Rewards**](https://arxiv.org/abs/2505.13445). arXiv:2505.13445.
+13. Liu, X., Liang, T., He, Z., *et al.* (2025). [Trust, But Verify: A Self-Verification Approach to Reinforcement Learning with Verifiable Rewards](https://arxiv.org/abs/2505.13445). ([arXiv][13])
 
-* Su, Y., Yu, D., Song, L., *et al.* (2025).
-  [**Crossing the Reward Bridge: Expanding RL with Verifiable Rewards Across Diverse Domains**](https://arxiv.org/abs/2503.23829). arXiv:2503.23829.
+14. Su, Y., Yu, D., Song, L., *et al.* (2025). [Crossing the Reward Bridge: Expanding RL with Verifiable Rewards Across Diverse Domains](https://arxiv.org/abs/2503.23829). ([arXiv][14])
+
+[1]: https://arxiv.org/abs/2501.12948 "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning"
+[2]: https://arxiv.org/abs/2402.03300 "DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models"
+[3]: https://arxiv.org/abs/2503.06639 "Reinforcement Learning with Verifiable Rewards: GRPO's Effective Loss, Dynamics, and Success Amplification"
+[4]: https://arxiv.org/abs/2305.20050 "Let's Verify Step by Step"
+[5]: https://storage.googleapis.com/deepmind-media/AlphaCode2/AlphaCode2_Tech_Report.pdf "AlphaCode 2 Technical Report"
+[6]: https://openreview.net/forum?id=XzH1yRfhVW "Reinforcement Learning for Hierarchical Proof Generation in Lean 4"
+[7]: https://arxiv.org/abs/2504.06122 "Leanabell-Prover: Posttraining Scaling in Formal Reasoning"
+[8]: https://arxiv.org/abs/2507.23726 "Seed-Prover: Deep and Broad Reasoning for Automated Theorem Proving"
+[9]: https://arxiv.org/abs/2504.13837 "Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?"
+[10]: https://arxiv.org/abs/2506.14245 "Reinforcement Learning with Verifiable Rewards Implicitly Incentivizes Correct Reasoning in Base LLMs"
+[11]: https://arxiv.org/abs/2510.03669 "Token Hidden Reward: Steering Exploration–Exploitation in Group Relative Deep Reinforcement Learning"
+[12]: https://arxiv.org/abs/2508.13755 "Depth–Breadth Synergy in RLVR: Unlocking LLM Reasoning Gains with Adaptive Exploration"
+[13]: https://arxiv.org/abs/2505.13445 "Trust, But Verify: A Self-Verification Approach to Reinforcement Learning with Verifiable Rewards"
+[14]: https://arxiv.org/abs/2503.23829 "Crossing the Reward Bridge: Expanding RL with Verifiable Rewards Across Diverse Domains"

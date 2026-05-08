@@ -36,7 +36,7 @@
 
 The fundamental challenge of artificial intelligence and statistical learning is the problem of generalisation. In the classical deductive sciences, conclusions follow logically from premises. In inductive learning, however, the algorithm must infer general rules from specific, finite observations. This inference carries an inherent risk: the model may identify patterns that are specific only to the observed data (noise or sampling artefacts) rather than the underlying data-generating process. This phenomenon, known as overfitting, represents a failure of induction.
 
-Validation methodologies provide the mathematical framework to estimate and mitigate this risk. They are not merely procedural steps in a software pipeline but are grounded in deep statistical theory, specifically Empirical Risk Minimisation (ERM), the Bias-Variance Decomposition, and Asymptotic Consistency. A rigorous understanding of these concepts is essential, as the naive application of validation strategies (such as random splitting on time-series data) can lead to catastrophically biased performance estimates. [2]
+Validation methodologies provide the mathematical framework to estimate and mitigate this risk. They are not merely procedural steps in a software pipeline but are grounded in deep statistical theory, specifically Empirical Risk Minimisation (ERM), the Bias-Variance Decomposition, and Asymptotic Consistency. A rigorous understanding of these concepts is essential, as the naive application of validation strategies (such as random splitting on time-series data) can lead to catastrophically biased performance estimates.[2]
 
 This report provides an exhaustive analysis of validation architectures. We will traverse from the axiomatic definitions of Risk and Loss to the mechanics of K-Fold and Leave-One-Out estimators, examine the necessary modifications for dependent data (temporal and spatial), and conclude with the advanced statistical testing required to compare models rigorously.
 
@@ -155,7 +155,7 @@ This refers to how much the CV estimate would vary if we drew a completely new d
   * **LOOCV:** The training sets in each fold are highly overlapping (they share $n-2$ samples). This leads to highly positively correlated error estimates across folds. Statistical theory shows that the variance of the mean of highly correlated variables is higher than the mean of independent variables. Thus, LOOCV often has high variance. [3]
   * **K-Fold (e.g. K=10):** The training sets overlap less (sharing roughly $80-90\%$ of data). The error estimates are less correlated, often resulting in a lower variance estimator than LOOCV.
 
-**Conclusion:** For model selection, we generally prefer K-Fold (with $K=5$ or $10$) over LOOCV because the lower variance often leads to more stable model selection, despite the slightly higher bias. [2];[5]
+**Conclusion:** For model selection, we generally prefer K-Fold (with $K=5$ or $10$) over LOOCV because the lower variance often leads to more stable model selection, despite the slightly higher bias.[2];[5]
 
 -----
 
@@ -187,7 +187,7 @@ $$\hat{R}_{HO} = \frac{1}{|S_{test}|} \sum_{(x_i, y_i) \in S_{test}} L(y_i, \hat
 
 ## 3.2 - K-Fold Cross-Validation
 
-K-Fold CV mitigates the wastefulness and variance of the hold-out method by repeating the process $K$ times on different partitions. [5];[2]
+K-Fold CV mitigates the wastefulness and variance of the hold-out method by repeating the process $K$ times on different partitions.[5];[2]
 
 ![alt text]({BASE}/image-4.png)
 
@@ -267,7 +267,7 @@ This value (5.50) is our estimate of the MSE on unseen data.
 
 ## 3.3 - Leave-One-Out Cross-Validation (LOOCV)
 
-LOOCV is the special case where $K=n$. [8];[5]
+LOOCV is the special case where $K=n$.[8];[5]
 
 The Estimator:
 $$CV_{LOO} = \frac{1}{n} \sum_{i=1}^n L(y_i, \hat{f}_{-i}(x_i))$$
@@ -628,30 +628,30 @@ Finally, we must distinguish between tuning and evaluation using **Nested CV**, 
 
 # References
 
-* Akaike, H. (1974). [A new look at the statistical model identification](https://doi.org/10.1109/TAC.1974.1100705). *IEEE Transactions on Automatic Control*, 19(6), 716–723. ([SCIRP][1])
+1. Akaike, H. (1974). [A new look at the statistical model identification](https://doi.org/10.1109/TAC.1974.1100705). *IEEE Transactions on Automatic Control*, 19(6), 716–723. ([SCIRP][1])
 
-* Arlot, S., & Celisse, A. (2010). [A survey of cross-validation procedures for model selection](https://doi.org/10.1214/09-SS054). *Statistics Surveys*, 4, 40–79. ([Project Euclid][2])
+2. Arlot, S., & Celisse, A. (2010). [A survey of cross-validation procedures for model selection](https://doi.org/10.1214/09-SS054). *Statistics Surveys*, 4, 40–79. ([Project Euclid][2])
 
-* Bengio, Y., & Grandvalet, Y. (2004). [No unbiased estimator of the variance of K-fold cross-validation](https://www.jmlr.org/papers/v5/grandvalet04a.html). *Journal of Machine Learning Research*, 5, 1089–1105. ([jmlr.csail.mit.edu][3])
+3. Bengio, Y., & Grandvalet, Y. (2004). [No unbiased estimator of the variance of K-fold cross-validation](https://www.jmlr.org/papers/v5/grandvalet04a.html). *Journal of Machine Learning Research*, 5, 1089–1105. ([jmlr.csail.mit.edu][3])
 
-* Burman, P., Chow, E., & Nolan, D. (1994). [A cross-validatory method for dependent data](https://doi.org/10.1093/biomet/81.2.351). *Biometrika*, 81(2), 351–358. ([Oxford Academic][4])
+4. Burman, P., Chow, E., & Nolan, D. (1994). [A cross-validatory method for dependent data](https://doi.org/10.1093/biomet/81.2.351). *Biometrika*, 81(2), 351–358. ([Oxford Academic][4])
 
-* Kohavi, R. (1995). [A study of cross-validation and bootstrap for accuracy estimation and model selection](https://www.ijcai.org/Proceedings/95-2/Papers/016.pdf). *Proceedings of the 14th International Joint Conference on Artificial Intelligence (IJCAI)*, 1137–1143. ([IJCAI][5])
+5. Kohavi, R. (1995). [A study of cross-validation and bootstrap for accuracy estimation and model selection](https://www.ijcai.org/Proceedings/95-2/Papers/016.pdf). *Proceedings of the 14th International Joint Conference on Artificial Intelligence (IJCAI)*, 1137–1143. ([IJCAI][5])
 
-* Nadeau, C., & Bengio, Y. (2003). [Inference for the generalization error](https://doi.org/10.1023/A:1024068626366). *Machine Learning*, 52(3), 239–281. ([SpringerLink][6])
+6. Nadeau, C., & Bengio, Y. (2003). [Inference for the generalization error](https://doi.org/10.1023/A:1024068626366). *Machine Learning*, 52(3), 239–281. ([SpringerLink][6])
 
-* Roberts, D. R., Bahn, V., Ciuti, S., Boyce, M. S., Elith, J., Guillera-Arroita, G., *et al.* (2017). [Cross-validation strategies for data with temporal, spatial, hierarchical, or phylogenetic structure](https://doi.org/10.1111/ecog.02881). *Ecography*, 40(8), 913–929. ([research.wright.edu][7])
+7. Roberts, D. R., Bahn, V., Ciuti, S., Boyce, M. S., Elith, J., Guillera-Arroita, G., *et al.* (2017). [Cross-validation strategies for data with temporal, spatial, hierarchical, or phylogenetic structure](https://doi.org/10.1111/ecog.02881). *Ecography*, 40(8), 913–929. ([research.wright.edu][7])
 
-* Stone, M. (1974). [Cross-validatory choice and assessment of statistical predictions](https://doi.org/10.1111/j.2517-6161.1974.tb00994.x). *Journal of the Royal Statistical Society: Series B (Methodological)*, 36(2), 111–133. ([SCIRP][8])
+8. Stone, M. (1974). [Cross-validatory choice and assessment of statistical predictions](https://doi.org/10.1111/j.2517-6161.1974.tb00994.x). *Journal of the Royal Statistical Society: Series B (Methodological)*, 36(2), 111–133. ([SCIRP][8])
 
-* Varma, S., & Simon, R. (2006). [Bias in error estimation when using cross-validation for model selection](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-7-91). *BMC Bioinformatics*, 7, 91. ([bmcbioinformatics.biomedcentral.com][9])
+9. Varma, S., & Simon, R. (2006). [Bias in error estimation when using cross-validation for model selection](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-7-91). *BMC Bioinformatics*, 7, 91. ([bmcbioinformatics.biomedcentral.com][9])
 
-[1]: https://www.scirp.org/reference/referencespapers?referenceid=1779865&utm_source=chatgpt.com "Akaike, H. (1974) A New Look at the Statistical Model ..."
-[2]: https://projecteuclid.org/journals/statistics-surveys/volume-4/issue-none/A-survey-of-cross-validation-procedures-for-model-selection/10.1214/09-SS054.full?utm_source=chatgpt.com "A survey of cross-validation procedures for model selection"
-[3]: https://jmlr.csail.mit.edu/papers/v5/grandvalet04a.html?utm_source=chatgpt.com "No Unbiased Estimator of the Variance of K-Fold Cross- ..."
-[4]: https://academic.oup.com/biomet/article/81/2/351/468192?utm_source=chatgpt.com "A cross-validatory method for dependent data - Oxford Academic"
-[5]: https://www.ijcai.org/Proceedings/95-2/Papers/016.pdf?utm_source=chatgpt.com "A Study of Cross-Validation and Bootstrap for Accuracy ..."
-[6]: https://link.springer.com/article/10.1023/A%3A1024068626366?utm_source=chatgpt.com "Inference for the Generalization Error | Machine Learning"
-[7]: https://research.wright.edu/en/publications/cross-validation-strategies-for-data-with-temporal-spatial-hierar/?utm_source=chatgpt.com "Cross-validation strategies for data with temporal, spatial ..."
-[8]: https://www.scirp.org/reference/referencespapers?referenceid=3249609&utm_source=chatgpt.com "Stone, M. (1974) Cross-Validatory Choice and Assessment ..."
-[9]: https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-7-91?utm_source=chatgpt.com "Bias in error estimation when using cross-validation for model ..."
+[1]: https://www.scirp.org/reference/referencespapers?referenceid=1779865 "Akaike, H. (1974) A New Look at the Statistical Model Identification"
+[2]: https://projecteuclid.org/journals/statistics-surveys/volume-4/issue-none/A-survey-of-cross-validation-procedures-for-model-selection/10.1214/09-SS054.full "A survey of cross-validation procedures for model selection"
+[3]: https://jmlr.csail.mit.edu/papers/v5/grandvalet04a.html "No Unbiased Estimator of the Variance of K-Fold Cross-Validation"
+[4]: https://academic.oup.com/biomet/article/81/2/351/468192 "A cross-validatory method for dependent data - Oxford Academic"
+[5]: https://www.ijcai.org/Proceedings/95-2/Papers/016.pdf "A Study of Cross-Validation and Bootstrap for Accuracy Estimation and Model Selection"
+[6]: https://link.springer.com/article/10.1023/A%3A1024068626366 "Inference for the Generalization Error | Machine Learning"
+[7]: https://research.wright.edu/en/publications/cross-validation-strategies-for-data-with-temporal-spatial-hierar/ "Cross-validation strategies for data with temporal, spatial, hierarchical, or phylogenetic structure"
+[8]: https://www.scirp.org/reference/referencespapers?referenceid=3249609 "Stone, M. (1974) Cross-Validatory Choice and Assessment of Statistical Predictions"
+[9]: https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-7-91 "Bias in error estimation when using cross-validation for model selection"

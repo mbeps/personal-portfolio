@@ -35,11 +35,11 @@
 
 # 1 - Introduction: The Divergence from Traditional Statistical Learning
 
-The advancement of machine learning, particularly in the domain of deep neural networks, has traditionally relied upon a foundational statistical axiom: the assumption that training data and future testing data are independent and identically distributed (i.i.d.) [1];[2]. This premise implies that the underlying probability distribution governing the generation of labelled training examples is identical to that of the unseen examples the model will encounter during deployment. Mathematically, if we denote the training distribution as $P_{train}(X, Y)$ and the testing distribution as $P_{test}(X, Y)$, classical supervision assumes $P_{train} = P_{test}$.
+The advancement of machine learning, particularly in the domain of deep neural networks, has traditionally relied upon a foundational statistical axiom: the assumption that training data and future testing data are independent and identically distributed (i.i.d.).[1];[2] This premise implies that the underlying probability distribution governing the generation of labelled training examples is identical to that of the unseen examples the model will encounter during deployment. Mathematically, if we denote the training distribution as $P_{train}(X, Y)$ and the testing distribution as $P_{test}(X, Y)$, classical supervision assumes $P_{train} = P_{test}$.
 
 However, this assumption frequently disintegrates in practical applications. The collection of large-scale, annotated datasets for every conceivable domain is often computationally prohibitive or financially completely unfeasible. We frequently encounter scenarios where labelled data is abundant in a specific domain (the source) but scarce in a related, yet distinct, domain of interest (the target). For example, in biomedical imaging, annotating thousands of MRI scans for a specific rare pathology is often impossible, whereas millions of natural images or common medical scans are readily available.
 
-Transfer Learning (TL) emerges as the methodological framework designed to address this discrepancy [1]. It relaxes the i.i.d. assumption, permitting the training and testing distributions to differ ($P_{train} \neq P_{test}$). The fundamental objective is to extract knowledge (manifested as feature representations, weights or distribution parameters) from a source domain and repurpose it to facilitate the learning of a target task. This process mirrors human cognitive development; a physicist does not relearn calculus from first principles when transitioning to quantum mechanics but rather transfers the foundational mathematical structures acquired previously.
+Transfer Learning (TL) emerges as the methodological framework designed to address this discrepancy.[1] It relaxes the i.i.d. assumption, permitting the training and testing distributions to differ ($P_{train} \neq P_{test}$). The fundamental objective is to extract knowledge (manifested as feature representations, weights or distribution parameters) from a source domain and repurpose it to facilitate the learning of a target task. This process mirrors human cognitive development; a physicist does not relearn calculus from first principles when transitioning to quantum mechanics but rather transfers the foundational mathematical structures acquired previously.
 
 The following diagram illustrates the fundamental data flow in Transfer Learning compared to Traditional Machine Learning:
 
@@ -73,7 +73,7 @@ This report provides an exhaustive technical examination of Transfer Learning. W
 
 # 2 - Mathematical Formalism and Core Theory
 
-To rigorously analyse transfer learning, one must first establish a unified set-theoretic and probabilistic framework. We adopt the formal definitions established in the seminal literature to define the atomic units of transfer: the Domain and the Task [1].
+To rigorously analyse transfer learning, one must first establish a unified set-theoretic and probabilistic framework. We adopt the formal definitions established in the seminal literature to define the atomic units of transfer: the Domain and the Task.[1]
 
 ## 2.1 - The Definition of a Domain
 
@@ -125,7 +125,7 @@ Beyond the probabilistic definition, some theoretical frameworks utilise Mesarov
 
 # 3 - Taxonomy and Categorisation of Approaches
 
-The literature generally categorises transfer learning based on the availability of labelled data in the source and target domains [1]. This taxonomy dictates the algorithmic strategy employed. The decision process for categorisation is visualised below:
+The literature generally categorises transfer learning based on the availability of labelled data in the source and target domains.[1] This taxonomy dictates the algorithmic strategy employed. The decision process for categorisation is visualised below:
 
 ```mermaid
 graph TD
@@ -149,7 +149,7 @@ graph TD
 In the inductive setting, the target task is different from the source task ($\mathcal{T}_S \neq \mathcal{T}_T$), and crucially, labelled data is available in the target domain.
 
   * **Scenario:** We have a pre-trained model on ImageNet (Source Task: 1000-class classification) and wish to build a classifier for identifying specific skin lesions (Target Task: Binary classification). We have a small dataset of labelled skin lesions.
-  * **Mechanism:** The model typically learns a general representation on the source task. This representation introduces an inductive bias that restricts the hypothesis space for the target task, allowing the model to converge to a better solution than if it were trained from scratch on the limited target data [1].
+  * **Mechanism:** The model typically learns a general representation on the source task. This representation introduces an inductive bias that restricts the hypothesis space for the target task, allowing the model to converge to a better solution than if it were trained from scratch on the limited target data.[1]
   * **Sub-approach (Multi-task Learning):** This is a specific case of inductive transfer where the source and target tasks are learned simultaneously to force the model to find a representation that satisfies both.
 
 ## 3.2 - Transductive Transfer Learning
@@ -157,7 +157,7 @@ In the inductive setting, the target task is different from the source task ($\m
 In the transductive setting, the source and target tasks are identical ($\mathcal{T}_S = \mathcal{T}_T$), but the domains are different ($\mathcal{D}_S \neq \mathcal{D}_T$). Importantly, labelled data is available only in the source domain, while the target domain is unlabelled.
 
   * **Scenario:** Sentiment analysis where the model is trained on labelled movie reviews (Source) but must predict sentiment for book reviews (Target), where we only have raw text but no ratings.
-  * **Mechanism:** This is frequently referred to as Domain Adaptation [1]. The primary challenge here is to correct the marginal distribution mismatch $P(X_S) \neq P(X_T)$ (covariate shift) without target labels to guide the conditional mapping.
+  * **Mechanism:** This is frequently referred to as Domain Adaptation.[1] The primary challenge here is to correct the marginal distribution mismatch $P(X_S) \neq P(X_T)$ (covariate shift) without target labels to guide the conditional mapping.
 
 ## 3.3 - Unsupervised Transfer Learning
 
@@ -171,7 +171,7 @@ The central mathematical challenge in transfer learning, particularly in transdu
 
 ## 4.1 - Maximum Mean Discrepancy (MMD)
 
-Maximum Mean Discrepancy (MMD) is a non-parametric metric used to measure the distance between two probability distributions $P$ and $Q$ by mapping them into a Reproducing Kernel Hilbert Space (RKHS), denoted as $\mathcal{H}$ [5];[6].
+Maximum Mean Discrepancy (MMD) is a non-parametric metric used to measure the distance between two probability distributions $P$ and $Q$ by mapping them into a Reproducing Kernel Hilbert Space (RKHS), denoted as $\mathcal{H}$.[5];[6]
 
 The core intuition is that two distributions are identical if and only if all their statistical moments are identical. By mapping data to an infinite-dimensional RKHS using a characteristic kernel (like the Gaussian RBF), we can compare all moments simultaneously by comparing the "mean embeddings" of the distributions.
 
@@ -192,11 +192,11 @@ $$\text{MMD}^2(P, Q) = \mathbb{E}_{X,X' \sim P}[k(X,X')] - 2\mathbb{E}_{X \sim P
 
 $$\widehat{\text{MMD}}^2(X_S, X_T) = \frac{1}{n^2}\sum_{i=1}^n\sum_{j=1}^n k(x_{si}, x_{sj}) - \frac{2}{nm}\sum_{i=1}^n\sum_{j=1}^m k(x_{si}, x_{tj}) + \frac{1}{m^2}\sum_{i=1}^m\sum_{j=1}^m k(x_{ti}, x_{tj})$$
 
-**Significance:** Minimising the MMD constitutes a fundamental strategy in transfer learning algorithms (e.g., Kernel Mean Matching or Deep Domain Adaptation networks). By forcing the network to output features where $\text{MMD}(P(Z_S), P(Z_T)) \approx 0$, we essentially force the source and target data to look statistically indistinguishable in the latent feature space, thereby enabling a classifier trained on source data to generalise to target data [5];[6].
+**Significance:** Minimising the MMD constitutes a fundamental strategy in transfer learning algorithms (e.g., Kernel Mean Matching or Deep Domain Adaptation networks). By forcing the network to output features where $\text{MMD}(P(Z_S), P(Z_T)) \approx 0$, we essentially force the source and target data to look statistically indistinguishable in the latent feature space, thereby enabling a classifier trained on source data to generalise to target data.[5];[6]
 
 ## 4.2 - $\mathcal{H}$-Divergence and Generalisation Bounds
 
-While MMD handles marginal distributions, we need a theoretical guarantee that aligning distributions actually leads to low error on the target task. This is provided by the generalisation theory proposed by Ben-David et al. [9].
+While MMD handles marginal distributions, we need a theoretical guarantee that aligning distributions actually leads to low error on the target task. This is provided by the generalisation theory proposed by Ben-David et al.[9]
 
 The theory bounds the target error based on the source error and the "distance" between the domains. However, standard distances (like L1 or KL divergence) are too stringent; they can be large even if the domains are easily adaptable. Therefore, the $\mathcal{H}$-divergence is introduced.
 
@@ -204,7 +204,7 @@ For a hypothesis space $\mathcal{H}$ of binary classifiers (discriminators), the
 
 $$d_{\mathcal{H}}(\mathcal{D}_S, \mathcal{D}_T) = 2 \sup_{h \in \mathcal{H}} | P_{x \sim \mathcal{D}_S}[h(x)=1] - P_{x \sim \mathcal{D}_T}[h(x)=1] |$$
 
-Intuitively, this measures how well the best possible discriminator in $\mathcal{H}$ can distinguish source samples from target samples [9].
+Intuitively, this measures how well the best possible discriminator in $\mathcal{H}$ can distinguish source samples from target samples.[9]
 
 **The Generalisation Bound:**
 
@@ -216,7 +216,7 @@ Here:
 
   * $\epsilon_S(h)$: The error on the source task (which we minimise during training).
   * $d_{\mathcal{H}\Delta\mathcal{H}}$: The divergence between domains. Minimising this requires finding a feature representation where the domains are indistinguishable.
-  * $\lambda$: The error of the ideal joint hypothesis, defined as $\lambda = \min_{h \in \mathcal{H}} (\epsilon_S(h) + \epsilon_T(h))$. This term represents the adaptability of the task. If there exists no single classifier that performs well on both domains simultaneously (e.g., if the labels are flipped between domains), $\lambda$ will be large, and transfer learning will fail regardless of distribution alignment. This is a fundamental limit known as Negative Transfer [9].
+  * $\lambda$: The error of the ideal joint hypothesis, defined as $\lambda = \min_{h \in \mathcal{H}} (\epsilon_S(h) + \epsilon_T(h))$. This term represents the adaptability of the task. If there exists no single classifier that performs well on both domains simultaneously (e.g., if the labels are flipped between domains), $\lambda$ will be large, and transfer learning will fail regardless of distribution alignment. This is a fundamental limit known as Negative Transfer.[9]
 
 # 5 - Algorithmic Approaches: From Instance Reweighting to Deep Representations
 
@@ -226,7 +226,7 @@ The implementation of transfer learning has evolved historically from statistica
 
 **Why it was created:** In cases where the source and target marginal distributions differ, simply combining the datasets is suboptimal because "misleading" source examples (those in regions of the feature space with different conditional probabilities) will confuse the classifier. Instance-based methods aim to reweight the source data to prioritise samples that are "closest" to the target distribution.
 
-**Mechanism:** TrAdaBoost (Transfer AdaBoost) is an extension of the AdaBoost algorithm [7]. It iteratively trains a base learner.
+**Mechanism:** TrAdaBoost (Transfer AdaBoost) is an extension of the AdaBoost algorithm.[7] It iteratively trains a base learner.
 
   * **Target Data Handling:** If a target sample is misclassified, its weight is increased (standard boosting logic: focus on hard examples).
   * **Source Data Handling:** If a source sample is misclassified, its weight is decreased.
@@ -245,14 +245,14 @@ $$w_i^{t+1} = w_i^t \cdot \beta_S^{\epsilon_i^t}$$
 
 where $\beta_S \in (0, 1]$. If error $\epsilon_i^t = 1$ (misclassified), the weight is multiplied by a small factor, reducing it.
 
-**Advantages:** Model-agnostic; works well for traditional classifiers (SVMs, Trees) [7].
+**Advantages:** Model-agnostic; works well for traditional classifiers (SVMs, Trees).[7]
 **Disadvantages:** Computationally expensive (iterative retraining); susceptible to negative transfer if the target dataset is too small to form a reliable initial hypothesis.
 
 ## 5.2 - Feature-Based Transfer: Correlation Alignment (CORAL)
 
 **Why it was created:** Rather than selecting instances, feature-based methods attempt to find a transformation $\phi(x)$ such that the source and target distributions are aligned in the feature space.
 
-**Deep CORAL:** This method extends this to deep neural networks by aligning the second-order statistics (covariance matrices) of the source and target feature activations [10]. The hypothesis is that aligning correlations aligns the underlying distributions (assuming Gaussian-like distributions).
+**Deep CORAL:** This method extends this to deep neural networks by aligning the second-order statistics (covariance matrices) of the source and target feature activations.[10] The hypothesis is that aligning correlations aligns the underlying distributions (assuming Gaussian-like distributions).
 
 **Mathematical Formulation:**
 Let $C_S$ and $C_T$ be the covariance matrices of the source and target feature batches, respectively. The CORAL loss is defined as the Frobenius norm of their difference:
@@ -270,12 +270,12 @@ $$\frac{\partial \mathcal{L}_{CORAL}}{\partial D_S} = \frac{1}{d^2(n_S-1)} (D_S^
 
 (Refer to the detailed derivation involving the chain rule on the Frobenius norm).
 
-**Advantages:** "Frustratingly easy" to implement; computationally efficient compared to adversarial methods [10].
+**Advantages:** "Frustratingly easy" to implement; computationally efficient compared to adversarial methods.[10]
 **Disadvantages:** Only aligns second-order statistics; fails if distributions are non-Gaussian or have complex higher-order moment mismatches.
 
 ## 5.3 - Adversarial Transfer Learning: Domain Adversarial Neural Networks (DANN)
 
-**Core Theory:** DANN directly implements the minimisation of the $\mathcal{H}$-divergence (from Section 4.2) using a neural architecture inspired by Generative Adversarial Networks (GANs). It plays a minimax game between a feature extractor and a domain discriminator [8].
+**Core Theory:** DANN directly implements the minimisation of the $\mathcal{H}$-divergence (from Section 4.2) using a neural architecture inspired by Generative Adversarial Networks (GANs). It plays a minimax game between a feature extractor and a domain discriminator.[8]
 
 The architectural flow of the DANN, including the critical Gradient Reversal Layer (GRL), is illustrated below:
 
@@ -315,7 +315,7 @@ To implement this in a standard backpropagation framework (which minimises loss)
   * Forward pass: $R(x) = x$ (Identity)
   * Backward pass: $\frac{d R}{d x} = -\lambda \mathbf{I}$
 
-When gradients flow back from the Domain Classifier loss $\mathcal{L}_d$, they pass through the GRL. The sign is flipped. Thus, while the domain classifier updates its weights to minimise classification error (gradient descent), the feature extractor receives the negative gradient, effectively performing gradient ascent on the domain classification error [8].
+When gradients flow back from the Domain Classifier loss $\mathcal{L}_d$, they pass through the GRL. The sign is flipped. Thus, while the domain classifier updates its weights to minimise classification error (gradient descent), the feature extractor receives the negative gradient, effectively performing gradient ascent on the domain classification error.[8]
 
 **Advantages:** theoretically grounded in $\mathcal{H}$-divergence; state-of-the-art for unsupervised domain adaptation.
 **Disadvantages:** Difficult to train (instability similar to GANs); can lead to "mode collapse" where features lose semantic meaning if $\lambda$ is too high.
@@ -326,7 +326,7 @@ With the advent of Large Language Models (LLMs) like GPT and Transformers, the p
 
 ## 6.1 - Adapters
 
-**Concept:** Instead of updating the entire pre-trained network, "Adapter" modules are inserted between the frozen layers of the Transformer [12].
+**Concept:** Instead of updating the entire pre-trained network, "Adapter" modules are inserted between the frozen layers of the Transformer.[12]
 
 **Architecture:** A standard adapter consists of a bottleneck architecture:
 
@@ -339,7 +339,7 @@ Only parameters in $W_{down}$ and $W_{up}$ are updated. If $d=1024$ and $r=64$, 
 
 **Variants:**
 
-  * **Series Adapters:** Inserted after the feed-forward sub-layers (Houlsby architecture) [12].
+  * **Series Adapters:** Inserted after the feed-forward sub-layers (Houlsby architecture).[12]
   * **Parallel Adapters:** Computed in parallel with the attention or feed-forward layers and summed.
 
 ## 6.2 - Low-Rank Adaptation (LoRA)
@@ -390,7 +390,7 @@ Result: $\Delta W = BA = 0$ at the start, preserving the pre-trained behaviour e
 
 $$h = W_0 x + \frac{\alpha}{r} BA x$$
 
-**Inference Advantage:** Since $BA$ has the same shape as $W_0$, we can pre-compute $W' = W_0 + BA$ and replace the original weights. This results in zero added inference latency compared to the base model [11].
+**Inference Advantage:** Since $BA$ has the same shape as $W_0$, we can pre-compute $W' = W_0 + BA$ and replace the original weights. This results in zero added inference latency compared to the base model.[11]
 
 **Table 2: Mock Example of Parameter Reduction with LoRA**
 
@@ -402,7 +402,7 @@ $$h = W_0 x + \frac{\alpha}{r} BA x$$
 
 ## 6.3 - Prompt Tuning (Soft Prompts)
 
-**Concept:** This method draws inspiration from "Prompt Engineering" (crafting text prompts like "Translate this to French:") but makes the prompt learnable [13].
+**Concept:** This method draws inspiration from "Prompt Engineering" (crafting text prompts like "Translate this to French:") but makes the prompt learnable.[13]
 
 **Mechanism:** Instead of discrete text tokens, we prepend a sequence of continuous vectors $P = \{p_1, \dots, p_l\}$ to the input embedding sequence $E$.
 
@@ -414,13 +414,13 @@ The model parameters are frozen. During backpropagation, gradients flow only to 
 
 $$\theta_{prompt}^* = \arg\min_{P} \mathcal{L}( \text{Model}_{frozen}([P; E(x)]), Y )$$
 
-This effectively learns a "soft" instruction that steers the frozen model's manifold to the target task [13]. It is highly parameter efficient (often \<0.01% of parameters).
+This effectively learns a "soft" instruction that steers the frozen model's manifold to the target task.[13] It is highly parameter efficient (often \<0.01% of parameters).
 
 ## 6.4 - BitFit
 
-**Concept:** BitFit represents the extreme of parameter efficiency. It freezes all weights in the Transformer (attention weights, MLP weights) and trains only the bias terms (and sometimes the LayerNorm parameters) [14].
+**Concept:** BitFit represents the extreme of parameter efficiency. It freezes all weights in the Transformer (attention weights, MLP weights) and trains only the bias terms (and sometimes the LayerNorm parameters).[14]
 
-**Mathematical Insight:** The fact that BitFit works (often achieving \>95% of full fine-tuning performance) suggests that the features learned during pre-training are sufficient, and the transfer task merely requires shifting the activation thresholds (biases) to realign the decision boundaries [14].
+**Mathematical Insight:** The fact that BitFit works (often achieving \>95% of full fine-tuning performance) suggests that the features learned during pre-training are sufficient, and the transfer task merely requires shifting the activation thresholds (biases) to realign the decision boundaries.[14]
 
 # 7 - Transferability Estimation: Predicting Success Before Training
 
@@ -428,7 +428,7 @@ A critical question in modern ML ops is: Given a target task and a zoo of 100 pr
 
 ## 7.1 - Log Expected Empirical Prediction (LEEP)
 
-LEEP estimates transferability using a single forward pass of the target data through the source model (without any training) [15].
+LEEP estimates transferability using a single forward pass of the target data through the source model (without any training).[15]
 It leverages the "dummy label distribution." If the source model (trained on ImageNet) predicts "Dog" for a target image (from a CIFAR dataset labelled "Truck"), this implies a probabilistic relationship between the source label "Dog" and target label "Truck".
 
 **Formulation:**
@@ -445,7 +445,7 @@ A higher LEEP score implies that the source representations are easier to map to
 
 ## 7.2 - H-Score
 
-The H-score measures the discriminative power of the features [16]. It uses the trace of the covariance of class means relative to the total feature covariance.
+The H-score measures the discriminative power of the features.[16] It uses the trace of the covariance of class means relative to the total feature covariance.
 
 $$H(f) = \text{tr}(\text{cov}(f(X))^{-1} \text{cov}(\mathbb{E}))$$
 
@@ -456,7 +456,7 @@ By maximising this ratio, H-score identifies models where the features for diffe
 
 ## 7.3 - Negative Conditional Entropy (NCE)
 
-NCE measures the uncertainty of the target label given the source prediction [16].
+NCE measures the uncertainty of the target label given the source prediction.[16]
 
 $$\text{NCE} = - H(Y | Z_{source})$$
 
@@ -484,7 +484,7 @@ In MTL, the "Pareto Optimal" solution is sought where improving one task does no
 
 Negative transfer occurs when using source knowledge actually hurts target performance compared to training from scratch.
 
-**Mathematical Cause:** Referring back to the Ben-David bound (Section 4.2), this happens when the $\lambda$ term (error of the ideal joint hypothesis) is large [9]. If the source and target tasks label similar features in contradictory ways (e.g., "Red" = "Stop" in source, but "Red" = "Go" in target), aligning the domains ($d_{\mathcal{H}\Delta\mathcal{H}} \to 0$) will enforce the wrong decision boundary.
+**Mathematical Cause:** Referring back to the Ben-David bound (Section 4.2), this happens when the $\lambda$ term (error of the ideal joint hypothesis) is large.[9] If the source and target tasks label similar features in contradictory ways (e.g., "Red" = "Stop" in source, but "Red" = "Go" in target), aligning the domains ($d_{\mathcal{H}\Delta\mathcal{H}} \to 0$) will enforce the wrong decision boundary.
 
 **Mitigation:** Safe Transfer Learning algorithms estimate task similarity before transfer. Approaches like Residual Feature Integration add a "correction" term to the source features to handle mismatches.
 
@@ -494,7 +494,7 @@ This is the inverse problem: in sequential transfer, the model forgets the sourc
 
 **Mathematical Definition:** A drastic increase in $\mathcal{L}_{Source}(\theta_t)$ as training on $\mathcal{L}_{Target}$ proceeds.
 
-**Mitigation (EWC):** Elastic Weight Consolidation adds a regularisation term based on the Fisher Information Matrix $F$ [17]. $F_i$ approximates the curvature of the source loss surface with respect to parameter $\theta_i$.
+**Mitigation (EWC):** Elastic Weight Consolidation adds a regularisation term based on the Fisher Information Matrix $F$.[17] $F_i$ approximates the curvature of the source loss surface with respect to parameter $\theta_i$.
 
 $$\mathcal{L}(\theta) = \mathcal{L}_{Target}(\theta) + \sum_i \frac{\lambda}{2} F_i (\theta_i - \theta_{S,i}^*)^2$$
 
@@ -541,54 +541,54 @@ However, theoretical limits remain. The risk of Negative Transfer reminds us tha
 
 # References
 
-Pan, S. J., & Yang, Q. (2010). [A survey on transfer learning](https://doi.org/10.1109/TKDE.2009.191). *IEEE Transactions on Knowledge and Data Engineering, 22*(10), 1345–1359. ([ACM Digital Library][1])
+1. Pan, S. J., & Yang, Q. (2010). [A survey on transfer learning](https://doi.org/10.1109/TKDE.2009.191). *IEEE Transactions on Knowledge and Data Engineering, 22*(10), 1345–1359. ([ACM Digital Library][1])
 
-Weiss, K., Khoshgoftaar, T. M., & Wang, D. (2016). [A survey of transfer learning](https://doi.org/10.1186/s40537-016-0043-6). *Journal of Big Data, 3*(1), 9. ([SpringerLink][2])
+2. Weiss, K., Khoshgoftaar, T. M., & Wang, D. (2016). [A survey of transfer learning](https://doi.org/10.1186/s40537-016-0043-6). *Journal of Big Data, 3*(1), 9. ([SpringerLink][2])
 
-Day, O., & Khoshgoftaar, T. M. (2017). [A survey on heterogeneous transfer learning](https://doi.org/10.1186/s40537-017-0089-0). *Journal of Big Data, 4*(1), 29. ([SpringerLink][3])
+3. Day, O., & Khoshgoftaar, T. M. (2017). [A survey on heterogeneous transfer learning](https://doi.org/10.1186/s40537-017-0089-0). *Journal of Big Data, 4*(1), 29. ([SpringerLink][3])
 
-Cook, D. J., Feuz, K. D., & Krishnan, N. C. (2013). [Transfer learning for activity recognition: A survey](https://doi.org/10.1007/s10115-013-0665-3). *Knowledge and Information Systems, 36*, 537–556. ([ACM Digital Library][4])
+4. Cook, D. J., Feuz, K. D., & Krishnan, N. C. (2013). [Transfer learning for activity recognition: A survey](https://doi.org/10.1007/s10115-013-0665-3). *Knowledge and Information Systems, 36*, 537–556. ([ACM Digital Library][4])
 
-Gretton, A., Borgwardt, K. M., Rasch, M. J., Schölkopf, B., & Smola, A. (2012). [A kernel two-sample test](https://www.jmlr.org/papers/v13/gretton12a.html). *Journal of Machine Learning Research, 13*, 723–773. ([jmlr.csail.mit.edu][5])
+5. Gretton, A., Borgwardt, K. M., Rasch, M. J., Schölkopf, B., & Smola, A. (2012). [A kernel two-sample test](https://www.jmlr.org/papers/v13/gretton12a.html). *Journal of Machine Learning Research, 13*, 723–773. ([jmlr.csail.mit.edu][5])
 
-Borgwardt, K. M., Gretton, A., Rasch, M. J., Kriegel, H.-P., Schölkopf, B., & Smola, A. J. (2006). [Integrating structured biological data by Kernel Maximum Mean Discrepancy](https://doi.org/10.1093/bioinformatics/btl242). *Bioinformatics, 22*(14), e49–e57. ([OUP Academic][6])
+6. Borgwardt, K. M., Gretton, A., Rasch, M. J., Kriegel, H.-P., Schölkopf, B., & Smola, A. J. (2006). [Integrating structured biological data by Kernel Maximum Mean Discrepancy](https://doi.org/10.1093/bioinformatics/btl242). *Bioinformatics, 22*(14), e49–e57. ([OUP Academic][6])
 
-Dai, W., Yang, Q., Xue, G.-R., & Yu, Y. (2007). [Boosting for transfer learning](https://doi.org/10.1145/1273496.1273521). In *Proceedings of the 24th International Conference on Machine Learning (ICML)* (pp. 193–200). ([ACM Digital Library][7])
+7. Dai, W., Yang, Q., Xue, G.-R., & Yu, Y. (2007). [Boosting for transfer learning](https://doi.org/10.1145/1273496.1273521). In *Proceedings of the 24th International Conference on Machine Learning (ICML)* (pp. 193–200). ([ACM Digital Library][7])
 
-Ganin, Y., Ustinova, E., Ajakan, H., Germain, P., Larochelle, H., Laviolette, F., Marchand, M., & Lempitsky, V. (2016). [Domain-adversarial training of neural networks](https://jmlr.org/papers/v17/15-239.html). *Journal of Machine Learning Research, 17*(59), 1–35. ([jmlr.org][8])
+8. Ganin, Y., Ustinova, E., Ajakan, H., Germain, P., Larochelle, H., Laviolette, F., Marchand, M., & Lempitsky, V. (2016). [Domain-adversarial training of neural networks](https://jmlr.org/papers/v17/15-239.html). *Journal of Machine Learning Research, 17*(59), 1–35. ([jmlr.org][8])
 
-Ben-David, S., Blitzer, J., Crammer, K., Kulesza, A., Pereira, F., & Vaughan, J. W. (2010). [A theory of learning from different domains](https://doi.org/10.1007/s10994-009-5152-4). *Machine Learning, 79*(1–2), 151–175. ([SpringerLink][9])
+9. Ben-David, S., Blitzer, J., Crammer, K., Kulesza, A., Pereira, F., & Vaughan, J. W. (2010). [A theory of learning from different domains](https://doi.org/10.1007/s10994-009-5152-4). *Machine Learning, 79*(1–2), 151–175. ([SpringerLink][9])
 
-Sun, B., & Saenko, K. (2016). [Deep CORAL: Correlation alignment for deep domain adaptation](https://doi.org/10.1007/978-3-319-49409-8_35). In *Computer Vision – ECCV 2016 Workshops* (pp. 443–450). Springer. ([SpringerLink][10])
+10. Sun, B., & Saenko, K. (2016). [Deep CORAL: Correlation alignment for deep domain adaptation](https://doi.org/10.1007/978-3-319-49409-8_35). In *Computer Vision – ECCV 2016 Workshops* (pp. 443–450). Springer. ([SpringerLink][10])
 
-Hu, E. J., Shen, Y., Wallis, P., Allen-Zhu, Z., Li, Y., Wang, S., Wang, L., & Chen, W. (2022). [LoRA: Low-rank adaptation of large language models](https://arxiv.org/abs/2106.09685). In *International Conference on Learning Representations (ICLR)*. ([arXiv][11])
+11. Hu, E. J., Shen, Y., Wallis, P., Allen-Zhu, Z., Li, Y., Wang, S., Wang, L., & Chen, W. (2022). [LoRA: Low-rank adaptation of large language models](https://arxiv.org/abs/2106.09685). In *International Conference on Learning Representations (ICLR)*. ([arXiv][11])
 
-Houlsby, N., Giurgiu, A., Jastrzebski, S., Morrone, B., de Laroussilhe, Q., Gesmundo, A., Attariyan, M., & Gelly, S. (2019). [Parameter-efficient transfer learning for NLP](https://arxiv.org/abs/1902.00751). In *Proceedings of the 36th International Conference on Machine Learning (ICML)* (pp. 2790–2799). ([arXiv][12])
+12. Houlsby, N., Giurgiu, A., Jastrzebski, S., Morrone, B., de Laroussilhe, Q., Gesmundo, A., Attariyan, M., & Gelly, S. (2019). [Parameter-efficient transfer learning for NLP](https://arxiv.org/abs/1902.00751). In *Proceedings of the 36th International Conference on Machine Learning (ICML)* (pp. 2790–2799). ([arXiv][12])
 
-Lester, B., Al-Rfou, R., & Constant, N. (2021). [The power of scale for parameter-efficient prompt tuning](https://aclanthology.org/2021.emnlp-main.243/). In *Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing (EMNLP)* (pp. 3045–3059). ([ACL Anthology][13])
+13. Lester, B., Al-Rfou, R., & Constant, N. (2021). [The power of scale for parameter-efficient prompt tuning](https://aclanthology.org/2021.emnlp-main.243/). In *Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing (EMNLP)* (pp. 3045–3059). ([ACL Anthology][13])
 
-Ben Zaken, E., Ravfogel, S., & Goldberg, Y. (2022). [BitFit: Simple parameter-efficient fine-tuning for transformer-based masked language models](https://aclanthology.org/2022.acl-short.1/). In *Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 2: Short Papers)* (pp. 1–9). ([ACL Anthology][14])
+14. Ben Zaken, E., Ravfogel, S., & Goldberg, Y. (2022). [BitFit: Simple parameter-efficient fine-tuning for transformer-based masked language models](https://aclanthology.org/2022.acl-short.1/). In *Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 2: Short Papers)* (pp. 1–9). ([ACL Anthology][14])
 
-Nguyen, C. V., Hassner, T., Seeger, M., & Archambeau, C. (2020). [LEEP: A new measure to evaluate transferability of learned representations](https://proceedings.mlr.press/v119/nguyen20b.html). In *Proceedings of the 37th International Conference on Machine Learning (ICML)* (pp. 7294–7305). ([Proceedings of Machine Learning Research][15])
+15. Nguyen, C. V., Hassner, T., Seeger, M., & Archambeau, C. (2020). [LEEP: A new measure to evaluate transferability of learned representations](https://proceedings.mlr.press/v119/nguyen20b.html). In *Proceedings of the 37th International Conference on Machine Learning (ICML)* (pp. 7294–7305). ([Proceedings of Machine Learning Research][15])
 
-Bao, Y., Li, Y., Huang, S.-L., Zhang, L., Zheng, L., Zamir, A. R., & Guibas, L. J. (2019). [An information-theoretic approach to transferability in task transfer learning](https://ieeexplore.ieee.org/document/8803726). In *2019 IEEE International Conference on Image Processing (ICIP)* (pp. 2309–2313). ([yangli-feasibility.com][16])
+16. Bao, Y., Li, Y., Huang, S.-L., Zhang, L., Zheng, L., Zamir, A. R., & Guibas, L. J. (2019). [An information-theoretic approach to transferability in task transfer learning](https://ieeexplore.ieee.org/document/8803726). In *2019 IEEE International Conference on Image Processing (ICIP)* (pp. 2309–2313). ([yangli-feasibility.com][16])
 
-Kirkpatrick, J., Pascanu, R., Rabinowitz, N., Veness, J., Desjardins, G., Rusu, A. A., Milan, K., Quan, J., Ramalho, T., Grabska-Barwinska, A., Hassabis, D., Clopath, C., Kumaran, D., & Hadsell, R. (2017). [Overcoming catastrophic forgetting in neural networks](https://doi.org/10.1073/pnas.1611835114). *Proceedings of the National Academy of Sciences, 114*(13), 3521–3526. ([PNAS][17])
+17. Kirkpatrick, J., Pascanu, R., Rabinowitz, N., Veness, J., Desjardins, G., Rusu, A. A., Milan, K., Quan, J., Ramalho, T., Grabska-Barwinska, A., Hassabis, D., Clopath, C., Kumaran, D., & Hadsell, R. (2017). [Overcoming catastrophic forgetting in neural networks](https://doi.org/10.1073/pnas.1611835114). *Proceedings of the National Academy of Sciences, 114*(13), 3521–3526. ([PNAS][17])
 
-[1]: https://dl.acm.org/doi/abs/10.1109/TKDE.2009.191?utm_source=chatgpt.com "A Survey on Transfer Learning"
-[2]: https://journalofbigdata.springeropen.com/articles/10.1186/s40537-016-0043-6?utm_source=chatgpt.com "A survey of transfer learning - Journal of Big Data"
-[3]: https://link.springer.com/article/10.1186/s40537-017-0089-0?utm_source=chatgpt.com "A survey on heterogeneous transfer learning"
-[4]: https://dl.acm.org/doi/abs/10.1007/s10115-013-0665-3?utm_source=chatgpt.com "Transfer learning for activity recognition: a survey"
-[5]: https://jmlr.csail.mit.edu/papers/v13/gretton12a.html?utm_source=chatgpt.com "A Kernel Two-Sample Test"
-[6]: https://academic.oup.com/bioinformatics/article/22/14/e49/228383?utm_source=chatgpt.com "Integrating structured biological data by Kernel Maximum ..."
-[7]: https://dl.acm.org/doi/10.1145/1273496.1273521?utm_source=chatgpt.com "Boosting for transfer learning | Proceedings of the 24th ..."
-[8]: https://jmlr.org/papers/v17/15-239.html?utm_source=chatgpt.com "Domain-Adversarial Training of Neural Networks"
-[9]: https://link.springer.com/article/10.1007/s10994-009-5152-4?utm_source=chatgpt.com "A theory of learning from different domains"
-[10]: https://link.springer.com/chapter/10.1007/978-3-319-49409-8_35?utm_source=chatgpt.com "Correlation Alignment for Deep Domain Adaptation"
-[11]: https://arxiv.org/abs/2106.09685?utm_source=chatgpt.com "LoRA: Low-Rank Adaptation of Large Language Models"
-[12]: https://arxiv.org/abs/1902.00751?utm_source=chatgpt.com "Parameter-Efficient Transfer Learning for NLP"
-[13]: https://aclanthology.org/2021.emnlp-main.243/?utm_source=chatgpt.com "The Power of Scale for Parameter-Efficient Prompt Tuning"
-[14]: https://aclanthology.org/2022.acl-short.1/?utm_source=chatgpt.com "BitFit: Simple Parameter-efficient Fine-tuning for ..."
-[15]: https://proceedings.mlr.press/v119/nguyen20b/nguyen20b.pdf?utm_source=chatgpt.com "LEEP: A New Measure to Evaluate Transferability of Learned ..."
-[16]: https://yangli-feasibility.com/home/ttl.html?utm_source=chatgpt.com "Task Transfer Learning - Yang Li"
-[17]: https://www.pnas.org/doi/10.1073/pnas.1611835114?utm_source=chatgpt.com "Overcoming catastrophic forgetting in neural networks"
+[1]: https://dl.acm.org/doi/abs/10.1109/TKDE.2009.191 "A Survey on Transfer Learning"
+[2]: https://journalofbigdata.springeropen.com/articles/10.1186/s40537-016-0043-6 "A survey of transfer learning - Journal of Big Data"
+[3]: https://link.springer.com/article/10.1186/s40537-017-0089-0 "A survey on heterogeneous transfer learning"
+[4]: https://dl.acm.org/doi/abs/10.1007/s10115-013-0665-3 "Transfer learning for activity recognition: a survey"
+[5]: https://jmlr.csail.mit.edu/papers/v13/gretton12a.html "A Kernel Two-Sample Test"
+[6]: https://academic.oup.com/bioinformatics/article/22/14/e49/228383 "Integrating structured biological data by Kernel Maximum Mean Discrepancy"
+[7]: https://dl.acm.org/doi/10.1145/1273496.1273521 "Boosting for transfer learning"
+[8]: https://jmlr.org/papers/v17/15-239.html "Domain-Adversarial Training of Neural Networks"
+[9]: https://link.springer.com/article/10.1007/s10994-009-5152-4 "A theory of learning from different domains"
+[10]: https://link.springer.com/chapter/10.1007/978-3-319-49409-8_35 "Correlation Alignment for Deep Domain Adaptation"
+[11]: https://arxiv.org/abs/2106.09685 "LoRA: Low-Rank Adaptation of Large Language Models"
+[12]: https://arxiv.org/abs/1902.00751 "Parameter-Efficient Transfer Learning for NLP"
+[13]: https://aclanthology.org/2021.emnlp-main.243/ "The Power of Scale for Parameter-Efficient Prompt Tuning"
+[14]: https://aclanthology.org/2022.acl-short.1/ "BitFit: Simple Parameter-efficient Fine-tuning for Transformer-based Masked Language Models"
+[15]: https://proceedings.mlr.press/v119/nguyen20b/nguyen20b.pdf "LEEP: A New Measure to Evaluate Transferability of Learned Representations"
+[16]: https://yangli-feasibility.com/home/ttl.html "Task Transfer Learning - Yang Li"
+[17]: https://www.pnas.org/doi/10.1073/pnas.1611835114 "Overcoming catastrophic forgetting in neural networks"

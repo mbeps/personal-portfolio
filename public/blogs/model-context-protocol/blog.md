@@ -523,45 +523,45 @@ As the protocol evolves, we anticipate the emergence of Knowledge Graphs—where
 
 # References
 
-1. Hou, X., Zhao, Y., Wang, S., & Wang, H. (2025). [Model Context Protocol (MCP): Landscape, Security Threats, and Future Research Directions](https://arxiv.org/abs/2503.23278). *arXiv preprint* arXiv:2503.23278. ([arXiv][1])
+1. Hou, X., Zhao, Y., Wang, S., & Wang, H. (2025). [Model Context Protocol (MCP): Landscape, Security Threats, and Future Research Directions](https://arxiv.org/abs/2503.23278). ([arXiv][1])
 
-2. Anonymous (2025). [A Survey of Agent Interoperability Protocols: Model Context Protocol (MCP), Agent Communication Protocol (ACP), Agent-to-Agent Protocol (A2A), and Agent Network Protocol (ANP)](https://arxiv.org/abs/2505.02279). *arXiv preprint* arXiv:2505.02279. ([arXiv][2])
+2. Anonymous (2025). [A Survey of Agent Interoperability Protocols: Model Context Protocol (MCP), Agent Communication Protocol (ACP), Agent-to-Agent Protocol (A2A), and Agent Network Protocol (ANP)](https://arxiv.org/abs/2505.02279). ([arXiv][2])
 
-3. Lewis, P., Perez, E., Piktus, A., et al. (2020). [Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](https://arxiv.org/abs/2005.11401). *Advances in Neural Information Processing Systems (NeurIPS 2020).* ([arXiv][3])
+3. Lewis, P., Perez, E., Piktus, A., *et al.* (2020). [Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](https://arxiv.org/abs/2005.11401). ([arXiv][3])
 
-4. Parisi, A., Zhao, Y., & Fiedel, N. (2022). [TALM: Tool Augmented Language Models](https://arxiv.org/abs/2205.12255). *arXiv preprint* arXiv:2205.12255. ([arXiv][4])
+4. Parisi, A., Zhao, Y., & Fiedel, N. (2022). [TALM: Tool Augmented Language Models](https://arxiv.org/abs/2205.12255). ([arXiv][4])
 
-5. Schick, T., Dwivedi-Yu, J., Dessì, R., et al. (2023). [Toolformer: Language Models Can Teach Themselves to Use Tools](https://arxiv.org/abs/2302.04761). *Advances in Neural Information Processing Systems (NeurIPS 2023).* ([arXiv][5])
+5. Schick, T., Dwivedi-Yu, J., Dessì, R., *et al.* (2023). [Toolformer: Language Models Can Teach Themselves to Use Tools](https://arxiv.org/abs/2302.04761). ([arXiv][5])
 
-6. Mialon, G., Dessì, R., Lomeli, M., et al. (2023). [Augmented Language Models: a Survey](https://arxiv.org/abs/2302.07842). *Transactions on Machine Learning Research.* ([arXiv][6])
+6. Mialon, G., Dessì, R., Lomeli, M., *et al.* (2023). [Augmented Language Models: a Survey](https://arxiv.org/abs/2302.07842). ([arXiv][6])
 
-7. Qu, C., Dai, S., Wei, X., et al. (2025). [Tool Learning with Large Language Models: a Survey](https://doi.org/10.1007/s11704-024-40678-2). *Frontiers of Computer Science, 19*(8), 198343. ([SpringerLink][7])
+7. Qu, C., Dai, S., Wei, X., *et al.* (2025). [Tool Learning with Large Language Models: a Survey](https://doi.org/10.1007/s11704-024-40678-2). ([SpringerLink][7])
 
-8. Yao, S., Zhao, J., Yu, D., et al. (2023). [ReAct: Synergizing Reasoning and Acting in Language Models](https://arxiv.org/abs/2210.03629). *International Conference on Learning Representations (ICLR 2023).* ([arXiv][8])
+8. Yao, S., Zhao, J., Yu, D., *et al.* (2023). [ReAct: Synergizing Reasoning and Acting in Language Models](https://arxiv.org/abs/2210.03629). ([arXiv][8])
 
-9. Wang, L., Ma, C., Feng, X., et al. (2023–2025). [A Survey on Large Language Model based Autonomous Agents](https://arxiv.org/abs/2308.11432). *arXiv preprint* arXiv:2308.11432. ([arXiv][9])
+9. Wang, L., Ma, C., Feng, X., *et al.* (2024). [A Survey on Large Language Model based Autonomous Agents](https://arxiv.org/abs/2308.11432). ([arXiv][9])
 
-10. Guo, T., Chen, X., Wang, Y., et al. (2024). [Large Language Model based Multi-Agents: A Survey of Progress and Challenges](https://arxiv.org/abs/2402.01680). *arXiv preprint* arXiv:2402.01680. ([arXiv][10])
+10. Guo, T., Chen, X., Wang, Y., *et al.* (2024). [Large Language Model based Multi-Agents: A Survey of Progress and Challenges](https://arxiv.org/abs/2402.01680). ([arXiv][10])
 
-11. Liu, Y., Deng, G., Li, Y., et al. (2023). [Prompt Injection attack against LLM-integrated Applications](https://arxiv.org/abs/2306.05499). *arXiv preprint* arXiv:2306.05499. ([arXiv][11])
+11. Liu, Y., Deng, G., Li, Y., *et al.* (2023). [Prompt Injection attack against LLM-integrated Applications](https://arxiv.org/abs/2306.05499). ([arXiv][11])
 
-12. Suo, X. (2024). [Signed-Prompt: A New Approach to Prevent Prompt Injection Attacks Against LLM-Integrated Applications](https://arxiv.org/abs/2401.07612). *arXiv preprint* arXiv:2401.07612. ([arXiv][12])
+12. Suo, X. (2024). [Signed-Prompt: A New Approach to Prevent Prompt Injection Attacks Against LLM-Integrated Applications](https://arxiv.org/abs/2401.07612). ([arXiv][12])
 
-13. Liu, X., Chen, X., Zhang, T., et al. (2024). [Automatic and Universal Prompt Injection Attacks against Large Language Models](https://arxiv.org/abs/2403.04957). *arXiv preprint* arXiv:2403.04957. ([arXiv][13])
+13. Liu, X., Chen, X., Zhang, T., *et al.* (2024). [Automatic and Universal Prompt Injection Attacks against Large Language Models](https://arxiv.org/abs/2403.04957). ([arXiv][13])
 
-14. Jia, Y., Xie, X., Li, Z., et al. (2025). [A Critical Evaluation of Defenses against Prompt Injection Attacks on Large Language Models](https://arxiv.org/abs/2505.18333). *arXiv preprint* arXiv:2505.18333. ([arXiv][14])
+14. Jia, Y., Xie, X., Li, Z., *et al.* (2025). [A Critical Evaluation of Defenses against Prompt Injection Attacks on Large Language Models](https://arxiv.org/abs/2505.18333). ([arXiv][14])
 
-[1]: https://arxiv.org/abs/2503.23278?utm_source=chatgpt.com "Model Context Protocol (MCP): Landscape, Security ..."
-[2]: https://arxiv.org/html/2505.02279v1?utm_source=chatgpt.com "A Survey of Agent Interoperability Protocols: Model Context ..."
-[3]: https://arxiv.org/abs/2005.11401?utm_source=chatgpt.com "Retrieval-Augmented Generation for Knowledge-Intensive ..."
-[4]: https://arxiv.org/abs/2205.12255?utm_source=chatgpt.com "TALM: Tool Augmented Language Models"
-[5]: https://arxiv.org/abs/2302.04761?utm_source=chatgpt.com "Toolformer: Language Models Can Teach Themselves to Use Tools"
-[6]: https://arxiv.org/abs/2302.07842?utm_source=chatgpt.com "Augmented Language Models: a Survey"
-[7]: https://link.springer.com/article/10.1007/s11704-024-40678-2?utm_source=chatgpt.com "Tool learning with large language models: a survey"
-[8]: https://arxiv.org/abs/2210.03629?utm_source=chatgpt.com "ReAct: Synergizing Reasoning and Acting in Language Models"
-[9]: https://arxiv.org/abs/2308.11432?utm_source=chatgpt.com "A Survey on Large Language Model based Autonomous ..."
-[10]: https://arxiv.org/abs/2402.01680?utm_source=chatgpt.com "[2402.01680] Large Language Model based Multi-Agents"
-[11]: https://arxiv.org/abs/2306.05499?utm_source=chatgpt.com "Prompt Injection attack against LLM-integrated Applications"
-[12]: https://arxiv.org/abs/2401.07612?utm_source=chatgpt.com "Signed-Prompt: A New Approach to Prevent Prompt Injection Attacks Against LLM-Integrated Applications"
-[13]: https://arxiv.org/abs/2403.04957?utm_source=chatgpt.com "Automatic and Universal Prompt Injection Attacks against ..."
-[14]: https://arxiv.org/abs/2505.18333?utm_source=chatgpt.com "A Critical Evaluation of Defenses against Prompt Injection ..."
+[1]: https://arxiv.org/abs/2503.23278 "Model Context Protocol (MCP): Landscape, Security Threats, and Future Research Directions"
+[2]: https://arxiv.org/abs/2505.02279 "A Survey of Agent Interoperability Protocols"
+[3]: https://arxiv.org/abs/2005.11401 "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks"
+[4]: https://arxiv.org/abs/2205.12255 "TALM: Tool Augmented Language Models"
+[5]: https://arxiv.org/abs/2302.04761 "Toolformer: Language Models Can Teach Themselves to Use Tools"
+[6]: https://arxiv.org/abs/2302.07842 "Augmented Language Models: a Survey"
+[7]: https://link.springer.com/article/10.1007/s11704-024-40678-2 "Tool Learning with Large Language Models: a Survey"
+[8]: https://arxiv.org/abs/2210.03629 "ReAct: Synergizing Reasoning and Acting in Language Models"
+[9]: https://arxiv.org/abs/2308.11432 "A Survey on Large Language Model based Autonomous Agents"
+[10]: https://arxiv.org/abs/2402.01680 "Large Language Model based Multi-Agents: A Survey of Progress and Challenges"
+[11]: https://arxiv.org/abs/2306.05499 "Prompt Injection attack against LLM-integrated Applications"
+[12]: https://arxiv.org/abs/2401.07612 "Signed-Prompt: A New Approach to Prevent Prompt Injection Attacks Against LLM-Integrated Applications"
+[13]: https://arxiv.org/abs/2403.04957 "Automatic and Universal Prompt Injection Attacks against Large Language Models"
+[14]: https://arxiv.org/abs/2505.18333 "A Critical Evaluation of Defenses against Prompt Injection Attacks on Large Language Models"

@@ -40,7 +40,7 @@
 
 In the intricate fabric of modern software engineering, the integrity of a system is defined not merely by the robustness of its code but by the security of the credentials that grant access to its data. These credentials (collectively termed "secrets") form the bedrock of authentication and authorisation in digital ecosystems. A secret, in the context of information security, is defined by the National Institute of Standards and Technology (NIST) as a private piece of information that acts as a key to unlock protected resources or sensitive information. This encompasses a broad spectrum of digital artefacts, including passwords, Application Programming Interface (API) keys, encryption keys, Secure Shell (SSH) keys, tokens, and certificates. Unlike human identities (which are relatively static and tied to biological entities), machine identities and their associated secrets are ephemeral, high-volume, and widely distributed, creating a complex management challenge that traditional security paradigms fail to address.
 
-The necessity for rigorous secret management arises from the fundamental shift in infrastructure architecture. The transition from monolithic, on-premises applications to distributed, cloud-native microservices has dissolved the traditional network perimeter. In this "Zero Trust" era, identity is the new perimeter, and secrets are the proofs of that identity [15];[16]. Consequently, the mismanagement of secrets (often manifested as "Secret Sprawl") has become a primary vector for cyberattacks. The IBM Cost of a Data Breach Report highlights that compromised credentials are frequently the root cause of significant breaches, necessitating a shift from ad-hoc secret handling to centralised, automated governance. This report provides an exhaustive analysis of the theoretical underpinnings, architectural mechanisms, and operational realities of secret management systems.
+The necessity for rigorous secret management arises from the fundamental shift in infrastructure architecture. The transition from monolithic, on-premises applications to distributed, cloud-native microservices has dissolved the traditional network perimeter. In this "Zero Trust" era, identity is the new perimeter, and secrets are the proofs of that identity.[15];[16] Consequently, the mismanagement of secrets (often manifested as "Secret Sprawl") has become a primary vector for cyberattacks. The IBM Cost of a Data Breach Report highlights that compromised credentials are frequently the root cause of significant breaches, necessitating a shift from ad-hoc secret handling to centralised, automated governance. This report provides an exhaustive analysis of the theoretical underpinnings, architectural mechanisms, and operational realities of secret management systems.
 
 # 2 - Theoretical Foundations and Core Definitions
 
@@ -100,9 +100,9 @@ The methodology for handling secrets has undergone a radical transformation, dri
 
 In the early epochs of software development, characterised by monolithic applications running on static, long-lived servers ("pets"), secrets were frequently hardcoded directly into the source code or stored in plaintext configuration files.
 
-This approach, while operationally simple, suffers from catastrophic security flaws known as CWE-798 (Use of Hard-coded Credentials) [3].
+This approach, while operationally simple, suffers from catastrophic security flaws known as CWE-798 (Use of Hard-coded Credentials).[3]
 
-  * **Insecurity:** Secrets committed to version control systems (like Git) become permanently embedded in the repository history. Even if removed from the HEAD commit, the secret remains accessible in the .git folder unless the entire history is rewritten [2];[3].
+  * **Insecurity:** Secrets committed to version control systems (like Git) become permanently embedded in the repository history. Even if removed from the HEAD commit, the secret remains accessible in the .git folder unless the entire history is rewritten.[2];[3]
   * **Operational Rigidity:** Changing a password requires recompiling and redeploying the application. This friction discourages rotation, leading to credentials that remain valid for years, increasing the likelihood of brute-force attacks or leakage.
   * **Lack of Audit:** It is impossible to track who accessed the secret when it is distributed as part of the codebase.
 
@@ -114,9 +114,9 @@ However, environment variables present their own risks. They are often visible i
 
 ## 3.3 - The Cloud-Native Explosion and Secret Sprawl
 
-The shift to microservices and containerisation (Kubernetes) introduced "Secret Sprawl" [6];[7]. A single application might be decomposed into fifty microservices, each requiring unique database credentials, API keys, and TLS certificates. The volume of secrets exploded, rendering manual management impossible.
+The shift to microservices and containerisation (Kubernetes) introduced "Secret Sprawl".[6];[7] A single application might be decomposed into fifty microservices, each requiring unique database credentials, API keys, and TLS certificates. The volume of secrets exploded, rendering manual management impossible.
 
-The dynamic nature of cloud infrastructure (where servers are spun up and down automatically) meant that static IP-based allow-listing was no longer viable. This necessitated the creation of centralised, API-driven Secret Management Systems (SMS) capable of automating the lifecycle of secrets at scale. Systems like HashiCorp Vault emerged to provide a "single source of truth," moving secrets out of the application environment and into a fortified, centralised repository [8];[9].
+The dynamic nature of cloud infrastructure (where servers are spun up and down automatically) meant that static IP-based allow-listing was no longer viable. This necessitated the creation of centralised, API-driven Secret Management Systems (SMS) capable of automating the lifecycle of secrets at scale. Systems like HashiCorp Vault emerged to provide a "single source of truth," moving secrets out of the application environment and into a fortified, centralised repository.[8];[9]
 
 # 4 - Architecture of Modern Secret Management Systems
 
@@ -129,7 +129,7 @@ At the core of a secure SMS is the concept of a cryptographic barrier. HashiCorp
 The system operates in two states: Sealed and Unsealed.
 
   * **Sealed State:** When the server starts, it is sealed. It has access to the encrypted data but lacks the key to decrypt it. The "Master Key" (or Root Key) is encrypted and stored alongside the data, protected by the "Unseal Key".
-  * **Shamir's Secret Sharing:** To prevent a single point of compromise, the Unseal Key is often split using Shamir's Secret Sharing algorithm. This mathematical scheme divides the key into $N$ shares (e.g. 5), requiring a threshold $T$ (e.g. 3) to reconstruct the key [1]. This enforces a "multi-person control" rule, where multiple operators must be present to unseal the vault.
+  * **Shamir's Secret Sharing:** To prevent a single point of compromise, the Unseal Key is often split using Shamir's Secret Sharing algorithm. This mathematical scheme divides the key into $N$ shares (e.g. 5), requiring a threshold $T$ (e.g. 3) to reconstruct the key.[1] This enforces a "multi-person control" rule, where multiple operators must be present to unseal the vault.
   * **Auto-Unseal:** In automated cloud environments, manual unsealing is impractical. "Auto-Unseal" delegates the trust to a Cloud KMS (like AWS KMS). The Vault server authenticates to the Cloud KMS to decrypt its master key, allowing it to boot automatically while maintaining a root of trust in the hardware-backed KMS.
 
 ## 4.2 - Envelope Encryption
@@ -156,7 +156,7 @@ Modern architectures decouple the secret storage from the secret generation logi
 
 ## 4.4 - Access Control Policies
 
-Authorisation within these systems is typically handled via granular, path-based policies. For example, HashiCorp Vault uses HCL (HashiCorp Configuration Language) to define Access Control Lists (ACLs). A policy might grant read access to secret/data/app/config but deny access to sys/auth, effectively implementing the Principle of Least Privilege [14].
+Authorisation within these systems is typically handled via granular, path-based policies. For example, HashiCorp Vault uses HCL (HashiCorp Configuration Language) to define Access Control Lists (ACLs). A policy might grant read access to secret/data/app/config but deny access to sys/auth, effectively implementing the Principle of Least Privilege.[14]
 
 # 5 - Dynamic Secrets: The Paradigm Shift
 
@@ -215,7 +215,7 @@ Kubernetes has become the de facto operating system for the cloud, and integrati
 
 ## 6.1 - Native Kubernetes Secrets vs. External Stores
 
-Kubernetes provides a native Secret resource. However, by default, these secrets are stored in the cluster's etcd database encoded merely in Base64 (not encrypted) [6];[7]. While encryption-at-rest can be enabled for etcd, native secrets are static. They do not rotate automatically and are often scoped only to the cluster, making it difficult to share secrets across a multi-cluster enterprise environment.
+Kubernetes provides a native Secret resource. However, by default, these secrets are stored in the cluster's etcd database encoded merely in Base64 (not encrypted).[6];[7] While encryption-at-rest can be enabled for etcd, native secrets are static. They do not rotate automatically and are often scoped only to the cluster, making it difficult to share secrets across a multi-cluster enterprise environment.
 
 To address this, organisations integrate external SMSs (like Vault or Azure Key Vault) into Kubernetes using one of three primary patterns: the Sidecar, the CSI Driver, or the Operator.
 
@@ -317,7 +317,7 @@ Comparatively, SOPS is preferred for complex, multi-cloud environments where tea
 
 # 8 - Operational Governance, Compliance, and Auditing
 
-The deployment of an SMS is not a "set and forget" operation. It requires rigorous governance to satisfy compliance frameworks (like NIST SP 800-53) and ensure operational resilience [13].
+The deployment of an SMS is not a "set and forget" operation. It requires rigorous governance to satisfy compliance frameworks (like NIST SP 800-53) and ensure operational resilience.[13]
 
 ## 8.1 - Comprehensive Audit Logging
 
@@ -325,7 +325,7 @@ Audit logs are the primary mechanism for forensic analysis and non-repudiation. 
 
   * **Structure:** Logs should be structured (JSON) for ingestion by SIEM tools. Key fields include timestamp, actor (identity), operation (create/read/delete), path, and request\_id.
   * **Input Hashing:** To prevent the logs themselves from becoming a leak vector, sensitive input parameters (like the new password in a change request) must be hashed (HMAC) rather than logged in plaintext.
-  * **NIST Compliance:** Audit logging supports NIST controls like AU-2 (Audit Events) and AU-3 (Content of Audit Records) [13].
+  * **NIST Compliance:** Audit logging supports NIST controls like AU-2 (Audit Events) and AU-3 (Content of Audit Records).[13]
 
 ## 8.2 - Operational Resilience and High Availability
 
@@ -341,20 +341,20 @@ The dynamic nature of secrets introduces the risk of "Lease Explosion." If a bug
 
 # 9 - Identity-Based Security and Zero Trust
 
-The evolution of secret management is converging towards Zero Trust Architecture (ZTA), where the focus shifts from protecting secrets to validating identities [17];[18].
+The evolution of secret management is converging towards Zero Trust Architecture (ZTA), where the focus shifts from protecting secrets to validating identities.[17];[18]
 
 ## 9.1 - SPIFFE and SPIRE: The End of Secrets?
 
-The Secure Production Identity Framework For Everyone (SPIFFE) and its runtime environment (SPIRE) aim to solve the "Secret Zero" problem by eliminating shared secrets entirely for service-to-service communication [19];[20];[21].
+The Secure Production Identity Framework For Everyone (SPIFFE) and its runtime environment (SPIRE) aim to solve the "Secret Zero" problem by eliminating shared secrets entirely for service-to-service communication.[19];[20];[21]
 
   * **Concept:** Instead of an application presenting a password to a database, it presents a cryptographically signed document (the SVID, SPIFFE Verifiable Identity Document), typically an X.509 certificate.
-  * **Attestation:** SPIRE works by "attesting" the workload. A SPIRE Agent running on the node interrogates the kernel to verify the process's attributes (User ID, Group ID, Cgroups, Container Image Hash). If the attributes match a registered policy, the Agent issues an SVID to the workload [19];[21].
+  * **Attestation:** SPIRE works by "attesting" the workload. A SPIRE Agent running on the node interrogates the kernel to verify the process's attributes (User ID, Group ID, Cgroups, Container Image Hash). If the attributes match a registered policy, the Agent issues an SVID to the workload.[19];[21]
   * **No Secret Zero:** The workload does not need a password to get its SVID; it just needs to exist and match the policy. The trust is rooted in the platform/kernel.
-  * **mTLS:** Services use these SVIDs to establish mutual TLS connections. The "secret" (the private key of the certificate) is ephemeral, rotated automatically and frequently (e.g. every hour), and never leaves the process memory [19];[20];[21].
+  * **mTLS:** Services use these SVIDs to establish mutual TLS connections. The "secret" (the private key of the certificate) is ephemeral, rotated automatically and frequently (e.g. every hour), and never leaves the process memory.[19];[20];[21]
 
 ## 9.2 - The Future: Non-Human Identity (NHI) Management
 
-As AI agents and autonomous workloads proliferate, "Non-Human Identity" (NHI) management is emerging as a critical discipline [20]. Unlike static service accounts, AI agents require Just-In-Time (JIT) access, scoped to a specific task and context.
+As AI agents and autonomous workloads proliferate, "Non-Human Identity" (NHI) management is emerging as a critical discipline.[20] Unlike static service accounts, AI agents require Just-In-Time (JIT) access, scoped to a specific task and context.
 
 Future architectures will likely blend SMS and Identity Providers. Agents will authenticate via verifiable identity (like SPIFFE), and the SMS will act as a "token broker," exchanging the identity for a short-lived, context-bound credential for the target resource. This moves the industry closer to a "Secretless" ideal, where developers never handle credentials, and applications never persist them.
 
@@ -374,58 +374,59 @@ By adhering to these principles, organisations can construct a secret management
 
 # References
 
-* Shamir, A. (1979). “[How to Share a Secret](https://dl.acm.org/doi/10.1145/359168.359176).” *Communications of the ACM*, 22(11), 612–613. ([ACM Digital Library][1])
+1. Shamir, A. (1979). [How to Share a Secret](https://dl.acm.org/doi/10.1145/359168.359176). *Communications of the ACM*, 22(11), 612–613. ([ACM Digital Library][1])
 
-* Meli, M., Preuveneers, D., & Joosen, W. (2019). “[How Bad Can It Git? Characterizing Secret Leakage in Public GitHub Repositories](https://dev.ndss-symposium.org/wp-content/uploads/2019/02/ndss2019_04B-3_Meli_paper.pdf).” *NDSS Symposium 2019*. 
+2. Meli, M., Preuveneers, D., & Joosen, W. (2019). [How Bad Can It Git? Characterizing Secret Leakage in Public GitHub Repositories](https://dev.ndss-symposium.org/wp-content/uploads/2019/02/ndss2019_04B-3_Meli_paper.pdf). *NDSS Symposium 2019*.
 
-* Rahman, M. M., Chakraborty, S., Iqbal, A., & Williams, L. (2022). “[Why Secret Detection Tools Are Not Enough: It’s Not Just About False Positives](https://pmc.ncbi.nlm.nih.gov/articles/PMC8928718/).” *Empirical Software Engineering*, 27(3). ([PMC][2])
+3. Rahman, M. M., Chakraborty, S., Iqbal, A., & Williams, L. (2022). [Why Secret Detection Tools Are Not Enough: It’s Not Just About False Positives](https://pmc.ncbi.nlm.nih.gov/articles/PMC8928718/). *Empirical Software Engineering*, 27(3). ([PMC][3])
 
-* Basak, S. K., Cox, J., Reaves, B., & Williams, L. (2023). “[A Comparative Study of Software Secrets Reporting by Secret Detection Tools](https://arxiv.org/pdf/2307.00714).” arXiv:2307.00714. 
+4. Basak, S. K., Cox, J., Reaves, B., & Williams, L. (2023). [A Comparative Study of Software Secrets Reporting by Secret Detection Tools](https://arxiv.org/abs/2307.00714). arXiv:2307.00714.
 
-* Lykousas, N., & Patsakis, C. (2023). “[Tales from the Git: Automating the Detection of Secrets on Code and Assessing Developers’ Passwords Choices](https://doi.org/10.1109/EuroSPW59978.2023.00013).” *2023 IEEE European Symposium on Security and Privacy Workshops (EuroS&PW)*. ([ResearchGate][3])
+5. Lykousas, N., & Patsakis, C. (2023). [Tales from the Git: Automating the Detection of Secrets on Code and Assessing Developers’ Passwords Choices](https://doi.org/10.1109/EuroSPW59978.2023.00013). *2023 IEEE European Symposium on Security and Privacy Workshops (EuroS&PW)*. ([ResearchGate][5])
 
-* Blomqvist, M. (2021). “[Secrets Management in a Multi-Cloud Kubernetes Environment](https://www.utupub.fi/bitstream/handle/10024/151776/Secrets_Management_in_a_Multi_Cloud_Kubernetes_Environment_pdf-a.pdf).” MSc thesis, University of Turku. 
+6. Blomqvist, M. (2021). [Secrets Management in a Multi-Cloud Kubernetes Environment](https://www.utupub.fi/bitstream/handle/10024/151776/Secrets_Management_in_a_Multi_Cloud_Kubernetes_Environment_pdf-a.pdf). MSc thesis, University of Turku.
 
-* Uddström, A. (2023). “[Systematic Evaluation of Secret Management in Kubernetes](https://www.diva-portal.org/smash/record.jsf?pid=diva2%3A1735076).” MSc thesis, Umeå University. ([Diva Portal][4])
+7. Uddström, A. (2023). [Systematic Evaluation of Secret Management in Kubernetes](https://www.diva-portal.org/smash/record.jsf?pid=diva2%3A1735076). MSc thesis, Umeå University. ([Diva Portal][7])
 
-* Martseniiuk, Y., Partyka, A., Harasymchuk, O., & Shevchenko, S. (2024). “[Universal Centralized Secret Data Management for Automated Public Cloud Provisioning](https://ceur-ws.org/Vol-3826/paper7.pdf).” *Cybersecurity Providing in Information and Telecommunication Systems 2024 (CPITS-IS)*, CEUR-WS Vol. 3826. 
+8. Martseniiuk, Y., Partyka, A., Harasymchuk, O., & Shevchenko, S. (2024). [Universal Centralized Secret Data Management for Automated Public Cloud Provisioning](https://ceur-ws.org/Vol-3826/paper7.pdf). *Cybersecurity Providing in Information and Telecommunication Systems 2024 (CPITS-IS)*, CEUR-WS Vol. 3826.
 
-* Somasundaram, P. (2024). “[Unified Secret Management Across Cloud Platforms: A Strategy for Secure Credential Storage and Access](https://doi.org/10.17605/OSF.IO/G96Z2).” *International Journal of Computer Engineering and Technology (IJCET)*, 15(2), 5–12. ([ResearchGate][5])
+9. Somasundaram, P. (2024). [Unified Secret Management Across Cloud Platforms: A Strategy for Secure Credential Storage and Access](https://doi.org/10.17605/OSF.IO/G96Z2). *International Journal of Computer Engineering and Technology (IJCET)*, 15(2), 5–12. ([ResearchGate][9])
 
-* Byrisetty, A., & Girhotra, J. (2025). “[Securing Cloud-Native Applications (CNAs): A Case Study of Practices in a Large IT Company](https://www.diva-portal.org/smash/get/diva2%3A1980200/FULLTEXT01.pdf).” MSc thesis, Blekinge Institute of Technology. 
+10. Byrisetty, A., & Girhotra, J. (2025). [Securing Cloud-Native Applications (CNAs): A Case Study of Practices in a Large IT Company](https://www.diva-portal.org/smash/get/diva2%3A1980200/FULLTEXT01.pdf). MSc thesis, Blekinge Institute of Technology.
 
-* Rostamipoor, M., Sadeghi, A., & Polychronakis, M. (2025). “[KubeKeeper: Protecting Kubernetes Secrets Against Excessive Permissions](https://www3.cs.stonybrook.edu/~mikepo/papers/kubekeeper.eurosp25.pdf).” *IEEE European Symposium on Security and Privacy (EuroS&P), 2025*. 
+11. Rostamipoor, M., Sadeghi, A., & Polychronakis, M. (2025). [KubeKeeper: Protecting Kubernetes Secrets Against Excessive Permissions](https://www3.cs.stonybrook.edu/~mikepo/papers/kubekeeper.eurosp25.pdf). *IEEE European Symposium on Security and Privacy (EuroS&P), 2025*.
 
-* Gunathilake, K., & Ekanayake, I. (2024). “[K8s Pro Sentinel: Extend Secret Security in Kubernetes Cluster](https://arxiv.org/pdf/2411.16639).” arXiv:2411.16639. 
+12. Gunathilake, K., & Ekanayake, I. (2024). [K8s Pro Sentinel: Extend Secret Security in Kubernetes Cluster](https://arxiv.org/abs/2411.16639). arXiv:2411.16639. ([arXiv][12])
 
-* Pelster, L., Kritzinger, L., & Wüchner, P. (2023). “[Security Hardening and Compliance Assessment of Kubernetes Control Plane and Workloads](https://www.mdpi.com/2624-800X/5/2/30).” *Digital*, 5(2), 30. ([MDPI][6])
+13. Pelster, L., Kritzinger, L., & Wüchner, P. (2023). [Security Hardening and Compliance Assessment of Kubernetes Control Plane and Workloads](https://www.mdpi.com/2624-800X/5/2/30). *Digital*, 5(2), 30. ([MDPI][13])
 
-* Rahaman, M. S., Tisha, S. N., Song, E., & Černý, T. (2023). “[Access Control Design Practice and Solutions in Cloud-Native Architecture: A Systematic Mapping Study](https://doi.org/10.3390/s23073413).” *Sensors*, 23(7), 3413. ([MDPI][7])
+14. Rahaman, M. S., Tisha, S. N., Song, E., & Černý, T. (2023). [Access Control Design Practice and Solutions in Cloud-Native Architecture: A Systematic Mapping Study](https://doi.org/10.3390/s23073413). *Sensors*, 23(7), 3413. ([MDPI][14])
 
-* Ward, R., & Beyer, B. (2014). “[BeyondCorp: A New Approach to Enterprise Security](https://www.usenix.org/publications/login/dec14/ward).” *;login: The USENIX Magazine*, 39(6), 6–11. ([Google Research][8])
+15. Ward, R., & Beyer, B. (2014). [BeyondCorp: A New Approach to Enterprise Security](https://www.usenix.org/publications/login/dec14/ward). *;login: The USENIX Magazine*, 39(6), 6–11. ([Google Research][15])
 
-* Osborn, B., McWilliams, J., Beyer, B., & Saltonstall, M. (2016). “[BeyondCorp: Design to Deployment at Google](https://research.google/pubs/beyondcorp-design-to-deployment-at-google/).” *;login: The USENIX Magazine*, 41(1), 28–34. ([USENIX][9])
+16. Osborn, B., McWilliams, J., Beyer, B., & Saltonstall, M. (2016). [BeyondCorp: Design to Deployment at Google](https://research.google/pubs/beyondcorp-design-to-deployment-at-google/). *;login: The USENIX Magazine*, 41(1), 28–34. ([USENIX][16])
 
-* Nair, S., & Nair, A. (2025). “[Zero Trust Architecture in Cloud-Native Environments: Implementation Strategies and Best Practices](https://www.ijcttjournal.org/archives/ijctt-v73i4p114).” *International Journal of Computer Trends and Technology (IJCTT)*, 73(4), 566–574. ([Seventh Sense Research Group®][10])
+17. Nair, S., & Nair, A. (2025). [Zero Trust Architecture in Cloud-Native Environments: Implementation Strategies and Best Practices](https://www.ijcttjournal.org/archives/ijctt-v73i4p114). *International Journal of Computer Trends and Technology (IJCTT)*, 73(4), 566–574. ([IJCTT][17])
 
-* Dommari, S. (2023). “[Implementing Zero Trust Architecture in Cloud-Native Environments](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5259339).” SSRN preprint. ([SSRN][11])
+18. Dommari, S. (2023). [Implementing Zero Trust Architecture in Cloud-Native Environments](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5259339). SSRN preprint. ([SSRN][18])
 
-* Cochak, H., Neto, M., Miers, C., Marques, M., & Simplicio Jr., M. (2024). “[Enhancing SPIFFE/SPIRE Environment with a Nested Security Token Model](https://www.scitepress.org/Papers/2024/126344/126344.pdf).” *Proceedings of the 14th International Conference on Cloud Computing and Services Science (CLOSER 2024)*, 184–191. 
+19. Cochak, H., Neto, M., Miers, C., Marques, M., & Simplicio Jr., M. (2024). [Enhancing SPIFFE/SPIRE Environment with a Nested Security Token Model](https://www.scitepress.org/Papers/2024/126344/126344.pdf). *Proceedings of the 14th International Conference on Cloud Computing and Services Science (CLOSER 2024)*, 184–191.
 
-* (Author redacted for anonymity in preprint). (2025). “[Establishing Workload Identity for Zero Trust CI/CD: From Secrets to SPIFFE-Based Authentication](https://arxiv.org/abs/2504.14760).” arXiv:2504.14760. ([arXiv][12])
+20. (2025). [Establishing Workload Identity for Zero Trust CI/CD: From Secrets to SPIFFE-Based Authentication](https://arxiv.org/abs/2504.14760). arXiv:2504.14760. ([arXiv][20])
 
-* Guduru, S. (2021). “[Zero Trust Automation: SPIFFE/SPIRE for Identity Federation and OpenZiti in Microsegmented Networks](https://zenodo.org/records/15387226).” *European Journal of Advances in Engineering and Technology*, 8(10), 122–126. ([Zenodo][13])
+21. Guduru, S. (2021). [Zero Trust Automation: SPIFFE/SPIRE for Identity Federation and OpenZiti in Microsegmented Networks](https://zenodo.org/records/15387226). *European Journal of Advances in Engineering and Technology*, 8(10), 122–126. ([Zenodo][21])
 
-[1]: https://dl.acm.org/doi/10.1145/359168.359176?utm_source=chatgpt.com "How to share a secret | Communications of the ACM"
-[2]: https://pmc.ncbi.nlm.nih.gov/articles/PMC8928718/ "Why secret detection tools are not enough: It’s not just about false positives - An industrial case study - PMC"
-[3]: https://www.researchgate.net/publication/372799687_Tales_from_the_Git_Automating_the_detection_of_secrets_on_code_and_assessing_developers%27_passwords_choices "(PDF) Tales from the Git: Automating the detection of secrets on code and assessing developers’ passwords choices"
-[4]: https://www.diva-portal.org/smash/record.jsf?pid=diva2%3A1735076 "Systematic Evaluation Of Secret Management In Kubernetes"
-[5]: https://www.researchgate.net/publication/379435761_Unified_Secret_Management_Across_Cloud_Platforms_a_Strategy_for_Secure_Credential_Storage_and_Access "(PDF) Unified Secret Management Across Cloud Platforms: a Strategy for Secure Credential Storage and Access"
-[6]: https://www.mdpi.com/2624-800X/5/2/30 "Security Hardening and Compliance Assessment of Kubernetes Control Plane and Workloads"
-[7]: https://www.mdpi.com/1424-8220/23/7/3413?utm_source=chatgpt.com "Access Control Design Practice and Solutions in Cloud ..."
-[8]: https://research.google/pubs/beyondcorp-a-new-approach-to-enterprise-security/?utm_source=chatgpt.com "BeyondCorp: A New Approach to Enterprise Security"
-[9]: https://www.usenix.org/publications/login/spring2016/osborn?utm_source=chatgpt.com "BeyondCorp: Design to Deployment at Google"
-[10]: https://www.ijcttjournal.org/2025/Volume-73%20Issue-4/IJCTT-V73I4P114.pdf?utm_source=chatgpt.com "Zero Trust Architecture in Cloud-Native Environments"
-[11]: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5259339&utm_source=chatgpt.com "Implementing Zero Trust Architecture in Cloud-Native ..."
-[12]: https://arxiv.org/html/2504.14760v1 "Establishing Workload Identity for Zero Trust CI/CD: From Secrets to SPIFFE-Based Authentication"
-[13]: https://zenodo.org/records/15387226 "Zero Trust Automation: SPIFFE/SPIRE for Identity Federation and OpenZiti in Microsegmented Networks"
+[1]: https://dl.acm.org/doi/10.1145/359168.359176 "How to share a secret | Communications of the ACM"
+[3]: https://pmc.ncbi.nlm.nih.gov/articles/PMC8928718/ "Why secret detection tools are not enough: It's not just about false positives - PMC"
+[5]: https://www.researchgate.net/publication/372799687_Tales_from_the_Git_Automating_the_detection_of_secrets_on_code_and_assessing_developers%27_passwords_choices "Tales from the Git: Automating the detection of secrets"
+[7]: https://www.diva-portal.org/smash/record.jsf?pid=diva2%3A1735076 "Systematic Evaluation Of Secret Management In Kubernetes"
+[9]: https://www.researchgate.net/publication/379435761_Unified_Secret_Management_Across_Cloud_Platforms_a_Strategy_for_Secure_Credential_Storage_and_Access "Unified Secret Management Across Cloud Platforms"
+[12]: https://arxiv.org/abs/2411.16639 "K8s Pro Sentinel: Extend Secret Security in Kubernetes Cluster"
+[13]: https://www.mdpi.com/2624-800X/5/2/30 "Security Hardening and Compliance Assessment of Kubernetes Control Plane and Workloads"
+[14]: https://www.mdpi.com/1424-8220/23/7/3413 "Access Control Design Practice and Solutions in Cloud-Native Architecture"
+[15]: https://research.google/pubs/beyondcorp-a-new-approach-to-enterprise-security/ "BeyondCorp: A New Approach to Enterprise Security"
+[16]: https://www.usenix.org/publications/login/spring2016/osborn "BeyondCorp: Design to Deployment at Google"
+[17]: https://www.ijcttjournal.org/2025/Volume-73%20Issue-4/IJCTT-V73I4P114.pdf "Zero Trust Architecture in Cloud-Native Environments"
+[18]: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5259339 "Implementing Zero Trust Architecture in Cloud-Native Environments"
+[20]: https://arxiv.org/html/2504.14760v1 "Establishing Workload Identity for Zero Trust CI/CD"
+[21]: https://zenodo.org/records/15387226 "Zero Trust Automation: SPIFFE/SPIRE for Identity Federation"

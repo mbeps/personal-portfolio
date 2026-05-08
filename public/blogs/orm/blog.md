@@ -51,9 +51,9 @@ This report provides a rigorous analysis of the ORM landscape. It examines the t
 
 # 2 - Core Theory: The Object-Relational Impedance Mismatch
 
-The foundational problem that all ORMs attempt to solve is formally known as the **Object-Relational Impedance Mismatch**. This term, borrowed from electrical engineering, describes the inherent inefficiency and complexity arising when two systems with different operating characteristics are connected. In the context of software, it refers to the conceptual and technical difficulties encountered when a Relational Database Management System (RDBMS) is served by an object-oriented programming language. [1]
+The foundational problem that all ORMs attempt to solve is formally known as the **Object-Relational Impedance Mismatch**. This term, borrowed from electrical engineering, describes the inherent inefficiency and complexity arising when two systems with different operating characteristics are connected. In the context of software, it refers to the conceptual and technical difficulties encountered when a Relational Database Management System (RDBMS) is served by an object-oriented programming language.[1]
 
-The mismatch is not a single problem but a collection of four distinct sub-problems: Granularity, Subtype (Inheritance), Identity, and Association. [1]
+The mismatch is not a single problem but a collection of four distinct sub-problems: Granularity, Subtype (Inheritance), Identity, and Association.[1]
 
 ## 2.1 - The Mismatch of Granularity
 
@@ -367,7 +367,7 @@ An application needs to display a list of 100 authors and the title of their lat
 3.  **Query N:** The ORM detects the book is not loaded and issues `SELECT * FROM books WHERE author_id = ?`. This happens 100 times.
 
 **Result:**
-The database receives 101 queries ($1 + N$) instead of 1. This creates massive network latency ("chattiness"). [2]
+The database receives 101 queries ($1 + N$) instead of 1. This creates massive network latency ("chattiness").[2]
 
 **Solutions:**
 
@@ -385,7 +385,7 @@ If an application eagerly fetches a User, their Posts, and the Comments on those
   * Each Post has 10 Comments.
   * **Result:** $1 \times 10 \times 10 = 100$ rows returned from the database for a single user.
 
-The ORM must deduplicate this data in memory to reconstruct the object graph. This consumes significant application memory and bandwidth. [2]
+The ORM must deduplicate this data in memory to reconstruct the object graph. This consumes significant application memory and bandwidth.[2]
 
 
 # 7 - Modern Implementations Case Studies
@@ -538,14 +538,14 @@ await db.transaction(async (tx) => {
 
 ## 9.1 - The Arguments for ORM
 
-  * **Productivity:** For standard applications, ORMs reduce the code volume by 70-80%.1
+  * **Productivity:** For standard applications, ORMs reduce the code volume by 70-80%.[1]
   * **Refactoring Safety:** Renaming a column in an Entity class (with modern IDEs) is safer than hunting for string literals in SQL queries.
   * **Security:** ORMs use Parameterised Queries by default, providing robust protection against SQL Injection attacks.
   * **Database Agnosticism:** While rarely utilised, ORMs allow applications to swap dialect (e.g., MySQL to PostgreSQL) without rewriting queries.
 
 ## 9.2 - The Arguments Against ORM
 
-  * **Performance Opacity:** The "Black Box" nature often hides inefficient queries. A simple LINQ or JPQL statement might generate a 5-table join or a subquery scan that kills performance. [2];[3]
+  * **Performance Opacity:** The "Black Box" nature often hides inefficient queries. A simple LINQ or JPQL statement might generate a 5-table join or a subquery scan that kills performance.[2];[3];[4]
   * **The Learning Cliff:** Learning the idiosyncrasies of Hibernate or Entity Framework (cache levels, flush modes, proxy behaviour) can take as long as learning SQL itself.
   * **Lowest Common Denominator:** To support multiple databases, ORMs often avoid using powerful, vendor-specific features (e.g., Postgres specific JSONB operators or Window Functions), forcing developers to drop to raw SQL anyway.
 
@@ -569,15 +569,15 @@ Ultimately, the ORM is a tool for managing complexity. Used correctly, it is a f
 
 # References
 
-1. Ireland, C., Bowers, D., Newton, M., & Waugh, K. (2009). [A classification of object–relational impedance mismatch](https://doi.org/10.1109/DBKDA.2009.11). *First International Conference on Advances in Databases, Knowledge, and Data Applications (DBKDA 2009).* ([Open University][1])
+1. Ireland, C., Bowers, D., *et al.* (2009). [A classification of object–relational impedance mismatch](https://doi.org/10.1109/DBKDA.2009.11). ([Open University][1])
 
-2. Colley, D., Stanier, C., & Asaduzzaman, M. (2018). [The impact of object–relational mapping frameworks on relational query performance](https://doi.org/10.1109/iCCECOME.2018.8659222). *2018 International Conference on Computing, Electronics & Communications Engineering (iCCECE 2018).* ([ResearchGate][2])
+2. Colley, D., Stanier, C., *et al.* (2018). [The impact of object–relational mapping frameworks on relational query performance](https://doi.org/10.1109/iCCECOME.2018.8659222). ([ResearchGate][2])
 
-3. Hasan, M. R., Hasan, M. R., & Bagheri, H. (2025). [Unlocking optimal ORM database designs: Accelerated tradeoff analysis with transformers](https://doi.org/10.1145/3729344). *Proceedings of the ACM on Software Engineering (FSE 2025),* 2(FSE), 1639–1662. ([ACM Digital Library][3])
+3. Hasan, M. R., Hasan, M. R., *et al.* (2025). [Unlocking optimal ORM database designs: Accelerated tradeoff analysis with transformers](https://doi.org/10.1145/3729344). ([ACM Digital Library][3])
 
-4. Cvetković, S., & Janković, D. (2010). [A comparative study of the features and performance of ORM tools in a .NET environment](https://doi.org/10.1007/978-3-642-16092-9_14). *Objects and Databases (ICOODB 2010), Lecture Notes in Computer Science, 6348,* 147–158. ([SpringerLink][4])
+4. Cvetković, S., & Janković, D. (2010). [A comparative study of the features and performance of ORM tools in a .NET environment](https://doi.org/10.1007/978-3-642-16092-9_14). ([SpringerLink][4])
 
-[1]: https://oro.open.ac.uk/18644/?utm_source=chatgpt.com "A classification of object-relational impedance mismatch."
-[2]: https://www.researchgate.net/publication/328488840_The_Impact_of_Object-Relational_Mapping_Frameworks_on_Relational_Query_Performance?utm_source=chatgpt.com "The Impact of Object-Relational Mapping Frameworks on ..."
-[3]: https://dl.acm.org/doi/10.1145/3729344?utm_source=chatgpt.com "Unlocking Optimal ORM Database Designs: Accelerated ..."
-[4]: https://link.springer.com/chapter/10.1007/978-3-642-16092-9_14?utm_source=chatgpt.com "A Comparative Study of the Features and Performance ..."
+[1]: https://oro.open.ac.uk/18644/ "A classification of object-relational impedance mismatch"
+[2]: https://www.researchgate.net/publication/328488840_The_Impact_of_Object-Relational_Mapping_Frameworks_on_Relational_Query_Performance "The impact of object-relational mapping frameworks on relational query performance"
+[3]: https://dl.acm.org/doi/10.1145/3729344 "Unlocking Optimal ORM Database Designs: Accelerated Tradeoff Analysis with Transformers"
+[4]: https://link.springer.com/chapter/10.1007/978-3-642-16092-9_14 "A Comparative Study of the Features and Performance of ORM Tools in a .NET Environment"

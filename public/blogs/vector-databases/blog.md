@@ -1,47 +1,47 @@
 - [1 - Introduction and Historical Context](#1---introduction-and-historical-context)
 - [2 - Mathematical Foundations of Vector Spaces](#2---mathematical-foundations-of-vector-spaces)
-	- [2.1 - Vector Space Models and Semantics](#21---vector-space-models-and-semantics)
-	- [2.2 - The Curse of Dimensionality](#22---the-curse-of-dimensionality)
+  - [2.1 - Vector Space Models and Semantics](#21---vector-space-models-and-semantics)
+  - [2.2 - The Curse of Dimensionality](#22---the-curse-of-dimensionality)
 - [3 - Distance Metrics and Similarity Measures](#3---distance-metrics-and-similarity-measures)
-	- [3.1 - Euclidean Distance ($L\_2$ Norm)](#31---euclidean-distance-l_2-norm)
-	- [3.2 - Cosine Similarity](#32---cosine-similarity)
-	- [3.3 - Dot Product (Inner Product)](#33---dot-product-inner-product)
-	- [3.4 - Manhattan Distance ($L\_1$ Norm)](#34---manhattan-distance-l_1-norm)
-	- [3.5 - Hamming Distance](#35---hamming-distance)
+  - [3.1 - Euclidean Distance ($L\_2$ Norm)](#31---euclidean-distance-l_2-norm)
+  - [3.2 - Cosine Similarity](#32---cosine-similarity)
+  - [3.3 - Dot Product (Inner Product)](#33---dot-product-inner-product)
+  - [3.4 - Manhattan Distance ($L\_1$ Norm)](#34---manhattan-distance-l_1-norm)
+  - [3.5 - Hamming Distance](#35---hamming-distance)
 - [4 - Search Paradigms: Exact vs. Approximate](#4---search-paradigms-exact-vs-approximate)
-	- [4.1 - Exact k-Nearest Neighbour (k-NN)](#41---exact-k-nearest-neighbour-k-nn)
-	- [4.2 - Approximate Nearest Neighbour (ANN)](#42---approximate-nearest-neighbour-ann)
+  - [4.1 - Exact k-Nearest Neighbour (k-NN)](#41---exact-k-nearest-neighbour-k-nn)
+  - [4.2 - Approximate Nearest Neighbour (ANN)](#42---approximate-nearest-neighbour-ann)
 - [5 - Indexing Algorithms: The Mathematical Engines](#5---indexing-algorithms-the-mathematical-engines)
-	- [5.1 - Inverted File Index (IVF)](#51---inverted-file-index-ivf)
-		- [5.1.1 - Voronoi Tessellation and Centroids](#511---voronoi-tessellation-and-centroids)
-		- [5.1.2 - The Search Procedure](#512---the-search-procedure)
-		- [5.1.3 - Theoretical Insight and Complexity](#513---theoretical-insight-and-complexity)
-	- [5.2 - Hierarchical Navigable Small Worlds (HNSW)](#52---hierarchical-navigable-small-worlds-hnsw)
-		- [5.2.1 - Graph Structure and Skip Lists](#521---graph-structure-and-skip-lists)
-		- [5.2.2 - Greedy Search Traversal (Mathematical Working)](#522---greedy-search-traversal-mathematical-working)
-		- [5.2.3 - Complexity Analysis](#523---complexity-analysis)
-	- [5.3 - Product Quantization (PQ)](#53---product-quantization-pq)
-		- [5.3.1 - Subspace Decomposition](#531---subspace-decomposition)
-		- [5.3.2 - Quantization and Codebooks](#532---quantization-and-codebooks)
-		- [5.3.3 - Asymmetric Distance Computation (ADC)](#533---asymmetric-distance-computation-adc)
-	- [5.4 - Locality Sensitive Hashing (LSH)](#54---locality-sensitive-hashing-lsh)
-		- [5.4.1 - p-Stable Distributions](#541---p-stable-distributions)
-		- [5.4.2 - The Hash Function](#542---the-hash-function)
-		- [5.4.3 - Multi-Probe LSH](#543---multi-probe-lsh)
+  - [5.1 - Inverted File Index (IVF)](#51---inverted-file-index-ivf)
+    - [5.1.1 - Voronoi Tessellation and Centroids](#511---voronoi-tessellation-and-centroids)
+    - [5.1.2 - The Search Procedure](#512---the-search-procedure)
+    - [5.1.3 - Theoretical Insight and Complexity](#513---theoretical-insight-and-complexity)
+  - [5.2 - Hierarchical Navigable Small Worlds (HNSW)](#52---hierarchical-navigable-small-worlds-hnsw)
+    - [5.2.1 - Graph Structure and Skip Lists](#521---graph-structure-and-skip-lists)
+    - [5.2.2 - Greedy Search Traversal (Mathematical Working)](#522---greedy-search-traversal-mathematical-working)
+    - [5.2.3 - Complexity Analysis](#523---complexity-analysis)
+  - [5.3 - Product Quantization (PQ)](#53---product-quantization-pq)
+    - [5.3.1 - Subspace Decomposition](#531---subspace-decomposition)
+    - [5.3.2 - Quantization and Codebooks](#532---quantization-and-codebooks)
+    - [5.3.3 - Asymmetric Distance Computation (ADC)](#533---asymmetric-distance-computation-adc)
+  - [5.4 - Locality Sensitive Hashing (LSH)](#54---locality-sensitive-hashing-lsh)
+    - [5.4.1 - p-Stable Distributions](#541---p-stable-distributions)
+    - [5.4.2 - The Hash Function](#542---the-hash-function)
+    - [5.4.3 - Multi-Probe LSH](#543---multi-probe-lsh)
 - [6 - Core Architecture of Vector Databases](#6---core-architecture-of-vector-databases)
-	- [6.1 - High-Level Components](#61---high-level-components)
-	- [6.2 - The Write Path and Storage Engines](#62---the-write-path-and-storage-engines)
-	- [6.3 - Consistency Models and Distributed Consensus](#63---consistency-models-and-distributed-consensus)
-	- [6.4 - Hybrid Search and Filtering](#64---hybrid-search-and-filtering)
+  - [6.1 - High-Level Components](#61---high-level-components)
+  - [6.2 - The Write Path and Storage Engines](#62---the-write-path-and-storage-engines)
+  - [6.3 - Consistency Models and Distributed Consensus](#63---consistency-models-and-distributed-consensus)
+  - [6.4 - Hybrid Search and Filtering](#64---hybrid-search-and-filtering)
 - [7 - Computational Examples](#7---computational-examples)
-	- [7.1 - Example 1: Distance Calculation](#71---example-1-distance-calculation)
-	- [7.2 - Example 2: Product Quantization (PQ) Trace](#72---example-2-product-quantization-pq-trace)
-	- [7.3 - Example 3: HNSW Greedy Routing](#73---example-3-hnsw-greedy-routing)
+  - [7.1 - Example 1: Distance Calculation](#71---example-1-distance-calculation)
+  - [7.2 - Example 2: Product Quantization (PQ) Trace](#72---example-2-product-quantization-pq-trace)
+  - [7.3 - Example 3: HNSW Greedy Routing](#73---example-3-hnsw-greedy-routing)
 - [8 - Comparative Analysis of Modern Implementations](#8---comparative-analysis-of-modern-implementations)
 - [9 - Operational Considerations and Future Outlook](#9---operational-considerations-and-future-outlook)
-	- [9.1 - Cost and Memory Management](#91---cost-and-memory-management)
-	- [9.2 - Hardware Acceleration](#92---hardware-acceleration)
-	- [9.3 - The Move to Sparse and Hybrid Search](#93---the-move-to-sparse-and-hybrid-search)
+  - [9.1 - Cost and Memory Management](#91---cost-and-memory-management)
+  - [9.2 - Hardware Acceleration](#92---hardware-acceleration)
+  - [9.3 - The Move to Sparse and Hybrid Search](#93---the-move-to-sparse-and-hybrid-search)
 - [10 - Conclusion](#10---conclusion)
 - [References](#references)
 
@@ -550,21 +550,21 @@ As embedding models grow larger and datasets expand into the trillions, the fiel
 
 # References
 
-1. Malkov, Y. A., & Yashunin, D. A. (2020). Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs. *IEEE Transactions on Pattern Analysis and Machine Intelligence*, 42(4), 824–836. [https://doi.org/10.1109/TPAMI.2018.2889473](https://doi.org/10.1109/TPAMI.2018.2889473) ([ACM Digital Library][1])
+1. Malkov, Y. A., & Yashunin, D. A. (2020). [Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs](https://doi.org/10.1109/TPAMI.2018.2889473). *IEEE Transactions on Pattern Analysis and Machine Intelligence*, 42(4), 824–836. ([ACM Digital Library][1])
 
-2. Jégou, H., Douze, M., & Schmid, C. (2011). Product quantization for nearest neighbor search. *IEEE Transactions on Pattern Analysis and Machine Intelligence*, 33(1), 117–128. [https://doi.org/10.1109/TPAMI.2010.57](https://doi.org/10.1109/TPAMI.2010.57) ([computer.org][2])
+2. Jégou, H., Douze, M., & Schmid, C. (2011). [Product quantization for nearest neighbor search](https://doi.org/10.1109/TPAMI.2010.57). *IEEE Transactions on Pattern Analysis and Machine Intelligence*, 33(1), 117–128. ([computer.org][2])
 
-3. Datar, M., Immorlica, N., Indyk, P., & Mirrokni, V. S. (2004). Locality-sensitive hashing scheme based on p-stable distributions. In *Proceedings of the 20th Annual Symposium on Computational Geometry (SCG ’04)* (pp. 253–262). [https://doi.org/10.1145/997817.997857](https://doi.org/10.1145/997817.997857) ([ACM Digital Library][3])
+3. Datar, M., Immorlica, N., Indyk, P., & Mirrokni, V. S. (2004). [Locality-sensitive hashing scheme based on p-stable distributions](https://doi.org/10.1145/997817.997857). In *Proceedings of the 20th Annual Symposium on Computational Geometry (SCG ’04)* (pp. 253–262). ([ACM Digital Library][3])
 
-4. Fu, C., Xiang, C., Wang, C., & Li, D. (2019). Fast approximate nearest neighbor search with the navigating spreading-out graph. *Proceedings of the VLDB Endowment*, 12(5), 461–474. [https://www.vldb.org/pvldb/vol12/p461-fu.pdf](https://www.vldb.org/pvldb/vol12/p461-fu.pdf) ([VLDB][4])
+4. Fu, C., Xiang, C., Wang, C., & Li, D. (2019). [Fast approximate nearest neighbor search with the navigating spreading-out graph](https://www.vldb.org/pvldb/vol12/p461-fu.pdf). *Proceedings of the VLDB Endowment*, 12(5), 461–474. ([VLDB][4])
 
-5. Subramanya, S. J., Devvrit, Kadekodi, R., Krishnaswamy, R., & Simhadri, H. V. (2019). DiskANN: Fast accurate billion-point nearest neighbor search on a single node. In *Advances in Neural Information Processing Systems 32 (NeurIPS 2019)*. [https://papers.nips.cc/paper_files/paper/2019/file/09853c7fb1d3f8ee67a61b6bf4a7f8e6-Paper.pdf](https://papers.nips.cc/paper_files/paper/2019/file/09853c7fb1d3f8ee67a61b6bf4a7f8e6-Paper.pdf) ([NeurIPS Proceedings][5])
+5. Subramanya, S. J., Devvrit, Kadekodi, R., Krishnaswamy, R., & Simhadri, H. V. (2019). [DiskANN: Fast accurate billion-point nearest neighbor search on a single node](https://papers.nips.cc/paper_files/paper/2019/file/09853c7fb1d3f8ee67a61b6bf4a7f8e6-Paper.pdf). In *Advances in Neural Information Processing Systems 32 (NeurIPS 2019)*. ([NeurIPS Proceedings][5])
 
-6. Aumüller, M., Bernhardsson, E., & Faithfull, A. (2018). ANN-Benchmarks: A benchmarking tool for approximate nearest neighbor algorithms. *Proceedings of the 2017 International Conference on Similarity Search and Applications (SISAP)*; extended version in *Information Systems*, 87, 101738 (2020). [https://arxiv.org/abs/1807.05614](https://arxiv.org/abs/1807.05614) ([arxiv.org][6])
+6. Aumüller, M., Bernhardsson, E., & Faithfull, A. (2018). [ANN-Benchmarks: A benchmarking tool for approximate nearest neighbor algorithms](https://arxiv.org/abs/1807.05614). *Information Systems*, 87, 101738. ([arXiv][6])
 
-[1]: https://dl.acm.org/doi/10.1109/TPAMI.2018.2889473?utm_source=chatgpt.com "Efficient and Robust Approximate Nearest Neighbor ..."
-[2]: https://www.computer.org/csdl/journal/tp/2011/01/ttp2011010117/13rRUxASuU9?utm_source=chatgpt.com "Product Quantization for Nearest Neighbor Search"
-[3]: https://dl.acm.org/doi/10.1145/997817.997857?utm_source=chatgpt.com "Locality-sensitive hashing scheme based on p-stable ..."
-[4]: https://www.vldb.org/pvldb/vol12/p461-fu.pdf?utm_source=chatgpt.com "Fast Approximate Nearest Neighbor Search With The ..."
-[5]: https://papers.nips.cc/paper/9527-rand-nsg-fast-accurate-billion-point-nearest-neighbor-search-on-a-single-node?utm_source=chatgpt.com "DiskANN: Fast Accurate Billion-point Nearest Neighbor ..."
-[6]: https://arxiv.org/abs/1807.05614?utm_source=chatgpt.com "ANN-Benchmarks: A Benchmarking Tool for Approximate Nearest Neighbor Algorithms"
+[1]: https://dl.acm.org/doi/10.1109/TPAMI.2018.2889473 "Efficient and Robust Approximate Nearest Neighbor Search using HNSW"
+[2]: https://www.computer.org/csdl/journal/tp/2011/01/ttp2011010117/13rRUxASuU9 "Product Quantization for Nearest Neighbor Search"
+[3]: https://dl.acm.org/doi/10.1145/997817.997857 "Locality-sensitive hashing scheme based on p-stable distributions"
+[4]: https://www.vldb.org/pvldb/vol12/p461-fu.pdf "Fast Approximate Nearest Neighbor Search With The Navigating Spreading-out Graph"
+[5]: https://papers.nips.cc/paper_files/paper/2019/file/09853c7fb1d3f8ee67a61b6bf4a7f8e6-Paper.pdf "DiskANN: Fast Accurate Billion-point Nearest Neighbor Search on a Single Node"
+[6]: https://arxiv.org/abs/1807.05614 "ANN-Benchmarks: A Benchmarking Tool for Approximate Nearest Neighbor Algorithms"

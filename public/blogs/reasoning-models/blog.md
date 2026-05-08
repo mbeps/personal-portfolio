@@ -1,27 +1,27 @@
 - [1 - Introduction: The Imperative for Reasoning in LLMs](#1---introduction-the-imperative-for-reasoning-in-llms)
-	- [1.1 - Beyond Next-Token Prediction: The Limitations of Standard LLMs](#11---beyond-next-token-prediction-the-limitations-of-standard-llms)
-	- [1.2 - Defining "Reasoning" in the Context of LLMs](#12---defining-reasoning-in-the-context-of-llms)
-	- [1.3 - The Emergence of Chain-of-Thought as a Foundational Shift](#13---the-emergence-of-chain-of-thought-as-a-foundational-shift)
+  - [1.1 - Beyond Next-Token Prediction: The Limitations of Standard LLMs](#11---beyond-next-token-prediction-the-limitations-of-standard-llms)
+  - [1.2 - Defining "Reasoning" in the Context of LLMs](#12---defining-reasoning-in-the-context-of-llms)
+  - [1.3 - The Emergence of Chain-of-Thought as a Foundational Shift](#13---the-emergence-of-chain-of-thought-as-a-foundational-shift)
 - [2 - Overview of Modern Reasoning Models and Architectures](#2---overview-of-modern-reasoning-models-and-architectures)
 - [3 - Foundational Techniques for Eliciting Reasoning](#3---foundational-techniques-for-eliciting-reasoning)
-	- [3.1 - Chain-of-Thought (CoT): Decomposing Complexity](#31---chain-of-thought-cot-decomposing-complexity)
-	- [3.2 - Self-Consistency: Enhancing Robustness through Consensus](#32---self-consistency-enhancing-robustness-through-consensus)
+  - [3.1 - Chain-of-Thought (CoT): Decomposing Complexity](#31---chain-of-thought-cot-decomposing-complexity)
+  - [3.2 - Self-Consistency: Enhancing Robustness through Consensus](#32---self-consistency-enhancing-robustness-through-consensus)
 - [4 - Advanced Reasoning Frameworks and Strategies](#4---advanced-reasoning-frameworks-and-strategies)
-	- [4.1 - Tree of Thoughts (ToT): Non-Linear Problem Exploration](#41---tree-of-thoughts-tot-non-linear-problem-exploration)
-	- [4.2 - Mitigating Latency and Cost: Efficiency-Focused Methods](#42---mitigating-latency-and-cost-efficiency-focused-methods)
-	- [Table 1: A Comparative Overview of Core Reasoning Techniques](#table-1-a-comparative-overview-of-core-reasoning-techniques)
+  - [4.1 - Tree of Thoughts (ToT): Non-Linear Problem Exploration](#41---tree-of-thoughts-tot-non-linear-problem-exploration)
+  - [4.2 - Mitigating Latency and Cost: Efficiency-Focused Methods](#42---mitigating-latency-and-cost-efficiency-focused-methods)
+  - [Table 1: A Comparative Overview of Core Reasoning Techniques](#table-1-a-comparative-overview-of-core-reasoning-techniques)
 - [5 - The Modern Reasoning Model: Training Paradigms and Architectures](#5---the-modern-reasoning-model-training-paradigms-and-architectures)
-	- [5.1 - The Shift to Reinforcement Learning (RL)](#51---the-shift-to-reinforcement-learning-rl)
-	- [5.2 - Case Studies in RL-Trained Models](#52---case-studies-in-rl-trained-models)
-	- [5.3 - Architectures for Inference-Time Reasoning](#53---architectures-for-inference-time-reasoning)
+  - [5.1 - The Shift to Reinforcement Learning (RL)](#51---the-shift-to-reinforcement-learning-rl)
+  - [5.2 - Case Studies in RL-Trained Models](#52---case-studies-in-rl-trained-models)
+  - [5.3 - Architectures for Inference-Time Reasoning](#53---architectures-for-inference-time-reasoning)
 - [6 - Comparative Performance Analysis](#6---comparative-performance-analysis)
-	- [6.1 - Performance on Core Reasoning Benchmarks](#61---performance-on-core-reasoning-benchmarks)
-	- [Table 2: Performance of State-of-the-Art Reasoning Models on Key Benchmarks](#table-2-performance-of-state-of-the-art-reasoning-models-on-key-benchmarks)
-	- [6.2 - Multilingual Reasoning Capabilities](#62---multilingual-reasoning-capabilities)
-	- [6.3 - Reasoning vs. Non-Reasoning Models: A Qualitative Comparison](#63---reasoning-vs-non-reasoning-models-a-qualitative-comparison)
+  - [6.1 - Performance on Core Reasoning Benchmarks](#61---performance-on-core-reasoning-benchmarks)
+  - [Table 2: Performance of State-of-the-Art Reasoning Models on Key Benchmarks](#table-2-performance-of-state-of-the-art-reasoning-models-on-key-benchmarks)
+  - [6.2 - Multilingual Reasoning Capabilities](#62---multilingual-reasoning-capabilities)
+  - [6.3 - Reasoning vs. Non-Reasoning Models: A Qualitative Comparison](#63---reasoning-vs-non-reasoning-models-a-qualitative-comparison)
 - [7 - Critical Evaluation: Advantages, Disadvantages, and Future Directions](#7---critical-evaluation-advantages-disadvantages-and-future-directions)
-	- [7.1 - The Cost-Capability Trade-Off](#71---the-cost-capability-trade-off)
-	- [7.2 - The Specialisation vs. Generalisation Dilemma](#72---the-specialisation-vs-generalisation-dilemma)
+  - [7.1 - The Cost-Capability Trade-Off](#71---the-cost-capability-trade-off)
+  - [7.2 - The Specialisation vs. Generalisation Dilemma](#72---the-specialisation-vs-generalisation-dilemma)
 - [8 - Future Outlook](#8---future-outlook)
 - [9 - Conclusion](#9---conclusion)
 - [10 - References](#10---references)
@@ -31,7 +31,7 @@
 
 ## 1.1 - Beyond Next-Token Prediction: The Limitations of Standard LLMs
 
-**Standard Large Language Models (LLMs)**, architecturally rooted in the Transformer model, are fundamentally trained on the objective of next-token prediction. This process, which involves predicting the next word in a sequence based on the preceding context from vast datasets, enables these models to achieve remarkable fluency, generate coherent text, and recall a wide array of factual information. However, this core competency, while powerful for language-centric tasks, proves insufficient for problems that demand multi-step, logical deduction. When confronted with tasks in domains such as arithmetic, commonsense reasoning, and symbolic manipulation, a model that simply predicts the most statistically probable next word often fails to construct a valid solution path.
+**Standard Large Language Models (LLMs)**, architecturally rooted in the Transformer model, are fundamentally trained on the objective of next-token prediction.[1] This process, which involves predicting the next word in a sequence based on the preceding context from vast datasets, enables these models to achieve remarkable fluency, generate coherent text, and recall a wide array of factual information. However, this core competency, while powerful for language-centric tasks, proves insufficient for problems that demand multi-step, logical deduction. When confronted with tasks in domains such as arithmetic, commonsense reasoning, and symbolic manipulation, a model that simply predicts the most statistically probable next word often fails to construct a valid solution path.
 
 This limitation is empirically demonstrated by the phenomenon of "flat scaling curves" for reasoning tasks. While increasing a model's parameter count generally improves performance on many language tasks, for complex reasoning, simply making the model larger does not yield significant gains without a fundamental shift in methodology. This indicates that the capability for complex reasoning is not an automatic byproduct of scale in standard architectures; it must be explicitly elicited or engineered.
 
@@ -41,7 +41,7 @@ For the purposes of this report, **"reasoning"** in the context of LLMs is defin
 
 ## 1.3 - The Emergence of Chain-of-Thought as a Foundational Shift
 
-The field of LLM reasoning underwent a significant transformation with the introduction of **Chain-of-Thought (CoT)** prompting. This technique was the first to reliably "unlock" the latent reasoning abilities of sufficiently large models. Researchers discovered that by providing a model with a few examples (or "exemplars") of problems being solved in a step-by-step manner, the model could be prompted to generate its own reasoning paths for new, unseen problems. This simple method led to dramatic performance improvements on a range of tasks that were previously considered intractable for LLMs, marking a pivotal moment in the development of more capable AI systems. The success of CoT demonstrated that reasoning was an emergent property of scale that could be elicited with the right approach, setting the stage for more advanced research into how these capabilities could be further enhanced and controlled.
+The field of LLM reasoning underwent a significant transformation with the introduction of **Chain-of-Thought (CoT)** prompting. This technique was the first to reliably "unlock" the latent reasoning abilities of sufficiently large models. Researchers discovered that by providing a model with a few examples (or "exemplars") of problems being solved in a step-by-step manner, the model could be prompted to generate its own reasoning paths for new, unseen problems. This simple method led to dramatic performance improvements on a range of tasks that were previously considered intractable for LLMs, marking a pivotal moment in the development of more capable AI systems.[2] The success of CoT demonstrated that reasoning was an emergent property of scale that could be elicited with the right approach, setting the stage for more advanced research into how these capabilities could be further enhanced and controlled.
 
 **Standard Prompting**
 ```mermaid
@@ -81,7 +81,7 @@ Two primary strategies are used to implement CoT:
   * **Few-shot CoT:** This is the most common and robust method. The model is provided with a few examples, or exemplars, within the prompt. Each exemplar consists of a question, a detailed step-by-step reasoning chain that solves it, and the final answer. The model then uses these examples as a template to generate its own reasoning for a new question.
   * **Zero-shot CoT:** This simpler technique does not require hand-crafted examples. Instead, a simple directive such as "Think step by step" is appended to the user's question. For sufficiently capable models, this instruction is often enough to trigger the generation of a reasoning chain, albeit sometimes less reliably than the few-shot approach.
 
-A critical finding is that CoT reasoning is an emergent property of model scale. Experiments have consistently shown that the performance benefits of CoT only manifest in models with a sufficient number of parameters, typically around 100 billion or more. When applied to smaller models, the technique is not only ineffective but can actually degrade performance, as these models may produce fluent-sounding but logically flawed or incoherent reasoning chains.
+A critical finding is that CoT reasoning is an emergent property of model scale. Experiments have consistently shown that the performance benefits of CoT only manifest in models with a sufficient number of parameters, typically around 100 billion or more.[2] When applied to smaller models, the technique is not only ineffective but can actually degrade performance, as these models may produce fluent-sounding but logically flawed or incoherent reasoning chains.
 
 ## 3.2 - Self-Consistency: Enhancing Robustness through Consensus
 
@@ -103,7 +103,7 @@ graph TD
     Vote --> Final[Final Answer: A]
 ```
 
-This method acts as an ensemble at the decoding stage. It reduces the probability that a single, random error in one generation path will dictate the final outcome. The majority vote implicitly assumes that the model is more likely to generate correct paths than any single specific incorrect path. Even if many of the generated paths are flawed, they are likely to be flawed in different ways, leading to a variety of incorrect answers. The correct paths, however, should all produce the same correct answer, making it the most frequent and thus the most likely to be chosen. This approach has been shown to yield substantial performance improvements over standard CoT on various benchmarks, including a **+17.9%** gain on GSM8K and a **+11.0%** gain on SVAMP.
+This method acts as an ensemble at the decoding stage. It reduces the probability that a single, random error in one generation path will dictate the final outcome. The majority vote implicitly assumes that the model is more likely to generate correct paths than any single specific incorrect path. Even if many of the generated paths are flawed, they are likely to be flawed in different ways, leading to a variety of incorrect answers. The correct paths, however, should all produce the same correct answer, making it the most frequent and thus the most likely to be chosen. This approach has been shown to yield substantial performance improvements over standard CoT on various benchmarks, including a **+17.9%** gain on GSM8K and a **+11.0%** gain on SVAMP.[3]
 
 The effectiveness of self-consistency comes with an inherent trade-off. It sacrifices the speed and efficiency of a single generation for the robustness and error-correction properties of an ensemble. The increased computational cost is a necessary feature of this technique, not an incidental one. Furthermore, theoretical analysis reveals that while self-consistency reduces model error by exploring multiple solution pathways, it can be subject to high estimation error, requiring a large number of samples to ensure the correct answer emerges as the most frequent one, which further exacerbates the computational burden.
 
@@ -139,7 +139,7 @@ The core components of the ToT framework include:
   * **A checker module** that evaluates the generated thoughts. This module acts as a heuristic function, assessing the validity of a step (e.g., in a Sudoku puzzle) or its perceived promise in leading towards a solution.
   * **A ToT controller** that manages the search process. It employs a search algorithm, such as breadth-first search (BFS) or depth-first search (DFS), to navigate the tree of thoughts, deciding which branches to explore further.
 
-The most crucial feature of ToT is its ability to backtrack. If a reasoning path is deemed invalid by the checker or fails to make progress, the controller can discard that branch and return to a previous node in the tree to explore an alternative path. This capacity for systematic exploration and error correction allows ToT to solve complex planning and puzzle-like tasks, such as the Game of 24, that are often intractable for linear CoT methods.
+The most crucial feature of ToT is its ability to backtrack. If a reasoning path is deemed invalid by the checker or fails to make progress, the controller can discard that branch and return to a previous node in the tree to explore an alternative path. This capacity for systematic exploration and error correction allows ToT to solve complex planning and puzzle-like tasks, such as the Game of 24, that are often intractable for linear CoT methods.[4]
 
 ## 4.2 - Mitigating Latency and Cost: Efficiency-Focused Methods
 
@@ -148,7 +148,7 @@ The initial wave of reasoning techniques, including CoT, Self-Consistency, and T
 Two notable efficiency-focused methods are:
 
   * **Chain of Draft (CoD):** This technique directly addresses the verbosity and high token cost of standard CoT. It is inspired by the human tendency to jot down only essential intermediate results or "drafts" when solving a problem, rather than writing out a full prose explanation at each step. CoD prompts the model to generate minimalistic yet informative reasoning outputs that capture the key steps and intermediate values. Experiments show that this approach can significantly reduce latency and cost, often without any loss in accuracy, by challenging the assumption that more verbose reasoning is always better.
-  * **Confidence-Informed Self-Consistency (CISC):** This method targets the high computational cost of the self-consistency technique, which requires generating a large number of sample paths to be effective. CISC introduces an additional step where, after generating each reasoning path, the model is prompted to evaluate its confidence in the correctness of that path. The final answer is then determined through a weighted majority vote, where paths with higher confidence scores are given more weight. This allows the system to converge on the correct answer with significantly fewer samples. On average, CISC can achieve accuracy comparable to standard self-consistency while reducing the required number of reasoning paths by over 40%.
+  * **Confidence-Informed Self-Consistency (CISC):** This method targets the high computational cost of the self-consistency technique, which requires generating a large number of sample paths to be effective. CISC introduces an additional step where, after generating each reasoning path, the model is prompted to evaluate its confidence in the correctness of that path. The final answer is then determined through a weighted majority vote, where paths with higher confidence scores are given more weight. This allows the system to converge on the correct answer with significantly fewer samples. On average, CISC can achieve accuracy comparable to standard self-consistency while reducing the required number of reasoning paths by over 40%.[6]
 
 These optimisation techniques are critical for making advanced reasoning capabilities practical and scalable. They suggest a future where reasoning systems may employ a portfolio of strategies, dynamically selecting between high-accuracy, high-cost methods for difficult problems and high-efficiency, low-cost methods for simpler ones.
 
@@ -191,11 +191,11 @@ To implement this training, models like DeepSeek and Magistral have adopted effi
 The effectiveness of these RL-based training paradigms is best illustrated through the development of recent open-source reasoning models.
 
   * **DeepSeek R1:** The DeepSeek R1 family provides a clear demonstration of the power of RL for incentivising reasoning.
-    The initial model, DeepSeek-R1-Zero, was trained using a pure RLVR approach directly from the base model, with no initial SFT on reasoning data. This experiment proved that sophisticated reasoning behaviours, such as self-verification (revisiting and checking intermediate steps) and reflection (critiquing and refining its own process), could emerge autonomously through RL. During its training, the model's performance on the AIME 2024 benchmark increased from a baseline of 15.6% pass@1 to an impressive 71.0%.
+    The initial model, DeepSeek-R1-Zero, was trained using a pure RLVR approach directly from the base model, with no initial SFT on reasoning data. This experiment proved that sophisticated reasoning behaviours, such as self-verification (revisiting and checking intermediate steps) and reflection (critiquing and refining its own process), could emerge autonomously through RL. During its training, the model's performance on the AIME 2024 benchmark increased from a baseline of 15.6% pass@1 to an impressive 71.0%.[7]
     The flagship DeepSeek-R1 model builds upon this foundation with a more refined, multi-stage training pipeline. It begins with a "cold start", where the base model is first fine-tuned on a small set of high-quality, human-friendly CoT examples to improve readability and stabilise the initial RL process. This is followed by large-scale RL focused on reasoning tasks, and then further stages of SFT and RL for general alignment and safety.
 
   * **Mistral Magistral:** This model family was developed with the explicit goal of creating a reasoning model from the ground up using Mistral's own scalable RL pipeline, avoiding distillation from other proprietary models.
-    Magistral Medium was trained using pure RL on top of the existing Mistral Medium 3 model. This process alone resulted in a 50% increase in its pass@1 score on the AIME 2024 benchmark.
+    Magistral Medium was trained using pure RL on top of the existing Mistral Medium 3 model. This process alone resulted in a 50% increase in its pass@1 score on the AIME 2024 benchmark.[8]
     A core design principle for Magistral was to ensure high-fidelity multilingual reasoning. To achieve this, the RL training data included math and coding problems translated into several languages (including French, Spanish, German, and Chinese). A language consistency reward was added to the objective function, incentivising the model to generate its reasoning chain and final answer in the same language as the user's prompt.
 
 ## 5.3 - Architectures for Inference-Time Reasoning
@@ -234,7 +234,7 @@ Evaluating the capabilities of modern reasoning models requires a multi-faceted 
 A suite of standardised benchmarks has been established to quantitatively measure and compare the reasoning abilities of LLMs. Key benchmarks in this domain include:
 
   * **GSM8K (Grade School Math 8K):** A dataset of high-quality, linguistically diverse math word problems designed for grade-school level, which typically require 2 to 8 steps of arithmetic reasoning to solve.
-  * **MATH:** A more challenging dataset of competition mathematics problems, covering topics from pre-algebra to calculus, designed to test advanced mathematical problem-solving skills.
+  * **MATH:** A more challenging dataset of competition mathematics problems, covering topics from pre-algebra to calculus, designed to test advanced mathematical problem-solving skills.[11]
   * **AIME (American Invitational Mathematics Examination):** A high-school Olympiad-level mathematics competition used as a benchmark for advanced, multi-step reasoning capabilities.
   * **BBH (Big-Bench Hard):** A challenging subset of tasks from the BIG-Bench suite specifically selected to push the limits of current LLMs on complex reasoning problems.
 
@@ -260,7 +260,7 @@ The data in Table 2 highlights a crucial aspect of modern reasoning evaluation: 
 
 As LLMs become more globally deployed, their ability to reason effectively across multiple languages is a critical area of evaluation. Several leading models have been explicitly trained to address this challenge. The **Qwen2** series, for example, was pre-trained on a diverse corpus spanning approximately 30 languages. **Mistral's Magistral** model incorporated translated math and coding problems into its RL training data and used a language consistency reward to ensure it could reason natively in languages like French, Spanish, and German.
 
-Despite these dedicated efforts, empirical results show that a performance gap often persists between high-resource languages like English and others. The technical report for Magistral Medium, for instance, notes that its performance on translated versions of the AIME 2024 benchmark drops by 4.3% to 9.9% compared to its English performance. Similarly, the DeepSeek R1 report states that the model is primarily optimised for English and Chinese and may exhibit **"language mixing"** when prompted in other languages. This persistent gap suggests that reasoning in current LLMs is not a purely abstract, language-agnostic skill. Instead, it appears to be deeply entangled with the specific linguistic patterns and knowledge distributions present in the pre-training data. The model may learn to associate certain phrasings or structures in English with specific logical or mathematical operations, and this learned association does not always transfer perfectly to other languages, even with dedicated multilingual fine-tuning.
+Despite these dedicated efforts, empirical results show that a performance gap often persists between high-resource languages like English and others. The technical report for Magistral Medium, for instance, notes that its performance on translated versions of the AIME 2024 benchmark drops by 4.3% to 9.9% compared to its English performance.[8] Similarly, the DeepSeek R1 report states that the model is primarily optimised for English and Chinese and may exhibit **"language mixing"** when prompted in other languages.[7] This persistent gap suggests that reasoning in current LLMs is not a purely abstract, language-agnostic skill. Instead, it appears to be deeply entangled with the specific linguistic patterns and knowledge distributions present in the pre-training data. The model may learn to associate certain phrasings or structures in English with specific logical or mathematical operations, and this learned association does not always transfer perfectly to other languages, even with dedicated multilingual fine-tuning.
 
 ## 6.3 - Reasoning vs. Non-Reasoning Models: A Qualitative Comparison
 
@@ -310,23 +310,63 @@ Looking forward, the field is moving towards creating more integrated and verifi
 
 # 10 - References
 
-  * An, Y., Yang, B., Zhang, B., Hui, B., Zheng, B., Yu, B., Li, C., Liu, D., Huang, F., Wei, H., et al. (2024). Dual Chunk Attention.
-  * Bai, J., Bai, S., Chu, Y., Cui, Z., Dang, K., Deng, X., Dong, Y., Fan, T., Ge, W., Han, X., et al. (2023a). Qwen technical report.
-  * Bavarian, M., et al. (2022). Efficient training of language models to fill in the middle.
-  * Brown, T., Mann, B., Ryder, N., Subbiah, M., Kaplan, J. D., Dhariwal, P.,... & Amodei, D. (2020). Language models are few-shot learners.
-  * Chen, M., Tworek, J., Jun, H., Yuan, Q., Pinto, H. P. d. O., Kaplan, J.,... & Zaremba, W. (2021). Evaluating large language models trained on code.
-  * Guo, Q., et al. (2025). DeepSeek-R1: Incentivising Reasoning Capability in LLMs via Reinforcement Learning.
-  * Hendrycks, D., Burns, C., Kadavath, S., Arora, A., Basart, S., Jones, E.,... & Steinhardt, J. (2021). Measuring mathematical problem solving with the MATH dataset.
-  * Long, J. (2023). Large Language Model Guided Tree-of-Thought. arXiv:2305.08291.
-  * Mistral-AI, Rastogi, A., et al. (2025). Magistral. arXiv:2506.10910.
-  * OpenAI. (2023). GPT-4 Technical Report. arXiv:2303.08774.
-  * OpenAI. (2024). OpenAI o1.
-  * Qwen Team. (2024a). Qwen1.5 technical report.
-  * Snell, C., et al. (2024). Learning to reason with process supervision.
-  * Taubenfeld, A., Sheffer, T., Ofek, E., Feder, A., Goldstein, A., Gekhman, Z., & Yona, G. (2025). Confidence Improves Self-Consistency in LLMs. arXiv:2502.06233.
-  * Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N.,... & Polosukhin, I. (2017). Attention is all you need.
-  * Wang, X., Wei, J., Schuurmans, D., Le, Q., Chi, E., Narang, S.,... & Zhou, D. (2022). Self-consistency improves chain of thought reasoning in language models.
-  * Wang, X., & Zhou, D. (2024). Chain-of-Thought Reasoning Without Prompting. arXiv:2402.10200.
-  * Wei, J., Wang, X., Schuurmans, D., Bosma, M., Chi, E., Le, Q., & Zhou, D. (2022). Chain-of-thought prompting elicits reasoning in large language models.
-  * Yao, S., Zhao, H., Yu, D., Du, N., Shafran, I., Narasimhan, K., & Cao, Y. (2023). Tree of Thoughts: Deliberate Problem Solving with Large Language Models.
-  * Zhou, Z., et al. (2025). Bridging Internal Probability and Self-Consistency for Effective and Efficient LLM Reasoning. arXiv:2502.00511.
+1. Vaswani, A., Shazeer, N., Parmar, N., *et al.* (2017). [Attention Is All You Need](https://arxiv.org/abs/1706.03762). ([arXiv][1])
+
+2. Wei, J., Wang, X., Schuurmans, D., *et al.* (2022). [Chain-of-Thought Prompting Elicits Reasoning in Large Language Models](https://arxiv.org/abs/2201.11903). ([arXiv][2])
+
+3. Wang, X., Wei, J., Schuurmans, D., *et al.* (2022). [Self-Consistency Improves Chain of Thought Reasoning in Language Models](https://arxiv.org/abs/2203.11171). ([arXiv][3])
+
+4. Yao, S., Yu, D., Zhao, J., *et al.* (2023). [Tree of Thoughts: Deliberate Problem Solving with Large Language Models](https://arxiv.org/abs/2305.10601). ([arXiv][4])
+
+5. Long, J. (2023). [Large Language Model Guided Tree-of-Thought](https://arxiv.org/abs/2305.08291). ([arXiv][5])
+
+6. Taubenfeld, A., Sheffer, T., Ofek, E., *et al.* (2025). [Confidence Improves Self-Consistency in LLMs](https://arxiv.org/abs/2502.06233). ([arXiv][6])
+
+7. Guo, Q., *et al.* (2025). [DeepSeek-R1: Incentivising Reasoning Capability in LLMs via Reinforcement Learning](https://arxiv.org/abs/2501.12948). ([arXiv][7])
+
+8. Mistral AI, Rastogi, A., *et al.* (2025). [Magistral](https://arxiv.org/abs/2506.10910). ([arXiv][8])
+
+9. Brown, T., Mann, B., Ryder, N., *et al.* (2020). [Language Models are Few-Shot Learners](https://arxiv.org/abs/2005.14165). ([arXiv][9])
+
+10. Chen, M., Tworek, J., Jun, H., *et al.* (2021). [Evaluating Large Language Models Trained on Code](https://arxiv.org/abs/2107.03374). ([arXiv][10])
+
+11. Hendrycks, D., Burns, C., Kadavath, S., *et al.* (2021). [Measuring Mathematical Problem Solving With the MATH Dataset](https://arxiv.org/abs/2103.03874). ([arXiv][11])
+
+12. OpenAI. (2023). [GPT-4 Technical Report](https://arxiv.org/abs/2303.08774). ([arXiv][12])
+
+13. OpenAI. (2024). [OpenAI o1](https://openai.com/index/learning-to-reason-with-llms/). ([OpenAI][13])
+
+14. Bai, J., Bai, S., Chu, Y., *et al.* (2023). [Qwen Technical Report](https://arxiv.org/abs/2309.16609). ([arXiv][14])
+
+15. Qwen Team. (2024). [Qwen2 Technical Report](https://arxiv.org/abs/2407.10671). ([arXiv][15])
+
+16. An, Y., Yang, B., Zhang, B., *et al.* (2024). [Dual Chunk Attention with Implicit Context Filter for Long Sequence Language Models](https://arxiv.org/abs/2402.17463). ([arXiv][16])
+
+17. Bavarian, M., *et al.* (2022). [Efficient Training of Language Models to Fill in the Middle](https://arxiv.org/abs/2207.14255). ([arXiv][17])
+
+18. Snell, C., *et al.* (2024). [Scaling LLM Test-Time Compute Optimally](https://arxiv.org/abs/2408.03314). ([arXiv][18])
+
+19. Wang, X., & Zhou, D. (2024). [Chain-of-Thought Reasoning Without Prompting](https://arxiv.org/abs/2402.10200). ([arXiv][19])
+
+20. Zhou, Z., Tan, Y., Li, Z., *et al.* (2025). [A Theoretical Study on Bridging Internal Probability and Self-Consistency for LLM Reasoning](https://arxiv.org/abs/2510.15444). ([arXiv][20])
+
+[1]: https://arxiv.org/abs/1706.03762 "Attention Is All You Need"
+[2]: https://arxiv.org/abs/2201.11903 "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models"
+[3]: https://arxiv.org/abs/2203.11171 "Self-Consistency Improves Chain of Thought Reasoning in Language Models"
+[4]: https://arxiv.org/abs/2305.10601 "Tree of Thoughts: Deliberate Problem Solving with Large Language Models"
+[5]: https://arxiv.org/abs/2305.08291 "Large Language Model Guided Tree-of-Thought"
+[6]: https://arxiv.org/abs/2502.06233 "Confidence Improves Self-Consistency in LLMs"
+[7]: https://arxiv.org/abs/2501.12948 "DeepSeek-R1: Incentivising Reasoning Capability in LLMs via Reinforcement Learning"
+[8]: https://arxiv.org/abs/2506.10910 "Magistral"
+[9]: https://arxiv.org/abs/2005.14165 "Language Models are Few-Shot Learners"
+[10]: https://arxiv.org/abs/2107.03374 "Evaluating Large Language Models Trained on Code"
+[11]: https://arxiv.org/abs/2103.03874 "Measuring Mathematical Problem Solving With the MATH Dataset"
+[12]: https://arxiv.org/abs/2303.08774 "GPT-4 Technical Report"
+[13]: https://openai.com/index/learning-to-reason-with-llms/ "OpenAI o1"
+[14]: https://arxiv.org/abs/2309.16609 "Qwen Technical Report"
+[15]: https://arxiv.org/abs/2407.10671 "Qwen2 Technical Report"
+[16]: https://arxiv.org/abs/2402.17463 "Dual Chunk Attention with Implicit Context Filter for Long Sequence Language Models"
+[17]: https://arxiv.org/abs/2207.14255 "Efficient Training of Language Models to Fill in the Middle"
+[18]: https://arxiv.org/abs/2408.03314 "Scaling LLM Test-Time Compute Optimally"
+[19]: https://arxiv.org/abs/2402.10200 "Chain-of-Thought Reasoning Without Prompting"
+[20]: https://arxiv.org/abs/2510.15444 "A Theoretical Study on Bridging Internal Probability and Self-Consistency for LLM Reasoning"

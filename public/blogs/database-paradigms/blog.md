@@ -673,12 +673,18 @@ Database paradigms are not interchangeable tools. They are specialised implement
 
 # References
 
-1. Codd, E. F. (1970). [A Relational Model of Data for Large Shared Data Banks](https://www.seas.upenn.edu/~zives/03f/cis550/codd.pdf). *Communications of the ACM, 13*(6), 377–387.
+1. Codd, E. F. (1970). [A Relational Model of Data for Large Shared Data Banks](https://doi.org/10.1145/362384.362685). ([ACM Digital Library][1])
 
-2. Gilbert, S., & Lynch, N. (2002). [Brewer’s Conjecture and the Feasibility of Consistent, Available, Partition-Tolerant Web Services](https://www.cs.princeton.edu/courses/archive/spr22/cos418/papers/cap.pdf). *ACM SIGACT News, 33*(2), 51–59.
+2. Gilbert, S., & Lynch, N. (2002). [Brewer's Conjecture and the Feasibility of Consistent, Available, Partition-Tolerant Web Services](https://doi.org/10.1145/564585.564601). ([ACM Digital Library][2])
 
-3. Weintraub, G. (2014). [Dynamo and BigTable — Review and Comparison](https://ieeexplore.ieee.org/document/7005771). *2014 IEEE 28th Convention of Electrical and Electronics Engineers in Israel (IEEEI)*, 1–5. [https://doi.org/10.1109/EEEI.2014.7005771](https://doi.org/10.1109/EEEI.2014.7005771)
+3. Weintraub, G. (2014). [Dynamo and BigTable — Review and Comparison](https://ieeexplore.ieee.org/document/7005771). ([IEEE][3])
 
-4. Malkov, Y. A., & Yashunin, D. A. (2020). [Efficient and Robust Approximate Nearest Neighbor Search Using Hierarchical Navigable Small World Graphs](https://arxiv.org/abs/1603.09320). *IEEE Transactions on Pattern Analysis and Machine Intelligence, 42*(4), 824–836. [https://doi.org/10.1109/TPAMI.2018.2889473](https://doi.org/10.1109/TPAMI.2018.2889473)
+4. Malkov, Y. A., & Yashunin, D. A. (2020). [Efficient and Robust Approximate Nearest Neighbor Search Using Hierarchical Navigable Small World Graphs](https://arxiv.org/abs/1603.09320). ([arXiv][4])
 
-5. Jégou, H., Douze, M., & Schmid, C. (2011). [Product Quantization for Nearest Neighbor Search](https://ieeexplore.ieee.org/document/5432202). *IEEE Transactions on Pattern Analysis and Machine Intelligence, 33*(1), 117–128. [https://doi.org/10.1109/TPAMI.2010.57](https://doi.org/10.1109/TPAMI.2010.57)*
+5. Jégou, H., Douze, M., & Schmid, C. (2011). [Product Quantization for Nearest Neighbor Search](https://ieeexplore.ieee.org/document/5432202). ([IEEE][5])
+
+[1]: https://doi.org/10.1145/362384.362685 "A Relational Model of Data for Large Shared Data Banks"
+[2]: https://doi.org/10.1145/564585.564601 "Brewer's Conjecture and the Feasibility of Consistent, Available, Partition-Tolerant Web Services"
+[3]: https://doi.org/10.1109/EEEI.2014.7005771 "Dynamo and BigTable — Review and Comparison"
+[4]: https://arxiv.org/abs/1603.09320 "Efficient and Robust Approximate Nearest Neighbor Search Using Hierarchical Navigable Small World Graphs"
+[5]: https://doi.org/10.1109/TPAMI.2010.57 "Product Quantization for Nearest Neighbor Search"

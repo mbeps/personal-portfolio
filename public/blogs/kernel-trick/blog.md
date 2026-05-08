@@ -505,21 +505,21 @@ While the "Kernel Era" of the 2000s has ceded the spotlight to Deep Learning, th
 
 # References
 
-1. Aizerman, M. A., Braverman, E. M., & Rozonoer, L. I. (1964). *[Theoretical foundations of the potential function method in pattern recognition learning](https://cs.uwaterloo.ca/~y328yu/classics/kernel.pdf)*. *Automation and Remote Control, 25*, 821–837. ([Cheriton School of Computer Science][1])
+1. Aizerman, M. A., Braverman, E. M., & Rozonoer, L. I. (1964). [Theoretical foundations of the potential function method in pattern recognition learning](https://cs.uwaterloo.ca/~y328yu/classics/kernel.pdf). ([Cheriton School of Computer Science][1])
 
-2. Boser, B. E., Guyon, I. M., & Vapnik, V. N. (1992). *[A training algorithm for optimal margin classifiers](https://dl.acm.org/doi/10.1145/130385.130401)*. In *Proceedings of the 5th Annual Workshop on Computational Learning Theory (COLT’92)*, 144–152. ([ACM Digital Library][2])
+2. Boser, B. E., Guyon, I. M., & Vapnik, V. N. (1992). [A training algorithm for optimal margin classifiers](https://dl.acm.org/doi/10.1145/130385.130401). ([ACM Digital Library][2])
 
-3. Rahimi, A., & Recht, B. (2007). *[Random features for large-scale kernel machines](https://papers.nips.cc/paper/3182-random-features-for-large-scale-kernel-machines)*. In *Advances in Neural Information Processing Systems 20 (NeurIPS 2007)*, 1177–1184. ([papers.nips.cc][3])
+3. Rahimi, A., & Recht, B. (2007). [Random features for large-scale kernel machines](https://papers.nips.cc/paper/3182-random-features-for-large-scale-kernel-machines). ([NeurIPS Proceedings][3])
 
-4. Williams, C. K. I., & Seeger, M. (2001). *[Using the Nyström method to speed up kernel machines](https://papers.nips.cc/paper/1866-using-the-nystrom-method-to-speed-up-kernel-machines)*. In *Advances in Neural Information Processing Systems 13 (NeurIPS 2000)*, 682–688. ([papers.nips.cc][4])
+4. Williams, C. K. I., & Seeger, M. (2001). [Using the Nyström method to speed up kernel machines](https://papers.nips.cc/paper/1866-using-the-nystrom-method-to-speed-up-kernel-machines). ([NeurIPS Proceedings][4])
 
-5. Jacot, A., Gabriel, F., & Hongler, C. (2018). *[Neural Tangent Kernel: Convergence and generalization in neural networks](https://papers.nips.cc/paper/8076-neural-tangent-kernel-convergence-and-generalization-in-neural-networks)*. In *Advances in Neural Information Processing Systems 31 (NeurIPS 2018)*. ([papers.nips.cc][5])
+5. Jacot, A., Gabriel, F., & Hongler, C. (2018). [Neural Tangent Kernel: Convergence and generalization in neural networks](https://papers.nips.cc/paper/8076-neural-tangent-kernel-convergence-and-generalization-in-neural-networks). ([NeurIPS Proceedings][5])
 
-6. Mercer, J. (1909). *[Functions of positive and negative type, and their connection with the theory of integral equations](https://royalsocietypublishing.org/doi/10.1098/rspa.1909.0075)*. *Philosophical Transactions of the Royal Society of London. Series A, Containing Papers of a Mathematical or Physical Character, 209*(441–458), 415–446. ([royalsocietypublishing.org][6])
+6. Mercer, J. (1909). [Functions of positive and negative type, and their connection with the theory of integral equations](https://royalsocietypublishing.org/doi/10.1098/rspa.1909.0075). ([Royal Society Publishing][6])
 
-[1]: https://cs.uwaterloo.ca/~y328yu/classics/kernel.pdf?utm_source=chatgpt.com "Theoretical foundations of the potential function method in ..."
-[2]: https://dl.acm.org/doi/10.1145/130385.130401?utm_source=chatgpt.com "A training algorithm for optimal margin classifiers"
-[3]: https://papers.nips.cc/paper/3182-random-features-for-large-scale-kernel-machines?utm_source=chatgpt.com "Random Features for Large-Scale Kernel Machines"
-[4]: https://papers.nips.cc/paper/1866-using-the-nystrom-method-to-speed-up-kernel-machines?utm_source=chatgpt.com "Using the Nyström Method to Speed Up Kernel Machines"
-[5]: https://papers.nips.cc/paper/8076-neural-tangent-kernel-convergence-and-generalization-in-neural-networks?utm_source=chatgpt.com "Neural Tangent Kernel: Convergence and Generalization ..."
-[6]: https://royalsocietypublishing.org/doi/10.1098/rspa.1909.0075?utm_source=chatgpt.com "Functions of positive and negative type, and their connection ..."
+[1]: https://cs.uwaterloo.ca/~y328yu/classics/kernel.pdf "Theoretical foundations of the potential function method in pattern recognition learning"
+[2]: https://dl.acm.org/doi/10.1145/130385.130401 "A training algorithm for optimal margin classifiers"
+[3]: https://papers.nips.cc/paper/3182-random-features-for-large-scale-kernel-machines "Random Features for Large-Scale Kernel Machines"
+[4]: https://papers.nips.cc/paper/1866-using-the-nystrom-method-to-speed-up-kernel-machines "Using the Nyström Method to Speed Up Kernel Machines"
+[5]: https://papers.nips.cc/paper/8076-neural-tangent-kernel-convergence-and-generalization-in-neural-networks "Neural Tangent Kernel: Convergence and Generalization in Neural Networks"
+[6]: https://royalsocietypublishing.org/doi/10.1098/rspa.1909.0075 "Functions of positive and negative type, and their connection with the theory of integral equations"
