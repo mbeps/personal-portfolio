@@ -6,7 +6,6 @@ import SearchInput from "@/components/inputs/SearchInput";
 import { Button } from "@/components/shadcn/ui/button";
 import { ButtonGroup } from "@/components/shadcn/ui/button-group";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
-import FilterOption from "@/interfaces/filters/FilterOption";
 import Link from "next/link";
 import React, { useState } from "react";
 import { AiOutlineClear } from "react-icons/ai";
@@ -19,14 +18,7 @@ import {
 } from "@/components/shadcn/ui/accordion";
 import SearchFilter from "@/interfaces/filters/SearchFilter";
 import ArchiveFilter from "@/interfaces/filters/ArchiveFilter";
-import generateUrl from "@/lib/generateUrl";
-import { useRouter } from "next/navigation";
 import { MdOutlineManageSearch } from "react-icons/md";
-import {
-  buildCurrentFilterOptions,
-  upsertFilterOption,
-  withForcedArchiveTrue,
-} from "@/lib/material/filter-url-state/buildMaterialFilterUrlState";
 
 /**
  * Props for the `FilterSection` top-level filter bar component.
@@ -36,7 +28,7 @@ import {
 interface FilterSectionProps {
   /** Page or section name shown in search placeholder text and the accordion trigger label. */
   name: string;
-  /** Route base path used to construct generated filter URLs (e.g. `"/projects"`). */
+  /** Route base path used for the "Clear All" link (e.g. `"/projects"`). */
   basePath: string;
   /** Filter category definitions surfaced by the listing hook; drives the `FilterOverlay` options. */
   filterCategories: FilterCategory[];
@@ -52,7 +44,7 @@ interface FilterSectionProps {
  * Top-level filter bar rendered on every listing page (projects, experience, blogs, certificates, education, skills).
  * Combines a collapsible accordion that houses a search input, a "Filters" button opening `FilterOverlay`,
  * and a "Clear All" link back to `basePath`. Renders an `ArchiveToggle` inside the accordion when `archiveFilter` is provided.
- * All URL transitions are assembled via `buildCurrentFilterOptions`, `upsertFilterOption`, and `withForcedArchiveTrue`.
+ * Calls nuqs setters directly via `searchFilter.onChange` and `archiveFilter.onToggle` instead of building URLs manually.
  *
  * @param props - See `FilterSectionProps`.
  * @returns Accordion-wrapped filter bar with search, filter panel trigger, clear button, and optional archive toggle.
@@ -66,28 +58,8 @@ const FilterSection: React.FC<FilterSectionProps> = ({
   areFiltersApplied,
   archiveFilter,
 }) => {
-  const router = useRouter();
-
-  const filterProps: FilterOption[] = buildCurrentFilterOptions(
-    filterCategories,
-    searchFilter,
-    archiveFilter,
-  );
-
   function updateSearchTerm(newSearchTerm: string) {
-    const searchUpdatedProps = upsertFilterOption(
-      filterProps,
-      searchFilter.searchParamName,
-      newSearchTerm,
-    );
-
-    const updatedFilterProps: FilterOption[] = withForcedArchiveTrue(
-      searchUpdatedProps,
-      archiveFilter,
-    );
-
-    const newUrl: string = generateUrl(updatedFilterProps, basePath);
-    router.push(newUrl);
+    searchFilter.onChange(newSearchTerm);
   }
 
   const message: string = archiveFilter?.hasArchivedMaterials
@@ -180,9 +152,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
               {archiveFilter?.hasArchivedMaterials && (
                 <ArchiveToggle
                   showArchived={archiveFilter.showArchived}
-                  filterProps={filterProps}
-                  basePath={basePath}
-                  archiveParamName={archiveFilter.paramName}
+                  onToggle={archiveFilter.onToggle}
                 />
               )}
             </div>
@@ -198,7 +168,6 @@ const FilterSection: React.FC<FilterSectionProps> = ({
         basePath={basePath}
         archiveFilter={archiveFilter}
         areFiltersApplied={areFiltersApplied}
-        searchFilter={searchFilter}
       />
     </>
   );

@@ -4,8 +4,6 @@ import useIsMounted from "@/hooks/useIsMounted";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import ArchiveFilter from "@/interfaces/filters/ArchiveFilter";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
-import FilterOption from "@/interfaces/filters/FilterOption";
-import SearchFilter from "@/interfaces/filters/SearchFilter";
 import Link from "next/link";
 import React from "react";
 import { AiOutlineClear } from "react-icons/ai";
@@ -15,12 +13,10 @@ import { Button } from "../shadcn/ui/button";
 import { ArchiveToggle } from "./ArchiveToggle";
 import FilterOptionItemCombobox from "./FilterOptionItemCombobox";
 import FilterOptionItemAccordion from "./FilterOptionItemAccordion";
-import { buildCurrentFilterOptions } from "@/lib/material/filter-url-state/buildMaterialFilterUrlState";
 
 interface FilterOverlayProps {
   filterCategories: FilterCategory[];
   archiveFilter?: ArchiveFilter;
-  searchFilter: SearchFilter;
   basePath: string;
   isOpen: boolean;
   toggle: () => void;
@@ -28,16 +24,15 @@ interface FilterOverlayProps {
 }
 
 /**
- * Responsive filter drawer that powers the “Filters” button on every listing, using a side panel on desktop and Drawer on mobile.
- * Keeps URL state in sync so fuse search and grouped lists update as soon as the user interacts with the panel.
+ * Responsive filter drawer that powers the "Filters" button on every listing, using a side panel on desktop and Drawer on mobile.
+ * Uses nuqs setters via FilterCategory.onChange and ArchiveFilter.onToggle so URL state updates without manual URL construction.
  *
  * @param filterCategories Configured filter definitions from the listing page.
- * @param basePath Route base used when building URLs.
+ * @param basePath Route base used for the Clear All link.
  * @param isOpen Whether the overlay is visible.
  * @param toggle Handler that toggles visibility.
  * @param archiveFilter Optional archive toggle metadata.
  * @param areFiltersApplied Drives the clear button state.
- * @param searchFilter Search metadata so the drawer can keep query params intact.
  */
 const FilterOverlay: React.FC<FilterOverlayProps> = ({
   filterCategories,
@@ -46,7 +41,6 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
   toggle,
   archiveFilter,
   areFiltersApplied,
-  searchFilter,
 }) => {
   const isMounted: boolean = useIsMounted();
   const isDesktop = useMediaQuery("(min-width: 768px)");
@@ -54,12 +48,6 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
   if (!isMounted) {
     return null;
   }
-
-  const filterProps: FilterOption[] = buildCurrentFilterOptions(
-    filterCategories,
-    undefined,
-    archiveFilter,
-  );
 
   /**
    * Shared content component used by both Drawer and SidePanel
@@ -77,21 +65,12 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
             {filterCategories.map((filterCategory, index) => (
               <FilterOptionItemCombobox
                 key={index}
-                basePath={basePath}
                 selectedFilterCategory={filterCategory}
-                filterCategories={filterCategories}
-                archiveFilter={archiveFilter}
-                searchFilter={searchFilter}
               />
             ))}
           </div>
         ) : (
-          <FilterOptionItemAccordion
-            basePath={basePath}
-            filterCategories={filterCategories}
-            archiveFilter={archiveFilter}
-            searchFilter={searchFilter}
-          />
+          <FilterOptionItemAccordion filterCategories={filterCategories} />
         )}
       </div>
 
@@ -120,9 +99,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
             <div className="w-full -mt-1">
               <ArchiveToggle
                 showArchived={archiveFilter.showArchived}
-                filterProps={filterProps}
-                basePath={basePath}
-                archiveParamName={archiveFilter.paramName}
+                onToggle={archiveFilter.onToggle}
               />
             </div>
           </div>

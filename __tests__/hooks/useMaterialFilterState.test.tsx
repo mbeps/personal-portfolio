@@ -11,12 +11,14 @@ import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 
-const { mockUseSearchParams } = vi.hoisted(() => ({
-  mockUseSearchParams: vi.fn(),
+const { mockUseQueryStates } = vi.hoisted(() => ({
+  mockUseQueryStates: vi.fn(),
 }));
 
-vi.mock("next/navigation", () => ({
-  useSearchParams: mockUseSearchParams,
+vi.mock("nuqs", () => ({
+  useQueryStates: mockUseQueryStates,
+  parseAsString: { withDefault: (d: string) => d },
+  parseAsBoolean: { withDefault: (d: boolean) => d },
 }));
 
 type TestMaterial = MaterialInterface;
@@ -27,11 +29,12 @@ interface HookResult {
   groupedMaterials: MaterialGroupInterface[];
   filterCategories: FilterCategory[];
   archiveFilter?: {
-    paramName: string;
     showArchived: boolean;
     hasArchivedMaterials: boolean;
+    onToggle: () => void;
   };
   areFiltersApplied: boolean;
+  setSearchTerm: (value: string) => void;
 }
 
 interface HarnessProps {
@@ -89,6 +92,7 @@ function runHook(itemsMap: Database<TestMaterial>): HookResult {
     groupedMaterials: [],
     filterCategories: [],
     areFiltersApplied: false,
+    setSearchTerm: vi.fn(),
   };
 
   renderToStaticMarkup(
@@ -119,14 +123,18 @@ function material(
 
 describe("useMaterialFilterState", () => {
   beforeEach(() => {
-    mockUseSearchParams.mockReset();
-    mockUseSearchParams.mockReturnValue(new URLSearchParams(""));
+    mockUseQueryStates.mockReset();
+    mockUseQueryStates.mockReturnValue([
+      { search: "", category: "", skill: "", archived: false },
+      vi.fn(),
+    ]);
   });
 
   test("applies category and skill filters sequentially and groups filtered materials", () => {
-    mockUseSearchParams.mockReturnValue(
-      new URLSearchParams("category=web&skill=react&archived=false"),
-    );
+    mockUseQueryStates.mockReturnValue([
+      { search: "", category: "web", skill: "react", archived: false },
+      vi.fn(),
+    ]);
 
     const itemsMap: Database<TestMaterial> = {
       alpha: material("Alpha", "Web", [SkillDatabaseKeys.ReactJs]),
@@ -146,8 +154,7 @@ describe("useMaterialFilterState", () => {
     expect(
       result.filterCategories.map((category) => category.selectedValue),
     ).toEqual(["web", SkillDatabaseKeys.ReactJs]);
-    expect(result.archiveFilter).toEqual({
-      paramName: "archived",
+    expect(result.archiveFilter).toMatchObject({
       showArchived: false,
       hasArchivedMaterials: true,
     });
@@ -155,9 +162,10 @@ describe("useMaterialFilterState", () => {
   });
 
   test("reads archive state from configured custom param contract", () => {
-    mockUseSearchParams.mockReturnValue(
-      new URLSearchParams("include-archive=YES"),
-    );
+    mockUseQueryStates.mockReturnValue([
+      { search: "", "include-archive": true },
+      vi.fn(),
+    ]);
 
     const itemsMap: Database<TestMaterial> = {
       alpha: material("Alpha", "Web", [SkillDatabaseKeys.ReactJs]),
@@ -175,22 +183,18 @@ describe("useMaterialFilterState", () => {
         archiveFilter: {
           paramName: "include-archive",
           hasArchivedMaterials: true,
-          defaultValue: "NO",
-          enabledValue: "yes",
-          valueParser: (value) => value.toLowerCase(),
           applyFilter: (showArchived, keys) =>
             filterMaterialByArchivedStatus(showArchived, keys, itemsMap),
         },
       });
 
-      captured = result;
+      captured = result as HookResult;
       return <div>{result.filteredKeys.join(",")}</div>;
     }
 
     renderToStaticMarkup(<CustomArchiveHarness />);
 
-    expect(captured?.archiveFilter).toEqual({
-      paramName: "include-archive",
+    expect(captured?.archiveFilter).toMatchObject({
       showArchived: true,
       hasArchivedMaterials: true,
     });
@@ -212,9 +216,10 @@ describe("useMaterialFilterState", () => {
   });
 
   test("applies custom shouldApply predicate when provided", () => {
-    mockUseSearchParams.mockReturnValue(
-      new URLSearchParams("category=special"),
-    );
+    mockUseQueryStates.mockReturnValue([
+      { search: "", category: "special" },
+      vi.fn(),
+    ]);
 
     const itemsMap: Database<TestMaterial> = {
       alpha: material("Alpha", "Special", [SkillDatabaseKeys.ReactJs]),
@@ -245,7 +250,7 @@ describe("useMaterialFilterState", () => {
         ],
       });
 
-      captured = result;
+      captured = result as HookResult;
       return <div>{result.filteredKeys.join(",")}</div>;
     }
 
@@ -255,44 +260,8 @@ describe("useMaterialFilterState", () => {
     expect(captured?.areFiltersApplied).toBe(true);
   });
 
-  test("applies default archive value when valueParser exists but defaultValue is not provided", () => {
-    mockUseSearchParams.mockReturnValue(new URLSearchParams(""));
-
-    const itemsMap: Database<TestMaterial> = {
-      alpha: material("Alpha", "Web", [SkillDatabaseKeys.ReactJs]),
-      beta: material("Beta", "Web", [SkillDatabaseKeys.TypeScript], true),
-    };
-
-    let captured: HookResult | undefined;
-
-    function ArchiveWithParserNoDefaultHarness() {
-      const result = useMaterialFilterState({
-        databaseMap: itemsMap,
-        searchParamName: "search",
-        searchKeys: ["name"],
-        filterCategories: [],
-        archiveFilter: {
-          paramName: "archived",
-          hasArchivedMaterials: true,
-          // No defaultValue provided, should fall back to "false"
-          valueParser: (value) => value.toLowerCase(),
-          applyFilter: (showArchived, keys) =>
-            filterMaterialByArchivedStatus(showArchived, keys, itemsMap),
-        },
-      });
-
-      captured = result;
-      return <div>{result.filteredKeys.join(",")}</div>;
-    }
-
-    renderToStaticMarkup(<ArchiveWithParserNoDefaultHarness />);
-
-    expect(captured?.archiveFilter?.showArchived).toBe(false);
-    expect(captured?.filteredKeys).toEqual(["alpha"]);
-  });
-
   test("uses 'all' as default when defaultValue is not provided", () => {
-    mockUseSearchParams.mockReturnValue(new URLSearchParams(""));
+    mockUseQueryStates.mockReturnValue([{ search: "", category: "" }, vi.fn()]);
 
     const itemsMap: Database<TestMaterial> = {
       alpha: material("Alpha", "Web", [SkillDatabaseKeys.ReactJs]),
@@ -320,7 +289,7 @@ describe("useMaterialFilterState", () => {
         ],
       });
 
-      captured = result;
+      captured = result as HookResult;
       return <div>{result.filteredKeys.join(",")}</div>;
     }
 
@@ -330,7 +299,7 @@ describe("useMaterialFilterState", () => {
   });
 
   test("uses raw default value when no valueParser is provided", () => {
-    mockUseSearchParams.mockReturnValue(new URLSearchParams(""));
+    mockUseQueryStates.mockReturnValue([{ search: "", category: "" }, vi.fn()]);
 
     const itemsMap: Database<TestMaterial> = {
       alpha: material("Alpha", "Web", [SkillDatabaseKeys.ReactJs]),
@@ -359,7 +328,7 @@ describe("useMaterialFilterState", () => {
         ],
       });
 
-      captured = result;
+      captured = result as HookResult;
       return <div>{result.filteredKeys.join(",")}</div>;
     }
 
@@ -369,7 +338,10 @@ describe("useMaterialFilterState", () => {
   });
 
   test("uses raw selected value from URL when no valueParser is provided", () => {
-    mockUseSearchParams.mockReturnValue(new URLSearchParams("category=web"));
+    mockUseQueryStates.mockReturnValue([
+      { search: "", category: "web" },
+      vi.fn(),
+    ]);
 
     const itemsMap: Database<TestMaterial> = {
       alpha: material("Alpha", "Web", [SkillDatabaseKeys.ReactJs]),
@@ -399,7 +371,7 @@ describe("useMaterialFilterState", () => {
         ],
       });
 
-      captured = result;
+      captured = result as HookResult;
       return <div>{result.filteredKeys.join(",")}</div>;
     }
 
@@ -410,7 +382,7 @@ describe("useMaterialFilterState", () => {
   });
 
   test("parses default value with valueParser when provided", () => {
-    mockUseSearchParams.mockReturnValue(new URLSearchParams(""));
+    mockUseQueryStates.mockReturnValue([{ search: "", category: "" }, vi.fn()]);
 
     const itemsMap: Database<TestMaterial> = {
       alpha: material("Alpha", "Web", [SkillDatabaseKeys.ReactJs]),
@@ -439,7 +411,7 @@ describe("useMaterialFilterState", () => {
         ],
       });
 
-      captured = result;
+      captured = result as HookResult;
       return <div>{result.filteredKeys.join(",")}</div>;
     }
 
@@ -449,7 +421,10 @@ describe("useMaterialFilterState", () => {
   });
 
   test("parses selected value from URL with valueParser when provided", () => {
-    mockUseSearchParams.mockReturnValue(new URLSearchParams("category=WEB"));
+    mockUseQueryStates.mockReturnValue([
+      { search: "", category: "WEB" },
+      vi.fn(),
+    ]);
 
     const itemsMap: Database<TestMaterial> = {
       alpha: material("Alpha", "Web", [SkillDatabaseKeys.ReactJs]),
@@ -479,7 +454,7 @@ describe("useMaterialFilterState", () => {
         ],
       });
 
-      captured = result;
+      captured = result as HookResult;
       return <div>{result.filteredKeys.join(",")}</div>;
     }
 

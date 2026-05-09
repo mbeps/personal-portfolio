@@ -1,7 +1,7 @@
 import filterMaterialByArchivedStatus from "@/lib/material/filter/filterMaterialByArchivedStatus";
 import groupMaterialsByCategory from "@/lib/material/group/groupMaterialsByCategory";
 import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
-import { ArchiveToggle } from "@/components/filters/ArchiveToggle";
+import CourseArchiveToggle from "./_components/CourseArchiveToggle";
 import MaterialList from "@/components/material-lists/MaterialList";
 import SkillTableSection from "@/components/skills/SkillTableSection";
 import Tag from "@/components/tags/Tag";
@@ -188,14 +188,7 @@ const CoursesPage: React.FC<{
             </CardHeader>
             <CardContent>
               {/* Archive Toggle */}
-              {hasArchivedModules && (
-                <ArchiveToggle
-                  showArchived={showArchived}
-                  filterProps={[]}
-                  basePath={`${basePath}/${courseKey}`}
-                  archiveParamName="archived"
-                />
-              )}
+              {hasArchivedModules && <CourseArchiveToggle />}
 
               {/* Modules */}
               {groupedModules.map((group, index) => (

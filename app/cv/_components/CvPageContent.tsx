@@ -15,7 +15,7 @@ import CvSkillGroup from "./CvSkillGroup";
 import Reader from "@/components/reader/Reader";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
 import { SerializedRoleInterface } from "../page";
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import { useQueryState, parseAsBoolean } from "nuqs";
 
 interface CvPageContentProps {
   aboutContent?: string;
@@ -44,19 +44,10 @@ const CvPageContent: React.FC<CvPageContentProps> = ({
   certificateCount,
   blogCount,
 }) => {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const pathname = usePathname();
-
-  // Read archive state from URL, default to false
-  const showArchived = (searchParams.get("archived") ?? "false") === "true";
-
-  // Function to toggle archived state in URL
-  const handleArchiveToggle = (checked: boolean) => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.set("archived", checked.toString());
-    router.push(`${pathname}?${params.toString()}`);
-  };
+  const [showArchived, setShowArchived] = useQueryState(
+    "archived",
+    parseAsBoolean.withDefault(false).withOptions({ clearOnDefault: true }),
+  );
 
   const filterArchived = <T extends { archived?: boolean }>(items: T[]) => {
     return showArchived ? items : items.filter((item) => !item.archived);
@@ -88,8 +79,8 @@ const CvPageContent: React.FC<CvPageContentProps> = ({
         <div className="flex items-center space-x-2">
           <Switch
             id="archive-mode"
-            checked={showArchived}
-            onCheckedChange={handleArchiveToggle}
+            checked={showArchived ?? false}
+            onCheckedChange={(checked) => setShowArchived(checked)}
           />
           <label
             htmlFor="archive-mode"

@@ -42,6 +42,7 @@ export const BlogsView: React.FC = () => {
 
   const {
     searchTerm,
+    setSearchTerm,
     groupedMaterials,
     filterCategories,
     archiveFilter,
@@ -114,7 +115,6 @@ export const BlogsView: React.FC = () => {
     archiveFilter: {
       paramName: archivedParamName,
       hasArchivedMaterials: checkForArchivedMaterials(blogsDatabaseMap),
-      valueParser: (value) => value.toLowerCase(),
       applyFilter: (showArchived, keys) =>
         filterMaterialByArchivedStatus<BlogInterface>(
           showArchived,
@@ -131,7 +131,7 @@ export const BlogsView: React.FC = () => {
         basePath={basePath}
         searchFilter={{
           searchTerm: searchTerm,
-          searchParamName: searchParamName,
+          onChange: setSearchTerm,
         }}
         filterCategories={filterCategories}
         areFiltersApplied={areFiltersApplied}
