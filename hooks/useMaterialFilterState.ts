@@ -241,9 +241,7 @@ export default function useMaterialFilterState<
       setParams({
         [searchParamName]: value || null,
         // Auto-enable archive when searching so archived materials are visible.
-        ...(archiveFilter && value
-          ? { [archiveFilter.paramName]: true }
-          : {}),
+        ...(archiveFilter && value ? { [archiveFilter.paramName]: true } : {}),
       }),
   };
 }
