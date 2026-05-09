@@ -45,6 +45,7 @@ const CertificatesView: React.FC = () => {
 
   const {
     searchTerm,
+    setSearchTerm,
     groupedMaterials,
     filterCategories,
     archiveFilter,
@@ -146,7 +147,7 @@ const CertificatesView: React.FC = () => {
         basePath={basePath}
         searchFilter={{
           searchTerm: searchTerm,
-          searchParamName: searchParamName,
+          onChange: setSearchTerm,
         }}
         filterCategories={filterCategories}
         areFiltersApplied={areFiltersApplied}

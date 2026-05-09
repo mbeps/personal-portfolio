@@ -32,7 +32,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
   const basePath: string = SKILL_PAGE.path;
   const {
     searchTerm,
-    searchParamName,
+    setSearchTerm,
     filterCategories,
     groupedSkills,
     areFiltersApplied,
@@ -46,7 +46,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
         basePath={basePath}
         searchFilter={{
           searchTerm,
-          searchParamName,
+          onChange: setSearchTerm,
         }}
         filterCategories={filterCategories}
         areFiltersApplied={areFiltersApplied}

@@ -48,6 +48,7 @@ const ProjectsView: React.FC = () => {
 
   const {
     searchTerm,
+    setSearchTerm,
     filterCategories,
     groupedMaterials,
     archiveFilter,
@@ -163,7 +164,7 @@ const ProjectsView: React.FC = () => {
         basePath={basePath}
         searchFilter={{
           searchTerm: searchTerm,
-          searchParamName: searchParamName,
+          onChange: setSearchTerm,
         }}
         filterCategories={filterCategories}
         archiveFilter={archiveFilter}

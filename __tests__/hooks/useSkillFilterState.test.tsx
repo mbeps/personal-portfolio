@@ -6,17 +6,18 @@ import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 
-const { mockUseSearchParams } = vi.hoisted(() => ({
-  mockUseSearchParams: vi.fn(),
+const { mockUseQueryStates } = vi.hoisted(() => ({
+  mockUseQueryStates: vi.fn(),
 }));
 
-vi.mock("next/navigation", () => ({
-  useSearchParams: mockUseSearchParams,
+vi.mock("nuqs", () => ({
+  useQueryStates: mockUseQueryStates,
+  parseAsString: { withDefault: (d: string) => d },
+  parseAsBoolean: { withDefault: (d: boolean) => d },
 }));
 
 interface SkillFilterStateResult {
   searchTerm: string;
-  searchParamName: string;
   filterCategories: {
     sectionName: string;
     urlParam: string;
@@ -44,7 +45,6 @@ function HookHarness({ skills, onResult }: HarnessProps) {
 function runHook(skills: SkillDatabaseKeys[]): SkillFilterStateResult {
   let result: SkillFilterStateResult = {
     searchTerm: "",
-    searchParamName: "search",
     filterCategories: [],
     groupedSkills: [],
     areFiltersApplied: false,
@@ -65,8 +65,17 @@ function runHook(skills: SkillDatabaseKeys[]): SkillFilterStateResult {
 
 describe("useSkillFilterState", () => {
   beforeEach(() => {
-    mockUseSearchParams.mockReset();
-    mockUseSearchParams.mockReturnValue(new URLSearchParams(""));
+    mockUseQueryStates.mockReset();
+    mockUseQueryStates.mockReturnValue([
+      {
+        search: "",
+        group: "",
+        hard: false,
+        general: false,
+        "no-material": false,
+      },
+      vi.fn(),
+    ]);
   });
 
   test("returns default filter state with category grouping fallback", () => {
@@ -79,7 +88,6 @@ describe("useSkillFilterState", () => {
     const result = runHook(skills);
 
     expect(result.searchTerm).toBe("");
-    expect(result.searchParamName).toBe("search");
     expect(result.filterCategories[0]).toMatchObject({
       sectionName: "Group By",
       urlParam: "group",
@@ -90,11 +98,16 @@ describe("useSkillFilterState", () => {
   });
 
   test("applies exclusion toggles and no-material flag from URL params", () => {
-    mockUseSearchParams.mockReturnValue(
-      new URLSearchParams(
-        "hard=true&general=false&no-material=true&group=language",
-      ),
-    );
+    mockUseQueryStates.mockReturnValue([
+      {
+        search: "",
+        group: "language",
+        hard: true,
+        general: false,
+        "no-material": true,
+      },
+      vi.fn(),
+    ]);
 
     const skills = [
       SkillDatabaseKeys.TypeScript,
@@ -124,7 +137,16 @@ describe("useSkillFilterState", () => {
   });
 
   test("marks state as filtered when search term is provided", () => {
-    mockUseSearchParams.mockReturnValue(new URLSearchParams("search=hugging"));
+    mockUseQueryStates.mockReturnValue([
+      {
+        search: "hugging",
+        group: "",
+        hard: false,
+        general: false,
+        "no-material": false,
+      },
+      vi.fn(),
+    ]);
 
     const skills = [
       SkillDatabaseKeys.TypeScript,

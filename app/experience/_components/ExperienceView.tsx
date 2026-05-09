@@ -51,6 +51,7 @@ export const ExperienceView: React.FC = () => {
 
   const {
     searchTerm,
+    setSearchTerm,
     groupedMaterials,
     filterCategories,
     archiveFilter,
@@ -134,7 +135,6 @@ export const ExperienceView: React.FC = () => {
     archiveFilter: {
       paramName: archivedParamName,
       hasArchivedMaterials: checkForArchivedMaterials(rolesDatabase),
-      valueParser: (value) => value.toLowerCase(),
       applyFilter: (showArchived, keys) =>
         filterMaterialByArchivedStatus<RoleInterface>(
           showArchived,
@@ -151,7 +151,7 @@ export const ExperienceView: React.FC = () => {
         basePath={basePath}
         searchFilter={{
           searchTerm: searchTerm,
-          searchParamName: searchParamName,
+          onChange: setSearchTerm,
         }}
         archiveFilter={archiveFilter}
         filterCategories={filterCategories}

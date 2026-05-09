@@ -13,4 +13,6 @@ export default interface FilterCategory {
   selectedValue: string;
   /** All selectable options for the section. */
   options: FilterOption[];
+  /** Direct setter that updates this filter via nuqs. Available when the hook uses nuqs. */
+  onChange: (value: string) => void;
 }

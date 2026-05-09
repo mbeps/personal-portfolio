@@ -1,6 +1,5 @@
 "use client";
 
-import generateUrl from "@/lib/generateUrl";
 import {
   Command,
   CommandEmpty,
@@ -15,45 +14,25 @@ import {
   PopoverTrigger,
 } from "@/components/shadcn/ui/popover";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
-import FilterOption from "@/interfaces/filters/FilterOption";
 import { cn } from "@/lib/utils";
 import { Check } from "lucide-react";
-import Link from "next/link";
 import { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 import { Button } from "../shadcn/ui/button";
-import ArchiveFilter from "@/interfaces/filters/ArchiveFilter";
-import SearchFilter from "@/interfaces/filters/SearchFilter";
-import {
-  buildCurrentFilterOptions,
-  withForcedArchiveTrue,
-} from "@/lib/material/filter-url-state/buildMaterialFilterUrlState";
 
 interface FilterOptionItemComboboxProps {
   selectedFilterCategory: FilterCategory;
-  filterCategories: FilterCategory[];
-  archiveFilter?: ArchiveFilter;
-  searchFilter: SearchFilter;
-  basePath: string;
 }
 
 /**
- * Desktop filter selector used inside the drawer, combining a searchable command palette style list with the shared URL builder.
- * Ensures selecting any option also forces archived items to surface so historical work is discoverable.
+ * Desktop filter selector used inside the drawer, combining a searchable command palette style list with the nuqs setter.
+ * Calls the category's onChange setter directly when the user selects an option.
  *
  * @param selectedFilterCategory Filter group currently rendered.
- * @param filterCategories All filter configs so we can keep the rest in sync.
- * @param archiveFilter Optional archive metadata.
- * @param searchFilter Search metadata to preserve the query string.
- * @param basePath Base route for the listing page.
  * @returns Popover trigger and list of filter options.
  */
 const FilterOptionItemCombobox: React.FC<FilterOptionItemComboboxProps> = ({
   selectedFilterCategory,
-  filterCategories,
-  archiveFilter,
-  basePath,
-  searchFilter,
 }: FilterOptionItemComboboxProps) => {
   const [isOpen, setOpen] = useState(false);
   const gap = "w-4 h-4 mr-2";
@@ -117,27 +96,14 @@ const FilterOptionItemCombobox: React.FC<FilterOptionItemComboboxProps> = ({
 
           <CommandGroup className="w-full max-h-[25vh]">
             {selectedFilterCategory.options.map((option, i) => {
-              const baseFilters: FilterOption[] = buildCurrentFilterOptions(
-                filterCategories,
-                searchFilter,
-              );
-
-              const nextFilters: FilterOption[] = withForcedArchiveTrue(
-                [
-                  ...baseFilters,
-                  {
-                    entryName: selectedFilterCategory.urlParam,
-                    slug: option.slug,
-                  },
-                ],
-                archiveFilter,
-              );
-
               return (
-                <Link
+                <button
                   key={i}
-                  href={generateUrl(nextFilters, basePath)}
                   className="w-full"
+                  onClick={() => {
+                    selectedFilterCategory.onChange(option.slug);
+                    setOpen(false);
+                  }}
                 >
                   <CommandList>
                     <CommandItem
@@ -153,7 +119,7 @@ const FilterOptionItemCombobox: React.FC<FilterOptionItemComboboxProps> = ({
                       {option.entryName}
                     </CommandItem>
                   </CommandList>
-                </Link>
+                </button>
               );
             })}
           </CommandGroup>

@@ -1,45 +1,27 @@
 "use client";
 
-import generateUrl from "@/lib/generateUrl";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/shadcn/ui/accordion";
-import ArchiveFilter from "@/interfaces/filters/ArchiveFilter";
 import FilterCategory from "@/interfaces/filters/FilterCategory";
-import FilterOption from "@/interfaces/filters/FilterOption";
-import SearchFilter from "@/interfaces/filters/SearchFilter";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
-import {
-  buildCurrentFilterOptions,
-  withForcedArchiveTrue,
-} from "@/lib/material/filter-url-state/buildMaterialFilterUrlState";
 
 interface FilterOptionItemAccordionProps {
   filterCategories: FilterCategory[];
-  archiveFilter?: ArchiveFilter;
-  searchFilter: SearchFilter;
-  basePath: string;
 }
 
 /**
  * Renders the mobile filter list as a single accordion stack.
- * Keeps the archive and search filters in sync with option taps.
+ * Calls each category's onChange setter directly when an option is selected.
  *
  * @param filterCategories All filter sections to render
- * @param archiveFilter Current archive toggle metadata
- * @param searchFilter Current search filter metadata
- * @param basePath Current page path used for URL updates
  * @returns Accordion stack of filter categories optimized for small screens.
  */
 const FilterOptionItemAccordion: React.FC<FilterOptionItemAccordionProps> = ({
   filterCategories,
-  archiveFilter,
-  searchFilter,
-  basePath,
 }) => {
   function getOptionLabel(category: FilterCategory): string {
     const activeOption = category.options.find(
@@ -47,29 +29,6 @@ const FilterOptionItemAccordion: React.FC<FilterOptionItemAccordionProps> = ({
     );
 
     return activeOption?.entryName ?? "All";
-  }
-
-  function buildFilterUrl(
-    category: FilterCategory,
-    optionSlug: string,
-  ): string {
-    const baseFilters: FilterOption[] = buildCurrentFilterOptions(
-      filterCategories,
-      searchFilter,
-    );
-
-    const filtersWithArchive: FilterOption[] = withForcedArchiveTrue(
-      [
-        ...baseFilters,
-        {
-          entryName: category.urlParam,
-          slug: optionSlug,
-        },
-      ],
-      archiveFilter,
-    );
-
-    return generateUrl(filtersWithArchive, basePath);
   }
 
   return (
@@ -92,11 +51,10 @@ const FilterOptionItemAccordion: React.FC<FilterOptionItemAccordionProps> = ({
                 const isSelected = option.slug === category.selectedValue;
 
                 return (
-                  <Link
+                  <button
                     key={option.slug}
-                    href={buildFilterUrl(category, option.slug)}
-                    scroll={false}
-                    className="w-full"
+                    className="w-full text-left"
+                    onClick={() => category.onChange(option.slug)}
                   >
                     <span
                       className={cn(
@@ -109,7 +67,7 @@ const FilterOptionItemAccordion: React.FC<FilterOptionItemAccordionProps> = ({
                     >
                       {option.entryName}
                     </span>
-                  </Link>
+                  </button>
                 );
               })}
             </div>

@@ -1,3 +1,5 @@
+import { parseAsBoolean, parseAsString, useQueryStates } from "nuqs";
+import { useMemo } from "react";
 import groupSkills, { GroupByOptions } from "@/lib/skills/group/groupSkills";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
@@ -6,8 +8,6 @@ import FilterCategory from "@/interfaces/filters/FilterCategory";
 import FilterOption from "@/interfaces/filters/FilterOption";
 import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
 import useFuseSkillSearch from "@/hooks/use-fuse-search/useFuseSkillSearch";
-import { ReadonlyURLSearchParams, useSearchParams } from "next/navigation";
-import { useMemo } from "react";
 
 /**
  * Options for grouping skills in the filter UI.
@@ -21,9 +21,6 @@ const groupOptions: FilterOption[] = [
 
 /**
  * Generates binary filter options (e.g., show/hide).
- * @param showLabel The label for the "show" option.
- * @param hideLabel The label for the "hide" option.
- * @returns An array of two filter options.
  */
 const booleanOptions = (
   showLabel: string,
@@ -44,8 +41,6 @@ const searchOptions: string[] = ["name", "category", "relatedSkills"];
 interface SkillFilterState {
   /** The current search term from the URL. */
   searchTerm: string;
-  /** The URL parameter name for the search term. */
-  searchParamName: string;
   /** An array of filter category configurations for the UI. */
   filterCategories: FilterCategory[];
   /** The filtered and grouped skills to be displayed. */
@@ -54,6 +49,8 @@ interface SkillFilterState {
   areFiltersApplied: boolean;
   /** A boolean indicating if skills without associated materials should be hidden. */
   hideSkillsWithoutMaterial: boolean;
+  /** Direct setter for the search term. */
+  setSearchTerm: (value: string) => void;
 }
 
 /**
@@ -61,12 +58,12 @@ interface SkillFilterState {
  */
 const skillTypeFilters = [
   {
-    paramName: "hard",
+    paramName: "hard" as const,
     label: "Hard Skills",
     type: SkillTypesEnum.Technology,
   },
   {
-    paramName: "general",
+    paramName: "general" as const,
     label: "General Skills",
     type: SkillTypesEnum.Technical,
   },
@@ -81,7 +78,8 @@ const searchParamName = "search";
 
 /**
  * Filter + search controller for the `/skills` page, mirroring `useMaterialFilterState` but optimized for the skill taxonomy.
- * Coordinates grouping, skill-type toggles, and the “hide skills without material” switch so SkillList stays declarative.
+ * Coordinates grouping, skill-type toggles, and the "hide skills without material" switch so SkillList stays declarative.
+ * Uses nuqs for URL state management so filter state is read/written directly without manual URL construction.
  *
  * @param skills Full list of skill slugs from the static DB.
  * @returns Filter state consumed by `SkillList`.
@@ -89,12 +87,28 @@ const searchParamName = "search";
 export default function useSkillFilterState(
   skills: SkillDatabaseKeys[],
 ): SkillFilterState {
-  const searchParams: ReadonlyURLSearchParams = useSearchParams();
-  const searchTerm: string = searchParams.get(searchParamName) ?? "";
+  const [params, _setParams] = useQueryStates(
+    {
+      [searchParamName]: parseAsString.withDefault(""),
+      [groupParamName]: parseAsString.withDefault(""),
+      hard: parseAsBoolean.withDefault(false),
+      general: parseAsBoolean.withDefault(false),
+      [noMaterialParamName]: parseAsBoolean.withDefault(false),
+    } as any,
+    { history: "push", shallow: true, clearOnDefault: true },
+  );
+  const setParams = _setParams as (
+    values: Partial<Record<string, string | boolean | null>>,
+  ) => Promise<URLSearchParams>;
 
-  const selectedGroup =
-    (searchParams.get(groupParamName) as GroupByOptions) ??
-    GroupByOptions.Category;
+  const rawParams = params as Record<string, string | boolean>;
+  const searchTerm = (rawParams[searchParamName] as string) ?? "";
+  const selectedGroup = ((rawParams[groupParamName] as string) ||
+    GroupByOptions.Category) as GroupByOptions;
+  const hardExcluded = (rawParams["hard"] as boolean) ?? false;
+  const generalExcluded = (rawParams["general"] as boolean) ?? false;
+  const hideSkillsWithoutMaterial =
+    (rawParams[noMaterialParamName] as boolean) ?? false;
 
   const filteredSkillIds: string[] = useFuseSkillSearch(
     skillDatabaseMap,
@@ -112,33 +126,28 @@ export default function useSkillFilterState(
   }, [skills, filteredSkillIdSet]);
 
   const excludedSkillTypes: SkillTypesEnum[] = [];
+  if (hardExcluded) excludedSkillTypes.push(SkillTypesEnum.Technology);
+  if (generalExcluded) excludedSkillTypes.push(SkillTypesEnum.Technical);
+
+  const groupedSkills = groupSkills(
+    selectedGroup,
+    filteredSkills,
+    skillDatabaseMap,
+    excludedSkillTypes.length ? excludedSkillTypes : undefined,
+  );
 
   const skillTypeCategoryFilters: FilterCategory[] = skillTypeFilters.map(
-    ({ paramName, label, type }) => {
-      const isExcluded =
-        (searchParams.get(paramName) ?? "false").toLowerCase() === "true";
-
-      if (isExcluded) {
-        excludedSkillTypes.push(type);
-      }
-
+    ({ paramName, label }) => {
+      const isExcluded = paramName === "hard" ? hardExcluded : generalExcluded;
       return {
         sectionName: label,
         urlParam: paramName,
         selectedValue: isExcluded ? "true" : "false",
         options: booleanOptions(`Show ${label}`, `Hide ${label}`),
+        onChange: (value: string) =>
+          setParams({ [paramName]: value === "true" || null }),
       };
     },
-  );
-
-  const hideSkillsWithoutMaterial =
-    (searchParams.get(noMaterialParamName) ?? "false") === "true";
-
-  const groupedSkills = groupSkills(
-    selectedGroup as GroupByOptions,
-    filteredSkills,
-    skillDatabaseMap,
-    excludedSkillTypes.length ? excludedSkillTypes : undefined,
   );
 
   const filterCategories: FilterCategory[] = [
@@ -147,6 +156,8 @@ export default function useSkillFilterState(
       urlParam: groupParamName,
       selectedValue: selectedGroup,
       options: groupOptions,
+      onChange: (value: string) =>
+        setParams({ [groupParamName]: value || null }),
     },
     ...skillTypeCategoryFilters,
     {
@@ -157,23 +168,25 @@ export default function useSkillFilterState(
         "Show skills without material",
         "Hide skills without material",
       ),
+      onChange: (value: string) =>
+        setParams({ [noMaterialParamName]: value === "true" || null }),
     },
   ];
 
   const areFiltersApplied =
     hideSkillsWithoutMaterial ||
-    skillTypeCategoryFilters.some(
-      (category) => category.selectedValue !== "false",
-    ) ||
+    hardExcluded ||
+    generalExcluded ||
     selectedGroup !== GroupByOptions.Category ||
     searchTerm.trim().length > 0;
 
   return {
     searchTerm,
-    searchParamName,
     filterCategories,
     groupedSkills,
     areFiltersApplied,
     hideSkillsWithoutMaterial,
+    setSearchTerm: (value: string) =>
+      setParams({ [searchParamName]: value || null }),
   };
 }
