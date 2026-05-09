@@ -12,6 +12,7 @@ enum CertificateIssuersEnum {
   RoyalHollowayUniversity = "Royal Holloway University",
   SymphonySolutions = "Symphony Solutions",
   Amigoscode = "Amigoscode",
+  MongoDb = "MongoDB",
 }
 
 export default CertificateIssuersEnum;

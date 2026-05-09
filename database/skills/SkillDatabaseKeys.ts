@@ -110,7 +110,7 @@ enum SkillDatabaseKeys {
   DatabaseIndexing = "indexing",
 
   //^ Object-Relational Mappers
-  Mongoose = "moongose",
+  Mongoose = "mongoose",
   Prisma = "prisma",
   Drizzle = "drizzle",
   SqlAlchemy = "sqlalchemy",
