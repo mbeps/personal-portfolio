@@ -964,6 +964,297 @@ const certificateMap: Database<CertificateInterface> = {
       BlogDatabaseKeys.DatabaseNormalisation,
     ],
   },
+  [CertificateDatabaseKeys.MongoDbOverview]: {
+    name: "MongoDB Overview: Core Concepts & Architecture",
+    description:
+      "Learn the fundamentals of MongoDB including document structure, BSON format, and distributed architecture.",
+    learningOutcomes: [
+      "Understanding MongoDB's document-oriented data model and how it differs from relational databases",
+      "Identifying key architectural components including replica sets and sharding concepts",
+      "Applying BSON data types and document validation in practical scenarios",
+      "Recognizing the advantages of flexible schema design in document databases",
+      "Evaluating when to use MongoDB versus traditional relational databases for specific use cases",
+    ],
+    category: CertificateCategoriesEnum.Databases,
+    issuer: CertificateIssuersEnum.MongoDb,
+    certificateURL: `https://www.credly.com/badges/${CertificateDatabaseKeys.MongoDbOverview}`,
+    skills: [
+      SkillDatabaseKeys.MongoDb,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.NonRelationalDatabases,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.DatabaseIndexing,
+    ],
+  },
+  [CertificateDatabaseKeys.MongoDbShardingStrategies]: {
+    name: "MongoDB Sharding Strategies",
+    description:
+      "Master horizontal scaling techniques using MongoDB sharding to handle large datasets across multiple servers.",
+    learningOutcomes: [
+      "Evaluating different shard key strategies and their impact on query performance",
+      "Configuring and managing replica sets in a sharded cluster environment",
+      "Balancing data distribution to avoid hotspots and ensure even load across shards",
+      "Monitoring shard distribution and performing chunk migration for optimal data placement",
+      "Troubleshooting common sharding issues and implementing reshard operations",
+    ],
+    category: CertificateCategoriesEnum.Databases,
+    issuer: CertificateIssuersEnum.MongoDb,
+    certificateURL: `https://www.credly.com/badges/${CertificateDatabaseKeys.MongoDbShardingStrategies}`,
+    skills: [
+      SkillDatabaseKeys.MongoDb,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.NonRelationalDatabases,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.DatabaseIndexing,
+    ],
+  },
+  [CertificateDatabaseKeys.MongoDbSearchFundamentals]: {
+    name: "Search with MongoDB",
+    description:
+      "Build powerful search functionality using MongoDB Atlas Search to create fast, relevant query results.",
+    learningOutcomes: [
+      "Implementing full-text search and faceted search using Atlas Search",
+      "Configuring search analyzers and indexes for optimal relevance",
+      "Combining search with aggregation pipelines for advanced filtering",
+      "Tuning search results using boost, scoring, and relevance adjustments",
+      "Building multi-language search capabilities and custom search indexes",
+    ],
+    category: CertificateCategoriesEnum.Databases,
+    issuer: CertificateIssuersEnum.MongoDb,
+    certificateURL: `https://www.credly.com/badges/${CertificateDatabaseKeys.MongoDbSearchFundamentals}`,
+    skills: [
+      SkillDatabaseKeys.MongoDb,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.NonRelationalDatabases,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.DatabaseIndexing,
+    ],
+  },
+  [CertificateDatabaseKeys.MongoDbIndexingDesign]: {
+    name: "MongoDB Indexing Design Fundamentals",
+    description:
+      "Design efficient indexes to optimize query performance and reduce resource usage in MongoDB databases.",
+    learningOutcomes: [
+      "Creating single-field, compound, and geospatial indexes for different query patterns",
+      "Analyzing query execution plans to identify index opportunities",
+      "Managing index lifecycle including rebuilding and removing unused indexes",
+      "Optimizing indexes for array and nested document queries",
+      "Implementing index-specific strategies for write-heavy and read-heavy workloads",
+    ],
+    category: CertificateCategoriesEnum.Databases,
+    issuer: CertificateIssuersEnum.MongoDb,
+    certificateURL: `https://www.credly.com/badges/${CertificateDatabaseKeys.MongoDbIndexingDesign}`,
+    skills: [
+      SkillDatabaseKeys.MongoDb,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.NonRelationalDatabases,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.DatabaseIndexing,
+    ],
+  },
+  [CertificateDatabaseKeys.MongoDbClusterReliability]: {
+    name: "Optimizing & Maintainining MongoDB Cluster Reliability",
+    description:
+      "Ensure high availability and reliability of MongoDB clusters through proper configuration and monitoring practices.",
+    learningOutcomes: [
+      "Configuring replica sets for fault tolerance and automatic failover",
+      "Monitoring cluster health and diagnosing common issues",
+      "Implementing backup and recovery strategies for data protection",
+      "Using deployment and scaling options for maintaining cluster performance",
+      "Implementing security and authentication protocols for cluster access",
+    ],
+    category: CertificateCategoriesEnum.Databases,
+    issuer: CertificateIssuersEnum.MongoDb,
+    certificateURL: `https://www.credly.com/badges/${CertificateDatabaseKeys.MongoDbClusterReliability}`,
+    skills: [
+      SkillDatabaseKeys.MongoDb,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.NonRelationalDatabases,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.DatabaseIndexing,
+    ],
+  },
+  [CertificateDatabaseKeys.MongoDbQueryOptimization]: {
+    name: "MongoDB Query Optimization Techniques",
+    description:
+      "Improve query performance by analyzing execution plans and applying optimization strategies in MongoDB.",
+    learningOutcomes: [
+      "Reading and interpreting query execution plans to identify bottlenecks",
+      "Writing efficient queries using proper filtering and projection",
+      "Leveraging indexes and aggregation pipeline optimization for faster results",
+      "Applying limit, sort, and skip operations to optimize result pagination",
+      "Measuring query performance using the explain() method and performance metrics",
+    ],
+    category: CertificateCategoriesEnum.Databases,
+    issuer: CertificateIssuersEnum.MongoDb,
+    certificateURL: `https://www.credly.com/badges/${CertificateDatabaseKeys.MongoDbQueryOptimization}`,
+    skills: [
+      SkillDatabaseKeys.MongoDb,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.NonRelationalDatabases,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.DatabaseIndexing,
+    ],
+  },
+  [CertificateDatabaseKeys.MongoDbCrudOperations]: {
+    name: "CRUD Operations in MongoDB",
+    description:
+      "Master creating, reading, updating, and deleting documents in MongoDB with various techniques and options.",
+    learningOutcomes: [
+      "Performing insert, find, update, and delete operations on documents",
+      "Using bulk operations and transactions for multi-document consistency",
+      "Handling write concerns and read preferences for reliability and performance",
+      "Implementing query operators like $in, $eq, $elemMatch for complex filtering",
+      "Shaping query results through sorting, limiting, and projection techniques",
+    ],
+    category: CertificateCategoriesEnum.Databases,
+    issuer: CertificateIssuersEnum.MongoDb,
+    certificateURL: `https://www.credly.com/badges/${CertificateDatabaseKeys.MongoDbCrudOperations}`,
+    skills: [
+      SkillDatabaseKeys.MongoDb,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.NonRelationalDatabases,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.DatabaseIndexing,
+    ],
+  },
+  [CertificateDatabaseKeys.MongoDbSchemaPatternsAndAntiPatterns]: {
+    name: "From Relational Model (SQL) to MongoDB's Document Model",
+    description:
+      "Transition from SQL thinking to document-oriented design by learning schema patterns suited for MongoDB.",
+    learningOutcomes: [
+      "Translating relational schemas to MongoDB document structures",
+      "Applying embedding and referencing patterns for data relationships",
+      "Avoiding common schema anti-patterns that degrade performance",
+      "Designing document models that align with application query patterns",
+      "Validating and enforcing schema constraints in MongoDB collections",
+    ],
+    category: CertificateCategoriesEnum.Databases,
+    issuer: CertificateIssuersEnum.MongoDb,
+    certificateURL: `https://www.credly.com/badges/${CertificateDatabaseKeys.MongoDbSchemaPatternsAndAntiPatterns}`,
+    skills: [
+      SkillDatabaseKeys.MongoDb,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.NonRelationalDatabases,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.DatabaseIndexing,
+    ],
+  },
+  [CertificateDatabaseKeys.MongoDbAiAgents]: {
+    name: "Building AI Agents with MongoDB",
+    description:
+      "Create intelligent agents powered by AI models using MongoDB as the data backbone for context and memory.",
+    learningOutcomes: [
+      "Designing agent architectures that leverage MongoDB for state management",
+      "Integrating LLMs with MongoDB for knowledge retrieval and persistence",
+      "Building multi-step agentic workflows with MongoDB as the central data store",
+      "Implementing tool-use capabilities in AI agents with MongoDB as the action store",
+      "Managing agent memory and context evolution across extended conversations",
+    ],
+    category: CertificateCategoriesEnum.Databases,
+    issuer: CertificateIssuersEnum.MongoDb,
+    certificateURL: `https://www.credly.com/badges/${CertificateDatabaseKeys.MongoDbAiAgents}`,
+    skills: [
+      SkillDatabaseKeys.MongoDb,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.NonRelationalDatabases,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.DatabaseIndexing,
+      SkillDatabaseKeys.ArtificialIntelligence,
+    ],
+  },
+  [CertificateDatabaseKeys.MongoDbMemoryForAiApplications]: {
+    name: "Memory for AI Applications with MongoDB",
+    description:
+      "Build persistent memory systems for AI applications using MongoDB to store and retrieve conversation history and context.",
+    learningOutcomes: [
+      "Storing and managing conversation history for stateful AI interactions",
+      "Implementing retrieval mechanisms to enhance AI model responses with context",
+      "Designing memory schemas that support complex reasoning and learning patterns",
+      "Building vector-based semantic search for retrieving relevant memories from long histories",
+      "Implementing memory expiration and cleaning strategies to manage data lifecycle",
+    ],
+    category: CertificateCategoriesEnum.Databases,
+    issuer: CertificateIssuersEnum.MongoDb,
+    certificateURL: `https://www.credly.com/badges/${CertificateDatabaseKeys.MongoDbMemoryForAiApplications}`,
+    skills: [
+      SkillDatabaseKeys.MongoDb,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.NonRelationalDatabases,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.DatabaseIndexing,
+      SkillDatabaseKeys.ArtificialIntelligence,
+    ],
+  },
+  [CertificateDatabaseKeys.MongoDbRag]: {
+    name: "Building RAG Apps using MongoDB",
+    description:
+      "Build Retrieval-Augmented Generation applications that combine MongoDB for document storage with AI models for intelligent responses.",
+    learningOutcomes: [
+      "Implementing document chunking and embedding strategies for knowledge bases",
+      "Using MongoDB vector search to find relevant documents for AI context",
+      "Orchestrating RAG pipelines that retrieve, augment, and generate responses",
+      "Choosing appropriate embedding models and managing vector dimensions for efficient retrieval",
+      "Applying reranking and filtering techniques to improve retrieval relevance and accuracy",
+    ],
+    category: CertificateCategoriesEnum.Databases,
+    issuer: CertificateIssuersEnum.MongoDb,
+    certificateURL: `https://www.credly.com/badges/${CertificateDatabaseKeys.MongoDbRag}`,
+    skills: [
+      SkillDatabaseKeys.MongoDb,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.NonRelationalDatabases,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.DatabaseIndexing,
+      SkillDatabaseKeys.ArtificialIntelligence,
+    ],
+  },
+  [CertificateDatabaseKeys.MongoDbAiAndInnovation]: {
+    name: "AI and Innovation: How MongoDB Enables a Resilient AI Strategy",
+    description:
+      "Understand how MongoDB supports enterprise AI initiatives with scalability, flexibility, and innovation capabilities.",
+    learningOutcomes: [
+      "Aligning MongoDB infrastructure with organizational AI goals and strategies",
+      "Building resilient systems that handle AI workloads at scale",
+      "Leveraging MongoDB's flexibility for rapid AI application innovation and iteration",
+      "Evaluating MongoDB's capabilities for cost-effective AI implementation at enterprise scale",
+      "Integrating MongoDB with modern AI frameworks and platforms for end-to-end solutions",
+    ],
+    category: CertificateCategoriesEnum.Databases,
+    issuer: CertificateIssuersEnum.MongoDb,
+    certificateURL: `https://www.credly.com/badges/${CertificateDatabaseKeys.MongoDbAiAndInnovation}`,
+    skills: [
+      SkillDatabaseKeys.MongoDb,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.NonRelationalDatabases,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.DatabaseIndexing,
+      SkillDatabaseKeys.ArtificialIntelligence,
+    ],
+  },
+  [CertificateDatabaseKeys.MongoDbVectorSearch]: {
+    name: "Building AI-Powered Search with MongoDB Vector Search",
+    description:
+      "Implement semantic search capabilities using MongoDB Vector Search to find contextually relevant results based on embeddings.",
+    learningOutcomes: [
+      "Generating and storing vector embeddings for documents and queries",
+      "Performing similarity searches using MongoDB Vector Search indexes",
+      "Combining vector search with traditional filters for precise retrieval",
+      "Implementing Approximate Nearest Neighbor (ANN) and Exact Nearest Neighbor (ENN) search algorithms",
+      "Optimizing vector search for production scale with efficient indexing and query patterns",
+    ],
+    category: CertificateCategoriesEnum.Databases,
+    issuer: CertificateIssuersEnum.MongoDb,
+    certificateURL: `https://www.credly.com/badges/${CertificateDatabaseKeys.MongoDbVectorSearch}`,
+    skills: [
+      SkillDatabaseKeys.MongoDb,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.NonRelationalDatabases,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.DatabaseIndexing,
+      SkillDatabaseKeys.ArtificialIntelligence,
+    ],
+  },
   [CertificateDatabaseKeys.LinkedInIntroductionToMongoDB]: {
     name: "Introduction to MongoDB",
     category: CertificateCategoriesEnum.Databases,
@@ -3193,7 +3484,7 @@ const certificateMap: Database<CertificateInterface> = {
  * List of keys for the certificates that can be used to uniquely identify the certificate.
  */
 export const certificateDatabaseKeys: CertificateDatabaseKeys[] = Object.keys(
-  certificateMap
+  certificateMap,
 ) as CertificateDatabaseKeys[];
 
 // Validate that all certificate keys only contain alphanumeric characters and dashes
@@ -3215,7 +3506,7 @@ const certificateDatabaseMap: Database<CertificateInterface> =
     skillDatabaseMap,
     [SkillCategoriesEnum.ProgrammingLanguages],
     SkillTypesEnum.Technical,
-    SkillTypesEnum.Technology
+    SkillTypesEnum.Technology,
   );
 
 export default certificateDatabaseMap;
