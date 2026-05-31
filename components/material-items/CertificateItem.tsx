@@ -73,6 +73,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
                 src={certificateData.certificateImage}
                 alt={`${certificateData.name} certificate image`}
                 fill={true}
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 quality={20}
                 loading="lazy"
                 className="

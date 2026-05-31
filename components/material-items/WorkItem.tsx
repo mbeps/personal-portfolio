@@ -30,7 +30,7 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
 
   const currentDate: ShortDate = new ShortDate(
     new Date().getFullYear(),
-    new Date().getMonth() + 1
+    new Date().getMonth() + 1,
   );
   const endDate: string =
     roleData.endDate.difference(currentDate) === 0
@@ -72,6 +72,7 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
                     src={companyData.logo}
                     alt={`Logo for ${companyData.name}`}
                     fill={true}
+                    sizes="80px"
                     className="
                     rounded-full 
                     shadow-lg object-cover

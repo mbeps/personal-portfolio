@@ -64,6 +64,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
                   key={projectData.thumbnailImage}
                   alt={`${projectData.name} cover image`}
                   fill={true}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   quality={15}
                   className="
                     rounded-xl 
