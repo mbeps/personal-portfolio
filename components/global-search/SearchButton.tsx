@@ -139,7 +139,7 @@ const GlobalSearch: React.FC = () => {
           })`,
           link: courseKey
             ? `${EDUCATION_PAGE.path}/${courseKey}/${key}`
-            : `/education`,
+            : `${EDUCATION_PAGE.path}`,
         };
       }),
     },
@@ -204,17 +204,19 @@ const GlobalSearch: React.FC = () => {
   return (
     <>
       <Tooltip>
-        <TooltipTrigger render={
-          <button
-            className={`${baseButtonClass} ${darkButtonClass} ${lightButtonClass}`}
-            onClick={() => setOpen((open) => !open)}
-          >
-            <RiSearchLine
-              size={25}
-              className={`${baseIconClass} ${darkIconClass} ${lightIconClass}`}
-            />
-          </button>
-        } />
+        <TooltipTrigger
+          render={
+            <button
+              className={`${baseButtonClass} ${darkButtonClass} ${lightButtonClass}`}
+              onClick={() => setOpen((open) => !open)}
+            >
+              <RiSearchLine
+                size={25}
+                className={`${baseIconClass} ${darkIconClass} ${lightIconClass}`}
+              />
+            </button>
+          }
+        />
         <TooltipContent className="flex flex-col items-center text-center">
           <p>Global Search</p>
           <div className="text-sm text-neutral-600 dark:text-neutral-300 flex flex-row space-x-1">

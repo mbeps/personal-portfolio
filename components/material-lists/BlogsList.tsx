@@ -2,6 +2,7 @@ import BlogItem from "@/components/material-items/BlogItem";
 import Grid from "@/components/ui/Grid";
 import MaterialGroupListInterface from "@/interfaces/material/MaterialGroupListInterface";
 import MaterialGroupSectionList from "./MaterialGroupSectionList";
+import BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
 
 /**
  * Group renderer for blog cards, plumbing MaterialGroupSectionList into the shared `BlogItem` tile component.
@@ -27,7 +28,7 @@ const BlogsList: React.FC<MaterialGroupListInterface> = ({
         <Grid
           items={group.materialsKeys.map((blogKey) => (
             <div key={blogKey}>
-              <BlogItem blogKey={blogKey} />
+              <BlogItem blogKey={blogKey as BlogDatabaseKeys} />
             </div>
           ))}
         />

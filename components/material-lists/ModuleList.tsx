@@ -47,17 +47,23 @@ const ModuleList: React.FC<ModuleListProps> = ({
             items={group.materialsKeys.map((moduleKey) => {
               const courseKey = findCourseKeyForModule(
                 moduleKey as ModuleDatabaseKeys,
-                courseDatabaseMap
+                courseDatabaseMap,
               );
               return (
                 <div key={moduleKey}>
                   <Link href={`${basePath}/${courseKey}/${moduleKey}`}>
                     <Tag hasHover>
-                      <div>{moduleDatabaseMap[moduleKey].name}</div>
+                      <div>
+                        {
+                          moduleDatabaseMap[moduleKey as ModuleDatabaseKeys]
+                            .name
+                        }
+                      </div>
                       <div className="text-neutral-400 dark:text-red-200 italic text-sm">
                         {
                           courseDatabaseMap[
-                            moduleDatabaseMap[moduleKey].parentCourse
+                            moduleDatabaseMap[moduleKey as ModuleDatabaseKeys]
+                              .parentCourse
                           ].name
                         }
                       </div>

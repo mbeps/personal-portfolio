@@ -13,22 +13,23 @@ import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface
  * @returns Single-element array that satisfies the `MaterialGroupInterface` contract.
  */
 export default function groupMaterialsByMaterialType<
-  T extends MaterialInterface
+  TKey extends string,
+  TMaterial extends MaterialInterface,
 >(
-  materialsKeys: string[],
-  materialsDatabase: Database<T>,
-  groupName: MaterialTypeEnum
+  materialsKeys: TKey[],
+  materialsDatabase: Database<TMaterial>,
+  groupName: MaterialTypeEnum,
 ): MaterialGroupInterface[] {
   // Filter materialKeys to ensure they exist in the materialsMap
-  const validMaterialsKeys: string[] = materialsKeys.filter(
-    (key) => key in materialsDatabase
+  const validMaterialsKeys: TKey[] = materialsKeys.filter(
+    (key) => key in materialsDatabase,
   );
 
   // Return an array with a single MaterialGroupInterface object
   return [
     {
       groupName,
-      materialsKeys: validMaterialsKeys,
+      materialsKeys: validMaterialsKeys as any,
     },
   ];
 }
