@@ -5,6 +5,7 @@ import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSyst
 import Link from "next/link";
 import LanguageSection from "./LanguageSection";
 import TechnologiesSection from "./TechnologiesSection";
+import { ABOUT_PAGE } from "@/constants/pages";
 
 /**
  * Markdown-backed about preview that pairs the Reader with the interactive language/technology sub sections.
@@ -47,7 +48,7 @@ const AboutSection = () => {
             <div className="space-y-2">
               <Reader content={blogContent} size="lg:prose-lg" />
               <Link
-                href="/about"
+                href={ABOUT_PAGE.path}
                 className="
                 font-bold
                 hover:underline 
