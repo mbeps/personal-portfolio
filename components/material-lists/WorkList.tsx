@@ -1,6 +1,7 @@
 import MaterialGroupListInterface from "@/interfaces/material/MaterialGroupListInterface";
 import WorkItem from "../material-items/WorkItem";
 import MaterialGroupSectionList from "./MaterialGroupSectionList";
+import RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
 
 /**
  * Thin list renderer for Work Experience / Role material groups.
@@ -30,7 +31,7 @@ const WorkList: React.FC<MaterialGroupListInterface> = ({
         <div className="space-y-10">
           {group.materialsKeys.map((roleKey) => (
             <div key={roleKey}>
-              <WorkItem roleKey={roleKey} />
+              <WorkItem roleKey={roleKey as RoleDatabaseKeys} />
             </div>
           ))}
         </div>
