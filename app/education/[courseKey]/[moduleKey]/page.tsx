@@ -12,7 +12,7 @@ import {
   CardTitle,
 } from "@/components/shadcn/ui/card";
 import developerName from "@/constants/developerName";
-import { EDUCATION_PAGE, HOME_PAGE } from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 import courseDatabaseMap from "@/database/courses/CourseDatabaseMap";
 import CourseInterface from "@/database/courses/CourseInterface";
 import moduleDatabaseMap from "@/database/modules/ModuleDatabaseMap";
@@ -49,7 +49,7 @@ export async function generateMetadata(
   return {
     title: `${developerName} - Courses: ${moduleData?.name}`,
     description: moduleData.learningOutcomes.join(". ") || "",
-    category: `${EDUCATION_PAGE.label}`,
+    category: `${ROUTES.EDUCATION.name}`,
     creator: developerName,
   };
 }
@@ -89,11 +89,11 @@ const ModulePage: React.FC<{ params: Params }> = async ({ params }) => {
   const hasSkills = hasAnySkills(allGroupedSkills);
 
   const breadcrumbData: BreadcrumbPair[] = [
-    { name: HOME_PAGE.label, path: HOME_PAGE.path },
-    { name: EDUCATION_PAGE.label, path: EDUCATION_PAGE.path },
+    { name: ROUTES.HOME.name, path: ROUTES.HOME.path },
+    { name: ROUTES.EDUCATION.name, path: ROUTES.EDUCATION.path },
     {
       name: parentCourse.name,
-      path: `${EDUCATION_PAGE.path}/${moduleData.parentCourse}`,
+      path: `${ROUTES.EDUCATION.path}/${moduleData.parentCourse}`,
     },
     { name: moduleData.name },
   ];

@@ -26,7 +26,7 @@ import {
 } from "@/components/shadcn/ui/tooltip";
 import SkillTag from "@/components/tags/SkillTag";
 import Tag from "@/components/tags/Tag";
-import { SKILL_PAGE } from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
 import SkillInterface from "@/database/skills/SkillInterface";
@@ -174,7 +174,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
       {/* Links */}
       {hasMaterial && (
         <div className="w-full mt-auto px-6 pb-4">
-          <Link href={`${SKILL_PAGE.path}/${languageIdentifier as string}`}>
+          <Link href={`${ROUTES.SKILLS.path}/${languageIdentifier as string}`}>
             <Button variant="gradient" className="w-full">
               {`All ${language.name} Material`}
             </Button>

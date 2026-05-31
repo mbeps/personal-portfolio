@@ -1,7 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
 import developerName from "@/constants/developerName";
-import { CV_PAGE } from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
 import roleDatabaseMap from "@/database/roles/RoleDatabaseMap";
 import { roleDatabaseKeys } from "@/database/roles/RoleDatabaseMap";
@@ -23,7 +23,7 @@ import { PATHS } from "@/constants/paths";
 
 export const metadata: Metadata = {
   title: `${developerName} - CV`,
-  description: CV_PAGE.description,
+  description: ROUTES.CV.description,
   category: "CV",
   creator: developerName,
   keywords: ["CV", "Resume", "Curriculum Vitae", developerName],

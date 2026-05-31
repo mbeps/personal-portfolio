@@ -3,7 +3,7 @@
 import { skillHasMaterial } from "@/lib/material/skillUsageHelpers";
 import FilterSection from "@/components/filters/FilterSection";
 import SkillTag from "@/components/tags/SkillTag";
-import { SKILL_PAGE } from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
 import useSkillFilterState from "@/hooks/useSkillFilterState";
@@ -29,7 +29,7 @@ interface SkillListProps {
  * @returns Filter UI plus grouped skill cards.
  */
 const SkillList: React.FC<SkillListProps> = ({ skills }) => {
-  const basePath: string = SKILL_PAGE.path;
+  const basePath: string = ROUTES.SKILLS.path;
   const {
     searchTerm,
     setSearchTerm,
@@ -42,7 +42,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
   return (
     <div>
       <FilterSection
-        name={SKILL_PAGE.label}
+        name={ROUTES.SKILLS.name}
         basePath={basePath}
         searchFilter={{
           searchTerm,

@@ -1,4 +1,4 @@
-import { EDUCATION_PAGE } from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 import courseDatabaseMap from "@/database/courses/CourseDatabaseMap";
 import CourseInterface from "@/database/courses/CourseInterface";
 import Image from "next/image";
@@ -18,7 +18,7 @@ interface CourseItemProps {
  * @returns Card with logo, name, category, and university tag.
  */
 const CourseItem: React.FC<CourseItemProps> = ({ courseKey }) => {
-  const basePath: string = EDUCATION_PAGE.path;
+  const basePath: string = ROUTES.EDUCATION.path;
   let courseData: CourseInterface = courseDatabaseMap[courseKey];
 
   return (

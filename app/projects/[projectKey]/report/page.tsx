@@ -1,7 +1,7 @@
 import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
 import processMarkdownImages from "@/lib/processMarkdownImages";
 import SpecialReader from "@/components/reader/SpecialReader";
-import { PROJECTS_PAGE } from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 import projectDatabaseMap from "@/database/projects/ProjectDatabaseMap";
 import ProjectInterface from "@/database/projects/ProjectInterface";
 import { notFound } from "next/navigation";
@@ -51,7 +51,7 @@ export async function generateMetadata(
     return {
       title: `${developerName} - Projects: ${project.name} Report`,
       description: `Detailed report and analysis for ${project.name}. ${project.description}`,
-      category: `${PROJECTS_PAGE.label}`,
+      category: `${ROUTES.PROJECTS.name}`,
       creator: developerName,
       keywords: [
         project.name,
@@ -101,7 +101,9 @@ const ProjectReportPage = async ({ params }: PageProps) => {
         </div>
         <SpecialReader
           content={processedReportContent}
-          previousPagePath={`${PROJECTS_PAGE.path}/${projectKey}`}
+          previousPagePath={ROUTES.PROJECTS.detail(
+            projectKey as ProjectDatabaseKeys,
+          )}
           previousPageName={projectData.name}
         />
       </div>

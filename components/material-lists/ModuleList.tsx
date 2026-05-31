@@ -1,6 +1,6 @@
 import findCourseKeyForModule from "@/lib/material/course/findCourseKeyForModule";
 import Grid from "@/components/ui/Grid";
-import { EDUCATION_PAGE } from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 import courseDatabaseMap from "@/database/courses/CourseDatabaseMap";
 import moduleDatabaseMap from "@/database/modules/ModuleDatabaseMap";
 import ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
@@ -26,7 +26,7 @@ const ModuleList: React.FC<ModuleListProps> = ({
   groupedMaterial,
   headingSize = "h2",
 }) => {
-  const basePath: string = EDUCATION_PAGE.path;
+  const basePath: string = ROUTES.EDUCATION.path;
   const HeadingTag = headingSize as keyof React.JSX.IntrinsicElements;
 
   return (

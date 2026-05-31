@@ -1,6 +1,6 @@
 import PageDescription from "@/components/ui/PageDescription";
 import developerName from "@/constants/developerName";
-import { CERTIFICATES_PAGE } from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 import certificateDatabaseMap from "@/database/certificates/CertificateDatabaseMap";
 import { Metadata } from "next";
 import React from "react";
@@ -10,10 +10,10 @@ import CertificatesView from "./_components/CertificatesView";
  * Static metadata for the certificates archive, using the dataset itself to populate keywords so the list and SEO stay aligned.
  */
 export const metadata: Metadata = {
-  title: `${developerName} - ${CERTIFICATES_PAGE.label}`,
+  title: `${developerName} - ${ROUTES.CERTIFICATES.name}`,
   description: `A list of all certificates and online courses that ${developerName} has completed. 
   These include certifications in web development, software engineering, and Artificial Intelligence, Machine Learning and more.`,
-  category: `${CERTIFICATES_PAGE.label}`,
+  category: `${ROUTES.CERTIFICATES.name}`,
   creator: developerName,
   keywords: Object.values(certificateDatabaseMap).map(
     (certificate) => certificate.name,
@@ -33,8 +33,8 @@ const CertificatesPage: React.FC = () => {
         className="flex flex-col items-start md:items-end"
       >
         <div className="w-full">
-          <h1>{CERTIFICATES_PAGE.label}</h1>
-          <PageDescription description={CERTIFICATES_PAGE.description} />
+          <h1>{ROUTES.CERTIFICATES.name}</h1>
+          <PageDescription description={ROUTES.CERTIFICATES.description} />
           <CertificatesView />
         </div>
       </section>

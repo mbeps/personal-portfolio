@@ -11,7 +11,7 @@ import generateFilterOptionsBySkillType from "@/lib/material/filter-options/gene
 import stringToSlug from "@/lib/stringToSlug";
 import FilterSection from "@/components/filters/FilterSection";
 import BlogsList from "@/components/material-lists/BlogsList";
-import { BLOG_PAGE } from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 import BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
 import BlogInterface from "@/database/blogs/BlogInterface";
 import blogsDatabaseMap from "@/database/blogs/BlogsDatabaseMap";
@@ -127,7 +127,7 @@ export const BlogsView: React.FC = () => {
   return (
     <>
       <FilterSection
-        name={BLOG_PAGE.label}
+        name={ROUTES.BLOGS.name}
         basePath={basePath}
         searchFilter={{
           searchTerm: searchTerm,

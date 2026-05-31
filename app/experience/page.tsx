@@ -1,6 +1,6 @@
 import PageDescription from "@/components/ui/PageDescription";
 import developerName from "@/constants/developerName";
-import { EXPERIENCE_PAGE } from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 import rolesDatabase from "@/database/roles/RoleDatabaseMap";
 import type { Metadata } from "next";
 import ExperienceView from "./_components/ExperienceView";
@@ -10,12 +10,12 @@ import companyDatabaseMap from "@/database/companies/CompanyDatabaseMap";
  * Static metadata for the experience hub, populated from the roles database so keywords stay synced with the latest timeline entries.
  */
 export const metadata: Metadata = {
-  title: `${developerName} - ${EXPERIENCE_PAGE.label}`,
+  title: `${developerName} - ${ROUTES.EXPERIENCE.name}`,
   description: `A list of all work experience and volunteering roles that ${developerName} has completed. 
   The latest role is as a ${Object.values(rolesDatabase)[0].name} at ${
     companyDatabaseMap[Object.values(rolesDatabase)[0].company].name
   }.`,
-  category: `${EXPERIENCE_PAGE.label}`,
+  category: `${ROUTES.EXPERIENCE.name}`,
   creator: developerName,
   keywords: Object.values(rolesDatabase).map((role) => role.name),
 };
@@ -30,9 +30,9 @@ export default function ExperiencePage() {
     <main>
       <section id="experience">
         <div className="w-full">
-          <h1>{EXPERIENCE_PAGE.label}</h1>
+          <h1>{ROUTES.EXPERIENCE.name}</h1>
 
-          <PageDescription description={EXPERIENCE_PAGE.description} />
+          <PageDescription description={ROUTES.EXPERIENCE.description} />
           <ExperienceView />
         </div>
       </section>

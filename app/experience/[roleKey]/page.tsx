@@ -14,7 +14,7 @@ import {
   CardTitle,
 } from "@/components/shadcn/ui/card";
 import developerName from "@/constants/developerName";
-import { EXPERIENCE_PAGE } from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 import companyDatabaseMap from "@/database/companies/CompanyDatabaseMap";
 import CompanyInterface from "@/database/companies/CompanyInterface";
 import rolesDatabase from "@/database/roles/RoleDatabaseMap";
@@ -55,9 +55,9 @@ export async function generateMetadata(
   const company: CompanyInterface = companyDatabaseMap[role.company];
 
   return {
-    title: `${developerName} - ${EXPERIENCE_PAGE.label}: ${role?.name} at ${company.name}`,
+    title: `${developerName} - ${ROUTES.EXPERIENCE.name}: ${role?.name} at ${company.name}`,
     description: `${role.type} ${role.name} at ${company.name}`,
-    category: `${EXPERIENCE_PAGE.label}`,
+    category: `${ROUTES.EXPERIENCE.name}`,
     creator: developerName,
     keywords: [role.name, company.name],
   };

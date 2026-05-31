@@ -2,7 +2,7 @@ import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
 import { NAVBAR_HEIGHT } from "@/constants/navbarHeight";
 import developerName from "@/constants/developerName";
-import { HOME_PAGE } from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 import subtitles from "@/constants/subtitles";
 import { Providers } from "@/providers/Providers";
 import type { Metadata } from "next";
@@ -32,7 +32,7 @@ const aboutContent: string | undefined = getMarkdownFromFileSystem(
 
 export const metadata: Metadata = {
   title: developerName,
-  description: aboutContent || HOME_PAGE.description,
+  description: aboutContent || ROUTES.HOME.description,
   icons: ["/manifest/icon512_maskable.png", "/manifest/icon512_rounded.png"],
   category: "Homepage",
   creator: developerName,

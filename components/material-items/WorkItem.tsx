@@ -1,4 +1,4 @@
-import { EXPERIENCE_PAGE } from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 import companyDatabaseMap from "@/database/companies/CompanyDatabaseMap";
 import rolesDatabase from "@/database/roles/RoleDatabaseMap";
 import CompanyInterface from "@/database/companies/CompanyInterface";
@@ -22,7 +22,7 @@ interface WorkItemProps {
  * @returns Responsive card with company logo, dates, and quick links.
  */
 const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
-  const basePath: string = EXPERIENCE_PAGE.path;
+  const basePath: string = ROUTES.EXPERIENCE.path;
   const roleData: RoleInterface = rolesDatabase[roleKey];
   const companyData: CompanyInterface = companyDatabaseMap[roleData.company];
 

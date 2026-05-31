@@ -36,7 +36,7 @@ import Tag from "@/components/tags/Tag";
 import { Button } from "@/components/shadcn/ui/button";
 import { ScrollArea } from "@/components/shadcn/ui/scroll-area";
 import SkillTag from "@/components/tags/SkillTag";
-import { SKILL_PAGE } from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 
 /**
  * Expands the homepage “Technologies” tag list into a full modal/drawer so visitors can browse grouped skills without leaving the page.
@@ -176,7 +176,7 @@ const TechnologiesModal: React.FC = () => {
 
           {/* All Material Button */}
           <div className="flex flex-wrap flex-col text-center md:text-left justify-start">
-            <Link href={SKILL_PAGE.path}>
+            <Link href={ROUTES.SKILLS.path}>
               <div className="w-full">
                 <Button variant="gradient" className="w-full">
                   {`All Technologies & Skills`}
