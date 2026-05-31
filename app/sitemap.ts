@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { ROUTES } from "@/constants/routes";
 
 /**
  * Generates the `sitemap.xml` file for the website.
@@ -22,50 +23,50 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     // Main pages
     {
-      url: `${baseUrl}/projects`,
+      url: `${baseUrl}${ROUTES.PROJECTS.path}`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/experience`,
+      url: `${baseUrl}${ROUTES.EXPERIENCE.path}`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/education`,
+      url: `${baseUrl}${ROUTES.EDUCATION.path}`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/more`,
+      url: `${baseUrl}${ROUTES.MORE.path}`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     // Other pages (lower priority)
     {
-      url: `${baseUrl}/certificates`,
+      url: `${baseUrl}${ROUTES.CERTIFICATES.path}`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/blogs`,
+      url: `${baseUrl}${ROUTES.BLOGS.path}`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/about`,
+      url: `${baseUrl}${ROUTES.ABOUT.path}`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/skills`,
+      url: `${baseUrl}${ROUTES.SKILLS.path}`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.6,

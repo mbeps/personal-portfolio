@@ -22,7 +22,7 @@ import {
   CardTitle,
 } from "@/components/shadcn/ui/card";
 import developerName from "@/constants/developerName";
-import { PROJECTS_PAGE } from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 import projectDatabaseMap from "@/database/projects/ProjectDatabaseMap";
 import ProjectInterface from "@/database/projects/ProjectInterface";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
@@ -68,7 +68,7 @@ export async function generateMetadata(
     return {
       title: `${developerName} - Projects: ${project?.name}`,
       description: project?.description,
-      category: `${PROJECTS_PAGE.label}`,
+      category: `${ROUTES.PROJECTS.name}`,
       creator: developerName,
       keywords: [
         project.name,
@@ -101,7 +101,7 @@ export const generateStaticParams = async () => {
 const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
   const resolvedParams = await params;
   const projectKey = resolvedParams.projectKey as ProjectDatabaseKeys;
-  const basePath: string = PROJECTS_PAGE.path;
+  const basePath: string = ROUTES.PROJECTS.path;
   const projectData: ProjectInterface = projectDatabaseMap[projectKey];
 
   // redirect to not found page if the project is not valid

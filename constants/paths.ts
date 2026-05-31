@@ -1,10 +1,16 @@
 import CompanyDatabaseKeys from "@/database/companies/CompanyDatabaseKeys";
-import { PROJECTS_PAGE } from "./pages";
 import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
 import RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
 import CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
 import CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
 import BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
+
+const PROJECTS_BASE = "/projects" as const;
+const ROLES_BASE = "/roles" as const;
+const BLOGS_BASE = "/blogs" as const;
+const EDUCATION_BASE = "/education" as const;
+const CERTIFICATES_BASE = "/certificates" as const;
+const COMPANIES_BASE = "/companies" as const;
 
 /**
  * Global path registry for static assets and dynamic routes.
@@ -22,29 +28,29 @@ export const PATHS = {
   },
   COMPANY: {
     LOGO: (companyKey: CompanyDatabaseKeys) =>
-      `/companies/${companyKey}/logo.png`,
+      `${COMPANIES_BASE}/${companyKey}/logo.png`,
   },
   PROJECTS: (projectKey: ProjectDatabaseKeys) => ({
-    COVER: `/projects/${projectKey}/cover.png`,
-    FEATURES: `public/projects/${projectKey}/features.md`,
-    BLOG: `public/projects/${projectKey}/blog.md`,
-    BLOG_IMG: `projects/${projectKey}/img`,
+    COVER: `${PROJECTS_BASE}/${projectKey}/cover.png`,
+    FEATURES: `public${PROJECTS_BASE}/${projectKey}/features.md`,
+    BLOG: `public${PROJECTS_BASE}/${projectKey}/blog.md`,
+    BLOG_IMG: `${PROJECTS_BASE.slice(1)}/${projectKey}/img`,
     MEDIA: {
-      NORMAL: `/projects/${projectKey}/media`,
-      PUBLIC: `public/projects/${projectKey}/media`,
+      NORMAL: `${PROJECTS_BASE}/${projectKey}/media`,
+      PUBLIC: `public${PROJECTS_BASE}/${projectKey}/media`,
     },
   }),
   ROLES: (roleKey: RoleDatabaseKeys) => ({
-    RESPONSIBILITIES: `public/roles/${roleKey}/responsibilities.md`,
+    RESPONSIBILITIES: `public${ROLES_BASE}/${roleKey}/responsibilities.md`,
   }),
   CERTIFICATES: (certificateKey: CertificateDatabaseKeys) =>
-    `/certificates/${certificateKey}.jpg`,
+    `${CERTIFICATES_BASE}/${certificateKey}.jpg`,
   EDUCATION: (courseKey: CourseDatabaseKeys) => ({
-    LOGO: `/education/${courseKey}/logo.png`,
-    CERTIFICATE: `/education/${courseKey}/certificate.jpg`,
+    LOGO: `${EDUCATION_BASE}/${courseKey}/logo.png`,
+    CERTIFICATE: `${EDUCATION_BASE}/${courseKey}/certificate.jpg`,
   }),
   BLOGS: (blogKey: BlogDatabaseKeys) => ({
-    BLOG: `public/blogs/${blogKey}/blog.md`,
-    IMG: `blogs/${blogKey}/img`,
+    BLOG: `public${BLOGS_BASE}/${blogKey}/blog.md`,
+    IMG: `${BLOGS_BASE.slice(1)}/${blogKey}/img`,
   }),
 } as const;

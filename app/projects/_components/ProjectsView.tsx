@@ -12,7 +12,7 @@ import generateFilterOptionsForProgrammingLanguages from "@/lib/material/filter-
 import stringToSlug from "@/lib/stringToSlug";
 import FilterSection from "@/components/filters/FilterSection";
 import ProjectsList from "@/components/material-lists/ProjectsList";
-import { PROJECTS_PAGE } from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 import projectDatabaseMap from "@/database/projects/ProjectDatabaseMap";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
 import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
@@ -160,7 +160,7 @@ const ProjectsView: React.FC = () => {
   return (
     <>
       <FilterSection
-        name={PROJECTS_PAGE.label}
+        name={ROUTES.PROJECTS.name}
         basePath={basePath}
         searchFilter={{
           searchTerm: searchTerm,

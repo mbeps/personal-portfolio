@@ -6,7 +6,7 @@ import SpecialReader from "@/components/reader/SpecialReader";
 import { Card, CardContent } from "@/components/shadcn/ui/card";
 import SkillTableSection from "@/components/skills/SkillTableSection";
 import developerName from "@/constants/developerName";
-import { BLOG_PAGE, PROJECTS_PAGE } from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 import BlogInterface from "@/database/blogs/BlogInterface";
 import blogsDatabaseMap from "@/database/blogs/BlogsDatabaseMap";
 import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
@@ -44,7 +44,7 @@ export async function generateMetadata(
   return {
     title: `${developerName} - Blogs: ${blog?.name}`,
     description: blog?.subtitle,
-    category: `${BLOG_PAGE.label}`,
+    category: `${ROUTES.BLOGS.name}`,
     creator: developerName,
   };
 }
@@ -70,7 +70,7 @@ export const generateStaticParams = async () => {
 const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
   const resolvedParams = await params;
   const blogKey: string = resolvedParams.blogKey;
-  const basePath: string = BLOG_PAGE.path;
+  const basePath: string = ROUTES.BLOGS.path;
   const blogData: BlogInterface = blogsDatabaseMap[blogKey];
 
   if (!blogData) {
@@ -121,8 +121,8 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
 
         <SpecialReader
           content={processedBlogContent}
-          previousPagePath={BLOG_PAGE.path}
-          previousPageName={BLOG_PAGE.label}
+          previousPagePath={ROUTES.BLOGS.path}
+          previousPageName={ROUTES.BLOGS.name}
         />
 
         <div className="mt-10 material-sections-wrapper">

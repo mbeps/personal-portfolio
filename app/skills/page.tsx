@@ -1,6 +1,6 @@
 import PageDescription from "@/components/ui/PageDescription";
 import developerName from "@/constants/developerName";
-import { SKILL_PAGE } from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 import skillDatabaseMap, {
   skillDatabaseKeys,
 } from "@/database/skills/SkillDatabaseMap";
@@ -13,7 +13,7 @@ export const metadata = {
   title: `${developerName} - Skills`,
   description: `A list of all skills that ${developerName} has.
   These skills have been demonstrated in various projects, work experiences, education, certifications/online courses, and blogs.`,
-  category: `${SKILL_PAGE.label}`,
+  category: `${ROUTES.SKILLS.name}`,
   creator: developerName,
   keywords: Object.values(skillDatabaseMap).map((skill) => skill.name),
 };
@@ -29,7 +29,7 @@ export default function SkillPage() {
       <section id="skills">
         <div className="w-full">
           <h1>Skills</h1>
-          <PageDescription description={SKILL_PAGE.description} />
+          <PageDescription description={ROUTES.SKILLS.description} />
           <SkillList skills={skillDatabaseKeys} />
         </div>
       </section>

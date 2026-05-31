@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 import React from "react";
 import Tag from "./Tag";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import { SKILL_PAGE } from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 
 interface TagProps {
   skillKey: SkillDatabaseKeys;
@@ -36,7 +36,7 @@ const SkillTag: React.FC<TagProps> = ({ skillKey, hide }) => {
 
   // If the skill exists but there's no associated material, adjust the link accordingly
   let skillLink: string = hasMaterial
-    ? `${SKILL_PAGE.path}/${skillKey}`
+    ? `${ROUTES.SKILLS.path}/${skillKey}`
     : currentPath;
 
   // Render the skill tag with a link if there's associated material, otherwise just show the tag

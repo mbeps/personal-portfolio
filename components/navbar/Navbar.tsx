@@ -1,7 +1,7 @@
 "use client";
 
 import { NAVBAR_HEIGHT } from "@/constants/navbarHeight";
-import NAV_ITEMS from "@/constants/pages";
+import { NAV_ITEMS } from "@/constants/routes";
 import { useNavbarStore } from "@/hooks/useNavbarStore";
 import { useEffect, useState } from "react";
 import GlobalSearch from "../global-search/SearchButton";

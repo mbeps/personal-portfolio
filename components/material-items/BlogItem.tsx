@@ -1,4 +1,4 @@
-import { BLOG_PAGE } from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 import blogsDatabaseMap from "@/database/blogs/BlogsDatabaseMap";
 import BlogInterface from "@/database/blogs/BlogInterface";
 import Link from "next/link";
@@ -15,7 +15,7 @@ interface BlogItemProps {
  * @returns Clickable card with blog summary copy.
  */
 const BlogItem: React.FC<BlogItemProps> = ({ blogKey }) => {
-  const basePath: string = BLOG_PAGE.path;
+  const basePath: string = ROUTES.BLOGS.path;
   const blogData: BlogInterface = blogsDatabaseMap[blogKey];
 
   return (

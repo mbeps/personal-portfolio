@@ -12,12 +12,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/shadcn/ui/tabs";
-import {
-  BLOG_PAGE,
-  CERTIFICATES_PAGE,
-  EXPERIENCE_PAGE,
-  PROJECTS_PAGE,
-} from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 import blogsDatabaseMap, {
   blogDatabaseKeys,
 } from "@/database/blogs/BlogsDatabaseMap";
@@ -71,7 +66,7 @@ const MaterialTab: React.FC<MaterialTabsProps> = ({ materialKeys }) => {
       name: MaterialTypeEnum.Projects,
       materials: projectDatabaseKeys,
       materialHashmap: projectDatabaseMap,
-      basePath: PROJECTS_PAGE.path,
+      basePath: ROUTES.PROJECTS.path,
       ListComponent: ProjectsList,
     },
     {
@@ -80,7 +75,7 @@ const MaterialTab: React.FC<MaterialTabsProps> = ({ materialKeys }) => {
       materials: roleDatabaseKeys,
       materialHashmap: rolesDatabase,
       ListComponent: WorkList,
-      basePath: EXPERIENCE_PAGE.path,
+      basePath: ROUTES.EXPERIENCE.path,
     },
     {
       // University Modules
@@ -94,7 +89,7 @@ const MaterialTab: React.FC<MaterialTabsProps> = ({ materialKeys }) => {
       name: MaterialTypeEnum.Certificates,
       materials: certificateDatabaseKeys,
       materialHashmap: certificateDatabaseMap,
-      basePath: CERTIFICATES_PAGE.path,
+      basePath: ROUTES.CERTIFICATES.path,
       ListComponent: CertificatesList,
     },
     {
@@ -102,7 +97,7 @@ const MaterialTab: React.FC<MaterialTabsProps> = ({ materialKeys }) => {
       name: MaterialTypeEnum.Blogs,
       materials: blogDatabaseKeys,
       materialHashmap: blogsDatabaseMap,
-      basePath: BLOG_PAGE.path,
+      basePath: ROUTES.BLOGS.path,
       ListComponent: BlogsList,
     },
   ];
@@ -115,7 +110,7 @@ const MaterialTab: React.FC<MaterialTabsProps> = ({ materialKeys }) => {
       return (
         groupedMaterials[0] && groupedMaterials[0].materialsKeys.length > 0
       );
-    }
+    },
   );
 
   // Set default tab if none is selected
@@ -144,7 +139,7 @@ const MaterialTab: React.FC<MaterialTabsProps> = ({ materialKeys }) => {
           const groupedMaterials = groupMaterialsByMaterialType(
             materialKeys,
             materialHashmap,
-            name
+            name,
           );
           return (
             <TabsContent key={name} value={name}>
@@ -160,7 +155,7 @@ const MaterialTab: React.FC<MaterialTabsProps> = ({ materialKeys }) => {
               </div>
             </TabsContent>
           );
-        }
+        },
       )}
     </Tabs>
   );

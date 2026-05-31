@@ -12,14 +12,7 @@ import React, { useEffect, useState } from "react";
 import { RiSearchLine } from "react-icons/ri";
 
 import findCourseKeyForModule from "@/lib/material/course/findCourseKeyForModule";
-import NAV_ITEMS, {
-  BLOG_PAGE,
-  CERTIFICATES_PAGE,
-  EDUCATION_PAGE,
-  EXPERIENCE_PAGE,
-  PROJECTS_PAGE,
-  SKILL_PAGE,
-} from "@/constants/pages";
+import { ROUTES, NAV_ITEMS } from "@/constants/routes";
 import blogsDatabaseMap, {
   blogDatabaseKeys,
 } from "@/database/blogs/BlogsDatabaseMap";
@@ -107,7 +100,7 @@ const GlobalSearch: React.FC = () => {
       name: MaterialTypeEnum.Projects,
       items: projectDatabaseKeys.map((key) => ({
         name: `${projectDatabaseMap[key].name}`,
-        link: `${PROJECTS_PAGE.path}/${key}`,
+        link: `${ROUTES.PROJECTS.path}/${key}`,
       })),
     },
     {
@@ -117,7 +110,7 @@ const GlobalSearch: React.FC = () => {
         name: `${rolesDatabase[key].name} at ${
           companyDatabaseMap[rolesDatabase[key].company].name
         }`,
-        link: `${EXPERIENCE_PAGE.path}/${key}`,
+        link: `${ROUTES.EXPERIENCE.path}/${key}`,
       })),
     },
     {
@@ -125,7 +118,7 @@ const GlobalSearch: React.FC = () => {
       name: "Education",
       items: courseDatabaseKeys.map((key) => ({
         name: `${courseDatabaseMap[key].name} at ${courseDatabaseMap[key].university}`,
-        link: `${EDUCATION_PAGE.path}/${key}`,
+        link: `${ROUTES.EDUCATION.path}/${key}`,
       })),
     },
     {
@@ -138,8 +131,8 @@ const GlobalSearch: React.FC = () => {
             courseDatabaseMap[moduleDatabaseMap[key].parentCourse].name
           })`,
           link: courseKey
-            ? `${EDUCATION_PAGE.path}/${courseKey}/${key}`
-            : `${EDUCATION_PAGE.path}`,
+            ? `${ROUTES.EDUCATION.path}/${courseKey}/${key}`
+            : `${ROUTES.EDUCATION.path}`,
         };
       }),
     },
@@ -148,7 +141,7 @@ const GlobalSearch: React.FC = () => {
       name: MaterialTypeEnum.Certificates,
       items: certificateDatabaseKeys.map((key) => ({
         name: `${certificateDatabaseMap[key].name}`,
-        link: `${CERTIFICATES_PAGE.path}/${key}`,
+        link: `${ROUTES.CERTIFICATES.path}/${key}`,
       })),
     },
     {
@@ -156,7 +149,7 @@ const GlobalSearch: React.FC = () => {
       name: MaterialTypeEnum.Blogs,
       items: blogDatabaseKeys.map((key) => ({
         name: `${blogsDatabaseMap[key].name}`,
-        link: `${BLOG_PAGE.path}/${key}`,
+        link: `${ROUTES.BLOGS.path}/${key}`,
       })),
     },
     {
@@ -164,7 +157,7 @@ const GlobalSearch: React.FC = () => {
       name: "Skills",
       items: skillDatabaseKeys.map((key) => ({
         name: `${skillDatabaseMap[key].name} (${skillDatabaseMap[key].category})`,
-        link: `${SKILL_PAGE.path}/${key}`,
+        link: `${ROUTES.SKILLS.path}/${key}`,
       })),
     },
     {

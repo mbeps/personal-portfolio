@@ -13,7 +13,7 @@ import generateIssuerFilterOptions from "@/lib/material/filter-options/generateI
 import stringToSlug from "@/lib/stringToSlug";
 import FilterSection from "@/components/filters/FilterSection";
 import CertificatesList from "@/components/material-lists/CertificatesList";
-import { CERTIFICATES_PAGE } from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 import CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
 import certificateDatabaseMap from "@/database/certificates/CertificateDatabaseMap";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
@@ -143,7 +143,7 @@ const CertificatesView: React.FC = () => {
   return (
     <>
       <FilterSection
-        name={CERTIFICATES_PAGE.label}
+        name={ROUTES.CERTIFICATES.name}
         basePath={basePath}
         searchFilter={{
           searchTerm: searchTerm,

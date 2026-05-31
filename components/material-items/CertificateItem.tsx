@@ -3,7 +3,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
-import { CERTIFICATES_PAGE } from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 import certificateDatabaseMap from "@/database/certificates/CertificateDatabaseMap";
 import CertificateInterface from "@/database/certificates/CertificateInterface";
 import Image from "next/image";
@@ -29,7 +29,7 @@ interface CertificateItemProps {
 const CertificateItem: React.FC<CertificateItemProps> = ({
   certificateKey,
 }) => {
-  const basePath: string = CERTIFICATES_PAGE.path;
+  const basePath: string = ROUTES.CERTIFICATES.path;
   let certificateData: CertificateInterface =
     certificateDatabaseMap[certificateKey];
 

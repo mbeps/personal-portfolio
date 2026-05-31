@@ -1,6 +1,6 @@
 import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
-import { HOME_PAGE, MORE_PAGE } from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -47,13 +47,13 @@ export default function NotFound() {
           w-full md:w-1/5
           "
       >
-        <Link href={HOME_PAGE.path} className="w-full">
+        <Link href={ROUTES.HOME.path} className="w-full">
           <Button variant="gradient" className="px-20 w-full">
             Home
           </Button>
         </Link>
 
-        <Link href={MORE_PAGE.path} className="w-full">
+        <Link href={ROUTES.MORE.path} className="w-full">
           <Button variant="ghost" className="px-20 w-full">
             All Pages
           </Button>

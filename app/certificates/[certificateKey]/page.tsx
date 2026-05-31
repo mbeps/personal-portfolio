@@ -12,7 +12,7 @@ import {
   CardTitle,
 } from "@/components/shadcn/ui/card";
 import developerName from "@/constants/developerName";
-import { CERTIFICATES_PAGE } from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 import certificateDatabaseMap from "@/database/certificates/CertificateDatabaseMap";
 import CertificateInterface from "@/database/certificates/CertificateInterface";
 import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
@@ -52,9 +52,9 @@ export async function generateMetadata(
 
   // Create metadata based on the certificate details
   return {
-    title: `${developerName} - ${CERTIFICATES_PAGE.label}: ${certificate?.name}`,
+    title: `${developerName} - ${ROUTES.CERTIFICATES.name}: ${certificate?.name}`,
     description: certificate?.description,
-    category: `${CERTIFICATES_PAGE.label}`,
+    category: `${ROUTES.CERTIFICATES.name}`,
     creator: developerName,
   };
 }

@@ -20,7 +20,7 @@ import {
   CardTitle,
 } from "@/components/shadcn/ui/card";
 import developerName from "@/constants/developerName";
-import { EDUCATION_PAGE } from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 import courseDatabaseMap from "@/database/courses/CourseDatabaseMap";
 import CourseInterface from "@/database/courses/CourseInterface";
 import ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
@@ -62,7 +62,7 @@ export async function generateMetadata(
   return {
     title: `${developerName} - Courses: ${course?.name} at ${course?.university}`,
     description: `${course.grade} in ${course.name} from ${course?.university}`,
-    category: `${EDUCATION_PAGE.label}`,
+    category: `${ROUTES.EDUCATION.name}`,
     creator: developerName,
     keywords: [course.name, course.university],
   };
@@ -95,7 +95,7 @@ const CoursesPage: React.FC<{
 
   const courseKey: string = resolvedParams.courseKey;
   const courseData: CourseInterface = courseDatabaseMap[courseKey];
-  const basePath: string = EDUCATION_PAGE.path;
+  const basePath: string = ROUTES.EDUCATION.path;
 
   if (!courseData) {
     notFound();

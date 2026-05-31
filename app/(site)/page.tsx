@@ -1,6 +1,6 @@
 import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
 import developerName from "@/constants/developerName";
-import { HOME_PAGE } from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 import subtitles from "@/constants/subtitles";
 import type { Metadata } from "next";
 import AboutSection from "./_components/AboutSection/AboutSection";
@@ -15,7 +15,7 @@ const aboutContent: string | undefined = getMarkdownFromFileSystem(
 export const metadata: Metadata = {
   title: developerName,
   description: `${
-    aboutContent || HOME_PAGE.description
+    aboutContent || ROUTES.HOME.description
   }. My main programming languages are Python, Java, JavaScript, and TypeScript.`,
   category: "Homepage",
   creator: developerName,

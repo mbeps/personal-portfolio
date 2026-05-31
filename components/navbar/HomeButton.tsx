@@ -1,5 +1,5 @@
 import developerName from "@/constants/developerName";
-import { HOME_PAGE } from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 import Link from "next/link";
 
 /**
@@ -10,7 +10,7 @@ import Link from "next/link";
 const HomeButton: React.FC = () => {
   return (
     <div className="cursor-pointer">
-      <Link href={HOME_PAGE.path}>
+      <Link href={ROUTES.HOME.path}>
         <h2 className="text-2xl font-bold md:hover:text-red-500 md:dark:hover:text-red-800 transition-colors duration-700 ease-in-out">
           {developerName}
         </h2>

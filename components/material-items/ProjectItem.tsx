@@ -3,7 +3,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
-import { PROJECTS_PAGE } from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 import ProjectInterface from "@/database/projects/ProjectInterface";
 import Image from "next/image";
 import Link from "next/link";
@@ -29,7 +29,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
   projectKey,
   subtitle = null,
 }) => {
-  const basePath: string = PROJECTS_PAGE.path;
+  const basePath: string = ROUTES.PROJECTS.path;
   const projectData: ProjectInterface = projectDatabaseMap[projectKey];
   const linkStyle: string =
     "md:hover:-translate-y-1 transition-transform cursor-pointer hover:shadow-lg rounded-full";

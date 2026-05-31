@@ -1,6 +1,6 @@
 import ProjectItem from "@/components/material-items/ProjectItem";
 import { Button } from "@/components/shadcn/ui/button";
-import { PROJECTS_PAGE } from "@/constants/pages";
+import { ROUTES } from "@/constants/routes";
 import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
 import Link from "next/link";
 
@@ -11,7 +11,7 @@ import Link from "next/link";
  * @returns Section element with featured project cards and navigation link.
  */
 const ProjectsSection = () => {
-  const basePath: string = PROJECTS_PAGE.path;
+  const basePath: string = ROUTES.PROJECTS.path;
 
   /**
    * Only projects matching these slugs will be shown.
