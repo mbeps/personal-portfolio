@@ -1,5 +1,4 @@
 import addNestedSkillsMaterialList from "@/lib/material/addNestedSkillsMaterialList";
-import addProjectThumbnail from "@/lib/material/projects/addProjectThumbnail";
 import ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
 import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
 import ProjectInterface from "@/database/projects/ProjectInterface";
@@ -14,6 +13,7 @@ import CertificateDatabaseKeys from "@/database/certificates/CertificateDatabase
 import RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
 import BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
+import { PATHS } from "@/constants/paths";
 
 /**
  * Hashmap of projects with keys as {@link SkillDatabaseKeys} and values as {@link ProjectInterface}.
@@ -49,9 +49,9 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Academic,
     relatedMaterials: [ModuleDatabaseKeys.KCL_IndividualProject],
-    thumbnailImage: addProjectThumbnail(
+    thumbnailImage: PATHS.PROJECTS(
       ProjectDatabaseKeys.AlignmentInLargeLanguageModels,
-    ),
+    ).COVER,
   },
   [ProjectDatabaseKeys.ExcelSpreadsheetMCP]: {
     name: "Excel Spreadsheet MCP Server",
@@ -72,9 +72,8 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.PyTest,
     ],
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.ExcelSpreadsheetMCP,
-    ),
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.ExcelSpreadsheetMCP)
+      .COVER,
   },
   [ProjectDatabaseKeys.LinuxGnomeMcp]: {
     name: "Linux GNOME MCP Server",
@@ -92,7 +91,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.PyTest,
     ],
-    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.LinuxGnomeMcp),
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.LinuxGnomeMcp).COVER,
   },
   [ProjectDatabaseKeys.HandWrittenDigitClassifier]: {
     name: "Handwritten Digit Classifier",
@@ -117,9 +116,9 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.DeepLearning,
       SkillDatabaseKeys.ComputerVision,
     ],
-    thumbnailImage: addProjectThumbnail(
+    thumbnailImage: PATHS.PROJECTS(
       ProjectDatabaseKeys.HandWrittenDigitClassifier,
-    ),
+    ).COVER,
   },
   [ProjectDatabaseKeys.VisionTransformerFromScratch]: {
     name: "Vision Transformer",
@@ -140,9 +139,9 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.DeepLearning,
       SkillDatabaseKeys.ComputerVision,
     ],
-    thumbnailImage: addProjectThumbnail(
+    thumbnailImage: PATHS.PROJECTS(
       ProjectDatabaseKeys.VisionTransformerFromScratch,
-    ),
+    ).COVER,
     archived: true,
   },
   [ProjectDatabaseKeys.AdultIncomePrediction]: {
@@ -165,9 +164,8 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Personal,
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.AdultIncomePrediction,
-    ),
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.AdultIncomePrediction)
+      .COVER,
     archived: true,
   },
   [ProjectDatabaseKeys.HousePricePrediction]: {
@@ -190,9 +188,8 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Personal,
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.HousePricePrediction,
-    ),
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.HousePricePrediction)
+      .COVER,
     archived: true,
   },
   [ProjectDatabaseKeys.CustomNeuralNetworkCoursework]: {
@@ -221,9 +218,9 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.DeepLearning,
     ],
-    thumbnailImage: addProjectThumbnail(
+    thumbnailImage: PATHS.PROJECTS(
       ProjectDatabaseKeys.CustomNeuralNetworkCoursework,
-    ),
+    ).COVER,
   },
   [ProjectDatabaseKeys.MachineLearningAlgorithms]: {
     name: "Machine Learning Algorithms",
@@ -253,9 +250,9 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
     relatedMaterials: [CertificateDatabaseKeys.UdemyMachineLearningAtoZ],
     type: ProjectTypeEnum.Personal,
-    thumbnailImage: addProjectThumbnail(
+    thumbnailImage: PATHS.PROJECTS(
       ProjectDatabaseKeys.MachineLearningAlgorithms,
-    ),
+    ).COVER,
   },
   [ProjectDatabaseKeys.ArtificialIntelligenceReinforcementLearning]: {
     name: "Reinforcement Learning Lab",
@@ -282,9 +279,9 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
     relatedMaterials: [CertificateDatabaseKeys.UdemyArtificialIntelligenceAtoZ],
     type: ProjectTypeEnum.Personal,
-    thumbnailImage: addProjectThumbnail(
+    thumbnailImage: PATHS.PROJECTS(
       ProjectDatabaseKeys.ArtificialIntelligenceReinforcementLearning,
-    ),
+    ).COVER,
   },
   [ProjectDatabaseKeys.CustomQLearningAgent]: {
     name: "Custom Q-Learning Agent",
@@ -310,9 +307,8 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.DeepLearning,
     ],
     relatedMaterials: [ModuleDatabaseKeys.KCL_MachineLearning],
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.CustomQLearningAgent,
-    ),
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.CustomQLearningAgent)
+      .COVER,
   },
   [ProjectDatabaseKeys.MachineLearningAssignment1]: {
     name: `Machine Learning Assignment 1`,
@@ -334,9 +330,9 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
     type: ProjectTypeEnum.Academic,
-    thumbnailImage: addProjectThumbnail(
+    thumbnailImage: PATHS.PROJECTS(
       ProjectDatabaseKeys.MachineLearningAssignment1,
-    ),
+    ).COVER,
     archived: true,
   },
   [ProjectDatabaseKeys.MachineLearningAssignment2]: {
@@ -358,9 +354,9 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Academic,
-    thumbnailImage: addProjectThumbnail(
+    thumbnailImage: PATHS.PROJECTS(
       ProjectDatabaseKeys.MachineLearningAssignment2,
-    ),
+    ).COVER,
     archived: true,
   },
   [ProjectDatabaseKeys.MachineLearningAssignment3]: {
@@ -383,9 +379,9 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
     type: ProjectTypeEnum.Academic,
-    thumbnailImage: addProjectThumbnail(
+    thumbnailImage: PATHS.PROJECTS(
       ProjectDatabaseKeys.MachineLearningAssignment3,
-    ),
+    ).COVER,
     archived: true,
   },
   [ProjectDatabaseKeys.MachineLearningLabs]: {
@@ -410,9 +406,8 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [ModuleDatabaseKeys.RHUL_MachineLearning],
     archived: true,
     type: ProjectTypeEnum.Academic,
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.MachineLearningLabs,
-    ),
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.MachineLearningLabs)
+      .COVER,
   },
   [ProjectDatabaseKeys.ComputationalFinanceAssignment]: {
     name: "Computational Finance Assignment",
@@ -440,9 +435,9 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_ComputationalFinance],
     type: ProjectTypeEnum.Academic,
-    thumbnailImage: addProjectThumbnail(
+    thumbnailImage: PATHS.PROJECTS(
       ProjectDatabaseKeys.ComputationalFinanceAssignment,
-    ),
+    ).COVER,
   },
   [ProjectDatabaseKeys.MachineLearningDataScienceLab]: {
     name: "Machine Learning & Data Science Lab",
@@ -469,9 +464,9 @@ const projectMap: Database<ProjectInterface> = {
       CertificateDatabaseKeys.UdemyMachineLearningDataScienceAndGenerativeAIWithPython,
     ],
     type: ProjectTypeEnum.Personal,
-    thumbnailImage: addProjectThumbnail(
+    thumbnailImage: PATHS.PROJECTS(
       ProjectDatabaseKeys.MachineLearningDataScienceLab,
-    ),
+    ).COVER,
   },
 
   [ProjectDatabaseKeys.MarkovDecisionAgent]: {
@@ -496,9 +491,8 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [
       ModuleDatabaseKeys.KCL_ArtificialIntelligenceReasoningAndDecisionMaking,
     ],
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.MarkovDecisionAgent,
-    ),
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.MarkovDecisionAgent)
+      .COVER,
   },
   [ProjectDatabaseKeys.ComputerVisionImageSegmentation]: {
     name: "Computer Vision Image Segmentation",
@@ -521,9 +515,9 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Academic,
     archived: true,
     relatedMaterials: [ModuleDatabaseKeys.KCL_ComputerVision],
-    thumbnailImage: addProjectThumbnail(
+    thumbnailImage: PATHS.PROJECTS(
       ProjectDatabaseKeys.ComputerVisionImageSegmentation,
-    ),
+    ).COVER,
   },
   [ProjectDatabaseKeys.ComputerVisionQuizzes]: {
     name: "Computer Vision Quizzes",
@@ -546,9 +540,8 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Academic,
     archived: true,
     relatedMaterials: [ModuleDatabaseKeys.KCL_ComputerVision],
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.ComputerVisionQuizzes,
-    ),
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.ComputerVisionQuizzes)
+      .COVER,
   },
   [ProjectDatabaseKeys.SimpleAIResearchAgent]: {
     name: "Simple AI Research Agent",
@@ -598,7 +591,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.ArtificialIntelligence,
     ],
     category: ProjectCategoriesEnum.FullStackAndArtificialIntelligence,
-    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.AiGenerations),
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.AiGenerations).COVER,
     type: ProjectTypeEnum.Personal,
   },
 
@@ -630,7 +623,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Vitest,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.ForumDiscussions),
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.ForumDiscussions).COVER,
     relatedMaterials: [
       ModuleDatabaseKeys.RHUL_FinalYearProject,
       ProjectDatabaseKeys.FlaskForumBackend,
@@ -665,7 +658,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Vitest,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.CarDealership),
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.CarDealership).COVER,
     type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.RealTimeMessaging]: {
@@ -699,7 +692,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Vitest,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.RealTimeMessaging),
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.RealTimeMessaging).COVER,
     type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.MusicStreaming]: {
@@ -727,7 +720,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Vitest,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.MusicStreaming),
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.MusicStreaming).COVER,
     type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.RichTextNotes]: {
@@ -758,7 +751,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Vitest,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.RichTextNotes),
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.RichTextNotes).COVER,
     type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.CommerzbankAppStatus]: {
@@ -787,9 +780,8 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Vitest,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.CommerzbankAppStatus,
-    ),
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.CommerzbankAppStatus)
+      .COVER,
     type: ProjectTypeEnum.Professional,
     relatedMaterials: [
       RoleDatabaseKeys.CommerzbankBackendEngineer,
@@ -830,7 +822,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.JUnit,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.CommerzbankRates),
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.CommerzbankRates).COVER,
     type: ProjectTypeEnum.Professional,
     relatedMaterials: [
       RoleDatabaseKeys.CommerzbankBackendEngineer,
@@ -867,7 +859,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Css,
     ],
     repositoryURL: "https://github.com/mbeps/quizmify",
-    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.AiQuizzes),
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.AiQuizzes).COVER,
     type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.OnlineArticles]: {
@@ -891,7 +883,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     archived: true,
-    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.OnlineArticles),
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.OnlineArticles).COVER,
     type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.OAuthNextJsSpringBoot]: {
@@ -921,9 +913,8 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     archived: true,
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.OAuthNextJsSpringBoot,
-    ),
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.OAuthNextJsSpringBoot)
+      .COVER,
     type: ProjectTypeEnum.Personal,
     relatedMaterials: [
       BlogDatabaseKeys.AuthenticationSessionManagement,
@@ -955,9 +946,8 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     archived: true,
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.NextJsAuthJsTemplate,
-    ),
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.NextJsAuthJsTemplate)
+      .COVER,
     type: ProjectTypeEnum.Personal,
     relatedMaterials: [
       BlogDatabaseKeys.AuthenticationSessionManagement,
@@ -990,9 +980,8 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     archived: true,
-    thumbnailImage: addProjectThumbnail(
-      ProjectDatabaseKeys.NextJsBetterAuthTemplate,
-    ),
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.NextJsBetterAuthTemplate)
+      .COVER,
     type: ProjectTypeEnum.Personal,
     relatedMaterials: [
       BlogDatabaseKeys.AuthenticationSessionManagement,
@@ -1025,7 +1014,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     archived: true,
-    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.Noodle),
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.Noodle).COVER,
     type: ProjectTypeEnum.Academic,
   },
 
@@ -1667,7 +1656,7 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [ModuleDatabaseKeys.RHUL_ProgrammingLaboratory],
     archived: true,
     type: ProjectTypeEnum.Academic,
-    thumbnailImage: addProjectThumbnail(ProjectDatabaseKeys.OsmosGame),
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.OsmosGame).COVER,
   },
   [ProjectDatabaseKeys.AutomatedSetup]: {
     name: `Automated Setup`,

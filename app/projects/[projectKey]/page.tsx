@@ -38,6 +38,8 @@ import { GrAppsRounded } from "react-icons/gr";
 import { ProjectLinks } from "./_components/ProjectLinks";
 import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
 import { filterSkillSlugsExcludingCategory } from "@/lib/skills/filter/filterSkillSlugsExcludingCategory";
+import { PATHS } from "@/constants/paths";
+import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
 
 type Params = Promise<{ projectKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
@@ -98,7 +100,7 @@ export const generateStaticParams = async () => {
  */
 const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
   const resolvedParams = await params;
-  const projectKey: string = resolvedParams.projectKey;
+  const projectKey = resolvedParams.projectKey as ProjectDatabaseKeys;
   const basePath: string = PROJECTS_PAGE.path;
   const projectData: ProjectInterface = projectDatabaseMap[projectKey];
 
@@ -108,7 +110,7 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
   }
 
   const hasCoverImage: boolean = projectData.thumbnailImage !== undefined;
-  const coverImagePath: string = `${basePath}/${projectKey}/cover.png`;
+  const coverImagePath: string = PATHS.PROJECTS(projectKey).COVER;
 
   const projectLanguages: SkillDatabaseKeys[] = filterSkillsByCategory(
     projectData.skills,
@@ -129,22 +131,26 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
 
   function getImages(): string[] {
     let images: string[] = getImagesFromFileSystem(
-      `public${basePath}/${projectKey}/media`,
+      PATHS.PROJECTS(projectKey).MEDIA.PUBLIC,
     );
 
     // add the path to the media items
-    images = images.map((image) => `${basePath}/${projectKey}/media/${image}`);
+    images = images.map(
+      (image) => `${PATHS.PROJECTS(projectKey).MEDIA.NORMAL}/${image}`,
+    );
 
     return images;
   }
 
   function getVideos(): string[] {
     let videos: string[] = getVideosFromFileSystem(
-      `public${basePath}/${projectKey}/media`,
+      PATHS.PROJECTS(projectKey).MEDIA.PUBLIC,
     );
 
     // add the path to the media items
-    videos = videos.map((video) => `${basePath}/${projectKey}/media/${video}`);
+    videos = videos.map(
+      (video) => `${PATHS.PROJECTS(projectKey).MEDIA.NORMAL}/${video}`,
+    );
     return videos;
   }
 
@@ -156,7 +162,7 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
    * This is used to display the features and blog sections.
    */
   const features: string | undefined = getMarkdownFromFileSystem(
-    `public${basePath}/${projectKey}/features.md`,
+    PATHS.PROJECTS(projectKey).FEATURES,
   )?.content;
 
   /**
@@ -164,7 +170,7 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
    * This is used to display the features and blog sections.
    */
   const hasProjectReport: boolean = !!getMarkdownFromFileSystem(
-    `public${basePath}/${projectKey}/blog.md`,
+    PATHS.PROJECTS(projectKey).BLOG,
   )?.content;
 
   /**

@@ -8,6 +8,8 @@ import { notFound } from "next/navigation";
 import { Metadata, ResolvingMetadata } from "next";
 import developerName from "@/constants/developerName";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
+import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
+import { PATHS } from "@/constants/paths";
 
 // Update the type definitions
 type Params = { projectKey: string };
@@ -38,7 +40,7 @@ export async function generateMetadata(
 
   // Check if the report markdown exists
   const reportExists = !!getMarkdownFromFileSystem(
-    `public${PROJECTS_PAGE.path}/${projectKey}/blog.md`,
+    PATHS.PROJECTS(projectKey as ProjectDatabaseKeys).BLOG,
   )?.content;
 
   if (!reportExists) {
@@ -74,10 +76,9 @@ const ProjectReportPage = async ({ params }: PageProps) => {
   const resolvedParams = await params;
   const projectKey: string = resolvedParams.projectKey;
   const projectData: ProjectInterface = projectDatabaseMap[projectKey];
-  const basePath: string = PROJECTS_PAGE.path;
 
   const reportBlog: string | undefined = getMarkdownFromFileSystem(
-    `public${basePath}/${projectKey}/blog.md`,
+    PATHS.PROJECTS(projectKey as ProjectDatabaseKeys).BLOG,
   )?.content;
 
   const hasBlog: boolean = !!reportBlog;
@@ -89,7 +90,7 @@ const ProjectReportPage = async ({ params }: PageProps) => {
   // Replace base path placeholder with actual path for images
   const processedReportContent: string = processMarkdownImages(
     reportBlog || "",
-    `${basePath}/${projectKey}/img`,
+    PATHS.PROJECTS(projectKey as ProjectDatabaseKeys).BLOG_IMG,
   );
 
   return (
@@ -118,7 +119,7 @@ export const generateStaticParams = async () => {
     .filter((projectKey) => {
       // Only include projects that have a blog/report file
       const reportExists = getMarkdownFromFileSystem(
-        `public${PROJECTS_PAGE.path}/${projectKey}/blog.md`,
+        PATHS.PROJECTS(projectKey as ProjectDatabaseKeys).BLOG,
       )?.content;
       return !!reportExists;
     })

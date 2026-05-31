@@ -19,6 +19,7 @@ import CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
 import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
 import ShortDate from "@/class/ShortDate";
 import RoleInterface from "@/database/roles/RoleInterface";
+import { PATHS } from "@/constants/paths";
 
 export const metadata: Metadata = {
   title: `${developerName} - CV`,
@@ -41,15 +42,13 @@ export type SerializedRoleInterface = Omit<
 
 export default function CvPage() {
   // Fetch About Content
-  const aboutContent = getMarkdownFromFileSystem(
-    "public/about/short.md"
-  )?.content;
+  const aboutContent = getMarkdownFromFileSystem(PATHS.ABOUT.SHORT)?.content;
 
   // Fetch Skills
   const skillGroups = groupSkills(
     GroupByOptions.Category,
     skillDatabaseKeys,
-    skillDatabaseMap
+    skillDatabaseMap,
   );
 
   // Fetch Experience
@@ -59,7 +58,7 @@ export default function CvPage() {
   for (const key of roleDatabaseKeys) {
     const role = roleDatabaseMap[key];
     const responsibilities = getMarkdownFromFileSystem(
-      `public/roles/${key}/responsabilities.md`
+      PATHS.ROLES(key).RESPONSIBILITIES,
     )?.content;
 
     // Serialize role with formatted date strings for client component
@@ -80,13 +79,13 @@ export default function CvPage() {
 
   // Fetch Education
   const courseDatabaseKeys = Object.keys(
-    courseDatabaseMap
+    courseDatabaseMap,
   ) as CourseDatabaseKeys[];
   const education = courseDatabaseKeys.map((key) => courseDatabaseMap[key]);
 
   // Fetch Projects
   const projectDatabaseKeys = Object.keys(
-    projectDatabaseMap
+    projectDatabaseMap,
   ) as ProjectDatabaseKeys[];
   const projects = projectDatabaseKeys.map((key) => projectDatabaseMap[key]);
 

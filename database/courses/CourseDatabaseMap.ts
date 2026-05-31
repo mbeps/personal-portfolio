@@ -1,12 +1,12 @@
-import aggregateRelatedMaterialsForCourses from "@/lib/material/course/aggregate/aggregateRelatedMaterialsForCourses";
-import aggregateSkillsForCourses from "@/lib/material/course/aggregate/aggregateSkillsForCourses";
-import { EDUCATION_PAGE } from "@/constants/pages";
+import { PATHS } from "@/constants/paths";
 import CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
 import CourseInterface from "@/database/courses/CourseInterface";
 import ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
 import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
 import Database from "@/interfaces/Database";
 import validateDatabaseKeys from "@/lib/database/validateDatabaseKeys";
+import aggregateRelatedMaterialsForCourses from "@/lib/material/course/aggregate/aggregateRelatedMaterialsForCourses";
+import aggregateSkillsForCourses from "@/lib/material/course/aggregate/aggregateSkillsForCourses";
 import moduleDatabaseMap from "../modules/ModuleDatabaseMap";
 
 /**
@@ -23,8 +23,9 @@ const courseMap: Database<CourseInterface> = {
     skills: [], // dynamically added from modules
     startYear: 2024,
     endYear: 2025,
-    logo: `${EDUCATION_PAGE.path}/${CourseDatabaseKeys.KCL_ArtificialIntelligence}/logo.png`,
-    certificate: `${EDUCATION_PAGE.path}/${CourseDatabaseKeys.KCL_ArtificialIntelligence}/certificate.jpg`,
+    certificate: PATHS.EDUCATION(CourseDatabaseKeys.KCL_ArtificialIntelligence)
+      .CERTIFICATE,
+    logo: PATHS.EDUCATION(CourseDatabaseKeys.KCL_ArtificialIntelligence).LOGO,
     modules: [
       ModuleDatabaseKeys.KCL_ArtificialIntelligenceReasoningAndDecisionMaking,
       ModuleDatabaseKeys.KCL_MachineLearning,
@@ -46,8 +47,9 @@ const courseMap: Database<CourseInterface> = {
     skills: [], // dynamically added from modules
     startYear: 2020,
     endYear: 2023,
-    certificate: `${EDUCATION_PAGE.path}/${CourseDatabaseKeys.RHUL_ComputerScience}/certificate.jpg`,
-    logo: `${EDUCATION_PAGE.path}/${CourseDatabaseKeys.RHUL_ComputerScience}/logo.png`,
+    certificate: PATHS.EDUCATION(CourseDatabaseKeys.RHUL_ComputerScience)
+      .CERTIFICATE,
+    logo: PATHS.EDUCATION(CourseDatabaseKeys.RHUL_ComputerScience).LOGO,
     modules: [
       ModuleDatabaseKeys.RHUL_ObjectOrientedProgramming1,
       ModuleDatabaseKeys.RHUL_ObjectOrientedProgramming2,
@@ -92,7 +94,7 @@ const courseMap: Database<CourseInterface> = {
  * List of keys for the courses that I have studied at university.
  */
 export const courseDatabaseKeys: CourseDatabaseKeys[] = Object.keys(
-  courseMap
+  courseMap,
 ) as CourseDatabaseKeys[];
 
 // Validate that all course keys only contain alphanumeric characters and dashes
@@ -107,12 +109,12 @@ validateDatabaseKeys(courseDatabaseKeys);
  */
 let courseDatabaseMap: Database<CourseInterface> = aggregateSkillsForCourses(
   courseMap,
-  moduleDatabaseMap
+  moduleDatabaseMap,
 );
 
 courseDatabaseMap = aggregateRelatedMaterialsForCourses(
   courseDatabaseMap,
-  moduleDatabaseMap
+  moduleDatabaseMap,
 );
 
 export default courseDatabaseMap;

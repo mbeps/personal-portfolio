@@ -6,9 +6,10 @@ import type { Metadata } from "next";
 import AboutSection from "./_components/AboutSection/AboutSection";
 import HeroSection from "./_components/HeroSection";
 import ProjectsSection from "./_components/ProjectSection";
+import { PATHS } from "@/constants/paths";
 
 const aboutContent: string | undefined = getMarkdownFromFileSystem(
-  `public/about/short.md`
+  PATHS.ABOUT.SHORT,
 )?.content.replace(/^\*/gm, "");
 
 export const metadata: Metadata = {

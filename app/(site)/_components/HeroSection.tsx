@@ -3,6 +3,7 @@ import Socials from "@/components/socials/Socials";
 import TextLoop from "@/components/text-loop/TextLoop";
 import NextSectionButton from "@/components/ui/NextSectionButton";
 import developerName from "@/constants/developerName";
+import { PATHS } from "@/constants/paths";
 import subtitles from "@/constants/subtitles";
 import Image from "next/image";
 import Link from "next/link";
@@ -54,7 +55,7 @@ const HeroSection = () => {
             {/* The Image */}
             <div className="relative shadow-2xl dark:shadow-none rounded-full">
               <Image
-                src="/profile.png"
+                src={PATHS.PROFILE}
                 alt="Profile image of the developer"
                 width={335}
                 height={335}

@@ -3,6 +3,7 @@ import Grid from "@/components/ui/Grid";
 import MaterialGroupListInterface from "@/interfaces/material/MaterialGroupListInterface";
 import React from "react";
 import MaterialGroupSectionList from "./MaterialGroupSectionList";
+import CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
 
 /**
  * Renders grouped certificates using `CertificateItem` tiles so the certificates page and related material tabs look identical.
@@ -28,7 +29,9 @@ const CertificatesList: React.FC<MaterialGroupListInterface> = ({
         <Grid
           items={group.materialsKeys.map((certificateKey) => (
             <div className="h-full" key={certificateKey}>
-              <CertificateItem certificateKey={certificateKey} />
+              <CertificateItem
+                certificateKey={certificateKey as CertificateDatabaseKeys}
+              />
             </div>
           ))}
         />

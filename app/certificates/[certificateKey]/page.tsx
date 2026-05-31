@@ -23,6 +23,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 import { BsArrowUpRightCircle } from "react-icons/bs";
+import CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
+import { PATHS } from "@/constants/paths";
 
 type Params = Promise<{ certificateKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
@@ -77,7 +79,8 @@ export const generateStaticParams = async () => {
  */
 const CertificatesPage: React.FC<{ params: Params }> = async ({ params }) => {
   const resolvedParams = await params;
-  const certificateKey: string = resolvedParams.certificateKey;
+  const certificateKey =
+    resolvedParams.certificateKey as CertificateDatabaseKeys;
   const certificateData: CertificateInterface =
     certificateDatabaseMap[certificateKey];
 
@@ -88,8 +91,7 @@ const CertificatesPage: React.FC<{ params: Params }> = async ({ params }) => {
   const allGroupedSkills: ListOfCategorisedSkillsByTypeInterface[] =
     buildSkillTableGroups(certificateData.skills);
   const hasSkills = hasAnySkills(allGroupedSkills);
-
-  const certificateImage = `${CERTIFICATES_PAGE.path}/${certificateKey}.jpg`;
+  const certificateImage = PATHS.CERTIFICATES(certificateKey);
 
   return (
     <main>
