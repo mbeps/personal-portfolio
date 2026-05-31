@@ -35,7 +35,7 @@ export const PATHS = {
     },
   }),
   ROLES: (roleKey: RoleDatabaseKeys) => ({
-    RESPONSIBILITIES: `public/roles/${roleKey}/responsabilities.md`,
+    RESPONSIBILITIES: `public/roles/${roleKey}/responsibilities.md`,
   }),
   CERTIFICATES: (certificateKey: CertificateDatabaseKeys) =>
     `/certificates/${certificateKey}.jpg`,
