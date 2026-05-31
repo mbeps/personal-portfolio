@@ -15,6 +15,8 @@ import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCa
 import hasAnySkills from "@/lib/skills/hasAnySkills";
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
+import { PATHS } from "@/constants/paths";
+import BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
 
 type Params = Promise<{ blogKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
@@ -81,8 +83,8 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
     blogData.category === BlogCategoriesEnum.Projects ||
     Object.values(ProjectDatabaseKeys).includes(blogKey as ProjectDatabaseKeys);
   const blogPath = isProjectBlog
-    ? `public${PROJECTS_PAGE.path}/${blogKey}/blog.md`
-    : `public${basePath}/${blogKey}/blog.md`;
+    ? PATHS.PROJECTS(blogKey as ProjectDatabaseKeys).BLOG
+    : PATHS.BLOGS(blogKey as BlogDatabaseKeys).BLOG;
 
   const blogContent: string | undefined =
     getMarkdownFromFileSystem(blogPath)?.content;
@@ -93,8 +95,8 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
 
   // Replace base path placeholder with actual path for images
   const imagePath = isProjectBlog
-    ? `${PROJECTS_PAGE.path}/${blogKey}/img`
-    : `${basePath}/${blogKey}/img`;
+    ? PATHS.PROJECTS(blogKey as ProjectDatabaseKeys).BLOG_IMG
+    : PATHS.BLOGS(blogKey as BlogDatabaseKeys).IMG;
   const processedBlogContent: string = processMarkdownImages(
     blogContent,
     imagePath,

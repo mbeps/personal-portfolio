@@ -12,9 +12,11 @@ import React from "react";
 import { BsArrowUpRightCircle, BsInfoCircle } from "react-icons/bs";
 import Tag from "../tags/Tag";
 import { AspectRatio } from "../shadcn/ui/aspect-ratio";
+import { PATHS } from "@/constants/paths";
+import CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
 
 interface CertificateItemProps {
-  certificateKey: string;
+  certificateKey: CertificateDatabaseKeys;
 }
 
 /**
@@ -36,7 +38,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
 
   certificateData = {
     ...certificateData,
-    certificateImage: `${basePath}/${certificateKey}.jpg`,
+    certificateImage: PATHS.CERTIFICATES(certificateKey),
   };
 
   return (

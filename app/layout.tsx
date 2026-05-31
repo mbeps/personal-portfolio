@@ -13,6 +13,7 @@ import Scroll from "@/components/ui/Scroll";
 import "katex/dist/katex.min.css";
 
 import { Inter } from "next/font/google";
+import { PATHS } from "@/constants/paths";
 
 // Inter Variable configuration optimised for modern typography
 const inter = Inter({
@@ -26,7 +27,7 @@ const inter = Inter({
  * This is the used for SEO.
  */
 const aboutContent: string | undefined = getMarkdownFromFileSystem(
-  `public/about/short.md`
+  PATHS.ABOUT.SHORT,
 )?.content.replace(/^\*/gm, "");
 
 export const metadata: Metadata = {

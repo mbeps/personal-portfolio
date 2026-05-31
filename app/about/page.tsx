@@ -27,9 +27,10 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { GrAppsRounded } from "react-icons/gr";
 import location from "@/constants/location";
+import { PATHS } from "@/constants/paths";
 
 const aboutContent: string | undefined = getMarkdownFromFileSystem(
-  "public/about/long.md",
+  PATHS.ABOUT.LONG,
 )?.content;
 
 export const metadata: Metadata = {
@@ -110,7 +111,7 @@ export default function About() {
       {/* Top-centered profile image and socials (outside the card) */}
       <div className="flex flex-col items-center my-6">
         <Image
-          src="/profile.png"
+          src={PATHS.PROFILE}
           alt="Profile image of the developer"
           width={160}
           height={160}

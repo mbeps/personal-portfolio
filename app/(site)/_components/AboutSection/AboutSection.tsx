@@ -1,10 +1,10 @@
 import Reader from "@/components/reader/Reader";
-import LanguageSection from "./LanguageSection";
-import TechnologiesSection from "./TechnologiesSection";
+import NextSectionButton from "@/components/ui/NextSectionButton";
+import { PATHS } from "@/constants/paths";
 import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
 import Link from "next/link";
-import { HiArrowDown } from "react-icons/hi"; // Import the arrow icon
-import NextSectionButton from "@/components/ui/NextSectionButton";
+import LanguageSection from "./LanguageSection";
+import TechnologiesSection from "./TechnologiesSection";
 
 /**
  * Markdown-backed about preview that pairs the Reader with the interactive language/technology sub sections.
@@ -18,7 +18,7 @@ const AboutSection = () => {
    * This markdown is converted to HTML and displayed on the page.
    */
   const blogContent: string | undefined = getMarkdownFromFileSystem(
-    `public/about/short.md`
+    PATHS.ABOUT.SHORT,
   )?.content;
 
   return (

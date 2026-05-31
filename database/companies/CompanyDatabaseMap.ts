@@ -1,9 +1,9 @@
-import addCompanyThumbnail from "@/lib/material/experience/addCompanyThumbnail";
 import CompanyInterface from "@/database/companies/CompanyInterface";
 import RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
 import Database from "@/interfaces/Database";
 import validateDatabaseKeys from "@/lib/database/validateDatabaseKeys";
 import CompanyDatabaseKeys from "./CompanyDatabaseKeys";
+import { PATHS } from "@/constants/paths";
 
 const companiesMap: Database<CompanyInterface> = {
   [CompanyDatabaseKeys.Commerzbank]: {
@@ -11,34 +11,34 @@ const companiesMap: Database<CompanyInterface> = {
     location: "London, UK",
     website: "https://www.commerzbank.com/",
     positions: [RoleDatabaseKeys.CommerzbankBackendEngineer],
-    logo: addCompanyThumbnail(CompanyDatabaseKeys.Commerzbank),
+    logo: PATHS.COMPANY.LOGO(CompanyDatabaseKeys.Commerzbank),
   },
   [CompanyDatabaseKeys.GoogleRHULDevelopersClub]: {
     name: "Google x RHUL Developers Club",
     location: "Egham, UK",
     positions: [RoleDatabaseKeys.GoogleRhulDevelopersClubSoftwareEngineer],
     website: "https://www.linkedin.com/company/rhul-dev/",
-    logo: addCompanyThumbnail(CompanyDatabaseKeys.GoogleRHULDevelopersClub),
+    logo: PATHS.COMPANY.LOGO(CompanyDatabaseKeys.GoogleRHULDevelopersClub),
   },
   [CompanyDatabaseKeys.AJTuitionCentre]: {
     name: "AJ Tuition Centre",
     location: "London, UK",
     positions: [RoleDatabaseKeys.AjTuitionCentreTutor],
     website: "https://www.ajlearning.co.uk/",
-    logo: addCompanyThumbnail(CompanyDatabaseKeys.AJTuitionCentre),
+    logo: PATHS.COMPANY.LOGO(CompanyDatabaseKeys.AJTuitionCentre),
   },
   [CompanyDatabaseKeys.Madhus]: {
     name: "Madhu's",
     location: "London, UK",
     website: "https://www.madhus.co.uk/",
     positions: [RoleDatabaseKeys.MadhusTeamLeader],
-    logo: addCompanyThumbnail(CompanyDatabaseKeys.Madhus),
+    logo: PATHS.COMPANY.LOGO(CompanyDatabaseKeys.Madhus),
   },
   [CompanyDatabaseKeys.OpenSource]: {
     name: "Open Source",
     location: "Remote",
     positions: [RoleDatabaseKeys.OpenSourceContributor],
-    logo: addCompanyThumbnail(CompanyDatabaseKeys.OpenSource),
+    logo: PATHS.COMPANY.LOGO(CompanyDatabaseKeys.OpenSource),
   },
 };
 
@@ -46,7 +46,7 @@ const companiesMap: Database<CompanyInterface> = {
  * List of keys for the companies which uniquely identify them.
  */
 export const companyDatabaseKeys = Object.keys(
-  companiesMap
+  companiesMap,
 ) as CompanyDatabaseKeys[];
 
 // Validate that all company keys only contain alphanumeric characters and dashes

@@ -2,13 +2,14 @@ import developerName from "@/constants/developerName";
 import location from "@/constants/location";
 import Image from "next/image";
 import Socials from "@/components/socials/Socials";
+import { PATHS } from "@/constants/paths";
 
 const CvHeader = () => {
   return (
     <header className="flex flex-col items-center gap-8 mb-10">
       <div className="shrink-0">
         <Image
-          src="/profile.png"
+          src={PATHS.PROFILE}
           alt={developerName}
           width={150}
           height={150}

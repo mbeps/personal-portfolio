@@ -26,6 +26,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BsArrowUpRightCircle } from "react-icons/bs";
+import { PATHS } from "@/constants/paths";
+import RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
 
 type Params = Promise<{ roleKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
@@ -81,7 +83,7 @@ export const generateStaticParams = async () => {
  */
 const RolePage: React.FC<{ params: Params }> = async ({ params }) => {
   const resolvedParams = await params;
-  const roleKey: string = resolvedParams.roleKey;
+  const roleKey: RoleDatabaseKeys = resolvedParams.roleKey as RoleDatabaseKeys;
   const roleData: RoleInterface = rolesDatabase[roleKey];
 
   if (!roleData) {
@@ -104,7 +106,7 @@ const RolePage: React.FC<{ params: Params }> = async ({ params }) => {
   const hasSkills = hasAnySkills(allGroupedSkills);
 
   const responsibilities: string | undefined = getMarkdownFromFileSystem(
-    `public/roles/${roleKey}/responsabilities.md`,
+    PATHS.ROLES(roleKey).RESPONSIBILITIES,
   )?.content;
 
   const hasResponsibilities: boolean = !!responsibilities;
