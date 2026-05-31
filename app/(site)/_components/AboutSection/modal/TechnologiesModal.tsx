@@ -94,7 +94,7 @@ const TechnologiesModal: React.FC = () => {
    */
   const skillsToDisplay: SkillDatabaseKeys[] = filterCategoriesFromSkills(
     mainSkillsHashMap,
-    ignoredCategories
+    ignoredCategories,
   );
 
   /**
@@ -104,7 +104,7 @@ const TechnologiesModal: React.FC = () => {
     groupedBy as GroupByOptions,
     skillsToDisplay,
     skillDatabaseMap,
-    [SkillTypesEnum.Technical]
+    [SkillTypesEnum.Technical],
   );
 
   const currentGroupedName: string =
@@ -128,17 +128,19 @@ const TechnologiesModal: React.FC = () => {
             </div>
 
             <DropdownMenu>
-              <DropdownMenuTrigger render={
-                <Button variant="default" className="w-48">
-                  <div className="flex items-start justify-between space-x-2 w-full">
-                    <span>{currentGroupedName}</span>
-                    <BsChevronDown
-                      fontSize={16}
-                      className="text-neutral-700 dark:text-neutral-200 mt-1"
-                    />
-                  </div>
-                </Button>
-              } />
+              <DropdownMenuTrigger
+                render={
+                  <Button variant="default" className="w-48">
+                    <div className="flex items-start justify-between space-x-2 w-full">
+                      <span>{currentGroupedName}</span>
+                      <BsChevronDown
+                        fontSize={16}
+                        className="text-neutral-700 dark:text-neutral-200 mt-1"
+                      />
+                    </div>
+                  </Button>
+                }
+              />
               <DropdownMenuContent className="w-48">
                 {options.map((option) => (
                   <DropdownMenuItem
@@ -191,7 +193,10 @@ const TechnologiesModal: React.FC = () => {
       {isDesktop ? (
         // Desktop Dialog (md and above)
         <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-          <DialogTrigger render={<Tag onClick={handleOpenModal}>...</Tag>} />
+          <DialogTrigger
+            nativeButton={false}
+            render={<Tag onClick={handleOpenModal}>...</Tag>}
+          />
           <DialogContent>
             <DialogTitle className="sr-only">Technologies</DialogTitle>
             <ModalContent />

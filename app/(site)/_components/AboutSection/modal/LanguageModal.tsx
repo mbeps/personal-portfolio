@@ -192,6 +192,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
             <TooltipTrigger
               render={
                 <DialogTrigger
+                  nativeButton={false}
                   render={
                     <Tag
                       onClick={
