@@ -50,7 +50,6 @@ function useFuseSearch<TItem>(
       includeScore: true,
     }),
     // arrayFields is expected to be a stable module-level constant from callers.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [searchKeys, arrayFields],
   );
 

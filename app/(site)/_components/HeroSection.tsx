@@ -39,15 +39,31 @@ const HeroSection = () => {
             p-8 lg:p-0
         "
         >
-          <Image
-            src="/profile.png"
-            alt="Profile image of the developer"
-            width={335}
-            height={335}
-            className="rounded-full shadow-2xl"
-            quality={60}
-            priority
-          />
+          <div className="relative">
+            {/* The Glow */}
+            <div
+              className="
+                absolute inset-0 
+                rounded-full 
+                md:blur-[80px] 
+                hidden dark:block
+                opacity-50
+                bg-linear-to-r from-orange-700 to-yellow-500"
+            />
+
+            {/* The Image */}
+            <div className="relative shadow-2xl dark:shadow-none rounded-full">
+              <Image
+                src="/profile.png"
+                alt="Profile image of the developer"
+                width={335}
+                height={335}
+                className="rounded-full"
+                quality={60}
+                priority
+              />
+            </div>
+          </div>
         </div>
 
         {/* Left / Bottom Section */}
