@@ -614,6 +614,8 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Inngest,
       SkillDatabaseKeys.TRcp,
       SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.GitHubActions,
+      SkillDatabaseKeys.Vitest,
     ],
     thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.AiWorkflowAutomations)
       .COVER,
