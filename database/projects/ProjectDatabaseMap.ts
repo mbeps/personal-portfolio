@@ -583,6 +583,7 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
   },
 
+  //^ Web Dev + AI
   [ProjectDatabaseKeys.AiGenerations]: {
     name: `AI Generations`,
     description: `
@@ -614,6 +615,35 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.FullStackAndArtificialIntelligence,
     thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.AiGenerations).COVER,
+    type: ProjectTypeEnum.Personal,
+  },
+  [ProjectDatabaseKeys.AiQuizzes]: {
+    name: "AI Quizzes",
+    description: `
+      A platform for dynamic quiz generation. 
+      Users can test their knowledge with multiple-choice or fill-in-the-gap questions across various topics.
+      With immediate feedback and score tracking, users enhance their understanding.`,
+    category: ProjectCategoriesEnum.FullStackAndArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.ShadcnUi,
+      SkillDatabaseKeys.RadixUi,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.Prisma,
+      SkillDatabaseKeys.Axios,
+      SkillDatabaseKeys.AuthJs,
+
+      SkillDatabaseKeys.MySql,
+
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.Html,
+      SkillDatabaseKeys.Css,
+    ],
+    repositoryURL: "https://github.com/mbeps/quizmify",
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.AiQuizzes).COVER,
     type: ProjectTypeEnum.Personal,
   },
 
@@ -855,35 +885,6 @@ const projectMap: Database<ProjectInterface> = {
   },
 
   //^ Extra Web Development Projects
-  [ProjectDatabaseKeys.AiQuizzes]: {
-    name: "AI Quizzes",
-    description: `
-      A platform for dynamic quiz generation. 
-      Users can test their knowledge with multiple-choice or fill-in-the-gap questions across various topics.
-      With immediate feedback and score tracking, users enhance their understanding.`,
-    category: ProjectCategoriesEnum.FullStackAndArtificialIntelligence,
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.ShadcnUi,
-      SkillDatabaseKeys.RadixUi,
-      SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.Prisma,
-      SkillDatabaseKeys.Axios,
-      SkillDatabaseKeys.AuthJs,
-
-      SkillDatabaseKeys.MySql,
-
-      SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-    ],
-    repositoryURL: "https://github.com/mbeps/quizmify",
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.AiQuizzes).COVER,
-    type: ProjectTypeEnum.Personal,
-  },
   [ProjectDatabaseKeys.OnlineArticles]: {
     name: `Online Articles`,
     description: `
