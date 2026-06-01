@@ -1,0 +1,4 @@
+- Integrates Llama.cpp server into VS Code's language model chat.
+- Supports streaming responses.
+- Handles tool calling for function invocations.
+- Manages multiple models from the Llama.cpp server.

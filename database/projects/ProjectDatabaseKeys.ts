@@ -67,6 +67,7 @@ enum ProjectDatabaseKeys {
   ComputerVisionQuizzes = "computer-vision-quizzes",
   VisionTransformerFromScratch = "vision-transformer-from-scratch",
   SimpleAIResearchAgent = "simple-ai-research-agent",
+  LlamaCppProviderForGitHubCopilotChat = "llama-cpp-provider-for-github-copilot-chat",
 
   OsmosGame = "osmos-game",
   GnomeQuickSettingsTweakExtension = "gnome-quick-settings-tweak-extension",

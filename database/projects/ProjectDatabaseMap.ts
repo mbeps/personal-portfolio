@@ -93,6 +93,28 @@ const projectMap: Database<ProjectInterface> = {
     ],
     thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.LinuxGnomeMcp).COVER,
   },
+  [ProjectDatabaseKeys.LlamaCppProviderForGitHubCopilotChat]: {
+    name: "Llama.cpp Provider for GitHub Copilot Chat",
+    description: `
+    Allows using local Llama.cpp models within GitHub Copilot for VS Code. 
+    Saves costs and provides more control over the models used in Copilot Chat, enabling private and customizable AI assistance for developers.
+    `,
+    repositoryURL: "https://github.com/mbeps/llama-vscode-chat",
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    deploymentURL:
+      "https://marketplace.visualstudio.com/items?itemName=maruf-bepary.llama-vscode-chat",
+    type: ProjectTypeEnum.Personal,
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.LargeLanguageModels,
+      SkillDatabaseKeys.ModelContextProtocol,
+    ],
+    thumbnailImage: PATHS.PROJECTS(
+      ProjectDatabaseKeys.LlamaCppProviderForGitHubCopilotChat,
+    ).COVER,
+  },
   [ProjectDatabaseKeys.HandWrittenDigitClassifier]: {
     name: "Handwritten Digit Classifier",
     description: `
