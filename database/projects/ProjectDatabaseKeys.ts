@@ -15,6 +15,7 @@ enum ProjectDatabaseKeys {
   MusicStreaming = "music-streaming",
   RichTextNotes = "rich-text-notes",
   AiQuizzes = "ai-quizzes",
+  AiWorkflowAutomations = "ai-workflow-automations",
   OnlineArticles = "online-articles",
   Noodle = "noodle",
   CommerzbankAppStatus = "commerzbank-app-status",

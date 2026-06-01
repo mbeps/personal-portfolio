@@ -49,6 +49,7 @@ enum SkillDatabaseKeys {
   Benchmarking = "benchmarking",
   Quantization = "quantization",
   ModelContextProtocol = "model-context-protocol",
+  VercelAiSdk = "vercel-ai-sdk",
 
   //^ Full Stack Web Development
   NextJs = "next-js",
@@ -62,6 +63,7 @@ enum SkillDatabaseKeys {
   AuthJs = "auth-js",
   BetterAuth = "better-auth",
   Stripe = "stripe",
+  Polar = "polar",
   ExpressJs = "express-js",
   Flask = "flask",
   Django = "django",
@@ -73,6 +75,7 @@ enum SkillDatabaseKeys {
   Cloudinary = "cloudinary",
   EdgeStore = "edge-store",
   WebSockets = "web-sockets",
+  Inngest = "inngest",
   UserAuthentication = "user-authentication",
   CrossOriginResourceSharing = "cross-origin-resource-sharing",
 
@@ -143,6 +146,7 @@ enum SkillDatabaseKeys {
   Rest = "rest-api",
   Apollo = "apollo",
   GraphQl = "graphql-api",
+  TRcp = "trcp",
   SocketIo = "socket-io",
   Pusher = "pusher",
 
@@ -156,6 +160,10 @@ enum SkillDatabaseKeys {
   Cypress = "cypress",
   ReactTestingLibrary = "react-testing-library",
   Testing = "testing",
+
+  //^ Monitoring
+  Grafana = "grafana",
+  Sentry = "sentry",
 
   //^ Mathematics
   Probability = "probability",

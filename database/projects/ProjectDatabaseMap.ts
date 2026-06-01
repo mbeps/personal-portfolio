@@ -584,6 +584,40 @@ const projectMap: Database<ProjectInterface> = {
   },
 
   //^ Web Dev + AI
+  [ProjectDatabaseKeys.AiWorkflowAutomations]: {
+    name: "AI Workflow Automations",
+    description: `
+    Runs AI driven automations based on triggers. 
+    These triggers can be automatic (events) or manual.
+    Allows regular users to easily create and run AI driven automations without any technical knowledge, making AI more accessible and useful for everyone.
+    `,
+    repositoryURL: "https://github.com/mbeps/ai-workflow-automations",
+    deploymentURL: "https://ai-workflow-automations.maruf-bepary.com",
+    category: ProjectCategoriesEnum.FullStackAndArtificialIntelligence,
+    type: ProjectTypeEnum.Personal,
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.ShadcnUi,
+      SkillDatabaseKeys.RadixUi,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.Zod,
+      SkillDatabaseKeys.BetterAuth,
+      SkillDatabaseKeys.PostgreSql,
+      SkillDatabaseKeys.Prisma,
+      SkillDatabaseKeys.Jotai,
+      SkillDatabaseKeys.Sentry,
+      SkillDatabaseKeys.VercelAiSdk,
+      SkillDatabaseKeys.Polar,
+      SkillDatabaseKeys.Inngest,
+      SkillDatabaseKeys.TRcp,
+      SkillDatabaseKeys.Docker,
+    ],
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.AiWorkflowAutomations)
+      .COVER,
+  },
   [ProjectDatabaseKeys.AiGenerations]: {
     name: `AI Generations`,
     description: `
