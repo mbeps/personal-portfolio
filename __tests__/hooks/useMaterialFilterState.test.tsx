@@ -463,4 +463,190 @@ describe("useMaterialFilterState", () => {
     expect(captured?.filterCategories[0].selectedValue).toBe("web"); // Should be lowercase
     expect(captured?.filteredKeys).toEqual(["alpha"]);
   });
+
+  test("auto-enables archive when applying a non-default filter", () => {
+    const setParams = vi.fn();
+    mockUseQueryStates.mockReturnValue([
+      { search: "", category: "all", skill: "all", archived: false },
+      setParams,
+    ]);
+
+    const result = runHook({});
+    result.filterCategories[0].onChange("web");
+
+    expect(setParams).toHaveBeenCalledWith({
+      category: "web",
+      archived: true,
+    });
+  });
+
+  test("toggles archive filter when off", () => {
+    const setParams = vi.fn();
+    mockUseQueryStates.mockReturnValue([
+      { search: "", category: "all", skill: "all", archived: false },
+      setParams,
+    ]);
+
+    const result = runHook({});
+    result.archiveFilter?.onToggle();
+
+    expect(setParams).toHaveBeenCalledWith({
+      archived: true,
+    });
+  });
+
+  test("toggles archive filter when on", () => {
+    const setParams = vi.fn();
+    mockUseQueryStates.mockReturnValue([
+      { search: "", category: "all", skill: "all", archived: true },
+      setParams,
+    ]);
+
+    const result = runHook({});
+    result.archiveFilter?.onToggle();
+
+    expect(setParams).toHaveBeenCalledWith({
+      archived: null,
+    });
+  });
+
+  test("auto-enables archive when setting a search term", () => {
+    const setParams = vi.fn();
+    mockUseQueryStates.mockReturnValue([
+      { search: "", category: "all", skill: "all", archived: false },
+      setParams,
+    ]);
+
+    const result = runHook({});
+    result.setSearchTerm("test");
+
+    expect(setParams).toHaveBeenCalledWith({
+      search: "test",
+      archived: true,
+    });
+  });
+
+  test("does not auto-enable archive when setting an empty search term", () => {
+    const setParams = vi.fn();
+    mockUseQueryStates.mockReturnValue([
+      { search: "some", category: "all", skill: "all", archived: false },
+      setParams,
+    ]);
+
+    const result = runHook({});
+    result.setSearchTerm("");
+
+    expect(setParams).toHaveBeenCalledWith({
+      search: null,
+    });
+  });
+
+  test("does not auto-enable archive when applying a default filter", () => {
+    const setParams = vi.fn();
+    mockUseQueryStates.mockReturnValue([
+      { search: "", category: "web", skill: "all", archived: false },
+      setParams,
+    ]);
+
+    const result = runHook({});
+    result.filterCategories[0].onChange("all"); // "all" is defaultValue
+
+    expect(setParams).toHaveBeenCalledWith({
+      category: null,
+    });
+  });
+
+  test("handles missing archive filter in callbacks", () => {
+    const setParams = vi.fn();
+    mockUseQueryStates.mockReturnValue([
+      { search: "", category: "all" },
+      setParams,
+    ]);
+
+    let captured: any;
+    function NoArchiveHarness() {
+      const result = useMaterialFilterState({
+        databaseMap: {},
+        searchParamName: "search",
+        searchKeys: ["name"],
+        filterCategories: [
+          {
+            sectionName: "Category",
+            urlParam: "category",
+            options: [
+              { slug: "all", entryName: "All" },
+              { slug: "web", entryName: "Web" },
+            ],
+            defaultValue: "all",
+            applyFilter: (v, k) => k,
+          },
+        ],
+      });
+      captured = result;
+      return null;
+    }
+
+    renderToStaticMarkup(<NoArchiveHarness />);
+
+    captured.setSearchTerm("test");
+    expect(setParams).toHaveBeenCalledWith({ search: "test" });
+
+    captured.filterCategories[0].onChange("web");
+    expect(setParams).toHaveBeenCalledWith({ category: "web" });
+  });
+
+  test("handles missing optional config and URL params", () => {
+    mockUseQueryStates.mockReturnValue([{}, vi.fn()]);
+
+    let captured: any;
+    function MinimalHarness() {
+      const result = useMaterialFilterState({
+        databaseMap: {},
+        searchParamName: "search",
+        searchKeys: ["name"],
+        filterCategories: [
+          {
+            sectionName: "Category",
+            urlParam: "category",
+            options: [{ slug: "all", entryName: "All" }],
+            // defaultValue and valueParser MISSING
+            applyFilter: (v, k) => k,
+          },
+        ],
+      });
+      captured = result;
+      return null;
+    }
+
+    renderToStaticMarkup(<MinimalHarness />);
+    expect(captured.searchTerm).toBe("");
+    expect(captured.filterCategories[0].selectedValue).toBe("all");
+  });
+
+  test("handles empty string in onChange when default is different", () => {
+    const setParams = vi.fn();
+    mockUseQueryStates.mockReturnValue([
+      { search: "", category: "all", skill: "all", archived: false },
+      setParams,
+    ]);
+
+    const result = runHook({});
+    result.filterCategories[0].onChange("");
+
+    expect(setParams).toHaveBeenCalledWith({
+      category: null,
+      archived: true,
+    });
+  });
+
+  test("handles missing archive param in rawParams (line 211)", () => {
+    mockUseQueryStates.mockReturnValue([
+      { search: "", category: "all", skill: "all" }, // No 'archived' key here
+      vi.fn(),
+    ]);
+
+    const result = runHook({});
+
+    expect(result.archiveFilter?.showArchived).toBe(false);
+  });
 });

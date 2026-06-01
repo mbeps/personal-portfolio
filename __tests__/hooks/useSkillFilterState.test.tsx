@@ -22,6 +22,7 @@ interface SkillFilterStateResult {
     sectionName: string;
     urlParam: string;
     selectedValue: string;
+    onChange: (value: string) => void;
   }[];
   groupedSkills: {
     skillCategoryName: string;
@@ -29,6 +30,7 @@ interface SkillFilterStateResult {
   }[];
   areFiltersApplied: boolean;
   hideSkillsWithoutMaterial: boolean;
+  setSearchTerm: (value: string) => void;
 }
 
 interface HarnessProps {
@@ -49,6 +51,7 @@ function runHook(skills: SkillDatabaseKeys[]): SkillFilterStateResult {
     groupedSkills: [],
     areFiltersApplied: false,
     hideSkillsWithoutMaterial: false,
+    setSearchTerm: vi.fn(),
   };
 
   renderToStaticMarkup(
@@ -157,6 +160,90 @@ describe("useSkillFilterState", () => {
     const result = runHook(skills);
 
     expect(result.searchTerm).toBe("hugging");
+    expect(result.areFiltersApplied).toBe(true);
+  });
+
+  test("verifies callback functions update URL parameters correctly", () => {
+    const setParams = vi.fn();
+    mockUseQueryStates.mockReturnValue([
+      {
+        search: "",
+        group: "category",
+        hard: false,
+        general: false,
+        "no-material": false,
+      },
+      setParams,
+    ]);
+
+    const result = runHook([]);
+
+    // 1. Set search term
+    result.setSearchTerm("react");
+    expect(setParams).toHaveBeenCalledWith({ search: "react" });
+
+    // 2. Change grouping
+    const groupCategory = result.filterCategories.find(
+      (c) => c.urlParam === "group",
+    );
+    groupCategory?.onChange("language");
+    expect(setParams).toHaveBeenCalledWith({ group: "language" });
+
+    // 3. Toggle exclusion (hard skills)
+    const hardCategory = result.filterCategories.find(
+      (c) => c.urlParam === "hard",
+    );
+    hardCategory?.onChange("true");
+    expect(setParams).toHaveBeenCalledWith({ hard: true });
+
+    // 4. Toggle exclusion (general skills) - off case
+    const generalCategory = result.filterCategories.find(
+      (c) => c.urlParam === "general",
+    );
+    generalCategory?.onChange("false");
+    expect(setParams).toHaveBeenCalledWith({ general: null });
+
+    // 5. Toggle no-material filter
+    const noMaterialCategory = result.filterCategories.find(
+      (c) => c.urlParam === "no-material",
+    );
+    noMaterialCategory?.onChange("true");
+    expect(setParams).toHaveBeenCalledWith({ "no-material": true });
+
+    // 6. Test falsy values for coverage (branch coverage)
+    groupCategory?.onChange("");
+    expect(setParams).toHaveBeenCalledWith({ group: null });
+
+    noMaterialCategory?.onChange("false");
+    expect(setParams).toHaveBeenCalledWith({ "no-material": null });
+
+    result.setSearchTerm("");
+    expect(setParams).toHaveBeenCalledWith({ search: null });
+  });
+
+  test("handles missing URL parameters by falling back to defaults", () => {
+    mockUseQueryStates.mockReturnValue([
+      {}, // Empty params
+      vi.fn(),
+    ]);
+    const result = runHook([]);
+    expect(result.searchTerm).toBe("");
+    expect(result.filterCategories[0].selectedValue).toBe("category");
+  });
+
+  test("applies technical skills exclusion when general param is true", () => {
+    mockUseQueryStates.mockReturnValue([
+      {
+        search: "",
+        group: "",
+        hard: false,
+        general: true,
+        "no-material": false,
+      },
+      vi.fn(),
+    ]);
+
+    const result = runHook([SkillDatabaseKeys.TypeScript]);
     expect(result.areFiltersApplied).toBe(true);
   });
 });
