@@ -584,6 +584,39 @@ const projectMap: Database<ProjectInterface> = {
   },
 
   //^ Web Dev + AI
+  [ProjectDatabaseKeys.AiChatClient]: {
+    name: "AI Chat Client",
+    description: `
+      A chat client that allows users to have conversations with AI models.
+      The client supports various AI models, access to built-in tools, external MCPs, knowlegebases, custom workflows, projects, prompts, etc.
+      It is a very feature-rich client.
+      `,
+    category: ProjectCategoriesEnum.FullStackAndArtificialIntelligence,
+    repositoryURL: "https://github.com/mbeps/ai-client",
+    deploymentURL: "https://ai-chat-client.maruf-bepary.com",
+    type: ProjectTypeEnum.Personal,
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.ShadcnUi,
+      SkillDatabaseKeys.RadixUi,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.Zod,
+      SkillDatabaseKeys.BetterAuth,
+      SkillDatabaseKeys.PostgreSql,
+      SkillDatabaseKeys.Drizzle,
+      SkillDatabaseKeys.Zustand,
+      SkillDatabaseKeys.VercelAiSdk,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.GitHubActions,
+      SkillDatabaseKeys.Vitest,
+      SkillDatabaseKeys.AwsS3,
+      SkillDatabaseKeys.ModelContextProtocol,
+    ],
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.AiChatClient).COVER,
+  },
   [ProjectDatabaseKeys.AiWorkflowAutomations]: {
     name: "AI Workflow Automations",
     description: `
