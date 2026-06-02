@@ -19,8 +19,16 @@ const ProjectsSection = () => {
    */
   const displayedProjects: string[] = [
     ProjectDatabaseKeys.ForumDiscussions,
-    ProjectDatabaseKeys.AiGenerations,
+    ProjectDatabaseKeys.AiChatClient,
+    ProjectDatabaseKeys.AiWorkflowAutomations,
+    ProjectDatabaseKeys.MusicStreaming,
+    ProjectDatabaseKeys.RichTextNotes,
+    ProjectDatabaseKeys.RealTimeMessaging,
+    ProjectDatabaseKeys.CommerzbankAppStatus,
+    ProjectDatabaseKeys.CommerzbankRates,
     ProjectDatabaseKeys.AlignmentInLargeLanguageModels,
+    ProjectDatabaseKeys.ExcelSpreadsheetMCP,
+    ProjectDatabaseKeys.LlamaCppProviderForGitHubCopilotChat,
   ];
 
   return (
