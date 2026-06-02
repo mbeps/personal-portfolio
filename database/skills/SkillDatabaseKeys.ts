@@ -49,6 +49,7 @@ enum SkillDatabaseKeys {
   Benchmarking = "benchmarking",
   Quantization = "quantization",
   ModelContextProtocol = "model-context-protocol",
+  RetrievalAugmentedGeneration = "retrieval-augmented-generation",
   VercelAiSdk = "vercel-ai-sdk",
 
   //^ Full Stack Web Development

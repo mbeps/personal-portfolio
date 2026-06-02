@@ -362,6 +362,19 @@ const skillDatabaseMap: Database<SkillInterface> = {
     name: "MCP",
     category: SkillCategoriesEnum.ArtificialIntelligence,
     skillType: SkillTypesEnum.Technology,
+    isMainSkill: true,
+    relatedSkills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.Kotlin,
+    ],
+  },
+  [SkillDatabaseKeys.RetrievalAugmentedGeneration]: {
+    name: "RAG",
+    category: SkillCategoriesEnum.ArtificialIntelligence,
+    skillType: SkillTypesEnum.Technology,
+    isMainSkill: true,
     relatedSkills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.TypeScript,
