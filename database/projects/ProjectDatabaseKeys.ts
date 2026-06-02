@@ -15,6 +15,8 @@ enum ProjectDatabaseKeys {
   MusicStreaming = "music-streaming",
   RichTextNotes = "rich-text-notes",
   AiQuizzes = "ai-quizzes",
+  AiChatClient = "ai-chat-client",
+  AiWorkflowAutomations = "ai-workflow-automations",
   OnlineArticles = "online-articles",
   Noodle = "noodle",
   CommerzbankAppStatus = "commerzbank-app-status",
@@ -67,6 +69,7 @@ enum ProjectDatabaseKeys {
   ComputerVisionQuizzes = "computer-vision-quizzes",
   VisionTransformerFromScratch = "vision-transformer-from-scratch",
   SimpleAIResearchAgent = "simple-ai-research-agent",
+  LlamaCppProviderForGitHubCopilotChat = "llama-cpp-provider-for-github-copilot-chat",
 
   OsmosGame = "osmos-game",
   GnomeQuickSettingsTweakExtension = "gnome-quick-settings-tweak-extension",

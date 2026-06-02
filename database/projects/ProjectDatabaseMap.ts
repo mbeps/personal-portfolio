@@ -93,6 +93,28 @@ const projectMap: Database<ProjectInterface> = {
     ],
     thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.LinuxGnomeMcp).COVER,
   },
+  [ProjectDatabaseKeys.LlamaCppProviderForGitHubCopilotChat]: {
+    name: "Llama.cpp Provider for GitHub Copilot Chat",
+    description: `
+    Allows using local Llama.cpp models within GitHub Copilot for VS Code. 
+    Saves costs and provides more control over the models used in Copilot Chat, enabling private and customizable AI assistance for developers.
+    `,
+    repositoryURL: "https://github.com/mbeps/llama-vscode-chat",
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    deploymentURL:
+      "https://marketplace.visualstudio.com/items?itemName=maruf-bepary.llama-vscode-chat",
+    type: ProjectTypeEnum.Personal,
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.LargeLanguageModels,
+      SkillDatabaseKeys.ModelContextProtocol,
+    ],
+    thumbnailImage: PATHS.PROJECTS(
+      ProjectDatabaseKeys.LlamaCppProviderForGitHubCopilotChat,
+    ).COVER,
+  },
   [ProjectDatabaseKeys.HandWrittenDigitClassifier]: {
     name: "Handwritten Digit Classifier",
     description: `
@@ -561,6 +583,76 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
   },
 
+  //^ Web Dev + AI
+  [ProjectDatabaseKeys.AiChatClient]: {
+    name: "AI Chat Client",
+    description: `
+      A chat client that allows users to have conversations with AI models.
+      The client supports various AI models, access to built-in tools, external MCPs, knowlegebases, custom workflows, projects, prompts, etc.
+      It is a very feature-rich client.
+      `,
+    category: ProjectCategoriesEnum.FullStackAndArtificialIntelligence,
+    repositoryURL: "https://github.com/mbeps/ai-client",
+    deploymentURL: "https://ai-chat-client.maruf-bepary.com",
+    type: ProjectTypeEnum.Personal,
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.ShadcnUi,
+      SkillDatabaseKeys.RadixUi,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.Zod,
+      SkillDatabaseKeys.BetterAuth,
+      SkillDatabaseKeys.PostgreSql,
+      SkillDatabaseKeys.Drizzle,
+      SkillDatabaseKeys.Zustand,
+      SkillDatabaseKeys.VercelAiSdk,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.GitHubActions,
+      SkillDatabaseKeys.Vitest,
+      SkillDatabaseKeys.AwsS3,
+      SkillDatabaseKeys.ModelContextProtocol,
+    ],
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.AiChatClient).COVER,
+  },
+  [ProjectDatabaseKeys.AiWorkflowAutomations]: {
+    name: "AI Workflow Automations",
+    description: `
+    Runs AI driven automations based on triggers. 
+    These triggers can be automatic (events) or manual.
+    Allows regular users to easily create and run AI driven automations without any technical knowledge, making AI more accessible and useful for everyone.
+    `,
+    repositoryURL: "https://github.com/mbeps/ai-workflow-automations",
+    deploymentURL: "https://ai-workflow-automations.maruf-bepary.com",
+    category: ProjectCategoriesEnum.FullStackAndArtificialIntelligence,
+    type: ProjectTypeEnum.Personal,
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.ShadcnUi,
+      SkillDatabaseKeys.RadixUi,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.Zod,
+      SkillDatabaseKeys.BetterAuth,
+      SkillDatabaseKeys.PostgreSql,
+      SkillDatabaseKeys.Prisma,
+      SkillDatabaseKeys.Jotai,
+      SkillDatabaseKeys.Sentry,
+      SkillDatabaseKeys.VercelAiSdk,
+      SkillDatabaseKeys.Polar,
+      SkillDatabaseKeys.Inngest,
+      SkillDatabaseKeys.TRcp,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.GitHubActions,
+      SkillDatabaseKeys.Vitest,
+    ],
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.AiWorkflowAutomations)
+      .COVER,
+  },
   [ProjectDatabaseKeys.AiGenerations]: {
     name: `AI Generations`,
     description: `
@@ -592,6 +684,35 @@ const projectMap: Database<ProjectInterface> = {
     ],
     category: ProjectCategoriesEnum.FullStackAndArtificialIntelligence,
     thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.AiGenerations).COVER,
+    type: ProjectTypeEnum.Personal,
+  },
+  [ProjectDatabaseKeys.AiQuizzes]: {
+    name: "AI Quizzes",
+    description: `
+      A platform for dynamic quiz generation. 
+      Users can test their knowledge with multiple-choice or fill-in-the-gap questions across various topics.
+      With immediate feedback and score tracking, users enhance their understanding.`,
+    category: ProjectCategoriesEnum.FullStackAndArtificialIntelligence,
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.ShadcnUi,
+      SkillDatabaseKeys.RadixUi,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.Prisma,
+      SkillDatabaseKeys.Axios,
+      SkillDatabaseKeys.AuthJs,
+
+      SkillDatabaseKeys.MySql,
+
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.Html,
+      SkillDatabaseKeys.Css,
+    ],
+    repositoryURL: "https://github.com/mbeps/quizmify",
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.AiQuizzes).COVER,
     type: ProjectTypeEnum.Personal,
   },
 
@@ -833,35 +954,6 @@ const projectMap: Database<ProjectInterface> = {
   },
 
   //^ Extra Web Development Projects
-  [ProjectDatabaseKeys.AiQuizzes]: {
-    name: "AI Quizzes",
-    description: `
-      A platform for dynamic quiz generation. 
-      Users can test their knowledge with multiple-choice or fill-in-the-gap questions across various topics.
-      With immediate feedback and score tracking, users enhance their understanding.`,
-    category: ProjectCategoriesEnum.FullStackAndArtificialIntelligence,
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.ShadcnUi,
-      SkillDatabaseKeys.RadixUi,
-      SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.Prisma,
-      SkillDatabaseKeys.Axios,
-      SkillDatabaseKeys.AuthJs,
-
-      SkillDatabaseKeys.MySql,
-
-      SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-    ],
-    repositoryURL: "https://github.com/mbeps/quizmify",
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.AiQuizzes).COVER,
-    type: ProjectTypeEnum.Personal,
-  },
   [ProjectDatabaseKeys.OnlineArticles]: {
     name: `Online Articles`,
     description: `

@@ -415,6 +415,21 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.NeuralNetworks,
     ],
   },
+  [SkillDatabaseKeys.VercelAiSdk]: {
+    name: "Vercel AI SDK",
+    category: SkillCategoriesEnum.ArtificialIntelligence,
+    skillType: SkillTypesEnum.Technology,
+    isMainSkill: true,
+    relatedSkills: [
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.LargeLanguageModels,
+      SkillDatabaseKeys.NaturalLanguageProcessing,
+      SkillDatabaseKeys.IntelligentAgents,
+      SkillDatabaseKeys.ModelContextProtocol,
+    ],
+  },
   [SkillDatabaseKeys.NaturalLanguageProcessing]: {
     name: "Natural Language Processing (NLP)",
     category: SkillCategoriesEnum.ArtificialIntelligence,
@@ -629,6 +644,12 @@ const skillDatabaseMap: Database<SkillInterface> = {
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [],
   },
+  [SkillDatabaseKeys.Polar]: {
+    name: "Polar Pay",
+    category: SkillCategoriesEnum.BackEndWebDevelopment,
+    skillType: SkillTypesEnum.Technology,
+    relatedSkills: [],
+  },
   [SkillDatabaseKeys.ExpressJs]: {
     name: "Express.JS",
     category: SkillCategoriesEnum.BackEndWebDevelopment,
@@ -804,6 +825,17 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.NextJs,
     ],
   },
+  [SkillDatabaseKeys.TRcp]: {
+    name: "tRPC",
+    isMainSkill: true,
+    category: SkillCategoriesEnum.BackEndWebDevelopment,
+    skillType: SkillTypesEnum.Technology,
+    relatedSkills: [
+      SkillDatabaseKeys.CrossOriginResourceSharing,
+      SkillDatabaseKeys.ExpressJs,
+      SkillDatabaseKeys.NextJs,
+    ],
+  },
   [SkillDatabaseKeys.SocketIo]: {
     name: "Socket.IO",
     category: SkillCategoriesEnum.BackEndWebDevelopment,
@@ -837,6 +869,12 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.Django,
       SkillDatabaseKeys.SpringBoot,
     ],
+  },
+  [SkillDatabaseKeys.Inngest]: {
+    name: "Inngest",
+    category: SkillCategoriesEnum.BackEndWebDevelopment,
+    skillType: SkillTypesEnum.Technology,
+    relatedSkills: [],
   },
 
   //^ Frontend Web Development
@@ -1620,6 +1658,17 @@ const skillDatabaseMap: Database<SkillInterface> = {
     category: SkillCategoriesEnum.CloudComputing,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [SkillDatabaseKeys.CloudComputing, SkillDatabaseKeys.Gcp],
+  },
+
+  [SkillDatabaseKeys.Grafana]: {
+    name: "Grafana",
+    category: SkillCategoriesEnum.Monitoring,
+    skillType: SkillTypesEnum.Technology,
+  },
+  [SkillDatabaseKeys.Sentry]: {
+    name: "Sentry",
+    category: SkillCategoriesEnum.Monitoring,
+    skillType: SkillTypesEnum.Technology,
   },
 
   //^ Mathematics

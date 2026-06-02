@@ -12,6 +12,7 @@ enum SkillCategoriesEnum {
   Testing = "Testing",
   ProgrammingLanguages = "Programming Languages",
   CloudComputing = "Cloud Computing",
+  Monitoring = "Monitoring",
   GameDevelopment = "Game Development",
   Mathematics = "Mathematics",
 }
