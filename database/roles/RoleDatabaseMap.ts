@@ -42,8 +42,8 @@ const rolesMap: Database<RoleInterface> = {
     ],
     company: CompanyDatabaseKeys.Commerzbank,
   },
-  [RoleDatabaseKeys.CommerzbankBackendEngineer]: {
-    name: "Software Engineer",
+  [RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer]: {
+    name: "Full-Stack Software Engineer",
     category: ExperienceCategoriesEnum.Software,
     type: ExperienceTypeEnum.FullTime,
     skills: [

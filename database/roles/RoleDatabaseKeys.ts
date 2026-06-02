@@ -8,7 +8,7 @@
  */
 enum RoleDatabaseKeys {
   CommerzbankAiEngineer = "commerzbank-ai-engineer",
-  CommerzbankBackendEngineer = "commerzbank-backend-engineer",
+  CommerzbankFullStackSoftwareEngineer = "commerzbank-full-stack-software-engineer",
   CommerzbankAiAmbassador = "commerzbank-ai-ambassador",
   GoogleRhulDevelopersClubSoftwareEngineer = "google-x-rhul-developers-club-software-engineer",
   AjTuitionCentreTutor = "aj-tuition-centre-tutor",

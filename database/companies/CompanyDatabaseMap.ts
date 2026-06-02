@@ -10,7 +10,7 @@ const companiesMap: Database<CompanyInterface> = {
     name: "Commerzbank",
     location: "London, UK",
     website: "https://www.commerzbank.com/",
-    positions: [RoleDatabaseKeys.CommerzbankBackendEngineer],
+    positions: [RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer],
     logo: PATHS.COMPANY.LOGO(CompanyDatabaseKeys.Commerzbank),
   },
   [CompanyDatabaseKeys.GoogleRHULDevelopersClub]: {

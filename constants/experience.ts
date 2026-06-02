@@ -9,7 +9,7 @@ import computeTotalExperience from "@/lib/computeTotalExperience";
  * @author Maruf Bepary
  */
 const mainWorkExperience: RoleDatabaseKeys[] = [
-  RoleDatabaseKeys.CommerzbankBackendEngineer,
+  RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
 ];
 
 // Calculate total experience for mainWorkExperience
