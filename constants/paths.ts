@@ -34,7 +34,7 @@ export const PATHS = {
     COVER: `${PROJECTS_BASE}/${projectKey}/cover.png`,
     FEATURES: `public${PROJECTS_BASE}/${projectKey}/features.md`,
     BLOG: `public${PROJECTS_BASE}/${projectKey}/blog.md`,
-    BLOG_IMG: `${PROJECTS_BASE.slice(1)}/${projectKey}/img`,
+    BLOG_IMG: `${PROJECTS_BASE}/${projectKey}/img`,
     MEDIA: {
       NORMAL: `${PROJECTS_BASE}/${projectKey}/media`,
       PUBLIC: `public${PROJECTS_BASE}/${projectKey}/media`,
@@ -51,6 +51,6 @@ export const PATHS = {
   }),
   BLOGS: (blogKey: BlogDatabaseKeys) => ({
     BLOG: `public${BLOGS_BASE}/${blogKey}/blog.md`,
-    IMG: `${BLOGS_BASE.slice(1)}/${blogKey}/img`,
+    IMG: `${BLOGS_BASE}/${blogKey}/img`,
   }),
 } as const;
