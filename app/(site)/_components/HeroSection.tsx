@@ -46,9 +46,9 @@ const HeroSection = () => {
               className="
                 absolute inset-0 
                 rounded-full 
-                md:blur-[80px] 
+                blur-[100px] 
                 hidden dark:block
-                opacity-50
+                opacity-60
                 bg-linear-to-r from-orange-700 to-yellow-500"
             />
 

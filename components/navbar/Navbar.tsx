@@ -51,14 +51,16 @@ export default function Navbar() {
           } dark:shadow-neutral-800 
           ${
             !isOverlayOpen
-              ? "bg-neutral-50/60 dark:bg-neutral-900/60 backdrop-blur-xl"
+              ? scrolled
+                ? "bg-neutral-50/60 dark:bg-neutral-900/60 backdrop-blur-xl"
+                : "bg-transparent"
               : "bg-neutral-50/0 dark:bg-neutral-900/0"
           }
           transition-all ease-in-out
         `}
         style={{
           transitionDuration,
-          backdropFilter: !isOverlayOpen ? "blur(20px)" : undefined,
+          backdropFilter: !isOverlayOpen && scrolled ? "blur(20px)" : undefined,
         }}
       >
         <div className="flex lg:flex-row md:flex items-center justify-between md:items-center py-3 md:py-1 mx-auto max-w-[2560px]">
