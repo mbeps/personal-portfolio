@@ -908,7 +908,7 @@ const projectMap: Database<ProjectInterface> = {
       .COVER,
     type: ProjectTypeEnum.Professional,
     relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankBackendEngineer,
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
       ProjectDatabaseKeys.AuthenticationMicroService,
       ProjectDatabaseKeys.EmailMicroService,
       ProjectDatabaseKeys.LdapPermissionsMicroService,
@@ -950,7 +950,7 @@ const projectMap: Database<ProjectInterface> = {
     thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.CommerzbankRates).COVER,
     type: ProjectTypeEnum.Professional,
     relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankBackendEngineer,
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
       ProjectDatabaseKeys.AuthenticationMicroService,
       ProjectDatabaseKeys.EmailMicroService,
       ProjectDatabaseKeys.LdapPermissionsMicroService,
@@ -1138,7 +1138,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Grafana,
     ],
     relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankBackendEngineer,
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
       ProjectDatabaseKeys.OAuthNextJsSpringBoot,
       ProjectDatabaseKeys.CommerzbankAppStatus,
       ProjectDatabaseKeys.CommerzbankRates,
@@ -1163,7 +1163,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
     relatedMaterials: [
       ProjectDatabaseKeys.CommerzbankRates,
-      RoleDatabaseKeys.CommerzbankBackendEngineer,
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
       BlogDatabaseKeys.MicroservicesArchitecture,
     ],
     type: ProjectTypeEnum.Professional,
@@ -1187,7 +1187,7 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.CommerzbankRates,
       ProjectDatabaseKeys.SpringBootLdapRoleBasedAccessControlLibrary,
       ProjectDatabaseKeys.SpringBootLdapTemplate,
-      RoleDatabaseKeys.CommerzbankBackendEngineer,
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
       BlogDatabaseKeys.MicroservicesArchitecture,
     ],
     type: ProjectTypeEnum.Professional,
@@ -1215,7 +1215,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Grafana,
     ],
     relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankBackendEngineer,
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
       RoleDatabaseKeys.CommerzbankAiEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
       ProjectDatabaseKeys.BaseRestController,
@@ -1246,7 +1246,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Grafana,
     ],
     relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankBackendEngineer,
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
       RoleDatabaseKeys.CommerzbankAiAmbassador,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
       ProjectDatabaseKeys.BaseRestController,
@@ -1275,7 +1275,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Grafana,
     ],
     relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankBackendEngineer,
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
     ],
     type: ProjectTypeEnum.Professional,
@@ -1301,7 +1301,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Grafana,
     ],
     relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankBackendEngineer,
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
     ],
     type: ProjectTypeEnum.Professional,
@@ -1329,7 +1329,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Grafana,
     ],
     relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankBackendEngineer,
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
     ],
     type: ProjectTypeEnum.Professional,
@@ -1358,7 +1358,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Grafana,
     ],
     relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankBackendEngineer,
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
     ],
     type: ProjectTypeEnum.Professional,
@@ -1388,7 +1388,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Grafana,
     ],
     relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankBackendEngineer,
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
     ],
     type: ProjectTypeEnum.Professional,
@@ -1411,7 +1411,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Gcp,
     ],
     relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankBackendEngineer,
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
     ],
     archived: true,
@@ -1434,7 +1434,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Gcp,
     ],
     relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankBackendEngineer,
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
     ],
     archived: true,
@@ -1515,7 +1515,7 @@ const projectMap: Database<ProjectInterface> = {
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     type: ProjectTypeEnum.Professional,
     repositoryURL: "https://github.com/mbeps/springboot-sql-database-template",
-    relatedMaterials: [RoleDatabaseKeys.CommerzbankBackendEngineer],
+    relatedMaterials: [RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer],
     skills: [
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.SpringBoot,
@@ -1533,7 +1533,7 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Professional,
     repositoryURL:
       "https://github.com/mbeps/springboot-mongodb-database-template",
-    relatedMaterials: [RoleDatabaseKeys.CommerzbankBackendEngineer],
+    relatedMaterials: [RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer],
     skills: [
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.SpringBoot,
@@ -1551,7 +1551,7 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Professional,
     repositoryURL: "https://github.com/mbeps/springboot-ad-ldap-template",
     relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankBackendEngineer,
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
       ProjectDatabaseKeys.SpringBootLdapRoleBasedAccessControlLibrary,
       ProjectDatabaseKeys.LdapPermissionsMicroService,
     ],
@@ -1585,7 +1585,7 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.SymphonyRssBot,
       ProjectDatabaseKeys.CommerzbankRates,
 
-      RoleDatabaseKeys.CommerzbankBackendEngineer,
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
     ],
   },
   [ProjectDatabaseKeys.MarkdownToMessageMLConverter]: {
@@ -1606,7 +1606,7 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
     relatedMaterials: [
       ProjectDatabaseKeys.SymphonyCobaGPTBot,
-      RoleDatabaseKeys.CommerzbankBackendEngineer,
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
     ],
   },
   [ProjectDatabaseKeys.SpringBootLdapRoleBasedAccessControlLibrary]: {
@@ -1632,7 +1632,7 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.LdapPermissionsMicroService,
       ProjectDatabaseKeys.SpringBootLdapTemplate,
 
-      RoleDatabaseKeys.CommerzbankBackendEngineer,
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
     ],
   },
 
