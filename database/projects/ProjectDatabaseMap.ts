@@ -899,6 +899,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Html,
       SkillDatabaseKeys.Css,
       SkillDatabaseKeys.Vitest,
+      SkillDatabaseKeys.Grafana,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.CommerzbankAppStatus)
@@ -941,6 +942,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Css,
       SkillDatabaseKeys.Vitest,
       SkillDatabaseKeys.JUnit,
+      SkillDatabaseKeys.Grafana,
     ],
     category: ProjectCategoriesEnum.FullStackWebDevelopment,
     thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.CommerzbankRates).COVER,
@@ -1131,6 +1133,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.RelationalDatabases,
       SkillDatabaseKeys.TeamCity,
       SkillDatabaseKeys.JUnit,
+      SkillDatabaseKeys.Grafana,
     ],
     relatedMaterials: [
       RoleDatabaseKeys.CommerzbankBackendEngineer,
@@ -1154,6 +1157,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Docker,
       SkillDatabaseKeys.TeamCity,
       SkillDatabaseKeys.JUnit,
+      SkillDatabaseKeys.Grafana,
     ],
     relatedMaterials: [
       ProjectDatabaseKeys.CommerzbankRates,
@@ -1175,6 +1179,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Docker,
       SkillDatabaseKeys.TeamCity,
       SkillDatabaseKeys.JUnit,
+      SkillDatabaseKeys.Grafana,
     ],
     relatedMaterials: [
       ProjectDatabaseKeys.CommerzbankRates,
@@ -1205,6 +1210,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Mockito,
       SkillDatabaseKeys.Gcp,
       SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.Grafana,
     ],
     relatedMaterials: [
       RoleDatabaseKeys.CommerzbankBackendEngineer,
@@ -1235,6 +1241,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Gcp,
       SkillDatabaseKeys.Docker,
       SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.Grafana,
     ],
     relatedMaterials: [
       RoleDatabaseKeys.CommerzbankBackendEngineer,
@@ -1263,6 +1270,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.TeamCity,
       SkillDatabaseKeys.Gcp,
       SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.Grafana,
     ],
     relatedMaterials: [
       RoleDatabaseKeys.CommerzbankBackendEngineer,
@@ -1288,6 +1296,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.TeamCity,
       SkillDatabaseKeys.Gcp,
       SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.Grafana,
     ],
     relatedMaterials: [
       RoleDatabaseKeys.CommerzbankBackendEngineer,
@@ -1315,6 +1324,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.TeamCity,
       SkillDatabaseKeys.Docker,
       SkillDatabaseKeys.Gcp,
+      SkillDatabaseKeys.Grafana,
     ],
     relatedMaterials: [
       RoleDatabaseKeys.CommerzbankBackendEngineer,
@@ -1343,6 +1353,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.TeamCity,
       SkillDatabaseKeys.Gcp,
       SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.Grafana,
     ],
     relatedMaterials: [
       RoleDatabaseKeys.CommerzbankBackendEngineer,
@@ -1372,6 +1383,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.TeamCity,
       SkillDatabaseKeys.Gcp,
       SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.Grafana,
     ],
     relatedMaterials: [
       RoleDatabaseKeys.CommerzbankBackendEngineer,

@@ -244,7 +244,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
     ],
   },
   [SkillDatabaseKeys.Transformers]: {
-    name: "Transformers",
+    name: "HF Transformers",
     category: SkillCategoriesEnum.ArtificialIntelligence,
     isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
@@ -359,7 +359,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
     ],
   },
   [SkillDatabaseKeys.ModelContextProtocol]: {
-    name: "Model Context Protocol (MCP)",
+    name: "MCP",
     category: SkillCategoriesEnum.ArtificialIntelligence,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
@@ -395,7 +395,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
     ],
   },
   [SkillDatabaseKeys.LargeLanguageModels]: {
-    name: "Large Language Models (LLMs)",
+    name: "LLMs",
     category: SkillCategoriesEnum.ArtificialIntelligence,
     isMainSkill: false,
     skillType: SkillTypesEnum.Technical,
@@ -431,7 +431,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
     ],
   },
   [SkillDatabaseKeys.NaturalLanguageProcessing]: {
-    name: "Natural Language Processing (NLP)",
+    name: "NLP",
     category: SkillCategoriesEnum.ArtificialIntelligence,
     isMainSkill: false,
     skillType: SkillTypesEnum.Technical,
@@ -1418,7 +1418,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
 
   //^ Cloud Computing
   [SkillDatabaseKeys.Aws]: {
-    name: "Amazon Web Services (AWS)",
+    name: "AWS",
     category: SkillCategoriesEnum.CloudComputing,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
@@ -1451,31 +1451,31 @@ const skillDatabaseMap: Database<SkillInterface> = {
     relatedSkills: [SkillDatabaseKeys.CloudComputing, SkillDatabaseKeys.Aws],
   },
   [SkillDatabaseKeys.AwsApplicationLoadBalancer]: {
-    name: "Application Load Balancer (ALB)",
+    name: "ALB",
     category: SkillCategoriesEnum.CloudComputing,
     skillType: SkillTypesEnum.Technology,
   },
   [SkillDatabaseKeys.AwsElasticCache]: {
-    name: "Elastic Cache (EC)",
+    name: "Elastic Cache",
     category: SkillCategoriesEnum.CloudComputing,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [SkillDatabaseKeys.CloudComputing, SkillDatabaseKeys.Aws],
   },
 
   [SkillDatabaseKeys.AwsElasticFileSystem]: {
-    name: "Elastic File System (EFS)",
+    name: "EFS",
     category: SkillCategoriesEnum.CloudComputing,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [SkillDatabaseKeys.CloudComputing, SkillDatabaseKeys.Aws],
   },
   [SkillDatabaseKeys.AwsElasticBlockStore]: {
-    name: "Elastic Block Store (EBS)",
+    name: "EBS",
     category: SkillCategoriesEnum.CloudComputing,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [SkillDatabaseKeys.CloudComputing, SkillDatabaseKeys.Aws],
   },
   [SkillDatabaseKeys.AwsRelationalDatabaseService]: {
-    name: "Relational Database Service (RDS)",
+    name: "RDS",
     category: SkillCategoriesEnum.CloudComputing,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
@@ -1494,19 +1494,19 @@ const skillDatabaseMap: Database<SkillInterface> = {
     relatedSkills: [SkillDatabaseKeys.CloudComputing, SkillDatabaseKeys.Aws],
   },
   [SkillDatabaseKeys.AwsEc2]: {
-    name: "Elastic Compute Cloud (EC2)",
+    name: "EC2",
     category: SkillCategoriesEnum.CloudComputing,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [SkillDatabaseKeys.CloudComputing, SkillDatabaseKeys.Aws],
   },
   [SkillDatabaseKeys.AwsS3]: {
-    name: "Simple Storage Service (S3)",
+    name: "S3",
     category: SkillCategoriesEnum.CloudComputing,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [SkillDatabaseKeys.CloudComputing, SkillDatabaseKeys.Aws],
   },
   [SkillDatabaseKeys.AwsVcp]: {
-    name: "Virtual Private Cloud (VPC)",
+    name: "VPC",
     category: SkillCategoriesEnum.CloudComputing,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [SkillDatabaseKeys.CloudComputing, SkillDatabaseKeys.Aws],
@@ -1603,7 +1603,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
 
   [SkillDatabaseKeys.Gcp]: {
-    name: "Google Cloud Platform (GCP)",
+    name: "GCP",
     category: SkillCategoriesEnum.CloudComputing,
     skillType: SkillTypesEnum.Technology,
     relatedSkills: [
