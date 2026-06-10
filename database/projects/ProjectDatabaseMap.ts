@@ -978,6 +978,23 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Personal,
     archived: true,
   },
+  [ProjectDatabaseKeys.CommerzbankGenAiToOpenAiApiProxy]: {
+    name: "Commerzbank AI Proxy",
+    description: `
+      A proxy service that converts the internal GenAI API to OpenAI compatible API format with streaming and tool calls. 
+      This allows internal API to be used with industry standard AI tools and clients.
+      `,
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.FastApi,
+      SkillDatabaseKeys.ModelContextProtocol,
+      SkillDatabaseKeys.ArtificialIntelligence,
+    ],
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    type: ProjectTypeEnum.Professional,
+    relatedMaterials: [RoleDatabaseKeys.CommerzbankAiEngineer],
+    archived: true,
+  },
 
   //^ Web Dev + AI
   [ProjectDatabaseKeys.AiChatClient]: {

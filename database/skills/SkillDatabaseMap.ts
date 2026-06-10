@@ -19,6 +19,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
     relatedSkills: [
       SkillDatabaseKeys.Flask,
       SkillDatabaseKeys.Django,
+      SkillDatabaseKeys.FastApi,
       SkillDatabaseKeys.SimpleGui,
       SkillDatabaseKeys.SqlAlchemy,
       SkillDatabaseKeys.Symphony,
@@ -707,6 +708,20 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
   [SkillDatabaseKeys.Django]: {
     name: "Django",
+    category: SkillCategoriesEnum.BackEndWebDevelopment,
+    isMainSkill: true,
+    skillType: SkillTypesEnum.Technology,
+    relatedSkills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.Auth0,
+      SkillDatabaseKeys.SqlAlchemy,
+      SkillDatabaseKeys.CrossOriginResourceSharing,
+      SkillDatabaseKeys.Rest,
+      SkillDatabaseKeys.GraphQl,
+    ],
+  },
+  [SkillDatabaseKeys.FastApi]: {
+    name: "FastAPI",
     category: SkillCategoriesEnum.BackEndWebDevelopment,
     isMainSkill: true,
     skillType: SkillTypesEnum.Technology,
