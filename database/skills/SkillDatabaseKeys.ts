@@ -79,6 +79,7 @@ enum SkillDatabaseKeys {
   Inngest = "inngest",
   UserAuthentication = "user-authentication",
   CrossOriginResourceSharing = "cross-origin-resource-sharing",
+  FastApi = "fast-api",
 
   //^ Frontend Web Development
   ReactJs = "react",

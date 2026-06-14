@@ -21,6 +21,402 @@ import { PATHS } from "@/constants/paths";
  * The order skills is the order that is used when displaying the skills on the website.
  */
 const projectMap: Database<ProjectInterface> = {
+  //^ Full-Stack Projects
+  [ProjectDatabaseKeys.ForumDiscussions]: {
+    name: `Forum Discussions`,
+    description: `
+      For a final year university project, 
+      a social media platform was developed enabling users to form communities, 
+      start discussions, and comment on them.
+      Tested on CRUD and software engineering principles.
+      `,
+    repositoryURL: `https://github.com/mbeps/next_discussion_platform`,
+    deploymentURL: `https://forum-discussions.maruf-bepary.com/`,
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.ChakraUi,
+      SkillDatabaseKeys.Zod,
+      SkillDatabaseKeys.Firebase,
+      SkillDatabaseKeys.Firestore,
+      SkillDatabaseKeys.Jotai,
+      SkillDatabaseKeys.GitHubActions,
+      SkillDatabaseKeys.Gcp,
+      SkillDatabaseKeys.Html,
+      SkillDatabaseKeys.Css,
+      SkillDatabaseKeys.Vitest,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.ForumDiscussions).COVER,
+    relatedMaterials: [
+      ModuleDatabaseKeys.RHUL_FinalYearProject,
+      ProjectDatabaseKeys.FlaskForumBackend,
+    ],
+    type: ProjectTypeEnum.Academic,
+  },
+  [ProjectDatabaseKeys.CarDealership]: {
+    name: `Car Dealership`,
+    description: `
+      Car dealership website for a client.
+      Users can browse, search, and filter cars.
+      Admins can manage inventory, add new cars, and update existing listings, view reports, manage dealership settings, etc.
+      `,
+    repositoryURL: `https://github.com/mbeps/car-dealership`,
+    deploymentURL: `https://www.mn-ltd.uk/`,
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.ShadcnUi,
+      SkillDatabaseKeys.BaseUi,
+      SkillDatabaseKeys.Zod,
+      SkillDatabaseKeys.Supabase,
+      SkillDatabaseKeys.PostgreSql,
+      SkillDatabaseKeys.TypeOrm,
+      SkillDatabaseKeys.GitHubActions,
+      SkillDatabaseKeys.Gcp,
+      SkillDatabaseKeys.Html,
+      SkillDatabaseKeys.Css,
+      SkillDatabaseKeys.Vitest,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.CarDealership).COVER,
+    type: ProjectTypeEnum.Personal,
+  },
+  [ProjectDatabaseKeys.RealTimeMessaging]: {
+    name: `Real-Time Messaging`,
+    description: `
+      A custom back-end learning project involved creating a straightforward real-time messaging app. 
+      Users can chat one-on-one or in group chats, send text messages and images, view active users, etc.
+      `,
+    repositoryURL: `https://github.com/mbeps/ringmaster-messaging`,
+    deploymentURL: `https://messaging.maruf-bepary.com/`,
+
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.Zod,
+      SkillDatabaseKeys.AuthJs,
+      SkillDatabaseKeys.MongoDb,
+      SkillDatabaseKeys.Prisma,
+      SkillDatabaseKeys.Pusher,
+      SkillDatabaseKeys.Cloudinary,
+      SkillDatabaseKeys.Rest,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.HeadlessUi,
+      SkillDatabaseKeys.Zustand,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.GitHubActions,
+      SkillDatabaseKeys.Html,
+      SkillDatabaseKeys.Css,
+      SkillDatabaseKeys.Vitest,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.RealTimeMessaging).COVER,
+    type: ProjectTypeEnum.Personal,
+  },
+  [ProjectDatabaseKeys.MusicStreaming]: {
+    name: `Music Streaming`,
+    description: `
+      My first major project using Supabase was a basic music streaming site. 
+      Users can upload songs, search and listen to music, as well as like the songs they enjoy.
+      `,
+    repositoryURL: `https://github.com/mbeps/drumroll-music`,
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.Zod,
+      SkillDatabaseKeys.Supabase,
+      SkillDatabaseKeys.PostgreSql,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.ShadcnUi,
+      SkillDatabaseKeys.BaseUi,
+      SkillDatabaseKeys.Zustand,
+      SkillDatabaseKeys.GitHubActions,
+      SkillDatabaseKeys.Html,
+      SkillDatabaseKeys.Css,
+      SkillDatabaseKeys.Vitest,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.MusicStreaming).COVER,
+    type: ProjectTypeEnum.Personal,
+  },
+  [ProjectDatabaseKeys.RichTextNotes]: {
+    name: "Rich-Text Notes",
+    description: `
+      A note-taking app where users can sign up, log in, and reset passwords easily. 
+      It supports rich text formatting, image additions, and publishing notes publicly. 
+      Users alse organize notes into nested notebooks.`,
+    repositoryURL: `https://github.com/mbeps/joker-notes`,
+    deploymentURL: "https://notes.maruf-bepary.com/",
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.ShadcnUi,
+      SkillDatabaseKeys.BaseUi,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.Zod,
+      SkillDatabaseKeys.Zustand,
+      SkillDatabaseKeys.Convex,
+      SkillDatabaseKeys.ClerkAuth,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.EdgeStore,
+      SkillDatabaseKeys.GitHubActions,
+      SkillDatabaseKeys.Html,
+      SkillDatabaseKeys.Css,
+      SkillDatabaseKeys.Vitest,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.RichTextNotes).COVER,
+    type: ProjectTypeEnum.Personal,
+  },
+  [ProjectDatabaseKeys.CommerzbankAppStatus]: {
+    name: "Commerzbank App Status",
+    description: `
+      A web application that monitors and displays the status of various internal applications used by Commerzbank employees.
+      Users are able to create personal subscriptions groups with other members. 
+    `,
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.ShadcnUi,
+      SkillDatabaseKeys.BaseUi,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.MongoDb,
+      SkillDatabaseKeys.TypeOrm,
+      SkillDatabaseKeys.Zod,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Html,
+      SkillDatabaseKeys.Css,
+      SkillDatabaseKeys.Vitest,
+      SkillDatabaseKeys.Grafana,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.CommerzbankAppStatus)
+      .COVER,
+    type: ProjectTypeEnum.Professional,
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
+      ProjectDatabaseKeys.AuthenticationMicroService,
+      ProjectDatabaseKeys.EmailMicroService,
+      ProjectDatabaseKeys.LdapPermissionsMicroService,
+    ],
+  },
+  [ProjectDatabaseKeys.CommerzbankRates]: {
+    name: "Commerzbank Rates",
+    description: `
+      A web application that provides rates to business users and allows exporting and viewing historical data.
+      The data is sourced from Refinitiv and Bloomberg SFTP servers every day. 
+    `,
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.ShadcnUi,
+      SkillDatabaseKeys.RadixUi,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.Zustand,
+      SkillDatabaseKeys.Zod,
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.SpringDataLdap,
+      SkillDatabaseKeys.SpringDataMongoDb,
+      SkillDatabaseKeys.SpringSecurity,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.MongoDb,
+      SkillDatabaseKeys.DatabaseManagementSystems,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Html,
+      SkillDatabaseKeys.Css,
+      SkillDatabaseKeys.Vitest,
+      SkillDatabaseKeys.JUnit,
+      SkillDatabaseKeys.Grafana,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.CommerzbankRates).COVER,
+    type: ProjectTypeEnum.Professional,
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
+      ProjectDatabaseKeys.AuthenticationMicroService,
+      ProjectDatabaseKeys.EmailMicroService,
+      ProjectDatabaseKeys.LdapPermissionsMicroService,
+    ],
+  },
+
+  //^ Extra Web Development Projects
+  [ProjectDatabaseKeys.OnlineArticles]: {
+    name: `Online Articles`,
+    description: `
+      To learn Supabase, I developed a simple website for reading and writing articles. 
+      Users can read, create, and delete articles. 
+      This project paved the way for using Supabase in subsequent projects.
+      `,
+    repositoryURL: `https://github.com/mbeps/sideshow-articles`,
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.Supabase,
+      SkillDatabaseKeys.PostgreSql,
+      SkillDatabaseKeys.NextUi,
+      SkillDatabaseKeys.Html,
+      SkillDatabaseKeys.Css,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    archived: true,
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.OnlineArticles).COVER,
+    type: ProjectTypeEnum.Personal,
+  },
+  [ProjectDatabaseKeys.OAuthNextJsSpringBoot]: {
+    name: `OAuth Next.js & Spring Boot`,
+    description: `
+      A simple project to demonstrate OAuth (GitHub & Entra ID) authentication using Next.js for the front-end and Spring Boot for the back-end.
+      Uses CORS, JWTs, and secure cookie storage.
+      `,
+    repositoryURL: "https://github.com/mbeps/oauth-springboot-nextjs",
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.SpringSecurity,
+      SkillDatabaseKeys.SpringOAuth,
+      SkillDatabaseKeys.MongoDb,
+      SkillDatabaseKeys.SpringDataMongoDb,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.Rest,
+      SkillDatabaseKeys.Html,
+      SkillDatabaseKeys.Css,
+
+      SkillDatabaseKeys.UserAuthentication,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    archived: true,
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.OAuthNextJsSpringBoot)
+      .COVER,
+    type: ProjectTypeEnum.Personal,
+    relatedMaterials: [
+      BlogDatabaseKeys.AuthenticationSessionManagement,
+      BlogDatabaseKeys.CrossOriginResourceSharing,
+      BlogDatabaseKeys.Backend,
+      ProjectDatabaseKeys.AuthenticationMicroService,
+    ],
+  },
+  [ProjectDatabaseKeys.NextJsAuthJsTemplate]: {
+    name: `Auth.JS Template`,
+    description: `
+      A project demonstrating advanced authentication including email/password, password reset, OAuth providers, and multi-factor authentication.
+      `,
+    repositoryURL: "https://github.com/mbeps/nextjs-authjs",
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.AuthJs,
+      SkillDatabaseKeys.PostgreSql,
+      SkillDatabaseKeys.Prisma,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.Rest,
+      SkillDatabaseKeys.Html,
+      SkillDatabaseKeys.Css,
+
+      SkillDatabaseKeys.UserAuthentication,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    archived: true,
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.NextJsAuthJsTemplate)
+      .COVER,
+    type: ProjectTypeEnum.Personal,
+    relatedMaterials: [
+      BlogDatabaseKeys.AuthenticationSessionManagement,
+      BlogDatabaseKeys.CrossOriginResourceSharing,
+      BlogDatabaseKeys.Backend,
+    ],
+  },
+
+  [ProjectDatabaseKeys.NextJsBetterAuthTemplate]: {
+    name: `Better Auth Template`,
+    description: `
+      A project demonstrating advanced authentication including email/password, password reset, OAuth providers, and multi-factor authentication, passkey authentication, session management and role management.
+      `,
+    repositoryURL: "https://github.com/mbeps/nextjs-betterauth-authentication",
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.BetterAuth,
+      SkillDatabaseKeys.PostgreSql,
+      SkillDatabaseKeys.Drizzle,
+      SkillDatabaseKeys.Prisma,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.Rest,
+      SkillDatabaseKeys.Html,
+      SkillDatabaseKeys.Css,
+
+      SkillDatabaseKeys.UserAuthentication,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    archived: true,
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.NextJsBetterAuthTemplate)
+      .COVER,
+    type: ProjectTypeEnum.Personal,
+    relatedMaterials: [
+      BlogDatabaseKeys.AuthenticationSessionManagement,
+      BlogDatabaseKeys.CrossOriginResourceSharing,
+      BlogDatabaseKeys.Backend,
+    ],
+  },
+  [ProjectDatabaseKeys.Noodle]: {
+    name: `Noodle`,
+    description: `
+      In my second year of university, my group and I started an open-source learning platform project, introducing me to full-stack development. 
+      This app helps students manage tasks, assignments, exams, and store notes and resources.
+      `,
+    repositoryURL: `https://github.com/ixahmedxi/noodle`,
+    deploymentURL: `https://noodle.run/`,
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.ShadcnUi,
+      SkillDatabaseKeys.RadixUi,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.MySql,
+      SkillDatabaseKeys.Prisma,
+      SkillDatabaseKeys.Jest,
+      SkillDatabaseKeys.GitHubActions,
+      SkillDatabaseKeys.Html,
+      SkillDatabaseKeys.Css,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    archived: true,
+    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.Noodle).COVER,
+    type: ProjectTypeEnum.Academic,
+  },
+
   //^ Artificial Intelligence Projects
   [ProjectDatabaseKeys.AlignmentInLargeLanguageModels]: {
     name: "Alignment in LLMs",
@@ -582,6 +978,23 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Personal,
     archived: true,
   },
+  [ProjectDatabaseKeys.CommerzbankGenAiToOpenAiApiProxy]: {
+    name: "Commerzbank AI Proxy",
+    description: `
+      A proxy service that converts the internal GenAI API to OpenAI compatible API format with streaming and tool calls. 
+      This allows internal API to be used with industry standard AI tools and clients.
+      `,
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.FastApi,
+      SkillDatabaseKeys.ModelContextProtocol,
+      SkillDatabaseKeys.ArtificialIntelligence,
+    ],
+    category: ProjectCategoriesEnum.ArtificialIntelligence,
+    type: ProjectTypeEnum.Professional,
+    relatedMaterials: [RoleDatabaseKeys.CommerzbankAiEngineer],
+    archived: true,
+  },
 
   //^ Web Dev + AI
   [ProjectDatabaseKeys.AiChatClient]: {
@@ -716,402 +1129,6 @@ const projectMap: Database<ProjectInterface> = {
     repositoryURL: "https://github.com/mbeps/quizmify",
     thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.AiQuizzes).COVER,
     type: ProjectTypeEnum.Personal,
-  },
-
-  //^ Full-Stack Projects
-  [ProjectDatabaseKeys.ForumDiscussions]: {
-    name: `Forum Discussions`,
-    description: `
-      For a final year university project, 
-      a social media platform was developed enabling users to form communities, 
-      start discussions, and comment on them.
-      Tested on CRUD and software engineering principles.
-      `,
-    repositoryURL: `https://github.com/mbeps/next_discussion_platform`,
-    deploymentURL: `https://forum-discussions.maruf-bepary.com/`,
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.ChakraUi,
-      SkillDatabaseKeys.Zod,
-      SkillDatabaseKeys.Firebase,
-      SkillDatabaseKeys.Firestore,
-      SkillDatabaseKeys.Jotai,
-      SkillDatabaseKeys.GitHubActions,
-      SkillDatabaseKeys.Gcp,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.Vitest,
-    ],
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.ForumDiscussions).COVER,
-    relatedMaterials: [
-      ModuleDatabaseKeys.RHUL_FinalYearProject,
-      ProjectDatabaseKeys.FlaskForumBackend,
-    ],
-    type: ProjectTypeEnum.Academic,
-  },
-  [ProjectDatabaseKeys.CarDealership]: {
-    name: `Car Dealership`,
-    description: `
-      Car dealership website for a client.
-      Users can browse, search, and filter cars.
-      Admins can manage inventory, add new cars, and update existing listings, view reports, manage dealership settings, etc.
-      `,
-    repositoryURL: `https://github.com/mbeps/car-dealership`,
-    deploymentURL: `https://www.mn-ltd.uk/`,
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.ShadcnUi,
-      SkillDatabaseKeys.BaseUi,
-      SkillDatabaseKeys.Zod,
-      SkillDatabaseKeys.Supabase,
-      SkillDatabaseKeys.PostgreSql,
-      SkillDatabaseKeys.TypeOrm,
-      SkillDatabaseKeys.GitHubActions,
-      SkillDatabaseKeys.Gcp,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.Vitest,
-    ],
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.CarDealership).COVER,
-    type: ProjectTypeEnum.Personal,
-  },
-  [ProjectDatabaseKeys.RealTimeMessaging]: {
-    name: `Real-Time Messaging`,
-    description: `
-      A custom back-end learning project involved creating a straightforward real-time messaging app. 
-      Users can chat one-on-one or in group chats, send text messages and images, view active users, etc.
-      `,
-    repositoryURL: `https://github.com/mbeps/ringmaster-messaging`,
-    deploymentURL: `https://messaging.maruf-bepary.com/`,
-
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.Zod,
-      SkillDatabaseKeys.AuthJs,
-      SkillDatabaseKeys.MongoDb,
-      SkillDatabaseKeys.Prisma,
-      SkillDatabaseKeys.Pusher,
-      SkillDatabaseKeys.Cloudinary,
-      SkillDatabaseKeys.Rest,
-      SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.HeadlessUi,
-      SkillDatabaseKeys.Zustand,
-      SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.GitHubActions,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.Vitest,
-    ],
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.RealTimeMessaging).COVER,
-    type: ProjectTypeEnum.Personal,
-  },
-  [ProjectDatabaseKeys.MusicStreaming]: {
-    name: `Music Streaming`,
-    description: `
-      My first major project using Supabase was a basic music streaming site. 
-      Users can upload songs, search and listen to music, as well as like the songs they enjoy.
-      `,
-    repositoryURL: `https://github.com/mbeps/drumroll-music`,
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.Zod,
-      SkillDatabaseKeys.Supabase,
-      SkillDatabaseKeys.PostgreSql,
-      SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.ShadcnUi,
-      SkillDatabaseKeys.BaseUi,
-      SkillDatabaseKeys.Zustand,
-      SkillDatabaseKeys.GitHubActions,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.Vitest,
-    ],
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.MusicStreaming).COVER,
-    type: ProjectTypeEnum.Personal,
-  },
-  [ProjectDatabaseKeys.RichTextNotes]: {
-    name: "Rich-Text Notes",
-    description: `
-      A note-taking app where users can sign up, log in, and reset passwords easily. 
-      It supports rich text formatting, image additions, and publishing notes publicly. 
-      Users alse organize notes into nested notebooks.`,
-    repositoryURL: `https://github.com/mbeps/joker-notes`,
-    deploymentURL: "https://notes.maruf-bepary.com/",
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.ShadcnUi,
-      SkillDatabaseKeys.BaseUi,
-      SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.Zod,
-      SkillDatabaseKeys.Zustand,
-      SkillDatabaseKeys.Convex,
-      SkillDatabaseKeys.ClerkAuth,
-      SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.EdgeStore,
-      SkillDatabaseKeys.GitHubActions,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.Vitest,
-    ],
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.RichTextNotes).COVER,
-    type: ProjectTypeEnum.Personal,
-  },
-  [ProjectDatabaseKeys.CommerzbankAppStatus]: {
-    name: "Commerzbank App Status",
-    description: `
-      A web application that monitors and displays the status of various internal applications used by Commerzbank employees.
-      Users are able to create personal subscriptions groups with other members. 
-    `,
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.ShadcnUi,
-      SkillDatabaseKeys.BaseUi,
-      SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.MongoDb,
-      SkillDatabaseKeys.TypeOrm,
-      SkillDatabaseKeys.Zod,
-      SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.DatabaseManagementSystems,
-      SkillDatabaseKeys.Databases,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.Vitest,
-      SkillDatabaseKeys.Grafana,
-    ],
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.CommerzbankAppStatus)
-      .COVER,
-    type: ProjectTypeEnum.Professional,
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      ProjectDatabaseKeys.AuthenticationMicroService,
-      ProjectDatabaseKeys.EmailMicroService,
-      ProjectDatabaseKeys.LdapPermissionsMicroService,
-    ],
-  },
-  [ProjectDatabaseKeys.CommerzbankRates]: {
-    name: "Commerzbank Rates",
-    description: `
-      A web application that provides rates to business users and allows exporting and viewing historical data.
-      The data is sourced from Refinitiv and Bloomberg SFTP servers every day. 
-    `,
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.ShadcnUi,
-      SkillDatabaseKeys.RadixUi,
-      SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.Zustand,
-      SkillDatabaseKeys.Zod,
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.SpringDataLdap,
-      SkillDatabaseKeys.SpringDataJpa,
-      SkillDatabaseKeys.SpringSecurity,
-      SkillDatabaseKeys.Docker,
-      SkillDatabaseKeys.MongoDb,
-      SkillDatabaseKeys.DatabaseManagementSystems,
-      SkillDatabaseKeys.Databases,
-      SkillDatabaseKeys.TeamCity,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.Vitest,
-      SkillDatabaseKeys.JUnit,
-      SkillDatabaseKeys.Grafana,
-    ],
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.CommerzbankRates).COVER,
-    type: ProjectTypeEnum.Professional,
-    relatedMaterials: [
-      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      ProjectDatabaseKeys.AuthenticationMicroService,
-      ProjectDatabaseKeys.EmailMicroService,
-      ProjectDatabaseKeys.LdapPermissionsMicroService,
-    ],
-  },
-
-  //^ Extra Web Development Projects
-  [ProjectDatabaseKeys.OnlineArticles]: {
-    name: `Online Articles`,
-    description: `
-      To learn Supabase, I developed a simple website for reading and writing articles. 
-      Users can read, create, and delete articles. 
-      This project paved the way for using Supabase in subsequent projects.
-      `,
-    repositoryURL: `https://github.com/mbeps/sideshow-articles`,
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.Supabase,
-      SkillDatabaseKeys.PostgreSql,
-      SkillDatabaseKeys.NextUi,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-    ],
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    archived: true,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.OnlineArticles).COVER,
-    type: ProjectTypeEnum.Personal,
-  },
-  [ProjectDatabaseKeys.OAuthNextJsSpringBoot]: {
-    name: `OAuth Next.js & Spring Boot`,
-    description: `
-      A simple project to demonstrate OAuth (GitHub & Entra ID) authentication using Next.js for the front-end and Spring Boot for the back-end.
-      Uses CORS, JWTs, and secure cookie storage.
-      `,
-    repositoryURL: "https://github.com/mbeps/oauth-springboot-nextjs",
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.Java,
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.SpringBoot,
-      SkillDatabaseKeys.SpringSecurity,
-      SkillDatabaseKeys.SpringOAuth,
-      SkillDatabaseKeys.MongoDb,
-      SkillDatabaseKeys.SpringDataMongoDb,
-      SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.Rest,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-
-      SkillDatabaseKeys.UserAuthentication,
-    ],
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    archived: true,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.OAuthNextJsSpringBoot)
-      .COVER,
-    type: ProjectTypeEnum.Personal,
-    relatedMaterials: [
-      BlogDatabaseKeys.AuthenticationSessionManagement,
-      BlogDatabaseKeys.CrossOriginResourceSharing,
-      BlogDatabaseKeys.Backend,
-      ProjectDatabaseKeys.AuthenticationMicroService,
-    ],
-  },
-  [ProjectDatabaseKeys.NextJsAuthJsTemplate]: {
-    name: `Auth.JS Template`,
-    description: `
-      A project demonstrating advanced authentication including email/password, password reset, OAuth providers, and multi-factor authentication.
-      `,
-    repositoryURL: "https://github.com/mbeps/nextjs-authjs",
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.AuthJs,
-      SkillDatabaseKeys.PostgreSql,
-      SkillDatabaseKeys.Prisma,
-      SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.Rest,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-
-      SkillDatabaseKeys.UserAuthentication,
-    ],
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    archived: true,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.NextJsAuthJsTemplate)
-      .COVER,
-    type: ProjectTypeEnum.Personal,
-    relatedMaterials: [
-      BlogDatabaseKeys.AuthenticationSessionManagement,
-      BlogDatabaseKeys.CrossOriginResourceSharing,
-      BlogDatabaseKeys.Backend,
-    ],
-  },
-
-  [ProjectDatabaseKeys.NextJsBetterAuthTemplate]: {
-    name: `Better Auth Template`,
-    description: `
-      A project demonstrating advanced authentication including email/password, password reset, OAuth providers, and multi-factor authentication, passkey authentication, session management and role management.
-      `,
-    repositoryURL: "https://github.com/mbeps/nextjs-betterauth-authentication",
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.BetterAuth,
-      SkillDatabaseKeys.PostgreSql,
-      SkillDatabaseKeys.Drizzle,
-      SkillDatabaseKeys.Prisma,
-      SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.Rest,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-
-      SkillDatabaseKeys.UserAuthentication,
-    ],
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    archived: true,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.NextJsBetterAuthTemplate)
-      .COVER,
-    type: ProjectTypeEnum.Personal,
-    relatedMaterials: [
-      BlogDatabaseKeys.AuthenticationSessionManagement,
-      BlogDatabaseKeys.CrossOriginResourceSharing,
-      BlogDatabaseKeys.Backend,
-    ],
-  },
-  [ProjectDatabaseKeys.Noodle]: {
-    name: `Noodle`,
-    description: `
-      In my second year of university, my group and I started an open-source learning platform project, introducing me to full-stack development. 
-      This app helps students manage tasks, assignments, exams, and store notes and resources.
-      `,
-    repositoryURL: `https://github.com/ixahmedxi/noodle`,
-    deploymentURL: `https://noodle.run/`,
-    skills: [
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.NextJs,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.ShadcnUi,
-      SkillDatabaseKeys.RadixUi,
-      SkillDatabaseKeys.TailwindCSS,
-      SkillDatabaseKeys.MySql,
-      SkillDatabaseKeys.Prisma,
-      SkillDatabaseKeys.Jest,
-      SkillDatabaseKeys.GitHubActions,
-      SkillDatabaseKeys.Html,
-      SkillDatabaseKeys.Css,
-    ],
-    category: ProjectCategoriesEnum.FullStackWebDevelopment,
-    archived: true,
-    thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.Noodle).COVER,
-    type: ProjectTypeEnum.Academic,
   },
 
   //^ Backend Web Development Projects
@@ -1360,6 +1377,7 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [
       RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+      ProjectDatabaseKeys.MarkdownToMessageMLConverter,
     ],
     type: ProjectTypeEnum.Professional,
     archived: true,
@@ -1606,6 +1624,7 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
     relatedMaterials: [
       ProjectDatabaseKeys.SymphonyCobaGPTBot,
+      ProjectDatabaseKeys.SymphonyBlogBot,
       RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
     ],
   },
