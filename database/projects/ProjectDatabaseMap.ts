@@ -236,7 +236,7 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.SpringBoot,
       SkillDatabaseKeys.SpringDataLdap,
-      SkillDatabaseKeys.SpringDataJpa,
+      SkillDatabaseKeys.SpringDataMongoDb,
       SkillDatabaseKeys.SpringSecurity,
       SkillDatabaseKeys.Docker,
       SkillDatabaseKeys.MongoDb,
@@ -1377,6 +1377,7 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [
       RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
       CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+      ProjectDatabaseKeys.MarkdownToMessageMLConverter,
     ],
     type: ProjectTypeEnum.Professional,
     archived: true,
@@ -1623,6 +1624,7 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
     relatedMaterials: [
       ProjectDatabaseKeys.SymphonyCobaGPTBot,
+      ProjectDatabaseKeys.SymphonyBlogBot,
       RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
     ],
   },
