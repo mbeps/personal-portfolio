@@ -6,6 +6,7 @@ import InlineMath from "./InlineMath";
 import DisplayMath from "./DisplayMath";
 import Mermaid from "./Mermaid";
 import CodeBlock from "./CodeBlock";
+import HtmlRender from "./HtmlRender";
 
 type ReaderProps = {
   content: string | undefined;
@@ -59,10 +60,21 @@ const Reader: React.FC<ReaderProps> = ({ content, size = "lg" }) => {
     // Keep track of LaTeX blocks and Mermaid diagrams we extract
     const mathBlocks: { [key: string]: string } = {};
     const mermaidBlocks: { [key: string]: string } = {};
+    const htmlBlocks: { [key: string]: string } = {};
     let blockCount: number = 0;
 
-    // First, extract Mermaid code blocks (```mermaid...```)
+    // First, extract HtmlRender code blocks (```html-render...```)
     let processedContent: string = content.replace(
+      /```html-render\n([\s\S]*?)```/g,
+      (match, htmlCode) => {
+        const placeholder = `HTMLBLOCK_${blockCount++}`;
+        htmlBlocks[placeholder] = htmlCode.trim();
+        return `<HtmlRender>${placeholder}</HtmlRender>`;
+      },
+    );
+
+    // Then, extract Mermaid code blocks (```mermaid...```)
+    processedContent = processedContent.replace(
       /```mermaid\n([\s\S]*?)```/g,
       (match, mermaidCode) => {
         const placeholder = `MERMAIDBLOCK_${blockCount++}`;
@@ -99,6 +111,13 @@ const Reader: React.FC<ReaderProps> = ({ content, size = "lg" }) => {
             ...headingOverrides,
             code: {
               component: CodeBlock,
+            },
+            HtmlRender: {
+              component: ({ children }: { children: string }) => {
+                const placeholder = String(children);
+                const htmlCode = htmlBlocks[placeholder] || placeholder;
+                return <HtmlRender html={htmlCode} />;
+              },
             },
             Mermaid: {
               component: ({ children }: { children: string }) => {
