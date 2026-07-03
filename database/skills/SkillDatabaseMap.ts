@@ -62,6 +62,8 @@ const skillDatabaseMap: Database<SkillInterface> = {
     relatedSkills: [
       SkillDatabaseKeys.ClerkAuth,
       SkillDatabaseKeys.AuthJs,
+      SkillDatabaseKeys.BetterAuth,
+      SkillDatabaseKeys.Prisma,
       SkillDatabaseKeys.ExpressJs,
       SkillDatabaseKeys.NextJs,
       SkillDatabaseKeys.ReactJs,
@@ -82,6 +84,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
     relatedSkills: [
       SkillDatabaseKeys.ClerkAuth,
       SkillDatabaseKeys.AuthJs,
+      SkillDatabaseKeys.BetterAuth,
       SkillDatabaseKeys.ExpressJs,
       SkillDatabaseKeys.NextJs,
       SkillDatabaseKeys.ReactJs,
@@ -381,6 +384,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.Java,
       SkillDatabaseKeys.Kotlin,
+      SkillDatabaseKeys.VercelAiSdk,
     ],
   },
   [SkillDatabaseKeys.RetrievalAugmentedGeneration]: {
@@ -418,6 +422,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.DataScience,
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.ReinforcementLearning,
+      SkillDatabaseKeys.VercelAiSdk,
     ],
   },
   [SkillDatabaseKeys.LargeLanguageModels]: {
@@ -439,6 +444,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.DeepLearning,
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.VercelAiSdk,
     ],
   },
   [SkillDatabaseKeys.VercelAiSdk]: {
@@ -475,6 +481,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.DeepLearning,
       SkillDatabaseKeys.ArtificialIntelligence,
       SkillDatabaseKeys.NeuralNetworks,
+      SkillDatabaseKeys.VercelAiSdk,
     ],
   },
   [SkillDatabaseKeys.FineTuning]: {
@@ -567,6 +574,8 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.UserCentricDesign,
       SkillDatabaseKeys.AuthJs,
       SkillDatabaseKeys.Auth0,
+      SkillDatabaseKeys.BetterAuth,
+      SkillDatabaseKeys.ClerkAuth,
     ],
   },
 
@@ -668,7 +677,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
     name: "Stripe",
     category: SkillCategoriesEnum.BackEndWebDevelopment,
     skillType: SkillTypesEnum.Technology,
-    relatedSkills: [],
+    relatedSkills: [SkillDatabaseKeys.UserCentricDesign],
   },
   [SkillDatabaseKeys.Polar]: {
     name: "Polar Pay",
@@ -684,6 +693,9 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.Auth0,
+      SkillDatabaseKeys.ClerkAuth,
+      SkillDatabaseKeys.AuthJs,
+      SkillDatabaseKeys.BetterAuth,
       SkillDatabaseKeys.Mongoose,
       SkillDatabaseKeys.Drizzle,
       SkillDatabaseKeys.Rest,
@@ -905,6 +917,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.GraphQl,
       SkillDatabaseKeys.NextJs,
       SkillDatabaseKeys.ExpressJs,
+      SkillDatabaseKeys.BetterAuth,
       SkillDatabaseKeys.Flask,
       SkillDatabaseKeys.Django,
       SkillDatabaseKeys.SpringBoot,
@@ -949,10 +962,17 @@ const skillDatabaseMap: Database<SkillInterface> = {
     relatedSkills: [
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.Auth0,
+      SkillDatabaseKeys.ClerkAuth,
       SkillDatabaseKeys.Zod,
       SkillDatabaseKeys.Jotai,
       SkillDatabaseKeys.Zustand,
       SkillDatabaseKeys.UserCentricDesign,
+      SkillDatabaseKeys.NextUi,
+      SkillDatabaseKeys.ShadcnUi,
+      SkillDatabaseKeys.RadixUi,
+      SkillDatabaseKeys.HeadlessUi,
+      SkillDatabaseKeys.BaseUi,
     ],
   },
   [SkillDatabaseKeys.Html]: {
@@ -1055,6 +1075,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.Databases,
       SkillDatabaseKeys.NonRelationalDatabases,
       SkillDatabaseKeys.DatabaseIndexing,
+      SkillDatabaseKeys.Prisma,
     ],
   },
   [SkillDatabaseKeys.Firestore]: {
@@ -1091,6 +1112,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.RelationalDatabases,
       SkillDatabaseKeys.Normalisation,
       SkillDatabaseKeys.DatabaseIndexing,
+      SkillDatabaseKeys.Prisma,
     ],
   },
   [SkillDatabaseKeys.MySql]: {
@@ -1104,6 +1126,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.RelationalDatabases,
       SkillDatabaseKeys.Normalisation,
       SkillDatabaseKeys.DatabaseIndexing,
+      SkillDatabaseKeys.Prisma,
     ],
   },
   [SkillDatabaseKeys.SqLite]: {
@@ -1117,6 +1140,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.RelationalDatabases,
       SkillDatabaseKeys.Normalisation,
       SkillDatabaseKeys.DatabaseIndexing,
+      SkillDatabaseKeys.Prisma,
     ],
   },
   [SkillDatabaseKeys.Redis]: {
@@ -1946,6 +1970,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.ScikitLearn,
 
       SkillDatabaseKeys.ComputerVision,
+      SkillDatabaseKeys.VercelAiSdk,
     ],
   },
   [SkillDatabaseKeys.DataScience]: {
@@ -2045,6 +2070,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.PostgreSql,
       SkillDatabaseKeys.MySql,
       SkillDatabaseKeys.SqLite,
+      SkillDatabaseKeys.Drizzle,
     ],
   },
 
@@ -2204,6 +2230,7 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.Auth0,
       SkillDatabaseKeys.ClerkAuth,
       SkillDatabaseKeys.AuthJs,
+      SkillDatabaseKeys.BetterAuth,
     ],
   },
   [SkillDatabaseKeys.UserCentricDesign]: {
