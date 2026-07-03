@@ -128,7 +128,7 @@ const projectMap: Database<ProjectInterface> = {
       Users can upload songs, search and listen to music, as well as like the songs they enjoy.
       `,
     repositoryURL: `https://github.com/mbeps/drumroll-music`,
-    deploymentURL: "https://www.music.maruf-bepary.com/",
+    deploymentURL: "https://music.maruf-bepary.com/",
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
