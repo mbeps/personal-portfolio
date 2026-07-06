@@ -17,7 +17,7 @@ const socialLinks: SocialLinkInterface[] = [
   },
   {
     name: "Email",
-    link: "mailto:bepary71@gmail.com",
+    link: "mailto:maruf.h.bepary@gmail.com",
     IconComponent: AiOutlineMail,
   },
 ];
