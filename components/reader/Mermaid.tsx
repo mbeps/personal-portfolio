@@ -82,7 +82,7 @@ const Mermaid: React.FC<MermaidProps> = ({ chart }) => {
   if (!isMounted) {
     return (
       <span className="mermaid-container block my-6">
-        <span className="animate-pulse bg-gray-200 dark:bg-gray-800 h-64 rounded-lg block" />
+        <span className="animate-pulse bg-gray-200 h-64 rounded-lg block" />
       </span>
     );
   }

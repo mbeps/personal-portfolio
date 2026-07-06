@@ -35,3 +35,6 @@ yarn-error.log*
 next-env.d.ts
 TODO.txt
 .github/copilot-instructions.md
+docs/**
+.github/instructions/convensions.instructions.md
+graphify-out/**
