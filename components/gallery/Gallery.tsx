@@ -32,12 +32,22 @@ interface GalleryProps {
  * @see Tabs https://ui.shadcn.com/docs/components/tabs
  */
 const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
+  const [activeTab, setActiveTab] = React.useState(
+    images && images.length > 0 ? "images" : "demo",
+  );
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
 
   const isMobile: boolean = useMediaQuery("(max-width: 768px)");
   const isMounted: boolean = useIsMounted();
+
+  const handleTabChange = (value: string) => {
+    setActiveTab(value);
+    setApi(undefined);
+    setCurrent(0);
+    setCount(0);
+  };
 
   useEffect(() => {
     if (!api) {
@@ -66,36 +76,41 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
       {/* Media Preview */}
       <div className="w-full">
         <Tabs
-          defaultValue={images && images.length > 0 ? "images" : "demo"}
+          value={activeTab}
+          onValueChange={handleTabChange}
           className="w-full"
         >
           {/* Images */}
           <TabsContent value="images" className="w-full">
-            <Carousel
-              setApi={setApi}
-              className="bg-neutral-100 dark:bg-neutral-950 rounded-xl transition-colors duration-700"
-            >
-              <CarouselContent>
-                {Array.from({ length: images?.length ?? 0 }).map((_, index) => (
-                  <CarouselItem key={index}>
-                    <Image
-                      key={index}
-                      src={images?.[index] ?? ""}
-                      alt={`Gallery image ${index + 1}`}
-                      quality={90}
-                      preload={true}
-                      className="w-full h-[60vh] object-contain rounded-xl bg-neutral-100 dark:bg-neutral-950 transition-colors duration-700 p-2"
-                    />
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              {!isMobile && (
-                <>
-                  <CarouselPrevious />
-                  <CarouselNext />
-                </>
-              )}
-            </Carousel>
+            {activeTab === "images" && (
+              <Carousel
+                setApi={setApi}
+                className="bg-neutral-100 dark:bg-neutral-950 rounded-xl transition-colors duration-700"
+              >
+                <CarouselContent>
+                  {Array.from({ length: images?.length ?? 0 }).map(
+                    (_, index) => (
+                      <CarouselItem key={index}>
+                        <Image
+                          key={index}
+                          src={images?.[index] ?? ""}
+                          alt={`Gallery image ${index + 1}`}
+                          quality={90}
+                          preload={true}
+                          className="w-full h-[60vh] object-contain rounded-xl bg-neutral-100 dark:bg-neutral-950 transition-colors duration-700 p-2"
+                        />
+                      </CarouselItem>
+                    ),
+                  )}
+                </CarouselContent>
+                {!isMobile && (
+                  <>
+                    <CarouselPrevious />
+                    <CarouselNext />
+                  </>
+                )}
+              </Carousel>
+            )}
             <div className="py-2 text-center text-sm text-muted-foreground">
               Slide {current} of {count}
             </div>
@@ -103,24 +118,31 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
 
           {/* Videos */}
           <TabsContent value="demo" className="w-full">
-            <Carousel className="bg-neutral-100 dark:bg-neutral-950 rounded-xl transition-colors duration-700">
-              <CarouselContent>
-                {Array.from({ length: videos?.length ?? 0 }).map((_, index) => (
-                  <CarouselItem key={index}>
-                    <VideoPlayer
-                      src={videos?.[index] ?? ""}
-                      className="w-full h-[60vh] object-contain rounded-xl bg-neutral-100 dark:bg-neutral-950 transition-colors duration-700 p-2"
-                    />
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              {!isMobile && (
-                <>
-                  <CarouselPrevious />
-                  <CarouselNext />
-                </>
-              )}
-            </Carousel>
+            {activeTab === "demo" && (
+              <Carousel
+                setApi={setApi}
+                className="bg-neutral-100 dark:bg-neutral-950 rounded-xl transition-colors duration-700"
+              >
+                <CarouselContent>
+                  {Array.from({ length: videos?.length ?? 0 }).map(
+                    (_, index) => (
+                      <CarouselItem key={index}>
+                        <VideoPlayer
+                          src={videos?.[index] ?? ""}
+                          className="w-full h-[60vh] object-contain rounded-xl bg-neutral-100 dark:bg-neutral-950 transition-colors duration-700 p-2"
+                        />
+                      </CarouselItem>
+                    ),
+                  )}
+                </CarouselContent>
+                {!isMobile && (
+                  <>
+                    <CarouselPrevious />
+                    <CarouselNext />
+                  </>
+                )}
+              </Carousel>
+            )}
             <div className="py-2 text-center text-sm text-muted-foreground">
               Slide {current} of {count}
             </div>
