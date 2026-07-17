@@ -45,16 +45,16 @@ const CvItemSkills: React.FC<CvItemSkillsProps> = ({
 
   return (
     <div className="mt-3">
-      <h4 className="text-lg font-bold text-neutral-700 dark:text-neutral-300 mb-2">
+      <h4 className="text-xs font-bold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-2">
         Skills
       </h4>
       <div className="space-y-1">
         {skillGroups.map((group) => (
           <div key={group.title} className="flex flex-col md:flex-row">
-            <span className="text-lg font-semibold text-neutral-700 dark:text-neutral-300 w-full md:w-1/3 mb-1 md:mb-0">
+            <span className="text-base font-semibold text-neutral-800 dark:text-neutral-200 w-full md:w-1/3 mb-1 md:mb-0">
               {group.title}:
             </span>
-            <span className="text-lg text-neutral-600 dark:text-neutral-400 w-full md:w-2/3">
+            <span className="text-base text-neutral-600 dark:text-neutral-400 w-full md:w-2/3">
               {group.skills.join(", ")}
             </span>
           </div>
