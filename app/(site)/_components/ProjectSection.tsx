@@ -22,6 +22,7 @@ const ProjectsSection = () => {
     ProjectDatabaseKeys.AiChatClient,
     ProjectDatabaseKeys.AiWorkflowAutomations,
     ProjectDatabaseKeys.MusicStreaming,
+    ProjectDatabaseKeys.CarDealership,
     ProjectDatabaseKeys.RichTextNotes,
     ProjectDatabaseKeys.RealTimeMessaging,
     ProjectDatabaseKeys.CommerzbankAppStatus,
