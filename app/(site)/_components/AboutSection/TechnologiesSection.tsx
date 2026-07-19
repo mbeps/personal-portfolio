@@ -27,7 +27,7 @@ const TechnologiesSection: React.FC = () => {
   });
 
   const mainSkillSlugs: SkillDatabaseKeys[] = Object.keys(
-    mainSkills
+    mainSkills,
   ) as SkillDatabaseKeys[];
 
   /**
@@ -50,7 +50,7 @@ const TechnologiesSection: React.FC = () => {
    */
   const skillsToDisplay: SkillDatabaseKeys[] = filterCategoriesFromSkills(
     mainSkills,
-    ignoredCategories
+    ignoredCategories,
   );
 
   /**
@@ -61,7 +61,7 @@ const TechnologiesSection: React.FC = () => {
    */
   function firstNSkills(
     skillKeys: SkillDatabaseKeys[],
-    totalLimit: number
+    totalLimit: number,
   ): SkillDatabaseKeys[] {
     return skillKeys.slice(0, totalLimit);
   }
@@ -74,7 +74,7 @@ const TechnologiesSection: React.FC = () => {
    */
   function firstNSkillsPerCategory(
     skillKeys: SkillDatabaseKeys[],
-    limitPerCategory: number
+    limitPerCategory: number,
   ): SkillDatabaseKeys[] {
     const skillCategories: { [categoryName: string]: SkillDatabaseKeys[] } = {};
     let limitedSkillSlugs: SkillDatabaseKeys[] = [];
@@ -109,19 +109,19 @@ const TechnologiesSection: React.FC = () => {
   const manualSkillsList: SkillDatabaseKeys[] = [
     SkillDatabaseKeys.PyTorch,
     SkillDatabaseKeys.TensorFlow,
+    SkillDatabaseKeys.Transformers,
     SkillDatabaseKeys.ScikitLearn,
     SkillDatabaseKeys.NextJs,
     SkillDatabaseKeys.ReactJs,
     SkillDatabaseKeys.Flask,
-    SkillDatabaseKeys.Django,
+    SkillDatabaseKeys.FastApi,
     SkillDatabaseKeys.SpringBoot,
     SkillDatabaseKeys.Firebase,
     SkillDatabaseKeys.Supabase,
     SkillDatabaseKeys.ClerkAuth,
-    SkillDatabaseKeys.AuthJs,
+    SkillDatabaseKeys.BetterAuth,
     SkillDatabaseKeys.MongoDb,
     SkillDatabaseKeys.PostgreSql,
-    SkillDatabaseKeys.MySql,
     SkillDatabaseKeys.Docker,
   ];
 
