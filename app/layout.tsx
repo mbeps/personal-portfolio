@@ -33,7 +33,13 @@ const aboutContent: string | undefined = getMarkdownFromFileSystem(
 export const metadata: Metadata = {
   title: developerName,
   description: aboutContent || ROUTES.HOME.description,
-  icons: ["/manifest/icon512_maskable.png", "/manifest/icon512_rounded.png"],
+  icons: [
+    {
+      rel: "icon",
+      url: "/favicon.svg",
+      type: "image/svg+xml",
+    },
+  ],
   category: "Homepage",
   creator: developerName,
   keywords: subtitles,

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <!-- Vertical gradient from Red at top to Yellowish-Orange at bottom -->
+    <linearGradient id="redToOrange" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FF0000" />
+      <stop offset="100%" stop-color="#FFB800" />
+    </linearGradient>
+
+    <!-- Circular clip mask -->
+    <clipPath id="circleClip">
+      <circle cx="200" cy="200" r="180" />
+    </clipPath>
+  </defs>
+
+  <!-- Letter M clipped by the circular boundary -->
+  <g clip-path="url(#circleClip)">
+    <path 
+      d="M 20,20 L 105,20 L 200,175 L 295,20 L 380,20 L 380,380 L 300,380 L 300,165 L 200,310 L 100,165 L 100,380 L 20,380 Z" 
+      fill="url(#redToOrange)" 
+    />
+  </g>
+</svg>
+
