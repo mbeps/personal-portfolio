@@ -20,20 +20,6 @@ const companiesMap: Database<CompanyInterface> = {
     website: "https://www.linkedin.com/company/rhul-dev/",
     logo: PATHS.COMPANY.LOGO(CompanyDatabaseKeys.GoogleRHULDevelopersClub),
   },
-  [CompanyDatabaseKeys.AJTuitionCentre]: {
-    name: "AJ Tuition Centre",
-    location: "London, UK",
-    positions: [RoleDatabaseKeys.AjTuitionCentreTutor],
-    website: "https://www.ajlearning.co.uk/",
-    logo: PATHS.COMPANY.LOGO(CompanyDatabaseKeys.AJTuitionCentre),
-  },
-  [CompanyDatabaseKeys.Madhus]: {
-    name: "Madhu's",
-    location: "London, UK",
-    website: "https://www.madhus.co.uk/",
-    positions: [RoleDatabaseKeys.MadhusTeamLeader],
-    logo: PATHS.COMPANY.LOGO(CompanyDatabaseKeys.Madhus),
-  },
   [CompanyDatabaseKeys.OpenSource]: {
     name: "Open Source",
     location: "Remote",

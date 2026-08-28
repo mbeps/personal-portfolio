@@ -77,8 +77,6 @@ export default function About() {
     RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
     RoleDatabaseKeys.GoogleRhulDevelopersClubSoftwareEngineer,
     RoleDatabaseKeys.OpenSourceContributor,
-    RoleDatabaseKeys.AjTuitionCentreTutor,
-    RoleDatabaseKeys.MadhusTeamLeader,
 
     ProjectDatabaseKeys.ForumDiscussions,
     ProjectDatabaseKeys.RealTimeMessaging,
