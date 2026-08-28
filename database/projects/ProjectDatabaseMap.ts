@@ -1366,8 +1366,6 @@ const projectMap: Database<ProjectInterface> = {
       SkillDatabaseKeys.Symphony,
       SkillDatabaseKeys.Html,
       SkillDatabaseKeys.Css,
-      SkillDatabaseKeys.MongoDb,
-      SkillDatabaseKeys.SpringDataMongoDb,
       SkillDatabaseKeys.JUnit,
       SkillDatabaseKeys.Mockito,
       SkillDatabaseKeys.TeamCity,
