@@ -11,8 +11,6 @@ enum RoleDatabaseKeys {
   CommerzbankFullStackSoftwareEngineer = "commerzbank-full-stack-software-engineer",
   CommerzbankAiAmbassador = "commerzbank-ai-ambassador",
   GoogleRhulDevelopersClubSoftwareEngineer = "google-x-rhul-developers-club-software-engineer",
-  AjTuitionCentreTutor = "aj-tuition-centre-tutor",
-  MadhusTeamLeader = "madhus-team-leader",
   OpenSourceContributor = "open-source-contributor",
 }
 
