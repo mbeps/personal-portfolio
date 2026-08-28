@@ -168,7 +168,7 @@ const rolesMap: Database<RoleInterface> = {
     ],
   },
   [RoleDatabaseKeys.GoogleRhulDevelopersClubSoftwareEngineer]: {
-    name: "Software Engineer Intern",
+    name: "Student Software Engineer",
     category: ExperienceCategoriesEnum.Software,
     type: ExperienceTypeEnum.Volunteering,
     skills: [
@@ -227,26 +227,6 @@ const rolesMap: Database<RoleInterface> = {
     relatedMaterials: [ProjectDatabaseKeys.Noodle],
     startDate: new ShortDate(2022, 9),
     endDate: new ShortDate(2023, 6),
-  },
-  [RoleDatabaseKeys.AjTuitionCentreTutor]: {
-    name: "Mathematics Tutor",
-    category: ExperienceCategoriesEnum.Other,
-    type: ExperienceTypeEnum.PartTime,
-    company: CompanyDatabaseKeys.AJTuitionCentre,
-    startDate: new ShortDate(2018, 9),
-    endDate: new ShortDate(2020, 3),
-    skills: [],
-    archived: true,
-  },
-  [RoleDatabaseKeys.MadhusTeamLeader]: {
-    name: "Team Leader",
-    category: ExperienceCategoriesEnum.Other,
-    type: ExperienceTypeEnum.PartTime,
-    company: CompanyDatabaseKeys.Madhus,
-    startDate: new ShortDate(2018, 6),
-    endDate: new ShortDate(2019, 12),
-    skills: [],
-    archived: true,
   },
 };
 
