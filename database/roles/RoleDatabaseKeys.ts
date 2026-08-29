@@ -9,7 +9,6 @@
 enum RoleDatabaseKeys {
   CommerzbankAiEngineer = "commerzbank-ai-engineer",
   CommerzbankFullStackSoftwareEngineer = "commerzbank-full-stack-software-engineer",
-  CommerzbankAiAmbassador = "commerzbank-ai-ambassador",
   GoogleRhulDevelopersClubSoftwareEngineer = "google-x-rhul-developers-club-software-engineer",
   OpenSourceContributor = "open-source-contributor",
 }
