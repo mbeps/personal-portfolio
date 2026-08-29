@@ -18,11 +18,11 @@ const ProjectsSection = () => {
    * In other words, only these projects will be displayed on the home page.
    */
   const displayedProjects: string[] = [
-    ProjectDatabaseKeys.ForumDiscussions,
     ProjectDatabaseKeys.AiChatClient,
     ProjectDatabaseKeys.AiWorkflowAutomations,
-    ProjectDatabaseKeys.MusicStreaming,
     ProjectDatabaseKeys.CarDealership,
+    ProjectDatabaseKeys.ForumDiscussions,
+    ProjectDatabaseKeys.MusicStreaming,
     ProjectDatabaseKeys.RichTextNotes,
     ProjectDatabaseKeys.RealTimeMessaging,
     ProjectDatabaseKeys.CommerzbankAppStatus,
