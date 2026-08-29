@@ -74,6 +74,7 @@ export default function About() {
 
   // Featured material
   const featuredMaterial: string[] = [
+    RoleDatabaseKeys.CommerzbankAiEngineer,
     RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
     RoleDatabaseKeys.GoogleRhulDevelopersClubSoftwareEngineer,
     RoleDatabaseKeys.OpenSourceContributor,
@@ -88,16 +89,14 @@ export default function About() {
 
     ProjectDatabaseKeys.AlignmentInLargeLanguageModels,
     ProjectDatabaseKeys.CustomNeuralNetworkCoursework,
-    ProjectDatabaseKeys.HandWrittenDigitClassifier,
     ProjectDatabaseKeys.LinuxGnomeMcp,
+    ProjectDatabaseKeys.ExcelSpreadsheetMCP,
 
     ProjectDatabaseKeys.SymphonyTranslateBot,
     ProjectDatabaseKeys.SymphonyPollBot,
     ProjectDatabaseKeys.SymphonyBlogBot,
     ProjectDatabaseKeys.SymphonyRssBot,
     ProjectDatabaseKeys.SymphonyWebhookBot,
-    ProjectDatabaseKeys.SymphonyBusinessHighlightsBot,
-    ProjectDatabaseKeys.SymphonyCobaGPTBot,
   ];
 
   return (

@@ -1,3 +1,3 @@
-I am a **software engineer** based in London with over 2 years of professional experience. I hold a Master's degree in **Artificial Intelligence** and a Bachelor's degree in **Computer Science**.
+I am an AI engineer based in London with nearly three years of enterprise experience. I hold a Master's degree in Artificial Intelligence and a Bachelor's degree in Computer Science.
 
-Currently, I work at Commerzbank, where I specialise in backend services, full-stack applications, and DevOps. My technical expertise spans software engineering, web development, machine learning, and DevOps. I have completed over 50 **projects** and actively contribute to **open-source** initiatives.
+I currently work at Commerzbank as an **AI Engineer**, specialising in agentic AI, RAG pipelines, and MCP servers. Before that, I was a **Full-Stack Software Engineer**, building backend services and full-stack applications. Outside work, I build my own **projects** and contribute to **open source**.
