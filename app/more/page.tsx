@@ -1,6 +1,6 @@
-import PageNavigationItem from "@/app/more/_components/PageNavigationItem";
-import Grid from "@/components/ui/Grid";
-import developerName from "@/constants/developerName";
+import PageNavigationItem from "@/app/more/_components/page-navigation-item";
+import Grid from "@/components/ui/grid";
+import developerName from "@/constants/developer-name";
 import { NAV_ITEMS, ROUTES } from "@/constants/routes";
 
 /**

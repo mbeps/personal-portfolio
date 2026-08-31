@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import { useNavbarStore } from "@/hooks/useNavbarStore";
+import { useNavbarStore } from "@/hooks/use-navbar-store";
 
 describe("useNavbarStore", () => {
   beforeEach(() => {

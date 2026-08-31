@@ -1,12 +1,12 @@
 import { describe, expect, test } from "vitest";
 import { NAV_ITEMS, ROUTES } from "@/constants/routes";
-import BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
-import CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
-import CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
-import ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
-import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
-import RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import BlogDatabaseKeys from "@/database/blogs/blog-database-keys";
+import CertificateDatabaseKeys from "@/database/certificates/certificate-database-keys";
+import CourseDatabaseKeys from "@/database/courses/course-database-keys";
+import ModuleDatabaseKeys from "@/database/modules/module-database-keys";
+import ProjectDatabaseKeys from "@/database/projects/project-database-keys";
+import RoleDatabaseKeys from "@/database/roles/role-database-keys";
+import SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 
 describe("ROUTES & NAV_ITEMS constants", () => {
   test("should provide valid static route configurations", () => {

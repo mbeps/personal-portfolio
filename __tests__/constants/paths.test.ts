@@ -1,11 +1,11 @@
 import { describe, expect, test } from "vitest";
 import { PATHS } from "@/constants/paths";
-import BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
-import CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
-import CompanyDatabaseKeys from "@/database/companies/CompanyDatabaseKeys";
-import CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
-import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
-import RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
+import BlogDatabaseKeys from "@/database/blogs/blog-database-keys";
+import CertificateDatabaseKeys from "@/database/certificates/certificate-database-keys";
+import CompanyDatabaseKeys from "@/database/companies/company-database-keys";
+import CourseDatabaseKeys from "@/database/courses/course-database-keys";
+import ProjectDatabaseKeys from "@/database/projects/project-database-keys";
+import RoleDatabaseKeys from "@/database/roles/role-database-keys";
 
 describe("PATHS constants", () => {
   test("should provide static path constants", () => {

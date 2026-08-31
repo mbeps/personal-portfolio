@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import useIsMounted from "@/hooks/useIsMounted";
+import useIsMounted from "@/hooks/use-is-mounted";
 
 const { mockUseState, mockUseEffect, getMockEffect, getSetStateSpy } =
   vi.hoisted(() => {

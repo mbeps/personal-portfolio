@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
-import type CourseInterface from "@/database/courses/CourseInterface";
-import type ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
-import type ModuleInterface from "@/database/modules/ModuleInterface";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import ModuleYearGroupsEnum from "@/enums/module/ModuleYearGroupsEnum";
-import type Database from "@/interfaces/Database";
-import aggregateCourseField from "@/lib/material/course/aggregate/aggregateCourseField";
+import type CourseInterface from "@/database/courses/course-interface";
+import type ModuleDatabaseKeys from "@/database/modules/module-database-keys";
+import type ModuleInterface from "@/database/modules/module-interface";
+import SkillDatabaseKeys from "@/database/skills/skill-database-keys";
+import ModuleYearGroupsEnum from "@/enums/module/module-year-groups-enum";
+import type Database from "@/interfaces/database";
+import aggregateCourseField from "@/lib/material/course/aggregate/aggregate-course-field";
 
 const mockModulesDatabase: Database<ModuleInterface> = {
   mod1: {

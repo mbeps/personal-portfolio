@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
-import type MaterialInterface from "@/database/materials/MaterialInterface";
-import MaterialTypeEnum from "@/enums/material/MaterialTypeEnum";
-import type Database from "@/interfaces/Database";
-import groupMaterialsByMaterialType from "@/lib/material/group/groupMaterialsByMaterialType";
+import type MaterialInterface from "@/database/materials/material-interface";
+import MaterialTypeEnum from "@/enums/material/material-type-enum";
+import type Database from "@/interfaces/database";
+import groupMaterialsByMaterialType from "@/lib/material/group/group-materials-by-material-type";
 
 const mockDatabase: Database<MaterialInterface> = {
   item1: { name: "Item 1", category: "Cat 1", skills: [] },
@@ -45,12 +45,12 @@ describe("groupMaterialsByMaterialType", () => {
     const result = groupMaterialsByMaterialType(
       [],
       mockDatabase,
-      MaterialTypeEnum.Articles,
+      MaterialTypeEnum.Blogs,
     );
 
     expect(result).toHaveLength(1);
     expect(result[0]).toEqual({
-      groupName: MaterialTypeEnum.Articles,
+      groupName: MaterialTypeEnum.Blogs,
       materialsKeys: [],
     });
   });
@@ -60,12 +60,12 @@ describe("groupMaterialsByMaterialType", () => {
     const result = groupMaterialsByMaterialType(
       keys,
       mockDatabase,
-      MaterialTypeEnum.Coursework,
+      MaterialTypeEnum.Courses,
     );
 
     expect(result).toHaveLength(1);
     expect(result[0]).toEqual({
-      groupName: MaterialTypeEnum.Coursework,
+      groupName: MaterialTypeEnum.Courses,
       materialsKeys: [],
     });
   });

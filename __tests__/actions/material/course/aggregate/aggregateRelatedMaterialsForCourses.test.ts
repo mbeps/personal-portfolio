@@ -1,13 +1,13 @@
 import { describe, expect, test } from "vitest";
-import CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
-import type CourseInterface from "@/database/courses/CourseInterface";
-import ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
-import type ModuleInterface from "@/database/modules/ModuleInterface";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import ModuleYearGroupsEnum from "@/enums/module/ModuleYearGroupsEnum";
-import type Database from "@/interfaces/Database";
+import CourseDatabaseKeys from "@/database/courses/course-database-keys";
+import type CourseInterface from "@/database/courses/course-interface";
+import ModuleDatabaseKeys from "@/database/modules/module-database-keys";
+import type ModuleInterface from "@/database/modules/module-interface";
+import SkillDatabaseKeys from "@/database/skills/skill-database-keys";
+import ModuleYearGroupsEnum from "@/enums/module/module-year-groups-enum";
+import type Database from "@/interfaces/database";
 /// <reference types="vitest/globals" />
-import aggregateRelatedMaterialsForCourses from "@/lib/material/course/aggregate/aggregateRelatedMaterialsForCourses";
+import aggregateRelatedMaterialsForCourses from "@/lib/material/course/aggregate/aggregate-related-materials-for-courses";
 
 describe("aggregateRelatedMaterialsForCourses", () => {
   test("combines related materials from courses and their modules without duplicates", () => {

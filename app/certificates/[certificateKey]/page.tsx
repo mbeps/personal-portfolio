@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type React from "react";
 import { BsArrowUpRightCircle } from "react-icons/bs";
-import MaterialList from "@/components/material-lists/MaterialList";
+import MaterialList from "@/components/material-lists/material-list";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
 import {
@@ -13,18 +13,18 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/shadcn/ui/card";
-import SkillTableSection from "@/components/skills/SkillTableSection";
-import Tag from "@/components/tags/Tag";
-import StringList from "@/components/ui/StringList";
-import developerName from "@/constants/developerName";
+import SkillTableSection from "@/components/skills/skill-table-section";
+import Tag from "@/components/tags/tag";
+import StringList from "@/components/ui/string-list";
+import developerName from "@/constants/developer-name";
 import { PATHS } from "@/constants/paths";
 import { ROUTES } from "@/constants/routes";
-import type CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
-import certificateDatabaseMap from "@/database/certificates/CertificateDatabaseMap";
-import type CertificateInterface from "@/database/certificates/CertificateInterface";
-import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
-import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
-import hasAnySkills from "@/lib/skills/hasAnySkills";
+import type CertificateDatabaseKeys from "@/database/certificates/certificate-database-keys";
+import certificateDatabaseMap from "@/database/certificates/certificate-database-map";
+import type CertificateInterface from "@/database/certificates/certificate-interface";
+import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/list-of-categorised-skills-by-type-interface";
+import buildSkillTableGroups from "@/lib/skills/group/build-skill-table-groups";
+import hasAnySkills from "@/lib/skills/has-any-skills";
 
 type Params = Promise<{ certificateKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;

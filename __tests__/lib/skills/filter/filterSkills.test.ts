@@ -1,16 +1,16 @@
 import { describe, expect, it } from "vitest";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import type SkillInterface from "@/database/skills/SkillInterface";
-import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
-import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
-import type Database from "@/interfaces/Database";
-import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
-import filterCategoriesFromSkills from "@/lib/skills/filter/filterCategoriesFromSkills";
-import filterNonEmptySkillCategories from "@/lib/skills/filter/filterNonEmptySkillCategories";
-import { filterSkillSlugsExcludingCategory } from "@/lib/skills/filter/filterSkillSlugsExcludingCategory";
-import filterSkillsByCategory from "@/lib/skills/filter/filterSkillsByCategory";
-import filterSkillsByType from "@/lib/skills/filter/filterSkillsByType";
-import hasAnySkills from "@/lib/skills/hasAnySkills";
+import SkillDatabaseKeys from "@/database/skills/skill-database-keys";
+import type SkillInterface from "@/database/skills/skill-interface";
+import SkillCategoriesEnum from "@/enums/skill/skill-categories-enum";
+import SkillTypesEnum from "@/enums/skill/skill-types-enum";
+import type Database from "@/interfaces/database";
+import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/list-of-categorised-skills-by-type-interface";
+import filterCategoriesFromSkills from "@/lib/skills/filter/filter-categories-from-skills";
+import filterNonEmptySkillCategories from "@/lib/skills/filter/filter-non-empty-skill-categories";
+import { filterSkillSlugsExcludingCategory } from "@/lib/skills/filter/filter-skill-slugs-excluding-category";
+import filterSkillsByCategory from "@/lib/skills/filter/filter-skills-by-category";
+import filterSkillsByType from "@/lib/skills/filter/filter-skills-by-type";
+import hasAnySkills from "@/lib/skills/has-any-skills";
 
 const mockSkillsDatabase: Database<SkillInterface> = {
   [SkillDatabaseKeys.Python]: {

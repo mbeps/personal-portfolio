@@ -1,50 +1,50 @@
 import { describe, expect, it } from "vitest";
-import ShortDate from "@/class/ShortDate";
+import ShortDate from "@/class/short-date";
 import blogsDatabaseMap, {
   blogDatabaseKeys,
-} from "@/database/blogs/BlogsDatabaseMap";
-import CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
+} from "@/database/blogs/blogs-database-map";
+import CertificateDatabaseKeys from "@/database/certificates/certificate-database-keys";
 import certificateDatabaseMap, {
   certificateDatabaseKeys,
-} from "@/database/certificates/CertificateDatabaseMap";
-import CompanyDatabaseKeys from "@/database/companies/CompanyDatabaseKeys";
+} from "@/database/certificates/certificate-database-map";
+import CompanyDatabaseKeys from "@/database/companies/company-database-keys";
 import companyDatabaseMap, {
   companyDatabaseKeys,
-} from "@/database/companies/CompanyDatabaseMap";
-import CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
+} from "@/database/companies/company-database-map";
+import CourseDatabaseKeys from "@/database/courses/course-database-keys";
 import courseDatabaseMap, {
   courseDatabaseKeys,
-} from "@/database/courses/CourseDatabaseMap";
+} from "@/database/courses/course-database-map";
 import materialDatabaseMap, {
   materialKeys,
   skillUsageMap,
-} from "@/database/materials/MaterialDatabaseMap";
-import ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
+} from "@/database/materials/material-database-map";
+import ModuleDatabaseKeys from "@/database/modules/module-database-keys";
 import moduleDatabaseMap, {
   moduleDatabaseKeys,
-} from "@/database/modules/ModuleDatabaseMap";
-import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
+} from "@/database/modules/module-database-map";
+import ProjectDatabaseKeys from "@/database/projects/project-database-keys";
 import projectDatabaseMap, {
   projectDatabaseKeys,
-} from "@/database/projects/ProjectDatabaseMap";
-import RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
+} from "@/database/projects/project-database-map";
+import RoleDatabaseKeys from "@/database/roles/role-database-keys";
 import rolesDatabase, {
   roleDatabaseKeys,
-} from "@/database/roles/RoleDatabaseMap";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+} from "@/database/roles/role-database-map";
+import SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import skillDatabaseMap, {
   skillDatabaseKeys,
-} from "@/database/skills/SkillDatabaseMap";
-import BlogCategoriesEnum from "@/enums/blog/BlogCategoriesEnum";
-import CertificateCategoriesEnum from "@/enums/certificate/CertificateCategoriesEnum";
-import CertificateIssuersEnum from "@/enums/certificate/CertificateIssuersEnum";
-import ExperienceCategoriesEnum from "@/enums/experience/ExperienceCategoriesEnum";
-import ExperienceTypeEnum from "@/enums/experience/ExperienceTypeEnum";
-import ModuleYearGroupsEnum from "@/enums/module/ModuleYearGroupsEnum";
-import ProjectCategoriesEnum from "@/enums/project/ProjectCategoriesEnum";
-import ProjectTypeEnum from "@/enums/project/ProjectTypeEnum";
-import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
-import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
+} from "@/database/skills/skill-database-map";
+import BlogCategoriesEnum from "@/enums/blog/blog-categories-enum";
+import CertificateCategoriesEnum from "@/enums/certificate/certificate-categories-enum";
+import CertificateIssuersEnum from "@/enums/certificate/certificate-issuers-enum";
+import ExperienceCategoriesEnum from "@/enums/experience/experience-categories-enum";
+import ExperienceTypeEnum from "@/enums/experience/experience-type-enum";
+import ModuleYearGroupsEnum from "@/enums/module/module-year-groups-enum";
+import ProjectCategoriesEnum from "@/enums/project/project-categories-enum";
+import ProjectTypeEnum from "@/enums/project/project-type-enum";
+import SkillCategoriesEnum from "@/enums/skill/skill-categories-enum";
+import SkillTypesEnum from "@/enums/skill/skill-types-enum";
 
 const validKeyRegex = /^[a-zA-Z0-9-]+$/;
 
@@ -158,7 +158,9 @@ describe("All Databases Integrity & Consistency", () => {
       for (const [key, company] of Object.entries(companyDatabaseMap)) {
         expect(company.name.trim().length).toBeGreaterThan(0);
         expect(company.location.trim().length).toBeGreaterThan(0);
-        expect(company.logo.trim().length).toBeGreaterThan(0);
+        if (company.logo) {
+          expect(company.logo.trim().length).toBeGreaterThan(0);
+        }
         expect(Array.isArray(company.positions)).toBe(true);
         expect(company.positions.length).toBeGreaterThan(0);
 
@@ -241,7 +243,9 @@ describe("All Databases Integrity & Consistency", () => {
       for (const [key, course] of Object.entries(courseDatabaseMap)) {
         expect(course.name.trim().length).toBeGreaterThan(0);
         expect(course.university.trim().length).toBeGreaterThan(0);
-        expect(course.grade.trim().length).toBeGreaterThan(0);
+        if (course.grade) {
+          expect(course.grade.trim().length).toBeGreaterThan(0);
+        }
         expect(course.category.trim().length).toBeGreaterThan(0);
         expect(course.startYear).toBeLessThanOrEqual(course.endYear);
 

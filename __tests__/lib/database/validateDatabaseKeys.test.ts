@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import validateDatabaseKeys from "@/lib/database/validateDatabaseKeys";
+import validateDatabaseKeys from "@/lib/database/validate-database-keys";
 
 describe("validateDatabaseKeys", () => {
   it("should not throw an error for valid keys (alphanumeric and dashes)", () => {

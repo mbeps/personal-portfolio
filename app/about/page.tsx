@@ -3,31 +3,31 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { GrAppsRounded } from "react-icons/gr";
-import MaterialList from "@/components/material-lists/MaterialList";
-import Reader from "@/components/reader/Reader";
+import MaterialList from "@/components/material-lists/material-list";
+import Reader from "@/components/reader/reader";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/shadcn/ui/accordion";
-import Socials from "@/components/socials/Socials";
-import DetailsTable from "@/components/ui/DetailsTable";
-import developerName from "@/constants/developerName";
+import Socials from "@/components/socials/socials";
+import DetailsTable from "@/components/ui/details-table";
+import developerName from "@/constants/developer-name";
 import experienceTime from "@/constants/experience";
 import location from "@/constants/location";
 import { PATHS } from "@/constants/paths";
 import subtitles from "@/constants/subtitles";
-import CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
-import companyDatabaseMap from "@/database/companies/CompanyDatabaseMap";
-import CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
-import courseDatabaseMap from "@/database/courses/CourseDatabaseMap";
-import type CourseInterface from "@/database/courses/CourseInterface";
-import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
-import RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
-import rolesDatabase from "@/database/roles/RoleDatabaseMap";
-import type RoleInterface from "@/database/roles/RoleInterface";
-import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
+import CertificateDatabaseKeys from "@/database/certificates/certificate-database-keys";
+import companyDatabaseMap from "@/database/companies/company-database-map";
+import CourseDatabaseKeys from "@/database/courses/course-database-keys";
+import courseDatabaseMap from "@/database/courses/course-database-map";
+import type CourseInterface from "@/database/courses/course-interface";
+import ProjectDatabaseKeys from "@/database/projects/project-database-keys";
+import RoleDatabaseKeys from "@/database/roles/role-database-keys";
+import rolesDatabase from "@/database/roles/role-database-map";
+import type RoleInterface from "@/database/roles/role-interface";
+import getMarkdownFromFileSystem from "@/lib/file-system/get-markdown-from-file-system";
 
 const aboutContent: string | null = getMarkdownFromFileSystem(PATHS.ABOUT.LONG);
 

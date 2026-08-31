@@ -1,7 +1,7 @@
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
-import useFuseSearch from "@/hooks/use-fuse-search/useFuseSearch";
+import useFuseSearch from "@/hooks/use-fuse-search/use-fuse-search";
 
 interface TestItem {
   name: string;
@@ -41,7 +41,7 @@ function runHook<T>(
 ): string[] {
   let result: string[] = [];
   renderToStaticMarkup(
-    React.createElement(HookHarness, {
+    React.createElement(HookHarness as React.ComponentType<HarnessProps<T>>, {
       database,
       searchTerm,
       searchKeys,

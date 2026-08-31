@@ -1,10 +1,10 @@
 import { describe, expect, test, vi } from "vitest";
-import { skillUsageMap } from "@/database/materials/MaterialDatabaseMap";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import { skillUsageMap } from "@/database/materials/material-database-map";
+import SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 /// <reference types="vitest/globals" />
-import { skillHasMaterial } from "@/lib/material/skillUsageHelpers";
+import { skillHasMaterial } from "@/lib/material/skill-usage-helpers";
 
-vi.mock("@/database/materials/MaterialDatabaseMap", () => ({
+vi.mock("@/database/materials/material-database-map", () => ({
   skillUsageMap: new Map(),
 }));
 

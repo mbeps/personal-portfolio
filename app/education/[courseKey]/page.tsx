@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { GrAppsRounded } from "react-icons/gr";
 import { IoReaderOutline } from "react-icons/io5";
-import MaterialList from "@/components/material-lists/MaterialList";
+import MaterialList from "@/components/material-lists/material-list";
 import {
   Accordion,
   AccordionContent,
@@ -18,23 +18,23 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/shadcn/ui/card";
-import SkillTableSection from "@/components/skills/SkillTableSection";
-import Tag from "@/components/tags/Tag";
-import Grid from "@/components/ui/Grid";
-import developerName from "@/constants/developerName";
+import SkillTableSection from "@/components/skills/skill-table-section";
+import Tag from "@/components/tags/tag";
+import Grid from "@/components/ui/grid";
+import developerName from "@/constants/developer-name";
 import { ROUTES } from "@/constants/routes";
-import courseDatabaseMap from "@/database/courses/CourseDatabaseMap";
-import type CourseInterface from "@/database/courses/CourseInterface";
-import type ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
-import moduleDatabaseMap from "@/database/modules/ModuleDatabaseMap";
-import type ModuleInterface from "@/database/modules/ModuleInterface";
-import type MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
-import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
-import filterMaterialByArchivedStatus from "@/lib/material/filter/filterMaterialByArchivedStatus";
-import groupMaterialsByCategory from "@/lib/material/group/groupMaterialsByCategory";
-import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
-import hasAnySkills from "@/lib/skills/hasAnySkills";
-import CourseArchiveToggle from "./_components/CourseArchiveToggle";
+import courseDatabaseMap from "@/database/courses/course-database-map";
+import type CourseInterface from "@/database/courses/course-interface";
+import type ModuleDatabaseKeys from "@/database/modules/module-database-keys";
+import moduleDatabaseMap from "@/database/modules/module-database-map";
+import type ModuleInterface from "@/database/modules/module-interface";
+import type MaterialGroupInterface from "@/interfaces/material/material-group-interface";
+import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/list-of-categorised-skills-by-type-interface";
+import filterMaterialByArchivedStatus from "@/lib/material/filter/filter-material-by-archived-status";
+import groupMaterialsByCategory from "@/lib/material/group/group-materials-by-category";
+import buildSkillTableGroups from "@/lib/skills/group/build-skill-table-groups";
+import hasAnySkills from "@/lib/skills/has-any-skills";
+import CourseArchiveToggle from "./_components/course-archive-toggle";
 
 type Params = Promise<{ courseKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;

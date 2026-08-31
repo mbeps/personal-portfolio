@@ -1,7 +1,7 @@
-import RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
-import rolesDatabase from "@/database/roles/RoleDatabaseMap";
-import type RoleInterface from "@/database/roles/RoleInterface";
-import computeTotalExperience from "@/lib/computeTotalExperience";
+import RoleDatabaseKeys from "@/database/roles/role-database-keys";
+import rolesDatabase from "@/database/roles/role-database-map";
+import type RoleInterface from "@/database/roles/role-interface";
+import computeTotalExperience from "@/lib/compute-total-experience";
 
 /**
  * Subset of role keys considered "main" professional work experience for the experience summary.

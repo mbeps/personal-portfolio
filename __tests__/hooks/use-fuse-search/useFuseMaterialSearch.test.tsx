@@ -1,9 +1,9 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, test } from "vitest";
-import type MaterialInterface from "@/database/materials/MaterialInterface";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import useFuseMaterialSearch from "@/hooks/use-fuse-search/useFuseMaterialSearch";
-import type Database from "@/interfaces/Database";
+import type MaterialInterface from "@/database/materials/material-interface";
+import SkillDatabaseKeys from "@/database/skills/skill-database-keys";
+import useFuseMaterialSearch from "@/hooks/use-fuse-search/use-fuse-material-search";
+import type Database from "@/interfaces/database";
 
 type TestMaterial = MaterialInterface;
 

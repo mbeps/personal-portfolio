@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import Footer from "@/components/footer/Footer";
-import Navbar from "@/components/navbar/Navbar";
-import developerName from "@/constants/developerName";
-import { NAVBAR_HEIGHT } from "@/constants/navbarHeight";
+import Footer from "@/components/footer/footer";
+import Navbar from "@/components/navbar/navbar";
+import developerName from "@/constants/developer-name";
+import { NAVBAR_HEIGHT } from "@/constants/navbar-height";
 import { ROUTES } from "@/constants/routes";
 import subtitles from "@/constants/subtitles";
-import { Providers } from "@/providers/Providers";
+import { Providers } from "@/providers/providers";
 import "./globals.css";
-import Scroll from "@/components/ui/Scroll";
-import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
-import { VercelTrackers } from "@/providers/VercelTrackers";
+import Scroll from "@/components/ui/scroll";
+import getMarkdownFromFileSystem from "@/lib/file-system/get-markdown-from-file-system";
+import { VercelTrackers } from "@/providers/vercel-trackers";
 import "katex/dist/katex.min.css";
 
 import { Inter } from "next/font/google";

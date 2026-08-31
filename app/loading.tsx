@@ -1,6 +1,6 @@
 "use client";
 
-import LoadingAnimation from "@/components/ui/LoadingAnimation";
+import LoadingAnimation from "@/components/ui/loading-animation";
 
 /**
  * Streaming fallback for slow routes so users always see the brand animation while data heavy lists hydrate.

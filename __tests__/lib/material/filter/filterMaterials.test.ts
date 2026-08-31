@@ -1,23 +1,23 @@
 import { describe, expect, it } from "vitest";
-import type CertificateInterface from "@/database/certificates/CertificateInterface";
-import type MaterialInterface from "@/database/materials/MaterialInterface";
-import type ProjectInterface from "@/database/projects/ProjectInterface";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import type SkillInterface from "@/database/skills/SkillInterface";
-import CertificateCategoriesEnum from "@/enums/certificate/CertificateCategoriesEnum";
-import CertificateIssuersEnum from "@/enums/certificate/CertificateIssuersEnum";
-import ProjectCategoriesEnum from "@/enums/project/ProjectCategoriesEnum";
-import ProjectTypeEnum from "@/enums/project/ProjectTypeEnum";
-import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
-import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
-import type Database from "@/interfaces/Database";
-import filterCertificatesByIssuer from "@/lib/material/filter/filterCertificatesByIssuer";
-import filterMaterialByArchivedStatus from "@/lib/material/filter/filterMaterialByArchivedStatus";
-import filterMaterialByCategory from "@/lib/material/filter/filterMaterialByCategory";
-import filterMaterialBySkill from "@/lib/material/filter/filterMaterialBySkill";
-import filterMaterialBySkillCategory from "@/lib/material/filter/filterMaterialBySkillCategory";
-import filterMaterialKeysByPredicate from "@/lib/material/filter/filterMaterialKeysByPredicate";
-import filterProjectsByType from "@/lib/material/filter/filterProjectsByType";
+import type CertificateInterface from "@/database/certificates/certificate-interface";
+import type MaterialInterface from "@/database/materials/material-interface";
+import type ProjectInterface from "@/database/projects/project-interface";
+import SkillDatabaseKeys from "@/database/skills/skill-database-keys";
+import type SkillInterface from "@/database/skills/skill-interface";
+import CertificateCategoriesEnum from "@/enums/certificate/certificate-categories-enum";
+import CertificateIssuersEnum from "@/enums/certificate/certificate-issuers-enum";
+import ProjectCategoriesEnum from "@/enums/project/project-categories-enum";
+import ProjectTypeEnum from "@/enums/project/project-type-enum";
+import SkillCategoriesEnum from "@/enums/skill/skill-categories-enum";
+import SkillTypesEnum from "@/enums/skill/skill-types-enum";
+import type Database from "@/interfaces/database";
+import filterCertificatesByIssuer from "@/lib/material/filter/filter-certificates-by-issuer";
+import filterMaterialByArchivedStatus from "@/lib/material/filter/filter-material-by-archived-status";
+import filterMaterialByCategory from "@/lib/material/filter/filter-material-by-category";
+import filterMaterialBySkill from "@/lib/material/filter/filter-material-by-skill";
+import filterMaterialBySkillCategory from "@/lib/material/filter/filter-material-by-skill-category";
+import filterMaterialKeysByPredicate from "@/lib/material/filter/filter-material-keys-by-predicate";
+import filterProjectsByType from "@/lib/material/filter/filter-projects-by-type";
 
 const mockSkillsDatabase: Database<SkillInterface> = {
   [SkillDatabaseKeys.Python]: {

@@ -4,9 +4,9 @@ import { notFound } from "next/navigation";
 import type React from "react";
 import { BsPlusCircle } from "react-icons/bs";
 import { GrAppsRounded } from "react-icons/gr";
-import Gallery from "@/components/gallery/Gallery";
-import MaterialList from "@/components/material-lists/MaterialList";
-import Reader from "@/components/reader/Reader";
+import Gallery from "@/components/gallery/gallery";
+import MaterialList from "@/components/material-lists/material-list";
+import Reader from "@/components/reader/reader";
 import {
   Accordion,
   AccordionContent,
@@ -20,26 +20,26 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/shadcn/ui/card";
-import SkillTableSection from "@/components/skills/SkillTableSection";
-import SkillTag from "@/components/tags/SkillTag";
-import developerName from "@/constants/developerName";
+import SkillTableSection from "@/components/skills/skill-table-section";
+import SkillTag from "@/components/tags/skill-tag";
+import developerName from "@/constants/developer-name";
 import { PATHS } from "@/constants/paths";
 import { ROUTES } from "@/constants/routes";
-import type ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
-import projectDatabaseMap from "@/database/projects/ProjectDatabaseMap";
-import type ProjectInterface from "@/database/projects/ProjectInterface";
-import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
-import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
-import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
-import getImagesFromFileSystem from "@/lib/file-system/getImagesFromFileSystem";
-import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
-import getVideosFromFileSystem from "@/lib/file-system/getVideosFromFileSystem";
-import { filterSkillSlugsExcludingCategory } from "@/lib/skills/filter/filterSkillSlugsExcludingCategory";
-import filterSkillsByCategory from "@/lib/skills/filter/filterSkillsByCategory";
-import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
-import hasAnySkills from "@/lib/skills/hasAnySkills";
-import { ProjectLinks } from "./_components/ProjectLinks";
+import type ProjectDatabaseKeys from "@/database/projects/project-database-keys";
+import projectDatabaseMap from "@/database/projects/project-database-map";
+import type ProjectInterface from "@/database/projects/project-interface";
+import type SkillDatabaseKeys from "@/database/skills/skill-database-keys";
+import skillDatabaseMap from "@/database/skills/skill-database-map";
+import SkillCategoriesEnum from "@/enums/skill/skill-categories-enum";
+import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/list-of-categorised-skills-by-type-interface";
+import getImagesFromFileSystem from "@/lib/file-system/get-images-from-file-system";
+import getMarkdownFromFileSystem from "@/lib/file-system/get-markdown-from-file-system";
+import getVideosFromFileSystem from "@/lib/file-system/get-videos-from-file-system";
+import { filterSkillSlugsExcludingCategory } from "@/lib/skills/filter/filter-skill-slugs-excluding-category";
+import filterSkillsByCategory from "@/lib/skills/filter/filter-skills-by-category";
+import buildSkillTableGroups from "@/lib/skills/group/build-skill-table-groups";
+import hasAnySkills from "@/lib/skills/has-any-skills";
+import { ProjectLinks } from "./_components/project-links";
 
 type Params = Promise<{ projectKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;

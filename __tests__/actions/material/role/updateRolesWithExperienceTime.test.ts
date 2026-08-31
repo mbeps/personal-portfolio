@@ -1,13 +1,13 @@
 import { describe, expect, test } from "vitest";
-import ShortDate from "@/class/ShortDate";
-import CompanyDatabaseKeys from "@/database/companies/CompanyDatabaseKeys";
-import type RoleInterface from "@/database/roles/RoleInterface";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import ExperienceCategoriesEnum from "@/enums/experience/ExperienceCategoriesEnum";
-import ExperienceTypeEnum from "@/enums/experience/ExperienceTypeEnum";
-import type Database from "@/interfaces/Database";
+import ShortDate from "@/class/short-date";
+import CompanyDatabaseKeys from "@/database/companies/company-database-keys";
+import type RoleInterface from "@/database/roles/role-interface";
+import SkillDatabaseKeys from "@/database/skills/skill-database-keys";
+import ExperienceCategoriesEnum from "@/enums/experience/experience-categories-enum";
+import ExperienceTypeEnum from "@/enums/experience/experience-type-enum";
+import type Database from "@/interfaces/database";
 /// <reference types="vitest/globals" />
-import updateRolesWithExperienceTime from "@/lib/material/role/updateRolesWithExperienceTime";
+import updateRolesWithExperienceTime from "@/lib/material/role/update-roles-with-experience-time";
 
 describe("updateRolesWithExperienceTime", () => {
   test("computes time in role for own properties and skips inherited entries", () => {

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
+import SkillDatabaseKeys from "@/database/skills/skill-database-keys";
+import buildSkillTableGroups from "@/lib/skills/group/build-skill-table-groups";
 
 describe("buildSkillTableGroups", () => {
   it("should return two groups titled 'Technologies' and 'Technical Skills'", () => {

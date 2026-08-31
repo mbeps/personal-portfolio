@@ -1,11 +1,11 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { skillUsageMap } from "@/database/materials/MaterialDatabaseMap";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import { skillUsageMap } from "@/database/materials/material-database-map";
+import SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import {
   countMaterialsBySkill,
   isSkillAssociatedWithMaterial,
   skillHasMaterial,
-} from "@/lib/material/skillUsageHelpers";
+} from "@/lib/material/skill-usage-helpers";
 
 describe("skillUsageHelpers", () => {
   afterEach(() => {

@@ -1,37 +1,37 @@
 import type { Metadata } from "next";
 import React from "react";
-import CvExperienceItem from "@/app/cv/_components/CvExperienceItem";
-import CvSection from "@/app/cv/_components/CvSection";
-import CvSkillGroup from "@/app/cv/_components/CvSkillGroup";
+import CvExperienceItem from "@/app/cv/_components/cv-experience-item";
+import CvSection from "@/app/cv/_components/cv-section";
+import CvSkillGroup from "@/app/cv/_components/cv-skill-group";
 import type { SerializedRoleInterface } from "@/app/cv/page";
-import Reader from "@/components/reader/Reader";
+import Reader from "@/components/reader/reader";
 import { Separator } from "@/components/shadcn/ui/separator";
-import developerName from "@/constants/developerName";
+import developerName from "@/constants/developer-name";
 import location from "@/constants/location";
 import { PATHS } from "@/constants/paths";
 import socialLinks from "@/constants/socials";
 import subtitles from "@/constants/subtitles";
-import type BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
-import blogDatabaseMap from "@/database/blogs/BlogsDatabaseMap";
-import type CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
-import certificateDatabaseMap from "@/database/certificates/CertificateDatabaseMap";
-import type CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
-import courseDatabaseMap from "@/database/courses/CourseDatabaseMap";
-import type ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
-import projectDatabaseMap from "@/database/projects/ProjectDatabaseMap";
+import type BlogDatabaseKeys from "@/database/blogs/blog-database-keys";
+import blogDatabaseMap from "@/database/blogs/blogs-database-map";
+import type CertificateDatabaseKeys from "@/database/certificates/certificate-database-keys";
+import certificateDatabaseMap from "@/database/certificates/certificate-database-map";
+import type CourseDatabaseKeys from "@/database/courses/course-database-keys";
+import courseDatabaseMap from "@/database/courses/course-database-map";
+import type ProjectDatabaseKeys from "@/database/projects/project-database-keys";
+import projectDatabaseMap from "@/database/projects/project-database-map";
 import roleDatabaseMap, {
   roleDatabaseKeys,
-} from "@/database/roles/RoleDatabaseMap";
+} from "@/database/roles/role-database-map";
 import skillDatabaseMap, {
   skillDatabaseKeys,
-} from "@/database/skills/SkillDatabaseMap";
-import ExperienceTypeEnum from "@/enums/experience/ExperienceTypeEnum";
-import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
-import groupSkills, { GroupByOptions } from "@/lib/skills/group/groupSkills";
-import AllBlogItem from "./_components/AllBlogItem";
-import AllCertificateItem from "./_components/AllCertificateItem";
-import AllEducationItem from "./_components/AllEducationItem";
-import AllProjectItem from "./_components/AllProjectItem";
+} from "@/database/skills/skill-database-map";
+import ExperienceTypeEnum from "@/enums/experience/experience-type-enum";
+import getMarkdownFromFileSystem from "@/lib/file-system/get-markdown-from-file-system";
+import groupSkills, { GroupByOptions } from "@/lib/skills/group/group-skills";
+import AllBlogItem from "./_components/all-blog-item";
+import AllCertificateItem from "./_components/all-certificate-item";
+import AllEducationItem from "./_components/all-education-item";
+import AllProjectItem from "./_components/all-project-item";
 
 /**
  * Metadata for the /all page.

@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import stringToSlug from "@/lib/stringToSlug";
+import stringToSlug from "@/lib/string-to-slug";
 
 describe("stringToSlug", () => {
   test("should convert a simple string with spaces", () => {

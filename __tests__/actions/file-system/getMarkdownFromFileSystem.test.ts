@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import { describe, expect, test, vi } from "vitest";
 /// <reference types="vitest/globals" />
-import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
+import getMarkdownFromFileSystem from "@/lib/file-system/get-markdown-from-file-system";
 
 vi.mock("fs");
 

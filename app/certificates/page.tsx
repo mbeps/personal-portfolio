@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import type React from "react";
-import PageDescription from "@/components/ui/PageDescription";
-import developerName from "@/constants/developerName";
+import PageDescription from "@/components/ui/page-description";
+import developerName from "@/constants/developer-name";
 import { ROUTES } from "@/constants/routes";
-import certificateDatabaseMap from "@/database/certificates/CertificateDatabaseMap";
-import CertificatesView from "./_components/CertificatesView";
+import certificateDatabaseMap from "@/database/certificates/certificate-database-map";
+import CertificatesView from "./_components/certificates-view";
 
 /**
  * Static metadata for the certificates archive, using the dataset itself to populate keywords so the list and SEO stay aligned.

@@ -3,9 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BsArrowUpRightCircle } from "react-icons/bs";
-import ShortDate from "@/class/ShortDate";
-import MaterialList from "@/components/material-lists/MaterialList";
-import Reader from "@/components/reader/Reader";
+import ShortDate from "@/class/short-date";
+import MaterialList from "@/components/material-lists/material-list";
+import Reader from "@/components/reader/reader";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
 import {
@@ -14,20 +14,20 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/shadcn/ui/card";
-import SkillTableSection from "@/components/skills/SkillTableSection";
-import DetailsTable from "@/components/ui/DetailsTable";
-import developerName from "@/constants/developerName";
+import SkillTableSection from "@/components/skills/skill-table-section";
+import DetailsTable from "@/components/ui/details-table";
+import developerName from "@/constants/developer-name";
 import { PATHS } from "@/constants/paths";
 import { ROUTES } from "@/constants/routes";
-import companyDatabaseMap from "@/database/companies/CompanyDatabaseMap";
-import type CompanyInterface from "@/database/companies/CompanyInterface";
-import type RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
-import rolesDatabase from "@/database/roles/RoleDatabaseMap";
-import type RoleInterface from "@/database/roles/RoleInterface";
-import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
-import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
-import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
-import hasAnySkills from "@/lib/skills/hasAnySkills";
+import companyDatabaseMap from "@/database/companies/company-database-map";
+import type CompanyInterface from "@/database/companies/company-interface";
+import type RoleDatabaseKeys from "@/database/roles/role-database-keys";
+import rolesDatabase from "@/database/roles/role-database-map";
+import type RoleInterface from "@/database/roles/role-interface";
+import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/list-of-categorised-skills-by-type-interface";
+import getMarkdownFromFileSystem from "@/lib/file-system/get-markdown-from-file-system";
+import buildSkillTableGroups from "@/lib/skills/group/build-skill-table-groups";
+import hasAnySkills from "@/lib/skills/has-any-skills";
 
 type Params = Promise<{ roleKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
