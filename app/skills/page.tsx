@@ -1,10 +1,10 @@
-import PageDescription from "@/components/ui/PageDescription";
-import developerName from "@/constants/developerName";
+import PageDescription from "@/components/ui/page-description";
+import developerName from "@/constants/developer-name";
 import { ROUTES } from "@/constants/routes";
 import skillDatabaseMap, {
   skillDatabaseKeys,
-} from "@/database/skills/SkillDatabaseMap";
-import SkillList from "../../components/material-lists/SkillList";
+} from "@/database/skills/skill-database-map";
+import SkillList from "../../components/material-lists/skill-list";
 
 /**
  * Static metadata for the skills hub, built from the skill database so keywords mirror the visible directory.

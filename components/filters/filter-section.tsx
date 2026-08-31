@@ -1,0 +1,177 @@
+"use client";
+
+import Link from "next/link";
+import type React from "react";
+import { useState } from "react";
+import { AiOutlineClear } from "react-icons/ai";
+import { BsFilterLeft } from "react-icons/bs";
+import { MdOutlineManageSearch } from "react-icons/md";
+import { ArchiveToggle } from "@/components/filters/archive-toggle";
+import FilterPanel from "@/components/filters/filter-overlay";
+import SearchInput from "@/components/inputs/search-input";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/shadcn/ui/accordion";
+import { Button } from "@/components/shadcn/ui/button";
+import { ButtonGroup } from "@/components/shadcn/ui/button-group";
+import type ArchiveFilter from "@/interfaces/filters/archive-filter";
+import type FilterCategory from "@/interfaces/filters/filter-category";
+import type SearchFilter from "@/interfaces/filters/search-filter";
+
+/**
+ * Props for the `FilterSection` top-level filter bar component.
+ * Receives all state from the listing page's filter hook and drives URL navigation on interaction.
+ * @author Maruf Bepary
+ */
+interface FilterSectionProps {
+  /** Page or section name shown in search placeholder text and the accordion trigger label. */
+  name: string;
+  /** Route base path used for the "Clear All" link (e.g. `"/projects"`). */
+  basePath: string;
+  /** Filter category definitions surfaced by the listing hook; drives the `FilterOverlay` options. */
+  filterCategories: FilterCategory[];
+  /** Whether any non-default filter, search, or archive value is currently active; controls the "Clear All" button. */
+  areFiltersApplied: boolean;
+  /** Search state read from the listing hook; provides the current search term and its URL param name. */
+  searchFilter: SearchFilter;
+  /** Optional archive metadata; when present an `ArchiveToggle` is rendered inside the filter bar. */
+  archiveFilter?: ArchiveFilter;
+}
+
+/**
+ * Top-level filter bar rendered on every listing page (projects, experience, blogs, certificates, education, skills).
+ * Combines a collapsible accordion that houses a search input, a "Filters" button opening `FilterOverlay`,
+ * and a "Clear All" link back to `basePath`. Renders an `ArchiveToggle` inside the accordion when `archiveFilter` is provided.
+ * Calls nuqs setters directly via `searchFilter.onChange` and `archiveFilter.onToggle` instead of building URLs manually.
+ *
+ * @param props - See `FilterSectionProps`.
+ * @returns Accordion-wrapped filter bar with search, filter panel trigger, clear button, and optional archive toggle.
+ * @author Maruf Bepary
+ */
+const FilterSection: React.FC<FilterSectionProps> = ({
+  name,
+  basePath,
+  searchFilter,
+  filterCategories,
+  areFiltersApplied,
+  archiveFilter,
+}) => {
+  function updateSearchTerm(newSearchTerm: string) {
+    searchFilter.onChange(newSearchTerm);
+  }
+
+  const message: string = archiveFilter?.hasArchivedMaterials
+    ? `Search, Filter and View Archived ${name}`
+    : `Search & Filter ${name}`;
+
+  const [isFilterOpen, setIsFilterModalOpen] = useState(false);
+  function handleToggleFilter() {
+    setIsFilterModalOpen(!isFilterOpen);
+  }
+
+  return (
+    <>
+      <Accordion type="single" collapsible>
+        <AccordionItem value="item-1">
+          <AccordionTrigger>
+            <span className="flex items-center space-x-3 text-left">
+              <MdOutlineManageSearch
+                size={28}
+                className="text-neutral-600 dark:text-neutral-400"
+              />
+              <span className="font-semibold text-lg text-neutral-600 dark:text-neutral-400">
+                {message}
+              </span>
+            </span>
+          </AccordionTrigger>
+          <AccordionContent>
+            <div className="flex flex-col gap-2">
+              <div className="flex w-full flex-col items-center gap-2 py-2 md:flex-row">
+                {/* Search input */}
+                <div className="w-full md:flex-1">
+                  <SearchInput
+                    searchTerm={searchFilter.searchTerm}
+                    updateSearchTerm={updateSearchTerm}
+                    placeholder={`Search for ${name} name or metadata`}
+                  />
+                </div>
+
+                {/* Button Group */}
+                <div className="w-full md:flex-1">
+                  <ButtonGroup className="w-full">
+                    {/* Filters Panel */}
+                    <Button
+                      variant="default"
+                      onClick={handleToggleFilter}
+                      className="flex-1 shadow-xs hover:shadow-md"
+                    >
+                      <div className="flex items-center space-x-2">
+                        <BsFilterLeft
+                          fontSize={24}
+                          className="text-neutral-700 dark:text-neutral-200"
+                        />
+                        <span>Filters</span>
+                      </div>
+                    </Button>
+                    {/* Clear Button */}
+                    <Button
+                      variant="default"
+                      render={
+                        <Link
+                          href={basePath}
+                          scroll={false}
+                          onClick={(e) => {
+                            if (!areFiltersApplied) e.preventDefault();
+                          }}
+                          aria-disabled={!areFiltersApplied}
+                          tabIndex={areFiltersApplied ? 0 : -1}
+                          className={`${
+                            !areFiltersApplied
+                              ? "pointer-events-none opacity-50"
+                              : ""
+                          }`}
+                        />
+                      }
+                      className="flex-1 shadow-xs hover:shadow-md"
+                    >
+                      <div className="flex items-center space-x-2">
+                        <AiOutlineClear
+                          fontSize={24}
+                          className="text-neutral-700 dark:text-neutral-200"
+                        />
+                        <span>Clear All</span>
+                      </div>
+                    </Button>
+                  </ButtonGroup>
+                </div>
+              </div>
+
+              {/* Archive Toggle */}
+              {archiveFilter?.hasArchivedMaterials && (
+                <ArchiveToggle
+                  showArchived={archiveFilter.showArchived}
+                  onToggle={archiveFilter.onToggle}
+                />
+              )}
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+
+      {/* Filter Modal */}
+      <FilterPanel
+        isOpen={isFilterOpen}
+        toggle={handleToggleFilter}
+        filterCategories={filterCategories}
+        basePath={basePath}
+        archiveFilter={archiveFilter}
+        areFiltersApplied={areFiltersApplied}
+      />
+    </>
+  );
+};
+
+export default FilterSection;

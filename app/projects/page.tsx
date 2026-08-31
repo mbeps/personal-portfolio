@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import PageDescription from "@/components/ui/PageDescription";
-import developerName from "@/constants/developerName";
+import PageDescription from "@/components/ui/page-description";
+import developerName from "@/constants/developer-name";
 import { ROUTES } from "@/constants/routes";
-import projectDatabaseMap from "@/database/projects/ProjectDatabaseMap";
-import ProjectsView from "./_components/ProjectsView";
+import projectDatabaseMap from "@/database/projects/project-database-map";
+import ProjectsView from "./_components/projects-view";
 
 /**
  * Static metadata for the projects archive, driven by the database so keywords stay in sync with the visible list.

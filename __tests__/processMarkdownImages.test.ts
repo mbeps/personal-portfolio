@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import processMarkdownImages from "@/lib/processMarkdownImages";
+import processMarkdownImages from "@/lib/process-markdown-images";
 
 describe("processMarkdownImages", () => {
   it("should replace single {BASE} placeholder with base path", () => {

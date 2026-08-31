@@ -1,0 +1,227 @@
+import ShortDate from "@/class/short-date";
+import CertificateDatabaseKeys from "@/database/certificates/certificate-database-keys";
+import ProjectDatabaseKeys from "@/database/projects/project-database-keys";
+import RoleDatabaseKeys from "@/database/roles/role-database-keys";
+import type RoleInterface from "@/database/roles/role-interface";
+import SkillDatabaseKeys from "@/database/skills/skill-database-keys";
+import ExperienceCategoriesEnum from "@/enums/experience/experience-categories-enum";
+import ExperienceTypeEnum from "@/enums/experience/experience-type-enum";
+import type Database from "@/interfaces/database";
+import validateDatabaseKeys from "@/lib/database/validate-database-keys";
+import updateRolesWithExperienceTime from "@/lib/material/role/update-roles-with-experience-time";
+import CompanyDatabaseKeys from "../companies/company-database-keys";
+
+const rolesMap: Database<RoleInterface> = {
+  [RoleDatabaseKeys.CommerzbankAiEngineer]: {
+    name: "AI Engineer",
+    category: ExperienceCategoriesEnum.Software,
+    type: ExperienceTypeEnum.FullTime,
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.LangChain,
+      SkillDatabaseKeys.VercelAiSdk,
+      SkillDatabaseKeys.ModelContextProtocol,
+      SkillDatabaseKeys.FineTuning,
+      SkillDatabaseKeys.Benchmarking,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.LargeLanguageModels,
+      SkillDatabaseKeys.Quantization,
+
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.ShadcnUi,
+      SkillDatabaseKeys.FastApi,
+
+      SkillDatabaseKeys.PyTest,
+      SkillDatabaseKeys.Vitest,
+    ],
+    startDate: new ShortDate(2026, 3),
+    endDate: new ShortDate(new Date().getFullYear(), new Date().getMonth() + 1),
+    relatedMaterials: [
+      ProjectDatabaseKeys.ExcelSpreadsheetMCP,
+      ProjectDatabaseKeys.SymphonyTranslateBot,
+      ProjectDatabaseKeys.SymphonyCobaGPTBot,
+      ProjectDatabaseKeys.CommerzbankGenAiToOpenAiApiProxy,
+    ],
+    company: CompanyDatabaseKeys.Commerzbank,
+  },
+  [RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer]: {
+    name: "Full-Stack Software Engineer",
+    category: ExperienceCategoriesEnum.Software,
+    type: ExperienceTypeEnum.FullTime,
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.Kotlin,
+      SkillDatabaseKeys.ShellScript,
+      SkillDatabaseKeys.Groovy,
+
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.Spring,
+      SkillDatabaseKeys.SpringDataJpa,
+      SkillDatabaseKeys.SpringDataMongoDb,
+      SkillDatabaseKeys.SpringDataLdap,
+      SkillDatabaseKeys.SpringSecurity,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.Normalisation,
+      SkillDatabaseKeys.PostgreSql,
+      SkillDatabaseKeys.MongoDb,
+      SkillDatabaseKeys.RelationalDatabases,
+      SkillDatabaseKeys.NonRelationalDatabases,
+      SkillDatabaseKeys.Hibernate,
+      SkillDatabaseKeys.SpringDataJpa,
+      SkillDatabaseKeys.Symphony,
+      SkillDatabaseKeys.SpringDataMongoDb,
+      SkillDatabaseKeys.Html,
+      SkillDatabaseKeys.Css,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.ContinuousDelivery,
+      SkillDatabaseKeys.ContinuousDeployment,
+      SkillDatabaseKeys.DevOps,
+      SkillDatabaseKeys.PyTest,
+      SkillDatabaseKeys.Rest,
+      SkillDatabaseKeys.ContinuousDelivery,
+      SkillDatabaseKeys.ContinuousIntegration,
+      SkillDatabaseKeys.ContinuousDeployment,
+      SkillDatabaseKeys.Containerisation,
+      SkillDatabaseKeys.JUnit,
+      SkillDatabaseKeys.Aws,
+      SkillDatabaseKeys.Gcp,
+      SkillDatabaseKeys.Azure,
+
+      SkillDatabaseKeys.ArtificialIntelligence,
+    ],
+    startDate: new ShortDate(2023, 11),
+    endDate: new ShortDate(2026, 3),
+    relatedMaterials: [
+      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperJava,
+      CertificateDatabaseKeys.SymphonyCertifiedBotDeveloperPython,
+
+      ProjectDatabaseKeys.CommerzbankAppStatus,
+      ProjectDatabaseKeys.CommerzbankRates,
+
+      ProjectDatabaseKeys.AuthenticationMicroService,
+      ProjectDatabaseKeys.EmailMicroService,
+      ProjectDatabaseKeys.LdapPermissionsMicroService,
+
+      ProjectDatabaseKeys.SymphonyTranslateBot,
+      ProjectDatabaseKeys.SymphonyWebhookBot,
+      ProjectDatabaseKeys.SymphonyCobaGPTBot,
+      ProjectDatabaseKeys.SymphonyBusinessHighlightsBot,
+      ProjectDatabaseKeys.SymphonyPollBot,
+      ProjectDatabaseKeys.SymphonyRssBot,
+      ProjectDatabaseKeys.SymphonyBlogBot,
+      ProjectDatabaseKeys.SymphonyInteractiveBot,
+      ProjectDatabaseKeys.SymphonyHeadlessBot,
+
+      ProjectDatabaseKeys.BaseRestController,
+      ProjectDatabaseKeys.MarkdownToMessageMLConverter,
+      ProjectDatabaseKeys.SpringBootLdapRoleBasedAccessControlLibrary,
+
+      ProjectDatabaseKeys.SpringDataJPATemplate,
+      ProjectDatabaseKeys.SpringDataMongoTemplate,
+      ProjectDatabaseKeys.SpringBootLdapTemplate,
+    ],
+    company: CompanyDatabaseKeys.Commerzbank,
+  },
+  [RoleDatabaseKeys.OpenSourceContributor]: {
+    name: "Community Member",
+    category: ExperienceCategoriesEnum.Software,
+    type: ExperienceTypeEnum.Volunteering,
+    company: CompanyDatabaseKeys.OpenSource,
+    startDate: new ShortDate(2019, 12),
+    endDate: new ShortDate(new Date().getFullYear(), new Date().getMonth() + 1),
+    skills: [
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.Css,
+      SkillDatabaseKeys.UserCentricDesign,
+
+      SkillDatabaseKeys.UserAuthentication,
+    ],
+    relatedMaterials: [
+      ProjectDatabaseKeys.GnomeAllInOneClipboardExtension,
+      ProjectDatabaseKeys.GnomeQuickSettingsTweakExtension,
+    ],
+  },
+  [RoleDatabaseKeys.GoogleRhulDevelopersClubSoftwareEngineer]: {
+    name: "Student Software Engineer",
+    category: ExperienceCategoriesEnum.Software,
+    type: ExperienceTypeEnum.Volunteering,
+    skills: [
+      SkillDatabaseKeys.Python,
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.Rest,
+      SkillDatabaseKeys.GraphQl,
+      SkillDatabaseKeys.Apollo,
+
+      SkillDatabaseKeys.Firebase,
+      SkillDatabaseKeys.Supabase,
+      SkillDatabaseKeys.AuthJs,
+      SkillDatabaseKeys.ClerkAuth,
+      SkillDatabaseKeys.Auth0,
+      SkillDatabaseKeys.Flask,
+      SkillDatabaseKeys.ExpressJs,
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.Html,
+      SkillDatabaseKeys.Css,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.ChakraUi,
+      SkillDatabaseKeys.Databases,
+      SkillDatabaseKeys.RelationalDatabases,
+      SkillDatabaseKeys.PostgreSql,
+      SkillDatabaseKeys.MySql,
+      SkillDatabaseKeys.SqLite,
+      SkillDatabaseKeys.Normalisation,
+      SkillDatabaseKeys.NonRelationalDatabases,
+      SkillDatabaseKeys.Prisma,
+      SkillDatabaseKeys.SqlAlchemy,
+      SkillDatabaseKeys.GitHubActions,
+      SkillDatabaseKeys.PyTest,
+      SkillDatabaseKeys.Jest,
+      SkillDatabaseKeys.Vitest,
+      SkillDatabaseKeys.Cypress,
+      SkillDatabaseKeys.DevOps,
+      SkillDatabaseKeys.Containerisation,
+      SkillDatabaseKeys.Docker,
+
+      SkillDatabaseKeys.ArtificialIntelligence,
+      SkillDatabaseKeys.MachineLearning,
+      SkillDatabaseKeys.ScikitLearn,
+      SkillDatabaseKeys.Pandas,
+      SkillDatabaseKeys.NumPy,
+      SkillDatabaseKeys.Keras,
+      SkillDatabaseKeys.Gcp,
+      SkillDatabaseKeys.GcpCloudSQL,
+      SkillDatabaseKeys.GcpCloudStorage,
+      SkillDatabaseKeys.ContinuousDelivery,
+      SkillDatabaseKeys.ContinuousDeployment,
+      SkillDatabaseKeys.ContinuousIntegration,
+    ],
+    archived: true,
+    company: CompanyDatabaseKeys.GoogleRHULDevelopersClub,
+    relatedMaterials: [ProjectDatabaseKeys.Noodle],
+    startDate: new ShortDate(2022, 9),
+    endDate: new ShortDate(2023, 6),
+  },
+};
+
+export const roleDatabaseKeys: RoleDatabaseKeys[] = Object.keys(
+  rolesMap,
+) as RoleDatabaseKeys[];
+
+// Validate that all role keys only contain alphanumeric characters and dashes
+validateDatabaseKeys(roleDatabaseKeys);
+
+const rolesDatabase: Database<RoleInterface> =
+  updateRolesWithExperienceTime(rolesMap);
+
+export default rolesDatabase;

@@ -1,27 +1,27 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
-import MaterialList from "@/components/material-lists/MaterialList";
+import MaterialList from "@/components/material-lists/material-list";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
 } from "@/components/shadcn/ui/card";
-import SkillTableSection from "@/components/skills/SkillTableSection";
+import SkillTableSection from "@/components/skills/skill-table-section";
 import DynamicBreadcrumb, {
   type BreadcrumbPair,
-} from "@/components/ui/DynamicBreadcrumb";
-import StringList from "@/components/ui/StringList";
-import developerName from "@/constants/developerName";
+} from "@/components/ui/dynamic-breadcrumb";
+import StringList from "@/components/ui/string-list";
+import developerName from "@/constants/developer-name";
 import { ROUTES } from "@/constants/routes";
-import courseDatabaseMap from "@/database/courses/CourseDatabaseMap";
-import type CourseInterface from "@/database/courses/CourseInterface";
-import moduleDatabaseMap from "@/database/modules/ModuleDatabaseMap";
-import type ModuleInterface from "@/database/modules/ModuleInterface";
-import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
-import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
-import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
-import hasAnySkills from "@/lib/skills/hasAnySkills";
+import courseDatabaseMap from "@/database/courses/course-database-map";
+import type CourseInterface from "@/database/courses/course-interface";
+import moduleDatabaseMap from "@/database/modules/module-database-map";
+import type ModuleInterface from "@/database/modules/module-interface";
+import skillDatabaseMap from "@/database/skills/skill-database-map";
+import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/list-of-categorised-skills-by-type-interface";
+import buildSkillTableGroups from "@/lib/skills/group/build-skill-table-groups";
+import hasAnySkills from "@/lib/skills/has-any-skills";
 
 type Params = Promise<{ moduleKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;

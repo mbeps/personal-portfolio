@@ -1,0 +1,51 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import type React from "react";
+import { ROUTES } from "@/constants/routes";
+import type SkillDatabaseKeys from "@/database/skills/skill-database-keys";
+import skillDatabaseMap from "@/database/skills/skill-database-map";
+import type SkillInterface from "@/database/skills/skill-interface";
+import { isSkillAssociatedWithMaterial } from "@/lib/material/skill-usage-helpers";
+import Tag from "./tag";
+
+interface TagProps {
+  skillKey: SkillDatabaseKeys;
+  hide?: boolean;
+}
+
+/**
+ * Skill-specific tag that links to `/skills/[skillKey]` only when the aggregated material map shows at least one usage.
+ * Used across the homepage, skill directory, and detail views so CTA behavior stays consistent.
+ *
+ * @param skillKey Skill slug from the database.
+ * @param hide When true the tag renders nothing (used for filtering).
+ * @returns Clickable tag when the skill has material, otherwise a static label.
+ */
+const SkillTag: React.FC<TagProps> = ({ skillKey, hide }) => {
+  const currentPath: string = usePathname();
+  const skill: SkillInterface = skillDatabaseMap[skillKey];
+
+  const hasMaterial: ConstrainBoolean = isSkillAssociatedWithMaterial(skillKey);
+
+  if (hide || !skill) {
+    return <></>;
+  }
+
+  // If the skill exists but there's no associated material, adjust the link accordingly
+  const skillLink: string = hasMaterial
+    ? `${ROUTES.SKILLS.path}/${skillKey}`
+    : currentPath;
+
+  // Render the skill tag with a link if there's associated material, otherwise just show the tag
+  return hasMaterial ? (
+    <Link href={skillLink}>
+      <Tag hasHover={true}>{skill.name}</Tag>
+    </Link>
+  ) : (
+    <Tag hasHover={false}>{skill.name}</Tag>
+  );
+};
+
+export default SkillTag;

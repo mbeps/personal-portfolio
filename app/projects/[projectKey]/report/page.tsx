@@ -1,15 +1,15 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
-import SpecialReader from "@/components/reader/SpecialReader";
-import developerName from "@/constants/developerName";
+import SpecialReader from "@/components/reader/special-reader";
+import developerName from "@/constants/developer-name";
 import { PATHS } from "@/constants/paths";
 import { ROUTES } from "@/constants/routes";
-import type ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
-import projectDatabaseMap from "@/database/projects/ProjectDatabaseMap";
-import type ProjectInterface from "@/database/projects/ProjectInterface";
-import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
-import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
-import processMarkdownImages from "@/lib/processMarkdownImages";
+import type ProjectDatabaseKeys from "@/database/projects/project-database-keys";
+import projectDatabaseMap from "@/database/projects/project-database-map";
+import type ProjectInterface from "@/database/projects/project-interface";
+import skillDatabaseMap from "@/database/skills/skill-database-map";
+import getMarkdownFromFileSystem from "@/lib/file-system/get-markdown-from-file-system";
+import processMarkdownImages from "@/lib/process-markdown-images";
 
 // Update the type definitions
 type Params = { projectKey: string };

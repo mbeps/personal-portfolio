@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/shadcn/ui/button";
-import developerName from "@/constants/developerName";
+import developerName from "@/constants/developer-name";
 import { ROUTES } from "@/constants/routes";
 
 export const metadata: Metadata = {

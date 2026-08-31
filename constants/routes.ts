@@ -1,11 +1,11 @@
-import type BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
-import type CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
-import type CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
-import type ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
-import type ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
-import type RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
-import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import type NavigationItemInterface from "@/interfaces/NavigationItemInterface";
+import type BlogDatabaseKeys from "@/database/blogs/blog-database-keys";
+import type CertificateDatabaseKeys from "@/database/certificates/certificate-database-keys";
+import type CourseDatabaseKeys from "@/database/courses/course-database-keys";
+import type ModuleDatabaseKeys from "@/database/modules/module-database-keys";
+import type ProjectDatabaseKeys from "@/database/projects/project-database-keys";
+import type RoleDatabaseKeys from "@/database/roles/role-database-keys";
+import type SkillDatabaseKeys from "@/database/skills/skill-database-keys";
+import type NavigationItemInterface from "@/interfaces/navigation-item-interface";
 
 const SKILLS_BASE = "/skills" as const;
 const PROJECTS_BASE = "/projects" as const;

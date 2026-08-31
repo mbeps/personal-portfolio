@@ -1,0 +1,56 @@
+import Link from "next/link";
+import ProjectItem from "@/components/material-items/project-item";
+import { Button } from "@/components/shadcn/ui/button";
+import { ROUTES } from "@/constants/routes";
+import ProjectDatabaseKeys from "@/database/projects/project-database-keys";
+
+/**
+ * Homepage showcase that spotlights a curated subset of the project database to tease the work archive.
+ * Uses `ProjectItem` for consistency with the Projects page while keeping the hero CTA aligned with `/projects`.
+ *
+ * @returns Section element with featured project cards and navigation link.
+ */
+const ProjectsSection = () => {
+  const basePath: string = ROUTES.PROJECTS.path;
+
+  /**
+   * Only projects matching these slugs will be shown.
+   * In other words, only these projects will be displayed on the home page.
+   */
+  const displayedProjects: string[] = [
+    ProjectDatabaseKeys.AiChatClient,
+    ProjectDatabaseKeys.AiWorkflowAutomations,
+    ProjectDatabaseKeys.CarDealership,
+    ProjectDatabaseKeys.ForumDiscussions,
+    ProjectDatabaseKeys.MusicStreaming,
+    ProjectDatabaseKeys.RichTextNotes,
+    ProjectDatabaseKeys.RealTimeMessaging,
+    ProjectDatabaseKeys.CommerzbankAppStatus,
+    ProjectDatabaseKeys.CommerzbankRates,
+    ProjectDatabaseKeys.AlignmentInLargeLanguageModels,
+    ProjectDatabaseKeys.ExcelSpreadsheetMCP,
+    ProjectDatabaseKeys.LlamaCppProviderForGitHubCopilotChat,
+  ];
+
+  return (
+    <section id="projects" className="home-section-wrapper">
+      <h2>Projects</h2>
+
+      <div className="mt-6 flex flex-col space-y-14 md:mt-14 md:space-y-20">
+        {displayedProjects.map((slug, _idx) => (
+          <div key={slug}>
+            <ProjectItem projectKey={slug} subtitle={"category"} />
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-10 flex justify-center">
+        <Link href={basePath}>
+          <Button variant="outline">View All Projects</Button>
+        </Link>
+      </div>
+    </section>
+  );
+};
+
+export default ProjectsSection;

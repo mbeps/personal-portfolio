@@ -1,14 +1,14 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { beforeEach, describe, expect, test, vi } from "vitest";
-import type MaterialInterface from "@/database/materials/MaterialInterface";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import useMaterialFilterState from "@/hooks/useMaterialFilterState";
-import type Database from "@/interfaces/Database";
-import type FilterCategory from "@/interfaces/filters/FilterCategory";
-import type MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
-import filterMaterialByArchivedStatus from "@/lib/material/filter/filterMaterialByArchivedStatus";
-import filterMaterialByCategory from "@/lib/material/filter/filterMaterialByCategory";
-import filterMaterialBySkill from "@/lib/material/filter/filterMaterialBySkill";
+import type MaterialInterface from "@/database/materials/material-interface";
+import SkillDatabaseKeys from "@/database/skills/skill-database-keys";
+import useMaterialFilterState from "@/hooks/use-material-filter-state";
+import type Database from "@/interfaces/database";
+import type FilterCategory from "@/interfaces/filters/filter-category";
+import type MaterialGroupInterface from "@/interfaces/material/material-group-interface";
+import filterMaterialByArchivedStatus from "@/lib/material/filter/filter-material-by-archived-status";
+import filterMaterialByCategory from "@/lib/material/filter/filter-material-by-category";
+import filterMaterialBySkill from "@/lib/material/filter/filter-material-by-skill";
 
 const { mockUseQueryStates } = vi.hoisted(() => ({
   mockUseQueryStates: vi.fn(),

@@ -1,24 +1,24 @@
 import type { Metadata } from "next";
-import developerName from "@/constants/developerName";
+import developerName from "@/constants/developer-name";
 import { PATHS } from "@/constants/paths";
 import { ROUTES } from "@/constants/routes";
-import BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
-import certificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
-import type CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
-import courseDatabaseMap from "@/database/courses/CourseDatabaseMap";
-import type ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
-import projectDatabaseMap from "@/database/projects/ProjectDatabaseMap";
+import BlogDatabaseKeys from "@/database/blogs/blog-database-keys";
+import certificateDatabaseKeys from "@/database/certificates/certificate-database-keys";
+import type CourseDatabaseKeys from "@/database/courses/course-database-keys";
+import courseDatabaseMap from "@/database/courses/course-database-map";
+import type ProjectDatabaseKeys from "@/database/projects/project-database-keys";
+import projectDatabaseMap from "@/database/projects/project-database-map";
 import roleDatabaseMap, {
   roleDatabaseKeys,
-} from "@/database/roles/RoleDatabaseMap";
-import type RoleInterface from "@/database/roles/RoleInterface";
+} from "@/database/roles/role-database-map";
+import type RoleInterface from "@/database/roles/role-interface";
 import skillDatabaseMap, {
   skillDatabaseKeys,
-} from "@/database/skills/SkillDatabaseMap";
-import ExperienceTypeEnum from "@/enums/experience/ExperienceTypeEnum";
-import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
-import groupSkills, { GroupByOptions } from "@/lib/skills/group/groupSkills";
-import CvPageContent from "./_components/CvPageContent";
+} from "@/database/skills/skill-database-map";
+import ExperienceTypeEnum from "@/enums/experience/experience-type-enum";
+import getMarkdownFromFileSystem from "@/lib/file-system/get-markdown-from-file-system";
+import groupSkills, { GroupByOptions } from "@/lib/skills/group/group-skills";
+import CvPageContent from "./_components/cv-page-content";
 
 export const metadata: Metadata = {
   title: `${developerName} - CV`,
