@@ -127,8 +127,8 @@ const projectMap: Database<ProjectInterface> = {
       My first major project using Supabase was a basic music streaming site. 
       Users can upload songs, search and listen to music, as well as like the songs they enjoy.
       `,
-    repositoryURL: "https://github.com/mbeps/drumroll-music",
-    deploymentURL: "https://www.music.maruf-bepary.com/",
+    repositoryURL: `https://github.com/mbeps/drumroll-music`,
+    deploymentURL: "https://music.maruf-bepary.com/",
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
