@@ -42,7 +42,7 @@ export type SerializedRoleInterface = Omit<
 
 export default function CvPage() {
   // Fetch About Content
-  const aboutContent = getMarkdownFromFileSystem(PATHS.ABOUT.SHORT)?.content;
+  const aboutContent = getMarkdownFromFileSystem(PATHS.ABOUT.SHORT);
 
   // Fetch Skills
   const skillGroups = groupSkills(
@@ -59,7 +59,7 @@ export default function CvPage() {
     const role = roleDatabaseMap[key];
     const responsibilities = getMarkdownFromFileSystem(
       PATHS.ROLES(key).RESPONSIBILITIES,
-    )?.content;
+    );
 
     // Serialize role with formatted date strings for client component
     const serializedRole: SerializedRoleInterface = {

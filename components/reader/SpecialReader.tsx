@@ -69,12 +69,14 @@ const SpecialReader: React.FC<SpecialReaderProps> = ({
             {`Back to ${previousPageName}`}
           </Button>
         </Link>
-        <ContentsSection contentSection={splitBlot.contentsSection} />
+        {splitBlot.contentsSection ? (
+          <ContentsSection contentSection={splitBlot.contentsSection} />
+        ) : null}
       </div>
 
       {/* Article */}
       <div className="px-0 lg:px-20 w-full">
-        <Reader content={splitBlot.articleSection} size="lg:prose-lg" />
+        <Reader content={splitBlot.articleSection} size="reading" />
       </div>
     </>
   );

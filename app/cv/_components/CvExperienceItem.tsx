@@ -6,7 +6,7 @@ import { SerializedRoleInterface } from "../page";
 
 interface CvExperienceItemProps {
   role: SerializedRoleInterface;
-  responsibilities?: string;
+  responsibilities?: string | null;
   showArchived?: boolean;
 }
 
@@ -33,7 +33,7 @@ const CvExperienceItem: React.FC<CvExperienceItemProps> = ({
 
       {responsibilities && (
         <div className="mb-3 text-lg text-neutral-700 dark:text-neutral-300">
-          <Reader content={responsibilities} size="lg:prose-lg" />
+          <Reader content={responsibilities} size="base" />
         </div>
       )}
 

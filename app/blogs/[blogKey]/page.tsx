@@ -86,8 +86,7 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
     ? PATHS.PROJECTS(blogKey as ProjectDatabaseKeys).BLOG
     : PATHS.BLOGS(blogKey as BlogDatabaseKeys).BLOG;
 
-  const blogContent: string | undefined =
-    getMarkdownFromFileSystem(blogPath)?.content;
+  const blogContent: string | null = getMarkdownFromFileSystem(blogPath);
 
   if (!blogContent) {
     notFound();

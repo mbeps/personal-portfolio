@@ -29,7 +29,7 @@ const AllProjectItem: React.FC<AllProjectItemProps> = ({
 }) => {
   const features = getMarkdownFromFileSystem(
     PATHS.PROJECTS(projectKey).FEATURES,
-  )?.content;
+  );
 
   return (
     <div className="mb-12 break-inside-avoid">
@@ -76,7 +76,7 @@ const AllProjectItem: React.FC<AllProjectItemProps> = ({
           <h4 className="text-xl font-bold border-b-2 border-neutral-200 dark:border-neutral-800 pb-2 mb-4 uppercase tracking-wider">
             Key Features
           </h4>
-          <Reader content={features} size="lg:prose-lg" />
+          <Reader content={features} size="base" />
         </div>
       )}
     </div>

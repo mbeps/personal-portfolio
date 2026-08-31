@@ -55,9 +55,8 @@ export const metadata: Metadata = {
  */
 const AllPage: React.FC = () => {
   // 1. Data Assembly: About Me
-  const shortAbout =
-    getMarkdownFromFileSystem(PATHS.ABOUT.SHORT)?.content || "";
-  const longAbout = getMarkdownFromFileSystem(PATHS.ABOUT.LONG)?.content || "";
+  const shortAbout = getMarkdownFromFileSystem(PATHS.ABOUT.SHORT) || "";
+  const longAbout = getMarkdownFromFileSystem(PATHS.ABOUT.LONG) || "";
   const aboutContent = `${shortAbout}\n\n${longAbout}`.trim();
 
   // 2. Data Assembly: Skills (No archive filtering)
@@ -75,7 +74,7 @@ const AllPage: React.FC = () => {
     const role = roleDatabaseMap[key];
     const responsibilities = getMarkdownFromFileSystem(
       PATHS.ROLES(key).RESPONSIBILITIES,
-    )?.content;
+    );
 
     const serializedRole: SerializedRoleInterface = {
       ...role,

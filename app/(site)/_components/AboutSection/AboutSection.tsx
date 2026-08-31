@@ -18,9 +18,9 @@ const AboutSection = () => {
    * About me written in markdown.
    * This markdown is converted to HTML and displayed on the page.
    */
-  const blogContent: string | undefined = getMarkdownFromFileSystem(
+  const blogContent: string | null = getMarkdownFromFileSystem(
     PATHS.ABOUT.SHORT,
-  )?.content;
+  );
 
   return (
     <section id="about" className="home-section-wrapper">
@@ -46,7 +46,7 @@ const AboutSection = () => {
             </h1>
 
             <div className="space-y-2">
-              <Reader content={blogContent} size="lg:prose-lg" />
+              <Reader content={blogContent} size="lg" />
               <Link
                 href={ROUTES.ABOUT.path}
                 className="

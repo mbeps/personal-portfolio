@@ -35,7 +35,7 @@ const ContentsSection: React.FC<ContentsSectionProps> = ({
   const isMounted: boolean = useIsMounted();
   const [isPanelOpen, setIsFilterModalOpen] = useState(isLargeScreen);
 
-  if (!isMounted) {
+  if (!isMounted || !contentSection || !contentSection.trim()) {
     return null;
   }
 
@@ -62,14 +62,12 @@ const ContentsSection: React.FC<ContentsSectionProps> = ({
             title="Contents"
             toggle={handleTogglePanel}
             isOpen={isPanelOpen}
-            secondaryClassName={
-              isUltraLargeScreen ? "md:w-lg" : "md:w-[24rem]"
-            }
+            secondaryClassName={isUltraLargeScreen ? "md:w-lg" : "md:w-[24rem]"}
           >
             <ScrollArea className="h-full px-2 pb-6">
               <Reader
                 content={contentSection}
-                size={isUltraLargeScreen ? "lg:prose-lg" : "lg:prose-md"}
+                size={isUltraLargeScreen ? "base" : "compact"}
               />
             </ScrollArea>
           </SidePanel>
@@ -93,7 +91,7 @@ const ContentsSection: React.FC<ContentsSectionProps> = ({
                 </div>
               </AccordionTrigger>
               <AccordionContent className="px-2">
-                <Reader content={contentSection} />
+                <Reader content={contentSection} size="compact" />
               </AccordionContent>
             </AccordionItem>
           </Accordion>

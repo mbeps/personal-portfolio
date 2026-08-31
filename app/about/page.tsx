@@ -29,9 +29,7 @@ import { GrAppsRounded } from "react-icons/gr";
 import location from "@/constants/location";
 import { PATHS } from "@/constants/paths";
 
-const aboutContent: string | undefined = getMarkdownFromFileSystem(
-  PATHS.ABOUT.LONG,
-)?.content;
+const aboutContent: string | null = getMarkdownFromFileSystem(PATHS.ABOUT.LONG);
 
 export const metadata: Metadata = {
   title: `${developerName} - About Me`,
@@ -123,7 +121,7 @@ export default function About() {
       </div>
 
       <div className="mb-10">
-        <Reader content={aboutContent} size="lg:prose-lg" />
+        <Reader content={aboutContent} size="lg" />
       </div>
 
       <Accordion type="single" collapsible>

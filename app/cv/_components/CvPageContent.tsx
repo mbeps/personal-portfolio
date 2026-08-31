@@ -18,15 +18,15 @@ import { SerializedRoleInterface } from "../page";
 import { useQueryState, parseAsBoolean } from "nuqs";
 
 interface CvPageContentProps {
-  aboutContent?: string;
+  aboutContent?: string | null;
   skillGroups: CategorisedSkillsInterface[];
   workExperience: {
     role: SerializedRoleInterface;
-    responsibilities?: string;
+    responsibilities?: string | null;
   }[];
   volunteeringExperience: {
     role: SerializedRoleInterface;
-    responsibilities?: string;
+    responsibilities?: string | null;
   }[];
   education: CourseInterface[];
   projects: ProjectInterface[];
@@ -95,7 +95,7 @@ const CvPageContent: React.FC<CvPageContentProps> = ({
 
       {aboutContent && (
         <CvSection title="About Me">
-          <Reader content={aboutContent} size="lg:prose-lg" />
+          <Reader content={aboutContent} size="lg" />
         </CvSection>
       )}
 
