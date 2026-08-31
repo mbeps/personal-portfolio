@@ -59,7 +59,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
   // Prevent hydration mismatch
   if (!isMounted) {
     return (
-      <pre className="code-block-loading">
+      <pre className="code-block-loading not-typeset">
         <code className={className}>{codeText}</code>
       </pre>
     );
@@ -71,31 +71,33 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
     : "rgba(15, 23, 42, 0.08)";
 
   return (
-    // @ts-ignore - SyntaxHighlighter has type issues with React 18
-    <SyntaxHighlighter
-      language={language}
-      style={isDark ? oneDark : oneLight}
-      customStyle={{
-        margin: "1.5rem 0",
-        borderRadius: "0.5rem",
-        fontSize: "0.95rem",
-        lineHeight: "1.6",
-        padding: "1rem",
-        backgroundColor,
-        border: `1px solid ${borderColor}`,
-      }}
-      codeTagProps={{
-        style: {
-          backgroundColor: "transparent",
-          display: "block",
-        },
-      }}
-      showLineNumbers={false}
-      wrapLongLines={true}
-      PreTag="div"
-    >
-      {codeText}
-    </SyntaxHighlighter>
+    <div className="not-typeset">
+      {/* @ts-ignore - SyntaxHighlighter has type issues with React 19 */}
+      <SyntaxHighlighter
+        language={language}
+        style={isDark ? oneDark : oneLight}
+        customStyle={{
+          margin: "1.5rem 0",
+          borderRadius: "0.5rem",
+          fontSize: "0.95rem",
+          lineHeight: "1.6",
+          padding: "1rem",
+          backgroundColor,
+          border: `1px solid ${borderColor}`,
+        }}
+        codeTagProps={{
+          style: {
+            backgroundColor: "transparent",
+            display: "block",
+          },
+        }}
+        showLineNumbers={false}
+        wrapLongLines={true}
+        PreTag="div"
+      >
+        {codeText}
+      </SyntaxHighlighter>
+    </div>
   );
 };
 

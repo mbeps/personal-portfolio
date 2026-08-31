@@ -161,9 +161,9 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
    * Get the features content from the file system.
    * This is used to display the features and blog sections.
    */
-  const features: string | undefined = getMarkdownFromFileSystem(
+  const features: string | null = getMarkdownFromFileSystem(
     PATHS.PROJECTS(projectKey).FEATURES,
-  )?.content;
+  );
 
   /**
    * Get the blog content from the file system.
@@ -171,7 +171,7 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
    */
   const hasProjectReport: boolean = !!getMarkdownFromFileSystem(
     PATHS.PROJECTS(projectKey).BLOG,
-  )?.content;
+  );
 
   /**
    * Whether to show the links section.

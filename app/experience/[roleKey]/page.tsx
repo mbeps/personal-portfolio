@@ -105,9 +105,9 @@ const RolePage: React.FC<{ params: Params }> = async ({ params }) => {
     buildSkillTableGroups(roleData.skills);
   const hasSkills = hasAnySkills(allGroupedSkills);
 
-  const responsibilities: string | undefined = getMarkdownFromFileSystem(
+  const responsibilities: string | null = getMarkdownFromFileSystem(
     PATHS.ROLES(roleKey).RESPONSIBILITIES,
-  )?.content;
+  );
 
   const hasResponsibilities: boolean = !!responsibilities;
 
@@ -194,7 +194,7 @@ const RolePage: React.FC<{ params: Params }> = async ({ params }) => {
               </CardHeader>
               <CardContent>
                 <div className="-mt-6">
-                  <Reader content={responsibilities} size="lg:prose-lg" />
+                  <Reader content={responsibilities} size="base" />
                 </div>
               </CardContent>
             </Card>

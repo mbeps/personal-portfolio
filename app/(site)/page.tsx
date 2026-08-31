@@ -10,7 +10,7 @@ import { PATHS } from "@/constants/paths";
 
 const aboutContent: string | undefined = getMarkdownFromFileSystem(
   PATHS.ABOUT.SHORT,
-)?.content.replace(/^\*/gm, "");
+)?.replace(/^\*/gm, "");
 
 export const metadata: Metadata = {
   title: developerName,

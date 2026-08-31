@@ -1,177 +1,138 @@
 "use client";
 
-import Markdown from "markdown-to-jsx";
-import React, { useMemo } from "react";
-import InlineMath from "./InlineMath";
-import DisplayMath from "./DisplayMath";
-import Mermaid from "./Mermaid";
+import React from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import rehypeRaw from "rehype-raw";
 import CodeBlock from "./CodeBlock";
+import Mermaid from "./Mermaid";
 import HtmlRender from "./HtmlRender";
+import { cn } from "@/lib/utils";
 
-type ReaderProps = {
-  content: string | undefined;
-  size?: "lg:prose-sm" | "lg:prose-base" | "lg:prose-md" | "lg:prose-lg";
+export type ReaderSize = "sm" | "base" | "lg" | "reading" | "compact" | "docs";
+
+export type ReaderProps = {
+  content: string | null | undefined;
+  size?: ReaderSize;
+  className?: string;
 };
 
 type HeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
-const createHeadingComponent = (
-  Tag: HeadingTag,
-): React.FC<React.HTMLAttributes<HTMLHeadingElement>> => {
-  const HeadingComponent: React.FC<
-    React.HTMLAttributes<HTMLHeadingElement>
-  > = ({ className, ...props }) => {
-    const combinedClassName = [className, "markdown-heading"]
-      .filter(Boolean)
-      .join(" ")
-      .trim();
+const sizeToPresetMap: Record<ReaderSize, string> = {
+  sm: "typeset-compact",
+  compact: "typeset-compact",
+  base: "typeset-docs",
+  docs: "typeset-docs",
+  lg: "typeset-reading",
+  reading: "typeset-reading",
+};
 
-    return React.createElement(Tag, {
-      ...props,
-      className: combinedClassName,
-    });
+const createHeadingComponent = (Tag: HeadingTag) => {
+  const HeadingComponent = ({
+    className,
+    children,
+    node: _node,
+    ...props
+  }: React.HTMLAttributes<HTMLHeadingElement> & { node?: unknown }) => {
+    return React.createElement(
+      Tag,
+      { ...props, className: cn(className, "markdown-heading") },
+      children,
+    );
   };
-
   HeadingComponent.displayName = `Markdown${Tag.toUpperCase()}`;
   return HeadingComponent;
 };
 
-const headingOverrides = {
-  h1: { component: createHeadingComponent("h1") },
-  h2: { component: createHeadingComponent("h2") },
-  h3: { component: createHeadingComponent("h3") },
-  h4: { component: createHeadingComponent("h4") },
-  h5: { component: createHeadingComponent("h5") },
-  h6: { component: createHeadingComponent("h6") },
+/**
+ * Normalizes math block delimiters in markdown so `remark-math` parses any `$$...$$`
+ * formulas as standalone block math elements (with displayMode, centering, and generous line spacing),
+ * even if they were written directly underneath text without surrounding blank lines.
+ */
+const normalizeMathBlocks = (rawContent: string): string => {
+  // Split by fenced code blocks to ensure we don't modify code samples
+  const parts = rawContent.split(/(```[\s\S]*?```)/g);
+  return parts
+    .map((part, index) => {
+      // Odd index is a code block
+      if (index % 2 === 1) return part;
+      // Normalize any $$...$$ into isolated block math paragraphs
+      return part.replace(/\$\$([\s\S]*?)\$\$/g, (_match, math) => {
+        return `\n\n$$\n${math.trim()}\n$$\n\n`;
+      });
+    })
+    .join("");
 };
 
 /**
- * Base markdown renderer used by the about page, project features, and other short-form sections, complete with inline and block LaTeX support.
+ * Base markdown renderer powered by react-markdown and Shadcn Typeset.
+ * Natively supports GFM, KaTeX math (inline & display), Mermaid diagrams,
+ * Prism syntax highlighting, custom HTML rendering, and rounded responsive tables.
  *
- * @param content Markdown string from the filesystem helpers.
- * @param size Tailwind prose size modifier.
- * @returns Prose article element with math-aware rendering.
+ * @param content Markdown string to render.
+ * @param size Typeset size / rhythm preset ("sm" | "base" | "lg" | "reading" | "compact" | "docs").
+ * @param className Optional container className.
+ * @returns Styled markdown article element.
  */
-const Reader: React.FC<ReaderProps> = ({ content, size = "lg" }) => {
-  // Parse the markdown content and extract LaTeX expressions and Mermaid diagrams
-  const parsedContent = useMemo(() => {
-    if (!content) return "";
+const Reader: React.FC<ReaderProps> = ({
+  content,
+  size = "docs",
+  className,
+}) => {
+  if (!content) return null;
 
-    // Keep track of LaTeX blocks and Mermaid diagrams we extract
-    const mathBlocks: { [key: string]: string } = {};
-    const mermaidBlocks: { [key: string]: string } = {};
-    const htmlBlocks: { [key: string]: string } = {};
-    let blockCount: number = 0;
+  const presetClass = sizeToPresetMap[size] || "typeset-docs";
+  const processedContent = normalizeMathBlocks(content);
 
-    // First, extract HtmlRender code blocks (```html-render...```)
-    let processedContent: string = content.replace(
-      /```html-render\n([\s\S]*?)```/g,
-      (match, htmlCode) => {
-        const placeholder = `HTMLBLOCK_${blockCount++}`;
-        htmlBlocks[placeholder] = htmlCode.trim();
-        return `<HtmlRender>${placeholder}</HtmlRender>`;
-      },
-    );
+  return (
+    <article className={cn("typeset", presetClass, "max-w-none", className)}>
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm, remarkMath]}
+        rehypePlugins={[rehypeKatex, rehypeRaw]}
+        components={{
+          h1: createHeadingComponent("h1"),
+          h2: createHeadingComponent("h2"),
+          h3: createHeadingComponent("h3"),
+          h4: createHeadingComponent("h4"),
+          h5: createHeadingComponent("h5"),
+          h6: createHeadingComponent("h6"),
+          pre({ children }) {
+            return <>{children}</>;
+          },
+          code({ className, children, node: _node, ...props }) {
+            const match = /language-(\w+)|lang-(\w+)/.exec(className || "");
+            const lang = match?.[1] || match?.[2] || "";
+            const codeText = String(children).replace(/\n$/, "");
 
-    // Then, extract Mermaid code blocks (```mermaid...```)
-    processedContent = processedContent.replace(
-      /```mermaid\n([\s\S]*?)```/g,
-      (match, mermaidCode) => {
-        const placeholder = `MERMAIDBLOCK_${blockCount++}`;
-        mermaidBlocks[placeholder] = mermaidCode.trim();
-        return `<Mermaid>${placeholder}</Mermaid>`;
-      },
-    );
+            if (lang === "mermaid") {
+              return <Mermaid chart={codeText} />;
+            }
+            if (lang === "html-render") {
+              return <HtmlRender html={codeText} />;
+            }
 
-    // Then, replace display math blocks ($$...$$) with placeholders
-    processedContent = processedContent.replace(
-      /\$\$([\s\S]*?)\$\$/g,
-      (match, latex) => {
-        const placeholder = `MATHBLOCK_${blockCount++}`;
-        mathBlocks[placeholder] = latex.trim();
-        return `<DisplayMath>${placeholder}</DisplayMath>`;
-      },
-    );
-
-    // Then, replace inline math ($...$) with placeholders
-    processedContent = processedContent.replace(
-      /\$([^\$]+?)\$/g,
-      (match, latex) => {
-        const placeholder = `MATHINLINE_${blockCount++}`;
-        mathBlocks[placeholder] = latex.trim();
-        return `<InlineMath>${placeholder}</InlineMath>`;
-      },
-    );
-
-    // Create a custom Markdown component with overrides
-    const customMarkdown = (
-      <Markdown
-        options={{
-          overrides: {
-            ...headingOverrides,
-            code: {
-              component: CodeBlock,
-            },
-            HtmlRender: {
-              component: ({ children }: { children: string }) => {
-                const placeholder = String(children);
-                const htmlCode = htmlBlocks[placeholder] || placeholder;
-                return <HtmlRender html={htmlCode} />;
-              },
-            },
-            Mermaid: {
-              component: ({ children }: { children: string }) => {
-                const placeholder = String(children);
-                const mermaidCode = mermaidBlocks[placeholder] || placeholder;
-                return <Mermaid chart={mermaidCode} />;
-              },
-            },
-            DisplayMath: {
-              component: ({ children }: { children: string }) => {
-                const placeholder = String(children);
-                const latex = mathBlocks[placeholder] || placeholder;
-                return <DisplayMath>{latex}</DisplayMath>;
-              },
-            },
-            InlineMath: {
-              component: ({ children }: { children: string }) => {
-                const placeholder = String(children);
-                const latex = mathBlocks[placeholder] || placeholder;
-                return <InlineMath>{latex}</InlineMath>;
-              },
-            },
-            table: {
-              component: ({
-                children,
-                ...props
-              }: React.HTMLAttributes<HTMLTableElement>) => (
-                <div className="overflow-x-auto">
-                  <table {...props}>{children}</table>
-                </div>
-              ),
-            },
+            return (
+              <CodeBlock className={className} {...props}>
+                {children}
+              </CodeBlock>
+            );
+          },
+          table({ children, node: _node, ...props }) {
+            return (
+              <div className="typeset-scroll">
+                <table className="rounded-table" {...props}>
+                  {children}
+                </table>
+              </div>
+            );
           },
         }}
       >
         {processedContent}
-      </Markdown>
-    );
-
-    return customMarkdown;
-  }, [content]);
-
-  return (
-    <article
-      className={`
-        prose
-        ${size}
-        dark:prose-invert
-        prose-img:rounded-lg
-        prose-img:mx-auto
-        max-w-none
-      `}
-    >
-      {parsedContent}
+      </ReactMarkdown>
     </article>
   );
 };

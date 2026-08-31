@@ -41,7 +41,7 @@ export async function generateMetadata(
   // Check if the report markdown exists
   const reportExists = !!getMarkdownFromFileSystem(
     PATHS.PROJECTS(projectKey as ProjectDatabaseKeys).BLOG,
-  )?.content;
+  );
 
   if (!reportExists) {
     notFound();
@@ -77,9 +77,9 @@ const ProjectReportPage = async ({ params }: PageProps) => {
   const projectKey: string = resolvedParams.projectKey;
   const projectData: ProjectInterface = projectDatabaseMap[projectKey];
 
-  const reportBlog: string | undefined = getMarkdownFromFileSystem(
+  const reportBlog: string | null = getMarkdownFromFileSystem(
     PATHS.PROJECTS(projectKey as ProjectDatabaseKeys).BLOG,
-  )?.content;
+  );
 
   const hasBlog: boolean = !!reportBlog;
 
@@ -122,7 +122,7 @@ export const generateStaticParams = async () => {
       // Only include projects that have a blog/report file
       const reportExists = getMarkdownFromFileSystem(
         PATHS.PROJECTS(projectKey as ProjectDatabaseKeys).BLOG,
-      )?.content;
+      );
       return !!reportExists;
     })
     .map((projectKey) => ({

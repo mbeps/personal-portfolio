@@ -28,7 +28,7 @@ const inter = Inter({
  */
 const aboutContent: string | undefined = getMarkdownFromFileSystem(
   PATHS.ABOUT.SHORT,
-)?.content.replace(/^\*/gm, "");
+)?.replace(/^\*/gm, "");
 
 export const metadata: Metadata = {
   title: developerName,
