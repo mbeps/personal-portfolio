@@ -53,7 +53,7 @@ const Mermaid: React.FC<MermaidProps> = ({ chart }) => {
         containerRef.current.innerHTML = "";
 
         // Generate unique ID for this diagram
-        const id = `mermaid-${Math.random().toString(36).substr(2, 9)}`;
+        const id = `mermaid-${Math.random().toString(36).substring(2, 11)}`;
 
         // Render the diagram
         const { svg } = await mermaid.render(id, chart);
