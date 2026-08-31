@@ -1,7 +1,7 @@
+import fs from "node:fs";
+import { describe, expect, test, vi } from "vitest";
 /// <reference types="vitest/globals" />
 import getImagesFromFileSystem from "@/lib/file-system/getImagesFromFileSystem";
-import { describe, expect, test, vi } from "vitest";
-import fs from "fs";
 
 vi.mock("fs");
 

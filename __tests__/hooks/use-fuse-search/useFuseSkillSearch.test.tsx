@@ -1,12 +1,11 @@
+import { renderToStaticMarkup } from "react-dom/server";
+import { describe, expect, test } from "vitest";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import SkillInterface from "@/database/skills/SkillInterface";
+import type SkillInterface from "@/database/skills/SkillInterface";
 import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
 import useFuseSkillSearch from "@/hooks/use-fuse-search/useFuseSkillSearch";
-import Database from "@/interfaces/Database";
-import React from "react";
-import { renderToStaticMarkup } from "react-dom/server";
-import { describe, expect, test } from "vitest";
+import type Database from "@/interfaces/Database";
 
 interface HarnessProps {
   itemsMap: Database<SkillInterface>;

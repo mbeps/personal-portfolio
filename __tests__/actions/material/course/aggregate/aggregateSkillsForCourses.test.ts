@@ -1,13 +1,13 @@
-/// <reference types="vitest/globals" />
-import aggregateSkillsForCourses from "@/lib/material/course/aggregate/aggregateSkillsForCourses";
+import { describe, expect, test } from "vitest";
 import CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
 import type CourseInterface from "@/database/courses/CourseInterface";
 import ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
 import type ModuleInterface from "@/database/modules/ModuleInterface";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import type Database from "@/interfaces/Database";
 import ModuleYearGroupsEnum from "@/enums/module/ModuleYearGroupsEnum";
-import { describe, expect, test } from "vitest";
+import type Database from "@/interfaces/Database";
+/// <reference types="vitest/globals" />
+import aggregateSkillsForCourses from "@/lib/material/course/aggregate/aggregateSkillsForCourses";
 
 describe("aggregateSkillsForCourses", () => {
   test("merges skills from modules and removes duplicates", () => {

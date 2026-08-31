@@ -1,8 +1,8 @@
-import React from "react";
-import companyDatabaseMap from "@/database/companies/CompanyDatabaseMap";
+import type React from "react";
 import Reader from "@/components/reader/Reader";
+import companyDatabaseMap from "@/database/companies/CompanyDatabaseMap";
+import type { SerializedRoleInterface } from "../page";
 import CvItemSkills from "./CvItemSkills";
-import { SerializedRoleInterface } from "../page";
 
 interface CvExperienceItemProps {
   role: SerializedRoleInterface;
@@ -19,14 +19,14 @@ const CvExperienceItem: React.FC<CvExperienceItemProps> = ({
 
   return (
     <div className="mb-6 break-inside-avoid">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-2">
+      <div className="mb-2 flex flex-col items-start justify-between md:flex-row md:items-center">
         <div>
-          <h3 className="text-2xl font-bold">{role.name}</h3>
-          <p className="text-xl font-semibold text-neutral-600 dark:text-neutral-400">
+          <h3 className="font-bold text-2xl">{role.name}</h3>
+          <p className="font-semibold text-neutral-600 text-xl dark:text-neutral-400">
             {company.name}
           </p>
         </div>
-        <div className="text-lg text-neutral-500 dark:text-neutral-400 font-mono">
+        <div className="font-mono text-lg text-neutral-500 dark:text-neutral-400">
           {role.startDate} - {role.endDate}
         </div>
       </div>

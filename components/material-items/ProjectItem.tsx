@@ -1,16 +1,16 @@
+import Image from "next/image";
+import Link from "next/link";
+import type React from "react";
+import { BsArrowUpRightCircle, BsGithub, BsInfoCircle } from "react-icons/bs";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
 import { ROUTES } from "@/constants/routes";
-import ProjectInterface from "@/database/projects/ProjectInterface";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import { BsArrowUpRightCircle, BsGithub, BsInfoCircle } from "react-icons/bs";
-import { AspectRatio } from "../shadcn/ui/aspect-ratio";
 import projectDatabaseMap from "@/database/projects/ProjectDatabaseMap";
+import type ProjectInterface from "@/database/projects/ProjectInterface";
+import { AspectRatio } from "../shadcn/ui/aspect-ratio";
 
 interface ProjectItemProps {
   projectKey: string;
@@ -35,30 +35,13 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
     "md:hover:-translate-y-1 transition-transform cursor-pointer hover:shadow-lg rounded-full";
 
   return (
-    <div
-      className="
-      bg-neutral-100 dark:bg-neutral-800 
-        sm:bg-transparent sm:dark:bg-transparent
-        p-4 sm:p-0
-        rounded-xl 
-        border border-neutral-300 dark:border-neutral-700 md:border-0
-        shadow-sm md:shadow-none lg:shadow-none
-        transition-colors duration-700"
-    >
+    <div className="rounded-xl border border-neutral-300 bg-neutral-100 p-4 shadow-sm transition-colors duration-700 sm:bg-transparent sm:p-0 md:border-0 md:shadow-none lg:shadow-none dark:border-neutral-700 dark:bg-neutral-800 sm:dark:bg-transparent">
       <div className="flex flex-col lg:flex-row lg:space-x-12">
         {/* Project Cover */}
         {projectData.thumbnailImage ? (
-          <div
-            className="
-              lg:w-1/2
-              rounded-xl
-              transform lg:hover:scale-104
-              shadow-md lg:hover:shadow-2xl
-              transition-all duration-500 ease-in-out
-              "
-          >
+          <div className="transform rounded-xl shadow-md transition-all duration-500 ease-in-out lg:w-1/2 lg:hover:scale-104 lg:hover:shadow-2xl">
             <Link href={`${basePath}/${projectKey}`}>
-              <AspectRatio ratio={8 / 5} className="overflow-hidden relative">
+              <AspectRatio ratio={8 / 5} className="relative overflow-hidden">
                 <Image
                   src={projectData.thumbnailImage}
                   key={projectData.thumbnailImage}
@@ -66,25 +49,14 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
                   fill={true}
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   quality={15}
-                  className="
-                    rounded-xl 
-                    cursor-pointer
-                    object-cover
-                  "
+                  className="cursor-pointer rounded-xl object-cover"
                 />
               </AspectRatio>
             </Link>
           </div>
         ) : (
           <div>
-            <div
-              className="
-                border-l-4 border-red-400 dark:border-red-900
-                transition-all duration-500 ease-in-out
-                h-[110%]
-                rounded-xl
-                "
-            />
+            <div className="h-[110%] rounded-xl border-red-400 border-l-4 transition-all duration-500 ease-in-out dark:border-red-900" />
           </div>
         )}
 
@@ -95,48 +67,26 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
         >
           {/* Project Title */}
           <Link href={`${basePath}/${projectKey}`}>
-            <h1
-              className="
-                  flex flex-col
-                  justify-center items-center md:items-start
-                  mb-2
-                  text-3xl md:text-4xl font-bold text-center md:text-left 
-                  md:hover:text-red-500 md:dark:hover:text-red-800
-                  transition-colors duration-500 ease-in-out
-                "
-            >
+            <h1 className="mb-2 flex flex-col items-center justify-center text-center font-bold text-3xl transition-colors duration-500 ease-in-out md:items-start md:text-left md:text-4xl md:hover:text-red-500 md:dark:hover:text-red-800">
               {projectData.name}
             </h1>
           </Link>
 
           {/* Project Subtitle */}
           {!!subtitle && (
-            <p
-              className="
-                italic font-medium
-                text-red-700 dark:text-red-300
-                text-center lg:text-left
-                -mb-2
-              "
-            >
+            <p className="-mb-2 text-center font-medium text-red-700 italic lg:text-left dark:text-red-300">
               {subtitle === "type" && `${projectData.type} Project`}
               {subtitle === "category" && `${projectData.category}`}
             </p>
           )}
 
           {/* Project Description */}
-          <p className="text-xl text-left leading-7 mt-4 mb-4 text-neutral-600 dark:text-neutral-400">
+          <p className="mt-4 mb-4 text-left text-neutral-600 text-xl leading-7 dark:text-neutral-400">
             {projectData.description}
           </p>
 
           {/* Buttons */}
-          <div
-            className="
-              flex flex-row 
-              justify-center md:justify-start 
-              align-bottom 
-              space-x-4 mt-8"
-          >
+          <div className="mt-8 flex flex-row justify-center space-x-4 align-bottom md:justify-start">
             {/* Project Page */}
             <Tooltip>
               <TooltipTrigger>

@@ -1,5 +1,5 @@
-import processMarkdownImages from "@/lib/processMarkdownImages";
 import { describe, expect, it } from "vitest";
+import processMarkdownImages from "@/lib/processMarkdownImages";
 
 describe("processMarkdownImages", () => {
   it("should replace single {BASE} placeholder with base path", () => {
@@ -14,7 +14,7 @@ describe("processMarkdownImages", () => {
     const basePath = "/projects/my-project";
     const result = processMarkdownImages(content, basePath);
     expect(result).toBe(
-      "![Image1](/projects/my-project/img1.png)\n![Image2](/projects/my-project/img2.png)"
+      "![Image1](/projects/my-project/img1.png)\n![Image2](/projects/my-project/img2.png)",
     );
   });
 
@@ -37,7 +37,7 @@ describe("processMarkdownImages", () => {
     const basePath = "/resources";
     const result = processMarkdownImages(content, basePath);
     expect(result).toBe(
-      "Text /resources/file.pdf and ![alt](/resources/image.jpg)"
+      "Text /resources/file.pdf and ![alt](/resources/image.jpg)",
     );
   });
 });

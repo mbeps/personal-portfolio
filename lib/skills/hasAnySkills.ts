@@ -1,4 +1,4 @@
-import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
+import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
 
 /**
  * Checks whether any grouped skill collection contains at least one skill entry.
@@ -7,13 +7,13 @@ import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCa
  * @returns True when there is at least one skill to display.
  */
 export default function hasAnySkills(
-  groupedSkills: ListOfCategorisedSkillsByTypeInterface[] | undefined
+  groupedSkills: ListOfCategorisedSkillsByTypeInterface[] | undefined,
 ): boolean {
   if (!Array.isArray(groupedSkills)) {
     return false;
   }
 
   return groupedSkills.some(({ skillCategories }) =>
-    skillCategories.some(({ skills }) => skills.length > 0)
+    skillCategories.some(({ skills }) => skills.length > 0),
   );
 }

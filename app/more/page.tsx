@@ -1,7 +1,7 @@
-import Grid from "@/components/ui/Grid";
 import PageNavigationItem from "@/app/more/_components/PageNavigationItem";
+import Grid from "@/components/ui/Grid";
 import developerName from "@/constants/developerName";
-import { ROUTES, NAV_ITEMS } from "@/constants/routes";
+import { NAV_ITEMS, ROUTES } from "@/constants/routes";
 
 /**
  * Static metadata for the all-pages directory so the discovery grid matches the route’s head tags.

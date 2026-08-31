@@ -1,7 +1,7 @@
+import type CertificateInterface from "@/database/certificates/CertificateInterface";
+import type Database from "@/interfaces/Database";
+import type FilterOption from "@/interfaces/filters/FilterOption";
 import stringToSlug from "@/lib/stringToSlug";
-import CertificateInterface from "@/database/certificates/CertificateInterface";
-import Database from "@/interfaces/Database";
-import FilterOption from "@/interfaces/filters/FilterOption";
 import generateFilterOptions from "./generateFilterOptions";
 
 /**

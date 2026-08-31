@@ -1,15 +1,14 @@
 "use client";
 
-import { isSkillAssociatedWithMaterial } from "@/lib/material/skillUsageHelpers";
-import materialDatabaseMap from "@/database/materials/MaterialDatabaseMap";
-import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
-import SkillInterface from "@/database/skills/SkillInterface";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
-import Tag from "./Tag";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import type React from "react";
 import { ROUTES } from "@/constants/routes";
+import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
+import type SkillInterface from "@/database/skills/SkillInterface";
+import { isSkillAssociatedWithMaterial } from "@/lib/material/skillUsageHelpers";
+import Tag from "./Tag";
 
 interface TagProps {
   skillKey: SkillDatabaseKeys;
@@ -35,7 +34,7 @@ const SkillTag: React.FC<TagProps> = ({ skillKey, hide }) => {
   }
 
   // If the skill exists but there's no associated material, adjust the link accordingly
-  let skillLink: string = hasMaterial
+  const skillLink: string = hasMaterial
     ? `${ROUTES.SKILLS.path}/${skillKey}`
     : currentPath;
 

@@ -1,5 +1,5 @@
-import React from "react";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import type React from "react";
+import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
 import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
@@ -45,16 +45,16 @@ const CvItemSkills: React.FC<CvItemSkillsProps> = ({
 
   return (
     <div className="mt-3">
-      <h4 className="text-xs font-bold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-2">
+      <h4 className="mb-2 font-bold text-neutral-500 text-xs uppercase tracking-widest dark:text-neutral-400">
         Skills
       </h4>
       <div className="space-y-1">
         {skillGroups.map((group) => (
           <div key={group.title} className="flex flex-col md:flex-row">
-            <span className="text-base font-semibold text-neutral-800 dark:text-neutral-200 w-full md:w-1/3 mb-1 md:mb-0">
+            <span className="mb-1 w-full font-semibold text-base text-neutral-800 md:mb-0 md:w-1/3 dark:text-neutral-200">
               {group.title}:
             </span>
-            <span className="text-base text-neutral-600 dark:text-neutral-400 w-full md:w-2/3">
+            <span className="w-full text-base text-neutral-600 md:w-2/3 dark:text-neutral-400">
               {group.skills.join(", ")}
             </span>
           </div>

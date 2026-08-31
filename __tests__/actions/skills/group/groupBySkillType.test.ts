@@ -1,11 +1,11 @@
-/// <reference types="vitest/globals" />
-import groupBySkillType from "@/lib/skills/group/groupBySkillType";
-import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
-import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
-import type SkillInterface from "@/database/skills/SkillInterface";
-import type Database from "@/interfaces/Database";
 import { describe, expect, test } from "vitest";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import type SkillInterface from "@/database/skills/SkillInterface";
+import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
+import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
+import type Database from "@/interfaces/Database";
+/// <reference types="vitest/globals" />
+import groupBySkillType from "@/lib/skills/group/groupBySkillType";
 
 describe("groupBySkillType", () => {
   const skillsDatabase: Database<SkillInterface> = {
@@ -54,7 +54,7 @@ describe("groupBySkillType", () => {
           skillCategoryName: SkillTypesEnum.Technical,
           skills: [SkillDatabaseKeys.MachineLearning],
         }),
-      ])
+      ]),
     );
   });
 
@@ -140,22 +140,22 @@ describe("groupBySkillType", () => {
     expect(result).toHaveLength(2);
 
     const techSkillsGroup = result.find(
-      (group) => group.skillCategoryName === SkillTypesEnum.Technology
+      (group) => group.skillCategoryName === SkillTypesEnum.Technology,
     );
     expect(techSkillsGroup).toBeDefined();
     expect(techSkillsGroup?.skills).toEqual(
       expect.arrayContaining([
         SkillDatabaseKeys.JavaScript,
         SkillDatabaseKeys.Python,
-      ])
+      ]),
     );
 
     const technicalSkillsGroup = result.find(
-      (group) => group.skillCategoryName === SkillTypesEnum.Technical
+      (group) => group.skillCategoryName === SkillTypesEnum.Technical,
     );
     expect(technicalSkillsGroup).toBeDefined();
     expect(technicalSkillsGroup?.skills).toEqual(
-      expect.arrayContaining([SkillDatabaseKeys.MachineLearning])
+      expect.arrayContaining([SkillDatabaseKeys.MachineLearning]),
     );
   });
 
@@ -191,7 +191,7 @@ describe("groupBySkillType", () => {
     // Verify total number of skills is preserved
     const totalSkills = result.reduce(
       (sum, group) => sum + group.skills.length,
-      0
+      0,
     );
     expect(totalSkills).toBe(skillKeys.length);
 

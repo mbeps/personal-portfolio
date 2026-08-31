@@ -91,14 +91,13 @@ class ShortDate {
     if (experienceTime < 1) {
       const months: number = Math.round(experienceTime * 12);
       return `${months} ${months === 1 ? "month" : "months"}`;
-    } else {
-      const years: number = Math.floor(experienceTime);
-      const months: number = Math.round((experienceTime - years) * 12);
-      const yearString = `${years} ${years === 1 ? "year" : "years"}`;
-      const monthString: string =
-        months > 0 ? ` and ${months} ${months === 1 ? "month" : "months"}` : "";
-      return yearString + monthString;
     }
+    const years: number = Math.floor(experienceTime);
+    const months: number = Math.round((experienceTime - years) * 12);
+    const yearString = `${years} ${years === 1 ? "year" : "years"}`;
+    const monthString: string =
+      months > 0 ? ` and ${months} ${months === 1 ? "month" : "months"}` : "";
+    return yearString + monthString;
   }
 }
 

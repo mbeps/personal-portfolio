@@ -1,5 +1,5 @@
-import MaterialInterface from "@/database/materials/MaterialInterface";
-import Database from "@/interfaces/Database";
+import type MaterialInterface from "@/database/materials/MaterialInterface";
+import type Database from "@/interfaces/Database";
 
 /**
  * Determines whether the archive toggle should even be shown for a dataset.
@@ -9,7 +9,7 @@ import Database from "@/interfaces/Database";
  * @returns `true` if at least one entry has `archived` set to `true`.
  */
 export default function checkForArchivedMaterials(
-  database: Database<MaterialInterface>
+  database: Database<MaterialInterface>,
 ): boolean {
   for (const key in database) {
     if (database[key].archived) {

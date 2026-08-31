@@ -1,9 +1,9 @@
-import MaterialInterface from "@/database/materials/MaterialInterface";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import SkillInterface from "@/database/skills/SkillInterface";
-import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
-import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
-import Database from "@/interfaces/Database";
+import type MaterialInterface from "@/database/materials/MaterialInterface";
+import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import type SkillInterface from "@/database/skills/SkillInterface";
+import type SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
+import type SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
+import type Database from "@/interfaces/Database";
 
 /**
  * Propagates skill relationships so filters, search, and the homepage counts reflect the same taxonomy.
@@ -17,13 +17,13 @@ import Database from "@/interfaces/Database";
  * @returns The same database reference, now updated so derived relations exist before any UI reads them.
  */
 export default function addNestedSkillsMaterialList<
-  T extends MaterialInterface
+  T extends MaterialInterface,
 >(
   materialsDatabase: Database<T>,
   skillsDatabase: Database<SkillInterface>,
   ignoredCategories: SkillCategoriesEnum[],
   skillTypeToAdd?: SkillTypesEnum,
-  skillTypeToCheck?: SkillTypesEnum
+  skillTypeToCheck?: SkillTypesEnum,
 ): Database<T> {
   // Iterate over each material
   Object.keys(materialsDatabase).forEach((materialKey) => {

@@ -1,9 +1,9 @@
 "use client";
 
-import useIsMounted from "@/hooks/useIsMounted";
 import { Search, SendHorizontal, X } from "lucide-react";
 import React, { useEffect } from "react";
 import { twMerge } from "tailwind-merge";
+import useIsMounted from "@/hooks/useIsMounted";
 
 interface SearchInputProps {
   searchTerm: string;
@@ -64,13 +64,13 @@ const SearchInput: React.FC<SearchInputProps> = ({
       shadow-xs hover:shadow-lg focus:shadow-lg
       transition-all ease-out duration-500
     `,
-    className
+    className,
   );
 
   const isSearchDisabled: boolean = !localSearchTerm;
 
   return (
-    <div className="relative w-full md:grow md:order-last">
+    <div className="relative w-full md:order-last md:grow">
       <input
         type="text"
         value={localSearchTerm}
@@ -84,45 +84,21 @@ const SearchInput: React.FC<SearchInputProps> = ({
         className={combinedClassName}
         {...props}
       />
-      <Search
-        className="
-          absolute 
-          left-4 top-1/2 
-          transform -translate-y-1/2 
-          text-neutral-500 dark:text-neutral-200
-        "
-      />
+      <Search className="absolute top-1/2 left-4 -translate-y-1/2 transform text-neutral-500 dark:text-neutral-200" />
 
-      <div
-        className="
-          absolute right-2 top-1/2 
-          bg-inherit
-          transform -translate-y-1/2 
-          flex flex-row items-end
-          space-x-2
-          pr-2
-          p-1
-          "
-      >
+      <div className="absolute top-1/2 right-2 flex -translate-y-1/2 transform flex-row items-end space-x-2 bg-inherit p-1 pr-2">
         {localSearchTerm && (
           <X
-            className="
-            text-neutral-500 cursor-pointer hover:text-red-500 dark:hover:text-red-800 
-            transition-all ease-out duration-300 hover:scale-125
-            "
+            className="cursor-pointer text-neutral-500 transition-all duration-300 ease-out hover:scale-125 hover:text-red-500 dark:hover:text-red-800"
             onClick={handleClearSearch}
           />
         )}
         <button
-          className={`
-          text-neutral-500 
-          ${
+          className={`text-neutral-500 ${
             isSearchDisabled
               ? "cursor-not-allowed opacity-50"
               : "cursor-pointer"
-          } 
-          transition-all ease-out duration-300 hover:scale-125
-          `}
+          } transition-all duration-300 ease-out hover:scale-125`}
           onClick={handleSearch}
           disabled={isSearchDisabled}
         >

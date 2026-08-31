@@ -2,14 +2,14 @@
 
 import React from "react";
 import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import rehypeRaw from "rehype-raw";
-import CodeBlock from "./CodeBlock";
-import Mermaid from "./Mermaid";
-import HtmlRender from "./HtmlRender";
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
 import { cn } from "@/lib/utils";
+import CodeBlock from "./CodeBlock";
+import HtmlRender from "./HtmlRender";
+import Mermaid from "./Mermaid";
 
 export type ReaderSize = "sm" | "base" | "lg" | "reading" | "compact" | "docs";
 

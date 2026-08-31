@@ -1,27 +1,27 @@
-import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
+import type { Metadata, ResolvingMetadata } from "next";
+import { notFound } from "next/navigation";
 import MaterialList from "@/components/material-lists/MaterialList";
-import SkillTableSection from "@/components/skills/SkillTableSection";
-import StringList from "@/components/ui/StringList";
-import DynamicBreadcrumb, {
-  BreadcrumbPair,
-} from "@/components/ui/DynamicBreadcrumb";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
 } from "@/components/shadcn/ui/card";
+import SkillTableSection from "@/components/skills/SkillTableSection";
+import DynamicBreadcrumb, {
+  type BreadcrumbPair,
+} from "@/components/ui/DynamicBreadcrumb";
+import StringList from "@/components/ui/StringList";
 import developerName from "@/constants/developerName";
 import { ROUTES } from "@/constants/routes";
 import courseDatabaseMap from "@/database/courses/CourseDatabaseMap";
-import CourseInterface from "@/database/courses/CourseInterface";
+import type CourseInterface from "@/database/courses/CourseInterface";
 import moduleDatabaseMap from "@/database/modules/ModuleDatabaseMap";
-import ModuleInterface from "@/database/modules/ModuleInterface";
+import type ModuleInterface from "@/database/modules/ModuleInterface";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
-import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
+import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
+import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
 import hasAnySkills from "@/lib/skills/hasAnySkills";
-import { Metadata, ResolvingMetadata } from "next";
-import { notFound } from "next/navigation";
 
 type Params = Promise<{ moduleKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
@@ -36,7 +36,7 @@ type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
  */
 export async function generateMetadata(
   props: { params: Params; searchParams: SearchParams },
-  parent: ResolvingMetadata,
+  _parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const resolvedParams = await props.params;
   const moduleKey: string = resolvedParams.moduleKey;
@@ -118,14 +118,7 @@ const ModulePage: React.FC<{ params: Params }> = async ({ params }) => {
 
       <div>
         <h2>{moduleData.name}</h2>
-        <p
-          className="
-            text-neutral-600 dark:text-neutral-300 
-            text-lg 
-            text-center
-            pb-4
-            "
-        >
+        <p className="pb-4 text-center text-lg text-neutral-600 dark:text-neutral-300">
           {moduleKey}
         </p>
 
@@ -159,7 +152,7 @@ const ModulePage: React.FC<{ params: Params }> = async ({ params }) => {
           {moduleData.score && (
             <Card>
               <CardContent className="py-5">
-                <div className="flex space-x-1 w-full text-xl text-neutral-800 dark:text-neutral-300">
+                <div className="flex w-full space-x-1 text-neutral-800 text-xl dark:text-neutral-300">
                   <p className="font-bold">Score:</p>
                   <p>{moduleData.score}</p>
                 </div>

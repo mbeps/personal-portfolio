@@ -1,6 +1,6 @@
-import MaterialInterface from "@/database/materials/MaterialInterface";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import Database from "@/interfaces/Database";
+import type MaterialInterface from "@/database/materials/MaterialInterface";
+import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import type Database from "@/interfaces/Database";
 import filterMaterialKeysByPredicate from "@/lib/material/filter/filterMaterialKeysByPredicate";
 
 /**
@@ -20,6 +20,6 @@ export default function filterMaterialBySkill<T extends MaterialInterface>(
   return filterMaterialKeysByPredicate(
     materialKeys,
     materialDatabase,
-    (material) => Boolean(material && material.skills.includes(skillKey)),
+    (material) => Boolean(material?.skills.includes(skillKey)),
   );
 }

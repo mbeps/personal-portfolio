@@ -1,7 +1,7 @@
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import SkillInterface from "@/database/skills/SkillInterface";
-import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
-import Database from "@/interfaces/Database";
+import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import type SkillInterface from "@/database/skills/SkillInterface";
+import type SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
+import type Database from "@/interfaces/Database";
 
 /**
  * Filters skill slugs by type so grouped tables only receive the skills relevant to a specific bucket.
@@ -20,7 +20,7 @@ export default function filterSkillsByType(
   return skillKeys.filter((skillSlug) =>
     Boolean(
       skillsDatabase[skillSlug] &&
-      skillsDatabase[skillSlug].skillType === skillType,
+        skillsDatabase[skillSlug].skillType === skillType,
     ),
   );
 }

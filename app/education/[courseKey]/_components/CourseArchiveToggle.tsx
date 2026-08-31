@@ -1,7 +1,7 @@
 "use client";
 
-import { ArchiveToggle } from "@/components/filters/ArchiveToggle";
 import { parseAsBoolean, useQueryState } from "nuqs";
+import { ArchiveToggle } from "@/components/filters/ArchiveToggle";
 
 /**
  * Client wrapper that manages archive visibility for the course modules list via nuqs.

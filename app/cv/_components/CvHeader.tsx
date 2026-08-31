@@ -1,12 +1,12 @@
-import developerName from "@/constants/developerName";
-import location from "@/constants/location";
 import Image from "next/image";
 import Socials from "@/components/socials/Socials";
+import developerName from "@/constants/developerName";
+import location from "@/constants/location";
 import { PATHS } from "@/constants/paths";
 
 const CvHeader = () => {
   return (
-    <header className="flex flex-col items-center gap-8 mb-10">
+    <header className="mb-10 flex flex-col items-center gap-8">
       <div className="shrink-0">
         <Image
           src={PATHS.PROFILE}
@@ -17,9 +17,9 @@ const CvHeader = () => {
           priority
         />
       </div>
-      <div className="flex flex-col items-center text-center flex-grow">
-        <h1 className="text-4xl font-bold mb-2">{developerName}</h1>
-        <p className="text-xl text-neutral-600 dark:text-neutral-400 mb-4">
+      <div className="flex flex-grow flex-col items-center text-center">
+        <h1 className="mb-2 font-bold text-4xl">{developerName}</h1>
+        <p className="mb-4 text-neutral-600 text-xl dark:text-neutral-400">
           {location}
         </p>
         <div className="mb-4">

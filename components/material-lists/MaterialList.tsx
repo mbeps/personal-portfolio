@@ -1,13 +1,12 @@
+import type React from "react";
+import { GrAppsRounded } from "react-icons/gr";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/shadcn/ui/accordion";
-import MaterialTypeEnum from "@/enums/material/MaterialTypeEnum";
-import React from "react";
 import MaterialTab from "./MaterialTab";
-import { GrAppsRounded } from "react-icons/gr";
 
 export interface MaterialTabsProps {
   materialKeys: string[];
@@ -32,13 +31,7 @@ const MaterialList: React.FC<MaterialTabsProps> = ({
         <AccordionTrigger>
           <div className="flex items-center space-x-3">
             <GrAppsRounded size={24} className="text-neutral-500" />
-            <p
-              className="
-                text-lg 
-                text-neutral-600 dark:text-neutral-400
-                font-semibold
-                "
-            >
+            <p className="font-semibold text-lg text-neutral-600 dark:text-neutral-400">
               Related Material
             </p>
           </div>

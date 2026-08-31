@@ -1,5 +1,5 @@
-import NavigationItemInterface from "@/interfaces/NavigationItemInterface";
-import React from "react";
+import type React from "react";
+import type NavigationItemInterface from "@/interfaces/NavigationItemInterface";
 import NavbarItem from "./NavbarItem";
 
 interface NavbarSectionProps {
@@ -15,7 +15,7 @@ interface NavbarSectionProps {
 const DesktopNavbarSection: React.FC<NavbarSectionProps> = ({ items }) => {
   return (
     <div className="hidden lg:block">
-      <div className="md:flex items-center justify-center space-y-7 md:space-x-4 md:space-y-0">
+      <div className="items-center justify-center space-y-7 md:flex md:space-x-4 md:space-y-0">
         {/* Links  */}
         {items
           .filter((item) => item.isMain)
@@ -23,7 +23,7 @@ const DesktopNavbarSection: React.FC<NavbarSectionProps> = ({ items }) => {
             return (
               <div
                 key={item.label}
-                className="flex justify-center w-full md:w-auto"
+                className="flex w-full justify-center md:w-auto"
               >
                 <NavbarItem href={item.path}>{item.label}</NavbarItem>
               </div>

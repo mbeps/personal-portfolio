@@ -1,18 +1,18 @@
-import addNestedSkillsMaterialList from "@/lib/material/addNestedSkillsMaterialList";
 import CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
-import CertificateInterface from "@/database/certificates/CertificateInterface";
+import type CertificateInterface from "@/database/certificates/CertificateInterface";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import CertificateCategoriesEnum from "@/enums/certificate/CertificateCategoriesEnum";
 import CertificateIssuersEnum from "@/enums/certificate/CertificateIssuersEnum";
 import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
-import Database from "@/interfaces/Database";
+import type Database from "@/interfaces/Database";
 import validateDatabaseKeys from "@/lib/database/validateDatabaseKeys";
+import addNestedSkillsMaterialList from "@/lib/material/addNestedSkillsMaterialList";
+import BlogDatabaseKeys from "../blogs/BlogDatabaseKeys";
 import ModuleDatabaseKeys from "../modules/ModuleDatabaseKeys";
 import ProjectDatabaseKeys from "../projects/ProjectDatabaseKeys";
 import RoleDatabaseKeys from "../roles/RoleDatabaseKeys";
 import skillDatabaseMap from "../skills/SkillDatabaseMap";
-import BlogDatabaseKeys from "../blogs/BlogDatabaseKeys";
 
 /**
  * Hashmap of certificates with keys as {@link CertificateDatabaseKeys} and values as {@link CertificateInterface}.
@@ -246,7 +246,8 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.MachineLearning,
       SkillDatabaseKeys.DataVisualisation,
     ],
-    description: `This course is the first part of the Applied Artificial Intelligence series, focusing on the foundations of machine learning. It provides a pragmatic approach to solving machine learning problems, from exploratory data analysis to model evaluation. The course does not focus on any specific algorithm but provides the tools to efficiently solve a wide range of machine learning problems, making it a valuable resource for anyone looking to delve into the field of machine learning.`,
+    description:
+      "This course is the first part of the Applied Artificial Intelligence series, focusing on the foundations of machine learning. It provides a pragmatic approach to solving machine learning problems, from exploratory data analysis to model evaluation. The course does not focus on any specific algorithm but provides the tools to efficiently solve a wide range of machine learning problems, making it a valuable resource for anyone looking to delve into the field of machine learning.",
     learningOutcomes: [
       "Understanding what is machine learning.",
       "Differentiating Artificial Intelligence, Deep Learning, and Artificial Intelligence.",
@@ -296,7 +297,8 @@ const certificateMap: Database<CertificateInterface> = {
         SkillDatabaseKeys.NeuralNetworks,
         SkillDatabaseKeys.DeepLearning,
       ],
-      description: `This course offers a comprehensive introduction to the principles and techniques of artificial neural networks, including their components, common models, and applications. It provides hands-on experience in building and training a neural network using the Keras Sequential API. The course is designed to help learners gain a solid understanding of how to build, train, improve, and use neural networks.`,
+      description:
+        "This course offers a comprehensive introduction to the principles and techniques of artificial neural networks, including their components, common models, and applications. It provides hands-on experience in building and training a neural network using the Keras Sequential API. The course is designed to help learners gain a solid understanding of how to build, train, improve, and use neural networks.",
       learningOutcomes: [
         "Understanding neural networks.",
         "Learning key components in neural network architecture.",
@@ -325,7 +327,8 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.Probability,
       SkillDatabaseKeys.LinearAlgebra,
     ],
-    description: `This course provides an accessible, non-technical introduction to the field of data science, covering its vocabulary, skills, jobs, tools, and techniques. It offers insights into how data science can help improve decision-making, gain deeper insights, and enhance work efficiency. The course also discusses ethics and accountability in data science, making it a comprehensive resource for anyone interested in this rapidly growing field.`,
+    description:
+      "This course provides an accessible, non-technical introduction to the field of data science, covering its vocabulary, skills, jobs, tools, and techniques. It offers insights into how data science can help improve decision-making, gain deeper insights, and enhance work efficiency. The course also discusses ethics and accountability in data science, making it a comprehensive resource for anyone interested in this rapidly growing field.",
     learningOutcomes: [
       "Assessing skills for a data science career.",
       "Evaluating different data sources.",
@@ -349,7 +352,8 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.DeepLearning,
       SkillDatabaseKeys.DataVisualisation,
     ],
-    description: `This course offers a high-level overview of artificial intelligence, making it accessible to non-technical professionals like project managers, product managers, directors, and executives. It simplifies complex concepts in machine learning, artificial neural networks, and deep learning, helping learners understand how AI can enhance their products, life, and career. The course also provides insights into the top tools in the field, making it a valuable resource for anyone interested in AI.`,
+    description:
+      "This course offers a high-level overview of artificial intelligence, making it accessible to non-technical professionals like project managers, product managers, directors, and executives. It simplifies complex concepts in machine learning, artificial neural networks, and deep learning, helping learners understand how AI can enhance their products, life, and career. The course also provides insights into the top tools in the field, making it a valuable resource for anyone interested in AI.",
     learningOutcomes: [
       "Distinguishing between symbolic systems and machine learning.",
       "Identifying challenges in natural language processing.",
@@ -590,7 +594,8 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.linkedin.com/learning/certificates/d16b210de3459c563295c4868ac19097bdddf84976d2137fa08293ec698f3380",
     skills: [SkillDatabaseKeys.Rest],
-    description: `This course introduces the basics of REST APIs, explaining their importance and how they can enhance application efficiency. It explores the relationship between HTTP and REST APIs, the six constraints of REST, and HTTP status messages. The course also guides learners on how to start consuming REST APIs to integrate them into data-driven applications, making it a valuable resource for those looking to understand and utilize REST APIs.`,
+    description:
+      "This course introduces the basics of REST APIs, explaining their importance and how they can enhance application efficiency. It explores the relationship between HTTP and REST APIs, the six constraints of REST, and HTTP status messages. The course also guides learners on how to start consuming REST APIs to integrate them into data-driven applications, making it a valuable resource for those looking to understand and utilize REST APIs.",
     learningOutcomes: [
       "Understanding what is a REST API.",
       "Learning about the interaction with REST APIs.",
@@ -608,7 +613,8 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.linkedin.com/learning/certificates/a54ec39fe8ae07277cfbfb553a61f1d6a0c95f23969a3f665d5e5c0afbd9fd68",
     skills: [SkillDatabaseKeys.Rest],
-    description: `This course provides a comprehensive guide on planning and modeling APIs, a crucial skill for any developer creating websites. It introduces the six REST design constraints that guide architecture and offers advice on identifying system users and their activities. The course emphasizes the importance of validating your design before building it and explores the necessary HTTP concepts and REST constraints. It concludes with a discussion on common API design patterns, making it a valuable resource for developers looking to enhance their API design skills.`,
+    description:
+      "This course provides a comprehensive guide on planning and modeling APIs, a crucial skill for any developer creating websites. It introduces the six REST design constraints that guide architecture and offers advice on identifying system users and their activities. The course emphasizes the importance of validating your design before building it and explores the necessary HTTP concepts and REST constraints. It concludes with a discussion on common API design patterns, making it a valuable resource for developers looking to enhance their API design skills.",
     learningOutcomes: [
       "Approaches to adding an API.",
       "Modeling tips for APIs.",
@@ -693,7 +699,8 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.Flask,
       SkillDatabaseKeys.Rest,
     ],
-    description: `This course offers a comprehensive guide to Flask, a Python framework for building lightweight and dynamic web applications. It covers the pros and cons of working with Flask, the creation of a Flask app, data flow, working with Jinja templates, using blueprints and views for organization, testing, and deployment with Gunicorn. The course provides training and hands-on examples, making it a valuable resource for those looking to quickly learn and start using Flask.`,
+    description:
+      "This course offers a comprehensive guide to Flask, a Python framework for building lightweight and dynamic web applications. It covers the pros and cons of working with Flask, the creation of a Flask app, data flow, working with Jinja templates, using blueprints and views for organization, testing, and deployment with Gunicorn. The course provides training and hands-on examples, making it a valuable resource for those looking to quickly learn and start using Flask.",
     learningOutcomes: [
       "Understanding pros and cons of Flask.",
       "Creating first route in Flask.",
@@ -759,7 +766,8 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.linkedin.com/learning/certificates/983c6ba63131250c1d3df7e13f5e8f8951c02cb64c02c33d99e80df23cf3c869",
     skills: [SkillDatabaseKeys.Html, SkillDatabaseKeys.UserCentricDesign],
-    description: `This course provides a comprehensive guide to crafting excellent HTML, the foundation of website and web application development. It emphasizes the importance of semantic markup, which ensures content is understood by both human audiences and computer systems, including screen readers and search engines. The course covers all fundamental concepts needed to use HTML thoughtfully, making it a valuable resource for those looking to enhance their web development skills.`,
+    description:
+      "This course provides a comprehensive guide to crafting excellent HTML, the foundation of website and web application development. It emphasizes the importance of semantic markup, which ensures content is understood by both human audiences and computer systems, including screen readers and search engines. The course covers all fundamental concepts needed to use HTML thoughtfully, making it a valuable resource for those looking to enhance their web development skills.",
     learningOutcomes: [
       "Understanding basic syntax of HTML elements.",
       "Formatting content in HTML.",
@@ -807,7 +815,8 @@ const certificateMap: Database<CertificateInterface> = {
 
       SkillDatabaseKeys.UserCentricDesign,
     ],
-    description: `This course offers an introduction to React.js, a JavaScript library known for its reusable components and scalability, making applications more maintainable and efficient. It covers the basics of the React library, the modern syntax and best practices for creating React components, setting up Chrome tools for React, working with built-in Hooks, and using the Create React App for testing. By the end of the course, learners will be equipped with the essentials of React.js, preparing them to build their own browser-based projects.`,
+    description:
+      "This course offers an introduction to React.js, a JavaScript library known for its reusable components and scalability, making applications more maintainable and efficient. It covers the basics of the React library, the modern syntax and best practices for creating React components, setting up Chrome tools for React, working with built-in Hooks, and using the Create React App for testing. By the end of the course, learners will be equipped with the essentials of React.js, preparing them to build their own browser-based projects.",
     learningOutcomes: [
       "Learning basics of React.js.",
       "Creating reusable components in React.",
@@ -832,7 +841,8 @@ const certificateMap: Database<CertificateInterface> = {
 
       SkillDatabaseKeys.UserCentricDesign,
     ],
-    description: `This course provides a comprehensive guide to Next.js, a popular, React-based web development framework that combines the benefits of server-side rendering with the speed and ease of a single-page app. It covers basic features like pages, data fetching, and layout options, as well as advanced topics like dynamic and API routes. The course aims to equip learners with the skills to build, manage, and customize a complete web application from scratch in JavaScript, offering a seamless developer experience with zero configuration and lightning-fast, dynamic page speeds.`,
+    description:
+      "This course provides a comprehensive guide to Next.js, a popular, React-based web development framework that combines the benefits of server-side rendering with the speed and ease of a single-page app. It covers basic features like pages, data fetching, and layout options, as well as advanced topics like dynamic and API routes. The course aims to equip learners with the skills to build, manage, and customize a complete web application from scratch in JavaScript, offering a seamless developer experience with zero configuration and lightning-fast, dynamic page speeds.",
     learningOutcomes: [
       "Learning the benefits of Next.js.",
       "Building a file-based routing system in Next.js.",
@@ -1422,7 +1432,8 @@ const certificateMap: Database<CertificateInterface> = {
         SkillDatabaseKeys.ContinuousIntegration,
       ],
 
-      description: `This course delves into the concepts of continuous integration and continuous delivery (CI/CD), demonstrating these principles through the construction of a build pipeline. It covers the journey of an app from development to production, discussing version control, building artifacts, unit testing, and deployment. The course also provides practical advice on CI/CD best practices, common pitfalls, and workarounds, equipping you with the knowledge to navigate your journey to continuous delivery.`,
+      description:
+        "This course delves into the concepts of continuous integration and continuous delivery (CI/CD), demonstrating these principles through the construction of a build pipeline. It covers the journey of an app from development to production, discussing version control, building artifacts, unit testing, and deployment. The course also provides practical advice on CI/CD best practices, common pitfalls, and workarounds, equipping you with the knowledge to navigate your journey to continuous delivery.",
       learningOutcomes: [
         "Exploring utilization of continuous delivery.",
         "Identifying components of the DevOps pipeline.",
@@ -1676,7 +1687,8 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.Containerisation,
       SkillDatabaseKeys.Kubernetes,
     ],
-    description: `This course provides a comprehensive guide to leveraging Docker for application development. It covers everything from creating your first Docker image to deploying your app to the cloud. The course is designed to equip learners with practical skills such as setting up a full-stack environment with Docker, deploying and adding nodes to a Docker swarm, creating a cluster using Kubernetes, and integrating GitHub with Travis for Docker projects.`,
+    description:
+      "This course provides a comprehensive guide to leveraging Docker for application development. It covers everything from creating your first Docker image to deploying your app to the cloud. The course is designed to equip learners with practical skills such as setting up a full-stack environment with Docker, deploying and adding nodes to a Docker swarm, creating a cluster using Kubernetes, and integrating GitHub with Travis for Docker projects.",
     learningOutcomes: [
       "Creating first Docker image.",
       "Setting up a full-stack environment with Docker.",
@@ -1699,7 +1711,8 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.Aws,
       SkillDatabaseKeys.AwsK3s,
     ],
-    description: `This course provides a focused guide on how to provision Kubernetes clusters using kind. It covers the challenges of installing Kubernetes and its prerequisites, and demonstrates how to deploy Kubernetes in Docker using K3s, in both single- and multinode clusters. This course is designed to polish your skills in Kubernetes, containerization, and clusterization.`,
+    description:
+      "This course provides a focused guide on how to provision Kubernetes clusters using kind. It covers the challenges of installing Kubernetes and its prerequisites, and demonstrates how to deploy Kubernetes in Docker using K3s, in both single- and multinode clusters. This course is designed to polish your skills in Kubernetes, containerization, and clusterization.",
     learningOutcomes: [
       "Installing Kubernetes and its prerequisites.",
       "Deploying Kubernetes in Docker with kind.",
@@ -1855,7 +1868,8 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.udemy.com/certificate/UC-a14123c1-1def-4710-8836-7c05bfaa2fc7/",
     skills: [SkillDatabaseKeys.Java, SkillDatabaseKeys.Spring],
-    description: `This course offers a comprehensive and continuously updated curriculum on Java programming, suitable for all levels of expertise. With a focus on core Java skills, industry best practices, and proficiency in various Java versions, it aims to prepare students for Java developer positions and Oracle Java Certificate exams. The course also provides a strong foundation for transitioning to other areas like the Spring Framework and Android development.`,
+    description:
+      "This course offers a comprehensive and continuously updated curriculum on Java programming, suitable for all levels of expertise. With a focus on core Java skills, industry best practices, and proficiency in various Java versions, it aims to prepare students for Java developer positions and Oracle Java Certificate exams. The course also provides a strong foundation for transitioning to other areas like the Spring Framework and Android development.",
     learningOutcomes: [
       "Learning the core Java skills needed to apply for Java developer positions is a key aspect of this course.",
       "Preparing to sit for and pass the Oracle Java Certificate exam is a part of this course.",
@@ -1988,7 +2002,8 @@ const certificateMap: Database<CertificateInterface> = {
       "https://www.udemy.com/certificate/UC-cf6c70b6-c34c-4400-b8f8-b9a7abc9f18a/",
     skills: [SkillDatabaseKeys.JavaScript],
 
-    description: `This comprehensive and in-depth course covers JavaScript from fundamentals to advanced applications, making it suitable for learners at all levels. It offers a blend of practical code examples, important theory, and complete projects, preparing you for advanced front-end frameworks and real-world skills needed in a developer job. The course is designed in a modular way, allowing you to learn at your own pace, and by the end, you will have the knowledge and confidence to ace job interviews and become a professional developer.`,
+    description:
+      "This comprehensive and in-depth course covers JavaScript from fundamentals to advanced applications, making it suitable for learners at all levels. It offers a blend of practical code examples, important theory, and complete projects, preparing you for advanced front-end frameworks and real-world skills needed in a developer job. The course is designed in a modular way, allowing you to learn at your own pace, and by the end, you will have the knowledge and confidence to ace job interviews and become a professional developer.",
     learningOutcomes: [
       "Becoming an advanced JavaScript developer.",
       "Understanding JavaScript's workings.",
@@ -2157,7 +2172,8 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.ContinuousDeployment,
     ],
 
-    description: `This course guides learners through the process of starting, building, testing, and maintaining an open-source project in Python. It introduces learners to Poetry, a popular dependency management tool, and covers how to write and manage tests using pytest and tox. The course also discusses code tidiness and style guide adherence using PEP 8, Black, Flake8, and pre-commit, and demonstrates how to set up a workflow on GitHub Action. It concludes with best practices for open-source projects.`,
+    description:
+      "This course guides learners through the process of starting, building, testing, and maintaining an open-source project in Python. It introduces learners to Poetry, a popular dependency management tool, and covers how to write and manage tests using pytest and tox. The course also discusses code tidiness and style guide adherence using PEP 8, Black, Flake8, and pre-commit, and demonstrates how to set up a workflow on GitHub Action. It concludes with best practices for open-source projects.",
     learningOutcomes: [
       "Using Poetry for Python project and dependency management.",
       "Writing and running pytests for code quality and functionality.",
@@ -2174,7 +2190,8 @@ const certificateMap: Database<CertificateInterface> = {
     certificateURL:
       "https://www.linkedin.com/learning/certificates/551778db5ecef81f732b9e48d50db3fe709f877f1ac9c834923b0c96bb636e72",
     skills: [SkillDatabaseKeys.Java],
-    description: `This course provides a comprehensive introduction to Apache Maven, a powerful build system widely used by Java developers. It covers the basics of using Maven for dependency management, builds, and reporting. The course delves into the project object model (POM), the build life cycle, and the use of Core and Tools plugins for task automation. It also explores dependency management, including the creation of uber JAR files, and concludes with a section on reporting with Maven sites and popular plugins.`,
+    description:
+      "This course provides a comprehensive introduction to Apache Maven, a powerful build system widely used by Java developers. It covers the basics of using Maven for dependency management, builds, and reporting. The course delves into the project object model (POM), the build life cycle, and the use of Core and Tools plugins for task automation. It also explores dependency management, including the creation of uber JAR files, and concludes with a section on reporting with Maven sites and popular plugins.",
     learningOutcomes: [
       "Exploring POM files.",
       "Understanding the build life cycle.",
@@ -3292,7 +3309,8 @@ const certificateMap: Database<CertificateInterface> = {
       SkillDatabaseKeys.Probability,
       SkillDatabaseKeys.Statistics,
     ],
-    description: `This course covers the statistics component of maths A-Level 2nd year content, building on the first year course content. It is suitable for all major exam boards and is ideal for anyone interested in furthering their understanding of the subject. The course delves into correlation, regression, conditional probability, and the normal distribution, teaching students how to measure correlation, calculate equations of regression lines, explore conditional probability problems, and use the normal distribution.`,
+    description:
+      "This course covers the statistics component of maths A-Level 2nd year content, building on the first year course content. It is suitable for all major exam boards and is ideal for anyone interested in furthering their understanding of the subject. The course delves into correlation, regression, conditional probability, and the normal distribution, teaching students how to measure correlation, calculate equations of regression lines, explore conditional probability problems, and use the normal distribution.",
     learningOutcomes: [
       "Understanding statistics",
       "Measuring correlation",

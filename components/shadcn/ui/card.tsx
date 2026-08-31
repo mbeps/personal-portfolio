@@ -1,4 +1,4 @@
-import * as React from "react";
+import type * as React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -8,13 +8,8 @@ const Card = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      `border border-neutral-200 dark:border-neutral-800
-      bg-white dark:bg-neutral-950
-      rounded-xl
-      overflow-hidden
-      shadow-xs
-      transition-all duration-500 ease-in-out`,
-      className
+      "overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-xs transition-all duration-500 ease-in-out dark:border-neutral-800 dark:bg-neutral-950",
+      className,
     )}
     {...props}
   />
@@ -36,8 +31,8 @@ const CardTitle = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      "text-2xl font-semibold leading-none tracking-tight",
-      className
+      "font-semibold text-2xl leading-none tracking-tight",
+      className,
     )}
     {...props}
   />
@@ -47,7 +42,7 @@ const CardDescription = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn("text-sm text-muted-foreground", className)} {...props} />
+  <div className={cn("text-muted-foreground text-sm", className)} {...props} />
 );
 
 const CardContent = ({
@@ -66,9 +61,9 @@ const CardFooter = ({
 
 export {
   Card,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-  CardDescription,
   CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
 };

@@ -1,14 +1,14 @@
-import updateRolesWithExperienceTime from "@/lib/material/role/updateRolesWithExperienceTime";
 import ShortDate from "@/class/ShortDate";
 import CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
 import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
 import RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
-import RoleInterface from "@/database/roles/RoleInterface";
+import type RoleInterface from "@/database/roles/RoleInterface";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import ExperienceCategoriesEnum from "@/enums/experience/ExperienceCategoriesEnum";
 import ExperienceTypeEnum from "@/enums/experience/ExperienceTypeEnum";
-import Database from "@/interfaces/Database";
+import type Database from "@/interfaces/Database";
 import validateDatabaseKeys from "@/lib/database/validateDatabaseKeys";
+import updateRolesWithExperienceTime from "@/lib/material/role/updateRolesWithExperienceTime";
 import CompanyDatabaseKeys from "../companies/CompanyDatabaseKeys";
 
 const rolesMap: Database<RoleInterface> = {

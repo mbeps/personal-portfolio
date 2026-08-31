@@ -1,7 +1,7 @@
 "use client";
 
-import { TooltipProvider } from "@/components/shadcn/ui/tooltip";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
+import { TooltipProvider } from "@/components/shadcn/ui/tooltip";
 import { ThemeProvider } from "./ThemeProvider";
 
 /**

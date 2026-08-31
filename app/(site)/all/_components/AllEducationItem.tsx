@@ -1,10 +1,10 @@
-import React from "react";
-import CourseInterface from "@/database/courses/CourseInterface";
-import moduleDatabaseMap from "@/database/modules/ModuleDatabaseMap";
-import { ROUTES } from "@/constants/routes";
-import CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
-import CvItemSkills from "@/app/cv/_components/CvItemSkills";
 import Link from "next/link";
+import type React from "react";
+import CvItemSkills from "@/app/cv/_components/CvItemSkills";
+import { ROUTES } from "@/constants/routes";
+import type CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
+import type CourseInterface from "@/database/courses/CourseInterface";
+import moduleDatabaseMap from "@/database/modules/ModuleDatabaseMap";
 
 /**
  * Props for the AllEducationItem component.
@@ -29,14 +29,14 @@ const AllEducationItem: React.FC<AllEducationItemProps> = ({
 }) => {
   return (
     <div className="mb-12 break-inside-avoid">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+      <div className="mb-4 flex flex-col items-start justify-between md:flex-row md:items-center">
         <div>
-          <h3 className="text-2xl font-bold">{course.name}</h3>
-          <p className="text-xl font-semibold text-neutral-600 dark:text-neutral-400">
+          <h3 className="font-bold text-2xl">{course.name}</h3>
+          <p className="font-semibold text-neutral-600 text-xl dark:text-neutral-400">
             {course.university}
           </p>
         </div>
-        <div className="text-lg text-neutral-500 dark:text-neutral-400 font-mono">
+        <div className="font-mono text-lg text-neutral-500 dark:text-neutral-400">
           {course.startYear} - {course.endYear}
         </div>
       </div>
@@ -50,7 +50,7 @@ const AllEducationItem: React.FC<AllEducationItemProps> = ({
       </div>
 
       <div className="space-y-6">
-        <h4 className="text-xl font-bold border-b-2 border-neutral-200 dark:border-neutral-800 pb-2 mb-4 uppercase tracking-wider">
+        <h4 className="mb-4 border-neutral-200 border-b-2 pb-2 font-bold text-xl uppercase tracking-wider dark:border-neutral-800">
           Modules
         </h4>
         {course.modules.map((moduleKey) => {
@@ -60,17 +60,17 @@ const AllEducationItem: React.FC<AllEducationItemProps> = ({
           return (
             <div
               key={moduleKey}
-              className="pl-4 border-l-2 border-neutral-200 dark:border-neutral-800"
+              className="border-neutral-200 border-l-2 pl-4 dark:border-neutral-800"
             >
               <Link
                 href={ROUTES.EDUCATION.module(courseKey, moduleKey)}
-                className="text-xl font-bold hover:underline decoration-primary"
+                className="font-bold text-xl decoration-primary hover:underline"
               >
                 {moduleData.name}
               </Link>
               {moduleData.learningOutcomes &&
                 moduleData.learningOutcomes.length > 0 && (
-                  <ul className="list-disc list-inside mt-2 space-y-1 text-neutral-700 dark:text-neutral-300">
+                  <ul className="mt-2 list-inside list-disc space-y-1 text-neutral-700 dark:text-neutral-300">
                     {moduleData.learningOutcomes.map((outcome, index) => (
                       <li key={index}>{outcome}</li>
                     ))}

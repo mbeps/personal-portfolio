@@ -1,7 +1,7 @@
-import MaterialInterface from "@/database/materials/MaterialInterface";
-import SkillInterface from "@/database/skills/SkillInterface";
-import Database from "@/interfaces/Database";
-import FilterOption from "@/interfaces/filters/FilterOption";
+import type MaterialInterface from "@/database/materials/MaterialInterface";
+import type SkillInterface from "@/database/skills/SkillInterface";
+import type Database from "@/interfaces/Database";
+import type FilterOption from "@/interfaces/filters/FilterOption";
 import stringToSlug from "../../stringToSlug";
 import generateFilterOptions from "./generateFilterOptions";
 

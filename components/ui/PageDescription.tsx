@@ -1,4 +1,4 @@
-import React from "react";
+import type React from "react";
 
 type PageDescriptionProps = {
   description: string;
@@ -12,12 +12,8 @@ type PageDescriptionProps = {
  */
 const PageDescription: React.FC<PageDescriptionProps> = ({ description }) => {
   return (
-    <div className="py-2 md:py-4 mt-8">
-      <p
-        className="
-				text-lg md:text-xl text-center 
-				text-neutral-500 "
-      >
+    <div className="mt-8 py-2 md:py-4">
+      <p className="text-center text-lg text-neutral-500 md:text-xl">
         {description}
       </p>
     </div>

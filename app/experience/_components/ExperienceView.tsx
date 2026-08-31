@@ -1,5 +1,16 @@
 "use client";
 
+import { usePathname } from "next/navigation";
+import FilterSection from "@/components/filters/FilterSection";
+import WorkList from "@/components/material-lists/WorkList";
+import type RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
+import rolesDatabase from "@/database/roles/RoleDatabaseMap";
+import type RoleInterface from "@/database/roles/RoleInterface";
+import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
+import type ExperienceTypeEnum from "@/enums/experience/ExperienceTypeEnum";
+import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
+import useMaterialFilterState from "@/hooks/useMaterialFilterState";
 import checkForArchivedMaterials from "@/lib/material/checkForArchivedMaterials";
 import filterRolesByType from "@/lib/material/experience/filterRolesByType";
 import filterMaterialByArchivedStatus from "@/lib/material/filter/filterMaterialByArchivedStatus";
@@ -11,17 +22,6 @@ import { generateFilterOptionsByRoleType } from "@/lib/material/filter-options/g
 import { generateFilterOptionsBySkillCategories } from "@/lib/material/filter-options/generateFilterOptionsBySkillCategories";
 import generateFilterOptionsBySkillType from "@/lib/material/filter-options/generateFilterOptionsBySkillType";
 import stringToSlug from "@/lib/stringToSlug";
-import FilterSection from "@/components/filters/FilterSection";
-import WorkList from "@/components/material-lists/WorkList";
-import RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
-import rolesDatabase from "@/database/roles/RoleDatabaseMap";
-import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import ExperienceTypeEnum from "@/enums/experience/ExperienceTypeEnum";
-import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
-import RoleInterface from "@/database/roles/RoleInterface";
-import { usePathname } from "next/navigation";
-import useMaterialFilterState from "@/hooks/useMaterialFilterState";
 
 /**
  * Client view for the experience archive that coordinates Fuse search, skill-based filtering, and the archive toggle.

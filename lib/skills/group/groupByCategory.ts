@@ -1,8 +1,8 @@
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import SkillInterface from "@/database/skills/SkillInterface";
+import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import type SkillInterface from "@/database/skills/SkillInterface";
 import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
-import Database from "@/interfaces/Database";
-import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
+import type Database from "@/interfaces/Database";
+import type CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
 
 /**
  * Groups skills by category using the enum order so tables stay consistent with the taxonomy shown on the skills landing page.
@@ -14,7 +14,7 @@ import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInt
  */
 export default function groupByCategory(
   skillKeys: SkillDatabaseKeys[],
-  skillsDatabase: Database<SkillInterface>
+  skillsDatabase: Database<SkillInterface>,
 ): CategorisedSkillsInterface[] {
   // First, create a map to store skills by category
   const categoriesMap: Record<SkillCategoriesEnum, SkillDatabaseKeys[]> =
@@ -40,7 +40,7 @@ export default function groupByCategory(
 
   // Convert the map to an array of SkillsCategoryInterface, maintaining enum order
   const result: CategorisedSkillsInterface[] = Object.values(
-    SkillCategoriesEnum
+    SkillCategoriesEnum,
   )
     .filter((category) => categoriesMap[category].length > 0) // Only include categories that have skills
     .map((category) => ({

@@ -8,7 +8,7 @@
  */
 export default function processMarkdownImages(
   content: string,
-  basePath: string
+  basePath: string,
 ): string {
   return content.replace(/{BASE}/g, basePath);
 }

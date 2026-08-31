@@ -1,5 +1,5 @@
-import stringToSlug from "@/lib/stringToSlug";
 import { describe, expect, test } from "vitest";
+import stringToSlug from "@/lib/stringToSlug";
 
 describe("stringToSlug", () => {
   test("should convert a simple string with spaces", () => {
@@ -33,7 +33,7 @@ describe("stringToSlug", () => {
 
   test("should handle a mix of cases and spaces", () => {
     expect(stringToSlug("  Another   Test String  ")).toBe(
-      "-another-test-string-"
+      "-another-test-string-",
     );
   });
 });

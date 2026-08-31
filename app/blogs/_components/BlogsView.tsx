@@ -1,5 +1,16 @@
 "use client";
 
+import { usePathname } from "next/navigation";
+import FilterSection from "@/components/filters/FilterSection";
+import BlogsList from "@/components/material-lists/BlogsList";
+import { ROUTES } from "@/constants/routes";
+import type BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
+import type BlogInterface from "@/database/blogs/BlogInterface";
+import blogsDatabaseMap from "@/database/blogs/BlogsDatabaseMap";
+import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
+import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
+import useMaterialFilterState from "@/hooks/useMaterialFilterState";
 import checkForArchivedMaterials from "@/lib/material/checkForArchivedMaterials";
 import filterMaterialByArchivedStatus from "@/lib/material/filter/filterMaterialByArchivedStatus";
 import filterMaterialByCategory from "@/lib/material/filter/filterMaterialByCategory";
@@ -9,17 +20,6 @@ import generateFilterOptionsByCategory from "@/lib/material/filter-options/gener
 import { generateFilterOptionsBySkillCategories } from "@/lib/material/filter-options/generateFilterOptionsBySkillCategories";
 import generateFilterOptionsBySkillType from "@/lib/material/filter-options/generateFilterOptionsBySkillType";
 import stringToSlug from "@/lib/stringToSlug";
-import FilterSection from "@/components/filters/FilterSection";
-import BlogsList from "@/components/material-lists/BlogsList";
-import { ROUTES } from "@/constants/routes";
-import BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
-import BlogInterface from "@/database/blogs/BlogInterface";
-import blogsDatabaseMap from "@/database/blogs/BlogsDatabaseMap";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
-import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
-import { usePathname } from "next/navigation";
-import useMaterialFilterState from "@/hooks/useMaterialFilterState";
 
 /**
  * Client view that wires Fuse search, category filters, and archive toggles to the shared `BlogsList`.

@@ -1,9 +1,9 @@
+import type { Metadata } from "next";
+import type React from "react";
 import PageDescription from "@/components/ui/PageDescription";
 import developerName from "@/constants/developerName";
 import { ROUTES } from "@/constants/routes";
 import certificateDatabaseMap from "@/database/certificates/CertificateDatabaseMap";
-import { Metadata } from "next";
-import React from "react";
 import CertificatesView from "./_components/CertificatesView";
 
 /**

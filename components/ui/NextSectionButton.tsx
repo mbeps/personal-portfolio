@@ -1,5 +1,5 @@
-import React from "react";
 import Link from "next/link";
+import type React from "react";
 import { HiArrowDown } from "react-icons/hi";
 
 interface NextSectionButton {
@@ -14,15 +14,9 @@ interface NextSectionButton {
  */
 const NextSectionButton: React.FC<NextSectionButton> = ({ section }) => {
   return (
-    <div
-      className="
-        flex flex-row 
-        items-center text-center justify-center 
-        my-10 md:my-4
-      "
-    >
+    <div className="my-10 flex flex-row items-center justify-center text-center md:my-4">
       <Link href={`#${section}`}>
-        <HiArrowDown size={35} className="animate-bounce slow-bounce" />
+        <HiArrowDown size={35} className="slow-bounce animate-bounce" />
       </Link>
     </div>
   );

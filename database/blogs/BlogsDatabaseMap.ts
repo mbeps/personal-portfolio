@@ -1,17 +1,17 @@
-import addNestedSkillsMaterialList from "@/lib/material/addNestedSkillsMaterialList";
 import BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
-import BlogInterface from "@/database/blogs/BlogInterface";
+import type BlogInterface from "@/database/blogs/BlogInterface";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import BlogCategoriesEnum from "@/enums/blog/BlogCategoriesEnum";
 import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
-import Database from "@/interfaces/Database";
+import type Database from "@/interfaces/Database";
 import validateDatabaseKeys from "@/lib/database/validateDatabaseKeys";
+import addNestedSkillsMaterialList from "@/lib/material/addNestedSkillsMaterialList";
+import CertificateDatabaseKeys from "../certificates/CertificateDatabaseKeys";
+import ModuleDatabaseKeys from "../modules/ModuleDatabaseKeys";
 import ProjectDatabaseKeys from "../projects/ProjectDatabaseKeys";
 import projectDatabaseMap from "../projects/ProjectDatabaseMap";
 import skillDatabaseMap from "../skills/SkillDatabaseMap";
-import ModuleDatabaseKeys from "../modules/ModuleDatabaseKeys";
-import CertificateDatabaseKeys from "../certificates/CertificateDatabaseKeys";
 
 /**
  * Hashmap of blogs with keys as {@link BlogDatabaseKeys} and values as {@link BlogInterface}.
@@ -976,7 +976,7 @@ const blogsMap: Database<BlogInterface> = {
  * List of keys for the blogs that can be used to uniquely identify the blogs.
  */
 export const blogDatabaseKeys: BlogDatabaseKeys[] = Object.keys(
-  blogsMap
+  blogsMap,
 ) as BlogDatabaseKeys[];
 
 // Validate that all blog keys only contain alphanumeric characters and dashes
@@ -998,7 +998,7 @@ const blogsDatabaseMap: Database<BlogInterface> =
     skillDatabaseMap,
     [SkillCategoriesEnum.ProgrammingLanguages],
     SkillTypesEnum.Technical,
-    SkillTypesEnum.Technology
+    SkillTypesEnum.Technology,
   );
 
 export default blogsDatabaseMap;

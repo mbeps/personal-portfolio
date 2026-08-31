@@ -1,10 +1,11 @@
-import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
-import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
+import type { Metadata, ResolvingMetadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { BsArrowUpRightCircle } from "react-icons/bs";
 import ShortDate from "@/class/ShortDate";
 import MaterialList from "@/components/material-lists/MaterialList";
 import Reader from "@/components/reader/Reader";
-import SkillTableSection from "@/components/skills/SkillTableSection";
-import DetailsTable from "@/components/ui/DetailsTable";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
 import {
@@ -13,21 +14,20 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/shadcn/ui/card";
+import SkillTableSection from "@/components/skills/SkillTableSection";
+import DetailsTable from "@/components/ui/DetailsTable";
 import developerName from "@/constants/developerName";
+import { PATHS } from "@/constants/paths";
 import { ROUTES } from "@/constants/routes";
 import companyDatabaseMap from "@/database/companies/CompanyDatabaseMap";
-import CompanyInterface from "@/database/companies/CompanyInterface";
+import type CompanyInterface from "@/database/companies/CompanyInterface";
+import type RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
 import rolesDatabase from "@/database/roles/RoleDatabaseMap";
-import RoleInterface from "@/database/roles/RoleInterface";
-import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
+import type RoleInterface from "@/database/roles/RoleInterface";
+import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
+import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
+import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
 import hasAnySkills from "@/lib/skills/hasAnySkills";
-import type { Metadata, ResolvingMetadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import { BsArrowUpRightCircle } from "react-icons/bs";
-import { PATHS } from "@/constants/paths";
-import RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
 
 type Params = Promise<{ roleKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
@@ -42,7 +42,7 @@ type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
  */
 export async function generateMetadata(
   props: { params: Params; searchParams: SearchParams },
-  parent: ResolvingMetadata,
+  _parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const resolvedParams = await props.params;
   const roleKey: string = resolvedParams.roleKey;
@@ -117,19 +117,19 @@ const RolePage: React.FC<{ params: Params }> = async ({ params }) => {
         <h2>{roleData?.name}</h2>
 
         {companyData.logo && (
-          <div className="flex items-center justify-center my-12 flex-col md:flex-row">
+          <div className="my-12 flex flex-col items-center justify-center md:flex-row">
             {companyData.logo && companyData.website && (
-              <div className="rounded-full shadow-lg p-1.5 bg-neutral-300 dark:bg-neutral-800 dark:hover:bg-red-800 transition-all duration-500 ease-in-out w-[90px] h-[90px] hover:scale-105 hover:shadow-xl">
+              <div className="h-[90px] w-[90px] rounded-full bg-neutral-300 p-1.5 shadow-lg transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-xl dark:bg-neutral-800 dark:hover:bg-red-800">
                 <Link href={companyData.website} target="_blank">
                   <AspectRatio
                     ratio={1 / 1}
-                    className="overflow-hidden relative w-full bg-white rounded-full"
+                    className="relative w-full overflow-hidden rounded-full bg-white"
                   >
                     <Image
                       src={companyData.logo}
                       alt={`Logo for ${companyData.name}`}
                       fill={true}
-                      className="rounded-full shadow-lg object-cover transition-all duration-500 ease-in-out"
+                      className="rounded-full object-cover shadow-lg transition-all duration-500 ease-in-out"
                       quality={30}
                       loading="eager"
                       priority
@@ -139,9 +139,9 @@ const RolePage: React.FC<{ params: Params }> = async ({ params }) => {
               </div>
             )}
 
-            <div className="h-full flex items-center">
+            <div className="flex h-full items-center">
               {companyData.website ? (
-                <p className="text-left text-2xl font-bold mt-4 lg:mt-0 lg:ml-8 text-neutral-600 dark:text-neutral-300 hover:text-red-700 dark:hover:text-red-300 transition-all duration-300 ease-in-out">
+                <p className="mt-4 text-left font-bold text-2xl text-neutral-600 transition-all duration-300 ease-in-out hover:text-red-700 lg:mt-0 lg:ml-8 dark:text-neutral-300 dark:hover:text-red-300">
                   <Link
                     href={companyData.website}
                     target="_blank"
@@ -151,7 +151,7 @@ const RolePage: React.FC<{ params: Params }> = async ({ params }) => {
                   </Link>
                 </p>
               ) : (
-                <p className="text-left text-2xl font-bold mt-4 lg:mt-0 lg:ml-8 text-neutral-600 dark:text-neutral-300">
+                <p className="mt-4 text-left font-bold text-2xl text-neutral-600 lg:mt-0 lg:ml-8 dark:text-neutral-300">
                   {companyData.name}
                 </p>
               )}
@@ -220,10 +220,10 @@ const RolePage: React.FC<{ params: Params }> = async ({ params }) => {
                 <Link
                   href={companyData.website}
                   target="_blank"
-                  className="w-full flex justify-center md:justify-start"
+                  className="flex w-full justify-center md:justify-start"
                 >
                   <Button>
-                    <div className="flex justify-center md:justify-start align-center gap-4 w-full">
+                    <div className="flex w-full justify-center gap-4 align-center md:justify-start">
                       <BsArrowUpRightCircle size={26} />
                       <p>{`${companyData.name} website`}</p>
                     </div>

@@ -1,5 +1,9 @@
 "use client";
 
+import Link from "next/link";
+import type React from "react";
+import { useState } from "react";
+import { BsChevronDown } from "react-icons/bs";
 import { Button } from "@/components/shadcn/ui/button";
 import {
   Dialog,
@@ -27,20 +31,19 @@ import {
 import SkillTag from "@/components/tags/SkillTag";
 import Tag from "@/components/tags/Tag";
 import { ROUTES } from "@/constants/routes";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
-import SkillInterface from "@/database/skills/SkillInterface";
+import type SkillInterface from "@/database/skills/SkillInterface";
 import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-import Database from "@/interfaces/Database";
-import FilterOption from "@/interfaces/filters/FilterOption";
-import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
+import type Database from "@/interfaces/Database";
+import type FilterOption from "@/interfaces/filters/FilterOption";
+import type CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
 import { isSkillAssociatedWithMaterial } from "@/lib/material/skillUsageHelpers";
-import groupSkills, { GroupByOptions } from "@/lib/skills/group/groupSkills";
-import Link from "next/link";
-import React, { useState } from "react";
-import { BsChevronDown } from "react-icons/bs";
+import groupSkills, {
+  type GroupByOptions,
+} from "@/lib/skills/group/groupSkills";
 
 interface LanguageTagWithModalProps {
   languageIdentifier: SkillDatabaseKeys;
@@ -114,26 +117,26 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
    */
   const ModalContent = () => (
     <>
-      <div className="w-full pt-6 px-6">
+      <div className="w-full px-6 pt-6">
         <h2>{language.name}</h2>
       </div>
 
       <ScrollArea className="h-full w-full grow">
         <div className="px-6 pb-4">
           {/* Grouping Dropdown */}
-          <div className="flex mt-4">
-            <div className="grow mr-2 mt-2.5 text-right text-neutral-700 dark:text-neutral-300">
+          <div className="mt-4 flex">
+            <div className="mt-2.5 mr-2 grow text-right text-neutral-700 dark:text-neutral-300">
               Group by:
             </div>
             <DropdownMenu>
               <DropdownMenuTrigger
                 render={
                   <Button variant="default" className="w-48">
-                    <div className="flex items-start justify-between space-x-2 w-full">
+                    <div className="flex w-full items-start justify-between space-x-2">
                       <span>{currentGroupedName}</span>
                       <BsChevronDown
                         fontSize={16}
-                        className="text-neutral-700 dark:text-neutral-200 mt-1"
+                        className="mt-1 text-neutral-700 dark:text-neutral-200"
                       />
                     </div>
                   </Button>
@@ -160,7 +163,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
             {groupedSkills.map((categoryData, index) => (
               <div key={index} className="text-center md:text-left">
                 <h3>{categoryData.skillCategoryName}</h3>
-                <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
+                <div className="z-10 flex flex-row flex-wrap justify-center md:justify-start">
                   {categoryData.skills.map((skillKey) => (
                     <SkillTag key={skillKey} skillKey={skillKey} />
                   ))}
@@ -173,7 +176,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
 
       {/* Links */}
       {hasMaterial && (
-        <div className="w-full mt-auto px-6 pb-4">
+        <div className="mt-auto w-full px-6 pb-4">
           <Link href={`${ROUTES.SKILLS.path}/${languageIdentifier as string}`}>
             <Button variant="gradient" className="w-full">
               {`All ${language.name} Material`}
@@ -210,7 +213,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
               <p>{`View technologies related to ${language.name}`}</p>
             </TooltipContent>
           </Tooltip>
-          <DialogContent className="flex flex-col justify-start h-full">
+          <DialogContent className="flex h-full flex-col justify-start">
             <DialogTitle className="sr-only">{language.name}</DialogTitle>
             <ModalContent />
           </DialogContent>
@@ -236,7 +239,7 @@ const LanguageModal: React.FC<LanguageTagWithModalProps> = ({
               <p>{`View technologies related to ${language.name}`}</p>
             </TooltipContent>
           </Tooltip>
-          <DrawerContent className="flex flex-col justify-start h-[75vh]">
+          <DrawerContent className="flex h-[75vh] flex-col justify-start">
             <ModalContent />
           </DrawerContent>
         </Drawer>

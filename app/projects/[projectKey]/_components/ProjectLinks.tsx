@@ -1,10 +1,10 @@
 "use client";
 
-import { ButtonGroup } from "@/components/shadcn/ui/button-group";
-import { Button } from "@/components/shadcn/ui/button";
+import Link from "next/link";
 import { BsArrowUpRightCircle, BsGithub } from "react-icons/bs";
 import { IoReaderOutline } from "react-icons/io5";
-import Link from "next/link";
+import { Button } from "@/components/shadcn/ui/button";
+import { ButtonGroup } from "@/components/shadcn/ui/button-group";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 interface ProjectLinksProps {
@@ -35,8 +35,11 @@ export function ProjectLinks({
       orientation={isMobile ? "vertical" : "horizontal"}
     >
       {deploymentURL && (
-        <Button render={<Link href={deploymentURL} target="_blank" />} className="flex-1 md:max-w-xs">
-          <div className="flex justify-center md:justify-start items-center gap-4 w-full">
+        <Button
+          render={<Link href={deploymentURL} target="_blank" />}
+          className="flex-1 md:max-w-xs"
+        >
+          <div className="flex w-full items-center justify-center gap-4 md:justify-start">
             <BsArrowUpRightCircle size={26} />
             <p>Deployment</p>
           </div>
@@ -44,8 +47,11 @@ export function ProjectLinks({
       )}
 
       {repositoryURL && (
-        <Button render={<Link href={repositoryURL} target="_blank" />} className="flex-1 md:max-w-xs">
-          <div className="flex justify-center md:justify-start items-center gap-4 w-full">
+        <Button
+          render={<Link href={repositoryURL} target="_blank" />}
+          className="flex-1 md:max-w-xs"
+        >
+          <div className="flex w-full items-center justify-center gap-4 md:justify-start">
             <BsGithub size={26} />
             <p>Repository</p>
           </div>
@@ -53,8 +59,11 @@ export function ProjectLinks({
       )}
 
       {reportURL && (
-        <Button render={<Link href={reportURL} />} className="flex-1 md:max-w-xs">
-          <div className="flex justify-center md:justify-start items-center gap-4 w-full">
+        <Button
+          render={<Link href={reportURL} />}
+          className="flex-1 md:max-w-xs"
+        >
+          <div className="flex w-full items-center justify-center gap-4 md:justify-start">
             <IoReaderOutline size={26} />
             <p>Report</p>
           </div>

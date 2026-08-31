@@ -1,7 +1,7 @@
 import ProjectItem from "@/components/material-items/ProjectItem";
-import MaterialGroupListInterface from "@/interfaces/material/MaterialGroupListInterface";
+import type ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
+import type MaterialGroupListInterface from "@/interfaces/material/MaterialGroupListInterface";
 import MaterialGroupSectionList from "./MaterialGroupSectionList";
-import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
 
 /**
  * MaterialGroupSectionList wrapper that renders grouped project slugs using the shared `ProjectItem` card.
@@ -27,7 +27,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({
       <>
         {hasMultipleGroups && (
           <>
-            <div className="border-b border-gray-200 dark:border-neutral-600 pb-1" />
+            <div className="border-gray-200 border-b pb-1 dark:border-neutral-600" />
             <h2>{group.groupName}</h2>
           </>
         )}

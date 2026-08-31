@@ -1,7 +1,7 @@
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import SkillInterface from "@/database/skills/SkillInterface";
-import Database from "@/interfaces/Database";
-import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
+import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import type SkillInterface from "@/database/skills/SkillInterface";
+import type Database from "@/interfaces/Database";
+import type CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
 
 /**
  * Groups skills by their type (technology or technical) to support the grouped tables shown on skills and material detail pages.
@@ -12,7 +12,7 @@ import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInt
  */
 export default function groupBySkillType(
   skillKeys: SkillDatabaseKeys[],
-  skillsDatabase: Database<SkillInterface>
+  skillsDatabase: Database<SkillInterface>,
 ): CategorisedSkillsInterface[] {
   // Object to hold the grouping by skillType
   const skillTypes: Database<SkillDatabaseKeys[]> = {};
@@ -35,7 +35,7 @@ export default function groupBySkillType(
     (key) => ({
       skillCategoryName: key,
       skills: skillTypes[key],
-    })
+    }),
   );
 
   return result;

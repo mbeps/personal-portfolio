@@ -1,13 +1,13 @@
 "use client";
 
-import filterCategoriesFromSkills from "@/lib/skills/filter/filterCategoriesFromSkills";
 import TechnologiesModal from "@/app/(site)/_components/AboutSection/modal/TechnologiesModal";
 import SkillTag from "@/components/tags/SkillTag";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
-import SkillInterface from "@/database/skills/SkillInterface";
+import type SkillInterface from "@/database/skills/SkillInterface";
 import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
-import Database from "@/interfaces/Database";
+import type Database from "@/interfaces/Database";
+import filterCategoriesFromSkills from "@/lib/skills/filter/filterCategoriesFromSkills";
 
 /**
  * Curated skill tag wall that highlights flagship technologies while handing off deeper exploration to the shared modal.
@@ -26,7 +26,7 @@ const TechnologiesSection: React.FC = () => {
     }
   });
 
-  const mainSkillSlugs: SkillDatabaseKeys[] = Object.keys(
+  const _mainSkillSlugs: SkillDatabaseKeys[] = Object.keys(
     mainSkills,
   ) as SkillDatabaseKeys[];
 
@@ -102,7 +102,7 @@ const TechnologiesSection: React.FC = () => {
     return limitedSkillSlugs;
   }
 
-  function handleDisplaySkills(): SkillDatabaseKeys[] {
+  function _handleDisplaySkills(): SkillDatabaseKeys[] {
     return firstNSkills(firstNSkillsPerCategory(skillsToDisplay, 5), 19);
   }
 
@@ -128,12 +128,12 @@ const TechnologiesSection: React.FC = () => {
   return (
     <>
       <h3>Technologies</h3>
-      <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start -mt-2">
+      <div className="z-10 -mt-2 flex flex-row flex-wrap justify-center md:justify-start">
         {manualSkillsList.map((skillSlug: SkillDatabaseKeys, idx: number) => (
           <SkillTag key={idx} skillKey={skillSlug} />
         ))}
 
-        <div className="relative group">
+        <div className="group relative">
           {/* Tag that opens skills modal */}
           <TechnologiesModal />
         </div>

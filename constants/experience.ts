@@ -1,6 +1,6 @@
 import RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
 import rolesDatabase from "@/database/roles/RoleDatabaseMap";
-import RoleInterface from "@/database/roles/RoleInterface";
+import type RoleInterface from "@/database/roles/RoleInterface";
 import computeTotalExperience from "@/lib/computeTotalExperience";
 
 /**

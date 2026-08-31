@@ -1,21 +1,21 @@
 "use client";
 
+import { parseAsBoolean, useQueryState } from "nuqs";
 import React from "react";
-import CourseInterface from "@/database/courses/CourseInterface";
-import ProjectInterface from "@/database/projects/ProjectInterface";
-import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
-import { Switch } from "@/components/shadcn/ui/switch";
-import { Separator } from "@/components/shadcn/ui/separator";
-import CvHeader from "./CvHeader";
-import CvSection from "./CvSection";
-import CvExperienceItem from "./CvExperienceItem";
-import CvEducationItem from "./CvEducationItem";
-import CvProjectItem from "./CvProjectItem";
-import CvSkillGroup from "./CvSkillGroup";
 import Reader from "@/components/reader/Reader";
+import { Separator } from "@/components/shadcn/ui/separator";
+import { Switch } from "@/components/shadcn/ui/switch";
+import type CourseInterface from "@/database/courses/CourseInterface";
+import type ProjectInterface from "@/database/projects/ProjectInterface";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
-import { SerializedRoleInterface } from "../page";
-import { useQueryState, parseAsBoolean } from "nuqs";
+import type CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
+import type { SerializedRoleInterface } from "../page";
+import CvEducationItem from "./CvEducationItem";
+import CvExperienceItem from "./CvExperienceItem";
+import CvHeader from "./CvHeader";
+import CvProjectItem from "./CvProjectItem";
+import CvSection from "./CvSection";
+import CvSkillGroup from "./CvSkillGroup";
 
 interface CvPageContentProps {
   aboutContent?: string | null;
@@ -74,8 +74,8 @@ const CvPageContent: React.FC<CvPageContentProps> = ({
     .filter((group) => group.skills.length > 0);
 
   return (
-    <div className="w-full print:p-0 print:bg-white print:dark:bg-white print:text-black">
-      <div className="flex justify-end mb-4 print:hidden">
+    <div className="w-full print:bg-white print:p-0 print:text-black print:dark:bg-white">
+      <div className="mb-4 flex justify-end print:hidden">
         <div className="flex items-center space-x-2">
           <Switch
             id="archive-mode"
@@ -84,7 +84,7 @@ const CvPageContent: React.FC<CvPageContentProps> = ({
           />
           <label
             htmlFor="archive-mode"
-            className="text-base font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            className="font-medium text-base leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
           >
             Show Archived
           </label>

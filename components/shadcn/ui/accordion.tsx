@@ -1,24 +1,23 @@
 "use client";
 
-import * as React from "react";
 import { Accordion as AccordionPrimitive } from "@base-ui/react/accordion";
 import { ChevronDown } from "lucide-react";
+import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-const Accordion = React.forwardRef<any, React.ComponentProps<typeof AccordionPrimitive.Root> & { type?: "single" | "multiple", collapsible?: boolean }>(({ type, collapsible, className, ...props }, ref) => (
+const Accordion = React.forwardRef<
+  any,
+  React.ComponentProps<typeof AccordionPrimitive.Root> & {
+    type?: "single" | "multiple";
+    collapsible?: boolean;
+  }
+>(({ type, collapsible, className, ...props }, ref) => (
   <AccordionPrimitive.Root
     multiple={type === "multiple"}
     className={cn(
-      `
-        border border-neutral-200 dark:border-neutral-800
-        hover:border-neutral-300 dark:hover:border-neutral-700
-        bg-white dark:bg-neutral-950
-        rounded-xl
-        overflow-hidden
-        shadow-xs hover:shadow-md
-        transition-all duration-500 ease-in-out`,
-      className
+      "overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-xs transition-all duration-500 ease-in-out hover:border-neutral-300 hover:shadow-md dark:border-neutral-800 dark:bg-neutral-950 dark:hover:border-neutral-700",
+      className,
     )}
     ref={ref}
     {...props}
@@ -32,11 +31,8 @@ const AccordionItem = ({
 }: React.ComponentProps<typeof AccordionPrimitive.Item>) => (
   <AccordionPrimitive.Item
     className={cn(
-      `
-        py-1.5 px-6
-        border-b border-neutral-100 dark:border-neutral-900
-        transition-all duration-500 ease-in-out`,
-      className
+      "border-neutral-100 border-b px-6 py-1.5 transition-all duration-500 ease-in-out dark:border-neutral-900",
+      className,
     )}
     {...props}
   />
@@ -50,8 +46,8 @@ const AccordionTrigger = ({
   <AccordionPrimitive.Header className="flex">
     <AccordionPrimitive.Trigger
       className={cn(
-        "flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&[data-panel-open]>svg]:rotate-180 [&[data-open]>svg]:rotate-180",
-        className
+        "flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&[data-open]>svg]:rotate-180 [&[data-panel-open]>svg]:rotate-180",
+        className,
       )}
       {...props}
     >
@@ -67,13 +63,13 @@ const AccordionContent = ({
   ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Panel>) => (
   <AccordionPrimitive.Panel
-    className="grid overflow-hidden text-sm grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-in-out data-[ending-style]:grid-rows-[0fr] data-[starting-style]:grid-rows-[0fr]"
+    className="grid grid-rows-[1fr] overflow-hidden text-sm transition-[grid-template-rows] duration-300 ease-in-out data-[ending-style]:grid-rows-[0fr] data-[starting-style]:grid-rows-[0fr]"
     {...props}
   >
     <div className="min-h-0">
-      <div className={cn("pb-4 pt-0", className)}>{children}</div>
+      <div className={cn("pt-0 pb-4", className)}>{children}</div>
     </div>
   </AccordionPrimitive.Panel>
 );
 
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };
+export { Accordion, AccordionContent, AccordionItem, AccordionTrigger };

@@ -1,4 +1,4 @@
-import MaterialGroupInterface from "./MaterialGroupInterface";
+import type MaterialGroupInterface from "./MaterialGroupInterface";
 
 /**
  * Props contract for list components that render groups of materials, keeping the grouped data shape consistent across pages.

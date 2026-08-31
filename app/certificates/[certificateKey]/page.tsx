@@ -1,8 +1,10 @@
-import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
+import type { Metadata, ResolvingMetadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import type React from "react";
+import { BsArrowUpRightCircle } from "react-icons/bs";
 import MaterialList from "@/components/material-lists/MaterialList";
-import SkillTableSection from "@/components/skills/SkillTableSection";
-import Tag from "@/components/tags/Tag";
-import StringList from "@/components/ui/StringList";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import { Button } from "@/components/shadcn/ui/button";
 import {
@@ -11,20 +13,18 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/shadcn/ui/card";
+import SkillTableSection from "@/components/skills/SkillTableSection";
+import Tag from "@/components/tags/Tag";
+import StringList from "@/components/ui/StringList";
 import developerName from "@/constants/developerName";
-import { ROUTES } from "@/constants/routes";
-import certificateDatabaseMap from "@/database/certificates/CertificateDatabaseMap";
-import CertificateInterface from "@/database/certificates/CertificateInterface";
-import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
-import hasAnySkills from "@/lib/skills/hasAnySkills";
-import { Metadata, ResolvingMetadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import React from "react";
-import { BsArrowUpRightCircle } from "react-icons/bs";
-import CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
 import { PATHS } from "@/constants/paths";
+import { ROUTES } from "@/constants/routes";
+import type CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
+import certificateDatabaseMap from "@/database/certificates/CertificateDatabaseMap";
+import type CertificateInterface from "@/database/certificates/CertificateInterface";
+import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
+import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
+import hasAnySkills from "@/lib/skills/hasAnySkills";
 
 type Params = Promise<{ certificateKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
@@ -39,7 +39,7 @@ type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
  */
 export async function generateMetadata(
   props: { params: Params; searchParams: SearchParams },
-  parent: ResolvingMetadata,
+  _parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const resolvedParams = await props.params;
   const certificateKey: string = resolvedParams.certificateKey;
@@ -95,7 +95,7 @@ const CertificatesPage: React.FC<{ params: Params }> = async ({ params }) => {
 
   return (
     <main>
-      <div className="space-y-6 align-top relative">
+      <div className="relative space-y-6 align-top">
         <h2>{certificateData.name}</h2>
 
         <div className="space-y-1">
@@ -103,7 +103,7 @@ const CertificatesPage: React.FC<{ params: Params }> = async ({ params }) => {
           {certificateImage && (
             <Card>
               <CardContent className="p-3">
-                <AspectRatio ratio={4 / 3} className="overflow-hidden relative">
+                <AspectRatio ratio={4 / 3} className="relative overflow-hidden">
                   <Image
                     src={certificateImage}
                     alt={`${certificateData.name} certificate image`}
@@ -117,8 +117,8 @@ const CertificatesPage: React.FC<{ params: Params }> = async ({ params }) => {
           )}
 
           {/* Credential ID */}
-          <div className="flex flex-col align-middle w-full">
-            <p className="text-l text-center leading-7 text-neutral-400 dark:text-neutral-600 overflow-auto wrap-break-word">
+          <div className="flex w-full flex-col align-middle">
+            <p className="wrap-break-word overflow-auto text-center text-l text-neutral-400 leading-7 dark:text-neutral-600">
               {certificateKey}
             </p>
           </div>
@@ -164,22 +164,22 @@ const CertificatesPage: React.FC<{ params: Params }> = async ({ params }) => {
 
             <Card>
               <CardContent className="py-5">
-                <div className="md:grid md:grid-cols-2 space-y-6 md:space-y-0">
+                <div className="space-y-6 md:grid md:grid-cols-2 md:space-y-0">
                   <div>
-                    <div className="md:text-left text-center">
+                    <div className="text-center md:text-left">
                       <h3>Certificate Issuer</h3>
                     </div>
-                    <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start mt-5">
+                    <div className="z-10 mt-5 flex flex-row flex-wrap justify-center md:justify-start">
                       <Tag>{certificateData.issuer}</Tag>
                     </div>
                   </div>
 
                   <div>
-                    <div className="md:text-left text-center">
+                    <div className="text-center md:text-left">
                       <h3>Links</h3>
                     </div>
                     {/* Links */}
-                    <div className="mt-6 flex flex-row justify-center md:justify-start items-center w-full gap-2">
+                    <div className="mt-6 flex w-full flex-row items-center justify-center gap-2 md:justify-start">
                       {/* Issuer Page */}
                       {certificateData.certificateURL && (
                         <Link
@@ -188,7 +188,7 @@ const CertificatesPage: React.FC<{ params: Params }> = async ({ params }) => {
                           className="w-auto md:w-full"
                         >
                           <Button variant="default">
-                            <div className="flex justify-center md:justify-start align-center gap-4 w-full">
+                            <div className="flex w-full justify-center gap-4 align-center md:justify-start">
                               <BsArrowUpRightCircle size={26} />
                               <p>Issuer Page</p>
                             </div>

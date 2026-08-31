@@ -1,11 +1,11 @@
-/// <reference types="vitest/globals" />
-import groupByCategory from "@/lib/skills/group/groupByCategory";
-import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
-import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
-import type SkillInterface from "@/database/skills/SkillInterface";
-import type Database from "@/interfaces/Database";
 import { describe, expect, test } from "vitest";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import type SkillInterface from "@/database/skills/SkillInterface";
+import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
+import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
+import type Database from "@/interfaces/Database";
+/// <reference types="vitest/globals" />
+import groupByCategory from "@/lib/skills/group/groupByCategory";
 
 describe("groupByCategory", () => {
   const skillsDatabase: Database<SkillInterface> = {
@@ -79,7 +79,7 @@ describe("groupByCategory", () => {
           skillCategoryName: SkillCategoriesEnum.ArtificialIntelligence,
           skills: [SkillDatabaseKeys.MachineLearning],
         }),
-      ])
+      ]),
     );
   });
 
@@ -117,7 +117,7 @@ describe("groupByCategory", () => {
     expect(categoryNames).toContain(SkillCategoriesEnum.ProgrammingLanguages);
     expect(categoryNames).toContain(SkillCategoriesEnum.FrontEndWebDevelopment);
     expect(categoryNames).toContain(
-      SkillCategoriesEnum.FullStackWebDevelopment
+      SkillCategoriesEnum.FullStackWebDevelopment,
     );
     expect(categoryNames).toContain(SkillCategoriesEnum.BackEndWebDevelopment);
     expect(categoryNames).toContain(SkillCategoriesEnum.DatabaseManagement);
@@ -159,7 +159,7 @@ describe("groupByCategory", () => {
 
     // Find the indices in the enum for each category in result
     const resultIndices = result.map((group) =>
-      enumOrder.indexOf(group.skillCategoryName as SkillCategoriesEnum)
+      enumOrder.indexOf(group.skillCategoryName as SkillCategoriesEnum),
     );
 
     // Verify that the indices are in ascending order
@@ -174,7 +174,7 @@ describe("groupByCategory", () => {
 
     expect(result).toHaveLength(1);
     expect(result[0].skillCategoryName).toBe(
-      SkillCategoriesEnum.ProgrammingLanguages
+      SkillCategoriesEnum.ProgrammingLanguages,
     );
   });
 
@@ -231,7 +231,7 @@ describe("groupByCategory", () => {
     // Verify total number of skills is preserved
     const totalSkills = result.reduce(
       (sum, group) => sum + group.skills.length,
-      0
+      0,
     );
     expect(totalSkills).toBe(skillKeys.length);
 
@@ -324,7 +324,7 @@ describe("groupByCategory", () => {
     // But line 33 will have been executed
     expect(result).toHaveLength(1);
     expect(result[0].skillCategoryName).toBe(
-      SkillCategoriesEnum.ProgrammingLanguages
+      SkillCategoriesEnum.ProgrammingLanguages,
     );
     expect(result[0].skills).toEqual([SkillDatabaseKeys.JavaScript]);
   });

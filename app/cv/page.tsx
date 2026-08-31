@@ -1,25 +1,24 @@
-import React from "react";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import developerName from "@/constants/developerName";
+import { PATHS } from "@/constants/paths";
 import { ROUTES } from "@/constants/routes";
-import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
-import roleDatabaseMap from "@/database/roles/RoleDatabaseMap";
-import { roleDatabaseKeys } from "@/database/roles/RoleDatabaseMap";
+import BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
+import certificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
+import type CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
 import courseDatabaseMap from "@/database/courses/CourseDatabaseMap";
+import type ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
 import projectDatabaseMap from "@/database/projects/ProjectDatabaseMap";
+import roleDatabaseMap, {
+  roleDatabaseKeys,
+} from "@/database/roles/RoleDatabaseMap";
+import type RoleInterface from "@/database/roles/RoleInterface";
 import skillDatabaseMap, {
   skillDatabaseKeys,
 } from "@/database/skills/SkillDatabaseMap";
-import certificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
-import BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
-import groupSkills, { GroupByOptions } from "@/lib/skills/group/groupSkills";
 import ExperienceTypeEnum from "@/enums/experience/ExperienceTypeEnum";
+import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
+import groupSkills, { GroupByOptions } from "@/lib/skills/group/groupSkills";
 import CvPageContent from "./_components/CvPageContent";
-import CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
-import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
-import ShortDate from "@/class/ShortDate";
-import RoleInterface from "@/database/roles/RoleInterface";
-import { PATHS } from "@/constants/paths";
 
 export const metadata: Metadata = {
   title: `${developerName} - CV`,

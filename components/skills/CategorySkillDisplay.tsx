@@ -1,7 +1,7 @@
+import { useState } from "react";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
-import { useState } from "react";
+import type CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
 import SkillTag from "../tags/SkillTag";
 import ExpandCollapseButton from "../ui/ExpandCollapseButton";
 
@@ -30,10 +30,10 @@ const CategorySkillDisplay: React.FC<CategorySkillDisplayProps> = ({
   const maxSkillCount: number = 18;
   const maxGroupCount: number = isTablet ? 2 : 3; // Number of columns to display
 
-  let skillCount: number = 0;
-  let groupCount: number = 0;
-  let totalSkillsCount: number = 0;
-  let displayedSkillsCount: number = 0;
+  let skillCount = 0;
+  let groupCount = 0;
+  let totalSkillsCount = 0;
+  let displayedSkillsCount = 0;
 
   // TODO: Centralise this into hook or utility function
   // Calculate displayedSkills, totalSkillsCount, and displayedSkillsCount in one pass

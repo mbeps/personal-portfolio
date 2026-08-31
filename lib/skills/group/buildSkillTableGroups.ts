@@ -1,9 +1,9 @@
+import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
+import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
+import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
 import filterSkillsByType from "@/lib/skills/filter/filterSkillsByType";
 import categoriseAndGroupSkills from "@/lib/skills/group/categoriseAndGroupSkills";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
-import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
-import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
 
 /**
  * Centralizes how skills are split into Technology and Technical buckets before being rendered by `SkillTableSection`.
@@ -13,7 +13,7 @@ import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
  * @returns Grouped skill collections ready for the table component.
  */
 export default function buildSkillTableGroups(
-  skillKeys: SkillDatabaseKeys[]
+  skillKeys: SkillDatabaseKeys[],
 ): ListOfCategorisedSkillsByTypeInterface[] {
   const skillTypeGroups = [
     { type: SkillTypesEnum.Technology, title: "Technologies" },
@@ -24,13 +24,13 @@ export default function buildSkillTableGroups(
     const filteredSkills = filterSkillsByType(
       skillKeys,
       skillDatabaseMap,
-      type
+      type,
     );
     return categoriseAndGroupSkills(
       filteredSkills,
       skillDatabaseMap,
       type,
-      title
+      title,
     );
   });
 }

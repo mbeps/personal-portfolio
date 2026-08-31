@@ -1,17 +1,17 @@
-import addNestedSkillsMaterialList from "@/lib/material/addNestedSkillsMaterialList";
 import CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
 import ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
-import ModuleInterface from "@/database/modules/ModuleInterface";
+import type ModuleInterface from "@/database/modules/ModuleInterface";
 import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import ModuleYearGroupsEnum from "@/enums/module/ModuleYearGroupsEnum";
 import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
-import Database from "@/interfaces/Database";
+import type Database from "@/interfaces/Database";
 import validateDatabaseKeys from "@/lib/database/validateDatabaseKeys";
+import addNestedSkillsMaterialList from "@/lib/material/addNestedSkillsMaterialList";
+import BlogDatabaseKeys from "../blogs/BlogDatabaseKeys";
 import CertificateDatabaseKeys from "../certificates/CertificateDatabaseKeys";
 import skillDatabaseMap from "../skills/SkillDatabaseMap";
-import BlogDatabaseKeys from "../blogs/BlogDatabaseKeys";
 
 /**
  * Hashmap of the modules I have studied at university.
@@ -996,7 +996,7 @@ const modulesMap: Database<ModuleInterface> = {
  * List of all module keys that can uniquely identify each module.
  */
 export const moduleDatabaseKeys: ModuleDatabaseKeys[] = Object.keys(
-  modulesMap
+  modulesMap,
 ) as ModuleDatabaseKeys[];
 
 // Validate that all module keys only contain alphanumeric characters and dashes
@@ -1018,7 +1018,7 @@ const moduleDatabaseMap: Database<ModuleInterface> =
     skillDatabaseMap,
     [SkillCategoriesEnum.ProgrammingLanguages],
     SkillTypesEnum.Technical,
-    SkillTypesEnum.Technology
+    SkillTypesEnum.Technology,
   );
 
 export default moduleDatabaseMap;

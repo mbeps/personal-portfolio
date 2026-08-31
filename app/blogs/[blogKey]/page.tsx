@@ -1,22 +1,22 @@
-import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
-import processMarkdownImages from "@/lib/processMarkdownImages";
-import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
+import type { Metadata, ResolvingMetadata } from "next";
+import { notFound } from "next/navigation";
 import MaterialList from "@/components/material-lists/MaterialList";
 import SpecialReader from "@/components/reader/SpecialReader";
 import { Card, CardContent } from "@/components/shadcn/ui/card";
 import SkillTableSection from "@/components/skills/SkillTableSection";
 import developerName from "@/constants/developerName";
+import { PATHS } from "@/constants/paths";
 import { ROUTES } from "@/constants/routes";
-import BlogInterface from "@/database/blogs/BlogInterface";
+import type BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
+import type BlogInterface from "@/database/blogs/BlogInterface";
 import blogsDatabaseMap from "@/database/blogs/BlogsDatabaseMap";
 import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
 import BlogCategoriesEnum from "@/enums/blog/BlogCategoriesEnum";
-import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
+import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
+import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
+import processMarkdownImages from "@/lib/processMarkdownImages";
+import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
 import hasAnySkills from "@/lib/skills/hasAnySkills";
-import type { Metadata, ResolvingMetadata } from "next";
-import { notFound } from "next/navigation";
-import { PATHS } from "@/constants/paths";
-import BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
 
 type Params = Promise<{ blogKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
@@ -31,7 +31,7 @@ type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
  */
 export async function generateMetadata(
   props: { params: Params; searchParams: SearchParams },
-  parent: ResolvingMetadata,
+  _parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const params = await props.params;
   const blogKey: string = params.blogKey;
@@ -70,7 +70,7 @@ export const generateStaticParams = async () => {
 const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
   const resolvedParams = await params;
   const blogKey: string = resolvedParams.blogKey;
-  const basePath: string = ROUTES.BLOGS.path;
+  const _basePath: string = ROUTES.BLOGS.path;
   const blogData: BlogInterface = blogsDatabaseMap[blogKey];
 
   if (!blogData) {
@@ -113,7 +113,7 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
           <h2>{blogData?.name}</h2>
 
           {/* Description */}
-          <h3 className="text-neutral-600 dark:text-neutral-400 mb-12">
+          <h3 className="mb-12 text-neutral-600 dark:text-neutral-400">
             {blogData?.subtitle}
           </h3>
         </div>
@@ -124,7 +124,7 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
           previousPageName={ROUTES.BLOGS.name}
         />
 
-        <div className="mt-10 material-sections-wrapper">
+        <div className="material-sections-wrapper mt-10">
           {/* Skills */}
           {hasSkills && (
             <Card>
@@ -137,9 +137,7 @@ const BlogPage: React.FC<{ params: Params }> = async ({ params }) => {
           {/* Related Materials */}
           {blogData.relatedMaterials &&
             blogData.relatedMaterials.length > 0 && (
-              <>
-                <MaterialList materialKeys={blogData.relatedMaterials} />
-              </>
+              <MaterialList materialKeys={blogData.relatedMaterials} />
             )}
         </div>
       </div>

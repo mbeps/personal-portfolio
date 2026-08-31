@@ -1,8 +1,8 @@
-import stringToSlug from "@/lib/stringToSlug";
-import MaterialInterface from "@/database/materials/MaterialInterface";
-import SkillInterface from "@/database/skills/SkillInterface";
-import Database from "@/interfaces/Database";
+import type MaterialInterface from "@/database/materials/MaterialInterface";
+import type SkillInterface from "@/database/skills/SkillInterface";
+import type Database from "@/interfaces/Database";
 import filterMaterialKeysByPredicate from "@/lib/material/filter/filterMaterialKeysByPredicate";
+import stringToSlug from "@/lib/stringToSlug";
 
 /**
  * Implements the “skill category” dropdown shared by Projects, Experience, and Certificates.
@@ -29,13 +29,12 @@ export default function filterMaterialBySkillCategory<
     materialsDatabase,
     (material) =>
       Boolean(
-        material &&
-          material.skills.some((skillSlug) => {
-            const skill: SkillInterface = skillsDatabase[skillSlug];
-            return Boolean(
-              skill && stringToSlug(skill.category) === targetCategorySlug,
-            );
-          }),
+        material?.skills.some((skillSlug) => {
+          const skill: SkillInterface = skillsDatabase[skillSlug];
+          return Boolean(
+            skill && stringToSlug(skill.category) === targetCategorySlug,
+          );
+        }),
       ),
   );
 }

@@ -1,11 +1,11 @@
-import NavigationItemInterface from "@/interfaces/NavigationItemInterface";
-import BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
-import CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
-import CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
-import ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
-import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
-import RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import type BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
+import type CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
+import type CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
+import type ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
+import type ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
+import type RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
+import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import type NavigationItemInterface from "@/interfaces/NavigationItemInterface";
 
 const SKILLS_BASE = "/skills" as const;
 const PROJECTS_BASE = "/projects" as const;
@@ -47,7 +47,7 @@ export const ROUTES = {
     path: SKILLS_BASE,
     name: "Skills" as const,
     description:
-      `Multitude of my technical skills acquired across projects, experience, and education.` as const,
+      "Multitude of my technical skills acquired across projects, experience, and education." as const,
     detail: (key: SkillDatabaseKeys): `/skills/${SkillDatabaseKeys}` =>
       `${SKILLS_BASE}/${key}`,
   },
@@ -55,7 +55,7 @@ export const ROUTES = {
     path: PROJECTS_BASE,
     name: "Projects" as const,
     description:
-      `Wide catalogue of projects showcasing my skills and expertise in different technologies and domains.` as const,
+      "Wide catalogue of projects showcasing my skills and expertise in different technologies and domains." as const,
     isMain: true as const,
     detail: (key: ProjectDatabaseKeys): `/projects/${ProjectDatabaseKeys}` =>
       `${PROJECTS_BASE}/${key}`,

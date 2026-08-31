@@ -1,5 +1,5 @@
-import SkillInterface from "@/database/skills/SkillInterface";
-import Database from "@/interfaces/Database";
+import type SkillInterface from "@/database/skills/SkillInterface";
+import type Database from "@/interfaces/Database";
 import useFuseSearch from "./useFuseSearch";
 
 // Stable module-level reference keeps the Fuse options memo from firing on every render.

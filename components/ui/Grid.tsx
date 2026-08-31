@@ -1,4 +1,5 @@
-import React, { ReactNode } from "react";
+import type React from "react";
+import type { ReactNode } from "react";
 
 interface GridProps {
   items: ReactNode[];
@@ -29,7 +30,7 @@ const Grid: React.FC<GridProps> = ({ items, gap = 20 }) => {
       {items.map((item, idx) => {
         const isLastItem = idx === items.length - 1;
         return isLastItem && isOddTotal ? (
-          <div key={idx} className="md:col-span-2 flex justify-center">
+          <div key={idx} className="flex justify-center md:col-span-2">
             <div className="w-full md:w-1/2">{item}</div>
           </div>
         ) : (

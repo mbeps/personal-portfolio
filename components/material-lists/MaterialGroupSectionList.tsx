@@ -1,13 +1,13 @@
+import type React from "react";
+import type MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import stringToSlug from "@/lib/stringToSlug";
-import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
-import React from "react";
 
 interface MaterialGroupSectionListProps {
   groupedMaterial: MaterialGroupInterface[];
   emptyMessage: string;
   renderContent: (
     group: MaterialGroupInterface,
-    hasMultipleGroups: boolean
+    hasMultipleGroups: boolean,
   ) => React.ReactNode;
   wrapperClassName?: string;
   sectionClassName?: string;
@@ -30,8 +30,8 @@ const MaterialGroupSectionList: React.FC<MaterialGroupSectionListProps> = ({
 }) => {
   if (!groupedMaterial.length) {
     return (
-      <div className="flex justify-center min-w-full mt-8">
-        <h2 className="text-2xl font-bold">{emptyMessage}</h2>
+      <div className="mt-8 flex min-w-full justify-center">
+        <h2 className="font-bold text-2xl">{emptyMessage}</h2>
       </div>
     );
   }

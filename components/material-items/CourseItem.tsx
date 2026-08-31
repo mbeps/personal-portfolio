@@ -1,10 +1,9 @@
-import { ROUTES } from "@/constants/routes";
-import courseDatabaseMap from "@/database/courses/CourseDatabaseMap";
-import CourseInterface from "@/database/courses/CourseInterface";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-import { AspectRatio } from "../shadcn/ui/aspect-ratio";
+import type React from "react";
+import { ROUTES } from "@/constants/routes";
+import courseDatabaseMap from "@/database/courses/CourseDatabaseMap";
+import type CourseInterface from "@/database/courses/CourseInterface";
 import Tag from "../tags/Tag";
 
 interface CourseItemProps {
@@ -19,29 +18,13 @@ interface CourseItemProps {
  */
 const CourseItem: React.FC<CourseItemProps> = ({ courseKey }) => {
   const basePath: string = ROUTES.EDUCATION.path;
-  let courseData: CourseInterface = courseDatabaseMap[courseKey];
+  const courseData: CourseInterface = courseDatabaseMap[courseKey];
 
   return (
-    <div
-      className="
-        bg-neutral-100 dark:bg-neutral-800
-        border border-neutral-300 dark:border-neutral-700
-        shadow-sm
-        p-3 lg:p-6 rounded-xl
-        transition-colors duration-700
-        flex flex-col
-        h-full w-full
-      "
-    >
+    <div className="flex h-full w-full flex-col rounded-xl border border-neutral-300 bg-neutral-100 p-3 shadow-sm transition-colors duration-700 lg:p-6 dark:border-neutral-700 dark:bg-neutral-800">
       {/* Certificate Image */}
       {courseData.logo && (
-        <div
-          className="
-            flex justify-center
-            mb-6
-            w-full
-          "
-        >
+        <div className="mb-6 flex w-full justify-center">
           <Link href={`${basePath}/${courseKey}`}>
             <Image
               key={courseKey}
@@ -51,41 +34,25 @@ const CourseItem: React.FC<CourseItemProps> = ({ courseKey }) => {
               height={160}
               quality={60}
               loading="lazy"
-              className="
-                rounded-full
-                cursor-pointer
-                transform md:hover:scale-105
-                shadow-md md:hover:shadow-xl
-                transition-all duration-500 ease-in-out
-              "
+              className="transform cursor-pointer rounded-full shadow-md transition-all duration-500 ease-in-out md:hover:scale-105 md:hover:shadow-xl"
             />
           </Link>
         </div>
       )}
 
-      <div
-        className="
-        flex flex-col 
-        gap-5 px-4 py-4"
-      >
+      <div className="flex flex-col gap-5 px-4 py-4">
         {/* Certificate Title */}
         <Link href={`${basePath}/${courseKey}`}>
-          <h1
-            className="
-              text-3xl md:text-4xl font-bold text-center 
-              md:hover:text-red-500 md:dark:hover:text-red-800
-              transition-colors duration-700 ease-in-out
-              "
-          >
+          <h1 className="text-center font-bold text-3xl transition-colors duration-700 ease-in-out md:text-4xl md:hover:text-red-500 md:dark:hover:text-red-800">
             {courseData.name}
           </h1>
         </Link>
 
-        <p className="text-xl text-center leading-7 text-neutral-500 dark:text-neutral-400">
+        <p className="text-center text-neutral-500 text-xl leading-7 dark:text-neutral-400">
           {courseData.category}
         </p>
 
-        <div className="w-full flex justify-center">
+        <div className="flex w-full justify-center">
           <Tag>{courseData.university}</Tag>
         </div>
       </div>

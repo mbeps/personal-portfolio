@@ -1,7 +1,7 @@
-import stringToSlug from "@/lib/stringToSlug";
-import MaterialInterface from "@/database/materials/MaterialInterface";
-import Database from "@/interfaces/Database";
+import type MaterialInterface from "@/database/materials/MaterialInterface";
+import type Database from "@/interfaces/Database";
 import filterMaterialKeysByPredicate from "@/lib/material/filter/filterMaterialKeysByPredicate";
+import stringToSlug from "@/lib/stringToSlug";
 
 /**
  * Handles category filtering for views that expose editorial groupings (e.g., “Research”, “Talks”, etc.).

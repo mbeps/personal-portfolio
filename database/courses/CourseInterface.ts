@@ -1,5 +1,5 @@
-import ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
-import MaterialInterface from "../materials/MaterialInterface";
+import type ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
+import type MaterialInterface from "../materials/MaterialInterface";
 
 /**
  * Extends the base material contract for university courses so modules, skills, and scores can be rolled up and displayed together.

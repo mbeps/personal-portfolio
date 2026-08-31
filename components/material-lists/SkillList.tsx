@@ -1,21 +1,14 @@
 "use client";
 
-import { skillHasMaterial } from "@/lib/material/skillUsageHelpers";
+import type React from "react";
 import FilterSection from "@/components/filters/FilterSection";
 import SkillTag from "@/components/tags/SkillTag";
 import { ROUTES } from "@/constants/routes";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
+import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import useSkillFilterState from "@/hooks/useSkillFilterState";
-import React from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "../shadcn/ui/card";
+import type CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
+import { skillHasMaterial } from "@/lib/material/skillUsageHelpers";
+import { Card, CardContent, CardHeader, CardTitle } from "../shadcn/ui/card";
 
 interface SkillListProps {
   skills: SkillDatabaseKeys[];
@@ -66,7 +59,7 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
                     </h3>
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="flex flex-wrap flex-row justify-centermd:justify-start">
+                <CardContent className="flex flex-row flex-wrap justify-centermd:justify-start">
                   {Object.entries(categoryData.skills).map(
                     ([count, skillKey]) => (
                       <SkillTag
@@ -84,8 +77,8 @@ const SkillList: React.FC<SkillListProps> = ({ skills }) => {
             </div>
           ))
         ) : (
-          <div className="flex justify-center min-w-full mt-8">
-            <h2 className="text-2xl font-bold">No Matching Skills</h2>
+          <div className="mt-8 flex min-w-full justify-center">
+            <h2 className="font-bold text-2xl">No Matching Skills</h2>
           </div>
         )}
       </div>

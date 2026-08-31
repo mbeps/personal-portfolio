@@ -1,13 +1,13 @@
 "use client";
 
-import useIsMounted from "@/hooks/useIsMounted";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
 import Image from "next/image";
 import React, { useEffect } from "react";
 import { LiaImageSolid, LiaVideoSolid } from "react-icons/lia";
+import useIsMounted from "@/hooks/useIsMounted";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 import {
   Carousel,
-  CarouselApi,
+  type CarouselApi,
   CarouselContent,
   CarouselItem,
   CarouselNext,
@@ -72,7 +72,7 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
   }
 
   return (
-    <div className="flex flex-col items-center relative">
+    <div className="relative flex flex-col items-center">
       {/* Media Preview */}
       <div className="w-full">
         <Tabs
@@ -85,7 +85,7 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
             {activeTab === "images" && (
               <Carousel
                 setApi={setApi}
-                className="bg-neutral-100 dark:bg-neutral-950 rounded-xl transition-colors duration-700"
+                className="rounded-xl bg-neutral-100 transition-colors duration-700 dark:bg-neutral-950"
               >
                 <CarouselContent>
                   {Array.from({ length: images?.length ?? 0 }).map(
@@ -97,7 +97,7 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
                           alt={`Gallery image ${index + 1}`}
                           quality={90}
                           preload={true}
-                          className="w-full h-[60vh] object-contain rounded-xl bg-neutral-100 dark:bg-neutral-950 transition-colors duration-700 p-2"
+                          className="h-[60vh] w-full rounded-xl bg-neutral-100 object-contain p-2 transition-colors duration-700 dark:bg-neutral-950"
                         />
                       </CarouselItem>
                     ),
@@ -111,7 +111,7 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
                 )}
               </Carousel>
             )}
-            <div className="py-2 text-center text-sm text-muted-foreground">
+            <div className="py-2 text-center text-muted-foreground text-sm">
               Slide {current} of {count}
             </div>
           </TabsContent>
@@ -121,7 +121,7 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
             {activeTab === "demo" && (
               <Carousel
                 setApi={setApi}
-                className="bg-neutral-100 dark:bg-neutral-950 rounded-xl transition-colors duration-700"
+                className="rounded-xl bg-neutral-100 transition-colors duration-700 dark:bg-neutral-950"
               >
                 <CarouselContent>
                   {Array.from({ length: videos?.length ?? 0 }).map(
@@ -129,7 +129,7 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
                       <CarouselItem key={index}>
                         <VideoPlayer
                           src={videos?.[index] ?? ""}
-                          className="w-full h-[60vh] object-contain rounded-xl bg-neutral-100 dark:bg-neutral-950 transition-colors duration-700 p-2"
+                          className="h-[60vh] w-full rounded-xl bg-neutral-100 object-contain p-2 transition-colors duration-700 dark:bg-neutral-950"
                         />
                       </CarouselItem>
                     ),
@@ -143,30 +143,24 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
                 )}
               </Carousel>
             )}
-            <div className="py-2 text-center text-sm text-muted-foreground">
+            <div className="py-2 text-center text-muted-foreground text-sm">
               Slide {current} of {count}
             </div>
           </TabsContent>
 
           {/* Tabs List */}
           {images && images.length > 0 && videos && videos.length > 0 && (
-            <div className="flex justify-center items-center">
+            <div className="flex items-center justify-center">
               <TabsList
                 variant="pill"
-                className="rounded-full flex flex-row space-x-1 transition-colors duration-700"
+                className="flex flex-row space-x-1 rounded-full transition-colors duration-700"
               >
                 {/* Images */}
                 {images && images.length > 0 && (
                   <TabsTrigger
                     value="images"
                     variant="pill"
-                    className="
-                      flex flex-row space-x-2
-                      text-neutral-700 dark:text-neutral-200 text-md
-                      rounded-full
-                      transition-colors duration-700
-                      px-6
-                      "
+                    className="flex flex-row space-x-2 rounded-full px-6 text-md text-neutral-700 transition-colors duration-700 dark:text-neutral-200"
                   >
                     <LiaImageSolid fontSize={20} />
                     <span>Images</span>
@@ -178,13 +172,7 @@ const Gallery: React.FC<GalleryProps> = ({ images, videos }) => {
                   <TabsTrigger
                     value="demo"
                     variant="pill"
-                    className="
-                      flex flex-row space-x-2
-                      text-neutral-700 dark:text-neutral-200 text-md
-                      rounded-full
-                      transition-colors duration-700
-                      px-6
-                  "
+                    className="flex flex-row space-x-2 rounded-full px-6 text-md text-neutral-700 transition-colors duration-700 dark:text-neutral-200"
                   >
                     <LiaVideoSolid fontSize={20} />
                     <span>Videos</span>

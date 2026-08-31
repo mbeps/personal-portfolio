@@ -1,6 +1,6 @@
-import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
+import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import type SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
+import type SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
 
 /**
  * Describes a skill used across the portfolio taxonomy so filters, related skill grouping, and public asset folders stay consistent.

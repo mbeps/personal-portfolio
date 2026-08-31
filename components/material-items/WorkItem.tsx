@@ -1,14 +1,14 @@
-import { ROUTES } from "@/constants/routes";
-import companyDatabaseMap from "@/database/companies/CompanyDatabaseMap";
-import rolesDatabase from "@/database/roles/RoleDatabaseMap";
-import CompanyInterface from "@/database/companies/CompanyInterface";
-import RoleInterface from "@/database/roles/RoleInterface";
 import Image from "next/image";
 import Link from "next/link";
 import { BsArrowUpRightCircle, BsInfoCircle } from "react-icons/bs";
+import ShortDate from "@/class/ShortDate";
+import { ROUTES } from "@/constants/routes";
+import companyDatabaseMap from "@/database/companies/CompanyDatabaseMap";
+import type CompanyInterface from "@/database/companies/CompanyInterface";
+import rolesDatabase from "@/database/roles/RoleDatabaseMap";
+import type RoleInterface from "@/database/roles/RoleInterface";
 import { AspectRatio } from "../shadcn/ui/aspect-ratio";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../shadcn/ui/tooltip";
-import ShortDate from "@/class/ShortDate";
 
 interface WorkItemProps {
   roleKey: string;
@@ -38,46 +38,24 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
       : roleData.endDate.toString();
 
   return (
-    <div
-      className="
-        flex flex-col md:flex-row 
-        p-4 space-x-0 md:space-x-8 space-y-2 md:space-y-0
-        bg-neutral-100 dark:bg-neutral-800 rounded-xl
-        transition-all duration-500 ease-in-out
-        border border-neutral-300 dark:border-neutral-700
-        shadow-sm
-        "
-    >
+    <div className="flex flex-col space-x-0 space-y-2 rounded-xl border border-neutral-300 bg-neutral-100 p-4 shadow-sm transition-all duration-500 ease-in-out md:flex-row md:space-x-8 md:space-y-0 dark:border-neutral-700 dark:bg-neutral-800">
       {/* Left Section */}
-      <div className="flex items-center flex-col space-y-2">
+      <div className="flex flex-col items-center space-y-2">
         {/* Logo */}
-        <div className="py-1 flex items-start justify-center md:justify-start">
+        <div className="flex items-start justify-center py-1 md:justify-start">
           {companyData.logo && (
-            <div
-              className="
-              rounded-full 
-              transition-all duration-500 ease-in-out
-              w-20 h-20 
-              border-2 border-neutral-200 dark:border-neutral-900
-              dark:hover:border-red-600
-              hover:scale-105 hover:shadow-lg
-              "
-            >
+            <div className="h-20 w-20 rounded-full border-2 border-neutral-200 transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-lg dark:border-neutral-900 dark:hover:border-red-600">
               <Link href={rolePage}>
                 <AspectRatio
                   ratio={1 / 1}
-                  className="overflow-hidden relative w-full bg-white rounded-full"
+                  className="relative w-full overflow-hidden rounded-full bg-white"
                 >
                   <Image
                     src={companyData.logo}
                     alt={`Logo for ${companyData.name}`}
                     fill={true}
                     sizes="80px"
-                    className="
-                    rounded-full 
-                    shadow-lg object-cover
-                    transition-all duration-500 ease-in-out
-                    "
+                    className="rounded-full object-cover shadow-lg transition-all duration-500 ease-in-out"
                     quality={30}
                     loading="eager"
                     priority
@@ -89,13 +67,13 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
         </div>
 
         {/* Link to Credential Page */}
-        <div className="hidden md:flex flex-row space-x-3">
+        <div className="hidden flex-row space-x-3 md:flex">
           <Tooltip>
             <TooltipTrigger>
               <Link href={rolePage}>
                 <BsInfoCircle
                   size={30}
-                  className="md:hover:-translate-y-1 transition-transform cursor-pointer"
+                  className="cursor-pointer transition-transform md:hover:-translate-y-1"
                 />
               </Link>
             </TooltipTrigger>
@@ -110,7 +88,7 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
                 <Link href={companyData.website} target="_blank">
                   <BsArrowUpRightCircle
                     size={30}
-                    className="md:hover:-translate-y-1 transition-transform cursor-pointer"
+                    className="cursor-pointer transition-transform md:hover:-translate-y-1"
                   />
                 </Link>
               </TooltipTrigger>
@@ -123,48 +101,18 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
       </div>
 
       {/* Right Section */}
-      <div
-        className="
-          flex flex-col
-          items-center md:items-start 
-          space-y-4 md:space-y-2 sm:p-0
-          ease-in-out
-          rounded-xl 
-          transition-colors duration-700 
-          text-left
-          "
-      >
+      <div className="flex flex-col items-center space-y-4 rounded-xl text-left transition-colors duration-700 ease-in-out sm:p-0 md:items-start md:space-y-2">
         <Link href={rolePage}>
-          <h2
-            className="               
-              text-3xl md:text-3xl font-bold  
-              md:hover:text-red-500 md:dark:hover:text-red-800
-              transition-colors duration-700 ease-in-out
-              text-center
-              "
-          >
+          <h2 className="text-center font-bold text-3xl transition-colors duration-700 ease-in-out md:text-3xl md:hover:text-red-500 md:dark:hover:text-red-800">
             {roleData.name}
           </h2>
         </Link>
-        <div
-          className="
-            flex flex-col md:flex-row
-            space-x-0 md:space-x-4
-            text-lg 
-            mb-2 
-            text-neutral-500 dark:text-neutral-400
-            items-center justify-center md:justify-start
-            "
-        >
+        <div className="mb-2 flex flex-col items-center justify-center space-x-0 text-lg text-neutral-500 md:flex-row md:justify-start md:space-x-4 dark:text-neutral-400">
           {companyData.website ? (
             <Link
               href={companyData.website}
               target="_blank"
-              className="
-                font-bold
-                hover:underline 
-                hover:text-red-500 dark:hover:text-red-700
-                transition-colors duration-300 ease-in-out"
+              className="font-bold transition-colors duration-300 ease-in-out hover:text-red-500 hover:underline dark:hover:text-red-700"
             >
               {companyData.name}
             </Link>
@@ -174,15 +122,7 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
           {/* <span>{companyData.location}</span> */}
         </div>
 
-        <div
-          className="
-            flex flex-col 
-            justify-center md:justify-start 
-            items-center md:items-start 
-            space-y-2 md:space-y-0
-            text-neutral-500 dark:text-neutral-400
-          "
-        >
+        <div className="flex flex-col items-center justify-center space-y-2 text-neutral-500 md:items-start md:justify-start md:space-y-0 dark:text-neutral-400">
           {/* Dates depend on the visitor's current time; suppress hydration warnings to avoid noise when the client re-computes the range. */}
           <p suppressHydrationWarning>{`${roleData.startDate} - ${endDate}`}</p>
           <p className="italic" suppressHydrationWarning>
@@ -190,21 +130,13 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
           </p>
         </div>
 
-        <div
-          className="
-            flex flex-row 
-            align-bottom 
-            space-x-4
-            pt-3
-            md:hidden
-            "
-        >
+        <div className="flex flex-row space-x-4 pt-3 align-bottom md:hidden">
           <Tooltip>
             <TooltipTrigger>
               <Link href={rolePage}>
                 <BsInfoCircle
                   size={30}
-                  className="md:hover:-translate-y-1 transition-transform cursor-pointer"
+                  className="cursor-pointer transition-transform md:hover:-translate-y-1"
                 />
               </Link>
             </TooltipTrigger>
@@ -219,7 +151,7 @@ const WorkItem: React.FC<WorkItemProps> = ({ roleKey }) => {
                 <Link href={companyData.website} target="_blank">
                   <BsArrowUpRightCircle
                     size={30}
-                    className="md:hover:-translate-y-1 transition-transform cursor-pointer"
+                    className="cursor-pointer transition-transform md:hover:-translate-y-1"
                   />
                 </Link>
               </TooltipTrigger>

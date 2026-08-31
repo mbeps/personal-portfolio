@@ -1,7 +1,7 @@
+import type RoleInterface from "@/database/roles/RoleInterface";
+import type Database from "@/interfaces/Database";
+import type FilterOption from "@/interfaces/filters/FilterOption";
 import stringToSlug from "@/lib/stringToSlug";
-import RoleInterface from "@/database/roles/RoleInterface";
-import Database from "@/interfaces/Database";
-import FilterOption from "@/interfaces/filters/FilterOption";
 import generateFilterOptions from "./generateFilterOptions";
 
 /**

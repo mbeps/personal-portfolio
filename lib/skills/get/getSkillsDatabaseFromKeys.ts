@@ -1,6 +1,6 @@
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import SkillInterface from "@/database/skills/SkillInterface";
-import Database from "@/interfaces/Database";
+import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import type SkillInterface from "@/database/skills/SkillInterface";
+import type Database from "@/interfaces/Database";
 
 /**
  * Extracts a lightweight skills map containing only the requested slugs so downstream grouping logic can work with a smaller dataset.
@@ -11,7 +11,7 @@ import Database from "@/interfaces/Database";
  */
 export default function getSkillsDatabaseFromKeys(
   skillKeys: SkillDatabaseKeys[],
-  skillsDatabase: Database<SkillInterface>
+  skillsDatabase: Database<SkillInterface>,
 ): Database<SkillInterface> {
   const filteredSkills: Database<SkillInterface> = {};
 

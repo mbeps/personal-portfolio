@@ -1,12 +1,12 @@
-/// <reference types="vitest/globals" />
-import addNestedSkillsMaterialList from "@/lib/material/addNestedSkillsMaterialList";
+import { describe, expect, test } from "vitest";
+import type MaterialInterface from "@/database/materials/MaterialInterface";
+import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import type SkillInterface from "@/database/skills/SkillInterface";
 import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
-import type MaterialInterface from "@/database/materials/MaterialInterface";
-import type SkillInterface from "@/database/skills/SkillInterface";
 import type Database from "@/interfaces/Database";
-import { describe, expect, test } from "vitest";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+/// <reference types="vitest/globals" />
+import addNestedSkillsMaterialList from "@/lib/material/addNestedSkillsMaterialList";
 
 describe("addNestedSkillsMaterialList", () => {
   const skillsDatabase: Database<SkillInterface> = {

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import CourseItem from "@/components/material-items/CourseItem";
 import Grid from "@/components/ui/Grid";
 import PageDescription from "@/components/ui/PageDescription";
@@ -6,7 +7,6 @@ import { ROUTES } from "@/constants/routes";
 import courseDatabaseMap, {
   courseDatabaseKeys,
 } from "@/database/courses/CourseDatabaseMap";
-import type { Metadata } from "next";
 
 /**
  * Static metadata for the education index, sourcing keywords directly from the courses database to match the visible grid.

@@ -1,14 +1,15 @@
 /// <reference types="vitest/globals" />
-import ShortDate from "@/class/ShortDate";
+
 import { describe, expect, test } from "vitest";
+import ShortDate from "@/class/ShortDate";
 
 describe("ShortDate", () => {
   test("validates month bounds", () => {
     expect(() => new ShortDate(2024, 0)).toThrow(
-      "Month must be between 1 and 12."
+      "Month must be between 1 and 12.",
     );
     expect(() => new ShortDate(2024, 13)).toThrow(
-      "Month must be between 1 and 12."
+      "Month must be between 1 and 12.",
     );
   });
 
@@ -44,10 +45,10 @@ describe("ShortDate", () => {
     const oneYearThreeMonthsLater = new ShortDate(2022, 4);
 
     expect(oneYearOneMonthLater.formatExperienceTime(roleStart)).toBe(
-      "1 year and 1 month"
+      "1 year and 1 month",
     );
     expect(oneYearThreeMonthsLater.formatExperienceTime(roleStart)).toBe(
-      "1 year and 3 months"
+      "1 year and 3 months",
     );
   });
 

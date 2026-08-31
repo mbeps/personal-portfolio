@@ -1,15 +1,14 @@
-import MaterialInterface from "@/database/materials/MaterialInterface";
+import { renderToStaticMarkup } from "react-dom/server";
+import { beforeEach, describe, expect, test, vi } from "vitest";
+import type MaterialInterface from "@/database/materials/MaterialInterface";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import useMaterialFilterState from "@/hooks/useMaterialFilterState";
-import Database from "@/interfaces/Database";
-import FilterCategory from "@/interfaces/filters/FilterCategory";
-import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
+import type Database from "@/interfaces/Database";
+import type FilterCategory from "@/interfaces/filters/FilterCategory";
+import type MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 import filterMaterialByArchivedStatus from "@/lib/material/filter/filterMaterialByArchivedStatus";
 import filterMaterialByCategory from "@/lib/material/filter/filterMaterialByCategory";
 import filterMaterialBySkill from "@/lib/material/filter/filterMaterialBySkill";
-import React from "react";
-import { renderToStaticMarkup } from "react-dom/server";
-import { beforeEach, describe, expect, test, vi } from "vitest";
 
 const { mockUseQueryStates } = vi.hoisted(() => ({
   mockUseQueryStates: vi.fn(),
@@ -243,7 +242,7 @@ describe("useMaterialFilterState", () => {
             ],
             defaultValue: "all",
             // Custom logic: only filter when value is exactly "special"
-            shouldApply: (value, defaultValue) => value === "special",
+            shouldApply: (value, _defaultValue) => value === "special",
             applyFilter: (value, keys) =>
               filterMaterialByCategory(value, keys, itemsMap),
           },
@@ -578,7 +577,7 @@ describe("useMaterialFilterState", () => {
               { slug: "web", entryName: "Web" },
             ],
             defaultValue: "all",
-            applyFilter: (v, k) => k,
+            applyFilter: (_v, k) => k,
           },
         ],
       });
@@ -610,7 +609,7 @@ describe("useMaterialFilterState", () => {
             urlParam: "category",
             options: [{ slug: "all", entryName: "All" }],
             // defaultValue and valueParser MISSING
-            applyFilter: (v, k) => k,
+            applyFilter: (_v, k) => k,
           },
         ],
       });

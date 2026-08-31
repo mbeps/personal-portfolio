@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -5,7 +6,6 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/shadcn/ui/breadcrumb";
-import React from "react";
 
 export interface BreadcrumbPair {
   name: string;

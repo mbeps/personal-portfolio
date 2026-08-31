@@ -1,9 +1,9 @@
-import React from "react";
-import ProjectInterface from "@/database/projects/ProjectInterface";
-import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
+import type React from "react";
 import CvItemSkills from "@/app/cv/_components/CvItemSkills";
 import Reader from "@/components/reader/Reader";
 import { PATHS } from "@/constants/paths";
+import type ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
+import type ProjectInterface from "@/database/projects/ProjectInterface";
 import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
 
 /**
@@ -33,12 +33,12 @@ const AllProjectItem: React.FC<AllProjectItemProps> = ({
 
   return (
     <div className="mb-12 break-inside-avoid">
-      <h3 className="text-2xl font-bold mb-2">{project.name}</h3>
-      <p className="text-lg text-neutral-700 dark:text-neutral-300 mb-4">
+      <h3 className="mb-2 font-bold text-2xl">{project.name}</h3>
+      <p className="mb-4 text-lg text-neutral-700 dark:text-neutral-300">
         {project.description}
       </p>
 
-      <div className="flex flex-col gap-1 mb-6 text-lg">
+      <div className="mb-6 flex flex-col gap-1 text-lg">
         {project.deploymentURL && (
           <div>
             <span className="font-bold">Deployment: </span>
@@ -46,7 +46,7 @@ const AllProjectItem: React.FC<AllProjectItemProps> = ({
               href={project.deploymentURL}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary hover:underline break-all"
+              className="break-all text-primary hover:underline"
             >
               {project.deploymentURL.replace(/^https?:\/\//, "")}
             </a>
@@ -59,7 +59,7 @@ const AllProjectItem: React.FC<AllProjectItemProps> = ({
               href={project.repositoryURL}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary hover:underline break-all"
+              className="break-all text-primary hover:underline"
             >
               {project.repositoryURL.replace(/^https?:\/\//, "")}
             </a>
@@ -73,7 +73,7 @@ const AllProjectItem: React.FC<AllProjectItemProps> = ({
 
       {features && (
         <div className="mt-6">
-          <h4 className="text-xl font-bold border-b-2 border-neutral-200 dark:border-neutral-800 pb-2 mb-4 uppercase tracking-wider">
+          <h4 className="mb-4 border-neutral-200 border-b-2 pb-2 font-bold text-xl uppercase tracking-wider dark:border-neutral-800">
             Key Features
           </h4>
           <Reader content={features} size="base" />

@@ -1,5 +1,17 @@
 "use client";
 
+import { usePathname } from "next/navigation";
+import type React from "react";
+import FilterSection from "@/components/filters/FilterSection";
+import CertificatesList from "@/components/material-lists/CertificatesList";
+import { ROUTES } from "@/constants/routes";
+import type CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
+import certificateDatabaseMap from "@/database/certificates/CertificateDatabaseMap";
+import type CertificateInterface from "@/database/certificates/CertificateInterface";
+import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
+import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
+import useMaterialFilterState from "@/hooks/useMaterialFilterState";
 import checkForArchivedMaterials from "@/lib/material/checkForArchivedMaterials";
 import filterCertificatesByIssuer from "@/lib/material/filter/filterCertificatesByIssuer";
 import filterMaterialByArchivedStatus from "@/lib/material/filter/filterMaterialByArchivedStatus";
@@ -11,18 +23,6 @@ import { generateFilterOptionsBySkillCategories } from "@/lib/material/filter-op
 import generateFilterOptionsBySkillType from "@/lib/material/filter-options/generateFilterOptionsBySkillType";
 import generateIssuerFilterOptions from "@/lib/material/filter-options/generateIssuerFilterOptions";
 import stringToSlug from "@/lib/stringToSlug";
-import FilterSection from "@/components/filters/FilterSection";
-import CertificatesList from "@/components/material-lists/CertificatesList";
-import { ROUTES } from "@/constants/routes";
-import CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
-import certificateDatabaseMap from "@/database/certificates/CertificateDatabaseMap";
-import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
-import CertificateInterface from "@/database/certificates/CertificateInterface";
-import { usePathname } from "next/navigation";
-import React from "react";
-import useMaterialFilterState from "@/hooks/useMaterialFilterState";
 
 /**
  * Client-side controller for the certificates archive that plugs the shared filter hook into the `CertificatesList`.

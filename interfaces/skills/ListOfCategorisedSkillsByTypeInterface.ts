@@ -1,4 +1,4 @@
-import CategorisedSkillsInterface from "./CategorisedSkillsInterface";
+import type CategorisedSkillsInterface from "./CategorisedSkillsInterface";
 
 /**
  * Container for a set of categorised skills under a titled section, matching how tables are rendered on detail pages.

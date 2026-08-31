@@ -1,11 +1,11 @@
-import findCourseKeyForModule from "@/lib/material/course/findCourseKeyForModule";
+import Link from "next/link";
 import Grid from "@/components/ui/Grid";
 import { ROUTES } from "@/constants/routes";
 import courseDatabaseMap from "@/database/courses/CourseDatabaseMap";
+import type ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
 import moduleDatabaseMap from "@/database/modules/ModuleDatabaseMap";
-import ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
-import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
-import Link from "next/link";
+import type MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
+import findCourseKeyForModule from "@/lib/material/course/findCourseKeyForModule";
 import Tag from "../tags/Tag";
 import MaterialGroupSectionList from "./MaterialGroupSectionList";
 
@@ -59,7 +59,7 @@ const ModuleList: React.FC<ModuleListProps> = ({
                             .name
                         }
                       </div>
-                      <div className="text-neutral-400 dark:text-red-200 italic text-sm">
+                      <div className="text-neutral-400 text-sm italic dark:text-red-200">
                         {
                           courseDatabaseMap[
                             moduleDatabaseMap[moduleKey as ModuleDatabaseKeys]

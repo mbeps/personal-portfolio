@@ -18,7 +18,7 @@ export const ArchiveToggle: React.FC<ArchiveToggleProps> = ({
   onToggle,
 }) => {
   return (
-    <div className="flex justify-end items-center mt-4">
+    <div className="mt-4 flex items-center justify-end">
       <span className="mr-2 mb-1 text-neutral-600 dark:text-neutral-400">
         Display archived
       </span>

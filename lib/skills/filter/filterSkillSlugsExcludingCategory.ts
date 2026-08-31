@@ -1,7 +1,7 @@
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import SkillInterface from "@/database/skills/SkillInterface";
-import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
-import Database from "@/interfaces/Database";
+import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import type SkillInterface from "@/database/skills/SkillInterface";
+import type SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
+import type Database from "@/interfaces/Database";
 
 /**
  * Removes skills belonging to a given category, handy when a page wants to show stacks without repeating their parent language.

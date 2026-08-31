@@ -1,7 +1,7 @@
-import stringToSlug from "@/lib/stringToSlug";
-import ProjectInterface from "@/database/projects/ProjectInterface";
-import Database from "@/interfaces/Database";
+import type ProjectInterface from "@/database/projects/ProjectInterface";
+import type Database from "@/interfaces/Database";
 import filterMaterialKeysByPredicate from "@/lib/material/filter/filterMaterialKeysByPredicate";
+import stringToSlug from "@/lib/stringToSlug";
 
 /**
  * Applies the “project type” dropdown after Fuse search has already trimmed the key list.

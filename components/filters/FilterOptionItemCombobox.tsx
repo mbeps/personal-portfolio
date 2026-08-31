@@ -1,5 +1,8 @@
 "use client";
 
+import { Check } from "lucide-react";
+import { useState } from "react";
+import { BsChevronDown } from "react-icons/bs";
 import {
   Command,
   CommandEmpty,
@@ -13,11 +16,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/shadcn/ui/popover";
-import FilterCategory from "@/interfaces/filters/FilterCategory";
+import type FilterCategory from "@/interfaces/filters/FilterCategory";
 import { cn } from "@/lib/utils";
-import { Check } from "lucide-react";
-import { useState } from "react";
-import { BsChevronDown } from "react-icons/bs";
 import { Button } from "../shadcn/ui/button";
 
 interface FilterOptionItemComboboxProps {
@@ -62,39 +62,29 @@ const FilterOptionItemCombobox: React.FC<FilterOptionItemComboboxProps> = ({
             variant="default"
             role="combobox"
             onClick={() => setOpen(!isOpen)}
-            className="
-            border border-neutral-300 dark:border-neutral-700
-            shadow-xs
-            w-full
-            justify-between 
-            bg-neutral-100
-            py-2 h-full"
+            className="h-full w-full justify-between border border-neutral-300 bg-neutral-100 py-2 shadow-xs dark:border-neutral-700"
           >
-            <div className="flex flex-col space-y-1 items-start">
+            <div className="flex flex-col items-start space-y-1">
               <span>{selectedFilterCategory.sectionName}</span>
-              <span
-                className="
-              text-sm
-              text-neutral-500 dark:text-neutral-400"
-              >
+              <span className="text-neutral-500 text-sm dark:text-neutral-400">
                 {currentFilterOptionName}
               </span>
             </div>
 
             <BsChevronDown
               fontSize={16}
-              className="text-neutral-700 dark:text-neutral-200 mt-1"
+              className="mt-1 text-neutral-700 dark:text-neutral-200"
             />
           </Button>
         }
       />
 
-      <PopoverContent className="w-[24rem] md:w-84 p-0">
+      <PopoverContent className="w-[24rem] p-0 md:w-84">
         <Command className="w-full">
           <CommandInput placeholder="Search Filter..." />
           <CommandEmpty>No Filter Found.</CommandEmpty>
 
-          <CommandGroup className="w-full max-h-[25vh]">
+          <CommandGroup className="max-h-[25vh] w-full">
             {selectedFilterCategory.options.map((option, i) => {
               return (
                 <button
@@ -109,12 +99,12 @@ const FilterOptionItemCombobox: React.FC<FilterOptionItemComboboxProps> = ({
                     <CommandItem
                       key={option.slug}
                       value={option.slug}
-                      className="pr-4 w-full"
+                      className="w-full pr-4"
                     >
                       {selectedFilterCategory.selectedValue === option.slug ? (
                         <Check className={cn(gap, "text-red-500")} />
                       ) : (
-                        <div className={gap}></div>
+                        <div className={gap} />
                       )}
                       {option.entryName}
                     </CommandItem>

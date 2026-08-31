@@ -1,10 +1,10 @@
-import BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
-import CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
-import CompanyDatabaseKeys from "@/database/companies/CompanyDatabaseKeys";
-import CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
-import ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
-import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
-import RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
+import type BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
+import type CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
+import type CompanyDatabaseKeys from "@/database/companies/CompanyDatabaseKeys";
+import type CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
+import type ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
+import type ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
+import type RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
 
 /**
  * Represents a group of material keys used by `MaterialGroupSectionList` so lists can be rendered by category or type without duplicating markup.

@@ -1,15 +1,15 @@
+import type { Metadata, ResolvingMetadata } from "next";
+import { notFound } from "next/navigation";
+import SpecialReader from "@/components/reader/SpecialReader";
+import developerName from "@/constants/developerName";
+import { PATHS } from "@/constants/paths";
+import { ROUTES } from "@/constants/routes";
+import type ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
+import projectDatabaseMap from "@/database/projects/ProjectDatabaseMap";
+import type ProjectInterface from "@/database/projects/ProjectInterface";
+import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
 import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
 import processMarkdownImages from "@/lib/processMarkdownImages";
-import SpecialReader from "@/components/reader/SpecialReader";
-import { ROUTES } from "@/constants/routes";
-import projectDatabaseMap from "@/database/projects/ProjectDatabaseMap";
-import ProjectInterface from "@/database/projects/ProjectInterface";
-import { notFound } from "next/navigation";
-import { Metadata, ResolvingMetadata } from "next";
-import developerName from "@/constants/developerName";
-import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
-import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
-import { PATHS } from "@/constants/paths";
 
 // Update the type definitions
 type Params = { projectKey: string };
@@ -28,7 +28,7 @@ type PageProps = {
  */
 export async function generateMetadata(
   props: { params: Promise<Params>; searchParams: SearchParams },
-  parent: ResolvingMetadata,
+  _parent: ResolvingMetadata,
 ): Promise<Metadata | undefined> {
   const resolvedParams = await props.params;
   const projectKey: string = resolvedParams.projectKey;

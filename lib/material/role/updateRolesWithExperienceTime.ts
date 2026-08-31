@@ -1,5 +1,5 @@
-import RoleInterface from "@/database/roles/RoleInterface";
-import Database from "@/interfaces/Database";
+import type RoleInterface from "@/database/roles/RoleInterface";
+import type Database from "@/interfaces/Database";
 
 /**
  * Normalizes the `timeInRole` string for every role so cards, timelines, and metadata tags display the same duration math.
@@ -8,7 +8,7 @@ import Database from "@/interfaces/Database";
  * @returns New map with the computed `timeInRole` baked into each role entry.
  */
 function updateRolesWithExperienceTime(
-  rolesMap: Database<RoleInterface>
+  rolesMap: Database<RoleInterface>,
 ): Database<RoleInterface> {
   const updatedRolesMap: Database<RoleInterface> = {};
 

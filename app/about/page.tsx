@@ -1,17 +1,22 @@
-import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
+import { Info } from "lucide-react";
+import type { Metadata } from "next";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+import { GrAppsRounded } from "react-icons/gr";
 import MaterialList from "@/components/material-lists/MaterialList";
 import Reader from "@/components/reader/Reader";
-import Socials from "@/components/socials/Socials";
-import DetailsTable from "@/components/ui/DetailsTable";
 import {
   Accordion,
+  AccordionContent,
   AccordionItem,
   AccordionTrigger,
-  AccordionContent,
 } from "@/components/shadcn/ui/accordion";
-import { Info } from "lucide-react";
+import Socials from "@/components/socials/Socials";
+import DetailsTable from "@/components/ui/DetailsTable";
 import developerName from "@/constants/developerName";
 import experienceTime from "@/constants/experience";
+import location from "@/constants/location";
+import { PATHS } from "@/constants/paths";
 import subtitles from "@/constants/subtitles";
 import CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
 import companyDatabaseMap from "@/database/companies/CompanyDatabaseMap";
@@ -22,12 +27,7 @@ import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
 import RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
 import rolesDatabase from "@/database/roles/RoleDatabaseMap";
 import type RoleInterface from "@/database/roles/RoleInterface";
-import type { Metadata } from "next";
-import Image from "next/image";
-import { notFound } from "next/navigation";
-import { GrAppsRounded } from "react-icons/gr";
-import location from "@/constants/location";
-import { PATHS } from "@/constants/paths";
+import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
 
 const aboutContent: string | null = getMarkdownFromFileSystem(PATHS.ABOUT.LONG);
 
@@ -104,7 +104,7 @@ export default function About() {
       </div>
 
       {/* Top-centered profile image and socials (outside the card) */}
-      <div className="flex flex-col items-center my-6">
+      <div className="my-6 flex flex-col items-center">
         <Image
           src={PATHS.PROFILE}
           alt="Profile image of the developer"
@@ -129,13 +129,7 @@ export default function About() {
           <AccordionTrigger>
             <div className="flex items-center space-x-3">
               <Info size={26} className="text-neutral-500" />
-              <p
-                className="
-                  text-lg 
-                  text-neutral-600 dark:text-neutral-400
-                  font-semibold
-                  "
-              >
+              <p className="font-semibold text-lg text-neutral-600 dark:text-neutral-400">
                 Summary
               </p>
             </div>
@@ -178,7 +172,7 @@ export default function About() {
                   value: `${numberOfCertificates}`,
                 },
               ]}
-              className="grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mx-auto"
+              className="mx-auto grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2"
             />
           </AccordionContent>
         </AccordionItem>
@@ -186,13 +180,7 @@ export default function About() {
           <AccordionTrigger>
             <div className="flex items-center space-x-3">
               <GrAppsRounded size={25} className="text-neutral-500" />
-              <p
-                className="
-                  text-lg 
-                  text-neutral-600 dark:text-neutral-400
-                  font-semibold
-                  "
-              >
+              <p className="font-semibold text-lg text-neutral-600 dark:text-neutral-400">
                 Related Material
               </p>
             </div>

@@ -1,11 +1,11 @@
-/// <reference types="vitest/globals" />
-import getSkillsDatabaseFromKeys from "@/lib/skills/get/getSkillsDatabaseFromKeys";
-import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
-import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
-import type SkillInterface from "@/database/skills/SkillInterface";
-import type Database from "@/interfaces/Database";
 import { describe, expect, test } from "vitest";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import type SkillInterface from "@/database/skills/SkillInterface";
+import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
+import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
+import type Database from "@/interfaces/Database";
+/// <reference types="vitest/globals" />
+import getSkillsDatabaseFromKeys from "@/lib/skills/get/getSkillsDatabaseFromKeys";
 
 describe("getSkillsDatabaseFromKeys", () => {
   const skillsDatabase: Database<SkillInterface> = {
@@ -167,7 +167,7 @@ describe("getSkillsDatabaseFromKeys", () => {
 
     // The returned skill should be the exact same reference
     expect(result[SkillDatabaseKeys.ReactJs]).toBe(
-      skillsDatabase[SkillDatabaseKeys.ReactJs]
+      skillsDatabase[SkillDatabaseKeys.ReactJs],
     );
   });
 });
