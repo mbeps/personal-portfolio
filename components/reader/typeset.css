@@ -124,9 +124,9 @@
       margin-block-start: calc(var(--typeset-flow) / 0.8125);
     }
 
-    /* Anchors. */
-    &:where([id]) {
-      scroll-margin-block-start: var(--typeset-flow);
+    /* Anchors & Headings scroll margin for fixed/sticky headers */
+    &:where([id], .markdown-heading) {
+      scroll-margin-block-start: 6rem;
     }
 
     /* Headings own the space below them. */
@@ -301,7 +301,7 @@
     }
 
     /* Inline code. */
-    &:where(:not(pre) > code) {
+    &:where(:not(pre) > code, code.inline-code, code:not(pre code)) {
       background-color: var(
         --color-muted,
         color-mix(in oklab, currentColor 8%, transparent)

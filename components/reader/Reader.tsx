@@ -4,6 +4,7 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import rehypeKatex from "rehype-katex";
 import rehypeRaw from "rehype-raw";
+import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import { cn } from "@/lib/utils";
@@ -53,11 +54,11 @@ const createHeadingComponent = (Tag: HeadingTag) => {
  * even if they were written directly underneath text without surrounding blank lines.
  */
 const normalizeMathBlocks = (rawContent: string): string => {
-  // Split by fenced code blocks to ensure we don't modify code samples
-  const parts = rawContent.split(/(```[\s\S]*?```)/g);
+  // Split by fenced code blocks and inline code spans to ensure we don't modify code samples
+  const parts = rawContent.split(/(```[\s\S]*?```|`[^`\n]+`)/g);
   return parts
     .map((part, index) => {
-      // Odd index is a code block
+      // Odd index is a code block or inline code span
       if (index % 2 === 1) return part;
       // Normalize any $$...$$ into isolated block math paragraphs
       return part.replace(/\$\$([\s\S]*?)\$\$/g, (_match, math) => {
@@ -91,7 +92,7 @@ const Reader: React.FC<ReaderProps> = ({
     <article className={cn("typeset", presetClass, "max-w-none", className)}>
       <ReactMarkdown
         remarkPlugins={[remarkGfm, remarkMath]}
-        rehypePlugins={[rehypeKatex, rehypeRaw]}
+        rehypePlugins={[rehypeSlug, rehypeKatex, rehypeRaw]}
         components={{
           h1: createHeadingComponent("h1"),
           h2: createHeadingComponent("h2"),
