@@ -82,37 +82,30 @@ const FilterOptionItemCombobox: React.FC<FilterOptionItemComboboxProps> = ({
       <PopoverContent className="w-[24rem] p-0 md:w-84">
         <Command className="w-full">
           <CommandInput placeholder="Search Filter..." />
-          <CommandEmpty>No Filter Found.</CommandEmpty>
+          <CommandList className="max-h-[25vh] w-full">
+            <CommandEmpty>No Filter Found.</CommandEmpty>
 
-          <CommandGroup className="max-h-[25vh] w-full">
-            {selectedFilterCategory.options.map((option, i) => {
-              return (
-                <button
-                  key={i}
-                  className="w-full"
-                  onClick={() => {
+            <CommandGroup className="w-full">
+              {selectedFilterCategory.options.map((option) => (
+                <CommandItem
+                  key={option.slug}
+                  value={option.entryName}
+                  onSelect={() => {
                     selectedFilterCategory.onChange(option.slug);
                     setOpen(false);
                   }}
+                  className="w-full cursor-pointer pr-4"
                 >
-                  <CommandList>
-                    <CommandItem
-                      key={option.slug}
-                      value={option.slug}
-                      className="w-full pr-4"
-                    >
-                      {selectedFilterCategory.selectedValue === option.slug ? (
-                        <Check className={cn(gap, "text-red-500")} />
-                      ) : (
-                        <div className={gap} />
-                      )}
-                      {option.entryName}
-                    </CommandItem>
-                  </CommandList>
-                </button>
-              );
-            })}
-          </CommandGroup>
+                  {selectedFilterCategory.selectedValue === option.slug ? (
+                    <Check className={cn(gap, "text-red-500")} />
+                  ) : (
+                    <div className={gap} />
+                  )}
+                  {option.entryName}
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          </CommandList>
         </Command>
       </PopoverContent>
     </Popover>
