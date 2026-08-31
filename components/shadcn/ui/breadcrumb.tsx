@@ -1,6 +1,6 @@
-import * as React from "react";
 import { useRender } from "@base-ui/react/use-render";
 import { ChevronRight, MoreHorizontal } from "lucide-react";
+import type * as React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -16,8 +16,8 @@ const BreadcrumbList = ({
 }: React.ComponentPropsWithoutRef<"ol">) => (
   <ol
     className={cn(
-      "flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground sm:gap-2.5",
-      className
+      "flex flex-wrap items-center gap-1.5 break-words text-muted-foreground text-sm sm:gap-2.5",
+      className,
     )}
     {...props}
   />
@@ -45,8 +45,8 @@ const BreadcrumbLink = ({
     render,
     props: {
       className: cn("transition-colors hover:text-foreground", className),
-      ...props
-    }
+      ...props,
+    },
   });
 };
 
@@ -95,10 +95,10 @@ const BreadcrumbEllipsis = ({
 
 export {
   Breadcrumb,
-  BreadcrumbList,
+  BreadcrumbEllipsis,
   BreadcrumbItem,
   BreadcrumbLink,
+  BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-  BreadcrumbEllipsis,
 };

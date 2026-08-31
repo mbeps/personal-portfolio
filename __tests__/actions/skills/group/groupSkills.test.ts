@@ -1,11 +1,11 @@
-/// <reference types="vitest/globals" />
-import groupSkills, { GroupByOptions } from "@/lib/skills/group/groupSkills";
-import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
-import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
-import type SkillInterface from "@/database/skills/SkillInterface";
-import type Database from "@/interfaces/Database";
 import { describe, expect, test } from "vitest";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import type SkillInterface from "@/database/skills/SkillInterface";
+import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
+import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
+import type Database from "@/interfaces/Database";
+/// <reference types="vitest/globals" />
+import groupSkills, { GroupByOptions } from "@/lib/skills/group/groupSkills";
 
 describe("groupSkills", () => {
   const skillsDatabase: Database<SkillInterface> = {
@@ -48,7 +48,7 @@ describe("groupSkills", () => {
     const result = groupSkills(
       GroupByOptions.Category,
       skillKeys,
-      skillsDatabase
+      skillsDatabase,
     );
     expect(result).toHaveLength(2);
     expect(result).toEqual(
@@ -59,7 +59,7 @@ describe("groupSkills", () => {
         expect.objectContaining({
           skillCategoryName: SkillCategoriesEnum.FrontEndWebDevelopment,
         }),
-      ])
+      ]),
     );
   });
 
@@ -73,14 +73,14 @@ describe("groupSkills", () => {
       GroupByOptions.Category,
       skillKeys,
       skillsDatabase,
-      [SkillTypesEnum.Technical]
+      [SkillTypesEnum.Technical],
     );
     expect(result).toHaveLength(2);
     // Check that no technical skills are included
     result.forEach((category) => {
       category.skills.forEach((skillKey) => {
         expect(skillsDatabase[skillKey].skillType).not.toBe(
-          SkillTypesEnum.Technical
+          SkillTypesEnum.Technical,
         );
       });
     });
@@ -91,7 +91,7 @@ describe("groupSkills", () => {
     const result = groupSkills(
       "unrecognized" as GroupByOptions,
       skillKeys,
-      skillsDatabase
+      skillsDatabase,
     );
     expect(result).toHaveLength(1);
     expect(result[0].skillCategoryName).toBe("None");
@@ -118,7 +118,7 @@ describe("groupSkills", () => {
       GroupByOptions.Category,
       skillKeys,
       extendedSkillsDb,
-      [SkillTypesEnum.Technical]
+      [SkillTypesEnum.Technical],
     );
 
     const allSkills = result.flatMap((category) => category.skills);
@@ -136,7 +136,7 @@ describe("groupSkills", () => {
     const result = groupSkills(
       GroupByOptions.Language,
       skillKeys,
-      skillsDatabase
+      skillsDatabase,
     );
     expect(result.length).toBeGreaterThan(0);
     // Verify that groupByLanguage was called (we can't verify the exact structure without knowing groupByLanguage implementation)
@@ -145,7 +145,7 @@ describe("groupSkills", () => {
       expect.arrayContaining([
         SkillDatabaseKeys.JavaScript,
         SkillDatabaseKeys.Python,
-      ])
+      ]),
     );
   });
 
@@ -157,7 +157,7 @@ describe("groupSkills", () => {
     const result = groupSkills(
       GroupByOptions.SkillType,
       skillKeys,
-      skillsDatabase
+      skillsDatabase,
     );
     expect(result.length).toBeGreaterThan(0);
     // Verify that groupBySkillType was called
@@ -166,7 +166,7 @@ describe("groupSkills", () => {
       expect.arrayContaining([
         SkillDatabaseKeys.JavaScript,
         SkillDatabaseKeys.Mathematics,
-      ])
+      ]),
     );
   });
 
@@ -176,7 +176,7 @@ describe("groupSkills", () => {
       GroupByOptions.Category,
       skillKeys,
       skillsDatabase,
-      [SkillTypesEnum.Technical]
+      [SkillTypesEnum.Technical],
     );
 
     const allSkills = result.flatMap((category) => category.skills);
@@ -194,7 +194,7 @@ describe("groupSkills", () => {
       GroupByOptions.Category,
       skillKeys,
       skillsDatabase,
-      [SkillTypesEnum.Technical]
+      [SkillTypesEnum.Technical],
     );
 
     const allSkills = result.flatMap((category) => category.skills);
@@ -210,7 +210,7 @@ describe("groupSkills", () => {
     const result = groupSkills(
       GroupByOptions.Category,
       skillKeys,
-      skillsDatabase
+      skillsDatabase,
       // No excludedSkillTypes parameter
     );
 

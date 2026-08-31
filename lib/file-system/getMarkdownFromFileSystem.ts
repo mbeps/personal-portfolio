@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from "node:fs";
 
 /**
  * Shared loader for blog posts, project reports, and other markdown files stored under `public` folders.

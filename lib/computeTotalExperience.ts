@@ -1,4 +1,4 @@
-import ShortDate from "@/class/ShortDate";
+import type ShortDate from "@/class/ShortDate";
 
 /**
  * Totals the duration of multiple roles so the experience summary on the home page and timeline uses the same calculation.
@@ -8,7 +8,7 @@ import ShortDate from "@/class/ShortDate";
  * @returns Combined experience in years, including fractional months.
  */
 function computeTotalExperience(
-  jobs: { startDate: ShortDate; endDate: ShortDate }[]
+  jobs: { startDate: ShortDate; endDate: ShortDate }[],
 ): number {
   return jobs.reduce((total, job) => {
     const experienceInYears = job.endDate.difference(job.startDate);

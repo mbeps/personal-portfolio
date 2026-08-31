@@ -1,11 +1,11 @@
-/// <reference types="vitest/globals" />
-import groupByLanguage from "@/lib/skills/group/groupByLanguage";
-import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
-import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
-import type SkillInterface from "@/database/skills/SkillInterface";
-import type Database from "@/interfaces/Database";
 import { describe, expect, test, vi } from "vitest";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import type SkillInterface from "@/database/skills/SkillInterface";
+import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
+import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
+import type Database from "@/interfaces/Database";
+/// <reference types="vitest/globals" />
+import groupByLanguage from "@/lib/skills/group/groupByLanguage";
 
 describe("groupByLanguage", () => {
   const skillsDatabase: Database<SkillInterface> = {
@@ -74,7 +74,7 @@ describe("groupByLanguage", () => {
           skillCategoryName: "Python",
           skills: [SkillDatabaseKeys.Python],
         }),
-      ])
+      ]),
     );
   });
 
@@ -93,7 +93,7 @@ describe("groupByLanguage", () => {
           skillCategoryName: "Python",
           skills: [SkillDatabaseKeys.Flask],
         }),
-      ])
+      ]),
     );
   });
 
@@ -103,7 +103,7 @@ describe("groupByLanguage", () => {
 
     // Next.js should be grouped under JavaScript (its first related programming language)
     const jsGroup = result.find(
-      (group) => group.skillCategoryName === "JavaScript"
+      (group) => group.skillCategoryName === "JavaScript",
     );
     expect(jsGroup).toBeDefined();
     expect(jsGroup?.skills).toContain(SkillDatabaseKeys.NextJs);
@@ -140,25 +140,25 @@ describe("groupByLanguage", () => {
     expect(result).toHaveLength(2);
 
     const jsGroup = result.find(
-      (group) => group.skillCategoryName === "JavaScript"
+      (group) => group.skillCategoryName === "JavaScript",
     );
     expect(jsGroup).toBeDefined();
     expect(jsGroup?.skills).toEqual(
       expect.arrayContaining([
         SkillDatabaseKeys.JavaScript,
         SkillDatabaseKeys.ReactJs,
-      ])
+      ]),
     );
 
     const pythonGroup = result.find(
-      (group) => group.skillCategoryName === "Python"
+      (group) => group.skillCategoryName === "Python",
     );
     expect(pythonGroup).toBeDefined();
     expect(pythonGroup?.skills).toEqual(
       expect.arrayContaining([
         SkillDatabaseKeys.Python,
         SkillDatabaseKeys.Flask,
-      ])
+      ]),
     );
   });
 
@@ -174,20 +174,20 @@ describe("groupByLanguage", () => {
     expect(result).toHaveLength(2);
 
     const jsGroup = result.find(
-      (group) => group.skillCategoryName === "JavaScript"
+      (group) => group.skillCategoryName === "JavaScript",
     );
     expect(jsGroup).toBeDefined();
     expect(jsGroup?.skills).toHaveLength(2);
 
     const noLanguageGroup = result.find(
-      (group) => group.skillCategoryName === "No Languages"
+      (group) => group.skillCategoryName === "No Languages",
     );
     expect(noLanguageGroup).toBeDefined();
     expect(noLanguageGroup?.skills).toEqual(
       expect.arrayContaining([
         SkillDatabaseKeys.MachineLearning,
         SkillDatabaseKeys.Docker,
-      ])
+      ]),
     );
   });
 
@@ -203,7 +203,7 @@ describe("groupByLanguage", () => {
     const result = groupByLanguage(skillKeys, skillsDatabase);
 
     expect(consoleWarnSpy).toHaveBeenCalledWith(
-      "Skill not found for slug: non-existent-skill"
+      "Skill not found for slug: non-existent-skill",
     );
     expect(result).toHaveLength(1);
     expect(result[0]).toEqual({
@@ -299,7 +299,7 @@ describe("groupByLanguage", () => {
     const result = groupByLanguage(skillKeys, skillsDatabase);
 
     const noLanguageGroup = result.find(
-      (group) => group.skillCategoryName === "No Languages"
+      (group) => group.skillCategoryName === "No Languages",
     );
     expect(noLanguageGroup).toBeUndefined();
   });
@@ -323,7 +323,7 @@ describe("groupByLanguage", () => {
     const result = groupByLanguage(skillKeys, extendedDb);
 
     const jsGroup = result.find(
-      (group) => group.skillCategoryName === "JavaScript"
+      (group) => group.skillCategoryName === "JavaScript",
     );
     expect(jsGroup).toBeDefined();
     // All three skills should be grouped under JavaScript
@@ -389,7 +389,7 @@ describe("groupByLanguage", () => {
       expect.arrayContaining([
         SkillDatabaseKeys.Python,
         SkillDatabaseKeys.Django,
-      ])
+      ]),
     );
     expect(pythonGroup?.skills).toHaveLength(2);
   });

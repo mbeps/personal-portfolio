@@ -1,5 +1,5 @@
-import SocialLinkInterface from "@/interfaces/SocialLinkInterface";
 import { AiFillLinkedin, AiOutlineGithub, AiOutlineMail } from "react-icons/ai";
+import type SocialLinkInterface from "@/interfaces/SocialLinkInterface";
 
 /**
  * List of social links that are displayed in the footer and home page.

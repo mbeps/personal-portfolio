@@ -1,7 +1,7 @@
-import MaterialInterface from "@/database/materials/MaterialInterface";
-import MaterialTypeEnum from "@/enums/material/MaterialTypeEnum";
-import Database from "@/interfaces/Database";
-import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
+import type MaterialInterface from "@/database/materials/MaterialInterface";
+import type MaterialTypeEnum from "@/enums/material/MaterialTypeEnum";
+import type Database from "@/interfaces/Database";
+import type MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
 
 /**
  * Wraps a list of slugs into one logical group so tabs like “Projects”, “Roles”, or “Blogs” can render via the shared MaterialList.

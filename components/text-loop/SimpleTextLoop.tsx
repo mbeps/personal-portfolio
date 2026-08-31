@@ -1,8 +1,9 @@
 "use client";
 
-import useIsMounted from "@/hooks/useIsMounted";
 import { motion } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import type React from "react";
+import { useEffect, useState } from "react";
+import useIsMounted from "@/hooks/useIsMounted";
 
 interface TextLoopProps {
   loopItems: string[];

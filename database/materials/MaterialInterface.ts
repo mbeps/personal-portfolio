@@ -1,4 +1,4 @@
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 
 /**
  * Base shape for any material shown on the site (projects, roles, blogs, certificates, courses, modules).

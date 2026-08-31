@@ -1,11 +1,11 @@
-/// <reference types="vitest/globals" />
-import categoriseAndGroupSkills from "@/lib/skills/group/categoriseAndGroupSkills";
-import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
-import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
-import type SkillInterface from "@/database/skills/SkillInterface";
-import type Database from "@/interfaces/Database";
 import { describe, expect, test } from "vitest";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import type SkillInterface from "@/database/skills/SkillInterface";
+import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
+import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
+import type Database from "@/interfaces/Database";
+/// <reference types="vitest/globals" />
+import categoriseAndGroupSkills from "@/lib/skills/group/categoriseAndGroupSkills";
 
 describe("categoriseAndGroupSkills", () => {
   const skillsDatabase: Database<SkillInterface> = {
@@ -42,7 +42,7 @@ describe("categoriseAndGroupSkills", () => {
       skillKeys,
       skillsDatabase,
       SkillTypesEnum.Technology,
-      "Technologies"
+      "Technologies",
     );
 
     expect(result.title).toBe("Technologies");
@@ -57,7 +57,7 @@ describe("categoriseAndGroupSkills", () => {
           skillCategoryName: SkillCategoriesEnum.FrontEndWebDevelopment,
           skills: [SkillDatabaseKeys.ReactJs],
         },
-      ])
+      ]),
     );
   });
 
@@ -67,7 +67,7 @@ describe("categoriseAndGroupSkills", () => {
       skillKeys,
       skillsDatabase,
       SkillTypesEnum.Technology,
-      "Technologies"
+      "Technologies",
     );
     expect(result.skillCategories).toEqual([]);
   });
@@ -77,7 +77,7 @@ describe("categoriseAndGroupSkills", () => {
       [],
       skillsDatabase,
       SkillTypesEnum.Technology,
-      "Technologies"
+      "Technologies",
     );
     expect(result.skillCategories).toEqual([]);
   });
@@ -91,7 +91,7 @@ describe("categoriseAndGroupSkills", () => {
       skillKeys,
       skillsDatabase,
       SkillTypesEnum.Technology,
-      "Technologies"
+      "Technologies",
     );
     expect(result.skillCategories).toHaveLength(1);
     expect(result.skillCategories[0].skills).toEqual([

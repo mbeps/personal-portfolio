@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/shadcn/ui/button";
 import Socials from "@/components/socials/Socials";
 import TextLoop from "@/components/text-loop/TextLoop";
@@ -5,8 +7,6 @@ import NextSectionButton from "@/components/ui/NextSectionButton";
 import developerName from "@/constants/developerName";
 import { PATHS } from "@/constants/paths";
 import subtitles from "@/constants/subtitles";
-import Image from "next/image";
-import Link from "next/link";
 
 /**
  * Front page hero that pairs the looping subtitle narrative with socials, CTA buttons, and the profile image.
@@ -21,39 +21,15 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="home-section-wrapper">
-      <div
-        className="
-          flex flex-col lg:flex-row
-          text-center lg:text-left
-          items-center
-          justify-center lg:justify-start
-          lg:space-x-12
-          my-auto w-full
-      "
-      >
+      <div className="my-auto flex w-full flex-col items-center justify-center text-center lg:flex-row lg:justify-start lg:space-x-12 lg:text-left">
         {/* Right / Top Section */}
-        <div
-          className="
-            flex
-            lg:w-1/2
-            justify-center
-            p-8 lg:p-0
-        "
-        >
+        <div className="flex justify-center p-8 lg:w-1/2 lg:p-0">
           <div className="relative">
             {/* The Glow */}
-            <div
-              className="
-                absolute inset-0 
-                rounded-full 
-                blur-[100px] 
-                hidden dark:block
-                opacity-60
-                bg-linear-to-r from-orange-700 to-yellow-500"
-            />
+            <div className="absolute inset-0 hidden rounded-full bg-linear-to-r from-orange-700 to-yellow-500 opacity-60 blur-[100px] dark:block" />
 
             {/* The Image */}
-            <div className="relative shadow-2xl dark:shadow-none rounded-full">
+            <div className="relative rounded-full shadow-2xl dark:shadow-none">
               <Image
                 src={PATHS.PROFILE}
                 alt="Profile image of the developer"
@@ -68,25 +44,12 @@ const HeroSection = () => {
         </div>
 
         {/* Left / Bottom Section */}
-        <div
-          className="
-            md:mt-1
-            lg:w-3/5 w-full
-            items-center justify-center lg:justify-start
-            space-y-4 sm:space-y-5 md:space-y-4
-            "
-        >
+        <div className="w-full items-center justify-center space-y-4 sm:space-y-5 md:mt-1 md:space-y-4 lg:w-3/5 lg:justify-start">
           <div className="flex flex-col space-y-2">
-            <h2
-              className="
-                text-3xl md:text-5xl 
-                font-normal 
-                text-neutral-600 dark:text-neutral-300
-              "
-            >
+            <h2 className="font-normal text-3xl text-neutral-600 md:text-5xl dark:text-neutral-300">
               {`Hi, I'm`}
             </h2>
-            <h1 className="text-5xl md:text-7xl font-bold">{developerName}</h1>
+            <h1 className="font-bold text-5xl md:text-7xl">{developerName}</h1>
           </div>
 
           {/* Roles */}
@@ -98,27 +61,12 @@ const HeroSection = () => {
 
           <Socials
             iconSize={40}
-            className="
-              justify-center md:justify-center lg:justify-start
-              md:space-x-5
-            "
+            className="justify-center md:justify-center md:space-x-5 lg:justify-start"
           />
 
           {/* Buttons */}
-          <div
-            className="
-              w-full
-              flex justify-center lg:justify-start
-            "
-          >
-            <div
-              className="
-                flex flex-col md:flex-row
-                space-y-2 md:space-x-3 md:space-y-0
-                w-full md:w-3/5
-                mt-5 md:mt-6
-              "
-            >
+          <div className="flex w-full justify-center lg:justify-start">
+            <div className="mt-5 flex w-full flex-col space-y-2 md:mt-6 md:w-3/5 md:flex-row md:space-x-3 md:space-y-0">
               <Link href="#projects" className="w-full">
                 <Button variant="gradient" className="w-full">
                   Projects

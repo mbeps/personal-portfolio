@@ -1,7 +1,7 @@
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import SkillInterface from "@/database/skills/SkillInterface";
-import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
-import Database from "@/interfaces/Database";
+import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import type SkillInterface from "@/database/skills/SkillInterface";
+import type SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
+import type Database from "@/interfaces/Database";
 
 /**
  * Filters out skills that fall into ignored categories, useful when building language-first groupings that should hide unrelated categories.
@@ -12,7 +12,7 @@ import Database from "@/interfaces/Database";
  */
 export default function filterCategoriesFromSkills(
   skillsDatabase: Database<SkillInterface>,
-  ignoredCategories: SkillCategoriesEnum[]
+  ignoredCategories: SkillCategoriesEnum[],
 ): SkillDatabaseKeys[] {
   return Object.keys(skillsDatabase).filter((skillKey) => {
     const skill: SkillInterface = skillsDatabase[skillKey];

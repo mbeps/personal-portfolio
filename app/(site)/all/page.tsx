@@ -1,38 +1,37 @@
+import type { Metadata } from "next";
 import React from "react";
-import { Metadata } from "next";
+import CvExperienceItem from "@/app/cv/_components/CvExperienceItem";
+import CvSection from "@/app/cv/_components/CvSection";
+import CvSkillGroup from "@/app/cv/_components/CvSkillGroup";
+import type { SerializedRoleInterface } from "@/app/cv/page";
+import Reader from "@/components/reader/Reader";
+import { Separator } from "@/components/shadcn/ui/separator";
 import developerName from "@/constants/developerName";
 import location from "@/constants/location";
-import subtitles from "@/constants/subtitles";
-import socialLinks from "@/constants/socials";
 import { PATHS } from "@/constants/paths";
-import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
-import groupSkills, { GroupByOptions } from "@/lib/skills/group/groupSkills";
-import skillDatabaseMap, {
-  skillDatabaseKeys,
-} from "@/database/skills/SkillDatabaseMap";
+import socialLinks from "@/constants/socials";
+import subtitles from "@/constants/subtitles";
+import type BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
+import blogDatabaseMap from "@/database/blogs/BlogsDatabaseMap";
+import type CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
+import certificateDatabaseMap from "@/database/certificates/CertificateDatabaseMap";
+import type CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
+import courseDatabaseMap from "@/database/courses/CourseDatabaseMap";
+import type ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
+import projectDatabaseMap from "@/database/projects/ProjectDatabaseMap";
 import roleDatabaseMap, {
   roleDatabaseKeys,
 } from "@/database/roles/RoleDatabaseMap";
-import RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
+import skillDatabaseMap, {
+  skillDatabaseKeys,
+} from "@/database/skills/SkillDatabaseMap";
 import ExperienceTypeEnum from "@/enums/experience/ExperienceTypeEnum";
-import courseDatabaseMap from "@/database/courses/CourseDatabaseMap";
-import CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
-import projectDatabaseMap from "@/database/projects/ProjectDatabaseMap";
-import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
-import blogDatabaseMap from "@/database/blogs/BlogsDatabaseMap";
-import BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
-import certificateDatabaseMap from "@/database/certificates/CertificateDatabaseMap";
-import CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
-import CvSection from "@/app/cv/_components/CvSection";
-import CvSkillGroup from "@/app/cv/_components/CvSkillGroup";
-import CvExperienceItem from "@/app/cv/_components/CvExperienceItem";
-import Reader from "@/components/reader/Reader";
-import { SerializedRoleInterface } from "@/app/cv/page";
-import AllEducationItem from "./_components/AllEducationItem";
-import AllProjectItem from "./_components/AllProjectItem";
+import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
+import groupSkills, { GroupByOptions } from "@/lib/skills/group/groupSkills";
 import AllBlogItem from "./_components/AllBlogItem";
 import AllCertificateItem from "./_components/AllCertificateItem";
-import { Separator } from "@/components/shadcn/ui/separator";
+import AllEducationItem from "./_components/AllEducationItem";
+import AllProjectItem from "./_components/AllProjectItem";
 
 /**
  * Metadata for the /all page.
@@ -121,15 +120,15 @@ const AllPage: React.FC = () => {
   }));
 
   return (
-    <main className="max-w-4xl mx-auto px-6 py-12">
+    <main className="mx-auto max-w-4xl px-6 py-12">
       {/* Inline Header */}
-      <header className="border-b-2 border-neutral-200 dark:border-neutral-800 pb-2 mb-4">
-        <h1 className="text-4xl font-bold mb-2">{developerName}</h1>
-        <div className="space-y-2 text-xl font-medium text-neutral-600 dark:text-neutral-400">
+      <header className="mb-4 border-neutral-200 border-b-2 pb-2 dark:border-neutral-800">
+        <h1 className="mb-2 font-bold text-4xl">{developerName}</h1>
+        <div className="space-y-2 font-medium text-neutral-600 text-xl dark:text-neutral-400">
           <p>{location}</p>
           <p>{subtitles.join(" · ")}</p>
         </div>
-        <ul className="flex flex-wrap gap-x-6 gap-y-2 mt-6 text-lg font-bold">
+        <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 font-bold text-lg">
           {socialLinks
             .filter((link) => link.name !== "Email")
             .map((link) => (

@@ -1,9 +1,9 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { NAVBAR_HEIGHT } from "@/constants/navbarHeight";
 import { NAV_ITEMS } from "@/constants/routes";
 import { useNavbarStore } from "@/hooks/useNavbarStore";
-import { useEffect, useState } from "react";
 import GlobalSearch from "../global-search/SearchButton";
 import DesktopNavbarSection from "./DesktopNavbarSection";
 import HomeButton from "./HomeButton";
@@ -39,31 +39,21 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`
-          h-${NAVBAR_HEIGHT}
-          w-full mx-auto
-          px-4 md:px-6
-          fixed 
-          top-0 
-          z-50 
-          ${
-            scrolled && !isOverlayOpen ? "shadow-lg " : ""
-          } dark:shadow-neutral-800 
-          ${
-            !isOverlayOpen
-              ? scrolled
-                ? "bg-neutral-50/60 dark:bg-neutral-900/60 backdrop-blur-xl"
-                : "bg-transparent"
-              : "bg-neutral-50/0 dark:bg-neutral-900/0"
-          }
-          transition-all ease-in-out
-        `}
+        className={`h-${NAVBAR_HEIGHT} fixed top-0 z-50 mx-auto w-full px-4 md:px-6 ${
+          scrolled && !isOverlayOpen ? "shadow-lg" : ""
+        } dark:shadow-neutral-800 ${
+          !isOverlayOpen
+            ? scrolled
+              ? "bg-neutral-50/60 backdrop-blur-xl dark:bg-neutral-900/60"
+              : "bg-transparent"
+            : "bg-neutral-50/0 dark:bg-neutral-900/0"
+        } transition-all ease-in-out`}
         style={{
           transitionDuration,
           backdropFilter: !isOverlayOpen && scrolled ? "blur(20px)" : undefined,
         }}
       >
-        <div className="flex lg:flex-row md:flex items-center justify-between md:items-center py-3 md:py-1 mx-auto max-w-[2560px]">
+        <div className="mx-auto flex max-w-[2560px] items-center justify-between py-3 md:flex md:items-center md:py-1 lg:flex-row">
           <HomeButton />
 
           <div className="flex flex-row items-center space-x-2">

@@ -1,6 +1,6 @@
-import { useMediaQuery } from "@/hooks/useMediaQuery";
-import NavigationItemInterface from "@/interfaces/NavigationItemInterface";
 import { twMerge } from "tailwind-merge";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+import type NavigationItemInterface from "@/interfaces/NavigationItemInterface";
 import Socials from "../socials/Socials";
 import NavbarItem from "./NavbarItem";
 
@@ -34,18 +34,18 @@ const NavbarOverlay: React.FC<OverlayProps> = ({ isOpen, toggle, items }) => {
     backdrop-blur-xl 
     bg-opacity-60 dark:bg-opacity-60
     flex flex-col justify-between`,
-    "bg-neutral-50/60 dark:bg-neutral-900/60 backdrop-blur-xl",
+    "bg-neutral-50/60 backdrop-blur-xl dark:bg-neutral-900/60",
   );
 
   return (
     <div className={overlayStyle}>
-      <div className="items-center justify-center space-y-8 md:space-y-0 pt-20">
+      <div className="items-center justify-center space-y-8 pt-20 md:space-y-0">
         {/* Links */}
         {items
           .filter((item) => item.isMain)
           .map((item, index) => {
             return (
-              <div key={index} className="flex justify-center w-full md:w-auto">
+              <div key={index} className="flex w-full justify-center md:w-auto">
                 <NavbarItem href={item.path}>{item.label}</NavbarItem>
               </div>
             );

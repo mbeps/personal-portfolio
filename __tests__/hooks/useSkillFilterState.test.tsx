@@ -1,10 +1,9 @@
+import { renderToStaticMarkup } from "react-dom/server";
+import { beforeEach, describe, expect, test, vi } from "vitest";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
 import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
 import useSkillFilterState from "@/hooks/useSkillFilterState";
-import React from "react";
-import { renderToStaticMarkup } from "react-dom/server";
-import { beforeEach, describe, expect, test, vi } from "vitest";
 
 const { mockUseQueryStates } = vi.hoisted(() => ({
   mockUseQueryStates: vi.fn(),

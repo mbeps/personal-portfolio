@@ -1,13 +1,13 @@
-/// <reference types="vitest/globals" />
-import aggregateRelatedMaterialsForCourses from "@/lib/material/course/aggregate/aggregateRelatedMaterialsForCourses";
+import { describe, expect, test } from "vitest";
 import CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
 import type CourseInterface from "@/database/courses/CourseInterface";
 import ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
 import type ModuleInterface from "@/database/modules/ModuleInterface";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import type Database from "@/interfaces/Database";
 import ModuleYearGroupsEnum from "@/enums/module/ModuleYearGroupsEnum";
-import { describe, expect, test } from "vitest";
+import type Database from "@/interfaces/Database";
+/// <reference types="vitest/globals" />
+import aggregateRelatedMaterialsForCourses from "@/lib/material/course/aggregate/aggregateRelatedMaterialsForCourses";
 
 describe("aggregateRelatedMaterialsForCourses", () => {
   test("combines related materials from courses and their modules without duplicates", () => {
@@ -49,11 +49,11 @@ describe("aggregateRelatedMaterialsForCourses", () => {
 
     const result = aggregateRelatedMaterialsForCourses(
       coursesDatabase,
-      modulesDatabase
+      modulesDatabase,
     );
 
     expect(
-      result[CourseDatabaseKeys.RHUL_ComputerScience].relatedMaterials
+      result[CourseDatabaseKeys.RHUL_ComputerScience].relatedMaterials,
     ).toEqual(["blog-1", "project-2", "project-3"]);
   });
 
@@ -86,11 +86,11 @@ describe("aggregateRelatedMaterialsForCourses", () => {
 
     const result = aggregateRelatedMaterialsForCourses(
       coursesDatabase,
-      modulesDatabase
+      modulesDatabase,
     );
 
     expect(
-      result[CourseDatabaseKeys.KCL_ArtificialIntelligence].relatedMaterials
+      result[CourseDatabaseKeys.KCL_ArtificialIntelligence].relatedMaterials,
     ).toEqual([]);
   });
 });

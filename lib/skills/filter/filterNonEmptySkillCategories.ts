@@ -1,4 +1,4 @@
-import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
+import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
 
 /**
  * Drops category buckets that ended up empty so tables avoid rendering blank sections after filtering.
@@ -7,9 +7,9 @@ import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCa
  * @returns Grouped categories containing only non-empty buckets.
  */
 export default function filterNonEmptySkillCategories(
-  groupedSkills: ListOfCategorisedSkillsByTypeInterface[]
+  groupedSkills: ListOfCategorisedSkillsByTypeInterface[],
 ): ListOfCategorisedSkillsByTypeInterface[] {
   return groupedSkills.filter(
-    ({ skillCategories }) => skillCategories.length > 0
+    ({ skillCategories }) => skillCategories.length > 0,
   );
 }

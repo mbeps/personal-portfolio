@@ -1,24 +1,25 @@
 "use client";
 
+import Link from "next/link";
+import type React from "react";
+import { useState } from "react";
+import { AiOutlineClear } from "react-icons/ai";
+import { BsFilterLeft } from "react-icons/bs";
+import { MdOutlineManageSearch } from "react-icons/md";
 import { ArchiveToggle } from "@/components/filters/ArchiveToggle";
 import FilterPanel from "@/components/filters/FilterOverlay";
 import SearchInput from "@/components/inputs/SearchInput";
-import { Button } from "@/components/shadcn/ui/button";
-import { ButtonGroup } from "@/components/shadcn/ui/button-group";
-import FilterCategory from "@/interfaces/filters/FilterCategory";
-import Link from "next/link";
-import React, { useState } from "react";
-import { AiOutlineClear } from "react-icons/ai";
-import { BsFilterLeft } from "react-icons/bs";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/shadcn/ui/accordion";
-import SearchFilter from "@/interfaces/filters/SearchFilter";
-import ArchiveFilter from "@/interfaces/filters/ArchiveFilter";
-import { MdOutlineManageSearch } from "react-icons/md";
+import { Button } from "@/components/shadcn/ui/button";
+import { ButtonGroup } from "@/components/shadcn/ui/button-group";
+import type ArchiveFilter from "@/interfaces/filters/ArchiveFilter";
+import type FilterCategory from "@/interfaces/filters/FilterCategory";
+import type SearchFilter from "@/interfaces/filters/SearchFilter";
 
 /**
  * Props for the `FilterSection` top-level filter bar component.
@@ -81,14 +82,14 @@ const FilterSection: React.FC<FilterSectionProps> = ({
                 size={28}
                 className="text-neutral-600 dark:text-neutral-400"
               />
-              <span className="text-lg font-semibold text-neutral-600 dark:text-neutral-400">
+              <span className="font-semibold text-lg text-neutral-600 dark:text-neutral-400">
                 {message}
               </span>
             </span>
           </AccordionTrigger>
           <AccordionContent>
             <div className="flex flex-col gap-2">
-              <div className="flex flex-col md:flex-row items-center w-full py-2 gap-2">
+              <div className="flex w-full flex-col items-center gap-2 py-2 md:flex-row">
                 {/* Search input */}
                 <div className="w-full md:flex-1">
                   <SearchInput

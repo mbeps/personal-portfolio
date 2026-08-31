@@ -1,7 +1,5 @@
-/// <reference types="vitest/globals" />
-import React from "react";
-import { describe, expect, test, vi } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
+import { describe, expect, test, vi } from "vitest";
 import Reader from "@/components/reader/Reader";
 
 // Mock next-themes for CodeBlock in Node environment
@@ -75,7 +73,8 @@ describe("Reader Component", () => {
   });
 
   test("should normalize math blocks directly underneath text without blank lines to katex-display", () => {
-    const attachedMath = "**Full Fine-Tuning Complexity:**\n$$N_{FFT} = d^2 = (12,288)^2 \\approx 150,994,944 \\text{ parameters}$$";
+    const attachedMath =
+      "**Full Fine-Tuning Complexity:**\n$$N_{FFT} = d^2 = (12,288)^2 \\approx 150,994,944 \\text{ parameters}$$";
     const html = renderToStaticMarkup(<Reader content={attachedMath} />);
 
     expect(html).toContain("katex-display");
@@ -87,7 +86,7 @@ describe("Reader Component", () => {
     const html = renderToStaticMarkup(<Reader content={mermaidMarkdown} />);
 
     expect(html).toContain("mermaid-container");
-    expect(html).not.toContain("<pre><span class=\"mermaid-container");
+    expect(html).not.toContain('<pre><span class="mermaid-container');
   });
 
   test("should render custom html-render blocks", () => {

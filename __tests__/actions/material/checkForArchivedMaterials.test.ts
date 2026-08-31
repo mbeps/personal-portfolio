@@ -1,8 +1,8 @@
-/// <reference types="vitest/globals" />
-import checkForArchivedMaterials from "@/lib/material/checkForArchivedMaterials";
+import { describe, expect, test } from "vitest";
 import type MaterialInterface from "@/database/materials/MaterialInterface";
 import type Database from "@/interfaces/Database";
-import { describe, expect, test } from "vitest";
+/// <reference types="vitest/globals" />
+import checkForArchivedMaterials from "@/lib/material/checkForArchivedMaterials";
 
 describe("checkForArchivedMaterials", () => {
   test("should return true if there is at least one archived material", () => {

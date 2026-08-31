@@ -1,11 +1,11 @@
-import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
+import type React from "react";
 import SkillTableSection from "@/components/skills/SkillTableSection";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
-import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
-import SkillInterface from "@/database/skills/SkillInterface";
+import type SkillInterface from "@/database/skills/SkillInterface";
+import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
+import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
 import hasAnySkills from "@/lib/skills/hasAnySkills";
-import React from "react";
 
 interface RelatedSkillsSectionProps {
   skillKey: SkillDatabaseKeys;
@@ -40,7 +40,7 @@ const RelatedSkillsSection: React.FC<RelatedSkillsSectionProps> = ({
 
   return (
     <>
-      <div className="border-b border-gray-200 dark:border-neutral-600 py-5" />
+      <div className="border-gray-200 border-b py-5 dark:border-neutral-600" />
       <div className="mt-4 text-center md:text-left">
         <h2>Related Skills</h2>
         <SkillTableSection allGroupedSkills={allGroupedSkills} />

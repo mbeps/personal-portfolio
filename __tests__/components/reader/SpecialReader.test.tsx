@@ -1,7 +1,5 @@
-/// <reference types="vitest/globals" />
-import React from "react";
-import { describe, expect, test, vi } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
+import { describe, expect, test, vi } from "vitest";
 import SpecialReader from "@/components/reader/SpecialReader";
 
 // Mock hooks and child components that use browser APIs

@@ -1,29 +1,29 @@
 "use client";
 
+import { usePathname } from "next/navigation";
+import type React from "react";
+import FilterSection from "@/components/filters/FilterSection";
+import ProjectsList from "@/components/material-lists/ProjectsList";
+import { ROUTES } from "@/constants/routes";
+import type ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
+import projectDatabaseMap from "@/database/projects/ProjectDatabaseMap";
+import type ProjectInterface from "@/database/projects/ProjectInterface";
+import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
+import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
+import useMaterialFilterState from "@/hooks/useMaterialFilterState";
 import checkForArchivedMaterials from "@/lib/material/checkForArchivedMaterials";
 import filterMaterialByArchivedStatus from "@/lib/material/filter/filterMaterialByArchivedStatus";
 import filterMaterialByCategory from "@/lib/material/filter/filterMaterialByCategory";
 import filterMaterialBySkill from "@/lib/material/filter/filterMaterialBySkill";
 import filterMaterialBySkillCategory from "@/lib/material/filter/filterMaterialBySkillCategory";
+import filterProjectsByType from "@/lib/material/filter/filterProjectsByType";
 import generateFilterOptionsByCategory from "@/lib/material/filter-options/generateFilterOptionsByCategory";
 import { generateFilterOptionsBySkillCategories } from "@/lib/material/filter-options/generateFilterOptionsBySkillCategories";
 import generateFilterOptionsBySkillType from "@/lib/material/filter-options/generateFilterOptionsBySkillType";
+import generateFilterOptionsByType from "@/lib/material/filter-options/generateFilterOptionsByType";
 import generateFilterOptionsForProgrammingLanguages from "@/lib/material/filter-options/generateFilterOptionsForProgrammingLanguages";
 import stringToSlug from "@/lib/stringToSlug";
-import FilterSection from "@/components/filters/FilterSection";
-import ProjectsList from "@/components/material-lists/ProjectsList";
-import { ROUTES } from "@/constants/routes";
-import projectDatabaseMap from "@/database/projects/ProjectDatabaseMap";
-import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
-import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
-import ProjectInterface from "@/database/projects/ProjectInterface";
-import React from "react";
-import { usePathname } from "next/navigation";
-import filterProjectsByType from "@/lib/material/filter/filterProjectsByType";
-import generateFilterOptionsByType from "@/lib/material/filter-options/generateFilterOptionsByType";
-import useMaterialFilterState from "@/hooks/useMaterialFilterState";
 
 /**
  * Client-side projects list that orchestrates language, technology, category, and archive filters via the shared hook.

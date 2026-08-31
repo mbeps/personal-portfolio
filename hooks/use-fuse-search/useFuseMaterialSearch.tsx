@@ -1,5 +1,5 @@
-import MaterialInterface from "@/database/materials/MaterialInterface";
-import Database from "@/interfaces/Database";
+import type MaterialInterface from "@/database/materials/MaterialInterface";
+import type Database from "@/interfaces/Database";
 import useFuseSearch from "./useFuseSearch";
 
 // Stable module-level reference keeps the Fuse options memo from firing on every render.

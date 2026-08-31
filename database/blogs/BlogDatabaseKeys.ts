@@ -30,7 +30,6 @@ enum BlogDatabaseKeys {
   ModelContextProtocol = "model-context-protocol",
   RitrievalAugmentedGeneration = "retrieval-augmented-generation",
   ReasoningModels = "reasoning-models",
-  GenerativeAversarialNetworks = "generative-adversarial-networks",
   HiddenMarkovModelsInAI = "hidden-markov-models-in-ai",
   FeatureEngineeringAndDimensionalityReduction = "feature-engineering-and-dimensionality-reduction",
   ReinforcementLearning = "reinforcement-learning",

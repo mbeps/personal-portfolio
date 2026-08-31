@@ -9,6 +9,7 @@ import { useEffect } from "react";
 export default function Scroll() {
   const pathname: string = usePathname();
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: Scroll reset triggers on pathname transitions
   useEffect(() => {
     window.scroll(0, 0);
   }, [pathname]);

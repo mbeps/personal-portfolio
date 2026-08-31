@@ -1,4 +1,4 @@
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 
 /**
  * Represents a bucket of skills under a shared category, used by grouped tables across project, role, and skill pages.

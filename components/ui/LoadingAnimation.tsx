@@ -9,13 +9,7 @@ import { BounceLoader } from "react-spinners";
  */
 const LoadingAnimation = () => {
   return (
-    <div
-      className="
-			rounded-lg 
-			w-full h-[calc(100vh-10rem)]
-			flex items-center justify-center
-			"
-    >
+    <div className="flex h-[calc(100vh-10rem)] w-full items-center justify-center rounded-lg">
       <BounceLoader color="#ff0000" size={40} />
     </div>
   );

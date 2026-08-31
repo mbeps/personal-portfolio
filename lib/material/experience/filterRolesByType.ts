@@ -1,8 +1,8 @@
-import stringToSlug from "@/lib/stringToSlug";
-import RoleInterface from "@/database/roles/RoleInterface";
-import ExperienceTypeEnum from "@/enums/experience/ExperienceTypeEnum";
-import Database from "@/interfaces/Database";
+import type RoleInterface from "@/database/roles/RoleInterface";
+import type ExperienceTypeEnum from "@/enums/experience/ExperienceTypeEnum";
+import type Database from "@/interfaces/Database";
 import filterMaterialKeysByPredicate from "@/lib/material/filter/filterMaterialKeysByPredicate";
+import stringToSlug from "@/lib/stringToSlug";
 
 /**
  * Lets the experience page toggle between work, leadership, and volunteer roles without rebuilding the dataset.

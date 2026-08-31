@@ -1,7 +1,8 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import React, { useEffect, useState } from "react";
+import type React from "react";
+import { useEffect, useState } from "react";
 import { LuMonitor } from "react-icons/lu";
 import { RiMoonFill, RiSunLine } from "react-icons/ri";
 import {
@@ -53,31 +54,35 @@ const ThemeToggle: React.FC = () => {
   return (
     <ContextMenu>
       <Tooltip>
-        <TooltipTrigger render={
-          <ContextMenuTrigger render={
-            currentTheme === "dark" ? (
-              <button
-                onClick={handleThemeChange}
-                className={`${baseButtonClass} ${darkButtonClass}`}
-              >
-                <RiSunLine
-                  size={27}
-                  className={`${baseIconClass} ${darkIconClass}`}
-                />
-              </button>
-            ) : (
-              <button
-                onClick={handleThemeChange}
-                className={`${baseButtonClass} ${lightButtonClass}`}
-              >
-                <RiMoonFill
-                  size={27}
-                  className={`${baseIconClass} ${lightIconClass}`}
-                />
-              </button>
-            )
-          } />
-        } />
+        <TooltipTrigger
+          render={
+            <ContextMenuTrigger
+              render={
+                currentTheme === "dark" ? (
+                  <button
+                    onClick={handleThemeChange}
+                    className={`${baseButtonClass} ${darkButtonClass}`}
+                  >
+                    <RiSunLine
+                      size={27}
+                      className={`${baseIconClass} ${darkIconClass}`}
+                    />
+                  </button>
+                ) : (
+                  <button
+                    onClick={handleThemeChange}
+                    className={`${baseButtonClass} ${lightButtonClass}`}
+                  >
+                    <RiMoonFill
+                      size={27}
+                      className={`${baseIconClass} ${lightIconClass}`}
+                    />
+                  </button>
+                )
+              }
+            />
+          }
+        />
         <TooltipContent>
           <p>
             Right Click <br /> for Options
@@ -85,13 +90,7 @@ const ThemeToggle: React.FC = () => {
         </TooltipContent>
       </Tooltip>
 
-      <ContextMenuContent
-        className="
-          menu-content-styles 
-          space-y-1 w-48
-          transition-all duration-300
-        "
-      >
+      <ContextMenuContent className="menu-content-styles w-48 space-y-1 transition-all duration-300">
         <ContextMenuItem
           className={getMenuItemStyles("light")}
           onSelect={() => setTheme("light")}

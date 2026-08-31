@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from "node:fs";
 
 /**
  * Pulls video filenames from a directory whose name mirrors the route slug (e.g., `/public/projects/my-app/media`).
@@ -13,7 +13,7 @@ export default function getVideosFromFileSystem(filePath: string): string[] {
     return files
       .filter((file) => file.endsWith(".mp4") || file.endsWith(".webm"))
       .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
-  } catch (error) {
+  } catch (_error) {
     // console.log(`Error reading directory ${filePath}:`, error);
     return [];
   }

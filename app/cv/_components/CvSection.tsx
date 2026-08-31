@@ -1,4 +1,4 @@
-import React from "react";
+import type React from "react";
 
 interface CvSectionProps {
   title: string;
@@ -13,7 +13,7 @@ const CvSection: React.FC<CvSectionProps> = ({
 }) => {
   return (
     <section className={`mb-8 ${className}`}>
-      <h2 className="text-3xl font-bold border-b-2 border-neutral-200 dark:border-neutral-800 pb-2 mb-4 uppercase tracking-wider">
+      <h2 className="mb-4 border-neutral-200 border-b-2 pb-2 font-bold text-3xl uppercase tracking-wider dark:border-neutral-800">
         {title}
       </h2>
       <div>{children}</div>

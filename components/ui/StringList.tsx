@@ -1,4 +1,4 @@
-import React from "react";
+import type React from "react";
 import { TbCircleFilled } from "react-icons/tb";
 
 interface StringListProps {
@@ -14,11 +14,11 @@ interface StringListProps {
 const StringList: React.FC<StringListProps> = ({ items }) => {
   return (
     <div>
-      <ul className="list-none text-lg flex flex-col gap-6">
+      <ul className="flex list-none flex-col gap-6 text-lg">
         {items.map((item, index) => (
           <li key={index} className="flex">
             <div className="mr-2">
-              <TbCircleFilled size={6} className="mt-3 mx-3 text-neutral-500" />
+              <TbCircleFilled size={6} className="mx-3 mt-3 text-neutral-500" />
             </div>
             <div className="text-neutral-900 dark:text-neutral-200">{item}</div>
           </li>

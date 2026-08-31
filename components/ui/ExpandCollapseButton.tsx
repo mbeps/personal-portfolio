@@ -1,5 +1,5 @@
-import React from "react";
-import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
+import type React from "react";
+import { MdKeyboardArrowDown } from "react-icons/md";
 
 interface ExpandCollapseButtonProps {
   isExpanded: boolean;
@@ -23,7 +23,7 @@ const ExpandCollapseButton: React.FC<ExpandCollapseButtonProps> = ({
   return (
     <button
       type="button"
-      className={`${className} mt-2 text-red-700 hover:text-red-500 flex items-center [&[data-state=open]>svg]:rotate-180`}
+      className={`${className} mt-2 flex items-center text-red-700 hover:text-red-500 [&[data-state=open]>svg]:rotate-180`}
       onClick={onToggle}
       data-state={isExpanded ? "open" : "closed"}
       aria-expanded={isExpanded}

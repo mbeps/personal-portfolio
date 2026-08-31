@@ -1,19 +1,19 @@
-import addNestedSkillsMaterialList from "@/lib/material/addNestedSkillsMaterialList";
+import { PATHS } from "@/constants/paths";
+import BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
+import CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
 import ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
 import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
-import ProjectInterface from "@/database/projects/ProjectInterface";
+import type ProjectInterface from "@/database/projects/ProjectInterface";
+import RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
 import ProjectCategoriesEnum from "@/enums/project/ProjectCategoriesEnum";
 import ProjectTypeEnum from "@/enums/project/ProjectTypeEnum";
 import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
-import Database from "@/interfaces/Database";
+import type Database from "@/interfaces/Database";
 import validateDatabaseKeys from "@/lib/database/validateDatabaseKeys";
-import CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
-import RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
-import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
-import BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
-import { PATHS } from "@/constants/paths";
+import addNestedSkillsMaterialList from "@/lib/material/addNestedSkillsMaterialList";
 
 /**
  * Hashmap of projects with keys as {@link SkillDatabaseKeys} and values as {@link ProjectInterface}.
@@ -23,15 +23,15 @@ import { PATHS } from "@/constants/paths";
 const projectMap: Database<ProjectInterface> = {
   //^ Full-Stack Projects
   [ProjectDatabaseKeys.ForumDiscussions]: {
-    name: `Forum Discussions`,
+    name: "Forum Discussions",
     description: `
       For a final year university project, 
       a social media platform was developed enabling users to form communities, 
       start discussions, and comment on them.
       Tested on CRUD and software engineering principles.
       `,
-    repositoryURL: `https://github.com/mbeps/next_discussion_platform`,
-    deploymentURL: `https://forum-discussions.maruf-bepary.com/`,
+    repositoryURL: "https://github.com/mbeps/next_discussion_platform",
+    deploymentURL: "https://forum-discussions.maruf-bepary.com/",
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
@@ -57,14 +57,14 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Academic,
   },
   [ProjectDatabaseKeys.CarDealership]: {
-    name: `Car Dealership`,
+    name: "Car Dealership",
     description: `
       Car dealership website for a client.
       Users can browse, search, and filter cars.
       Admins can manage inventory, add new cars, and update existing listings, view reports, manage dealership settings, etc.
       `,
-    repositoryURL: `https://github.com/mbeps/car-dealership`,
-    deploymentURL: `https://www.mn-ltd.uk/`,
+    repositoryURL: "https://github.com/mbeps/car-dealership",
+    deploymentURL: "https://www.mn-ltd.uk/",
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
@@ -88,13 +88,13 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.RealTimeMessaging]: {
-    name: `Real-Time Messaging`,
+    name: "Real-Time Messaging",
     description: `
       A custom back-end learning project involved creating a straightforward real-time messaging app. 
       Users can chat one-on-one or in group chats, send text messages and images, view active users, etc.
       `,
-    repositoryURL: `https://github.com/mbeps/ringmaster-messaging`,
-    deploymentURL: `https://messaging.maruf-bepary.com/`,
+    repositoryURL: "https://github.com/mbeps/ringmaster-messaging",
+    deploymentURL: "https://messaging.maruf-bepary.com/",
 
     skills: [
       SkillDatabaseKeys.TypeScript,
@@ -122,12 +122,12 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.MusicStreaming]: {
-    name: `Music Streaming`,
+    name: "Music Streaming",
     description: `
       My first major project using Supabase was a basic music streaming site. 
       Users can upload songs, search and listen to music, as well as like the songs they enjoy.
       `,
-    repositoryURL: `https://github.com/mbeps/drumroll-music`,
+    repositoryURL: "https://github.com/mbeps/drumroll-music",
     deploymentURL: "https://www.music.maruf-bepary.com/",
     skills: [
       SkillDatabaseKeys.TypeScript,
@@ -156,7 +156,7 @@ const projectMap: Database<ProjectInterface> = {
       A note-taking app where users can sign up, log in, and reset passwords easily. 
       It supports rich text formatting, image additions, and publishing notes publicly. 
       Users alse organize notes into nested notebooks.`,
-    repositoryURL: `https://github.com/mbeps/joker-notes`,
+    repositoryURL: "https://github.com/mbeps/joker-notes",
     deploymentURL: "https://notes.maruf-bepary.com/",
     skills: [
       SkillDatabaseKeys.TypeScript,
@@ -263,13 +263,13 @@ const projectMap: Database<ProjectInterface> = {
 
   //^ Extra Web Development Projects
   [ProjectDatabaseKeys.OnlineArticles]: {
-    name: `Online Articles`,
+    name: "Online Articles",
     description: `
       To learn Supabase, I developed a simple website for reading and writing articles. 
       Users can read, create, and delete articles. 
       This project paved the way for using Supabase in subsequent projects.
       `,
-    repositoryURL: `https://github.com/mbeps/sideshow-articles`,
+    repositoryURL: "https://github.com/mbeps/sideshow-articles",
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
@@ -287,7 +287,7 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.OAuthNextJsSpringBoot]: {
-    name: `OAuth Next.js & Spring Boot`,
+    name: "OAuth Next.js & Spring Boot",
     description: `
       A simple project to demonstrate OAuth (GitHub & Entra ID) authentication using Next.js for the front-end and Spring Boot for the back-end.
       Uses CORS, JWTs, and secure cookie storage.
@@ -324,7 +324,7 @@ const projectMap: Database<ProjectInterface> = {
     ],
   },
   [ProjectDatabaseKeys.NextJsAuthJsTemplate]: {
-    name: `Auth.JS Template`,
+    name: "Auth.JS Template",
     description: `
       A project demonstrating advanced authentication including email/password, password reset, OAuth providers, and multi-factor authentication.
       `,
@@ -357,7 +357,7 @@ const projectMap: Database<ProjectInterface> = {
   },
 
   [ProjectDatabaseKeys.NextJsBetterAuthTemplate]: {
-    name: `Better Auth Template`,
+    name: "Better Auth Template",
     description: `
       A project demonstrating advanced authentication including email/password, password reset, OAuth providers, and multi-factor authentication, passkey authentication, session management and role management.
       `,
@@ -390,13 +390,13 @@ const projectMap: Database<ProjectInterface> = {
     ],
   },
   [ProjectDatabaseKeys.Noodle]: {
-    name: `Noodle`,
+    name: "Noodle",
     description: `
       In my second year of university, my group and I started an open-source learning platform project, introducing me to full-stack development. 
       This app helps students manage tasks, assignments, exams, and store notes and resources.
       `,
-    repositoryURL: `https://github.com/ixahmedxi/noodle`,
-    deploymentURL: `https://noodle.run/`,
+    repositoryURL: "https://github.com/ixahmedxi/noodle",
+    deploymentURL: "https://noodle.run/",
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
@@ -730,12 +730,12 @@ const projectMap: Database<ProjectInterface> = {
       .COVER,
   },
   [ProjectDatabaseKeys.MachineLearningAssignment1]: {
-    name: `Machine Learning Assignment 1`,
+    name: "Machine Learning Assignment 1",
     description: `
       Implementing algorithms from scratch such as the Nearest Neighbours algorithm.
       Requires an understanding of the Mathematics behind the algorithms and the ability to implement them.
       `,
-    repositoryURL: `https://github.com/mbeps/Machine-Learning-Assignment-1`,
+    repositoryURL: "https://github.com/mbeps/Machine-Learning-Assignment-1",
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.ScikitLearn,
@@ -755,12 +755,12 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
   },
   [ProjectDatabaseKeys.MachineLearningAssignment2]: {
-    name: `Machine Learning Assignment 2`,
+    name: "Machine Learning Assignment 2",
     description: `
       Be able to use and implement algorithms, 
       with the Lasso and inductive conformal prediction algorithms as examples. 
     `,
-    repositoryURL: `https://github.com/mbeps/Machine-Learning-Assignment-2`,
+    repositoryURL: "https://github.com/mbeps/Machine-Learning-Assignment-2",
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.ScikitLearn,
@@ -779,12 +779,12 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
   },
   [ProjectDatabaseKeys.MachineLearningAssignment3]: {
-    name: `Machine Learning Assignment 3`,
+    name: "Machine Learning Assignment 3",
     description: `
       Be able to use and implement algorithms, 
       with the SVM, neural networks, and cross-conformal prediction algorithms as examples. 
       `,
-    repositoryURL: `https://github.com/mbeps/Machine-Learning-Assignment-3`,
+    repositoryURL: "https://github.com/mbeps/Machine-Learning-Assignment-3",
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.ScikitLearn,
@@ -804,12 +804,12 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
   },
   [ProjectDatabaseKeys.MachineLearningLabs]: {
-    name: `Machine Learning Labs`,
+    name: "Machine Learning Labs",
     description: `
       Implemented various algorithms and techniques learnt during the course, 
       such as Nearest Neighbours, Conformal Prediction, Regression algorithms, data preprocessing, 
       kernels, Neural Networks, SVMs, etc.`,
-    repositoryURL: `https://github.com/mbeps/Machine-Learning-Labs-Questions`,
+    repositoryURL: "https://github.com/mbeps/Machine-Learning-Labs-Questions",
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.ScikitLearn,
@@ -833,7 +833,7 @@ const projectMap: Database<ProjectInterface> = {
     description: `
       Exploring valuation of options using methods like Black-Scholes, binomial trees, and Monte Carlo. 
       Also includes theoretical aspects of put-call parity and financial arbitrage opportunities.`,
-    repositoryURL: `https://github.com/mbeps/Computation_Finance_Assignment`,
+    repositoryURL: "https://github.com/mbeps/Computation_Finance_Assignment",
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.NumPy,
@@ -1070,12 +1070,12 @@ const projectMap: Database<ProjectInterface> = {
       .COVER,
   },
   [ProjectDatabaseKeys.AiGenerations]: {
-    name: `AI Generations`,
+    name: "AI Generations",
     description: `
       A SaaS platform that leverages AI to enable users to generate various media types and have conversations. 
       Developing this project allowed me to explore Stripe, Clerk authentication, and unique AI APIs.
     `,
-    repositoryURL: `https://github.com/mbeps/magician-ai`,
+    repositoryURL: "https://github.com/mbeps/magician-ai",
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
@@ -1134,7 +1134,7 @@ const projectMap: Database<ProjectInterface> = {
 
   //^ Backend Web Development Projects
   [ProjectDatabaseKeys.AuthenticationMicroService]: {
-    name: `Authentication Microservice`,
+    name: "Authentication Microservice",
     description: `
       A microservice providing authentication (such as email/password and OAuth) to various applications.
       Minimises on duplications allowing for faster development and simpler infrastructure.
@@ -1165,7 +1165,7 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Professional,
   },
   [ProjectDatabaseKeys.EmailMicroService]: {
-    name: `Email Microservice`,
+    name: "Email Microservice",
     description: `
       A microservice providing functionality to send emails for various applications and services. 
       Minimises on duplications allowing for faster development and simpler infrastructure.
@@ -1187,7 +1187,7 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Professional,
   },
   [ProjectDatabaseKeys.LdapPermissionsMicroService]: {
-    name: `LDAP Permissions Microservice`,
+    name: "LDAP Permissions Microservice",
     description: `
       A microservice providing functionality of view permissions for users based on on-prem LDAP roles. 
       Minimises on duplications allowing for faster development and simpler infrastructure.
@@ -1211,7 +1211,7 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Professional,
   },
   [ProjectDatabaseKeys.SymphonyTranslateBot]: {
-    name: `Symphony Translate Bot`,
+    name: "Symphony Translate Bot",
     description: `
       A Symphony bot that translates messages in a Symphony chatroom.
       Replaces the old bot which was originally built using the outdated SDK.
@@ -1241,7 +1241,7 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Professional,
   },
   [ProjectDatabaseKeys.SymphonyCobaGPTBot]: {
-    name: `Symphony CobaGPT Bot`,
+    name: "Symphony CobaGPT Bot",
     description: `
       A Symphony bot which interfaces with the Azure OpenAI API to generate text based on user input.
       This bot improves the workflow of users by providing quick responses to common questions and completing simple or repetitive tasks.
@@ -1272,7 +1272,7 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Professional,
   },
   [ProjectDatabaseKeys.SymphonyWebhookBot]: {
-    name: `Symphony Webhooks Bot`,
+    name: "Symphony Webhooks Bot",
     description: `
       A Symphony bot that sends messages to a Symphony chatroom using Webhooks.
       This bot is used to send messages to a chatroom from an external source.
@@ -1298,7 +1298,7 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Professional,
   },
   [ProjectDatabaseKeys.SymphonyPollBot]: {
-    name: `Symphony Poll Bot`,
+    name: "Symphony Poll Bot",
     description: `
       A Symphony bot for creating polls and surveys for gathering feedback.
       `,
@@ -1324,7 +1324,7 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Professional,
   },
   [ProjectDatabaseKeys.SymphonyRssBot]: {
-    name: `Symphony RSS Bot`,
+    name: "Symphony RSS Bot",
     description: `
       A Symphony bot which fetches RSS feeds from various sources and posts them to a Symphony chatroom.
       Users can subscribe to specific RSS feeds and receive updates in real-time.
@@ -1353,7 +1353,7 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
   },
   [ProjectDatabaseKeys.SymphonyBlogBot]: {
-    name: `Symphony Blog Bot`,
+    name: "Symphony Blog Bot",
     description: `
       A Symphony bot which makes announcements in chatrooms and direct messages using markdown formatting.
       Users can create, edit, and delete announcements using simple commands.
@@ -1381,7 +1381,7 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
   },
   [ProjectDatabaseKeys.SymphonyBusinessHighlightsBot]: {
-    name: `Symphony Business Highlights Bot`,
+    name: "Symphony Business Highlights Bot",
     description: `
       A Symphony bot which compiles weekly business reports from various users
       and generates a summary of the business highlights for the week.
@@ -1411,7 +1411,7 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
   },
   [ProjectDatabaseKeys.SymphonyInteractiveBot]: {
-    name: `Symphony Interactive Bot Example`,
+    name: "Symphony Interactive Bot Example",
     description: `
       A Symphony bot for learning how to create an interactive bot in Symphony.
       This bot is used to demonstrate how to create an interactive bot in Symphony.
@@ -1434,7 +1434,7 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Professional,
   },
   [ProjectDatabaseKeys.SymphonyHeadlessBot]: {
-    name: `Symphony Headless Bot Example`,
+    name: "Symphony Headless Bot Example",
     description: `
       A Symphony bot for learning how to create a Headless Bot in Symphony.
       This bot is used to demonstrate how to create a headless bot in Symphony.
@@ -1457,12 +1457,12 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Professional,
   },
   [ProjectDatabaseKeys.FlaskForumBackend]: {
-    name: `Flask Forum Backend`,
+    name: "Flask Forum Backend",
     description: `
       This is a custom backend for the first iteration of the discussion platform. 
       This was created to learn how to create a custom backend using Python and Flask.
       `,
-    repositoryURL: `https://github.com/mbeps/Forum-Discussion-Flask-Backend`,
+    repositoryURL: "https://github.com/mbeps/Forum-Discussion-Flask-Backend",
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.Flask,
@@ -1481,13 +1481,13 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
   },
   [ProjectDatabaseKeys.FlaskBackendDemo]: {
-    name: `Flask Backend Demo`,
+    name: "Flask Backend Demo",
     description: `
       A simple Flask app to learn how to create a RESTful API. 
       This was a foundational project to learn how to create a back-end using Flask.
       This was helpful when creating the back-end for the discussion platform.
       `,
-    repositoryURL: `https://github.com/mbeps/python-flask-demo`,
+    repositoryURL: "https://github.com/mbeps/python-flask-demo",
     category: ProjectCategoriesEnum.BackEndWebDevelopment,
     skills: [
       SkillDatabaseKeys.Python,
@@ -1500,11 +1500,11 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.UserAuthentication]: {
-    name: `User Authentication`,
+    name: "User Authentication",
     description: `
       A list of projects implementing and experimenting with user authentication using various stacks.
       `,
-    repositoryURL: `https://github.com/stars/mbeps/lists/web-authentication`,
+    repositoryURL: "https://github.com/stars/mbeps/lists/web-authentication",
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
@@ -1523,7 +1523,7 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.SpringDataJPATemplate]: {
-    name: `Spring Data JPA Template`,
+    name: "Spring Data JPA Template",
     description: `
       A template project for using Spring Data JPA with PostgreSQL. 
       This was created for documenting how use SQL databases for our Spring Boot projects.
@@ -1540,7 +1540,7 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
   },
   [ProjectDatabaseKeys.SpringDataMongoTemplate]: {
-    name: `Spring Data MongoDB Template`,
+    name: "Spring Data MongoDB Template",
     description: `
       A template project for using Spring Data MongoDB.
       This was created for documenting how use MongoDB databases for our Spring Boot projects.
@@ -1558,7 +1558,7 @@ const projectMap: Database<ProjectInterface> = {
     archived: true,
   },
   [ProjectDatabaseKeys.SpringBootLdapTemplate]: {
-    name: `Spring Data LDAP Template`,
+    name: "Spring Data LDAP Template",
     description: `
       A template project for using Spring Data LDAP.
       This was created for learning how to use LDAP for our Spring Boot projects specifically for role-based access control.
@@ -1655,12 +1655,12 @@ const projectMap: Database<ProjectInterface> = {
 
   //^ Programming Fundamentals
   [ProjectDatabaseKeys.JavaCalculatorAssignment]: {
-    name: `Calculator`,
+    name: "Calculator",
     description: `
       This was a second year assignment focused on software engineering methodologies. 
       The project emphasized the importance of proper version control procedures, 
       test-driven development, documentation, and code quality assurance.`,
-    repositoryURL: `https://github.com/mbeps/Calculator-Assignment`,
+    repositoryURL: "https://github.com/mbeps/Calculator-Assignment",
     skills: [SkillDatabaseKeys.Java, SkillDatabaseKeys.JUnit],
     category: ProjectCategoriesEnum.ProgrammingFundamentals,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_SoftwareEngineering],
@@ -1668,13 +1668,14 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Academic,
   },
   [ProjectDatabaseKeys.JavaFundamentalsAssignments]: {
-    name: `Java Fundamentals Assignments`,
+    name: "Java Fundamentals Assignments",
     description: `
       First-year Java assignments focused on learning the basics of Java and Object-Oriented Programming (OOP). 
       These projects covered core concepts like classes, inheritance, and data handling. 
       They provided a solid foundation in Java programming and practical experience with fundamental OOP principles.
       `,
-    repositoryURL: `https://github.com/stars/mbeps/lists/java-fundamentals-assignments`,
+    repositoryURL:
+      "https://github.com/stars/mbeps/lists/java-fundamentals-assignments",
     skills: [SkillDatabaseKeys.Java],
     category: ProjectCategoriesEnum.ProgrammingFundamentals,
     type: ProjectTypeEnum.Academic,
@@ -1685,9 +1686,9 @@ const projectMap: Database<ProjectInterface> = {
     ],
   },
   [ProjectDatabaseKeys.DatabasesMiniProject]: {
-    name: `Database Mini Project`,
-    description: `Learning to interact with a database using Java.`,
-    repositoryURL: `https://github.com/mbeps/DatabasesMiniProject`,
+    name: "Database Mini Project",
+    description: "Learning to interact with a database using Java.",
+    repositoryURL: "https://github.com/mbeps/DatabasesMiniProject",
     skills: [SkillDatabaseKeys.Java, SkillDatabaseKeys.PostgreSql],
     category: ProjectCategoriesEnum.ProgrammingFundamentals,
     relatedMaterials: [ModuleDatabaseKeys.RHUL_Databases],
@@ -1697,14 +1698,14 @@ const projectMap: Database<ProjectInterface> = {
 
   //^ Algorithms and Data Structures
   [ProjectDatabaseKeys.Leetcode]: {
-    name: `Leetcode Solutions`,
+    name: "Leetcode Solutions",
     description: `
       A collection of Leetcode solutions in Python. 
       This is used to practice algorithms and data structures.
       They are also used to practice unit testing.
       CI/CD is also used to run the tests when merging to the main branch.
       `,
-    repositoryURL: `https://github.com/stars/mbeps/lists/leetcode`,
+    repositoryURL: "https://github.com/stars/mbeps/lists/leetcode",
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.PyTest,
@@ -1715,7 +1716,7 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.SearchingAndSortingAlgorithms]: {
-    name: `Searching & Sorting Algorithms`,
+    name: "Searching & Sorting Algorithms",
     description: `
       Jupyter Notebook containing various searching and sorting algorithms.
       Each algorithms is explained. 
@@ -1739,12 +1740,12 @@ const projectMap: Database<ProjectInterface> = {
 
   //^ Other Projects
   [ProjectDatabaseKeys.GnomeAllInOneClipboardExtension]: {
-    name: `All-in-One Clipboard Extension`,
+    name: "All-in-One Clipboard Extension",
     description: `
       A Gnome extension that adds advanced clipboard management features to the Gnome desktop environment.
       Inspired by Windows 11's feature, this extension allows users to manage clipboard history, emojis, kaomojis, GIFs, and symbols.
           `,
-    repositoryURL: `https://github.com/NiffirgkcaJ/all-in-one-clipboard`,
+    repositoryURL: "https://github.com/NiffirgkcaJ/all-in-one-clipboard",
     skills: [SkillDatabaseKeys.JavaScript],
     category: ProjectCategoriesEnum.Other,
     archived: true,
@@ -1752,11 +1753,11 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [RoleDatabaseKeys.OpenSourceContributor],
   },
   [ProjectDatabaseKeys.GnomeQuickSettingsTweakExtension]: {
-    name: `Quick Settings Tweak Extension`,
+    name: "Quick Settings Tweak Extension",
     description: `
       A Gnome extension that allows users to customize the quick settings menu in the Gnome desktop environment.
       `,
-    repositoryURL: `https://github.com/qwreey/quick-settings-tweaks`,
+    repositoryURL: "https://github.com/qwreey/quick-settings-tweaks",
     skills: [SkillDatabaseKeys.JavaScript],
     category: ProjectCategoriesEnum.Other,
     archived: true,
@@ -1764,12 +1765,12 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.OsmosGame]: {
-    name: `Osmos Game`,
+    name: "Osmos Game",
     description: `
           A simple game built with SimpleGUI for a first-year university project. 
           We manually implemented physics using vector theory and physics concepts, relying solely on documentation due to the lack of tutorials.
           `,
-    repositoryURL: `https://github.com/mbeps/Osmos_Game`,
+    repositoryURL: "https://github.com/mbeps/Osmos_Game",
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.SimpleGui,
@@ -1782,19 +1783,19 @@ const projectMap: Database<ProjectInterface> = {
     thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.OsmosGame).COVER,
   },
   [ProjectDatabaseKeys.AutomatedSetup]: {
-    name: `Automated Setup`,
+    name: "Automated Setup",
     description: `
       A shell script which automates the setup of a new Linux machine.
       This is specifically for my Fedora install.
       `,
     skills: [SkillDatabaseKeys.ShellScript],
-    repositoryURL: `https://github.com/mbeps/AutomatedSetup`,
+    repositoryURL: "https://github.com/mbeps/AutomatedSetup",
     category: ProjectCategoriesEnum.Other,
     archived: true,
     type: ProjectTypeEnum.Personal,
   },
   [ProjectDatabaseKeys.MdmAutomations]: {
-    name: `MDM Automations`,
+    name: "MDM Automations",
     description: `
       A script which compiles and processes business information from various sources into a single spreadsheet.
       This is then sent to HR for allocating cost centers to employees.
@@ -1806,7 +1807,7 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Professional,
   },
   [ProjectDatabaseKeys.FinanceAutomations]: {
-    name: `Finance Automations`,
+    name: "Finance Automations",
     description: `
       A script which compiles and processes information about various businesses from Companies House and FCA. 
       This cut down time from a full day to less than 5 minutes.
@@ -1817,24 +1818,24 @@ const projectMap: Database<ProjectInterface> = {
     type: ProjectTypeEnum.Professional,
   },
   [ProjectDatabaseKeys.AutomatedManifestPush]: {
-    name: `Automated Manifest Push`,
+    name: "Automated Manifest Push",
     description: `
       A script which escapes and compresses JSON files storing commands for Symphony bots and pushes them to remote servers.
         `,
     skills: [SkillDatabaseKeys.Python],
-    repositoryURL: `https://github.com/mbeps/AutomatedSetup`,
+    repositoryURL: "https://github.com/mbeps/AutomatedSetup",
     category: ProjectCategoriesEnum.Other,
     archived: true,
     type: ProjectTypeEnum.Professional,
   },
   [ProjectDatabaseKeys.JwtHelper]: {
-    name: `JWT Helper`,
+    name: "JWT Helper",
     description: `
       A tool which generates JWTs for users (specifically bots) from private keys. 
       This is then used for authenticating with Symphony's API and pushing manifests files to servers.
         `,
     skills: [SkillDatabaseKeys.Java],
-    repositoryURL: `https://github.com/mbeps/AutomatedSetup`,
+    repositoryURL: "https://github.com/mbeps/AutomatedSetup",
     category: ProjectCategoriesEnum.Other,
     archived: true,
     type: ProjectTypeEnum.Professional,

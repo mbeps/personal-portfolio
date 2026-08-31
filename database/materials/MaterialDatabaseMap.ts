@@ -1,6 +1,6 @@
-import MaterialInterface from "@/database/materials/MaterialInterface";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import Database from "@/interfaces/Database";
+import type MaterialInterface from "@/database/materials/MaterialInterface";
+import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import type Database from "@/interfaces/Database";
 import validateDatabaseKeys from "@/lib/database/validateDatabaseKeys";
 import blogsDatabaseMap from "../blogs/BlogsDatabaseMap";
 import certificateDatabaseMap from "../certificates/CertificateDatabaseMap";

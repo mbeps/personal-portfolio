@@ -1,9 +1,9 @@
+import type React from "react";
 import CertificateItem from "@/components/material-items/CertificateItem";
 import Grid from "@/components/ui/Grid";
-import MaterialGroupListInterface from "@/interfaces/material/MaterialGroupListInterface";
-import React from "react";
+import type CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
+import type MaterialGroupListInterface from "@/interfaces/material/MaterialGroupListInterface";
 import MaterialGroupSectionList from "./MaterialGroupSectionList";
-import CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
 
 /**
  * Renders grouped certificates using `CertificateItem` tiles so the certificates page and related material tabs look identical.
@@ -22,7 +22,7 @@ const CertificatesList: React.FC<MaterialGroupListInterface> = ({
       <>
         {hasMultipleGroups && (
           <>
-            <div className="border-b border-gray-200 dark:border-neutral-600 pb-1" />
+            <div className="border-gray-200 border-b pb-1 dark:border-neutral-600" />
             <h2>{group.groupName}</h2>
           </>
         )}

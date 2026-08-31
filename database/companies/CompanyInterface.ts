@@ -1,4 +1,4 @@
-import RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
+import type RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
 
 /**
  * Represents a company in the experience timeline so roles can reference metadata like logo paths under `public/companies/{slug}`.

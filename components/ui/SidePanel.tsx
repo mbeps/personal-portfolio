@@ -1,10 +1,10 @@
 "use client";
 
-import { NAVBAR_HEIGHT } from "@/constants/navbarHeight";
-import useIsMounted from "@/hooks/useIsMounted";
-import React, { useEffect } from "react";
+import type React from "react";
+import { useEffect } from "react";
 import { IoClose } from "react-icons/io5";
 import { twMerge } from "tailwind-merge";
+import useIsMounted from "@/hooks/useIsMounted";
 
 interface SidePanelProps {
   title: string;
@@ -72,43 +72,20 @@ const SidePanel: React.FC<SidePanelProps> = ({
   return (
     <div
       className={twMerge(
-        `
-        fixed 
-        flex flex-col 
-        top-0 right-0 
-        h-full 
-        pt-24 md:px-2 md:pb-3
-        w-full md:w-[24rem]
-        z-20 
-        transform ${
+        `fixed top-0 right-0 z-20 flex h-full w-full transform flex-col pt-24 md:w-[24rem] md:px-2 md:pb-3 ${
           isOpen ? "translate-x-0" : "translate-x-full"
-        } transition-all duration-700 ease-in-out 
-        bg-none 
-        `,
-        secondaryClassName
+        } bg-none transition-all duration-700 ease-in-out`,
+        secondaryClassName,
       )}
     >
       <div className={overrideStyle}>
-        <div className="flex flex-col h-full">
-          <div
-            className="
-              sticky top-0
-              z-10
-              px-4 py-0
-              flex justify-between items-center
-              transition-all duration-700 ease-in-out
-              rounded-t-2xl
-            "
-          >
+        <div className="flex h-full flex-col">
+          <div className="sticky top-0 z-10 flex items-center justify-between rounded-t-2xl px-4 py-0 transition-all duration-700 ease-in-out">
             <h3>{title}</h3>
             <button onClick={toggle}>
               <span className="sr-only">Close</span>
               <IoClose
-                className="
-                  h-7 w-7 
-                  text-neutral-800 dark:text-neutral-400 
-                  hover:text-red-500 dark:hover:text-red-500 
-                  transition-colors duration-500 ease-in-out"
+                className="h-7 w-7 text-neutral-800 transition-colors duration-500 ease-in-out hover:text-red-500 dark:text-neutral-400 dark:hover:text-red-500"
                 aria-hidden="true"
               />
             </button>

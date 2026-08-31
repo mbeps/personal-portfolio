@@ -1,10 +1,10 @@
+import type { Metadata } from "next";
 import PageDescription from "@/components/ui/PageDescription";
 import developerName from "@/constants/developerName";
 import { ROUTES } from "@/constants/routes";
-import rolesDatabase from "@/database/roles/RoleDatabaseMap";
-import type { Metadata } from "next";
-import ExperienceView from "./_components/ExperienceView";
 import companyDatabaseMap from "@/database/companies/CompanyDatabaseMap";
+import rolesDatabase from "@/database/roles/RoleDatabaseMap";
+import ExperienceView from "./_components/ExperienceView";
 
 /**
  * Static metadata for the experience hub, populated from the roles database so keywords stay synced with the latest timeline entries.

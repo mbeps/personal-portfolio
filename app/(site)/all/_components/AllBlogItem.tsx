@@ -1,9 +1,9 @@
-import React from "react";
-import BlogInterface from "@/database/blogs/BlogInterface";
-import BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
+import Link from "next/link";
+import type React from "react";
 import CvItemSkills from "@/app/cv/_components/CvItemSkills";
 import { ROUTES } from "@/constants/routes";
-import Link from "next/link";
+import type BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
+import type BlogInterface from "@/database/blogs/BlogInterface";
 
 /**
  * Props for the AllBlogItem component.
@@ -25,11 +25,11 @@ const AllBlogItem: React.FC<AllBlogItemProps> = ({ blog, blogKey }) => {
   return (
     <div className="break-inside-avoid">
       <Link href={ROUTES.BLOGS.detail(blogKey)} className="group">
-        <h3 className="text-2xl font-bold group-hover:underline decoration-primary">
+        <h3 className="font-bold text-2xl decoration-primary group-hover:underline">
           {blog.name}
         </h3>
       </Link>
-      <p className="text-lg text-neutral-600 dark:text-neutral-400 mb-3">
+      <p className="mb-3 text-lg text-neutral-600 dark:text-neutral-400">
         {blog.subtitle}
       </p>
       <CvItemSkills skills={blog.skills} showArchived={true} />

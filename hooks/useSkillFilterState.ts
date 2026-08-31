@@ -1,13 +1,13 @@
 import { parseAsBoolean, parseAsString, useQueryStates } from "nuqs";
 import { useMemo } from "react";
-import groupSkills, { GroupByOptions } from "@/lib/skills/group/groupSkills";
+import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
-import FilterCategory from "@/interfaces/filters/FilterCategory";
-import FilterOption from "@/interfaces/filters/FilterOption";
-import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
 import useFuseSkillSearch from "@/hooks/use-fuse-search/useFuseSkillSearch";
+import type FilterCategory from "@/interfaces/filters/FilterCategory";
+import type FilterOption from "@/interfaces/filters/FilterOption";
+import type CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
+import groupSkills, { GroupByOptions } from "@/lib/skills/group/groupSkills";
 
 /**
  * Options for grouping skills in the filter UI.
@@ -105,8 +105,8 @@ export default function useSkillFilterState(
   const searchTerm = (rawParams[searchParamName] as string) ?? "";
   const selectedGroup = ((rawParams[groupParamName] as string) ||
     GroupByOptions.Category) as GroupByOptions;
-  const hardExcluded = (rawParams["hard"] as boolean) ?? false;
-  const generalExcluded = (rawParams["general"] as boolean) ?? false;
+  const hardExcluded = (rawParams.hard as boolean) ?? false;
+  const generalExcluded = (rawParams.general as boolean) ?? false;
   const hideSkillsWithoutMaterial =
     (rawParams[noMaterialParamName] as boolean) ?? false;
 

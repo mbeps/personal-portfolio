@@ -1,9 +1,9 @@
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import SkillInterface from "@/database/skills/SkillInterface";
-import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
-import Database from "@/interfaces/Database";
-import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
-import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
+import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import type SkillInterface from "@/database/skills/SkillInterface";
+import type SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
+import type Database from "@/interfaces/Database";
+import type CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
+import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
 
 /**
  * Filters skills by type and then groups them by category, producing the nested structure consumed by `SkillTableSection`.

@@ -1,11 +1,11 @@
 "use client";
 
+import { useTheme } from "next-themes";
 import React from "react";
 import {
   oneDark,
   oneLight,
 } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { useTheme } from "next-themes";
 import SyntaxHighlighter from "./PrismHighlighter";
 
 type CodeBlockProps = {

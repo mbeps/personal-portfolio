@@ -1,19 +1,19 @@
 "use client";
 
-import Reader from "@/components/reader/Reader";
-import { Button } from "@/components/shadcn/ui/button";
-import { ScrollArea } from "@/components/shadcn/ui/scroll-area";
-import SidePanel from "@/components/ui/SidePanel";
-import useIsMounted from "@/hooks/useIsMounted";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { useState } from "react";
 import { CiCircleList } from "react-icons/ci";
+import Reader from "@/components/reader/Reader";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/shadcn/ui/accordion";
+import { Button } from "@/components/shadcn/ui/button";
+import { ScrollArea } from "@/components/shadcn/ui/scroll-area";
+import SidePanel from "@/components/ui/SidePanel";
+import useIsMounted from "@/hooks/useIsMounted";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 interface ContentsSectionProps {
   contentSection: string;
@@ -35,7 +35,7 @@ const ContentsSection: React.FC<ContentsSectionProps> = ({
   const isMounted: boolean = useIsMounted();
   const [isPanelOpen, setIsFilterModalOpen] = useState(isLargeScreen);
 
-  if (!isMounted || !contentSection || !contentSection.trim()) {
+  if (!isMounted || !contentSection?.trim()) {
     return null;
   }
 
@@ -79,13 +79,7 @@ const ContentsSection: React.FC<ContentsSectionProps> = ({
               <AccordionTrigger>
                 <div className="flex items-center space-x-3">
                   <CiCircleList size={26} className="text-neutral-500" />
-                  <p
-                    className="
-                      text-lg 
-                      text-neutral-600 dark:text-neutral-400
-                      font-semibold
-                      "
-                  >
+                  <p className="font-semibold text-lg text-neutral-600 dark:text-neutral-400">
                     View Contents
                   </p>
                 </div>

@@ -1,7 +1,7 @@
+import type ProjectInterface from "@/database/projects/ProjectInterface";
+import type Database from "@/interfaces/Database";
+import type FilterOption from "@/interfaces/filters/FilterOption";
 import stringToSlug from "@/lib/stringToSlug";
-import ProjectInterface from "@/database/projects/ProjectInterface";
-import Database from "@/interfaces/Database";
-import FilterOption from "@/interfaces/filters/FilterOption";
 import generateFilterOptions from "./generateFilterOptions";
 
 /**

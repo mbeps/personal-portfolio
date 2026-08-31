@@ -1,8 +1,8 @@
 import BlogItem from "@/components/material-items/BlogItem";
 import Grid from "@/components/ui/Grid";
-import MaterialGroupListInterface from "@/interfaces/material/MaterialGroupListInterface";
+import type BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
+import type MaterialGroupListInterface from "@/interfaces/material/MaterialGroupListInterface";
 import MaterialGroupSectionList from "./MaterialGroupSectionList";
-import BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
 
 /**
  * Group renderer for blog cards, plumbing MaterialGroupSectionList into the shared `BlogItem` tile component.
@@ -21,7 +21,7 @@ const BlogsList: React.FC<MaterialGroupListInterface> = ({
       <>
         {hasMultipleGroups && (
           <>
-            <div className="border-b border-gray-200 dark:border-neutral-600 pb-1" />
+            <div className="border-gray-200 border-b pb-1 dark:border-neutral-600" />
             <h2>{group.groupName}</h2>
           </>
         )}

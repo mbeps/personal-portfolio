@@ -1,9 +1,9 @@
-import CompanyDatabaseKeys from "@/database/companies/CompanyDatabaseKeys";
-import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
-import RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
-import CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
-import CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
-import BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
+import type BlogDatabaseKeys from "@/database/blogs/BlogDatabaseKeys";
+import type CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
+import type CompanyDatabaseKeys from "@/database/companies/CompanyDatabaseKeys";
+import type CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
+import type ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
+import type RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
 
 const PROJECTS_BASE = "/projects" as const;
 const ROLES_BASE = "/roles" as const;

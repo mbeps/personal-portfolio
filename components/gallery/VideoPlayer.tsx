@@ -1,4 +1,4 @@
-import React from "react";
+import type React from "react";
 
 interface VideoPlayerProps {
   src: string;
@@ -22,7 +22,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   return (
     <video
       controls
-      className={`w-full h-[60vh] rounded-xl bg-neutral-100 dark:bg-neutral-900 transition-colors duration-700 p-2 ${className}`}
+      className={`h-[60vh] w-full rounded-xl bg-neutral-100 p-2 transition-colors duration-700 dark:bg-neutral-900 ${className}`}
     >
       <source src={src} type={type} />
       Your browser does not support the video tag.

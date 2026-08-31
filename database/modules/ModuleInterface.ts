@@ -1,6 +1,6 @@
-import ModuleYearGroupsEnum from "@/enums/module/ModuleYearGroupsEnum";
-import MaterialInterface from "../materials/MaterialInterface";
-import CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
+import type CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
+import type ModuleYearGroupsEnum from "@/enums/module/ModuleYearGroupsEnum";
+import type MaterialInterface from "../materials/MaterialInterface";
 
 /**
  * Extends the base material contract for university modules, linking skills and outcomes to the parent course and assets under `public/education/{courseKey}/{moduleKey}`.

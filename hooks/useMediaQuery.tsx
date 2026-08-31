@@ -22,6 +22,7 @@ export function useMediaQuery(query: string): boolean {
     setMatches(getMatches(query));
   }
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: Handled at client-side load
   useEffect(() => {
     const matchMedia = window.matchMedia(query);
 
@@ -34,7 +35,6 @@ export function useMediaQuery(query: string): boolean {
     return () => {
       matchMedia.removeEventListener("change", handleChange);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
   return matches;

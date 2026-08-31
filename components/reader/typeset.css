@@ -507,14 +507,14 @@
 
   /* First child adds no space above. Last so it wins ties. */
   .typeset
-    > :where(:first-child):not(
-      :where(
-        .not-typeset,
-        [data-not-typeset],
-        .not-typeset *,
-        [data-not-typeset] *
-      )
-    ),
+  > :where(:first-child):not(
+    :where(
+      .not-typeset,
+      [data-not-typeset],
+      .not-typeset *,
+      [data-not-typeset] *
+    )
+  ),
   .typeset
     > :where(:first-child)
     > :where(:first-child):not(
@@ -545,4 +545,3 @@
     margin-block-start: 0;
   }
 }
-

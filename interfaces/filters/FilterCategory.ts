@@ -1,4 +1,4 @@
-import FilterOption from "./FilterOption";
+import type FilterOption from "./FilterOption";
 
 /**
  * Describes a drawer section in the filter UI so the same configuration can drive MaterialList on every route.

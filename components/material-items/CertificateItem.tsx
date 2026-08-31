@@ -1,19 +1,19 @@
+import Image from "next/image";
+import Link from "next/link";
+import type React from "react";
+import { BsArrowUpRightCircle, BsInfoCircle } from "react-icons/bs";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
-import { ROUTES } from "@/constants/routes";
-import certificateDatabaseMap from "@/database/certificates/CertificateDatabaseMap";
-import CertificateInterface from "@/database/certificates/CertificateInterface";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import { BsArrowUpRightCircle, BsInfoCircle } from "react-icons/bs";
-import Tag from "../tags/Tag";
-import { AspectRatio } from "../shadcn/ui/aspect-ratio";
 import { PATHS } from "@/constants/paths";
-import CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
+import { ROUTES } from "@/constants/routes";
+import type CertificateDatabaseKeys from "@/database/certificates/CertificateDatabaseKeys";
+import certificateDatabaseMap from "@/database/certificates/CertificateDatabaseMap";
+import type CertificateInterface from "@/database/certificates/CertificateInterface";
+import { AspectRatio } from "../shadcn/ui/aspect-ratio";
+import Tag from "../tags/Tag";
 
 interface CertificateItemProps {
   certificateKey: CertificateDatabaseKeys;
@@ -42,34 +42,12 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
   };
 
   return (
-    <div
-      className="
-        bg-neutral-100 dark:bg-neutral-800
-        border border-neutral-300 dark:border-neutral-700
-        p-3 lg:p-6 rounded-xl
-        transition-colors duration-700
-        flex flex-col
-        h-full w-full
-        shadow-sm
-      "
-    >
+    <div className="flex h-full w-full flex-col rounded-xl border border-neutral-300 bg-neutral-100 p-3 shadow-sm transition-colors duration-700 lg:p-6 dark:border-neutral-700 dark:bg-neutral-800">
       {/* Certificate Image */}
       {certificateData.certificateImage && (
         <Link href={customCertificatePage}>
-          <div
-            className="
-            flex justify-center
-            rounded-xl
-            transform md:hover:scale-105
-            shadow-xs md:hover:shadow-lg
-            border border-neutral-100 dark:border-neutral-800
-            transition-all duration-500 ease-in-out
-            mb-6
-            w-full
-            overflow-hidden
-        "
-          >
-            <AspectRatio ratio={4 / 3} className="overflow-hidden relative">
+          <div className="mb-6 flex w-full transform justify-center overflow-hidden rounded-xl border border-neutral-100 shadow-xs transition-all duration-500 ease-in-out md:hover:scale-105 md:hover:shadow-lg dark:border-neutral-800">
+            <AspectRatio ratio={4 / 3} className="relative overflow-hidden">
               <Image
                 key={certificateKey}
                 src={certificateData.certificateImage}
@@ -78,45 +56,25 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 quality={20}
                 loading="lazy"
-                className="
-                  rounded-xl
-                  cursor-pointer
-                  object-cover
-              "
+                className="cursor-pointer rounded-xl object-cover"
               />
             </AspectRatio>
           </div>
         </Link>
       )}
 
-      <div
-        className="
-        flex flex-col 
-        gap-8 px-4 py-4"
-      >
+      <div className="flex flex-col gap-8 px-4 py-4">
         {/* Certificate Title */}
         <Link href={customCertificatePage}>
-          <h1
-            className="
-              text-3xl md:text-4xl font-bold text-center 
-              md:hover:text-red-500 md:dark:hover:text-red-800
-              transition-colors duration-700 ease-in-out
-              "
-          >
+          <h1 className="text-center font-bold text-3xl transition-colors duration-700 ease-in-out md:text-4xl md:hover:text-red-500 md:dark:hover:text-red-800">
             {certificateData.name}
           </h1>
         </Link>
 
-        <div className="w-full flex justify-center">
+        <div className="flex w-full justify-center">
           <Tag>{certificateData.issuer}</Tag>
         </div>
-        <div
-          className="
-            flex flex-row 
-            justify-center 
-            align-bottom 
-            space-x-4"
-        >
+        <div className="flex flex-row justify-center space-x-4 align-bottom">
           {/* Link to Credential Page */}
 
           <Tooltip>
@@ -124,7 +82,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
               <Link href={customCertificatePage}>
                 <BsInfoCircle
                   size={30}
-                  className="md:hover:-translate-y-1 transition-transform cursor-pointer"
+                  className="cursor-pointer transition-transform md:hover:-translate-y-1"
                 />
               </Link>
             </TooltipTrigger>
@@ -139,7 +97,7 @@ const CertificateItem: React.FC<CertificateItemProps> = ({
                 <Link href={issuerCertificatePage} target="_blank">
                   <BsArrowUpRightCircle
                     size={30}
-                    className="md:hover:-translate-y-1 transition-transform cursor-pointer"
+                    className="cursor-pointer transition-transform md:hover:-translate-y-1"
                   />
                 </Link>
               </TooltipTrigger>

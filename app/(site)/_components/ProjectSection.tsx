@@ -1,8 +1,8 @@
+import Link from "next/link";
 import ProjectItem from "@/components/material-items/ProjectItem";
 import { Button } from "@/components/shadcn/ui/button";
 import { ROUTES } from "@/constants/routes";
 import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
-import Link from "next/link";
 
 /**
  * Homepage showcase that spotlights a curated subset of the project database to tease the work archive.
@@ -36,15 +36,15 @@ const ProjectsSection = () => {
     <section id="projects" className="home-section-wrapper">
       <h2>Projects</h2>
 
-      <div className="flex flex-col space-y-14 md:space-y-20 mt-6 md:mt-14">
-        {displayedProjects.map((slug, idx) => (
+      <div className="mt-6 flex flex-col space-y-14 md:mt-14 md:space-y-20">
+        {displayedProjects.map((slug, _idx) => (
           <div key={slug}>
             <ProjectItem projectKey={slug} subtitle={"category"} />
           </div>
         ))}
       </div>
 
-      <div className="flex justify-center mt-10">
+      <div className="mt-10 flex justify-center">
         <Link href={basePath}>
           <Button variant="outline">View All Projects</Button>
         </Link>

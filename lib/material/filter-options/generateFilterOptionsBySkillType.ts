@@ -1,9 +1,9 @@
-import MaterialInterface from "@/database/materials/MaterialInterface";
-import SkillInterface from "@/database/skills/SkillInterface";
-import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
-import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
-import Database from "@/interfaces/Database";
-import FilterOption from "@/interfaces/filters/FilterOption";
+import type MaterialInterface from "@/database/materials/MaterialInterface";
+import type SkillInterface from "@/database/skills/SkillInterface";
+import type SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
+import type SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
+import type Database from "@/interfaces/Database";
+import type FilterOption from "@/interfaces/filters/FilterOption";
 import generateFilterOptions from "./generateFilterOptions";
 
 /**

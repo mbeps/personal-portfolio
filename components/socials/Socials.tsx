@@ -1,7 +1,7 @@
-import React from "react";
-import SocialIcon from "./SocialIcon";
+import type React from "react";
 import { twMerge } from "tailwind-merge";
 import socialLinks from "@/constants/socials";
+import SocialIcon from "./SocialIcon";
 
 type SocialsProps = {
   className?: string;

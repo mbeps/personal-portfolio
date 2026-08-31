@@ -1,9 +1,9 @@
+import type { Metadata } from "next";
 import PageDescription from "@/components/ui/PageDescription";
 import developerName from "@/constants/developerName";
 import { ROUTES } from "@/constants/routes";
-import type { Metadata } from "next";
-import { BlogsView } from "./_components/BlogsView";
 import blogsDatabaseMap from "@/database/blogs/BlogsDatabaseMap";
+import { BlogsView } from "./_components/BlogsView";
 
 /**
  * Static metadata for the blogs archive, using the blog database to keep keywords aligned with the current articles.

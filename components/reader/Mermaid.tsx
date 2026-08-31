@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
 import mermaid from "mermaid";
+import React, { useEffect, useRef } from "react";
 
 type MermaidProps = {
   chart: string;
@@ -81,8 +81,8 @@ const Mermaid: React.FC<MermaidProps> = ({ chart }) => {
   // Prevent hydration mismatch
   if (!isMounted) {
     return (
-      <span className="mermaid-container block my-6">
-        <span className="animate-pulse bg-gray-200 h-64 rounded-lg block" />
+      <span className="mermaid-container my-6 block">
+        <span className="block h-64 animate-pulse rounded-lg bg-gray-200" />
       </span>
     );
   }
@@ -91,7 +91,7 @@ const Mermaid: React.FC<MermaidProps> = ({ chart }) => {
     <span className="mermaid-container my-6 block">
       <span
         ref={containerRef}
-        className="flex justify-center items-center overflow-x-auto"
+        className="flex items-center justify-center overflow-x-auto"
       />
     </span>
   );

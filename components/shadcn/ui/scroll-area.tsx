@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
 import { ScrollArea as ScrollAreaPrimitive } from "@base-ui/react/scroll-area";
+import type * as React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -15,9 +15,7 @@ const ScrollArea = ({
     {...props}
   >
     <ScrollAreaPrimitive.Viewport className="h-full w-full rounded-[inherit]">
-      <ScrollAreaPrimitive.Content>
-        {children}
-      </ScrollAreaPrimitive.Content>
+      <ScrollAreaPrimitive.Content>{children}</ScrollAreaPrimitive.Content>
     </ScrollAreaPrimitive.Viewport>
     <ScrollBar />
     <ScrollAreaPrimitive.Corner />
@@ -37,7 +35,7 @@ const ScrollBar = ({
         "h-full w-2.5 border-l border-l-transparent p-[1px]",
       orientation === "horizontal" &&
         "h-2.5 flex-col border-t border-t-transparent p-[1px]",
-      className
+      className,
     )}
     {...props}
   >

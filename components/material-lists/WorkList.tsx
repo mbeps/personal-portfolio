@@ -1,7 +1,7 @@
-import MaterialGroupListInterface from "@/interfaces/material/MaterialGroupListInterface";
+import type RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
+import type MaterialGroupListInterface from "@/interfaces/material/MaterialGroupListInterface";
 import WorkItem from "../material-items/WorkItem";
 import MaterialGroupSectionList from "./MaterialGroupSectionList";
-import RoleDatabaseKeys from "@/database/roles/RoleDatabaseKeys";
 
 /**
  * Thin list renderer for Work Experience / Role material groups.
@@ -24,7 +24,7 @@ const WorkList: React.FC<MaterialGroupListInterface> = ({
       <>
         {hasMultipleGroups && (
           <>
-            <div className="border-b border-gray-200 dark:border-neutral-600 pb-1" />
+            <div className="border-gray-200 border-b pb-1 dark:border-neutral-600" />
             <h2>{group.groupName}</h2>
           </>
         )}

@@ -1,8 +1,8 @@
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
-import SkillInterface from "@/database/skills/SkillInterface";
+import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import type SkillInterface from "@/database/skills/SkillInterface";
 import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
-import Database from "@/interfaces/Database";
-import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
+import type Database from "@/interfaces/Database";
+import type CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
 
 /**
  * Groups skills under the programming language they belong to so the language modal and SkillList can show stacks in one cluster.
@@ -14,7 +14,7 @@ import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInt
  */
 export default function groupByLanguage(
   skillKeys: SkillDatabaseKeys[],
-  skillsDatabase: Database<SkillInterface>
+  skillsDatabase: Database<SkillInterface>,
 ): CategorisedSkillsInterface[] {
   const groupedSkills: { [skillCategoryName: string]: SkillDatabaseKeys[] } =
     {};

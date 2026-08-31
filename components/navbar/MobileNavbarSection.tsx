@@ -1,4 +1,4 @@
-import React from "react";
+import type React from "react";
 import { IoMdClose, IoMdMenu } from "react-icons/io";
 
 interface MobileNavbarSectionProps {
@@ -18,9 +18,9 @@ const MobileNavbarSection: React.FC<MobileNavbarSectionProps> = ({
   toggleOverlay,
 }) => {
   return (
-    <div className="lg:hidden flex items-center">
+    <div className="flex items-center lg:hidden">
       <button
-        className="p-2 text-neutral-800 dark:text-neutral-200 rounded-xl outline-hidden ml-2"
+        className="ml-2 rounded-xl p-2 text-neutral-800 outline-hidden dark:text-neutral-200"
         onClick={toggleOverlay}
       >
         {isOverlayOpen ? <IoMdClose size={30} /> : <IoMdMenu size={30} />}

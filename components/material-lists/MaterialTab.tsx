@@ -1,6 +1,8 @@
 "use client";
 
-import groupMaterialsByMaterialType from "@/lib/material/group/groupMaterialsByMaterialType";
+import Link from "next/link";
+import type React from "react";
+import { useState } from "react";
 import BlogsList from "@/components/material-lists/BlogsList";
 import CertificatesList from "@/components/material-lists/CertificatesList";
 import ModuleList from "@/components/material-lists/ModuleList";
@@ -19,7 +21,7 @@ import blogsDatabaseMap, {
 import certificateDatabaseMap, {
   certificateDatabaseKeys,
 } from "@/database/certificates/CertificateDatabaseMap";
-import MaterialInterface from "@/database/materials/MaterialInterface";
+import type MaterialInterface from "@/database/materials/MaterialInterface";
 import moduleDatabaseMap, {
   moduleDatabaseKeys,
 } from "@/database/modules/ModuleDatabaseMap";
@@ -30,12 +32,11 @@ import rolesDatabase, {
   roleDatabaseKeys,
 } from "@/database/roles/RoleDatabaseMap";
 import MaterialTypeEnum from "@/enums/material/MaterialTypeEnum";
-import Database from "@/interfaces/Database";
-import MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
-import MaterialGroupListInterface from "@/interfaces/material/MaterialGroupListInterface";
-import Link from "next/link";
-import React, { useState } from "react";
-import { MaterialTabsProps } from "./MaterialList";
+import type Database from "@/interfaces/Database";
+import type MaterialGroupInterface from "@/interfaces/material/MaterialGroupInterface";
+import type MaterialGroupListInterface from "@/interfaces/material/MaterialGroupListInterface";
+import groupMaterialsByMaterialType from "@/lib/material/group/groupMaterialsByMaterialType";
+import type { MaterialTabsProps } from "./MaterialList";
 import WorkList from "./WorkList";
 
 interface MaterialSectionInterface {
@@ -121,7 +122,7 @@ const MaterialTab: React.FC<MaterialTabsProps> = ({ materialKeys }) => {
   return (
     <Tabs
       defaultValue={selectedTab}
-      className="w-full items-center md:items-start justify-center"
+      className="w-full items-center justify-center md:items-start"
       value={selectedTab}
       onValueChange={setSelectedTab}
     >
@@ -146,7 +147,7 @@ const MaterialTab: React.FC<MaterialTabsProps> = ({ materialKeys }) => {
               <div className="mt-4 text-center md:text-left">
                 <ListComponent groupedMaterial={groupedMaterials} />
                 {basePath && (
-                  <div className="flex justify-center mt-10">
+                  <div className="mt-10 flex justify-center">
                     <Link href={basePath}>
                       <Button variant="outline">{`View All ${name}`}</Button>
                     </Link>

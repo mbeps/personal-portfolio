@@ -1,9 +1,9 @@
 import { PATHS } from "@/constants/paths";
 import CourseDatabaseKeys from "@/database/courses/CourseDatabaseKeys";
-import CourseInterface from "@/database/courses/CourseInterface";
+import type CourseInterface from "@/database/courses/CourseInterface";
 import ModuleDatabaseKeys from "@/database/modules/ModuleDatabaseKeys";
 import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
-import Database from "@/interfaces/Database";
+import type Database from "@/interfaces/Database";
 import validateDatabaseKeys from "@/lib/database/validateDatabaseKeys";
 import aggregateRelatedMaterialsForCourses from "@/lib/material/course/aggregate/aggregateRelatedMaterialsForCourses";
 import aggregateSkillsForCourses from "@/lib/material/course/aggregate/aggregateSkillsForCourses";

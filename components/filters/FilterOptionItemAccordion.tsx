@@ -6,7 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/shadcn/ui/accordion";
-import FilterCategory from "@/interfaces/filters/FilterCategory";
+import type FilterCategory from "@/interfaces/filters/FilterCategory";
 import { cn } from "@/lib/utils";
 
 interface FilterOptionItemAccordionProps {
@@ -37,15 +37,15 @@ const FilterOptionItemAccordion: React.FC<FilterOptionItemAccordionProps> = ({
         <AccordionItem key={category.urlParam} value={category.urlParam}>
           <AccordionTrigger className="px-2 text-left hover:no-underline">
             <span className="flex flex-col text-left">
-              <span className="text-lg font-semibold text-neutral-700 dark:text-neutral-200">
+              <span className="font-semibold text-lg text-neutral-700 dark:text-neutral-200">
                 {category.sectionName}
               </span>
-              <span className="text-sm text-neutral-500 dark:text-neutral-400">
+              <span className="text-neutral-500 text-sm dark:text-neutral-400">
                 {getOptionLabel(category)}
               </span>
             </span>
           </AccordionTrigger>
-          <AccordionContent className="px-2 pb-4 pt-0">
+          <AccordionContent className="px-2 pt-0 pb-4">
             <div className="flex flex-col gap-2">
               {category.options.map((option) => {
                 const isSelected = option.slug === category.selectedValue;
@@ -58,8 +58,7 @@ const FilterOptionItemAccordion: React.FC<FilterOptionItemAccordionProps> = ({
                   >
                     <span
                       className={cn(
-                        `block w-full rounded-xl border border-neutral-200 dark:border-neutral-800
-                        px-3 py-3 text-left text-md font-semibold transition-colors`,
+                        "block w-full rounded-xl border border-neutral-200 px-3 py-3 text-left font-semibold text-md transition-colors dark:border-neutral-800",
                         isSelected
                           ? "bg-neutral-900 text-neutral-50 dark:bg-neutral-100 dark:text-neutral-900"
                           : "bg-white text-neutral-700 dark:bg-neutral-900 dark:text-neutral-50",

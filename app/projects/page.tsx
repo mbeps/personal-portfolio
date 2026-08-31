@@ -1,8 +1,8 @@
+import type { Metadata } from "next";
 import PageDescription from "@/components/ui/PageDescription";
 import developerName from "@/constants/developerName";
 import { ROUTES } from "@/constants/routes";
 import projectDatabaseMap from "@/database/projects/ProjectDatabaseMap";
-import type { Metadata } from "next";
 import ProjectsView from "./_components/ProjectsView";
 
 /**

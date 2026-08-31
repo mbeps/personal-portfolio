@@ -1,9 +1,9 @@
 "use client";
 
+import type React from "react";
 import LanguageModal from "@/app/(site)/_components/AboutSection/modal/LanguageModal";
 import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import useIsMounted from "@/hooks/useIsMounted";
-import React from "react";
 
 /**
  * Client-only teaser for the Language modal so the homepage can open the richer skill drill-down without duplicating data.
@@ -30,7 +30,7 @@ const LanguageSection: React.FC = () => {
   return (
     <>
       <h3>Languages</h3>
-      <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start -mt-2">
+      <div className="z-10 -mt-2 flex flex-row flex-wrap justify-center md:justify-start">
         {mainLanguages.map((languageData, idx) => (
           <LanguageModal key={idx} languageIdentifier={languageData} />
         ))}

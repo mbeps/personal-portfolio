@@ -1,13 +1,12 @@
-import getImagesFromFileSystem from "@/lib/file-system/getImagesFromFileSystem";
-import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
-import getVideosFromFileSystem from "@/lib/file-system/getVideosFromFileSystem";
-import filterSkillsByCategory from "@/lib/skills/filter/filterSkillsByCategory";
-import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
+import type { Metadata, ResolvingMetadata } from "next";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+import type React from "react";
+import { BsPlusCircle } from "react-icons/bs";
+import { GrAppsRounded } from "react-icons/gr";
 import Gallery from "@/components/gallery/Gallery";
 import MaterialList from "@/components/material-lists/MaterialList";
 import Reader from "@/components/reader/Reader";
-import SkillTableSection from "@/components/skills/SkillTableSection";
-import SkillTag from "@/components/tags/SkillTag";
 import {
   Accordion,
   AccordionContent,
@@ -21,25 +20,26 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/shadcn/ui/card";
+import SkillTableSection from "@/components/skills/SkillTableSection";
+import SkillTag from "@/components/tags/SkillTag";
 import developerName from "@/constants/developerName";
+import { PATHS } from "@/constants/paths";
 import { ROUTES } from "@/constants/routes";
+import type ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
 import projectDatabaseMap from "@/database/projects/ProjectDatabaseMap";
-import ProjectInterface from "@/database/projects/ProjectInterface";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import type ProjectInterface from "@/database/projects/ProjectInterface";
+import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
 import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
-import hasAnySkills from "@/lib/skills/hasAnySkills";
-import { Metadata, ResolvingMetadata } from "next";
-import Image from "next/image";
-import { notFound } from "next/navigation";
-import React from "react";
-import { BsPlusCircle } from "react-icons/bs";
-import { GrAppsRounded } from "react-icons/gr";
-import { ProjectLinks } from "./_components/ProjectLinks";
-import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
+import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
+import getImagesFromFileSystem from "@/lib/file-system/getImagesFromFileSystem";
+import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
+import getVideosFromFileSystem from "@/lib/file-system/getVideosFromFileSystem";
 import { filterSkillSlugsExcludingCategory } from "@/lib/skills/filter/filterSkillSlugsExcludingCategory";
-import { PATHS } from "@/constants/paths";
-import ProjectDatabaseKeys from "@/database/projects/ProjectDatabaseKeys";
+import filterSkillsByCategory from "@/lib/skills/filter/filterSkillsByCategory";
+import buildSkillTableGroups from "@/lib/skills/group/buildSkillTableGroups";
+import hasAnySkills from "@/lib/skills/hasAnySkills";
+import { ProjectLinks } from "./_components/ProjectLinks";
 
 type Params = Promise<{ projectKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
@@ -54,7 +54,7 @@ type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
  */
 export async function generateMetadata(
   props: { params: Params; searchParams: SearchParams },
-  parent: ResolvingMetadata,
+  _parent: ResolvingMetadata,
 ): Promise<Metadata | undefined> {
   const resolvedParams = await props.params;
   const projectKey: string = resolvedParams.projectKey;
@@ -188,7 +188,7 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
 
   return (
     <main>
-      <div className="flex flex-col space-y-1 align-top relative">
+      <div className="relative flex flex-col space-y-1 align-top">
         <h2>{projectData?.name}</h2>
 
         {/* Gallery Section */}
@@ -196,27 +196,15 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
           <Gallery images={images} videos={videos} />
         ) : (
           hasCoverImage && (
-            <div
-              className="
-              w-full 
-              flex items-center justify-center 
-              relative 
-              z-0
-              
-            "
-            >
-              <AspectRatio ratio={8 / 5} className="overflow-hidden relative">
+            <div className="relative z-0 flex w-full items-center justify-center">
+              <AspectRatio ratio={8 / 5} className="relative overflow-hidden">
                 <Image
                   src={coverImagePath}
                   alt="Project Image"
                   quality={90}
                   fill={true}
                   priority
-                  className="
-                  w-full
-                  object-cover rounded-xl 
-                  transition-colors duration-700
-                "
+                  className="w-full rounded-xl object-cover transition-colors duration-700"
                 />
               </AspectRatio>
             </div>
@@ -224,18 +212,12 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
         )}
 
         {/* Project Type */}
-        <p
-          className="
-            py-4
-            text-red-700 dark:text-red-300
-            text-center text-lg
-          "
-        >
+        <p className="py-4 text-center text-lg text-red-700 dark:text-red-300">
           {`${projectData.type} Project`}
         </p>
 
         {/* Metadata Section */}
-        <div className="mt-4 material-sections-wrapper">
+        <div className="material-sections-wrapper mt-4">
           {/* Description Section */}
           <Card>
             <CardHeader>
@@ -262,7 +244,7 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
                   </h3>
                 </CardTitle>
               </CardHeader>
-              <CardContent className="flex flex-wrap justify-center md:justify-start z-10">
+              <CardContent className="z-10 flex flex-wrap justify-center md:justify-start">
                 {projectLanguages.map((language, index) => (
                   <SkillTag key={index} skillKey={language} />
                 ))}
@@ -288,7 +270,7 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="flex justify-center md:justify-start w-full md:w-1/2">
+                <div className="flex w-full justify-center md:w-1/2 md:justify-start">
                   <ProjectLinks
                     deploymentURL={projectData.deploymentURL}
                     repositoryURL={projectData.repositoryURL}
@@ -307,55 +289,39 @@ const ProjectPage: React.FC<{ params: Params }> = async ({ params }) => {
           {hasFeatures || hasRelatedMaterials ? (
             <Accordion type="single" collapsible>
               {hasFeatures && (
-                <>
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>
-                      <div className="flex items-center space-x-3">
-                        <BsPlusCircle size={26} className="text-neutral-500" />
-                        <p
-                          className="
-                          text-lg 
-                          text-neutral-600 dark:text-neutral-400
-                          font-semibold
-                          "
-                        >
-                          Features
-                        </p>
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="px-2">
-                      <Reader content={features} />
-                    </AccordionContent>
-                  </AccordionItem>
-                </>
+                <AccordionItem value="item-1">
+                  <AccordionTrigger>
+                    <div className="flex items-center space-x-3">
+                      <BsPlusCircle size={26} className="text-neutral-500" />
+                      <p className="font-semibold text-lg text-neutral-600 dark:text-neutral-400">
+                        Features
+                      </p>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-2">
+                    <Reader content={features} />
+                  </AccordionContent>
+                </AccordionItem>
               )}
 
               {/* Related Materials Section */}
               {hasRelatedMaterials && (
-                <>
-                  <AccordionItem value="item-3">
-                    <AccordionTrigger>
-                      <div className="flex items-center space-x-3">
-                        <GrAppsRounded size={25} className="text-neutral-500" />
-                        <p
-                          className="
-                          text-lg 
-                          text-neutral-600 dark:text-neutral-400
-                          font-semibold
-                          "
-                        >
-                          Related Material
-                        </p>
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="px-2">
-                      <MaterialList
-                        materialKeys={projectData.relatedMaterials!}
-                        isCollapsible={false}
-                      />
-                    </AccordionContent>
-                  </AccordionItem>
-                </>
+                <AccordionItem value="item-3">
+                  <AccordionTrigger>
+                    <div className="flex items-center space-x-3">
+                      <GrAppsRounded size={25} className="text-neutral-500" />
+                      <p className="font-semibold text-lg text-neutral-600 dark:text-neutral-400">
+                        Related Material
+                      </p>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-2">
+                    <MaterialList
+                      materialKeys={projectData.relatedMaterials!}
+                      isCollapsible={false}
+                    />
+                  </AccordionContent>
+                </AccordionItem>
               )}
             </Accordion>
           ) : null}

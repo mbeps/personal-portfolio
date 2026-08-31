@@ -1,18 +1,18 @@
 "use client";
 
+import Link from "next/link";
+import type React from "react";
+import { AiOutlineClear } from "react-icons/ai";
+import { Drawer, DrawerContent } from "@/components/shadcn/ui/drawer";
 import useIsMounted from "@/hooks/useIsMounted";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-import ArchiveFilter from "@/interfaces/filters/ArchiveFilter";
-import FilterCategory from "@/interfaces/filters/FilterCategory";
-import Link from "next/link";
-import React from "react";
-import { AiOutlineClear } from "react-icons/ai";
-import SidePanel from "../ui/SidePanel";
-import { Drawer, DrawerContent } from "@/components/shadcn/ui/drawer";
+import type ArchiveFilter from "@/interfaces/filters/ArchiveFilter";
+import type FilterCategory from "@/interfaces/filters/FilterCategory";
 import { Button } from "../shadcn/ui/button";
+import SidePanel from "../ui/SidePanel";
 import { ArchiveToggle } from "./ArchiveToggle";
-import FilterOptionItemCombobox from "./FilterOptionItemCombobox";
 import FilterOptionItemAccordion from "./FilterOptionItemAccordion";
+import FilterOptionItemCombobox from "./FilterOptionItemCombobox";
 
 interface FilterOverlayProps {
   filterCategories: FilterCategory[];
@@ -54,14 +54,14 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
    */
   const FilterContent = () => (
     <div className="flex-1 overflow-y-auto px-4 py-4">
-      <p className="text-neutral-500 dark:text-neutral-400 text-sm md:text-base text-center md:text-left">
+      <p className="text-center text-neutral-500 text-sm md:text-left md:text-base dark:text-neutral-400">
         When applying filters, archived items are displayed automatically.
       </p>
 
       {/* Filter Options */}
       <div className="mt-4 flex w-full flex-col">
         {isDesktop ? (
-          <div className="space-y-3 flex flex-col w-full">
+          <div className="flex w-full flex-col space-y-3">
             {filterCategories.map((filterCategory, index) => (
               <FilterOptionItemCombobox
                 key={index}
@@ -75,13 +75,13 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
       </div>
 
       {/* Buttons */}
-      <div className="pt-3 mt-5 flex flex-col space-x-2 border-t border-neutral-300 dark:border-neutral-700">
+      <div className="mt-5 flex flex-col space-x-2 border-neutral-300 border-t pt-3 dark:border-neutral-700">
         {/* Clear Button */}
         <Link href={basePath} className="w-full" scroll={false}>
           <Button
             variant="default"
             disabled={!areFiltersApplied}
-            className="w-full px-6 flex justify-start bg-neutral-100 border border-neutral-300 dark:border-neutral-700"
+            className="flex w-full justify-start border border-neutral-300 bg-neutral-100 px-6 dark:border-neutral-700"
           >
             <div className="flex items-center space-x-2">
               <AiOutlineClear
@@ -96,7 +96,7 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
         {/* Archive Toggle */}
         {archiveFilter?.hasArchivedMaterials && (
           <div className="w-full">
-            <div className="w-full -mt-1">
+            <div className="-mt-1 w-full">
               <ArchiveToggle
                 showArchived={archiveFilter.showArchived}
                 onToggle={archiveFilter.onToggle}
@@ -118,8 +118,8 @@ const FilterOverlay: React.FC<FilterOverlayProps> = ({
       ) : (
         // Mobile Drawer (below md)
         <Drawer open={isOpen} onOpenChange={toggle}>
-          <DrawerContent className="flex flex-col justify-start h-[75vh]">
-            <div className="w-full pt-6 px-6 text-center">
+          <DrawerContent className="flex h-[75vh] flex-col justify-start">
+            <div className="w-full px-6 pt-6 text-center">
               <h3>Filters</h3>
             </div>
             <FilterContent />

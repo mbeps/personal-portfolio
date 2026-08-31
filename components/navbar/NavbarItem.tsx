@@ -1,9 +1,9 @@
 "use client";
 
-import { useNavbarStore } from "@/hooks/useNavbarStore";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import type React from "react";
+import { useNavbarStore } from "@/hooks/useNavbarStore";
 
 interface NavbarItemProps {
   href: string;
@@ -31,7 +31,7 @@ const NavbarItem: React.FC<NavbarItemProps> = ({ href, children }) => {
     }
   }
 
-  let isActive: boolean = pathname === href;
+  const isActive: boolean = pathname === href;
 
   const navbarItemStyle = `
     block lg:inline-block 
@@ -53,7 +53,7 @@ const NavbarItem: React.FC<NavbarItemProps> = ({ href, children }) => {
       {children}
 
       {/* Hover Underline */}
-      <span className="w-full h-[3px] rounded-full absolute bottom-0.5 left-0 inline-block bg-red-500 dark:bg-red-900 -translate-x-full md:group-hover:translate-x-0 transition-transform duration-300" />
+      <span className="absolute bottom-0.5 left-0 inline-block h-[3px] w-full -translate-x-full rounded-full bg-red-500 transition-transform duration-300 md:group-hover:translate-x-0 dark:bg-red-900" />
     </Link>
   );
 };

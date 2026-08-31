@@ -1,9 +1,9 @@
 "use client";
 
-import React from "react";
+import type React from "react";
+import useIsMounted from "@/hooks/useIsMounted";
 import SimpleTextLoop from "./SimpleTextLoop";
 import TypeWriterTextLoop from "./TypeWriterTextLoop";
-import useIsMounted from "@/hooks/useIsMounted";
 
 type TextLoopProps = {
   loopItems: string[];

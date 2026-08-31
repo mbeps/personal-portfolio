@@ -1,5 +1,10 @@
 "use client";
 
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import type React from "react";
+import { useEffect, useState } from "react";
+import { RiSearchLine } from "react-icons/ri";
 import {
   CommandDialog,
   CommandEmpty,
@@ -8,17 +13,17 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/shadcn/ui/command";
-import React, { useEffect, useState } from "react";
-import { RiSearchLine } from "react-icons/ri";
-
-import findCourseKeyForModule from "@/lib/material/course/findCourseKeyForModule";
-import { ROUTES, NAV_ITEMS } from "@/constants/routes";
+import { Kbd } from "@/components/shadcn/ui/kbd";
+import { NAV_ITEMS, ROUTES } from "@/constants/routes";
+import socialLinks from "@/constants/socials";
 import blogsDatabaseMap, {
   blogDatabaseKeys,
 } from "@/database/blogs/BlogsDatabaseMap";
 import certificateDatabaseMap, {
   certificateDatabaseKeys,
 } from "@/database/certificates/CertificateDatabaseMap";
+import companyDatabaseMap from "@/database/companies/CompanyDatabaseMap";
+import courseDatabaseMap from "@/database/courses/CourseDatabaseMap";
 import CourseDatabaseMap, {
   courseDatabaseKeys,
 } from "@/database/courses/CourseDatabaseMap";
@@ -31,17 +36,12 @@ import projectDatabaseMap, {
 import rolesDatabase, {
   roleDatabaseKeys,
 } from "@/database/roles/RoleDatabaseMap";
-import MaterialTypeEnum from "@/enums/material/MaterialTypeEnum";
-import { useRouter } from "next/navigation";
 import skillDatabaseMap, {
   skillDatabaseKeys,
 } from "@/database/skills/SkillDatabaseMap";
-import socialLinks from "@/constants/socials";
-import courseDatabaseMap from "@/database/courses/CourseDatabaseMap";
-import Link from "next/link";
-import companyDatabaseMap from "@/database/companies/CompanyDatabaseMap";
+import MaterialTypeEnum from "@/enums/material/MaterialTypeEnum";
+import findCourseKeyForModule from "@/lib/material/course/findCourseKeyForModule";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../shadcn/ui/tooltip";
-import { Kbd } from "@/components/shadcn/ui/kbd";
 
 /**
  * Represents a single searchable item in the global search.
@@ -212,7 +212,7 @@ const GlobalSearch: React.FC = () => {
         />
         <TooltipContent className="flex flex-col items-center text-center">
           <p>Global Search</p>
-          <div className="text-sm text-neutral-600 dark:text-neutral-300 flex flex-row space-x-1">
+          <div className="flex flex-row space-x-1 text-neutral-600 text-sm dark:text-neutral-300">
             <Kbd>Ctrl</Kbd>
             <Kbd>K</Kbd>
             <p>/</p>

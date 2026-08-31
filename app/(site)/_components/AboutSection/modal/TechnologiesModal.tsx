@@ -1,7 +1,10 @@
 "use client";
 
-import filterCategoriesFromSkills from "@/lib/skills/filter/filterCategoriesFromSkills";
-import groupSkills, { GroupByOptions } from "@/lib/skills/group/groupSkills";
+import Link from "next/link";
+import type React from "react";
+import { useState } from "react";
+import { BsChevronDown } from "react-icons/bs";
+import { Button } from "@/components/shadcn/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -19,24 +22,24 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/shadcn/ui/dropdown-menu";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import { ScrollArea } from "@/components/shadcn/ui/scroll-area";
+import SkillTag from "@/components/tags/SkillTag";
+import Tag from "@/components/tags/Tag";
+import { ROUTES } from "@/constants/routes";
+import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import skillDatabaseMap from "@/database/skills/SkillDatabaseMap";
-import SkillInterface from "@/database/skills/SkillInterface";
+import type SkillInterface from "@/database/skills/SkillInterface";
 import SkillCategoriesEnum from "@/enums/skill/SkillCategoriesEnum";
 import SkillTypesEnum from "@/enums/skill/SkillTypesEnum";
 import useIsMounted from "@/hooks/useIsMounted";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-import Database from "@/interfaces/Database";
-import FilterOption from "@/interfaces/filters/FilterOption";
-import CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
-import Link from "next/link";
-import React, { useState } from "react";
-import { BsChevronDown } from "react-icons/bs";
-import Tag from "@/components/tags/Tag";
-import { Button } from "@/components/shadcn/ui/button";
-import { ScrollArea } from "@/components/shadcn/ui/scroll-area";
-import SkillTag from "@/components/tags/SkillTag";
-import { ROUTES } from "@/constants/routes";
+import type Database from "@/interfaces/Database";
+import type FilterOption from "@/interfaces/filters/FilterOption";
+import type CategorisedSkillsInterface from "@/interfaces/skills/CategorisedSkillsInterface";
+import filterCategoriesFromSkills from "@/lib/skills/filter/filterCategoriesFromSkills";
+import groupSkills, {
+  type GroupByOptions,
+} from "@/lib/skills/group/groupSkills";
 
 /**
  * Expands the homepage “Technologies” tag list into a full modal/drawer so visitors can browse grouped skills without leaving the page.
@@ -117,14 +120,14 @@ const TechnologiesModal: React.FC = () => {
    */
   const ModalContent = () => (
     <>
-      <div className="w-full pt-6 px-6">
+      <div className="w-full px-6 pt-6">
         <h2>Technologies</h2>
       </div>
 
       <ScrollArea className="h-full w-full grow">
         <div className="px-6 pb-4">
-          <div className="flex mt-4">
-            <div className="grow mr-2 mt-2.5 text-right text-neutral-700 dark:text-neutral-300">
+          <div className="mt-4 flex">
+            <div className="mt-2.5 mr-2 grow text-right text-neutral-700 dark:text-neutral-300">
               Group by:
             </div>
 
@@ -132,11 +135,11 @@ const TechnologiesModal: React.FC = () => {
               <DropdownMenuTrigger
                 render={
                   <Button variant="default" className="w-48">
-                    <div className="flex items-start justify-between space-x-2 w-full">
+                    <div className="flex w-full items-start justify-between space-x-2">
                       <span>{currentGroupedName}</span>
                       <BsChevronDown
                         fontSize={16}
-                        className="text-neutral-700 dark:text-neutral-200 mt-1"
+                        className="mt-1 text-neutral-700 dark:text-neutral-200"
                       />
                     </div>
                   </Button>
@@ -159,11 +162,11 @@ const TechnologiesModal: React.FC = () => {
           </div>
 
           {/* List of Skills */}
-          <div className="mt-4 text-center md:text-left space-y-16">
+          <div className="mt-4 space-y-16 text-center md:text-left">
             {groupedSkills.map((categoryData, index) => (
               <div key={index}>
                 <h3>{categoryData.skillCategoryName}</h3>
-                <div className="flex flex-wrap flex-row justify-center z-10 md:justify-start">
+                <div className="z-10 flex flex-row flex-wrap justify-center md:justify-start">
                   {categoryData.skills.map((skillSlug) => (
                     <SkillTag key={skillSlug} skillKey={skillSlug} />
                   ))}
@@ -175,11 +178,11 @@ const TechnologiesModal: React.FC = () => {
           <div className="py-12" />
 
           {/* All Material Button */}
-          <div className="flex flex-wrap flex-col text-center md:text-left justify-start">
+          <div className="flex flex-col flex-wrap justify-start text-center md:text-left">
             <Link href={ROUTES.SKILLS.path}>
               <div className="w-full">
                 <Button variant="gradient" className="w-full">
-                  {`All Technologies & Skills`}
+                  {"All Technologies & Skills"}
                 </Button>
               </div>
             </Link>
@@ -209,7 +212,7 @@ const TechnologiesModal: React.FC = () => {
           <DrawerTrigger asChild>
             <Tag onClick={handleOpenModal}>...</Tag>
           </DrawerTrigger>
-          <DrawerContent className="flex flex-col justify-start h-[75vh]">
+          <DrawerContent className="flex h-[75vh] flex-col justify-start">
             <ModalContent />
           </DrawerContent>
         </Drawer>

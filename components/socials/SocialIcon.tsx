@@ -1,11 +1,11 @@
+import Link from "next/link";
+import type React from "react";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
-import SocialLinkInterface from "@/interfaces/SocialLinkInterface";
-import Link from "next/link";
-import React from "react";
+import type SocialLinkInterface from "@/interfaces/SocialLinkInterface";
 
 interface SocialIconProps extends SocialLinkInterface {
   iconSize?: number;
@@ -30,7 +30,7 @@ const SocialIcon: React.FC<SocialIconProps> = ({
     <TooltipTrigger>
       <Link href={link} target="_blank">
         <IconComponent
-          className="md:hover:-translate-y-1 cursor-pointer text-neutral-600 dark:text-neutral-300 transition-all duration-300"
+          className="cursor-pointer text-neutral-600 transition-all duration-300 md:hover:-translate-y-1 dark:text-neutral-300"
           size={iconSize}
         />
       </Link>

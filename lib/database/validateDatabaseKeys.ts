@@ -12,9 +12,7 @@ export default function validateDatabaseKeys(keys: string[]): void {
   keys.forEach((key) => {
     if (invalidKeyRegex.test(key)) {
       throw new Error(
-        `Invalid database key found: "${key}". ` +
-          `Database keys can only contain alphanumeric characters and dashes "-". ` +
-          `No other special characters are allowed.`
+        `Invalid database key found: "${key}". Database keys can only contain alphanumeric characters and dashes "-". No other special characters are allowed.`,
       );
     }
   });

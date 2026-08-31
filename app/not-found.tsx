@@ -1,8 +1,8 @@
+import type { Metadata } from "next";
+import Link from "next/link";
 import { Button } from "@/components/shadcn/ui/button";
 import developerName from "@/constants/developerName";
 import { ROUTES } from "@/constants/routes";
-import type { Metadata } from "next";
-import Link from "next/link";
 
 export const metadata: Metadata = {
   title: `${developerName} - Page Not Found`,
@@ -19,42 +19,26 @@ export const revalidate = 0; // page will not be cached
  */
 export default function NotFound() {
   return (
-    <div
-      className="
-        flex flex-col
-        items-center justify-center 
-        
-        my-10 py-16 sm:py-32 md:py-48 
-        text-center 
-        min-h-dvh
-        space-y-12
-      "
-    >
+    <div className="my-10 flex min-h-dvh flex-col items-center justify-center space-y-12 py-16 text-center sm:py-32 md:py-48">
       <div className="space-y-4">
-        <h1 className="text-5xl text-red-500 dark:text-red-700 ">404</h1>
-        <h1 className="text-5xl font-semibold text-red-500 dark:text-red-700">
+        <h1 className="text-5xl text-red-500 dark:text-red-700">404</h1>
+        <h1 className="font-semibold text-5xl text-red-500 dark:text-red-700">
           Page Does Not Exist
         </h1>
       </div>
-      <h2 className="text-neutral-900 dark:text-neutral-100 transition-colors duration-500 text-2xl font-medium mb-4">
+      <h2 className="mb-4 font-medium text-2xl text-neutral-900 transition-colors duration-500 dark:text-neutral-100">
         This page does not seem to exist. Navigate back to the home page or view
         all pages.
       </h2>
-      <div
-        className="
-          flex flex-col
-          space-y-4
-          w-full md:w-1/5
-          "
-      >
+      <div className="flex w-full flex-col space-y-4 md:w-1/5">
         <Link href={ROUTES.HOME.path} className="w-full">
-          <Button variant="gradient" className="px-20 w-full">
+          <Button variant="gradient" className="w-full px-20">
             Home
           </Button>
         </Link>
 
         <Link href={ROUTES.MORE.path} className="w-full">
-          <Button variant="ghost" className="px-20 w-full">
+          <Button variant="ghost" className="w-full px-20">
             All Pages
           </Button>
         </Link>

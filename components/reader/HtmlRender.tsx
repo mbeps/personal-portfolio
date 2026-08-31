@@ -1,7 +1,8 @@
 "use client";
 
+import type React from "react";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-import React, { useEffect, useState } from "react";
 
 interface HtmlRenderProps {
   html: string;
@@ -28,7 +29,7 @@ const HtmlRender: React.FC<HtmlRenderProps> = ({ html, className }) => {
     return (
       <div
         className={cn(
-          "html-render-loading w-full my-8 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 h-32 animate-pulse",
+          "html-render-loading my-8 h-32 w-full animate-pulse rounded-xl border border-slate-200 bg-slate-50/50 dark:border-slate-800 dark:bg-slate-900/50",
           className,
         )}
       />
@@ -38,8 +39,8 @@ const HtmlRender: React.FC<HtmlRenderProps> = ({ html, className }) => {
   return (
     <div
       className={cn(
-        "html-render-container w-full my-8 overflow-x-auto",
-        "rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm",
+        "html-render-container my-8 w-full overflow-x-auto",
+        "rounded-xl border border-slate-200 shadow-sm dark:border-slate-800",
         "bg-slate-50/50 dark:bg-slate-900/50",
         "p-6",
         className,
@@ -51,6 +52,7 @@ const HtmlRender: React.FC<HtmlRenderProps> = ({ html, className }) => {
       */}
       <div
         className="html-render-content"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: Trusted static database content
         dangerouslySetInnerHTML={{ __html: html }}
       />
     </div>

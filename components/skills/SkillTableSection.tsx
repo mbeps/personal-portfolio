@@ -1,6 +1,7 @@
 "use client";
 
-import stringToSlug from "@/lib/stringToSlug";
+import type React from "react";
+import { useMemo, useState } from "react";
 import {
   Tabs,
   TabsContent,
@@ -8,11 +9,11 @@ import {
   TabsTrigger,
 } from "@/components/shadcn/ui/tabs";
 import useIsMounted from "@/hooks/useIsMounted";
-import ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
-import hasAnySkills from "@/lib/skills/hasAnySkills";
-import React, { useMemo, useState } from "react";
-import CategorySkillDisplay from "./CategorySkillDisplay";
+import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/ListOfCategorisedSkillsByTypeInterface";
 import filterNonEmptySkillCategories from "@/lib/skills/filter/filterNonEmptySkillCategories";
+import hasAnySkills from "@/lib/skills/hasAnySkills";
+import stringToSlug from "@/lib/stringToSlug";
+import CategorySkillDisplay from "./CategorySkillDisplay";
 
 interface SkillTableSectionProps {
   allGroupedSkills: ListOfCategorisedSkillsByTypeInterface[];
@@ -53,7 +54,7 @@ const SkillTableSection: React.FC<SkillTableSectionProps> = ({
   return (
     <Tabs
       defaultValue={selectedTab}
-      className="w-full items-center md:items-start justify-center"
+      className="w-full items-center justify-center md:items-start"
       value={selectedTab}
       onValueChange={setSelectedTab}
     >

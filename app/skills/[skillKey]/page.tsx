@@ -1,18 +1,18 @@
-import filterMaterialBySkill from "@/lib/material/filter/filterMaterialBySkill";
+import type { Metadata, ResolvingMetadata } from "next";
+import { notFound } from "next/navigation";
+import type React from "react";
 import MaterialList from "@/components/material-lists/MaterialList";
 import PageDescription from "@/components/ui/PageDescription";
 import developerName from "@/constants/developerName";
 import materialDatabaseMap, {
   materialKeys,
 } from "@/database/materials/MaterialDatabaseMap";
-import SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
+import type SkillDatabaseKeys from "@/database/skills/SkillDatabaseKeys";
 import skillDatabaseMap, {
   skillDatabaseKeys,
 } from "@/database/skills/SkillDatabaseMap";
-import SkillInterface from "@/database/skills/SkillInterface";
-import { Metadata, ResolvingMetadata } from "next";
-import { notFound } from "next/navigation";
-import React from "react";
+import type SkillInterface from "@/database/skills/SkillInterface";
+import filterMaterialBySkill from "@/lib/material/filter/filterMaterialBySkill";
 import RelatedSkillsSection from "./_components/RelatedSkillsSection";
 
 type Params = Promise<{ skillKey: string }>;
@@ -30,7 +30,7 @@ type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
  */
 export async function generateMetadata(
   props: { params: Params; searchParams: SearchParams },
-  parent: ResolvingMetadata
+  _parent: ResolvingMetadata,
 ): Promise<Metadata | undefined> {
   const resolvedParams = await props.params;
   const skillKey: string = resolvedParams.skillKey;
@@ -85,7 +85,7 @@ const SkillPage: React.FC<{ params: Params }> = async ({ params }) => {
   const filteredMaterials: string[] = filterMaterialBySkill(
     skillKey as SkillDatabaseKeys,
     materialKeys,
-    materialDatabaseMap
+    materialDatabaseMap,
   );
 
   return (

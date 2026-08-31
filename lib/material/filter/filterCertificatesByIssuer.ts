@@ -1,7 +1,7 @@
-import stringToSlug from "@/lib/stringToSlug";
-import CertificateInterface from "@/database/certificates/CertificateInterface";
-import Database from "@/interfaces/Database";
+import type CertificateInterface from "@/database/certificates/CertificateInterface";
+import type Database from "@/interfaces/Database";
 import filterMaterialKeysByPredicate from "@/lib/material/filter/filterMaterialKeysByPredicate";
+import stringToSlug from "@/lib/stringToSlug";
 
 /**
  * Supports the issuer dropdown on the certificates archive so visitors can isolate coursework by school or platform.
@@ -22,7 +22,7 @@ export default function filterCertificatesByIssuer(
     (certificate) =>
       Boolean(
         certificate &&
-        stringToSlug(certificate.issuer) === stringToSlug(issuer),
+          stringToSlug(certificate.issuer) === stringToSlug(issuer),
       ),
   );
 }

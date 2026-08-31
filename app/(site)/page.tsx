@@ -1,12 +1,12 @@
-import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
+import type { Metadata } from "next";
 import developerName from "@/constants/developerName";
+import { PATHS } from "@/constants/paths";
 import { ROUTES } from "@/constants/routes";
 import subtitles from "@/constants/subtitles";
-import type { Metadata } from "next";
+import getMarkdownFromFileSystem from "@/lib/file-system/getMarkdownFromFileSystem";
 import AboutSection from "./_components/AboutSection/AboutSection";
 import HeroSection from "./_components/HeroSection";
 import ProjectsSection from "./_components/ProjectSection";
-import { PATHS } from "@/constants/paths";
 
 const aboutContent: string | undefined = getMarkdownFromFileSystem(
   PATHS.ABOUT.SHORT,

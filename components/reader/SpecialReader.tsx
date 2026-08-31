@@ -1,7 +1,7 @@
-import ContentsSection from "@/components/reader/ContentsSection";
 import Link from "next/link";
-import React from "react";
+import type React from "react";
 import { MdKeyboardArrowLeft } from "react-icons/md";
+import ContentsSection from "@/components/reader/ContentsSection";
 import { Button } from "../shadcn/ui/button";
 import Reader from "./Reader";
 
@@ -62,7 +62,7 @@ const SpecialReader: React.FC<SpecialReaderProps> = ({
   const splitBlot = splitBlogContent(content);
   return (
     <>
-      <div className="flex flex-col lg:flex-row justify-between mb-6 space-y-2 px-0 lg:px-20">
+      <div className="mb-6 flex flex-col justify-between space-y-2 px-0 lg:flex-row lg:px-20">
         <Link href={previousPagePath}>
           <Button className="pl-3">
             <MdKeyboardArrowLeft size={24} className="mr-2" />
@@ -75,7 +75,7 @@ const SpecialReader: React.FC<SpecialReaderProps> = ({
       </div>
 
       {/* Article */}
-      <div className="px-0 lg:px-20 w-full">
+      <div className="w-full px-0 lg:px-20">
         <Reader content={splitBlot.articleSection} size="reading" />
       </div>
     </>

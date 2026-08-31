@@ -1,6 +1,6 @@
-import NavigationItemInterface from "@/interfaces/NavigationItemInterface";
 import Link from "next/link";
-import React from "react";
+import type React from "react";
+import type NavigationItemInterface from "@/interfaces/NavigationItemInterface";
 
 interface PageNavigationItemProps {
   item: NavigationItemInterface;
@@ -14,35 +14,16 @@ interface PageNavigationItemProps {
  */
 const PageNavigationItem: React.FC<PageNavigationItemProps> = ({ item }) => {
   return (
-    <>
-      <Link href={item.path}>
-        <div
-          className="
-						flex flex-col
-						min-h-35 h-full max-h-70
-						cursor-pointer
-						bg-neutral-100 dark:bg-neutral-800
-						md:hover:bg-neutral-200 md:dark:hover:bg-red-950
-						p-4
-            border border-neutral-200 dark:border-neutral-700 
-            hover:border-neutral-400 dark:hover:border-red-500
-						rounded-xl
-						shadow-sm md:hover:shadow-lg
-						transform md:hover:scale-103
-						transition-all duration-500 ease-in-out"
-        >
-          <h2 className=" text-3xl font-bold  mb-4 text-neutral-900 dark:text-neutral-100">
-            {item.label}
-          </h2>
-          <p
-            className="
-        		text-neutral-700 dark:text-neutral-300"
-          >
-            {item.description}
-          </p>
-        </div>
-      </Link>
-    </>
+    <Link href={item.path}>
+      <div className="flex h-full max-h-70 min-h-35 transform cursor-pointer flex-col rounded-xl border border-neutral-200 bg-neutral-100 p-4 shadow-sm transition-all duration-500 ease-in-out hover:border-neutral-400 md:hover:scale-103 md:hover:bg-neutral-200 md:hover:shadow-lg dark:border-neutral-700 dark:bg-neutral-800 dark:hover:border-red-500 md:dark:hover:bg-red-950">
+        <h2 className="mb-4 font-bold text-3xl text-neutral-900 dark:text-neutral-100">
+          {item.label}
+        </h2>
+        <p className="text-neutral-700 dark:text-neutral-300">
+          {item.description}
+        </p>
+      </div>
+    </Link>
   );
 };
 
