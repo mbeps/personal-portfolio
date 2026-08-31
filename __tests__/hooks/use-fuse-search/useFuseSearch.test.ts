@@ -21,19 +21,18 @@ interface HarnessProps<T> {
   onResult: (keys: string[]) => void;
 }
 
-function HookHarness<T>({
-  database,
-  searchTerm,
-  searchKeys,
-  arrayFields,
-  onResult,
-}: HarnessProps<T>) {
-  const keys = useFuseSearch(database, searchTerm, searchKeys, arrayFields);
-  onResult(keys);
+function HookHarness<T extends object>(props: HarnessProps<T>) {
+  const keys = useFuseSearch(
+    props.database,
+    props.searchTerm,
+    props.searchKeys,
+    props.arrayFields,
+  );
+  props.onResult(keys);
   return React.createElement("div", null, keys.join(","));
 }
 
-function runHook<T>(
+function runHook<T extends object>(
   database: Record<string, T>,
   searchTerm: string,
   searchKeys: string[],
@@ -41,7 +40,7 @@ function runHook<T>(
 ): string[] {
   let result: string[] = [];
   renderToStaticMarkup(
-    React.createElement(HookHarness as React.ComponentType<HarnessProps<T>>, {
+    React.createElement(HookHarness<T>, {
       database,
       searchTerm,
       searchKeys,

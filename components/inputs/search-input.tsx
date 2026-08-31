@@ -5,11 +5,7 @@ import React, { useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 import useIsMounted from "@/hooks/use-is-mounted";
 
-interface SearchInputProps
-  extends Omit<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    "placeholder" | "className"
-  > {
+interface SearchInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   searchTerm: string;
   updateSearchTerm: (newSearchTerm: string) => void;
   placeholder?: string;
