@@ -1739,6 +1739,16 @@ const projectMap: Database<ProjectInterface> = {
   },
 
   //^ Other Projects
+  [ProjectDatabaseKeys.CommerzbankTrumpNotification]: {
+    name: "Commerzbank Trump Notification",
+    description: `
+      An automated services which sends low-latency notifications about Donald Trump's posts from Truth Social to traders in Commerzbank's.
+    `,
+    skills: [SkillDatabaseKeys.Python, SkillDatabaseKeys.FastApi],
+    category: ProjectCategoriesEnum.Other,
+    archived: true,
+    type: ProjectTypeEnum.Professional,
+  },
   [ProjectDatabaseKeys.GnomeAllInOneClipboardExtension]: {
     name: "All-in-One Clipboard Extension",
     description: `
