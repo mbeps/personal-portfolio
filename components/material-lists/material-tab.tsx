@@ -105,7 +105,7 @@ const MaterialTab: React.FC<MaterialTabsProps> = ({ materialKeys }) => {
 
   // Filter out sections with no materials
   const nonEmptySections: MaterialSectionInterface[] = sections.filter(
-    ({ materials, materialHashmap, name }) => {
+    ({ materialHashmap, name }) => {
       const groupedMaterials: MaterialGroupInterface[] =
         groupMaterialsByMaterialType(materialKeys, materialHashmap, name);
       return (

@@ -13,5 +13,5 @@ export default function Scroll() {
   useEffect(() => {
     window.scroll(0, 0);
   }, [pathname]);
-  return <></>;
+  return null;
 }

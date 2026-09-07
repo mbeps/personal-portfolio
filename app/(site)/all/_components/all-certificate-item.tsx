@@ -10,7 +10,7 @@ interface AllCertificateItemProps {
   /** The certificate object to render. */
   certificate: CertificateInterface;
   /** The unique key for the certificate. */
-  certificateKey: CertificateDatabaseKeys;
+  certificateKey?: CertificateDatabaseKeys;
 }
 
 /**
@@ -22,7 +22,6 @@ interface AllCertificateItemProps {
  */
 const AllCertificateItem: React.FC<AllCertificateItemProps> = ({
   certificate,
-  certificateKey,
 }) => {
   return (
     <div className="mb-10 break-inside-avoid">

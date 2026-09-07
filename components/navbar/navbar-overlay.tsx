@@ -6,7 +6,7 @@ import NavbarItem from "./navbar-item";
 
 interface OverlayProps {
   isOpen: boolean;
-  toggle: () => void;
+  toggle?: () => void;
   items: Array<NavigationItemInterface>;
 }
 
@@ -19,7 +19,7 @@ interface OverlayProps {
  * @param items NAV_ITEMS array to render.
  * @returns Overlay content tree or null on desktop widths.
  */
-const NavbarOverlay: React.FC<OverlayProps> = ({ isOpen, toggle, items }) => {
+const NavbarOverlay: React.FC<OverlayProps> = ({ isOpen, items }) => {
   const isMobile: boolean = useMediaQuery("(max-width: 976px)");
 
   if (!isMobile) {
