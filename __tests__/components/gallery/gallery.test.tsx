@@ -18,7 +18,6 @@ vi.mock("@/hooks/use-media-query", () => ({
 
 vi.mock("next/image", () => ({
   // biome-ignore lint/performance/noImgElement: Mock next/image in unit tests
-  // biome-ignore lint/a11y/useAltText: Props spread passes alt
   default: (props: any) => <img {...props} />,
 }));
 

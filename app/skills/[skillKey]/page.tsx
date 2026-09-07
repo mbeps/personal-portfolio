@@ -60,11 +60,6 @@ export const generateStaticParams = async () => {
   return skillDatabaseKeys.map((skillKey) => ({ skillKey }));
 };
 
-interface SkillPageProps {
-  params: Params;
-  searchParams: SearchParams;
-}
-
 /**
  * Skill drill-down that aggregates every material referencing the skill and surfaces related skills for further exploration.
  * Keeps the narrative consistent with MaterialList sections so visitors can jump between work, courses, and blogs tied to the skill.

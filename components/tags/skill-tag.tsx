@@ -30,7 +30,7 @@ const SkillTag: React.FC<TagProps> = ({ skillKey, hide }) => {
   const hasMaterial: ConstrainBoolean = isSkillAssociatedWithMaterial(skillKey);
 
   if (hide || !skill) {
-    return <></>;
+    return null;
   }
 
   // If the skill exists but there's no associated material, adjust the link accordingly
