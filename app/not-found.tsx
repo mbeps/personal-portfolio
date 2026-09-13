@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/shadcn/ui/button";
-import developerName from "@/constants/developer-name";
-import { ROUTES } from "@/constants/routes";
+import { DEVELOPER } from "@/config/developer-info";
+import { ROUTES } from "@/config/routes";
 
 export const metadata: Metadata = {
-  title: `${developerName} - Page Not Found`,
+  title: `${DEVELOPER.NAME} - Page Not Found`,
   description:
     "The page you are looking for does not exist. Navigate back to the home page",
 };

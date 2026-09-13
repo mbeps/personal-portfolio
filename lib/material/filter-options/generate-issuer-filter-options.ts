@@ -1,8 +1,8 @@
 import type CertificateInterface from "@/database/certificates/certificate-interface";
-import type Database from "@/interfaces/database";
-import type FilterOption from "@/interfaces/filters/filter-option";
+import generateFilterOptions from "@/lib/material/filter-options/generate-filter-options";
 import stringToSlug from "@/lib/string-to-slug";
-import generateFilterOptions from "./generate-filter-options";
+import type Database from "@/types/database/database";
+import type FilterOption from "@/types/filters/filter-option";
 
 /**
  * Keeps the certificates issuer dropdown aligned with the content currently loaded so the UI never exposes issuers without entries.

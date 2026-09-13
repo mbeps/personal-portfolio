@@ -1,15 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { NAVBAR_HEIGHT } from "@/constants/navbar-height";
-import { NAV_ITEMS } from "@/constants/routes";
+import GlobalSearch from "@/components/global-search/search-button";
+import DesktopNavbarSection from "@/components/navbar/desktop-navbar-section";
+import HomeButton from "@/components/navbar/home-button";
+import MobileNavbarSection from "@/components/navbar/mobile-navbar-section";
+import NavbarOverlay from "@/components/navbar/navbar-overlay";
+import ThemeToggle from "@/components/navbar/theme-toggle";
+import { NAV_ITEMS } from "@/config/routes";
+import { SETTINGS } from "@/config/settings";
 import { useNavbarStore } from "@/hooks/use-navbar-store";
-import GlobalSearch from "../global-search/search-button";
-import DesktopNavbarSection from "./desktop-navbar-section";
-import HomeButton from "./home-button";
-import MobileNavbarSection from "./mobile-navbar-section";
-import NavbarOverlay from "./navbar-overlay";
-import ThemeToggle from "./theme-toggle";
 
 /**
  * Sticky navigation bar that coordinates the home button, command palette trigger, theme toggle, and mobile drawer overlay.
@@ -39,7 +39,7 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`h-${NAVBAR_HEIGHT} fixed top-0 z-50 mx-auto w-full px-4 md:px-6 ${
+        className={`h-${SETTINGS.NAVBAR_HEIGHT} fixed top-0 z-50 mx-auto w-full px-4 md:px-6 ${
           scrolled && !isOverlayOpen ? "shadow-lg" : ""
         } dark:shadow-neutral-800 ${
           !isOverlayOpen

@@ -8,20 +8,19 @@ import {
   CardTitle,
 } from "@/components/shadcn/ui/card";
 import SkillTableSection from "@/components/skills/skill-table-section";
-import DynamicBreadcrumb, {
-  type BreadcrumbPair,
-} from "@/components/ui/dynamic-breadcrumb";
+import DynamicBreadcrumb from "@/components/ui/dynamic-breadcrumb";
 import StringList from "@/components/ui/string-list";
-import developerName from "@/constants/developer-name";
-import { ROUTES } from "@/constants/routes";
+import { DEVELOPER } from "@/config/developer-info";
+import { ROUTES } from "@/config/routes";
 import courseDatabaseMap from "@/database/courses/course-database-map";
 import type CourseInterface from "@/database/courses/course-interface";
 import moduleDatabaseMap from "@/database/modules/module-database-map";
 import type ModuleInterface from "@/database/modules/module-interface";
 import skillDatabaseMap from "@/database/skills/skill-database-map";
-import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/list-of-categorised-skills-by-type-interface";
 import buildSkillTableGroups from "@/lib/skills/group/build-skill-table-groups";
 import hasAnySkills from "@/lib/skills/has-any-skills";
+import type BreadcrumbPair from "@/types/navigation/breadcrumb-pair";
+import type ListOfCategorisedSkillsByTypeInterface from "@/types/skills/list-of-categorised-skills-by-type-interface";
 
 type Params = Promise<{ moduleKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
@@ -47,10 +46,10 @@ export async function generateMetadata(
   }
 
   return {
-    title: `${developerName} - Courses: ${moduleData?.name}`,
+    title: `${DEVELOPER.NAME} - Courses: ${moduleData?.name}`,
     description: moduleData.learningOutcomes.join(". ") || "",
     category: `${ROUTES.EDUCATION.name}`,
-    creator: developerName,
+    creator: DEVELOPER.NAME,
   };
 }
 

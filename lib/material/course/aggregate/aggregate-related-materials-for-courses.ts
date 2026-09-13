@@ -1,7 +1,7 @@
 import type CourseInterface from "@/database/courses/course-interface";
 import type ModuleInterface from "@/database/modules/module-interface";
-import type Database from "@/interfaces/database";
-import aggregateCourseField from "./aggregate-course-field";
+import aggregateCourseField from "@/lib/material/course/aggregate/aggregate-course-field";
+import type Database from "@/types/database/database";
 
 /**
  * Copies related material links from modules up to their parent course so MaterialList tabs can highlight the correct supporting work.

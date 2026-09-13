@@ -14,8 +14,13 @@ import {
   CommandList,
 } from "@/components/shadcn/ui/command";
 import { Kbd } from "@/components/shadcn/ui/kbd";
-import { NAV_ITEMS, ROUTES } from "@/constants/routes";
-import socialLinks from "@/constants/socials";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/shadcn/ui/tooltip";
+import { NAV_ITEMS, ROUTES } from "@/config/routes";
+import socialLinks from "@/config/socials";
 import blogsDatabaseMap, {
   blogDatabaseKeys,
 } from "@/database/blogs/blogs-database-map";
@@ -41,7 +46,6 @@ import skillDatabaseMap, {
 } from "@/database/skills/skill-database-map";
 import MaterialTypeEnum from "@/enums/material/material-type-enum";
 import findCourseKeyForModule from "@/lib/material/course/find-course-key-for-module";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../shadcn/ui/tooltip";
 
 /**
  * Represents a single searchable item in the global search.

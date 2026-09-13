@@ -3,8 +3,8 @@ import { beforeEach, describe, expect, test, vi } from "vitest";
 import CategorySkillDisplay from "@/components/skills/category-skill-display";
 import SkillTableSection from "@/components/skills/skill-table-section";
 import SkillDatabaseKeys from "@/database/skills/skill-database-keys";
-import type CategorisedSkillsInterface from "@/interfaces/skills/categorised-skills-interface";
-import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/list-of-categorised-skills-by-type-interface";
+import type CategorisedSkillsInterface from "@/types/skills/categorised-skills-interface";
+import type ListOfCategorisedSkillsByTypeInterface from "@/types/skills/list-of-categorised-skills-by-type-interface";
 
 const { mockUseIsMounted, mockUseMediaQuery } = vi.hoisted(() => ({
   mockUseIsMounted: vi.fn(),

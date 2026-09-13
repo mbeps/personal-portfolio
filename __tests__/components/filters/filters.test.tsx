@@ -5,9 +5,9 @@ import FilterOptionItemAccordion from "@/components/filters/filter-option-item-a
 import FilterOptionItemCombobox from "@/components/filters/filter-option-item-combobox";
 import FilterOverlay from "@/components/filters/filter-overlay";
 import FilterSection from "@/components/filters/filter-section";
-import type ArchiveFilter from "@/interfaces/filters/archive-filter";
-import type FilterCategory from "@/interfaces/filters/filter-category";
-import type SearchFilter from "@/interfaces/filters/search-filter";
+import type ArchiveFilter from "@/types/filters/archive-filter";
+import type FilterCategory from "@/types/filters/filter-category";
+import type SearchFilter from "@/types/filters/search-filter";
 
 const { mockUseMediaQuery, mockUseIsMounted } = vi.hoisted(() => ({
   mockUseMediaQuery: vi.fn(),

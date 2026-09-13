@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 import type MaterialInterface from "@/database/materials/material-interface";
 import MaterialTypeEnum from "@/enums/material/material-type-enum";
-import type Database from "@/interfaces/database";
 import groupMaterialsByMaterialType from "@/lib/material/group/group-materials-by-material-type";
+import type Database from "@/types/database/database";
 
 const mockDatabase: Database<MaterialInterface> = {
   item1: { name: "Item 1", category: "Cat 1", skills: [] },

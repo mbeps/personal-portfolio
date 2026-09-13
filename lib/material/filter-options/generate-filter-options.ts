@@ -1,4 +1,4 @@
-import type FilterOption from "@/interfaces/filters/filter-option";
+import type FilterOption from "@/types/filters/filter-option";
 
 /**
  * Generic utility that implements the extract → deduplicate-by-slug → optional-sort → prepend-All

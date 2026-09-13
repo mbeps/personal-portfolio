@@ -30,20 +30,19 @@ import {
 } from "@/components/shadcn/ui/tooltip";
 import SkillTag from "@/components/tags/skill-tag";
 import Tag from "@/components/tags/tag";
-import { ROUTES } from "@/constants/routes";
+import { ROUTES } from "@/config/routes";
 import type SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import skillDatabaseMap from "@/database/skills/skill-database-map";
 import type SkillInterface from "@/database/skills/skill-interface";
+import type GroupByOptions from "@/enums/skill/group-by-options";
 import SkillCategoriesEnum from "@/enums/skill/skill-categories-enum";
 import SkillTypesEnum from "@/enums/skill/skill-types-enum";
 import { useMediaQuery } from "@/hooks/use-media-query";
-import type Database from "@/interfaces/database";
-import type FilterOption from "@/interfaces/filters/filter-option";
-import type CategorisedSkillsInterface from "@/interfaces/skills/categorised-skills-interface";
 import { isSkillAssociatedWithMaterial } from "@/lib/material/skill-usage-helpers";
-import groupSkills, {
-  type GroupByOptions,
-} from "@/lib/skills/group/group-skills";
+import groupSkills from "@/lib/skills/group/group-skills";
+import type Database from "@/types/database/database";
+import type FilterOption from "@/types/filters/filter-option";
+import type CategorisedSkillsInterface from "@/types/skills/categorised-skills-interface";
 
 interface LanguageTagWithModalProps {
   languageIdentifier: SkillDatabaseKeys;

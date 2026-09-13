@@ -2,8 +2,8 @@ import Link from "next/link";
 import type React from "react";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import ContentsSection from "@/components/reader/contents-section";
-import { Button } from "../shadcn/ui/button";
-import Reader from "./reader";
+import Reader from "@/components/reader/reader";
+import { Button } from "@/components/shadcn/ui/button";
 
 type SpecialReaderProps = {
   content: string;

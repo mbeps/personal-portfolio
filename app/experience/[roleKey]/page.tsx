@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BsArrowUpRightCircle } from "react-icons/bs";
-import ShortDate from "@/class/short-date";
 import MaterialList from "@/components/material-lists/material-list";
 import Reader from "@/components/reader/reader";
 import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
@@ -16,18 +15,19 @@ import {
 } from "@/components/shadcn/ui/card";
 import SkillTableSection from "@/components/skills/skill-table-section";
 import DetailsTable from "@/components/ui/details-table";
-import developerName from "@/constants/developer-name";
-import { PATHS } from "@/constants/paths";
-import { ROUTES } from "@/constants/routes";
+import { DEVELOPER } from "@/config/developer-info";
+import { PATHS } from "@/config/paths";
+import { ROUTES } from "@/config/routes";
 import companyDatabaseMap from "@/database/companies/company-database-map";
 import type CompanyInterface from "@/database/companies/company-interface";
 import type RoleDatabaseKeys from "@/database/roles/role-database-keys";
 import rolesDatabase from "@/database/roles/role-database-map";
 import type RoleInterface from "@/database/roles/role-interface";
-import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/list-of-categorised-skills-by-type-interface";
+import ShortDate from "@/lib/date/short-date";
 import getMarkdownFromFileSystem from "@/lib/file-system/get-markdown-from-file-system";
 import buildSkillTableGroups from "@/lib/skills/group/build-skill-table-groups";
 import hasAnySkills from "@/lib/skills/has-any-skills";
+import type ListOfCategorisedSkillsByTypeInterface from "@/types/skills/list-of-categorised-skills-by-type-interface";
 
 type Params = Promise<{ roleKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
@@ -55,10 +55,10 @@ export async function generateMetadata(
   const company: CompanyInterface = companyDatabaseMap[role.company];
 
   return {
-    title: `${developerName} - ${ROUTES.EXPERIENCE.name}: ${role?.name} at ${company.name}`,
+    title: `${DEVELOPER.NAME} - ${ROUTES.EXPERIENCE.name}: ${role?.name} at ${company.name}`,
     description: `${role.type} ${role.name} at ${company.name}`,
     category: `${ROUTES.EXPERIENCE.name}`,
-    creator: developerName,
+    creator: DEVELOPER.NAME,
     keywords: [role.name, company.name],
   };
 }

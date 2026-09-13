@@ -3,9 +3,9 @@ import SkillTableSection from "@/components/skills/skill-table-section";
 import type SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import skillDatabaseMap from "@/database/skills/skill-database-map";
 import type SkillInterface from "@/database/skills/skill-interface";
-import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/list-of-categorised-skills-by-type-interface";
 import buildSkillTableGroups from "@/lib/skills/group/build-skill-table-groups";
 import hasAnySkills from "@/lib/skills/has-any-skills";
+import type ListOfCategorisedSkillsByTypeInterface from "@/types/skills/list-of-categorised-skills-by-type-interface";
 
 interface RelatedSkillsSectionProps {
   skillKey: SkillDatabaseKeys;

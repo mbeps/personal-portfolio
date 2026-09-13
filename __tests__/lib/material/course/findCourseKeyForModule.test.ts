@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 import type CourseInterface from "@/database/courses/course-interface";
 import type ModuleDatabaseKeys from "@/database/modules/module-database-keys";
-import type Database from "@/interfaces/database";
 import findCourseKeyForModule from "@/lib/material/course/find-course-key-for-module";
+import type Database from "@/types/database/database";
 
 const mockCoursesDatabase: Database<CourseInterface> = {
   "computer-science-bsc": {

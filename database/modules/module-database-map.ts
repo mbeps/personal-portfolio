@@ -1,17 +1,17 @@
+import BlogDatabaseKeys from "@/database/blogs/blog-database-keys";
+import CertificateDatabaseKeys from "@/database/certificates/certificate-database-keys";
 import CourseDatabaseKeys from "@/database/courses/course-database-keys";
 import ModuleDatabaseKeys from "@/database/modules/module-database-keys";
 import type ModuleInterface from "@/database/modules/module-interface";
 import ProjectDatabaseKeys from "@/database/projects/project-database-keys";
 import SkillDatabaseKeys from "@/database/skills/skill-database-keys";
+import skillDatabaseMap from "@/database/skills/skill-database-map";
 import ModuleYearGroupsEnum from "@/enums/module/module-year-groups-enum";
 import SkillCategoriesEnum from "@/enums/skill/skill-categories-enum";
 import SkillTypesEnum from "@/enums/skill/skill-types-enum";
-import type Database from "@/interfaces/database";
 import validateDatabaseKeys from "@/lib/database/validate-database-keys";
 import addNestedSkillsMaterialList from "@/lib/material/add-nested-skills-material-list";
-import BlogDatabaseKeys from "../blogs/blog-database-keys";
-import CertificateDatabaseKeys from "../certificates/certificate-database-keys";
-import skillDatabaseMap from "../skills/skill-database-map";
+import type Database from "@/types/database/database";
 
 /**
  * Hashmap of the modules I have studied at university.

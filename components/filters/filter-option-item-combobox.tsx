@@ -3,6 +3,7 @@
 import { Check } from "lucide-react";
 import { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
+import { Button } from "@/components/shadcn/ui/button";
 import {
   Command,
   CommandEmpty,
@@ -16,9 +17,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/shadcn/ui/popover";
-import type FilterCategory from "@/interfaces/filters/filter-category";
 import { cn } from "@/lib/utils";
-import { Button } from "../shadcn/ui/button";
+import type FilterCategory from "@/types/filters/filter-category";
 
 interface FilterOptionItemComboboxProps {
   selectedFilterCategory: FilterCategory;

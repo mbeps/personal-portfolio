@@ -3,12 +3,12 @@ import { beforeEach, describe, expect, test, vi } from "vitest";
 import type MaterialInterface from "@/database/materials/material-interface";
 import SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import useMaterialFilterState from "@/hooks/use-material-filter-state";
-import type Database from "@/interfaces/database";
-import type FilterCategory from "@/interfaces/filters/filter-category";
-import type MaterialGroupInterface from "@/interfaces/material/material-group-interface";
 import filterMaterialByArchivedStatus from "@/lib/material/filter/filter-material-by-archived-status";
 import filterMaterialByCategory from "@/lib/material/filter/filter-material-by-category";
 import filterMaterialBySkill from "@/lib/material/filter/filter-material-by-skill";
+import type Database from "@/types/database/database";
+import type FilterCategory from "@/types/filters/filter-category";
+import type MaterialGroupInterface from "@/types/material/material-group-interface";
 
 const { mockUseQueryStates } = vi.hoisted(() => ({
   mockUseQueryStates: vi.fn(),

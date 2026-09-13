@@ -2,18 +2,18 @@ import Image from "next/image";
 import Link from "next/link";
 import type React from "react";
 import { BsArrowUpRightCircle, BsInfoCircle } from "react-icons/bs";
+import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
-import { PATHS } from "@/constants/paths";
-import { ROUTES } from "@/constants/routes";
+import Tag from "@/components/tags/tag";
+import { PATHS } from "@/config/paths";
+import { ROUTES } from "@/config/routes";
 import type CertificateDatabaseKeys from "@/database/certificates/certificate-database-keys";
 import certificateDatabaseMap from "@/database/certificates/certificate-database-map";
 import type CertificateInterface from "@/database/certificates/certificate-interface";
-import { AspectRatio } from "../shadcn/ui/aspect-ratio";
-import Tag from "../tags/tag";
 
 interface CertificateItemProps {
   certificateKey: CertificateDatabaseKeys;

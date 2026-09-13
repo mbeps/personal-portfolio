@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
+import BlogsView from "@/app/blogs/_components/blogs-view";
 import PageDescription from "@/components/ui/page-description";
-import developerName from "@/constants/developer-name";
-import { ROUTES } from "@/constants/routes";
+import { DEVELOPER } from "@/config/developer-info";
+import { ROUTES } from "@/config/routes";
 import blogsDatabaseMap from "@/database/blogs/blogs-database-map";
-import { BlogsView } from "./_components/blogs-view";
 
 /**
  * Static metadata for the blogs archive, using the blog database to keep keywords aligned with the current articles.
  */
 export const metadata: Metadata = {
-  title: `${developerName} - ${ROUTES.BLOGS.name}`,
-  description: `A list of all blogs and articles written by ${developerName}. 
+  title: `${DEVELOPER.NAME} - ${ROUTES.BLOGS.name}`,
+  description: `A list of all blogs and articles written by ${DEVELOPER.NAME}.
   Topics include web development, software engineering, Artificial Intelligence, Machine Learning and more.`,
   category: `${ROUTES.BLOGS.name}`,
-  creator: developerName,
+  creator: DEVELOPER.NAME,
   keywords: Object.values(blogsDatabaseMap).map((blog) => blog.name),
 };
 

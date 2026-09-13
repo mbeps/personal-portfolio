@@ -1,13 +1,13 @@
-import { PATHS } from "@/constants/paths";
+import { PATHS } from "@/config/paths";
 import CourseDatabaseKeys from "@/database/courses/course-database-keys";
 import type CourseInterface from "@/database/courses/course-interface";
 import ModuleDatabaseKeys from "@/database/modules/module-database-keys";
+import moduleDatabaseMap from "@/database/modules/module-database-map";
 import ProjectDatabaseKeys from "@/database/projects/project-database-keys";
-import type Database from "@/interfaces/database";
 import validateDatabaseKeys from "@/lib/database/validate-database-keys";
 import aggregateRelatedMaterialsForCourses from "@/lib/material/course/aggregate/aggregate-related-materials-for-courses";
 import aggregateSkillsForCourses from "@/lib/material/course/aggregate/aggregate-skills-for-courses";
-import moduleDatabaseMap from "../modules/module-database-map";
+import type Database from "@/types/database/database";
 
 /**
  * Hashmap of the courses I have studied at university.

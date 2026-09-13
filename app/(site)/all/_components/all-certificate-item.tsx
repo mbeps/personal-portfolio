@@ -1,5 +1,5 @@
 import type React from "react";
-import CvItemSkills from "@/app/cv/_components/cv-item-skills";
+import CvItemSkills from "@/components/cv/cv-item-skills";
 import type CertificateDatabaseKeys from "@/database/certificates/certificate-database-keys";
 import type CertificateInterface from "@/database/certificates/certificate-interface";
 

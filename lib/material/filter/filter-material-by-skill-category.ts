@@ -1,8 +1,8 @@
 import type MaterialInterface from "@/database/materials/material-interface";
 import type SkillInterface from "@/database/skills/skill-interface";
-import type Database from "@/interfaces/database";
 import filterMaterialKeysByPredicate from "@/lib/material/filter/filter-material-keys-by-predicate";
 import stringToSlug from "@/lib/string-to-slug";
+import type Database from "@/types/database/database";
 
 /**
  * Implements the “skill category” dropdown shared by Projects, Experience, and Certificates.

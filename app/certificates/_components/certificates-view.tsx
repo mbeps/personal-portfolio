@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import type React from "react";
 import FilterSection from "@/components/filters/filter-section";
 import CertificatesList from "@/components/material-lists/certificates-list";
-import { ROUTES } from "@/constants/routes";
+import { ROUTES } from "@/config/routes";
 import type CertificateDatabaseKeys from "@/database/certificates/certificate-database-keys";
 import certificateDatabaseMap from "@/database/certificates/certificate-database-map";
 import type CertificateInterface from "@/database/certificates/certificate-interface";

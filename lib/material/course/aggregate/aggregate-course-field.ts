@@ -1,6 +1,6 @@
 import type CourseInterface from "@/database/courses/course-interface";
 import type ModuleInterface from "@/database/modules/module-interface";
-import type Database from "@/interfaces/database";
+import type Database from "@/types/database/database";
 
 /**
  * Generic helper that aggregates a repeated array field from every module into its parent course.

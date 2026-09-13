@@ -1,7 +1,7 @@
 import type CertificateInterface from "@/database/certificates/certificate-interface";
-import type Database from "@/interfaces/database";
 import filterMaterialKeysByPredicate from "@/lib/material/filter/filter-material-keys-by-predicate";
 import stringToSlug from "@/lib/string-to-slug";
+import type Database from "@/types/database/database";
 
 /**
  * Supports the issuer dropdown on the certificates archive so visitors can isolate coursework by school or platform.

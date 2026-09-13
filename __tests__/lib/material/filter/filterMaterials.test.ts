@@ -10,7 +10,6 @@ import ProjectCategoriesEnum from "@/enums/project/project-categories-enum";
 import ProjectTypeEnum from "@/enums/project/project-type-enum";
 import SkillCategoriesEnum from "@/enums/skill/skill-categories-enum";
 import SkillTypesEnum from "@/enums/skill/skill-types-enum";
-import type Database from "@/interfaces/database";
 import filterCertificatesByIssuer from "@/lib/material/filter/filter-certificates-by-issuer";
 import filterMaterialByArchivedStatus from "@/lib/material/filter/filter-material-by-archived-status";
 import filterMaterialByCategory from "@/lib/material/filter/filter-material-by-category";
@@ -18,6 +17,7 @@ import filterMaterialBySkill from "@/lib/material/filter/filter-material-by-skil
 import filterMaterialBySkillCategory from "@/lib/material/filter/filter-material-by-skill-category";
 import filterMaterialKeysByPredicate from "@/lib/material/filter/filter-material-keys-by-predicate";
 import filterProjectsByType from "@/lib/material/filter/filter-projects-by-type";
+import type Database from "@/types/database/database";
 
 const mockSkillsDatabase: Database<SkillInterface> = {
   [SkillDatabaseKeys.Python]: {

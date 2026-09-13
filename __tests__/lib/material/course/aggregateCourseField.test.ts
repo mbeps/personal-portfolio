@@ -4,8 +4,8 @@ import type ModuleDatabaseKeys from "@/database/modules/module-database-keys";
 import type ModuleInterface from "@/database/modules/module-interface";
 import SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import ModuleYearGroupsEnum from "@/enums/module/module-year-groups-enum";
-import type Database from "@/interfaces/database";
 import aggregateCourseField from "@/lib/material/course/aggregate/aggregate-course-field";
+import type Database from "@/types/database/database";
 
 const mockModulesDatabase: Database<ModuleInterface> = {
   mod1: {

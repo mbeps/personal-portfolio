@@ -8,12 +8,12 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/shadcn/ui/tabs";
+import CategorySkillDisplay from "@/components/skills/category-skill-display";
 import useIsMounted from "@/hooks/use-is-mounted";
-import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/list-of-categorised-skills-by-type-interface";
 import filterNonEmptySkillCategories from "@/lib/skills/filter/filter-non-empty-skill-categories";
 import hasAnySkills from "@/lib/skills/has-any-skills";
 import stringToSlug from "@/lib/string-to-slug";
-import CategorySkillDisplay from "./category-skill-display";
+import type ListOfCategorisedSkillsByTypeInterface from "@/types/skills/list-of-categorised-skills-by-type-interface";
 
 interface SkillTableSectionProps {
   allGroupedSkills: ListOfCategorisedSkillsByTypeInterface[];

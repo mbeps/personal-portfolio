@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { env } from "@/config/env";
 
 /**
  * Generates the `robots.txt` file for the website.
@@ -9,8 +10,7 @@ import type { MetadataRoute } from "next";
  */
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl: string =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://www.maruf-bepary.com";
+  const baseUrl: string = env.NEXT_PUBLIC_SITE_URL;
 
   return {
     rules: {

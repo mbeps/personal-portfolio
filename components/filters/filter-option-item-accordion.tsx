@@ -6,8 +6,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/shadcn/ui/accordion";
-import type FilterCategory from "@/interfaces/filters/filter-category";
 import { cn } from "@/lib/utils";
+import type FilterCategory from "@/types/filters/filter-category";
 
 interface FilterOptionItemAccordionProps {
   filterCategories: FilterCategory[];

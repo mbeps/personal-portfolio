@@ -4,9 +4,8 @@ import { Button } from "@/components/shadcn/ui/button";
 import Socials from "@/components/socials/socials";
 import TextLoop from "@/components/text-loop/text-loop";
 import NextSectionButton from "@/components/ui/next-section-button";
-import developerName from "@/constants/developer-name";
-import { PATHS } from "@/constants/paths";
-import subtitles from "@/constants/subtitles";
+import { DEVELOPER } from "@/config/developer-info";
+import { PATHS } from "@/config/paths";
 
 /**
  * Front page hero that pairs the looping subtitle narrative with socials, CTA buttons, and the profile image.
@@ -49,12 +48,12 @@ const HeroSection = () => {
             <h2 className="font-normal text-3xl text-neutral-600 md:text-5xl dark:text-neutral-300">
               {`Hi, I'm`}
             </h2>
-            <h1 className="font-bold text-5xl md:text-7xl">{developerName}</h1>
+            <h1 className="font-bold text-5xl md:text-7xl">{DEVELOPER.NAME}</h1>
           </div>
 
           {/* Roles */}
           <TextLoop
-            loopItems={subtitles}
+            loopItems={DEVELOPER.SUBTITLES}
             implementation="typewriter"
             className={subtitleStyle}
           />

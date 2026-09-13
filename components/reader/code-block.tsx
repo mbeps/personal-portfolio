@@ -6,7 +6,7 @@ import {
   oneDark,
   oneLight,
 } from "react-syntax-highlighter/dist/esm/styles/prism";
-import SyntaxHighlighter from "./prism-highlighter";
+import SyntaxHighlighter from "@/components/reader/prism-highlighter";
 
 type CodeBlockProps = {
   children: string | React.ReactNode;

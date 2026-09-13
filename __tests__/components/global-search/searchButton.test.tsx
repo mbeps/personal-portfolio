@@ -2,8 +2,8 @@ import type React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import GlobalSearch from "@/components/global-search/search-button";
-import { NAV_ITEMS, ROUTES } from "@/constants/routes";
-import socialLinks from "@/constants/socials";
+import { NAV_ITEMS, ROUTES } from "@/config/routes";
+import socialLinks from "@/config/socials";
 import blogsDatabaseMap, {
   blogDatabaseKeys,
 } from "@/database/blogs/blogs-database-map";

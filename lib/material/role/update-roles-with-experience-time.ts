@@ -1,5 +1,5 @@
 import type RoleInterface from "@/database/roles/role-interface";
-import type Database from "@/interfaces/database";
+import type Database from "@/types/database/database";
 
 /**
  * Normalizes the `timeInRole` string for every role so cards, timelines, and metadata tags display the same duration math.

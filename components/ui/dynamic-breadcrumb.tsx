@@ -7,10 +7,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/shadcn/ui/breadcrumb";
 
-export interface BreadcrumbPair {
-  name: string;
-  path?: string;
-}
+import type BreadcrumbPair from "@/types/navigation/breadcrumb-pair";
 
 interface DynamicBreadcrumbProps {
   breadcrumbs: BreadcrumbPair[];

@@ -1,8 +1,8 @@
 import type ProjectInterface from "@/database/projects/project-interface";
-import type Database from "@/interfaces/database";
-import type FilterOption from "@/interfaces/filters/filter-option";
+import generateFilterOptions from "@/lib/material/filter-options/generate-filter-options";
 import stringToSlug from "@/lib/string-to-slug";
-import generateFilterOptions from "./generate-filter-options";
+import type Database from "@/types/database/database";
+import type FilterOption from "@/types/filters/filter-option";
 
 /**
  * Builds the project "type" filter (case study, library, tool, etc.) straight from the data model so curation and UI stay coupled.

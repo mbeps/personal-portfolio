@@ -1,7 +1,7 @@
 import type SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import type SkillInterface from "@/database/skills/skill-interface";
 import type SkillCategoriesEnum from "@/enums/skill/skill-categories-enum";
-import type Database from "@/interfaces/database";
+import type Database from "@/types/database/database";
 
 /**
  * Filters skills by a specific category so pages can isolate programming languages, DevOps tools, or other curated groups.

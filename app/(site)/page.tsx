@@ -1,25 +1,30 @@
 import type { Metadata } from "next";
-import developerName from "@/constants/developer-name";
-import { PATHS } from "@/constants/paths";
-import { ROUTES } from "@/constants/routes";
-import subtitles from "@/constants/subtitles";
+import AboutSection from "@/app/(site)/_components/about-section/about-section";
+import HeroSection from "@/app/(site)/_components/hero-section";
+import ProjectsSection from "@/app/(site)/_components/project-section";
+import { DEVELOPER } from "@/config/developer-info";
+import { PATHS } from "@/config/paths";
+import { ROUTES } from "@/config/routes";
 import getMarkdownFromFileSystem from "@/lib/file-system/get-markdown-from-file-system";
-import AboutSection from "./_components/about-section/about-section";
-import HeroSection from "./_components/hero-section";
-import ProjectsSection from "./_components/project-section";
 
 const aboutContent: string | undefined = getMarkdownFromFileSystem(
   PATHS.ABOUT.SHORT,
 )?.replace(/^\*/gm, "");
 
 export const metadata: Metadata = {
-  title: developerName,
+  title: DEVELOPER.NAME,
   description: `${
     aboutContent || ROUTES.HOME.description
   }. My main programming languages are Python, Java, JavaScript, and TypeScript.`,
   category: "Homepage",
-  creator: developerName,
-  keywords: [...subtitles, "Python", "Java", "JavaScript", "TypeScript"],
+  creator: DEVELOPER.NAME,
+  keywords: [
+    ...DEVELOPER.SUBTITLES,
+    "Python",
+    "Java",
+    "JavaScript",
+    "TypeScript",
+  ],
 };
 
 /**

@@ -1,4 +1,4 @@
-import { PATHS } from "@/constants/paths";
+import { PATHS } from "@/config/paths";
 import BlogDatabaseKeys from "@/database/blogs/blog-database-keys";
 import CertificateDatabaseKeys from "@/database/certificates/certificate-database-keys";
 import ModuleDatabaseKeys from "@/database/modules/module-database-keys";
@@ -11,9 +11,9 @@ import ProjectCategoriesEnum from "@/enums/project/project-categories-enum";
 import ProjectTypeEnum from "@/enums/project/project-type-enum";
 import SkillCategoriesEnum from "@/enums/skill/skill-categories-enum";
 import SkillTypesEnum from "@/enums/skill/skill-types-enum";
-import type Database from "@/interfaces/database";
 import validateDatabaseKeys from "@/lib/database/validate-database-keys";
 import addNestedSkillsMaterialList from "@/lib/material/add-nested-skills-material-list";
+import type Database from "@/types/database/database";
 
 /**
  * Hashmap of projects with keys as {@link SkillDatabaseKeys} and values as {@link ProjectInterface}.

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import CourseItem from "@/components/material-items/course-item";
 import Grid from "@/components/ui/grid";
 import PageDescription from "@/components/ui/page-description";
-import developerName from "@/constants/developer-name";
-import { ROUTES } from "@/constants/routes";
+import { DEVELOPER } from "@/config/developer-info";
+import { ROUTES } from "@/config/routes";
 import courseDatabaseMap, {
   courseDatabaseKeys,
 } from "@/database/courses/course-database-map";
@@ -12,11 +12,11 @@ import courseDatabaseMap, {
  * Static metadata for the education index, sourcing keywords directly from the courses database to match the visible grid.
  */
 export const metadata: Metadata = {
-  title: `${developerName} - ${ROUTES.EDUCATION.name}`,
-  description: `Educational background and qualifications of ${developerName}. 
+  title: `${DEVELOPER.NAME} - ${ROUTES.EDUCATION.name}`,
+  description: `Educational background and qualifications of ${DEVELOPER.NAME}.
   These include a Bachelor's degree in Computer Science (from Royal Holloway University) and a Master's degree in Artificial Intelligence (from King's College London).`,
   category: `${ROUTES.EDUCATION.name}`,
-  creator: developerName,
+  creator: DEVELOPER.NAME,
   keywords: Object.values(courseDatabaseMap).map((course) => course.name),
 };
 

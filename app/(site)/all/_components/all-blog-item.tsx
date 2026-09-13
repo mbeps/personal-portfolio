@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type React from "react";
-import CvItemSkills from "@/app/cv/_components/cv-item-skills";
-import { ROUTES } from "@/constants/routes";
+import CvItemSkills from "@/components/cv/cv-item-skills";
+import { ROUTES } from "@/config/routes";
 import type BlogDatabaseKeys from "@/database/blogs/blog-database-keys";
 import type BlogInterface from "@/database/blogs/blog-interface";
 

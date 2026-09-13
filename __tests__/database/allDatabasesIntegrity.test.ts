@@ -1,5 +1,4 @@
 import { describe, expect, it } from "vitest";
-import ShortDate from "@/class/short-date";
 import blogsDatabaseMap, {
   blogDatabaseKeys,
 } from "@/database/blogs/blogs-database-map";
@@ -45,6 +44,7 @@ import ProjectCategoriesEnum from "@/enums/project/project-categories-enum";
 import ProjectTypeEnum from "@/enums/project/project-type-enum";
 import SkillCategoriesEnum from "@/enums/skill/skill-categories-enum";
 import SkillTypesEnum from "@/enums/skill/skill-types-enum";
+import ShortDate from "@/lib/date/short-date";
 
 const validKeyRegex = /^[a-zA-Z0-9-]+$/;
 

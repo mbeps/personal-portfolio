@@ -28,6 +28,8 @@ const Mermaid: React.FC<MermaidProps> = ({ chart }) => {
     // Always use light theme for better contrast
     mermaid.initialize({
       startOnLoad: false,
+      layout: "dagre",
+      look: "classic",
       theme: "default",
       themeVariables: {
         primaryColor: "#2563eb",

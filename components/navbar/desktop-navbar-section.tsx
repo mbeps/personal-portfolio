@@ -1,6 +1,6 @@
 import type React from "react";
-import type NavigationItemInterface from "@/interfaces/navigation-item-interface";
-import NavbarItem from "./navbar-item";
+import NavbarItem from "@/components/navbar/navbar-item";
+import type NavigationItemInterface from "@/types/navigation/navigation-item";
 
 interface NavbarSectionProps {
   items: Array<NavigationItemInterface>;

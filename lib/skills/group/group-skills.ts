@@ -1,12 +1,13 @@
 import type SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import type SkillInterface from "@/database/skills/skill-interface";
+import type GroupByOptions from "@/enums/skill/group-by-options";
 import type SkillTypesEnum from "@/enums/skill/skill-types-enum";
-import type Database from "@/interfaces/database";
-import type CategorisedSkillsInterface from "@/interfaces/skills/categorised-skills-interface";
-import getSkillsDatabaseFromKeys from "../get/get-skills-database-from-keys";
-import groupByCategory from "./group-by-category";
-import groupByLanguage from "./group-by-language";
-import groupBySkillType from "./group-by-skill-type";
+import getSkillsDatabaseFromKeys from "@/lib/skills/get/get-skills-database-from-keys";
+import groupByCategory from "@/lib/skills/group/group-by-category";
+import groupByLanguage from "@/lib/skills/group/group-by-language";
+import groupBySkillType from "@/lib/skills/group/group-by-skill-type";
+import type Database from "@/types/database/database";
+import type CategorisedSkillsInterface from "@/types/skills/categorised-skills-interface";
 
 /**
  * Recursively filters out skills that sit inside excluded types while preserving related skills, making sure each slug is only processed once to avoid loops.
@@ -55,21 +56,6 @@ function recursiveFilter(
   });
 
   return filteredSkills;
-}
-
-/**
- * Grouping dimensions accepted by `groupSkills` and consumed by `useSkillFilterState`.
- * Each member corresponds to a URL-safe slug value stored in the filter URL params.
- * Downstream components use this enum to request a specific visual organisation of the skills list.
- * @author Maruf Bepary
- */
-export enum GroupByOptions {
-  /** Group skills by their parent programming language, nesting technologies under each language. */
-  Language = "language",
-  /** Group skills by their editorial category (e.g. Frontend, Backend, DevOps). */
-  Category = "category",
-  /** Group skills by their `SkillTypesEnum` classification (e.g. Technology, Technical, Soft). */
-  SkillType = "skill-type",
 }
 
 /**

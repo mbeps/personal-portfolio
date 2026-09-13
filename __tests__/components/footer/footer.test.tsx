@@ -1,8 +1,8 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, test } from "vitest";
 import Footer from "@/components/footer/footer";
-import developerName from "@/constants/developer-name";
-import socialLinks from "@/constants/socials";
+import { DEVELOPER } from "@/config/developer-info";
+import socialLinks from "@/config/socials";
 
 describe("Footer Component Suite", () => {
   test("renders footer element with copyright and developer name", () => {
@@ -10,7 +10,7 @@ describe("Footer Component Suite", () => {
     const html = renderToStaticMarkup(<Footer />);
 
     expect(html).toContain("<footer");
-    expect(html).toContain(`© 2023-${currentYear} ${developerName}`);
+    expect(html).toContain(`© 2023-${currentYear} ${DEVELOPER.NAME}`);
     expect(html).toContain(
       'href="https://github.com/mbeps/personal-portfolio"',
     );

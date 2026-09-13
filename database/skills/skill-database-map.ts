@@ -2,8 +2,8 @@ import SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import type SkillInterface from "@/database/skills/skill-interface";
 import SkillCategoriesEnum from "@/enums/skill/skill-categories-enum";
 import SkillTypesEnum from "@/enums/skill/skill-types-enum";
-import type Database from "@/interfaces/database";
 import validateDatabaseKeys from "@/lib/database/validate-database-keys";
+import type Database from "@/types/database/database";
 
 /**
  * Hashmap of skills with keys as {@link SkillDatabaseKeys} and values as {@link SkillInterface}.

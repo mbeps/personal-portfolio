@@ -1,13 +1,13 @@
 import PageNavigationItem from "@/app/more/_components/page-navigation-item";
 import Grid from "@/components/ui/grid";
-import developerName from "@/constants/developer-name";
-import { NAV_ITEMS, ROUTES } from "@/constants/routes";
+import { DEVELOPER } from "@/config/developer-info";
+import { NAV_ITEMS, ROUTES } from "@/config/routes";
 
 /**
  * Static metadata for the all-pages directory so the discovery grid matches the route’s head tags.
  */
 export const metadata = {
-  title: `${developerName} - All Pages`,
+  title: `${DEVELOPER.NAME} - All Pages`,
   description: ROUTES.MORE.description,
 };
 

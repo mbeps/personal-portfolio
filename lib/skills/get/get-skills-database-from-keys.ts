@@ -1,6 +1,6 @@
 import type SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import type SkillInterface from "@/database/skills/skill-interface";
-import type Database from "@/interfaces/database";
+import type Database from "@/types/database/database";
 
 /**
  * Extracts a lightweight skills map containing only the requested slugs so downstream grouping logic can work with a smaller dataset.

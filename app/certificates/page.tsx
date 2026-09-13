@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
 import type React from "react";
+import CertificatesView from "@/app/certificates/_components/certificates-view";
 import PageDescription from "@/components/ui/page-description";
-import developerName from "@/constants/developer-name";
-import { ROUTES } from "@/constants/routes";
+import { DEVELOPER } from "@/config/developer-info";
+import { ROUTES } from "@/config/routes";
 import certificateDatabaseMap from "@/database/certificates/certificate-database-map";
-import CertificatesView from "./_components/certificates-view";
 
 /**
  * Static metadata for the certificates archive, using the dataset itself to populate keywords so the list and SEO stay aligned.
  */
 export const metadata: Metadata = {
-  title: `${developerName} - ${ROUTES.CERTIFICATES.name}`,
-  description: `A list of all certificates and online courses that ${developerName} has completed. 
+  title: `${DEVELOPER.NAME} - ${ROUTES.CERTIFICATES.name}`,
+  description: `A list of all certificates and online courses that ${DEVELOPER.NAME} has completed.
   These include certifications in web development, software engineering, and Artificial Intelligence, Machine Learning and more.`,
   category: `${ROUTES.CERTIFICATES.name}`,
-  creator: developerName,
+  creator: DEVELOPER.NAME,
   keywords: Object.values(certificateDatabaseMap).map(
     (certificate) => certificate.name,
   ),

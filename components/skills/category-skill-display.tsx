@@ -1,9 +1,9 @@
 import { useState } from "react";
+import SkillTag from "@/components/tags/skill-tag";
+import ExpandCollapseButton from "@/components/ui/expand-collapse-button";
 import skillDatabaseMap from "@/database/skills/skill-database-map";
 import { useMediaQuery } from "@/hooks/use-media-query";
-import type CategorisedSkillsInterface from "@/interfaces/skills/categorised-skills-interface";
-import SkillTag from "../tags/skill-tag";
-import ExpandCollapseButton from "../ui/expand-collapse-button";
+import type CategorisedSkillsInterface from "@/types/skills/categorised-skills-interface";
 
 interface CategorySkillDisplayProps {
   skillCategories: CategorisedSkillsInterface[];

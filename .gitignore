@@ -38,3 +38,12 @@ TODO.txt
 docs/**
 .github/instructions/convensions.instructions.md
 graphify-out/**
+
+# ai
+GEMINI.md
+CLAUDE.md
+AGENT.md
+./github/copilot.instructions.md
+./github/instructions/**
+subagents/**
+.subagents/**

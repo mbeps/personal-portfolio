@@ -1,9 +1,9 @@
 "use client";
 
+import { twMerge } from "cn";
 import type React from "react";
 import { useEffect } from "react";
 import { IoClose } from "react-icons/io5";
-import { twMerge } from "tailwind-merge";
 import useIsMounted from "@/hooks/use-is-mounted";
 
 interface SidePanelProps {

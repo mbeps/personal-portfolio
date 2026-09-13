@@ -3,14 +3,14 @@ import SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import type SkillInterface from "@/database/skills/skill-interface";
 import SkillCategoriesEnum from "@/enums/skill/skill-categories-enum";
 import SkillTypesEnum from "@/enums/skill/skill-types-enum";
-import type Database from "@/interfaces/database";
-import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/list-of-categorised-skills-by-type-interface";
 import filterCategoriesFromSkills from "@/lib/skills/filter/filter-categories-from-skills";
 import filterNonEmptySkillCategories from "@/lib/skills/filter/filter-non-empty-skill-categories";
 import { filterSkillSlugsExcludingCategory } from "@/lib/skills/filter/filter-skill-slugs-excluding-category";
 import filterSkillsByCategory from "@/lib/skills/filter/filter-skills-by-category";
 import filterSkillsByType from "@/lib/skills/filter/filter-skills-by-type";
 import hasAnySkills from "@/lib/skills/has-any-skills";
+import type Database from "@/types/database/database";
+import type ListOfCategorisedSkillsByTypeInterface from "@/types/skills/list-of-categorised-skills-by-type-interface";
 
 const mockSkillsDatabase: Database<SkillInterface> = {
   [SkillDatabaseKeys.Python]: {

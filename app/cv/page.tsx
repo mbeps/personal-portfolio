@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import developerName from "@/constants/developer-name";
-import { PATHS } from "@/constants/paths";
-import { ROUTES } from "@/constants/routes";
+import CvPageContent from "@/app/cv/_components/cv-page-content";
+import { DEVELOPER } from "@/config/developer-info";
+import { PATHS } from "@/config/paths";
+import { ROUTES } from "@/config/routes";
 import BlogDatabaseKeys from "@/database/blogs/blog-database-keys";
 import certificateDatabaseKeys from "@/database/certificates/certificate-database-keys";
 import type CourseDatabaseKeys from "@/database/courses/course-database-keys";
@@ -11,32 +12,21 @@ import projectDatabaseMap from "@/database/projects/project-database-map";
 import roleDatabaseMap, {
   roleDatabaseKeys,
 } from "@/database/roles/role-database-map";
-import type RoleInterface from "@/database/roles/role-interface";
 import skillDatabaseMap, {
   skillDatabaseKeys,
 } from "@/database/skills/skill-database-map";
 import ExperienceTypeEnum from "@/enums/experience/experience-type-enum";
+import GroupByOptions from "@/enums/skill/group-by-options";
 import getMarkdownFromFileSystem from "@/lib/file-system/get-markdown-from-file-system";
-import groupSkills, { GroupByOptions } from "@/lib/skills/group/group-skills";
-import CvPageContent from "./_components/cv-page-content";
+import groupSkills from "@/lib/skills/group/group-skills";
+import type { SerializedRoleInterface } from "@/types/roles/serialized-role";
 
 export const metadata: Metadata = {
-  title: `${developerName} - CV`,
+  title: `${DEVELOPER.NAME} - CV`,
   description: ROUTES.CV.description,
   category: "CV",
-  creator: developerName,
-  keywords: ["CV", "Resume", "Curriculum Vitae", developerName],
-};
-
-/**
- * Serialized version of RoleInterface with formatted date strings for client components.
- */
-export type SerializedRoleInterface = Omit<
-  RoleInterface,
-  "startDate" | "endDate"
-> & {
-  startDate: string;
-  endDate: string;
+  creator: DEVELOPER.NAME,
+  keywords: ["CV", "Resume", "Curriculum Vitae", DEVELOPER.NAME],
 };
 
 export default function CvPage() {

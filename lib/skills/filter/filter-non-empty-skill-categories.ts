@@ -1,4 +1,4 @@
-import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/list-of-categorised-skills-by-type-interface";
+import type ListOfCategorisedSkillsByTypeInterface from "@/types/skills/list-of-categorised-skills-by-type-interface";
 
 /**
  * Drops category buckets that ended up empty so tables avoid rendering blank sections after filtering.

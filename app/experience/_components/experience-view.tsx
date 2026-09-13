@@ -29,7 +29,7 @@ import stringToSlug from "@/lib/string-to-slug";
  *
  * @returns Filter UI plus grouped role cards.
  */
-export const ExperienceView: React.FC = () => {
+const ExperienceView: React.FC = () => {
   const basePath: string = usePathname();
 
   const categoryParamName = "category";

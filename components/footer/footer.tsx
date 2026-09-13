@@ -1,6 +1,6 @@
 import Link from "next/link";
-import developerName from "@/constants/developer-name";
-import Socials from "../socials/socials";
+import Socials from "@/components/socials/socials";
+import { DEVELOPER } from "@/config/developer-info";
 
 /**
  * Global footer that mirrors the hero social bar and links back to the source repo so every page ends with consistent branding.
@@ -16,7 +16,7 @@ const Footer = () => {
         <div className="flex flex-col space-y-4 text-center text-neutral-900 md:flex-row md:justify-between md:space-y-0">
           <div className="flex flex-row items-center justify-center space-x-1 text-neutral-500 dark:text-neutral-100">
             <Link href="https://github.com/mbeps/personal-portfolio">
-              <p>{`© 2023-${currentYear} ${developerName}`}</p>
+              <p>{`© 2023-${currentYear} ${DEVELOPER.NAME}`}</p>
             </Link>
           </div>
           <Socials />

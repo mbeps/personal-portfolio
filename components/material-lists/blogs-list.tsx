@@ -1,8 +1,8 @@
 import BlogItem from "@/components/material-items/blog-item";
+import MaterialGroupSectionList from "@/components/material-lists/material-group-section-list";
 import Grid from "@/components/ui/grid";
 import type BlogDatabaseKeys from "@/database/blogs/blog-database-keys";
-import type MaterialGroupListInterface from "@/interfaces/material/material-group-list-interface";
-import MaterialGroupSectionList from "./material-group-section-list";
+import type MaterialGroupListInterface from "@/types/material/material-group-list-interface";
 
 /**
  * Group renderer for blog cards, plumbing MaterialGroupSectionList into the shared `BlogItem` tile component.

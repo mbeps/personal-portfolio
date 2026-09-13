@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import type React from "react";
 import { BsPlusCircle } from "react-icons/bs";
 import { GrAppsRounded } from "react-icons/gr";
+import { ProjectLinks } from "@/app/projects/[projectKey]/_components/project-links";
 import Gallery from "@/components/gallery/gallery";
 import MaterialList from "@/components/material-lists/material-list";
 import Reader from "@/components/reader/reader";
@@ -22,16 +23,15 @@ import {
 } from "@/components/shadcn/ui/card";
 import SkillTableSection from "@/components/skills/skill-table-section";
 import SkillTag from "@/components/tags/skill-tag";
-import developerName from "@/constants/developer-name";
-import { PATHS } from "@/constants/paths";
-import { ROUTES } from "@/constants/routes";
+import { DEVELOPER } from "@/config/developer-info";
+import { PATHS } from "@/config/paths";
+import { ROUTES } from "@/config/routes";
 import type ProjectDatabaseKeys from "@/database/projects/project-database-keys";
 import projectDatabaseMap from "@/database/projects/project-database-map";
 import type ProjectInterface from "@/database/projects/project-interface";
 import type SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import skillDatabaseMap from "@/database/skills/skill-database-map";
 import SkillCategoriesEnum from "@/enums/skill/skill-categories-enum";
-import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/list-of-categorised-skills-by-type-interface";
 import getImagesFromFileSystem from "@/lib/file-system/get-images-from-file-system";
 import getMarkdownFromFileSystem from "@/lib/file-system/get-markdown-from-file-system";
 import getVideosFromFileSystem from "@/lib/file-system/get-videos-from-file-system";
@@ -39,7 +39,7 @@ import { filterSkillSlugsExcludingCategory } from "@/lib/skills/filter/filter-sk
 import filterSkillsByCategory from "@/lib/skills/filter/filter-skills-by-category";
 import buildSkillTableGroups from "@/lib/skills/group/build-skill-table-groups";
 import hasAnySkills from "@/lib/skills/has-any-skills";
-import { ProjectLinks } from "./_components/project-links";
+import type ListOfCategorisedSkillsByTypeInterface from "@/types/skills/list-of-categorised-skills-by-type-interface";
 
 type Params = Promise<{ projectKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
@@ -66,10 +66,10 @@ export async function generateMetadata(
 
   if (!project.archived) {
     return {
-      title: `${developerName} - Projects: ${project?.name}`,
+      title: `${DEVELOPER.NAME} - Projects: ${project?.name}`,
       description: project?.description,
       category: `${ROUTES.PROJECTS.name}`,
-      creator: developerName,
+      creator: DEVELOPER.NAME,
       keywords: [
         project.name,
         ...project.skills.map((skillKey) => skillDatabaseMap[skillKey].name),

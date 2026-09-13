@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import FilterSection from "@/components/filters/filter-section";
 import BlogsList from "@/components/material-lists/blogs-list";
-import { ROUTES } from "@/constants/routes";
+import { ROUTES } from "@/config/routes";
 import type BlogDatabaseKeys from "@/database/blogs/blog-database-keys";
 import type BlogInterface from "@/database/blogs/blog-interface";
 import blogsDatabaseMap from "@/database/blogs/blogs-database-map";
@@ -27,7 +27,7 @@ import stringToSlug from "@/lib/string-to-slug";
  *
  * @returns Filter shell plus grouped blog cards.
  */
-export const BlogsView: React.FC = () => {
+const BlogsView: React.FC = () => {
   const basePath: string = usePathname();
 
   const blogSectionParamName = "category";

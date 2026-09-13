@@ -1,6 +1,6 @@
 import type CourseInterface from "@/database/courses/course-interface";
 import type ModuleDatabaseKeys from "@/database/modules/module-database-keys";
-import type Database from "@/interfaces/database";
+import type Database from "@/types/database/database";
 
 /**
  * Resolves the parent course for a given module slug so module detail pages can link back to the owning course.

@@ -1,7 +1,7 @@
+import WorkItem from "@/components/material-items/work-item";
+import MaterialGroupSectionList from "@/components/material-lists/material-group-section-list";
 import type RoleDatabaseKeys from "@/database/roles/role-database-keys";
-import type MaterialGroupListInterface from "@/interfaces/material/material-group-list-interface";
-import WorkItem from "../material-items/work-item";
-import MaterialGroupSectionList from "./material-group-section-list";
+import type MaterialGroupListInterface from "@/types/material/material-group-list-interface";
 
 /**
  * Thin list renderer for Work Experience / Role material groups.

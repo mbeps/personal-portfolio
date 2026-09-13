@@ -16,15 +16,15 @@ import {
 import SkillTableSection from "@/components/skills/skill-table-section";
 import Tag from "@/components/tags/tag";
 import StringList from "@/components/ui/string-list";
-import developerName from "@/constants/developer-name";
-import { PATHS } from "@/constants/paths";
-import { ROUTES } from "@/constants/routes";
+import { DEVELOPER } from "@/config/developer-info";
+import { PATHS } from "@/config/paths";
+import { ROUTES } from "@/config/routes";
 import type CertificateDatabaseKeys from "@/database/certificates/certificate-database-keys";
 import certificateDatabaseMap from "@/database/certificates/certificate-database-map";
 import type CertificateInterface from "@/database/certificates/certificate-interface";
-import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/list-of-categorised-skills-by-type-interface";
 import buildSkillTableGroups from "@/lib/skills/group/build-skill-table-groups";
 import hasAnySkills from "@/lib/skills/has-any-skills";
+import type ListOfCategorisedSkillsByTypeInterface from "@/types/skills/list-of-categorised-skills-by-type-interface";
 
 type Params = Promise<{ certificateKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
@@ -52,10 +52,10 @@ export async function generateMetadata(
 
   // Create metadata based on the certificate details
   return {
-    title: `${developerName} - ${ROUTES.CERTIFICATES.name}: ${certificate?.name}`,
+    title: `${DEVELOPER.NAME} - ${ROUTES.CERTIFICATES.name}: ${certificate?.name}`,
     description: certificate?.description,
     category: `${ROUTES.CERTIFICATES.name}`,
-    creator: developerName,
+    creator: DEVELOPER.NAME,
   };
 }
 

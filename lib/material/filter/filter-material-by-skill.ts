@@ -1,7 +1,7 @@
 import type MaterialInterface from "@/database/materials/material-interface";
 import type SkillDatabaseKeys from "@/database/skills/skill-database-keys";
-import type Database from "@/interfaces/database";
 import filterMaterialKeysByPredicate from "@/lib/material/filter/filter-material-keys-by-predicate";
+import type Database from "@/types/database/database";
 
 /**
  * Core filter used by every listing page when a user picks a skill from the drawer.

@@ -1,10 +1,10 @@
 import { parseAsBoolean, parseAsString, useQueryStates } from "nuqs";
 import type MaterialInterface from "@/database/materials/material-interface";
-import useFuseMaterialSearch from "@/hooks/use-fuse-search/use-fuse-material-search";
-import type Database from "@/interfaces/database";
-import type FilterCategory from "@/interfaces/filters/filter-category";
-import type MaterialGroupInterface from "@/interfaces/material/material-group-interface";
+import useFuseMaterialSearch from "@/hooks/use-fuse-material-search";
 import groupMaterialsByCategory from "@/lib/material/group/group-materials-by-category";
+import type Database from "@/types/database/database";
+import type FilterCategory from "@/types/filters/filter-category";
+import type MaterialGroupInterface from "@/types/material/material-group-interface";
 
 /**
  * Configuration for a single filter category.

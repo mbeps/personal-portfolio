@@ -1,4 +1,4 @@
-import type ShortDate from "@/class/short-date";
+import type ShortDate from "@/lib/date/short-date";
 
 /**
  * Totals the duration of multiple roles so the experience summary on the home page and timeline uses the same calculation.

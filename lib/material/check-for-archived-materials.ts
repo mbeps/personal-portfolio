@@ -1,5 +1,5 @@
 import type MaterialInterface from "@/database/materials/material-interface";
-import type Database from "@/interfaces/database";
+import type Database from "@/types/database/database";
 
 /**
  * Determines whether the archive toggle should even be shown for a dataset.
