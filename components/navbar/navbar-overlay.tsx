@@ -1,4 +1,4 @@
-import { twMerge } from "tailwind-merge";
+import { twMerge } from "cn";
 import NavbarItem from "@/components/navbar/navbar-item";
 import Socials from "@/components/socials/socials";
 import { useMediaQuery } from "@/hooks/use-media-query";

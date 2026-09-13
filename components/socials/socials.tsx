@@ -1,5 +1,5 @@
+import { twMerge } from "cn";
 import type React from "react";
-import { twMerge } from "tailwind-merge";
 import SocialIcon from "@/components/socials/social-icon";
 import socialLinks from "@/config/socials";
 

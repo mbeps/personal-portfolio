@@ -1,8 +1,8 @@
 "use client";
 
+import { twMerge } from "cn";
 import { Search, SendHorizontal, X } from "lucide-react";
 import React, { useEffect } from "react";
-import { twMerge } from "tailwind-merge";
 import useIsMounted from "@/hooks/use-is-mounted";
 
 interface SearchInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
