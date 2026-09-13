@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type React from "react";
-import type NavigationItemInterface from "@/interfaces/navigation-item-interface";
+import type NavigationItemInterface from "@/types/navigation/navigation-item";
 
 interface PageNavigationItemProps {
   item: NavigationItemInterface;

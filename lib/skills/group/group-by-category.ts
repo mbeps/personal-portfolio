@@ -1,8 +1,8 @@
 import type SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import type SkillInterface from "@/database/skills/skill-interface";
 import SkillCategoriesEnum from "@/enums/skill/skill-categories-enum";
-import type Database from "@/interfaces/database";
-import type CategorisedSkillsInterface from "@/interfaces/skills/categorised-skills-interface";
+import type Database from "@/types/database/database";
+import type CategorisedSkillsInterface from "@/types/skills/categorised-skills-interface";
 
 /**
  * Groups skills by category using the enum order so tables stay consistent with the taxonomy shown on the skills landing page.

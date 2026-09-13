@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { GrAppsRounded } from "react-icons/gr";
 import { IoReaderOutline } from "react-icons/io5";
+import CourseArchiveToggle from "@/app/education/[courseKey]/_components/course-archive-toggle";
 import MaterialList from "@/components/material-lists/material-list";
 import {
   Accordion,
@@ -21,20 +22,19 @@ import {
 import SkillTableSection from "@/components/skills/skill-table-section";
 import Tag from "@/components/tags/tag";
 import Grid from "@/components/ui/grid";
-import developerName from "@/constants/developer-name";
-import { ROUTES } from "@/constants/routes";
+import { DEVELOPER } from "@/config/developer-info";
+import { ROUTES } from "@/config/routes";
 import courseDatabaseMap from "@/database/courses/course-database-map";
 import type CourseInterface from "@/database/courses/course-interface";
 import type ModuleDatabaseKeys from "@/database/modules/module-database-keys";
 import moduleDatabaseMap from "@/database/modules/module-database-map";
 import type ModuleInterface from "@/database/modules/module-interface";
-import type MaterialGroupInterface from "@/interfaces/material/material-group-interface";
-import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/list-of-categorised-skills-by-type-interface";
 import filterMaterialByArchivedStatus from "@/lib/material/filter/filter-material-by-archived-status";
 import groupMaterialsByCategory from "@/lib/material/group/group-materials-by-category";
 import buildSkillTableGroups from "@/lib/skills/group/build-skill-table-groups";
 import hasAnySkills from "@/lib/skills/has-any-skills";
-import CourseArchiveToggle from "./_components/course-archive-toggle";
+import type MaterialGroupInterface from "@/types/material/material-group-interface";
+import type ListOfCategorisedSkillsByTypeInterface from "@/types/skills/list-of-categorised-skills-by-type-interface";
 
 type Params = Promise<{ courseKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
@@ -60,10 +60,10 @@ export async function generateMetadata(
   }
 
   return {
-    title: `${developerName} - Courses: ${course?.name} at ${course?.university}`,
+    title: `${DEVELOPER.NAME} - Courses: ${course?.name} at ${course?.university}`,
     description: `${course.grade} in ${course.name} from ${course?.university}`,
     category: `${ROUTES.EDUCATION.name}`,
-    creator: developerName,
+    creator: DEVELOPER.NAME,
     keywords: [course.name, course.university],
   };
 }

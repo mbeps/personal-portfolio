@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import type React from "react";
-import { ROUTES } from "@/constants/routes";
+import Tag from "@/components/tags/tag";
+import { ROUTES } from "@/config/routes";
 import courseDatabaseMap from "@/database/courses/course-database-map";
 import type CourseInterface from "@/database/courses/course-interface";
-import Tag from "../tags/tag";
 
 interface CourseItemProps {
   courseKey: string;

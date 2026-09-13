@@ -2,12 +2,13 @@ import { parseAsBoolean, parseAsString, useQueryStates } from "nuqs";
 import { useMemo } from "react";
 import type SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import skillDatabaseMap from "@/database/skills/skill-database-map";
+import GroupByOptions from "@/enums/skill/group-by-options";
 import SkillTypesEnum from "@/enums/skill/skill-types-enum";
-import useFuseSkillSearch from "@/hooks/use-fuse-search/use-fuse-skill-search";
-import type FilterCategory from "@/interfaces/filters/filter-category";
-import type FilterOption from "@/interfaces/filters/filter-option";
-import type CategorisedSkillsInterface from "@/interfaces/skills/categorised-skills-interface";
-import groupSkills, { GroupByOptions } from "@/lib/skills/group/group-skills";
+import useFuseSkillSearch from "@/hooks/use-fuse-skill-search";
+import groupSkills from "@/lib/skills/group/group-skills";
+import type FilterCategory from "@/types/filters/filter-category";
+import type FilterOption from "@/types/filters/filter-option";
+import type CategorisedSkillsInterface from "@/types/skills/categorised-skills-interface";
 
 /**
  * Options for grouping skills in the filter UI.

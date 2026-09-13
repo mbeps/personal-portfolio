@@ -1,9 +1,9 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import SpecialReader from "@/components/reader/special-reader";
-import developerName from "@/constants/developer-name";
-import { PATHS } from "@/constants/paths";
-import { ROUTES } from "@/constants/routes";
+import { DEVELOPER } from "@/config/developer-info";
+import { PATHS } from "@/config/paths";
+import { ROUTES } from "@/config/routes";
 import type ProjectDatabaseKeys from "@/database/projects/project-database-keys";
 import projectDatabaseMap from "@/database/projects/project-database-map";
 import type ProjectInterface from "@/database/projects/project-interface";
@@ -49,10 +49,10 @@ export async function generateMetadata(
 
   if (!project.archived) {
     return {
-      title: `${developerName} - Projects: ${project.name} Report`,
+      title: `${DEVELOPER.NAME} - Projects: ${project.name} Report`,
       description: `Detailed report and analysis for ${project.name}. ${project.description}`,
       category: `${ROUTES.PROJECTS.name}`,
-      creator: developerName,
+      creator: DEVELOPER.NAME,
       keywords: [
         project.name,
         "Report",

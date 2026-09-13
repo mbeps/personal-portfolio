@@ -2,15 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import type React from "react";
 import { BsArrowUpRightCircle, BsGithub, BsInfoCircle } from "react-icons/bs";
+import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
-import { ROUTES } from "@/constants/routes";
+import { ROUTES } from "@/config/routes";
 import projectDatabaseMap from "@/database/projects/project-database-map";
 import type ProjectInterface from "@/database/projects/project-interface";
-import { AspectRatio } from "../shadcn/ui/aspect-ratio";
 
 interface ProjectItemProps {
   projectKey: string;

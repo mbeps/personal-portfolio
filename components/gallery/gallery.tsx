@@ -3,8 +3,7 @@
 import Image from "next/image";
 import React, { useEffect } from "react";
 import { LiaImageSolid, LiaVideoSolid } from "react-icons/lia";
-import useIsMounted from "@/hooks/use-is-mounted";
-import { useMediaQuery } from "@/hooks/use-media-query";
+import VideoPlayer from "@/components/gallery/video-player";
 import {
   Carousel,
   type CarouselApi,
@@ -12,9 +11,15 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "../shadcn/ui/carousel";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../shadcn/ui/tabs";
-import VideoPlayer from "./video-player";
+} from "@/components/shadcn/ui/carousel";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/shadcn/ui/tabs";
+import useIsMounted from "@/hooks/use-is-mounted";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 interface GalleryProps {
   images?: string[];

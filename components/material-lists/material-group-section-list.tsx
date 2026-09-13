@@ -1,6 +1,6 @@
 import type React from "react";
-import type MaterialGroupInterface from "@/interfaces/material/material-group-interface";
 import stringToSlug from "@/lib/string-to-slug";
+import type MaterialGroupInterface from "@/types/material/material-group-interface";
 
 interface MaterialGroupSectionListProps {
   groupedMaterial: MaterialGroupInterface[];

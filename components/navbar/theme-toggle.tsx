@@ -10,8 +10,12 @@ import {
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuTrigger,
-} from "../shadcn/ui/context-menu";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../shadcn/ui/tooltip";
+} from "@/components/shadcn/ui/context-menu";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/shadcn/ui/tooltip";
 
 /**
  * Context menu driven theme switcher so users can quickly flip between light, dark, and system modes right from the navbar.

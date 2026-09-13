@@ -1,8 +1,8 @@
-import type ShortDate from "@/class/short-date";
 import type CompanyDatabaseKeys from "@/database/companies/company-database-keys";
+import type MaterialInterface from "@/database/materials/material-interface";
 import type ExperienceCategoriesEnum from "@/enums/experience/experience-categories-enum";
 import type ExperienceTypeEnum from "@/enums/experience/experience-type-enum";
-import type MaterialInterface from "../materials/material-interface";
+import type ShortDate from "@/lib/date/short-date";
 
 /**
  * Describes a work experience entry extending the base material fields so roles can participate in filters and related material lists.

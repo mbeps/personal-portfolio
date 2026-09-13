@@ -1,17 +1,13 @@
 import type React from "react";
 import { GrAppsRounded } from "react-icons/gr";
+import MaterialTab from "@/components/material-lists/material-tab";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/shadcn/ui/accordion";
-import MaterialTab from "./material-tab";
-
-export interface MaterialTabsProps {
-  materialKeys: string[];
-  isCollapsible?: boolean;
-}
+import type MaterialTabsProps from "@/types/material/material-tabs-props";
 
 /**
  * Primary wrapper for rendering related material tabs anywhere across the site (projects, courses, roles, etc.).

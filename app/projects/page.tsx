@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
+import ProjectsView from "@/app/projects/_components/projects-view";
 import PageDescription from "@/components/ui/page-description";
-import developerName from "@/constants/developer-name";
-import { ROUTES } from "@/constants/routes";
+import { DEVELOPER } from "@/config/developer-info";
+import { ROUTES } from "@/config/routes";
 import projectDatabaseMap from "@/database/projects/project-database-map";
-import ProjectsView from "./_components/projects-view";
 
 /**
  * Static metadata for the projects archive, driven by the database so keywords stay in sync with the visible list.
  */
 export const metadata: Metadata = {
-  title: `${developerName} - ${ROUTES.PROJECTS.name}`,
-  description: `A list of all projects that ${developerName} has worked on.
+  title: `${DEVELOPER.NAME} - ${ROUTES.PROJECTS.name}`,
+  description: `A list of all projects that ${DEVELOPER.NAME} has worked on.
   These include projects in web development, software engineering, Artificial Intelligence, Machine Learning and more.`,
   category: `${ROUTES.PROJECTS.name}`,
-  creator: developerName,
+  creator: DEVELOPER.NAME,
   keywords: Object.values(projectDatabaseMap).map((project) => project.name),
 };
 

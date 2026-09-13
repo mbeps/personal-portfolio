@@ -1,8 +1,8 @@
 import type SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import type SkillInterface from "@/database/skills/skill-interface";
 import SkillCategoriesEnum from "@/enums/skill/skill-categories-enum";
-import type Database from "@/interfaces/database";
-import type CategorisedSkillsInterface from "@/interfaces/skills/categorised-skills-interface";
+import type Database from "@/types/database/database";
+import type CategorisedSkillsInterface from "@/types/skills/categorised-skills-interface";
 
 /**
  * Groups skills under the programming language they belong to so the language modal and SkillList can show stacks in one cluster.

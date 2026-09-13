@@ -7,6 +7,7 @@ import BlogsList from "@/components/material-lists/blogs-list";
 import CertificatesList from "@/components/material-lists/certificates-list";
 import ModuleList from "@/components/material-lists/module-list";
 import ProjectsList from "@/components/material-lists/projects-list";
+import WorkList from "@/components/material-lists/work-list";
 import { Button } from "@/components/shadcn/ui/button";
 import {
   Tabs,
@@ -14,7 +15,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/shadcn/ui/tabs";
-import { ROUTES } from "@/constants/routes";
+import { ROUTES } from "@/config/routes";
 import blogsDatabaseMap, {
   blogDatabaseKeys,
 } from "@/database/blogs/blogs-database-map";
@@ -32,12 +33,11 @@ import rolesDatabase, {
   roleDatabaseKeys,
 } from "@/database/roles/role-database-map";
 import MaterialTypeEnum from "@/enums/material/material-type-enum";
-import type Database from "@/interfaces/database";
-import type MaterialGroupInterface from "@/interfaces/material/material-group-interface";
-import type MaterialGroupListInterface from "@/interfaces/material/material-group-list-interface";
 import groupMaterialsByMaterialType from "@/lib/material/group/group-materials-by-material-type";
-import type { MaterialTabsProps } from "./material-list";
-import WorkList from "./work-list";
+import type Database from "@/types/database/database";
+import type MaterialGroupInterface from "@/types/material/material-group-interface";
+import type MaterialGroupListInterface from "@/types/material/material-group-list-interface";
+import type MaterialTabsProps from "@/types/material/material-tabs-props";
 
 interface MaterialSectionInterface {
   name: MaterialTypeEnum;

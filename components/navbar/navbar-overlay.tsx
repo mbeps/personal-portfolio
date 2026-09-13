@@ -1,8 +1,8 @@
 import { twMerge } from "tailwind-merge";
+import NavbarItem from "@/components/navbar/navbar-item";
+import Socials from "@/components/socials/socials";
 import { useMediaQuery } from "@/hooks/use-media-query";
-import type NavigationItemInterface from "@/interfaces/navigation-item-interface";
-import Socials from "../socials/socials";
-import NavbarItem from "./navbar-item";
+import type NavigationItemInterface from "@/types/navigation/navigation-item";
 
 interface OverlayProps {
   isOpen: boolean;

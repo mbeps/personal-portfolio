@@ -5,7 +5,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
-import type SocialLinkInterface from "@/interfaces/social-link-interface";
+import type SocialLinkInterface from "@/types/socials/social-link";
 
 interface SocialIconProps extends SocialLinkInterface {
   iconSize?: number;

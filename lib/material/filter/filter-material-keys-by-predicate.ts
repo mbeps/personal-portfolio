@@ -1,4 +1,4 @@
-import type Database from "@/interfaces/database";
+import type Database from "@/types/database/database";
 
 /**
  * Generic key-preserving filter for material-like maps.

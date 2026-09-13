@@ -1,7 +1,7 @@
 import type SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import type SkillInterface from "@/database/skills/skill-interface";
-import type Database from "@/interfaces/database";
-import type CategorisedSkillsInterface from "@/interfaces/skills/categorised-skills-interface";
+import type Database from "@/types/database/database";
+import type CategorisedSkillsInterface from "@/types/skills/categorised-skills-interface";
 
 /**
  * Groups skills by their type (technology or technical) to support the grouped tables shown on skills and material detail pages.

@@ -1,8 +1,8 @@
 import type MaterialInterface from "@/database/materials/material-interface";
-import type Database from "@/interfaces/database";
-import type FilterOption from "@/interfaces/filters/filter-option";
-import stringToSlug from "../../string-to-slug";
-import generateFilterOptions from "./generate-filter-options";
+import generateFilterOptions from "@/lib/material/filter-options/generate-filter-options";
+import stringToSlug from "@/lib/string-to-slug";
+import type Database from "@/types/database/database";
+import type FilterOption from "@/types/filters/filter-option";
 
 /**
  * Converts whatever editorial categories exist in the current dataset into drawer options so section lists and filters stay aligned.

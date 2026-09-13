@@ -3,7 +3,7 @@ import { FaGithub } from "react-icons/fa";
 import { describe, expect, test } from "vitest";
 import SocialIcon from "@/components/socials/social-icon";
 import Socials from "@/components/socials/socials";
-import socialLinks from "@/constants/socials";
+import socialLinks from "@/config/socials";
 
 describe("Socials Component Suite", () => {
   describe("SocialIcon", () => {

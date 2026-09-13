@@ -1,17 +1,17 @@
 import BlogDatabaseKeys from "@/database/blogs/blog-database-keys";
 import type BlogInterface from "@/database/blogs/blog-interface";
+import CertificateDatabaseKeys from "@/database/certificates/certificate-database-keys";
+import ModuleDatabaseKeys from "@/database/modules/module-database-keys";
+import ProjectDatabaseKeys from "@/database/projects/project-database-keys";
+import projectDatabaseMap from "@/database/projects/project-database-map";
 import SkillDatabaseKeys from "@/database/skills/skill-database-keys";
+import skillDatabaseMap from "@/database/skills/skill-database-map";
 import BlogCategoriesEnum from "@/enums/blog/blog-categories-enum";
 import SkillCategoriesEnum from "@/enums/skill/skill-categories-enum";
 import SkillTypesEnum from "@/enums/skill/skill-types-enum";
-import type Database from "@/interfaces/database";
 import validateDatabaseKeys from "@/lib/database/validate-database-keys";
 import addNestedSkillsMaterialList from "@/lib/material/add-nested-skills-material-list";
-import CertificateDatabaseKeys from "../certificates/certificate-database-keys";
-import ModuleDatabaseKeys from "../modules/module-database-keys";
-import ProjectDatabaseKeys from "../projects/project-database-keys";
-import projectDatabaseMap from "../projects/project-database-map";
-import skillDatabaseMap from "../skills/skill-database-map";
+import type Database from "@/types/database/database";
 
 /**
  * Hashmap of blogs with keys as {@link BlogDatabaseKeys} and values as {@link BlogInterface}.

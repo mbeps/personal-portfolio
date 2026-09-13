@@ -6,8 +6,8 @@ import SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import skillDatabaseMap from "@/database/skills/skill-database-map";
 import type SkillInterface from "@/database/skills/skill-interface";
 import SkillCategoriesEnum from "@/enums/skill/skill-categories-enum";
-import type Database from "@/interfaces/database";
 import filterCategoriesFromSkills from "@/lib/skills/filter/filter-categories-from-skills";
+import type Database from "@/types/database/database";
 
 /**
  * Curated skill tag wall that highlights flagship technologies while handing off deeper exploration to the shared modal.

@@ -1,9 +1,9 @@
 import type React from "react";
 import CertificateItem from "@/components/material-items/certificate-item";
+import MaterialGroupSectionList from "@/components/material-lists/material-group-section-list";
 import Grid from "@/components/ui/grid";
 import type CertificateDatabaseKeys from "@/database/certificates/certificate-database-keys";
-import type MaterialGroupListInterface from "@/interfaces/material/material-group-list-interface";
-import MaterialGroupSectionList from "./material-group-section-list";
+import type MaterialGroupListInterface from "@/types/material/material-group-list-interface";
 
 /**
  * Renders grouped certificates using `CertificateItem` tiles so the certificates page and related material tabs look identical.

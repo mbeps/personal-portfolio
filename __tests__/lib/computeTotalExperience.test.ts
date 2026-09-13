@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import ShortDate from "@/class/short-date";
 import computeTotalExperience from "@/lib/compute-total-experience";
+import ShortDate from "@/lib/date/short-date";
 
 describe("computeTotalExperience", () => {
   it("should return 0 when the jobs list is empty", () => {

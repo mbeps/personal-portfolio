@@ -1,18 +1,18 @@
+import BlogDatabaseKeys from "@/database/blogs/blog-database-keys";
 import CertificateDatabaseKeys from "@/database/certificates/certificate-database-keys";
 import type CertificateInterface from "@/database/certificates/certificate-interface";
+import ModuleDatabaseKeys from "@/database/modules/module-database-keys";
+import ProjectDatabaseKeys from "@/database/projects/project-database-keys";
+import RoleDatabaseKeys from "@/database/roles/role-database-keys";
 import SkillDatabaseKeys from "@/database/skills/skill-database-keys";
+import skillDatabaseMap from "@/database/skills/skill-database-map";
 import CertificateCategoriesEnum from "@/enums/certificate/certificate-categories-enum";
 import CertificateIssuersEnum from "@/enums/certificate/certificate-issuers-enum";
 import SkillCategoriesEnum from "@/enums/skill/skill-categories-enum";
 import SkillTypesEnum from "@/enums/skill/skill-types-enum";
-import type Database from "@/interfaces/database";
 import validateDatabaseKeys from "@/lib/database/validate-database-keys";
 import addNestedSkillsMaterialList from "@/lib/material/add-nested-skills-material-list";
-import BlogDatabaseKeys from "../blogs/blog-database-keys";
-import ModuleDatabaseKeys from "../modules/module-database-keys";
-import ProjectDatabaseKeys from "../projects/project-database-keys";
-import RoleDatabaseKeys from "../roles/role-database-keys";
-import skillDatabaseMap from "../skills/skill-database-map";
+import type Database from "@/types/database/database";
 
 /**
  * Hashmap of certificates with keys as {@link CertificateDatabaseKeys} and values as {@link CertificateInterface}.

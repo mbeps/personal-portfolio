@@ -1,5 +1,5 @@
+import type MaterialInterface from "@/database/materials/material-interface";
 import type BlogCategoriesEnum from "@/enums/blog/blog-categories-enum";
-import type MaterialInterface from "../materials/material-interface";
 
 /**
  * Extends the base material contract for blogs so metadata stays aligned with markdown stored under `public/blogs/{key}`.

@@ -1,13 +1,13 @@
+import blogsDatabaseMap from "@/database/blogs/blogs-database-map";
+import certificateDatabaseMap from "@/database/certificates/certificate-database-map";
+import courseDatabaseMap from "@/database/courses/course-database-map";
 import type MaterialInterface from "@/database/materials/material-interface";
+import moduleDatabaseMap from "@/database/modules/module-database-map";
+import projectDatabaseMap from "@/database/projects/project-database-map";
+import rolesDatabase from "@/database/roles/role-database-map";
 import type SkillDatabaseKeys from "@/database/skills/skill-database-keys";
-import type Database from "@/interfaces/database";
 import validateDatabaseKeys from "@/lib/database/validate-database-keys";
-import blogsDatabaseMap from "../blogs/blogs-database-map";
-import certificateDatabaseMap from "../certificates/certificate-database-map";
-import courseDatabaseMap from "../courses/course-database-map";
-import moduleDatabaseMap from "../modules/module-database-map";
-import projectDatabaseMap from "../projects/project-database-map";
-import rolesDatabase from "../roles/role-database-map";
+import type Database from "@/types/database/database";
 
 /**
  * Source of truth that unifies every material dictionary so shared helpers can treat the portfolio as a single data lake.

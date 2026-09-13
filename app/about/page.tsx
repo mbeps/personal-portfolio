@@ -13,11 +13,8 @@ import {
 } from "@/components/shadcn/ui/accordion";
 import Socials from "@/components/socials/socials";
 import DetailsTable from "@/components/ui/details-table";
-import developerName from "@/constants/developer-name";
-import experienceTime from "@/constants/experience";
-import location from "@/constants/location";
-import { PATHS } from "@/constants/paths";
-import subtitles from "@/constants/subtitles";
+import { DEVELOPER } from "@/config/developer-info";
+import { PATHS } from "@/config/paths";
 import CertificateDatabaseKeys from "@/database/certificates/certificate-database-keys";
 import companyDatabaseMap from "@/database/companies/company-database-map";
 import CourseDatabaseKeys from "@/database/courses/course-database-keys";
@@ -32,11 +29,11 @@ import getMarkdownFromFileSystem from "@/lib/file-system/get-markdown-from-file-
 const aboutContent: string | null = getMarkdownFromFileSystem(PATHS.ABOUT.LONG);
 
 export const metadata: Metadata = {
-  title: `${developerName} - About Me`,
+  title: `${DEVELOPER.NAME} - About Me`,
   description: aboutContent,
-  category: `About ${developerName}`,
-  creator: developerName,
-  keywords: subtitles,
+  category: `About ${DEVELOPER.NAME}`,
+  creator: DEVELOPER.NAME,
+  keywords: DEVELOPER.SUBTITLES,
 };
 
 /**
@@ -137,7 +134,7 @@ export default function About() {
           <AccordionContent>
             <DetailsTable
               details={[
-                { heading: "Location", value: location },
+                { heading: "Location", value: DEVELOPER.LOCATION },
                 {
                   heading: "Main Focus",
                   value: [
@@ -161,7 +158,9 @@ export default function About() {
                 {
                   heading: "Years of Experience",
                   value:
-                    1 === experienceTime ? "1 year" : `${experienceTime} years`,
+                    1 === DEVELOPER.EXPERIENCE
+                      ? "1 year"
+                      : `${DEVELOPER.EXPERIENCE} years`,
                 },
                 {
                   heading: "Number of Projects",

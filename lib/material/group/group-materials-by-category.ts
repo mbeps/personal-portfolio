@@ -1,6 +1,6 @@
 import type MaterialInterface from "@/database/materials/material-interface";
-import type Database from "@/interfaces/database";
-import type MaterialGroupInterface from "@/interfaces/material/material-group-interface";
+import type Database from "@/types/database/database";
+import type MaterialGroupInterface from "@/types/material/material-group-interface";
 
 /**
  * Builds the structures consumed by `MaterialGroupSectionList`, letting each page reuse the same grouping markup.

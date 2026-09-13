@@ -1,9 +1,9 @@
 import type SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import skillDatabaseMap from "@/database/skills/skill-database-map";
 import SkillTypesEnum from "@/enums/skill/skill-types-enum";
-import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/list-of-categorised-skills-by-type-interface";
 import filterSkillsByType from "@/lib/skills/filter/filter-skills-by-type";
 import categoriseAndGroupSkills from "@/lib/skills/group/categorise-and-group-skills";
+import type ListOfCategorisedSkillsByTypeInterface from "@/types/skills/list-of-categorised-skills-by-type-interface";
 
 /**
  * Centralizes how skills are split into Technology and Technical buckets before being rendered by `SkillTableSection`.

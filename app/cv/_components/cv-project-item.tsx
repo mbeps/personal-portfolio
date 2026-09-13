@@ -1,6 +1,6 @@
 import type React from "react";
+import CvItemSkills from "@/components/cv/cv-item-skills";
 import type ProjectInterface from "@/database/projects/project-interface";
-import CvItemSkills from "./cv-item-skills";
 
 interface CvProjectItemProps {
   project: ProjectInterface;

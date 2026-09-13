@@ -1,15 +1,15 @@
-import ShortDate from "@/class/short-date";
 import CertificateDatabaseKeys from "@/database/certificates/certificate-database-keys";
+import CompanyDatabaseKeys from "@/database/companies/company-database-keys";
 import ProjectDatabaseKeys from "@/database/projects/project-database-keys";
 import RoleDatabaseKeys from "@/database/roles/role-database-keys";
 import type RoleInterface from "@/database/roles/role-interface";
 import SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import ExperienceCategoriesEnum from "@/enums/experience/experience-categories-enum";
 import ExperienceTypeEnum from "@/enums/experience/experience-type-enum";
-import type Database from "@/interfaces/database";
 import validateDatabaseKeys from "@/lib/database/validate-database-keys";
+import ShortDate from "@/lib/date/short-date";
 import updateRolesWithExperienceTime from "@/lib/material/role/update-roles-with-experience-time";
-import CompanyDatabaseKeys from "../companies/company-database-keys";
+import type Database from "@/types/database/database";
 
 const rolesMap: Database<RoleInterface> = {
   [RoleDatabaseKeys.CommerzbankAiEngineer]: {

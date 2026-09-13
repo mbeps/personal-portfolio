@@ -1,9 +1,10 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import type React from "react";
+import RelatedSkillsSection from "@/app/skills/[skillKey]/_components/related-skills-section";
 import MaterialList from "@/components/material-lists/material-list";
 import PageDescription from "@/components/ui/page-description";
-import developerName from "@/constants/developer-name";
+import { DEVELOPER } from "@/config/developer-info";
 import materialDatabaseMap, {
   materialKeys,
 } from "@/database/materials/material-database-map";
@@ -13,7 +14,6 @@ import skillDatabaseMap, {
 } from "@/database/skills/skill-database-map";
 import type SkillInterface from "@/database/skills/skill-interface";
 import filterMaterialBySkill from "@/lib/material/filter/filter-material-by-skill";
-import RelatedSkillsSection from "./_components/related-skills-section";
 
 type Params = Promise<{ skillKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
@@ -43,7 +43,7 @@ export async function generateMetadata(
 
   if (skill.isMainSkill) {
     return {
-      title: `${developerName} - Skills: ${skill?.name}`,
+      title: `${DEVELOPER.NAME} - Skills: ${skill?.name}`,
       description: skill.name,
       keywords: [skill.name],
     };

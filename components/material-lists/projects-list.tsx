@@ -1,7 +1,7 @@
 import ProjectItem from "@/components/material-items/project-item";
+import MaterialGroupSectionList from "@/components/material-lists/material-group-section-list";
 import type ProjectDatabaseKeys from "@/database/projects/project-database-keys";
-import type MaterialGroupListInterface from "@/interfaces/material/material-group-list-interface";
-import MaterialGroupSectionList from "./material-group-section-list";
+import type MaterialGroupListInterface from "@/types/material/material-group-list-interface";
 
 /**
  * MaterialGroupSectionList wrapper that renders grouped project slugs using the shared `ProjectItem` card.

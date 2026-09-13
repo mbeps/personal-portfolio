@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 import React from "react";
-import CvExperienceItem from "@/app/cv/_components/cv-experience-item";
-import CvSection from "@/app/cv/_components/cv-section";
-import CvSkillGroup from "@/app/cv/_components/cv-skill-group";
-import type { SerializedRoleInterface } from "@/app/cv/page";
+import AllBlogItem from "@/app/(site)/all/_components/all-blog-item";
+import AllCertificateItem from "@/app/(site)/all/_components/all-certificate-item";
+import AllEducationItem from "@/app/(site)/all/_components/all-education-item";
+import AllProjectItem from "@/app/(site)/all/_components/all-project-item";
+import CvExperienceItem from "@/components/cv/cv-experience-item";
+import CvSection from "@/components/cv/cv-section";
+import CvSkillGroup from "@/components/cv/cv-skill-group";
 import Reader from "@/components/reader/reader";
 import { Separator } from "@/components/shadcn/ui/separator";
-import developerName from "@/constants/developer-name";
-import location from "@/constants/location";
-import { PATHS } from "@/constants/paths";
-import socialLinks from "@/constants/socials";
-import subtitles from "@/constants/subtitles";
+import { DEVELOPER } from "@/config/developer-info";
+import { PATHS } from "@/config/paths";
+import socialLinks from "@/config/socials";
 import type BlogDatabaseKeys from "@/database/blogs/blog-database-keys";
 import blogDatabaseMap from "@/database/blogs/blogs-database-map";
 import type CertificateDatabaseKeys from "@/database/certificates/certificate-database-keys";
@@ -26,20 +27,18 @@ import skillDatabaseMap, {
   skillDatabaseKeys,
 } from "@/database/skills/skill-database-map";
 import ExperienceTypeEnum from "@/enums/experience/experience-type-enum";
+import GroupByOptions from "@/enums/skill/group-by-options";
 import getMarkdownFromFileSystem from "@/lib/file-system/get-markdown-from-file-system";
-import groupSkills, { GroupByOptions } from "@/lib/skills/group/group-skills";
-import AllBlogItem from "./_components/all-blog-item";
-import AllCertificateItem from "./_components/all-certificate-item";
-import AllEducationItem from "./_components/all-education-item";
-import AllProjectItem from "./_components/all-project-item";
+import groupSkills from "@/lib/skills/group/group-skills";
+import type { SerializedRoleInterface } from "@/types/roles/serialized-role";
 
 /**
  * Metadata for the /all page.
  * robots: { index: false } ensures it's not indexed by search engines.
  */
 export const metadata: Metadata = {
-  title: `${developerName} - All Content`,
-  description: `Comprehensive archive of all portfolio content for ${developerName}.`,
+  title: `${DEVELOPER.NAME} - All Content`,
+  description: `Comprehensive archive of all portfolio content for ${DEVELOPER.NAME}.`,
   robots: {
     index: false,
     follow: true,
@@ -123,10 +122,10 @@ const AllPage: React.FC = () => {
     <main className="mx-auto max-w-4xl px-6 py-12">
       {/* Inline Header */}
       <header className="mb-4 border-neutral-200 border-b-2 pb-2 dark:border-neutral-800">
-        <h1 className="mb-2 font-bold text-4xl">{developerName}</h1>
+        <h1 className="mb-2 font-bold text-4xl">{DEVELOPER.NAME}</h1>
         <div className="space-y-2 font-medium text-neutral-600 text-xl dark:text-neutral-400">
-          <p>{location}</p>
-          <p>{subtitles.join(" · ")}</p>
+          <p>{DEVELOPER.LOCATION}</p>
+          <p>{DEVELOPER.SUBTITLES.join(" · ")}</p>
         </div>
         <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 font-bold text-lg">
           {socialLinks

@@ -15,7 +15,7 @@ import ModuleDatabaseKeys from "@/database/modules/module-database-keys";
 import ProjectDatabaseKeys from "@/database/projects/project-database-keys";
 import RoleDatabaseKeys from "@/database/roles/role-database-keys";
 import SkillDatabaseKeys from "@/database/skills/skill-database-keys";
-import type MaterialGroupInterface from "@/interfaces/material/material-group-interface";
+import type MaterialGroupInterface from "@/types/material/material-group-interface";
 
 const { mockUseQueryStates } = vi.hoisted(() => ({
   mockUseQueryStates: vi.fn(),

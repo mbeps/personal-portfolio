@@ -2,13 +2,18 @@
 
 import type React from "react";
 import FilterSection from "@/components/filters/filter-section";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/shadcn/ui/card";
 import SkillTag from "@/components/tags/skill-tag";
-import { ROUTES } from "@/constants/routes";
+import { ROUTES } from "@/config/routes";
 import type SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import useSkillFilterState from "@/hooks/use-skill-filter-state";
-import type CategorisedSkillsInterface from "@/interfaces/skills/categorised-skills-interface";
 import { skillHasMaterial } from "@/lib/material/skill-usage-helpers";
-import { Card, CardContent, CardHeader, CardTitle } from "../shadcn/ui/card";
+import type CategorisedSkillsInterface from "@/types/skills/categorised-skills-interface";
 
 interface SkillListProps {
   skills: SkillDatabaseKeys[];

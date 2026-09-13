@@ -1,14 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BsArrowUpRightCircle, BsInfoCircle } from "react-icons/bs";
-import ShortDate from "@/class/short-date";
-import { ROUTES } from "@/constants/routes";
+import { AspectRatio } from "@/components/shadcn/ui/aspect-ratio";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/shadcn/ui/tooltip";
+import { ROUTES } from "@/config/routes";
 import companyDatabaseMap from "@/database/companies/company-database-map";
 import type CompanyInterface from "@/database/companies/company-interface";
 import rolesDatabase from "@/database/roles/role-database-map";
 import type RoleInterface from "@/database/roles/role-interface";
-import { AspectRatio } from "../shadcn/ui/aspect-ratio";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../shadcn/ui/tooltip";
+import ShortDate from "@/lib/date/short-date";
 
 interface WorkItemProps {
   roleKey: string;

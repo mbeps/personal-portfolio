@@ -17,9 +17,9 @@ import {
 } from "@/components/shadcn/ui/accordion";
 import { Button } from "@/components/shadcn/ui/button";
 import { ButtonGroup } from "@/components/shadcn/ui/button-group";
-import type ArchiveFilter from "@/interfaces/filters/archive-filter";
-import type FilterCategory from "@/interfaces/filters/filter-category";
-import type SearchFilter from "@/interfaces/filters/search-filter";
+import type ArchiveFilter from "@/types/filters/archive-filter";
+import type FilterCategory from "@/types/filters/filter-category";
+import type SearchFilter from "@/types/filters/search-filter";
 
 /**
  * Props for the `FilterSection` top-level filter bar component.

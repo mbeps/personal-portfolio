@@ -1,13 +1,13 @@
 import Link from "next/link";
+import MaterialGroupSectionList from "@/components/material-lists/material-group-section-list";
+import Tag from "@/components/tags/tag";
 import Grid from "@/components/ui/grid";
-import { ROUTES } from "@/constants/routes";
+import { ROUTES } from "@/config/routes";
 import courseDatabaseMap from "@/database/courses/course-database-map";
 import type ModuleDatabaseKeys from "@/database/modules/module-database-keys";
 import moduleDatabaseMap from "@/database/modules/module-database-map";
-import type MaterialGroupInterface from "@/interfaces/material/material-group-interface";
 import findCourseKeyForModule from "@/lib/material/course/find-course-key-for-module";
-import Tag from "../tags/tag";
-import MaterialGroupSectionList from "./material-group-section-list";
+import type MaterialGroupInterface from "@/types/material/material-group-interface";
 
 interface ModuleListProps {
   groupedMaterial: MaterialGroupInterface[];

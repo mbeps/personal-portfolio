@@ -2,20 +2,20 @@
 
 import { parseAsBoolean, useQueryState } from "nuqs";
 import React from "react";
+import CvExperienceItem from "@/components/cv/cv-experience-item";
+import CvSection from "@/components/cv/cv-section";
+import CvSkillGroup from "@/components/cv/cv-skill-group";
 import Reader from "@/components/reader/reader";
 import { Separator } from "@/components/shadcn/ui/separator";
 import { Switch } from "@/components/shadcn/ui/switch";
 import type CourseInterface from "@/database/courses/course-interface";
 import type ProjectInterface from "@/database/projects/project-interface";
 import skillDatabaseMap from "@/database/skills/skill-database-map";
-import type CategorisedSkillsInterface from "@/interfaces/skills/categorised-skills-interface";
-import type { SerializedRoleInterface } from "../page";
+import type { SerializedRoleInterface } from "@/types/roles/serialized-role";
+import type CategorisedSkillsInterface from "@/types/skills/categorised-skills-interface";
 import CvEducationItem from "./cv-education-item";
-import CvExperienceItem from "./cv-experience-item";
 import CvHeader from "./cv-header";
 import CvProjectItem from "./cv-project-item";
-import CvSection from "./cv-section";
-import CvSkillGroup from "./cv-skill-group";
 
 interface CvPageContentProps {
   aboutContent?: string | null;

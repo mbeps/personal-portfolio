@@ -7,8 +7,8 @@ import Navbar from "@/components/navbar/navbar";
 import NavbarItem from "@/components/navbar/navbar-item";
 import NavbarOverlay from "@/components/navbar/navbar-overlay";
 import ThemeToggle from "@/components/navbar/theme-toggle";
-import developerName from "@/constants/developer-name";
-import { NAV_ITEMS, ROUTES } from "@/constants/routes";
+import { DEVELOPER } from "@/config/developer-info";
+import { NAV_ITEMS, ROUTES } from "@/config/routes";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { useNavbarStore } from "@/hooks/use-navbar-store";
 
@@ -110,7 +110,7 @@ describe("Navbar Components Suite", () => {
       const html = renderToStaticMarkup(<HomeButton />);
 
       expect(html).toContain(`href="${ROUTES.HOME.path}"`);
-      expect(html).toContain(developerName);
+      expect(html).toContain(DEVELOPER.NAME);
       expect(html).toContain("<h2");
     });
   });
@@ -282,7 +282,7 @@ describe("Navbar Components Suite", () => {
       const html = renderToStaticMarkup(<Navbar />);
 
       expect(html).toContain("<header");
-      expect(html).toContain(developerName);
+      expect(html).toContain(DEVELOPER.NAME);
       expect(html).toContain("transition-duration:700ms");
     });
 

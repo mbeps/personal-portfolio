@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import type React from "react";
 import FilterSection from "@/components/filters/filter-section";
 import ProjectsList from "@/components/material-lists/projects-list";
-import { ROUTES } from "@/constants/routes";
+import { ROUTES } from "@/config/routes";
 import type ProjectDatabaseKeys from "@/database/projects/project-database-keys";
 import projectDatabaseMap from "@/database/projects/project-database-map";
 import type ProjectInterface from "@/database/projects/project-interface";

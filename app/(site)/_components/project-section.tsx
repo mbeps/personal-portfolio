@@ -1,7 +1,7 @@
 import Link from "next/link";
 import ProjectItem from "@/components/material-items/project-item";
 import { Button } from "@/components/shadcn/ui/button";
-import { ROUTES } from "@/constants/routes";
+import { ROUTES } from "@/config/routes";
 import ProjectDatabaseKeys from "@/database/projects/project-database-keys";
 
 /**

@@ -1,7 +1,7 @@
 import type SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import type SkillInterface from "@/database/skills/skill-interface";
 import type SkillCategoriesEnum from "@/enums/skill/skill-categories-enum";
-import type Database from "@/interfaces/database";
+import type Database from "@/types/database/database";
 
 /**
  * Filters out skills that fall into ignored categories, useful when building language-first groupings that should hide unrelated categories.

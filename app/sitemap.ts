@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
-import { ROUTES } from "@/constants/routes";
+import { env } from "@/config/env";
+import { ROUTES } from "@/config/routes";
 
 /**
  * Generates the `sitemap.xml` file for the website.
@@ -10,8 +11,7 @@ import { ROUTES } from "@/constants/routes";
  */
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl: string =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://www.maruf-bepary.com";
+  const baseUrl: string = env.NEXT_PUBLIC_SITE_URL;
 
   return [
     // Homepage - highest priority

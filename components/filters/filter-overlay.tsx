@@ -3,16 +3,16 @@
 import Link from "next/link";
 import type React from "react";
 import { AiOutlineClear } from "react-icons/ai";
+import { ArchiveToggle } from "@/components/filters/archive-toggle";
+import FilterOptionItemAccordion from "@/components/filters/filter-option-item-accordion";
+import FilterOptionItemCombobox from "@/components/filters/filter-option-item-combobox";
+import { Button } from "@/components/shadcn/ui/button";
 import { Drawer, DrawerContent } from "@/components/shadcn/ui/drawer";
+import SidePanel from "@/components/ui/side-panel";
 import useIsMounted from "@/hooks/use-is-mounted";
 import { useMediaQuery } from "@/hooks/use-media-query";
-import type ArchiveFilter from "@/interfaces/filters/archive-filter";
-import type FilterCategory from "@/interfaces/filters/filter-category";
-import { Button } from "../shadcn/ui/button";
-import SidePanel from "../ui/side-panel";
-import { ArchiveToggle } from "./archive-toggle";
-import FilterOptionItemAccordion from "./filter-option-item-accordion";
-import FilterOptionItemCombobox from "./filter-option-item-combobox";
+import type ArchiveFilter from "@/types/filters/archive-filter";
+import type FilterCategory from "@/types/filters/filter-category";
 
 interface FilterOverlayProps {
   filterCategories: FilterCategory[];

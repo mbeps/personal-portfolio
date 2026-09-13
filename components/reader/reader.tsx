@@ -7,14 +7,14 @@ import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
+import CodeBlock from "@/components/reader/code-block";
+import HtmlRender from "@/components/reader/html-render";
+import Mermaid from "@/components/reader/mermaid";
 import { cn } from "@/lib/utils";
-import CodeBlock from "./code-block";
-import HtmlRender from "./html-render";
-import Mermaid from "./mermaid";
 
-export type ReaderSize = "sm" | "base" | "lg" | "reading" | "compact" | "docs";
+type ReaderSize = "sm" | "base" | "lg" | "reading" | "compact" | "docs";
 
-export type ReaderProps = {
+type ReaderProps = {
   content: string | null | undefined;
   size?: ReaderSize;
   className?: string;

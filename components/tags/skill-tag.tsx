@@ -3,12 +3,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type React from "react";
-import { ROUTES } from "@/constants/routes";
+import Tag from "@/components/tags/tag";
+import { ROUTES } from "@/config/routes";
 import type SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import skillDatabaseMap from "@/database/skills/skill-database-map";
 import type SkillInterface from "@/database/skills/skill-interface";
 import { isSkillAssociatedWithMaterial } from "@/lib/material/skill-usage-helpers";
-import Tag from "./tag";
 
 interface TagProps {
   skillKey: SkillDatabaseKeys;

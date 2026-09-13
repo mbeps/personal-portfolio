@@ -4,19 +4,19 @@ import MaterialList from "@/components/material-lists/material-list";
 import SpecialReader from "@/components/reader/special-reader";
 import { Card, CardContent } from "@/components/shadcn/ui/card";
 import SkillTableSection from "@/components/skills/skill-table-section";
-import developerName from "@/constants/developer-name";
-import { PATHS } from "@/constants/paths";
-import { ROUTES } from "@/constants/routes";
+import { DEVELOPER } from "@/config/developer-info";
+import { PATHS } from "@/config/paths";
+import { ROUTES } from "@/config/routes";
 import type BlogDatabaseKeys from "@/database/blogs/blog-database-keys";
 import type BlogInterface from "@/database/blogs/blog-interface";
 import blogsDatabaseMap from "@/database/blogs/blogs-database-map";
 import ProjectDatabaseKeys from "@/database/projects/project-database-keys";
 import BlogCategoriesEnum from "@/enums/blog/blog-categories-enum";
-import type ListOfCategorisedSkillsByTypeInterface from "@/interfaces/skills/list-of-categorised-skills-by-type-interface";
 import getMarkdownFromFileSystem from "@/lib/file-system/get-markdown-from-file-system";
 import processMarkdownImages from "@/lib/process-markdown-images";
 import buildSkillTableGroups from "@/lib/skills/group/build-skill-table-groups";
 import hasAnySkills from "@/lib/skills/has-any-skills";
+import type ListOfCategorisedSkillsByTypeInterface from "@/types/skills/list-of-categorised-skills-by-type-interface";
 
 type Params = Promise<{ blogKey: string }>;
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
@@ -42,10 +42,10 @@ export async function generateMetadata(
   }
 
   return {
-    title: `${developerName} - Blogs: ${blog?.name}`,
+    title: `${DEVELOPER.NAME} - Blogs: ${blog?.name}`,
     description: blog?.subtitle,
     category: `${ROUTES.BLOGS.name}`,
-    creator: developerName,
+    creator: DEVELOPER.NAME,
   };
 }
 

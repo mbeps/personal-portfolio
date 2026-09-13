@@ -1,5 +1,4 @@
 import { describe, expect, it } from "vitest";
-import ShortDate from "@/class/short-date";
 import type CertificateInterface from "@/database/certificates/certificate-interface";
 import type MaterialInterface from "@/database/materials/material-interface";
 import type ProjectInterface from "@/database/projects/project-interface";
@@ -14,7 +13,7 @@ import ProjectCategoriesEnum from "@/enums/project/project-categories-enum";
 import ProjectTypeEnum from "@/enums/project/project-type-enum";
 import SkillCategoriesEnum from "@/enums/skill/skill-categories-enum";
 import SkillTypesEnum from "@/enums/skill/skill-types-enum";
-import type Database from "@/interfaces/database";
+import ShortDate from "@/lib/date/short-date";
 import generateFilterOptions from "@/lib/material/filter-options/generate-filter-options";
 import generateFilterOptionsByCategory from "@/lib/material/filter-options/generate-filter-options-by-category";
 import { generateFilterOptionsByRoleType } from "@/lib/material/filter-options/generate-filter-options-by-role-type";
@@ -23,6 +22,7 @@ import generateFilterOptionsBySkillType from "@/lib/material/filter-options/gene
 import generateFilterOptionsByType from "@/lib/material/filter-options/generate-filter-options-by-type";
 import generateFilterOptionsForProgrammingLanguages from "@/lib/material/filter-options/generate-filter-options-for-programming-languages";
 import generateIssuerFilterOptions from "@/lib/material/filter-options/generate-issuer-filter-options";
+import type Database from "@/types/database/database";
 
 describe("generateFilterOptions", () => {
   it("should always prepend { slug: 'all', entryName: 'All' }", () => {

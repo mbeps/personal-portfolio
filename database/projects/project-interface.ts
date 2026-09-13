@@ -1,6 +1,6 @@
+import type MaterialInterface from "@/database/materials/material-interface";
 import type ProjectCategoriesEnum from "@/enums/project/project-categories-enum";
 import type ProjectTypeEnum from "@/enums/project/project-type-enum";
-import type MaterialInterface from "../materials/material-interface";
 
 /**
  * Extends the base material contract for projects, tying metadata to assets under `public/projects/{key}` and links shown across the site.

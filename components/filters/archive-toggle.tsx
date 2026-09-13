@@ -1,4 +1,4 @@
-import { Switch } from "../shadcn/ui/switch";
+import { Switch } from "@/components/shadcn/ui/switch";
 
 interface ArchiveToggleProps {
   showArchived: boolean;

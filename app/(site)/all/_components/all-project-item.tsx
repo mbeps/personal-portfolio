@@ -1,7 +1,7 @@
 import type React from "react";
-import CvItemSkills from "@/app/cv/_components/cv-item-skills";
+import CvItemSkills from "@/components/cv/cv-item-skills";
 import Reader from "@/components/reader/reader";
-import { PATHS } from "@/constants/paths";
+import { PATHS } from "@/config/paths";
 import type ProjectDatabaseKeys from "@/database/projects/project-database-keys";
 import type ProjectInterface from "@/database/projects/project-interface";
 import getMarkdownFromFileSystem from "@/lib/file-system/get-markdown-from-file-system";

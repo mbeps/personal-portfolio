@@ -2,9 +2,9 @@ import type MaterialInterface from "@/database/materials/material-interface";
 import type SkillInterface from "@/database/skills/skill-interface";
 import type SkillCategoriesEnum from "@/enums/skill/skill-categories-enum";
 import type SkillTypesEnum from "@/enums/skill/skill-types-enum";
-import type Database from "@/interfaces/database";
-import type FilterOption from "@/interfaces/filters/filter-option";
-import generateFilterOptions from "./generate-filter-options";
+import generateFilterOptions from "@/lib/material/filter-options/generate-filter-options";
+import type Database from "@/types/database/database";
+import type FilterOption from "@/types/filters/filter-option";
 
 /**
  * Builds dynamic filter options for a given skill type (language, framework, etc.).

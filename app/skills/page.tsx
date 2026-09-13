@@ -1,20 +1,20 @@
+import SkillList from "@/components/material-lists/skill-list";
 import PageDescription from "@/components/ui/page-description";
-import developerName from "@/constants/developer-name";
-import { ROUTES } from "@/constants/routes";
+import { DEVELOPER } from "@/config/developer-info";
+import { ROUTES } from "@/config/routes";
 import skillDatabaseMap, {
   skillDatabaseKeys,
 } from "@/database/skills/skill-database-map";
-import SkillList from "../../components/material-lists/skill-list";
 
 /**
  * Static metadata for the skills hub, built from the skill database so keywords mirror the visible directory.
  */
 export const metadata = {
-  title: `${developerName} - Skills`,
-  description: `A list of all skills that ${developerName} has.
+  title: `${DEVELOPER.NAME} - Skills`,
+  description: `A list of all skills that ${DEVELOPER.NAME} has.
   These skills have been demonstrated in various projects, work experiences, education, certifications/online courses, and blogs.`,
   category: `${ROUTES.SKILLS.name}`,
-  creator: developerName,
+  creator: DEVELOPER.NAME,
   keywords: Object.values(skillDatabaseMap).map((skill) => skill.name),
 };
 

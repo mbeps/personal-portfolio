@@ -1,6 +1,6 @@
+import type MaterialInterface from "@/database/materials/material-interface";
 import type CertificateCategoriesEnum from "@/enums/certificate/certificate-categories-enum";
 import type CertificateIssuersEnum from "@/enums/certificate/certificate-issuers-enum";
-import type MaterialInterface from "../materials/material-interface";
 
 /**
  * Extends the base material contract for certificates, tying metadata to issuers and assets stored under `public/certificates`.

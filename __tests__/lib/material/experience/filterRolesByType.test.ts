@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
-import ShortDate from "@/class/short-date";
 import type CompanyDatabaseKeys from "@/database/companies/company-database-keys";
 import type RoleInterface from "@/database/roles/role-interface";
 import ExperienceCategoriesEnum from "@/enums/experience/experience-categories-enum";
 import ExperienceTypeEnum from "@/enums/experience/experience-type-enum";
-import type Database from "@/interfaces/database";
+import ShortDate from "@/lib/date/short-date";
 import filterRolesByType from "@/lib/material/experience/filter-roles-by-type";
+import type Database from "@/types/database/database";
 
 const mockRolesDatabase: Database<RoleInterface> = {
   swe: {

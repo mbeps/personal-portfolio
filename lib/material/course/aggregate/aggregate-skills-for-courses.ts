@@ -1,7 +1,7 @@
 import type CourseInterface from "@/database/courses/course-interface";
 import type ModuleInterface from "@/database/modules/module-interface";
-import type Database from "@/interfaces/database";
-import aggregateCourseField from "./aggregate-course-field";
+import aggregateCourseField from "@/lib/material/course/aggregate/aggregate-course-field";
+import type Database from "@/types/database/database";
 
 /**
  * Batch version of the course skill aggregation so the education pages can hydrate the full database once at import time.

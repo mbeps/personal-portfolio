@@ -1,9 +1,9 @@
-import { PATHS } from "@/constants/paths";
+import { PATHS } from "@/config/paths";
+import CompanyDatabaseKeys from "@/database/companies/company-database-keys";
 import type CompanyInterface from "@/database/companies/company-interface";
 import RoleDatabaseKeys from "@/database/roles/role-database-keys";
-import type Database from "@/interfaces/database";
 import validateDatabaseKeys from "@/lib/database/validate-database-keys";
-import CompanyDatabaseKeys from "./company-database-keys";
+import type Database from "@/types/database/database";
 
 const companiesMap: Database<CompanyInterface> = {
   [CompanyDatabaseKeys.Commerzbank]: {

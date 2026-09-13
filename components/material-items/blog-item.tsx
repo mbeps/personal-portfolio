@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type React from "react";
-import { ROUTES } from "@/constants/routes";
+import { ROUTES } from "@/config/routes";
 import type BlogInterface from "@/database/blogs/blog-interface";
 import blogsDatabaseMap from "@/database/blogs/blogs-database-map";
 

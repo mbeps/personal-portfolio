@@ -1,11 +1,11 @@
 import Link from "next/link";
+import LanguageSection from "@/app/(site)/_components/about-section/language-section";
+import TechnologiesSection from "@/app/(site)/_components/about-section/technologies-section";
 import Reader from "@/components/reader/reader";
 import NextSectionButton from "@/components/ui/next-section-button";
-import { PATHS } from "@/constants/paths";
-import { ROUTES } from "@/constants/routes";
+import { PATHS } from "@/config/paths";
+import { ROUTES } from "@/config/routes";
 import getMarkdownFromFileSystem from "@/lib/file-system/get-markdown-from-file-system";
-import LanguageSection from "./language-section";
-import TechnologiesSection from "./technologies-section";
 
 /**
  * Markdown-backed about preview that pairs the Reader with the interactive language/technology sub sections.

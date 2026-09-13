@@ -3,7 +3,7 @@ import type SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import type SkillInterface from "@/database/skills/skill-interface";
 import type SkillCategoriesEnum from "@/enums/skill/skill-categories-enum";
 import type SkillTypesEnum from "@/enums/skill/skill-types-enum";
-import type Database from "@/interfaces/database";
+import type Database from "@/types/database/database";
 
 /**
  * Propagates skill relationships so filters, search, and the homepage counts reflect the same taxonomy.

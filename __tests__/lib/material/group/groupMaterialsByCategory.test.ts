@@ -1,8 +1,8 @@
 import { describe, expect, test } from "vitest";
 import type MaterialInterface from "@/database/materials/material-interface";
 import SkillDatabaseKeys from "@/database/skills/skill-database-keys";
-import type Database from "@/interfaces/database";
 import groupMaterialsByCategory from "@/lib/material/group/group-materials-by-category";
+import type Database from "@/types/database/database";
 
 function material(
   name: string,
