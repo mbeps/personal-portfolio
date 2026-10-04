@@ -1,57 +1,41 @@
-- [**Project Reflection: Translate Bot**](#project-reflection-translate-bot)
-	- [Why This Bot Was Built](#why-this-bot-was-built)
-		- [Replacing the Old Bot](#replacing-the-old-bot)
-		- [Issues with the Old Bot](#issues-with-the-old-bot)
-		- [Advantages of the New Bot](#advantages-of-the-new-bot)
-		- [Asynchronous Functionality and Scalability](#asynchronous-functionality-and-scalability)
-		- [Faster Translations and More Languages](#faster-translations-and-more-languages)
-	- [Challenges](#challenges)
-		- [Making the Bot Asynchronous](#making-the-bot-asynchronous)
-		- [Frontend Asynchronous Support](#frontend-asynchronous-support)
-		- [Backend Asynchronous Development](#backend-asynchronous-development)
-		- [Learning Asynchronous Programming in Spring Boot](#learning-asynchronous-programming-in-spring-boot)
-		- [Achieving Full Asynchrony](#achieving-full-asynchrony)
-	- [Conclusion](#conclusion)
+# Project Reflection: Translate Bot
 
+## Summary
+I developed the Symphony Translate Bot. It translates messages between users who speak different languages. I built it with the Symphony BDK and Spring Boot 3. It replaces an older translation bot that used a custom legacy SDK. The old bot failed often and needed regular maintenance. Symphony could not support it. The new bot is more stable and easier to maintain. It translates faster and works in more chat formats.
 
-# **Project Reflection: Translate Bot**
-This report reflects on the development of the Symphony Translate Bot, a tool designed to make communication easier for people who speak different languages. Built using the Symphony BDK and Spring Boot 3, the bot was created to replace an older, less reliable version. The older bot, which used a custom SDK, was prone to breaking, required frequent maintenance, and lacked proper support from Symphony. The new bot improves on these issues by offering a more stable, modern codebase and adding many new features over the old bot. It also provides faster translation times and better support for users across different chat formats, greatly enhancing user experience and business efficiency.
-
-## Why This Bot Was Built
+## Why I Built This Bot
 
 ### Replacing the Old Bot
-The new Symphony Translate Bot was built to replace an existing bot that also handled translations. The old bot was not built using the Symphony BDK but a custom legacy SDK. This caused several problems that made it unreliable and difficult to maintain.
+The old bot also did translations. It used a custom legacy SDK instead of the Symphony BDK. This caused problems.
 
-### Issues with the Old Bot
-The old bot frequently broke down and required constant maintenance to stay operational. Because it wasn’t built with the Symphony BDK, we couldn’t get support from Symphony. Additionally, the code was complex and difficult to work with, making it challenging to add new features or make improvements.
+### Problems with the Old Bot
+The old bot failed often. It needed constant maintenance to stay online. We could not get support from Symphony. The code was complex, so adding features was hard.
 
-### Advantages of the New Bot
-The new bot, built using the Symphony BDK, solved these issues. It had a cleaner and more modern codebase, which made it much more reliable and easier to maintain. With this new framework, we could get full support from Symphony, speeding up development time and reducing the need for constant repairs.
+### Benefits of the New Bot
+The new bot uses the Symphony BDK. Its code is cleaner and easier to maintain. Symphony gives full support for this framework. Development was faster. Repair work dropped.
 
-### Asynchronous Functionality and Scalability
-One major improvement in the new bot was its ability to handle tasks asynchronously. The old bot processed translation requests one by one, meaning only one person could use it at a time. The new bot could manage multiple requests simultaneously, allowing several users to access translations at once. It could also be used in chat rooms, not just in one-on-one conversations, which made it more flexible for different communication needs.
+### Asynchronous Operation and Scalability
+The old bot processed one request at a time. Only one user could use it. The new bot processes many requests at once. Several users can use it together. It also works in chat rooms. The old bot worked only in one-to-one conversations.
 
-### Faster Translations and More Languages
-The new bot could translate between multiple languages, similar to Google Translate, eliminating the need for separate bots for different languages. It was also much faster, with translation times reduced from 40 seconds to just 4 seconds in some cases. This significantly improved both user and developer experience, while also increasing efficiency for the business.
+### Speed and Language Support
+The new bot translates between many languages, like Google Translate. We no longer need a separate bot for each language. Translation time dropped from 40 seconds to 4 seconds in some cases. Users and developers had a better experience. The business saved time.
 
 ## Challenges
 
 ### Making the Bot Asynchronous
-The main challenge in developing the new bot was making it fully asynchronous. Both the Symphony frontend and the translation service needed to work asynchronously to handle multiple requests at the same time. The old bot handled tasks sequentially, which limited the number of users that could interact with it simultaneously.
+The main challenge was making the bot fully asynchronous. The Symphony frontend and the translation service both had to be asynchronous. The old bot worked sequentially.
 
 ### Frontend Asynchronous Support
-Thanks to the support we could now get from Symphony, making the frontend asynchronous was relatively straightforward. They provided guidance on how to adjust the frontend to process requests asynchronously. However, this left the backend needing to be made asynchronous as well, which proved to be much more difficult.
+Symphony helped us make the frontend asynchronous. They gave guidance on how to adjust it. This part was straightforward. The backend still needed the same work. That part was harder.
 
 ### Backend Asynchronous Development
-The backend required more effort to make asynchronous. The whole application needed to be async, starting from the entry point of the bot, which was resolved fairly quickly. Once the entry point was taken care of, the translation service itself also needed to be made asynchronous. This was a more complex task, as it required restructuring how requests were processed on the backend.
+The whole application needed to be asynchronous. First, I made the entry point asynchronous. This was quick. Next, the translation service needed the same change. This was more complex. I had to restructure how the backend processed requests.
 
 ### Learning Asynchronous Programming in Spring Boot
-To implement this, I needed to learn how asynchronous programming works in Spring Boot. I spent time watching tutorials, reading documentation, and studying best practices for async development in Spring Boot. After gaining a better understanding, I made another attempt to convert the translation service to be fully asynchronous.
+I had to learn asynchronous programming in Spring Boot. I watched tutorials. I read the documentation. I studied best practices for async development. Then I converted the translation service to asynchronous.
 
-### Achieving Full Asynchrony
-After some trial and error, it became clear that the backend translation service was now working asynchronously. This meant the entire stack—from the frontend to the backend—was asynchronous, allowing the bot to handle more requests at once and significantly improving its performance and scalability.
+### Full Asynchronous Operation
+After some trial and error, the translation service worked asynchronously. The full stack was now asynchronous. The bot could handle more requests at once. Performance and scalability improved.
 
 ## Conclusion
-
-Overall, the new bot was a significant upgrade over the old one it replaced. Users were much more satisfied with its performance, and the business benefited from reduced maintenance time. This allowed more focus on adding value elsewhere. Additionally, the bot set a strong foundation for future bots to be built using a simpler, more efficient codebase.
-
+The new bot replaced the old one and performed better. Users were more satisfied. Maintenance time fell, which freed time for other work. The simpler codebase also makes future bots easier to build.

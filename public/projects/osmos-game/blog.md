@@ -1,50 +1,33 @@
-- [**Team Project Reflection: Osmos Game**](#team-project-reflection-osmos-game)
-- [**Preliminary Considerations**](#preliminary-considerations)
-- [**Strategy and Structuralization**](#strategy-and-structuralization)
-- [**Adopting Agile with Trello**](#adopting-agile-with-trello)
-- [**The Quantitative and Qualitative Measurement of Effort**](#the-quantitative-and-qualitative-measurement-of-effort)
-- [**Feedback Mechanisms**](#feedback-mechanisms)
-- [**Team Dynamics and Disagreements**](#team-dynamics-and-disagreements)
-- [**Technical Aspects**](#technical-aspects)
-- [**Conclusion**](#conclusion)
+# Osmos Game: Team Project Reflection
 
+## Before the project
 
-# **Team Project Reflection: Osmos Game**
+This was our second-year university project. It taught us how to work as a team. The game "Osmos" let us combine our creativity, skills, and problem-solving.
 
-# **Preliminary Considerations**
-The undertaking of our second-year university project represented more than just a pedagogical exercise—it was an immersion into the intricacies of collaborative dynamics, synergized through the prism of game development. "Osmos", as a game, became a touchstone of our collective creativity, skillsets, and problem-solving acumen. 
+## Strategy
 
-# **Strategy and Structuralization**
-A robust strategy is pivotal to navigating the labyrinthine process of game development. In our case, this foundational strategy was articulated through rigorous planning, with an emphasis on documenting every facet of the game's mechanics. Such rigorous documentation wasn't a mere procedural formality; it crystallized our conceptual roadmap and solidified our collective understanding of the project's objectives.
+Game development needs a good plan. We wrote down every game mechanic. This documentation gave us a clear roadmap. It also made sure that the team agreed on the goals.
 
-# **Adopting Agile with Trello**
-Recognising the mutable nature of our game's requirements and our own evolutionary learning curve, an agile model was identified as the optimal approach. Trello, in this paradigm, became more than a tool—it was our operational compass. 
+## Agile with Trello
 
-Through Trello, our abstract game ideas metamorphosed into structured tasks. It offered a panoramic view of our progress trajectory, delineating what had been accomplished, and more importantly, what lay ahead. Furthermore, this platform enabled a strategic allocation of tasks, predicated on the individual skillsets of team members, ensuring optimal utilisation of each member's expertise.
+The requirements of the game changed many times. We also learned new things as we worked. Because of this, we used an agile method. We used Trello to manage the work. Trello turned our ideas into tasks. It showed what was done and what was left to do. We gave tasks to team members based on their skills.
 
-# **The Quantitative and Qualitative Measurement of Effort**
-Given the heterogeneity in our team's skill levels, it was imperative to measure developers not just qualitatively, based on the output, but also quantitatively, in terms of effort. It's worth noting that more experienced developers, owing to their proficiency, often had the capacity to integrate more features. However, effort measurement provided a balanced evaluation metric, ensuring that every team member's contributions were acknowledged and valued equitably.
+## Measuring effort
 
-# **Feedback Mechanisms**
-Our iterative refinement process was significantly enhanced through weekly presentations to our supervisor. These weren't mere status updates; they were structured feedback loops, pivotal for validation and directional recalibration, ensuring our project remained aligned with its envisioned trajectory.
+The team members had different skill levels. We measured the work in two ways: by output and by effort. Developers with more experience could add more features. But effort was a fair measure for everyone. It made sure we valued each member's contribution.
 
-# **Team Dynamics and Disagreements**
-Our iterative refinement process was significantly enhanced through multiple channels of feedback. First and foremost, our weekly presentations to our supervisor offered a critical external perspective. These sessions weren't just about offering status updates; they were structured feedback loops that were pivotal for validation and directional recalibration. They ensured our project remained anchored to its envisioned trajectory.
+## Feedback
 
-Equally crucial was the feedback within our team. Given that each member was entrenched in distinct facets of the project, our collective insights offered a comprehensive view of the game's development. Team meetings often transformed into brainstorming sessions, where ideas were not just presented but also critically examined. This internal feedback mechanism ensured that our design and execution phases were continually refined and that any potential pitfalls were proactively identified and addressed. In essence, this dual feedback structure, blending both internal and external insights, fortified our development process and enriched the final product.
+We presented our progress to our supervisor each week. These sessions gave us an outside view. They confirmed our direction or told us to change it. Feedback inside the team was also important. Each member worked on a different part of the game, so together we saw the full picture. In team meetings, we presented ideas and examined them with care. This helped us find problems early. The mix of internal and external feedback made the final game better.
 
-# **Technical Aspects**
+## Technical work
 
-The foundation of our project, CodeSkulptor3, presented both challenges and unique learning opportunities; this was a requirement for this project. As an obscure module in the vast landscape of development libraries, it was far from the conventional choice for game development. Its unfamiliarity meant that the bustling communities of YouTube tutorials and StackOverflow discussions, which developers often lean on, were virtually non-existent for our needs. We found ourselves diving deep into the documentation provided, and more often than not, our professor became an indispensable resource for navigating the complexities of this library.
+CodeSkulptor3 was a requirement for this project. It is a library that few people use. There were almost no YouTube tutorials or StackOverflow answers for it. We used the official documentation. Our professor also helped us many times.
 
-But beyond the challenges posed by the unfamiliarity of CodeSkulptor3 was the intricate task of building the game's physics from the ground up. This wasn't just a game development project; it was also an exercise in applied mathematics. The manual implementation of physics using vectors required a rigorous theoretical understanding before any line of code could be written. Simulating phenomena like object bounces in vector space and gravitational pulls required us to chalk out the maths behind each interaction meticulously. 
+We built the game physics from zero. This was applied mathematics. Before we wrote any code, we had to understand the theory. We used vectors to simulate bounces and gravity. We wrote out the maths for each interaction. My A-Level maths training was very useful here.
 
-I found my A-Level maths training being put through its paces. The challenge lay not just in comprehending the mathematical principles but in translating that understanding into functional Python code. It was akin to crafting our very own game engine, building every mechanism piece by piece, fueled by mathematical logic. Despite the complexities, this process was invigorating. The intersection of theoretical maths with practical coding was both demanding and immensely rewarding. It was a testament to the versatility of Python programming and the depth of mathematical modelling, converging to breathe life into our game.
+The hard part was turning the maths into working Python code. It was like building a small game engine, one piece at a time. The work was difficult, but I enjoyed it. It showed how mathematics and Python can come together in a real game.
 
-# **Conclusion**
+## Conclusion
 
-Embarking on this project was a journey of discovery, stretching both our technical capabilities and our teamwork skills. We navigated the labyrinth of an obscure library, devised our physics from scratch, and transformed abstract mathematical concepts into a tangible gaming experience. This wasn't merely about creating a game but a testament to the interplay of creativity, collaboration, and critical thinking.
-
-The challenges we faced, be it disagreements in approach or the sheer complexity of translating theory into practice, enriched our learning experience. Through constructive feedback loops, diligent planning, and leveraging the unique strengths of each team member, we turned potential roadblocks into milestones. 
-
-In retrospect, while CodeSkulptor3 pushed us out of our comfort zone, it also granted us an unmatched learning curve, proving that sometimes the road less travelled does indeed make all the difference. As we move forward in our academic and professional journeys, the lessons imbibed from this project will undoubtedly act as guiding beacons, reminding us of the potent blend of persistence, collaboration, and innovation.
+This project improved our technical skills and our teamwork. We learned an unfamiliar library. We built physics from mathematics. We used feedback, careful planning, and each member's strengths to get past problems. CodeSkulptor3 pushed us out of our comfort zone, and we learned the most from that. The lessons from this project will stay useful in our studies and in our careers.
