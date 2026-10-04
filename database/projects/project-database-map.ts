@@ -1,5 +1,4 @@
 import { PATHS } from "@/config/paths";
-import BlogDatabaseKeys from "@/database/blogs/blog-database-keys";
 import CertificateDatabaseKeys from "@/database/certificates/certificate-database-keys";
 import ModuleDatabaseKeys from "@/database/modules/module-database-keys";
 import ProjectDatabaseKeys from "@/database/projects/project-database-keys";
@@ -316,12 +315,7 @@ const projectMap: Database<ProjectInterface> = {
     thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.OAuthNextJsSpringBoot)
       .COVER,
     type: ProjectTypeEnum.Personal,
-    relatedMaterials: [
-      BlogDatabaseKeys.AuthenticationSessionManagement,
-      BlogDatabaseKeys.CrossOriginResourceSharing,
-      BlogDatabaseKeys.Backend,
-      ProjectDatabaseKeys.AuthenticationMicroService,
-    ],
+    relatedMaterials: [ProjectDatabaseKeys.AuthenticationMicroService],
   },
   [ProjectDatabaseKeys.NextJsAuthJsTemplate]: {
     name: "Auth.JS Template",
@@ -349,11 +343,6 @@ const projectMap: Database<ProjectInterface> = {
     thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.NextJsAuthJsTemplate)
       .COVER,
     type: ProjectTypeEnum.Personal,
-    relatedMaterials: [
-      BlogDatabaseKeys.AuthenticationSessionManagement,
-      BlogDatabaseKeys.CrossOriginResourceSharing,
-      BlogDatabaseKeys.Backend,
-    ],
   },
 
   [ProjectDatabaseKeys.NextJsBetterAuthTemplate]: {
@@ -383,11 +372,6 @@ const projectMap: Database<ProjectInterface> = {
     thumbnailImage: PATHS.PROJECTS(ProjectDatabaseKeys.NextJsBetterAuthTemplate)
       .COVER,
     type: ProjectTypeEnum.Personal,
-    relatedMaterials: [
-      BlogDatabaseKeys.AuthenticationSessionManagement,
-      BlogDatabaseKeys.CrossOriginResourceSharing,
-      BlogDatabaseKeys.Backend,
-    ],
   },
   [ProjectDatabaseKeys.Noodle]: {
     name: "Noodle",
@@ -459,10 +443,7 @@ const projectMap: Database<ProjectInterface> = {
     repositoryURL: "https://github.com/mbeps/excel-mcp",
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Personal,
-    relatedMaterials: [
-      BlogDatabaseKeys.ModelContextProtocol,
-      RoleDatabaseKeys.CommerzbankAiEngineer,
-    ],
+    relatedMaterials: [RoleDatabaseKeys.CommerzbankAiEngineer],
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.ModelContextProtocol,
@@ -481,7 +462,6 @@ const projectMap: Database<ProjectInterface> = {
     repositoryURL: "https://github.com/mbeps/linux-gnome-mcp",
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Personal,
-    relatedMaterials: [BlogDatabaseKeys.ModelContextProtocol],
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.ModelContextProtocol,
@@ -547,7 +527,6 @@ const projectMap: Database<ProjectInterface> = {
     repositoryURL: "https://github.com/mbeps/vision-transformer",
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Personal,
-    relatedMaterials: [BlogDatabaseKeys.Transformer],
     skills: [
       SkillDatabaseKeys.Python,
       SkillDatabaseKeys.PyTorch,
@@ -621,10 +600,7 @@ const projectMap: Database<ProjectInterface> = {
       "https://github.com/mbeps/machine-learning-pacman-classifier-coursework",
     category: ProjectCategoriesEnum.ArtificialIntelligence,
     type: ProjectTypeEnum.Academic,
-    relatedMaterials: [
-      ModuleDatabaseKeys.KCL_MachineLearning,
-      BlogDatabaseKeys.IntroductionToNeuralNetworks,
-    ],
+    relatedMaterials: [ModuleDatabaseKeys.KCL_MachineLearning],
     skills: [
       SkillDatabaseKeys.Python,
 
@@ -1160,7 +1136,6 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.OAuthNextJsSpringBoot,
       ProjectDatabaseKeys.CommerzbankAppStatus,
       ProjectDatabaseKeys.CommerzbankRates,
-      BlogDatabaseKeys.MicroservicesArchitecture,
     ],
     type: ProjectTypeEnum.Professional,
   },
@@ -1182,7 +1157,6 @@ const projectMap: Database<ProjectInterface> = {
     relatedMaterials: [
       ProjectDatabaseKeys.CommerzbankRates,
       RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      BlogDatabaseKeys.MicroservicesArchitecture,
     ],
     type: ProjectTypeEnum.Professional,
   },
@@ -1206,7 +1180,6 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.SpringBootLdapRoleBasedAccessControlLibrary,
       ProjectDatabaseKeys.SpringBootLdapTemplate,
       RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
-      BlogDatabaseKeys.MicroservicesArchitecture,
     ],
     type: ProjectTypeEnum.Professional,
   },

@@ -1,81 +1,78 @@
-- [**Introduction**](#introduction)
-- [**Version Control Systems: A Lifeline of Software Engineering**](#version-control-systems-a-lifeline-of-software-engineering)
-- [**Unit Testing and Test-Driven Development**](#unit-testing-and-test-driven-development)
-- [**Documentation: Moving Through the Codebase**](#documentation-moving-through-the-codebase)
-- [**Code Quality: More than Just Functionality**](#code-quality-more-than-just-functionality)
-- [**Conclusion**](#conclusion)
+# Calculator Project Report
 
+## Introduction
 
-# **Introduction**
-Our second-year Java assignment, the calculator project, was more about using a working calculator application than the actual application. It focused on proper procedures concerning version control, test-driven development, documentation, and quality assurance based on linting and styling. Thus, an overall approach to the course will enable us to appreciate the fact that software development is much more than just writing the working code—it is about making maintainable, understandable, and scalable software.
+The calculator project was our second-year Java assignment. The project was about more than the calculator application itself. It taught us version control, test-driven development, documentation, and code quality through linting and styling rules. The assignment showed us that software development is more than writing code that works. Good software must also be maintainable, readable, and scalable.
 
-# **Version Control Systems: A Lifeline of Software Engineering**
- Version control systems represent the majority of unsung heroes in software engineering. Throughout the scope of our assignment, we learned about SVN—a Distributed VCS that allows teams to work concurrently on a codebase, merge changes, and even revert to previous states. Our use of SVN has now introduced us to the concepts of branching, tags, releases, code history, and deltas.
+## Version Control
 
-- **Branching**: It allows developers to work on copies of the code base in parallel. The major essence of the branching model is creating isolation from the main code base to be able to implement features, fix bugs, or even try something new without tampering with the main code base. Branching thus allows parallel development of features that are independent of each other. Once this feature is complete, it can now be merged into the main branch. This ensures an easier and more organized workflow.
+Version control systems (VCS) are a core part of software engineering. In this assignment we used SVN. SVN is a distributed VCS. It lets teams work on the same codebase at the same time, merge changes, and go back to earlier versions. We learned about branching, tags, releases, code history, and deltas.
 
-- **Tags**: These are mainly useful for labeling particular versions of your code. This technique is commonly used to create stable releases or at milestones in your project. This places 'bookmarks' in your history that you can easily jump between in order to examine or roll back to a particular version associated with a certain milestone or release.
+**Branching.** A branch is a separate copy of the codebase. A developer can add a feature, fix a bug, or try an idea on a branch without risk to the main code. When the work on the branch is complete, the branch is merged into the main branch. This keeps the workflow clean.
 
-- **Releases**: These are stable versions of the software that are ready to be deployed. These versions have undergone intense testing and are ready for shipping out to the end user. VCS management of releases ensures that only rigorously vetted code reaches the end user, improving quality and reliability in its software.
+**Tags.** A tag marks a specific version of the code. Tags are used for stable releases and project milestones. A tag works like a bookmark in the code history. You can go back to it to examine or restore that version.
 
-- **Code history**: This lets developers trace the change over time. In such a manner, it is easier to get an understanding of how the codebase was modified and determine when a certain change was added. From code history, one can learn useful lessons in the development process of identification and analysis of patterns or trends in the codebase.
+**Releases.** A release is a stable version of the software that is ready to deploy. A release has passed full testing before it goes to the end user. Release management in a VCS makes sure that only tested code reaches the user. This improves quality and reliability.
 
-- **Deltas**: Represent differences between two file versions, showing what was added, modified, or deleted. It gives a very fine-grained look at the changes, which is good for developers to review and understand the impact of modifications. This insight comes in particularly handy while debugging any problems or trying to realize the effect of some change.
+**Code history.** Code history shows all changes over time. It shows when each change was made. This helps developers find patterns and trends in the codebase.
 
-In our experience with SVN in the calculator project, all these features proved their benefits in practice when using a VCS:
+**Deltas.** A delta shows the difference between two versions of a file. It shows what was added, changed, or deleted. This detail is useful when you review changes or debug a problem.
 
-- **Reverting Changes**: VCS allowed us to revert to any past state of the code. If a change recently added a bug, or if we just needed to visit an earlier state of the project, we did it easily. This provided a safety net that gave us the freedom to explore and experiment without fear of irreversible consequences.
+In the calculator project, SVN gave us three practical benefits:
 
-- **Backup and Redundancy**: Since the code was on a remote server, VCS also serves as a backup of sorts. If the hardware failed or the data was irrevocably lost through some other means on a local machine, then it could be restored without a hassle from the remote repository.
+- Reverting changes. We could return the code to any earlier state. If a new change caused a bug, we removed it quickly. This gave us the freedom to experiment without risk.
+- Backup. The code lived on a remote server. If a local machine failed or lost data, we could restore the code from the remote repository.
+- Collaboration. Branching let each developer work on a separate feature at the same time. Merging combined our separate work into one result.
 
-- **Collaboration**: We were better able to collaborate with one another because VCS made this easy. With the availability of branching, different developers were able to work on independent features all at once without impeding each other's progress. The ability to merge had eventually enabled us to stitch our individual efforts into one coherent whole.
+In short, a VCS supports versioning, collaboration, and safe experimentation. The calculator project showed us that a VCS is a lifeline during development.
 
-In other words, a VCS is source control management that allows versioning of the code and a fully functioning system supporting collaboration, experimentation, and robust and reliable development of software. Our calculator project put a premium on the place VCS occupies in the software engineering process by suggesting that, yes, it is a sort of a lifeline during development.
+## Unit Testing and Test-Driven Development
 
-# **Unit Testing and Test-Driven Development**
-It was the first project we had undertaken using unit testing and test-driven development. For tests we used JUnit; the concept was that we would write tests first before writing the implementation. That was pretty straightforward: you define the expected behaviour in the form of tests, then write code to pass it.
+This was our first project with unit testing and test-driven development (TDD). We used JUnit. In TDD, you write the test before you write the code. The test defines the expected behaviour. Then you write code that passes the test.
 
-Unit tests basically provide a kind of documentation in their own right. One can understand from the tests what type of behaviour is expected from the codebase, how different components are supposed to interact, and what kind of output is expected to be produced when it receives some type of input.
+Unit tests also work as documentation. The tests show what the code should do, how the components interact, and what output a given input should produce.
 
-TDD creates a codebase of robustness and reliability. First, in the writing of tests, we ensure that the code that will be written is testable, modular, and has clear specifications. This will result in fewer bugs, and developers can make changes with confidence, knowing that any improvement will not introduce any regression that will be caught by the tests.
+TDD makes the code reliable. When you write tests first, the code becomes testable, modular, and clearly specified. This means fewer bugs. Developers can change code with confidence because the tests will catch any regression.
 
-Better yet, unit testing is a good friend when it comes to refactoring. Refactoring, on the other hand, refers to the restructuring of existing code without changing its external behaviour: in other words, its primary purpose is to improve nonfunctional attributes of the software, making it easier to understand, less complex, and increasing its maintainability. As much as restructuring is useful, it can be treacherous without a good set of tests in place, since it is easy to introduce bugs.
+Unit tests are also necessary for refactoring. Refactoring means restructuring existing code without changing its external behaviour. The goal is to make the code simpler, easier to read, and easier to maintain. But refactoring without tests is risky. It is easy to add bugs by accident.
 
-And unit tests decrease that risk. Suppose you have a suite of unit tests – they cover most of your code. Then you can refactor with a lot more confidence. Run the tests after making changes. If they all pass, you can be reasonably sure that your changes didn't break anything. If the tests fail, the test that caused the error can point out where a problem was introduced. That tight feedback loop will make the process of refactoring faster and safer.
+Unit tests reduce this risk. If you have a test suite that covers most of the code, you can refactor with confidence. The procedure is simple. Make the change. Run the tests. If all tests pass, the change did not break anything. If a test fails, that test shows where the problem is. This fast feedback loop makes refactoring quicker and safer.
 
-When there's a full set of unit tests, this can also motivate more frequent refactoring of the code, eventually leading to a cleaner and more understandable code base. This will allow easier working of the code, minimize the chances of bugs appearing, and potentially even make adding new features quicker in the long run.
+A full test suite also encourages frequent refactoring. Frequent refactoring keeps the codebase clean. Clean code is easier to work with, has fewer bugs, and makes new features quicker to add.
 
-The refactoring process supported by unit testing during our calculator project not only let us confirm the working of the code in expected ways but also allowed us to retain a clean, efficient, and maintainable codebase. Flexibility, as defined by unit testing in coming up with a strong and functional calculator application, turned out to be quite invaluable.
+In the calculator project, unit tests confirmed that the code worked as expected. They also helped us keep the codebase clean, efficient, and maintainable.
 
-# **Documentation: Moving Through the Codebase**
-Code documentation is like the map of a codebase. In the calculator project, we did JavaDoc for the classes, methods, and their parameters. There are several ways documentation is helpful:
+## Documentation
 
-- **Understand the code**: We know what a piece of code does and why it is implemented so.
-- **Onboarding new developers**: New team members come and get up to speed by reading the documentation.
-- **Maintain the code**: You make modifications confidently if you know the ins and outs of the code.
+Documentation is a map of the codebase. In the calculator project we wrote JavaDoc for all classes, methods, and parameters. Documentation helps in three ways:
 
-One needs documentation not just for others but for our sake, too. We might forget what really is there in the code.
+- Understanding the code. It shows what a piece of code does and why it was written that way.
+- Onboarding. New team members can read the documentation to get up to speed.
+- Maintenance. You can change code with confidence when you understand how it works.
 
-# **Code Quality: More than Just Functionality**
-It touches upon the fact that code quality is more than just getting a program to run but about writing readable, maintainable, and consistent code. Generally, code quality matters in the long run for the success of the project. This is because it affects how the system will be easily readable, updatable, and debuggable. We have considered several quality features associated with our calculator project.
+Documentation is not only for other people. It is also for us. After some time, we forget what our own code does.
 
-1. **Design Patterns** are solutions to problems of software design and are formulated templates ready for specific situations. Design patterns realize more efficient, more scalable, and more maintainable code by using them. Some common design patterns include, among others :
+## Code Quality
 
-2. **Singleton Pattern**: Ensures that at any time, there is only one instance of a class with global access coordinates to it. This is especially useful when one shared resource, such as a configuration object, is needed.
+Code quality means more than a program that runs. It means code that is readable, maintainable, and consistent. Code quality matters for the long-term success of a project. It affects how easy the system is to read, update, and debug. In the calculator project we focused on design patterns, linting, and styling.
 
-3. **Observer Pattern**: A design pattern where one object (named "subject") can publish changes to its state, letting objects that are "observers" react. That is a general pattern used in event handling.
+**Design patterns.** A design pattern is a reusable solution to a common design problem. Design patterns make code more efficient, scalable, and maintainable. We learned about four common patterns:
 
-4. **Factory Pattern**: It provides an interface for creating objects without specifying the exact class of object it will create but allowing its subclasses to alter the type of objects that will be created. For instance, it's most used when it's required to create objects but other classes define which object should be created.
+- Singleton pattern. This pattern makes sure a class has only one instance, with a global access point. It is useful for a shared resource such as a configuration object.
+- Observer pattern. One object, the subject, publishes changes to its state. Other objects, the observers, react to these changes. This pattern is common in event handling.
+- Factory pattern. This pattern provides an interface for creating objects without specifying their exact class. Subclasses decide which object type to create.
+- Strategy pattern. This pattern defines a family of algorithms, packages each one separately, and makes them interchangeable. The algorithm can change independently of the code that uses it.
 
-5. **Strategy Pattern**: The Strategy pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable. It lets the algorithm vary independently of the client using it.
+These patterns helped us write more organised and maintainable code. They also made the code easier for other developers to understand, change, and extend.
 
-While using these and other design patterns in our calculator project, we can write more organized, maintainable code to gain a better understanding of it ourselves and other developers for future code changes or extensions.
+**Linting and styling.** We used Checkstyle to check our Java code against a set of rules. A consistent style makes the codebase uniform. Uniform code is easier to read and easier for any developer to work on.
 
-Code Linting and Styling are as essential to quality code as any other aspect. Checkstyle was used to check Java code on a defined set of rules. Style brings about uniformity to the codebase; hence, following the same style made our code very readable and easy to work on by us and any other developer.
+Linting improves readability. It also finds problems such as unused variables, undeclared variables, and mismatched types. Finding these problems early reduced the number of bugs and improved the quality of our code.
 
-It improves code readability and eventually assists in finding variables declared but not in use, undeclared, or has mismatched types. By catching these issues early, we were able to reduce the number of bugs in our code and improve its overall quality.
+In the calculator project, design patterns, linting, and a consistent style made our code functional, robust, and easy to read.
 
-In the final analysis, quality of your code has come to mean more than just functionality. It also equals to readability, maintainability, and consistency. This brings us to a second dimension of code quality—stuff that's going to make the code not just functional but robust, scalable, and easy to read. We shall ensure this in our calculator project using design patterns and usage of linting tools appropriately, with a consistent code style of writing the code.
+## Conclusion
 
-# **Conclusion**
- The calculator project was so much more than a Java assignment; in effect, it was a learning experience on software engineering methodologies. It made us understand that successful software development is a direct derivative of proper version control, test-driven development, comprehensive documentation, and high-quality code. It is not only the destination which matters but also the journey itself in making the software maintainable, comprehensible, and scalable. These are lessons that will be the guiding philosophy in each of our further steps concerning software development.
+The calculator project was more than a Java assignment. It was a lesson in software engineering methods. It showed us that successful software depends on version control, test-driven development, documentation, and high-quality code. The process matters as much as the result. These lessons will guide our future work in software development.
+
+## Technologies

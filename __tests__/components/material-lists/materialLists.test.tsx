@@ -145,35 +145,35 @@ describe("Material Lists", () => {
     test("should render blogs without header when single group is provided", () => {
       const groups: MaterialGroupInterface[] = [
         {
-          groupName: "Artificial Intelligence",
-          materialsKeys: [BlogDatabaseKeys.MachineLearningFoundations],
+          groupName: "Software Engineering",
+          materialsKeys: [BlogDatabaseKeys.CommerzbankMigrationToBDK],
         },
       ];
 
       const html = renderToStaticMarkup(<BlogsList groupedMaterial={groups} />);
 
-      expect(html).not.toContain("<h2>Artificial Intelligence</h2>");
-      expect(html).toContain("Machine Learning Fundamentals");
+      expect(html).not.toContain("<h2>Software Engineering</h2>");
+      expect(html).toContain("Commerzbank Migration to BDK");
     });
 
     test("should render group headers and dividers when multiple groups are provided", () => {
       const groups: MaterialGroupInterface[] = [
         {
-          groupName: "AI",
-          materialsKeys: [BlogDatabaseKeys.MachineLearningFoundations],
+          groupName: "Software",
+          materialsKeys: [BlogDatabaseKeys.CommerzbankMigrationToBDK],
         },
         {
-          groupName: "Software",
-          materialsKeys: [BlogDatabaseKeys.DesignPatterns],
+          groupName: "Projects",
+          materialsKeys: [ProjectDatabaseKeys.ForumDiscussions],
         },
       ];
 
       const html = renderToStaticMarkup(<BlogsList groupedMaterial={groups} />);
 
-      expect(html).toContain("<h2>AI</h2>");
       expect(html).toContain("<h2>Software</h2>");
-      expect(html).toContain("Machine Learning Fundamentals");
-      expect(html).toContain("Software Design Patterns");
+      expect(html).toContain("<h2>Projects</h2>");
+      expect(html).toContain("Commerzbank Migration to BDK");
+      expect(html).toContain("Forum Discussions");
     });
   });
 
@@ -321,7 +321,7 @@ describe("Material Lists", () => {
       const materialKeys = [
         ProjectDatabaseKeys.ForumDiscussions,
         RoleDatabaseKeys.CommerzbankAiEngineer,
-        BlogDatabaseKeys.MachineLearningFoundations,
+        BlogDatabaseKeys.CommerzbankMigrationToBDK,
       ];
 
       const html = renderToStaticMarkup(

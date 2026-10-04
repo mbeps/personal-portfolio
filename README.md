@@ -64,7 +64,7 @@ Extensive JSDoc now annotates core hooks, filters, and data interfaces so contri
 
 # **Requirements**
 These are the requirements needed to run the project:
-- Node 22 LTS
+- Node 24 LTS
 
 # **Tech Stack**
 
