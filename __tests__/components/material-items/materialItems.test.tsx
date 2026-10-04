@@ -28,7 +28,7 @@ vi.mock("@/components/shadcn/ui/tooltip", () => ({
 describe("Material Items", () => {
   describe("BlogItem", () => {
     test("should render blog item with title, subtitle, and link to blog detail page", () => {
-      const blogKey = BlogDatabaseKeys.MachineLearningFoundations;
+      const blogKey = BlogDatabaseKeys.CommerzbankMigrationToBDK;
       const blogData = blogsDatabaseMap[blogKey];
 
       const html = renderToStaticMarkup(<BlogItem blogKey={blogKey} />);
@@ -40,7 +40,7 @@ describe("Material Items", () => {
     });
 
     test("should render different blog keys properly", () => {
-      const blogKey = BlogDatabaseKeys.DesignPatterns;
+      const blogKey = ProjectDatabaseKeys.ForumDiscussions;
       const blogData = blogsDatabaseMap[blogKey];
 
       const html = renderToStaticMarkup(<BlogItem blogKey={blogKey} />);

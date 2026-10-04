@@ -1,4 +1,3 @@
-import BlogDatabaseKeys from "@/database/blogs/blog-database-keys";
 import CertificateDatabaseKeys from "@/database/certificates/certificate-database-keys";
 import type CertificateInterface from "@/database/certificates/certificate-interface";
 import ModuleDatabaseKeys from "@/database/modules/module-database-keys";
@@ -941,11 +940,7 @@ const certificateMap: Database<CertificateInterface> = {
       "Acquire the ability to design ER models for real-world database applications",
       "Gain insights into advanced database concepts for competitive exams and professional certification",
     ],
-    relatedMaterials: [
-      ModuleDatabaseKeys.RHUL_Databases,
-      BlogDatabaseKeys.RelationalDatabases,
-      BlogDatabaseKeys.DatabaseNormalisation,
-    ],
+    relatedMaterials: [ModuleDatabaseKeys.RHUL_Databases],
   },
   [CertificateDatabaseKeys.NASBADatabaseFoundationsIntroToDatabases]: {
     name: "Database Foundations: Intro to Databases",
@@ -968,11 +963,7 @@ const certificateMap: Database<CertificateInterface> = {
       "Exploring core SQL commands for data retrieval.",
       "Using SQL to manipulate retrieved database data.",
     ],
-    relatedMaterials: [
-      ModuleDatabaseKeys.RHUL_Databases,
-      BlogDatabaseKeys.RelationalDatabases,
-      BlogDatabaseKeys.DatabaseNormalisation,
-    ],
+    relatedMaterials: [ModuleDatabaseKeys.RHUL_Databases],
   },
   [CertificateDatabaseKeys.MongoDbOverview]: {
     name: "MongoDB Overview: Core Concepts & Architecture",
@@ -1291,7 +1282,6 @@ const certificateMap: Database<CertificateInterface> = {
       "Introduction to MongoDB Data Modeling.",
       "Using MongoDB Transactions.",
     ],
-    relatedMaterials: [BlogDatabaseKeys.DocumentDatabases],
     archived: true,
   },
   [CertificateDatabaseKeys.LinkedInRedisEssentialTraining]: {
@@ -1316,7 +1306,6 @@ const certificateMap: Database<CertificateInterface> = {
       "Comparing Redis to relational databases and using key naming strategies.",
     ],
     archived: true,
-    relatedMaterials: [BlogDatabaseKeys.DocumentDatabases],
   },
 
   //^ DevOps

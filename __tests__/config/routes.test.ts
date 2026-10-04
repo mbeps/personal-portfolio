@@ -56,8 +56,8 @@ describe("ROUTES & NAV_ITEMS constants", () => {
     ).toBe(`/certificates/${CertificateDatabaseKeys.UdemyMachineLearningAtoZ}`);
 
     expect(
-      ROUTES.BLOGS.detail(BlogDatabaseKeys.MachineLearningFoundations),
-    ).toBe(`/blogs/${BlogDatabaseKeys.MachineLearningFoundations}`);
+      ROUTES.BLOGS.detail(BlogDatabaseKeys.CommerzbankMigrationToBDK),
+    ).toBe(`/blogs/${BlogDatabaseKeys.CommerzbankMigrationToBDK}`);
   });
 
   test("should construct NAV_ITEMS with mapped labels and paths", () => {

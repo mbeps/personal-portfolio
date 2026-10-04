@@ -60,12 +60,12 @@ describe("PATHS constants", () => {
       `/education/${CourseDatabaseKeys.KCL_ArtificialIntelligence}/certificate.jpg`,
     );
 
-    const blogPaths = PATHS.BLOGS(BlogDatabaseKeys.MachineLearningFoundations);
+    const blogPaths = PATHS.BLOGS(BlogDatabaseKeys.CommerzbankMigrationToBDK);
     expect(blogPaths.BLOG).toBe(
-      `public/blogs/${BlogDatabaseKeys.MachineLearningFoundations}/blog.md`,
+      `public/blogs/${BlogDatabaseKeys.CommerzbankMigrationToBDK}/blog.md`,
     );
     expect(blogPaths.IMG).toBe(
-      `/blogs/${BlogDatabaseKeys.MachineLearningFoundations}/img`,
+      `/blogs/${BlogDatabaseKeys.CommerzbankMigrationToBDK}/img`,
     );
   });
 });

@@ -1,4 +1,3 @@
-import BlogDatabaseKeys from "@/database/blogs/blog-database-keys";
 import CertificateDatabaseKeys from "@/database/certificates/certificate-database-keys";
 import CourseDatabaseKeys from "@/database/courses/course-database-keys";
 import ModuleDatabaseKeys from "@/database/modules/module-database-keys";
@@ -196,11 +195,7 @@ const modulesMap: Database<ModuleInterface> = {
       "Comparing and contrasting Agile and Waterfall methodologies to determine their applicability in different software development scenarios",
       "Practicing SCRUM and other Agile techniques to enhance team collaboration and project management in software development",
     ],
-    relatedMaterials: [
-      ProjectDatabaseKeys.JavaCalculatorAssignment,
-      BlogDatabaseKeys.DesignPatterns,
-      BlogDatabaseKeys.TypesOfSoftwareTesting,
-    ],
+    relatedMaterials: [ProjectDatabaseKeys.JavaCalculatorAssignment],
     parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
   [ModuleDatabaseKeys.RHUL_TeamProject]: {
@@ -291,9 +286,6 @@ const modulesMap: Database<ModuleInterface> = {
     relatedMaterials: [
       ProjectDatabaseKeys.DatabasesMiniProject,
       CertificateDatabaseKeys.UdemyDatabaseManagementSystemAndSQL,
-      BlogDatabaseKeys.RelationalDatabases,
-      BlogDatabaseKeys.DatabaseNormalisation,
-      BlogDatabaseKeys.DocumentDatabases,
     ],
     parentCourse: CourseDatabaseKeys.RHUL_ComputerScience,
   },
@@ -553,14 +545,6 @@ const modulesMap: Database<ModuleInterface> = {
       ProjectDatabaseKeys.MachineLearningAssignment2,
       ProjectDatabaseKeys.MachineLearningAssignment3,
       ProjectDatabaseKeys.MachineLearningLabs,
-      BlogDatabaseKeys.MachineLearningFoundations,
-      BlogDatabaseKeys.MachineLearningAlgorithms,
-      BlogDatabaseKeys.ValidationAndRegularization,
-      BlogDatabaseKeys.HyperparameterTuning,
-      BlogDatabaseKeys.KernelTrick,
-      BlogDatabaseKeys.SupportVectorMachines,
-      BlogDatabaseKeys.ConformalPrediction,
-      BlogDatabaseKeys.IntroductionToNeuralNetworks,
     ],
   },
   [ModuleDatabaseKeys.RHUL_ComputationalFinance]: {
@@ -647,14 +631,7 @@ const modulesMap: Database<ModuleInterface> = {
       "Implementing search algorithms for problem solving in AI",
       "Understanding knowledge representation techniques in AI systems",
     ],
-    relatedMaterials: [
-      ProjectDatabaseKeys.MarkovDecisionAgent,
-      BlogDatabaseKeys.HiddenMarkovModelsInAI,
-      BlogDatabaseKeys.Clustering,
-      BlogDatabaseKeys.ProbabilisticModels,
-      BlogDatabaseKeys.ReinforcementLearning,
-      BlogDatabaseKeys.FeatureEngineeringAndDimensionalityReduction,
-    ],
+    relatedMaterials: [ProjectDatabaseKeys.MarkovDecisionAgent],
   },
   [ModuleDatabaseKeys.KCL_AgentsAndMultiAgentSystems]: {
     name: "Agents & Multi-Agent Systems",
@@ -780,12 +757,6 @@ const modulesMap: Database<ModuleInterface> = {
       "Applying text mining and information retrieval techniques",
       "Assessing ethical implications and limitations of data mining",
     ],
-    relatedMaterials: [
-      BlogDatabaseKeys.TimeSeriesDatabases,
-      BlogDatabaseKeys.DocumentDatabases,
-      BlogDatabaseKeys.VectorDatabases,
-      BlogDatabaseKeys.GraphDatabases,
-    ],
   },
   [ModuleDatabaseKeys.KCL_OptimizationMethods]: {
     name: "Optimization Methods",
@@ -853,25 +824,7 @@ const modulesMap: Database<ModuleInterface> = {
       "Implementing generative models like GANs to create synthetic data",
       "Applying transfer learning to leverage pretrained models for new tasks",
     ],
-    relatedMaterials: [
-      ProjectDatabaseKeys.HandWrittenDigitClassifier,
-      BlogDatabaseKeys.IntroductionToNeuralNetworks,
-      BlogDatabaseKeys.MachineLearningFoundations,
-      BlogDatabaseKeys.MachineLearningAlgorithms,
-      BlogDatabaseKeys.Clustering,
-      BlogDatabaseKeys.ValidationAndRegularization,
-      BlogDatabaseKeys.HyperparameterTuning,
-      BlogDatabaseKeys.KernelTrick,
-      BlogDatabaseKeys.SupportVectorMachines,
-      BlogDatabaseKeys.NeuralNetworkLearningAndGradientDescent,
-      BlogDatabaseKeys.BackPropagation,
-      BlogDatabaseKeys.DeepNeuralNetworks,
-      BlogDatabaseKeys.DeepNeuralNetworks,
-      BlogDatabaseKeys.ConvolutionalNeuralNetworks,
-      BlogDatabaseKeys.GenerativeAdversarialNetworks,
-      BlogDatabaseKeys.TransferLearning,
-      BlogDatabaseKeys.FeatureEngineeringAndDimensionalityReduction,
-    ],
+    relatedMaterials: [ProjectDatabaseKeys.HandWrittenDigitClassifier],
   },
   [ModuleDatabaseKeys.KCL_MachineLearning]: {
     name: "Machine Learning",
@@ -912,20 +865,6 @@ const modulesMap: Database<ModuleInterface> = {
     relatedMaterials: [
       ProjectDatabaseKeys.CustomNeuralNetworkCoursework,
       ProjectDatabaseKeys.CustomQLearningAgent,
-      BlogDatabaseKeys.HiddenMarkovModelsInAI,
-      BlogDatabaseKeys.MachineLearningFoundations,
-      BlogDatabaseKeys.MachineLearningAlgorithms,
-      BlogDatabaseKeys.ProbabilisticModels,
-      BlogDatabaseKeys.Clustering,
-      BlogDatabaseKeys.ValidationAndRegularization,
-      BlogDatabaseKeys.HyperparameterTuning,
-      BlogDatabaseKeys.KernelTrick,
-      BlogDatabaseKeys.SupportVectorMachines,
-      BlogDatabaseKeys.IntroductionToNeuralNetworks,
-      BlogDatabaseKeys.NeuralNetworkLearningAndGradientDescent,
-      BlogDatabaseKeys.BackPropagation,
-      BlogDatabaseKeys.ReinforcementLearning,
-      BlogDatabaseKeys.EvolutionaryAlgorithms,
     ],
   },
   [ModuleDatabaseKeys.KCL_IndividualProject]: {
@@ -983,12 +922,7 @@ const modulesMap: Database<ModuleInterface> = {
       "Designing targeted training interventions to address identified model weaknesses.",
       "Communicating complex research findings and technical details in a structured report.",
     ],
-    relatedMaterials: [
-      ProjectDatabaseKeys.AlignmentInLargeLanguageModels,
-      BlogDatabaseKeys.Transformer,
-      BlogDatabaseKeys.Lora,
-      BlogDatabaseKeys.Quantisation,
-    ],
+    relatedMaterials: [ProjectDatabaseKeys.AlignmentInLargeLanguageModels],
   },
 };
 
