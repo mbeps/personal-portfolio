@@ -14,6 +14,7 @@ import filterMaterialByCategory from "@/lib/material/filter/filter-material-by-c
 import filterMaterialBySkill from "@/lib/material/filter/filter-material-by-skill";
 import { formatToolResponse } from "@/lib/mcp/helpers";
 import searchDatabase from "@/lib/search/search-database";
+import resolveSkillKey from "@/lib/skills/resolve-skill-key";
 
 /**
  * Registers `list_certificates` and `get_certificate` tools onto the MCP server.
@@ -62,11 +63,23 @@ export function registerCertificatesTools(server: McpServer): void {
 
       // Filter by skill
       if (skill) {
-        keys = filterMaterialBySkill<CertificateInterface>(
-          skill as SkillDatabaseKeys,
-          keys,
-          certificateDatabaseMap,
-        );
+        const resolvedSkill = resolveSkillKey(skill);
+        if (resolvedSkill) {
+          keys = filterMaterialBySkill<CertificateInterface>(
+            resolvedSkill,
+            keys,
+            certificateDatabaseMap,
+          );
+        } else {
+          const lowerSkill = skill.toLowerCase().trim();
+          keys = keys.filter((key) => {
+            const cert =
+              certificateDatabaseMap[key as CertificateDatabaseKeys];
+            return cert.skills.some((s) =>
+              s.toLowerCase().includes(lowerSkill),
+            );
+          });
+        }
       }
 
       // Search query

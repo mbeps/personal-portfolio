@@ -14,6 +14,7 @@ import filterMaterialBySkill from "@/lib/material/filter/filter-material-by-skil
 import filterProjectsByType from "@/lib/material/filter/filter-projects-by-type";
 import { formatToolResponse } from "@/lib/mcp/helpers";
 import searchDatabase from "@/lib/search/search-database";
+import resolveSkillKey from "@/lib/skills/resolve-skill-key";
 
 /**
  * Registers the `list_projects` and `get_project` tools onto the MCP server.
@@ -66,11 +67,22 @@ export function registerProjectsTools(server: McpServer): void {
 
       // Filter by skill
       if (skill) {
-        keys = filterMaterialBySkill<ProjectInterface>(
-          skill as SkillDatabaseKeys,
-          keys,
-          projectDatabaseMap,
-        ) as ProjectDatabaseKeys[];
+        const resolvedSkill = resolveSkillKey(skill);
+        if (resolvedSkill) {
+          keys = filterMaterialBySkill<ProjectInterface>(
+            resolvedSkill,
+            keys,
+            projectDatabaseMap,
+          ) as ProjectDatabaseKeys[];
+        } else {
+          const lowerSkill = skill.toLowerCase().trim();
+          keys = keys.filter((key) => {
+            const project = projectDatabaseMap[key];
+            return project.skills.some((s) =>
+              s.toLowerCase().includes(lowerSkill),
+            );
+          });
+        }
       }
 
       // Search query filter

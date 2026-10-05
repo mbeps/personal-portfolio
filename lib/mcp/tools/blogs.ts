@@ -12,6 +12,7 @@ import filterMaterialByCategory from "@/lib/material/filter/filter-material-by-c
 import filterMaterialBySkill from "@/lib/material/filter/filter-material-by-skill";
 import { formatToolResponse } from "@/lib/mcp/helpers";
 import searchDatabase from "@/lib/search/search-database";
+import resolveSkillKey from "@/lib/skills/resolve-skill-key";
 
 /**
  * Registers `list_blogs` and `get_blog` tools onto the MCP server.
@@ -54,11 +55,22 @@ export function registerBlogsTools(server: McpServer): void {
 
       // Filter by skill
       if (skill) {
-        keys = filterMaterialBySkill<BlogInterface>(
-          skill as SkillDatabaseKeys,
-          keys,
-          blogsDatabaseMap,
-        ) as BlogDatabaseKeys[];
+        const resolvedSkill = resolveSkillKey(skill);
+        if (resolvedSkill) {
+          keys = filterMaterialBySkill<BlogInterface>(
+            resolvedSkill,
+            keys,
+            blogsDatabaseMap,
+          ) as BlogDatabaseKeys[];
+        } else {
+          const lowerSkill = skill.toLowerCase().trim();
+          keys = keys.filter((key) => {
+            const blog = blogsDatabaseMap[key];
+            return blog.skills.some((s) =>
+              s.toLowerCase().includes(lowerSkill),
+            );
+          });
+        }
       }
 
       // Search query

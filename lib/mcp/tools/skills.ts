@@ -21,6 +21,7 @@ import { formatToolResponse } from "@/lib/mcp/helpers";
 import searchDatabase from "@/lib/search/search-database";
 import filterSkillsByCategory from "@/lib/skills/filter/filter-skills-by-category";
 import filterSkillsByType from "@/lib/skills/filter/filter-skills-by-type";
+import resolveSkillKey from "@/lib/skills/resolve-skill-key";
 
 /**
  * Registers `list_skills` and `get_skill` tools onto the MCP server.
@@ -110,7 +111,9 @@ export function registerSkillsTools(server: McpServer): void {
       }),
     },
     async ({ skillKey, includeRelatedMaterials }) => {
-      const skill = skillDatabaseMap[skillKey as SkillDatabaseKeys];
+      const canonicalKey =
+        resolveSkillKey(skillKey) ?? (skillKey as SkillDatabaseKeys);
+      const skill = skillDatabaseMap[canonicalKey];
       if (!skill) {
         return formatToolResponse(
           { error: `Skill '${skillKey}' not found.` },
@@ -119,19 +122,18 @@ export function registerSkillsTools(server: McpServer): void {
       }
 
       const skillData: Record<string, unknown> = {
-        key: skillKey,
+        key: canonicalKey,
         name: skill.name,
         category: skill.category,
         skillType: skill.skillType,
         isMainSkill: Boolean(skill.isMainSkill),
         relatedSkills: skill.relatedSkills ?? [],
-        materialUsageCount:
-          skillUsageMap.get(skillKey as SkillDatabaseKeys) ?? 0,
+        materialUsageCount: skillUsageMap.get(canonicalKey) ?? 0,
       };
 
       if (includeRelatedMaterials) {
         const matchedMaterialKeys = filterMaterialBySkill(
-          skillKey as SkillDatabaseKeys,
+          canonicalKey,
           materialKeys,
           materialDatabaseMap,
         );
