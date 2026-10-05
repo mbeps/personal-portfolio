@@ -7,7 +7,6 @@ import rolesDatabase, {
   roleDatabaseKeys,
 } from "@/database/roles/role-database-map";
 import type RoleInterface from "@/database/roles/role-interface";
-import type SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import ExperienceCategoriesEnum from "@/enums/experience/experience-categories-enum";
 import ExperienceTypeEnum from "@/enums/experience/experience-type-enum";
 import getMarkdownFromFileSystem from "@/lib/file-system/get-markdown-from-file-system";
@@ -17,6 +16,7 @@ import filterMaterialByCategory from "@/lib/material/filter/filter-material-by-c
 import filterMaterialBySkill from "@/lib/material/filter/filter-material-by-skill";
 import { formatToolResponse } from "@/lib/mcp/helpers";
 import searchDatabase from "@/lib/search/search-database";
+import resolveSkillKey from "@/lib/skills/resolve-skill-key";
 
 /**
  * Registers `list_experience` and `get_experience_role` tools onto the MCP server.
@@ -65,11 +65,22 @@ export function registerExperienceTools(server: McpServer): void {
 
       // Filter by skill
       if (skill) {
-        keys = filterMaterialBySkill<RoleInterface>(
-          skill as SkillDatabaseKeys,
-          keys,
-          rolesDatabase,
-        );
+        const resolvedSkill = resolveSkillKey(skill);
+        if (resolvedSkill) {
+          keys = filterMaterialBySkill<RoleInterface>(
+            resolvedSkill,
+            keys,
+            rolesDatabase,
+          );
+        } else {
+          const lowerSkill = skill.toLowerCase().trim();
+          keys = keys.filter((key) => {
+            const role = rolesDatabase[key as RoleDatabaseKeys];
+            return role.skills.some((s) =>
+              s.toLowerCase().includes(lowerSkill),
+            );
+          });
+        }
       }
 
       // Search query

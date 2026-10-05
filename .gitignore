@@ -47,3 +47,4 @@ AGENT.md
 ./github/instructions/**
 subagents/**
 .subagents/**
+mcp.json
