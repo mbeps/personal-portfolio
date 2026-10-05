@@ -126,6 +126,12 @@ export const ROUTES = {
   ` as const,
     isMain: true as const,
   },
+  MCP: {
+    path: "/api/mcp" as const,
+    name: "MCP Server" as const,
+    description:
+      "Model Context Protocol (MCP) server endpoint for AI assistants." as const,
+  },
 };
 
 /**
