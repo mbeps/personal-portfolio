@@ -4,7 +4,6 @@ import { PATHS } from "@/config/paths";
 import type BlogDatabaseKeys from "@/database/blogs/blog-database-keys";
 import type BlogInterface from "@/database/blogs/blog-interface";
 import blogsDatabaseMap from "@/database/blogs/blogs-database-map";
-import type SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import BlogCategoriesEnum from "@/enums/blog/blog-categories-enum";
 import getMarkdownFromFileSystem from "@/lib/file-system/get-markdown-from-file-system";
 import filterMaterialByArchivedStatus from "@/lib/material/filter/filter-material-by-archived-status";

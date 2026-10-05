@@ -21,4 +21,3 @@ describe("resolveSkillKey helper", () => {
     expect(resolveSkillKey("completely-fake-skill-12345")).toBeUndefined();
   });
 });
-

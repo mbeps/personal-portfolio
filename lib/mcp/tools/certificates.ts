@@ -5,7 +5,6 @@ import certificateDatabaseMap, {
   certificateDatabaseKeys,
 } from "@/database/certificates/certificate-database-map";
 import type CertificateInterface from "@/database/certificates/certificate-interface";
-import type SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import CertificateCategoriesEnum from "@/enums/certificate/certificate-categories-enum";
 import CertificateIssuersEnum from "@/enums/certificate/certificate-issuers-enum";
 import filterCertificatesByIssuer from "@/lib/material/filter/filter-certificates-by-issuer";
@@ -73,8 +72,7 @@ export function registerCertificatesTools(server: McpServer): void {
         } else {
           const lowerSkill = skill.toLowerCase().trim();
           keys = keys.filter((key) => {
-            const cert =
-              certificateDatabaseMap[key as CertificateDatabaseKeys];
+            const cert = certificateDatabaseMap[key as CertificateDatabaseKeys];
             return cert.skills.some((s) =>
               s.toLowerCase().includes(lowerSkill),
             );

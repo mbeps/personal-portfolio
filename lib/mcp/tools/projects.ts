@@ -4,7 +4,6 @@ import { PATHS } from "@/config/paths";
 import type ProjectDatabaseKeys from "@/database/projects/project-database-keys";
 import projectDatabaseMap from "@/database/projects/project-database-map";
 import type ProjectInterface from "@/database/projects/project-interface";
-import type SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import ProjectCategoriesEnum from "@/enums/project/project-categories-enum";
 import ProjectTypeEnum from "@/enums/project/project-type-enum";
 import getMarkdownFromFileSystem from "@/lib/file-system/get-markdown-from-file-system";

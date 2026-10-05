@@ -7,7 +7,6 @@ import rolesDatabase, {
   roleDatabaseKeys,
 } from "@/database/roles/role-database-map";
 import type RoleInterface from "@/database/roles/role-interface";
-import type SkillDatabaseKeys from "@/database/skills/skill-database-keys";
 import ExperienceCategoriesEnum from "@/enums/experience/experience-categories-enum";
 import ExperienceTypeEnum from "@/enums/experience/experience-type-enum";
 import getMarkdownFromFileSystem from "@/lib/file-system/get-markdown-from-file-system";

@@ -9,9 +9,7 @@ import stringToSlug from "@/lib/string-to-slug";
  * @param input Search string representing a skill.
  * @returns Canonical SkillDatabaseKeys key if matched, or undefined.
  */
-export function resolveSkillKey(
-  input?: string,
-): SkillDatabaseKeys | undefined {
+export function resolveSkillKey(input?: string): SkillDatabaseKeys | undefined {
   if (!input || input.trim() === "") {
     return undefined;
   }
@@ -65,4 +63,3 @@ export function resolveSkillKey(
 }
 
 export default resolveSkillKey;
-
