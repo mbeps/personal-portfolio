@@ -42,6 +42,9 @@ describe("MCP Route Handler: /api/mcp", () => {
     const data = parseMcpResponse(text);
     expect(data.result).toBeDefined();
     expect(data.result.serverInfo.name).toBe("personal-portfolio-mcp");
+    expect(data.result.serverInfo.icons).toBeDefined();
+    expect(data.result.serverInfo.icons.length).toBeGreaterThanOrEqual(1);
+    expect(data.result.serverInfo.icons[0].src).toContain("favicon.svg");
     expect(data.result.capabilities.tools).toBeDefined();
   });
 
