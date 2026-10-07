@@ -63,7 +63,7 @@ const projectMap: Database<ProjectInterface> = {
       Admins can manage inventory, add new cars, and update existing listings, view reports, manage dealership settings, etc.
       `,
     repositoryURL: "https://github.com/mbeps/car-dealership",
-    deploymentURL: "https://www.mn-ltd.uk/",
+    // deploymentURL: "https://www.mn-ltd.uk/",
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
@@ -215,6 +215,43 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.AuthenticationMicroService,
       ProjectDatabaseKeys.EmailMicroService,
       ProjectDatabaseKeys.LdapPermissionsMicroService,
+    ],
+  },
+  [ProjectDatabaseKeys.CommerzbankPhoenixFinanceEnrichment]: {
+    name: "Commerzbank Phoenix Finance Enrichment",
+    description: `
+        A web application that finds and enriches financial data from various sources and provides a user-friendly interface for users to view and analyze the data. This cuts down on a full day of work to just a few minutes.
+    `,
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.Python,
+
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.ShadcnUi,
+      SkillDatabaseKeys.RadixUi,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.Zustand,
+      SkillDatabaseKeys.Zod,
+      SkillDatabaseKeys.FastApi,
+
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Html,
+      SkillDatabaseKeys.Css,
+      SkillDatabaseKeys.Vitest,
+      SkillDatabaseKeys.JUnit,
+      SkillDatabaseKeys.Grafana,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    thumbnailImage: PATHS.PROJECTS(
+      ProjectDatabaseKeys.CommerzbankPhoenixFinanceEnrichment,
+    ).COVER,
+    type: ProjectTypeEnum.Professional,
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
+      RoleDatabaseKeys.CommerzbankAiEngineer,
+      ProjectDatabaseKeys.AuthenticationMicroService,
     ],
   },
   [ProjectDatabaseKeys.CommerzbankRates]: {
@@ -983,7 +1020,7 @@ const projectMap: Database<ProjectInterface> = {
       `,
     category: ProjectCategoriesEnum.FullStackAndArtificialIntelligence,
     repositoryURL: "https://github.com/mbeps/ai-client",
-    deploymentURL: "https://ai-chat-client.maruf-bepary.com",
+    // deploymentURL: "https://ai-chat-client.maruf-bepary.com",
     type: ProjectTypeEnum.Personal,
     skills: [
       SkillDatabaseKeys.TypeScript,

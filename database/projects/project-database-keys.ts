@@ -21,6 +21,8 @@ enum ProjectDatabaseKeys {
   Noodle = "noodle",
   CommerzbankAppStatus = "commerzbank-app-status",
   CommerzbankRates = "commerzbank-rates",
+  CommerzbankPhoenixFinanceEnrichment = "commerzbank-phoenix-finance-enrichment",
+  CommerzbankDataNotification = "commerzbank-data-notification",
   OAuthNextJsSpringBoot = "oauth-nextjs-spring-boot",
   NextJsBetterAuthTemplate = "nextjs-better-auth-template",
   NextJsAuthJsTemplate = "nextjs-authjs-template",
