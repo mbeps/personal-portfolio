@@ -217,6 +217,43 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.LdapPermissionsMicroService,
     ],
   },
+  [ProjectDatabaseKeys.CommerzbankPhoenixFinanceEnrichment]: {
+    name: "Commerzbank Phoenix Finance Enrichment",
+    description: `
+        A web application that finds and enriches financial data from various sources and provides a user-friendly interface for users to view and analyze the data. This cuts down on a full day of work to just a few minutes.
+    `,
+    skills: [
+      SkillDatabaseKeys.TypeScript,
+      SkillDatabaseKeys.JavaScript,
+      SkillDatabaseKeys.Python,
+
+      SkillDatabaseKeys.NextJs,
+      SkillDatabaseKeys.ReactJs,
+      SkillDatabaseKeys.ShadcnUi,
+      SkillDatabaseKeys.RadixUi,
+      SkillDatabaseKeys.TailwindCSS,
+      SkillDatabaseKeys.Zustand,
+      SkillDatabaseKeys.Zod,
+      SkillDatabaseKeys.FastApi,
+
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.Html,
+      SkillDatabaseKeys.Css,
+      SkillDatabaseKeys.Vitest,
+      SkillDatabaseKeys.JUnit,
+      SkillDatabaseKeys.Grafana,
+    ],
+    category: ProjectCategoriesEnum.FullStackWebDevelopment,
+    thumbnailImage: PATHS.PROJECTS(
+      ProjectDatabaseKeys.CommerzbankPhoenixFinanceEnrichment,
+    ).COVER,
+    type: ProjectTypeEnum.Professional,
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
+      RoleDatabaseKeys.CommerzbankAiEngineer,
+      ProjectDatabaseKeys.AuthenticationMicroService,
+    ],
+  },
   [ProjectDatabaseKeys.CommerzbankRates]: {
     name: "Commerzbank Rates",
     description: `
