@@ -67,7 +67,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.ExpressJs,
       SkillDatabaseKeys.NextJs,
       SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.Zod,
       SkillDatabaseKeys.Mongoose,
       SkillDatabaseKeys.Jest,
       SkillDatabaseKeys.Vitest,
@@ -88,7 +87,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.ExpressJs,
       SkillDatabaseKeys.NextJs,
       SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.Zod,
       SkillDatabaseKeys.ChakraUi,
       SkillDatabaseKeys.ShadcnUi,
       SkillDatabaseKeys.RadixUi,
@@ -558,7 +556,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.JavaScript,
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.Zod,
       SkillDatabaseKeys.ChakraUi,
       SkillDatabaseKeys.ShadcnUi,
       SkillDatabaseKeys.RadixUi,
@@ -931,17 +928,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
   },
 
   //^ Frontend Web Development
-  [SkillDatabaseKeys.Zod]: {
-    name: "Zod",
-    category: SkillCategoriesEnum.FrontEndWebDevelopment,
-    skillType: SkillTypesEnum.Technology,
-    relatedSkills: [
-      SkillDatabaseKeys.JavaScript,
-      SkillDatabaseKeys.TypeScript,
-      SkillDatabaseKeys.ReactJs,
-      SkillDatabaseKeys.NextJs,
-    ],
-  },
   [SkillDatabaseKeys.Jotai]: {
     name: "Jotai",
     category: SkillCategoriesEnum.FrontEndWebDevelopment,
@@ -964,7 +950,6 @@ const skillDatabaseMap: Database<SkillInterface> = {
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.Auth0,
       SkillDatabaseKeys.ClerkAuth,
-      SkillDatabaseKeys.Zod,
       SkillDatabaseKeys.Jotai,
       SkillDatabaseKeys.Zustand,
       SkillDatabaseKeys.UserCentricDesign,
