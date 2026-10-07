@@ -63,7 +63,7 @@ const projectMap: Database<ProjectInterface> = {
       Admins can manage inventory, add new cars, and update existing listings, view reports, manage dealership settings, etc.
       `,
     repositoryURL: "https://github.com/mbeps/car-dealership",
-    deploymentURL: "https://www.mn-ltd.uk/",
+    // deploymentURL: "https://www.mn-ltd.uk/",
     skills: [
       SkillDatabaseKeys.TypeScript,
       SkillDatabaseKeys.JavaScript,
@@ -983,7 +983,7 @@ const projectMap: Database<ProjectInterface> = {
       `,
     category: ProjectCategoriesEnum.FullStackAndArtificialIntelligence,
     repositoryURL: "https://github.com/mbeps/ai-client",
-    deploymentURL: "https://ai-chat-client.maruf-bepary.com",
+    // deploymentURL: "https://ai-chat-client.maruf-bepary.com",
     type: ProjectTypeEnum.Personal,
     skills: [
       SkillDatabaseKeys.TypeScript,
