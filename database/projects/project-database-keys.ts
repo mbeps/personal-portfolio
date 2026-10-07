@@ -29,6 +29,7 @@ enum ProjectDatabaseKeys {
 
   //^ Backend Projects
   AuthenticationMicroService = "authentication-microservice",
+  EntraMockService = "entra-mock-service",
   EmailMicroService = "email-microservice",
   LdapPermissionsMicroService = "ldap-permissions-microservice",
   SymphonyTranslateBot = "symphony-translate-bot",

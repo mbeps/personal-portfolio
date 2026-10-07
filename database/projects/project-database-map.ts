@@ -1173,6 +1173,33 @@ const projectMap: Database<ProjectInterface> = {
       ProjectDatabaseKeys.OAuthNextJsSpringBoot,
       ProjectDatabaseKeys.CommerzbankAppStatus,
       ProjectDatabaseKeys.CommerzbankRates,
+      ProjectDatabaseKeys.CommerzbankDataNotification,
+      ProjectDatabaseKeys.CommerzbankPhoenixFinanceEnrichment,
+      ProjectDatabaseKeys.EntraMockService,
+    ],
+    type: ProjectTypeEnum.Professional,
+  },
+  [ProjectDatabaseKeys.EntraMockService]: {
+    name: "Entra Mock Service",
+    description: `
+      A mock service for simulating Entra authentication flows. This is used during development as Entra does not work in local environments. Mock users with various roles and permissions can be created to test different scenarios.
+      `,
+    category: ProjectCategoriesEnum.BackEndWebDevelopment,
+    skills: [
+      SkillDatabaseKeys.Java,
+      SkillDatabaseKeys.SpringBoot,
+      SkillDatabaseKeys.SpringDataLdap,
+      SkillDatabaseKeys.SpringSecurity,
+      SkillDatabaseKeys.Docker,
+      SkillDatabaseKeys.TeamCity,
+      SkillDatabaseKeys.JUnit,
+    ],
+    relatedMaterials: [
+      RoleDatabaseKeys.CommerzbankFullStackSoftwareEngineer,
+      ProjectDatabaseKeys.OAuthNextJsSpringBoot,
+      ProjectDatabaseKeys.CommerzbankAppStatus,
+      ProjectDatabaseKeys.CommerzbankRates,
+      ProjectDatabaseKeys.AuthenticationMicroService,
     ],
     type: ProjectTypeEnum.Professional,
   },
